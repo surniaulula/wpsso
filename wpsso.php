@@ -745,8 +745,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function debug_reminder() {
 
 			$is_admin     = is_admin();
-			$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
-			$doing_dev    = SucomUtil::get_const( 'WPSSO_DEV' );
 			$notice_key   = 'debug-mode-is-active';
 			$notice_msg   = '';
 			$dismiss_time = 12 * HOUR_IN_SECONDS;
@@ -767,7 +765,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$this->debug->log( 'HTML debug mode is active' );
 
-				if ( $is_admin && ! $doing_dev ) {
+				if ( $is_admin ) {
 
 					$notice_key .= '-with-html-comments';
 
@@ -777,12 +775,28 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $notice_msg ) {
 
-				// translators: %s is the short plugin name.
-				$notice_msg .= sprintf( __( 'Debug mode can generate thousands of runtime messages during page load, which may degrade website performance.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+				$notice_msg .= __( 'Debug mode generates thousands of runtime messages during page load, which affects the website performance.', 'wpsso' ) . ' ';
 
 				$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
 
 				$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+			}
+
+			/**
+			 * The WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
+			 */
+			if ( $this->util->cache->is_disabled() ) {
+
+				if ( $is_admin ) {
+
+					$notice_key = 'plugin-cache-is-disabled';
+
+					$notice_msg = __( 'The plugin cache is currently disabled for debugging, which affects the website performance.', 'wpsso' ) . ' ';
+
+					$notice_msg .= __( 'Don\'t forget to re-enable caching when debugging is complete.', 'wpsso' );
+
+					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+				}
 			}
 		}
 

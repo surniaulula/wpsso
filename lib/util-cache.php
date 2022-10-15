@@ -39,33 +39,35 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			add_action( 'wpsso_clear_cache', array( $this, 'clear' ), 10, 4 );	// For single scheduled task.
 			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// For single scheduled task.
 
-			/**
-			 * Disable the head and post content cache if the front-end URL includes a query string, or the
-			 * WPSSO_CACHE_DISABLE constant is true, or the 'plugin_cache_disable' option is checked.
-			 */
-			$cache_disable = $this->p->get_const_status( 'CACHE_DISABLE' );
-
-			if ( null === $cache_disable ) {	// Constant is not defined.
-
-				$cache_disable = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
+			if ( $this->is_disabled() ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'plugin_cache_disable option is ' . ( $cache_disable ? 'true' : 'false' ) );
+					$this->p->debug->log( 'plugin cache is disabled' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'WPSSO_CACHE_DISABLE constant is ' . ( $cache_disable ? 'true' : 'false' ) );
-			}
-
-			if ( $cache_disable ) {
 
 				$this->u->add_plugin_filters( $this, array(
 					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
 					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
 			}
+		}
+
+		/**
+		 * The WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
+		 */
+		public function is_disabled() {
+
+			if ( defined( 'WPSSO_CACHE_DISABLE' ) ) {
+
+				$is_disabled = WPSSO_CACHE_DISABLE ? true : false;
+
+			} else {
+
+				$is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
+			}
+
+			return $is_disabled;
 		}
 
 		/**

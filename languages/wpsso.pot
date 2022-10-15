@@ -466,7 +466,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:513 lib/com/cache.php:670 lib/util-cache.php:224
+#: lib/com/cache.php:513 lib/com/cache.php:670 lib/util-cache.php:226
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -11798,8 +11798,8 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1760 lib/user.php:1863 lib/util-cache.php:180
-#: lib/util-cache.php:744
+#: lib/user.php:1760 lib/user.php:1863 lib/util-cache.php:182
+#: lib/util-cache.php:746
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -11914,46 +11914,46 @@ msgid ""
 "another one."
 msgstr ""
 
-#: lib/util-cache.php:123
+#: lib/util-cache.php:125
 msgid ""
 "Aborting task to clear the cache - another identical task is still running."
 msgstr ""
 
-#: lib/util-cache.php:137
+#: lib/util-cache.php:139
 msgid "A task to clear the cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:171
+#: lib/util-cache.php:173
 msgid ""
 "%1$d cached files, %2$d transient cache objects, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util-cache.php:184
+#: lib/util-cache.php:186
 msgid ""
 "A background task will begin shortly to refresh the post, term and user "
 "transient cache objects."
 msgstr ""
 
-#: lib/util-cache.php:255
+#: lib/util-cache.php:257
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:436
+#: lib/util-cache.php:438
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:656
+#: lib/util-cache.php:658
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:670
+#: lib/util-cache.php:672
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:735
+#: lib/util-cache.php:737
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
@@ -12260,27 +12260,36 @@ msgctxt "option comment"
 msgid "%s constant is false"
 msgstr ""
 
-#: wpsso.php:762
+#: wpsso.php:760
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:774
+#: wpsso.php:772
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#. translators: %s is the short plugin name.
-#: wpsso.php:781
+#: wpsso.php:778
 msgid ""
-"Debug mode can generate thousands of runtime messages during page load, "
-"which may degrade website performance."
+"Debug mode generates thousands of runtime messages during page load, which "
+"affects the website performance."
 msgstr ""
 
-#: wpsso.php:783
+#: wpsso.php:780
 msgid "Don't forget to disable debug mode when debugging is complete."
+msgstr ""
+
+#: wpsso.php:794
+msgid ""
+"The plugin cache is currently disabled for debugging, which affects the "
+"website performance."
+msgstr ""
+
+#: wpsso.php:796
+msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
