@@ -246,10 +246,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a check for at least one "image" property in the Schema Product type.
-	* Moved Schema CreativeWork and Article customization options in the Document SSO metabox from the Premium to the Standard edition.
+	* Moved the Document SSO metabox Schema CreativeWork and Article options from the Premium to the Standard edition.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a reminder notice when the plugin's cache is disabled for debugging.
 	* Added a new `WpssoEditGeneral` class in lib/edit-general.php.
 	* Added a new `WpssoEditMedia` class in lib/edit-media.php.
 	* Added a new `WpssoEditPrev` class in lib/edit-prev.php.
@@ -470,7 +471,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.6.0-b.2 =
 
-(2022/10/15) Added a check for at least one "image" property in the Schema Product type. Moved Schema CreativeWork and Article customization options in the Document SSO metabox from the Premium to the Standard edition.
+(2022/10/15) Added a check for at least one "image" property in the Schema Product type. Moved the Document SSO metabox Schema CreativeWork and Article options from the Premium to the Standard edition.
 
 = 13.5.0 =
 
