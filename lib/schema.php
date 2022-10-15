@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes'   => 1,
 				'sanitize_md_defaults' => 2,
 				'sanitize_md_options'  => 2,
@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v3.37.1.
 		 *
 		 * Returns the schema type id by default.
-		 * 
+		 *
 		 * Use $get_id = false to return the schema type URL instead of the ID.
 		 */
 		public function get_mod_schema_type( array $mod, $get_id = true, $use_md_opts = true ) {
@@ -1143,7 +1143,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( preg_match( '/^(.+:\/\/)([^\.]+)\.([^\.]+\.[^\.]+)$/', $context_value, $ext ) ) {
 
-					$context_value = array( 
+					$context_value = array(
 						$ext[ 1 ] . $ext[ 3 ],
 						array(
 							$ext[ 2 ] => $ext[ 0 ],
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'opt_suffix' => $opt_suffix,
 					'default_id' => $default_id,
 				) );
@@ -1621,7 +1621,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * json_data can be null, so don't cast an array on the input argument. 
+		 * json_data can be null, so don't cast an array on the input argument.
 		 *
 		 * The @context value can be an array if the schema type is an extension.
 		 *
@@ -2092,7 +2092,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 */
 						if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
 
-							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array( 
+							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 								'name'          => 'offer_name',
 								'price'         => 'offer_price',
 								'priceCurrency' => 'offer_currency',
@@ -2124,7 +2124,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *	address as https://schema.org/PostalAddress
 				 */
 				$postal_address = array();
-	
+
 				if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
 					'streetAddress'       => 'schema_review_item_place_street_address',
 					'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
@@ -2133,18 +2133,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'postalCode'          => 'schema_review_item_place_postal_code',
 					'addressCountry'      => 'schema_review_item_place_country',	// Alpha2 country code.
 				) ) ) {
-	
+
 					$json_data[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
 				}
 
 				if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
-				
+
 					WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 						'priceRange' => 'schema_review_item_place_price_range',
 					) );
 
 					if ( $wpsso->schema->is_schema_type_child( $type_id, 'food.establishment' ) ) {
-					
+
 						WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 							'servesCuisine' => 'schema_review_item_place_cuisine',
 						) );
@@ -2164,7 +2164,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add the product brand.
 				 */
-				$single_brand = self::get_data_itemprop_from_assoc( $md_opts, array( 
+				$single_brand = self::get_data_itemprop_from_assoc( $md_opts, array(
 					'name' => 'schema_review_item_product_brand',
 				) );
 
@@ -2185,7 +2185,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
 
-						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array( 
+						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 							'name'          => 'offer_name',
 							'price'         => 'offer_price',
 							'priceCurrency' => 'offer_currency',
@@ -3132,7 +3132,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Return any third-party and custom post options for a given option type.
-		 * 
+		 *
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
 		 *
 		 * 	WpssoSchema::get_post_type_options( $post_id, $type = 'event', $event_id );
@@ -3527,7 +3527,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' . 
+						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' .
 							print_r( $json_data[ $prop_name ], true ) );
 					}
 
@@ -3606,7 +3606,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Example usage:
 		 *
-		 *	$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+		 *	$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
 		 *		'url'             => 'product:url',
 		 *		'name'            => 'product:title',
 		 *		'description'     => 'product:description',
@@ -3637,7 +3637,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . 
+						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
 							$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
 					}
 				}
@@ -3762,7 +3762,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$key = substr( $key, 0, $len_prefix );
 						}
 					}
-					
+
 					$values[] = $key;
 				}
 			}
@@ -3812,7 +3812,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! isset( $enums[ $prop_val ] ) ) {
 
 					$prop_val_ucf = ucfirst( $prop_val );
-					
+
 					if ( isset( $enums[ $prop_val_ucf ] ) ) {
 
 						$json_data[ $prop_name ] = $prop_val_ucf;
@@ -3840,7 +3840,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * If we have a GTIN number, try to improve the assigned property name.
-		 * 
+		 *
 		 * Pass $json_data by reference to modify the array directly.
 		 *
 		 * A similar method exists as WpssoOpenGraph::check_mt_value_gtin().
@@ -3958,7 +3958,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$wpsso->debug->mark();
 
-				$wpsso->debug->log_args( array( 
+				$wpsso->debug->log_args( array(
 					'type_id'  => $type_id,
 					'data_url' => $data_url,
 					'hash_url' => $hash_url,

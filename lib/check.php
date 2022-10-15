@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$okey = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
 
-			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && class_exists( 'SucomUpdate' ) && 
+			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && class_exists( 'SucomUpdate' ) &&
 				( $ue = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ue : false ) : $pdir;
 		}
 

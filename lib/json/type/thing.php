@@ -153,12 +153,12 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 						$json_ret[ 'sameAs' ][] = $shortlink;
 
 						/**
-						 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter 
-						 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the 
-						 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme 
+						 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter
+						 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the
+						 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme
 						 * guidelines.
 						 *
-						 * This method calls the WordPress wp_get_shortlink() function, and if an empty string 
+						 * This method calls the WordPress wp_get_shortlink() function, and if an empty string
 						 * is returned, calls an unfiltered version of the same function.
 						 *
 						 * $context = 'blog', 'post' (default), 'media', or 'query'

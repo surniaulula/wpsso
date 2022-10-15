@@ -838,9 +838,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
 			}
 
-			return $this->get_input( $name_prefix . '_days', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $days_sep . 
-				$this->get_input( $name_prefix . '_hours', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $hours_sep . 
-				$this->get_input( $name_prefix . '_mins', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $mins_sep . 
+			return $this->get_input( $name_prefix . '_days', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $days_sep .
+				$this->get_input( $name_prefix . '_hours', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $hours_sep .
+				$this->get_input( $name_prefix . '_mins', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $mins_sep .
 				$this->get_input( $name_prefix . '_secs', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $secs_sep;
 		}
 
@@ -2009,7 +2009,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'select':
 
-								$select_options = empty( $atts[ 'select_options' ] ) || 
+								$select_options = empty( $atts[ 'select_options' ] ) ||
 									! is_array( $atts[ 'select_options' ] ) ?
 										array() : $atts[ 'select_options' ];
 
@@ -2427,9 +2427,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
 			}
 
-			return $this->get_no_input_value( $value = '0', 'xshort' ) . $days_sep . 
-				$this->get_no_input_value( $value = '0', 'xshort' ) . $hours_sep . 
-				$this->get_no_input_value( $value = '0', 'xshort' ) . $mins_sep . 
+			return $this->get_no_input_value( $value = '0', 'xshort' ) . $days_sep .
+				$this->get_no_input_value( $value = '0', 'xshort' ) . $hours_sep .
+				$this->get_no_input_value( $value = '0', 'xshort' ) . $mins_sep .
 				$this->get_no_input_value( $value = '0', 'xshort' ) . $secs_sep;
 		}
 

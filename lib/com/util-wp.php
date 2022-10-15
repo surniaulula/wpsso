@@ -274,7 +274,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			/**
 			 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
-			 * or any other object type with an associated meta table.  
+			 * or any other object type with an associated meta table.
 			 *
 			 * Returns (array|false) metadata cache for the specified objects, or false on failure.
 			 */

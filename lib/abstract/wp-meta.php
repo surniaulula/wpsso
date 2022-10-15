@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'obj_id' => $obj_id,
 					'md_key' => $md_key,
 				) );
@@ -1349,7 +1349,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'obj_id'      => $obj_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
@@ -1420,8 +1420,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$mod = $this->get_mod( $obj_id );
 
-					$this->p->debug->log( 'custom ' . $mod[ 'name' ] . ' ' . ( false === $md_key ? 'options' : 
-						( is_array( $md_key ) ? implode( $glue = ', ', $md_key ) : $md_key ) ) . ' = ' . 
+					$this->p->debug->log( 'custom ' . $mod[ 'name' ] . ' ' . ( false === $md_key ? 'options' :
+						( is_array( $md_key ) ? implode( $glue = ', ', $md_key ) : $md_key ) ) . ' = ' .
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"' . $md_val . '"' ) );
 				}
 			}
@@ -2239,7 +2239,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( $mod[ 'is_post' ] ) {
 
 				/**
-				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name. 
+				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name.
 				 *
 				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
 				 */
@@ -2315,7 +2315,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'num'        => $num,
 					'size_names' => $size_names,
 					'mod'        => $mod,
@@ -2497,7 +2497,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'num'    => $num,
 					'obj_id' => $obj_id,
 					'md_pre' => $md_pre,

@@ -176,8 +176,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								'version_url' => WpssoConfig::$cf[ $key ][ 'version_url' ],
 							) );
 
-							$notice_key   = 'notice-recommend-version-' . 
-								WpssoConfig::get_version( $add_slug = true ) . '-' . 
+							$notice_key   = 'notice-recommend-version-' .
+								WpssoConfig::get_version( $add_slug = true ) . '-' .
 									$app_label . '-' . $app_version;
 
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
@@ -449,7 +449,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
 					'wpsso' ), $p_name_transl ) . '</p>';
 
-			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' . 
+			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' .
 				sprintf( __( 'Hopefully you\'ll change your mind and help support the continued development of %s.',
 					'wpsso' ), $p_name_transl ) . '</p>';
 

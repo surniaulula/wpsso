@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * This action is run by WordPress after any plugin is activated.
 		 *
-		 * If a plugin is silently activated (such as during an update), this action does not run. 
+		 * If a plugin is silently activated (such as during an update), this action does not run.
 		 */
 		public function activated_plugin( $plugin_base, $network_activation ) {
 
@@ -1547,7 +1547,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) . 
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) .
 						' (' . __( 'Premium edition', 'wpsso' ) . ')';
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
@@ -1864,7 +1864,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 										$label_transl = $match[ 1 ] . ' ' . sprintf( __( '(%d sub-types)', 'wpsso' ), $type_count );
 									}
 								}
-							
+
 								$status_off = 'disabled';
 								$status_on  = 'on';
 
@@ -1872,13 +1872,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								$status_off = empty( $this->p->avail[ $sub_dir ][ $lib_name ] ) ? 'off' : 'rec';
 								$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
-							
+
 								if ( 'media' === $sub_dir ) {
 
 									$label_url = $media_tab_url;
 
 								} elseif ( 'review' === $sub_dir ) {
-								
+
 									$label_url = $review_tab_url;
 
 								} elseif ( 'util' === $sub_dir && 'shorten' === $lib_name ) {
@@ -1908,27 +1908,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $svc_name ) {
 
 						if ( 'none' === $svc_id ) {
-		
+
 							continue;
 						}
-		
+
 						$svc_name_transl = _x( $svc_name, 'option value', 'wpsso' );
 						$label_transl    = sprintf( _x( '(api) Get %s Short URL', 'lib file description', 'wpsso' ), $svc_name_transl );
 						$svc_status      = 'off';	// Off unless selected or configured.
-		
+
 						if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
-		
+
 							if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
-		
+
 								$svc_status = 'rec';	// Recommended if selected.
-		
+
 								if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
-		
+
 									$svc_status = 'on';	// On if configured.
 								}
 							}
 						}
-		
+
 						$features[ '(api) ' . $svc_name . ' Shortener API' ] = array(
 							'label_transl' => $label_transl,
 							'label_url'    => $shorten_tab_url,
@@ -2305,7 +2305,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							}
 
 							/**
-							 * Add a license information link (thickbox). 
+							 * Add a license information link (thickbox).
 							 */
 							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
 
@@ -2515,16 +2515,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
 			$site_owners = SucomUtil::get_roles_user_select( $owner_roles );
 
-			$table_rows[ 'site_pub_schema_type' ] = '' . 
-				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
+			$table_rows[ 'site_pub_schema_type' ] = '' .
+				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
 				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
 			/**
 			 * Website person.
 			 */
-			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) . 
-				$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) . 
+			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
+				$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
 				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/**
@@ -2532,12 +2532,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .
-				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) . 
+				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) .
 				'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide is_required' ) . '</td>';
 
 			$table_rows[ 'site_org_banner_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
-				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) . 
+				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) .
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
 		}
 
@@ -2550,12 +2550,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) . 
+				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
 				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_load_mofiles' ] = '' .
-				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) . 
+				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
 				'<td>' . ( ! $network && $debug_status ?
 				$form->get_hidden( 'plugin_load_mofiles', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_load_mofiles', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
@@ -2563,7 +2563,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_cache_disable' ] = '' .
-				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) . 
+				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
 				'<td>' . ( ! $network && $cache_status ?
 				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
@@ -2571,7 +2571,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_debug_html' ] = '' .
-				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) . 
+				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) .
 				'<td>' . ( ! $network && $debug_status ?
 				$form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
@@ -3134,7 +3134,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'ext'        => $ext,
 					'read_cache' => $read_cache,
 				) );
@@ -3389,7 +3389,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'ext'            => $ext,
 					'rel_file'       => $rel_file,
 					'cache_exp_secs' => $cache_exp_secs,

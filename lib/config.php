@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.6.0-b.1',	// Plugin version.
+					'version'     => '13.6.0-b.2',	// Plugin version.
 					'opt_version' => '923',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2045,7 +2045,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Multisite options.
 				 *
-				 * Automatically includes all advanced plugin options. 
+				 * Automatically includes all advanced plugin options.
 				 *
 				 * See the WpssoOptions->get_site_defaults() method.
 				 */
@@ -2944,7 +2944,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
-				'event_status' => array(	
+				'event_status' => array(
 					'none'                                => '[None]',
 					'https://schema.org/EventCancelled'   => 'Cancelled',
 					'https://schema.org/EventMovedOnline' => 'Moved Online',
@@ -3393,7 +3393,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:price:type'                => 'product_price_type',		// Non-standard / internal meta tag.
 						'product:purchase_limit'            => '',
 						'product:retailer_category'         => '',				// Non-standard / internal meta tag.
-						'product:retailer_item_id'          => '',				// Product ID. 
+						'product:retailer_item_id'          => '',				// Product ID.
 						'product:retailer_part_no'          => 'product_retailer_part_no',	// Product SKU.
 						'product:sale_price:amount'         => '',				// Used by WooCommerce module.
 						'product:sale_price:currency'       => '',				// Used by WooCommerce module.
@@ -3553,7 +3553,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'creative.work.series' => array(
 								'book.series'          => 'https://schema.org/BookSeries',
-								'creative.work.series' => 'https://schema.org/CreativeWorkSeries', 
+								'creative.work.series' => 'https://schema.org/CreativeWorkSeries',
 								'movie.series'         => 'https://schema.org/MovieSeries',
 								'periodical'           => 'https://schema.org/Periodical',
 								'podcast.series'       => 'https://schema.org/PodcastSeries',
@@ -3616,7 +3616,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'sculpture'            => 'https://schema.org/Sculpture',
 							'series'               => 'https://schema.org/Series',
-							'software.application' => array( 
+							'software.application' => array(
 								'software.application'            => 'https://schema.org/SoftwareApplication',
 								'software.application.mobile'     => 'https://schema.org/MobileApplication',
 								'software.application.video.game' => 'https://schema.org/VideoGame',
@@ -3707,7 +3707,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'medical.enumeration' => array(
 									'audience.medical'    => 'https://schema.org/MedicalAudience',
 									'medical.enumeration' => 'https://schema.org/MedicalEnumeration',
-									'medical.specialty'   => array( 
+									'medical.specialty'   => array(
 										'anesthesia.specialty'           => 'https://schema.org/Anesthesia',
 										'cardiovascular.specialty'       => 'https://schema.org/Cardiovascular',
 										'community.health.specialty'     => 'https://schema.org/CommunityHealth',
@@ -4346,7 +4346,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * 	Organization
 				 * 	Place
 				 * 	Product
-				 * 	Service 
+				 * 	Service
 				 *
 				 * Unfortunately Google allows the 'aggregateRating' property only for these types:
 				 *
@@ -4411,7 +4411,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Good Relations.
 				 */
 				'schema_gr' => array(			// Element of 'head' array.
-					'DeliveryMethod' => array( 
+					'DeliveryMethod' => array(
 						'Download' => 'http://purl.org/goodrelations/v1#DeliveryModeDirectDownload',
 						'Freight'  => 'http://purl.org/goodrelations/v1#DeliveryModeFreight',
 						'Mail'     => 'http://purl.org/goodrelations/v1#DeliveryModeMail',

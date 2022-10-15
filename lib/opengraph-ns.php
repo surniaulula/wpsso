@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				}
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'og_data_https_ogp_me_ns_article' => 2,
 				'og_data_https_ogp_me_ns_book'    => 2,
 				'og_data_https_ogp_me_ns_product' => 2,

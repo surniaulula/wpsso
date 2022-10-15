@@ -35,7 +35,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	jQuery( table_id + ' select' ).on( 'mousedown', sucomBlurDisabled );	// Prevents dropdown from appearing.
 
 	/**
-	 * Add a "changed" the options class when their value might have changed. 
+	 * Add a "changed" the options class when their value might have changed.
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
 	jQuery( table_id + ' input[type="checkbox"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
@@ -141,7 +141,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 	/**
 	 * Update the select option list.
-	 * 
+	 *
 	 * Do not trigger a change event as the selected option has not changed. ;-)
 	 */
 	container.empty();
@@ -210,7 +210,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		jQuery( '.sucom-tabset' + metabox_name + '-msg' ).removeClass( 'active' );
 
 		/**
-		 * Example tablink: 
+		 * Example tablink:
 		 *
 		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-icon sucom-tablink-href_edit_general" href="#sucom-tabset_sso-tab_edit_general"></a>
 		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-text sucom-tablink-href_edit_general" href="#sucom-tabset_sso-tab_edit_general">Edit General</a>
@@ -355,7 +355,7 @@ function sucomBlurDisabled( e ) {
 }
 
 /**
- * Add a "changed" the options class when their value might have changed. 
+ * Add a "changed" the options class when their value might have changed.
  */
 function sucomMarkChanged( e, el ) {
 

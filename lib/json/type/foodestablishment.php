@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 			 * 	hasMenu
 			 * 	servesCuisine
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'acceptsReservations' => 'place:business:accepts_reservations',	// True or false.
 				'hasMenu'             => 'place:business:menu_url',
 				'servesCuisine'       => 'place:business:cuisine',

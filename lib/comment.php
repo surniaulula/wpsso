@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'comment_id'  => $comment_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,

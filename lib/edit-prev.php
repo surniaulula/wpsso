@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 			/**
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_prev_social_rows' => 4,
 				'metabox_sso_prev_oembed_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
@@ -57,10 +57,10 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 				$shortlink_url = $this->p->util->shorten_url( $canonical_url, $mod );
 			}
 
-			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
+			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 &&
 				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ? true : false;
 
-			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
+			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width &&
 				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
 
 			if ( ! empty( $image_url ) ) {
@@ -102,15 +102,15 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 				$og_prev_img_html .= '</div>';
 			}
 
-			$table_rows[ 'prev_canonical_url' ] = '' . 
-				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
+			$table_rows[ 'prev_canonical_url' ] = '' .
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) .
 				'<td>' . $form->get_no_input_clipboard( $canonical_url ) . '</td>';
 
 			$table_rows[ 'prev_shortlink_url' ] = '' .
-				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) .
 				'<td>' . $form->get_no_input_clipboard( $shortlink_url ) . '</td>';
 
-			$table_rows[ 'subsection_prev_og' ] = '<td colspan="2" class="subsection"><h4>' . 
+			$table_rows[ 'subsection_prev_og' ] = '<td colspan="2" class="subsection"><h4>' .
 				_x( 'Facebook / Open Graph Example', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'prev_og' ] = '' .
@@ -120,16 +120,16 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 							' . $og_prev_img_html . '
 							<div class="fb_preview_text">
 								<div class="fb_preview_title">' .
-								( empty( $head_info[ 'og:title' ] ) ? '' : $head_info[ 'og:title' ] ) . 
+								( empty( $head_info[ 'og:title' ] ) ? '' : $head_info[ 'og:title' ] ) .
 								'</div><!-- .fb_preview_title -->
 								<div class="fb_preview_desc">' .
-								( empty( $head_info[ 'og:description' ] ) ? '' : $head_info[ 'og:description' ] ) . 
+								( empty( $head_info[ 'og:description' ] ) ? '' : $head_info[ 'og:description' ] ) .
 								'</div><!-- .fb_preview_desc -->
-								<div class="fb_preview_by">' . 
-									$_SERVER[ 'SERVER_NAME' ] . 
+								<div class="fb_preview_by">' .
+									$_SERVER[ 'SERVER_NAME' ] .
 									( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
 										empty( $head_info[ 'article:author:name' ] ) ?
-											'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
+											'' : ' | By ' . $head_info[ 'article:author:name' ] ) .
 								'</div><!-- .fb_preview_by -->
 							</div><!-- .fb_preview_text -->
 						</div><!-- .fb_preview_box -->
@@ -148,14 +148,14 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 			$oembed_data  = $this->p->util->get_oembed_data( $mod, $oembed_width = 600 );
 
 			$table_rows[ 'oembed_json_url' ] = '' .
-				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium' ) .
 				'<td>' . $form->get_no_input_clipboard( $json_url ) . '</td>';
 
 			$table_rows[ 'oembed_xml_url' ] = '' .
-				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium' ) .
 				'<td>' . $form->get_no_input_clipboard( $xml_url ) . '</td>';
 
-			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' . 
+			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' .
 				_x( 'oEmbed HTML', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			if ( ! empty( $oembed_data[ 'html' ] ) ) {

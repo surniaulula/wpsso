@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 
 			$question = WpssoSchema::get_schema_type_context( 'https://schema.org/Question' );
 
-			WpssoSchema::move_data_itemprop_from_assoc( $question, $json_data, array( 
+			WpssoSchema::move_data_itemprop_from_assoc( $question, $json_data, array(
 				'url'           => 'url',
 				'name'          => 'name',
 				'description'   => 'description',

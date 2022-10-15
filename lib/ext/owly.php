@@ -1,11 +1,11 @@
 <?php
 /**
- * PHP Client class to interface with Owly's REST-based API 
+ * PHP Client class to interface with Owly's REST-based API
  * @see http://ow.ly/api-docs
- * 
+ *
  * Currently only supports the follow methods
  * shorten - Shorten a URL
- * 
+ *
  * Based on the Zend Ow.ly URL helper by Maxime Parmentier <maxime.parmentier@invokemedia.com>
  * Support can be logged at https://github.com/invokemedia/owly-api-php
  *
@@ -14,9 +14,9 @@
  * @created	24/07/2012
  * @copyright	Invoke Media / Biplane
  * @license	http://opensource.org/licenses/mit-license.php MIT
- * 
+ *
  * @example example.php
- * 
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,12 +44,12 @@ if ( ! class_exists( 'SuextOwly' ) ) {
 			);
 
 		/**
-		 * Constructor 
+		 * Constructor
 		 * @param array $options An array of options for the class. Possible options:
 		 *	'key'     - The ow.ly API Key
 		 *	'version' - (optional) The version number of the API to use.
 		 *		By default, it will use version 1.1.
-		 *	'protocol' - (optional) The protocol to use when talking to the API. 
+		 *	'protocol' - (optional) The protocol to use when talking to the API.
 		 *		By default it will use 'http:'.
 		 *		To set it to secure, use 'https:'
 		 * @return void
@@ -91,7 +91,7 @@ if ( ! class_exists( 'SuextOwly' ) ) {
 		 * Factory constructor
 		 * @see SuextOwly::__constructor
 		 * @param type $options
-		 * @return SuextOwly 
+		 * @return SuextOwly
 		 */
 		public static function factory( $options ) {
 
@@ -105,7 +105,7 @@ if ( ! class_exists( 'SuextOwly' ) ) {
 		/**
 		 * Get the API Method path to use
 		 * @param type $apiCall
-		 * @return type 
+		 * @return type
 		 */
 		private function getApiMethod( $apiCall ) {
 
@@ -120,13 +120,13 @@ if ( ! class_exists( 'SuextOwly' ) ) {
 		}
 
 		/**
-		 * Given a full URL, returns an ow.ly short URL. 
+		 * Given a full URL, returns an ow.ly short URL.
 		 * Currently the API only supports shortening a single URL per API call.
-		 * 
+		 *
 		 * @see http://ow.ly/api-docs#shorten
 		 * @param type $longUrl The URL to shorten. Must be a valid URL
-		 * @return mixed 
-		 * @throws WpssoErrorException 
+		 * @return mixed
+		 * @throws WpssoErrorException
 		 */
 		public function shorten( $longUrl ) {
 
@@ -153,7 +153,7 @@ if ( ! class_exists( 'SuextOwly' ) ) {
 		 * Do an API call on Ow.ly
 		 * @param type $apiUrl
 		 * @return mixed
-		 * @throws WpssoErrorException 
+		 * @throws WpssoErrorException
 		 */
 		private function send( $apiUrl, $args = array() ) {
 

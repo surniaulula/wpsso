@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			/**
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_general_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}

@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes' => 1,
 			) );
 		}
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * twitter:player
 						 *
-						 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active 
+						 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active
 						 * mixed content warnings in a web browser. The audio or video player must not require
 						 * plugins such as Adobe Flash.
 						 */

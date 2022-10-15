@@ -3,9 +3,9 @@
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
+ *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ *
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 			}
 
 			if ( $wpml_locale ) {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'returning wpml_locale = ' . $wpml_locale );
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 
 				return $wpml_locale;	// Stop here.
 			}
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'returning locale = ' . $locale );

@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpseo_show_import' => '',				// Deprecated on 2022/01/15.
 				),
 				864 => array(
-					'og_type_for_post_archive'     => '',	
+					'og_type_for_post_archive'     => '',
 					'schema_type_for_post_archive' => '',
 					'fb_author_field'              => '',	// Deprecated on 2022/01/29.
 				),
@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			 */
 			$version_keys = $is_site_options ?
 				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :	// Network options filter.
-				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );	
+				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
 
 			$opts = $this->p->util->rename_options_by_ext( $opts, $version_keys );
 

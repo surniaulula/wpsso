@@ -3,9 +3,9 @@
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
+ *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ *
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 
 			add_action( 'elementor/editor/after_save', array( $this, 'clear_cache' ), 1000, 2 );
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'content_videos' => 2,
 			), $prio = 110 );
 		}
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 		 * Elementor incorrectly registers the 'elementor_library' post type as 'public' = true and 'show_ui' = true, so we
 		 * need to remove it from the list of public post types.
 		 */
-		public function exclude_post_types( $post_types, $output, $args ) { 
+		public function exclude_post_types( $post_types, $output, $args ) {
 
 			if ( 'objects' === $output ) {
 
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 
 			/**
 			 * Elementor widget for videos.
-			 * 
+			 *
 			 * Example:
 			 *
 			 * 	<div class="elementor-element elementor-element-5c62c7a elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="5c62c7a" data-element_type="widget" data-settings="{"youtube_url":"https:\/\/www.youtube.com\/watch?v=vfeYTg4POxw","modestbranding":"yes","yt_privacy":"yes","video_type":"youtube","controls":"yes","aspect_ratio":"169"}" data-widget_type="video.default">

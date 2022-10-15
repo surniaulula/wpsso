@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			if ( ! $doing_ajax ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 
+				$this->p->util->add_plugin_filters( $this, array(
 					'status_std_features' => 3,
 				), $prio = -10000 );
 			}
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$status_on   = 'on';
 
 			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No active SEO plugin.
-			
+
 				$status_off = 'disabled';
 			}
 

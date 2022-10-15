@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.0
  * WC Tested Up To: 7.0.0
- * Version: 13.6.0-b.1
+ * Version: 13.6.0-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -734,7 +734,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			/**
-			 * Show the plugin settings just before the footer marker. 
+			 * Show the plugin settings just before the footer marker.
 			 */
 			foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
 

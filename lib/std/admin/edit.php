@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 */
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
 
-					$this->p->util->add_plugin_filters( $this, array( 
+					$this->p->util->add_plugin_filters( $this, array(
 						'metabox_sso_edit_schema_book_rows'          => 5,	// Schema CreativeWork > Book.
 						'metabox_sso_edit_schema_howto_rows'         => 5,	// Schema CreativeWork > HowTo.
 						'metabox_sso_edit_schema_recipe_rows'        => 5,	// Schema CreativeWork > HowTo > Recipe.
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Calories', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_cal',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'calories', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_prot' => array(
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Protein', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_prot',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of protein', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_fib' => array(
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Fiber', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_fib',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of fiber', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_carb' => array(
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Carbohydrates', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_carb',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of carbohydrates', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sugar' => array(
@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Sugar', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sugar',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of sugar', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sod' => array(
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Sodium', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sod',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'milligrams of sodium', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_fat' => array(
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_fat',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sat_fat' => array(
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Saturated Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sat_fat',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of saturated fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_unsat_fat' => array(
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Unsaturated Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_unsat_fat',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of unsaturated fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_trans_fat' => array(
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Trans Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_trans_fat',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'grams of trans fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_chol' => array(
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Cholesterol', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_chol',
-					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', 'medium' ) . ' ' .
 						_x( 'milligrams of cholesterol', 'option comment', 'wpsso' ),
 				),
 			);
@@ -645,9 +645,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Review Rating', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_rating',
 					'content'  => $form->get_no_input_value( $form->defaults[ 'schema_review_rating' ], 'short is_required' ) . ' ' .
-						_x( 'from', 'option comment', 'wpsso' ) . ' ' . 
+						_x( 'from', 'option comment', 'wpsso' ) . ' ' .
 						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_from' ], 'short' ) . ' ' .
-						_x( 'to', 'option comment', 'wpsso' ) . ' ' . 
+						_x( 'to', 'option comment', 'wpsso' ) . ' ' .
 						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_to' ], 'short' ),
 				),
 				'schema_review_rating_alt_name' => array(
@@ -669,7 +669,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 *	Course
 				 *	Event
 				 *	How-to
-				 *	Local business 
+				 *	Local business
 				 *	Movie
 				 *	Product
 				 *	Recipe
@@ -1112,9 +1112,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Base Salary', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_salary',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'medium' ) . ' ' . 
-						$form->get_no_select( 'schema_job_salary_currency', $currencies, $css_class = 'currency' ) . ' ' . 
-						_x( 'per', 'option comment', 'wpsso' ) . ' ' . 
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'medium' ) . ' ' .
+						$form->get_no_select( 'schema_job_salary_currency', $currencies, $css_class = 'currency' ) . ' ' .
+						_x( 'per', 'option comment', 'wpsso' ) . ' ' .
 						$form->get_no_select( 'schema_job_salary_period', $this->p->cf[ 'form' ][ 'time_text' ], 'short' ),
 				),
 				'schema_job_empl_type' => array(

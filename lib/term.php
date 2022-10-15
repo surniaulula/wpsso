@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'term_id'     => $term_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'term_id'     => $term_id,
 					'term_tax_id' => $term_tax_id,
 				) );
@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'term_id'     => $term_id,
 					'term_tax_id' => $term_tax_id,
 				) );

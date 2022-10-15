@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 			 *
 			 * Used on these types:
 			 *
-			 *	ClaimReview 
+			 *	ClaimReview
 			 */
 			if ( ! empty( $md_opts[ 'schema_review_claim_reviewed' ] ) ) {
 

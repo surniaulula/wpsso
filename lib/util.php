@@ -366,7 +366,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'added image size wpsso-' . $size_info[ 'name' ] . ' ' . 
+						$this->p->debug->log( 'added image size wpsso-' . $size_info[ 'name' ] . ' ' .
 							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .  ' ' . ( empty( $size_info[ 'crop' ] ) ?
 								'uncropped' : 'cropped ' . $size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) );
 					}

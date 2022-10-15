@@ -859,7 +859,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 								$this->add_mt_array( $mt_array, $tag, $type, $key, $value, $cmt, $mod, $use_image );
 
-							} elseif ( $this->p->debug->enabled ) { 
+							} elseif ( $this->p->debug->enabled ) {
 
 								$this->p->debug->log( $log_prefix . ' array skipped: option is disabled' );
 							}

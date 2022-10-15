@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			add_action( 'wpsso_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
 
 			/**
-			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
+			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is
 			 * always present when we're editing a user, but missing when viewing our own profile page.
 			 */
 			if ( $is_admin ) {
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'user_id'     => $user_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
@@ -976,7 +976,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function modify_fb_contact_label( $label ) {
 
-			return $label . '<br/><span class="description" style="font-weight:normal;">' . 
+			return $label . '<br/><span class="description" style="font-weight:normal;">' .
 				__( '(not a Facebook Pages URL)', 'wpsso' ) . '</span>';
 		}
 
@@ -1168,7 +1168,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'user_id'  => $user_id,
 					'meta_key' => $meta_key,
 				) );
@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'user_id'  => $user_id,
 					'meta_key' => $meta_key,
 				) );

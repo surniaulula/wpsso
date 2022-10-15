@@ -352,7 +352,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Get a human readable class/method/function name from the callback array. 
+		 * Get a human readable class/method/function name from the callback array.
 		 */
 		public static function get_hook_function_name( array $hook_info ) {
 

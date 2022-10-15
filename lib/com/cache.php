@@ -28,7 +28,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_object_cache_exp = DAY_IN_SECONDS;
 
 		public $curl_connect_timeout = 5;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		public $curl_timeout         = 10;	// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_timeout         = 10;	// The maximum number of seconds to allow cURL functions to execute.
 		public $curl_max_redirs      = 10;	// The maximum amount of HTTP redirections to follow.
 
 		private $url_get_mtimes = array();	// Associative array of URL fetch times (true, false, or microtime).
@@ -388,7 +388,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		/**
-		 * Get the formatted microtime it took to retrieve the URL. 
+		 * Get the formatted microtime it took to retrieve the URL.
 		 *
 		 * Returns false if retrieving failed, true if the URL was already cached, or the formatted microtime.
 		 */
@@ -636,7 +636,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' . 
+								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' .
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
 
@@ -712,7 +712,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 * certificate says it is. This trust is based on a chain of digital signatures, rooted in certification
 			 * authority (CA) certificates you supply. curl uses a default bundle of CA certificates (the path for that
 			 * is determined at build time) and you can specify alternate certificates with the CURLOPT_CAINFO option
-			 * or the CURLOPT_CAPATH option. 
+			 * or the CURLOPT_CAPATH option.
 			 *
 			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html
 			 */

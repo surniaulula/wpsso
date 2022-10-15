@@ -2,7 +2,7 @@
  * qTip2 - Pretty powerful tooltips - v3.0.3
  * http://qtip2.com
  *
- * Copyright (c) 2017 
+ * Copyright (c) 2017
  * Released under the MIT licenses
  * http://jquery.org/license
  *
@@ -307,9 +307,9 @@ PROTOTYPE.destroy = function(immediate) {
 }
 
 function invalidContent(c) {
-	return !($.isFunction(c) || 
-            c && c.attr || 
-            c.length || 
+	return !($.isFunction(c) ||
+            c && c.attr ||
+            c.length ||
             $.type(c) === 'object' && (c.jquery || c.then));
 }
 
@@ -977,8 +977,8 @@ C.string = function(join) {
 	var x = this.x, y = this.y;
 
 	var result = x !== y ?
-		x === 'center' || y !== 'center' && (this.precedance === Y || this.forceY) ? 
-			[y,x] : 
+		x === 'center' || y !== 'center' && (this.precedance === Y || this.forceY) ?
+			[y,x] :
 			[x,y] :
 		[x];
 

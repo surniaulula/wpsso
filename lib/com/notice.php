@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function get_tb_types_showing() {
 
 			/**
-			 * is_admin_bar_showing() should always return true in the back-end for a standard request (ie. not xmlrpc, ajax, iframe). 
+			 * is_admin_bar_showing() should always return true in the back-end for a standard request (ie. not xmlrpc, ajax, iframe).
 			 */
 			$tb_types_showing = is_admin_bar_showing() ? $this->tb_types : false;
 
@@ -1193,11 +1193,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$data_attr .= ' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ) . '"';
 			}
 
-			$style_attr = ' style="' . 
+			$style_attr = ' style="' .
 				( empty( $payload[ 'style' ] ) ? '' : $payload[ 'style' ] ) .
 				( empty( $payload[ 'hidden' ] ) ? 'display:' . $notice_display . ' !important;' : 'display:none !important;' ) . '"';
 
-			$msg_html = '<div class="' . $this->plugin_id . '-notice ' . 
+			$msg_html = '<div class="' . $this->plugin_id . '-notice ' .
 				( $is_dismissible ? $this->plugin_id . '-dismissible ' : '' ) .
 				$css_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 

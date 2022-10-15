@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'opt_suffix' => $opt_suffix,
 					'default_id' => $default_id,
 				) );
@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * Check for meta data and meta tags that require a unit value.
 					 *
-					 * Example: 
+					 * Example:
 					 *
 					 *	'product:depth:value'        => 'product_depth_value',
 					 *	'product:height:value'       => 'product_height_value',
@@ -1372,7 +1372,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( empty( $mt_og[ $currency_key ] ) ) {
 
-							$mt_og[ $currency_key ] = $def_currency; 
+							$mt_og[ $currency_key ] = $def_currency;
 						}
 
 					} else {

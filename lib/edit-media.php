@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			/**
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_media_rows'            => 4,
 				'metabox_sso_edit_media_prio_image_rows' => 5,
 				'metabox_sso_edit_media_twitter_rows'    => 5,
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		 *
 		 * App and Player cards do not have a $size_name.
 		 *
-		 * Only show custom image options for the Summary and Summary Large Image cards. 
+		 * Only show custom image options for the Summary and Summary Large Image cards.
 		 */
 		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 

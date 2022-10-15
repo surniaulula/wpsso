@@ -3,9 +3,9 @@
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
+ *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ *
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 			$this->wpseo_opts = WPSEO_Options::get_all();
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'robots_is_noindex' => 2,
 				'primary_term_id'   => 4,
 				'title_seed'        => 5,

@@ -3,9 +3,9 @@
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
+ *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ *
  * Copyright 2017-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 			$job_opts[ 'schema_job_expire_time' ]     = '00:00';
 			$job_opts[ 'schema_job_expire_timezone' ] = get_option( 'timezone_string' );
 			$job_opts[ 'schema_job_expire_iso' ]      = date_format( date_create(
-				$job_opts[ 'schema_job_expire_date' ] . ' ' . 
+				$job_opts[ 'schema_job_expire_date' ] . ' ' .
 				$job_opts[ 'schema_job_expire_time' ] . ' ' .
 				$job_opts[ 'schema_job_expire_timezone' ]
 			), 'c' );

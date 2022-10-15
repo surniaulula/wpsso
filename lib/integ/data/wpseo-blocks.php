@@ -3,9 +3,9 @@
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
+ *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ *
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'import_block_attrs_yoast_how_to_block' => 2,
 			) );
 		}
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 					$ret[ 'schema_howto_step_section_' . $num ] = 0;
 					$ret[ 'schema_howto_step_' . $num ]         = SucomUtil::strip_html( $step[ 'jsonName' ] );
 					$ret[ 'schema_howto_step_text_' . $num ]    = SucomUtil::strip_html( $step[ 'jsonText' ] );
-				
+
 					if ( ! empty( $step[ 'jsonImageSrc' ] ) ) {
 
 						$image_url = $step[ 'jsonImageSrc' ];

@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * {event option name} => {meta data option name}.
 			 */
-			WpssoSchema::add_mod_opts_date_iso( $mod, $event_opts, array( 
+			WpssoSchema::add_mod_opts_date_iso( $mod, $event_opts, array(
 				'event_start_date'        => 'schema_event_start',		// Prefix for date, time, timezone, iso.
 				'event_end_date'          => 'schema_event_end',		// Prefix for date, time, timezone, iso.
 				'event_previous_date'     => 'schema_event_previous',		// Prefix for date, time, timezone, iso.
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$offer_opts = array();
 
-					foreach ( array( 
+					foreach ( array(
 						'offer_name'           => 'schema_event_offer_name',
 						'offer_url'            => 'schema_event_offer_url',
 						'offer_price'          => 'schema_event_offer_price',
@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
-			foreach ( array( 
+			foreach ( array(
 				'event_online_url'          => 'location',
 				'event_location_id'         => 'location',
 				'event_organizer_org_id'    => 'organizer',
@@ -528,7 +528,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						continue;
 					}
 
-					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array( 
+					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array(
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
 						'price'         => 'offer_price',
@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
-			foreach ( array( 
+			foreach ( array(
 				'job_hiring_org_id' => 'hiringOrganization',
 				'job_location_id'   => 'jobLocation',
 			) as $opt_pre => $prop_name ) {
@@ -1891,7 +1891,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Note that there is no Schema 'size' property.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array(
 				'url'                   => 'product:url',
 				'name'                  => 'product:title',
 				'description'           => 'product:description',
@@ -1955,7 +1955,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer[ 'priceValidUntil' ] = $price_valid_until;
 			}
 
-			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
 				'price'                 => 'product:price:amount',
 				'priceCurrency'         => 'product:price:currency',
 				'priceType'             => 'product:price:type',
@@ -1970,34 +1970,34 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Make sure we have a price currency.
 				 */
 				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {
-	
+
 					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
-				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
 					'value'    => 'product:quantity:value',
 					'minValue' => 'product:quantity:minimum',
 					'maxValue' => 'product:quantity:maximum',
 					'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
 					'unitText' => 'product:quantity:unit_text',
 				) );
-	
+
 				if ( false !== $quantity ) {
-	
+
 					if ( ! isset( $quantity[ 'value' ] ) ) {
-	
+
 						if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
 							$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-	
+
 							$quantity[ 'value' ] = $quantity[ 'minValue' ];
-	
+
 							unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
 						}
 					}
-	
+
 					$price_spec[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 				}
-	
+
 				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
 			}
 
@@ -2085,7 +2085,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
 			 * $offer_url values.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array(
 				'name' => 'shipping_name',
 			) );
 
@@ -2137,7 +2137,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 								/**
 								 * Note that wildcards and ranges cannot be mixed, and ranges only
-								 * work with postal codes that are numeric (ie. US zip codes). 
+								 * work with postal codes that are numeric (ie. US zip codes).
 								 *
 								 * Example:
 								 *

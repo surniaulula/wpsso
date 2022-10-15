@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 
+				$this->p->util->add_plugin_filters( $this, array(
 					'plugin_image_sizes' => 1,
 				) );
 
@@ -220,7 +220,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 * The 'skip-lazy' class is used by WP Rocket to skip the lazy loading of an image.
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
-					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' . 
+					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' .
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
 			}
 

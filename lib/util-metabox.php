@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$tabs_layout = empty( $args[ 'layout' ] ) ? 'horizontal' : $args[ 'layout' ];
 			$tabs_layout = apply_filters( $filter_name, $tabs_layout );
-			$tabs_layout = empty( $tabs_layout ) ? 'horizontal' : $tabs_layout;	// Allow the filter to return false. 
+			$tabs_layout = empty( $tabs_layout ) ? 'horizontal' : $tabs_layout;	// Allow the filter to return false.
 
 			$mb_tabs_class = SucomUtil::sanitize_css_class( $mb_tabs_class . ' ' . $tabs_layout );
 			$mb_tabs_id    = SucomUtil::sanitize_css_id( $mb_tabs_id );
@@ -157,9 +157,9 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				 * Default row class and id attribute values.
 				 */
 				$tr = array(
-					'class' => 'sucom-alt' . 
-						( $count_rows % 2 ) . 
-						( $count_rows === 0 ? ' first-row' : '' ) . 
+					'class' => 'sucom-alt' .
+						( $count_rows % 2 ) .
+						( $count_rows === 0 ? ' first-row' : '' ) .
 						( $count_rows === ( $total_rows - 1 ) ? ' last-row' : '' ),
 					'id' => ( is_int( $key ) ? '' : 'tr_' . $key )
 				);
@@ -238,13 +238,13 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$count_rows++;
 			}
 
-			$div_class = ( empty( $user_show_opts ) ? '' : 'sucom-show_' . $user_show_opts ) . 
-				( empty( $tabset_class ) ? '' : ' ' . $tabset_class ) . 
-				( empty( $tabset_mb_class ) ? '' : ' ' . $tabset_mb_class ) . 
+			$div_class = ( empty( $user_show_opts ) ? '' : 'sucom-show_' . $user_show_opts ) .
+				( empty( $tabset_class ) ? '' : ' ' . $tabset_class ) .
+				( empty( $tabset_mb_class ) ? '' : ' ' . $tabset_mb_class ) .
 				( empty( $href_key_class ) ? '' : ' ' . $href_key_class );
 
-			$table_class = 'sucom-settings ' . $this->p->id . 
-				( empty( $href_key_class ) ? '' : ' ' . $href_key_class ) . 
+			$table_class = 'sucom-settings ' . $this->p->id .
+				( empty( $href_key_class ) ? '' : ' ' . $href_key_class ) .
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $user_show_opts : '' );
 
 			$metabox_html .= '<div class="' . $div_class . '">' . "\n";

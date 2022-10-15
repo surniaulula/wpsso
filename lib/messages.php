@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$text .= '</p>';
 							}
 
-						} else {	// Another e-commerce plugin is active. 
+						} else {	// Another e-commerce plugin is active.
 
 							$text = '<p class="pro-feature-msg">';
 
@@ -934,7 +934,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * Define and translate certain strings only once. 
+		 * Define and translate certain strings only once.
 		 */
 		protected function maybe_set_properties() {
 

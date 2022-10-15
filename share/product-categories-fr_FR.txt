@@ -1540,7 +1540,7 @@
 505373 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Patrons et moules pour loisirs créatifs > Patrons pour travaux d'aiguille
 505369 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Rangements pour loisirs créatifs
 499971 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Rangements pour loisirs créatifs > Kits de couture et d'art textile
-505394 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Rangements pour loisirs créatifs > Rangements pour aiguilles, épingles et crochets 
+505394 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Rangements pour loisirs créatifs > Rangements pour aiguilles, épingles et crochets
 505395 - Arts et loisirs > Loisirs et arts créatifs > Loisirs créatifs > Rangements pour loisirs créatifs > Rangements pour fil et laine
 35 - Arts et loisirs > Loisirs et arts créatifs > Magie et nouveautés
 5999 - Arts et loisirs > Loisirs et arts créatifs > Modélisme
@@ -2332,7 +2332,7 @@
 2956 - Maison et jardin > Accessoires pour luminaires
 3185 - Maison et jardin > Accessoires pour luminaires > Abat-jour
 7338 - Maison et jardin > Accessoires pour luminaires > Bases de lampadaires
-505312 - Maison et jardin > Accessoires pour luminaires > Combustible pour lampes à huile 
+505312 - Maison et jardin > Accessoires pour luminaires > Combustible pour lampes à huile
 3522 - Maison et jardin > Accessoires pour luminaires > Minuteries d'éclairage
 7447 - Maison et jardin > Accessoires pour luminaires > Socles de lampadaires
 604 - Maison et jardin > Appareils électroménagers
@@ -2568,7 +2568,7 @@
 6534 - Maison et jardin > Arts de la table et arts culinaires > Stockage des aliments > Seaux à confiseries
 2920 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons
 3809 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Bouteilles d'eau
-5060 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Couvercles de rechange pour récipients à boisson 
+5060 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Couvercles de rechange pour récipients à boisson
 1444 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Flasques
 1017 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Glacières
 3435 - Maison et jardin > Arts de la table et arts culinaires > Supports pour aliments et boissons > Gourdes pour boissons
@@ -2776,7 +2776,7 @@
 7177 - Maison et jardin > Décorations > Accessoires de boîte aux lettres > Stickers décoratifs pour boîtes à lettres
 5521 - Maison et jardin > Décorations > Accessoires de mangeoires à oiseaux et animaux sauvages
 7419 - Maison et jardin > Décorations > Accessoires pour drapeaux et manches à air
-503010 - Maison et jardin > Décorations > Accessoires pour drapeaux et manches à air > Kits ou pièces de montage de mâts pour drapeaux et manches à air 
+503010 - Maison et jardin > Décorations > Accessoires pour drapeaux et manches à air > Kits ou pièces de montage de mâts pour drapeaux et manches à air
 7421 - Maison et jardin > Décorations > Accessoires pour drapeaux et manches à air > Mâts pour drapeaux et manches à air
 7420 - Maison et jardin > Décorations > Accessoires pour drapeaux et manches à air > Éclairages de mâts pour drapeaux et manches à air
 6254 - Maison et jardin > Décorations > Accessoires pour le traitement des fenêtres
@@ -5194,7 +5194,7 @@
 1022 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Tentes
 502993 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Toilettes et douches mobiles
 502994 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Toilettes et douches mobiles > Douches et cabines temporaires mobiles
-503009 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Toilettes et douches mobiles > Toilettes et dispositifs urinaires mobiles 
+503009 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Toilettes et douches mobiles > Toilettes et dispositifs urinaires mobiles
 1016 - Équipements sportifs > Loisirs de plein air > Camping et randonnée > Ustensiles et vaisselle de cuisine pour le camping
 7375 - Équipements sportifs > Loisirs de plein air > Char à cerf-volant
 7377 - Équipements sportifs > Loisirs de plein air > Char à cerf-volant > Accessoires pour chars à cerf-volant

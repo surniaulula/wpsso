@@ -18,7 +18,7 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 		private $domain               = '';
 		private $group_guid           = '';
 		private $curl_connect_timeout = 5;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		private $curl_timeout         = 15;	// The maximum number of seconds to allow cURL functions to execute. 
+		private $curl_timeout         = 15;	// The maximum number of seconds to allow cURL functions to execute.
 		private $curl_max_redirs      = 10;	// The maximum amount of HTTP redirections to follow.
 
 		private static $groups_api_url  = 'https://api-ssl.bitly.com/v4/groups';

@@ -358,7 +358,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'post_id'     => $post_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
@@ -1135,10 +1135,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the webpage HTML for %1$s took %2$s seconds.', 'wpsso' ),
-							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_mtime ) . ' ' . 
+							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_mtime ) . ' ' .
 						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
-							'wpsso' ), $warning_time, $timeout_time ) . ' ' . 
-						__( 'Please consider improving the speed of your site.', 'wpsso' ) . ' ' . 
+							'wpsso' ), $warning_time, $timeout_time ) . ' ' .
+						__( 'Please consider improving the speed of your site.', 'wpsso' ) . ' ' .
 						__( 'As an added benefit, a faster site will also improve ranking in search results.', 'wpsso' ) . ' ;-)'
 					);
 				}
@@ -2088,7 +2088,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'restoring shortlink ' . $shortlink . ' to ' . 
+					$this->p->debug->log( 'restoring shortlink ' . $shortlink . ' to ' .
 						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
 				}
 

@@ -156,7 +156,7 @@ if ( ! class_exists( 'SuextYourls' ) ) {
 			 * certificates you supply. curl uses a default bundle of CA
 			 * certificates (the path for that is determined at build time) and you
 			 * can specify alternate certificates with the CURLOPT_CAINFO option or
-			 * the CURLOPT_CAPATH option. 
+			 * the CURLOPT_CAPATH option.
 			 *
 			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html
 			 */

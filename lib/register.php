@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$new_install = WpssoUtilReg::get_ext_event_time( 'wpsso', 'install' ) ? false : true;
 
 			/**
-			 * Add the "person" role for all WpssoUser::get_public_ids(). 
+			 * Add the "person" role for all WpssoUser::get_public_ids().
 			 */
 			if ( $new_install ) {
 
@@ -353,11 +353,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
-				wp_die( 
+				wp_die(
 					'<p>' . sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',
-						'wpsso' ), $app_label, $app_version, $version_url ) . '</p>' . 
+						'wpsso' ), $app_label, $app_version, $version_url ) . '</p>' .
 					'<p>' . sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
-						'wpsso' ), $plugin_name, $app_label, $min_version ) . '</p>' . 
+						'wpsso' ), $plugin_name, $app_label, $min_version ) . '</p>' .
 					'<p>' . sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',
 						'wpsso' ), $app_label, $plugin_name ) . '</p>'
 				);

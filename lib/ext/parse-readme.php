@@ -26,7 +26,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function parse_file( $file_path ) {
 
 			$file_content = @implode( '', @file( $file_path ) );
-			
+
 			return $this->parse_content( $file_content );
 		}
 

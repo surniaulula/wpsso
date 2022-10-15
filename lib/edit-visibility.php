@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 			/**
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_visibility_rows'        => 4,
 				'metabox_sso_edit_visibility_robots_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 				'robots_max_snippet' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Snippet Max. Length', 'option label', 'wpsso' ),
-					'tooltip'  => 'robots_max_snippet',	// Use the tooltip from plugin settings. 
+					'tooltip'  => 'robots_max_snippet',	// Use the tooltip from plugin settings.
 					'content'  => $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '',
 						$len = 0, $holder = true, $robots_disabled ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) .
 							' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')',

@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'opt_key'      => $opt_key,
 					'force_filter' => $force_filter,
 				) );
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array( 
+				$this->p->debug->log_args( array(
 					'opt_key'      => $opt_key,
 					'force_filter' => $force_filter,
 				) );
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( empty( $local_cache ) || ! $is_cache_allowed ) {
 
 				/**
-				 * Automatically include all advanced plugin options. 
+				 * Automatically include all advanced plugin options.
 				 */
 				$local_cache = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
 
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function get_version( array $opts, $ext ) {
 
-			if ( isset( $opts[ 'opt_versions' ][ $ext ] ) ) {	// Check for current version key first. 
+			if ( isset( $opts[ 'opt_versions' ][ $ext ] ) ) {	// Check for current version key first.
 
 				return (int) $opts[ 'opt_versions' ][ $ext ];
 

@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 		 * 	Organization
 		 * 	Place
 		 * 	Product
-		 * 	Service 
+		 * 	Service
 		 *
 		 * Unfortunately Google allows the 'aggregateRating' property only for these types:
 		 *

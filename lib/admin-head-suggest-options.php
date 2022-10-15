@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
 
-				foreach ( array( 
+				foreach ( array(
 					'add_link_rel_canonical'    => 'link rel canonical',
 					'add_link_rel_shortlink'    => 'link rel shortlink',
 					'add_meta_name_description' => 'meta name description',

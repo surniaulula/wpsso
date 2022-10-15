@@ -209,7 +209,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 /**
  * Returns a single dimension array of image meta tags or false if no image is found.
- * 
+ *
  * Example:
  *
  *	Array (

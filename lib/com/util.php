@@ -3661,7 +3661,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$ret = true;
 
-				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&	
+				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&
 					( '' !== self::get_request_value( 'taxonomy' ) &&
 						'' !== self::get_request_value( 'tag_ID' ) ) ) {
 
@@ -4450,7 +4450,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-			 * i = Letters in the pattern match both upper and lower case letters. 
+			 * i = Letters in the pattern match both upper and lower case letters.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 			 *
 			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
@@ -4730,7 +4730,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Tagline.
-		 * 
+		 *
 		 * Returns a custom site description or the default WordPress site description / tagline.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array

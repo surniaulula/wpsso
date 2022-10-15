@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				$mod_dir = 'integ';
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'loading integ modules for ' . $ext );

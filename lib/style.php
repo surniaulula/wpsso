@@ -57,13 +57,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * See https://developers.google.com/speed/libraries/.
 			 */
-			wp_register_style( 'jquery-ui.js', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . 
+			wp_register_style( 'jquery-ui.js', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' .
 				$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
 					$deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/**
 			 * Register styles for option help popup.
-			 * 
+			 *
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js', WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $this->file_ext,
@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			) as $css_class => $width_css ) {
 
 				/**
-				 * WooCommerce changes their tabs to icons at 900px. 
+				 * WooCommerce changes their tabs to icons at 900px.
 				 * WordPress collapses the admin menu at 960px.
 				 * WordPress changes to larger icons at 782px.
 				 *

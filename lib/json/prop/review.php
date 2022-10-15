@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 		 * 	Organization
 		 * 	Place
 		 * 	Product
-		 * 	Service 
+		 * 	Service
 		 *
 		 * Unfortunately Google allows the 'aggregateRating' property only for these types:
 		 *
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 
 					foreach ( $mt_og[ $og_type . ':reviews' ] as $mt_review ) {
 
-						$single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array( 
+						$single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
 							'url'         => 'review:url',
 							'dateCreated' => 'review:created_time',
 							'name'        => 'review:title',

@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 						$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
 							$def_frags[ 'name' ] ) . ' ';
-	
+
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
 							$def_frags[ 'name' ] ) . ' ';
 
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 								$def_frags[ 'about' ], $def_frags[ 'desc' ] );
 						}
 					}
-	
+
 					break;
 
 				/**
@@ -307,10 +307,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 						$text .= sprintf( __( 'You can select a different %s when editing a product.', 'wpsso' ),
 							$def_frags[ 'name' ] ) . ' ';
-	
+
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
 							$def_frags[ 'name' ] ) . ' ';
-	
+
 						if ( ! empty( $def_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.

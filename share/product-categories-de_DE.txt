@@ -1226,7 +1226,7 @@
 2246 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Blutzuckermessgeräte
 497 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Cholesterinmessgeräte
 501 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Fieberthermometer
-505822 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Fruchtbarkeitsmonitore & Ovulationstests 
+505822 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Fruchtbarkeitsmonitore & Ovulationstests
 543679 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Fruchtbarkeitsmonitore & Ovulationstests  > Fruchtbarkeitstests & -monitore
 543680 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Fruchtbarkeitsmonitore & Ovulationstests  > Ovulationstests
 496 - Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Körperfettanalyse
@@ -5254,7 +5254,7 @@
 5019 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Aquariumdekoration
 5020 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Aquariumfilter
 5023 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Aquariumständer
-505307 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Ausströmersteine & Diffusoren für Aquarien 
+505307 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Ausströmersteine & Diffusoren für Aquarien
 5021 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Bodengrund für Aquarien
 5024 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Fischfutter
 6403 - Tiere & Tierbedarf > Haustierbedarf > Aquaristik > Fischfutterautomaten

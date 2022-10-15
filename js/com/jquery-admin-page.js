@@ -289,7 +289,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			var noticeTime   = -1;
 
 			if ( noticeTypeCount[ 'err' ] )		noticeStatus = 'error';
-			else if ( noticeTypeCount[ 'warn' ] )	noticeStatus = 'warning'; 
+			else if ( noticeTypeCount[ 'warn' ] )	noticeStatus = 'warning';
 			else if ( noticeTypeCount[ 'inf' ] )	noticeStatus = 'info';
 			else if ( noticeTypeCount[ 'upd' ] )	noticeStatus = 'success';
 

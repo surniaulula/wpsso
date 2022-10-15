@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
 
-				$single_brand = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array( 
+				$single_brand = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array(
 					'name' => 'product:brand',
 				) );
 
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 * 	'width'        => 'product:width:value',
 			 * );
 			 */
-			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array( 
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
 				'depth'        => 'product:depth:value',
 				'height'       => 'product:height:value',
 				'length'       => 'product:length:value',

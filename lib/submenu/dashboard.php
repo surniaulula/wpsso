@@ -114,11 +114,11 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 						$metabox_prio    = 'default';
 						$callback_args   = array(	// Second argument passed to the callback function / method.
 						);
-		
+
 						add_meta_box( $this->pagehook . '_' . $metabox_key, $metabox_title,
 							array( $this, 'show_metabox_' . $metabox_key ), $metabox_screen,
 								$metabox_context, $metabox_prio, $callback_args );
-		
+
 						add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_key,
 							array( $this, 'add_class_postbox_menu_id' ) );
 					}

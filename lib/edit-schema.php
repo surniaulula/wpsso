@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			/**
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
-			$this->p->util->add_plugin_filters( $this, array( 
+			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_schema_rows'               => 4,
 				'metabox_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
 				'metabox_sso_edit_schema_article_rows'       => 5,	// Schema CreativeWork > Article.

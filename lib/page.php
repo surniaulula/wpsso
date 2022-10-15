@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * 		[title]   => A Title
 		 * 		[page]    => Page 2
 		 * 		[site]    => WebSite Name
-		 * 		[tagline] => 
+		 * 		[tagline] =>
 		 * 	)
 		 *
 		 * The final array is imploded into a string using the $title_sep value.
@@ -1454,7 +1454,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 								/**
 								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-								 * i = Letters in the pattern match both upper and lower case letters. 
+								 * i = Letters in the pattern match both upper and lower case letters.
 								 *
 								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 								 */

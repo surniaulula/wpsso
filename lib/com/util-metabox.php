@@ -60,7 +60,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				$value_esc    = esc_html( var_export( $value, true ) );
 				$table_row_id = sanitize_key( $metabox_id . '_' . $obj_id . '_' . $key );
 				$onclick_js   = 'sucomDeleteMeta( \'' . $metabox_id . '\', \'' . $obj_id . '\', \'' . $key . '\', \'' . $admin_l10n . '\' );';
-				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">'; 
+				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">';
 
 				if ( $can_del_meta ) {
 

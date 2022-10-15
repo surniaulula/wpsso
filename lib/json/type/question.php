@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $json_data, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $json_data, array(
 				'text' => 'name',
 			) );
 
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 			 */
 			$accepted_answer = WpssoSchema::get_schema_type_context( 'https://schema.org/Answer' );
 
-			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_data, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_data, array(
 				'url'        => 'url',
 				'name'       => 'description',	// The Answer name is CreativeWork custom description or excerpt.
 				'text'       => 'text',		// May not exist if the 'schema_add_text_prop' option is disabled.
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 				$accepted_answer[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 			}
 
-			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_ret, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_ret, array(
 				'dateCreated'   => 'dateCreated',
 				'datePublished' => 'datePublished',
 				'dateModified'  => 'dateModified',
