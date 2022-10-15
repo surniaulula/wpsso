@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.0-b.1 (2022/10/15)**
+**Version 13.6.0-b.2 (2022/10/15)**
 
 * **New Features**
 	* None.
@@ -468,7 +468,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.0-b.1 =
+= 13.6.0-b.2 =
 
 (2022/10/15) Added a check for at least one "image" property in the Schema Product type. Moved Schema CreativeWork and Article customization options in the Document SSO metabox from the Premium to the Standard edition.
 
