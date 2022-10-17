@@ -756,6 +756,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( is_admin() ) {
 
+				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_msg   = '';
 				$notice_key   = 'debug-mode-is-active';
 				$dismiss_time = 12 * HOUR_IN_SECONDS;
@@ -779,7 +780,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				 */
 				if ( $notice_msg ) {
 
-					$notice_msg .= __( 'Debug mode generates thousands of messages during page load, which affects website performance.', 'wpsso' ) . ' ';
+					$notice_msg .= sprintf( __( 'The %s plugin\'s debug mode generates thousands of messages during page load, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
 
 					$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
 
@@ -793,7 +794,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					$notice_key = 'plugin-cache-is-disabled';
 
-					$notice_msg = __( 'The plugin\'s cache is disabled for debugging, which affects website performance.', 'wpsso' ) . ' ';
+					$notice_msg = sprintf( __( 'The %s plugin\'s cache feature is disabled for debugging, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
 
 					$notice_msg .= __( 'Don\'t forget to re-enable caching when debugging is complete.', 'wpsso' );
 

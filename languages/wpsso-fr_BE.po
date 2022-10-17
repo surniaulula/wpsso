@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 13.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-10-15 12:03-0700\n"
+"PO-Revision-Date: 2022-10-16 17:30-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11001,27 +11001,27 @@ msgctxt "option comment"
 msgid "%s constant is false"
 msgstr "constante %s est fausse"
 
-#: wpsso.php:767
+#: wpsso.php:768
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:774
+#: wpsso.php:775
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
-#: wpsso.php:782
-msgid "Debug mode generates thousands of messages during page load, which affects website performance."
-msgstr "Le mode débogage génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
+#: wpsso.php:783
+msgid "The %s plugin's debug mode generates thousands of messages during page load, which affects website performance."
+msgstr "Le mode débogage de l'extension %s génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
 
-#: wpsso.php:784
+#: wpsso.php:785
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:796
-msgid "The plugin's cache is disabled for debugging, which affects website performance."
-msgstr "Le cache de l'extension est désactivé pour le débogage, ce qui affecte les performances du site Web."
+#: wpsso.php:797
+msgid "The %s plugin's cache feature is disabled for debugging, which affects website performance."
+msgstr "La fonctionnalité de cache de l'extension %s est désactivée pour le débogage, ce qui affecte les performances du site Web."
 
-#: wpsso.php:798
+#: wpsso.php:799
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr "N'oubliez pas de réactiver la mise en cache lorsque le débogage est terminé."
 

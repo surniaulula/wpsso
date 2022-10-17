@@ -12260,35 +12260,35 @@ msgctxt "option comment"
 msgid "%s constant is false"
 msgstr ""
 
-#: wpsso.php:767
+#: wpsso.php:768
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:774
+#: wpsso.php:775
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:782
+#: wpsso.php:783
 msgid ""
-"Debug mode generates thousands of messages during page load, which affects "
-"website performance."
+"The %s plugin's debug mode generates thousands of messages during page load, "
+"which affects website performance."
 msgstr ""
 
-#: wpsso.php:784
+#: wpsso.php:785
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:796
+#: wpsso.php:797
 msgid ""
-"The plugin's cache is disabled for debugging, which affects website "
-"performance."
+"The %s plugin's cache feature is disabled for debugging, which affects "
+"website performance."
 msgstr ""
 
-#: wpsso.php:798
+#: wpsso.php:799
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
