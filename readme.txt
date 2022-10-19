@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.1-dev.2 (2022/10/18)**
+**Version 13.6.1-dev.3 (2022/10/18)**
 
 * **New Features**
 	* None.
@@ -483,7 +483,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.1-dev.2 =
+= 13.6.1-dev.3 =
 
 (2022/10/18) Refactored the `WpssoPost->get_public_ids()` method to reduce the potential of memory issues with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
