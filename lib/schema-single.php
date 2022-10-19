@@ -1937,22 +1937,33 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Prevents a missing property warning from the Google validator.
 			 *
-			 * By default, define normal product prices (not on sale) as valid for 1 month.
+			 * By default, define normal product prices (not on sale) as valid for 1 year.
 			 *
 			 * Uses a static cache for all offers to allow for a common value in AggregateOffer markup.
 			 */
 			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
 
-				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', MONTH_IN_SECONDS );
-
 				static $price_valid_until = null;
 
 				if ( null === $price_valid_until ) {
 
-					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
+					/**
+					 * Skip if WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME = 0 or false.
+					 */
+					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+
+						$price_valid_until = gmdate( 'c', time() + $valid_max_time );
+
+					} else {
+
+						$price_valid_until = false;	// Check only once.
+					}
 				}
 
-				$offer[ 'priceValidUntil' ] = $price_valid_until;
+				if ( $price_valid_until ) {
+
+					$offer[ 'priceValidUntil' ] = $price_valid_until;
+				}
 			}
 
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
