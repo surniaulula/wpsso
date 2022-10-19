@@ -1846,7 +1846,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$count = 0;
 
-			while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
+			while ( $blog_user_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
 
 				foreach ( $blog_user_ids as $id ) {
 

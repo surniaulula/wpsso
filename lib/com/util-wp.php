@@ -16,36 +16,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public function __construct() {}
 
-		public static function get_posts_query( $args, $query_limit = 1000 ) {
-
-			$posts    = array();
-			$wp_query = new WP_Query;
-
-			/**
-			 * If the query arguments do not limit the number of posts, then set a limit and query the database until
-			 * no more posts are returned.
-			 */
-			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
-				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
-
-				$args[ 'paged' ]          = 1;
-				$args[ 'posts_per_page' ] = $query_limit;
-
-				while ( $result = $wp_query->query( $args ) ) {
-
-					$posts = array_merge( $posts, $result );
-
-					$args[ 'paged' ]++;	// Get the next page.
-				}
-
-			} else {
-
-				$posts = $wp_query->query( $args );
-			}
-
-			return $posts;
-		}
-
 		public static function doing_ajax() {
 
 			if ( function_exists( 'wp_doing_ajax' ) ) {	// Since WP v4.7.0.
@@ -264,6 +234,36 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $locale_cache;
 		}
 
+		public static function get_posts_query( $args, $limit = 1000 ) {
+
+			$posts    = array();
+			$wp_query = new WP_Query;
+
+			/**
+			 * If the query arguments do not limit the number of posts, then set a limit and query the database until
+			 * no more posts are returned.
+			 */
+			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
+				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
+
+				$args[ 'paged' ]          = 1;
+				$args[ 'posts_per_page' ] = $limit;
+
+				while ( $result = $wp_query->query( $args ) ) {
+
+					$posts = array_merge( $posts, $result );
+
+					$args[ 'paged' ]++;	// Get the next page.
+				}
+
+			} else {
+
+				$posts = $wp_query->query( $args );
+			}
+
+			return $posts;
+		}
+
 		/**
 		 * Retrieves or updates the metadata cache by key and group.
 		 *
@@ -279,8 +279,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$obj_id = absint( $obj_id );
 
-			if ( ! $obj_id ) {
-
+			if ( ! $obj_id ) { 
 				return array();
 			}
 
@@ -1065,21 +1064,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return $result;
-		}
-
-		/**
-		 * Deprecated on 2021/11/10.
-		 */
-		public static function get_available_languages() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				$local_cache = get_available_languages();
-			}
-
-			return $local_cache;
 		}
 
 		/**

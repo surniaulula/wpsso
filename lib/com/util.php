@@ -3857,7 +3857,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $roles as $role ) {
 
-				$role_users = self::get_user_names( $role, $blog_id, $limit );	// Can return false with a numeric $limit argument.
+				$role_users = self::get_users_names( $role, $blog_id, $limit );	// Can return false with a numeric $limit argument.
 
 				if ( ! empty( $role_users ) && is_array( $role_users ) ) {	// Check return value, just in case.
 
@@ -3885,10 +3885,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	AND wp_usermeta.meta_value LIKE '%\"person\"%' ) ) )
 		 * 	ORDER BY display_name ASC
 		 *
-		 * If using the $limit argument, you must keep calling get_user_names() until it returns false - it may also return
+		 * If using the $limit argument, you must keep calling get_users_names() until it returns false - it may also return
 		 * false on the first query if there are no users in the specified role.
 		 */
-		public static function get_user_names( $role = '', $blog_id = null, $limit = '' ) {
+		public static function get_users_names( $role = '', $blog_id = null, $limit = '' ) {
 
 			static $offset = '';
 
@@ -3933,6 +3933,52 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $user_names;
+		}
+
+		public static function get_users_ids( $blog_id = null, $role = '', $limit = '' ) {
+
+			static $offset = '';
+
+			if ( empty( $blog_id ) ) {
+
+				$blog_id = get_current_blog_id();
+			}
+
+			if ( is_numeric( $limit ) ) {
+
+				$offset = '' === $offset ? 0 : $offset + $limit;
+			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $limit,
+				'order'   => 'DESC',	// Newest users first.
+				'orderby' => 'ID',
+				'role'    => $role,
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+				)
+			);
+
+			$user_ids = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+
+				$user_ids[] = $user_obj->ID;
+			}
+
+			if ( '' !== $offset ) {
+
+				if ( empty( $user_ids ) ) {
+
+					$offset = '';	// Allow the next call to start fresh.
+
+					return false;	// To break the while loop.
+				}
+			}
+
+			return $user_ids;
 		}
 
 		public static function user_exists( $user_id ) {
@@ -4493,52 +4539,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $json_scripts;
-		}
-
-		public static function get_user_ids( $blog_id = null, $role = '', $limit = '' ) {
-
-			static $offset = '';
-
-			if ( empty( $blog_id ) ) {
-
-				$blog_id = get_current_blog_id();
-			}
-
-			if ( is_numeric( $limit ) ) {
-
-				$offset = '' === $offset ? 0 : $offset + $limit;
-			}
-
-			$user_args  = array(
-				'blog_id' => $blog_id,
-				'offset'  => $offset,
-				'number'  => $limit,
-				'order'   => 'DESC',	// Newest users first.
-				'orderby' => 'ID',
-				'role'    => $role,
-				'fields'  => array(	// Save memory and only return only specific fields.
-					'ID',
-				)
-			);
-
-			$user_ids = array();
-
-			foreach ( get_users( $user_args ) as $user_obj ) {
-
-				$user_ids[] = $user_obj->ID;
-			}
-
-			if ( '' !== $offset ) {
-
-				if ( empty( $user_ids ) ) {
-
-					$offset = '';	// Allow the next call to start fresh.
-
-					return false;	// To break the while loop.
-				}
-			}
-
-			return $user_ids;
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {
