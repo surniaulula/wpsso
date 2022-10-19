@@ -2512,8 +2512,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-			$site_owners = SucomUtil::get_roles_user_select( $owner_roles );
+			$site_owners = WpssoUser::get_persons_names( $add_none = true, $roles_id = 'owner' );
 
 			$table_rows[ 'site_pub_schema_type' ] = '' .
 				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .

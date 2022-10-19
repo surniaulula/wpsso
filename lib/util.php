@@ -1143,7 +1143,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'person_names':
 
-						$local_cache[ $filter_key ] = WpssoUser::get_person_names();
+						$local_cache[ $filter_key ] = WpssoUser::get_persons_names();
 
 						break;
 

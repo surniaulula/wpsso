@@ -697,11 +697,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
 
-						foreach ( SucomUtil::get_roles_user_ids( array( 'subscriber' ) ) as $user_id ) {
+						while ( $result = SucomUtil::get_roles_users_ids( $roles = array( 'subscriber' ), $blog_id = null, $limit = 1000 ) ) {
 
-							$user_obj = get_user_by( 'ID', $user_id );
+							foreach ( $result as $user_id ) {
 
-							$user_obj->remove_role( 'person' );
+								$user_obj = get_user_by( 'ID', $user_id );
+
+								$user_obj->remove_role( 'person' );
+							}
 						}
 					}
 				}

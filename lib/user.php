@@ -466,11 +466,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log_arr( 'roles', $roles );
 			}
 
-			$user_ids = SucomUtil::get_roles_user_ids( $roles );
+			while ( $result = SucomUtil::get_roles_users_ids( $roles, $blog_id = null, $limit = 1000 ) ) {
 
-			$user_ids = apply_filters( 'wpsso_user_public_ids', $user_ids, $roles );
+				$users_ids = array_merge( $users_ids, $result );
+			}
 
-			return $user_ids;
+			$users_ids = apply_filters( 'wpsso_user_public_ids', $users_ids, $roles );
+
+			return $users_ids;
 		}
 
 		/**
@@ -1899,15 +1902,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return 0;
 		}
 
-		public static function get_person_names( $add_none = true ) {
+		public static function get_persons_names( $add_none = true, $roles_id = 'person' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
+			$users = array();
 
-			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 100 user names.
+			if ( isset( $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ] ) ) {	// Just in case.
 
-			return SucomUtil::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
+				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
+				$limit = SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 );
+				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none, $limit );
+			}
+
+			return $users;
 		}
 
 		public function add_person_view( $user_views ) {
