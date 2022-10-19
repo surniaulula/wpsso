@@ -687,8 +687,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 			$post_ids   = WpssoPost::get_public_ids();
+			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 
 			foreach ( $post_ids as $post_id ) {
 

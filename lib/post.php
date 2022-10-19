@@ -596,9 +596,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible post ids.
-		 *
-		 * These may include post ids from non-public post types and different languages.
+		 * Get all publicly accessible post ids using WP_Query->query().
 		 *
 		 * Use 'suppress_filters' = false to allow WPML (and others) to filter posts for the current language.
 		 */
@@ -620,12 +618,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'calling wordpress get_posts() function' );
+				$wpsso->debug->log( 'calling WP_Query->query() method' );
 
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			$public_ids = get_posts( $posts_args );
+			$get_posts  = new WP_Query;
+			$public_ids = array();
+
+			/**
+			 * Limit the number of post IDs returned to same memory.
+			 */
+			$posts_args[ 'paged' ]          = 1;
+			$posts_args[ 'posts_per_page' ] = 500;
+
+			while ( $ids = $get_posts->query( $posts_args ) ) {
+
+				$public_ids = array_merge( $public_ids, $ids );
+
+				$posts_args[ 'paged' ]++;	// Get the next page.
+			}
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'WP_Query->query() returned ' . count( $public_ids ) . ' ids' );
+			}
 
 			$public_ids = apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
 
