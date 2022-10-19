@@ -245,7 +245,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Refactored the `WpssoPost->get_public_ids()` method to reduce potential memory issues with large databases.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -485,7 +485,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.6.1-dev.1 =
 
-(2022/10/18) Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
+(2022/10/18) Refactored the `WpssoPost->get_public_ids()` method to reduce potential memory issues with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
 = 13.6.0 =
 
