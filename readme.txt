@@ -240,6 +240,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.6.1-dev.1 (2022/10/18)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.6.0 (2022/10/15)**
 
 * **New Features**
@@ -468,6 +482,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.6.1-dev.1 =
+
+(2022/10/18) Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
 = 13.6.0 =
 
