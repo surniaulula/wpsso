@@ -240,16 +240,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.1-dev.3 (2022/10/18)**
+**Version 13.6.1-dev.4 (2022/10/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Refactored the `WpssoPost->get_public_ids()` method to reduce the potential of memory issues with large databases.
+	* Refactored the `WpssoPost->get_public_ids()` method to reduce the potential of exceeding PHP memory limits with large databases.
+	* Refactored the `WpssoUser->get_public_ids()` method to reduce the potential of exceeding PHP memory limits with large databases.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
+	* Added a new `WpssoUtilWP::get_posts_query()` method.
+	* Renamed `WpssoUser::get_person_names()` to `WpssoUser::get_persons_names()`.
+	* Renamed `WpssoUtil::get_roles_user_ids()` to `WpssoUtil::get_roles_users_ids()`
+	* Renamed `WpssoUtil::get_roles_user_names()` to `WpssoUtil::get_roles_users_names()`
+	* Renamed `WpssoUtil::get_roles_user_select()` to `WpssoUtil::get_roles_users_select()`
+	* Renamed `WpssoUtil::get_user_ids()` to `WpssoUtil::get_users_ids()`
+	* Renamed `WpssoUtil::get_user_names()` to `WpssoUtil::get_users_names()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -483,9 +491,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.1-dev.3 =
+= 13.6.1-dev.4 =
 
-(2022/10/18) Refactored the `WpssoPost->get_public_ids()` method to reduce the potential of memory issues with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
+(2022/10/19) Refactored `get_public_ids()` methods to reduce the potential of exceeding PHP memory limits with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
 = 13.6.0 =
 
