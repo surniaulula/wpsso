@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$post_ids    = get_posts( $posts_args );
+			$posts_ids   = get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
 
@@ -547,10 +547,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return $post_ids;
+			return $posts_ids;
 		}
 
 		public function add_term_column_headings( $columns ) {

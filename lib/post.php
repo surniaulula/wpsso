@@ -618,35 +618,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'calling WP_Query->query() method' );
-
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			$get_posts  = new WP_Query;
-			$public_ids = array();
+			$posts_ids = SucomUtilWP::get_posts_query( $posts_args );
 
-			/**
-			 * Limit the number of post IDs returned to same memory.
-			 */
-			$posts_args[ 'paged' ]          = 1;
-			$posts_args[ 'posts_per_page' ] = 500;
+			$posts_ids = apply_filters( 'wpsso_post_public_ids', $posts_ids, $posts_args );
 
-			while ( $ids = $get_posts->query( $posts_args ) ) {
-
-				$public_ids = array_merge( $public_ids, $ids );
-
-				$posts_args[ 'paged' ]++;	// Get the next page.
-			}
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'WP_Query->query() returned ' . count( $public_ids ) . ' ids' );
-			}
-
-			$public_ids = apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
-
-			return $public_ids;
+			return $posts_ids;
 		}
 
 		/**
@@ -681,7 +660,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$post_ids    = get_posts( $posts_args );
+			$posts_ids   = get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
 
@@ -709,10 +688,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return $post_ids;
+			return $posts_ids;
 		}
 
 		/**

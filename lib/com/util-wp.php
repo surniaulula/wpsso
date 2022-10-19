@@ -16,6 +16,36 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public function __construct() {}
 
+		public static function get_posts_query( $args, $query_limit = 1000 ) {
+
+			$posts    = array();
+			$wp_query = new WP_Query;
+
+			/**
+			 * If the query arguments do not limit the number of posts, then set a limit and query the database until
+			 * no more posts are returned.
+			 */
+			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
+				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
+
+				$args[ 'paged' ]          = 1;
+				$args[ 'posts_per_page' ] = $query_limit;
+
+				while ( $result = $wp_query->query( $args ) ) {
+
+					$posts = array_merge( $posts, $result );
+
+					$args[ 'paged' ]++;	// Get the next page.
+				}
+
+			} else {
+
+				$posts = $wp_query->query( $args );
+			}
+
+			return $posts;
+		}
+
 		public static function doing_ajax() {
 
 			if ( function_exists( 'wp_doing_ajax' ) ) {	// Since WP v4.7.0.

@@ -466,11 +466,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log_arr( 'roles', $roles );
 			}
 
-			$public_ids = SucomUtil::get_roles_user_ids( $roles );
+			$user_ids = SucomUtil::get_roles_user_ids( $roles );
 
-			$public_ids = apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
+			$user_ids = apply_filters( 'wpsso_user_public_ids', $user_ids, $roles );
 
-			return $public_ids;
+			return $user_ids;
 		}
 
 		/**
@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$post_ids    = get_posts( $posts_args );
+			$posts_ids   = get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
 
@@ -532,10 +532,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return $post_ids;
+			return $posts_ids;
 		}
 
 		public function add_user_column_headings( $columns ) {
