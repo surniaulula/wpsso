@@ -3921,7 +3921,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'blog_id' => $blog_id,
 				'offset'  => null === $offset ? '' : $offset,	// Default value should be an empty string.
 				'number'  => null === $limit ? '' : $limit,	// Default value should be an empty string.
-				'order'   => 'ASC',
+				'order'   => 'ASC',	// Sort alphabetically by display name.
 				'orderby' => 'display_name',
 				'role'    => $role,
 				'fields'  => array(	// Save memory and return only specific fields.

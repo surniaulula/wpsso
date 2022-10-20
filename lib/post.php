@@ -621,7 +621,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			$posts_ids = SucomUtilWP::get_posts_query( $posts_args );
+			/**
+			 * Calls WP_Query->query() with the supplied arguments.
+			 *
+			 * If the arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a
+			 * while loop is used to save memory (fetching 1000 posts at a time from the database).
+			 */
+			$posts_ids = SucomUtilWP::get_posts( $posts_args );
 
 			$posts_ids = apply_filters( 'wpsso_post_public_ids', $posts_ids, $posts_args );
 

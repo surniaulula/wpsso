@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.6.1-b.1\n"
+"Project-Id-Version: WPSSO Core 13.6.1-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4674,7 +4674,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:379 gettext/gettext-lib-pro.php:381
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:209
-#: lib/loader.php:223 lib/post.php:1579 lib/pro/util/shorten.php:486
+#: lib/loader.php:223 lib/post.php:1585 lib/pro/util/shorten.php:486
 #: lib/pro/util/shorten.php:523
 msgid "%s error:"
 msgstr ""
@@ -5142,7 +5142,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:926 lib/term.php:678 lib/user.php:681
+#: lib/admin.php:867 lib/post.php:932 lib/term.php:678 lib/user.php:681
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6708,13 +6708,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1584 lib/post.php:670 lib/register.php:348 lib/term.php:532
+#: lib/media.php:1584 lib/post.php:676 lib/register.php:348 lib/term.php:532
 #: lib/user.php:517 lib/util.php:779 lib/util.php:885 lib/util.php:917
 #: lib/util.php:3087
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1585 lib/post.php:671 lib/term.php:533 lib/user.php:518
+#: lib/media.php:1585 lib/post.php:677 lib/term.php:533 lib/user.php:518
 #: lib/util.php:780 lib/util.php:3088
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -10828,143 +10828,143 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:678
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:1064
+#: lib/post.php:1070
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1097
+#: lib/post.php:1103
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1106
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1109
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1139
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1135
+#: lib/post.php:1141
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1137
+#: lib/post.php:1143
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1138
+#: lib/post.php:1144
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1152
+#: lib/post.php:1158
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1166
+#: lib/post.php:1172
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1181
+#: lib/post.php:1187
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1198
+#: lib/post.php:1204
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1207
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1240
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1237
+#: lib/post.php:1243
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1240
+#: lib/post.php:1246
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1261
+#: lib/post.php:1267
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1280
+#: lib/post.php:1286
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1282
+#: lib/post.php:1288
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1285
+#: lib/post.php:1291
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1328
+#: lib/post.php:1334
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1330
+#: lib/post.php:1336
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1338
+#: lib/post.php:1344
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1342
+#: lib/post.php:1348
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1346
+#: lib/post.php:1352
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1543
+#: lib/post.php:1549
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1548
+#: lib/post.php:1554
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1827
+#: lib/post.php:1833
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
