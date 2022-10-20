@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.1-b.1 (2022/10/20)**
+**Version 13.6.1-b.2 (2022/10/20)**
 
 * **New Features**
 	* None.
@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
-	* Added a new `WpssoUtilWP::get_posts_query()` method used by the refactored `WpssoPost->get_public_ids()` method.
+	* Added a new `WpssoUtilWP::get_posts()` method used by the refactored `WpssoPost->get_public_ids()` method.
 	* Renamed `WpssoUser::get_person_names()` to `WpssoUser::get_persons_names()`.
 	* Renamed `WpssoUtil::get_roles_user_ids()` to `WpssoUtil::get_roles_users_ids()`
 	* Renamed `WpssoUtil::get_roles_user_names()` to `WpssoUtil::get_roles_users_names()`
@@ -490,7 +490,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.1-b.1 =
+= 13.6.1-b.2 =
 
 (2022/10/20) Refactored `get_public_ids()` methods to reduce the potential of exceeding PHP memory limits with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
