@@ -113,14 +113,6 @@ Present your content at its best on social sites and in search results - no matt
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
-<p><strong>Imports post, term, and user plugin metadata (active plugin not required), including:</strong></p>
-
-* All in One SEO Pack Metadata
-* Rank Math SEO Metadata
-* The SEO Framework Metadata
-* Yoast SEO Metadata
-* Yoast SEO Block Attributes
-
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
