@@ -3932,6 +3932,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$user_names = array();
 
+			/**
+			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
+			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
 
 				$user_names[ $user_obj->ID ] = $user_obj->display_name;
@@ -3981,6 +3984,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$user_ids = array();
 
+			/**
+			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
+			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
 
 				$user_ids[] = $user_obj->ID;

@@ -5142,7 +5142,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:926 lib/term.php:675 lib/user.php:681
+#: lib/admin.php:867 lib/post.php:926 lib/term.php:678 lib/user.php:681
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6708,13 +6708,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1584 lib/post.php:670 lib/register.php:348 lib/term.php:529
+#: lib/media.php:1584 lib/post.php:670 lib/register.php:348 lib/term.php:532
 #: lib/user.php:517 lib/util.php:779 lib/util.php:885 lib/util.php:917
 #: lib/util.php:3087
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1585 lib/post.php:671 lib/term.php:530 lib/user.php:518
+#: lib/media.php:1585 lib/post.php:671 lib/term.php:533 lib/user.php:518
 #: lib/util.php:780 lib/util.php:3088
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -11699,13 +11699,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:531
+#: lib/term.php:534
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:912
+#: lib/term.php:915
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

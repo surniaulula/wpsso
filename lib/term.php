@@ -459,6 +459,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$wpsso->debug->log_arr( 'terms_args', $terms_args );
 				}
 
+				/**
+				 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
+				 */
 				$term_ids = get_terms( $terms_args );
 
 				foreach ( $term_ids as $term_id ) {
