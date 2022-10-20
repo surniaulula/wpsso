@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.1-b.2 (2022/10/20)**
+**Version 13.6.1-rc.1 (2022/10/20)**
 
 * **New Features**
 	* None.
@@ -490,7 +490,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.1-b.2 =
+= 13.6.1-rc.1 =
 
 (2022/10/20) Refactored `get_public_ids()` methods to reduce the potential of exceeding PHP memory limits with large databases. Updated the default 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' constant value from 3 months to 1 year.
 
