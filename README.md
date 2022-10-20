@@ -126,8 +126,6 @@
 
 <h3>Premium Edition Features</h3>
 
-<p><strong>Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
-
 <p><strong>Reads data from remote service APIs, including:</strong></p>
 
 <ul>
@@ -147,6 +145,8 @@
 <li>Get Your Own URL Shortener (YOURLS) Short URL</li>
 <li>Get YouTube Video and Playlist Data</li>
 </ul>
+
+<p><strong>Additional customization options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
 
 <h2>Installation</h2>
 

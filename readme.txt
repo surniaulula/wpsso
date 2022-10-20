@@ -123,8 +123,6 @@ Present your content at its best on social sites and in search results - no matt
 
 <h3>Premium Edition Features</h3>
 
-**Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
-
 **Reads data from remote service APIs, including:**
 
 * Get Bitly Short URL
@@ -142,6 +140,8 @@ Present your content at its best on social sites and in search results - no matt
 * Get WordPress Video Data
 * Get Your Own URL Shortener (YOURLS) Short URL
 * Get YouTube Video and Playlist Data
+
+**Additional customization options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
 
 == Installation ==
 
