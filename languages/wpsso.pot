@@ -553,8 +553,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 lib/com/form.php:887
-#: lib/media-filters.php:114 lib/media.php:1413 lib/media.php:1564
-#: lib/media.php:3181
+#: lib/media-filters.php:114 lib/media.php:1413 lib/media.php:1565
+#: lib/media.php:3182
 msgid "Media Library"
 msgstr ""
 
@@ -5117,7 +5117,7 @@ msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr ""
 
-#: lib/admin.php:762 lib/submenu/tools.php:109
+#: lib/admin.php:762 lib/submenu/tools.php:110
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -5146,31 +5146,31 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:879 lib/options.php:875 lib/register.php:162
+#: lib/admin.php:879
+msgid ""
+"A background task will begin shortly to refresh the post, term, and user "
+"transient cache objects."
+msgstr ""
+
+#: lib/admin.php:890 lib/options.php:875 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
-#: lib/admin.php:891
+#: lib/admin.php:902
 msgid ""
 "A background task will begin shortly to clear all caches and short URLs."
 msgstr ""
 
-#: lib/admin.php:903
+#: lib/admin.php:914
 msgid "%s cache files have been cleared."
 msgstr ""
 
-#: lib/admin.php:913
+#: lib/admin.php:924
 msgid "%s failed URL connections have been cleared."
 msgstr ""
 
-#: lib/admin.php:923
+#: lib/admin.php:934
 msgid "%s database transients have been cleared."
-msgstr ""
-
-#: lib/admin.php:933
-msgid ""
-"A background task will begin shortly to refresh the post, term, and user "
-"transient cache objects."
 msgstr ""
 
 #: lib/admin.php:944
@@ -6636,7 +6636,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3191
+#: lib/media-filters.php:117 lib/media.php:3192
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6675,74 +6675,74 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1418 lib/media.php:1615
+#: lib/media.php:1419 lib/media.php:1616
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1434
+#: lib/media.php:1435
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1455
+#: lib/media.php:1456
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1474
+#: lib/media.php:1475
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1566
+#: lib/media.php:1567
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1584 lib/post.php:676 lib/register.php:348 lib/term.php:532
+#: lib/media.php:1585 lib/post.php:676 lib/register.php:348 lib/term.php:532
 #: lib/user.php:517 lib/util.php:779 lib/util.php:885 lib/util.php:917
 #: lib/util.php:3087
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1585 lib/post.php:677 lib/term.php:533 lib/user.php:518
+#: lib/media.php:1586 lib/post.php:677 lib/term.php:533 lib/user.php:518
 #: lib/util.php:780 lib/util.php:3088
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1586
+#: lib/media.php:1587
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1613
+#: lib/media.php:1614
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3207
+#: lib/media.php:3208
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3260
+#: lib/media.php:3261
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3295
+#: lib/media.php:3296
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -11629,29 +11629,29 @@ msgid ""
 "contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:110
+#: lib/submenu/tools.php:109
 msgctxt "submit button"
-msgid "Clear All Caches and Short URLs"
+msgid "Refresh Transient Cache"
 msgstr ""
 
 #: lib/submenu/tools.php:111
 msgctxt "submit button"
-msgid "Clear %s Cached Files"
+msgid "Clear All Caches and Short URLs"
 msgstr ""
 
 #: lib/submenu/tools.php:112
 msgctxt "submit button"
-msgid "Clear %s Failed URL Connections"
+msgid "Clear %s Cached Files"
 msgstr ""
 
 #: lib/submenu/tools.php:113
 msgctxt "submit button"
-msgid "Clear All Database Transients"
+msgid "Clear %s Failed URL Connections"
 msgstr ""
 
 #: lib/submenu/tools.php:114
 msgctxt "submit button"
-msgid "Refresh Transient Cache"
+msgid "Clear All Database Transients"
 msgstr ""
 
 #: lib/submenu/tools.php:115
@@ -11799,7 +11799,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
 #: lib/user.php:1763 lib/user.php:1866 lib/util-cache.php:182
-#: lib/util-cache.php:746
+#: lib/util-cache.php:755
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -11943,17 +11943,17 @@ msgstr ""
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:658
+#: lib/util-cache.php:665
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:672
+#: lib/util-cache.php:679
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:737
+#: lib/util-cache.php:741
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."

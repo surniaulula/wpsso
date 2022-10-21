@@ -606,6 +606,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		/**
 		 * Schedule the refreshing of all post, term, and user transient cache objects.
+		 *
+		 * $read_cache = true when called by WpssoUtilCache->clear().
+		 *
+		 * $read_cache = false when called by WpssoAdmin->load_setting_page() for the 'refresh_cache' action value.
 		 */
 		public function schedule_refresh( $user_id = null, $read_cache = false ) {
 
@@ -633,6 +637,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 		}
 
+		/**
+		 * The $user_id and $read_cache values are provided by the WpssoUtilCache->schedule_refresh() $event_args array.
+		 */
 		public function refresh( $user_id = null, $read_cache = false ) {
 
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
@@ -731,12 +738,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
-			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
-			 */
 			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
+			/**
+			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
+			 *
+			 * See WpssoGmfFilters->filter_cache_refreshed_notice().
+			 */
 			$notice_msg = apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id, $read_cache );
 
 			if ( $user_id && $notice_msg ) {

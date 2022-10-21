@@ -1415,7 +1415,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_title = get_the_title( $pid );
 				$func_name = 'wp_get_attachment_metadata()';
 				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
-				$regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$regen_url = 'https://wordpress.org/plugins/search/regenerate+thumbnails/';
+				$regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), $regen_url );
 
 				/**
 				 * wp_get_attachment_metadata() returned a WP_Error object.

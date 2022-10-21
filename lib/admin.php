@@ -872,6 +872,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					switch ( $action_value ) {
 
+						case 'refresh_cache':
+
+							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
+
+							$notice_msg = __( 'A background task will begin shortly to refresh the post, term, and user transient cache objects.',
+								'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
 						case 'clear_cache':
 
 							$this->p->util->cache->schedule_clear( $user_id );
@@ -921,17 +932,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $key_prefix = '' );
 
 							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
-
-							$this->p->notice->upd( $notice_msg, $user_id );
-
-							break;
-
-						case 'refresh_cache':
-
-							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
-
-							$notice_msg = __( 'A background task will begin shortly to refresh the post, term, and user transient cache objects.',
-								'wpsso' );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
