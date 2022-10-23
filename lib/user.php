@@ -449,6 +449,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
+			$public_ids = array();
+
 			/**
 			 * Default 'creator' roles are:
 			 *
@@ -468,12 +470,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			while ( $result = SucomUtil::get_roles_users_ids( $roles, $blog_id = null, $limit = 1000 ) ) {
 
-				$users_ids = array_merge( $users_ids, $result );
+				$public_ids = array_merge( $public_ids, $result );
 			}
 
-			$users_ids = apply_filters( 'wpsso_user_public_ids', $users_ids, $roles );
+			$public_ids = apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
 
-			return $users_ids;
+			return $public_ids;
 		}
 
 		/**
@@ -1318,23 +1320,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *
 		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
 		 */
-		public function get_authors_websites( $user_ids, $meta_key = 'url' ) {
+		public function get_authors_websites( $users_ids, $meta_key = 'url' ) {
 
 			$urls = array();
 
-			if ( empty( $user_ids ) ) {	// Just in case.
+			if ( empty( $users_ids ) ) {	// Just in case.
 
 				return $urls;
 			}
 
-			if ( ! is_array( $user_ids ) ) {
+			if ( ! is_array( $users_ids ) ) {
 
-				$user_ids = array( $user_ids );
+				$users_ids = array( $users_ids );
 			}
 
 			if ( $meta_key && 'none' !== $meta_key ) {	// Just in case.
 
-				foreach ( $user_ids as $user_id ) {
+				foreach ( $users_ids as $user_id ) {
 
 					if ( empty( $user_id ) ) {
 
@@ -1735,11 +1737,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$public_user_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
-
 			$count = 0;
 
-			foreach ( $public_user_ids as $id ) {
+			$users_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
+
+			foreach ( $users_ids as $id ) {
 
 				/**
 				 * Check that we are allowed to continue. Stop if cache status is not 'running'.
@@ -1845,13 +1847,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$blog_id = get_current_blog_id();
-
 			$count = 0;
 
-			while ( $blog_user_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
+			$blog_id = get_current_blog_id();
 
-				foreach ( $blog_user_ids as $id ) {
+			while ( $users_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
+
+				foreach ( $users_ids as $id ) {
 
 					$count += self::remove_role_by_id( $id, $role = 'person' );
 				}

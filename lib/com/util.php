@@ -3840,11 +3840,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Get the user ID => name associative array, and keep only the array keys.
 			 */
-			$user_ids = array_keys( self::get_roles_users_names( $roles, $blog_id, $limit ) );
+			$users_ids = array_keys( self::get_roles_users_names( $roles, $blog_id, $limit ) );
 
-			rsort( $user_ids );	// Newest user first.
+			rsort( $users_ids );	// Newest user first.
 
-			return $user_ids;
+			return $users_ids;
 		}
 
 		/**
@@ -3982,19 +3982,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				)
 			);
 
-			$user_ids = array();
+			$users_ids = array();
 
 			/**
 			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
 			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
 
-				$user_ids[] = $user_obj->ID;
+				$users_ids[] = $user_obj->ID;
 			}
 
 			if ( null !== $offset ) {	// 0 or multiple of $limit integer.
 
-				if ( empty( $user_ids ) ) {
+				if ( empty( $users_ids ) ) {
 
 					$offset = null;	// Allow the next call to start fresh.
 
@@ -4002,7 +4002,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return $user_ids;
+			return $users_ids;
 		}
 
 		public static function user_exists( $user_id ) {

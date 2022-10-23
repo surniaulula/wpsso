@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.6.1\n"
+"Project-Id-Version: WPSSO Core 13.6.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5142,7 +5142,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:932 lib/term.php:678 lib/user.php:681
+#: lib/admin.php:867 lib/post.php:932 lib/term.php:678 lib/user.php:683
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5184,8 +5184,8 @@ msgstr ""
 
 #: lib/admin.php:955 lib/admin.php:966 lib/messages-tooltip-meta-schema.php:520
 #: lib/messages-tooltip-plugin.php:120 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1686
-#: lib/user.php:1793 lib/user.php:1929
+#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1688
+#: lib/user.php:1795 lib/user.php:1931
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6709,12 +6709,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1585 lib/post.php:676 lib/register.php:348 lib/term.php:532
-#: lib/user.php:517 lib/util.php:779 lib/util.php:885 lib/util.php:917
+#: lib/user.php:519 lib/util.php:779 lib/util.php:885 lib/util.php:917
 #: lib/util.php:3087
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1586 lib/post.php:677 lib/term.php:533 lib/user.php:518
+#: lib/media.php:1586 lib/post.php:677 lib/term.php:533 lib/user.php:520
 #: lib/util.php:780 lib/util.php:3088
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -11750,70 +11750,70 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:519
+#: lib/user.php:521
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts "
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:822
+#: lib/user.php:824
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:828
+#: lib/user.php:830
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:983
+#: lib/user.php:985
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1109
+#: lib/user.php:1111
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1110
+#: lib/user.php:1112
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1111
+#: lib/user.php:1113
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1612
+#: lib/user.php:1614
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1705
+#: lib/user.php:1707
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1720
+#: lib/user.php:1722
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1761
+#: lib/user.php:1763
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1763 lib/user.php:1866 lib/util-cache.php:182
+#: lib/user.php:1765 lib/user.php:1868 lib/util-cache.php:182
 #: lib/util-cache.php:755
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1812
+#: lib/user.php:1814
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1827
+#: lib/user.php:1829
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1864
+#: lib/user.php:1866
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

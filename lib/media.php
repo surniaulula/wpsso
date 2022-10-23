@@ -1190,7 +1190,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'returned / fetched image URL size: ' .
+									$this->p->debug->log( 'image URL size: ' .
 										$mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] );
 								}
 
@@ -2528,7 +2528,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'returned / fetched video image URL size: ' .
+							$this->p->debug->log( 'video image URL size: ' .
 								$mt_single_video[ 'og:image:width' ] . 'x' . $mt_single_video[ 'og:image:height' ] );
 						}
 

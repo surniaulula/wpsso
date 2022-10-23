@@ -360,7 +360,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( is_array( $user_id ) ) {
 
-				$trunc_user_ids = $user_id;
+				$trunc_users_ids = $user_id;
 
 			} else {
 
@@ -371,14 +371,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					return false;
 				}
 
-				$trunc_user_ids = array( $user_id );
+				$trunc_users_ids = array( $user_id );
 			}
 
 			unset( $user_id );	// A reminder that we are re-using this variable name below.
 
 			$trunc_types = empty( $msg_type ) ? $this->all_types : array( (string) $msg_type );
 
-			foreach ( $trunc_user_ids as $user_id ) {
+			foreach ( $trunc_users_ids as $user_id ) {
 
 				$this->maybe_load_notice_cache( $user_id );
 
