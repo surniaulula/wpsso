@@ -1598,7 +1598,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->notice->warn( $notice_msg );
 								}
 
-								SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg );
+								SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 							}
 
 							/**
