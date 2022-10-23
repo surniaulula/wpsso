@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.2-dev.1 (2022/10/23)**
+**Version 13.6.2-b.1 (2022/10/23)**
 
 * **New Features**
 	* None.
@@ -496,7 +496,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.2-dev.1 =
+= 13.6.2-b.1 =
 
 (2022/10/23) Fixed an argument #1 is not an array error in the WpssoUser class.
 
