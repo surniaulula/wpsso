@@ -241,7 +241,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Fixed an argument #1 is not an array error in the WpssoUser class.
+	* Fixed an argument #1 is not an array error in the `WpssoUser->get_public_ids()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.6.2 =
 
-(2022/10/23) Fixed an argument #1 is not an array error in the WpssoUser class.
+(2022/10/23) Fixed an argument #1 is not an array error in the `WpssoUser->get_public_ids()` method.
 
 = 13.6.1 =
 
