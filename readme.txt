@@ -232,6 +232,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.6.2-dev.1 (2022/10/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Fixed an argument #1 is not an array error in the WpssoUser class.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.6.1 (2022/10/20)**
 
 * **New Features**
@@ -481,6 +495,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.6.2-dev.1 =
+
+(2022/10/23) Fixed an argument #1 is not an array error in the WpssoUser class.
 
 = 13.6.1 =
 
