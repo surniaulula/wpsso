@@ -4638,9 +4638,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
 			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.30;		// Send error to trigger_error() if get_posts() takes longer.
-			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.50;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
+			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 2.00;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
 			$var_const[ 'WPSSO_INLINE_VARS_MAX_DEPTH' ]       = 3;
-			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
+			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 2.00;		// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
 
