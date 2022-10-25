@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_adult_oriented':
 				case 'product_age_group':
 				case 'product_avail':
-				case 'product_category':
+				case 'product_category':			// Product Google Category.
 				case 'product_condition':
 				case 'product_price_type':
 				case 'product_size_type':

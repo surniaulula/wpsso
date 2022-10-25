@@ -37,6 +37,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'metabox_sso_edit_schema_rows'               => 4,
 				'metabox_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
 				'metabox_sso_edit_schema_article_rows'       => 5,	// Schema CreativeWork > Article.
+				'metabox_sso_edit_schema_howto_rows'         => 5,	// Schema CreativeWork > HowTo.
+				'metabox_sso_edit_schema_recipe_rows'        => 5,	// Schema CreativeWork > HowTo > Recipe.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
@@ -351,6 +353,297 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						__( 'minute(s)', 'wpsso' ),
 				),
 
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+
+			$howto_steps_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
+			$howto_supplies_max = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
+			$howto_tools_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX', 20 );
+
+			$form_rows = array(
+				'subsection_schema_howto' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema How-To Information', 'metabox title', 'wpsso' )
+				),
+				'schema_howto_yield' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'How-To Makes', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_yield',
+					'content'  => $form->get_input( 'schema_howto_yield', $css_class = 'long_name' ),
+				),
+				'schema_howto_prep_time' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_prep_time',
+					'content'  => $form->get_input_time_dhms( 'schema_howto_prep' ),
+				),
+				'schema_howto_total_time' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_total_time',
+					'content'  => $form->get_input_time_dhms( 'schema_howto_total' ),
+				),
+				'schema_howto_supplies' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'How-To Supplies', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_supplies',
+					'content'  => $form->get_input_multi( 'schema_howto_supply', $css_class = 'long_name', '', $start_num = 0, $howto_supplies_max ),
+				),
+				'schema_howto_tools' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'How-To Tools', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_tools',
+					'content'  => $form->get_input_multi( 'schema_howto_tool', $css_class = 'long_name', '', $start_num = 0, $howto_tools_max ),
+				),
+				'schema_howto_steps' => array(
+					'tr_class' => $type_row_class[ 'howto' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'How-To Steps', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_howto_steps',
+					'content'  => $form->get_mixed_multi( array(
+						'schema_howto_step_section' => array(
+							'input_type'    => 'radio',
+							'input_class'   => 'howto_step_section',
+							'input_content' => _x( '%1$s How-To Step or %2$s Step Group / Section:', 'option label', 'wpsso' ),
+							'input_values'  => array( 0, 1 ),
+							'input_default' => 0,
+						),
+						'schema_howto_step' => array(
+							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'wide howto_step_name is_required',
+						),
+						'schema_howto_step_text' => array(
+							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
+							'input_type'  => 'textarea',
+							'input_class' => 'wide howto_step_text',
+						),
+						'schema_howto_step_img' => array(
+							'input_label' => _x( 'Image ID', 'option label', 'wpsso' ),
+							'input_type'  => 'image',
+							'input_class' => 'howto_step_img',
+						),
+					), $css_class = '', $css_id = 'schema_howto_step', $start_num = 0, $howto_steps_max, $show_first = 3 ),
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+
+			$recipe_ingr_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 );
+			$recipe_inst_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 );
+
+			$form_rows = array(
+				'subsection_schema_recipe' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Recipe Information', 'metabox title', 'wpsso' )
+				),
+				'schema_recipe_cuisine' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Recipe Cuisine', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_cuisine',
+					'content'  => $form->get_input( 'schema_recipe_cuisine', $css_class = 'long_name' ),
+				),
+				'schema_recipe_course' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Recipe Course', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_course',
+					'content'  => $form->get_input( 'schema_recipe_course', $css_class = 'long_name' ),
+				),
+				'schema_recipe_yield' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Recipe Makes', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_yield',
+					'content'  => $form->get_input( 'schema_recipe_yield', $css_class = 'long_name' ),
+				),
+				'schema_recipe_cook_method' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Cooking Method', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_cook_method',
+					'content'  => $form->get_input( 'schema_recipe_cook_method', $css_class = 'long_name' ),
+				),
+				'schema_recipe_prep_time' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_prep_time',
+					'content'  => $form->get_input_time_dhms( 'schema_recipe_prep' ),
+				),
+				'schema_recipe_cook_time' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Cooking Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_cook_time',
+					'content'  => $form->get_input_time_dhms( 'schema_recipe_cook' ),
+				),
+				'schema_recipe_total_time' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_total_time',
+					'content'  => $form->get_input_time_dhms( 'schema_recipe_total' ),
+				),
+				'schema_recipe_ingredients' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_ingredients',
+					'content'  => $form->get_input_multi( 'schema_recipe_ingredient', $css_class = 'long_name', '', $start_num = 0, $recipe_ingr_max ),
+				),
+				'schema_recipe_instructions' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Recipe Instructions', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_instructions',
+					'content'  => $form->get_mixed_multi( array(
+						'schema_recipe_instruction_section' => array(
+							'input_type'    => 'radio',
+							'input_class'   => 'recipe_instruction_section',
+							'input_content' => _x( '%1$s Recipe Instruction or %2$s Instruction Group / Section:', 'option label', 'wpsso' ),
+							'input_values'  => array( 0, 1 ),
+							'input_default' => 0,
+						),
+						'schema_recipe_instruction' => array(
+							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'wide recipe_instruction_name is_required',
+						),
+						'schema_recipe_instruction_text' => array(
+							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
+							'input_type'  => 'textarea',
+							'input_class' => 'wide recipe_instruction_text',
+						),
+						'schema_recipe_instruction_img' => array(
+							'input_label' => _x( 'Image ID', 'option label', 'wpsso' ),
+							'input_type'  => 'image',
+							'input_class' => 'recipe_instruction_img',
+						),
+					), $css_class = '', $css_id = 'schema_recipe_instruction', $start_num = 0, $recipe_inst_max, $show_first = 3 ),
+				),
+
+				/**
+				 * Recipe Nutrition Information.
+				 */
+				'subsection_schema_recipe_nutrition' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Recipe Nutrition Information', 'metabox title', 'wpsso' )
+				),
+				'schema_recipe_nutri_serv' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Serving Size', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_serv',
+					'content'  => $form->get_input( 'schema_recipe_nutri_serv', $css_class = 'long_name is_required' ),
+				),
+				'schema_recipe_nutri_cal' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Calories', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_cal',
+					'content'  => $form->get_input( 'schema_recipe_nutri_cal', 'medium' ) . ' ' .
+					_x( 'calories', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_prot' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Protein', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_prot',
+					'content'  => $form->get_input( 'schema_recipe_nutri_prot', 'medium' ) . ' ' .
+						_x( 'grams of protein', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_fib' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Fiber', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_fib',
+					'content'  => $form->get_input( 'schema_recipe_nutri_fib', 'medium' ) . ' ' .
+						_x( 'grams of fiber', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_carb' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Carbohydrates', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_carb',
+					'content'  => $form->get_input( 'schema_recipe_nutri_carb', 'medium' ) . ' ' .
+						_x( 'grams of carbohydrates', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_sugar' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Sugar', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_sugar',
+					'content'  => $form->get_input( 'schema_recipe_nutri_sugar', 'medium' ) . ' ' .
+						_x( 'grams of sugar', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_sod' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Sodium', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_sod',
+					'content'  => $form->get_input( 'schema_recipe_nutri_sod', 'medium' ) . ' ' .
+						_x( 'milligrams of sodium', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_fat' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Fat', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_fat',
+					'content'  => $form->get_input( 'schema_recipe_nutri_fat', 'medium' ) . ' ' .
+						_x( 'grams of fat', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_sat_fat' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Saturated Fat', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_sat_fat',
+					'content'  => $form->get_input( 'schema_recipe_nutri_sat_fat', 'medium' ) . ' ' .
+						_x( 'grams of saturated fat', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_unsat_fat' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Unsaturated Fat', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_unsat_fat',
+					'content'  => $form->get_input( 'schema_recipe_nutri_unsat_fat', 'medium' ) . ' ' .
+						_x( 'grams of unsaturated fat', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_trans_fat' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Trans Fat', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_trans_fat',
+					'content'  => $form->get_input( 'schema_recipe_nutri_trans_fat', 'medium' ) . ' ' .
+						_x( 'grams of trans fat', 'option comment', 'wpsso' ),
+				),
+				'schema_recipe_nutri_chol' => array(
+					'tr_class' => $type_row_class[ 'recipe' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Cholesterol', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_recipe_nutri_chol',
+					'content'  => $form->get_input( 'schema_recipe_nutri_chol', 'medium' ) . ' ' .
+						_x( 'milligrams of cholesterol', 'option comment', 'wpsso' ),
+				),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
