@@ -232,12 +232,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.6.3-dev.1 (2022/10/24)**
+**Version 13.7.0-dev.2 (2022/10/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Moved the Document SSO metabox Schema HowTo and Recipe options from the Premium to the Standard edition.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -510,9 +510,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.6.3-dev.1 =
+= 13.7.0-dev.2 =
 
-(2022/10/24) Refactoted the `WpssoMessages->wp_sitemaps_disabled()` method.
+(2022/10/25) Moved the Document SSO metabox Schema HowTo and Recipe options from the Premium to the Standard edition.
 
 = 13.6.2 =
 
