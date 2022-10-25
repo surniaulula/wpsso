@@ -369,11 +369,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_wp() {
 
+			$is_public     = get_option( 'blog_public' );
 			$is_production = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
-			$is_public = get_option( 'blog_public' );
-
-			if ( $is_production && ! $is_public ) {
+			if ( ! $is_public && $is_production ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -382,7 +381,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
-				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' ), $settings_url );
+				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines from indexing this site.', 'wpsso' ), $settings_url ) . ' ';
+
+				$notice_msg .= __( 'This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' );
 
 				$notice_key = 'wp-search-engine-visibility-disabled';
 

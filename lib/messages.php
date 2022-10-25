@@ -928,7 +928,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$table_rows = array();
 			}
 
-			$table_rows[ 'wp_sitemaps_disabled' ] = '<tr><td align="center">' . $this->wp_sitemaps_disabled() . '</td></tr>';
+			$table_rows[ 'wp_sitemaps_disabled' ] = '<tr><td align="center">' .
+				$this->wp_sitemaps_disabled() .
+				'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>' .
+				'</td></tr>';
+
 
 			return $table_rows;
 		}
@@ -1146,30 +1150,44 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function wp_sitemaps_disabled() {
+		/**
+		 * Use SucomUtilWP::sitemaps_disabled() as a test before calling this method.
+		 */
+		public function wp_sitemaps_disabled( $is_notice = false ) {
 
-			$html = '';
+			$html          = '';
+			$is_public     = get_option( 'blog_public' );
+			$is_production = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
-			$is_public = get_option( 'blog_public' );
+			if ( ! $is_production && $is_notice ) {	// Only show notice for production sites.
+
+				return $html;
+			}
+
+			$html .= '<p class="status-msg">';
+			$html .= __( 'The WordPress sitemaps functionality is disabled.', 'wpsso' );
+			$html .= '</p>';
 
 			if ( ! $is_public ) {
 
-				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
-			}
+				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
-			$html .= '<p class="status-msg">' . __( 'The WordPress sitemaps functionality is disabled.', 'wpsso' ) . '</p>';
+				$html .= '<p class="status-msg">';
+				$html .= sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines from indexing this site.', 'wpsso' ), $settings_url );
+				$html .= '</p>';
+			}
 
 			/**
 			 * Check if a theme or another plugin has disabled the Wordpress sitemaps functionality.
 			 */
 			if ( ! apply_filters( 'wp_sitemaps_enabled', true ) ) {
 
-				$html .= '<p class="status-msg">' . __( 'A theme or plugin is returning <code>false</code> for the \'wp_sitemaps_enabled\' filter.', 'wpsso' ) . '</p>';
+				$html .= '<p class="status-msg">';
+				$html .= __( 'A theme or plugin is returning <code>false</code> for the \'wp_sitemaps_enabled\' filter.', 'wpsso' );
+				$html .= '</p>';
 			}
 
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
+			return $is_notice ? preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $html ) : $html;
 		}
 
 		/**
