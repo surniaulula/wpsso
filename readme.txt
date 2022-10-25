@@ -126,7 +126,7 @@ Present your content at its best on social sites and in search results - no matt
 **Reads data from remote service APIs, including:**
 
 * Get Bitly Short URL
-* Get DLMY.App
+* Get DLMY.App Short URL
 * Get Facebook Video Data
 * Get Gravatar Image Data
 * Get Ow.ly Short URL

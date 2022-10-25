@@ -130,7 +130,7 @@
 
 <ul>
 <li>Get Bitly Short URL</li>
-<li>Get DLMY.App</li>
+<li>Get DLMY.App Short URL</li>
 <li>Get Facebook Video Data</li>
 <li>Get Gravatar Image Data</li>
 <li>Get Ow.ly Short URL</li>
