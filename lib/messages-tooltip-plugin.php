@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$def_checked     = $this->get_def_checked( 'plugin_clear_short_urls' );
 					$cache_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_s_' );
-					$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
+					$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'tooltip fragment', 'wpsso' );
 
 					$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 

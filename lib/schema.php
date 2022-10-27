@@ -2532,7 +2532,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Get the image ID and create a Schema images array.
 				 */
-				if ( $resize && $pid = $wpsso->media->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
+				if ( $resize && $pid = SucomUtil::get_first_mt_media_id( $mt_single_image, $media_pre ) ) {
 
 					if ( empty( $resized_pids[ $pid ] ) ) {	// Skip image IDs already added.
 

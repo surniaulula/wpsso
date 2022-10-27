@@ -459,7 +459,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * Add application/x-shockwave-flash video first and the text/html video second.
 					 */
-					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video', $mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
+					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $mt_media_pre = 'og:video',
+						$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
 
 						$mt_extend[] = $mt_single_video;
 					}
@@ -1811,62 +1812,62 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( null !== $mt_videos ) {
 
-							$media_info[ $key ] = $this->get_media_value( $mt_videos, $get_mt_name );
+							$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $get_mt_name );
 						}
 
 						if ( empty( $media_info[ $key ] ) ) {
 
-							$media_info[ $key ] = $this->get_media_value( $mt_images, $get_mt_name );
+							$media_info[ $key ] = $this->get_mt_media_value( $mt_images, $get_mt_name );
 						}
 
 						break;
 
 					case 'img_alt':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_images, $mt_pre . ':image:alt' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_images, $mt_pre . ':image:alt' );
 
 						break;
 
 					case 'video':
 					case 'vid_url':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video' );
 
 						break;
 
 					case 'vid_type':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:type' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:type' );
 
 						break;
 
 					case 'vid_title':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:title' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:title' );
 
 						break;
 
 					case 'vid_desc':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:description' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:description' );
 
 						break;
 
 					case 'vid_stream_url':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
 
 						break;
 
 					case 'vid_width':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:width' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:width' );
 
 						break;
 
 					case 'vid_height':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:height' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:height' );
 
 						break;
 
@@ -1874,7 +1875,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					case 'prev_url':
 					case 'preview':
 
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
 
 						break;
 
@@ -1897,28 +1898,36 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * Also used by the WpssoProMediaGravatar class to get the default image URL.
+		 * To get the first image ID or media URL, use the following methods instead:
+		 *
+		 * SucomUtil::get_first_og_image_id()
+		 * SucomUtil::get_first_og_image_url()
+		 * SucomUtil::get_first_mt_media_id()
+		 * SucomUtil::get_first_mt_media_url()
 		 */
-		public function get_media_value( $mt_og, $media_pre ) {
+		public function get_mt_media_value( $mt_og, $mt_media_pre ) {
 
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {	// Nothing to do.
 
 				return '';
 			}
 
-			$og_media = reset( $mt_og );	// Only search the first media array.
+			if ( ! SucomUtil::is_assoc( $mt_og ) ) {
 
-			switch ( $media_pre ) {
+				$og_media = reset( $mt_og );	// Only search the first media array.
+			}
+
+			switch ( $mt_media_pre ) {
 
 				/**
 				 * If we're asking for an image or video url, then search all three values sequentially.
 				 */
-				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $media_pre ) ? true : false ):
+				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $mt_media_pre ) ? true : false ):
 
 					$mt_search = array(
-						$media_pre . ':secure_url',	// og:image:secure_url
-						$media_pre . ':url',		// og:image:url
-						$media_pre,			// og:image
+						$mt_media_pre . ':secure_url',	// og:image:secure_url
+						$mt_media_pre . ':url',		// og:image:url
+						$mt_media_pre,			// og:image
 					);
 
 					break;
@@ -1928,7 +1937,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				default:
 
-					$mt_search = array( $media_pre );
+					$mt_search = array( $mt_media_pre );
 
 					break;
 			}
@@ -2366,11 +2375,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Sanitation of media.
 			 */
-			foreach ( array( 'og:video', 'og:image' ) as $media_pre ) {
+			foreach ( array( 'og:video', 'og:image' ) as $mt_media_pre ) {
 
-				$media_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre );
+				$media_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $mt_media_pre );
 
-				if ( 'og:video' === $media_pre ) {
+				if ( 'og:video' === $mt_media_pre ) {
 
 					/**
 					 * Fallback to the original video url.
@@ -2494,19 +2503,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 
-				$have_media[ $media_pre ] = empty( $media_url ) ? false : true;
+				$have_media[ $mt_media_pre ] = empty( $media_url ) ? false : true;
 
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( empty( $have_media[ $media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
+				if ( empty( $have_media[ $mt_media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no media url or duplicate media - removing ' . $media_pre . ' meta tags' );
+						$this->p->debug->log( 'no media url or duplicate media - removing ' . $mt_media_pre . ' meta tags' );
 					}
 
-					foreach( SucomUtil::preg_grep_keys( '/^' . $media_pre . '(:.*)?$/', $mt_single_video ) as $k => $v ) {
+					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video ) as $k => $v ) {
 
 						unset ( $mt_single_video[ $k ] );
 					}
@@ -2514,7 +2523,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * If the media is an image, then check and maybe add missing sizes.
 				 */
-				} elseif ( $media_pre === 'og:image' ) {
+				} elseif ( 'og:image' === $mt_media_pre ) {
 
 					if ( empty( $mt_single_video[ 'og:image:width' ] ) || $mt_single_video[ 'og:image:width' ] < 0 ||
 						empty( $mt_single_video[ 'og:image:height' ] ) || $mt_single_video[ 'og:image:height' ] < 0 ) {

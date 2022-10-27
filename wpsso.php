@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.0
  * WC Tested Up To: 7.0.0
- * Version: 13.7.0-dev.2
+ * Version: 13.7.0-dev.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -609,10 +609,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				if ( constant( $const_name ) ) {
 
-					return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
+					return sprintf( _x( '(%s constant is true)', 'option comment', 'wpsso' ), $const_name );
 				}
 
-				return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
+				return sprintf( _x( '(%s constant is false)', 'option comment', 'wpsso' ), $const_name );
 			}
 
 			return '';

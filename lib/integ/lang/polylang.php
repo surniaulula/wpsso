@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoIntegLangPolylang' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'home_url'            => 2,
-				'link_rel_alternates' => 2,
+				'sitemaps_alternates' => 2,
 			) );
 
 			$this->p->util->add_plugin_filters( $this, array(
@@ -50,15 +50,7 @@ if ( ! class_exists( 'WpssoIntegLangPolylang' ) ) {
 			return $url;
 		}
 
-		/**
-		 * You can use a sitemap to tell Google all of the language and region variants for each URL. To do so, add a <loc>
-		 * element specifying a single URL, with child <xhtml:link> entries listing every language/locale variant of the
-		 * page including itself. Therefore if you have 3 versions of a page, your sitemap will have 3 entries, each with 3
-		 * identical child entries.
-		 *
-		 * See https://developers.google.com/search/docs/advanced/crawling/localized-versions#sitemap.
-		 */
-		public function filter_link_rel_alternates( $alternates, $mod ) {
+		public function filter_sitemaps_alternates( $alternates, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 

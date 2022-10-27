@@ -56,12 +56,12 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) .
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' .
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) .
-				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( 'not recommended', 'option comment', 'wpsso' ) );
+				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( '(not recommended)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_gravatar_api' ] = '' .
 				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),

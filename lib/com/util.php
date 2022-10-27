@@ -2388,15 +2388,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array_merge( $mt_ret, $mt_og );
 		}
 
+		public static function get_first_og_image_id( array $assoc ) {
+
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':id' ) );
+		}
+
+		public static function get_first_og_image_url( array $assoc ) {
+
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':secure_url', ':url', '' ) );
+		}
+
+		public static function get_first_mt_media_id( array $assoc, $media_pre = 'og:image' ) {
+			
+			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes = array( ':id' ) );
+		}
+
 		/**
 		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
 		public static function get_first_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
-
-			if ( ! is_array( $mt_suffixes ) ) {	// Array of meta tag suffixes to use.
-
-				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url', ':stream_url' );
-			}
 
 			/**
 			 * Check for two dimensional arrays and keep following the first array element.
@@ -2405,16 +2415,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( isset( $assoc[ $media_pre ] ) && is_array( $assoc[ $media_pre ] ) ) {
 
-				$first_media = reset( $assoc[ $media_pre ] );
+				$first_el = reset( $assoc[ $media_pre ] );
 
 			} else {
 
-				$first_media = reset( $assoc );	// Can be array or string.
+				$first_el = reset( $assoc );	// Can be array or string.
 			}
 
-			if ( is_array( $first_media ) ) {	// Recurse until we hit bottom (ie. we have a string).
+			/**
+			 * If the first element isn't a string (ie. non-array value), then recurse until we hit bottom.
+			 */
+			if ( is_array( $first_el ) ) {
 
-				return self::get_first_mt_media_url( $first_media, $media_pre );
+				return self::get_first_mt_media_url( $first_el, $media_pre, $mt_suffixes );
+			}
+
+			if ( ! is_array( $mt_suffixes ) ) {	// Array of meta tag suffixes to use.
+
+				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url', ':stream_url' );
 			}
 
 			/**
@@ -2429,11 +2447,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return '';	// Empty string.
-		}
-
-		public static function get_first_og_image_url( array $assoc ) {
-
-			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':secure_url', ':url', '' ) );
 		}
 
 		/**

@@ -1824,7 +1824,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Get the alternates array.
+		 * Get the sitemaps alternates array.
 		 *
 		 * Example:
 		 *
@@ -1843,9 +1843,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * 	),
 		 * );
 		 */
-		public function get_link_rel_alternates( array $mod ) {
+		public function get_sitemaps_alternates( array $mod ) {
 
-			$alternates = apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
+			$alternates = (array) apply_filters( 'wpsso_sitemaps_alternates', array(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1853,6 +1853,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $alternates;
+		}
+
+		public function get_sitemaps_images( array $mod ) {
+
+			$sitemaps_images = array();
+
+			$mt_images = $this->p->media->get_all_images( $num = 1, $size_names = 'schema', $mod, $md_pre = array( 'schema', 'og' ) );
+
+			foreach ( $mt_images as $mt_single_image ) {
+
+				if ( $image_url = SucomUtil::get_first_og_image_url( $mt_single_image ) ) {
+
+					$sitemaps_images[] = array(
+						'image:loc' => $image_url,
+					);
+				}
+			}
+
+			return $sitemaps_images;
 		}
 
 		/**

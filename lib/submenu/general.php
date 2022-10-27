@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'schema_aggr_offers' ) .
 						'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
-						sprintf( _x( 'incompatible with <a href="%s">price drop appearance</a>', 'option comment', 'wpsso' ),
+						sprintf( _x( '(not compatible with <a href="%s">price drop appearance</a>)', 'option comment', 'wpsso' ),
 							'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
 
 					$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_add_text_prop' ) .
@@ -318,7 +318,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'robots_max_snippet' ) .
 						'<td>' . $this->form->get_input( 'robots_max_snippet',
 							$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $robots_disabled ) . ' ' .
-						_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+						_x( 'characters or less', 'option comment', 'wpsso' ) . ' ' .
+						_x( '(-1 for no limit)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( $in_view = 'basic', 'robots_max_image_preview' ) .
 						$this->form->get_th_html( _x( 'Robots Image Preview Size', 'option label', 'wpsso' ),
@@ -331,7 +332,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = 'medium', $css_id = 'robots_max_video_preview' ) .
 						'<td>' . $this->form->get_input( 'robots_max_video_preview',
 							$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $robots_disabled ) .
-						_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+						_x( 'seconds', 'option comment', 'wpsso' ) . ' ' .
+						_x( '(-1 for no limit)', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
 
@@ -346,19 +348,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'pin_add_nopin_header_img_tag' ) .
 						'<td>' . $this->form->get_checkbox( 'pin_add_nopin_header_img_tag' ) .' ' .
-						_x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
+						_x( '(recommended)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'pin_add_nopin_media_img_tag' ] = '' .
 						$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'pin_add_nopin_media_img_tag' ) .
 						'<td>' . $this->form->get_checkbox( 'pin_add_nopin_media_img_tag' ) . ' ' .
-						_x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
+						_x( '(recommended)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'pin_add_img_html' ] = '' .
 						$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'pin_add_img_html' ) .
 						'<td>' . $this->form->get_checkbox( 'pin_add_img_html' ) . ' ' .
-						_x( 'recommended (see help text for caveats)', 'option comment', 'wpsso' ) . '</td>';
+						_x( '(recommended)', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.7.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 13.7.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -553,8 +553,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 lib/com/form.php:887
-#: lib/media-filters.php:114 lib/media.php:1413 lib/media.php:1565
-#: lib/media.php:3182
+#: lib/media-filters.php:114 lib/media.php:1414 lib/media.php:1566
+#: lib/media.php:3191
 msgid "Media Library"
 msgstr ""
 
@@ -2735,9 +2735,10 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:159 lib/pro/admin/advanced.php:102
 #: lib/pro/admin/advanced.php:146 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:98 lib/std/admin/advanced.php:140
-#: lib/std/admin/general.php:59
+#: lib/std/admin/general.php:59 lib/submenu/general.php:351
+#: lib/submenu/general.php:357 lib/submenu/general.php:363
 msgctxt "option comment"
-msgid "recommended (see help text)"
+msgid "(recommended)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:9 lib/pro/admin/advanced.php:106
@@ -2749,7 +2750,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:10 lib/pro/admin/advanced.php:109
 #: lib/std/admin/advanced.php:104
 msgctxt "option comment"
-msgid "recommended if shortcodes in excerpts"
+msgid "(recommended if shortcodes in excerpts)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:11 lib/pro/admin/advanced.php:113
@@ -2804,7 +2805,7 @@ msgstr ""
 #: lib/pro/admin/advanced.php:153 lib/pro/admin/general.php:68
 #: lib/std/admin/advanced.php:146 lib/std/admin/general.php:64
 msgctxt "option comment"
-msgid "not recommended"
+msgid "(not recommended)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:20 lib/messages.php:330
@@ -5181,7 +5182,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2565 lib/util.php:3109
+#: lib/admin.php:2565 lib/util.php:3128
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6316,28 +6317,28 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:137 lib/submenu/general.php:321
+#: lib/edit-visibility.php:138 lib/submenu/general.php:321
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit-visibility.php:138 lib/edit-visibility.php:153
-#: lib/submenu/general.php:321 lib/submenu/general.php:334
+#: lib/edit-visibility.php:139 lib/edit-visibility.php:155
+#: lib/submenu/general.php:322 lib/submenu/general.php:336
 msgctxt "option comment"
-msgid "-1 for no limit"
+msgid "(-1 for no limit)"
 msgstr ""
 
-#: lib/edit-visibility.php:142
+#: lib/edit-visibility.php:143
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit-visibility.php:149
+#: lib/edit-visibility.php:150
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:152 lib/submenu/general.php:334
+#: lib/edit-visibility.php:154 lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -6591,7 +6592,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3192
+#: lib/media-filters.php:117 lib/media.php:3201
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6620,84 +6621,84 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1226
+#: lib/media.php:1227
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1417
+#: lib/media.php:1418
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1419 lib/media.php:1616
+#: lib/media.php:1420 lib/media.php:1617
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1435
+#: lib/media.php:1436
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1456
+#: lib/media.php:1457
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1475
+#: lib/media.php:1476
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1567
+#: lib/media.php:1568
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1585 lib/post.php:676 lib/register.php:348 lib/term.php:532
+#: lib/media.php:1586 lib/post.php:676 lib/register.php:348 lib/term.php:532
 #: lib/user.php:519 lib/util.php:779 lib/util.php:885 lib/util.php:917
-#: lib/util.php:3087
+#: lib/util.php:3106
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1586 lib/post.php:677 lib/term.php:533 lib/user.php:520
-#: lib/util.php:780 lib/util.php:3088
+#: lib/media.php:1587 lib/post.php:677 lib/term.php:533 lib/user.php:520
+#: lib/util.php:780 lib/util.php:3107
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1587
+#: lib/media.php:1588
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1614
+#: lib/media.php:1615
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3208
+#: lib/media.php:3217
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3261
+#: lib/media.php:3270
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3296
+#: lib/media.php:3305
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -8911,7 +8912,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:528
-msgctxt "option comment"
+msgctxt "tooltip fragment"
 msgid "disabled"
 msgstr ""
 
@@ -9489,7 +9490,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:347 lib/messages.php:1116
-#: lib/submenu/general.php:358
+#: lib/submenu/general.php:360
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -10454,12 +10455,12 @@ msgstr ""
 
 #: lib/messages.php:977 wpsso.php:612
 msgctxt "option comment"
-msgid "%s constant is true"
+msgid "(%s constant is true)"
 msgstr ""
 
 #: lib/messages.php:983
 msgctxt "option comment"
-msgid "Theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
+msgid "No theme support for <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
 #: lib/messages.php:1015
@@ -11469,7 +11470,7 @@ msgstr ""
 
 #: lib/submenu/general.php:303
 msgctxt "option comment"
-msgid "incompatible with <a href=\"%s\">price drop appearance</a>"
+msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
 #: lib/submenu/general.php:307
@@ -11482,77 +11483,67 @@ msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:324
+#: lib/submenu/general.php:325
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:330
+#: lib/submenu/general.php:331
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:341
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:346
+#: lib/submenu/general.php:348
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:349 lib/submenu/general.php:355
-msgctxt "option comment"
-msgid "recommended"
-msgstr ""
-
-#: lib/submenu/general.php:352
+#: lib/submenu/general.php:354
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:361
-msgctxt "option comment"
-msgid "recommended (see help text for caveats)"
-msgstr ""
-
-#: lib/submenu/general.php:368
+#: lib/submenu/general.php:370
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:369
+#: lib/submenu/general.php:371
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:373
+#: lib/submenu/general.php:375
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:378
+#: lib/submenu/general.php:380
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:387
+#: lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:392
+#: lib/submenu/general.php:394
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:397
+#: lib/submenu/general.php:399
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:402
+#: lib/submenu/general.php:404
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
@@ -12065,150 +12056,150 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3089
+#: lib/util.php:3108
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3112
+#: lib/util.php:3131
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3114
+#: lib/util.php:3133
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3116
+#: lib/util.php:3135
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3118
+#: lib/util.php:3137
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3513
+#: lib/util.php:3532
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3514
+#: lib/util.php:3533
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3518
+#: lib/util.php:3537
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3519
+#: lib/util.php:3538
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3523
+#: lib/util.php:3542
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3524
+#: lib/util.php:3543
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3528
+#: lib/util.php:3547
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3529
+#: lib/util.php:3548
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3533
+#: lib/util.php:3552
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3534
+#: lib/util.php:3553
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3538
+#: lib/util.php:3557
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3539
+#: lib/util.php:3558
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3543
+#: lib/util.php:3562
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3544
+#: lib/util.php:3563
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3548
+#: lib/util.php:3567
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3549
+#: lib/util.php:3568
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3553
+#: lib/util.php:3572
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3573
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3559
+#: lib/util.php:3578
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3560
+#: lib/util.php:3579
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3724
+#: lib/util.php:3743
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3734
+#: lib/util.php:3753
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
 #: wpsso.php:615
 msgctxt "option comment"
-msgid "%s constant is false"
+msgid "(%s constant is false)"
 msgstr ""
 
 #: wpsso.php:768

@@ -95,13 +95,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_filter_content' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) .
-				$form->get_no_td_checkbox( 'plugin_filter_content', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $network );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) .
-				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( '(recommended if shortcodes in excerpts)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
 
 			$table_rows[ 'plugin_page_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_excerpt' ) .
@@ -137,13 +137,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) .
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' .
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) .
-				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( 'not recommended', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( '(not recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
 
 			$table_rows[ 'plugin_upscale_pct_max' ] = '' .

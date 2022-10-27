@@ -5,18 +5,18 @@
  */
 _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
-_x( 'recommended (see help text)', 'option comment', 'wpsso' );
+_x( '(recommended)', 'option comment', 'wpsso' );
 _x( 'Use Filtered Excerpt', 'option label', 'wpsso' );
-_x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' );
+_x( '(recommended if shortcodes in excerpts)', 'option comment', 'wpsso' );
 _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable Tags for Pages', 'option label', 'wpsso' );
 _x( 'Add Person Role for New Users', 'option label', 'wpsso' );
 _x( 'Inherit Featured Image', 'option label', 'wpsso' );
 _x( 'Inherit Custom Images', 'option label', 'wpsso' );
 _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-_x( 'recommended (see help text)', 'option comment', 'wpsso' );
+_x( '(recommended)', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
-_x( 'not recommended', 'option comment', 'wpsso' );
+_x( '(not recommended)', 'option comment', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
@@ -156,9 +156,9 @@ __( 'An SEO plugin has been detected - some basic SEO meta tags have been unchec
 _x( 'Inherit Featured Image', 'option label', 'wpsso' );
 _x( 'Inherit Custom Images', 'option label', 'wpsso' );
 _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-_x( 'recommended (see help text)', 'option comment', 'wpsso' );
+_x( '(recommended)', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
-_x( 'not recommended', 'option comment', 'wpsso' );
+_x( '(not recommended)', 'option comment', 'wpsso' );
 _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' );
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
