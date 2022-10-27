@@ -1714,9 +1714,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Plugin Admin.
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
+					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
 					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
 					'plugin_debug_html'         => 0,	// Add HTML Debug Messages.
-					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
 
 					/**
 					 * Advanced Settings > Integration.

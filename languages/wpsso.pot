@@ -5182,121 +5182,121 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2565 lib/util.php:3128
+#: lib/admin.php:2562 lib/util.php:3128
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2573
+#: lib/admin.php:2570
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2597
+#: lib/admin.php:2594
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2616
+#: lib/admin.php:2613
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2637
+#: lib/admin.php:2634
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2668
+#: lib/admin.php:2665
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2689
+#: lib/admin.php:2686
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2698
+#: lib/admin.php:2695
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2818
+#: lib/admin.php:2815
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2825
+#: lib/admin.php:2822
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2832
+#: lib/admin.php:2829
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2846
+#: lib/admin.php:2843
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2856
+#: lib/admin.php:2853
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2866
+#: lib/admin.php:2863
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3292
+#: lib/admin.php:3289
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3293
+#: lib/admin.php:3290
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3298
+#: lib/admin.php:3295
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3299
+#: lib/admin.php:3296
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3310
+#: lib/admin.php:3307
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3311
+#: lib/admin.php:3308
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3317
+#: lib/admin.php:3314
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3324
+#: lib/admin.php:3321
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3331
+#: lib/admin.php:3328
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3338
+#: lib/admin.php:3335
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
@@ -8833,7 +8833,7 @@ msgid "Show a \"%s\" menu in the admin toolbar."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:443
-msgid "Optionally remove menu items from the %s menu."
+msgid "Optionally remove settings pages from the %s menu."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:451

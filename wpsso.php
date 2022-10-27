@@ -596,16 +596,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function get_const_status( $const_suffix ) {
 
-			$const_name = $this->get_const_name( $const_suffix );
+			$const_name = $this->get_const_name( $const_suffix );	// Returns null if constant not defined.
 
 			return $const_name ? constant( $const_name ) : null;
 		}
 
 		public function get_const_status_transl( $const_suffix ) {
 
-			$const_name = $this->get_const_name( $const_suffix );
+			$const_name = $this->get_const_name( $const_suffix );	// Returns null if constant not defined.
 
-			if ( null !== $const_name ) {
+			if ( $const_name ) {
 
 				if ( constant( $const_name ) ) {
 

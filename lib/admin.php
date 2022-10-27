@@ -2555,10 +2555,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'plugin_load_mofiles' ] = '' .
 				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
-				'<td>' . ( ! $network && $debug_status ?
-				$form->get_hidden( 'plugin_load_mofiles', 0 ) .	// Uncheck if a constant is defined.
-				$form->get_no_checkbox( 'plugin_load_mofiles', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
-				$form->get_checkbox( 'plugin_load_mofiles' ) ) . '</td>' .
+				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
 				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_cache_disable' ] = '' .

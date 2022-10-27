@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$menu_title = $this->p->admin->get_menu_title();
 
-					$text = sprintf( __( 'Optionally remove menu items from the %s menu.', 'wpsso' ), $menu_title );
+					$text = sprintf( __( 'Optionally remove settings pages from the %s menu.', 'wpsso' ), $menu_title );
 
 					break;
 
