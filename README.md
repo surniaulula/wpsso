@@ -206,12 +206,12 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/">Filter Examples</a>
 
 <ul>
+<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/a-custom-field-value-for-a-schema-property/">A Custom Field Value for a Schema Property</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/exclude-schema-markup-by-post-type/">Exclude Schema Markup by Post Type</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/fix-hentry-errors-in-your-theme-templates/">Fix 'hentry' Errors in your Theme Templates</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-aggregaterating-property/">Modify the aggregateRating Property</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/">Modify the Default Article Section List</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/set-a-custom-field-value-to-a-schema-property/">Set a Custom Field Value to a Schema Property</a></li>
 </ul></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/">The $mod Variable</a></li>
