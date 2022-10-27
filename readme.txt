@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.7.0-dev.2 (2022/10/25)**
+**Version 13.7.0-dev.3 (2022/10/25)**
 
 * **New Features**
 	* None.
@@ -241,7 +241,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Refactoted the `WpssoMessages->wp_sitemaps_disabled()` method.
+	* Added a new `WpssoUtil->get_sitemaps_images()` method.
+	* Added a new `SucomUtil::get_first_og_image_id()` method.
+	* Added a new `SucomUtil::get_first_mt_media_id()` method.
+	* Renamed the `WpssoMedia->get_media_value()` method to `WpssoMedia->get_mt_media_value()`.
+	* Renamed the `WpssoUtil->get_link_rel_alternates()` method to `WpssoUtil->get_sitemaps_alternates()`.
+	* Renamed the 'wpsso_link_rel_alternates' filter to 'wpsso_sitemaps_alternates'.
+	* Refactored the `WpssoMessages->wp_sitemaps_disabled()` method.
+	* Refactored the `WpssoUtil::SucomUtil::get_first_mt_media_url()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -510,7 +517,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.7.0-dev.2 =
+= 13.7.0-dev.3 =
 
 (2022/10/25) Moved the Document SSO metabox Schema HowTo and Recipe options from the Premium to the Standard edition.
 
