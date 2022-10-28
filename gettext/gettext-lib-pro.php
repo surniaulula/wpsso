@@ -329,7 +329,7 @@ _x( 'Ow.ly API Key', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'YOURLS API URL', 'option label', 'wpsso' );
 __( 'Loop detected: YOURLS API URL matches current URL (%s)', 'wpsso' );
-__( 'Incomplete API options to instantiate the "%s" shortening service.', 'wpsso' );
+__( 'Unable to instantiate the "%s" shortening service.', 'wpsso' );
 __( '%s error:', 'wpsso' );
 __( 'URL shortening library file for "%s" is missing and required.', 'wpsso' );
 __( 'getting shopper approved ratings and reviews', 'wpsso' );
