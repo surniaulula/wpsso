@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the `WpssoUtil->get_link_rel_alternates()` method to `WpssoUtil->get_sitemaps_alternates()`.
 	* Renamed the 'wpsso_link_rel_alternates' filter to 'wpsso_sitemaps_alternates'.
 	* Refactored the `WpssoMessages->wp_sitemaps_disabled()` method.
-	* Refactored the `WpssoUtil::SucomUtil::get_first_mt_media_url()` method.
+	* Refactored the `SucomUtil::get_first_mt_media_url()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
