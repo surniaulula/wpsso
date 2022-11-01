@@ -232,6 +232,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.7.1-dev.5 (2022/11/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a check for `is_sitemap()` to skip importing post custom fields for sitemaps.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.7.0 (2022/10/28)**
 
 * **New Features**
@@ -516,6 +530,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.7.1-dev.5 =
+
+(2022/11/01) Added a check for `is_sitemap()` to skip importing post custom fields for sitemaps.
 
 = 13.7.0 =
 
