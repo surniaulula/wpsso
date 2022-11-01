@@ -488,6 +488,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				return $md_defs;
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
+			}
+
 			$product_price = $this->get_product_price( $product );
 			$currency      = $this->get_currency();
 			$include_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
@@ -543,6 +548,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			/**
 			 * Get product dimensions and weight.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting product dimentions' );
+			}
+
 			list(
 				$md_defs[ 'product_length_value' ],
 				$md_defs[ 'product_length_units' ],
@@ -582,6 +592,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting product defaults' );	// End timer.
+			}
 
 			return $md_defs;
 		}

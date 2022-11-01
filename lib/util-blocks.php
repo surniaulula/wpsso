@@ -47,6 +47,14 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping import custom fields for sitemap' );
+				}
+			}
+
 			if ( empty( $content ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -65,6 +73,11 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 				}
 
 				return $md_opts;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing content blocks' );	// Begin timer.
 			}
 
 			$blocks = parse_blocks( $content );
@@ -106,6 +119,11 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 				}
 
 				$md_opts = apply_filters( $filter_name, $md_opts, $block[ 'attrs' ] );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing content blocks' );	// End timer.
 			}
 
 			return $md_opts;
