@@ -54,6 +54,14 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping import custom fields for sitemap' );
+				}
+			}
+
 			/**
 			 * No meta to read if $wp_meta is empty or not an array.
 			 */
@@ -65,6 +73,11 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				return $md_opts;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing custom fields' );	// Begin timer.
 			}
 
 			if ( ! empty( $cf_meta_keys ) ) {
@@ -80,7 +93,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 			if ( null === $charset ) {
 
-				$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
+
 				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 			}
 
@@ -245,6 +259,11 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$md_opts[ $md_key . '_' . $num . ':disabled' ] = true;
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing custom fields' );	// End timer.
 			}
 
 			return $md_opts;

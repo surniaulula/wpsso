@@ -466,6 +466,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
 					 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $post_id . ' metadata' );
+					}
+
 					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, self::get_meta( $post_id ) );
 
 					/**
