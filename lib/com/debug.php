@@ -295,6 +295,33 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), 2 );
 		}
 
+		/**
+		 * See WpssoPost->get_mod().
+		 */
+		public function caller() {
+
+			if ( ! $this->enabled ) {
+
+				return;
+			}
+
+			$cur_stats = array(
+				'mtime' => microtime( $get_float = true ),
+				'mem'   => memory_get_usage(),
+			);
+
+			if ( null === $this->start_stats ) {
+
+				$this->start_stats = $cur_stats;
+			}
+
+			$mtime_diff = $cur_stats[ 'mtime' ] - $this->start_stats[ 'mtime' ];
+			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
+			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
+
+			$this->log( 'mark caller (' . $stats_text . ')', 3 );
+		}
+
 		private function get_time_text( $time ) {
 
 			return sprintf( '%f secs', $time );

@@ -158,6 +158,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->caller();
+
 				$this->p->debug->log_args( array(
 					'term_id'  => $term_id,
 					'tax_slug' => $tax_slug,
@@ -254,6 +256,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function get_options( $term_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->caller();
 
 				$this->p->debug->log_args( array(
 					'term_id'     => $term_id,

@@ -164,6 +164,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->caller();
+
 				$this->p->debug->log_args( array(
 					'user_id' => $user_id,
 				) );
@@ -227,6 +229,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function get_options( $user_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->caller();
 
 				$this->p->debug->log_args( array(
 					'user_id'     => $user_id,

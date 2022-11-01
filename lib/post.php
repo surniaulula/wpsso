@@ -204,6 +204,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->caller();
+
 				$this->p->debug->log_args( array(
 					'post_id' => $post_id,
 				) );
@@ -358,6 +360,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->caller();
+
 				$this->p->debug->log_args( array(
 					'post_id'     => $post_id,
 					'md_key'      => $md_key,
@@ -443,6 +447,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
 					 */
 					if ( isset( $mod[ 'wp_obj' ]->post_content ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'applying import_content_blocks filter' );
+						}
 
 						$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $mod[ 'wp_obj' ]->post_content );
 

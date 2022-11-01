@@ -48,6 +48,8 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->caller();
+
 				$this->p->debug->log_args( array(
 					'comment_id' => $comment_id,
 				) );
@@ -122,6 +124,8 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		public function get_options( $comment_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->caller();
 
 				$this->p->debug->log_args( array(
 					'comment_id'  => $comment_id,
