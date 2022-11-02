@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.7.1-dev.9 (2022/11/01)**
+**Version 13.7.1-dev.10 (2022/11/02)**
 
 * **New Features**
 	* None.
@@ -531,9 +531,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.7.1-dev.9 =
+= 13.7.1-dev.10 =
 
-(2022/11/01) Added a check for `is_sitemap()` to skip importing post custom fields for sitemaps.
+(2022/11/02) Added a check for `is_sitemap()` to skip importing post custom fields for sitemaps.
 
 = 13.7.0 =
 
