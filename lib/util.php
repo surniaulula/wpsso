@@ -67,6 +67,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Other functions.
 			 */
 			'is_amp_endpoint',
+			'is_sitemap',
+			'is_sitemap_stylesheet',
 			'wp_using_ext_object_cache',
 		);
 
