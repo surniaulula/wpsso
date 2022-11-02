@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.7.1-dev.7\n"
+"Project-Id-Version: WPSSO Core 13.7.1-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5894,7 +5894,7 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit-prev.php:106 lib/edit-visibility.php:54
+#: lib/edit-prev.php:106 lib/edit-visibility.php:53
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -6247,103 +6247,103 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/edit-visibility.php:61
+#: lib/edit-visibility.php:60
 msgctxt "option label"
 msgid "301 Redirect URL"
 msgstr ""
 
-#: lib/edit-visibility.php:84
+#: lib/edit-visibility.php:83
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit-visibility.php:92
+#: lib/edit-visibility.php:91
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit-visibility.php:95
+#: lib/edit-visibility.php:94
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:99
+#: lib/edit-visibility.php:98
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit-visibility.php:102
+#: lib/edit-visibility.php:101
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:106
+#: lib/edit-visibility.php:105
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit-visibility.php:109
+#: lib/edit-visibility.php:108
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:113
+#: lib/edit-visibility.php:112
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit-visibility.php:116
+#: lib/edit-visibility.php:115
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:120
+#: lib/edit-visibility.php:119
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit-visibility.php:123
+#: lib/edit-visibility.php:122
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:127
+#: lib/edit-visibility.php:126
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit-visibility.php:130
+#: lib/edit-visibility.php:129
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:134
+#: lib/edit-visibility.php:133
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:138 lib/submenu/general.php:321
+#: lib/edit-visibility.php:137 lib/submenu/general.php:321
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit-visibility.php:139 lib/edit-visibility.php:155
+#: lib/edit-visibility.php:138 lib/edit-visibility.php:154
 #: lib/submenu/general.php:322 lib/submenu/general.php:336
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
 
-#: lib/edit-visibility.php:143
+#: lib/edit-visibility.php:142
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit-visibility.php:150
+#: lib/edit-visibility.php:149
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:154 lib/submenu/general.php:335
+#: lib/edit-visibility.php:153 lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -6404,23 +6404,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:757
+#: lib/integ/ecom/woocommerce.php:773
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:760
+#: lib/integ/ecom/woocommerce.php:776
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:763
+#: lib/integ/ecom/woocommerce.php:779
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1411
+#: lib/integ/ecom/woocommerce.php:1427
 msgid "World"
 msgstr ""
 
@@ -11069,26 +11069,26 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:561
+#: lib/schema.php:571
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1836
+#: lib/schema.php:1846
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1947
+#: lib/schema.php:1957
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1974
+#: lib/schema.php:1984
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3658
+#: lib/schema.php:3668
 msgid "checking schema properties"
 msgstr ""
 

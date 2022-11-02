@@ -53,6 +53,8 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 
 					$this->p->debug->log( 'skipping import custom fields for sitemap' );
 				}
+
+				return $md_opts;
 			}
 
 			if ( empty( $content ) ) {

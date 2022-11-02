@@ -179,8 +179,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				return;
 			}
 
-			$stack = debug_backtrace();
-
+			$stack   = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
 			$log_msg = '';
 
 			if ( is_int( $class_seq ) ) {
@@ -190,7 +189,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					$func_seq = $class_seq;
 				}
 
-				$log_msg .= sprintf( $this->log_msg_cols[ 0 ], ( empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ] ) );
+				$class_name = empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ];
+
+				$log_msg .= sprintf( $this->log_msg_cols[ 0 ], $class_name );
 
 			} else {
 
@@ -292,7 +293,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
 			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
-			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), 2 );
+			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), $class_seq = 2 );
 		}
 
 		/**
@@ -319,7 +320,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
 			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
-			$this->log( 'mark caller (' . $stats_text . ')', 3 );
+			$this->log( 'mark caller (' . $stats_text . ')', $class_seq = 3 );
 		}
 
 		private function get_time_text( $time ) {
@@ -365,9 +366,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$func_seq = $class_seq;
 			}
 
-			$from  = '';
 			$html  = '<!-- ' . $this->display_name . ' debug';
-			$stack = debug_backtrace();
+			$stack = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+			$from  = '';
 
 			if ( ! empty( $stack[ $class_seq ][ 'class' ] ) ) {
 

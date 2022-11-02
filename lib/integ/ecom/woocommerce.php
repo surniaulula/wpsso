@@ -488,6 +488,18 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				return $md_defs;
 			}
 
+			$md_defs[ 'og_type' ] = 'product';
+
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping getting md defaults for sitemap' );
+				}
+
+				return $md_defs;
+			}
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
@@ -505,7 +517,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'include_vat = ' . ( $include_vat ? 'true' : 'false' ) );
 			}
 
-			$md_defs[ 'og_type' ]                  = 'product';
 			$md_defs[ 'product_price' ]            = $this->get_product_price_formatted( $product, $product_price, $include_vat );
 			$md_defs[ 'product_currency' ]         = $currency;
 			$md_defs[ 'product_retailer_part_no' ] = $product->get_sku();	// Product SKU.
@@ -605,6 +616,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 * Disable options where the value comes from the e-commerce plugin.
 		 */
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$prod_opts = $this->filter_get_md_defaults( array(), $mod );
 

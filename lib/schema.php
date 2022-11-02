@@ -93,6 +93,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping sanitizing md defaults for sitemap' );
+				}
+
+				return $md_opts;
+			}
+
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_oriented', $enum_key = 'adult_oriented',

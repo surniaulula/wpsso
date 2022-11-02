@@ -46,6 +46,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		 */
 		public function get_content( array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$directives = $this->get_directives( $mod );
 
 			$content = '';
@@ -72,6 +77,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		}
 
 		public function get_directives( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$md_opts = array();
 
@@ -138,6 +148,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
 		public function is_noindex( $mixed, $mod_id = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$mod = false;
 
