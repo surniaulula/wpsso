@@ -2290,6 +2290,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mixed );
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting redirect url for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// Begin timer.
+			}
+
 			$url        = null;
 			$is_custom  = false;
 
@@ -2309,6 +2314,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$url = apply_filters( 'wpsso_redirect_url', $url, $mod, $is_custom );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting redirect url for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// End timer.
+			}
 
 			return $url;
 		}

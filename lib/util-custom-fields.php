@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping import custom fields for sitemap' );
+					$this->p->debug->log( 'skipping importing custom fields for sitemap' );
 				}
 
 				return $md_opts;

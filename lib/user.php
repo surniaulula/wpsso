@@ -285,6 +285,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( null === $md_opts ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting user metadata for cache' );
+				}
+
 				$user_exists = SucomUtil::user_exists( $user_id );
 
 				if ( $user_exists ) {
@@ -324,7 +329,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
+				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping filters: options have already been filtered' );
+					}
+
+				} else {
 
 					/**
 					 * Set before calling filters to prevent recursion.

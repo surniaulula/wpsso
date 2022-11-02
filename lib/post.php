@@ -403,6 +403,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting post metadata for cache' );
+				}
+
 				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
@@ -427,7 +432,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
+				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping filters: options have already been filtered' );
+					}
+
+				} else {
 
 					/**
 					 * Set before calling filters to prevent recursion.

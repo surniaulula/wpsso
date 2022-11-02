@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping import custom fields for sitemap' );
+					$this->p->debug->log( 'skipping importing content blocks for sitemap' );
 				}
 
 				return $md_opts;

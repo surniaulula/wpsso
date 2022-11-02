@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.7.1-dev.8\n"
+"Project-Id-Version: WPSSO Core 13.7.1-dev.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4398,7 +4398,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:322 gettext/gettext-lib-pro.php:333
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:209
-#: lib/loader.php:223 lib/post.php:1599 lib/pro/util/shorten.php:331
+#: lib/loader.php:223 lib/post.php:1611 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -4878,7 +4878,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:946 lib/term.php:682 lib/user.php:687
+#: lib/admin.php:867 lib/post.php:958 lib/term.php:694 lib/user.php:699
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -4920,8 +4920,8 @@ msgstr ""
 
 #: lib/admin.php:955 lib/admin.php:966 lib/messages-tooltip-meta-schema.php:520
 #: lib/messages-tooltip-plugin.php:120 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1692
-#: lib/user.php:1799 lib/user.php:1935
+#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1704
+#: lib/user.php:1811 lib/user.php:1947
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5187,7 +5187,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2562 lib/util.php:3130
+#: lib/admin.php:2562 lib/util.php:3140
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -5311,7 +5311,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:349
+#: lib/comment.php:361
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -6669,14 +6669,14 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1586 lib/post.php:690 lib/register.php:348 lib/term.php:536
-#: lib/user.php:523 lib/util.php:781 lib/util.php:887 lib/util.php:919
-#: lib/util.php:3108
+#: lib/media.php:1586 lib/post.php:702 lib/register.php:348 lib/term.php:548
+#: lib/user.php:535 lib/util.php:781 lib/util.php:887 lib/util.php:919
+#: lib/util.php:3118
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1587 lib/post.php:691 lib/term.php:537 lib/user.php:524
-#: lib/util.php:782 lib/util.php:3109
+#: lib/media.php:1587 lib/post.php:703 lib/term.php:549 lib/user.php:536
+#: lib/util.php:782 lib/util.php:3119
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -10785,143 +10785,143 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:692
+#: lib/post.php:704
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:1084
+#: lib/post.php:1096
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1117
+#: lib/post.php:1129
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1132
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1135
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1153
+#: lib/post.php:1165
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1155
+#: lib/post.php:1167
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1157
+#: lib/post.php:1169
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1170
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1172
+#: lib/post.php:1184
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1186
+#: lib/post.php:1198
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1213
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1218
+#: lib/post.php:1230
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1221
+#: lib/post.php:1233
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1254
+#: lib/post.php:1266
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1257
+#: lib/post.php:1269
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1260
+#: lib/post.php:1272
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1281
+#: lib/post.php:1293
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1300
+#: lib/post.php:1312
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1302
+#: lib/post.php:1314
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1305
+#: lib/post.php:1317
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1348
+#: lib/post.php:1360
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1350
+#: lib/post.php:1362
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1358
+#: lib/post.php:1370
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1362
+#: lib/post.php:1374
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1366
+#: lib/post.php:1378
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1563
+#: lib/post.php:1575
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1568
+#: lib/post.php:1580
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1847
+#: lib/post.php:1859
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -11646,13 +11646,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:538
+#: lib/term.php:550
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:919
+#: lib/term.php:931
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -11697,70 +11697,70 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:525
+#: lib/user.php:537
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts "
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:828
+#: lib/user.php:840
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:834
+#: lib/user.php:846
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:989
+#: lib/user.php:1001
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1115
+#: lib/user.php:1127
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1116
+#: lib/user.php:1128
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1117
+#: lib/user.php:1129
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1618
+#: lib/user.php:1630
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1711
+#: lib/user.php:1723
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1726
+#: lib/user.php:1738
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1767
+#: lib/user.php:1779
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1769 lib/user.php:1872 lib/util-cache.php:182
+#: lib/user.php:1781 lib/user.php:1884 lib/util-cache.php:182
 #: lib/util-cache.php:755
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1818
+#: lib/user.php:1830
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1833
+#: lib/user.php:1845
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1870
+#: lib/user.php:1882
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -12061,144 +12061,144 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3110
+#: lib/util.php:3120
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3133
+#: lib/util.php:3143
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3135
+#: lib/util.php:3145
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3137
+#: lib/util.php:3147
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3139
+#: lib/util.php:3149
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3534
+#: lib/util.php:3544
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3535
+#: lib/util.php:3545
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3539
+#: lib/util.php:3549
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3540
+#: lib/util.php:3550
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3544
+#: lib/util.php:3554
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3545
+#: lib/util.php:3555
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3549
+#: lib/util.php:3559
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3550
+#: lib/util.php:3560
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3564
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3555
+#: lib/util.php:3565
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3559
+#: lib/util.php:3569
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3560
+#: lib/util.php:3570
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3564
+#: lib/util.php:3574
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3565
+#: lib/util.php:3575
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3569
+#: lib/util.php:3579
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3570
+#: lib/util.php:3580
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3574
+#: lib/util.php:3584
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3575
+#: lib/util.php:3585
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3580
+#: lib/util.php:3590
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3581
+#: lib/util.php:3591
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3745
+#: lib/util.php:3755
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3755
+#: lib/util.php:3765
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

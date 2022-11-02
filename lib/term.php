@@ -300,6 +300,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( null === $md_opts ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting term metadata for cache' );
+				}
+
 				$md_opts = self::get_meta( $term_id, WPSSO_META_NAME, true );
 
 				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
@@ -319,7 +324,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
+				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping filters: options have already been filtered' );
+					}
+
+				} else {
 
 					/**
 					 * Set before calling filters to prevent recursion.
