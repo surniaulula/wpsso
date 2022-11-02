@@ -2169,6 +2169,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'fb:app_id'       => null,
 				'og:type'         => null,
 				'og:url'          => null,
+				'og:redirect_url' => null,	// Non-standard / internal meta tag.
 				'og:locale'       => null,
 				'og:site_name'    => null,
 				'og:title'        => null,

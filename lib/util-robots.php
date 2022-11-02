@@ -76,6 +76,49 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return apply_filters( 'wpsso_robots_content', $content, $mod, $directives );
 		}
 
+		/**
+		 * Explode a directive string into an associative array.
+		 *
+		 * Example $content:
+		 *
+		 *	follow, index, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+		 *
+		 * Example $directives:
+		 *
+		 *	Array (
+		 * 		[follow] =>
+		 *		[index] =>
+		 *		[max-snippet] => -1
+		 *		[max-image-preview] => large
+		 *		[max-video-preview] => -1
+		 * 	)
+		 */
+		public function get_content_directives( $content ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$directives = array();
+
+			foreach ( explode( $separator = ', ', $content ) as $el ) {
+
+				if ( false !== strpos( $el, ':' ) ) {
+
+					list( $key, $val ) = explode( $separator = ':', $el );
+
+				} else {
+
+					list( $key, $val ) = array( $el, '' );
+				}
+
+				$directives[ $key ] = $val;
+			}
+
+			return $directives;
+		}
+
 		public function get_directives( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -83,9 +126,8 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$md_opts = array();
-
 			$directives = self::get_default_directives();
+			$md_opts    = array();
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 

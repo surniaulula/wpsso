@@ -29,9 +29,9 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 		);
 
 		private static $inverse_directives = array(
-			'nofollow'     => array( 'follow' ),	// Do not follow links on this webpage.
-			'noimageindex' => array( 'max-image-preview' ),	// Do not index images on this webpage.
-			'noindex'      => array( 'index' ),	// Do not show this webpage in search results.
+			'nofollow'     => array( 'follow' ),				// Do not follow links on this webpage.
+			'noimageindex' => array( 'max-image-preview' ),			// Do not index images on this webpage.
+			'noindex'      => array( 'index' ),				// Do not show this webpage in search results.
 			'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or a video preview in search results.
 		);
 
@@ -40,9 +40,8 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 		 */
 		public static function get_default_directives() {
 
-			$is_public = get_option( 'blog_public' );
-
 			$directives = self::$default_directives;
+			$is_public  = get_option( 'blog_public' );
 
 			/**
 			 * If the site is not public, discourage robots from indexing the site.

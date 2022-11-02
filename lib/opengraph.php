@@ -380,6 +380,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
+			 * Redirect URL meta tag (non-standard / internal meta tag).
+			 */
+			if ( $this->p->util->is_redirect_enabled() ) {
+
+				$mt_og[ 'og:redirect_url' ] = $this->p->util->get_redirect_url( $mod );
+			}
+
+			/**
 			 * Locale meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:locale' ] ) ) {

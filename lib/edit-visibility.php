@@ -45,7 +45,6 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 			$canonical_url_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
 			$def_canonical_url      = $this->p->util->get_canonical_url( $mod, $add_page = false );
 			$redir_disabled         = $this->p->util->is_redirect_disabled();
-			$def_redirect_url       = $this->p->util->get_redirect_url( $mod );
 
 			$form_rows = array(
 				'canonical_url' => $mod[ 'is_public' ] ? array(
@@ -60,7 +59,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 					'label'    => _x( '301 Redirect URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-redirect_url',
 					'content'  => $form->get_input( 'redirect_url', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $def_redirect_url, $redir_disabled ),
+						$max_len = 0, $holder = '', $redir_disabled ),
 				) : '',
 			);
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.7.1-dev.10\n"
+"Project-Id-Version: WPSSO Core 13.7.1-dev.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5894,7 +5894,7 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit-prev.php:106 lib/edit-visibility.php:53
+#: lib/edit-prev.php:106 lib/edit-visibility.php:52
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -6247,103 +6247,103 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/edit-visibility.php:60
+#: lib/edit-visibility.php:59
 msgctxt "option label"
 msgid "301 Redirect URL"
 msgstr ""
 
-#: lib/edit-visibility.php:83
+#: lib/edit-visibility.php:82
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit-visibility.php:91
+#: lib/edit-visibility.php:90
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit-visibility.php:94
+#: lib/edit-visibility.php:93
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:98
+#: lib/edit-visibility.php:97
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit-visibility.php:101
+#: lib/edit-visibility.php:100
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:105
+#: lib/edit-visibility.php:104
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit-visibility.php:108
+#: lib/edit-visibility.php:107
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:112
+#: lib/edit-visibility.php:111
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit-visibility.php:115
+#: lib/edit-visibility.php:114
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:119
+#: lib/edit-visibility.php:118
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit-visibility.php:122
+#: lib/edit-visibility.php:121
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:126
+#: lib/edit-visibility.php:125
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit-visibility.php:129
+#: lib/edit-visibility.php:128
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:133
+#: lib/edit-visibility.php:132
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:137 lib/submenu/general.php:321
+#: lib/edit-visibility.php:136 lib/submenu/general.php:321
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit-visibility.php:138 lib/edit-visibility.php:154
+#: lib/edit-visibility.php:137 lib/edit-visibility.php:153
 #: lib/submenu/general.php:322 lib/submenu/general.php:336
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
 
-#: lib/edit-visibility.php:142
+#: lib/edit-visibility.php:141
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit-visibility.php:149
+#: lib/edit-visibility.php:148
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:153 lib/submenu/general.php:335
+#: lib/edit-visibility.php:152 lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""

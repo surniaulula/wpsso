@@ -607,9 +607,32 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
-						if ( ! empty( $mt[ 5 ] ) ) {
+						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
 
 							$has_media[ $m[ 1 ] ] = true;	// Optimize media loop.
+						}
+
+						break;
+
+					case 'property-og:redirect_url':
+
+						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+
+							$head_info[ 'is_redirect' ] = true;
+						}
+
+						break;
+
+					case 'name-robots':
+
+						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+						
+							$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
+
+							if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
+
+								$head_info[ 'is_noindex' ] = true;
+							}
 						}
 
 						break;
@@ -706,7 +729,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						continue;
 					}
 
-					$meta_value = 'none';
+					$meta_value = 'none';	// Default value.
 
 					if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
 
