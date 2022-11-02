@@ -2551,6 +2551,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'width'     => '200px',
 						'height'    => 'auto',
 					),
+					'is_noindex' => array(
+						'mt_name'  => 'is_noindex',
+						'meta_key' => '_wpsso_head_info_is_noindex',
+					),
+					'is_redirect' => array(
+						'mt_name'  => 'is_redirect',
+						'meta_key' => '_wpsso_head_info_is_redirect',
+					),
 				),
 			),
 			'form' => array(

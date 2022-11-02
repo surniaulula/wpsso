@@ -577,7 +577,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 */
 		public function extract_head_info( array $head_tags, $mod = false ) {
 
-			$head_info = array();
+			$head_info = array(
+				'is_noindex'  => 0,
+				'is_redirect' => 0,
+			);
 
 			foreach ( $head_tags as $mt ) {
 
@@ -618,7 +621,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
 
-							$head_info[ 'is_redirect' ] = true;
+							$head_info[ 'is_redirect' ] = 1;
 						}
 
 						break;
@@ -631,7 +634,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
 
-								$head_info[ 'is_noindex' ] = true;
+								$head_info[ 'is_noindex' ] = 1;
 							}
 						}
 

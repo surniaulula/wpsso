@@ -1995,8 +1995,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$value = '';
-
+			$value  = '';
 			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale();
 
 			if ( empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
@@ -2042,8 +2041,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $value;
 			}
 
-			$mod = $this->get_mod( $obj_id );
-
+			$mod      = $this->get_mod( $obj_id );
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
 			static $local_is_recursion = array();
