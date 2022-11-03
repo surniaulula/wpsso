@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 13.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-10-27 07:29-0700\n"
+"PO-Revision-Date: 2022-10-28 10:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -507,8 +507,8 @@ msgstr "WPSSO code court de Schéma"
 
 #: gettext/gettext-lib-config.php:9
 msgctxt "plugin description"
-msgid "Schema shortcode to define and customize additional properties and types for sections of the content (WPSSO Core Premium Required)."
-msgstr "Shortcode de Schéma pour définir et personnaliser des propriétés et des types supplémentaires pour des sections de contenu (WPSSO Core Premium requis)."
+msgid "Schema shortcode to define and customize additional properties and types for sections of the content."
+msgstr "Shortcode de Schéma pour définir et personnaliser des propriétés et des types supplémentaires pour des sections de contenu."
 
 #: gettext/gettext-lib-config.php:10 gettext/gettext-lib-config.php:11
 msgctxt "lib file description"
@@ -2972,8 +2972,8 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr "Bitly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:323
-#: lib/pro/admin/advanced.php:574 lib/pro/util/shorten.php:352
+#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:324
+#: lib/pro/admin/advanced.php:574 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr "Jeton d'accès générique Bitly"
@@ -2993,8 +2993,8 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr "DLMY.App (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:325
-#: lib/pro/admin/advanced.php:592 lib/pro/util/shorten.php:378
+#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:326
+#: lib/pro/admin/advanced.php:592 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr "Clé d'API pour DLMY.App"
@@ -3004,8 +3004,8 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr "Ow.ly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:327
-#: lib/pro/admin/advanced.php:602 lib/pro/util/shorten.php:402
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:328
+#: lib/pro/admin/advanced.php:602 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr "Clé d'API pour Ow.ly"
@@ -3015,8 +3015,8 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr "YOURLS (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:329
-#: lib/pro/admin/advanced.php:612 lib/pro/util/shorten.php:443
+#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:330
+#: lib/pro/admin/advanced.php:612 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr "URL de l'API YOURLS"
@@ -4184,45 +4184,50 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: gettext/gettext-lib-pro.php:322 gettext/gettext-lib-pro.php:324
-#: gettext/gettext-lib-pro.php:326 gettext/gettext-lib-pro.php:328
-#: lib/pro/util/shorten.php:351 lib/pro/util/shorten.php:377
-#: lib/pro/util/shorten.php:401 lib/pro/util/shorten.php:442
-msgid "The \"%s\" option value is empty and required."
-msgstr "La valeur de l'option \"%s\" est vide et requise."
-
-#: gettext/gettext-lib-pro.php:330 gettext/gettext-lib-pro.php:332
+#: gettext/gettext-lib-pro.php:322 gettext/gettext-lib-pro.php:333
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:209
-#: lib/loader.php:223 lib/post.php:1585 lib/pro/util/shorten.php:486
-#: lib/pro/util/shorten.php:523
+#: lib/loader.php:223 lib/post.php:1585 lib/pro/util/shorten.php:331
+#: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr "Erreur %s:"
 
-#. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:331 lib/pro/util/shorten.php:489
-msgid "Incomplete API options to instantiate the \"%s\" shortening service."
-msgstr "Options d'API incomplètes pour instancier le service de raccourcissement \"%s\"."
+#: gettext/gettext-lib-pro.php:323 gettext/gettext-lib-pro.php:325
+#: gettext/gettext-lib-pro.php:327 gettext/gettext-lib-pro.php:329
+#: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
+#: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
+msgid "The \"%s\" option value is empty and required."
+msgstr "La valeur de l'option \"%s\" est vide et requise."
+
+#. translators: %s is the current URL from the $_SERVER variable.
+#: gettext/gettext-lib-pro.php:331 lib/pro/util/shorten.php:451
+msgid "Loop detected: YOURLS API URL matches current URL (%s)"
+msgstr "Boucle détectée: l'URL de l'API YOURLS correspond à l'URL actuelle (%s)"
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:333 lib/pro/util/shorten.php:526
-msgid "The URL shortening library file for \"%s\" is missing and required."
-msgstr "Le fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est manquant et requis."
+#: gettext/gettext-lib-pro.php:332 lib/pro/util/shorten.php:492
+msgid "Unable to instantiate the \"%s\" shortening service."
+msgstr "Impossible d'instancier le service de raccourcissement \"%s\"."
 
-#: gettext/gettext-lib-pro.php:334 lib/pro/review/shopperapproved.php:171
+#. translators: %s is the shortening service id.
+#: gettext/gettext-lib-pro.php:334 lib/pro/util/shorten.php:529
+msgid "URL shortening library file for \"%s\" is missing and required."
+msgstr "Fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est manquant et requis."
+
+#: gettext/gettext-lib-pro.php:335 lib/pro/review/shopperapproved.php:171
 msgid "getting shopper approved ratings and reviews"
 msgstr "obtenir notes et critiques de shopper approved"
 
-#: gettext/gettext-lib-pro.php:335 gettext/gettext-lib-pro.php:338
+#: gettext/gettext-lib-pro.php:336 gettext/gettext-lib-pro.php:339
 #: lib/pro/review/shopperapproved.php:337 lib/pro/review/stamped.php:327
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
-#: gettext/gettext-lib-pro.php:336 gettext/gettext-lib-pro.php:339
+#: gettext/gettext-lib-pro.php:337 gettext/gettext-lib-pro.php:340
 #: lib/pro/review/shopperapproved.php:340 lib/pro/review/stamped.php:330
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
-#: gettext/gettext-lib-pro.php:337 lib/pro/review/stamped.php:171
+#: gettext/gettext-lib-pro.php:338 lib/pro/review/stamped.php:171
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
