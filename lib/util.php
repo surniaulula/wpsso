@@ -106,9 +106,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
 			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding WpssoUtil->add_plugin_image_sizes() action hooks' );
+			}
+
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// Front-end compatibility.
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// Back-end + AJAX compatibility.
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// REST API compatibility.
 		}
 
 		public function set_util_instances( &$plugin ) {
@@ -2290,11 +2295,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mixed );
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting redirect url for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// Begin timer.
-			}
-
 			$url        = null;
 			$is_custom  = false;
 
@@ -2314,11 +2314,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$url = apply_filters( 'wpsso_redirect_url', $url, $mod, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting redirect url for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// End timer.
-			}
 
 			return $url;
 		}

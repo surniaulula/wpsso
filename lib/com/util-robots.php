@@ -60,7 +60,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			/**
 			 * The webpage should not be indexed, but allow robots to follow links.
 			 */
-			} elseif ( isset( $_GET[ 'replytocom' ] ) || is_404() || is_embed() || is_search() ) {
+			} elseif ( isset( $_GET[ 'replytocom' ] ) || is_404() || is_search() ) {
 
 				$directives[ 'index' ]     = false;	// No index.
 				$directives[ 'noarchive' ] = true;

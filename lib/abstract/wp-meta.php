@@ -1469,7 +1469,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->log( 'calling update_meta_cache() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 			}
 
-			update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
+			$metadata = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
 
 			do_action( 'wpsso_clear_mod_cache', $mod );
 		}
