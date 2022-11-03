@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.7.1-dev.13 (2022/11/02)**
+**Version 13.8.0-dev.13 (2022/11/03)**
 
 * **New Features**
 	* None.
@@ -536,9 +536,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.7.1-dev.13 =
+= 13.8.0-dev.13 =
 
-(2022/11/02) Added a check for `is_sitemap()` to skip importing and handling superfluous data for sitemaps.
+(2022/11/03) Added a check for `is_sitemap()` to skip importing and handling superfluous data for sitemaps.
 
 = 13.7.0 =
 
