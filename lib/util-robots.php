@@ -189,6 +189,19 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		/**
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
+		public function is_noimageindex( $mixed, $mod_id = null ) {
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			return $this->is_nokey( 'noimageindex', $mixed, $mod_id );
+		}
+
+		/**
+		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
+		 */
 		public function is_noindex( $mixed, $mod_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -196,7 +209,21 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				$this->p->debug->mark();
 			}
 
+			return $this->is_nokey( 'noindex', $mixed, $mod_id );
+		}
+
+		/**
+		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
+		 */
+		private function is_nokey( $key, $mixed, $mod_id = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$mod = false;
+			$key = SucomUtil::sanitize_key( $key );	// Just in case.
 
 			if ( ! empty( $mixed[ 'obj' ] ) ) {
 
@@ -209,29 +236,29 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'getting noindex for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// Begin timer.
+				$this->p->debug->mark( 'getting ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// Begin timer.
 			}
 
-			$is_noindex = null;
-			$is_custom  = false;
+			$is_nokey  = null;
+			$is_custom = false;
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-				if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
+				if ( isset( $md_opts[ 'robots_' . $key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'robots noindex for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is true' );
+						$this->p->debug->log( 'robots ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is true' );
 					}
 
-					$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
-					$is_custom  = true;
+					$is_nokey  = $md_opts[ 'robots_' . $key ] ? true : false;
+					$is_custom = true;
 				}
 			}
 
-			if ( null === $is_noindex ) {	// No custom options found.
+			if ( null === $is_nokey ) {	// No custom options found.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -239,17 +266,18 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				}
 
 				$directives = self::get_default_directives();
-				$is_noindex = $directives[ 'noindex' ] ? true : false;
+				$is_nokey   = $directives[ $key ] ? true : false;
 			}
 
-			$is_noindex = apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod, $is_custom );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_robots_is_' . $key );	// Just in case.
+			$is_nokey    = apply_filters( $filter_name, $is_nokey, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'getting noindex for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// End timer.
+				$this->p->debug->mark( 'getting ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// End timer.
 			}
 
-			return $is_noindex;
+			return $is_nokey;
 		}
 
 		public function is_disabled() {

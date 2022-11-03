@@ -18,10 +18,10 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			'follow'            => true,	// Follow by default.
 			'index'             => true,	// Index by default.
 			'noarchive'         => false,
-			'nofollow'          => false,
-			'noimageindex'      => false,
-			'noindex'           => false,
-			'nosnippet'         => false,
+			'nofollow'          => false,	// Do not follow links on this webpage.
+			'noimageindex'      => false,	// Do not index images on this webpage.
+			'noindex'           => false,	// Do not show this webpage in search results.
+			'nosnippet'         => false,	// Do not show a text snippet or a video preview in search results.
 			'notranslate'       => false,
 			'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
 			'max-image-preview' => 'large',	// Max size for image preview.
