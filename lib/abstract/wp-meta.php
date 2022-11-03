@@ -1865,6 +1865,24 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		/**
 		 * Return sortable column keys and their query sort info.
+		 *
+		 * Example Array (
+		 *	[schema_type] => Array (
+		 *		[header] => Schema ID
+		 *		[mt_name] => schema:type:id
+		 *		[meta_key] => _wpsso_head_info_schema_type
+		 *		[orderby] => meta_value
+		 *		[width] => 9em
+		 *		[height] => auto
+		 *	)
+		 *	[og_type] => Array (
+		 *		[header] => OG ID
+		 *		[mt_name] => og:type
+		 *		[meta_key] => _wpsso_head_info_og_type
+		 *		[orderby] => meta_value
+		 *		[width] => 7em
+		 *		[height] => auto
+		 *	)
 		 */
 		public static function get_sortable_columns( $col_key = false ) {
 
@@ -1909,21 +1927,47 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $headers;
 		}
 
-		public static function get_column_meta_keys() {
+		/**
+		 * Example Array (
+		 *	[schema_type_name] => _wpsso_head_info_schema_type_name
+		 *	[schema_type] => _wpsso_head_info_schema_type
+		 *	[og_type] => _wpsso_head_info_og_type
+		 *	[og_img] => _wpsso_head_info_og_img_thumb
+		 *	[og_desc] => _wpsso_head_info_og_desc
+		 *	[is_noindex] => _wpsso_head_info_is_noindex
+		 *	[is_redirect] => _wpsso_head_info_is_redirect
+		 * )
+		*/
+		public static function get_column_meta_keys( $col_key = false ) {
 
-			$meta_keys = array();
+			static $local_cache = null;
 
-			$sortable_cols = self::get_sortable_columns();
+			if ( null === $local_cache ) {
 
-			foreach ( $sortable_cols as $col_key => $col_info ) {
+				$local_cache = array();
 
-				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
+				$sortable_cols = self::get_sortable_columns();
 
-					$meta_keys[ $col_key ] = $col_info[ 'meta_key' ];
+				foreach ( $sortable_cols as $cache_key => $cache_info ) {	// Avoid variable name conflict with args.
+	
+					if ( ! empty( $cache_info[ 'meta_key' ] ) ) {
+	
+						$local_cache[ $cache_key ] = $cache_info[ 'meta_key' ];
+					}
 				}
 			}
 
-			return $meta_keys;
+			if ( false !== $col_key ) {
+
+				if ( isset( $local_cache[ $col_key ] ) ) {
+
+					return $local_cache[ $col_key ];
+				}
+
+				return null;	// Column key not found.
+			}
+
+			return $local_cache;
 		}
 
 		public static function get_column_by_meta_key( $meta_key ) {
