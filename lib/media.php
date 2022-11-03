@@ -138,7 +138,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * If there are other image sizes using the same dimensions, then copy the image and leave the
 				 * original for those image sizes.
 				 */
-				if ( $this->p->util->count_other_sizes( $img_info[ 'size_name' ], $img_info[ 'pid' ] ) > 0 ) {
+				$identical_sizes = $this->p->util->count_identical_sizes( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+
+				if ( $identical_sizes > 0 ) {
 
 					if ( copy( $file_path, $new_file_path ) ) {	// Another plugin/theme uses the same dimensions.
 

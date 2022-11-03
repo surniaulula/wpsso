@@ -382,6 +382,34 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
+		 * Since Wpsso Core v12.3.0.
+		 */
+		public function count_identical_sizes( $size_name, $attachment_id = false ) {
+
+			$size_info   = $this->get_size_info( $size_name, $attachment_id );	// Uses a local static cache.
+			$image_sizes = $this->get_image_sizes( $attachment_id );
+			$count       = 0;
+
+			foreach ( $image_sizes as $key => $arr ) {
+
+				if ( 0 !== strpos( $key, 'wpsso-' ) ) {
+
+					/**
+					 * Use '==' to allow comparing strings to integers.
+					 */
+					if ( $arr[ 'width' ] == $size_info[ 'width' ] &&
+						$arr[ 'height' ] == $size_info[ 'height' ] &&
+							$arr[ 'is_cropped' ] == $size_info[ 'is_cropped' ] ) {
+
+						$count++;
+					}
+				}
+			}
+
+			return $count;
+		}
+
+		/**
 		 * Get the width, height and crop value for all image sizes.
 		 *
 		 * Returns an associative array with the image size name as the array key.
@@ -396,36 +424,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $image_sizes;
-		}
-
-		/**
-		 * Since Wpsso Core v12.3.0.
-		 */
-		public function count_other_sizes( $size_name, $attachment_id = false ) {
-
-			$size_info = $this->get_size_info( $size_name, $attachment_id );	// Uses a local static cache.
-
-			$image_sizes = $this->get_image_sizes( $attachment_id );
-
-			$count = 0;
-
-			foreach ( $image_sizes as $key => $arr ) {
-
-				if ( 0 !== strpos( $key, 'wpsso-' ) ) {
-
-					/**
-					 * Allow comparing strings to integers.
-					 */
-					if ( $arr[ 'width' ] == $size_info[ 'width' ] &&
-						$arr[ 'height' ] == $size_info[ 'height' ] &&
-							$arr[ 'is_cropped' ] == $size_info[ 'is_cropped' ] ) {
-
-						$count++;
-					}
-				}
-			}
-
-			return $count;
 		}
 
 		/**
