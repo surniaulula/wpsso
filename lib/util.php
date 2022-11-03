@@ -396,10 +396,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					/**
 					 * Use '==' to allow comparing strings to integers.
+					 *
+					 * Removed comparing the 'is_cropped' value in WPSSO Core v13.8.0 to allow for rare cases
+					 * where a non-cropped image has the same dimensions as a cropped image (for example
+					 * 1200x1200px cropped and non-cropped from a larger square image).
 					 */
-					if ( $arr[ 'width' ] == $size_info[ 'width' ] &&
-						$arr[ 'height' ] == $size_info[ 'height' ] &&
-							$arr[ 'is_cropped' ] == $size_info[ 'is_cropped' ] ) {
+					if ( $arr[ 'width' ] == $size_info[ 'width' ] && $arr[ 'height' ] == $size_info[ 'height' ] ) {
 
 						$count++;
 					}
