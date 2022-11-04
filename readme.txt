@@ -232,21 +232,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.8.0-b.6 (2022/11/03)**
+**Version 13.8.0-b.6 (2022/11/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a check for `is_sitemap()` to skip importing and handling superfluous data for sitemaps (custom fields, content blocks, WooCommerce metadata defaults, and sanitizing metadata).
+	* Added a check for `is_sitemap()` to skip importing and handling unused data for sitemaps (custom fields, content blocks, WooCommerce metadata defaults, and sanitizing metadata).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added DEBUG_BACKTRACE_IGNORE_ARGS to `debug_backtrace()` in the `SucomDebug` class.
 	* Added a `SucomDebug->caller()` method to log the calling class and method names.
 	* Added a `WpssoUtilRobots->get_content_directives()` method to convert a robots string to an associative array.
 	* Added a 'og:redirect_url' non-standard / internal meta tag.
 	* Added a '_wpsso_head_info_is_noindex' metadata key with dynamic boolean value.
 	* Added a '_wpsso_head_info_is_redirect' metadata key with dynamic boolean value.
+	* Added DEBUG_BACKTRACE_IGNORE_ARGS to `debug_backtrace()` in the `SucomDebug` class.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -538,7 +538,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.8.0-b.6 =
 
-(2022/11/03) Added a check for `is_sitemap()` to skip importing and handling superfluous data for sitemaps.
+(2022/11/04) Added a check for `is_sitemap()` to skip importing and handling unused data for sitemaps.
 
 = 13.7.0 =
 
