@@ -83,18 +83,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'load dist modules' );	// End timer.
+				$this->p->debug->mark( 'loading dist modules' );	// End timer.
 			}
 		}
 
 		private function load_ext_mods( $ext, $mod_dir ) {
 
 			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $ext . ' lib/' . $mod_dir . ' is empty' );
-				}
 
 				return;
 

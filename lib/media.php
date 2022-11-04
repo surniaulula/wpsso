@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_all_videos( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
-			$cache_args = array(
+			$cache_salt_args = array(
 				'num'         => $num,
 				'mod'         => $mod,
 				'md_pre'      => $md_pre,
@@ -264,14 +264,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'get all open graph videos' );	// Begin timer.
+				$this->p->debug->mark( 'getting all videos' );	// Begin timer.
 
-				$this->p->debug->log_args( $cache_args );
+				$this->p->debug->log_args( $cache_salt_args );
 			}
 
 			static $local_cache = array();
 
-			$cache_salt = SucomUtil::pretty_array( $cache_args, $flatten = true );
+			$cache_salt = SucomUtil::pretty_array( $cache_salt_args, $flatten = true );
 
 			if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
+					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
 				}
 
 				/**
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
+					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
 				}
 
 			}
@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$this->p->debug->log_arr( 'mt_extend', $mt_extend );
 
-				$this->p->debug->mark( 'get all open graph videos' );	// End timer.
+				$this->p->debug->mark( 'getting all videos' );	// End timer.
 			}
 
 			/**
@@ -511,6 +511,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_all_images( $num, $size_names, array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting all images' );	// Begin timer.
 
 				$this->p->debug->log_args( array(
 					'num'        => $num,
@@ -578,6 +580,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$mt_ret = array_merge( $mt_ret, $mt_images );
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting all images' );	// End timer.
 			}
 
 			return $mt_ret;

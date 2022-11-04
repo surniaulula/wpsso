@@ -577,10 +577,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 */
 		public function extract_head_info( array $head_tags, $mod = false ) {
 
-			$head_info = array(
-				'is_noindex'  => 0,
-				'is_redirect' => 0,
-			);
+			$head_info = array();
 
 			foreach ( $head_tags as $mt ) {
 
@@ -619,6 +616,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					case 'property-og:redirect_url':
 
+						$head_info[ 'is_redirect' ] = 0;	// Default value.
+
 						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
 
 							$head_info[ 'is_redirect' ] = 1;
@@ -628,13 +627,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					case 'name-robots':
 
+						$head_info[ 'is_noindex' ] = 0;	// Default value.
+
 						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+
+							if ( ! is_embed() ) {	// Ignore noindex value from embedded content.
 						
-							$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
+								$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
 
-							if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
+								if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
 
-								$head_info[ 'is_noindex' ] = 1;
+									$head_info[ 'is_noindex' ] = 1;
+								}
 							}
 						}
 
