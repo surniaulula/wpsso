@@ -405,7 +405,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting post metadata for cache' );
+					$this->p->debug->log( 'getting post metadata for local cache' );
 				}
 
 				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );

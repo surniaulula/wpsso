@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting user metadata for cache' );
+					$this->p->debug->log( 'getting user metadata for local cache' );
 				}
 
 				$user_exists = SucomUtil::user_exists( $user_id );

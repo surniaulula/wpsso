@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting comment metadata for cache' );
+					$this->p->debug->log( 'getting comment metadata for local cache' );
 				}
 
 				$md_opts = self::get_meta( $comment_id, WPSSO_META_NAME, $single = true );

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.8.0-b.4\n"
+"Project-Id-Version: WPSSO Core 13.8.0-b.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10458,7 +10458,7 @@ msgstr ""
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:977 wpsso.php:612
+#: lib/messages.php:977 wpsso.php:571
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
@@ -12202,40 +12202,40 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:615
+#: wpsso.php:574
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:768
+#: wpsso.php:727
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:775
+#: wpsso.php:734
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:783
+#: wpsso.php:742
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:785
+#: wpsso.php:744
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:797
+#: wpsso.php:756
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:799
+#: wpsso.php:758
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 

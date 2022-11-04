@@ -2273,14 +2273,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'inherit md images for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is enabled' );
+					$this->p->debug->log( 'inherit md images is enabled' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'inherit md images for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is disabled' );
+					$this->p->debug->log( 'inherit md images is disabled' );
 				}
 
 				$inherit_opts = SucomUtil::preg_grep_keys( '/_img_/', $inherit_opts, $invert = true );

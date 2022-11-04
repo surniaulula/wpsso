@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting term metadata for cache' );
+					$this->p->debug->log( 'getting term metadata for local cache' );
 				}
 
 				$md_opts = self::get_meta( $term_id, WPSSO_META_NAME, true );

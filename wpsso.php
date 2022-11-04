@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.0
  * WC Tested Up To: 7.0.1
- * Version: 13.8.0-b.4
+ * Version: 13.8.0-b.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -345,17 +345,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->util  = new WpssoUtil( $this );		// Extends SucomUtil.
 			$this->opt   = new WpssoOptions( $this );
 
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init options do action' );	// Begin timer.
-			}
-
 			do_action( 'wpsso_init_options' );
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init options do action' );	// End timer.
-			}
 
 			$this->compat = new WpssoCompat( $this );	// Actions and filters for compatibility.
 			$this->script = new WpssoScript( $this );
@@ -416,22 +406,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->loader = new WpssoLoader( $this );		// Modules loader.
 
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init objects do action' );	// Begin timer.
-			}
-
 			/**
 			 * Init additional class objects.
 			 */
 			do_action( 'wpsso_init_objects' );
 
 			do_action( 'wpsso_init_objects_' . ( $this->is_pp ? 'pro' : 'std' ) );
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init objects do action' );	// End timer.
-			}
 
 			if ( $this->debug->enabled ) {
 
@@ -445,11 +425,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Runs at init priority 11.
 		 */
 		public function init_shortcodes() {
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init shortcodes' );	// Begin timer.
-			}
 
 			/**
 			 * Load lib/shortcode/* library files.
@@ -466,11 +441,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->sc[ $id ] = new $classname( $this );
 				}
 			}
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init shortcodes' );	// End timer.
-			}
 		}
 
 		/**
@@ -480,11 +450,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $this->debug->enabled ) {
 
-				$this->debug->mark( 'init plugin' );	// Begin timer.
-
 				$this->debug_hooks();
-
-				$this->debug->mark( 'init plugin do action' );	// Begin timer.
 			}
 
 			/**
@@ -494,13 +460,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * See WpssoRrssbStdSocialBuddypress->remove_wp_buttons().
 			 */
 			do_action( 'wpsso_init_plugin' );
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init plugin do action' );	// End timer.
-
-				$this->debug->mark( 'init plugin' );	// End timer.
-			}
 		}
 
 		/**
