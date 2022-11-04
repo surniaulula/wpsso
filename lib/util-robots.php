@@ -234,11 +234,6 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				$mod = $this->p->$mixed->get_mod( $mod_id );
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// Begin timer.
-			}
-
 			$is_nokey  = null;
 			$is_custom = false;
 
@@ -271,11 +266,6 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_robots_is_' . $key );	// Just in case.
 			$is_nokey    = apply_filters( $filter_name, $is_nokey, $mod, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );	// End timer.
-			}
 
 			return $is_nokey;
 		}
