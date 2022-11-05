@@ -627,12 +627,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					case 'name-robots':
 
-						$head_info[ 'is_noindex' ] = 0;	// Default value.
+						if ( ! is_embed() ) {	// Skip noindex value for embedded content.
 
-						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+							$head_info[ 'is_noindex' ] = 0;	// Default value.
 
-							if ( ! is_embed() ) {	// Ignore noindex value from embedded content.
-						
+							if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+
 								$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
 
 								if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
