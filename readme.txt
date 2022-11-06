@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.8.1-dev.1 (2022/11/05)**
+**Version 13.8.1-dev.2 (2022/11/06)**
 
 * **New Features**
 	* None.
@@ -550,9 +550,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.8.1-dev.1 =
+= 13.8.1-dev.2 =
 
-(2022/11/05) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
+(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 
 = 13.8.0 =
 
