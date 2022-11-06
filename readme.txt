@@ -232,6 +232,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.8.1-dev.1 (2022/11/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.8.0 (2022/11/04)**
 
 * **New Features**
@@ -535,6 +549,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.8.1-dev.1 =
+
+(2022/11/05) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 
 = 13.8.0 =
 
