@@ -386,6 +386,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
+		public function count_cron_jobs() {
+
+			$count = 0;
+
+			$cron_jobs = get_option( 'cron' );
+			
+			if ( is_array( $cron_jobs ) ) {
+
+				foreach ( $cron_jobs as $cron_id => $cron_el ) {
+					
+					if ( is_array( $cron_el ) ) {
+					
+						foreach ( $cron_el as $sched_id => $sched_el ) {
+
+							$count++;
+						}
+					}
+				}
+			}
+
+			return $count;
+		}
+
 		/**
 		 * Since Wpsso Core v12.3.0.
 		 */

@@ -937,6 +937,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'clear_cron_jobs':
+
+							$count_cron_jobs = number_format_i18n( $this->p->util->count_cron_jobs() );
+
+							update_option( 'cron', '' );
+
+							$notice_msg = sprintf( __( '%s WordPress cron jobs have been cleared.', 'wpsso' ), $count_cron_jobs );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
 						case 'flush_rewrite_rules':
 
 							flush_rewrite_rules();
