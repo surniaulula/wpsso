@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.8.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 13.8.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3154,7 +3154,7 @@ msgid "characters"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:77 lib/pro/admin/advanced.php:552
-#: lib/std/admin/advanced.php:550 lib/submenu/tools.php:71
+#: lib/std/admin/advanced.php:550 lib/submenu/tools.php:70
 msgctxt "option label"
 msgid "Clear Short URLs on Clear Cache"
 msgstr ""
@@ -4853,7 +4853,7 @@ msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr ""
 
-#: lib/admin.php:762 lib/submenu/tools.php:111
+#: lib/admin.php:762 lib/submenu/tools.php:110
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -4924,7 +4924,7 @@ msgstr ""
 
 #: lib/admin.php:967 lib/admin.php:978 lib/messages-tooltip-meta-schema.php:520
 #: lib/messages-tooltip-plugin.php:120 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1704
+#: lib/submenu/tools.php:100 lib/user.php:61 lib/user.php:1704
 #: lib/user.php:1811 lib/user.php:1947
 msgctxt "user role"
 msgid "Person"
@@ -4993,7 +4993,7 @@ msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1419 lib/submenu/tools.php:147
+#: lib/admin.php:1419 lib/submenu/tools.php:144
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -11562,92 +11562,92 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:79
-msgid "%1$s option is unchecked - shortened URLs cache will be preserved."
+#: lib/submenu/tools.php:78
+msgid "%1$s option is unchecked - the shortened URLs cache will be preserved."
 msgstr ""
 
-#: lib/submenu/tools.php:83
-msgid "%1$s option is checked - shortened URLs cache will be cleared."
+#: lib/submenu/tools.php:82
+msgid "%1$s option is checked - the shortened URLs cache will be cleared."
 msgstr ""
 
-#: lib/submenu/tools.php:92
+#: lib/submenu/tools.php:91
 msgid "Members of the %s role may be selected for certain Schema properties."
 msgstr ""
 
-#: lib/submenu/tools.php:93
+#: lib/submenu/tools.php:92
 msgid ""
 "\"Content Creators\" are all administrators, editors, authors, and "
 "contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:110
+#: lib/submenu/tools.php:109
 msgctxt "submit button"
 msgid "Refresh Transient Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:112
-msgctxt "submit button"
-msgid "Clear All Caches and Short URLs"
-msgstr ""
-
-#: lib/submenu/tools.php:113
+#: lib/submenu/tools.php:111
 msgctxt "submit button"
 msgid "Clear %s Cached Files"
 msgstr ""
 
-#: lib/submenu/tools.php:114
+#: lib/submenu/tools.php:112
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connections"
 msgstr ""
 
-#: lib/submenu/tools.php:115
-msgctxt "submit button"
-msgid "Clear All Database Transients"
-msgstr ""
-
-#: lib/submenu/tools.php:116
+#: lib/submenu/tools.php:113
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Jobs"
 msgstr ""
 
-#: lib/submenu/tools.php:117
+#: lib/submenu/tools.php:114
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr ""
 
-#: lib/submenu/tools.php:130
+#: lib/submenu/tools.php:127
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:131
+#: lib/submenu/tools.php:128
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:136
+#: lib/submenu/tools.php:133
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:137
+#: lib/submenu/tools.php:134
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:138
+#: lib/submenu/tools.php:135
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:197
+#: lib/submenu/tools.php:194
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:198
+#: lib/submenu/tools.php:195
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
+msgstr ""
+
+#: lib/submenu/tools.php:206
+msgctxt "submit button"
+msgid "Clear %s Database Transients"
+msgstr ""
+
+#: lib/submenu/tools.php:220
+msgctxt "submit button"
+msgid "Clear All Caches and Short URLs"
 msgstr ""
 
 #: lib/term.php:196

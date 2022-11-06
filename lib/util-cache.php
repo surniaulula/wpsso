@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $this->p->cache->count_ignored_urls();
 		}
 
-		public function clear_db_transients( $clear_short = false, $key_prefix = '' ) {
+		public function clear_db_transients( $clear_short = true, $key_prefix = '' ) {
 
 			$count = 0;
 
@@ -306,14 +306,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $count;
 		}
 
-		public function count_db_transients( $clear_short = false, $key_prefix = '' ) {
+		public function count_db_transients( $include_short = true, $key_prefix = '' ) {
 
-			$cache_ids = $this->get_db_transients_cache_ids( $clear_short, $key_prefix );
+			$cache_ids = $this->get_db_transients_cache_ids( $include_short, $key_prefix );
 
 			return count( $cache_ids );
 		}
 
-		public function get_db_transients_cache_ids( $clear_short = false, $key_prefix = '' ) {
+		public function get_db_transients_cache_ids( $include_short = false, $key_prefix = '' ) {
 
 			$cache_ids = array();
 
@@ -334,20 +334,20 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					/**
 					 * Maybe delete shortened URLs.
 					 */
-					if ( ! $clear_short ) {					// If not clearing short URLs.
+					if ( ! $include_short ) {	// If not clearing short URLs.
 
 						if ( 0 === strpos( $cache_id, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
-							continue;				// Get the next transient.
+							continue;	// Get the next transient.
 						}
 					}
 				}
 
-				if ( $key_prefix ) {					// We're only clearing a specific prefix.
+				if ( '' !== $key_prefix ) {	// We're only clearing a specific prefix.
 
 					if ( 0 !== strpos( $cache_id, $key_prefix ) ) {	// The cache ID does not match that prefix.
 
-						continue;				// Get the next transient.
+						continue;	// Get the next transient.
 					}
 				}
 

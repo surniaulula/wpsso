@@ -60,12 +60,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			echo $this->get_form_buttons();
 
 			/**
-			 * Add a note about shortened URLs being preserved or cleared, depending on the 'plugin_clear_short_urls'
-			 * option value.
+			 * Add a note about shortened URLs being preserved or cleared.
 			 */
 			if ( $this->using_db_cache ) {
 
-				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+				if ( 'none' !== $this->p->options[ 'plugin_shortener' ] ) {
 
 					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening',
 						_x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ) );
@@ -76,11 +75,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 
-						echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
+						echo sprintf( __( '%1$s option is unchecked - the shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
 
 					} else {
 
-						echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
+						echo sprintf( __( '%1$s option is checked - the shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
 					}
 
 					echo '</p>';
@@ -103,16 +102,14 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Row #0.
 			 */
-			$count_cache_files  = number_format_i18n( $this->p->util->cache->count_cache_files() );
-			$count_ignored_urls = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
-			$count_cron_jobs    = number_format_i18n( $this->p->util->count_cron_jobs() );
+			$count_cache_files   = number_format_i18n( $this->p->util->cache->count_cache_files() );
+			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
+			$count_cron_jobs     = number_format_i18n( $this->p->util->count_cron_jobs() );
 			
 			$refresh_cache_label_transl       = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
 			$clear_cache_label_transl         = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-			$clear_short_label_transl         = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
 			$clear_cache_files_label_transl   = sprintf( _x( 'Clear %s Cached Files', 'submit button', 'wpsso' ), $count_cache_files );
 			$clear_ignored_urls_label_transl  = sprintf( _x( 'Clear %s Failed URL Connections', 'submit button', 'wpsso' ), $count_ignored_urls );
-			$clear_db_transients_label_transl = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
 			$clear_cron_jobs_label_transl     = sprintf( _x( 'Clear %s WordPress Cron Jobs', 'submit button', 'wpsso' ), $count_cron_jobs );
 			$flush_rewrite_rules_transl       = _x( 'Flush WordPress Rewrite Rules', 'submit button', 'wpsso' );
 
@@ -204,14 +201,23 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Clear All Database Transients.
 				 */
+				$count_db_transients = number_format_i18n( $this->p->util->cache->count_db_transients( $include_short = true, $key_prefix = '' ) );
+
+				$clear_db_transients_label_transl = sprintf( _x( 'Clear %s Database Transients', 'submit button', 'wpsso' ), $count_db_transients );
+
 				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_label_transl;
 
 				/**
 				 * Clear All Caches and Short URLs.
+				 *
+				 * If shortened URLs are not cleared automatically when clearing the cache, add a second button to
+				 * clear the cache and the shortened URLs.
 				 */
 				if ( 'none' !== $this->p->options[ 'plugin_shortener' ] ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
+
+						$clear_short_label_transl = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
 
 						$form_button_rows[ 0 ][ 'clear_cache_short_urls' ] = $clear_short_label_transl;
 					}
