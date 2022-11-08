@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a check for `is_sitemap()` to skip importing and handling unused data for sitemaps (custom fields, content blocks, WooCommerce metadata defaults, and sanitizing metadata).
 * **Bugfixes**
-	* None.
+	* Fixed possible conflict between resized image filenames for cropped and uncropped images.
 * **Developer Notes**
 	* Added a `SucomDebug->caller()` method to log the calling class and method names.
 	* Added a `WpssoUtilRobots->get_content_directives()` method to convert a robots string to an associative array.
