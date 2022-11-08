@@ -232,14 +232,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.8.1-dev.2 (2022/11/06)**
+**Version 13.8.1-dev.3 (2022/11/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 * **Bugfixes**
-	* None.
+	* Fixed a possible condition where a custom SEO title or description exists, but the SEO title or description is disabled.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -550,9 +550,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.8.1-dev.2 =
+= 13.8.1-dev.3 =
 
-(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
+(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page. Fixed a possible condition where a custom SEO title or description exists, but the SEO title or description is disabled.
 
 = 13.8.0 =
 
