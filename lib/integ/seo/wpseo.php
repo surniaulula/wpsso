@@ -223,8 +223,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			}
 
 			$meta_val = '';
-
-			$post_obj  = SucomUtil::get_post_object( $post_id );
+			$post_obj = SucomUtil::get_post_object( $post_id );
 
 			if ( empty( $post_obj->ID ) ) {	// Just in case.
 
@@ -293,7 +292,6 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			}
 
 			$meta_val = '';
-
 			$term_obj = SucomUtil::get_term_object( $term_id );
 
 			if ( empty( $term_obj->term_id ) ) {	// Just in case.
@@ -363,7 +361,6 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			}
 
 			$meta_val = '';
-
 			$user_obj = SucomUtil::get_user_object( $user_id );
 
 			if ( empty( $user_obj->ID ) ) {

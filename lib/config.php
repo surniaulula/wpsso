@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '13.8.1-dev.2',	// Plugin version.
-					'opt_version' => '923',		// Increment when changing default option values.
+					'opt_version' => '924',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1738,6 +1738,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
+					'plugin_use_seo_plugin_title'     => 1,	// Use Active SEO Plugin Title.
+					'plugin_use_seo_plugin_desc'      => 1,	// Use Active SEO Plugin Description.
 					'plugin_import_aioseop_meta'      => 0,	// Import All in One SEO Pack Metadata.
 					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.

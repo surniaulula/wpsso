@@ -520,6 +520,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
+					
+					/**
+					 * Since WPSSO Core v13.8.1.
+					 */
+					if ( ! empty( $md_opts[ 'seo_title' ] ) && $this->p->util->is_seo_title_disabled() ) {
+
+						unset( $md_opts[ 'seo_title' ] );
+					}
+
+					if ( ! empty( $md_opts[ 'seo_desc' ] ) && $this->p->util->is_seo_desc_disabled() ) {
+
+						unset( $md_opts[ 'seo_desc' ] );
+					}
 
 					/**
 					 * Since WPSSO Core v8.2.0.
