@@ -188,18 +188,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_use_seo_plugin_title':	// Use Active SEO Plugin Title.
-
-					$text = __( 'Use the title value provided by a supported SEO plugin for the SEO title tag.', 'wpsso' ) . ' ';
-
-					break;
-
-				case 'tooltip-plugin_use_seo_plugin_desc':	// Use Active SEO Plugin Description.
-
-					$text = __( 'Use the description value provided by a supported SEO plugin for the SEO meta description.', 'wpsso' ) . ' ';
-
-					break;
-
 				case 'tooltip-plugin_import_aioseop_meta':	// Import All in One SEO Pack Metadata.
 
 					if ( empty( $plugin_name_transl ) ) {

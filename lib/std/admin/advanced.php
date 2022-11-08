@@ -170,18 +170,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
-			$table_rows[ 'plugin_use_seo_plugin_title' ] = '' .
-				$form->get_th_html( _x( 'Use Active SEO Plugin Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_use_seo_plugin_title' ) .
-				$form->get_no_td_checkbox( 'plugin_use_seo_plugin_title' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_use_seo_plugin_title', $form, $network );
-
-			$table_rows[ 'plugin_use_seo_plugin_desc' ] = '' .
-				$form->get_th_html( _x( 'Use Active SEO Plugin Description', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_use_seo_plugin_desc' ) .
-				$form->get_no_td_checkbox( 'plugin_use_seo_plugin_desc' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_use_seo_plugin_desc', $form, $network );
-
 			$table_rows[ 'plugin_import_aioseop_meta' ] = '' .
 				$form->get_th_html( _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_aioseop_meta' ) .
