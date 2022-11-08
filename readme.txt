@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 * **Bugfixes**
-	* Fixed a possible condition where a custom SEO title or description exists, but the SEO title or description is disabled.
+	* Fixed possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled (and thus the previous custom SEO title or description cannot be changed).
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -552,7 +552,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.8.1-dev.3 =
 
-(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page. Fixed a possible condition where a custom SEO title or description exists, but the SEO title or description is disabled.
+(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page. Fixed possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
 
 = 13.8.0 =
 
