@@ -911,6 +911,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			
 				/**
 				 * The '%%term_title%%' inline variable no longer includes parent names.
+				 *
+				 * Replace the old '%%term_title%%' variable by '%%term_hierarchy%%'.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 925 ) {
 
