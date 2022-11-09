@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key  = $this->p->options[ 'plugin_title_tag' ];
 				$max_len = $this->p->options[ 'plugin_title_tag' ];
 
-				$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key, $max_len );
+				$title_parts[ 'title' ] = $this->get_title( $mod, $md_key, $max_len );
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
@@ -1268,20 +1268,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_comment' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
+				if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
 
-					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
+					$title_text = $this->p->opt->get_text( 'plugin_comment_review_title' );
 
-						$title_text = $this->p->opt->get_text( 'plugin_comment_review_title' );
+				} elseif ( $mod[ 'comment_parent' ] ) {
 
-					} elseif ( $mod[ 'comment_parent' ] ) {
+					$title_text = $this->p->opt->get_text( 'plugin_comment_reply_title' );
 
-						$title_text = $this->p->opt->get_text( 'plugin_comment_reply_title' );
+				} else {
 
-					} else {
-
-						$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
-					}
+					$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
 				}
 
 			} elseif ( $mod[ 'is_post' ] ) {
@@ -1325,17 +1322,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					$term_obj = $this->p->term->get_mod_wp_object( $mod );
-
-					/**
-					 * Includes parent names in the term title if the $title_sep value is not empty.
-					 *
-					 * Use $title_sep = false to avoid adding term parent names in the term title.
-					 */
-					$title_text = $this->get_term_title( $term_obj, $title_sep );
-				}
+				$title_text = $this->p->opt->get_text( 'plugin_term_page_title' );
 
 			} elseif ( $mod[ 'is_user' ] ) {
 

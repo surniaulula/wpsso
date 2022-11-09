@@ -112,6 +112,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_404_page_desc' );	// 404 Page Description.
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
 				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
+				$this->set_default_text( $local_cache, 'plugin_term_page_title' );	// Term Archive Title.
 				$this->set_default_text( $local_cache, 'plugin_author_page_title' );	// Author Archive Title.
 				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Title.
 				$this->set_default_text( $local_cache, 'plugin_search_page_desc' );	// Search Results Description.
@@ -1800,6 +1801,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					case 'plugin_no_desc_text':		// No Description Text.
 
 						return _x( 'No description.', 'option value', 'wpsso' );
+
+					case 'plugin_term_page_title':		// Term Archive Title.
+
+						return _x( '%%term_title%%', 'option value', 'wpsso' );
 
 					case 'plugin_author_page_title':	// Author Archive Title.
 

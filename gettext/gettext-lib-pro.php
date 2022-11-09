@@ -39,6 +39,7 @@ _x( '404 Page Description', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );
 _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Archive Pages', 'metabox title', 'wpsso' );
+_x( 'Term Archive Title', 'option label', 'wpsso' );
 _x( 'Author Archive Title', 'option label', 'wpsso' );
 _x( 'Search Results Title', 'option label', 'wpsso' );
 _x( 'Search Results Description', 'option label', 'wpsso' );

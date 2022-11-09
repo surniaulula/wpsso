@@ -156,6 +156,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			$local_is_recursion[ $varname ] = true;	// Prevent recursion.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting the %%' . $varname . '%% value' );
+			}
+
 			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'def_title_sep' ];
 
@@ -205,6 +210,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					switch ( $varname ) {
 
 						case 'term':
+						case 'term_name':
 
 							$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
@@ -218,9 +224,16 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
-						case 'term_title':
+						case 'term_title':	// Compatibility for Yoast SEO.
 
-							$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+							/**
+							 * Includes parent names in the term title if the $title_sep value is not empty.
+							 *
+							 * Use $title_sep = false to avoid adding term parent names in the term title.
+							 */
+							$term_obj = $this->p->term->get_mod_wp_object( $mod );
+
+							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep );
 
 							break;
 					}

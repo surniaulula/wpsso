@@ -79,8 +79,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
 
-			$doc_title_source = $this->p->cf[ 'form' ][ 'document_title' ];
-			$doc_title_msg    = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_source   = $this->p->cf[ 'form' ][ 'document_title' ];
+			$doc_title_msg      = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_disabled = $doc_title_msg ? true : false;
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -208,7 +209,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_default_text_rows( $table_rows, $form ) {
 
-			$doc_title_msg = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_msg      = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_disabled = $doc_title_msg ? true : false;
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -275,6 +277,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'subsection_archive_pages' ] = '' .
 				'<td colspan="2" class="subsection"><h4>' . _x( 'Archive Pages', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			$table_rows[ 'plugin_term_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Term Archive Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_term_page_title' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_term_page_title', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'plugin_author_page_title' ] = '' .
 				$form->get_th_html_locale( _x( 'Author Archive Title', 'option label', 'wpsso' ),

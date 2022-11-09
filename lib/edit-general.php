@@ -60,13 +60,13 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			/**
 			 * Check for disabled options.
 			 */
-			$seo_title_disabled = $this->p->util->is_seo_title_disabled();
-			$seo_desc_disabled  = $this->p->util->is_seo_desc_disabled();
-			$pin_img_disabled   = $this->p->util->is_pin_img_disabled();
-
 			$seo_title_msg = $this->p->msgs->maybe_seo_title_disabled();
 			$seo_desc_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'meta name description' );
 			$pin_img_msg   = $this->p->msgs->maybe_pin_img_disabled();
+
+			$seo_title_disabled = $seo_title_msg ? true : false;
+			$seo_desc_disabled  = $seo_desc_msg ? true : false;
+			$pin_img_disabled   = $pin_img_msg ? true : false;
 
 			/**
 			 * Metabox form rows.

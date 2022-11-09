@@ -1042,6 +1042,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function maybe_seo_title_disabled() {
 
+			$html        = '';
 			$is_disabled = $this->p->util->is_seo_title_disabled();
 
 			if ( $is_disabled ) {
@@ -1059,14 +1060,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$html = sprintf( __( 'Modifications disabled (%1$s option is not "%2$s").', 'wpsso' ), $opt_link, $opt_val );
 				}
 
-				return '<p class="status-msg smaller">' . $html . '</p>';
+				$html = '<p class="status-msg smaller">' . $html . '</p>';
 			}
 
-			return '';
+			return $html;
 		}
 
 		public function maybe_seo_tag_disabled( $mt_name ) {
 
+			$html        = '';
 			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
 			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
 
@@ -1081,10 +1083,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
 				}
 
-				return '<p class="status-msg smaller">' . $html . '</p>';
+				$html = '<p class="status-msg smaller">' . $html . '</p>';
 			}
 
-			return '';
+			return $html;
 		}
 
 		/**

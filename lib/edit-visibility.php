@@ -41,8 +41,8 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$canonical_url_disabled = $this->p->util->is_canonical_disabled();
 			$canonical_url_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
+			$canonical_url_disabled = $canonical_url_msg ? true : false;
 			$def_canonical_url      = $this->p->util->get_canonical_url( $mod, $add_page = false );
 			$redir_disabled         = $this->p->util->is_redirect_disabled();
 
@@ -72,8 +72,8 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 
 		public function filter_metabox_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$robots_disabled = $this->p->util->robots->is_disabled();
 			$robots_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'meta name robots' );
+			$robots_disabled = $robots_msg ? true : false;
 
 			$form_rows = array(
 				'subsection_robots_meta' => array(

@@ -61,7 +61,9 @@
 
 %%term%%
 
-%%term_title%%
+%%term_name%%	(same as %%term%%)
+
+%%term_title%%	(includes parents)
 
 %%title%%
 
