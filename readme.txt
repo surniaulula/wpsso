@@ -241,7 +241,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled (and thus the previous custom SEO title or description cannot be changed).
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoUtil->count_cron_jobs()` method.
+	* Added a new 'clear_cron_jobs' action handler in `WpssoAdmin->load_setting_page()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
