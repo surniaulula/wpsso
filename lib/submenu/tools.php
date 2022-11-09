@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$count_cache_files   = number_format_i18n( $this->p->util->cache->count_cache_files() );
 			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
 			$count_cron_jobs     = number_format_i18n( $this->p->util->count_cron_jobs() );
-			
+
 			$refresh_cache_label_transl       = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
 			$clear_cache_label_transl         = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			$clear_cache_files_label_transl   = sprintf( _x( 'Clear %s Cached Files', 'submit button', 'wpsso' ), $count_cache_files );

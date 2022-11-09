@@ -294,15 +294,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
-					$text = sprintf( __( 'Image %1$s text used in descriptions can be prefixed with an optional string (for example, "Image:").', 'wpsso' ), '<code>alt</code>' ) . ' ';
+					$text = __( 'Image <code>alt</code> text used in descriptions can be prefixed with an optional string.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'Leave this option blank to prevent the image %1$s text from being prefixed.', 'wpsso' ), '<code>alt</code>' );
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_img_alt_prefix', $use_opts = false ) );
+
+					$text .= __( 'Leave this option blank to prevent the image <code>alt</code> text from being prefixed.', 'wpsso' );
 
 					break;
 
 				case 'tooltip-plugin_p_cap_prefix':	// WP Caption Text Prefix.
 
-					$text = sprintf( __( 'Caption paragraphs found with the "%1$s" CSS class can be prefixed with an optional string (for example, "Caption:").', 'wpsso' ), 'wp-caption-text' ) . ' ';
+					$text = __( 'Caption paragraphs found with the "wp-caption-text" CSS class can be prefixed with an optional string.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_p_cap_prefix', $use_opts = false ) );
 
 					$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
 
@@ -310,112 +316,184 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_comment_title':	// Comment Title.
 
-					$text = __( 'The comment title used for Schema markup.' );
+					$text = __( 'The comment title used for Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_comment_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_comment_reply_title':	// Reply Comment Title.
 
-					$text = __( 'The comment title used for Schema markup when the comment has a parent.' );
+					$text = __( 'The comment title used for Schema markup when the comment has a parent.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_comment_reply_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_comment_review_title':	// Review Comment Title.
 
-					$text = __( 'The comment title used for Schema markup when the comment has a rating.' );
+					$text = __( 'The comment title used for Schema markup when the comment has a rating.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_comment_review_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_product_var_title':	// Product Variation Title.
 
-					$text = __( 'The product variation title used for meta tags and Schema markup.' );
+					$text = __( 'The product variation title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_product_var_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_404_page_title':	// 404 Page Title.
 
-					$text = __( 'The 404 page title used for meta tags and Schema markup.' );
+					$text = __( 'The 404 page title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_404_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_404_page_desc':	// 404 Page Description.
 
-					$text = __( 'The 404 page description used for meta tags and Schema markup.' );
+					$text = __( 'The 404 page description used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_404_page_desc', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_no_title_text':	// No Title Text.
 
-					$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );
+					$text = __( 'A fallback string to use when there is no title text available.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_no_title_text', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_no_desc_text':	// No Description Text.
 
-					$text = __( 'A fallback string to use when there is no description text available (for example, "No description.").' );
+					$text = __( 'A fallback string to use when there is no description text available.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_no_desc_text', $use_opts = false ) );
 
 					break;
 
 				/**
 				 * SSO > Advanced Settings > Plugin Settings > Default Text tab (Archive Pages section).
 				 */
-				case 'tooltip-plugin_term_page_title':		// Term Archive Title.
+				case 'tooltip-plugin_term_page_title':	// Term Archive Title.
 
-					$text = __( 'The term (categories, tags, and custom taxonomy terms) archive page title used for meta tags and Schema markup.' );
+					$text = __( 'The term (categories, tags, and custom taxonomy terms) title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_term_page_title', $use_opts = false ) );
+
+					break;
+
+				case 'tooltip-plugin_term_page_desc':	// Term Archive Description.
+
+					$text = __( 'A fallback term (categories, tags, and custom taxonomy terms) description used for meta tags and Schema markup when the term description is empty.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_term_page_desc', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_author_page_title':	// Author Archive Title.
 
-					$text = __( 'The author archive page title used for meta tags and Schema markup.' );
+					$text = __( 'The author title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_author_page_title', $use_opts = false ) );
+
+					break;
+
+				case 'tooltip-plugin_author_page_desc':	// Author Archive Description.
+
+					$text = __( 'A fallback author description used for meta tags and Schema markup when the author description is empty.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_author_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_search_page_title':	// Search Results Title.
 
-					$text = __( 'The search results page title used for meta tags and Schema markup.' );
+					$text = __( 'The search results page title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_search_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_search_page_desc':	// Search Results Description.
 
-					$text = __( 'The search results page description used for meta tags and Schema markup.' );
+					$text = __( 'The search results page description used for meta tags and Schema markup.' ) .  ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_search_page_desc', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_year_page_title':	// Year Archive Title.
 
-					$text = __( 'The yearly archive page title used for meta tags and Schema markup.' );
+					$text = __( 'The yearly archive page title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_year_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_year_page_desc':	// Year Archive Description.
 
-					$text = __( 'The yearly archive page description used for meta tags and Schema markup.' );
+					$text = __( 'The yearly archive page description used for meta tags and Schema markup.' ) .  ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_year_page_desc', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_month_page_title':	// Month Archive Title.
 
-					$text = __( 'The monthly archive page title used for meta tags and Schema markup.' );
+					$text = __( 'The monthly archive page title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_month_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_month_page_desc':	// Month Archive Description.
 
-					$text = __( 'The monthly archive page description used for meta tags and Schema markup.' );
+					$text = __( 'The monthly archive page description used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_month_page_desc', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_day_page_title':	// Day Archive Title.
 
-					$text = __( 'The daily archive page title used for meta tags and Schema markup.' );
+					$text = __( 'The daily archive page title used for meta tags and Schema markup.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_day_page_title', $use_opts = false ) );
 
 					break;
 
 				case 'tooltip-plugin_day_page_desc':	// Day Archive Description.
 
-					$text = __( 'The daily archive page description used for meta tags and Schema markup.' );
+					$text = __( 'The daily archive page description used for meta tags and Schema markup.' ) .  ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_day_page_desc', $use_opts = false ) );
 
 					break;
 

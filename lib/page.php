@@ -1486,12 +1486,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc_text = $term_obj->description;
 					}
 
-					if ( '' === $desc_text && $mod[ 'tax_label_single' ] ) {
+					if ( '' === $desc_text ) {
 
-						$tax_name_transl = mb_strtolower( $mod[ 'tax_label_single' ] );
-
-						// translators: %1$s is the term name, %2$s is the singular taxonomy label.
-						$desc_text = sprintf( __( 'Archive page for the %1$s %2$s.', 'wpsso' ), $term_obj->name, $tax_name_transl );
+						$desc_text = $this->p->opt->get_text( 'plugin_term_page_desc' );
 					}
 				}
 
@@ -1505,11 +1502,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$desc_text = $user_obj->description;
 					}
-					
+
 					if ( '' === $desc_text ) {
 
-						// translators: %s is the user name.
-						$desc_text = sprintf( __( 'Archive page for %s.', 'wpsso' ), WpssoUser::get_author_name( $mod ) );
+						$desc_text = $this->p->opt->get_text( 'plugin_author_page_desc' );
 					}
 				}
 

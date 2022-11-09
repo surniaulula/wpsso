@@ -113,7 +113,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
 				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
 				$this->set_default_text( $local_cache, 'plugin_term_page_title' );	// Term Archive Title.
+				$this->set_default_text( $local_cache, 'plugin_term_page_desc' );	// Term Archive Description.
 				$this->set_default_text( $local_cache, 'plugin_author_page_title' );	// Author Archive Title.
+				$this->set_default_text( $local_cache, 'plugin_author_page_desc' );	// Author Archive Description.
 				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Title.
 				$this->set_default_text( $local_cache, 'plugin_search_page_desc' );	// Search Results Description.
 				$this->set_default_text( $local_cache, 'plugin_year_page_title' );	// Year Archive Title.
@@ -1806,9 +1808,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						return _x( '%%term_title%%', 'option value', 'wpsso' );
 
+					case 'plugin_term_page_desc':		// Term Archive Description.
+
+						return _x( '%%term_tax_single%% archive page for %%term_name%%.', 'option value', 'wpsso' );
+
 					case 'plugin_author_page_title':	// Author Archive Title.
 
-						return _x( '%%author%%, Author at %%sitename%%', 'option value', 'wpsso' );
+						return _x( '%%author_name%%, Author at %%sitename%%', 'option value', 'wpsso' );
+
+					case 'plugin_author_page_desc':		// Author Archive Description.
+
+						return _x( 'Author archive page for %%author_name%%.', 'option value', 'wpsso' );
 
 					case 'plugin_search_page_title':	// Search Results Title.
 

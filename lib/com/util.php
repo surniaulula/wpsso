@@ -2400,7 +2400,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_first_mt_media_id( array $assoc, $media_pre = 'og:image' ) {
-			
+
 			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes = array( ':id' ) );
 		}
 

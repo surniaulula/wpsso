@@ -1957,9 +1957,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$sortable_cols = self::get_sortable_columns();
 
 				foreach ( $sortable_cols as $cache_key => $cache_info ) {	// Avoid variable name conflict with args.
-	
+
 					if ( ! empty( $cache_info[ 'meta_key' ] ) ) {
-	
+
 						$local_cache[ $cache_key ] = $cache_info[ 'meta_key' ];
 					}
 				}

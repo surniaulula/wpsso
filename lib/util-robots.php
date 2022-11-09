@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
 		public function is_noimageindex( $mixed, $mod_id = null ) {
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();

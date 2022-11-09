@@ -283,10 +283,20 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_term_page_title' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_term_page_title', $css_class = 'wide' ) . '</td>';
 
+			$table_rows[ 'plugin_term_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Term Archive Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_term_page_desc' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_term_page_desc', $css_class = 'wide' ) . '</td>';
+
 			$table_rows[ 'plugin_author_page_title' ] = '' .
 				$form->get_th_html_locale( _x( 'Author Archive Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_author_page_title' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_author_page_title', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_author_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Author Archive Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_author_page_desc' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_author_page_desc', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'plugin_search_page_title' ] = '' .
 				$form->get_th_html_locale( _x( 'Search Results Title', 'option label', 'wpsso' ),

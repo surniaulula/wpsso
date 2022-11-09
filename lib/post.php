@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
-					
+
 					/**
 					 * Since WPSSO Core v13.8.1.
 					 */

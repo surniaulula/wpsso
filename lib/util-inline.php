@@ -224,6 +224,18 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
+						case 'term_tax_single':
+
+							$ret_val = $mod[ 'tax_label_single' ];
+
+							break;
+
+						case 'term_tax_single_lower':
+
+							$ret_val = mb_strtolower( $mod[ 'tax_label_single' ] );
+
+							break;
+
 						case 'term_title':	// Compatibility for Yoast SEO.
 
 							/**
