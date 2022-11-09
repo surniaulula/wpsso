@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.9.0-dev.6 (2022/11/09)**
+**Version 13.9.0-dev.7 (2022/11/09)**
 
 * **New Features**
 	* None.
@@ -250,9 +250,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new 'clear_cron_jobs' action handler in `WpssoAdmin->load_setting_page()`.
 	* Added new inline variables:
 		* %%term_description%%
+		* %%term_hierarchy%%
 		* %%term_name%% (aka %%term%%)
 		* %%term_tax_single%%
 		* %%term_tax_single_lower%%
+	* The '%%term_title%%' inline variable no longer includes parent names. Use '%%term_hierarchy%%' is you wish to include parent names in the term title.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -561,7 +563,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.9.0-dev.6 =
+= 13.9.0-dev.7 =
 
 (2022/11/09) Added new options under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab. Fixed a possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
 
