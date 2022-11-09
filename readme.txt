@@ -232,14 +232,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.8.1-dev.3 (2022/11/06)**
+**Version 13.9.0-dev.4 (2022/11/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a "Term Archive Title" option under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab.
 	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 * **Bugfixes**
-	* Fixed possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled (and thus the previous custom SEO title or description cannot be changed).
+	* Fixed a possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled (and thus the previous custom SEO title or description cannot be changed).
 * **Developer Notes**
 	* Added a new `WpssoUtil->count_cron_jobs()` method.
 	* Added a new 'clear_cron_jobs' action handler in `WpssoAdmin->load_setting_page()`.
@@ -254,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a check for `is_sitemap()` to skip importing and handling unused data for sitemaps (custom fields, content blocks, WooCommerce metadata defaults, and sanitizing metadata).
 * **Bugfixes**
-	* Fixed possible conflict between resized image filenames for cropped and uncropped images.
+	* Fixed a possible conflict between resized image filenames for cropped and uncropped images.
 * **Developer Notes**
 	* Added a `SucomDebug->caller()` method to log the calling class and method names.
 	* Added a `WpssoUtilRobots->get_content_directives()` method to convert a robots string to an associative array.
@@ -551,9 +552,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.8.1-dev.3 =
+= 13.9.0-dev.4 =
 
-(2022/11/06) Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page. Fixed possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
+(2022/11/09) Added a "Term Archive Title" option. Added a "Clear WordPress Cron Jobs" button. Fixed a possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
 
 = 13.8.0 =
 
