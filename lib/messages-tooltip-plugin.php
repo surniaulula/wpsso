@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$text = __( 'A fallback author description used for meta tags and Schema markup when the author description is empty.' ) . ' ';
 
 					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
-						$this->p->opt->get_text( 'plugin_author_page_title', $use_opts = false ) );
+						$this->p->opt->get_text( 'plugin_author_page_desc', $use_opts = false ) );
 
 					break;
 
