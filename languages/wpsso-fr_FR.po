@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 13.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-11-09 10:28-0800\n"
+"PO-Revision-Date: 2022-11-09 10:51-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -9584,14 +9584,16 @@ msgid "No description."
 msgstr "Aucune description."
 
 #: lib/options.php:1809
+#| msgctxt "option value"
+#| msgid "%%term_title%%"
 msgctxt "option value"
-msgid "%%term_title%%"
-msgstr "%%term_title%%"
+msgid "%%term_hierarchy%%"
+msgstr "%%term_hierarchy%%"
 
 #: lib/options.php:1813
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
-msgstr "Page d'archives pour %%term_tax_single%% %%term_name%%."
+msgstr "Page d'archives pour %%term_tax_single_lower%% %%term_name%%."
 
 #: lib/options.php:1817
 msgctxt "option value"
@@ -9643,7 +9645,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:976 lib/util-inline.php:385
+#: lib/page.php:976 lib/util-inline.php:398
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 

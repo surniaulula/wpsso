@@ -189,13 +189,13 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
-						case 'post_description':	// Compatibility for AIOSEOP.
+						case 'post_description':	// Used by AIOSEOP.
 
 							$ret_val = $this->p->page->get_the_description( $mod );
 
 							break;
 
-						case 'post_title':	// Compatibility for AIOSEOP.
+						case 'post_title':	// Used by AIOSEOP.
 
 							$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
-						case 'term_description':	// Compatibility for AIOSEOP.
+						case 'term_description':	// Used by AIOSEOP and Yoast SEO.
 
 							$ret_val = $this->p->page->get_the_description( $mod );
 
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
-						case 'term_title':	// Compatibility for Yoast SEO.
+						case 'term_hierarchy':	// Used by Yoast SEO.
 
 							/**
 							 * Includes parent names in the term title if the $title_sep value is not empty.
@@ -245,7 +245,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 							 */
 							$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
-							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep );
+							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep = null );
+
+							break;
+
+						case 'term_title':	// Used by Yoast SEO.
+
+							/**
+							 * Includes parent names in the term title if the $title_sep value is not empty.
+							 *
+							 * Use $title_sep = false to avoid adding term parent names in the term title.
+							 */
+							$term_obj = $this->p->term->get_mod_wp_object( $mod );
+
+							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep = false );
 
 							break;
 					}
@@ -255,7 +268,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				switch ( $varname ) {
 
-					case 'org_url':		// Compatibility for Rank Math.
+					case 'org_url':		// Used by Rank Math.
 					case 'site_url':
 
 						$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
@@ -290,7 +303,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						break;
 
 					case 'sharing_short_url':
-					case 'short_url':	// Compatibility for older WPSSO RRSSB templates.
+					case 'short_url':	// Used by older WPSSO RRSSB templates.
 
 						/**
 						 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
@@ -314,9 +327,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						break;
 
-					case 'org_name':	// Compatibility for Rank Math.
+					case 'org_name':	// Used by Rank Math.
 					case 'sitename':
-					case 'sitetitle':	// Compatibility for SEOPress.
+					case 'sitetitle':	// Used by SEOPress.
 
 						$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
 
@@ -329,14 +342,14 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						break;
 
 					case 'sitedesc':
-					case 'tagline':		// Compatibility for SEOPress.
+					case 'tagline':		// Used by SEOPress.
 
 						$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
 
 						break;
 
 					case 'sep':
-					case 'separator_sa':	// Compatibility for AIOSEOP.
+					case 'separator_sa':	// Used by AIOSEOP.
 
 						$ret_val = $title_sep;
 
@@ -367,7 +380,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					case 'author':
 					case 'author_name':
-					case 'name':		// Compatibility for Yoast SEO.
+					case 'name':		// Used by Yoast SEO.
 
 						/**
 						 * Returns the display name for a comment author, post author, or user module.
@@ -410,7 +423,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						break;
 
-					case 'date':		// Compatibility for Yoast SEO.
+					case 'date':		// Used by Yoast SEO.
 
 						if ( ! empty( $mod[ 'post_time' ] ) ) {
 
@@ -419,7 +432,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						break;
 
-					case 'modified':	// Compatibility for Yoast SEO.
+					case 'modified':	// Used by Yoast SEO.
 
 						if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
 
@@ -467,9 +480,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						break;
 
 					case 'query_search':
-					case 'search_keywords':	// Compatibility for SEOPress.
-					case 'search_query':	// Compatibility for Rank Math.
-					case 'searchphrase':	// Compatibility for Yoast SEO.
+					case 'search_keywords':	// Used by SEOPress.
+					case 'search_query':	// Used by Rank Math.
+					case 'searchphrase':	// Used by Yoast SEO.
 
 						if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
 

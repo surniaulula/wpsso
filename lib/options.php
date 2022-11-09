@@ -1806,7 +1806,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_term_page_title':		// Term Archive Title.
 
-						return _x( '%%term_title%%', 'option value', 'wpsso' );
+						return _x( '%%term_hierarchy%%', 'option value', 'wpsso' );
 
 					case 'plugin_term_page_desc':		// Term Archive Description.
 

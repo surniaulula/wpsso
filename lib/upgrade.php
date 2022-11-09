@@ -908,6 +908,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						$opts[ 'tc_lrg_img_crop_y' ] = 'center';
 					}
 				}
+			
+				/**
+				 * The '%%term_title%%' inline variable no longer includes parent names.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 925 ) {
+
+					if ( ! empty( $opts[ 'plugin_term_page_title' ] ) && '%%term_title%%' === $opts[ 'plugin_term_page_title' ] ) {
+
+						$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
+					}
+				}
 			}
 
 			/**

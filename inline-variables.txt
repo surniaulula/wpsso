@@ -67,11 +67,13 @@
 
 %%term_name%% (aka %%term%%)
 
+%%term_hierarchy%% (includes parent names)
+
 %%term_tax_single%%
 
 %%term_tax_single_lower%%
 
-%%term_title%% (includes parent term names)
+%%term_title%%
 
 %%title%%
 
