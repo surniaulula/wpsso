@@ -1788,7 +1788,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_404_page_title':		// 404 Page Title.
 
-						return _x( 'Page not found', 'option value', 'wpsso' );
+						return _x( 'Page Not Found', 'option value', 'wpsso' );
 
 					case 'plugin_404_page_desc':		// 404 Page Description.
 

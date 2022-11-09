@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.9.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 13.9.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10719,7 +10719,7 @@ msgstr ""
 
 #: lib/options.php:1791
 msgctxt "option value"
-msgid "Page not found"
+msgid "Page Not Found"
 msgstr ""
 
 #: lib/options.php:1795
@@ -10795,7 +10795,17 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2119
+#. translators: %1$s is the term name, %2$s is the singular taxonomy label.
+#: lib/page.php:1494
+msgid "Archive page for the %1$s %2$s."
+msgstr ""
+
+#. translators: %s is the user name.
+#: lib/page.php:1512
+msgid "Archive page for %s."
+msgstr ""
+
+#: lib/page.php:2133
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
