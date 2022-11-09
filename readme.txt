@@ -232,12 +232,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.9.0-dev.5 (2022/11/09)**
+**Version 13.9.0-dev.6 (2022/11/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a "Term Archive Title" option under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab.
+	* Added new options under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab:
+		* Term Archive Title 
+		* Term Archive Description 
+		* Author Archive Description
 	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 	* Added a fallback description for term and user archive pages.
 * **Bugfixes**
@@ -245,6 +248,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoUtil->count_cron_jobs()` method.
 	* Added a new 'clear_cron_jobs' action handler in `WpssoAdmin->load_setting_page()`.
+	* Added new inline variables:
+		* %%term_description%%
+		* %%term_name%% (aka %%term%%)
+		* %%term_tax_single%%
+		* %%term_tax_single_lower%%
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -553,9 +561,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.9.0-dev.5 =
+= 13.9.0-dev.6 =
 
-(2022/11/09) Added a "Term Archive Title" option. Added a "Clear WordPress Cron Jobs" button. Fixed a possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
+(2022/11/09) Added new options under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab. Fixed a possible condition where a previous custom SEO title or description exists, but the SEO title or description is now disabled.
 
 = 13.8.0 =
 
