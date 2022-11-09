@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_no_title_text':	// No Title Text.
 
-					$text = __( 'A fallback string to use when there is no title text available.' ) . ' ';
+					$text = __( 'A fallback title to use when there is no title text available.' ) . ' ';
 
 					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
 						$this->p->opt->get_text( 'plugin_no_title_text', $use_opts = false ) );
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_no_desc_text':	// No Description Text.
 
-					$text = __( 'A fallback string to use when there is no description text available.' ) . ' ';
+					$text = __( 'A fallback description to use when there is no description text available.' ) . ' ';
 
 					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
 						$this->p->opt->get_text( 'plugin_no_desc_text', $use_opts = false ) );

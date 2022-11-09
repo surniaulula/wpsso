@@ -8801,11 +8801,12 @@ msgid "The 404 page description used for meta tags and Schema markup."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:373
-msgid "A fallback string to use when there is no title text available."
+msgid "A fallback title to use when there is no title text available."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:382
-msgid "A fallback string to use when there is no description text available."
+msgid ""
+"A fallback description to use when there is no description text available."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:394
