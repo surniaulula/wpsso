@@ -21,8 +21,6 @@
 
 <!-- about -->
 
-<p><strong>Supports over 500 different Schema types.</strong></p>
-
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
@@ -58,6 +56,8 @@
 <li>Twitter Summary Card Large Image</li>
 <li>Video Preview Images</li>
 </ul>
+
+<p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
 <p><strong>Fixes All Google Search / Rich Results / Merchant Listings and Schema Markup Validator errors:</strong></p>
 

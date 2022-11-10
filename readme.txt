@@ -24,8 +24,6 @@ Present your content at its best on social sites and in search results - no matt
 
 <!-- about -->
 
-<p><strong>Supports over 500 different Schema types.</strong></p>
-
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
@@ -59,6 +57,8 @@ Present your content at its best on social sites and in search results - no matt
 * Twitter Summary Card
 * Twitter Summary Card Large Image
 * Video Preview Images
+
+<p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
 <p><strong>Fixes All Google Search / Rich Results / Merchant Listings and Schema Markup Validator errors:</strong></p>
 
