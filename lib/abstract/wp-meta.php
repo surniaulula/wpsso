@@ -299,14 +299,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
+				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
-
 				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
 				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
-
 				$def_article_section = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
 				$def_adult_oriented  = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
 				$def_age_group       = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
@@ -314,9 +313,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_product_cond    = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
 				$def_price_type      = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
 					'https://schema.org/ListPrice';
-
-				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
-				$job_locations_max   = SucomUtil::get_const( 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX', 5 );
 
 				/**
 				 * Default timezone.
@@ -449,8 +445,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
 					'schema_copyright_year'  => '',						// Copyright Year.
 					'schema_license_url'     => '',						// License URL.
-					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Prov. Org.
-					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Prov. Person.
+					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Provider Org.
+					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Provider Person.
 					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
 

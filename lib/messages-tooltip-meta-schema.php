@@ -131,10 +131,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_prov_org_id':		// Service Prov. Org.
-				case 'tooltip-meta-schema_prov_person_id':	// Service Prov. Person.
+				case 'tooltip-meta-schema_prov_org_id':		// Service Provider Org.
 
-					$text = __( 'Select a service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
+					$text = __( 'Select a service provider organization, service operator or service performer (example: "Netflix").', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-schema_prov_person_id':	// Service Provider Person.
+
+					$text = __( 'Select a service provider person, service operator or service performer.', 'wpsso' );
 
 				 	break;
 

@@ -197,8 +197,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_product_category':		// Default Product Google Category.
 					case 'schema_def_product_condition':		// Default Product Condition.
 					case 'schema_def_product_price_type':		// Default Product Price Type.
-					case 'schema_def_prov_org_id':			// Default Service Prov. Org.
-					case 'schema_def_prov_person_id':		// Default Service Prov. Person.
+					case 'schema_def_prov_org_id':			// Default Service Provider Org.
+					case 'schema_def_prov_person_id':		// Default Service Provider Person.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_review_item_type':		// Default Subject Schema Type.
@@ -221,8 +221,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_job_salary_period':		// Job Base Salary per Year, Month, Week, Hour.
 					case 'schema_lang':				// Language.
 					case 'schema_movie_prodco_org_id':		// Production Company.
-					case 'schema_prov_org_id':			// Service Prov. Org.
-					case 'schema_prov_person_id':			// Service Prov. Person.
+					case 'schema_prov_org_id':			// Service Provider Org.
+					case 'schema_prov_person_id':			// Service Provider Person.
 					case 'schema_pub_org_id':			// Publisher Org.
 					case 'schema_pub_person_id':			// Publisher Person.
 					case 'schema_review_item_type':			// Review: Subject Schema Type.

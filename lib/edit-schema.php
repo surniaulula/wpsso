@@ -37,6 +37,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'metabox_sso_edit_schema_rows'               => 4,
 				'metabox_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
 				'metabox_sso_edit_schema_article_rows'       => 5,	// Schema CreativeWork > Article.
+				'metabox_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
 				'metabox_sso_edit_schema_howto_rows'         => 5,	// Schema CreativeWork > HowTo.
 				'metabox_sso_edit_schema_recipe_rows'        => 5,	// Schema CreativeWork > HowTo > Recipe.
 			), PHP_INT_MIN );	// Run before any add-on filters.
@@ -132,6 +133,11 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
 			/**
+			 * Schema CreativeWork > WebPage.
+			 */
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+
+			/**
 			 * Schema CreativeWork > Book.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
@@ -220,7 +226,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_ispartof_url',
-					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', '',
+					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
 						$start_num = 0, $ispartof_url_max, $show_first = 1 ),
 				),
 				'schema_headline' => array(
@@ -296,7 +302,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_prov_org_id' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Service Prov. Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Service Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
 					'content'  => $form->get_select( 'schema_prov_org_id', $names[ 'org' ],
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
@@ -304,7 +310,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_prov_person_id' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Service Prov. Person', 'option label', 'wpsso' ),
+					'label'    => _x( 'Service Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_person_id',
 					'content'  => $form->get_select( 'schema_prov_person_id', $names[ 'person' ],
 						$css_class = 'long_name', $css_id = '', $is_assoc = true, $is_disabled = false,
@@ -357,6 +363,44 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
+
+		/**
+		 * Since WPSSO Core v13.10.0.
+		 */
+		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
+
+			return $table_rows;
+
+			/*
+			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
+
+			$form_rows = array(
+				'subsection_schema_webpage' => array(
+					'tr_class' => $type_row_class[ 'webpage' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema WebPage Information', 'metabox title', 'wpsso' )
+				),
+				'schema_webpage_reviewed_by_org_id' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Reviewed By Org.', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_webpage_reviewed_by_org_id',
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $names[ 'org' ],
+						$css_class = 'long_name', $css_id = '', $is_assoc = true, $start_num = 0, $reviewed_by_max, $show_first = 1 ),
+				),
+				'schema_webpage_reviewed_by_person_id' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Reviewed By Person', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_webpage_reviewed_by_person_id',
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $names[ 'person' ],
+						$css_class = 'long_name', $css_id = '', $is_assoc = true, $start_num = 0, $reviewed_by_max, $show_first = 1 ),
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			*/
+		}
+
 
 		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
 

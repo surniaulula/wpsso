@@ -484,11 +484,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log_arr( 'roles', $roles );
 			}
 
-			while ( $result = SucomUtil::get_roles_users_ids( $roles, $blog_id = null, $limit = 1000 ) ) {
-
-				$public_ids = array_merge( $public_ids, $result );
-			}
-
+			$public_ids = SucomUtil::get_roles_users_ids( $roles, $blog_id = null );
 			$public_ids = apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
 
 			return $public_ids;
@@ -1753,8 +1749,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$count = 0;
-
+			$count     = 0;
 			$users_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
 
 			foreach ( $users_ids as $id ) {
@@ -1775,10 +1770,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-
-				$notice_msg = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
-
-				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
 			}
@@ -1863,8 +1856,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$count = 0;
-
+			$count   = 0;
 			$blog_id = get_current_blog_id();
 
 			while ( $users_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
@@ -1878,10 +1870,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-
-				$notice_msg = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
-
-				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
 			}
@@ -1929,8 +1919,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( isset( $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ] ) ) {	// Just in case.
 
 				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
-				$limit = SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 );
-				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none, $limit );
+				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none );
+				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ) );
 			}
 
 			return $users;

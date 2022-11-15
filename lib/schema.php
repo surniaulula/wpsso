@@ -1368,6 +1368,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'review'         => 'review',
 						'review_claim'   => 'review.claim',
 						'software_app'   => 'software.application',
+						'webpage'        => 'webpage',
 					);
 
 					break;

@@ -906,14 +906,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_prov_org_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Service Prov. Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Service Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_org_id',
 					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $this->org_names,
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_person_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Service Prov. Person', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Service Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_person_id',
 					'content'  => $form->get_no_select( 'schema_def_prov_person_id', $this->person_names,
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
@@ -1316,11 +1316,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						continue;
 					}
 
-					$highlight = '';
-					$css_class = '';
-					$css_id    = '';
-					$force     = null;
-					$group     = null;
+					$css_class   = '';
+					$css_id      = '';
+					$force       = null;
+					$group       = null;
+					$extra_class = '';
 
 					$this->html_tag_shown[ $opt_key ] = true;
 
@@ -1339,9 +1339,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 					$table_cells[] = '<!-- ' . ( implode( ' ', $match ) ) . ' -->' . 	// Required for sorting.
 						'<td class="checkbox blank">' . $form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ) . '</td>' .
-						'<td class="xshort' . $highlight . '">' . $match[1] . '</td>' .
-						'<td class="head_tags' . $highlight . '">' . $match[2] . '</td>' .
-						'<th class="head_tags' . $highlight . '">' . $match[3] . '</th>';
+						'<td class="xshort' . $extra_class . '">' . $match[ 1 ] . '</td>' .
+						'<td class="head_tags' . $extra_class . '">' . $match[ 2 ] . '</td>' .
+						'<th class="head_tags' . $extra_class . '">' . $match[ 3 ] . '</th>';
 				}
 			}
 

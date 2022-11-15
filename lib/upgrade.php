@@ -908,7 +908,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						$opts[ 'tc_lrg_img_crop_y' ] = 'center';
 					}
 				}
-			
+
 				/**
 				 * The '%%term_title%%' inline variable no longer includes parent names.
 				 *

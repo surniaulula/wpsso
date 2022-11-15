@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.9.0',	// Plugin version.
+					'version'     => '13.9.1-dev.1',	// Plugin version.
 					'opt_version' => '926',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1468,8 +1468,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
 					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
-					'schema_def_prov_org_id'     => 'none',	// Default Service Prov. Org.
-					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.
+					'schema_def_prov_org_id'     => 'none',	// Default Service Provider Org.
+					'schema_def_prov_person_id'  => 'none',	// Default Service Provider Person.
 
 					/**
 					 * Advanced Settings > Schema Defaults > Event.
@@ -4655,21 +4655,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Schema limits.
 			 */
-			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
-			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]        = 20;
-			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]       = 5;
-			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]     = 5;
-			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]        = 15;
-			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
 			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = YEAR_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
-			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]          = 5;
 
 			/**
 			 * Setting and meta array names.

@@ -222,10 +222,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_prov_org_id':		// Default Service Prov. Org.
-				case 'tooltip-schema_def_prov_person_id':	// Default Service Prov. Person.
+				case 'tooltip-schema_def_prov_org_id':		// Default Service Provider Org.
 
-					$text = __( 'Select a default service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
+					$text = __( 'Select a default service provider organization, service operator or service performer (example: "Netflix").', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-schema_def_prov_person_id':	// Default Service Provider Person.
+
+					$text = __( 'Select a default service provider person, service operator or service performer.', 'wpsso' );
 
 				 	break;
 

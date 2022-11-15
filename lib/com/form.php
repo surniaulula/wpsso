@@ -1494,6 +1494,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$display  = $one_more || $key_num < $show_first ? true : false;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
+				$disp_num = $key_num + 1;
 
 				$input_name     = $name . '_' . $key_num;
 				$input_class    = empty( $css_class ) ? '' : $css_class;
@@ -1511,7 +1512,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
+				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 
 				$html .= '<div class="multi_input">' . "\n";
 

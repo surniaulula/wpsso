@@ -330,11 +330,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
 
-			$have_offers = false;
-
+			$have_offers         = false;
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
-
-			$def_canonical_url = $wpsso->util->get_canonical_url( $mod );
+			$def_canonical_url   = $wpsso->util->get_canonical_url( $mod );
 
 			foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 
