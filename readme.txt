@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed a endless loop when adding the 'person' role for content creators.
+	* Fixed an endless loop condition when adding the 'person' role for content creators.
 * **Developer Notes**
 	* Removed the `$limit` argument from these methods:
 		* `SucomUtil::get_roles_users_ids()`
@@ -581,7 +581,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.9.1 =
 
-(2022/11/15) Fixed a endless loop when adding the 'person' role for content creators.
+(2022/11/15) Fixed an endless loop condition when adding the 'person' role for content creators.
 
 = 13.9.0 =
 
