@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.9.1-b.1 (2022/11/15)**
+**Version 13.9.1-rc.1 (2022/11/15)**
 
 * **New Features**
 	* None.
@@ -579,7 +579,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.9.1-b.1 =
+= 13.9.1-rc.1 =
 
 (2022/11/15) Fixed a endless loop when adding the 'person' role for content creators.
 
