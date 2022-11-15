@@ -232,14 +232,31 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.9.1-dev.1 (2022/11/15)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a endless loop when adding the 'person' role for content creators.
+* **Developer Notes**
+	* Removed the `$limit` argument from these methods:
+		* `SucomUtil::get_roles_users_ids()`
+		* `SucomUtil::get_roles_users_names()`
+		* `SucomUtil::get_roles_users_select()`
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.9.0 (2022/11/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added new options under the SSO &gt; Advanced &gt; Plugin Settings &gt; Default Text tab:
-		* Term Archive Title 
-		* Term Archive Description 
+		* Term Archive Title
+		* Term Archive Description
 		* Author Archive Description
 	* Added a "Clear WordPress Cron Jobs" button in the SSO &gt; Tools and Actions settings page.
 * **Bugfixes**
@@ -561,6 +578,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.9.1-dev.1 =
+
+(2022/11/15) Fixed a endless loop when adding the 'person' role for content creators.
 
 = 13.9.0 =
 
