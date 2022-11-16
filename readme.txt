@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-dev.4 (2022/11/15)**
+**Version 13.10.0-dev.5 (2022/11/15)**
 
 * **New Features**
 	* None.
@@ -241,10 +241,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new options under the Document SSO &gt; Edit Schema tab:
 		* Reviewed By Org.
 		* Reviewed By Person
+		* Reviewed Last
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Removed the `$start_num` argument from SucomForm class methods:
+		* `SucomForm->get_input_multi()`
+		* `SucomForm->get_select_multi()`
+		* `SucomForm->get_mixed_multi()`
+		* `SucomForm->get_no_input_multi()`
+		* `SucomForm->get_no_select_multi()`
+		* `SucomForm->get_no_mixed_multi()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -596,7 +603,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.10.0-dev.4 =
+= 13.10.0-dev.5 =
 
 (2022/11/15) Added the Schema WebPage type 'reviewedBy' property. Added new options under the Document SSO &gt; Edit Schema tab.
 
