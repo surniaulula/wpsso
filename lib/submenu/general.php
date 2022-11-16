@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'site_org_schema_type' ) .
 						'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = 'schema_org_types' ) . '</td>';
+								$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
 
 					$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
 						$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),

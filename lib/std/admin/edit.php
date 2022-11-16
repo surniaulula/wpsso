@@ -718,7 +718,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_event_offer', $start_num = 0, $metadata_offers_max, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_event_offer', $metadata_offers_max, $show_first = 2 ),
 				),
 			);
 

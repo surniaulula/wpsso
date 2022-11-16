@@ -978,7 +978,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$select_lib = $this->get_select( $input_name_lib_locale, $img_libs, $img_lib_css_class, $img_lib_css_id,
-				$is_assoc = true, $img_lib_disabled, $selected_lib, $event_names = array(), $event_args = null,
+				$is_assoc = true, $img_lib_disabled, $selected_lib, $event_names = array(), $event_args = array(),
 					$input_name_lib_attr );
 
 			$input_id = $this->get_input( $input_name_id_locale, $img_id_css_class, $img_id_css_id,
@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
 
-		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
+		public function get_input_multi( $name, $css_class = '', $css_id = '', $max_input = 10, $show_first = 2, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
 
@@ -1033,6 +1033,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$display    = true;
 			$one_more   = false;
 			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$start_num  = 0;
 			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
@@ -1158,7 +1159,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 * $is_disabled can be false or an option value for the disabled select.
 		 */
 		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false, $selected = false,
-			$event_names = array(), $event_args = null, $el_attr = '' ) {
+			$event_names = array(), $event_args = array(), $el_attr = '' ) {
 
 			if ( empty( $name ) ) {
 
@@ -1194,13 +1195,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$event_json_var = $this->plugin_id . '_select';
 
-				if ( $event_args && is_string( $event_args ) ) {
-
-					$event_json_var .= '_' . $event_args;
-
-				} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
+				if ( ! empty( $event_args[ 'json_var' ] ) ) {
 
 					$event_json_var .= '_' . $event_args[ 'json_var' ];
+
+				} elseif ( $event_args && is_string( $event_args ) ) {	// Deprecated.
+
+					$event_json_var .= '_' . $event_args;
 				}
 
 				$event_json_var .= '_' . md5( implode( $values ) );
@@ -1357,7 +1358,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
-			foreach ( $event_names as $event_name ) {
+			foreach ( $event_names as $event_num => $event_name ) {
 
 				$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
 
@@ -1365,14 +1366,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_show':
 
-						/**
-						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-						 */
-						$html .= '<script>';
-						$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'focus\', function(){';
-						$html .= 'jQuery( \'' . $event_args . '\' ).show();';
-						$html .= '});';
-						$html .= '</script>' . "\n";
+						$show_id = null;
+
+						if ( ! empty( $event_args[ 'show_id' ] ) ) {
+
+							$show_id = $event_args[ 'show_id' ];
+
+						} elseif ( $event_args && is_string( $event_args ) ) {	// Deprecated.
+						
+							$show_id = $event_args;
+						}
+
+						if ( $show_id ) {
+
+							/**
+							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+							 */
+							$html .= '<script>';
+							$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'focus\', function(){';
+							$html .= 'jQuery( \'' . $show_id . '\' ).show();';
+							$html .= '});';
+							$html .= '</script>' . "\n";
+						}
 
 						break;
 
@@ -1476,7 +1491,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
 		 */
 		public function get_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$start_num = 0, $max_input = 10, $show_first = 3, $is_disabled = false ) {
+			$max_input = 5, $show_first = 2, $is_disabled = false, $event_names = array(), $event_args = array() ) {
 
 			if ( empty( $name ) ) {
 
@@ -1487,7 +1502,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$display    = true;
 			$one_more   = false;
 			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$start_num  = 0;
 			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+
+			$event_names[] = 'on_focus_show';
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
@@ -1508,6 +1526,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
+				$event_args[ 'show_id' ] = 'div#multi_' . $input_id_next;
+
 				$html .= '<div class="multi_container select_multi" id="multi_' . $input_id . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
@@ -1520,7 +1540,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * $is_disabled can be true, false, or an option value for the disabled select.
 				 */
 				$html .= $this->get_select( $input_name, $values, $input_class, $input_id, $is_assoc,
-					$is_disabled, $input_value, 'on_focus_show', 'div#multi_' . $input_id_next );
+					$is_disabled, $input_value, $event_names, $event_args );
 
 				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow for requirement comment.
 
@@ -1538,7 +1558,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 * Add 'none' as the first array element. Always converts the array to associative.
 		 */
 		public function get_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false,
-			$selected = false, $event_names = array(), $event_args = null ) {
+			$selected = false, $event_names = array(), $event_args = array() ) {
 
 			/**
 			 * Set 'none' as the default if no default is defined.
@@ -1599,14 +1619,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$css_class   = trim( 'time-hh-mm ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
-			$event_args  = 'hour_mins_step_' . $step_mins;
+			$event_args  = array( 'json_var' => 'hour_mins_step_' . $step_mins );
 
 			/**
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( $add_none ) {
 
-				$event_args .= '_add_none';
+				$event_args[ 'json_var' ] .= '_add_none';
 
 				if ( ! empty( $name ) ) {
 
@@ -1661,7 +1681,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected,
-				$event_names = array( 'on_focus_load_json' ), $event_args = 'timezones');
+				$event_names = array( 'on_focus_load_json' ), $event_args = array( 'json_var' => 'timezones' ) );
 		}
 
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
@@ -1825,7 +1845,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2, $is_disabled = false ) {
+		public function get_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 2, $is_disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 
@@ -1836,6 +1856,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$display    = true;
 			$one_more   = false;
 			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$start_num  = 0;
 			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
@@ -1898,7 +1919,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$event_names = array();
 					}
 
-					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
+					$event_args = empty( $atts[ 'event_args' ] ) ? array() : $atts[ 'event_args' ];
 
 					if ( isset( $atts[ 'placeholder' ] ) ) {
 
@@ -2269,8 +2290,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$name = SucomUtil::get_key_locale( $name, $this->options );
 
-			return $this->get_select( $name, $values, $css_class, $css_id,
-				$is_assoc, $is_disabled, $selected, $event_names, $event_args );
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled, $selected, $event_names, $event_args );
 		}
 
 		public function get_textarea_locale( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false ) {
@@ -2454,9 +2474,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_video_dimensions( $name, $media_info, $is_disabled = true );
 		}
 
-		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5 ) {
+		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $max_input = 10, $show_first = 3 ) {
 
-			return $this->get_input_multi( $name, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
+			return $this->get_input_multi( $name, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
 		}
 
 		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $holder = '', $max_input = 1 ) {
@@ -2506,9 +2526,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2 ) {
+		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 3 ) {
 
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
 		}
 
 		public function get_no_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null ) {
@@ -2517,7 +2537,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '',
-			$is_assoc = null, $selected = false, $event_names = array(), $event_args = null ) {
+			$is_assoc = null, $selected = false, $event_names = array(), $event_args = array() ) {
 
 			return $this->get_select( $name, $values, $css_class, $css_id,
 				$is_assoc, $is_disabled = true, $selected, $event_names, $event_args );
@@ -2535,13 +2555,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
-		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$repeat = 3, $is_disabled = true ) {
+		/**
+		 * $is_disabled can be true or a text string (ie. "WPSSO PLM required").
+		 */
+		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $repeat = 3, $is_disabled = true ) {
 
-			$is_disabled = empty( $is_disabled ) ? true : $is_disabled;	// Allow for requirement comment.
+			$is_disabled = empty( $is_disabled ) ? true : $is_disabled;	// Allow a comment string.
 
-			return $this->get_select_multi( $name, $values, $css_class, $css_id, $is_assoc,
-				$start_num = 0, $repeat, $repeat, $is_disabled );
+			return $this->get_select_multi( $name, $values, $css_class, $css_id, $is_assoc, $repeat, $repeat, $is_disabled );
 		}
 
 		public function get_no_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
@@ -2552,11 +2573,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select_options( $name, array $opts, $values = array(), $css_class = '', $css_id = '',
-			$is_assoc = null, $event_names = array(), $event_args = null ) {
+			$is_assoc = null, $event_names = array(), $event_args = array() ) {
 
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled = true, $selected, $event_names, $event_args );
+			return $this->get_select( $name, $values, $css_class, $css_id,
+				$is_assoc, $is_disabled = true, $selected, $event_names, $event_args );
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15, $add_none = false ) {
@@ -2678,7 +2700,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select_locale( $name, $values = array(), $css_class = '', $css_id = '',
-			$is_assoc = null, $selected = false, $event_names = array(), $event_args = null ) {
+			$is_assoc = null, $selected = false, $event_names = array(), $event_args = array() ) {
 
 			return $this->get_select_locale( $name, $values, $css_class, $css_id,
 				$is_assoc, $is_disabled = true, $selected, $event_names, $event_args );
