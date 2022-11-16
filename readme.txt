@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-dev.3 (2022/11/15)**
+**Version 13.10.0-dev.4 (2022/11/15)**
 
 * **New Features**
 	* None.
@@ -596,7 +596,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.10.0-dev.3 =
+= 13.10.0-dev.4 =
 
 (2022/11/15) Added the Schema WebPage type 'reviewedBy' property. Added new options under the Document SSO &gt; Edit Schema tab.
 
