@@ -246,7 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.
 	* WordPress v5.2.
 
-**Version 13.9.1 (2022/11/15)**
+**Version 13.9.2 (2022/11/15)**
 
 * **New Features**
 	* None.
@@ -597,7 +597,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 (TBD) None.
 
-= 13.9.1 =
+= 13.9.2 =
 
 (2022/11/15) Fixed an endless loop condition when adding the 'person' role for content creators.
 
