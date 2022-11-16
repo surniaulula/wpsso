@@ -1487,6 +1487,35 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
+
+			/**
+			 * Set 'none' as the default if no default is defined.
+			 */
+			if ( ! empty( $name ) ) {
+
+				if ( ! $this->in_defaults( $name ) ) {
+
+					$this->defaults[ $name ] = 'none';
+				}
+			}
+
+			/**
+			 * Sanity check for possibly older input field values.
+			 */
+			if ( false === $selected ) {
+
+				if ( empty( $this->options[ $name ] ) || ( 'none' !== $this->options[ $name ] && 2 !== strlen( $this->options[ $name ] ) ) ) {
+
+					$selected = $this->defaults[ $name ];
+				}
+			}
+
+			$values = array( 'none' => '[None]' ) + SucomUtil::get_alpha2_countries();
+
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
+		}
+
 		/**
 		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
 		 */
@@ -1682,35 +1711,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected,
 				$event_names = array( 'on_focus_load_json' ), $event_args = array( 'json_var' => 'timezones' ) );
-		}
-
-		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
-
-			/**
-			 * Set 'none' as the default if no default is defined.
-			 */
-			if ( ! empty( $name ) ) {
-
-				if ( ! $this->in_defaults( $name ) ) {
-
-					$this->defaults[ $name ] = 'none';
-				}
-			}
-
-			/**
-			 * Sanity check for possibly older input field values.
-			 */
-			if ( false === $selected ) {
-
-				if ( empty( $this->options[ $name ] ) || ( 'none' !== $this->options[ $name ] && 2 !== strlen( $this->options[ $name ] ) ) ) {
-
-					$selected = $this->defaults[ $name ];
-				}
-			}
-
-			$values = array( 'none' => '[None]' ) + SucomUtil::get_alpha2_countries();
-
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
 		}
 
 		public function get_submit( $value, $css_class = 'button-primary', $css_id = '' ) {
@@ -2222,7 +2222,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Automatically localized methods.
+		 * -------------------------------
+		 * AUTOMATICALLY LOCALIZED METHODS
+		 * -------------------------------
 		 */
 		public function get_options_locale( $opt_key = false, $def_val = null ) {
 
@@ -2233,7 +2235,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					/**
 					 * Returns an option value or null.
 					 *
-					 * Note that for non-existing keys or empty strings, this methods will return the default non-localized value.
+					 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
 					 */
 					return SucomUtil::get_key_value( $opt_key, $this->options, $mixed = 'current' );
 				}
@@ -2249,7 +2251,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				/**
 				 * Returns an option value or null.
 				 *
-				 * Note that for non-existing keys or empty strings, this methods will return the default non-localized value.
+				 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
 				 */
 				return SucomUtil::get_key_value( $opt_key, $this->defaults, $mixed = 'current' );
 			}
@@ -2308,7 +2310,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Automatically disabled methods.
+		 * ------------------------------
+		 * AUTOMATICALLY DISABLED METHODS
+		 * ------------------------------
 		 */
 		public function get_no_td_checkbox( $name, $comment = '', $extra_css_class = '' ) {
 
@@ -2526,11 +2530,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 3 ) {
-
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
-		}
-
 		public function get_no_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null ) {
 
 			return $this->get_radio( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled = true );
@@ -2555,9 +2554,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
-		/**
-		 * $is_disabled can be true or a text string (ie. "WPSSO PLM required").
-		 */
 		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $repeat = 3, $is_disabled = true ) {
 
 			$is_disabled = empty( $is_disabled ) ? true : $is_disabled;	// Allow a comment string.
@@ -2676,8 +2672,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 3 ) {
+
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
+		}
+
 		/**
-		 * Automatically disabled and localized methods.
+		 * --------------------------------------------
+		 * AUTOMATICALLY DISABLED AND LOCALIZED METHODS
+		 * --------------------------------------------
 		 */
 		public function get_no_input_locale( $name, $css_class = '', $css_id = '', $holder = '' ) {
 
@@ -2712,7 +2715,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Private methods.
+		 * ---------------
+		 * PRIVATE METHODS
+		 * ---------------
 		 */
 		private function split_name_locale( $name_prefix ) {
 
