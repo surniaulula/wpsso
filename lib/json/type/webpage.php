@@ -72,41 +72,44 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 			 *
 			 * See https://schema.org/reviewedBy.
 			 */
-			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-			foreach ( array(
-				'schema_webpage_reviewed_by_org_id'    => 'reviewedBy',
-				'schema_webpage_reviewed_by_person_id' => 'reviewedBy',
-			) as $opt_pre => $prop_name ) {
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $md_opts ) as $opt_key => $id ) {
-
-					/**
-					 * Check that the id value is not true, false, null, or 'none'.
-					 */
-					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
-
-						continue;
-					}
-
-					switch ( $opt_pre ) {
-
-						case 'schema_webpage_reviewed_by_org_id':
-
-							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id,
-								$org_logo_key = 'org_logo_url', $list_element = true );
-
-							break;
-
-						case 'schema_webpage_reviewed_by_person_id':
-
-							WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $list_element = true );
-
-							break;
+				foreach ( array(
+					'schema_webpage_reviewed_by_org_id'    => 'reviewedBy',
+					'schema_webpage_reviewed_by_person_id' => 'reviewedBy',
+				) as $opt_pre => $prop_name ) {
+	
+					foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $md_opts ) as $opt_key => $id ) {
+	
+						/**
+						 * Check that the id value is not true, false, null, or 'none'.
+						 */
+						if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+	
+							continue;
+						}
+	
+						switch ( $opt_pre ) {
+	
+							case 'schema_webpage_reviewed_by_org_id':
+	
+								WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id,
+									$org_logo_key = 'org_logo_url', $list_element = true );
+	
+								break;
+	
+							case 'schema_webpage_reviewed_by_person_id':
+	
+								WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $list_element = true );
+	
+								break;
+						}
 					}
 				}
 			}
-
+	
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
