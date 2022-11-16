@@ -232,12 +232,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-dev.2 (TBD)**
+**Version 13.10.0-dev.2 (2022/11/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added the Schema WebPage type 'reviewedBy' property.
+	* Added new options under the Document SSO &gt; Edit Schema tab:
+		* Reviewed By Org.
+		* Reviewed By Person
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -595,7 +598,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.10.0-dev.2 =
 
-(TBD) None.
+(2022/11/15) Added the Schema WebPage type 'reviewedBy' property. Added new options under the Document SSO &gt; Edit Schema tab.
 
 = 13.9.2 =
 
