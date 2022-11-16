@@ -45,16 +45,14 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = false, $list_element = false );
 
 			/**
-			 * Property:
-			 * 	datePosted
+			 * See https://schema.org/datePosted.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'datePosted' => 'article:published_time',
 			) );
 
 			/**
-			 * Property:
-			 *	image as https://schema.org/ImageObject
+			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 

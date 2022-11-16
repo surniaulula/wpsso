@@ -51,8 +51,8 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/**
-			 * See https://schema.org/image.
-			 * See https://schema.org/video.
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/video as https://schema.org/VideoObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -199,8 +199,8 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			) );
 
 			/**
-			 * See https://schema.org/author.
-			 * See https://schema.org/contributor.
+			 * See https://schema.org/author as https://schema.org/Person.
+			 * See https://schema.org/contributor as https://schema.org/Person.
 			 */
 			WpssoSchema::add_author_coauthor_data( $json_ret, $mod );
 
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
 			/**
-			 * See https://schema.org/comment.
+			 * See https://schema.org/comment as https://schema.org/Comment.
 			 * See https://schema.org/commentCount.
 			 */
 			WpssoSchema::add_comment_list_data( $json_ret, $mod );

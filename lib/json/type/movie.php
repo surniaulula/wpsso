@@ -65,28 +65,24 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	duration
+			 * See https://schema.org/duration.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(
 				'duration' => 'schema_movie_duration',	// Option prefix for days, hours, mins, secs.
 			) );
 
 			/**
-			 * Property:
-			 * 	actor (supersedes actors)
+			 * See https://schema.org/actor.
 			 */
 			WpssoSchema::add_person_names_data( $json_ret, 'actor', $md_opts, 'schema_movie_actor_person_name' );
 
 			/**
-			 * Property:
-			 * 	director
+			 * See https://schema.org/director.
 			 */
 			WpssoSchema::add_person_names_data( $json_ret, 'director', $md_opts, 'schema_movie_director_person_name' );
 
 			/**
-			 * Property:
-			 * 	productionCompany
+			 * See https://schema.org/productionCompany.
 			 */
 			if ( WpssoSchema::is_valid_key( $md_opts, 'schema_movie_prodco_org_id' ) ) {	// Not null, an empty string, or 'none'.
 

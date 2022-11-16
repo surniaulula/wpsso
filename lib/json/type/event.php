@@ -45,9 +45,8 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 			WpssoSchemaSingle::add_event_data( $json_ret, $mod, $event_id = false, $list_element = false );
 
 			/**
-			 * Property:
-			 *	image as https://schema.org/ImageObject
-			 *	subjectOf as https://schema.org/VideoObject
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 

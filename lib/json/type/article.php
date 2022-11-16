@@ -43,8 +43,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 *	articleSection
+			 * See https://schema.org/articleSection.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'articleSection' => 'article:section',
@@ -56,8 +55,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	articleBody
+			 * See https://schema.org/articleBody.
 			 */
 			if ( isset( $json_data[ 'text' ] ) ) {
 

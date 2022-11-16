@@ -56,10 +56,9 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 * 	currenciesAccepted
-			 * 	paymentAccepted
-			 * 	priceRange
+			 * See https://schema.org/currenciesAccepted.
+			 * See https://schema.org/paymentAccepted.
+			 * See https://schema.org/priceRange.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'currenciesAccepted' => 'place:business:currencies_accepted',	// Example: USD, CAD.
@@ -68,8 +67,7 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 			) );
 
 			/**
-			 * Property:
-			 *	areaServerd as https://schema.org/GeoShape
+			 * See https://schema.org/areaServed as https://schema.org/GeoShape.
 			 */
 			if ( ! empty( $mt_og[ 'place:location:latitude' ] ) &&
 				! empty( $mt_og[ 'place:location:longitude' ] ) &&

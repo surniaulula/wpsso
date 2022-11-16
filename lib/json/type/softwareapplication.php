@@ -58,8 +58,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Property:
-			 * 	applicationCategory
+			 * See https://schema.org/applicationCategory.
 			 */
 			if ( ! empty( $md_opts[ 'schema_software_app_cat' ] ) ) {
 
@@ -67,8 +66,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	operatingSystem
+			 * See https://schema.org/operatingSystem.
 			 */
 			if ( ! empty( $md_opts[ 'schema_software_app_os' ] ) ) {
 
@@ -92,8 +90,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 				$local_is_recursion = true;
 
 				/**
-				 * Property:
-				 * 	offers as https://schema.org/Offer
+				 * See https://schema.org/offers as https://schema.org/Offer.
 				 */
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
 
@@ -117,8 +114,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 					}
 
 				/**
-				 * Property:
-				 * 	offers as https://schema.org/AggregateOffer
+				 * See https://schema.org/offers as https://schema.org/AggregateOffer.
 				 */
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {	// Just in case - must be an array.
 

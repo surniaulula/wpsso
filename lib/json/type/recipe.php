@@ -46,8 +46,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Property:
-			 * 	recipeCuisine
+			 * See https://schema.org/recipeCuisine.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_cuisine' ] ) ) {
 
@@ -55,8 +54,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	recipeCategory
+			 * See https://schema.org/recipeCategory.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_course' ] ) ) {
 
@@ -64,8 +62,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	recipeYield
+			 * See https://schema.org/recipeYield.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_yield' ] ) ) {
 
@@ -73,8 +70,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	cookingMethod
+			 * See https://schema.org/cookingMethod.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_cook_method' ] ) ) {
 
@@ -82,10 +78,9 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	prepTime
-			 * 	cookTime
-			 * 	totalTime
+			 * See https://schema.org/prepTime.
+			 * See https://schema.org/cookTime.
+			 * See https://schema.org/totalTime.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(
 				'prepTime'  => 'schema_recipe_prep',
@@ -94,8 +89,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			) );
 
 			/**
-			 * Property:
-			 * 	recipeIngredient (supersedes ingredients)
+			 * See https://schema.org/recipeIngredient.
 			 */
 			$recipe_ingredients = SucomUtil::preg_grep_keys( '/^schema_recipe_ingredient_([0-9])+$/', $md_opts, $invert = false, $replace = '$1' );
 
@@ -105,14 +99,12 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	recipeInstructions
+			 * See https://schema.org/recipeInstructions.
 			 */
 			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
 
 			/**
-			 * Property:
-			 * 	nutrition as https://schema.org/NutritionInformation
+			 * See https://schema.org/nutrition as https://schema.org/NutritionInformation
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_nutri_serv' ] ) ) {	// serving size is required
 

@@ -43,8 +43,7 @@ if ( ! class_exists( 'WpssoJsonTypeBrand' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 *	image as https://schema.org/ImageObject
+			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 

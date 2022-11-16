@@ -43,9 +43,8 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 *	image as https://schema.org/ImageObject
-			 *	subjectOf as https://schema.org/VideoObject
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -76,8 +75,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	telephone
+			 * See https://schema.org/telephone.
 			 */
 			if ( $read_mt_place ) {
 
@@ -87,8 +85,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	address as https://schema.org/PostalAddress
+			 * See https://schema.org/address as https://schema.org/PostalAddress.
 			 *
 			 * <meta property="place:street_address" content="1234 Some Road"/>
 			 * <meta property="place:po_box_number" content=""/>
@@ -116,8 +113,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	geo as https://schema.org/GeoCoordinates
+			 * See https://schema.org/geo as https://schema.org/GeoCoordinates.
 			 *
 			 * <meta property="place:location:altitude" content="2,200"/>
 			 * <meta property="place:location:latitude" content="45"/>
@@ -141,8 +137,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
+			 * See https://schema.org/openingHoursSpecification as https://schema.org/OpeningHoursSpecification.
 			 */
 			if ( $read_mt_place ) {
 

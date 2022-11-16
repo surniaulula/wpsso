@@ -34,15 +34,15 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 		}
 
 		/**
-		 * https://schema.org/Bakery
-		 * https://schema.org/BarOrPub
-		 * https://schema.org/Brewery
-		 * https://schema.org/CafeOrCoffeeShop
-		 * https://schema.org/FastFoodRestaurant
-		 * https://schema.org/FoodEstablishment
-		 * https://schema.org/IceCreamShop
-		 * https://schema.org/Restaurant
-		 * https://schema.org/Winery
+		 * See https://schema.org/Bakery.
+		 * See https://schema.org/BarOrPub.
+		 * See https://schema.org/Brewery.
+		 * See https://schema.org/CafeOrCoffeeShop.
+		 * See https://schema.org/FastFoodRestaurant.
+		 * See https://schema.org/FoodEstablishment.
+		 * See https://schema.org/IceCreamShop.
+		 * See https://schema.org/Restaurant.
+		 * See https://schema.org/Winery.
 		 */
 		public function filter_json_data_https_schema_org_foodestablishment( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
@@ -67,10 +67,9 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 * 	acceptsReservations
-			 * 	hasMenu
-			 * 	servesCuisine
+			 * See https://schema.org/acceptsReservations.
+			 * See https://schema.org/hasMenu.
+			 * See https://schema.org/servesCuisine.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'acceptsReservations' => 'place:business:accepts_reservations',	// True or false.

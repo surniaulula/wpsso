@@ -161,9 +161,8 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			) );
 
 			/**
-			 * Property:
-			 *	image as https://schema.org/ImageObject
-			 *	subjectOf as https://schema.org/VideoObject
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -189,8 +188,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				$local_is_recursion = true;
 
 				/**
-				 * Property:
-				 * 	offers as https://schema.org/Offer
+				 * See https://schema.org/offers as https://schema.org/Offer
 				 */
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
 
@@ -209,8 +207,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 					}
 
 				/**
-				 * Property:
-				 * 	offers as https://schema.org/AggregateOffer
+				 * See https://schema.org/offers as https://schema.org/AggregateOffer
 				 */
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {	// Just in case - must be an array.
 

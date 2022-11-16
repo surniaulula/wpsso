@@ -56,8 +56,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Property:
-			 * 	yield
+			 * See https://schema.org/yield.
 			 */
 			if ( ! empty( $md_opts[ 'schema_howto_yield' ] ) ) {
 
@@ -65,9 +64,8 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	prepTime
-			 * 	totalTime
+			 * See https://schema.org/prepTime.
+			 * See https://schema.org/totalTime.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(
 				'prepTime'  => 'schema_howto_prep',
@@ -75,14 +73,12 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			) );
 
 			/**
-			 * Property:
-			 * 	step
+			 * See https://schema.org/step.
 			 */
 			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' );
 
 			/**
-			 * Property:
-			 * 	supply
+			 * See https://schema.org/supply.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^schema_howto_supply_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {
 
@@ -92,8 +88,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	tool
+			 * See https://schema.org/tool.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^schema_howto_tool_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {
 

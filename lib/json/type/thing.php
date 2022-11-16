@@ -52,8 +52,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			$json_ret      = WpssoSchema::get_schema_type_context( $page_type_url );
 
 			/**
-			 * Property:
-			 *	additionalType
+			 * See https://schema.org/additionalType.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -82,8 +81,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/**
-			 * Property:
-			 *	url
+			 * See https://schema.org/url.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -100,8 +98,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	sameAs
+			 * See https://schema.org/sameAs.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -246,9 +243,8 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	name
-			 *	alternateName
+			 * See https://schema.org/name.
+			 * See https://schema.org/alternateName.
 			 */
 			$json_ret[ 'name' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 
@@ -260,14 +256,12 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *	description
+			 * See https://schema.org/description.
 			 */
 			$json_ret[ 'description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
 			/**
-			 * Property:
-			 *	potentialAction
+			 * See https://schema.org/potentialAction.
 			 */
 			$json_ret[ 'potentialAction' ] = array();
 

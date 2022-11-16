@@ -46,8 +46,7 @@ if ( ! class_exists( 'WpssoJsonTypeAudiobook' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Property:
-			 * 	duration
+			 * See https://schema.org/duration.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(
 				'duration'  => 'schema_book_audio_duration',	// Option prefix for days, hours, mins, secs.

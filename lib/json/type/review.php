@@ -46,14 +46,12 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Property:
-			 * 	itemReviewed
+			 * See https://schema.org/itemReviewed.
 			 */
 			WpssoSchema::add_item_reviewed_data( $json_ret[ 'itemReviewed' ], $mod, $md_opts );
 
 			/**
-			 * Property:
-			 * 	reviewRating
+			 * See https://schema.org/reviewRating.
 			 */
 			$json_ret[ 'reviewRating' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Rating' );
 
