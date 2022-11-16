@@ -369,9 +369,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
 
-			return $table_rows;
-
-			/*
 			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
 
 			$form_rows = array(
@@ -398,7 +395,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-			*/
 		}
 
 

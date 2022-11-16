@@ -1920,7 +1920,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
 				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none );
-				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ) );
+				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ), $preserve_keys = true );
 			}
 
 			return $users;

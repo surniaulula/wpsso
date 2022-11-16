@@ -43,8 +43,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret = array();
 
 			/**
-			 * Property:
-			 *      text
+			 * See https://schema.org/text.
 			 */
 			if ( ! empty( $this->p->options[ 'schema_add_text_prop' ] ) ) {
 
@@ -52,9 +51,8 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *      image as https://schema.org/ImageObject
-			 *      video as https://schema.org/VideoObject
+			 * See https://schema.org/image.
+			 * See https://schema.org/video.
 			 */
 			if ( $this->p->debug->enabled ) {
 
@@ -64,9 +62,8 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
 
 			/**
-			 * Property:
-			 *      provider
-			 *      publisher
+			 * See https://schema.org/provider.
+			 * See https://schema.org/publisher.
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
@@ -110,8 +107,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/**
-			 * Property:
-			 * 	isPartOf
+			 * See https://schema.org/isPartOf.
 			 */
 			$json_ret[ 'isPartOf' ] = array();
 
@@ -145,23 +141,20 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				$json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/**
-			 * Property:
-			 * 	headline
+			 * See https://schema.org/headline.
 			 */
 			$json_ret[ 'headline' ] = $this->p->page->get_title( $mod, $md_key = 'schema_headline', $max_len = 'schema_headline' );
 
 			/**
-			 * Property:
-			 *      keywords
+			 * See https://schema.org/keywords.
 			 */
 			$json_ret[ 'keywords' ] = $this->p->page->get_keywords( $mod, $md_key = 'schema_keywords' );
 
 			/**
-			 * Property:
-			 *      copyrightYear
-			 *	license
-			 *	isFamilyFriendly
-			 *	inLanguage
+			 * See https://schema.org/copyrightYear.
+			 * See https://schema.org/license.
+			 * See https://schema.org/isFamilyFriendly.
+			 * See https://schema.org/inLanguage.
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {
 
@@ -195,10 +188,9 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/**
-			 * Property:
-			 *      dateCreated
-			 *      datePublished
-			 *      dateModified
+			 * See https://schema.org/dateCreated.
+			 * See https://schema.org/datePublished.
+			 * See https://schema.org/dateModified.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'dateCreated'   => 'article:published_time',
@@ -207,22 +199,19 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			) );
 
 			/**
-			 * Property:
-			 *      author as https://schema.org/Person
-			 *      contributor as https://schema.org/Person
+			 * See https://schema.org/author.
+			 * See https://schema.org/contributor.
 			 */
 			WpssoSchema::add_author_coauthor_data( $json_ret, $mod );
 
 			/**
-			 * Property:
-			 *      thumbnailURL
+			 * See https://schema.org/thumbnailURL.
 			 */
 			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
 			/**
-			 * Property:
-			 *      comment as https://schema.org/Comment
-			 *      commentCount
+			 * See https://schema.org/comment.
+			 * See https://schema.org/commentCount.
 			 */
 			WpssoSchema::add_comment_list_data( $json_ret, $mod );
 
