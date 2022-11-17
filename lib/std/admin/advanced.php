@@ -96,13 +96,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_filter_content' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) .
-				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended - see help text)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $network );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) .
-				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( '(recommended if shortcodes in excerpts)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( '(recommended - only if using shortcodes in excerpts)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
 
 			$table_rows[ 'plugin_page_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_excerpt' ) .

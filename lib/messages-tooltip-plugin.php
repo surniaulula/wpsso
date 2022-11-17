@@ -95,7 +95,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_filter_excerpt':	// Use Filtered Excerpt.
 
-					$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
+					$text = __( 'Apply the WordPress "get_the_excerpt" filter to excerpt text (default is unchecked).', 'wpsso' ) . ' ';
+					
+					$text .= __( 'You should enable this option if you use shortcodes in your excerpts.', 'wpsso' ) . ' ';
 
 					break;
 
