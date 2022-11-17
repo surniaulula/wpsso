@@ -489,7 +489,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'howto_step_img',
 						),
-					), $css_class = '', $css_id = 'schema_howto_step', $howto_steps_max, $show_first = 3 ),
+					), $css_class = '', $css_id = 'schema_howto_step', $howto_steps_max, $show_first = 2 ),
 				),
 			);
 
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'recipe_instruction_img',
 						),
-					), $css_class = '', $css_id = 'schema_recipe_instruction', $recipe_inst_max, $show_first = 3 ),
+					), $css_class = '', $css_id = 'schema_recipe_instruction', $recipe_inst_max, $show_first = 2 ),
 				),
 
 				/**

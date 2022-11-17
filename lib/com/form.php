@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
 
-		public function get_input_multi( $name, $css_class = '', $css_id = '', $max_input = 10, $show_first = 2, $is_disabled = false ) {
+		public function get_input_multi( $name, $css_class = '', $css_id = '', $show_max = 10, $show_first = 1, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
 
@@ -1032,9 +1032,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html       = '';
 			$display    = true;
 			$one_more   = false;
-			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$show_first = $show_first > $show_max ? $show_max : $show_first;
 			$start_num  = 0;
-			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+			$end_num    = $show_max > 0 ? $show_max - 1 : 0;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
@@ -1520,7 +1520,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
 		 */
 		public function get_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$max_input = 5, $show_first = 2, $is_disabled = false, $event_names = array(), $event_args = array() ) {
+			$show_max = 5, $show_first = 1, $is_disabled = false, $event_names = array(), $event_args = array() ) {
 
 			if ( empty( $name ) ) {
 
@@ -1530,9 +1530,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html       = '';
 			$display    = true;
 			$one_more   = false;
-			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$show_first = $show_first > $show_max ? $show_max : $show_first;
 			$start_num  = 0;
-			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+			$end_num    = $show_max > 0 ? $show_max - 1 : 0;
 
 			$event_names[] = 'on_focus_show';
 
@@ -1845,7 +1845,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 2, $is_disabled = false ) {
+		public function get_mixed_multi( $mixed, $css_class, $css_id, $show_max = 5, $show_first = 1, $is_disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 
@@ -1855,9 +1855,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html       = '';
 			$display    = true;
 			$one_more   = false;
-			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$show_first = $show_first > $show_max ? $show_max : $show_first;
 			$start_num  = 0;
-			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+			$end_num    = $show_max > 0 ? $show_max - 1 : 0;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
@@ -2478,21 +2478,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_video_dimensions( $name, $media_info, $is_disabled = true );
 		}
 
-		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $max_input = 10, $show_first = 3 ) {
+		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $repeat = 1 ) {
 
-			return $this->get_input_multi( $name, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
+			return $this->get_input_multi( $name, $css_class, $css_id, $repeat, $repeat, $is_disabled = true );
 		}
 
-		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $holder = '', $max_input = 1 ) {
+		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $holder = '', $show_max = 1 ) {
 
 			$html        = '';
 			$input_class = SucomUtil::sanitize_css_class( $css_class );
 			$holder      = $this->get_placeholder_sanitized( $name = '', $holder );
-			$end_num     = $max_input > 0 ? $max_input - 1 : 0;
+			$end_num     = $show_max > 0 ? $show_max - 1 : 0;
 
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
 
-				if ( $max_input > 1 ) {
+				if ( $show_max > 1 ) {
 
 					$input_id = SucomUtil::sanitize_css_id( empty( $css_id ) ? '' : $css_id . '_' . $key_num );
 
@@ -2520,7 +2520,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$html .= '/>' . "\n";
 
-				if ( $max_input > 1 ) {
+				if ( $show_max > 1 ) {
 
 					$html .= '</div><!-- .multi_input -->' . "\n";
 					$html .= '</div><!-- .multi_container -->' . "\n";
@@ -2554,7 +2554,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
-		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $repeat = 3, $is_disabled = true ) {
+		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $repeat = 1, $is_disabled = true ) {
 
 			$is_disabled = empty( $is_disabled ) ? true : $is_disabled;	// Allow a comment string.
 
@@ -2672,9 +2672,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $max_input = 10, $show_first = 3 ) {
+		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $repeat = 1 ) {
 
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $max_input, $show_first, $is_disabled = true );
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $repeat, $repeat, $is_disabled = true );
 		}
 
 		/**
