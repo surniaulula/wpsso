@@ -232,12 +232,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-dev.5 (2022/11/15)**
+**Version 13.10.0-dev.6 (2022/11/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added the Schema WebPage type 'reviewedBy' property.
+	* Added the Schema WebPage type 'reviewedBy' and 'lastReviewed' properties.
 	* Added new options under the Document SSO &gt; Edit Schema tab:
 		* Reviewed By Org.
 		* Reviewed By Person
@@ -603,9 +603,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.10.0-dev.5 =
+= 13.10.0-dev.6 =
 
-(2022/11/15) Added the Schema WebPage type 'reviewedBy' property. Added new options under the Document SSO &gt; Edit Schema tab.
+(2022/11/15) Added the Schema WebPage type 'reviewedBy' and 'lastReviewed' properties. Added new options under the Document SSO &gt; Edit Schema tab.
 
 = 13.9.2 =
 
