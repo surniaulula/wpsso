@@ -694,6 +694,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					'schema_software_app_os'  => '',	// Operating System.
 					'schema_software_app_cat' => '',	// Application Category.
+
+					/**
+					 * Schema WebPage.
+					 */
+					'schema_webpage_reviewed_last_date'     => '',			// Reviewed Last Date.
+					'schema_webpage_reviewed_last_time'     => 'none',		// Reviewed Last Time.
+					'schema_webpage_reviewed_last_timezone' => $def_timezone,	// Reviewed Last Timezone.
 				);
 
 				/**

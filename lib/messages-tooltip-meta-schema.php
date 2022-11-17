@@ -876,16 +876,53 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;	// End of 'tooltip-meta-schema_review' case.
 
-				case 'tooltip-meta-schema_software_app_cat':	// Application Category.
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_software_app_' ) ? true : false ):
 
-					$text = sprintf( __( 'Type of software application (example: %s, etc.).', 'wpsso' ), '"Game, Multimedia"' );
+					switch ( $msg_key ) {
 
-				 	break;
+						case 'tooltip-meta-schema_software_app_cat':	// Application Category.
 
-				case 'tooltip-meta-schema_software_app_os':	// Operating System.
+							$text = sprintf( __( 'Type of software application (example: %s, etc.).', 'wpsso' ),
+								'"Game, Multimedia"' );
 
-					$text = sprintf( __( 'The operating system supported (example: %s, etc.).', 'wpsso' ), '"Windows 7", "OSX 10.6", "Android 1.6"' );
-				 	break;
+						 	break;
+
+						case 'tooltip-meta-schema_software_app_os':	// Operating System.
+
+							$text = sprintf( __( 'The operating system supported (example: %s, etc.).', 'wpsso' ),
+								'"Windows 7", "OSX 10.6", "Android 1.6"' );
+
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_software_app' switch.
+
+					break;	// End of 'tooltip-meta-schema_software_app' case.
+
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_webpage_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-meta-schema_webpage_reviewed_by_org_id':	// Reviewed By Org.
+
+							$text = __( 'Organizations that have reviewed the content on this web page for accuracy and/or completeness.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_webpage_reviewed_by_person_id':	// Reviewed By Person.
+
+							$text = __( 'Persons that have reviewed the content on this web page for accuracy and/or completeness.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_webpage_reviewed_last':	// Reviewed Last.
+
+							$text = __( 'Date on which the content on this web page was last reviewed for accuracy and/or completeness.', 'wpsso' );
+
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_webpage' switch.
+
+					break;	// End of 'tooltip-meta-schema_webpage' case.
 
 				/**
 				 * Document SSO > Edit Media tab.

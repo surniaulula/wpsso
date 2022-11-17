@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.10.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 13.10.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4462,54 +4462,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1109
+#: lib/abstract/wp-meta.php:1116
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1177
+#: lib/abstract/wp-meta.php:1184
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1181
+#: lib/abstract/wp-meta.php:1188
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1184 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1191 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1188
+#: lib/abstract/wp-meta.php:1195
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1189
+#: lib/abstract/wp-meta.php:1196
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1190
+#: lib/abstract/wp-meta.php:1197
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1191
+#: lib/abstract/wp-meta.php:1198
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1519
+#: lib/abstract/wp-meta.php:1526
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1850 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1857 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1852
+#: lib/abstract/wp-meta.php:1859
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -7247,7 +7247,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:897 lib/messages-tooltip-meta.php:112
+#: lib/messages-tooltip-meta-schema.php:934 lib/messages-tooltip-meta.php:112
 #: lib/messages-tooltip-meta.php:133 lib/messages-tooltip-opengraph.php:110
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
@@ -7265,7 +7265,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:905 lib/messages-tooltip-meta.php:122
+#: lib/messages-tooltip-meta-schema.php:942 lib/messages-tooltip-meta.php:122
 #: lib/messages-tooltip-meta.php:144 lib/messages-tooltip-opengraph.php:127
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
@@ -8184,21 +8184,39 @@ msgstr ""
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:881
+#: lib/messages-tooltip-meta-schema.php:885
 msgid "Type of software application (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:887
+#: lib/messages-tooltip-meta-schema.php:892
 msgid "The operating system supported (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:895
+#: lib/messages-tooltip-meta-schema.php:907
+msgid ""
+"Organizations that have reviewed the content on this web page for accuracy "
+"and/or completeness."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:913
+msgid ""
+"Persons that have reviewed the content on this web page for accuracy and/or "
+"completeness."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:919
+msgid ""
+"Date on which the content on this web page was last reviewed for accuracy "
+"and/or completeness."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:932
 msgid ""
 "A customized image ID to include first in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:903
+#: lib/messages-tooltip-meta-schema.php:940
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Schema meta tags and JSON-LD markup."
