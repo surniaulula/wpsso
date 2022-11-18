@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$show_id = $event_args[ 'show_id' ];
 
 						} elseif ( $event_args && is_string( $event_args ) ) {	// Deprecated.
-						
+
 							$show_id = $event_args;
 						}
 

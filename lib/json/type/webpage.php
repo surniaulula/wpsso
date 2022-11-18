@@ -80,36 +80,36 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 					'schema_webpage_reviewed_by_org_id'    => 'reviewedBy',
 					'schema_webpage_reviewed_by_person_id' => 'reviewedBy',
 				) as $opt_pre => $prop_name ) {
-	
+
 					foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $md_opts ) as $opt_key => $id ) {
-	
+
 						/**
 						 * Check that the id value is not true, false, null, or 'none'.
 						 */
 						if ( ! SucomUtil::is_valid_option_id( $id ) ) {
-	
+
 							continue;
 						}
-	
+
 						switch ( $opt_pre ) {
-	
+
 							case 'schema_webpage_reviewed_by_org_id':
-	
+
 								WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id,
 									$org_logo_key = 'org_logo_url', $list_element = true );
-	
+
 								break;
-	
+
 							case 'schema_webpage_reviewed_by_person_id':
-	
+
 								WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $list_element = true );
-	
+
 								break;
 						}
 					}
 				}
 			}
-	
+
 			/**
 			 * See https://schema.org/lastReviewed.
 			 */

@@ -217,11 +217,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'og_img_max' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_img_max' ) .
 						$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_img_max' ) .
-						'<td>' .
-						$this->form->get_select( 'og_img_max', range( 0, $max_media_items ),
+						'<td>' . $this->form->get_select( 'og_img_max', range( 0, $max_media_items ),
 							$css_class = 'short', $css_id = '', $is_assoc = true ) .
-						$this->p->msgs->maybe_preview_images_first() .
-						'</td>';
+								$this->p->msgs->maybe_preview_images_first() . '</td>';
 
 					$table_rows[ 'og_def_img_id' ] = '' .
 						$this->form->get_th_html_locale( _x( 'Default Image ID', 'option label', 'wpsso' ),

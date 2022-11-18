@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.10.0-dev.9\n"
+"Project-Id-Version: WPSSO Core 13.10.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2792,8 +2792,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:17 gettext/gettext-lib-pro.php:162
 #: lib/pro/admin/advanced.php:146 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:141 lib/std/admin/general.php:59
-#: lib/submenu/general.php:351 lib/submenu/general.php:357
-#: lib/submenu/general.php:363
+#: lib/submenu/general.php:349 lib/submenu/general.php:355
+#: lib/submenu/general.php:361
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -6374,13 +6374,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:136 lib/submenu/general.php:321
+#: lib/edit-visibility.php:136 lib/submenu/general.php:319
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:137 lib/edit-visibility.php:153
-#: lib/submenu/general.php:322 lib/submenu/general.php:336
+#: lib/submenu/general.php:320 lib/submenu/general.php:334
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -6395,7 +6395,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:152 lib/submenu/general.php:335
+#: lib/edit-visibility.php:152 lib/submenu/general.php:333
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -6404,23 +6404,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:421
+#: lib/head.php:439
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:430
+#: lib/head.php:448
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:439
+#: lib/head.php:457
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:448
+#: lib/head.php:466
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:468
+#: lib/head.php:486
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -9628,7 +9628,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:347 lib/messages.php:1118
-#: lib/submenu/general.php:360
+#: lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -11476,12 +11476,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:108 lib/submenu/general.php:227
+#: lib/submenu/essential.php:108 lib/submenu/general.php:225
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:232
+#: lib/submenu/essential.php:113 lib/submenu/general.php:230
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -11586,117 +11586,117 @@ msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:247
+#: lib/submenu/general.php:245
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:252
+#: lib/submenu/general.php:250
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:257
+#: lib/submenu/general.php:255
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:277
+#: lib/submenu/general.php:275
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:287
+#: lib/submenu/general.php:285
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:294
+#: lib/submenu/general.php:292
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:300
+#: lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:303
+#: lib/submenu/general.php:301
 msgctxt "option comment"
 msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
-#: lib/submenu/general.php:307
+#: lib/submenu/general.php:305
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:325
+#: lib/submenu/general.php:323
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:331
+#: lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:343
+#: lib/submenu/general.php:341
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:348
+#: lib/submenu/general.php:346
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:354
+#: lib/submenu/general.php:352
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:370
+#: lib/submenu/general.php:368
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:371
+#: lib/submenu/general.php:369
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:375
+#: lib/submenu/general.php:373
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:380
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:389
+#: lib/submenu/general.php:387
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:392
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:399
+#: lib/submenu/general.php:397
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:404
+#: lib/submenu/general.php:402
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
