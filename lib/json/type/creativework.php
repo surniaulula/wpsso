@@ -210,6 +210,34 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
 			/**
+			 * See https://schema.org/citation.
+			 *
+			 * There is very little information available from Google about the expected JSON markup structure for
+			 * citations - the only information available is from the the Google's Dataset type documentation.
+			 *
+			 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
+			 */
+			$json_ret[ 'citation' ] = array();
+
+			if ( ! empty( $mod[ 'obj' ] ) )	{ // Just in case.
+
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+				if ( is_array( $md_opts ) ) {	// Just in case.
+
+					$citations = SucomUtil::preg_grep_keys( '/^schema_citation_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+
+					foreach ( $citations as $num => $text ) {
+
+						$json_ret[ 'citation' ][] = $text;
+					}
+				}
+			}
+
+			$json_ret[ 'citation' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
+				$json_ret[ 'citation' ], $mod, $mt_og, $page_type_id, $is_main );
+
+			/**
 			 * See https://schema.org/comment as https://schema.org/Comment.
 			 * See https://schema.org/commentCount.
 			 */
