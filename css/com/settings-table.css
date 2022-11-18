@@ -726,10 +726,10 @@ table.sucom-settings td div.multi_container.mixed_multi.single_line {
 
 table.sucom-settings td div.multi_number {
 	display:table-cell;
-	min-width:1.5em;
+	min-width:20px;
 	vertical-align:top;
 	text-align:right;
-	padding-right:4px;
+	padding:2px 8px 0 0;
 }
 
 table.sucom-settings td div.multi_input {
@@ -752,9 +752,7 @@ table.sucom-settings td div.multi_input p.recipe_instruction_section {
 }
 
 table.sucom-settings td p.multi_label {
-	font-size:0.9em;
-	font-weight:600;
-	margin:2px 0 0 0;
+	margin:0;
 }
 
 table.sucom-settings td select,

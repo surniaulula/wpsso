@@ -1041,15 +1041,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$display  = $one_more || $key_num < $show_first ? true : false;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
+				$disp_num = $key_num + 1;
 
 				$input_name    = $name . '_' . $key_num;
-				$input_class   = $css_class . ( $this->get_options( $input_name . ':disabled' ) ? ' disabled' : '' );
-				$input_class   = SucomUtil::sanitize_css_class( $input_class );
+				$input_class   = SucomUtil::sanitize_css_class( $css_class . ( $this->get_options( $input_name . ':disabled' ) ? ' disabled' : '' ) );
 				$input_id      = SucomUtil::sanitize_css_id( empty( $css_id ) ? $input_name : $css_id . '_' . $key_num );
 				$input_id_prev = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num );
 				$input_id_next = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num );
 				$input_value   = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
-
 
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 
@@ -1073,8 +1072,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
-
+				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
 
 				$html .= '<input type="text"';
@@ -1082,15 +1080,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
 				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 				$html .= $input_id ? ' id="text_' . $input_id . '"' : '';	// Already sanitized.
-				$html .= ' value="' . $input_value . '"';
+				$html .= ' value="' . esc_attr( $input_value ) . '"';
 				$html .= ' ' . $el_attr . '/>' . "\n";
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
-
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
-
+				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;	// Allow for 0.
 			}
 
 			return $html;
@@ -1543,12 +1539,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$next_num = $key_num + 1;
 				$disp_num = $key_num + 1;
 
-				$input_name     = $name . '_' . $key_num;
-				$input_class    = empty( $css_class ) ? '' : $css_class;
-				$input_id       = SucomUtil::sanitize_css_id( empty( $css_id ) ? $input_name : $css_id . '_' . $key_num );
-				$input_id_prev  = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num );
-				$input_id_next  = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num );
-				$input_value    = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
+				$input_name    = $name . '_' . $key_num;
+				$input_class   = empty( $css_class ) ? '' : SucomUtil::sanitize_css_class( $css_class );
+				$input_id      = SucomUtil::sanitize_css_id( empty( $css_id ) ? $input_name : $css_id . '_' . $key_num );
+				$input_id_prev = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num );
+				$input_id_next = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num );
+				$input_value   = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
 
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 
@@ -1562,7 +1558,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '>' . "\n";
 
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
-
 				$html .= '<div class="multi_input">' . "\n";
 
 				/**
@@ -1571,13 +1566,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $this->get_select( $input_name, $values, $input_class, $input_id, $is_assoc,
 					$is_disabled, $input_value, $event_names, $event_args );
 
-				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow for requirement comment.
+				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow comment.
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
-
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = 'none' === $input_value || ( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;
+				$one_more = 'none' === $input_value || 
+					( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;	// Allow for 0.
 			}
 
 			return $html;
@@ -1806,6 +1801,76 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_textarea_multi( $name, $css_class = '', $css_id = '', $len = 0, $show_max = 5, $show_first = 1, $is_disabled = false ) {
+
+			if ( empty( $name ) ) {
+
+				return;	// Just in case.
+			}
+
+			$html       = '';
+			$display    = true;
+			$one_more   = false;
+			$show_first = $show_first > $show_max ? $show_max : $show_first;
+			$start_num  = 0;
+			$end_num    = $show_max > 0 ? $show_max - 1 : 0;
+
+			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
+
+				$display  = $one_more || $key_num < $show_first ? true : false;
+				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
+				$next_num = $key_num + 1;
+				$disp_num = $key_num + 1;
+
+				$input_name    = $name . '_' . $key_num;
+				$input_class   = empty( $css_class ) ? '' : SucomUtil::sanitize_css_class( $css_class );
+				$input_id      = SucomUtil::sanitize_css_id( empty( $css_id ) ? $input_name : $css_id . '_' . $key_num );
+				$input_id_prev = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num );
+				$input_id_next = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num );
+				$input_value   = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
+
+				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
+
+					continue;
+				}
+
+				if ( $start_num === $key_num ) {
+
+					$el_attr = 'onFocus="jQuery(\'div#multi_' . $input_id_next . '\').show();"';
+
+				} else {
+
+					$el_attr = 'onFocus="if ( jQuery(\'textarea#textarea_' . $input_id_prev . '\').val().length )' .
+						' { jQuery(\'div#multi_' . $input_id_next . '\').show(); } else' .
+						' { jQuery(\'textarea#textarea_' . $input_id_prev . '\').focus(); }"';
+				}
+
+				$html .= '<div';
+				$html .= ' class="multi_container textarea_multi"';
+				$html .= ' id="multi_' . $input_id . '"';
+				$html .= $display ? '' : ' style="display:none;"';
+				$html .= '>' . "\n";
+
+				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
+				$html .= '<div class="multi_input">' . "\n";
+
+				$html .= '<textarea' .
+					( $is_disabled ? ' disabled="disabled"' : '' ) .
+					' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
+					( $input_class ? ' class="' . $input_class . '"' : '' ) .	// Already sanitized.
+					( $input_id ? ' id="textarea_' . $input_id . '"' : '' ) .	// Already sanitized.
+					' ' . $el_attr . '>' . esc_attr( $input_value ) .
+					'</textarea>' . "\n";
+
+				$html .= '</div><!-- .multi_input -->' . "\n";
+				$html .= '</div><!-- .multi_container -->' . "\n";
+
+				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;	// Allow for 0.
+			}
+
+			return $html;
+		}
+
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, $el_data = array() ) {
 
 			$input_class = SucomUtil::sanitize_css_class( $css_class );
@@ -1973,17 +2038,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$input_checked = '';
 									}
 
-									$radio_inputs[] = '<input type="radio"' . ( $is_disabled ? ' disabled="disabled"' :
-										' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
-										' class="' . $input_class . '"' .	// Already sanitized.
-										' value="' . esc_attr( $input_value ) . '"' ) . $input_checked . '/>';
+									$radio_inputs[] = '<input type="radio"' .
+										( $is_disabled ? ' disabled="disabled"' :
+											' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
+											' class="' . $input_class . '"' .	// Already sanitized.
+											' value="' . esc_attr( $input_value ) . '"' ) .
+										$input_checked . '/>';
 								}
 
 								if ( ! empty( $radio_inputs ) ) {
 
 									$html .= '<p';
 									$html .= ' class="' . $container_class . '"';	// Already sanitized.
-									$html .= ' id="' . $input_id . '"';	// Already sanitized.
+									$html .= ' id="' . $input_id . '"';		// Already sanitized.
 									$html .= ' ' . $el_attr . '>';
 									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
 									$html .= '</p>' . "\n";
@@ -2014,13 +2081,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_value = $in_options ? $this->options[ $input_name ] : '';
 
-								$html .= '<textarea ' . ( $is_disabled ? ' disabled="disabled"' : '' ) .
+								$html .= '<textarea ' .
+									( $is_disabled ? ' disabled="disabled"' : '' ) .
 									' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
 									' title="' . esc_attr( $input_title ) . '"' .
 									' class="' . $input_class . '"' .	// Already sanitized.
 									' id="textarea_' . $input_id . '"' .	// Already sanitized.
 									( $this->get_placeholder_attrs( $type = 'textarea', $holder ) ) .
-									'>' . esc_attr( $input_value ) . '</textarea>' . "\n";
+									' ' . $el_attr . '>' . esc_attr( $input_value ) .
+									'</textarea>' . "\n";
 
 								if ( $input_value || is_numeric( $input_value ) ) {
 
@@ -2157,8 +2226,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 										if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
 
-											$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
-												$is_selected_html . '>' . $label_transl . '</option>';
+											$select_opt_arr[ $option_value ] = '<option value="' .
+												esc_attr( $option_value ) . '"' . $is_selected_html . '>' .
+												$label_transl . '</option>';
 
 											$select_opt_added++;
 										}

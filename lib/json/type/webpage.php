@@ -113,9 +113,12 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 			/**
 			 * See https://schema.org/lastReviewed.
 			 */
-			if ( $date = WpssoSchema::get_opts_date_iso( $md_opts, 'schema_webpage_reviewed_last' ) ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				$json_ret[ 'lastReviewed' ] = $date;
+				if ( $date = WpssoSchema::get_opts_date_iso( $md_opts, 'schema_webpage_reviewed_last' ) ) {
+
+					$json_ret[ 'lastReviewed' ] = $date;
+				}
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

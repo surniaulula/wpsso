@@ -213,6 +213,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = '' );
 			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 			$ispartof_url_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
+			$citations_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
 
 			$form_rows = array(
 				'subsection_schema_creative_work' => array(
@@ -220,14 +221,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Creative Work Information', 'metabox title', 'wpsso' )
-				),
-				'schema_ispartof_url' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_ispartof_url',
-					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
-						$ispartof_url_max, $show_first = 1 ),
 				),
 				'schema_headline' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
@@ -318,6 +311,22 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$css_class = 'long_name', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
+				),
+				'schema_ispartof_url' => array(
+					'tr_class' => $type_row_class[ 'creative_work' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_ispartof_url',
+					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
+						$ispartof_url_max, $show_first = 1 ),
+				),
+				'schema_citation' => array(
+					'tr_class' => $type_row_class[ 'creative_work' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Reference Citations', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_citation',
+					'content'  => $form->get_textarea_multi( 'schema_citation', $css_class = 'wide', $css_id = '',
+						$max_len = 0, $citations_max, $show_first = 1 ),
 				),
 			);
 
@@ -413,9 +422,9 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
 
-			$howto_steps_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
-			$howto_supplies_max = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
-			$howto_tools_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX', 20 );
+			$howto_steps_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
+			$howto_supplies_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
+			$howto_tools_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX', 20 );
 
 			$form_rows = array(
 				'subsection_schema_howto' => array(
@@ -470,7 +479,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_howto_step_section' => array(
 							'input_type'    => 'radio',
 							'input_class'   => 'howto_step_section',
-							'input_content' => _x( '%1$s How-To Step or %2$s Step Group / Section:', 'option label', 'wpsso' ),
+							'input_content' => _x( 'How-To %1$s Step or %2$s Section:', 'option label', 'wpsso' ),
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),
@@ -489,7 +498,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'howto_step_img',
 						),
-					), $css_class = '', $css_id = 'schema_howto_step', $howto_steps_max, $show_first = 2 ),
+					), $css_class = '', $css_id = 'schema_howto_steps', $howto_steps_max, $show_first = 2 ),
 				),
 			);
 
@@ -574,7 +583,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_recipe_instruction_section' => array(
 							'input_type'    => 'radio',
 							'input_class'   => 'recipe_instruction_section',
-							'input_content' => _x( '%1$s Recipe Instruction or %2$s Instruction Group / Section:', 'option label', 'wpsso' ),
+							'input_content' => _x( 'Recipe %1$s Instruction or %2$s Section:', 'option label', 'wpsso' ),
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),
@@ -593,7 +602,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'image',
 							'input_class' => 'recipe_instruction_img',
 						),
-					), $css_class = '', $css_id = 'schema_recipe_instruction', $recipe_inst_max, $show_first = 2 ),
+					), $css_class = '', $css_id = 'schema_recipe_instructions', $recipe_inst_max, $show_first = 2 ),
 				),
 
 				/**

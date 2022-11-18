@@ -81,53 +81,59 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_ispartof_url':	// Is Part of URLs.
-
-					$text = __( 'URL(s) to other Schema CreativeWork(s) that this content is a part of.', 'wpsso' );
-
-				 	break;
-
 				case 'tooltip-meta-schema_headline':	// Headline.
 
-					$text = __( 'The headline for the Schema CreativeWork type and/or its sub-types.', 'wpsso' ) . ' ';
+					$text = __( 'The headline for this creative work.', 'wpsso' ) . ' ';
 
-					$text .= __( 'The default value is inherited from the Schema alternate name, Schema name, or SEO title.', 'wpsso' ) . ' ';
+					$text .= __( 'The default value is inherited from the Schema name, alternate name, or the SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-schema_text':	// Full Text.
 
-					$text = __( 'The complete textual and searchable content for the Schema CreativeWork type and/or its sub-types.', 'wpsso' );
+					$text = __( 'The complete textual and searchable content for this creative work.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_keywords':	// Keywords.
 
-					$text = __( 'Comma delimited list of keywords or tags describing the Schema CreativeWork content.', 'wpsso' );
+					$text = __( 'A comma delimited list of keywords or tags describing the creative work.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_lang':	// Language.
 
-					$text = __( 'The language (aka locale) for the Schema CreativeWork content.', 'wpsso' );
+					$text = __( 'The language (aka locale) of this creative work.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_family_friendly':	// Family Friendly.
 
-					$text = __( 'The content of this Schema CreativeWork is family friendly.', 'wpsso' );
+					$text = __( 'The content of this creative work is family friendly.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-schema_copyright_year':	// Copyright Year.
+
+					$text = __( 'The year during which the claimed copyright was first asserted for this creative work.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-schema_license_url':		// License URL.
+
+					$text = __( 'A license document URL that applies to this creative work.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_pub_org_id':		// Publisher Org.
 
-					$text = __( 'Select a publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
+					$text = __( 'Select a publisher organization for this creative work.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_pub_person_id':	// Publisher Person.
 
-					$text = __( 'Select a publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
+					$text = __( 'Select a publisher person for this creative work.', 'wpsso' );
 
 				 	break;
 
@@ -143,15 +149,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_copyright_year':	// Copyright Year.
+				case 'tooltip-meta-schema_ispartof_url':	// Is Part of URLs.
 
-					$text = __( 'The year during which the claimed copyright was first asserted for this creative work.', 'wpsso' );
+					$text = __( 'URLs to other creative works that this content is a part of.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_license_url':	// License URL.
+				case 'tooltip-meta-schema_citation':		// Reference Citations.
 
-					$text = __( 'A license document URL that applies to this content.', 'wpsso' );
+					$text = __( 'Reference citations to creative works, such as other publications, web pages, scholarly articles, etc.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'You can find <a href="%1$s">information on writing citations from Google</a> or one of many articles on <a href="%2$s">How to Make a Citation in MLA, APA, and Chicago/Turabian</a>.', 'wpsso' ),
+						__( 'https://www.google.com/search?q=how+to+write+a+citation', 'wpsso' ),
+						__( 'https://www.bibliography.com/how-to/how-to-make-a-citation/', 'wpsso' ) );
 
 				 	break;
 
