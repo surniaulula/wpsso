@@ -5875,7 +5875,7 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/edit-media.php:112 lib/edit-media.php:154 lib/edit-media.php:204
-#: lib/edit-media.php:263 lib/edit-schema.php:497 lib/edit-schema.php:601
+#: lib/edit-media.php:263 lib/edit-schema.php:507 lib/edit-schema.php:611
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
@@ -5955,7 +5955,7 @@ msgstr ""
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit-schema.php:88 lib/edit-schema.php:487 lib/edit-schema.php:591
+#: lib/edit-schema.php:88 lib/edit-schema.php:497 lib/edit-schema.php:601
 msgctxt "option label"
 msgid "Name"
 msgstr ""
@@ -5965,7 +5965,7 @@ msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: lib/edit-schema.php:102 lib/edit-schema.php:492 lib/edit-schema.php:596
+#: lib/edit-schema.php:102 lib/edit-schema.php:502 lib/edit-schema.php:606
 msgctxt "option label"
 msgid "Description"
 msgstr ""
@@ -6045,251 +6045,251 @@ msgctxt "option label"
 msgid "Is Part of URLs"
 msgstr ""
 
-#: lib/edit-schema.php:326
+#: lib/edit-schema.php:336
 msgctxt "option label"
 msgid "Reference Citations"
 msgstr ""
 
-#: lib/edit-schema.php:346
+#: lib/edit-schema.php:356
 msgctxt "metabox title"
 msgid "Schema Article Information"
 msgstr ""
 
-#: lib/edit-schema.php:351 lib/messages.php:644
+#: lib/edit-schema.php:361 lib/messages.php:644
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit-schema.php:367
+#: lib/edit-schema.php:377
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit-schema.php:370
+#: lib/edit-schema.php:380
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit-schema.php:390
+#: lib/edit-schema.php:400
 msgctxt "metabox title"
 msgid "Schema WebPage Information"
 msgstr ""
 
-#: lib/edit-schema.php:395
+#: lib/edit-schema.php:405
 msgctxt "option label"
 msgid "Reviewed By Org."
 msgstr ""
 
-#: lib/edit-schema.php:403
+#: lib/edit-schema.php:413
 msgctxt "option label"
 msgid "Reviewed By Person"
 msgstr ""
 
-#: lib/edit-schema.php:413
+#: lib/edit-schema.php:423
 msgctxt "option label"
 msgid "Reviewed Last"
 msgstr ""
 
-#: lib/edit-schema.php:434
+#: lib/edit-schema.php:444
 msgctxt "metabox title"
 msgid "Schema How-To Information"
 msgstr ""
 
-#: lib/edit-schema.php:439
+#: lib/edit-schema.php:449
 msgctxt "option label"
 msgid "How-To Makes"
 msgstr ""
 
-#: lib/edit-schema.php:446 lib/edit-schema.php:551
+#: lib/edit-schema.php:456 lib/edit-schema.php:561
 msgctxt "option label"
 msgid "Preparation Time"
 msgstr ""
 
-#: lib/edit-schema.php:453 lib/edit-schema.php:565
+#: lib/edit-schema.php:463 lib/edit-schema.php:575
 msgctxt "option label"
 msgid "Total Time"
 msgstr ""
 
-#: lib/edit-schema.php:460 lib/messages.php:660
+#: lib/edit-schema.php:470 lib/messages.php:660
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/edit-schema.php:468 lib/messages.php:665
+#: lib/edit-schema.php:478 lib/messages.php:665
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/edit-schema.php:476 lib/messages.php:655
+#: lib/edit-schema.php:486 lib/messages.php:655
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/edit-schema.php:482
+#: lib/edit-schema.php:492
 msgctxt "option label"
 msgid "How-To %1$s Step or %2$s Section:"
 msgstr ""
 
-#: lib/edit-schema.php:518
+#: lib/edit-schema.php:528
 msgctxt "metabox title"
 msgid "Schema Recipe Information"
 msgstr ""
 
-#: lib/edit-schema.php:523
+#: lib/edit-schema.php:533
 msgctxt "option label"
 msgid "Recipe Cuisine"
 msgstr ""
 
-#: lib/edit-schema.php:530
+#: lib/edit-schema.php:540
 msgctxt "option label"
 msgid "Recipe Course"
 msgstr ""
 
-#: lib/edit-schema.php:537
+#: lib/edit-schema.php:547
 msgctxt "option label"
 msgid "Recipe Makes"
 msgstr ""
 
-#: lib/edit-schema.php:544
+#: lib/edit-schema.php:554
 msgctxt "option label"
 msgid "Cooking Method"
 msgstr ""
 
-#: lib/edit-schema.php:558
+#: lib/edit-schema.php:568
 msgctxt "option label"
 msgid "Cooking Time"
 msgstr ""
 
-#: lib/edit-schema.php:572 lib/messages.php:848
+#: lib/edit-schema.php:582 lib/messages.php:848
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/edit-schema.php:580 lib/messages.php:853
+#: lib/edit-schema.php:590 lib/messages.php:853
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/edit-schema.php:586
+#: lib/edit-schema.php:596
 msgctxt "option label"
 msgid "Recipe %1$s Instruction or %2$s Section:"
 msgstr ""
 
-#: lib/edit-schema.php:615
+#: lib/edit-schema.php:625
 msgctxt "metabox title"
 msgid "Schema Recipe Nutrition Information"
 msgstr ""
 
-#: lib/edit-schema.php:620
+#: lib/edit-schema.php:630
 msgctxt "option label"
 msgid "Serving Size"
 msgstr ""
 
-#: lib/edit-schema.php:627
+#: lib/edit-schema.php:637
 msgctxt "option label"
 msgid "Calories"
 msgstr ""
 
-#: lib/edit-schema.php:630
+#: lib/edit-schema.php:640
 msgctxt "option comment"
 msgid "calories"
 msgstr ""
 
-#: lib/edit-schema.php:635
+#: lib/edit-schema.php:645
 msgctxt "option label"
 msgid "Protein"
 msgstr ""
 
-#: lib/edit-schema.php:638
+#: lib/edit-schema.php:648
 msgctxt "option comment"
 msgid "grams of protein"
 msgstr ""
 
-#: lib/edit-schema.php:643
+#: lib/edit-schema.php:653
 msgctxt "option label"
 msgid "Fiber"
 msgstr ""
 
-#: lib/edit-schema.php:646
+#: lib/edit-schema.php:656
 msgctxt "option comment"
 msgid "grams of fiber"
 msgstr ""
 
-#: lib/edit-schema.php:651
+#: lib/edit-schema.php:661
 msgctxt "option label"
 msgid "Carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:654
+#: lib/edit-schema.php:664
 msgctxt "option comment"
 msgid "grams of carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:659
+#: lib/edit-schema.php:669
 msgctxt "option label"
 msgid "Sugar"
 msgstr ""
 
-#: lib/edit-schema.php:662
+#: lib/edit-schema.php:672
 msgctxt "option comment"
 msgid "grams of sugar"
 msgstr ""
 
-#: lib/edit-schema.php:667
+#: lib/edit-schema.php:677
 msgctxt "option label"
 msgid "Sodium"
 msgstr ""
 
-#: lib/edit-schema.php:670
+#: lib/edit-schema.php:680
 msgctxt "option comment"
 msgid "milligrams of sodium"
 msgstr ""
 
-#: lib/edit-schema.php:675
+#: lib/edit-schema.php:685
 msgctxt "option label"
 msgid "Fat"
 msgstr ""
 
-#: lib/edit-schema.php:678
+#: lib/edit-schema.php:688
 msgctxt "option comment"
 msgid "grams of fat"
 msgstr ""
 
-#: lib/edit-schema.php:683
+#: lib/edit-schema.php:693
 msgctxt "option label"
 msgid "Saturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:686
+#: lib/edit-schema.php:696
 msgctxt "option comment"
 msgid "grams of saturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:691
+#: lib/edit-schema.php:701
 msgctxt "option label"
 msgid "Unsaturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:694
+#: lib/edit-schema.php:704
 msgctxt "option comment"
 msgid "grams of unsaturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:699
+#: lib/edit-schema.php:709
 msgctxt "option label"
 msgid "Trans Fat"
 msgstr ""
 
-#: lib/edit-schema.php:702
+#: lib/edit-schema.php:712
 msgctxt "option comment"
 msgid "grams of trans fat"
 msgstr ""
 
-#: lib/edit-schema.php:707
+#: lib/edit-schema.php:717
 msgctxt "option label"
 msgid "Cholesterol"
 msgstr ""
 
-#: lib/edit-schema.php:710
+#: lib/edit-schema.php:720
 msgctxt "option comment"
 msgid "milligrams of cholesterol"
 msgstr ""

@@ -320,6 +320,16 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
 						$ispartof_url_max, $show_first = 1 ),
 				),
+
+				/**
+				 * See https://schema.org/citation.
+				 *
+				 * There is very little information available from Google about the expected JSON markup structure
+				 * for citations - the only information available is from the the Google's Dataset type
+				 * documentation.
+				 *
+				 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
+				 */
 				'schema_citation' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
