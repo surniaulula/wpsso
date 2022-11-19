@@ -1876,7 +1876,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$multi_label_num++;
 
-						$html .= '<p class="multi_label' . ( 1 === $multi_label_num ? ' first_label' : '' ) . '">' .
+						$html .= '<p class="multi_label' .
+							( 1 === $multi_label_num ? ' first_label' : '' ) . '">' .
 							$atts[ 'input_label' ] . ':</p> ';
 					}
 
@@ -1931,13 +1932,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_value = $in_options ? $this->options[ $input_name ] : '';
 
-								$html .= '<input type="text"' . ( $is_disabled ? ' disabled="disabled"' : '' ) .
-									' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
-									' title="' . esc_attr( $input_title ) . '"' .
-									' class="' . $input_class . '"' .	// Already sanitized.
-									' id="text_' . $input_id . '"' .	// Already sanitized.
-									' value="' . esc_attr( $input_value ) . '"' .
-									' ' . $el_attr . '/>' . "\n";
+								$html .= '<input type="text"';
+								$html .= $is_disabled ? ' disabled="disabled"' : '';
+								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
+								$html .= ' title="' . esc_attr( $input_title ) . '"';
+								$html .= ' class="' . $input_class . '"';	// Already sanitized.
+								$html .= ' id="text_' . $input_id . '"';	// Already sanitized.
+								$html .= ' value="' . esc_attr( $input_value ) . '"';
+								$html .= ' ' . $el_attr . '/>' . "\n";
 
 								if ( $input_value || is_numeric( $input_value ) ) {
 
@@ -1950,15 +1952,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_value = $in_options ? $this->options[ $input_name ] : '';
 
-								$html .= '<textarea ' .
-									( $is_disabled ? ' disabled="disabled"' : '' ) .
-									' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
-									' title="' . esc_attr( $input_title ) . '"' .
-									' class="' . $input_class . '"' .	// Already sanitized.
-									' id="textarea_' . $input_id . '"' .	// Already sanitized.
-									( $this->get_placeholder_attrs( $type = 'textarea', $holder ) ) .
-									' ' . $el_attr . '>' . esc_attr( $input_value ) .
-									'</textarea>' . "\n";
+								$html .= '<textarea';
+								$html .= $is_disabled ? ' disabled="disabled"' : '';
+								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
+								$html .= ' title="' . esc_attr( $input_title ) . '"';
+								$html .= ' class="' . $input_class . '"';	// Already sanitized.
+								$html .= ' id="textarea_' . $input_id . '"';	// Already sanitized.
+								$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder );
+								$html .= ' ' . $el_attr . '>' . esc_attr( $input_value );
+								$html .= '</textarea>' . "\n";
 
 								if ( $input_value || is_numeric( $input_value ) ) {
 
@@ -2279,13 +2281,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
 
-				$html .= '<textarea' .
-					( $is_disabled ? ' disabled="disabled"' : '' ) .
-					' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
-					( $input_class ? ' class="' . $input_class . '"' : '' ) .	// Already sanitized.
-					( $input_id ? ' id="textarea_' . $input_id . '"' : '' ) .	// Already sanitized.
-					' ' . $el_attr . '>' . esc_attr( $input_value ) .
-					'</textarea>' . "\n";
+				$html .= '<textarea';
+				$html .= $is_disabled ? ' disabled="disabled"' : '';
+				$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
+				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
+				$html .= $input_id ? ' id="textarea_' . $input_id . '"' : '';	// Already sanitized.
+				$html .= ' ' . $el_attr . '>' . esc_attr( $input_value );
+				$html .= '</textarea>' . "\n";
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 				$html .= '</div><!-- .multi_container -->' . "\n";
