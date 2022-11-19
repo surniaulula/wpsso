@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-rc.1 (2022/11/19)**
+**Version 13.10.0-rc.2 (2022/11/19)**
 
 * **New Features**
 	* None.
@@ -604,7 +604,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.10.0-rc.1 =
+= 13.10.0-rc.2 =
 
 (2022/11/19) Added the Schema CreativeWork 'citation' and the WebPage 'reviewedBy' and 'lastReviewed' properties. Added new options under the Document SSO &gt; Edit Schema tab.
 
