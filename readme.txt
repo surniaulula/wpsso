@@ -232,17 +232,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.10.0-b.1 (2022/11/18)**
+**Version 13.10.0-rc.1 (2022/11/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added the Schema WebPage type 'reviewedBy', 'lastReviewed', and 'citation' properties.
+	* Added the Schema CreativeWork 'citation' and the WebPage 'reviewedBy' and 'lastReviewed' properties.
 	* Added new options under the Document SSO &gt; Edit Schema tab:
+		* Reference Citations
 		* Reviewed By Org.
 		* Reviewed By Person
 		* Reviewed Last
-		* Reference Citations
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -604,9 +604,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.10.0-b.1 =
+= 13.10.0-rc.1 =
 
-(2022/11/18) Added the Schema WebPage type 'reviewedBy', 'lastReviewed', and 'citation' properties. Added new options under the Document SSO &gt; Edit Schema tab.
+(2022/11/19) Added the Schema CreativeWork 'citation' and the WebPage 'reviewedBy' and 'lastReviewed' properties. Added new options under the Document SSO &gt; Edit Schema tab.
 
 = 13.9.2 =
 
