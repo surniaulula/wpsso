@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.10.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 13.10.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -501,65 +501,65 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:30
-#: lib/com/form.php:621 lib/com/form.php:680
+#: lib/com/form.php:622 lib/com/form.php:681
 msgctxt "option label"
 msgid "Post Type"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:31 lib/com/form.php:684
+#: gettext/gettext-lib-com.php:31 lib/com/form.php:685
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:688
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:689
 msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:835 lib/com/form.php:2526
+#: lib/com/form.php:836 lib/com/form.php:2530
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:836 lib/com/form.php:2527
+#: lib/com/form.php:837 lib/com/form.php:2531
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:837 lib/com/form.php:2528
+#: lib/com/form.php:838 lib/com/form.php:2532
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:838 lib/com/form.php:2529
+#: lib/com/form.php:839 lib/com/form.php:2533
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:876
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:877
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:38 gettext/gettext-lib-pro.php:198
-#: lib/com/form.php:877 lib/pro/admin/edit.php:288 lib/std/admin/edit.php:318
+#: lib/com/form.php:878 lib/pro/admin/edit.php:288 lib/std/admin/edit.php:318
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:40 lib/com/form.php:887
+#: gettext/gettext-lib-com.php:40 lib/com/form.php:888
 #: lib/media-filters.php:114 lib/media.php:1423 lib/media.php:1575
 #: lib/media.php:3200
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:42 lib/com/form.php:970 lib/script.php:359
+#: gettext/gettext-lib-com.php:42 lib/com/form.php:971 lib/script.php:359
 msgid "Select Image"
 msgstr ""
 
