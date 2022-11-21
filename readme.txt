@@ -241,7 +241,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the default 'wpsso_cache_expire_head_markup' filter value to 1 month.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
