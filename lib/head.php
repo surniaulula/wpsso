@@ -60,16 +60,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Maybe do a 301 redirect.
 			 */
 			add_action( 'template_redirect', array( $this, 'maybe_redirect_url' ), -1000 );
-
-			/**
-			 * If a caching plugin or service is active, reduce the head markup cache expiration.
-			 */
-			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'cache_expire_head_markup' => '__return_hour_in_seconds',
-				) );
-			}
 		}
 
 		public function maybe_redirect_url() {

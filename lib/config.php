@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.10.0',	// Plugin version.
+					'version'     => '13.11.0-dev.1',	// Plugin version.
 					'opt_version' => '926',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2403,7 +2403,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'wpsso_h_' => array(
 						'label'  => 'Document Markup',
-						'value'  => WEEK_IN_SECONDS,
+						'value'  => MONTH_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_head_markup',
 
 						/**

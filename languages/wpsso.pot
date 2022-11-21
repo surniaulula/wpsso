@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.10.0\n"
+"Project-Id-Version: WPSSO Core 13.11.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6404,23 +6404,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:439
+#: lib/head.php:429
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:448
+#: lib/head.php:438
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:457
+#: lib/head.php:447
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:466
+#: lib/head.php:456
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:486
+#: lib/head.php:476
 msgid "adding schema json-ld markup"
 msgstr ""
 
