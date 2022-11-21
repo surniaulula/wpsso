@@ -232,6 +232,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.11.0-dev.1 (2022/11/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the meta tags and Schema head markup cache expiration from 1 week to 1 month.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.10.0 (2022/11/19)**
 
 * **New Features**
@@ -603,6 +617,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.11.0-dev.1 =
+
+(2022/11/21) Updated the meta tags and Schema head markup cache expiration from 1 week to 1 month.
 
 = 13.10.0 =
 
