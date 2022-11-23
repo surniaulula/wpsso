@@ -232,12 +232,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.11.0-dev.1 (2022/11/21)**
+**Version 13.11.0-b.1 (2022/11/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the meta tags and Schema head markup cache expiration from 1 week to 1 month.
+	* Updated the head markup cache expiration from 1 week to 1 month.
+	* Removed the head markup cache expiration adjustment to 1 hour when a cache plugin is detected.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -618,9 +619,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.11.0-dev.1 =
+= 13.11.0-b.1 =
 
-(2022/11/21) Updated the meta tags and Schema head markup cache expiration from 1 week to 1 month.
+(2022/11/23) Updated the head markup cache expiration from 1 week to 1 month.
 
 = 13.10.0 =
 
