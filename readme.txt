@@ -232,7 +232,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.11.0-b.1 (2022/11/23)**
+**Version 13.11.0-rc.1 (2022/11/24)**
 
 * **New Features**
 	* None.
@@ -619,9 +619,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.11.0-b.1 =
+= 13.11.0-rc.1 =
 
-(2022/11/23) Updated the head markup cache expiration from 1 week to 1 month.
+(2022/11/24) Updated the head markup cache expiration from 1 week to 1 month.
 
 = 13.10.0 =
 
