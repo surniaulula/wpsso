@@ -264,6 +264,16 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					}
 				}
 
+			} elseif ( 0 === strpos( $varname, 'cf_' ) ) {
+
+				if ( $meta_key = substr( $varname, 3 ) ) {	// Just in case.
+
+					if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+					
+						$ret_val = $mod[ 'obj' ]->get_meta( $mod[ 'id' ], $meta_key, $single = true );
+					}
+				}
+
 			} else {
 
 				switch ( $varname ) {

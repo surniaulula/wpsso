@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.12.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 13.12.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10919,7 +10919,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:976 lib/util-inline.php:398
+#: lib/page.php:976 lib/util-inline.php:408
 msgid "Page %1$d of %2$d"
 msgstr ""
 
@@ -11218,7 +11218,7 @@ msgstr ""
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1570
+#: lib/schema-single.php:1558
 msgid "adding schema place"
 msgstr ""
 

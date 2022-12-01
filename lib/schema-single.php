@@ -1336,18 +1336,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->util->maybe_set_ref( $local_cache_person_urls[ $person_id ], $user_mod, __( 'adding schema person', 'wpsso' ) );
 					}
 
-					$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc' ) );
-
-					if ( empty( $user_desc ) ) {
-
-						$user_desc = $user_mod[ 'obj' ]->get_author_meta( $person_id, 'description' );
-					}
-
-					/**
-					 * Remove shortcodes, strip html, etc.
-					 */
-					$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
-
 					$user_sameas = array();
 
 					foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
@@ -1385,8 +1373,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),
 						'person_prefix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_prefix' ),
 						'person_suffix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_suffix' ),
-						'person_desc'       => $user_desc,
 						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
+						'person_desc'       => $wpsso->page->get_description( $user_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' ),
 						'person_images'     => $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod,
 							$md_pre = array( 'schema', 'og' ) ),
 						'person_sameas'     => $user_sameas,
