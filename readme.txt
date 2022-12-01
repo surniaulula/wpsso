@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.12.0-dev.2 (2022/11/30)**
+**Version 13.12.0-dev.2 (2022/12/01)**
 
 * **New Features**
 	* None.
@@ -242,7 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Moved clearing the post/term/user column data after clearing the post/term/user cache.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -636,7 +636,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.12.0-dev.2 =
 
-(2022/11/30) Added support for user profile images from the Ultimate Member plugin.
+(2022/12/01) Added support for user profile images from the Ultimate Member plugin.
 
 = 13.11.0 =
 
