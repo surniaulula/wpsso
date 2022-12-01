@@ -98,6 +98,7 @@ Present your content at its best on social sites and in search results - no matt
 * Simple Job Board
 * The Events Calendar
 * The SEO Framework
+* Ultimate Member
 * WooCommerce
 * WooCommerce Brands
 * WooCommerce Currency Switcher
@@ -231,6 +232,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" (for example) version filter for the WPSSO Core plugin and/or its add-ons. When new development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can reselect the "Stable / Production" version filter at any time to reinstall the latest stable version.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 13.12.0-dev.1 (2022/11/30)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for user profile images from the Ultimate Member plugin.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
 
 **Version 13.11.0 (2022/11/24)**
 
@@ -618,6 +633,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.12.0-dev.1 =
+
+(2022/11/30) Added support for user profile images from the Ultimate Member plugin.
 
 = 13.11.0 =
 
