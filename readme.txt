@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.12.0-dev.1 (2022/11/30)**
+**Version 13.12.0-dev.2 (2022/11/30)**
 
 * **New Features**
 	* None.
@@ -634,7 +634,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.12.0-dev.1 =
+= 13.12.0-dev.2 =
 
 (2022/11/30) Added support for user profile images from the Ultimate Member plugin.
 
