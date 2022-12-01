@@ -1731,16 +1731,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Clear the post column meta.
-			 */
-			$col_meta_keys = parent::get_column_meta_keys();
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				self::delete_meta( $post_id, $meta_key );
-			}
-
-			/**
 			 * Clear the permalink, canonical / shortlink url cache.
 			 */
 			$permalink = get_permalink( $post_id );
@@ -1830,6 +1820,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->p->post->clear_cache( $post_id );
 				}
+			}
+
+			/**
+			 * Clear the post column meta last.
+			 */
+			$col_meta_keys = parent::get_column_meta_keys();
+
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
+				self::delete_meta( $post_id, $meta_key );
 			}
 
 			do_action( 'wpsso_clear_post_cache', $post_id );

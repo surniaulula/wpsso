@@ -876,16 +876,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			/**
-			 * Clear the term column meta.
-			 */
-			$col_meta_keys = parent::get_column_meta_keys();
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				self::delete_meta( $term_id, $meta_key );
-			}
-
-			/**
 			 * Clear the post meta, content, and head caches.
 			 */
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
@@ -893,6 +883,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
 
 			$this->clear_mod_cache( $mod );
+
+			/**
+			 * Clear the term column meta last.
+			 */
+			$col_meta_keys = parent::get_column_meta_keys();
+
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
+				self::delete_meta( $term_id, $meta_key );
+			}
 
 			do_action( 'wpsso_clear_term_cache', $term_id );
 		}
