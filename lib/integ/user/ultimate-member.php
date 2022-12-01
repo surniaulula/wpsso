@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoIntegUserUltimateMember' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'user_image_urls' => 4,
-			), $prio = 100 );
+			), $prio = 500 );
 		}
 
 		public function filter_user_image_urls( $urls, $size_names, $user_id, $mod ) {
