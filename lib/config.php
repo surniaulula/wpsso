@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.11.0',	// Plugin version.
+					'version'     => '13.12.0-dev.1',	// Plugin version.
 					'opt_version' => '926',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -141,8 +141,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpmetaseo'    => '(plugin) WP Meta SEO',
 								'wpseo'        => '(plugin) Yoast SEO',
 							),
+							'user' => array(
+								'coauthors'       => '(plugin) Co-Authors Plus',
+								'ultimate-member' => '(plugin) Ultimate Member',
+							),
 							'util' => array(
-								'coauthors' => '(plugin) Co-Authors Plus',
 								'elementor' => '(plugin) Elementor Website Builder',
 							),
 						),

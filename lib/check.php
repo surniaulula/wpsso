@@ -807,6 +807,35 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'user':
+
+							switch ( $id ) {
+
+								/**
+								 * Co-Authors Plus.
+								 *
+								 * See https://wordpress.org/plugins/co-authors-plus/.
+								 */
+								case 'coauthors':
+
+									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
+
+									break;
+
+								/**
+								 * Ultimate Member.
+								 *
+								 * See https://wordpress.org/plugins/ultimate-member/.
+								 */
+								case 'ultimate-member':
+
+									$chk[ 'class' ] = 'UM';
+
+									break;
+							}
+
+							break;
+
 						case 'util':
 
 							switch ( $id ) {
@@ -819,17 +848,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'autoptimize':
 
 									$chk[ 'class' ] = 'autoptimizeCache';
-
-									break;
-
-								/**
-								 * Co-Authors Plus.
-								 *
-								 * See https://wordpress.org/plugins/co-authors-plus/.
-								 */
-								case 'coauthors':
-
-									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
 
 									break;
 
