@@ -233,12 +233,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.12.0-dev.4 (2022/12/02)**
+**Version 13.12.0-b.1 (2022/12/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for user profile images from the Ultimate Member plugin.
+	* Added the Schema embed URL for self-hosted videos added from the WordPress video shortcode.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -636,9 +637,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.12.0-dev.4 =
+= 13.12.0-b.1 =
 
-(2022/12/02) Added support for user profile images from the Ultimate Member plugin. Added new inline variable for custom fields %%cf_{name}%%.
+(2022/12/02) Added support for user profile images from the Ultimate Member plugin. Added the Schema embed URL for self-hosted videos added from the WordPress video shortcode. Added new inline variable for custom fields %%cf_{name}%%.
 
 = 13.11.0 =
 
