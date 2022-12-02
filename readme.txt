@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.12.0-dev.3 (2022/12/01)**
+**Version 13.12.0-dev.4 (2022/12/02)**
 
 * **New Features**
 	* None.
@@ -242,8 +242,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Moved clearing the post/term/user column data after clearing the post/term/user cache.
 	* Added new inline variable for custom fields %%cf_{name}%%.
+	* Updated the Schema Person markup to use the `WpssoPage->get_description()` method.
+	* Moved clearing the post/term/user column data after clearing the post/term/user cache.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -635,9 +636,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.12.0-dev.3 =
+= 13.12.0-dev.4 =
 
-(2022/12/01) Added support for user profile images from the Ultimate Member plugin. Added new inline variable for custom fields %%cf_{name}%%.
+(2022/12/02) Added support for user profile images from the Ultimate Member plugin. Added new inline variable for custom fields %%cf_{name}%%.
 
 = 13.11.0 =
 
