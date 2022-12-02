@@ -1425,7 +1425,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( '' !== $opt_val ) {
 
-						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
+						$opt_val = implode( $glue = ', ', SucomUtil::explode_csv( $opt_val ) );
 					}
 
 					break;
@@ -1454,7 +1454,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							}
 						}
 
-						$opt_val = implode( ', ', $parts );
+						$opt_val = implode( $glue = ', ', $parts );
 					}
 
 					break;

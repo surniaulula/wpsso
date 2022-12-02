@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 
 			if ( count( $cuisines ) > 0 ) {
 
-				$opts[ 'schema_recipe_cuisine' ] = implode( ', ', wp_list_pluck( $cuisines, 'name' ) );
+				$opts[ 'schema_recipe_cuisine' ] = implode( $glue = ', ', wp_list_pluck( $cuisines, 'name' ) );
 			}
 
 			/**
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 
 			if ( count( $courses ) > 0 ) {
 
-				$opts[ 'schema_recipe_course' ] = implode( ', ', wp_list_pluck( $courses, 'name' ) );
+				$opts[ 'schema_recipe_course' ] = implode( $glue = ', ', wp_list_pluck( $courses, 'name' ) );
 			}
 
 			/**

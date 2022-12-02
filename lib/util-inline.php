@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						if ( is_array( $ret_val ) ) {	// Just in case.
 
-							$ret_val = implode( ', ', $ret_val );
+							$ret_val = implode( $glue = ', ', $ret_val );
 						}
 					}
 				}

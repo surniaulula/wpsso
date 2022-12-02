@@ -696,7 +696,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( is_array( $mt_single[ $media_pre . ':tag' ] ) ) {
 
-					$json_ret[ 'keywords' ] = implode( ', ', $mt_single[ $media_pre . ':tag' ] );
+					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $media_pre . ':tag' ] );
 
 				} else {
 
@@ -1822,7 +1822,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( is_array( $mt_single[ $media_pre . ':tag' ] ) ) {
 
-					$json_ret[ 'keywords' ] = implode( ', ', $mt_single[ $media_pre . ':tag' ] );
+					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $media_pre . ':tag' ] );
 
 				} else {
 
