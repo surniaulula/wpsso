@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					foreach ( array(
 						'og_vid_title'      => 'og:video:title',
 						'og_vid_desc'       => 'og:video:description',
-						'og_vid_stream_url' => 'og:video:stream_url',
+						'og_vid_stream_url' => 'og:video:stream_url',	// VideoObject contentUrl.
 						'og_vid_width'      => 'og:video:width',
 						'og_vid_height'     => 'og:video:height',
 					) as $md_key => $mt_name ) {
