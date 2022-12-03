@@ -1333,15 +1333,14 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:138
 msgctxt "plugin name"
-msgid "WPSSO WP Sitemaps XML"
+msgid "WPSSO Better WordPress Sitemaps XML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:139
 msgctxt "plugin description"
 msgid ""
-"Select post types and taxonomies added to the WordPress sitemaps XML, "
-"includes localized pages for Google, excludes \"No Index\" and redirected "
-"pages."
+"Include Schema images, alternate language URLs, post type archive pages, "
+"select post types and taxonomies, exclude \"No Index\" and redirected pages."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:140

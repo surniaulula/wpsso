@@ -1202,8 +1202,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssowpsm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WPSM',	// Short plugin name.
-					'name'        => 'WPSSO WP Sitemaps XML',
-					'desc'        => 'Select post types and taxonomies added to the WordPress sitemaps XML, includes localized pages for Google, excludes "No Index" and redirected pages.',
+					'name'        => 'WPSSO Better WordPress Sitemaps XML',
+					'desc'        => 'Include Schema images, alternate language URLs, post type archive pages, select post types and taxonomies, exclude "No Index" and redirected pages.',
 					'slug'        => 'wpsso-wp-sitemaps',
 					'base'        => 'wpsso-wp-sitemaps/wpsso-wp-sitemaps.php',
 					'update_auth' => '',		// No premium version.
