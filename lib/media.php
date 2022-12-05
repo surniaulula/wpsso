@@ -912,6 +912,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$local_cache_attached_ids[ $post_id ] = array();
 
+					/**
+					 * Featured images are handled beforehand by WpssoMedia->get_featured().
+					 *
+					 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
+					 */
+					$featured_id = get_post_thumbnail_id( $post_id );
+
 					$images = get_children( array(
 						'post_parent'    => $post_id,
 						'post_type'      => 'attachment',
@@ -920,7 +927,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					foreach ( $images as $attachment ) {
 
-						if ( ! empty( $attachment->ID ) ) {
+						if ( ! empty( $attachment->ID ) && $featured_id !== $attachment->ID ) {
 
 							$local_cache_attached_ids[ $post_id ][] = $attachment->ID;
 						}
@@ -930,7 +937,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$filter_name = 'wpsso_attached_image_ids';
 
-					$local_cache_attached_ids[ $post_id ] = array_unique( apply_filters( $filter_name, $local_cache_attached_ids[ $post_id ], $post_id ) );
+					$local_cache_attached_ids[ $post_id ] = apply_filters( $filter_name, $local_cache_attached_ids[ $post_id ], $post_id );
+
+					$local_cache_attached_ids[ $post_id ] = array_unique( $local_cache_attached_ids[ $post_id ] );	// Just in case.
 				}
 
 				if ( $this->p->debug->enabled ) {

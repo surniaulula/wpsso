@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.12.0\n"
+"Project-Id-Version: WPSSO Core 13.12.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -553,8 +553,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 lib/com/form.php:888
-#: lib/media-filters.php:114 lib/media.php:1423 lib/media.php:1575
-#: lib/media.php:3200
+#: lib/media-filters.php:114 lib/media.php:1432 lib/media.php:1584
+#: lib/media.php:3209
 msgid "Media Library"
 msgstr ""
 
@@ -6460,23 +6460,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:773
+#: lib/integ/ecom/woocommerce.php:772
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:776
+#: lib/integ/ecom/woocommerce.php:775
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:779
+#: lib/integ/ecom/woocommerce.php:778
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1427
+#: lib/integ/ecom/woocommerce.php:1426
 msgid "World"
 msgstr ""
 
@@ -6653,7 +6653,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3210
+#: lib/media-filters.php:117 lib/media.php:3219
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6682,84 +6682,84 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1236
+#: lib/media.php:1245
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1427
+#: lib/media.php:1436
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1429 lib/media.php:1626
+#: lib/media.php:1438 lib/media.php:1635
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1445
+#: lib/media.php:1454
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1466
+#: lib/media.php:1475
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1485
+#: lib/media.php:1494
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1577
+#: lib/media.php:1586
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1595 lib/post.php:715 lib/register.php:348 lib/term.php:548
+#: lib/media.php:1604 lib/post.php:715 lib/register.php:348 lib/term.php:548
 #: lib/user.php:531 lib/util.php:809 lib/util.php:915 lib/util.php:947
 #: lib/util.php:3136
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1596 lib/post.php:716 lib/term.php:549 lib/user.php:532
+#: lib/media.php:1605 lib/post.php:716 lib/term.php:549 lib/user.php:532
 #: lib/util.php:810 lib/util.php:3137
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1597
+#: lib/media.php:1606
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1624
+#: lib/media.php:1633
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3226
+#: lib/media.php:3235
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3279
+#: lib/media.php:3288
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3314
+#: lib/media.php:3323
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

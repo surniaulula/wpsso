@@ -389,6 +389,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 		/**
 		 * Note that images can only be attached to a post ID.
+		 *
+		 * See WpssoMedia->get_attached_images().
 		 */
 		public function filter_attached_image_ids( $image_ids, $post_id ) {
 
@@ -418,26 +420,23 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				return $image_ids;
 			}
 
+			$attach_ids = null;
+
 			if ( is_callable( array( $product, 'get_gallery_image_ids' ) ) ) {
 
 				$attach_ids = $product->get_gallery_image_ids();
 
-				if ( is_array( $attach_ids ) ) {
-
-					$image_ids = array_merge( $attach_ids, $image_ids );
-				}
-
 			} elseif ( is_callable( array( $product, 'get_gallery_attachment_ids' ) ) ) {
 
 				$attach_ids = $product->get_gallery_attachment_ids();
-
-				if ( is_array( $attach_ids ) ) {
-
-					$image_ids = array_merge( $attach_ids, $image_ids );
-				}
 			}
 
-			return $image_ids;
+			if ( is_array( $attach_ids ) ) {
+
+				$image_ids = array_merge( $image_ids, $attach_ids );
+			}
+
+			return $image_ids;	// array_unique() is applied to the returned array.
 		}
 
 		public function filter_term_image_ids( $image_ids, $size_names, $term_id ) {
