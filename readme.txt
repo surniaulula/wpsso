@@ -233,6 +233,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.12.1-dev.1 (2022/12/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an extra check to prevent duplicate post images that are both featured and attached.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the `WpssoMedia->get_attached_images()` method to check `get_post_thumbnail_id()`.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.12.0 (2022/12/02)**
 
 * **New Features**
@@ -636,6 +650,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.12.1-dev.1 =
+
+(2022/12/05) Added an extra check to prevent duplicate post images that are both featured and attached.
 
 = 13.12.0 =
 
