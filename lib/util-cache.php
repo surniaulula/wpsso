@@ -733,12 +733,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
-					if ( $this->refresh_mod_head_meta( $mod, $read_cache ) ) {
+					$this->refresh_mod_head_meta( $mod, $read_cache );
 
-						usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
+					usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
 
-						$count++;	// Reference to post, term, or user total count.
-					}
+					$count++;	// Reference to post, term, or user total count.
 				}
 			}
 
@@ -766,11 +765,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function refresh_mod_head_meta( array $mod, $read_cache = false ) {
 
-			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->mark();
+			}
+
+			$use_post  = 'post' === $mod[ 'name' ] ? $mod[ 'id' ] : false;
+			$head_tags = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
 			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
 
-			return 1;
+			return array( $head_tags, $head_info );
 		}
 	}
 }

@@ -617,15 +617,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
 							$mod = $this->get_mod( $post_id );
-
-							/**
-							 * Notices have already been shown before creating a new post object.
-							 *
-							 * $read_cache is false since there shouldn't be a cache entry for a new post.
-							 */
-							parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-
-							parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+			
+							list(
+								parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
+								parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
+							) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 						}
 					}
 				}
@@ -865,7 +861,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid post page.
 			 */
-			parent::$head_tags = array();
+			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
 
 			$mod = $this->get_mod( $post_id );
 
@@ -907,17 +903,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				do_action( 'wpsso_admin_post_head', $mod );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'setting head_meta_info static property' );
-				}
-
-				/**
-				 * $read_cache is false to generate notices etc.
-				 */
-				parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-
-				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+				list(
+					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
+					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -1551,12 +1540,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$mod = $this->get_mod( $post_obj->ID );
 
-				/**
-				 * $read_cache is false to generate notices etc.
-				 */
-				parent::$head_tags = $this->p->head->get_head_array( $post_obj->ID, $mod, $read_cache = false );
-
-				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+				list(
+					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
+					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -1840,7 +1827,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+			list(
+				parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
+				parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
+			) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
 			do_action( 'wpsso_refresh_post_cache', $post_id, $mod );
 		}

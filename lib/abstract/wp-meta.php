@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function is_meta_page() {
 
-			if ( is_array( self::$head_tags ) ) {
+			if ( is_array( self::$head_tags ) ) {	// Array is allowed to be empty.
 
 				return true;
 			}

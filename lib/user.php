@@ -635,7 +635,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid user page.
 			 */
-			parent::$head_tags = array();
+			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
 
 			if ( $this->p->debug->enabled ) {
 
@@ -651,17 +651,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				do_action( 'wpsso_admin_user_head', $mod, $screen->id );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'setting head_meta_info static property' );
-				}
-
-				/**
-				 * $read_cache is false to generate notices etc.
-				 */
-				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
-
-				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+				list(
+					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
+					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
 				/**
 				 * Check for missing open graph image and description values.
