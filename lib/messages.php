@@ -406,9 +406,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
+						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
-						$text .= __( 'Google requires at least one "image" property for this Schema type.', 'wpsso' );
+						$text .= __( 'Google requires at least one image property for this Schema type.', 'wpsso' );
 
 						break;
 

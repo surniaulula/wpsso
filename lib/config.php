@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.12.1-dev.1',	// Plugin version.
+					'version'     => '13.13.0-dev.1',	// Plugin version.
 					'opt_version' => '927',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4694,6 +4694,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_HEAD_PRIORITY' ]          = 10;
 			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]     = -100;	// Save custom post/term/user meta before clearing the cache.
 			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]    = -10;	// Clear cache before priority 10 (where most caching plugins are hooked).
+			$var_const[ 'WPSSO_META_REFRESH_PRIORITY' ]  = 0;	// Refresh cache before priority 10 (where most caching plugins are hooked).
 			$var_const[ 'WPSSO_TITLE_TAG_PRIORITY' ]     = 1000;	// Priority for the WordPress 'document_title' filters.
 
 			/**

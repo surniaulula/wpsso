@@ -713,6 +713,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'user' => 0,
 			);
 
+			$sleep_secs = SucomUtil::get_const( 'WPSSO_CACHE_REFRESH_SLEEP_TIME', 0.50 );
+
 			foreach ( $total_count as $obj_name => &$count ) {
 
 				$obj_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );	// Call static method.
@@ -732,6 +734,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
 					if ( $this->refresh_mod_head_meta( $mod, $read_cache ) ) {
+
+						usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
 
 						$count++;	// Reference to post, term, or user total count.
 					}
@@ -760,15 +764,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		private function refresh_mod_head_meta( array $mod, $read_cache = false ) {
+		public function refresh_mod_head_meta( array $mod, $read_cache = false ) {
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 
 			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
-
-			$sleep_secs = SucomUtil::get_const( 'WPSSO_CACHE_REFRESH_SLEEP_TIME', 0.50 );
-
-			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
 
 			return 1;
 		}

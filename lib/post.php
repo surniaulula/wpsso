@@ -111,19 +111,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
 				}
 
-				/**
-				 * The 'save_post' action is run after other post type specific actions, so we can use it to save
-				 * post meta for any post type.
-				 */
-				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
-
 				add_action( 'wp_after_insert_post', array( $this, 'after_insert_post' ), 10, 4 );
 
 				/**
-				 * Don't hook the 'clean_post_cache' action since 'save_post' is run after 'clean_post_cache' and
-				 * our custom post meta has not been saved yet.
+				 * The 'save_post' action is run after other post type specific actions, so we can use it to save
+				 * post meta for any post type. Don't hook the 'clean_post_cache' action since 'save_post' is run
+				 * after 'clean_post_cache' and our custom post meta has not been saved yet.
 				 */
-				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
+				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );		// Default is -100.
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );		// Default is -10.
+				add_action( 'save_post', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
 
 				/**
 				 * The wp_insert_post() function returns after running the 'edit_attachment' action, so the
@@ -131,6 +128,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
 				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
+				add_action( 'edit_attachment', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
 			}
 
 			/**
@@ -1737,13 +1735,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->p->cache->clear( $permalink );
 
-			$check_url = ini_get( 'open_basedir' ) ?
+			$other_url = ini_get( 'open_basedir' ) ?
 				$this->p->util->get_canonical_url( $post_id, $add_page = false ) :
 				SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 
-			if ( $permalink !== $check_url ) {
+			if ( $permalink !== $other_url ) {
 
-				$this->p->cache->clear( $check_url );
+				$this->p->cache->clear( $other_url );
 			}
 
 			/**
@@ -1832,11 +1830,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				self::delete_meta( $post_id, $meta_key );
 			}
 
-			do_action( 'wpsso_clear_post_cache', $post_id );
+			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
+		 */
+		public function refresh_cache( $post_id, $rel = false ) {
+
+			$mod = $this->get_mod( $post_id );
+
+			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+
+			do_action( 'wpsso_refresh_post_cache', $post_id, $mod );
+		}
+
+		/**
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $post_id, $rel = false ) {
 

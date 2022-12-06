@@ -337,54 +337,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $pre_ext = '' ) {
 
-			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
-			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
-			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
-			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
-			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 
 			$this->clear_ignored_url( $url_nofrag );
 
-			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'cleared object cache salt: ' . $cache_salt );
-				}
-			}
-
-			if ( delete_transient( $cache_id ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'cleared transient cache salt: ' . $cache_salt );
-				}
-			}
-
-			if ( $this->base_dir ) {	// Just in case.
-
-				if ( '' === $pre_ext ) {	// Default is an empty string.
-
-					if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
-
-						$pre_ext = '.' . $pre_ext;
-					}
-				}
-
-				$file_name  = md5( $cache_salt ) . $pre_ext;
-				$cache_file = $this->base_dir . $file_name;
-
-				if ( file_exists( $cache_file ) ) {
-
-					if ( @unlink( $cache_file ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
-						}
-					}
-				}
-			}
+			$this->clear_cache_data( $cache_salt, $pre_ext, $url );
 		}
 
 		/**
@@ -1130,6 +1088,62 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $data_saved;	// Return true or false.
 		}
 
+		public function clear_cache_data( $cache_salt, $pre_ext = '', $url = '' ) {
+
+			if ( 0 !== strpos( $pre_ext, '.' ) ) {	// Maybe a filename extension.
+
+				$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
+				$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+				if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'cleared object cache salt: ' . $cache_salt );
+					}
+				}
+
+				if ( delete_transient( $cache_id ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'cleared transient cache salt: ' . $cache_salt );
+					}
+				}
+			}
+
+			if ( $this->base_dir ) {	// Just in case.
+
+				if ( '' === $pre_ext ) {	// Default is an empty string.
+
+					if ( ! empty( $url ) ) {
+
+						$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+						$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
+
+						if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
+
+							$pre_ext = '.' . $pre_ext;
+						}
+					}
+				}
+
+				$file_name  = md5( $cache_salt ) . $pre_ext;
+				$cache_file = $this->base_dir . $file_name;
+
+				if ( file_exists( $cache_file ) ) {
+
+					if ( @unlink( $cache_file ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
+						}
+					}
+				}
+			}
+		}
+
 		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
@@ -1185,9 +1199,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $throttle_secs ) {
 
-				$url_nofrag     = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+				$url_nofrag     = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
 				$url_host       = parse_url( $url_nofrag, PHP_URL_HOST );
-				$cache_md5_pre  = $this->plugin_id . '_!_';	// Preserved on clear cache.
+				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
 				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 				$cache_exp_secs = $throttle_secs;

@@ -140,14 +140,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 2 );
 				}
 
-				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );	// Default is -100.
-				add_action( 'created_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );	// Default is -10.
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );		// Default is -100.
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );		// Default is -10.
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 2 );	// Default is 0.
 
-				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );	// Default is -100.
-				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );	// Default is -10.
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );		// Default is -100.
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );		// Default is -10.
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 2 );	// Default is 0.
 
-				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );	// Default is -100.
-				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );	// Default is -10.
+				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );		// Default is -100.
+				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );		// Default is -10.
 			}
 		}
 
@@ -894,7 +896,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				self::delete_meta( $term_id, $meta_key );
 			}
 
-			do_action( 'wpsso_clear_term_cache', $term_id );
+			do_action( 'wpsso_clear_term_cache', $term_id, $mod );
+		}
+
+		/**
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->refresh_cache().
+		 */
+		public function refresh_cache( $term_id, $term_tax_id = false ) {
+
+			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+
+			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
+
+			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+
+			do_action( 'wpsso_refresh_term_cache', $term_id, $mod );
 		}
 
 		/**

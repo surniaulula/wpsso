@@ -147,8 +147,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -1000, 1 );
 				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
-				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );	// Default is -100.
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );	// Default is -10.
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );		// Default is -100.
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );		// Default is -10.
+				add_action( 'personal_options_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );	// Default is 0.
 
 				/**
 				 * Use the 'show_password_fields' filter as an action to get more information about the user.
@@ -1591,11 +1592,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				self::delete_meta( $user_id, $meta_key );
 			}
 
-			do_action( 'wpsso_clear_user_cache', $user_id );
+			do_action( 'wpsso_clear_user_cache', $user_id, $mod );
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
+		 */
+		public function refresh_cache( $user_id, $rel = false ) {
+
+			$mod = $this->get_mod( $user_id );
+
+			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+
+			do_action( 'wpsso_refresh_user_cache', $user_id, $mod );
+		}
+
+		/**
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $user_id, $rel = false ) {
 

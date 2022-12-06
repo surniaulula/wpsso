@@ -1443,6 +1443,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/**
+		 * Extended by WpssoPost->refresh_cache( $post_id, $rel = false );
+		 * Extended by WpssoTerm->refresh_cache( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->refresh_cache( $user_id, $rel = false );
+		 */
+		public function refresh_cache( $obj_id, $rel = false ) {
+
+			return self::must_be_extended();
+		}
+
+		/**
 		 * Called by WpssoPost->clear_cache().
 		 * Called by WpssoTerm->clear_cache().
 		 * Called by WpssoUser->clear_cache().
