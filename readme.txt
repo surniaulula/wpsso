@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.13.0-dev.1 (2022/12/06)**
+**Version 13.13.0-dev.2 (2022/12/06)**
 
 * **New Features**
 	* None.
@@ -243,6 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Updated the `WpssoMedia->get_attached_images()` method to check `get_post_thumbnail_id()`.
+	* Updated the `WpssoUtilCache->refresh_mod_head_meta()` method to return an array.
 	* Added a new `WPSSO_META_REFRESH_PRIORITY` constant.
 	* Added a `$mod` argument to existing action hooks:
 		* 'wpsso_cache_post_cache'
@@ -665,7 +666,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.13.0-dev.1 =
+= 13.13.0-dev.2 =
 
 (2022/12/06) Added an extra check to prevent duplicate post images that are both featured and attached.
 
