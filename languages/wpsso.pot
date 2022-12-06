@@ -4425,7 +4425,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:325 gettext/gettext-lib-pro.php:336
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1609 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1621 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -11073,7 +11073,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1872
+#: lib/post.php:1884
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

@@ -1581,7 +1581,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! $error_msg ) {
 
 				$post_id = $_POST[ 'post_id' ];
-
 				$post_obj = SucomUtil::get_post_object( $post_id );
 
 				if ( ! $post_obj instanceof WP_Post ) {
@@ -1604,9 +1603,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $error_msg ) {
 
-				$stack = debug_backtrace();
+				$stack     = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+				$from      = '';
+				$class_seq = 1;
+				$func_seq  = 1;
+			
+				if ( ! empty( $stack[ $class_seq ][ 'class' ] ) ) {
 
-				$error_pre = sprintf( __( '%s error:', 'wpsso' ), $stack[ 1 ][ 'function' ] );
+					$from .= $stack[ $class_seq ][ 'class' ] . '::';
+				}
+
+				if ( ! empty( $stack[ $func_seq ][ 'function' ] ) ) {
+
+					$from .= $stack[ $func_seq ][ 'function' ];
+				}
+
+				$error_pre = trim( sprintf( __( '%s error:', 'wpsso' ), $from  ) );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 

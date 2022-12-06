@@ -205,7 +205,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_int( $func_seq ) ) {
 
-				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], ( empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ] ) );
+				$func_name = empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ];
+
+				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_name );
 
 			} else {
 
