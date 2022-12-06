@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.12.1-dev.1 (2022/12/05)**
+**Version 13.13.0-dev.1 (2022/12/06)**
 
 * **New Features**
 	* None.
@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Updated the `WpssoMedia->get_attached_images()` method to check `get_post_thumbnail_id()`.
+	* Added a new `WPSSO_META_REFRESH_PRIORITY` constant.
+	* Added a `$mod` argument to existing action hooks:
+		* 'wpsso_cache_post_cache'
+		* 'wpsso_cache_term_cache'
+		* 'wpsso_cache_user_cache'
+	* Added new action hooks:
+		* 'wpsso_refresh_post_cache'
+		* 'wpsso_refresh_term_cache'
+		* 'wpsso_refresh_user_cache'
+	* Added new methods:
+		* `WpssoPost->refresh_cache()`
+		* `WpssoTerm->refresh_cache()`
+		* `WpssoUser->refresh_cache()`
+		* `WpssoAbstractWpMeta->refresh_cache()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -651,9 +665,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.12.1-dev.1 =
+= 13.13.0-dev.1 =
 
-(2022/12/05) Added an extra check to prevent duplicate post images that are both featured and attached.
+(2022/12/06) Added an extra check to prevent duplicate post images that are both featured and attached.
 
 = 13.12.0 =
 
