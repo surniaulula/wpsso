@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.13.0-b.1 (2022/12/06)**
+**Version 13.13.0-rc.1 (2022/12/06)**
 
 * **New Features**
 	* None.
@@ -666,7 +666,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.13.0-b.1 =
+= 13.13.0-rc.1 =
 
 (2022/12/06) Added an extra check to prevent duplicate post images that are both featured and attached.
 
