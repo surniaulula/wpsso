@@ -233,14 +233,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.13.0-rc.2 (2022/12/07)**
+**Version 13.13.0 (2022/12/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an extra check to prevent duplicate post images that are both featured and attached.
 * **Bugfixes**
-	* None.
+	* Fixed incorrect warning for missing organization images when the site publisher is a person.
 * **Developer Notes**
 	* Updated the `WpssoMedia->get_attached_images()` method to check `get_post_thumbnail_id()`.
 	* Updated the `WpssoUtilCache->refresh_mod_head_meta()` method to return an array.
@@ -666,9 +666,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.13.0-rc.2 =
+= 13.13.0 =
 
-(2022/12/07) Added an extra check to prevent duplicate post images that are both featured and attached.
+(2022/12/07) Added an extra check to prevent duplicate post images that are both featured and attached. Fixed incorrect warning for missing organization images when the site publisher is a person.
 
 = 13.12.0 =
 
