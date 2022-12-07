@@ -1144,6 +1144,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
+			 * Skip if the WebSite Publisher Type is not an organization.
+			 */
+			if ( empty( $opts[ 'site_pub_schema_type' ] ) || 'organization' !== $opts[ 'site_pub_schema_type' ] ) {
+
+				return;
+			}
+
+			/**
 			 * Returns an image array:
 			 *
 			 * array(
