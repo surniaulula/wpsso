@@ -233,6 +233,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.13.1-dev.1 (2022/12/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added additional debug messages around the WordPress image_make_intermediate_size() function call.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.13.0 (2022/12/07)**
 
 * **New Features**
@@ -665,6 +679,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.13.1-dev.1 =
+
+(2022/12/14) Added additional debug messages around the WordPress image_make_intermediate_size() function call.
 
 = 13.13.0 =
 
