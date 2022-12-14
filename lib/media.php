@@ -106,6 +106,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function maybe_update_image_filename( $file_path ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			/**
 			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
 			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
@@ -113,7 +118,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$img_info = self::get_image_src_args();
 
-			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
+			if ( empty( $img_info[ 'size_name' ] ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping ' . $file_path . ': size name is empty' );
+				}
+
+				return $file_path;
+
+			} elseif ( 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping ' . $file_path . ': size name is ' . $img_info[ 'size_name' ] );
+				}
 
 				return $file_path;
 			}
@@ -165,6 +184,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'file path = ' . $file_path );
 			}
 
 			return $file_path;
@@ -1387,6 +1411,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_args();
 			}
 
+			if ( $this->p->debug->enabled ) {
+					
+				$this->p->debug->log( 'calling wp_get_attachment_metadata() for pid ' . $pid );
+			}
+
 			$img_meta = wp_get_attachment_metadata( $pid );	// Returns a WP_Error object on failure.
 			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', $single = true );
 
@@ -1570,9 +1599,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					/**
-					 * Depending on cropping, one or both sides of the image must be accurate.
-					 *
-					 * If the image is not accurate, then attempt to create a resized image by calling
+					 * Depending on cropping, one or both sides of the image must be accurate. If the image is
+					 * not accurate, then attempt to create a resized image by calling
 					 * image_make_intermediate_size().
 					 */
 					if ( ! $is_accurate_filename ||
@@ -1594,9 +1622,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							/**
 							 * image_make_intermediate_size() resizes an image to make a thumbnail or
-							 * intermediate size.
-							 *
-							 * Returns (array|false) metadata array on success, false if no image was created.
+							 * intermediate size. Returns (array|false) metadata array on success,
+							 * false if no image was created.
 							 */
 							$mtime_start  = microtime( $get_float = true );
 
