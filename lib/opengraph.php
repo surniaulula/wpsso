@@ -1129,7 +1129,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:age_group'               => 'product_age_group',
 			 *		'product:availability'            => 'product_avail',
 			 *		'product:brand'                   => 'product_brand',
-			 *		'product:category'                => 'product_category',
+			 *		'product:category'                => 'product_category',	// Product Google Category ID.
 			 *		'product:color'                   => 'product_color',
 			 *		'product:condition'               => 'product_condition',
 			 *		'product:depth:value'             => 'product_depth_value',

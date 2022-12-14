@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpssojson_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
-				'schema_def_product_category' => array(
+				'schema_def_product_category' => array(	// Product Google Category ID.
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',

@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 				/**
 				 * Document SSO > Edit Schema tab.
 				 */
-				case 'tooltip-meta-product_category':	// Product Google Category.
+				case 'tooltip-meta-product_category':	// Product Google Category ID.
 
 					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 						_x( 'Default Product Google Category', 'option label', 'wpsso' ) );

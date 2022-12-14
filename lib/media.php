@@ -1585,7 +1585,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$func_name    = 'image_make_intermediate_size()';
 							$func_url     = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
 							$fullsizepath = get_attached_file( $pid );
-							$mtime_start  = microtime( $get_float = true );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'full size path = ' . $fullsizepath );
+								$this->p->debug->log( 'calling image_make_intermediate_size()' );
+							}
 
 							/**
 							 * image_make_intermediate_size() resizes an image to make a thumbnail or
@@ -1593,11 +1598,27 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 *
 							 * Returns (array|false) metadata array on success, false if no image was created.
 							 */
+							$mtime_start  = microtime( $get_float = true );
+
 							$resized_meta = image_make_intermediate_size( $fullsizepath,
 								$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
 							$mtime_total = microtime( $get_float = true ) - $mtime_start;
 							$mtime_max   = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'mtime total = ' . $mtime_total );
+
+								if ( false === $resized_meta ) {
+								
+									$this->p->debug->log( 'resized meta = ' . false );
+
+								} else {
+
+									$this->p->debug->log_arr( 'resized meta', $resized_meta );
+								}
+							}
 
 							if ( $mtime_total > $mtime_max ) {
 

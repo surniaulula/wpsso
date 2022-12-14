@@ -395,12 +395,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'product_category'            => $def_product_cat,
+					'product_category'            => $def_product_cat,	// Product Google Category ID.
 					'product_brand'               => '',
-					'product_price'               => '0.00',	// Product Price.
+					'product_price'               => '0.00',		// Product Price.
 					'product_price_type'          => $def_price_type,
 					'product_currency'            => $def_currency,
-					'product_min_advert_price'    => '0.00',	// Product Min Advert Price.
+					'product_min_advert_price'    => '0.00',		// Product Min Advert Price.
 					'product_avail'               => 'none',
 					'product_condition'           => $def_product_cond,
 					'product_color'               => '',

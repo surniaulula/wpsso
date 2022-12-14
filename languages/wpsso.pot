@@ -554,7 +554,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 lib/com/form.php:888
 #: lib/media-filters.php:114 lib/media.php:1432 lib/media.php:1584
-#: lib/media.php:3209
+#: lib/media.php:3230
 msgid "Media Library"
 msgstr ""
 
@@ -6653,7 +6653,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3219
+#: lib/media-filters.php:117 lib/media.php:3240
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6692,7 +6692,7 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1438 lib/media.php:1635
+#: lib/media.php:1438 lib/media.php:1656
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -6725,41 +6725,41 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1604 lib/post.php:709 lib/register.php:348 lib/term.php:550
+#: lib/media.php:1625 lib/post.php:709 lib/register.php:348 lib/term.php:550
 #: lib/user.php:532 lib/util.php:809 lib/util.php:915 lib/util.php:947
 #: lib/util.php:3136
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1605 lib/post.php:710 lib/term.php:551 lib/user.php:533
+#: lib/media.php:1626 lib/post.php:710 lib/term.php:551 lib/user.php:533
 #: lib/util.php:810 lib/util.php:3137
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1606
+#: lib/media.php:1627
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1633
+#: lib/media.php:1654
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3235
+#: lib/media.php:3256
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3288
+#: lib/media.php:3309
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3323
+#: lib/media.php:3344
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

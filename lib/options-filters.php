@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_job_location_type':		// Default Job Location Type.
 					case 'schema_def_product_adult_oriented':	// Default Product Adult Oriented.
 					case 'schema_def_product_age_group':		// Default Product Age Group.
-					case 'schema_def_product_category':		// Default Product Google Category.
+					case 'schema_def_product_category':		// Default Product Google Category ID.
 					case 'schema_def_product_condition':		// Default Product Condition.
 					case 'schema_def_product_price_type':		// Default Product Price Type.
 					case 'schema_def_prov_org_id':			// Default Service Provider Org.
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_adult_oriented':
 				case 'product_age_group':
 				case 'product_avail':
-				case 'product_category':			// Product Google Category.
+				case 'product_category':			// Product Google Category ID.
 				case 'product_condition':
 				case 'product_price_type':
 				case 'product_size_type':

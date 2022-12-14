@@ -697,7 +697,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 					),
-					'product_category' => array(
+					'product_category' => array(	// Product Google Category ID.
 						'label' => _x( 'Product Google Category', 'option label', 'wpsso' ),
 						'name'  => _x( 'product Google category', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),

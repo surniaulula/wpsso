@@ -909,7 +909,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class'  => $type_row_class[ 'product' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
-				'schema_product_category' => array(
+				'schema_product_category' => array(	// Product Google Category ID.
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Google Category', 'option label', 'wpsso' ),
