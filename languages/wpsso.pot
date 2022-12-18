@@ -363,12 +363,19 @@ msgstr ""
 #: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid ""
+"<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML "
+"Sitemap Validator</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:49
+msgctxt "html list item"
+msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
 "PageSpeed Insights</a> - recommended for general site and webpage health "
 "checks (results influence SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -376,14 +383,14 @@ msgid ""
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
 "Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "

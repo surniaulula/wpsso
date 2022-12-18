@@ -45,6 +45,7 @@ _x( '<a href="https://developers.pinterest.com/tools/url-debugger/">Pinterest Ri
 _x( '<a href="https://cards-dev.twitter.com/validator">Twitter Card Validator</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://validator.schema.org/">Schema Markup Validator</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://validator.w3.org/">W3C Markup Validator</a> - recommended to check your theme templates for HTML markup issues.', 'html list item', 'wpsso' );
+_x( '<a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html">XML Sitemap Validator</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://developers.google.com/speed/pagespeed/insights/">Google PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking).', 'html list item', 'wpsso' );
 _x( '<a href="https://support.google.com/webmasters/answer/7451184">Google\'s Search Engine Optimization (SEO) Starter Guide</a> - essential reading to understand Google SEO ranking factors.', 'html list item', 'wpsso' );
 _x( '<a href="https://www.webpagetest.org/">Webpage Performance Test with Waterfall</a> - recommended to check and diagnose basic performance issues.', 'html list item', 'wpsso' );
