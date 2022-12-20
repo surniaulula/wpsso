@@ -844,6 +844,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id ) );
 			}
 
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->log_arr( 'mt_ret', $mt_ret );
+			}
+
 			return $mt_ret;
 		}
 
@@ -1394,6 +1399,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return self::reset_image_src_args();
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'size info' . $size_info );
 			}
 
 			$img_url       = '';

@@ -765,6 +765,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( ! empty( $parent_opts ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'merging inherited options' );
+					}
+
 					$md_defs = array_merge( $md_defs, $parent_opts );
 				}
 
@@ -2306,9 +2311,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 *
 				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
 				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
+				}
+
 				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
 
 			} elseif ( $mod[ 'is_term' ] ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting ancestors for taxonomy = ' . $mod[ 'tax_slug' ] );
+				}
 
 				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
 

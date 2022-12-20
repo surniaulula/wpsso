@@ -357,6 +357,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					if ( ! empty( $parent_opts ) ) {
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'merging inherited options' );
+						}
+
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}
 
