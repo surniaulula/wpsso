@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'WpssoUtilUnits' ) ) {	// Just in case.
+
+	require_once WPSSO_PLUGINDIR . 'lib/util-units.php';
+}
+
 if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 	class WpssoUtilWoocommerce {
@@ -246,303 +251,6 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		}
 
 		/**
-		 * Dimensions.
-		 */
-		public static function get_dimension_label( $unit_text ) {
-
-			// translators: Please ignore - translation uses a different text domain.
-			return __( $unit_text, 'woocommerce' );
-		}
-
-		public static function get_dimension_units() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				/**
-				 * From woocommerce/includes/admin/settings/class-wc-settings-products.php.
-				 */
-				$local_cache = array(
-
-					// translators: Please ignore - translation uses a different text domain.
-					'mm' => __( 'mm', 'woocommerce' ),	// Milimeter.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'cm' => __( 'cm', 'woocommerce' ),	// Centimeter.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'm'  => __( 'm', 'woocommerce' ),	// Meter.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'in' => __( 'in', 'woocommerce' ),	// Inch.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'yd' => __( 'yd', 'woocommerce' ),	// Yard.
-				);
-			}
-
-			return $local_cache;
-		}
-
-		public static function get_dimension( $dimension, $to_unit, $from_unit = '' ) {
-
-			return wc_get_dimension( $dimension, $to_unit, $from_unit );
-		}
-
-		/**
-		 * Fluid volumes.
-		 */
-		public static function get_fluid_volume_label( $unit_text ) {
-
-			$fl_vol_units = self::get_fluid_volume_units();	// Returns translated values.
-
-			if ( isset( $fl_vol_units[ $unit_text ] ) ) {
-
-				return $fl_vol_units[ $unit_text ];
-			}
-
-			return '';
-		}
-
-		public static function get_fluid_volume_units() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				$local_cache = array(
-					'ml'       => __( 'ml', 'wpsso' ),		// Millilitre.
-					'cl'       => __( 'cl', 'wpsso' ),		// Centilitre.
-					'l'        => __( 'l', 'wpsso' ),		// Liter.
-					'kl'       => __( 'kl', 'wpsso' ),		// Kiloliter.
-					'US tsp'   => __( 'US tsp', 'wpsso' ),		// US teaspoon.
-					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
-					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
-					'US cup'   => __( 'US cup', 'wpsso' ),		// US cup.
-					'US pt'    => __( 'US pt', 'wpsso' ),		// US pint.
-					'US qt'    => __( 'US qt', 'wpsso' ),		// US quart.
-					'US gal'   => __( 'US gal', 'wpsso' ),		// US gallon.
-				);
-			}
-
-			return $local_cache;
-		}
-
-		public static function get_fluid_volume( $volume, $to_unit, $from_unit = '' ) {
-
-			$to_unit = strtolower( $to_unit );
-
-			if ( empty( $from_unit ) ) {
-
-				$from_unit = strtolower( get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' ) );
-			}
-
-			if ( $from_unit !== $to_unit ) {
-
-				/**
-				 * Convert any volume to 'ml' first.
-				 */
-				switch ( $from_unit ) {
-
-					/**
-					 * Metric units.
-					 */
-					case 'ml':		// Millilitre.
-
-						$volume *= 1;
-
-						break;
-
-					case 'cl':		// Centilitre.
-
-						$volume *= 10;
-
-						break;
-
-					case 'l':		// Liter.
-
-						$volume *= 1000;
-
-						break;
-
-					case 'kl':		// Kiloliter.
-
-						$volume *= 1000000;
-
-						break;
-
-					/**
-					 * Imperial units.
-					 */
-					case 'US tsp':		// US teaspoon.
-
-						$volume *= 4.92892;
-
-						break;
-
-					case 'US tbsp':		// US tablespoon.
-
-						$volume *= 14.7868;
-
-						break;
-
-					case 'US fl oz':	// US fluid oz.
-
-						$volume *= 29.5735;
-
-						break;
-
-					case 'US cup':		// US cup.
-
-						$volume *= 236.588;
-
-						break;
-
-					case 'US pt':		// US pint.
-
-						$volume *= 473.176;
-
-						break;
-
-					case 'US qt':		// US quart.
-
-						$volume *= 946.353;
-
-						break;
-
-					case 'US gal':		// US gallon.
-
-						$volume *= 3785.41;
-
-						break;
-				}
-
-				/**
-				 * Convert volume from ml to desired output.
-				 */
-				switch ( $to_unit ) {
-
-					/**
-					 * Metric units.
-					 */
-					case 'ml':		// Millilitre.
-
-						$volume *= 1;
-
-						break;
-
-					case 'cl':		// Centilitre.
-
-						$volume *= 0.1;
-
-						break;
-
-					case 'l':		// Liter.
-
-						$volume *= 0.001;
-
-						break;
-
-					case 'kl':		// Kiloliter.
-
-						$volume *= 0.000001;
-
-						break;
-
-					/**
-					 * Imperial units.
-					 */
-					case 'US tsp':		// US teaspoon.
-
-						$volume *= 0.202884;
-
-						break;
-
-					case 'US tbsp':		// US tablespoon.
-
-						$volume *= 0.067628;
-
-						break;
-
-					case 'US fl oz':	// US fluid oz.
-
-						$volume *= 0.033814;
-
-						break;
-
-					case 'US cup':		// US cup.
-
-						$volume *= 0.00422675;
-
-						break;
-
-					case 'US pt':		// US pint.
-
-						$volume *= 0.00211338;
-
-						break;
-
-					case 'US qt':		// US quart.
-
-						$volume *= 0.00105669;
-
-						break;
-
-					case 'US gal':		// US gallon.
-
-						$volume *= 0.000264172;
-
-						break;
-				}
-			}
-
-			return ( $volume < 0 ) ? 0 : $volume;
-		}
-
-		/**
-		 * Weight.
-		 */
-		public static function get_weight_label( $unit_text ) {
-
-			// translators: Please ignore - translation uses a different text domain.
-			return __( $unit_text, 'woocommerce' );
-		}
-
-		public static function get_weight_units() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				/**
-				 * From woocommerce/includes/admin/settings/class-wc-settings-products.php.
-				 */
-				$local_cache = array(
-
-					// translators: Please ignore - translation uses a different text domain.
-					'g'   => __( 'g', 'woocommerce' ),	// Gram.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'kg'  => __( 'kg', 'woocommerce' ),	// Kilogram.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'oz'  => __( 'oz', 'woocommerce' ),	// Ounce.
-
-					// translators: Please ignore - translation uses a different text domain.
-					'lbs' => __( 'lbs', 'woocommerce' ),	// Pound.
-				);
-			}
-
-			return $local_cache;
-		}
-
-		public static function get_weight( $weight, $to_unit, $from_unit = '' ) {
-
-			return wc_get_weight( $weight, $to_unit, $from_unit );
-		}
-
-		/**
 		 * Check if a simple product, variable product or any of its variations, has a meta data value.
 		 *
 		 * Called by WpssoWcmdWooCommerce->filter_product_enable_dimensions_display().
@@ -584,6 +292,75 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			}
 
 			return $local_cache[ $product_id ][ $meta_key ] = false;
+		}
+
+		/**
+		 * Dimensions.
+		 */
+		public static function get_dimension_label( $key ) {
+
+			return WpssoUtilUnits::get_dimension_label( $key );
+		}
+
+		public static function get_dimension_units() {
+
+			return WpssoUtilUnits::get_dimension_units();
+		}
+
+		public static function get_dimension( $dimension, $to, $from = '' ) {
+
+			if ( empty( $from ) ) {
+
+				$from = get_option( 'woocommerce_dimension_unit', $default = 'cm' );
+			}
+
+			return WpssoUtilUnits::get_dimension( $dimension, $to, $from );
+		}
+
+		/**
+		 * Fluid volumes.
+		 */
+		public static function get_fluid_volume_label( $key ) {
+
+			return WpssoUtilUnits::get_fluid_volume_label( $key );
+		}
+
+		public static function get_fluid_volume_units() {
+
+			return WpssoUtilUnits::get_fluid_volume_units();
+		}
+
+		public static function get_fluid_volume( $volume, $to, $from = '' ) {
+
+			if ( empty( $from ) ) {
+
+				$from = get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' );
+			}
+
+			return WpssoUtilUnits::get_fluid_volume( $volume, $to, $from );
+		}
+
+		/**
+		 * Weight.
+		 */
+		public static function get_weight_label( $key ) {
+
+			return WpssoUtilUnits::get_weight_label( $key );
+		}
+
+		public static function get_weight_units() {
+
+			return WpssoUtilUnits::get_weight_units();
+		}
+
+		public static function get_weight( $weight, $to, $from = '' ) {
+
+			if ( empty( $from ) ) {
+
+				$from = get_option( 'woocommerce_weight_unit', $default = 'kg' );
+			}
+
+			return WpssoUtilUnits::get_weight( $weight, $to, $from );
 		}
 	}
 }

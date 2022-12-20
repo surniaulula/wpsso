@@ -79,6 +79,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public $metabox;	// WpssoUtilMetabox.
 		public $reg;		// WpssoUtilReg.
 		public $robots;		// WpssoUtilRobots.
+		public $units;		// WpssoUtilUnits.
 		public $wc;		// WpssoUtilWoocommerce.
 
 		public function __construct( &$plugin ) {
@@ -187,6 +188,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$this->robots = new WpssoUtilRobots( $plugin );
+
+			/**
+			 * Instantiate WpssoUtilUnits.
+			 */
+			if ( ! class_exists( 'WpssoUtilUnits' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/util-units.php';
+			}
+
+			$this->units = new WpssoUtilUnits( $plugin );
 
 			/**
 			 * Instantiate WpssoUtilWoocommerce.
