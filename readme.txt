@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.13.1-dev.2 (2022/12/20)**
+**Version 13.13.1-dev.3 (2022/12/20)**
 
 * **New Features**
 	* None.
@@ -243,6 +243,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added additional debug messages around the WordPress image_make_intermediate_size() function call.
+	* Added a new `WpssoUtilUnits` class with static methods:
+		* `WpssoUtilUnits::get_dimension_label()`
+		* `WpssoUtilUnits::get_dimension_units()`
+		* `WpssoUtilUnits::get_dimension()`
+		* `WpssoUtilUnits::get_fluid_volume_label()`
+		* `WpssoUtilUnits::get_fluid_volume_units()`
+		* `WpssoUtilUnits::get_fluid_volume()`
+		* `WpssoUtilUnits::get_weight_label()`
+		* `WpssoUtilUnits::get_weight_units()`
+		* `WpssoUtilUnits::get_weight()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -680,9 +690,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.13.1-dev.2 =
+= 13.13.1-dev.3 =
 
-(2022/12/20) Added additional debug messages around the WordPress image_make_intermediate_size() function call.
+(2022/12/20) Added additional debug messages around the WordPress image_make_intermediate_size() function call. Added a new `WpssoUtilUnits` class with static methods.
 
 = 13.13.0 =
 
