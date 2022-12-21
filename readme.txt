@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.13.1-dev.3 (2022/12/20)**
+**Version 13.14.0-dev.4 (2022/12/20)**
 
 * **New Features**
 	* None.
@@ -690,7 +690,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.13.1-dev.3 =
+= 13.14.0-dev.4 =
 
 (2022/12/20) Added additional debug messages around the WordPress image_make_intermediate_size() function call. Added a new `WpssoUtilUnits` class with static methods.
 
