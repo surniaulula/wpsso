@@ -93,6 +93,7 @@ Present your content at its best on social sites and in search results - no matt
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
+* Rank Math SEO
 * Rate my Post
 * SEOPress
 * Simple Job Board
@@ -658,6 +659,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Perfect WooCommerce Brands
 		* Polylang
 		* Product GTIN (EAN, UPC, ISBN) for WooCommerce
+		* Rank Math SEO
 		* Rate my Post
 		* SEOPress
 		* Simple Job Board
