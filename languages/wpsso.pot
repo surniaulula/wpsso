@@ -4313,40 +4313,40 @@ msgctxt "option label"
 msgid "Product Adult Oriented"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:300 lib/messages.php:840
+#: gettext/gettext-lib-pro.php:300 lib/messages.php:776
 #: lib/pro/admin/edit.php:1162 lib/std/admin/edit.php:1040
-msgctxt "option label"
-msgid "Product Weight"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:301 lib/messages.php:776
-#: lib/pro/admin/edit.php:1170 lib/std/admin/edit.php:1049
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:302 lib/messages.php:846
-#: lib/pro/admin/edit.php:1178 lib/std/admin/edit.php:1058
+#: gettext/gettext-lib-pro.php:301 lib/messages.php:846
+#: lib/pro/admin/edit.php:1170 lib/std/admin/edit.php:1049
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:303 lib/messages.php:765
-#: lib/pro/admin/edit.php:1186 lib/std/admin/edit.php:1067
+#: gettext/gettext-lib-pro.php:302 lib/messages.php:765
+#: lib/pro/admin/edit.php:1178 lib/std/admin/edit.php:1058
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:304 lib/messages.php:723
-#: lib/pro/admin/edit.php:1194 lib/std/admin/edit.php:1076
+#: gettext/gettext-lib-pro.php:303 lib/messages.php:723
+#: lib/pro/admin/edit.php:1186 lib/std/admin/edit.php:1067
 msgctxt "option label"
 msgid "Product Depth"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:305 lib/messages.php:729
-#: lib/pro/admin/edit.php:1202 lib/std/admin/edit.php:1085
+#: gettext/gettext-lib-pro.php:304 lib/messages.php:729
+#: lib/pro/admin/edit.php:1194 lib/std/admin/edit.php:1076
 msgctxt "option label"
 msgid "Product Fluid Volume"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:305 lib/messages.php:840
+#: lib/pro/admin/edit.php:1202 lib/std/admin/edit.php:1085
+msgctxt "option label"
+msgid "Product Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:306 lib/messages.php:815

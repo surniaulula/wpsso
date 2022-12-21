@@ -1033,15 +1033,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_adult_oriented',
 					'content'  => $form->get_no_select( 'product_adult_oriented', $this->p->cf[ 'form' ][ 'adult_oriented' ] ),
 				),
-				'schema_product_weight_value' => array(
-					'tr_class' => $type_row_class[ 'product' ],
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
-				),
 				'schema_product_length_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
@@ -1086,6 +1077,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_fluid_volume_value',
 					'content'  => $form->get_no_input( 'product_fluid_volume_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_fluid_volume_value' ),
+				),
+				'schema_product_weight_value' => array(
+					'tr_class' => $type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_weight_value',
+					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $holder = true ) .
+						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
 				),
 				'schema_product_retailer_part_no' => array(
 					'tr_class' => $type_row_class[ 'product' ],

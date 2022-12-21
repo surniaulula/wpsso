@@ -3642,6 +3642,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:brand]              => Brand
 		 *		[product:color]              => Color
 		 *		[product:condition]          => Condition
+		 *		[product:fluid_volume:value] => Volume
 		 *		[product:gtin14]             => GTIN-14
 		 *		[product:gtin14]             => GTIN-13
 		 *		[product:gtin14]             => GTIN-12
@@ -3652,7 +3653,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:size]               => Size
 		 *		[product:size:type]          => Size Type
 		 *		[product:target_gender]      => Gender
-		 *		[product:fluid_volume:value] => Volume
 		 *	)
 		 *
 		 * Example $prefix = "product" and $delim = "_" for option names:
@@ -3663,6 +3663,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_brand]              => Brand
 		 *		[product_color]              => Color
 		 *		[product_condition]          => Condition
+		 *		[product_fluid_volume_value] => Volume
 		 *		[product_gtin14]             => GTIN-14
 		 *		[product_gtin14]             => GTIN-13
 		 *		[product_gtin14]             => GTIN-12
@@ -3673,7 +3674,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_size]               => Size
 		 *		[product_size_type]          => Size Type
 		 *		[product_target_gender]      => Gender
-		 *		[product_fluid_volume_value] => Volume
 		 *	)
 		 */
 		public function get_product_attr_names( $prefix = 'product', $delim = ':' ) {
