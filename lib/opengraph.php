@@ -1136,6 +1136,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:depth:units'             => '',
 			 *		'product:ean'                     => 'product_gtin13',
 			 *		'product:expiration_time'         => '',
+			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
+			 *		'product:fluid_volume:units'      => '',
 			 *		'product:gtin14'                  => 'product_gtin14',
 			 *		'product:gtin13'                  => 'product_gtin13',
 			 *		'product:gtin12'                  => 'product_gtin12',
@@ -1173,8 +1175,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:size:type'               => 'product_size_type',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
-			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
-			 *		'product:fluid_volume:units'      => '',
 			 *		'product:weight:value'            => 'product_weight_value',
 			 *		'product:weight:units'            => '',
 			 *		'product:width:value'             => 'product_width_value',
@@ -1217,9 +1217,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 * Example:
 					 *
 					 *	'product:depth:value'        => 'product_depth_value',
+					 *	'product:fluid_volume:value' => 'product_fluid_volume_value',
 					 *	'product:height:value'       => 'product_height_value',
 					 *	'product:length:value'       => 'product_length_value',
-					 *	'product:fluid_volume:value' => 'product_fluid_volume_value',
 					 *	'product:weight:value'       => 'product_weight_value',
 					 *	'product:width:value'        => 'product_width_value',
 					 */

@@ -45,10 +45,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Disable custom fields (aka metadata) for values that are always provided by WooCommerce.
 			 */
 			foreach ( array(
-				'plugin_cf_product_height_value',	// Managed by WooCommerce in '_height' metadata.
-				'plugin_cf_product_length_value',	// Managed by WooCommerce in '_length' metadata.
-				'plugin_cf_product_weight_value',	// Managed by WooCommerce in '_weight' metadata.
-				'plugin_cf_product_width_value',	// Managed by WooCommerce in '_width' metadata.
 				'plugin_cf_product_retailer_part_no',	// Managed by WooCommerce in '_sku' metadata.
 			) as $opt_key ) {
 
@@ -1230,14 +1226,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Get product shipping dimensions and weight.
 			 */
 			list(
-				$mt_ecom[ 'product:length:value' ],
-				$mt_ecom[ 'product:length:units' ],
-				$mt_ecom[ 'product:width:value' ],
-				$mt_ecom[ 'product:width:units' ],
-				$mt_ecom[ 'product:height:value' ],
-				$mt_ecom[ 'product:height:units' ],
-				$mt_ecom[ 'product:weight:value' ],
-				$mt_ecom[ 'product:weight:units' ],
+				$mt_ecom[ 'product:shipping_length:value' ],
+				$mt_ecom[ 'product:shipping_length:units' ],
+				$mt_ecom[ 'product:shipping_width:value' ],
+				$mt_ecom[ 'product:shipping_width:units' ],
+				$mt_ecom[ 'product:shipping_height:value' ],
+				$mt_ecom[ 'product:shipping_height:units' ],
+				$mt_ecom[ 'product:shipping_weight:value' ],
+				$mt_ecom[ 'product:shipping_weight:units' ],
 			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/**

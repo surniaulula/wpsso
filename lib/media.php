@@ -1403,7 +1403,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'size info' . $size_info );
+				$this->p->debug->log_arr( 'size info', $size_info );
 			}
 
 			$img_url       = '';
