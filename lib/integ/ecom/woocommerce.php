@@ -46,9 +46,13 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 */
 			foreach ( array(
 				'plugin_cf_product_shipping_height_value',
+				'plugin_cf_product_shipping_height_units',
 				'plugin_cf_product_shipping_length_value',
+				'plugin_cf_product_shipping_length_units',
 				'plugin_cf_product_shipping_weight_value',
+				'plugin_cf_product_shipping_weight_units',
 				'plugin_cf_product_shipping_width_value',
+				'plugin_cf_product_shipping_width_units',
 				'plugin_cf_product_retailer_part_no',
 			) as $opt_key ) {
 

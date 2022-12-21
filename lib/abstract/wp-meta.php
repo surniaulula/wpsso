@@ -137,6 +137,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'article_section' => 'schema_article_section',	// Renamed for WPSSO Core v13.5.0.
 					'reading_mins'    => 'schema_reading_mins',	// Renamed for WPSSO Core v13.5.0.
 				),
+				927 => array(
+					'product_depth_value' => 'product_length_value',	// Renamed for WPSSO Core v13.14.0.
+				),
 			),
 		);
 
@@ -411,16 +414,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_size_type'             => 'none',
 					'product_age_group'             => $def_age_group,
 					'product_adult_oriented'        => $def_adult_oriented,
-					'product_length_value'          => '',
-					'product_width_value'           => '',
-					'product_height_value'          => '',
-					'product_depth_value'           => '',
-					'product_fluid_volume_value'    => '',
-					'product_weight_value'          => '',
-					'product_shipping_length_value' => '',
-					'product_shipping_width_value'  => '',
-					'product_shipping_height_value' => '',
-					'product_shipping_weight_value' => '',
+					'product_length_value'          => '',	// Product Net Length / Depth.
+					'product_width_value'           => '',	// Product Net Width.
+					'product_height_value'          => '',	// Product Net Height.
+					'product_fluid_volume_value'    => '',	// Product Net Fl. Volume.
+					'product_weight_value'          => '',	// Product Net Weight.
+					'product_shipping_length_value' => '',	// Product Shipping Length.
+					'product_shipping_width_value'  => '',	// Product Shipping Width.
+					'product_shipping_height_value' => '',	// Product Shipping Height.
+					'product_shipping_weight_value' => '',	// Product Shipping Weight.
 					'product_retailer_part_no'      => '',	// Product SKU.
 					'product_mfr_part_no'           => '',	// Product MPN.
 					'product_gtin14'                => '',

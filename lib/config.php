@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.14.0-dev.5',	// Plugin version.
-					'opt_version' => '927',		// Increment when changing default option values.
+					'version'     => '13.14.0-dev.6',	// Plugin version.
+					'opt_version' => '928',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1984,7 +1984,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
 					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
-					'plugin_attr_product_depth_value'        => 'Net Depth',	// Net Depth Attribute Name.
 					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
 					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
 					'plugin_attr_product_gtin13'             => 'GTIN-13',		// GTIN-13 (EAN) Attribute Name.
@@ -1993,7 +1992,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
 					'plugin_attr_product_height_value'       => 'Net Height',	// Net Height Attribute Name.
 					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
-					'plugin_attr_product_length_value'       => 'Net Length',	// Net Length Attribute Name.
+					'plugin_attr_product_length_value'       => 'Net Length',	// Net Length / Depth Attribute Name.
 					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
 					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
 					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
@@ -2020,7 +2019,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => '',	// Product Color Custom Field.
 					'plugin_cf_product_condition'             => '',	// Product Condition Custom Field.
 					'plugin_cf_product_currency'              => '',	// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'           => '',	// Product Net Depth Custom Field.
 					'plugin_cf_product_fluid_volume_value'    => '',	// Product Net Fl. Volume Custom Field.
 					'plugin_cf_product_gtin14'                => '',	// Product GTIN-14 Custom Field.
 					'plugin_cf_product_gtin13'                => '',	// Product GTIN-13 (EAN) Custom Field.
@@ -2029,7 +2027,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => '',	// Product GTIN Custom Field.
 					'plugin_cf_product_height_value'          => '',	// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => '',	// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'          => '',	// Product Net Length Custom Field.
+					'plugin_cf_product_length_value'          => '',	// Product Net Len. / Depth Custom Field.
 					'plugin_cf_product_material'              => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'           => '',	// Product MPN Custom Field.
 					'plugin_cf_product_min_advert_price'      => '',	// Product Min Advert Price Custom Field.
@@ -2114,7 +2112,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => 'product_color',
 					'plugin_cf_product_condition'             => 'product_condition',
 					'plugin_cf_product_currency'              => 'product_currency',
-					'plugin_cf_product_depth_value'           => 'product_depth_value',		// Product Net Depth Custom Field.
 					'plugin_cf_product_fluid_volume_value'    => 'product_fluid_volume_value',	// Product Net Fl. Volume Custom Field.
 					'plugin_cf_product_gtin14'                => 'product_gtin14',
 					'plugin_cf_product_gtin13'                => 'product_gtin13',
@@ -2123,7 +2120,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'product_gtin',
 					'plugin_cf_product_height_value'          => 'product_height_value',		// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => 'product_isbn',
-					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Length Custom Field.
+					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Len. / Depth Custom Field.
 					'plugin_cf_product_material'              => 'product_material',
 					'plugin_cf_product_mfr_part_no'           => 'product_mfr_part_no',
 					'plugin_cf_product_min_advert_price'      => 'product_min_advert_price',
@@ -2796,7 +2793,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => 'Product Color Custom Field',
 					'plugin_cf_product_condition'             => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'              => 'Product Currency Custom Field',
-					'plugin_cf_product_depth_value'           => 'Product Net Depth Custom Field',
 					'plugin_cf_product_fluid_volume_value'    => 'Product Net Fl. Volume Custom Field',
 					'plugin_cf_product_gtin14'                => 'Product GTIN-14 Custom Field',
 					'plugin_cf_product_gtin13'                => 'Product GTIN-13 (EAN) Custom Field',
@@ -2805,7 +2801,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'Product GTIN Custom Field',
 					'plugin_cf_product_height_value'          => 'Product Net Height Custom Field',
 					'plugin_cf_product_isbn'                  => 'Product ISBN Custom Field',
-					'plugin_cf_product_length_value'          => 'Product Net Length Custom Field',
+					'plugin_cf_product_length_value'          => 'Product Net Len. / Depth Custom Field',
 					'plugin_cf_product_material'              => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'           => 'Product MPN Custom Field',
 					'plugin_cf_product_min_advert_price'      => 'Product Min Advert Price Custom Field',
@@ -2838,7 +2834,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_brand'              => 'Brand Attribute Name',
 					'plugin_attr_product_color'              => 'Color Attribute Name',
 					'plugin_attr_product_condition'          => 'Condition Attribute Name',
-					'plugin_attr_product_depth_value'        => 'Net Depth Attribute Name',
 					'plugin_attr_product_fluid_volume_value' => 'Net Fl. Volume Attribute Name',
 					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute Name',
 					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute Name',
@@ -2847,7 +2842,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_gtin'               => 'GTIN Attribute Name',
 					'plugin_attr_product_height_value'       => 'Net Height Attribute Name',
 					'plugin_attr_product_isbn'               => 'ISBN Attribute Name',
-					'plugin_attr_product_length_value'       => 'Net Length Attribute Name',
+					'plugin_attr_product_length_value'       => 'Net Length / Depth Attribute Name',
 					'plugin_attr_product_material'           => 'Material Attribute Name',
 					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
 					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',
@@ -3395,8 +3390,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:category'                  => 'product_category',		// Product Google Category ID.
 						'product:color'                     => 'product_color',
 						'product:condition'                 => 'product_condition',
-						'product:depth:value'               => 'product_depth_value',		// Non-standard / internal meta tag.
-						'product:depth:units'               => '',				// Non-standard / internal meta tag.
 						'product:ean'                       => 'product_gtin13',
 						'product:expiration_time'           => '',
 						'product:fluid_volume:value'        => 'product_fluid_volume_value',	// Non-standard / internal meta tag.
@@ -4317,13 +4310,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'length' => array(			// Unitcode index value.
-						'additionalProperty' => array(	// Schema property name.
-							'@context'   => 'https://schema.org',
-							'@type'      => 'PropertyValue',
-							'propertyID' => 'length',
-							'name'       => 'Length',
-							'unitText'   => 'cm',
-							'unitCode'   => 'CMT',
+						'depth' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Length',
+							'unitText' => 'cm',
+							'unitCode' => 'CMT',
 						),
 					),
 					'size' => array(			// Unitcode index value.

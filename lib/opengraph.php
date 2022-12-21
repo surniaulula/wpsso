@@ -1132,8 +1132,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:category'                => 'product_category',	// Product Google Category ID.
 			 *		'product:color'                   => 'product_color',
 			 *		'product:condition'               => 'product_condition',
-			 *		'product:depth:value'             => 'product_depth_value',
-			 *		'product:depth:units'             => '',
 			 *		'product:ean'                     => 'product_gtin13',
 			 *		'product:expiration_time'         => '',
 			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
@@ -1222,7 +1220,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 *
 					 * Example:
 					 *
-					 *	'product:depth:value'        => 'product_depth_value',
 					 *	'product:fluid_volume:value' => 'product_fluid_volume_value',
 					 *	'product:height:value'       => 'product_height_value',
 					 *	'product:length:value'       => 'product_length_value',

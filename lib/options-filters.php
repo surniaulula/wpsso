@@ -362,24 +362,23 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/**
 				 * Must be numeric (blank and zero are ok).
 				 */
-				case 'product_depth_value':
 				case 'product_fluid_volume_value':
 				case 'product_gtin14':
 				case 'product_gtin13':
 				case 'product_gtin12':
 				case 'product_gtin8':
 				case 'product_gtin':
-				case 'product_height_value':
+				case 'product_height_value':		// Product Net Height.
 				case 'product_isbn':			// Product ISBN.
-				case 'product_length_value':
+				case 'product_length_value':		// Product Net Length / Depth.
 				case 'product_min_advert_price':	// Product Min Advert Price.
 				case 'product_price':			// Product Price.
-				case 'product_shipping_height_value':
-				case 'product_shipping_length_value':
-				case 'product_shipping_weight_value':
-				case 'product_shipping_width_value':
-				case 'product_weight_value':
-				case 'product_width_value':
+				case 'product_shipping_height_value':	// Product Shipping Height.
+				case 'product_shipping_length_value':	// Product Shipping Length.
+				case 'product_shipping_weight_value':	// Product Shipping Weight.
+				case 'product_shipping_width_value':	// Product Shipping Width.
+				case 'product_weight_value':		// Product Net Weight.
+				case 'product_width_value':		// Product Net Width.
 				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 				case 'schema_book_isbn':		// Book ISBN.
 				case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.

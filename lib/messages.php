@@ -719,17 +719,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'  => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_depth_value' => array(
-						'label' => _x( 'Product Net Depth', 'option label', 'wpsso' ),
-						'name'  => _x( 'product net depth', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'depth' ) ),
-					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Net Fl. Volume', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net fluid volume', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product fluid volume (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'fluid_volume' ) ),
+						'desc'  => sprintf( _x( 'a product net fluid volume (in %s), as opposed to the shipping or packaged fluid volume used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'fluid_volume' ) ),
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
@@ -764,8 +757,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_height_value' => array(
 						'label' => _x( 'Product Net Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net height', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'height' ) ),
+						'desc'  => sprintf( _x( 'a product net height (in %s), as opposed to the shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'height' ) ),
 					),
 					'product_isbn' => array(
 						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -774,10 +766,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_length_value' => array(
-						'label' => _x( 'Product Net Length', 'option label', 'wpsso' ),
-						'name'  => _x( 'product net length', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'length' ) ),
+						'label' => _x( 'Product Net Length / Depth', 'option label', 'wpsso' ),
+						'name'  => _x( 'product net length or depth', 'tooltip fragment', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product net length or depth (in %s), as opposed to the shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
@@ -865,14 +856,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_weight_value' => array(
 						'label' => _x( 'Product Net Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net weight', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net weight (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'weight' ) ),
+						'desc'  => sprintf( _x( 'a product net weight (in %s), as opposed to the shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'weight' ) ),
 					),
 					'product_width_value' => array(
 						'label' => _x( 'Product Net Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net width', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'width' ) ),
+						'desc'  => sprintf( _x( 'a product net width (in %s), as opposed to the shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'width' ) ),
 					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),

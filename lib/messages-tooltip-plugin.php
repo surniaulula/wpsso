@@ -742,7 +742,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$attr_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
 					$attr_key   = str_replace( 'tooltip-', '', $msg_key );
 
-					$text = __( 'Enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
+					$text = __( 'You may enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ),
 						$this->p_name ) . ' ';
