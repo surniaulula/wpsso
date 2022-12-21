@@ -234,12 +234,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.14.0-dev.4 (2022/12/20)**
+**Version 13.14.0-dev.5 (2022/12/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added support for additional product attributes and custom fields for:
+		* Product Net Length
+		* Product Net Height
+		* Product Net Weight
+		* Product Net Width
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -692,9 +696,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.14.0-dev.4 =
+= 13.14.0-dev.5 =
 
-(2022/12/20) Added additional debug messages around the WordPress image_make_intermediate_size() function call. Added a new `WpssoUtilUnits` class with static methods.
+(2022/12/21) Added support for additional product attributes and custom fields.
 
 = 13.13.0 =
 
