@@ -818,11 +818,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'  => _x( 'product SKU', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_shipping_height_value' => array(
+						'label' => _x( 'Product Shipping Height', 'option label', 'wpsso' ),
+						'name'  => _x( 'product shipping height', 'tooltip fragment', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product shipping height (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unit_text( 'height' ) ),
+					),
+					'product_shipping_length_value' => array(
+						'label' => _x( 'Product Shipping Length', 'option label', 'wpsso' ),
+						'name'  => _x( 'product shipping length', 'tooltip fragment', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product shipping length (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unit_text( 'length' ) ),
+					),
 					'product_shipping_weight_value' => array(
 						'label' => _x( 'Product Shipping Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping weight', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product shipping weight (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'weight' ) ),
+					),
+					'product_shipping_width_value' => array(
+						'label' => _x( 'Product Shipping Width', 'option label', 'wpsso' ),
+						'name'  => _x( 'product shipping width', 'tooltip fragment', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product shipping width (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unit_text( 'width' ) ),
 					),
 					'product_size' => array(
 						'label' => _x( 'Product Size', 'option label', 'wpsso' ),

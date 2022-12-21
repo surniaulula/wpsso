@@ -45,7 +45,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Disable custom fields (aka metadata) for values that are always provided by WooCommerce.
 			 */
 			foreach ( array(
+				'plugin_cf_product_shipping_height_value',
+				'plugin_cf_product_shipping_length_value',
 				'plugin_cf_product_shipping_weight_value',
+				'plugin_cf_product_shipping_width_value',
 				'plugin_cf_product_retailer_part_no',
 			) as $opt_key ) {
 

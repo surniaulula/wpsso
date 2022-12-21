@@ -417,6 +417,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_depth_value'           => '',
 					'product_fluid_volume_value'    => '',
 					'product_weight_value'          => '',
+					'product_shipping_length_value' => '',
+					'product_shipping_width_value'  => '',
+					'product_shipping_height_value' => '',
 					'product_shipping_weight_value' => '',
 					'product_retailer_part_no'      => '',	// Product SKU.
 					'product_mfr_part_no'           => '',	// Product MPN.

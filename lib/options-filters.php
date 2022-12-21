@@ -374,8 +374,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_length_value':
 				case 'product_min_advert_price':	// Product Min Advert Price.
 				case 'product_price':			// Product Price.
-				case 'product_shipping_length_value':
 				case 'product_shipping_height_value':
+				case 'product_shipping_length_value':
 				case 'product_shipping_weight_value':
 				case 'product_shipping_width_value':
 				case 'product_weight_value':
