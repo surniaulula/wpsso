@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_info = self::get_image_src_args();
 
 			if ( empty( $img_info[ 'size_name' ] ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'skipping ' . $file_path . ': size name is empty' );
@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log_arr( 'mt_ret', $mt_ret );
 			}
 
@@ -1422,7 +1422,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-					
+
 				$this->p->debug->log( 'calling wp_get_attachment_metadata() for pid ' . $pid );
 			}
 
@@ -1648,7 +1648,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->debug->log( 'mtime total = ' . $mtime_total );
 
 								if ( false === $resized_meta ) {
-								
+
 									$this->p->debug->log( 'resized meta = ' . false );
 
 								} else {

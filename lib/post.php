@@ -622,7 +622,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
 							$mod = $this->get_mod( $post_id );
-			
+
 							list(
 								parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 								parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
@@ -1612,7 +1612,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$from      = '';
 				$class_seq = 1;
 				$func_seq  = 1;
-			
+
 				if ( ! empty( $stack[ $class_seq ][ 'class' ] ) ) {
 
 					$from .= $stack[ $class_seq ][ 'class' ] . '::';

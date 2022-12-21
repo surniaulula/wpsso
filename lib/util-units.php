@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'yd':	$value *= 91.44; break;		// Yard to Centimeter.
 					case 'mi':	$value *= 160934.4; break;	// Mile to Centimeter.
 				}
-		
+
 				/**
 				 * Convert dimension from cm to desired output.
 				 */
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'mi':	$value *= 0.0000062137119224; break;	// Centimeter to Mile.
 				}
 			}
-		
+
 			return ( $value < 0 ) ? 0 : $value;
 		}
 
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		public static function get_weight( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
-		
+
 			if ( empty( $from ) ) {
 
 				$from = 'kg';
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'lbs':	$value *= 0.4535924; break;	// Pound to Kilogram.
 					case 'st':	$value *= 6.350293; break;	// Stone to Kilogram.
 				}
-		
+
 				/**
 				 * Convert weight from kg to desired output.
 				 */
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'st':	$value *= 0.157473; break;	// Kilogram to Stone.
 				}
 			}
-		
+
 			return ( $value < 0 ) ? 0 : $value;
 		}
 	}
