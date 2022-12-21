@@ -234,16 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.14.0-dev.5 (2022/12/21)**
+**Version 13.14.0-dev.6 (2022/12/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for additional product attributes and custom fields for:
-		* Product Net Length
+		* Product Net Length / Depth
 		* Product Net Height
 		* Product Net Weight
 		* Product Net Width
+	* Removed product depth options, attributes and custom fields:
+		* Product Depth
+		* Product Depth Attribute Name
+		* Product Depth Custom Field
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -696,9 +700,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.14.0-dev.5 =
+= 13.14.0-dev.6 =
 
-(2022/12/21) Added support for additional product attributes and custom fields.
+(2022/12/21) Added support for additional product attributes and custom fields. Removed product depth options, attributes and custom fields.
 
 = 13.13.0 =
 
