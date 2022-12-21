@@ -395,35 +395,37 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'product_category'            => $def_product_cat,	// Product Google Category ID.
-					'product_brand'               => '',
-					'product_price'               => '0.00',		// Product Price.
-					'product_price_type'          => $def_price_type,
-					'product_currency'            => $def_currency,
-					'product_min_advert_price'    => '0.00',		// Product Min Advert Price.
-					'product_avail'               => 'none',
-					'product_condition'           => $def_product_cond,
-					'product_color'               => '',
-					'product_material'            => '',
-					'product_pattern'             => '',
-					'product_target_gender'       => 'none',
-					'product_size'                => '',
-					'product_size_type'           => 'none',
-					'product_age_group'           => $def_age_group,
-					'product_adult_oriented'      => $def_adult_oriented,
-					'product_weight_value'        => '',
-					'product_length_value'        => '',
-					'product_width_value'         => '',
-					'product_height_value'        => '',
-					'product_depth_value'         => '',
-					'product_retailer_part_no'    => '',	// Product SKU.
-					'product_mfr_part_no'         => '',	// Product MPN.
-					'product_gtin14'              => '',
-					'product_gtin13'              => '',
-					'product_gtin12'              => '',
-					'product_gtin8'               => '',
-					'product_gtin'                => '',
-					'product_isbn'                => '',
+					'product_category'              => $def_product_cat,	// Product Google Category ID.
+					'product_brand'                 => '',
+					'product_price'                 => '0.00',		// Product Price.
+					'product_price_type'            => $def_price_type,
+					'product_currency'              => $def_currency,
+					'product_min_advert_price'      => '0.00',		// Product Min Advert Price.
+					'product_avail'                 => 'none',
+					'product_condition'             => $def_product_cond,
+					'product_color'                 => '',
+					'product_material'              => '',
+					'product_pattern'               => '',
+					'product_target_gender'         => 'none',
+					'product_size'                  => '',
+					'product_size_type'             => 'none',
+					'product_age_group'             => $def_age_group,
+					'product_adult_oriented'        => $def_adult_oriented,
+					'product_length_value'          => '',
+					'product_width_value'           => '',
+					'product_height_value'          => '',
+					'product_depth_value'           => '',
+					'product_fluid_volume_value'    => '',
+					'product_weight_value'          => '',
+					'product_shipping_weight_value' => '',
+					'product_retailer_part_no'      => '',	// Product SKU.
+					'product_mfr_part_no'           => '',	// Product MPN.
+					'product_gtin14'                => '',
+					'product_gtin13'                => '',
+					'product_gtin12'                => '',
+					'product_gtin8'                 => '',
+					'product_gtin'                  => '',
+					'product_isbn'                  => '',
 
 					/**
 					 * All Schema Types.

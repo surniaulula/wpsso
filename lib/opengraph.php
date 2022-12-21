@@ -1169,7 +1169,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:sale_price_dates:end'    => '',
 			 *		'product:shipping_cost:amount'    => '',
 			 *		'product:shipping_cost:currency'  => '',
-			 *		'product:shipping_weight:value'   => '',
+			 *		'product:shipping_weight:value'   => 'product_shipping_weight_value',
 			 *		'product:shipping_weight:units'   => '',
 			 *		'product:size'                    => 'product_size',
 			 *		'product:size:type'               => 'product_size_type',

@@ -45,7 +45,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Disable custom fields (aka metadata) for values that are always provided by WooCommerce.
 			 */
 			foreach ( array(
-				'plugin_cf_product_retailer_part_no',	// Managed by WooCommerce in '_sku' metadata.
+				'plugin_cf_product_shipping_weight_value',
+				'plugin_cf_product_retailer_part_no',
 			) as $opt_key ) {
 
 				$this->p->options[ $opt_key ]               = '';
@@ -560,14 +561,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			list(
-				$md_defs[ 'product_length_value' ],
-				$md_defs[ 'product_length_units' ],
-				$md_defs[ 'product_width_value' ],
-				$md_defs[ 'product_width_units' ],
-				$md_defs[ 'product_height_value' ],
-				$md_defs[ 'product_height_units' ],
-				$md_defs[ 'product_weight_value' ],
-				$md_defs[ 'product_weight_units' ],
+				$md_defs[ 'product_shipping_length_value' ],
+				$md_defs[ 'product_shipping_length_units' ],
+				$md_defs[ 'product_shipping_width_value' ],
+				$md_defs[ 'product_shipping_width_units' ],
+				$md_defs[ 'product_shipping_height_value' ],
+				$md_defs[ 'product_shipping_height_units' ],
+				$md_defs[ 'product_shipping_weight_value' ],
+				$md_defs[ 'product_shipping_weight_units' ],
 			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/**
@@ -1681,14 +1682,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 * Example:
 		 *
 		 *	list(
-		 *		$md_defs[ 'product_length_value' ],
-		 *		$md_defs[ 'product_length_units' ],
-		 *		$md_defs[ 'product_width_value' ],
-		 *		$md_defs[ 'product_width_units' ],
-		 *		$md_defs[ 'product_height_value' ],
-		 *		$md_defs[ 'product_height_units' ],
-		 *		$md_defs[ 'product_weight_value' ],
-		 *		$md_defs[ 'product_weight_units' ],
+		 *		$md_defs[ 'product_shipping_length_value' ],
+		 *		$md_defs[ 'product_shipping_length_units' ],
+		 *		$md_defs[ 'product_shipping_width_value' ],
+		 *		$md_defs[ 'product_shipping_width_units' ],
+		 *		$md_defs[ 'product_shipping_height_value' ],
+		 *		$md_defs[ 'product_shipping_height_units' ],
+		 *		$md_defs[ 'product_shipping_weight_value' ],
+		 *		$md_defs[ 'product_shipping_weight_units' ],
 		 *	) = $this->get_shipping_length_width_height_weight( $product );
 		 */
 		private function get_shipping_length_width_height_weight( $product ) {

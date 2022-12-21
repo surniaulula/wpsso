@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
-						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ),
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only if an e-commerce plugin is the authoritative source for this value.', 'wpsso' ),
 							$meta_frags[ 'label' ] ) . ' ';
 
 						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
