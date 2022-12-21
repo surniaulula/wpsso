@@ -4146,6 +4146,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function get_options_transl( array $opts, $text_domain ) {
+
+			foreach ( $opts as $opt_key => &$opt_label ) {
+
+				$opt_label = _x( $opt_label, 'option label', $text_domain );
+			}
+			
+			self::natasort( $opts );
+
+			return $opts;
+		}
+
 		/**
 		 * Add the slug (ie. name) to custom post type and taxonomy labels.
 		 */

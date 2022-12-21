@@ -1194,12 +1194,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $opt_key => $opt_label ) {
+			$opts_transl = SucomUtil::get_options_transl( $this->p->cf[ 'form' ][ 'attr_labels' ], $text_domain = 'wpsso' );
+
+			foreach ( $opts_transl as $opt_key => $opt_label_transl ) {
 
 				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) .
+					$form->get_th_html( $opt_label_transl, '', $opt_key ) .
 					'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>';
 			}
 
@@ -1220,7 +1222,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$cf_md_index = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 
-			$opt_labels = array();
+			$opts_labels = array();
 
 			foreach ( $cf_md_index as $opt_key => $md_key ) {
 
@@ -1229,13 +1231,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				 */
 				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
 
-					$opt_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
+					$opts_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
 				}
 			}
 
-			asort( $opt_labels );
+			$opts_transl = SucomUtil::get_options_transl( $opts_labels, $text_domain = 'wpsso' );
 
-			foreach ( $opt_labels as $opt_key => $opt_label ) {
+			foreach ( $opts_transl as $opt_key => $opt_label_transl ) {
 
 				/**
 				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
@@ -1249,7 +1251,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) .
+					$form->get_th_html( $opt_label_transl, '', $opt_key ) .
 					'<td class="blank">' . $form->get_no_input( $opt_key, $css_class = '', $css_id = '', $holder = '' ) . $cmt_transl . '</td>';
 			}
 

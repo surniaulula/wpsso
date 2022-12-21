@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.14.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 13.14.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2258,12 +2258,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:332
 msgctxt "option label"
-msgid "Depth Attribute Name"
+msgid "Net Depth Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:333
 msgctxt "option label"
-msgid "Fluid Volume Attribute Name"
+msgid "Net Fl. Volume Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:334
@@ -2293,7 +2293,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:339
 msgctxt "option label"
-msgid "Height Attribute Name"
+msgid "Net Height Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:340
@@ -2303,7 +2303,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:341
 msgctxt "option label"
-msgid "Length Attribute Name"
+msgid "Net Length Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:342
@@ -2343,7 +2343,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:349
 msgctxt "option label"
-msgid "Width Attribute Name"
+msgid "Net Width Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:351
@@ -3587,8 +3587,8 @@ msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:158 lib/pro/admin/advanced.php:1348
-#: lib/std/admin/advanced.php:1291
+#: gettext/gettext-lib-pro.php:158 lib/pro/admin/advanced.php:1351
+#: lib/std/admin/advanced.php:1293
 msgid ""
 "An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."

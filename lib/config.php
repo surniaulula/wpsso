@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.14.0-dev.4',	// Plugin version.
+					'version'     => '13.14.0-dev.5',	// Plugin version.
 					'opt_version' => '927',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1984,16 +1984,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
 					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
-					'plugin_attr_product_depth_value'        => 'Depth',		// Depth Attribute Name.
+					'plugin_attr_product_depth_value'        => 'Net Depth',	// Net Depth Attribute Name.
 					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
 					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
 					'plugin_attr_product_gtin13'             => 'GTIN-13',		// GTIN-13 (EAN) Attribute Name.
 					'plugin_attr_product_gtin12'             => 'GTIN-12',		// GTIN-12 (UPC) Attribute Name.
 					'plugin_attr_product_gtin8'              => 'GTIN-8',		// GTIN-8 Attribute Name.
 					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
-					'plugin_attr_product_height_value'       => 'Height',		// Height Attribute Name.
+					'plugin_attr_product_height_value'       => 'Net Height',	// Net Height Attribute Name.
 					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
-					'plugin_attr_product_length_value'       => 'Length',		// Length Attribute Name.
+					'plugin_attr_product_length_value'       => 'Net Length',	// Net Length Attribute Name.
 					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
 					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
 					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
@@ -2001,7 +2001,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_size_type'          => 'Size Type',	// Size Type Attribute Name.
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 					'plugin_attr_product_weight_value'       => 'Net Weight',	// Net Weight Attribute Name.
-					'plugin_attr_product_width_value'        => 'Width',		// Width Attribute Name.
+					'plugin_attr_product_width_value'        => 'Net Width',	// Net Width Attribute Name.
 
 					/**
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
@@ -2829,16 +2829,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_brand'              => 'Brand Attribute Name',
 					'plugin_attr_product_color'              => 'Color Attribute Name',
 					'plugin_attr_product_condition'          => 'Condition Attribute Name',
-					'plugin_attr_product_depth_value'        => 'Depth Attribute Name',
-					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute Name',
+					'plugin_attr_product_depth_value'        => 'Net Depth Attribute Name',
+					'plugin_attr_product_fluid_volume_value' => 'Net Fl. Volume Attribute Name',
 					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute Name',
 					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute Name',
 					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute Name',
 					'plugin_attr_product_gtin8'              => 'GTIN-8 Attribute Name',
 					'plugin_attr_product_gtin'               => 'GTIN Attribute Name',
-					'plugin_attr_product_height_value'       => 'Height Attribute Name',
+					'plugin_attr_product_height_value'       => 'Net Height Attribute Name',
 					'plugin_attr_product_isbn'               => 'ISBN Attribute Name',
-					'plugin_attr_product_length_value'       => 'Length Attribute Name',
+					'plugin_attr_product_length_value'       => 'Net Length Attribute Name',
 					'plugin_attr_product_material'           => 'Material Attribute Name',
 					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
 					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',
@@ -2846,7 +2846,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_size_type'          => 'Size Type Attribute Name',
 					'plugin_attr_product_target_gender'      => 'Target Gender Attribute Name',
 					'plugin_attr_product_weight_value'       => 'Net Weight Attribute Name',
-					'plugin_attr_product_width_value'        => 'Width Attribute Name',
+					'plugin_attr_product_width_value'        => 'Net Width Attribute Name',
 				),
 
 				/**
