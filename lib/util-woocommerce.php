@@ -307,14 +307,14 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_dimension_units();
 		}
 
-		public static function get_dimension( $dimension, $to, $from = '' ) {
+		public static function get_dimension( $value, $to, $from = '' ) {
 
 			if ( empty( $from ) ) {
 
 				$from = get_option( 'woocommerce_dimension_unit', $default = 'cm' );
 			}
 
-			return WpssoUtilUnits::get_dimension( $dimension, $to, $from );
+			return WpssoUtilUnits::get_dimension( $value, $to, $from );
 		}
 
 		/**
@@ -330,14 +330,14 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_fluid_volume_units();
 		}
 
-		public static function get_fluid_volume( $volume, $to, $from = '' ) {
+		public static function get_fluid_volume( $value, $to, $from = '' ) {
 
 			if ( empty( $from ) ) {
 
 				$from = get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' );
 			}
 
-			return WpssoUtilUnits::get_fluid_volume( $volume, $to, $from );
+			return WpssoUtilUnits::get_fluid_volume( $value, $to, $from );
 		}
 
 		/**
@@ -353,14 +353,14 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_weight_units();
 		}
 
-		public static function get_weight( $weight, $to, $from = '' ) {
+		public static function get_weight( $value, $to, $from = '' ) {
 
 			if ( empty( $from ) ) {
 
 				$from = get_option( 'woocommerce_weight_unit', $default = 'kg' );
 			}
 
-			return WpssoUtilUnits::get_weight( $weight, $to, $from );
+			return WpssoUtilUnits::get_weight( $value, $to, $from );
 		}
 	}
 }

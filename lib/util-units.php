@@ -65,9 +65,14 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_dimension( $dimension, $to, $from ) {
+		public static function get_dimension( $value, $to, $from = '' ) {
 
-			$dimension = (float) $dimension;
+			$value = (float) $value;
+
+			if ( empty( $from ) ) {
+
+				$from = 'cm';
+			}
 
 			if ( $from !== $to ) {	// Just in case.
 
@@ -79,18 +84,18 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'mm':	$dimension *= 0.1; break;	// Millimeter to Centimeter.
-					case 'cm':	$dimension *= 1; break;		// Centimeter to Centimeter.
-					case 'm':	$dimension *= 100; break;	// Meter to Centimeter.
-					case 'km':	$dimension *= 100000; break;	// Kilometer to Centimeter.
+					case 'mm':	$value *= 0.1; break;		// Millimeter to Centimeter.
+					case 'cm':	$value *= 1; break;		// Centimeter to Centimeter.
+					case 'm':	$value *= 100; break;		// Meter to Centimeter.
+					case 'km':	$value *= 100000; break;	// Kilometer to Centimeter.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'in':	$dimension *= 2.54; break;	// Inch to Centimeter.
-					case 'ft':	$dimension *= 30.48; break;	// Foot to Centimeter.
-					case 'yd':	$dimension *= 91.44; break;	// Yard to Centimeter.
-					case 'mi':	$dimension *= 160934.4; break;	// Mile to Centimeter.
+					case 'in':	$value *= 2.54; break;		// Inch to Centimeter.
+					case 'ft':	$value *= 30.48; break;		// Foot to Centimeter.
+					case 'yd':	$value *= 91.44; break;		// Yard to Centimeter.
+					case 'mi':	$value *= 160934.4; break;	// Mile to Centimeter.
 				}
 		
 				/**
@@ -101,22 +106,22 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'mm':	$dimension *= 10; break;	// Centimeter to Millimeter.
-					case 'cm':	$dimension *= 1; break; 	// Centimeter to Centimeter.
-					case 'm':	$dimension *= 0.01; break; 	// Centimeter to Meter.
-					case 'km':	$dimension *= 0.00001; break;	// Centimeter to Kilometer.
+					case 'mm':	$value *= 10; break;		// Centimeter to Millimeter.
+					case 'cm':	$value *= 1; break; 		// Centimeter to Centimeter.
+					case 'm':	$value *= 0.01; break; 		// Centimeter to Meter.
+					case 'km':	$value *= 0.00001; break;	// Centimeter to Kilometer.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'in':	$dimension *= 0.3937007874; break;		// Centimeter to Inch.
-					case 'ft':	$dimension *= 0.03280839895; break; 		// Centimeter to Foot.
-					case 'yd':	$dimension *= 0.010936132983; break; 		// Centimeter to Yard.
-					case 'mi':	$dimension *= 0.0000062137119224; break;	// Centimeter to Mile.
+					case 'in':	$value *= 0.3937007874; break;		// Centimeter to Inch.
+					case 'ft':	$value *= 0.03280839895; break; 	// Centimeter to Foot.
+					case 'yd':	$value *= 0.010936132983; break; 	// Centimeter to Yard.
+					case 'mi':	$value *= 0.0000062137119224; break;	// Centimeter to Mile.
 				}
 			}
 		
-			return ( $dimension < 0 ) ? 0 : $dimension;
+			return ( $value < 0 ) ? 0 : $value;
 		}
 
 		/**
@@ -153,9 +158,14 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_fluid_volume( $volume, $to, $from ) {
+		public static function get_fluid_volume( $value, $to, $from = '' ) {
 
-			$volume = (float) $volume;
+			$value = (float) $value;
+
+			if ( empty( $from ) ) {
+
+				$from = 'ml';
+			}
 
 			if ( $from !== $to ) {	// Just in case.
 
@@ -167,21 +177,21 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'ml':	$volume *= 1; break; 		// Millilitre to Millilitre.
-					case 'cl':	$volume *= 10; break; 		// Centilitre to Millilitre.
-					case 'l':	$volume *= 1000; break; 	// Liter to Millilitre.
-					case 'kl':	$volume *= 1000000; break;	// Kiloliter to Millilitre.
+					case 'ml':	$value *= 1; break; 		// Millilitre to Millilitre.
+					case 'cl':	$value *= 10; break; 		// Centilitre to Millilitre.
+					case 'l':	$value *= 1000; break; 		// Liter to Millilitre.
+					case 'kl':	$value *= 1000000; break;	// Kiloliter to Millilitre.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'US tsp':		$volume *= 4.92892; break;	// US teaspoon to Millilitre.
-					case 'US tbsp':		$volume *= 14.7868; break; 	// US tablespoon to Millilitre.
-					case 'US fl oz':	$volume *= 29.5735; break; 	// US fluid ounce to Millilitre.
-					case 'US cup':		$volume *= 236.588; break; 	// US cup to Millilitre.
-					case 'US pt':		$volume *= 473.176; break; 	// US pint to Millilitre.
-					case 'US qt':		$volume *= 946.353; break; 	// US quart to Millilitre.
-					case 'US gal':		$volume *= 3785.41; break;	// US gallon to Millilitre.
+					case 'US tsp':		$value *= 4.92892; break;	// US teaspoon to Millilitre.
+					case 'US tbsp':		$value *= 14.7868; break; 	// US tablespoon to Millilitre.
+					case 'US fl oz':	$value *= 29.5735; break; 	// US fluid ounce to Millilitre.
+					case 'US cup':		$value *= 236.588; break; 	// US cup to Millilitre.
+					case 'US pt':		$value *= 473.176; break; 	// US pint to Millilitre.
+					case 'US qt':		$value *= 946.353; break; 	// US quart to Millilitre.
+					case 'US gal':		$value *= 3785.41; break;	// US gallon to Millilitre.
 				}
 
 				/**
@@ -192,25 +202,25 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'ml':	$volume *= 1; break; 		// Millilitre to Millilitre.
-					case 'cl':	$volume *= 0.1; break; 		// Millilitre to Centilitre.
-					case 'l':	$volume *= 0.001; break; 	// Millilitre to Liter.
-					case 'kl':	$volume *= 0.000001; break;	// Millilitre to Kiloliter.
+					case 'ml':	$value *= 1; break; 		// Millilitre to Millilitre.
+					case 'cl':	$value *= 0.1; break; 		// Millilitre to Centilitre.
+					case 'l':	$value *= 0.001; break; 	// Millilitre to Liter.
+					case 'kl':	$value *= 0.000001; break;	// Millilitre to Kiloliter.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'US tsp':		$volume *= 0.202884; break; 	// Millilitre to US teaspoon.
-					case 'US tbsp':		$volume *= 0.067628; break; 	// Millilitre to US tablespoon.
-					case 'US fl oz':	$volume *= 0.033814; break; 	// Millilitre to US fluid ounce.
-					case 'US cup':		$volume *= 0.00422675; break; 	// Millilitre to US cup.
-					case 'US pt':		$volume *= 0.00211338; break; 	// Millilitre to US pint.
-					case 'US qt':		$volume *= 0.00105669; break; 	// Millilitre to US quart.
-					case 'US gal':		$volume *= 0.000264172; break;	// Millilitre to US gallon.
+					case 'US tsp':		$value *= 0.202884; break; 	// Millilitre to US teaspoon.
+					case 'US tbsp':		$value *= 0.067628; break; 	// Millilitre to US tablespoon.
+					case 'US fl oz':	$value *= 0.033814; break; 	// Millilitre to US fluid ounce.
+					case 'US cup':		$value *= 0.00422675; break; 	// Millilitre to US cup.
+					case 'US pt':		$value *= 0.00211338; break; 	// Millilitre to US pint.
+					case 'US qt':		$value *= 0.00105669; break; 	// Millilitre to US quart.
+					case 'US gal':		$value *= 0.000264172; break;	// Millilitre to US gallon.
 				}
 			}
 
-			return ( $volume < 0 ) ? 0 : $volume;
+			return ( $value < 0 ) ? 0 : $value;
 		}
 
 		/**
@@ -244,10 +254,15 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_weight( $weight, $to, $from ) {
+		public static function get_weight( $value, $to, $from = '' ) {
 
-			$weight = (float) $weight;
+			$value = (float) $value;
 		
+			if ( empty( $from ) ) {
+
+				$from = 'kg';
+			}
+
 			if ( $from !== $to ) {
 
 				/**
@@ -258,18 +273,18 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'mg':	$weight *= 0.000001; break;	// Milligram to Kilogram.
-					case 'g':	$weight *= 0.001; break;	// Gram to Kilogram.
-					case 'kg':	$weight *= 1; break;		// Kilogram to Kilogram.
-					case 't':	$weight *= 1000; break;		// Metric Ton to Kilogram.
+					case 'mg':	$value *= 0.000001; break;	// Milligram to Kilogram.
+					case 'g':	$value *= 0.001; break;		// Gram to Kilogram.
+					case 'kg':	$value *= 1; break;		// Kilogram to Kilogram.
+					case 't':	$value *= 1000; break;		// Metric Ton to Kilogram.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'oz':	$weight *= 0.02834952; break;	// Ounce to Kilogram.
-					case 'lb':	$weight *= 0.4535924; break;	// Pound to Kilogram.
-					case 'lbs':	$weight *= 0.4535924; break;	// Pound to Kilogram.
-					case 'st':	$weight *= 6.350293; break;	// Stone to Kilogram.
+					case 'oz':	$value *= 0.02834952; break;	// Ounce to Kilogram.
+					case 'lb':	$value *= 0.4535924; break;	// Pound to Kilogram.
+					case 'lbs':	$value *= 0.4535924; break;	// Pound to Kilogram.
+					case 'st':	$value *= 6.350293; break;	// Stone to Kilogram.
 				}
 		
 				/**
@@ -280,22 +295,22 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					/**
 					 * Metric units.
 					 */
-					case 'mg':	$weight *= 1000000; break;	// Kilogram to Milligram.
-					case 'g':	$weight *= 1000; break;		// Kilogram to Gram.
-					case 'kg':	$weight *= 1; break;		// Kilogram to Kilogram.
-					case 't':	$weight *= 0.001; break;	// Kilogram to Metric Ton.
+					case 'mg':	$value *= 1000000; break;	// Kilogram to Milligram.
+					case 'g':	$value *= 1000; break;		// Kilogram to Gram.
+					case 'kg':	$value *= 1; break;		// Kilogram to Kilogram.
+					case 't':	$value *= 0.001; break;		// Kilogram to Metric Ton.
 
 					/**
 					 * Imperial units.
 					 */
-					case 'oz':	$weight *= 35.27396; break;	// Kilogram to Ounce.
-					case 'lb':	$weight *= 2.204623; break;	// Kilogram to Pound.
-					case 'lbs':	$weight *= 2.204623; break;	// Kilogram to Pound.
-					case 'st':	$weight *= 0.157473; break;	// Kilogram to Stone.
+					case 'oz':	$value *= 35.27396; break;	// Kilogram to Ounce.
+					case 'lb':	$value *= 2.204623; break;	// Kilogram to Pound.
+					case 'lbs':	$value *= 2.204623; break;	// Kilogram to Pound.
+					case 'st':	$value *= 0.157473; break;	// Kilogram to Stone.
 				}
 			}
 		
-			return ( $weight < 0 ) ? 0 : $weight;
+			return ( $value < 0 ) ? 0 : $value;
 		}
 	}
 }
