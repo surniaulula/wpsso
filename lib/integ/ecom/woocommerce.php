@@ -556,11 +556,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			/**
-			 * Get product dimensions and weight.
+			 * Get product shipping dimensions and weight.
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'getting product dimentions' );
+				$this->p->debug->log( 'getting product shipping dimensions' );
 			}
 
 			list(
@@ -572,7 +572,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$md_defs[ 'product_height_units' ],
 				$md_defs[ 'product_weight_value' ],
 				$md_defs[ 'product_weight_units' ],
-			) = $this->get_length_width_height_weight( $product );
+			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/**
 			 * Get single value / non-variable product attributes.
@@ -1227,7 +1227,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			/**
-			 * Get product dimensions and weight.
+			 * Get product shipping dimensions and weight.
 			 */
 			list(
 				$mt_ecom[ 'product:length:value' ],
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$mt_ecom[ 'product:height:units' ],
 				$mt_ecom[ 'product:weight:value' ],
 				$mt_ecom[ 'product:weight:units' ],
-			) = $this->get_length_width_height_weight( $product );
+			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/**
 			 * Product variations do not have terms (categories or tags) so skip this section for variations.
@@ -1693,117 +1693,115 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 *		$md_defs[ 'product_height_units' ],
 		 *		$md_defs[ 'product_weight_value' ],
 		 *		$md_defs[ 'product_weight_units' ],
-		 *	) = $this->get_length_width_height_weight( $product );
+		 *	) = $this->get_shipping_length_width_height_weight( $product );
 		 */
-		private function get_length_width_height_weight( $product ) {
+		private function get_shipping_length_width_height_weight( $product ) {
 
 			$ret = array(
-				0 => '',	// Length value.
-				1 => '',	// Lenth units.
-				2 => '',	// Width value.
-				3 => '',	// Width units.
-				4 => '',	// Height value.
-				5 => '',	// Height units.
-				6 => '',	// Weight value.
-				7 => '',	// Weight units.
+				0 => '',	// Shipping length value.
+				1 => '',	// Shipping lenth units.
+				2 => '',	// Shipping width value.
+				3 => '',	// Shipping width units.
+				4 => '',	// Shipping height value.
+				5 => '',	// Shipping height units.
+				6 => '',	// Shipping weight value.
+				7 => '',	// Shipping weight units.
 			);
 
-			if ( $product->has_dimensions() ) {
+			if ( $product->has_dimensions() ) {	// Has shipping dimensions.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting product dimensions' );
+					$this->p->debug->log( 'getting product shipping dimensions' );
 				}
 
-				if ( function_exists( 'wc_get_dimension' ) ) {
+				if ( is_callable( array( $product, 'get_length' ) ) ) {
 
-					if ( is_callable( array( $product, 'get_length' ) ) ) {	// Just in case.
+					$length = $product->get_length();	// Shipping length.
 
-						$length = $product->get_length();
+					if ( is_numeric( $length ) ) {	// Required to ignore undefined values.
 
-						if ( is_numeric( $length ) ) {	// Required to ignore undefined values.
+						$unit_text = WpssoSchema::get_data_unit_text( 'length' );
 
-							$unit_text = WpssoSchema::get_data_unit_text( 'length' );
+						$ret[ 0 ] = WpssoUtilWoocommerce::get_dimension( $length, $unit_text );
 
-							$ret[ 0 ] = (float) wc_get_dimension( $length, $unit_text );
-							$ret[ 1 ] = $unit_text;
+						$ret[ 1 ] = $unit_text;
 
-						} elseif ( $this->p->debug->enabled ) {
+					} elseif ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'product length is not numeric' );
-						}
+						$this->p->debug->log( 'product shipping length is not numeric' );
 					}
+				}
 
-					if ( is_callable( array( $product, 'get_width' ) ) ) {	// Just in case.
+				if ( is_callable( array( $product, 'get_width' ) ) ) {
 
-						$width = $product->get_width();
+					$width = $product->get_width();	// Shipping width.
 
-						if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
+					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
-							$unit_text = WpssoSchema::get_data_unit_text( 'width' );
+						$unit_text = WpssoSchema::get_data_unit_text( 'width' );
 
-							$ret[ 2 ] = (float) wc_get_dimension( $width, $unit_text );
-							$ret[ 3 ] = $unit_text;
+						$ret[ 2 ] = WpssoUtilWoocommerce::get_dimension( $width, $unit_text );
 
-						} elseif ( $this->p->debug->enabled ) {
+						$ret[ 3 ] = $unit_text;
 
-							$this->p->debug->log( 'product width is not numeric' );
-						}
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'product shipping width is not numeric' );
 					}
+				}
 
-					if ( is_callable( array( $product, 'get_height' ) ) ) {	// Just in case.
+				if ( is_callable( array( $product, 'get_height' ) ) ) {
 
-						$height = $product->get_height();
+					$height = $product->get_height();	// Shipping height.
 
-						if ( is_numeric( $height ) ) {	// Required to ignore undefined values.
+					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
 
-							$unit_text = WpssoSchema::get_data_unit_text( 'height' );
+						$unit_text = WpssoSchema::get_data_unit_text( 'height' );
 
-							$ret[ 4 ] = (float) wc_get_dimension( $height, $unit_text );
-							$ret[ 5 ] = $unit_text;
+						$ret[ 4 ] = WpssoUtilWoocommerce::get_dimension( $height, $unit_text );
 
-						} elseif ( $this->p->debug->enabled ) {
+						$ret[ 5 ] = $unit_text;
 
-							$this->p->debug->log( 'product height is not numeric' );
-						}
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'product shipping height is not numeric' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'product does not have dimensions' );
+				$this->p->debug->log( 'product does not have shipping dimensions' );
 			}
 
-			if ( $product->has_weight() ) {
+			if ( $product->has_weight() ) {	// Has shipping weight.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting product weight' );
+					$this->p->debug->log( 'getting product shipping weight' );
 				}
 
-				if ( function_exists( 'wc_get_weight' ) ) {
+				if ( is_callable( array( $product, 'get_weight' ) ) ) {	// Just in case.
 
-					if ( is_callable( array( $product, 'get_weight' ) ) ) {	// Just in case.
+					$weight = $product->get_weight();	// Shipping weight.
 
-						$weight = $product->get_weight();
+					if ( is_numeric( $weight ) ) {	// Required to ignore undefined values.
 
-						if ( is_numeric( $weight ) ) {	// Required to ignore undefined values.
+						$unit_text = WpssoSchema::get_data_unit_text( 'weight' );
 
-							$unit_text = WpssoSchema::get_data_unit_text( 'weight' );
+						$ret[ 6 ] = WpssoUtilWoocommerce::get_weight( $weight, $unit_text );
 
-							$ret[ 6 ] = (float) wc_get_weight( $weight, $unit_text );
-							$ret[ 7 ] = $unit_text;
+						$ret[ 7 ] = $unit_text;
 
-						} elseif ( $this->p->debug->enabled ) {
+					} elseif ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'product weight is not numeric' );
-						}
+						$this->p->debug->log( 'product shipping weight is not numeric' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'product does not have a weight' );
+				$this->p->debug->log( 'product does not have a shipping weight' );
 			}
 
 			return $ret;

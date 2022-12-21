@@ -2300,6 +2300,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':sale_price_dates:end_iso'        => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':shipping_cost:amount'            => null,
 				$mt_pre . ':shipping_cost:currency'          => null,
+				$mt_pre . ':shipping_length:value'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_length:units'           => null,	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':shipping_width:value'            => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_width:units'            => null,	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':shipping_height:value'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_height:units'           => null,	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':shipping_weight:value'           => null,
 				$mt_pre . ':shipping_weight:units'           => null,
 			);

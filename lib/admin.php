@@ -2157,8 +2157,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_num++;
 
 				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
-				$ext_name_html   = '<h4>' . htmlentities( $pkg_info[ $ext ][ 'short' ], ENT_QUOTES, $charset, $double_encode = false ) . ' &mdash; ' .
-					htmlentities( $pkg_info[ $ext ][ 'name' ], ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$ext_name_html   = '<h4>' .
+					htmlentities( $pkg_info[ $ext ][ 'name' ], ENT_QUOTES, $charset, $double_encode = false ) . ' (' .
+					htmlentities( $pkg_info[ $ext ][ 'short' ], ENT_QUOTES, $charset, $double_encode = false ) . ')' .
+					'</h4>';
 				$ext_desc_transl = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
 				$ext_desc_html   = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
 
