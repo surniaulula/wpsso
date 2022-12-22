@@ -3347,65 +3347,64 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
 		 */
-		public static function get_unit_text( $unit_key ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
+		public static function get_unit_text( $mixed_key ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $unit_key ] ) ) {
+			if ( isset( $local_cache[ $mixed_key ] ) ) {
 
-				return $local_cache[ $unit_key ];
+				return $local_cache[ $mixed_key ];
 			}
 
 			$schema_units = self::get_schema_units();	// Uses a local cache.
 
-			if ( isset( $schema_units[ $unit_key ] ) && is_array( $schema_units[ $unit_key ] ) ) {	// Just in case.
-
-				foreach ( $schema_units[ $unit_key ] as $prop_name => $prop_data ) {
-	
-					if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
-	
-						return $local_cache[ $unit_key ] = $prop_data[ 'unitText' ];
-					}
-				}
-			}
-
-			return $local_cache[ $unit_key ] = '';
-		}
-
-		public static function get_option_unit_text( $opt_key ) {
-
-			$schema_units = self::get_schema_units();	// Uses a local cache.
+			$match_key = null;
 
 			if ( is_array( $schema_units ) ) {	// Just in case.
 
-				$unit_keys = array_keys( $schema_units );
+				if ( isset( $schema_units[ $mixed_key ] ) ) {
+				
+					$match_key = $mixed_key;
 
-				if ( false !== strpos( $opt_key, '_value' ) ) {	// Just in case.
+				} else {
+			
+					$mixed_key = str_replace( ':', '_', $mixed_key );	// Fix for meta tag names.
 
-					foreach ( $unit_keys as $unit_key ) {
+					if ( false !== strpos( $mixed_key, '_value' ) ) {
+					
+						$unit_keys = array_keys( $schema_units );
 
-						/**
-						 * $unit_key = 'length' matched 'plugin_shipping_length_value', 'plugin_length_value', etc.
-						 */
-						if ( false !== strpos( $opt_key, '_' . $unit_key . '_value' ) ) {
+						foreach ( $unit_keys as $unit_key ) {
 	
-							if ( $unit_text = self::get_unit_text( $unit_key ) ) {	// Uses a local cache.
+							/**
+							 * $unit_key = 'length' matches 'plugin_shipping_length_value', 'plugin_length_value', etc.
+							 */
+							if ( false !== strpos( $mixed_key, '_' . $unit_key . '_value' ) ) {
+		
+								$match_key = $unit_key;
 	
-								return $unit_text;
+								break;
 							}
 						}
 					}
 				}
 			}
 
-			return '';
+			if ( null !== $match_key ) {
+
+				if ( is_array( $schema_units[ $match_key ] ) ) {	// Just in case.
+
+					foreach ( $schema_units[ $match_key ] as $prop_name => $prop_data ) {
+		
+						if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
+			
+							return $local_cache[ $mixed_key ] = $prop_data[ 'unitText' ];
+						}
+					}
+				}
+			}
+
+			return $local_cache[ $mixed_key ] = '';
 		}
 
 		/**

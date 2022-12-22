@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 				$from = get_option( 'woocommerce_dimension_unit', $default = 'cm' );
 			}
 
-			return WpssoUtilUnits::get_dimension( $value, $to, $from );
+			return WpssoUtilUnits::convert_dimension( $value, $to, $from );
 		}
 
 		/**
@@ -337,7 +337,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 				$from = get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' );
 			}
 
-			return WpssoUtilUnits::get_fluid_volume( $value, $to, $from );
+			return WpssoUtilUnits::convert_fluid_volume( $value, $to, $from );
 		}
 
 		/**
@@ -357,13 +357,10 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 			if ( empty( $from ) ) {
 
-				/**
-				 * Note that both 'lb' and 'lbs' are valid $from values.
-				 */
 				$from = get_option( 'woocommerce_weight_unit', $default = 'kg' );
 			}
 
-			return WpssoUtilUnits::get_weight( $value, $to, $from );
+			return WpssoUtilUnits::convert_weight( $value, $to, $from );
 		}
 	}
 }

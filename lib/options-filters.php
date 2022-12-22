@@ -425,11 +425,20 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':		// Product Price Currency.
+				case 'product_fluid_volume_units':
+				case 'product_height_units':
+				case 'product_length_units':
 				case 'product_material':
 				case 'product_mfr_part_no':		// Product MPN.
 				case 'product_pattern':
 				case 'product_retailer_part_no':	// Product SKU.
+				case 'product_shipping_height_units':
+				case 'product_shipping_length_units':
+				case 'product_shipping_weight_units':
+				case 'product_shipping_width_units':
 				case 'product_size':
+				case 'product_weight_units':
+				case 'product_width_units':
 				case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
 				case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.

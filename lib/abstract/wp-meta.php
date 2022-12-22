@@ -302,19 +302,22 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
-				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
-				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
-				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
-				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
-				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
-				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
-				$def_article_section = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
-				$def_adult_oriented  = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
-				$def_age_group       = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
-				$def_product_cat     = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
-				$def_product_cond    = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
-				$def_price_type      = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
+				$def_lang               = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
+				$def_og_type            = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
+				$def_schema_type        = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
+				$def_primary_term_id    = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
+				$def_reading_mins       = $this->p->page->get_reading_mins( $mod );
+				$def_img_id_lib         = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
+				$def_currency           = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
+				$def_dimension_units    = isset( $opts[ 'og_def_dimension_units' ] ) ? $opts[ 'og_def_dimension_units' ] : 'cm';
+				$def_fluid_volume_units = isset( $opts[ 'og_def_fluid_volume_units' ] ) ? $opts[ 'og_def_fluid_volume_units' ] : 'ml';
+				$def_weight_units       = isset( $opts[ 'og_def_weight_units' ] ) ? $opts[ 'og_def_weight_units' ] : 'kg';
+				$def_article_section    = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
+				$def_adult_oriented     = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
+				$def_age_group          = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
+				$def_product_cat        = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
+				$def_product_cond       = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
+				$def_price_type         = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
 					'https://schema.org/ListPrice';
 
 				/**
@@ -398,12 +401,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'product_category'              => $def_product_cat,	// Product Google Category ID.
+					'product_category'              => $def_product_cat,		// Product Google Category ID.
 					'product_brand'                 => '',
-					'product_price'                 => '0.00',		// Product Price.
+					'product_price'                 => '0.00',			// Product Price.
 					'product_price_type'            => $def_price_type,
 					'product_currency'              => $def_currency,
-					'product_min_advert_price'      => '0.00',		// Product Min Advert Price.
+					'product_min_advert_price'      => '0.00',			// Product Min Advert Price.
 					'product_avail'                 => 'none',
 					'product_condition'             => $def_product_cond,
 					'product_color'                 => '',
@@ -414,17 +417,26 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_size_type'             => 'none',
 					'product_age_group'             => $def_age_group,
 					'product_adult_oriented'        => $def_adult_oriented,
-					'product_length_value'          => '',	// Product Net Len. / Depth.
-					'product_width_value'           => '',	// Product Net Width.
-					'product_height_value'          => '',	// Product Net Height.
-					'product_fluid_volume_value'    => '',	// Product Net Fl. Volume.
-					'product_weight_value'          => '',	// Product Net Weight.
-					'product_shipping_length_value' => '',	// Product Shipping Length.
-					'product_shipping_width_value'  => '',	// Product Shipping Width.
-					'product_shipping_height_value' => '',	// Product Shipping Height.
-					'product_shipping_weight_value' => '',	// Product Shipping Weight.
-					'product_retailer_part_no'      => '',	// Product SKU.
-					'product_mfr_part_no'           => '',	// Product MPN.
+					'product_length_value'          => '',				// Product Net Len. / Depth.
+					'product_length_units'          => $def_dimension_units,
+					'product_width_value'           => '',				// Product Net Width.
+					'product_width_units'           => $def_dimension_units,
+					'product_height_value'          => '',				// Product Net Height.
+					'product_height_units'          => $def_dimension_units,
+					'product_fluid_volume_value'    => '',				// Product Net Fl. Volume.
+					'product_fluid_volume_units'    => $def_fluid_volume_units,
+					'product_weight_value'          => '',				// Product Net Weight.
+					'product_weight_units'          => $def_weight_units,
+					'product_shipping_length_value' => '',				// Product Shipping Length.
+					'product_shipping_length_units' => $def_dimension_units,
+					'product_shipping_width_value'  => '',				// Product Shipping Width.
+					'product_shipping_width_units'  => $def_dimension_units,
+					'product_shipping_height_value' => '',				// Product Shipping Height.
+					'product_shipping_height_units' => $def_dimension_units,
+					'product_shipping_weight_value' => '',				// Product Shipping Weight.
+					'product_shipping_weight_units' => $def_weight_units,
+					'product_retailer_part_no'      => '',				// Product SKU.
+					'product_mfr_part_no'           => '',				// Product MPN.
 					'product_gtin14'                => '',
 					'product_gtin13'                => '',
 					'product_gtin12'                => '',

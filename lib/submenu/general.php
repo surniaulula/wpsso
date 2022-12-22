@@ -145,9 +145,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
-					$def_site_name = get_bloginfo( 'name' );
-					$def_site_desc = get_bloginfo( 'description' );
-					$def_home_url  = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
+					$def_site_name      = get_bloginfo( 'name' );
+					$def_site_desc      = get_bloginfo( 'description' );
+					$def_home_url       = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
+					$dimension_units    = WpssoUtilUnits::get_dimension_units();
+					$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
+					$weight_units       = WpssoUtilUnits::get_weight_units();
 
 					$table_rows[ 'site_name' ] = '' .
 						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
@@ -190,20 +193,20 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'og_def_dimension_units' ] = '' .
 						$this->form->get_th_html( _x( 'Default Dimension Units', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_dimension_units' ) .
-						'<td>' . $this->form->get_select( 'og_def_dimension_units', WpssoUtilUnits::get_dimension_units(),
-							$css_class = 'units', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+						'<td>' . $this->form->get_select( 'og_def_dimension_units', $get_dimension_units,
+							$css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
 
 					$table_rows[ 'og_def_fluid_volume_units' ] = '' .
 						$this->form->get_th_html( _x( 'Default Fluid Volume Units', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_fluid_volume_units' ) .
-						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', WpssoUtilUnits::get_fluid_volume_units(),
-							$css_class = 'units', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', $fluid_volume_units,
+							$css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
 
 					$table_rows[ 'og_def_weight_units' ] = '' .
 						$this->form->get_th_html( _x( 'Default Weight Units', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_weight_units' ) .
-						'<td>' . $this->form->get_select( 'og_def_weight_units', WpssoUtilUnits::get_weight_units(),
-							$css_class = 'units', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+						'<td>' . $this->form->get_select( 'og_def_weight_units', $weight_units,
+							$css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
 
 					break;
 

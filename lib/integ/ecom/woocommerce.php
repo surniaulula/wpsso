@@ -45,14 +45,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Disable custom fields (aka metadata) for values that are always provided by WooCommerce.
 			 */
 			foreach ( array(
-				'plugin_cf_product_shipping_height_value',
-				'plugin_cf_product_shipping_height_units',
 				'plugin_cf_product_shipping_length_value',
 				'plugin_cf_product_shipping_length_units',
-				'plugin_cf_product_shipping_weight_value',
-				'plugin_cf_product_shipping_weight_units',
 				'plugin_cf_product_shipping_width_value',
 				'plugin_cf_product_shipping_width_units',
+				'plugin_cf_product_shipping_height_value',
+				'plugin_cf_product_shipping_height_units',
+				'plugin_cf_product_shipping_weight_value',
+				'plugin_cf_product_shipping_weight_units',
 				'plugin_cf_product_retailer_part_no',
 			) as $opt_key ) {
 
@@ -475,10 +475,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			/**
 			 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
 			 */
-			if ( 'lbs' === $weight_unit ) {
-
-				$weight_unit = 'lb';
-			}
+			$weight_unit = 'lbs' === $weight_unit ? 'lb' : $weight_unit;
 
 			$defs[ 'og_def_dimension_units' ]    = $dimension_unit;		// Default Dimension Units.
 			$defs[ 'og_def_fluid_volume_units' ] = $fluid_volume_unit;	// Default Fluid Volume Units.
@@ -1736,6 +1733,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			if ( $product->has_dimensions() ) {	// Has shipping dimensions.
 
+				$dimension_unit = get_option( 'woocommerce_dimension_unit', $default = 'cm' );
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'getting product shipping dimensions' );
@@ -1747,11 +1746,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_unit_text( 'length' );
-
-						$ret[ 0 ] = WpssoUtilWoocommerce::get_dimension( $length, $unit_text );
-
-						$ret[ 1 ] = $unit_text;
+						$ret[ 0 ] = $length;
+						$ret[ 1 ] = $dimension_unit;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1765,11 +1761,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_unit_text( 'width' );
-
-						$ret[ 2 ] = WpssoUtilWoocommerce::get_dimension( $width, $unit_text );
-
-						$ret[ 3 ] = $unit_text;
+						$ret[ 2 ] = $width;
+						$ret[ 3 ] = $dimension_unit;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1783,11 +1776,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_unit_text( 'height' );
-
-						$ret[ 4 ] = WpssoUtilWoocommerce::get_dimension( $height, $unit_text );
-
-						$ret[ 5 ] = $unit_text;
+						$ret[ 4 ] = $height;
+						$ret[ 5 ] = $dimension_unit;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1802,6 +1792,13 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			if ( $product->has_weight() ) {	// Has shipping weight.
 
+				$weight_unit = get_option( 'woocommerce_weight_unit', $default = 'kg' );
+
+				/**
+				 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+				 */
+				$weight_unit = 'lbs' === $weight_unit ? 'lb' : $weight_unit;
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'getting product shipping weight' );
@@ -1813,11 +1810,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_unit_text( 'weight' );
-
-						$ret[ 6 ] = WpssoUtilWoocommerce::get_weight( $weight, $unit_text );
-
-						$ret[ 7 ] = $unit_text;
+						$ret[ 6 ] = $weight;
+						$ret[ 7 ] = $weight_unit;
 
 					} elseif ( $this->p->debug->enabled ) {
 

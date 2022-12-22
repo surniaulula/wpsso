@@ -1039,8 +1039,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Net Len. / Depth', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_length_value',
-					'content'  => $form->get_no_input( 'product_length_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_length_value' ),
+					'content'  => $form->get_no_input( 'product_length_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_length_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_width_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1048,8 +1048,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Net Width', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_width_value',
-					'content'  => $form->get_no_input( 'product_width_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_width_value' ),
+					'content'  => $form->get_no_input( 'product_width_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_width_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_height_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1057,8 +1057,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Net Height', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_height_value',
-					'content'  => $form->get_no_input( 'product_height_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_height_value' ),
+					'content'  => $form->get_no_input( 'product_height_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_height_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_fluid_volume_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1066,8 +1066,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Net Fl. Volume', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_fluid_volume_value',
-					'content'  => $form->get_no_input( 'product_fluid_volume_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_fluid_volume_value' ),
+					'content'  => $form->get_no_input( 'product_fluid_volume_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_fluid_volume_units', $fluid_volume_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_weight_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1075,8 +1075,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Net Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
+					'content'  => $form->get_no_input( 'product_weight_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_weight_units', $weight_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_length_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1084,8 +1084,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Shipping Length', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_shipping_length_value',
-					'content'  => $form->get_no_input( 'product_shipping_length_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_shipping_length_value' ),
+					'content'  => $form->get_no_input( 'product_shipping_length_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_shipping_length_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_width_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1093,8 +1093,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Shipping Width', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_shipping_width_value',
-					'content'  => $form->get_no_input( 'product_shipping_width_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_shipping_width_value' ),
+					'content'  => $form->get_no_input( 'product_shipping_width_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_shipping_width_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_height_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1102,8 +1102,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Shipping Height', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_shipping_height_value',
-					'content'  => $form->get_no_input( 'product_shipping_height_value', '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_shipping_height_value' ),
+					'content'  => $form->get_no_input( 'product_shipping_height_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_shipping_height_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_weight_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1111,8 +1111,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Shipping Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_shipping_weight_value',
-					'content'  => $form->get_no_input( 'product_shipping_weight_value', $css_class = '', $css_id = '', $holder = true ) .
-						WpssoAdmin::get_option_unit_comment( 'product_shipping_weight_value' ),
+					'content'  => $form->get_no_input( 'product_shipping_weight_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_shipping_weight_units', $weight_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_retailer_part_no' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1136,7 +1136,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin14',
-					'content'  => $form->get_no_input( 'product_gtin14', '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_gtin14', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_gtin13' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1144,7 +1144,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),	// aka Product EAN.
 					'tooltip'  => 'meta-product_gtin13',
-					'content'  => $form->get_no_input( 'product_gtin13', '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_gtin13', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_gtin12' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1152,7 +1152,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-12 (UPC)', 'option label', 'wpsso' ),	// aka Product UPC.
 					'tooltip'  => 'meta-product_gtin12',
-					'content'  => $form->get_no_input( 'product_gtin12', '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_gtin12', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_gtin8' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin8',
-					'content'  => $form->get_no_input( 'product_gtin8', '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_gtin8', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_gtin' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -1168,7 +1168,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin',
-					'content'  => $form->get_no_input( 'product_gtin', '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_gtin', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_isbn' => array(
 					'tr_class' => $type_row_class[ 'product' ],

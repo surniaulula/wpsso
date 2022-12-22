@@ -787,7 +787,7 @@ table.sucom-settings td select.locale { width:125px; }
 
 table.sucom-settings td select.year { width:125px; }
 
-table.sucom-settings td select.units { width:140px; }
+table.sucom-settings td select.unit_text { width:125px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
@@ -844,6 +844,8 @@ table.sucom-settings td input[type="text"].bigchars { width:80px; }	/* Character
 
 table.sucom-settings td input[type="text"].year,
 table.sucom-settings td input[type="text"].short { width:110px; }
+
+table.sucom-settings td input[type="text"].unit_value { width:160px; }
 
 table.sucom-settings td input[type="text"].medium { width:180px; }
 

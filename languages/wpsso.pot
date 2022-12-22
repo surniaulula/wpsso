@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.14.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 14.0.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2833,8 +2833,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:17 gettext/gettext-lib-pro.php:162
 #: lib/pro/admin/advanced.php:146 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:141 lib/std/admin/general.php:59
-#: lib/submenu/general.php:367 lib/submenu/general.php:373
-#: lib/submenu/general.php:379
+#: lib/submenu/general.php:370 lib/submenu/general.php:376
+#: lib/submenu/general.php:382
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -4247,200 +4247,200 @@ msgctxt "option label"
 msgid "Select a Place"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:284 lib/pro/admin/edit.php:1032
+#: gettext/gettext-lib-pro.php:284 lib/pro/admin/edit.php:1035
 #: lib/std/admin/edit.php:906
 msgctxt "metabox title"
 msgid "Schema Product Information (Main Product)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:285 lib/messages.php:701
-#: lib/pro/admin/edit.php:1042 lib/std/admin/edit.php:915
+#: lib/pro/admin/edit.php:1045 lib/std/admin/edit.php:915
 msgctxt "option label"
 msgid "Product Google Category"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:286 lib/messages.php:695
-#: lib/pro/admin/edit.php:1057 lib/std/admin/edit.php:923
+#: lib/pro/admin/edit.php:1060 lib/std/admin/edit.php:923
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:287 lib/messages.php:797
-#: lib/pro/admin/edit.php:1064 lib/std/admin/edit.php:931
+#: lib/pro/admin/edit.php:1067 lib/std/admin/edit.php:931
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:288 lib/messages.php:802
-#: lib/pro/admin/edit.php:1074 lib/std/admin/edit.php:940
+#: lib/pro/admin/edit.php:1077 lib/std/admin/edit.php:940
 msgctxt "option label"
 msgid "Product Price Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:289 lib/messages.php:786
-#: lib/pro/admin/edit.php:1082 lib/std/admin/edit.php:949
+#: lib/pro/admin/edit.php:1085 lib/std/admin/edit.php:949
 msgctxt "option label"
 msgid "Product Min Advert Price"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:290 lib/messages.php:689
-#: lib/pro/admin/edit.php:1089 lib/std/admin/edit.php:957
+#: lib/pro/admin/edit.php:1092 lib/std/admin/edit.php:957
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:291 lib/messages.php:712
-#: lib/pro/admin/edit.php:1097 lib/std/admin/edit.php:966
+#: lib/pro/admin/edit.php:1100 lib/std/admin/edit.php:966
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:292 lib/messages.php:707
-#: lib/pro/admin/edit.php:1105 lib/std/admin/edit.php:975
+#: lib/pro/admin/edit.php:1108 lib/std/admin/edit.php:975
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:293 lib/messages.php:774
-#: lib/pro/admin/edit.php:1112 lib/std/admin/edit.php:983
+#: lib/pro/admin/edit.php:1115 lib/std/admin/edit.php:983
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:294 lib/messages.php:791
-#: lib/pro/admin/edit.php:1119 lib/std/admin/edit.php:991
+#: lib/pro/admin/edit.php:1122 lib/std/admin/edit.php:991
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:295 lib/messages.php:846
-#: lib/pro/admin/edit.php:1126 lib/std/admin/edit.php:999
+#: lib/pro/admin/edit.php:1129 lib/std/admin/edit.php:999
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:296 lib/messages.php:833
-#: lib/pro/admin/edit.php:1134 lib/std/admin/edit.php:1008
+#: lib/pro/admin/edit.php:1137 lib/std/admin/edit.php:1008
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:297 lib/messages.php:839
-#: lib/pro/admin/edit.php:1141 lib/std/admin/edit.php:1016
+#: lib/pro/admin/edit.php:1144 lib/std/admin/edit.php:1016
 msgctxt "option label"
 msgid "Product Size Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:298 lib/messages.php:682
-#: lib/pro/admin/edit.php:1148 lib/std/admin/edit.php:1024
+#: lib/pro/admin/edit.php:1151 lib/std/admin/edit.php:1024
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:299 lib/messages.php:675
-#: lib/pro/admin/edit.php:1155 lib/std/admin/edit.php:1032
+#: lib/pro/admin/edit.php:1158 lib/std/admin/edit.php:1032
 msgctxt "option label"
 msgid "Product Adult Oriented"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:300 lib/messages.php:769
-#: lib/pro/admin/edit.php:1162 lib/std/admin/edit.php:1040
+#: lib/pro/admin/edit.php:1165 lib/std/admin/edit.php:1040
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:301 lib/messages.php:858
-#: lib/pro/admin/edit.php:1170 lib/std/admin/edit.php:1049
+#: lib/pro/admin/edit.php:1173 lib/std/admin/edit.php:1049
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:302 lib/messages.php:758
-#: lib/pro/admin/edit.php:1178 lib/std/admin/edit.php:1058
+#: lib/pro/admin/edit.php:1181 lib/std/admin/edit.php:1058
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:303 lib/messages.php:723
-#: lib/pro/admin/edit.php:1186 lib/std/admin/edit.php:1067
+#: lib/pro/admin/edit.php:1189 lib/std/admin/edit.php:1067
 msgctxt "option label"
 msgid "Product Net Fl. Volume"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:304 lib/messages.php:853
-#: lib/pro/admin/edit.php:1194 lib/std/admin/edit.php:1076
+#: lib/pro/admin/edit.php:1197 lib/std/admin/edit.php:1076
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:305 lib/messages.php:818
-#: lib/pro/admin/edit.php:1202 lib/std/admin/edit.php:1085
+#: lib/pro/admin/edit.php:1205 lib/std/admin/edit.php:1085
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:306 lib/messages.php:828
-#: lib/pro/admin/edit.php:1210 lib/std/admin/edit.php:1094
+#: lib/pro/admin/edit.php:1213 lib/std/admin/edit.php:1094
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:307 lib/messages.php:813
-#: lib/pro/admin/edit.php:1218 lib/std/admin/edit.php:1103
+#: lib/pro/admin/edit.php:1221 lib/std/admin/edit.php:1103
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:308 lib/messages.php:823
-#: lib/pro/admin/edit.php:1226 lib/std/admin/edit.php:1112
+#: lib/pro/admin/edit.php:1229 lib/std/admin/edit.php:1112
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:309 lib/messages.php:808
-#: lib/pro/admin/edit.php:1234 lib/std/admin/edit.php:1121
+#: lib/pro/admin/edit.php:1237 lib/std/admin/edit.php:1121
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:310 lib/messages.php:780
-#: lib/pro/admin/edit.php:1241 lib/std/admin/edit.php:1129
+#: lib/pro/admin/edit.php:1244 lib/std/admin/edit.php:1129
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:311 lib/messages.php:728
-#: lib/pro/admin/edit.php:1248 lib/std/admin/edit.php:1137
+#: lib/pro/admin/edit.php:1251 lib/std/admin/edit.php:1137
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:312 lib/messages.php:734
-#: lib/pro/admin/edit.php:1255 lib/std/admin/edit.php:1145
+#: lib/pro/admin/edit.php:1258 lib/std/admin/edit.php:1145
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:313 lib/messages.php:740
-#: lib/pro/admin/edit.php:1262 lib/std/admin/edit.php:1153
+#: lib/pro/admin/edit.php:1265 lib/std/admin/edit.php:1153
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:314 lib/messages.php:746
-#: lib/pro/admin/edit.php:1269 lib/std/admin/edit.php:1161
+#: lib/pro/admin/edit.php:1272 lib/std/admin/edit.php:1161
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:315 lib/messages.php:752
-#: lib/pro/admin/edit.php:1276 lib/std/admin/edit.php:1169
+#: lib/pro/admin/edit.php:1279 lib/std/admin/edit.php:1169
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:316 lib/messages.php:763
-#: lib/pro/admin/edit.php:1283 lib/std/admin/edit.php:1177
+#: lib/pro/admin/edit.php:1286 lib/std/admin/edit.php:1177
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
@@ -4526,54 +4526,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1128
+#: lib/abstract/wp-meta.php:1140
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1196
-msgctxt "metabox tab"
-msgid "Edit General"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1200
-msgctxt "metabox tab"
-msgid "Edit Schema"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1203 lib/messages.php:296
-msgctxt "metabox tab"
-msgid "Edit Media"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1207
-msgctxt "metabox tab"
-msgid "Edit Visibility"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1208
 msgctxt "metabox tab"
+msgid "Edit General"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1212
+msgctxt "metabox tab"
+msgid "Edit Schema"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1215 lib/messages.php:296
+msgctxt "metabox tab"
+msgid "Edit Media"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1219
+msgctxt "metabox tab"
+msgid "Edit Visibility"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1220
+msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1209
+#: lib/abstract/wp-meta.php:1221
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1210
+#: lib/abstract/wp-meta.php:1222
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1548
+#: lib/abstract/wp-meta.php:1560
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1879 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1891 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1881
+#: lib/abstract/wp-meta.php:1893
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -6433,13 +6433,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:136 lib/submenu/general.php:337
+#: lib/edit-visibility.php:136 lib/submenu/general.php:340
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:137 lib/edit-visibility.php:153
-#: lib/submenu/general.php:338 lib/submenu/general.php:352
+#: lib/submenu/general.php:341 lib/submenu/general.php:355
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -6454,7 +6454,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:152 lib/submenu/general.php:351
+#: lib/edit-visibility.php:152 lib/submenu/general.php:354
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -6515,23 +6515,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:798
+#: lib/integ/ecom/woocommerce.php:795
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:801
+#: lib/integ/ecom/woocommerce.php:798
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:804
+#: lib/integ/ecom/woocommerce.php:801
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1457
+#: lib/integ/ecom/woocommerce.php:1454
 msgid "World"
 msgstr ""
 
@@ -8856,7 +8856,7 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:271 lib/submenu/essential.php:96
-#: lib/submenu/general.php:153
+#: lib/submenu/general.php:156
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
@@ -8874,7 +8874,7 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:288 lib/submenu/essential.php:102
-#: lib/submenu/general.php:164
+#: lib/submenu/general.php:167
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
@@ -9700,7 +9700,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:347 lib/messages.php:1133
-#: lib/submenu/general.php:376
+#: lib/submenu/general.php:379
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -10355,8 +10355,8 @@ msgstr ""
 #: lib/messages.php:725
 msgctxt "tooltip fragment"
 msgid ""
-"a product net fluid volume (in %s), as opposed to the shipping or packaged "
-"fluid volume used for shipping cost calculations"
+"a product net fluid volume, as opposed to the shipping or packaged fluid "
+"volume used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:729
@@ -10424,8 +10424,8 @@ msgstr ""
 #: lib/messages.php:760
 msgctxt "tooltip fragment"
 msgid ""
-"a product net height (in %s), as opposed to the shipping or packaged height "
-"used for shipping cost calculations"
+"a product net height, as opposed to the shipping or packaged height used for "
+"shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:764
@@ -10441,8 +10441,8 @@ msgstr ""
 #: lib/messages.php:771
 msgctxt "tooltip fragment"
 msgid ""
-"a product net length or depth (in %s), as opposed to the shipping or "
-"packaged length used for shipping cost calculations"
+"a product net length or depth, as opposed to the shipping or packaged length "
+"used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:775
@@ -10535,8 +10535,7 @@ msgstr ""
 #: lib/messages.php:815
 msgctxt "tooltip fragment"
 msgid ""
-"a product shipping or packaged height (in %s) used for shipping cost "
-"calculations"
+"a product shipping or packaged height used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:819
@@ -10547,8 +10546,7 @@ msgstr ""
 #: lib/messages.php:820
 msgctxt "tooltip fragment"
 msgid ""
-"a product shipping or packaged length (in %s) used for shipping cost "
-"calculations"
+"a product shipping or packaged length used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:824
@@ -10559,8 +10557,7 @@ msgstr ""
 #: lib/messages.php:825
 msgctxt "tooltip fragment"
 msgid ""
-"a product shipping or packaged weight (in %s) used for shipping cost "
-"calculations"
+"a product shipping or packaged weight used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:829
@@ -10571,8 +10568,7 @@ msgstr ""
 #: lib/messages.php:830
 msgctxt "tooltip fragment"
 msgid ""
-"a product shipping or packaged width (in %s) used for shipping cost "
-"calculations"
+"a product shipping or packaged width used for shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:834
@@ -10625,8 +10621,8 @@ msgstr ""
 #: lib/messages.php:855
 msgctxt "tooltip fragment"
 msgid ""
-"a product net weight (in %s), as opposed to the shipping or packaged weight "
-"used for shipping cost calculations"
+"a product net weight, as opposed to the shipping or packaged weight used for "
+"shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:859
@@ -10637,8 +10633,8 @@ msgstr ""
 #: lib/messages.php:860
 msgctxt "tooltip fragment"
 msgid ""
-"a product net width (in %s), as opposed to the shipping or packaged width "
-"used for shipping cost calculations"
+"a product net width, as opposed to the shipping or packaged width used for "
+"shipping cost calculations"
 msgstr ""
 
 #: lib/messages.php:864 lib/messages.php:865
@@ -10711,7 +10707,7 @@ msgstr ""
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:992 wpsso.php:571
+#: lib/messages.php:992 wpsso.php:586
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
@@ -11356,7 +11352,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3682
+#: lib/schema.php:3681
 msgid "checking schema properties"
 msgstr ""
 
@@ -11596,12 +11592,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:108 lib/submenu/general.php:243
+#: lib/submenu/essential.php:108 lib/submenu/general.php:246
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:248
+#: lib/submenu/essential.php:113 lib/submenu/general.php:251
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -11656,182 +11652,182 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:159
+#: lib/submenu/general.php:162
 msgctxt "option label"
 msgid "WebSite Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:170
+#: lib/submenu/general.php:173
 msgctxt "option label"
 msgid "WebSite Home URL"
 msgstr ""
 
-#: lib/submenu/general.php:176
+#: lib/submenu/general.php:179
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:181
+#: lib/submenu/general.php:184
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:186
+#: lib/submenu/general.php:189
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:191
+#: lib/submenu/general.php:194
 msgctxt "option label"
 msgid "Default Dimension Units"
 msgstr ""
 
-#: lib/submenu/general.php:197
+#: lib/submenu/general.php:200
 msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:203
+#: lib/submenu/general.php:206
 msgctxt "option label"
 msgid "Default Weight Units"
 msgstr ""
 
-#: lib/submenu/general.php:213
+#: lib/submenu/general.php:216
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:218
+#: lib/submenu/general.php:221
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:223
+#: lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:227
+#: lib/submenu/general.php:230
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:236
+#: lib/submenu/general.php:239
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:263
+#: lib/submenu/general.php:266
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:268
+#: lib/submenu/general.php:271
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:273
+#: lib/submenu/general.php:276
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:293
+#: lib/submenu/general.php:296
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:303
+#: lib/submenu/general.php:306
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:310
+#: lib/submenu/general.php:313
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:319
+#: lib/submenu/general.php:322
 msgctxt "option comment"
 msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
-#: lib/submenu/general.php:323
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:333
+#: lib/submenu/general.php:336
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:341
+#: lib/submenu/general.php:344
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:347
+#: lib/submenu/general.php:350
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:359
+#: lib/submenu/general.php:362
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:364
+#: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:370
+#: lib/submenu/general.php:373
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:386
+#: lib/submenu/general.php:389
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:387
+#: lib/submenu/general.php:390
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:391
+#: lib/submenu/general.php:394
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:396
+#: lib/submenu/general.php:399
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:405
+#: lib/submenu/general.php:408
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:410
+#: lib/submenu/general.php:413
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:415
+#: lib/submenu/general.php:418
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:420
+#: lib/submenu/general.php:423
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
@@ -12214,108 +12210,108 @@ msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
-#: lib/util-units.php:54
+#: lib/util-units.php:93
 msgid "mm"
 msgstr ""
 
-#: lib/util-units.php:55
+#: lib/util-units.php:94
 msgid "cm"
 msgstr ""
 
-#: lib/util-units.php:56
+#: lib/util-units.php:95
 msgid "m"
 msgstr ""
 
-#: lib/util-units.php:57
+#: lib/util-units.php:96
 msgid "km"
 msgstr ""
 
-#: lib/util-units.php:58
+#: lib/util-units.php:97
 msgid "inches"
 msgstr ""
 
-#: lib/util-units.php:59
+#: lib/util-units.php:98
 msgid "feet"
 msgstr ""
 
-#: lib/util-units.php:60
+#: lib/util-units.php:99
 msgid "yards"
 msgstr ""
 
-#: lib/util-units.php:61
+#: lib/util-units.php:100
 msgid "miles"
 msgstr ""
 
-#: lib/util-units.php:144
+#: lib/util-units.php:183
 msgid "ml"
 msgstr ""
 
-#: lib/util-units.php:145
+#: lib/util-units.php:184
 msgid "cl"
 msgstr ""
 
-#: lib/util-units.php:146
+#: lib/util-units.php:185
 msgid "l"
 msgstr ""
 
-#: lib/util-units.php:147
+#: lib/util-units.php:186
 msgid "kl"
 msgstr ""
 
-#: lib/util-units.php:148
+#: lib/util-units.php:187
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-units.php:149
+#: lib/util-units.php:188
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-units.php:150
+#: lib/util-units.php:189
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-units.php:151
+#: lib/util-units.php:190
 msgid "US cup"
 msgstr ""
 
-#: lib/util-units.php:152
+#: lib/util-units.php:191
 msgid "US pint"
 msgstr ""
 
-#: lib/util-units.php:153
+#: lib/util-units.php:192
 msgid "US quart"
 msgstr ""
 
-#: lib/util-units.php:154
+#: lib/util-units.php:193
 msgid "US gal"
 msgstr ""
 
-#: lib/util-units.php:243
+#: lib/util-units.php:289
 msgid "mg"
 msgstr ""
 
-#: lib/util-units.php:244
+#: lib/util-units.php:290
 msgid "g"
 msgstr ""
 
-#: lib/util-units.php:245
+#: lib/util-units.php:291
 msgid "kg"
 msgstr ""
 
-#: lib/util-units.php:246
+#: lib/util-units.php:292
 msgid "t"
 msgstr ""
 
-#: lib/util-units.php:247
-msgid "ounce"
+#: lib/util-units.php:293
+msgid "ounces"
 msgstr ""
 
-#: lib/util-units.php:248
-msgid "pound"
+#: lib/util-units.php:294
+msgid "pounds"
 msgstr ""
 
-#: lib/util-units.php:249
-msgid "stone"
+#: lib/util-units.php:295
+msgid "stones"
 msgstr ""
 
 #: lib/util.php:563
@@ -12505,40 +12501,40 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:574
+#: wpsso.php:589
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:727
+#: wpsso.php:742
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:734
+#: wpsso.php:749
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:742
+#: wpsso.php:757
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:744
+#: wpsso.php:759
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:756
+#: wpsso.php:771
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:758
+#: wpsso.php:773
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 

@@ -1135,18 +1135,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:ean'                     => 'product_gtin13',
 			 *		'product:expiration_time'         => '',
 			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
-			 *		'product:fluid_volume:units'      => '',
+			 *		'product:fluid_volume:units'      => 'product_fluid_volume_units',
 			 *		'product:gtin14'                  => 'product_gtin14',
 			 *		'product:gtin13'                  => 'product_gtin13',
 			 *		'product:gtin12'                  => 'product_gtin12',
 			 *		'product:gtin8'                   => 'product_gtin8',
 			 *		'product:gtin'                    => 'product_gtin',
 			 *		'product:height:value'            => 'product_height_value',
-			 *		'product:height:units'            => '',
+			 *		'product:height:units'            => 'product_height_units',
 			 *		'product:isbn'                    => 'product_isbn',
 			 *		'product:item_group_id'           => '',
 			 *		'product:length:value'            => 'product_length_value',
-			 *		'product:length:units'            => '',
+			 *		'product:length:units'            => 'product_length_units',
 			 *		'product:material'                => 'product_material',
 			 *		'product:mfr_part_no'             => 'product_mfr_part_no',
 			 *		'product:original_price:amount'   => '',
@@ -1168,21 +1168,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:shipping_cost:amount'    => '',
 			 *		'product:shipping_cost:currency'  => '',
 			 *		'product:shipping_height:value'   => 'product_shipping_height_value',
-			 *		'product:shipping_height:units'   => '',
+			 *		'product:shipping_height:units'   => 'product_shipping_height_units',
 			 *		'product:shipping_length:value'   => 'product_shipping_length_value',
-			 *		'product:shipping_length:units'   => '',
+			 *		'product:shipping_length:units'   => 'product_shipping_length_units',
 			 *		'product:shipping_weight:value'   => 'product_shipping_weight_value',
-			 *		'product:shipping_weight:units'   => '',
+			 *		'product:shipping_weight:units'   => 'product_shipping_weight_units',
 			 *		'product:shipping_width:value'    => 'product_shipping_width_value',
-			 *		'product:shipping_width:units'    => '',
+			 *		'product:shipping_width:units'    => 'product_shipping_width_units',
 			 *		'product:size'                    => 'product_size',
 			 *		'product:size:type'               => 'product_size_type',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
 			 *		'product:weight:value'            => 'product_weight_value',
-			 *		'product:weight:units'            => '',
+			 *		'product:weight:units'            => 'product_weight_units',
 			 *		'product:width:value'             => 'product_width_value',
-			 *		'product:width:units'             => '',
+			 *		'product:width:units'             => 'product_width_units',
 			 *	)
 			 */
 			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Use a custom value if one is available - ignore empty strings and 'none'.
 				 */
-				if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && $md_opts[ $md_key ] !== '' ) {
+				if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && '' !== $md_opts[ $md_key ] ) {
 
 					if ( $md_opts[ $md_key ] === 'none' ) {
 
@@ -1216,21 +1216,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						unset( $mt_og[ $mt_name ] );
 
 					/**
-					 * Check for meta data and meta tags that require a unit value.
-					 *
-					 * Example:
-					 *
-					 *	'product:length:value'          => 'product_length_value',
-					 *	'product:width:value'           => 'product_width_value',
-					 *	'product:height:value'          => 'product_height_value',
-					 *	'product:fluid_volume:value'    => 'product_fluid_volume_value',
-					 *	'product:weight:value'          => 'product_weight_value',
-					 *	'product:shipping_length:value' => 'product_shipping_length_value',
-					 *	'product:shipping_width:value'  => 'product_shipping_width_value',
-					 *	'product:shipping_height:value' => 'product_shipping_height_value',
-					 *	'product:shipping_weight:value' => 'product_shipping_weight_value',
+					 * Check for meta tags that require a unit value and may need to be converted.
 					 */
-					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+					} elseif ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1239,30 +1227,50 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
 
-						$mt_units = $mt_match[ 1 ] . ':units';
+						/**
+						 * Check if the value meta tag needs a units meta tag.
+						 */
+						$mt_units_name = $mt_match[ 1 ] . ':units';
 
-						if ( $this->p->debug->enabled ) {
+						if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
 
-							$this->p->debug->log( 'checking for ' . $mt_units . ' unit text' );
-						}
+							$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
 
-						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
+							$mt_og[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
 
-							if ( $unit_text = WpssoSchema::get_option_unit_text(  $md_key ) ) {
+							if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
+									$this->p->debug->log( $mt_units_name . ' from metadata = ' . $md_opts[ $md_units_key ] );
 								}
 
-								$mt_og[ $mt_units ] = $unit_text;
+								$mt_og[ $mt_units_name ] = $md_opts[ $md_units_key ];
+							}
+
+							/**
+							 * Check if we need to convert the value.
+							 */
+							if ( $mt_og[ $mt_units_name ] !== $unit_text ) {
+
+								$unit_value = WpssoUtilUnits::convert( $mt_og[ $mt_name ], $unit_text, $mt_og[ $mt_units_name ] );
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'converted ' . $mt_og[ $mt_name ] . ' ' .
+										$mt_og[ $mt_units_name ] . ' to ' . $unit_value . ' ' . $unit_text );
+								}
+
+								$mt_og[ $mt_name ] = $unit_value;
+
+								$mt_og[ $mt_units_name ] = $unit_text;
 							}
 						}
 
 					/**
-					 * Do not define units by themselves - define units when we define the value.
+					 * Do not define units by themselves - define the units meta tag when we define the value.
 					 */
-					} elseif ( preg_match( '/_units$/', $md_key ) ) {
+					} elseif ( false !== strpos( $mt_name, ':units' ) ) {
 
 						continue;	// Get the next meta data key.
 

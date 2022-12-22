@@ -722,7 +722,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Net Fl. Volume', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net fluid volume', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net fluid volume (in %s), as opposed to the shipping or packaged fluid volume used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_fluid_volume_value' ) ),
+						'desc'  => _x( 'a product net fluid volume, as opposed to the shipping or packaged fluid volume used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
@@ -757,7 +757,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_height_value' => array(
 						'label' => _x( 'Product Net Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net height', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net height (in %s), as opposed to the shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_height_value' ) ),
+						'desc'  => _x( 'a product net height, as opposed to the shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_isbn' => array(
 						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -768,7 +768,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_length_value' => array(
 						'label' => _x( 'Product Net Len. / Depth', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net length or depth', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net length or depth (in %s), as opposed to the shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_length_value' ) ),
+						'desc'  => _x( 'a product net length or depth, as opposed to the shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
@@ -812,22 +812,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_shipping_height_value' => array(
 						'label' => _x( 'Product Shipping Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping height', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product shipping or packaged height (in %s) used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_shipping_height_value' ) ),
+						'desc'  => _x( 'a product shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_shipping_length_value' => array(
 						'label' => _x( 'Product Shipping Length', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping length', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product shipping or packaged length (in %s) used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_shipping_length_value' ) ),
+						'desc'  => _x( 'a product shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_shipping_weight_value' => array(
 						'label' => _x( 'Product Shipping Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping weight', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product shipping or packaged weight (in %s) used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_shipping_weight_value' ) ),
+						'desc'  => _x( 'a product shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_shipping_width_value' => array(
 						'label' => _x( 'Product Shipping Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping width', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product shipping or packaged width (in %s) used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_shipping_width_value' ) ),
+						'desc'  => _x( 'a product shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_size' => array(
 						'label' => _x( 'Product Size', 'option label', 'wpsso' ),
@@ -852,12 +852,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_weight_value' => array(
 						'label' => _x( 'Product Net Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net weight', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net weight (in %s), as opposed to the shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_weight_value' ) ),
+						'desc'  => _x( 'a product net weight, as opposed to the shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_width_value' => array(
 						'label' => _x( 'Product Net Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net width', 'tooltip fragment', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product net width (in %s), as opposed to the shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_option_unit_text( 'product_width_value' ) ),
+						'desc'  => _x( 'a product net width, as opposed to the shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
