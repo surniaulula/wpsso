@@ -2594,21 +2594,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public static function get_option_unit_comment( $opt_key ) {
 
-			$schema_units = WpssoSchema::get_schema_units();	// Uses a local cache.
-			$unit_keys    = array_keys( $schema_units );
+			if ( $unit_text = WpssoSchema::get_option_unit_text( $opt_key ) ) {
 
-			if ( false !== strpos( $opt_key, '_value' ) ) {
-
-				foreach ( $unit_keys as $key ) {
-
-					if ( false !== strpos( $opt_key, '_' . $key . '_value' ) ) {
-
-						if ( $unit_text = WpssoSchema::get_data_unit_text( $key ) ) {	// Uses a local cache.
-
-							return ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
-						}
-					}
-				}
+				return ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 			}
 
 			return '';

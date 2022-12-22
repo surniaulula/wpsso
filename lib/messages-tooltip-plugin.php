@@ -744,7 +744,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$text = __( 'You may enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ),
+					$text .= sprintf( __( 'The product attribute name allows %s to request an attribute value from your e-commerce plugin.', 'wpsso' ),
 						$this->p_name ) . ' ';
 
 					$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) ) . ' ';

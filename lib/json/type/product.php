@@ -143,7 +143,6 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 * Example $names array:
 			 *
 			 * array(
-			 * 	'depth'        => 'product:depth:value',
 			 * 	'fluid_volume' => 'product:fluid_volume:value',
 			 * 	'height'       => 'product:height:value',
 			 * 	'length'       => 'product:length:value',
@@ -152,7 +151,6 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 * );
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
-				'depth'        => 'product:depth:value',
 				'fluid_volume' => 'product:fluid_volume:value',
 				'height'       => 'product:height:value',
 				'length'       => 'product:length:value',

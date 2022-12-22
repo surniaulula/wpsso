@@ -1220,13 +1220,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 *
 					 * Example:
 					 *
-					 *	'product:fluid_volume:value' => 'product_fluid_volume_value',
-					 *	'product:height:value'       => 'product_height_value',
-					 *	'product:length:value'       => 'product_length_value',
-					 *	'product:weight:value'       => 'product_weight_value',
-					 *	'product:width:value'        => 'product_width_value',
+					 *	'product:length:value'          => 'product_length_value',
+					 *	'product:width:value'           => 'product_width_value',
+					 *	'product:height:value'          => 'product_height_value',
+					 *	'product:fluid_volume:value'    => 'product_fluid_volume_value',
+					 *	'product:weight:value'          => 'product_weight_value',
+					 *	'product:shipping_length:value' => 'product_shipping_length_value',
+					 *	'product:shipping_width:value'  => 'product_shipping_width_value',
+					 *	'product:shipping_height:value' => 'product_shipping_height_value',
+					 *	'product:shipping_weight:value' => 'product_shipping_weight_value',
 					 */
-					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) && preg_match( '/^[^_]+_(.*)_value$/', $md_key, $unit_match ) ) {
+					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1244,7 +1248,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
 
-							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
+							if ( $unit_text = WpssoSchema::get_option_unit_text(  $md_key ) ) {
 
 								if ( $this->p->debug->enabled ) {
 

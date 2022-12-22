@@ -51,14 +51,14 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'mm' => __( 'mm', 'wpsso' ),	// Millimeter.
-					'cm' => __( 'cm', 'wpsso' ),	// Centimeter.
-					'm'  => __( 'm', 'wpsso' ),	// Meter.
-					'km' => __( 'km', 'wpsso' ),	// Kilometer.
-					'in' => __( 'in', 'wpsso' ),	// Inch.
-					'ft' => __( 'ft', 'wpsso' ),	// Foot.
-					'yd' => __( 'yd', 'wpsso' ),	// Yard.
-					'mi' => __( 'mi', 'wpsso' ),	// Mile.
+					'mm' => __( 'mm', 'wpsso' ),		// Millimeter.
+					'cm' => __( 'cm', 'wpsso' ),		// Centimeter.
+					'm'  => __( 'm', 'wpsso' ),		// Meter.
+					'km' => __( 'km', 'wpsso' ),		// Kilometer.
+					'in' => __( 'inches', 'wpsso' ),	// Inch.
+					'ft' => __( 'feet', 'wpsso' ),		// Foot.
+					'yd' => __( 'yards', 'wpsso' ),		// Yard.
+					'mi' => __( 'miles', 'wpsso' ),		// Mile.
 				);
 			}
 

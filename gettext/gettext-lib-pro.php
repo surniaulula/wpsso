@@ -297,7 +297,7 @@ _x( 'Product Size', 'option label', 'wpsso' );
 _x( 'Product Size Type', 'option label', 'wpsso' );
 _x( 'Product Age Group', 'option label', 'wpsso' );
 _x( 'Product Adult Oriented', 'option label', 'wpsso' );
-_x( 'Product Net Length / Depth', 'option label', 'wpsso' );
+_x( 'Product Net Len. / Depth', 'option label', 'wpsso' );
 _x( 'Product Net Width', 'option label', 'wpsso' );
 _x( 'Product Net Height', 'option label', 'wpsso' );
 _x( 'Product Net Fl. Volume', 'option label', 'wpsso' );

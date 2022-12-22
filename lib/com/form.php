@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			if ( empty( $event_args[ 'is_sorted' ] ) ) {
+			if ( 'sorted' !== $is_assoc && empty( $event_args[ 'is_sorted' ] ) ) {
 
 				uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 			}

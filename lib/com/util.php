@@ -2259,10 +2259,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
 
 				/**
-				 * Product measurements and weight.
+				 * Product net dimensions and weight.
 				 */
-				$mt_pre . ':depth:value'        => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':depth:units'        => null,	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':fluid_volume:value' => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':fluid_volume:units' => null,	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':height:value'       => null,	// Non-standard / internal meta tag.

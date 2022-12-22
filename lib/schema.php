@@ -2136,7 +2136,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				$postal_address = array();
 
-				if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
+				if ( self::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
 					'streetAddress'       => 'schema_review_item_place_street_address',
 					'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
 					'addressLocality'     => 'schema_review_item_place_city',
@@ -2145,18 +2145,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'addressCountry'      => 'schema_review_item_place_country',	// Alpha2 country code.
 				) ) ) {
 
-					$json_data[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
+					$json_data[ 'address' ] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
 				}
 
 				if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
 
-					WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+					self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 						'priceRange' => 'schema_review_item_place_price_range',
 					) );
 
 					if ( $wpsso->schema->is_schema_type_child( $type_id, 'food.establishment' ) ) {
 
-						WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+						self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 							'servesCuisine' => 'schema_review_item_place_cuisine',
 						) );
 					}
@@ -3345,6 +3345,70 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
+		 */
+		public static function get_unit_text( $unit_key ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $unit_key ] ) ) {
+
+				return $local_cache[ $unit_key ];
+			}
+
+			$schema_units = self::get_schema_units();	// Uses a local cache.
+
+			if ( isset( $schema_units[ $unit_key ] ) && is_array( $schema_units[ $unit_key ] ) ) {	// Just in case.
+
+				foreach ( $schema_units[ $unit_key ] as $prop_name => $prop_data ) {
+	
+					if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
+	
+						return $local_cache[ $unit_key ] = $prop_data[ 'unitText' ];
+					}
+				}
+			}
+
+			return $local_cache[ $unit_key ] = '';
+		}
+
+		public static function get_option_unit_text( $opt_key ) {
+
+			$schema_units = self::get_schema_units();	// Uses a local cache.
+
+			if ( is_array( $schema_units ) ) {	// Just in case.
+
+				$unit_keys = array_keys( $schema_units );
+
+				if ( false !== strpos( $opt_key, '_value' ) ) {	// Just in case.
+
+					foreach ( $unit_keys as $unit_key ) {
+
+						/**
+						 * $unit_key = 'length' matched 'plugin_shipping_length_value', 'plugin_length_value', etc.
+						 */
+						if ( false !== strpos( $opt_key, '_' . $unit_key . '_value' ) ) {
+	
+							if ( $unit_text = self::get_unit_text( $unit_key ) ) {	// Uses a local cache.
+	
+								return $unit_text;
+							}
+						}
+					}
+				}
+			}
+
+			return '';
+		}
+
+		/**
 		 * QuantitativeValue (width, height, length, depth, weight).
 		 *
 		 * unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
@@ -3352,7 +3416,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Example $names array:
 		 *
 		 * array(
-		 * 	'depth'        => 'product:depth:value',
 		 * 	'fluid_volume' => 'product:fluid_volume:value',
 		 * 	'height'       => 'product:height:value',
 		 * 	'length'       => 'product:length:value',
@@ -3422,56 +3485,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ $prop_name ][] = $prop_data;
 				}
 			}
-		}
-
-		/**
-		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
-		 */
-		public static function get_data_unit_text( $key ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $key ] ) ) {
-
-				return $local_cache[ $key ];
-			}
-
-			$schema_units = self::get_schema_units();	// Uses a local cache.
-
-			if ( empty( $schema_units[ $key ] ) || ! is_array( $schema_units[ $key ] ) ) {
-
-				return $local_cache[ $key ] = '';
-			}
-
-			/**
-			 * Example array:
-			 *
-			 *	$schema_units[ 'depth' ] = array(
-			 *		'depth' => array(
-			 *			'@context' => 'https://schema.org',
-			 *			'@type'    => 'QuantitativeValue',
-			 *			'name'     => 'Depth',
-			 *			'unitText' => 'cm',
-			 *			'unitCode' => 'CMT',
-			 *		),
-			 *	),
-			 */
-			foreach ( $schema_units[ $key ] as $prop_name => $prop_data ) {
-
-				if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
-
-					return $local_cache[ $key ] = $prop_data[ 'unitText' ];
-				}
-			}
-
-			return $local_cache[ $key ] = '';
 		}
 
 		/**

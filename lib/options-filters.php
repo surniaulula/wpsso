@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_gtin':
 				case 'product_height_value':		// Product Net Height.
 				case 'product_isbn':			// Product ISBN.
-				case 'product_length_value':		// Product Net Length / Depth.
+				case 'product_length_value':		// Product Net Len. / Depth.
 				case 'product_min_advert_price':	// Product Min Advert Price.
 				case 'product_price':			// Product Price.
 				case 'product_shipping_height_value':	// Product Shipping Height.

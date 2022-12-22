@@ -1037,7 +1037,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Net Length / Depth', 'option label', 'wpsso' ),
+					'label'    => _x( 'Product Net Len. / Depth', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_length_value',
 					'content'  => $form->get_no_input( 'product_length_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_length_value' ),

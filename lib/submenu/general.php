@@ -187,6 +187,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'og_def_currency' ) .
 						'<td>' . $this->form->get_select( 'og_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
+					$table_rows[ 'og_def_dimension_units' ] = '' .
+						$this->form->get_th_html( _x( 'Default Dimension Units', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_dimension_units' ) .
+						'<td>' . $this->form->get_select( 'og_def_dimension_units', WpssoUtilUnits::get_dimension_units(),
+							$css_class = 'short', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+
+					$table_rows[ 'og_def_fluid_volume_units' ] = '' .
+						$this->form->get_th_html( _x( 'Default Fluid Volume Units', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_fluid_volume_units' ) .
+						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', WpssoUtilUnits::get_fluid_volume_units(),
+							$css_class = 'short', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+
+					$table_rows[ 'og_def_weight_units' ] = '' .
+						$this->form->get_th_html( _x( 'Default Weight Units', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_weight_units' ) .
+						'<td>' . $this->form->get_select( 'og_def_weight_units', WpssoUtilUnits::get_weight_units(),
+							$css_class = 'short', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+
 					break;
 
 				case 'og-content':

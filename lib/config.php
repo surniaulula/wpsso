@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.14.0-dev.6',	// Plugin version.
-					'opt_version' => '928',		// Increment when changing default option values.
+					'version'     => '13.14.0-dev.7',	// Plugin version.
+					'opt_version' => '929',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1297,12 +1297,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'og_def_img_id'            => '',					// Default Image ID.
-					'og_def_img_id_lib'        => 'wp',					// Default Image ID Library.
-					'og_def_img_url'           => '',					// Default Image URL.
-					'og_def_currency'          => 'USD',					// Default Currency.
-					'og_def_country'           => 'none',					// Default Country.
-					'og_def_timezone'          => 'UTC',					// Default Timezone.
+					'og_def_img_id'             => '',					// Default Image ID.
+					'og_def_img_id_lib'         => 'wp',					// Default Image ID Library.
+					'og_def_img_url'            => '',					// Default Image URL.
+					'og_def_currency'           => 'USD',					// Default Currency.
+					'og_def_country'            => 'none',					// Default Country.
+					'og_def_dimension_units'    => 'cm',					// Default Dimension Units.
+					'og_def_fluid_volume_units' => 'ml',					// Default Fluid Volume Units.
+					'og_def_timezone'           => 'UTC',					// Default Timezone.
+					'og_def_weight_units'       => 'kg',					// Default Weight Units.
 					'og_img_width'             => 1200,
 					'og_img_height'            => 630,
 					'og_img_crop'              => 1,
@@ -4291,6 +4294,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'CMT',
 						),
 					),
+					'fluid_volume' => array(		// Unitcode index value.
+						'additionalProperty' => array(	// Schema property name.
+							'@context'   => 'https://schema.org',
+							'@type'      => 'PropertyValue',
+							'propertyID' => 'fluid_volume',
+							'name'       => 'Fluid Volume',
+							'unitText'   => 'ml',
+							'unitCode'   => 'MLT',
+						),
+					),
 					'height' => array(		// Unitcode index value.
 						'height' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
@@ -4324,16 +4337,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'@type'      => 'PropertyValue',
 							'propertyID' => 'size',
 							'name'       => 'Size',
-						),
-					),
-					'fluid_volume' => array(		// Unitcode index value.
-						'additionalProperty' => array(	// Schema property name.
-							'@context'   => 'https://schema.org',
-							'@type'      => 'PropertyValue',
-							'propertyID' => 'fluid_volume',
-							'name'       => 'Fluid Volume',
-							'unitText'   => 'ml',
-							'unitCode'   => 'MLT',
 						),
 					),
 					'weight' => array(		// Unitcode index value.

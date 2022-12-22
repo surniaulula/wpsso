@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_size_type'             => 'none',
 					'product_age_group'             => $def_age_group,
 					'product_adult_oriented'        => $def_adult_oriented,
-					'product_length_value'          => '',	// Product Net Length / Depth.
+					'product_length_value'          => '',	// Product Net Len. / Depth.
 					'product_width_value'           => '',	// Product Net Width.
 					'product_height_value'          => '',	// Product Net Height.
 					'product_fluid_volume_value'    => '',	// Product Net Fl. Volume.

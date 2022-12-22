@@ -1723,9 +1723,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					$length = $product->get_length();	// Shipping length.
 
-					if ( is_numeric( $length ) ) {	// Required to ignore undefined values.
+					if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_data_unit_text( 'length' );
+						$unit_text = WpssoSchema::get_unit_text( 'length' );
 
 						$ret[ 0 ] = WpssoUtilWoocommerce::get_dimension( $length, $unit_text );
 
@@ -1743,7 +1743,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_data_unit_text( 'width' );
+						$unit_text = WpssoSchema::get_unit_text( 'width' );
 
 						$ret[ 2 ] = WpssoUtilWoocommerce::get_dimension( $width, $unit_text );
 
@@ -1761,7 +1761,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_data_unit_text( 'height' );
+						$unit_text = WpssoSchema::get_unit_text( 'height' );
 
 						$ret[ 4 ] = WpssoUtilWoocommerce::get_dimension( $height, $unit_text );
 
@@ -1789,9 +1789,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					$weight = $product->get_weight();	// Shipping weight.
 
-					if ( is_numeric( $weight ) ) {	// Required to ignore undefined values.
+					if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
 
-						$unit_text = WpssoSchema::get_data_unit_text( 'weight' );
+						$unit_text = WpssoSchema::get_unit_text( 'weight' );
 
 						$ret[ 6 ] = WpssoUtilWoocommerce::get_weight( $weight, $unit_text );
 
