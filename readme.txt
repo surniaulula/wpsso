@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.1.1
-WC Tested Up To: 7.2.1
+WC Tested Up To: 7.2.2
 Stable Tag: 13.13.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -234,13 +234,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.14.0-dev.6 (2022/12/21)**
+**Version 13.14.0-dev.7 (2022/12/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added new options in the General Settings page:
+		* Default Dimension Units
+		* Default Fluid Volume Units
+		* Default Weight Units
 	* Added support for additional product attributes and custom fields for:
-		* Product Net Length / Depth
+		* Product Net Len. / Depth
 		* Product Net Height
 		* Product Net Weight
 		* Product Net Width
@@ -700,7 +704,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.14.0-dev.6 =
+= 13.14.0-dev.7 =
 
 (2022/12/21) Added support for additional product attributes and custom fields. Removed product depth options, attributes and custom fields.
 
