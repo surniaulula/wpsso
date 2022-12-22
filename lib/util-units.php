@@ -149,8 +149,8 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
 					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
 					'US cup'   => __( 'US cup', 'wpsso' ),		// US cup.
-					'US pt'    => __( 'US pt', 'wpsso' ),		// US pint.
-					'US qt'    => __( 'US qt', 'wpsso' ),		// US quart.
+					'US pt'    => __( 'US pint', 'wpsso' ),		// US pint.
+					'US qt'    => __( 'US quart', 'wpsso' ),	// US quart.
 					'US gal'   => __( 'US gal', 'wpsso' ),		// US gallon.
 				);
 			}
@@ -240,14 +240,13 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'mg'  => __( 'mg', 'wpsso' ),	// Milligram.
-					'g'   => __( 'g', 'wpsso' ),	// Gram.
-					'kg'  => __( 'kg', 'wpsso' ),	// Kilogram.
-					't'   => __( 't', 'wpsso' ),	// Metric Ton.
-					'oz'  => __( 'oz', 'wpsso' ),	// Ounce.
-					'lb'  => __( 'lb', 'wpsso' ),	// Pound.
-					'lbs' => __( 'lbs', 'wpsso' ),	// Pound.
-					'st'  => __( 'st', 'wpsso' ),	// Stone.
+					'mg'  => __( 'mg', 'wpsso' ),		// Milligram.
+					'g'   => __( 'g', 'wpsso' ),		// Gram.
+					'kg'  => __( 'kg', 'wpsso' ),		// Kilogram.
+					't'   => __( 't', 'wpsso' ),		// Metric Ton.
+					'oz'  => __( 'ounce', 'wpsso' ),	// Ounce.
+					'lb'  => __( 'pound', 'wpsso' ),	// Pound.
+					'st'  => __( 'stone', 'wpsso' ),	// Stone.
 				);
 			}
 

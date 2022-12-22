@@ -33,21 +33,39 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				/**
 				 * SSO > General Settings > Site Information tab.
 				 */
-				case 'tooltip-og_def_currency':		// Default Currency.
-
-					$text = __( 'The default currency for money related options (product price, job salary, etc.).', 'wpsso' );
-
-					break;
-
-				case 'tooltip-og_def_country':		// Default Country.
+				case 'tooltip-og_def_country':			// Default Country.
 
 					$text = __( 'The default country when entering information about a place or location.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-og_def_timezone':		// Default Timezone.
+				case 'tooltip-og_def_timezone':			// Default Timezone.
 
 					$text = __( 'The default timezone when entering information about a place or location.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_currency':			// Default Currency.
+
+					$text = __( 'The default currency for currency related options (product price, job salary, etc.).', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_dimension_units':		// Default Dimension Units.
+
+					$text = __( 'The default unit for product lengths, widths, and heights.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_fluid_volume_units':	// Default Fluid Volume Units.
+
+					$text = __( 'The default unit for product fluid volumes.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_weight_units':		// Default Weight Units.
+
+					$text = __( 'The default unit for product weights.', 'wpsso' );
 
 					break;
 

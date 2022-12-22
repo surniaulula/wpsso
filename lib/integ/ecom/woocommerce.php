@@ -120,6 +120,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				'description_seed'        => 4,
 				'attached_image_ids'      => 2,
 				'term_image_ids'          => 3,
+				'get_defaults'            => 1,
 				'get_md_defaults'         => 2,
 				'get_post_options'        => 3,
 				'og_seed'                 => 2,
@@ -463,6 +464,27 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			return $image_ids;
+		}
+
+		public function filter_get_defaults( array $defs ) {
+
+			$dimension_unit    = get_option( 'woocommerce_dimension_unit', $default = 'cm' );
+			$fluid_volume_unit = get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' );
+			$weight_unit       = get_option( 'woocommerce_weight_unit', $default = 'kg' );
+
+			/**
+			 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			 */
+			if ( 'lbs' === $weight_unit ) {
+
+				$weight_unit = 'lb';
+			}
+
+			$defs[ 'og_def_dimension_units' ]    = $dimension_unit;		// Default Dimension Units.
+			$defs[ 'og_def_fluid_volume_units' ] = $fluid_volume_unit;	// Default Fluid Volume Units.
+			$defs[ 'og_def_weight_units' ]       = $weight_unit;		// Default Weight Units.
+
+			return $defs;
 		}
 
 		public function filter_get_md_defaults( array $md_defs, array $mod ) {

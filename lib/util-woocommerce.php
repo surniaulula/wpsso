@@ -357,6 +357,9 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 			if ( empty( $from ) ) {
 
+				/**
+				 * Note that both 'lb' and 'lbs' are valid $from values.
+				 */
 				$from = get_option( 'woocommerce_weight_unit', $default = 'kg' );
 			}
 

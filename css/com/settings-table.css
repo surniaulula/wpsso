@@ -787,6 +787,8 @@ table.sucom-settings td select.locale { width:125px; }
 
 table.sucom-settings td select.year { width:125px; }
 
+table.sucom-settings td select.units { width:140px; }
+
 table.sucom-settings td select.medium { width:180px; }
 
 table.sucom-settings td select.site-use { width:200px; }
