@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.14.0-dev.7 (2022/12/22)**
+**Version 14.0.0-dev.8 (2022/12/22)**
 
 * **New Features**
 	* None.
@@ -257,15 +257,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added additional debug messages around the WordPress image_make_intermediate_size() function call.
 	* Added a new `WpssoUtilUnits` class with static methods:
+		* `WpssoUtilUnits::convert_dimension()`
+		* `WpssoUtilUnits::convert_fluid_volume()`
+		* `WpssoUtilUnits::convert_weight()`
 		* `WpssoUtilUnits::get_dimension_label()`
 		* `WpssoUtilUnits::get_dimension_units()`
-		* `WpssoUtilUnits::get_dimension()`
 		* `WpssoUtilUnits::get_fluid_volume_label()`
 		* `WpssoUtilUnits::get_fluid_volume_units()`
-		* `WpssoUtilUnits::get_fluid_volume()`
 		* `WpssoUtilUnits::get_weight_label()`
 		* `WpssoUtilUnits::get_weight_units()`
-		* `WpssoUtilUnits::get_weight()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -704,7 +704,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 13.14.0-dev.7 =
+= 14.0.0-dev.8 =
 
 (2022/12/22) Added new options in the General Settings page. Added support for additional product attributes and custom fields.
 
