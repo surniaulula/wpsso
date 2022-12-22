@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.14.0-dev.7 (2022/12/21)**
+**Version 13.14.0-dev.7 (2022/12/22)**
 
 * **New Features**
 	* None.
@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Default Dimension Units
 		* Default Fluid Volume Units
 		* Default Weight Units
-	* Added support for additional product attributes and custom fields for:
+	* Added support for additional product attributes and custom fields:
 		* Product Net Len. / Depth
 		* Product Net Height
 		* Product Net Weight
@@ -706,7 +706,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 13.14.0-dev.7 =
 
-(2022/12/21) Added support for additional product attributes and custom fields. Removed product depth options, attributes and custom fields.
+(2022/12/22) Added new options in the General Settings page. Added support for additional product attributes and custom fields.
 
 = 13.13.0 =
 
