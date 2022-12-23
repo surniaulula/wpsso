@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-12-23 10:53-0800\n"
+"PO-Revision-Date: 2022-12-23 11:45-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -224,8 +224,6 @@ msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommen
 msgstr "<a href=\"https://validator.w3.org/\">Validateur W3C de balisage</a> - recommandé pour vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
 #: gettext/gettext-html-setup.php:48
-#| msgctxt "html list item"
-#| msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
 msgctxt "html list item"
 msgid "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML Sitemap Validator</a>"
 msgstr "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">Validateur de plan de site XML</a>"
@@ -2320,7 +2318,6 @@ msgid "A"
 msgstr "A"
 
 #: gettext/gettext-lib-config.php:390
-#| msgid "MB"
 msgctxt "option value"
 msgid "B"
 msgstr "B"
@@ -2331,8 +2328,6 @@ msgid "C"
 msgstr "C"
 
 #: gettext/gettext-lib-config.php:392
-#| msgctxt "option value"
-#| msgid "ID"
 msgctxt "option value"
 msgid "D"
 msgstr "D"
@@ -7756,15 +7751,15 @@ msgid "The default currency for currency related options (product price, job sal
 msgstr "La devise par défaut pour les options liées aux devises (prix de produit, salaire de poste, etc.)."
 
 #: lib/messages-tooltip-opengraph.php:56
-msgid "The default unit for product net and shipping lengths, widths, and heights."
+msgid "The default unit for net and shipping lengths, widths, and heights of products."
 msgstr "L'unité par défaut pour les longueurs, largeurs et hauteurs nettes et d'expédition des produits."
 
 #: lib/messages-tooltip-opengraph.php:62
-msgid "The default unit for product net and shipping weights."
+msgid "The default unit for net and shipping weights of products."
 msgstr "L'unité par défaut pour les poids nets et d'expédition des produits."
 
 #: lib/messages-tooltip-opengraph.php:68
-msgid "The default unit for product fluid volumes."
+msgid "The default unit for fluid volumes of products."
 msgstr "L'unité par défaut pour les volumes de fluides des produits."
 
 #: lib/messages-tooltip-opengraph.php:79
@@ -9318,8 +9313,8 @@ msgstr "hauteur nette du produit"
 
 #: lib/messages.php:760
 msgctxt "tooltip fragment"
-msgid "a product net height, as opposed to the shipping or packaged height used for shipping cost calculations"
-msgstr ""
+msgid "a product net height, as opposed to a shipping or packaged height used for shipping cost calculations"
+msgstr "une hauteur nette de produit, contrairement à une hauteur d'expédition ou emballée utilisée pour le calcul des frais d'expédition"
 
 #: lib/messages.php:764
 msgctxt "tooltip fragment"
@@ -9333,8 +9328,8 @@ msgstr "longueur ou profondeur nette du produit"
 
 #: lib/messages.php:771
 msgctxt "tooltip fragment"
-msgid "a product net length or depth, as opposed to the shipping or packaged length used for shipping cost calculations"
-msgstr ""
+msgid "a product net length or depth, as opposed to a shipping or packaged length used for shipping cost calculations"
+msgstr "une longueur ou une profondeur nette de produit, contrairement à une longueur d'expédition ou emballée utilisée pour les calculs des frais d'expédition"
 
 #: lib/messages.php:775
 msgctxt "tooltip fragment"
@@ -9426,7 +9421,7 @@ msgstr "hauteur d'expédition du produit"
 #: lib/messages.php:815
 msgctxt "tooltip fragment"
 msgid "a product shipping or packaged height used for shipping cost calculations"
-msgstr ""
+msgstr "une hauteur d'expédition ou d'emballage de produit, utilisée pour le calcul des frais d'expédition"
 
 #: lib/messages.php:819
 msgctxt "tooltip fragment"
@@ -9436,7 +9431,7 @@ msgstr "longueur d'expédition du produit"
 #: lib/messages.php:820
 msgctxt "tooltip fragment"
 msgid "a product shipping or packaged length used for shipping cost calculations"
-msgstr ""
+msgstr "une longueur d'expédition ou d'emballage de produit utilisée pour le calcul des frais d'expédition"
 
 #: lib/messages.php:824
 msgctxt "tooltip fragment"
@@ -9446,7 +9441,7 @@ msgstr "poids d'expédition du produit"
 #: lib/messages.php:825
 msgctxt "tooltip fragment"
 msgid "a product shipping or packaged weight used for shipping cost calculations"
-msgstr ""
+msgstr "un poids d'expédition ou d'emballage de produit utilisé pour le calcul des frais d'expédition"
 
 #: lib/messages.php:829
 msgctxt "tooltip fragment"
@@ -9456,7 +9451,7 @@ msgstr "largeur d'expédition du produit"
 #: lib/messages.php:830
 msgctxt "tooltip fragment"
 msgid "a product shipping or packaged width used for shipping cost calculations"
-msgstr ""
+msgstr "une largeur d'expédition ou d'emballage de produit utilisée pour le calcul des frais d'expédition"
 
 #: lib/messages.php:834
 msgctxt "tooltip fragment"
@@ -9507,8 +9502,8 @@ msgstr "poids net du produit"
 
 #: lib/messages.php:855
 msgctxt "tooltip fragment"
-msgid "a product net weight, as opposed to the shipping or packaged weight used for shipping cost calculations"
-msgstr ""
+msgid "a product net weight, as opposed to a shipping or packaged weight used for shipping cost calculations"
+msgstr "un poids net de produit, contrairement au poids d'expédition ou d'emballage utilisé pour le calcul des frais d'expédition"
 
 #: lib/messages.php:859
 msgctxt "tooltip fragment"
@@ -9517,8 +9512,8 @@ msgstr "largeur nette du produit"
 
 #: lib/messages.php:860
 msgctxt "tooltip fragment"
-msgid "a product net width, as opposed to the shipping or packaged width used for shipping cost calculations"
-msgstr ""
+msgid "a product net width, as opposed to a shipping or packaged width used for shipping cost calculations"
+msgstr "une largeur nette de produit, contrairement à une largeur d'expédition ou emballée utilisée pour les calculs des frais d'expédition"
 
 #: lib/messages.php:864 lib/messages.php:865
 msgctxt "tooltip fragment"
