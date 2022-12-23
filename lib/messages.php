@@ -720,9 +720,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_fluid_volume_value' => array(
-						'label' => _x( 'Product Net Fl. Volume', 'option label', 'wpsso' ),
-						'name'  => _x( 'product net fluid volume', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product net fluid volume, as opposed to the shipping or packaged fluid volume used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
+						'name'  => _x( 'product fluid volume', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product fluid volume', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),

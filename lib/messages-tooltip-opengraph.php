@@ -53,19 +53,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 				case 'tooltip-og_def_dimension_units':		// Default Dimension Units.
 
-					$text = __( 'The default unit for product lengths, widths, and heights.', 'wpsso' );
+					$text = __( 'The default unit for product net and shipping lengths, widths, and heights.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_weight_units':		// Default Weight Units.
+
+					$text = __( 'The default unit for product net and shipping weights.', 'wpsso' );
 
 					break;
 
 				case 'tooltip-og_def_fluid_volume_units':	// Default Fluid Volume Units.
 
 					$text = __( 'The default unit for product fluid volumes.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-og_def_weight_units':		// Default Weight Units.
-
-					$text = __( 'The default unit for product weights.', 'wpsso' );
 
 					break;
 

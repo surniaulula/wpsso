@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/**
 				 * Must be numeric (blank and zero are ok).
 				 */
-				case 'product_fluid_volume_value':
+				case 'product_fluid_volume_value':	// Product Fluid Volume.
 				case 'product_gtin14':
 				case 'product_gtin13':
 				case 'product_gtin12':

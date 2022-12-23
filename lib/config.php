@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-dev.10',	// Plugin version.
+					'version'     => '14.0.0-b.1',	// Plugin version.
 					'opt_version' => '931',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssowcmd' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCMD',	// Short plugin name.
 					'name'        => 'WPSSO Product Metadata for WooCommerce SEO',
-					'desc'        => 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.',
+					'desc'        => 'MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for WooCommerce products and variations.',
 					'slug'        => 'wpsso-wc-metadata',
 					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
 					'update_auth' => '',		// No premium version.
@@ -1302,10 +1302,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_url'            => '',		// Default Image URL.
 					'og_def_currency'           => 'USD',		// Default Currency.
 					'og_def_country'            => 'none',		// Default Country.
-					'og_def_dimension_units'    => 'cm',		// Default Dimension Units.
-					'og_def_fluid_volume_units' => 'ml',		// Default Fluid Volume Units.
 					'og_def_timezone'           => 'UTC',		// Default Timezone.
+					'og_def_dimension_units'    => 'cm',		// Default Dimension Units.
 					'og_def_weight_units'       => 'kg',		// Default Weight Units.
+					'og_def_fluid_volume_units' => 'ml',		// Default Fluid Volume Units.
 					'og_img_width'              => 1200,
 					'og_img_height'             => 630,
 					'og_img_crop'               => 1,
@@ -1989,8 +1989,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
 					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
 					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
-					'plugin_attr_product_gtin13'             => 'GTIN-13',		// GTIN-13 (EAN) Attribute Name.
-					'plugin_attr_product_gtin12'             => 'GTIN-12',		// GTIN-12 (UPC) Attribute Name.
+					'plugin_attr_product_gtin13'             => 'EAN',		// GTIN-13 (EAN) Attribute Name.
+					'plugin_attr_product_gtin12'             => 'UPC',		// GTIN-12 (UPC) Attribute Name.
 					'plugin_attr_product_gtin8'              => 'GTIN-8',		// GTIN-8 Attribute Name.
 					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
 					'plugin_attr_product_height_value'       => 'Net Height',	// Net Height Attribute Name.
@@ -2022,7 +2022,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => '',	// Product Color Custom Field.
 					'plugin_cf_product_condition'             => '',	// Product Condition Custom Field.
 					'plugin_cf_product_currency'              => '',	// Product Currency Custom Field.
-					'plugin_cf_product_fluid_volume_value'    => '',	// Product Net Fl. Volume Custom Field.
+					'plugin_cf_product_fluid_volume_value'    => '',	// Product Fluid Volume Custom Field.
 					'plugin_cf_product_gtin14'                => '',	// Product GTIN-14 Custom Field.
 					'plugin_cf_product_gtin13'                => '',	// Product GTIN-13 (EAN) Custom Field.
 					'plugin_cf_product_gtin12'                => '',	// Product GTIN-12 (UPC) Custom Field.
@@ -2115,7 +2115,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => 'product_color',
 					'plugin_cf_product_condition'             => 'product_condition',
 					'plugin_cf_product_currency'              => 'product_currency',
-					'plugin_cf_product_fluid_volume_value'    => 'product_fluid_volume_value',	// Product Net Fl. Volume Custom Field.
+					'plugin_cf_product_fluid_volume_value'    => 'product_fluid_volume_value',	// Product Fluid Volume Custom Field.
 					'plugin_cf_product_gtin14'                => 'product_gtin14',
 					'plugin_cf_product_gtin13'                => 'product_gtin13',
 					'plugin_cf_product_gtin12'                => 'product_gtin12',
@@ -2796,7 +2796,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'                 => 'Product Color Custom Field',
 					'plugin_cf_product_condition'             => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'              => 'Product Currency Custom Field',
-					'plugin_cf_product_fluid_volume_value'    => 'Product Net Fl. Volume Custom Field',
+					'plugin_cf_product_fluid_volume_value'    => 'Product Fluid Volume Custom Field',
 					'plugin_cf_product_gtin14'                => 'Product GTIN-14 Custom Field',
 					'plugin_cf_product_gtin13'                => 'Product GTIN-13 (EAN) Custom Field',
 					'plugin_cf_product_gtin12'                => 'Product GTIN-12 (UPC) Custom Field',
@@ -2837,7 +2837,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_brand'              => 'Brand Attribute Name',
 					'plugin_attr_product_color'              => 'Color Attribute Name',
 					'plugin_attr_product_condition'          => 'Condition Attribute Name',
-					'plugin_attr_product_fluid_volume_value' => 'Net Fl. Volume Attribute Name',
+					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute Name',
 					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute Name',
 					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute Name',
 					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute Name',

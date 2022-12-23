@@ -34,9 +34,43 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			}
 		}
 
-		public static function get_unit_text( $mixed_key ) {
+		public static function get_convert( $value, $to, $from = '' ) {
 
-			$type = self::get_unit_type( $mixed_key );
+			$to   = 'lbs' === $to   ? 'lb' : $to;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			$from = 'lbs' === $from ? 'lb' : $from;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+
+			$dimension_units    = self::get_dimension_units();	// Uses a local cache.
+			$fluid_volume_units = self::get_fluid_volume_units();	// Uses a local cache.
+			$weight_units       = self::get_weight_units();		// Uses a local cache.
+
+			if ( isset( $dimension_units[ $to ] ) ) {
+
+				if ( '' === $from || isset( $dimension_units[ $from ] ) ) {
+
+					return self::get_convert_dimension( $value, $to, $from );
+				}
+
+			} elseif ( isset( $fluid_volume_units[ $to ] ) ) {
+
+				if ( '' === $from || isset( $fluid_value_units[ $from ] ) ) {
+
+					return self::get_convert_fluid_value( $value, $to, $from );
+				}
+
+			} elseif ( isset( $weight_units[ $to ] ) ) {
+
+				if ( '' === $from || isset( $weight_units[ $from ] ) ) {
+
+					return self::get_convert_weight( $value, $to, $from );
+				}
+			}
+
+			return false;
+		}
+
+		public static function get_mixed_text( $mixed_key ) {
+
+			$type = self::get_mixed_type( $mixed_key );
 
 			switch( $type ) {
 
@@ -59,9 +93,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return '';
 		}
 
-		public static function get_unit_label( $mixed_key ) {
+		public static function get_mixed_label( $mixed_key ) {
 
-			$type = self::get_unit_type( $mixed_key );
+			$type = self::get_mixed_type( $mixed_key );
 
 			switch( $type ) {
 
@@ -84,7 +118,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return '';
 		}
 
-		public static function get_unit_type( $mixed_key ) {
+		public static function get_mixed_type( $mixed_key ) {
 
 			static $local_cache = array();
 
@@ -121,40 +155,6 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			}
 
 			return $local_cache[ $mixed_key ] = '';
-		}
-
-		public static function convert( $value, $to, $from = '' ) {
-
-			$to   = 'lbs' === $to   ? 'lb' : $to;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
-			$from = 'lbs' === $from ? 'lb' : $from;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
-
-			$dimension_units    = self::get_dimension_units();	// Uses a local cache.
-			$fluid_volume_units = self::get_fluid_volume_units();	// Uses a local cache.
-			$weight_units       = self::get_weight_units();		// Uses a local cache.
-
-			if ( isset( $dimension_units[ $to ] ) ) {
-
-				if ( '' === $from || isset( $dimension_units[ $from ] ) ) {
-
-					return self::convert_dimension( $value, $to, $from );
-				}
-
-			} elseif ( isset( $fluid_volume_units[ $to ] ) ) {
-
-				if ( '' === $from || isset( $fluid_value_units[ $from ] ) ) {
-
-					return self::convert_fluid_value( $value, $to, $from );
-				}
-
-			} elseif ( isset( $weight_units[ $to ] ) ) {
-
-				if ( '' === $from || isset( $weight_units[ $from ] ) ) {
-
-					return self::convert_weight( $value, $to, $from );
-				}
-			}
-
-			return false;
 		}
 
 		/**
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function convert_dimension( $value, $to, $from = '' ) {
+		public static function get_convert_dimension( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$from  = empty( $from ) ? self::get_dimension_text() : $from;
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function convert_fluid_volume( $value, $to, $from = '' ) {
+		public static function get_convert_fluid_volume( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$from  = empty( $from ) ? self::get_fluid_volume_text() : $from;
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function convert_weight( $value, $to, $from = '' ) {
+		public static function get_convert_weight( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$to    = 'lbs' === $to   ? 'lb' : $to;		// WooCommerce uses 'lbs' and WPSSO uses 'lb'.

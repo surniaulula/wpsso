@@ -1249,11 +1249,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 
 							/**
+							 * Since WPSSO Core v14.0.0.
+							 *
 							 * Check if we need to convert the value.
 							 */
 							if ( $mt_og[ $mt_units_name ] !== $unit_text ) {
 
-								$unit_value = WpssoUtilUnits::convert( $mt_og[ $mt_name ], $unit_text, $mt_og[ $mt_units_name ] );
+								$unit_value = WpssoUtilUnits::get_convert( $mt_og[ $mt_name ], $unit_text, $mt_og[ $mt_units_name ] );
 
 								if ( $this->p->debug->enabled ) {
 

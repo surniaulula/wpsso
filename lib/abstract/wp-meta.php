@@ -423,10 +423,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_width_units'           => $def_dimension_units,
 					'product_height_value'          => '',				// Product Net Height.
 					'product_height_units'          => $def_dimension_units,
-					'product_fluid_volume_value'    => '',				// Product Net Fl. Volume.
-					'product_fluid_volume_units'    => $def_fluid_volume_units,
 					'product_weight_value'          => '',				// Product Net Weight.
 					'product_weight_units'          => $def_weight_units,
+					'product_fluid_volume_value'    => '',				// Product Fluid Volume.
+					'product_fluid_volume_units'    => $def_fluid_volume_units,
 					'product_shipping_length_value' => '',				// Product Shipping Length.
 					'product_shipping_length_units' => $def_dimension_units,
 					'product_shipping_width_value'  => '',				// Product Shipping Width.

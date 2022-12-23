@@ -925,8 +925,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 930 ) {
 
 					$opts[ 'og_def_dimension_units' ]    = $defs[ 'og_def_dimension_units' ];
-					$opts[ 'og_def_fluid_volume_units' ] = $defs[ 'og_def_fluid_volume_units' ];
 					$opts[ 'og_def_weight_units' ]       = $defs[ 'og_def_weight_units' ];
+					$opts[ 'og_def_fluid_volume_units' ] = $defs[ 'og_def_fluid_volume_units' ];
 				}
 			}
 

@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 						if ( $count ) {
 						
-							$md_opts[ $md_units_key ] = WpssoUtilUnits::get_unit_text( $md_units_key );
+							$md_opts[ $md_units_key ] = WpssoUtilUnits::get_mixed_text( $md_units_key );
 
 							$md_opts[ $md_units_key . ':disabled' ] = true;
 						}

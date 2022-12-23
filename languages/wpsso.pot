@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.0.0-dev.10\n"
+"Project-Id-Version: WPSSO Core 14.0.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1322,8 +1322,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:135
 msgctxt "plugin description"
 msgid ""
-"GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and "
-"volume for WooCommerce products and variations."
+"MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume "
+"for WooCommerce products and variations."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:136
@@ -2093,7 +2093,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:299
 msgctxt "option label"
-msgid "Product Net Fl. Volume Custom Field"
+msgid "Product Fluid Volume Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:300
@@ -2268,7 +2268,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:334
 msgctxt "option label"
-msgid "Net Fl. Volume Attribute Name"
+msgid "Fluid Volume Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:335
@@ -4361,16 +4361,16 @@ msgctxt "option label"
 msgid "Product Net Height"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:303 lib/messages.php:723
+#: gettext/gettext-lib-pro.php:303 lib/messages.php:853
 #: lib/pro/admin/edit.php:1189 lib/std/admin/edit.php:1067
 msgctxt "option label"
-msgid "Product Net Fl. Volume"
+msgid "Product Net Weight"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:304 lib/messages.php:853
+#: gettext/gettext-lib-pro.php:304 lib/messages.php:723
 #: lib/pro/admin/edit.php:1197 lib/std/admin/edit.php:1076
 msgctxt "option label"
-msgid "Product Net Weight"
+msgid "Product Fluid Volume"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:305 lib/messages.php:818
@@ -6515,23 +6515,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:793
+#: lib/integ/ecom/woocommerce.php:796
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:796
+#: lib/integ/ecom/woocommerce.php:799
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:799
+#: lib/integ/ecom/woocommerce.php:802
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1452
+#: lib/integ/ecom/woocommerce.php:1455
 msgid "World"
 msgstr ""
 
@@ -8439,15 +8439,16 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:56
-msgid "The default unit for product lengths, widths, and heights."
+msgid ""
+"The default unit for product net and shipping lengths, widths, and heights."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:62
-msgid "The default unit for product fluid volumes."
+msgid "The default unit for product net and shipping weights."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:68
-msgid "The default unit for product weights."
+msgid "The default unit for product fluid volumes."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:79
@@ -10349,14 +10350,12 @@ msgstr ""
 
 #: lib/messages.php:724
 msgctxt "tooltip fragment"
-msgid "product net fluid volume"
+msgid "product fluid volume"
 msgstr ""
 
 #: lib/messages.php:725
 msgctxt "tooltip fragment"
-msgid ""
-"a product net fluid volume, as opposed to the shipping or packaged fluid "
-"volume used for shipping cost calculations"
+msgid "a product fluid volume"
 msgstr ""
 
 #: lib/messages.php:729
@@ -11352,7 +11351,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3660
+#: lib/schema.php:3652
 msgid "checking schema properties"
 msgstr ""
 
@@ -11684,12 +11683,12 @@ msgstr ""
 
 #: lib/submenu/general.php:200
 msgctxt "option label"
-msgid "Default Fluid Volume Units"
+msgid "Default Weight Units"
 msgstr ""
 
 #: lib/submenu/general.php:206
 msgctxt "option label"
-msgid "Default Weight Units"
+msgid "Default Fluid Volume Units"
 msgstr ""
 
 #: lib/submenu/general.php:216

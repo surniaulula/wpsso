@@ -3387,29 +3387,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * QuantitativeValue (width, height, length, depth, weight).
+		 * Examples $names array:
 		 *
-		 * unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
-		 *
-		 * Example $names array:
-		 *
-		 * array(
-		 * 	'fluid_volume' => 'product:fluid_volume:value',
-		 * 	'height'       => 'product:height:value',
+		 * $names = array(
 		 * 	'length'       => 'product:length:value',
-		 * 	'weight'       => 'product:weight:value',
 		 * 	'width'        => 'product:width:value',
+		 * 	'height'       => 'product:height:value',
+		 * 	'weight'       => 'product:weight:value',
+		 * 	'fluid_volume' => 'product:fluid_volume:value',
+		 * );
+		 *
+		 * $names = array(
+		 *	'width_px'  => 'og:image:width',
+		 *	'height_px' => 'og:image:height',
 		 * );
 		 */
-		public static function get_data_unit_from_assoc( array $assoc, array $names ) {
-
-			$json_data = array();
-
-			self::add_data_unit_from_assoc( $json_data, $assoc, $names );
-
-			return empty( $json_data ) ? false : $json_data;
-		}
-
 		public static function add_data_unit_from_assoc( array &$json_data, array $assoc, array $names ) {
 
 			$wpsso =& Wpsso::get_instance();

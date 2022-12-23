@@ -143,19 +143,19 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 * Example $names array:
 			 *
 			 * array(
-			 * 	'fluid_volume' => 'product:fluid_volume:value',
-			 * 	'height'       => 'product:height:value',
 			 * 	'length'       => 'product:length:value',
-			 * 	'weight'       => 'product:weight:value',
 			 * 	'width'        => 'product:width:value',
+			 * 	'height'       => 'product:height:value',
+			 * 	'weight'       => 'product:weight:value',
+			 * 	'fluid_volume' => 'product:fluid_volume:value',
 			 * );
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
-				'fluid_volume' => 'product:fluid_volume:value',
-				'height'       => 'product:height:value',
 				'length'       => 'product:length:value',
-				'weight'       => 'product:weight:value',
 				'width'        => 'product:width:value',
+				'height'       => 'product:height:value',
+				'weight'       => 'product:weight:value',
+				'fluid_volume' => 'product:fluid_volume:value',
 			) );
 
 			/**

@@ -1060,15 +1060,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_height_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
 						$form->get_no_select( 'product_height_units', $dimension_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
-				'schema_product_fluid_volume_value' => array(
-					'tr_class' => $type_row_class[ 'product' ],
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product Net Fl. Volume', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_fluid_volume_value',
-					'content'  => $form->get_no_input( 'product_fluid_volume_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
-						$form->get_no_select( 'product_fluid_volume_units', $fluid_volume_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
-				),
 				'schema_product_weight_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
@@ -1077,6 +1068,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_weight_value',
 					'content'  => $form->get_no_input( 'product_weight_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
 						$form->get_no_select( 'product_weight_units', $weight_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
+				),
+				'schema_product_fluid_volume_value' => array(
+					'tr_class' => $type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_fluid_volume_value',
+					'content'  => $form->get_no_input( 'product_fluid_volume_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_fluid_volume_units', $fluid_volume_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_length_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],

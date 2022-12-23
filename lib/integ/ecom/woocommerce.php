@@ -119,6 +119,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$this->disable_options_keys();
 		}
 
+		/**
+		 * Since WPSSO Core v14.0.0.
+		 */
 		public function disable_options_keys() {
 
 			if ( $this->p->debug->enabled ) {
