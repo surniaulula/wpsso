@@ -757,7 +757,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_height_value' => array(
 						'label' => _x( 'Product Net Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net height', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product net height, as opposed to the shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product net height, as opposed to a shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_isbn' => array(
 						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -768,7 +768,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_length_value' => array(
 						'label' => _x( 'Product Net Len. / Depth', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net length or depth', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product net length or depth, as opposed to the shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product net length or depth, as opposed to a shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
@@ -852,12 +852,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_weight_value' => array(
 						'label' => _x( 'Product Net Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net weight', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product net weight, as opposed to the shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product net weight, as opposed to a shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_width_value' => array(
 						'label' => _x( 'Product Net Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net width', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a product net width, as opposed to the shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product net width, as opposed to a shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),

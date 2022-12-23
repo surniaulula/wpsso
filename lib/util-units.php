@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		/**
 		 * Dimensions.
 		 *
-		 * See https://support.google.com/merchants/answer/11018531?hl=en.
+		 * See https://support.google.com/merchants/answer/11018531.
 		 */
 		public static function get_dimension_text() {
 
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		/**
 		 * Weight.
 		 *
-		 * See https://support.google.com/merchants/answer/11018531?hl=en.
+		 * See https://support.google.com/merchants/answer/11018531.
 		 */
 		public static function get_weight_text() {
 

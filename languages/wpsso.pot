@@ -8491,15 +8491,16 @@ msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:56
 msgid ""
-"The default unit for product net and shipping lengths, widths, and heights."
+"The default unit for net and shipping lengths, widths, and heights of "
+"products."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:62
-msgid "The default unit for product net and shipping weights."
+msgid "The default unit for net and shipping weights of products."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:68
-msgid "The default unit for product fluid volumes."
+msgid "The default unit for fluid volumes of products."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:79
@@ -10474,7 +10475,7 @@ msgstr ""
 #: lib/messages.php:760
 msgctxt "tooltip fragment"
 msgid ""
-"a product net height, as opposed to the shipping or packaged height used for "
+"a product net height, as opposed to a shipping or packaged height used for "
 "shipping cost calculations"
 msgstr ""
 
@@ -10491,7 +10492,7 @@ msgstr ""
 #: lib/messages.php:771
 msgctxt "tooltip fragment"
 msgid ""
-"a product net length or depth, as opposed to the shipping or packaged length "
+"a product net length or depth, as opposed to a shipping or packaged length "
 "used for shipping cost calculations"
 msgstr ""
 
@@ -10671,7 +10672,7 @@ msgstr ""
 #: lib/messages.php:855
 msgctxt "tooltip fragment"
 msgid ""
-"a product net weight, as opposed to the shipping or packaged weight used for "
+"a product net weight, as opposed to a shipping or packaged weight used for "
 "shipping cost calculations"
 msgstr ""
 
@@ -10683,7 +10684,7 @@ msgstr ""
 #: lib/messages.php:860
 msgctxt "tooltip fragment"
 msgid ""
-"a product net width, as opposed to the shipping or packaged width used for "
+"a product net width, as opposed to a shipping or packaged width used for "
 "shipping cost calculations"
 msgstr ""
 
