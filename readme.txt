@@ -234,38 +234,59 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-dev.10 (2022/12/22)**
+**Version 14.0.0-b.1 (2022/12/22)**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added new options in the General Settings page:
 		* Default Dimension Units
-		* Default Fluid Volume Units
 		* Default Weight Units
-	* Added support for additional product attributes and custom fields:
+		* Default Fluid Volume Units
+	* Added new Document SSO product options, attributes, and custom fields:
 		* Product Net Len. / Depth
+		* Product Net Width
 		* Product Net Height
 		* Product Net Weight
-		* Product Net Width
-	* Removed product depth options, attributes and custom fields:
+	* Added new Document SSO product options and custom fields:
+		* Product Shipping Length
+		* Product Shipping Width
+		* Product Shipping Height
+		* Product Shipping Weight
+* **Improvements**
+	* Updated the WooCommerce integration module to provide shipping dimensions and weight.
+	* Removed Document SSO product options, attributes, and custom fields:
 		* Product Depth
 		* Product Depth Attribute Name
 		* Product Depth Custom Field
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added additional debug messages around the WordPress image_make_intermediate_size() function call.
 	* Added a new `WpssoUtilUnits` class with static methods:
-		* `WpssoUtilUnits::convert_dimension()`
-		* `WpssoUtilUnits::convert_fluid_volume()`
-		* `WpssoUtilUnits::convert_weight()`
+		* `WpssoUtilUnits::get_convert()`
+		* `WpssoUtilUnits::get_mixed_text()`
+		* `WpssoUtilUnits::get_mixed_label()`
+		* `WpssoUtilUnits::get_mixed_type()`
 		* `WpssoUtilUnits::get_dimension_label()`
 		* `WpssoUtilUnits::get_dimension_units()`
+		* `WpssoUtilUnits::get_convert_dimension()`
 		* `WpssoUtilUnits::get_fluid_volume_label()`
 		* `WpssoUtilUnits::get_fluid_volume_units()`
+		* `WpssoUtilUnits::get_convert_fluid_volume()`
 		* `WpssoUtilUnits::get_weight_label()`
 		* `WpssoUtilUnits::get_weight_units()`
+		* `WpssoUtilUnits::get_convert_weight()`
+	* Updated `WpssoOpenGraph->add_og_type_mt_md()` to convert dimension and weight units.
+	* Renamed `WpssoSchema->get_data_unit_text()` to `WpssoSchema->get_unit_text()`.
+	* Removed `WpssoSchema->get_data_unit_from_assoc()`.
+	* Removed static methods from the `WpssoUtilWoocommerce` class:
+		* `WpssoUtilWoocommerce::get_dimension_label()`.
+		* `WpssoUtilWoocommerce::get_dimension_units()`.
+		* `WpssoUtilWoocommerce::get_dimension()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume_label()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume_units()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume()`.
+		* `WpssoUtilWoocommerce::get_weight_label()`.
+		* `WpssoUtilWoocommerce::get_weight_units()`.
+		* `WpssoUtilWoocommerce::get_weight()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -704,9 +725,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.0.0-dev.10 =
+= 14.0.0-b.1 =
 
-(2022/12/22) Added new options in the General Settings page. Added support for additional product attributes and custom fields.
+(2022/12/22) Added new options in the General Settings page. Added new Document SSO product options, attributes, and custom fields.
 
 = 13.13.0 =
 
