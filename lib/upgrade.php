@@ -921,7 +921,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
 					}
 				}
-				
+
 				if ( $prev_version > 0 && $prev_version <= 930 ) {
 
 					$opts[ 'og_def_dimension_units' ]    = $defs[ 'og_def_dimension_units' ];

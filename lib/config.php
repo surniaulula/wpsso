@@ -2955,6 +2955,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * A Schema enumerated value.
 				 *
+				 * See https://schema.org/EUEnergyEfficiencyEnumeration.
+				 */
+				'energy_efficiency' => array(
+					'none'                                                => '[None]',
+					'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' => 'A+++',
+					'https://schema.org/EUEnergyEfficiencyCategoryA2Plus' => 'A++',
+					'https://schema.org/EUEnergyEfficiencyCategoryA1Plus' => 'A+',
+					'https://schema.org/EUEnergyEfficiencyCategoryA'      => 'A',
+					'https://schema.org/EUEnergyEfficiencyCategoryB'      => 'B',
+					'https://schema.org/EUEnergyEfficiencyCategoryC'      => 'C',
+					'https://schema.org/EUEnergyEfficiencyCategoryD'      => 'D',
+					'https://schema.org/EUEnergyEfficiencyCategoryE'      => 'E',
+					'https://schema.org/EUEnergyEfficiencyCategoryF'      => 'F',
+					'https://schema.org/EUEnergyEfficiencyCategoryG'      => 'G',
+				),
+
+				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/EventAttendanceModeEnumeration.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().

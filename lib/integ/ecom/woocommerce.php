@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				add_action( 'woocommerce_archive_description', array( $this->p->pinterest, 'show_pinterest_img_html' ) );
 			}
-			
+
 			$this->disable_options_keys();
 		}
 

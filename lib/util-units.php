@@ -163,9 +163,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		 * See https://support.google.com/merchants/answer/11018531?hl=en.
 		 */
 		public static function get_dimension_text() {
-			
+
 			$wpsso =& Wpsso::get_instance();
-			
+
 			return isset( $wpsso->options[ 'og_def_dimension_units' ] ) ? $wpsso->options[ 'og_def_dimension_units' ] : 'cm';
 		}
 
@@ -255,9 +255,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		 * Fluid volumes.
 		 */
 		public static function get_fluid_volume_text() {
-			
+
 			$wpsso =& Wpsso::get_instance();
-			
+
 			return isset( $wpsso->options[ 'og_def_fluid_volume_units' ] ) ? $wpsso->options[ 'og_def_fluid_volume_units' ] : 'cm';
 		}
 
@@ -359,9 +359,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		 * See https://support.google.com/merchants/answer/11018531?hl=en.
 		 */
 		public static function get_weight_text() {
-			
+
 			$wpsso =& Wpsso::get_instance();
-			
+
 			$key = isset( $wpsso->options[ 'og_def_weight_units' ] ) ? $wpsso->options[ 'og_def_weight_units' ] : 'cm';
 
 			$key = 'lbs' === $key ? 'lb' : $key;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.

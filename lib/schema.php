@@ -3348,21 +3348,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( is_array( $schema_units ) ) {	// Just in case.
 
 				if ( isset( $schema_units[ $mixed_key ] ) ) {
-				
+
 					$match_key = $mixed_key;
 
 				} else {
-			
+
 					$mixed_key = str_replace( ':', '_', $mixed_key );	// Fix for meta tag names.
 					$unit_keys = array_keys( $schema_units );
 
 					foreach ( $unit_keys as $unit_key ) {
-	
+
 						if ( false !== strpos( $mixed_key, '_' . $unit_key . '_value' ) ||
 							false !== strpos( $mixed_key, '_' . $unit_key . '_units' ) ) {
-		
+
 							$match_key = $unit_key;
-	
+
 							break;
 						}
 					}
@@ -3374,9 +3374,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( is_array( $schema_units[ $match_key ] ) ) {	// Just in case.
 
 					foreach ( $schema_units[ $match_key ] as $prop_name => $prop_data ) {
-		
+
 						if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
-			
+
 							return $local_cache[ $mixed_key ] = $prop_data[ 'unitText' ];
 						}
 					}

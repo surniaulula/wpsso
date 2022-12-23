@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$md_units_key = preg_replace( '/_value$/', '_units', $md_key, $limit = -1, $count );
 
 						if ( $count ) {
-						
+
 							$md_opts[ $md_units_key ] = WpssoUtilUnits::get_mixed_text( $md_units_key );
 
 							$md_opts[ $md_units_key . ':disabled' ] = true;

@@ -1728,10 +1728,11 @@ msgstr ""
 #: gettext/gettext-lib-config.php:262 gettext/gettext-lib-config.php:351
 #: gettext/gettext-lib-config.php:362 gettext/gettext-lib-config.php:370
 #: gettext/gettext-lib-config.php:376 gettext/gettext-lib-config.php:385
-#: gettext/gettext-lib-config.php:389 gettext/gettext-lib-config.php:395
-#: gettext/gettext-lib-config.php:406 gettext/gettext-lib-config.php:411
-#: gettext/gettext-lib-config.php:413 gettext/gettext-lib-config.php:420
-#: gettext/gettext-lib-config.php:427 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:396 gettext/gettext-lib-config.php:400
+#: gettext/gettext-lib-config.php:406 gettext/gettext-lib-config.php:417
+#: gettext/gettext-lib-config.php:422 gettext/gettext-lib-config.php:424
+#: gettext/gettext-lib-config.php:431 gettext/gettext-lib-config.php:438
+#: lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2503,258 +2504,308 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:386
 msgctxt "option value"
-msgid "Mixed"
+msgid "A+++"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:387
 msgctxt "option value"
-msgid "Online"
+msgid "A++"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:388
+msgctxt "option value"
+msgid "A+"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:389
+msgctxt "option value"
+msgid "A"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:390
+msgctxt "option value"
+msgid "B"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:391
+msgctxt "option value"
+msgid "C"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:392
+msgctxt "option value"
+msgid "D"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:393
+msgctxt "option value"
+msgid "E"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:394
+msgctxt "option value"
+msgid "F"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:395
+msgctxt "option value"
+msgid "G"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:397
+msgctxt "option value"
+msgid "Mixed"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:398
+msgctxt "option value"
+msgid "Online"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:399
 msgctxt "option value"
 msgid "Physical Location"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:390 lib/messages-tooltip-meta-schema.php:321
+#: gettext/gettext-lib-config.php:401 lib/messages-tooltip-meta-schema.php:321
 msgctxt "option value"
 msgid "Cancelled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:391
+#: gettext/gettext-lib-config.php:402
 msgctxt "option value"
 msgid "Moved Online"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:392 lib/messages-tooltip-meta-schema.php:324
+#: gettext/gettext-lib-config.php:403 lib/messages-tooltip-meta-schema.php:324
 msgctxt "option value"
 msgid "Postponed"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:393 lib/messages-tooltip-meta-schema.php:327
+#: gettext/gettext-lib-config.php:404 lib/messages-tooltip-meta-schema.php:327
 msgctxt "option value"
 msgid "Rescheduled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:394
+#: gettext/gettext-lib-config.php:405
 msgctxt "option value"
 msgid "Scheduled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:396
+#: gettext/gettext-lib-config.php:407
 msgctxt "option value"
 msgid "Back Order"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:397
+#: gettext/gettext-lib-config.php:408
 msgctxt "option value"
 msgid "Discontinued"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:398
+#: gettext/gettext-lib-config.php:409
 msgctxt "option value"
 msgid "In Stock"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:399
+#: gettext/gettext-lib-config.php:410
 msgctxt "option value"
 msgid "In Store Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:400
+#: gettext/gettext-lib-config.php:411
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:401
+#: gettext/gettext-lib-config.php:412
 msgctxt "option value"
 msgid "Online Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:402
+#: gettext/gettext-lib-config.php:413
 msgctxt "option value"
 msgid "Out Of Stock"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:403
+#: gettext/gettext-lib-config.php:414
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:404
+#: gettext/gettext-lib-config.php:415
 msgctxt "option value"
 msgid "Pre-Sale"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:405
+#: gettext/gettext-lib-config.php:416
 msgctxt "option value"
 msgid "Sold Out"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:407
+#: gettext/gettext-lib-config.php:418
 msgctxt "option value"
 msgid "Damaged"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:408
+#: gettext/gettext-lib-config.php:419
 msgctxt "option value"
 msgid "New"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:409
+#: gettext/gettext-lib-config.php:420
 msgctxt "option value"
 msgid "Refurbished"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:410
+#: gettext/gettext-lib-config.php:421
 msgctxt "option value"
 msgid "Used"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:412
+#: gettext/gettext-lib-config.php:423
 msgctxt "option value"
 msgid "Telecommute (100% Remote)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:414
+#: gettext/gettext-lib-config.php:425
 msgctxt "option value"
 msgid "Invoice Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:415
+#: gettext/gettext-lib-config.php:426
 msgctxt "option value"
 msgid "List Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:416
+#: gettext/gettext-lib-config.php:427
 msgctxt "option value"
 msgid "Manufacturer Suggested Retail Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:417
+#: gettext/gettext-lib-config.php:428
 msgctxt "option value"
 msgid "Minimum Advertised Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:418
+#: gettext/gettext-lib-config.php:429
 msgctxt "option value"
 msgid "Sale Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:419
+#: gettext/gettext-lib-config.php:430
 msgctxt "option value"
 msgid "Suggested Retail Price"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:421
+#: gettext/gettext-lib-config.php:432
 msgctxt "option value"
 msgid "Regular"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:422
+#: gettext/gettext-lib-config.php:433
 msgctxt "option value"
 msgid "Petite"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:423
+#: gettext/gettext-lib-config.php:434
 msgctxt "option value"
 msgid "Plus"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:424
+#: gettext/gettext-lib-config.php:435
 msgctxt "option value"
 msgid "Tall"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:425
+#: gettext/gettext-lib-config.php:436
 msgctxt "option value"
 msgid "Big"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:426
+#: gettext/gettext-lib-config.php:437
 msgctxt "option value"
 msgid "Maternity"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:428
+#: gettext/gettext-lib-config.php:439
 msgctxt "option value"
 msgid "Female"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:429
+#: gettext/gettext-lib-config.php:440
 msgctxt "option value"
 msgid "Male"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:430
+#: gettext/gettext-lib-config.php:441
 msgctxt "option value"
 msgid "Unisex"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:431
+#: gettext/gettext-lib-config.php:442
 msgctxt "option value"
 msgid "Every day"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:432
+#: gettext/gettext-lib-config.php:443
 msgctxt "option value"
 msgid "Every two days"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:433
+#: gettext/gettext-lib-config.php:444
 msgctxt "option value"
 msgid "Every three days"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:434
+#: gettext/gettext-lib-config.php:445
 msgctxt "option value"
 msgid "Every four days"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:435
+#: gettext/gettext-lib-config.php:446
 msgctxt "option value"
 msgid "Every five days"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:436
+#: gettext/gettext-lib-config.php:447
 msgctxt "option value"
 msgid "Every six days"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:437
+#: gettext/gettext-lib-config.php:448
 msgctxt "option value"
 msgid "Every week"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:438
+#: gettext/gettext-lib-config.php:449
 msgctxt "option value"
 msgid "Every two weeks"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:439
+#: gettext/gettext-lib-config.php:450
 msgctxt "option value"
 msgid "Development and Up"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:440
+#: gettext/gettext-lib-config.php:451
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:441
+#: gettext/gettext-lib-config.php:452
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:442
+#: gettext/gettext-lib-config.php:453
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:443
+#: gettext/gettext-lib-config.php:454
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""

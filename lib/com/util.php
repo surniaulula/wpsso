@@ -4150,7 +4150,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$opt_label = _x( $opt_label, 'option label', $text_domain );
 			}
-			
+
 			self::natasort( $opts );
 
 			return $opts;
