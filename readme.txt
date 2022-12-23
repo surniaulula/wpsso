@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-b.1 (2022/12/22)**
+**Version 14.0.0-b.1 (2022/12/23)**
 
 * **New Features**
 	* Added new options in the General Settings page:
@@ -727,7 +727,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.0.0-b.1 =
 
-(2022/12/22) Added new options in the General Settings page. Added new Document SSO product options, attributes, and custom fields.
+(2022/12/23) Added new options in the General Settings page. Added new Document SSO product options, attributes, and custom fields.
 
 = 13.13.0 =
 
