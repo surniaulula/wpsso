@@ -3330,22 +3330,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function get_schema_units() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				$wpsso =& Wpsso::get_instance();
-
-				$local_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
-			}
-
-			return $local_cache;
-		}
-
 		/**
-		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
+		 * Returns a https://schema.org/unitText value ('cm', 'ml', or 'kg').
 		 */
 		public static function get_unit_text( $mixed_key ) {
 
@@ -3356,7 +3342,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[ $mixed_key ];
 			}
 
-			$schema_units = self::get_schema_units();	// Uses a local cache.
+			$schema_units = WpssoConfig::get_schema_units();	// Uses a local cache.
 
 			$match_key = null;
 
@@ -3369,22 +3355,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} else {
 			
 					$mixed_key = str_replace( ':', '_', $mixed_key );	// Fix for meta tag names.
+					$unit_keys = array_keys( $schema_units );
 
-					if ( false !== strpos( $mixed_key, '_value' ) ) {
-					
-						$unit_keys = array_keys( $schema_units );
-
-						foreach ( $unit_keys as $unit_key ) {
+					foreach ( $unit_keys as $unit_key ) {
 	
-							/**
-							 * $unit_key = 'length' matches 'plugin_shipping_length_value', 'plugin_length_value', etc.
-							 */
-							if ( false !== strpos( $mixed_key, '_' . $unit_key . '_value' ) ) {
+						if ( false !== strpos( $mixed_key, '_' . $unit_key . '_value' ) ||
+							false !== strpos( $mixed_key, '_' . $unit_key . '_units' ) ) {
 		
-								$match_key = $unit_key;
+							$match_key = $unit_key;
 	
-								break;
-							}
+							break;
 						}
 					}
 				}
@@ -3440,7 +3420,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$schema_units = self::get_schema_units();	// Uses a local cache.
+			$schema_units = WpssoConfig::get_schema_units();	// Uses a local cache.
 
 			foreach ( $names as $key => $key_name ) {
 

@@ -425,9 +425,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function count_identical_sizes( $size_name, $attachment_id = false ) {
 
-			$size_info   = $this->get_size_info( $size_name, $attachment_id );	// Uses a local static cache.
+			$count = 0;
+
+			$size_info = $this->get_size_info( $size_name, $attachment_id );	// Uses a local static cache.
+
 			$image_sizes = $this->get_image_sizes( $attachment_id );
-			$count       = 0;
 
 			foreach ( $image_sizes as $key => $arr ) {
 

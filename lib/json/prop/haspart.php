@@ -382,8 +382,10 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 				}
 
 				$prop_name = $added_script_ids[ $single_id ];
-				$replace   = '<!-- json script ' . $single_id . ' added to ' . $prop_name . ' and commented -->';
-				$count     = null;
+
+				$replace = '<!-- json script ' . $single_id . ' added to ' . $prop_name . ' and commented -->';
+
+				$count  = null;
 
 				if ( 0 === strpos( $single_id, 'id:' ) ) {
 

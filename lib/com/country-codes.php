@@ -1273,6 +1273,7 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 		public static function get( $key = '' ) {
 
 			if ( empty( $key ) ) {
+
 				return self::$codes;
 			}
 
@@ -1281,11 +1282,13 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 				foreach ( self::$countries as $name => $arr ) {
 
 					if ( isset( $arr[ $key ] ) ) {
+
 						self::$codes[ $key ][ $arr[ $key ] ] = $name;
 					}
 				}
 
 				if ( ! isset( self::$codes[ $key ] ) ) {	// Just in case.
+
 					self::$codes[ $key ] = false;
 				}
 			}

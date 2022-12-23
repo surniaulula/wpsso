@@ -309,9 +309,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_reading_mins       = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib         = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
 				$def_currency           = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
-				$def_dimension_units    = isset( $opts[ 'og_def_dimension_units' ] ) ? $opts[ 'og_def_dimension_units' ] : 'cm';
-				$def_fluid_volume_units = isset( $opts[ 'og_def_fluid_volume_units' ] ) ? $opts[ 'og_def_fluid_volume_units' ] : 'ml';
-				$def_weight_units       = isset( $opts[ 'og_def_weight_units' ] ) ? $opts[ 'og_def_weight_units' ] : 'kg';
+				$def_dimension_units    = WpssoUtilUnits::get_dimension_text();
+				$def_fluid_volume_units = WpssoUtilUnits::get_fluid_volume_text();
+				$def_weight_units       = WpssoUtilUnits::get_weight_text();
 				$def_article_section    = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
 				$def_adult_oriented     = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
 				$def_age_group          = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
@@ -892,7 +892,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/**
 			 * Maybe renamed some option keys.
 			 */
-			$version_keys = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext );
+			$mod = $this->get_mod( $obj_id );
+
+			$version_keys = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
 
 			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
@@ -957,7 +959,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
+			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts, $mod );
 
 			/**
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').

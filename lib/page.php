@@ -1709,9 +1709,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$count = null;
 
-			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, -1, $count );
+			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, $limit = -1, $count );
 
-			if ( $count > 0 ) {
+			if ( $count ) {
 
 				if ( $this->p->debug->enabled ) {
 

@@ -219,8 +219,23 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					/**
 					 * Get first element of $values array.
 					 */
-					$md_opts[ $md_key ]               = reset( $values );
+					$md_opts[ $md_key ] = reset( $values );
+
 					$md_opts[ $md_key . ':disabled' ] = true;
+
+					if ( false !== strpos( $md_key, '_value' ) ) {
+
+						$count = null;
+
+						$md_units_key = preg_replace( '/_value$/', '_units', $md_key, $limit = -1, $count );
+
+						if ( $count ) {
+						
+							$md_opts[ $md_units_key ] = WpssoUtilUnits::get_unit_text( $md_units_key );
+
+							$md_opts[ $md_units_key . ':disabled' ] = true;
+						}
+					}
 
 					if ( $this->p->debug->enabled ) {
 
@@ -257,7 +272,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					 */
 					foreach ( $values as $num => $val ) {
 
-						$md_opts[ $md_key . '_' . $num ]               = $val;
+						$md_opts[ $md_key . '_' . $num ] = $val;
+
 						$md_opts[ $md_key . '_' . $num . ':disabled' ] = true;
 					}
 				}

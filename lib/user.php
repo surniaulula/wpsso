@@ -1755,7 +1755,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$count     = 0;
+			$count = 0;
+
 			$users_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
 
 			foreach ( $users_ids as $id ) {
@@ -1862,7 +1863,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$count   = 0;
+			$count = 0;
+
 			$blog_id = get_current_blog_id();
 
 			while ( $users_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.

@@ -34,13 +34,99 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			}
 		}
 
+		public static function get_unit_text( $mixed_key ) {
+
+			$type = self::get_unit_type( $mixed_key );
+
+			switch( $type ) {
+
+				case 'dimension':
+				case 'length':
+				case 'width':
+				case 'height':
+
+					return self::get_dimension_text();
+
+				case 'fluid_volume':
+
+					return self::get_fluid_volume_text();
+
+				case 'weight':
+
+					return self::get_weight_text();
+			}
+
+			return '';
+		}
+
+		public static function get_unit_label( $mixed_key ) {
+
+			$type = self::get_unit_type( $mixed_key );
+
+			switch( $type ) {
+
+				case 'dimension':
+				case 'length':
+				case 'width':
+				case 'height':
+
+					return self::get_dimension_label();
+
+				case 'fluid_volume':
+
+					return self::get_fluid_volume_label();
+
+				case 'weight':
+
+					return self::get_weight_label();
+			}
+
+			return '';
+		}
+
+		public static function get_unit_type( $mixed_key ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $mixed_key ] ) ) {
+
+				return $local_cache[ $mixed_key ];
+			}
+
+			$count     = null;
+			$match_key = str_replace( ':', '_', $mixed_key );	// Fix for meta tag names.
+			$match_key = preg_replace( '/_(value|units)$/', '_', $match_key, $limit = -1, $count );
+
+			switch( $match_key ) {
+
+				case 'dimension':
+				case 'length':
+				case 'width':
+				case 'height':
+				case ( false !== strpos( $match_key, '_length_' ) ? true : false );
+				case ( false !== strpos( $match_key, '_width_' ) ? true : false );
+				case ( false !== strpos( $match_key, '_height_' ) ? true : false );
+
+					return $local_cache[ $mixed_key ] = 'dimension';
+
+				case 'fluid_volume':
+				case ( false !== strpos( $match_key, '_fluid_volume_' ) ? true : false );
+
+					return $local_cache[ $mixed_key ] = 'fluid_volume';
+
+				case 'weight':
+				case ( false !== strpos( $match_key, '_weight_' ) ? true : false );
+
+					return $local_cache[ $mixed_key ] = 'weight';
+			}
+
+			return $local_cache[ $mixed_key ] = '';
+		}
+
 		public static function convert( $value, $to, $from = '' ) {
 
-			/**
-			 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
-			 */
-			$to   = 'lbs' === $to   ? 'lb' : $to;
-			$from = 'lbs' === $from ? 'lb' : $from;
+			$to   = 'lbs' === $to   ? 'lb' : $to;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			$from = 'lbs' === $from ? 'lb' : $from;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
 
 			$dimension_units    = self::get_dimension_units();	// Uses a local cache.
 			$fluid_volume_units = self::get_fluid_volume_units();	// Uses a local cache.
@@ -68,7 +154,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 				}
 			}
 
-			return $value;
+			return false;
 		}
 
 		/**
@@ -76,8 +162,16 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		 *
 		 * See https://support.google.com/merchants/answer/11018531?hl=en.
 		 */
-		public static function get_dimension_label( $key ) {
+		public static function get_dimension_text() {
+			
+			$wpsso =& Wpsso::get_instance();
+			
+			return isset( $wpsso->options[ 'og_def_dimension_units' ] ) ? $wpsso->options[ 'og_def_dimension_units' ] : 'cm';
+		}
 
+		public static function get_dimension_label( $key  = '' ) {
+
+			$key   = empty( $key ) ? self::get_dimension_text() : $key;
 			$units = self::get_dimension_units();	// Returns translated labels.
 
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
@@ -107,11 +201,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		public static function convert_dimension( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
-
-			if ( empty( $from ) ) {
-
-				$from = 'cm';
-			}
+			$from  = empty( $from ) ? self::get_dimension_text() : $from;
 
 			if ( $from !== $to ) {	// Just in case.
 
@@ -166,8 +256,16 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		/**
 		 * Fluid volumes.
 		 */
-		public static function get_fluid_volume_label( $key ) {
+		public static function get_fluid_volume_text() {
+			
+			$wpsso =& Wpsso::get_instance();
+			
+			return isset( $wpsso->options[ 'og_def_fluid_volume_units' ] ) ? $wpsso->options[ 'og_def_fluid_volume_units' ] : 'cm';
+		}
 
+		public static function get_fluid_volume_label( $key = '' ) {
+
+			$key   = empty( $key ) ? self::get_fluid_volume_text() : $key;
 			$units = self::get_fluid_volume_units();	// Returns translated labels.
 
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
@@ -200,11 +298,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		public static function convert_fluid_volume( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
-
-			if ( empty( $from ) ) {
-
-				$from = 'ml';
-			}
+			$from  = empty( $from ) ? self::get_fluid_volume_text() : $from;
 
 			if ( $from !== $to ) {	// Just in case.
 
@@ -267,13 +361,21 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		 *
 		 * See https://support.google.com/merchants/answer/11018531?hl=en.
 		 */
-		public static function get_weight_label( $key ) {
+		public static function get_weight_text() {
+			
+			$wpsso =& Wpsso::get_instance();
+			
+			$key = isset( $wpsso->options[ 'og_def_weight_units' ] ) ? $wpsso->options[ 'og_def_weight_units' ] : 'cm';
 
-			/**
-			 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
-			 */
-			$key = 'lbs' === $key ? 'lb' : $key;
+			$key = 'lbs' === $key ? 'lb' : $key;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
 
+			return $key;
+		}
+
+		public static function get_weight_label( $key = '' ) {
+
+			$key   = 'lbs' === $key ? 'lb' : $key;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			$key   = empty( $key ) ? self::get_weight_text() : $key;
 			$units = self::get_weight_units();	// Returns translated labels.
 
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
@@ -302,17 +404,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 		public static function convert_weight( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
-
-			/**
-			 * WooCommerce uses 'lbs' and WPSSO uses 'lb'.
-			 */
-			$to   = 'lbs' === $to   ? 'lb' : $to;
-			$from = 'lbs' === $from ? 'lb' : $from;
-
-			if ( empty( $from ) ) {
-
-				$from = 'kg';
-			}
+			$to    = 'lbs' === $to   ? 'lb' : $to;		// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			$from  = 'lbs' === $from ? 'lb' : $from;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
+			$from  = empty( $from ) ? self::get_weight_text() : $from;
 
 			if ( $from !== $to ) {
 

@@ -1255,7 +1255,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$count = null;
 
-			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $count );
+			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, $limit = -1, $count );
 
 			if ( ! $count ) {
 

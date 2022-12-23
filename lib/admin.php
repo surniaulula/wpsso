@@ -2594,7 +2594,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public static function get_option_unit_comment( $opt_key ) {
 
-			if ( $unit_text = WpssoSchema::get_unit_text( $opt_key ) ) {
+			if ( $unit_text = WpssoUtilUnits::get_unit_label( $opt_key ) ) {
 
 				return ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 			}
