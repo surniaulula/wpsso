@@ -3342,9 +3342,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[ $mixed_key ];
 			}
 
+			$match_key    = null;
 			$schema_units = WpssoConfig::get_schema_units();	// Uses a local cache.
-
-			$match_key = null;
 
 			if ( is_array( $schema_units ) ) {	// Just in case.
 

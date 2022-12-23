@@ -187,11 +187,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'mm' => __( 'mm', 'wpsso' ),		// Millimeter.
 					'cm' => __( 'cm', 'wpsso' ),		// Centimeter.
 					'm'  => __( 'm', 'wpsso' ),		// Meter.
-					'km' => __( 'km', 'wpsso' ),		// Kilometer.
 					'in' => __( 'inches', 'wpsso' ),	// Inch.
 					'ft' => __( 'feet', 'wpsso' ),		// Foot.
 					'yd' => __( 'yards', 'wpsso' ),		// Yard.
-					'mi' => __( 'miles', 'wpsso' ),		// Mile.
 				);
 			}
 
@@ -281,7 +279,6 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'ml'       => __( 'ml', 'wpsso' ),		// Millilitre.
 					'cl'       => __( 'cl', 'wpsso' ),		// Centilitre.
 					'l'        => __( 'l', 'wpsso' ),		// Liter.
-					'kl'       => __( 'kl', 'wpsso' ),		// Kiloliter.
 					'US tsp'   => __( 'US tsp', 'wpsso' ),		// US teaspoon.
 					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
 					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
@@ -391,7 +388,6 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'mg'  => __( 'mg', 'wpsso' ),		// Milligram.
 					'g'   => __( 'g', 'wpsso' ),		// Gram.
 					'kg'  => __( 'kg', 'wpsso' ),		// Kilogram.
-					't'   => __( 't', 'wpsso' ),		// Metric Ton.
 					'oz'  => __( 'ounces', 'wpsso' ),	// Ounce.
 					'lb'  => __( 'pounds', 'wpsso' ),	// Pound.
 					'st'  => __( 'stones', 'wpsso' ),	// Stone.

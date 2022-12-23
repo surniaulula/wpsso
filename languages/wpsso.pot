@@ -11352,7 +11352,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3661
+#: lib/schema.php:3660
 msgid "checking schema properties"
 msgstr ""
 
@@ -12223,94 +12223,78 @@ msgid "m"
 msgstr ""
 
 #: lib/util-units.php:190
-msgid "km"
-msgstr ""
-
-#: lib/util-units.php:191
 msgid "inches"
 msgstr ""
 
-#: lib/util-units.php:192
+#: lib/util-units.php:191
 msgid "feet"
 msgstr ""
 
-#: lib/util-units.php:193
+#: lib/util-units.php:192
 msgid "yards"
 msgstr ""
 
-#: lib/util-units.php:194
-msgid "miles"
-msgstr ""
-
-#: lib/util-units.php:281
+#: lib/util-units.php:279
 msgid "ml"
 msgstr ""
 
-#: lib/util-units.php:282
+#: lib/util-units.php:280
 msgid "cl"
 msgstr ""
 
-#: lib/util-units.php:283
+#: lib/util-units.php:281
 msgid "l"
 msgstr ""
 
-#: lib/util-units.php:284
-msgid "kl"
-msgstr ""
-
-#: lib/util-units.php:285
+#: lib/util-units.php:282
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-units.php:286
+#: lib/util-units.php:283
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-units.php:287
+#: lib/util-units.php:284
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-units.php:288
+#: lib/util-units.php:285
 msgid "US cup"
 msgstr ""
 
-#: lib/util-units.php:289
+#: lib/util-units.php:286
 msgid "US pint"
 msgstr ""
 
-#: lib/util-units.php:290
+#: lib/util-units.php:287
 msgid "US quart"
 msgstr ""
 
-#: lib/util-units.php:291
+#: lib/util-units.php:288
 msgid "US gal"
 msgstr ""
 
-#: lib/util-units.php:391
+#: lib/util-units.php:388
 msgid "mg"
 msgstr ""
 
-#: lib/util-units.php:392
+#: lib/util-units.php:389
 msgid "g"
 msgstr ""
 
-#: lib/util-units.php:393
+#: lib/util-units.php:390
 msgid "kg"
 msgstr ""
 
-#: lib/util-units.php:394
-msgid "t"
-msgstr ""
-
-#: lib/util-units.php:395
+#: lib/util-units.php:391
 msgid "ounces"
 msgstr ""
 
-#: lib/util-units.php:396
+#: lib/util-units.php:392
 msgid "pounds"
 msgstr ""
 
-#: lib/util-units.php:397
+#: lib/util-units.php:393
 msgid "stones"
 msgstr ""
 
