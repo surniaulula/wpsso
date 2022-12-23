@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-dev.8 (2022/12/22)**
+**Version 14.0.0-dev.10 (2022/12/22)**
 
 * **New Features**
 	* None.
@@ -704,7 +704,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.0.0-dev.8 =
+= 14.0.0-dev.10 =
 
 (2022/12/22) Added new options in the General Settings page. Added support for additional product attributes and custom fields.
 
