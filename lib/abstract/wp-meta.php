@@ -409,6 +409,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_min_advert_price'      => '0.00',			// Product Min Advert Price.
 					'product_avail'                 => 'none',
 					'product_condition'             => $def_product_cond,
+					'product_efficiency'            => '',
+					'product_efficiency_min'        => '',
+					'product_efficiency_max'        => '',
 					'product_color'                 => '',
 					'product_material'              => '',
 					'product_pattern'               => '',

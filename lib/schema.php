@@ -105,30 +105,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_oriented', $enum_key = 'adult_oriented',
-					$val_prefix = '', $val_suffix = 'Consideration' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_oriented',
+					$enum_key = 'adult_oriented', $val_prefix = '', $val_suffix = 'Consideration' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group', $enum_key = 'age_group' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group',
+					$enum_key = 'age_group' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail', $enum_key = 'item_availability' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail',
+					$enum_key = 'item_availability' );
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition',
-					$val_prefix = '', $val_suffix = 'Condition' );
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition',
+					$enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type', $enum_key = 'price_type' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type',
+					$enum_key = 'price_type' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_type', $enum_key = 'size_type',
-					$val_prefix = 'WearableSizeGroup' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_type',
+					$enum_key = 'size_type', $val_prefix = 'WearableSizeGroup' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender', $enum_key = 'target_gender' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender',
+					$enum_key = 'target_gender' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_attendance', $enum_key = 'event_attendance' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_attendance',
+					$enum_key = 'event_attendance' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_status', $enum_key = 'event_status' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_status',
+					$enum_key = 'event_status' );
 
 				foreach ( SucomUtil::preg_grep_keys( '/^schema_(.*)_offer_avail/', $md_opts ) as $prop_name => $prop_val ) {
 
-					self::check_prop_value_enumeration( $md_opts, $prop_name, $enum_key = 'item_availability' );
+					self::check_prop_value_enumeration( $md_opts, $prop_name,
+						$enum_key = 'item_availability' );
 				}
 			}
 

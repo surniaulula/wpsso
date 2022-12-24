@@ -1973,10 +1973,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
 					'value'    => 'product:quantity:value',
-					'minValue' => 'product:quantity:minimum',
-					'maxValue' => 'product:quantity:maximum',
-					'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
-					'unitText' => 'product:quantity:unit_text',
+					'minValue' => 'product:quantity:minvalue',
+					'maxValue' => 'product:quantity:maxvalue',
+					'unitCode' => 'product:quantity:unitcode',	// UN/CEFACT Common Code (3 characters).
+					'unitText' => 'product:quantity:unittext',
 				) );
 
 				if ( false !== $quantity ) {

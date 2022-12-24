@@ -2956,6 +2956,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/EUEnergyEfficiencyEnumeration.
+				 * See https://support.google.com/merchants/answer/7562785.
 				 */
 				'energy_efficiency' => array(
 					'none'                                                => '[None]',
@@ -3026,6 +3027,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/OfferItemCondition.
+				 * See https://support.google.com/merchants/answer/6324469.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
