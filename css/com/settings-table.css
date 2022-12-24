@@ -773,7 +773,8 @@ table.sucom-settings td select.xshort { width:60px; }
 
 table.sucom-settings td select.currency { width:70px; }
 
-table.sucom-settings td select.time-hh-mm,
+table.sucom-settings td select.time-hh-mm { width:82px; }
+
 table.sucom-settings td select.crop-area,
 div.postbox table.sucom-settings td select.crop-area { width:82px; }
 
@@ -781,13 +782,13 @@ table.sucom-settings td select.yes-no { width:85px; }
 
 table.sucom-settings td select.stock { width:90px; }
 
+table.sucom-settings td select.unit_text { width:100px; }
+
 table.sucom-settings td select.short { width:110px; }
 
 table.sucom-settings td select.locale { width:125px; }
 
 table.sucom-settings td select.year { width:125px; }
-
-table.sucom-settings td select.unit_text { width:125px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
@@ -795,12 +796,7 @@ table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.update_filter { width:220px; }
 
-table.sucom-settings td input[type="text"].latitude,
-table.sucom-settings td input[type="text"].longitude,
-table.sucom-settings td input[type="text"].altitude,
-table.sucom-settings td select.timezone {
-	width:225px;
-}
+table.sucom-settings td select.timezone { width:255px; }
 
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
@@ -845,11 +841,15 @@ table.sucom-settings td input[type="text"].bigchars { width:80px; }	/* Character
 table.sucom-settings td input[type="text"].year,
 table.sucom-settings td input[type="text"].short { width:110px; }
 
-table.sucom-settings td input[type="text"].unit_value { width:160px; }
+table.sucom-settings td input[type="text"].unit_value { width:145px; }
 
 table.sucom-settings td input[type="text"].medium { width:180px; }
 
 table.sucom-settings td input[type="text"].offer_name { width:220px; }
+
+table.sucom-settings td input[type="text"].latitude,
+table.sucom-settings td input[type="text"].longitude,
+table.sucom-settings td input[type="text"].altitude { width:220px; }
 
 table.sucom-settings td input[type="text"].tid { width:320px; }
 

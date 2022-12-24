@@ -64,19 +64,6 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				return $md_opts;
 			}
 
-			/**
-			 * No meta to read if $wp_meta is empty or not an array.
-			 */
-			if ( empty( $wp_meta ) || ! is_array( $wp_meta ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'wp_meta provided is empty or not an array' );
-				}
-
-				return $md_opts;
-			}
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'importing custom fields' );	// Begin timer.
@@ -102,11 +89,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 			foreach ( $local_cache as $cf_key => $md_key ) {
 
-				/**
-				 * Make sure we have an associated option key to save the metadata value - it may have been removed
-				 * by a 'wpsso_cf_md_index' filter hook.
-				 */
-				if ( empty( $md_key ) ) {
+				if ( empty( $md_key ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -114,11 +97,12 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					}
 
 					continue;
+				}
 
 				/**
 				 * Check to see if we have an alternate $wp_meta_key value (for WooCommerce variations).
 				 */
-				} elseif ( isset( $cf_meta_keys[ $cf_key ] ) ) {
+				if ( isset( $cf_meta_keys[ $cf_key ] ) ) {
 
 					if ( empty( $cf_meta_keys[ $cf_key ] ) ) {	// Just in case.
 
@@ -152,42 +136,41 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using custom field ' . $cf_key . ' meta key ' . $wp_meta_key );
+					$this->p->debug->log( 'using custom field ' . $cf_key . ' meta key ' . $wp_meta_key . ' for ' . $md_key . ' option' );
 				}
 
 				/**
-				 * WordPress offers metadata as an array, so make sure we have at least one element in the array.
+				 * WordPress offers metadata in array element 0.
 				 */
-				if ( ! isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
+				if ( isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no ' . $wp_meta_key . ' meta key element 0 in wp_meta' );
+						$this->p->debug->log( 'found element 0 in ' . $wp_meta_key . ' array' );
 					}
 
-					continue;
+					$mixed = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no element 0 in ' . $wp_meta_key . ' array' );
+					}
+
+					$mixed = '';
 				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $wp_meta_key . ' meta key found for ' . $md_key . ' option' );
-				}
-
-				/**
-				 * $mixed can be an array or something else, so handle both.
-				 */
-				$mixed = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
 
 				$values = array();
 
 				/**
-				 * If an array, then decode each array element.
+				 * If $mixed is an array, then decode each array element.
 				 */
 				if ( is_array( $mixed ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( $wp_meta_key . ' is array of ' . count( $mixed ) . ' values (decoding each value)' );
+						$this->p->debug->log( $wp_meta_key . ' is an array of ' . count( $mixed ) . ' elements (decoding each value)' );
 					}
 
 					foreach ( $mixed as $val ) {
@@ -211,14 +194,10 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				/**
-				 * Check if the value should be split into multiple numeric options, and if not, then just get the
-				 * first value from the $values array.
+				 * Check if the value(s) should be split into multiple numeric options.
 				 */
 				if ( empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
 
-					/**
-					 * Get first element of $values array.
-					 */
 					$md_opts[ $md_key ] = reset( $values );
 
 					$md_opts[ $md_key . ':disabled' ] = true;
