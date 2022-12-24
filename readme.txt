@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-b.2 (2022/12/23)**
+**Version 14.0.0-b.3 (2022/12/23)**
 
 * **New Features**
 	* Added new options in the General Settings page:
@@ -252,8 +252,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product Shipping Height
 		* Product Shipping Weight
 * **Improvements**
+	* Added a list of suggested attributes in the WooCommerce attributes tab.
 	* Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata options to show default dimension, weight, and fluid volume units.
 	* Updated the WooCommerce integration module to provide shipping dimensions and weight (instead of product net dimensions and weight).
+	* Renamed the Adult Oriented options to Adult Type.
 	* Removed Document SSO product options, attributes, and custom fields:
 		* Product Depth
 		* Product Depth Attribute Name
@@ -288,6 +290,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtilWoocommerce::get_weight_label()`.
 		* `WpssoUtilWoocommerce::get_weight_units()`.
 		* `WpssoUtilWoocommerce::get_weight()`.
+	* Renamed internal meta tags:
+		* 'product:adult_oriented' to 'product:adult_type'
+		* 'product:price:type' to 'product:price_type'
+		* 'product:size:type' to 'product:size_type'
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -726,7 +732,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.0.0-b.2 =
+= 14.0.0-b.3 =
 
 (2022/12/23) Added new options in the General Settings page. Added new Document SSO product options, attributes, and custom fields.
 
