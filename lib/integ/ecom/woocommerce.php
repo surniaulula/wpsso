@@ -75,6 +75,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 							$label_transl ) . ' ' . ( 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg ) );
 					}
 				}
+			
+				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
 			}
 
 			/**
@@ -150,6 +152,45 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->options[ $opt_key ]               = $opt_val;
 				$this->p->options[ $opt_key . ':disabled' ] = true;
 			}
+		}
+
+
+		public function show_product_attributes_footer() {
+
+			global $post;
+
+			$product       = $this->p->util->wc->get_product( $post->ID );
+			$md_attr_names = $this->p->util->get_product_attr_names( $prefix = 'product', $delim = '_' );
+			$wc_attributes = $product->get_attributes();
+			$wc_attr_names = array();
+			$suggest_names = array();
+
+			foreach ( $wc_attributes as $attribute ) {
+
+				$attr_name = $attribute->get_name();
+
+				$wc_attr_names[ $attr_name ] = true;
+			}
+
+			foreach ( $md_attr_names as $opt_key => $attr_name ) {
+
+				if ( empty( $wc_attr_names[ $attr_name ] ) ) {
+
+					$suggest_names[] = $attr_name;
+				}
+			}
+
+			$suggest_transl = __( 'Suggested attributes:', 'wpsso' );
+			$suggest_list   = implode( ', ', $suggest_names );
+
+			if ( current_user_can( 'manage_options' ) ) {
+
+				$suggest_transl = $this->p->util->get_admin_url( 'advanced#sucom-tabset_metadata-tab_product_attrs', $suggest_transl );
+			}
+
+			echo '<div class="toolbar">';
+			echo '<strong>' . $suggest_transl . '</strong> ' . $suggest_list;
+			echo '</div>';
 		}
 
 		/**
@@ -595,11 +636,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/**
-			 * Get single value / non-variable product attributes.
+			 * Get non-selectable product attributes.
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'getting single value / non-variable product attributes' );
+				$this->p->debug->log( 'getting non-selectable product attributes' );
 			}
 
 			foreach ( $md_attr_names as $key => $attr_name ) {
@@ -607,7 +648,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				/**
 				 * Skip attributes with select options (example: Small | Medium | Large).
 				 */
-				if ( ! $this->is_variable_attribute( $product, $attr_name ) ) {
+				if ( ! $this->is_variation_selectable_attribute( $product, $attr_name ) ) {
 
 					if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
 
@@ -1123,12 +1164,15 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'getting non-variation product attributes' );
 				}
 
+				/**
+				 * Returns an array of product attribute names, indexed by meta tag name.
+				 */
 				foreach ( $mt_attr_names as $key => $attr_name ) {
 
 					/**
 					 * Skip attributes with select options (example: Small | Medium | Large).
 					 */
-					if ( ! $this->is_variable_attribute( $product, $attr_name ) ) {
+					if ( ! $this->is_variation_selectable_attribute( $product, $attr_name ) ) {
 
 						if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
 
@@ -1158,10 +1202,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			$mt_ecom[ 'product:pretax_price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, false );	// Exclude VAT.
 			$mt_ecom[ 'product:pretax_price:currency' ] = $currency;
-
-			$mt_ecom[ 'product:price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, $include_vat );
-			$mt_ecom[ 'product:price:currency' ] = $currency;
-			$mt_ecom[ 'product:price:type' ]     = 'https://schema.org/ListPrice';
+			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/ListPrice';
+			$mt_ecom[ 'product:price:amount' ]          = $this->get_product_price_formatted( $product, $product_price, $include_vat );
+			$mt_ecom[ 'product:price:currency' ]        = $currency;
 
 			if ( method_exists( $product, 'get_regular_price' ) ) {
 
@@ -1187,7 +1230,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'product is on sale' );
 				}
 
-				$mt_ecom[ 'product:price:type' ] = 'https://schema.org/SalePrice';
+				$mt_ecom[ 'product:price_type' ] = 'https://schema.org/SalePrice';
 
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 
@@ -1823,7 +1866,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $ret;
 		}
 
-		private function is_variable_attribute( $product, $attr_name ) {
+		private function is_variation_selectable_attribute( $product, $attr_name ) {
 
 			if ( method_exists( $product, 'get_variation_attributes' ) ) {	// Just in case.
 

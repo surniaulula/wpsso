@@ -742,17 +742,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$attr_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
 					$attr_key   = str_replace( 'tooltip-', '', $msg_key );
 
-					$text = __( 'You may enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
-
-					$text .= sprintf( __( 'The product attribute name allows %s to request an attribute value from your e-commerce plugin.', 'wpsso' ),
-						$this->p_name ) . ' ';
+					$text = sprintf( __( 'The product attribute name allows %s to request a product attribute value from an e-commerce plugin.', 'wpsso' ), $this->p_name ) . ' ';
 
 					$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) ) . ' ';
 
 					if ( ! empty( $attr_frags[ 'values' ] ) ) {
 
-						$text .= sprintf( __( 'The attribute value can be an empty string or one of these values (case sensitive): %s', 'wpsso' ),
-							SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
+						$text .= sprintf( __( 'The attribute value from the e-commerce plugin can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
 					}
 
 					break;

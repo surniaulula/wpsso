@@ -137,8 +137,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'article_section' => 'schema_article_section',	// Renamed for WPSSO Core v13.5.0.
 					'reading_mins'    => 'schema_reading_mins',	// Renamed for WPSSO Core v13.5.0.
 				),
-				927 => array(
-					'product_depth_value' => 'product_length_value',	// Renamed for WPSSO Core v13.14.0.
+				931 => array(
+					'product_depth_value'    => 'product_length_value',	// Renamed for WPSSO Core v13.14.0.
+					'product_adult_oriented' => 'product_adult_type',	// Renamed for WPSSO Core v13.14.0.
 				),
 			),
 		);
@@ -313,7 +314,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_fluid_volume_units = WpssoUtilUnits::get_fluid_volume_text();
 				$def_weight_units       = WpssoUtilUnits::get_weight_text();
 				$def_article_section    = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
-				$def_adult_oriented     = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
+				$def_adult_type         = isset( $opts[ 'schema_def_product_adult_type' ] ) ? $opts[ 'schema_def_product_adult_type' ] : 'none';
 				$def_age_group          = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
 				$def_product_cat        = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
 				$def_product_cond       = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
@@ -419,7 +420,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_size'                  => '',
 					'product_size_type'             => 'none',
 					'product_age_group'             => $def_age_group,
-					'product_adult_oriented'        => $def_adult_oriented,
+					'product_adult_type'            => $def_adult_type,
 					'product_length_value'          => '',				// Product Net Len. / Depth.
 					'product_length_units'          => $def_dimension_units,
 					'product_width_value'           => '',				// Product Net Width.

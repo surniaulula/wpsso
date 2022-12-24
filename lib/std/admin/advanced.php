@@ -1050,11 +1050,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'tooltip'  => 'schema_def_product_age_group',
 					'content'  => $form->get_no_select( 'schema_def_product_age_group', $this->p->cf[ 'form' ][ 'age_group' ] ),
 				),
-				'schema_def_product_adult_oriented' => array(
+				'schema_def_product_adult_type' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Product Adult Oriented', 'option label', 'wpsso' ),
-					'tooltip'  => 'schema_def_product_adult_oriented',
-					'content'  => $form->get_no_select( 'schema_def_product_adult_oriented', $this->p->cf[ 'form' ][ 'adult_oriented' ] ),
+					'label'    => _x( 'Default Product Adult Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_adult_type',
+					'content'  => $form->get_no_select( 'schema_def_product_adult_type', $this->p->cf[ 'form' ][ 'adult_type' ] ),
 				),
 			);
 

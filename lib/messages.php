@@ -671,12 +671,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'  => _x( 'image URL', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_adult_oriented' => array(
-						'label'  => _x( 'Product Adult Oriented', 'option label', 'wpsso' ),
-						'name'   => _x( 'product adult oriented', 'tooltip fragment', 'wpsso' ),
-						'desc'   => _x( 'a product adult oriented', 'tooltip fragment', 'wpsso' ),
+					'product_adult_type' => array(
+						'label'  => _x( 'Product Adult Type', 'option label', 'wpsso' ),
+						'name'   => _x( 'product adult type', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product adult type', 'tooltip fragment', 'wpsso' ),
 						'about'  => __( 'https://support.google.com/merchants/answer/6324508', 'wpsso' ),
-						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'adult_oriented', $val_prefix = '', $val_suffix = 'Consideration' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'adult_type', $val_prefix = '', $val_suffix = 'Consideration' ),
 					),
 					'product_age_group' => array(
 						'label'  => _x( 'Product Age Group', 'option label', 'wpsso' ),

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-12-23 11:45-0800\n"
+"PO-Revision-Date: 2022-12-24 09:40-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1849,8 +1849,8 @@ msgstr "Champ pers. URL d'image"
 
 #: gettext/gettext-lib-config.php:291
 msgctxt "option label"
-msgid "Product Adult Oriented Custom Field"
-msgstr "Champ pers. produit orienté adulte"
+msgid "Product Adult Type Custom Field"
+msgstr "Champ pers. type de produit adulte"
 
 #: gettext/gettext-lib-config.php:292
 msgctxt "option label"
@@ -2039,8 +2039,8 @@ msgstr "Champ pers. HTML vidéo intégrée"
 
 #: gettext/gettext-lib-config.php:329
 msgctxt "option label"
-msgid "Adult Oriented Attribute Name"
-msgstr "Nom d'attribut orienté adulte"
+msgid "Adult Type Attribute Name"
+msgstr "Nom d'attribut type de produit adulte"
 
 #: gettext/gettext-lib-config.php:330
 msgctxt "option label"
@@ -3403,8 +3403,8 @@ msgstr "Groupe d'âge de produit par défaut"
 #: gettext/gettext-lib-pro.php:149 lib/pro/admin/advanced.php:1120
 #: lib/std/admin/advanced.php:1055
 msgctxt "option label"
-msgid "Default Product Adult Oriented"
-msgstr "Produit orienté adulte par défaut"
+msgid "Default Product Adult Type"
+msgstr "Type de produit adulte par défaut"
 
 #: gettext/gettext-lib-pro.php:150 lib/pro/admin/advanced.php:1137
 #: lib/std/admin/advanced.php:1076
@@ -4184,8 +4184,8 @@ msgstr "Groupe d’âge du produit"
 #: gettext/gettext-lib-pro.php:299 lib/messages.php:675
 #: lib/pro/admin/edit.php:1158 lib/std/admin/edit.php:1032
 msgctxt "option label"
-msgid "Product Adult Oriented"
-msgstr "Produit orienté adulte"
+msgid "Product Adult Type"
+msgstr "Type de produit adulte"
 
 #: gettext/gettext-lib-pro.php:300 lib/messages.php:769
 #: lib/pro/admin/edit.php:1165 lib/std/admin/edit.php:1040
@@ -4363,54 +4363,54 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:1142
+#: lib/abstract/wp-meta.php:1146
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1210
+#: lib/abstract/wp-meta.php:1214
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1214
+#: lib/abstract/wp-meta.php:1218
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1217 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1221 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1221
+#: lib/abstract/wp-meta.php:1225
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1222
+#: lib/abstract/wp-meta.php:1226
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1223
+#: lib/abstract/wp-meta.php:1227
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1224
+#: lib/abstract/wp-meta.php:1228
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1562
+#: lib/abstract/wp-meta.php:1566
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:1893 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1897 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstract/wp-meta.php:1895
+#: lib/abstract/wp-meta.php:1899
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
@@ -6234,19 +6234,23 @@ msgstr "Shop page"
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: lib/integ/ecom/woocommerce.php:796
+#: lib/integ/ecom/woocommerce.php:183
+msgid "Suggested attributes:"
+msgstr "Attributs suggérés:"
+
+#: lib/integ/ecom/woocommerce.php:837
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:799
+#: lib/integ/ecom/woocommerce.php:840
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:802
+#: lib/integ/ecom/woocommerce.php:843
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
-#: lib/integ/ecom/woocommerce.php:1455
+#: lib/integ/ecom/woocommerce.php:1498
 msgid "World"
 msgstr "Monde"
 
@@ -8366,35 +8370,31 @@ msgid "Your unique Stamped.io store hash and API public key values are required 
 msgstr "Le hachage unique pour votre magasin et la clé publique d'API de Stamped.io sont nécessaires pour récupérer les notes et les critiques de l'API de service Stamped.io."
 
 #: lib/messages-tooltip-plugin.php:745
-msgid "You may enter the name of a product attribute available in your e-commerce plugin."
-msgstr "Vous pouvez entrer le nom d'un attribut de produit disponible dans votre extension de commerce électronique."
+msgid "The product attribute name allows %s to request a product attribute value from an e-commerce plugin."
+msgstr "Le nom d'attribut de produit permet à %s de demander une valeur d'attribut de produit d'une extension de commerce électronique."
 
 #: lib/messages-tooltip-plugin.php:747
-msgid "The product attribute name allows %s to request an attribute value from your e-commerce plugin."
-msgstr "Le nom d'attribut de produit permet à %s de demander une valeur d'attribut à votre extension de commerce électronique."
-
-#: lib/messages-tooltip-plugin.php:750
 msgid "The default attribute name is \"%s\"."
 msgstr "Le nom d'attribut par défaut est \"%s\"."
 
-#: lib/messages-tooltip-plugin.php:754
-msgid "The attribute value can be an empty string or one of these values (case sensitive): %s"
-msgstr "La valeur de l'attribut peut être une chaîne vide ou l'une de ces valeurs (sensible aux majuscules/minuscules): %s"
+#: lib/messages-tooltip-plugin.php:751
+msgid "The attribute value from the e-commerce plugin can be an empty string or one of these values (case sensitive): %s"
+msgstr "La valeur d'attribut de l'extension commerce électronique peut être une chaîne vide ou l'une de ces valeurs (sensible aux majuscules et minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:774
+#: lib/messages-tooltip-plugin.php:770
 msgid "If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here."
 msgstr "Si votre thème ou une autre extension fournit un champ personnalisé (aka métadonnées) pour %s, vous pouvez entrer son nom de champ personnalisé ici."
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:777
+#: lib/messages-tooltip-plugin.php:773
 msgid "If a custom field matching this name is found, its value will be imported for the %1$s \"%2$s\" option."
 msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option %1$s \"%2$s\"."
 
-#: lib/messages-tooltip-plugin.php:781
+#: lib/messages-tooltip-plugin.php:777
 msgid "The custom field value can be an empty string or one of these values (case sensitive): %s"
 msgstr "La valeur du champ personnalisé peut être une chaîne vide ou l’une des valeurs (sensible aux majuscules/minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:789
+#: lib/messages-tooltip-plugin.php:785
 msgid "Note that the \"%s\" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field."
 msgstr "Notez que l'option \"%s\" offre plusieurs champs de saisie - la valeur du champ personnalisé sera divisée sur les caractères de nouvelle ligne et chaque ligne sera affectée à un champ de saisie individuel."
 
@@ -9142,13 +9142,13 @@ msgstr "un URL d'image"
 
 #: lib/messages.php:676
 msgctxt "tooltip fragment"
-msgid "product adult oriented"
-msgstr "produit orienté adulte"
+msgid "product adult type"
+msgstr "type de produit adulte"
 
 #: lib/messages.php:677
 msgctxt "tooltip fragment"
-msgid "a product adult oriented"
-msgstr "un produit orienté adulte"
+msgid "a product adult type"
+msgstr "un type de produit adulte"
 
 #: lib/messages.php:678
 msgid "https://support.google.com/merchants/answer/6324508"
@@ -10140,23 +10140,23 @@ msgstr "ajout de schéma de personne"
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema.php:571
+#: lib/schema.php:578
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:1847
+#: lib/schema.php:1854
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
-#: lib/schema.php:1958
+#: lib/schema.php:1965
 msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
 
-#: lib/schema.php:1985
+#: lib/schema.php:1992
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet de l'évaluation"
 
-#: lib/schema.php:3652
+#: lib/schema.php:3659
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -10990,90 +10990,112 @@ msgid "show these rows now"
 msgstr "afficher ces lignes maintenant"
 
 #: lib/util-units.php:187
+msgctxt "option value"
 msgid "mm"
 msgstr "mm"
 
 #: lib/util-units.php:188
+msgctxt "option value"
 msgid "cm"
 msgstr "cm"
 
 #: lib/util-units.php:189
+msgctxt "option value"
 msgid "m"
 msgstr "m"
 
 #: lib/util-units.php:190
+msgctxt "option value"
 msgid "inches"
 msgstr "pouces"
 
 #: lib/util-units.php:191
+msgctxt "option value"
 msgid "feet"
 msgstr "pieds"
 
 #: lib/util-units.php:192
+msgctxt "option value"
 msgid "yards"
 msgstr "verges"
 
 #: lib/util-units.php:279
+msgctxt "option value"
 msgid "ml"
 msgstr "ml"
 
 #: lib/util-units.php:280
+msgctxt "option value"
 msgid "cl"
 msgstr "cl"
 
 #: lib/util-units.php:281
+msgctxt "option value"
 msgid "l"
 msgstr "l"
 
 #: lib/util-units.php:282
+msgctxt "option value"
 msgid "US tsp"
 msgstr "c.-à-t. américaine"
 
 #: lib/util-units.php:283
+msgctxt "option value"
 msgid "US tbsp"
 msgstr "c.-à-s. américaine"
 
 #: lib/util-units.php:284
+msgctxt "option value"
 msgid "US fl oz"
 msgstr "oz liq américaine"
 
 #: lib/util-units.php:285
+msgctxt "option value"
 msgid "US cup"
 msgstr "tasse américaine"
 
 #: lib/util-units.php:286
+msgctxt "option value"
 msgid "US pint"
 msgstr "pinte américaine"
 
 #: lib/util-units.php:287
+msgctxt "option value"
 msgid "US quart"
 msgstr "quart américain"
 
 #: lib/util-units.php:288
+msgctxt "option value"
 msgid "US gal"
 msgstr "gal. américain"
 
 #: lib/util-units.php:388
+msgctxt "option value"
 msgid "mg"
 msgstr "mg"
 
 #: lib/util-units.php:389
+msgctxt "option value"
 msgid "g"
 msgstr "g"
 
 #: lib/util-units.php:390
+msgctxt "option value"
 msgid "kg"
 msgstr "kg"
 
 #: lib/util-units.php:391
+msgctxt "option value"
 msgid "ounces"
 msgstr "onces"
 
 #: lib/util-units.php:392
+msgctxt "option value"
 msgid "pounds"
 msgstr "livres"
 
 #: lib/util-units.php:393
+msgctxt "option value"
 msgid "stones"
 msgstr "pierres"
 

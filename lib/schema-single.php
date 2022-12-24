@@ -1891,7 +1891,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
 				'availability'          => 'product:availability',	// Only valid for offers.
 				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
-				'hasAdultConsideration' => 'product:adult_oriented',	// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_type',	// Valid for both products and offers.
 				'priceValidUntil'       => 'product:sale_price_dates:end',
 			) );
 
@@ -1953,9 +1953,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
+				'priceType'             => 'product:price_type',
 				'price'                 => 'product:price:amount',
 				'priceCurrency'         => 'product:price:currency',
-				'priceType'             => 'product:price:type',
 				'validFrom'             => 'product:sale_price_dates:start',
 				'validThrough'          => 'product:sale_price_dates:end',
 				'valueAddedTaxIncluded' => 'product:price:vat_included',

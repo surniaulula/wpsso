@@ -206,9 +206,9 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 
 			$mt_ecom[ 'product:retailer_item_id' ] = $prod[ 'retailer_item_id' ];	// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $prod[ 'retailer_part_no' ];	// Product SKU.
+			$mt_ecom[ 'product:price_type' ]       = $prod[ 'price_type' ];
 			$mt_ecom[ 'product:price:amount' ]     = $prod[ 'price' ];
 			$mt_ecom[ 'product:price:currency' ]   = $prod[ 'currency' ];
-			$mt_ecom[ 'product:price:type' ]       = $prod[ 'price_type' ];
 
 			/**
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.

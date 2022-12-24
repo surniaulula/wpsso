@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
 				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
 				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
-				'hasAdultConsideration' => 'product:adult_oriented',	// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_type',	// Valid for both products and offers.
 				'color'                 => 'product:color',
 				'material'              => 'product:material',
 				'pattern'               => 'product:pattern',

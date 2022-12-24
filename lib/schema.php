@@ -105,8 +105,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_oriented',
-					$enum_key = 'adult_oriented', $val_prefix = '', $val_suffix = 'Consideration' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_type',
+					$enum_key = 'adult_type', $val_prefix = '', $val_suffix = 'Consideration' );
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group',
 					$enum_key = 'age_group' );

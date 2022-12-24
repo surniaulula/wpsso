@@ -1125,7 +1125,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Example $og_type_mt_md array:
 			 *
 			 *	'product' => array(
-			 *		'product:adult_oriented'          => 'product_adult_oriented',
+			 *		'product:adult_type'              => 'product_adult_type',
 			 *		'product:age_group'               => 'product_age_group',
 			 *		'product:availability'            => 'product_avail',
 			 *		'product:brand'                   => 'product_brand',
@@ -1154,9 +1154,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:pattern'                 => 'product_pattern',
 			 *		'product:pretax_price:amount'     => '',
 			 *		'product:pretax_price:currency'   => '',
+			 *		'product:price_type'              => 'product_price_type',
 			 *		'product:price:amount'            => 'product_price',
 			 *		'product:price:currency'          => 'product_currency',
-			 *		'product:price:type'              => 'product_price_type',
 			 *		'product:purchase_limit'          => '',
 			 *		'product:retailer_category'       => '',
 			 *		'product:retailer_item_id'        => '',
@@ -1176,7 +1176,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:shipping_width:value'    => 'product_shipping_width_value',
 			 *		'product:shipping_width:units'    => 'product_shipping_width_units',
 			 *		'product:size'                    => 'product_size',
-			 *		'product:size:type'               => 'product_size_type',
+			 *		'product:size_type'               => 'product_size_type',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
 			 *		'product:weight:value'            => 'product_weight_value',
@@ -1390,7 +1390,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $min_adv_price && $mt_og[ $amount_key ] < $min_adv_price ) {
 
-							$mt_og[ $mt_pre . ':price:type' ] = 'https://schema.org/MinimumAdvertisedPrice';
+							$mt_og[ $mt_pre . ':price_type' ] = 'https://schema.org/MinimumAdvertisedPrice';
 
 							$mt_og[ $amount_key ] = $min_adv_price;
 						}

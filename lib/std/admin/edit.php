@@ -1025,13 +1025,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_age_group',
 					'content'  => $form->get_no_select( 'product_age_group', $this->p->cf[ 'form' ][ 'age_group' ] ),
 				),
-				'schema_product_adult_oriented' => array(
+				'schema_product_adult_type' => array(
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Adult Oriented', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_adult_oriented',
-					'content'  => $form->get_no_select( 'product_adult_oriented', $this->p->cf[ 'form' ][ 'adult_oriented' ] ),
+					'label'    => _x( 'Product Adult Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_adult_type',
+					'content'  => $form->get_no_select( 'product_adult_type', $this->p->cf[ 'form' ][ 'adult_type' ] ),
 				),
 				'schema_product_length_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],

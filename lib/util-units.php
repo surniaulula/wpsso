@@ -184,12 +184,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'mm' => __( 'mm', 'wpsso' ),		// Millimeter.
-					'cm' => __( 'cm', 'wpsso' ),		// Centimeter.
-					'm'  => __( 'm', 'wpsso' ),		// Meter.
-					'in' => __( 'inches', 'wpsso' ),	// Inch.
-					'ft' => __( 'feet', 'wpsso' ),		// Foot.
-					'yd' => __( 'yards', 'wpsso' ),		// Yard.
+					'mm' => _x( 'mm', 'option value', 'wpsso' ),		// Millimeter.
+					'cm' => _x( 'cm', 'option value', 'wpsso' ),		// Centimeter.
+					'm'  => _x( 'm', 'option value', 'wpsso' ),		// Meter.
+					'in' => _x( 'inches', 'option value', 'wpsso' ),	// Inch.
+					'ft' => _x( 'feet', 'option value', 'wpsso' ),		// Foot.
+					'yd' => _x( 'yards', 'option value', 'wpsso' ),		// Yard.
 				);
 			}
 
@@ -276,16 +276,16 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'ml'       => __( 'ml', 'wpsso' ),		// Millilitre.
-					'cl'       => __( 'cl', 'wpsso' ),		// Centilitre.
-					'l'        => __( 'l', 'wpsso' ),		// Liter.
-					'US tsp'   => __( 'US tsp', 'wpsso' ),		// US teaspoon.
-					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
-					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
-					'US cup'   => __( 'US cup', 'wpsso' ),		// US cup.
-					'US pt'    => __( 'US pint', 'wpsso' ),		// US pint.
-					'US qt'    => __( 'US quart', 'wpsso' ),	// US quart.
-					'US gal'   => __( 'US gal', 'wpsso' ),		// US gallon.
+					'ml'       => _x( 'ml', 'option value', 'wpsso' ),		// Millilitre.
+					'cl'       => _x( 'cl', 'option value', 'wpsso' ),		// Centilitre.
+					'l'        => _x( 'l', 'option value', 'wpsso' ),		// Liter.
+					'US tsp'   => _x( 'US tsp', 'option value', 'wpsso' ),		// US teaspoon.
+					'US tbsp'  => _x( 'US tbsp', 'option value', 'wpsso' ),		// US tablespoon.
+					'US fl oz' => _x( 'US fl oz', 'option value', 'wpsso' ),	// US fluid ounce.
+					'US cup'   => _x( 'US cup', 'option value', 'wpsso' ),		// US cup.
+					'US pt'    => _x( 'US pint', 'option value', 'wpsso' ),		// US pint.
+					'US qt'    => _x( 'US quart', 'option value', 'wpsso' ),	// US quart.
+					'US gal'   => _x( 'US gal', 'option value', 'wpsso' ),		// US gallon.
 				);
 			}
 
@@ -385,12 +385,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'mg'  => __( 'mg', 'wpsso' ),		// Milligram.
-					'g'   => __( 'g', 'wpsso' ),		// Gram.
-					'kg'  => __( 'kg', 'wpsso' ),		// Kilogram.
-					'oz'  => __( 'ounces', 'wpsso' ),	// Ounce.
-					'lb'  => __( 'pounds', 'wpsso' ),	// Pound.
-					'st'  => __( 'stones', 'wpsso' ),	// Stone.
+					'mg'  => _x( 'mg', 'option value', 'wpsso' ),		// Milligram.
+					'g'   => _x( 'g', 'option value', 'wpsso' ),		// Gram.
+					'kg'  => _x( 'kg', 'option value', 'wpsso' ),		// Kilogram.
+					'oz'  => _x( 'ounces', 'option value', 'wpsso' ),	// Ounce.
+					'lb'  => _x( 'pounds', 'option value', 'wpsso' ),	// Pound.
+					'st'  => _x( 'stones', 'option value', 'wpsso' ),	// Stone.
 				);
 			}
 

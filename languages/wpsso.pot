@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.0.0-b.2\n"
+"Project-Id-Version: WPSSO Core 14.0.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2054,7 +2054,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:291
 msgctxt "option label"
-msgid "Product Adult Oriented Custom Field"
+msgid "Product Adult Type Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:292
@@ -2244,7 +2244,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:329
 msgctxt "option label"
-msgid "Adult Oriented Attribute Name"
+msgid "Adult Type Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:330
@@ -3608,7 +3608,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:149 lib/pro/admin/advanced.php:1120
 #: lib/std/admin/advanced.php:1055
 msgctxt "option label"
-msgid "Default Product Adult Oriented"
+msgid "Default Product Adult Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:150 lib/pro/admin/advanced.php:1137
@@ -4391,7 +4391,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:299 lib/messages.php:675
 #: lib/pro/admin/edit.php:1158 lib/std/admin/edit.php:1032
 msgctxt "option label"
-msgid "Product Adult Oriented"
+msgid "Product Adult Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:300 lib/messages.php:769
@@ -4577,54 +4577,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1145
+#: lib/abstract/wp-meta.php:1146
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1213
+#: lib/abstract/wp-meta.php:1214
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1217
+#: lib/abstract/wp-meta.php:1218
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1220 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1221 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1224
+#: lib/abstract/wp-meta.php:1225
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1225
+#: lib/abstract/wp-meta.php:1226
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1226
+#: lib/abstract/wp-meta.php:1227
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1227
+#: lib/abstract/wp-meta.php:1228
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1565
+#: lib/abstract/wp-meta.php:1566
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1896 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1897 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1898
+#: lib/abstract/wp-meta.php:1899
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -6566,23 +6566,27 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:796
+#: lib/integ/ecom/woocommerce.php:183
+msgid "Suggested attributes:"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:837
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:799
+#: lib/integ/ecom/woocommerce.php:840
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:802
+#: lib/integ/ecom/woocommerce.php:843
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1455
+#: lib/integ/ecom/woocommerce.php:1498
 msgid "World"
 msgstr ""
 
@@ -9310,46 +9314,40 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:745
 msgid ""
-"You may enter the name of a product attribute available in your e-commerce "
-"plugin."
+"The product attribute name allows %s to request a product attribute value "
+"from an e-commerce plugin."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:747
-msgid ""
-"The product attribute name allows %s to request an attribute value from your "
-"e-commerce plugin."
-msgstr ""
-
-#: lib/messages-tooltip-plugin.php:750
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:754
+#: lib/messages-tooltip-plugin.php:751
 msgid ""
-"The attribute value can be an empty string or one of these values (case "
-"sensitive): %s"
+"The attribute value from the e-commerce plugin can be an empty string or one "
+"of these values (case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:774
+#: lib/messages-tooltip-plugin.php:770
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:777
+#: lib/messages-tooltip-plugin.php:773
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:781
+#: lib/messages-tooltip-plugin.php:777
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:789
+#: lib/messages-tooltip-plugin.php:785
 msgid ""
 "Note that the \"%s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "
@@ -10301,12 +10299,12 @@ msgstr ""
 
 #: lib/messages.php:676
 msgctxt "tooltip fragment"
-msgid "product adult oriented"
+msgid "product adult type"
 msgstr ""
 
 #: lib/messages.php:677
 msgctxt "tooltip fragment"
-msgid "a product adult oriented"
+msgid "a product adult type"
 msgstr ""
 
 #: lib/messages.php:678
@@ -12262,90 +12260,112 @@ msgid "show these rows now"
 msgstr ""
 
 #: lib/util-units.php:187
+msgctxt "option value"
 msgid "mm"
 msgstr ""
 
 #: lib/util-units.php:188
+msgctxt "option value"
 msgid "cm"
 msgstr ""
 
 #: lib/util-units.php:189
+msgctxt "option value"
 msgid "m"
 msgstr ""
 
 #: lib/util-units.php:190
+msgctxt "option value"
 msgid "inches"
 msgstr ""
 
 #: lib/util-units.php:191
+msgctxt "option value"
 msgid "feet"
 msgstr ""
 
 #: lib/util-units.php:192
+msgctxt "option value"
 msgid "yards"
 msgstr ""
 
 #: lib/util-units.php:279
+msgctxt "option value"
 msgid "ml"
 msgstr ""
 
 #: lib/util-units.php:280
+msgctxt "option value"
 msgid "cl"
 msgstr ""
 
 #: lib/util-units.php:281
+msgctxt "option value"
 msgid "l"
 msgstr ""
 
 #: lib/util-units.php:282
+msgctxt "option value"
 msgid "US tsp"
 msgstr ""
 
 #: lib/util-units.php:283
+msgctxt "option value"
 msgid "US tbsp"
 msgstr ""
 
 #: lib/util-units.php:284
+msgctxt "option value"
 msgid "US fl oz"
 msgstr ""
 
 #: lib/util-units.php:285
+msgctxt "option value"
 msgid "US cup"
 msgstr ""
 
 #: lib/util-units.php:286
+msgctxt "option value"
 msgid "US pint"
 msgstr ""
 
 #: lib/util-units.php:287
+msgctxt "option value"
 msgid "US quart"
 msgstr ""
 
 #: lib/util-units.php:288
+msgctxt "option value"
 msgid "US gal"
 msgstr ""
 
 #: lib/util-units.php:388
+msgctxt "option value"
 msgid "mg"
 msgstr ""
 
 #: lib/util-units.php:389
+msgctxt "option value"
 msgid "g"
 msgstr ""
 
 #: lib/util-units.php:390
+msgctxt "option value"
 msgid "kg"
 msgstr ""
 
 #: lib/util-units.php:391
+msgctxt "option value"
 msgid "ounces"
 msgstr ""
 
 #: lib/util-units.php:392
+msgctxt "option value"
 msgid "pounds"
 msgstr ""
 
 #: lib/util-units.php:393
+msgctxt "option value"
 msgid "stones"
 msgstr ""
 

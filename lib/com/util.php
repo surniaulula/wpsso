@@ -2228,7 +2228,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Product attributes and descriptions.
 				 */
 				$mt_pre . ':url'                 => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':adult_oriented'      => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':adult_type'          => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'           => null,
 				$mt_pre . ':availability'        => null,
 				$mt_pre . ':brand'               => null,
@@ -2250,7 +2250,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':quantity:unittext'   => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'       => null,
 				$mt_pre . ':size'                => null,
-				$mt_pre . ':size:type'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':size_type'           => null,	// Non-standard / internal meta tag.
 
 				/**
 				 * Product ratings and reviews.
@@ -2284,9 +2284,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':original_price:currency'         => null,
 				$mt_pre . ':pretax_price:amount'             => null,
 				$mt_pre . ':pretax_price:currency'           => null,
+				$mt_pre . ':price_type'                      => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':price:amount'                    => null,
 				$mt_pre . ':price:currency'                  => null,
-				$mt_pre . ':price:type'                      => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price:amount'               => null,
 				$mt_pre . ':sale_price:currency'             => null,
 				$mt_pre . ':sale_price_dates:start'          => null,

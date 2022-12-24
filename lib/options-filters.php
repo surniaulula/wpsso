@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
 					case 'schema_def_job_location_id':		// Default Job Location.
 					case 'schema_def_job_location_type':		// Default Job Location Type.
-					case 'schema_def_product_adult_oriented':	// Default Product Adult Oriented.
+					case 'schema_def_product_adult_type':		// Default Product Adult Type.
 					case 'schema_def_product_age_group':		// Default Product Age Group.
 					case 'schema_def_product_category':		// Default Product Google Category ID.
 					case 'schema_def_product_condition':		// Default Product Condition.
@@ -478,7 +478,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_no_title_text':			// No Title Text.
 				case 'plugin_no_desc_text':			// No Description Text.
 				case 'plugin_shortener':
-				case 'product_adult_oriented':
+				case 'product_adult_type':
 				case 'product_age_group':
 				case 'product_avail':
 				case 'product_category':			// Product Google Category ID.

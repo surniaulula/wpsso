@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-b.2',	// Plugin version.
-					'opt_version' => '931',		// Increment when changing default option values.
+					'version'     => '14.0.0-b.3',	// Plugin version.
+					'opt_version' => '932',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1497,11 +1497,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Schema Defaults > Product.
 					 */
-					'schema_def_product_adult_oriented' => 'none',					// Default Product Adult Oriented.
-					'schema_def_product_age_group'      => 'none',					// Default Product Age Group.
-					'schema_def_product_category'       => 'none',					// Default Product Google Category.
-					'schema_def_product_condition'      => 'https://schema.org/NewCondition',	// Default Product Condition.
-					'schema_def_product_price_type'     => 'https://schema.org/ListPrice',		// Default Product Price Type.
+					'schema_def_product_adult_type' => 'none',				// Default Product Adult Type.
+					'schema_def_product_age_group'  => 'none',				// Default Product Age Group.
+					'schema_def_product_category'   => 'none',				// Default Product Google Category.
+					'schema_def_product_condition'  => 'https://schema.org/NewCondition',	// Default Product Condition.
+					'schema_def_product_price_type' => 'https://schema.org/ListPrice',	// Default Product Price Type.
 
 					/**
 					 * Advanced Settings > Schema Defaults > Review.
@@ -1982,28 +1982,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
-					'plugin_attr_product_adult_oriented'     => 'Adult Oriented',	// Adult Oriented Attribute Name.
+					'plugin_attr_product_adult_type'         => 'Adult Type',	// Adult Type Attribute Name.
 					'plugin_attr_product_age_group'          => 'Age Group',	// Age Group Attribute Name.
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
 					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
-					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
-					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
-					'plugin_attr_product_gtin13'             => 'EAN',		// GTIN-13 (EAN) Attribute Name.
-					'plugin_attr_product_gtin12'             => 'UPC',		// GTIN-12 (UPC) Attribute Name.
-					'plugin_attr_product_gtin8'              => 'GTIN-8',		// GTIN-8 Attribute Name.
-					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
-					'plugin_attr_product_height_value'       => 'Net Height',	// Net Height Attribute Name.
-					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
-					'plugin_attr_product_length_value'       => 'Net Length',	// Net Length / Depth Attribute Name.
+					'plugin_attr_product_fluid_volume_value' => '',			// Fluid Volume Attribute Name.
+					'plugin_attr_product_gtin14'             => '',			// GTIN-14 Attribute Name.
+					'plugin_attr_product_gtin13'             => '',			// GTIN-13 (EAN) Attribute Name.
+					'plugin_attr_product_gtin12'             => '',			// GTIN-12 (UPC) Attribute Name.
+					'plugin_attr_product_gtin8'              => '',			// GTIN-8 Attribute Name.
+					'plugin_attr_product_gtin'               => '',			// GTIN Attribute Name.
+					'plugin_attr_product_height_value'       => '',			// Net Height Attribute Name.
+					'plugin_attr_product_isbn'               => '',			// ISBN Attribute Name.
+					'plugin_attr_product_length_value'       => '',			// Net Length / Depth Attribute Name.
 					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
-					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
+					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute Name.
 					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
 					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
 					'plugin_attr_product_size_type'          => 'Size Type',	// Size Type Attribute Name.
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
-					'plugin_attr_product_weight_value'       => 'Net Weight',	// Net Weight Attribute Name.
-					'plugin_attr_product_width_value'        => 'Net Width',	// Net Width Attribute Name.
+					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute Name.
+					'plugin_attr_product_width_value'        => '',			// Net Width Attribute Name.
 
 					/**
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
@@ -2014,7 +2014,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'                => '',	// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                   => '',	// How-To Tools Custom Field.
 					'plugin_cf_img_url'                       => '',	// Image URL Custom Field.
-					'plugin_cf_product_adult_oriented'        => '',	// Product Adult Oriented Custom Field.
+					'plugin_cf_product_adult_type'            => '',	// Product Adult Type Custom Field.
 					'plugin_cf_product_age_group'             => '',	// Product Age Group Custom Field.
 					'plugin_cf_product_avail'                 => '',	// Product Availability Custom Field.
 					'plugin_cf_product_brand'                 => '',	// Product Brand Custom Field.
@@ -2107,7 +2107,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'                => 'schema_howto_supply',		// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                   => 'schema_howto_tool',		// How-To Tools Custom Field.
 					'plugin_cf_img_url'                       => 'og_img_url',
-					'plugin_cf_product_adult_oriented'        => 'product_adult_oriented',
+					'plugin_cf_product_adult_type'            => 'product_adult_type',
 					'plugin_cf_product_age_group'             => 'product_age_group',
 					'plugin_cf_product_avail'                 => 'product_avail',
 					'plugin_cf_product_brand'                 => 'product_brand',			// Product Brand Custom Field.
@@ -2788,7 +2788,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'                => 'How-To Supplies Custom Field',
 					'plugin_cf_howto_tools'                   => 'How-To Tools Custom Field',
 					'plugin_cf_img_url'                       => 'Image URL Custom Field',
-					'plugin_cf_product_adult_oriented'        => 'Product Adult Oriented Custom Field',
+					'plugin_cf_product_adult_type'            => 'Product Adult Type Custom Field',
 					'plugin_cf_product_age_group'             => 'Product Age Group Custom Field',
 					'plugin_cf_product_avail'                 => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'                 => 'Product Brand Custom Field',
@@ -2832,7 +2832,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Attribute option labels.
 				 */
 				'attr_labels' => array(
-					'plugin_attr_product_adult_oriented'     => 'Adult Oriented Attribute Name',
+					'plugin_attr_product_adult_type'         => 'Adult Type Attribute Name',
 					'plugin_attr_product_age_group'          => 'Age Group Attribute Name',
 					'plugin_attr_product_brand'              => 'Brand Attribute Name',
 					'plugin_attr_product_color'              => 'Color Attribute Name',
@@ -2889,7 +2889,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * See https://support.google.com/merchants/answer/6324508.
 				 */
-				'adult_oriented' => array(
+				'adult_type' => array(
 					'none'                                                        => '[None]',
 					'https://schema.org/AlcoholConsideration'                     => 'Alcohol',
 					'https://schema.org/DangerousGoodConsideration'               => 'DangerousGood',
@@ -3407,7 +3407,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 					 */
 					'product' => array(
-						'product:adult_oriented'            => 'product_adult_oriented',	// Non-standard / internal meta tag.
+						'product:adult_type'                => 'product_adult_type',		// Non-standard / internal meta tag.
 						'product:age_group'                 => 'product_age_group',
 						'product:availability'              => 'product_avail',
 						'product:brand'                     => 'product_brand',
@@ -3438,9 +3438,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:pattern'                   => 'product_pattern',
 						'product:pretax_price:amount'       => '',				// Used by WooCommerce module.
 						'product:pretax_price:currency'     => '',				// Used by WooCommerce module.
+						'product:price_type'                => 'product_price_type',		// Non-standard / internal meta tag.
 						'product:price:amount'              => 'product_price',
 						'product:price:currency'            => 'product_currency',
-						'product:price:type'                => 'product_price_type',		// Non-standard / internal meta tag.
 						'product:purchase_limit'            => '',
 						'product:retailer_category'         => '',				// Non-standard / internal meta tag.
 						'product:retailer_item_id'          => '',				// Product ID.
@@ -3460,7 +3460,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_width:value'      => 'product_shipping_width_value',	// Non-standard / internal meta tag.
 						'product:shipping_width:units'      => 'product_shipping_width_units',	// Non-standard / internal meta tag.
 						'product:size'                      => 'product_size',
-						'product:size:type'                 => 'product_size_type',		// Non-standard / internal meta tag.
+						'product:size_type'                 => 'product_size_type',		// Non-standard / internal meta tag.
 						'product:target_gender'             => 'product_target_gender',
 						'product:upc'                       => 'product_gtin12',
 						'product:weight:value'              => 'product_weight_value',
