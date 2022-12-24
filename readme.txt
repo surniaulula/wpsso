@@ -252,7 +252,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product Shipping Height
 		* Product Shipping Weight
 * **Improvements**
-	* Updated the WooCommerce integration module to provide shipping dimensions and weight.
+	* Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata options to show default dimension, weight, and fluid volume units.
+	* Updated the WooCommerce integration module to provide shipping dimensions and weight (instead of product net dimensions and weight).
 	* Removed Document SSO product options, attributes, and custom fields:
 		* Product Depth
 		* Product Depth Attribute Name
