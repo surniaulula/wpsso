@@ -1449,12 +1449,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton .editor-post-publish-panel {
 					top:32px;
 				}
-				body.wp-admin.woocommerce-embed-page.has-toolbar-notices .woocommerce-layout__header {
-					top:32px;
-				}
-				body.wp-admin.woocommerce-embed-page.has-toolbar-notices #wpbody {
-					padding-top:32px;
-				}
 				@keyframes blinker {
 					25% { opacity: 0; }
 					75% { opacity: 1; }
