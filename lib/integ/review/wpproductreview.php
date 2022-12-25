@@ -88,9 +88,9 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 		public function get_review_options( $post_id ) {
 
 			return array(
-				'schema_review_rating'      => (float) get_post_meta( $post_id, $rating_meta = 'wppr_rating', $single = true ),
-				'schema_review_rating_from' => 1,
-				'schema_review_rating_to'   => 100,
+				'schema_review_rating'     => (float) get_post_meta( $post_id, $rating_meta = 'wppr_rating', $single = true ),
+				'schema_review_rating_min' => 1,
+				'schema_review_rating_max' => 100,
 			);
 		}
 

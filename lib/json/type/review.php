@@ -58,8 +58,8 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'reviewRating' ], $md_opts, array(
 				'alternateName' => 'schema_review_rating_alt_name',
 				'ratingValue'   => 'schema_review_rating',
-				'worstRating'   => 'schema_review_rating_from',
-				'bestRating'    => 'schema_review_rating_to',
+				'worstRating'   => 'schema_review_rating_min',
+				'bestRating'    => 'schema_review_rating_max',
 			) );
 
 			$json_ret[ 'reviewRating' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_reviewrating',

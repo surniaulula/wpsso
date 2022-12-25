@@ -1971,12 +1971,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
+				/**
+				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
+				 */
 				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
-					'value'    => 'product:quantity:value',
-					'minValue' => 'product:quantity:minvalue',
-					'maxValue' => 'product:quantity:maxvalue',
-					'unitCode' => 'product:quantity:unitcode',	// UN/CEFACT Common Code (3 characters).
-					'unitText' => 'product:quantity:unittext',
+					'value'    => 'product:eligible_quantity:value',
+					'minValue' => 'product:eligible_quantity:min_value',
+					'maxValue' => 'product:eligible_quantity:max_value',
+					'unitCode' => 'product:eligible_quantity:unit_code',
+					'unitText' => 'product:eligible_quantity:unit_text',
 				) );
 
 				if ( false !== $quantity ) {
@@ -2285,11 +2288,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$quant_id = 'qv';
 					$quantity = array();
 
+					/**
+					 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
+					 */
 					foreach( array(
 						$delivery_opt_pre . '_name'      => 'name',
 						$delivery_opt_pre . '_minimum'   => 'minValue',
 						$delivery_opt_pre . '_maximum'   => 'maxValue',
-						$delivery_opt_pre . '_unit_code' => 'unitCode',	// UN/CEFACT Common Code (3 characters).
+						$delivery_opt_pre . '_unit_code' => 'unitCode',
 						$delivery_opt_pre . '_unit_text' => 'unitText',
 					) as $opt_key => $quant_prop_name ) {
 

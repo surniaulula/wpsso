@@ -1044,6 +1044,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'tooltip'  => 'schema_def_product_condition',
 					'content'  => $form->get_no_select( 'schema_def_product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ),
 				),
+				'schema_def_product_energy_efficiency_min_max' => array(
+					'td_class' => 'blank',
+					'label'   => _x( 'Default Product Energy Rating Range', 'option label', 'wpsso' ),
+					'tooltip' => 'schema_def_product_energy_efficiency_min_max',
+					'content' => '' .
+						$form->get_no_select( 'schema_def_product_energy_efficiency_min', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
+							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ) . ' ' .
+						_x( 'to', 'option comment', 'wpsso' ) . ' ' .
+						$form->get_no_select( 'schema_def_product_energy_efficiency_max', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
+							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ),
+				),
 				'schema_def_product_age_group' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Age Group', 'option label', 'wpsso' ),

@@ -133,13 +133,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				829 => array(
 					'book_isbn' => 'schema_book_isbn',
 				),
-				920 => array(
-					'article_section' => 'schema_article_section',	// Renamed for WPSSO Core v13.5.0.
-					'reading_mins'    => 'schema_reading_mins',	// Renamed for WPSSO Core v13.5.0.
+				920 => array(	// Renamed for WPSSO Core v13.5.0.
+					'article_section' => 'schema_article_section',
+					'reading_mins'    => 'schema_reading_mins',
 				),
-				931 => array(
-					'product_depth_value'    => 'product_length_value',	// Renamed for WPSSO Core v13.14.0.
-					'product_adult_oriented' => 'product_adult_type',	// Renamed for WPSSO Core v13.14.0.
+				933 => array(	// Renamed for WPSSO Core v14.0.0.
+					'product_depth_value'       => 'product_length_value',
+					'product_adult_oriented'    => 'product_adult_type',
+					'schema_review_rating_from' => 'schema_review_rating_min',
+					'schema_review_rating_to'   => 'schema_review_rating_max',
 				),
 			),
 		);
@@ -318,6 +320,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_age_group          = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
 				$def_product_cat        = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
 				$def_product_cond       = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
+				$def_energy_eff_min     = isset( $opts[ 'schema_def_product_energy_efficiency_min' ] ) ? $opts[ 'schema_def_product_energy_efficiency_min' ] :
+					'https://schema.org/EUEnergyEfficiencyCategoryD';
+				$def_energy_eff_max     = isset( $opts[ 'schema_def_product_energy_efficiency_max' ] ) ? $opts[ 'schema_def_product_energy_efficiency_max' ] :
+					'https://schema.org/EUEnergyEfficiencyCategoryA3Plus';
 				$def_price_type         = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
 					'https://schema.org/ListPrice';
 
@@ -408,14 +414,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_price_type'            => $def_price_type,
 					'product_currency'              => $def_currency,
 					'product_min_advert_price'      => '0.00',			// Product Min Advert Price.
-					'product_avail'                 => 'none',
-					'product_condition'             => $def_product_cond,
-					'product_efficiency'            => '',
-					'product_efficiency_min'        => '',
-					'product_efficiency_max'        => '',
-					'product_color'                 => '',
+					'product_avail'                 => 'none',			// Product Availability.
+					'product_condition'             => $def_product_cond,		// Product Condition.
+					'product_energy_efficiency'     => 'none',			// Product Energy Rating.
+					'product_energy_efficiency_min' => $def_energy_eff_min,
+					'product_energy_efficiency_max' => $def_energy_eff_max,
 					'product_material'              => '',
 					'product_pattern'               => '',
+					'product_color'                 => '',
 					'product_target_gender'         => 'none',
 					'product_size'                  => '',
 					'product_size_type'             => 'none',
@@ -639,8 +645,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema Review.
 					 */
 					'schema_review_rating'          => '0.0',	// Review Rating.
-					'schema_review_rating_from'     => '1',		// Review Rating (From).
-					'schema_review_rating_to'       => '5',		// Review Rating (To).
+					'schema_review_rating_min'      => '1',		// Review Rating (From).
+					'schema_review_rating_max'      => '5',		// Review Rating (To).
 					'schema_review_rating_alt_name' => '',		// Rating Value Name.
 
 					/**
@@ -1753,44 +1759,36 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			/**
-			 * A review rating must be greater than 0.
+			 * Check product energy efficiency rating and review rating.
 			 */
-			if ( isset( $md_opts[ 'schema_review_rating' ] ) && $md_opts[ 'schema_review_rating' ] > 0 ) {
+			foreach ( array( 'product_energy_efficiency', 'schema_review_rating' ) as $md_rating_key ) {
 
-				/**
-				 * Fallback to the default values if the from/to is empty.
-				 */
-				foreach ( array(
-					'schema_review_rating_from',
-					'schema_review_rating_to',
-				) as $md_key ) {
+				if ( ! empty( $md_opts[ $md_rating_key ] ) ) {
 
-					if ( empty( $md_opts[ $md_key ] ) && isset( $md_defs[ $md_key ] ) ) {
-
-						$md_opts[ $md_key ] = $md_defs[ $md_key ];
+					/**
+					 * Fallback to default values if the min/max is empty.
+					 */
+					foreach ( array( $md_rating_key . '_min', $md_rating_key . '_max' ) as $md_key ) {
+	
+						if ( empty( $md_opts[ $md_key ] ) && isset( $md_defs[ $md_key ] ) ) {
+	
+							$md_opts[ $md_key ] = $md_defs[ $md_key ];
+						}
 					}
-				}
-
-			} else {
-
-				foreach ( array(
-					'schema_review_rating',
-					'schema_review_rating_from',
-					'schema_review_rating_to',
-				) as $md_key ) {
-
-					unset( $md_opts[ $md_key ] );
+	
+				} else {
+	
+					foreach ( array( $md_rating_key, $md_rating_key . '_min', $md_rating_key . '_max' ) as $md_key ) {
+	
+						unset( $md_opts[ $md_key ] );
+					}
 				}
 			}
 
 			/**
 			 * Check and maybe fix missing event date, time, and timezone values.
 			 */
-			foreach ( array(
-				'schema_event_start',
-				'schema_event_end',
-				'schema_event_previous',
-			) as $md_pre ) {
+			foreach ( array( 'schema_event_start', 'schema_event_end', 'schema_event_previous' ) as $md_pre ) {
 
 				/**
 				 * Unset date / time if same as the default value.
@@ -1850,11 +1848,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 
-			foreach( array(
-				'schema_event',
-				'schema_review_item_product',
-				'schema_review_item_software_app',
-			) as $md_pre ) {
+			foreach( array( 'schema_event', 'schema_review_item_product', 'schema_review_item_software_app' ) as $md_pre ) {
 
 				foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 

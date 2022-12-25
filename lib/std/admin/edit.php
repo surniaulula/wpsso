@@ -314,11 +314,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Review Rating', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_rating',
-					'content'  => $form->get_no_input_value( $form->defaults[ 'schema_review_rating' ], 'short is_required' ) . ' ' .
+					'content'  => '' .
+						$form->get_no_input_value( $form->defaults[ 'schema_review_rating' ],
+							$css_class = 'rating is_required' ) . ' ' .
 						_x( 'from', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_from' ], 'short' ) . ' ' .
+						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_min' ],
+							$css_class = 'rating' ) . ' ' .
 						_x( 'to', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_to' ], 'short' ),
+						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_max' ], 
+							$css_class = 'rating' ),
 				),
 				'schema_review_rating_alt_name' => array(
 					'tr_class' => $type_row_class[ 'review' ],
@@ -968,13 +972,22 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
-				'schema_product_color' => array(
+				'schema_product_energy_efficiency' => array(
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
+					'label'    => _x( 'Product Energy Rating', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_energy_efficiency',
+					'content'  => '' .
+						$form->get_no_select( 'product_energy_efficiency', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
+							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ) . ' ' .
+						_x( 'from', 'option comment', 'wpsso' ) . ' ' .
+						$form->get_no_select( 'product_energy_efficiency_min', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
+							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ) . ' ' .
+						_x( 'to', 'option comment', 'wpsso' ) . ' ' .
+						$form->get_no_select( 'product_energy_efficiency_max', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
+							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ),
+
 				),
 				'schema_product_material' => array(
 					'tr_class' => $type_row_class[ 'product' ],
@@ -991,6 +1004,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Pattern', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_pattern',
 					'content'  => $form->get_no_input( 'product_pattern', $css_class = '', $css_id = '', $holder = true ),
+				),
+				'schema_product_color' => array(
+					'tr_class' => $type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_color',
+					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_target_gender' => array(
 					'tr_class' => $type_row_class[ 'product' ],

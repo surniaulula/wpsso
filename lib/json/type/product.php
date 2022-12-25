@@ -103,7 +103,25 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			}
 
 			/**
-			 * Audience.
+			 * Energy Efficiency.
+			 */
+			if ( WpssoSchema::is_valid_key( $mt_og, 'product:energy_efficiency:value' ) ) {	// Not null, an empty string, or 'none'.
+
+				$energy_efficiency = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array(
+					'hasEnergyEfficiencyCategory' => 'product:energy_efficiency:value',
+					'energyEfficiencyScaleMin'    => 'product:energy_efficiency:min_value',
+					'energyEfficiencyScaleMax'    => 'product:energy_efficiency:max_value',
+				) );
+				
+				if ( false !== $energy_efficiency ) {	// Just in case.
+					
+					$json_ret[ 'hasEnergyConsumptionDetails' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/EnergyConsumptionDetails',
+						$energy_efficiency );
+				}
+			}
+
+			/**
+			 * People Audience.
 			 */
 			$single_audience = array();
 
@@ -138,7 +156,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			/**
 			 * QuantitativeValue (width, height, length, depth, weight).
 			 *
-			 * unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
+			 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 			 *
 			 * Example $names array:
 			 *

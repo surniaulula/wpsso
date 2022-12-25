@@ -115,8 +115,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_recipe_total_mins':
 					case 'schema_recipe_total_secs':
 					case 'schema_review_rating':
-					case 'schema_review_rating_from':
-					case 'schema_review_rating_to':
+					case 'schema_review_rating_min':
+					case 'schema_review_rating_max':
 
 						return 'blank_num';
 
@@ -196,6 +196,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_product_age_group':		// Default Product Age Group.
 					case 'schema_def_product_category':		// Default Product Google Category ID.
 					case 'schema_def_product_condition':		// Default Product Condition.
+					case 'schema_def_product_energy_efficiency_min':
+					case 'schema_def_product_energy_efficiency_max':
 					case 'schema_def_product_price_type':		// Default Product Price Type.
 					case 'schema_def_prov_org_id':			// Default Service Provider Org.
 					case 'schema_def_prov_person_id':		// Default Service Provider Person.
@@ -482,7 +484,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_age_group':
 				case 'product_avail':
 				case 'product_category':			// Product Google Category ID.
-				case 'product_condition':
+				case 'product_condition':			// Product Condition.
+				case 'product_energy_efficiency':		// Product Energy Rating.
+				case 'product_energy_efficiency_min':
+				case 'product_energy_efficiency_max':
 				case 'product_price_type':
 				case 'product_size_type':
 				case 'product_target_gender':

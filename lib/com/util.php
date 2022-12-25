@@ -2227,30 +2227,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product attributes and descriptions.
 				 */
-				$mt_pre . ':url'                 => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':adult_type'          => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':age_group'           => null,
-				$mt_pre . ':availability'        => null,
-				$mt_pre . ':brand'               => null,
-				$mt_pre . ':category'            => null,	// The product category according to the Google product taxonomy.
-				$mt_pre . ':retailer_category'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':condition'           => null,
-				$mt_pre . ':efficiency:value'    => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':efficiency:minvalue' => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':efficiency:maxvalue' => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':expiration_time'     => null,
-				$mt_pre . ':color'               => null,
-				$mt_pre . ':material'            => null,
-				$mt_pre . ':pattern'             => null,
-				$mt_pre . ':purchase_limit'      => null,
-				$mt_pre . ':quantity:value'      => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:minvalue'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:maxvalue'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unitcode'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unittext'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':target_gender'       => null,
-				$mt_pre . ':size'                => null,
-				$mt_pre . ':size_type'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':url'                         => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':adult_type'                  => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':age_group'                   => null,
+				$mt_pre . ':availability'                => null,
+				$mt_pre . ':brand'                       => null,
+				$mt_pre . ':category'                    => null,	// The product category according to the Google product taxonomy.
+				$mt_pre . ':retailer_category'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':condition'                   => null,
+				$mt_pre . ':energy_efficiency:value'     => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':energy_efficiency:min_value' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':energy_efficiency:max_value' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':expiration_time'             => null,
+				$mt_pre . ':color'                       => null,
+				$mt_pre . ':material'                    => null,
+				$mt_pre . ':pattern'                     => null,
+				$mt_pre . ':purchase_limit'              => null,
+				$mt_pre . ':eligible_quantity:value'     => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':eligible_quantity:min_value' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':eligible_quantity:max_value' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':eligible_quantity:unit_code' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':eligible_quantity:unit_text' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':target_gender'               => null,
+				$mt_pre . ':size'                        => null,
+				$mt_pre . ':size_type'                   => null,	// Non-standard / internal meta tag.
 
 				/**
 				 * Product ratings and reviews.

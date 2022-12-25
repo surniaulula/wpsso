@@ -689,6 +689,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label'  => _x( 'Product Availability', 'option label', 'wpsso' ),
 						'name'   => _x( 'product availability', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),
+						'about'  => __( 'https://support.google.com/merchants/answer/6324448', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_availability' ),
 					),
 					'product_brand' => array(
@@ -707,17 +708,36 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Color', 'option label', 'wpsso' ),
 						'name'  => _x( 'product color', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product color', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324487', 'wpsso' ),
 					),
 					'product_condition' => array(
 						'label'  => _x( 'Product Condition', 'option label', 'wpsso' ),
 						'name'   => _x( 'product condition', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),
-						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' ),
+						'about'  => __( 'https://support.google.com/merchants/answer/6324469', 'wpsso' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_condition',
+							$val_prefix = '', $val_suffix = 'Condition' ),
 					),
 					'product_currency' => array(
 						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
 						'name'  => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_energy_efficiency' => array(
+						'label'  => _x( 'Product Energy Rating', 'option label', 'wpsso' ),
+						'name'   => _x( 'product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
+						'about'  => 'https://support.google.com/merchants/answer/7562785',
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'energy_efficiency',
+							$val_prefix = 'EUEnergyEfficiencyCategory' ),
+					),
+					'product_energy_efficiency_min_max' => array(
+						'label'  => _x( 'Product Energy Rating Range', 'option label', 'wpsso' ),
+						'name'   => _x( 'product energy efficiency rating minimum and maximum', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product energy efficiency rating range', 'tooltip fragment', 'wpsso' ),
+						'about'  => 'https://support.google.com/merchants/answer/7562785',
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'energy_efficiency',
+							$val_prefix = 'EUEnergyEfficiencyCategory' ),
 					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
@@ -758,6 +778,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Net Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net height', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product net height, as opposed to a shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
 					'product_isbn' => array(
 						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -769,6 +790,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Net Len. / Depth', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net length or depth', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product net length or depth, as opposed to a shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
@@ -813,21 +835,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Shipping Height', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping height', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product shipping or packaged height used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324498', 'wpsso' ),
 					),
 					'product_shipping_length_value' => array(
 						'label' => _x( 'Product Shipping Length', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping length', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product shipping or packaged length used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324498', 'wpsso' ),
 					),
 					'product_shipping_weight_value' => array(
 						'label' => _x( 'Product Shipping Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping weight', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324503', 'wpsso' ),
 					),
 					'product_shipping_width_value' => array(
 						'label' => _x( 'Product Shipping Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product shipping width', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324498', 'wpsso' ),
 					),
 					'product_size' => array(
 						'label' => _x( 'Product Size', 'option label', 'wpsso' ),
@@ -853,11 +879,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Net Weight', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net weight', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product net weight, as opposed to a shipping or packaged weight used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
 					'product_width_value' => array(
 						'label' => _x( 'Product Net Width', 'option label', 'wpsso' ),
 						'name'  => _x( 'product net width', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product net width, as opposed to a shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),

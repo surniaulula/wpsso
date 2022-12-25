@@ -117,6 +117,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition',
 					$enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' );
 
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency',
+					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency_min',
+					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency_max',
+					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type',
 					$enum_key = 'price_type' );
 
@@ -3433,7 +3442,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Exclude empty string values.
 				 */
-				if ( ! isset( $assoc[ $key_name ] ) || $assoc[ $key_name ] === '' ) {
+				if ( isset( $assoc[ $key_name ] ) ) {
+				
+					$assoc[ $key_name ] = trim( $assoc[ $key_name ] );	// Just in case.
+				}
+
+				if ( ! isset( $assoc[ $key_name ] ) || '' === $assoc[ $key_name ] ) {
 
 					continue;
 				}

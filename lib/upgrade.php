@@ -557,13 +557,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_product_condition'  => 'schema_def_product_condition',
 					'og_def_product_price_type' => 'schema_def_product_price_type',
 				),
-				920 => array(
-					'og_def_article_section' => 'schema_def_article_section',	// Renamed for WPSSO Core v13.5.0.
+				920 => array(	// Renamed for WPSSO Core v13.5.0.
+					'og_def_article_section' => 'schema_def_article_section',
 				),
-				931 => array(
-					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',	// Renamed for WPSSO Core v14.0.0.
-					'plugin_attr_product_adult_oriented' => 'plugin_attr_product_adult_type',	// Renamed for WPSSO Core v14.0.0.
-					'plugin_cf_product_adult_oriented'   => 'plugin_cf_product_adult_type',		// Renamed for WPSSO Core v14.0.0.
+				931 => array(	// Renamed for WPSSO Core v14.0.0.
+					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',
+					'plugin_attr_product_adult_oriented' => 'plugin_attr_product_adult_type',
+					'plugin_cf_product_adult_oriented'   => 'plugin_cf_product_adult_type',
 				),
 			),
 		);

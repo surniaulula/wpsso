@@ -3665,6 +3665,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_brand]              => Brand
 		 *		[product_color]              => Color
 		 *		[product_condition]          => Condition
+		 *		[product_energy_efficiency]  => Energy Rating
 		 *		[product_fluid_volume_value] => Volume
 		 *		[product_gtin14]             => GTIN-14
 		 *		[product_gtin14]             => GTIN-13
