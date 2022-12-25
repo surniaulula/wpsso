@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-b.4 (2022/12/24)**
+**Version 14.0.0-b.4 (2022/12/25)**
 
 * **New Features**
 	* Added support for the Schema Product 'hasEnergyConsumptionDetails' property.
@@ -752,7 +752,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.0.0-b.4 =
 
-(2022/12/24) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
+(2022/12/25) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
 
 = 13.13.0 =
 
