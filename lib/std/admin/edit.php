@@ -898,6 +898,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
+			$dimension_units    = WpssoUtilUnits::get_dimension_units();
+			$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
+			$weight_units       = WpssoUtilUnits::get_weight_units();
 
 			/**
 			 * Note that unlike most schema option names, product options start with 'product_' and not 'schema_'.
