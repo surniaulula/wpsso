@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-rc.1 (2022/12/26)**
+**Version 14.0.0-rc.2 (2022/12/26)**
 
 * **New Features**
 	* Added support for the Schema Product 'hasEnergyConsumptionDetails' property.
@@ -244,8 +244,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Default Fluid Volume Units
 	* Added new options in the Advanced Settings page:
 		* Default Product Energy Rating Range
+		* Default Product Size System
 	* Added new product related Document SSO options, attributes, and custom fields:
 		* Product Energy Rating
+		* Product Size System
 		* Product Net Len. / Depth
 		* Product Net Width
 		* Product Net Height
@@ -295,23 +297,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtilWoocommerce::get_weight_units()`.
 		* `WpssoUtilWoocommerce::get_weight()`.
 	* Renamed internal meta tags:
-		* 'product:adult_oriented' to 'product:adult_type'
-		* 'product:quantity:value' to 'product:eligible_quantity:value'
+		* 'product:adult_oriented'    to 'product:adult_type'
+		* 'product:quantity:value'    to 'product:eligible_quantity:value'
 		* 'product:quantity:minvalue' to 'product:eligible_quantity:min_value'
 		* 'product:quantity:maxvalue' to 'product:eligible_quantity:max_value'
 		* 'product:quantity:unitcode' to 'product:eligible_quantity:unit_code'
 		* 'product:quantity:unittext' to 'product:eligible_quantity:unit_text'
-		* 'product:price:type' to 'product:price_type'
-		* 'product:size:type' to 'product:size_type'
+		* 'product:price:type'        to 'product:price_type'
+		* 'product:size:type'         to 'product:size_group'
 	* Renamed options keys:
-		* 'schema_def_product_adult_oriented' to 'schema_def_product_adult_type'
-		* 'plugin_attr_product_adult_oriented' to 'plugin_attr_product_adult_type'
-		* 'plugin_cf_product_adult_oriented' to 'plugin_cf_product_adult_type'
+		* 'plugin_attr_product_adult_oriented' to 'plugin_attr_product_adult_type',
+		* 'plugin_attr_product_size_type'      to 'plugin_attr_product_size_group',
+		* 'plugin_cf_product_adult_oriented'   to 'plugin_cf_product_adult_type',
+		* 'plugin_cf_product_size_type'        to 'plugin_cf_product_size_group',
+		* 'schema_def_product_adult_oriented'  to 'schema_def_product_adult_type',
 	* Renamed metadata options keys:
-		* 'product_depth_value' to 'product_length_value'
-		* 'product_adult_oriented' to 'product_adult_type' 
-		* 'schema_review_rating_from' to 'schema_review_rating_min'
-		* 'schema_review_rating_to' to 'schema_review_rating_max'
+		* 'product_adult_oriented'    to 'product_adult_type',
+		* 'product_depth_value'       to 'product_length_value',
+		* 'product_size_type'         to 'product_size_group',
+		* 'schema_review_rating_from' to 'schema_review_rating_min',
+		* 'schema_review_rating_to'   to 'schema_review_rating_max',
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -750,7 +755,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.0.0-rc.1 =
+= 14.0.0-rc.2 =
 
 (2022/12/26) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
 
