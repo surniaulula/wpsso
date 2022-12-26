@@ -7772,13 +7772,15 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:84
-#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-schema.php:188
-#: lib/messages-tooltip-schema.php:319
+#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:752
+#: lib/messages-tooltip-plugin.php:783 lib/messages-tooltip-schema.php:188
+#: lib/messages-tooltip-schema.php:320
 msgid ""
-"<a href=\"%1$s\">See this webpage for more information about choosing %2$s</"
-"a>."
+"<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
+"value</a>."
 msgstr ""
 
 #. translators: %s is a singular item reference, for example 'a product size group'.
@@ -8378,7 +8380,7 @@ msgid ""
 "\"Product\" for a review of a product)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:757 lib/messages-tooltip-schema.php:332
+#: lib/messages-tooltip-meta-schema.php:757 lib/messages-tooltip-schema.php:334
 msgid ""
 "Note that although the Schema.org standard allows the subject of a review to "
 "be any Schema type, <a href=\"%1$s\">Google only allows reviews for a few "
@@ -9426,32 +9428,32 @@ msgstr ""
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:751
+#: lib/messages-tooltip-plugin.php:757
 msgid ""
 "The attribute value from the e-commerce plugin can be an empty string or one "
 "of these values (case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:769
+#: lib/messages-tooltip-plugin.php:775
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:772
+#: lib/messages-tooltip-plugin.php:778
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:776
+#: lib/messages-tooltip-plugin.php:788
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:783
+#: lib/messages-tooltip-plugin.php:795
 msgid ""
 "Note that the \"%s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "
@@ -9585,7 +9587,7 @@ msgstr ""
 msgid "You can select a different %s when editing a product."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:330
+#: lib/messages-tooltip-schema.php:332
 msgid ""
 "A default Schema type for the subject of this review (for example, Schema "
 "type \"Product\" for a review of a product)."

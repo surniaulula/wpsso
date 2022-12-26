@@ -746,6 +746,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) ) . ' ';
 
+					if ( ! empty( $attr_frags[ 'about' ] ) ) {
+
+						// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] );
+					}
+
 					if ( ! empty( $attr_frags[ 'values' ] ) ) {
 
 						$text .= sprintf( __( 'The attribute value from the e-commerce plugin can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
@@ -770,6 +776,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
 						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
+
+						if ( ! empty( $cf_frags[ 'about' ] ) ) {
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] );
+						}
 
 						if ( ! empty( $cf_frags[ 'values' ] ) ) {
 
