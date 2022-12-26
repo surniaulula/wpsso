@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-b.4',	// Plugin version.
-					'opt_version' => '934',		// Increment when changing default option values.
+					'version'     => '14.0.0-b.5',	// Plugin version.
+					'opt_version' => '935',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2102,7 +2102,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Custom field to meta data index.
+				 * Provides a custom field key to meta data options key index.
 				 */
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'                => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
@@ -2153,11 +2153,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Read and split custom field values into numbered meta keys.
+				 * Provides information to read and split custom field values into numbered meta keys.
 				 */
 				'cf_md_multi' => array(
-					'schema_addl_type_url'      => true,	// Microdata Type URLs.
-					'schema_howto_step'         => array(	// How-To Name.
+					'schema_addl_type_url' => true,		// Microdata Type URLs.
+					'schema_howto_step'    => array(	// How-To Name.
 						'schema_howto_step_section',	// How-To Step or Group / Section.
 						'schema_howto_step_text',	// How-To Description.
 						'schema_howto_step_img_id',	// How-To Image ID.
@@ -2172,7 +2172,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema_recipe_instruction_img_id',	// How-To Image ID.
 						'schema_recipe_instruction_img_id_lib',
 					),
-					'schema_sameas_url'         => true,	// Same-As URLs.
+					'schema_sameas_url'                    => true,	// Same-As URLs.
+					'schema_webpage_reviewed_by_org_id'    => true,
+					'schema_webpage_reviewed_by_person_id' => true,
 				),
 
 				/**
@@ -5193,6 +5195,63 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
+		 * Since WPSSO Core v14.0.0.
+		 *
+		 * Provides a custom field key to meta data options key index.
+		 *
+		 * Returns false or an options key.
+		 */
+		public static function get_cf_md_index( $md_key = false ) {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = self::$cf[ 'opt' ][ 'cf_md_index' ];
+			
+				/**
+				 * Hooked by WpssoProRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and
+				 * 'plugin_cf_recipe_instructions' values.
+				 */
+				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $local_cache );
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( isset( $local_cache[ $md_key ] ) ) {
+
+					return $local_cache[ $md_key ];
+				}
+
+				return false;
+			}
+
+			return $local_cache;
+		}
+
+		/**
+		 * Since WPSSO Core v14.0.0.
+		 *
+		 * Provides information to read and split custom field values into numbered meta keys.
+		 *
+		 * Returns true, false, or an array.
+		 */
+		public static function get_cf_md_multi( $md_key = false ) {
+
+			if ( false !== $md_key ) {
+
+				if ( isset( self::$cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
+
+					return self::$cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ];
+				}
+
+				return false;
+			}
+
+			return self::$cf[ 'opt' ][ 'cf_md_multi' ];
+		}
+
+		/**
 		 * Since WPSSO Core v11.6.0.
 		 *
 		 * Returns an array of metadata keys (can be empty).
@@ -5205,7 +5264,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( is_array( $md_key ) ) {	// Just in case.
 
-				return $md_key;	// Return an array.
+				return $md_key;		// Return an array.
 
 			} elseif ( null === $local_cache ) {
 

@@ -1228,42 +1228,38 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			/**
-			 * Hooked by WpssoProRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
-			 */
-			$cf_md_index = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
-
 			$opts_labels = array();
+			$cf_md_index = WpssoConfig::get_cf_md_index();	// Uses a local cache.
 
-			foreach ( $cf_md_index as $opt_key => $md_key ) {
+			foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
 
 				/**
 				 * Make sure we have a label for the custom field option.
 				 */
-				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
+				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_cf_key ] ) ) {
 
-					$opts_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
+					$opts_labels[ $opt_cf_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_cf_key ];
 				}
 			}
 
 			$opts_transl = SucomUtil::get_options_transl( $opts_labels, $text_domain = 'wpsso' );
 
-			foreach ( $opts_transl as $opt_key => $opt_label_transl ) {
+			foreach ( $opts_transl as $opt_cf_key => $opt_label_transl ) {
 
 				/**
-				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
-				 * the option.
+				 * If we don't have a meta data options key, then clear the custom field name (just in case) and
+				 * disable the option.
 				 */
-				if ( empty( $cf_md_index[ $opt_key ] ) ) {
+				if ( empty( $cf_md_index[ $opt_cf_key ] ) ) {
 
-					$form->options[ $opt_key ] = '';
+					$form->options[ $opt_cf_key ] = '';
 				}
 
-				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
+				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_cf_key );
 
-				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( $opt_label_transl, '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_input( $opt_key, $css_class = '', $css_id = '', $holder = '' ) . $cmt_transl . '</td>';
+				$table_rows[ $opt_cf_key ] = '' .
+					$form->get_th_html( $opt_label_transl, '', $opt_cf_key ) .
+					'<td class="blank">' . $form->get_no_input( $opt_cf_key, $css_class = '', $css_id = '', $holder = '' ) . $cmt_transl . '</td>';
 			}
 
 			return $table_rows;

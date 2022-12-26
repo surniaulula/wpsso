@@ -732,6 +732,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_webpage_reviewed_last_timezone' => $def_timezone,	// Reviewed Last Timezone.
 				);
 
+				$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
+
+				foreach ( range( 0, $reviewed_by_max - 1 ) as $num ) {
+
+					$md_defs[ 'schema_webpage_reviewed_by_org_id_' . $num ]    = 'none';
+					$md_defs[ 'schema_webpage_reviewed_by_person_id_' . $num ] = 'none';
+				}
+
 				/**
 				 * Set before calling filters to prevent recursion.
 				 */
@@ -1031,7 +1039,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					foreach ( $md_defs as $md_defs_key => $md_defs_val ) {
 
-						if ( ! isset( $md_opts[ $md_defs_key ] ) && $md_defs_val !== '' ) {
+						if ( ! isset( $md_opts[ $md_defs_key ] ) && '' !== $md_defs_val ) {
 
 							$md_opts[ $md_defs_key ] = $md_defs[ $md_defs_key ];
 						}
@@ -1681,7 +1689,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/**
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
-			foreach ( $this->p->cf[ 'opt' ][ 'cf_md_multi' ] as $md_multi => $is_multi ) {
+			$cf_md_multi = WpssoConfig::get_cf_md_multi();
+
+			foreach ( $cf_md_multi as $md_multi_key => $is_multi ) {
 
 				if ( empty( $is_multi ) ) {	// True, false, or array.
 
@@ -1691,7 +1701,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/**
 				 * Get multi option values indexed only by their number.
 				 */
-				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 				$md_renum_opts = array();	// Start with a fresh array.
 
@@ -1699,9 +1709,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				foreach ( $md_multi_opts as $md_num => $md_val ) {
 
-					if ( $md_val !== '' ) {	// Only save non-empty values.
+					if ( '' !== $md_val ) {	// Only save non-empty values.
 
-						$md_renum_opts[ $md_multi . '_' . $renum ] = $md_val;
+						$md_renum_opts[ $md_multi_key . '_' . $renum ] = $md_val;
 					}
 
 					/**
@@ -1709,11 +1719,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					if ( is_array( $is_multi ) ) {
 
-						foreach ( $is_multi as $md_multi_linked ) {
+						foreach ( $is_multi as $md_linked_key ) {
 
-							if ( isset( $md_opts[ $md_multi_linked . '_' . $md_num ] ) ) {	// Just in case.
+							if ( isset( $md_opts[ $md_linked_key . '_' . $md_num ] ) ) {	// Just in case.
 
-								$md_renum_opts[ $md_multi_linked . '_' . $renum ] = $md_opts[ $md_multi_linked . '_' . $md_num ];
+								$md_renum_opts[ $md_linked_key . '_' . $renum ] = $md_opts[ $md_linked_key . '_' . $md_num ];
 							}
 						}
 					}
@@ -1724,13 +1734,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/**
 				 * Remove any existing multi options, including any linked options.
 				 */
-				$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_([0-9]+)$/', $md_opts, $invert = true );
+				$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
 
 				if ( is_array( $is_multi ) ) {
 
-					foreach ( $is_multi as $md_multi_linked ) {
+					foreach ( $is_multi as $md_linked_key ) {
 
-						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_linked . '_([0-9]+)$/', $md_opts, $invert = true );
+						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_linked_key . '_([0-9]+)$/', $md_opts, $invert = true );
 					}
 				}
 
@@ -1859,7 +1869,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$md_pre . '_offer_price'
 					) as $md_offer_pre ) {
 
-						if ( isset( $md_opts[ $md_offer_pre . '_' . $key_num] ) && $md_opts[ $md_offer_pre . '_' . $key_num] !== '' ) {
+						if ( isset( $md_opts[ $md_offer_pre . '_' . $key_num ] ) && '' !== $md_opts[ $md_offer_pre . '_' . $key_num ] ) {
 
 							$is_valid_offer = true;
 						}
@@ -1867,8 +1877,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( ! $is_valid_offer ) {
 
-						unset( $md_opts[ $md_pre . '_offer_currency_' . $key_num] );
-						unset( $md_opts[ $md_pre . '_offer_avail_' . $key_num] );
+						unset( $md_opts[ $md_pre . '_offer_currency_' . $key_num ] );
+						unset( $md_opts[ $md_pre . '_offer_avail_' . $key_num ] );
 					}
 				}
 			}

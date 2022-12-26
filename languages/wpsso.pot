@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.0.0-b.4\n"
+"Project-Id-Version: WPSSO Core 14.0.0-b.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3670,8 +3670,8 @@ msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:160 lib/pro/admin/advanced.php:1361
-#: lib/std/admin/advanced.php:1304
+#: gettext/gettext-lib-pro.php:160 lib/pro/admin/advanced.php:1357
+#: lib/std/admin/advanced.php:1300
 msgid ""
 "An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."
@@ -4604,54 +4604,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1152
+#: lib/abstract/wp-meta.php:1160
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1220
+#: lib/abstract/wp-meta.php:1228
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1224
+#: lib/abstract/wp-meta.php:1232
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1227 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1235 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1231
+#: lib/abstract/wp-meta.php:1239
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1232
+#: lib/abstract/wp-meta.php:1240
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1233
+#: lib/abstract/wp-meta.php:1241
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1234
+#: lib/abstract/wp-meta.php:1242
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1572
+#: lib/abstract/wp-meta.php:1580
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1891 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1901 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1893
+#: lib/abstract/wp-meta.php:1903
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -9355,26 +9355,26 @@ msgid ""
 "of these values (case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:770
+#: lib/messages-tooltip-plugin.php:769
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:773
+#: lib/messages-tooltip-plugin.php:772
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:777
+#: lib/messages-tooltip-plugin.php:776
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:785
+#: lib/messages-tooltip-plugin.php:783
 msgid ""
 "Note that the \"%s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "

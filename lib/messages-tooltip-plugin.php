@@ -760,9 +760,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$cf_key          = str_replace( 'tooltip-', '', $msg_key );
 					$cf_frags        = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );	// Uses a local cache.
-					$cf_md_index     = $this->p->cf[ 'opt' ][ 'cf_md_index' ];
-					$cf_md_key       = empty( $cf_md_index[ $cf_key ] ) ? '' : $cf_md_index[ $cf_key ];
-					$cf_is_multi     = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
+					$cf_md_key       = WpssoConfig::get_cf_md_index( $cf_key );
+					$cf_md_multi_key = WpssoConfig::get_cf_md_multi( $cf_md_key );
 					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
@@ -774,11 +773,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 						if ( ! empty( $cf_frags[ 'values' ] ) ) {
 
-							$text .= sprintf( __( 'The custom field value can be an empty string or one of these values (case sensitive): %s', 'wpsso' ),
-								SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) );
+							$text .= sprintf( __( 'The custom field value can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) );
 						}
 
-						if ( $cf_is_multi ) {
+						if ( ! empty( $cf_md_multi_key ) ) {
 
 							$text .= '</br></br>';
 

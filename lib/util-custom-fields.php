@@ -77,23 +77,17 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 			}
 
-			static $charset     = null;
-			static $local_cache = null;
+			$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
+			$cf_md_index = WpssoConfig::get_cf_md_index();	// Uses a local cache.
+			$cf_md_multi = WpssoConfig::get_cf_md_multi();
 
-			if ( null === $charset ) {
-
-				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
-
-				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
-			}
-
-			foreach ( $local_cache as $cf_key => $md_key ) {
+			foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
 
 				if ( empty( $md_key ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom field ' . $cf_key . ' key is disabled' );
+						$this->p->debug->log( 'custom field ' . $opt_cf_key . ' key is disabled' );
 					}
 
 					continue;
@@ -102,41 +96,41 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				/**
 				 * Check to see if we have an alternate $wp_meta_key value (for WooCommerce variations).
 				 */
-				if ( isset( $cf_meta_keys[ $cf_key ] ) ) {
+				if ( isset( $cf_meta_keys[ $opt_cf_key ] ) ) {
 
-					if ( empty( $cf_meta_keys[ $cf_key ] ) ) {	// Just in case.
+					if ( empty( $cf_meta_keys[ $opt_cf_key ] ) ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'meta keys ' . $cf_key . ' value is empty' );
+							$this->p->debug->log( 'meta keys ' . $opt_cf_key . ' value is empty' );
 						}
 
 						continue;
 					}
 
-					$wp_meta_key = $cf_meta_keys[ $cf_key ];	// Example: 'hwp_var_gtin'.
+					$wp_meta_key = $cf_meta_keys[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
 
 				/**
 				 * Make sure the filtered custom field key is known.
 				 */
 				} else {
 
-					if ( empty( $this->p->options[ $cf_key ] ) ) {
+					if ( empty( $this->p->options[ $opt_cf_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom field ' . $cf_key . ' option is empty' );
+							$this->p->debug->log( 'custom field ' . $opt_cf_key . ' option is empty' );
 						}
 
 						continue;
 					}
 
-					$wp_meta_key = $this->p->options[ $cf_key ];	// Example: '_format_video_url'.
+					$wp_meta_key = $this->p->options[ $opt_cf_key ];	// Example: '_format_video_url'.
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using custom field ' . $cf_key . ' meta key ' . $wp_meta_key . ' for ' . $md_key . ' option' );
+					$this->p->debug->log( 'using custom field ' . $opt_cf_key . ' meta key ' . $wp_meta_key . ' for ' . $md_key . ' option' );
 				}
 
 				/**
@@ -196,7 +190,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				/**
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
-				if ( empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
+				if ( empty( $cf_md_multi[ $md_key ] ) ) {
 
 					$md_opts[ $md_key ] = reset( $values );
 
