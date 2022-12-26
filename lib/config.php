@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-rc.2',	// Plugin version.
+					'version'     => '14.0.0-rc.3',	// Plugin version.
 					'opt_version' => '936',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2903,12 +2903,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
+				 * Validated on 2022/12/26.
 				 *
-				 * Validated on 2022/09/24.
+				 * Used for the Schema Product and Offer 'hasAdultConsideration' property.
 				 *
 				 * See https://schema.org/AdultOrientedEnumeration.
-				 *
 				 * See https://support.google.com/merchants/answer/6324508.
 				 */
 				'adult_type' => array(
@@ -2929,7 +2928,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Validated on 2022/09/24.
 				 *
 				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-				 *
 				 * See https://support.google.com/merchants/answer/6324463.
 				 */
 				'age_group' => array(
@@ -2944,7 +2942,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
+				 * Validated on 2022/12/26.
 				 *
 				 * See https://schema.org/BookFormatType.
 				 */
@@ -2975,7 +2973,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
+				 * Validated on 2022/12/26.
 				 *
 				 * See https://schema.org/EUEnergyEfficiencyEnumeration.
 				 * See https://support.google.com/merchants/answer/7562785.
@@ -2995,11 +2993,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
-				 *
-				 * See https://schema.org/EventAttendanceModeEnumeration.
+				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * See https://schema.org/EventAttendanceModeEnumeration.
 				 */
 				'event_attendance' => array(
 					'none'                                          => '[None]',
@@ -3009,11 +3007,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
-				 *
-				 * See https://schema.org/EventStatusType.
+				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * See https://schema.org/EventStatusType.
 				 */
 				'event_status' => array(
 					'none'                                => '[None]',
@@ -3025,11 +3023,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
-				 *
-				 * See https://schema.org/ItemAvailability.
+				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * See https://schema.org/ItemAvailability.
 				 */
 				'item_availability' => array(
 					'none'                                   => '[None]',
@@ -3046,12 +3044,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * A Schema enumerated value.
+				 * Validated on 2022/12/26.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 *
 				 * See https://schema.org/OfferItemCondition.
 				 * See https://support.google.com/merchants/answer/6324469.
-				 *
-				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'item_condition' => array(
 					'none'                                    => '[None]',
@@ -3074,9 +3072,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Validated on 2022/09/14.
 				 *
-				 * See https://schema.org/PriceTypeEnumeration.
-				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * See https://schema.org/PriceTypeEnumeration.
 				 */
 				'price_type' => array(
 					'none'                                      => '[None]',
@@ -3091,9 +3089,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Validated on 2021/11/09.
 				 *
-				 * See https://support.google.com/merchants/answer/6324497.
-				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * See https://support.google.com/merchants/answer/6324497.
 				 */
 				'size_group' => array(
 					'none'                                          => '[None]',
@@ -3108,8 +3106,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Validated on 2022/12/26.
 				 *
-				 * See https://support.google.com/merchants/answer/6324502.
-				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 *
 				 * Not supposed by Google:
@@ -3117,6 +3113,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *	https://schema.org/WearableSizeSystemContinental
 				 *	https://schema.org/WearableSizeSystemEN13402
 				 *	https://schema.org/WearableSizeSystemGS1
+				 *
+				 * See https://support.google.com/merchants/answer/6324502.
 				 */
 				'size_system' => array(
 					'none'                                        => '[None]',
@@ -3136,10 +3134,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Validated on 2020/08/17.
 				 *
-				 * See https://schema.org/suggestedGender.
-				 *
 				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-				 *
+				 * See https://schema.org/suggestedGender.
 				 * See https://support.google.com/merchants/answer/6324479.
 				 */
 				'target_gender' => array(

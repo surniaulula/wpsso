@@ -1952,6 +1952,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Schema 'priceSpecification' property.
+			 */
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
 				'priceType'             => 'product:price_type',
 				'price'                 => 'product:price:amount',
@@ -2001,6 +2004,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
 			}
 
+			/**
+			 * Schema 'shippingDetails' property.
+			 */
 			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {

@@ -64,7 +64,6 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				'color'                 => 'product:color',
 				'material'              => 'product:material',
 				'pattern'               => 'product:pattern',
-				'size'                  => 'product:size',
 			) );
 
 			/**
@@ -75,7 +74,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			WpssoSchema::check_prop_value_gtin( $json_ret );
 
 			/**
-			 * See the https://schema.org/productID example.
+			 * Schema 'productID' property.
 			 */
 			foreach ( array( 'isbn', 'retailer_item_id' ) as $pref_id ) {
 
@@ -88,22 +87,87 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			}
 
 			/**
-			 * Brand.
+			 * Schema 'brand' property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
 
-				$single_brand = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array(
+				$brand = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array(
 					'name' => 'product:brand',
 				) );
 
-				if ( false !== $single_brand ) {	// Just in case.
+				if ( false !== $brand ) {	// Just in case.
 
-					$json_ret[ 'brand' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Brand', $single_brand );
+					$json_ret[ 'brand' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Brand', $brand );
 				}
 			}
 
 			/**
-			 * Energy Efficiency.
+			 * Schema 'audience' property.
+			 *
+			 * See https://support.google.com/merchants/answer/6324479 for 'suggestedGender'.
+			 * See https://support.google.com/merchants/answer/6324463 for 'suggestedMinAge' and 'suggestedMaxAge'.
+			 */
+			$audience = array();
+
+			if ( WpssoSchema::is_valid_key( $mt_og, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
+
+				$audience[ 'suggestedGender' ] = $mt_og[ 'product:target_gender' ];
+			}
+
+			if ( WpssoSchema::is_valid_key( $mt_og, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
+
+				/**
+				 * Age is expressed in years so, for example, use 0.25 for 3 months.
+				 *
+				 * See https://support.google.com/merchants/answer/6324463.
+				 */
+				switch ( $mt_og[ 'product:age_group' ] ) {
+					case 'adult':     $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'all ages':  $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'infant':    $audience[ 'suggestedMinAge' ] = 0.25; $audience[ 'suggestedMaxAge' ] = 1;    break;
+					case 'kids':      $audience[ 'suggestedMinAge' ] = 5;    $audience[ 'suggestedMaxAge' ] = 13;   break;
+					case 'newborn':   $audience[ 'suggestedMinAge' ] = 0;    $audience[ 'suggestedMaxAge' ] = 0.25; break;
+					case 'teen':      $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'toddler':   $audience[ 'suggestedMinAge' ] = 1;    $audience[ 'suggestedMaxAge' ] = 5;    break;
+				}
+			}
+
+			if ( ! empty( $audience ) ) {
+
+				$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $audience );
+			}
+
+			/**
+			 * Schema 'size' property.
+			 *
+			 * See https://support.google.com/merchants/answer/6324492 for 'name'.
+			 * See https://support.google.com/merchants/answer/6324497 for 'sizeGroup'.
+			 * See https://support.google.com/merchants/answer/6324502 for 'sizeSystem'.
+			 */
+			$size_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array(
+				'name'       => 'product:size',
+				'sizeGroup'  => 'product:size_group',
+				'sizeSystem' => 'product:size_system',
+			) );
+
+			if ( false !== $size_spec ) {
+				
+				$json_ret[ 'sizeSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
+			}
+
+			/**
+			 * Schema 'length', 'width', 'height', 'weight' properties.
+			 */
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
+				'length'       => 'product:length:value',
+				'width'        => 'product:width:value',
+				'height'       => 'product:height:value',
+				'weight'       => 'product:weight:value',
+				'fluid_volume' => 'product:fluid_volume:value',
+			) );
+
+			/**
+			 * Schema 'hasEnergyConsumptionDetails' property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:energy_efficiency:value' ) ) {	// Not null, an empty string, or 'none'.
 
@@ -119,62 +183,6 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 						$energy_efficiency );
 				}
 			}
-
-			/**
-			 * People Audience.
-			 */
-			$single_audience = array();
-
-			if ( WpssoSchema::is_valid_key( $mt_og, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
-
-				$single_audience[ 'suggestedGender' ] = $mt_og[ 'product:target_gender' ];
-			}
-
-			if ( WpssoSchema::is_valid_key( $mt_og, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
-
-				/**
-				 * Age is expressed in years so, for example, use 0.25 for 3 months.
-				 *
-				 * See https://support.google.com/merchants/answer/6324463.
-				 */
-				switch ( $mt_og[ 'product:age_group' ] ) {
-					case 'adult':     $single_audience[ 'suggestedMinAge' ] = 13;   break;
-					case 'all ages':  $single_audience[ 'suggestedMinAge' ] = 13;   break;
-					case 'infant':    $single_audience[ 'suggestedMinAge' ] = 0.25; $single_audience[ 'suggestedMaxAge' ] = 1;    break;
-					case 'kids':      $single_audience[ 'suggestedMinAge' ] = 5;    $single_audience[ 'suggestedMaxAge' ] = 13;   break;
-					case 'newborn':   $single_audience[ 'suggestedMinAge' ] = 0;    $single_audience[ 'suggestedMaxAge' ] = 0.25; break;
-					case 'teen':      $single_audience[ 'suggestedMinAge' ] = 13;   break;
-					case 'toddler':   $single_audience[ 'suggestedMinAge' ] = 1;    $single_audience[ 'suggestedMaxAge' ] = 5;    break;
-				}
-			}
-
-			if ( ! empty( $single_audience ) ) {	// False or empty array.
-
-				$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $single_audience );
-			}
-
-			/**
-			 * QuantitativeValue (width, height, length, depth, weight).
-			 *
-			 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
-			 *
-			 * Example $names array:
-			 *
-			 * array(
-			 * 	'length'       => 'product:length:value',
-			 * 	'width'        => 'product:width:value',
-			 * 	'height'       => 'product:height:value',
-			 * 	'weight'       => 'product:weight:value',
-			 * 	'fluid_volume' => 'product:fluid_volume:value',
-			 * );
-			 */
-			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
-				'length'       => 'product:length:value',
-				'width'        => 'product:width:value',
-				'height'       => 'product:height:value',
-				'weight'       => 'product:weight:value',
-				'fluid_volume' => 'product:fluid_volume:value',
-			) );
 
 			/**
 			 * See https://schema.org/image as https://schema.org/ImageObject.
@@ -213,9 +221,9 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 						$this->p->debug->log( 'getting single offer data' );
 					}
 
-					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
+					if ( $offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
 
-						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
+						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
 
 					} elseif ( $this->p->debug->enabled ) {
 
