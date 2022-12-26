@@ -1033,13 +1033,21 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_size',
 					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'schema_product_size_type' => array(
+				'schema_product_size_group' => array(
 					'tr_class' => $type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Size Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_size_type',
-					'content'  => $form->get_no_select( 'product_size_type', $this->p->cf[ 'form' ][ 'size_type' ] ),
+					'label'    => _x( 'Product Size Group', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_size_group',
+					'content'  => $form->get_no_select( 'product_size_group', $this->p->cf[ 'form' ][ 'size_group' ] ),
+				),
+				'schema_product_size_system' => array(
+					'tr_class' => $type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Size System', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_size_system',
+					'content'  => $form->get_no_select( 'product_size_system', $this->p->cf[ 'form' ][ 'size_system' ] ),
 				),
 				'schema_product_age_group' => array(
 					'tr_class' => $type_row_class[ 'product' ],

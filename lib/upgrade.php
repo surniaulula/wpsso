@@ -560,10 +560,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				920 => array(	// Renamed for WPSSO Core v13.5.0.
 					'og_def_article_section' => 'schema_def_article_section',
 				),
-				931 => array(	// Renamed for WPSSO Core v14.0.0.
-					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',
+				935 => array(	// Renamed for WPSSO Core v14.0.0.
 					'plugin_attr_product_adult_oriented' => 'plugin_attr_product_adult_type',
+					'plugin_attr_product_size_type'      => 'plugin_attr_product_size_group',
 					'plugin_cf_product_adult_oriented'   => 'plugin_cf_product_adult_type',
+					'plugin_cf_product_size_type'        => 'plugin_cf_product_size_group',
+					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',
 				),
 			),
 		);

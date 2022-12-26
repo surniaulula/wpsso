@@ -129,8 +129,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type',
 					$enum_key = 'price_type' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_type',
-					$enum_key = 'size_type', $val_prefix = 'WearableSizeGroup' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_group',
+					$enum_key = 'size_group', $val_prefix = 'WearableSizeGroup' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_system',
+					$enum_key = 'size_system', $val_prefix = 'WearableSizeSystem' );
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender',
 					$enum_key = 'target_gender' );

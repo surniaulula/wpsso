@@ -1055,6 +1055,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$form->get_no_select( 'schema_def_product_energy_efficiency_max', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
 							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ),
 				),
+				'schema_def_product_size_system' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Size System', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_size_system',
+					'content'  => $form->get_no_select( 'schema_def_product_size_system', $this->p->cf[ 'form' ][ 'size_system' ] ),
+				),
 				'schema_def_product_age_group' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Age Group', 'option label', 'wpsso' ),

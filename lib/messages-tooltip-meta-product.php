@@ -68,9 +68,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 
 					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
-						// translators: %s is a singular item reference, for example 'a product size type'.
-						$text = sprintf( __( 'A custom value for the %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ),
-							$meta_frags[ 'name' ] ) . ' ';
+						// translators: %s is a singular item reference, for example 'a product size group'.
+						$text = sprintf( __( 'A custom value for the %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $meta_frags[ 'name' ] ) . ' ';
 
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 

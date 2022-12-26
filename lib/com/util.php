@@ -2250,7 +2250,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':eligible_quantity:unit_text' => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'               => null,
 				$mt_pre . ':size'                        => null,
-				$mt_pre . ':size_type'                   => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':size_group'                  => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':size_system'                 => null,	// Non-standard / internal meta tag.
 
 				/**
 				 * Product ratings and reviews.

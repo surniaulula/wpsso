@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-rc.1',	// Plugin version.
-					'opt_version' => '935',		// Increment when changing default option values.
+					'version'     => '14.0.0-rc.2',	// Plugin version.
+					'opt_version' => '936',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1504,6 +1504,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_energy_efficiency_min' => 'https://schema.org/EUEnergyEfficiencyCategoryD',
 					'schema_def_product_energy_efficiency_max' => 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus',
 					'schema_def_product_price_type'            => 'https://schema.org/ListPrice',			// Default Product Price Type.
+					'schema_def_product_size_system'           => 'none',
 
 					/**
 					 * Advanced Settings > Schema Defaults > Review.
@@ -2003,7 +2004,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute Name.
 					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
 					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
-					'plugin_attr_product_size_type'          => 'Size Type',	// Size Type Attribute Name.
+					'plugin_attr_product_size_group'         => 'Size Group',	// Size Group Attribute Name.
+					'plugin_attr_product_size_system'        => 'Size System',	// Size System Attribute Name.
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute Name.
 					'plugin_attr_product_width_value'        => '',			// Net Width Attribute Name.
@@ -2047,7 +2049,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_shipping_weight_value' => '',	// Product Shipping Weight Custom Field.
 					'plugin_cf_product_shipping_width_value'  => '',	// Product Shipping Width Custom Field.
 					'plugin_cf_product_size'                  => '',	// Product Size Custom Field.
-					'plugin_cf_product_size_type'             => '',	// Product Size Type Custom Field.
+					'plugin_cf_product_size_group'            => '',	// Product Size Group Custom Field.
+					'plugin_cf_product_size_system'           => '',	// Product Size System Custom Field.
 					'plugin_cf_product_target_gender'         => '',	// Product Target Gender Custom Field.
 					'plugin_cf_product_weight_value'          => '',	// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => '',	// Product Net Width Custom Field.
@@ -2141,7 +2144,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_shipping_weight_value' => 'product_shipping_weight_value',	// Product Shipping Weight Custom Field.
 					'plugin_cf_product_shipping_width_value'  => 'product_shipping_width_value',	// Product Shipping Width Custom Field.
 					'plugin_cf_product_size'                  => 'product_size',
-					'plugin_cf_product_size_type'             => 'product_size_type',
+					'plugin_cf_product_size_group'            => 'product_size_group',
+					'plugin_cf_product_size_system'           => 'product_size_system',
 					'plugin_cf_product_target_gender'         => 'product_target_gender',
 					'plugin_cf_product_weight_value'          => 'product_weight_value',		// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => 'product_width_value',		// Product Net Width Custom Field.
@@ -2825,7 +2829,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_shipping_weight_value' => 'Product Shipping Weight Custom Field',
 					'plugin_cf_product_shipping_width_value'  => 'Product Shipping Width Custom Field',
 					'plugin_cf_product_size'                  => 'Product Size Custom Field',
-					'plugin_cf_product_size_type'             => 'Product Size Type Custom Field',
+					'plugin_cf_product_size_group'            => 'Product Size Group Custom Field',
+					'plugin_cf_product_size_system'           => 'Product Size System Custom Field',
 					'plugin_cf_product_target_gender'         => 'Product Target Gender Custom Field',
 					'plugin_cf_product_weight_value'          => 'Product Net Weight Custom Field',
 					'plugin_cf_product_width_value'           => 'Product Net Width Custom Field',
@@ -2859,7 +2864,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
 					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',
 					'plugin_attr_product_size'               => 'Size Attribute Name',
-					'plugin_attr_product_size_type'          => 'Size Type Attribute Name',
+					'plugin_attr_product_size_group'         => 'Size Group Attribute Name',
+					'plugin_attr_product_size_system'        => 'Size System Attribute Name',
 					'plugin_attr_product_target_gender'      => 'Target Gender Attribute Name',
 					'plugin_attr_product_weight_value'       => 'Net Weight Attribute Name',
 					'plugin_attr_product_width_value'        => 'Net Width Attribute Name',
@@ -2869,24 +2875,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Used with array_intersect_key() to determine which metadata options can be inherited.
 				 */
 				'inherit_md_opts' => array(
-					'og_img_max'               => null,	// Maximum Images.
-					'og_img_id'                => null,
-					'og_img_id_lib'            => null,
-					'og_img_url'               => null,
-					'pin_img_id'               => null,
-					'pin_img_id_lib'           => null,
-					'pin_img_url'              => null,
-					'tc_lrg_img_id'            => null,
-					'tc_lrg_img_id_lib'        => null,
-					'tc_lrg_img_url'           => null,
-					'tc_sum_img_id'            => null,
-					'tc_sum_img_id_lib'        => null,
-					'tc_sum_img_url'           => null,
-					'schema_img_id'            => null,
-					'schema_img_id_lib'        => null,
-					'schema_img_url'           => null,
-					'product_price_type'       => null,
-					'product_min_advert_price' => null,
+					'og_img_max'                    => null,	// Maximum Images.
+					'og_img_id'                     => null,
+					'og_img_id_lib'                 => null,
+					'og_img_url'                    => null,
+					'pin_img_id'                    => null,
+					'pin_img_id_lib'                => null,
+					'pin_img_url'                   => null,
+					'schema_img_id'                 => null,
+					'schema_img_id_lib'             => null,
+					'schema_img_url'                => null,
+					'tc_lrg_img_id'                 => null,
+					'tc_lrg_img_id_lib'             => null,
+					'tc_lrg_img_url'                => null,
+					'tc_sum_img_id'                 => null,
+					'tc_sum_img_id_lib'             => null,
+					'tc_sum_img_url'                => null,
+					'product_adult_type'            => null,
+					'product_age_group'             => null,
+					'product_energy_efficiency'     => null,
+					'product_energy_efficiency_min' => null,
+					'product_energy_efficiency_max' => null,
+					'product_min_advert_price'      => null,
+					'product_price_type'            => null,
+					'product_size_system'           => null,
+					'product_target_gender'         => null,
 				),
 
 				/**
@@ -3082,7 +3095,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
-				'size_type' => array(
+				'size_group' => array(
 					'none'                                          => '[None]',
 					'https://schema.org/WearableSizeGroupRegular'   => 'Regular',
 					'https://schema.org/WearableSizeGroupPetite'    => 'Petite',
@@ -3090,6 +3103,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/WearableSizeGroupTall'      => 'Tall',
 					'https://schema.org/WearableSizeGroupBig'       => 'Big',
 					'https://schema.org/WearableSizeGroupMaternity' => 'Maternity',
+				),
+
+				/**
+				 * Validated on 2022/12/26.
+				 *
+				 * See https://support.google.com/merchants/answer/6324502.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 *
+				 * Not supposed by Google:
+				 *
+				 *	https://schema.org/WearableSizeSystemContinental
+				 *	https://schema.org/WearableSizeSystemEN13402
+				 *	https://schema.org/WearableSizeSystemGS1
+				 */
+				'size_system' => array(
+					'none'                                        => '[None]',
+					'https://schema.org/WearableSizeSystemAU'     => 'AU',
+					'https://schema.org/WearableSizeSystemBR'     => 'BR',
+					'https://schema.org/WearableSizeSystemCN'     => 'CN',
+					'https://schema.org/WearableSizeSystemDE'     => 'DE',
+					'https://schema.org/WearableSizeSystemEurope' => 'EU',
+					'https://schema.org/WearableSizeSystemFR'     => 'FR',
+					'https://schema.org/WearableSizeSystemIT'     => 'IT',
+					'https://schema.org/WearableSizeSystemJP'     => 'JP',
+					'https://schema.org/WearableSizeSystemMX'     => 'MX',
+					'https://schema.org/WearableSizeSystemUK'     => 'UK',
+					'https://schema.org/WearableSizeSystemUS'     => 'US',
 				),
 
 				/**
@@ -3472,7 +3513,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_width:value'        => 'product_shipping_width_value',	// Non-standard / internal meta tag.
 						'product:shipping_width:units'        => 'product_shipping_width_units',	// Non-standard / internal meta tag.
 						'product:size'                        => 'product_size',
-						'product:size_type'                   => 'product_size_type',		// Non-standard / internal meta tag.
+						'product:size_group'                  => 'product_size_group',		// Non-standard / internal meta tag.
+						'product:size_system'                 => 'product_size_system',		// Non-standard / internal meta tag.
 						'product:target_gender'               => 'product_target_gender',
 						'product:upc'                         => 'product_gtin12',
 						'product:weight:value'                => 'product_weight_value',

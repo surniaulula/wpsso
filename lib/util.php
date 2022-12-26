@@ -3653,7 +3653,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:mfr_part_no]        => MPN
 		 *		[product:pattern]            => Pattern
 		 *		[product:size]               => Size
-		 *		[product:size_type]          => Size Type
+		 *		[product:size_group]         => Size Group
+		 *		[product:size_system]        => Size System
 		 *		[product:target_gender]      => Gender
 		 *	)
 		 *
@@ -3675,7 +3676,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_pattern]            => Pattern
 		 *		[product_mfr_part_no]        => MPN
 		 *		[product_size]               => Size
-		 *		[product_size_type]          => Size Type
+		 *		[product_size_group]         => Size Group
+		 *		[product_size_system]        => Size System
 		 *		[product_target_gender]      => Gender
 		 *	)
 		 */

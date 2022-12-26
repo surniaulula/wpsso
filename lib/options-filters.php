@@ -199,6 +199,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_product_energy_efficiency_min':
 					case 'schema_def_product_energy_efficiency_max':
 					case 'schema_def_product_price_type':		// Default Product Price Type.
+					case 'schema_def_product_size_system':		// Default Product Size System.
 					case 'schema_def_prov_org_id':			// Default Service Provider Org.
 					case 'schema_def_prov_person_id':		// Default Service Provider Person.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
@@ -489,7 +490,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_energy_efficiency_min':
 				case 'product_energy_efficiency_max':
 				case 'product_price_type':
-				case 'product_size_type':
+				case 'product_size_group':
+				case 'product_size_system':
 				case 'product_target_gender':
 				case 'robots_max_image_preview':
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):

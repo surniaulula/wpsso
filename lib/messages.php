@@ -861,12 +861,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product size', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324492', 'wpsso' ),
 					),
-					'product_size_type' => array(
-						'label'  => _x( 'Product Size Type', 'option label', 'wpsso' ),
-						'name'   => _x( 'product size type', 'tooltip fragment', 'wpsso' ),
-						'desc'   => _x( 'a product size type', 'tooltip fragment', 'wpsso' ),
+					'product_size_group' => array(
+						'label'  => _x( 'Product Size Group', 'option label', 'wpsso' ),
+						'name'   => _x( 'product size group', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product size group', 'tooltip fragment', 'wpsso' ),
 						'about'  => __( 'https://support.google.com/merchants/answer/6324497', 'wpsso' ),
-						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'size_type', $val_prefix = 'WearableSizeGroup' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'size_group', $val_prefix = 'WearableSizeGroup' ),
+					),
+					'product_size_system' => array(
+						'label'  => _x( 'Product Size System', 'option label', 'wpsso' ),
+						'name'   => _x( 'product size system', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product size system', 'tooltip fragment', 'wpsso' ),
+						'about'  => __( 'https://support.google.com/merchants/answer/6324502', 'wpsso' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'size_system', $val_prefix = 'WearableSizeSystem' ),
 					),
 					'product_target_gender' => array(
 						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),

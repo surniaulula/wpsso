@@ -137,9 +137,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'article_section' => 'schema_article_section',
 					'reading_mins'    => 'schema_reading_mins',
 				),
-				933 => array(	// Renamed for WPSSO Core v14.0.0.
-					'product_depth_value'       => 'product_length_value',
+				935 => array(	// Renamed for WPSSO Core v14.0.0.
 					'product_adult_oriented'    => 'product_adult_type',
+					'product_depth_value'       => 'product_length_value',
+					'product_size_type'         => 'product_size_group',
 					'schema_review_rating_from' => 'schema_review_rating_min',
 					'schema_review_rating_to'   => 'schema_review_rating_max',
 				),
@@ -326,6 +327,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'https://schema.org/EUEnergyEfficiencyCategoryA3Plus';
 				$def_price_type         = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
 					'https://schema.org/ListPrice';
+				$def_size_system        = isset( $opts[ 'schema_def_product_size_system' ] ) ? $opts[ 'schema_def_product_size_system' ] : 'none';
 
 				/**
 				 * Default timezone.
@@ -424,7 +426,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_color'                 => '',
 					'product_target_gender'         => 'none',
 					'product_size'                  => '',
-					'product_size_type'             => 'none',
+					'product_size_group'            => 'none',
+					'product_size_system'           => $def_size_system,
 					'product_age_group'             => $def_age_group,
 					'product_adult_type'            => $def_adult_type,
 					'product_length_value'          => '',				// Product Net Len. / Depth.
