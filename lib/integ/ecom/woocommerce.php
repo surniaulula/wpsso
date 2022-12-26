@@ -1764,20 +1764,22 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 */
 		private function get_shipping_length_width_height_weight( $product ) {
 
+			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
+			$weight_unit_text    = WpssoUtilUnits::get_weight_text();
+
+
 			$ret = array(
-				0 => '',	// Shipping length value.
-				1 => '',	// Shipping lenth units.
-				2 => '',	// Shipping width value.
-				3 => '',	// Shipping width units.
-				4 => '',	// Shipping height value.
-				5 => '',	// Shipping height units.
-				6 => '',	// Shipping weight value.
-				7 => '',	// Shipping weight units.
+				0 => '',			// Shipping length value.
+				1 => $dimension_unit_text,	// Shipping lenth units.
+				2 => '',			// Shipping width value.
+				3 => $dimension_unit_text,	// Shipping width units.
+				4 => '',			// Shipping height value.
+				5 => $dimension_unit_text,	// Shipping height units.
+				6 => '',			// Shipping weight value.
+				7 => $weight_unit_text,		// Shipping weight units.
 			);
 
 			if ( $product->has_dimensions() ) {	// Has shipping dimensions.
-
-				$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1791,7 +1793,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
 
 						$ret[ 0 ] = $length;
-						$ret[ 1 ] = $dimension_unit_text;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1806,7 +1807,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
 						$ret[ 2 ] = $width;
-						$ret[ 3 ] = $dimension_unit_text;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1821,7 +1821,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
 
 						$ret[ 4 ] = $height;
-						$ret[ 5 ] = $dimension_unit_text;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1836,8 +1835,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			if ( $product->has_weight() ) {	// Has shipping weight.
 
-				$weight_unit_text = WpssoUtilUnits::get_weight_text();
-
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'getting product shipping weight' );
@@ -1850,7 +1847,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
 
 						$ret[ 6 ] = $weight;
-						$ret[ 7 ] = $weight_unit_text;
 
 					} elseif ( $this->p->debug->enabled ) {
 
