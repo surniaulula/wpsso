@@ -168,6 +168,10 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
+						$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
+						$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
+						$wcmd_addons_link = $this->p->util->get_admin_url( 'addons#wpssowcmd', $wcmd_name_transl );
+
 						$text .= '<p><center><strong>';
 
 						$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' );
@@ -179,9 +183,9 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 						// translators: Please ignore - translation uses a different text domain.
 						$used_for_variations = __( 'Used for variations', 'woocommerce' );
 
-						$text .= sprintf( __( 'Enabling the WooCommerce "%s" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
+						$text .= sprintf( __( 'Using the WooCommerce "%s" option may not be suitable for unique product IDs (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
 
-						$text .= __( 'We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
+						$text .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs for WooCommerce.', 'wpsso' ), $wcmd_addons_link ) . ' ';
 
 						$text .= '</center></p>';
 					}

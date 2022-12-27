@@ -4393,8 +4393,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'E37',
 						),
 					),
-					'length' => array(			// Unitcode index value.
-						'depth' => array(	// Schema property name.
+					'length' => array(		// Unitcode index value.
+						'depth' => array(	// Schema property name (note 'depth', not 'length').
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',
 							'name'     => 'Length',

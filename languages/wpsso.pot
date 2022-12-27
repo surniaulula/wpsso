@@ -1156,7 +1156,7 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:106 lib/messages-info.php:256
+#: gettext/gettext-lib-config.php:106 lib/messages-info.php:260
 #: lib/messages.php:488
 msgctxt "lib file description"
 msgid "Tools and Actions"
@@ -4840,36 +4840,36 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:193 lib/admin-head-suggest-addons.php:276
+#: lib/admin-head-suggest-addons.php:193 lib/admin-head-suggest-addons.php:277
 msgid "WooCommerce"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:213
+#: lib/admin-head-suggest-addons.php:214
 msgid ""
 "Schema Product markup for Google Rich Results requires at least one unique "
 "product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
 "or ISBN."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:215
+#: lib/admin-head-suggest-addons.php:216
 msgid ""
 "The product SKU (Stock Keeping Unit) from %s is not a valid unique product "
 "ID."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:217
+#: lib/admin-head-suggest-addons.php:218 lib/messages-info.php:188
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
-"manage unique product IDs."
+"manage unique product IDs for WooCommerce."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:249
+#: lib/admin-head-suggest-addons.php:250
 msgid ""
 "Product shipping features are enabled in %1$s but the %2$s add-on is not "
 "active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:251
+#: lib/admin-head-suggest-addons.php:252
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
@@ -4877,37 +4877,37 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:283
+#: lib/admin-head-suggest-addons.php:284
 msgid "Easy Digital Downloads"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:306
+#: lib/admin-head-suggest-addons.php:307
 msgid ""
 "If you have a Google Merchant account, the %s add-on can provide XML product "
 "feeds in your site's language(s) from Polylang, WPML, or the installed "
 "WordPress languages."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:308
+#: lib/admin-head-suggest-addons.php:309
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage your Google merchant feeds."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:336
+#: lib/admin-head-suggest-addons.php:337
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:342
+#: lib/admin-head-suggest-addons.php:343
 msgid "Install and activate the %s add-on."
 msgstr ""
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest-addons.php:359
+#: lib/admin-head-suggest-addons.php:360
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:362
+#: lib/admin-head-suggest-addons.php:363
 msgid "Purchase the %s plugin."
 msgstr ""
 
@@ -7307,107 +7307,107 @@ msgid ""
 "corresponding values in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages-info.php:173 lib/messages-info.php:215
+#: lib/messages-info.php:177 lib/messages-info.php:219
 msgid "An active WooCommerce plugin has been detected."
 msgstr ""
 
-#: lib/messages-info.php:177
+#: lib/messages-info.php:181
 msgid ""
 "Please note that WooCommerce creates a selector on the purchase page for "
 "product attributes used for variations."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages-info.php:180
+#: lib/messages-info.php:184
 msgid "Used for variations"
 msgstr ""
 
-#: lib/messages-info.php:182
+#: lib/messages-info.php:186
 msgid ""
-"Enabling the WooCommerce \"%s\" attribute option may not be suitable for "
-"some product attributes (like GTIN, ISBN, and MPN)."
+"Using the WooCommerce \"%s\" option may not be suitable for unique product "
+"IDs (like GTIN, ISBN, and MPN)."
 msgstr ""
 
-#: lib/messages-info.php:184 lib/messages-info.php:223
-msgid ""
-"We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
-"and MPN values for variations."
-msgstr ""
-
-#: lib/messages-info.php:199
+#: lib/messages-info.php:203
 msgid ""
 "These options allow you to customize custom field names (aka metadata names) "
 "that %s can use to get additional information about your content."
 msgstr ""
 
-#: lib/messages-info.php:203
+#: lib/messages-info.php:207
 msgid ""
 "Do not enter custom field values here &ndash; these options are for custom "
 "field names only."
 msgstr ""
 
-#: lib/messages-info.php:207
+#: lib/messages-info.php:211
 msgid ""
 "Use the following custom field names when creating custom fields for your "
 "posts, pages, and custom post types."
 msgstr ""
 
-#: lib/messages-info.php:219
+#: lib/messages-info.php:223
 msgid ""
 "Note that product attributes from WooCommerce have precedence over custom "
 "field values."
 msgstr ""
 
-#: lib/messages-info.php:221
+#: lib/messages-info.php:225
 msgid ""
 "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for "
 "information on setting up product attributes and custom fields."
 msgstr ""
 
+#: lib/messages-info.php:227
+msgid ""
+"We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
+"and MPN values for variations."
+msgstr ""
+
 #. translators: %1$s is the plugin name, %2$s is <head>.
-#: lib/messages-info.php:239
+#: lib/messages-info.php:243
 msgid ""
 "%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
 "and SEO HTML tags to the %2$s section of your webpages."
 msgstr ""
 
-#: lib/messages-info.php:241
+#: lib/messages-info.php:245
 msgid ""
 "If your theme or another plugin already creates one or more of these HTML "
 "tags, you may uncheck them here to prevent duplicates from being added."
 msgstr ""
 
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
-#: lib/messages-info.php:246
+#: lib/messages-info.php:250
 msgid ""
 "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
 "another known SEO plugin is detected."
 msgstr ""
 
-#: lib/messages-info.php:262
+#: lib/messages-info.php:266
 msgid ""
 "%s and WordPress create image files for social sites and search engines "
 "based on the following image dimensions and crop settings."
 msgstr ""
 
-#: lib/messages-info.php:264
+#: lib/messages-info.php:268
 msgid ""
 "Image sizes that use the same dimensions and crop settings will create just "
 "one image file."
 msgstr ""
 
-#: lib/messages-info.php:266
+#: lib/messages-info.php:270
 msgid ""
 "The default dimensions and crop settings from %1$s create only %2$s image "
 "files from an original full size image (provided the original image is large "
 "enough or image upscaling has been enabled)."
 msgstr ""
 
-#: lib/messages-info.php:266
+#: lib/messages-info.php:270
 msgid "five"
 msgstr ""
 
-#: lib/messages-info.php:268
+#: lib/messages-info.php:272
 msgid "You can reload the default image sizes from the %s settings page."
 msgstr ""
 

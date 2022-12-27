@@ -209,12 +209,13 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
 					$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
+					$wcmd_addons_link = $this->p->util->get_admin_url( 'addons#wpssowcmd', $wcmd_name_transl );
 
 					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
 					$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a valid unique product ID.', 'wpsso' ), $ecom_plugin_name ) . ' ';
 
-					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs.', 'wpsso' ), $wcmd_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs for WooCommerce.', 'wpsso' ), $wcmd_addons_link ) . ' ';
 
 					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
