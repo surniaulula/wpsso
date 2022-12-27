@@ -2141,7 +2141,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:308
 msgctxt "option label"
-msgid "Product Net Length Custom Field"
+msgid "Product Net Len. / Depth Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:309
@@ -2256,122 +2256,122 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:331
 msgctxt "option label"
-msgid "Adult Type Attribute Name"
+msgid "Adult Type Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:332
 msgctxt "option label"
-msgid "Age Group Attribute Name"
+msgid "Age Group Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:333
 msgctxt "option label"
-msgid "Brand Attribute Name"
+msgid "Brand Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:334
 msgctxt "option label"
-msgid "Color Attribute Name"
+msgid "Color Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:335
 msgctxt "option label"
-msgid "Condition Attribute Name"
+msgid "Condition Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:336
 msgctxt "option label"
-msgid "Energy Rating Attribute Name"
+msgid "Energy Rating Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:337
 msgctxt "option label"
-msgid "Fluid Volume Attribute Name"
+msgid "Fluid Volume Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:338
 msgctxt "option label"
-msgid "GTIN-14 Attribute Name"
+msgid "GTIN-14 Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:339
 msgctxt "option label"
-msgid "GTIN-13 (EAN) Attribute Name"
+msgid "GTIN-13 (EAN) Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:340
 msgctxt "option label"
-msgid "GTIN-12 (UPC) Attribute Name"
+msgid "GTIN-12 (UPC) Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:341
 msgctxt "option label"
-msgid "GTIN-8 Attribute Name"
+msgid "GTIN-8 Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:342
 msgctxt "option label"
-msgid "GTIN Attribute Name"
+msgid "GTIN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:343
 msgctxt "option label"
-msgid "Net Height Attribute Name"
+msgid "Net Height Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:344
 msgctxt "option label"
-msgid "ISBN Attribute Name"
+msgid "ISBN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:345
 msgctxt "option label"
-msgid "Net Length Attribute Name"
+msgid "Net Len. / Depth Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:346
 msgctxt "option label"
-msgid "Material Attribute Name"
+msgid "Material Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:347
 msgctxt "option label"
-msgid "MPN Attribute Name"
+msgid "MPN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:348
 msgctxt "option label"
-msgid "Pattern Attribute Name"
+msgid "Pattern Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:349
 msgctxt "option label"
-msgid "Size Attribute Name"
+msgid "Size Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:350
 msgctxt "option label"
-msgid "Size Group Attribute Name"
+msgid "Size Group Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:351
 msgctxt "option label"
-msgid "Size System Attribute Name"
+msgid "Size System Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:352
 msgctxt "option label"
-msgid "Target Gender Attribute Name"
+msgid "Target Gender Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:353
 msgctxt "option label"
-msgid "Net Weight Attribute Name"
+msgid "Net Weight Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:354
 msgctxt "option label"
-msgid "Net Width Attribute Name"
+msgid "Net Width Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:356

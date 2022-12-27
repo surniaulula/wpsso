@@ -1985,30 +1985,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
-					'plugin_attr_product_adult_type'         => 'Adult Type',	// Adult Type Attribute Name.
-					'plugin_attr_product_age_group'          => 'Age Group',	// Age Group Attribute Name.
-					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
-					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
-					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
-					'plugin_attr_product_energy_efficiency'  => 'Energy Rating',	// Energy Rating Attribute Name.
-					'plugin_attr_product_fluid_volume_value' => '',			// Fluid Volume Attribute Name.
-					'plugin_attr_product_gtin14'             => '',			// GTIN-14 Attribute Name.
-					'plugin_attr_product_gtin13'             => '',			// GTIN-13 (EAN) Attribute Name.
-					'plugin_attr_product_gtin12'             => '',			// GTIN-12 (UPC) Attribute Name.
-					'plugin_attr_product_gtin8'              => '',			// GTIN-8 Attribute Name.
-					'plugin_attr_product_gtin'               => '',			// GTIN Attribute Name.
-					'plugin_attr_product_height_value'       => '',			// Net Height Attribute Name.
-					'plugin_attr_product_isbn'               => '',			// ISBN Attribute Name.
-					'plugin_attr_product_length_value'       => '',			// Net Length Attribute Name.
-					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
-					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute Name.
-					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
-					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
-					'plugin_attr_product_size_group'         => 'Size Group',	// Size Group Attribute Name.
-					'plugin_attr_product_size_system'        => 'Size System',	// Size System Attribute Name.
-					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
-					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute Name.
-					'plugin_attr_product_width_value'        => '',			// Net Width Attribute Name.
+					'plugin_attr_product_adult_type'         => 'Adult Type',	// Adult Type Attribute.
+					'plugin_attr_product_age_group'          => 'Age Group',	// Age Group Attribute.
+					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute.
+					'plugin_attr_product_color'              => 'Color',		// Color Attribute.
+					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute.
+					'plugin_attr_product_energy_efficiency'  => 'Energy Rating',	// Energy Rating Attribute.
+					'plugin_attr_product_fluid_volume_value' => '',			// Fluid Volume Attribute.
+					'plugin_attr_product_gtin14'             => '',			// GTIN-14 Attribute.
+					'plugin_attr_product_gtin13'             => '',			// GTIN-13 (EAN) Attribute.
+					'plugin_attr_product_gtin12'             => '',			// GTIN-12 (UPC) Attribute.
+					'plugin_attr_product_gtin8'              => '',			// GTIN-8 Attribute.
+					'plugin_attr_product_gtin'               => '',			// GTIN Attribute.
+					'plugin_attr_product_height_value'       => '',			// Net Height Attribute.
+					'plugin_attr_product_isbn'               => '',			// ISBN Attribute.
+					'plugin_attr_product_length_value'       => '',			// Net Len. / Depth Attribute.
+					'plugin_attr_product_material'           => 'Material',		// Material Attribute.
+					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute.
+					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute.
+					'plugin_attr_product_size'               => 'Size',		// Size Attribute.
+					'plugin_attr_product_size_group'         => 'Size Group',	// Size Group Attribute.
+					'plugin_attr_product_size_system'        => 'Size System',	// Size System Attribute.
+					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute.
+					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute.
+					'plugin_attr_product_width_value'        => '',			// Net Width Attribute.
 
 					/**
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => '',	// Product GTIN Custom Field.
 					'plugin_cf_product_height_value'          => '',	// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => '',	// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'          => '',	// Product Net Length Custom Field.
+					'plugin_cf_product_length_value'          => '',	// Product Net Len. / Depth Custom Field.
 					'plugin_cf_product_material'              => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'           => '',	// Product MPN Custom Field.
 					'plugin_cf_product_min_advert_price'      => '',	// Product Min Advert Price Custom Field.
@@ -2131,7 +2131,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'product_gtin',
 					'plugin_cf_product_height_value'          => 'product_height_value',		// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => 'product_isbn',
-					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Length Custom Field.
+					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Len. / Depth Custom Field.
 					'plugin_cf_product_material'              => 'product_material',
 					'plugin_cf_product_mfr_part_no'           => 'product_mfr_part_no',
 					'plugin_cf_product_min_advert_price'      => 'product_min_advert_price',
@@ -2816,7 +2816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'Product GTIN Custom Field',
 					'plugin_cf_product_height_value'          => 'Product Net Height Custom Field',
 					'plugin_cf_product_isbn'                  => 'Product ISBN Custom Field',
-					'plugin_cf_product_length_value'          => 'Product Net Length Custom Field',
+					'plugin_cf_product_length_value'          => 'Product Net Len. / Depth Custom Field',
 					'plugin_cf_product_material'              => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'           => 'Product MPN Custom Field',
 					'plugin_cf_product_min_advert_price'      => 'Product Min Advert Price Custom Field',
@@ -2845,30 +2845,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Attribute option labels.
 				 */
 				'attr_labels' => array(
-					'plugin_attr_product_adult_type'         => 'Adult Type Attribute Name',
-					'plugin_attr_product_age_group'          => 'Age Group Attribute Name',
-					'plugin_attr_product_brand'              => 'Brand Attribute Name',
-					'plugin_attr_product_color'              => 'Color Attribute Name',
-					'plugin_attr_product_condition'          => 'Condition Attribute Name',
-					'plugin_attr_product_energy_efficiency'  => 'Energy Rating Attribute Name',
-					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute Name',
-					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute Name',
-					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute Name',
-					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute Name',
-					'plugin_attr_product_gtin8'              => 'GTIN-8 Attribute Name',
-					'plugin_attr_product_gtin'               => 'GTIN Attribute Name',
-					'plugin_attr_product_height_value'       => 'Net Height Attribute Name',
-					'plugin_attr_product_isbn'               => 'ISBN Attribute Name',
-					'plugin_attr_product_length_value'       => 'Net Length Attribute Name',
-					'plugin_attr_product_material'           => 'Material Attribute Name',
-					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
-					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',
-					'plugin_attr_product_size'               => 'Size Attribute Name',
-					'plugin_attr_product_size_group'         => 'Size Group Attribute Name',
-					'plugin_attr_product_size_system'        => 'Size System Attribute Name',
-					'plugin_attr_product_target_gender'      => 'Target Gender Attribute Name',
-					'plugin_attr_product_weight_value'       => 'Net Weight Attribute Name',
-					'plugin_attr_product_width_value'        => 'Net Width Attribute Name',
+					'plugin_attr_product_adult_type'         => 'Adult Type Attribute',
+					'plugin_attr_product_age_group'          => 'Age Group Attribute',
+					'plugin_attr_product_brand'              => 'Brand Attribute',
+					'plugin_attr_product_color'              => 'Color Attribute',
+					'plugin_attr_product_condition'          => 'Condition Attribute',
+					'plugin_attr_product_energy_efficiency'  => 'Energy Rating Attribute',
+					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute',
+					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute',
+					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute',
+					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute',
+					'plugin_attr_product_gtin8'              => 'GTIN-8 Attribute',
+					'plugin_attr_product_gtin'               => 'GTIN Attribute',
+					'plugin_attr_product_height_value'       => 'Net Height Attribute',
+					'plugin_attr_product_isbn'               => 'ISBN Attribute',
+					'plugin_attr_product_length_value'       => 'Net Len. / Depth Attribute',
+					'plugin_attr_product_material'           => 'Material Attribute',
+					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute',
+					'plugin_attr_product_pattern'            => 'Pattern Attribute',
+					'plugin_attr_product_size'               => 'Size Attribute',
+					'plugin_attr_product_size_group'         => 'Size Group Attribute',
+					'plugin_attr_product_size_system'        => 'Size System Attribute',
+					'plugin_attr_product_target_gender'      => 'Target Gender Attribute',
+					'plugin_attr_product_weight_value'       => 'Net Weight Attribute',
+					'plugin_attr_product_width_value'        => 'Net Width Attribute',
 				),
 
 				/**
@@ -4356,15 +4356,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 				 */
 				'schema_units' => array(		// Element of 'head' array.
-					'depth' => array(		// Unitcode index value.
-						'depth' => array(	// Schema property name.
-							'@context' => 'https://schema.org',
-							'@type'    => 'QuantitativeValue',
-							'name'     => 'Depth',
-							'unitText' => 'cm',
-							'unitCode' => 'CMT',
-						),
-					),
 					'fluid_volume' => array(		// Unitcode index value.
 						'additionalProperty' => array(	// Schema property name.
 							'@context'   => 'https://schema.org',
@@ -4394,10 +4385,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'length' => array(		// Unitcode index value.
-						'depth' => array(	// Schema property name (note 'depth', not 'length').
+						'depth' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',
-							'name'     => 'Length',
+							'name'     => 'Length or Depth',
 							'unitText' => 'cm',
 							'unitCode' => 'CMT',
 						),
