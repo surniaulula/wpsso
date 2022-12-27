@@ -266,7 +266,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the Adult Oriented options to Adult Type.
 	* Removed Document SSO product options, attributes, and custom fields:
 		* Product Depth
-		* Product Depth Attribute Name
+		* Product Depth Attribute
 		* Product Depth Custom Field
 * **Bugfixes**
 	* None.
