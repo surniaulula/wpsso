@@ -2408,16 +2408,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2021/02/08.
-		 */
-		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/02/08', $replacement = __CLASS__ . '::add_offers_aggregate_data()' );	// Deprecation message.
-
-			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
-		}
-
-		/**
 		 * $user_id is optional and takes precedence over the $mod post_author value.
 		 */
 		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
@@ -4188,6 +4178,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function get_id_delim() {
 
 			return '/';
+		}
+
+		/**
+		 * Deprecated on 2021/02/08.
+		 */
+		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/02/08', $replacement = __CLASS__ . '::add_offers_aggregate_data()' );	// Deprecation message.
+
+			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
+		}
+
+		/**
+		 * Deprecated on 2022/12/26.
+		 */
+		public static function get_data_unit_text( $mixed_key ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/02/08', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
+
+			return self::get_unit_text( $mixed_key );
 		}
 
 		/**

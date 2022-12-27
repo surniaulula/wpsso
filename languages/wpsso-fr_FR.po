@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-12-27 07:02-0800\n"
+"PO-Revision-Date: 2022-12-27 07:05-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2548,43 +2548,31 @@ msgid "Maternity"
 msgstr "Maternité"
 
 #: gettext/gettext-lib-config.php:443
-#| msgctxt "option value"
-#| msgid "A"
 msgctxt "option value"
 msgid "AU"
 msgstr "AU"
 
 #: gettext/gettext-lib-config.php:444
-#| msgctxt "option value"
-#| msgid "B"
 msgctxt "option value"
 msgid "BR"
 msgstr "BR"
 
 #: gettext/gettext-lib-config.php:445
-#| msgctxt "option value"
-#| msgid "C"
 msgctxt "option value"
 msgid "CN"
 msgstr "CN"
 
 #: gettext/gettext-lib-config.php:446
-#| msgctxt "option value"
-#| msgid "D"
 msgctxt "option value"
 msgid "DE"
 msgstr "DE"
 
 #: gettext/gettext-lib-config.php:447
-#| msgctxt "option value"
-#| msgid "E"
 msgctxt "option value"
 msgid "EU"
 msgstr "EU"
 
 #: gettext/gettext-lib-config.php:448
-#| msgctxt "option value"
-#| msgid "F"
 msgctxt "option value"
 msgid "FR"
 msgstr "FR"
@@ -9660,7 +9648,6 @@ msgid "a product size system"
 msgstr "un système de taille de produit"
 
 #: lib/messages.php:875
-#| msgid "https://support.google.com/merchants/answer/6324508"
 msgid "https://support.google.com/merchants/answer/6324502"
 msgstr "https://support.google.com/merchants/answer/6324502"
 
