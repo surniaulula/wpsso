@@ -1218,8 +1218,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( $opt_label_transl, '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>';
+					$form->get_th_html_locale( $opt_label_transl, '', $opt_key ) .
+					'<td class="blank">' . $form->get_no_input_locale( $opt_key ) . $cmt_transl . '</td>';
 			}
 
 			return $table_rows;

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.0.0-rc.3\n"
+"Project-Id-Version: WPSSO Core 14.0.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2141,7 +2141,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:308
 msgctxt "option label"
-msgid "Product Net Len. / Depth Custom Field"
+msgid "Product Net Length Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:309
@@ -2326,7 +2326,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:345
 msgctxt "option label"
-msgid "Net Length / Depth Attribute Name"
+msgid "Net Length Attribute Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:346
@@ -6638,59 +6638,59 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:59
+#: lib/integ/ecom/woocommerce.php:141
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:62
+#: lib/integ/ecom/woocommerce.php:144
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:66
+#: lib/integ/ecom/woocommerce.php:148
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:67
+#: lib/integ/ecom/woocommerce.php:149
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:68
+#: lib/integ/ecom/woocommerce.php:150
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:69
+#: lib/integ/ecom/woocommerce.php:151
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:74
+#: lib/integ/ecom/woocommerce.php:156
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:183
+#: lib/integ/ecom/woocommerce.php:189
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:837
+#: lib/integ/ecom/woocommerce.php:843
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:840
+#: lib/integ/ecom/woocommerce.php:846
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:843
+#: lib/integ/ecom/woocommerce.php:849
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1498
+#: lib/integ/ecom/woocommerce.php:1504
 msgid "World"
 msgstr ""
 
@@ -12717,12 +12717,12 @@ msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3789
+#: lib/util.php:3795
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3799
+#: lib/util.php:3805
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

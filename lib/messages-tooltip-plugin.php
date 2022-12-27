@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					if ( ! empty( $attr_frags[ 'about' ] ) ) {
 
 						// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] );
+						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] ) . ' ';
 					}
 
 					if ( ! empty( $attr_frags[ 'values' ] ) ) {
@@ -780,7 +780,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 						if ( ! empty( $cf_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] );
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] ) . ' ';
 						}
 
 						if ( ! empty( $cf_frags[ 'values' ] ) ) {

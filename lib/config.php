@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.0.0-rc.3',	// Plugin version.
+					'version'     => '14.0.0-rc.4',	// Plugin version.
 					'opt_version' => '936',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1999,7 +1999,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_gtin'               => '',			// GTIN Attribute Name.
 					'plugin_attr_product_height_value'       => '',			// Net Height Attribute Name.
 					'plugin_attr_product_isbn'               => '',			// ISBN Attribute Name.
-					'plugin_attr_product_length_value'       => '',			// Net Length / Depth Attribute Name.
+					'plugin_attr_product_length_value'       => '',			// Net Length Attribute Name.
 					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
 					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute Name.
 					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => '',	// Product GTIN Custom Field.
 					'plugin_cf_product_height_value'          => '',	// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => '',	// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'          => '',	// Product Net Len. / Depth Custom Field.
+					'plugin_cf_product_length_value'          => '',	// Product Net Length Custom Field.
 					'plugin_cf_product_material'              => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'           => '',	// Product MPN Custom Field.
 					'plugin_cf_product_min_advert_price'      => '',	// Product Min Advert Price Custom Field.
@@ -2131,7 +2131,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'product_gtin',
 					'plugin_cf_product_height_value'          => 'product_height_value',		// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => 'product_isbn',
-					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Len. / Depth Custom Field.
+					'plugin_cf_product_length_value'          => 'product_length_value',		// Product Net Length Custom Field.
 					'plugin_cf_product_material'              => 'product_material',
 					'plugin_cf_product_mfr_part_no'           => 'product_mfr_part_no',
 					'plugin_cf_product_min_advert_price'      => 'product_min_advert_price',
@@ -2816,7 +2816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin'                  => 'Product GTIN Custom Field',
 					'plugin_cf_product_height_value'          => 'Product Net Height Custom Field',
 					'plugin_cf_product_isbn'                  => 'Product ISBN Custom Field',
-					'plugin_cf_product_length_value'          => 'Product Net Len. / Depth Custom Field',
+					'plugin_cf_product_length_value'          => 'Product Net Length Custom Field',
 					'plugin_cf_product_material'              => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'           => 'Product MPN Custom Field',
 					'plugin_cf_product_min_advert_price'      => 'Product Min Advert Price Custom Field',
@@ -2859,7 +2859,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_gtin'               => 'GTIN Attribute Name',
 					'plugin_attr_product_height_value'       => 'Net Height Attribute Name',
 					'plugin_attr_product_isbn'               => 'ISBN Attribute Name',
-					'plugin_attr_product_length_value'       => 'Net Length / Depth Attribute Name',
+					'plugin_attr_product_length_value'       => 'Net Length Attribute Name',
 					'plugin_attr_product_material'           => 'Material Attribute Name',
 					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
 					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',

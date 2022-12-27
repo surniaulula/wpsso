@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$def_frags[ 'about' ], $def_frags[ 'desc' ] );
+								$def_frags[ 'about' ], $def_frags[ 'desc' ] ) . ' ';
 						}
 					}
 
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$def_frags[ 'about' ], $def_frags[ 'desc' ] );
+								$def_frags[ 'about' ], $def_frags[ 'desc' ] ) . ' ';
 						}
 					}
 

@@ -3693,6 +3693,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( 0 === strpos( $key, 'plugin_attr_product_' ) ) {	// Only use product attributes.
 
+						/**
+						 * Returns a localized option value or null.
+						 *
+						 * Note that for non-existing keys or empty value strings, this methods returns the
+						 * default non-localized value.
+						 */
 						$attr_name = SucomUtil::get_key_value( $key, $this->p->options );
 
 						if ( empty( $attr_name ) ) {	// Skip attributes that have no associated name.

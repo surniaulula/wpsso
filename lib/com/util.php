@@ -2621,9 +2621,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Returns an option value or null.
+		 * Returns a localized option value or null.
 		 *
-		 * Note that for non-existing keys or empty strings, this methods returns the default non-localized value.
+		 * Note that for non-existing keys or empty value strings, this methods returns the default non-localized value.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
@@ -2631,13 +2631,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 
-			$ret = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;	// Null if key does not exist.
+			$value = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;	// Null if key does not exist.
 
-			if ( null === $ret || '' === $ret ) {	// Maybe fallback to the default non-localized value.
+			if ( null === $value || '' === $value ) {	// Maybe fallback to the default non-localized value.
 
 				if ( false === strpos( $key_locale, '#' ) ) {	// The option key not localized, return null or empty string.
 
-					return $ret;
+					return $value;
 				}
 
 				$key_default = self::get_key_locale( $key_locale, $opts, 'default' );
@@ -2648,11 +2648,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					 * If the $key_locale value is an empty string, and $key_default does not exist, then
 					 * return the emty string.
 					 */
-					return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $ret;
+					return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $value;
 				}
 			}
 
-			return $ret;
+			return $value;
 		}
 
 		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {

@@ -56,26 +56,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$wc_advanced_msg = sprintf( __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.',
-					'wpsso' ), get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=advanced&section' ) );
+				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
-				$wc_products_msg = sprintf( __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.',
-					'wpsso' ), get_admin_url( null, 'admin.php?page=wc-settings&tab=products&section' ) );
-
-				foreach ( array(
-					'account'  => __( 'My account page', 'woocommerce' ),
-					'cart'     => __( 'Cart page', 'woocommerce' ),
-					'checkout' => __( 'Checkout page', 'woocommerce' ),
-					'shop'     => __( 'Shop page', 'woocommerce' ),
-				) as $page_type => $label_transl ) {
-
-					if ( ! is_int( $this->page_ids[ $page_type ] ) || $this->page_ids[ $page_type ] < 1 ) {
-
-						$this->p->notice->warn( sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ),
-							$label_transl ) . ' ' . ( 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg ) );
-					}
-				}
-			
 				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
 			}
 
@@ -154,27 +136,51 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 		}
 
+		public function check_woocommerce_pages() {
+
+			$wc_advanced_msg = sprintf( __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.',
+				'wpsso' ), get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=advanced&section' ) );
+
+			$wc_products_msg = sprintf( __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.',
+				'wpsso' ), get_admin_url( null, 'admin.php?page=wc-settings&tab=products&section' ) );
+
+			foreach ( array(
+				'account'  => __( 'My account page', 'woocommerce' ),
+				'cart'     => __( 'Cart page', 'woocommerce' ),
+				'checkout' => __( 'Checkout page', 'woocommerce' ),
+				'shop'     => __( 'Shop page', 'woocommerce' ),
+			) as $page_type => $label_transl ) {
+
+				if ( ! is_int( $this->page_ids[ $page_type ] ) || $this->page_ids[ $page_type ] < 1 ) {
+
+					$this->p->notice->warn( sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ),
+						$label_transl ) . ' ' . ( 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg ) );
+				}
+			}
+		}
+			
 
 		public function show_product_attributes_footer() {
 
 			global $post;
 
-			$product       = $this->p->util->wc->get_product( $post->ID );
-			$md_attr_names = $this->p->util->get_product_attr_names( $prefix = 'product', $delim = '_' );
-			$wc_attributes = $product->get_attributes();
-			$wc_attr_names = array();
-			$suggest_names = array();
+			$product        = $this->p->util->wc->get_product( $post->ID );
+			$md_attr_names  = $this->p->util->get_product_attr_names( $prefix = 'product', $delim = '_' );
+			$wc_attributes  = $product->get_attributes();
+			$wc_attr_labels = array();
+			$suggest_names  = array();
 
 			foreach ( $wc_attributes as $attribute ) {
 
-				$attr_name = $attribute->get_name();
+				$attr_name  = $attribute->get_name();
+				$attr_label = wc_attribute_label( $attr_name, $product );
 
-				$wc_attr_names[ $attr_name ] = true;
+				$wc_attr_labels[ $attr_label ] = true;
 			}
 
 			foreach ( $md_attr_names as $opt_key => $attr_name ) {
 
-				if ( empty( $wc_attr_names[ $attr_name ] ) ) {
+				if ( empty( $wc_attr_labels[ $attr_name ] ) ) {
 
 					$suggest_names[] = $attr_name;
 				}
