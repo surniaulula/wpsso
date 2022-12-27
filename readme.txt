@@ -249,7 +249,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new product related Document SSO options, attributes, and custom fields:
 		* Product Energy Rating
 		* Product Size System
-		* Product Net Len. / Depth
+		* Product Net Length
 		* Product Net Width
 		* Product Net Height
 		* Product Net Weight
@@ -259,6 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product Shipping Height
 		* Product Shipping Weight
 * **Improvements**
+	* Added support for localized Product Attribute values in the Advanced Settings page.
 	* Added a list of suggested attributes in the WooCommerce Product data metabox Attributes tab.
 	* Updated the WooCommerce integration module to provide shipping dimensions and weight (instead of product net dimensions and weight).
 	* Updated the SSO &gt; Advanced Settings &gt; Attributes and Metadata options to show default dimension, weight, and fluid volume units.
