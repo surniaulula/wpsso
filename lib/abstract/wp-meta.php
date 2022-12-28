@@ -16,7 +16,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 }
 
 /**
- * WordPress metadata class, extended by the WpssoPost, WpssoTerm, and WpssoUser classes.
+ * Extended by the WpssoPost, WpssoTerm, and WpssoUser classes.
  */
 if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
