@@ -233,6 +233,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 14.1.0-dev.2 (2022/12/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added new cache refresh functions:
+		* `wpsso_refresh_cache()`
+		* `wpsso_refresh_post_cache()`
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 14.0.0 (2022/12/28)**
 
 * **New Features**
@@ -755,6 +771,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 14.1.0-dev.2 =
+
+(2022/12/28) Added new cache refresh functions:
 
 = 14.0.0 =
 
