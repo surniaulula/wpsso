@@ -48,32 +48,6 @@ msgid "User Interface and General Usage"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:13
-msgctxt "html header"
-msgid "Documentation and Resources"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:14
-msgctxt "html header"
-msgid "WooCommerce Integration"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:15
-msgctxt "html paragraph"
-msgid ""
-"Taking the time to read this guide and review the <em><strong>SSO &gt; "
-"Essential Settings</strong></em> page will help improve your click-through "
-"rates and rankings in Google search results."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:16
-msgctxt "html paragraph"
-msgid ""
-"If you use the WooCommerce plugin, don't forget to check the <a href="
-"\"#documentation-and-resources\">Documentation and Resources section below</"
-"a> for additional integration notes specific to WooCommerce."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:17
 msgctxt "html paragraph"
 msgid ""
 "You can enter all your business social account information in the "
@@ -83,12 +57,12 @@ msgid ""
 "highlight your business social pages)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:18
+#: gettext/gettext-html-setup.php:14
 msgctxt "html paragraph"
 msgid "<strong>Related information:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:19
+#: gettext/gettext-html-setup.php:15
 msgctxt "html paragraph"
 msgid ""
 "Remind your content creators to enter their personal website URL, Facebook, "
@@ -98,7 +72,7 @@ msgid ""
 "information in the WordPress user profile page</em>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:20
+#: gettext/gettext-html-setup.php:16
 msgctxt "html paragraph"
 msgid ""
 "Review the website description on the <em><strong>SSO &gt; Essential "
@@ -108,7 +82,7 @@ msgid ""
 "suitable image featured, attached, or in their content."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:21
+#: gettext/gettext-html-setup.php:17
 msgctxt "html paragraph"
 msgid ""
 "WPSSO Core attempts to keep notifications to a minimum, issuing only "
@@ -119,7 +93,7 @@ msgid ""
 "toolbar."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:18
 msgctxt "html paragraph"
 msgid ""
 "Look for the SSO notification icon in the admin toolbar - it will be grey "
@@ -129,7 +103,7 @@ msgid ""
 "to the content shown in the current webpage."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:23
+#: gettext/gettext-html-setup.php:19
 msgctxt "html paragraph"
 msgid ""
 "Schema (aka \"Schema.org\") is a collaborative, community lead standard for "
@@ -143,7 +117,7 @@ msgid ""
 "and other search engines."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:24
+#: gettext/gettext-html-setup.php:20
 msgctxt "html paragraph"
 msgid ""
 "<a href=\"https://developers.google.com/search/docs/guides/intro-structured-"
@@ -156,7 +130,7 @@ msgid ""
 "markup in theme templates (deprecated standard)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:25
+#: gettext/gettext-html-setup.php:21
 msgctxt "html paragraph"
 msgid ""
 "If your theme templates include incomplete or incorrect RDFa / Microdata "
@@ -168,7 +142,7 @@ msgid ""
 "WPSSO Core, and which is not."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:26
+#: gettext/gettext-html-setup.php:22
 msgctxt "html paragraph"
 msgid ""
 "Submit the home page URL, along with a post, page, and archive page URL to "
@@ -180,7 +154,7 @@ msgid ""
 "any template HTML markup errors to your theme author."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:27
+#: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid ""
 "Submit a few post and page URLs to the <a href=\"https://developers.facebook."
@@ -195,7 +169,7 @@ msgid ""
 "cache</a>, even after fetching the new scrape information."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:28
+#: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
 msgid ""
 "Submit an example post and/or page to the <a href=\"http://developers."
@@ -207,7 +181,7 @@ msgid ""
 "validating your first example post or page."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:29
+#: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid ""
 "Submit the home page URL, along with a post, page, and archive page URL to "
@@ -218,12 +192,12 @@ msgid ""
 "complete the missing information."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:30
+#: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
 msgid "<strong>Markup Validators:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:31
+#: gettext/gettext-html-setup.php:27
 msgctxt "html paragraph"
 msgid ""
 "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
@@ -235,7 +209,7 @@ msgid ""
 "<em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:32
+#: gettext/gettext-html-setup.php:28
 msgctxt "html paragraph"
 msgid ""
 "When editing a post, page, category, tag, user profile, etc., you'll find a "
@@ -249,125 +223,96 @@ msgid ""
 "tools (mentioned above)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:33
-msgctxt "html paragraph"
-msgid ""
-"The WooCommerce plugin by itself does not provide sufficient markup for "
-"Google Rich Results."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:34
-msgctxt "html paragraph"
-msgid ""
-"The WPSSO Core plugin can read WooCommerce product data and provide "
-"comprehensive Schema Product JSON-LD markup for Google Rich Results, "
-"including product image galleries, product variations, product information "
-"(brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, "
-"MPN, pattern, size, SKU, volume, weight, etc), product reviews, product "
-"ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, "
-"shipping rates, shipping times, and much, much more."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:35
-msgctxt "html paragraph"
-msgid ""
-"The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/"
-"woocommerce-integration/\">WooCommerce Integration Notes</a> are very useful "
-"if you would like to include additional information in your meta tags and "
-"Schema markup, like the product brand, color, condition, material, pattern, "
-"size, etc."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:29
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:30
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
 "profile.html\">Create a Twitter Business Profile</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:31
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.google.com/create\">Add or claim your business on "
 "Google My Business</a> (recommended)"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:32
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
 "Business Account</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:33
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
 "Debugger</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:34
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
 "Microdata Debug Tool</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:35
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:36
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:37
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
 "a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
 "to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML "
 "Sitemap Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
@@ -375,7 +320,7 @@ msgid ""
 "checks (results influence SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -383,14 +328,14 @@ msgid ""
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
 "Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
