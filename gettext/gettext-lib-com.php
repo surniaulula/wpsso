@@ -1,6 +1,7 @@
 <?php die( 'These aren\'t the droids you\'re looking for.' );
-
+// 
 // Extract of translatable strings from lib/com/.
+// 
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.3f seconds).', 'wpsso' );

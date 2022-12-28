@@ -1,6 +1,7 @@
 <?php die( 'These aren\'t the droids you\'re looking for.' );
-
+// 
 // Extract of translatable strings from html/setup.html.
+// 
 _x( 'Business Social Accounts (Optional)', 'html header', 'wpsso' );
 _x( 'Author Social Accounts (Optional)', 'html header', 'wpsso' );
 _x( 'Review Essential Settings', 'html header', 'wpsso' );
