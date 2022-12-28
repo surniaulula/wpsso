@@ -3436,7 +3436,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Exclude empty string values.
 				 */
 				if ( isset( $assoc[ $key_name ] ) ) {
-				
+
 					$assoc[ $key_name ] = trim( $assoc[ $key_name ] );	// Just in case.
 				}
 

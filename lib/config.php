@@ -5237,7 +5237,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = self::$cf[ 'opt' ][ 'cf_md_index' ];
-			
+
 				/**
 				 * Hooked by WpssoProRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and
 				 * 'plugin_cf_recipe_instructions' values.

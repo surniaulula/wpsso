@@ -1782,17 +1782,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Fallback to default values if the min/max is empty.
 					 */
 					foreach ( array( $md_rating_key . '_min', $md_rating_key . '_max' ) as $md_key ) {
-	
+
 						if ( empty( $md_opts[ $md_key ] ) && isset( $md_defs[ $md_key ] ) ) {
-	
+
 							$md_opts[ $md_key ] = $md_defs[ $md_key ];
 						}
 					}
-	
+
 				} else {
-	
+
 					foreach ( array( $md_rating_key, $md_rating_key . '_min', $md_rating_key . '_max' ) as $md_key ) {
-	
+
 						unset( $md_opts[ $md_key ] );
 					}
 				}

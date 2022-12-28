@@ -158,7 +158,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				}
 			}
 		}
-			
 
 		public function show_product_attributes_footer() {
 

@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			) );
 
 			if ( false !== $size_spec ) {
-				
+
 				$json_ret[ 'sizeSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
 			}
 
@@ -176,9 +176,9 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 					'energyEfficiencyScaleMin'    => 'product:energy_efficiency:min_value',
 					'energyEfficiencyScaleMax'    => 'product:energy_efficiency:max_value',
 				) );
-				
+
 				if ( false !== $energy_efficiency ) {	// Just in case.
-					
+
 					$json_ret[ 'hasEnergyConsumptionDetails' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/EnergyConsumptionDetails',
 						$energy_efficiency );
 				}

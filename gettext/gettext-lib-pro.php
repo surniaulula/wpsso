@@ -1,8 +1,6 @@
 <?php die( 'These aren\'t the droids you\'re looking for.' );
 
-/**
- * Extract of translatable strings from lib/pro/.
- */
+// Extract of translatable strings from lib/pro/.
 _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
 _x( '(recommended - see help text)', 'option comment', 'wpsso' );
