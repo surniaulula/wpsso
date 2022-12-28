@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0-rc.4 (2022/12/27)**
+**Version 14.0.0 (2022/12/27)**
 
 * **New Features**
 	* Added support for the Schema Product 'sizeSpecification' property.
@@ -757,7 +757,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.0.0-rc.4 =
+= 14.0.0 =
 
 (2022/12/27) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
 
