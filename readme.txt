@@ -272,18 +272,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoUtilUnits` class with static methods:
 		* `WpssoUtilUnits::get_convert()`
-		* `WpssoUtilUnits::get_mixed_text()`
 		* `WpssoUtilUnits::get_mixed_label()`
+		* `WpssoUtilUnits::get_mixed_text()`
 		* `WpssoUtilUnits::get_mixed_type()`
+		* `WpssoUtilUnits::get_convert_dimension()`
 		* `WpssoUtilUnits::get_dimension_label()`
 		* `WpssoUtilUnits::get_dimension_units()`
-		* `WpssoUtilUnits::get_convert_dimension()`
+		* `WpssoUtilUnits::get_convert_fluid_volume()`
 		* `WpssoUtilUnits::get_fluid_volume_label()`
 		* `WpssoUtilUnits::get_fluid_volume_units()`
-		* `WpssoUtilUnits::get_convert_fluid_volume()`
+		* `WpssoUtilUnits::get_convert_weight()`
 		* `WpssoUtilUnits::get_weight_label()`
 		* `WpssoUtilUnits::get_weight_units()`
-		* `WpssoUtilUnits::get_convert_weight()`
 	* Updated `WpssoOpenGraph->add_og_type_mt_md()` to convert dimension and weight units.
 	* Renamed `WpssoSchema->get_data_unit_text()` to `WpssoSchema->get_unit_text()`.
 	* Removed `WpssoSchema->get_data_unit_from_assoc()`.
