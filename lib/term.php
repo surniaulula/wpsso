@@ -10,18 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-/**
- * This class may be extended by some add-ons.
- */
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
+	die( 'Do. Or do not. There is no try.' );
+}
+
 if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
-	$dir_name = dirname( __FILE__ );
-
-	if ( file_exists( $dir_name . '/abstract/wp-meta.php' ) ) {
-
-		require_once $dir_name . '/abstract/wp-meta.php';
-
-	} else wpdie( 'WpssoAbstractWpMeta class not found.' );
+	require_once WPSSO_PLUGINDIR . 'lib/abstract/wp-meta.php';
 }
 
 if ( ! class_exists( 'WpssoTerm' ) ) {

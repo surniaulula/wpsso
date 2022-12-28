@@ -107,7 +107,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
 
 						echo '<div class="notice notice-error error"><p>';
-						echo esc_html( $req_info[ 'notice' ] );
+						echo $req_info[ 'notice' ];
 						echo '</p></div>';
 					}
 				}
