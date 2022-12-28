@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.1.1
 WC Tested Up To: 7.2.2
-Stable Tag: 13.13.0
+Stable Tag: 14.0.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.0.0 (2022/12/27)**
+**Version 14.0.0 (2022/12/28)**
 
 * **New Features**
 	* Added support for the Schema Product 'sizeSpecification' property.
@@ -759,7 +759,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.0.0 =
 
-(2022/12/27) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
+(2022/12/28) Added support for the Schema Product 'hasEnergyConsumptionDetails' property. Added new options in the General Settings page. Added new product related Document SSO options, attributes, and custom fields.
 
 = 13.13.0 =
 
