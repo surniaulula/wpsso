@@ -164,7 +164,7 @@
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/">Setup Guide</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special: Buy one, Get one Free</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/">How to Get Better Schema Markup for WooCommerce</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/">Better Schema Markup for WooCommerce</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/">Troubleshooting Guide</a></li>
 </ul>
 

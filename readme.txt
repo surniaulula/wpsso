@@ -156,7 +156,7 @@ Present your content at its best on social sites and in search results - no matt
 
 * [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
 * [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
-* [How to Get Better Schema Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
+* [Better Schema Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 
 == Frequently Asked Questions ==
