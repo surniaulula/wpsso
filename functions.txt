@@ -1,5 +1,5 @@
 
-wpsso_clear_cache( $clear_other = false );
+wpsso_clear_cache( $clear_other = true, $clear_short = null, $refresh = true );
 
 wpsso_clear_post_cache( $post_id );
 
@@ -46,6 +46,10 @@ wpsso_get_user_mod( $user_id );
 wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );		// Returns an image array or false.
 
 wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' );	// Returns image URL or empty string.
+
+wpsso_refresh_cache( $read_cache = false );
+
+wpsso_refresh_post_cache( $post_id );
 
 wpsso_schema_attributes( $attr = '' );
 

@@ -131,15 +131,20 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
 	}
 }
 
+/**
+ * Cache clearing functions.
+ *
+ * Note that it is almost always better to use the cache refresh functions instead of the cache clearing functions.
+ */
 if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 
-	function wpsso_clear_cache( $clear_other = true, $clear_short = true ) {
+	function wpsso_clear_cache( $clear_other = true, $clear_short = null, $refresh = true  ) {
 
 		$wpsso =& Wpsso::get_instance();
 
 		$user_id = get_current_user_id();
 
-		return $wpsso->util->cache->schedule_clear( $user_id, $clear_other, $clear_short );
+		return $wpsso->util->cache->schedule_clear( $user_id, $clear_other, $clear_short, $refresh );
 	}
 }
 
@@ -150,6 +155,31 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		return $wpsso->post->clear_cache( $post_id );
+	}
+}
+
+/**
+ * Cache refresh functions.
+ */
+if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
+
+	function wpsso_refresh_cache( $read_cache = false ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		$user_id = get_current_user_id();
+
+		return $wpsso->util->cache->schedule_refresh( $user_id, $read_cache );
+	}
+}
+
+if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
+
+	function wpsso_refresh_post_cache( $post_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->post->refresh_cache( $post_id );
 	}
 }
 
