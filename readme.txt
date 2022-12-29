@@ -245,6 +245,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new cache refresh functions:
 		* `wpsso_refresh_cache()`
 		* `wpsso_refresh_post_cache()`
+	* Refactored including the lib/abstract/wp-meta.php library file in WpssoComment, WpssoPost, WpssoTerm, and WpssoUser.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
