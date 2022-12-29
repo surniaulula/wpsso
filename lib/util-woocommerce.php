@@ -299,6 +299,8 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		 */
 		public static function get_dimension_label( $key  = '' ) {
 
+			_deprecated_function( __METHOD__ . '()', '2022/12/28', $replacement = 'WpssoUtilUnits::get_dimension_label()' ); // Deprecation message.
+
 			return WpssoUtilUnits::get_dimension_label( $key );
 		}
 
@@ -307,13 +309,17 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		 */
 		public static function get_dimension( $value, $to, $from = '' ) {
 
-			return WpssoUtilUnits::get_convert_dimension( $value, $to, $from );
+			_deprecated_function( __METHOD__ . '()', '2022/12/28', $replacement = 'WpssoUtilUnits::get_dimension_convert()' ); // Deprecation message.
+
+			return WpssoUtilUnits::get_dimension_convert( $value, $to, $from );
 		}
 
 		/**
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_fluid_volume_label( $key = '' ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/12/28', $replacement = 'WpssoUtilUnits::get_fluid_volume_label()' ); // Deprecation message.
 
 			return WpssoUtilUnits::get_fluid_volume_label( $key );
 		}
@@ -323,6 +329,8 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		 */
 		public static function get_fluid_volume_units() {
 
+			_deprecated_function( __METHOD__ . '()', '2022/12/28', $replacement = 'WpssoUtilUnits::get_fluid_volume_units()' ); // Deprecation message.
+
 			return WpssoUtilUnits::get_fluid_volume_units();
 		}
 
@@ -331,7 +339,9 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		 */
 		public static function get_fluid_volume( $value, $to, $from = '' ) {
 
-			return WpssoUtilUnits::get_convert_fluid_volume( $value, $to, $from );
+			_deprecated_function( __METHOD__ . '()', '2022/12/28', $replacement = 'WpssoUtilUnits::get_fluid_volume_convert()' ); // Deprecation message.
+
+			return WpssoUtilUnits::get_fluid_volume_convert( $value, $to, $from );
 		}
 	}
 }

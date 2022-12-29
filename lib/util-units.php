@@ -47,21 +47,21 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 
 				if ( '' === $from || isset( $dimension_units[ $from ] ) ) {
 
-					return self::get_convert_dimension( $value, $to, $from );
+					return self::get_dimension_convert( $value, $to, $from );
 				}
 
 			} elseif ( isset( $fluid_volume_units[ $to ] ) ) {
 
 				if ( '' === $from || isset( $fluid_value_units[ $from ] ) ) {
 
-					return self::get_convert_fluid_value( $value, $to, $from );
+					return self::get_fluid_value_convert( $value, $to, $from );
 				}
 
 			} elseif ( isset( $weight_units[ $to ] ) ) {
 
 				if ( '' === $from || isset( $weight_units[ $from ] ) ) {
 
-					return self::get_convert_weight( $value, $to, $from );
+					return self::get_weight_convert( $value, $to, $from );
 				}
 			}
 
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_convert_dimension( $value, $to, $from = '' ) {
+		public static function get_dimension_convert( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$from  = empty( $from ) ? self::get_dimension_text() : $from;
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_convert_fluid_volume( $value, $to, $from = '' ) {
+		public static function get_fluid_volume_convert( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$from  = empty( $from ) ? self::get_fluid_volume_text() : $from;
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_convert_weight( $value, $to, $from = '' ) {
+		public static function get_weight_convert( $value, $to, $from = '' ) {
 
 			$value = (float) $value;
 			$to    = 'lbs' === $to   ? 'lb' : $to;		// WooCommerce uses 'lbs' and WPSSO uses 'lb'.

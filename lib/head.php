@@ -624,29 +624,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					case 'property-og:redirect_url':
 
-						$head_info[ 'is_redirect' ] = 0;	// Default value.
-
 						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
 
-							$head_info[ 'is_redirect' ] = 1;
+							$head_info[ 'is_redirect' ] = '1';
 						}
 
 						break;
 
 					case 'name-robots':
 
-						if ( ! is_embed() ) {	// Skip noindex value for embedded content.
+						if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
 
-							$head_info[ 'is_noindex' ] = 0;	// Default value.
+							$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
 
-							if ( ! empty( $mt[ 5 ] ) ) {	// Just in case.
+							if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
 
-								$directives = $this->p->util->robots->get_content_directives( $mt[ 5 ] );
-
-								if ( isset( $directives[ 'noindex' ] ) ) {	// Empty string.
-
-									$head_info[ 'is_noindex' ] = 1;
-								}
+								$head_info[ 'is_noindex' ] = '1';
 							}
 						}
 
@@ -727,9 +720,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Maybe save meta tag values for later sorting in list tables.
+			 * Save meta tag values for later sorting in list tables.
+			 *
+			 * Not that the column 'meta_key' value must begin with '_wpsso_head_info_'.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( isset( $_GET[ 'replytocom' ] ) || is_embed() || is_404() || is_search() ) {
+
+				// Nothing to do.
+
+			} elseif ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
 
@@ -744,23 +743,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						continue;
 					}
 
-					$meta_value = 'none';	// Default value.
+					$meta_value = $col_info[ 'def_val' ] ? $col_info[ 'def_val' ] : 'none';	// Default value.
 
-					if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
+					if ( isset( $col_info[ 'mt_name' ]  ) ) {
 
 						if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
 
+							/**
+							 * Example $media_html:
+							 *
+							 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
+							 */
 							if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
 
-								/**
-								 * Example:
-								 *
-								 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
-								 */
 								$meta_value = $media_html;
 							}
 
-						} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+						} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) && '' !== $head_info[ $col_info[ 'mt_name' ] ] ) {
 
 							$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
 						}

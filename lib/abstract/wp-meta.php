@@ -1988,12 +1988,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/**
 		 * Example Array (
 		 *	[schema_type_name] => _wpsso_head_info_schema_type_name
-		 *	[schema_type] => _wpsso_head_info_schema_type
-		 *	[og_type] => _wpsso_head_info_og_type
-		 *	[og_img] => _wpsso_head_info_og_img_thumb
-		 *	[og_desc] => _wpsso_head_info_og_desc
-		 *	[is_noindex] => _wpsso_head_info_is_noindex
-		 *	[is_redirect] => _wpsso_head_info_is_redirect
+		 *	[schema_type]      => _wpsso_head_info_schema_type
+		 *	[og_type]          => _wpsso_head_info_og_type
+		 *	[og_img]           => _wpsso_head_info_og_img_thumb
+		 *	[og_desc]          => _wpsso_head_info_og_desc
+		 *	[is_noindex]       => _wpsso_head_info_is_noindex
+		 *	[is_redirect]      => _wpsso_head_info_is_redirect
 		 * )
 		*/
 		public static function get_column_meta_keys( $col_key = false ) {
