@@ -108,19 +108,6 @@ if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 	}
 }
 
-/**
- * Deprecated on 2021/09/15.
- */
-if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
-
-	function wpsso_schema_attributes( $attr = '' ) {
-
-		_deprecated_function( __FUNCTION__ . '()', '2021/09/15', $replacement = '' );	// Deprecation message.
-
-		echo $attr;
-	}
-}
-
 if ( ! function_exists( 'wpsso_show_head' ) ) {
 
 	function wpsso_show_head( $attr = '' ) {
@@ -161,7 +148,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 /**
  * Cache refresh functions.
  */
-if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
+if ( ! function_exists( 'wpsso_refresh_cache' ) ) {	// Since WPSSO Core v14.1.0.
 
 	function wpsso_refresh_cache( $read_cache = false ) {
 
@@ -173,7 +160,7 @@ if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
+if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {	// Since WPSSO Core v14.1.0.
 
 	function wpsso_refresh_post_cache( $post_id ) {
 
@@ -503,6 +490,19 @@ if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 }
 
 /**
+ * Shorten URL using the selected shortening service.
+ */
+if ( ! function_exists( 'wpsso_shorten_url' ) ) {
+
+	function wpsso_shorten_url( $url ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->util->shorten_url( $url );
+	}
+}
+
+/**
  * Deprecated on 2021/09/04.
  */
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
@@ -516,15 +516,15 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 }
 
 /**
- * Shorten URL using the selected shortening service.
+ * Deprecated on 2021/09/15.
  */
-if ( ! function_exists( 'wpsso_shorten_url' ) ) {
+if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
-	function wpsso_shorten_url( $url ) {
+	function wpsso_schema_attributes( $attr = '' ) {
 
-		$wpsso =& Wpsso::get_instance();
+		_deprecated_function( __FUNCTION__ . '()', '2021/09/15', $replacement = '' );	// Deprecation message.
 
-		return $wpsso->util->shorten_url( $url );
+		echo $attr;
 	}
 }
 
