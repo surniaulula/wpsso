@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.1.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 14.1.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4580,7 +4580,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:334 gettext/gettext-lib-pro.php:345
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1622 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1625 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -5060,7 +5060,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:959 lib/term.php:690 lib/user.php:685
+#: lib/admin.php:867 lib/post.php:962 lib/term.php:690 lib/user.php:685
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5492,12 +5492,12 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/comment.php:77
+#: lib/comment.php:73
 msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:361
+#: lib/comment.php:357
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -6884,13 +6884,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1662 lib/post.php:710 lib/register.php:348 lib/term.php:551
+#: lib/media.php:1662 lib/post.php:713 lib/register.php:348 lib/term.php:551
 #: lib/user.php:528 lib/util.php:822 lib/util.php:928 lib/util.php:960
 #: lib/util.php:3149
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1663 lib/post.php:711 lib/term.php:552 lib/user.php:529
+#: lib/media.php:1663 lib/post.php:714 lib/term.php:552 lib/user.php:529
 #: lib/util.php:823 lib/util.php:3150
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -11208,148 +11208,148 @@ msgid_plural "%s minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/post.php:227
+#: lib/post.php:230
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:712
+#: lib/post.php:715
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:1097
+#: lib/post.php:1100
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1130
+#: lib/post.php:1133
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1136
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1139
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1166
+#: lib/post.php:1169
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1168
+#: lib/post.php:1171
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1170
+#: lib/post.php:1173
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1171
+#: lib/post.php:1174
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1185
+#: lib/post.php:1188
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1199
+#: lib/post.php:1202
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1214
+#: lib/post.php:1217
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1231
+#: lib/post.php:1234
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1237
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1267
+#: lib/post.php:1270
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1270
+#: lib/post.php:1273
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1273
+#: lib/post.php:1276
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1294
+#: lib/post.php:1297
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1313
+#: lib/post.php:1316
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1315
+#: lib/post.php:1318
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1318
+#: lib/post.php:1321
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1361
+#: lib/post.php:1364
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1363
+#: lib/post.php:1366
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1371
+#: lib/post.php:1374
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1375
+#: lib/post.php:1378
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1379
+#: lib/post.php:1382
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1574
+#: lib/post.php:1577
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1579
+#: lib/post.php:1582
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1885
+#: lib/post.php:1888
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

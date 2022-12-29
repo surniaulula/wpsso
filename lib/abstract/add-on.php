@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 
 			$this->cf =& $config_class::$cf;
 
-			$this->reg = new $register_class();		// Activate, deactivate, uninstall hooks.
+			$this->reg = new $register_class();	// Activate, deactivate, uninstall hooks.
 
 			$this->add_hooks();
 		}

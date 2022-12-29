@@ -20,6 +20,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/abstract/wp-meta.php';
 }
 
+/**
+ * Extended by the WpssoOpmPost class.
+ */
 if ( ! class_exists( 'WpssoPost' ) ) {
 
 	class WpssoPost extends WpssoAbstractWpMeta {
