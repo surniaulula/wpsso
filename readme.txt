@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed saving an incorrect noindex meta tag value when `is_embed()` is true.
 * **Developer Notes**
 	* Added new cache refresh functions:
 		* `wpsso_refresh_cache()`
@@ -785,7 +785,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.1.0 =
 
-(2022/12/29) Added new cache refresh functions.
+(2022/12/29) Added new cache refresh functions. Fixed saving an incorrect noindex meta tag value when `is_embed()` is true.
 
 = 14.0.0 =
 
