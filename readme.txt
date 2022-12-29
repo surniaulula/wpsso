@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.1.0-dev.3 (2022/12/28)**
+**Version 14.1.0-b.1 (2022/12/29)**
 
 * **New Features**
 	* None.
@@ -245,7 +245,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new cache refresh functions:
 		* `wpsso_refresh_cache()`
 		* `wpsso_refresh_post_cache()`
-	* Refactored including the lib/abstract/wp-meta.php library file in WpssoComment, WpssoPost, WpssoTerm, and WpssoUser.
+	* Refactored loading of the lib/abstract/wp-meta.php library in WpssoComment, WpssoPost, WpssoTerm, and WpssoUser.
+	* Re-added static methods to the `WpssoUtilWoocommerce` class with a deprecation notice:
+		* `WpssoUtilWoocommerce::get_dimension_label()`.
+		* `WpssoUtilWoocommerce::get_dimension()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume_label()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume_units()`.
+		* `WpssoUtilWoocommerce::get_fluid_volume()`.
+	* Renamed static methods in `WpssoUtilUnits`:
+		* `get_convert_dimension()`    to `get_dimension_convert()`
+		* `get_convert_fluid_volume()` to `get_fluid_volume_convert()`
+		* `get_convert_weight()`       to `get_weight_convert()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -773,9 +783,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.1.0-dev.3 =
+= 14.1.0-b.1 =
 
-(2022/12/28) Added new cache refresh functions.
+(2022/12/29) Added new cache refresh functions.
 
 = 14.0.0 =
 
