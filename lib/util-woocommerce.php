@@ -293,5 +293,45 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 			return $local_cache[ $product_id ][ $meta_key ] = false;
 		}
+
+		/**
+		 * Deprecatd on 2022/12/28.
+		 */
+		public static function get_dimension_label( $key  = '' ) {
+
+			return WpssoUtilUnits::get_dimension_label( $key );
+		}
+
+		/**
+		 * Deprecatd on 2022/12/28.
+		 */
+		public static function get_dimension( $value, $to, $from = '' ) {
+
+			return WpssoUtilUnits::get_convert_dimension( $value, $to, $from );
+		}
+
+		/**
+		 * Deprecatd on 2022/12/28.
+		 */
+		public static function get_fluid_volume_label( $key = '' ) {
+
+			return WpssoUtilUnits::get_fluid_volume_label( $key );
+		}
+
+		/**
+		 * Deprecatd on 2022/12/28.
+		 */
+		public static function get_fluid_volume_units() {
+
+			return WpssoUtilUnits::get_fluid_volume_units();
+		}
+
+		/**
+		 * Deprecatd on 2022/12/28.
+		 */
+		public static function get_fluid_volume( $value, $to, $from = '' ) {
+
+			return WpssoUtilUnits::get_convert_fluid_volume( $value, $to, $from );
+		}
 	}
 }
