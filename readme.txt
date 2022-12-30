@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.1.1-dev.1 (2022/12/30)**
+**Version 14.1.1-rc.1 (2022/12/30)**
 
 * **New Features**
 	* None.
@@ -797,7 +797,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.1.1-dev.1 =
+= 14.1.1-rc.1 =
 
 (2022/12/30) Fixed the Schema Product SizeSpecification property name.
 
