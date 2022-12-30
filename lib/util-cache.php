@@ -694,6 +694,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
+			/**
+			 * Since WPSSO Core v8.0.0.
+			 */
 			$post_ids   = WpssoPost::get_public_ids();
 			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 
@@ -707,13 +710,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			unset( $post_ids );
 
-			$total_count = array(
-				'post' => 0,
-				'term' => 0,
-				'user' => 0,
-			);
-
-			$sleep_secs = SucomUtil::get_const( 'WPSSO_CACHE_REFRESH_SLEEP_TIME', 0.50 );
+			/**
+			 * Refresh the cache for each public post, term, and user ID.
+			 */
+			$total_count = array( 'post' => 0, 'term' => 0, 'user' => 0 );
+			$sleep_secs  = WPSSO_CACHE_REFRESH_SLEEP_TIME;
 
 			foreach ( $total_count as $obj_name => &$count ) {
 

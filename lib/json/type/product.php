@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 			if ( false !== $size_spec ) {
 
-				$json_ret[ 'sizeSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
+				$json_ret[ 'size' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
 			}
 
 			/**
