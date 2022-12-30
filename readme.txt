@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed the Schema Product SizeSpecification property name.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -799,7 +799,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.1.1-dev.1 =
 
-(2022/12/30) None.
+(2022/12/30) Fixed the Schema Product SizeSpecification property name.
 
 = 14.1.0 =
 
