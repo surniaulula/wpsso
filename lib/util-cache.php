@@ -697,7 +697,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * Since WPSSO Core v8.0.0.
 			 */
-			$post_ids   = WpssoPost::get_public_ids();
+			$post_ids = WpssoPost::get_public_ids();
+
 			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 
 			foreach ( $post_ids as $post_id ) {
@@ -713,8 +714,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * Refresh the cache for each public post, term, and user ID.
 			 */
-			$total_count = array( 'post' => 0, 'term' => 0, 'user' => 0 );
-			$sleep_secs  = WPSSO_CACHE_REFRESH_SLEEP_TIME;
+			$total_count = array(
+				'post' => 0,
+				'term' => 0,
+				'user' => 0,
+			);
+
+			$sleep_secs = WPSSO_CACHE_REFRESH_SLEEP_TIME;
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
