@@ -233,6 +233,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 14.1.1-dev.1 (2022/12/30)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 14.1.0 (2022/12/29)**
 
 * **New Features**
@@ -263,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 14.0.0 (2022/12/28)**
 
 * **New Features**
-	* Added support for the Schema Product 'sizeSpecification' property.
+	* Added support for the Schema Product 'size' property as a Schema SizeSpecification type.
 	* Added support for the Schema Product 'hasEnergyConsumptionDetails' property.
 	* Added new options in the General Settings page:
 		* Default Dimension Units
@@ -782,6 +796,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 14.1.1-dev.1 =
+
+(2022/12/30) None.
 
 = 14.1.0 =
 
