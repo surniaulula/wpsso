@@ -742,8 +742,6 @@ table.sucom-settings td div.multi_input textarea.recipe_instruction_text {
 	height:5em;
 }
 
-table.sucom-settings td div.multi_input select.long_name { width:340px; }
-
 table.sucom-settings td div.multi_input input[type="text"].long_name { width:340px; }
 
 table.sucom-settings td div.multi_input p.howto_step_section,
@@ -788,9 +786,11 @@ table.sucom-settings td select.unit_text { width:100px; }
 
 table.sucom-settings td select.short { width:110px; }
 
-table.sucom-settings td select.locale { width:125px; }
+table.sucom-settings td select.size_group { width:124px; }
 
-table.sucom-settings td select.year { width:125px; }
+table.sucom-settings td select.locale { width:124px; }
+
+table.sucom-settings td select.year { width:124px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
@@ -804,6 +804,8 @@ table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.primary_term_id,
 table.sucom-settings td select.long_name { width:320px; }
+
+table.sucom-settings td div.multi_input select.long_name { width:340px; }
 
 table.sucom-settings td select.wide { width:100%; }
 

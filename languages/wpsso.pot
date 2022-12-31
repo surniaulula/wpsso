@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.1.1\n"
+"Project-Id-Version: WPSSO Core 14.2.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1971,352 +1971,352 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:284
 msgctxt "option label"
-msgid "Microdata Type URLs Custom Field"
+msgid "Adult Type Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:285
 msgctxt "option label"
-msgid "Book ISBN Custom Field"
+msgid "Age Group Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:286
 msgctxt "option label"
-msgid "How-To Steps Custom Field"
+msgid "Brand Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:287
 msgctxt "option label"
-msgid "How-To Supplies Custom Field"
+msgid "Color Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:288
 msgctxt "option label"
-msgid "How-To Tools Custom Field"
+msgid "Condition Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:289
 msgctxt "option label"
-msgid "Image URL Custom Field"
+msgid "Energy Rating Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:290
 msgctxt "option label"
-msgid "Product Adult Type Custom Field"
+msgid "Fluid Volume Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:291
 msgctxt "option label"
-msgid "Product Age Group Custom Field"
+msgid "GTIN-14 Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:292
 msgctxt "option label"
-msgid "Product Availability Custom Field"
+msgid "GTIN-13 (EAN) Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:293
 msgctxt "option label"
-msgid "Product Brand Custom Field"
+msgid "GTIN-12 (UPC) Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:294
 msgctxt "option label"
-msgid "Product Google Cat. ID Custom Field"
+msgid "GTIN-8 Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:295
 msgctxt "option label"
-msgid "Product Color Custom Field"
+msgid "GTIN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:296
 msgctxt "option label"
-msgid "Product Condition Custom Field"
+msgid "Net Height Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:297
 msgctxt "option label"
-msgid "Product Currency Custom Field"
+msgid "ISBN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:298
 msgctxt "option label"
-msgid "Product Energy Rating Custom Field"
+msgid "Net Len. / Depth Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:299
 msgctxt "option label"
-msgid "Product Fluid Volume Custom Field"
+msgid "Material Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:300
 msgctxt "option label"
-msgid "Product GTIN-14 Custom Field"
+msgid "MPN Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:301
 msgctxt "option label"
-msgid "Product GTIN-13 (EAN) Custom Field"
+msgid "Pattern Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:302
 msgctxt "option label"
-msgid "Product GTIN-12 (UPC) Custom Field"
+msgid "Size Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:303
 msgctxt "option label"
-msgid "Product GTIN-8 Custom Field"
+msgid "Size Group Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:304
 msgctxt "option label"
-msgid "Product GTIN Custom Field"
+msgid "Size System Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:305
 msgctxt "option label"
-msgid "Product Net Height Custom Field"
+msgid "Target Gender Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:306
 msgctxt "option label"
-msgid "Product ISBN Custom Field"
+msgid "Net Weight Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:307
 msgctxt "option label"
-msgid "Product Net Len. / Depth Custom Field"
+msgid "Net Width Attribute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:308
 msgctxt "option label"
-msgid "Product Material Custom Field"
+msgid "Microdata Type URLs Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:309
 msgctxt "option label"
-msgid "Product MPN Custom Field"
+msgid "Book ISBN Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:310
 msgctxt "option label"
-msgid "Product Min Advert Price Custom Field"
+msgid "How-To Steps Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:311
 msgctxt "option label"
-msgid "Product Pattern Custom Field"
+msgid "How-To Supplies Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:312
 msgctxt "option label"
-msgid "Product Price Custom Field"
+msgid "How-To Tools Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:313
 msgctxt "option label"
-msgid "Product Price Type Custom Field"
+msgid "Image URL Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:314
 msgctxt "option label"
-msgid "Product SKU Custom Field"
+msgid "Product Adult Type Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:315
 msgctxt "option label"
-msgid "Product Shipping Height Custom Field"
+msgid "Product Age Group Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:316
 msgctxt "option label"
-msgid "Product Shipping Length Custom Field"
+msgid "Product Availability Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:317
 msgctxt "option label"
-msgid "Product Shipping Weight Custom Field"
+msgid "Product Brand Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:318
 msgctxt "option label"
-msgid "Product Shipping Width Custom Field"
+msgid "Product Google Cat. ID Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:319
 msgctxt "option label"
-msgid "Product Size Custom Field"
+msgid "Product Color Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:320
 msgctxt "option label"
-msgid "Product Size Group Custom Field"
+msgid "Product Condition Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:321
 msgctxt "option label"
-msgid "Product Size System Custom Field"
+msgid "Product Currency Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:322
 msgctxt "option label"
-msgid "Product Target Gender Custom Field"
+msgid "Product Energy Rating Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:323
 msgctxt "option label"
-msgid "Product Net Weight Custom Field"
+msgid "Product Fluid Volume Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:324
 msgctxt "option label"
-msgid "Product Net Width Custom Field"
+msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:325
 msgctxt "option label"
-msgid "Recipe Ingredients Custom Field"
+msgid "Product GTIN-13 (EAN) Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:326
 msgctxt "option label"
-msgid "Recipe Instructions Custom Field"
+msgid "Product GTIN-12 (UPC) Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:327
 msgctxt "option label"
-msgid "Same-As URLs Custom Field"
+msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:328
 msgctxt "option label"
-msgid "Video URL Custom Field"
+msgid "Product GTIN Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:329
 msgctxt "option label"
-msgid "Video Embed HTML Custom Field"
+msgid "Product Net Height Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:330
 msgctxt "option label"
-msgid "Adult Type Attribute"
+msgid "Product ISBN Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:331
 msgctxt "option label"
-msgid "Age Group Attribute"
+msgid "Product Net Len. / Depth Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:332
 msgctxt "option label"
-msgid "Brand Attribute"
+msgid "Product Material Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:333
 msgctxt "option label"
-msgid "Color Attribute"
+msgid "Product MPN Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:334
 msgctxt "option label"
-msgid "Condition Attribute"
+msgid "Product Min Advert Price Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:335
 msgctxt "option label"
-msgid "Energy Rating Attribute"
+msgid "Product Pattern Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:336
 msgctxt "option label"
-msgid "Fluid Volume Attribute"
+msgid "Product Price Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:337
 msgctxt "option label"
-msgid "GTIN-14 Attribute"
+msgid "Product Price Type Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:338
 msgctxt "option label"
-msgid "GTIN-13 (EAN) Attribute"
+msgid "Product SKU Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:339
 msgctxt "option label"
-msgid "GTIN-12 (UPC) Attribute"
+msgid "Product Shipping Height Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:340
 msgctxt "option label"
-msgid "GTIN-8 Attribute"
+msgid "Product Shipping Length Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:341
 msgctxt "option label"
-msgid "GTIN Attribute"
+msgid "Product Shipping Weight Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:342
 msgctxt "option label"
-msgid "Net Height Attribute"
+msgid "Product Shipping Width Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:343
 msgctxt "option label"
-msgid "ISBN Attribute"
+msgid "Product Size Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:344
 msgctxt "option label"
-msgid "Net Len. / Depth Attribute"
+msgid "Product Size Group Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:345
 msgctxt "option label"
-msgid "Material Attribute"
+msgid "Product Size System Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:346
 msgctxt "option label"
-msgid "MPN Attribute"
+msgid "Product Target Gender Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:347
 msgctxt "option label"
-msgid "Pattern Attribute"
+msgid "Product Net Weight Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:348
 msgctxt "option label"
-msgid "Size Attribute"
+msgid "Product Net Width Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:349
 msgctxt "option label"
-msgid "Size Group Attribute"
+msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:350
 msgctxt "option label"
-msgid "Size System Attribute"
+msgid "Recipe Instructions Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:351
 msgctxt "option label"
-msgid "Target Gender Attribute"
+msgid "Same-As URLs Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:352
 msgctxt "option label"
-msgid "Net Weight Attribute"
+msgid "Video URL Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:353
 msgctxt "option label"
-msgid "Net Width Attribute"
+msgid "Video Embed HTML Custom Field"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:355
@@ -4426,121 +4426,121 @@ msgid "Product Size Group"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:303 lib/messages.php:872
-#: lib/pro/admin/edit.php:1170 lib/std/admin/edit.php:1048
+#: lib/pro/admin/edit.php:1174 lib/std/admin/edit.php:1052
 msgctxt "option label"
 msgid "Product Size System"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:304 lib/messages.php:682
-#: lib/pro/admin/edit.php:1177 lib/std/admin/edit.php:1056
+#: lib/pro/admin/edit.php:1181 lib/std/admin/edit.php:1060
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:305 lib/messages.php:675
-#: lib/pro/admin/edit.php:1184 lib/std/admin/edit.php:1064
+#: lib/pro/admin/edit.php:1188 lib/std/admin/edit.php:1068
 msgctxt "option label"
 msgid "Product Adult Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:306 lib/messages.php:790
-#: lib/pro/admin/edit.php:1191 lib/std/admin/edit.php:1072
+#: lib/pro/admin/edit.php:1195 lib/std/admin/edit.php:1076
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:307 lib/messages.php:892
-#: lib/pro/admin/edit.php:1199 lib/std/admin/edit.php:1081
+#: lib/pro/admin/edit.php:1203 lib/std/admin/edit.php:1085
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:308 lib/messages.php:778
-#: lib/pro/admin/edit.php:1207 lib/std/admin/edit.php:1090
+#: lib/pro/admin/edit.php:1211 lib/std/admin/edit.php:1094
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:309 lib/messages.php:886
-#: lib/pro/admin/edit.php:1215 lib/std/admin/edit.php:1099
+#: lib/pro/admin/edit.php:1219 lib/std/admin/edit.php:1103
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:310 lib/messages.php:743
-#: lib/pro/admin/edit.php:1223 lib/std/admin/edit.php:1108
+#: lib/pro/admin/edit.php:1227 lib/std/admin/edit.php:1112
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:311 lib/messages.php:841
-#: lib/pro/admin/edit.php:1231 lib/std/admin/edit.php:1117
+#: lib/pro/admin/edit.php:1235 lib/std/admin/edit.php:1121
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:312 lib/messages.php:853
-#: lib/pro/admin/edit.php:1239 lib/std/admin/edit.php:1126
+#: lib/pro/admin/edit.php:1243 lib/std/admin/edit.php:1130
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:313 lib/messages.php:835
-#: lib/pro/admin/edit.php:1247 lib/std/admin/edit.php:1135
+#: lib/pro/admin/edit.php:1251 lib/std/admin/edit.php:1139
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:314 lib/messages.php:847
-#: lib/pro/admin/edit.php:1255 lib/std/admin/edit.php:1144
+#: lib/pro/admin/edit.php:1259 lib/std/admin/edit.php:1148
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:315 lib/messages.php:830
-#: lib/pro/admin/edit.php:1263 lib/std/admin/edit.php:1153
+#: lib/pro/admin/edit.php:1267 lib/std/admin/edit.php:1157
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:316 lib/messages.php:802
-#: lib/pro/admin/edit.php:1270 lib/std/admin/edit.php:1161
+#: lib/pro/admin/edit.php:1274 lib/std/admin/edit.php:1165
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:317 lib/messages.php:748
-#: lib/pro/admin/edit.php:1277 lib/std/admin/edit.php:1169
+#: lib/pro/admin/edit.php:1281 lib/std/admin/edit.php:1173
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:318 lib/messages.php:754
-#: lib/pro/admin/edit.php:1284 lib/std/admin/edit.php:1177
+#: lib/pro/admin/edit.php:1288 lib/std/admin/edit.php:1181
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:319 lib/messages.php:760
-#: lib/pro/admin/edit.php:1291 lib/std/admin/edit.php:1185
+#: lib/pro/admin/edit.php:1295 lib/std/admin/edit.php:1189
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:320 lib/messages.php:766
-#: lib/pro/admin/edit.php:1298 lib/std/admin/edit.php:1193
+#: lib/pro/admin/edit.php:1302 lib/std/admin/edit.php:1197
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:321 lib/messages.php:772
-#: lib/pro/admin/edit.php:1305 lib/std/admin/edit.php:1201
+#: lib/pro/admin/edit.php:1309 lib/std/admin/edit.php:1205
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:322 lib/messages.php:784
-#: lib/pro/admin/edit.php:1312 lib/std/admin/edit.php:1209
+#: lib/pro/admin/edit.php:1316 lib/std/admin/edit.php:1213
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
@@ -4626,54 +4626,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1163
+#: lib/abstract/wp-meta.php:1167
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1231
-msgctxt "metabox tab"
-msgid "Edit General"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1235
 msgctxt "metabox tab"
+msgid "Edit General"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1239
+msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1238 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1242 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1242
+#: lib/abstract/wp-meta.php:1246
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1243
+#: lib/abstract/wp-meta.php:1247
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1244
+#: lib/abstract/wp-meta.php:1248
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1245
+#: lib/abstract/wp-meta.php:1249
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1583
+#: lib/abstract/wp-meta.php:1587
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1904 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1908 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1906
+#: lib/abstract/wp-meta.php:1910
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."

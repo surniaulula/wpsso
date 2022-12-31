@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.1.1',	// Plugin version.
-					'opt_version' => '936',		// Increment when changing default option values.
+					'version'     => '14.2.0-dev.1',	// Plugin version.
+					'opt_version' => '938',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2105,7 +2105,50 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Provides a custom field key to meta data options key index.
+				 * WpssoConfig::$cf[ 'opt' ][ 'attr_md_index' ]
+				 *
+				 * Provides a key index for product attributes to meta data options.
+				 */
+				'attr_md_index' => array(
+					'plugin_attr_product_adult_type'         => 'product_adult_type',
+					'plugin_attr_product_age_group'          => 'product_age_group',
+					'plugin_attr_product_brand'              => 'product_brand',
+					'plugin_attr_product_color'              => 'product_color',
+					'plugin_attr_product_condition'          => 'product_condition',
+					'plugin_attr_product_energy_efficiency'  => 'product_energy_efficiency',
+					'plugin_attr_product_fluid_volume_value' => 'product_fluid_volume_value',
+					'plugin_attr_product_gtin14'             => 'product_gtin14',
+					'plugin_attr_product_gtin13'             => 'product_gtin13',
+					'plugin_attr_product_gtin12'             => 'product_gtin12',
+					'plugin_attr_product_gtin8'              => 'product_gtin8',
+					'plugin_attr_product_gtin'               => 'product_gtin',
+					'plugin_attr_product_height_value'       => 'product_height_value',
+					'plugin_attr_product_isbn'               => 'product_isbn',
+					'plugin_attr_product_length_value'       => 'product_length_value',
+					'plugin_attr_product_material'           => 'product_material',
+					'plugin_attr_product_mfr_part_no'        => 'product_mfr_part_no',
+					'plugin_attr_product_pattern'            => 'product_pattern',
+					'plugin_attr_product_size'               => 'product_size',
+					'plugin_attr_product_size_group'         => 'product_size_group',
+					'plugin_attr_product_size_system'        => 'product_size_system',
+					'plugin_attr_product_target_gender'      => 'product_target_gender',
+					'plugin_attr_product_weight_value'       => 'product_weight_value',
+					'plugin_attr_product_width_value'        => 'product_width_value',
+				),
+
+				/**
+				 * WpssoConfig::$cf[ 'opt' ][ 'attr_md_multi' ]
+				 *
+				 * Provides information to help read and split attribute values into numbered options.
+				 */
+				'attr_md_multi' => array(
+					'product_size_group' => true,
+				),
+
+				/**
+				 * WpssoConfig::$cf[ 'opt' ][ 'cf_md_index' ]
+				 *
+				 * Provides a key index for custom fields to meta data options.
 				 */
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'                => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
@@ -2157,7 +2200,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Provides information to read and split custom field values into numbered meta keys.
+				 * WpssoConfig::$cf[ 'opt' ][ 'cf_md_multi' ]
+				 *
+				 * Provides information to help read and split custom field values into numbered options.
 				 */
 				'cf_md_multi' => array(
 					'schema_addl_type_url' => true,		// Microdata Type URLs.
@@ -2177,6 +2222,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema_recipe_instruction_img_id_lib',
 					),
 					'schema_sameas_url'                    => true,	// Same-As URLs.
+					'product_size_group'                   => true,
 					'schema_webpage_reviewed_by_org_id'    => true,
 					'schema_webpage_reviewed_by_person_id' => true,
 				),
@@ -2797,6 +2843,36 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * Attribute option labels.
+				 */
+				'attr_labels' => array(
+					'plugin_attr_product_adult_type'         => 'Adult Type Attribute',
+					'plugin_attr_product_age_group'          => 'Age Group Attribute',
+					'plugin_attr_product_brand'              => 'Brand Attribute',
+					'plugin_attr_product_color'              => 'Color Attribute',
+					'plugin_attr_product_condition'          => 'Condition Attribute',
+					'plugin_attr_product_energy_efficiency'  => 'Energy Rating Attribute',
+					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute',
+					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute',
+					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute',
+					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute',
+					'plugin_attr_product_gtin8'              => 'GTIN-8 Attribute',
+					'plugin_attr_product_gtin'               => 'GTIN Attribute',
+					'plugin_attr_product_height_value'       => 'Net Height Attribute',
+					'plugin_attr_product_isbn'               => 'ISBN Attribute',
+					'plugin_attr_product_length_value'       => 'Net Len. / Depth Attribute',
+					'plugin_attr_product_material'           => 'Material Attribute',
+					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute',
+					'plugin_attr_product_pattern'            => 'Pattern Attribute',
+					'plugin_attr_product_size'               => 'Size Attribute',
+					'plugin_attr_product_size_group'         => 'Size Group Attribute',
+					'plugin_attr_product_size_system'        => 'Size System Attribute',
+					'plugin_attr_product_target_gender'      => 'Target Gender Attribute',
+					'plugin_attr_product_weight_value'       => 'Net Weight Attribute',
+					'plugin_attr_product_width_value'        => 'Net Width Attribute',
+				),
+
+				/**
 				 * Custom field option labels.
 				 */
 				'cf_labels' => array(
@@ -2846,36 +2922,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'                   => 'Same-As URLs Custom Field',
 					'plugin_cf_vid_url'                       => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'                     => 'Video Embed HTML Custom Field',
-				),
-
-				/**
-				 * Attribute option labels.
-				 */
-				'attr_labels' => array(
-					'plugin_attr_product_adult_type'         => 'Adult Type Attribute',
-					'plugin_attr_product_age_group'          => 'Age Group Attribute',
-					'plugin_attr_product_brand'              => 'Brand Attribute',
-					'plugin_attr_product_color'              => 'Color Attribute',
-					'plugin_attr_product_condition'          => 'Condition Attribute',
-					'plugin_attr_product_energy_efficiency'  => 'Energy Rating Attribute',
-					'plugin_attr_product_fluid_volume_value' => 'Fluid Volume Attribute',
-					'plugin_attr_product_gtin14'             => 'GTIN-14 Attribute',
-					'plugin_attr_product_gtin13'             => 'GTIN-13 (EAN) Attribute',
-					'plugin_attr_product_gtin12'             => 'GTIN-12 (UPC) Attribute',
-					'plugin_attr_product_gtin8'              => 'GTIN-8 Attribute',
-					'plugin_attr_product_gtin'               => 'GTIN Attribute',
-					'plugin_attr_product_height_value'       => 'Net Height Attribute',
-					'plugin_attr_product_isbn'               => 'ISBN Attribute',
-					'plugin_attr_product_length_value'       => 'Net Len. / Depth Attribute',
-					'plugin_attr_product_material'           => 'Material Attribute',
-					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute',
-					'plugin_attr_product_pattern'            => 'Pattern Attribute',
-					'plugin_attr_product_size'               => 'Size Attribute',
-					'plugin_attr_product_size_group'         => 'Size Group Attribute',
-					'plugin_attr_product_size_system'        => 'Size System Attribute',
-					'plugin_attr_product_target_gender'      => 'Target Gender Attribute',
-					'plugin_attr_product_weight_value'       => 'Net Weight Attribute',
-					'plugin_attr_product_width_value'        => 'Net Width Attribute',
 				),
 
 				/**
@@ -5231,60 +5277,51 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v14.0.0.
+		 * Since WPSSO Core v14.2.0.
 		 *
-		 * Provides a custom field key to meta data options key index.
+		 * Provides a key index for attributes to meta data options.
 		 *
 		 * Returns false or an options key.
 		 */
-		public static function get_cf_md_index( $md_key = false ) {
+		public static function get_attr_md_index( $md_key = false ) {
 
-			static $local_cache = null;
+			return self::get_opt_md_info( $md_index = 'attr_md_index', $md_key );
+		}
 
-			if ( null === $local_cache ) {
+		/**
+		 * Since WPSSO Core v14.2.0.
+		 *
+		 * Provides information to help read and split attribute values into numbered options.
+		 *
+		 * Returns true, false, or an array.
+		 */
+		public static function get_attr_md_multi( $md_key = false ) {
 
-				$local_cache = self::$cf[ 'opt' ][ 'cf_md_index' ];
-
-				/**
-				 * Hooked by WpssoProRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and
-				 * 'plugin_cf_recipe_instructions' values.
-				 */
-				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $local_cache );
-			}
-
-			if ( false !== $md_key ) {
-
-				if ( isset( $local_cache[ $md_key ] ) ) {
-
-					return $local_cache[ $md_key ];
-				}
-
-				return false;
-			}
-
-			return $local_cache;
+			return self::get_opt_md_info( $md_index = 'attr_md_multi', $md_key );
 		}
 
 		/**
 		 * Since WPSSO Core v14.0.0.
 		 *
-		 * Provides information to read and split custom field values into numbered meta keys.
+		 * Provides a key index for custom fields to meta data options.
+		 *
+		 * Returns false or an options key.
+		 */
+		public static function get_cf_md_index( $md_key = false ) {
+
+			return self::get_opt_md_info( $md_index = 'cf_md_index', $md_key );
+		}
+
+		/**
+		 * Since WPSSO Core v14.0.0.
+		 *
+		 * Provides information to help read and split custom field values into numbered options.
 		 *
 		 * Returns true, false, or an array.
 		 */
 		public static function get_cf_md_multi( $md_key = false ) {
 
-			if ( false !== $md_key ) {
-
-				if ( isset( self::$cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
-
-					return self::$cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ];
-				}
-
-				return false;
-			}
-
-			return self::$cf[ 'opt' ][ 'cf_md_multi' ];
+			return self::get_opt_md_info( $md_index = 'cf_md_multi', $md_key );
 		}
 
 		/**
@@ -5330,6 +5367,42 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			return $local_cache;	// Return an array.
+		}
+
+		/**
+		 * Since WPSSO Core v14.2.0.
+		 *
+		 * Provides a key index for attributes and custom fields to meta data options.
+		 *
+		 * Provides information to help read and split attribute and custom field values into numbered options.
+		 *
+		 * Example $md_index values: 'attr_md_index', 'attr_md_multi', 'cf_md_index', or 'cf_md_multi'.
+		 */
+		private static function get_opt_md_info( $md_index, $md_key = false ) {
+			
+			static $local_cache = array();
+
+			if ( ! isset( $local_cache[ $md_index ] ) ) {
+			
+				$local_cache[ $md_index ] = isset( self::$cf[ 'opt' ][ $md_index ] ) ? self::$cf[ 'opt' ][ $md_index ] : array();
+
+				/**
+				 * See WpssoIntegRecipeWpRecipeMaker->filter_cf_md_index().
+				 */
+				$local_cache[ $md_index ] = (array) apply_filters( 'wpsso_' . $md_index, $local_cache[ $md_index ] );
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( isset( $local_cache[ $md_index ][ $md_key ] ) ) {
+
+					return $local_cache[ $md_index ][ $md_key ];
+				}
+
+				return false;
+			}
+
+			return $local_cache[ $md_index ];
 		}
 	}
 }

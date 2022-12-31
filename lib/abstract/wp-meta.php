@@ -140,9 +140,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				935 => array(	// Renamed for WPSSO Core v14.0.0.
 					'product_adult_oriented'    => 'product_adult_type',
 					'product_depth_value'       => 'product_length_value',
-					'product_size_type'         => 'product_size_group',
+					'product_size_type'         => 'product_size_group_0',
 					'schema_review_rating_from' => 'schema_review_rating_min',
 					'schema_review_rating_to'   => 'schema_review_rating_max',
+				),
+				936 => array(	// Renamed for WPSSO Core v14.2.0.
+					'product_size_group' => 'product_size_group_0',
 				),
 			),
 		);
@@ -426,7 +429,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_color'                 => '',
 					'product_target_gender'         => 'none',
 					'product_size'                  => '',
-					'product_size_group'            => 'none',
+					'product_size_group_0'          => 'none',
+					'product_size_group_1'          => 'none',
 					'product_size_system'           => $def_size_system,
 					'product_age_group'             => $def_age_group,
 					'product_adult_type'            => $def_adult_type,

@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 		}
 
 		/**
-		 * Hooked by WpssoIntegRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
+		 * Clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 		 */
 		public function filter_cf_md_index( $cf_md_index ) {
 

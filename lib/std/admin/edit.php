@@ -1039,7 +1039,11 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size Group', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size_group',
-					'content'  => $form->get_no_select( 'product_size_group', $this->p->cf[ 'form' ][ 'size_group' ] ),
+					'content'  => '' .
+						$form->get_no_select( 'product_size_group_0', $this->p->cf[ 'form' ][ 'size_group' ],
+							$css_class = 'size_group', $css_id = '', $is_assoc = true ) . ' ' .
+						$form->get_no_select( 'product_size_group_1', $this->p->cf[ 'form' ][ 'size_group' ],
+							$css_class = 'size_group', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_size_system' => array(
 					'tr_class' => $type_row_class[ 'product' ],
