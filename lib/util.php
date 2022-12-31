@@ -3727,7 +3727,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $local_cache as $key => $val ) {
 
-				if ( $delim !== '_' ) {
+				if ( '' !== $delim ) {
 
 					$key = preg_replace( '/_(type|units|value)$/', $delim . '$1', $key );
 				}

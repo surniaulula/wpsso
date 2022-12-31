@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.2.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 14.2.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4580,7 +4580,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:334 gettext/gettext-lib-pro.php:345
 #: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1625 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1637 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -4626,54 +4626,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1167
+#: lib/abstract/wp-meta.php:1179
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1235
-msgctxt "metabox tab"
-msgid "Edit General"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1239
-msgctxt "metabox tab"
-msgid "Edit Schema"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1242 lib/messages.php:296
-msgctxt "metabox tab"
-msgid "Edit Media"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1246
-msgctxt "metabox tab"
-msgid "Edit Visibility"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1247
 msgctxt "metabox tab"
+msgid "Edit General"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1251
+msgctxt "metabox tab"
+msgid "Edit Schema"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1254 lib/messages.php:296
+msgctxt "metabox tab"
+msgid "Edit Media"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1258
+msgctxt "metabox tab"
+msgid "Edit Visibility"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1259
+msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1248
+#: lib/abstract/wp-meta.php:1260
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1249
+#: lib/abstract/wp-meta.php:1261
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1587
+#: lib/abstract/wp-meta.php:1599
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1908 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1920 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1910
+#: lib/abstract/wp-meta.php:1922
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -5060,7 +5060,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:962 lib/term.php:690 lib/user.php:685
+#: lib/admin.php:867 lib/post.php:974 lib/term.php:690 lib/user.php:685
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6583,59 +6583,59 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:141
+#: lib/integ/ecom/woocommerce.php:142
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:144
+#: lib/integ/ecom/woocommerce.php:145
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:148
+#: lib/integ/ecom/woocommerce.php:149
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:149
+#: lib/integ/ecom/woocommerce.php:150
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:150
+#: lib/integ/ecom/woocommerce.php:151
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:151
+#: lib/integ/ecom/woocommerce.php:152
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:156
+#: lib/integ/ecom/woocommerce.php:157
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:188
+#: lib/integ/ecom/woocommerce.php:189
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:842
+#: lib/integ/ecom/woocommerce.php:843
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:845
+#: lib/integ/ecom/woocommerce.php:846
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:848
+#: lib/integ/ecom/woocommerce.php:849
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1503
+#: lib/integ/ecom/woocommerce.php:1583
 msgid "World"
 msgstr ""
 
@@ -6884,13 +6884,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1662 lib/post.php:713 lib/register.php:348 lib/term.php:551
+#: lib/media.php:1662 lib/post.php:725 lib/register.php:348 lib/term.php:551
 #: lib/user.php:528 lib/util.php:822 lib/util.php:928 lib/util.php:960
 #: lib/util.php:3149
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1663 lib/post.php:714 lib/term.php:552 lib/user.php:529
+#: lib/media.php:1663 lib/post.php:726 lib/term.php:552 lib/user.php:529
 #: lib/util.php:823 lib/util.php:3150
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -11213,143 +11213,143 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:715
+#: lib/post.php:727
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1112
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1145
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1148
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1139
+#: lib/post.php:1151
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1169
+#: lib/post.php:1181
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1171
+#: lib/post.php:1183
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1173
+#: lib/post.php:1185
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1174
+#: lib/post.php:1186
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1200
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1214
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1217
+#: lib/post.php:1229
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1246
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1237
+#: lib/post.php:1249
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1270
+#: lib/post.php:1282
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1273
+#: lib/post.php:1285
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1276
+#: lib/post.php:1288
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1297
+#: lib/post.php:1309
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1316
+#: lib/post.php:1328
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1318
+#: lib/post.php:1330
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1321
+#: lib/post.php:1333
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1364
+#: lib/post.php:1376
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1366
+#: lib/post.php:1378
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1374
+#: lib/post.php:1386
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1378
+#: lib/post.php:1390
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1382
+#: lib/post.php:1394
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1577
+#: lib/post.php:1589
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1582
+#: lib/post.php:1594
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1888
+#: lib/post.php:1900
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

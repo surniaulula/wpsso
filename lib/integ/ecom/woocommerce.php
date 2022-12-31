@@ -75,20 +75,21 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			) );
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'url_query_cache_disable' => 4,
-				'head_cache_index'        => 1,
-				'use_post'                => 1,
-				'get_post_mod'            => 2,
-				'schema_type_id'          => 3,
-				'primary_tax_slug'        => 2,	// See WpssoPost->get_primary_terms().
-				'the_content_seed'        => 2,
-				'description_seed'        => 4,
-				'attached_image_ids'      => 2,
-				'term_image_ids'          => 3,
-				'get_md_defaults'         => 2,
-				'get_post_options'        => 3,
-				'og_seed'                 => 2,
-				'tag_names_seed'          => 2,
+				'url_query_cache_disable'   => 4,
+				'head_cache_index'          => 1,
+				'use_post'                  => 1,
+				'get_post_mod'              => 2,
+				'schema_type_id'            => 3,
+				'primary_tax_slug'          => 2,	// See WpssoPost->get_primary_terms().
+				'the_content_seed'          => 2,
+				'description_seed'          => 4,
+				'attached_image_ids'        => 2,
+				'term_image_ids'            => 3,
+				'get_md_defaults'           => 2,
+				'get_post_options'          => 3,
+				'og_seed'                   => 2,
+				'tag_names_seed'            => 2,
+				'import_product_attributes' => 3,
 			) );
 
 			/**
@@ -923,50 +924,115 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		}
 
 		/**
-		 * This method does not return an array. The $mt_ecom argument must be passed by reference to add the required meta tags.
+		 * $mixed must be a product object or variation array.
 		 */
-		private function add_mt_product( array &$mt_ecom, $mod, $mixed ) {
+		public function filter_import_product_attributes( array $md_opts, array $mod, $mixed ) {
 
-			$is_variation = false;
+			if ( $this->p->debug->enabled ) {
 
-			if ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation.
+				$this->p->debug->mark();
+			}
+
+			$is_variation = false;	// Default value.
+
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'argument is a variation array' );
+					$this->p->debug->log( 'skipping importing product attributes for sitemap' );
 				}
 
-				$variation = $mixed;
+				return $md_opts;
+
+			} elseif ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation.
 
 				$is_variation = true;
+				$variation    = $mixed;
 
 			} elseif ( is_object( $mixed ) ) {	// Product object.
 
+				$product = $mixed;
+
+			} else {	// $mixed is not a variation array or product object.
+
+				return $md_opts;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing product attributes' );	// Begin timer.
+			}
+
+			$attr_md_index = WpssoConfig::get_attr_md_index();	// Uses a local cache.
+			$attr_md_multi = WpssoConfig::get_attr_md_multi();	// Uses a local cache.
+
+			foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
+
+				if ( empty( $md_key ) ) {	// Just in case.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'product attribute ' . $opt_attr_key . ' key is disabled' );
+					}
+
+					continue;
+				}
+
+				if ( empty( $this->p->options[ $opt_attr_key ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom field ' . $opt_attr_key . ' option is empty' );
+					}
+
+					continue;
+				}
+
+				$attr_name = $this->p->options[ $opt_attr_key ];	// Example: 'Size Group'.
+
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'argument is a product object' );
+					$this->p->debug->log( 'using product attribute ' . $opt_attr_key . ' name ' . $attr_name . ' for ' . $md_key . ' option' );
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'importing product attributes' );	// End timer.
+			}
+
+			return $md_opts;
+		}
+
+		/**
+		 * This method does not return an array.
+		 *
+		 * $mt_ecom must be passed by reference to add the required meta tags.
+		 *
+		 * $mixed must be a product object or variation array.
+		 */
+		private function add_mt_product( array &$mt_ecom, array $mod, $mixed ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$is_variation = false;	// Default value.
+
+			if ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation.
+
+				$is_variation = true;
+				$variation    = $mixed;
+
+			} elseif ( is_object( $mixed ) ) {	// Product object.
 
 				$product = $mixed;
 
-			} elseif ( false !== ( $product = $this->p->util->wc->get_product( $mixed ) ) ) {	// Product id.
+			} else {	// $mixed is not a variation array or product object.
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'argument is product id ' . $mixed );
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: argument is not a variation array, product object, or product id' );
-				}
-
-				return false;	// Stop here.
+				return false;
 			}
-
-			unset( $mixed );
 
 			$product_id     = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
@@ -1080,9 +1146,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				}
 
 				/**
-				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
+				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
-				$var_cf_meta_keys = apply_filters( 'wpsso_wc_variation_cf_meta_keys', array() );
+				$alt_opts = apply_filters( 'wpsso_wc_variation_alt_options', array() );
 
 				/**
 				 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
@@ -1096,15 +1162,29 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				 * See WpssoPost->get_options().
 				 * See WpssoAbstractWpMeta->get_defaults().
 				 * See WpssoUtilCustomFields->filter_import_custom_fields().
-				 * See WpssoIntegEcomWoocommerce->add_mt_product() - imports variation metadata.
-				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
+				 * See WpssoIntegEcomWoocommerce->add_mt_product().
+				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
+				$var_opts = array();
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'applying import_custom_fields filters for variation id ' . $product_id . ' metadata' );
 				}
 
-				$var_opts = apply_filters( 'wpsso_import_custom_fields', array(), $var_wp_meta, $var_cf_meta_keys );
+				$var_opts = (array) apply_filters( 'wpsso_import_custom_fields', $var_opts, $mod, $var_wp_meta, $alt_opts );
+
+				/**
+				 * Since WPSSO Core v14.2.0.
+				 *
+				 * See WpssoProEcomWoocommerce->add_mt_product().
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying import_product_attributes filters for variation id ' . $product_id );
+				}
+
+				$var_opts = (array) apply_filters( 'wpsso_import_product_attributes', $var_opts, $mod, $variation );
 
 				/**
 				 * Since WPSSO Core v12.2.0.

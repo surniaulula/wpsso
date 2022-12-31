@@ -829,8 +829,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 * See WpssoPost->get_options().
 				 * See WpssoAbstractWpMeta->get_defaults().
 				 * See WpssoUtilCustomFields->filter_import_custom_fields().
-				 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
-				 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
+				 * See WpssoProEcomWoocommerce->add_mt_product().
+				 * See WpssoProEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
 				if ( 'post' === $mod[ 'name' ] ) {
 
@@ -839,7 +839,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $mod[ 'id' ] . ' metadata' );
 					}
 
-					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, get_post_meta( $mod[ 'id' ] ) );
+					$md_defs = (array) apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
+
+					/**
+					 * Since WPSSO Core v14.2.0.
+					 *
+					 * See WpssoProEcomWoocommerce->add_mt_product().
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_product_attributes filters for post ID ' . $mod[ 'id' ] );
+					}
+
+					$md_defs = (array) apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
 				}
 
 				/**

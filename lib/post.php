@@ -481,15 +481,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoPost->get_options().
 					 * See WpssoAbstractWpMeta->get_defaults().
 					 * See WpssoUtilCustomFields->filter_import_custom_fields().
-					 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
-					 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
+					 * See WpssoProEcomWoocommerce->add_mt_product().
+					 * See WpssoProEcomWooAddGtin->filter_wc_variation_alt_options().
 					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, self::get_meta( $post_id ) );
+					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
+
+					/**
+					 * Since WPSSO Core v14.2.0.
+					 *
+					 * See WpssoProEcomWoocommerce->add_mt_product().
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_product_attributes filters for post ID ' . $post_id );
+					}
+
+					$md_opts = (array) apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
 
 					/**
 					 * Since WPSSO Core v9.5.0.

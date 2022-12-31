@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			}
 
 			$this->u->add_plugin_filters( $this, array(
-				'import_custom_fields' => 3,
+				'import_custom_fields' => 4,
 			) );
 		}
 
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults' and
 		 * 'wpsso_get_post_defaults' filters, so submitted form values that are identical can be removed.
 		 */
-		public function filter_import_custom_fields( array $md_opts, $wp_meta = false, array $cf_meta_keys = array() ) {
+		public function filter_import_custom_fields( array $md_opts, array $mod, $wp_meta = array(), $alt_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -69,17 +69,17 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				$this->p->debug->mark( 'importing custom fields' );	// Begin timer.
 			}
 
-			if ( ! empty( $cf_meta_keys ) ) {
+			if ( ! empty( $alt_opts ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( 'cf_meta_keys', $cf_meta_keys );
+					$this->p->debug->log_arr( 'alt_opts', $alt_opts );
 				}
 			}
 
 			$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			$cf_md_index = WpssoConfig::get_cf_md_index();	// Uses a local cache.
-			$cf_md_multi = WpssoConfig::get_cf_md_multi();
+			$cf_md_multi = WpssoConfig::get_cf_md_multi();	// Uses a local cache.
 
 			foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
 
@@ -94,11 +94,11 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				/**
-				 * Check to see if we have an alternate $wp_meta_key value (for WooCommerce variations).
+				 * Check to see if we have an alternate $wp_meta_key value for WooCommerce variations.
 				 */
-				if ( isset( $cf_meta_keys[ $opt_cf_key ] ) ) {
+				if ( isset( $alt_opts[ $opt_cf_key ] ) ) {
 
-					if ( empty( $cf_meta_keys[ $opt_cf_key ] ) ) {	// Just in case.
+					if ( empty( $alt_opts[ $opt_cf_key ] ) ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
 
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						continue;
 					}
 
-					$wp_meta_key = $cf_meta_keys[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
+					$wp_meta_key = $alt_opts[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
 
 				/**
 				 * Make sure the filtered custom field key is known.

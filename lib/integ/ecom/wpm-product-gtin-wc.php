@@ -47,22 +47,32 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 
 			$prop_name = get_option( 'wpm_pgw_structured_data_field', $default = 'gtin' );
 
-			/**
-			 * The $prop_name value may change, so remove and then re-add the custom field.
-			 */
 			foreach ( self::$prop_names as $name => $opt_suffix ) {
 
-				if ( isset( $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) &&	// Just in case.
-					$this->p->options[ 'plugin_cf_' . $opt_suffix ] === self::$meta_name ) {
+				if ( isset( $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) ) {
+				
+					/**
+					 * The $prop_name value may change, so remove and then re-add the custom field value.
+					 */
+					if ( self::$meta_name === $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) {
 
-					$this->p->options[ 'plugin_cf_' . $opt_suffix ] = '';
+						$this->p->options[ 'plugin_cf_' . $opt_suffix ] = '';
+					}
 				}
 
+				/**
+				 * Product attributes are read using the 'wpsso_product_attributes' filter.
+				 *
+				 * Make sure the GTIN product attribute is not read, which would overwrite our custom field value.
+				 */
 				$this->p->options[ 'plugin_attr_' . $opt_suffix ]               = '';
 				$this->p->options[ 'plugin_attr_' . $opt_suffix . ':disabled' ] = true;
 			}
 
-			if ( isset( self::$prop_names[ $prop_name ] ) ) {
+			/**
+			 * Add the custom field value.
+			 */
+			if ( isset( self::$prop_names[ $prop_name ] ) ) {	// Just in case.
 
 				$opt_suffix = self::$prop_names[ $prop_name ];
 

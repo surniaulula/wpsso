@@ -73,8 +73,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 		}
 
 		/**
-		 * The 'wpsso_og_ecom_woocommerce' filter will only be applied to WooCommerce products, so we don't have to check
-		 * the post type, etc.
+		 * The 'wpsso_og_ecom_woocommerce' filter is only applied to WooCommerce products, so we don't have to check the post type.
 		 */
 		public function filter_og_ecom_woocommerce( $mt_ecom, $mod ) {
 
