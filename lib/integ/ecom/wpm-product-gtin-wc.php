@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 			foreach ( self::$prop_names as $name => $opt_suffix ) {
 
 				if ( isset( $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) ) {
-				
+
 					/**
 					 * The $prop_name value may change, so remove and then re-add the custom field value.
 					 */

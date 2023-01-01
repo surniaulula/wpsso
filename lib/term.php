@@ -349,14 +349,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * Overwrite parent options with those of the child, allowing only undefined child options
 					 * to be inherited from the parent.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'inheriting parent metadata options' );
+					}
+
 					$parent_opts = $this->get_inherited_md_opts( $mod );
 
 					if ( ! empty( $parent_opts ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'merging inherited options' );
-						}
 
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}

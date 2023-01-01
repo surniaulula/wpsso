@@ -41,6 +41,9 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			}
 		}
 
+		/**
+		 * Returns true for a variable product, false for a simple product.
+		 */
 		public function is_mod_variable( $mod ) {
 
 			if ( $product = $this->get_product( $mod[ 'id' ] ) ) {
@@ -49,12 +52,27 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			}
 		}
 
-		public function is_product_variable( $product ) {
+		public function is_product( $product ) {
 
-			if ( 'variable' === $this->get_product_type( $product ) ) {
+			if ( $product instanceof WC_Product ) {
 
 				return true;
 			}
+
+			return false;
+		}
+
+		public function is_product_variable( $product ) {
+
+			if ( $product instanceof WC_Product ) {	// Just in case.
+
+				if ( 'variable' === $this->get_product_type( $product ) ) {
+
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		public function get_product( $product_id ) {
@@ -122,6 +140,32 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $product_type;
 		}
 
+	 	/**
+		 * Format the WooCommerce meta data as WordPress meta data.
+		 */
+		public function get_product_wp_meta( $product ) {
+
+			$var_wp_meta = array();
+
+			if ( is_callable( array( $product, 'get_meta_data' ) ) ) {	// Just in case.
+
+				$wc_var_meta = $product->get_meta_data();
+
+				if ( is_array( $wc_var_meta ) ) {	// Just in case.
+
+					foreach ( $wc_var_meta as $md_obj ) {	// WC_Meta_Data object.
+
+						if ( ! empty( $md_obj->key ) ) {
+
+							$var_wp_meta[ $md_obj->key ] = array( $md_obj->value );
+						}
+					}
+				}
+			}
+
+			return $var_wp_meta;
+		}
+
 		/**
 		 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 		 */
@@ -187,7 +231,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		}
 
 		/**
-		 * Returns false, or the variation product object.
+		 * Returns the variation product object or false if not a visible, active, and purchasable variation.
 		 */
 		public function get_variation_product( $mixed ) {
 

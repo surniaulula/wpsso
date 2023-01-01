@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-dev.3',	// Plugin version.
+					'version'     => '14.2.0-dev.4',	// Plugin version.
 					'opt_version' => '938',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5379,11 +5379,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * Example $md_index values: 'attr_md_index', 'attr_md_multi', 'cf_md_index', or 'cf_md_multi'.
 		 */
 		private static function get_opt_md_info( $md_index, $md_key = false ) {
-			
+
 			static $local_cache = array();
 
 			if ( ! isset( $local_cache[ $md_index ] ) ) {
-			
+
 				$local_cache[ $md_index ] = isset( self::$cf[ 'opt' ][ $md_index ] ) ? self::$cf[ 'opt' ][ $md_index ] : array();
 
 				/**

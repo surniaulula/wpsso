@@ -805,14 +805,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 *
 				 * Overwrite the default options with any custom options from the parent.
 				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'inheriting parent metadata options' );
+				}
+
 				$parent_opts = $this->get_inherited_md_opts( $mod );
 
 				if ( ! empty( $parent_opts ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'merging inherited options' );
-					}
 
 					$md_defs = array_merge( $md_defs, $parent_opts );
 				}
@@ -2317,23 +2317,24 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is ' . ( $mod[ 'is_public' ] ? 'public' : 'private' ) );
 			}
 
-			$md_opts = array();
+			$md_opts        = array();
+			$parent_ids     = array();
+			$inherit_opts   = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
+			$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
 
 			/**
-			 * Filter 'wpsso_inherit_md_opts' added in WPSSO Core v12.2.0.
+			 * Since WPSSO Core v12.2.0.
 			 */
-			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
-			$inherit_opts = apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
+			$inherit_opts = (array) apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
 
 			/**
-			 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
+			 * Since WPSSO Core v9.10.0.
 			 *
-			 * Note that by default only public children can inherit parent images.
+			 * Note that by default only public children inherit parent images.
 			 *
 			 * Use add_filter( 'wpsso_inherit_custom_images', '__return_true' ) to inherit images for private children.
 			 */
-			$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
-			$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
+			$inherit_custom = (bool) apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 			if ( $inherit_custom ) {
 
@@ -2374,10 +2375,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
-
-			} else {
-
-				$parent_ids = array();
 			}
 
 			/**
@@ -2413,10 +2410,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					if ( isset( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
 
 						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
-
 						$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
-
-						$md_opts = array_merge( $md_opts, $parent_opts );
+						$md_opts     = array_merge( $md_opts, $parent_opts );
 					}
 				}
 
