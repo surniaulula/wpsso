@@ -67,11 +67,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'importing custom fields' );	// Begin timer.
-			}
 
-			if ( ! empty( $alt_opts ) ) {
-
-				if ( $this->p->debug->enabled ) {
+				if ( ! empty( $alt_opts ) ) {
 
 					$this->p->debug->log_arr( 'alt_opts', $alt_opts );
 				}
@@ -110,9 +107,6 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 					$wp_meta_key = $alt_opts[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
 
-				/**
-				 * Make sure the filtered custom field key is known.
-				 */
 				} else {
 
 					if ( empty( $this->p->options[ $opt_cf_key ] ) ) {
@@ -130,18 +124,13 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using custom field ' . $opt_cf_key . ' meta key ' . $wp_meta_key . ' for ' . $md_key . ' option' );
+					$this->p->debug->log( 'using custom field ' . $wp_meta_key . ' key for ' . $md_key . ' option' );
 				}
 
 				/**
 				 * WordPress offers metadata in array element 0.
 				 */
 				if ( isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'found element 0 in ' . $wp_meta_key . ' array' );
-					}
 
 					$mixed = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
 
@@ -196,27 +185,18 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 					$md_opts[ $md_key . ':disabled' ] = true;
 
-					if ( false !== strpos( $md_key, '_value' ) ) {
-
-						$count = null;
-
-						$md_units_key = preg_replace( '/_value$/', '_units', $md_key, $limit = -1, $count );
-
-						if ( $count ) {
-
-							$md_opts[ $md_units_key ] = WpssoUtilUnits::get_mixed_text( $md_units_key );
-
-							$md_opts[ $md_units_key . ':disabled' ] = true;
-						}
-					}
-
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 					}
 
 					/**
-					 * If this is an '_img_url' option, add the image size and unset the '_img_id' option.
+					 * If this is a '_value' option, add the '_units' option.
+					 */
+					$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
+
+					/**
+					 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 					 */
 					$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
 
@@ -235,20 +215,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						}
 					}
 
-					/**
-					 * Remove any old values from the options array.
-					 */
-					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, $invert = true );
-
-					/**
-					 * Renumber the options starting from 0.
-					 */
-					foreach ( $values as $num => $val ) {
-
-						$md_opts[ $md_key . '_' . $num ] = $val;
-
-						$md_opts[ $md_key . '_' . $num . ':disabled' ] = true;
-					}
+					$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values );
 				}
 			}
 

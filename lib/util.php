@@ -640,7 +640,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * If this is an '_img_url' option, add the image size and unset the '_img_id' option.
+		 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 		 */
 		public function maybe_add_img_url_size( array &$opts, $opt_key ) {
 
@@ -664,6 +664,51 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				unset( $opts[ $img_id_key ] );
 				unset( $opts[ $img_id_lib_key ] );
+			}
+		}
+
+		/**
+		 * If this is a '_value' option, add the '_units' option.
+		 */
+		public function maybe_add_md_key_units( array &$md_opts, $md_key ) {
+
+			if ( false !== strpos( $md_key, '_value' ) ) {
+
+				$count = null;
+
+				$md_units_key = preg_replace( '/_value$/', '_units', $md_key, $limit = -1, $count );
+
+				if ( $count ) {	// Just in case.
+
+					$md_opts[ $md_units_key ] = WpssoUtilUnits::get_mixed_text( $md_units_key );
+
+					$md_opts[ $md_units_key . ':disabled' ] = true;
+				}
+			}
+		}
+
+		public function maybe_renum_md_key( array &$md_opts, $md_key, array $values ) {
+
+			/**
+			 * Remove any old values from the options array.
+			 */
+			$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, $invert = true );
+
+			/**
+			 * Renumber the options starting from 0.
+			 */
+			foreach ( $values as $num => $val ) {
+
+				$md_num_key = $md_key . '_' . $num;
+
+				$md_opts[ $md_num_key ] = $val;
+
+				$md_opts[ $md_num_key . ':disabled' ] = true;
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'option ' . $md_num_key . ' = ' . print_r( $md_opts[ $md_num_key ], true ) );
+				}
 			}
 		}
 
@@ -3633,109 +3678,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $validators;
-		}
-
-		/**
-		 * Returns an array of product attribute names, indexed by meta tag name ($delim = ":") or option name ($delim = "_").
-		 *
-		 * Example $prefix = "product" and $delim = ":" for meta tag names:
-		 *
-		 * 	Array(
-		 *		[product:brand]              => Brand
-		 *		[product:color]              => Color
-		 *		[product:condition]          => Condition
-		 *		[product:fluid_volume:value] => Volume
-		 *		[product:gtin14]             => GTIN-14
-		 *		[product:gtin14]             => GTIN-13
-		 *		[product:gtin14]             => GTIN-12
-		 *		[product:gtin8]              => GTIN-8
-		 *		[product:material]           => Material
-		 *		[product:mfr_part_no]        => MPN
-		 *		[product:pattern]            => Pattern
-		 *		[product:size]               => Size
-		 *		[product:size_group]         => Size Group
-		 *		[product:size_system]        => Size System
-		 *		[product:target_gender]      => Gender
-		 *	)
-		 *
-		 * Example $prefix = "product" and $delim = "_" for option names:
-		 *
-		 * 	Array(
-		 *		[product_adult_type]         => Adult Type
-		 *		[product_age_group]          => Age Group
-		 *		[product_brand]              => Brand
-		 *		[product_color]              => Color
-		 *		[product_condition]          => Condition
-		 *		[product_energy_efficiency]  => Energy Rating
-		 *		[product_fluid_volume_value] => Volume
-		 *		[product_gtin14]             => GTIN-14
-		 *		[product_gtin14]             => GTIN-13
-		 *		[product_gtin14]             => GTIN-12
-		 *		[product_gtin8]              => GTIN-8
-		 *		[product_material]           => Material
-		 *		[product_pattern]            => Pattern
-		 *		[product_mfr_part_no]        => MPN
-		 *		[product_size]               => Size
-		 *		[product_size_group]         => Size Group
-		 *		[product_size_system]        => Size System
-		 *		[product_target_gender]      => Gender
-		 *	)
-		 */
-		public function get_product_attr_names( $prefix = 'product', $delim = ':' ) {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				$local_cache = array();
-
-				foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $key => $label ) {
-
-					if ( 0 === strpos( $key, 'plugin_attr_product_' ) ) {	// Only use product attributes.
-
-						/**
-						 * Returns a localized option value or null.
-						 *
-						 * Note that for non-existing keys or empty value strings, this methods returns the
-						 * default non-localized value.
-						 */
-						$attr_name = SucomUtil::get_key_value( $key, $this->p->options );
-
-						if ( empty( $attr_name ) ) {	// Skip attributes that have no associated name.
-
-							continue;
-						}
-
-						$key = preg_replace( '/^plugin_attr_product_/', '', $key );
-
-						$local_cache[ $key ] = $attr_name;
-					}
-				}
-
-				$local_cache = apply_filters( 'wpsso_product_attribute_names', $local_cache );
-			}
-
-			/**
-			 * No prefix, so no separator required.
-			 */
-			if ( empty( $prefix ) ) {
-
-				return $local_cache;
-			}
-
-			$attr_names = array();
-
-			foreach ( $local_cache as $key => $val ) {
-
-				if ( '' !== $delim ) {
-
-					$key = preg_replace( '/_(type|units|value)$/', $delim . '$1', $key );
-				}
-
-				$attr_names[ $prefix . $delim . $key ] = $val;
-			}
-
-			return $attr_names;
 		}
 
 		/**

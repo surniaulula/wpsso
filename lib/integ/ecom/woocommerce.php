@@ -132,7 +132,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				'plugin_cf_product_shipping_weight_units' => '',
 			) as $opt_key => $opt_val ) {
 
-				$this->p->options[ $opt_key ]               = $opt_val;
+				$this->p->options[ $opt_key ] = $opt_val;
+
 				$this->p->options[ $opt_key . ':disabled' ] = true;
 			}
 		}
@@ -655,7 +656,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			foreach ( $prod_opts as $opt_key => $opt_val ) {
 
-				$md_opts[ $opt_key ]               = $opt_val;
+				$md_opts[ $opt_key ] = $opt_val;
+
 				$md_opts[ $opt_key . ':disabled' ] = true;
 			}
 
@@ -889,6 +891,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			} elseif ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation array.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'using variation array' );
+				}
+
 				$is_variation = true;
 				$variation    = $mixed;
 
@@ -896,11 +903,21 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				if ( $mixed instanceof WC_Product ) {	// Product object.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'using product object' );
+					}
+
 					$product = $mixed;
 
 				} elseif ( $mixed instanceof WP_Post ) {	// Post object.
 
 					if ( SucomUtil::is_post_type( $mixed, $this->prod_post_type ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'getting product object' );
+						}
 
 						$product = $this->p->util->wc->get_product( $mixed->ID );
 
@@ -949,6 +966,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'using attribute ' . $attr_name . ' name for ' . $md_key . ' option' );
 				}
 
+				$values = array();
+
 				if ( $is_variation ) {
 
 					if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
@@ -958,8 +977,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
 						}
 
-						$md_opts[ $md_key ]               = $attr_val;
-						$md_opts[ $md_key . ':disabled' ] = true;
+						$values[] = $attr_val;
 
 					/**
 					 * Fallback to the default value.
@@ -971,8 +989,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 							$this->p->debug->log( 'assigning ' . $attr_name . ' default value to ' . $md_key . ' = ' . $attr_val );
 						}
 
-						$md_opts[ $md_key ]               = $attr_val;
-						$md_opts[ $md_key . ':disabled' ] = true;
+						$values[] = $attr_val;
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no ' . $attr_name . ' default value for variation' );
+						}
 					}
 
 				} else {
@@ -996,9 +1020,45 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 								$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
 							}
 
-							$md_opts[ $md_key ]               = $attr_val;
-							$md_opts[ $md_key . ':disabled' ] = true;
+							$values[] = $attr_val;
 						}
+					}
+				}
+
+				/**
+				 * Check if the value(s) should be split into multiple numeric options.
+				 */
+				if ( ! empty( $values ) ) {	// Just in case.
+
+					if ( empty( $attr_md_multi[ $md_key ] ) ) {
+	
+						$md_opts[ $md_key ] = reset( $values );
+	
+						$md_opts[ $md_key . ':disabled' ] = true;
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
+						}
+	
+						/**
+						 * If this is a '_value' option, add the '_units' option.
+						 */
+						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
+	
+					} else {
+	
+						/**
+						 * Explode the first element into an array.
+						 */
+						$values = array_map( 'trim', explode( ',', reset( $values ) ) );
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'exploded ' . $md_key . ' into array of ' . count( $values ) . ' elements' );
+						}
+						
+						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values );
 					}
 				}
 			}
@@ -1110,11 +1170,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$mt_ecom[ 'product:availability' ] = 'https://schema.org/OutOfStock';
 			}
-
-			/**
-			 * Additional information for offers / variations.
-			 */
-			$mt_attr_names = $this->p->util->get_product_attr_names( 'product', $delim = ':' );
 
 			if ( $is_variation ) {
 

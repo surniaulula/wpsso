@@ -105,49 +105,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_type',
-					$enum_key = 'adult_type', $val_prefix = '', $val_suffix = 'Consideration' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_type', $enum_key = 'adult_type',
+					$val_prefix = '', $val_suffix = 'Consideration' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group',
-					$enum_key = 'age_group' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group', $enum_key = 'age_group' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail',
-					$enum_key = 'item_availability' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail', $enum_key = 'item_availability' );
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition',
-					$enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' );
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition',
+					$val_prefix = '', $val_suffix = 'Condition' );
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency',
-					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+				foreach ( SucomUtil::preg_grep_keys( '/^product_energy_efficiency(_min|_max)?$/', $md_opts ) as $prop_name => $prop_val ) {
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency_min',
-					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+			 		self::check_prop_value_enumeration( $md_opts, $prop_name, $enum_key = 'energy_efficiency',
+						$val_prefix = 'EUEnergyEfficiencyCategory' );
+				}
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_energy_efficiency_max',
-					$enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type', $enum_key = 'price_type' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type',
-					$enum_key = 'price_type' );
+				foreach ( SucomUtil::preg_grep_keys( '/^product_size_group_[0-9]+$/', $md_opts ) as $prop_name => $prop_val ) {
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_group',
-					$enum_key = 'size_group', $val_prefix = 'WearableSizeGroup' );
+					self::check_prop_value_enumeration( $md_opts, $prop_name, $enum_key = 'size_group',
+						$val_prefix = 'WearableSizeGroup' );
+				}
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_system',
-					$enum_key = 'size_system', $val_prefix = 'WearableSizeSystem' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_system', $enum_key = 'size_system',
+					$val_prefix = 'WearableSizeSystem' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender',
-					$enum_key = 'target_gender' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender', $enum_key = 'target_gender' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_attendance',
-					$enum_key = 'event_attendance' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_attendance', $enum_key = 'event_attendance' );
 
-				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_status',
-					$enum_key = 'event_status' );
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_status', $enum_key = 'event_status' );
 
 				foreach ( SucomUtil::preg_grep_keys( '/^schema_(.*)_offer_avail/', $md_opts ) as $prop_name => $prop_val ) {
 
-					self::check_prop_value_enumeration( $md_opts, $prop_name,
-						$enum_key = 'item_availability' );
+					self::check_prop_value_enumeration( $md_opts, $prop_name, $enum_key = 'item_availability' );
 				}
 			}
 
@@ -3732,7 +3725,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function get_enumeration_values( $enum_key, $val_prefix = '', $val_suffix = '' ) {
+		public static function get_enumeration_examples( $enum_key, $val_prefix = '', $val_suffix = '' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3747,9 +3740,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} else {
 
-				$enums = $wpsso->cf[ 'form' ][ $enum_key ];
+				$enumerations = $wpsso->cf[ 'form' ][ $enum_key ];
 
-				foreach ( $enums as $key => $val ) {
+				unset( $enumerations[ 'none' ] );
+
+				/**
+				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
+				 */
+				foreach ( $enumerations as $key => $val ) {
+					
+					if ( false !== ( $pos = strpos( $val, '(' ) ) ) {
+
+						$enumerations[ $key ] = trim( substr( $val, 0, $pos ) );
+					}
+				}
+
+				$enums_transl = SucomUtil::get_options_value_transl( $enumerations, $text_domain = 'wpsso' );
+
+				foreach ( $enumerations as $key => $val ) {
+
+					$values[ $val ] = $val;
 
 					if ( false !== ( $pos = strpos( $key, 'https://schema.org/' ) ) ) {
 
@@ -3771,8 +3781,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-					$values[] = $key;
+					$values[ $key ] = $key;
 				}
+				
+				foreach ( $enums_transl as $key => $val ) {
+
+					$values[ $val ] = $val;
+				}
+			
+				SucomUtil::natasort( $values );
 			}
 
 			return $values;
@@ -3790,11 +3807,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
 			}
 
-			if ( empty( $json_data[ $prop_name ] ) ) {
+			if ( ! isset( $json_data[ $prop_name ] ) || ( empty( $json_data[ $prop_name ] ) && ! is_numeric( $json_data[ $prop_name ] ) ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( $prop_name . ' property value is empty' );
+					$wpsso->debug->log( $prop_name . ' property value is empty (and not numeric)' );
 				}
 
 			} elseif ( 'none' === $json_data[ $prop_name ] ) {
@@ -3813,25 +3830,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} else {
 
-				$enums = $wpsso->cf[ 'form' ][ $enum_key ];
+				$enumerations = $wpsso->cf[ 'form' ][ $enum_key ];
+				
+				/**
+				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
+				 */
+				foreach ( $enumerations as $key => $val ) {
+					
+					if ( false !== ( $pos = strpos( $val, '(' ) ) ) {
 
-				$prop_val = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
+						$enumerations[ $key ] = trim( substr( $val, 0, $pos ) );
+					}
+				}
 
-				if ( ! isset( $enums[ $prop_val ] ) ) {
+				$enums_labels = array_flip( $enumerations );
+				$enums_transl = array_flip( SucomUtil::get_options_value_transl( $enumerations, $text_domain = 'wpsso' ) );
+				$prop_val     = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
 
-					$prop_val_ucf = ucfirst( $prop_val );
+				if ( ! isset( $enumerations[ $prop_val ] ) ) {
 
-					if ( isset( $enums[ $prop_val_ucf ] ) ) {
+					if ( isset( $enumerations[ $prop_val ] ) ) {
 
-						$json_data[ $prop_name ] = $prop_val_ucf;
+						$json_data[ $prop_name ] = $prop_val;
 
-					} elseif ( isset( $enums[ 'https://schema.org/' . $prop_val_ucf ] ) ) {
+					} elseif ( isset( $enums_labels[ $prop_val ] ) ) {
+						
+						$json_data[ $prop_name ] = $enums_labels[ $prop_val ];
 
-						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val_ucf;
+					} elseif ( isset( $enums_transl[ $prop_val ] ) ) {
+						
+						$json_data[ $prop_name ] = $enums_transl[ $prop_val ];
 
-					} elseif ( isset( $enums[ 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix ] ) ) {
+					} elseif ( isset( $enumerations[ 'https://schema.org/' . $prop_val ] ) ) {
 
-						$json_data[ $prop_name ] = 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix;
+						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val;
+
+					} elseif ( isset( $enumerations[ 'https://schema.org/' . $val_prefix . $prop_val . $val_suffix ] ) ) {
+
+						$json_data[ $prop_name ] = 'https://schema.org/' . $val_prefix . $prop_val . $val_suffix;
 
 					} else {
 

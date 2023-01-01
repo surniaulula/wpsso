@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-dev.4',	// Plugin version.
+					'version'     => '14.2.0-dev.5',	// Plugin version.
 					'opt_version' => '938',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2928,22 +2928,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Used with array_intersect_key() to determine which metadata options can be inherited.
 				 */
 				'inherit_md_opts' => array(
-					'og_img_max'                    => null,	// Maximum Images.
-					'og_img_id'                     => null,
-					'og_img_id_lib'                 => null,
-					'og_img_url'                    => null,
-					'pin_img_id'                    => null,
-					'pin_img_id_lib'                => null,
-					'pin_img_url'                   => null,
-					'schema_img_id'                 => null,
-					'schema_img_id_lib'             => null,
-					'schema_img_url'                => null,
-					'tc_lrg_img_id'                 => null,
-					'tc_lrg_img_id_lib'             => null,
-					'tc_lrg_img_url'                => null,
-					'tc_sum_img_id'                 => null,
-					'tc_sum_img_id_lib'             => null,
-					'tc_sum_img_url'                => null,
+					'og_img_max'        => null,	// Maximum Images.
+					'og_img_id'         => null,
+					'og_img_id_lib'     => null,
+					'og_img_url'        => null,
+					'pin_img_id'        => null,
+					'pin_img_id_lib'    => null,
+					'pin_img_url'       => null,
+					'schema_img_id'     => null,
+					'schema_img_id_lib' => null,
+					'schema_img_url'    => null,
+					'tc_lrg_img_id'     => null,
+					'tc_lrg_img_id_lib' => null,
+					'tc_lrg_img_url'    => null,
+					'tc_sum_img_id'     => null,
+					'tc_sum_img_id_lib' => null,
+					'tc_sum_img_url'    => null,
+
+					/**
+					 * Inherited Schema Product custom options.
+					 */
 					'product_adult_type'            => null,
 					'product_age_group'             => null,
 					'product_energy_efficiency'     => null,
@@ -2966,13 +2970,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'adult_type' => array(
 					'none'                                                        => '[None]',
 					'https://schema.org/AlcoholConsideration'                     => 'Alcohol',
-					'https://schema.org/DangerousGoodConsideration'               => 'DangerousGood',
+					'https://schema.org/DangerousGoodConsideration'               => 'Dangerous Good',
 					'https://schema.org/HealthcareConsideration'                  => 'Healthcare',
 					'https://schema.org/NarcoticConsideration'                    => 'Narcotic',
-					'https://schema.org/ReducedRelevanceForChildrenConsideration' => 'ReducedRelevanceForChildren',
-					'https://schema.org/SexualContentConsideration'               => 'SexualContent',
-					'https://schema.org/TobaccoNicotineConsideration'             => 'TobaccoNicotine',
-					'https://schema.org/UnclassifiedAdultConsideration'           => 'UnclassifiedAdult',
+					'https://schema.org/ReducedRelevanceForChildrenConsideration' => 'Reduced Relevance for Children',
+					'https://schema.org/SexualContentConsideration'               => 'Sexual Content',
+					'https://schema.org/TobaccoNicotineConsideration'             => 'Tobacco Nicotine',
+					'https://schema.org/UnclassifiedAdultConsideration'           => 'Unclassified Adult',
 					'https://schema.org/ViolenceConsideration'                    => 'Violence',
 					'https://schema.org/WeaponConsideration'                      => 'Weapon',
 				),

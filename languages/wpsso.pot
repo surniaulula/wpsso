@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.2.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 14.2.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1568,1266 +1568,1312 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:193
+#: gettext/gettext-lib-config.php:194
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:194
+#: gettext/gettext-lib-config.php:196
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:195
+#: gettext/gettext-lib-config.php:198
 msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:196
+#: gettext/gettext-lib-config.php:200
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:197
+#: gettext/gettext-lib-config.php:202
 msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:198 lib/messages.php:941
+#: gettext/gettext-lib-config.php:203 lib/messages.php:941
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:199 lib/messages.php:942
+#: gettext/gettext-lib-config.php:204 lib/messages.php:942
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:200
+#: gettext/gettext-lib-config.php:205
 msgctxt "option value"
 msgid "at"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:201
+#: gettext/gettext-lib-config.php:206
 msgctxt "option value"
 msgid "tz"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:202
+#: gettext/gettext-lib-config.php:207
 msgctxt "option value"
 msgid "[WordPress Title]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:203
+#: gettext/gettext-lib-config.php:208
 msgctxt "option value"
 msgid "SEO Title Tag"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:204
+#: gettext/gettext-lib-config.php:209
 msgctxt "option value"
 msgid "Schema Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:205
+#: gettext/gettext-lib-config.php:210
 msgctxt "option value"
 msgid "Schema Alternate Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:206
+#: gettext/gettext-lib-config.php:211
 msgctxt "option value"
 msgid "SSO Toolbar Notices"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:207
+#: gettext/gettext-lib-config.php:212
 msgctxt "option value"
 msgid "WP Admin Notices"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:208
+#: gettext/gettext-lib-config.php:213
 msgctxt "option value"
 msgid "Basic Options"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:209
+#: gettext/gettext-lib-config.php:214
 msgctxt "option value"
 msgid "All Options"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:210
+#: gettext/gettext-lib-config.php:215
 msgctxt "option value"
 msgid "First Activation"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:211
+#: gettext/gettext-lib-config.php:216
 msgctxt "option value"
 msgid "If Option Is Empty"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:212
+#: gettext/gettext-lib-config.php:217
 msgctxt "option value"
 msgid "Always Force Value"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:213 gettext/gettext-lib-config.php:216
-#: gettext/gettext-lib-config.php:220 gettext/gettext-lib-config.php:225
-#: gettext/gettext-lib-config.php:229 gettext/gettext-lib-config.php:232
-#: gettext/gettext-lib-config.php:246 gettext/gettext-lib-config.php:255
-#: gettext/gettext-lib-config.php:261 gettext/gettext-lib-config.php:354
-#: gettext/gettext-lib-config.php:365 gettext/gettext-lib-config.php:373
-#: gettext/gettext-lib-config.php:379 gettext/gettext-lib-config.php:388
-#: gettext/gettext-lib-config.php:399 gettext/gettext-lib-config.php:403
-#: gettext/gettext-lib-config.php:409 gettext/gettext-lib-config.php:420
-#: gettext/gettext-lib-config.php:425 gettext/gettext-lib-config.php:427
-#: gettext/gettext-lib-config.php:434 gettext/gettext-lib-config.php:441
-#: gettext/gettext-lib-config.php:453 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:218 gettext/gettext-lib-config.php:221
+#: gettext/gettext-lib-config.php:225 gettext/gettext-lib-config.php:230
+#: gettext/gettext-lib-config.php:234 gettext/gettext-lib-config.php:237
+#: gettext/gettext-lib-config.php:251 gettext/gettext-lib-config.php:264
+#: gettext/gettext-lib-config.php:270 gettext/gettext-lib-config.php:363
+#: gettext/gettext-lib-config.php:374 gettext/gettext-lib-config.php:389
+#: gettext/gettext-lib-config.php:395 gettext/gettext-lib-config.php:404
+#: gettext/gettext-lib-config.php:415 gettext/gettext-lib-config.php:419
+#: gettext/gettext-lib-config.php:425 gettext/gettext-lib-config.php:436
+#: gettext/gettext-lib-config.php:441 gettext/gettext-lib-config.php:444
+#: gettext/gettext-lib-config.php:451 gettext/gettext-lib-config.php:458
+#: gettext/gettext-lib-config.php:470 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:214
+#: gettext/gettext-lib-config.php:219
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:215
+#: gettext/gettext-lib-config.php:220
 msgctxt "option value"
 msgid "Footer"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:217
+#: gettext/gettext-lib-config.php:222
 msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:218
+#: gettext/gettext-lib-config.php:223
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:219
+#: gettext/gettext-lib-config.php:224
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:221 gettext/gettext-lib-config.php:223
+#: gettext/gettext-lib-config.php:226 gettext/gettext-lib-config.php:228
 msgctxt "option value"
 msgid "Organization"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:222 gettext/gettext-lib-config.php:224
+#: gettext/gettext-lib-config.php:227 gettext/gettext-lib-config.php:229
 msgctxt "option value"
 msgid "Person"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:226
+#: gettext/gettext-lib-config.php:231
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:227
+#: gettext/gettext-lib-config.php:232
 msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:228
+#: gettext/gettext-lib-config.php:233
 msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:230
+#: gettext/gettext-lib-config.php:235
 msgctxt "option value"
 msgid "[Custom Address]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:231
+#: gettext/gettext-lib-config.php:236
 msgctxt "option value"
 msgid "[New Address]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:233
+#: gettext/gettext-lib-config.php:238
 msgctxt "option value"
 msgid "[New Organization]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:234
+#: gettext/gettext-lib-config.php:239
 msgctxt "option value"
 msgid "[WebSite Organization]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:235
+#: gettext/gettext-lib-config.php:240
 msgctxt "option value"
 msgid "ID"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:236
+#: gettext/gettext-lib-config.php:241
 msgctxt "option value"
 msgid "ID | Host/Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:237
+#: gettext/gettext-lib-config.php:242
 msgctxt "option value"
 msgid "ID | Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:238
+#: gettext/gettext-lib-config.php:243
 msgctxt "option value"
 msgid "Name [ID]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:239
+#: gettext/gettext-lib-config.php:244
 msgctxt "option value"
 msgid "Name"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:240
+#: gettext/gettext-lib-config.php:245
 msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:241 gettext/gettext-lib-config.php:244
+#: gettext/gettext-lib-config.php:246 gettext/gettext-lib-config.php:249
 msgctxt "option value"
 msgid "Center"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:242
+#: gettext/gettext-lib-config.php:247
 msgctxt "option value"
 msgid "Right"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:243
+#: gettext/gettext-lib-config.php:248
 msgctxt "option value"
 msgid "Top"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:245
+#: gettext/gettext-lib-config.php:250
 msgctxt "option value"
 msgid "Bottom"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:247
+#: gettext/gettext-lib-config.php:252
 msgctxt "option value"
 msgid "Standard"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:248
+#: gettext/gettext-lib-config.php:253
 msgctxt "option value"
 msgid "Large"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:249 gettext/gettext-lib-config.php:253
+#: gettext/gettext-lib-config.php:254 gettext/gettext-lib-config.php:261
 msgctxt "option value"
 msgid "[No Breadcrumbs]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:250
+#: gettext/gettext-lib-config.php:255
 msgctxt "option value"
 msgid "Home Page(s) and Categories"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:251 gettext/gettext-lib-config.php:254
+#: gettext/gettext-lib-config.php:256 gettext/gettext-lib-config.php:258
+#: gettext/gettext-lib-config.php:260 gettext/gettext-lib-config.php:263
+msgctxt "option value"
+msgid "Home Page"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:257 gettext/gettext-lib-config.php:262
 msgctxt "option value"
 msgid "Home Page(s) and Parents"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:252
+#: gettext/gettext-lib-config.php:259
 msgctxt "option value"
 msgid "Home Page(s) and Primary Category"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:256
+#: gettext/gettext-lib-config.php:265
 msgctxt "option value"
 msgid "Bitly"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:257
+#: gettext/gettext-lib-config.php:266
 msgctxt "option value"
 msgid "DLMY.App"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:258
+#: gettext/gettext-lib-config.php:267
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:259
+#: gettext/gettext-lib-config.php:268
 msgctxt "option value"
 msgid "TinyURL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:260
+#: gettext/gettext-lib-config.php:269
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:262
+#: gettext/gettext-lib-config.php:271
 msgctxt "option value"
 msgid "Shopper Approved"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:263
+#: gettext/gettext-lib-config.php:272
 msgctxt "option value"
 msgid "Stamped.io"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:264
+#: gettext/gettext-lib-config.php:273
 msgctxt "option value"
 msgid "Behance Business Profile URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:265
+#: gettext/gettext-lib-config.php:274
 msgctxt "option value"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:266
+#: gettext/gettext-lib-config.php:275
 msgctxt "option value"
 msgid "Instagram Business Profile URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:267
+#: gettext/gettext-lib-config.php:276
 msgctxt "option value"
 msgid "LinkedIn Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:268
+#: gettext/gettext-lib-config.php:277
 msgctxt "option value"
 msgid "Medium Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:269
+#: gettext/gettext-lib-config.php:278
 msgctxt "option value"
 msgid "Myspace Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:270
+#: gettext/gettext-lib-config.php:279
 msgctxt "option value"
 msgid "Pinterest Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:271
+#: gettext/gettext-lib-config.php:280
 msgctxt "option value"
 msgid "Soundcloud Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:272
+#: gettext/gettext-lib-config.php:281
 msgctxt "option value"
 msgid "TikTok Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:273
+#: gettext/gettext-lib-config.php:282
 msgctxt "option value"
 msgid "Tumblr Business Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:274
+#: gettext/gettext-lib-config.php:283
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:275
+#: gettext/gettext-lib-config.php:284
 msgctxt "option value"
 msgid "Wikipedia Organization Page URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:276
+#: gettext/gettext-lib-config.php:285
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:277
+#: gettext/gettext-lib-config.php:286
 msgctxt "option value"
 msgid "Facebook Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:278
+#: gettext/gettext-lib-config.php:287
 msgctxt "option value"
 msgid "Slideshare Presentations"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:279
+#: gettext/gettext-lib-config.php:288
 msgctxt "option value"
 msgid "Soundcloud Tracks"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:280
+#: gettext/gettext-lib-config.php:289
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:281
+#: gettext/gettext-lib-config.php:290
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:282
+#: gettext/gettext-lib-config.php:291
 msgctxt "option value"
 msgid "WordPress Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:283
+#: gettext/gettext-lib-config.php:292
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:284
+#: gettext/gettext-lib-config.php:293
 msgctxt "option label"
 msgid "Adult Type Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:285
+#: gettext/gettext-lib-config.php:294
 msgctxt "option label"
 msgid "Age Group Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:286
+#: gettext/gettext-lib-config.php:295
 msgctxt "option label"
 msgid "Brand Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:287
+#: gettext/gettext-lib-config.php:296
 msgctxt "option label"
 msgid "Color Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:288
+#: gettext/gettext-lib-config.php:297
 msgctxt "option label"
 msgid "Condition Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:289
+#: gettext/gettext-lib-config.php:298
 msgctxt "option label"
 msgid "Energy Rating Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:290
+#: gettext/gettext-lib-config.php:299
 msgctxt "option label"
 msgid "Fluid Volume Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:291
+#: gettext/gettext-lib-config.php:300
 msgctxt "option label"
 msgid "GTIN-14 Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:292
+#: gettext/gettext-lib-config.php:301
 msgctxt "option label"
 msgid "GTIN-13 (EAN) Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:293
+#: gettext/gettext-lib-config.php:302
 msgctxt "option label"
 msgid "GTIN-12 (UPC) Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:294
+#: gettext/gettext-lib-config.php:303
 msgctxt "option label"
 msgid "GTIN-8 Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:295
+#: gettext/gettext-lib-config.php:304
 msgctxt "option label"
 msgid "GTIN Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:296
+#: gettext/gettext-lib-config.php:305
 msgctxt "option label"
 msgid "Net Height Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:297
+#: gettext/gettext-lib-config.php:306
 msgctxt "option label"
 msgid "ISBN Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:298
+#: gettext/gettext-lib-config.php:307
 msgctxt "option label"
 msgid "Net Len. / Depth Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:299
+#: gettext/gettext-lib-config.php:308
 msgctxt "option label"
 msgid "Material Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:300
+#: gettext/gettext-lib-config.php:309
 msgctxt "option label"
 msgid "MPN Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:301
+#: gettext/gettext-lib-config.php:310
 msgctxt "option label"
 msgid "Pattern Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:302
+#: gettext/gettext-lib-config.php:311
 msgctxt "option label"
 msgid "Size Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:303
+#: gettext/gettext-lib-config.php:312
 msgctxt "option label"
 msgid "Size Group Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:304
+#: gettext/gettext-lib-config.php:313
 msgctxt "option label"
 msgid "Size System Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:305
+#: gettext/gettext-lib-config.php:314
 msgctxt "option label"
 msgid "Target Gender Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:306
+#: gettext/gettext-lib-config.php:315
 msgctxt "option label"
 msgid "Net Weight Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:307
+#: gettext/gettext-lib-config.php:316
 msgctxt "option label"
 msgid "Net Width Attribute"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:308
+#: gettext/gettext-lib-config.php:317
 msgctxt "option label"
 msgid "Microdata Type URLs Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:309
+#: gettext/gettext-lib-config.php:318
 msgctxt "option label"
 msgid "Book ISBN Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:310
+#: gettext/gettext-lib-config.php:319
 msgctxt "option label"
 msgid "How-To Steps Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:311
+#: gettext/gettext-lib-config.php:320
 msgctxt "option label"
 msgid "How-To Supplies Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:312
+#: gettext/gettext-lib-config.php:321
 msgctxt "option label"
 msgid "How-To Tools Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:313
+#: gettext/gettext-lib-config.php:322
 msgctxt "option label"
 msgid "Image URL Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:314
+#: gettext/gettext-lib-config.php:323
 msgctxt "option label"
 msgid "Product Adult Type Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:315
+#: gettext/gettext-lib-config.php:324
 msgctxt "option label"
 msgid "Product Age Group Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:316
+#: gettext/gettext-lib-config.php:325
 msgctxt "option label"
 msgid "Product Availability Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:317
+#: gettext/gettext-lib-config.php:326
 msgctxt "option label"
 msgid "Product Brand Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:318
+#: gettext/gettext-lib-config.php:327
 msgctxt "option label"
 msgid "Product Google Cat. ID Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:319
+#: gettext/gettext-lib-config.php:328
 msgctxt "option label"
 msgid "Product Color Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:320
+#: gettext/gettext-lib-config.php:329
 msgctxt "option label"
 msgid "Product Condition Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:321
+#: gettext/gettext-lib-config.php:330
 msgctxt "option label"
 msgid "Product Currency Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:322
+#: gettext/gettext-lib-config.php:331
 msgctxt "option label"
 msgid "Product Energy Rating Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:323
+#: gettext/gettext-lib-config.php:332
 msgctxt "option label"
 msgid "Product Fluid Volume Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:324
+#: gettext/gettext-lib-config.php:333
 msgctxt "option label"
 msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:325
+#: gettext/gettext-lib-config.php:334
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN) Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:326
+#: gettext/gettext-lib-config.php:335
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC) Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:327
+#: gettext/gettext-lib-config.php:336
 msgctxt "option label"
 msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:328
+#: gettext/gettext-lib-config.php:337
 msgctxt "option label"
 msgid "Product GTIN Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:329
+#: gettext/gettext-lib-config.php:338
 msgctxt "option label"
 msgid "Product Net Height Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:330
+#: gettext/gettext-lib-config.php:339
 msgctxt "option label"
 msgid "Product ISBN Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:331
+#: gettext/gettext-lib-config.php:340
 msgctxt "option label"
 msgid "Product Net Len. / Depth Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:332
+#: gettext/gettext-lib-config.php:341
 msgctxt "option label"
 msgid "Product Material Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:333
+#: gettext/gettext-lib-config.php:342
 msgctxt "option label"
 msgid "Product MPN Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:334
+#: gettext/gettext-lib-config.php:343
 msgctxt "option label"
 msgid "Product Min Advert Price Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:335
+#: gettext/gettext-lib-config.php:344
 msgctxt "option label"
 msgid "Product Pattern Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:336
+#: gettext/gettext-lib-config.php:345
 msgctxt "option label"
 msgid "Product Price Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:337
+#: gettext/gettext-lib-config.php:346
 msgctxt "option label"
 msgid "Product Price Type Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:338
+#: gettext/gettext-lib-config.php:347
 msgctxt "option label"
 msgid "Product SKU Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:339
+#: gettext/gettext-lib-config.php:348
 msgctxt "option label"
 msgid "Product Shipping Height Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:340
+#: gettext/gettext-lib-config.php:349
 msgctxt "option label"
 msgid "Product Shipping Length Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:341
+#: gettext/gettext-lib-config.php:350
 msgctxt "option label"
 msgid "Product Shipping Weight Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:342
+#: gettext/gettext-lib-config.php:351
 msgctxt "option label"
 msgid "Product Shipping Width Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:343
+#: gettext/gettext-lib-config.php:352
 msgctxt "option label"
 msgid "Product Size Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:344
+#: gettext/gettext-lib-config.php:353
 msgctxt "option label"
 msgid "Product Size Group Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:345
+#: gettext/gettext-lib-config.php:354
 msgctxt "option label"
 msgid "Product Size System Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:346
+#: gettext/gettext-lib-config.php:355
 msgctxt "option label"
 msgid "Product Target Gender Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:347
+#: gettext/gettext-lib-config.php:356
 msgctxt "option label"
 msgid "Product Net Weight Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:348
+#: gettext/gettext-lib-config.php:357
 msgctxt "option label"
 msgid "Product Net Width Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:349
+#: gettext/gettext-lib-config.php:358
 msgctxt "option label"
 msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:350
+#: gettext/gettext-lib-config.php:359
 msgctxt "option label"
 msgid "Recipe Instructions Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:351
+#: gettext/gettext-lib-config.php:360
 msgctxt "option label"
 msgid "Same-As URLs Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:352
+#: gettext/gettext-lib-config.php:361
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:353
+#: gettext/gettext-lib-config.php:362
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:355
+#: gettext/gettext-lib-config.php:364
 msgctxt "option value"
 msgid "Alcohol"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:356
+#: gettext/gettext-lib-config.php:365
 msgctxt "option value"
-msgid "DangerousGood"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:357
-msgctxt "option value"
-msgid "Healthcare"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:358
-msgctxt "option value"
-msgid "Narcotic"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:359
-msgctxt "option value"
-msgid "ReducedRelevanceForChildren"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:360
-msgctxt "option value"
-msgid "SexualContent"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:361
-msgctxt "option value"
-msgid "TobaccoNicotine"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:362
-msgctxt "option value"
-msgid "UnclassifiedAdult"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:363
-msgctxt "option value"
-msgid "Violence"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:364
-msgctxt "option value"
-msgid "Weapon"
+msgid "Dangerous Good"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:366
 msgctxt "option value"
-msgid "Adult (13 years old or more)"
+msgid "Healthcare"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:367
 msgctxt "option value"
-msgid "All Ages (13 years old or more)"
+msgid "Narcotic"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:368
 msgctxt "option value"
-msgid "Infant (3–12 months old)"
+msgid "Reduced Relevance for Children"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:369
 msgctxt "option value"
-msgid "Kids (5–13 years old)"
+msgid "Sexual Content"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:370
 msgctxt "option value"
-msgid "Newborn (0-3 months old)"
+msgid "Tobacco Nicotine"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:371
 msgctxt "option value"
-msgid "Teen (13 years old or more)"
+msgid "Unclassified Adult"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:372
 msgctxt "option value"
-msgid "Toddler (1–5 years old)"
+msgid "Violence"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:374
+#: gettext/gettext-lib-config.php:373
 msgctxt "option value"
-msgid "Audiobook"
+msgid "Weapon"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:375
 msgctxt "option value"
-msgid "eBook"
+msgid "Adult (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:376
 msgctxt "option value"
-msgid "Graphic Novel"
+msgid "Adult"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:377
 msgctxt "option value"
-msgid "Hardcover"
+msgid "All Ages (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:378
 msgctxt "option value"
-msgid "Paperback"
+msgid "All Ages"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:379
+msgctxt "option value"
+msgid "Infant (3–12 months old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:380
 msgctxt "option value"
-msgid "Full Time"
+msgid "Infant"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:381
 msgctxt "option value"
-msgid "Part Time"
+msgid "Kids (5–13 years old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:382
 msgctxt "option value"
-msgid "Contractor"
+msgid "Kids"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:383
 msgctxt "option value"
-msgid "Temporary"
+msgid "Newborn (0-3 months old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:384
 msgctxt "option value"
-msgid "Intern"
+msgid "Newborn"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:385
 msgctxt "option value"
-msgid "Volunteer"
+msgid "Teen (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:386
 msgctxt "option value"
-msgid "Per Diem"
+msgid "Teen"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:387
 msgctxt "option value"
-msgid "Other"
+msgid "Toddler (1–5 years old)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:389
+#: gettext/gettext-lib-config.php:388
 msgctxt "option value"
-msgid "A+++"
+msgid "Toddler"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:390
 msgctxt "option value"
-msgid "A++"
+msgid "Audiobook"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:391
 msgctxt "option value"
-msgid "A+"
+msgid "eBook"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:392
 msgctxt "option value"
-msgid "A"
+msgid "Graphic Novel"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:393
 msgctxt "option value"
-msgid "B"
+msgid "Hardcover"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:394
 msgctxt "option value"
-msgid "C"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:395
-msgctxt "option value"
-msgid "D"
+msgid "Paperback"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:396
 msgctxt "option value"
-msgid "E"
+msgid "Full Time"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:397
 msgctxt "option value"
-msgid "F"
+msgid "Part Time"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:398
 msgctxt "option value"
-msgid "G"
+msgid "Contractor"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:399
+msgctxt "option value"
+msgid "Temporary"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:400
 msgctxt "option value"
-msgid "Mixed"
+msgid "Intern"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:401
 msgctxt "option value"
-msgid "Online"
+msgid "Volunteer"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:402
+msgctxt "option value"
+msgid "Per Diem"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:403
+msgctxt "option value"
+msgid "Other"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:405
+msgctxt "option value"
+msgid "A+++"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:406
+msgctxt "option value"
+msgid "A++"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:407
+msgctxt "option value"
+msgid "A+"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:408
+msgctxt "option value"
+msgid "A"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:409
+msgctxt "option value"
+msgid "B"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:410
+msgctxt "option value"
+msgid "C"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:411
+msgctxt "option value"
+msgid "D"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:412
+msgctxt "option value"
+msgid "E"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:413
+msgctxt "option value"
+msgid "F"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:414
+msgctxt "option value"
+msgid "G"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:416
+msgctxt "option value"
+msgid "Mixed"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:417
+msgctxt "option value"
+msgid "Online"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:418
 msgctxt "option value"
 msgid "Physical Location"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:404 lib/messages-tooltip-meta-schema.php:321
+#: gettext/gettext-lib-config.php:420 lib/messages-tooltip-meta-schema.php:321
 msgctxt "option value"
 msgid "Cancelled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:405
+#: gettext/gettext-lib-config.php:421
 msgctxt "option value"
 msgid "Moved Online"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:406 lib/messages-tooltip-meta-schema.php:324
+#: gettext/gettext-lib-config.php:422 lib/messages-tooltip-meta-schema.php:324
 msgctxt "option value"
 msgid "Postponed"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:407 lib/messages-tooltip-meta-schema.php:327
+#: gettext/gettext-lib-config.php:423 lib/messages-tooltip-meta-schema.php:327
 msgctxt "option value"
 msgid "Rescheduled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:408
+#: gettext/gettext-lib-config.php:424
 msgctxt "option value"
 msgid "Scheduled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:410
+#: gettext/gettext-lib-config.php:426
 msgctxt "option value"
 msgid "Back Order"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:411
+#: gettext/gettext-lib-config.php:427
 msgctxt "option value"
 msgid "Discontinued"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:412
+#: gettext/gettext-lib-config.php:428
 msgctxt "option value"
 msgid "In Stock"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:413
+#: gettext/gettext-lib-config.php:429
 msgctxt "option value"
 msgid "In Store Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:414
+#: gettext/gettext-lib-config.php:430
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:415
+#: gettext/gettext-lib-config.php:431
 msgctxt "option value"
 msgid "Online Only"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:416
+#: gettext/gettext-lib-config.php:432
 msgctxt "option value"
 msgid "Out Of Stock"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:417
+#: gettext/gettext-lib-config.php:433
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:418
+#: gettext/gettext-lib-config.php:434
 msgctxt "option value"
 msgid "Pre-Sale"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:419
+#: gettext/gettext-lib-config.php:435
 msgctxt "option value"
 msgid "Sold Out"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:421
+#: gettext/gettext-lib-config.php:437
 msgctxt "option value"
 msgid "Damaged"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:422
+#: gettext/gettext-lib-config.php:438
 msgctxt "option value"
 msgid "New"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:423
+#: gettext/gettext-lib-config.php:439
 msgctxt "option value"
 msgid "Refurbished"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:424
+#: gettext/gettext-lib-config.php:440
 msgctxt "option value"
 msgid "Used"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:426
+#: gettext/gettext-lib-config.php:442
 msgctxt "option value"
 msgid "Telecommute (100% Remote)"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:428
-msgctxt "option value"
-msgid "Invoice Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:429
-msgctxt "option value"
-msgid "List Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:430
-msgctxt "option value"
-msgid "Manufacturer Suggested Retail Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:431
-msgctxt "option value"
-msgid "Minimum Advertised Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:432
-msgctxt "option value"
-msgid "Sale Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:433
-msgctxt "option value"
-msgid "Suggested Retail Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:435
-msgctxt "option value"
-msgid "Regular"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:436
-msgctxt "option value"
-msgid "Petite"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:437
-msgctxt "option value"
-msgid "Plus"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:438
-msgctxt "option value"
-msgid "Tall"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:439
-msgctxt "option value"
-msgid "Big"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:440
-msgctxt "option value"
-msgid "Maternity"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:442
-msgctxt "option value"
-msgid "AU"
-msgstr ""
-
 #: gettext/gettext-lib-config.php:443
 msgctxt "option value"
-msgid "BR"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:444
-msgctxt "option value"
-msgid "CN"
+msgid "Telecommute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:445
 msgctxt "option value"
-msgid "DE"
+msgid "Invoice Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:446
 msgctxt "option value"
-msgid "EU"
+msgid "List Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:447
 msgctxt "option value"
-msgid "FR"
+msgid "Manufacturer Suggested Retail Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:448
 msgctxt "option value"
-msgid "IT"
+msgid "Minimum Advertised Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:449
 msgctxt "option value"
-msgid "JP"
+msgid "Sale Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:450
 msgctxt "option value"
-msgid "MX"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:451
-msgctxt "option value"
-msgid "UK"
+msgid "Suggested Retail Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:452
 msgctxt "option value"
-msgid "US"
+msgid "Regular"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:453
+msgctxt "option value"
+msgid "Petite"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:454
 msgctxt "option value"
-msgid "Female"
+msgid "Plus"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:455
 msgctxt "option value"
-msgid "Male"
+msgid "Tall"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:456
 msgctxt "option value"
-msgid "Unisex"
+msgid "Big"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:457
 msgctxt "option value"
-msgid "Every day"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:458
-msgctxt "option value"
-msgid "Every two days"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:459
 msgctxt "option value"
-msgid "Every three days"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:460
 msgctxt "option value"
-msgid "Every four days"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:461
 msgctxt "option value"
-msgid "Every five days"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:462
 msgctxt "option value"
-msgid "Every six days"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:463
 msgctxt "option value"
-msgid "Every week"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:464
 msgctxt "option value"
-msgid "Every two weeks"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:465
 msgctxt "option value"
-msgid "Development and Up"
+msgid "IT"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:466
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "JP"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:467
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "MX"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:468
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "UK"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:469
+msgctxt "option value"
+msgid "US"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:471
+msgctxt "option value"
+msgid "Female"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:472
+msgctxt "option value"
+msgid "Male"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:473
+msgctxt "option value"
+msgid "Unisex"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:474
+msgctxt "option value"
+msgid "Every day"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:475
+msgctxt "option value"
+msgid "Every two days"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:476
+msgctxt "option value"
+msgid "Every three days"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:477
+msgctxt "option value"
+msgid "Every four days"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:478
+msgctxt "option value"
+msgid "Every five days"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:479
+msgctxt "option value"
+msgid "Every six days"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:480
+msgctxt "option value"
+msgid "Every week"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:481
+msgctxt "option value"
+msgid "Every two weeks"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:482
+msgctxt "option value"
+msgid "Development and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:483
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:484
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:485
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:486
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -5373,7 +5419,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2576 lib/util.php:3171
+#: lib/admin.php:2576 lib/util.php:3216
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6583,59 +6629,59 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:142
+#: lib/integ/ecom/woocommerce.php:143
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:145
+#: lib/integ/ecom/woocommerce.php:146
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:149
+#: lib/integ/ecom/woocommerce.php:150
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:150
+#: lib/integ/ecom/woocommerce.php:151
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:151
+#: lib/integ/ecom/woocommerce.php:152
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:152
+#: lib/integ/ecom/woocommerce.php:153
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:157
+#: lib/integ/ecom/woocommerce.php:158
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:200
+#: lib/integ/ecom/woocommerce.php:201
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:796
+#: lib/integ/ecom/woocommerce.php:798
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:799
+#: lib/integ/ecom/woocommerce.php:801
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:802
+#: lib/integ/ecom/woocommerce.php:804
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1511
+#: lib/integ/ecom/woocommerce.php:1566
 msgid "World"
 msgstr ""
 
@@ -6885,13 +6931,13 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1662 lib/post.php:725 lib/register.php:348 lib/term.php:551
-#: lib/user.php:528 lib/util.php:822 lib/util.php:928 lib/util.php:960
-#: lib/util.php:3149
+#: lib/user.php:528 lib/util.php:867 lib/util.php:973 lib/util.php:1005
+#: lib/util.php:3194
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1663 lib/post.php:726 lib/term.php:552 lib/user.php:529
-#: lib/util.php:823 lib/util.php:3150
+#: lib/util.php:868 lib/util.php:3195
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -7720,8 +7766,8 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:84
-#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:752
-#: lib/messages-tooltip-plugin.php:783 lib/messages-tooltip-schema.php:188
+#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:756
+#: lib/messages-tooltip-plugin.php:787 lib/messages-tooltip-schema.php:188
 #: lib/messages-tooltip-schema.php:320
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -9363,42 +9409,42 @@ msgid ""
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:745
+#: lib/messages-tooltip-plugin.php:746
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:747
+#: lib/messages-tooltip-plugin.php:750
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:757
+#: lib/messages-tooltip-plugin.php:761
 msgid ""
 "The attribute value from the e-commerce plugin can be an empty string or one "
 "of these values (case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:775
+#: lib/messages-tooltip-plugin.php:779
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:778
+#: lib/messages-tooltip-plugin.php:782
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:788
+#: lib/messages-tooltip-plugin.php:792
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:795
+#: lib/messages-tooltip-plugin.php:799
 msgid ""
 "Note that the \"%s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "
@@ -11497,26 +11543,26 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:590
+#: lib/schema.php:583
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1866
+#: lib/schema.php:1859
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1977
+#: lib/schema.php:1970
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2004
+#: lib/schema.php:1997
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3666
+#: lib/schema.php:3659
 msgid "checking schema properties"
 msgstr ""
 
@@ -12492,182 +12538,182 @@ msgstr ""
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:824
+#: lib/util.php:869
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1285
+#: lib/util.php:1330
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1386
+#: lib/util.php:1431
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1517
+#: lib/util.php:1562
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1541
+#: lib/util.php:1586
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1571
+#: lib/util.php:1616
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1769
+#: lib/util.php:1814
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1783
+#: lib/util.php:1828
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3151
+#: lib/util.php:3196
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3174
+#: lib/util.php:3219
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3176
+#: lib/util.php:3221
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3178
+#: lib/util.php:3223
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3180
+#: lib/util.php:3225
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3575
+#: lib/util.php:3620
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3576
+#: lib/util.php:3621
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3580
+#: lib/util.php:3625
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3581
+#: lib/util.php:3626
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3585
+#: lib/util.php:3630
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3586
+#: lib/util.php:3631
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3590
+#: lib/util.php:3635
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3591
+#: lib/util.php:3636
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3595
+#: lib/util.php:3640
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3596
+#: lib/util.php:3641
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3600
+#: lib/util.php:3645
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3601
+#: lib/util.php:3646
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3605
+#: lib/util.php:3650
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3606
+#: lib/util.php:3651
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3610
+#: lib/util.php:3655
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3611
+#: lib/util.php:3656
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3615
+#: lib/util.php:3660
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3616
+#: lib/util.php:3661
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3621
+#: lib/util.php:3666
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3622
+#: lib/util.php:3667
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3795
+#: lib/util.php:3737
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3805
+#: lib/util.php:3747
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

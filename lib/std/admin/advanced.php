@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$opts_transl = SucomUtil::get_options_transl( $this->p->cf[ 'form' ][ 'attr_labels' ], $text_domain = 'wpsso' );
+			$opts_transl = SucomUtil::get_options_label_transl( $this->p->cf[ 'form' ][ 'attr_labels' ], $text_domain = 'wpsso' );
 
 			foreach ( $opts_transl as $opt_key => $opt_label_transl ) {
 
@@ -1248,7 +1248,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				}
 			}
 
-			$opts_transl = SucomUtil::get_options_transl( $opts_labels, $text_domain = 'wpsso' );
+			$opts_transl = SucomUtil::get_options_label_transl( $opts_labels, $text_domain = 'wpsso' );
 
 			foreach ( $opts_transl as $opt_cf_key => $opt_label_transl ) {
 
