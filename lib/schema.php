@@ -3321,6 +3321,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$t = array();
 
 				foreach ( array( 'days', 'hours', 'mins', 'secs' ) as $time_incr ) {
+
 					$t[ $time_incr ] = empty( $assoc[ $key_name . '_' . $time_incr ] ) ?	// 0 or empty string.
 						0 : (int) $assoc[ $key_name . '_' . $time_incr ];		// Define as 0 by default.
 				}
@@ -3528,8 +3529,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' .
-							print_r( $json_data[ $prop_name ], true ) );
+						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
+							$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
 					}
 
 					$prop_added++;
@@ -3632,14 +3633,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $names as $prop_name => $key_name ) {
 
-				if ( isset( $assoc[ $key_name ] ) && ! in_array( $assoc[ $key_name ], $exclude, $strict = true ) ) {
+				if ( isset( $assoc[ $key_name ] ) ) {
+				
+					if ( ! in_array( $assoc[ $key_name ], $exclude, $strict = true ) ) {
 
-					$json_data[ $prop_name ] = $assoc[ $key_name ];
+						$json_data[ $prop_name ] = $assoc[ $key_name ];
 
-					if ( $wpsso->debug->enabled ) {
+						if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
-							$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
+							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
+								$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
+						}
 					}
 				}
 			}
