@@ -238,8 +238,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Default Product Target Gender" option in the Adavnced Settings page.
-	* Added a new "Default Product Size Group" option in the Adavnced Settings page.
+	* Added a new "Default Product Target Gender" option in the Advanced Settings page.
+	* Added a new "Default Product Size Group" option in the Advanced Settings page.
 	* Updated the "Product Size Group" option in the Document SSO metabox to add a second selection.
 * **Bugfixes**
 	* None.
