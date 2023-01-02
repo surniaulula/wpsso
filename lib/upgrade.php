@@ -567,10 +567,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_cf_product_size_type'        => 'plugin_cf_product_size_group',
 					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',
 				),
-				939 => array(	// Renamed for WPSSO Core v14.2.0.
-					'plugin_attr_product_size_groups' => '',
-					'plugin_cf_product_size_groups'   => '',
-				),
 			),
 		);
 
