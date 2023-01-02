@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.1
  * WC Tested Up To: 7.2.2
- * Version: 14.2.0-dev.7
+ * Version: 14.2.0-dev.8
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -185,12 +185,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( ! isset( $this->options[ $opt_key ] ) ) {
+				if ( isset( $this->options[ $opt_key ] ) ) {
 
-					return $def_value;
+					return $this->options[ $opt_key ];
 				}
 
-				return $this->options[ $opt_key ];
+				return $def_value;
 			}
 
 			return $this->options;

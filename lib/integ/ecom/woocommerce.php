@@ -1031,33 +1031,33 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				if ( ! empty( $values ) ) {	// Just in case.
 
 					if ( empty( $md_keys_multi[ $md_key ] ) ) {
-	
+
 						$md_opts[ $md_key ] = reset( $values );
-	
+
 						$md_opts[ $md_key . ':disabled' ] = true;
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 						}
-	
+
 						/**
 						 * If this is a '_value' option, add the '_units' option.
 						 */
 						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
-	
+
 					} else {
-	
+
 						/**
 						 * Explode the first element into an array.
 						 */
 						$values = array_map( 'trim', explode( ',', reset( $values ) ) );
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'exploded ' . $md_key . ' into array of ' . count( $values ) . ' elements' );
 						}
-						
+
 						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values );
 					}
 				}

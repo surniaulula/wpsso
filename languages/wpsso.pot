@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.2.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 14.2.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4730,54 +4730,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1187
+#: lib/abstract/wp-meta.php:1182
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1255
+#: lib/abstract/wp-meta.php:1250
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1259
+#: lib/abstract/wp-meta.php:1254
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1262 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1257 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1266
+#: lib/abstract/wp-meta.php:1261
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1267
+#: lib/abstract/wp-meta.php:1262
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1268
+#: lib/abstract/wp-meta.php:1263
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1269
+#: lib/abstract/wp-meta.php:1264
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1607
+#: lib/abstract/wp-meta.php:1602
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1928 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1923 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1930
+#: lib/abstract/wp-meta.php:1925
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."

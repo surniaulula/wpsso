@@ -1028,10 +1028,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				$og_type = $mt_og[ 'og:type' ];
-
-				$allow  = array();
-				$reject = array();
-				$map    = array();
+				$allow   = array();
+				$reject  = array();
+				$map     = array();
 
 				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
 
@@ -1138,56 +1137,56 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$values = array();
 
-					if ( !  $this->add_data_og_type_md_values( $values, $type_id, $md_opts, $mt_name, $md_key ) ) {
-					
+					if ( ! $this->add_data_og_type_md_values( $values, $type_id, $md_opts, $mt_name, $md_key ) ) {
+
 						$def_md_key = $this->get_def_md_key( $md_key );
-	
+
 						if ( isset( $mt_og[ $mt_name ] ) ) {	// Meta tag exists and is not null.
-	
+
 							if ( $this->p->debug->enabled ) {
-		
+
 								$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
 							}
-	
+
 						} elseif ( ! empty( $def_md_key ) ) {	// Add default value from the plugin settings.
-		
+
 							if ( $this->p->debug->enabled ) {
-		
+
 								$this->p->debug->log( $mt_name . ' from options = ' . $this->p->options[ $def_md_key ] );
 							}
-		
+
 							$values[ $mt_name ] = $this->p->options[ $def_md_key ];
-		
+
 						} else {				// Add missing meta tag with null value.
-		
+
 							if ( $this->p->debug->enabled ) {
-		
+
 								$this->p->debug->log( $mt_name . ' = null' );
 							}
-		
+
 							$values[ $mt_name ] = null;	// Use null so isset() returns false.
 						}
 					}
-	
+
 					if ( ! empty( $values ) ) {
 
 						foreach ( $values as $mt_name => $val ) {
-	
+
 							if ( 'none' === $val ) {
-		
+
 								if ( $this->p->debug->enabled ) {
-		
+
 									$this->p->debug->log( 'unsetting ' . $mt_name . ' for value "none"' );
 								}
-		
+
 								unset( $mt_og[ $mt_name ] );
-		
+
 							} elseif ( $is_multi ) {
 
 								$mt_og[ $mt_name ][] = $val;
 
 							} else {
-								
+
 								$mt_og[ $mt_name ] = $val;
 							}
 						}
@@ -1203,23 +1202,23 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Schema defaults have a 'schema_def_' prefix.
 		 */
-		public function get_def_md_key( $md_key ) {	// Pass by reference is OK.
+		public function get_def_md_key( $md_key ) {
 
 			$def_md_key = null;
 
 			if ( 'product_currency' === $md_key ) {
-			
+
 				if ( isset( $this->p->options[ 'og_def_currency' ] ) ) {	// Just in case.
 
 					$def_md_key = 'og_def_currency';
 				}
 
 			} elseif ( isset( $this->p->options[ 'og_def_' . $md_key ] ) ) {
-			
+
 				$def_md_key = 'og_def_' . $md_key;
-			
+
 			} elseif ( isset( $this->p->options[ 'schema_def_' . $md_key ] ) ) {
-			
+
 				$def_md_key = 'schema_def_' . $md_key;
 			}
 
@@ -1409,6 +1408,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						unset( $mt_og[ $currency_key ] );
 					}
 				}
+			}
+		}
+
+		public static function check_mt_value_energy_efficiency( &$mt_og, $mt_pre = 'product' ) {	// Pass by reference is OK.
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking ' . $mt_pre . ' energy efficiency value' );
+			}
+			
+			if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
+
+				unset( $mt_og[ $mt_pre . ':energy_efficiency:min_value' ] );
+				unset( $mt_og[ $mt_pre . ':energy_efficiency:max_value' ] );
 			}
 		}
 

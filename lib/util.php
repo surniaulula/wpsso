@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$md_opts[ $md_num_key ] = $val;
 
 				$md_opts[ $md_num_key . ':disabled' ] = true;
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'option ' . $md_num_key . ' = ' . print_r( $md_opts[ $md_num_key ], true ) );

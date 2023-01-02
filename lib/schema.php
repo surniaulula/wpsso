@@ -3634,7 +3634,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $names as $prop_name => $key_name ) {
 
 				if ( isset( $assoc[ $key_name ] ) ) {
-				
+
 					if ( ! in_array( $assoc[ $key_name ], $exclude, $strict = true ) ) {
 
 						$json_data[ $prop_name ] = $assoc[ $key_name ];
@@ -3752,7 +3752,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
 				 */
 				foreach ( $enumerations as $key => $val ) {
-					
+
 					if ( false !== ( $pos = strpos( $val, '(' ) ) ) {
 
 						$enumerations[ $key ] = trim( substr( $val, 0, $pos ) );
@@ -3787,12 +3787,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$values[ $key ] = $key;
 				}
-				
+
 				foreach ( $enums_transl as $key => $val ) {
 
 					$values[ $val ] = $val;
 				}
-			
+
 				SucomUtil::natasort( $values );
 			}
 
@@ -3835,12 +3835,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 
 				$enumerations = $wpsso->cf[ 'form' ][ $enum_key ];
-				
+
 				/**
 				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
 				 */
 				foreach ( $enumerations as $key => $val ) {
-					
+
 					if ( false !== ( $pos = strpos( $val, '(' ) ) ) {
 
 						$enumerations[ $key ] = trim( substr( $val, 0, $pos ) );
@@ -3858,11 +3858,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data[ $prop_name ] = $prop_val;
 
 					} elseif ( isset( $enums_labels[ $prop_val ] ) ) {
-						
+
 						$json_data[ $prop_name ] = $enums_labels[ $prop_val ];
 
 					} elseif ( isset( $enums_transl[ $prop_val ] ) ) {
-						
+
 						$json_data[ $prop_name ] = $enums_transl[ $prop_val ];
 
 					} elseif ( isset( $enumerations[ 'https://schema.org/' . $prop_val ] ) ) {

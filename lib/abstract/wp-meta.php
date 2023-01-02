@@ -319,21 +319,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 
-				$def_img_id_lib = $this->get_options_def( 'og_def_img_id_lib', 'wp' );
-				$def_currency   = $this->get_options_def( 'og_def_currency', 'USD' );
+				$def_img_id_lib = $this->p->get_options( 'og_def_img_id_lib', 'wp' );
+				$def_currency   = $this->p->get_options( 'og_def_currency', 'USD' );
 
-				$def_art_section   = $this->get_options_def( 'schema_def_article_section', 'none' );
-				$def_adult_type    = $this->get_options_def( 'schema_def_product_adult_type', 'none' );
-				$def_age_group     = $this->get_options_def( 'schema_def_product_age_group', 'none' );
-				$def_product_cat   = $this->get_options_def( 'schema_def_product_category', 'none' );
-				$def_product_cond  = $this->get_options_def( 'schema_def_product_condition', 'none' );
-				$def_ener_eff_min  = $this->get_options_def( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
-				$def_ener_eff_max  = $this->get_options_def( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
-				$def_price_type    = $this->get_options_def( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
-				$def_target_gender = $this->get_options_def( 'schema_def_product_target_gender', 'none' );
-				$def_size_group_0  = $this->get_options_def( 'schema_def_product_size_group_0', 'none' );
-				$def_size_group_1  = $this->get_options_def( 'schema_def_product_size_group_1', 'none' );
-				$def_size_system   = $this->get_options_def( 'schema_def_product_size_system', 'none' );
+				$def_art_section   = $this->p->get_options( 'schema_def_article_section', 'none' );
+				$def_adult_type    = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
+				$def_age_group     = $this->p->get_options( 'schema_def_product_age_group', 'none' );
+				$def_product_cat   = $this->p->get_options( 'schema_def_product_category', 'none' );
+				$def_product_cond  = $this->p->get_options( 'schema_def_product_condition', 'none' );
+				$def_ener_eff_min  = $this->p->get_options( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
+				$def_ener_eff_max  = $this->p->get_options( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
+				$def_price_type    = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
+				$def_target_gender = $this->p->get_options( 'schema_def_product_target_gender', 'none' );
+				$def_size_group_0  = $this->p->get_options( 'schema_def_product_size_group_0', 'none' );
+				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
+				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
 
 				/**
 				 * Default timezone.
@@ -920,11 +920,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$ret_val = false === $md_key ? array() : null;	// Allow for $md_key = 0.
 
 			return self::must_be_extended( $ret_val );
-		}
-
-		protected function get_options_def( $md_key, $default = null ) {
-			
-			return isset( $this->p->options[ $md_key ] ) ? $this->p->options[ $md_key ] : $default;
 		}
 
 		protected function upgrade_options( array $md_opts, $obj_id ) {

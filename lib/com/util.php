@@ -2606,14 +2606,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( 'option value' === $context ) {
 
 				if ( false !== ( $pos = strpos( $mixed, '(' ) ) ) {
-			
+
 					$mixed = trim( substr( $mixed, 0, $pos ) );
-				
+
 					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
 				}
 
 				if ( 0 === strpos( $mixed, '[' ) ) {
-					
+
 					$mixed = trim( $mixed, '[]' );
 
 					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";

@@ -189,6 +189,8 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			WpssoOpenGraph::check_mt_value_price( $mt_og, $mt_pre = 'product' );
 
+			WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_og, $mt_pre = 'product' );
+
 			/**
 			 * Include variations (aka product offers) if available.
 			 */
