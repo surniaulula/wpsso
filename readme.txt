@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.2.0-dev.6 (TBD)**
+**Version 14.2.0-dev.7 (TBD)**
 
 * **New Features**
 	* None.
@@ -811,7 +811,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.2.0-dev.6 =
+= 14.2.0-dev.7 =
 
 (TBD) None.
 
