@@ -233,16 +233,37 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.2.0-dev.7 (TBD)**
+**Version 14.2.0-dev.8 (2023/01/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Default Product Target Gender" option in the Adavnced Settings page.
+	* Added a new "Default Product Size Group" option in the Adavnced Settings page.
+	* Updated the "Product Size Group" option in the Document SSO metabox to add a second selection.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `SucomUtil::is_post_type()` method.
+	* Added a new `SucomUtil::get_options_value_transl()` method.
+	* Added a new `WpssoConfig::get_attr_md_index()` method.
+	* Added a new `WpssoIntegEcomWoocommerce->filter_import_product_attributes()` method.
+	* Added a new `WpssoIntegEcomWoocommerce->add_variation_title()` method.
+	* Added a new `WpssoIntegEcomWoocommerce->add_variation_description()` method.
+	* Added a new `WpssoOpenGraph->get_def_md_key()` method.
+	* Added a new `WpssoOpenGraph->add_data_og_type_md_values()` method.
+	* Added a new `WpssoOpenGraph->check_mt_value_energy_efficiency()` method.
+	* Added a new `WpssoUtil->maybe_add_md_key_units()` method.
+	* Added a new `WpssoUtilWooCommerce->get_product_wp_meta()` method.
+	* Added a new 'wpsso_import_product_attributes' filter.
+	* Updated the 'wpsso_import_custom_fields' filter arguments to insert the $mod array.
+	* Renamed `WpssoOpengraph->add_og_type_mt_md()` to `See WpssoOpengraph->add_data_og_type_md()`.
+	* Renamed `WpssoConfig::get_cf_md_multi()` to `WpssoConfig::get_md_keys_multi()`.
+	* Renamed `WpssoSchema::get_enumeration_values()` to `WpssoSchema::get_enumeration_examples()`.
+	* Renamed `SucomUtil::get_options_transl()` to `SucomUtil::get_options_label_transl()`.
+	* Renamed 'wpsso_wc_variation_cf_meta_keys' filter to 'wpsso_wc_variation_alt_options'.
+	* Refactored `WpssoSchema::check_prop_value_enumeration()` to allow for translated option values.
+	* Removed the `WpssoUtil->get_product_attr_names()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -811,9 +832,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.2.0-dev.7 =
+= 14.2.0-dev.8 =
 
-(TBD) None.
+(2023/01/02) Added new "Default Product Target Gender" and "Default Product Size Group" options. Updated the "Product Size Group" option in the Document SSO metabox.
 
 = 14.1.1 =
 
