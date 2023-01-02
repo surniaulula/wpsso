@@ -2612,6 +2612,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				
 					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
 				}
+
+				if ( 0 === strpos( $mixed, '[' ) ) {
+					
+					$mixed = trim( $mixed, '[]' );
+
+					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
+				}
 			}
 		}
 

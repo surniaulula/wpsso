@@ -309,28 +309,31 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_lang               = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
-				$def_og_type            = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
-				$def_schema_type        = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
-				$def_primary_term_id    = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
-				$def_reading_mins       = $this->p->page->get_reading_mins( $mod );
-				$def_img_id_lib         = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
-				$def_currency           = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
-				$def_dimension_units    = WpssoUtilUnits::get_dimension_text();
-				$def_fluid_volume_units = WpssoUtilUnits::get_fluid_volume_text();
-				$def_weight_units       = WpssoUtilUnits::get_weight_text();
-				$def_article_section    = isset( $opts[ 'schema_def_article_section' ] ) ? $opts[ 'schema_def_article_section' ] : 'none';
-				$def_adult_type         = isset( $opts[ 'schema_def_product_adult_type' ] ) ? $opts[ 'schema_def_product_adult_type' ] : 'none';
-				$def_age_group          = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
-				$def_product_cat        = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
-				$def_product_cond       = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
-				$def_energy_eff_min     = isset( $opts[ 'schema_def_product_energy_efficiency_min' ] ) ? $opts[ 'schema_def_product_energy_efficiency_min' ] :
-					'https://schema.org/EUEnergyEfficiencyCategoryD';
-				$def_energy_eff_max     = isset( $opts[ 'schema_def_product_energy_efficiency_max' ] ) ? $opts[ 'schema_def_product_energy_efficiency_max' ] :
-					'https://schema.org/EUEnergyEfficiencyCategoryA3Plus';
-				$def_price_type         = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
-					'https://schema.org/ListPrice';
-				$def_size_system        = isset( $opts[ 'schema_def_product_size_system' ] ) ? $opts[ 'schema_def_product_size_system' ] : 'none';
+				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
+				$def_dimension_units = WpssoUtilUnits::get_dimension_text();
+				$def_fluid_vol_units = WpssoUtilUnits::get_fluid_volume_text();
+				$def_weight_units    = WpssoUtilUnits::get_weight_text();
+
+				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
+				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
+				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
+				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
+
+				$def_img_id_lib = $this->get_options_def( 'og_def_img_id_lib', 'wp' );
+				$def_currency   = $this->get_options_def( 'og_def_currency', 'USD' );
+
+				$def_art_section   = $this->get_options_def( 'schema_def_article_section', 'none' );
+				$def_adult_type    = $this->get_options_def( 'schema_def_product_adult_type', 'none' );
+				$def_age_group     = $this->get_options_def( 'schema_def_product_age_group', 'none' );
+				$def_product_cat   = $this->get_options_def( 'schema_def_product_category', 'none' );
+				$def_product_cond  = $this->get_options_def( 'schema_def_product_condition', 'none' );
+				$def_ener_eff_min  = $this->get_options_def( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
+				$def_ener_eff_max  = $this->get_options_def( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
+				$def_price_type    = $this->get_options_def( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
+				$def_target_gender = $this->get_options_def( 'schema_def_product_target_gender', 'none' );
+				$def_size_group_0  = $this->get_options_def( 'schema_def_product_size_group_0', 'none' );
+				$def_size_group_1  = $this->get_options_def( 'schema_def_product_size_group_1', 'none' );
+				$def_size_system   = $this->get_options_def( 'schema_def_product_size_system', 'none' );
 
 				/**
 				 * Default timezone.
@@ -422,15 +425,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_avail'                 => 'none',			// Product Availability.
 					'product_condition'             => $def_product_cond,		// Product Condition.
 					'product_energy_efficiency'     => 'none',			// Product Energy Rating.
-					'product_energy_efficiency_min' => $def_energy_eff_min,
-					'product_energy_efficiency_max' => $def_energy_eff_max,
+					'product_energy_efficiency_min' => $def_ener_eff_min,
+					'product_energy_efficiency_max' => $def_ener_eff_max,
 					'product_material'              => '',
 					'product_pattern'               => '',
 					'product_color'                 => '',
-					'product_target_gender'         => 'none',
+					'product_target_gender'         => $def_target_gender,
 					'product_size'                  => '',
-					'product_size_group_0'          => 'none',
-					'product_size_group_1'          => 'none',
+					'product_size_group_0'          => $def_size_group_0,
+					'product_size_group_1'          => $def_size_group_1,
 					'product_size_system'           => $def_size_system,
 					'product_age_group'             => $def_age_group,
 					'product_adult_type'            => $def_adult_type,
@@ -443,7 +446,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_weight_value'          => '',				// Product Net Weight.
 					'product_weight_units'          => $def_weight_units,
 					'product_fluid_volume_value'    => '',				// Product Fluid Volume.
-					'product_fluid_volume_units'    => $def_fluid_volume_units,
+					'product_fluid_volume_units'    => $def_fluid_vol_units,
 					'product_shipping_length_value' => '',				// Product Shipping Length.
 					'product_shipping_length_units' => $def_dimension_units,
 					'product_shipping_width_value'  => '',				// Product Shipping Width.
@@ -489,8 +492,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Schema Article.
 					 */
-					'schema_article_section' => $def_article_section,	// Article Section.
-					'schema_reading_mins'    => $def_reading_mins,		// Est. Reading Time.
+					'schema_article_section' => $def_art_section,	// Article Section.
+					'schema_reading_mins'    => $def_reading_mins,	// Est. Reading Time.
 
 					/**
 					 * Schema Book.
@@ -917,6 +920,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$ret_val = false === $md_key ? array() : null;	// Allow for $md_key = 0.
 
 			return self::must_be_extended( $ret_val );
+		}
+
+		protected function get_options_def( $md_key, $default = null ) {
+			
+			return isset( $this->p->options[ $md_key ] ) ? $this->p->options[ $md_key ] : $default;
 		}
 
 		protected function upgrade_options( array $md_opts, $obj_id ) {

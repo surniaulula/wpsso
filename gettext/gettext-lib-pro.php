@@ -146,6 +146,8 @@ _x( 'Default Product Price Type', 'option label', 'wpsso' );
 _x( 'Default Product Condition', 'option label', 'wpsso' );
 _x( 'Default Product Energy Rating Range', 'option label', 'wpsso' );
 _x( 'to', 'option comment', 'wpsso' );
+_x( 'Default Product Target Gender', 'option label', 'wpsso' );
+_x( 'Default Product Size Group', 'option label', 'wpsso' );
 _x( 'Default Product Size System', 'option label', 'wpsso' );
 _x( 'Default Product Age Group', 'option label', 'wpsso' );
 _x( 'Default Product Adult Type', 'option label', 'wpsso' );

@@ -1055,6 +1055,23 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$form->get_no_select( 'schema_def_product_energy_efficiency_max', $this->p->cf[ 'form' ][ 'energy_efficiency' ],
 							$css_class = 'energy_efficiency', $css_id = '', $is_assoc = 'sorted' ),
 				),
+				'schema_def_product_target_gender' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Target Gender', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_target_gender',
+					'content'  => $form->get_no_select( 'schema_def_product_target_gender', $this->p->cf[ 'form' ][ 'target_gender' ],
+						$css_class = 'gender', $css_id = '', $is_assoc = true ),
+				),
+				'schema_def_product_size_group' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Size Group', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_size_group',
+					'content'  => '' .
+						$form->get_no_select( 'schema_def_product_size_group_0', $this->p->cf[ 'form' ][ 'size_group' ],
+							$css_class = 'size_group', $css_id = '', $is_assoc = true ) . ' ' .
+						$form->get_no_select( 'schema_def_product_size_group_1', $this->p->cf[ 'form' ][ 'size_group' ],
+							$css_class = 'size_group', $css_id = '', $is_assoc = true ),
+				),
 				'schema_def_product_size_system' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Size System', 'option label', 'wpsso' ),
