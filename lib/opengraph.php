@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
 
-			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is in config.
+			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is known.
 
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Add post/term/user meta data to the Open Graph meta tags.
 				 */
-				$this->add_og_type_mt_md( $type_id, $mt_og, $md_opts );
+				$this->add_data_og_type_md( $mt_og, $type_id, $md_opts );
 			}
 
 			/**
@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Add post/term/user meta data to the Open Graph meta tags.
 		 */
-		public function add_og_type_mt_md( $type_id, array &$mt_og, array $md_opts ) {	// Pass by reference is OK.
+		public function add_data_og_type_md( array &$mt_og, $type_id, array $md_opts ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1121,204 +1121,195 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'loading og_type_mt array for type id ' . $type_id );
 			}
 
-			/**
-			 * Example $og_type_mt_md array:
-			 *
-			 *	'product' => array(
-			 *		'product:adult_type'                  => 'product_adult_type',
-			 *		'product:age_group'                   => 'product_age_group',
-			 *		'product:availability'                => 'product_avail',
-			 *		'product:brand'                       => 'product_brand',
-			 *		'product:category'                    => 'product_category',	// Product Google Category ID.
-			 *		'product:color'                       => 'product_color',
-			 *		'product:condition'                   => 'product_condition',
-			 *		'product:ean'                         => 'product_gtin13',
-			 *		'product:energy_efficiency:value'     => 'product_energy_efficiency',
-			 *		'product:energy_efficiency:min_value' => 'product_energy_efficiency_min',
-			 *		'product:energy_efficiency:max_value' => 'product_energy_efficiency_max',
-			 *		'product:expiration_time'             => '',
-			 *		'product:fluid_volume:value'          => 'product_fluid_volume_value',
-			 *		'product:fluid_volume:units'          => 'product_fluid_volume_units',
-			 *		'product:gtin14'                      => 'product_gtin14',
-			 *		'product:gtin13'                      => 'product_gtin13',
-			 *		'product:gtin12'                      => 'product_gtin12',
-			 *		'product:gtin8'                       => 'product_gtin8',
-			 *		'product:gtin'                        => 'product_gtin',
-			 *		'product:height:value'                => 'product_height_value',
-			 *		'product:height:units'                => 'product_height_units',
-			 *		'product:isbn'                        => 'product_isbn',
-			 *		'product:item_group_id'               => '',
-			 *		'product:length:value'                => 'product_length_value',
-			 *		'product:length:units'                => 'product_length_units',
-			 *		'product:material'                    => 'product_material',
-			 *		'product:mfr_part_no'                 => 'product_mfr_part_no',
-			 *		'product:original_price:amount'       => '',
-			 *		'product:original_price:currency'     => '',
-			 *		'product:pattern'                     => 'product_pattern',
-			 *		'product:pretax_price:amount'         => '',
-			 *		'product:pretax_price:currency'       => '',
-			 *		'product:price_type'                  => 'product_price_type',
-			 *		'product:price:amount'                => 'product_price',
-			 *		'product:price:currency'              => 'product_currency',
-			 *		'product:purchase_limit'              => '',
-			 *		'product:retailer_category'           => '',
-			 *		'product:retailer_item_id'            => '',
-			 *		'product:retailer_part_no'            => 'product_retailer_part_no',
-			 *		'product:sale_price:amount'           => '',
-			 *		'product:sale_price:currency'         => '',
-			 *		'product:sale_price_dates:start'      => '',
-			 *		'product:sale_price_dates:end'        => '',
-			 *		'product:shipping_cost:amount'        => '',
-			 *		'product:shipping_cost:currency'      => '',
-			 *		'product:shipping_height:value'       => 'product_shipping_height_value',
-			 *		'product:shipping_height:units'       => 'product_shipping_height_units',
-			 *		'product:shipping_length:value'       => 'product_shipping_length_value',
-			 *		'product:shipping_length:units'       => 'product_shipping_length_units',
-			 *		'product:shipping_weight:value'       => 'product_shipping_weight_value',
-			 *		'product:shipping_weight:units'       => 'product_shipping_weight_units',
-			 *		'product:shipping_width:value'        => 'product_shipping_width_value',
-			 *		'product:shipping_width:units'        => 'product_shipping_width_units',
-			 *		'product:size'                        => 'product_size',
-			 *		'product:size_group'                  => 'product_size_group',
-			 *		'product:size_system'                 => 'product_size_system',
-			 *		'product:target_gender'               => 'product_target_gender',
-			 *		'product:upc'                         => 'product_gtin12',
-			 *		'product:weight:value'                => 'product_weight_value',
-			 *		'product:weight:units'                => 'product_weight_units',
-			 *		'product:width:value'                 => 'product_width_value',
-			 *		'product:width:units'                 => 'product_width_units',
-			 *	)
-			 */
+			$md_keys_multi = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
 			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
 
-			foreach ( $og_type_mt_md as $mt_name => $md_key ) {
+			foreach ( $og_type_mt_md as $mt_name => $md_key_pre ) {
 
-				/**
-				 * Check for a default value from the settings.
-				 *
-				 * Open Graph defaults have an "og_def_" prefix, except for 'product_currency'.
-				 */
-				$og_def_md_key = 'og_def_' . $md_key;
+				if ( empty( $md_key_pre ) ) {	// Most of the metadata keys are empty.
 
-				if ( 'product_currency' === $md_key ) {
-
-					$og_def_md_key = 'og_def_currency';
+					continue;
 				}
 
-				/**
-				 * Use a custom value if one is available - ignore empty strings and 'none'.
-				 */
-				if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && '' !== $md_opts[ $md_key ] ) {
+				$is_multi   = empty( $md_keys_multi[ $md_key_pre ] ) ? false : true;
+				$multi_keys = $is_multi ? array_keys( SucomUtil::preg_grep_keys( '/^' . $md_key_pre . '_[0-9]+$/', $md_opts ) ) : array( $md_key_pre );
 
-					if ( $md_opts[ $md_key ] === 'none' ) {
+				foreach ( $multi_keys as $md_key ) {
 
-						if ( $this->p->debug->enabled ) {
+					$values = array();
 
-							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' . $md_key . ' metadata is "none"' );
-						}
-
-						unset( $mt_og[ $mt_name ] );
-
-					/**
-					 * Check for meta tags that require a unit value and may need to be converted.
-					 */
-					} elseif ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
-						}
-
-						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
-
-						/**
-						 * Check if the value meta tag needs a units meta tag.
-						 */
-						$mt_units_name = $mt_match[ 1 ] . ':units';
-
-						if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
-
-							$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
-
-							$mt_og[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
-
-							if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( $mt_units_name . ' from metadata = ' . $md_opts[ $md_units_key ] );
-								}
-
-								$mt_og[ $mt_units_name ] = $md_opts[ $md_units_key ];
+					if ( !  $this->add_data_og_type_md_values( $values, $type_id, $md_opts, $mt_name, $md_key ) ) {
+					
+						$def_md_key = $this->get_def_md_key( $md_key );
+	
+						if ( isset( $mt_og[ $mt_name ] ) ) {	// Meta tag exists and is not null.
+	
+							if ( $this->p->debug->enabled ) {
+		
+								$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
 							}
+	
+						} elseif ( ! empty( $def_md_key ) ) {	// Add default value from the plugin settings.
+		
+							if ( $this->p->debug->enabled ) {
+		
+								$this->p->debug->log( $mt_name . ' from options = ' . $this->p->options[ $def_md_key ] );
+							}
+		
+							$values[ $mt_name ] = $this->p->options[ $def_md_key ];
+		
+						} else {				// Add missing meta tag with null value.
+		
+							if ( $this->p->debug->enabled ) {
+		
+								$this->p->debug->log( $mt_name . ' = null' );
+							}
+		
+							$values[ $mt_name ] = null;	// Use null so isset() returns false.
+						}
+					}
+	
+					if ( ! empty( $values ) ) {
 
-							/**
-							 * Since WPSSO Core v14.0.0.
-							 *
-							 * Check if we need to convert the value.
-							 */
-							if ( $mt_og[ $mt_units_name ] !== $unit_text ) {
-
-								$unit_value = WpssoUtilUnits::get_convert( $mt_og[ $mt_name ], $unit_text, $mt_og[ $mt_units_name ] );
-
+						foreach ( $values as $mt_name => $val ) {
+	
+							if ( 'none' === $val ) {
+		
 								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'converted ' . $mt_og[ $mt_name ] . ' ' .
-										$mt_og[ $mt_units_name ] . ' to ' . $unit_value . ' ' . $unit_text );
+		
+									$this->p->debug->log( 'unsetting ' . $mt_name . ' for value "none"' );
 								}
+		
+								unset( $mt_og[ $mt_name ] );
+		
+							} elseif ( $is_multi ) {
 
-								$mt_og[ $mt_name ] = $unit_value;
+								$mt_og[ $mt_name ][] = $val;
 
-								$mt_og[ $mt_units_name ] = $unit_text;
+							} else {
+								
+								$mt_og[ $mt_name ] = $val;
 							}
 						}
-
-					/**
-					 * Do not define units by themselves - define the units meta tag when we define the value.
-					 */
-					} elseif ( false !== strpos( $mt_name, ':units' ) ) {
-
-						continue;	// Get the next meta data key.
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
-						}
-
-						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
 					}
-
-				} elseif ( isset( $mt_og[ $mt_name ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
-					}
-
-				} elseif ( isset( $this->p->options[ $og_def_md_key ] ) ) {
-
-					if ( 'none' !== $this->p->options[ $og_def_md_key ] ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $mt_name . ' from options = ' . $this->p->options[ $og_def_md_key ] );
-						}
-
-						$mt_og[ $mt_name ] = $this->p->options[ $og_def_md_key ];
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $mt_name . ' = null' );
-					}
-
-					$mt_og[ $mt_name ] = null;	// Use null so isset() returns false.
 				}
 			}
+		}
+
+		/**
+		 * Check for a default value from the settings.
+		 *
+		 * Open Graph defaults have an 'og_def_' prefix, except for 'product_currency'.
+		 *
+		 * Schema defaults have a 'schema_def_' prefix.
+		 */
+		public function get_def_md_key( $md_key ) {	// Pass by reference is OK.
+
+			$def_md_key = null;
+
+			if ( 'product_currency' === $md_key ) {
+			
+				if ( isset( $this->p->options[ 'og_def_currency' ] ) ) {	// Just in case.
+
+					$def_md_key = 'og_def_currency';
+				}
+
+			} elseif ( isset( $this->p->options[ 'og_def_' . $md_key ] ) ) {
+			
+				$def_md_key = 'og_def_' . $md_key;
+			
+			} elseif ( isset( $this->p->options[ 'schema_def_' . $md_key ] ) ) {
+			
+				$def_md_key = 'schema_def_' . $md_key;
+			}
+
+			return $def_md_key;
+		}
+
+		public function add_data_og_type_md_values( array &$values, $type_id, array $md_opts, $mt_name, $md_key ) {	// Pass by reference is OK.
+
+			/**
+			 * Use a custom value if one is available.
+			 */
+			if ( empty( $md_key ) || ! isset( $md_opts[ $md_key ] ) || '' === $md_opts[ $md_key ] ) {
+
+				return false;
+			}
+
+			/**
+			 * Check for meta tags that require a unit value and may need to be converted.
+			 */
+			if ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+				}
+
+				$values[ $mt_name ] = $md_opts[ $md_key ];
+
+				/**
+				 * Check if the value meta tag needs a units meta tag.
+				 */
+				$mt_units_name = $mt_match[ 1 ] . ':units';
+
+				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
+
+				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
+
+					$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
+
+					$values[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
+
+					if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $mt_units_name . ' from metadata = ' . $md_opts[ $md_units_key ] );
+						}
+
+						$values[ $mt_units_name ] = $md_opts[ $md_units_key ];
+					}
+
+					/**
+					 * Since WPSSO Core v14.0.0.
+					 *
+					 * Check if we need to convert the value.
+					 */
+					if ( $values[ $mt_units_name ] !== $unit_text ) {
+
+						$unit_value = WpssoUtilUnits::get_convert( $values[ $mt_name ], $unit_text, $values[ $mt_units_name ] );
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'converted ' . $values[ $mt_name ] . ' ' .
+								$values[ $mt_units_name ] . ' to ' . $unit_value . ' ' . $unit_text );
+						}
+
+						$values[ $mt_name ] = $unit_value;
+
+						$values[ $mt_units_name ] = $unit_text;
+					}
+				}
+
+			/**
+			 * Do not define units by themselves - define the units meta tag when we define the value.
+			 */
+			} elseif ( false !== strpos( $mt_name, ':units' ) ) {
+
+				return;	// Get the next meta data key.
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+				}
+
+				$values[ $mt_name ] = $md_opts[ $md_key ];
+			}
+
+			return true;
 		}
 
 		/**

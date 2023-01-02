@@ -74,9 +74,9 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 			}
 
-			$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
-			$cf_md_index = WpssoConfig::get_cf_md_index();	// Uses a local cache.
-			$cf_md_multi = WpssoConfig::get_cf_md_multi();	// Uses a local cache.
+			$charset       = get_bloginfo( $show = 'charset', $filter = 'raw' );
+			$cf_md_index   = WpssoConfig::get_cf_md_index();	// Uses a local cache.
+			$md_keys_multi = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
 
 			foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
 
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				/**
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
-				if ( empty( $cf_md_multi[ $md_key ] ) ) {
+				if ( empty( $md_keys_multi[ $md_key ] ) ) {
 
 					$md_opts[ $md_key ] = reset( $values );
 
@@ -202,6 +202,10 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				} else {
 
+					/**
+					 * If the input meta is not an array, and the meta options key allows for multiple numbered
+					 * values, then split the first (and what should be the only) array element into an array.
+					 */
 					if ( ! is_array( $mixed ) ) {
 
 						/**

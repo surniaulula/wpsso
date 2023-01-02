@@ -936,7 +936,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
 			$parent_product = $is_variation ? $this->p->util->wc->get_product( $parent_id ) : $product;
 			$attr_md_index  = WpssoConfig::get_attr_md_index();	// Uses a local cache.
-			$attr_md_multi  = WpssoConfig::get_attr_md_multi();	// Uses a local cache.
+			$md_keys_multi  = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
 
 			foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
 
@@ -1030,7 +1030,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				 */
 				if ( ! empty( $values ) ) {	// Just in case.
 
-					if ( empty( $attr_md_multi[ $md_key ] ) ) {
+					if ( empty( $md_keys_multi[ $md_key ] ) ) {
 	
 						$md_opts[ $md_key ] = reset( $values );
 	
@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				/**
 				 * Add custom fields meta data to the Open Graph meta tags.
 				 */
-				$this->p->og->add_og_type_mt_md( 'product', $mt_ecom, $var_opts );
+				$this->p->og->add_data_og_type_md( $mt_ecom, 'product', $var_opts );
 			}
 
 			/**

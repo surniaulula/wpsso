@@ -1947,20 +1947,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * The $replace value can be a string or an associative array of 'pattern' => 'replacement'.
 		 */
-		public static function preg_grep_keys( $key_preg, array $in_arr, $invert = false, $replace = false ) {
+		public static function preg_grep_keys( $key_preg, array $input, $invert = false, $replace = false ) {
 
-			if ( empty( $in_arr ) ) {	// Nothing to do.
+			if ( empty( $input ) ) {	// Nothing to do.
 
-				return $in_arr;
+				return $input;
 			}
 
-			$in_arr_keys = array_keys( $in_arr );
-
-			$matched_keys = preg_grep( $key_preg, $in_arr_keys, $invert ? PREG_GREP_INVERT : 0 );
+			$input_keys   = array_keys( $input );
+			$matched_keys = preg_grep( $key_preg, $input_keys, $invert ? PREG_GREP_INVERT : 0 );
 
 			if ( empty( $matched_keys ) && $invert ) {	// Nothing to do.
 
-				return $in_arr;
+				return $input;
 			}
 
 			/**
@@ -1977,23 +1976,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$replacements = $replace;
 			}
 
-			$out_arr  = array();
+			$output  = array();
 
 			foreach ( $matched_keys as $key ) {
 
 				if ( false === $replace ) {	// Element key remains unchanged.
 
-					$out_arr[ $key ] = $in_arr[ $key ];
+					$output[ $key ] = $input[ $key ];
 
 				} else {
 
 					$fixed = preg_replace( $patterns, $replacements, $key );
 
-					$out_arr[ $fixed ] = $in_arr[ $key ];
+					$output[ $fixed ] = $input[ $key ];
 				}
 			}
 
-			return $out_arr;
+			return $output;
 		}
 
 		public static function next_key( $needle, array &$input, $loop = true ) {
@@ -2202,7 +2201,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * This method is used by e-Commerce modules to pre-define and pre-sort the product meta tags.
 		 *
-		 * Use null values so WpssoOpengraph->add_og_type_mt_md() can load metadata default values.
+		 * Use null values so WpssoOpengraph->add_data_og_type_md() can load metadata default values.
 		 */
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 

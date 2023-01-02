@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-dev.6',	// Plugin version.
-					'opt_version' => '939',		// Increment when changing default option values.
+					'version'     => '14.2.0-dev.7',	// Plugin version.
+					'opt_version' => '940',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1295,7 +1295,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Open Graph options.
 					 *
-					 * See WpssoOpengraph->add_og_type_mt_md().
+					 * See WpssoOpengraph->add_data_og_type_md().
 					 */
 					'og_def_img_id'             => '',		// Default Image ID.
 					'og_def_img_id_lib'         => 'wp',		// Default Image ID Library.
@@ -2139,15 +2139,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * WpssoConfig::$cf[ 'opt' ][ 'attr_md_multi' ]
-				 *
-				 * Provides information to help read and split attribute values into numbered options.
-				 */
-				'attr_md_multi' => array(
-					'product_size_group' => true,
-				),
-
-				/**
 				 * WpssoConfig::$cf[ 'opt' ][ 'cf_md_index' ]
 				 *
 				 * Provides a key index for custom fields to meta data options.
@@ -2202,22 +2193,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * WpssoConfig::$cf[ 'opt' ][ 'cf_md_multi' ]
+				 * WpssoConfig::$cf[ 'opt' ][ 'md_keys_multi' ]
 				 *
 				 * Provides information to help read and split custom field values into numbered options.
 				 */
-				'cf_md_multi' => array(
-					'schema_addl_type_url' => true,		// Microdata Type URLs.
-					'schema_howto_step'    => array(	// How-To Name.
-						'schema_howto_step_section',	// How-To Step or Group / Section.
-						'schema_howto_step_text',	// How-To Description.
-						'schema_howto_step_img_id',	// How-To Image ID.
+				'md_keys_multi' => array(
+					'schema_addl_type_url' => true,			// Microdata Type URLs.
+					'schema_howto_step'    => array(		// How-To Name.
+						'schema_howto_step_section',		// How-To Step or Group / Section.
+						'schema_howto_step_text',		// How-To Description.
+						'schema_howto_step_img_id',		// How-To Image ID.
 						'schema_howto_step_img_id_lib',
 					),
-					'schema_howto_supply'       => true,	// How-To Supplies.
-					'schema_howto_tool'         => true,	// How-To Tools.
-					'schema_recipe_ingredient'  => true,	// Recipe Ingredients.
-					'schema_recipe_instruction' => array(	// Recipe Instructions.
+					'schema_howto_supply'       => true,		// How-To Supplies.
+					'schema_howto_tool'         => true,		// How-To Tools.
+					'schema_recipe_ingredient'  => true,		// Recipe Ingredients.
+					'schema_recipe_instruction' => array(		// Recipe Instructions.
 						'schema_recipe_instruction_section',	// How-To Instruction or Group / Section.
 						'schema_recipe_instruction_text',	// How-To Description.
 						'schema_recipe_instruction_img_id',	// How-To Image ID.
@@ -2227,26 +2218,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_size_group'                   => true,
 					'schema_webpage_reviewed_by_org_id'    => true,
 					'schema_webpage_reviewed_by_person_id' => true,
-				),
-
-				/**
-				 * Additional fields for the user profile About Yourself / About the user sections.
-				 */
-				'user_about' => array(
-					'job_title'        => 'Job Title',
-					'honorific_prefix' => 'Honorific Prefix',
-					'honorific_suffix' => 'Honorific Suffix',
-					'additional_name'  => 'Middle or Additional Name',
-				),
-
-				'site_verify_meta_names' => array(
-					'ahrefs_site_verify' => 'ahrefs-site-verification',	// Ahrefs Website Verification ID.
-					'baidu_site_verify'  => 'baidu-site-verification',	// Baidu Website Verification ID.
-					'fb_site_verify'     => 'facebook-domain-verification',	// Facebook Domain Verification ID.
-					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
-					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
-					'pin_site_verify'    => 'p:domain_verify',		// Pinterest Website Verification ID.
-					'yandex_site_verify' => 'yandex-verification',		// Yandex Website Verification ID.
 				),
 
 				/**
@@ -2276,6 +2247,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_title'     => array( 'tc_title', 'og_title', 'seo_title' ),
 					'tc_desc'      => array( 'tc_desc', 'og_desc', 'seo_desc' ),
 					'pin_img_desc' => array( 'pin_img_desc', 'og_desc', 'seo_desc' ),
+				),
+
+				/**
+				 * Additional fields for the user profile About Yourself / About the user sections.
+				 */
+				'user_about' => array(
+					'job_title'        => 'Job Title',
+					'honorific_prefix' => 'Honorific Prefix',
+					'honorific_suffix' => 'Honorific Suffix',
+					'additional_name'  => 'Middle or Additional Name',
+				),
+
+				'site_verify_meta_names' => array(
+					'ahrefs_site_verify' => 'ahrefs-site-verification',	// Ahrefs Website Verification ID.
+					'baidu_site_verify'  => 'baidu-site-verification',	// Baidu Website Verification ID.
+					'fb_site_verify'     => 'facebook-domain-verification',	// Facebook Domain Verification ID.
+					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
+					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
+					'pin_site_verify'    => 'p:domain_verify',		// Pinterest Website Verification ID.
+					'yandex_site_verify' => 'yandex-verification',		// Yandex Website Verification ID.
 				),
 			),	// End of 'opt' array.
 
@@ -3402,16 +3393,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'website'             => 'https://ogp.me/ns/website#',
 				),
 				'og_type_ns_compat' => array(
-					'article'             => 'https://ogp.me/ns/article#',
-					'book'                => 'https://ogp.me/ns/book#',
-					'place'               => 'https://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
-					'product'             => 'https://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
-					'profile'             => 'https://ogp.me/ns/profile#',
-					'website'             => 'https://ogp.me/ns/website#',
+					'article' => 'https://ogp.me/ns/article#',
+					'book'    => 'https://ogp.me/ns/book#',
+					'place'   => 'https://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
+					'product' => 'https://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
+					'profile' => 'https://ogp.me/ns/profile#',
+					'website' => 'https://ogp.me/ns/website#',
 				),
 
 				/**
-				 * See WpssoOpengraph->add_og_type_mt_md().
+				 * See WpssoOpengraph->add_data_og_type_md().
 				 *
 				 * See https://developers.facebook.com/docs/reference/opengraph/.
 				 */
@@ -5295,18 +5286,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v14.2.0.
-		 *
-		 * Provides information to help read and split attribute values into numbered options.
-		 *
-		 * Returns true, false, or an array.
-		 */
-		public static function get_attr_md_multi( $md_key = false ) {
-
-			return self::get_opt_md_info( $md_index = 'attr_md_multi', $md_key );
-		}
-
-		/**
 		 * Since WPSSO Core v14.0.0.
 		 *
 		 * Provides a key index for custom fields to meta data options.
@@ -5325,9 +5304,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * Returns true, false, or an array.
 		 */
-		public static function get_cf_md_multi( $md_key = false ) {
+		public static function get_md_keys_multi( $md_key = false ) {
 
-			return self::get_opt_md_info( $md_index = 'cf_md_multi', $md_key );
+			return self::get_opt_md_info( $md_index = 'md_keys_multi', $md_key );
 		}
 
 		/**
@@ -5382,7 +5361,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * Provides information to help read and split attribute and custom field values into numbered options.
 		 *
-		 * Example $md_index values: 'attr_md_index', 'attr_md_multi', 'cf_md_index', or 'cf_md_multi'.
+		 * Example $md_index values: 'attr_md_index', 'cf_md_index', or 'md_keys_multi'.
 		 */
 		private static function get_opt_md_info( $md_index, $md_key = false ) {
 

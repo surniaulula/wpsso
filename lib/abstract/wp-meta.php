@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Open Graph and Schema Product type.
 					 *
-					 * See WpssoOpengraph->add_og_type_mt_md().
+					 * See WpssoOpengraph->add_data_og_type_md().
 					 */
 					'product_category'              => $def_product_cat,		// Product Google Category ID.
 					'product_brand'                 => '',
@@ -1716,9 +1716,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/**
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
-			$cf_md_multi = WpssoConfig::get_cf_md_multi();
+			$md_keys_multi = WpssoConfig::get_md_keys_multi();
 
-			foreach ( $cf_md_multi as $md_multi_key => $is_multi ) {
+			foreach ( $md_keys_multi as $multi_key => $is_multi ) {
 
 				if ( empty( $is_multi ) ) {	// True, false, or array.
 
@@ -1728,7 +1728,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/**
 				 * Get multi option values indexed only by their number.
 				 */
-				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 				$md_renum_opts = array();	// Start with a fresh array.
 
@@ -1738,7 +1738,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( '' !== $md_val ) {	// Only save non-empty values.
 
-						$md_renum_opts[ $md_multi_key . '_' . $renum ] = $md_val;
+						$md_renum_opts[ $multi_key . '_' . $renum ] = $md_val;
 					}
 
 					/**
@@ -1761,7 +1761,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/**
 				 * Remove any existing multi options, including any linked options.
 				 */
-				$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
+				$md_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
 
 				if ( is_array( $is_multi ) ) {
 
