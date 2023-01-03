@@ -1298,7 +1298,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See WpssoOpengraph->add_data_og_type_md().
 					 */
 					'og_def_img_id'             => '',		// Default Image ID.
-					'og_def_img_id_lib'         => 'wp',		// Default Image ID Library.
 					'og_def_img_url'            => '',		// Default Image URL.
 					'og_def_currency'           => 'USD',		// Default Currency.
 					'og_def_country'            => 'none',		// Default Country.

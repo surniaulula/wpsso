@@ -319,9 +319,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 
-				$def_img_id_lib = $this->p->get_options( 'og_def_img_id_lib', 'wp' );
-				$def_currency   = $this->p->get_options( 'og_def_currency', 'USD' );
-
+				$def_currency      = $this->p->get_options( 'og_def_currency', 'USD' );
 				$def_art_section   = $this->p->get_options( 'schema_def_article_section', 'none' );
 				$def_adult_type    = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
 				$def_age_group     = $this->p->get_options( 'schema_def_product_age_group', 'none' );
@@ -383,7 +381,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'og_vid_prev_img'   => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
 					'og_vid_autoplay'   => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
 					'og_img_id'         => '',
-					'og_img_id_lib'     => $def_img_id_lib,
+					'og_img_id_lib'     => 'wp',
 					'og_img_url'        => '',
 					'og_vid_embed'      => '',
 					'og_vid_url'        => '',
@@ -393,16 +391,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'og_vid_width'      => '',
 					'og_vid_height'     => '',
 					'pin_img_id'        => '',
-					'pin_img_id_lib'    => $def_img_id_lib,
+					'pin_img_id_lib'    => 'wp',
 					'pin_img_url'       => '',
 					'tc_lrg_img_id'     => '',
-					'tc_lrg_img_id_lib' => $def_img_id_lib,
+					'tc_lrg_img_id_lib' => 'wp',
 					'tc_lrg_img_url'    => '',
 					'tc_sum_img_id'     => '',
-					'tc_sum_img_id_lib' => $def_img_id_lib,
+					'tc_sum_img_id_lib' => 'wp',
 					'tc_sum_img_url'    => '',
 					'schema_img_id'     => '',
-					'schema_img_id_lib' => $def_img_id_lib,
+					'schema_img_id_lib' => 'wp',
 					'schema_img_url'    => '',
 
 					/**

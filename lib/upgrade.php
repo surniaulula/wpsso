@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_16_9_img_crop_y' => 'schema_16x9_img_crop_y',
 				),
 				786 => array(
-					'og_def_img_id_pre' => 'og_def_img_id_lib',
+					'og_def_img_id_pre' => '',
 				),
 				795 => array(
 					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
