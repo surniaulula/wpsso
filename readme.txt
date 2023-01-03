@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.2.0-b.3 (2023/01/03)**
+**Version 14.2.0-rc.1 (2023/01/03)**
 
 * **New Features**
 	* None.
@@ -262,7 +262,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed `WpssoSchema::get_enumeration_values()` to `WpssoSchema::get_enumeration_examples()`.
 	* Renamed `SucomUtil::get_options_transl()` to `SucomUtil::get_options_label_transl()`.
 	* Renamed 'wpsso_wc_variation_cf_meta_keys' filter to 'wpsso_wc_variation_alt_options'.
-	* Refactored `WpssoSchema::check_prop_value_enumeration()` to allow for translated option values.
+	* Refactored `WpssoSchema::check_prop_value_enumeration()` to allow reading translated values.
 	* Removed the `WpssoUtil->get_product_attr_names()` method.
 * **Requires At Least**
 	* PHP v7.2.
@@ -832,7 +832,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.2.0-b.3 =
+= 14.2.0-rc.1 =
 
 (2023/01/03) Added new "Default Product Target Gender" and "Default Product Size Group" options. Updated the "Product Size Group" option in the Document SSO metabox.
 
