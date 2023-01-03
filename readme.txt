@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.2.0-dev.8 (2023/01/02)**
+**Version 14.2.0-b.1 (2023/01/02)**
 
 * **New Features**
 	* None.
@@ -832,7 +832,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.2.0-dev.8 =
+= 14.2.0-b.1 =
 
 (2023/01/02) Added new "Default Product Target Gender" and "Default Product Size Group" options. Updated the "Product Size Group" option in the Document SSO metabox.
 
