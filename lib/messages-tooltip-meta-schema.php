@@ -185,6 +185,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 							'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 					}
 
+					if ( ! empty( $tp_frags[ 'inherit' ] ) ) {
+						
+						$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages.',
+							'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
+					}
+
 				 	break;
 
 				case 'tooltip-meta-schema_reading_mins':	// Est. Reading Time.

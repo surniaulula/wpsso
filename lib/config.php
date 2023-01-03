@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-b.2',	// Plugin version.
+					'version'     => '14.2.0-b.3',	// Plugin version.
 					'opt_version' => '942',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2944,10 +2944,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_url'    => null,
 
 					/**
-					 * Inherited Schema Product options.
+					 * Inherited product options.
 					 */
 					'product_adult_type'            => null,
 					'product_age_group'             => null,
+					'product_brand'                 => null,
+					'product_category'              => null,
 					'product_energy_efficiency'     => null,
 					'product_energy_efficiency_min' => null,
 					'product_energy_efficiency_max' => null,
@@ -2957,6 +2959,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_size_group_1'          => null,
 					'product_size_system'           => null,
 					'product_target_gender'         => null,
+
+					/**
+					 * Inherited Schema options.
+					 */
+					'schema_article_section' => null,
 				),
 
 				/**

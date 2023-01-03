@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
 								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
-						
+
 						if ( ! empty( $tp_frags[ 'inherit' ] ) ) {
 						
 							$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages (like WooCommerce product variations, for example).', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
