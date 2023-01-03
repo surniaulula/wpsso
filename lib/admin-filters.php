@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) Inherit Custom Images' ] = array(
 				'label_transl' => _x( '(feature) Inherit Custom Images', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->options[ 'plugin_inherit_custom' ] ? 'on' : 'off',
+				'status'       => $this->p->options[ 'plugin_inherit_images' ] ? 'on' : 'off',
 			);
 
 			/**

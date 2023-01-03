@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_inherit_custom':	// Inherit Custom Images.
+				case 'tooltip-plugin_inherit_images':	// Inherit Custom Images.
 
 					$text = __( 'Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
@@ -739,13 +739,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
+					$tp_frags    = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
 					$attr_key    = str_replace( 'tooltip-', '', $msg_key );
-					$attr_frags  = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
 					$attr_md_key = WpssoConfig::get_attr_md_index( $attr_key );
 					$is_multi    = $attr_md_key ? WpssoConfig::get_md_keys_multi( $attr_md_key ) : false;	// Uses a local cache.
 					$def_attr    = $this->p->opt->get_defaults( $attr_key );
 
-					if ( ! empty( $attr_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 	
 						$text = sprintf( __( 'The product attribute name allows %s to request a product attribute value from an e-commerce plugin.',
 							'wpsso' ), $this->p_name ) . ' ';
@@ -755,22 +755,22 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $def_attr ) . ' ';
 						}
 	
-						if ( ! empty( $attr_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 	
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
-								'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] ) . ' ';
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
 	
-						if ( ! empty( $attr_frags[ 'values' ] ) ) {
+						if ( ! empty( $tp_frags[ 'values' ] ) ) {
 	
 							$text .= sprintf( __( 'The product attribute value can be an empty string or one of these values (case sensitive): %s',
-								'wpsso' ), SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) ) . ' ';
+								'wpsso' ), SucomUtil::array_to_list_html( $tp_frags[ 'values' ] ) ) . ' ';
 						}
 
 						if ( ! empty( $is_multi ) ) {
 
-							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $attr_frags[ 'label' ] ) . ' ';
+							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $tp_frags[ 'label' ] ) . ' ';
 
 							$text .= __( 'The product attribute string will be split using the comma "," character.', 'wpsso' ) . ' ';
 						}
@@ -783,36 +783,36 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
+					$tp_frags        = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );	// Uses a local cache.
 					$cf_key          = str_replace( 'tooltip-', '', $msg_key );
-					$cf_frags        = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );	// Uses a local cache.
 					$cf_md_key       = WpssoConfig::get_cf_md_index( $cf_key );
 					$is_multi        = $cf_md_key ? WpssoConfig::get_md_keys_multi( $cf_md_key ) : false;	// Uses a local cache.
 					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					if ( ! empty( $cf_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 
-						$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+						$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $tp_frags[ 'desc' ] ) . ' ';
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
 						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.',
-							'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
+							'wpsso' ), $mb_title_transl, $tp_frags[ 'label' ] ) . ' ';
 
-						if ( ! empty( $cf_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
-								'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] ) . ' ';
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
 
-						if ( ! empty( $cf_frags[ 'values' ] ) ) {
+						if ( ! empty( $tp_frags[ 'values' ] ) ) {
 
 							$text .= sprintf( __( 'The custom field value can be an empty string or one of these values (case sensitive): %s',
-								'wpsso' ), SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) ) . ' ';
+								'wpsso' ), SucomUtil::array_to_list_html( $tp_frags[ 'values' ] ) ) . ' ';
 						}
 
 						if ( ! empty( $is_multi ) ) {
 
-							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
+							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $tp_frags[ 'label' ] ) . ' ';
 
 							$text .= __( 'If the custom field value is a string, it will be split on the end of line character.', 'wpsso' ) . ' ';
 						}

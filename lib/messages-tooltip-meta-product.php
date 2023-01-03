@@ -41,22 +41,22 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 						_x( 'Default Product Google Category', 'option label', 'wpsso' ) );
 
-					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
 
-					if ( ! empty( $meta_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 
 						// translators: %1$s is a lower case item name, for example 'product Google category'.
 						$text = sprintf( __( 'A custom value for the %1$s, which may be different than the %2$s option value.', 'wpsso' ),
-							$meta_frags[ 'name' ], $option_link ) . ' ';
+							$tp_frags[ 'name' ], $option_link ) . ' ';
 
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s from Schema markup and meta tags.', 'wpsso' ),
-							$meta_frags[ 'name' ] ) . ' ';
+							$tp_frags[ 'name' ] ) . ' ';
 
-						if ( ! empty( $meta_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$meta_frags[ 'about' ], $meta_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
 					}
 
@@ -64,25 +64,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
 
-					if ( ! empty( $meta_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 
 						// translators: %s is a singular item reference, for example 'a product size group'.
-						$text = sprintf( __( 'A custom value for the %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $meta_frags[ 'name' ] ) . ' ';
+						$text = sprintf( __( 'A custom value for the %s can be provided for the main product.', 'wpsso' ),
+							$tp_frags[ 'name' ] ) . ' ';
 
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
-						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only if a custom field or e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $meta_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only if a custom field or e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $tp_frags[ 'label' ] ) . ' ';
 
-						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
+						$text .= __( 'In this case, you should update the product information in the custom field or e-commerce plugin to update this value.', 'wpsso' ) . ' ';
 
-						if ( ! empty( $meta_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$meta_frags[ 'about' ], $meta_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
+						}
+						
+						if ( ! empty( $tp_frags[ 'inherit' ] ) ) {
+						
+							$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages (like WooCommerce product variations, for example).', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 						}
 					}
 

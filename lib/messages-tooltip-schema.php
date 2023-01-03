@@ -169,24 +169,24 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_article_' ) ? true : false ):
 
-					$def_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
 
-					if ( ! empty( $def_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 
 						$text = sprintf( __( 'The %s that best describes the content of articles on your site.', 'wpsso' ),
-							$def_frags[ 'name' ] ) . ' ';
+							$tp_frags[ 'name' ] ) . ' ';
 
 						$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
-							$def_frags[ 'name' ] ) . ' ';
+							$tp_frags[ 'name' ] ) . ' ';
 
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
-							$def_frags[ 'name' ] ) . ' ';
+							$tp_frags[ 'name' ] ) . ' ';
 
-						if ( ! empty( $def_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$def_frags[ 'about' ], $def_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
 					}
 
@@ -303,22 +303,22 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_product_' ) ? true : false ):
 
-					$def_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
 
-					if ( ! empty( $def_frags ) ) {	// Just in case.
+					if ( ! empty( $tp_frags ) ) {	// Just in case.
 
-						$text = sprintf( __( 'The %s that best describes the products on your site.', 'wpsso' ), $def_frags[ 'name' ] ) . ' ';
+						$text = sprintf( __( 'The %s that best describes the products on your site.', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 
-						$text .= sprintf( __( 'You can select a different %s when editing a product.', 'wpsso' ), $def_frags[ 'name' ] ) . ' ';
+						$text .= sprintf( __( 'You can select a different %s when editing a product.', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
-							$def_frags[ 'name' ] ) . ' ';
+							$tp_frags[ 'name' ] ) . ' ';
 
-						if ( ! empty( $def_frags[ 'about' ] ) ) {
+						if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-								$def_frags[ 'about' ], $def_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
 					}
 

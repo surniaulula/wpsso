@@ -129,10 +129,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_inherit_featured' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
 
-			$table_rows[ 'plugin_inherit_custom' ] = '' .
+			$table_rows[ 'plugin_inherit_images' ] = '' .
 				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_inherit_custom' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_custom' ) .
+					$css_class = '', $css_id = 'plugin_inherit_images' ) .
+				$form->get_no_td_checkbox( 'plugin_inherit_images' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' .

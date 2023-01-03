@@ -170,19 +170,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_schema_props-tab_article',
 						_x( 'Default Article Section', 'option label', 'wpsso' ) );
 
-					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-schema_/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-schema_/', '', $msg_key ) );	// Uses a local cache.
 
 					$text = sprintf( __( 'A custom value for the %1$s, which may be different than the %2$s option value.', 'wpsso' ),
-						$meta_frags[ 'name' ], $option_link ) . ' ';
+						$tp_frags[ 'name' ], $option_link ) . ' ';
 
 					$text .= sprintf( __( 'Select "[None]" to exclude the %s from Schema markup and meta tags.', 'wpsso' ),
-						$meta_frags[ 'name' ] ) . ' ';
+						$tp_frags[ 'name' ] ) . ' ';
 
-					if ( ! empty( $meta_frags[ 'about' ] ) ) {
+					if ( ! empty( $tp_frags[ 'about' ] ) ) {
 
 						// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ),
-							$meta_frags[ 'about' ], $meta_frags[ 'desc' ] ) . ' ';
+						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+							'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 					}
 
 				 	break;

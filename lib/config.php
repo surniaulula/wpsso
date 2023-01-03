@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-b.1',	// Plugin version.
-					'opt_version' => '940',		// Increment when changing default option values.
+					'version'     => '14.2.0-b.2',	// Plugin version.
+					'opt_version' => '941',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1739,7 +1739,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags'          => 0,		// Enable Tags for Pages.
 					'plugin_new_user_is_person' => 0,		// Add Person Role for New Users.
 					'plugin_inherit_featured'   => 0,		// Inherit Featured Image.
-					'plugin_inherit_custom'     => 0,		// Inherit Custom Images.
+					'plugin_inherit_images'     => 0,		// Inherit Custom Images.
 					'plugin_check_img_dims'     => 0,		// Image Dimension Checks.
 					'plugin_upscale_images'     => 0,		// Upscale Media Library Images.
 					'plugin_upscale_pct_max'    => 33,		// Maximum Image Upscale Percent.
@@ -2923,7 +2923,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See WpssoAbstractWpMeta->get_inherited_md_opts().
 				 */
 				'inherit_md_opts' => array(
-					'og_img_max'        => null,	// Maximum Images.
+
+					/**
+					 * Inherited image options.
+					 */
+					'og_img_max'        => null,
 					'og_img_id'         => null,
 					'og_img_id_lib'     => null,
 					'og_img_url'        => null,
@@ -2941,7 +2945,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_url'    => null,
 
 					/**
-					 * Inherited Schema Product custom options.
+					 * Inherited Schema Product options.
 					 */
 					'product_adult_type'            => null,
 					'product_age_group'             => null,
