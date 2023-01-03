@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.2.0-b.2 (2023/01/03)**
+**Version 14.2.0-b.3 (2023/01/03)**
 
 * **New Features**
 	* None.
@@ -242,7 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Default Product Size Group" option in the Advanced Settings page.
 	* Updated the "Product Size Group" option in the Document SSO metabox to add a second selection.
 * **Bugfixes**
-	* None.
+	* Fixed usage of an old NextGEN Gallery media library setting that should have been removed.
 * **Developer Notes**
 	* Added a new `SucomUtil::is_post_type()` method.
 	* Added a new `SucomUtil::get_options_value_transl()` method.
@@ -832,7 +832,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.2.0-b.2 =
+= 14.2.0-b.3 =
 
 (2023/01/03) Added new "Default Product Target Gender" and "Default Product Size Group" options. Updated the "Product Size Group" option in the Document SSO metabox.
 
