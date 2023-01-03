@@ -567,7 +567,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_cf_product_size_type'        => 'plugin_cf_product_size_group',
 					'schema_def_product_adult_oriented'  => 'schema_def_product_adult_type',
 				),
-				940 => array(	// Renamed for WPSSO Core v14.2.0.
+				941 => array(	// Renamed for WPSSO Core v14.2.0.
+					'og_def_img_id_lib'     => '',
 					'plugin_inherit_custom' => 'plugin_inherit_images',
 				),
 			),
