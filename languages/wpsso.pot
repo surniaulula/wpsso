@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.2.0-dev.8\n"
+"Project-Id-Version: WPSSO Core 14.2.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7824,8 +7824,8 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:84
-#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:756
-#: lib/messages-tooltip-plugin.php:787 lib/messages-tooltip-schema.php:188
+#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:761
+#: lib/messages-tooltip-plugin.php:803 lib/messages-tooltip-schema.php:188
 #: lib/messages-tooltip-schema.php:320
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -9467,46 +9467,54 @@ msgid ""
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:746
+#: lib/messages-tooltip-plugin.php:750
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:750
+#: lib/messages-tooltip-plugin.php:755
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:761
+#: lib/messages-tooltip-plugin.php:767
 msgid ""
-"The attribute value from the e-commerce plugin can be an empty string or one "
-"of these values (case sensitive): %s"
+"The product attribute value can be an empty string or one of these values "
+"(case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:773 lib/messages-tooltip-plugin.php:815
+msgid "Note that the \"%s\" option supports multiple values."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:775
+msgid ""
+"The product attribute string will be split using the comma \",\" character."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:794
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:782
+#: lib/messages-tooltip-plugin.php:797
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:792
+#: lib/messages-tooltip-plugin.php:809
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:799
+#: lib/messages-tooltip-plugin.php:817
 msgid ""
-"Note that the \"%s\" option provides multiple input fields - the custom "
-"field value will be split on newline characters, and each line will be "
-"assigned to an individual input field."
+"If the custom field value is a string, it will be split on the end of line "
+"character."
 msgstr ""
 
 #: lib/messages-tooltip-schema.php:44

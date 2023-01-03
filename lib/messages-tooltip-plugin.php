@@ -739,26 +739,41 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
-					$attr_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
-					$attr_key   = str_replace( 'tooltip-', '', $msg_key );
-					$def_attr   = $this->p->opt->get_defaults( $attr_key );
+					$attr_key    = str_replace( 'tooltip-', '', $msg_key );
+					$attr_frags  = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
+					$attr_md_key = WpssoConfig::get_attr_md_index( $attr_key );
+					$is_multi    = $attr_md_key ? WpssoConfig::get_md_keys_multi( $attr_md_key ) : false;	// Uses a local cache.
+					$def_attr    = $this->p->opt->get_defaults( $attr_key );
 
-					$text = sprintf( __( 'The product attribute name allows %s to request a product attribute value from an e-commerce plugin.', 'wpsso' ), $this->p_name ) . ' ';
+					if ( ! empty( $attr_frags ) ) {	// Just in case.
+	
+						$text = sprintf( __( 'The product attribute name allows %s to request a product attribute value from an e-commerce plugin.',
+							'wpsso' ), $this->p_name ) . ' ';
 
-					if ( ! empty( $def_attr ) ) {
+						if ( ! empty( $def_attr ) ) {
+	
+							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $def_attr ) . ' ';
+						}
+	
+						if ( ! empty( $attr_frags[ 'about' ] ) ) {
+	
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] ) . ' ';
+						}
+	
+						if ( ! empty( $attr_frags[ 'values' ] ) ) {
+	
+							$text .= sprintf( __( 'The product attribute value can be an empty string or one of these values (case sensitive): %s',
+								'wpsso' ), SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) ) . ' ';
+						}
 
-						$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $def_attr ) . ' ';
-					}
+						if ( ! empty( $is_multi ) ) {
 
-					if ( ! empty( $attr_frags[ 'about' ] ) ) {
+							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $attr_frags[ 'label' ] ) . ' ';
 
-						// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $attr_frags[ 'about' ], $attr_frags[ 'desc' ] ) . ' ';
-					}
-
-					if ( ! empty( $attr_frags[ 'values' ] ) ) {
-
-						$text .= sprintf( __( 'The attribute value from the e-commerce plugin can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
+							$text .= __( 'The product attribute string will be split using the comma "," character.', 'wpsso' ) . ' ';
+						}
 					}
 
 					break;
@@ -771,7 +786,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$cf_key          = str_replace( 'tooltip-', '', $msg_key );
 					$cf_frags        = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );	// Uses a local cache.
 					$cf_md_key       = WpssoConfig::get_cf_md_index( $cf_key );
-					$multi_key       = WpssoConfig::get_md_keys_multi( $cf_md_key );
+					$is_multi        = $cf_md_key ? WpssoConfig::get_md_keys_multi( $cf_md_key ) : false;	// Uses a local cache.
 					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
@@ -779,24 +794,27 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 						$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
-						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.',
+							'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
 
 						if ( ! empty( $cf_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] ) . ' ';
 						}
 
 						if ( ! empty( $cf_frags[ 'values' ] ) ) {
 
-							$text .= sprintf( __( 'The custom field value can be an empty string or one of these values (case sensitive): %s', 'wpsso' ), SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) );
+							$text .= sprintf( __( 'The custom field value can be an empty string or one of these values (case sensitive): %s',
+								'wpsso' ), SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) ) . ' ';
 						}
 
-						if ( ! empty( $multi_key ) ) {
+						if ( ! empty( $is_multi ) ) {
 
-							$text .= '</br></br>';
+							$text .= sprintf( __( 'Note that the "%s" option supports multiple values.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
 
-							$text .= sprintf( __( 'Note that the "%s" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
+							$text .= __( 'If the custom field value is a string, it will be split on the end of line character.', 'wpsso' ) . ' ';
 						}
 					}
 

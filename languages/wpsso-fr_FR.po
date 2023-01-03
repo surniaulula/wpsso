@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.1.0\n"
+"Project-Id-Version: WPSSO Core 14.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-01-01 17:48-0800\n"
+"PO-Revision-Date: 2023-01-02 19:42-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4536,54 +4536,54 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:1187
+#: lib/abstract/wp-meta.php:1182
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1255
+#: lib/abstract/wp-meta.php:1250
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1259
+#: lib/abstract/wp-meta.php:1254
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1262 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1257 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1266
+#: lib/abstract/wp-meta.php:1261
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1267
+#: lib/abstract/wp-meta.php:1262
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1268
+#: lib/abstract/wp-meta.php:1263
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1269
+#: lib/abstract/wp-meta.php:1264
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1607
+#: lib/abstract/wp-meta.php:1602
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:1928 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1923 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstract/wp-meta.php:1930
+#: lib/abstract/wp-meta.php:1925
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
@@ -7253,8 +7253,8 @@ msgstr "Sélectionnez \"[Aucun]\" pour exclure la %s du balisage de Schéma et d
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:84
-#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:756
-#: lib/messages-tooltip-plugin.php:787 lib/messages-tooltip-schema.php:188
+#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:761
+#: lib/messages-tooltip-plugin.php:803 lib/messages-tooltip-schema.php:188
 #: lib/messages-tooltip-schema.php:320
 msgid "<a href=\"%1$s\">See this webpage for more information about choosing %2$s value</a>."
 msgstr "<a href=\"%1$s\">Consultez cette page Web pour plus d'informations pour choisir une valeur %2$s</a>."
@@ -8544,34 +8544,42 @@ msgstr "<a href=\"%s\">Connectez-vous à votre compte Shopper Approved et accéd
 msgid "Your unique Stamped.io store hash and API public key values are required to retrieve ratings and reviews from the Stamped.io service API."
 msgstr "Le hachage unique pour votre magasin et la clé publique d'API de Stamped.io sont nécessaires pour récupérer les notes et les critiques de l'API de service Stamped.io."
 
-#: lib/messages-tooltip-plugin.php:746
+#: lib/messages-tooltip-plugin.php:750
 msgid "The product attribute name allows %s to request a product attribute value from an e-commerce plugin."
 msgstr "Le nom d'attribut de produit permet à %s de demander une valeur d'attribut de produit d'une extension de commerce électronique."
 
-#: lib/messages-tooltip-plugin.php:750
+#: lib/messages-tooltip-plugin.php:755
 msgid "The default attribute name is \"%s\"."
 msgstr "Le nom d'attribut par défaut est \"%s\"."
 
-#: lib/messages-tooltip-plugin.php:761
-msgid "The attribute value from the e-commerce plugin can be an empty string or one of these values (case sensitive): %s"
-msgstr "La valeur d'attribut de l'extension commerce électronique peut être une chaîne vide ou l'une de ces valeurs (sensible aux majuscules et minuscules): %s"
+#: lib/messages-tooltip-plugin.php:767
+msgid "The product attribute value can be an empty string or one of these values (case sensitive): %s"
+msgstr "La valeur de l'attribut produit peut être une chaîne vide ou l'une de ces valeurs (sensible aux majuscules/minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:773 lib/messages-tooltip-plugin.php:815
+msgid "Note that the \"%s\" option supports multiple values."
+msgstr "Notez que l'option \"%s\" prend en charge plusieurs valeurs."
+
+#: lib/messages-tooltip-plugin.php:775
+msgid "The product attribute string will be split using the comma \",\" character."
+msgstr "La chaîne de l'attribut du produit sera divisée à l'aide du caractère virgule \",\"."
+
+#: lib/messages-tooltip-plugin.php:794
 msgid "If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here."
 msgstr "Si votre thème ou une autre extension fournit un champ personnalisé (aka métadonnées) pour %s, vous pouvez entrer son nom de champ personnalisé ici."
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:782
+#: lib/messages-tooltip-plugin.php:797
 msgid "If a custom field matching this name is found, its value will be imported for the %1$s \"%2$s\" option."
 msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option %1$s \"%2$s\"."
 
-#: lib/messages-tooltip-plugin.php:792
+#: lib/messages-tooltip-plugin.php:809
 msgid "The custom field value can be an empty string or one of these values (case sensitive): %s"
 msgstr "La valeur du champ personnalisé peut être une chaîne vide ou l’une des valeurs (sensible aux majuscules/minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:799
-msgid "Note that the \"%s\" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field."
-msgstr "Notez que l'option \"%s\" offre plusieurs champs de saisie - la valeur du champ personnalisé sera divisée sur les caractères de nouvelle ligne et chaque ligne sera affectée à un champ de saisie individuel."
+#: lib/messages-tooltip-plugin.php:817
+msgid "If the custom field value is a string, it will be split on the end of line character."
+msgstr "Si la valeur du champ personnalisé est une chaîne, elle sera fractionnée sur le caractère de fin de ligne."
 
 #: lib/messages-tooltip-schema.php:44
 msgid "The %1$s dimensions used for Schema markup images (default dimensions are %2$s)."
@@ -10395,7 +10403,7 @@ msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une criti
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet de l'évaluation"
 
-#: lib/schema.php:3659
+#: lib/schema.php:3663
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0-dev.8',	// Plugin version.
+					'version'     => '14.2.0-b.1',	// Plugin version.
 					'opt_version' => '940',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2918,7 +2918,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Used with array_intersect_key() to determine which metadata options can be inherited.
+				 * Used with array_intersect_key() to determine which metadata keys can be inherited.
+				 *
+				 * See WpssoAbstractWpMeta->get_inherited_md_opts().
 				 */
 				'inherit_md_opts' => array(
 					'og_img_max'        => null,	// Maximum Images.
@@ -2948,6 +2950,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_energy_efficiency_max' => null,
 					'product_min_advert_price'      => null,
 					'product_price_type'            => null,
+					'product_size_group_0'          => null,
+					'product_size_group_1'          => null,
 					'product_size_system'           => null,
 					'product_target_gender'         => null,
 				),
