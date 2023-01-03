@@ -723,9 +723,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'values' => WpssoSchema::get_enumeration_examples( $enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' ),
 					),
 					'product_currency' => array(
-						'label'   => _x( 'Product Currency', 'option label', 'wpsso' ),
-						'name'    => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
+						'name'  => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_energy_efficiency' => array(
 						'label'   => _x( 'Product Energy Rating', 'option label', 'wpsso' ),
