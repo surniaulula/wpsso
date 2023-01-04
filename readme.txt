@@ -233,6 +233,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 14.3.0-dev.1 (2023/01/04)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed Open Graph meta tags for the main product if defines in the product offers.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 14.2.0 (2023/01/03)**
 
 * **New Features**
@@ -831,6 +845,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 14.3.0-dev.1 =
+
+(2023/01/04) Removed Open Graph meta tags for the main product if defines in the product offers.
 
 = 14.2.0 =
 
