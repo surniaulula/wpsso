@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
-						if (  $type_id === $og_type ) {
+						if ( $og_type === $type_id ) {
 
 							$og_allow[ $mt_name ] = true;
 
