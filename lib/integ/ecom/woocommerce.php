@@ -705,6 +705,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
 
+					/**
+					 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
+					 */
 					$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
 
 					if ( $this->p->debug->enabled ) {

@@ -168,6 +168,8 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 		/**
 		 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
+		 *
+		 * See WpssoIntegEcomWoocommerce->filter_og_seed().
 		 */
 		public function get_available_variations( $product ) {
 
