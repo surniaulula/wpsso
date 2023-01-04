@@ -1008,11 +1008,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Array of meta tags to allow, reject, and map.
 			 */
-			static $allow  = null;
-			static $reject = null;
-			static $map    = null;
+			static $og_allow    = null;
+			static $og_reject   = null;
+			static $content_map = null;
 
-			if ( null === $allow ) {	// Define the static variables once.
+			if ( null === $og_allow ) {	// Define the static variables once.
 
 				/**
 				 * The og:type is only needed when first run, to define the allow, reject, and map arrays.
@@ -1027,10 +1027,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					return $mt_og;
 				}
 
-				$og_type = $mt_og[ 'og:type' ];
-				$allow   = array();
-				$reject  = array();
-				$map     = array();
+				$og_type   = $mt_og[ 'og:type' ];
+				$og_allow  = array();
+				$og_reject = array();
+				$content_map     = array();
 
 				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
 
@@ -1038,7 +1038,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if (  $type_id === $og_type ) {
 
-							$allow[ $mt_name ] = true;
+							$og_allow[ $mt_name ] = true;
 
 							/**
 							 * 'product:availability' => array(
@@ -1054,12 +1054,34 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							 */
 							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ] ) ) {
 
-								$map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
+								$content_map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
 							}
 
 						} else {
 
-							$reject[ $mt_name ] = true;
+							$og_reject[ $mt_name ] = true;
+						}
+					}
+				}
+
+				if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
+			
+					foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
+	
+						/**
+						 * Allow only a single brand value for the main product.
+						 */
+						unset ( $offer[ 'product:brand' ] );
+
+						/**
+						 * Avoid duplicate values (like prices) between the main product and its offers.
+						 */
+						foreach ( $offer as $mt_name => $mt_value ) {
+	
+							if ( isset( $mt_og[ $mt_name ] ) && $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
+	
+								unset ( $mt_og[ $mt_name ] );
+							}
 						}
 					}
 				}
@@ -1070,19 +1092,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			foreach ( $mt_og as $key => $val ) {
 
-				if ( ! empty( $allow[ $key ] ) ) {
+				if ( ! empty( $og_allow[ $key ] ) ) {
 
-					if ( isset( $map[ $key ][ $val ] ) ) {
+					if ( isset( $content_map[ $key ][ $val ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'mapping content value for ' . $key );
 						}
 
-						$mt_og[ $key ] = $map[ $key ][ $val ];	// Example: 'OutOfStock' to 'oos'.
+						$mt_og[ $key ] = $content_map[ $key ][ $val ];	// Example: 'OutOfStock' to 'oos'.
 					}
 
-				} elseif ( ! empty( $reject[ $key ] ) ) {
+				} elseif ( ! empty( $og_reject[ $key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 

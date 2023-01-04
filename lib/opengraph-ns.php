@@ -170,9 +170,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
 		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
 		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
-		 *
-		 * The WPSSO BC add-on also hooks this filter to populate the 'product:retailer_category' value (a string used to
-		 * organize bidding and reporting in Google Ads Shopping campaigns).
 		 */
 		public function filter_og_data_https_ogp_me_ns_product( array $mt_og, array $mod ) {
 
@@ -192,7 +189,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_og, $mt_pre = 'product' );
 
 			/**
-			 * Include variations (aka product offers) if available.
+			 * Check product offers (aka variations) if available.
 			 */
 			if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
 
@@ -201,19 +198,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					WpssoOpenGraph::check_mt_value_gtin( $offer, $mt_pre = 'product' );
 
 					WpssoOpenGraph::check_mt_value_price( $offer, $mt_pre = 'product' );
-
-					/**
-					 * Allow only a single main product brand.
-					 */
-					if ( ! empty( $offer[ 'product:brand' ] ) ) {
-
-						if ( empty( $mt_og[ 'product:brand' ] ) ) {
-
-							$mt_og[ 'product:brand' ] = $offer[ 'product:brand' ];
-						}
-
-						unset ( $offer[ 'product:brand' ] );
-					}
 				}
 			}
 

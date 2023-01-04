@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.2.0',	// Plugin version.
+					'version'     => '14.3.0-dev.1',	// Plugin version.
 					'opt_version' => '942',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3417,7 +3417,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * See WpssoOpengraph->add_data_og_type_md().
-				 *
+				 * See WpssoOpengraph->sanitize_mt_array().
 				 * See https://developers.facebook.com/docs/reference/opengraph/.
 				 */
 				'og_type_mt' => array(
