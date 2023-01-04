@@ -238,11 +238,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Removed Open Graph meta tags for the main product if defines in the product offers.
+	* Exclude matching Open Graph meta tags for the main product if found in the product offers.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to check product meta tags.
+	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to check product offer meta tags.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -848,7 +848,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.3.0-dev.1 =
 
-(2023/01/04) Removed Open Graph meta tags for the main product if defines in the product offers.
+(2023/01/04) Exclude matching Open Graph meta tags for the main product if found in the product offers.
 
 = 14.2.0 =
 
