@@ -242,7 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to check product meta tags.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
