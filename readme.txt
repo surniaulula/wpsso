@@ -239,9 +239,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Exclude matching Open Graph meta tags for the main product if found in the product offers.
+	* Updated the settings saving notice from "You can Clear All Caches now to reflect these changes or wait for caches to expire." to "You can refresh the cache now or let the cache refresh over the next 1 month."
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added an 'is_public' check to `WpssoSchema::check_required_props()`.
 	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to check product offer meta tags.
 * **Requires At Least**
 	* PHP v7.2.
