@@ -3651,13 +3651,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return empty( $json_data ) ? false : $json_data;
 		}
 
+		/**
+		 * Check for missing Schema property values.
+		 *
+		 * See WpssoAbstractWpMeta->check_head_info().
+		 */
 		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ) ) {
 
-			$wpsso =& Wpsso::get_instance();
-
-			/**
-			 * Make sure the post, term, or user has an ID and is public, and check only published posts.
-			 */
 			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
 
 				return;
@@ -3667,7 +3667,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
-			$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking schema properties', 'wpsso' ) );
+			/**
+			 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
+			 */
+			$wpsso =& Wpsso::get_instance();
+
+			$ref_url = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
 
 			foreach ( $prop_names as $prop_name ) {
 
@@ -3683,13 +3688,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					if ( $wpsso->notice->is_admin_pre_notices() ) {
 
+						$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
 
-						$error_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+						if ( ! empty( $notice_msg ) ) {	// Just in case.
 
-						if ( ! empty( $error_msg ) ) {	// Just in case.
-
-							$wpsso->notice->err( $error_msg, null, $notice_key );
+							$wpsso->notice->err( $notice_msg, null, $notice_key );
 						}
 					}
 				}

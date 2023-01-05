@@ -840,8 +840,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Get the post object for sanity checks.
 			 */
 			$post_obj = SucomUtil::get_post_object( true );
-
-			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			/**
 			 * Make sure we have at least a post type and status.
@@ -927,7 +926,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Check for missing open graph image and description values.
 				 */
-				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
+				if ( $mod[ 'id' ] && $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
 					$this->check_head_info( $mod );
 

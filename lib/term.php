@@ -661,7 +661,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/**
 				 * Check for missing open graph image and description values.
 				 */
-				if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
+				if ( $mod[ 'id' ] && $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
 
 					$this->check_head_info( $mod );
 				}

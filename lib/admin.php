@@ -755,15 +755,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Create a clear cache URL from the current page URL.
 			 */
-			$clear_cache_url = SucomUtil::get_request_value( '_wp_http_referer', 'POST', $this->p->util->get_admin_url() );
-			$clear_cache_url = add_query_arg( 'wpsso-action', 'clear_cache', $clear_cache_url );
-			$clear_cache_url = wp_nonce_url( $clear_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+			$cache_md5_pre  = 'wpsso_h_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
+			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ';	// Note the trailing space.
 
-			$clear_cache_link = '<a href="' . $clear_cache_url . '">' . _x( 'Clear All Caches', 'submit button', 'wpsso' ) . '</a>';
+			if ( $cache_exp_secs > 0 ) {
 
-			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-				sprintf( __( 'You can %s now to reflect these changes or wait for caches to expire.',
-					'wpsso' ), $clear_cache_link ) );
+				$refresh_cache_url  = SucomUtil::get_request_value( '_wp_http_referer', 'POST', $this->p->util->get_admin_url() );
+				$refresh_cache_url  = add_query_arg( 'wpsso-action', 'refresh_cache', $refresh_cache_url );
+				$refresh_cache_url  = wp_nonce_url( $refresh_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+				$refresh_cache_link = '<a href="' . $refresh_cache_url . '">' . __( 'refresh the cache now', 'wpsso' ) . '</a>';
+				$cache_exp_human    = human_time_diff( 0, $cache_exp_secs );
+				$notice_msg         .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ),
+					$refresh_cache_link, $cache_exp_human );
+			}
+
+			$this->p->notice->upd( $notice_msg );
 
 			return $opts;
 		}
@@ -1465,7 +1472,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( is_string( $mixed ) ) {
 
-						if ( $action_value === 'submit' ) {
+						if ( 'submit' === $action_value ) {
 
 							$buttons_html .= $this->form->get_submit( $mixed, 'button-primary' );
 

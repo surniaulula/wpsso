@@ -1,5 +1,5 @@
 
-'wpsso_check_head_info' ( $head_info, $mod, $canonical_url )
+'wpsso_check_head_info' ( $head_info, $mod, $ref_url )
 
 'wpsso_clear_mod_cache' ( $mod )
 

@@ -1175,9 +1175,25 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
+		/**
+		 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
+		 *
+		 * See WpssoPost->load_meta_page().
+		 * See WpssoTerm->load_meta_page().
+		 * See WpssoUser->load_meta_page().
+		 */
 		protected function check_head_info( $mod ) {
 
-			$canonical_url = $this->p->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking meta tags', 'wpsso' ) );
+			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
+
+				return;
+
+			} elseif ( $mod[ 'is_post' ] && 'publish' !== $mod[ 'post_status' ] ) {
+
+				return;
+			}
+
+			$ref_url = $this->p->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking meta tags', 'wpsso' ) );
 
 			foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
@@ -1197,14 +1213,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 
-						$this->p->notice->err( $notice_msg, null, $notice_key );
+						if ( ! empty( $notice_msg ) ) {	// Just in case.
+						
+							$this->p->notice->err( $notice_msg, null, $notice_key );
+						}
 					}
 				}
 			}
 
-			$this->p->util->maybe_unset_ref( $canonical_url );
+			$this->p->util->maybe_unset_ref( $ref_url );
 
-			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $canonical_url );
+			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $ref_url );
 		}
 
 		/**
