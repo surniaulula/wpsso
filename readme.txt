@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.3.0-dev.2 (2023/01/05)**
+**Version 14.3.0-b.1 (2023/01/05)**
 
 * **New Features**
 	* None.
@@ -243,8 +243,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added an 'is_public' check to `WpssoSchema::check_required_props()`.
-	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to check product offer meta tags.
+	* Added an 'is_public' check to `WpssoSchema::check_required_props()` to avoid Schema property warnings for non-public post types.
+	* Updated the `WpssoOpengraph->sanitize_mt_array()` method to sanitize product offer meta tags.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -848,7 +848,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.3.0-dev.2 =
+= 14.3.0-b.1 =
 
 (2023/01/05) Exclude matching Open Graph meta tags for the main product if found in the product offers.
 
