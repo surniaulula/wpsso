@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.3.0-dev.2 (2023/01/04)**
+**Version 14.3.0-dev.2 (2023/01/05)**
 
 * **New Features**
 	* None.
@@ -848,7 +848,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.3.0-dev.2 =
 
-(2023/01/04) Exclude matching Open Graph meta tags for the main product if found in the product offers.
+(2023/01/05) Exclude matching Open Graph meta tags for the main product if found in the product offers.
 
 = 14.2.0 =
 
