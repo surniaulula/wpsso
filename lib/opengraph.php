@@ -1065,9 +1065,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
-			
+
 					foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
-	
+
 						/**
 						 * Allow only a single brand value for the main product.
 						 */
@@ -1077,9 +1077,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * Avoid duplicate values (like prices) between the main product and its offers.
 						 */
 						foreach ( $offer as $mt_name => $mt_value ) {
-	
+
 							if ( isset( $mt_og[ $mt_name ] ) && $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
-	
+
 								unset ( $mt_og[ $mt_name ] );
 							}
 						}
@@ -1441,7 +1441,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' energy efficiency value' );
 			}
-			
+
 			if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
 
 				unset( $mt_og[ $mt_pre . ':energy_efficiency:min_value' ] );

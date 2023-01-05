@@ -1214,7 +1214,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 
 						if ( ! empty( $notice_msg ) ) {	// Just in case.
-						
+
 							$this->p->notice->err( $notice_msg, null, $notice_key );
 						}
 					}

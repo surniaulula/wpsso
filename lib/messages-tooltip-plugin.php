@@ -746,24 +746,24 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$def_attr    = $this->p->opt->get_defaults( $attr_key );
 
 					if ( ! empty( $tp_frags ) ) {	// Just in case.
-	
+
 						$text = sprintf( __( 'The product attribute name allows %s to request a product attribute value from an e-commerce plugin.',
 							'wpsso' ), $this->p_name ) . ' ';
 
 						if ( ! empty( $def_attr ) ) {
-	
+
 							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $def_attr ) . ' ';
 						}
-	
+
 						if ( ! empty( $tp_frags[ 'about' ] ) ) {
-	
+
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
 								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 						}
-	
+
 						if ( ! empty( $tp_frags[ 'values' ] ) ) {
-	
+
 							$text .= sprintf( __( 'The product attribute value can be an empty string or one of these values (case sensitive): %s',
 								'wpsso' ), SucomUtil::array_to_list_html( $tp_frags[ 'values' ] ) ) . ' ';
 						}

@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 						}
 
 						if ( ! empty( $tp_frags[ 'inherit' ] ) ) {
-						
+
 							$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages (like WooCommerce product variations, for example).', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 						}
 					}

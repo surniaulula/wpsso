@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					}
 
 					if ( ! empty( $tp_frags[ 'inherit' ] ) ) {
-						
+
 						$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages.',
 							'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 					}
