@@ -3656,40 +3656,46 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			/**
-			 * Check only published posts or other non-post objects.
+			 * Make sure the post, term, or user has an ID and is public, and check only published posts.
 			 */
-			if ( ( $mod[ 'is_post' ] && 'publish' === $mod[ 'post_status' ] ) || ( ! $mod[ 'is_post' ] && $mod[ 'id' ] ) ) {
+			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
 
-				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking schema properties', 'wpsso' ) );
+				return;
 
-				foreach ( $prop_names as $prop_name ) {
+			} elseif ( $mod[ 'is_post' ] && 'publish' !== $mod[ 'post_status' ] ) {
 
-					if ( empty( $json_data[ $prop_name ] ) ) {
+				return;
+			}
 
-						if ( $wpsso->debug->enabled ) {
+			$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking schema properties', 'wpsso' ) );
 
-							$wpsso->debug->log( $prop_name . ' property value is empty and required' );
-						}
+			foreach ( $prop_names as $prop_name ) {
 
-						/**
-						 * An is_admin() test is required to make sure the WpssoMessages class is available.
-						 */
-						if ( $wpsso->notice->is_admin_pre_notices() ) {
+				if ( empty( $json_data[ $prop_name ] ) ) {
 
-							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
+					if ( $wpsso->debug->enabled ) {
 
-							$error_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+						$wpsso->debug->log( $prop_name . ' property value is empty and required' );
+					}
 
-							if ( ! empty( $error_msg ) ) {	// Just in case.
+					/**
+					 * An is_admin() test is required to make sure the WpssoMessages class is available.
+					 */
+					if ( $wpsso->notice->is_admin_pre_notices() ) {
 
-								$wpsso->notice->err( $error_msg, null, $notice_key );
-							}
+						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
+
+						$error_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+
+						if ( ! empty( $error_msg ) ) {	// Just in case.
+
+							$wpsso->notice->err( $error_msg, null, $notice_key );
 						}
 					}
 				}
-
-				$wpsso->util->maybe_unset_ref( $ref_url );
 			}
+
+			$wpsso->util->maybe_unset_ref( $ref_url );
 		}
 
 		/**

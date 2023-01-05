@@ -5234,5 +5234,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return wp_json_encode( $data, $options, $depth );
 		}
+
+		/**
+		 * Deprecated on 2023/01/03.
+		 */
+		public static function get_options_transl( array $opts, $text_domain ) {
+
+			return self::get_options_label_transl( $opts, $text_domain );
+		}
 	}
 }
