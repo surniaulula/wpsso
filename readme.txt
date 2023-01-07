@@ -233,6 +233,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 14.4.0-dev.1 (2023/01/07)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 14.3.0 (2023/01/05)**
 
 * **New Features**
@@ -847,6 +861,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 14.4.0-dev.1 =
+
+(2023/01/07) Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 
 = 14.3.0 =
 
