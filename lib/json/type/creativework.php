@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			/**
 			 * See https://schema.org/keywords.
 			 */
-			$json_ret[ 'keywords' ] = $this->p->page->get_keywords( $mod, $md_key = 'schema_keywords' );
+			$json_ret[ 'keywords' ] = $this->p->page->get_keywords_csv( $mod, $md_key = 'schema_keywords_csv' );
 
 			/**
 			 * See https://schema.org/copyrightYear.

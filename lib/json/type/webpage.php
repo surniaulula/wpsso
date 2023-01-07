@@ -121,6 +121,20 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 				}
 			}
 
+			/**
+			 * See https://schema.org/speakable.
+			 */
+			if ( ! empty( $this->p->options[ 'plugin_speakable_css_csv' ] ) ) {
+
+				$speakable_css_sel = SucomUtil::explode_csv( $this->p->options[ 'plugin_speakable_css_csv' ] );
+
+				if ( ! empty( $speakable_css_sel ) ) {
+
+					$json_ret[ 'speakable' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SpeakableSpecification', array(
+						'cssSelector' => $speakable_css_sel ) );
+				}
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

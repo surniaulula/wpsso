@@ -176,11 +176,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/**
 				 * SSO > Advanced Settings > Plugin Settings > Integration tab (Plugin and Theme Integration section).
 				 */
-				case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags.
+				case 'tooltip-plugin_speakable_css_csv':	// Speakable CSS Selectors.
 
-					$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 5 );
+					$text = sprintf( __( 'A comma-delimited list of CSS selectors for sections of the webpage that are particularly speakable (see <a href="%s">Google\'s Speakable guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/appearance/structured-data/speakable' );
 
-					$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed - until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info[ 'short' ], $check_head_count );
+					$text .= __( 'The Schema speakable property is included in the Schema Article and WebPage types.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_check_head':		// Check for Duplicate Meta Tags.
+
+					$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 3 );
+
+					$text = sprintf( __( 'When editing posts and pages, %s can check the head section of the webpage for conflicting and/or duplicate HTML tags.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+					$text .= sprintf( __( 'After %d <em>successful</em> checks, no additional checks will be performed until the theme or a plugin is updated.', 'wpsso' ), $check_head_count );
 
 					break;
 

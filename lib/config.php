@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.3.0',	// Plugin version.
-					'opt_version' => '942',		// Increment when changing default option values.
+					'version'     => '14.4.0-dev.1',	// Plugin version.
+					'opt_version' => '945',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1746,13 +1746,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration > Plugin and Theme Integration.
 					 */
-					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
-					'plugin_import_aioseop_meta'      => 0,	// Import All in One SEO Pack Metadata.
-					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
-					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
-					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
-					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Block Attrs.
+					'plugin_speakable_css_csv'        => '.wp-block-post-title, .speakable',	// Speakable CSS Selectors.
+					'plugin_check_head'               => 1,						// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'      => 0,						// Include VAT in Product Prices.
+					'plugin_import_aioseop_meta'      => 0,						// Import All in One SEO Pack Metadata.
+					'plugin_import_rankmath_meta'     => 0,						// Import Rank Math SEO Metadata.
+					'plugin_import_seoframework_meta' => 0,						// Import The SEO Framework Metadata.
+					'plugin_import_wpseo_meta'        => 0,						// Import Yoast SEO Metadata.
+					'plugin_import_wpseo_blocks'      => 0,						// Import Yoast SEO Block Attrs.
 
 					/**
 					 * Advanced Settings > Interface.

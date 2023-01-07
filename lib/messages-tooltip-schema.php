@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_def_job_location_type':	// Default Job Location Type.
 
-					$text = sprintf( __( 'Select a default optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
+					$text = sprintf( __( 'Select a default optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/appearance/structured-data/job-posting' );
 
 				 	break;
 

@@ -147,6 +147,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				936 => array(	// Renamed for WPSSO Core v14.2.0.
 					'product_size_group' => 'product_size_group_0',
 				),
+				944 => array(	// Renamed for WPSSO Core v14.4.0.
+					'schema_keywords' => 'schema_keywords_csv',
+				),
 			),
 		);
 
@@ -477,7 +480,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_ispartof_url'    => '',						// Is Part of URLs.
 					'schema_headline'        => '',						// Headline.
 					'schema_text'            => '',						// Full Text.
-					'schema_keywords'        => '',						// Keywords.
+					'schema_keywords_csv'    => '',						// Keywords.
 					'schema_lang'            => $def_lang,					// Language.
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
 					'schema_copyright_year'  => '',						// Copyright Year.

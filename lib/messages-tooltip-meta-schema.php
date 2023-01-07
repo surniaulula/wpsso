@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_keywords':	// Keywords.
+				case 'tooltip-meta-schema_keywords_csv':	// Keywords.
 
 					$text = __( 'A comma delimited list of keywords or tags describing the creative work.', 'wpsso' );
 
@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_job_location_type':	// Job Location Type.
 
-							$text = sprintf( __( 'Select an optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
+							$text = sprintf( __( 'Select an optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/appearance/structured-data/job-posting' );
 
 						 	break;
 
@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_job_empl_type':	// Job Employment Type.
 
-							$text = sprintf( __( 'Check one or more Google approved employment types (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
+							$text = sprintf( __( 'Check one or more Google approved employment types (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/appearance/structured-data/job-posting' );
 
 						 	break;
 

@@ -18,6 +18,7 @@ _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
 _x( '(not recommended)', 'option comment', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
+_x( 'Speakable CSS Selectors', 'option label', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
 _x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
 _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' );

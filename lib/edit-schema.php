@@ -207,13 +207,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
 
-			$limits               = WpssoConfig::get_input_limits();	// Uses a local cache.
-			$def_schema_headline  = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
-			$def_schema_text      = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
-			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = '' );
-			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
-			$ispartof_url_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
-			$citations_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
+			$limits                  = WpssoConfig::get_input_limits();	// Uses a local cache.
+			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
+			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
+			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
+			$schema_lang_disabled    = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
+			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
+			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
 
 			$form_rows = array(
 				'subsection_schema_creative_work' => array(
@@ -235,16 +235,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Full Text', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_text',
-					'content'  => $form->get_textarea( 'schema_text', $css_class = 'full_text', $css_id = '',
-						$max_len = 0, $def_schema_text ),
+					'content'  => $form->get_textarea( 'schema_text', $css_class = 'full_text', $css_id = '', $max_len = 0, $def_schema_text ),
 				),
-				'schema_keywords' => array(
+				'schema_keywords_csv' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Keywords', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_keywords',
-					'content'  => $form->get_input( 'schema_keywords', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $def_schema_keywords ),
+					'tooltip'  => 'meta-schema_keywords_csv',
+					'content'  => $form->get_input( 'schema_keywords_csv', $css_class = 'wide', $css_id = '', $max_len = 0, $def_schema_keywords_csv ),
 				),
 				'schema_lang' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],

@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_COUNT_NAME, $default = 0 );
-			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
+			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 3 );
 
 			if ( $exec_count >= $max_count ) {
 
