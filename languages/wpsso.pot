@@ -3780,8 +3780,8 @@ msgid "Show"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:157 gettext/gettext-lib-pro.php:160
-#: lib/messages-info.php:114 lib/messages-tooltip.php:728
-#: lib/messages-tooltip.php:730 lib/messages-tooltip.php:742
+#: lib/messages-info.php:114 lib/messages-tooltip.php:729
+#: lib/messages-tooltip.php:731 lib/messages-tooltip.php:743
 #: lib/pro/admin/advanced.php:1192 lib/pro/admin/advanced.php:1222
 #: lib/std/admin/advanced.php:1137 lib/std/admin/advanced.php:1169
 msgctxt "column title"
@@ -3789,7 +3789,7 @@ msgid "Contact Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:158 gettext/gettext-lib-pro.php:161
-#: lib/messages-info.php:116 lib/messages-tooltip.php:736
+#: lib/messages-info.php:116 lib/messages-tooltip.php:737
 #: lib/pro/admin/advanced.php:1193 lib/pro/admin/advanced.php:1224
 #: lib/std/admin/advanced.php:1138 lib/std/admin/advanced.php:1171
 msgctxt "column title"
@@ -5179,7 +5179,7 @@ msgid ""
 "transient cache objects."
 msgstr ""
 
-#: lib/admin.php:897 lib/options.php:878 lib/register.php:162
+#: lib/admin.php:897 lib/options.php:877 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5462,12 +5462,12 @@ msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2555 lib/options.php:1174
+#: lib/admin.php:2555 lib/options.php:1173
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2560 lib/options.php:1179
+#: lib/admin.php:2560 lib/options.php:1178
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -7296,13 +7296,13 @@ msgid ""
 "Schema markup."
 msgstr ""
 
-#: lib/messages-info.php:114 lib/messages-tooltip.php:728
+#: lib/messages-info.php:114 lib/messages-tooltip.php:729
 msgid ""
 "You should not modify the <em>%s</em> column unless you have a <em>very</em> "
 "good reason to do so."
 msgstr ""
 
-#: lib/messages-info.php:116 lib/messages-tooltip.php:736
+#: lib/messages-info.php:116 lib/messages-tooltip.php:737
 msgid ""
 "The %s column is for display purposes only and can be changed as you wish."
 msgstr ""
@@ -7830,8 +7830,8 @@ msgstr ""
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:85
 #: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:771
-#: lib/messages-tooltip-plugin.php:813 lib/messages-tooltip-schema.php:188
-#: lib/messages-tooltip-schema.php:320
+#: lib/messages-tooltip-plugin.php:813 lib/messages-tooltip-schema.php:185
+#: lib/messages-tooltip-schema.php:317
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
 "value</a>."
@@ -8444,7 +8444,7 @@ msgid ""
 "\"Product\" for a review of a product)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:763 lib/messages-tooltip-schema.php:334
+#: lib/messages-tooltip-meta-schema.php:763 lib/messages-tooltip-schema.php:331
 msgid ""
 "Note that although the Schema.org standard allows the subject of a review to "
 "be any Schema type, <a href=\"%1$s\">Google only allows reviews for a few "
@@ -8769,7 +8769,7 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:180 lib/messages-tooltip-schema.php:81
+#: lib/messages-tooltip-opengraph.php:180 lib/messages-tooltip-schema.php:78
 msgid "Select a default %s type for a static front page."
 msgstr ""
 
@@ -8780,37 +8780,37 @@ msgstr ""
 #: lib/messages-tooltip-opengraph.php:219
 #: lib/messages-tooltip-opengraph.php:231
 #: lib/messages-tooltip-opengraph.php:252
-#: lib/messages-tooltip-opengraph.php:264 lib/messages-tooltip-schema.php:84
-#: lib/messages-tooltip-schema.php:96 lib/messages-tooltip-schema.php:108
-#: lib/messages-tooltip-schema.php:120 lib/messages-tooltip-schema.php:132
-#: lib/messages-tooltip-schema.php:151 lib/messages-tooltip-schema.php:163
+#: lib/messages-tooltip-opengraph.php:264 lib/messages-tooltip-schema.php:81
+#: lib/messages-tooltip-schema.php:93 lib/messages-tooltip-schema.php:105
+#: lib/messages-tooltip-schema.php:117 lib/messages-tooltip-schema.php:129
+#: lib/messages-tooltip-schema.php:148 lib/messages-tooltip-schema.php:160
 msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:192 lib/messages-tooltip-schema.php:93
+#: lib/messages-tooltip-opengraph.php:192 lib/messages-tooltip-schema.php:90
 msgid "Select a default %s type for a blog (non-static) front page."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:204 lib/messages-tooltip-schema.php:105
+#: lib/messages-tooltip-opengraph.php:204 lib/messages-tooltip-schema.php:102
 msgid "Select a default %s type for user / author profile pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:216 lib/messages-tooltip-schema.php:117
+#: lib/messages-tooltip-opengraph.php:216 lib/messages-tooltip-schema.php:114
 msgid "Select a default %s type for search results pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:228 lib/messages-tooltip-schema.php:129
+#: lib/messages-tooltip-opengraph.php:228 lib/messages-tooltip-schema.php:126
 msgid ""
 "Select a default %s type for other archive pages (date-based archive pages, "
 "for example)."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:238 lib/messages-tooltip-schema.php:139
+#: lib/messages-tooltip-opengraph.php:238 lib/messages-tooltip-schema.php:136
 msgid "Select a default %s type for each post type."
 msgstr ""
 
@@ -8823,12 +8823,12 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:249 lib/messages-tooltip-schema.php:148
+#: lib/messages-tooltip-opengraph.php:249 lib/messages-tooltip-schema.php:145
 msgid "Select a default %s type for each post type archive."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:261 lib/messages-tooltip-schema.php:160
+#: lib/messages-tooltip-opengraph.php:261 lib/messages-tooltip-schema.php:157
 msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
@@ -9549,134 +9549,130 @@ msgid ""
 "character."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:44
+#: lib/messages-tooltip-schema.php:43
 msgid ""
 "The %1$s dimensions used for Schema markup images (default dimensions are "
 "%2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:46
-msgid "The minimum image width required by Google is %dpx."
-msgstr ""
-
-#: lib/messages-tooltip-schema.php:55
+#: lib/messages-tooltip-schema.php:52
 msgid ""
 "The dimensions used for the Schema \"%1$s\" property and \"%2$s\" HTML tag "
 "(default dimensions are %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:61
+#: lib/messages-tooltip-schema.php:58
 msgid "Aggregate (ie. group) product offers by currency."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:63
+#: lib/messages-tooltip-schema.php:60
 msgid ""
 "Note that to be eligible for <a href=\"%s\">price drop appearance in Google "
 "search results</a>, product offers cannot be aggregated."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:69
+#: lib/messages-tooltip-schema.php:66
 msgid ""
 "Add a \"text\" or \"articleBody\" property to Schema CreativeWork markup "
 "with the complete textual content of the post / page."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:176
+#: lib/messages-tooltip-schema.php:173
 msgid "The %s that best describes the content of articles on your site."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:179
+#: lib/messages-tooltip-schema.php:176
 msgid "You can select a different %s when editing an article."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:182 lib/messages-tooltip-schema.php:314
+#: lib/messages-tooltip-schema.php:179 lib/messages-tooltip-schema.php:311
 msgid ""
 "Select \"[None]\" to exclude the %s by default from Schema markup and meta "
 "tags."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:200
+#: lib/messages-tooltip-schema.php:197
 msgid "Select a default format type for the Schema Book type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:209
+#: lib/messages-tooltip-schema.php:206
 msgid ""
 "Select a default family friendly value for the Schema CreativeWork type and/"
 "or its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:215
+#: lib/messages-tooltip-schema.php:212
 msgid ""
 "Select a default publisher organization for the Schema CreativeWork type and/"
 "or its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:221
+#: lib/messages-tooltip-schema.php:218
 msgid ""
 "Select a default publisher person for the Schema CreativeWork type and/or "
 "its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:227
+#: lib/messages-tooltip-schema.php:224
 msgid ""
 "Select a default service provider organization, service operator or service "
 "performer (example: \"Netflix\")."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:233
+#: lib/messages-tooltip-schema.php:230
 msgid ""
 "Select a default service provider person, service operator or service "
 "performer."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:242
+#: lib/messages-tooltip-schema.php:239
 msgid "Select a default attendance for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:248
+#: lib/messages-tooltip-schema.php:245
 msgid "Select a default venue for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:254
+#: lib/messages-tooltip-schema.php:251
 msgid "Select a default organizer (organization) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:260
+#: lib/messages-tooltip-schema.php:257
 msgid "Select a default organizer (person) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:266
+#: lib/messages-tooltip-schema.php:263
 msgid "Select a default performer (organization) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:272
+#: lib/messages-tooltip-schema.php:269
 msgid "Select a default performer (person) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:281
+#: lib/messages-tooltip-schema.php:278
 msgid ""
 "Select a default organization for the Schema JobPosting hiring organization."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:287
+#: lib/messages-tooltip-schema.php:284
 msgid "Select a default location for the Schema JobPosting job location."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:293
+#: lib/messages-tooltip-schema.php:290
 msgid ""
 "Select a default optional Google approved location type (see <a href=\"%s"
 "\">Google's Job Posting guidelines</a> for more information)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:310
+#: lib/messages-tooltip-schema.php:307
 msgid "The %s that best describes the products on your site."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:312
+#: lib/messages-tooltip-schema.php:309
 msgid "You can select a different %s when editing a product."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:332
+#: lib/messages-tooltip-schema.php:329
 msgid ""
 "A default Schema type for the subject of this review (for example, Schema "
 "type \"Product\" for a review of a product)."
@@ -9781,22 +9777,22 @@ msgstr ""
 msgid "https://www.behance.net/"
 msgstr ""
 
-#: lib/messages-tooltip.php:135 lib/messages-tooltip.php:332
-#: lib/messages-tooltip.php:452 lib/messages-tooltip.php:480
-#: lib/messages-tooltip.php:508 lib/messages-tooltip.php:536
-#: lib/messages-tooltip.php:564 lib/messages-tooltip.php:592
-#: lib/messages-tooltip.php:620 lib/messages-tooltip.php:648
-#: lib/messages-tooltip.php:676
+#: lib/messages-tooltip.php:135 lib/messages-tooltip.php:333
+#: lib/messages-tooltip.php:453 lib/messages-tooltip.php:481
+#: lib/messages-tooltip.php:509 lib/messages-tooltip.php:537
+#: lib/messages-tooltip.php:565 lib/messages-tooltip.php:593
+#: lib/messages-tooltip.php:621 lib/messages-tooltip.php:649
+#: lib/messages-tooltip.php:677
 msgid "The %s will be included in the website's Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip.php:137 lib/messages-tooltip.php:164
-#: lib/messages-tooltip.php:334 lib/messages-tooltip.php:398
-#: lib/messages-tooltip.php:454 lib/messages-tooltip.php:482
-#: lib/messages-tooltip.php:510 lib/messages-tooltip.php:538
-#: lib/messages-tooltip.php:566 lib/messages-tooltip.php:594
-#: lib/messages-tooltip.php:622 lib/messages-tooltip.php:650
-#: lib/messages-tooltip.php:678
+#: lib/messages-tooltip.php:335 lib/messages-tooltip.php:399
+#: lib/messages-tooltip.php:455 lib/messages-tooltip.php:483
+#: lib/messages-tooltip.php:511 lib/messages-tooltip.php:539
+#: lib/messages-tooltip.php:567 lib/messages-tooltip.php:595
+#: lib/messages-tooltip.php:623 lib/messages-tooltip.php:651
+#: lib/messages-tooltip.php:679
 msgid ""
 "Google Search may use this URL to display additional information about the "
 "website, business, or company in its search results."
@@ -9882,15 +9878,15 @@ msgid ""
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip.php:264
+#: lib/messages-tooltip.php:268
 msgid "Suggest a maximum size for the image preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip.php:268
+#: lib/messages-tooltip.php:272
 msgid "%s = No image preview will be shown."
 msgstr ""
 
-#: lib/messages-tooltip.php:272
+#: lib/messages-tooltip.php:274
 msgid "%s = A default image preview size may be used."
 msgstr ""
 
@@ -9900,224 +9896,231 @@ msgid ""
 "used."
 msgstr ""
 
-#: lib/messages-tooltip.php:289
+#: lib/messages-tooltip.php:281
+msgid ""
+"If you don't want Google to use a larger thumbnail when an AMP page or "
+"canonical version of an article is shown in Search or Discover, select %1$s "
+"or %2$s."
+msgstr ""
+
+#: lib/messages-tooltip.php:290
 msgid ""
 "Suggest a maximum of number seconds for video snippets in search results."
 msgstr ""
 
-#: lib/messages-tooltip.php:293
+#: lib/messages-tooltip.php:294
 msgid ""
 "0 = Shows a static image for videos, if image previews are allowed in search "
 "results."
 msgstr ""
 
-#: lib/messages-tooltip.php:295
+#: lib/messages-tooltip.php:296
 msgid "-1 = No limit."
 msgstr ""
 
-#: lib/messages-tooltip.php:320
+#: lib/messages-tooltip.php:321
 msgid ""
 "To <a href=\"%s\">claim your website with Pinterest</a>: Edit your account "
 "settings on Pinterest, select the \"Claim\" section, enter your website URL, "
 "then click the \"Claim\" button."
 msgstr ""
 
-#: lib/messages-tooltip.php:322
+#: lib/messages-tooltip.php:323
 msgid ""
 "Choose \"Add HTML tag\" and enter the \"p:domain_verify\" meta tag "
 "<code>content</code> value here (enter only the verification ID string, not "
 "the meta tag HTML)."
 msgstr ""
 
-#: lib/messages-tooltip.php:330
+#: lib/messages-tooltip.php:331
 msgid ""
 "If you have a <a href=\"%s\">Pinterest page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:330
+#: lib/messages-tooltip.php:331
 msgid "https://business.pinterest.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:341
+#: lib/messages-tooltip.php:342
 msgid ""
 "Add a %s attribute to the site header and Gravatar images to prevent the "
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:347 lib/messages.php:1177
+#: lib/messages-tooltip.php:348 lib/messages.php:1177
 #: lib/submenu/general.php:379
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
 
-#: lib/messages-tooltip.php:349
+#: lib/messages-tooltip.php:350
 msgid ""
 "%1$s can add a %2$s attribute to resized images from the WordPress Media "
 "Library."
 msgstr ""
 
-#: lib/messages-tooltip.php:351
+#: lib/messages-tooltip.php:352
 msgid ""
 "This prevents the Pinterest Pin It browser button from suggesting images "
 "that may be too small."
 msgstr ""
 
-#: lib/messages-tooltip.php:353
+#: lib/messages-tooltip.php:354
 msgid ""
 "When enabling this option, you should also enable the \"%s\" option to "
 "provide an image for the Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip.php:359
+#: lib/messages-tooltip.php:360
 msgid ""
 "%s can add an extra hidden image in the WordPress post / page content for "
 "the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip.php:361
+#: lib/messages-tooltip.php:362
 msgid ""
 "Although generally recommended, this option is unchecked by default since "
 "the extra image can affect page load speed (the image cannot be lazy loaded)."
 msgstr ""
 
-#: lib/messages-tooltip.php:363
+#: lib/messages-tooltip.php:364
 msgid ""
 "If your website visitors use the Pinterest Pin It browser button, you may "
 "enable this option, otherwise leave it unchecked."
 msgstr ""
 
-#: lib/messages-tooltip.php:371
+#: lib/messages-tooltip.php:372
 msgid ""
 "The dimensions used for the Pinterest Pin It browser button image (default "
 "dimensions are %s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:394
+#: lib/messages-tooltip.php:395
 msgid ""
 "If you have a <a href=\"%s\">Twitter @username for your business</a> (not "
 "your personal Twitter @username), you may enter its name here."
 msgstr ""
 
-#: lib/messages-tooltip.php:394
+#: lib/messages-tooltip.php:395
 msgid "https://business.twitter.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:396
+#: lib/messages-tooltip.php:397
 msgid ""
 "The %s will be included in in Twitter Card meta tags and the website's "
 "Schema Organization markup."
 msgstr ""
 
-#: lib/messages-tooltip.php:419
+#: lib/messages-tooltip.php:420
 msgid ""
 "The dimensions used for the <a href=\"%1$s\">Summary Card</a> image should "
 "be at least %2$s (default dimensions are %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:427
+#: lib/messages-tooltip.php:428
 msgid ""
 "The dimensions used for the <a href=\"%1$s\">Large Image Summary Card</a> "
 "must be larger than %2$s (default dimensions are %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:450
+#: lib/messages-tooltip.php:451
 msgid ""
 "If you have an <a href=\"%s\">Intagram profile for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:450
+#: lib/messages-tooltip.php:451
 msgid "https://business.instagram.com/getting-started"
 msgstr ""
 
-#: lib/messages-tooltip.php:478
+#: lib/messages-tooltip.php:479
 msgid ""
 "If you have a <a href=\"%s\">LinkedIn page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:478
+#: lib/messages-tooltip.php:479
 msgid "https://business.linkedin.com/marketing-solutions/linkedin-pages"
 msgstr ""
 
-#: lib/messages-tooltip.php:506
+#: lib/messages-tooltip.php:507
 msgid ""
 "If you have a <a href=\"%s\">Medium page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:506
+#: lib/messages-tooltip.php:507
 msgid "https://medium.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:534
+#: lib/messages-tooltip.php:535
 msgid ""
 "If you have a <a href=\"%s\">Myspace page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:534
+#: lib/messages-tooltip.php:535
 msgid "https://myspace.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:562
+#: lib/messages-tooltip.php:563
 msgid ""
 "If you have a <a href=\"%s\">Soundcloud page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:562
+#: lib/messages-tooltip.php:563
 msgid "https://soundcloud.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:590
+#: lib/messages-tooltip.php:591
 msgid ""
 "If you have a <a href=\"%s\">TikTok page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:590
+#: lib/messages-tooltip.php:591
 msgid "https://tiktok.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:618
+#: lib/messages-tooltip.php:619
 msgid ""
 "If you have a <a href=\"%s\">Tumblr page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:618
+#: lib/messages-tooltip.php:619
 msgid "https://tumblr.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:646
+#: lib/messages-tooltip.php:647
 msgid ""
 "If you have a <a href=\"%s\">Wikipedia page for your organization</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:646
+#: lib/messages-tooltip.php:647
 msgid "https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations"
 msgstr ""
 
-#: lib/messages-tooltip.php:674
+#: lib/messages-tooltip.php:675
 msgid ""
 "If you have a <a href=\"%s\">YouTube channel for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:674
+#: lib/messages-tooltip.php:675
 msgid "https://youtube.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:730
+#: lib/messages-tooltip.php:731
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages-tooltip.php:742
+#: lib/messages-tooltip.php:743
 msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 
@@ -11076,264 +11079,264 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:732
+#: lib/options.php:731
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:741
+#: lib/options.php:740
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:749
+#: lib/options.php:748
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:767
+#: lib/options.php:766
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:877
+#: lib/options.php:876
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1186
+#: lib/options.php:1185
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1201
+#: lib/options.php:1200
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1204
+#: lib/options.php:1203
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1218
+#: lib/options.php:1217
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1222
+#: lib/options.php:1221
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1237
+#: lib/options.php:1236
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1241
+#: lib/options.php:1240
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1276
+#: lib/options.php:1275
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1277
+#: lib/options.php:1276
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1278
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1279
+#: lib/options.php:1278
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1280
+#: lib/options.php:1279
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1281
+#: lib/options.php:1280
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1282
+#: lib/options.php:1281
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1283
+#: lib/options.php:1282
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1284
+#: lib/options.php:1283
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1285
+#: lib/options.php:1284
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1286
+#: lib/options.php:1285
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1287
+#: lib/options.php:1286
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1288
+#: lib/options.php:1287
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1769
+#: lib/options.php:1768
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1773
+#: lib/options.php:1772
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1777
+#: lib/options.php:1776
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1781
+#: lib/options.php:1780
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1785
+#: lib/options.php:1784
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1789
+#: lib/options.php:1788
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1793
+#: lib/options.php:1792
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1797
+#: lib/options.php:1796
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_sku%%"
 msgstr ""
 
-#: lib/options.php:1801
+#: lib/options.php:1800
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1805
+#: lib/options.php:1804
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1809
+#: lib/options.php:1808
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1813
+#: lib/options.php:1812
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1817
+#: lib/options.php:1816
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1821
+#: lib/options.php:1820
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1825
+#: lib/options.php:1824
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1829
+#: lib/options.php:1828
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1833
+#: lib/options.php:1832
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1837
+#: lib/options.php:1836
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1841
+#: lib/options.php:1840
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1845
+#: lib/options.php:1844
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1849
+#: lib/options.php:1848
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1853
+#: lib/options.php:1852
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1857
+#: lib/options.php:1856
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1861
+#: lib/options.php:1860
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -12531,114 +12534,114 @@ msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
-#: lib/util-units.php:187
+#: lib/util-units.php:190
 msgctxt "option value"
 msgid "mm"
 msgstr ""
 
-#: lib/util-units.php:188
+#: lib/util-units.php:191
 msgctxt "option value"
 msgid "cm"
 msgstr ""
 
-#: lib/util-units.php:189
+#: lib/util-units.php:192
 msgctxt "option value"
 msgid "m"
 msgstr ""
 
-#: lib/util-units.php:190
+#: lib/util-units.php:193
 msgctxt "option value"
-msgid "inches"
+msgid "in"
 msgstr ""
 
-#: lib/util-units.php:191
+#: lib/util-units.php:194
 msgctxt "option value"
-msgid "feet"
+msgid "ft"
 msgstr ""
 
-#: lib/util-units.php:192
+#: lib/util-units.php:195
 msgctxt "option value"
-msgid "yards"
-msgstr ""
-
-#: lib/util-units.php:279
-msgctxt "option value"
-msgid "ml"
-msgstr ""
-
-#: lib/util-units.php:280
-msgctxt "option value"
-msgid "cl"
-msgstr ""
-
-#: lib/util-units.php:281
-msgctxt "option value"
-msgid "l"
-msgstr ""
-
-#: lib/util-units.php:282
-msgctxt "option value"
-msgid "US tsp"
-msgstr ""
-
-#: lib/util-units.php:283
-msgctxt "option value"
-msgid "US tbsp"
+msgid "yd"
 msgstr ""
 
 #: lib/util-units.php:284
 msgctxt "option value"
-msgid "US fl oz"
+msgid "ml"
 msgstr ""
 
 #: lib/util-units.php:285
 msgctxt "option value"
-msgid "US cup"
+msgid "cl"
 msgstr ""
 
 #: lib/util-units.php:286
 msgctxt "option value"
-msgid "US pint"
+msgid "l"
 msgstr ""
 
 #: lib/util-units.php:287
 msgctxt "option value"
-msgid "US quart"
+msgid "US tsp"
 msgstr ""
 
 #: lib/util-units.php:288
 msgctxt "option value"
+msgid "US tbsp"
+msgstr ""
+
+#: lib/util-units.php:289
+msgctxt "option value"
+msgid "US fl oz"
+msgstr ""
+
+#: lib/util-units.php:290
+msgctxt "option value"
+msgid "US cup"
+msgstr ""
+
+#: lib/util-units.php:291
+msgctxt "option value"
+msgid "US pt"
+msgstr ""
+
+#: lib/util-units.php:292
+msgctxt "option value"
+msgid "US qt"
+msgstr ""
+
+#: lib/util-units.php:293
+msgctxt "option value"
 msgid "US gal"
 msgstr ""
 
-#: lib/util-units.php:388
+#: lib/util-units.php:398
 msgctxt "option value"
 msgid "mg"
 msgstr ""
 
-#: lib/util-units.php:389
+#: lib/util-units.php:399
 msgctxt "option value"
 msgid "g"
 msgstr ""
 
-#: lib/util-units.php:390
+#: lib/util-units.php:400
 msgctxt "option value"
 msgid "kg"
 msgstr ""
 
-#: lib/util-units.php:391
+#: lib/util-units.php:401
 msgctxt "option value"
-msgid "ounces"
+msgid "oz"
 msgstr ""
 
-#: lib/util-units.php:392
+#: lib/util-units.php:402
 msgctxt "option value"
-msgid "pounds"
+msgid "lbs"
 msgstr ""
 
-#: lib/util-units.php:393
+#: lib/util-units.php:403
 msgctxt "option value"
-msgid "stones"
+msgid "st"
 msgstr ""
 
 #: lib/util.php:565

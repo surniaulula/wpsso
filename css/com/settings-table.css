@@ -328,11 +328,6 @@ table.sucom-settings td.ext-info-plugin-separator {
 	border-bottom:1px dotted #ddd;
 }
 
-table.sucom-settings table.plugin_list_table_cols td {
-	vertical-align:middle;
-	padding:4px;
-}
-
 table.sucom-settings table.plugin_list_table_cols td.underline {
 	border-bottom:1px dotted #ddd;
 }
@@ -761,6 +756,10 @@ table.sucom-settings td textarea {
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
+}
+
+table.sucom-settings td input[type="checkbox"] {
+	margin:6px;
 }
 
 table.sucom-settings td textarea { width:100%; }

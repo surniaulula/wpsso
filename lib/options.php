@@ -716,8 +716,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 
-					$notice_msg = false;
-
+					$notice_msg  = false;
 					$limit_ratio = number_format( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ], 3, '.', '' );
 
 					switch ( $limit_type ) {

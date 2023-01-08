@@ -609,7 +609,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 				$html .= ' title="' . $title_transl . '"';
 				$html .= ' ' . $input_checked . '/>';
-				$html .= '&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
+				$html .= '&nbsp;&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
 			}
 
 			$html .= '</div>' . "\n";

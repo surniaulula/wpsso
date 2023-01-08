@@ -2764,6 +2764,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * Robots meta.
+				 *
+				 * See https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview.
 				 */
 				'robots_max_image_preview' => array(
 					'none'     => '[None]',
@@ -3325,12 +3327,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_len'            => 160,
 					'og_img_width'           => 200,
 					'og_img_height'          => 200,
-					'schema_1x1_img_width'   => 1200,
-					'schema_1x1_img_height'  => 1200,
-					'schema_4x3_img_width'   => 1200,
-					'schema_4x3_img_height'  => 900,
-					'schema_16x9_img_width'  => 1200,
-					'schema_16x9_img_height' => 675,
 					'schema_desc_len'        => 156,
 					'seo_desc_len'           => 156,
 					'tc_desc_len'            => 160,

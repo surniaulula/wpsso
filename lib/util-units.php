@@ -177,6 +177,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
 		}
 
+		/**
+		 * See wc_get_dimension() from woocommerce/includes/wc-formatting-functions.php.
+		 */
 		public static function get_dimension_units() {
 
 			static $local_cache = null;
@@ -187,10 +190,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'mm' => _x( 'mm', 'option value', 'wpsso' ),		// Millimeter.
 					'cm' => _x( 'cm', 'option value', 'wpsso' ),		// Centimeter.
 					'm'  => _x( 'm', 'option value', 'wpsso' ),		// Meter.
-					'in' => _x( 'inches', 'option value', 'wpsso' ),	// Inch.
-					'ft' => _x( 'feet', 'option value', 'wpsso' ),		// Foot.
-					'yd' => _x( 'yards', 'option value', 'wpsso' ),		// Yard.
+					'in' => _x( 'in', 'option value', 'wpsso' ),	// Inch.
+					'ft' => _x( 'ft', 'option value', 'wpsso' ),		// Foot.
+					'yd' => _x( 'yd', 'option value', 'wpsso' ),		// Yard.
 				);
+				
+				$local_cache = apply_filters( 'wpsso_dimension_units', $local_cache );
 			}
 
 			return $local_cache;
@@ -283,10 +288,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'US tbsp'  => _x( 'US tbsp', 'option value', 'wpsso' ),		// US tablespoon.
 					'US fl oz' => _x( 'US fl oz', 'option value', 'wpsso' ),	// US fluid ounce.
 					'US cup'   => _x( 'US cup', 'option value', 'wpsso' ),		// US cup.
-					'US pt'    => _x( 'US pint', 'option value', 'wpsso' ),		// US pint.
-					'US qt'    => _x( 'US quart', 'option value', 'wpsso' ),	// US quart.
+					'US pt'    => _x( 'US pt', 'option value', 'wpsso' ),		// US pint.
+					'US qt'    => _x( 'US qt', 'option value', 'wpsso' ),		// US quart.
 					'US gal'   => _x( 'US gal', 'option value', 'wpsso' ),		// US gallon.
 				);
+				
+				$local_cache = apply_filters( 'wpsso_fluid_volume_units', $local_cache );
 			}
 
 			return $local_cache;
@@ -378,6 +385,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
 		}
 
+		/**
+		 * See wc_get_weight() from woocommerce/includes/wc-formatting-functions.php.
+		 */
 		public static function get_weight_units() {
 
 			static $local_cache = null;
@@ -385,13 +395,15 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'mg'  => _x( 'mg', 'option value', 'wpsso' ),		// Milligram.
-					'g'   => _x( 'g', 'option value', 'wpsso' ),		// Gram.
-					'kg'  => _x( 'kg', 'option value', 'wpsso' ),		// Kilogram.
-					'oz'  => _x( 'ounces', 'option value', 'wpsso' ),	// Ounce.
-					'lb'  => _x( 'pounds', 'option value', 'wpsso' ),	// Pound.
-					'st'  => _x( 'stones', 'option value', 'wpsso' ),	// Stone.
+					'mg'  => _x( 'mg', 'option value', 'wpsso' ),	// Milligram.
+					'g'   => _x( 'g', 'option value', 'wpsso' ),	// Gram.
+					'kg'  => _x( 'kg', 'option value', 'wpsso' ),	// Kilogram.
+					'oz'  => _x( 'oz', 'option value', 'wpsso' ),	// Ounce.
+					'lb'  => _x( 'lbs', 'option value', 'wpsso' ),	// Pound.
+					'st'  => _x( 'st', 'option value', 'wpsso' ),	// Stone.
 				);
+
+				$local_cache = apply_filters( 'wpsso_weight_units', $local_cache );
 			}
 
 			return $local_cache;

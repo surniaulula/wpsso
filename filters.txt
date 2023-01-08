@@ -73,6 +73,10 @@
 
 'wpsso_description_seed' ( '', $mod, $num_hashtags, $md_key )
 
+'wpsso_dimension_units' ( $units );
+
+'wpsso_fluid_volume_units' ( $units );
+
 'wpsso_form_select_{option_name}' ( $values )
 
 'wpsso_get_avail' ( $ret )
@@ -334,4 +338,6 @@
 'wpsso_user_url' ( $url, $mod )
 
 'wpsso_variation_title' ( $title, $variation )
+
+'wpsso_weight_units' ( $units );
 

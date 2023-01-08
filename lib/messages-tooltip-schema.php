@@ -39,11 +39,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 						$opt_pre       = $matches[ 1 ];
 						$ratio_msg     = $matches[ 2 ] . ':' . $matches[ 3 ];
 						$def_img_dims  = $this->get_def_img_dims( $opt_pre );
-						$min_img_width = $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ];
 
 						$text = sprintf( __( 'The %1$s dimensions used for Schema markup images (default dimensions are %2$s).', 'wpsso' ), $ratio_msg, $def_img_dims ) . ' ';
-
-						$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $min_img_width ). ' ';
 					}
 
 					break;

@@ -92,6 +92,8 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		 *		[max-image-preview] => large
 		 *		[max-video-preview] => -1
 		 * 	)
+		 *
+		 * See https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag.
 		 */
 		public function get_content_directives( $content ) {
 

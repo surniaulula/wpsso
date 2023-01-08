@@ -261,23 +261,24 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 					 */
 					case 'tooltip-robots_max_image_preview':
 
-						$text = __( 'Suggest a maximum size for the image preview in search results.', 'wpsso' );
+						$none     = _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ], 'option value', 'wpsso' );
+						$standard = _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ], 'option value', 'wpsso' );
+						$large    = _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ], 'option value', 'wpsso' );
+
+						$text = __( 'Suggest a maximum size for the image preview in search results.', 'wpsso' ) . ' ';
 
 						$text .= '<ul>';
 
-						$text .= '<li>' . sprintf( __( '%s = No image preview will be shown.', 'wpsso' ),
-							_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ],
-								'option value', 'wpsso' ) ) . '</li>';
+						$text .= '<li>' . sprintf( __( '%s = No image preview will be shown.', 'wpsso' ), $none ) . '</li> ';
 
-						$text .= '<li>' . sprintf( __( '%s = A default image preview size may be used.', 'wpsso' ),
-							_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ],
-								'option value', 'wpsso' ) ) . '</li>';
+						$text .= '<li>' . sprintf( __( '%s = A default image preview size may be used.', 'wpsso' ), $standard ) . '</li> ';
 
 						$text .= '<li>' . sprintf( __( '%s = A larger image preview size, up to the width of the viewport, may be used.',
-							'wpsso' ), _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ],
-								'option value', 'wpsso' ) ) . '</li>';
+							'wpsso' ), $large ) . '</li> ';
 
-						$text .= '</ul>';
+						$text .= '</ul> ';
+
+						$text .= sprintf( __( 'If you don\'t want Google to use a larger thumbnail when an AMP page or canonical version of an article is shown in Search or Discover, select %1$s or %2$s.', 'wpsso' ), $standard, $none );
 
 					 	break;
 
