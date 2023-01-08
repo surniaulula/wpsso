@@ -239,10 +239,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab.
+	* Removed minimum image dimensions checks for Google image sizes (1:1, 4:3, and 16:9) as they are no longer mentioned in the [Google Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added new filters to add, remove, or change unit values:
+		* 'wpsso_dimension_units'
+		* 'wpsso_fluid_volume_units'
+		* 'wpsso_weight_units'
+	* Renamed the meta options 'schema_keywords' key to 'schema_keywords_csv'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -864,7 +869,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.4.0-dev.1 =
 
-(2023/01/07) Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab.
+(2023/01/07) Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab. Removed minimum image dimensions checks for Google image sizes.
 
 = 14.3.0 =
 
