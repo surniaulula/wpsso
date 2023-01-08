@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.4.0-dev.1 (2023/01/07)**
+**Version 14.4.0-dev.2 (2023/01/08)**
 
 * **New Features**
 	* None.
@@ -867,9 +867,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.4.0-dev.1 =
+= 14.4.0-dev.2 =
 
-(2023/01/07) Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab. Removed minimum image dimensions checks for Google image sizes.
+(2023/01/08) Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab. Removed minimum image dimensions checks for Google image sizes.
 
 = 14.3.0 =
 
