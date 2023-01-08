@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text = '<p class="top">';
 
-					$text .= sprintf( __( 'Check the webpage structured data markup for <a href="%s">Google Rich Result types</a> (Job posting, Product, Recipe, etc.).', 'wpsso' ), __( 'https://developers.google.com/search/docs/guides/search-gallery', 'wpsso' ) ) . ' ';
+					$text .= sprintf( __( 'Check the webpage structured data markup for <a href="%s">Google Rich Result types</a> (Job posting, Product, Recipe, etc.).', 'wpsso' ), __( 'https://developers.google.com/search/docs/appearance/structured-data/search-gallery', 'wpsso' ) ) . ' ';
 
 					$text .= __( 'To test and validate Schema markup beyond the limited subset of Google Rich Result types, use the Schema Markup Validator.', 'wpsso' );
 
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= __( 'Validate the webpage Schema JSON-LD, Microdata and RDFa structured data markup.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'This tool provides additional validation for Schema types beyond the limited subset of <a href="%s">Google Rich Result types</a>.', 'wpsso' ), __( 'https://developers.google.com/search/docs/guides/search-gallery', 'wpsso' ) );
+					$text .= sprintf( __( 'This tool provides additional validation for Schema types beyond the limited subset of <a href="%s">Google Rich Result types</a>.', 'wpsso' ), __( 'https://developers.google.com/search/docs/appearance/structured-data/search-gallery', 'wpsso' ) );
 
 					$text .= '</p>';
 

@@ -3632,7 +3632,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'google-page-speed' => array(
 					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
 					'type'  => _x( 'PageSpeed', 'validator type', 'wpsso' ),
-					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $canonical_url_enc,
+					'url'   => 'https://pagespeed.web.dev/report?url=' . $canonical_url_enc,
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),

@@ -77,7 +77,7 @@
 
 <p>Schema (aka "Schema.org") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the Schema vocabulary consists of over 700 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines.</p>
 
-<p><a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, and limited Schema types for some property relations. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section (preferred by Google), or with RDFa / Microdata markup in theme templates (deprecated standard).</p>
+<p><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, and limited Schema types for some property relations. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section (preferred by Google), or with RDFa / Microdata markup in theme templates (deprecated standard).</p>
 
 <p>If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata add-on</a> to remove the incomplete or incorrect Microdata markup. Schema markup provided by WPSSO Core will include a '#sso/' value in the Schema "@id" property, making it easy to tell which Schema JSON-LD markup is provided by WPSSO Core, and which is not.</p>
 
@@ -116,7 +116,7 @@
 <p><strong>Related information:</strong></p>
 
 <ul>
-	<li><a href="https://developers.google.com/speed/pagespeed/insights/">Google PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking).</li>
+	<li><a href="https://pagespeed.web.dev/">Google's PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking).</li>
 	<li><a href="https://support.google.com/webmasters/answer/7451184">Google's Search Engine Optimization (SEO) Starter Guide</a> - essential reading to understand Google SEO ranking factors.</li>
 	<li><a href="https://www.webpagetest.org/">Webpage Performance Test with Waterfall</a> - recommended to check and diagnose basic performance issues.</li>
 	<li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test by SSL Labs</a> - recommended test for any site using https.</li>

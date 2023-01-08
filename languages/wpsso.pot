@@ -120,14 +120,15 @@ msgstr ""
 #: gettext/gettext-html-setup.php:19
 msgctxt "html paragraph"
 msgid ""
-"<a href=\"https://developers.google.com/search/docs/guides/intro-structured-"
-"data\">Google Rich Results are a set of requirements for a small selection "
-"of Schema types</a>, which includes specific images dimensions, a limited "
-"set of values for some Schema properties, and limited Schema types for some "
-"property relations. Google Rich Results require several layers of related "
-"markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD "
-"in the webpage head section (preferred by Google), or with RDFa / Microdata "
-"markup in theme templates (deprecated standard)."
+"<a href=\"https://developers.google.com/search/docs/appearance/structured-"
+"data/intro-structured-data\">Google Rich Results are a set of requirements "
+"for a small selection of Schema types</a>, which includes specific images "
+"dimensions, a limited set of values for some Schema properties, and limited "
+"Schema types for some property relations. Google Rich Results require "
+"several layers of related markup (aka a multi-dimensional arrays) that must "
+"be expressed using JSON-LD in the webpage head section (preferred by "
+"Google), or with RDFa / Microdata markup in theme templates (deprecated "
+"standard)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:20
@@ -315,9 +316,9 @@ msgstr ""
 #: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
-"PageSpeed Insights</a> - recommended for general site and webpage health "
-"checks (results influence SEO ranking)."
+"<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> - "
+"recommended for general site and webpage health checks (results influence "
+"SEO ranking)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:42
@@ -7178,7 +7179,9 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info-meta.php:239 lib/messages-info-meta.php:273
-msgid "https://developers.google.com/search/docs/guides/search-gallery"
+msgid ""
+"https://developers.google.com/search/docs/appearance/structured-data/search-"
+"gallery"
 msgstr ""
 
 #: lib/messages-info-meta.php:241
@@ -9026,6 +9029,12 @@ msgid ""
 "A comma-delimited list of CSS selectors for sections of the webpage that are "
 "particularly speakable (see <a href=\"%s\">Google's Speakable guidelines</a> "
 "for more information)."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:181
+msgid ""
+"https://developers.google.com/search/docs/appearance/structured-data/"
+"speakable"
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:183
