@@ -233,13 +233,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.4.0-rc.2 (2023/01/09)**
+**Version 14.4.0-rc.2 (2023/01/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new "Speakable CSS Selectors" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 	* Removed minimum image dimensions checks for Google image sizes (1:1, 4:3, and 16:9) as they are no longer mentioned in the [Google Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
+	* Updated the default and recommended Facebook image size from 1200x630 to 1200x628.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -869,7 +870,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.4.0-rc.2 =
 
-(2023/01/09) Added a new "Speakable CSS Selectors" option. Removed minimum image dimensions checks for Google image sizes.
+(2023/01/10) Added a new "Speakable CSS Selectors" option. Removed minimum image dimensions checks for Google image sizes.
 
 = 14.3.0 =
 
