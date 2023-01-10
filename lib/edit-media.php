@@ -82,11 +82,13 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_og_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
-
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
 			return $table_rows;
 		}
@@ -118,99 +120,6 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_url',
 					'content'  => $form->get_input_image_url( 'og_img' ),
-				),
-			);
-
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-
-			} elseif ( $this->p->util->is_schema_disabled() ) {
-
-				return $table_rows;
-			}
-
-			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
-
-			$size_name     = 'wpsso-schema-1x1';
-			$media_request = array( 'pid' );
-			$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-
-			$this->p->util->maybe_unset_ref( $canonical_url );
-
-			$form_rows = array(
-				'subsection_schema' => array(
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
-				),
-				'schema_img_id' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_img_id',
-					'content'  => $form->get_input_image_upload( 'schema_img', $media_info[ 'pid' ] ),
-				),
-				'schema_img_url' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_img_url',
-					'content'  => $form->get_input_image_url( 'schema_img', '' ),
-				),
-			);
-
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		/**
-		 * Pinterest Pin It.
-		 */
-		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-			}
-
-			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
-			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
-			$media_info       = array( 'pid' => '' );
-
-			if ( ! $pin_img_disabled ) {
-
-				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting pinterest image', 'wpsso' ) );
-
-				$size_name     = 'wpsso-pinterest';
-				$media_request = array( 'pid' );
-				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-
-				$this->p->util->maybe_unset_ref( $canonical_url );
-			}
-
-			$form_rows = array(
-				'subsection_pinterest' => array(
-					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
-				),
-				'pin_img_id' => array(
-					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-pin_img_id',
-					'content'  => $form->get_input_image_upload( 'pin_img', $media_info[ 'pid' ], $pin_img_disabled ),
-				),
-				'pin_img_url' => array(
-					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-pin_img_url',
-					'content'  => $form->get_input_image_url( 'pin_img', '', $pin_img_disabled ) . $pin_img_msg,
 				),
 			);
 
@@ -272,11 +181,108 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 						'content'  => $form->get_input_image_url( $tc_prefix . '_img' ),
 					);
 				}
+			
+				$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 			}
 
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			return $table_rows;
+		}
+
+		/**
+		 * Schema.
+		 */
+		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+			
+			if ( ! $this->p->util->is_schema_disabled() ) {
+
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
+
+				$size_name     = 'wpsso-schema-1x1';
+				$media_request = array( 'pid' );
+				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+	
+				$this->p->util->maybe_unset_ref( $canonical_url );
+	
+				$form_rows = array(
+					'subsection_schema' => array(
+						'td_class' => 'subsection',
+						'header'   => 'h4',
+						'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
+					),
+					'schema_img_id' => array(
+						'th_class' => 'medium',
+						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-schema_img_id',
+						'content'  => $form->get_input_image_upload( 'schema_img', $media_info[ 'pid' ] ),
+					),
+					'schema_img_url' => array(
+						'th_class' => 'medium',
+						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-schema_img_url',
+						'content'  => $form->get_input_image_url( 'schema_img', '' ),
+					),
+				);
+	
+				$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			}
 
 			return $table_rows;
+		}
+	
+		/**
+		 * Pinterest Pin It.
+		 */
+		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
+			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
+			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
+			$media_info       = array( 'pid' => '' );
+
+			if ( ! $pin_img_disabled ) {
+
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting pinterest image', 'wpsso' ) );
+
+				$size_name     = 'wpsso-pinterest';
+				$media_request = array( 'pid' );
+				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+
+				$this->p->util->maybe_unset_ref( $canonical_url );
+			}
+
+			$form_rows = array(
+				'subsection_pinterest' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
+				),
+				'pin_img_id' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_id',
+					'content'  => $form->get_input_image_upload( 'pin_img', $media_info[ 'pid' ], $pin_img_disabled ),
+				),
+				'pin_img_url' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_url',
+					'content'  => $form->get_input_image_url( 'pin_img', '', $pin_img_disabled ) . $pin_img_msg,
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 	}
 }

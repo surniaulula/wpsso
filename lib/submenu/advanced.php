@@ -14,6 +14,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 	class WpssoSubmenuAdvanced extends WpssoAdmin {
 
+		private $pp = null;
+
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -27,6 +29,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+
+			/**
+			 * Since WPSSO Core v14.4.0.
+			 */
+			$pkg_info = $this->p->util->get_pkg_info();     // Uses a local cache.
+
+			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
 		}
 
 		/**
@@ -88,7 +97,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
@@ -111,7 +120,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
@@ -133,7 +142,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
@@ -167,7 +176,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 					$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-					$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+					$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 				}
 			}
 
@@ -196,7 +205,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
@@ -220,7 +229,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
@@ -245,7 +254,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
 			}
 
 			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );

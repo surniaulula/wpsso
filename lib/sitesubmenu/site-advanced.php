@@ -14,6 +14,8 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 	class WpssoSiteSubmenuSiteAdvanced extends WpssoAdmin {
 
+		private $pp = null;
+
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -27,6 +29,13 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+
+			/**
+			 * Since WPSSO Core v14.4.0.
+			 */
+			$pkg_info = $this->p->util->get_pkg_info();     // Uses a local cache.
+
+			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
 		}
 
 		protected function set_form_object( $menu_ext ) {
@@ -81,7 +90,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = true );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = true, $this->pp );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );

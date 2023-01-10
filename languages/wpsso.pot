@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.4.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 14.4.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4022,8 +4022,8 @@ msgctxt "option label"
 msgid "Subject Image ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:210 lib/edit-media.php:118
-#: lib/edit-media.php:160 lib/edit-media.php:211 lib/edit-media.php:270
+#: gettext/gettext-lib-pro.php:210 lib/edit-media.php:120
+#: lib/edit-media.php:179 lib/edit-media.php:225 lib/edit-media.php:279
 #: lib/pro/admin/edit.php:353 lib/std/admin/edit.php:388
 msgctxt "option label"
 msgid "or an Image URL"
@@ -4973,13 +4973,13 @@ msgid "SSO"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:99 lib/messages.php:1091
-#: lib/submenu/advanced.php:47
+#: lib/submenu/advanced.php:56
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:100 lib/messages.php:1092
-#: lib/submenu/advanced.php:239
+#: lib/submenu/advanced.php:248
 msgctxt "metabox tab"
 msgid "SEO and Others"
 msgstr ""
@@ -6134,45 +6134,45 @@ msgctxt "metabox title"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/edit-media.php:96
+#: lib/edit-media.php:98
 msgid "getting open graph image"
 msgstr ""
 
-#: lib/edit-media.php:108
+#: lib/edit-media.php:110
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/edit-media.php:112 lib/edit-media.php:154 lib/edit-media.php:204
-#: lib/edit-media.php:263 lib/edit-schema.php:505 lib/edit-schema.php:609
+#: lib/edit-media.php:114 lib/edit-media.php:172 lib/edit-media.php:219
+#: lib/edit-media.php:272 lib/edit-schema.php:505 lib/edit-schema.php:609
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/edit-media.php:138
+#: lib/edit-media.php:157
+msgid "No priority media options for the %s."
+msgstr ""
+
+#: lib/edit-media.php:163
+msgid "getting twitter card image"
+msgstr ""
+
+#: lib/edit-media.php:203
 msgid "getting schema 1:1 image"
 msgstr ""
 
-#: lib/edit-media.php:150 lib/edit-schema.php:72
+#: lib/edit-media.php:215 lib/edit-schema.php:72
 msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
 msgstr ""
 
-#: lib/edit-media.php:185
+#: lib/edit-media.php:253
 msgid "getting pinterest image"
 msgstr ""
 
-#: lib/edit-media.php:199
+#: lib/edit-media.php:267
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
-msgstr ""
-
-#: lib/edit-media.php:248
-msgid "No priority media options for the %s."
-msgstr ""
-
-#: lib/edit-media.php:254
-msgid "getting twitter card image"
 msgstr ""
 
 #: lib/edit-prev.php:85
@@ -11717,17 +11717,17 @@ msgctxt "metabox title"
 msgid "Plugin Add-ons for %s"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:50
+#: lib/sitesubmenu/site-advanced.php:59
 msgctxt "metabox title"
 msgid "Network Advanced Settings"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:72 lib/submenu/advanced.php:78
+#: lib/sitesubmenu/site-advanced.php:81 lib/submenu/advanced.php:87
 msgctxt "metabox tab"
 msgid "Plugin Admin"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:73 lib/submenu/advanced.php:79
+#: lib/sitesubmenu/site-advanced.php:82 lib/submenu/advanced.php:88
 msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
@@ -11742,142 +11742,142 @@ msgctxt "metabox title"
 msgid "Free Plugin Add-ons"
 msgstr ""
 
-#: lib/submenu/advanced.php:40
+#: lib/submenu/advanced.php:49
 msgctxt "metabox title"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/submenu/advanced.php:41
+#: lib/submenu/advanced.php:50
 msgctxt "metabox title"
 msgid "Service APIs"
 msgstr ""
 
-#: lib/submenu/advanced.php:42
+#: lib/submenu/advanced.php:51
 msgctxt "metabox title"
 msgid "Document Types"
 msgstr ""
 
-#: lib/submenu/advanced.php:43
+#: lib/submenu/advanced.php:52
 msgctxt "metabox title"
 msgid "Schema Defaults"
 msgstr ""
 
-#: lib/submenu/advanced.php:44
+#: lib/submenu/advanced.php:53
 msgctxt "metabox title"
 msgid "Attributes and Metadata"
 msgstr ""
 
-#: lib/submenu/advanced.php:45
+#: lib/submenu/advanced.php:54
 msgctxt "metabox title"
 msgid "About the User"
 msgstr ""
 
-#: lib/submenu/advanced.php:46
+#: lib/submenu/advanced.php:55
 msgctxt "metabox title"
 msgid "Contact Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:80
+#: lib/submenu/advanced.php:89
 msgctxt "metabox tab"
 msgid "Default Text"
 msgstr ""
 
-#: lib/submenu/advanced.php:81
+#: lib/submenu/advanced.php:90
 msgctxt "metabox tab"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/submenu/advanced.php:82
+#: lib/submenu/advanced.php:91
 msgctxt "metabox tab"
 msgid "Interface"
 msgstr ""
 
-#: lib/submenu/advanced.php:103
+#: lib/submenu/advanced.php:112
 msgctxt "metabox tab"
 msgid "Media Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:104
+#: lib/submenu/advanced.php:113
 msgctxt "metabox tab"
 msgid "Shortening Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:105
+#: lib/submenu/advanced.php:114
 msgctxt "metabox tab"
 msgid "Ratings and Reviews"
 msgstr ""
 
-#: lib/submenu/advanced.php:126 lib/submenu/advanced.php:237
+#: lib/submenu/advanced.php:135 lib/submenu/advanced.php:246
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:127
+#: lib/submenu/advanced.php:136
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:147
+#: lib/submenu/advanced.php:156
 msgctxt "metabox tab"
 msgid "Article"
 msgstr ""
 
-#: lib/submenu/advanced.php:148
+#: lib/submenu/advanced.php:157
 msgctxt "metabox tab"
 msgid "Book"
 msgstr ""
 
-#: lib/submenu/advanced.php:149
+#: lib/submenu/advanced.php:158
 msgctxt "metabox tab"
 msgid "Creative Work"
 msgstr ""
 
-#: lib/submenu/advanced.php:150
+#: lib/submenu/advanced.php:159
 msgctxt "metabox tab"
 msgid "Event"
 msgstr ""
 
-#: lib/submenu/advanced.php:151
+#: lib/submenu/advanced.php:160
 msgctxt "metabox tab"
 msgid "Job Posting"
 msgstr ""
 
-#: lib/submenu/advanced.php:152
+#: lib/submenu/advanced.php:161
 msgctxt "metabox tab"
 msgid "Product"
 msgstr ""
 
-#: lib/submenu/advanced.php:153
+#: lib/submenu/advanced.php:162
 msgctxt "metabox tab"
 msgid "Review"
 msgstr ""
 
-#: lib/submenu/advanced.php:189
+#: lib/submenu/advanced.php:198
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:190
+#: lib/submenu/advanced.php:199
 msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:213
+#: lib/submenu/advanced.php:222
 msgctxt "metabox tab"
 msgid "Product Attributes"
 msgstr ""
 
-#: lib/submenu/advanced.php:214
+#: lib/submenu/advanced.php:223
 msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:236 lib/submenu/general.php:119
+#: lib/submenu/advanced.php:245 lib/submenu/general.php:119
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:238 lib/submenu/general.php:122
+#: lib/submenu/advanced.php:247 lib/submenu/general.php:122
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
