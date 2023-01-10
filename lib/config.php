@@ -1306,7 +1306,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_weight_units'       => 'kg',		// Default Weight Units.
 					'og_def_fluid_volume_units' => 'ml',		// Default Fluid Volume Units.
 					'og_img_width'              => 1200,
-					'og_img_height'             => 630,
+					'og_img_height'             => 628,
 					'og_img_crop'               => 1,
 					'og_img_crop_x'             => 'center',
 					'og_img_crop_y'             => 'center',
@@ -1536,7 +1536,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image.
 					 */
 					'tc_lrg_img_width'  => 1200,
-					'tc_lrg_img_height' => 630,
+					'tc_lrg_img_height' => 628,
 					'tc_lrg_img_crop'   => 1,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
@@ -1545,7 +1545,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Schema thumbnail image size.
 					 */
 					'thumb_img_width'  => 1200,
-					'thumb_img_height' => 630,
+					'thumb_img_height' => 628,
 					'thumb_img_crop'   => 1,
 					'thumb_img_crop_x' => 'center',
 					'thumb_img_crop_y' => 'center',

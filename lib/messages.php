@@ -1015,7 +1015,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
 					$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
 					$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-					$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+					$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x628px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
 				}
 			}
 		}

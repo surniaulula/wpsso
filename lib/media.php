@@ -100,9 +100,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * Example:
 		 *
-		 * 	unicorn-wallpaper-1200x630.jpg
-		 * 	unicorn-wallpaper-1200x630-cropped.jpg
-		 *	unicorn-wallpaper-1200x630-cropped-center-top.jpg
+		 * 	unicorn-wallpaper-1200x628.jpg
+		 * 	unicorn-wallpaper-1200x628-cropped.jpg
+		 *	unicorn-wallpaper-1200x628-cropped-center-top.jpg
 		 */
 		public function maybe_update_image_filename( $file_path ) {
 

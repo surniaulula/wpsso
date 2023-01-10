@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						'center' === $opts[ 'tc_lrg_img_crop_x' ] && 'center' === $opts[ 'tc_lrg_img_crop_y' ] ) {
 
 						$opts[ 'tc_lrg_img_width' ]  = 1200;
-						$opts[ 'tc_lrg_img_height' ] = 630;
+						$opts[ 'tc_lrg_img_height' ] = 628;
 						$opts[ 'tc_lrg_img_crop' ]   = 1;
 						$opts[ 'tc_lrg_img_crop_x' ] = 'center';
 						$opts[ 'tc_lrg_img_crop_y' ] = 'center';

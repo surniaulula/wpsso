@@ -231,9 +231,9 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
  *
  *	Array (
  *		[og:image:secure_url] =>
- *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-1200x630.jpg
+ *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-1200x628.jpg
  *		[og:image:width]      => 1200
- *		[og:image:height]     => 630
+ *		[og:image:height]     => 628
  *		[og:image:cropped]    => 1
  *		[og:image:id]         => 1261
  *		[og:image:alt]        => Captain America
