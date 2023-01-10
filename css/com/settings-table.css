@@ -954,10 +954,6 @@ table.sucom-settings td.checkbox.blank {
 	min-width:22px;
 }
 
-table.sucom-settings th.option_col {
-	vertical-align:bottom;
-}
-
 table.sucom-settings .required,
 table.sucom-settings input.required,
 table.sucom-settings textarea.required,
@@ -1429,3 +1425,19 @@ table.sucom-settings.addons-metabox,
 table.sucom-settings.licenses-metabox {
 	padding:20px 30px;
 }
+
+/**
+ * WPSSO WCMD Add-on.
+ */
+table.sucom-settings th.option_col { vertical-align:bottom; }
+
+table.sucom-settings th.wcmd_edit_label,
+table.sucom-settings td.wcmd_edit_label,
+table.sucom-settings td input[type="text"].wcmd_edit_label { width:140px; }
+
+table.sucom-settings th.wcmd_edit_holder,
+table.sucom-settings td.wcmd_edit_holder,
+table.sucom-settings td input[type="text"].wcmd_edit_holder { width:160px; }
+
+table.sucom-settings td input[type="text"].wcmd_show_label { width:220px; }
+
