@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.4.0-rc.1 (2023/01/09)**
+**Version 14.4.0-rc.2 (2023/01/09)**
 
 * **New Features**
 	* None.
@@ -867,7 +867,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.4.0-rc.1 =
+= 14.4.0-rc.2 =
 
 (2023/01/09) Added a new "Speakable CSS Selectors" option. Removed minimum image dimensions checks for Google image sizes.
 
