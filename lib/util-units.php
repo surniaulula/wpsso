@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'ft' => _x( 'ft', 'option value', 'wpsso' ),		// Foot.
 					'yd' => _x( 'yd', 'option value', 'wpsso' ),		// Yard.
 				);
-				
+
 				$local_cache = apply_filters( 'wpsso_dimension_units', $local_cache );
 			}
 
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					'US qt'    => _x( 'US qt', 'option value', 'wpsso' ),		// US quart.
 					'US gal'   => _x( 'US gal', 'option value', 'wpsso' ),		// US gallon.
 				);
-				
+
 				$local_cache = apply_filters( 'wpsso_fluid_volume_units', $local_cache );
 			}
 

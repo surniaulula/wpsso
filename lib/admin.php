@@ -958,7 +958,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'flush_rewrite_rules':
 
-							flush_rewrite_rules();
+							/**
+							 * Update .htaccess and the 'rewrite_rules' option.
+							 *
+							 * This is an expensive operation so it should only be used when necessary.
+							 */
+							flush_rewrite_rules( $hard = true );
 
 							$notice_msg = __( 'The WordPress rewrite rules have been flushed.', 'wpsso' );
 
