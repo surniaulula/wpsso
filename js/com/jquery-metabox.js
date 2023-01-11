@@ -75,14 +75,17 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	}
 
 	/**
-	 * When the post editing page is submitted, disable unchanged fields in 'table.sucom-settings'.
+	 * When an editing page is submitted, disable unchanged fields in 'table.sucom-settings'.
 	 */
-	jQuery( 'form' ).each( function() {
-	
-		jQuery( this ).submit( function ( event ) {
+	jQuery( 'form:not(#adv-settings)' ).each( function() {
 
-			sucomDisableUnchanged( container_id );
-		} );
+		if ( jQuery( this ).has( table_id ).length != 0 ) {
+
+			jQuery( this ).submit( function ( event ) {
+
+				sucomDisableUnchanged( container_id );
+			} );
+		}
 
 	} );
 }
