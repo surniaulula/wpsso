@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
 
-					$fb_img_dims = '600x315px';
+					$fb_img_dims = '600x314px';
 
 				 	$text = '<p class="status-msg">';
 

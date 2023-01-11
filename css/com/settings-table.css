@@ -1071,7 +1071,7 @@ table.sucom-settings .fb_preview_box {
 table.sucom-settings .fb_preview_img {
 	background-size:cover;
 	max-width:600px;
-	height:315px;
+	height:314px;
 	border-bottom:1px solid rgba(0, 0, 0, 0.1);
 	background-position:center center;
 	background-repeat:no-repeat;

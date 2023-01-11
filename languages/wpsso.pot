@@ -11018,9 +11018,8 @@ msgstr ""
 
 #: lib/messages.php:1018
 msgid ""
-"Facebook prefers images of 1200x628px cropped (for Retina and high-PPI "
-"displays), 600x315px cropped as a recommended minimum, and ignores images "
-"smaller than 200x200px."
+"Facebook prefers images of %1$s cropped (for Retina and high-PPI displays), "
+"%2$s cropped as a recommended minimum, and ignores images smaller than %3$s."
 msgstr ""
 
 #: lib/messages.php:1032 lib/messages.php:1111 lib/messages.php:1138
