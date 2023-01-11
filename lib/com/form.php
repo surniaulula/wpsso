@@ -3004,6 +3004,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			$html = '<script>';
 			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';	// Make sure sucomTextLen() is available.
+
+			$html .= 'jQuery( \'#' . $input_id . '\' )' .
+				'.mouseenter( function(){ window.sucom_text_len_t = setTimeout( function() { ' .
+					'sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); }, 300 ) })' .
+				'.mouseleave( function(){ clearTimeout( window.sucom_text_len_t ); window.sucom_text_len_t = undefined; ' .
+					'sucomTextLenReset( \'' . $input_id . '\' ); });';
+
 			$html .= 'jQuery( \'#' . $input_id . '\' ).focus( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); });';
 			$html .= 'jQuery( \'#' . $input_id . '\' ).keyup( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); });';
 			$html .= 'jQuery( \'#' . $input_id . '\' ).blur( function(){ sucomTextLenReset( \'' . $input_id . '\' ); });';
