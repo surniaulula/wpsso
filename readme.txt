@@ -242,7 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 * **Developer Notes**
-	* Added a 'form#post' submit event to run `sucomDisableUnchanged()` on the Document SSO metabox.
+	* Added a submit event on post, term, and user editing pages to run `sucomDisableUnchanged()` on the Document SSO metabox options.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
