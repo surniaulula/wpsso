@@ -3,13 +3,13 @@
  * This script is registered by WpssoScript->admin_enqueue_scripts() as 'wpsso-metabox' and depends on the 'sucom-metabox' script
  * located in js/com/jquery-metabox.js. The 'sucom-metabox' script must be registered since this script depends on it.
  */
-jQuery( function(){
+jQuery( function() {
 
 	/**
 	 * Initialize all the 'table.sucom-settings' metaboxes in the current page.
 	 */
 	wpssoInitMetabox();
-});
+} );
 
 /**
  * Provide a parent container_id value to initialize a single metabox (when loading a single metabox via ajax, for example).

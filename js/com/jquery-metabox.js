@@ -77,9 +77,12 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	/**
 	 * When the post editing page is submitted, disable unchanged fields in 'table.sucom-settings'.
 	 */
-	jQuery( 'form#post' ).submit( function ( event ) {
+	jQuery( 'form' ).each( function() {
+	
+		jQuery( this ).submit( function ( event ) {
 
-		sucomDisableUnchanged( container_id );
+			sucomDisableUnchanged( container_id );
+		} );
 
 	} );
 }
