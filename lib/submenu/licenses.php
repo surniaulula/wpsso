@@ -41,12 +41,12 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Filter form buttons for this settings page only.
+				'form_button_rows' => 1,	// Form buttons for this settings page.
 			) );
 		}
 
 		/**
-		 * Remove the "Change to View" button from the settings page.
+		 * Remove the "Change to View" button from this settings page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 

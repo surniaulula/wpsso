@@ -40,12 +40,12 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			 * Make sure this filter runs last as it removes all form buttons.
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Filter form buttons for this settings page only.
-			), PHP_INT_MAX );
+				'form_button_rows' => 1,	// Form buttons for this settings page.
+			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
 		}
 
 		/**
-		 * Remove all submit / action buttons from the Setup Guide page.
+		 * Remove all submit / action buttons from this settings page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 

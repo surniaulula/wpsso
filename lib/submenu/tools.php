@@ -40,12 +40,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_plugin_hooks() {
 
-			/**
-			 * Make sure this filter runs first as it initializes a new form buttons array.
-			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows'  => 1,	// Filter form buttons for this settings page only.
-			), PHP_INT_MIN );
+				'form_button_rows' => 1,	// Form buttons for this settings page.
+			), PHP_INT_MIN );			// Run filter first to initializes a new form buttons array.
 		}
 
 		/**

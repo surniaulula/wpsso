@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.4.1-dev.3\n"
+"Project-Id-Version: WPSSO Core 14.4.1-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3390,7 +3390,7 @@ msgid "characters"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:80 lib/pro/admin/advanced.php:573
-#: lib/std/admin/advanced.php:573 lib/submenu/tools.php:70
+#: lib/std/admin/advanced.php:573 lib/submenu/tools.php:67
 msgctxt "option label"
 msgid "Clear Short URLs on Clear Cache"
 msgstr ""
@@ -5215,9 +5215,9 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:979 lib/admin.php:990 lib/messages-tooltip-meta-schema.php:541
-#: lib/messages-tooltip-plugin.php:122 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:100 lib/user.php:57 lib/user.php:1702
-#: lib/user.php:1807 lib/user.php:1941
+#: lib/messages-tooltip-plugin.php:122 lib/submenu/tools.php:53
+#: lib/submenu/tools.php:97 lib/user.php:57 lib/user.php:1702 lib/user.php:1807
+#: lib/user.php:1941
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5285,7 +5285,7 @@ msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1412 lib/submenu/tools.php:152
+#: lib/admin.php:1412 lib/submenu/tools.php:149
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -11711,7 +11711,7 @@ msgstr ""
 msgid "{0} characters"
 msgstr ""
 
-#: lib/sitesubmenu/site-addons.php:80
+#: lib/sitesubmenu/site-addons.php:77
 msgctxt "metabox title"
 msgid "Plugin Add-ons for %s"
 msgstr ""
@@ -11736,7 +11736,7 @@ msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr ""
 
-#: lib/submenu/addons.php:65
+#: lib/submenu/addons.php:62
 msgctxt "metabox title"
 msgid "Free Plugin Add-ons"
 msgstr ""
@@ -11881,27 +11881,27 @@ msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/dashboard.php:95
+#: lib/submenu/dashboard.php:92
 msgctxt "metabox title"
 msgid "Your Rating Is Important"
 msgstr ""
 
-#: lib/submenu/dashboard.php:96
+#: lib/submenu/dashboard.php:93
 msgctxt "metabox title"
 msgid "Get Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:97
+#: lib/submenu/dashboard.php:94
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""
 
-#: lib/submenu/dashboard.php:98
+#: lib/submenu/dashboard.php:95
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:101
+#: lib/submenu/dashboard.php:98
 msgctxt "metabox title"
 msgid "Feature Status"
 msgstr ""
@@ -12156,103 +12156,103 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:78
+#: lib/submenu/tools.php:75
 msgid "%1$s option is unchecked - the shortened URLs cache will be preserved."
 msgstr ""
 
-#: lib/submenu/tools.php:82
+#: lib/submenu/tools.php:79
 msgid "%1$s option is checked - the shortened URLs cache will be cleared."
 msgstr ""
 
-#: lib/submenu/tools.php:91
+#: lib/submenu/tools.php:88
 msgid "Members of the %s role may be selected for certain Schema properties."
 msgstr ""
 
-#: lib/submenu/tools.php:92
+#: lib/submenu/tools.php:89
 msgid ""
 "\"Content Creators\" are all administrators, editors, authors, and "
 "contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:109
+#: lib/submenu/tools.php:106
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:111
+#: lib/submenu/tools.php:108
 msgctxt "submit button"
 msgid "Clear Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:113
+#: lib/submenu/tools.php:110
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:116
+#: lib/submenu/tools.php:113
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:119
+#: lib/submenu/tools.php:116
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Job"
 msgid_plural "Clear %s WordPress Cron Jobs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:122
+#: lib/submenu/tools.php:119
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr ""
 
-#: lib/submenu/tools.php:135
+#: lib/submenu/tools.php:132
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:136
+#: lib/submenu/tools.php:133
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:141
+#: lib/submenu/tools.php:138
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:142
+#: lib/submenu/tools.php:139
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:143
+#: lib/submenu/tools.php:140
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:202
+#: lib/submenu/tools.php:199
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:203
+#: lib/submenu/tools.php:200
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:214
+#: lib/submenu/tools.php:211
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:229
+#: lib/submenu/tools.php:226
 msgctxt "submit button"
 msgid "Clear Cache and Short URLs"
 msgstr ""
