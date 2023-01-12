@@ -577,6 +577,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
 
+			/**
+			 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+			 */
 			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is known.
 
 				/**
@@ -1027,40 +1030,50 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					return $mt_og;
 				}
 
-				$og_type   = $mt_og[ 'og:type' ];
-				$og_allow  = array();
-				$og_reject = array();
-				$content_map     = array();
+				$og_type     = $mt_og[ 'og:type' ];
+				$og_allow    = array();
+				$og_reject   = array();
+				$content_map = array();
 
+				/**
+				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+				 */
 				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
 
+					/**
+					 * An array of meta tags and their associated metadata keys.
+					 */
 					foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
 						if ( $og_type === $type_id ) {
 
-							$og_allow[ $mt_name ] = true;
+							$og_allow[ $mt_name ] = true;	// Mark meta tag as allowed.
 
 							/**
+							 * If we have a content map for the meta tag, save the content mapping array.
+							 *
 							 * 'product:availability' => array(
-				 			 * 	'https://schema.org/Discontinued'        => 'oos',
-				 			 * 	'https://schema.org/InStock'             => 'instock',
-				 			 * 	'https://schema.org/InStoreOnly'         => 'instock',
-				 			 * 	'https://schema.org/LimitedAvailability' => 'instock',
-				 			 * 	'https://schema.org/OnlineOnly'          => 'instock',
-				 			 * 	'https://schema.org/OutOfStock'          => 'oos',
-				 			 * 	'https://schema.org/PreOrder'            => 'pending',
-				 			 * 	'https://schema.org/SoldOut'             => 'oos',
+							 * 	'https://schema.org/BackOrder'           => 'available for order',
+							 * 	'https://schema.org/Discontinued'        => 'discontinued',
+							 * 	'https://schema.org/InStock'             => 'in stock',
+							 * 	'https://schema.org/InStoreOnly'         => 'in stock',
+							 * 	'https://schema.org/LimitedAvailability' => 'in stock',
+							 * 	'https://schema.org/OnlineOnly'          => 'in stock',
+							 * 	'https://schema.org/OutOfStock'          => 'out of stock',
+							 * 	'https://schema.org/PreOrder'            => 'available for order',
+							 * 	'https://schema.org/PreSale'             => 'available for order',
+							 * 	'https://schema.org/SoldOut'             => 'out of stock',
 							 * ),
 							 */
 							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ] ) ) {
 
+								/**
+								 * Save the content mapping array.
+								 */
 								$content_map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
 							}
 
-						} else {
-
-							$og_reject[ $mt_name ] = true;
-						}
+						} else $og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
 					}
 				}
 
@@ -1092,8 +1105,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			foreach ( $mt_og as $key => $val ) {
 
-				if ( ! empty( $og_allow[ $key ] ) ) {
+				if ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
 
+					/**
+					 * If we have a matching value in the content map, then assign the mapped value.
+					 *
+					 * 'https://schema.org/BackOrder' to 'available for order' for example.
+					 */
 					if ( isset( $content_map[ $key ][ $val ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -1101,10 +1119,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'mapping content value for ' . $key );
 						}
 
-						$mt_og[ $key ] = $content_map[ $key ][ $val ];	// Example: 'OutOfStock' to 'oos'.
+						$mt_og[ $key ] = $content_map[ $key ][ $val ];
 					}
 
-				} elseif ( ! empty( $og_reject[ $key ] ) ) {
+				} elseif ( ! empty( $og_reject[ $key ] ) ) {	// Meta tag is disallowed - remove it.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -1132,10 +1150,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log_arr( 'mt_og', $mt_og );
 			}
 
+			/**
+			 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+			 */
 			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.
 
 				return;
 			}
+
+			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1143,7 +1166,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$md_keys_multi = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
-			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
 
 			foreach ( $og_type_mt_md as $mt_name => $md_key_pre ) {
 
@@ -1274,6 +1296,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				$mt_units_name = $mt_match[ 1 ] . ':units';
 
+				/**
+				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+				 */
 				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
 
 				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.

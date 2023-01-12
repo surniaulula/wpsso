@@ -3413,6 +3413,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+				 *
 				 * See WpssoOpengraph->add_data_og_type_md().
 				 * See WpssoOpengraph->sanitize_mt_array().
 				 * See https://developers.facebook.com/docs/reference/opengraph/.
@@ -3634,16 +3636,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * discontinued. Supports pixel-based catalogs.
 					 */
 					'product:availability' => array(
-				 		'https://schema.org/BackOrder'           => 'available for order',
-				 		'https://schema.org/Discontinued'        => 'discontinued',
-				 		'https://schema.org/InStock'             => 'in stock',
-				 		'https://schema.org/InStoreOnly'         => 'in stock',
-				 		'https://schema.org/LimitedAvailability' => 'in stock',
-				 		'https://schema.org/OnlineOnly'          => 'in stock',
-				 		'https://schema.org/OutOfStock'          => 'out of stock',
-				 		'https://schema.org/PreOrder'            => 'available for order',
-			 			'https://schema.org/PreSale'             => 'available for order',
-				 		'https://schema.org/SoldOut'             => 'out of stock',
+						'https://schema.org/BackOrder'           => 'available for order',
+						'https://schema.org/Discontinued'        => 'discontinued',
+						'https://schema.org/InStock'             => 'in stock',
+						'https://schema.org/InStoreOnly'         => 'in stock',
+						'https://schema.org/LimitedAvailability' => 'in stock',
+						'https://schema.org/OnlineOnly'          => 'in stock',
+						'https://schema.org/OutOfStock'          => 'out of stock',
+						'https://schema.org/PreOrder'            => 'available for order',
+						'https://schema.org/PreSale'             => 'available for order',
+						'https://schema.org/SoldOut'             => 'out of stock',
 					),
 
 					/**

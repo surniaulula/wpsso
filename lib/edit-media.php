@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 						'content'  => $form->get_input_image_url( $tc_prefix . '_img' ),
 					);
 				}
-			
+
 				$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 			}
 
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 				return $table_rows;
 			}
-			
+
 			if ( ! $this->p->util->is_schema_disabled() ) {
 
 				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
@@ -205,9 +205,9 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 				$size_name     = 'wpsso-schema-1x1';
 				$media_request = array( 'pid' );
 				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-	
+
 				$this->p->util->maybe_unset_ref( $canonical_url );
-	
+
 				$form_rows = array(
 					'subsection_schema' => array(
 						'td_class' => 'subsection',
@@ -227,13 +227,13 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 						'content'  => $form->get_input_image_url( 'schema_img', '' ),
 					),
 				);
-	
+
 				$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 			}
 
 			return $table_rows;
 		}
-	
+
 		/**
 		 * Pinterest Pin It.
 		 */
