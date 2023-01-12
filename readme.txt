@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.4.1-dev.3 (2023/01/11)**
+**Version 14.4.1-dev.4 (2023/01/12)**
 
 * **New Features**
 	* None.
@@ -882,9 +882,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.4.1-dev.3 =
+= 14.4.1-dev.4 =
 
-(2023/01/11) Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
+(2023/01/12) Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 
 = 14.4.0 =
 
