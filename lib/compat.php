@@ -195,16 +195,8 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
-				/**
-				 * Since Yoast SEO v14.0.
-				 */
-				if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
-
-					/**
-					 * Yoast SEO provides two arguments to this filter, but older versions only provided one.
-					 */
-					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 1 );
-				}
+				add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 1 );
+				add_filter( 'wpseo_schema_graph', array( $this, 'cleanup_wpseo_schema_graph' ), 1000, 2 );
 			}
 		}
 
@@ -372,7 +364,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		/**
 		 * Since Yoast SEO v14.0.
 		 *
-		 * Disable Yoast SEO social meta tags and Schema markup.
+		 * Disable Yoast SEO social meta tags.
 		 *
 		 * Yoast SEO provides two arguments to this filter, but older versions only provided one.
 		 */
@@ -384,11 +376,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			$remove = array( 'Open_Graph', 'Slack', 'Twitter', 'WooCommerce' );
-
-			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
-
-				$remove[] = 'Schema';
-			}
 
 			$remove_preg = '/(' . implode( '|', $remove ) . ')/';
 
@@ -415,6 +402,38 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			return $presenters;
+		}
+
+		public function cleanup_wpseo_schema_graph( $graph, $context ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+				/**
+				 * Remove everything except for the BreadcrumbList markup.
+				 *
+				 * The WPSSO BC add-on removes the BreadcrumbList markup.
+				 */
+				foreach ( $graph as $num => $piece ) {
+
+					if ( ! empty( $piece[ '@type' ] ) ) {
+
+						if ( 'BreadcrumbList' === $piece[ '@type' ] ) {	// Keep breadcrumbs.
+
+							continue;
+						}
+
+					}
+
+					unset( $graph[ $num ] );	// Remove everything else.
+				}
+			}
+
+			return array_values( $graph );
 		}
 
 		/**
