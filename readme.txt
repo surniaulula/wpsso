@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.1.1
-WC Tested Up To: 7.2.3
+WC Tested Up To: 7.3.0
 Stable Tag: 14.4.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -233,10 +233,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.4.1-dev.4 (2023/01/12)**
+**Version 14.5.0-dev.5 (2023/01/12)**
 
 * **New Features**
-	* None.
+	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -882,7 +882,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.4.1-dev.4 =
+= 14.5.0-dev.5 =
 
 (2023/01/12) Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 
