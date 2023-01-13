@@ -233,12 +233,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.5.0-dev.5 (2023/01/12)**
+**Version 14.5.0-dev.6 (2023/01/13)**
 
 * **New Features**
 	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
 * **Improvements**
-	* None.
+	* Updated the Yoast SEO compatibility filter to keep its breadcrumbs markup.
 * **Bugfixes**
 	* Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 * **Developer Notes**
@@ -882,9 +882,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.5.0-dev.5 =
+= 14.5.0-dev.6 =
 
-(2023/01/12) Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
+(2023/01/13) Added a new WPSSO Commerce Manager Catalog Feed XML add-on. Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 
 = 14.4.0 =
 
