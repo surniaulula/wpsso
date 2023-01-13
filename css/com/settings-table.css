@@ -261,6 +261,11 @@ table.sucom-settings th {
 	max-width:270px;
 }
 
+table.sucom-settings th.plugin_name {
+	width:360px;
+	max-width:360px;
+}
+
 body.rtl table.sucom-settings th {
 	text-align:left;
 }
