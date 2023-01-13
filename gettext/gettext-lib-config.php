@@ -112,6 +112,8 @@ _x( 'WPSSO Mobile App Meta Tags', 'plugin name', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD format for Google Rich Results.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Commerce Manager Catalog Feed XML', 'plugin name', 'wpsso' );
+_x( 'Facebook Commerce Manager Catalog Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Product Pages.', 'plugin description', 'wpsso' );
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Google Merchant Feed XML', 'plugin name', 'wpsso' );

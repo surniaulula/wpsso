@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.4.1-dev.4',	// Plugin version.
+					'version'     => '14.5.0-dev.5',	// Plugin version.
 					'opt_version' => '945',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -434,6 +434,70 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
 						'download'  => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/latest/',
+					),
+				),
+				'wpssocmcf' => array(			// Plugin acronym.
+					'short'       => 'WPSSO CMCF',	// Short plugin name.
+					'name'        => 'WPSSO Commerce Manager Catalog Feed XML',
+					'desc'        => 'Facebook Commerce Manager Catalog Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Product Pages.',
+					'slug'        => 'wpsso-commerce-manager-catalog-feed',
+					'base'        => 'wpsso-commerce-manager-catalog-feed/wpsso-commerce-manager-catalog-feed.php',
+					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-commerce-manager-catalog-feed/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-commerce-manager-catalog-feed/assets/banner-1544x500.jpg',
+						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
+						'icons' => array(
+							'1x' => 'https://surniaulula.github.io/wpsso-commerce-manager-catalog-feed/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-commerce-manager-catalog-feed/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => true,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-commerce-manager-catalog-feed/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-commerce-manager-catalog-feed',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-commerce-manager-catalog-feed/reviews/?rate=5#new-post',
+
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-commerce-manager-catalog-feed/master/readme.txt',
+						'setup_html' => '',
+
+						/**
+						 * WPSSO.com.
+						 */
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-commerce-manager-catalog-feed/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-commerce-manager-catalog-feed/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-commerce-manager-catalog-feed/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-commerce-manager-catalog-feed/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-commerce-manager-catalog-feed/latest/',
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
