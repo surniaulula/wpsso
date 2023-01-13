@@ -1324,7 +1324,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! is_array( $raw_sections ) ) {
 
-				$error_pre  = sprintf( '%s error:', __METHOD__ );
+				$error_pre = sprintf( '%s error:', __METHOD__ );
+
 				$notice_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
@@ -1393,8 +1394,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! defined( 'WPSSO_PRODUCT_CATEGORIES_LIST' ) || empty( WPSSO_PRODUCT_CATEGORIES_LIST ) ) {
 
-				return $sections;
+				return $categories;
 			}
+
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 			$cache_md5_pre  = 'wpsso_f_';
 			$cache_exp_secs = MONTH_IN_SECONDS;
