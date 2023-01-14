@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.5.0-b.1 (2023/01/13)**
+**Version 14.5.0-b.2 (2023/01/13)**
 
 * **New Features**
 	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
@@ -882,7 +882,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.5.0-b.1 =
+= 14.5.0-b.2 =
 
 (2023/01/13) Added a new WPSSO Commerce Manager Catalog Feed XML add-on. Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 
