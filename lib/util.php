@@ -3766,6 +3766,27 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->notice->unset_ref( $canonical_url );
 		}
 
+		/**
+		 * See WpssoCmcfXml->get().
+		 * See WpssoGmfXml->get().
+		 * See WpssoAdmin->registered_setting_sanitation().
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 * See WpssoHead->get_head_array().
+		 * See WpssoMessagesTooltipPlugin->get().
+		 * See WpssoPage->get_the_content().
+		 * See WpssoProMediaFacebook->filter_video_details().
+		 * See WpssoProMediaSlideshare->filter_video_details().
+		 * See WpssoProMediaVimeo->filter_video_details().
+		 * See WpssoProMediaWistia->filter_video_details().
+		 * See WpssoProReviewShopperApproved->filter_og().
+		 * See WpssoProReviewStamped->filter_og().
+		 * See WpssoProUtilShorten->get_short_url().
+		 * See WpssoSchema->get_schema_types_array().
+		 * See WpssoSchema->get_schema_type_child_family().
+		 * See WpssoSchema->get_schema_type_children().
+		 * See WpssoSchema->get_schema_type_row_class().
+		 * See WpssoUtil->get_image_url_info().
+		 */
 		public function get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod = false ) {
 
 			$cache_exp_secs = 0;	// No caching by default.
@@ -3801,11 +3822,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Example filter names:
 				 *
-				 *	'wpsso_cache_expire_api_response'
-				 *	'wpsso_cache_expire_head_markup'
-				 *	'wpsso_cache_expire_image_info'
-				 *	'wpsso_cache_expire_schema_types'
-				 *	'wpsso_cache_expire_short_url'
+				 *	'wpsso_cache_expire_api_response' ( DAY_IN_SECONDS )
+				 *	'wpsso_cache_expire_head_markup' ( MONTH_IN_SECONDS )
+				 *	'wpsso_cache_expire_image_info' ( DAY_IN_SECONDS )
+				 *	'wpsso_cache_expire_schema_types' ( MONTH_IN_SECONDS )
+				 *	'wpsso_cache_expire_short_url' ( YEAR_IN_SECONDS )
+				 *	'wpsso_cache_expire_the_content' ( HOUR_IN_SECONDS )
 				 */
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 

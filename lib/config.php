@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.5.0-b.2',	// Plugin version.
+					'version'     => '14.5.0-b.3',	// Plugin version.
 					'opt_version' => '945',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2338,7 +2338,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.14.0-b.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.14.0-b.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2533,7 +2533,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_h_' => array(
 						'label'  => 'Document Markup',
 						'value'  => MONTH_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_head_markup',
+						'filter' => 'wpsso_cache_expire_head_markup',	// See WpssoUtil->get_cache_exp_secs().
 
 						/**
 						 * If one of these $mod array conditions is true, then use the associated value.
@@ -2548,22 +2548,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_i_' => array(
 						'label'  => 'Image URL Info',
 						'value'  => DAY_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_image_info',
+						'filter' => 'wpsso_cache_expire_image_info',	// See WpssoUtil->get_cache_exp_secs().
 					),
 					'wpsso_r_' => array(
 						'label'  => 'API Response',
 						'value'  => DAY_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_api_response',
+						'filter' => 'wpsso_cache_expire_api_response',	// See WpssoUtil->get_cache_exp_secs().
 					),
 					'wpsso_s_' => array(
 						'label'  => 'Short URLs',
 						'value'  => YEAR_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_short_url',
+						'filter' => 'wpsso_cache_expire_short_url',	// See WpssoUtil->get_cache_exp_secs().
 					),
 					'wpsso_t_' => array(
 						'label'  => 'Schema Indexes',
 						'value'  => MONTH_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_schema_types',
+						'filter' => 'wpsso_cache_expire_schema_types',	// See WpssoUtil->get_cache_exp_secs().
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',
@@ -2573,7 +2573,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_c_' => array(
 						'label'   => 'Filtered Content',
 						'value'   => HOUR_IN_SECONDS,
-						'filter'  => 'wpsso_cache_expire_the_content',
+						'filter'  => 'wpsso_cache_expire_the_content',	// See WpssoUtil->get_cache_exp_secs().
 					),
 					'wpsso_' => array(
 						'label' => 'All WP Objects',
