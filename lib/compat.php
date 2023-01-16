@@ -76,18 +76,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			/**
-			 * Perfect Images + Retina (aka WP Retina 2x).
-			 */
-			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
-
-				/**
-				 * Filter for the get_option() and update_option() functions.
-				 */
-				add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
-				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
-			}
-
-			/**
 			 * WooCommerce.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
@@ -198,27 +186,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 1 );
 				add_filter( 'wpseo_schema_graph', array( $this, 'cleanup_wpseo_schema_graph' ), 1000, 2 );
 			}
-		}
-
-		/**
-		 * Filter for the get_option() and update_option() functions.
-		 *
-		 * Prevent Perfect Images + Retina (aka WP Retina 2x) from creating 2x images for WPSSO image sizes.
-		 */
-		public function update_wr2x_retina_sizes( $mixed ) {
-
-			if ( is_array( $mixed ) ) {
-
-				foreach ( $mixed as $num => $size_name ) {
-
-					if ( 0 === strpos( $size_name, 'wpsso-' ) ) {
-
-						unset( $mixed[ $num ] );
-					}
-				}
-			}
-
-			return $mixed;
 		}
 
 		public function update_gform_noconflict_styles( $styles ) {

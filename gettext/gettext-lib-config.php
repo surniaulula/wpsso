@@ -31,6 +31,7 @@ _x( '(plugin) Simple Job Board', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Job Manager', 'lib file description', 'wpsso' );
 _x( '(plugin) Polylang', 'lib file description', 'wpsso' );
 _x( '(plugin) WPML', 'lib file description', 'wpsso' );
+_x( '(plugin) Perfect Images + Retina', 'lib file description', 'wpsso' );
 _x( '(plugin) Rate my Post', 'lib file description', 'wpsso' );
 _x( '(plugin) WP-PostRatings', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Recipe Maker', 'lib file description', 'wpsso' );

@@ -420,31 +420,44 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $count;
 		}
 
-		/**
-		 * Since Wpsso Core v12.3.0.
-		 */
-		public function count_identical_sizes( $size_name, $attachment_id = false ) {
+		public function count_conflicting_sizes( $size_name, $attachment_id ) {
 
 			$count = 0;
+			$meta  = wp_get_attachment_metadata( $attachment_id );	// Returns a WP_Error object on failure.
 
-			$size_info = $this->get_size_info( $size_name, $attachment_id );	// Uses a local static cache.
+			if ( isset( $meta[ 'sizes' ] ) ) {	// Just in case.
 
-			$image_sizes = $this->get_image_sizes( $attachment_id );
+				if ( isset( $meta[ 'sizes' ][ $size_name ] ) ) {	// Just in case.
 
-			foreach ( $image_sizes as $key => $arr ) {
+					$size_info       = $meta[ 'sizes' ][ $size_name ];
+					$size_is_cropped = $this->is_size_cropped( $size_name, $attachment_id );
+	
+					foreach ( $meta[ 'sizes' ] as $meta_name => $meta_info ) {
 
-				if ( 0 !== strpos( $key, 'wpsso-' ) ) {
+						if ( $meta_name === $size_name ) {	// Don't count ourselves.
+	
+							continue;
+						}
+	
+						/**
+						 * Use '==' to allow comparing strings to integers.
+						 */
+						if ( $meta_info[ 'width' ] == $size_info[ 'width' ] && $meta_info[ 'height' ] == $size_info[ 'height' ] ) {
 
-					/**
-					 * Use '==' to allow comparing strings to integers.
-					 *
-					 * Removed comparing the 'is_cropped' value in WPSSO Core v13.8.0 to allow for rare cases
-					 * where a cropped image size creates the same dimensions as a non-cropped image size (for
-					 * example, if the original image and the resized image have the same aspect ratio).
-					 */
-					if ( $arr[ 'width' ] == $size_info[ 'width' ] && $arr[ 'height' ] == $size_info[ 'height' ] ) {
+							if ( 0 !== strpos( $meta_name, 'wpsso-' ) ) {
+	
+								$count++;
+	
+							} else {
+							
+								$meta_is_cropped = $this->is_size_cropped( $meta_name, $attachment_id );
 
-						$count++;
+								if ( $meta_is_cropped !== $size_is_cropped ) {
+
+									$count++;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -467,6 +480,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $image_sizes;
+		}
+
+		public function is_size_cropped( $size_name = 'thumbnail', $attachment_id = false ) {
+
+			$size_info = $this->get_size_info( $size_name, $attachment_id );
+
+			return empty( $size_info[ 'is_cropped' ] ) ? false : true;
 		}
 
 		/**
