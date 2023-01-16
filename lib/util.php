@@ -420,51 +420,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $count;
 		}
 
-		public function count_conflicting_sizes( $size_name, $attachment_id ) {
-
-			$count = 0;
-			$meta  = wp_get_attachment_metadata( $attachment_id );	// Returns a WP_Error object on failure.
-
-			if ( isset( $meta[ 'sizes' ] ) ) {	// Just in case.
-
-				if ( isset( $meta[ 'sizes' ][ $size_name ] ) ) {	// Just in case.
-
-					$size_info       = $meta[ 'sizes' ][ $size_name ];
-					$size_is_cropped = $this->is_size_cropped( $size_name, $attachment_id );
-	
-					foreach ( $meta[ 'sizes' ] as $meta_name => $meta_info ) {
-
-						if ( $meta_name === $size_name ) {	// Don't count ourselves.
-	
-							continue;
-						}
-	
-						/**
-						 * Use '==' to allow comparing strings to integers.
-						 */
-						if ( $meta_info[ 'width' ] == $size_info[ 'width' ] && $meta_info[ 'height' ] == $size_info[ 'height' ] ) {
-
-							if ( 0 !== strpos( $meta_name, 'wpsso-' ) ) {
-	
-								$count++;
-	
-							} else {
-							
-								$meta_is_cropped = $this->is_size_cropped( $meta_name, $attachment_id );
-
-								if ( $meta_is_cropped !== $size_is_cropped ) {
-
-									$count++;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			return $count;
-		}
-
 		/**
 		 * Get the width, height and crop value for all image sizes.
 		 *
@@ -1344,8 +1299,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! is_array( $raw_sections ) ) {
 
-				$error_pre = sprintf( '%s error:', __METHOD__ );
-
+				$error_pre  = sprintf( '%s error:', __METHOD__ );
 				$notice_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );

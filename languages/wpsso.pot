@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.5.0-b.6\n"
+"Project-Id-Version: WPSSO Core 14.5.0-b.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -508,8 +508,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:888
-#: lib/media-filters.php:114 lib/media.php:1465 lib/media.php:1616
-#: lib/media.php:3261
+#: lib/media-filters.php:114 lib/media.php:1473 lib/media.php:1624
+#: lib/media.php:3269
 msgid "Media Library"
 msgstr ""
 
@@ -5500,7 +5500,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2569 lib/util.php:3236
+#: lib/admin.php:2569 lib/util.php:3190
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6939,7 +6939,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3271
+#: lib/media-filters.php:117 lib/media.php:3279
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6968,84 +6968,84 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1268
+#: lib/media.php:1276
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1469
+#: lib/media.php:1477
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1471 lib/media.php:1687
+#: lib/media.php:1479 lib/media.php:1695
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1487
+#: lib/media.php:1495
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1508
+#: lib/media.php:1516
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1527
+#: lib/media.php:1535
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1618
+#: lib/media.php:1626
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1656 lib/post.php:725 lib/register.php:348 lib/term.php:551
-#: lib/user.php:528 lib/util.php:885 lib/util.php:991 lib/util.php:1023
-#: lib/util.php:3214
+#: lib/media.php:1664 lib/post.php:725 lib/register.php:348 lib/term.php:551
+#: lib/user.php:528 lib/util.php:840 lib/util.php:946 lib/util.php:978
+#: lib/util.php:3168
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1657 lib/post.php:726 lib/term.php:552 lib/user.php:529
-#: lib/util.php:886 lib/util.php:3215
+#: lib/media.php:1665 lib/post.php:726 lib/term.php:552 lib/user.php:529
+#: lib/util.php:841 lib/util.php:3169
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1658
+#: lib/media.php:1666
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1685
+#: lib/media.php:1693
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3287
+#: lib/media.php:3295
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3340
+#: lib/media.php:3348
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3375
+#: lib/media.php:3383
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -12669,190 +12669,190 @@ msgctxt "option value"
 msgid "st"
 msgstr ""
 
-#: lib/util.php:585
+#: lib/util.php:540
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:585
+#: lib/util.php:540
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:887
+#: lib/util.php:842
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1349
+#: lib/util.php:1303
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1451
+#: lib/util.php:1405
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1582
+#: lib/util.php:1536
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1606
+#: lib/util.php:1560
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1636
+#: lib/util.php:1590
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1834
+#: lib/util.php:1788
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1848
+#: lib/util.php:1802
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3216
+#: lib/util.php:3170
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3239
+#: lib/util.php:3193
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3241
+#: lib/util.php:3195
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3243
+#: lib/util.php:3197
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3245
+#: lib/util.php:3199
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3640
+#: lib/util.php:3594
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3641
+#: lib/util.php:3595
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3645
+#: lib/util.php:3599
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3646
+#: lib/util.php:3600
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3650
+#: lib/util.php:3604
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3651
+#: lib/util.php:3605
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3655
+#: lib/util.php:3609
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3656
+#: lib/util.php:3610
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3660
+#: lib/util.php:3614
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3661
+#: lib/util.php:3615
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3665
+#: lib/util.php:3619
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3666
+#: lib/util.php:3620
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3670
+#: lib/util.php:3624
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3671
+#: lib/util.php:3625
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3675
+#: lib/util.php:3629
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3676
+#: lib/util.php:3630
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3680
+#: lib/util.php:3634
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3681
+#: lib/util.php:3635
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3686
+#: lib/util.php:3640
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3687
+#: lib/util.php:3641
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3757
+#: lib/util.php:3711
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3767
+#: lib/util.php:3721
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

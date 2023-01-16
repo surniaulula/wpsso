@@ -137,30 +137,39 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $file_path;
 			}
 
-			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );	// Uses a local static cache.
+			$size_is_cropped = $this->p->util->is_size_cropped( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
 
 			/**
 			 * If the resized image is not cropped, then leave the file name as-is.
 			 */
-			if ( empty( $size_info[ 'crop' ] ) ) {
+			if ( ! $size_is_cropped ) {
 
 				return $file_path;
 			}
+
+			/**
+			 * Example $size_info = Array (
+			 *	[width] => 1200,
+			 *	[height] => 630,
+			 *	[crop] => 1,
+			 *	[is_cropped] => 1,
+			 *	[dimensions] => 1200x630 cropped,
+			 *	[label_transl] => Open Graph (Facebook and oEmbed),
+			 *	[opt_prefix] => og,
+			 * );
+			 */
+			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );	// Uses a local static cache.
 
 			$new_file_path = $this->get_cropped_image_filename( $file_path, $size_info );
 
 			if ( $file_path !== $new_file_path ) {		// Just in case
 
-				$conflicting_sizes = $this->p->util->count_conflicting_sizes( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+				/**
+				 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
+				 */
+				$can_rename = $this->can_rename_image_filename( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
 
-				if ( $conflicting_sizes > 0 ) {
-
-					if ( copy( $file_path, $new_file_path ) ) {	// Another plugin/theme uses the same dimensions.
-
-						return $new_file_path;	// Return the new file path on success.
-					}
-
-				} else {
+				if ( $can_rename ) {
 
 					if ( rename( $file_path, $new_file_path ) ) {	// No other plugin/theme uses the same dimensions.
 
@@ -168,7 +177,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					} elseif ( copy( $file_path, $new_file_path ) ) {	// If rename failed, then copy and delete.
 
-						if ( unlink( $file_path ) ) {
+						if ( unlink( $file_path ) ) {	// Remove the old file path.
 
 							return $new_file_path;	// Return the new file path on success.
 
@@ -177,12 +186,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							unlink( $new_file_path );
 						}
 					}
+
+				} elseif ( copy( $file_path, $new_file_path ) ) {
+
+					return $new_file_path;	// Return the new file path on successful copy.
 				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'file path = ' . $file_path );
 			}
 
 			return $file_path;
@@ -3434,6 +3442,51 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $ret;
+		}
+
+		/**
+		 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
+		 */
+		public function can_rename_image_filename( $size_name, $attachment_id ) {
+
+			$meta = wp_get_attachment_metadata( $attachment_id );	// Returns a WP_Error object on failure.
+
+			if ( isset( $meta[ 'sizes' ] ) ) {	// Just in case.
+
+				if ( isset( $meta[ 'sizes' ][ $size_name ] ) ) {	// Just in case.
+
+					$size_info = $meta[ 'sizes' ][ $size_name ];
+
+					$size_is_cropped = $this->p->util->is_size_cropped( $size_name, $attachment_id );
+	
+					foreach ( $meta[ 'sizes' ] as $meta_name => $meta_info ) {
+
+						if ( $meta_name === $size_name ) {	// Ignore ourselves.
+	
+							continue;
+						}
+	
+						if ( $meta_info[ 'width' ] == $size_info[ 'width' ] && $meta_info[ 'height' ] == $size_info[ 'height' ] ) {
+
+							if ( 0 === strpos( $meta_name, 'wpsso-' ) ) {
+	
+								$meta_is_cropped = $this->p->util->is_size_cropped( $meta_name, $attachment_id );
+
+								if ( $meta_is_cropped !== $size_is_cropped ) {
+
+									return false;
+								}
+	
+							} else {
+
+								return false;
+							}
+						}
+					}
+				}
+			}
+
+			return true;
 		}
 
 		public function get_cropped_image_filename( $file_path, $size_info ) {
