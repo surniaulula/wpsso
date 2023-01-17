@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.5.0-b.7 (2023/01/16)**
+**Version 14.5.0-b.8 (2023/01/17)**
 
 * **New Features**
 	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
@@ -243,6 +243,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 * **Developer Notes**
 	* Added a submit event on post, term, and user editing pages to run `sucomDisableUnchanged()` on the Document SSO metabox options.
+	* Added a new `WpssoUtil->is_size_cropped()` method.
+	* Added a new `lib/integ/media/wp-retina-2x.php` library file.
+	* Moved `WpssoCompat->update_wr2x_retina_sizes()` to `WpssoIntegMediaWpRetina2x->update_wr2x_retina_sizes()`.
+	* Refactored, moved and renamed `WpssoUtil->count_identical_sizes()` to `WpssoMedia->can_rename_image_filename()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -882,9 +886,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.5.0-b.7 =
+= 14.5.0-b.8 =
 
-(2023/01/16) Added a new WPSSO Commerce Manager Catalog Feed XML add-on. Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
+(2023/01/17) Added a new WPSSO Commerce Manager Catalog Feed XML add-on. Fixed possibly exceeding the PHP 'max_input_vars' limit on post editing pages.
 
 = 14.4.0 =
 
