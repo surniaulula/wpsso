@@ -106,9 +106,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
 
-						echo '<div class="notice notice-error error"><p>';
-						echo $req_info[ 'notice' ];
-						echo '</p></div>';
+						echo wp_kses_post( '<div class="notice notice-error error"><p>' . $req_info[ 'notice' ] . '</p></div>' );
 					}
 				}
 			}
@@ -204,10 +202,10 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 			$addon_name  = _x( $info[ 'name' ], 'plugin name', $text_domain );
 			$req_name    = _x( $req_info[ 'name' ], 'plugin name', $text_domain );
 			$req_name    = empty( $req_info[ 'home' ] ) ? $req_name : '<a href="' . $req_info[ 'home' ] . '">' . $req_name . '</a>';
-			$notice_msg  = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
-			$notice_msg  = sprintf( $notice_msg, $addon_name, $req_name );
+			$notice_html = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
+			$notice_html = sprintf( $notice_html, $addon_name, $req_name );
 
-			return $notice_msg;
+			return $notice_html;
 		}
 
 		protected function get_requires_version_notice( array $info, array $req_info ) {
@@ -218,10 +216,10 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 			$addon_name  = _x( $info[ 'name' ], 'plugin name', $text_domain );
 			$req_name    = _x( $req_info[ 'name' ], 'plugin name', $text_domain );
 			$req_name    = empty( $req_info[ 'home' ] ) ? $req_name : '<a href="' . $req_info[ 'home' ] . '">' . $req_name . '</a>';
-			$notice_msg  = __( 'The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed).', $text_domain );
-			$notice_msg  = sprintf( $notice_msg, $addon_name, $req_name, $req_info[ 'min_version' ], $req_info[ 'version' ] );
+			$notice_html = __( 'The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed).', $text_domain );
+			$notice_html = sprintf( $notice_html, $addon_name, $req_name, $req_info[ 'min_version' ], $req_info[ 'version' ] );
 
-			return $notice_msg;
+			return $notice_html;
 		}
 	}
 }

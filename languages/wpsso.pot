@@ -343,11 +343,11 @@ msgid ""
 "- recommended test for any site using https."
 msgstr ""
 
-#: gettext/gettext-lib-abstract-com.php:5 lib/abstract/com/add-on.php:207
+#: gettext/gettext-lib-abstract-com.php:5 lib/abstract/com/add-on.php:205
 msgid "The %1$s add-on requires the %2$s plugin."
 msgstr ""
 
-#: gettext/gettext-lib-abstract-com.php:6 lib/abstract/com/add-on.php:221
+#: gettext/gettext-lib-abstract-com.php:6 lib/abstract/com/add-on.php:219
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."
