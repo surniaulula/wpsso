@@ -92,6 +92,7 @@
 <li>Easy Digital Downloads</li>
 <li>Elementor Website Builder</li>
 <li>Gravity Forms + GravityView</li>
+<li>Perfect Images</li>
 <li>Perfect WooCommerce Brands</li>
 <li>Polylang</li>
 <li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>

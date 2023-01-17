@@ -90,6 +90,7 @@ Present your content at its best on social sites and in search results - no matt
 * Easy Digital Downloads
 * Elementor Website Builder
 * Gravity Forms + GravityView
+* Perfect Images
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
@@ -237,6 +238,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 * **New Features**
 	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
+	* Added an integration module for the Perfect Images plugin.
 * **Improvements**
 	* Updated the Yoast SEO compatibility filter to keep its breadcrumbs markup.
 * **Bugfixes**
