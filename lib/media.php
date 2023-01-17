@@ -3458,25 +3458,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_info = $meta[ 'sizes' ][ $size_name ];
 
 					$size_is_cropped = $this->p->util->is_size_cropped( $size_name, $attachment_id );
-	
+
 					foreach ( $meta[ 'sizes' ] as $meta_name => $meta_info ) {
 
 						if ( $meta_name === $size_name ) {	// Ignore ourselves.
-	
+
 							continue;
 						}
-	
+
 						if ( $meta_info[ 'width' ] == $size_info[ 'width' ] && $meta_info[ 'height' ] == $size_info[ 'height' ] ) {
 
 							if ( 0 === strpos( $meta_name, 'wpsso-' ) ) {
-	
+
 								$meta_is_cropped = $this->p->util->is_size_cropped( $meta_name, $attachment_id );
 
 								if ( $meta_is_cropped !== $size_is_cropped ) {
 
 									return false;
 								}
-	
+
 							} else {
 
 								return false;

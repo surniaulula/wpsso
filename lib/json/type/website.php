@@ -57,13 +57,17 @@ if ( ! class_exists( 'WpssoJsonTypeWebsite' ) ) {
 			}
 
 			/**
-			 * Potential Action (SearchAction, OrderAction, etc.)
+			 * Potential Action (SearchAction, OrderAction, etc.) for Google's Sitelinks search box.
+			 *
+			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential
+			 * Action property.
 			 *
 			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already be applied by the JSON data
 			 * filters, so do not re-apply it here.
 			 *
-			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential
-			 * Action property.
+			 * Note: Add this markup only to the homepage (aka WebSite markup), not to any other pages.
+			 *
+			 * See https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox.
 			 */
 			$search_url = SucomUtil::esc_url_encode( get_bloginfo( 'url' ) ) . '?s={search_term_string}';
 

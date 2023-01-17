@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoIntegMediaWpRetina2x' ) ) {
 
 			return $custom_crop;
 		}
-		
+
 		public function action_reset_image_src_args( $pid ) {
 
 			WpssoMedia::reset_image_src_args();
