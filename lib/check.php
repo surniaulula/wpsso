@@ -514,7 +514,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
-								 * Perfect Images + Retina (aka WP Retina 2x).
+								 * Perfect Images (aka WP Retina 2x).
 								 *
 								 * See https://wordpress.org/plugins/wp-retina-2x/.
 								 */

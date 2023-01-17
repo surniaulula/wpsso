@@ -758,7 +758,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:34
 msgctxt "lib file description"
-msgid "(plugin) Perfect Images + Retina"
+msgid "(plugin) Perfect Images"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:35

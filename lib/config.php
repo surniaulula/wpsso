@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpml'     => '(plugin) WPML',
 							),
 							'media' => array(
-								'wp-retina-2x' => '(plugin) Perfect Images + Retina',
+								'wp-retina-2x' => '(plugin) Perfect Images',
 							),
 							'rating' => array(
 								'rate-my-post'  => '(plugin) Rate my Post',
