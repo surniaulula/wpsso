@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoIntegMediaWpRetina2x' ) ) {
 		public function filter_set_image_src_args( $custom_crop, $pid, $size_name ) {
 
 			 WpssoMedia::set_image_src_args( $args = array(
-			 	'pid' => $pid,
+			 	'pid'       => $pid,
 				'size_name' => $size_name,
 			) );
 

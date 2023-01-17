@@ -437,6 +437,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $image_sizes;
 		}
 
+		/**
+		 * Since WPSSO Core v14.5.0.
+		 */
 		public function is_size_cropped( $size_name = 'thumbnail', $attachment_id = false ) {
 
 			$size_info = $this->get_size_info( $size_name, $attachment_id );
