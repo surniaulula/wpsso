@@ -106,7 +106,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
 
-						// The 'notice' message is HTML generated from the add-on config (required plugin name, version, and URL).
+						// The 'notice' message is HTML generated from the add-on config (required plugin name, version, and URL link).
 						echo wp_kses_post( '<div class="notice notice-error error"><p>' . $req_info[ 'notice' ] . '</p></div>' );
 					}
 				}
