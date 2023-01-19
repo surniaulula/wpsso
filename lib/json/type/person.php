@@ -2,7 +2,7 @@
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Copyright 2016-2022 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
