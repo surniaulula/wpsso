@@ -1,4 +1,4 @@
-/**
+/*
  * qTip2 - Pretty powerful tooltips - v3.0.3
  * http://qtip2.com
  *
@@ -10,6 +10,7 @@
  * Plugins: None
  * Styles: core basic css3
  */
+
 /*global window: false, jQuery: false, console: false, define: false */
 
 /* Cache window, document, undefined */

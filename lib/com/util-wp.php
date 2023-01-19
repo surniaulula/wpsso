@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -35,7 +35,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			static $is_doing = null;
 
-			/**
+			/*
 			 * Optimize - once true, stay true.
 			 */
 			if ( $is_doing ) {
@@ -65,7 +65,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( function_exists( 'use_block_editor_for_post' ) ) {
 
-					/**
+					/*
 					 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes the web
 					 * browser. See https://core.trac.wordpress.org/ticket/45253 for details. Only call
 					 * use_block_editor_for_post() if using WordPress v5.2 or newer.
@@ -92,7 +92,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * If we can edit the post ID, then check if we can edit the post type.
 				 */
 				if ( $can_edit_id ) {
@@ -234,7 +234,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $locale_cache;
 		}
 
-		/**
+		/*
 		 * Calls WP_Query->query() with the supplied arguments.
 		 *
 		 * If the arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a while loop
@@ -269,7 +269,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $posts;
 		}
 
-		/**
+		/*
 		 * Retrieves or updates the metadata cache by key and group.
 		 *
 		 * Usually called by an extended class (WpssoComment, WpssoPost, WpssoTerm, or WpssoUser), which hardcodes the
@@ -289,7 +289,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 				return array();
 			}
 
-			/**
+			/*
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
@@ -307,7 +307,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 				return $metadata;
 			}
 
-			/**
+			/*
 			 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
 			 * or any other object type with an associated meta table.
 			 *
@@ -318,7 +318,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $metadata[ $obj_id ];
 		}
 
-		/**
+		/*
 		 * Filters and actions are both saved in the $wp_filter global variable.
 		 */
 		public static function remove_action_hook_name( $filter_name, $hook_name ) {
@@ -326,7 +326,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			self::remove_filter_hook_name( $filter_name, $hook_name );
 		}
 
-		/**
+		/*
 		 * Loop through all action/filter hooks and remove any that match the given function or static method name.
 		 *
 		 * Note that class object methods are matched using a class static method name.
@@ -341,7 +341,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					foreach ( $hook_group as $hook_id => $hook_info ) {
 
-						/**
+						/*
 						 * Returns a function name or a class static method name.
 						 *
 						 * Class object methods are returned as class static method names.
@@ -387,7 +387,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					foreach ( $hook_group as $hook_id => $hook_info ) {
 
-						/**
+						/*
 						 * Returns a function name or a class static method name.
 						 *
 						 * Class object methods are returned as class static method names.
@@ -403,7 +403,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $hook_names;
 		}
 
-		/**
+		/*
 		 * Returns a function name or a class static method name.
 		 *
 		 * Class object methods are returned as class static method names.
@@ -414,7 +414,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( isset( $hook_info[ 'function' ] ) ) {
 
-				/**
+				/*
 				 * The callback hook is a dynamic or static method.
 				 */
 				if ( is_array( $hook_info[ 'function' ] ) ) {
@@ -423,14 +423,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$function_name = '';
 
-					/**
+					/*
 					 * The callback hook is a dynamic method.
 					 */
 					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
 
 						$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
 
-					/**
+					/*
 					 * The callback hook is a static method.
 					 */
 					} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
@@ -443,12 +443,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 						$function_name = $hook_info[ 'function' ][ 1 ];
 					}
 
-					/**
+					/*
 					 * Return a static method name.
 					 */
 					$hook_name = $class_name . '::' . $function_name;
 
-				/**
+				/*
 				 * The callback hook is a function.
 				 */
 				} elseif ( is_string( $hook_info[ 'function' ] ) ) {
@@ -527,14 +527,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$wp_config_file_path = false;
 
-			/**
+			/*
 			 * The config file resides in ABSPATH.
 			 */
 			if ( file_exists( ABSPATH . 'wp-config.php' ) ) {
 
 				$wp_config_file_path = ABSPATH . 'wp-config.php';
 
-			/**
+			/*
 			 * The config file resides one level above ABSPATH and is not part of another installation.
 			 */
 			} elseif ( file_exists( $parent_abspath . 'wp-config.php' ) && ! file_exists( $parent_abspath . 'wp-settings.php' ) ) {
@@ -546,7 +546,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $wp_config_file_path;
 		}
 
-		/**
+		/*
 		 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter and return an empty URL to
 		 * disable the WordPress shortlink meta tag. This breaks the WordPress wp_get_shortlink() function and is a
 		 * violation of the WordPress theme guidelines.
@@ -628,7 +628,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return isset( $metadata[ $obj_id ][ $meta_key ] ) ? true : false;
 		}
 
-		/**
+		/*
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/29.
@@ -674,7 +674,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $shortlink;
 		}
 
-		/**
+		/*
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
@@ -684,7 +684,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return self::raw_get_home_url( null, $path, $scheme );
 		}
 
-		/**
+		/*
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
@@ -695,7 +695,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! $is_multisite ) {
 
-				/**
+				/*
 				 * The WordPress _config_wp_home() function is hooked to the 'option_home' filter in order to
 				 * override the database value. Since we're not using the default filters, check for WP_HOME or
 				 * WP_SITEURL and update the stored database value if necessary.
@@ -763,7 +763,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $url;
 		}
 
-		/**
+		/*
 		 * Unfiltered version of site_url() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
@@ -773,7 +773,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return self::raw_get_site_url( null, $path, $scheme );
 		}
 
-		/**
+		/*
 		 * Unfiltered version of get_site_url() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
@@ -784,7 +784,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! $is_multisite ) {
 
-				/**
+				/*
 				 * The WordPress _config_wp_home() function is hooked to the 'option_home' filter in order to
 				 * override the database value. Since we're not using the default filters, check for WP_HOME or
 				 * WP_SITEURL and update the stored database value if necessary.
@@ -840,7 +840,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $url;
 		}
 
-		/**
+		/*
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
@@ -884,7 +884,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $url;
 		}
 
-		/**
+		/*
 		 * Temporarily disable filter and action hooks before calling get_option(), update_option(), and delete_option().
 		 */
 		public static function raw_do_option( $action, $opt_name, $value = null, $default = false ) {
@@ -977,7 +977,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( ! wp_installing() ) {
 
-					/**
+					/*
 					 * If option is not in alloptions, it is not autoloaded and thus has a timeout.
 					 */
 					$alloptions = wp_load_alloptions();
@@ -1024,7 +1024,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$autoload = 'yes';
 
-					/**
+					/*
 					 * If we have an expiration time, do not autoload the transient.
 					 */
 					if ( $expiration ) {
@@ -1038,7 +1038,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * If an expiration time is provided, but the existing transient does not have a timeout
 					 * value, delete, then re-create the transient with an expiration time.
 					 */
@@ -1072,7 +1072,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $result;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/03/03.
 		 */
 		public static function get_post_types( $output = 'objects', $sort = false, $args = null ) {
@@ -1080,7 +1080,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return SucomUtil::get_post_types( $output, $sort, $args );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/03/03.
 		 */
 		public static function get_post_type_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {
@@ -1088,7 +1088,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return SucomUtil::get_post_type_labels( $val_prefix, $label_prefix, $objects );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/03/03.
 		 */
 		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
@@ -1096,7 +1096,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return SucomUtil::get_taxonomies( $output, $sort, $args );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/03/03.
 		 */
 		public static function get_taxonomy_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {

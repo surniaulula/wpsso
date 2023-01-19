@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Plugin Name: WPSSO Core
  * Plugin Slug: wpsso
  * Text Domain: wpsso
@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.1
  * WC Tested Up To: 7.3.0
- * Version: 14.5.0-rc.1
+ * Version: 14.5.0-rc.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -36,7 +36,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 	class Wpsso {
 
-		/**
+		/*
 		 * Library class object variables.
 		 */
 		public $admin;		// WpssoAdmin (admin menus and settings page loader) class object.
@@ -62,7 +62,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $user;		// WpssoUser class object (extends WpssoAbstractWpMeta).
 		public $util;		// WpssoUtil (extends SucomUtil) class object.
 
-		/**
+		/*
 		 * Library class object variables for meta tags and markup.
 		 */
 		public $link_rel;	// WpssoLinkRel class object.
@@ -73,7 +73,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $schema;		// WpssoSchema class object.
 		public $tc;		// WpssoTwitterCard class object.
 
-		/**
+		/*
 		 * Reference variables (config, options, modules, etc.).
 		 */
 		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		private static $instance = null;	// Wpsso class object.
 
-		/**
+		/*
 		 * Wpsso constructor.
 		 */
 		public function __construct() {
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->reg = new WpssoRegister( $this );	// Activate, deactivate, uninstall hooks.
 
-			/**
+			/*
 			 * The WordPress 'init' action fires after WordPress has finished loading, but before any headers are sent.
 			 *
 			 * Most of WordPress is loaded at this stage, and the user is authenticated. WordPress continues to load on
@@ -122,24 +122,24 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
 
-			/**
+			/*
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
 			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
 			 * then unhooks itself from the action, so it can only be run once.
 			 */
 			add_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000, 0 );
 
-			/**
+			/*
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
 			 */
 			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 0 );
 
-			/**
+			/*
 			 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
 			 */
 			add_action( 'change_locale', array( $this, 'change_locale' ), -1000, 1 );
 
-			/**
+			/*
 			 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 			 */
 			add_filter( 'load_textdomain_mofile', array( $this, 'textdomain_mofile' ), 10, 3 );
@@ -155,7 +155,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return self::$instance;
 		}
 
-		/**
+		/*
 		 * Force a refresh of the plugin config.
 		 *
 		 * Runs at init priority -10 and called by WpssoRegister->activate_plugin() as well.
@@ -165,12 +165,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cf = WpssoConfig::get_config( $read_cache = false );
 		}
 
-		/**
+		/*
 		 * Runs at init 1.
 		 */
 		public function register_widgets() {
 
-			/**
+			/*
 			 * Load lib/widget/* library files.
 			 */
 			$classnames = $this->get_lib_classnames( 'widget' );	// Always returns an array.
@@ -196,7 +196,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return $this->options;
 		}
 
-		/**
+		/*
 		 * Runs at init priority 9.
 		 *
 		 * Called by WpssoRegister->activate_plugin() as well.
@@ -216,7 +216,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( ! is_array( $this->options ) ) {
 
-				/**
+				/*
 				 * The set_options() action is run before the set_objects() action, where the WpssoOptions class is
 				 * instantiated, so the WpssoOptions->get_defaults() method is not available yet. Load the defaults
 				 * directly from the config array and trigget a defaults reload in set_objects().
@@ -284,7 +284,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Runs at init priority 10.
 		 *
 		 * Called by WpssoRegister->activate_plugin() as well.
@@ -301,7 +301,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->is_pp = $this->check->is_pp();		// Since WPSSO Core v9.8.0.
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
-			/**
+			/*
 			 * Make sure a debug object variable is always available.
 			 */
 			if ( null === $debug_html ) {	// Constant not defined.
@@ -333,14 +333,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
 			}
 
-			/**
+			/*
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
 			 *
 			 * The WordPress 'change_locale' action also runs the 'wpsso_init_textdomain' action.
 			 */
 			do_action( 'wpsso_init_textdomain' );
 
-			/**
+			/*
 			 * Make sure a notice object variable is always available.
 			 */
 			if ( $is_admin || $doing_cron ) {
@@ -378,7 +378,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->edit     = new WpssoEdit( $this );	// Admin editing page metabox table rows.
 			}
 
-			/**
+			/*
 			 * Setup resource classes:
 			 *
 			 *	$comment
@@ -395,7 +395,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->term    = new WpssoTerm( $this );		// Extends WpssoAbstractWpMeta.
 			$this->user    = new WpssoUser( $this );		// Extends WpssoAbstractWpMeta.
 
-			/**
+			/*
 			 * Setup classe for meta tags and Schema markup:
 			 *
 			 *	$head
@@ -416,12 +416,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 
-			/**
+			/*
 			 * Load integration and std/pro distribution modules.
 			 */
 			$this->loader = new WpssoLoader( $this );		// Modules loader.
 
-			/**
+			/*
 			 * Init additional class objects.
 			 */
 			do_action( 'wpsso_init_objects' );
@@ -436,19 +436,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Runs at init priority 11.
 		 */
 		public function init_shortcodes() {
 
-			/**
+			/*
 			 * Load lib/shortcode/* library files.
 			 */
 			$classnames = $this->get_lib_classnames( 'shortcode' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
 
-				/**
+				/*
 				 * Note that Wpsso->sc[ 'schema' ] is used by WpssoSscFilters->filter_json_data_graph_element().
 				 */
 				if ( ! isset( $this->sc[ $id ] ) ) {	// Just in case.
@@ -458,7 +458,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Runs at init priority 12.
 		 */
 		public function init_plugin() {
@@ -468,7 +468,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug_hooks();
 			}
 
-			/**
+			/*
 			 * All WPSSO Core objects are instantiated and configured.
 			 *
 			 * See SucomAbstractAddOn->init_plugin_notices().
@@ -477,7 +477,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			do_action( 'wpsso_init_plugin' );
 		}
 
-		/**
+		/*
 		 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
 		 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action then
 		 * unhooks itself from the action, so it can only be run once.
@@ -493,7 +493,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			foreach ( $classnames as $id => $classname ) {
 
-				/**
+				/*
 				 * We only use the Wpsso->json array to prevent loading json filters more than once.
 				 */
 				if ( ! isset( $this->json[ $id ] ) ) {	// Just in case.
@@ -507,13 +507,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init json filters' );	// End timer.
 			}
 
-			/**
+			/*
 			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
 			 */
 			remove_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000 );
 		}
 
-		/**
+		/*
 		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are instantiated.
 		 */
 		public function init_textdomain() {
@@ -521,7 +521,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
-		/**
+		/*
 		 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
 		 */
 		public function change_locale( $locale ) {
@@ -529,7 +529,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			do_action( 'wpsso_init_textdomain' );
 		}
 
-		/**
+		/*
 		 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 		 */
 		public function textdomain_mofile( $wp_mofile, $domain ) {
@@ -626,7 +626,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					if ( is_array( $libs ) ) {
 
-						/**
+						/*
 						 * Skip loading admin library modules if not in admin back-end.
 						 */
 						if ( 'admin' === $sub_dir && ! $is_admin ) {
@@ -666,7 +666,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function debug_hooks() {
 
-			/**
+			/*
 			 * Show a comment marker at the top / bottom of the head and footer sections.
 			 */
 			foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
@@ -683,12 +683,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Show a comment marker at the top / bottom of the content section.
 			 */
 			foreach ( array( 'the_content' ) as $filter ) {
 
-				/**
+				/*
 				 * Prepend marker.
 				 */
 				$function = function( $html ) use ( $filter ) {
@@ -697,7 +697,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				add_filter( $filter, $function, PHP_INT_MIN );
 
-				/**
+				/*
 				 * Append marker.
 				 */
 				$function = function( $html ) use ( $filter ) {
@@ -707,7 +707,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				add_filter( $filter, $function, PHP_INT_MAX );
 			}
 
-			/**
+			/*
 			 * Show the plugin settings just before the footer marker.
 			 */
 			foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
@@ -749,7 +749,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
 				}
 
-				/**
+				/*
 				 * WP debug logging and/or HTML debug mode is active.
 				 */
 				if ( $notice_msg ) {
@@ -761,7 +761,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 				}
 
-				/**
+				/*
 				 * The WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
 				 */
 				if ( $this->util->cache->is_disabled() ) {
@@ -777,7 +777,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Only runs when debug is enabled.
 		 */
 		public function show_debug() {
@@ -785,7 +785,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->debug->show_html( null, 'debug log' );
 		}
 
-		/**
+		/*
 		 * Only runs when debug is enabled.
 		 */
 		public function show_config() {
@@ -795,7 +795,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Show constants.
 			 */
 			$defined_constants = get_defined_constants( $categorize = true );
@@ -813,19 +813,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->debug->show_html( $wpsso_defined_constants, 'wpsso constants' );
 
-			/**
+			/*
 			 * Show active plugins.
 			 */
 			$active_plugins = SucomPlugin::get_active_plugins();
 
 			$this->debug->show_html( print_r( $active_plugins, true ), 'active plugins' );
 
-			/**
+			/*
 			 * Show available modules.
 			 */
 			$this->debug->show_html( print_r( $this->avail, true ), 'available features' );
 
-			/**
+			/*
 			 * Show all plugin options.
 			 */
 			$opts = $this->options;

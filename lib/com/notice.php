@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -51,7 +51,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->add_wp_hooks();
 		}
 
-		/**
+		/*
 		 * Set property values for text domain, notice label, etc.
 		 */
 		private function set_config( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = false ) {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Set the lower and upper case acronyms.
 			 */
 			if ( null !== $plugin_id ) {
@@ -80,12 +80,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->plugin_ucid = strtoupper( $this->plugin_id );
 
-			/**
+			/*
 			 * Set the text domain.
 			 */
 			$this->set_textdomain( $text_domain );
 
-			/**
+			/*
 			 * Set the dismiss key name.
 			 */
 			if ( defined( $this->plugin_ucid . '_DISMISS_NAME' ) ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->dismiss_name = $this->plugin_id . '_dismissed';
 			}
 
-			/**
+			/*
 			 * Set the nonce key name.
 			 */
 			if ( defined( $this->plugin_ucid . '_NONCE_NAME' ) ) {
@@ -109,12 +109,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->nonce_name = NONCE_KEY;
 			}
 
-			/**
+			/*
 			 * Set the translated notice label.
 			 */
 			$this->set_label_transl( $label_transl );
 
-			/**
+			/*
 			 * Determine if the DEV constant is defined.
 			 */
 			$this->doing_dev = SucomUtil::get_const( $this->plugin_ucid . '_DEV' );
@@ -151,7 +151,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		private function add_wp_hooks() {
@@ -171,7 +171,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				add_action( 'wp_ajax_' . $this->plugin_id . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
 
-				/**
+				/*
 				 * The 'in_admin_header' action executes at the beginning of the content section in an admin page.
 				 */
 				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), PHP_INT_MAX );
@@ -201,7 +201,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $this->enable( $state );	// Return the previous state to save and restore.
 		}
 
-		/**
+		/*
 		 * Note that only a single nag message is shown at a time.
 		 */
 		public function nag( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
@@ -229,7 +229,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		/**
+		/*
 		 * $msg_text can be a single text string, or an array of text strings.
 		 */
 		private function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
@@ -239,7 +239,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			/**
+			/*
 			 * If $msg_text is an array of text strings, implode the array into a single text string.
 			 */
 			$msg_text = is_array( $msg_text ) ? implode( $glue = ' ', $msg_text ) : (string) $msg_text;
@@ -264,14 +264,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$payload[ 'notice_key' ]   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 			$payload[ 'notice_time' ]  = time();
 
-			/**
+			/*
 			 * 0 disables notice expiration.
 			 */
 			$payload[ 'notice_ttl' ]   = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : $this->default_ttl;
 			$payload[ 'dismiss_time' ] = false;
 			$payload[ 'dismiss_diff' ] = isset( $payload[ 'dismiss_diff' ] ) ? $payload[ 'dismiss_diff' ] : null;
 
-			/**
+			/*
 			 * Add dismiss text for dismiss button and notice message.
 			 */
 			if ( $this->can_dismiss() ) {
@@ -322,7 +322,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe add a reference URL at the end.
 			 */
 			$msg_text .= $this->get_ref_url_html();
@@ -335,7 +335,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 
-			/**
+			/*
 			 * Update the notice transient now if we're adding a notice for a different user ID, otherwise wait for the
 			 * shutdown_notice_cache() method to execute.
 			 */
@@ -345,7 +345,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Clear a single notice key from the notice cache.
 		 */
 		public function clear_key( $notice_key, $user_id = null ) {
@@ -353,7 +353,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->clear( '', $notice_key, $user_id );
 		}
 
-		/**
+		/*
 		 * Clear a message type, message text, notice key from the notice cache, or clear all notices.
 		 */
 		public function clear( $msg_type = '', $notice_key = false, $user_id = null ) {
@@ -384,7 +384,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $trunc_types as $msg_type ) {
 
-					/**
+					/*
 					 * Clear notice for a specific notice key.
 					 */
 					if ( ! empty( $notice_key ) ) {
@@ -397,7 +397,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							}
 						}
 
-					/**
+					/*
 					 * Clear all notices for a message type.
 					 */
 					} else {
@@ -408,7 +408,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Set reference values for admin notices.
 		 */
 		public function set_ref( $url = null, $mod = false, $context_transl = null ) {
@@ -422,7 +422,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $url;
 		}
 
-		/**
+		/*
 		 * Restore previous reference values for admin notices.
 		 */
 		public function unset_ref( $url = null ) {
@@ -491,7 +491,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $url = $this->get_ref( $ref_key = 'url' ) ) {
 
-				/**
+				/*
 				 * Show a shorter relative URL, if possible.
 				 */
 				$pretty_url = strtolower( str_replace( home_url(), '', $url ) );
@@ -502,7 +502,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					'<a href="' . $url . '">' . $pretty_url . '</a>' :
 					'<a href="' . $url . '">' . $context_transl . '</a>';
 
-				/**
+				/*
 				 * Returns an empty string or a clickable (Edit) link.
 				 */
 				$edit_html = $this->get_ref(
@@ -536,7 +536,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( ! empty( $notice_key ) ) {
 
-					/**
+					/*
 					 * If notice is dismissed, say that we've already shown the notices.
 					 */
 					if ( $this->is_dismissed( $notice_key, $user_id ) ) {
@@ -631,7 +631,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						return true;
 					}
 
-					/**
+					/*
 					 * Dismiss time has expired.
 					 */
 					unset( $user_dismissed[ $notice_key ] );
@@ -669,14 +669,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Hooked to the 'in_admin_header' action.
 		 *
 		 * The 'in_admin_header' action executes at the beginning of the content section in an admin page.
 		 */
 		public function admin_header_notices() {
 
-			/**
+			/*
 			 * 'network_admin_notices' prints network admin screen notices.
 			 *
 			 * 'user_admin_notices' prints user admin screen notices.
@@ -697,7 +697,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$notice_types = $this->all_types;
 
-			/**
+			/*
 			 * If toolbar notices are being used, exclude these from being shown.
 			 */
 			$tb_types_showing = $this->get_tb_types_showing();	// Returns false or array.
@@ -711,7 +711,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			} elseif ( is_admin() ) {	// Just in case.
 
-				/**
+				/*
 				 * SucomNotice->get_tb_types_showing() will always return false for these types of requests.
 				 *
 				 * See is_admin_bar_showing() in wordpress/wp-includes/admin-bar.php for details.
@@ -730,7 +730,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$notice_key = 'is_admin-is_admin_bar_showing-returned-false';
 
-				/**
+				/*
 				 * Clear all notices and show only this error.
 				 */
 				$this->clear();
@@ -754,7 +754,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			echo $this->get_notice_style();
 
-			/**
+			/*
 			 * Exit early if this is a block editor page. The notices will be retrieved using an ajax call on page load
 			 * and post save.
 			 */
@@ -789,7 +789,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->maybe_load_other_notices( $user_id );
 
-			/**
+			/*
 			 * Loop through all the msg types and show them all.
 			 */
 			foreach ( $notice_types as $msg_type ) {
@@ -808,7 +808,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						continue;
 					}
 
-					/**
+					/*
 					 * Make sure the notice has not exceeded its TTL.
 					 *
 					 * A 'notice_ttl' value of 0 disables the notice message expiration.
@@ -823,7 +823,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $payload[ 'dismiss_time' ] ) ) {	// True or seconds greater than 0.
 
-						/**
+						/*
 						 * Check for automatically hidden errors and/or warnings.
 						 */
 						if ( ! empty( $payload[ 'notice_key' ] ) && isset( $user_dismissed[ $payload[ 'notice_key' ] ] ) ) {
@@ -859,7 +859,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Don't save unless we've changed something.
 			 */
 			if ( $user_id && $update_dismissed ) {
@@ -908,7 +908,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			check_ajax_referer( __FILE__, 'dismiss_nonce', $die = true );
 
-			/**
+			/*
 			 * Quick sanitation of input values.
 			 */
 			foreach ( array( 'notice_key', 'dismiss_time' ) as $key ) {
@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->maybe_load_other_notices( $user_id );
 
-			/**
+			/*
 			 * Loop through all the msg types and show them all.
 			 */
 			foreach ( $notice_types as $msg_type ) {
@@ -1021,7 +1021,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						continue;
 					}
 
-					/**
+					/*
 					 * Make sure the notice has not exceeded its TTL.
 					 *
 					 * A 'notice_ttl' value of 0 disables the notice message expiration.
@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $payload[ 'dismiss_time' ] ) ) {	// True or seconds greater than 0.
 
-						/**
+						/*
 						 * Check for automatically hidden errors and/or warnings.
 						 */
 						if ( ! empty( $payload[ 'notice_key' ] ) && isset( $user_dismissed[ $payload[ 'notice_key' ] ] ) ) {
@@ -1064,7 +1064,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Don't save unless we've changed something.
 			 */
 			if ( $user_id && $update_dismissed ) {
@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			die( $json_encoded );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/01/19.
 		 */
 		public function get_notice_system() {
@@ -1096,14 +1096,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $this->get_tb_types_showing();
 		}
 
-		/**
+		/*
 		 * Returns false or an array of notice types to include in the toolbar menu.
 		 *
 		 * Called by WpssoScript->get_admin_page_script_data() to define the types shown for ajax calls.
 		 */
 		public function get_tb_types_showing() {
 
-			/**
+			/*
 			 * is_admin_bar_showing() should always return true in the back-end for a standard request (ie. not xmlrpc, ajax, iframe).
 			 */
 			$tb_types_showing = is_admin_bar_showing() ? $this->tb_types : false;
@@ -1111,13 +1111,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $tb_types_showing;
 		}
 
-		/**
+		/*
 		 * Use a reference for the $payload variable so we can modify the 'msg_text' element and remove text that should be
 		 * shown only once.
 		 */
 		private function get_notice_html( $msg_type, array &$payload, $notice_alt = false ) {
 
-			/**
+			/*
 			 * Add an 'inline' class in toolbar notices to prevent WordPress from moving the notice.
 			 *
 			 * See wordpress/wp-admin/js/common.js:1083
@@ -1201,7 +1201,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				( $is_dismissible ? $this->plugin_id . '-dismissible ' : '' ) .
 				$css_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 
-			/**
+			/*
 			 * Float the dismiss button on the right, so the button must be added first.
 			 */
 			if ( ! empty( $payload[ 'dismiss_diff' ] ) && $is_dismissible ) {
@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						'</button><!-- .notice-dismiss -->';
 			}
 
-			/**
+			/*
 			 * The notice label can be false, an empty string, or translated string.
 			 */
 			if ( ! empty( $payload[ 'notice_label' ] ) ) {
@@ -1219,7 +1219,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$msg_html .= '<div class="notice-label">' . $payload[ 'notice_label' ] . '</div><!-- .notice-label -->';
 			}
 
-			/**
+			/*
 			 * Check to see if there's a section that should be shown only once.
 			 */
 			if ( preg_match( '/<!-- *show-once *-->.*<!-- *\/show-once *-->/Us', $payload[ 'msg_text' ], $matches ) ) {
@@ -1230,7 +1230,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( isset( $show_once[ $match_md5 ] ) ) {
 
-					/**
+					/*
 					 * The $payload is a reference variable so we can modify the 'msg_text' element and remove
 					 * text that should be shown only once.
 					 */
@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $msg_html;
 		}
 
-		/**
+		/*
 		 * Called by the WordPress 'shutdown' action. Save notices for all user IDs in the notice cache.
 		 */
 		public function shutdown_notice_cache() {
@@ -1429,7 +1429,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$custom_style_css = '';	// Start with an empty string.
 
-			/**
+			/*
 			 * Unhide the WordPress admin toolbar if there are notices, including when using the fullscreen editor.
 			 */
 			$custom_style_css .= '
@@ -1794,7 +1794,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			jQuery.post( ajaxurl, ajaxDismissData );
 		}
 
-		/**
+		/*
 		 * We use remove() instead of hide() for containers with "display:block !important;".
 		 */
 		if ( dismiss_msg ) {

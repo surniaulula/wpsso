@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -1418,7 +1418,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$form_button_rows = array(
 				array(
-					'submit' => $submit_label_transl,
+					'submit'                                                 => $submit_label_transl,
 					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
 				),
 			);

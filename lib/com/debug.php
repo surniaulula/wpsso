@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -298,7 +298,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), $class_seq = 2 );
 		}
 
-		/**
+		/*
 		 * See WpssoPost->get_mod().
 		 */
 		public function caller() {
@@ -425,7 +425,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 							$val = print_r( $val, true );
 						}
 
-						/**
+						/*
 						 * Firefox does not allow double-dashes inside comment blocks.
 						 */
 						$val = str_replace( '--', '&hyphen;&hyphen;', $val );

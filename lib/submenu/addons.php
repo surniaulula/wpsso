@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Remove all submit / action buttons from this settings page.
+		 * Remove all action buttons from this settings page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 

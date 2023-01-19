@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		public function __construct() {}
 
-		/**
+		/*
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
 		 *
 		 * Used by self::is_plugin_installed().
@@ -67,7 +67,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/10/20.
 		 */
 		public static function clear_plugins_cache() {
@@ -75,7 +75,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/10/20', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Returns an associative array of true/false values.
 		 *
 		 * Used by self::is_plugin_active() and Wpsso->show_config().
@@ -114,7 +114,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Returns true/false.
 		 *
 		 * Example: $plugin_base = wpsso/wpsso.php.
@@ -152,7 +152,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return $local_cache[ $plugin_base ] = false;
 		}
 
-		/**
+		/*
 		 * Returns true/false.
 		 *
 		 * Example: $plugin_base = wpsso/wpsso.php.
@@ -171,7 +171,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug prefix.
 		 *
 		 * Example: $plugin_prefix = 'wpsso'
@@ -190,7 +190,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 					if ( ! empty( $plugin_prefix ) ) {
 
-						/**
+						/*
 						 * Example:
 						 *
 						 * 	$plugin_base = wpsso/wpsso.php
@@ -212,7 +212,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return $count;
 		}
 
-		/**
+		/*
 		 * Returns true/false.
 		 *
 		 * Used by WpssoAdmin->get_ext_action_links().

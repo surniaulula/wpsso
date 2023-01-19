@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -522,7 +522,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected static $publisher_languages = array(
 
-			/**
+			/*
 			 * https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales
 			 */
 			'facebook' => array(
@@ -670,7 +670,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'zz_TR' => 'Zazaki',
 			),
 
-			/**
+			/*
 			 * https://developers.google.com/+/web/api/supported-languages
 			 */
 			'google' => array(
@@ -742,7 +742,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'ja'	=> 'Japanese',
 			),
 
-			/**
+			/*
 			 * https://www.tumblr.com/docs/en/share_button
 			 */
 			'tumblr' => array(
@@ -763,7 +763,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'zh_TW' => 'Chinese (Traditional)',
 			),
 
-			/**
+			/*
 			 * https://dev.twitter.com/web/overview/languages
 			 */
 			'twitter' => array(
@@ -806,7 +806,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function __construct() {}
 
-		/**
+		/*
 		 * Add a separator and a value to the left/right hand side of the title.
 		 */
 		public static function add_title_part( &$title, $title_sep, $part, $hand = 'right' ) {
@@ -839,7 +839,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $title );
 		}
 
-		/**
+		/*
 		 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 		 */
 		public static function get_timezones() {
@@ -850,7 +850,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$offset_range = array( -12, -11.5, -11, -10.5, -10, -9.5, -9, -8.5, -8, -7.5, -7, -6.5, -6, -5.5, -5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 5.75, 6, 6.5, 7, 7.5, 8, 8.5, 8.75, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.75, 13, 13.75, 14 );
 
-			/**
+			/*
 			 * Create date( 'P' ) formatted timezone values (ie. -07:00).
 			 */
 			foreach ( $offset_range as $offset ) {
@@ -865,7 +865,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $timezones;
 		}
 
-		/**
+		/*
 		 * May return a timezone string (ie. 'Africa/Abidjan'), 'UTC', or an offset (ie. '-07:00').
 		 */
 		public static function get_default_timezone() {
@@ -896,7 +896,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache = $tz_offset;
 		}
 
-		/**
+		/*
 		 * Returns a date( 'P' ) formatted timezone value (ie. -07:00).
 		 */
 		public static function format_tz_offset( $offset ) {
@@ -911,7 +911,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $tz_offset;
 		}
 
-		/**
+		/*
 		 * Use "tz" in the method name to hint that argument is an abbreviation.
 		 */
 		public static function get_tz_name( $tz_abbr ) {
@@ -919,7 +919,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return timezone_name_from_abbr( $tz_abbr );
 		}
 
-		/**
+		/*
 		 * Get timezone abbreviation (ie. 'EST', 'MDT', etc.).
 		 */
 		public static function get_timezone_abbr( $tz_name ) {
@@ -927,7 +927,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_formatted_timezone( $tz_name, 'T' );
 		}
 
-		/**
+		/*
 		 * Get timezone offset in seconds (west of UTC is negative, and east of UTC is positive).
 		 */
 		public static function get_timezone_offset_secs( $tz_name ) {
@@ -935,14 +935,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_formatted_timezone( $tz_name, 'Z' );
 		}
 
-		/**
+		/*
 		 * Timezone difference to UTC with colon between hours and minutes.
 		 *
 		 * Used by SucomUtil::get_opts_hm_tz() and SucomUtil::get_opts_open_close_hm_tz().
 		 */
 		public static function get_timezone_offset_hours( $tz_name ) {
 
-			/**
+			/*
 			 * See https://www.php.net/manual/en/datetime.format.php.
 			 *
 			 * P 	Difference to Greenwich time (GMT) with colon between hours and minutes.
@@ -976,7 +976,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $tz_name ][ $format ] = $dt_obj->format( $format );
 		}
 
-		/**
+		/*
 		 * Used by WpssoSubmenuGeneral->get_table_rows() for 'Default Currency' option.
 		 */
 		public static function get_currencies( $currency_abbrev = false, $add_none = false, $format = '%2$s (%1$s)' ) {
@@ -1011,7 +1011,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$local_cache = array();
 
-				/**
+				/*
 				 * Create an array of currency abbrev => abbrev values.
 				 */
 				foreach ( self::$currencies as $key => $value ) {
@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[ $currency_symbol ] = 'USD';
 			}
 
-			/**
+			/*
 			 * Optionally decode the currency symbol values.
 			 */
 			$currency_symbols = self::get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode );
@@ -1078,7 +1078,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( $value === $currency_symbol ) {	// Example: $ === $
 
-						/**
+						/*
 						 * Cache by currency symbol and return the currency abbreviation.
 						 */
 						return $local_cache[ $currency_symbol ] = $key;
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_valid_open_close( $hm_o, $hm_c ) {
 
-			/**
+			/*
 			 * Performa a quick sanitation before using strtotime().
 			 */
 			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
@@ -1146,12 +1146,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Checks for 'none' and invalid times for midday close and open.
 		 */
 		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
 
-			/**
+			/*
 			 * Performa a quick sanitation before using strtotime().
 			 */
 			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$local_cache = false;
 
-				/**
+				/*
 				 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
 				 * action has not run, leave the $local_cache as null to allow for future checks.
 				 */
@@ -1260,7 +1260,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $url ] = false;
 		}
 
-		/**
+		/*
 		 * Return the current request URL and remove tracking query arguments by default.
 		 */
 		public static function get_url( $remove_tracking = true ) {
@@ -1269,7 +1269,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$url = esc_url_raw( $prot_server_name . $_SERVER[ 'REQUEST_URI' ] );
 
-			/**
+			/*
 			 * Maybe remove tracking query arguments used by facebook, google, etc.
 			 */
 			if ( $remove_tracking ) {
@@ -1356,7 +1356,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return defined( $const ) ? constant( $const ) : $undef;
 		}
 
-		/**
+		/*
 		 * Returns false or the admin screen id string.
 		 */
 		public static function get_screen_id( $screen = false ) {
@@ -1374,7 +1374,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Returns false or the admin screen base string.
 		 */
 		public static function get_screen_base( $screen = false ) {
@@ -1505,7 +1505,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/**
+		/*
 		 * Note that an empty string or a null is sanitized as false.
 		 *
 		 * Used by the wpssorrssb_get_sharing_buttons() function and the WpssoRrssbShortcodeSharing->do_shortcode() method.
@@ -1600,7 +1600,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $tag;
 		}
 
-		/**
+		/*
 		 * Note that hashtags cannot begin with a number - this method truncates tags that begin with a number.
 		 */
 		public static function sanitize_hashtags( array $tags = array() ) {
@@ -1633,7 +1633,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $locale;
 		}
 
-		/**
+		/*
 		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
@@ -1650,7 +1650,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]/', '-', $class ) );	// Allow spaces between css class names.
 		}
 
-		/**
+		/*
 		 * Do not allow colons and periods as they may cause issues with some browsers, CSS editors and Javascript
 		 * framworks. jQuery, for example, has issues with ids that contain periods and colons.
 		 */
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return strlen( $md5 ) === 32 && preg_match( '/^[a-f0-9]+$/', $md5 ) ? true : false;
 		}
 
-		/**
+		/*
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */
 		public static function is_valid_option_id( $id ) {
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v1.21.0.
 		 *
 		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.7.0.
 		 *
 		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
@@ -1803,7 +1803,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v4.17.0.
 		 */
 		public static function a_to_aa( array $arr ) {
@@ -1818,7 +1818,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr_arr;
 		}
 
-		/**
+		/*
 		 * Returns the number of bytes in a serialized array.
 		 */
 		public static function serialized_len( array $arr ) {
@@ -1848,7 +1848,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		/**
+		/*
 		 * Used by WpssoSchemaSingle::get_shipping_offer_data().
 		 */
 		public static function get_opts_hm_tz( array $opts, $key_hm, $key_tz = '' ) {
@@ -1865,7 +1865,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
 		 *
 		 * $open_close = Array (
@@ -1918,7 +1918,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $open_close_pairs;
 		}
 
-		/**
+		/*
 		 * Since 2021/09/17.
 		 *
 		 * Used by WpssoOptions->sanitize() and WpssoOptionsUpgrade->options().
@@ -1942,7 +1942,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * The $key_preg value must be a string.
 		 *
 		 * The $replace value can be a string or an associative array of 'pattern' => 'replacement'.
@@ -1962,7 +1962,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $input;
 			}
 
-			/**
+			/*
 		 	 * The $replace value can be a string or an associative array of 'pattern' => 'replacement'.
 			 */
 			if ( is_array( $replace ) ) {
@@ -2015,7 +2015,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Move an array element to the end.
 		 */
 		public static function move_to_end( array &$arr, $key ) {
@@ -2032,7 +2032,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/**
+		/*
 		 * Move an array element to the front.
 		 */
 		public static function move_to_front( array &$arr, $key ) {
@@ -2047,7 +2047,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/**
+		/*
 		 * Modify the referenced array and return true or false.
 		 */
 		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = null ) {
@@ -2055,7 +2055,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::insert_in_array( $insert = 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
-		/**
+		/*
 		 * Modify the referenced array and return true or false.
 		 */
 		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = null ) {
@@ -2063,7 +2063,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::insert_in_array( $insert = 'before', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
-		/**
+		/*
 		 * PHP's array_merge_recursive() merges arrays, but it converts values with duplicate keys to arrays rather than
 		 * overwriting the value in the first array with the duplicate value in the second array, as array_merge does. The
 		 * following method does not change the datatypes of the values in the arrays. Matching key values in the second
@@ -2179,7 +2179,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
-		/**
+		/*
 		 * Pre-define the array key order for the list() construct.
 		 */
 		public static function get_mt_image_seed( $mt_pre = 'og', array $mt_og = array() ) {
@@ -2198,7 +2198,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
 		}
 
-		/**
+		/*
 		 * This method is used by e-Commerce modules to pre-define and pre-sort the product meta tags.
 		 *
 		 * Use null values so WpssoOpengraph->add_data_og_type_md() can load metadata default values.
@@ -2207,7 +2207,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$mt_ret = array(
 
-				/**
+				/*
 				 * Product part numbers.
 				 */
 				$mt_pre . ':item_group_id'    => null,	// Product variant group ID.
@@ -2223,7 +2223,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':isbn'             => null,
 				$mt_pre . ':upc'              => null,	// Aka the UPC, UPC-A, UPC, GTIN-12.
 
-				/**
+				/*
 				 * Product attributes and descriptions.
 				 */
 				$mt_pre . ':url'                         => null,	// Non-standard / internal meta tag.
@@ -2252,7 +2252,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':size_group'                  => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':size_system'                 => null,	// Non-standard / internal meta tag.
 
-				/**
+				/*
 				 * Product ratings and reviews.
 				 */
 				$mt_pre . ':rating:average' => null,	// Non-standard / internal meta tag.
@@ -2261,7 +2261,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':rating:best'    => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
 
-				/**
+				/*
 				 * Product net dimensions and weight.
 				 */
 				$mt_pre . ':length:value'       => null,	// Non-standard / internal meta tag.
@@ -2275,7 +2275,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':fluid_volume:value' => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':fluid_volume:units' => null,	// Non-standard / internal meta tag (units after value).
 
-				/**
+				/*
 				 * Product prices and shipping.
 				 */
 				$mt_pre . ':min_advert_price:amount'         => null,	// Non-standard / internal meta tag.
@@ -2353,7 +2353,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$mt_ret += self::get_mt_image_seed( $mt_pre );
 
-			/**
+			/*
 			 * Facebook applink meta tags.
 			 */
 			if ( $mt_pre === 'og' ) {
@@ -2373,7 +2373,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
 		}
 
-		/**
+		/*
 		 * Protected method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
 		 */
 		protected static function maybe_merge_mt_og( array $mt_ret, array $mt_og ) {
@@ -2383,7 +2383,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $mt_ret;
 			}
 
-			/**
+			/*
 			 * Always keep the 'og:type' meta tag top-most.
 			 *
 			 * Use array_key_exists() to allow for null value.
@@ -2411,12 +2411,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes = array( ':id' ) );
 		}
 
-		/**
+		/*
 		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
 		public static function get_first_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
 
-			/**
+			/*
 			 * Check for two dimensional arrays and keep following the first array element.
 			 *
 			 * Prefer the $media_pre array key (if it's available).
@@ -2430,7 +2430,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$first_el = reset( $assoc );	// Can be array or string.
 			}
 
-			/**
+			/*
 			 * If the first element isn't a string (ie. non-array value), then recurse until we hit bottom.
 			 */
 			if ( is_array( $first_el ) ) {
@@ -2443,7 +2443,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url', ':stream_url' );
 			}
 
-			/**
+			/*
 			 * First element is a text string, so check the array keys.
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
@@ -2457,7 +2457,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '';	// Empty string.
 		}
 
-		/**
+		/*
 		 * Check for a local translated file name, and if found, return a file path and file URL to the translated version.
 		 */
 		public static function get_file_path_locale( $file_path, $file_url = false ) {
@@ -2492,7 +2492,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $file_path;
 		}
 
-		/**
+		/*
 		 * Translate HTML headers, paragraphs, and list items.
 		 */
 		public static function get_html_transl( $html, $text_domain ) {
@@ -2600,7 +2600,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
 
-			/**
+			/*
 			 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
 			 */
 			if ( 'option value' === $context ) {
@@ -2639,7 +2639,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns a localized option value or null.
 		 *
 		 * Note that for non-existing keys or empty value strings, this methods returns the default non-localized value.
@@ -2663,7 +2663,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( $key_locale !== $key_default ) {	// The option key is localized and it's not the default locale.
 
-					/**
+					/*
 					 * If the $key_locale value is an empty string, and $key_default does not exist, then
 					 * return the emty string.
 					 */
@@ -2681,7 +2681,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$opts[ $key_locale ] = $value;
 		}
 
-		/**
+		/*
 		 * Localize an options array key.
 		 *
 		 * $opts = false | array
@@ -2701,7 +2701,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $locale === $def_locale ) {
 
-				/**
+				/*
 				 * The default language for the WordPress site may have changed in the past, so if we're using the
 				 * default, check for a locale version of the default language.
 				 */
@@ -2764,7 +2764,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			self::$locale_cache = array();
 		}
 
-		/**
+		/*
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_locale( $mixed = 'current', $read_cache = true ) {
@@ -2798,7 +2798,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$locale = WPLANG;
 				}
 
-				/**
+				/*
 				 * The database 'WPLANG' values override the 'WPLANG' constant.
 				 */
 				if ( is_multisite() ) {
@@ -2846,7 +2846,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$locale = 'en_US';
 			}
 
-			/**
+			/*
 			 * Filtered by WpssoProLangPolylang->filter_get_locale() and WpssoProLangWpml->filter_get_locale().
 			 */
 			$locale = apply_filters( 'sucom_get_locale', $locale, $mixed );
@@ -2929,7 +2929,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Add metadata defaults and custom values to the $type_opts array.
 		 *
 		 * $type_opts can be false, an empty array, or an array of one or more options.
@@ -2974,7 +2974,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $mod_anchor;
 		}
 
-		/**
+		/*
 		 * Results a salt string based on $mod values.
 		 *
 		 * Example mod salts:
@@ -3065,7 +3065,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( $salt_str, $val_glue );
 		}
 
-		/**
+		/*
 		 * Check that the transient has not expired, and does not exceed the max expiration time.
 		 */
 		public static function check_transient_timeout( $cache_id, $max_exp_secs ) {
@@ -3088,7 +3088,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $cache_array;
 		}
 
-		/**
+		/*
 		 * Update the cached array and maintain the existing transient expiration time.
 		 */
 		public static function update_transient_array( $cache_id, $cache_array, $cache_exp_secs ) {
@@ -3096,19 +3096,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$current_time  = time();
 			$reset_at_secs = 300;
 
-			/**
+			/*
 			 * If the $cache_array already has a '__created_at' value, calculate how long until the transient object
 			 * expires, and then set the transient with that new expiration seconds.
 			 */
 			if ( isset( $cache_array[ '__created_at' ] ) ) {
 
-				/**
+				/*
 				 * Adjust the expiration time by removing the difference (current time less creation time) from the
 				 * desired transient expiration seconds.
 				 */
 				$transient_exp_secs = $cache_exp_secs - ( $current_time - $cache_array[ '__created_at' ] );
 
-				/**
+				/*
 				 * If we're 300 seconds (5 minutes) or less from the transient expiring, then renew the transient
 				 * creation / expiration times.
 				 */
@@ -3142,7 +3142,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_array( $opts ) ) {	// Just in case.
 
-				/**
+				/*
 				 * Unchecked checkboxes are not provided, so re-create them here based on hidden values.
 				 */
 				$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, $invert = false, $replace = '' );
@@ -3427,7 +3427,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
 
-				/**
+				/*
 				 * Returns the post type name.
 				 */
 				$post_type_name = get_post_type( $mixed );	// Post object or ID.
@@ -3452,7 +3452,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * $use_post can be true (uses the $post global object), false (uses the queried object), a numeric post ID, or a post object.
 		 */
 		public static function get_post_object( $use_post = false, $output = 'object' ) {
@@ -3513,7 +3513,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
 		 *
 		 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
@@ -3567,7 +3567,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $values;
 		}
 
-		/**
+		/*
 		 * Returns post types registered as 'public' = true and 'show_ui' = true by default.
 		 *
 		 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = false and 'show_ui' = true.
@@ -3694,7 +3694,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				/**
+				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
 				$ret = term_exists( (int) $term_id, $tax_slug );	// Since WP v3.0.
@@ -3728,7 +3728,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				/**
+				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
 				$ret = term_exists( (int) $term_id, 'category' );	// Since WP v3.0.
@@ -3754,7 +3754,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				/**
+				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
 				$ret = term_exists( (int) $term_id, 'post_tag' );	// Since WP v3.0.
@@ -3776,7 +3776,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_term_tax_slug( $term_id, $tax_slug ) {
 
-			/**
+			/*
 			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
 			 */
 			static $local_cache = array();
@@ -3867,7 +3867,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $exists;
 		}
 
-		/**
+		/*
 		 * See WpssoUser->get_persons_names().
 		 */
 		public static function get_roles_users_select( array $roles, $blog_id = null, $add_none = true ) {
@@ -3882,13 +3882,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_select;
 		}
 
-		/**
+		/*
 		 * See WpssoUser->get_public_ids().
 		 * See WpssoOptionsUpgrade->options().
 		 */
 		public static function get_roles_users_ids( array $roles, $blog_id = null ) {
 
-			/**
+			/*
 			 * Get the user ID => name associative array, and keep only the array keys.
 			 */
 			$users_ids = array_keys( self::get_roles_users_names( $roles, $blog_id ) );
@@ -3898,7 +3898,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $users_ids;
 		}
 
-		/**
+		/*
 		 * See self::get_roles_users_select().
 		 * See self::get_roles_users_ids().
 		 */
@@ -3929,7 +3929,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_names;
 		}
 
-		/**
+		/*
 		 * Keep in mind that the 'wp_capabilities' meta value is a serialized array, so WordPress uses a LIKE query to
 		 * match any string within the serialized array.
 		 *
@@ -3962,7 +3962,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$offset = null === $offset ? 0 : $offset + $limit;
 			}
 
-			/**
+			/*
 			 * See https://developer.wordpress.org/reference/classes/wp_user_query/.
 			 */
 			$user_args = array(
@@ -3980,7 +3980,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$user_names = array();
 
-			/**
+			/*
 			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
 			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
@@ -4001,7 +4001,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_names;
 		}
 
-		/**
+		/*
 		 * If using the $limit argument, you must keep calling get_users_ids() until it returns false.
 		 *
 		 * See WpssoRegister->uninstall_plugin().
@@ -4034,7 +4034,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$users_ids = array();
 
-			/**
+			/*
 			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
 			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
@@ -4177,7 +4177,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Add the slug (ie. name) to custom post type and taxonomy labels.
 		 */
 		public static function get_object_label( $obj ) {
@@ -4265,7 +4265,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return uksort( $arr, 'strnatcasecmp' );
 		}
 
-		/**
+		/*
 		 * The existence of remove_accents() is checked before using the callback.
 		 */
 		public static function strnatcasecmp_remove_accents( $a, $b ) {
@@ -4322,12 +4322,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $encoded;
 		}
 
-		/**
+		/*
 		 * Decode HTML entities and UTF8 encoding.
 		 */
 		public static function decode_html( $encoded ) {
 
-			/**
+			/*
 			 * If we don't have something to decode, then return immediately.
 			 */
 			if ( false === strpos( $encoded, '&' ) ) {
@@ -4347,7 +4347,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function decode_utf8( $encoded ) {
 
-			/**
+			/*
 			 * if we don't have something to decode, then return immediately.
 			 */
 			if ( false === strpos( $encoded, '&#' ) ) {
@@ -4355,12 +4355,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $encoded;
 			}
 
-			/**
+			/*
 			 * Convert certain entities manually to something non-standard.
 			 */
 			$encoded = preg_replace( '/&#8230;/', '...', $encoded );
 
-			/**
+			/*
 			 * If mb_decode_numericentity() is not available, then return the string un-converted.
 			 */
 			if ( function_exists( 'mb_decode_numericentity' ) ) {	// Just in case.
@@ -4371,7 +4371,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $encoded;
 		}
 
-		/**
+		/*
 		 * The existence of mb_decode_numericentity() is checked before using the callback.
 		 */
 		public static function mb_decode_numericentity_utf8( $matches ) {
@@ -4381,7 +4381,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return mb_decode_numericentity( $matches[ 0 ], $convmap, 'UTF-8' );
 		}
 
-		/**
+		/*
 		 * Decode a URL and add query arguments. Returns false on error.
 		 */
 		public static function decode_url_add_query( $url, array $args ) {
@@ -4451,7 +4451,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $text );
 		}
 
-		/**
+		/*
 		 * Strip / remove all registered shortcodes, along with some unregistered shortcodes. Hook the
 		 * 'sucom_strip_shortcodes_preg' filter to modify the unregistered shortcode regular expression.
 		 */
@@ -4554,7 +4554,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $content;
 		}
 
-		/**
+		/*
 		 * Used to decode Facebook video URLs.
 		 */
 		public static function replace_unicode_escape( $str ) {
@@ -4567,7 +4567,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $str;
 		}
 
-		/**
+		/*
 		 * The existence of mb_convert_encoding() is checked before using the callback.
 		 */
 		public static function mb_convert_encoding_ucs2_utf8( $match ) {
@@ -4577,7 +4577,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
 
-			/**
+			/*
 			 * Remove containers that should not include json scripts.
 			 *
 			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
@@ -4590,7 +4590,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$json_scripts = array();
 
-			/**
+			/*
 			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 			 * i = Letters in the pattern match both upper and lower case letters.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
@@ -4692,7 +4692,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $countries[ $country_code ];
 		}
 
-		/**
+		/*
 		 * Returns an associative array.
 		 *
 		 * Example time formats: 'H:i' (default), 'g:i a'.
@@ -4764,7 +4764,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		        return null === $ret && ! $allow_null ? false : $ret;
 		}
 
-		/**
+		/*
 		 * Converts string to boolean.
 		 */
 		public static function get_bool( $mixed ) {
@@ -4772,7 +4772,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
-		/**
+		/*
 		 * Wrapper for SuextMinifyCssCompressor class to minify CSS.
 		 */
 		public static function minify_css( $css_data, $filter_prefix = 'sucom' ) {
@@ -4800,7 +4800,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $pkg . '$2', $name );
 		}
 
-		/**
+		/*
 		 * Site Title.
 		 *
 		 * Returns a custom site name or the default WordPress site name.
@@ -4824,7 +4824,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return empty( $opts ) ? '' : self::get_key_value( 'site_name_alt', $opts, $mixed );
 		}
 
-		/**
+		/*
 		 * Tagline.
 		 *
 		 * Returns a custom site description or the default WordPress site description / tagline.
@@ -4843,7 +4843,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $site_desc;
 		}
 
-		/**
+		/*
 		 * Returns the website URL (ie. the home page, WP_HOME value) from the options array, or the WordPress
 		 * get_home_url() value.
 		 *
@@ -4861,7 +4861,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $home_url;
 		}
 
-		/**
+		/*
 		 * Returns the WordPress installation URL (ie. the blog page, WP_SITEURL value) from the options array, or the
 		 * WordPress get_site_url() value.
 		 *
@@ -4879,7 +4879,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $wp_url;
 		}
 
-		/**
+		/*
 		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and restores previous PHP settings
 		 * after logging the error.
 		 */
@@ -4894,7 +4894,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ini_saved = array();
 
-			/**
+			/*
 			 * Save old option values and define new option values.
 			 */
 			foreach ( $ini_set as $name => $value ) {
@@ -4923,12 +4923,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$error_msg = self::strip_html( $error_msg );
 			}
 
-			/**
+			/*
 			 * Use error_log() instead of trigger_error() to avoid HTTP 500.
 			 */
 			error_log( $error_msg );
 
-			/**
+			/*
 			 * Only restore option values that were changed.
 			 */
 			foreach ( $ini_saved as $name => $value ) {
@@ -5004,7 +5004,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		/**
+		/*
 		 * Add one or more attributes to the HTML tag.
 		 *
 		 * Example HTML tag:
@@ -5026,7 +5026,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Calculate the estimated reading time in minutes.
 		 *
 		 * 250 is the default reading words per minute.
@@ -5045,7 +5045,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '<' . $type . '><li>' . implode( $glue = '</li> <li>', $arr ) . '</li></ul> ';
 		}
 
-		/**
+		/*
 		 * Modify the referenced array and return true, false, or the modified array.
 		 */
 		protected static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
@@ -5063,7 +5063,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$new_arr[ $key ] = $val;
 					}
 
-					/**
+					/*
 					 * Add new value before/after the matched key.
 					 *
 					 * Replace the matched key by default (no test required).
@@ -5100,20 +5100,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret_bool ? $matched : $arr;	// Return true/false or the array (default).
 		}
 
-		/**
+		/*
 		 * Used by self::get_currencies(), self::get_currency_abbrev(), and self::get_dashicons().
 		 */
 		protected static function maybe_get_array( $arr, $key = false, $add_none = false ) {
 
 			if ( null === $key ) {
 
-				/**
+				/*
 				 * Nothing to do.
 				 */
 
 			} elseif ( false === $key ) {
 
-				/**
+				/*
 				 * Nothing to do.
 				 */
 
@@ -5137,7 +5137,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/04.
 		 */
 		public static function get_min_int() {
@@ -5145,7 +5145,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return PHP_INT_MIN;	// Since PHP v7.0.0.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/04.
 		 */
 		public static function get_max_int() {
@@ -5153,7 +5153,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return PHP_INT_MAX;	// Since PHP 5.0.2.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
@@ -5167,7 +5167,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $first;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
@@ -5181,7 +5181,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $last;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
@@ -5195,7 +5195,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $next;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/01/23.
 		 */
 		protected static function get_first_last_next_nums( array $input ) {
@@ -5227,7 +5227,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $first, $last, $next );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/09.
 		 */
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
@@ -5235,7 +5235,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return wp_json_encode( $data, $options, $depth );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2023/01/03.
 		 */
 		public static function get_options_transl( array $opts, $text_domain ) {

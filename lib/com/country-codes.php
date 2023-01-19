@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -14,7 +14,7 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 
 	class SucomCountryCodes {
 
-		/**
+		/*
 		 * See https://en.wikipedia.org/wiki/ISO_3166-1.
 		 */
 		private static $countries = array(

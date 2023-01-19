@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 		private $log_pre    = '';
 		private $notice_pre = '';
 
-		/**
+		/*
 		 * Instantiated by WpssoConflict->conflict_checks().
 		 */
 		public function __construct( &$plugin ) {
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$this->conflict_check_wpseo_wc();	// Yoast WooCommerce SEO.
 		}
 
-		/**
+		/*
 		 * All in One SEO Pack.
 		 */
 		private function conflict_check_aioseop() {
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$plugin_name = __( 'All in One SEO', 'wpsso' );
 
-			/**
+			/*
 			 * Check for minimum supported version.
 			 */
 			$min_version = '4.0.16';
@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Check for Open Graph.
 			 */
 			if ( aioseo()->options->social->facebook->general->enable ) {
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
-			/**
+			/*
 			 * Check for Twitter.
 			 */
 			if ( aioseo()->options->social->twitter->general->enable ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * The SEO Framework.
 		 */
 		private function conflict_check_seoframework() {
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$opts = $tsf->get_all_options();
 
-			/**
+			/*
 			 * Check for Open Graph and Twitter Cards.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			// translators: Please ignore - translation uses a different text domain.
 			$posts_i18n = __( 'posts', 'autodescription' );
 
-			/**
+			/*
 			 * The SEO Framework options that must be disabled.
 			 */
 			foreach ( array(
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * The SEO Framework options that must be enabled.
 			 */
 			foreach ( array(
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * SEOPress.
 		 */
 		private function conflict_check_seopress() {
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$opts = get_option( 'seopress_toggle' );
 
-			/**
+			/*
 			 * Check for Social Networks module.
 			 */
 			if ( ! empty( $opts[ 'toggle-social' ] ) ) {
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * SEO Ultimate.
 		 */
 		private function conflict_check_seoultimate() {
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			if ( ! empty( $opts[ 'modules' ] ) && is_array( $opts[ 'modules' ] ) ) {
 
-				/**
+				/*
 				 * Check for Open Graph.
 				 */
 				if ( array_key_exists( 'opengraph', $opts[ 'modules' ] ) && $opts[ 'modules' ][ 'opengraph' ] !== -10 ) {
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Squirrly SEO.
 		 */
 		private function conflict_check_squirrlyseo() {
@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$opts = json_decode( get_option( 'sq_options' ), $assoc = true );
 
-			/**
+			/*
 			 * Check for Open Graph and Twitter Cards.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seosettings&tab=social' );
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for Knowledge Graph.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seosettings&tab=jsonld' );
@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * WP Meta SEO.
 		 */
 		private function conflict_check_wpmetaseo() {
@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for Open Graph and Twitter Cards.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
@@ -527,7 +527,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Yoast SEO.
 		 */
 		private function conflict_check_wpseo() {
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$plugin_name = __( 'Yoast SEO', 'wpsso' );
 
-			/**
+			/*
 			 * Check for minimum supported version.
 			 */
 			$min_version = '14.0';
@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$opts_social = get_option( 'wpseo_social' );
 
-			/**
+			/*
 			 * Check for Social page URLs.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
@@ -608,7 +608,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for Facebook App ID.
 			 */
 			if ( ! empty( $opts_social[ 'fbadminapp' ] ) ) {
@@ -638,7 +638,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
-			/**
+			/*
 			 * Check for Open Graph.
 			 */
 			if ( ! empty( $opts_social[ 'opengraph' ] ) ) {
@@ -668,7 +668,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
-			/**
+			/*
 			 * Check for Twitter Cards.
 			 */
 			if ( ! empty( $opts_social[ 'twitter' ] ) ) {
@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
-			/**
+			/*
 			 * Check for Slack.
 			 */
 			if ( ! empty( $opts[ 'enable_enhanced_slack_sharing' ] ) ) {
@@ -729,7 +729,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Yoast WooCommerce SEO.
 		 */
 		private function conflict_check_wpseo_wc() {

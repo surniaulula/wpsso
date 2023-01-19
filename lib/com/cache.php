@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -51,7 +51,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			add_action( 'shutdown', array( $this, 'save_ignored_urls' ) );
 		}
 
-		/**
+		/*
 		 * Set property values for text domain, notice label, etc.
 		 */
 		private function set_config( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
@@ -105,7 +105,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->base_url = trailingslashit( constant( $this->plugin_ucid . '_CACHE_URL' ) );
 		}
 
-		/**
+		/*
 		 * This method is only run on an as-needed basis.
 		 */
 		public function maybe_load_ignored() {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 			$cache_ret     = get_transient( $cache_id );
 
-			/**
+			/*
 			 * Retrieve the list of ignored URLs cached, while keeping the existing 'expires' and 'for_secs' array values.
 			 */
 			if ( isset( $cache_ret[ 'urls' ] ) ) {
@@ -143,12 +143,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function save_ignored_urls() {
 
-			/**
+			/*
 			 * 'loaded' will be true if any ignored URL method has been run.
 			 */
 			if ( $this->ignored[ 'loaded' ] ) {
 
-				/**
+				/*
 				 * Only save ignored URLs if the current URL array is different to the saved URL array.
 				 */
 				if ( $this->ignored[ 'urls' ] !== $this->ignored[ 'saved_urls' ] ) {
@@ -176,7 +176,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $this->ignored[ 'urls' ];
 		}
 
-		/**
+		/*
 		 * Returns false or time in seconds.
 		 */
 		public function is_ignored_url( $url_nofrag ) {
@@ -243,7 +243,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				if ( 301 === $http_code || 302 === $http_code ) {
 
-					/**
+					/*
 					 * PHP safe mode is an attempt to solve the shared-server security problem. It is
 					 * architecturally incorrect to try to solve this problem at the PHP level, but since the
 					 * alternatives at the web server and OS levels aren't very realistic, many people,
@@ -262,7 +262,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$errors[] = __( 'Please contact your hosting provider to have this setting disabled or install a newer version of PHP.',
 							$this->text_domain );
 
-					/**
+					/*
 					 * open_basedir can be used to limit the files that can be accessed by PHP to the specified
 					 * directory-tree, including the file itself. When a script tries to access the filesystem,
 					 * for example using include, or fopen(), the location of the file is checked. When the
@@ -286,7 +286,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$errors[] = sprintf( __( 'Additional requests to retrieve this URL will be ignored for another %d second(s).',
 					$this->text_domain ), $this->ignored[ 'for_secs' ] );
 
-				/**
+				/*
 				 * Combine all strings into one error notice.
 				 */
 				$this->p->notice->err( $errors );
@@ -298,7 +298,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Clear all ignored URLs.
 		 *
 		 * Returns a count of cleared URLs.
@@ -316,7 +316,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $count;
 		}
 
-		/**
+		/*
 		 * Clear a single ignored URL.
 		 *
 		 * Returns true if the URL was ignored and is now cleared.
@@ -345,7 +345,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->clear_cache_data( $cache_salt, $pre_ext, $url );
 		}
 
-		/**
+		/*
 		 * Get the formatted microtime it took to retrieve the URL.
 		 *
 		 * Returns false if retrieving failed, true if the URL was already cached, or the formatted microtime.
@@ -369,7 +369,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Get image size for remote URL and cache for 300 seconds (5 minutes) by default.
 		 *
 		 * If $exp_secs is null, then use the default expiration time.
@@ -423,7 +423,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Called by SucomForm->get_event_load_json_script().
 		 */
 		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $pre_ext = '' ) {
@@ -503,7 +503,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
@@ -559,7 +559,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_url  = $this->base_url . md5( $cache_salt ) . $pre_ext . $url_fragment;
 			$cache_data = false;
 
-			/**
+			/*
 			 * Return immediately if the cache contains what we need.
 			 */
 			switch ( $format ) {
@@ -652,7 +652,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $failure;
 			}
 
-			/**
+			/*
 			 * Maybe throttle connections for specific hosts, like YouTube for example.
 			 */
 			$this->maybe_throttle_host( $url_nofrag, $throttle_secs );
@@ -664,7 +664,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );	// 10 seconds (default is 300 seconds).
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );	// 15 seconds (default is no timeout).
 
-			/**
+			/*
 			 * When negotiating a TLS or SSL connection, the server sends a certificate indicating its identity. Curl
 			 * verifies whether the certificate is authentic, i.e. that you can trust that the server is who the
 			 * certificate says it is. This trust is based on a chain of digital signatures, rooted in certification
@@ -676,7 +676,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 */
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
-			/**
+			/*
 			 * When CURLOPT_SSL_VERIFYHOST is 2, that certificate must indicate that the server is the server to which
 			 * you meant to connect, or the connection fails. Simply put, it means it has to have the same name in the
 			 * certificate as is in the URL you operate against.
@@ -685,7 +685,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 */
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
 
-			/**
+			/*
 			 * Define and disable the "Expect: 100-continue" header.
 			 */
 			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
@@ -700,7 +700,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: PHP safe_mode or open_basedir defined - cannot use CURLOPT_FOLLOWLOCATION' );
 			}
 
-			/**
+			/*
 			 * Define cURL options from values defined as constants.
 			 */
 			$allowed_curl_const = array(
@@ -723,7 +723,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Define cURL options provided by the $curl_opts method arguent (empty by default).
 			 *
 			 * Example:
@@ -823,7 +823,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $failure;
 		}
 
-		/**
+		/*
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
@@ -934,7 +934,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $cache_data;	// return data or empty string
 		}
 
-		/**
+		/*
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_file = $this->base_dir . md5( $cache_salt ) . $pre_ext;
 
-			/**
+			/*
 			 * Return immediately if the cache contains what we need.
 			 */
 			switch ( $format ) {
@@ -1192,7 +1192,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Maybe throttle connections for specific hosts, like YouTube for example.
 		 */
 		public function maybe_throttle_host( $url, $throttle_secs ) {

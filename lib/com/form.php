@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -139,7 +139,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * $ext_id is the lowercase acronyn for the plugin or add-on.
 		 */
 		public function get_ext_id() {
@@ -162,7 +162,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->admin_l10n = $this->get_plugin_admin_l10n();
 		}
 
-		/**
+		/*
 		 * $ext_id is the lowercase acronyn for the plugin or add-on.
 		 */
 		public function set_text_domain( $ext_id ) {
@@ -170,7 +170,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->text_domain = $this->get_plugin_text_domain( $ext_id );
 		}
 
-		/**
+		/*
 		 * Get the text domain for the main plugin.
 		 *
 		 * $plugin_id is the lowercase acronyn for the main plugin.
@@ -180,7 +180,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->def_text_domain = $this->get_plugin_text_domain( $plugin_id );
 		}
 
-		/**
+		/*
 		 * $ext_id is the lowercase acronyn for the plugin or add-on.
 		 */
 		public function get_plugin_text_domain( $ext_id ) {
@@ -350,7 +350,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$checked_keys[ $opt_key ] = true;
 
-				/**
+				/*
 				 * Example:
 				 *
 				 *	$opt_key_locale = 'site_name#fr_FR'
@@ -402,7 +402,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$table_rows[ $key ] = '';
 
-				/**
+				/*
 				 * Placeholder.
 				 */
 				if ( empty( $val ) ) {
@@ -424,7 +424,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$tr_html = '';
 				}
 
-				/**
+				/*
 				 * Table cell HTML.
 				 */
 				if ( isset( $val[ 'table_row' ] ) ) {
@@ -472,7 +472,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Hidden input field.
 		 */
 		public function get_hidden( $name, $value = null ) {
@@ -490,7 +490,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />' . "\n";
 		}
 
-		/**
+		/*
 		 * Checkbox input field.
 		 */
 		public function get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = false, $force = null, $group = null ) {
@@ -536,7 +536,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Creates a vertical list (by default) of checkboxes.
 		 *
 		 * The $name_prefix is combined with the $values array names to create the checbox option name.
@@ -558,7 +558,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$container_class = SucomUtil::sanitize_css_class( $css_class );
 			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name_prefix : $css_id );
 
-			/**
+			/*
 			 * Use the "input_vertical_list" class to align the checbox input vertically.
 			 */
 			$html = '<div class="' . $container_class . '" id="checklist_' . $container_id . '">' . "\n";
@@ -570,7 +570,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label = implode( $glue = ', ', $label );
 				}
 
-				/**
+				/*
 				 * If the array is not associative (so a regular numbered array), then the label / description is
 				 * used as the saved value.
 				 */
@@ -706,7 +706,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Text input field.
 		 */
 		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $tabidx = null, $el_attr = '' ) {
@@ -943,7 +943,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$img_id_disabled  = $is_disabled;
 			$img_lib_disabled = $img_libs_count > 1 ? $is_disabled : true;
 
-			/**
+			/*
 			 * Prevent conflicts by removing the image URL if we have an image ID.
 			 *
 			 * Disable the image ID option if we have an image URL.
@@ -1023,7 +1023,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
 
-		/**
+		/*
 		 * Radio input field.
 		 */
 		public function get_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false ) {
@@ -1043,7 +1043,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_class     = $this->get_options( $name . ':disabled' ) ? 'disabled' : '';
 			$input_class     = SucomUtil::sanitize_css_class( $input_class );
 
-			/**
+			/*
 			 * Use the "input_vertical_list" class to align the radio input buttons vertically.
 			 */
 			$html = '<div class="' . $container_class . '" id="radio_' . $container_id . '">' . "\n";	// Already sanitized.
@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label = implode( $glue = ', ', $label );
 				}
 
-				/**
+				/*
 				 * If the array is not associative (so a regular numbered array), then the label / description is
 				 * used as the saved value.
 				 */
@@ -1081,7 +1081,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Select drop-down field.
 		 *
 		 * $is_disabled can be false or an option value for the disabled select.
@@ -1162,7 +1162,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label = implode( $glue = ', ', $label );
 				}
 
-				/**
+				/*
 				 * If the array is not associative (so a regular numbered array), then the label / description is
 				 * used as the saved value.
 				 *
@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$option_value = (string) $label;
 				}
 
-				/**
+				/*
 				 * Don't bother translating the label text if it's already translated (for example, product
 				 * categories).
 				 */
@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = $this->get_option_value_transl( '[None]' );
 				}
 
-				/**
+				/*
 				 * Save the option value and translated label for the json array before adding "(default)" suffix.
 				 */
 				if ( $event_json_var ) {
@@ -1217,7 +1217,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Save the default value and its text so we can add them (as jquery data) to the select.
 				 */
 				if ( $in_defaults && $option_value === (string) $this->defaults[ $name ] ) {
@@ -1227,7 +1227,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl  .= ' ' . $default_text;
 				}
 
-				/**
+				/*
 				 * Maybe get a selected="selected" string for this option.
 				 */
 				if ( ! is_bool( $selected ) ) {
@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$selected_value = $option_value;
 				}
 
-				/**
+				/*
 				 * Only include the first and selected option(s).
 				 */
 				if ( ( ! $is_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						if ( $show_id ) {
 
-							/**
+							/*
 							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 							 */
 							$html .= '<script>';
@@ -1331,7 +1331,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_redirect':
 
-						/**
+						/*
 						 * The sucomSelectChangeRedirect() javascript function replaces "%%${name}%%" by the value selected.
 						 */
 						$redirect_url = add_query_arg( array( $name => '%%' . $name . '%%' ),
@@ -1339,7 +1339,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$redirect_url_encoded = SucomUtil::esc_url_encode( $redirect_url );
 
-						/**
+						/*
 						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 						 */
 						$html .= '<script>';
@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_unhide_rows':
 
-						/**
+						/*
 						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 						 */
 						$html .= '<script>';
@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$html .= '<!-- selected value: ' . $selected_value . ' -->' . "\n";
 
-						/**
+						/*
 						 * If we have an option selected, unhide those rows. Test for a non-empty string to
 						 * allow for a value of 0.
 						 */
@@ -1378,7 +1378,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$hide_class = 'hide_' . esc_js( $name );
 							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
 
-							/**
+							/*
 							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 							 */
 							$html .= '<script>';
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
@@ -1428,7 +1428,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Sanity check for possibly older input field values.
 			 */
 			if ( false === $selected ) {
@@ -1444,13 +1444,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
 		}
 
-		/**
+		/*
 		 * Add 'none' as the first array element. Always converts the array to associative.
 		 */
 		public function get_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false,
 			$selected = false, $event_names = array(), $event_args = array() ) {
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
@@ -1492,7 +1492,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected, $event_names, $event_args );
 		}
 
-		/**
+		/*
 		 * The "time-hh-mm" class is always prefixed to the $css_class value.
 		 *
 		 * By default, the 'none' array elements is not added.
@@ -1511,7 +1511,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$event_names = array( 'on_focus_load_json' );
 			$event_args  = array( 'json_var' => 'hour_mins_step_' . $step_mins );
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( $add_none ) {
@@ -1536,7 +1536,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_select_time_none( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15 ) {
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
@@ -1550,14 +1550,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled, $selected, $step_mins, $add_none = true );
 		}
 
-		/**
+		/*
 		 * The "timezone" class is always prefixed to the $css_class value.
 		 */
 		public function get_select_timezone( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
 			$css_class = trim( 'timezone ' . $css_class );
 
-			/**
+			/*
 			 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 			 */
 			$timezones = SucomUtil::get_timezones();
@@ -1706,7 +1706,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * -----------------------
 		 * MULTIPLE FIELDS METHODS
 		 * -----------------------
@@ -1872,7 +1872,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						continue;
 					}
 
-					/**
+					/*
 					 * Default paragraph display is an inline-block.
 					 */
 					if ( ! empty( $atts[ 'input_label' ] ) ) {
@@ -2017,7 +2017,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$label = implode( $glue = ', ', $label );
 									}
 
-									/**
+									/*
 									 * If the array is not associative (so a regular numbered
 									 * array), then the label / description is used as the
 									 * saved value.
@@ -2034,7 +2034,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$option_value = (string) $label;
 									}
 
-									/**
+									/*
 									 * Don't bother translating the label text if it's already
 									 * translated (for example, product categories).
 									 */
@@ -2047,7 +2047,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$label_transl = $label;
 									}
 
-									/**
+									/*
 									 * Save the option value and translated label for the JSON
 									 * array before adding the "(default)" suffix.
 									 */
@@ -2059,7 +2059,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										}
 									}
 
-									/**
+									/*
 									 * Save the default value and its text so we can add them (as jquery data) to the select.
 									 */
 									if ( ( $in_defaults && $option_value === (string) $this->defaults[ $input_name ] ) ||
@@ -2093,7 +2093,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									$select_opt_count++;	// Used to check for first option.
 
-									/**
+									/*
 									 * For disabled selects, only include the first and/or selected option.
 									 */
 									if ( ( ! $is_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
@@ -2165,7 +2165,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
 		 */
 		public function get_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
@@ -2213,7 +2213,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
 
-				/**
+				/*
 				 * $is_disabled can be true, false, or an option value for the disabled select.
 				 */
 				$html .= $this->get_select( $input_name, $values, $input_class, $input_id, $is_assoc,
@@ -2301,7 +2301,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * -------------------------------
 		 * AUTOMATICALLY LOCALIZED METHODS
 		 * -------------------------------
@@ -2312,7 +2312,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( null === $def_val ) {
 
-					/**
+					/*
 					 * Returns an option value or null.
 					 *
 					 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
@@ -2328,7 +2328,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				/**
+				/*
 				 * Returns an option value or null.
 				 *
 				 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
@@ -2389,7 +2389,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_th_html( $label, $css_class, $css_id, $atts );
 		}
 
-		/**
+		/*
 		 * ------------------------------
 		 * AUTOMATICALLY DISABLED METHODS
 		 * ------------------------------
@@ -2474,7 +2474,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_text .= ' onFocus="this.select();"';
 			$input_text .= ' onMouseUp="return false;"/>';
 
-			/**
+			/*
 			 * Add a dashicons copy-to-clipboard button to the input text field.
 			 */
 			if ( ! empty( $input_id ) ) {	// Just in case.
@@ -2581,7 +2581,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 				$html .= empty( $input_id ) ? '' : ' id="text_' . $input_id . '"';	// Already sanitized.
 
-				/**
+				/*
 				 * Only show a placeholder and value for input field 0.
 				 */
 				if ( ! $key_num ) {
@@ -2653,7 +2653,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select_time_none( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15 ) {
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
@@ -2676,7 +2676,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select_time_options_none( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15 ) {
 
-			/**
+			/*
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
@@ -2694,7 +2694,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
 
-			/**
+			/*
 			 * The "timezone" class is always prefixed to the $css_class value.
 			 */
 			return $this->get_select_timezone( $name, $css_class, $css_id, $is_disabled = true, $selected );
@@ -2741,7 +2741,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * --------------------------------------------
 		 * AUTOMATICALLY DISABLED AND LOCALIZED METHODS
 		 * --------------------------------------------
@@ -2778,7 +2778,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_textarea_locale( $name, $css_class, $css_id, $len, $holder, $is_disabled = true );
 		}
 
-		/**
+		/*
 		 * ----------------------------------------------
 		 * AUTOMATICALLY DISABLED MULTIPLE FIELDS METHODS
 		 * ----------------------------------------------
@@ -2800,7 +2800,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select_multi( $name, $values, $css_class, $css_id, $is_assoc, $repeat, $repeat, $is_disabled );
 		}
 
-		/**
+		/*
 		 * ---------------
 		 * PRIVATE METHODS
 		 * ---------------
@@ -2809,7 +2809,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$name_suffix = '';
 
-			/**
+			/*
 			 * The '.*?' syntax is required to make the expression ungreedy.
 			 */
 			if ( preg_match( '/^(.*?)((_[0-9]+)?(#[a-zA-Z_]+)?)$/', $name_prefix, $matches ) ) {
@@ -2824,7 +2824,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private static function sort_select_opt_by_label( $a, $b ) {
 
-			/**
+			/*
 			 * Extract the option label, without its qualifier (ie. "(default)").
 			 */
 			$a_count = null;
@@ -2835,7 +2835,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $a_count && $b_count ) {	// Just in case.
 
-				/**
+				/*
 				 * Option labels in square brackets (ie. "[None]") are always top-most in the select options list.
 				 */
 				$a_char = substr( $a_label, 0, 1 );
@@ -2940,7 +2940,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return '';
 			}
 
-			/**
+			/*
 			 * Do not pre-populate an empty input field for these option names.
 			 */
 			if ( preg_match( '/_tid$/', $name ) ) {
@@ -2956,21 +2956,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = ' placeholder="' . esc_attr( $holder ) . '"';
 
-			/**
+			/*
 			 * If the value is an empty string, then set the value to the placeholder.
 			 */
 			$html .= $js_if_empty ? ' onClick="' . $js_if_empty . '"' : '';
 			$html .= $js_if_empty ? ' onFocus="' . $js_if_empty . '"' : '';
 			$html .= $js_if_empty ? ' onMouseEnter="' . $js_if_empty . '"' : '';
 
-			/**
+			/*
 			 * If the value is the placeholder, then set the value to an empty string.
 			 */
 			$html .= $js_if_same ? ' onChange="' . $js_if_same . '"' : '';
 			$html .= $js_if_same ? ' onBlur="' . $js_if_same . '"' : '';
 			$html .= $js_if_same ? ' onMouseLeave="' . $js_if_same . '"' : '';
 
-			/**
+			/*
 			 * Check for the enter key, which submits the current form in an input field.
 			 */
 			$html .= $js_if_same && 'input' === $type ? ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"' : '';
@@ -2999,7 +2999,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_id   = SucomUtil::sanitize_css_id( $input_id );
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
-			/**
+			/*
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
 			$html = '<script>';
@@ -3031,14 +3031,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $html;
 			}
 
-			/**
+			/*
 			 * Encode the PHP array to JSON only once per page load.
 			 */
 			if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
 
 				$this->json_array_added[ $event_json_var ] = true;
 
-				/**
+				/*
 				 * json_encode() cannot encode an associative array - only an object or a standard numerically
 				 * indexed array - and the object element order, when read by the browser, cannot be controlled.
 				 * Firefox, for example, will sort an object numerically instead of maintaining the original object
@@ -3055,12 +3055,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( ! empty( $event_args[ 'exp_secs' ] ) ) {
 
-					/**
+					/*
 					 * Array values may be localized, so include the current locale in the cache salt string.
 					 */
 					$cache_salt = $event_json_var . '_locale:' . SucomUtil::get_locale();
 
-					/**
+					/*
 					 * Returns false on error.
 					 */
 					$script_url = $this->p->cache->get_data_url( $cache_salt, $script_js, $event_args[ 'exp_secs' ], $pre_ext = '.js' );
@@ -3071,7 +3071,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					} else {
 
-						/**
+						/*
 						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 						 */
 						$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
@@ -3079,7 +3079,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 					 */
 					$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
@@ -3090,7 +3090,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<!-- ' . $event_json_var . ' array already added -->' . "\n";
 			}
 
-			/**
+			/*
 			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
 			 *
 			 * sucomSelectLoadJson() is loaded in the footer, so test to make sure the function is available.
@@ -3119,7 +3119,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$this->show_hide_js_added = true;
 
-			/**
+			/*
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
 			$html = <<<EOF

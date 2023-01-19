@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2020-2022 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		/**
+		/*
 		 * Twitter Card
 		 *
 		 * App and Player cards do not have a $size_name.
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Schema.
 		 */
 		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Pinterest Pin It.
 		 */
 		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {

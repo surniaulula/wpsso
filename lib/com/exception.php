@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -96,7 +96,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 				88 => 'CURLE_CHUNK_FAILED',
 			),
 
-			/**
+			/*
 			 * CURLINFO_HTTP_CODE.
 			 */
 			'http' => array(
@@ -142,7 +142,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 				505 => 'HTTP Version Not Supported'
 			),
 
-			/**
+			/*
 			 * CURLINFO_SSL_VERIFYRESULT.
 			 */
 			'ssl' => array(

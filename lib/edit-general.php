@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2020-2022 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			$schema_types     = $this->p->schema->get_schema_types_select();
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
 
-			/**
+			/*
 			 * Default option values.
 			 */
 			$def_seo_title = $this->p->page->get_title( $mod, $md_key = '', $max_len = 'seo_title' );
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			$def_pin_img_desc = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'pin_img_desc' );
 			$def_tc_desc      = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'tc_desc' );
 
-			/**
+			/*
 			 * Check for disabled options.
 			 */
 			$seo_title_msg = $this->p->msgs->maybe_seo_title_disabled();
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			$seo_desc_disabled  = $seo_desc_msg ? true : false;
 			$pin_img_disabled   = $pin_img_msg ? true : false;
 
-			/**
+			/*
 			 * Metabox form rows.
 			 */
 			$form_rows = array(

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2020-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or a video preview in search results.
 		);
 
-		/**
+		/*
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
 		public static function get_default_directives() {
@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			$directives = self::$default_directives;
 			$is_public  = get_option( 'blog_public' );
 
-			/**
+			/*
 			 * If the site is not public, discourage robots from indexing the site.
 			 */
 			if ( ! $is_public ) {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 				$directives[ 'nosnippet' ]    = true;
 				$directives[ 'notranslate' ]  = true;
 
-			/**
+			/*
 			 * The webpage should not be indexed, but allow robots to follow links.
 			 */
 			} elseif ( isset( $_GET[ 'replytocom' ] ) || is_embed() || is_404() || is_search() ) {
@@ -71,7 +71,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			return apply_filters( 'sucom_robots_default_directives', $directives );
 		}
 
-		/**
+		/*
 		 * Properly set boolean directives and their inverse boolean directives.
 		 */
 		public static function set_directive( $key, $value, array &$directives ) {
@@ -82,14 +82,14 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 
 					$directives[ $key ] = $value ? true : false;	// Convert to boolean.
 
-					/**
+					/*
 					 * Check for inverse directives.
 					 */
 					if ( isset( self::$inverse_directives[ $key ] ) ) {
 
 						foreach ( self::$inverse_directives[ $key ] as $inverse_key ) {
 
-							/**
+							/*
 							 * If the inverse is also a boolean, then set the inverse boolean value.
 							 */
 							if ( isset( self::$default_directives[ $inverse_key ] ) ) {	// Directive must be known.
@@ -109,7 +109,7 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Sanity check - make sure inverse directives are removed.
 		 */
 		public static function sanitize_directives( array &$directives ) {
