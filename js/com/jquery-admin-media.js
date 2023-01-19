@@ -173,7 +173,7 @@ function sucomSelectLibraryImage( t, e ) {
 
 		jQuery( t ).attr( 'data-wp-img-id', attachment.id );
 
-		/**
+		/*
 		 * Update the media library before the image id, but do not trigger a change yet.
 		 */
 		if ( img_lib_css_id ) {
@@ -181,7 +181,7 @@ function sucomSelectLibraryImage( t, e ) {
 			jQuery( '#' + img_lib_css_id ).val( 'wp' );
 		}
 
-		/**
+		/*
 		 * Update the image id and trigger a change event.
 		 */
 		if ( img_id_css_id ) {

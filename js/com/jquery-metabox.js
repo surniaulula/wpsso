@@ -1,5 +1,5 @@
 
-/**
+/*
  * Provide a parent container_id value to initialize a single metabox (when loading a single metabox via ajax, for example).
  */
 function sucomInitMetabox( container_id, doing_ajax ) {
@@ -11,7 +11,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	/**
+	/*
 	 * Style the datepicker.
 	 */
 	jQuery( table_id + ' input.datepicker' ).datepicker( {
@@ -24,7 +24,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		dateFormat:'yy-mm-dd'
 	} );
 
-	/**
+	/*
 	 * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute
 	 * (which prevents values from being submitted).
 	 */
@@ -34,7 +34,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	jQuery( table_id + ' select' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' select' ).on( 'mousedown', sucomBlurDisabled );	// Prevents dropdown from appearing.
 
-	/**
+	/*
 	 * Add a "changed" the options class when their value might have changed.
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
@@ -55,12 +55,12 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		checkboxes.addClass( 'changed' );
 	} );
 
-	/**
+	/*
 	 * The 'sucom_init_metabox' event is hooked by sucomInitAdminMedia(), sucomInitToolTips().
 	 */
 	jQuery( document ).trigger( 'sucom_init_metabox', [ container_id, doing_ajax ] );
 
-	/**
+	/*
 	 * If we're refreshing a metabox via ajax, trigger a 'show' event for each table row displayed.
 	 */
 	if ( doing_ajax ) {
@@ -74,7 +74,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		} );
 	}
 
-	/**
+	/*
 	 * When an editing page is submitted, disable unchanged fields in 'table.sucom-settings'.
 	 */
 	jQuery( 'form:not(#adv-settings)' ).each( function() {
@@ -92,7 +92,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 function sucomSelectLoadJson( select_id, json_name ) {
 
-	/**
+	/*
 	 * A select ID must be provided.
 	 *
 	 * Example: "select_schema_type_for_home_posts"
@@ -102,7 +102,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 		return false;
 	}
 
-	/**
+	/*
 	 * The variable name of the JSON array.
 	 *
 	 * Example: "wpsso_select_person_names_4f65aec5b650c0f4acc0f033dc81d39f"
@@ -119,7 +119,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 		return false;
 	}
 
-	/**
+	/*
 	 * Avoid contention by signaling the json load early.
 	 */
 	container.addClass( 'json_loaded' );
@@ -129,7 +129,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	var selected_val    = container.val();
 	var select_opt_html = ''
 
-	/**
+	/*
 	 * json_encode() cannot encode an associative array - only an object or a standard numerically indexed array - and the
 	 * object element order, when read by the browser, cannot be controlled. Firefox, for example, will sort an object
 	 * numerically instead of maintaining the original object element order. For this reason, we must use different arrays for
@@ -154,7 +154,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 		select_opt_html += '>' + label_transl + '</option>';
 	} );
 
-	/**
+	/*
 	 * Update the select option list.
 	 *
 	 * Do not trigger a change event as the selected option has not changed. ;-)
@@ -207,7 +207,7 @@ function sucomTabs( metabox_name, tab_name ) {
 
 	if ( scroll_to_tab_id ) {
 
-		/**
+		/*
 		 * Do not scroll the metabox into view if this is a visual editor page.
 		 */
 		var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
@@ -224,7 +224,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		jQuery( '.sucom-tabset' + metabox_name ).removeClass( 'active' );
 		jQuery( '.sucom-tabset' + metabox_name + '-msg' ).removeClass( 'active' );
 
-		/**
+		/*
 		 * Example tablink:
 		 *
 		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-icon sucom-tablink-href_edit_general" href="#sucom-tabset_sso-tab_edit_general"></a>
@@ -294,7 +294,7 @@ function sucomScrollIntoView( container_id ) {
 	}
 }
 
-/**
+/*
  * Example: sucomViewUnhideRows( 'sucom-tabset_doc_types-tab_schema_types', 'basic' )
  */
 function sucomViewUnhideRows( container_id, show_opts_key, hide_in_pre ) {
@@ -322,7 +322,7 @@ function sucomViewUnhideRows( container_id, show_opts_key, hide_in_pre ) {
 	sucomScrollIntoView( 'div#' + parent_id );
 }
 
-/**
+/*
  * Example: sucomSelectChangeUnhideRows( "hide_schema_type", "hide_schema_type_article" );
  */
 function sucomSelectChangeUnhideRows( row_hide_class, row_show_class ) {
@@ -349,7 +349,7 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
         window.location = url.replace( '%%' + name + '%%', value );
 }
 
-/**
+/*
  * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute (which
  * prevents values from being submitted).
  */
@@ -369,7 +369,7 @@ function sucomBlurDisabled( e ) {
 	}
 }
 
-/**
+/*
  * Add a "changed" the options class when their value might have changed.
  */
 function sucomMarkChanged( e, el ) {
@@ -395,7 +395,7 @@ function sucomPlaceholderDep( container_id, container_dep_id ) {
 	el.attr( 'placeholder', dep_val ).change();
 }
 
-/**
+/*
  * A callback function for the wpColorPicker, which does not automatically update the input field value on changes.
  */
 function sucomColorChanged( e, ui ) {
@@ -407,7 +407,7 @@ function sucomColorChanged( e, ui ) {
 	sucomMarkChanged( e, el )
 }
 
-/**
+/*
  * sucomDisableUnchanged() should be called from a form submit event.
  *
  * Example: container_id = '#sucom_setting_form_general'
@@ -431,7 +431,7 @@ function sucomDisableUnchanged( container_id ) {
 
 		if ( 'undefined' !== typeof checkbox_name && checkbox_name.length ) {
 
-			/**
+			/*
 			 * When disabling a checkbox, also disable it's associated hidden input field.
 			 */
 			hidden_checkbox_name = checkbox_name.replace( /^(.*)\[(.*)\]$/, '$1\\[is_checkbox_$2\\]' );

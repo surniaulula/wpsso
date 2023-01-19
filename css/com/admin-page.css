@@ -1,5 +1,5 @@
 
-/**
+/*
  * WordPress edit list table.
  */
 .wp-list-table.media .column-cb,
@@ -7,7 +7,7 @@
 	width:2%;
 }
 
-/**
+/*
  * WooCommerce changes their tabs to icons at 900px.
  * WordPress collapses the admin menu at 960px.
  * WordPress changes to larger icons at 782px.
@@ -76,7 +76,7 @@
 	width:4%;
 }
 
-/**
+/*
  * WPSSO notices and qTip.
  */
 #wpadminbar #wp-toolbar #wpsso-toolbar-notices-icon.ab-icon::before {
@@ -155,7 +155,7 @@ body.rtl .qtip.sucom-qtip .qtip-content {
 	color:#279d27;
 }
 
-/**
+/*
  * Prevent Firefox from outlining links.
  */
 .qtip.sucom-qtip .qtip-content a,
@@ -204,7 +204,7 @@ body.rtl .qtip.sucom-qtip .qtip-content {
 	margin:5px 0 5px 60px;
 }
 
-/**
+/*
  * Input field and dashicon clipboard for settings pages and table lists.
  */
 table td .no_input_clipboard .copy_button {

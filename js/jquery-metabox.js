@@ -1,17 +1,17 @@
 
-/**
+/*
  * This script is registered by WpssoScript->admin_enqueue_scripts() as 'wpsso-metabox' and depends on the 'sucom-metabox' script
  * located in js/com/jquery-metabox.js. The 'sucom-metabox' script must be registered since this script depends on it.
  */
 jQuery( function() {
 
-	/**
+	/*
 	 * Initialize all the 'table.sucom-settings' metaboxes in the current page.
 	 */
 	wpssoInitMetabox();
 } );
 
-/**
+/*
  * Provide a parent container_id value to initialize a single metabox (when loading a single metabox via ajax, for example).
  */
 function wpssoInitMetabox( container_id, doing_ajax ) {
@@ -23,31 +23,31 @@ function wpssoInitMetabox( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	/**
+	/*
 	 * When the Schema type is changed, maybe update the Open Graph type.
 	 */
 	jQuery( table_id + ' select#select_og_schema_type' ).show( wpssoOgSchemaType );
 	jQuery( table_id + ' select#select_og_schema_type' ).change( wpssoOgSchemaType );
 
-	/**
+	/*
 	 * When an Organization ID is selected, disable the Place ID.
 	 */
 	jQuery( table_id + ' select#select_schema_organization_id' ).show( wpssoSchemaOrgId );
 	jQuery( table_id + ' select#select_schema_organization_id' ).change( wpssoSchemaOrgId );
 
-	/**
+	/*
 	 * When a Place ID is selected, disable the Organization ID.
 	 */
 	jQuery( table_id + ' select#select_schema_place_id' ).show( wpssoSchemaPlaceId );
 	jQuery( table_id + ' select#select_schema_place_id' ).change( wpssoSchemaPlaceId );
 
-	/**
+	/*
 	 * The sucomInitMetabox() function is located in the 'sucom-metabox' script located in js/com/jquery-metabox.js.
 	 */
 	sucomInitMetabox( container_id, doing_ajax);
 }
 
-/**
+/*
  * When the Schema type is changed, maybe update the Open Graph type.
  */
 function wpssoOgSchemaType() {
@@ -85,7 +85,7 @@ function wpssoOgSchemaType() {
 			jQuery( og_type_linked ).remove();
 		}
 
-		/**
+		/*
 		 * If we have an associated Open Graph type for this Schema type, then update the Open Graph value and disable the
 		 * select.
 		 */
@@ -105,7 +105,7 @@ function wpssoOgSchemaType() {
 
 			select_og_type.addClass( 'disabled' );
 
-		/**
+		/*
 		 * If we don't have an associated Open Graph type for this Schema type, then if previously disabled, reenable and
 		 * set to the default value.
 		 */
@@ -124,7 +124,7 @@ function wpssoOgSchemaType() {
 	} );
 }
 
-/**
+/*
  * When an Organization ID is selected, disable the Place ID.
  */
 function wpssoSchemaOrgId() {
@@ -132,7 +132,7 @@ function wpssoSchemaOrgId() {
 	sucomSelectUniquePair( this, 'select#select_schema_place_id' );
 }
 
-/**
+/*
  * When a Place ID is selected, disable the Organization ID.
  */
 function wpssoSchemaPlaceId() {

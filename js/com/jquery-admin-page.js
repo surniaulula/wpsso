@@ -1,4 +1,4 @@
-/**
+/*
  * Common library for admin pages.
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
@@ -6,7 +6,7 @@
  * Version: 20220318-02
  */
 
-/**
+/*
  * Update block-editor metaboxes.
  */
 function sucomBlockPostbox( pluginId, adminPageL10n ) {
@@ -48,7 +48,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 		var ajax_action_update_postbox = cfg[ '_ajax_actions' ][ 'metabox_postboxes' ][ postbox_id ];
 
-		/**
+		/*
 		 * Sanitize the ajax action filter name.
 		 */
 		ajax_action_update_postbox = sucomSanitizeHookname( ajax_action_update_postbox );
@@ -61,7 +61,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 		jQuery.post( ajaxurl, ajaxData, function( html ) {
 
-			/**
+			/*
 			 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 			 */
 			if ( html ) {
@@ -72,7 +72,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 	}
 }
 
-/**
+/*
  * Create block-editor notices first, excluding any toolbar notice types, then update toolbar notices.
  */
 function sucomBlockNotices( pluginId, adminPageL10n ) {
@@ -105,7 +105,7 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 
-		/**
+		/*
 		 * Example data:
 		 *
 		 * Array (
@@ -160,7 +160,7 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 
 					removeNotice( noticeKey );
 
-					/**
+					/*
 					 * The current version of the block editor casts the notice message as a string, so we
 					 * cannot give createNotice() an html message or RawHTML element. Until such time as the
 					 * block editor can handle an html notice message, we must give it the "spoken" notice
@@ -255,7 +255,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			} );
 		} );
 
-		/**
+		/*
 		 * Cleanup any pre-existing notice classes.
 		 */
 		jQuery( 'body.wp-admin' ).removeClass( 'has-toolbar-notices' );
@@ -300,7 +300,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
-			/**
+			/*
 			 * noticeTime = -1 to skip automatically showing notifications.
 			 *
 			 * noticeTime = 0 to automatically show notifications until click or hover.
@@ -317,7 +317,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				jQuery( document ).on( 'click', function( event ) {
 
-					/**
+					/*
 					 * Remove the 'show-timeout' class if we're clicking anywhere outside the notices menu.
 					 */
 					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
@@ -340,7 +340,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				jQuery( document ).on( 'click', function( event ) {
 
-					/**
+					/*
 					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
 					 */
 					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
@@ -383,7 +383,7 @@ function sucomToolbarValidators( pluginId, adminPageL10n ) {
 
 	jQuery.post( ajaxurl, ajaxData, function( html ) {
 
-		/**
+		/*
 		 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 		 */
 		if ( html ) {
@@ -453,7 +453,7 @@ function sucomCopyById( cssId, adminPageL10n ) {
 
 		var elem = document.getElementById( cssId );
 
-		/**
+		/*
 		 * Check for input field value first, then container content.
 		 */
 		var elemVal = elem.value;
@@ -492,7 +492,7 @@ function sucomCopyById( cssId, adminPageL10n ) {
 	return false;	// Prevent the webpage from reloading.
 }
 
-/**
+/*
  * Convert some HTML tags to spaces first, strip everything else, then convert multiple spaces to a single space.
  */
 function sucomStripHtml( html ) {
@@ -520,7 +520,7 @@ function sucomEscAttr ( string ) {
 	} );
 }
 
-/**
+/*
  * See SucomUtil::sanitize_hookname().
  */
 function sucomSanitizeHookname( string ) {
@@ -531,7 +531,7 @@ function sucomSanitizeHookname( string ) {
 	return sucomSanitizeKey( string );
 }
 
-/**
+/*
  * See SucomUtil::sanitize_key().
  */
 function sucomSanitizeKey( string, allow_upper ) {
@@ -545,7 +545,7 @@ function sucomSanitizeKey( string, allow_upper ) {
 	return string;
 }
 
-/**
+/*
  * Hooked to .focus() and .keyup() by SucomForm->get_textlen_script().
  */
 function sucomTextLen( containerId, adminPageL10n ) {
@@ -573,7 +573,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		text_len = sucomTextLenClean( container.attr( 'placeholder' ) ).length;
 	}
 
-	/**
+	/*
 	 * Sanitize the max_len, warn_len, and min_len values.
 	 */
 	if ( ! max_len ) {
@@ -603,7 +603,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		max_len = min_len;
 	}
 
-	/**
+	/*
 	 * Select a text string and the character limit.
 	 */
 	var char_limit = max_len;	// Default value.
@@ -635,7 +635,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		msg_transl = cfg[ '_len_transl' ];
 	}
 
-	/**
+	/*
 	 * Select a CSS class.
 	 */
 	if ( max_len && text_len >= ( max_len - 5 ) ) {		// 5 characters from the end.
@@ -655,7 +655,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		css_class = 'good';
 	}
 
-	/**
+	/*
 	 * Create the container HTML.
 	 */
 	var container_html = '';
@@ -673,13 +673,13 @@ function sucomTextLen( containerId, adminPageL10n ) {
 	container_html += msg_transl.formatUnicorn( text_len, char_limit );
 	container_html += '</div>';
 
-	/**
+	/*
 	 * Add the container HTML.
 	 */
 	jQuery( '#' + containerId + '-text-len-wrapper' ).html( container_html );
 }
 
-/**
+/*
  * Hooked to .blur() by SucomForm->get_textlen_script().
  */
 function sucomTextLenReset( containerId ) {
@@ -704,7 +704,7 @@ function sucomTextLenClean( str ) {
 	return str.trim();
 }
 
-/**
+/*
  * String.prototype.formatUnicorn from Stack Overflow.
  *
  * Replace {0}, {1}, etc. in strings.

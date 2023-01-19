@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoAdminHeadSuggest->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$have_tid = true;	// Found at least one plugin with an auth id.
 
-					/**
+					/*
 					 * If the update manager version is not available, skip the warning notices and show a nag
 					 * notice to install the update manager.
 					 */
@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 			if ( $have_tid ) {
 
-				/**
+				/*
 				 * If the update manager is active, its version should be available.
 				 */
 				if ( ! empty( $um_info[ 'version' ] ) ) {
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 						$notices_shown++;
 					}
 
-				/**
+				/*
 				 * Check if update manager is installed.
 				 */
 				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notices_shown++;
 
-				/**
+				/*
 				 * The update manager is not installed.
 				 */
 				} else {

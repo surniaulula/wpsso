@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 		);
 
-		/**
+		/*
 		 * This class is instantiated before the SucomDebug class, so do not use $this->p->debug to log status messages.
 		 */
 		public function __construct( &$plugin ) {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$this->p =& $plugin;
 		}
 
-		/**
+		/*
 		 * This method is run once by Wpsso->set_objects() and typically runs in 0.0002 secs.
 		 *
 		 * Do not save or retrieve the array from the transient cache as this is slower than running the method.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * AMP.
 								 *
 								 * See https://wordpress.org/plugins/amp/.
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Accelerated Mobile Pages.
 								 *
 								 * See https://wordpress.org/plugins/accelerated-mobile-pages/.
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Cache Enabler.
 								 *
 								 * See https://wordpress.org/plugins/cache-enabler/.
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Comet Cache.
 								 *
 								 * See https://wordpress.org/plugins/comet-cache/.
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Hummingbird Cache.
 								 *
 								 * See https://wordpress.org/plugins/hummingbird-performance/.
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * LiteSpeed Cache.
 								 *
 								 * See https://wordpress.org/plugins/litespeed-cache/.
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Pagely Cache.
 								 */
 								case 'pagely':
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * SiteGround Cache.
 								 */
 								case 'siteground':
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * W3 Total Cache.
 								 *
 								 * See https://wordpress.org/plugins/w3-total-cache/.
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Engine Cache.
 								 */
 								case 'wp-engine':
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Fastest Cache.
 								 *
 								 * See https://wordpress.org/plugins/wp-fastest-cache/.
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Rocket Cache.
 								 */
 								case 'wp-rocket':
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Super Cache.
 								 *
 								 * See https://wordpress.org/plugins/wp-super-cache/.
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Easy Digital Downloads.
 								 *
 								 * See https://wordpress.org/plugins/easy-digital-downloads/.
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WooCommerce Show Single Variations.
 								 *
 								 * See https://iconicwp.com/products/woocommerce-show-single-variations/.
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Perfect WooCommerce Brands.
 								 */
 								case 'perfect-woocommerce-brands':
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WooCommerce.
 								 *
 								 * See https://wordpress.org/plugins/woocommerce/.
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WooCommerce Brands.
 								 */
 								case 'woocommerce-brands':
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WooCommerce Currency Switcher.
 								 */
 								case 'woocommerce-currency-switcher':
@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WooCommerce UPC, EAN, and ISBN.
 								 */
 								case 'woo-add-gtin':
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Product GTIN for WooCommerce.
 								 */
 								case 'wpm-product-gtin-wc':
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * YITH WooCommerce Brands Add-on.
 								 */
 								case 'yith-woocommerce-brands':
@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Import All in One SEO Pack Metadata.
 								 */
 								case 'aioseop-meta':
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Import Rank Math SEO Metadata.
 								 */
 								case 'rankmath-meta':
@@ -373,7 +373,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Import The SEO Framework Metadata.
 								 */
 								case 'seoframework-meta':
@@ -382,7 +382,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Import Yoast SEO Block Attrs.
 								 */
 								case 'wpseo-blocks':
@@ -391,7 +391,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Import Yoast SEO Metadata.
 								 */
 								case 'wpseo-meta':
@@ -407,7 +407,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * The Events Calendar.
 								 *
 								 * See https://wordpress.org/plugins/the-events-calendar/.
@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Simple Job Board.
 								 *
 								 * See https://wordpress.org/plugins/simple-job-board/.
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Job Manager.
 								 *
 								 * See https://wordpress.org/plugins/wp-job-manager/.
@@ -473,7 +473,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * GTranslate.
 								 *
 								 * See https://wordpress.org/plugins/gtranslate/.
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Polylang.
 								 *
 								 * See https://wordpress.org/plugins/polylang/.
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WPML.
 								 *
 								 * See https://wpml.org/.
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Perfect Images (aka WP Retina 2x).
 								 *
 								 * See https://wordpress.org/plugins/wp-retina-2x/.
@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Premium edition feature / option.
 								 */
 								case 'facebook':	// Check for Embedded Media: Facebook Videos.
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Premium edition feature / option.
 								 */
 								case 'gravatar':	// Gravatar is Default Author Image.
@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Premium edition feature / option.
 								 */
 								case 'upscale':	// Upscale Media Library Images.
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Rate my Post.
 								 *
 								 * https://wordpress.org/plugins/rate-my-post/
@@ -590,7 +590,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP-PostRatings.
 								 *
 								 * https://wordpress.org/plugins/wp-postratings/
@@ -608,7 +608,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * WP Recipe Maker.
 								 *
 								 * See https://wordpress.org/plugins/wp-recipe-maker/.
@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Product Review Lite.
 								 *
 								 * See https://wordpress.org/plugins/wp-product-review/.
@@ -657,7 +657,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Yotpo: Product & Photo Reviews for WooCommerce.
 								 *
 								 * See https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/.
@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * All in One SEO Pack.
 								 *
 								 * See https://wordpress.org/plugins/all-in-one-seo-pack/.
@@ -686,7 +686,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Jetpack SEO module.
 								 *
 								 * See https://wordpress.org/plugins/jetpack/.
@@ -705,7 +705,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Rank Math.
 								 *
 								 * See https://wordpress.org/plugins/seo-by-rank-math/.
@@ -716,7 +716,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * The SEO Framework.
 								 *
 								 * See https://wordpress.org/plugins/autodescription/.
@@ -727,7 +727,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * SEOPress.
 								 *
 								 * See https://wordpress.org/plugins/wp-seopress/.
@@ -738,7 +738,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * SEO Ultimate.
 								 *
 								 * See https://wordpress.org/plugins/seo-ultimate/.
@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Slim SEO.
 								 *
 								 * See https://wordpress.org/plugins/slim-seo/.
@@ -760,7 +760,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * SEO 2020 by Squirrly.
 								 *
 								 * https://wordpress.org/plugins/squirrly-seo/.
@@ -771,7 +771,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * WP Meta SEO.
 								 *
 								 * See https://wordpress.org/plugins/wp-meta-seo/.
@@ -782,7 +782,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Yoast SEO.
 								 *
 								 * See https://wordpress.org/plugins/wordpress-seo/.
@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Yoast WooCommerce SEO.
 								 *
 								 * https://yoast.com/wordpress/plugins/yoast-woocommerce-seo/.
@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Co-Authors Plus.
 								 *
 								 * See https://wordpress.org/plugins/co-authors-plus/.
@@ -822,7 +822,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Ultimate Member.
 								 *
 								 * See https://wordpress.org/plugins/ultimate-member/.
@@ -840,7 +840,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								/**
+								/*
 								 * Autoptimize.
 								 *
 								 * See https://wordpress.org/plugins/autoptimize/.
@@ -851,7 +851,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Elementor.
 								 */
 								case 'elementor':
@@ -860,7 +860,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * Jetpack.
 								 *
 								 * See https://wordpress.org/plugins/jetpack/.
@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								/**
+								/*
 								 * URL Shortening Service.
 								 */
 								case 'shorten':
@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 					}
 
-					/**
+					/*
 					 * Check for plugin classes and functions first, to include both free and pro / premium
 					 * plugins that have different plugin slugs, but use the same class or function names.
 					 */
@@ -953,7 +953,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
 			if ( defined( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) && WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE ) {
@@ -961,7 +961,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
-			/**
+			/*
 			 * This method is run once by Wpsso->set_objects() and typically runs in 0.0002 secs.
 			 */
 			$get_avail[ 'p' ][ 'avail_mtime' ] = microtime( $get_float = true ) - $mtime_start;

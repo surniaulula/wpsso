@@ -17,14 +17,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
-	/**
+	/*
 	 * Since WPSSO Core v8.5.1.
 	 */
 	class WpssoAdminFilters {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoAdmin->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Filter for 'wpsso_status_std_features'.
 		 */
 		public function filter_status_std_features( $features, $ext, $info ) {
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$integ_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Webpage Title Tag.
 			 */
 			$features[ '(code) Webpage Title Tag' ] = array(
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->util->is_seo_title_disabled() ? 'off' : 'on',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Image Dimension Checks.
 			 */
 			$features[ '(feature) Image Dimension Checks' ] = array(
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_check_img_dims' ] ? 'on' : 'rec',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Inherit Custom Images.
 			 */
 			$features[ '(feature) Inherit Custom Images' ] = array(
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_inherit_images' ] ? 'on' : 'off',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Inherit Featured Image.
 			 */
 			$features[ '(feature) Inherit Featured Image' ] = array(
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_inherit_featured' ] ? 'on' : 'off',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered Content.
 			 */
 			$features[ '(feature) Use Filtered Content' ] = array(
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_filter_content' ] ? 'on' : 'rec',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered Excerpt.
 			 */
 			$features[ '(feature) Use Filtered Excerpt' ] = array(
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? 'on' : 'off',
 			);
 
-			/**
+			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Upscale Media Library Images.
 			 */
 			$features[ '(feature) Upscale Media Library Images' ] = array(

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.
 		 */
 		public function __construct( &$plugin ) {
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			global $wpdb;
 
-			/**
+			/*
 			 * See https://dev.mysql.com/doc/refman/8.0/en/program-variables.html.
 			 *
 			 * See https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html.
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_php() {
 
-			/**
+			/*
 			 * Load WP class libraries to avoid triggering a bug in EWWW when applying the 'wp_image_editors' filter.
 			 */
 			require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			foreach ( $php_extensions as $php_ext => $php_info ) {
 
-				/**
+				/*
 				 * Skip image extensions for WordPress image editors that are not used.
 				 */
 				if ( ! empty( $php_info[ 'wp_image_editor' ][ 'class' ] ) ) {
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$notice_key = '';	// Clear any previous error message key.
 
-				/**
+				/*
 				 * Check for the extension first, then maybe check for its functions.
 				 */
 				if ( ! extension_loaded( $php_ext ) ) {
@@ -234,13 +234,13 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 
-					/**
+					/*
 					 * If this is a WordPress image editing extension, add information about the WordPress
 					 * image editing class.
 					 */
 					if ( ! empty( $php_info[ 'wp_image_editor' ][ 'class' ] ) ) {
 
-						/**
+						/*
 						 * If we have a WordPress reference URL for this image editing class, link the
 						 * image editor class name.
 						 */
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
 					}
 
-					/**
+					/*
 					 * Add additional / mode specific information about this check for the hosting provider.
 					 */
 					$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							'<code>extension_loaded()</code>', $php_ext ) . ' ';
 
 
-					/**
+					/*
 					 * If we are checking for the ImageMagick PHP extension, make sure the user knows the
 					 * difference between the OS package and the PHP extension.
 					 */
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$notice_key .= 'php-extension-' . $php_ext . '-not-loaded';
 
-				/**
+				/*
 				 * If the PHP extension is loaded, then maybe check to make sure the extension is complete. ;-)
 				 */
 				} elseif ( ! empty( $php_info[ 'classes' ] ) && is_array( $php_info[ 'classes' ] ) ) {
@@ -337,7 +337,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( defined( 'WPB_VC_VERSION' ) ) {
 
-				/**
+				/*
 				 * Although no specific entry was added in the WPBakery changelog, it has been reported that this
 				 * bug is now fixed in the current WPBakery version (6.1.0).
 				 *

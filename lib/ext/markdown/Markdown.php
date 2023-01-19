@@ -1,6 +1,6 @@
 <?php
 /**
- * Markdown  -  A text-to-HTML conversion tool for web writers
+ * Markdown - A text-to-HTML conversion tool for web writers
  *
  * @package   php-markdown
  * @author    Michel Fortin <michel.fortin@michelf.com>

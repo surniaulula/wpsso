@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public $lang    = array();
 		public $submenu = array();
 
-		/**
+		/*
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.
 		 */
 		public function __construct( &$plugin ) {
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->filters = new WpssoAdminFilters( $plugin );
 
-			/**
+			/*
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the
 			 * iframe_parent arguments when the Install or Update button is clicked.
 			 *
@@ -82,19 +82,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
-			/**
+			/*
 			 * This filter re-sorts (if necessary) the active plugins array to load WPSSO Core before its add-ons.
 			 */
 			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
 
-			/**
+			/*
 			 * Define and disable the "Expect: 100-continue" header.
 			 */
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 
 			add_filter( 'http_request_host_is_external', array( $this, 'allow_safe_hosts' ), 1000, 3 );
 
-			/**
+			/*
 			 * Provides plugin data / information from the readme.txt for additional add-ons. Don't hook the
 			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin data
 			 * than what's available from the readme.txt.
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
 			}
 
-			/**
+			/*
 			 * Add plugin / add-on settings links to the WordPress Plugins page. Hook this filter even when doing ajax
 			 * since the WordPress plugin search results are created using an ajax call.
 			 *
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( is_multisite() ) {
 
-				/**
+				/*
 				 * The 5th argument is $menu_lib = 'sitesubmenu', so always limit the method arguments to 4.
 				 */
 				add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 1000, 4 );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! $doing_ajax ) {
 
-				/**
+				/*
 				 * The admin_menu action is run before admin_init.
 				 */
 				add_action( 'admin_menu', array( $this, 'load_menu_objects' ), -1000 );
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_filter( 'wp_redirect', array( $this, 'plugin_complete_redirect' ), 1000, 1 );
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
 
-				/**
+				/*
 				 * get_tb_types_showing() returns false or an array of notice types to include in the toolbar menu.
 				 */
 				if ( $this->p->notice->get_tb_types_showing() ) {
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.3.0.
 		 *
 		 * This action is run by WordPress after any plugin is activated.
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->reg->reset_admin_checks();
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.3.0.
 		 *
 		 * This action is run by WordPress multiple times and the parameters differ according to the context (ie. if the
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->reg->reset_admin_checks();
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.3.0.
 		 *
 		 * This action is run by WordPress when the upgrader process is complete.
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->reg->reset_admin_checks();
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.5.1.
 		 *
 		 * Called when the WordPress Settings > Site Address URL or the WP_HOME constant value is changed.
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Standardize old and new values for string comparison.
 			 */
 			$old_value = untrailingslashit( strtolower( $old_value ) );
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
-		/**
+		/*
 		 * Add a new main menu and its sub-menu items.
 		 */
 		public function add_admin_menus( $menu_lib = 'submenu' ) {
@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Add sub-menu items to existing WordPress menus.
 		 */
 		public function add_admin_submenus() {
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
 		 *
 		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * set_options() may have loaded the static defaults for new or missing options.
 			 *
 			 * After all objects have been loaded, and all filter / action hooks registered, check to see if the
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->site_options = $this->p->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $network = true );
 			}
 
-			/**
+			/*
 			 * Init option checks.
 			 *
 			 * See WpssoWcmd->init_check_options().
@@ -476,7 +476,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'base' ] ) ) {
 
-					/**
+					/*
 					 * Fires at the end of the update message container in each row of the plugins list table.
 					 *
 					 * See wordpress/wp-admin/includes/update.php:587.
@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
 		}
 
-		/**
+		/*
 		 * Add plugin links for the WordPress network plugins page.
 		 */
 		public function add_site_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'sitesubmenu' ) {
@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $this->add_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib );
 		}
 
-		/**
+		/*
 		 * Add plugin links for the WordPress plugins page.
 		 *
 		 * $plugin_data is an array of plugin data. See get_plugin_data().
@@ -597,7 +597,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $action_links;
 		}
 
-		/**
+		/*
 		 * Define and disable the "Expect: 100-continue" header.
 		 *
 		 * $parsed_args should be an array, so make sure other filters aren't giving us a string or boolean.
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$parsed_args[ 'headers' ] = array();
 
-			/**
+			/*
 			 * WordPress allows passing headers as a string -- fix that issue here so we can update the 'headers' array
 			 * properly.
 			 *
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $is_allowed;
 		}
 
-		/**
+		/*
 		 * Provides plugin data / information from the readme.txt for additional add-ons.
 		 */
 		public function external_plugin_data( $result, $action = null, $args = null ) {
@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $plugin_data;
 		}
 
-		/**
+		/*
 		 * This method receives only a partial options array, so re-create a full one.
 		 *
 		 * WordPress handles the actual saving of the options to the database table.
@@ -707,12 +707,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$current_user_id = get_current_user_id();	// Always returns an integer.
 
-			/**
+			/*
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
 			$this->p->notice->clear();
 
-			/**
+			/*
 			 * Make sure the input is an array.
 			 */
 			if ( ! is_array( $opts ) ) {
@@ -727,7 +727,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = false );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
 
-			/**
+			/*
 			 * Maybe clear dismissed notices for enabled options that were previously disabled.
 			 */
 			foreach ( array(
@@ -747,12 +747,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Update the current options with any changes.
 			 */
 			$this->p->options = $opts;
 
-			/**
+			/*
 			 * Create a clear cache URL from the current page URL.
 			 */
 			$cache_md5_pre  = 'wpsso_h_';
@@ -810,12 +810,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				exit;
 			}
 
-			/**
+			/*
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
 			$this->p->notice->clear();
 
-			/**
+			/*
 			 * Make sure the input is an array.
 			 */
 			$opts = array();
@@ -832,7 +832,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
 
-			/**
+			/*
 			 * Update the current options with any changes.
 			 */
 			$this->p->site_options = $opts;
@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'flush_rewrite_rules':
 
-							/**
+							/*
 							 * Update .htaccess and the 'rewrite_rules' option.
 							 *
 							 * This is an expensive operation so it should only be used when necessary.
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_footer_hooks();	// Include add-on name and version in settings page footer.
 		}
 
-		/**
+		/*
 		 * Add settings page filter and action hooks.
 		 *
 		 * This method is extended by each submenu page.
@@ -1104,13 +1104,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 		}
 
-		/**
+		/*
 		 * This method is extended by each submenu page.
 		 */
 		protected function add_meta_boxes() {
 		}
 
-		/**
+		/*
 		 * Include add-on name and version in settings page footer.
 		 */
 		protected function add_footer_hooks() {
@@ -1120,7 +1120,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_filter( 'update_footer', array( $this, 'admin_footer_host' ) );
 		}
 
-		/**
+		/*
 		 * This method is extended by each submenu page.
 		 */
 		protected function get_table_rows( $metabox_id, $tab_key ) {
@@ -1128,7 +1128,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return array();
 		}
 
-		/**
+		/*
 		 * Called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
 		 */
 		protected function maybe_show_language_notice() {
@@ -1159,24 +1159,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$side_col_boxes = $this->get_side_col_boxes();
 			$dashicon_html  = $this->get_menu_dashicon_html( $this->menu_id );
 
-			/**
+			/*
 			 * Settings page wrapper.
 			 */
 			echo '<div id="' . $this->pagehook . '" class="wrap">' . "\n";
 
-			/**
+			/*
 			 * Settings page header.
 			 */
 			echo '<div id="wpsso-setting-page-header">' . "\n";
 			echo '<h1>' . $dashicon_html . ' '. $this->menu_name . '</h1>' . "\n";
 			echo '</div><!-- #wpsso-setting-page-header -->' . "\n";
 
-			/**
+			/*
 			 * Settings page content.
 			 */
 			echo '<div id="wpsso-setting-page-content" class="' . ( empty( $side_col_boxes ) ? 'no' : 'has' ) . '-side-column">' . "\n";
 
-			/**
+			/*
 			 * Metaboxes.
 			 */
 			echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div><!-- #post-body -->' . "\n";
 			echo '</div><!-- #poststuff -->' . "\n";
 
-			/**
+			/*
 			 * Information boxes.
 			 */
 			if ( ! empty( $side_col_boxes ) ) {
@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div><!-- #wpsso-setting-page-content -->' . "\n";
 			echo '</div><!-- #' . $this->pagehook .' -->' . "\n";
 
-			/**
+			/*
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
 			?><script>
@@ -1230,7 +1230,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( false !== strpos( $url, 'updated=' ) && strpos( $url, 'wp_http_referer=' ) ) {
 
-				/**
+				/*
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
 				 */
 				$menu_lib      = current_user_can( 'list_users' ) ? 'users' : 'profile';
@@ -1269,7 +1269,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$admin_color = 'fresh';
 					}
 
-					/**
+					/*
 					 * Match WordPress behavior (users page for admins, profile page for everyone else).
 					 */
 					$referer_admin_url = current_user_can( 'list_users' ) ?
@@ -1331,7 +1331,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, $context = 'normal', $object = null );
 
-			/**
+			/*
 			 * Hooked by WpssoSubmenuDashboard->action_form_content_metaboxes_dashboard().
 			 */
 			do_action( 'wpsso_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
@@ -1392,7 +1392,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Called by WpssoAdmin->show_post_body_setting_form().
 		 * Called by WpssoSubmenuTools->show_post_body_setting_form().
 		 */
@@ -1411,7 +1411,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
 			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
 
-			/**
+			/*
 			 * The 'submit' button will be assigned a class of 'button-primary' and all other first row buttons will be
 			 * 'button-secondary button-highlight'. The second+ row of buttons will be assigned a class of
 			 * 'button-secondary'.
@@ -1423,7 +1423,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			/**
+			/*
 			 * Note that the WpssoSubmenuTools->filter_form_button_rows() filter returns a completely new array.
 			 */
 			$form_button_rows = apply_filters( 'wpsso_form_button_rows', $form_button_rows,
@@ -1522,7 +1522,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Get Help and Support dashboard metabox content.
 		 */
 		public function show_metabox_help_support() {
@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</td></tr></table>';
 		}
 
-		/**
+		/*
 		 * Your Rating Is Important dashboard metabox content.
 		 */
 		public function show_metabox_rate_review() {
@@ -1605,7 +1605,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</td></tr></table>';
 		}
 
-		/**
+		/*
 		 * Cache Status dashboard metabox content.
 		 */
 		public function show_metabox_cache_status() {
@@ -1627,7 +1627,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
 			echo '</tr>';
 
-			/**
+			/*
 			 * Sort the transient array and make sure the "All Transients" count is last.
 			 */
 			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( 'self', 'sort_by_label_key' ) );
@@ -1681,7 +1681,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return 0;	// No change.
 		}
 
-		/**
+		/*
 		 * Version Information dashboard metabox content.
 		 */
 		public function show_metabox_version_info() {
@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<table class="sucom-settings wpsso column-metabox version-info" style="table-layout:fixed;">';
 
-			/**
+			/*
 			 * Required for chrome to display a fixed table layout.
 			 */
 			echo '<colgroup>';
@@ -1722,7 +1722,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( is_array( $readme_info[ 'upgrade_notice' ] ) ) {
 
-						/**
+						/*
 						 * Hooked by the update manager to apply the version filter.
 						 */
 						$upgrade_notice = apply_filters( 'wpsso_readme_upgrade_notices', $readme_info[ 'upgrade_notice' ], $ext );
@@ -1736,7 +1736,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Hooked by the update manager to check installed version against the latest version, if a
 					 * non-stable filter is selected for that plugin / add-on.
 					 */
@@ -1759,7 +1759,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
 
-				/**
+				/*
 				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
 				 */
 				if ( $stable_version !== $latest_version ) {
@@ -1771,7 +1771,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number">' . $latest_version . '</td></tr>';
 
-				/**
+				/*
 				 * Only show the latest version notice message if there's a newer / non-matching version.
 				 */
 				if ( $plugin_version !== $stable_version || $plugin_version !== $latest_version ) {
@@ -1795,7 +1795,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>';
 		}
 
-		/**
+		/*
 		 * Feature Status dashboard metabox content.
 		 */
 		public function show_metabox_status_std() {
@@ -1805,7 +1805,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
 			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
 			 * then unhooks itself from the action, so it can only be run once.
@@ -1907,7 +1907,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( 'wpsso' === $ext ) {
 
-					/**
+					/*
 					 * SSO > Advanced Settings > Service APIs > Shortening Services > URL Shortening Service.
 					 */
 					foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $svc_name ) {
@@ -1960,7 +1960,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>';
 		}
 
-		/**
+		/*
 		 * Always call as WpssoAdmin::get_nonce_action() to have a reliable __METHOD__ value.
 		 */
 		public static function get_nonce_action() {
@@ -2159,14 +2159,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows = array();
 
-				/**
+				/*
 				 * Plugin name, description and links.
 				 */
 				$table_rows[ 'plugin_name' ] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 					$ext_name_html . $ext_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
-				/**
+				/*
 				 * Plugin separator.
 				 */
 				if ( $ext_num < $ext_total ) {
@@ -2178,7 +2178,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[] = '<td></td>';
 				}
 
-				/**
+				/*
 				 * Show the plugin icon and table rows.
 				 */
 				foreach ( $table_rows as $key => $row ) {
@@ -2240,14 +2240,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					network_admin_url( 'site-settings.php?id=' . $blog_id ) :
 					get_admin_url( $blog_id, 'options-general.php' ) ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
 
-				/**
+				/*
 				 * Plugin name, description, and action links.
 				 */
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 					$ext_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
-				/**
+				/*
 				 * Authentication ID.
 				 */
 				$table_rows[ 'plugin_tid' ] = '' .
@@ -2260,7 +2260,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, $is_enabled = true );
 				}
 
-				/**
+				/*
 				 * License information.
 				 */
 				$table_rows[ 'home_url' ] = '' .
@@ -2291,12 +2291,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						} elseif ( 'qty_used' === $key ) {
 
-							/**
+							/*
 							 * The default 'qty_used' value is a 'n/n' string.
 							 */
 							$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
-							/**
+							/*
 							 * Use a better '# of #' string translation if possible.
 							 */
 							if ( version_compare( WpssoUmConfig::get_version(), '1.10.1', '>=' ) ) {
@@ -2311,7 +2311,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 
-							/**
+							/*
 							 * Add a license information link (thickbox).
 							 */
 							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
@@ -2337,7 +2337,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
 				}
 
-				/**
+				/*
 				 * Plugin separator.
 				 */
 				if ( $ext_num < $ext_total ) {
@@ -2349,7 +2349,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[] = '<td></td>';
 				}
 
-				/**
+				/*
 				 * Show the plugin icon and table rows.
 				 */
 				foreach ( $table_rows as $key => $row ) {
@@ -2457,7 +2457,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $footer_html;
 		}
 
-		/**
+		/*
 		 * WordPress sorts the active plugins array before updating the 'active_plugins' option. The default PHP sort order
 		 * loads WPSSO add-ons before the WPSSO Core plugin. This filter re-sorts (if necessary) the active plugins array
 		 * to load WPSSO Core before its add-ons. This allows WPSSO Core to load the latest WpssoAbstractAddOn and
@@ -2482,7 +2482,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $current;
 		}
 
-		/**
+		/*
 		 * Sort the WPSSO Core plugin slug before the WPSSO add-on slugs.
 		 */
 		private static function sort_active_plugins( $a, $b ) {
@@ -2509,7 +2509,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return strcmp( $a, $b );				// Fallback to sorting like WordPress.
 		}
 
-		/**
+		/*
 		 * Called from the Essential and General Settings pages.
 		 */
 		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
@@ -2526,14 +2526,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
-			/**
+			/*
 			 * Website person.
 			 */
 			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
 				$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
 				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
-			/**
+			/*
 			 * Website organization.
 			 */
 			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
@@ -2582,7 +2582,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v13.4.1.
 		 */
 		public static function get_option_unit_comment( $opt_key ) {
@@ -2695,7 +2695,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $get_notice ? $notice_msg : $check_url;
 		}
 
-		/**
+		/*
 		 * Called from the network settings pages.
 		 *
 		 * Add a class to set a minimum width for the network postboxes.
@@ -2748,7 +2748,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			ob_implicit_flush( true );
 			ob_end_flush();
 
-			/**
+			/*
 			 * Remove all dots, except last one, for MSIE clients.
 			 */
 			if ( strstr( $_SERVER[ 'HTTP_USER_AGENT' ], 'MSIE' ) ) {
@@ -2890,7 +2890,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $dashicon;
 		}
 
-		/**
+		/*
 		 * $menu_lib = 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'sitesubmenu', 'tools', or 'users'
 		 */
 		public function get_submenu_args( $menu_lib = 'submenu' ) {
@@ -2941,7 +2941,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$menu_title  = $this->get_submenu_title( $info, $menu_lib, $menu_id );
 
-					/**
+					/*
 					 * Leave WPSSO Core submenu items in their original order.
 					 */
 					if ( 'wpsso' === $ext ) {
@@ -2952,7 +2952,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$top_last_id = $menu_id;
 
-					/**
+					/*
 					 * Sort add-on submenu items.
 					 */
 					} else {
@@ -3017,7 +3017,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return apply_filters( $filter_name, $menu_title );
 		}
 
-		/**
+		/*
 		 * Get the plugin readme and convert array elements to a plugin data object.
 		 */
 		public function get_plugin_data( $ext, $read_cache = true ) {
@@ -3035,7 +3035,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array(
 
-				/**
+				/*
 				 * Readme array => Plugin object.
 				 */
 				'plugin_name'       => 'name',
@@ -3141,7 +3141,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
 
-			/**
+			/*
 			 * Set and filter the cache expiration value only once.
 			 */
 			static $cache_exp_secs = null;
@@ -3169,7 +3169,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $file_url && strpos( $file_url, '://' ) ) {
 
-					/**
+					/*
 					 * Clear the cache first if reading the cache is disabled.
 					 */
 					if ( ! $read_cache ) {
@@ -3211,7 +3211,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$readme_info = $readme_parser->parse_content( $readme_content );
 
-				/**
+				/*
 				 * Remove possibly inaccurate information from the local readme file.
 				 */
 				if ( ! $readme_from_url && is_array( $readme_info ) ) {
@@ -3223,7 +3223,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Save the parsed readme to the transient cache.
 			 */
 			if ( $cache_exp_secs > 0 ) {
@@ -3239,7 +3239,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
 		}
 
-		/**
+		/*
 		 * Plugin links for the addons and licenses settings page.
 		 */
 		public function get_ext_action_links( $ext, $info, &$tabindex = false ) {
@@ -3342,19 +3342,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $action_links;
 		}
 
-		/**
+		/*
 		 * Returns a 128x128px image by default.
 		 */
 		public function get_ext_img_icon( $ext, $icon_px = 128 ) {
 
-			/**
+			/*
 			 * The default image is a transparent 1px gif.
 			 */
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 
 			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
 
-				/**
+				/*
 				 * Icon image array keys are '1x' and '2x'.
 				 */
 				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
@@ -3373,7 +3373,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return '<img ' . $img_src . ' width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
 		}
 
-		/**
+		/*
 		 * Called from WpssoSubmenuSetup->show_metabox_setup_guide() and WpssoJsonSubmenuSchemaShortcode->show_metabox_schema_shortcode().
 		 */
 		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
@@ -3422,7 +3422,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $text_domain ) {
 
-				/**
+				/*
 				 * Translate HTML headers, paragraphs, and list items.
 				 */
 				$cache_content = SucomUtil::get_html_transl( $cache_content, $text_domain );
@@ -3431,7 +3431,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $cache_content;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/09/15.
 		 */
 		public function check_tmpl_head_attributes() {
@@ -3439,7 +3439,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_og_types_table_rows( array &$table_rows, $form ) {
@@ -3447,7 +3447,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/09/08.
 		 */
 		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
@@ -3455,7 +3455,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/09/08', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
@@ -3463,7 +3463,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
@@ -3471,7 +3471,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {

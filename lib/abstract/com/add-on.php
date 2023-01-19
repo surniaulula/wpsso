@@ -58,7 +58,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 			return $avail;
 		}
 
-		/**
+		/*
 		 * All WPSSO Core objects are instantiated and configured.
 		 */
 		public function init_plugin_notices() {
@@ -106,14 +106,17 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
 
-						// The 'notice' message is HTML generated from the add-on config (required plugin name, version, and URL link).
+						/*
+						 * The 'notice' message is HTML generated from the add-on config (ie. the required
+						 * plugin name, version, and link).
+						 */
 						echo wp_kses_post( '<div class="notice notice-error error"><p>' . $req_info[ 'notice' ] . '</p></div>' );
 					}
 				}
 			}
 		}
 
-		/**
+		/*
 		 * Returns false or an array of missing requirements.
 		 */
 		protected function get_missing_requirements() {
@@ -148,7 +151,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 					$req_name = $req_info[ 'name' ];
 				}
 
-				/**
+				/*
 				 * Optimize and check for plugin version first, then check for plugin existence.
 				 */
 				if ( ! empty( $req_info[ 'version_const' ] ) && defined( $req_info[ 'version_const' ] ) ) {
@@ -164,7 +167,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 					$req_info[ 'notice' ] = $this->get_requires_plugin_notice( $info, $req_info );
 				}
 
-				/**
+				/*
 				 * A version value from a global variable or constant.
 				 */
 				if ( ! empty( $req_info[ 'version' ] ) ) {
@@ -178,7 +181,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Possible notice for wordpress version, plugin version, or missing plugin.
 				 */
 				if ( ! empty( $req_info[ 'notice' ] ) ) {

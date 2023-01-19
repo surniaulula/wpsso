@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			add_action( 'transition_comment_status', array( $this, 'clear_cache_transition_comment_status' ), PHP_INT_MAX, 3 );
 		}
 
-		/**
+		/*
 		 * Get the $mod object for a comment ID.
 		 */
 		public function get_mod( $comment_id ) {
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			$mod = self::get_mod_defaults();
 
-			/**
+			/*
 			 * Common elements.
 			 */
 			$mod[ 'id' ]          = is_numeric( $comment_id ) ? (int) $comment_id : 0;	// Cast as integer.
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			$mod[ 'name_transl' ] = _x( 'comment', 'module name', 'wpsso' );
 			$mod[ 'obj' ]         =& $this;
 
-			/**
+			/*
 			 * WpssoComment elements.
 			 */
 			$mod[ 'is_comment' ] = true;
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return get_comment( $mod[ 'id' ] );
 		}
 
-		/**
+		/*
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
@@ -133,12 +133,12 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			static $local_cache = array();
 
-			/**
+			/*
 			 * Use $comment_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $comment_id, 'filter' => $filter_opts ) );
 
-			/**
+			/*
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
-				/**
+				/*
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -209,12 +209,12 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					$mod = $this->get_mod( $comment_id );
 
-					/**
+					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v4.31.0.
 					 *
 					 * Hooked by several integration modules to provide information about the current content.
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return $this->return_options( $comment_id, $md_opts, $md_key, $merge_defs );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $comment_id, $rel = false ) {
@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return self::update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function delete_options( $comment_id, $rel = false ) {
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Retrieves or updates the metadata cache by key and group.
 		 */
 		public function get_update_meta_cache( $comment_id ) {
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return SucomUtilWP::get_update_meta_cache( $comment_id, $meta_type = 'comment' );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $comment_id, $rel = false ) {
@@ -349,7 +349,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for comment id ' . $comment_id );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function get_meta( $comment_id, $meta_key = '', $single = false ) {
@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return get_comment_meta( $comment_id, $meta_key, $single );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function update_meta( $comment_id, $meta_key, $value ) {
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return update_comment_meta( $comment_id, $meta_key, $value );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function delete_meta( $comment_id, $meta_key ) {

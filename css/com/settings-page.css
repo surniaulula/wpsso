@@ -89,7 +89,7 @@ h1 > div.dashicons-before::before {
 	margin:10px 0 5px 0;
 }
 
-/**
+/*
  * WooCommerce changes their tabs to icons at 900px.
  * WordPress collapses the admin menu at 960px.
  * WordPress changes to larger icons at 782px.
@@ -276,7 +276,7 @@ div.submit-buttons .button-alt:hover {
 	text-align:right;
 }
 
-/**
+/*
  * Dashboard and Features settings page.
  */
 #metabox_col_wrap {
@@ -364,7 +364,7 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 	content:"\e80e";	/* .icon-cog-alt */
 }
 
-/**
+/*
  * Tools and Actions page.
  */
 #tools-content div.submit-buttons {
@@ -422,7 +422,7 @@ body.rtl #tools-content p.left {
 	text-align:right;
 }
 
-/**
+/*
  * Add Person page.
  */
 #poststuff #post-body-content #add-person-content h2 {

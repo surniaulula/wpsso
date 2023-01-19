@@ -1,5 +1,5 @@
 
-/**
+/*
  * Hard-coded / fixed constants. These values cannot be modified.
  */
 WPSSO_FILEPATH
@@ -11,7 +11,7 @@ WPSSO_UNDEF
 WPSSO_URLPATH
 WPSSO_VERSION
 
-/**
+/*
  * Define in your wp-config.php file to change the default value.
  */
 FORCE_SSL                                = false

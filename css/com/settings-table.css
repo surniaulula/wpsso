@@ -95,7 +95,7 @@ table.sucom-settings img.alignright {
 	margin-left:30px;
 }
 
-/**
+/*
  * Prevent Firefox from outlining links.
  */
 table.sucom-settings a,
@@ -510,7 +510,7 @@ table.sucom-settings td.top {
 	vertical-align:top;
 }
 
-/**
+/*
  * W3 Colors:
  *
  * Light Gray = #f1f1f1;
@@ -886,7 +886,7 @@ table.sucom-settings td div.linked_to_label {
 	vertical-align:middle;
 }
 
-/**
+/*
  * Align radio / checkbox input buttons vertically.
  */
 table.sucom-settings td div.input_vertical_list > span {
@@ -1041,7 +1041,7 @@ table.sucom-settings #info-meta-social-preview {
 	color:#888;
 }
 
-/**
+/*
  * Document SSO > Preview Social tab.
  */
 table.sucom-settings .fb_preview_container {
@@ -1165,7 +1165,7 @@ table.sucom-settings .fb_preview_by {
 	margin-top:9px;
 }
 
-/**
+/*
  * WooCommerce changes their tabs to icons at 900px.
  * WordPress collapses the admin menu at 960px.
  * WordPress changes to larger icons at 782px.
@@ -1188,7 +1188,7 @@ table.sucom-settings .fb_preview_by {
 	}
 }
 
-/**
+/*
  * Document SSO > Preview oEmbed tab.
  */
 table.sucom-settings td.oembed_container {
@@ -1210,7 +1210,7 @@ table.sucom-settings td.oembed_container > iframe {
 	margin:0 auto;
 }
 
-/**
+/*
  * SSO > Dashboard page.
  */
 table.sucom-settings.column-metabox {
@@ -1308,7 +1308,7 @@ table.sucom-settings.column-metabox td.latest-notice p {
 	margin:10px 0;
 }
 
-/**
+/*
  * SSO > Dashboard > Features Status metabox.
  */
 table.sucom-settings.column-metabox.feature-status td {
@@ -1329,7 +1329,7 @@ table.sucom-settings td .status-light {
 	margin-left:5px;
 }
 
-/**
+/*
  * Sucom Toolbar Notice colors:
  *
  * Success (Green)  = #46b450;
@@ -1354,7 +1354,7 @@ table.sucom-settings td.module-is-recommended .status-light {
 	background-color:#ffb900;	/* Yellow. */
 }
 
-/**
+/*
  * SSO > Dashboard > Version Information metabox.
  */
 table.sucom-settings.column-metabox.version-info td.version-number.newer-version-available {
@@ -1369,7 +1369,7 @@ table.sucom-settings.column-metabox.version-info td.version-number.current-versi
 	background-color:#46b450;	/* Green. */
 }
 
-/**
+/*
  * SSO > Setup Guide page.
  */
 table.sucom-settings.html-content-metabox {
@@ -1420,7 +1420,7 @@ table.sucom-settings.html-content-metabox td dd {	/* Definition description. */
 	margin:20px 0 30px 20px;
 }
 
-/**
+/*
  * SSO > Plugin Add-ons page.
  *
  * SSO > Premium Licenses page.
@@ -1430,7 +1430,7 @@ table.sucom-settings.licenses-metabox {
 	padding:20px 30px;
 }
 
-/**
+/*
  * WPSSO WCMD Add-on.
  */
 table.sucom-settings th.option_col { vertical-align:bottom; }

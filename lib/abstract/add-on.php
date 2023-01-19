@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 
 			$this->p_ext = str_replace( 'wpsso', '', $this->ext );
 
-			/**
+			/*
 			 * Note that dynamic class names are available since PHP v5.3.
 			 *
 			 * See https://www.php.net/manual/en/language.namespaces.dynamic.php.
@@ -57,14 +57,14 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 
 		protected function add_hooks( $prio = 10 ) {
 
-			/**
+			/*
 			 * WPSSO filter hooks.
 			 */
 			add_filter( 'wpsso_get_config', array( $this, 'get_config' ), $prio, 1 );
 
 			add_filter( 'wpsso_get_avail', array( $this, 'get_avail' ), $prio, 1 );
 
-			/**
+			/*
 			 * WPSSO action hooks.
 			 */
 			foreach ( array(
@@ -81,12 +81,12 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * The SucomAbstractAddOn->init_plugin_notices() method adds toolbar notices for any missing requirements.
 			 */
 			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 0 );
 
-			/**
+			/*
 			 * If SucomAbstractAddOn->init_plugin_notices() is not executed, then show any missing requirements using
 			 * the standard WordPress admin notices action.
 			 */

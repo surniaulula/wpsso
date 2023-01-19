@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 		protected $addons;
 		protected $options;
 
-		/**
+		/*
 		 * Instantiated by WpssoAdminHead->__construct().
 		 */
 		public function __construct( &$plugin ) {

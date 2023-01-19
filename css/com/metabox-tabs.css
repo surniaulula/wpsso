@@ -1,5 +1,5 @@
 
-/**
+/*
  * Prevent Firefox from outlining links.
  */
 a.sucom-tablink
@@ -24,14 +24,14 @@ a.sucom-tablink:focus {
 	box-sizing:border-box;
 }
 
-/**
+/*
  * Wrapper "div" for the tabs "ul".
  */
 div.sucom-metabox-tabs {
 	overflow:auto;
 }
 
-/**
+/*
  * Tabs - horizontal layout (default).
  */
 ul.sucom-metabox-tabs {
@@ -45,7 +45,7 @@ ul.sucom-metabox-tabs {
 	border-bottom:1px solid #ccc;
 }
 
-/**
+/*
  * Tabs - individual tabs.
  */
 ul.sucom-metabox-tabs > li {
@@ -138,7 +138,7 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 	display:block;
 }
 
-/**
+/*
  * Tabs - vertical layout.
  */
 div.sucom-metabox-tabs.vertical {
@@ -196,7 +196,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	width:100%;
 }
 
-/**
+/*
  * Tab icons.
  *
  * See http://fontello.com.
@@ -422,7 +422,7 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e816";	/* .icon-css */
 }
 
-/**
+/*
  * An h3 title for mobile devices (hidden by default), located just above the table.sucom-settings container.
  */
 h3.sucom-metabox-tab_title {
@@ -437,7 +437,7 @@ h3.sucom-metabox-tab_title {
 	background-color:#fff;		/* Match the active tab color. */
 }
 
-/**
+/*
  * WooCommerce changes their tabs to icons at 900px.
  * WordPress collapses the admin menu at 960px.
  * WordPress changes to larger icons at 782px.

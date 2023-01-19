@@ -33,12 +33,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'domain_path' => '/languages',
 					'admin_l10n'  => 'wpssoAdminPageL10n',
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -61,20 +61,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/setup.html',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso/changelog/',
@@ -255,12 +255,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-add-five-stars/wpsso-add-five-stars.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -283,20 +283,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-add-five-stars/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-add-five-stars',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-add-five-stars/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-add-five-stars/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/changelog/',
@@ -319,12 +319,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-am/wpsso-am.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -332,7 +332,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -347,20 +347,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
@@ -383,12 +383,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -411,20 +411,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/changelog/',
@@ -447,12 +447,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-commerce-manager-catalog-feed/wpsso-commerce-manager-catalog-feed.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-commerce-manager-catalog-feed/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -475,20 +475,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-commerce-manager-catalog-feed/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-commerce-manager-catalog-feed',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-commerce-manager-catalog-feed/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-commerce-manager-catalog-feed/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-commerce-manager-catalog-feed/changelog/',
@@ -511,12 +511,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-faq/wpsso-faq.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -539,20 +539,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-faq/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-faq',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-faq/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-faq/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-faq/changelog/',
@@ -575,12 +575,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-google-merchant-feed/wpsso-google-merchant-feed.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-google-merchant-feed/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -603,20 +603,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-google-merchant-feed/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-google-merchant-feed',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-google-merchant-feed/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-google-merchant-feed/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/changelog/',
@@ -639,12 +639,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-organization-place/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -667,20 +667,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-organization-place/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-organization-place',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization-place/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization-place/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization-place/changelog/',
@@ -703,12 +703,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -716,7 +716,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -731,20 +731,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/changelog/',
@@ -767,12 +767,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -780,7 +780,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -795,20 +795,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-rest-api/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rest-api',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rest-api/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rest-api/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rest-api/changelog/',
@@ -831,12 +831,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -859,20 +859,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
@@ -895,12 +895,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -908,7 +908,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -923,20 +923,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
@@ -959,12 +959,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -972,7 +972,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -987,20 +987,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/changelog/',
@@ -1023,12 +1023,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -1051,20 +1051,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/changelog/',
@@ -1087,12 +1087,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-um/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -1115,13 +1115,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'home'      => 'https://wpsso.com/extend/plugins/wpsso-um/',
@@ -1147,12 +1147,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -1175,20 +1175,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-wc-metadata/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-metadata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-metadata/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-metadata/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/changelog/',
@@ -1211,12 +1211,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-wc-shipping-delivery-time/wpsso-wc-shipping-delivery-time.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -1224,7 +1224,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery-time/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -1239,20 +1239,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery-time',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery-time/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' =>	'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery-time/main/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/changelog/',
@@ -1275,12 +1275,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'base'        => 'wpsso-wp-sitemaps/wpsso-wp-sitemaps.php',
 					'update_auth' => '',		// No premium version.
 
-					/**
+					/*
 					 * URLs or relative paths to plugin banners and icons.
 					 */
 					'assets' => array(
 
-						/**
+						/*
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
@@ -1288,7 +1288,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'high' => 'https://surniaulula.github.io/wpsso-wp-sitemaps/assets/banner-1544x500.jpg',
 						),
 
-						/**
+						/*
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
@@ -1303,20 +1303,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 
-						/**
+						/*
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-wp-sitemaps/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wp-sitemaps',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-wp-sitemaps/reviews/?rate=5#new-post',
 
-						/**
+						/*
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wp-sitemaps/master/readme.txt',
 						'setup_html' => '',
 
-						/**
+						/*
 						 * WPSSO.com.
 						 */
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/changelog/',
@@ -1338,7 +1338,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_checksum'    => '',	// Checksum of option versions.
 					'opt_versions'    => array(),
 
-					/**
+					/*
 					 * Site options.
 					 */
 					'site_name'            => '',			// WebSite Name (localized).
@@ -1352,14 +1352,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_pub_person_id'   => 'none',		// WebSite Publisher Person.
 					'site_pub_schema_type' => 'organization',	// WebSite Publisher Type.
 
-					/**
+					/*
 					 * Facebook options.
 					 */
 					'fb_publisher_url' => '',			// Facebook Business Page URL (localized).
 					'fb_app_id'        => '966242223397117',	// Facebook Application ID.
 					'fb_locale'        => 'en_US',			// Facebook Locale.
 
-					/**
+					/*
 					 * Open Graph options.
 					 *
 					 * See WpssoOpengraph->add_data_og_type_md().
@@ -1385,7 +1385,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_autoplay'           => 1,
 					'og_vid_prev_img'           => 1,		// Include Video Preview Images.
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Open Graph.
 					 */
 					'og_type_for_archive_page'   => 'website',
@@ -1397,7 +1397,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_search_page'    => 'website',
 					'og_type_for_user_page'      => 'profile',
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
 					'og_type_for_attachment'   => 'website',
@@ -1415,7 +1415,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tribe_events' => 'article',	// For The Events Calendar.
 					'og_type_for_website'      => 'website',
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
 					 */
 					'og_type_for_tax_category'           => 'website',
@@ -1429,7 +1429,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tax_tribe_events_cat'   => 'website',	// For The Events Calendar.
 					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
 
-					/**
+					/*
 					 * Pinterest options.
 					 */
 					'pin_publisher_url'            => '',
@@ -1442,14 +1442,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pin_img_crop_x'               => 'center',
 					'pin_img_crop_y'               => 'center',
 
-					/**
+					/*
 					 * Robots options.
 					 */
 					'robots_max_snippet'       => -1,
 					'robots_max_image_preview' => 'large',
 					'robots_max_video_preview' => -1,
 
-					/**
+					/*
 					 * Schema options.
 					 */
 					'schema_1x1_img_width'   => 1200,
@@ -1470,7 +1470,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_aggr_offers'     => 0,		// Aggregate Offers by Currency.
 					'schema_add_text_prop'   => 1,		// Add Text / Article Body Properties.
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Schema.
 					 */
 					'schema_type_for_archive_page'   => 'item.list',
@@ -1482,7 +1482,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_search_page'    => 'webpage.search.results',
 					'schema_type_for_user_page'      => 'webpage.profile',
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
 					'schema_type_for_attachment'   => 'webpage',
@@ -1508,7 +1508,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_webpage'      => 'webpage',
 					'schema_type_for_website'      => 'website',
 
-					/**
+					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
 					 */
 					'schema_type_for_tax_category'           => 'item.list',
@@ -1522,17 +1522,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_tribe_events_cat'   => 'item.list',	// For The Events Calendar.
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Article.
 					 */
 					'schema_def_article_section' => 'none',	// Default Article Section.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Book.
 					 */
 					'schema_def_book_format' => 'none',	// Default Book Format.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 *
 					 * Note that 'schema_def_pub_org_id' may be updated in WpssoOptions->get_defaults() based on the 'site_pub_schema_type' value.
@@ -1543,7 +1543,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_prov_org_id'     => 'none',	// Default Service Provider Org.
 					'schema_def_prov_person_id'  => 'none',	// Default Service Provider Person.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Event.
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
@@ -1553,14 +1553,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_performer_org_id'    => 'none',						// Default Performer Org.
 					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Job Posting.
 					 */
 					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Product.
 					 */
 					'schema_def_product_adult_type'            => 'none',						// Default Product Adult Type.
@@ -1574,19 +1574,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_size_group_1'          => 'none',
 					'schema_def_product_size_system'           => 'none',
 
-					/**
+					/*
 					 * Advanced Settings > Schema Defaults > Review.
 					 */
 					'schema_def_review_item_type' => 'product',	// Default Subject Schema Type.
 
-					/**
+					/*
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',			// Twitter Business @username (localized).
 					'tc_type_singular'  => 'summary_large_image',	// Twitter Card for Post / Page Image.
 					'tc_type_default'   => 'summary',		// Twitter Card Type by Default.
 
-					/**
+					/*
 					 * Twitter Summary Card.
 					 *
 					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary.
@@ -1597,7 +1597,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
 
-					/**
+					/*
 					 * Twitter Summary Card Large Image.
 					 *
 					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image.
@@ -1608,7 +1608,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
 
-					/**
+					/*
 					 * Schema thumbnail image size.
 					 */
 					'thumb_img_width'  => 1200,
@@ -1617,7 +1617,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'thumb_img_crop_x' => 'center',
 					'thumb_img_crop_y' => 'center',
 
-					/**
+					/*
 					 * Other publisher page URLs.
 					 */
 					'instagram_publisher_url' => '',	// Instagram Business Page URL (localized).
@@ -1630,7 +1630,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
 					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
 
-					/**
+					/*
 					 * Website verification IDs.
 					 */
 					'ahrefs_site_verify' => '',	// Ahrefs Website Verification ID.
@@ -1641,7 +1641,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pin_site_verify'    => '',	// Pinterest Website Verification ID.
 					'yandex_site_verify' => '',	// Yandex Website Verification ID.
 
-					/**
+					/*
 					 * Enable / disable individual head HTML tags.
 					 */
 					'add_link_rel_author'                               => 0,	// Deprecated - no longer used by Google.
@@ -1787,7 +1787,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:data2'                       => 1,
 					'add_meta_name_yandex-verification'                 => 1,	// Yandex Website Verification ID.
 
-					/**
+					/*
 					 * Advanced Settings > Plugin Admin.
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
@@ -1795,7 +1795,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
 					'plugin_debug_html'         => 0,	// Add HTML Debug Messages.
 
-					/**
+					/*
 					 * Advanced Settings > Integration.
 					 */
 					'plugin_title_tag'          => 'seo_title',	// Webpage Title Tag.
@@ -1810,7 +1810,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_images'     => 0,		// Upscale Media Library Images.
 					'plugin_upscale_pct_max'    => 33,		// Maximum Image Upscale Percent.
 
-					/**
+					/*
 					 * Advanced Settings > Integration > Plugin and Theme Integration.
 					 */
 					'plugin_speakable_css_csv'        => '.wp-block-post-title, .speakable',	// Speakable CSS Selectors.
@@ -1822,7 +1822,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_import_wpseo_meta'        => 0,						// Import Yoast SEO Metadata.
 					'plugin_import_wpseo_blocks'      => 0,						// Import Yoast SEO Block Attrs.
 
-					/**
+					/*
 					 * Advanced Settings > Interface.
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
@@ -1853,7 +1853,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 					'plugin_add_to_user_page'              => 1,
 
-					/**
+					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Schema Type.
 					 */
 					'plugin_schema_type_name_col_attachment'           => 0,
@@ -1870,7 +1870,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_name_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
 					'plugin_schema_type_name_col_user_page'            => 0,
 
-					/**
+					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Schema ID.
 					 */
 					'plugin_schema_type_col_attachment'           => 0,
@@ -1887,7 +1887,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
 					'plugin_schema_type_col_user_page'            => 0,
 
-					/**
+					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Type.
 					 */
 					'plugin_og_type_col_attachment'           => 0,
@@ -1904,7 +1904,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_type_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
 					'plugin_og_type_col_user_page'            => 0,
 
-					/**
+					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Image.
 					 */
 					'plugin_og_img_col_attachment'           => 0,
@@ -1921,7 +1921,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
 					'plugin_og_img_col_user_page'            => 1,
 
-					/**
+					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Description.
 					 */
 					'plugin_og_desc_col_attachment'           => 1,
@@ -1941,7 +1941,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_types_select_format'     => 'name',		// Open Graph Type Select Format.
 					'plugin_schema_types_select_format' => 'name',		// Schema Type Select Format.
 
-					/**
+					/*
 					 * Advanced Settings > Service APIs > Media Services.
 					 */
 					'plugin_gravatar_api'   => 1,		// Gravatar is Default Author Image.
@@ -1954,7 +1954,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Videos.
 					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
 
-					/**
+					/*
 					 * Advanced Settings > Service APIs > Shortening Services.
 					 */
 					'plugin_shortener'          => 'none',	// URL Shortening Service.
@@ -1971,7 +1971,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_password'    => '',	// YOURLS Password.
 					'plugin_yourls_token'       => '',	// YOURLS Token.
 
-					/**
+					/*
 					 * Advanced Settings > Service APIs > Ratings and Reviews.
 					 */
 					'plugin_ratings_reviews_svc'          => 'none',	// Ratings and Reviews Service.
@@ -1984,7 +1984,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_stamped_store_hash'           => '',		// Stamped Store Hash.
 					'plugin_stamped_key_public'           => '',		// Stamped API Key Public.
 
-					/**
+					/*
 					 * Advanced Settings > Contact Fields > Custom Contacts.
 					 */
 					'plugin_cm_behance_name'      => 'behance',
@@ -2030,7 +2030,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_yt_label'          => 'YouTube Channel URL',
 					'plugin_cm_yt_enabled'        => 1,
 
-					/**
+					/*
 					 * Advanced Settings > Contact Fields > Default Contacts.
 					 */
 					'wp_cm_aim_name'       => 'aim',
@@ -2043,7 +2043,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_label'      => 'Yahoo Messenger',
 					'wp_cm_yim_enabled'    => 1,
 
-					/**
+					/*
 					 * Advanced Settings > About the User.
 					 */
 					'plugin_user_about_job_title'        => 1,	// Job Title.
@@ -2051,7 +2051,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_user_about_honorific_suffix' => 1,	// Honorific Suffix.
 					'plugin_user_about_additional_name'  => 1,	// Middle or Additional Name.
 
-					/**
+					/*
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
 					'plugin_attr_product_adult_type'         => 'Adult Type',	// Adult Type Attribute.
@@ -2079,7 +2079,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute.
 					'plugin_attr_product_width_value'        => '',			// Net Width Attribute.
 
-					/**
+					/*
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
 					 */
 					'plugin_cf_addl_type_urls'                => '',	// Microdata Type URLs Custom Field.
@@ -2130,7 +2130,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url'                       => '',	// Video URL Custom Field.
 				),	// End of 'defaults' array.
 
-				/**
+				/*
 				 * Multisite options.
 				 *
 				 * Automatically includes all advanced plugin options.
@@ -2143,7 +2143,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_versions' => array(),
 				),
 
-				/**
+				/*
 				 * Contact method and social options prefix.
 				 *
 				 * The options prefix is used for contact method options (for example, 'plugin_cm_fb_enabled') and
@@ -2173,7 +2173,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'youtube'     => 'yt',
 				),
 
-				/**
+				/*
 				 * WpssoConfig::$cf[ 'opt' ][ 'attr_md_index' ]
 				 *
 				 * Provides a key index for product attributes to meta data options.
@@ -2205,7 +2205,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_width_value'        => 'product_width_value',
 				),
 
-				/**
+				/*
 				 * WpssoConfig::$cf[ 'opt' ][ 'cf_md_index' ]
 				 *
 				 * Provides a key index for custom fields to meta data options.
@@ -2259,7 +2259,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url'                       => 'og_vid_url',
 				),
 
-				/**
+				/*
 				 * WpssoConfig::$cf[ 'opt' ][ 'md_keys_multi' ]
 				 *
 				 * Provides information to help read and split custom field values into numbered options.
@@ -2287,12 +2287,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_webpage_reviewed_by_person_id' => true,
 				),
 
-				/**
+				/*
 				 * Fallback order for custom Document SSO metadata keys.
 				 */
 				'md_keys_fallback' => array(
 
-					/**
+					/*
 					 * SEO and Schema metadata keys.
 					 */
 					'seo_title'        => array( 'seo_title' ),
@@ -2305,7 +2305,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_desc'      => array( 'schema_desc', 'seo_desc' ),
 					'schema_text'      => array( 'schema_text' ),
 
-					/**
+					/*
 					 * Open Graph and Social metadata keys.
 					 */
 					'og_title'     => array( 'og_title', 'seo_title' ),
@@ -2316,7 +2316,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pin_img_desc' => array( 'pin_img_desc', 'og_desc', 'seo_desc' ),
 				),
 
-				/**
+				/*
 				 * Additional fields for the user profile About Yourself / About the user sections.
 				 */
 				'user_about' => array(
@@ -2337,7 +2337,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),	// End of 'opt' array.
 
-			/**
+			/*
 			 * Update manager config.
 			 */
 			'um' => array(
@@ -2368,7 +2368,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),	// End of 'um' array.
 
-			/**
+			/*
 			 * PHP config.
 			 */
 			'php' => array(
@@ -2436,7 +2436,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),	// End of 'php' array.
 
-			/**
+			/*
 			 * WordPress config.
 			 *
 			 * Requires: WordPress v5.0 (December 6, 2018).
@@ -2528,7 +2528,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'transient' => array(
 
-					/**
+					/*
 					 * Preserved on clear cache.
 					 */
 					'wpsso_!_' => array(
@@ -2538,7 +2538,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'value'  => MONTH_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_head_markup',	// See WpssoUtil->get_cache_exp_secs().
 
-						/**
+						/*
 						 * If one of these $mod array conditions is true, then use the associated value.
 						 */
 						'conditional_values' => array(
@@ -2584,7 +2584,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),	// End of 'wp' array.
 
-			/**
+			/*
 			 * Used by WpssoScript->admin_enqueue_scripts().
 			 *
 			 * See http://qtip2.com/download.
@@ -2594,7 +2594,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '3.0.3',
 			),
 
-			/**
+			/*
 			 * Used by WpssoStyle->admin_enqueue_styles().
 			 *
 			 * See https://developers.google.com/speed/libraries/.
@@ -2815,7 +2815,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name'    => 'Name',
 				),
 
-				/**
+				/*
 				 * Image preferred cropping.
 				 */
 				'position_crop_x' => array(
@@ -2829,7 +2829,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'bottom' => 'Bottom',
 				),
 
-				/**
+				/*
 				 * Robots meta.
 				 *
 				 * See https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview.
@@ -2840,7 +2840,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'large'    => 'Large',
 				),
 
-				/**
+				/*
 				 * Breadcrumbs settings.
 				 */
 				'breadcrumbs_for_posts' => array(	// Breadcrumbs by Post Type.
@@ -2854,7 +2854,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'ancestors' => 'Home Page(s) and Parents',
 				),
 
-				/**
+				/*
 				 * Shortening service.
 				 */
 				'shorteners' => array(
@@ -2866,7 +2866,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yourls'  => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
 				),
 
-				/**
+				/*
 				 * Ratings and reviews services.
 				 */
 				'ratings_reviews' => array(
@@ -2875,7 +2875,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stamped'         => 'Stamped.io',
 				),
 
-				/**
+				/*
 				 * Social account keys and labels for Organization SameAs.
 				 */
 				'social_accounts' => array(
@@ -2904,7 +2904,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_youtube_api'    => 'YouTube Videos and Playlists',
 				),
 
-				/**
+				/*
 				 * Attribute option labels.
 				 */
 				'attr_labels' => array(
@@ -2934,7 +2934,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_width_value'        => 'Net Width Attribute',
 				),
 
-				/**
+				/*
 				 * Custom field option labels.
 				 */
 				'cf_labels' => array(
@@ -2986,14 +2986,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_embed'                     => 'Video Embed HTML Custom Field',
 				),
 
-				/**
+				/*
 				 * Used with array_intersect_key() to determine which metadata keys can be inherited.
 				 *
 				 * See WpssoAbstractWpMeta->get_inherited_md_opts().
 				 */
 				'inherit_md_opts' => array(
 
-					/**
+					/*
 					 * Inherited image options.
 					 */
 					'og_img_max'        => null,
@@ -3013,7 +3013,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_id_lib' => null,
 					'tc_sum_img_url'    => null,
 
-					/**
+					/*
 					 * Inherited product options.
 					 */
 					'product_adult_type'            => null,
@@ -3030,13 +3030,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_size_system'           => null,
 					'product_target_gender'         => null,
 
-					/**
+					/*
 					 * Inherited Schema options.
 					 */
 					'schema_article_section' => null,
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used for the Schema Product and Offer 'hasAdultConsideration' property.
@@ -3058,7 +3058,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/WeaponConsideration'                      => 'Weapon',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/09/24.
 				 *
 				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
@@ -3075,7 +3075,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'toddler'  => 'Toddler (1–5 years old)',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * See https://schema.org/BookFormatType.
@@ -3089,7 +3089,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/Paperback'       => 'Paperback',
 				),
 
-				/**
+				/*
 				 * Validated on 2020/08/17.
 				 *
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
@@ -3106,7 +3106,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'OTHER'      => 'Other',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * See https://schema.org/EUEnergyEfficiencyEnumeration.
@@ -3126,7 +3126,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/EUEnergyEfficiencyCategoryG'      => 'G',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3140,7 +3140,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/OfflineEventAttendanceMode' => 'Physical Location',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3156,7 +3156,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/EventScheduled'   => 'Scheduled',	// Default.
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3177,7 +3177,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'https://schema.org/SoldOut'             => 'Sold Out',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3193,7 +3193,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/UsedCondition'        => 'Used',
 				),
 
-				/**
+				/*
 				 * Validated on 2021/04/15.
 				 *
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
@@ -3203,7 +3203,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'TELECOMMUTE' => 'Telecommute (100% Remote)',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/09/14.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3220,7 +3220,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/SRP'                    => 'Suggested Retail Price',
 				),
 
-				/**
+				/*
 				 * Validated on 2021/11/09.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3237,7 +3237,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/WearableSizeGroupMaternity' => 'Maternity',
 				),
 
-				/**
+				/*
 				 * Validated on 2022/12/26.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
@@ -3265,7 +3265,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/WearableSizeSystemUS'     => 'US',
 				),
 
-				/**
+				/*
 				 * Validated on 2020/08/17.
 				 *
 				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
@@ -3279,14 +3279,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'unisex' => 'Unisex',
 				),
 
-				/**
+				/*
 				 * The default warning is 90% of the maximum length.
 				 *
 				 * See sucomTextLen() in wpsso/live/js/com/jquery-admin-page.js.
 				 */
 				'input_limits' => array(
 
-					/**
+					/*
 					 * While Google does not specify a recommended length for title tags, most desktop and
 					 * mobile browsers are able to display the first 50–60 characters of a title tag. If you
 					 * keep your titles under 60 characters, our research suggests that you can expect about
@@ -3304,7 +3304,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max'  => 70,
 					),
 
-					/**
+					/*
 					 * Meta descriptions can technically be any length, but Google generally truncates snippets
 					 * to ~155-160 characters. It's best to keep meta descriptions long enough that they're
 					 * sufficiently descriptive, so we recommend descriptions between 50 and 160 characters.
@@ -3317,7 +3317,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max'  => 180,
 					),
 
-					/**
+					/*
 					 * Keep it short to prevent overflow. There’s no official guidance on this, but 40
 					 * characters for mobile and 60 for desktop is roughly the sweet spot.
 					 *
@@ -3328,7 +3328,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max'  => 70,
 					),
 
-					/**
+					/*
 					 * Keep it short and sweet. Facebook recommends 2–4 sentences, but that often truncates.
 					 *
 					 * See https://ahrefs.com/blog/open-graph-meta-tags/.
@@ -3349,7 +3349,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max' => 70,
 					),
 
-					/**
+					/*
 					 * The headline of the article. Headlines should not exceed 110 characters. For AMP
 					 * stories, the headline should match the text in the first cover page in the AMP Story.
 					 *
@@ -3379,7 +3379,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),	// End of 'form' array.
 
-			/**
+			/*
 			 * Reference for meta tag and Schema property values (limits, conversions, etc.).
 			 */
 			'head' => array(
@@ -3416,7 +3416,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_height'   => 4096,
 				),
 
-				/**
+				/*
 				 * Hard-code the Open Graph type based on the WordPress post type.
 				 *
 				 * Example, if the post type is 'product', hard-code the Open Graph type to 'product'.
@@ -3431,7 +3431,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'question'     => 'article',
 				),
 
-				/**
+				/*
 				 * Hard-code the Open Graph type based on the Schema type.
 				 *
 				 * Example, if the Schema type is 'product', hard-code the Open Graph type to 'product'.
@@ -3479,7 +3479,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'website' => 'https://ogp.me/ns/website#',
 				),
 
-				/**
+				/*
 				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
 				 *
 				 * See WpssoOpengraph->add_data_og_type_md().
@@ -3488,7 +3488,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'og_type_mt' => array(
 
-					/**
+					/*
 					 * See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
 					 */
 					'article' => array(
@@ -3579,7 +3579,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'place:country_name'       => '',
 					),
 
-					/**
+					/*
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 					 */
 					'product' => array(
@@ -3694,7 +3694,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'og_content_map' => array(	// Element of 'head' array.
 
-					/**
+					/*
 					 * Validated on 2021/07/22.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
@@ -3715,7 +3715,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'https://schema.org/SoldOut'             => 'out of stock',
 					),
 
-					/**
+					/*
 					 * Validated on 2020/08/17.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
@@ -4064,7 +4064,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'role'        => 'https://schema.org/Role',
 							'seat'        => 'https://schema.org/Seat',
 
-							/**
+							/*
 							 * A service provided by an organization, e.g. delivery service, print services, etc.
 							 */
 							'service' => array(
@@ -4482,7 +4482,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'urologic'                => 'urologic.specialty',
 				),
 
-				/**
+				/*
 				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 				 */
 				'schema_units' => array(		// Element of 'head' array.
@@ -4560,7 +4560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 
-				/**
+				/*
 				 * The Schema standard provides 'aggregateRating' and 'review' properties for these types:
 				 *
 				 * 	Brand
@@ -4631,7 +4631,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'software.application',
 				),
 
-				/**
+				/*
 				 * Good Relations.
 				 */
 				'schema_gr' => array(			// Element of 'head' array.
@@ -4682,7 +4682,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			self::$cf[ 'config_filtered' ] = false;
 
-			/**
+			/*
 			 * Wpsso->__construct() calls WpssoConfig::get_config() before WpssoConfig::set_constants(), which defines
 			 * 'WPSSO_VERSION', so use 'WPSSO_VERSION' as a signal to skip applying filters until later.
 			 */
@@ -4691,7 +4691,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				return self::$cf;
 			}
 
-			/**
+			/*
 			 * Apply filters to have add-ons include their config.
 			 */
 			if ( empty( self::$cf[ 'config_filtered' ] ) ) {
@@ -4742,7 +4742,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_dir;
 				}
 
-				/**
+				/*
 				 * Maybe complete relative paths in the image arrays.
 				 */
 				if ( ! empty( $info[ 'base' ] ) ) {	// Just in case.
@@ -4752,7 +4752,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
 				}
 
-				/**
+				/*
 				 * Since WPSSO Core v9.12.4.
 				 *
 				 * Provides backwards compatibility for older WPSSO JSON add-ons.
@@ -4788,7 +4788,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$nonce_key = defined( 'NONCE_KEY' ) ? NONCE_KEY : '';
 
-			/**
+			/*
 			 * Define fixed constants.
 			 */
 			define( 'WPSSO_DATA_ID', 'wpsso meta tags and schema markup' );
@@ -4808,7 +4808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_INIT_SHORTCODES_PRIORITY', 11 );
 			define( 'WPSSO_INIT_PLUGIN_PRIORITY', 12 );
 
-			/**
+			/*
 			 * Define variable constants.
 			 */
 			self::set_variable_constants();
@@ -4821,7 +4821,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const = (array) self::get_variable_constants();
 			}
 
-			/**
+			/*
 			 * Define the variable constants, if not already defined.
 			 */
 			foreach ( $var_const as $name => $value ) {
@@ -4868,7 +4868,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
 
-			/**
+			/*
 			 * Schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
@@ -4880,7 +4880,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
 
-			/**
+			/*
 			 * Setting and meta array names.
 			 */
 			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
@@ -4896,7 +4896,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
 			$var_const[ 'WPSSO_PAGE_TAG_TAXONOMY' ]     = 'page_tag';
 
-			/**
+			/*
 			 * Hook priorities.
 			 */
 			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]      = -20;	// 'admin_menu' hook priority.
@@ -4910,14 +4910,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_META_REFRESH_PRIORITY' ]  = 0;	// Refresh cache before priority 10 (where most caching plugins are hooked).
 			$var_const[ 'WPSSO_TITLE_TAG_PRIORITY' ]     = 1000;	// Priority for the WordPress 'document_title' filters.
 
-			/**
+			/*
 			 * PHP cURL library settings.
 			 */
 			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]               = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
 			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]            = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:70.0) Gecko/20100101 Firefox/70.0';
 			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ]   = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
-			/**
+			/*
 			 * Maybe override the default constant value with a pre-defined constant value.
 			 */
 			foreach ( $var_const as $name => $value ) {
@@ -4931,7 +4931,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $var_const;
 		}
 
-		/**
+		/*
 		 * Load all essential library files.
 		 *
 		 * Avoid calling is_admin() here as it can be unreliable this early in the load process - some plugins that operate
@@ -4960,7 +4960,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/style.php';
 			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
 
-			/**
+			/*
 			 * Comment, post, term, user modules.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/abstract/wp-meta.php';
@@ -4969,7 +4969,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoAbstractWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoAbstractWpMeta.
 
-			/**
+			/*
 			 * Meta tags and markup.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
@@ -4980,12 +4980,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
 
-			/**
+			/*
 			 * Module library loader.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/loader.php';
 
-			/**
+			/*
 			 * Add-ons library.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/abstract/add-on.php';
@@ -5028,7 +5028,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $success;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v4.18.1.
 		 */
 		public static function get_cache_dir() {
@@ -5059,7 +5059,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v4.18.1.
 		 */
 		public static function get_cache_url() {
@@ -5093,7 +5093,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v4.18.1.
 		 */
 		private static function is_cache_dir( $dir ) {
@@ -5142,14 +5142,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v3.38.3.
 		 */
 		public static function get_ext_sorted() {
 
 			$cf = self::get_config();
 
-			/**
+			/*
 			 * Sort the array by plugin name and maintain index association.
 			 */
 			uasort( $cf[ 'plugin' ], array( 'self', 'sort_plugin_by_name_key' ) );
@@ -5158,7 +5158,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$first_key = key( $cf[ 'plugin' ] );
 
-			/**
+			/*
 			 * Make sure the core plugin is listed first.
 			 */
 			if ( 'wpsso' !== $first_key ) {
@@ -5176,7 +5176,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$a[ 'name' ] = _x( $a[ 'name' ], 'plugin name', 'wpsso' );
 				$b[ 'name' ] = _x( $b[ 'name' ], 'plugin name', 'wpsso' );
 
-				/**
+				/*
 				 * Case insensitive string comparisons using a "natural order" algorithm.
 				 */
 				return strnatcasecmp( $a[ 'name' ], $b[ 'name' ] );
@@ -5185,7 +5185,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return 0;	// No change.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.8.0.
 		 *
 		 * Returns false or a slashed directory path.
@@ -5202,7 +5202,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for active plugin constant first.
 			 */
 			$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
@@ -5212,7 +5212,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				return $local_cache[ $ext ] = trailingslashit( $ext_dir );
 			}
 
-			/**
+			/*
 			 * Fallback to checking for inactive plugin folder.
 			 */
 			$cf = self::get_config();
@@ -5235,7 +5235,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache[ $ext ] = false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.8.0.
 		 *
 		 * Returns false, a slashed directory path, or the file name path.
@@ -5265,7 +5265,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.0.0.
 		 */
 		public static function get_schema_units() {
@@ -5280,7 +5280,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.0.0.
 		 */
 		public static function get_social_accounts( $key = false ) {
@@ -5296,7 +5296,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					$local_cache[ $k ] = _x( $label, 'option value', 'wpsso' );
 				}
 
-				/**
+				/*
 				 * Sort the associative array by value (ie. the translated label).
 				 */
 				method_exists( 'SucomUtil', 'natasort' ) ? SucomUtil::natasort( $local_cache ) : uasort( $local_cache, 'strnatcasecmp' );
@@ -5318,7 +5318,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v11.5.0.
 		 */
 		public static function get_input_limits( $opt_key = false ) {
@@ -5353,7 +5353,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.2.0.
 		 *
 		 * Provides a key index for attributes to meta data options.
@@ -5365,7 +5365,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return self::get_opt_md_info( $md_index = 'attr_md_index', $md_key );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.0.0.
 		 *
 		 * Provides a key index for custom fields to meta data options.
@@ -5377,7 +5377,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return self::get_opt_md_info( $md_index = 'cf_md_index', $md_key );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.0.0.
 		 *
 		 * Provides information to help read and split custom field values into numbered options.
@@ -5389,7 +5389,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return self::get_opt_md_info( $md_index = 'md_keys_multi', $md_key );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v11.6.0.
 		 *
 		 * Returns an array of metadata keys (can be empty).
@@ -5434,7 +5434,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;	// Return an array.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.2.0.
 		 *
 		 * Provides a key index for attributes and custom fields to meta data options.
@@ -5451,7 +5451,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				$local_cache[ $md_index ] = isset( self::$cf[ 'opt' ][ $md_index ] ) ? self::$cf[ 'opt' ][ $md_index ] : array();
 
-				/**
+				/*
 				 * See WpssoIntegRecipeWpRecipeMaker->filter_cf_md_index().
 				 */
 				$local_cache[ $md_index ] = (array) apply_filters( 'wpsso_' . $md_index, $local_cache[ $md_index ] );

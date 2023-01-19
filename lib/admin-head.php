@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		protected $suggest;
 
-		/**
+		/*
 		 * Instantiated by WpssoAdmin->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Skip if previous check is already successful.
 			 */
 			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Check for a PHP variable in the WP_HOME constant value.
 			 */
 			if ( $file_path = SucomUtilWP::get_wp_config_file_path() ) {
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for an IP address in the home URL value.
 			 */
 			$is_public = get_option( 'blog_public' );
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Mark all config checks as complete.
 			 */
 			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Show a notice if there are pending WPSSO plugin updates and the user can update plugins.
 		 */
 		public function pending_updates() {
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Show a single notice at a time.
 		 */
 		public function timed_notices() {
@@ -232,7 +232,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
 		 * These private notice functions should return the number of notices shown.
@@ -245,7 +245,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );
 			$dismiss_time  = true;	// Allow the notice to be dismissed forever.
 
-			/**
+			/*
 			 * Use the transient cache to show only one notice per day.
 			 */
 			$cache_md5_pre  = 'wpsso_';
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 				$ext_desc_transl = _x( $ext_info[ 'desc' ], 'plugin description', 'wpsso' );
 
-				/**
+				/*
 				 * Make sure the plugin is installed (ie. it has a version number).
 				 */
 				if ( empty( $ext_info[ 'version' ] ) ) {
@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					continue;	// Get the next plugin.
 				}
 
-				/**
+				/*
 				 * Make sure we have wordpress.org review URL.
 				 */
 				if ( empty( $ext_info[ 'url' ][ 'review' ] ) ) {
@@ -283,14 +283,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					continue;	// Get the next plugin.
 				}
 
-				/**
+				/*
 				 * The user has already dismissed this notice.
 				 */
 				$notice_key  = 'timed-notice-' . $ext . '-plugin-review';
 
 				if ( $this->p->notice->is_dismissed( $notice_key, $user_id ) ) {
 
-					/**
+					/*
 					 * The single notice per day period has not expired yet.
 					 */
 					if ( $showing_ext === $notice_key ) {
@@ -300,28 +300,28 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					continue;	// Get the next plugin.
 
-				/**
+				/*
 				 * Make sure we have an activation time.
 				 */
 				} elseif ( empty( $ext_reg[ $ext . '_activate_time' ] ) ) {
 
 					continue;	// Get the next plugin.
 
-				/**
+				/*
 				 * Activated less than a week ago.
 				 */
 				} elseif ( $ext_reg[ $ext . '_activate_time' ] > $week_ago_secs ) {
 
 					continue;	// Get the next plugin.
 
-				/**
+				/*
 				 * Make sure we only show this single notice for the next day.
 				 */
 				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {
 
 					set_transient( $cache_id, $notice_key, $cache_exp_secs );
 
-				/**
+				/*
 				 * We're not showing this plugin right now.
 				 */
 				} elseif ( $showing_ext !== $notice_key ) {
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $ext_desc_transl, '.' ) . ')';
 
-				/**
+				/*
 				 * Rate plugin action button.
 				 */
 				$rate_plugin_label = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $ext_info[ 'short' ] );
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $ext_info[ 'url' ][ 'review' ],
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
-				/**
+				/*
 				 * Already rated action button.
 				 */
 				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $ext_info[ 'short' ] );
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
 						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
 
-				/**
+				/*
 				 * The notice message.
 				 */
 				$notice_msg = '<div style="display:table-cell;">';
@@ -404,7 +404,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			return 0;
 		}
 
-		/**
+		/*
 		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
 		 * These private notice functions should return the number of notices shown.
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_key     = 'timed-notice-wpsso-pro-purchase-notice';
 			$dismiss_time   = true;	// Allow the notice to be dismissed forever.
 
-			/**
+			/*
 			 * The action buttons.
 			 */
 			$purchase_label = sprintf( __( 'Yes! I\'d like to get the %s edition!', 'wpsso' ), $pkg_pro_transl );
@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click', '', '',
 					false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
 
-			/**
+			/*
 			 * The notice message.
 			 */
 			$notice_msg = '<div style="display:table-cell;">';

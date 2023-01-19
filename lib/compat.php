@@ -17,16 +17,13 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoCompat' ) ) {
 
-	/**
+	/*
 	 * Third-party plugin and theme compatibility actions and filters.
 	 */
 	class WpssoCompat {
 
 		private $p;	// Wpsso class object.
 
-		/**
-		 *
-		 */
 		public function __construct( &$plugin ) {
 
 			static $do_once = null;
@@ -59,7 +56,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function common_hooks() {
 
-			/**
+			/*
 			 * All in One SEO Pack.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
@@ -67,7 +64,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
 			}
 
-			/**
+			/*
 			 * Easy Digital Download.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'edd' ] ) {
@@ -75,7 +72,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'edd_add_schema_microdata', '__return_false', PHP_INT_MAX );
 			}
 
-			/**
+			/*
 			 * WooCommerce.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
@@ -88,7 +85,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function back_end_hooks() {
 
-			/**
+			/*
 			 * Gravity Forms and Gravity View.
 			 */
 			if ( class_exists( 'GFForms' ) ) {
@@ -103,7 +100,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 			}
 
-			/**
+			/*
 			 * Rank Math.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
@@ -111,7 +108,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css_rankmath' => array( 'admin_page_style_css' => 1 ) ) );
 			}
 
-			/**
+			/*
 			 * SEOPress.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
@@ -119,7 +116,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000 );
 			}
 
-			/**
+			/*
 			 * The SEO Framework.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
@@ -129,7 +126,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000 );
 			}
 
-			/**
+			/*
 			 * Yoast SEO.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
@@ -142,7 +139,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function front_end_hooks() {
 
-			/**
+			/*
 			 * JetPack.
 			 */
 			if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
@@ -152,7 +149,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
 			}
 
-			/**
+			/*
 			 * NextScripts: Social Networks Auto-Poster.
 			 */
 			if ( function_exists( 'nxs_initSNAP' ) ) {
@@ -160,7 +157,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_action( 'wp_head', array( $this, 'remove_snap_og_meta_tags_holder' ), -2000 );
 			}
 
-			/**
+			/*
 			 * Rank Math.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
@@ -170,7 +167,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
 			}
 
-			/**
+			/*
 			 * SEOPress.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
@@ -178,7 +175,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				add_filter( 'seopress_titles_author', '__return_empty_string', 1000 );
 			}
 
-			/**
+			/*
 			 * Yoast SEO.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
@@ -221,7 +218,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			if ( in_array( $screen->base, array( 'profile', 'user-edit' ) ) ) {
 
-				/**
+				/*
 				 * Remove the "Authorial Info" section from the user editing page.
 				 */
 				SucomUtilWP::remove_filter_hook_name( 'current_screen', 'The_SEO_Framework\Load::_init_user_edit_view' );
@@ -242,7 +239,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return $tabs;
 		}
 
-		/**
+		/*
 		 * Cleanup incorrect Yoast SEO notifications.
 		 */
 		public function cleanup_wpseo_notifications() {
@@ -252,7 +249,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Yoast SEO only checks for a conflict with WPSSO if the Open Graph option is enabled.
 			 */
 			if ( method_exists( 'WPSEO_Options', 'get' ) ) {
@@ -280,7 +277,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 						return;
 					}
 
-					/**
+					/*
 					 * Note that Yoast_Notification::render() wraps the notification message with
 					 * '<div class="yoast-alert"></div>'.
 					 */
@@ -328,7 +325,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Since Yoast SEO v14.0.
 		 *
 		 * Disable Yoast SEO social meta tags.
@@ -380,7 +377,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
-				/**
+				/*
 				 * Remove everything except for the BreadcrumbList markup.
 				 *
 				 * The WPSSO BC add-on removes the BreadcrumbList markup.
@@ -403,7 +400,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return array_values( $graph );
 		}
 
-		/**
+		/*
 		 * Disable Rank Math Facebook and Twitter meta tags.
 		 */
 		public function cleanup_rankmath_actions() {
@@ -413,7 +410,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Disable Rank Math social meta tags.
 			 */
 			remove_all_actions( 'rank_math/opengraph/facebook' );
@@ -421,7 +418,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			remove_all_actions( 'rank_math/opengraph/twitter' );
 		}
 
-		/**
+		/*
 		 * Disable Rank Math Schema markup.
 		 */
 		public function cleanup_rankmath_json_ld( $data ) {
@@ -431,7 +428,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Remove everything except for the BreadcrumbList markup.
 			 *
 			 * The WPSSO BC add-on removes the BreadcrumbList markup.
@@ -451,13 +448,13 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Prevent SNAP from adding meta tags for the Facebook user agent.
 			 */
 			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
 		}
 
-		/**
+		/*
 		 * Fix Rank Math CSS on back-end pages.
 		 */
 		public function filter_admin_page_style_css_rankmath( $custom_style_css ) {
@@ -467,7 +464,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Fix the width of Rank Math list table columns.
 			 */
 			$custom_style_css .= '
@@ -477,7 +474,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				}
 			';
 
-			/**
+			/*
 			 * The "Social" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
 			$custom_style_css .= '
@@ -485,7 +482,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				.rank-math-tabs-content .setting-panel-social { display: none; }
 			';
 
-			/**
+			/*
 			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
@@ -499,7 +496,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return $custom_style_css;
 		}
 
-		/**
+		/*
 		 * Fix Yoast SEO CSS on back-end pages.
 		 */
 		public function filter_admin_page_style_css_wpseo( $custom_style_css ) {
@@ -509,7 +506,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Fix the width of Yoast SEO list table columns.
 			 */
 			$custom_style_css .= '
@@ -535,7 +532,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				}
 			';
 
-			/**
+			/*
 			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {

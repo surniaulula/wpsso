@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoAdminHeadSuggest->__construct().
 		 */
 		public function __construct( &$plugin ) {

@@ -15,7 +15,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-/**
+/*
  * Extended by the WpssoPost, WpssoTerm, and WpssoUser classes.
  */
 if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_ean' => 'product_gtin13',
 				),
 
-				/**
+				/*
 				 * The custom width, height, and crop options were removed in preference for attachment specific
 				 * options (ie. 'attach_img_crop_x' and 'attach_img_crop_y').
 				 */
@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		public function add_wp_hooks() {
@@ -220,7 +220,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * Get the $mod object for a post, term, or user ID.
 		 */
 		public function get_mod( $obj_id ) {
@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::$mod_defaults;
 		}
 
-		/**
+		/*
 		 * Get the $mod object for the home page.
 		 */
 		public static function get_mod_home() {
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$mod = $wpsso->post->get_mod( $post_id );
 			}
 
-			/**
+			/*
 			 * Post elements.
 			 */
 			$mod[ 'is_home' ] = true;	// Home page (static or blog archive).
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $mod;
 		}
 
-		/**
+		/*
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * Note that the local cache is unique to each child class, so we can simply index by the object ID.
 			 */
 			static $local_cache = array();
@@ -336,7 +336,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
 				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
 
-				/**
+				/*
 				 * Default timezone.
 				 *
 				 * Note that the timezone option will be empty if a UTC offset (instead of a city) has been
@@ -356,14 +356,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'attach_img_crop_x' => 'none',
 					'attach_img_crop_y' => 'none',
 
-					/**
+					/*
 					 * Gravity View (Side Metabox).
 					 */
 					'gv_id_title' => 0,	// Title Field ID
 					'gv_id_desc'  => 0,	// Description Field ID
 					'gv_id_img'   => 0,	// Post Image Field ID
 
-					/**
+					/*
 					 * Edit General.
 					 */
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.
 
-					/**
+					/*
 					 * Edit Media tab.
 					 */
 					'og_img_max'        => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
@@ -406,13 +406,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_img_id_lib' => 'wp',
 					'schema_img_url'    => '',
 
-					/**
+					/*
 					 * Edit Visibility tab.
 					 */
 					'canonical_url' => '',		// Canonical URL.
 					'redirect_url'  => '',		// 301 Redirect URL.
 
-					/**
+					/*
 					 * Open Graph and Schema Product type.
 					 *
 					 * See WpssoOpengraph->add_data_og_type_md().
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_gtin'                  => '',
 					'product_isbn'                  => '',
 
-					/**
+					/*
 					 * All Schema Types.
 					 */
 					'schema_type'      => $def_schema_type,	// Schema Type.
@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_title_bc'  => '',		// Schema Breadcrumb Name.
 					'schema_desc'      => '',		// Schema Description.
 
-					/**
+					/*
 					 * Schema Creative Work.
 					 */
 					'schema_ispartof_url'    => '',						// Is Part of URLs.
@@ -490,13 +490,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
 
-					/**
+					/*
 					 * Schema Article.
 					 */
 					'schema_article_section' => $def_art_section,	// Article Section.
 					'schema_reading_mins'    => $def_reading_mins,	// Est. Reading Time.
 
-					/**
+					/*
 					 * Schema Book.
 					 */
 					'schema_book_author_type'      => 'none',				// Book Author Type.
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_pages'            => '',					// Number of Pages.
 					'schema_book_isbn'             => '',					// Book ISBN.
 
-					/**
+					/*
 					 * Schema Book > Audiobook.
 					 */
 					'schema_book_audio_duration_days'  => 0,	// Audiobook Duration (Days).
@@ -521,7 +521,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_audio_duration_mins'  => 0,	// Audiobook Duration (Mins).
 					'schema_book_audio_duration_secs'  => 0,	// Audiobook Duration (Secs).
 
-					/**
+					/*
 					 * Schema Event.
 					 */
 					'schema_event_lang'                  => $def_lang,						// Event Language.
@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_offers_end_time'       => 'none',							// Event Offers End (Time).
 					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End (Timezone).
 
-					/**
+					/*
 					 * Schema How-To.
 					 */
 					'schema_howto_prep_days'   => 0,	// How-To Preparation Time (Days).
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_howto_total_secs'  => 0,	// How-To Total Time (Secs).
 					'schema_howto_yield'       => '',	// How-To Yield.
 
-					/**
+					/*
 					 * Schema Job Posting.
 					 */
 					'schema_job_title'                => '',					// Job Title.
@@ -584,7 +584,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_job_expire_time'          => 'none',					// Job Posting Expires (Time).
 					'schema_job_expire_timezone'      => $def_timezone,				// Job Posting Expires (Timezone).
 
-					/**
+					/*
 					 * Schema Movie.
 					 */
 					'schema_movie_prodco_org_id'     => 'none',		// Movie Production Company.
@@ -596,27 +596,27 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_movie_duration_mins'     => 0,			// Movie Runtime (Mins).
 					'schema_movie_duration_secs'     => 0,			// Movie Runtime (Secs).
 
-					/**
+					/*
 					 * Schema Organization.
 					 */
 					'schema_organization_id' => 'none',	// Organization.
 
-					/**
+					/*
 					 * Schema Person.
 					 */
 					'schema_person_id' => 'none',	// Person.
 
-					/**
+					/*
 					 * Schema Place.
 					 */
 					'schema_place_id' => 'none',	// Place.
 
-					/**
+					/*
 					 * Schema QA Page.
 					 */
 					'schema_qa_desc' => '',		// QA Heading.
 
-					/**
+					/*
 					 * Schema Recipe.
 					 */
 					'schema_recipe_cook_method' => '',	// Recipe Cooking Method.
@@ -635,7 +635,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_total_mins'  => 0,	// How-To Total Time (Mins).
 					'schema_recipe_total_secs'  => 0,	// How-To Total Time (Secs).
 
-					/**
+					/*
 					 * Schema Recipe - Nutrition Information.
 					 */
 					'schema_recipe_nutri_serv'      => '',	// Serving Size.
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_nutri_chol'      => '',	// Cholesterol.
 					'schema_recipe_yield'           => '',	// Recipe Yield.
 
-					/**
+					/*
 					 * Schema Review.
 					 */
 					'schema_review_rating'          => '0.0',	// Review Rating.
@@ -660,7 +660,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_rating_max'      => '5',		// Review Rating (To).
 					'schema_review_rating_alt_name' => '',		// Rating Value Name.
 
-					/**
+					/*
 					 * Schema Review Subject.
 					 */
 					'schema_review_item_name' => '',					// Subject Name.
@@ -668,7 +668,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_url'  => '',					// Subject Webpage URL.
 					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Schema Type.
 
-					/**
+					/*
 					 * Schema Review Subject: Creative Work.
 					 */
 					'schema_review_item_cw_author_type'      => 'none',		// Subject Author Type.
@@ -681,16 +681,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_created_time'     => 'none',		// Subject Created Time.
 					'schema_review_item_cw_created_timezone' => $def_timezone,	// Subject Created Timezone.
 
-					/**
+					/*
 					 * Schema Review Subject: Creative Work / Book.
 					 */
 					'schema_review_item_cw_book_isbn' => '',	// Subject Book ISBN.
 
-					/**
+					/*
 					 * Schema Review Subject: Creative Work / Movie.
 					 */
 
-					/**
+					/*
 					 * Schema Review Subject: Place.
 					 */
 					'schema_review_item_place_street_address' => '',
@@ -700,42 +700,42 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_place_postal_code'    => '',
 					'schema_review_item_place_country'        => '',
 
-					/**
+					/*
 					 * Schema Review Subject: Place / Local Business.
 					 */
 					'schema_review_item_place_price_range' => '',
 
-					/**
+					/*
 					 * Schema Review Subject: Place / Food Establishment.
 					 */
 					'schema_review_item_place_cuisine' => '',
 
-					/**
+					/*
 					 * Schema Review Subject: Product.
 					 */
 					'schema_review_item_product_brand'            => '',	// Product Brand.
 					'schema_review_item_product_retailer_part_no' => '',	// Product SKU.
 					'schema_review_item_product_mfr_part_no'      => '',	// Product MPN.
 
-					/**
+					/*
 					 * Schema Review Subject: Software Application.
 					 */
 					'schema_review_item_software_app_cat' => '',	// Application Category.
 					'schema_review_item_software_app_os'  => '',	// Operating System.
 
-					/**
+					/*
 					 * Schema Claim Review.
 					 */
 					'schema_review_claim_reviewed'  => '',	// Short Summary of Claim.
 					'schema_review_claim_first_url' => '',	// First Appearance URL.
 
-					/**
+					/*
 					 * Schema Software Application.
 					 */
 					'schema_software_app_os'  => '',	// Operating System.
 					'schema_software_app_cat' => '',	// Application Category.
 
-					/**
+					/*
 					 * Schema WebPage.
 					 */
 					'schema_webpage_reviewed_last_date'     => '',			// Reviewed Last Date.
@@ -751,7 +751,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs[ 'schema_webpage_reviewed_by_person_id_' . $num ] = 'none';
 				}
 
-				/**
+				/*
 				 * Set before calling filters to prevent recursion.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -761,7 +761,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$md_defs[ 'opt_filtered' ] = 1;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag.
 				 */
 				$directives = SucomUtilRobots::get_default_directives();
@@ -770,14 +770,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
-					/**
+					/*
 					 * Use a default value from the plugin settings, if one exists.
 					 */
 					if ( isset( $this->p->options[ $opt_key ] ) ) {
 
 						$md_defs[ $opt_key ] = $this->p->options[ $opt_key ];
 
-					/**
+					/*
 					 * Save as a checkbox:
 					 *
 					 *	'robots_noarchive'
@@ -791,7 +791,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 						$md_defs[ $opt_key ] = $directive_value ? 1 : 0;
 
-					/**
+					/*
 					 * Save the directive value:
 					 *
 					 *	'robots_max_snippet'
@@ -804,7 +804,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Since WPSSO Core v9.5.0.
 				 *
 				 * Overwrite the default options with any custom options from the parent.
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs = array_merge( $md_defs, $parent_opts );
 				}
 
-				/**
+				/*
 				 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
 				 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get overwritten by
 				 * later filters.
@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$md_defs = (array) apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
 
-					/**
+					/*
 					 * Since WPSSO Core v14.2.0.
 					 *
 					 * See WpssoProEcomWoocommerce->add_mt_product().
@@ -858,7 +858,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs = (array) apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
 				}
 
-				/**
+				/*
 				 * Since WPSSO Core v3.28.0.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod[ 'term_tax_id' ], $mod );
 				}
 
-				/**
+				/*
 				 * Since WPSSO Core v8.2.0.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -885,7 +885,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
 
-				/**
+				/*
 				 * If caching is not allowed yet, re-apply the filters on next method call.
 				 */
 				if ( ! WpssoOptions::is_cache_allowed() ) {
@@ -925,12 +925,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		protected function upgrade_options( array $md_opts, $obj_id ) {
 
-			/**
+			/*
 			 * Get the current options version number for checks to follow.
 			 */
 			$prev_version = $this->p->opt->get_version( $md_opts, 'wpsso' );	// Returns 'opt_version'.
 
-			/**
+			/*
 			 * Maybe renamed some option keys.
 			 */
 			$mod = $this->get_mod( $obj_id );
@@ -939,7 +939,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
-			/**
+			/*
 			 * Check for schema type IDs that need to be renamed.
 			 */
 			$schema_type_keys_preg = '/^(schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
@@ -952,7 +952,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Import and delete deprecated robots post metadata.
 			 */
 			if ( $prev_version > 0 && $prev_version <= 759 ) {
@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $prev_version > 0 && $prev_version <= 902 ) {
 
-				/**
+				/*
 				 * If there is a multilingual plugin available, trust the plugin and ignore any previous /
 				 * inherited custom language value.
 				 */
@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts, $mod );
 
-			/**
+			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
@@ -1010,12 +1010,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Do not pass $md_opts by reference as the options array may get merged with default values.
 		 */
 		protected function return_options( $obj_id, array $md_opts, $md_key = false, $merge_defs = false ) {
 
-			/**
+			/*
 			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
 			 * language value.
 			 */
@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->save_options( $post_id, $rel = false );
 		 * Extended by WpssoTerm->save_options( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->save_options( $user_id, $rel = false );
@@ -1085,7 +1085,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false );
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->delete_options( $post_id, $rel = false );
 		 * Extended by WpssoTerm->delete_options( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->delete_options( $user_id, $rel = false );
@@ -1095,7 +1095,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false );
 		}
 
-		/**
+		/*
 		 * Get all publicly accessible post, term, or user IDs.
 		 */
 		public static function get_public_ids() {
@@ -1103,7 +1103,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = array() );
 		}
 
-		/**
+		/*
 		 * Return an array of post mods for a given $mod object.
 		 *
 		 * Called by WpssoPage->get_posts_mods().
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $posts_mods;
 		}
 
-		/**
+		/*
 		 * Return an array of post IDs for a given $mod object.
 		 *
 		 * Called by WpssoAbstractWpMeta->get_posts_mods().
@@ -1162,7 +1162,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $doing_ajax ) {
 
-				/**
+				/*
 				 * Provide a parent container_id value to initialize a single metabox (when loading a single
 				 * metabox via ajax, for example).
 				 */
@@ -1178,7 +1178,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
 		 *
 		 * See WpssoPost->load_meta_page().
@@ -1207,7 +1207,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 					}
 
-					/**
+					/*
 					 * An is_admin() test is required to make sure the WpssoMessages class is available.
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -1229,7 +1229,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $ref_url );
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->add_meta_boxes( $post_type, $post_obj = false );
 		 * Extended by WpssoTerm->add_meta_boxes( $term_obj, $tax_slug = false );
 		 * Extended by WpssoUser->add_meta_boxes( $user_obj, $rel = false );
@@ -1239,7 +1239,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * Does this page have a Document SSO metabox?
 		 *
 		 * If this is a post/term/user editing page, then the self::$head_tags variable will be an array.
@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * Exclude the 'Edit Media' tab from attachment editing pages.
 			 */
 			if ( $mod[ 'is_attachment' ] ) {
@@ -1295,7 +1295,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $tabs[ 'edit_media' ] );
 			}
 
-			/**
+			/*
 			 * Exclude the 'oEmbed' tab from non-post editing pages.
 			 *
 			 * get_oembed_response_data() is available since WP v4.4.
@@ -1308,7 +1308,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return apply_filters( 'wpsso_' . $mod[ 'name' ] . '_document_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
-		/**
+		/*
 		 * Called by WpssoAbstractWpMeta->check_sortable_meta().
 		 * Called by WpssoOembed->post_oembed_response_data().
 		 * Called by WpssoOembed->post_oembed_response_data_rich.
@@ -1345,7 +1345,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $local_cache[ $mod[ 'id' ] ] = $head_info;
 		}
 
-		/**
+		/*
 		 * Called by WpssoHead->extract_head_info().
 		 */
 		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
@@ -1367,7 +1367,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$size_name = 'thumbnail';
 
-				/**
+				/*
 				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 				 *
 				 * Example:
@@ -1427,7 +1427,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $media_html;
 		}
 
-		/**
+		/*
 		 * Return a specific option from the custom social settings meta with fallback for multiple option keys. If $md_key
 		 * is an array, then get the first non-empty option from the options array. This is an easy way to provide a
 		 * fallback value for the first array key. Use 'none' as a key name to skip this fallback behavior.
@@ -1518,7 +1518,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $md_val;
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->clear_cache( $post_id, $rel = false );
 		 * Extended by WpssoTerm->clear_cache( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->clear_cache( $user_id, $rel = false );
@@ -1528,7 +1528,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->refresh_cache( $post_id, $rel = false );
 		 * Extended by WpssoTerm->refresh_cache( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->refresh_cache( $user_id, $rel = false );
@@ -1538,29 +1538,29 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		/**
+		/*
 		 * Called by WpssoPost->clear_cache().
 		 * Called by WpssoTerm->clear_cache().
 		 * Called by WpssoUser->clear_cache().
 		 */
 		protected function clear_mod_cache( array $mod ) {
 
-			/**
+			/*
 			 * Clear the WpssoPage->get_the_content() cache.
 			 */
 			$this->p->page->clear_the_content( $mod );
 
-			/**
+			/*
 			 * Clear the WpssoHead->get_head_array() cache.
 			 */
 			$this->p->head->clear_head_array( $mod );
 
-			/**
+			/*
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 */
 			wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
-			/**
+			/*
 			 * Update the WordPress metadata cache.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1573,7 +1573,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			do_action( 'wpsso_clear_mod_cache', $mod );
 		}
 
-		/**
+		/*
 		 * Extended by WpssoPost->user_can_save( $post_id, $rel = false );
 		 * Extended by WpssoTerm->user_can_save( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->user_can_save( $user_id, $rel = false );
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
-		/**
+		/*
 		 * Called by WpssoPost->user_can_save();
 		 * Called by WpssoTerm->user_can_save();
 		 * Called by WpssoUser->user_can_save();
@@ -1629,12 +1629,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Merge and check submitted post, term, and user metabox options.
 		 */
 		protected function get_submit_opts( $mod ) {
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -1645,7 +1645,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
-			/**
+			/*
 			 * Merge and sanitize the new options.
 			 */
 			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
@@ -1653,7 +1653,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts = array_merge( $md_prev, $md_opts );	// Complete the array with previous options.
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
-			/**
+			/*
 			 * Do not save the SEO meta description if the meta description is disabled.
 			 */
 			if ( empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
@@ -1661,12 +1661,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $md_opts[ 'seo_desc' ] );
 			}
 
-			/**
+			/*
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'og', 'pin', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
 
-				/**
+				/*
 				 * If there's no image ID, then remove the image ID library prefix.
 				 *
 				 * If an image ID is being used, then remove the image URL (only one can be defined).
@@ -1687,7 +1687,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Remove empty or default values.
 			 *
 			 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
@@ -1728,7 +1728,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
 			$md_keys_multi = WpssoConfig::get_md_keys_multi();
@@ -1740,7 +1740,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Get multi option values indexed only by their number.
 				 */
 				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$md_renum_opts[ $multi_key . '_' . $renum ] = $md_val;
 					}
 
-					/**
+					/*
 					 * Check if there are linked options, and if so, re-number those options as well.
 					 */
 					if ( is_array( $is_multi ) ) {
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$renum++;	// Increment the new index number.
 				}
 
-				/**
+				/*
 				 * Remove any existing multi options, including any linked options.
 				 */
 				$md_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
@@ -1786,7 +1786,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Save the re-numbered options.
 				 */
 				foreach ( $md_renum_opts as $md_key => $md_val ) {
@@ -1797,7 +1797,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $md_renum_opts );
 			}
 
-			/**
+			/*
 			 * Check for default recipe values.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^schema_recipe_(prep|cook|total)_(days|hours|mins|secs)$/', $md_opts ) as $md_key => $value ) {
@@ -1810,14 +1810,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check product energy efficiency rating and review rating.
 			 */
 			foreach ( array( 'product_energy_efficiency', 'schema_review_rating' ) as $md_rating_key ) {
 
 				if ( ! empty( $md_opts[ $md_rating_key ] ) ) {
 
-					/**
+					/*
 					 * Fallback to default values if the min/max is empty.
 					 */
 					foreach ( array( $md_rating_key . '_min', $md_rating_key . '_max' ) as $md_key ) {
@@ -1837,12 +1837,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check and maybe fix missing event date, time, and timezone values.
 			 */
 			foreach ( array( 'schema_event_start', 'schema_event_end', 'schema_event_previous' ) as $md_pre ) {
 
-				/**
+				/*
 				 * Unset date / time if same as the default value.
 				 */
 				foreach ( array( 'date', 'time', 'timezone' ) as $md_ext ) {
@@ -1880,7 +1880,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Events with a previous start date must have "rescheduled" as their status.
 			 *
 			 * A rescheduled event, without a previous start date, is also invalid.
@@ -1895,7 +1895,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$md_opts[ 'schema_event_status' ] = 'https://schema.org/EventScheduled';
 			}
 
-			/**
+			/*
 			 * Check offer options to make sure they have at least a name or a price.
 			 */
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
@@ -1925,7 +1925,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for invalid Schema type combinations (ie. a claim review of a claim review).
 			 */
 			if ( isset( $md_opts[ 'schema_type' ] ) ) {	// Just in case.
@@ -1949,18 +1949,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 
-			/**
+			/*
 			 * Return and apply filters, like 'wpsso_save_md_options' and 'wpsso_save_post_options'.
 			 */
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Return sortable column keys and their query sort info.
 		 *
 		 * Example Array (
@@ -2024,7 +2024,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $headers;
 		}
 
-		/**
+		/*
 		 * Example Array (
 		 *	[schema_type_name] => _wpsso_head_info_schema_type_name
 		 *	[schema_type]      => _wpsso_head_info_schema_type
@@ -2100,7 +2100,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$value = $this->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or an empty string.
 
-				/**
+				/*
 				 * Callback added by WpssoRarAdmin->filter_get_sortable_columns().
 				 */
 				$callbacks_key = $mod[ 'name' ] . '_callbacks';
@@ -2122,7 +2122,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $value;
 		}
 
-		/**
+		/*
 		 * Can return 'none' or an empty string.
 		 *
 		 * Called by WpssoPost->get_column_content().
@@ -2144,7 +2144,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $value;
 			}
 
-			/**
+			/*
 			 * Retrieves the cache contents from the cache by key and group.
 			 */
 			$metadata = $mod[ 'obj' ]->get_update_meta_cache( $mod[ 'id' ] );
@@ -2154,7 +2154,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$value = maybe_unserialize( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] );
 			}
 
-			/**
+			/*
 			 * $value is an empty string by default. If get_update_meta_cache() did not return a value for this meta
 			 * key, then $value will still be an empty string. If this meta key is localized, and the locale key does
 			 * not exist in the array, then fetch a new / updated array value.
@@ -2172,7 +2172,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return (string) $value;
 		}
 
-		/**
+		/*
 		 * Filters all post, term, and user metadata.
 		 */
 		public function check_sortable_meta( $value, $obj_id, $meta_key, $single ) {
@@ -2291,7 +2291,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Called by WpssoPost->add_post_column_headings().
 		 * Called by WpssoPost->add_media_column_headings().
 		 * Called by WpssoTerm->add_term_column_headings().
@@ -2301,7 +2301,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
-				/**
+				/*
 				 * Check if the column is enabled globally for the post, media, term, or user edit list.
 				 */
 				if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $opt_suffix ] ) ) {
@@ -2318,7 +2318,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $columns;
 		}
 
-		/**
+		/*
 		 * Retrieves or updates the metadata cache by key and group.
 		 */
 		public function get_update_meta_cache( $obj_id ) {
@@ -2326,7 +2326,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
-		/**
+		/*
 		 * Return merged custom options from the post or term parents.
 		 *
 		 * Called by WpssoAbstractWpMeta->get_defaults(), WpssoPost->get_options(), and WpssoTerm->get_options().
@@ -2343,13 +2343,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts    = array();
 			$parent_ids = array();
 
-			/**
+			/*
 			 * Since WPSSO Core v12.2.0.
 			 */
 			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
 			$inherit_opts = (array) apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
 
-			/**
+			/*
 			 * Since WPSSO Core v9.10.0.
 			 *
 			 * Note that by default only public children inherit parent images.
@@ -2378,7 +2378,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				/**
+				/*
 				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name.
 				 *
 				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
@@ -2400,7 +2400,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
 			}
 
-			/**
+			/*
 			 * Merge the custom options array top-down, so we merge the closest parent last.
 			 */
 			if ( empty( $parent_ids ) ) {
@@ -2448,7 +2448,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Returns an array of single image associative arrays.
 		 *
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
@@ -2539,7 +2539,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $mt_images;
 			}
 
-			/**
+			/*
 			 * Example filter names:
 			 *
 			 *	'wpsso_post_image_ids'
@@ -2568,7 +2568,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Example filter names:
 			 *
 			 *	'wpsso_post_image_urls'
@@ -2614,7 +2614,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $mt_images;
 		}
 
-		/**
+		/*
 		 * Extended by the WpssoUser class to support non-WordPress user images.
 		 *
 		 * Returns an array of single image associative arrays.
@@ -2633,7 +2633,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $this->get_md_images( $num, $size_names, $mod, $md_pre, $mt_pre );
 		}
 
-		/**
+		/*
 		 * Returns an array of single video associative arrays.
 		 *
 		 * $md_pre can be a text string or array of prefixes.
@@ -2686,7 +2686,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code', get_class( $this ) );
 					}
 
-					/**
+					/*
 					 * Returns an array of single video associative arrays.
 					 */
 					$mt_videos = $this->p->media->get_content_videos( $num, $mod, $embed_html );
@@ -2711,7 +2711,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 							'api'      => '',
 						);
 
-						/**
+						/*
 						 * Returns a single video associative array.
 						 */
 						$mt_single_video = $this->p->media->get_video_details( $args, $mod, $fallback = true );
@@ -2775,7 +2775,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$mt_ret[ 'review:image' ]        = isset( $mt_comment[ 'og:image' ] ) ? $mt_comment[ 'og:image' ] : array();
 			$mt_ret[ 'review:video' ]        = isset( $mt_comment[ 'og:video' ] ) ? $mt_comment[ 'og:video' ] : array();
 
-			/**
+			/*
 			 * Review rating.
 			 *
 			 * Rating values must be larger than 0 to include rating info.
@@ -2792,7 +2792,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * WpssoPost class specific methods.
 		 */
 		public function get_canonical_shortlink( $shortlink = false, $obj_id = 0, $context = 'post', $allow_slugs = true ) {
@@ -2805,7 +2805,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = '' );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.6.0.
 		 */
 		public static function get_attached( $obj_id, $attach_type ) {
@@ -2823,7 +2823,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return array();	// No values.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.6.0.
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
@@ -2847,7 +2847,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return false;	// No addition.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.6.0.
 		 */
 		public static function delete_attached( $obj_id, $attach_type, $attachment_id ) {
@@ -2869,7 +2869,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return false;	// No delete.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.15.0.
 		 *
 		 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
@@ -2879,7 +2879,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.18.0.
 		 *
 		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
@@ -2889,7 +2889,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.16.0.
 		 *
 		 * Returns an associative array of term IDs and their names or objects.
@@ -2901,7 +2901,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = array() );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
@@ -2914,7 +2914,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
 		 * Always call this method as static::update_meta(), and not self::update_meta(), to execute the method via the
@@ -2925,7 +2925,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false ); // No update.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
 		 * Always call this method as staticdelete_meta(), and not selfdelete_meta(), to execute the method via the child
@@ -2936,7 +2936,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = false ); // No delete.
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.12.0.
 		 *
 		 * Used by several SEO integration modules.
