@@ -464,19 +464,19 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 			if ( ! $markdown ) {
 
-				/**
+				/*
 				 * This gets the "inline" code blocks, but can't be used with markdown.
 				 */
 				$text = preg_replace_callback( "!(`)(.*?)`!", array( __CLASS__, 'encodeit' ), $text );
 
-				/**
+				/*
 				 * This gets the "block level" code blocks and converts them to pre code.
 				 */
 				$text = preg_replace_callback( "!(^|\n)`(.*?)`!s", array( __CLASS__, 'encodeit'), $text );
 
 			} else {
 
-				/**
+				/*
 				 * Markdown can do inline code, we convert bbPress style block level code to markdown style.
 				 */
 				$text = preg_replace_callback( "!(^|\n)([ \t]*?)`(.*?)`!s", array( __CLASS__, 'indent' ), $text );
