@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Note that options from the WPSSO Core setting pages and Document SSO metabox use a "p" option prefix.
 		 */
 		public function __construct( &$plugin ) {
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		 */
 		public function add_attachment_image_attributes( $attr, $attach ) {
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $attr;
 		}
 
-		/**
+		/*
 		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
 		 */
 		public function get_header_image_tag( $html, $header, $attr ) {
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt, $data_args );
 		 */
 		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt, $data_args ) {
@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Do not add the pinterest image if the current webpage is amp or rss feed.
 			 */
 			if ( SucomUtil::is_amp() || is_feed() ) {
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Check if the content filter is being applied to create a description text.
 			 */
 			if ( ! empty( $GLOBALS[ 'wpsso_doing_filter_the_content' ] ) ) {
@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$this->p->debug->log( 'pinterest data pin description = ' . $data_pin_desc );
 				}
 
-				/**
+				/*
 				 * Note that an empty alt attribute is required for W3C validation.
 				 *
 				 * Adding a 'loading="lazy"' attribute breaks the Pinterest Save button.

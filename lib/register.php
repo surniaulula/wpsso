@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Fires immediately after a new site is created.
 		 */
 		public function wpmu_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			restore_current_blog();
 		}
 
-		/**
+		/*
 		 * Fires immediately after a site is activated (not called when users and sites are created by a Super Admin).
 		 */
 		public function wpmu_activate_blog( $blog_id, $user_id, $password, $signup_title, $meta ) {
@@ -71,14 +71,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			self::do_multisite( $sitewide, array( $this, 'deactivate_plugin' ) );
 		}
 
-		/**
+		/*
 		 * uninstall.php defines constants before calling network_uninstall().
 		 */
 		public static function network_uninstall() {
 
 			$sitewide = true;
 
-			/**
+			/*
 			 * Uninstall from the individual blogs first.
 			 */
 			self::do_multisite( $sitewide, array( __CLASS__, 'uninstall_plugin' ) );
@@ -128,12 +128,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
-			/**
+			/*
 			 * Returns the event timestamp, or false if the event has not been registered.
 			 */
 			$new_install = WpssoUtilReg::get_ext_event_time( 'wpsso', 'install' ) ? false : true;
 
-			/**
+			/*
 			 * Add the "person" role for all WpssoUser::get_public_ids().
 			 */
 			if ( $new_install ) {
@@ -141,14 +141,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$this->p->user->schedule_add_person_role();
 			}
 
-			/**
+			/*
 			 * Register plugin install, activation, update times.
 			 */
 			$version = WpssoConfig::get_version();
 
 			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 
-			/**
+			/*
 			 * Clear all caches on activate.
 			 */
 			$user_id = get_current_user_id();
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
-			/**
+			/*
 			 * End of plugin activation.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 
-			/**
+			/*
 			 * Clear the disk cache.
 			 *
 			 * Do not call WpssoUtilCache->schedule_clear() since WPSSO will be deactivated before the scheduled task can begin.
@@ -208,7 +208,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 		}
 
-		/**
+		/*
 		 * uninstall.php defines constants before calling network_uninstall(), which calls do_multisite(), and then calls
 		 * uninstall_plugin().
 		 */
@@ -229,13 +229,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
 				}
 
-				/**
+				/*
 				 * Delete post settings and meta.
 				 */
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
 
-				/**
+				/*
 				 * Delete term settings and meta.
 				 */
 				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_ATTACHED_NAME );
 				}
 
-				/**
+				/*
 				 * Delete user settings and meta.
 				 */
 				foreach ( $col_meta_keys as $col_key => $meta_key ) {
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				remove_role( 'person' );
 			}
 
-			/**
+			/*
 			 * Delete plugin transients.
 			 */
 			global $wpdb;

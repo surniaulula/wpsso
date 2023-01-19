@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return $sizes;
 		}
 
-		/**
+		/*
 		 * Use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			$mt_tc = (array) apply_filters( 'wpsso_tc_seed', array(), $mod );
 
-			/**
+			/*
 			 * The twitter:domain is used in place of the 'view on web' text.
 			 */
 			if ( ! isset( $mt_tc[ 'twitter:domain' ] ) && ! empty( $mt_og[ 'og:url' ] ) ) {
@@ -95,22 +95,22 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Player video card.
 			 */
 			$this->maybe_add_player_card( $mt_tc, $mod, $mt_og, $author_id );
 
-			/**
+			/*
 			 * Post summary or large image summary card.
 			 */
 			$this->maybe_add_post_card( $mt_tc, $mod, $mt_og, $author_id );
 
-			/**
+			/*
 			 * Default card.
 			 */
 			$this->maybe_add_default_card( $mt_tc, $mod, $mt_og, $author_id );
 
-			/**
+			/*
 			 * Additional article and product data.
 			 */
 			$this->maybe_add_extra_data( $mt_tc, $mod, $mt_og, $author_id );
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return (array) apply_filters( 'wpsso_tc', $mt_tc, $mod );
 		}
 
-		/**
+		/*
 		 * $mixed = 'singular' | 'default' | $mod.
 		 *
 		 * Example return:
@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			} elseif ( is_array( $mixed ) ) {	// $mixed is $mod.
 
-				/**
+				/*
 				 * Get the default card type for this post type.
 				 */
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Maybe override the default with a custom card type.
 				 */
 				if ( ! empty( $mixed[ 'obj' ] ) && $use_md_opts ) {
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * Example return:
 			 *
 			 *	array(
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			return $card_info;
 		}
 
-		/**
+		/*
 		 * Player video card.
 		 *
 		 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$player_embed_url  = '';
 				$player_stream_url = '';
 
-				/**
+				/*
 				 * Check for internal meta tag embed_url or stream_url.
 				 */
 				if ( ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
@@ -309,14 +309,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Check for a video mime-type meta tag.
 				 */
 				if ( isset( $mt_single_video[ 'og:video:type' ] ) ) {
 
 					switch ( $mt_single_video[ 'og:video:type' ] ) {
 
-						/**
+						/*
 						 * twitter:player
 						 *
 						 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active
@@ -338,7 +338,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 							break;
 
-						/**
+						/*
 						 * twitter:player:stream
 						 */
 						case 'video/mp4':
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Set the twitter:player meta tag value(s).
 				 */
 				if ( ! empty( $player_embed_url ) ) {
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$mt_tc[ 'twitter:player:stream:content_type' ] = $mt_single_video[ 'og:video:type' ];
 				}
 
-				/**
+				/*
 				 * Set twitter:player related values (player width, height, mobile apps, etc.)
 				 */
 				if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Get the video preview image (if one is available).
 					 */
 					$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_single_video );
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$mt_tc[ 'twitter:image:alt' ] = $mt_single_video[ 'og:image:alt' ];
 					}
 
-					/**
+					/*
 					 * Fallback to the open graph image.
 					 */
 					if ( empty( $mt_tc[ 'twitter:image' ] ) && ! empty( $mt_og[ 'og:image' ] ) ) {
@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Post summary or large image summary card.
 		 */
 		private function maybe_add_post_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			list( $card_type, $card_label, $size_name, $md_pre ) = $this->get_card_info( $mod );
 
-			/**
+			/*
 			 * Post image.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -490,7 +490,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-				/**
+				/*
 				 * 'summary_large_image' webpages cannot have the same image URLs, so add the post ID to all
 				 * 'summary_large_image' images.
 				 */
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Default card.
 		 */
 		private function maybe_add_default_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Additional article and product data.
 		 */
 		private function maybe_add_extra_data( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$mt_name = 'product:availability';
 							$map_key = $mt_og[ $mt_name ];
 
-							/**
+							/*
 							 * Map 'https://schema.org/InStock' to 'in stock', for example.
 							 */
 							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $map_key ] ) ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 				'target' => $json_data[ 'url' ],
 			) );
 
-			/**
+			/*
 			 * Since WPSSO Core v13.10.0.
 			 *
 			 * Add reviewed by organizations and persons.
@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 
 					foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $md_opts ) as $opt_key => $id ) {
 
-						/**
+						/*
 						 * Check that the id value is not true, false, null, or 'none'.
 						 */
 						if ( ! SucomUtil::is_valid_option_id( $id ) ) {
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/lastReviewed.
 			 */
 			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/speakable.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_speakable_css_csv' ] ) ) {

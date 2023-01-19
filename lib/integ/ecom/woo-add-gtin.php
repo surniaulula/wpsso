@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -32,13 +32,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooAddGtin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Custom fields are read using the 'wpsso_import_custom_fields' filter.
 			 */
 			$this->p->options[ 'plugin_cf_product_gtin' ]          = self::$meta_name;
 			$this->p->options[ 'plugin_cf_product_gtin:disabled' ] = true;
 
-			/**
+			/*
 			 * Product attributes are read using the 'wpsso_import_product_attributes' filter.
 			 *
 			 * Make sure the GTIN product attribute is not read, which would overwrite our custom field value.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooAddGtin' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * Variations use a different custom field name.
 		 */
 		public function filter_wc_variation_alt_options( array $opts ) {

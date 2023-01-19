@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_tag',
 			'is_tax',
 
-			/**
+			/*
 			 * Common e-commerce functions.
 			 */
 			'is_account_page',
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_product_tag',
 			'is_shop',
 
-			/**
+			/*
 			 * Other functions.
 			 */
 			'is_amp_endpoint',
@@ -97,14 +97,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'scheduled_task_started' => 1,
 			), $prio = -1000 );
 
-			/**
+			/*
 			 * Log the locale change and clear the Sucom::get_locale() cache.
 			 */
 			add_action( 'change_locale', array( $this, 'wp_locale_changed' ), -100, 1 );
 			add_action( 'switch_locale', array( $this, 'wp_locale_switched' ), -100, 1 );
 			add_action( 'restore_previous_locale', array( $this, 'wp_locale_restored' ), -100, 2 );
 
-			/**
+			/*
 			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function set_util_instances( &$plugin ) {
 
-			/**
+			/*
 			 * Instantiate WpssoUtilBlocks.
 			 */
 			if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->blocks = new WpssoUtilBlocks( $plugin, $this );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilCache.
 			 */
 			if ( ! class_exists( 'WpssoUtilCache' ) ) {
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->cache = new WpssoUtilCache( $plugin, $this );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilCustomFields.
 			 */
 			if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilInline.
 			 */
 			if ( ! class_exists( 'WpssoUtilInline' ) ) {
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->inline = new WpssoUtilInline( $plugin, $this );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilMetabox.
 			 */
 			if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->metabox = new WpssoUtilMetabox( $plugin );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilReg.
 			 */
 			if ( ! class_exists( 'WpssoUtilReg' ) ) {
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->reg = new WpssoUtilReg( $plugin );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilReg.
 			 */
 			if ( ! class_exists( 'WpssoUtilRobots' ) ) { // Since WPSSO Core v6.13.1.
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->robots = new WpssoUtilRobots( $plugin );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilUnits.
 			 */
 			if ( ! class_exists( 'WpssoUtilUnits' ) ) {
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->units = new WpssoUtilUnits( $plugin );
 
-			/**
+			/*
 			 * Instantiate WpssoUtilWoocommerce.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Add plugin image sizes before starting a background task, like refreshing the plugin cache.
 		 */
 		public function action_scheduled_task_started( $user_id ) {
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->add_plugin_image_sizes();
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v11.7.2.
 		 *
 		 * Monitor the WordPress 'change_locale' action for locale changes.
@@ -254,14 +254,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions.
 		 *
 		 * This method does not return a value, so do not use it as a filter. ;-)
 		 */
 		public function add_plugin_image_sizes() {
 
-			/**
+			/*
 			 * Allow various plugin add-ons to provide their image names, labels, etc. The first dimension array key is
 			 * the option name prefix by default. You can also include the width, height, crop, crop_x, and crop_y
 			 * values.
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 
-			/**
+			/*
 			 * Get default options only once.
 			 */
 			static $defs = null;
@@ -294,21 +294,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_suffix ) {
 
-					/**
+					/*
 					 * Value provided by filters.
 					 */
 					if ( isset( $size_info[ $opt_suffix ] ) ) {
 
 						continue;
 
-					/**
+					/*
 					 * Plugin settings.
 					 */
 					} elseif ( isset( $this->p->options[ $opt_prefix . '_img_' . $opt_suffix ] ) ) {
 
 						$size_info[ $opt_suffix ] = $this->p->options[ $opt_prefix . '_img_' . $opt_suffix ];
 
-					/**
+					/*
 					 * Default settings.
 					 */
 					} else {
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$this->cache_size_opts[ 'wpsso-' . $size_info[ 'name' ] ] = $opt_prefix;
 
-					/**
+					/*
 					 * Add the image size.
 					 */
 					add_image_size( 'wpsso-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
@@ -420,7 +420,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $count;
 		}
 
-		/**
+		/*
 		 * Get the width, height and crop value for all image sizes.
 		 *
 		 * Returns an associative array with the image size name as the array key.
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $image_sizes;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.5.0.
 		 */
 		public function is_size_cropped( $size_name = 'thumbnail', $attachment_id = false ) {
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return empty( $size_info[ 'is_cropped' ] ) ? false : true;
 		}
 
-		/**
+		/*
 		 * Get the width, height and crop value for a specific image size.
 		 */
 		public function get_size_info( $size_name = 'thumbnail', $attachment_id = false ) {
@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$crop = get_option( $size_name . '_crop' );
 			}
 
-			/**
+			/*
 			 * Standardize to true, false, or non-empty array.
 			 */
 			if ( empty( $crop ) ) {	// 0, false, null, or empty array.
@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$crop = true;
 			}
 
-			/**
+			/*
 			 * If the image size is cropped, then check the image metadata for a custom crop area.
 			 */
 			if ( $crop && $attachment_id && is_numeric( $attachment_id ) ) {
@@ -532,7 +532,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$is_cropped = empty( $crop ) ? false : true;
 
-			/**
+			/*
 			 * Crop can be true, false, or an array.
 			 */
 			return $local_cache[ $size_name ][ $attachment_id ] = array(
@@ -546,7 +546,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			);
 		}
 
-		/**
+		/*
 		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph' pre-translated.
 		 */
 		public function get_image_size_label( $size_name ) {
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $size_name;
 		}
 
-		/**
+		/*
 		 * Example $size_name = 'wpsso-opengraph' returns 'og'.
 		 */
 		public function get_image_size_opt( $size_name ) {
@@ -574,7 +574,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return '';
 		}
 
-		/**
+		/*
 		 * Called by WpssoMedia->get_all_images(), WpssoMedia->get_mt_pid_images(), WpssoUtil->clear_uniq_urls(),
 		 * WpssoSscShortcodeSchema->do_shortcode().
 		 */
@@ -617,12 +617,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return array();
 		}
 
-		/**
+		/*
 		 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 		 */
 		public function maybe_add_img_url_size( array &$opts, $opt_key ) {
 
-			/**
+			/*
 			 * Only process option keys with '_img_url' in their name.
 			 */
 			if ( false === strpos( $opt_key, '_img_url' ) ) {
@@ -643,7 +643,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * If this is a '_value' option, add the '_units' option.
 		 */
 		public function maybe_add_md_key_units( array &$md_opts, $md_key ) {
@@ -665,12 +665,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function maybe_renum_md_key( array &$md_opts, $md_key, array $values ) {
 
-			/**
+			/*
 			 * Remove any old values from the options array.
 			 */
 			$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, $invert = true );
 
-			/**
+			/*
 			 * Renumber the options starting from 0.
 			 */
 			foreach ( $values as $num => $val ) {
@@ -688,7 +688,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * $media_prefixes can be a single key name or an array of key names.
 		 *
 		 * Uses a reference variable to modify the $opts array directly.
@@ -737,7 +737,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		/**
+		/*
 		 * Always returns an array.
 		 *
 		 * Note that WebP is only supported since PHP v7.1.
@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				/**
+				/*
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
@@ -808,7 +808,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'exiting early: returning image info from transient' );
 					}
 
-					/**
+					/*
 					 * Optimize and save the transient cache value to local cache.
 					 */
 					return $local_cache[ $image_url ] = $image_info;
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$mtime_start = microtime( $get_float = true );
 
-			/**
+			/*
 			 * Example $image_info:
 			 *
 			 * Array (
@@ -889,7 +889,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $local_cache[ $image_url ] = $image_info;
 		}
 
-		/**
+		/*
 		 * Called by several class __construct() methods to hook their filters.
 		 */
 		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->add_plugin_hooks( $type = 'filter', $class, $filters, $prio, $ext );
 		}
 
-		/**
+		/*
 		 * Called by several class __construct() methods to hook their actions.
 		 */
 		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
@@ -905,7 +905,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->add_plugin_hooks( $type = 'action', $class, $actions, $prio, $ext );
 		}
 
-		/**
+		/*
 		 * $type = 'filter' or 'action'.
 		 */
 		private function add_plugin_hooks( $type, $class, $hook_list, $prio, $ext = '' ) {
@@ -924,7 +924,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Example:
 				 *
 				 * 	'json_data_https_schema_org_website' => 5
@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 					}
 
-				/**
+				/*
 				 * Example:
 				 *
 				 * 	'wpsso_filter_hook_name' => '__return_false'
@@ -988,7 +988,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 					}
 
-				/**
+				/*
 				 * Example:
 				 *
 				 * 	'json_data_https_schema_org_article' => array(
@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Add options using a key prefix array and post type names.
 		 */
 		public function add_post_type_names( array &$opts, array $opt_prefixes, $args = null ) {
@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		/**
+		/*
 		 * Add options using a key prefix array and post type archive names.
 		 *
 		 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->add_post_type_names( $opts, $opt_prefixes, $args );
 		}
 
-		/**
+		/*
 		 * Add options using a key prefix array and taxonomy names.
 		 */
 		public function add_taxonomy_names( array &$opts, array $opt_prefixes ) {
@@ -1254,7 +1254,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $local_cache[ $filter_key ];
 		}
 
-		/**
+		/*
 		 * Returns an associative array, with 'none' as the first element.
 		 */
 		public function get_article_sections() {
@@ -1355,7 +1355,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $sections;
 		}
 
-		/**
+		/*
 		 * Format the product category list from https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
 		 *
 		 * Returns an associative array, with 'none' as the first element.
@@ -1460,7 +1460,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $categories;
 		}
 
-		/**
+		/*
 		 * Query argument examples:
 		 *
 		 * 	/html/head/link|/html/head/meta
@@ -1572,7 +1572,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$html = mb_convert_encoding( $html, $to_encoding = 'HTML-ENTITIES', $from_encoding = 'UTF-8' );
 			}
 
-			/**
+			/*
 			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
 			 * m = The "^" and "$" constructs match newlines and the complete subject string.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
@@ -1618,7 +1618,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'loadHTML returned error(s)' );
 					}
 
-					/**
+					/*
 					 * libXMLError {
 					 *	public int $level;
 					 *	public int $code;
@@ -1806,7 +1806,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Used by WpssoHead->show_head() and WpssoAdminHead->__construct().
 		 */
 		public function log_is_functions() {
@@ -1853,7 +1853,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $function_info;
 		}
 
-		/**
+		/*
 		 * Shorten URL using the selected shortening service.
 		 */
 		public function shorten_url( $long_url, $mod = false ) {
@@ -1888,7 +1888,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return wp_json_encode( $data, $options, $depth );
 		}
 
-		/**
+		/*
 		 * Get the sitemaps alternates array.
 		 *
 		 * Example:
@@ -1939,7 +1939,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $sitemaps_images;
 		}
 
-		/**
+		/*
 		 * Shorten the canonical URL using the selected shortening service.
 		 */
 		public function get_canonical_short_url( $mod = false, $add_page = true ) {
@@ -1949,7 +1949,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->shorten_url( $url, $mod );
 		}
 
-		/**
+		/*
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
@@ -1974,7 +1974,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			/**
+			/*
 			 * Optimize and return the URL from local cache if possible.
 			 */
 			static $local_cache = array();
@@ -2007,7 +2007,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! $is_custom ) {	// No custom canonical url from the post, term, or user meta.
 
-				/**
+				/*
 				 * Similar module type logic can be found in the following methods:
 				 *
 				 * See WpssoOpenGraph->get_mod_og_type().
@@ -2151,7 +2151,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$url = apply_filters( 'wpsso_archive_page_url', $url, $mod );
 				}
 
-				/**
+				/*
 				 * Use the current URL as a fallback for themes and plugins that create public content and don't use the
 				 * standard WordPress functions / variables and/or are not properly integrated with WordPress (ie. they do
 				 * not use custom post types, taxonomies, terms, etc.).
@@ -2169,7 +2169,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe enforce the FORCE_SSL constant.
 			 */
 			if ( strpos( $url, '://' ) ) {	// Only check URLs with a protocol.
@@ -2206,7 +2206,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $url;
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 *
 			 * $mod = true | false | post_id | $mod array
@@ -2278,7 +2278,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $data;
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 *
 			 * $mod = true | false | post_id | $mod array
@@ -2326,7 +2326,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
-		/**
+		/*
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
@@ -2399,7 +2399,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'utm_term',
 			) as $q ) {
 
-				/**
+				/*
 				 * Ignore 0, false, null, and '' (empty string) values.
 				 */
 				$utm[ $q ] = empty( $atts[ $q ] ) ? false : $atts[ $q ];
@@ -2407,7 +2407,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$utm = apply_filters( 'wpsso_sharing_utm_args', $utm, $mod );
 
-			/**
+			/*
 			 * To add UTM tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
 			 */
 			if ( ! empty( $utm[ 'utm_source' ] ) && ! empty( $utm[ 'utm_medium' ] ) && ! empty( $utm[ 'utm_campaign' ] ) ) {
@@ -2424,7 +2424,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
 		}
 
-		/**
+		/*
 		 * Shorten the sharing URL using the selected shortening service.
 		 */
 		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
@@ -2478,7 +2478,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'not using permalinks or have query args' );
 				}
 
-				/**
+				/*
 				 * Note that the singular page query argument is named 'page' not 'paged'.
 				 */
 				if ( $page_number > 1 ) {
@@ -2512,7 +2512,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		/**
+		/*
 		 * See WpssoUtil->get_url_paged().
 		 * See WpssoUtilInline->get_defaults().
 		 */
@@ -2532,7 +2532,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $page_number;
 		}
 
-		/**
+		/*
 		 * Called by scheduled tasks to check the user ID value and possibly load a different textdomain language.
 		 */
 		public function maybe_change_user_id( $user_id ) {
@@ -2550,7 +2550,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $user_id;
 			}
 
-			/**
+			/*
 			 * The user ID is different than the current / effective user ID, so check if the user locale is different
 			 * to the current WordPress locale and load the user locale if required.
 			 */
@@ -2579,7 +2579,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mu_plugin_mopath = defined( 'WPMU_PLUGIN_DIR' ) ? WPMU_PLUGIN_DIR . '/' . $rel_lang_path . $mofile : false;
 				$plugin_mopath    = defined( 'WP_PLUGIN_DIR' ) ? WP_PLUGIN_DIR . '/' . $rel_lang_path . $mofile : false;
 
-				/**
+				/*
 				 * Try to load from the WordPress languages directory first.
 				 */
 				if ( ( $wp_mopath && load_textdomain( $plugin_slug, $wp_mopath ) ) ||
@@ -2595,7 +2595,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $local_cache[ $new_locale ][ $plugin_slug ] = false;
 		}
 
-		/**
+		/*
 		 * Used by WpssoMedia get_content_images() and get_attachment_image_src().
 		 */
 		public function fix_relative_url( $url ) {
@@ -2645,7 +2645,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v12.0.0.
 		 */
 		public function is_redirect_enabled() {
@@ -2721,7 +2721,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $is_pretty ? true : false;
 		}
 
-		/**
+		/*
 		 * Note that WebP is only supported since PHP v7.1.
 		 */
 		public function is_image_url( $image_url ) {
@@ -2731,7 +2731,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Example $image_info:
 			 *
 			 * Array (
@@ -2950,7 +2950,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Get maximum media values from custom meta or plugin settings.
 		 */
 		public function get_max_nums( array $mod, $opt_prefix = 'og' ) {
@@ -2970,7 +2970,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$max_val = null;	// Default value if index key is missing.
 				}
 
-				/**
+				/*
 				 * Quick sanitation of returned value.
 				 */
 				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
@@ -2998,7 +2998,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Check for required apply_filters() arguments.
 			 */
 			if ( empty( $args[ 0 ] ) ) {
@@ -3033,7 +3033,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $filter_value;
 			}
 
-			/**
+			/*
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
 			if ( ! empty( $GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] ) ) {
@@ -3046,12 +3046,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $filter_value;
 			}
 
-			/**
+			/*
 			 * Hooked by some modules to perform actions before/after filtering the content.
 			 */
 			do_action( 'wpsso_pre_apply_filters_text', $filter_name );
 
-			/**
+			/*
 			 * Load the Block Filter Output (BFO) filters to block and show an error for incorrectly coded filters.
 			 */
 			if ( $use_bfo ) {
@@ -3066,7 +3066,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Save the original post object, in case some filters modify the global $post.
 			 */
 			global $post, $wp_query;
@@ -3080,7 +3080,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$post_pre_filter     = $post;		// Save the original global post object.
 			$wp_query_pre_filter = $wp_query;	// Save the original global wp_query.
 
-			/**
+			/*
 			 * Make sure the $post object is correct before filtering.
 			 */
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
@@ -3110,7 +3110,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			setup_postdata( $post );
 
-			/**
+			/*
 			 * Prevent recursive loops and signal to other methods that the content filter is being applied to create a
 			 * description text - this avoids the addition of unnecessary HTML which will be removed anyway (social
 			 * sharing buttons, for example).
@@ -3122,7 +3122,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] = true;	// Prevent recursive loops.
 
-			/**
+			/*
 			 * Apply the filters.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -3139,7 +3139,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// End timer.
 			}
 
-			/**
+			/*
 			 * Unset the recursive loop check.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -3149,7 +3149,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			unset( $GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] );	// Un-prevent recursive loops.
 
-			/**
+			/*
 			 * Issue warning for slow filter performance.
 			 */
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
@@ -3183,7 +3183,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					/**
+					/*
 					 * If this is a known WordPress filter, show a different and more complete notification message.
 					 */
 					if ( $is_wp_filter ) {
@@ -3208,7 +3208,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Restore the original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -3227,7 +3227,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			setup_postdata( $post );
 
-			/**
+			/*
 			 * Remove the Block Filter Output (BFO) filters.
 			 */
 			if ( $use_bfo ) {
@@ -3235,7 +3235,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$bfo_obj->remove_all_hooks( array( $filter_name ) );
 			}
 
-			/**
+			/*
 			 * Hooked by some modules to perform actions before/after filtering the content.
 			 */
 			do_action( 'wpsso_after_apply_filters_text', $filter_name );
@@ -3255,7 +3255,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$admin_url   = '';
 			$current_url = $_SERVER[ 'REQUEST_URI' ];
 
-			/**
+			/*
 			 * $menu_id may start with a hash or query, so parse before checking its value.
 			 */
 			if ( false !== strpos( $menu_id, '#' ) ) {
@@ -3280,7 +3280,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Find the menu_lib value for this menu_id.
 			 */
 			if ( empty( $menu_lib ) ) {
@@ -3327,7 +3327,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $hash ) ) {
 
-				/**
+				/*
 				 * If we have anchor text, force a page reload for the anchor, in case we're on the same page.
 				 *
 				 * Use the same random query for all admin URLs during a single page load so the SucomNotice "show
@@ -3356,7 +3356,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':disabled', ':use', and '#.*').
 		 */
 		public function rename_options_by_ext( array $opts, array $version_keys ) {
@@ -3423,7 +3423,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		/**
+		/*
 		 * limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr) for UTF8.
 		 */
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
@@ -3478,7 +3478,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );		// Remove inline stylesheets.
 
-			/**
+			/*
 			 * Maybe remove text between ignore markers.
 			 */
 			if ( false !== strpos( $text, 'wpsso-ignore' ) ) {
@@ -3486,27 +3486,27 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$text = preg_replace( '/<!-- *wpsso-ignore *-->.*<!-- *\/wpsso-ignore *-->/U', ' ', $text );
 			}
 
-			/**
+			/*
 			 * Similar to SucomUtil::strip_html(), but includes image alt tags.
 			 */
 			if ( $strip_tags ) {
 
-				/**
+				/*
 				 * Add missing dot to buttons, headers, lists, etc.
 				 */
 				$text = preg_replace( '/([\w])<\/(button|dt|h[0-9]+|li|th)>/i', '$1. ', $text );
 
-				/**
+				/*
 				 * Replace list and paragraph tags with a space.
 				 */
 				$text = preg_replace( '/(<li[^>]*>|<p[^>]*>|<\/p>)/i', ' ', $text );
 
-				/**
+				/*
 				 * Remove remaining html tags.
 				 */
 				$text_stripped = trim( strip_tags( $text ) );
 
-				/**
+				/*
 				 * Possibly use img alt strings if no text.
 				 */
 				if ( '' === $text_stripped && $use_img_alt && false !== strpos( $text, '<img ' ) ) {
@@ -3524,7 +3524,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix . ' ' . $alt;
 
-								/**
+								/*
 								 * Maybe add a period after the image alt text.
 								 */
 								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt . ' ' : $alt . '. ';
@@ -3545,7 +3545,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Replace 1+ spaces to a single space.
 			 */
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );
@@ -3555,7 +3555,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function get_validators( array $mod, $form = null ) {
 
-			/**
+			/*
 			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
 			 * modules (comment, post, term, and user). If we're on the front-end, validating the current webpage URL
 			 * is fine.
@@ -3657,7 +3657,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $validators;
 		}
 
-		/**
+		/*
 		 * Maybe set the notice reference URL and translated message.
 		 *
 		 * Example messages, depending on the $mod array:
@@ -3713,7 +3713,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				// translators: %1$s is an action message, %2$s is the module or post type name.
 				$msg_transl = sprintf( __( '%1$s for this %2$s', 'wpsso' ), $msg_transl, $name_transl );
 
-				/**
+				/*
 				 * Exclude the $mod array to avoid adding an 'Edit' link to the notice message.
 				 */
 				return $this->p->notice->set_ref( $canonical_url, false, $msg_transl );
@@ -3743,7 +3743,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->notice->unset_ref( $canonical_url );
 		}
 
-		/**
+		/*
 		 * See WpssoCmcfXml->get().
 		 * See WpssoGmfXml->get().
 		 * See WpssoAdmin->registered_setting_sanitation().
@@ -3783,7 +3783,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
 
-							/**
+							/*
 							 * If one of these $mod array conditions is true, then use the associated value.
 							 */
 							if ( ! empty( $mod[ $cond ] ) ) {
@@ -3796,7 +3796,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Example filter names:
 				 *
 				 *	'wpsso_cache_expire_api_response' ( DAY_IN_SECONDS )
@@ -3815,7 +3815,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $cache_exp_secs;
 		}
 
-		/**
+		/*
 		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
 		 *
 		 * Called by WpssoFaqShortcodeFaq->do_shortcode().

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Meta Name Tags.
 		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 			$mt_name = apply_filters( 'wpsso_meta_name_seed', array(), $mod );
 
-			/**
+			/*
 			 * Meta name "author".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_author' ] ) ) {
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Meta name "description".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				$mt_name[ 'description' ] = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'seo_desc' );
 			}
 
-			/**
+			/*
 			 * Meta name "thumbnail".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_thumbnail' ] ) ) {
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Baidu, Google, Microsoft Bing, Pinterest, and Yandex website verification IDs.
 			 */
 			foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Meta name "robots".
 			 */
 			if ( $this->p->util->robots->is_enabled() ) {

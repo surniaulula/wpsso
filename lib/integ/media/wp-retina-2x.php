@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoIntegMediaWpRetina2x' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Filter for the get_option() and update_option() functions.
 			 */
 			add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoIntegMediaWpRetina2x' ) ) {
 			add_action( 'wr2x_generate_retina', array( $this, 'action_reset_image_src_args' ), -1000, 1 );
 		}
 
-		/**
+		/*
 		 * Filter for the get_option() and update_option() functions.
 		 *
 		 * Prevent Perfect Images + Retina (aka WP Retina 2x) from creating 2x images for WPSSO image sizes.
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoIntegMediaWpRetina2x' ) ) {
 			return $mixed;
 		}
 
-		/**
+		/*
 		 * Save arguments for the 'image_make_intermediate_size' and 'image_resize_dimensions' filters.
 		 */
 		public function filter_set_image_src_args( $custom_crop, $pid, $size_name ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				'fb' => 'https://ogp.me/ns/fb#',
 			);
 
-			/**
+			/*
 			 * Check that the og_type is known and add it's namespace value.
 			 *
 			 * Example: article, place, product, website, etc.
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 
-				/**
+				/*
 				 * Nothing to do.
 				 */
 
@@ -104,12 +104,12 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 				$html_attr = ' ' . $html_attr;	// Prepare the string for testing.
 
-				/**
+				/*
 				 * Find and remove an existing prefix attribute value.
 				 */
 				if ( strpos( $html_attr, 'prefix=' ) ) {
 
-					/**
+					/*
 				 	 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 *
 					 * See https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			return trim( $html_attr );
 		}
 
-		/**
+		/*
 		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
 		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
 		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			return $mt_og;
 		}
 
-		/**
+		/*
 		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
 		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
 		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			return $mt_og;
 		}
 
-		/**
+		/*
 		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
 		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
 		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_og, $mt_pre = 'product' );
 
-			/**
+			/*
 			 * Check product offers (aka variations) if available.
 			 */
 			if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {

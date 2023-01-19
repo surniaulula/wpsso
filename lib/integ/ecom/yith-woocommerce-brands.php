@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoIntegEcomYithWoocommerceBrands' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * The user may select any taxonomy (like a WooCommerce product attribute) for the brand.
 			 */
 			if ( $tax_slug = get_option( 'yith_wcbr_brands_taxonomy' ) ) {
@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoIntegEcomYithWoocommerceBrands' ) ) {
 				$this->brand_tax_slug = $tax_slug;
 			}
 
-			/**
+			/*
 			 * Filter the brand taxonomy slug.
 			 *
 			 * See yith-woocommerce-brands-add-on/includes/class.yith-wcbr.php.

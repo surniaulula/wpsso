@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log_arr( 'page_ids', $this->page_ids );
 			}
 
-			/**
+			/*
 			 * Check for possible missing page ID selections.
 			 */
 			if ( is_admin() ) {
@@ -61,12 +61,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
 			}
 
-			/**
+			/*
 			 * Clear the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
 			 */
 			add_action( 'woocommerce_after_product_object_save', array( $this, 'maybe_clear_cache' ), 10, 2 );
 
-			/**
+			/*
 			 * Maybe load missing WooCommerce front-end libraries for 'the_content' filter.
 			 */
 			$this->p->util->add_plugin_actions( $this, array(
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				'import_product_attributes' => 3,
 			) );
 
-			/**
+			/*
 			 * Optionally add the Pinterest image to the WooCommerce template for displaying product archives,
 			 * including the main shop page which is a post type archive.
 			 */
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$this->disable_options_keys();
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v14.0.0.
 		 */
 		public function disable_options_keys() {
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			echo '</div>';
 		}
 
-		/**
+		/*
 		 * Clear the post ID cache after WooCommerce updates the product object on the front-end (or back-end). The
 		 * WordPress 'save_post' action runs before this action (on the back-end) and WpssoPost->clear_cache() uses a
 		 * static cache to clear the cache only once per post ID, so it is safe to call WpssoPost->clear_cache() more than
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			if ( $product_id ) {
 
-				/**
+				/*
 				 * Uses a local cache to clear the cache only once per post ID per page load.
 				 */
 				$this->p->post->clear_cache( $product_id, $rel_id = false );
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$this->include_frontend_libs( $user_id );
 		}
 
-		/**
+		/*
 		 * Maybe load missing WooCommerce front-end libraries for 'the_content' filter.
 		 */
 		public function include_frontend_libs( $user_id = null ) {
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			WC()->initialize_session();	// Since WC v3.6.4.
 		}
 
-		/**
+		/*
 		 * WooCommerce product attributes do not have their own webpages - product attribute query strings are used to
 		 * pre-fill product selections on the front-end. The WpssoIntegEcomWoocommerce->filter_url_query_cache_disable()
 		 * removes all product attributes from the request URL, and if the $request_url and $canonical_url values match,
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $desc_text;
 		}
 
-		/**
+		/*
 		 * Note that images can only be attached to a post ID.
 		 *
 		 * See WpssoMedia->get_attached_images().
@@ -578,7 +578,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$md_defs[ 'product_currency' ]         = $currency;
 			$md_defs[ 'product_retailer_part_no' ] = $product->get_sku();	// Product SKU.
 
-			/**
+			/*
 			 * Add product availability.
 			 *
 			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_is_in_stock
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$md_defs[ 'product_avail' ] = 'https://schema.org/OutOfStock';
 			}
 
-			/**
+			/*
 			 * Get product shipping dimensions and weight.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -642,7 +642,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $md_defs;
 		}
 
-		/**
+		/*
 		 * Disable options where the value comes from the e-commerce plugin.
 		 */
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
@@ -686,14 +686,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$best_rating  = 5;
 			$have_schema  = $this->p->avail[ 'p' ][ 'schema' ] ? true : false;
 
-			/**
+			/*
 			 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
 			 */
 			$mt_ecom = SucomUtil::get_mt_product_seed( $og_type, array( 'og:type' => $og_type ) );
 
 			$this->add_mt_product( $mt_ecom, $mod, $product );
 
-			/**
+			/*
 			 * Add product offers.
 			 */
 			if ( apply_filters( 'wpsso_og_add_mt_offers', $have_schema, $mod ) ) {
@@ -705,7 +705,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
 
-					/**
+					/*
 					 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 					 */
 					$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
@@ -733,7 +733,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'add offers meta tags is false' );
 			}
 
-			/**
+			/*
 			 * Add product ratings.
 			 */
 			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
@@ -751,7 +751,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'add rating meta tags is true' );
 				}
 
-				/**
+				/*
 				 * Add rating meta tags if WooCommerce product reviews and review ratings are enabled.
 				 */
 				if ( $wc_reviews_enabled && $wc_rating_enabled ) {
@@ -765,12 +765,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$rating_count   = (int) $product->get_rating_count();
 					$review_count   = (int) $product->get_review_count();
 
-					/**
+					/*
 					 * An average rating value must be greater than 0.
 					 */
 					if ( $average_rating > 0 ) {
 
-						/**
+						/*
 						 * At least one rating or review is required.
 						 */
 						if ( $rating_count > 0 || $review_count > 0 ) {
@@ -824,7 +824,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'add rating meta tags is false' );
 			}
 
-			/**
+			/*
 			 * Add product reviews.
 			 */
 			if ( apply_filters( 'wpsso_og_add_mt_reviews', $have_schema, $mod ) ) {
@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'add reviews meta tags is true' );
 				}
 
-				/**
+				/*
 				 * Add reviews array if WooCommerce product reviews are enabled.
 				 */
 				if ( $wc_reviews_enabled ) {
@@ -876,7 +876,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return wp_get_post_terms( $mod[ 'id' ], $this->tag_taxonomy, $args = array( 'fields' => 'names' ) );
 		}
 
-		/**
+		/*
 		 * $mixed must be a post object, product object, or variation array.
 		 */
 		public function filter_import_product_attributes( array $md_opts, array $mod, $mixed ) {
@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 						$values[] = $attr_val;
 
-					/**
+					/*
 					 * Fallback to the default value.
 					 */
 					} elseif ( '' !== ( $attr_val = $parent_product->get_variation_default_attribute( $attr_name ) ) ) {
@@ -1004,7 +1004,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Skip attributes with select options (example: Small | Medium | Large).
 					 */
 					if ( $this->is_variation_selectable_attribute( $product, $attr_name ) ) {
@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
 				if ( ! empty( $values ) ) {	// Just in case.
@@ -1044,14 +1044,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 							$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 						}
 
-						/**
+						/*
 						 * If this is a '_value' option, add the '_units' option.
 						 */
 						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
 
 					} else {
 
-						/**
+						/*
 						 * Explode the first element into an array.
 						 */
 						$values = array_map( 'trim', explode( ',', reset( $values ) ) );
@@ -1074,7 +1074,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * This method does not return an array.
 		 *
 		 * $mt_ecom must be passed by reference to add the required meta tags.
@@ -1134,12 +1134,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;				// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();			// Product SKU.
 
-			/**
+			/*
 			 * Add shipping information.
 			 */
 			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $parent_product );
 
-			/**
+			/*
 			 * Add product availability.
 			 *
 			 * See https://docs.woocommerce.com/wc-apidocs/source-class-WC_Product.html#1534-1542
@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->add_variation_title( $mt_ecom, $mod, $product, $variation );
 				$this->add_variation_description( $mt_ecom, $mod, $product, $variation );
 
-				/**
+				/*
 				 * Variation product attributes.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -1190,17 +1190,17 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'getting variation product attributes' );
 				}
 
-			 	/**
+			 	/*
 				 * Format the WooCommerce meta data as WordPress meta data.
 				 */
 				$var_wp_meta = $this->p->util->wc->get_product_wp_meta( $product );
 
-				/**
+				/*
 				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
 				$alt_opts = apply_filters( 'wpsso_wc_variation_alt_options', array() );
 
-				/**
+				/*
 				 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
 				 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get overwritten by
 				 * later filters.
@@ -1222,7 +1222,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$var_opts = (array) apply_filters( 'wpsso_import_custom_fields', $var_opts, $mod, $var_wp_meta, $alt_opts );
 
-				/**
+				/*
 				 * Since WPSSO Core v14.2.0.
 				 *
 				 * See WpssoProEcomWoocommerce->add_mt_product().
@@ -1234,7 +1234,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$var_opts = (array) apply_filters( 'wpsso_import_product_attributes', $var_opts, $mod, $variation );
 
-				/**
+				/*
 				 * Since WPSSO Core v12.2.0.
 				 *
 				 * Overwrite parent options with those of the child, allowing only undefined child options to be
@@ -1252,13 +1252,13 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$var_opts = array_merge( $parent_opts, $var_opts );
 				}
 
-				/**
+				/*
 				 * Add custom fields meta data to the Open Graph meta tags.
 				 */
 				$this->p->og->add_data_og_type_md( $mt_ecom, 'product', $var_opts );
 			}
 
-			/**
+			/*
 			 * Add an extra meta tag to signal that VAT is included (used for the Schema valueAddedTaxIncluded property).
 			 */
 			if ( $include_vat ) {
@@ -1364,7 +1364,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'product is not on sale' );
 			}
 
-			/**
+			/*
 			 * Get product shipping dimensions and weight.
 			 */
 			list(
@@ -1378,12 +1378,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$mt_ecom[ 'product:shipping_weight:units' ],
 			) = $this->get_shipping_length_width_height_weight( $product );
 
-			/**
+			/*
 			 * Product variations do not have terms (categories or tags) so skip this section for variations.
 			 */
 			if ( ! $is_variation ) {
 
-				/**
+				/*
 				 * Retrieve the terms of the taxonomy that are attached to the post ID.
 				 *
 				 * get_the_terms() returns an array of WP_Term objects, false if there are no terms (or the post does not
@@ -1406,7 +1406,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Add shipping information.
 		 *
 		 * The $shipping_class_id corresponds to the "Shipping class" selected when editing a product.
@@ -1442,7 +1442,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'product can ship = ' . ( $product_can_ship ? 'true' : 'false' ) );
 			}
 
-			/**
+			/*
 			 * The WPSSO WCSDT add-on returns true for the 'wpsso_og_add_mt_shipping_offers' filter.
 			 */
 			if ( $product_can_ship && $shipping_enabled && apply_filters( 'wpsso_og_add_mt_shipping_offers', false, $mod ) ) {
@@ -1462,7 +1462,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'shipping class id = ' . $shipping_class_id );
 				}
 
-				/**
+				/*
 				 * Each zone consists of shipping locations and shipping methods.
 				 */
 				foreach ( $shipping_zones as $zone_id => $zone ) {
@@ -1480,7 +1480,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$shipping_destinations = array();
 					$shipping_postcodes    = array();
 
-					/**
+					/*
 					 * Get postal code limits first as they are applied to countries and regions.
 					 */
 					foreach ( $zone_locations as $location_key => $location_obj ) {
@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Create an options array of countries, a single country, or a single country and state -
 					 * all with postal code limits, if any were found above.
 					 */
@@ -1541,12 +1541,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Get shipping methods and rates for this zone.
 					 */
 					foreach ( $zone_methods as $method_inst_id => $method_obj ) {
 
-						/**
+						/*
 						 * Returns false or a shipping offer options array.
 						 */
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $zone_id, $zone_name,
@@ -1569,14 +1569,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$world_zone_name    = __( 'World', 'wpsso' );
 				$world_zone_methods = $world_zone_obj->get_shipping_methods();
 
-				/**
+				/*
 				 * Get shipping methods and rates for the world zone.
 				 */
 				if ( ! empty( $world_zone_methods ) ) {
 
 					foreach ( $world_zone_methods as $method_inst_id => $method_obj ) {
 
-						/**
+						/*
 						 * Returns false or a shipping offer options array.
 						 */
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $world_zone_id, $world_zone_name,
@@ -1591,7 +1591,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 		}
 
-		/**
+		/*
 		 * Returns false or a shipping offer options array.
 		 */
 		private function get_zone_method_shipping_offer( $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) {
@@ -1626,7 +1626,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$rate_cost = 0;
 
-			/**
+			/*
 			 * A shipping class for this product is available.
 			 */
 			} elseif ( ! empty( $shipping_class_id ) &&
@@ -1635,7 +1635,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$rate_cost = $method_data[ 'class_cost_' . $shipping_class_id ];
 
-			/**
+			/*
 			 * A shipping class for this product is not available but a "no class cost" value is available.
 			 */
 			} elseif ( empty( $shipping_class_id ) &&
@@ -1644,7 +1644,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$rate_cost = $method_data[ 'no_class_cost' ];
 
-			/**
+			/*
 			 * A shipping class for this product is not available and a "no class cost" value is not available.
 			 */
 			} elseif ( isset( $method_data[ 'cost' ] ) &&
@@ -1652,7 +1652,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				$rate_cost = $method_data[ 'cost' ];
 
-			/**
+			/*
 			 * Free shipping.
 			 */
 			} else {
@@ -1660,14 +1660,14 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$rate_cost = 0;
 			}
 
-			/**
+			/*
 			 * Maybe resolve the [cost], [qty], and [fee] shortcodes.
 			 *
 			 * See woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php.
 			 */
 			if ( ! empty( $rate_cost ) && ! is_numeric( $rate_cost ) ) {
 
-				/**
+				/*
 				 * evaluate_cost() is protected, so make it accessible.
 				 *
 				 * See https://www.php.net/manual/en/class.reflectionmethod.php.
@@ -1688,7 +1688,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					case 'either':		// Requires a coupon OR a minimum amount.
 					case 'min_amount':	// Requires a minimum amount.
 
-						/**
+						/*
 						 * https://schema.org/OfferShippingDetails does not provide a way to specify
 						 * conditions for shipping rates, like coupon or minimum amount.
 						 */
@@ -1708,7 +1708,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					'shipping_rate_currency' => $currency,
 				);
 
-				/**
+				/*
 				 * Returns shipping department, handling, and transit options for $shipping_class_id and $method_inst_id.
 				 *
 				 * Array (
@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $shipping_offer;
 		}
 
-		/**
+		/*
 		 * Example:
 		 *
 		 *	list(
@@ -1914,7 +1914,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * $decimals = Number of decimal points, blank to use woocommerce_price_num_decimals, or false
 				 * false to avoid all rounding.
 				 */

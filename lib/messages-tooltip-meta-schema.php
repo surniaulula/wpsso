@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltipMeta->get() only when needed.
 	 */
 	class WpssoMessagesTooltipMetaSchema extends WpssoMessages {
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 			switch ( $msg_key ) {
 
-				/**
+				/*
 				 * Document SSO > Edit Schema tab.
 				 */
 				case 'tooltip-meta-schema_title':	// Schema Name.
@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 							$text .= sprintf( __( 'Note that although the Schema.org standard allows the subject of a review to be any Schema type, <a href="%1$s">Google only allows reviews for a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
 						 	break;
 
-						/**
+						/*
 						 * Schema Review Subject: Creative Work.
 						 */
 						case 'tooltip-meta-schema_review_item_cw_author_type':	// Review: Subject Author Type.
@@ -796,7 +796,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Review Subject: Creative Work / Book.
 						 */
 						case 'tooltip-meta-schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
@@ -805,7 +805,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Review Subject: Creative Work / Movie.
 						 */
 						case 'tooltip-meta-schema_review_item_cw_movie_actor_person_names':	// Review: Movie Cast Names.
@@ -820,7 +820,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Review Subject: Product.
 						 */
 						case 'tooltip-meta-schema_review_item_product_brand':	// Review: Subject Product Brand.
@@ -847,7 +847,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Review Subject: Software Application.
 						 */
 						case 'tooltip-meta-schema_review_item_software_app_offers':	// Review: Software App Offers.
@@ -856,7 +856,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Claim Review.
 						 */
 						case 'tooltip-meta-schema_review_claim_reviewed':		// Short Summary of Claim
@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						/**
+						/*
 						 * Schema Software Application.
 						 */
 						case 'tooltip-meta-schema_review_item_software_app_cat':	// Reviews Software App Category.
@@ -940,7 +940,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;	// End of 'tooltip-meta-schema_webpage' case.
 
-				/**
+				/*
 				 * Document SSO > Edit Media tab.
 				 */
 				case 'tooltip-meta-schema_img_id':	// Image ID.

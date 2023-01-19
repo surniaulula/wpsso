@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 				'author'        => 'author',
 			) );
 
-			/**
+			/*
 			 * The 'description' property describes the question.
 			 *
 			 * If the question has a group heading then this may be an appropriate place to call out what that heading is.
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 
 				$question[ 'description' ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_qa_desc' );
 
-				/**
+				/*
 				 * If we have an accepted answer, then add the 'description' group heading to the accepted answer.
 				 */
 				if ( ! empty( $question[ 'acceptedAnswer' ] ) ) {
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 				unset( $question[ 'acceptedAnswer' ][ 'description' ] );
 			}
 
-			/**
+			/*
 			 * Calculate the number of accepted and suggested answers.
 			 */
 			$answer_count = empty( $question[ 'acceptedAnswer' ] ) ? 0 : 1;

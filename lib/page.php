@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoPage' ) ) {
 
-	/**
+	/*
 	 * This class provides methods for the WebPage document.
 	 *
 	 * The use of "Page" in the WpssoPage classname refers to the WebPage document, not WordPress Pages.
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'validators toolbar is disabled' );
 			}
 
-			/**
+			/*
 			 * Since WordPress v4.4.
 			 *
 			 * See wordpress/wp-includes/general-template.php.
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * This method is hooked to the 'admin_bar_menu' action and receives a reference to the $wp_admin_bar variable.
 		 *
 		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $use_post.
@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return false;	// Stop here.
 			}
 
-			/**
+			/*
 			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
 			 * modules (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
 			 */
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WordPress v4.4.
 		 *
 		 * Filters the WordPress document title before it is generated. Returning a non-empty value skips the
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'received pre_title value (' . gettype( $pre_title ) . ') = ' . $pre_title );
 			}
 
-			/**
+			/*
 			 * If $pre_title is not an empty string, then maybe force an empty string to make sure the
 			 * 'document_title_separator', 'document_title_parts', and 'document_title' filters are applied.
 			 */
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $pre_title;
 		}
 
-		/**
+		/*
 		 * Since WordPress v4.4.
 		 *
 		 * Filters the separator for the document title.
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $title_sep;
 		}
 
-		/**
+		/*
 		 * Since WordPress v4.4.
 		 *
 		 * Filters the parts of the document title.
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
 			}
 
-			/**
+			/*
 			 * Make sure the parts are ordered properly (just in case).
 			 */
 			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $title_parts;
 		}
 
-		/**
+		/*
 		 * Since WordPress v4.4.
 		 *
 		 * Filters the document title.
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $title;
 		}
 
-		/**
+		/*
 		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
 		 * The $mod array argument is preferred but not required.
@@ -372,7 +372,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $mod;
 		}
 
-		/**
+		/*
 		 * Determine and return the post/user/term module array.
 		 *
 		 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the 'wp_head'
@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'use_post is ' . SucomUtil::get_use_post_string( $use_post ) );
 			}
 
-			/**
+			/*
 			 * Check for known WP objects and set the object module name and its object ID.
 			 */
 			if ( is_object( $wp_obj ) ) {
@@ -558,7 +558,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * WpssoPage elements.
 			 */
 			global $wp_query;
@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Note that 'paged_total' can be pre-defined by WpssoPost->get_mod() for posts with content (ie. singular)
 			 * and paging in their content.
 			 */
@@ -654,7 +654,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'post':
 
-						/**
+						/*
 						 * If the query is a post with an ID of 0, then it may be a post type archive page
 						 * that was setup incorrectly (ie. a post object without an ID or slug).
 						 */
@@ -792,7 +792,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $page_posts_mods;
 		}
 
-		/**
+		/*
 		 * $mod = true | false | post_id | array
 		 *
 		 * $md_key = true | false | string | array
@@ -842,12 +842,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$caption_text    = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
 			$is_custom       = empty( $caption_text ) ? false : true;
 
-			/**
+			/*
 			 * If there's no custom caption text, then go ahead and generate the caption text value.
 			 */
 			if ( empty( $caption_text ) ) {	// No custom value found.
 
-				/**
+				/*
 				 * Request all values un-encoded, then encode once we have the complete caption text.
 				 */
 				switch ( $caption_type ) {
@@ -898,7 +898,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_caption', $caption_text, $mod, $num_hashtags, $md_key );
 		}
 
-		/**
+		/*
 		 * $mod = true | false | post_id | array
 		 *
 		 * $md_key = true | false | string | array
@@ -932,7 +932,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$is_custom  = empty( $title_text ) ? false : true;
 			$hashtags   = '';
 
-			/**
+			/*
 			 * Get seed if no custom meta title.
 			 */
 			if ( empty( $title_text ) ) {
@@ -948,7 +948,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If there's no custom title, and no pre-seed, then go ahead and generate the title value.
 			 *
 			 * A custom or pre-seed title is expected to provide any hashtags, so get hashtags only when generating the
@@ -961,7 +961,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$hashtags = $this->get_hashtags( $mod, $num_hashtags );
 			}
 
-			/**
+			/*
 			 * Add the page number if it's greater than 1 and we don't already have a '%%page%%' or '%%pagenumber%%'
 			 * inline variable in the title.
 			 */
@@ -982,24 +982,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Replace inline variables in the string.
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
-				/**
+				/*
 				 * Override the default 'title_sep' value.
 				 */
 				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
 			}
 
-			/**
+			/*
 			 * Titles comprised entirely of HTML content will be empty after running cleanup_html_tags(), so remove the
 			 * HTML tags before maybe falling back to the generic title.
 			 */
 			$title_text = $this->p->util->cleanup_html_tags( $title_text, $strip_tags = true, $use_img_alt = true );
 
-			/**
+			/*
 			 * If there's still no title, then fallback to a generic version.
 			 */
 			if ( empty( $title_text ) ) {
@@ -1012,17 +1012,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
 			}
 
-			/**
+			/*
 			 * Check title against string length limits.
 			 */
 			if ( $max_len > 0 ) {
 
-				/**
+				/*
 				 * If we have a page number, reduce the max length by the separator, page number, and two spaces.
 				 */
 				$adj_max_len = empty( $page_number_transl ) ? $max_len : $max_len - strlen ( $title_sep ) - strlen( $page_number_transl ) - 2;
 
-				/**
+				/*
 				 * If we have any hashtags, further reduce the max title length by the hashtags and one space.
 				 */
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
@@ -1030,7 +1030,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
-			/**
+			/*
 			 * Once the description length has been adjusted, we can add the page number and hashtags.
 			 */
 			if ( ! empty( $page_number_transl ) ) {
@@ -1043,7 +1043,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				SucomUtil::add_title_part( $title_text, '', $hashtags );
 			}
 
-			/**
+			/*
 			 * Maybe return the values encoded (true by default).
 			 */
 			if ( $do_encode ) {
@@ -1056,7 +1056,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_title', $title_text, $mod, $num_hashtags, $md_key, $title_sep, $is_custom );
 		}
 
-		/**
+		/*
 		 * $mod = true | false | post_id | array.
 		 *
 		 * $md_key = true | false | string | array.
@@ -1084,7 +1084,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$is_custom = empty( $desc_text ) ? false : true;
 			$hashtags  = '';
 
-			/**
+			/*
 			 * Get seed if no custom meta description.
 			 */
 			if ( empty( $desc_text ) ) {
@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If there's no custom description, and no pre-seed, then go ahead and generate the description value.
 			 *
 			 * A custom or pre-seed description is expected to provide any hashtags, so get hashtags only when
@@ -1113,7 +1113,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$hashtags = $this->get_hashtags( $mod, $num_hashtags );
 			}
 
-			/**
+			/*
 			 * Replace any inline variables in the string.
 			 */
 			if ( false !== strpos( $desc_text, '%%' ) ) {
@@ -1121,13 +1121,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text = $this->p->util->inline->replace_variables( $desc_text, $mod );
 			}
 
-			/**
+			/*
 			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
 			 * remove the HTML tags before maybe falling back to the generic description.
 			 */
 			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
 
-			/**
+			/*
 			 * If there's still no description, then fallback to a generic version.
 			 */
 			if ( empty( $desc_text ) ) {
@@ -1140,12 +1140,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
 			}
 
-			/**
+			/*
 			 * Check description against string length limits.
 			 */
 			if ( $max_len > 0 ) {
 
-				/**
+				/*
 				 * If we have any hashtags, reduce the max length by the hashtags and one space.
 				 */
 				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
@@ -1153,7 +1153,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text = $this->p->util->limit_text_length( $desc_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
-			/**
+			/*
 			 * Once the description length has been adjusted, we can add the hashtags.
 			 */
 			if ( ! empty( $hashtags ) ) {
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				SucomUtil::add_title_part( $desc_text, '', $hashtags );
 			}
 
-			/**
+			/*
 			 * Maybe return the values encoded (true by default).
 			 */
 			if ( $do_encode ) {
@@ -1192,7 +1192,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$text      = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
 			$is_custom = empty( $text ) ? false : true;
 
-			/**
+			/*
 			 * If there's no custom text, then go ahead and generate the text value.
 			 */
 			if ( empty( $title_text ) ) {
@@ -1202,12 +1202,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$hashtags = $this->get_hashtags( $mod, $num_hashtags );
 			}
 
-			/**
+			/*
 			 * Check text against string length limits.
 			 */
 			if ( $max_len > 0 ) {
 
-				/**
+				/*
 				 * If we have any hashtags, reduce the max length by the hashtags and one space.
 				 */
 				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
@@ -1215,7 +1215,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$text = $this->p->util->limit_text_length( $text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
-			/**
+			/*
 			 * Once the text length has been adjusted, we can add the hashtags.
 			 */
 			if ( ! empty( $hashtags ) ) {
@@ -1223,7 +1223,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				SucomUtil::add_title_part( $text, '', $hashtags );
 			}
 
-			/**
+			/*
 			 * Maybe return the values encoded (true by default).
 			 */
 			if ( $do_encode ) {
@@ -1234,7 +1234,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_text', $text, $mod, $num_hashtags, $md_key, $is_custom );
 		}
 
-		/**
+		/*
 		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is called in the WpssoPage->get_title() method, not in this one,
@@ -1253,7 +1253,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default $title_sep if not provided.
 			$title_text = '';
 
-			/**
+			/*
 			 * Similar module type logic can be found in the following methods:
 			 *
 			 * See WpssoOpenGraph->get_mod_og_type().
@@ -1301,7 +1301,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					} elseif ( $mod[ 'id' ] ) {
 
-						/**
+						/*
 						 * The get_the_title() function does not apply the 'wp_title' filter.
 						 *
 						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
@@ -1367,7 +1367,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$desc_text = '';
 
-			/**
+			/*
 			 * Similar module type logic can be found in the following methods:
 			 *
 			 * See WpssoOpenGraph->get_mod_og_type().
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$desc_text = $this->get_the_excerpt( $mod );
 
-						/**
+						/*
 						 * If there's no excerpt, then fallback to the content.
 						 */
 						if ( empty( $desc_text ) ) {
@@ -1429,7 +1429,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc_text = $this->get_the_content( $mod );
 
-							/**
+							/*
 							 * Ignore everything before the first paragraph.
 							 */
 							if ( ! empty( $desc_text ) ) {
@@ -1439,7 +1439,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 									$this->p->debug->log( 'removing text before the first paragraph' );
 								}
 
-								/**
+								/*
 								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 								 * i = Letters in the pattern match both upper and lower case letters.
 								 *
@@ -1449,7 +1449,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
-						/**
+						/*
 						 * Fallback to the image alt value.
 						 */
 						if ( empty( $desc_text ) ) {
@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
 		}
 
-		/**
+		/*
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 */
 		public function clear_the_content( array $mod ) {
@@ -1598,7 +1598,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return;
 		}
 
-		/**
+		/*
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 */
 		public function get_the_content( array $mod, $flatten = true ) {
@@ -1642,7 +1642,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$content =& $cache_array[ $cache_index ];
 
-					/**
+					/*
 					 * Maybe put everything on one line but do not cache the re-formatted content.
 					 */
 					return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
@@ -1670,7 +1670,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
 
-			/**
+			/*
 			 * Apply the seed filter.
 			 *
 			 * Return false to prevent the commen or post from being used.
@@ -1704,7 +1704,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content = $mod[ 'wp_obj' ]->comment_content;
 			}
 
-			/**
+			/*
 			 * Remove singlepics, which we detect and use before-hand.
 			 */
 			$count = null;
@@ -1719,7 +1719,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe apply 'the_content' filter to expand shortcodes and blocks.
 			 */
 			if ( $filter_content ) {
@@ -1730,7 +1730,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
-			/**
+			/*
 			 * Maybe apply the 'do_blocks' filters.
 			 */
 			} elseif ( function_exists( 'do_blocks' ) ) {	// Since WP v5.0.
@@ -1742,7 +1742,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$content = do_blocks( $content );
 
-				/**
+				/*
 				 * When the content filter is disabled, fallback and apply our own shortcode filter.
 				 */
 				if ( false !== strpos( $content, '[' ) ) {
@@ -1751,7 +1751,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe use only a certain part of the content.
 			 */
 			if ( false !== strpos( $content, 'wpsso-content' ) ) {
@@ -1759,7 +1759,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content = preg_replace( '/^.*<!-- *wpsso-content *-->(.*)<!--\/wpsso-content *-->.*$/Us', '$1', $content );
 			}
 
-			/**
+			/*
 			 * Maybe remove text between ignore markers.
 			 */
 			if ( false !== strpos( $content, 'wpsso-ignore' ) ) {
@@ -1767,7 +1767,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content = preg_replace( '/<!-- *wpsso-ignore *-->.*<!-- *\/wpsso-ignore *-->/Us', ' ', $content );
 			}
 
-			/**
+			/*
 			 * Remove "Google+" link and text.
 			 */
 			if ( false !== strpos( $content, '>Google+<' ) ) {
@@ -1775,7 +1775,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 			}
 
-			/**
+			/*
 			 * Prefix caption text.
 			 */
 			if ( false !== strpos( $content, '<p class="wp-caption-text">' ) ) {
@@ -1788,17 +1788,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Apply the filter.
 			 */
 			$content = apply_filters( 'wpsso_the_content', $content, $mod );
 
-			/**
+			/*
 			 * Save content to non-persistant cache.
 			 */
 			if ( $cache_exp_secs > 0 ) {
 
-				/**
+				/*
 				 * Adds a group or set of groups to the list of non-persistent groups.
 				 *
 				 * Note that only a few caching plugins support this feature.
@@ -1813,13 +1813,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe put everything on one line but do not cache the re-formatted content.
 			 */
 			return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
 		}
 
-		/**
+		/*
 		 * Returns the content text, stripped of all HTML tags.
 		 */
 		public function get_the_text( array $mod ) {
@@ -1840,7 +1840,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_the_text', $text, $mod );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2023/01/07.
 		 */
 		public function get_keywords( array $mod, $md_key = null ) {
@@ -1850,7 +1850,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $this->get_keywords_csv( $mod, $md_key );
 		}
 
-		/**
+		/*
 		 * Returns a comma delimited text string of keywords (ie. post tag names).
 		 */
 		public function get_keywords_csv( array $mod, $md_key = null ) {
@@ -1863,7 +1863,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$keywords  = '';
 			$is_custom = false;
 
-			/**
+			/*
 			 * Check for custom keywords if a metadata index key is provided.
 			 */
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
@@ -1884,7 +1884,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If there's no custom keywords, then go ahead and generate the keywords value.
 			 */
 			if ( empty( $keywords ) ) {
@@ -1905,7 +1905,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_keywords', $keywords, $mod, $md_key );
 		}
 
-		/**
+		/*
 		 * Returns a space delimited text string of hashtags.
 		 */
 		public function get_hashtags( array $mod, $num_hashtags = false ) {
@@ -1952,7 +1952,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_hashtags', $hashtags, $mod, $num_hashtags );
 		}
 
-		/**
+		/*
 		 * Returns an array of post tags.
 		 */
 		public function get_tag_names( array $mod ) {
@@ -1974,7 +1974,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];
 			}
 
-			/**
+			/*
 			 * The 'wpsso_tag_names_seed' filter is hooked by the WpssoProEcomEdd, WpssoProEcomWoocommerce, and
 			 * WpssoProForumBbpress classes.
 			 */
@@ -2024,7 +2024,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = $tags;
 		}
 
-		/**
+		/*
 		 * Called by WpssoPage->get_the_title().
 		 *
 		 * Includes parent names in the term title if $title_sep is not false.
@@ -2075,7 +2075,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = $term_obj->name;
 			}
 
-			/**
+			/*
 			 * If we have a title separator and a parent, then redefine the title text with the parent list.
 			 */
 			if ( ! empty( $title_sep ) ) {
@@ -2091,7 +2091,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $term_parents && ! is_wp_error( $term_parents ) ) {
 
-						/**
+						/*
 						 * Trim excess separator.
 						 */
 						$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $term_parents );
@@ -2102,7 +2102,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_term_title', $title_text, $term_id, $title_sep );
 		}
 
-		/**
+		/*
 		 * Returns an empty or formatted string (number with minutes).
 		 */
 		public function get_reading_time( array $mod ) {
@@ -2131,7 +2131,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $reading_mins;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v13.5.0.
 		 */
 		public function fmt_reading_mins( $reading_mins ) {
@@ -2139,7 +2139,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
 		}
 
-		/**
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
 		 * Returns an array of metadata keys (can be empty).
@@ -2172,7 +2172,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $md_key;
 		}
 
-		/**
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
 		 * Return 0 by default.
@@ -2200,7 +2200,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return 0;
 		}
 
-		/**
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 */
 		private function maybe_get_ellipsis( $ellipsis = null ) {
@@ -2213,7 +2213,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $ellipsis;
 		}
 
-		/**
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 */
 		private function maybe_get_title_sep( $title_sep = null ) {
@@ -2226,7 +2226,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $title_sep;
 		}
 
-		/**
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 */
 		private function maybe_get_custom( $mod, $md_key ) {

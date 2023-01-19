@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Perform a quick sanity check and return the timestamp array.
 		 *
 		 * Used by WpssoAdminHead->single_notice_review() and WpssoAdminHead->single_notice_upsell().
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			$have_changes = false;
 
-			/**
+			/*
 			 * Make sure that all known add-ons have been registered.
 			 */
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			return $ext_reg;
 		}
 
-		/**
+		/*
 		 * Called by all add-ons from their activate_plugin() method.
 		 */
 		public static function update_ext_version( $ext, $version ) {
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			self::update_ext_event_time( $ext, $version, 'activate' );
 		}
 
-		/**
+		/*
 		 * Returns the event timestamp, or false if the event has not been registered.
 		 *
 		 * Used by WpssoRegister->activate_plugin() to determine if this is a new install (to add user roles).
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * $protect = true | false | version
 		 */
 		private static function update_ext_event_time( $ext, $version, $event, $protect = false ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -35,12 +35,12 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Replace the WordPress theme-compat/embed.php and any theme embed.php template with our own.
 			 */
 			add_filter( 'template_include', array( $this, 'template_include_embed' ), 10000, 1 );
 
-			/**
+			/*
 			 * The WordPress locate_template() and load_template() functions are not filtered and only check the
 			 * STYLESHEETPATH, TEMPLATEPATH, and WordPress theme-compat folders, so preempt their use in
 			 * get_template_part() by hooking the "get_template_part_{$slug}" action to require our own embed template
@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			 */
 			add_action( 'get_template_part_wpsso/embed', array( $this, 'template_part_embed' ), 10, 3 );
 
-			/**
+			/*
 			 * Filters that receive a $post object.
 			 */
 			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data' ), 10000, 4 );
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			add_filter( 'post_embed_url', array( $this, 'post_embed_url' ), 10000, 2 );
 			add_filter( 'embed_html', array( $this, 'post_embed_html' ), 10000, 4 );
 
-			/**
+			/*
 			 * Filters that are called in the loop.
 			 */
 			add_filter( 'embed_thumbnail_url', array( $this, 'the_embed_thumbnail_url' ), 10000, 1 );
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			add_filter( 'embed_site_title_html', array( $this, 'the_embed_site_title_html' ), 10000, 1 );
 		}
 
-		/**
+		/*
 		 * Replace the WordPress theme-compat/embed.php and any theme embed.php template with our own.
 		 */
 		public function template_include_embed( $template ) {
@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $template;
 		}
 
-		/**
+		/*
 		 * The WordPress locate_template() and load_template() functions are not filtered and only check the
 		 * STYLESHEETPATH, TEMPLATEPATH, and WordPress theme-compat folders, so preempt their use in get_template_part() by
 		 * hooking the "get_template_part_{$slug}" action to require our own embed template part(s).
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Filters the oEmbed response data.
 		 *
 		 * $data = array(
@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $data;
 		}
 
-		/**
+		/*
 		 * Filters the oEmbed response data to return an iframe embed code.
 		 *
 		 * $data[ 'width' ]            = absint( $width );
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $output;
 		}
 
-		/**
+		/*
 		 * Filters the thumbnail image URL for use in the embed template.
 		 */
 		public function the_embed_thumbnail_url( $thumbnail_url ) {
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $shape;
 		}
 
-		/**
+		/*
 		 * Filters the thumbnail image ID for use in the embed template.
 		 */
 		public function the_embed_thumbnail_id( $pid ) {
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $pid;
 		}
 
-		/**
+		/*
 		 * Filters the thumbnail image size for use in the embed template.
 		 */
 		public function the_embed_thumbnail_image_size( $size_name, $pid ) {
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $size_name;
 		}
 
-		/**
+		/*
 		 * Filters the thumbnail shape for use in the embed template.
 		 *
 		 * The 'rectangular' shape puts the image above the title (like Facebook) and the 'square' shape puts the image
@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $shape;
 		}
 
-		/**
+		/*
 		 * Filters the post excerpt for the embed template.
 		 *
 		 * $excerpt = get_the_excerpt();

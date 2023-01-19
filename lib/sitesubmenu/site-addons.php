@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	/**
+	/*
 	 * Please note that this settings page also requires enqueuing special scripts and styles
 	 * for the plugin details / install thickbox link. See the WpssoScript and WpssoStyle
 	 * classes for more info.
@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			$this->menu_ext  = $ext;
 		}
 
-		/**
+		/*
 		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
 		 *
 		 * Add settings page filter and action hooks.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
 		}
 
-		/**
+		/*
 		 * Remove all action buttons from this settings page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
-		/**
+		/*
 		 * Called by the extended WpssoAdmin class.
 		 */
 		protected function add_meta_boxes() {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 				array( $this, 'show_metabox_addons' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			/**
+			/*
 			 * Add a class to set a minimum width for the network postboxes.
 			 */
 			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_addons', array( $this, 'add_class_postbox_network' ) );

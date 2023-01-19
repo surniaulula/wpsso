@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 					$this->p->debug->log( 'checking for schema_organization_id metadata option value' );
 				}
 
-				/**
+				/*
 				 * Maybe get a different organization ID from the "Select an Organization" option.
 				 */
 				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $merge_defs = true );
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Possibly inherit the schema type.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
-		 	/**
+		 	/*
 			 * $org_id can be 'none', 'site', or a number (including 0).
 			 *
 		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
 
-			/**
+			/*
 			 * Update the @id string to avoid connecting the webpage organization markup to properties like
 			 * 'publisher', 'organizer', 'performer', 'hiringOrganization', etc.
 			 */

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * Note that there is no Schema 'availability' property for the 'product:availability' value.
 			 *
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
@@ -66,14 +66,14 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				'pattern'               => 'product:pattern',
 			) );
 
-			/**
+			/*
 			 * Convert a numeric category ID to its Google category string.
 			 */
 			WpssoSchema::check_prop_value_category( $json_ret );
 
 			WpssoSchema::check_prop_value_gtin( $json_ret );
 
-			/**
+			/*
 			 * Schema 'productID' property.
 			 */
 			foreach ( array( 'isbn', 'retailer_item_id' ) as $pref_id ) {
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Schema 'brand' property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Schema 'audience' property.
 			 *
 			 * See https://support.google.com/merchants/answer/6324479 for 'suggestedGender'.
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
 
-				/**
+				/*
 				 * Age is expressed in years so, for example, use 0.25 for 3 months.
 				 *
 				 * See https://support.google.com/merchants/answer/6324463.
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $audience );
 			}
 
-			/**
+			/*
 			 * Schema 'size' property.
 			 *
 			 * See https://support.google.com/merchants/answer/6324492 for 'name'.
@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				$json_ret[ 'size' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
 			}
 
-			/**
+			/*
 			 * Schema 'length', 'width', 'height', 'weight' properties.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_og, $names = array(
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				'fluid_volume' => 'product:fluid_volume:value',
 			) );
 
-			/**
+			/*
 			 * Schema 'hasEnergyConsumptionDetails' property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:energy_efficiency:value' ) ) {	// Not null, an empty string, or 'none'.
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
-			/**
+			/*
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
 			static $local_is_recursion = false;
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 				$local_is_recursion = true;
 
-				/**
+				/*
 				 * See https://schema.org/offers as https://schema.org/Offer
 				 */
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 						$this->p->debug->log( 'returned single offer is empty' );
 					}
 
-				/**
+				/*
 				 * See https://schema.org/offers as https://schema.org/AggregateOffer
 				 */
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {	// Just in case - must be an array.
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				$local_is_recursion = false;
 			}
 
-			/**
+			/*
 			 * Check for required Product properties.
 			 *
 			 * The "image" property is required for Google's Merchant listings validator.

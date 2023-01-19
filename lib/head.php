@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the
 			 * 'wp_head' action is triggered. The WpssoHead->show_head() method calls WpssoPage->get_mod() to determine
 			 * the current WordPress object (comment, post, term, or user), if any, and saves the 'query_vars' value
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			/**
+			/*
 			 * If an AMP plugin is active, hook 'amp_post_template_head' to add head markup for AMP pages.
 			 */
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe do a 301 redirect.
 			 */
 			add_action( 'template_redirect', array( $this, 'maybe_redirect_url' ), -1000 );
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $headers;
 		}
 
-		/**
+		/*
 		 * Called by 'wp_head' and 'amp_post_template_head' actions.
 		 *
 		 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the 'wp_head'
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mtime_start = microtime( $get_float = true );
 			$indent_num  = 0;
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 *
 		 * The clear_head_array() method is called with $mod = false and a $canonical_url value for post date archive pages.
@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return;
 		}
 
-		/**
+		/*
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 *
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// Begin timer.
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -287,17 +287,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->page->get_mod( $use_post );
 			}
 
-			/**
+			/*
 			 * The canonical URL is optional for SucomUtil::get_mod_salt().
 			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
-			/**
+			/*
 			 * Disable head and content cache if the request URL contains an unknown/extra query string.
 			 */
 			if ( ! is_admin() ) {
 
-				/**
+				/*
 				 * $remove_tracking = true removes the following query arguments:
 				 *
 				 * 'fb_action_ids'
@@ -329,7 +329,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'query detected in request url' );
 					}
 
-					/**
+					/*
 					 * WooCommerce product attributes do not have their own webpages - product attribute query
 					 * strings are used to pre-fill product selections on the front-end. The
 					 * WpssoProEcomWoocommerce->filter_url_query_cache_disable() removes all product attributes
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Setup variables for transient cache.
 			 *
 			 * Note that get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod array (404,
@@ -408,12 +408,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Set a general reference value for admin notices.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod );
 
-			/**
+			/*
 			 * Define the author_id (if one is available).
 			 */
 			$author_id = WpssoUser::get_author_id( $mod );
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'author_id = ' . ( false === $author_id ? 'false' : $author_id ) );
 			}
 
-			/**
+			/*
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
@@ -432,7 +432,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
-			/**
+			/*
 			 * Twitter Cards.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
-			/**
+			/*
 			 * Name / SEO meta tags.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) );
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
-			/**
+			/*
 			 * Link relation tags.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding link relation tags', 'wpsso' ) );
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
-			/**
+			/*
 			 * Schema json scripts.
 			 */
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
@@ -480,12 +480,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->util->maybe_unset_ref( $canonical_url );
 			}
 
-			/**
+			/*
 			 * Generator meta tags.
 			 */
 			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
 
-			/**
+			/*
 			 * Combine and return all meta tags.
 			 */
 			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );	// Unset mis-matched og_type meta tags.
@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				/**
+				/*
 				 * Update the cached array and maintain the existing transient expiration time.
 				 */
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Unset the general reference value for admin notices.
 			 */
 			$this->p->util->maybe_unset_ref( $canonical_url );
@@ -532,7 +532,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $cache_array[ $cache_index ];
 		}
 
-		/**
+		/*
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_head_cache_index( $mixed = 'current' ) {
@@ -571,7 +571,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $cache_index;
 		}
 
-		/**
+		/*
 		 * Extract certain key fields for display and sanity checks.
 		 *
 		 * Save meta tag values for later sorting in list tables.
@@ -647,7 +647,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Save the first image and video information found.
 			 *
 			 * Assumes array key order defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
@@ -672,7 +672,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$is_first = false;
 
-						/**
+						/*
 						 * If we already found media, then skip to the next media prefix.
 						 */
 						if ( ! empty( $head_info[ $mt_pre ] ) ) {
@@ -719,7 +719,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Save meta tag values for later sorting in list tables.
 			 *
 			 * Not that the column 'meta_key' value must begin with '_wpsso_head_info_'.
@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
 
-							/**
+							/*
 							 * Example $media_html:
 							 *
 							 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
@@ -786,7 +786,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $mt_array;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/07/04.
 		 */
 		public function get_mt_mark( $type ) {
@@ -794,7 +794,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $this->get_mt_data( $type );
 		}
 
-		/**
+		/*
 		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
 		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
 		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
@@ -820,12 +820,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					return '<meta name="wpsso-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
 
-				/**
+				/*
 				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
 				 */
 				case 'preg':
 
-					/**
+					/*
 					 * Some HTML optimization plugins or services may remove the double-quotes from the name
 					 * attribute, along with the trailing space and slash characters, so make these optional in
 					 * the regex.
@@ -833,7 +833,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-(begin|end)"?[\s\n\r]+content=")';
 					$preg_suffix = '("[\s\n\r]*\/?)>';
 
-					/**
+					/*
 					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
 					 * u = Modifier to handle UTF-8 in subject strings.
 					 * m = The "^" and "$" constructs match newlines and the complete subject string.
@@ -848,7 +848,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Loops through the arrays and calls self->add_mt_singles() for each.
 		 *
 		 * The $name argument is required for numeric arrays.
@@ -945,19 +945,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			}
 
-			/**
+			/*
 			 * Check for known exceptions for the "property" $type.
 			 */
 			if ( 'meta' === $tag ) {
 
 				if ( 'property' === $type ) {
 
-					/**
+					/*
 					 * Double-check the name to make sure its an open graph meta tag.
 					 */
 					switch ( $name ) {
 
-						/**
+						/*
 						 * These names are not open graph meta tag names.
 						 */
 						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				} elseif ( 'itemprop' === $type ) {
 
-					/**
+					/*
 					 * If an "itemprop" contains a url, then make sure it's a "link".
 					 */
 					if ( $tag !== 'link' && false !== filter_var( $value, FILTER_VALIDATE_URL ) ) {
@@ -981,7 +981,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check for "link rel href" and "link itemprop href" - all other meta tags use a 'content' attribute name.
 			 */
 			$attr = 'link' === $tag ? 'href' : 'content';
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return $mt_array;
 			}
 
-			/**
+			/*
 			 * Expand inline variables.
 			 */
 			if ( false !== strpos( $value, '%%' ) ) {
@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					/**
+					/*
 					 * The secure url meta tag should always come first, but just in case it doesn't, make sure
 					 * the url value has not already been added.
 					 */
@@ -1059,7 +1059,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:url':
 				case 'og:video:url':
 
-					/**
+					/*
 					 * The previous switch block would have set all three meta tags already, so only proceed if
 					 * the last secure url (empty or not) is not equal to the current url value (empty or not).
 					 */
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image':
 				case 'og:video':
 
-					/**
+					/*
 					 * The previous two switch blocks would have set all three meta tags aready, so only
 					 * proceed if we have a value, and it does not match the last secure url (empty or not) or
 					 * the last insecure url (empty or not).
@@ -1116,7 +1116,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 
-			/**
+			/*
 			 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			 */
 			foreach ( $singles as $num => $parts ) {
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Encode and escape all values, regardless if the head tag is enabled or not. If the head tag is
 				 * enabled, HTML will be created and saved in $parts[ 0 ].
 				 */
@@ -1174,7 +1174,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$match_name = $parts[ 3 ];
 				}
 
-				/**
+				/*
 				 * Boolean values are converted to their string equivalent.
 				 */
 				if ( is_bool( $parts[ 5 ] ) ) {
@@ -1184,7 +1184,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				switch ( $match_name ) {
 
-					/**
+					/*
 					 * Description values that may include emoji.
 					 */
 					case 'og:title':
@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						break;
 
-					/**
+					/*
 					 * URL values that must be URL encoded.
 					 */
 					case 'og:secure_url':
@@ -1232,7 +1232,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						break;
 
-					/**
+					/*
 					 * Allow for mobile app / non-standard protocols.
 					 */
 					case 'al:android:url':
@@ -1246,7 +1246,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						break;
 
-					/**
+					/*
 					 * Encode html entities for everything else.
 					 */
 					default:
@@ -1256,7 +1256,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						break;
 				}
 
-				/**
+				/*
 				 * Convert mixed case itemprop names to lower case.
 				 */
 				$opt_key = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );

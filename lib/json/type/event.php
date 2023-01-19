@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 
 			WpssoSchemaSingle::add_event_data( $json_ret, $mod, $event_id = false, $list_element = false );
 
-			/**
+			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */

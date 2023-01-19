@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/yield.
 			 */
 			if ( ! empty( $md_opts[ 'schema_howto_yield' ] ) ) {
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 				$json_ret[ 'yield' ] = (string) $md_opts[ 'schema_howto_yield' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/prepTime.
 			 * See https://schema.org/totalTime.
 			 */
@@ -72,12 +72,12 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 				'totalTime' => 'schema_howto_total',
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/step.
 			 */
 			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' );
 
-			/**
+			/*
 			 * See https://schema.org/supply.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^schema_howto_supply_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {
@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/tool.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^schema_howto_tool_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe get options from integration modules.
 			 */
 			$book_opts = apply_filters( 'wpsso_get_book_options', false, $mod, $book_id );
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add metadata defaults and custom values to the $book_opts array.
 			 *
 			 * Automatically renames 'schema_book_*' options from the Document SSO metabox to 'book_*'.
@@ -58,13 +58,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $book_type_id, $book_type_url ) = self::get_type_id_url_list( $json_data, $book_opts,
 				$opt_key = 'book_type', $def_type_id, $list_element );
 
-			/**
+			/*
 			 * Maybe remove values related to the WordPress post object.
 			 */
 			unset( $json_data[ 'author' ] );
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			unset( $json_data[ 'datePublished' ] );
 			unset( $json_data[ 'dateModified' ] );
 
-			/**
+			/*
 			 * Begin Schema book markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $book_type_url );
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'numberOfPages' => 'book_pages',
 			) );
 
-			/**
+			/*
 			 * The author type value should be either 'organization' or 'person'.
 			 */
 			if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_type' ) ) {	// Not null, an empty string, or 'none'.
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Book Published Date, Time, Timezone.
 			 *
 			 * Add the creative work published date, if one is available.
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'datePublished' ] = $date;
 			}
 
-			/**
+			/*
 			 * Book Created Date, Time, Timezone.
 			 *
 			 * Add the creative work created date, if one is available.
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return $comments_added;
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				) ),
 			) );
 
-			/**
+			/*
 			 * Property:
 			 *      image as https://schema.org/ImageObject
 			 *      video as https://schema.org/VideoObject
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$comments_added++;
 
-			/**
+			/*
 			 * Add post comment replies.
 			 */
 			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $post_mod, $comment_id );
@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe get options from integration modules.
 			 */
 			$event_opts = apply_filters( 'wpsso_get_event_options', false, $mod, $event_id );
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add metadata defaults and custom values to the $event_opts array.
 			 *
 			 * Automatically renames 'schema_event_*' options from the Document SSO metabox to 'event_*'.
@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
 			}
 
-			/**
+			/*
 			 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
 			 *
 			 * {event option name} => {meta data option name}.
@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'event_offers_end_date'   => 'schema_event_offers_end',		// Prefix for date, time, timezone, iso.
 			) );
 
-			/**
+			/*
 			 * Add event offers.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Must have at least an offer name and price.
 				 */
 				if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
@@ -427,13 +427,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $event_type_id, $event_type_url ) = self::get_type_id_url_list( $json_data, $event_opts,
 				$opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
-			/**
+			/*
 			 * Begin Schema event markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $event_type_url );
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'endDate'             => 'event_end_date_iso',
 			) );
 
-			/**
+			/*
 			 * Events with a previous start date must have rescheduled as their status.
 			 *
 			 * Rescheduled events, without a previous start date, is an invalid combination.
@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'eventStatus' ] = 'https://schema.org/EventScheduled';
 			}
 
-			/**
+			/*
 			 * Add place, organization, and person data.
 			 *
 			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
@@ -477,7 +477,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
 
-					/**
+					/*
 					 * Check that the id value is not true, false, null, or 'none'.
 					 */
 					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'validThrough'  => 'offer_valid_to_date',
 					) ) ) ) {
 
-						/**
+						/*
 						 * Add the offer.
 						 */
 						$json_ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
@@ -544,12 +544,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filter the single Event data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_event', $json_ret, $mod, $event_id );
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ], $event_type_id, and $event_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $event_type_id, $event_id ) );
@@ -575,7 +575,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of events added.
 		}
 
-		/**
+		/*
 		 * This method converts an 'og:image' array into Schema ImageObject data.
 		 *
 		 * Pass a single dimension image array in $mt_single.
@@ -611,7 +611,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;	// Return count of images added.
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $image_type_id, $image_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'url' => SucomUtil::esc_url_encode( $image_url ),
 			) );
 
-			/**
+			/*
 			 * Maybe add an 'identifier' value based on the size name and image ID.
 			 */
 			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) ) {
@@ -634,7 +634,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), check the WordPress Media Library for
 			 * a title and description.
 			 */
@@ -644,12 +644,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$mod = $wpsso->post->get_mod( $post_id );
 
-				/**
+				/*
 				 * Get the image title.
 				 */
 				$json_ret[ 'name' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 
-				/**
+				/*
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
 				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_title_alt' );
@@ -659,7 +659,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					unset( $json_ret[ 'alternateName' ] );
 				}
 
-				/**
+				/*
 				 * Use the image "Alternative Text" for the 'alternativeHeadline' property.
 				 */
 				$json_ret[ 'alternativeHeadline' ] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
@@ -669,19 +669,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					unset( $json_ret[ 'alternativeHeadline' ] );
 				}
 
-				/**
+				/*
 				 * Get the image caption (aka excerpt of the post object).
 				 */
 				$json_ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
 
 				$json_ret[ 'description' ] = $wpsso->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
-				/**
+				/*
 				 * Set the 'encodingFormat' property to the image mime type.
 				 */
 				$json_ret[ 'encodingFormat' ] = get_post_mime_type( $mod[ 'id' ] );
 
-				/**
+				/*
 				 * Set the 'uploadDate' property to the image attachment publish time.
 				 */
 				$json_ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add width and height as QuantitativeValue.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
@@ -712,7 +712,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'height_px' => $media_pre . ':height',
 			) );
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ] and $image_type_id.
 			 */
 			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) ) {
@@ -750,7 +750,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe get options from integration modules.
 			 */
 			$job_opts = apply_filters( 'wpsso_get_job_options', false, $mod, $job_id );
@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add metadata defaults and custom values to the $job_opts array.
 			 *
 			 * Automatically renames 'schema_job_*' options from the Document SSO metabox to 'job_*'.
@@ -785,7 +785,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$job_opts[ 'job_title' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_job_title', $max_len = 'schema_title' );
 			}
 
-			/**
+			/*
 			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
-			/**
+			/*
 			 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
 			 *
 			 * {job option} => {meta data option} (ie. the option name from the document SSO metabox).
@@ -802,13 +802,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
 			) );
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $job_type_id, $job_type_url ) = self::get_type_id_url_list( $json_data,
 				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
-			/**
+			/*
 			 * Begin Schema job markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $job_type_url );
@@ -835,7 +835,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * Allow for a preformatted employment types array.
 			 */
 			if ( ! empty( $job_opts[ 'job_empl_types' ] ) && is_array( $job_opts[ 'job_empl_types' ] ) ) {
@@ -843,7 +843,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'employmentType' ] = $job_opts[ 'job_empl_types' ];
 			}
 
-			/**
+			/*
 			 * Add employment type options (value must be non-empty).
 			 */
 			foreach ( $wpsso->cf[ 'form' ][ 'employment_type' ] as $empl_type => $label ) {
@@ -854,7 +854,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add place, organization, and person data.
 			 *
 			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
@@ -866,7 +866,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
 
-					/**
+					/*
 					 * Check that the id value is not true, false, null, or 'none'.
 					 */
 					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
@@ -891,12 +891,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filter the single Job data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_job', $json_ret, $mod, $job_id );
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ], $job_type_id, and $job_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $job_type_id, $job_id ) );
@@ -922,7 +922,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of jobs added.
 		}
 
-		/**
+		/*
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 *
 		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
@@ -938,7 +938,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Check that the id is not true, false, null, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
@@ -951,7 +951,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
 			}
 
-			/**
+			/*
 			 * Returned organization option values can change depending on the locale, but the option key names should NOT be localized.
 			 *
 			 * Example: 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
@@ -965,7 +965,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
 				}
 
-			/**
+			/*
 			 * Fallback to using organization data from the WordPress site organization.
 			 */
 			} elseif ( 'site' === $org_id ) {
@@ -987,7 +987,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $org_type_id, $org_type_url ) = self::get_type_id_url_list( $json_data,
@@ -995,7 +995,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_ret = WpssoSchema::get_schema_type_context( $org_type_url );
 
-			/**
+			/*
 			 * Set the reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1012,7 +1012,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add schema properties from the organization options.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
@@ -1024,12 +1024,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'telephone'     => 'org_phone',
 			) );
 
-			/**
+			/*
 			 * Organization images.
 			 */
 			if ( ! empty( $org_opts[ 'org_img_id' ] ) || ! empty( $org_opts[ 'org_img_url' ] ) ) {
 
-				/**
+				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
 				$mt_images = $wpsso->media->get_mt_opts_images( $org_opts, $size_names = 'schema', $img_pre = 'org_img' );
@@ -1042,7 +1042,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $org_opts[ 'org_images' ] );
 			}
 
-			/**
+			/*
 			 * Google requires at least one image so fallback to using the Organization logo.
 			 */
 			if ( empty( $json_ret[ 'image' ] ) ) {
@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Organization logo.
 			 *
 			 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							$wpsso->debug->log( 'organization ' . $org_logo_key . ' image is missing and required' );
 						}
 
-						/**
+						/*
 						 * Add notice only if the admin notices have not already been shown.
 						 */
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
@@ -1117,7 +1117,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if ( $notice_msg ) {
 
-								/**
+								/*
 								 * WebSite organization.
 								 */
 								if ( 'site' === $org_id ) {
@@ -1130,7 +1130,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 									$notice_msg .= '</a>';
 
-								/**
+								/*
 								 * WPSSO Organization and Place add-on organization ID.
 								 */
 								} elseif ( 0 === strpos( $org_id, 'org-' ) && ! empty( $wpsso->avail[ 'p_ext' ][ 'opm' ] ) ) {
@@ -1161,17 +1161,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Place / location properties.
 			 */
 			if ( isset( $org_opts[ 'org_place_id' ] ) ) {
 
-				/**
+				/*
 				 * Check that the id is not true, false, null, or 'none'.
 				 */
 				if ( SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
 
-					/**
+					/*
 					 * Check for a custom place id that might have precedence.
 					 *
 					 * 'schema_place_id' can be 'none', 'custom', or numeric (including 0).
@@ -1201,7 +1201,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Google's knowledge graph.
 			 */
 			$org_opts[ 'org_sameas' ] = isset( $org_opts[ 'org_sameas' ] ) ? $org_opts[ 'org_sameas' ] : array();
@@ -1219,7 +1219,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If the organization is a local business, then convert the organization markup to local business.
 			 */
 			if ( ! empty( $org_type_id ) ) {	// Just in case.
@@ -1233,17 +1233,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filter the single Organization data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ], $org_type_id, $org_id, and $org_logo_key values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $org_type_id, $org_id, $org_logo_key ) );
 
-			/**
+			/*
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1272,7 +1272,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of organizations added.
 		}
 
-		/**
+		/*
 		 * A $person_id argument is required.
 		 */
 		public static function add_person_data( &$json_data, $mod, $person_id, $list_element = true ) {
@@ -1284,7 +1284,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe get options from integration modules (example: WpssoProEventTheEventsCalendar).
 			 */
 			$person_opts = apply_filters( 'wpsso_get_person_options', false, $mod, $person_id );
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Fallback to using person data from the WordPress user profile.
 			 */
 			$canonical_url = '';
@@ -1328,7 +1328,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$local_cache_person_urls[ $person_id ] = $wpsso->util->get_canonical_url( $user_mod );
 
-					/**
+					/*
 					 * Set the reference values for admin notices.
 					 */
 					if ( is_admin() ) {
@@ -1380,7 +1380,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_sameas'     => $user_sameas,
 					);
 
-					/**
+					/*
 					 * Restore previous reference values for admin notices.
 					 */
 					if ( is_admin() ) {
@@ -1399,7 +1399,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$canonical_url = $local_cache_person_urls[ $person_id ];
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $person_type_id, $person_type_url ) = self::get_type_id_url_list( $json_data, $person_opts,
@@ -1421,12 +1421,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'telephone'       => 'person_phone',
 			) );
 
-			/**
+			/*
 			 * Person images.
 			 */
 			if ( ! empty( $person_opts[ 'person_img_id' ] ) || ! empty( $person_opts[ 'person_img_url' ] ) ) {
 
-				/**
+				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
 				$mt_images = $wpsso->media->get_mt_opts_images( $person_opts, $size_names = 'schema', $img_pre = 'person_img' );
@@ -1440,7 +1440,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $person_opts[ 'person_images' ] );
 			}
 
-			/**
+			/*
 			 * Google's knowledge graph.
 			 */
 			$person_opts[ 'person_sameas' ] = isset( $person_opts[ 'person_sameas' ] ) ? $person_opts[ 'person_sameas' ] : array();
@@ -1458,12 +1458,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filter the single Person data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
-			/**
+			/*
 			 * Update the '@id' string based on the $canonical_url and the $person_type_id.
 			 *
 			 * Encode the URL part of the '@id' string to hide the WordPress login username.
@@ -1500,7 +1500,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Check that the id is not true, false, null, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $place_id ) ) {
@@ -1508,7 +1508,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * Maybe get options from integration modules.
 			 */
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add metadata defaults and custom values to the $place_opts array.
 			 *
 			 * Skip the SucomUtil::add_type_opts_md_pad() method as we do not have any default or custom 'schema_place'
@@ -1540,7 +1540,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $place_type_id, $place_type_url ) = self::get_type_id_url_list( $json_data, $place_opts,
@@ -1548,7 +1548,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
 
-			/**
+			/*
 			 * Set reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1558,7 +1558,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema place', 'wpsso' ) );
 			}
 
-			/**
+			/*
 			 * Add schema properties from the place options.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
@@ -1569,7 +1569,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'telephone'          => 'place_phone',
 			) );
 
-			/**
+			/*
 			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 */
@@ -1588,7 +1588,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
 			}
 
-			/**
+			/*
 			 * Property:
 			 *	geo as https://schema.org/GeoCoordinates
 			 */
@@ -1603,7 +1603,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'geo' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );
 			}
 
-			/**
+			/*
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
@@ -1614,7 +1614,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( ! empty( $place_opts[ 'place_schema_type' ] ) && $place_opts[ 'place_schema_type' ] !== 'none' ) {
 
-				/**
+				/*
 				 * LocalBusiness schema type properties.
 				 */
 				if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' ) ) {
@@ -1636,7 +1636,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						) );
 					}
 
-					/**
+					/*
 					 * FoodEstablishment schema type properties.
 					 */
 					if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
@@ -1674,12 +1674,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Place images.
 			 */
 			if ( ! empty( $place_opts[ 'place_img_id' ] ) || ! empty( $place_opts[ 'place_img_url' ] ) ) {
 
-				/**
+				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
 				$mt_images = $wpsso->media->get_mt_opts_images( $place_opts, $size_names = 'schema', $img_pre = 'place_img' );
@@ -1692,17 +1692,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $place_opts[ 'place_images' ] );
 			}
 
-			/**
+			/*
 			 * Filter the single Place data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_place', $json_ret, $mod, $place_id );
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ], $place_type_id, and $place_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $place_type_id, $place_id ), $data_url = '' );
 
-			/**
+			/*
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1731,7 +1731,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of places added.
 		}
 
-		/**
+		/*
 		 * Pass a single dimension video array in $mt_single.
 		 *
 		 * Example $mt_single array:
@@ -1784,7 +1784,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;	// Return count of videos added.
 			}
 
-			/**
+			/*
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data,
@@ -1805,7 +1805,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'thumbnailUrl'   => $media_pre . ':thumbnail_url',
 			) );
 
-			/**
+			/*
 			 * Add width and height as QuantitativeValue.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
@@ -1830,7 +1830,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Update the @id string based on $json_ret[ 'url' ] and $video_type_id.
 			 */
 			WpssoSchema::update_data_id( $json_ret, $video_type_id );
@@ -1856,7 +1856,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of videos added.
 		}
 
-		/**
+		/*
 		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
 		 */
 		public static function get_offer_data( array $mod, array $mt_offer ) {
@@ -1870,7 +1870,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
 
-			/**
+			/*
 			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 *
 			 * Note that there is no Schema 'ean' property.
@@ -1895,7 +1895,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'priceValidUntil'       => 'product:sale_price_dates:end',
 			) );
 
-			/**
+			/*
 			 * Fallback to the 'og:url' value, if one is available.
 			 */
 			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
@@ -1913,14 +1913,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return false;
 			}
 
-			/**
+			/*
 			 * Convert a numeric category ID to its Google category string.
 			 */
 			WpssoSchema::check_prop_value_category( $offer );
 
 			WpssoSchema::check_prop_value_gtin( $offer );
 
-			/**
+			/*
 			 * Prevents a missing property warning from the Google validator.
 			 *
 			 * By default, define normal product prices (not on sale) as valid for 1 year.
@@ -1933,7 +1933,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( null === $price_valid_until ) {
 
-					/**
+					/*
 					 * Skip if WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME = 0 or false.
 					 */
 					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
@@ -1952,7 +1952,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Schema 'priceSpecification' property.
 			 */
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
@@ -1966,7 +1966,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( false !== $price_spec ) {
 
-				/**
+				/*
 				 * Make sure we have a price currency.
 				 */
 				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {
@@ -1974,7 +1974,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
-				/**
+				/*
 				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 				 */
 				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
@@ -2004,7 +2004,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
 			}
 
-			/**
+			/*
 			 * Schema 'shippingDetails' property.
 			 */
 			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
@@ -2046,12 +2046,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add the seller organization data.
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
-			/**
+			/*
 			 * Maybe add images to the $mt_og or $mt_offer array.
 			 */
 			if ( ! empty( $mt_offer[ 'product:retailer_item_id' ] ) && is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {	// Just in case.
@@ -2063,7 +2063,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = false );
 			}
 
-			/**
+			/*
 			 * Filter the single Offer data.
 			 */
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
@@ -2071,7 +2071,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $offer;
 		}
 
-		/**
+		/*
 		 * Returns OfferShippingDetails with shippingDestination and shippingRate properties.
 		 *
 		 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
@@ -2087,7 +2087,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
 
-			/**
+			/*
 			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
 			 * $offer_url values.
 			 */
@@ -2097,7 +2097,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
 
-				/**
+				/*
 				 * Each destination options array can include an array of countries, a single country, or a single
 				 * country and state - all with postal code limits, if any were found above.
 				 *
@@ -2113,7 +2113,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$defined_region = array();
 
-					/**
+					/*
 					 * For each option key, assign its value to the associated Schema property name.
 					 *
 					 * If the option key is a postal code array, then check each value for a wildcard or range.
@@ -2129,7 +2129,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						$prop_name = $dest_keys[ $opt_key ];
 
-						/**
+						/*
 						 * Check for wildcards and ranges in postal codes.
 						 */
 						if ( 'postal_code' === $opt_key ) {
@@ -2141,7 +2141,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							foreach ( $val as $num => $postal_code ) {
 
-								/**
+								/*
 								 * Note that wildcards and ranges cannot be mixed, and ranges only
 								 * work with postal codes that are numeric (ie. US zip codes).
 								 *
@@ -2199,7 +2199,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( isset( $shipping_opts[ 'shipping_rate' ] ) ) {
 
-				/**
+				/*
 				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
 				 */
 				$shipping_rate_keys = array(
@@ -2225,7 +2225,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Example $shipping_opts[ 'delivery_time' ] = Array (
 			 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
 			 * 	[shipdept_timezone] => America/Vancouver
@@ -2265,12 +2265,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
 
-				/**
+				/*
 				 * See https://schema.org/ShippingDeliveryTime.
 				 */
 				$delivery_time = array();
 
-				/**
+				/*
 				 * Property:
 				 *	businessDays as https://schema.org/OpeningHoursSpecification
 				 */
@@ -2294,7 +2294,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$quant_id = 'qv';
 					$quantity = array();
 
-					/**
+					/*
 					 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 					 */
 					foreach( array(
@@ -2307,7 +2307,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( isset( $delivery_opts[ $opt_key ] ) ) {
 
-							/**
+							/*
 							 * Skip the name and unit text for the quantity @id value.
 							 */
 							if ( 'name' !== $quant_prop_name && 'unitText' !== $quant_prop_name ) {
@@ -2370,7 +2370,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filter the single Shipping Offer data.
 			 */
 			$shipping_offer = apply_filters( 'wpsso_json_data_single_shipping_offer', $shipping_offer, $mod );
@@ -2378,7 +2378,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $shipping_offer;
 		}
 
-		/**
+		/*
 		 * Returns an array or false if there are no open/close hours.
 		 *
 		 * Example $opts = Array (
@@ -2415,7 +2415,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			foreach ( $business_weekdays as $day_name => $day_label ) {
 
-				/**
+				/*
 				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
 				 *
 				 * $open_close = Array (
@@ -2468,7 +2468,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return empty( $opening_hours_spec ) ? false : $opening_hours_spec;
 		}
 
-		/**
+		/*
 		 * If not adding a list element, then inherit the existing schema type url (if one exists).
 		 */
 		private static function get_type_id_url_list( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
@@ -2491,7 +2491,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( ! $single_type_url ) {
 
-				/**
+				/*
 				 * $type_opts may be false, null, or an array.
 				 */
 				if ( empty( $type_opts[ $opt_key ] ) || 'none' === $type_opts[ $opt_key ] ) {

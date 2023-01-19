@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 			), $prio = 1000, $ext = 'sucom' );
 		}
 
-		/**
+		/*
 		 * Check that the active WPML language matches the changed WordPress locale.
 		 */
 		public function wp_locale_changed( $wp_locale ) {
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 
 			if ( $element_type ) {
 
-				/**
+				/*
 				 * See https://wpml.org/wpml-hook/wpml_element_trid/.
 				 */
 				$element_trid = apply_filters( 'wpml_element_trid', null, $mod[ 'id' ], $element_type );
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 					$this->p->debug->log_arr( 'element trid = ', $element_trid );
 				}
 
-				/**
+				/*
 				 * See https://wpml.org/wpml-hook/wpml_get_element_translations/.
 				 */
 				$translations = apply_filters( 'wpml_get_element_translations', null, $element_trid );
@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 			return $locale_names;
 		}
 
-		/**
+		/*
 		 * Argument can also be a numeric post ID, to return the language of that post.
 		 */
 		public function filter_get_locale( $locale, $mixed = 'current' ) {
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * See https://wpml.org/wpml-hook/wpml_post_language_details/.
 			 */
 			$post_details = apply_filters( 'wpml_post_language_details', null, $post_id );
@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 
 			if ( $args ) {
 
-				/**
+				/*
 				 * See https://wpml.org/wpml-hook/wpml_element_language_code/.
 				 */
 				$wpml_code = apply_filters( 'wpml_element_language_code', null, $args );

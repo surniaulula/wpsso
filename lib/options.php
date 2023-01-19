@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		private static $cache_allowed = false;
 
-		/**
+		/*
 		 * Instantiated by Wpsso->set_objects().
 		 */
 		public function __construct( &$plugin ) {
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			), $prio = 1000 );
 		}
 
-		/**
+		/*
 		 * This action is called by Wpsso->set_objects() to initialize additional class objects.
 		 */
 		public function action_init_objects() {
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
 				}
 
-				/**
+				/*
 				 * Set before calling filters to prevent recursion.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -125,12 +125,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_day_page_title' );	// Day Archive Title.
 				$this->set_default_text( $local_cache, 'plugin_day_page_desc' );	// Day Archive Description.
 
-				/**
+				/*
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
 				$this->add_custom_post_tax_options( $local_cache );
 
-				/**
+				/*
 				 * Translate contact method field labels for current language.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $local_cache, 'wpsso' );
 
-				/**
+				/*
 				 * Define the default Facebook locale and current locale values.
 				 */
 				$local_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$local_cache[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
-				/**
+				/*
 				 * Import metadata and block attributes from known SEO plugins.
 				 */
 				foreach ( array(
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						foreach ( array( 'meta', 'blocks' ) as $import_type ) {
 
-							/**
+							/*
 							 * Option key examples:
 							 *
 							 * 'plugin_import_aioseop_meta'
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Define the default organization or person ID for Knowledge Graph markup in the home page.
 				 */
 				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
@@ -204,7 +204,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						break;
 				}
 
-				/**
+				/*
 				 * If there's an update authentication method available, make sure the option key for its value
 				 * exists.
 				 */
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Check for default values from network admin settings.
 				 */
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
@@ -280,12 +280,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( empty( $local_cache ) || ! $is_cache_allowed ) {
 
-				/**
+				/*
 				 * Automatically include all advanced plugin options.
 				 */
 				$local_cache = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
 
-				/**
+				/*
 				 * Add a "Site Use" for each option.
 				 */
 				foreach ( $local_cache as $key => $val ) {
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
-				/**
+				/*
 				 * Set before calling filters to prevent recursion.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $local_cache;
 		}
 
-		/**
+		/*
 		 * Returns a checked, fixed, and/or upgraded options array.
 		 */
 		public function check_options( $options_name, array $opts, $network = false ) {
@@ -373,7 +373,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$is_plugin_upg = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
 			$is_option_upg = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
 
-			/**
+			/*
 			 * Upgrade the options array if necessary (rename or remove keys).
 			 */
 			if ( $is_option_upg ) {
@@ -395,19 +395,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts = $this->upg->options( $options_name, $opts, $defs, $network );
 			}
 
-			/**
+			/*
 			 * Complete the options array for any custom post types and/or custom taxonomies.
 			 */
 			$this->add_custom_post_tax_options( $opts );
 
-			/**
+			/*
 			 * Note that generator meta tags are required for plugin support.
 			 *
 			 * If you disable the generator meta tags, requests for plugin support will be denied.
 			 */
 			$fixed[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 
-			/**
+			/*
 			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
 			 * types. The WebSite organization type ID should be "organization" unless you are confident that
 			 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$fixed[ 'site_org_schema_type' ] = $site_org_type_id;
 
-			/**
+			/*
 			 * Include VAT in Product Prices.
 			 *
 			 * Allow the WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant to override the 'plugin_product_include_vat' value.
@@ -434,12 +434,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$fixed[ 'plugin_product_include_vat' ] = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
 			}
 
-			/**
+			/*
 			 * Adjust / cleanup non-network options.
 			 */
 			if ( ! $network ) {
 
-				/**
+				/*
 				 * Adjust SEO options.
 				 */
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'wpseo',	// Yoast SEO.
 					) as $avail_key ) {
 
-						/**
+						/*
 						 * Disable the metadata import of all others (ie. non-active SEO plugins).
 						 */
 						if ( empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ) {
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Fixed value / unchangeable options.
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$fixed[ 'add_meta_property_' . $mt_name ]                 = 1;	// Always checked (canonical URL).
 				}
 
-				/**
+				/*
 				 * Check for website verification IDs and enable/disable meta tags as required.
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$fixed[ 'add_meta_name_' . $meta_name ] = empty( $opts[ $site_verify ] ) ? 0 : 1;
 				}
 
-				/**
+				/*
 				 * Check for incompatible options between plugin versions.
 				 */
 				if ( $is_plugin_upg ) {
@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check if options need to be changed and saved.
 			 *
 			 * Disable these options as they would get changed back anyway.
@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Save options and show reminders.
 			 */
 			if ( $save_changes || $is_plugin_upg || $is_option_upg ) {
@@ -585,7 +585,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $opts;
 		}
 
-		/**
+		/*
 		 * Sanitize and validate options, including both the plugin options and custom meta options arrays.
 		 *
 		 * Called by WpssoAdmin->registered_setting_sanitation().
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Add any missing options from the defaults, unless sanitizing for a module, in which case we do not
 			 * complete the options array.
 			 */
@@ -611,12 +611,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Sort the options to re-order 0, 1, 10, 2 suffixes as 0, 1, 2, 10.
 			 */
 			ksort( $opts, SORT_FLAG_CASE | SORT_NATURAL );
 
-			/**
+			/*
 			 * Sanitize values.
 			 */
 			unset( $opts[ 'opt_filtered' ] );	// Just in case.
@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					continue;
 
-				/**
+				/*
 				 * Don't save the ':disabled' option qualifier.
 				 */
 				} elseif ( false !== strpos( $opt_key, ':disabled' ) ) {
@@ -636,14 +636,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					continue;
 
-				/**
+				/*
 				 * Ignore all other controller qualifiers (ie. ':use', ':width', ':height', etc.).
 				 */
 				} elseif ( strpos( $opt_key, ':' ) ) {
 
 					continue;
 
-				/**
+				/*
 				 * Ignore localized options with an empty string value and no default.
 				 */
 				} elseif ( strpos( $opt_key, '#' ) && ! isset( $defs[ $opt_key ] ) && '' === $opt_val ) {
@@ -653,12 +653,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Match the base option name without option numbers and localization.
 				 */
 				$base_key = preg_replace( '/(_[0-9]+)?([#].*)?$/', '', $opt_key );
 
-				/**
+				/*
 				 * Multi-options and localized options default to an empty string.
 				 */
 				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
@@ -666,7 +666,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
 			}
 
-			/**
+			/*
 			 * Adjust Dependent Options
 			 *
 			 * All options (site and meta as well) are sanitized here, so always use isset() or array_key_exists() on
@@ -682,7 +682,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$img_height = $opts[ $opt_pre . '_img_height' ];
 				$img_crop   = isset( $opts[ $opt_pre . '_img_crop' ] ) ? $opts[ $opt_pre . '_img_crop' ] : 0;
 
-				/**
+				/*
 				 * If sanitizing for a module, load any missing width / height values.
 				 */
 				if ( false !== $mod ) {
@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Both width and height are required to calculate and check the aspect ratio.
 				 */
 				if ( empty( $img_width ) || empty( $img_height ) ) {
@@ -758,7 +758,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false === $mod ) {
 
-				/**
+				/*
 				 * Check the Facebook App ID value.
 				 */
 				if ( ! empty( $opts[ 'fb_app_id' ] ) && ( ! is_numeric( $opts[ 'fb_app_id' ] ) || strlen( $opts[ 'fb_app_id' ] ) > 32 ) ) {
@@ -766,7 +766,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length - the value of "%s" is not valid.', 'wpsso' ), $opts[ 'fb_app_id' ] ) );
 				}
 
-				/**
+				/*
 				 * If the plugin_check_head option is disabled, then delete the check counter.
 				 */
 				if ( ! $network ) {
@@ -778,7 +778,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Skip refreshing the image URL dimensions if saving network options.
 			 */
 			if ( ! $network ) {
@@ -791,7 +791,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * The options array should not contain any numeric keys.
 			 */
 			SucomUtil::unset_numeric_keys( $opts );
@@ -799,7 +799,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $opts;
 		}
 
-		/**
+		/*
 		 * Save both options and site options.
 		 *
 		 * Called by WpssoAdmin->load_setting_page() for the 'reload_default_image_sizes' action.
@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Make sure we have something to work with.
 			 */
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
@@ -827,17 +827,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$is_option_upg = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
 
-			/**
+			/*
 			 * $is_option_upg is true when the option versions, not the plugin versions, have changed.
 			 */
 			$opts = (array) apply_filters( 'wpsso_save_setting_options', $opts, $network, $is_option_upg );
 
-			/**
+			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $opts );	// Note that $opts must be an array.
 
-			/**
+			/*
 			 * Since WPSSO Core v8.5.1.
 			 *
 			 * Don't save the disabled option status.
@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return 0;
 		}
 
-		/**
+		/*
 		 * Returns true or false.
 		 */
 		public function set_version( array &$opts, $ext, $version = 0 ) {
@@ -939,7 +939,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Returns true or false.
 		 */
 		public function is_new_options( array $opts ) {
@@ -947,7 +947,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return empty( $opts[ 'opt_checksum' ] ) && empty( $opts[ 'options_version' ] ) ? true : false;
 		}
 
-		/**
+		/*
 		 * Returns true or false, false for a new options array ('checksum' is an empty string by default).
 		 */
 		public function is_plugin_upgrading( array $opts ) {
@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $prev_checksum && $prev_checksum !== $cf_checksum ? true : false;
 		}
 
-		/**
+		/*
 		 * Returns true or false, false for a new options array ('opt_checksum' is an empty string by default).
 		 */
 		public function is_upgrade_required( array $opts ) {
@@ -985,7 +985,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $prev_checksum && $prev_checksum !== $cf_checksum ? true : false;
 		}
 
-		/**
+		/*
 		 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 		 */
 		public function add_versions( array &$opts ) {	// Pass by reference is OK.
@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Complete the options array for any custom post types and/or custom taxonomies.
 		 *
 		 * This method should be called after themes and plugins have registered their custom post types and taxonomies.
@@ -1033,7 +1033,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$col_headers = WpssoAbstractWpMeta::get_column_headers();
 
-			/**
+			/*
 			 * Add options using a key prefix array and post type names.
 			 */
 			$opt_prefixes = array(
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opt_prefix = 'plugin_' . $col_key . '_col';
 
-				/**
+				/*
 				 * Show the Open Graph Image column for post types by default.
 				 */
 				$def_val = 'og_img' === $col_key ? 1 : 0;
@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opt_prefixes[ $opt_prefix ] = $def_val;
 			}
 
-			/**
+			/*
 			 * See WpssoAmFiltersOptions->filter_add_custom_post_type_options().
 			 * See WpssoBcFiltersOptions->filter_add_custom_post_type_options().
 			 */
@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$this->p->util->add_post_type_names( $opts, $opt_prefixes );
 
-			/**
+			/*
 			 * Add options using a key prefix array and post type archive names.
 			 */
 			$opt_prefixes = array(
@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$this->p->util->add_post_type_archive_names( $opts, $opt_prefixes );
 
-			/**
+			/*
 			 * Add options using a key prefix array and term names.
 			 */
 			$opt_prefixes = array(
@@ -1088,7 +1088,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opt_prefix = 'plugin_' . $col_key . '_col_tax';
 
-				/**
+				/*
 				 * Show the Open Graph Image and Description columns for taxonomies by default.
 				 */
 				$def_val = 'og_img' === $col_key || 'og_desc' === $col_key ? 1 : 0;
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opt_prefixes[ $opt_prefix ] = $def_val;
 			}
 
-			/**
+			/*
 			 * See WpssoBcFiltersOptions->filter_add_custom_taxonomy_options().
 			 */
 			$opt_prefixes = apply_filters( 'wpsso_add_custom_taxonomy_options', $opt_prefixes );
@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p->util->add_taxonomy_names( $opts, $opt_prefixes );
 		}
 
-		/**
+		/*
 		 * Update the width / height of remote image URLs.
 		 */
 		private function refresh_image_url_sizes( array &$opts ) {	// Pass by reference is OK.
@@ -1114,17 +1114,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Remove custom field names to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.
 			 */
 			$img_url_keys = preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT );
 
-			/**
+			/*
 			 * Allow for multi-option keys, like 'place_img_url_1'.
 			 */
 			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?(#[a-zA-Z_]+)?$/', $img_url_keys );
 
-			/**
+			/*
 			 * Add correct image sizes for the image URL using getimagesize().
 			 *
 			 * Note that PHP v7.1 or better is required to get the image size of WebP images.
@@ -1134,7 +1134,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		private function check_site_org_image_sizes( array $opts ) {
 
-			/**
+			/*
 			 * Skip if notices have already been shown.
 			 */
 			if ( ! $this->p->notice->is_admin_pre_notices() ) {
@@ -1142,7 +1142,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Skip if the WebSite Publisher Type is not an organization.
 			 */
 			if ( empty( $opts[ 'site_pub_schema_type' ] ) || 'organization' !== $opts[ 'site_pub_schema_type' ] ) {
@@ -1150,7 +1150,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Returns an image array:
 			 *
 			 * array(
@@ -1254,12 +1254,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return $opt_val;
 			}
 
-			/**
+			/*
 			 * Hooked by WpssoOptions->filter_option_type() and several add-ons.
 			 */
 			$option_type = apply_filters( 'wpsso_option_type', $option_type = false, $base_key, $network, $mod );
 
-			/**
+			/*
 			 * Translate error messages only once.
 			 */
 			static $errors_transl = null;
@@ -1288,7 +1288,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				);
 			}
 
-			/**
+			/*
 			 * Pre-filter most values to remove html.
 			 */
 			switch ( $option_type ) {
@@ -1315,7 +1315,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * Optional cast on return.
 			 */
 			$ret_int  = false;
@@ -1331,7 +1331,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			switch ( $option_type ) {
 
-				/**
+				/*
 				 * Empty or alpha-numeric (upper or lower case), plus underscores and hypens.
 				 */
 				case 'api_key':
@@ -1347,7 +1347,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Twitter-style usernames (prepend with an @ character).
 				 */
 				case 'at_name':
@@ -1359,7 +1359,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Empty or alpha-numeric uppercase (hyphens are allowed as well). Silently convert illegal
 				 * characters to single hyphens and trim excess.
 				 */
@@ -1371,7 +1371,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Applies sanitize_title_with_dashes().
 				 */
 				case 'dashed':
@@ -1380,7 +1380,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Must be blank or integer / numeric.
 				 */
 				case 'blank_int':
@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Options that cannot be blank (aka empty string).
 				 */
 				case 'code':
@@ -1466,7 +1466,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Text strings that can be blank (line breaks are removed).
 				 */
 				case 'desc':
@@ -1480,7 +1480,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Must be a floating-point number. The decimal precision defined before the switch() statement.
 				 */
 				case 'fnum':
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Empty string or must include at least one HTML tag.
 				 */
 				case 'html':
@@ -1515,7 +1515,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Empty string or an image ID.
 				 */
 				case 'img_id':
@@ -1532,7 +1532,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Must be integer / numeric.
 				 */
 				case 'int':
@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Integer / numeric options that must be 1 or more (not zero).
 				 */
 				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
@@ -1568,7 +1568,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pos_num':
 				case 'pos_number':
 
-					/**
+					/*
 					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
 					 */
 					if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
@@ -1623,7 +1623,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Text strings that can be blank.
 				 */
 				case 'ok_blank':
@@ -1635,7 +1635,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Must be empty or texturized.
 				 */
 				case 'textured':
@@ -1647,7 +1647,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Empty string or a URL.
 				 *
 				 * Note that WebP is only supported since PHP v7.1.
@@ -1680,7 +1680,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Strip leading URLs off facebook usernames.
 				 */
 				case 'url_base':
@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Everything else is a 1 or 0 checkbox option.
 				 */
 				case 'checkbox':
@@ -1718,7 +1718,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $opt_val;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/09/15.
 		 */
 		public static function can_cache() {
@@ -1745,7 +1745,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns an option value or null.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array

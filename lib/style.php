@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -54,14 +54,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
 
-			/**
+			/*
 			 * See https://developers.google.com/speed/libraries/.
 			 */
 			wp_register_style( 'jquery-ui.js', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' .
 				$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
 					$deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
-			/**
+			/*
 			 * Register styles for option help popup.
 			 *
 			 * See http://qtip2.com/download.
@@ -69,30 +69,30 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			wp_register_style( 'jquery-qtip.js', WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $this->file_ext,
 				$deps = array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
-			/**
+			/*
 			 * Register styles for settings pages.
 			 */
 			wp_register_style( 'sucom-settings-page', WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
 				$deps = array(), $this->version );
 
-			/**
+			/*
 			 * Register styles for settings tables.
 			 */
 			wp_register_style( 'sucom-settings-table', WPSSO_URLPATH . 'css/com/settings-table.' . $this->file_ext,
 				$deps = array(), $this->version );
 
-			/**
+			/*
 			 * Register styles for metabox tabs.
 			 */
 			wp_register_style( 'sucom-metabox-tabs', WPSSO_URLPATH . 'css/com/metabox-tabs.' . $this->file_ext,
 				$deps = array( 'wp-color-picker' ), $this->version );
 
-			/**
+			/*
 			 * Only load stylesheets we need.
 			 */
 			switch ( $hook_name ) {
 
-				/**
+				/*
 				 * Addons and license settings page.
 				 */
 				case ( preg_match( '/_page_wpsso-.*(addons|licenses)/', $hook_name ) ? true : false ):
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					// no break
 
-				/**
+				/*
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
 				case ( false !== strpos( $hook_name, '_page_wpsso-' ) ? true : false ):
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					// No break.
 
-				/**
+				/*
 				 * Editing page.
 				 */
 				case 'post.php':	// Post edit.
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
-			/**
+			/*
 			 * Fonts.
 			 */
 			$custom_style_css = '
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			/**
+			/*
 			 * Admin menu and sub-menu items.
 			 */
 			if ( $menu_pagehook ) {	// Just in case.
@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
-			/**
+			/*
 			 * Settings pages.
 			 */
 			$custom_style_css .= '
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			/**
+			/*
 			 * List table columns.
 			 */
 			foreach ( array(
@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				''              => 'width:15%; max-width:15vw;',
 			) as $css_class => $width_css ) {
 
-				/**
+				/*
 				 * WooCommerce changes their tabs to icons at 900px.
 				 * WordPress collapses the admin menu at 960px.
 				 * WordPress changes to larger icons at 782px.
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.5.1.
 		 *
 		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
@@ -608,7 +608,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Fix the WordPress banner resolution.
 			 */
 			if ( false !== $plugin_slug && ! empty( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					echo '<style type="text/css">' . "\n";
 
-					/**
+					/*
 					 * Banner image array keys are 'low' and 'high'.
 					 */
 					if ( ! empty( $banners[ 'low' ] ) ) {
@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			echo '
 				<style type="text/css">
 
-					/**
+					/*
 					 * Hide the plugin name overlay.
 					 */
 					body#plugin-information div#plugin-information-title.with-banner h2 {

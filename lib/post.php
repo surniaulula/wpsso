@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/abstract/wp-meta.php';
 }
 
-/**
+/*
  * Extended by the WpssoOpmPost class.
  */
 if ( ! class_exists( 'WpssoPost' ) ) {
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe enable excerpts for pages.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_page_excerpt' ] ) ) {
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_post_type_support( 'page', array( 'excerpt' ) );
 			}
 
-			/**
+			/*
 			 * Maybe register tags for pages.
 			 */
 			if ( $page_tag_taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' ) ) {
@@ -68,13 +68,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
 			 */
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
-		/**
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		public function add_wp_hooks() {
@@ -97,14 +97,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
-					/**
+					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 *
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
 
-					/**
+					/*
 					 * The 'add_meta_boxes' action fires after all built-in meta boxes have been added.
 					 */
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_action( 'wp_after_insert_post', array( $this, 'after_insert_post' ), 10, 4 );
 
-				/**
+				/*
 				 * The 'save_post' action is run after other post type specific actions, so we can use it to save
 				 * post meta for any post type. Don't hook the 'clean_post_cache' action since 'save_post' is run
 				 * after 'clean_post_cache' and our custom post meta has not been saved yet.
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );		// Default is -10.
 				add_action( 'save_post', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
 
-				/**
+				/*
 				 * The wp_insert_post() function returns after running the 'edit_attachment' action, so the
 				 * 'save_post' action is never run for attachments.
 				 */
@@ -130,12 +130,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'edit_attachment', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
 			}
 
-			/**
+			/*
 			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
 			 */
 			if ( $is_admin || $doing_ajax ) {
 
-				/**
+				/*
 				 * Add edit table columns.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'manage_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
-				/**
+				/*
 				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
 				 * post, term, and user edit tables.
 				 */
@@ -182,19 +182,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe inherit a featured image from the post/page parent.
 			 */
 			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), 100, 4 );
 			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), 100, 5 );
 
-			/**
+			/*
 			 * Maybe create or update the post column content.
 			 */
 			add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 		}
 
-		/**
+		/*
 		 * Get the $mod object for a post id.
 		 */
 		public function get_mod( $post_id ) {
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = self::get_mod_defaults();
 
-			/**
+			/*
 			 * Common elements.
 			 */
 			$mod[ 'id' ]          = is_numeric( $post_id ) ? (int) $post_id : 0;	// Cast as integer.
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod[ 'name_transl' ] = _x( 'post', 'module name', 'wpsso' );
 			$mod[ 'obj' ]         =& $this;
 
-			/**
+			/*
 			 * WpssoPost elements.
 			 */
 			$mod[ 'is_post' ]       = true;
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * If we have a post with content (ie. singular), then check for paging in the content.
 					 */
 					if ( ! $mod[ 'is_post_type_archive' ] && ! $mod[ 'is_home_posts' ] ) {
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$mod[ 'paged_total' ] = substr_count( $mod[ 'wp_obj' ]->post_content, '<!--nextpage-->' ) + 1;
 					}
 
-					/**
+					/*
 					 * The post type might be public, but if the post itself is private, then mark the post as not public.
 					 *
 					 * See https://wordpress.org/support/article/post-status/#default-statuses.
@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			/**
+			/*
 			 * Hooked by the 'coauthors' module.
 			 */
 			$mod = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return get_post( $mod[ 'id' ] );
 		}
 
-		/**
+		/*
 		 * Check if the post type matches a pre-defined Open Graph type.
 		 *
 		 * For example, a post type of 'organization' would return 'website' for the Open Graph type.
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
@@ -369,12 +369,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $local_cache = array();
 
-			/**
+			/*
 			 * Use $post_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
-			/**
+			/*
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
-				/**
+				/*
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$mod = $this->get_mod( $post_id );
 
-					/**
+					/*
 					 * Since WPSSO Core v9.15.0.
 					 *
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'content property missing in post id ' . $post_id . ' object' );
 					}
 
-					/**
+					/*
 					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
 					 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get
 					 * overwritten by later filters.
@@ -491,7 +491,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
 
-					/**
+					/*
 					 * Since WPSSO Core v14.2.0.
 					 *
 					 * See WpssoProEcomWoocommerce->add_mt_product().
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$md_opts = (array) apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
 
-					/**
+					/*
 					 * Since WPSSO Core v9.5.0.
 					 *
 					 * Overwrite parent options with those of the child, allowing only undefined child options
@@ -521,12 +521,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}
 
-					/**
+					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v4.31.0.
 					 *
 					 * Hooked by several integration modules to provide information about the current content.
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v13.8.1.
 					 */
 					if ( ! empty( $md_opts[ 'seo_title' ] ) && $this->p->util->is_seo_title_disabled() ) {
@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						unset( $md_opts[ 'seo_desc' ] );
 					}
 
-					/**
+					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->return_options( $post_id, $md_opts, $md_key, $merge_defs );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $post_id, $rel = false ) {
@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function delete_options( $post_id, $rel = false ) {
@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Get all publicly accessible post ids using WP_Query->query().
 		 *
 		 * Use 'suppress_filters' = false to allow WPML (and others) to filter posts for the current language.
@@ -670,7 +670,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			/**
+			/*
 			 * Calls WP_Query->query() with the supplied arguments.
 			 *
 			 * If the arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a
@@ -683,7 +683,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $posts_ids;
 		}
 
-		/**
+		/*
 		 * Get post ids for direct children of a post id.
 		 *
 		 * Return an array of post ids for a given $mod object.
@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $posts_ids;
 		}
 
-		/**
+		/*
 		 * This method is hooked to the 'manage_pages_columns' filter.
 		 *
 		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-posts-list-table.php#L711.
@@ -761,7 +761,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->add_column_headings( $columns, $post_type = 'page' );
 		}
 
-		/**
+		/*
 		 * This method is hooked to the 'manage_posts_columns' filter.
 		 *
 		 * Some plugins have been known to call the 'manage_posts_columns' filter with only one argument, so include a
@@ -776,7 +776,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->add_column_headings( $columns, $post_type );
 		}
 
-		/**
+		/*
 		 * This method is hooked to the 'manage_media_columns' filter.
 		 *
 		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-media-list-table.php#L366.
@@ -798,7 +798,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return SucomUtilWP::get_update_meta_cache( $post_id, $meta_type = 'post' );
 		}
 
-		/**
+		/*
 		 * Hooked into the current_screen action.
 		 *
 		 * Sets the parent::$head_tags and parent::$head_info class properties.
@@ -810,7 +810,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
 			if ( false !== parent::$head_tags || ! isset( $screen->id ) ) {
@@ -836,13 +836,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return;
 			}
 
-			/**
+			/*
 			 * Get the post object for sanity checks.
 			 */
 			$post_obj = SucomUtil::get_post_object( true );
 			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			/**
+			/*
 			 * Make sure we have at least a post type and status.
 			 */
 			if ( ! $post_obj instanceof WP_Post ) {
@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid post page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			} elseif ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
-				/**
+				/*
 				 * Hooked by woocommerce module to load front-end libraries and start a session.
 				 */
 				do_action( 'wpsso_admin_post_head', $mod );
@@ -923,14 +923,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
 				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
-				/**
+				/*
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'id' ] && $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
 					$this->check_head_info( $mod );
 
-					/**
+					/*
 					 * Check duplicates only when the post is available publicly and we have a valid permalink.
 					 */
 					if ( current_user_can( 'manage_options' ) ) {
@@ -1039,7 +1039,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$do_once[ $post_id ] = true;
 
-			/**
+			/*
 			 * Only check publicly available posts.
 			 */
 			if ( ! isset( $post_obj->post_status ) || 'publish' !== $post_obj->post_status ) {
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Fetch the post HTML.
 			 */
 			$is_admin = is_admin();	// Call the function only once.
@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) );
 			}
 
-			/**
+			/*
 			 * Use the Facebook user agent to get Open Graph meta tags.
 			 */
 			$curl_opts = array(
@@ -1136,7 +1136,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'size of ' . $check_url . ' is ' . $html_size . ' bytes' );
 				}
 
-				/**
+				/*
 				 * If debug is enabled, the webpage may be larger than normal, so skip this warning.
 				 */
 				if ( $is_admin && ! $this->p->debug->enabled ) {
@@ -1253,7 +1253,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Remove the WPSSO meta tag and Schema markup section from the webpage to check for duplicate meta tags and markup.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1293,7 +1293,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
+			/*
 			 * Check the stripped webpage HTML for duplicate html tags.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1402,7 +1402,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Use $post_obj = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $post_type, $post_obj = false ) {
@@ -1560,7 +1560,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
 				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
-				/**
+				/*
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
@@ -1690,7 +1690,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $post_id, $rel = false ) {
@@ -1742,7 +1742,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * Clear the permalink, canonical / shortlink url cache.
 			 */
 			$permalink = get_permalink( $post_id );
@@ -1758,14 +1758,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->cache->clear( $other_url );
 			}
 
-			/**
+			/*
 			 * Clear the post meta, content, and head caches.
 			 */
 			$mod = $this->get_mod( $post_id );
 
 			$this->clear_mod_cache( $mod );
 
-			/**
+			/*
 			 * Clear post date, term, and author archive pages.
 			 */
 			$post_year  = get_the_time( 'Y', $post_id );
@@ -1782,7 +1782,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->head->clear_head_array( $archive_page_mod = false, $url );
 			}
 
-			/**
+			/*
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
 			$post_status = get_post_status( $post_id );
@@ -1805,14 +1805,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Clear the post author archive page.
 			 */
 			$author_id = get_post_field( 'post_author', $post_id );
 
 			$this->p->user->clear_cache( $author_id );
 
-			/**
+			/*
 			 * Clear W3 Total Cache.
 			 */
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {
@@ -1820,7 +1820,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				w3tc_pgcache_flush_post( $post_id );
 			}
 
-			/**
+			/*
 			 * The WPSSO FAQ question shortcode attaches the post id to the question so the post cache can be cleared
 			 * if/when a question is updated.
 			 */
@@ -1834,7 +1834,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Clear the post column meta last.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
@@ -1847,7 +1847,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $post_id, $rel = false ) {
@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			do_action( 'wpsso_refresh_post_cache', $post_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $post_id, $rel = false ) {
@@ -1891,7 +1891,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for post id ' . $post_id );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -1949,7 +1949,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $reviews;
 		}
 
-		/**
+		/*
 		 * WpssoPost class specific methods.
 		 *
 		 * Filters the wp shortlink for a post - returns the shortened canonical URL.
@@ -1980,7 +1980,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
 			}
 
-			/**
+			/*
 			 * Check to make sure we have a plugin shortener selected.
 			 */
 			if ( empty( $this->p->options[ 'plugin_shortener' ] ) || $this->p->options[ 'plugin_shortener' ] === 'none' ) {
@@ -1993,7 +1993,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// Return original shortlink.
 			}
 
-			/**
+			/*
 			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0.
 			 *
 			 * Use the same WordPress code to get a real post id and create a default shortlink (if required).
@@ -2113,7 +2113,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
-			/**
+			/*
 			 * Shorten URL using the selected shortening service.
 			 */
 			$short_url = $this->p->util->shorten_url( $canonical_url, $mod );
@@ -2166,7 +2166,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $shortlink;
 		}
 
-		/**
+		/*
 		 * Maybe inherit a featured image from the post/page parent.
 		 *
 		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
@@ -2179,7 +2179,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			/**
+			/*
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
@@ -2194,7 +2194,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metadata = $this->get_update_meta_cache( $post_id );
 
-			/**
+			/*
 			 * If the meta key already has a value, then no need to check the parents.
 			 */
 			if ( ! empty( $metadata[ $meta_key ] ) ) {
@@ -2202,7 +2202,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			/**
+			/*
 			 * Start with the parent and work our way up - return the first value found.
 			 */
 			foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
@@ -2223,7 +2223,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $check;
 		}
 
-		/**
+		/*
 		 * When inheriting a featured image from the post/page parent, ignore saving the same thumbnail ID.
 		 *
 		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
@@ -2236,7 +2236,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			/**
+			/*
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
@@ -2270,7 +2270,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $check;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.15.0.
 		 *
 		 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
@@ -2290,17 +2290,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return $local_cache[ $post_id ][ $tax_slug ];	// Return value from local cache.
 				}
 
-				/**
+				/*
 				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
-				/**
+				/*
 				 * Returns null if a custom primary term ID has not been selected.
 				 */
 				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
 
-				/**
+				/*
 				 * Make sure the term is not null or false, and still exists.
 				 *
 				 * Note that term_exists() requires an integer ID, not a string ID.
@@ -2324,7 +2324,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $primary_term_id;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.18.0.
 		 *
 		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
@@ -2335,7 +2335,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				/**
+				/*
 				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
@@ -2358,7 +2358,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $default_term_id;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.16.0.
 		 *
 		 * Returns an associative array of term IDs and their names or objects.
@@ -2373,14 +2373,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$post_id = $mod[ 'id' ];
 
-				/**
+				/*
 				 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
 				 */
 				$primary_term_id = $this->p->post->get_primary_term_id( $mod, $tax_slug );	// Returns false or term ID.
 
 				if ( $primary_term_id ) {
 
-					/**
+					/*
 					 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
 					 */
 					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
@@ -2393,7 +2393,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 
-							/**
+							/*
 							 * If the primary or default term ID exists in the post terms array, move it to the top.
 							 */
 							foreach ( $post_terms as $num => $term_obj ) {
@@ -2444,7 +2444,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return apply_filters( 'wpsso_primary_terms', $primary_terms, $mod, $tax_slug, $output );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function get_meta( $post_id, $meta_key = '', $single = false ) {
@@ -2452,7 +2452,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return get_post_meta( $post_id, $meta_key, $single );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function update_meta( $post_id, $meta_key, $value ) {
@@ -2460,7 +2460,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return update_post_meta( $post_id, $meta_key, $value );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function delete_meta( $post_id, $meta_key ) {

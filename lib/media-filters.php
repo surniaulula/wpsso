@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,14 +17,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 
-	/**
+	/*
 	 * Since WPSSO Core v13.2.0.
 	 */
 	class WpssoMediaFilters {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoMedia->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Filters for the "Image Dimension Checks" option.
 			 */
 			if ( $this->p->options[ 'plugin_check_img_dims' ] ) {
@@ -48,12 +48,12 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function filter_attached_accept_img_dims( $accept, $img_url, $img_width, $img_height, $size_name, $pid ) {
 
-			/**
+			/*
 			 * Don't re-check already rejected images.
 			 */
 			if ( ! $accept ) {	// Value is false.
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 					' (' . $size_info[ 'dimensions' ] . ') image size' );
 			}
 
-			/**
+			/*
 			 * Add notice only if the admin notices have not already been shown.
 			 *
 			 * An is_admin() test is required to make sure the WpssoMessages class is available.
@@ -129,12 +129,12 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function filter_content_accept_img_dims( $accept, $og_image, $size_name, $attr_name, $content_passed ) {
 
-			/**
+			/*
 			 * Don't re-check already rejected images.
 			 */
 			if ( ! $accept ) {	// Value is false.
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 				$this->p->debug->log( 'content image rejected: width / height missing or too small for ' . $size_name );
 			}
 
-			/**
+			/*
 			 * Add notice only if the admin notices have not already been shown.
 			 */
 			if ( $this->p->notice->is_admin_pre_notices() ) {

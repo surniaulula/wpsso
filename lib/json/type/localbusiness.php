@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Skip if not the main schema types or there are no place meta tags.
 			 */
 			if ( ! $is_main || ! preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * See https://schema.org/currenciesAccepted.
 			 * See https://schema.org/paymentAccepted.
 			 * See https://schema.org/priceRange.
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoJsonTypeLocalBusiness' ) ) {
 				'priceRange'         => 'place:business:price_range',		// Example: $$.
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/areaServed as https://schema.org/GeoShape.
 			 */
 			if ( ! empty( $mt_og[ 'place:location:latitude' ] ) &&

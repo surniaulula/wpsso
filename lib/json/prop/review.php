@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 			), $prio = 20000 );
 		}
 
-		/**
+		/*
 		 * Automatically include a review property based on the Open Graph review meta tags.
 		 *
 		 * $page_type_id is false and $is_main is true when called as part of a collection page part.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 			$all_reviews = array();
 			$og_type     = isset( $mt_og[ 'og:type' ] ) ? $mt_og[ 'og:type' ] : false;
 
-			/**
+			/*
 			 * Move any existing properties (from shortcodes, for example) so we can filter them and add new ones.
 			 */
 			if ( isset( $json_data[ 'review' ] ) ) {
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 				unset( $json_data[ 'review' ] );
 			}
 
-			/**
+			/*
 			 * Only pull values from meta tags if this is the main entity markup.
 			 */
 			if ( $is_main && $og_type ) {
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 							);
 						}
 
-						/**
+						/*
 						 * If we have a comment ID then add any replies to the comment.
 						 */
 						if ( ! empty( $mt_review[ 'review:id' ] ) ) {
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 							WpssoSchema::add_videos_data_mt( $single_review[ 'video' ], $mt_review[ 'review:video' ] );
 						}
 
-						/**
+						/*
 						 * Add the complete review.
 						 */
 						$all_reviews[] = WpssoSchema::get_schema_type_context( 'https://schema.org/Review', $single_review );
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 
 			$json_ret[ 'review' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_review', $all_reviews, $mod, $mt_og, $page_type_id, $is_main );
 
-			/**
+			/*
 			 * Return if nothing to do.
 			 */
 			if ( empty( $json_ret[ 'review' ] ) && empty( $json_data[ 'review' ] ) ) {
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 				return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 			}
 
-			/**
+			/*
 			 * Make sure reviews are allowed by Google for this Schema type.
 			 */
 			if ( ! $this->p->schema->allow_review( $page_type_id ) ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * SSO > General Settings > Images tab.
 		 */
 		public function filter_og_images_rows( $table_rows, $form ) {
@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * SSO > General Settings > Videos tab.
 		 */
 		public function filter_og_videos_rows( $table_rows, $form ) {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		private $info    = null;	// WpssoMessagesInfo class object.
 		private $tooltip = null;	// WpssoMessagesTooltip class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.
 		 */
 		public function __construct( &$plugin ) {
@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$msg_key = sanitize_title_with_dashes( $msg_key );
 
-			/**
+			/*
 			 * Set a default text string, if one is provided.
 			 */
 			$text = '';
@@ -66,19 +66,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text = $info[ 'text' ];
 			}
 
-			/**
+			/*
 			 * Set a lowercase acronym.
 			 *
 			 * Example plugin IDs: wpsso, wpssoum, etc.
 			 */
 			$plugin_id = $info[ 'plugin_id' ] = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
 
-			/**
+			/*
 			 * Get the array of plugin URLs (download, purchase, etc.).
 			 */
 			$url = isset( $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] : array();
 
-			/**
+			/*
 			 * Make sure specific plugin information is available, like 'short', 'short_pro', etc.
 			 */
 			foreach ( array( 'short', 'name', 'version' ) as $info_key ) {
@@ -109,12 +109,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Tooltips.
 			 */
 			if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltip when needed.
 				 */
 				if ( null === $this->tooltip ) {
@@ -126,12 +126,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$text = $this->tooltip->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Informational messages.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'info-' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesInfo when needed.
 				 */
 				if ( null === $this->info ) {
@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$text = $this->info->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Misc pro messages
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'pro-' ) ) {
@@ -237,7 +237,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 				}
 
-			/**
+			/*
 			 * Misc notice messages.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'notice-' ) ) {
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p>';
 
-						/**
+						/*
 						 * WpssoMedia->is_image_within_config_limits() sets 'show_adjust_img_opts' = false
 						 * for images with an aspect ratio that exceeds the hard-coded config limits.
 						 */
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 								}
 
-								/**
+								/*
 								 * Note that WpssoMedia->is_image_within_config_limits() sets
 								 * 'show_adjust_img_size_opts' to false for images that are too
 								 * small for the hard-coded config limits.
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 				}
 
-			/**
+			/*
 			 * Misc sidebox messages
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'column-' ) ) {
@@ -996,7 +996,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Define and translate certain strings only once.
 		 */
 		protected function maybe_set_properties() {
@@ -1020,7 +1020,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Used by the Advanced Settings page for the "Webpage Title Tag" option.
 		 */
 		public function maybe_doc_title_disabled() {
@@ -1045,7 +1045,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html ? '<p class="status-msg smaller long_name">' . $html . '</p>' : '';
 		}
 
-		/**
+		/*
 		 * If an add-on is not active, return a short message that this add-on is recommended.
 		 */
 		public function maybe_ext_required( $ext ) {
@@ -1074,7 +1074,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended for this option.', 'wpsso' ), $ext_name_link );
 		}
 
-		/**
+		/*
 		 * Called in the 'tooltip-meta-seo_desc' and 'tooltip-robots_*' tooltips.
 		 */
 		public function maybe_add_seo_tag_disabled_link( $mt_name ) {
@@ -1148,7 +1148,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Pinterest disabled.
 		 *
 		 * $extra_css_class can be empty, 'left', or 'inline'.
@@ -1158,7 +1158,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $this->p->util->is_pin_img_disabled() ? $this->pin_img_disabled( $extra_css_class ) : '';
 		}
 
-		/**
+		/*
 		 * Used by the General Settings page.
 		 */
 		public function maybe_preview_images_first() {
@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		/**
+		/*
 		 * Use SucomUtilWP::sitemaps_disabled() as a test before calling this method.
 		 */
 		public function wp_sitemaps_disabled( $is_notice = false ) {
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$html .= '</p>';
 			}
 
-			/**
+			/*
 			 * Check if a theme or another plugin has disabled the Wordpress sitemaps functionality.
 			 */
 			if ( ! apply_filters( 'wp_sitemaps_enabled', true ) ) {
@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $is_notice ? preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $html ) : $html;
 		}
 
-		/**
+		/*
 		 * Returns an array of two elements.
 		 */
 		protected function ext_p_ext( $ext ) {

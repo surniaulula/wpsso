@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -230,14 +230,14 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 
 				$local_cache[ $post_id ] = array();
 
-				/**
+				/*
 				 * Get the default schema type (job.posting by default).
 				 */
 				$local_cache[ $post_id ][ 'schema_type' ] = $wpsso->options[ 'schema_type_for_job_listing' ];
 
 				$post_obj = get_post( $post_id );
 
-				/**
+				/*
 				 * Add post meta.
 				 */
 				foreach ( array(
@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 
 						if ( ! empty( $empl_type ) ) {	// Just in case.
 
-				 			/**
+				 			/*
 							 * Google approved values (case sensitive):
 							 *
 							 * 	FULL_TIME
@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 				'place_name' => get_the_job_location( $post_obj ),
 			);
 
-			/**
+			/*
 			 * Possible place option keys:
 			 *
 			 * 'place_url'

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Possibly inherit the schema type.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
-		 	/**
+		 	/*
 			 * $user_id can be 'none' or a number (including 0).
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 
 			WpssoSchemaSingle::add_person_data( $json_ret, $mod, $user_id, $list_element = false );
 
-			/**
+			/*
 			 * Override author's website url and use the og url instead.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).

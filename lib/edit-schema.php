@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2020-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
@@ -122,82 +122,82 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			/**
+			/*
 			 * Schema CreativeWork.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema CreativeWork > Article.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > WebPage.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema CreativeWork > Book.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > HowTo.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > HowTo > Recipe.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > Movie.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema CreativeWork > Review.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > Software Application.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema CreativeWork > WebPage > QAPage.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
 
-			/**
+			/*
 			 * Schema Event.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema Intangible > JobPosting.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema Organization.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema Person.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema Place.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
 
-			/**
+			/*
 			 * Schema Product.
 			 */
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$ispartof_url_max, $show_first = 1 ),
 				),
 
-				/**
+				/*
 				 * See https://schema.org/citation.
 				 *
 				 * There is very little information available from Google about the expected JSON markup structure
@@ -383,7 +383,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v13.10.0.
 		 */
 		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					), $css_class = '', $css_id = 'schema_recipe_instructions', $recipe_inst_max, $show_first = 2 ),
 				),
 
-				/**
+				/*
 				 * Recipe Nutrition Information.
 				 */
 				'subsection_schema_recipe_nutrition' => array(

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltipMeta->get() only when needed.
 	 */
 	class WpssoMessagesTooltipMetaOpenGraph extends WpssoMessages {

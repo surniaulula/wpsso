@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-/**
+/*
  * Integration module for the Rate my Post plugin.
  *
  * https://wordpress.org/plugins/rate-my-post/
@@ -100,12 +100,12 @@ if ( ! class_exists( 'WpssoIntegRatingRateMyPost' ) ) {
 				$worst_rating   = 1;
 				$best_rating    = (int) Rate_My_Post_Common::max_rating();
 
-				/**
+				/*
 				 * An average rating value must be greater than 0.
 				 */
 				if ( $average_rating > 0 ) {
 
-					/**
+					/*
 					 * At least one rating is required.
 					 */
 					if ( $rating_count > 0 ) {

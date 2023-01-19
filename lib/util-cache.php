@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		private $p;	// Wpsso class object.
 		private $u;	// WpssoUtil class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin, &$util ) {
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * The WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
 		 */
 		public function is_disabled() {
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $is_disabled;
 		}
 
-		/**
+		/*
 		 * Schedule the clearing of all caches.
 		 */
 		public function schedule_clear( $user_id = null, $clear_other = true, $clear_short = null, $refresh = true ) {
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$have_cleared = true;	// Prevent running a second time (by an external cache, for example).
 
-			/**
+			/*
 			 * Get the default settings value.
 			 */
 			if ( null === $clear_short ) {	// Default argument value is null.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$notice_key = 'clear-cache-status';
 
-			/**
+			/*
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
 
-			/**
+			/*
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
-				/**
+				/*
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
 				do_action( 'wpsso_scheduled_task_started', $user_id );
@@ -162,12 +162,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			wp_cache_flush();	// Clear non-database transients as well.
 
-			/**
+			/*
 			 * Clear all other known caches (Comet Cache, W3TC, WP Rocket, etc.).
 			 */
 			$cleared_other_msg = $clear_other ? $this->clear_other() : '';
 
-			/**
+			/*
 			 * The 'wpsso_cache_cleared_notice' filter allows add-ons to execute refresh tasks and append a notice message.
 			 */
 			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, and the WordPress object cache have been cleared.',
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( 0 === strpos( $key_prefix, 'wpsso_' ) ) {
 
-					/**
+					/*
 					 * Preserve transients that begin with "wpsso_!_".
 					 */
 					if ( 0 === strpos( $cache_id, 'wpsso_!_' ) ) {
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						continue;
 					}
 
-					/**
+					/*
 					 * Maybe delete shortened URLs.
 					 */
 					if ( ! $include_short ) {	// If not clearing short URLs.
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$result = $wpdb->get_col( $db_query );
 
-			/**
+			/*
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
 			 */
 			foreach( $result as $option_name ) {
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/11/09.
 		 */
 		public function clear_column_meta() {
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cleared_msg = __( 'The cache for <strong>%s</strong> has also been cleared.', 'wpsso' ) . ' ';
 
-			/**
+			/*
 			 * Autoptimize.
 			 *
 			 * See https://wordpress.org/plugins/autoptimize/.
@@ -454,7 +454,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Cache Enabler.
 			 *
 			 * See https://wordpress.org/plugins/cache-enabler/.
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Comet Cache.
 			 *
 			 * See https://wordpress.org/plugins/comet-cache/.
@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'Comet Cache' );
 			}
 
-			/**
+			/*
 			 * Hummingbird Cache.
 			 *
 			 * See https://wordpress.org/plugins/hummingbird-performance/.
@@ -496,7 +496,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * LiteSpeed Cache.
 			 *
 			 * See https://wordpress.org/plugins/litespeed-cache/.
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Pagely Cache.
 			 */
 			if ( $this->p->avail[ 'cache' ][ 'pagely' ] ) {
@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * SiteGround Cache.
 			 */
 			if ( $this->p->avail[ 'cache' ][ 'siteground' ] ) {
@@ -534,7 +534,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'Siteground Cache' );
 			}
 
-			/**
+			/*
 			 * W3 Total Cache (aka W3TC).
 			 */
 			if ( $this->p->avail[ 'cache' ][ 'w3tc' ] ) {
@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'W3 Total Cache' );
 			}
 
-			/**
+			/*
 			 * WP Engine Cache.
 			 */
 			if ( $this->p->avail[ 'cache' ][ 'wp-engine' ] ) {
@@ -567,7 +567,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'WP Engine Cache' );
 			}
 
-			/**
+			/*
 			 * WP Fastest Cache.
 			 *
 			 * See https://wordpress.org/plugins/wp-fastest-cache/.
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'WP Fastest Cache' );
 			}
 
-			/**
+			/*
 			 * WP Rocket Cache.
 			 */
 			if ( $this->p->avail[ 'cache' ][ 'wp-rocket' ] ) {
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg .= sprintf( $cleared_msg, 'WP Rocket Cache' );
 			}
 
-			/**
+			/*
 			 * WP Super Cache.
 			 *
 			 * See https://wordpress.org/plugins/wp-super-cache/.
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $notice_msg;
 		}
 
-		/**
+		/*
 		 * Schedule the refreshing of all post, term, and user transient cache objects.
 		 *
 		 * $read_cache = true when called by WpssoUtilCache->clear().
@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * The $user_id and $read_cache values are provided by the WpssoUtilCache->schedule_refresh() $event_args array.
 		 */
 		public function refresh( $user_id = null, $read_cache = false ) {
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$notice_key = 'refresh-cache-status';
 
-			/**
+			/*
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
@@ -655,7 +655,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
 
-			/**
+			/*
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
@@ -688,13 +688,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
-				/**
+				/*
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			/**
+			/*
 			 * Since WPSSO Core v8.0.0.
 			 */
 			$post_ids = WpssoPost::get_public_ids();
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			unset( $post_ids );
 
-			/**
+			/*
 			 * Refresh the cache for each public post, term, and user ID.
 			 */
 			$total_count = array(
@@ -728,7 +728,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				foreach ( $obj_ids as $obj_id ) {
 
-					/**
+					/*
 					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 					 */
 					if ( $cache_run_val !== get_transient( $cache_id ) ) {
@@ -751,7 +751,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
-			/**
+			/*
 			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
 			 *
 			 * See WpssoGmfFilters->filter_cache_refreshed_notice().

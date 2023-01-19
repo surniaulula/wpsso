@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -33,7 +33,7 @@ if ( $thumbnail_url ) {
 		$thumbnail_id = get_the_ID();
 	}
 
-	/**
+	/*
 	 * Filters the thumbnail image ID for use in the embed template.
 	 *
 	 * @since 4.9.0
@@ -65,7 +65,7 @@ if ( $thumbnail_url ) {
 			}
 		}
 
-		/**
+		/*
 		 * Filters the thumbnail image size for use in the embed template.
 		 *
 		 * @since 4.4.0
@@ -78,7 +78,7 @@ if ( $thumbnail_url ) {
 
 		$thumbnail_shape = $measurements[ 0 ] / $measurements[ 1 ] >= 1.75 ? 'rectangular' : 'square';
 
-		/**
+		/*
 		 * Filters the thumbnail shape for use in the embed template.
 		 *
 		 * Rectangular images are shown above the title while square images
@@ -141,7 +141,7 @@ the_excerpt_embed();
 
 echo '</div><!-- wp-embed-excerpt -->' . "\n";
 
-/**
+/*
  * Prints additional content after the embed excerpt.
  *
  * @since 4.4.0
@@ -154,7 +154,7 @@ the_embed_site_title();
 
 echo '<div class="wp-embed-meta">';
 
-/**
+/*
  * Prints additional meta content in the embed template.
  *
  * @since 4.4.0

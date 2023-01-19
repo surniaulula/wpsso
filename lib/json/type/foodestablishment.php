@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * See https://schema.org/Bakery.
 		 * See https://schema.org/BarOrPub.
 		 * See https://schema.org/Brewery.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Skip if not the main schema types or there are no place meta tags.
 			 */
 			if ( ! $is_main || ! preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * See https://schema.org/acceptsReservations.
 			 * See https://schema.org/hasMenu.
 			 * See https://schema.org/servesCuisine.

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-/**
+/*
  * Integration module for the WooCommerce Currency Switcher plugin.
  */
 if ( ! class_exists( 'WpssoIntegEcomWoocommerceCurrencySwitcher' ) ) {
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerceCurrencySwitcher' ) ) {
 			), PHP_INT_MAX );
 		}
 
-		/**
+		/*
 		 * If the WooCommerce Currency Switcher plugin 'woocs_is_multiple_allowed' option is false, it will adjusts ONLY
 		 * the currency value, not product prices, so product prices will not match the currency returned by WooCommerce.
 		 *

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 			return $image_ids;
 		}
 
-		/**
+		/*
 		 * The 'wpsso_og_ecom_woocommerce' filter is only applied to WooCommerce products, so we don't have to check the post type.
 		 */
 		public function filter_og_ecom_woocommerce( $mt_ecom, $mod ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 				return $mt_ecom;
 			}
 
-			/**
+			/*
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.
 			 *
 			 * get_the_terms() returns an array of WP_Term objects, false if there are no terms (or the post does not
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 
 				if ( $term_names = wp_list_pluck( $terms, 'name' ) ) {
 
-					/**
+					/*
 					 * There can only be one Open Graph brand meta tag.
 					 */
 					$mt_ecom[ 'product:brand' ] = reset( $term_names );
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 
 			$all_brands = array();
 
-			/**
+			/*
 			 * Move any existing properties (from shortcodes, for example) so we can filter them and add new ones.
 			 */
 			if ( isset( $json_data[ 'brand' ] ) ) {
@@ -175,12 +175,12 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 				unset( $json_data[ 'brand' ] );
 			}
 
-			/**
+			/*
 			 * Allows getting the array key number using the brand name.
 			 */
 			$brand_names = array_flip( wp_list_pluck( $all_brands, 'name' ) );
 
-			/**
+			/*
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.
 			 *
 			 * get_the_terms() returns an array of WP_Term objects, false if there are no terms (or the post does not
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 
 			if ( is_wp_error( $terms ) ) {
 
-				/**
+				/*
 				 * Nothing to do - the error will have been already reported in $this->filter_og_ecom_woocommerce().
 				 */
 
@@ -202,12 +202,12 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
 
 					$term_mt_og = $this->p->og->get_array( $term_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
 
-					/**
+					/*
 					 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 					 */
 					$single_brand = $this->p->schema->get_json_data( $term_mod, $term_mt_og, $page_type_id = 'brand', $is_main = false, $single = true );
 
-					/**
+					/*
 					 * Maybe overwrite an existing brand with the same name.
 					 */
 					if ( isset( $brand_names[ $term->name ] ) ) {

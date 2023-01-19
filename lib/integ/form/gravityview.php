@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoIntegFormGravityView' ) ) {
 
 			if ( is_admin() ) {
 
-				/**
+				/*
 				 * The 'add_meta_boxes' action fires after all built-in meta boxes have been added.
 				 */
 				add_action( 'add_meta_boxes', array( $this, 'add_metabox_gravityview_integration' ) );

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
 
-			/**
+			/*
 			 * Remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag.
 			 */
 			if ( $add_link_rel_shortlink ) {
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Called by 'wp_head' and 'amp_post_template_head' actions.
 		 */
 		public function maybe_disable_rel_canonical() {
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * If WPSSO is providing the canonical URL, then disable the WordPress and AMP canonical meta tags.
 			 */
 			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Link Relation URL Tags.
 		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			$link_rel = apply_filters( 'wpsso_link_rel_seed', array(), $mod );
 
-			/**
+			/*
 			 * Link rel canonical.
 			 */
 			$add_link_rel_canonical = $this->p->util->is_canonical_disabled() ? false : true;
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$link_rel[ 'canonical' ] = $this->p->util->get_canonical_url( $mod );
 			}
 
-			/**
+			/*
 			 * Link rel shortlink.
 			 */
 			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'calling WpssoUtil->shorten_url() to shorten the canonical URL' );
 					}
 
-					/**
+					/*
 					 * Shorten URL using the selected shortening service.
 					 */
 					$shortlink = $this->p->util->shorten_url( $canonical_url, $mod );

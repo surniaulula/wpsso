@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
 	 */
 	class WpssoMessagesTooltipSchema extends WpssoMessages {
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Document Types > Schema tab.
 				 */
 				case 'tooltip-schema_type_for_home_page':	// Type for Page Homepage.
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Article tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_article_' ) ? true : false ):
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Book tab.
 				 */
 				case 'tooltip-schema_def_book_format':		// Default Book Format.
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
 				 */
 				case 'tooltip-schema_def_family_friendly':	// Default Family Friendly.
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Event tab.
 				 */
 				case 'tooltip-schema_def_event_attendance':	// Event Attendance.
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Job Posting tab.
 				 */
 				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Org.
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Product tab.
 				 *
 				 *	Default Product Google Category.
@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Review tab.
 				 */
 				case 'tooltip-schema_def_review_item_type':	// Default Subject Schema Type.

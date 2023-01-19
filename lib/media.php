@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -71,18 +71,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			echo '</p>' . "\n";
 
-			/**
+			/*
 			 * Hide the "suggested image dimensions" as they are less than the minimum we suggest here.
 			 */
 			echo '<style type="text/css">p.suggested-dimensions{ display:none; }</style>' . "\n";
 		}
 
-		/**
+		/*
 		 * Note that $size can be a string or an array().
 		 */
 		public function maybe_adjust_max_image_size( $max_image_size = array(), $size = '', $context = '' ) {
 
-			/**
+			/*
 			 * Allow our sizes to exceed the editor width.
 			 */
 			if ( is_string( $size ) && 0 === strpos( $size, 'wpsso-' ) ) {
@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $max_image_size;
 		}
 
-		/**
+		/*
 		 * By default, WordPress adds only the resolution of the resized image to the file name. If the image size is ours,
 		 * then add crop information to the file name as well. This allows for different cropped versions for the same
 		 * image resolution.
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
 			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
 			 * information was set (presumably because we arrived here without passing through our own method).
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$size_is_cropped = $this->p->util->is_size_cropped( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
 
-			/**
+			/*
 			 * If the resized image is not cropped, then leave the file name as-is.
 			 */
 			if ( ! $size_is_cropped ) {
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $file_path;
 			}
 
-			/**
+			/*
 			 * Example $size_info = Array (
 			 *	[width] => 1200,
 			 *	[height] => 630,
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $file_path !== $new_file_path ) {		// Just in case
 
-				/**
+				/*
 				 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
 				 */
 				$can_rename = $this->can_rename_image_filename( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $file_path;
 		}
 
-		/**
+		/*
 		 * Hooked to the 'wp_image_resize_identical_dimensions' filter added in WP v5.3.
 		 *
 		 * The 'wp_image_resize_identical_dimensions' filter always returns for resized dimensions that are close to the
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		 */
 		public function add_attachment_image_attributes( $attr, $attachment ) {
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $attr;
 		}
 
-		/**
+		/*
 		 * $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_all_previews( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
-			/**
+			/*
 			 * The get_all_videos() method uses the 'og_vid_max' argument as part of its caching salt, so re-use the
 			 * original number to get all possible videos (from its cache), then maybe limit the number of preview
 			 * images if necessary.
@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$image_url = SucomUtil::get_first_mt_media_url( $mt_single_video );
 
-				/**
+				/*
 				 * Check preview images for duplicates since the same videos may be available in different formats
 				 * (application/x-shockwave-flash and text/html for example).
 				 */
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_images;
 		}
 
-		/**
+		/*
 		 * Returns an array of single video associative arrays.
 		 */
 		public function get_all_videos( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
@@ -330,12 +330,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
-			/**
+			/*
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
 			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				/**
+				/*
 				 * Note that get_options() returns null if an index key is not found.
 				 */
 				if ( ( $mod_prev = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_vid_prev_img' ) ) !== null ) {
@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
 				}
 
-				/**
+				/*
 				 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
 				 */
 				$mt_videos = array_merge( $mt_videos, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $md_pre ) );
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
-			/**
+			/*
 			 * Optionally get more videos from the post content.
 			 */
 			if ( $mod[ 'is_comment' ] || $mod[ 'is_post' ] ) {
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$this->p->util->slice_max( $mt_videos, $num );
 
-			/**
+			/*
 			 * Optionally remove the image meta tags (aka video preview).
 			 */
 			if ( empty( $use_prev ) && empty( $force_prev ) ) {
@@ -408,7 +408,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get custom video information from post/term/user meta data for the FIRST video.
 			 *
 			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information.
@@ -427,7 +427,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						'og_vid_height'     => 'og:video:height',
 					) as $md_key => $mt_name ) {
 
-						/**
+						/*
 						 * Note that get_options() returns null if an index key is not found.
 						 */
 						$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
@@ -458,12 +458,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( 'text/html' !== $mt_single_video[ 'og:video:type' ] && ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
 
-					/**
+					/*
 					 * Start with a fresh copy of all og meta tags.
 					 */
 					$og_single_embed = SucomUtil::get_mt_video_seed( 'og', $mt_single_video, false );
 
-					/**
+					/*
 					 * Use only og meta tags, excluding the facebook applink meta tags.
 					 */
 					$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
@@ -473,7 +473,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$og_single_embed[ 'og:video:url' ]  = $mt_single_video[ 'og:video:embed_url' ];
 					$og_single_embed[ 'og:video:type' ] = 'text/html';
 
-					/**
+					/*
 					 * Embedded videos may not have width / height information defined.
 					 */
 					foreach ( array( 'og:video:width', 'og:video:height' ) as $mt_name ) {
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Add application/x-shockwave-flash video first and the text/html video second.
 					 */
 					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $mt_media_pre = 'og:video',
@@ -510,13 +510,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark( 'getting all videos' );	// End timer.
 			}
 
-			/**
+			/*
 			 * Update the local static cache and return the videos array.
 			 */
 			return $mt_videos = $mt_extend;
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
 		public function get_thumbnail_url( $size_names, array $mod, $md_pre = 'og' ) {
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return SucomUtil::get_first_mt_media_url( $mt_ret );
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
 		public function get_all_images( $num, $size_names, array $mod, $md_pre = 'og' ) {
@@ -584,7 +584,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $size_names as $size_name ) {
 
-					/**
+					/*
 					 * $size_name must be a string.
 					 */
 					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $md_pre );
@@ -616,7 +616,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_size_name_images( $num, $size_name, array $mod, $md_pre = 'og' ) {
@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
-						/**
+						/*
 						 * $size_name must be a string.
 						 */
 						$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ] );
@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						return $mt_ret;	// Stop here.
 					}
 
-					/**
+					/*
 					 * Check for custom meta, featured, or attached image(s).
 					 *
 					 * Allow for empty post ID in order to execute featured / attached image filters for modules.
@@ -716,7 +716,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * get_og_images() provides filter hooks for additional image IDs and URLs.
 					 *
 					 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
@@ -729,7 +729,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * If we haven't reached the limit of images yet, keep going and check the content text.
 				 */
 				if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
@@ -802,7 +802,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_post_images( $num, $size_name, $post_id, $md_pre = 'og' ) {
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
-				/**
+				/*
 				 * get_og_images() provides filter hooks for additional image IDs and URLs.
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
@@ -829,7 +829,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( $num, $size_name, $post_id, $md_pre ) );
 			}
 
-			/**
+			/*
 			 * Allow for empty post_id in order to execute featured / attached image filters for modules.
 			 */
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
@@ -854,7 +854,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_featured( $num, $size_name, $post_id ) {
@@ -872,7 +872,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
-				/**
+				/*
 				 * Avoid making duplicate queries to the database.
 				 */
 				static $local_cache_featured_ids = array();
@@ -881,7 +881,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$pid = $local_cache_featured_ids[ $post_id ];
 
-				/**
+				/*
 				 * If the post ID is an attachment page, then use the post ID as the image ID.
 				 */
 				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is_image( $post_id ) ) {
@@ -899,7 +899,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $pid ) ) {	// False or image ID.
 
-					/**
+					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
 					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name );
@@ -916,7 +916,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( 'wpsso_og_featured', $mt_ret, $num, $size_name, $post_id );
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_attached_images( $num, $size_name, $post_id ) {
@@ -934,7 +934,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
-				/**
+				/*
 				 * Avoid making duplicate queries to the database.
 				 */
 				static $local_cache_attached_ids = array();
@@ -943,7 +943,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$local_cache_attached_ids[ $post_id ] = array();
 
-					/**
+					/*
 					 * Featured images are handled beforehand by WpssoMedia->get_featured().
 					 *
 					 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
@@ -980,7 +980,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $local_cache_attached_ids[ $post_id ] as $pid ) {
 
-					/**
+					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
 					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name );
@@ -998,7 +998,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id );
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $content = '' ) {
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 *
 			 * $mod = true | false | post_id | $mod array
@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_images = array();
 
-			/**
+			/*
 			 * Allow custom content to be passed as an argument in $content.
 			 */
 			if ( empty( $content ) ) {
@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$content_img_preg = $this->default_content_img_preg;
 			$mt_single_image  = SucomUtil::get_mt_image_seed();
 
-			/**
+			/*
 			 * Allow the html_tag and pid_attr regex to be modified.
 			 */
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * <img/> attributes in order of preference.
 			 */
 			if ( preg_match_all( '/<((' . $content_img_preg[ 'html_tag' ] . ')[^>]*? (' . $content_img_preg[ 'pid_attr' ] . ')=[\'"]([0-9]+)[\'"]|' .
@@ -1118,7 +1118,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					switch ( $attr_name ) {
 
-						/**
+						/*
 						 * WordPress media library image ID.
 						 */
 						case 'data-wp-pid':
@@ -1132,12 +1132,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
-						/**
+						/*
 						 * Check for other data attributes like 'data-ngg-pid'.
 						 */
 						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
-							/**
+							/*
 							 * Filter hook for third-party modules to return image information.
 							 */
 							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_content_' . $tag_name . '_' . $attr_name );
@@ -1162,12 +1162,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
-						/**
+						/*
 						 * data-share-src | data-lazy-src | data-src | src
 						 */
 						default:
 
-							/**
+							/*
 							 * Recognize gravatar images in the content.
 							 */
 							if ( preg_match( '/^https?:?\/\/[^\/]*gravatar\.com\/avatar\/([a-zA-Z0-9]+)/', $attr_value, $match ) ) {
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;	// Stop here.
 							}
 
-							/**
+							/*
 							 * Check for image ID in class for old content w/o the data-wp-pid attribute.
 							 */
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
@@ -1225,13 +1225,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$check_size_limits = true;
 							$img_within_limits = true;
 
-							/**
+							/*
 							 * Get the actual width and height of the image using http / https.
 							 */
 							if ( empty( $mt_single_image[ 'og:image:width' ] ) || $mt_single_image[ 'og:image:width' ] < 0 ||
 								empty( $mt_single_image[ 'og:image:height' ] ) || $mt_single_image[ 'og:image:height' ] < 0 ) {
 
-								/**
+								/*
 								 * Add correct image sizes for the image URL using getimagesize().
 								 *
 								 * Note that PHP v7.1 or better is required to get the image size of WebP images.
@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] );
 								}
 
-								/**
+								/*
 								 * No use checking / retrieving the image size twice.
 								 */
 								if ( WPSSO_UNDEF === $mt_single_image[ 'og:image:width' ] &&
@@ -1268,7 +1268,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										' (' . $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . ')' );
 								}
 
-								/**
+								/*
 								 * Check if image exceeds hard-coded limits (dimensions, ratio, etc.).
 								 */
 								$img_within_limits = $this->is_image_within_config_limits( $mt_single_image[ 'og:image:url' ],
@@ -1316,7 +1316,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_images;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function get_attachment_image( $num, $size_name, $attachment_id ) {
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( wp_attachment_is_image( $attachment_id ) ) {
 
-					/**
+					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
 					$mt_single_image = $this->get_mt_single_image_src( $attachment_id, $size_name );
@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * Return only the image URL, which will be the first array element returned by get_attachment_image_src().
 		 */
 		public function get_attachment_image_url( $pid, $size_name = 'thumbnail' ) {
@@ -1373,12 +1373,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return null;	// Return null if array is empty.
 		}
 
-		/**
+		/*
 		 * Note that that every return in this method must call self::reset_image_src_args().
 		 */
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail' ) {
 
-			/**
+			/*
 			 * Save arguments for the 'image_make_intermediate_size' and 'image_resize_dimensions' filters.
 			 */
 			self::set_image_src_args( $args = array(
@@ -1431,7 +1431,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_meta = wp_get_attachment_metadata( $pid );	// Returns a WP_Error object on failure.
 			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', $single = true );
 
-			/**
+			/*
 			 * Check to see if the full size image width / height matches the resize width / height we require.
 			 */
 			if ( is_array( $img_meta ) && isset( $img_meta[ 'file' ] ) && isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) ) {
@@ -1478,7 +1478,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$regen_url = 'https://wordpress.org/plugins/search/regenerate+thumbnails/';
 				$regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), $regen_url );
 
-				/**
+				/*
 				 * wp_get_attachment_metadata() returned a WP_Error object.
 				 */
 				if ( is_wp_error( $img_meta ) ) {
@@ -1501,7 +1501,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$img_meta = array();	// Avoid "cannot use object of type WP_Error as array" error.
 
-				/**
+				/*
 				 * Image dimensions are missing, but full size image path is present.
 				 */
 				} elseif ( isset( $img_meta[ 'file' ] ) ) {
@@ -1520,7 +1520,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 
-				/**
+				/*
 				 * Both the image dimensions and full size image path are missing.
 				 */
 				} else {
@@ -1541,7 +1541,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Only resize our own custom image sizes.
 			 */
 			if ( 0 === strpos( $size_name, 'wpsso-' ) ) {
@@ -1552,7 +1552,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$is_accurate_width    = false;
 					$is_accurate_height   = false;
 
-					/**
+					/*
 					 * Make sure the metadata contains complete image information for the requested size.
 					 */
 					if ( ! empty( $img_meta[ 'sizes' ][ $size_name ] ) &&
@@ -1560,7 +1560,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						! empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] )  &&
 						! empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ) {
 
-						/**
+						/*
 						 * By default, WordPress adds only the resolution of the resized image to the file
 						 * name. If the image size is ours, then add crop information to the file name as
 						 * well. This allows for different cropped versions for the same image resolution.
@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$is_accurate_width    = $size_info[ 'width' ] === $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ? true : false;
 						$is_accurate_height   = $size_info[ 'height' ] === $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ? true : false;
 
-						/**
+						/*
 						 * If not cropped, make sure the resized image respects the original aspect ratio.
 						 */
 						if ( ! $size_info[ 'is_cropped' ] ) {
@@ -1592,7 +1592,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								$should_be = (int) round( $img_meta[ $check ] / $ratio );
 
-								/**
+								/*
 								 * Allow for a +/- one pixel difference.
 								 */
 								if ( $img_meta[ 'sizes' ][ $size_name ][ $check ] < ( $should_be - 1 ) ||
@@ -1610,7 +1610,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Depending on cropping, one or both sides of the image must be accurate. If the image is
 					 * not accurate, then attempt to create a resized image by calling
 					 * image_make_intermediate_size().
@@ -1632,7 +1632,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->debug->log( 'calling image_make_intermediate_size()' );
 							}
 
-							/**
+							/*
 							 * image_make_intermediate_size() resizes an image to make a thumbnail or
 							 * intermediate size. Returns (array|false) metadata array on success,
 							 * false if no image was created.
@@ -1680,12 +1680,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 							}
 
-							/**
+							/*
 							 * Returns (array|false) metadata array on success, false if no image was created.
 							 */
 							if ( false === $resized_meta ) {
 
-								/**
+								/*
 								 * Add notice only if the admin notices have not already been shown.
 								 */
 								if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -1745,7 +1745,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Some image_downsize hooks may return only 3 elements, so use array_pad() to sanitize the returned array.
 			 */
 			$img_downsize = array_pad( image_downsize( $pid, ( $use_full_size ? 'full' : $size_name ) ), 4, null );
@@ -1772,7 +1772,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_args();
 			}
 
-			/**
+			/*
 			 * Check if image exceeds hard-coded limits (dimensions, ratio, etc.).
 			 */
 			$img_within_limits = $this->is_image_within_config_limits( $pid, $size_name, $img_width, $img_height );
@@ -1794,7 +1794,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return self::reset_image_src_args();
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
 		public function get_default_images( $size_names = 'thumbnail' ) {
@@ -1807,7 +1807,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_pre = 'og_def_img', $key_num = null, $mt_pre = 'og' );
 		}
 
-		/**
+		/*
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 *
 		 * $md_pre may be 'none' when getting Open Graph option defaults (and not their custom values).
@@ -1841,7 +1841,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					case 'pid':
 					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
 
-						/**
+						/*
 						 * Get images only once.
 						 */
 						if ( null === $mt_images ) {
@@ -1853,7 +1853,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
 
-						/**
+						/*
 						 * Get videos only once.
 						 */
 						if ( null === $mt_videos ) {
@@ -1975,7 +1975,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $media_info;
 		}
 
-		/**
+		/*
 		 * To get the first image ID or media URL, use the following methods instead:
 		 *
 		 * SucomUtil::get_first_og_image_id()
@@ -1997,7 +1997,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			switch ( $mt_media_pre ) {
 
-				/**
+				/*
 				 * If we're asking for an image or video url, then search all three values sequentially.
 				 */
 				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $mt_media_pre ) ? true : false ):
@@ -2010,7 +2010,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Otherwise, only search for that specific meta tag name.
 				 */
 				default:
@@ -2049,7 +2049,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return '';
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
 		public function get_mt_pid_images( $pid, $size_names = 'thumbnail', $mt_pre = 'og' ) {
@@ -2069,7 +2069,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			foreach ( $size_names as $size_name ) {
 
-				/**
+				/*
 				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 				 */
 				$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $mt_pre );
@@ -2083,7 +2083,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 		 *
 		 * $size_name must be a string.
@@ -2097,7 +2097,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_single_image;
 		}
 
-		/**
+		/*
 		 * $size_name must be a string.
 		 */
 		public function add_mt_single_image_src( array &$mt_single_image, $pid, $size_name = 'thumbnail', $mt_pre = 'og' ) {
@@ -2160,7 +2160,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
-			/**
+			/*
 			 * $size_name is false to ignore image IDs and only use image URLs.
 			 */
 			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num, $mt_pre );
@@ -2168,7 +2168,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
 		}
 
-		/**
+		/*
 		 * Returns an array of single video associative arrays.
 		 */
 		public function get_content_videos( $num = 0, $mod = true, $content = '' ) {
@@ -2182,7 +2182,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 *
 			 * $mod = true | false | post_id | $mod array
@@ -2199,7 +2199,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_videos = array();
 
-			/**
+			/*
 			 * Allow custom content to be passed as an argument in $content.
 			 */
 			if ( empty( $content ) ) {
@@ -2223,7 +2223,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $mt_videos;
 			}
 
-			/**
+			/*
 			 * Detect standard video tags.
 			 *
 			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
@@ -2270,7 +2270,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get video details for standard video tags.
 			 *
 			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
@@ -2296,7 +2296,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
 							);
 
-							/**
+							/*
 							 * Returns a single video associative array.
 							 */
 							$mt_single_video = $this->get_video_details( $args, $mod );
@@ -2313,7 +2313,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Filters / modules may detect additional embedded video markup.
 			 */
 			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
@@ -2342,7 +2342,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
 
-									/**
+									/*
 									 * Returns a single video associative array.
 									 */
 									$mt_single_video = $this->get_video_details( $args, $mod );
@@ -2377,7 +2377,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_videos;
 		}
 
-		/**
+		/*
 		 * Returns a single video associative array.
 		 *
 		 * $fallback = true when called from WpssoAbstractWpMeta->get_og_videos().
@@ -2394,7 +2394,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			/**
+			/*
 			 * Make sure we have all array keys defined.
 			 */
 			$args = array_merge( array(
@@ -2407,7 +2407,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'api'      => '',
 			), $args );
 
-			/**
+			/*
 			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideo'.
 			 */
 			$filter_name = 'wpsso_video_details';	// No need to sanitize.
@@ -2422,7 +2422,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			/**
+			/*
 			 * Create and filter an associative array of video details.
 			 */
 			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
@@ -2450,7 +2450,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Sanitation of media.
 			 */
 			foreach ( array( 'og:video', 'og:image' ) as $mt_media_pre ) {
@@ -2459,7 +2459,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( 'og:video' === $mt_media_pre ) {
 
-					/**
+					/*
 					 * Fallback to the original video url.
 					 */
 					if ( empty( $media_url ) && $fallback ) {
@@ -2474,7 +2474,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$media_url = $mt_single_video[ 'og:video:url' ] = $args[ 'url' ];
 					}
 
-					/**
+					/*
 					 * Check for an empty mime_type.
 					 */
 					if ( empty( $mt_single_video[ 'og:video:type' ] ) ) {
@@ -2484,7 +2484,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'og:video:type is empty - using URL to determine the mime-type' );
 						}
 
-						/**
+						/*
 						 * Check for filename extension, slash, or common words (in that order), followed
 						 * by an optional query string (which is ignored).
 						 */
@@ -2583,7 +2583,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$have_media[ $mt_media_pre ] = empty( $media_url ) ? false : true;
 
-				/**
+				/*
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
 				if ( empty( $have_media[ $mt_media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
@@ -2598,7 +2598,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						unset ( $mt_single_video[ $k ] );
 					}
 
-				/**
+				/*
 				 * If the media is an image, then check and maybe add missing sizes.
 				 */
 				} elseif ( 'og:image' === $mt_media_pre ) {
@@ -2606,7 +2606,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( empty( $mt_single_video[ 'og:image:width' ] ) || $mt_single_video[ 'og:image:width' ] < 0 ||
 						empty( $mt_single_video[ 'og:image:height' ] ) || $mt_single_video[ 'og:image:height' ] < 0 ) {
 
-						/**
+						/*
 						 * Add correct image sizes for the image URL using getimagesize().
 						 *
 						 * Note that PHP v7.1 or better is required to get the image size of WebP images.
@@ -2627,7 +2627,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If there's no video or preview image, then return an empty array.
 			 */
 			if ( ! $have_media[ 'og:video' ] && ! $have_media[ 'og:image' ] ) {
@@ -2649,7 +2649,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_single_video;
 		}
 
-		/**
+		/*
 		 * Modifies a single video associative array.
 		 */
 		public function add_og_video_from_url( array &$mt_single_video, $url, $throttle_secs = 0 ) {
@@ -2659,7 +2659,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Use the Facebook user agent to get Open Graph meta tags.
 			 *
 			 * get_html_head_meta( $request, $query, $libxml_errors, $curl_opts )
@@ -2670,7 +2670,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts, $throttle_secs );
 
-			/**
+			/*
 			 * Array
 			 * (
 			 *     [meta] => Array
@@ -3133,7 +3133,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						switch ( $meta_match ) {
 
-							/**
+							/*
 							 * Use the property meta tag content as-is.
 							 */
 							case 'property-og:video:width':
@@ -3145,7 +3145,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								break;
 
-							/**
+							/*
 							 * Add the property meta tag content as an array.
 							 */
 							case 'property-og:video:tag':
@@ -3158,7 +3158,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'property-og:image:url':
 							case 'property-og:image':
 
-								/**
+								/*
 								 * Add the meta name as a query string to know where the value came from.
 								 */
 								$content = add_query_arg( 'meta', $meta_name, $content );
@@ -3182,7 +3182,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								break;
 
-							/**
+							/*
 							 * Add additional, non-standard properties, like og:video:title and og:video:description.
 							 */
 							case 'property-og:title':
@@ -3204,7 +3204,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								break;
 
-							/**
+							/*
 							 * twitter:app:name:iphone
 							 * twitter:app:id:iphone
 							 * twitter:app:url:iphone
@@ -3252,7 +3252,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * $img_mixed can be an image ID or URL.
 		 *
 		 * $img_lib can be 'Media Library', 'Content', etc.
@@ -3295,7 +3295,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_label = sprintf( __( 'image URL %s', 'wpsso' ), $img_mixed );
 			}
 
-			/**
+			/*
 			 * Exit silently if the image width and/or height is not valid.
 			 */
 			if ( WPSSO_UNDEF === $img_width || WPSSO_UNDEF === $img_height ) {
@@ -3322,7 +3322,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$min_height = isset( $cf_min[ $opt_pre . '_img_height' ] ) ? $cf_min[ $opt_pre . '_img_height' ] : 0;
 			$max_ratio  = isset( $cf_max[ $opt_pre . '_img_ratio' ] ) ? $cf_max[ $opt_pre . '_img_ratio' ] : 0;
 
-			/**
+			/*
 			 * Check the maximum image aspect ratio.
 			 */
 			if ( $max_ratio && $img_ratio > $max_ratio ) {
@@ -3333,7 +3333,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$img_width . 'x' . $img_height . ' aspect ratio is equal to/or greater than ' . $max_ratio . ':1' );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 *
 				 * An is_admin() test is required to make sure the WpssoMessages class is available.
@@ -3342,7 +3342,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
-		 			/**
+		 			/*
 					 * $img_lib can be 'Media Library', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
@@ -3357,7 +3357,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return false;	// Image rejected.
 			}
 
-			/**
+			/*
 			 * Check the minimum image width and/or height.
 			 */
 			if ( ( $min_width > 0 || $min_height > 0 ) && ( $img_width < $min_width || $img_height < $min_height ) ) {
@@ -3368,7 +3368,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$img_width . 'x' . $img_height . ' smaller than minimum ' . $min_width . 'x' . $min_height . ' for ' . $size_name );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 *
 				 * An is_admin() test is required to make sure the WpssoMessages class is available.
@@ -3377,7 +3377,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
-		 			/**
+		 			/*
 					 * $img_lib can be 'Media Library', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
@@ -3444,7 +3444,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $ret;
 		}
 
-		/**
+		/*
 		 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
 		 */
 		public function can_rename_image_filename( $size_name, $attachment_id ) {
@@ -3526,7 +3526,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $img_size;
 		}
 
-		/**
+		/*
 		 * Use these static methods set / reset information about the image being processed for down-stream filters /
 		 * methods lacking this information.
 		 */

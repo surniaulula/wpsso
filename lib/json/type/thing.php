@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * Common filter for all Schema types.
 		 *
 		 * Adds the url, name, description, and if true, the main entity property.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 			$json_ret      = WpssoSchema::get_schema_type_context( $page_type_url );
 
-			/**
+			/*
 			 * See https://schema.org/additionalType.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			$json_ret[ 'additionalType' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_additionaltype',
 				$json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
 
-			/**
+			/*
 			 * See https://schema.org/url.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$json_ret[ 'url' ] = $this->p->util->get_canonical_url( $mod );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/sameAs.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-					/**
+					/*
 					 * Add the permalink, which may be different than the shared URL and the canonical URL.
 					 */
 					$permalink = get_permalink( $mod[ 'id' ] );
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 					$json_ret[ 'sameAs' ][] = $permalink;
 
-					/**
+					/*
 					 * Add the shortlink / short URL, but only if the link rel shortlink tag is enabled.
 					 */
 					$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 						$json_ret[ 'sameAs' ][] = $shortlink;
 
-						/**
+						/*
 						 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter
 						 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the
 						 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme
@@ -174,12 +174,12 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Add the shortened URL for posts (which may be different to the shortlink), terms, and users.
 				 */
 				if ( ! empty( $mt_og[ 'og:url' ] ) ) {	// Just in case.
 
-					/**
+					/*
 					 * Shorten URL using the selected shortening service.
 					 */
 					$short_url = $this->p->util->shorten_url( $mt_og[ 'og:url' ], $mod );
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get additional sameAs URLs from the post/term/user custom meta.
 			 */
 			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$this->p->debug->log_arr( 'sameAs', $json_ret[ 'sameAs' ] );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/name.
 			 * See https://schema.org/alternateName.
 			 */
@@ -255,12 +255,12 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				unset( $json_ret[ 'alternateName' ] );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/description.
 			 */
 			$json_ret[ 'description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
-			/**
+			/*
 			 * See https://schema.org/potentialAction.
 			 */
 			$json_ret[ 'potentialAction' ] = array();
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			$json_ret[ 'potentialAction' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_potentialaction',
 				$json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );
 
-			/**
+			/*
 			 * Get additional Schema properties from the optional post content shortcode.
 			 */
 			if ( $this->p->debug->enabled ) {

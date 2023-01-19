@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			return $md_defs;
 		}
 
-		/**
+		/*
 		 * Disable options where the reference value is the e-commerce plugin.
 		 */
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 
 			$prod = $this->get_product_details( $mod );
 
-			/**
+			/*
 			 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
 			 */
 			$mt_ecom = SucomUtil::get_mt_product_seed( 'product', array( 'og:type' => 'product' ) );
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			$mt_ecom[ 'product:price:amount' ]     = $prod[ 'price' ];
 			$mt_ecom[ 'product:price:currency' ]   = $prod[ 'currency' ];
 
-			/**
+			/*
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.
 			 *
 			 * get_the_terms() returns an array of WP_Term objects, false if there are no terms (or the post does not

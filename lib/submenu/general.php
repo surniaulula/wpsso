@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext  = $ext;
 		}
 
-		/**
+		/*
 		 * Called by the extended WpssoAdmin class.
 		 */
 		protected function add_meta_boxes() {
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 
-			/**
+			/*
 			 * General Settings metabox.
 			 */
 			$metabox_id      = 'og';
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			/**
+			/*
 			 * Social and Search Sites metabox.
 			 */
 			$metabox_id      = 'pub';
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			/**
+			/*
 			 * Social and Search Sites metabox.
 			 */
 			$metabox_id      = 'social_pages';
@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
 					$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
-					/**
+					/*
 					 * Google and Schema settings.
 					 */
 					$table_rows[ 'g_site_verify' ] = '' .
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'g_site_verify' ) .
 						'<td>' . $this->form->get_input( 'g_site_verify', $css_class = 'api_key' ) . '</td>';
 
-					/**
+					/*
 					 * Schema settings.
 					 */
 					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'schema_add_text_prop' ) .
 						'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
 
-					/**
+					/*
 					 * Robots settings.
 					 */
 					$robots_disabled = $this->p->util->robots->is_disabled();

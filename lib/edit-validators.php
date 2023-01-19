@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2020-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoEditValidators' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(

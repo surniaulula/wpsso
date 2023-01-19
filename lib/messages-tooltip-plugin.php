@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
 	 */
 	class WpssoMessagesTooltipPlugin extends WpssoMessages {
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 			switch ( $msg_key ) {
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Plugin Admin tab.
 				 */
 				case 'tooltip-plugin_clean_on_uninstall':	// Remove Settings on Uninstall.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Integration tab.
 				 */
 				case 'tooltip-plugin_title_tag':	// Webpage Title Tag.
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Integration tab (Plugin and Theme Integration section).
 				 */
 				case 'tooltip-plugin_speakable_css_csv':	// Speakable CSS Selectors.
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Default Text tab.
 				 */
 				case 'tooltip-plugin_title_part_site':	// Title Tag Site Prefix / Suffix.
@@ -398,7 +398,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Default Text tab (Archive Pages section).
 				 */
 				case 'tooltip-plugin_term_page_title':	// Term Archive Title.
@@ -509,7 +509,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Plugin Settings > Interface tab.
 				 */
 				case 'tooltip-plugin_show_opts': 		// Options to Show by Default.
@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Service APIs > Media Services tab.
 				 */
 				case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
@@ -600,7 +600,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Service APIs > Shortening Services tab.
 				 */
 				case 'tooltip-plugin_shortener':	// URL Shortening Service.
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Service APIs > Ratings and Reviews tab.
 				 */
 				case 'tooltip-plugin_ratings_reviews_svc':	// Ratings and Reviews Service.
@@ -744,7 +744,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Attributes and Metadata > Product Attributes tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
@@ -788,7 +788,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Attributes and Metadata > Custom Fields tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):

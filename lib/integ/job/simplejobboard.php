@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoIntegJobSimpleJobBoard' ) ) {
 
 				$local_cache[ $post_id ] = array();
 
-				/**
+				/*
 				 * Get the default schema type (job.posting by default).
 				 */
 				$local_cache[ $post_id ][ 'schema_type' ] = $wpsso->options[ 'schema_type_for_jobpost' ];
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoIntegJobSimpleJobBoard' ) ) {
 
 						if ( ! empty( $term_obj->name ) ) {	// Just in case.
 
-				 			/**
+				 			/*
 							 * Google approved values (case sensitive):
 							 *
 							 * 	FULL_TIME

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] as $sub_dir => $libs ) {
 
-				/**
+				/*
 				 * Skip loading admin modules if not in admin back-end.
 				 */
 				if ( 'admin' === $sub_dir && ! $is_admin ) {
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . '/' . $id . ': ';
 
-					/**
+					/*
 					 * Loading of admin modules in back-end is always allowed.
 					 */
 					if ( 'admin' === $sub_dir && $is_admin ) {
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						$this->p->avail[ $sub_dir ][ 'any' ] = $this->p->avail[ $sub_dir ][ $id ] = true;
 					}
 
-					/**
+					/*
 					 * Check if the dependent resource (active plugin or enabled option) is available.
 					 */
 					if ( ! empty( $this->p->avail[ $sub_dir ][ $id ] ) ) {
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 							} elseif ( class_exists( $classname ) ) {
 
-								/**
+								/*
 								 * Loaded module objects from core plugin.
 								 */
 								if ( $ext === $this->p->id ) {
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										$this->p->debug->log( $log_prefix . 'library module already defined' );
 									}
 
-								/**
+								/*
 								 * Loaded module objects from extensions / add-ons.
 								 */
 								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub_dir ][ $id ] ) ) {

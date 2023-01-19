@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 			$post_id    = $mod[ 'id' ];
 			$person_url = get_permalink( $post_id );
 
-			/**
+			/*
 			 * Set reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 				'person_images' => $this->p->media->get_all_images( $num = 1, $size_names = 'schema', $mod, $md_pre = array( 'schema', 'og' ) ),
 			);
 
-			/**
+			/*
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 			$post_id   = $mod[ 'id' ];
 			$place_url = get_permalink( $post_id );
 
-			/**
+			/*
 			 * Set reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {

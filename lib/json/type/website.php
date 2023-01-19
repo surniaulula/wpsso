@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebsite' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebsite' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Potential Action (SearchAction, OrderAction, etc.) for Google's Sitelinks search box.
 			 *
 			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 
 				if ( isset( $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) ) {
 
-					/**
+					/*
 					 * The $prop_name value may change, so remove and then re-add the custom field value.
 					 */
 					if ( self::$meta_name === $this->p->options[ 'plugin_cf_' . $opt_suffix ] ) {
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Product attributes are read using the 'wpsso_product_attributes' filter.
 				 *
 				 * Make sure the GTIN product attribute is not read, which would overwrite our custom field value.
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 				$this->p->options[ 'plugin_attr_' . $opt_suffix . ':disabled' ] = true;
 			}
 
-			/**
+			/*
 			 * Add the custom field value.
 			 */
 			if ( isset( self::$prop_names[ $prop_name ] ) ) {	// Just in case.

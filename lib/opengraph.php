@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Instantiate the WpssoOpenGraphNS class object.
 			 */
 			if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( is_admin() ) {	// Keep processing on the front-end to a minimum.
 
-				/**
+				/*
 				 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and
 				 * the Schema type, check for a possible hard-coded Open Graph type.
 				 */
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.13.0.
 		 *
 		 * Returns the open graph type id.
@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $this->get_mod_og_type( $mod, $get_id = true, $use_md_opts );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.13.0.
 		 *
 		 * Returns the open graph namespace.
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $this->get_mod_og_type( $mod, $get_id = false, $use_md_opts );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v4.10.0.
 		 *
 		 * Returns the open graph type id by default.
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$cache_salt = false;
 
-			/**
+			/*
 			 * Archive pages can call this method several times.
 			 *
 			 * Optimize and cache post/term/user og type values.
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$type_id    = null;
 			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
-			/**
+			/*
 			 * Maybe get a custom open graph type id from the post, term, or user meta.
 			 */
 			if ( $use_md_opts ) {
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! $is_custom ) {	// No custom open graph type id from the post, term, or user meta.
 
-				/**
+				/*
 				 * Similar module type logic can be found in the following methods:
 				 *
 				 * See WpssoOpenGraph->get_mod_og_type().
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$get_value = $type_id;
 			}
 
-			/**
+			/*
 			 * Optimize and cache post/term/user og type values.
 			 */
 			if ( $cache_salt ) {
@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $get_value;
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 *
 		 * $size_name is passed as-is to WpssoMedia->get_all_images().
@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$max_nums = $this->p->util->get_max_nums( $mod );
 
-			/**
+			/*
 			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
 			 */
 			$mt_og = (array) apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log_arr( 'og_seed', $mt_og );
 			}
 
-			/**
+			/*
 			 * Facebook app id meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {
@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og[ 'fb:app_id' ] = $this->p->options[ 'fb_app_id' ];
 			}
 
-			/**
+			/*
 			 * Type id meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:type' ] ) ) {
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$type_id = $mt_og[ 'og:type' ];
 
-			/**
+			/*
 			 * URL meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:url' ] ) ) {
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:url already defined = ' . $mt_og[ 'og:url' ] );
 			}
 
-			/**
+			/*
 			 * Redirect URL meta tag (non-standard / internal meta tag).
 			 */
 			if ( $this->p->util->is_redirect_enabled() ) {
@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og[ 'og:redirect_url' ] = $this->p->util->get_redirect_url( $mod );
 			}
 
-			/**
+			/*
 			 * Locale meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:locale' ] ) ) {
@@ -399,7 +399,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:locale already defined = ' . $mt_og[ 'og:locale' ] );
 			}
 
-			/**
+			/*
 			 * Site name meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:site_name' ] ) ) {
@@ -416,7 +416,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:site_name already defined = ' . $mt_og[ 'og:site_name' ] );
 			}
 
-			/**
+			/*
 			 * Title meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:title' ] ) ) {
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:title already defined = ' . $mt_og[ 'og:title' ] );
 			}
 
-			/**
+			/*
 			 * Description meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:description' ] ) ) {
@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:description already defined = ' . $mt_og[ 'og:description' ] );
 			}
 
-			/**
+			/*
 			 * Updated date / time meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get all videos.
 			 *
 			 * Call before getting all images to find / use preview images.
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get all images.
 			 */
 			if ( ! isset( $mt_og[ 'og:image' ] ) ) {
@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag has an associated meta
 			 * option name, then read it's value from the meta options.
 			 */
@@ -577,12 +577,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
 
-			/**
+			/*
 			 * An array of Open Graph types, their meta tags, and their associated metadata keys.
 			 */
 			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is known.
 
-				/**
+				/*
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
@@ -591,13 +591,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} else $md_opts = array();
 
-				/**
+				/*
 				 * Add post/term/user meta data to the Open Graph meta tags.
 				 */
 				$this->add_data_og_type_md( $mt_og, $type_id, $md_opts );
 			}
 
-			/**
+			/*
 			 * If the module is a post object, define the author, publishing date, etc. These values may still be used
 			 * by other non-article filters, and if the og:type is not an article, the meta tags will be sanitized (ie.
 			 * non-valid meta tags removed) at the end of WpssoHead::get_head_array().
@@ -816,14 +816,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $select;
 		}
 
-		/**
+		/*
 		 * Returns an optional and customized locale value for the og:locale meta tag.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_fb_locale( array $opts, $mixed = 'current' ) {
 
-			/**
+			/*
 			 * Check for customized locale.
 			 */
 			if ( ! empty( $opts ) ) {
@@ -841,7 +841,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get the locale requested in $mixed.
 			 *
 			 * $mixed = 'default' | 'current' | post ID | $mod array
@@ -858,7 +858,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $locale;
 			}
 
-			/**
+			/*
 			 * Fix known exceptions.
 			 */
 			switch ( $locale ) {
@@ -870,7 +870,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					break;
 			}
 
-			/**
+			/*
 			 * Return the Facebook equivalent for this WordPress locale.
 			 */
 			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
@@ -886,7 +886,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			}
 
-			/**
+			/*
 			 * Fallback to the default WordPress locale.
 			 */
 			$def_locale  = SucomUtil::get_locale( 'default' );
@@ -902,7 +902,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			}
 
-			/**
+			/*
 			 * Fallback to en_US.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return 'en_US';
 		}
 
-		/**
+		/*
 		 * Returns a string.
 		 *
 		 * Used for the 'product:retailer_category' meta tag value.
@@ -925,19 +925,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return isset( $retailer_categories[ 0 ] ) ? $retailer_categories[ 0 ] : '';
 		}
 
-		/**
+		/*
 		 * Returns an array of strings.
 		 */
 		public function get_product_retailer_categories( $mod, $lists_max = 1 ) {
 
-			/**
+			/*
 			 * Returns an associative array of term IDs and their names or objects.
 			 *
 			 * If the custom primary or default term ID exists in the post terms array, it will be moved to the top.
 			 */
 			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'objects' );
 
-			/**
+			/*
 			 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
 			 */
 			$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
@@ -965,7 +965,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$term_mod = $this->p->term->get_mod( $term_id );
 
-					/**
+					/*
 					 * Use $title_sep = false to avoid adding term parent names in the term title.
 					 *
 					 * $md_key = 'schema_title_bc' will use array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' )
@@ -990,7 +990,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $retailer_categories;
 		}
 
-		/**
+		/*
 		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Array of meta tags to allow, reject, and map.
 			 */
 			static $og_allow    = null;
@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( null === $og_allow ) {	// Define the static variables once.
 
-				/**
+				/*
 				 * The og:type is only needed when first run, to define the allow, reject, and map arrays.
 				 */
 				if ( empty( $mt_og[ 'og:type' ] ) ) {
@@ -1035,12 +1035,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_reject   = array();
 				$content_map = array();
 
-				/**
+				/*
 				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
 				 */
 				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
 
-					/**
+					/*
 					 * An array of meta tags and their associated metadata keys.
 					 */
 					foreach ( $og_type_mt_md as $mt_name => $md_key ) {
@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$og_allow[ $mt_name ] = true;	// Mark meta tag as allowed.
 
-							/**
+							/*
 							 * If we have a content map for the meta tag, save the content mapping array.
 							 *
 							 * 'product:availability' => array(
@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							 */
 							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ] ) ) {
 
-								/**
+								/*
 								 * Save the content mapping array.
 								 */
 								$content_map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
@@ -1081,12 +1081,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
 
-						/**
+						/*
 						 * Allow only a single brand value for the main product.
 						 */
 						unset ( $offer[ 'product:brand' ] );
 
-						/**
+						/*
 						 * Avoid duplicate values (like prices) between the main product and its offers.
 						 */
 						foreach ( $offer as $mt_name => $mt_value ) {
@@ -1100,14 +1100,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Check the meta tag names and their values.
 			 */
 			foreach ( $mt_og as $key => $val ) {
 
 				if ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
 
-					/**
+					/*
 					 * If we have a matching value in the content map, then assign the mapped value.
 					 *
 					 * 'https://schema.org/BackOrder' to 'available for order' for example.
@@ -1140,7 +1140,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_og;
 		}
 
-		/**
+		/*
 		 * Add post/term/user meta data to the Open Graph meta tags.
 		 */
 		public function add_data_og_type_md( array &$mt_og, $type_id, array $md_opts ) {	// Pass by reference is OK.
@@ -1150,7 +1150,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log_arr( 'mt_og', $mt_og );
 			}
 
-			/**
+			/*
 			 * An array of Open Graph types, their meta tags, and their associated metadata keys.
 			 */
 			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.
@@ -1239,7 +1239,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Check for a default value from the settings.
 		 *
 		 * Open Graph defaults have an 'og_def_' prefix, except for 'product_currency'.
@@ -1271,7 +1271,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function add_data_og_type_md_values( array &$values, $type_id, array $md_opts, $mt_name, $md_key ) {	// Pass by reference is OK.
 
-			/**
+			/*
 			 * Use a custom value if one is available.
 			 */
 			if ( empty( $md_key ) || ! isset( $md_opts[ $md_key ] ) || '' === $md_opts[ $md_key ] ) {
@@ -1279,7 +1279,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return false;
 			}
 
-			/**
+			/*
 			 * Check for meta tags that require a unit value and may need to be converted.
 			 */
 			if ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
@@ -1291,12 +1291,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$values[ $mt_name ] = $md_opts[ $md_key ];
 
-				/**
+				/*
 				 * Check if the value meta tag needs a units meta tag.
 				 */
 				$mt_units_name = $mt_match[ 1 ] . ':units';
 
-				/**
+				/*
 				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
 				 */
 				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
@@ -1317,7 +1317,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$values[ $mt_units_name ] = $md_opts[ $md_units_key ];
 					}
 
-					/**
+					/*
 					 * Since WPSSO Core v14.0.0.
 					 *
 					 * Check if we need to convert the value.
@@ -1338,7 +1338,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
-			/**
+			/*
 			 * Do not define units by themselves - define the units meta tag when we define the value.
 			 */
 			} elseif ( false !== strpos( $mt_name, ':units' ) ) {
@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * If we have a GTIN number, try to improve the assigned property name.
 		 *
 		 * Pass $mt_og by reference to modify the array directly.
@@ -1376,7 +1376,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! empty( $mt_og[ $mt_pre . ':gtin' ] ) ) {
 
-				/**
+				/*
 				 * The value may come from a custom field, so trim it, just in case.
 				 */
 				$mt_og[ $mt_pre . ':gtin' ] = trim( $mt_og[ $mt_pre . ':gtin' ] );
@@ -1474,7 +1474,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and the Schema type,
 		 * check for a possible hard-coded Open Graph type.
 		 */
@@ -1487,7 +1487,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( empty( $md_opts[ 'og_type:disabled' ] ) ) {	// Just in case.
 
-				/**
+				/*
 				 * Check if the post type matches a pre-defined Open Graph type.
 				 *
 				 * For example, a post type of 'organization' would return 'website' for the Open Graph type.
@@ -1502,7 +1502,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Use the saved Schema type or get the default Schema type.
 					 */
 					if ( isset( $md_opts[ 'schema_type' ] ) ) {
@@ -1514,7 +1514,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 					}
 
-					/**
+					/*
 					 * Check if the Schema type matches a pre-defined Open Graph type.
 					 */
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
@@ -1529,7 +1529,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/22.
 		 */
 		public function get_all_previews( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
@@ -1539,7 +1539,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $this->p->media->get_all_previews( $num, $mod, $md_pre, $force_prev );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/22.
 		 */
 		public function get_all_videos( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
@@ -1549,7 +1549,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $this->p->media->get_all_videos( $num, $mod, $md_pre, $force_prev );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/22.
 		 */
 		public function get_all_images( $num, $size_names, array $mod, $check_dupes = true, $md_pre = 'og' ) {
@@ -1559,7 +1559,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $this->p->media->get_all_images( $num, $size_names, $mod, $md_pre );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/02/22.
 		 */
 		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {

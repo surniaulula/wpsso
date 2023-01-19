@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 		private $p;	// Wpsso class object.
 		private $u;	// WpssoUtil class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin, &$util ) {
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Example filter name: wpsso_import_block_attrs_yoast_how_to_block
 				 */
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_block_attrs_' . $block[ 'blockName' ] );

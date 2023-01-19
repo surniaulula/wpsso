@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-				/**
+				/*
 				 * Compatibility check for the WPSSO JSON Premium add-on.
 				 */
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'schema_book_isbn', $css_class = '', $css_id = '', $holder = true ),
 				),
 
-				/**
+				/*
 				 * Schema CreativeWork > Book > Audiobook.
 				 */
 				'subsection_schema_audiobook' => array(
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value(),
 				),
 
-				/**
+				/*
 				 * Schema Review Subject Information.
 				 *
 				 * Note that although the Schema standard allows the subject of a review to be any Schema type,
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', '', $repeat = 2 ),
 				),
 
-				/**
+				/*
 				 * Schema Review Subject: Creative Work.
 				 */
 				'schema_review_item_cw_author_type' => array(
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_date_time_tz( 'schema_review_item_cw_created' ),
 				),
 
-				/**
+				/*
 				 * Schema Creative Work > Review > Claim Review.
 				 */
 				'subsection_schema_claim_review' => array(
@@ -902,7 +902,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
 			$weight_units       = WpssoUtilUnits::get_weight_units();
 
-			/**
+			/*
 			 * Note that unlike most schema option names, product options start with 'product_' and not 'schema_'.
 			 */
 			$form_rows = array(

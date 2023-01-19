@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return $local_cache[ $mixed_key ] = '';
 		}
 
-		/**
+		/*
 		 * Dimensions.
 		 *
 		 * See https://support.google.com/merchants/answer/11018531.
@@ -177,7 +177,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
 		}
 
-		/**
+		/*
 		 * See wc_get_dimension() from woocommerce/includes/wc-formatting-functions.php.
 		 */
 		public static function get_dimension_units() {
@@ -208,12 +208,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 
 			if ( $from !== $to ) {	// Just in case.
 
-				/**
+				/*
 				 * Convert dimension to cm first.
 				 */
 				switch ( $from ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'mm':	$value *= 0.1; break;		// Millimeter to Centimeter.
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'm':	$value *= 100; break;		// Meter to Centimeter.
 					case 'km':	$value *= 100000; break;	// Kilometer to Centimeter.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'in':	$value *= 2.54; break;		// Inch to Centimeter.
@@ -230,12 +230,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'mi':	$value *= 160934.4; break;	// Mile to Centimeter.
 				}
 
-				/**
+				/*
 				 * Convert dimension from cm to desired output.
 				 */
 				switch ( $to ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'mm':	$value *= 10; break;		// Centimeter to Millimeter.
@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'm':	$value *= 0.01; break; 		// Centimeter to Meter.
 					case 'km':	$value *= 0.00001; break;	// Centimeter to Kilometer.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'in':	$value *= 0.3937007874; break;		// Centimeter to Inch.
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return ( $value < 0 ) ? 0 : $value;
 		}
 
-		/**
+		/*
 		 * Fluid volumes.
 		 */
 		public static function get_fluid_volume_text() {
@@ -306,12 +306,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 
 			if ( $from !== $to ) {	// Just in case.
 
-				/**
+				/*
 				 * Convert volume to ml first.
 				 */
 				switch ( $from ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'ml':	$value *= 1; break; 		// Millilitre to Millilitre.
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'l':	$value *= 1000; break; 		// Liter to Millilitre.
 					case 'kl':	$value *= 1000000; break;	// Kiloliter to Millilitre.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'US tsp':		$value *= 4.92892; break;	// US teaspoon to Millilitre.
@@ -331,12 +331,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'US gal':		$value *= 3785.41; break;	// US gallon to Millilitre.
 				}
 
-				/**
+				/*
 				 * Convert volume from ml to desired output.
 				 */
 				switch ( $to ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'ml':	$value *= 1; break; 		// Millilitre to Millilitre.
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'l':	$value *= 0.001; break; 	// Millilitre to Liter.
 					case 'kl':	$value *= 0.000001; break;	// Millilitre to Kiloliter.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'US tsp':		$value *= 0.202884; break; 	// Millilitre to US teaspoon.
@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return ( $value < 0 ) ? 0 : $value;
 		}
 
-		/**
+		/*
 		 * Weight.
 		 *
 		 * See https://support.google.com/merchants/answer/11018531.
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			return isset( $units[ $key ] ) ? $units[ $key ] : '';
 		}
 
-		/**
+		/*
 		 * See wc_get_weight() from woocommerce/includes/wc-formatting-functions.php.
 		 */
 		public static function get_weight_units() {
@@ -418,12 +418,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 
 			if ( $from !== $to ) {
 
-				/**
+				/*
 				 * Convert weight to kg first.
 				 */
 				switch ( $from ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'mg':	$value *= 0.000001; break;	// Milligram to Kilogram.
@@ -431,7 +431,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'kg':	$value *= 1; break;		// Kilogram to Kilogram.
 					case 't':	$value *= 1000; break;		// Metric Ton to Kilogram.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'oz':	$value *= 0.02834952; break;	// Ounce to Kilogram.
@@ -439,12 +439,12 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'st':	$value *= 6.350293; break;	// Stone to Kilogram.
 				}
 
-				/**
+				/*
 				 * Convert weight from kg to desired output.
 				 */
 				switch ( $to ) {
 
-					/**
+					/*
 					 * Metric units.
 					 */
 					case 'mg':	$value *= 1000000; break;	// Kilogram to Milligram.
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					case 'kg':	$value *= 1; break;		// Kilogram to Kilogram.
 					case 't':	$value *= 0.001; break;		// Kilogram to Metric Ton.
 
-					/**
+					/*
 					 * Imperial units.
 					 */
 					case 'oz':	$value *= 35.27396; break;	// Kilogram to Ounce.

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 		private $fee_cost = '';	// Package cost for the [fee] shortcode.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns true for a variable product, false for a simple product.
 		 */
 		public function is_mod_variable( $mod ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $product;
 		}
 
-		/**
+		/*
 		 * Returns product id from product object.
 		 */
 		public function get_product_id( $product ) {
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $product_type;
 		}
 
-	 	/**
+	 	/*
 		 * Format the WooCommerce meta data as WordPress meta data.
 		 */
 		public function get_product_wp_meta( $product ) {
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $var_wp_meta;
 		}
 
-		/**
+		/*
 		 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 		 *
 		 * See WpssoIntegEcomWoocommerce->filter_og_seed().
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Returns an array of data for a variation.
 				 *
 				 * Applies the 'woocommerce_available_variation' filter.
@@ -232,7 +232,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $available_variations;
 		}
 
-		/**
+		/*
 		 * Returns the variation product object or false if not a visible, active, and purchasable variation.
 		 */
 		public function get_variation_product( $mixed ) {
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $product;
 		}
 
-		/**
+		/*
 		 * Check if a simple product, variable product or any of its variations, has a meta data value.
 		 *
 		 * Called by WpssoWcmdWooCommerce->filter_product_enable_dimensions_display().
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return $local_cache[ $product_id ][ $meta_key ] = false;
 		}
 
-		/**
+		/*
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_dimension_label( $key  = '' ) {
@@ -349,7 +349,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_dimension_label( $key );
 		}
 
-		/**
+		/*
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_dimension( $value, $to, $from = '' ) {
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_dimension_convert( $value, $to, $from );
 		}
 
-		/**
+		/*
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_fluid_volume_label( $key = '' ) {
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_fluid_volume_label( $key );
 		}
 
-		/**
+		/*
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_fluid_volume_units() {
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			return WpssoUtilUnits::get_fluid_volume_units();
 		}
 
-		/**
+		/*
 		 * Deprecatd on 2022/12/28.
 		 */
 		public static function get_fluid_volume( $value, $to, $from = '' ) {

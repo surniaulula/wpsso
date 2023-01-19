@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -599,12 +599,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				return $opts;
 			}
 
-			/**
+			/*
 			 * Get the current options version number for checks to follow.
 			 */
 			$prev_version = $this->p->opt->get_version( $opts, 'wpsso' );	// Returns 'opt_version'.
 
-			/**
+			/*
 			 * Maybe renamed some option keys.
 			 */
 			$version_keys = $is_site_options ?
@@ -613,12 +613,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			$opts = $this->p->util->rename_options_by_ext( $opts, $version_keys );
 
-			/**
+			/*
 			 * Maybe update some option values.
 			 */
 			if ( ! $is_site_options ) {
 
-				/**
+				/*
 				 * Check for schema type IDs to be renamed.
 				 */
 				$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
@@ -688,7 +688,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Enable og:image and og:video meta tags, and disable the og:image:url and og:video:url meta tags,
 				 * which are functionally identical.
 				 */
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Remove the 'person' role from all subscribers.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 599 ) {
@@ -720,7 +720,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * The Google URL Shortener was discontinued by Google in March 2018.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 614 ) {
@@ -760,7 +760,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					$opts[ 'plugin_attr_product_size' ]      = 'Size';
 				}
 
-				/**
+				/*
 				 * All product meta tags are not enabled by default.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					unset( $opts[ 'schema_add_home_person' ] );
 				}
 
-				/**
+				/*
 				 * Remove the options from deprecated add-ons.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 765 ) {
@@ -828,7 +828,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Update the Facebook App ID to its default value.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 778 ) {
@@ -839,7 +839,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Deprecated on 2021/05/28.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 785 ) {
@@ -847,7 +847,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
 				}
 
-				/**
+				/*
 				 * Fix default publisher.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 827 ) {
@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WPSM add-on.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 834 ) {
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
 				}
 
-				/**
+				/*
 				 * If the Twitter Card image sizes have not been changed from their old default values, then update
 				 * the options to the new default values.
 				 */
@@ -920,7 +920,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * The '%%term_title%%' inline variable no longer includes parent names.
 				 *
 				 * Replace the old '%%term_title%%' variable by '%%term_hierarchy%%'.
@@ -941,7 +941,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Maybe add any new / missing options keys.
 			 */
 			$opts = array_merge( $defs, $opts );
@@ -950,12 +950,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				apply_filters( 'wpsso_upgraded_site_options', $opts, $defs ) :
 				apply_filters( 'wpsso_upgraded_options', $opts, $defs );
 
-			/**
+			/*
 			 * The options array should not contain any numeric keys.
 			 */
 			SucomUtil::unset_numeric_keys( $opts );
 
-			/**
+			/*
 			 * Refresh the schema types transient cache.
 			 */
 			$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );

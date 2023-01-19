@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		private $p;	// Wpsso class object.
 		private $u;	// WpssoUtil class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin, &$util ) {
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Replace inline variables in the subject text.
 		 *
 		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				return $subject;
 			}
 
-			/**
+			/*
 			 * The $mod array argument is preferred but not required.
 			 *
 			 * $mod = true | false | post_id | $mod array
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			/**
+			/*
 			 * Use a callback to get the inline variable values we need, as we need them.
 			 *
 			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			$ret_val = '';
 			$url_enc = empty( $atts[ 'rawurlencode' ] ) ? false : true;
 
-			/**
+			/*
 			 * Some inline variables and values may be passed in the $atts array, so check this array first.
 			 */
 			if ( isset( $atts[ $varname ] ) ) {
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				return $url_enc ? rawurlencode( $atts[ $varname ] ) : $atts[ $varname ];
 			}
 
-			/**
+			/*
 			 * Use a local cache for values that will not change for this page load.
 			 */
 			static $local_cache = null;
@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				return $url_enc ? rawurlencode( $local_cache[ $varname ] ) : $local_cache[ $varname ];
 			}
 
-			/**
+			/*
 			 * Detect and prevent recursion, just in case.
 			 */
 			static $local_is_recursion = array();
@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						case 'term_hierarchy':	// Used by Yoast SEO.
 
-							/**
+							/*
 							 * Includes parent names in the term title if the $title_sep value is not empty.
 							 *
 							 * Use $title_sep = false to avoid adding term parent names in the term title.
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						case 'term_title':	// Used by Yoast SEO.
 
-							/**
+							/*
 							 * Includes parent names in the term title if the $title_sep value is not empty.
 							 *
 							 * Use $title_sep = false to avoid adding term parent names in the term title.
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					case 'sharing_url':
 
-						/**
+						/*
 						 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 						 */
 						$ret_val = $this->u->get_sharing_url( $mod, $add_page, $atts );
@@ -320,7 +320,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					case 'sharing_short_url':
 					case 'short_url':	// Used by older WPSSO RRSSB templates.
 
-						/**
+						/*
 						 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 						 */
 				 		$ret_val = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					case 'author_name':
 					case 'name':		// Used by Yoast SEO.
 
-						/**
+						/*
 						 * Returns the display name for a comment author, post author, or user module.
 						 */
 						$ret_val = WpssoUser::get_author_name( $mod );

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
 	 */
 	class WpssoMessagesTooltipMeta extends WpssoMessages {
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * Document SSO > Edit Media tab.
 				 */
 				case 'tooltip-meta-pin_img_id':		// Image ID.
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * Document SSO > Edit Visibility tab.
 				 */
 				case 'tooltip-meta-canonical_url':	// Canonical URL.
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#noarchive.
 				 */
 				case 'tooltip-meta-robots_noarchive':
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#nofollow.
 				 */
 				case 'tooltip-meta-robots_nofollow':
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#noimageindex.
 				 */
 				case 'tooltip-meta-robots_noimageindex':
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#noindex.
 				 */
 				case 'tooltip-meta-robots_noindex':
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#nosnippet.
 				 */
 				case 'tooltip-meta-robots_nosnippet':
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag#notranslate.
 				 */
 				case 'tooltip-meta-robots_notranslate':

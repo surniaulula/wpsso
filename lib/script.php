@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -64,12 +64,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				$src = WPSSO_URLPATH . 'js/jquery-block-editor.' . $this->file_ext;
 
-				/**
+				/*
 				 * The 'wp-editor' dependency should not be enqueued together with the new widgets block editor.
 				 */
 				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-admin-page' );
 
-				/**
+				/*
 				 * The 'wpsso-block-editor' script, with its 'wp-edit-post' dependency, must be loaded in the
 				 * footer to work around a bug in the NextGEN Gallery featured image picker. If the script is
 				 * loaded in the header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image
@@ -91,13 +91,13 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
 
-			/**
+			/*
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext,
 				$deps = array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
-			/**
+			/*
 			 * Provides sucomInitAdminMedia().
 			 */
 			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
@@ -105,31 +105,31 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			wp_localize_script( 'sucom-admin-media', 'sucomAdminMediaL10n', $this->get_admin_media_script_data() );
 
-			/**
+			/*
 			 * Provides sucomInitMetabox().
 			 */
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
 				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ),
 					$this->version, $in_footer = true );
 
-			/**
+			/*
 			 * Provides sucomInitToolTips().
 			 */
 			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext,
 				$deps = array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
 
-			/**
+			/*
 			 * Provides wpssoInitMetabox().
 			 */
 			wp_register_script( 'wpsso-metabox', WPSSO_URLPATH . 'js/jquery-metabox.' . $this->file_ext,
 				$deps = array( 'sucom-metabox' ), $this->version, $in_footer = true );
 
-			/**
+			/*
 			 * Only load scripts where we need them.
 			 */
 			switch ( $hook_name ) {
 
-				/**
+				/*
 				 * Addons and license settings page.
 				 */
 				case ( preg_match( '/_page_wpsso-.*(addons|licenses)/', $hook_name ) ? true : false ) :
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					// No break.
 
-				/**
+				/*
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
 				case ( false !== strpos( $hook_name, '_page_wpsso-' ) ? true : false ):
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					// No break.
 
-				/**
+				/*
 				 * Editing page.
 				 */
 				case 'post.php':	// Post edit.
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$this->admin_enqueue_page_scripts( $hook_name );
 		}
 
-		/**
+		/*
 		 * Add jQuery to update the toolbar menu item on page load.
 		 *
 		 * Hooked to the WordPress 'admin_footer' action.
@@ -245,7 +245,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$tb_types_showing = $this->p->notice->get_tb_types_showing();
 
-			/**
+			/*
 			 * Just in case - no use getting notices if there's nothing to get.
 			 *
 			 * Example $tb_types_showing = array( 'err', 'warn', 'inf' ).
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Exit early if this is a block editor page.
 			 *
 			 * Notices will be retrieved using an ajax call during editor page load and post save.
@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'doing block editor is false' );
 			}
 
-			/**
+			/*
 			 * jQuery() or jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
 			 *
 			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			echo '</script>' . "\n";
 		}
 
-		/**
+		/*
 		 * Add jQuery to correctly follow the Install / Update link when clicked (WordPress bug). Also adds the parent URL
 		 * and settings page title as query arguments, which are then used by WpssoAdmin class filters to return the user
 		 * back to the settings page after installing / activating / updating the plugin.
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			wp_enqueue_script( 'plugin-install' );	// Required for the plugin details box.
 
-			/**
+			/*
 			 * Fix the update / install button to load the href when clicked.
 			 *
 			 * jQuery() or jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
@@ -340,19 +340,19 @@ EOF;
 
 			} else {
 
-				/**
+				/*
 				 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 				 */
 				echo '<script>' . "\n" . $custom_script_js . '</script>' . "\n";
 			}
 		}
 
-		/**
+		/*
 		 * sucomAdminMediaL10n array for the 'sucom-admin-media' script located in js/com/jquery-admin-media.js.
 		 */
 		public function get_admin_media_script_data() {
 
-			/**
+			/*
 			 * var sucomAdminMediaL10n array.
 			 */
 			return array(
@@ -375,7 +375,7 @@ EOF;
 			wp_localize_script( 'sucom-admin-page', $admin_l10n, $this->get_admin_page_script_data() );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.5.1.
 		 *
 		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
@@ -414,7 +414,7 @@ EOF;
 			$is_enqueued = true;	// Signal that we've already run once.
 		}
 
-		/**
+		/*
 		 * The config array for the 'sucom-admin-page' script located in js/com/jquery-admin-page.js.
 		 */
 		public function get_admin_page_script_data() {
@@ -438,7 +438,7 @@ EOF;
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
 			$notice_text_uniqid  = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 
-			/**
+			/*
 			 * Add an 'inline' class to toolbar notices to prevent WordPress from moving the notice.
 			 *
 			 * See wordpress/wp-admin/js/common.js:1083
@@ -449,7 +449,7 @@ EOF;
 				'</div><!-- .notice-message -->' .
 				'</div><!-- .notice-copy -->';
 
-			/**
+			/*
 			 * The config array.
 			 */
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];

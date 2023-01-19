@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessages->get() only when needed.
 	 */
 	class WpssoMessagesTooltip extends WpssoMessages {
@@ -34,12 +34,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 			$text = '';
 
-			/**
+			/*
 			 * Document SSO metabox tooltips.
 			 */
 			if ( 0 === strpos( $msg_key, 'tooltip-meta-' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltipMeta only when needed.
 				 */
 				if ( null === $this->meta ) {
@@ -51,12 +51,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				return $this->meta->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Open Graph settings
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-og_' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltipOpenGraph only when needed.
 				 */
 				if ( null === $this->og ) {
@@ -68,12 +68,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				return $this->og->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Advanced plugin settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-plugin_' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltipPlugin only when needed.
 				 */
 				if ( null === $this->plugin ) {
@@ -85,12 +85,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				return $this->plugin->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Schema settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-schema_' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltipSchema only when needed.
 				 */
 				if ( null === $this->schema ) {
@@ -102,12 +102,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				return $this->schema->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Site settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-site_' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesTooltipSite only when needed.
 				 */
 				if ( null === $this->site ) {
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				return $this->site->get( $msg_key, $info );
 
-			/**
+			/*
 			 * Behance settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-behance_' ) ) {
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 						break;
 				}
 
-			/**
+			/*
 			 * Facebook settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-fb_' ) ) {
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-fb' switch.
 
-			/**
+			/*
 			 * Google settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-g_' ) ) {
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-g' switch.
 
-			/**
+			/*
 			 * SEO settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-seo_' ) ) {
@@ -238,14 +238,14 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-seo' switch.
 
-			/**
+			/*
 			 * Robots settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-robots_' ) ) {
 
 				switch ( $msg_key ) {
 
-					/**
+					/*
 					 * See https://developers.google.com/search/reference/robots_meta_tag#max-snippet.
 					 */
 					case 'tooltip-robots_max_snippet':	// Robots Snippet Max. Length
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					 	break;
 
-					/**
+					/*
 					 * See https://developers.google.com/search/reference/robots_meta_tag#max-image-preview.
 					 */
 					case 'tooltip-robots_max_image_preview':
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					 	break;
 
-					/**
+					/*
 					 * See https://developers.google.com/search/reference/robots_meta_tag#max-video-preview.
 					 */
 					case 'tooltip-robots_max_video_preview':
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				$text .= $this->maybe_add_seo_tag_disabled_link( 'meta name robots' );
 
-			/**
+			/*
 			 * Pinterest settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-pin_' ) ) {
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-p' switch.
 
-			/**
+			/*
 			 * Twitter settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-tc_' ) ) {
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-tc' switch.
 
-			/**
+			/*
 			 * Instagram settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-instagram_' ) ) {
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-instagram' switch.
 
-			/**
+			/*
 			 * LinkedIn settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-linkedin_' ) ) {
@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-linkedin' switch.
 
-			/**
+			/*
 			 * Medium settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-medium_' ) ) {
@@ -521,7 +521,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-medium' switch.
 
-			/**
+			/*
 			 * Myspace settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-myspace_' ) ) {
@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-myspace' switch.
 
-			/**
+			/*
 			 * Soundcloud settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-sc_' ) ) {
@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-sc' switch.
 
-			/**
+			/*
 			 * TikTok settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-tiktok_' ) ) {
@@ -605,7 +605,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-tiktok' switch.
 
-			/**
+			/*
 			 * Tumblr settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-tumblr_' ) ) {
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-tumblr' switch.
 
-			/**
+			/*
 			 * Wikipedia settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-wikipedia_' ) ) {
@@ -661,7 +661,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-wikipedia' switch.
 
-			/**
+			/*
 			 * YouTube settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-yt_' ) ) {
@@ -689,35 +689,35 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-yt' switch.
 
-			/**
+			/*
 			 * WPSSO AM add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-am_' ) ) {
 
 				return apply_filters( 'wpsso_messages_tooltip_am', $text, $msg_key, $info );
 
-			/**
+			/*
 			 * WPSSO RRSSB add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-buttons_' ) ) {
 
 				return apply_filters( 'wpsso_messages_tooltip_buttons', $text, $msg_key, $info );
 
-			/**
+			/*
 			 * WPSSO ORG add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-org_' ) ) {
 
 				return apply_filters( 'wpsso_messages_tooltip_org', $text, $msg_key, $info );
 
-			/**
+			/*
 			 * WPSSO PLM add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-plm_' ) ) {
 
 				return apply_filters( 'wpsso_messages_tooltip_plm', $text, $msg_key, $info );
 
-			/**
+			/*
 			 * All other tooltips.
 			 */
 			} else {

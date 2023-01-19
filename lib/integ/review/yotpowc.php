@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoIntegReviewYotpoWc' ) ) {
 				return $mt_ecom;
 			}
 
-			/**
+			/*
 			 * Add rating meta tags.
 			 */
 			if ( apply_filters( 'wpsso_og_add_mt_rating', true, $mod ) ) {
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoIntegReviewYotpoWc' ) ) {
 				$this->p->debug->log( 'add rating meta tags is false' );
 			}
 
-			/**
+			/*
 			 * Add reviews meta tags.
 			 */
 			if ( apply_filters( 'wpsso_og_add_mt_reviews', $have_schema, $mod ) ) {

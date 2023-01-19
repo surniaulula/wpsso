@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessages->get() only when needed.
 	 */
 	class WpssoMessagesInfo extends WpssoMessages {
@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 			if ( 0 === strpos( $msg_key, 'info-meta-' ) ) {
 
-				/**
+				/*
 				 * Instantiate WpssoMessagesInfoMeta only when needed.
 				 */
 				if ( null === $this->meta ) {

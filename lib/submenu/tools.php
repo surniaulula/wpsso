@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
-		/**
+		/*
 		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
 		 *
 		 * Add settings page filter and action hooks.
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			), PHP_INT_MIN );			// Run filter first to initializes a new form buttons array.
 		}
 
-		/**
+		/*
 		 * Called from WpssoAdmin->show_setting_page().
 		 */
 		protected function show_post_body_setting_form() {
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo $this->get_form_buttons();
 
-			/**
+			/*
 			 * Add a note about shortened URLs being preserved or cleared.
 			 */
 			if ( $this->using_db_cache ) {
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
-			/**
+			/*
 			 * Row #0.
 			 */
 			$count_cache_files   = number_format_i18n( $this->p->util->cache->count_cache_files() );
@@ -126,13 +126,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Row #1.
 			 */
 			$export_settings_label_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			$import_settings_label_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 
-			/**
+			/*
 			 * Row #2.
 			 */
 			$add_persons_label_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label );
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$add_persons_label_transl .= ' **';
 
-			/**
+			/*
 			 * Row #3.
 			 */
 			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$form_button_rows = array(
 
-				/**
+				/*
 				 * Row #0.
 				 */
 				array(
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'flush_rewrite_rules'    => $flush_rewrite_rules_transl,
 				),
 
-				/**
+				/*
 				 * Row #1.
 				 */
 				array(
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					),
 				),
 
-				/**
+				/*
 				 * Row #2.
 				 */
 				array(
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'reload_default_image_sizes' => $reload_image_sizes_label_transl,
 				),
 
-				/**
+				/*
 				 * Row #3.
 				 */
 				array(
@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->using_db_cache ) {
 
-				/**
+				/*
 				 * Clear All Database Transients.
 				 */
 				$count_db_transients = number_format_i18n( $this->p->util->cache->count_db_transients( $include_short = true, $key_prefix = '' ) );
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_label_transl;
 
-				/**
+				/*
 				 * Clear Cache and Short URLs.
 				 *
 				 * If shortened URLs are not cleared automatically when clearing the cache, add a second button to

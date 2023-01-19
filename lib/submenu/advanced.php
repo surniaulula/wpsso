@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
 
-			/**
+			/*
 			 * Since WPSSO Core v14.4.0.
 			 */
 			$pkg_info = $this->p->util->get_pkg_info();     // Uses a local cache.
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
 		}
 
-		/**
+		/*
 		 * Called by the extended WpssoAdmin class.
 		 */
 		protected function add_meta_boxes() {
@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		public function show_metabox_contact_fields() {
 
-			/**
+			/*
 			 * Translate contact method field labels for current language.
 			 */
 			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );

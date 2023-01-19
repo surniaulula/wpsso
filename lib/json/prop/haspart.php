@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 		private static $meta_name  = '_wpsso_json_haspart';
 		private static $meta_saved = false;
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 				$this->p->debug->log( 'added maybe_comment_json_scripts filter hook for the_content' );
 			}
 
-			/**
+			/*
 			 * Comment json scripts saved in the self::$meta_name metadata array.
 			 *
 			 * See wordpress/wp-includes/default-filters.php:
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), 12 );	// After do_shortcode().
 		}
 
-		/**
+		/*
 		 * Cleanup self::$meta_name here in case the Schema type has changed from CreativeWork to something else.
 		 */
 		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * Save existing properties in $json_data so we can filter them and add new ones.
 			 */
 			foreach ( $prop_data as $prop_name => $prop_values ) {
@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 
-		/**
+		/*
 		 * Recurse for each @graph element, including nested @graph elements (ie. @graph within another @graph).
 		 */
 		private function maybe_add_single_data( array &$added_script_ids, array &$prop_data, $single_id, array $single_data, $page_type_id, $def_context = null ) {
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 
 					if ( isset( $prop_data[ 'hasPart' ] ) ) {
 
-						/**
+						/*
 						 * The hasPart property value must be a Schema CreativeWork type or sub-type.
 						 */
 						if ( $this->p->schema->is_schema_type_child( $child_id, 'creative.work' ) ) {
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Comment json scripts saved in the self::$meta_name metadata array.
 		 */
 		public function maybe_comment_json_scripts( $content ) {

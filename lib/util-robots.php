@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 *
 		 * Called by WpssoMetaName->maybe_disable_noindex(), and WpssoMetaName->get_array().
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return apply_filters( 'wpsso_robots_content', $content, $mod, $directives );
 		}
 
-		/**
+		/*
 		 * Explode a directive string into an associative array.
 		 *
 		 * Example $content:
@@ -147,12 +147,12 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 					$value = $md_opts[ $opt_key ];
 				}
 
-				/**
+				/*
 				 * Fallback to a default value.
 				 */
 				if ( null === $value ) {
 
-					/**
+					/*
 					 * Get the default value from the plugin settings for these options:
 					 *
 					 *	'robots_max_snippet'       => -1,
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Sanity check - make sure inverse directives are removed.
 			 */
 			self::sanitize_directives( $directives );
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return apply_filters( 'wpsso_robots_directives', $directives, $mod );
 		}
 
-		/**
+		/*
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
 		public function is_noimageindex( $mixed, $mod_id = null ) {
@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return $this->is_nokey( 'noimageindex', $mixed, $mod_id );
 		}
 
-		/**
+		/*
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
 		public function is_noindex( $mixed, $mod_id = null ) {
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return $this->is_nokey( 'noindex', $mixed, $mod_id );
 		}
 
-		/**
+		/*
 		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
 		 */
 		private function is_nokey( $key, $mixed, $mod_id = null ) {

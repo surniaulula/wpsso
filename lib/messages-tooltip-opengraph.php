@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
 	 */
 	class WpssoMessagesTooltipOpenGraph extends WpssoMessages {
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 			switch ( $msg_key ) {
 
-				/**
+				/*
 				 * SSO > General Settings > Site Information tab.
 				 */
 				case 'tooltip-og_def_country':			// Default Country.
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > General Settings > Titles and Descriptions tab.
 				 */
 				case 'tooltip-og_title_sep':		// Title Separator.
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > General Settings > Images tab.
 				 */
 				case 'tooltip-og_img_max':		// Maximum Images to Include.
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > General Settings > Videos tab.
 				 */
 				case 'tooltip-og_vid_max':		// Maximum Videos to Include.
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * SSO > Advanced Settings > Document Types > Open Graph tab.
 				 */
 				case 'tooltip-og_type_for_home_page':	// Type for Page Homepage.

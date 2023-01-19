@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -15,7 +15,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-/**
+/*
  * Additional generic return functions.
  *
  * WordPress already defines:
@@ -67,7 +67,7 @@ if ( ! function_exists( '__return_year_in_seconds' ) ) {
 	}
 }
 
-/**
+/*
  * The wpsso_error_handler() function can be used for cases where errors need to be captured and sent to the toolbar notification area.
  *
  * Example:
@@ -118,7 +118,7 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
 	}
 }
 
-/**
+/*
  * Cache clearing functions.
  *
  * Note that it is almost always better to use the cache refresh functions instead of the cache clearing functions.
@@ -145,7 +145,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	}
 }
 
-/**
+/*
  * Cache refresh functions.
  */
 if ( ! function_exists( 'wpsso_refresh_cache' ) ) {	// Since WPSSO Core v14.1.0.
@@ -170,7 +170,7 @@ if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {	// Since WPSSO Core v14
 	}
 }
 
-/**
+/*
  * Get the $mod array for the current webpage. If $use_post is true, then the requested object is assumed to be a post, and the
  * global $post object will be used to determine the post ID. The use of 'page' here refers to the 'webpage'.
  */
@@ -224,7 +224,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 	}
 }
 
-/**
+/*
  * Returns a single dimension array of image meta tags or false if no image is found.
  *
  * Example:
@@ -259,7 +259,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 	}
 }
 
-/**
+/*
  * Returns a single dimension array of image meta tags or false if no image is found.
  */
 if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
@@ -272,7 +272,7 @@ if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 	}
 }
 
-/**
+/*
  * Returns a single dimension array of image meta tags or false if no image is found.
  */
 if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
@@ -285,7 +285,7 @@ if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
 	}
 }
 
-/**
+/*
  * Returns a single dimension array of image meta tags or false if no image is found.
  */
 if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
@@ -298,7 +298,7 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 	}
 }
 
-/**
+/*
  * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
@@ -311,7 +311,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
 	}
 }
 
-/**
+/*
  * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
@@ -324,7 +324,7 @@ if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
 	}
 }
 
-/**
+/*
  * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
@@ -337,7 +337,7 @@ if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
 	}
 }
 
-/**
+/*
  * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
@@ -370,7 +370,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 	function wpsso_get_post_organization_options( $post_id, $type_id = 'site' ) {
 
-		/**
+		/*
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */
 		if ( ! SucomUtil::is_valid_option_id( $type_id ) ) {
@@ -415,7 +415,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 	}
 }
 
-/**
+/*
  * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
  */
 if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
@@ -435,7 +435,7 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 	}
 }
 
-/**
+/*
  * Functions to get the canonical URL.
  */
 if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
@@ -468,7 +468,7 @@ if ( ! function_exists( 'wpsso_get_post_canonical_short_url' ) ) {
 	}
 }
 
-/**
+/*
  * Functions to get the sharing URL.
  */
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
@@ -489,7 +489,7 @@ if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 	}
 }
 
-/**
+/*
  * Shorten URL using the selected shortening service.
  */
 if ( ! function_exists( 'wpsso_shorten_url' ) ) {
@@ -502,7 +502,7 @@ if ( ! function_exists( 'wpsso_shorten_url' ) ) {
 	}
 }
 
-/**
+/*
  * Deprecated on 2021/09/04.
  */
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
@@ -515,7 +515,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 	}
 }
 
-/**
+/*
  * Deprecated on 2021/09/15.
  */
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {

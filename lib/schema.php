@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_lang = '';
 
-			/**
+			/*
 			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
 			 * language value.
 			 */
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $schema_lang;
 		}
 
-		/**
+		/*
 		 * Called by WpssoHead->get_head_array().
 		 *
 		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'head schema type id is ' . $page_type_id . ' (' . $page_type_url . ')' );
 			}
 
-			/**
+			/*
 			 * Include Schema Organization or Person, and WebSite markup on the home page.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_type_ids[ 'website' ] = true;
 			}
 
-			/**
+			/*
 			 * Could be an organization, website, or person, so include last to reenable (if disabled by default).
 			 */
 			if ( ! empty( $page_type_url ) ) {
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_type_ids[ $page_type_id ] = true;
 			}
 
-			/**
+			/*
 			 * Array (
 			 *	[product]      => true
 			 *	[website]      => true
@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log_arr( 'page_type_ids', $page_type_ids );
 			}
 
-			/**
+			/*
 			 * Start a new @graph array.
 			 */
 			WpssoSchemaGraph::reset_data();
@@ -328,12 +328,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'schema main entity is ' . ( $is_main ? 'true' : 'false' ) . ' for ' . $type_id );
 				}
 
-				/**
+				/*
 				 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 				 */
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main, $single = false );
 
-				/**
+				/*
 				 * Add the json data to the @graph array.
 				 */
 				foreach ( $json_data as $single_graph ) {
@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Get the @graph json array and start a new @graph array.
 			 */
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $schema_scripts;
 		}
 
-		/**
+		/*
 		 * Get the JSON-LD data array.
 		 *
 		 * Returns a two dimensional array of json data unless $single is true.
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
 			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
 			 * then unhooks itself from the action, so it can only be run once.
@@ -429,7 +429,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Returns an array of type ids with gparents, parents, child (in that order).
 			 */
 			$child_family_urls = array();
@@ -453,7 +453,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$valid_filter_name  = 'wpsso_json_data_validate_' . $type_hookname;
 				$method_filter_name = 'filter_json_data_' . $type_hookname;
 
-				/**
+				/*
 				 * Add website, organization, and person markup to home page.
 				 */
 				if ( false !== has_filter( $data_filter_name ) ) {
@@ -465,12 +465,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
 
-				/**
+				/*
 				 * Home page (static or blog archive).
 				 */
 				} elseif ( $mod[ 'is_home' ] && method_exists( $this, $method_filter_name ) ) {
 
-					/**
+					/*
 					 * $is_main is always false for methods.
 					 */
 					$json_data = call_user_func( array( $this, $method_filter_name ), $json_data, $mod, $mt_og, $page_type_id, false );
@@ -500,7 +500,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_og = array();
 
-			/**
+			/*
 			 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 			 */
 			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id = 'website', $is_main = false, $single = true );
@@ -594,7 +594,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting schema json-ld markup array' );
 			}
 
-			/**
+			/*
 			 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 			 */
 			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true, $single = true );
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.1.2.
 		 *
 		 * Returns the schema type id.
@@ -619,7 +619,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->get_mod_schema_type( $mod, $get_id = true, $use_md_opts );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v3.37.1.
 		 *
 		 * Returns the schema type id by default.
@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$cache_salt = false;
 
-			/**
+			/*
 			 * Archive pages can call this method several times.
 			 *
 			 * Optimize and cache post/term/user schema type values.
@@ -656,7 +656,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type_id      = null;
 			$schema_types = $this->get_schema_types_array( $flatten = true );
 
-			/**
+			/*
 			 * Maybe get a custom schema type id from the post, term, or user meta.
 			 */
 			if ( $use_md_opts ) {
@@ -680,7 +680,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! $is_custom ) {	// No custom schema type id from the post, term, or user meta.
 
-				/**
+				/*
 				 * Similar module type logic can be found in the following methods:
 				 *
 				 * See WpssoOpenGraph->get_mod_og_type().
@@ -833,7 +833,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$get_value = $type_id;
 			}
 
-			/**
+			/*
 			 * Optimize and cache post/term/user schema type values.
 			 */
 			if ( $cache_salt ) {
@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $get_value;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.1.2.
 		 *
 		 * Returns the schema type URL.
@@ -926,7 +926,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $select;
 		}
 
-		/**
+		/*
 		 * Returns a one-dimensional (flat) array of schema types by default, otherwise returns a multi-dimensional array
 		 * of all schema types, including cross-references for sub-types with multiple parent types.
 		 *
@@ -974,22 +974,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->mark( 'create schema types array' );	// Begin timer.
 					}
 
-					/**
+					/*
 					 * Filtered array.
 					 */
 					$this->types_cache[ 'filtered' ] = (array) apply_filters( 'wpsso_schema_types', $this->p->cf[ 'head' ][ 'schema_type' ] );
 
-					/**
+					/*
 					 * Flattened array (before adding cross-references).
 					 */
 					$this->types_cache[ 'flattened' ] = SucomUtil::array_flatten( $this->types_cache[ 'filtered' ] );
 
-					/**
+					/*
 					 * Adding cross-references to filtered array.
 					 */
 					$this->add_schema_type_xrefs( $this->types_cache[ 'filtered' ] );
 
-					/**
+					/*
 					 * Parents array.
 					 */
 					$this->types_cache[ 'parents' ] = SucomUtil::get_array_parents( $this->types_cache[ 'filtered' ] );
@@ -1023,7 +1023,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->types_cache[ 'filtered' ];
 		}
 
-		/**
+		/*
 		 * Returns an array of schema type ids with gparent, parent, child (in that order).
 		 *
 		 * $use_cache is false when calling get_schema_type_child_family() recursively.
@@ -1061,7 +1061,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $parent_id !== $child_id )	{		// Prevent infinite loops.
 
-						/**
+						/*
 						 * $use_cache is false for recursive calls.
 						 */
 						$this->get_schema_type_child_family( $parent_id, $child_use_cache = false, $child_family );
@@ -1084,7 +1084,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $child_family;
 		}
 
-		/**
+		/*
 		 * Returns an array of schema type ids with child, parent, gparent (in that order).
 		 *
 		 * $use_cache is false when calling get_schema_type_children() recursively.
@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $parent_id === $type_id ) {
 
-						/**
+						/*
 						 * $use_cache is false for recursive calls.
 						 */
 						$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
@@ -1152,7 +1152,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$context_value = $match[ 1 ];
 				$type_value    = $match[ 2 ];
 
-				/**
+				/*
 				 * Check for schema extension (example: https://health-lifesci.schema.org).
 				 *
 				 * $context_value = array(
@@ -1184,7 +1184,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'@type'    => $type_value,
 				);
 
-				/**
+				/*
 				 * Include $json_head first to keep @id, @context, and @type top-most.
 				 */
 				if ( is_array( $json_data ) ) {	// Just in case.
@@ -1245,7 +1245,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
 
-				/**
+				/*
 				 * We're returning the Schema type name, so make sure the default schema type id is valid as well.
 				 */
 				if ( empty( $default_id ) || 'none' === $default_id || empty( $schema_types[ $default_id ] ) ) {
@@ -1261,7 +1261,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return preg_replace( '/^.*\//U', '', $type_url );
 		}
 
-		/**
+		/*
 		 * Check if the Schema type matches a pre-defined Open Graph type.
 		 *
 		 * For example, a Schema place sub-type would return 'place' for the Open Graph type.
@@ -1277,7 +1277,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[ $type_id ];
 			}
 
-			/**
+			/*
 			 * Hard-code the Open Graph type based on the Schema type.
 			 */
 			foreach ( $this->p->cf[ 'head' ][ 'og_type_by_schema_type' ] as $parent_id => $og_type ) {
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Javascript classes to hide/show table rows by the selected schema type value.
 		 */
 		public static function get_schema_type_row_class( $name = 'schema_type' ) {
@@ -1430,7 +1430,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $local_cache[ $name ];
 		}
 
-		/**
+		/*
 		 * Get the full schema type url from the array key.
 		 */
 		public function get_schema_type_url( $type_id, $default_id = false ) {
@@ -1454,7 +1454,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Returns an array of schema type id for a given type URL.
 		 */
 		public function get_schema_type_url_ids( $type_url ) {
@@ -1474,7 +1474,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_ids;
 		}
 
-		/**
+		/*
 		 * Returns the first schema type id for a given type URL.
 		 */
 		public function get_schema_type_url_id( $type_url, $default_id = false ) {
@@ -1587,7 +1587,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 'wpsso_json_data_' . SucomUtil::sanitize_hookname( $type_url );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.2.1.
 		 *
 		 * Check if Google allows aggregate rarings for this Schema type.
@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v9.2.1.
 		 *
 		 * Check if Google allows reviews for this Schema type.
@@ -1643,7 +1643,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * json_data can be null, so don't cast an array on the input argument.
 		 *
 		 * The @context value can be an array if the schema type is an extension.
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		/**
+		/*
 		 * Get the site organization array.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
@@ -1776,7 +1776,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Logo and banner image dimensions are localized as well.
 			 *
 			 * Example: 'site_org_logo_url:width#fr_FR'.
@@ -1824,12 +1824,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$step_pos = 1;
 				$step_idx = 0;
 
-				/**
+				/*
 				 * $md_val is the section/step name.
 				 */
 				foreach ( $howto_steps as $md_num => $md_val ) {
 
-					/**
+					/*
 					 * Maybe get a longer text / description value.
 					 */
 					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $md_num ] ) ? $md_opts[ $opt_prefix . '_text_' . $md_num ] : $md_val;
@@ -1842,14 +1842,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Get images for the section or step.
 					 */
 					$step_images = array();
 
 					if ( ! empty( $md_opts[ $opt_prefix . '_img_id_' . $md_num ] ) ) {
 
-						/**
+						/*
 						 * Set reference values for admin notices.
 						 */
 						if ( is_admin() ) {
@@ -1860,14 +1860,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$prop_name, $md_num + 1 ) );
 						}
 
-						/**
+						/*
 						 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 						 */
 						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $md_num );
 
 						self::add_images_data_mt( $step_images, $mt_images );
 
-						/**
+						/*
 						 * Restore previous reference values for admin notices.
 						 */
 						if ( is_admin() ) {
@@ -1876,7 +1876,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-					/**
+					/*
 					 * Add a How-To Section.
 					 */
 					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $md_num ] ) ) {
@@ -1904,7 +1904,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$step_idx++;
 
-					/**
+					/*
 					 * Add a How-To Step.
 					 */
 					} else {
@@ -1923,7 +1923,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$step_arr[ 'image' ] = $step_images;
 						}
 
-						/**
+						/*
 						 * If we have a section, add a new step to the section.
 						 */
 						if ( false !== $section_ref ) {
@@ -1987,7 +1987,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			self::check_prop_value_sameas( $json_data );
 
-			/**
+			/*
 			 * Set reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1997,7 +1997,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding reviewed subject image', 'wpsso' ) );
 			}
 
-			/**
+			/*
 			 * Add the item images.
 			 *
 			 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
@@ -2015,7 +2015,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( $json_data[ 'image' ] );
 			}
 
-			/**
+			/*
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -2023,12 +2023,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
 
-			/**
+			/*
 			 * Item Reviewed: Creative Work
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'creative.work' ) ) {
 
-				/**
+				/*
 				 * The author type value should be either 'organization' or 'person'.
 				 */
 				if ( self::is_valid_key( $md_opts, 'schema_review_item_cw_author_type' ) ) {	// Not null, an empty string, or 'none'.
@@ -2047,7 +2047,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Subject Published Date.
 				 *
 				 * Add the creative work published date, if one is available.
@@ -2057,7 +2057,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ 'datePublished' ] = $date;
 				}
 
-				/**
+				/*
 				 * Subject Created Date.
 				 *
 				 * Add the creative work created date, if one is available.
@@ -2067,7 +2067,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ 'dateCreated' ] = $date;
 				}
 
-				/**
+				/*
 				 * Item Reviewed: Creative Work > Book
 				 */
 				if ( $wpsso->schema->is_schema_type_child( $type_id, 'book' ) ) {
@@ -2076,24 +2076,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'isbn' => 'schema_review_item_cw_book_isbn',
 					) );
 
-				/**
+				/*
 				 * Item Reviewed: Creative Work > Movie
 				 */
 				} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'movie' ) ) {
 
-					/**
+					/*
 					 * Property:
 					 * 	actor (supersedes actors)
 					 */
 					self::add_person_names_data( $json_data, 'actor', $md_opts, 'schema_review_item_cw_movie_actor_person_name' );
 
-					/**
+					/*
 					 * Property:
 					 * 	director
 					 */
 					self::add_person_names_data( $json_data, 'director', $md_opts, 'schema_review_item_cw_movie_director_person_name' );
 
-				/**
+				/*
 				 * Item Reviewed: Creative Work > Software Application
 				 */
 				} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'software.application' ) ) {
@@ -2110,7 +2110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_software_app_(offer_.*)_' . $key_num. '$/',
 							$md_opts, $invert = false, $replace = '$1' );
 
-						/**
+						/*
 						 * Must have at least an offer name and price.
 						 */
 						if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
@@ -2122,13 +2122,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
 							) ) ) ) {
 
-								/**
+								/*
 								 * Avoid Google validator warnings.
 								 */
 								$offer[ 'url' ]             = $json_data[ 'url' ];
 								$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
 
-								/**
+								/*
 								 * Add the offer.
 								 */
 								$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
@@ -2137,12 +2137,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-			/**
+			/*
 			 * Item Reviewed: Place
 			 */
 			} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
 
-				/**
+				/*
 				 * Property:
 				 *	address as https://schema.org/PostalAddress
 				 */
@@ -2174,7 +2174,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-			/**
+			/*
 			 * Item Reviewed: Product
 			 */
 			} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'product' ) ) {
@@ -2184,7 +2184,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'mpn'  => 'schema_review_item_product_mfr_part_no',
 				) );
 
-				/**
+				/*
 				 * Add the product brand.
 				 */
 				$single_brand = self::get_data_itemprop_from_assoc( $md_opts, array(
@@ -2203,7 +2203,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_product_(offer_.*)_' . $key_num. '$/',
 						$md_opts, $invert = false, $replace = '$1' );
 
-					/**
+					/*
 					 * Must have at least an offer name and price.
 					 */
 					if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
@@ -2215,7 +2215,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
 						) ) ) ) {
 
-							/**
+							/*
 							 * Add the offer.
 							 */
 							$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
@@ -2306,7 +2306,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Keep track of the lowest and highest price by currency.
 				 */
 				$price_currency = $single_offer[ 'priceCurrency' ];	// Shortcut variable.
@@ -2326,7 +2326,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Save common properties (by currency) to include in the AggregateOffer markup.
 				 */
 				if ( $offer_num === 0 ) {
@@ -2351,13 +2351,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Add the complete offer.
 				 */
 				$aggr_offers[ $price_currency ][] = $single_offer;
 			}
 
-			/**
+			/*
 			 * Add aggregate offers grouped by currency.
 			 */
 			foreach ( $aggr_offers as $price_currency => $currency_offers ) {
@@ -2366,7 +2366,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$offer_group = array();
 
-					/**
+					/*
 					 * Maybe set the 'lowPrice' and 'highPrice' properties.
 					 */
 					foreach ( array( 'lowPrice', 'highPrice' ) as $price_mark ) {
@@ -2400,7 +2400,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $aggr_added;
 		}
 
-		/**
+		/*
 		 * $user_id is optional and takes precedence over the $mod post_author value.
 		 */
 		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
@@ -2430,12 +2430,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			/**
+			/*
 			 * Single author.
 			 */
 			$authors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'author' ], $mod, $user_id, $list_element = false );
 
-			/**
+			/*
 			 * List of contributors / co-authors.
 			 */
 			if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
@@ -2467,7 +2467,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_data[ 'commentCount' ] = (int) get_comments_number( $post_mod[ 'id' ] );
 
-			/**
+			/*
 			 * Only get parent comments. The add_comment_data() method will recurse and add the children.
 			 */
 			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
@@ -2509,7 +2509,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $comments_added;	// Return count of comments added.
 		}
 
-		/**
+		/*
 		 * Pass a single or two dimension image array in $mt_images.
 		 *
 		 * Calls WpssoSchemaSingle::add_image_data_mt() to add each single image element.
@@ -2530,7 +2530,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $images_added;
 			}
 
-			/**
+			/*
 			 * Maybe convert single image array to array of image arrays.
 			 */
 			if ( ! isset( $mt_images[ 0 ] ) || ! is_array( $mt_images[ 0 ] ) ) {
@@ -2542,7 +2542,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $mt_images as $mt_single_image ) {
 
-				/**
+				/*
 				 * Get the image ID and create a Schema images array.
 				 */
 				if ( $resize && $pid = SucomUtil::get_first_mt_media_id( $mt_single_image, $media_pre ) ) {
@@ -2553,7 +2553,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pre = 'og' );
 
-						/**
+						/*
 						 * Recurse this method, but make sure $resize is false so we don't re-execute this
 						 * section of code (creating an infinite loop).
 						 */
@@ -2569,7 +2569,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $images_added;
 		}
 
-		/**
+		/*
 		 * Called by WpssoJsonTypeItemList.
 		 */
 		public static function add_itemlist_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main ) {
@@ -2662,7 +2662,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $item_count;
 		}
 
-		/**
+		/*
 		 * $mt_og can be the main webpage open graph array or a product $mt_offer array.
 		 *
 		 * $size_names can be null, a string, or an array.
@@ -2678,7 +2678,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Property:
 			 *	image as https://schema.org/ImageObject
 			 */
@@ -2703,7 +2703,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( $images_added . ' images added' );
 			}
 
-			/**
+			/*
 			 * Property:
 			 *	video as https://schema.org/VideoObject
 			 *
@@ -2740,7 +2740,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'skipping videos: add_video argument is false' );
 			}
 
-			/**
+			/*
 			 * Redefine mainEntityOfPage property for Attachment pages.
 			 *
 			 * If this is an attachment page, and the post mime_type is a known media type (image, video, or audio),
@@ -2783,7 +2783,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Called by the Blog, CollectionPage, ProfilePage, and SearchResultsPage filters.
 		 *
 		 * Example:
@@ -2810,7 +2810,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$added_count = 0;	// Initialize the total posts added counter.
 
-			/**
+			/*
 			 * The 6th argument used to be $posts_per_page (now $prop_type_ids) and 7th argument $prop_type_ids (now
 			 * $deprecated).
 			 */
@@ -2821,7 +2821,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$deprecated = null;
 			}
 
-			/**
+			/*
 			 * Sanity checks.
 			 */
 			if ( empty( $page_type_id ) ) {
@@ -2843,7 +2843,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $added_count;
 			}
 
-			/**
+			/*
 			 * Prevent recursion - i.e. webpage.collection in webpage.collection, etc.
 			 */
 			if ( isset( $added_page_type_ids[ $page_type_id ] ) ) {
@@ -2860,7 +2860,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$added_page_type_ids[ $page_type_id ] = true;
 			}
 
-			/**
+			/*
 			 * Begin timer.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -2887,7 +2887,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'page_posts_mods array has ' . count( $page_posts_mods ) . ' elements' );
 			}
 
-			/**
+			/*
 			 * Set the Schema properties.
 			 */
 			foreach ( $prop_type_ids as $prop_name => $type_ids ) {
@@ -3025,7 +3025,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			unset( $added_page_type_ids[ $page_type_id ] );
 
-			/**
+			/*
 			 * End timer.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -3036,7 +3036,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $added_count;
 		}
 
-		/**
+		/*
 		 * Provide a single or two-dimension video array in $mt_videos.
 		 */
 		public static function add_videos_data_mt( &$json_data, $mt_videos, $media_pre = 'og:video' ) {
@@ -3074,7 +3074,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Modifies the $json_data directly (by reference) and does not return a value.
 		 *
 		 * Do not type-cast the $json_data argument as it may be false or an array.
@@ -3093,7 +3093,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/**
+			/*
 			 * Promote all location information up.
 			 */
 			if ( isset( $json_data[ 'location' ] ) ) {
@@ -3123,7 +3123,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'no location property to promote' );
 			}
 
-			/**
+			/*
 			 * Google requires a local business to have an image.
 			 *
 			 * Check last as the location may have had an image that was promoted.
@@ -3143,7 +3143,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Return any third-party and custom post options for a given option type.
 		 *
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
@@ -3187,7 +3187,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Add metadata defaults and custom values to the $type_opts array.
 			 *
 			 * $type_opts can be false, an empty array, or an array of one or more options.
@@ -3197,7 +3197,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_opts;
 		}
 
-		/**
+		/*
 		 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
 		 */
 		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
@@ -3305,7 +3305,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return date_format( $date_obj, 'c' );
 		}
 
-		/**
+		/*
 		 * Example $names array:
 		 *
 		 * array(
@@ -3333,7 +3333,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns a https://schema.org/unitText value ('cm', 'ml', or 'kg').
 		 */
 		public static function get_unit_text( $mixed_key ) {
@@ -3389,7 +3389,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $local_cache[ $mixed_key ] = '';
 		}
 
-		/**
+		/*
 		 * Examples $names array:
 		 *
 		 * $names = array(
@@ -3418,7 +3418,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $names as $key => $key_name ) {
 
-				/**
+				/*
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
 				if ( empty( $schema_units[ $key ] ) || ! is_array( $schema_units[ $key ] ) ) {
@@ -3426,7 +3426,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Exclude empty string values.
 				 */
 				if ( isset( $assoc[ $key_name ] ) ) {
@@ -3439,7 +3439,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Example array:
 				 *
 				 *	$schema_units[ 'depth' ] = array(
@@ -3465,7 +3465,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns the number of Schema properties added to $json_data.
 		 *
 		 * Example usage:
@@ -3540,7 +3540,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $prop_added;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.0.0.
 		 *
 		 * Checks both the array key and its value. The array key must exist, and its value cannot be null, an empty
@@ -3567,7 +3567,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.0.0.
 		 *
 		 * The value cannot be null, an empty string, or the 'none' string.
@@ -3590,7 +3590,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v7.7.0.
 		 */
 		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $names, $overwrite = true ) {
@@ -3605,7 +3605,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $prop_added;
 		}
 
-		/**
+		/*
 		 * Example usage:
 		 *
 		 *	$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
@@ -3651,7 +3651,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return empty( $json_data ) ? false : $json_data;
 		}
 
-		/**
+		/*
 		 * Check for missing Schema property values.
 		 *
 		 * See WpssoAbstractWpMeta->check_head_info().
@@ -3667,7 +3667,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
 			 */
 			$wpsso =& Wpsso::get_instance();
@@ -3683,7 +3683,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( $prop_name . ' property value is empty and required' );
 					}
 
-					/**
+					/*
 					 * An is_admin() test is required to make sure the WpssoMessages class is available.
 					 */
 					if ( $wpsso->notice->is_admin_pre_notices() ) {
@@ -3703,7 +3703,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso->util->maybe_unset_ref( $ref_url );
 		}
 
-		/**
+		/*
 		 * Convert a numeric category ID to its Google category string.
 		 */
 		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
@@ -3717,7 +3717,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
-				/**
+				/*
 				 * Category IDs are expected to be numeric Google category IDs.
 				 *
 				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
@@ -3759,7 +3759,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $enumerations[ 'none' ] );
 
-				/**
+				/*
 				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
 				 */
 				foreach ( $enumerations as $key => $val ) {
@@ -3810,7 +3810,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $values;
 		}
 
-		/**
+		/*
 		 * See WpssoSchema->filter_sanitize_md_options().
 		 */
 		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_prefix = '', $val_suffix = '' ) {
@@ -3847,7 +3847,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$enumerations = $wpsso->cf[ 'form' ][ $enum_key ];
 
-				/**
+				/*
 				 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
 				 */
 				foreach ( $enumerations as $key => $val ) {
@@ -3897,7 +3897,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * If we have a GTIN number, try to improve the assigned property name.
 		 *
 		 * Pass $json_data by reference to modify the array directly.
@@ -3915,7 +3915,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
-				/**
+				/*
 				 * The value may come from a custom field, so trim it, just in case.
 				 */
 				$json_data[ $prop_name ] = trim( $json_data[ $prop_name ] );
@@ -3939,7 +3939,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
 		 */
 		public static function check_prop_value_sameas( &$json_data, $prop_name = 'sameAs' ) {
@@ -4004,7 +4004,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns false on error.
 		 *
 		 * $type_id can be a string, or an array.
@@ -4062,7 +4062,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * If $type_id is a URL, then use it as-is.
 			 */
 			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
@@ -4105,7 +4105,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$id_url = $json_data[ 'url' ];
 				}
 
-				/**
+				/*
 				 * Maybe remove an anchor ID from the begining of the type id string.
 				 */
 				if ( 0 === strpos( $type_id, $id_anchor ) ) {
@@ -4113,12 +4113,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$type_id = substr( $type_id, strlen( $id_anchor ) - 1 );
 				}
 
-				/**
+				/*
 				 * Standardize the $type_id string.
 				 */
 				$type_id = preg_replace( '/[-_\. ]+/', '-', $type_id );
 
-				/**
+				/*
 				 * Check if we already have an anchor ID in the URL.
 				 */
 				if ( false === strpos( $id_url, $id_anchor ) ) {
@@ -4126,7 +4126,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$id_url .= $id_anchor;
 				}
 
-				/**
+				/*
 				 * Check if we already have the type id in the URL.
 				 */
 				if ( false === strpos( $id_url, $id_anchor . $type_id ) ) {
@@ -4139,7 +4139,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = array( '@id' => $id_url ) + $json_data;	// Make @id the first value in the array.
 			}
 
-			/**
+			/*
 			 * Possibly hash the '@id' URL to hide a WordPress login username (as one example). Since Google reads the
 			 * '@id' value as a URL, use a leading slash to create the same path for the same '@id' URLs between
 			 * different Schema JSON-LD scripts (ie. not relative to the current webpage). For example:
@@ -4165,7 +4165,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Sanitation used by filters to return their data.
 		 */
 		public static function return_data_from_filter( $json_data, $merge_data, $is_main = false ) {
@@ -4181,7 +4181,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $merge_data[ 'url' ] ) ) {
 
-						/**
+						/*
 						 * Remove any URL fragment from the main entity URL. The 'mainEntityOfPage' value
 						 * can be empty and will be removed by WpssoSchemaGraph::optimize_json().
 						 */
@@ -4231,7 +4231,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return '/';
 		}
 
-		/**
+		/*
 		 * Deprecated on 2021/02/08.
 		 */
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
@@ -4241,7 +4241,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
 		}
 
-		/**
+		/*
 		 * Deprecated on 2022/12/26.
 		 */
 		public static function get_data_unit_text( $mixed_key ) {
@@ -4251,7 +4251,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::get_unit_text( $mixed_key );
 		}
 
-		/**
+		/*
 		 * Add cross-references for schema sub-type arrays that exist under more than one type.
 		 *
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
@@ -4260,7 +4260,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$thing =& $schema_types[ 'thing' ];	// Quick ref variable for the 'thing' array.
 
-			/**
+			/*
 			 * Thing > Intangible > Enumeration.
 			 */
 			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
@@ -4269,12 +4269,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'payment.card' ] =&
 				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ];
 
-			/**
+			/*
 			 * Thing > Organization > Educational Organization.
 			 */
 			$thing[ 'organization' ][ 'educational.organization' ] =& $thing[ 'place' ][ 'civic.structure' ][ 'educational.organization' ];
 
-			/**
+			/*
 			 * Thing > Organization > Local Business.
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];

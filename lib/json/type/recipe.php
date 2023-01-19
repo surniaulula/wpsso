@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/recipeCuisine.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_cuisine' ] ) ) {
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				$json_ret[ 'recipeCuisine' ] = (string) $md_opts[ 'schema_recipe_cuisine' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/recipeCategory.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_course' ] ) ) {
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				$json_ret[ 'recipeCategory' ] = (string) $md_opts[ 'schema_recipe_course' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/recipeYield.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_yield' ] ) ) {
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				$json_ret[ 'recipeYield' ] = (string) $md_opts[ 'schema_recipe_yield' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/cookingMethod.
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_cook_method' ] ) ) {
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				$json_ret[ 'cookingMethod' ] = (string) $md_opts[ 'schema_recipe_cook_method' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/prepTime.
 			 * See https://schema.org/cookTime.
 			 * See https://schema.org/totalTime.
@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				'totalTime' => 'schema_recipe_total',
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/recipeIngredient.
 			 */
 			$recipe_ingredients = SucomUtil::preg_grep_keys( '/^schema_recipe_ingredient_([0-9])+$/', $md_opts, $invert = false, $replace = '$1' );
@@ -98,12 +98,12 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 				$json_ret[ 'recipeIngredient' ][] = $md_val;
 			}
 
-			/**
+			/*
 			 * See https://schema.org/recipeInstructions.
 			 */
 			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
 
-			/**
+			/*
 			 * See https://schema.org/nutrition as https://schema.org/NutritionInformation
 			 */
 			if ( ! empty( $md_opts[ 'schema_recipe_nutri_serv' ] ) ) {	// serving size is required

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
-		/**
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		public function add_wp_hooks() {
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $is_admin ) {
 
-				/**
+				/*
 				 * Hook a minimum number of admin actions to maximize performance. The taxonomy and tag_ID
 				 * arguments are always present when we're editing a category and/or tag page, so return
 				 * immediately if they're not present.
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'query tax slug = ' . $this->query_tax_slug );
 				}
 
-				/**
+				/*
 				 * Add edit table columns.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_filter( 'manage_edit-' . $this->query_tax_slug . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				add_filter( 'manage_' . $this->query_tax_slug . '_custom_column', array( $this, 'get_column_content' ), 10, 3 );
 
-				/**
+				/*
 				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
 				 * post, term, and user edit tables.
 				 *
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
 
-				/**
+				/*
 				 * Maybe create or update the term column content.
 				 */
 				add_filter( 'get_term_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'query term_id = ' . $this->query_term_id );
 				}
 
-				/**
+				/*
 				 * Available taxonomy and term actions:
 				 *
 				 * do_action( "create_$taxonomy",  $term_id, $tt_id );
@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( ! empty( $_GET ) ) {
 
-					/**
+					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term
 					 *
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Get the $mod object for a term id.
 		 */
 		public function get_mod( $term_id, $tax_slug = '' ) {
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * Taxonomy term IDs from older WordPress versions may not be unique, so use the term ID and taxonomy slug
 			 * to cache the mod array.
 			 */
@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = self::get_mod_defaults();
 
-			/**
+			/*
 			 * Common elements.
 			 */
 			$mod[ 'id' ]            = is_numeric( $term_id ) ? (int) $term_id : 0;	// Cast as integer.
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod[ 'name_transl' ]   = _x( 'term', 'module name', 'wpsso' );
 			$mod[ 'obj' ]           =& $this;
 
-			/**
+			/*
 			 * WpssoTerm elements.
 			 */
 			$mod[ 'is_term' ]    = true;
@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 		}
 
-		/**
+		/*
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
@@ -267,12 +267,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			static $local_cache = array();
 
-			/**
+			/*
 			 * Use $term_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
-			/**
+			/*
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
-				/**
+				/*
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$mod = $this->get_mod( $term_id );
 
-					/**
+					/*
 					 * Since WPSSO Core v9.5.0.
 					 *
 					 * Overwrite parent options with those of the child, allowing only undefined child options
@@ -361,17 +361,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}
 
-					/**
+					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v4.31.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $this->return_options( $term_id, $md_opts, $md_key, $merge_defs );
 		}
 
-		/**
+		/*
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $term_id, $term_tax_id = false ) {
@@ -404,7 +404,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Make sure the current user can submit and same metabox options.
 			 */
 			if ( ! $this->user_can_save( $term_id, $term_tax_id ) ) {
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 		}
 
-		/**
+		/*
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->delete_options().
 		 */
 		public function delete_options( $term_id, $term_tax_id = false ) {
@@ -445,7 +445,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::delete_meta( $term_id, WPSSO_META_NAME );
 		}
 
-		/**
+		/*
 		 * Get all publicly accessible term ids for taxonomy slugs (optional).
 		 */
 		public static function get_public_ids( $tax_names = null ) {
@@ -478,7 +478,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$wpsso->debug->log_arr( 'terms_args', $terms_args );
 				}
 
-				/**
+				/*
 				 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
 				 */
 				$term_ids = get_terms( $terms_args );
@@ -489,7 +489,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Sort public term IDs with the newest term ID first.
 			 *
 			 * Note that rsort() assigns new keys to elements in the array.
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $public_ids;
 		}
 
-		/**
+		/*
 		 * Get post ids for a term id in a taxonomy slug.
 		 *
 		 * Return an array of post ids for a given $mod object, including posts in child terms as well.
@@ -590,7 +590,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return SucomUtilWP::get_update_meta_cache( $term_id, $meta_type = 'term' );
 		}
 
-		/**
+		/*
 		 * Hooked into the current_screen action.
 		 *
 		 * Sets the parent::$head_tags and parent::$head_info class properties.
@@ -602,7 +602,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
 			if ( false !== parent::$head_tags || ! isset( $screen->id ) ) {
@@ -634,7 +634,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 			}
 
-			/**
+			/*
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid term page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
@@ -658,7 +658,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
 				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
-				/**
+				/*
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'id' ] && $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
@@ -705,7 +705,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Use $tax_slug = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $term_obj, $tax_slug = false ) {
@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $metabox_html;
 		}
 
-		/**
+		/*
 		 * Hooked to these actions:
 		 *
 		 * do_action( "created_$taxonomy", $term_id, $tt_id );
@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Clear the post meta, content, and head caches.
 			 */
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
@@ -880,7 +880,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$this->clear_mod_cache( $mod );
 
-			/**
+			/*
 			 * Clear the term column meta last.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			do_action( 'wpsso_clear_term_cache', $term_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $term_id, $term_tax_id = false ) {
@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			do_action( 'wpsso_refresh_term_cache', $term_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $term_id, $term_tax_id = false ) {
@@ -933,7 +933,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for term id ' . $term_id );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -947,7 +947,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function get_meta( $term_id, $meta_key = '', $single = false ) {
@@ -955,7 +955,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::get_term_meta( $term_id, $meta_key, $single );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function update_meta( $term_id, $meta_key, $value ) {
@@ -963,7 +963,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::update_term_meta( $term_id, $meta_key, $value );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function delete_meta( $term_id, $meta_key ) {
@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::delete_term_meta( $term_id, $meta_key );
 		}
 
-		/**
+		/*
 		 * Backwards compatible methods for handling term meta, which did not exist before WordPress v4.4.
 		 */
 		public static function get_term_meta( $term_id, $meta_key, $single = false ) {
@@ -982,12 +982,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$term_meta = get_term_meta( $term_id, $meta_key, $single );	// Since WP v4.4.
 
-				/**
+				/*
 				 * Fallback to checking for deprecated term meta in the options table.
 				 */
 				if ( ( $single && $term_meta === '' ) || ( ! $single && $term_meta === array() ) ) {
 
-					/**
+					/*
 					 * If deprecated meta is found, update the meta table and delete the deprecated meta.
 					 */
 					if ( ( $opt_term_meta = get_option( $meta_key . '_term_' . $term_id, null ) ) !== null ) {

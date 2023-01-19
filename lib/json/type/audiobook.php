@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeAudiobook' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonTypeAudiobook' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/duration.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(

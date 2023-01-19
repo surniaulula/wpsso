@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 			), $prio = 110 );
 		}
 
-		/**
+		/*
 		 * Elementor incorrectly registers the 'elementor_library' post type as 'public' = true and 'show_ui' = true, so we
 		 * need to remove it from the list of public post types.
 		 */
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Elementor widget for videos.
 			 *
 			 * Example:

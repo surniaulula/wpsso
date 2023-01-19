@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
-			/**
+			/*
 			 * Skip reading place meta tags if not main schema type or if there are no place meta tags.
 			 */
 			$read_mt_place = false;
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 				$this->p->debug->log( 'no place meta tags found' );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/telephone.
 			 */
 			if ( $read_mt_place ) {
@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 				) );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/address as https://schema.org/PostalAddress.
 			 *
 			 * <meta property="place:street_address" content="1234 Some Road"/>
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/geo as https://schema.org/GeoCoordinates.
 			 *
 			 * <meta property="place:location:altitude" content="2,200"/>
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/openingHoursSpecification as https://schema.org/OpeningHoursSpecification.
 			 */
 			if ( $read_mt_place ) {

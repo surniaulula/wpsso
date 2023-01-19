@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -45,12 +45,12 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/itemReviewed.
 			 */
 			WpssoSchema::add_item_reviewed_data( $json_ret[ 'itemReviewed' ], $mod, $md_opts );
 
-			/**
+			/*
 			 * See https://schema.org/reviewRating.
 			 */
 			$json_ret[ 'reviewRating' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Rating' );

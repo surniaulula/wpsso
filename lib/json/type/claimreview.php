@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * Create the 'appearance' property value.
 			 *
 			 * Inherit the 'itemReviewed' property value from https://schema.org/Review.
@@ -56,12 +56,12 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 				$appearance_type_url = $this->p->schema->get_data_type_url( $appearance_type_obj );
 				$claim_review_url    = $this->p->schema->get_schema_type_url( 'review.claim' );
 
-				/**
+				/*
 				 * The subject of a claim review cannot be another claim review.
 				 */
 				if ( $claim_review_url === $appearance_type_url ) {
 
-					/**
+					/*
 					 * Add notice only if the admin notices have not already been shown.
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -83,14 +83,14 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 				$appearance_type_obj = $this->p->schema->get_schema_type_context( $appearance_type_url );
 			}
 
-			/**
+			/*
 			 * Re-define the 'itemReviewed' property as a https://schema.org/Claim and set the 'appearance' property.
 			 */
 			$claim_type_url = $this->p->schema->get_schema_type_url( 'claim' );
 
 			$json_ret[ 'itemReviewed' ] = WpssoSchema::get_schema_type_context( $claim_type_url );
 
-			/**
+			/*
 			 * Google suggests adding the 'author' and 'datePublished' properties to the Schema Claim type, if
 			 * available.
 			 */
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 
 			$json_ret[ 'itemReviewed' ][ 'appearance' ] = $appearance_type_obj;
 
-			/**
+			/*
 			 * https://schema.org/claimReviewed
 			 *
 			 * A short summary of the specific claims reviewed in a ClaimReview.
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoJsonTypeClaimReview' ) ) {
 				$json_ret[ 'claimReviewed' ] = $md_opts[ 'schema_review_claim_reviewed' ];
 			}
 
-			/**
+			/*
 			 * If there's a first appearance URL, add the URL using a CreativeWork object as well.
 			 */
 			if ( ! empty( $md_opts[ 'schema_review_claim_first_url' ] ) ) {

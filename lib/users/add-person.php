@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext  = $ext;
 		}
 
-		/**
+		/*
 		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
 		 *
 		 * Add settings page filter and action hooks.
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$illegal_logins = (array) apply_filters( 'illegal_user_logins', array() );
 
-			/**
+			/*
 			 * Create a user object.
 			 */
 			$user = new stdClass;
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$errors = new WP_Error();
 
-			/**
+			/*
 			 * Check the user login.
 			 */
 			if ( empty( $user->user_login ) ) {
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					array( 'form-field' => 'user_login' ) );
 			}
 
-			/**
+			/*
 			 * Check the email address.
 			 */
 			if ( ! empty( $user->user_email ) ) {

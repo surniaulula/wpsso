@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 				'text' => 'name',
 			) );
 
-			/**
+			/*
 			 * Answer:
 			 *
 			 * Schema Question is a sub-type of CreativeWork. We already have the question in 'name' (the post/page

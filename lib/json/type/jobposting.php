@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -44,14 +44,14 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 
 			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = false, $list_element = false );
 
-			/**
+			/*
 			 * See https://schema.org/datePosted.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'datePosted' => 'article:published_time',
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 */
 			if ( $this->p->debug->enabled ) {

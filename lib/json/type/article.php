@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * See https://schema.org/articleSection.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 				$json_ret[ 'timeRequired' ] = 'PT' . $mt_og[ 'article:reading_mins' ] . 'M';
 			}
 
-			/**
+			/*
 			 * See https://schema.org/articleBody.
 			 */
 			if ( isset( $json_data[ 'text' ] ) ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 				unset( $json_data[ 'text' ] );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/speakable.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_speakable_css_csv' ] ) ) {

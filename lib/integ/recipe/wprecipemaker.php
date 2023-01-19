@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 			add_filter( 'wprm_recipe_metadata', '__return_empty_array', PHP_INT_MAX );
 		}
 
-		/**
+		/*
 		 * Clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 		 */
 		public function filter_cf_md_index( $cf_md_index ) {
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				return $md_opts;
 			}
 
-			/**
+			/*
 			 * Remove old ingredient and instruction lists.
 			 */
 			$md_opts = SucomUtil::preg_grep_keys( '/^schema_recipe_(ingredient|instruction)_[0-9]+$/', $md_opts, $invert = true );
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 			return $md_opts;
 		}
 
-		/**
+		/*
 		 * Returns option names suitable for custom post meta (includes a "schema_" prefix).
 		 */
 		public static function get_recipe_options( $post_id, $recipe_id ) {
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				'schema_recipe_id' => $recipe_id,
 			);
 
-			/**
+			/*
 			 * Cuisine
 			 */
 			$cuisines = $recipe->tags( 'cuisine' );
@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				$opts[ 'schema_recipe_cuisine' ] = implode( $glue = ', ', wp_list_pluck( $cuisines, 'name' ) );
 			}
 
-			/**
+			/*
 			 * Course
 			 */
 			$courses = $recipe->tags( 'course' );
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				$opts[ 'schema_recipe_course' ] = implode( $glue = ', ', wp_list_pluck( $courses, 'name' ) );
 			}
 
-			/**
+			/*
 			 * Yield
 			 */
 			if ( $recipe->servings() ) {
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				$opts[ 'schema_recipe_yield' ] = trim( $recipe->servings() . ' ' . $recipe->servings_unit() );
 			}
 
-			/**
+			/*
 			 * Times
 			 */
 			foreach( array(
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 			$opts[ 'schema_recipe_total_mins' ] = $recipe->total_time();
 			$opts[ 'schema_recipe_cook_mins' ]  = $recipe->cook_time();
 
-			/**
+			/*
 			 * Ingredients
 			 */
 			if ( isset( $data[ 'ingredients' ] ) && is_array( $data[ 'ingredients' ] ) ) {
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				unset ( $ingredients );
 			}
 
-			/**
+			/*
 			 * Instructions
 			 */
 			if ( isset( $data[ 'instructions' ] ) && is_array( $data[ 'instructions' ] ) ) {
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 				unset ( $instructions );
 			}
 
-			/**
+			/*
 			 * Nutrition Information
 			 */
 			if ( isset( $data[ 'nutrition' ] ) && is_array( $data[ 'nutrition' ] ) ) {

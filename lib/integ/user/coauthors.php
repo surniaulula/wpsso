@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 				return $mod;
 			}
 
-			/**
+			/*
 			 * Make sure the first (top) author listed is the post / page author.
 			 */
 			$author = reset( $coauthors );
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 			return $mod;
 		}
 
-		/**
+		/*
 		 * Hooked to 'sucom_get_user_object'.
 		 */
 		public function filter_get_user_object( $user_obj, $user_id ) {
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 			return $mt_ret;
 		}
 
-		/**
+		/*
 		 * Coauthor guest user meta is saved as a custom post type.
 		 */
 		public function filter_get_other_user_meta( $opts, $user_id ) {
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 		public function filter_get_author_meta( $value, $user_id, $field_id, $is_user ) {
 
-			/**
+			/*
 			 * Abort if user_id is a valid WordPress user.
 			 */
 			if ( $is_user ) {
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 				return $value;
 			}
 
-			/**
+			/*
 			 * StdClass Object (
 			 *	[ID]             => 2606
 			 *	[display_name]   => Mr. John Doe
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 			return $value;
 		}
 
-		/**
+		/*
 		 * Don't check guest author custom post types (the permalink is not accessible).
 		 */
 		public function filter_check_post_head( $enabled, $post_id, $post_obj ) {
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 			return $enabled;
 		}
 
-		/**
+		/*
 		 * Guest author custom post types don't have content - return the description author meta instead.
 		 */
 		public function filter_description_seed( $desc_text, $mod, $num_hashtags, $md_key ) {
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 		public function add_contact_methods( $fields = array(), $groups = null ) {
 
-			/**
+			/*
 			 * Use the same check as the coauthors plugin.
 			 */
 			if ( ! in_array( 'contact-info', $groups ) && 'all' !== $groups[0] ) {
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 				return $fields;
 			}
 
-			/**
+			/*
 			 * Unset built-in contact fields and/or update their labels.
 			 */
 			if ( ! empty( $this->p->cf[ 'wp' ][ 'cm_names' ] ) && is_array( $this->p->cf[ 'wp' ][ 'cm_names' ] ) ) {
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 						continue;
 					}
 
-					/**
+					/*
 					 * Adjust for wp / coauthors key differences.
 					 */
 					switch ( $cm[ 'key' ] ) {
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Loop through each social website option prefix.
 			 */
 			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $cm_id => $opt_pre ) {

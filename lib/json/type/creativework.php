@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 			$json_ret = array();
 
-			/**
+			/*
 			 * See https://schema.org/text.
 			 */
 			if ( ! empty( $this->p->options[ 'schema_add_text_prop' ] ) ) {
@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				$json_ret[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 			}
 
-			/**
+			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/video as https://schema.org/VideoObject.
 			 */
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
 
-			/**
+			/*
 			 * See https://schema.org/provider.
 			 * See https://schema.org/publisher.
 			 */
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 				$is_article = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
 
-				/**
+				/*
 				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
 				 * value to a property array.
 				 */
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/isPartOf.
 			 */
 			$json_ret[ 'isPartOf' ] = array();
@@ -140,17 +140,17 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret[ 'isPartOf' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
 				$json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
 
-			/**
+			/*
 			 * See https://schema.org/headline.
 			 */
 			$json_ret[ 'headline' ] = $this->p->page->get_title( $mod, $md_key = 'schema_headline', $max_len = 'schema_headline' );
 
-			/**
+			/*
 			 * See https://schema.org/keywords.
 			 */
 			$json_ret[ 'keywords' ] = $this->p->page->get_keywords_csv( $mod, $md_key = 'schema_keywords_csv' );
 
-			/**
+			/*
 			 * See https://schema.org/copyrightYear.
 			 * See https://schema.org/license.
 			 * See https://schema.org/isFamilyFriendly.
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {
 
-				/**
+				/*
 				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
 				 * value to a property array.
 				 */
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * See https://schema.org/dateCreated.
 			 * See https://schema.org/datePublished.
 			 * See https://schema.org/dateModified.
@@ -198,18 +198,18 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				'dateModified'  => 'article:modified_time',
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/author as https://schema.org/Person.
 			 * See https://schema.org/contributor as https://schema.org/Person.
 			 */
 			WpssoSchema::add_author_coauthor_data( $json_ret, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/thumbnailURL.
 			 */
 			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
-			/**
+			/*
 			 * See https://schema.org/citation.
 			 *
 			 * There is very little information available from Google about the expected JSON markup structure for
@@ -237,13 +237,13 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret[ 'citation' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
 				$json_ret[ 'citation' ], $mod, $mt_og, $page_type_id, $is_main );
 
-			/**
+			/*
 			 * See https://schema.org/comment as https://schema.org/Comment.
 			 * See https://schema.org/commentCount.
 			 */
 			WpssoSchema::add_comment_list_data( $json_ret, $mod );
 
-			/**
+			/*
 			 * Check for required CreativeWork properties.
 			 */
 			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ) );

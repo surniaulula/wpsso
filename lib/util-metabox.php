@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$metabox_html .= '<div class="' . $mb_tabs_class . '"' . ( $mb_tabs_id ? ' id="' . $mb_tabs_id . '"' : '' ) . '>' . "\n";
 			$metabox_html .= '<ul class="' . $mb_tabs_class . '">';
 
-			/**
+			/*
 			 * Add the settings tab list.
 			 */
 			$tab_num = 0;
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$metabox_html .= '<li' . "\n" . 'class="tab_space end_tabs"></li>';
 			$metabox_html .= '</ul><!-- .' . $mb_tabs_class . ' -->' . "\n\n";
 
-			/**
+			/*
 			 * Add the settings table for each tab.
 			 */
 			foreach ( $tabs as $tab => $title_transl ) {
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Default row class and id attribute values.
 				 */
 				$tr = array(
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 					'id' => ( is_int( $key ) ? '' : 'tr_' . $key )
 				);
 
-				/**
+				/*
 				 * If we don't already have a table row tag, then add one.
 				 */
 				if ( strpos( $row, '<tr ' ) === false ) {
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 							continue;
 						}
 
-						/**
+						/*
 						 * If we're here, then we have a table row tag already.
 						 *
 						 * Count the number of rows and options that are hidden.
@@ -198,12 +198,12 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 							}
 						}
 
-						/**
+						/*
 						 * Add the attribute value.
 						 */
 						$row = preg_replace( '/(<tr [^>]*' . $att . '=")([^"]*)(")/', '$1$2 ' . $tr[ $att ] . '$3', $row, -1, $cnt );
 
-						/**
+						/*
 						 * If one hasn't been added, then add both the attribute and its value.
 						 */
 						if ( $cnt < 1 ) {
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 					}
 				}
 
-				/**
+				/*
 				 * Add a closing table row tag if we don't already have one.
 				 */
 				if ( strpos( $row, '</tr>' ) === false ) {
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 					$row .= '</tr>' . "\n";
 				}
 
-				/**
+				/*
 				 * Update the table row array element with the new value.
 				 */
 				$table_rows[ $key ] = $row;

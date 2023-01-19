@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
 	 */
 	class WpssoMessagesTooltipSite extends WpssoMessages {
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * This help text is also used for the WPSSO OPM add-on 'tooltip-meta-org_logo_url' help text.
 				 */
 				case 'tooltip-site_org_logo_url':	// Organization Logo URL.
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * This help text is also used for the WPSSO OPM add-on 'tooltip-meta-org_banner_url' help text.
 				 */
 				case 'tooltip-site_org_banner_url':	// Organization Banner URL.

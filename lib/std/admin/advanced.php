@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->product_categories = $this->p->util->get_google_product_categories();
 		}
 
-		/**
+		/*
 		 * Plugin Settings > Integration tab.
 		 */
 		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_pct_max', $css_class = 'short' ) . ' %</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_pct_max', $form, $network );
 
-			/**
+			/*
 			 * Plugin and theme integration options.
 			 */
 			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Plugin Settings > Default Text tab.
 		 */
 		public function filter_plugin_default_text_rows( $table_rows, $form ) {
@@ -382,7 +382,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * SSO > Advanced Settings > Plugin Settings > Image Sizes tab.
 		 */
 		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Plugin Settings > Interface tab.
 		 */
 		public function filter_plugin_interface_rows( $table_rows, $form ) {
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_show_opts' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
-			/**
+			/*
 			 * Show validators toolbar menu.
 			 */
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
@@ -462,7 +462,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_add_toolbar_validate' ) .
 				$form->get_no_td_checkbox( 'plugin_add_toolbar_validate' );
 
-			/**
+			/*
 			 * Show SSO menu items.
 			 */
 			$menu_title = $this->p->admin->get_menu_title();
@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_add_submenu' ) .
 				'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
 
-			/**
+			/*
 			 * Show custom meta metaboxes.
 			 */
 			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_add_to' ) .
 				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';
 
-			/**
+			/*
 			 * Additional item list columns.
 			 */
 			$col_headers = WpssoAbstractWpMeta::get_column_headers();
@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Service APIs > Media Services tab.
 		 */
 		public function filter_services_media_rows( $table_rows, $form ) {
@@ -551,7 +551,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Service APIs > Shortening Services tab.
 		 */
 		public function filter_services_shortening_rows( $table_rows, $form ) {
@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Service APIs > Ratings and Reviews tab.
 		 */
 		public function filter_services_ratings_reviews_rows( $table_rows, $form ) {
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Document Types > Open Graph tab.
 		 */
 		public function filter_doc_types_og_types_rows( $table_rows, $form ) {
@@ -630,7 +630,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			/**
+			/*
 			 * Open Graph Type.
 			 */
 			foreach ( array(
@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'<td class="blank">' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . '</td>';
 			}
 
-			/**
+			/*
 			 * Open Graph Type by Post Type.
 			 *
 			 * SucomUtil::get_post_type_labels() calls SucomUtil::get_post_types(), which returns post types registered
@@ -667,7 +667,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'og_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
-			/**
+			/*
 			 * Open Graph Type by Post Type Archive.
 			 */
 			$type_select = '';
@@ -690,7 +690,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'<td class="blank">' . $type_select . '</td>';
 			}
 
-			/**
+			/*
 			 * Open Graph Type by Taxonomy.
 			 */
 			$type_select = '';
@@ -712,7 +712,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Document Types > Schema tab.
 		 */
 		public function filter_doc_types_schema_types_rows( $table_rows, $form ) {
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			/**
+			/*
 			 * Schema Type.
 			 */
 			foreach ( array(
@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'</td>';
 			}
 
-			/**
+			/*
 			 * Schema Type by Post Type.
 			 *
 			 * SucomUtil::get_post_type_labels() calls SucomUtil::get_post_types(), which returns post types registered
@@ -774,7 +774,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'schema_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
-			/**
+			/*
 			 * Schema Type by Post Type Archive.
 			 */
 			$type_select = '';
@@ -804,7 +804,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'<td class="blank">' . $type_select . '</td>';
 			}
 
-			/**
+			/*
 			 * Schema Type by Taxonomy.
 			 */
 			$type_select = '';
@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v13.5.0.
 		 */
 		public function filter_schema_props_article_rows( $table_rows, $form ) {
@@ -1125,7 +1125,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Contact Fields > Custom Contacts tab.
 		 */
 		public function filter_cm_custom_contacts_rows( $table_rows, $form ) {
@@ -1156,7 +1156,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Contact Fields > Default Contacts tab.
 		 */
 		public function filter_cm_default_contacts_rows( $table_rows, $form ) {
@@ -1181,7 +1181,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$cm_name_key    = 'wp_cm_' . $cm_id . '_name';
 				$cm_label_key   = 'wp_cm_' . $cm_id . '_label';
 
-				/**
+				/*
 				 * Not all social websites have a contact method field.
 				 */
 				if ( ! isset( $form->options[ $cm_enabled_key ] ) ) {
@@ -1199,7 +1199,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * About the User metabox.
 		 */
 		public function filter_advanced_user_about_rows( $table_rows, $form ) {
@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Attributes and Metadata > Product Attributes tab.
 		 */
 		public function filter_metadata_product_attrs_rows( $table_rows, $form ) {
@@ -1248,7 +1248,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * Attributes and Metadata > Custom Fields tab.
 		 */
 		public function filter_metadata_custom_fields_rows( $table_rows, $form ) {
@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
 
-				/**
+				/*
 				 * Make sure we have a label for the custom field option.
 				 */
 				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_cf_key ] ) ) {
@@ -1275,7 +1275,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $opts_transl as $opt_cf_key => $opt_label_transl ) {
 
-				/**
+				/*
 				 * If we don't have a meta data options key, then clear the custom field name (just in case) and
 				 * disable the option.
 				 */
@@ -1294,7 +1294,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		/**
+		/*
 		 * HTML Tags > Facebook tab.
 		 */
 		public function filter_head_tags_facebook_rows( $table_rows, $form, $network = false ) {
@@ -1302,7 +1302,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
-		/**
+		/*
 		 * HTML Tags > Open Graph tab.
 		 */
 		public function filter_head_tags_open_graph_rows( $table_rows, $form, $network = false ) {
@@ -1310,7 +1310,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
-		/**
+		/*
 		 * HTML Tags > Twitter tab.
 		 */
 		public function filter_head_tags_twitter_rows( $table_rows, $form, $network = false ) {
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
-		/**
+		/*
 		 * HTML Tags > SEO and Others tab.
 		 */
 		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network = false ) {

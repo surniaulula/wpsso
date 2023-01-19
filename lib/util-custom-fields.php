@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		private $p;	// Wpsso class object.
 		private $u;	// WpssoUtil class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin, &$util ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and 'wpsso_get_post_options'
 		 * filters, so values retrieved from custom fields may get overwritten by later filters.
 		 *
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					continue;
 				}
 
-				/**
+				/*
 				 * Check to see if we have an alternate $wp_meta_key value for WooCommerce variations.
 				 */
 				if ( isset( $alt_opts[ $opt_cf_key ] ) ) {
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					$this->p->debug->log( 'using custom field ' . $wp_meta_key . ' key for ' . $md_key . ' option' );
 				}
 
-				/**
+				/*
 				 * WordPress offers metadata in array element 0.
 				 */
 				if ( isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				$values = array();
 
-				/**
+				/*
 				 * If $mixed is an array, then decode each array element.
 				 */
 				if ( is_array( $mixed ) ) {
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
-				/**
+				/*
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
 				if ( empty( $md_keys_multi[ $md_key ] ) ) {
@@ -190,25 +190,25 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 					}
 
-					/**
+					/*
 					 * If this is a '_value' option, add the '_units' option.
 					 */
 					$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
 
-					/**
+					/*
 					 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 					 */
 					$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
 
 				} else {
 
-					/**
+					/*
 					 * If the input meta is not an array, and the meta options key allows for multiple numbered
 					 * values, then split the first (and what should be the only) array element into an array.
 					 */
 					if ( ! is_array( $mixed ) ) {
 
-						/**
+						/*
 						 * Explode the first element into an array.
 						 */
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );

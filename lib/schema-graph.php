@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			self::$graph_data = array();
 		}
 
-		/**
+		/*
 		 * Recursively remove null values, empty strings, and empty arrays.
 		 */
 		public static function clean_json( array &$arr ) {
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				$combined_graph = array_merge( array_values( $local_new_data ), $json_data[ '@graph' ] );
 
-				/**
+				/*
 				 * Cleanup any empty @id arrays.
 				 */
 				foreach ( $combined_graph as $num => $val ) {
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				$json_data[ '@graph' ] = $combined_graph;
 
-				/**
+				/*
 				 * Reset the static variables after merging the new data.
 				 */
 				$local_new_data = array();

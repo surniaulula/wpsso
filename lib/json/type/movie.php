@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe remove values related to the WordPress post object.
 			 */
 			unset( $json_data[ 'author' ] );
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * Movie Release Date, Time, Timezone.
 			 *
 			 * Add the movie released (aka created) date, if one is available.
@@ -64,24 +64,24 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 				$json_ret[ 'dateCreated' ] = $date;
 			}
 
-			/**
+			/*
 			 * See https://schema.org/duration.
 			 */
 			WpssoSchema::add_data_time_from_assoc( $json_ret, $md_opts, array(
 				'duration' => 'schema_movie_duration',	// Option prefix for days, hours, mins, secs.
 			) );
 
-			/**
+			/*
 			 * See https://schema.org/actor.
 			 */
 			WpssoSchema::add_person_names_data( $json_ret, 'actor', $md_opts, 'schema_movie_actor_person_name' );
 
-			/**
+			/*
 			 * See https://schema.org/director.
 			 */
 			WpssoSchema::add_person_names_data( $json_ret, 'director', $md_opts, 'schema_movie_director_person_name' );
 
-			/**
+			/*
 			 * See https://schema.org/productionCompany.
 			 */
 			if ( WpssoSchema::is_valid_key( $md_opts, 'schema_movie_prodco_org_id' ) ) {	// Not null, an empty string, or 'none'.

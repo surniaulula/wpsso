@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			) );
 		}
 
-		/**
+		/*
 		 * Note that SoftwareApplication is a sub-type of CreativeWork, which includes image and video properties.
 		 */
 		public function filter_json_data_https_schema_org_softwareapplication( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * Maybe remove values related to the WordPress post object.
 			 */
 			unset( $json_data[ 'author' ] );
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
-			/**
+			/*
 			 * See https://schema.org/applicationCategory.
 			 */
 			if ( ! empty( $md_opts[ 'schema_software_app_cat' ] ) ) {
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 				$json_ret[ 'applicationCategory' ] = (string) $md_opts[ 'schema_software_app_cat' ];
 			}
 
-			/**
+			/*
 			 * See https://schema.org/operatingSystem.
 			 */
 			if ( ! empty( $md_opts[ 'schema_software_app_os' ] ) ) {
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 				$json_ret[ 'operatingSystem' ] = (string) $md_opts[ 'schema_software_app_os' ];
 			}
 
-			/**
+			/*
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
 			static $local_is_recursion = false;
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 				$local_is_recursion = true;
 
-				/**
+				/*
 				 * See https://schema.org/offers as https://schema.org/Offer.
 				 */
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 						$this->p->debug->log( 'returned single offer is empty' );
 					}
 
-				/**
+				/*
 				 * See https://schema.org/offers as https://schema.org/AggregateOffer.
 				 */
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {	// Just in case - must be an array.

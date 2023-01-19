@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
  * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
  * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/integ/data/abstract/seo-meta.php';
 }
 
-/**
+/*
  * Import Rank Math SEO Metadata.
  */
 if ( ! class_exists( 'WpssoIntegDataRankmathMeta' ) ) {

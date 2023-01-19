@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2016-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by Wpsso->init_json_filters().
 		 */
 		public function __construct( &$plugin ) {
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 			), $prio = 10000 );
 		}
 
-		/**
+		/*
 		 * Automatically include an aggregateRating property based on the Open Graph rating meta tags.
 		 *
 		 * $page_type_id is false and $is_main is true when called as part of a collection page part.
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 
 			$og_type = isset( $mt_og[ 'og:type' ] ) ? $mt_og[ 'og:type' ] : false;
 
-			/**
+			/*
 			 * Only pull values from meta tags if this is the main entity markup.
 			 */
 			if ( $is_main && $og_type ) {
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 				$this->p->debug->log_arr( 'aggregate rating', $aggr_rating );
 			}
 
-			/**
+			/*
 			 * Check for at least two essential meta tags (a rating value, and a rating count or review count).
 			 *
 			 * The rating value is expected to be a float and the rating counts are expected to be integers.
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 				$this->p->debug->log( 'aggregate rating ignored: ratingValue is empty' );
 			}
 
-			/**
+			/*
 			 * Return if nothing to do.
 			 */
 			if ( empty( $json_ret[ 'aggregateRating' ] ) && empty( $json_data[ 'aggregateRating' ] ) ) {
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 				return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 			}
 
-			/**
+			/*
 			 * Make sure aggregate ratings are allowed by Google for this Schema type.
 			 */
 			if ( ! $this->p->schema->allow_aggregate_rating( $page_type_id ) ) {

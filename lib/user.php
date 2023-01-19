@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
-		/**
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		public function add_wp_hooks() {
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			add_action( 'wpsso_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
 
-			/**
+			/*
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is
 			 * always present when we're editing a user, but missing when viewing our own profile page.
 			 */
@@ -87,14 +87,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( ! empty( $_GET ) ) {
 
-					/**
+					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 *
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
 
-					/**
+					/*
 					 * Fires after the 'About the User' settings table on the 'Edit User' screen.
 					 */
 					add_action( 'edit_user_profile', array( $this, 'add_meta_boxes' ), 10, 1 );
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
 
-				/**
+				/*
 				 * Add edit table columns.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content' ), 10, 3 );
 
-				/**
+				/*
 				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
 				 * post, term, and user edit tables.
 				 *
@@ -123,12 +123,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
 
-				/**
+				/*
 				 * Maybe create or update the user column content.
 				 */
 				add_action( 'get_user_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
 
-				/**
+				/*
 				 * Hooks when editing a user.
 				 */
 				add_action( 'edit_user_profile', array( $this, 'show_metaboxes' ), 20, 1 );
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );	// Default is -100.
 				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );	// Default is -10.
 
-				/**
+				/*
 				 * Hooks when editing personal profile.
 				 */
 				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -1000, 1 );
@@ -147,14 +147,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );		// Default is -10.
 				add_action( 'personal_options_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );	// Default is 0.
 
-				/**
+				/*
 				 * Use the 'show_password_fields' filter as an action to get more information about the user.
 				 */
 				add_filter( 'show_password_fields', array( $this, 'pre_password_fields' ), -1000, 2 );
 			}
 		}
 
-		/**
+		/*
 		 * Get the $mod object for a user id.
 		 */
 		public function get_mod( $user_id ) {
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = self::get_mod_defaults();
 
-			/**
+			/*
 			 * Common elements.
 			 */
 			$mod[ 'id' ]          = is_numeric( $user_id ) ? (int) $user_id : 0;	// Cast as integer.
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod[ 'name_transl' ] = _x( 'user', 'module name', 'wpsso' );
 			$mod[ 'obj' ]         =& $this;
 
-			/**
+			/*
 			 * WpssoUser elements.
 			 */
 			$mod[ 'is_user' ]    = true;
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return get_userdata( $mod[ 'id' ] );
 		}
 
-		/**
+		/*
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
@@ -251,12 +251,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $local_cache = array();
 
-			/**
+			/*
 			 * Use $user_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
-			/**
+			/*
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
-				/**
+				/*
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				} else {
 
-					/**
+					/*
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -347,22 +347,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$mod = $this->get_mod( $user_id );
 
-					/**
+					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v4.31.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 
-					/**
+					/*
 					 * Since WPSSO Core v10.0.0.
 					 *
 					 * Prevent users from modifying specific options.
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->return_options( $user_id, $md_opts, $md_key, $merge_defs );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $user_id, $rel = false ) {
@@ -416,7 +416,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Make sure the current user can submit and same metabox options.
 			 */
 			if ( ! $this->user_can_save( $user_id ) ) {
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function delete_options( $user_id, $rel = false ) {
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return self::delete_meta( $user_id, WPSSO_META_NAME );
 		}
 
-		/**
+		/*
 		 * Get all publicly accessible user ids in the 'creator' array.
 		 */
 		public static function get_public_ids() {
@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$public_ids = array();
 
-			/**
+			/*
 			 * Default 'creator' roles are:
 			 *
 			 * 'creator' => array(	// Users that can write posts.
@@ -487,7 +487,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $public_ids;
 		}
 
-		/**
+		/*
 		 * Get post IDs authored by a user id.
 		 *
 		 * Return an array of post IDs for a given $mod object.
@@ -567,7 +567,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return SucomUtilWP::get_update_meta_cache( $user_id, $meta_type = 'user' );
 		}
 
-		/**
+		/*
 		 * Hooked into the current_screen action.
 		 *
 		 * Sets the parent::$head_tags and parent::$head_info class properties.
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
+			/*
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
 			if ( false !== parent::$head_tags || ! isset( $screen->id ) ) {
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):			// Your profile page.
 				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id ) ? true : false ):	// Users settings page.
 
-					/**
+					/*
 					 * Get the user id.
 					 *
 					 * Returns the current user id if the 'user_id' query argument is empty.
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					return;
 			}
 
-			/**
+			/*
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid user page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
 				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
-				/**
+				/*
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'id' ] && $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $user_obj, $rel = false ) {
@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$metabox_context, $metabox_prio, $callback_args );
 		}
 
-		/**
+		/*
 		 * Show additional fields in the user profile About Yourself / About the user sections.
 		 *
 		 * Hooked to the 'show_password_fields' filter (not an action).
@@ -762,7 +762,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
 
-				/**
+				/*
 				 * This is a filter, so return the filter value unchanged.
 				 */
 				return $show_password_fields;
@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
 
-				/**
+				/*
 				 * This is a filter, so return the filter value unchanged.
 				 */
 				return $show_password_fields;
@@ -778,13 +778,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->show_about_section( $user_obj->ID );	// Echo the additional input fields.
 
-			/**
+			/*
 			 * This is a filter, so return the filter value unchanged.
 			 */
 			return $show_password_fields;
 		}
 
-		/**
+		/*
 		 * Called by the WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_setting_form() methods.
 		 */
 		public function show_about_section( $user_id = 0 ) {
@@ -809,7 +809,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				switch ( $key ) {
 
-					/**
+					/*
 					 * Regular text input fields.
 					 */
 					default:
@@ -927,7 +927,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
 
-			/**
+			/*
 			 * Unset built-in contact fields and/or update their labels.
 			 */
 			if ( ! empty( $this->p->cf[ 'wp' ][ 'cm_names' ] ) && is_array( $this->p->cf[ 'wp' ][ 'cm_names' ] ) ) {
@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			/**
+			/*
 			 * Loop through each social website option prefix.
 			 */
 			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $id => $opt_pre ) {
@@ -987,7 +987,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				__( '(not a Facebook Pages URL)', 'wpsso' ) . '</span>';
 		}
 
-		/**
+		/*
 		 * Save the additional fields for the user profile About Yourself / About the user sections.
 		 *
 		 * Hooked to the 'edit_user_profile_update' and 'personal_options_update' actions.
@@ -1012,7 +1012,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					switch ( $key ) {
 
-						/**
+						/*
 						 * Regular text input fields.
 						 *
 						 * See https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/.
@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $id => $opt_pre ) {
 
-				/**
+				/*
 				 * Not all social websites have contact fields, so check.
 				 */
 				if ( isset( $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ] ) ) {
@@ -1044,7 +1044,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$cm_enabled_value = $this->p->options[ 'plugin_cm_' . $opt_pre . '_enabled' ];
 					$cm_name_value    = $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ];
 
-					/**
+					/*
 					 * Sanitize values only for those enabled contact methods.
 					 */
 					if ( isset( $_POST[ $cm_name_value ] ) && ! empty( $cm_enabled_value ) && ! empty( $cm_name_value ) ) {
@@ -1057,7 +1057,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 								case $this->p->options[ 'plugin_cm_skype_name' ]:
 
-									/**
+									/*
 									 * No change.
 									 */
 
@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 								default:
 
-									/**
+									/*
 									 * All other contact methods are assumed to be URLs.
 									 */
 
@@ -1092,7 +1092,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_id;
 		}
 
-		/**
+		/*
 		 * Provides backwards compatibility for wp 3.0.
 		 */
 		public static function get_user_id_contact_methods( $user_id ) {
@@ -1120,7 +1120,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		/**
+		/*
 		 * Returns the user id for a comment author, post author, or user module.
 		 */
 		public static function get_author_id( array $mod ) {
@@ -1149,7 +1149,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $author_id;
 		}
 
-		/**
+		/*
 		 * Returns the display name for a comment author, post author, or user module.
 		 */
 		public static function get_author_name( array $mod ) {
@@ -1317,7 +1317,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $local_cache[ $user_id ][ $meta_key ] = (string) $website_url;
 		}
 
-		/**
+		/*
 		 * WpssoUser class specific methods.
 		 *
 		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
@@ -1357,7 +1357,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $urls;
 		}
 
-		/**
+		/*
 		 * Called by the WpssoRegister::uninstall_plugin() method.
 		 *
 		 * Do not use Wpsso::get_instance() since the Wpsso class may not exist.
@@ -1494,7 +1494,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$new_prefs = array_merge( $old_prefs, $user_prefs );
 
-			/**
+			/*
 			 * Don't bother saving unless we have to.
 			 */
 			if ( $old_prefs !== $new_prefs ) {
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return self::show_opts( false, $user_id );
 		}
 
-		/**
+		/*
 		 * Returns the value for show_opts, or return true/false if a value to compare is provided.
 		 */
 		public static function show_opts( $compare = false, $user_id = false ) {
@@ -1538,7 +1538,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $show_opts;
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $user_id, $rel = false ) {
@@ -1564,14 +1564,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			/**
+			/*
 			 * Clear the post meta, content, and head caches.
 			 */
 			$mod = $this->get_mod( $user_id );
 
 			$this->clear_mod_cache( $mod );
 
-			/**
+			/*
 			 * Clear the user column meta last.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
@@ -1584,7 +1584,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			do_action( 'wpsso_clear_user_cache', $user_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $user_id, $rel = false ) {
@@ -1596,7 +1596,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			do_action( 'wpsso_refresh_user_cache', $user_id, $mod );
 		}
 
-		/**
+		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $user_id, $rel = false ) {
@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for user id ' . $user_id );
 				}
 
-				/**
+				/*
 				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return true;
 		}
 
-		/**
+		/*
 		 * Returns an array of single image associative arrays.
 		 *
 		 * $md_pre can be a text string or array of prefixes.
@@ -1648,7 +1648,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			/**
+			/*
 			 * Check if this is a valid WordPress user.
 			 */
 			$user_exists = SucomUtil::user_exists( $user_id );
@@ -1661,7 +1661,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( 'wpsso_get_other_user_images', array(), $num, $size_names, $user_id, $md_pre );
 		}
 
-		/**
+		/*
 		 * Schedule the addition of user roles for self::get_public_ids().
 		 */
 		public function schedule_add_person_role( $user_id = null ) {
@@ -1701,7 +1701,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$notice_key = 'add-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
-			/**
+			/*
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
@@ -1711,7 +1711,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
 
-			/**
+			/*
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
@@ -1745,7 +1745,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
-				/**
+				/*
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
 				do_action( 'wpsso_scheduled_task_started', $user_id );
@@ -1757,7 +1757,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $users_ids as $id ) {
 
-				/**
+				/*
 				 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 				 */
 				if ( get_transient( $cache_id ) !== $cache_run_val ) {
@@ -1782,7 +1782,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		/**
+		/*
 		 * Schedule the removal of user roles for self::get_public_ids().
 		 */
 		public function schedule_remove_person_role( $user_id = null ) {
@@ -1806,7 +1806,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$notice_key = 'remove-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
-			/**
+			/*
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
@@ -1816,7 +1816,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
 
-			/**
+			/*
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
@@ -1853,7 +1853,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
-				/**
+				/*
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
 				do_action( 'wpsso_scheduled_task_started', $user_id );
@@ -1883,7 +1883,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		/**
+		/*
 		 * Hooked to the 'wpmu_new_user' and 'user_register' actions, which only provides a single argument.
 		 */
 		public static function add_role_by_id( $user_id, $role = 'person' ) {
@@ -1955,7 +1955,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_views;
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function get_meta( $user_id, $meta_key = '', $single = false ) {
@@ -1963,7 +1963,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return get_user_meta( $user_id, $meta_key, $single );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function update_meta( $user_id, $meta_key, $value ) {
@@ -1971,7 +1971,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return update_user_meta( $user_id, $meta_key, $value );
 		}
 
-		/**
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 */
 		public static function delete_meta( $user_id, $meta_key ) {

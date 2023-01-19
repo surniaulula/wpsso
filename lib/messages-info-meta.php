@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesInfo->get() only when needed.
 	 */
 	class WpssoMessagesInfoMeta extends WpssoMessages {
@@ -30,12 +30,12 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 			switch ( $msg_key ) {
 
-				/**
+				/*
 				 * Document SSO > Edit Schema tab.
 				 */
 				case 'info-meta-schema-faq':
 
-					/**
+					/*
 					 * Avoid showing possible duplicate and confusing information.
 					 */
 					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= __( 'The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer.', 'wpsso' ) . ' ';
 
-					/**
+					/*
 					 * Avoid showing possible duplicate and confusing information.
 					 */
 					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Document SSO > Edit Media tab.
 				 */
 				case 'info-meta-priority-media':
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					break;
 
-				/**
+				/*
 				 * Document SSO > Edit Visibility tab.
 				 */
 				case 'info-meta-robots-meta':
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * Document SSO > Preview Social tab.
 				 */
 				case 'info-meta-social-preview':
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * Document SSO > Preview oEmbed tab.
 				 */
 				case 'info-meta-oembed-footer':
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
-				/**
+				/*
 				 * Document SSO > Validators tab.
 				 */
 				case 'info-meta-validate-amp':

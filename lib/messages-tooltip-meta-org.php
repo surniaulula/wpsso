@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -15,12 +15,12 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-/**
+/*
  * Since WPSSO Core v13.5.0.
  */
 if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
-	/**
+	/*
 	 * Instantiated by WpssoMessagesTooltipMeta->get() only when needed.
 	 */
 	class WpssoMessagesTooltipMetaOrg extends WpssoMessages {

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,14 +17,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
-	/**
+	/*
 	 * Since WPSSO Core v9.0.0.
 	 */
 	class WpssoOptionsFilters {
 
 		private $p;	// Wpsso class object.
 
-		/**
+		/*
 		 * Instantiated by WpssoOptions->__construct().
 		 */
 		public function __construct( &$plugin ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 			), $prio = -1000 );	// Run first.
 		}
 
-		/**
+		/*
 		 * Return the sanitation type for a given option key.
 		 */
 		public function filter_option_type( $type, $base_key, $network, $mod ) {
@@ -50,14 +50,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				return $type;
 
-			/**
+			/*
 			 * Optimize and check for a schema option prefix first.
 			 */
 			} elseif ( 0 === strpos( $base_key, 'schema_' ) ) {
 
 				switch ( $base_key ) {
 
-					/**
+					/*
 					 * Cast as integer (zero and -1 is ok).
 					 */
 					case 'schema_book_pages':	// Number of Pages.
@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'blank_int';		// Allow blank (ie. default) for options.
 
-					/**
+					/*
 					 * Must be numeric (blank and zero are ok).
 					 */
 					case 'schema_book_audio_duration_days':		// Audiobook Duration.
@@ -120,14 +120,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'blank_num';
 
-					/**
+					/*
 					 * Empty string or an image ID.
 					 */
 					case 'schema_img_id':
 
 						return 'img_id';
 
-					/**
+					/*
 					 * Text strings that can be blank (line breaks are removed).
 					 */
 					case 'schema_title':				// Schema Name.
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'one_line';
 
-					/**
+					/*
 					 * CSV strings that can be blank (line breaks are removed).
 					 */
 					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'csv_blank';
 
-					/**
+					/*
 					 * Options that cannot be blank.
 					 */
 					case 'schema_book_author_type':			// Book Author Type.
@@ -235,14 +235,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'not_blank';
 
-					/**
+					/*
 					 * Empty string or image URL.
 					 */
 					case 'schema_img_url':
 
 						return 'img_url';
 
-					/**
+					/*
 					 * Empty string or a URL.
 					 */
 					case 'schema_addl_type_url':			// Microdata Type URLs.
@@ -262,14 +262,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 			switch ( $base_key ) {
 
-				/**
+				/*
 				 * The "use" value should be 'default', 'empty', or 'force'.
 				 */
 				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
 
 					return 'not_blank';
 
-				/**
+				/*
 				 * Optimize and check for add meta tags options first.
 				 */
 				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
@@ -277,14 +277,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'checkbox';
 
-				/**
+				/*
 				 * twitter-style usernames (prepend with an at).
 				 */
 				case 'tc_site':
 
 					return 'at_name';
 
-				/**
+				/*
 				 * Empty or alpha-numeric (upper or lower case), plus underscores.
 				 */
 				case 'fb_app_id':
@@ -297,21 +297,21 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'api_key';
 
-				/**
+				/*
 				 * Applies sanitize_title_with_dashes().
 				 */
 				case ( preg_match( '/_utm_(medium|source|campaign|content|term)$/', $base_key ) ? true : false ):
 
 					return 'dashed';
 
-				/**
+				/*
 				 * Empty or 'none' string, or color as #000000.
 				 */
 				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
 
 					return 'color';
 
-				/**
+				/*
 				 * JS and CSS code (cannot be blank).
 				 */
 				case ( false !== strpos( $base_key, '_js_' ) ? true : false ):
@@ -320,7 +320,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'code';
 
-				/**
+				/*
 				 * Gravity View field IDs.
 				 */
 				case 'gv_id_title':			// Title Field ID.
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'blank_int';		// Allow blank (ie. default) for options.
 
-				/**
+				/*
 				 * Cast as integer (zero and -1 is ok).
 				 */
 				case 'og_img_max':			// Maximum Images.
@@ -351,7 +351,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'integer';	// Aka 'int'.
 
-				/**
+				/*
 				 * Numeric options that must be positive (1 or more).
 				 */
 				case 'plugin_gravatar_size':		// Gravatar Image Size.
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'pos_integer';	// Aka 'pos_int'.
 
-				/**
+				/*
 				 * Must be numeric (blank and zero are ok).
 				 */
 				case 'product_fluid_volume_value':	// Product Fluid Volume.
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'blank_num';
 
-				/**
+				/*
 				 * Empty string or an image ID.
 				 */
 				case 'og_def_img_id':
@@ -399,21 +399,21 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'img_id';
 
-				/**
+				/*
 				 * Empty string or must include at least one HTML tag.
 				 */
 				case 'og_vid_embed':
 
 					return 'html';
 
-				/**
+				/*
 				 * Must be texturized.
 				 */
 				case 'og_title_sep':
 
 					return 'textured';
 
-				/**
+				/*
 				 * Text strings that can be blank (line breaks are removed).
 				 */
 				case 'site_name':
@@ -463,7 +463,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'one_line';
 
-				/**
+				/*
 				 * Options that cannot be blank.
 				 */
 				case 'site_org_place_id':
@@ -501,7 +501,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'not_blank';
 
-				/**
+				/*
 				 * Empty string or image URL.
 				 */
 				case 'og_def_img_url':
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'img_url';
 
-				/**
+				/*
 				 * Empty string or a URL.
 				 *
 				 * Option key exceptions:
@@ -535,35 +535,35 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'url';
 
-				/**
+				/*
 				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
 				 */
 				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
 
 					return 'auth_id';
 
-				/**
+				/*
 				 * Image width, subject to minimum value (typically, at least 200px).
 				 */
 				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
 
 					return 'img_width';
 
-				/**
+				/*
 				 * Image height, subject to minimum value (typically, at least 200px).
 				 */
 				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
 
 					return 'img_height';
 
-				/**
+				/*
 				 * Empty or 'none' string, or date as yyyy-mm-dd.
 				 */
 				case ( preg_match( '/_date$/', $base_key ) ? true : false ):
 
 					return 'date';
 
-				/**
+				/*
 				 * Empty or 'none' string, or time as hh:mm or hh:mm:ss.
 				 *
 				 * Check last in case there are taxonomy option names like 'og_type_for_tax_product_delivery_time'.
@@ -572,7 +572,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'time';
 
-				/**
+				/*
 				 * A regular expression.
 				 */
 				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
