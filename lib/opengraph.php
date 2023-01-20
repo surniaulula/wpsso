@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:locale' ] ) ) {
 
-				$mt_og[ 'og:locale' ] = $this->get_fb_locale( $this->p->options, $mod );
+				$mt_og[ 'og:locale' ] = $this->get_fb_locale( $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -821,23 +821,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public function get_fb_locale( array $opts, $mixed = 'current' ) {
+		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
 			/*
 			 * Check for customized locale.
 			 */
-			if ( ! empty( $opts ) ) {
+			if ( $use_opts && ! empty( $this->p->options ) ) {
 
-				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $opts, $mixed );
+				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options, $mixed );
 
-				if ( ! empty( $opts[ $fb_locale_key ] ) ) {
+				if ( ! empty( $this->p->options[ $fb_locale_key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning "' . $opts[ $fb_locale_key ] . '" locale for "' . $fb_locale_key . '" option key' );
+						$this->p->debug->log( 'returning "' . $this->p->options[ $fb_locale_key ] . '" ' .
+							'locale for "' . $fb_locale_key . '" option key' );
 					}
 
-					return $opts[ $fb_locale_key ];
+					return $this->p->options[ $fb_locale_key ];
 				}
 			}
 

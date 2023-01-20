@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.5.0\n"
+"Project-Id-Version: WPSSO Core 14.6.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1423,12 +1423,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:163
 msgctxt "column header"
-msgid "Schema Type"
+msgid "SSO Description"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:164
 msgctxt "column header"
-msgid "Schema ID"
+msgid "SSO Image"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:165
@@ -1438,12 +1438,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:166
 msgctxt "column header"
-msgid "SSO Image"
+msgid "Schema ID"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:167
 msgctxt "column header"
-msgid "SSO Description"
+msgid "Schema Type"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:168
