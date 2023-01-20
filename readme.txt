@@ -234,14 +234,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.0-dev.1 (TBD)**
+**Version 14.5.1-dev.1 (2023/01/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed additional min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -902,9 +902,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.0-dev.1 =
+= 14.5.1-dev.1 =
 
-(TBD) None.
+(2023/01/20) Fixed additional min/max energy efficiency meta tags when no energy efficiency value selected.
 
 = 14.5.0 =
 
