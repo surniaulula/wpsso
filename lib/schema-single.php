@@ -1285,7 +1285,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Maybe get options from integration modules (example: WpssoProEventTheEventsCalendar).
+			 * Maybe get options from integration modules (example: WpssoIntegEventTheEventsCalendar).
 			 */
 			$person_opts = apply_filters( 'wpsso_get_person_options', false, $mod, $person_id );
 

@@ -2847,7 +2847,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			/*
-			 * Filtered by WpssoProLangPolylang->filter_get_locale() and WpssoProLangWpml->filter_get_locale().
+			 * Filtered by WpssoIntegLangPolylang->filter_get_locale() and WpssoIntegLangWpml->filter_get_locale().
 			 */
 			$locale = apply_filters( 'sucom_get_locale', $locale, $mixed );
 

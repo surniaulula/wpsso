@@ -1675,9 +1675,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 *
 			 * Return false to prevent the commen or post from being used.
 			 *
-			 * See WpssoProEcomEdd->filter_the_content_seed().
-			 * See WpssoProEcomWoocommerce->filter_the_content_seed().
-			 * See WpssoProSocialBuddypress->filter_the_content_seed().
+			 * See WpssoIntegEcomEdd->filter_the_content_seed().
+			 * See WpssoIntegEcomWoocommerce->filter_the_content_seed().
 			 */
 			$content = apply_filters( 'wpsso_the_content_seed', '', $mod );
 
@@ -1975,8 +1974,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * The 'wpsso_tag_names_seed' filter is hooked by the WpssoProEcomEdd, WpssoProEcomWoocommerce, and
-			 * WpssoProForumBbpress classes.
+			 * The 'wpsso_tag_names_seed' filter is hooked by the WpssoIntegEcomEdd, WpssoIntegEcomWoocommerce, and
+			 * WpssoIntegForumBbpress classes.
 			 */
 			$tags = apply_filters( 'wpsso_tag_names_seed', array(), $mod );
 

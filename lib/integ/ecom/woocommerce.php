@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				/*
 				 * Since WPSSO Core v14.2.0.
 				 *
-				 * See WpssoProEcomWoocommerce->add_mt_product().
+				 * See WpssoIntegEcomWoocommerce->add_mt_product().
 				 */
 				if ( $this->p->debug->enabled ) {
 

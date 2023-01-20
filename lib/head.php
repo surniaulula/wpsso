@@ -332,16 +332,28 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/*
 					 * WooCommerce product attributes do not have their own webpages - product attribute query
 					 * strings are used to pre-fill product selections on the front-end. The
-					 * WpssoProEcomWoocommerce->filter_url_query_cache_disable() removes all product attributes
-					 * from the request URL, and if the $request_url and $canonical_url values match, the
-					 * filter will return false.
+					 * WpssoIntegEcomWoocommerce->filter_url_query_cache_disable() removes all product
+					 * attributes from the request URL, and if the $request_url and $canonical_url values
+					 * match, the filter will return false.
 					 */
 					if ( apply_filters( 'wpsso_url_query_cache_disable', true, $request_url, $canonical_url, $mod ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'head and content cache disabled' );
+						}
 
 						$this->p->util->add_plugin_filters( $this, array(
 							'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
 							'cache_expire_the_content' => '__return_zero',	// Used by WpssoPage->get_the_content().
 						) );
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'head and content cache allowed' );
+						}
 					}
 				}
 			}

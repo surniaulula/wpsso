@@ -180,7 +180,9 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 				return $available_variations;
 			}
 
-			foreach ( $product->get_children() as $child_id ) {
+			$product_children = $product->get_children();
+
+			foreach ( $product_children as $child_id ) {
 
 				$variation = wc_get_product( $child_id );
 
