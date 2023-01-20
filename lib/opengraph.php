@@ -1468,10 +1468,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' energy efficiency value' );
 			}
 
-			if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
+			if ( ! empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
 
-				unset( $mt_og[ $mt_pre . ':energy_efficiency:min_value' ] );
-				unset( $mt_og[ $mt_pre . ':energy_efficiency:max_value' ] );
+				$mt_og[ $mt_pre . ':energy_efficiency:value' ] = trim( $mt_og[ $mt_pre . ':energy_efficiency:value' ] );
+
+				if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ||
+					'none' === $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) {
+
+					unset( $mt_og[ $mt_pre . ':energy_efficiency:value' ] );
+					unset( $mt_og[ $mt_pre . ':energy_efficiency:min_value' ] );
+					unset( $mt_og[ $mt_pre . ':energy_efficiency:max_value' ] );
+				}
 			}
 		}
 
