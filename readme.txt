@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.
 	* WordPress v5.2.
 
-**Version 14.6.0-dev.1 (2023/01/20)**
+**Version 14.5.0 (2023/01/20)**
 
 * **New Features**
 	* Added a new WPSSO Commerce Manager Catalog Feed XML add-on.
