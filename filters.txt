@@ -261,6 +261,8 @@
 
 'wpsso_rename_site_options_keys' ( $options_keys )
 
+'wpsso_request_url_query_cache_disable' ( $cache_disable = true, $request_url, $canonical_url, $mod )
+
 'wpsso_robots_content' ( $content, $mod, $directives )
 
 'wpsso_robots_directives' ( $directives, $mod )
@@ -324,8 +326,6 @@
 'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
 
 'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
-
-'wpsso_url_query_cache_disable' ( $bool = true, $request_url, $canonical_url, $mod )
 
 'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 

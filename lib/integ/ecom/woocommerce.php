@@ -32,7 +32,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			'shop'        => -1,
 		);
 
-		public function __construct( &$plugin ) {
+		private $var_request_url   = null;
+		private $var_cache_disable = null;
+
+		public function __construct( &$plugin ) {	// Pass by reference is OK.
 
 			$this->p =& $plugin;
 
@@ -75,21 +78,21 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			) );
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'url_query_cache_disable'   => 4,
-				'head_cache_index'          => 1,
-				'use_post'                  => 1,
-				'get_post_mod'              => 2,
-				'schema_type_id'            => 3,
-				'primary_tax_slug'          => 2,	// See WpssoPost->get_primary_terms().
-				'the_content_seed'          => 2,
-				'description_seed'          => 4,
-				'attached_image_ids'        => 2,
-				'term_image_ids'            => 3,
-				'get_md_defaults'           => 2,
-				'get_post_options'          => 3,
-				'og_seed'                   => 2,
-				'tag_names_seed'            => 2,
-				'import_product_attributes' => 3,
+				'request_url_query_cache_disable' => 4,
+				'head_cache_index'                => 1,
+				'use_post'                        => 1,
+				'get_post_mod'                    => 2,
+				'schema_type_id'                  => 3,
+				'primary_tax_slug'                => 2,	// See WpssoPost->get_primary_terms().
+				'the_content_seed'                => 2,
+				'description_seed'                => 4,
+				'attached_image_ids'              => 2,
+				'term_image_ids'                  => 3,
+				'get_md_defaults'                 => 2,
+				'get_post_options'                => 3,
+				'og_seed'                         => 2,
+				'tag_names_seed'                  => 2,
+				'import_product_attributes'       => 3,
 			) );
 
 			/*
@@ -259,26 +262,52 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 		/*
 		 * WooCommerce product attributes do not have their own webpages - product attribute query strings are used to
-		 * pre-fill product selections on the front-end. The WpssoIntegEcomWoocommerce->filter_url_query_cache_disable()
-		 * removes all product attributes from the request URL, and if the $request_url and $canonical_url values match,
-		 * the filter will return false.
+		 * pre-fill product selections on the front-end. The
+		 * WpssoIntegEcomWoocommerce->filter_request_url_query_cache_disable() method removes all product attributes from
+		 * the request URL, and if the $request_url and $canonical_url values match, the filter will return false (ie. do
+		 * not disable the cache).
 		 */
-		public function filter_url_query_cache_disable( $bool, $request_url, $canonical_url, $mod ) {
+		public function filter_request_url_query_cache_disable( $cache_disable, $request_url, $canonical_url, $mod ) {
 
 			if ( is_product() ) {
 
 				if ( false !== strpos( $request_url, 'attribute_' ) ) {
 
-					$request_url = preg_replace( '/[\?\&]attribute_[^=]+=[^\&]*/', '', $request_url );
+					$request_url_no_attrs = preg_replace( '/[\?\&]attribute_[^=]+=[^\&]*/', '', $request_url );
 
-					if ( $request_url === $canonical_url ) {
+					if ( $request_url_no_attrs === $canonical_url ) {
 
-						return false;
+						$this->var_request_url = $request_url;	// Save the variation URL.
+
+						/**
+						 * The WPSSO GMF add-on returns true to disable caching and move the requested
+						 * variation first in the Schema markup offers.
+						 *
+						 * See WpssoGmfFilters->__construct().
+						 */
+						$this->var_cache_disable = apply_filters( 'wpsso_request_url_query_attrs_cache_disable', $cache_disable = false );
+
+						if ( $this->var_cache_disable ) {
+
+							if ( $this->p->debug->enabled ) {
+						
+								$this->p->debug->log( 'head and content cache disabled for variation attributes' );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'head and content cache allowed for variation attributes' );
+							}
+						}
+
+						return $this->var_cache_disable;
 					}
 				}
 			}
 
-			return $bool;
+			return $cache_disable;
 		}
 
 		public function filter_head_cache_index( $cache_index ) {
@@ -715,6 +744,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 						$this->p->debug->log( count( $avail_variations ) . ' variations returned' );
 					}
 
+					$this->maybe_sort_available_variations( $avail_variations );
+
 					foreach( $avail_variations as $num => $variation ) {
 
 						$offer_og = array();	// Start with an empty array.
@@ -1081,7 +1112,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 *
 		 * $mixed must be a product object or variation array.
 		 */
-		private function add_mt_product( array &$mt_ecom, array $mod, $mixed ) {
+		private function add_mt_product( array &$mt_ecom, array $mod, $mixed ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1413,7 +1444,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 *
 		 * Unless $product is a variation, $product and $parent_product will be the same.
 		 */
-		private function add_mt_shipping_offers( array &$mt_ecom, $mod, $product, $parent_product ) {
+		private function add_mt_shipping_offers( array &$mt_ecom, $mod, $product, $parent_product ) {	// Pass by reference is OK.
 
 			static $shipping_zones      = null;
 			static $shipping_continents = null;
@@ -1933,7 +1964,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $product_price;
 		}
 
-		private function add_variation_title( &$mt_ecom, $mod, $product, $variation ) {
+		private function add_variation_title( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
@@ -1945,7 +1976,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$mt_ecom[ 'product:title' ] = apply_filters( 'wpsso_variation_title', $title_text, $variation );
 		}
 
-		private function add_variation_description( &$mt_ecom, $mod, $product, $variation ) {
+		private function add_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
 			if ( empty( $variation[ 'variation_description' ] ) ) {
 
@@ -1963,11 +1994,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			if ( method_exists( $product, 'get_variation_attributes' ) ) {	// Just in case.
 
-				$variation_attrs = $product->get_variation_attributes();
+				$var_attrs = $product->get_variation_attributes();
 
-				foreach ( $variation_attrs as $variation_name => $arr ) {
+				foreach ( $var_attrs as $var_name => $arr ) {
 
-					if ( $variation_name === $attr_name ) {
+					if ( $var_name === $attr_name ) {
 
 						return true;
 					}
@@ -1975,6 +2006,34 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			return false;
+		}
+
+		private function maybe_sort_available_variations( &$avail_variations ) {	// Pass by reference is OK.
+
+			if ( $this->var_cache_disable && $this->var_request_url ) {
+
+				$move_to_front_num = null;
+
+				foreach( $avail_variations as $num => $variation ) {
+			
+					if ( $product = $this->p->util->wc->get_variation_product( $variation ) ) {
+			
+						$permalink = $product->get_permalink();
+
+						if ( $this->var_request_url === $permalink ) {
+
+							$move_to_front_num = $num;
+
+							break;
+						}
+					}
+				}
+
+				if ( null !== $move_to_front_num && $move_to_front_num > 0 ) {
+
+					SucomUtil::move_to_front( $avail_variations, $move_to_front_num );
+				}
+			}
 		}
 	}
 }

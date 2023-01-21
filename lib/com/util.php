@@ -1261,7 +1261,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Return the current request URL and remove tracking query arguments by default.
+		 * Return the current request URL and remove known tracking query arguments by default.
 		 */
 		public static function get_url( $remove_tracking = true ) {
 
@@ -2016,6 +2016,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
+		 * Move an array element to the front.
+		 */
+		public static function move_to_front( array &$arr, $key ) {
+
+			if ( array_key_exists( $key, $arr ) ) {
+
+				$val = $arr[ $key ];
+
+				unset( $arr[ $key ] );
+
+				$arr = array_merge( array( $key => $val ), $arr );
+			}
+
+			return $arr;
+		}
+
+		/*
 		 * Move an array element to the end.
 		 */
 		public static function move_to_end( array &$arr, $key ) {
@@ -2027,21 +2044,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				unset( $arr[ $key ] );
 
 				$arr[ $key ] = $val;
-			}
-
-			return $arr;
-		}
-
-		/*
-		 * Move an array element to the front.
-		 */
-		public static function move_to_front( array &$arr, $key ) {
-
-			if ( array_key_exists( $key, $arr ) ) {
-
-				$val = $arr[ $key ];
-
-				$arr = array_merge( array( $key => $val ), $arr );
 			}
 
 			return $arr;

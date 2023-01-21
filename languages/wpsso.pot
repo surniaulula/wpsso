@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.5.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 14.6.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6710,59 +6710,59 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:143
+#: lib/integ/ecom/woocommerce.php:146
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:146
+#: lib/integ/ecom/woocommerce.php:149
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:150
+#: lib/integ/ecom/woocommerce.php:153
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:151
+#: lib/integ/ecom/woocommerce.php:154
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:152
+#: lib/integ/ecom/woocommerce.php:155
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:153
+#: lib/integ/ecom/woocommerce.php:156
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:158
+#: lib/integ/ecom/woocommerce.php:161
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:201
+#: lib/integ/ecom/woocommerce.php:204
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:801
+#: lib/integ/ecom/woocommerce.php:832
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:804
+#: lib/integ/ecom/woocommerce.php:835
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:807
+#: lib/integ/ecom/woocommerce.php:838
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1569
+#: lib/integ/ecom/woocommerce.php:1600
 msgid "World"
 msgstr ""
 
