@@ -234,16 +234,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.5.1-dev.1 (2023/01/20)**
+**Version 14.6.0-dev.1 (2023/01/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a filter to allow sorting the variations array (moving the requested variation first) for the WPSSO GMF add-on.
 * **Bugfixes**
-	* Fixed additional min/max energy efficiency meta tags when no energy efficiency value selected.
+	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoIntegEcomWooCommerce->maybe_sort_available_variations()` private method.
+	* Added a new 'wpsso_request_url_query_attrs_cache_disable' filter.
+	* Renamed the 'wpsso_url_query_cache_disable' filter to 'wpsso_request_url_query_cache_disable'.
+	* Updated the `SucomUtil::move_to_front()` static method to handle non-associative arrays.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -902,9 +905,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.5.1-dev.1 =
+= 14.6.0-dev.1 =
 
-(2023/01/20) Fixed additional min/max energy efficiency meta tags when no energy efficiency value selected.
+(2023/01/21) Added a filter hook to allow sorting the variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 
 = 14.5.0 =
 
