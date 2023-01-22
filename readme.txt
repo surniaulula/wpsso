@@ -240,6 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a filter to allow sorting the WooCommerce variations array (moving the requested variation first) for the WPSSO GMF add-on.
+	* Updated the post cache clearing method to clear the cache of any post children as well.
 * **Bugfixes**
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
@@ -247,6 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new 'wpsso_request_url_query_attrs_cache_disable' filter.
 	* Renamed the 'wpsso_url_query_cache_disable' filter to 'wpsso_request_url_query_cache_disable'.
 	* Updated the `SucomUtil::move_to_front()` static method to handle non-associative arrays.
+	* Updated the `WpssoPost->clear_cache()` method to clear the cache of any direct post children.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
