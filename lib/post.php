@@ -684,11 +684,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Get post ids for direct children of a post id.
+		 * Get child post ids of a post.
 		 *
 		 * Return an array of post ids for a given $mod object.
 		 *
-		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 * See WpssoPost->clear_cache().
+		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod ) {
 
@@ -697,14 +698,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( empty( $mod[ 'is_post' ] ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a post' );
+				}
+
+				return array();
+			}
+
 			$posts_args = array_merge( array(
-				'has_password'   => false,
-				'order'          => 'DESC',		// Newest first.
-				'orderby'        => 'date',
-				'post_status'    => 'publish',		// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
-				'post_type'      => 'any',		// Return posts, pages, or any custom post type.
-				'post_parent'    => $mod[ 'id' ],
-				'child_of'       => $mod[ 'id' ],	// Only include direct children.
+				'has_password' => false,
+				'order'        => 'DESC',		// Newest first.
+				'orderby'      => 'date',
+				'post_status'  => 'publish',		// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
+				'post_type'    => 'any',		// Return posts, pages, or any custom post type.
+				'post_parent'  => $mod[ 'id' ],
+				'child_of'     => $mod[ 'id' ],		// Only include direct children.
 			), $mod[ 'posts_args' ], array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			if ( $this->p->debug->enabled ) {
@@ -1835,7 +1846,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Clear the post column meta last.
+			 * Clear the post column meta.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
@@ -1845,6 +1856,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
+
+			/**
+			 * Clear the cache for any direct children as well.
+			 */
+			$children_ids = $this->get_posts_ids( $mod );
+
+			foreach ( $children_ids as $child_id ) {
+
+				$this->clear_cache( $child_id, $rel = false );
+			}
 		}
 
 		/*

@@ -504,17 +504,27 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Get post ids for a term id in a taxonomy slug.
+		 * Get post ids of a term.
 		 *
 		 * Return an array of post ids for a given $mod object, including posts in child terms as well.
 		 *
-		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
+			}
+
+			if ( empty( $mod[ 'is_term' ] ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a term' );
+				}
+
+				return array();
 			}
 
 			$posts_args = array_merge( array(

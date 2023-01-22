@@ -488,17 +488,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Get post IDs authored by a user id.
+		 * Get post ids authored by a user.
 		 *
 		 * Return an array of post IDs for a given $mod object.
 		 *
-		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
+			}
+
+			if ( empty( $mod[ 'is_user' ] ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a user' );
+				}
+
+				return array();
 			}
 
 			$posts_args = array_merge( array(
