@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.0-rc.1 (2023/01/22)**
+**Version 14.6.0 (2023/01/22)**
 
 * **New Features**
 	* None.
@@ -907,7 +907,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.0-rc.1 =
+= 14.6.0 =
 
 (2023/01/22) Added a filter hook to allow sorting the WooCommerce variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 
