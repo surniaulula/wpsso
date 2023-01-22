@@ -234,12 +234,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.0-dev.1 (2023/01/21)**
+**Version 14.6.0-dev.2 (2023/01/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a filter to allow sorting the variations array (moving the requested variation first) for the WPSSO GMF add-on.
+	* Added a filter to allow sorting the WooCommerce variations array (moving the requested variation first) for the WPSSO GMF add-on.
 * **Bugfixes**
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
@@ -905,9 +905,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.0-dev.1 =
+= 14.6.0-dev.2 =
 
-(2023/01/21) Added a filter hook to allow sorting the variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
+(2023/01/21) Added a filter hook to allow sorting the WooCommerce variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 
 = 14.5.0 =
 
