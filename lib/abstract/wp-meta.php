@@ -1106,7 +1106,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Return an array of post mods for a given $mod object.
 		 *
-		 * Called by WpssoPage->get_posts_mods().
+		 * See WpssoPage->get_posts_mods().
 		 */
 		public function get_posts_mods( array $mod ) {
 
@@ -1130,7 +1130,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Return an array of post IDs for a given $mod object.
 		 *
-		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod ) {
 
