@@ -5,15 +5,17 @@
 
 'sucom_get_user_object' ( $user_obj, $user_id )
 
-'sucom_is_home_page' ( $ret, $use_post )
+'sucom_ignored_url_query_args' ( array $ignored_url_query_args )
 
-'sucom_is_home_posts' ( $ret, $use_post )
+'sucom_is_home_page' ( $bool, $use_post )
 
-'sucom_is_post_page' ( $ret, $use_post )
+'sucom_is_home_posts' ( $bool, $use_post )
 
-'sucom_is_term_page' ( $ret )
+'sucom_is_post_page' ( $bool, $use_post )
 
-'sucom_is_user_page' ( $ret )
+'sucom_is_term_page' ( $bool )
+
+'sucom_is_user_page' ( $bool )
 
 'sucom_robots_default_directives' ( $directives )
 

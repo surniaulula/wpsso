@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						} else {
 
-							$ret_val = SucomUtil::get_url( $remove_tracking = true );
+							$ret_val = SucomUtil::get_url( $remove_ignored_args = true );	// Uses a local cache.
 
 							$ret_val = apply_filters( 'wpsso_server_request_url', $ret_val );
 						}

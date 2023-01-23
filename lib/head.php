@@ -297,25 +297,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( ! is_admin() ) {
 
-				/*
-				 * $remove_tracking = true removes the following query arguments:
-				 *
-				 * 'fb_action_ids'
-				 * 'fb_action_types'
-				 * 'fb_source'
-				 * 'fb_aggregation_id'
-				 * 'utm_medium'
-				 * 'utm_source'
-				 * 'utm_campaign'
-				 * 'utm_content'
-				 * 'utm_term'
-				 * 'gclid'
-				 * 'pk_campaign'
-				 * 'pk_kwd'
-				 *
-				 * Use the 'sucom_remove_tracking_args' filter to remove additional query arguments.
-				 */
-				$request_url = SucomUtil::get_url( $remove_tracking = true );
+				$request_url = SucomUtil::get_url( $remove_ignored_args = true );	// Uses a local cache.
 
 				if ( $this->p->debug->enabled ) {
 

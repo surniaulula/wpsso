@@ -2163,7 +2163,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'falling back to server request url' );
 					}
 
-					$url = self::get_url( $remove_tracking = true );
+					$url = self::get_url( $remove_ignored_args = true );	// Uses a local cache.
 
 					$url = apply_filters( 'wpsso_server_request_url', $url );
 				}
@@ -2620,7 +2620,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} else {	// Example: file/
 
-				$base = self::get_url( $remove_tracking = true );
+				$base = self::get_url( $remove_ignored_args = true );	// Uses a local cache.
 
 				if ( false !== strpos( $base, '?' ) ) {
 
