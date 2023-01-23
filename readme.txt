@@ -234,6 +234,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 14.6.1-dev.1 (2023/01/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the list of ignored tracking and advertising URL query args.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
+	* Refactored the `SucomUtil::get_url()` method to add a local cache.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 14.6.0 (2023/01/22)**
 
 * **New Features**
@@ -906,6 +921,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 14.6.1-dev.1 =
+
+(2023/01/23) Updated the list of ignored tracking and advertising URL query args.
 
 = 14.6.0 =
 
