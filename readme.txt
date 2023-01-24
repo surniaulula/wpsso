@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.3 (2023/01/23)**
+**Version 14.6.1-dev.4 (2023/01/23)**
 
 * **New Features**
 	* None.
@@ -242,6 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added compatibility declaration for WooCommerce HPOS.
 	* Updated the list of ignored tracking and advertising URL query args.
 	* Updated conflict notices for Yoast SEO v20.0.
+	* Updated the minimum WordPress version from v5.2 to v5.4.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -925,7 +926,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.1-dev.3 =
+= 14.6.1-dev.4 =
 
 (2023/01/23) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
 
