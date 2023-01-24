@@ -19,7 +19,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 	class WpssoConflict {
 
-		private $p;	// Wpsso class object.
+		private $p;		// Wpsso class object.
+		private $seo = null;	// WpssoConflictSeo class object.
 
 		/*
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.

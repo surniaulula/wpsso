@@ -44,8 +44,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$this->log_pre = 'seo plugin conflict detected - ';
-
+			$this->log_pre    = 'seo plugin conflict detected - ';
 			$this->notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 			$this->conflict_check_aioseop();	// All in One SEO Pack.
@@ -78,12 +77,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			if ( ! defined( 'AIOSEO_VERSION' ) || version_compare( AIOSEO_VERSION, $min_version, '<' ) ) {
 
 				$notice_msg = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $plugin_name, $min_version );
-
+				$notice_msg = sprintf( $notice_msg, $plugin_name, $min_version );
 				$notice_key = 'aioseo-version-' . AIOSEO_VERSION . '-too-old';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 
 				return;
 			}
@@ -94,10 +91,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			if ( aioseo()->options->social->facebook->general->enable ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Enable Open Graph Markup', 'all-in-one-seo-pack' ) . '</strong>';
-
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/facebook' );
-
+				$label_transl  = '<strong>' . __( 'Enable Open Graph Markup', 'all-in-one-seo-pack' ) . '</strong>';
+				$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/facebook' );
 				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
@@ -110,12 +105,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'aioseo-open-graph-markup-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 
 			/*
@@ -124,10 +117,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			if ( aioseo()->options->social->twitter->general->enable ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Enable Twitter Card', 'all-in-one-seo-pack' ) . '</strong>';
-
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/twitter' );
-
+				$label_transl  = '<strong>' . __( 'Enable Twitter Card', 'all-in-one-seo-pack' ) . '</strong>';
+				$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/twitter' );
 				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
@@ -140,12 +131,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'aioseo-twitter-card-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -229,12 +218,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						}
 
 						$notice_msg = __( 'Please disable the %1$s option under the %2$s tab.', 'wpsso' );
-
-						$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+						$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 						$notice_key = 'seoframework-' . $opt_key . '-option-disabled';
 
-						$this->p->notice->err( $notice_msg, null, $notice_key );
+						$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 					}
 				}
 			}
@@ -259,12 +246,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						}
 
 						$notice_msg = __( 'Please enable the %1$s option under the %2$s tab.', 'wpsso' );
-
-						$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+						$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 						$notice_key = 'seoframework-' . $opt_key . '-option-disabled';
 
-						$this->p->notice->err( $notice_msg, null, $notice_key );
+						$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 					}
 				}
 			}
@@ -289,16 +274,14 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts[ 'toggle-social' ] ) ) {
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=seopress-option' );
-
+				// translators: Please ignore - translation uses a different text domain.
+				$label_transl  = '<strong>' . __( 'Social Networks', 'wp-seopress' ) . '</strong>';
+				$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=seopress-option' );
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'SEO', 'wp-seopress' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social Networks', 'wp-seopress' ) . '</a>';
-
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Social Networks', 'wp-seopress' ) . '</strong>';
 
 				if ( $this->p->debug->enabled ) {
 
@@ -306,12 +289,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'seopress-social-networks-module-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -336,14 +317,12 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				 */
 				if ( array_key_exists( 'opengraph', $opts[ 'modules' ] ) && $opts[ 'modules' ][ 'opengraph' ] !== -10 ) {
 
-					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=seo' );
-
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl  = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=seo' );
 					$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 						// translators: Please ignore - translation uses a different text domain.
 						__( 'Modules', 'seo-ultimate' ) . '</a>';
-
-					// translators: Please ignore - translation uses a different text domain.
-					$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
 
@@ -351,12 +330,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					}
 
 					$notice_msg = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
-
-					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+					$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 					$notice_key = 'seo-ultimate-opengraph-module-enabled';
 
-					$this->p->notice->err( $notice_msg, null, $notice_key );
+					$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -403,12 +380,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					}
 
 					$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+					$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 					$notice_key = 'squirrly-seo-' . $opt_key . '-option-enabled';
 
-					$this->p->notice->err( $notice_msg, null, $notice_key );
+					$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -438,12 +413,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					}
 
 					$notice_msg = __( 'Please disable the %1$s option in the %2$s metabox.', 'wpsso' );
-
-					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+					$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 					$notice_key = 'squirrly-seo-' . $opt_key . '-option-enabled';
 
-					$this->p->notice->err( $notice_msg, null, $notice_key );
+					$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -473,8 +446,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			/*
 			 * Check for Open Graph and Twitter Cards.
 			 */
-			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
-
+			$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
 			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Settings', 'wp-meta-seo' ) . ' &gt; ' .
@@ -498,12 +470,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					}
 
 					$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
-
-					$notice_msg= $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+					$notice_msg= sprintf( $notice_msg, $label_transl, $settings_link );
 					$notice_key = 'wpmetaseo-' . $opt_key . '-option-not-empty';
 
-					$this->p->notice->err( $notice_msg, null, $notice_key );
+					$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -518,12 +488,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'wpmetaseo-showsocial-option-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -547,112 +515,46 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			if ( ! defined( 'WPSEO_VERSION' ) || version_compare( WPSEO_VERSION, $min_version, '<' ) ) {
 
 				$notice_msg = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $plugin_name, $min_version );
-
+				$notice_msg = sprintf( $notice_msg, $plugin_name, $min_version );
 				$notice_key = 'wpseo-version-' . WPSEO_VERSION . '-too-old';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 
 				return;
 			}
 
-			$opts = get_option( 'wpseo' );
-
+			$opts        = get_option( 'wpseo' );
 			$opts_social = get_option( 'wpseo_social' );
-
-			/*
-			 * Check for Social page URLs.
-			 */
-			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
-
-			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
-				// translators: Please ignore - translation uses a different text domain.
-				__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-				// translators: Please ignore - translation uses a different text domain.
-				__( 'Accounts', 'wordpress-seo' ) . '</a>';
-
-			foreach ( array(
-				// translators: Please ignore - translation uses a different text domain.
-				'facebook_site' => '<strong>' . __( 'Facebook Page URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'twitter_site'  => '<strong>' . __( 'Twitter Username', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'instagram_url' => '<strong>' . __( 'Instagram URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'linkedin_url'  => '<strong>' . __( 'LinkedIn URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'myspace_url'   => '<strong>' . __( 'MySpace URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'pinterest_url' => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'youtube_url'   => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'wikipedia_url' => '<strong>' . __( 'Wikipedia URL', 'wordpress-seo' ) . '</strong>',
-			) as $opt_key => $label_transl ) {
-
-				if ( ! empty( $opts_social[ $opt_key ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $this->log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
-					}
-
-					$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
-
-					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
-					$notice_key = 'wpseo-' . $opt_key . '-option-not-empty';
-
-					$this->p->notice->err( $notice_msg, null, $notice_key );
-				}
-			}
-
-			/*
-			 * Check for Facebook App ID.
-			 */
-			if ( ! empty( $opts_social[ 'fbadminapp' ] ) ) {
-
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
-
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
-
-				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Facebook', 'wordpress-seo' ) . '</a>';
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $this->log_pre . 'wpseo fbadminapp option is not empty' );
-				}
-
-				$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
-				$notice_key = 'wpseo-fbadminapp-option-not-empty';
-
-				$this->p->notice->err( $notice_msg, null, $notice_key );
-			}
 
 			/*
 			 * Check for Open Graph.
 			 */
 			if ( ! empty( $opts_social[ 'opengraph' ] ) ) {
 
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
+				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl  = '<strong>' . __( 'Open Graph data', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_page_settings#/site-features' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Settings', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Site features', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social sharing', 'wordpress-seo' ) . '</a>';
 
-				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				} else {
+
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Facebook', 'wordpress-seo' ) . '</a>';
+					$label_transl  = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Facebook', 'wordpress-seo' ) . '</a>';
+				}
 
 				if ( $this->p->debug->enabled ) {
 
@@ -660,12 +562,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'wpseo-opengraph-option-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 
 			/*
@@ -673,16 +573,30 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts_social[ 'twitter' ] ) ) {
 
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
+				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#twitterbox' );
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl  = '<strong>' . __( 'Twitter card data', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_page_settings#/site-features' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Settings', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Site features', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social sharing', 'wordpress-seo' ) . '</a>';
 
-				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				} else {
+
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Twitter', 'wordpress-seo' ) . '</a>';
+					$label_transl  = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#twitterbox' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Twitter', 'wordpress-seo' ) . '</a>';
+				}
 
 				if ( $this->p->debug->enabled ) {
 
@@ -690,12 +604,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'wpseo-twitter-option-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 
 			/*
@@ -703,16 +615,30 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts[ 'enable_enhanced_slack_sharing' ] ) ) {
 
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Enhanced Slack sharing', 'wordpress-seo' ) . '</strong>';
+				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_dashboard#top#features' );
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl  = '<strong>' . __( 'Slack sharing', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_page_settings#/site-features' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Settings', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Site features', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social sharing', 'wordpress-seo' ) . '</a>';
 
-				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				} else {
+				
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'General', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Features', 'wordpress-seo' ) . '</a>';
+					$label_transl  = '<strong>' . __( 'Enhanced Slack sharing', 'wordpress-seo' ) . '</strong>';
+					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_dashboard#top#features' );
+					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'General', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Features', 'wordpress-seo' ) . '</a>';
+				}
 
 				if ( $this->p->debug->enabled ) {
 
@@ -720,12 +646,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 
 				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
-
-				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
-
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
 				$notice_key = 'wpseo-slack-option-enabled';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
 			}
 		}
 
