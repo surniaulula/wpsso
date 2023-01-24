@@ -234,17 +234,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.2 (2023/01/23)**
+**Version 14.6.1-dev.3 (2023/01/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added compatibility declaration for WooCommerce HPOS.
 	* Updated the list of ignored tracking and advertising URL query args.
+	* Updated conflict notices for Yoast SEO v20.0.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the `WpssoAbstractAddOn` class.
+	* Updated the `WpssoAbstractAddOn->add_hooks()` method to add support for the plugin config 'wc_compat' array.
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
 	* Refactored the `SucomUtil::get_url()` method to add a local cache.
 * **Requires At Least**
@@ -924,9 +925,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.1-dev.2 =
+= 14.6.1-dev.3 =
 
-(2023/01/23) Updated the list of ignored tracking and advertising URL query args.
+(2023/01/23) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
 
 = 14.6.0 =
 
