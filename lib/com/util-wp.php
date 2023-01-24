@@ -237,8 +237,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Calls WP_Query->query() with the supplied arguments.
 		 *
-		 * If the arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a while loop
-		 * is used to save memory (fetching 1000 posts at a time from the database).
+		 * If the query arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a while
+		 * loop is used to save memory (fetching 1000 posts at a time by default).
 		 *
 		 * See WpssoPost->get_public_ids().
 		 */
@@ -246,13 +246,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$posts    = array();
 			$wp_query = new WP_Query;
-			$limit    = 1000;
 
 			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
 				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
 
 				$args[ 'paged' ]          = 1;
-				$args[ 'posts_per_page' ] = $limit;
+				$args[ 'posts_per_page' ] = defined( 'SUCOM_GET_POSTS_WHILE_PPP' ) ? SUCOM_GET_POSTS_WHILE_PPP : 1000;
 
 				while ( $result = $wp_query->query( $args ) ) {
 

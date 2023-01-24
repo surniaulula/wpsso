@@ -553,29 +553,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mtime_start = microtime( $get_float = true );
 			$posts_ids   = get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
-			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
-
-			if ( $mtime_total > $mtime_max ) {
-
-				$func_name   = 'get_posts()';
-				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s).',
-					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ], $rec_max_msg );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get posts for term id %3$d in taxonomy %4$s',
-						$func_name, $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ] ) );
-				}
-
-				if ( $this->p->notice->is_admin_pre_notices() ) {
-
-					$this->p->notice->warn( $error_msg );
-				}
-
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
-			}
 
 			if ( $this->p->debug->enabled ) {
 

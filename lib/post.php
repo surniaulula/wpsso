@@ -670,13 +670,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			/*
-			 * Calls WP_Query->query() with the supplied arguments.
-			 *
-			 * If the arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a
-			 * while loop is used to save memory (fetching 1000 posts at a time from the database).
-			 */
-			$posts_ids = SucomUtilWP::get_posts( $posts_args );
+			$mtime_start = microtime( $get_float = true );
+			$posts_ids   = SucomUtilWP::get_posts( $posts_args );
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+			}
 
 			$posts_ids = apply_filters( 'wpsso_post_public_ids', $posts_ids, $posts_args );
 
@@ -728,29 +729,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mtime_start = microtime( $get_float = true );
 			$posts_ids   = get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
-			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
-
-			if ( $mtime_total > $mtime_max ) {
-
-				$func_name   = 'get_posts()';
-				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s).',
-					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $mod[ 'id' ], $rec_max_msg );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get children of post id %3$d',
-						$func_name, $mtime_total, $mod[ 'id' ] ) );
-				}
-
-				if ( $this->p->notice->is_admin_pre_notices() ) {
-
-					$this->p->notice->warn( $error_msg );
-				}
-
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
-			}
 
 			if ( $this->p->debug->enabled ) {
 

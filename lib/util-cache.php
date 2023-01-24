@@ -697,11 +697,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/*
 			 * Since WPSSO Core v8.0.0.
 			 */
-			$post_ids = WpssoPost::get_public_ids();
+			$public_ids = WpssoPost::get_public_ids();
 
 			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 
-			foreach ( $post_ids as $post_id ) {
+			foreach ( $public_ids as $post_id ) {
 
 				foreach ( $size_names as $size_name ) {
 
@@ -709,7 +709,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			unset( $post_ids );
+			unset( $public_ids );
 
 			/*
 			 * Refresh the cache for each public post, term, and user ID.

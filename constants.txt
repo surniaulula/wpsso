@@ -36,7 +36,6 @@ WPSSO_DISMISS_NAME                       = 'wpsso_dismissed'
 WPSSO_DUPE_CHECK_HEADER_COUNT            = 3
 WPSSO_DUPE_CHECK_TIMEOUT_TIME            = 3.0
 WPSSO_DUPE_CHECK_WARNING_TIME            = 2.5
-WPSSO_GET_POSTS_MAX_TIME                 = 0.30
 WPSSO_HEAD_PRIORITY                      = 10
 WPSSO_HTML_ATTR_FILTER_NAME              = 'language_attributes'	// <html> attributes filter hook name.
 WPSSO_HTML_ATTR_FILTER_PRIO              = 1000				// <html> attributes filter hook priority.
