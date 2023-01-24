@@ -12,7 +12,7 @@
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
  * Requires PHP: 7.2
- * Requires At Least: 5.2
+ * Requires At Least: 5.4
  * Tested Up To: 6.1.1
  * WC Tested Up To: 7.3.0
  * Version: 14.6.1-dev.3

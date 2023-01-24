@@ -198,9 +198,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/*
 		 * Hooked to the 'wp_image_resize_identical_dimensions' filter added in WP v5.3.
-		 *
-		 * The 'wp_image_resize_identical_dimensions' filter always returns for resized dimensions that are close to the
-		 * original image dimensions.
 		 */
 		public function maybe_resize_fuzzy_dimensions( $resize ) {
 

@@ -1216,11 +1216,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function wp_sitemaps_disabled( $is_notice = false ) {
 
-			$html          = '';
-			$is_public     = get_option( 'blog_public' );
-			$is_production = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
+			$html        = '';
+			$is_public   = get_option( 'blog_public' );
+			$is_prod_env = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
-			if ( ! $is_production && $is_notice ) {	// Only show notice for production sites.
+			if ( ! $is_prod_env && $is_notice ) {	// Only show notice for production sites.
 
 				return $html;
 			}
