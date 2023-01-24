@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.1.1
  * WC Tested Up To: 7.3.0
- * Version: 14.6.1-dev.1
+ * Version: 14.6.1-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -96,15 +96,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function __construct() {
 
-			$plugin_dir = trailingslashit( dirname( __FILE__ ) );
+			$plugin_file = __FILE__;
+			$plugin_dir  = trailingslashit( dirname( $plugin_file ) );
 
 			require_once $plugin_dir . 'lib/config.php';
 
 			$this->cf = WpssoConfig::get_config();
 
-			WpssoConfig::set_constants( __FILE__ );
+			WpssoConfig::set_constants( $plugin_file );
 
-			WpssoConfig::require_libs( __FILE__ );		// Includes the register.php class library.
+			WpssoConfig::require_libs( $plugin_file );	// Includes the register.php class library.
 
 			$this->reg = new WpssoRegister( $this );	// Activate, deactivate, uninstall hooks.
 
@@ -143,6 +144,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 			 */
 			add_filter( 'load_textdomain_mofile', array( $this, 'textdomain_mofile' ), 10, 3 );
+
+			/*
+			 * Declare compatibility with WooCommerce HPOS.
+			 *
+			 * See https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book.
+			 */
+			add_action( 'before_woocommerce_init', function () use ( $plugin_file ) { 
+
+				if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+
+					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $plugin_file, true );
+				}
+			}, 10, 0 );
 		}
 
 		public static function &get_instance() {
@@ -179,21 +193,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				register_widget( $classname );
 			}
-		}
-
-		public function get_options( $opt_key = false, $def_value = null ) {
-
-			if ( false !== $opt_key ) {
-
-				if ( isset( $this->options[ $opt_key ] ) ) {
-
-					return $this->options[ $opt_key ];
-				}
-
-				return $def_value;
-			}
-
-			return $this->options;
 		}
 
 		/*
@@ -662,6 +661,21 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			return $classnames;
+		}
+
+		public function get_options( $opt_key = false, $def_value = null ) {
+
+			if ( false !== $opt_key ) {
+
+				if ( isset( $this->options[ $opt_key ] ) ) {
+
+					return $this->options[ $opt_key ];
+				}
+
+				return $def_value;
+			}
+
+			return $this->options;
 		}
 
 		public function debug_hooks() {
