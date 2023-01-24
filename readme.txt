@@ -234,15 +234,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.1 (2023/01/23)**
+**Version 14.6.1-dev.2 (2023/01/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added compatibility declaration for WooCommerce HPOS.
 	* Updated the list of ignored tracking and advertising URL query args.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Updated the `WpssoAbstractAddOn` class.
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
 	* Refactored the `SucomUtil::get_url()` method to add a local cache.
 * **Requires At Least**
@@ -922,7 +924,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.1-dev.1 =
+= 14.6.1-dev.2 =
 
 (2023/01/23) Updated the list of ignored tracking and advertising URL query args.
 
