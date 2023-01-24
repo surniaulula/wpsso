@@ -146,17 +146,23 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_filter( 'load_textdomain_mofile', array( $this, 'textdomain_mofile' ), 10, 3 );
 
 			/*
-			 * Declare compatibility with WooCommerce HPOS.
-			 *
-			 * See https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book.
+			 * Declare compatibility with WooCommerce features.
 			 */
-			add_action( 'before_woocommerce_init', function () use ( $plugin_file ) { 
+			if ( ! empty( $this->cf[ 'plugin' ][ 'wpsso' ][ 'wc_compat' ] ) ) {
 
-				if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+				$wc_compat = $this->cf[ 'plugin' ][ 'wpsso' ][ 'wc_compat' ];
 
-					\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $plugin_file, true );
-				}
-			}, 10, 0 );
+				add_action( 'before_woocommerce_init', function () use ( $plugin_file, $wc_compat ) { 
+
+					if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+
+						foreach ( $wc_compat as $feature ) {
+
+							\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( $feature, $plugin_file, true );
+						}
+					}
+				}, 10, 0 );
+			}
 		}
 
 		public static function &get_instance() {

@@ -246,6 +246,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'add-person' => 'Add Person',
 						),
 					),
+
+					/*
+					 * Declare compatibility with WooCommerce HPOS.
+					 *
+					 * See https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book.
+					 */
+					'wc_compat' => array(
+						'custom_order_tables',
+					),
 				),
 				'wpssoafs' => array(			// Plugin acronym.
 					'short'       => 'WPSSO AFS',	// Short plugin name.
