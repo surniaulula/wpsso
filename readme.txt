@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.7.0-dev.6 (2023/01/25)**
+**Version 14.7.0-rc.1 (2023/01/25)**
 
 * **New Features**
 	* None.
@@ -246,6 +246,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the "Your Rating Is Important" metabox under the SSO &gt; Dashboard settings page.
 * **Bugfixes**
 	* Fixed possible 404 HTML content under the Document SSO &gt; Preview oEmbed tab for non-public posts.
+	* Fixed the missing page number for the WooCommerce shop page canonical URLs.
+	* Fixed pading for the shortlink URL.
 * **Developer Notes**
 	* Updated the `WpssoAbstractAddOn->add_hooks()` method to add support for the plugin config 'wc_compat' array.
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
@@ -931,7 +933,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.7.0-dev.6 =
+= 14.7.0-rc.1 =
 
 (2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args for caching.
 
