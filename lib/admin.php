@@ -1572,40 +1572,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Your Rating Is Important dashboard metabox content.
-		 */
-		public function show_metabox_rate_review() {
-
-			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
-
-			echo $this->p->msgs->get( 'column-rate-review' );
-
-			echo '<h4>' . __( 'Rate your active plugins:', 'option label', 'wpsso' ) . '</h4>' . "\n";
-
-			$action_links = array();
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
-
-					continue;
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'review' ] ) ) {
-
-					$action_links[] = '<a href="' . $info[ 'url' ][ 'review' ] . '">' . $info[ 'name' ] . '</a>';
-				}
-			}
-
-			if ( ! empty( $action_links ) ) {
-
-				echo SucomUtil::array_to_list_html( $action_links );
-			}
-
-			echo '</td></tr></table>';
-		}
-
-		/*
 		 * Cache Status dashboard metabox content.
 		 */
 		public function show_metabox_cache_status() {

@@ -2050,6 +2050,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
+							/*
+							 * Get the canonical URL of the published post.
+							 */
 							if ( 'publish' !== $mod[ 'post_status' ] ) {
 
 								if ( $this->p->debug->enabled ) {
@@ -2201,11 +2204,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = '';
 
-			if ( ! function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
-
-				return $url;
-			}
-
 			/*
 			 * The $mod array argument is preferred but not required.
 			 *
@@ -2221,44 +2219,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			if ( function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
 
-					if ( 'publish' !== $mod[ 'post_status' ] ) {
-
-						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
-
-							$mod[ 'wp_obj' ]->post_status = 'publish';
-
-							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
-
-								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
-							}
-
-							$url = get_permalink( $mod[ 'wp_obj' ] );
-						}
-					}
-
-					if ( empty( $url ) ) {
-
-						$url = get_permalink( $mod[ 'id' ] );
-					}
-
-					$url = $this->is_string_url( $url, 'post permalink' );	// Check for WP_Error.
-
-					$url = apply_filters( 'wpsso_post_url', $url, $mod );
+					$url = $this->get_canonical_url( $mod );
+	
+					$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
 				}
-			}
-
-			if ( ! empty( $url ) ) {
-
-				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
-
-					$url = set_url_scheme( $url, 'https' );
-				}
-
-				$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
 			}
 
 			return apply_filters( 'wpsso_oembed_url', $url, $mod, $format );
@@ -2271,12 +2239,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$data = false;	// Returns false on error.
-
-			if ( ! function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
-
-				return $data;
-			}
+			$data = false;
 
 			/*
 			 * The $mod array argument is preferred but not required.
@@ -2292,37 +2255,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$mod = $this->p->page->get_mod( $mod );
 			}
+	
+			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
 
-			if ( $mod[ 'is_post' ] ) {
-
-				if ( $mod[ 'id' ] ) {
-
-					if ( 'publish' !== $mod[ 'post_status' ] ) {
-
-						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
-
-							$mod[ 'wp_obj' ]->post_status = 'publish';
-
-							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
-
-								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
-							}
-
-							$data = get_oembed_response_data( $mod[ 'wp_obj' ], $width );	// Returns false on error.
-						}
-
-						if ( empty( $data ) ) {
-
-							$data = get_oembed_response_data( $mod[ 'id' ], $width );	// Returns false on error.
-						}
-
-					} else {
-
-						$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
-					}
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
+	
+					$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
 				}
 			}
-
+	
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 

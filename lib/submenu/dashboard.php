@@ -89,7 +89,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$metaboxes = array(
 				array(
-					'rate_review'  => _x( 'Your Rating Is Important', 'metabox title', 'wpsso' ),
 					'help_support' => _x( 'Get Help and Support', 'metabox title', 'wpsso' ),
 					'cache_status' => wp_using_ext_object_cache() ? false : _x( 'Cache Status', 'metabox title', 'wpsso' ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ),
