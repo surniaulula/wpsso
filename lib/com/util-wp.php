@@ -595,28 +595,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $wp_config_file_path;
 		}
 
-		/*
-		 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter and return an empty URL to
-		 * disable the WordPress shortlink meta tag. This breaks the WordPress wp_get_shortlink() function and is a
-		 * violation of the WordPress theme guidelines.
-		 *
-		 * This method calls the WordPress wp_get_shortlink() function, and if an empty string is returned, calls an
-		 * unfiltered version of the same function.
-		 *
-		 * $context = 'blog', 'post' (default), 'media', or 'query'
-		 */
-		public static function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
-
-			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
-
-			if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
-
-				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );
-			}
-
-			return $shortlink;
-		}
-
 		public static function raw_update_post( $post_id, array $args ) {
 
 			if ( wp_is_post_revision( $post_id ) ) {
@@ -1119,6 +1097,21 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return $result;
+		}
+
+		/*
+		 * Deprecated on 2023/01/25.
+		 */
+		public static function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
+
+			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
+
+			if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
+
+				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );
+			}
+
+			return $shortlink;
 		}
 
 		/*

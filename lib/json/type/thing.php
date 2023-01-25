@@ -119,57 +119,23 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 					$json_ret[ 'sameAs' ][] = $mt_og[ 'og:url' ];
 				}
 
+				/*
+				 * Add the post shortlink, but only if the link rel shortlink tag is enabled.
+				 */
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-					/*
-					 * Add the permalink, which may be different than the shared URL and the canonical URL.
-					 */
-					$permalink = get_permalink( $mod[ 'id' ] );
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'sameAs permalink URL = ' . $permalink );
-					}
-
-					$json_ret[ 'sameAs' ][] = $permalink;
-
-					/*
-					 * Add the shortlink / short URL, but only if the link rel shortlink tag is enabled.
-					 */
 					$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
-
+	
 					if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
-
-						$shortlink = wp_get_shortlink( $mod[ 'id' ], 'post' );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'sameAs shortlink URL = ' . $shortlink );
-						}
-
-						$json_ret[ 'sameAs' ][] = $shortlink;
-
-						/*
-						 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter
-						 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the
-						 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme
-						 * guidelines.
-						 *
-						 * This method calls the WordPress wp_get_shortlink() function, and if an empty string
-						 * is returned, calls an unfiltered version of the same function.
-						 *
-						 * $context = 'blog', 'post' (default), 'media', or 'query'
-						 */
-						$raw_shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'sameAs (maybe raw) shortlink URL = ' . $raw_shortlink );
-						}
-
-						if ( $shortlink !== $raw_shortlink ) {
-
-							$json_ret[ 'sameAs' ][] = $raw_shortlink;
+	
+						if ( $shortlink = $this->p->util->get_shortlink( $mod, $context = 'post' ) ) {
+	
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'sameAs shortlink URL = ' . $shortlink );
+							}
+	
+							$json_ret[ 'sameAs' ][] = $shortlink;
 						}
 					}
 				}
@@ -227,8 +193,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$this->p->debug->log( 'applying sameAs property filter' );
 			}
 
-			$json_ret[ 'sameAs' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_sameas',
-				$json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
+			$json_ret[ 'sameAs' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_sameas', $json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
 

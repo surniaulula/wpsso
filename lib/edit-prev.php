@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
+				$shortlink_url = $this->p->util->get_shortlink( $mod, $context = 'post' );
 
 			} else {
 

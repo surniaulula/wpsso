@@ -226,11 +226,6 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_html .= '</div><!-- .wpsso-pinterest-pin-it-image -->' . "\n\n";
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'done' );
-			}
-
 			unset( $local_is_recursion[ $cache_salt ] );
 
 			return $image_html . $content;

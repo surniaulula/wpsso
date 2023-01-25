@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 		public function filter_get_other_user_images( $mt_ret, $num, $size_names, $user_id, $md_pre ) {
 
-			if ( get_post_type( $user_id ) === 'guest-author' ) {
+			if ( 'guest-author' === get_post_type( $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 

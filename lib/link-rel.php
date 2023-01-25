@@ -133,14 +133,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-					$shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'WordPress wp_get_shortlink() = ' . wp_get_shortlink( $mod[ 'id' ], 'post' ) );
-
-						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
-					}
+					$shortlink = $this->p->util->get_shortlink( $mod, $context = 'post' );
 
 				} elseif ( ! empty( $canonical_url ) ) {	// Just in case.
 

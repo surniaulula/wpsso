@@ -244,22 +244,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {	// Just in case.
 
-					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
 					$mod[ 'post_type' ]          = get_post_type( $mod[ 'wp_obj' ] );			// Post type name.
+					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
 					$mod[ 'post_mime' ]          = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
 					$mod[ 'post_status' ]        = get_post_status( $mod[ 'wp_obj' ] );			// Post status name.
 					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $mod[ 'wp_obj' ] );	// Post author id.
 					$mod[ 'post_coauthors' ]     = array();
 					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );		// ISO 8601 date or false.
 					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
-					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
 					if ( ! empty( $mod[ 'wp_obj' ]->post_parent ) ) {
 
 						$mod[ 'post_parent' ] = $mod[ 'wp_obj' ]->post_parent;	// Post parent id.
 					}
 
+					/*
+					 * See WpssoIntegUserCoAuthors->filter_get_post_type().
+					 */
+					$mod[ 'post_type' ] = apply_filters( 'wpsso_get_post_type', $mod[ 'post_type' ], $post_id );
+
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
+					
+						$mod[ 'is_attachment' ] = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
@@ -308,7 +314,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Hooked by the 'coauthors' module.
+			 * See WpssoIntegUserCoAuthors->filter_get_post_mod().
 			 */
 			$mod = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
 
@@ -1057,13 +1063,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( ini_get( 'open_basedir' ) ) {	// Cannot follow redirects.
+			if ( ini_get( 'open_basedir' ) ) {
 
 				$check_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
 
 			} else {
 
-				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
+				$check_url = $this->p->util->get_shortlink( $post_id, $context = 'post' );
 			}
 
 			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );	// Does not double-encode.
@@ -1731,9 +1737,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->p->cache->clear( $permalink );
 
-			$other_url = ini_get( 'open_basedir' ) ?
-				$this->p->util->get_canonical_url( $post_id, $add_page = false ) :
-				SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
+			if ( ini_get( 'open_basedir' ) ) {
+
+				$other_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
+
+			} else {
+
+				$other_url = $this->p->util->get_shortlink( $post_id, $context = 'post' );
+			}
 
 			if ( $permalink !== $other_url ) {
 
@@ -2107,7 +2118,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// Return original shortlink.
 			}
 
-			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			/*
 			 * Shorten URL using the selected shortening service.

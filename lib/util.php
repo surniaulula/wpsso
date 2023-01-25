@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
-	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
+	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';	// Loads the SucomUtilWP class.
 }
 
 if ( ! class_exists( 'WpssoUtil' ) ) {
@@ -1854,6 +1854,48 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
+		 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter and return an empty URL to
+		 * disable the WordPress shortlink meta tag. This breaks the WordPress wp_get_shortlink() function and is a
+		 * violation of the WordPress theme guidelines.
+		 *
+		 * This method calls the WordPress wp_get_shortlink() function, and if an empty string is returned, calls an
+		 * unfiltered version of the same function.
+		 *
+		 * $context = 'blog', 'post' (default), 'media', or 'query'
+		 */
+		public function get_shortlink( $mod, $context = 'post', $allow_slugs = true ) {
+
+			/*
+			 * The $mod array argument is preferred but not required.
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			$shortlink = '';
+
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
+
+				$shortlink = wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );	// Since WP v3.0.
+
+				if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
+
+					$shortlink = SucomUtilWP::raw_wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );
+				}
+		
+				$shortlink =  $this->get_url_paged( $shortlink, $mod, $add_page = true );
+			}
+
+			return $shortlink;
+		}
+
+		/*
 		 * Shorten URL using the selected shortening service.
 		 */
 		public function shorten_url( $long_url, $mod = false ) {
@@ -1964,6 +2006,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				) );
 			}
 
+			/*
+			 * The $mod array argument is preferred but not required.
+			 */
 			if ( ! is_array( $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -2206,8 +2251,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/*
 			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
 
@@ -2243,8 +2286,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/*
 			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
 
@@ -2375,7 +2416,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->shorten_url( $url, $mod );
 		}
 
-		public function get_url_paged( $url, array $mod, $add_page ) {
+		public function get_url_paged( $url, array $mod, $add_page = true ) {
 
 			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
 

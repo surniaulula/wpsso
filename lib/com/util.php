@@ -3102,6 +3102,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 				}
 
+				if ( ! empty( $mod[ 'paged' ] ) ) {
+
+					$mod_salt .= '_paged:' . $mod[ 'paged' ];
+				}
+
 				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
 
 					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).

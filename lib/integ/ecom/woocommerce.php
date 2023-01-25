@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				'request_url_query_cache_disable' => 4,
 				'head_cache_index'                => 1,
 				'use_post'                        => 1,
-				'get_post_mod'                    => 2,
+				'get_post_type'                   => 2,
 				'schema_type_id'                  => 3,
 				'primary_tax_slug'                => 2,	// See WpssoPost->get_primary_terms().
 				'the_content_seed'                => 2,
@@ -369,21 +369,19 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $use_post;
 		}
 
-		public function filter_get_post_mod( $mod, $post_id ) {
+		public function filter_get_post_type( $post_type, $post_id ) {
 
-			if ( $mod[ 'id' ] === $this->page_ids[ 'shop' ] ) {
+			if ( $post_id === $this->page_ids[ 'shop' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'post is shop page' );
 				}
 
-				$mod[ 'post_type' ]            = $this->prod_post_type;
-				$mod[ 'is_post_type_archive' ] = true;
-				$mod[ 'is_archive' ]           = true;
+				return $this->prod_post_type;
 			}
 
-			return $mod;
+			return $post_type;
 		}
 
 		public function filter_schema_type_id( $type_id, array $mod, $is_custom ) {
