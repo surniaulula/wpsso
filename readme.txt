@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.5 (2023/01/25)**
+**Version 14.7.0-dev.6 (2023/01/25)**
 
 * **New Features**
 	* None.
@@ -251,6 +251,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
 	* Refactored the `SucomUtil::get_url()` method to add a local cache.
 	* Refactored the `SucomUtil::get_posts()` method to sanitize deprecated query arguments.
+	* Refactored the `WpssoPost->get_posts_ids()` method to use `SucomUtilWP::get_posts()`.
+	* Refactored the `WpssoTerm->get_posts_ids()` method to use `SucomUtilWP::get_posts()`.
+	* Refactored the `WpssoUser->get_posts_ids()` method to use `SucomUtilWP::get_posts()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -928,7 +931,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.1-dev.5 =
+= 14.7.0-dev.6 =
 
 (2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args for caching.
 
