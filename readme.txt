@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.4 (2023/01/23)**
+**Version 14.6.1-dev.5 (2023/01/23)**
 
 * **New Features**
 	* None.
@@ -244,7 +244,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated conflict notices for Yoast SEO v20.0.
 	* Updated the minimum WordPress version from v5.2 to v5.4.
 * **Bugfixes**
-	* None.
+	* Fixed possible 404 HTML content under the Document SSO &gt; Preview oEmbed tab for non-public posts.
 * **Developer Notes**
 	* Updated the `WpssoAbstractAddOn->add_hooks()` method to add support for the plugin config 'wc_compat' array.
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
@@ -926,7 +926,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.6.1-dev.4 =
+= 14.6.1-dev.5 =
 
 (2023/01/23) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
 
