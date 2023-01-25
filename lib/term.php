@@ -461,46 +461,52 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			} elseif ( is_string( $tax_names ) ) {
 
 				$tax_names = array( $tax_names );
-
-			} elseif ( ! is_array( $tax_names ) ) {	// Incorrect argument value.
-
-				return array();
 			}
 
-			$terms_args = array( 'fields' => 'ids' );	// Return an array of ids.
+			$mtime_start = microtime( $get_float = true );
 
-			foreach ( $tax_names as $name ) {
+			if ( is_array( $tax_names ) ) {
 
-				$terms_args[ 'taxonomy' ] = $name;
+				$terms_args  = array( 'fields' => 'ids' );	// Return an array of ids.
 
-				if ( $wpsso->debug->enabled ) {
+				foreach ( $tax_names as $name ) {
 
-					$wpsso->debug->log_arr( 'terms_args', $terms_args );
+					$terms_args[ 'taxonomy' ] = $name;
+
+					if ( $wpsso->debug->enabled ) {
+	
+						$wpsso->debug->log_arr( 'terms_args', $terms_args );
+					}
+	
+					/*
+					 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
+					 */
+					$term_ids = get_terms( $terms_args );
+	
+					foreach ( $term_ids as $term_id ) {
+	
+						$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
+					}
 				}
-
+	
 				/*
-				 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
+				 * Sort public term IDs with the newest term ID first.
+				 *
+				 * Note that rsort() assigns new keys to elements in the array.
+				 *
+				 * See https://www.php.net/manual/en/function.rsort.php.
 				 */
-				$term_ids = get_terms( $terms_args );
+				rsort( $public_ids );
+			}
+	
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
+	
+			if ( $wpsso->debug->enabled ) {
 
-				foreach ( $term_ids as $term_id ) {
-
-					$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
-				}
+				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			/*
-			 * Sort public term IDs with the newest term ID first.
-			 *
-			 * Note that rsort() assigns new keys to elements in the array.
-			 *
-			 * See https://www.php.net/manual/en/function.rsort.php.
-			 */
-			rsort( $public_ids );
-
-			$public_ids = apply_filters( 'wpsso_term_public_ids', $public_ids, $tax_names );
-
-			return $public_ids;
+			return apply_filters( 'wpsso_term_public_ids', $public_ids, $tax_names );
 		}
 
 		/*
@@ -545,13 +551,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
+				$this->p->debug->log( 'getting posts for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
 
 				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = get_posts( $posts_args );
+			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {

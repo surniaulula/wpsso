@@ -481,10 +481,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log_arr( 'roles', $roles );
 			}
 
-			$public_ids = SucomUtil::get_roles_users_ids( $roles, $blog_id = null );
-			$public_ids = apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
+			$mtime_start = microtime( $get_float = true );
+			$public_ids  = SucomUtil::get_roles_users_ids( $roles, $blog_id = null );
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
-			return $public_ids;
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+			}
+
+			return apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
 		}
 
 		/*
@@ -522,13 +528,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for posts authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->log( 'getting posts for authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 
 				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = get_posts( $posts_args );
+			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {

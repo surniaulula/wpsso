@@ -2968,7 +2968,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
 
 			$translations  = wp_get_available_translations();	// Since WP v4.0.
-			$avail_locales = self::get_available_locales();	// Uses a local cache.
+			$avail_locales = self::get_available_locales();		// Uses a local cache.
 			$local_cache   = array();
 
 			foreach ( $avail_locales as $locale ) {

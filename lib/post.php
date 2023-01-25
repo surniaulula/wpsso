@@ -665,23 +665,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log_arr( 'posts_args', $posts_args );
-			}
-
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = SucomUtilWP::get_posts( $posts_args );
+			$public_ids  = SucomUtilWP::get_posts( $posts_args );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			$posts_ids = apply_filters( 'wpsso_post_public_ids', $posts_ids, $posts_args );
-
-			return $posts_ids;
+			return apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
 		}
 
 		/*
@@ -721,13 +714,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->log( 'getting posts for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 
 				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = get_posts( $posts_args );
+			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {

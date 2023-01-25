@@ -237,21 +237,73 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Calls WP_Query->query() with the supplied arguments.
 		 *
-		 * If the query arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then a while
-		 * loop is used to save memory (fetching 1000 posts at a time by default).
+		 * Alternative to the WordPress get_posts() function, which sets 'ignore_sticky_posts' and 'no_found_rows' to true.
 		 *
+		 * See wordpress/wp-includes/post.php.
+		 * See WpssoPost->get_posts_ids().
 		 * See WpssoPost->get_public_ids().
+		 * See WpssoTerm->get_posts_ids().
+		 * See WpssoUser->get_posts_ids().
 		 */
 		public static function get_posts( $args ) {
 
-			$posts    = array();
+			/*
+			 * Query argument sanitation.
+			 *
+			 * See wordpress/wp-includes/post.php.
+			 */
+			if ( ! empty( $args[ 'post_type' ] ) ) {
+		
+				if ( empty( $args[ 'post_status' ] ) ) {
+
+					$args[ 'post_status' ] = 'attachment' === $args[ 'post_type' ] ? 'inherit' : 'publish';
+				}
+			}
+
+			if ( ! empty( $args[ 'numberposts' ] ) && empty( $args[ 'posts_per_page' ] ) ) {
+
+				$args[ 'posts_per_page' ] = $args[ 'numberposts' ];
+
+				unset( $args[ 'numberposts' ] );
+			}
+
+			if ( ! empty( $args[ 'category' ] ) ) {
+
+				$args[ 'cat' ] = $args[ 'category' ];
+
+				unset( $args[ 'category' ] );
+			}
+
+			if ( ! empty( $args[ 'include' ] ) ) {
+
+				$args[ 'post__in' ] = wp_parse_id_list( $args[ 'include' ] );
+
+				$args[ 'posts_per_page' ] = count( $args[ 'post__in' ] );  // Only the number of posts included.
+
+				unset( $args[ 'include' ] );
+			}
+			
+			if ( ! empty( $args[ 'exclude' ] ) ) {
+
+				$args[ 'post__not_in' ] = wp_parse_id_list( $args[ 'exclude' ] );
+
+				unset( $args[ 'exclude' ] );
+			}
+
+			/*
+			 * If the query arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then
+			 * use a while loop to save memory and fetch a default of 1000 posts at a time.
+			 */
 			$wp_query = new WP_Query;
 
 			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
 				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
 
-				$args[ 'paged' ]          = 1;
+				$args[ 'paged' ] = 1;
+
 				$args[ 'posts_per_page' ] = defined( 'SUCOM_GET_POSTS_WHILE_PPP' ) ? SUCOM_GET_POSTS_WHILE_PPP : 1000;
+
+				$posts = array();
 
 				while ( $result = $wp_query->query( $args ) ) {
 
@@ -260,12 +312,10 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 					$args[ 'paged' ]++;	// Get the next page.
 				}
 
-			} else {
-
-				$posts = $wp_query->query( $args );
+				return $posts;
 			}
 
-			return $posts;
+			return $wp_query->query( $args );
 		}
 
 		/*
