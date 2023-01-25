@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.6.1-dev.5 (2023/01/23)**
+**Version 14.6.1-dev.5 (2023/01/25)**
 
 * **New Features**
 	* None.
@@ -243,6 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the list of ignored tracking and advertising URL query args.
 	* Updated conflict notices for Yoast SEO v20.0.
 	* Updated the minimum WordPress version from v5.2 to v5.4.
+	* Removed the "Your Rating Is Important" metabox under the SSO &gt; Dashboard settings page.
 * **Bugfixes**
 	* Fixed possible 404 HTML content under the Document SSO &gt; Preview oEmbed tab for non-public posts.
 * **Developer Notes**
@@ -928,7 +929,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.6.1-dev.5 =
 
-(2023/01/23) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
+(2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
 
 = 14.6.0 =
 
