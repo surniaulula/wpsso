@@ -335,14 +335,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		public function clear( $url, $pre_ext = '' ) {
+		public function clear( $url, $cache_pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 
 			$this->clear_ignored_url( $url_nofrag );
 
-			$this->clear_cache_data( $cache_salt, $pre_ext, $url );
+			$this->clear_cache_data( $cache_salt, $cache_pre_ext, $url );
 		}
 
 		/*
@@ -426,14 +426,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/*
 		 * Called by SucomForm->get_event_load_json_script().
 		 */
-		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $pre_ext = '' ) {
+		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $cache_pre_ext = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$file_name  = md5( $cache_salt ) . $pre_ext;
+			$file_name  = md5( $cache_salt ) . $cache_pre_ext;
 			$cache_file = $this->base_dir . $file_name;
 			$cache_url  = $this->base_url . $file_name;
 
@@ -483,7 +483,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $pre_ext ) ) {
+			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $cache_pre_ext ) ) {
 
 				if ( file_exists( $cache_file ) ) {
 
@@ -508,7 +508,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '', array $curl_opts = array(), $throttle_secs = 0 ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '', array $curl_opts = array(), $throttle_secs = 0 ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -539,11 +539,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
 			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
 
-			if ( '' === $pre_ext ) {	// Default is an empty string.
+			if ( '' === $cache_pre_ext ) {	// Default is an empty string.
 
-				if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
+				if ( $cache_pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
 
-					$pre_ext = '.' . $pre_ext;
+					$cache_pre_ext = '.' . $cache_pre_ext;
 				}
 			}
 
@@ -555,8 +555,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
-			$cache_file = $this->base_dir . md5( $cache_salt ) . $pre_ext;
-			$cache_url  = $this->base_url . md5( $cache_salt ) . $pre_ext . $url_fragment;
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $cache_pre_ext;
+			$cache_url  = $this->base_url . md5( $cache_salt ) . $cache_pre_ext . $url_fragment;
 			$cache_data = false;
 
 			/*
@@ -566,7 +566,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'raw':
 
-					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $pre_ext );
+					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $cache_pre_ext );
 
 					if ( false !== $cache_data ) {
 
@@ -789,7 +789,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				} elseif ( false !== $exp_secs ) {	// Optimize and check first.
 
-					if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $exp_secs, $pre_ext ) ) {
+					if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $exp_secs, $cache_pre_ext ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -828,7 +828,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+		public function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
 
 			$cache_data = false;
 
@@ -842,7 +842,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
-			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
+			$cache_md5_pre = $cache_pre_ext ? $cache_pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			switch ( $cache_type ) {
@@ -861,7 +861,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'file':
 
-					$file_name     = md5( $cache_salt ) . $pre_ext;
+					$file_name     = md5( $cache_salt ) . $cache_pre_ext;
 					$cache_file    = $this->base_dir . $file_name;
 					$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
@@ -939,7 +939,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function save_cache_data( $cache_salt, $cache_data = '', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+		public function save_cache_data( $cache_salt, $cache_data = '', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
 
 			$data_saved = false;
 
@@ -956,7 +956,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
-			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
+			$cache_md5_pre = $cache_pre_ext ? $cache_pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			switch ( $cache_type ) {
@@ -991,7 +991,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'file':
 
-					$file_name  = md5( $cache_salt ) . $pre_ext;
+					$file_name  = md5( $cache_salt ) . $cache_pre_ext;
 					$cache_file = $this->base_dir . $file_name;
 
 					if ( ! $file_exp_secs ) {	// False or 0.
@@ -1088,11 +1088,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $data_saved;	// Return true or false.
 		}
 
-		public function clear_cache_data( $cache_salt, $pre_ext = '', $url = '' ) {
+		public function clear_cache_data( $cache_salt, $cache_pre_ext = '', $url = '' ) {
 
-			if ( 0 !== strpos( $pre_ext, '.' ) ) {	// Maybe a filename extension.
+			if ( 0 !== strpos( $cache_pre_ext, '.' ) ) {	// Not a filename extension.
 
-				$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
+				$cache_md5_pre = $cache_pre_ext ? $cache_pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 				if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
@@ -1114,21 +1114,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->base_dir ) {	// Just in case.
 
-				if ( '' === $pre_ext ) {	// Default is an empty string.
+				if ( '' === $cache_pre_ext ) {	// Default is an empty string.
 
 					if ( ! empty( $url ) ) {
 
 						$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 						$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
 
-						if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
+						if ( $cache_pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
 
-							$pre_ext = '.' . $pre_ext;
+							$cache_pre_ext = '.' . $cache_pre_ext;
 						}
 					}
 				}
 
-				$file_name  = md5( $cache_salt ) . $pre_ext;
+				$file_name  = md5( $cache_salt ) . $cache_pre_ext;
 				$cache_file = $this->base_dir . $file_name;
 
 				if ( file_exists( $cache_file ) ) {
@@ -1144,21 +1144,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
 			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
 
-			if ( '' === $pre_ext ) {	// Default is an empty string.
+			if ( '' === $cache_pre_ext ) {	// Default is an empty string.
 
-				if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
+				if ( $cache_pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
 
-					$pre_ext = '.' . $pre_ext;
+					$cache_pre_ext = '.' . $cache_pre_ext;
 				}
 			}
 
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
-			$cache_file = $this->base_dir . md5( $cache_salt ) . $pre_ext;
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $cache_pre_ext;
 
 			/*
 			 * Return immediately if the cache contains what we need.
@@ -1167,7 +1167,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'raw':
 
-					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $pre_ext ) ) {
+					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $cache_pre_ext ) ) {
 
 						return true;
 					}

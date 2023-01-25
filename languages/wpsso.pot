@@ -11494,7 +11494,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1891
+#: lib/post.php:1895
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

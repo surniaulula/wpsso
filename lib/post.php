@@ -1851,6 +1851,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
 			) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
 
+			/*
+			 * See WpssoCmcfActions->action_refresh_post_cache().
+			 * See WpssoGmfActions->action_refresh_post_cache().
+			 */
 			do_action( 'wpsso_refresh_post_cache', $post_id, $mod );
 		}
 
