@@ -3068,7 +3068,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Results a salt string based on $mod values.
+		 * A cache salt string based on $mod values.
 		 *
 		 * Example mod salts:
 		 *
@@ -3076,6 +3076,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	'term:456_tax:post_tag'
 		 * 	'post:0_url:https://example.com/a-subject/'
 		 * 	'url:https://example.com/2022/01/'
+		 *
+		 * Note that the page number is not added to the salt string.
+		 *
+		 * See WpssoHead->get_head_cache_index().
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false ) {
 
@@ -3100,11 +3104,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! empty( $mod[ 'tax_slug' ] ) ) {
 
 					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
-				}
-
-				if ( ! empty( $mod[ 'paged' ] ) ) {
-
-					$mod_salt .= '_paged:' . $mod[ 'paged' ];
 				}
 
 				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {

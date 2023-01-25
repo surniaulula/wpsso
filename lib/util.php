@@ -2030,7 +2030,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . $add_page;
+				$cache_salt = self::get_mod_salt( $mod ) . '_add:' . (string) $add_page;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -2767,8 +2767,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$image_sizes = $this->get_image_size_names( $image_sizes, $sanitize = false );	// Always returns an array.
 			}
 
-			$cleared = 0;
-
+			$cleared  = 0;
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
@@ -2815,9 +2814,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$image_sizes = array( $image_sizes );
 			}
 
+			$is_uniq  = true;
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
-
-			$is_uniq = true;
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
 

@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get:' . (string) $get_id . '_use:' . (string) $use_md_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 

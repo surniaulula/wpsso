@@ -351,7 +351,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_index    = $this->get_head_cache_index( $mod );
+			$cache_index    = $this->get_head_cache_index( $mod );	// Includes the page number.
 			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
