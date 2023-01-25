@@ -15,7 +15,7 @@
  * Requires At Least: 5.4
  * Tested Up To: 6.1.1
  * WC Tested Up To: 7.3.0
- * Version: 14.6.1-dev.5
+ * Version: 14.7.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
