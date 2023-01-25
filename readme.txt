@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added compatibility declaration for WooCommerce HPOS.
-	* Updated the list of ignored tracking and advertising URL query args.
+	* Updated the list of ignored tracking and advertising URL query args for caching.
 	* Updated conflict notices for Yoast SEO v20.0.
 	* Updated the minimum WordPress version from v5.2 to v5.4.
 	* Removed the "Your Rating Is Important" metabox under the SSO &gt; Dashboard settings page.
@@ -250,6 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the `WpssoAbstractAddOn->add_hooks()` method to add support for the plugin config 'wc_compat' array.
 	* Renamed the 'sucom_remove_tracking_args' filter to 'sucom_ignored_url_query_args'.
 	* Refactored the `SucomUtil::get_url()` method to add a local cache.
+	* Refactored the `SucomUtil::get_posts()` method to sanitize deprecated query arguments.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -929,7 +930,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 14.6.1-dev.5 =
 
-(2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args.
+(2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args for caching.
 
 = 14.6.0 =
 
