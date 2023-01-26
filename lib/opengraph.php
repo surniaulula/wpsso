@@ -121,6 +121,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
+				/*
+				 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+				 */
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get:' . (string) $get_id . '_use:' . (string) $use_md_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {

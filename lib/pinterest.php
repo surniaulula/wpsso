@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
 
-			$cache_salt = SucomUtil::get_mod_salt( $mod );
+			$cache_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
 			static $local_is_recursion = array();
 

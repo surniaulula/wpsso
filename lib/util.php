@@ -2030,6 +2030,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
+				/*
+				 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+				 */
 				$cache_salt = self::get_mod_salt( $mod ) . '_add:' . (string) $add_page;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
@@ -2768,7 +2771,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cleared  = 0;
-			$mod_salt = SucomUtil::get_mod_salt( $mod );
+			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
 
@@ -2815,7 +2818,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$is_uniq  = true;
-			$mod_salt = SucomUtil::get_mod_salt( $mod );
+			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
 

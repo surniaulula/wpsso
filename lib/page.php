@@ -1581,6 +1581,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre = 'wpsso_c_';
 			$cache_salt    = __CLASS__ . '::the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
@@ -1610,6 +1613,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
+			/*
+			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 */
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';

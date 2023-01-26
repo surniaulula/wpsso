@@ -245,6 +245,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 			}
 
+			/*
+			 * Setup variables for transient cache.
+			 *
+			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 */
 			$pretty_salt   = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
 			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
@@ -343,8 +348,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Setup variables for transient cache.
 			 *
-			 * Note that get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod array (404,
-			 * attachment, date, and search).
+			 * Note that WpssoUtil->get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod
+			 * array (ie. 404, attachment, date, and search).
+			 *
+			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
 			 */
 			$pretty_salt    = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
@@ -528,32 +535,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		/*
 		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 *
+		 * See WpssoIntegEcomEdd->filter_head_cache_index().
+		 * See WpssoIntegEcomWoocommerce->filter_head_cache_index().
 		 */
 		public function get_head_cache_index( $mixed = 'current' ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$cache_index = '';
-
-			if ( is_array( $mixed ) ) {
-
-				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or numeric.
-
-					$cache_index .= '_paged:' . $mixed[ 'paged' ];
-				}
-			}
-
-			$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
-
-			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
-
-				$cache_index .= '_amp:true';
-			}
-
-			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
+			$cache_index = SucomUtil::get_cache_index( $mixed );
 
 			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed );
 

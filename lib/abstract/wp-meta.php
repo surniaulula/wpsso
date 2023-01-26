@@ -2182,8 +2182,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $value;
 			}
 
-			$mod      = $this->get_mod( $obj_id );
-			$mod_salt = SucomUtil::get_mod_salt( $mod );
+			$mod = $this->get_mod( $obj_id );
+
+			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
 			static $local_is_recursion = array();
 
