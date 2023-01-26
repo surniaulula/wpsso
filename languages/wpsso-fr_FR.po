@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-01-25 17:09-0800\n"
+"PO-Revision-Date: 2023-01-25 17:19-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11585,46 +11585,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Rate your active plugins:"
-#~ msgstr "Notez vos extensions actives:"
-
-#~ msgid "Accounts"
-#~ msgstr "Comptes"
-
-#~ msgid "Facebook Page URL"
-#~ msgstr "URL de la page Facebook"
-
-#~ msgid "Instagram URL"
-#~ msgstr "Instagram URL"
-
-#~ msgid "LinkedIn URL"
-#~ msgstr "LinkedIn URL"
-
-#~ msgid "MySpace URL"
-#~ msgstr "MySpace URL"
-
-#~ msgid "Pinterest URL"
-#~ msgstr "URL Pinterest"
-
-#~ msgid "YouTube URL"
-#~ msgstr "YouTube URL"
-
-#~ msgid "Wikipedia URL"
-#~ msgstr "URL Wikipédia"
-
-#~ msgid "No oEmbed HTML found."
-#~ msgstr "Aucun HTML oEmbed trouvé."
-
-#~ msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
-#~ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
-
-#~ msgctxt "metabox title"
-#~ msgid "Your Rating Is Important"
-#~ msgstr "Votre note est importante"
-
-#~ msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s)."
-#~ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID du terme %3$d de taxonomie %4$s  (%5$s)."
-
-#~ msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts authored by user ID %3$d (%4$s)."
-#~ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID d'utilisateur %3$d (%4$s)."
