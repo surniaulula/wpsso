@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.7.0-rc.1 (2023/01/25)**
+**Version 14.7.0 (2023/01/26)**
 
 * **New Features**
 	* None.
@@ -933,9 +933,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.7.0-rc.1 =
+= 14.7.0 =
 
-(2023/01/25) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args for caching.
+(2023/01/26) Added compatibility declaration for WooCommerce HPOS. Updated the list of ignored tracking and advertising URL query args for caching.
 
 = 14.6.0 =
 
