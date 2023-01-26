@@ -4416,6 +4416,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product' => array(
 							'individual.product' => 'https://schema.org/IndividualProduct',	// Individual product with unique serial number.
 							'product'            => 'https://schema.org/Product',
+							'product.group'      => 'https://schema.org/ProductGroup',
 							'product.model'      => 'https://schema.org/ProductModel',
 							'some.products'      => 'https://schema.org/SomeProducts',
 							'vehicle'            => array(
