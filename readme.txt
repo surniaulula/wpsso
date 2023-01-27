@@ -234,6 +234,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.0.0-dev.1 (TBD)**
+
+* **New Features**
+	* Added support for the new https://schema.org/ProductGroup type (currently under development).
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'product:variants' internal meta tag array.
+	* Added a new 'wpsso_json_data_https_schema_org_product_group' filter hook.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 14.7.0 (2023/01/26)**
 
 * **New Features**
@@ -932,6 +947,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 15.0.0-dev.1 =
+
+(TBD) Added support for the new https://schema.org/ProductGroup type (currently under development).
 
 = 14.7.0 =
 
