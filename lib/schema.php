@@ -782,17 +782,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'schema type id before filter: ' . $type_id );
-			}
-
 			$type_id = apply_filters( 'wpsso_schema_type', $type_id, $mod, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'schema type id after filter: ' . $type_id );
-			}
 
 			$get_value = false;
 

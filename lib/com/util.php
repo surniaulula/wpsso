@@ -2408,8 +2408,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( 'product' === $mt_og[ 'og:type' ] ) {
 
-					$mt_ret[ $mt_pre . ':offers' ]  = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':reviews' ] = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':offers' ]   = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':reviews' ]  = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':variants' ] = array();	// Non-standard / internal meta tag.
 				}
 			}
 

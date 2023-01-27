@@ -67,6 +67,7 @@ _x( '(code) Schema Type Organization [schema_type:organization]', 'lib file desc
 _x( '(code) Schema Type Person [schema_type:person]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Place [schema_type:place]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Product [schema_type:product]', 'lib file description', 'wpsso' );
+_x( '(code) Schema Type Product Group [schema_type:product.group]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Profile Page [schema_type:webpage.profile]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type QAPage [schema_type:webpage.qa]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Question and Answer [schema_type:question]', 'lib file description', 'wpsso' );

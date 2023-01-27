@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'head_cache_index' => 1,
-				'schema_type_id'   => 3,
+				'schema_type'      => 3,
 				'primary_tax_slug' => 2,	// See WpssoPost->get_primary_terms().
 				'the_content_seed' => 2,
 				'description_seed' => 4,
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			return $cache_index . '_currency:' . $this->get_currency();
 		}
 
-		public function filter_schema_type_id( $type_id, array $mod, $is_custom ) {
+		public function filter_schema_type( $type_id, array $mod, $is_custom ) {
 
 			if ( $this->p->debug->enabled ) {
 

@@ -52,16 +52,6 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 			}
 		}
 
-		public function is_product( $product ) {
-
-			if ( $product instanceof WC_Product ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
 		public function is_product_variable( $product ) {
 
 			if ( $product instanceof WC_Product ) {	// Just in case.
@@ -70,6 +60,16 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 					return true;
 				}
+			}
+
+			return false;
+		}
+
+		public function is_product( $product ) {
+
+			if ( $product instanceof WC_Product ) {
+
+				return true;
 			}
 
 			return false;
@@ -237,15 +237,15 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		/*
 		 * Returns the variation product object or false if not a visible, active, and purchasable variation.
 		 */
-		public function get_variation_product( $mixed ) {
+		public function get_variation_product( $variation ) {
 
 			$product = false;
 
-			if ( ! is_array( $mixed ) ) {
+			if ( ! is_array( $variation ) ) {
 
 				return false;	// Stop here.
 
-			} elseif ( empty( $mixed[ 'variation_id' ] ) ) {
+			} elseif ( empty( $variation[ 'variation_id' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 				return false;	// Stop here.
 
-			} elseif ( empty( $mixed[ 'variation_is_visible' ] ) ) {
+			} elseif ( empty( $variation[ 'variation_is_visible' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 				return false;	// Stop here.
 
-			} elseif ( empty( $mixed[ 'variation_is_active' ] ) ) {
+			} elseif ( empty( $variation[ 'variation_is_active' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
 				return false;	// Stop here.
 
-			} elseif ( empty( $mixed[ 'is_purchasable' ] ) ) {
+			} elseif ( empty( $variation[ 'is_purchasable' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -282,13 +282,13 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 				return false;	// Stop here.
 			}
 
-			$product = $this->get_product( $mixed[ 'variation_id' ] );
+			$product = $this->get_product( $variation[ 'variation_id' ] );
 
 			if ( false === $product ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no product for variation id ' . $mixed[ 'variation_id' ] );
+					$this->p->debug->log( 'exiting early: no product for variation id ' . $variation[ 'variation_id' ] );
 				}
 
 				return false;	// Stop here.

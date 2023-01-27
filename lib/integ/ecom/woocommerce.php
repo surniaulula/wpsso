@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				'head_cache_index'                => 1,
 				'use_post'                        => 1,
 				'get_post_type'                   => 2,
-				'schema_type_id'                  => 3,
+				'schema_type'                     => 3,
 				'primary_tax_slug'                => 2,	// See WpssoPost->get_primary_terms().
 				'the_content_seed'                => 2,
 				'description_seed'                => 4,
@@ -384,7 +384,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			return $post_type;
 		}
 
-		public function filter_schema_type_id( $type_id, array $mod, $is_custom ) {
+		public function filter_schema_type( $type_id, array $mod, $is_custom ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -418,6 +418,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				} elseif ( $mod[ 'id' ] === $this->page_ids[ 'shop' ] ) {
 
 					$type_id = $this->p->schema->get_schema_type_id_for( 'pta_' . $this->prod_post_type );
+				
+				} elseif ( $this->p->util->wc->is_mod_variable( $mod ) ) {
+					
+					$type_id = 'product.group';
 				}
 			}
 
