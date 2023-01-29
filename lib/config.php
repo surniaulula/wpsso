@@ -4861,7 +4861,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 600;		// 10 minutes.
-			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 3600;		// 1 hour.
+			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
 			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.10;		// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
@@ -4871,7 +4871,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
 			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 5.00;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
-			$var_const[ 'WPSSO_INLINE_VARS_MAX_DEPTH' ]       = 3;
+			$var_const[ 'WPSSO_INLINE_VARS_MAX_DEPTH' ]       = 3;			// Maximum recursion for inline variables.
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 2.00;		// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
