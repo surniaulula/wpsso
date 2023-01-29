@@ -125,16 +125,16 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 					$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
-	
+
 					if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
-	
+
 						if ( $shortlink = $this->p->util->get_shortlink( $mod, $context = 'post' ) ) {
-	
+
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'sameAs shortlink URL = ' . $shortlink );
 							}
-	
+
 							$json_ret[ 'sameAs' ][] = $shortlink;
 						}
 					}

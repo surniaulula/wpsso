@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 				add_action( 'before_woocommerce_init', function () use ( $plugin_file, $wc_compat ) { 
 
 					if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-	
+
 						foreach ( $wc_compat as $feature ) {
 
 							\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( $feature, $plugin_file, true );

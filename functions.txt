@@ -1,5 +1,5 @@
 
-wpsso_clear_cache( $clear_other = true, $clear_short = null, $refresh = true );
+wpsso_clear_cache( $clear_other = true, $clear_short = true, $refresh = true );
 
 wpsso_clear_post_cache( $post_id );
 

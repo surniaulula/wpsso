@@ -193,6 +193,8 @@
 
 'wpsso_og_add_mt_reviews' ( $bool = true, $mod )
 
+'wpsso_og_add_mt_variants' ( $bool = true, $mod )
+
 'wpsso_og_add_wc_mt_rating' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_review_rating' option is 'yes'.
 
 'wpsso_og_add_wc_mt_reviews' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_reviews' option is 'yes'.

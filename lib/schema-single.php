@@ -19,6 +19,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 	class WpssoSchemaSingle {
 
+		/*
+		 * See WpssoJsonTypeBook->filter_json_data_https_schema_org_book().
+		 */
 		public static function add_book_data( &$json_data, array $mod, $book_id = false, $def_type_id = 'book', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -55,14 +58,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log( 'exiting early: no book options' );
 				}
 
-				return 0;
+				return 0;	// Return count of books added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $book_type_id, $book_type_url ) = self::get_type_id_url_list( $json_data, $book_opts,
-				$opt_key = 'book_type', $def_type_id, $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $book_opts, $opt_key = 'book_type', $def_type_id, $list_element );
 
 			/*
 			 * Maybe remove values related to the WordPress post object.
@@ -76,7 +78,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Begin Schema book markup creation.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( $book_type_url );
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $book_opts, array(
 				'isbn'          => 'book_isbn',
@@ -124,61 +126,43 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'dateCreated' ] = $date;
 			}
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of books added.
 		}
 
+		/**
+		 * See WpssoSchema::add_comment_list_data().
+		 * See WpssoSchemaSingle::add_comment_reply_data().
+		 */
 		public static function add_comment_data( &$json_data, array $post_mod, $comment_id, $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$comments_added = 0;
-
 			if ( empty( $comment_id ) ) {	// Just in case.
 
-				return $comments_added;
+				return 0;	// Return count of comments added.
 			}
 
 			$comment_mod = $wpsso->comment->get_mod( $comment_id );
 
 			if ( ! $comment_mod[ 'is_comment' ] || ! $comment_mod[ 'id' ] ) {
 
-				return $comments_added;
+				return 0;	// Return count of comments added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'comment', $list_element );
 
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'using inherited schema type url = ' . $comment_type_url );
-				}
-
-			} else {
-
-				$comment_type_url = 'https://schema.org/Comment';
-			}
-
-			$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
+			/*
+			 * Begin Schema comment markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
 				'name'        => $wpsso->page->get_title( $comment_mod, $md_key = 'schema_title', $max_len = 'schema_title' ),
 				'description' => $wpsso->page->get_description( $comment_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' ),
@@ -204,35 +188,24 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			WpssoSchema::add_media_data( $json_ret, $comment_mod, $mt_comment, $size_names = 'schema', $add_video = true );
 
-			$comments_added++;
-
 			/*
 			 * Add post comment replies.
 			 */
 			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $post_mod, $comment_id );
 
-			if ( empty( $list_element ) ) {		// Add a single item.
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;	// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
-
-			return $comments_added;	// Return count of comments added.
+			return 1;	// Return count of comments added.
 		}
 
-		public static function add_comment_reply_data( &$json_data, $post_mod, $comment_id ) {
+		/*
+		 * See WpssoSchemaSingle::add_comment_data().
+		 * See WpssoJsonPropReview->filter_json_data_https_schema_org_thing().
+		 */
+		public static function add_comment_reply_data( &$json_data, array $post_mod, $comment_id ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -262,6 +235,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $replies_added;	// Return count of replies added.
 		}
 
+		/*
+		 * See WpssoJsonTypeEvent->filter_json_data_https_schema_org_event().
+		 */
 		public static function add_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -298,7 +274,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log( 'exiting early: no event options' );
 				}
 
-				return 0;
+				return 0;	// Return count of events added.
 			}
 
 			/*
@@ -330,11 +306,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
 
-			$have_offers         = false;
-			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
-			$def_canonical_url   = $wpsso->util->get_canonical_url( $mod );
+			$have_offers   = false;
+			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-			foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
 
 				$offer_opts = apply_filters( 'wpsso_get_event_offer_options', false, $mod, $event_id, $key_num );
 
@@ -369,28 +345,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! isset( $event_opts[ 'offer_url' ] ) ) {
 
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'setting offer_url to ' . $def_canonical_url );
-						}
-
-						$offer_opts[ 'offer_url' ] = $def_canonical_url;
+						$offer_opts[ 'offer_url' ] = $canonical_url;
 					}
 
 					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
 
 						if ( ! empty( $event_opts[ 'event_offers_start_date_iso' ] ) ) {
 
-							if ( $wpsso->debug->enabled ) {
-
-								$wpsso->debug->log( 'setting offer_valid_from_date to ' . $event_opts[ 'event_offers_start_date_iso' ] );
-							}
-
 							$offer_opts[ 'offer_valid_from_date' ] = $event_opts[ 'event_offers_start_date_iso' ];
-
-						} elseif ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'event option event_offers_start_date_iso is empty' );
 						}
 					}
 
@@ -398,27 +360,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( ! empty( $event_opts[ 'event_offers_end_date_iso' ] ) ) {
 
-							if ( $wpsso->debug->enabled ) {
-
-								$wpsso->debug->log( 'setting offer_valid_to_date to ' . $event_opts[ 'event_offers_end_date_iso' ] );
-							}
-
 							$offer_opts[ 'offer_valid_to_date' ] = $event_opts[ 'event_offers_end_date_iso' ];
-
-						} elseif ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'event option event_offers_end_date_iso is empty' );
 						}
 					}
 
 					if ( false === $have_offers ) {
 
 						$have_offers = true;
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
-						}
 
 						$event_opts[ 'event_offers' ] = array();	// Clear offers returned by filter.
 					}
@@ -428,15 +376,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $event_type_id, $event_type_url ) = self::get_type_id_url_list( $json_data, $event_opts,
-				$opt_key = 'event_type', $def_type_id = 'event', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
 			/*
 			 * Begin Schema event markup creation.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( $event_type_url );
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $event_opts, array(
 				'inLanguage'          => 'event_lang',
@@ -545,32 +492,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Filter the single Event data.
+			 * Filter the single event data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_event', $json_ret, $mod, $event_id );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $event_type_id, and $event_id values.
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $event_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, array( $event_type_id, $event_id ) );
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $event_id ) );
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of events added.
 		}
@@ -580,7 +514,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * Pass a single dimension image array in $mt_single.
 		 */
-		public static function add_image_data_mt( &$json_data, $mt_single, $media_pre = 'og:image', $list_element = true ) {
+		public static function add_image_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:image', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -599,48 +533,49 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;	// Return count of images added.
 			}
 
-			$image_url = SucomUtil::get_first_mt_media_url( $mt_single, $media_pre );
+			$image_url = SucomUtil::get_first_mt_media_url( $mt_single, $mt_pre );
 
 			if ( empty( $image_url ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: ' . $media_pre . ' URL values are empty' );
+					$wpsso->debug->log( 'exiting early: ' . $mt_pre . ' URL values are empty' );
 				}
 
 				return 0;	// Return count of images added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $image_type_id, $image_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
-				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'image.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array(
+			/*
+			 * Begin Schema image markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url' => SucomUtil::esc_url_encode( $image_url ),
 			) );
 
 			/*
 			 * Maybe add an 'identifier' value based on the size name and image ID.
 			 */
-			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
 
-				$json_ret[ 'identifier' ] = $mt_single[ $media_pre . ':id' ];
+				$json_ret[ 'identifier' ] = $mt_single[ $mt_pre . ':id' ];
 
-				if ( ! empty( $mt_single[ $media_pre . ':size_name' ] ) ) {
+				if ( ! empty( $mt_single[ $mt_pre . ':size_name' ] ) ) {
 
-					$json_ret[ 'identifier' ] .= '-' . $mt_single[ $media_pre . ':size_name' ];
+					$json_ret[ 'identifier' ] .= '-' . $mt_single[ $mt_pre . ':size_name' ];
 				}
 			}
 
 			/*
-			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), check the WordPress Media Library for
-			 * a title and description.
+			 * If we have an ID, and it's numeric, check the WordPress Media Library for a title and description.
 			 */
-			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) && is_numeric( $mt_single[ $media_pre . ':id' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) && is_numeric( $mt_single[ $mt_pre . ':id' ] ) ) {
 
-				$post_id = $mt_single[ $media_pre . ':id' ];
+				$post_id = $mt_single[ $mt_pre . ':id' ];
 
 				$mod = $wpsso->post->get_mod( $post_id );
 
@@ -687,20 +622,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 			}
 
-			if ( ! empty( $mt_single[ $media_pre . ':alt' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':alt' ] ) ) {
 
-				$json_ret[ 'alternativeHeadline' ] = $mt_single[ $media_pre . ':alt' ];
+				$json_ret[ 'alternativeHeadline' ] = $mt_single[ $mt_pre . ':alt' ];
 			}
 
-			if ( ! empty( $mt_single[ $media_pre . ':tag' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
-				if ( is_array( $mt_single[ $media_pre . ':tag' ] ) ) {
+				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
-					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $media_pre . ':tag' ] );
+					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $mt_pre . ':tag' ] );
 
 				} else {
 
-					$json_ret[ 'keywords' ] = $mt_single[ $media_pre . ':tag' ];
+					$json_ret[ 'keywords' ] = $mt_single[ $mt_pre . ':tag' ];
 				}
 			}
 
@@ -708,35 +643,22 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add width and height as QuantitativeValue.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
-				'width_px'  => $media_pre . ':width',
-				'height_px' => $media_pre . ':height',
+				'width_px'  => $mt_pre . ':width',
+				'height_px' => $mt_pre . ':height',
 			) );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ] and $image_type_id.
+			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
 			 */
-			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
 
-				WpssoSchema::update_data_id( $json_ret, $image_type_id );
+				WpssoSchema::update_data_id( $json_ret, $type_id );
 			}
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of images added.
 		}
@@ -777,7 +699,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log( 'exiting early: no job options' );
 				}
 
-				return 0;
+				return 0;	// Return count of jobs added.
 			}
 
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
@@ -803,15 +725,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url_list( $json_data,
-				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			/*
 			 * Begin Schema job markup creation.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( $job_type_url );
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $job_opts, array(
 				'title'           => 'job_title',
@@ -892,32 +813,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Filter the single Job data.
+			 * Filter the single job data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_job', $json_ret, $mod, $job_id );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $job_type_id, and $job_id values.
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $job_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, array( $job_type_id, $job_id ) );
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $job_id ) );
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of jobs added.
 		}
@@ -929,7 +837,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_organization_data( &$json_data, array $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -943,7 +851,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
 
-				return 0;
+				return 0;	// Return count of organizations added.
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -981,19 +889,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
+					$wpsso->debug->log( 'exiting early: unknown organization id ' . $org_id );
 				}
 
-				return 0;
+				return 0;	// Return count of organizations added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_type_id_url_list( $json_data,
-				$org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $org_type_url );
+			/*
+			 * Begin Schema organization markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			/*
 			 * Set the reference values for admin notices.
@@ -1002,14 +912,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-				if ( 'site' === $org_id ) {
-
-					$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema organization', 'wpsso' ) );
-
-				} else {
-
-					$wpsso->util->maybe_set_ref( $canonical_url, $mod, sprintf( __( 'adding schema organization ID %s', 'wpsso' ), $org_id ) );
-				}
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod,
+					( 'site' === $org_id ? __( 'adding schema organization', 'wpsso' ) :
+						sprintf( __( 'adding schema organization ID %s', 'wpsso' ), $org_id ) ) );
 			}
 
 			/*
@@ -1092,23 +997,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
 							// translators: %1$s is the organization name, %2$s the Schema type URL.
-							$logo_missing_msg   = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+							$logo_missing_msg = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
 
 							// translators: %1$s is the organization name, %2$s the Schema type URL.
 							$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
 
 							// translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-							$org_settings_msg   = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
+							$org_settings_msg = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
 							if ( 'org_logo_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ],
-									'<a href="' . $org_type_url . '">'. $org_type_url . '</a>' );
+								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ], '<a href="' . $type_url . '">'. $type_url . '</a>' );
 
 							} elseif ( 'org_banner_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ],
-									'<a href="' . $org_type_url . '">'. $org_type_url . '</a>' );
+								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ], '<a href="' . $type_url . '">'. $type_url . '</a>' );
 
 							} else {
 
@@ -1222,11 +1125,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If the organization is a local business, then convert the organization markup to local business.
 			 */
-			if ( ! empty( $org_type_id ) ) {	// Just in case.
+			if ( ! empty( $type_id ) ) {	// Just in case.
 
-				if ( 'organization' !== $org_type_id ) {
+				if ( 'organization' !== $type_id ) {
 
-					if ( $wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
+					if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
 
 						WpssoSchema::organization_to_localbusiness( $json_ret );
 					}
@@ -1234,14 +1137,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Filter the single Organization data.
+			 * Filter the single organization data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
-
-			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $org_type_id, $org_id, and $org_logo_key values.
-			 */
-			WpssoSchema::update_data_id( $json_ret, array( $org_type_id, $org_id, $org_logo_key ) );
 
 			/*
 			 * Restore previous reference values for admin notices.
@@ -1251,23 +1149,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
 
-			if ( empty( $list_element ) ) {		// Add a single item.
+			/*
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
 
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of organizations added.
 		}
@@ -1275,7 +1165,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * A $person_id argument is required.
 		 */
-		public static function add_person_data( &$json_data, $mod, $person_id, $list_element = true ) {
+		public static function add_person_data( &$json_data, array $mod, $person_id, $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1311,7 +1201,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->debug->log( 'exiting early: no person_id' );
 					}
 
-					return 0;
+					return 0;	// Return count of persons added.
 				}
 
 				static $local_cache_person_opts = array();
@@ -1394,18 +1284,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
-				$person_opts = $local_cache_person_opts[ $person_id ];
-
+				$person_opts   = $local_cache_person_opts[ $person_id ];
 				$canonical_url = $local_cache_person_urls[ $person_id ];
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $person_type_id, $person_type_url ) = self::get_type_id_url_list( $json_data, $person_opts,
-				$opt_key = 'person_type', $def_type_id = 'person', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $person_type_url );
+			/*
+			 * Begin Schema person markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $person_opts, array(
 				'url'             => 'person_url',
@@ -1459,39 +1350,31 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Filter the single Person data.
+			 * Filter the single person data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/*
-			 * Update the '@id' string based on the $canonical_url and the $person_type_id.
+			 * Update the '@id' string based on the $canonical_url and the $type_id.
 			 *
 			 * Encode the URL part of the '@id' string to hide the WordPress login username.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $person_type_id, $canonical_url, $hash_url = true );
+			WpssoSchema::update_data_id( $json_ret, $type_id, $canonical_url, $hash_url = true );
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of persons added.
 		}
 
-		public static function add_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
+		/*
+		 * See WpssoSchemaSingle::add_event_data().
+		 * See WpssoSchemaSingle::add_job_data().
+		 * See WpssoSchemaSingle::add_organization_data().
+		 */
+		public static function add_place_data( &$json_data, array $mod, $place_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1505,7 +1388,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $place_id ) ) {
 
-				return 0;
+				return 0;	// Return count of places added.
 			}
 
 			/*
@@ -1519,34 +1402,26 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$wpsso->debug->log_arr( 'get_place_options', $place_opts );
 				}
-			}
 
-			/*
-			 * Add metadata defaults and custom values to the $place_opts array.
-			 *
-			 * Skip the SucomUtil::add_type_opts_md_pad() method as we do not have any default or custom 'schema_place'
-			 * options in the Document SSO metabox:
-			 *
-			 * 	SucomUtil::add_type_opts_md_pad( $place_opts, $mod, array( 'place' => 'schema_place' ) );
-			 */
-
-			if ( empty( $place_opts ) ) {
+			} else {
 
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'exiting early: no place options' );
 				}
 
-				return 0;
+				return 0;	// Return count of places added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url_list( $json_data, $place_opts,
-				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
+			/*
+			 * Begin Schema place markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			/*
 			 * Set reference values for admin notices.
@@ -1693,14 +1568,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Filter the single Place data.
+			 * Filter the single place data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_place', $json_ret, $mod, $place_id );
-
-			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $place_type_id, and $place_id values.
-			 */
-			WpssoSchema::update_data_id( $json_ret, array( $place_type_id, $place_id ), $data_url = '' );
 
 			/*
 			 * Restore previous reference values for admin notices.
@@ -1710,25 +1580,463 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
 
-			if ( empty( $list_element ) ) {		// Add a single item.
+			/*
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $place_id values.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $place_id ), $data_url = '' );
 
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of places added.
+		}
+
+		/*
+		 * See WpssoSchemaSingle::get_offer_data().
+		 */
+		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $list_element = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			/*
+			 * If not adding a list element, get the existing schema type url (if one exists).
+			 */
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'offer', $list_element );
+
+			/*
+			 * Begin Schema product markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Note that 'og:url' may be provided instead of 'product:url'.
+			 *
+			 * Note that there is no Schema 'ean' property.
+			 *
+			 * Note that there is no Schema 'size' property.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
+				'url'                   => 'product:url',
+				'name'                  => 'product:title',
+				'description'           => 'product:description',
+				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
+				'sku'                   => 'product:retailer_part_no',	// Product SKU.
+				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
+				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
+				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
+				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.
+				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
+				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
+				'availability'          => 'product:availability',	// Only valid for offers.
+				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_type',	// Valid for both products and offers.
+				'priceValidUntil'       => 'product:sale_price_dates:end',
+			) );
+
+			/*
+			 * Fallback to the 'og:url' value, if one is available.
+			 */
+			if ( empty( $json_ret[ 'url' ] ) && ! empty( $mt_single[ 'og:url' ] ) ) {
+
+				$json_ret[ 'url' ] = $mt_single[ 'og:url' ];
+			}
+
+			/*
+			 * Convert a numeric category ID to its Google category string.
+			 */
+			WpssoSchema::check_prop_value_category( $json_ret );
+
+			WpssoSchema::check_prop_value_gtin( $json_ret );
+
+			/*
+			 * Prevents a missing property warning from the Google validator.
+			 *
+			 * By default, define normal product prices (not on sale) as valid for 1 year.
+			 *
+			 * Uses a static cache for all offers to allow for a common value in AggregateOffer markup.
+			 */
+			if ( empty( $json_ret[ 'priceValidUntil' ] ) ) {
+
+				static $price_valid_until = null;
+
+				if ( null === $price_valid_until ) {
+
+					/*
+					 * Skip if WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME = 0 or false.
+					 */
+					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
+
+						$price_valid_until = gmdate( 'c', time() + $valid_max_time );
+
+					} else {
+
+						$price_valid_until = false;	// Check only once.
+					}
+				}
+
+				if ( $price_valid_until ) {
+
+					$json_ret[ 'priceValidUntil' ] = $price_valid_until;
+				}
+			}
+
+			/*
+			 * Schema 'priceSpecification' property.
+			 */
+			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
+				'priceType'             => 'product:price_type',
+				'price'                 => 'product:price:amount',
+				'priceCurrency'         => 'product:price:currency',
+				'validFrom'             => 'product:sale_price_dates:start',
+				'validThrough'          => 'product:sale_price_dates:end',
+				'valueAddedTaxIncluded' => 'product:price:vat_included',
+			) );
+
+			if ( false !== $price_spec ) {
+
+				/*
+				 * Make sure we have a price currency.
+				 */
+				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {
+
+					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
+				}
+
+				/*
+				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
+				 */
+				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
+					'value'    => 'product:eligible_quantity:value',
+					'minValue' => 'product:eligible_quantity:min_value',
+					'maxValue' => 'product:eligible_quantity:max_value',
+					'unitCode' => 'product:eligible_quantity:unit_code',
+					'unitText' => 'product:eligible_quantity:unit_text',
+				) );
+
+				if ( false !== $quantity ) {
+
+					if ( ! isset( $quantity[ 'value' ] ) ) {
+
+						if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+							$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+
+							$quantity[ 'value' ] = $quantity[ 'minValue' ];
+
+							unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+						}
+					}
+
+					$price_spec[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
+				}
+
+				$json_ret[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
+			}
+
+			/*
+			 * Schema 'shippingDetails' property.
+			 */
+			if ( empty( $mt_single[ 'product:shipping_offers' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product shipping offers is empty' );
+				}
+
+			} elseif ( is_array( $mt_single[ 'product:shipping_offers' ] ) ) {
+
+				foreach ( $mt_single[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
+
+					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
+						}
+
+						continue;
+					}
+
+					$shipping_details = self::get_shipping_offer_data( $mod, $shipping_opts, $json_ret[ 'url' ] );
+
+					if ( false === $shipping_details ) {
+
+						continue;
+					}
+
+					$json_ret[ 'shippingDetails' ][] = $shipping_details;
+				}
+			}
+
+			/*
+			 * Add the seller organization data.
+			 */
+			self::add_organization_data( $json_ret[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+
+			/*
+			 * Maybe add images for the offer.
+			 */
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_single, $size_names = 'schema', $add_video = false );
+
+			/*
+			 * Filter the single offer data.
+			 */
+			$json_ret = apply_filters( 'wpsso_json_data_single_offer', $json_ret, $mod );
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+
+			return 1;	// Return count of products added.
+		}
+
+		/*
+		 * See WpssoSchemaSingle::get_product_data().
+		 * See WpssoJsonTypeProduct->filter_json_data_https_schema_org_product().
+		 */
+		public static function add_product_data( &$json_data, array $mod, array $mt_single, $list_element = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			/*
+			 * If not adding a list element, get the existing schema type url (if one exists).
+			 */
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'product', $list_element );
+
+			/*
+			 * Begin Schema product markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Set reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
+
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema product', 'wpsso' ) );
+			}
+
+			/*
+			 * Note that there is no Schema 'availability' property for the 'product:availability' value.
+			 *
+			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
+				'url'                   => 'product:url',
+				'name'                  => 'product:title',
+				'description'           => 'product:description',
+				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
+				'sku'                   => 'product:retailer_part_no',	// Product SKU.
+				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
+				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
+				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
+				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.
+				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
+				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
+				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_type',	// Valid for both products and offers.
+				'color'                 => 'product:color',
+				'material'              => 'product:material',
+				'pattern'               => 'product:pattern',
+			) );
+
+			/*
+			 * Convert a numeric category ID to its Google category string.
+			 */
+			WpssoSchema::check_prop_value_category( $json_ret );
+
+			WpssoSchema::check_prop_value_gtin( $json_ret );
+
+			/*
+			 * Schema 'productID' property.
+			 */
+			foreach ( array( 'isbn', 'retailer_item_id' ) as $pref_id ) {
+
+				if ( WpssoSchema::is_valid_key( $mt_single, 'product:' . $pref_id ) ) {	// Not null, an empty string, or 'none'.
+
+					$json_ret[ 'productID' ] = $pref_id . ':' . $mt_single[ 'product:' . $pref_id ];
+
+					break;	// Stop here.
+				}
+			}
+
+			/*
+			 * Schema 'brand' property.
+			 */
+			if ( WpssoSchema::is_valid_key( $mt_single, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
+
+				$brand = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
+					'name' => 'product:brand',
+				) );
+
+				if ( false !== $brand ) {	// Just in case.
+
+					$json_ret[ 'brand' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Brand', $brand );
+				}
+			}
+
+			/*
+			 * Schema 'audience' property.
+			 *
+			 * See https://support.google.com/merchants/answer/6324479 for 'suggestedGender'.
+			 * See https://support.google.com/merchants/answer/6324463 for 'suggestedMinAge' and 'suggestedMaxAge'.
+			 */
+			$audience = array();
+
+			if ( WpssoSchema::is_valid_key( $mt_single, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
+
+				$audience[ 'suggestedGender' ] = $mt_single[ 'product:target_gender' ];
+			}
+
+			if ( WpssoSchema::is_valid_key( $mt_single, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
+
+				/*
+				 * Age is expressed in years so, for example, use 0.25 for 3 months.
+				 *
+				 * See https://support.google.com/merchants/answer/6324463.
+				 */
+				switch ( $mt_single[ 'product:age_group' ] ) {
+					case 'adult':     $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'all ages':  $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'infant':    $audience[ 'suggestedMinAge' ] = 0.25; $audience[ 'suggestedMaxAge' ] = 1;    break;
+					case 'kids':      $audience[ 'suggestedMinAge' ] = 5;    $audience[ 'suggestedMaxAge' ] = 13;   break;
+					case 'newborn':   $audience[ 'suggestedMinAge' ] = 0;    $audience[ 'suggestedMaxAge' ] = 0.25; break;
+					case 'teen':      $audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'toddler':   $audience[ 'suggestedMinAge' ] = 1;    $audience[ 'suggestedMaxAge' ] = 5;    break;
+				}
+			}
+
+			if ( ! empty( $audience ) ) {
+
+				$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $audience );
+			}
+
+			/*
+			 * Schema 'size' property.
+			 *
+			 * See https://support.google.com/merchants/answer/6324492 for 'name'.
+			 * See https://support.google.com/merchants/answer/6324497 for 'sizeGroup'.
+			 * See https://support.google.com/merchants/answer/6324502 for 'sizeSystem'.
+			 */
+			$size_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
+				'name'       => 'product:size',
+				'sizeGroup'  => 'product:size_group',
+				'sizeSystem' => 'product:size_system',
+			) );
+
+			if ( false !== $size_spec ) {
+
+				$json_ret[ 'size' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SizeSpecification', $size_spec );
+			}
+
+			/*
+			 * Schema 'length', 'width', 'height', 'weight' properties.
+			 */
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, $names = array(
+				'length'       => 'product:length:value',
+				'width'        => 'product:width:value',
+				'height'       => 'product:height:value',
+				'weight'       => 'product:weight:value',
+				'fluid_volume' => 'product:fluid_volume:value',
+			) );
+
+			/*
+			 * Schema 'hasEnergyConsumptionDetails' property.
+			 */
+			if ( WpssoSchema::is_valid_key( $mt_single, 'product:energy_efficiency:value' ) ) {	// Not null, an empty string, or 'none'.
+
+				$energy_efficiency = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
+					'hasEnergyEfficiencyCategory' => 'product:energy_efficiency:value',
+					'energyEfficiencyScaleMin'    => 'product:energy_efficiency:min_value',
+					'energyEfficiencyScaleMax'    => 'product:energy_efficiency:max_value',
+				) );
+
+				if ( false !== $energy_efficiency ) {	// Just in case.
+
+					$json_ret[ 'hasEnergyConsumptionDetails' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/EnergyConsumptionDetails',
+						$energy_efficiency );
+				}
+			}
+
+			/*
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding image and subjectOf video properties for product' );
+			}
+
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_single, $size_names = 'schema', $add_video = 'subjectOf' );
+
+			/*
+			 * Prevent recursion for an itemOffered within a Schema Offer.
+			 */
+			static $local_is_recursion = false;
+
+			if ( ! $local_is_recursion ) {
+
+				$local_is_recursion = true;
+
+				if ( empty( $mt_single[ 'product:offers' ] ) ) {
+
+					$json_ret[ 'offers' ] = self::get_offer_data( $mod, $mt_single );
+
+				} elseif ( is_array( $mt_single[ 'product:offers' ] ) ) {
+
+					if ( empty( $wpsso->options[ 'schema_aggr_offers' ] ) ) {
+
+						WpssoSchema::add_offers_data( $json_ret, $mt_single[ 'product:offers' ] );
+
+					} else {
+
+						WpssoSchema::add_offers_aggregate_data( $json_ret, $mt_single[ 'product:offers' ] );
+					}
+				}
+
+				$local_is_recursion = false;
+			}
+
+			/*
+			 * Check for required Product properties.
+			 *
+			 * The "image" property is required for Google's Merchant listings validator.
+			 */
+			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ) );
+
+			/*
+			 * Filter the single product data.
+			 */
+			$json_ret = apply_filters( 'wpsso_json_data_single_product', $json_ret, $mod );
+
+			/*
+			 * Restore previous reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$wpsso->util->maybe_unset_ref( $canonical_url );
+			}
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+
+			return 1;	// Return count of products added.
 		}
 
 		/*
@@ -1753,7 +2061,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *		[og:image:height]      => 544
 		 *	)
 		 */
-		public static function add_video_data_mt( &$json_data, $mt_single, $media_pre = 'og:video', $list_element = true ) {
+		public static function add_video_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:video', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1772,303 +2080,118 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;	// Return count of videos added.
 			}
 
-			$media_url = SucomUtil::get_first_mt_media_url( $mt_single, $media_pre );
+			$media_url = SucomUtil::get_first_mt_media_url( $mt_single, $mt_pre );
 
 			if ( empty( $media_url ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: ' . $media_pre . ' URL values are empty' );
+					$wpsso->debug->log( 'exiting early: ' . $mt_pre . ' URL values are empty' );
 				}
 
 				return 0;	// Return count of videos added.
 			}
 
 			/*
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data,
-				$type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array(
+			/*
+			 * Begin Schema video markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url' => SucomUtil::esc_url_encode( $media_url ),
 			) );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
-				'name'           => $media_pre . ':title',
-				'description'    => $media_pre . ':description',
-				'embedUrl'       => $media_pre . ':embed_url',
-				'contentUrl'     => $media_pre . ':stream_url',
-				'encodingFormat' => $media_pre . ':type',	// Mime type.
-				'duration'       => $media_pre . ':duration',
-				'uploadDate'     => $media_pre . ':upload_date',
-				'thumbnailUrl'   => $media_pre . ':thumbnail_url',
+				'name'           => $mt_pre . ':title',
+				'description'    => $mt_pre . ':description',
+				'embedUrl'       => $mt_pre . ':embed_url',
+				'contentUrl'     => $mt_pre . ':stream_url',
+				'encodingFormat' => $mt_pre . ':type',	// Mime type.
+				'duration'       => $mt_pre . ':duration',
+				'uploadDate'     => $mt_pre . ':upload_date',
+				'thumbnailUrl'   => $mt_pre . ':thumbnail_url',
 			) );
 
 			/*
 			 * Add width and height as QuantitativeValue.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
-				'width_px'  => $media_pre . ':width',
-				'height_px' => $media_pre . ':height',
+				'width_px'  => $mt_pre . ':width',
+				'height_px' => $mt_pre . ':height',
 			) );
 
-			if ( ! empty( $mt_single[ $media_pre . ':has_image' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':has_image' ] ) ) {
 
 				self::add_image_data_mt( $json_ret[ 'thumbnail' ], $mt_single, null, $image_list_el = false );
 			}
 
-			if ( ! empty( $mt_single[ $media_pre . ':tag' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
-				if ( is_array( $mt_single[ $media_pre . ':tag' ] ) ) {
+				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
-					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $media_pre . ':tag' ] );
+					$json_ret[ 'keywords' ] = implode( $glue = ', ', $mt_single[ $mt_pre . ':tag' ] );
 
 				} else {
 
-					$json_ret[ 'keywords' ] = $mt_single[ $media_pre . ':tag' ];
+					$json_ret[ 'keywords' ] = $mt_single[ $mt_pre . ':tag' ];
 				}
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ] and $video_type_id.
+			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $video_type_id );
+			WpssoSchema::update_data_id( $json_ret, $type_id );
 
-			if ( empty( $list_element ) ) {		// Add a single item.
-
-				$json_data = $json_ret;
-
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-
-				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
-
-					$json_data = array( $json_data );
-				}
-
-				$json_data[] = $json_ret;		// Add an item to the list.
-
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
 
 			return 1;	// Return count of videos added.
 		}
 
 		/*
-		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
+		 * See WpssoSchema::add_offers_aggregate_data().
+		 * See WpssoSchema::add_offers_data().
+		 * See WpssoSchemaSingle::add_product_data().
+		 * See WpssoJsonTypeSoftwareApplication->filter_json_data_https_schema_org_softwareapplication().
 		 */
-		public static function get_offer_data( array $mod, array $mt_offer ) {
+		public static function get_offer_data( array $mod, array $mt_single ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log_arr( 'mt_offer', $mt_offer );
+				$wpsso->debug->log_arr( 'mt_single', $mt_single );
 			}
 
-			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
+			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
 
-			/*
-			 * Note that 'og:url' may be provided instead of 'product:url'.
-			 *
-			 * Note that there is no Schema 'ean' property.
-			 *
-			 * Note that there is no Schema 'size' property.
-			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array(
-				'url'                   => 'product:url',
-				'name'                  => 'product:title',
-				'description'           => 'product:description',
-				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
-				'sku'                   => 'product:retailer_part_no',	// Product SKU.
-				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
-				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
-				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
-				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.
-				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
-				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
-				'availability'          => 'product:availability',	// Only valid for offers.
-				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
-				'hasAdultConsideration' => 'product:adult_type',	// Valid for both products and offers.
-				'priceValidUntil'       => 'product:sale_price_dates:end',
-			) );
+			self::add_offer_data( $json_data, $mod, $mt_single, $list_element = false );
 
-			/*
-			 * Fallback to the 'og:url' value, if one is available.
-			 */
-			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
+			return $json_data;
+		}
 
-				$offer[ 'url' ] = $mt_offer[ 'og:url' ];
+		/*
+		 * See WpssoSchema::add_variants_data().
+		 */
+		public static function get_product_data( array $mod, $mt_single ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'mt_single', $mt_single );
 			}
 
-			if ( false === $offer ) {	// Just in case.
+			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/Product' );
 
-				if ( $wpsso->debug->enabled ) {
+			self::add_product_data( $json_data, $mod, $mt_single, $list_element = false );
 
-					$wpsso->debug->log( 'exiting early: missing basic product meta tags' );
-				}
-
-				return false;
-			}
-
-			/*
-			 * Convert a numeric category ID to its Google category string.
-			 */
-			WpssoSchema::check_prop_value_category( $offer );
-
-			WpssoSchema::check_prop_value_gtin( $offer );
-
-			/*
-			 * Prevents a missing property warning from the Google validator.
-			 *
-			 * By default, define normal product prices (not on sale) as valid for 1 year.
-			 *
-			 * Uses a static cache for all offers to allow for a common value in AggregateOffer markup.
-			 */
-			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
-
-				static $price_valid_until = null;
-
-				if ( null === $price_valid_until ) {
-
-					/*
-					 * Skip if WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME = 0 or false.
-					 */
-					if ( $valid_max_time = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ) ) {
-
-						$price_valid_until = gmdate( 'c', time() + $valid_max_time );
-
-					} else {
-
-						$price_valid_until = false;	// Check only once.
-					}
-				}
-
-				if ( $price_valid_until ) {
-
-					$offer[ 'priceValidUntil' ] = $price_valid_until;
-				}
-			}
-
-			/*
-			 * Schema 'priceSpecification' property.
-			 */
-			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
-				'priceType'             => 'product:price_type',
-				'price'                 => 'product:price:amount',
-				'priceCurrency'         => 'product:price:currency',
-				'validFrom'             => 'product:sale_price_dates:start',
-				'validThrough'          => 'product:sale_price_dates:end',
-				'valueAddedTaxIncluded' => 'product:price:vat_included',
-			) );
-
-			if ( false !== $price_spec ) {
-
-				/*
-				 * Make sure we have a price currency.
-				 */
-				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {
-
-					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
-				}
-
-				/*
-				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
-				 */
-				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array(
-					'value'    => 'product:eligible_quantity:value',
-					'minValue' => 'product:eligible_quantity:min_value',
-					'maxValue' => 'product:eligible_quantity:max_value',
-					'unitCode' => 'product:eligible_quantity:unit_code',
-					'unitText' => 'product:eligible_quantity:unit_text',
-				) );
-
-				if ( false !== $quantity ) {
-
-					if ( ! isset( $quantity[ 'value' ] ) ) {
-
-						if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
-							$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-
-							$quantity[ 'value' ] = $quantity[ 'minValue' ];
-
-							unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
-						}
-					}
-
-					$price_spec[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
-				}
-
-				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
-			}
-
-			/*
-			 * Schema 'shippingDetails' property.
-			 */
-			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'product shipping offers is empty' );
-				}
-
-			} elseif ( is_array( $mt_offer[ 'product:shipping_offers' ] ) ) {
-
-				foreach ( $mt_offer[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
-
-					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
-						}
-
-						continue;
-					}
-
-					$shipping_details = self::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
-
-					if ( false === $shipping_details ) {
-
-						continue;
-					}
-
-					$offer[ 'shippingDetails' ][] = $shipping_details;
-				}
-
-			} else {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'product shipping offers is not an array' );
-				}
-			}
-
-			/*
-			 * Add the seller organization data.
-			 */
-			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
-
-			/*
-			 * Maybe add images to the $mt_og or $mt_offer array.
-			 */
-			if ( ! empty( $mt_offer[ 'product:retailer_item_id' ] ) && is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {	// Just in case.
-
-				$post_id = $mt_offer[ 'product:retailer_item_id' ];
-
-				$offer_mod = $wpsso->post->get_mod( $post_id );
-
-				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = false );
-			}
-
-			/*
-			 * Filter the single Offer data.
-			 */
-			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
-
-			return $offer;
+			return $json_data;
 		}
 
 		/*
@@ -2085,13 +2208,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
+			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
 
 			/*
 			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
 			 * $offer_url values.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array(
+			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $shipping_opts, array(
 				'name' => 'shipping_name',
 			) );
 
@@ -2191,7 +2314,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							}
 						}
 
-						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
+						$json_data[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
 							'https://schema.org/DefinedRegion', $defined_region );
 					}
 				}
@@ -2220,7 +2343,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! empty( $shipping_rate ) ) {
 
-					$shipping_offer[ 'shippingRate' ] = WpssoSchema::get_schema_type_context(
+					$json_data[ 'shippingRate' ] = WpssoSchema::get_schema_type_context(
 						'https://schema.org/MonetaryAmount', $shipping_rate );
 				}
 			}
@@ -2353,7 +2476,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! empty( $delivery_time ) ) {
 
-					$shipping_offer[ 'deliveryTime' ] = WpssoSchema::get_schema_type_context(
+					$json_data[ 'deliveryTime' ] = WpssoSchema::get_schema_type_context(
 						'https://schema.org/ShippingDeliveryTime', $delivery_time );
 				}
 			}
@@ -2362,20 +2485,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if  ( ! empty( $shipping_opts[ 'shipping_rel' ] ) ) {
 
-					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
+					WpssoSchema::update_data_id( $json_data, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
 
 				} else {
 
-					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
+					WpssoSchema::update_data_id( $json_data, $shipping_opts[ 'shipping_id' ], $offer_url );
 				}
 			}
 
 			/*
 			 * Filter the single Shipping Offer data.
 			 */
-			$shipping_offer = apply_filters( 'wpsso_json_data_single_shipping_offer', $shipping_offer, $mod );
+			$json_data = apply_filters( 'wpsso_json_data_single_shipping_offer', $json_data, $mod );
 
-			return $shipping_offer;
+			return $json_data;
 		}
 
 		/*
@@ -2469,16 +2592,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * If not adding a list element, then inherit the existing schema type url (if one exists).
+		 * If not adding a list element, then get the existing schema type url (if one exists).
 		 */
-		private static function get_type_id_url_list( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
+		private static function get_type_info( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
 
 			$single_type_id   = false;
 			$single_type_url  = false;
@@ -2518,6 +2636,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return array( $single_type_id, $single_type_url );
+		}
+
+		private static function add_or_replace_data( &$json_data, array $json_ret, $list_element ) {
+
+			if ( empty( $list_element ) ) {	// Add a single item.
+
+				$json_data = $json_ret;
+
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
+					$json_data = array( $json_data );
+				}
+
+				$json_data[] = $json_ret;	// Add an item to the list.
+
+			} else {
+
+				$json_data = array( $json_ret );	// Add an item to the list.
+			}
 		}
 	}
 }

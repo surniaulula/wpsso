@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.0.0-dev.1',	// Plugin version.
+					'version'     => '14.8.0-dev.1',	// Plugin version.
 					'opt_version' => '947',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1969,7 +1969,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_shortener'          => 'none',	// URL Shortening Service.
 					'plugin_min_shorten'        => 23,	// Minimum URL Length to Shorten.
-					'plugin_clear_short_urls'   => 0,	// Clear Short URLs on Clear Cache.
 					'plugin_wp_shortlink'       => 1,	// Use Short URL for WP Shortlink.
 					'plugin_bitly_access_token' => '',	// Bitly Generic Access Token.
 					'plugin_bitly_domain'       => '',	// Bitly Short Domain (Optional).
@@ -2998,7 +2997,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * See WpssoAbstractWpMeta->get_inherited_md_opts().
 				 */
-				'inherit_md_opts' => array(
+				'inherited_md_opts' => array(
 
 					/*
 					 * Inherited image options.

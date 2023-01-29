@@ -474,21 +474,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$terms_args[ 'taxonomy' ] = $name;
 
 					if ( $wpsso->debug->enabled ) {
-	
+
 						$wpsso->debug->log_arr( 'terms_args', $terms_args );
 					}
-	
+
 					/*
 					 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
 					 */
 					$term_ids = get_terms( $terms_args );
-	
+
 					foreach ( $term_ids as $term_id ) {
-	
+
 						$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
 					}
 				}
-	
+
 				/*
 				 * Sort public term IDs with the newest term ID first.
 				 *
@@ -498,9 +498,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				rsort( $public_ids );
 			}
-	
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
-	
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
@@ -524,9 +524,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( empty( $mod[ 'is_term' ] ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a term' );
 				}
 

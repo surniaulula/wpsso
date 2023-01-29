@@ -522,38 +522,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			// Age Verify plugin:
 			'age-verified',
-			
+
 			// Autoptimize:
 			'ao_noptimize',
-			
+
 			// AMP:
 			'usqp',
-			
+
 			// Cookie Notice:
 			'cn-reloaded',
-			
+
 			// ShareASale:
 			'sscid',
-			
+
 			// Adobe Advertising Cloud:
 			'ef_id',
-			
+
 			// Adobe Analytics:
 			's_kwcid',
-			
+
 			// Bronto:
 			'_bta_tid',
 			'_bta_c',
-			
+
 			// Dotdigital:
 			'dm_i',
-			
+
 			// Facebook:
 			'fb_action_ids',
 			'fb_action_types',
 			'fb_source',
 			'fbclid',
-			
+
 			// Google Analytics and Ads:
 			'utm_source',
 			'utm_campaign',
@@ -568,35 +568,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'adid',
 			'gbraid',
 			'wbraid',
-			
+
 			// Google Web Stories: 
 			'_gl',
-			
+
 			// Google DoubleClick:
 			'gclsrc',
-			
+
 			// GoDataFeed:
 			'gdfms',
 			'gdftrk',
 			'gdffi',
-			
+
 			// Klaviyo
 			'_ke',
-			
+
 			// Listrak:
 			'trk_contact',
 			'trk_msg',
 			'trk_module',
 			'trk_sid',
-			
+
 			// Mailchimp:
 			'mc_cid',
 			'mc_eid',
-			
+
 			// Marin:
 			'mkwid',
 			'pcrid',
-			
+
 			// Matomo:
 			'mtm_source',
 			'mtm_medium',
@@ -604,14 +604,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'mtm_keyword',
 			'mtm_cid',
 			'mtm_content',
-			
+
 			// Microsoft Advertising:
 			'msclkid',
-			
+
 			// Pinterest:
 			'epik',
 			'pp',
-			
+
 			// Piwik Pro:
 			'pk_source',
 			'pk_medium',
@@ -619,7 +619,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'pk_keyword',
 			'pk_cid',
 			'pk_content',
-			
+
 			// Springbot:
 			'redirect_log_mongo_id',
 			'redirect_mongo_id',
@@ -2408,9 +2408,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( 'product' === $mt_og[ 'og:type' ] ) {
 
-					$mt_ret[ $mt_pre . ':offers' ]   = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':reviews' ]  = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':variants' ] = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':offers' ]            = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':reviews' ]           = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':shipping_class_id' ] = null;	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':shipping_offers' ]   = array();	// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':variants' ]          = array();	// Non-standard / internal meta tag.
 				}
 			}
 

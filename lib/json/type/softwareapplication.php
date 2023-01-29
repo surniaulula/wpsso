@@ -78,65 +78,23 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			 */
 			static $local_is_recursion = false;
 
-			if ( $local_is_recursion ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'product offer recursion detected and avoided' );
-				}
-
-			} else {
+			if ( ! $local_is_recursion ) {
 
 				$local_is_recursion = true;
 
-				/*
-				 * See https://schema.org/offers as https://schema.org/Offer.
-				 */
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
 
-					if ( $this->p->debug->enabled ) {
+					$json_ret[ 'offers' ] = WpssoSchemaSingle::get_offer_data( $mod, $mt_og );
 
-						$this->p->debug->log( 'getting single offer data' );
-					}
-
-					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log_arr( 'single_offer', $single_offer );
-						}
-
-						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'returned single offer is empty' );
-					}
-
-				/*
-				 * See https://schema.org/offers as https://schema.org/AggregateOffer.
-				 */
-				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {	// Just in case - must be an array.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'getting aggregate offer data' );
-					}
+				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {
 
 					if ( empty( $this->p->options[ 'schema_aggr_offers' ] ) ) {
 
-						WpssoSchema::add_offers_data( $json_ret, $mod, $mt_og[ 'product:offers' ] );
+						WpssoSchema::add_offers_data( $json_ret, $mt_og[ 'product:offers' ] );
 
 					} else {
 
-						WpssoSchema::add_offers_aggregate_data( $json_ret, $mod, $mt_og[ 'product:offers' ] );
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product offers is not an array' );
+						WpssoSchema::add_offers_aggregate_data( $json_ret, $mt_og[ 'product:offers' ] );
 					}
 				}
 

@@ -56,35 +56,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo $this->get_form_buttons();
 
-			/*
-			 * Add a note about shortened URLs being preserved or cleared.
-			 */
-			if ( $this->using_db_cache ) {
-
-				if ( 'none' !== $this->p->options[ 'plugin_shortener' ] ) {
-
-					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening',
-						_x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ) );
-
-					echo '<p class="status-msg smaller left">';
-
-					echo '* ';
-
-					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-
-						echo sprintf( __( '%1$s option is unchecked - the shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
-
-					} else {
-
-						echo sprintf( __( '%1$s option is checked - the shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
-					}
-
-					echo '</p>';
-				}
-			}
-
 			echo '<p class="status-msg smaller left">';
-			echo '** ';
+			echo '* ';
 			echo sprintf( __( 'Members of the %s role may be selected for certain Schema properties.', 'wpsso' ), $role_label ) . ' ';
 			echo __( '"Content Creators" are all administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
@@ -105,8 +78,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$refresh_cache_label_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' );
 
-			$clear_cache_label_transl = _x( 'Clear Cache', 'submit button', 'wpsso' );
-
 			$clear_cache_files_label_transl = sprintf( _nx( 'Clear %s Cached File', 'Clear %s Cached Files',
 				$count_cache_files, 'submit button', 'wpsso' ), $count_cache_files );
 
@@ -117,14 +88,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				$count_cron_jobs, 'submit button', 'wpsso' ), $count_cron_jobs );
 
 			$flush_rewrite_rules_transl = _x( 'Flush WordPress Rewrite Rules', 'submit button', 'wpsso' );
-
-			if ( $this->using_db_cache ) {
-
-				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
-
-					$clear_cache_label_transl .= ' *';
-				}
-			}
 
 			/*
 			 * Row #1.
@@ -139,7 +102,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$remove_persons_label_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
 			$reload_image_sizes_label_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
 
-			$add_persons_label_transl .= ' **';
+			$add_persons_label_transl .= ' *';
 
 			/*
 			 * Row #3.
@@ -155,8 +118,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 */
 				array(
 					'refresh_cache'          => $refresh_cache_label_transl,
-					'clear_cache'            => $clear_cache_label_transl,
-					'clear_cache_short_urls' => null,
 					'clear_cache_files'      => $clear_cache_files_label_transl,
 					'clear_ignored_urls'     => $clear_ignored_urls_label_transl,
 					'clear_db_transients'    => null,
@@ -212,22 +173,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					$count_db_transients, 'submit button', 'wpsso' ), $count_db_transients );
 
 				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_label_transl;
-
-				/*
-				 * Clear Cache and Short URLs.
-				 *
-				 * If shortened URLs are not cleared automatically when clearing the cache, add a second button to
-				 * clear the cache and the shortened URLs.
-				 */
-				if ( 'none' !== $this->p->options[ 'plugin_shortener' ] ) {
-
-					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-
-						$clear_short_label_transl = _x( 'Clear Cache and Short URLs', 'submit button', 'wpsso' );
-
-						$form_button_rows[ 0 ][ 'clear_cache_short_urls' ] = $clear_short_label_transl;
-					}
-				}
 			}
 
 			return $form_button_rows;

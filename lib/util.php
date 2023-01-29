@@ -1888,7 +1888,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$shortlink = SucomUtilWP::raw_wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );
 				}
-		
+
 				$shortlink =  $this->get_url_paged( $shortlink, $mod, $add_page = true );
 			}
 
@@ -2270,7 +2270,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
 
 					$url = $this->get_canonical_url( $mod );
-	
+
 					$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
 				}
 			}
@@ -2299,15 +2299,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$mod = $this->p->page->get_mod( $mod );
 			}
-	
+
 			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
-	
+
 					$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
 				}
 			}
-	
+
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 

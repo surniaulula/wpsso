@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		/*
 		 * Schedule the clearing of all caches.
 		 */
-		public function schedule_clear( $user_id = null, $clear_other = true, $clear_short = null, $refresh = true ) {
+		public function schedule_clear( $user_id = null, $clear_other = true, $clear_short = true, $refresh = true ) {
 
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
-		public function clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
+		public function clear( $user_id = null, $clear_other = false, $clear_short = true, $refresh = true ) {
 
 			static $have_cleared = null;
 
@@ -92,25 +92,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;
 			}
 
-			$have_cleared = true;	// Prevent running a second time (by an external cache, for example).
-
-			/*
-			 * Get the default settings value.
-			 */
-			if ( null === $clear_short ) {	// Default argument value is null.
-
-				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ? $this->p->options[ 'plugin_clear_short_urls' ] : false;
-			}
-
-			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$notice_key = 'clear-cache-status';
+			$have_cleared = true;						// Prevent running a second time (by an external cache, for example).
+			$user_id      = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key   = 'clear-cache-status';
 
 			/*
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = WPSSO_CACHE_CLEAR_MAX_TIME;	// Prevent duplicate runs for max seconds.
-			$cache_salt     = __CLASS__ . '::clear';	// Use a common cache salt for start / stop.
+			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
+			$cache_exp_secs = WPSSO_CACHE_CLEAR_MAX_TIME;		// Prevent duplicate runs for max seconds.
+			$cache_salt     = __CLASS__ . '::clear';		// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';

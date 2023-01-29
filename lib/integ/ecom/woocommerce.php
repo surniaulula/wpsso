@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 						if ( $this->var_cache_disable ) {
 
 							if ( $this->p->debug->enabled ) {
-						
+
 								$this->p->debug->log( 'head and content cache disabled for variation attributes' );
 							}
 
@@ -418,10 +418,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				} elseif ( $mod[ 'id' ] === $this->page_ids[ 'shop' ] ) {
 
 					$type_id = $this->p->schema->get_schema_type_id_for( 'pta_' . $this->prod_post_type );
-				
+
 				} elseif ( $this->p->util->wc->is_mod_variable( $mod ) ) {
-					
-					$type_id = 'product.group';
+
+					// TODO change 'product' to 'product.group' for WPSSO Core v15.0.0.
+					$type_id = 'product';
 				}
 			}
 
@@ -725,13 +726,13 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$this->add_mt_product( $mt_ecom, $mod, $product );
 
 			/*
-			 * Add product offers.
+			 * Add product variants.
 			 */
-			if ( apply_filters( 'wpsso_og_add_mt_offers', $have_schema, $mod ) ) {
+			if ( apply_filters( 'wpsso_og_add_mt_variants', $have_schema, $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'add offers meta tags is true' );
+					$this->p->debug->log( 'add variants meta tags is true' );
 				}
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
@@ -750,20 +751,21 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					foreach( $avail_variations as $num => $variation ) {
 
-						$offer_og = array();	// Start with an empty array.
+						$mt_ecom_variant = array();	// Start with an empty array.
 
-						$this->add_mt_product( $offer_og, $mod, $variation );
+						$this->add_mt_product( $mt_ecom_variant, $mod, $variation );
 
-						if ( ! empty( $offer_og ) ) {
+						if ( ! empty( $mt_ecom_variant ) ) {
 
-							$mt_ecom[ $og_type . ':offers' ][] = $offer_og;
+							// TODO change ':offers' to ':variants' for WPSSO Core v15.0.0.
+							$mt_ecom[ $og_type . ':offers' ][] = $mt_ecom_variant;
 						}
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'add offers meta tags is false' );
+				$this->p->debug->log( 'add variants meta tags is false' );
 			}
 
 			/*
@@ -2017,9 +2019,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$move_to_front_num = null;
 
 				foreach( $avail_variations as $num => $variation ) {
-			
+
 					if ( $product = $this->p->util->wc->get_variation_product( $variation ) ) {
-			
+
 						$permalink = $product->get_permalink();
 
 						if ( $this->var_request_url === $permalink ) {

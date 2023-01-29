@@ -571,6 +571,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_img_id_lib'     => '',
 					'plugin_inherit_custom' => 'plugin_inherit_images',
 				),
+				947 => array(
+					'plugin_clear_short_urls' => '',
+				),
 			),
 		);
 

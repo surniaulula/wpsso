@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod[ 'post_type' ] = apply_filters( 'wpsso_get_post_type', $mod[ 'post_type' ], $post_id );
 
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
-					
+
 						$mod[ 'is_attachment' ] = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
@@ -699,9 +699,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( empty( $mod[ 'is_post' ] ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a post' );
 				}
 
@@ -2186,13 +2186,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			/*
-			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
-			 */
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
-			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
-			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( ! $inherit_featured ) {
 
@@ -2243,13 +2240,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			/*
-			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
-			 */
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
-			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
-			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( ! $inherit_featured ) {
 

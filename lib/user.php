@@ -508,9 +508,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( empty( $mod[ 'is_user' ] ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->log( 'exiting early: ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' is not a user' );
 				}
 

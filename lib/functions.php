@@ -125,7 +125,7 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
  */
 if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 
-	function wpsso_clear_cache( $clear_other = true, $clear_short = null, $refresh = true  ) {
+	function wpsso_clear_cache( $clear_other = true, $clear_short = true, $refresh = true  ) {
 
 		$wpsso =& Wpsso::get_instance();
 

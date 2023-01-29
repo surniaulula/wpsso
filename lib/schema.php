@@ -1793,6 +1793,117 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $org_opts;
 		}
 
+		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$authors_added   = 0;
+			$coauthors_added = 0;
+
+			if ( empty( $user_id ) && isset( $mod[ 'post_author' ] ) ) {
+
+				$user_id = $mod[ 'post_author' ];
+			}
+
+			if ( empty( $user_id ) || 'none' === $user_id ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
+				}
+
+				return 0;	// Return count of authors and coauthors added.
+			}
+
+			/*
+			 * Single author.
+			 */
+			$authors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'author' ], $mod, $user_id, $list_element = false );
+
+			/*
+			 * List of contributors / co-authors.
+			 */
+			if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
+
+				foreach ( $mod[ 'post_coauthors' ] as $author_id ) {
+
+					$coauthors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'contributor' ], $mod, $author_id, $list_element = true );
+				}
+			}
+
+			return $authors_added + $coauthors_added;	// Return count of authors and coauthors added.
+		}
+
+		/*
+		 * $user_id is optional and takes precedence over the $mod post_author value.
+		 */
+		public static function add_comment_list_data( &$json_data, $post_mod ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$comments_added = 0;
+
+			if ( ! $post_mod[ 'is_post' ] || ! $post_mod[ 'id' ] || ! comments_open( $post_mod[ 'id' ] ) ) {
+
+				return $comments_added;
+			}
+
+			$json_data[ 'commentCount' ] = (int) get_comments_number( $post_mod[ 'id' ] );
+
+			/*
+			 * Get parent comments.
+			 * 
+			 * The WpssoSchemaSingle::add_comment_data() method will recurse and add the replies (ie. children).
+			 */
+			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
+
+				$comment_order  = strtoupper( get_option( 'comment_order' ) );
+				$comment_paged  = $post_mod[ 'comment_paged' ] ? $post_mod[ 'comment_paged' ] : 1;		// Get the comment page number.
+				$comment_number = get_option( 'comments_per_page' );
+
+			} else {
+
+				$comment_order  = 'DESC';
+				$comment_paged  = 1;
+				$comment_number = SucomUtil::get_const( 'WPSSO_SCHEMA_COMMENTS_MAX' );
+			}
+
+			if ( $comment_number ) {	// 0 disables the addition of comments.
+
+				$get_comment_args = array(
+					'post_id' => $post_mod[ 'id' ],
+					'status'  => 'approve',
+					'parent'  => 0,		// Don't get replies.
+					'order'   => $comment_order,
+					'orderby' => 'comment_date_gmt',
+					'paged'   => $comment_paged,
+					'number'  => $comment_number,
+				);
+
+				$comments = get_comments( $get_comment_args );
+
+				if ( is_array( $comments ) ) {
+
+					foreach( $comments as $num => $comment_obj ) {
+
+						$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $post_mod, $comment_obj->comment_ID );
+					}
+				}
+			}
+
+			return $comments_added;	// Return count of comments added.
+		}
+
 		public static function add_howto_step_data( &$json_data, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -1820,18 +1931,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * $md_val is the section/step name.
 				 */
-				foreach ( $howto_steps as $md_num => $md_val ) {
+				foreach ( $howto_steps as $num => $md_val ) {
 
 					/*
 					 * Maybe get a longer text / description value.
 					 */
-					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $md_num ] ) ? $md_opts[ $opt_prefix . '_text_' . $md_num ] : $md_val;
+					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $num ] ) ? $md_opts[ $opt_prefix . '_text_' . $num ] : $md_val;
 
 					if ( empty( $md_val ) && empty( $step_text ) ) {	// Just in case.
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping step ' . $md_num . ': step name and text are empty' );
+							$wpsso->debug->log( 'skipping step ' . $num . ': step name and text are empty' );
 						}
 					}
 
@@ -1840,7 +1951,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					$step_images = array();
 
-					if ( ! empty( $md_opts[ $opt_prefix . '_img_id_' . $md_num ] ) ) {
+					if ( ! empty( $md_opts[ $opt_prefix . '_img_id_' . $num ] ) ) {
 
 						/*
 						 * Set reference values for admin notices.
@@ -1850,13 +1961,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
 							$wpsso->notice->set_ref( $canonical_url, $mod, sprintf( __( 'adding schema %s #%d image', 'wpsso' ),
-								$prop_name, $md_num + 1 ) );
+								$prop_name, $num + 1 ) );
 						}
 
 						/*
 						 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 						 */
-						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $md_num );
+						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $num );
 
 						self::add_images_data_mt( $step_images, $mt_images );
 
@@ -1872,7 +1983,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Add a How-To Section.
 					 */
-					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $md_num ] ) ) {
+					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $num ] ) ) {
 
 						$json_data[ $prop_name ][ $step_idx ] = self::get_schema_type_context( 'https://schema.org/HowToSection',
 							array(
@@ -1936,6 +2047,66 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
+		}
+
+		/*
+		 * Pass a single or two dimension image array in $mt_images.
+		 *
+		 * Calls WpssoSchemaSingle::add_image_data_mt() to add each single image element.
+		 */
+		public static function add_images_data_mt( &$json_data, $mt_images, $media_pre = 'og:image', $resize = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$img_added = 0;
+
+			if ( empty( $mt_images ) || ! is_array( $mt_images ) ) {
+
+				return $img_added;	// Return count of images added.
+			}
+
+			/*
+			 * Maybe convert single image array to array of image arrays.
+			 */
+			if ( ! isset( $mt_images[ 0 ] ) || ! is_array( $mt_images[ 0 ] ) ) {
+
+				$mt_images = array( $mt_images );
+			}
+
+			$resized_pids = array();	// Avoid adding the same image ID more than once.
+
+			foreach ( $mt_images as $mt_single_image ) {
+
+				/*
+				 * Get the image ID and create a Schema images array.
+				 */
+				if ( $resize && $pid = SucomUtil::get_first_mt_media_id( $mt_single_image, $media_pre ) ) {
+
+					if ( empty( $resized_pids[ $pid ] ) ) {	// Skip image IDs already added.
+
+						$resized_pids[ $pid ] = true;
+
+						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pre = 'og' );
+
+						/*
+						 * Recurse this method, but make sure $resize is false so we don't re-execute this
+						 * section of code (creating an infinite loop).
+						 */
+						$img_added += self::add_images_data_mt( $json_data, $mt_resized, $media_pre, $resize = false );
+					}
+
+				} else {	// No resize or no image ID found.
+
+					$img_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_element = true );
+				}
+			}
+
+			return $img_added;	// Return count of images added.
 		}
 
 		public static function add_item_reviewed_data( &$json_data, $mod, $md_opts ) {
@@ -2218,352 +2389,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function add_offers_data( &$json_data, array $mod, array $mt_offers ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$offers_added  = 0;
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as offer' );
-			}
-
-			foreach ( $mt_offers as $offer_num => $mt_offer ) {
-
-				if ( ! is_array( $mt_offer ) ) {	// Just in case.
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'skipping offer #' . $offer_num . ': not an array' );
-					}
-
-					continue;
-				}
-
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
-
-				if ( false === $single_offer ) {
-
-					continue;
-				}
-
-				$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
-
-				$offers_added++;
-			}
-
-			return $offers_added;
-		}
-
-		public static function add_offers_aggregate_data( &$json_data, array $mod, array $mt_offers ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$aggr_added  = 0;
-			$aggr_prices = array();
-			$aggr_offers = array();
-			$aggr_common = array();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as aggregateoffer' );
-			}
-
-			foreach ( $mt_offers as $offer_num => $mt_offer ) {
-
-				if ( ! is_array( $mt_offer ) ) {	// Just in case.
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'skipping offer #' . $offer_num . ': not an array' );
-					}
-
-					continue;
-				}
-
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
-
-				if ( false === $single_offer ) {
-
-					continue;
-				}
-
-				/*
-				 * Keep track of the lowest and highest price by currency.
-				 */
-				$price_currency = $single_offer[ 'priceCurrency' ];	// Shortcut variable.
-
-				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
-
-					if ( ! isset( $aggr_prices[ $price_currency ][ 'lowPrice' ] ) ||
-						$aggr_prices[ $price_currency ][ 'lowPrice' ] > $single_offer[ 'price' ] ) {
-
-						$aggr_prices[ $price_currency ][ 'lowPrice' ] = $single_offer[ 'price' ];
-					}
-
-					if ( ! isset( $aggr_prices[ $price_currency ][ 'highPrice' ] ) ||
-						$aggr_prices[ $price_currency ][ 'highPrice' ] < $single_offer[ 'price' ] ) {
-
-						$aggr_prices[ $price_currency ][ 'highPrice' ] = $single_offer[ 'price' ];
-					}
-				}
-
-				/*
-				 * Save common properties (by currency) to include in the AggregateOffer markup.
-				 */
-				if ( $offer_num === 0 ) {
-
-					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
-
-						$aggr_common[ $price_currency ][ $key ] = $single_offer[ $key ];
-					}
-
-				} elseif ( ! empty( $aggr_common[ $price_currency ] ) ) {
-
-					foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
-
-						if ( ! isset( $single_offer[ $key ] ) ) {
-
-							unset( $aggr_common[ $price_currency ][ $key ] );
-
-						} elseif ( $val !== $single_offer[ $key ] ) {
-
-							unset( $aggr_common[ $price_currency ][ $key ] );
-						}
-					}
-				}
-
-				/*
-				 * Add the complete offer.
-				 */
-				$aggr_offers[ $price_currency ][] = $single_offer;
-			}
-
-			/*
-			 * Add aggregate offers grouped by currency.
-			 */
-			foreach ( $aggr_offers as $price_currency => $currency_offers ) {
-
-				if ( ( $offer_count = count( $currency_offers ) ) > 0 ) {
-
-					$offer_group = array();
-
-					/*
-					 * Maybe set the 'lowPrice' and 'highPrice' properties.
-					 */
-					foreach ( array( 'lowPrice', 'highPrice' ) as $price_mark ) {
-
-						if ( isset( $aggr_prices[ $price_currency ][ $price_mark ] ) ) {
-
-							$offer_group[ $price_mark ] = $aggr_prices[ $price_currency ][ $price_mark ];
-						}
-					}
-
-					$offer_group[ 'priceCurrency' ] = $price_currency;
-
-					if ( ! empty( $aggr_common[ $price_currency ] ) ) {
-
-						foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
-
-							$offer_group[ $key ] = $val;
-						}
-					}
-
-					$offer_group[ 'offerCount' ] = $offer_count;
-
-					$offer_group[ 'offers' ] = $currency_offers;
-
-					$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/AggregateOffer', $offer_group );
-
-					$aggr_added++;
-				}
-			}
-
-			return $aggr_added;
-		}
-
 		/*
-		 * $user_id is optional and takes precedence over the $mod post_author value.
-		 */
-		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$authors_added   = 0;
-			$coauthors_added = 0;
-
-			if ( empty( $user_id ) && isset( $mod[ 'post_author' ] ) ) {
-
-				$user_id = $mod[ 'post_author' ];
-			}
-
-			if ( empty( $user_id ) || 'none' === $user_id ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
-				}
-
-				return 0;
-			}
-
-			/*
-			 * Single author.
-			 */
-			$authors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'author' ], $mod, $user_id, $list_element = false );
-
-			/*
-			 * List of contributors / co-authors.
-			 */
-			if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
-
-				foreach ( $mod[ 'post_coauthors' ] as $author_id ) {
-
-					$coauthors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'contributor' ], $mod, $author_id, $list_element = true );
-				}
-			}
-
-			return $authors_added + $coauthors_added;	// Return count of authors and coauthors added.
-		}
-
-		public static function add_comment_list_data( &$json_data, $post_mod ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$comments_added = 0;
-
-			if ( ! $post_mod[ 'is_post' ] || ! $post_mod[ 'id' ] || ! comments_open( $post_mod[ 'id' ] ) ) {
-
-				return $comments_added;
-			}
-
-			$json_data[ 'commentCount' ] = (int) get_comments_number( $post_mod[ 'id' ] );
-
-			/*
-			 * Only get parent comments. The add_comment_data() method will recurse and add the children.
-			 */
-			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
-
-				$comment_order  = strtoupper( get_option( 'comment_order' ) );
-				$comment_paged  = $post_mod[ 'comment_paged' ] ? $post_mod[ 'comment_paged' ] : 1;		// Get the comment page number.
-				$comment_number = get_option( 'comments_per_page' );
-
-			} else {
-
-				$comment_order  = 'DESC';
-				$comment_paged  = 1;
-				$comment_number = SucomUtil::get_const( 'WPSSO_SCHEMA_COMMENTS_MAX' );
-			}
-
-			if ( $comment_number ) {	// 0 disables the addition of comments.
-
-				$get_comment_args = array(
-					'post_id' => $post_mod[ 'id' ],
-					'status'  => 'approve',
-					'parent'  => 0,		// Don't get replies.
-					'order'   => $comment_order,
-					'orderby' => 'comment_date_gmt',
-					'paged'   => $comment_paged,
-					'number'  => $comment_number,
-				);
-
-				$comments = get_comments( $get_comment_args );
-
-				if ( is_array( $comments ) ) {
-
-					foreach( $comments as $num => $comment_obj ) {
-
-						$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $post_mod, $comment_obj->comment_ID );
-					}
-				}
-			}
-
-			return $comments_added;	// Return count of comments added.
-		}
-
-		/*
-		 * Pass a single or two dimension image array in $mt_images.
-		 *
-		 * Calls WpssoSchemaSingle::add_image_data_mt() to add each single image element.
-		 */
-		public static function add_images_data_mt( &$json_data, $mt_images, $media_pre = 'og:image', $resize = false ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$images_added = 0;
-
-			if ( empty( $mt_images ) || ! is_array( $mt_images ) ) {
-
-				return $images_added;
-			}
-
-			/*
-			 * Maybe convert single image array to array of image arrays.
-			 */
-			if ( ! isset( $mt_images[ 0 ] ) || ! is_array( $mt_images[ 0 ] ) ) {
-
-				$mt_images = array( $mt_images );
-			}
-
-			$resized_pids = array();	// Avoid adding the same image ID more than once.
-
-			foreach ( $mt_images as $mt_single_image ) {
-
-				/*
-				 * Get the image ID and create a Schema images array.
-				 */
-				if ( $resize && $pid = SucomUtil::get_first_mt_media_id( $mt_single_image, $media_pre ) ) {
-
-					if ( empty( $resized_pids[ $pid ] ) ) {	// Skip image IDs already added.
-
-						$resized_pids[ $pid ] = true;
-
-						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pre = 'og' );
-
-						/*
-						 * Recurse this method, but make sure $resize is false so we don't re-execute this
-						 * section of code (creating an infinite loop).
-						 */
-						$images_added += self::add_images_data_mt( $json_data, $mt_resized, $media_pre, $resize = false );
-					}
-
-				} else {	// No resize or no image ID found.
-
-					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_element = true );
-				}
-			}
-
-			return $images_added;
-		}
-
-		/*
-		 * Called by WpssoJsonTypeItemList.
+		 * See WpssoJsonTypeItemList->filter_json_data_https_schema_org_itemlist().
 		 */
 		public static function add_itemlist_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main ) {
 
@@ -2671,14 +2498,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/*
-			 * Property:
-			 *	image as https://schema.org/ImageObject
-			 */
-			$images_added = 0;
-
-			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
-
+			$img_added = 0;
+			$max_nums  = $wpsso->util->get_max_nums( $mod, 'og' );
 			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre = array( 'schema', 'og' ) );
 
 			if ( ! empty( $mt_images ) ) {
@@ -2688,19 +2509,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding images to json data' );
 				}
 
-				$images_added = self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
+				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
 			}
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( $images_added . ' images added' );
+				$wpsso->debug->log( $img_added . ' images added' );
 			}
 
 			/*
-			 * Property:
-			 *	video as https://schema.org/VideoObject
-			 *
-			 * Allow the video property to be skipped -- some schema types (organization, for example) do not include a video property.
+			 * Allow the video property to be skipped - some schema types (organization, for example) do not include a video property.
 			 */
 			if ( $add_video ) {
 
@@ -2709,9 +2527,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding all video(s)' );
 				}
 
-				$vid_prop = is_string( $add_video ) ? $add_video : 'video';
-
 				$vid_added = 0;
+				$vid_prop  = is_string( $add_video ) ? $add_video : 'video';
 
 				if ( ! empty( $mt_og[ 'og:video' ] ) ) {
 
@@ -2741,7 +2558,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * mainEntityOfPage property to false (so it doesn't get defined later).
 			 */
 			$main_prop = $mod[ 'is_attachment' ] ? preg_replace( '/\/.*$/', '', $mod[ 'post_mime' ] ) : '';
-
 			$main_prop = apply_filters( 'wpsso_json_media_main_prop', $main_prop, $mod );
 
 			if ( ! empty( $main_prop ) ) {
@@ -2774,6 +2590,195 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ 'mainEntityOfPage' ] = false;
 				}
 			}
+		}
+
+		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$aggr_added  = 0;
+			$aggr_prices = array();
+			$aggr_offers = array();
+			$aggr_common = array();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as AggregateOffer' );
+			}
+
+			foreach ( $mt_offers as $num => $mt_offer ) {
+
+				if ( ! is_array( $mt_offer ) ) {	// Just in case.
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': not an array' );
+					}
+
+					continue;
+
+				} elseif ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+					}
+
+					continue;
+				}
+
+				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+
+				$mod = $wpsso->post->get_mod( $post_id );
+
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+
+				/*
+				 * Keep track of the lowest and highest price by currency.
+				 */
+				$price_currency = $single_offer[ 'priceCurrency' ];	// Shortcut variable.
+
+				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
+
+					if ( ! isset( $aggr_prices[ $price_currency ][ 'lowPrice' ] ) ||
+						$aggr_prices[ $price_currency ][ 'lowPrice' ] > $single_offer[ 'price' ] ) {
+
+						$aggr_prices[ $price_currency ][ 'lowPrice' ] = $single_offer[ 'price' ];
+					}
+
+					if ( ! isset( $aggr_prices[ $price_currency ][ 'highPrice' ] ) ||
+						$aggr_prices[ $price_currency ][ 'highPrice' ] < $single_offer[ 'price' ] ) {
+
+						$aggr_prices[ $price_currency ][ 'highPrice' ] = $single_offer[ 'price' ];
+					}
+				}
+
+				/*
+				 * Save common properties (by currency) to include in the AggregateOffer markup.
+				 */
+				if ( 0 === $num ) {
+
+					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
+
+						$aggr_common[ $price_currency ][ $key ] = $single_offer[ $key ];
+					}
+
+				} elseif ( ! empty( $aggr_common[ $price_currency ] ) ) {
+
+					foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
+
+						if ( ! isset( $single_offer[ $key ] ) ) {
+
+							unset( $aggr_common[ $price_currency ][ $key ] );
+
+						} elseif ( $val !== $single_offer[ $key ] ) {
+
+							unset( $aggr_common[ $price_currency ][ $key ] );
+						}
+					}
+				}
+
+				/*
+				 * Add the complete offer.
+				 */
+				$aggr_offers[ $price_currency ][] = $single_offer;
+			}
+
+			/*
+			 * Add aggregate offers grouped by currency.
+			 */
+			foreach ( $aggr_offers as $price_currency => $currency_offers ) {
+
+				if ( ( $offer_count = count( $currency_offers ) ) > 0 ) {
+
+					$offer_group = array();
+
+					/*
+					 * Maybe set the 'lowPrice' and 'highPrice' properties.
+					 */
+					foreach ( array( 'lowPrice', 'highPrice' ) as $price_mark ) {
+
+						if ( isset( $aggr_prices[ $price_currency ][ $price_mark ] ) ) {
+
+							$offer_group[ $price_mark ] = $aggr_prices[ $price_currency ][ $price_mark ];
+						}
+					}
+
+					$offer_group[ 'priceCurrency' ] = $price_currency;
+
+					if ( ! empty( $aggr_common[ $price_currency ] ) ) {
+
+						foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
+
+							$offer_group[ $key ] = $val;
+						}
+					}
+
+					$offer_group[ 'offerCount' ] = $offer_count;
+
+					$offer_group[ 'offers' ] = $currency_offers;
+
+					$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/AggregateOffer', $offer_group );
+
+					$aggr_added++;
+				}
+			}
+
+			return $aggr_added;
+		}
+
+		public static function add_offers_data( &$json_data, array $mt_offers ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$offers_added  = 0;
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as Offer' );
+			}
+
+			foreach ( $mt_offers as $num => $mt_offer ) {
+
+				if ( ! is_array( $mt_offer ) ) {	// Just in case.
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': not an array' );
+					}
+
+					continue;
+
+				} elseif ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+					}
+
+					continue;
+				}
+
+				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+
+				$mod = $wpsso->post->get_mod( $post_id );
+
+				$json_data[ 'offers' ][] = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+
+				$offers_added++;
+			}
+
+			return $offers_added;
 		}
 
 		/*
@@ -2932,7 +2937,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					foreach ( $type_ids as $family_member_id ) {
 
-						if ( $family_member_id === 'any' ) {
+						if ( 'any' === $family_member_id ) {
 
 							if ( $wpsso->debug->enabled ) {
 
@@ -3029,6 +3034,82 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $added_count;
 		}
 
+		public static function add_person_names_data( &$json_data, $prop_name, array $assoc, $key_name = '' ) {
+
+			if ( ! empty( $prop_name ) && ! empty( $key_name ) ) {
+
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $key_name .'_[0-9]+$/', $assoc ) as $value ) {
+
+					if ( ! empty( $value ) ) {
+
+						$json_data[ $prop_name ][] = self::get_schema_type_context( 'https://schema.org/Person', array(
+							'name' => $value,
+						) );
+					}
+				}
+			}
+		}
+
+		/*
+		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_product_group().
+		 */
+		public static function add_variants_data( &$json_data, array $mt_variants ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$variants_added  = 0;
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding ' . count( $mt_variants ) . ' variants as Product' );
+			}
+
+			foreach ( $mt_variants as $num => $mt_variant ) {
+
+				if ( ! is_array( $mt_variant ) ) {	// Just in case.
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping variant #' . $num . ': not an array' );
+					}
+
+					continue;
+				}
+
+				if ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+					}
+
+					continue;
+				}
+
+				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+
+				$mod = $wpsso->post->get_mod( $post_id );
+
+				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant );
+
+				if ( false === $single_variant ) {
+
+					continue;
+				}
+
+				$json_data[ 'hasVariant' ][] = self::get_schema_type_context( 'https://schema.org/Product', $single_variant );
+
+				$variants_added++;
+			}
+
+			return $variants_added;
+		}
+
 		/*
 		 * Provide a single or two-dimension video array in $mt_videos.
 		 */
@@ -3049,22 +3130,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $videos_added;	// return count of videos added
-		}
-
-		public static function add_person_names_data( &$json_data, $prop_name, array $assoc, $key_name = '' ) {
-
-			if ( ! empty( $prop_name ) && ! empty( $key_name ) ) {
-
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $key_name .'_[0-9]+$/', $assoc ) as $value ) {
-
-					if ( ! empty( $value ) ) {
-
-						$json_data[ $prop_name ][] = self::get_schema_type_context( 'https://schema.org/Person', array(
-							'name' => $value,
-						) );
-					}
-				}
-			}
 		}
 
 		/*
@@ -3102,9 +3167,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'promoted ' . $prop_added . ' location keys' );
-				}
-
-				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'removing the location property' );
 				}
@@ -4163,26 +4225,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function return_data_from_filter( $json_data, $merge_data, $is_main = false ) {
 
-			if ( ! $is_main || ! empty( $merge_data[ 'mainEntity' ] ) ) {
-
-				unset( $json_data[ 'mainEntity' ] );
-				unset( $json_data[ 'mainEntityOfPage' ] );
-
-			} else {
-
-				if ( ! isset( $merge_data[ 'mainEntityOfPage' ] ) ) {
-
-					if ( ! empty( $merge_data[ 'url' ] ) ) {
-
-						/*
-						 * Remove any URL fragment from the main entity URL. The 'mainEntityOfPage' value
-						 * can be empty and will be removed by WpssoSchemaGraph::optimize_json().
-						 */
-						$merge_data[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $merge_data[ 'url' ] );
-					}
-				}
-			}
-
 			if ( empty( $merge_data ) ) {	// Just in case - nothing to merge.
 
 				return $json_data;
@@ -4193,6 +4235,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} elseif ( is_array( $json_data ) ) {
 
+				if ( ! $is_main || ! empty( $merge_data[ 'mainEntity' ] ) ) {
+
+					unset( $json_data[ 'mainEntity' ] );
+					unset( $json_data[ 'mainEntityOfPage' ] );
+
+				} elseif ( ! isset( $merge_data[ 'mainEntityOfPage' ] ) ) {
+
+					if ( ! empty( $merge_data[ 'url' ] ) ) {
+
+						/*
+						 * Remove any URL fragment from the main entity URL. The 'mainEntityOfPage' value
+						 * can be empty and will be removed by WpssoSchemaGraph::optimize_json().
+						 */
+						$merge_data[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $merge_data[ 'url' ] );
+					}
+				}
+
 				$json_head = array(
 					'@id'              => null,
 					'@context'         => null,
@@ -4202,6 +4261,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data = array_merge( $json_head, $json_data, $merge_data );
 
+				/*
+				 * Remove any remaining empty keys from the $json_head array.
+				 */
 				foreach ( $json_head as $prop_name => $prop_val ) {
 
 					if ( empty( $json_data[ $prop_name ] ) ) {

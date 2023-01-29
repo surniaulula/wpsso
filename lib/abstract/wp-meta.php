@@ -2337,23 +2337,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-
-				$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is ' . ( $mod[ 'is_public' ] ? 'public' : 'private' ) );
 			}
 
-			$md_opts    = array();
-			$parent_ids = array();
-
-			/*
-			 * Since WPSSO Core v12.2.0.
-			 */
-			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
-			$inherit_opts = (array) apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
+			$md_opts      = array();
+			$parent_ids   = array();
+			$inherit_opts = $this->p->cf[ 'form' ][ 'inherited_md_opts' ];
+			$inherit_opts = (array) apply_filters( 'wpsso_inherited_md_opts', $inherit_opts, $mod );
 
 			/*
 			 * Since WPSSO Core v9.10.0.
 			 *
-			 * Note that by default only public children inherit parent images.
+			 * Note that only public children can inherit custom images from their parents.
 			 *
 			 * Use add_filter( 'wpsso_inherit_custom_images', '__return_true' ) to inherit images for private children.
 			 */

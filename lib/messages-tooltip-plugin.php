@@ -127,17 +127,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_inherit_featured':	// Inherit Featured Image.
 
-					$text = __( 'Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
+					$text = __( 'Posts, pages, custom post types, categories, tags, custom taxonomy terms, and user profiles should all have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Enable this option to make sure publicly accessible child pages without a featured image can inherit the featured image of their parents.', 'wpsso' ) . ' ';
+					$text .= __( 'Enable this option to make sure child pages without a featured image can inherit the featured image of their parents.', 'wpsso' ) . ' ';
 
 					break;
 
 				case 'tooltip-plugin_inherit_images':	// Inherit Custom Images.
 
-					$text = __( 'Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
+					$text = __( 'Posts, pages, custom post types, categories, tags, custom taxonomy terms, and user profiles should all have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Enable this option to make sure publicly accessible child pages and terms without custom images can inherit the custom images of their parents.', 'wpsso' ) . ' ';
+					$text .= __( 'Enable this option to make sure child pages and terms without custom images can inherit the custom images of their parents.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Note that when enabled, this feature is only applied to publicly accessible posts, pages, custom post types, categories, tags, custom taxonomy terms, and user profiles.', 'wpsso' ) . ' ';
 
 					break;
 
@@ -614,20 +616,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$def_value = $this->p->opt->get_defaults( 'plugin_min_shorten' );
 
 					$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $def_value );
-
-					break;
-
-				case 'tooltip-plugin_clear_short_urls':		// Clear Short URLs on Clear Cache.
-
-					$def_checked     = $this->get_def_checked( 'plugin_clear_short_urls' );
-					$cache_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_s_' );
-					$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'tooltip fragment', 'wpsso' );
-
-					$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
-
-					$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
-
-					$text .= '<strong>' . __( 'Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' ) . '</strong>';
 
 					break;
 

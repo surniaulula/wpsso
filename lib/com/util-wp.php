@@ -253,7 +253,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * See wordpress/wp-includes/post.php.
 			 */
 			if ( ! empty( $args[ 'post_type' ] ) ) {
-		
+
 				if ( empty( $args[ 'post_status' ] ) ) {
 
 					$args[ 'post_status' ] = 'attachment' === $args[ 'post_type' ] ? 'inherit' : 'publish';
@@ -282,7 +282,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				unset( $args[ 'include' ] );
 			}
-			
+
 			if ( ! empty( $args[ 'exclude' ] ) ) {
 
 				$args[ 'post__not_in' ] = wp_parse_id_list( $args[ 'exclude' ] );

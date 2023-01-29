@@ -126,13 +126,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_inherit_featured' ] = '' .
 				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_featured' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_featured' ) .
+				$form->get_no_td_checkbox( 'plugin_inherit_featured', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
 
 			$table_rows[ 'plugin_inherit_images' ] = '' .
 				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_images' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_images' ) .
+				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
@@ -568,11 +568,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_min_shorten' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'plugin_clear_short_urls' ] = '' .
-				$form->get_th_html( _x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_short_urls' ) .
-				$form->get_no_td_checkbox( 'plugin_clear_short_urls' );
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_wp_shortlink' ) .
 				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ),

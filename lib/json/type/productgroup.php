@@ -40,7 +40,14 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return $json_data;
+			$json_ret = array();
+
+			if ( ! empty( $mt_og[ 'product:variants' ] ) && is_array( $mt_og[ 'product:variants' ] ) ) {
+
+				WpssoSchema::add_variants_data( $json_ret, $mt_og[ 'product:variants' ] );
+			}
+
+			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
 }

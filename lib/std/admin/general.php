@@ -46,12 +46,12 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[ 'plugin_inherit_featured' ] = '' .
 				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_featured' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_featured' );
+				$form->get_no_td_checkbox( 'plugin_inherit_featured', _x( '(recommended)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_inherit_images' ] = '' .
 				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_images' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_images' );
+				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),

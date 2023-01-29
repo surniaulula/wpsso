@@ -629,7 +629,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						__( 'Social sharing', 'wordpress-seo' ) . '</a>';
 
 				} else {
-				
+
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl  = '<strong>' . __( 'Enhanced Slack sharing', 'wordpress-seo' ) . '</strong>';
 					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_dashboard#top#features' );
