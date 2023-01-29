@@ -234,17 +234,30 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.0-dev.1 (TBD)**
+**Version 14.8.0-dev.1 (2023/01/29)**
 
 * **New Features**
-	* Added support for the new https://schema.org/ProductGroup type (currently under development).
-* **Improvements**
 	* None.
+* **Improvements**
+	* Extended the "Inherit Featured Image" option to include private content as well (ie. WooCommerce variations).
+	* Removed the "Clear Cache" button from the SSO &gt; Tools and Actions settings page.
+	* Removed the "Clear Short URLs on Clear Cache" from the SSO &gt; Advanced Settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'product:variants' internal meta tag array.
+	* Added a new 'product:shipping_class_id'' internal meta tag.
+	* Added a new 'product:shipping_offers' internal meta tag.
+	* Added a new 'product:variants' internal meta tag.
+	* Added a new 'wpsso_og_add_mt_variants' filter.
 	* Added a new 'wpsso_json_data_https_schema_org_product_group' filter hook.
+	* Added a new `WpssoSchema::add_variants_data()` method.
+	* Added a new `WpssoSchemaSingle::add_offer_data()` method.
+	* Added a new `WpssoSchemaSingle::add_product_data()` method.
+	* Added a new `WpssoSchemaSingle::get_product_data()` method.
+	* Added a new private `WpssoSchemaSingle::add_or_replace_data()` method.
+	* Refactoted the `WpssoSchemaSingle::get_offer_data()` method.
+	* Refactored the 'wpsso_json_data_https_schema_org_product' filter hook by moving its code to a new `WpssoSchemaSingle::add_product_data()` method.
+	* Removed the `$mod` argument from the `WpssoSchema::add_offers_data()` and `WpssoSchema::add_offers_aggregate_data()` methods.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -948,9 +961,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 15.0.0-dev.1 =
+= 14.8.0-dev.1 =
 
-(TBD) Added support for the new https://schema.org/ProductGroup type (currently under development).
+(2023/01/29) Added support for the new https://schema.org/ProductGroup type (currently under development).
 
 = 14.7.0 =
 
