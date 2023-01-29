@@ -58,13 +58,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '* ';
-			echo sprintf( __( 'Maximum background execution time is currently limited to %s.', 'wpsso' ), $max_refresh_time ) . ' ';
+			echo sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $max_refresh_time ) . ' ';
 			echo '</p>' . "\n";
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
-			echo __( 'Role members are used for some Schema property selections.', 'wpsso' ) . ' ';
-			echo __( 'Content Creators are administrators, editors, authors, and contributors.', 'wpsso' );
+			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
+			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
 
 			echo '</div><!-- #tools-content -->' . "\n";

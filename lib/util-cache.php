@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( $refresh ) {
 
-					$notice_msg .= '<strong>' . __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' ) . '</strong>';
+					$notice_msg .= __( 'A background task will begin shortly to refresh the post, term and user transient and metadata cache.', 'wpsso' );
 				}
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
