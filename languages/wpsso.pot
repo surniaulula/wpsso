@@ -12455,7 +12455,7 @@ msgid ""
 msgstr ""
 
 #: lib/util-cache.php:678
-msgid "A task to refresh the transient cache was started at %s."
+msgid "A task to refresh the cache was started at %s."
 msgstr ""
 
 #: lib/util-cache.php:689

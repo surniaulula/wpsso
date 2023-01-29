@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A task to refresh the transient cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
+				$notice_msg = sprintf( __( 'A task to refresh the cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
