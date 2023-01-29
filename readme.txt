@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.8.0-dev.1 (2023/01/29)**
+**Version 14.8.0-dev.2 (2023/01/29)**
 
 * **New Features**
 	* None.
@@ -961,7 +961,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 14.8.0-dev.1 =
+= 14.8.0-dev.2 =
 
 (2023/01/29) Extended the "Inherit Featured Image" option to include private content. Removed the "Clear Cache" button.
 
