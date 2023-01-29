@@ -5228,9 +5228,8 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:955 lib/admin.php:966 lib/messages-tooltip-meta-schema.php:541
-#: lib/messages-tooltip-plugin.php:122 lib/submenu/tools.php:53
-#: lib/submenu/tools.php:70 lib/user.php:57 lib/user.php:1695 lib/user.php:1800
-#: lib/user.php:1934
+#: lib/messages-tooltip-plugin.php:122 lib/submenu/tools.php:75 lib/user.php:57
+#: lib/user.php:1695 lib/user.php:1800 lib/user.php:1934
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5298,7 +5297,7 @@ msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1388 lib/submenu/tools.php:112
+#: lib/admin.php:1388 lib/submenu/tools.php:115
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -12130,82 +12129,85 @@ msgid "Setup Guide"
 msgstr ""
 
 #: lib/submenu/tools.php:61
-msgid "Members of the %s role may be selected for certain Schema properties."
+msgid "Maximum background execution time is currently limited to %s."
 msgstr ""
 
-#: lib/submenu/tools.php:62
+#: lib/submenu/tools.php:66
+msgid "Role members are used for some Schema property selections."
+msgstr ""
+
+#: lib/submenu/tools.php:67
 msgid ""
-"\"Content Creators\" are all administrators, editors, authors, and "
-"contributors."
+"Content Creators are administrators, editors, authors, and contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:79
+#: lib/submenu/tools.php:84
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:81
+#: lib/submenu/tools.php:86
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:84
+#: lib/submenu/tools.php:89
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:87
+#: lib/submenu/tools.php:92
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Job"
 msgid_plural "Clear %s WordPress Cron Jobs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:90
+#: lib/submenu/tools.php:95
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr ""
 
-#: lib/submenu/tools.php:95
+#: lib/submenu/tools.php:100
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:96
+#: lib/submenu/tools.php:101
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:101
+#: lib/submenu/tools.php:106
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:102
+#: lib/submenu/tools.php:107
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:103
+#: lib/submenu/tools.php:108
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:160
+#: lib/submenu/tools.php:163
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:161
+#: lib/submenu/tools.php:164
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:172
+#: lib/submenu/tools.php:175
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"

@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function show_post_body_setting_form() {
 
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
+			$max_refresh_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 
 			echo '<div id="tools-content">' . "\n";
 
@@ -58,8 +58,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '* ';
-			echo sprintf( __( 'Members of the %s role may be selected for certain Schema properties.', 'wpsso' ), $role_label ) . ' ';
-			echo __( '"Content Creators" are all administrators, editors, authors, and contributors.', 'wpsso' );
+			echo sprintf( __( 'Maximum background execution time is currently limited to %s.', 'wpsso' ), $max_refresh_time ) . ' ';
+			echo '</p>' . "\n";
+
+			echo '<p class="status-msg smaller left">';
+			echo '** ';
+			echo __( 'Role members are used for some Schema property selections.', 'wpsso' ) . ' ';
+			echo __( 'Content Creators are administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
 
 			echo '</div><!-- #tools-content -->' . "\n";
@@ -76,7 +81,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
 			$count_cron_jobs     = number_format_i18n( $this->p->util->count_cron_jobs() );
 
-			$refresh_cache_label_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' );
+			$refresh_cache_label_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
 
 			$clear_cache_files_label_transl = sprintf( _nx( 'Clear %s Cached File', 'Clear %s Cached Files',
 				$count_cache_files, 'submit button', 'wpsso' ), $count_cache_files );
@@ -98,11 +103,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Row #2.
 			 */
-			$add_persons_label_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label );
+			$add_persons_label_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label ) . ' **';
 			$remove_persons_label_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
 			$reload_image_sizes_label_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
-
-			$add_persons_label_transl .= ' *';
 
 			/*
 			 * Row #3.
