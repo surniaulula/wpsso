@@ -284,9 +284,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$prefix   = '_transient_';	// Clear all transients, even if no timeout value.
 			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
-			$expired  = $wpdb->get_col( $db_query );
+			$result   = $wpdb->get_col( $db_query );
 
-			foreach( $expired as $option_name ) {
+			foreach( $result as $option_name ) {
 
 				$transient_name = str_replace( $prefix, '', $option_name );
 

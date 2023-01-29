@@ -890,30 +890,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_cache':
-
-							$this->p->util->cache->schedule_clear( $user_id );
-
-							$notice_msg = __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
-
-							$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
-
-							$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-
-							break;
-
-						case 'clear_cache_short_urls':
-
-							$this->p->util->cache->schedule_clear( $user_id, $clear_other = true, $clear_short = true );
-
-							$notice_msg = __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' );
-
-							$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
-
-							$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-
-							break;
-
 						case 'clear_cache_files':
 
 							$cleared_count = $this->p->util->cache->clear_cache_files();
