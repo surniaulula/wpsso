@@ -4860,8 +4860,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
-			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;		// 1 hour.
-			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;		// 3 hours.
+			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 600;		// 10 minutes.
+			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 3600;		// 1 hour.
 			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.10;		// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.

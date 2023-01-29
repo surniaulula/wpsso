@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( $cache_exp_secs );	// Set maximum PHP execution time.
+				set_time_limit( WPSSO_CACHE_REFRESH_MAX_TIME );	// Set maximum PHP execution time.
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
