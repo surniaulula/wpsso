@@ -236,11 +236,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 14.8.0-dev.2 (2023/01/29)**
 
+This version includes several code updates required for WPSSO Core v15.0.0.
+
 * **New Features**
 	* None.
 * **Improvements**
 	* Extended the "Inherit Featured Image" option to include private content (ie. WooCommerce variations).
-	* Removed the "Clear Cache" button from the SSO &gt; Tools and Actions settings page.
+	* Removed the "Clear Cache" button from the SSO &gt; Tools and Actions settings page - the "Refresh Cache" button is a better option.
 	* Removed the "Clear Short URLs on Clear Cache" from the SSO &gt; Advanced Settings page.
 * **Bugfixes**
 	* None.
