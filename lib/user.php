@@ -1731,9 +1731,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
-			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
+			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
+				set_time_limit( WPSSO_ADD_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -1831,17 +1831,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.',
-					'wpsso' ), $role_label, gmdate( 'c' ) );
+				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.', 'wpsso' ), $role_label, gmdate( 'c' ) );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
 			$this->stop_add_person_role();	// Just in case.
 
-			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
+			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
+				set_time_limit( WPSSO_REMOVE_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {

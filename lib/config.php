@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.8.0-b.1',	// Plugin version.
+					'version'     => '14.8.0-b.2',	// Plugin version.
 					'opt_version' => '947',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4860,6 +4860,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
+			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
+			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 600;		// 10 minutes.
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
 			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.10;		// Seconds to sleep between requests when refreshing the cache.

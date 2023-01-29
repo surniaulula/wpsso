@@ -883,11 +883,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
 
-							$max_refresh_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+							$time_limit = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 
 							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
 
-							$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $max_refresh_time ) . ' ';
+							$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $time_limit ) . ' ';
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -2681,7 +2681,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			ignore_user_abort();
 
-			set_time_limit( 0 );
+			set_time_limit( 300 );	// 5 minutes.
 
 			ini_set( 'zlib.output_compression', 0 );
 

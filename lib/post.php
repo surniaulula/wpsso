@@ -1266,14 +1266,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section.', 'wpsso' ),
-						$short_name ) . ' ';
+					$notice_msg = sprintf( __( 'The PHP %1$s function failed to remove the %2$s meta tag section.', 'wpsso' ), '<code>preg_replace()</code>', $short_name ) . ' ';
 
-					$notice_msg .= __( 'This could indicate a problem with PHP\'s PCRE library, or an optimization plugin / service corrupting the webpage HTML.',
-						'wpsso' ) . ' ';
+					$notice_msg .= __( 'This could indicate a problem with PHP\'s PCRE library, or an optimization plugin / service corrupting the webpage HTML.', 'wpsso' ) . ' ';
 
-					$notice_msg .= __( 'You should consider updating or having your hosting provider update your PHP installation and its PCRE library.',
-						'wpsso' );
+					$notice_msg .= __( 'You should consider updating or having your hosting provider update your PHP installation and its PCRE library.', 'wpsso' );
 
 					$this->p->notice->err( $notice_msg );
 				}

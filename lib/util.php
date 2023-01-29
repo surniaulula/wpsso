@@ -1788,7 +1788,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( is_admin() ) {
 
 				// translators: %1$s is the class name.
-				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed.', 'wpsso' ), $class ) );
+				$this->p->notice->err( sprintf( __( 'The PHP %s class is missing &ndash; contact your hosting provider to have the missing class installed.', 'wpsso' ), '<code>' . $class . '</code>' ) );
 			}
 		}
 
@@ -1802,7 +1802,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( is_admin() ) {
 
 				// translators: %1$s is the function name.
-				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed.', 'wpsso' ), $function ) );
+				$this->p->notice->err( sprintf( __( 'The PHP %s function is missing &ndash; contact your hosting provider to have the missing function installed.', 'wpsso' ), '<code>' . $function . '</code>' ) );
 			}
 		}
 

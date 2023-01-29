@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoIntegReviewYotpoWc' ) ) {
 				if ( is_admin() ) {
 
 					// translators: %s is "wc_yotpo_compatible()".
-					$error_msg = sprintf( __( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' ), 'wc_yotpo_compatible()' );
+					$error_msg = sprintf( __( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' ), '<code>wc_yotpo_compatible()</code>' );
 
 					$this->p->notice->err( $error_msg );
 

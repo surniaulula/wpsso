@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.8.0-b.1\n"
+"Project-Id-Version: WPSSO Core 14.8.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -419,7 +419,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:471 lib/com/cache.php:628 lib/util-cache.php:217
+#: lib/com/cache.php:471 lib/com/cache.php:628 lib/util-cache.php:225
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -4708,7 +4708,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:340 gettext/gettext-lib-pro.php:351
 #: lib/conflict.php:209 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1624 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1621 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -5191,7 +5191,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:888 lib/util-cache.php:177
+#: lib/admin.php:888 lib/util-cache.php:185
 msgid ""
 "A background task will begin shortly to refresh the post, term and user "
 "transient and metadata cache."
@@ -5230,7 +5230,7 @@ msgstr ""
 
 #: lib/admin.php:958 lib/admin.php:969 lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-plugin.php:122 lib/submenu/tools.php:75 lib/user.php:57
-#: lib/user.php:1695 lib/user.php:1800 lib/user.php:1934
+#: lib/user.php:1695 lib/user.php:1800 lib/user.php:1933
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11410,75 +11410,74 @@ msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
 #: lib/post.php:1269
-msgid ""
-"The PHP preg_replace() function failed to remove the %1$s meta tag section."
+msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1272
+#: lib/post.php:1271
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1275
+#: lib/post.php:1273
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1296
+#: lib/post.php:1293
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1315
+#: lib/post.php:1312
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1317
+#: lib/post.php:1314
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1320
+#: lib/post.php:1317
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1363
+#: lib/post.php:1360
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1365
+#: lib/post.php:1362
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1373
+#: lib/post.php:1370
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1377
+#: lib/post.php:1374
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1381
+#: lib/post.php:1378
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1576
+#: lib/post.php:1573
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1581
+#: lib/post.php:1578
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1906
+#: lib/post.php:1903
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12304,8 +12303,8 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1770 lib/user.php:1871 lib/util-cache.php:173
-#: lib/util-cache.php:756
+#: lib/user.php:1770 lib/user.php:1870 lib/util-cache.php:181
+#: lib/util-cache.php:772
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -12319,7 +12318,7 @@ msgstr ""
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1870
+#: lib/user.php:1869
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -12429,31 +12428,43 @@ msgstr ""
 msgid "A task to clear the cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:164
+#: lib/util-cache.php:143
+msgid ""
+"The PHP %1$s function failed to set a maximum execution time of %s for cache "
+"clearing."
+msgstr ""
+
+#: lib/util-cache.php:172
 msgid ""
 "%1$d cached files, %2$d transient cache objects, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util-cache.php:248
+#: lib/util-cache.php:256
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:429
+#: lib/util-cache.php:437
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:656
+#: lib/util-cache.php:664
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:670
+#: lib/util-cache.php:678
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:742
+#: lib/util-cache.php:689
+msgid ""
+"The PHP %1$s function failed to set a maximum execution time of %s for cache "
+"refresh."
+msgstr ""
+
+#: lib/util-cache.php:758
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
@@ -12624,15 +12635,15 @@ msgstr ""
 #. translators: %1$s is the class name.
 #: lib/util.php:1791
 msgid ""
-"The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
-"provider to have the missing class installed."
+"The PHP %s class is missing &ndash; contact your hosting provider to have "
+"the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
 #: lib/util.php:1805
 msgid ""
-"The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
-"provider to have the missing function installed."
+"The PHP %s function is missing &ndash; contact your hosting provider to have "
+"the missing function installed."
 msgstr ""
 
 #: lib/util.php:3156
