@@ -1733,7 +1733,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::get_time_date( _x( ' on ', 'time on date', 'wpsso' ) );
+				$time_date  = SucomUtilWP::get_time_date( _x( 'on', 'time on date', 'wpsso' ) );
 				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.', 'wpsso' ), $role_label, $time_date );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-begin' );
@@ -1846,7 +1846,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::get_time_date( _x( ' on ', 'time on date', 'wpsso' ) );
+				$time_date  = SucomUtilWP::get_time_date( _x( 'on', 'time on date', 'wpsso' ) );
 				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.', 'wpsso' ), $role_label, $time_date );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-begin' );

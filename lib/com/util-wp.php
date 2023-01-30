@@ -234,7 +234,10 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $locale_cache;
 		}
 
-		public static function get_time_date( $sep = ' ' ) {
+		public static function get_time_date( $sep = '' ) {
+
+			$sep = trim( $sep );
+			$sep = '' === $sep ? ' ' : ' ' . $sep . ' ';
 
 			$time_fmt = get_option( 'time_format' );
 			$date_fmt = get_option( 'date_format' );

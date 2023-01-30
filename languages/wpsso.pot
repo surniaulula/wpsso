@@ -12287,7 +12287,7 @@ msgstr ""
 #: lib/user.php:1736 lib/user.php:1849 lib/util-cache.php:138
 #: lib/util-cache.php:676
 msgctxt "time on date"
-msgid " on "
+msgid "on"
 msgstr ""
 
 #: lib/user.php:1737
