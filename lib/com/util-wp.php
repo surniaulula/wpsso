@@ -239,7 +239,10 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$time_fmt = get_option( 'time_format' );
 			$date_fmt = get_option( 'date_format' );
 
-			return date( $time_fmt . $sep . $date_fmt );
+			$time_val = date( $time_fmt );
+			$date_val = date( $date_fmt );
+
+			return $time_val . $sep . $date_val;
 		}
 
 		/*
