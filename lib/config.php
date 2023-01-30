@@ -4893,7 +4893,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * Setting and meta array names.
 			 */
-			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismiss';
+			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
 			$var_const[ 'WPSSO_NOTICES_NAME' ]          = 'wpsso_notices';
 			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
 			$var_const[ 'WPSSO_META_ATTACHED_NAME' ]    = '_wpsso_meta_attached';

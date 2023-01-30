@@ -19,7 +19,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $plugin_id     = 'sucom';
 		private $plugin_ucid   = 'SUCOM';
 		private $text_domain   = 'sucom';
-		private $dismiss_name  = 'sucom_dismiss';
+		private $dismiss_name  = 'sucom_dismissed';
 		private $notices_name  = 'sucom_notices';
 		private $nonce_name    = '';
 		private $default_ttl   = 600;
@@ -942,7 +942,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			} else {
 
-				$this->dismiss_name = $this->plugin_id . '_dismiss';
+				$this->dismiss_name = $this->plugin_id . '_dismissed';
 			}
 
 			/*
