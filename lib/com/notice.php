@@ -386,6 +386,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $notice_key ) ) {
 
+						if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
+
+							continue;
+						}
+
 						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
 
 							if ( ! empty( $payload[ 'notice_key' ] ) && $payload[ 'notice_key' ] === $notice_key ) {
@@ -1236,7 +1241,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function shutdown_notice_cache() {
 
-			foreach ( $this->notice_cache as $user_id => $user_notices ) {
+			foreach ( $this->notice_cache as $user_id => $msg_types ) {
 
 				$this->update_notice_transient( $user_id );
 			}
@@ -1270,16 +1275,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 				}
 			}
-
-			foreach ( $this->all_types as $msg_type ) {
-
-				if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
-
-					$this->notice_cache[ $user_id ][ $msg_type ] = array();
-				}
-			}
-
-			return true;
 		}
 
 		private function load_update_notices( $user_id ) {
@@ -1351,7 +1346,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				delete_transient( $cache_id );
 			}
 
-			unset( $this->notice_cache[ $user_id ] );
+			$this->notice_cache[ $user_id ] = array();
 		}
 
 		private function get_notice_transient( $user_id ) {

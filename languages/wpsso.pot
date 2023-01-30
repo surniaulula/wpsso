@@ -530,27 +530,27 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:51 lib/admin.php:2168 lib/com/notice.php:505
+#: gettext/gettext-lib-com.php:51 lib/admin.php:2168 lib/com/notice.php:510
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:52 lib/com/notice.php:509
+#: gettext/gettext-lib-com.php:52 lib/com/notice.php:514
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:53 lib/com/notice.php:712
+#: gettext/gettext-lib-com.php:53 lib/com/notice.php:717
 msgid ""
 "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
 "%s</code> function returned false)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:54 lib/com/notice.php:715
+#: gettext/gettext-lib-com.php:54 lib/com/notice.php:720
 msgid ""
 "As a consequence, showing discreet notices in the admin toolbar is not "
 "possible."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:55 lib/com/notice.php:717
+#: gettext/gettext-lib-com.php:55 lib/com/notice.php:722
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
