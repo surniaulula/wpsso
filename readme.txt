@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.8.0-b.3 (2023/01/29)**
+**Version 14.8.0-b.4 (2023/01/30)**
 
 This version includes several code updates required for WPSSO Core v15.0.0.
 
@@ -259,6 +259,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* Added a new private `WpssoSchemaSingle::add_or_replace_data()` method.
 	* Refactoted the `WpssoSchemaSingle::get_offer_data()` method.
 	* Refactored the 'wpsso_json_data_https_schema_org_product' filter hook by moving its code to a new `WpssoSchemaSingle::add_product_data()` method.
+	* Refactored the `SucomNotice` class to improve getting and storing notices.
 	* Removed the `$mod` argument from the `WpssoSchema::add_offers_data()` and `WpssoSchema::add_offers_aggregate_data()` methods.
 * **Requires At Least**
 	* PHP v7.2.
@@ -963,9 +964,9 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 14.8.0-b.3 =
+= 14.8.0-b.4 =
 
-(2023/01/29) Extended the "Inherit Featured Image" option to include private content. Removed the "Clear Cache" button.
+(2023/01/30) Extended the "Inherit Featured Image" option to include private content. Removed the "Clear Cache" button.
 
 = 14.7.0 =
 
