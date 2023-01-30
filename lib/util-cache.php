@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
 				if ( ! set_time_limit( WPSSO_CACHE_CLEAR_MAX_TIME ) ) {
-				
+
 					$time_limit = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
 					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache clearing.', 'wpsso' ),
 						'<code>set_time_limit()</code>', $time_limit );
@@ -682,7 +682,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
 				if ( ! set_time_limit( WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
-				
+
 					$time_limit = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache refresh.', 'wpsso' ),
 						'<code>set_time_limit()</code>', $time_limit );
