@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.8.0-b.3\n"
+"Project-Id-Version: WPSSO Core 14.8.0-b.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -355,13 +355,13 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:46
 #: gettext/gettext-lib-com.php:66 lib/com/bfo.php:260 lib/com/cache.php:95
-#: lib/com/notice.php:141
+#: lib/com/notice.php:72
 msgid "%s Notice"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:47
 #: gettext/gettext-lib-com.php:67 lib/com/bfo.php:265 lib/com/cache.php:100
-#: lib/com/notice.php:146
+#: lib/com/notice.php:77
 msgid "Notice"
 msgstr ""
 
@@ -518,40 +518,40 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:286
-msgid "Forever"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:288
-msgid "This notice can be dismissed permanently."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:300
-msgid "This notice can be dismissed for %s."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:51 lib/admin.php:2168 lib/com/notice.php:510
+#: gettext/gettext-lib-com.php:48 lib/admin.php:2168 lib/com/notice.php:292
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:52 lib/com/notice.php:514
+#: gettext/gettext-lib-com.php:49 lib/com/notice.php:296
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:53 lib/com/notice.php:717
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:499
 msgid ""
 "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
 "%s</code> function returned false)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:54 lib/com/notice.php:720
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:502
 msgid ""
 "As a consequence, showing discreet notices in the admin toolbar is not "
 "possible."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:55 lib/com/notice.php:722
+#: gettext/gettext-lib-com.php:52 lib/com/notice.php:504
 msgid "Please diagnose the issue to re-enable the admin toolbar."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1067
+msgid "Forever"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1069
+msgid "This notice can be dismissed permanently."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1081
+msgid "This notice can be dismissed for %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:56 lib/com/bitly.php:58
@@ -12299,7 +12299,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
 #: lib/user.php:1778 lib/user.php:1886 lib/util-cache.php:188
-#: lib/util-cache.php:769
+#: lib/util-cache.php:774
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -12476,7 +12476,7 @@ msgid ""
 "cache refresh."
 msgstr ""
 
-#: lib/util-cache.php:756
+#: lib/util-cache.php:761
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."

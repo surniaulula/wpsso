@@ -700,6 +700,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
+			 * Since WPSSO Core v14.8.0.
+			 */
+			$this->p->notice->refresh_notice_style();
+
+			/*
 			 * Since WPSSO Core v8.0.0.
 			 */
 			$public_ids = WpssoPost::get_public_ids();
