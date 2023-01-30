@@ -265,8 +265,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 					foreach ( $result as $user_id ) {
 
-						delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
-						delete_user_option( $user_id, WPSSO_DISMISS_NAME );
+						delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = false );
+						delete_user_option( $user_id, WPSSO_NOTICES_NAME, $global = false );
 
 						WpssoUser::delete_metabox_prefs( $user_id );
 

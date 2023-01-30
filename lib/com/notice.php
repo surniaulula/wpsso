@@ -371,8 +371,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $user_id ) {
 
 				delete_user_option( $user_id, $this->dismiss_name, $global = false );
-
-				delete_user_option( $user_id, $this->dismiss_name, $global = true );
 			}
 		}
 
@@ -428,8 +426,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( empty( $user_dismissed ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
-
-					delete_user_option( $user_id, $this->dismiss_name, $global = true );
 
 				} else {
 
@@ -635,8 +631,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
 
-					delete_user_option( $user_id, $this->dismiss_name, $global = true );
-
 				} else {
 
 					update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
@@ -796,8 +790,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( empty( $user_dismissed ) ) {
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
-
-					delete_user_option( $user_id, $this->dismiss_name, $global = true );
 
 				} else {
 
