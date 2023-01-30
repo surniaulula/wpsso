@@ -19,9 +19,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $plugin_id     = 'sucom';
 		private $plugin_ucid   = 'SUCOM';
 		private $text_domain   = 'sucom';
-		private $dismiss_name  = 'sucom_dismissed';
+		private $dismiss_name  = 'sucom_dismiss';
+		private $notices_name  = 'sucom_notices';
 		private $nonce_name    = '';
-		private $default_ttl   = 300;
+		private $default_ttl   = 600;
 		private $label_transl  = false;
 		private $doing_dev     = false;
 		private $has_shown     = false;
@@ -29,6 +30,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $tb_types      = array( 'err', 'warn', 'inf', 'upd' );
 		private $notice_info   = array();
 		private $notice_cache  = array();
+		private $notice_noload = array();
 
 		public $enabled = true;
 
@@ -130,7 +132,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function clear( $msg_type = '', $notice_key = false, $user_id = null ) {
 
-			$current_uid = get_current_user_id();	// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 
 			if ( is_array( $user_id ) ) {
 
@@ -138,7 +140,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			} else {
 
-				$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_uid;	// $user_id can be true, false, null, or numeric.
+				$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 				if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
 
@@ -158,25 +160,26 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $clear_types as $msg_type ) {
 
-					if ( ! empty( $notice_key ) ) {
+					if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
 
-						if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
-
-							continue;
-						}
-
-						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
-
-							if ( ! empty( $payload[ 'notice_key' ] ) && $payload[ 'notice_key' ] === $notice_key ) {
-
-								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
-							}
-						}
-
-					} else {
-
-						$this->notice_cache[ $user_id ][ $msg_type ] = array();
+						continue;
 					}
+
+					foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
+				
+						if ( empty( $notice_key ) || ( ! empty( $payload[ 'notice_key' ] ) && $notice_key === $payload[ 'notice_key' ] ) ) {
+
+							$this->unload_notice_cache( $user_id, $msg_type, $msg_key );
+						}
+					}
+				}
+
+				/*
+				 * Save the notice cache now.
+				 */
+				if ( $cur_uid !== $user_id ) {
+
+					$this->update_notice_cache( $user_id );
 				}
 			}
 		}
@@ -362,8 +365,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function reset_dismissed( $user_id = null ) {
 
-			$current_uid = get_current_user_id();					// Always returns an integer.
-			$user_id     = is_numeric( $user_id ) ? (int) $user_id : $current_uid;	// $user_id can be true, false, null, or numeric.
+			$cur_uid = get_current_user_id();					// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( $user_id ) {
 
@@ -380,8 +383,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$current_uid = get_current_user_id();					// Always returns an integer.
-			$user_id     = is_numeric( $user_id ) ? (int) $user_id : $current_uid;	// $user_id can be true, false, null, or numeric.
+			$cur_uid = get_current_user_id();					// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
 
@@ -566,7 +569,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
 
-					unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
+					$this->unload_notice_cache( $user_id, $msg_type, $msg_key );
 
 					if ( empty( $payload[ 'msg_text' ] ) ) {	// Nothing to show.
 
@@ -735,7 +738,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
 
-					unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
+					$this->unload_notice_cache( $user_id, $msg_type, $msg_key );
 
 					if ( empty( $payload[ 'msg_text' ] ) ) {	// Nothing to show.
 
@@ -890,18 +893,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function shutdown_notice_cache() {
 
-			$current_uid = get_current_user_id();	// Always returns an integer.
-
 			foreach ( $this->notice_cache as $user_id => $msg_types ) {
 
-				/*
-				 * Has already been saved in SucomNotice->add_notice().
-				 */
-				if ( $current_uid !== $user_id ) {
-
-					continue;
-				}
-		
 				$this->update_notice_cache( $user_id );
 			}
 		}
@@ -949,7 +942,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			} else {
 
-				$this->dismiss_name = $this->plugin_id . '_dismissed';
+				$this->dismiss_name = $this->plugin_id . '_dismiss';
+			}
+
+			/*
+			 * Set the notices key name.
+			 */
+			if ( defined( $this->plugin_ucid . '_NOTICES_NAME' ) ) {
+
+				$this->notices_name = constant( $this->plugin_ucid . '_NOTICES_NAME' );
+
+			} else {
+
+				$this->notices_name = $this->plugin_id . '_notices';
 			}
 
 			/*
@@ -1024,7 +1029,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * If $msg_text is an array of text strings, implode the array into a single text string.
 			 */
 			$msg_text = is_array( $msg_text ) ? implode( $glue = ' ', $msg_text ) : (string) $msg_text;
-
 			$msg_text = trim( $msg_text );
 
 			if ( empty( $msg_type ) || empty( $msg_text ) ) {
@@ -1032,8 +1036,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$current_uid = get_current_user_id();					// Always returns an integer.
-			$user_id     = is_numeric( $user_id ) ? (int) $user_id : $current_uid;	// $user_id can be true, false, null, or numeric.
+			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
 
@@ -1116,37 +1120,49 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 
 			/*
-			 * Save to transient cache now.
+			 * Save the notice cache now.
 			 */
-			if ( $current_uid !== $user_id ) {
+			if ( $cur_uid !== $user_id ) {
 
 				$this->update_notice_cache( $user_id );
 			}
 		}
 
+		private function unload_notice_cache( $user_id, $msg_type, $msg_key ) {
+
+			unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
+			
+			if ( empty( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
+
+				unset( $this->notice_cache[ $user_id ][ $msg_type ] );
+			}
+
+			$this->notice_noload[ $user_id ][ $msg_type ][ $msg_key ] = true;
+		}
+
 		/*
-		 * Read and merge notices from transient cache.
+		 * Merge notice cache with saved notices (without overwriting).
 		 */
 		private function load_notice_cache( $user_id = null ) {
 
-			$current_uid = get_current_user_id();					// Always returns an integer.
-			$user_id     = is_numeric( $user_id ) ? (int) $user_id : $current_uid;	// $user_id can be true, false, null, or numeric.
-			$trans_cache = $this->get_notice_cache( $user_id );			// Always returns an array.
+			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
+			$result  = $this->get_notice_cache( $user_id );			// Always returns an array.
 
-			if ( ! empty( $trans_cache ) ) {
+			if ( ! empty( $result ) ) {
 
-				/*
-				 * Merge notice cache with transient notices (without overwriting).
-				 */
 				foreach ( $this->all_types as $msg_type ) {
 
-					if ( ! empty( $trans_cache[ $msg_type ] ) ) {
+					if ( ! empty( $result[ $msg_type ] ) ) {
 
-						foreach ( $trans_cache[ $msg_type ] as $msg_key => $payload ) {
+						foreach ( $result[ $msg_type ] as $msg_key => $payload ) {
 
-							if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
+							if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) &&
+								! isset( $this->notice_noload[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
 
 								$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
+								
+								$this->notice_noload[ $user_id ][ $msg_type ][ $msg_key ] = true;
 							}
 						}
 					}
@@ -1191,13 +1207,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		private function update_notice_cache( $user_id ) {
+		private function update_notice_cache( $user_id = null ) {
 
-			$result = false;
+			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
+			$update  = true;
+			$result  = false;
 
 			if ( ! empty( $user_id ) ) {	// Just in case.
 
-				$result = update_user_option( $user_id, 'sucom_notices', $this->notice_cache[ $user_id ], $global = false );
+				if ( $cur_uid !== $user_id ) {
+				
+					$this->load_notice_cache( $user_id );	// Read and merge notices from transient cache.
+				}
+
+				$result = update_user_option( $user_id, $this->notices_name, $this->notice_cache[ $user_id ], $global = false );
 			}
 
 			$this->notice_cache[ $user_id ] = array();
@@ -1205,18 +1229,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $result;
 		}
 
-		private function get_notice_cache( $user_id ) {
+		private function get_notice_cache( $user_id = null ) {
 
-			if ( empty( $user_id ) ) {	// Nothing to do.
+			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
+			$result  = array();
 
-				return array();
-			}
+			if ( ! empty( $user_id ) ) {	// Nothing to do.
 
-			$result = get_user_option( 'sucom_notices', $user_id );
+				$result = get_user_option( $this->notices_name, $user_id );
 
-			if ( ! is_array( $result ) ) {	// Always return an array.
+				if ( ! is_array( $result ) ) {	// Always return an array.
 
-				$result = array();
+					$result = array();
+				}
 			}
 
 			return $result;

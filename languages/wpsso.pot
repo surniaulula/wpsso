@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.8.0-b.4\n"
+"Project-Id-Version: WPSSO Core 14.8.0-b.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -355,13 +355,13 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:46
 #: gettext/gettext-lib-com.php:66 lib/com/bfo.php:260 lib/com/cache.php:95
-#: lib/com/notice.php:72
+#: lib/com/notice.php:74
 msgid "%s Notice"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:47
 #: gettext/gettext-lib-com.php:67 lib/com/bfo.php:265 lib/com/cache.php:100
-#: lib/com/notice.php:77
+#: lib/com/notice.php:79
 msgid "Notice"
 msgstr ""
 
@@ -518,39 +518,39 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/admin.php:2168 lib/com/notice.php:292
+#: gettext/gettext-lib-com.php:48 lib/admin.php:2168 lib/com/notice.php:295
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:296
+#: gettext/gettext-lib-com.php:49 lib/com/notice.php:299
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:499
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:502
 msgid ""
 "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
 "%s</code> function returned false)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:51 lib/com/notice.php:502
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:505
 msgid ""
 "As a consequence, showing discreet notices in the admin toolbar is not "
 "possible."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:52 lib/com/notice.php:504
+#: gettext/gettext-lib-com.php:52 lib/com/notice.php:507
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1067
+#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1071
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1069
+#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1073
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1081
+#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1085
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
