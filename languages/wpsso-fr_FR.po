@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-01-29 16:35-0800\n"
+"PO-Revision-Date: 2023-01-30 09:53-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -223,13 +223,13 @@ msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:46
 #: gettext/gettext-lib-com.php:66 lib/com/bfo.php:260 lib/com/cache.php:95
-#: lib/com/notice.php:145
+#: lib/com/notice.php:74
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:47
 #: gettext/gettext-lib-com.php:67 lib/com/bfo.php:265 lib/com/cache.php:100
-#: lib/com/notice.php:150
+#: lib/com/notice.php:79
 msgid "Notice"
 msgstr "Avis"
 
@@ -376,37 +376,37 @@ msgstr "la médiathèque"
 msgid "Select Image"
 msgstr "Choisir l'image"
 
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:290
-msgid "Forever"
-msgstr "Toujours"
-
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:292
-msgid "This notice can be dismissed permanently."
-msgstr "Cet avis peut être masqué définitivement."
-
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:304
-msgid "This notice can be dismissed for %s."
-msgstr "Cet avis peut être masqué pour %s."
-
-#: gettext/gettext-lib-com.php:51 lib/admin.php:2168 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:48 lib/admin.php:2168 lib/com/notice.php:295
 msgid "Edit"
 msgstr "Modifier"
 
-#: gettext/gettext-lib-com.php:52 lib/com/notice.php:515
+#: gettext/gettext-lib-com.php:49 lib/com/notice.php:299
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: gettext/gettext-lib-com.php:53 lib/com/notice.php:726
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:498
 msgid "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false)."
 msgstr "La barre d'outils d'administration de WordPress semble être désactivée (c'est-à-dire que la fonction WordPress <code>%s</code> a renvoyé faux)."
 
-#: gettext/gettext-lib-com.php:54 lib/com/notice.php:729
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:501
 msgid "As a consequence, showing discreet notices in the admin toolbar is not possible."
 msgstr "Par conséquent, il n'est pas possible d'afficher des avis discrets dans la barre d'outils d'administration."
 
-#: gettext/gettext-lib-com.php:55 lib/com/notice.php:731
+#: gettext/gettext-lib-com.php:52 lib/com/notice.php:503
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr "Veuillez diagnostiquer le problème pour réactiver la barre d'outils d'administration."
+
+#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1063
+msgid "Forever"
+msgstr "Toujours"
+
+#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1065
+msgid "This notice can be dismissed permanently."
+msgstr "Cet avis peut être masqué définitivement."
+
+#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1077
+msgid "This notice can be dismissed for %s."
+msgstr "Cet avis peut être masqué pour %s."
 
 #: gettext/gettext-lib-com.php:56 lib/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly API response data."
@@ -11062,7 +11062,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
 #: lib/user.php:1778 lib/user.php:1886 lib/util-cache.php:188
-#: lib/util-cache.php:769
+#: lib/util-cache.php:774
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
@@ -11217,7 +11217,7 @@ msgstr "Une tâche pour rafraîchir le cache a démarré à %s."
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s for cache refresh."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour l'actualisation du cache."
 
-#: lib/util-cache.php:756
+#: lib/util-cache.php:761
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
@@ -11571,6 +11571,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "A task to refresh the transient cache was started at %s."
-#~ msgstr "Une tâche pour actualiser le cache transitoire a démarré à %s."
