@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 14.8.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 14.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12287,7 +12287,7 @@ msgstr ""
 #: lib/user.php:1736 lib/user.php:1849 lib/util-cache.php:138
 #: lib/util-cache.php:676
 msgctxt "time on date"
-msgid "on"
+msgid "%2$s on %1$s"
 msgstr ""
 
 #: lib/user.php:1737

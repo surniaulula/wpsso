@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 14.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-01-30 09:53-0800\n"
+"PO-Revision-Date: 2023-01-30 12:00-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11049,9 +11049,10 @@ msgstr "Abandon de la tâche pour ajouter le rôle %1$s aux créateurs de conten
 
 #: lib/user.php:1736 lib/user.php:1849 lib/util-cache.php:138
 #: lib/util-cache.php:676
+#| msgid "Add %1$s to %2$s?"
 msgctxt "time on date"
-msgid "on"
-msgstr "le"
+msgid "%2$s on %1$s"
+msgstr "%2$s le %1$s"
 
 #: lib/user.php:1737
 msgid "A task to add the %1$s role for content creators was started at %2$s."

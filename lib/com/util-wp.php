@@ -234,18 +234,21 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $locale_cache;
 		}
 
-		public static function get_time_date( $sep = '' ) {
+		public static function sprintf_date_time( $fmt = '%1$s %2$s' ) {
 
-			$sep = trim( $sep );
-			$sep = '' === $sep ? ' ' : ' ' . $sep . ' ';
+			$wp_timezone = wp_timezone();
+			$wp_date_fmt = get_option( 'date_format' );
+			$wp_time_fmt = get_option( 'time_format' );
 
-			$time_fmt = get_option( 'time_format' );
-			$date_fmt = get_option( 'date_format' );
 
-			$time_val = date( $time_fmt );
-			$date_val = date( $date_fmt );
+			$now = date_create_immutable( $datetime = 'now', $wp_timezone );
 
-			return $time_val . $sep . $date_val;
+			$date_val = $now->format( $wp_date_fmt );
+			$time_val = $now->format( $wp_time_fmt );
+
+			$date_time_val = sprintf( $fmt, $date_val, $time_val );
+
+			return $date_time_val;
 		}
 
 		/*

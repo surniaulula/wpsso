@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::get_time_date( _x( 'on', 'time on date', 'wpsso' ) );
+				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg = sprintf( __( 'A task to clear the cache was started at %s.', 'wpsso' ), $time_date );
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'clear-cache-started' );
@@ -673,7 +673,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::get_time_date( _x( 'on', 'time on date', 'wpsso' ) );
+				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg = sprintf( __( 'A task to refresh the cache was started at %s.', 'wpsso' ), $time_date );
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'refresh-cache-started' );
