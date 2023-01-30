@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 14.8.0-b.5 (2023/01/30)**
+**Version 14.8.0-rc.1 (2023/01/30)**
 
 This version includes several code updates required for WPSSO Core v15.0.0.
 
@@ -964,7 +964,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 14.8.0-b.5 =
+= 14.8.0-rc.1 =
 
 (2023/01/30) Extended the "Inherit Featured Image" option to include private content. Removed the "Clear Cache" button.
 
