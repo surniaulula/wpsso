@@ -234,6 +234,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $locale_cache;
 		}
 
+		public static function get_time_date( $sep = ' ' ) {
+
+			$time_fmt = get_option( 'time_format' );
+			$date_fmt = get_option( 'date_format' );
+
+			return date( $time_fmt . $sep . $date_fmt );
+		}
+
 		/*
 		 * Calls WP_Query->query() with the supplied arguments.
 		 *

@@ -1664,6 +1664,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$event_hook = 'wpsso_add_person_role';
 			$event_args = array( $user_id );
 
+			if ( $user_id ) {	// Just in case.
+
+				$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.', 'wpsso' ),
+					_x( 'Person', 'user role', 'wpsso' ) );
+
+				$this->p->notice->upd( $notice_msg, $user_id );
+			}
+
 			$this->stop_add_person_role();	// Just in case.
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -1691,7 +1699,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$notice_key = 'add-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
 			/*
@@ -1714,7 +1721,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$notice_msg = sprintf( __( 'Aborting task to add the %1$s role to content creators - another identical task is still running.',
 						'wpsso' ), $role_label );
 
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key . '-abort' );
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'add-person-role-abort' );
 				}
 
 				return;
@@ -1726,9 +1733,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.', 'wpsso' ), $role_label, gmdate( 'c' ) );
+				$time_date  = SucomUtilWP::get_time_date( _x( ' on ', 'time on date', 'wpsso' ) );
+				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.', 'wpsso' ), $role_label, $time_date );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-begin' );
 			}
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
@@ -1769,7 +1777,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-end' );
 			}
 
 			delete_transient( $cache_id );
@@ -1785,6 +1793,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$event_hook = 'wpsso_remove_person_role';
 			$event_args = array( $user_id );
 
+			if ( $user_id ) {	// Just in case.
+
+				$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.', 'wpsso' ),
+					_x( 'Person', 'user role', 'wpsso' ) );
+
+				$this->p->notice->upd( $notice_msg, $user_id );
+			}
+
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
@@ -1796,7 +1812,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$notice_key = 'remove-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
 			/*
@@ -1819,7 +1834,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$notice_msg = sprintf( __( 'Aborting task to remove the %1$s role from all users - another identical task is still running.',
 						'wpsso' ), $role_label );
 
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key . '-abort' );
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'remove-person-role-abort' );
 				}
 
 				return;
@@ -1831,9 +1846,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.', 'wpsso' ), $role_label, gmdate( 'c' ) );
+				$time_date  = SucomUtilWP::get_time_date( _x( ' on ', 'time on date', 'wpsso' ) );
+				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.', 'wpsso' ), $role_label, $time_date );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-begin' );
 			}
 
 			$this->stop_add_person_role();	// Just in case.
@@ -1869,7 +1885,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-end' );
 			}
 
 			delete_transient( $cache_id );

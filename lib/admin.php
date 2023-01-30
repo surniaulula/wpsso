@@ -766,8 +766,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$refresh_cache_url  = wp_nonce_url( $refresh_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 				$refresh_cache_link = '<a href="' . $refresh_cache_url . '">' . __( 'refresh the cache now', 'wpsso' ) . '</a>';
 				$cache_exp_human    = human_time_diff( 0, $cache_exp_secs );
-				$notice_msg         .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ),
-					$refresh_cache_link, $cache_exp_human );
+
+				$notice_msg .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ), $refresh_cache_link, $cache_exp_human );
 			}
 
 			$this->p->notice->upd( $notice_msg );
@@ -881,15 +881,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'refresh_cache':
 
-							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
-
-							$time_limit = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
-
-							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
-
-							$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $time_limit ) . ' ';
-
-							$this->p->notice->upd( $notice_msg, $user_id );
+							$this->p->util->cache->schedule_refresh( $user_id );
 
 							break;
 
@@ -952,23 +944,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'add_persons':
 
-							$this->p->user->schedule_add_person_role();
-
-							$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
-
-							$this->p->notice->upd( $notice_msg, $user_id );
+							$this->p->user->schedule_add_person_role( $user_id );
 
 							break;
 
 						case 'remove_persons':
 
-							$this->p->user->schedule_remove_person_role();
-
-							$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
-
-							$this->p->notice->upd( $notice_msg, $user_id );
+							$this->p->user->schedule_remove_person_role( $user_id );
 
 							break;
 

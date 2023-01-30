@@ -55,7 +55,7 @@
 
 'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )
 
-'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id, $read_cache = false )
+'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id )
 
 'wpsso_canonical_url' ( $url, $mod, $add_page )
 
