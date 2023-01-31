@@ -1081,23 +1081,46 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
-				if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
+				foreach ( array( 'product:offers', 'product:variants' ) as $mt_name ) {
 
-					foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
+					if ( ! empty( $mt_og[ $mt_name ] ) && is_array( $mt_og[ $mt_name ] ) ) {
 
-						/*
-						 * Allow only a single brand value for the main product.
-						 */
-						unset ( $offer[ 'product:brand' ] );
+						foreach ( $mt_og[ $mt_name ] as $num => &$variation ) {	// Allow changes to the variation array.
+	
+							/*
+							 * Allow only a single brand value.
+							 */
+							unset ( $variation[ 'product:brand' ] );
+	
+							/*
+							 * Avoid duplicate values (like prices) between the main product and its variations.
+							 */
+							foreach ( $variation as $var_mt_name => $var_mt_value ) {
+	
+								if ( isset( $mt_og[ $var_mt_name ] ) && $var_mt_value === $mt_og[ $var_mt_name ] ) {
 
-						/*
-						 * Avoid duplicate values (like prices) between the main product and its offers.
-						 */
-						foreach ( $offer as $mt_name => $mt_value ) {
+									/*
+									 * Do not remove the currency if the amount has not been removed.
+									 *
+									 * Do not remove the units if the value has not been removed.
+									 */
+									if ( preg_match( '/^(.*:)(currency|units)$/', $var_mt_name, $matches ) ) {
 
-							if ( isset( $mt_og[ $mt_name ] ) && $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
+										switch ( $matches[ 2 ] ) {
 
-								unset ( $mt_og[ $mt_name ] );
+											case 'currency': $check_mt_name = $matches[ 1 ] . 'amount'; break;
+											case 'units':    $check_mt_name = $matches[ 1 ] . 'value';  break;
+											default:         $check_mt_name = null;
+										}
+
+										if ( $check_mt_name && isset( $mt_og[ $check_mt_name ] ) ) {
+
+											continue;
+										}
+									}
+	
+									unset ( $mt_og[ $var_mt_name ] );
+								}
 							}
 						}
 					}

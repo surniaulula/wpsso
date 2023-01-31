@@ -1913,9 +1913,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'name'                  => 'product:title',
 				'description'           => 'product:description',
 				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
-				'inProductGroupWithID'  => 'product:item_group_id',
 				'sku'                   => 'product:retailer_part_no',	// Product SKU.
 				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
+				'inProductGroupWithID'  => 'product:item_group_id',
 				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
 				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
 				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.

@@ -1166,9 +1166,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * are not in a product group).
 			 */
 			$mt_ecom[ 'product:url' ]              = $product->get_permalink();
-			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $parent_id : '';	// Product variation group ID.
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;				// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();			// Product SKU.
+			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $parent_id : '';	// Product variation group ID.
 
 			/*
 			 * Add shipping information.

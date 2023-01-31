@@ -2303,10 +2303,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/*
 				 * Product part numbers.
 				 */
-				$mt_pre . ':item_group_id'    => null,	// Product variant group ID.
 				$mt_pre . ':retailer_item_id' => null,	// Product ID.
 				$mt_pre . ':retailer_part_no' => null,	// Product SKU.
 				$mt_pre . ':mfr_part_no'      => null,	// Product MPN.
+				$mt_pre . ':item_group_id'    => null,	// Product variant group ID.
 				$mt_pre . ':ean'              => null,	// aka EAN, EAN-13, GTIN-13.
 				$mt_pre . ':gtin14'           => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin13'           => null,	// Non-standard / internal meta tag.
