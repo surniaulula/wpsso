@@ -234,16 +234,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.0-dev.2 (TBD)**
+**Version 15.0.0-dev.3 (TBD)**
 
 * **New Features**
-	* None.
+	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
 	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchemaSingle::add_product_group_data()` method.
+	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::add_offer_data()` method.
+	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::add_product_data()` method.
+	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::get_offer_data()` method.
+	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::get_product_data()` method.
+	* Renamed the `WpssoSchema::add_author_coauthor_data()` method to `WpssoSchema::add_author_coauthors_data()`.
+	* Renamed the `WpssoSchema::add_comment_list_data()` method to `WpssoSchema::add_comments_data()`.
+	* Renamed the `WpssoSchema::add_howto_step_data()` method to `WpssoSchema::add_howto_steps_data()`.
+	* Renamed the `WpssoSchema::add_offers_aggregate_data()` method to `WpssoSchema::add_offers_aggregate_data_mt()`.
+	* Renamed the `WpssoSchema::add_offers_data()` method to `WpssoSchema::add_offers_data_mt()`.
+	* Renamed the `WpssoSchema::add_variants_data()` method to `WpssoSchema::add_variants_data_mt()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -978,9 +988,9 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.0.0-dev.2 =
+= 15.0.0-dev.3 =
 
-(TBD) None.
+(TBD) Added support for Schema ProductGroup markup for WooCommerce product variations.
 
 = 14.8.0 =
 
