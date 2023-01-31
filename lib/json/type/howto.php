@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			/*
 			 * See https://schema.org/step.
 			 */
-			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' );
+			WpssoSchema::add_howto_steps_data( $json_ret, $mod, $md_opts, $opt_pre = 'schema_howto_step', $prop_name = 'step' );
 
 			/*
 			 * See https://schema.org/supply.

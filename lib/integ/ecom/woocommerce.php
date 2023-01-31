@@ -421,8 +421,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				} elseif ( $this->p->util->wc->is_mod_variable( $mod ) ) {
 
-					// TODO change 'product' to 'product.group' for WPSSO Core v15.0.0.
-					$type_id = 'product';
+					$type_id = 'product.group';
 				}
 			}
 
@@ -757,8 +756,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 						if ( ! empty( $mt_ecom_variant ) ) {
 
-							// TODO change ':offers' to ':variants' for WPSSO Core v15.0.0.
-							$mt_ecom[ $og_type . ':offers' ][] = $mt_ecom_variant;
+							$mt_ecom[ $og_type . ':variants' ][] = $mt_ecom_variant;
 						}
 					}
 				}
@@ -771,13 +769,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			/*
 			 * Add product ratings.
 			 */
-			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
-			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
-
 			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
 			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
 
-			$add_mt_rating = $this->p->avail[ 'p' ][ 'schema' ] ? true : false;
+			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
+			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
 
 			if ( apply_filters( 'wpsso_og_add_mt_rating', true, $mod ) ) {	// Enabled by default.
 
@@ -1164,6 +1160,11 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->log( 'include_vat = ' . ( $include_vat ? 'true' : 'false' ) );
 			}
 
+			/*
+			 * Note that the 'product:retailer_item_id' value is important for Schema ProductGroup and hasVariant
+			 * markup. The 'product:item_group_id' must be provided for variations, but not simple products (as they
+			 * are not in a product group).
+			 */
 			$mt_ecom[ 'product:url' ]              = $product->get_permalink();
 			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $parent_id : '';	// Product variation group ID.
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;				// Product ID.

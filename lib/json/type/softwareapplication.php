@@ -90,11 +90,11 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 					if ( empty( $this->p->options[ 'schema_aggr_offers' ] ) ) {
 
-						WpssoSchema::add_offers_data( $json_ret, $mt_og[ 'product:offers' ] );
+						WpssoSchema::add_offers_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
 
 					} else {
 
-						WpssoSchema::add_offers_aggregate_data( $json_ret, $mt_og[ 'product:offers' ] );
+						WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
 					}
 				}
 

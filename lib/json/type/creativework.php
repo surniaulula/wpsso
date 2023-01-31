@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 * See https://schema.org/author as https://schema.org/Person.
 			 * See https://schema.org/contributor as https://schema.org/Person.
 			 */
-			WpssoSchema::add_author_coauthor_data( $json_ret, $mod );
+			WpssoSchema::add_author_coauthors_data( $json_ret, $mod );
 
 			/*
 			 * See https://schema.org/thumbnailURL.
@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 * See https://schema.org/comment as https://schema.org/Comment.
 			 * See https://schema.org/commentCount.
 			 */
-			WpssoSchema::add_comment_list_data( $json_ret, $mod );
+			WpssoSchema::add_comments_data( $json_ret, $mod );
 
 			/*
 			 * Check for required CreativeWork properties.

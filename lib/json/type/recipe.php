@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoJsonTypeRecipe' ) ) {
 			/*
 			 * See https://schema.org/recipeInstructions.
 			 */
-			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
+			WpssoSchema::add_howto_steps_data( $json_ret, $mod, $md_opts, $opt_pre = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
 
 			/*
 			 * See https://schema.org/nutrition as https://schema.org/NutritionInformation

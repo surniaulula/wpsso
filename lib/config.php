@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '14.8.0',	// Plugin version.
+					'version'     => '15.0.0-dev.2',	// Plugin version.
 					'opt_version' => '947',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -175,8 +175,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'person'              => '(code) Schema Type Person [schema_type:person]',
 								'place'               => '(code) Schema Type Place [schema_type:place]',
 								'product'             => '(code) Schema Type Product [schema_type:product]',
-								// TODO uncomment for WPSSO Core v15.0.0.
-								//'productgroup'        => '(code) Schema Type Product Group [schema_type:product.group]',
+								'productgroup'        => '(code) Schema Type Product Group [schema_type:product.group]',
 								'profilepage'         => '(code) Schema Type Profile Page [schema_type:webpage.profile]',
 								'qapage'              => '(code) Schema Type QAPage [schema_type:webpage.qa]',
 								'question'            => '(code) Schema Type Question and Answer [schema_type:question]',
@@ -4417,8 +4416,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product' => array(
 							'individual.product' => 'https://schema.org/IndividualProduct',	// Individual product with unique serial number.
 							'product'            => 'https://schema.org/Product',
-							// TODO uncomment for WPSSO Core v15.0.0.
-							//'product.group'      => 'https://schema.org/ProductGroup',
+							'product.group'      => 'https://schema.org/ProductGroup',
 							'product.model'      => 'https://schema.org/ProductModel',
 							'some.products'      => 'https://schema.org/SomeProducts',
 							'vehicle'            => array(

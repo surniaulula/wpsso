@@ -458,6 +458,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( false !== has_filter( $data_filter_name ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying data filter: ' . $data_filter_name );
+					}
+
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 					if ( false !== has_filter( $valid_filter_name ) ) {
@@ -474,6 +479,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 * $is_main is always false for methods.
 					 */
 					$json_data = call_user_func( array( $this, $method_filter_name ), $json_data, $mod, $mt_og, $page_type_id, false );
+
+				} else {
+				
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'data filter not found: ' . $data_filter_name );
+					}
 				}
 			}
 
@@ -1793,7 +1805,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $org_opts;
 		}
 
-		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
+		public static function add_author_coauthors_data( &$json_data, $mod, $user_id = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1842,7 +1854,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * $user_id is optional and takes precedence over the $mod post_author value.
 		 */
-		public static function add_comment_list_data( &$json_data, $post_mod ) {
+		public static function add_comments_data( &$json_data, $post_mod ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1904,7 +1916,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $comments_added;	// Return count of comments added.
 		}
 
-		public static function add_howto_step_data( &$json_data, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' ) {
+		/*
+		 * See WpssoJsonTypeHowTo->filter_json_data_https_schema_org_howto().
+		 * See WpssoJsonTypeRecipe->filter_json_data_https_schema_org_recipe().
+		 */
+		public static function add_howto_steps_data( &$json_data, $mod, $md_opts, $opt_pre = 'schema_howto_step', $prop_name = 'step' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1913,7 +1929,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$howto_steps = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+			$howto_steps = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -1936,7 +1952,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Maybe get a longer text / description value.
 					 */
-					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $num ] ) ? $md_opts[ $opt_prefix . '_text_' . $num ] : $md_val;
+					$step_text = isset( $md_opts[ $opt_pre . '_text_' . $num ] ) ? $md_opts[ $opt_pre . '_text_' . $num ] : $md_val;
 
 					if ( empty( $md_val ) && empty( $step_text ) ) {	// Just in case.
 
@@ -1951,7 +1967,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					$step_images = array();
 
-					if ( ! empty( $md_opts[ $opt_prefix . '_img_id_' . $num ] ) ) {
+					if ( ! empty( $md_opts[ $opt_pre . '_img_id_' . $num ] ) ) {
 
 						/*
 						 * Set reference values for admin notices.
@@ -1967,7 +1983,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						/*
 						 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 						 */
-						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $num );
+						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_pre . '_img', $num );
 
 						self::add_images_data_mt( $step_images, $mt_images );
 
@@ -1983,7 +1999,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Add a How-To Section.
 					 */
-					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $num ] ) ) {
+					if ( ! empty( $md_opts[ $opt_pre . '_section_' . $num ] ) ) {
 
 						$json_data[ $prop_name ][ $step_idx ] = self::get_schema_type_context( 'https://schema.org/HowToSection',
 							array(
@@ -2091,7 +2107,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$resized_pids[ $pid ] = true;
 
-						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pre = 'og' );
+						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pid_pre = 'og' );
 
 						/*
 						 * Recurse this method, but make sure $resize is false so we don't re-execute this
@@ -2249,13 +2265,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 * Property:
 					 * 	actor (supersedes actors)
 					 */
-					self::add_person_names_data( $json_data, 'actor', $md_opts, 'schema_review_item_cw_movie_actor_person_name' );
+					self::add_person_names_data( $json_data, $prop_name = 'actor', $md_opts, 'schema_review_item_cw_movie_actor_person_name' );
 
 					/*
 					 * Property:
 					 * 	director
 					 */
-					self::add_person_names_data( $json_data, 'director', $md_opts, 'schema_review_item_cw_movie_director_person_name' );
+					self::add_person_names_data( $json_data, $prop_name = 'director', $md_opts, 'schema_review_item_cw_movie_director_person_name' );
 
 				/*
 				 * Item Reviewed: Creative Work > Software Application
@@ -2592,7 +2608,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
+		public static function add_offers_aggregate_data_mt( &$json_data, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2732,7 +2748,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $aggr_added;
 		}
 
-		public static function add_offers_data( &$json_data, array $mt_offers ) {
+		public static function add_offers_data_mt( &$json_data, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3051,9 +3067,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_product_group().
+		 * See WpssoSchemaSingle->add_product_group_data().
 		 */
-		public static function add_variants_data( &$json_data, array $mt_variants ) {
+		public static function add_variants_data_mt( &$json_data, array $mt_variants ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3079,19 +3095,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					continue;
-				}
 
-				if ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+				} elseif ( empty( $mt_variant[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_variant[ 'product:retailer_item_id' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+						$wpsso->debug->log( 'skipping variant #' . $num . ': missing retailer item id' );
 					}
 
 					continue;
 				}
 
-				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+				$post_id = $mt_variant[ 'product:retailer_item_id' ];
 
 				$mod = $wpsso->post->get_mod( $post_id );
 
@@ -4287,23 +4302,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2021/02/08.
-		 */
-		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/02/08', $replacement = __CLASS__ . '::add_offers_aggregate_data()' );	// Deprecation message.
-
-			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
-		}
-
-		/*
 		 * Deprecated on 2022/12/26.
 		 */
 		public static function get_data_unit_text( $mixed_key ) {
 
-			_deprecated_function( __METHOD__ . '()', '2021/02/08', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
 
 			return self::get_unit_text( $mixed_key );
+		}
+
+		/*
+		 * Deprecated on 2023/01/31.
+		 */
+		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_aggregate_data_mt()' );	// Deprecation message.
+
+			return self::add_offers_aggregate_data_mt( $json_data, $mt_offers );
+		}
+
+		/*
+		 * Deprecated on 2023/01/31.
+		 */
+		public static function add_offers_data( &$json_data, array $mt_offers ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_data_mt()' );	// Deprecation message.
+
+			return self::add_offers_data_mt( $json_data, $mt_offers );
 		}
 
 		/*

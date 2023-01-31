@@ -29,11 +29,11 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'json_data_https_schema_org_product_group' => 5,
+				'json_data_https_schema_org_productgroup' => 5,
 			) );
 		}
 
-		public function filter_json_data_https_schema_org_product_group( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+		public function filter_json_data_https_schema_org_productgroup( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -42,10 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 
 			$json_ret = array();
 
-			if ( ! empty( $mt_og[ 'product:variants' ] ) && is_array( $mt_og[ 'product:variants' ] ) ) {
-
-				WpssoSchema::add_variants_data( $json_ret, $mt_og[ 'product:variants' ] );
-			}
+			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_element = false );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

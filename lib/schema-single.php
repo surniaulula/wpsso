@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
-		 * See WpssoSchema::add_comment_list_data().
+		 * See WpssoSchema::add_comments_data().
 		 * See WpssoSchemaSingle::add_comment_reply_data().
 		 */
 		public static function add_comment_data( &$json_data, array $post_mod, $comment_id, $list_element = true ) {
@@ -1596,7 +1596,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoSchemaSingle::get_offer_data().
 		 */
-		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $list_element = true ) {
+		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'offer', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1608,7 +1608,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'offer', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
 
 			/*
 			 * Begin Schema product markup creation.
@@ -1798,10 +1798,83 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
+		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
+		 */
+		public static function add_product_group_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_element = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			if ( empty( $mt_single[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: missing retailer item id' );
+				}
+
+				return 0;
+			}
+
+			/*
+			 * If not adding a list element, get the existing schema type url (if one exists).
+			 */
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
+
+			/*
+			 * Begin Schema product markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
+				'productGroupID' => $mt_single[ 'product:retailer_item_id' ],
+			) );
+
+			/*
+			 * Set reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
+
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema product group', 'wpsso' ) );
+			}
+
+			/*
+			 * Add the product group variants.
+			 */
+			if ( ! empty( $mt_single[ 'product:variants' ] ) && is_array( $mt_single[ 'product:variants' ] ) ) {
+
+				WpssoSchema::add_variants_data_mt( $json_ret, $mt_single[ 'product:variants' ] );
+			}
+
+			/*
+			 * Filter the single product group data.
+			 */
+			$json_ret = apply_filters( 'wpsso_json_data_single_product_group', $json_ret, $mod );
+
+			/*
+			 * Restore previous reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$wpsso->util->maybe_unset_ref( $canonical_url );
+			}
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+
+			return 1;	// Return count of products added.
+		}
+
+		/*
 		 * See WpssoSchemaSingle::get_product_data().
 		 * See WpssoJsonTypeProduct->filter_json_data_https_schema_org_product().
 		 */
-		public static function add_product_data( &$json_data, array $mod, array $mt_single, $list_element = true ) {
+		public static function add_product_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1813,7 +1886,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'product', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
 
 			/*
 			 * Begin Schema product markup creation.
@@ -1840,6 +1913,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'name'                  => 'product:title',
 				'description'           => 'product:description',
 				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
+				'inProductGroupWithID'  => 'product:item_group_id',
 				'sku'                   => 'product:retailer_part_no',	// Product SKU.
 				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
 				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
@@ -1864,7 +1938,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema 'productID' property.
 			 */
-			foreach ( array( 'isbn', 'retailer_item_id' ) as $pref_id ) {
+			foreach ( array( 'isbn' ) as $pref_id ) {
 
 				if ( WpssoSchema::is_valid_key( $mt_single, 'product:' . $pref_id ) ) {	// Not null, an empty string, or 'none'.
 
@@ -1994,17 +2068,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $mt_single[ 'product:offers' ] ) ) {
 
-					$json_ret[ 'offers' ] = self::get_offer_data( $mod, $mt_single );
+					$json_ret[ 'offers' ] = self::get_offer_data( $mod, $mt_single, $def_type_id = 'offer' );
 
 				} elseif ( is_array( $mt_single[ 'product:offers' ] ) ) {
 
 					if ( empty( $wpsso->options[ 'schema_aggr_offers' ] ) ) {
 
-						WpssoSchema::add_offers_data( $json_ret, $mt_single[ 'product:offers' ] );
+						WpssoSchema::add_offers_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
 
 					} else {
 
-						WpssoSchema::add_offers_aggregate_data( $json_ret, $mt_single[ 'product:offers' ] );
+						WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
 					}
 				}
 
@@ -2154,12 +2228,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * See WpssoSchema::add_offers_aggregate_data().
-		 * See WpssoSchema::add_offers_data().
+		 * See WpssoSchema::add_offers_aggregate_data_mt().
+		 * See WpssoSchema::add_offers_data_mt().
 		 * See WpssoSchemaSingle::add_product_data().
 		 * See WpssoJsonTypeSoftwareApplication->filter_json_data_https_schema_org_softwareapplication().
 		 */
-		public static function get_offer_data( array $mod, array $mt_single ) {
+		public static function get_offer_data( array $mod, array $mt_single, $def_type_id = 'offer' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2168,17 +2242,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log_arr( 'mt_single', $mt_single );
 			}
 
-			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
+			$json_data = array();
 
-			self::add_offer_data( $json_data, $mod, $mt_single, $list_element = false );
+			self::add_offer_data( $json_data, $mod, $mt_single, $def_type_id = 'offer', $list_element = false );
 
 			return $json_data;
 		}
 
 		/*
-		 * See WpssoSchema::add_variants_data().
+		 * See WpssoSchema::add_variants_data_mt().
 		 */
-		public static function get_product_data( array $mod, $mt_single ) {
+		public static function get_product_data( array $mod, $mt_single, $def_type_id = 'product' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2187,9 +2261,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log_arr( 'mt_single', $mt_single );
 			}
 
-			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/Product' );
+			$json_data = array();
 
-			self::add_product_data( $json_data, $mod, $mt_single, $list_element = false );
+			self::add_product_data( $json_data, $mod, $mt_single, $def_type_id = 'product', $list_element = false );
 
 			return $json_data;
 		}
