@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.0.0-dev.2 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 14.8.0 (2023/01/30)**
 
 This version includes several code updates required for WPSSO Core v15.0.0.
@@ -963,6 +977,10 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 15.0.0-dev.2 =
+
+(TBD) None.
 
 = 14.8.0 =
 
