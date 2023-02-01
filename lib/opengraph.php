@@ -919,6 +919,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/*
 		 * Since WPSSO Core v15.0.0.
+		 *
+		 * See WpssoCmcfActions->check_product_image_urls().
+		 * See WpssoCmcfXml->add_product_images().
+		 * See WpssoGmfActions->check_product_image_urls().
+		 * See WpssoGmfXml->add_product_images().
 		 */
 		public function get_product_retailer_item_image_urls( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
@@ -942,6 +947,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/*
 		 * Since WPSSO Core v15.0.0.
+		 *
+		 * WpssoOpenGraph->get_product_retailer_item_image_urls().
 		 */
 		public function get_product_retailer_item_images( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
@@ -963,12 +970,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/*
 		 * Since WPSSO Core v15.0.0.
+		 *
+		 * See WpssoCmcfActions->check_product_image_urls().
+		 * See WpssoGmfActions->check_product_image_urls().
+		 * WpssoOpenGraph->get_product_retailer_item_images().
 		 */
 		public function get_product_retailer_item_mod( array $mt_single, $default = false ) {
 
 			if ( ! empty( $mt_single[ 'product:retailer_item_id' ] ) && is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
 
-				return $this->p->post->get_mod( $mt_single[ 'product:retailer_item_id' ] );
+				$mod = $this->p->post->get_mod( $mt_single[ 'product:retailer_item_id' ] );
+
+				return empty( $mod[ 'id' ] ) ? $default : $mod;	// Just in case.
 			}
 
 			return $default;

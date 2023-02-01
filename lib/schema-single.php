@@ -1822,11 +1822,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
+			/*
+			 * The 'product:retailer_item_id' value is required for the 'productGroupID' property.
+			 */
 			if ( empty( $mt_single[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: missing retailer item id' );
+					$wpsso->debug->log( 'exiting early: invalid retailer item id' );
 				}
 
 				return 0;

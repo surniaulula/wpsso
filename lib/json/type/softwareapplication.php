@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {
 
-					$json_ret[ 'offers' ] = WpssoSchemaSingle::get_offer_data( $mod, $mt_og );
+					$json_ret[ 'offers' ] = WpssoSchemaSingle::get_offer_data( $mod, $mt_og, $def_type_id = 'offer' );
 
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {
 

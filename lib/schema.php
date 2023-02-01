@@ -2637,22 +2637,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					continue;
+				}
 
-				} elseif ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer );
+
+				if ( false === $mod ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+						$wpsso->debug->log( 'skipping offer #' . $num . ': invalid retailer item id' );
 					}
 
 					continue;
 				}
 
-				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $def_type_id = 'offer' );
 
-				$mod = $wpsso->post->get_mod( $post_id );
+				if ( empty( $single_offer[ 'priceCurrency' ] ) ) {	// Just in case.
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $num . ': missing price currency' );
+					}
+
+					continue;
+				}
 
 				/*
 				 * Keep track of the lowest and highest price by currency.
@@ -2774,22 +2783,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					continue;
+				}
 
-				} elseif ( empty( $mt_offer[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {
+				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer );
+
+				if ( false === $mod ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping offer #' . $num . ': missing retailer item id' );
+						$wpsso->debug->log( 'skipping offer #' . $num . ': invalid retailer item id' );
 					}
 
 					continue;
 				}
 
-				$post_id = $mt_offer[ 'product:retailer_item_id' ];
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $def_type_id = 'offer' );
 
-				$mod = $wpsso->post->get_mod( $post_id );
+				if ( false === $single_offer ) {
 
-				$json_data[ 'offers' ][] = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+					continue;
+				}
+
+				$json_data[ 'offers' ][] = $single_offer;
 
 				$offers_added++;
 			}
@@ -3095,29 +3110,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					continue;
+				}
+				
+				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_variant );
 
-				} elseif ( empty( $mt_variant[ 'product:retailer_item_id' ] ) || ! is_numeric( $mt_variant[ 'product:retailer_item_id' ] ) ) {
+				if ( false === $mod ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping variant #' . $num . ': missing retailer item id' );
+						$wpsso->debug->log( 'skipping variant #' . $num . ': invalid retailer item id' );
 					}
 
 					continue;
 				}
 
-				$post_id = $mt_variant[ 'product:retailer_item_id' ];
-
-				$mod = $wpsso->post->get_mod( $post_id );
-
-				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant );
+				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant, $def_type_id = 'product' );
 
 				if ( false === $single_variant ) {
 
 					continue;
 				}
 
-				$json_data[ 'hasVariant' ][] = self::get_schema_type_context( 'https://schema.org/Product', $single_variant );
+				$json_data[ 'hasVariant' ][] = $single_variant;
 
 				$variants_added++;
 			}
