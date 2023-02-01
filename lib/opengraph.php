@@ -917,6 +917,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return 'en_US';
 		}
 
+		/*
+		 * Since WPSSO Core v15.0.0.
+		 */
 		public function get_product_retailer_item_image_urls( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
 			$mt_images = $this->get_product_retailer_item_images( $mt_single, $size_names, $md_pre );
@@ -937,6 +940,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $image_urls;
 		}
 
+		/*
+		 * Since WPSSO Core v15.0.0.
+		 */
 		public function get_product_retailer_item_images( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
 			$mt_images = array();
@@ -955,6 +961,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_images;
 		}
 
+		/*
+		 * Since WPSSO Core v15.0.0.
+		 */
 		public function get_product_retailer_item_mod( array $mt_single, $default = false ) {
 
 			if ( ! empty( $mt_single[ 'product:retailer_item_id' ] ) && is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
