@@ -2639,9 +2639,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer );
-
-				if ( false === $mod ) {
+				if ( ! $mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
@@ -2785,9 +2783,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer );
-
-				if ( false === $mod ) {
+				if ( ! $mod = $wpsso->og->get_product_retailer_item_mod( $mt_offer ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
@@ -3112,9 +3108,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 				
-				$mod = $wpsso->og->get_product_retailer_item_mod( $mt_variant );
-
-				if ( false === $mod ) {
+				if ( ! $mod = $wpsso->og->get_product_retailer_item_mod( $mt_variant ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 

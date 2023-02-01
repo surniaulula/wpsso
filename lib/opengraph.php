@@ -975,16 +975,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 * See WpssoGmfActions->check_product_image_urls().
 		 * WpssoOpenGraph->get_product_retailer_item_images().
 		 */
-		public function get_product_retailer_item_mod( array $mt_single, $default = false ) {
+		public function get_product_retailer_item_mod( array $mt_single ) {
 
 			if ( ! empty( $mt_single[ 'product:retailer_item_id' ] ) && is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
 
 				$mod = $this->p->post->get_mod( $mt_single[ 'product:retailer_item_id' ] );
 
-				return empty( $mod[ 'id' ] ) ? $default : $mod;	// Just in case.
+				return empty( $mod[ 'id' ] ) ? false : $mod;	// Just in case.
 			}
 
-			return $default;
+			return false;
 		}
 
 		/*
