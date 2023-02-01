@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
-	* None.
+	* Removed filter to allow sorting the WooCommerce variations array (no longer needed).
 * **Bugfixes**
 	* Fixed potential missing price currency and value units meta tags for WooCommerce products with variations.
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
@@ -255,6 +255,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the `WpssoSchema::add_offers_aggregate_data()` method to `WpssoSchema::add_offers_aggregate_data_mt()`.
 	* Renamed the `WpssoSchema::add_offers_data()` method to `WpssoSchema::add_offers_data_mt()`.
 	* Renamed the `WpssoSchema::add_variants_data()` method to `WpssoSchema::add_variants_data_mt()`.
+	* Removed the `WpssoIntegEcomWooCommerce->maybe_sort_available_variations()` private method.
+	* Removed the 'wpsso_request_url_query_attrs_cache_disable' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
