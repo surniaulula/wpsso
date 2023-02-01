@@ -234,14 +234,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.0-dev.3 (TBD)**
+**Version 15.0.0-dev.3 (2023/02/01)**
 
 * **New Features**
 	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed potential missing price currency and value units meta tags for WooCommerce products with variations.
+	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
 	* Added a new `WpssoSchemaSingle::add_product_group_data()` method.
 	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::add_offer_data()` method.
@@ -990,7 +991,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 15.0.0-dev.3 =
 
-(TBD) Added support for Schema ProductGroup markup for WooCommerce product variations.
+(2023/02/01) Added support for Schema ProductGroup markup. Fixed potential missing price currency and value units meta tags. Fixed extra min/max energy efficiency meta tags.
 
 = 14.8.0 =
 
