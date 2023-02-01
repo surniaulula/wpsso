@@ -32,9 +32,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			'shop'        => -1,
 		);
 
-		private $var_request_url   = null;
-		private $var_cache_disable = null;
-
 		public function __construct( &$plugin ) {	// Pass by reference is OK.
 
 			$this->p =& $plugin;
@@ -264,8 +261,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		 * WooCommerce product attributes do not have their own webpages - product attribute query strings are used to
 		 * pre-fill product selections on the front-end. The
 		 * WpssoIntegEcomWoocommerce->filter_request_url_query_cache_disable() method removes all product attributes from
-		 * the request URL, and if the $request_url and $canonical_url values match, the filter will return false (ie. do
-		 * not disable the cache).
+		 * the request URL, and if the $request_url and $canonical_url values match, the filter returns false (ie. do not
+		 * disable the cache).
 		 */
 		public function filter_request_url_query_cache_disable( $cache_disable, $request_url, $canonical_url, $mod ) {
 
@@ -277,7 +274,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( $request_url_no_attrs === $canonical_url ) {
 
-						return $cache_disable = false;						
+						return false;						
 					}
 				}
 			}
@@ -720,8 +717,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 						$this->p->debug->log( count( $avail_variations ) . ' variations returned' );
 					}
-
-					$this->maybe_sort_available_variations( $avail_variations );
 
 					foreach( $avail_variations as $num => $variation ) {
 
@@ -1989,34 +1984,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			}
 
 			return false;
-		}
-
-		private function maybe_sort_available_variations( &$avail_variations ) {	// Pass by reference is OK.
-
-			if ( $this->var_cache_disable && $this->var_request_url ) {
-
-				$move_to_front_num = null;
-
-				foreach( $avail_variations as $num => $variation ) {
-
-					if ( $product = $this->p->util->wc->get_variation_product( $variation ) ) {
-
-						$permalink = $product->get_permalink();
-
-						if ( $this->var_request_url === $permalink ) {
-
-							$move_to_front_num = $num;
-
-							break;
-						}
-					}
-				}
-
-				if ( null !== $move_to_front_num && $move_to_front_num > 0 ) {
-
-					SucomUtil::move_to_front( $avail_variations, $move_to_front_num );
-				}
-			}
 		}
 	}
 }
