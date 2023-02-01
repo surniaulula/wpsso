@@ -2320,6 +2320,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Product attributes and descriptions.
 				 */
 				$mt_pre . ':url'                         => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':title'                       => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':description'                 => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':adult_type'                  => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                   => null,
 				$mt_pre . ':availability'                => null,
@@ -2346,15 +2348,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':size_system'                 => null,	// Non-standard / internal meta tag.
 
 				/*
-				 * Product ratings and reviews.
-				 */
-				$mt_pre . ':rating:average' => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:count'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:worst'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:best'    => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
-
-				/*
 				 * Product net dimensions and weight.
 				 */
 				$mt_pre . ':length:value'       => null,	// Non-standard / internal meta tag.
@@ -2369,51 +2362,63 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':fluid_volume:units' => null,	// Non-standard / internal meta tag (units after value).
 
 				/*
-				 * Product prices and shipping.
+				 * Product prices.
 				 */
-				$mt_pre . ':min_advert_price:amount'         => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':min_advert_price:currency'       => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':min_advert_price:amount'         => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':min_advert_price:currency'       => null,		// Non-standard / internal meta tag.
 				$mt_pre . ':original_price:amount'           => null,
 				$mt_pre . ':original_price:currency'         => null,
 				$mt_pre . ':pretax_price:amount'             => null,
 				$mt_pre . ':pretax_price:currency'           => null,
-				$mt_pre . ':price_type'                      => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':price_type'                      => null,		// Non-standard / internal meta tag.
 				$mt_pre . ':price:amount'                    => null,
 				$mt_pre . ':price:currency'                  => null,
 				$mt_pre . ':sale_price:amount'               => null,
 				$mt_pre . ':sale_price:currency'             => null,
 				$mt_pre . ':sale_price_dates:start'          => null,
-				$mt_pre . ':sale_price_dates:start_date'     => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:start_time'     => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:start_timezone' => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:start_iso'      => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_date'     => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_time'     => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_timezone' => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_iso'      => null,		// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price_dates:end'            => null,
-				$mt_pre . ':sale_price_dates:end_date'       => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:end_time'       => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:end_timezone'   => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':sale_price_dates:end_iso'        => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':shipping_cost:amount'            => null,
-				$mt_pre . ':shipping_cost:currency'          => null,
-				$mt_pre . ':shipping_length:value'           => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':shipping_length:units'           => null,	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':shipping_width:value'            => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':shipping_width:units'            => null,	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':shipping_height:value'           => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':shipping_height:units'           => null,	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':shipping_weight:value'           => null,
-				$mt_pre . ':shipping_weight:units'           => null,
+				$mt_pre . ':sale_price_dates:end_date'       => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_time'       => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_timezone'   => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_iso'        => null,		// Non-standard / internal meta tag.
+				$mt_pre . ':offers'                          => array(),	// Non-standard / internal meta tag.
+
+				/*
+				 * Product shipping.
+				 */
+				$mt_pre . ':shipping_cost:amount'   => null,
+				$mt_pre . ':shipping_cost:currency' => null,
+				$mt_pre . ':shipping_length:value'  => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_length:units'  => null,	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':shipping_width:value'   => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_width:units'   => null,	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':shipping_height:value'  => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_height:units'  => null,	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':shipping_weight:value'  => null,
+				$mt_pre . ':shipping_weight:units'  => null,
+				$mt_pre . ':shipping_class_id'      => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_offers'        => array(),	// Non-standard / internal meta tag.
 			);
 
-			if ( isset( $mt_og[ 'og:type' ] ) ) {
+			if ( ! empty( $mt_og[ 'og:type' ] ) &&  'product' === $mt_og[ 'og:type' ] ) {
 
-				if ( 'product' === $mt_og[ 'og:type' ] ) {
+				$mt_ret = array_merge( $mt_ret, array(
 
-					$mt_ret[ $mt_pre . ':offers' ]            = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':reviews' ]           = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':shipping_class_id' ] = null;	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':shipping_offers' ]   = array();	// Non-standard / internal meta tag.
-					$mt_ret[ $mt_pre . ':variants' ]          = array();	// Non-standard / internal meta tag.
-				}
+					/*
+					 * Product ratings and reviews.
+					 */
+					$mt_pre . ':rating:average' => null,	// Non-standard / internal meta tag.
+					$mt_pre . ':rating:count'   => null,	// Non-standard / internal meta tag.
+					$mt_pre . ':rating:worst'   => null,	// Non-standard / internal meta tag.
+					$mt_pre . ':rating:best'    => null,	// Non-standard / internal meta tag.
+					$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
+					$mt_pre . ':reviews'        => array(),	// Non-standard / internal meta tag.
+					$mt_pre . ':variants'       => array(),	// Non-standard / internal meta tag.
+				) );
 			}
 
 			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
@@ -2424,6 +2429,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$mt_ret = array(
 				$mt_pre . ':video:secure_url'      => null,
 				$mt_pre . ':video:url'             => null,
+				$mt_pre . ':video:title'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':video:description'     => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:type'            => null,	// Example: 'application/x-shockwave-flash' or 'text/html'.
 				$mt_pre . ':video:width'           => null,
 				$mt_pre . ':video:height'          => null,
@@ -2434,8 +2441,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:embed_url'       => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:stream_url'      => null,	// Non-standard / internal meta tag. VideoObject contentUrl.
 				$mt_pre . ':video:has_image'       => false,	// Non-standard / internal meta tag.
-				$mt_pre . ':video:title'           => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':video:description'     => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:iphone_name'     => null,	// Non-standard / internal meta tag for Twitter player card.
 				$mt_pre . ':video:iphone_id'       => null,	// Non-standard / internal meta tag for Twitter player card.
 				$mt_pre . ':video:iphone_url'      => null,	// Non-standard / internal meta tag for Twitter player card.

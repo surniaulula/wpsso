@@ -1780,11 +1780,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			self::add_organization_data( $json_ret[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
 			/*
-			 * Maybe add images for the offer.
-			 */
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_single, $size_names = 'schema', $add_video = false );
-
-			/*
 			 * Filter the single offer data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_offer', $json_ret, $mod );

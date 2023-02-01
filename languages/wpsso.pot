@@ -6699,23 +6699,23 @@ msgstr ""
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:832
+#: lib/integ/ecom/woocommerce.php:810
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:835
+#: lib/integ/ecom/woocommerce.php:813
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:838
+#: lib/integ/ecom/woocommerce.php:816
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1605
+#: lib/integ/ecom/woocommerce.php:1583
 msgid "World"
 msgstr ""
 
@@ -11608,11 +11608,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:1841
+#: lib/schema-single.php:1836
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:1903
+#: lib/schema-single.php:1898
 msgid "adding schema product"
 msgstr ""
 

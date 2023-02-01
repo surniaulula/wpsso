@@ -513,19 +513,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'removing video images to avoid duplicates' );
 						}
 
-						foreach ( $mt_og[ 'og:video' ] as $key => $mt_single_video ) {
+						foreach ( $mt_og[ 'og:video' ] as $key => $mt_single ) {
 
-							if ( ! is_array( $mt_single_video ) ) {	// Just in case.
+							if ( ! is_array( $mt_single ) ) {	// Just in case.
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'video ignored: $mt_single_video is not an array' );
+									$this->p->debug->log( 'video ignored: $mt_single is not an array' );
 								}
 
 								continue;
 							}
 
-							$mt_og[ 'og:video' ][ $key ] = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video, $invert = true );
+							$mt_og[ 'og:video' ][ $key ] = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single, $invert = true );
 						}
 					}
 
@@ -1085,26 +1085,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $mt_og[ $mt_name ] ) && is_array( $mt_og[ $mt_name ] ) ) {
 
-						foreach ( $mt_og[ $mt_name ] as $num => &$variation ) {	// Allow changes to the variation array.
+						foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
 	
 							/*
 							 * Allow only a single brand value.
 							 */
-							unset ( $variation[ 'product:brand' ] );
+							unset ( $mt_single[ 'product:brand' ] );
 	
 							/*
 							 * Avoid duplicate values (like prices) between the main product and its variations.
 							 */
-							foreach ( $variation as $var_mt_name => $var_mt_value ) {
+							foreach ( $mt_single as $mt_single_name => $mt_single_value ) {
 	
-								if ( isset( $mt_og[ $var_mt_name ] ) && $var_mt_value === $mt_og[ $var_mt_name ] ) {
+								if ( isset( $mt_og[ $mt_single_name ] ) && $mt_single_value === $mt_og[ $mt_single_name ] ) {
 
 									/*
 									 * Do not remove the currency if the amount has not been removed.
 									 *
 									 * Do not remove the units if the value has not been removed.
 									 */
-									if ( preg_match( '/^(.*:)(currency|units)$/', $var_mt_name, $matches ) ) {
+									if ( preg_match( '/^(.*:)(currency|units)$/', $mt_single_name, $matches ) ) {
 
 										switch ( $matches[ 2 ] ) {
 
@@ -1119,7 +1119,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 										}
 									}
 	
-									unset ( $mt_og[ $var_mt_name ] );
+									unset ( $mt_og[ $mt_single_name ] );
 								}
 							}
 						}
@@ -1478,8 +1478,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 						}
 
-						unset( $mt_og[ $amount_key ] );
-						unset( $mt_og[ $currency_key ] );
+						$mt_og[ $amount_key ]   = null;
+						$mt_og[ $currency_key ] = null;
 					}
 				}
 			}
@@ -1494,17 +1494,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' energy efficiency value' );
 			}
 
-			if ( ! empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
+			if ( isset( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
 
 				$mt_og[ $mt_pre . ':energy_efficiency:value' ] = trim( $mt_og[ $mt_pre . ':energy_efficiency:value' ] );
+			}
 
-				if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ||
-					'none' === $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) {
+			if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) || 'none' === $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) {
 
-					unset( $mt_og[ $mt_pre . ':energy_efficiency:value' ] );
-					unset( $mt_og[ $mt_pre . ':energy_efficiency:min_value' ] );
-					unset( $mt_og[ $mt_pre . ':energy_efficiency:max_value' ] );
-				}
+				$mt_og[ $mt_pre . ':energy_efficiency:value' ]     = null;
+				$mt_og[ $mt_pre . ':energy_efficiency:min_value' ] = null;
+				$mt_og[ $mt_pre . ':energy_efficiency:max_value' ] = null;
 			}
 		}
 

@@ -277,32 +277,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					if ( $request_url_no_attrs === $canonical_url ) {
 
-						$this->var_request_url = $request_url;	// Save the variation URL.
-
-						/**
-						 * The WPSSO GMF add-on returns true to disable caching and move the requested
-						 * variation first in the Schema markup offers.
-						 *
-						 * See WpssoGmfFilters->__construct().
-						 */
-						$this->var_cache_disable = apply_filters( 'wpsso_request_url_query_attrs_cache_disable', $cache_disable = false );
-
-						if ( $this->var_cache_disable ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'head and content cache disabled for variation attributes' );
-							}
-
-						} else {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'head and content cache allowed for variation attributes' );
-							}
-						}
-
-						return $this->var_cache_disable;
+						return $cache_disable = false;						
 					}
 				}
 			}
@@ -750,7 +725,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					foreach( $avail_variations as $num => $variation ) {
 
-						$mt_ecom_variant = array();	// Start with an empty array.
+						/*
+						 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
+						 */
+						$mt_ecom_variant = SucomUtil::get_mt_product_seed( $og_type );
 
 						$this->add_mt_product( $mt_ecom_variant, $mod, $variation );
 

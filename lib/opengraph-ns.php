@@ -189,15 +189,20 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_og, $mt_pre = 'product' );
 
 			/*
-			 * Check product offers (aka variations) if available.
+			 * Check product offers and variants.
 			 */
-			if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
+			foreach ( array( 'product:offers', 'product:variants' ) as $mt_name ) {
 
-				foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
+				if ( ! empty( $mt_og[ $mt_name ] ) && is_array( $mt_og[ $mt_name ] ) ) {
 
-					WpssoOpenGraph::check_mt_value_gtin( $offer, $mt_pre = 'product' );
+					foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
 
-					WpssoOpenGraph::check_mt_value_price( $offer, $mt_pre = 'product' );
+						WpssoOpenGraph::check_mt_value_gtin( $mt_single, $mt_pre = 'product' );
+	
+						WpssoOpenGraph::check_mt_value_price( $mt_single, $mt_pre = 'product' );
+				
+						WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_single, $mt_pre = 'product' );
+					}
 				}
 			}
 
