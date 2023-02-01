@@ -1777,7 +1777,25 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add the seller organization data.
 			 */
-			self::add_organization_data( $json_ret[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+			switch ( $wpsso->options[ 'site_pub_schema_type' ] ) {
+
+				case 'organization':
+
+					self::add_organization_data( $json_ret[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+
+					break;
+
+				case 'person':
+
+					$user_id = $wpsso->options[ 'site_pub_person_id' ];	// 'none' by default.
+
+					if ( ! empty( $user_id ) && 'none' !== $user_id ) {	// Just in case.
+
+						self::add_person_data( $json_ret[ 'seller' ], $mod, $user_id, $person_list_el = false );
+					}
+
+					break;
+			}
 
 			/*
 			 * Filter the single offer data.

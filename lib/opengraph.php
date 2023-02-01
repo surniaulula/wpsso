@@ -917,6 +917,54 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return 'en_US';
 		}
 
+		public function get_product_retailer_item_image_urls( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
+
+			$mt_images = $this->get_product_retailer_item_images( $mt_single, $size_names, $md_pre );
+
+			$image_urls = array();
+
+			if ( is_array( $mt_images ) ) {	// Just in case.
+
+				foreach ( $mt_images as $mt_image ) {
+
+					if ( $image_url = SucomUtil::get_first_og_image_url( $mt_image ) ) {
+
+						$image_urls[] = $image_url;
+					}
+				}
+			}
+
+			return $image_urls;
+		}
+
+		public function get_product_retailer_item_images( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
+
+			$mt_images = array();
+
+			if ( isset( $mt_single[ 'og:image' ] ) && is_array( $mt_single[ 'og:image' ] ) ) {	// Nothing to do.
+
+				$mt_images = $mt_single[ 'og:image' ];
+
+			} elseif ( $mod = $this->p->og->get_product_retailer_item_mod( $mt_single ) ) {
+
+				$max_nums = $this->p->util->get_max_nums( $mod, 'og' );
+
+				$mt_images = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre );
+			}
+
+			return $mt_images;
+		}
+
+		public function get_product_retailer_item_mod( array $mt_single, $default = false ) {
+
+			if ( ! empty( $mt_single[ 'product:retailer_item_id' ] ) && is_numeric( $mt_single[ 'product:retailer_item_id' ] ) ) {
+
+				return $this->p->post->get_mod( $mt_single[ 'product:retailer_item_id' ] );
+			}
+
+			return $default;
+		}
+
 		/*
 		 * Returns a string.
 		 *
@@ -1087,16 +1135,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
 	
-							/*
-							 * Allow only a single brand value.
-							 */
-							unset ( $mt_single[ 'product:brand' ] );
+							unset ( $mt_single[ 'product:brand' ] );	// Allow only a single brand value (in the parent product).
 	
-							/*
-							 * Avoid duplicate values (like prices) between the main product and its variations.
-							 */
 							foreach ( $mt_single as $mt_single_name => $mt_single_value ) {
 	
+								/*
+								 * Avoid duplicate values (like prices) between the main product and its variations.
+								 */
 								if ( isset( $mt_og[ $mt_single_name ] ) && $mt_single_value === $mt_og[ $mt_single_name ] ) {
 
 									/*
@@ -1492,11 +1537,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' energy efficiency value' );
-			}
-
-			if ( isset( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) ) {
-
-				$mt_og[ $mt_pre . ':energy_efficiency:value' ] = trim( $mt_og[ $mt_pre . ':energy_efficiency:value' ] );
 			}
 
 			if ( empty( $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) || 'none' === $mt_og[ $mt_pre . ':energy_efficiency:value' ] ) {

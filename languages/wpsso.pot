@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.0.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.0.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4759,54 +4759,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1199
+#: lib/abstract/wp-meta.php:1201
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1270
+#: lib/abstract/wp-meta.php:1272
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1274
+#: lib/abstract/wp-meta.php:1276
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1277 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1279 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1281
+#: lib/abstract/wp-meta.php:1283
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1282
+#: lib/abstract/wp-meta.php:1284
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1283
+#: lib/abstract/wp-meta.php:1285
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1284
+#: lib/abstract/wp-meta.php:1286
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1622
+#: lib/abstract/wp-meta.php:1624
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1943 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1945 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1945
+#: lib/abstract/wp-meta.php:1947
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -11608,11 +11608,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:1836
+#: lib/schema-single.php:1854
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:1898
+#: lib/schema-single.php:1916
 msgid "adding schema product"
 msgstr ""
 

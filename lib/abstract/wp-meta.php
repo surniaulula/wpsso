@@ -1195,8 +1195,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				return;
 			}
+			
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
 
-			$ref_url = $this->p->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking meta tags', 'wpsso' ) );
+			$ref_url = $this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'checking meta tags', 'wpsso' ) );
 
 			foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
@@ -1226,7 +1228,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$this->p->util->maybe_unset_ref( $ref_url );
 
-			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $ref_url );
+			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $canonical_url );
 		}
 
 		/*

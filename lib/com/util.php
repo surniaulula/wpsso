@@ -1233,141 +1233,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_valid_open_close( $hm_o, $hm_c ) {
-
-			/*
-			 * Performa a quick sanitation before using strtotime().
-			 */
-			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
-
-				return false;
-			}
-
-			$hm_o_time = strtotime( $hm_o );
-			$hm_c_time = strtotime( $hm_c );
-
-			if ( $hm_o_time < $hm_c_time ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		/*
-		 * Checks for 'none' and invalid times for midday close and open.
-		 */
-		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
-
-			/*
-			 * Performa a quick sanitation before using strtotime().
-			 */
-			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
-
-				return false;
-			}
-
-			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || 'none' === $hm_midday_c || 'none' === $hm_midday_o ) {
-
-				return false;
-			}
-
-			$hm_o_time        = strtotime( $hm_o );
-			$hm_midday_c_time = strtotime( $hm_midday_c );
-			$hm_midday_o_time = strtotime( $hm_midday_o );
-			$hm_c_time        = strtotime( $hm_c );
-
-			if ( $hm_o_time < $hm_midday_c_time ) {
-
-				if ( $hm_midday_c_time < $hm_midday_o_time ) {
-
-					if ( $hm_midday_o_time < $hm_c_time ) {
-
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-
-		public static function is_amp() {
-
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				if ( is_admin() ) {
-
-					$local_cache = false;
-
-				/*
-				 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
-				 * action has not run, leave the $local_cache as null to allow for future checks.
-				 */
-				} elseif ( function_exists( 'amp_is_request' ) ) {
-
-					if ( did_action( 'wp' ) ) {
-
-						$local_cache = amp_is_request();
-					}
-
-				} elseif ( function_exists( 'is_amp_endpoint' ) ) {
-
-					$local_cache = is_amp_endpoint();
-
-				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
-
-					$local_cache = ampforwp_is_amp_endpoint();
-
-				} elseif ( defined( 'AMP_QUERY_VAR' ) ) {
-
-					$local_cache = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
-
-				} else {
-
-					$local_cache = false;
-				}
-			}
-
-			return $local_cache;
-		}
-
-		public static function is_https( $url = '' ) {
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $url ] ) ) {
-
-				return $local_cache[ $url ];
-			}
-
-			if ( strpos( $url, '://' ) ) {
-
-				if ( 'https' === parse_url( $url, PHP_URL_SCHEME ) ) {
-
-					return $local_cache[ $url ] = true;
-
-				}
-
-				return $local_cache[ $url ] = false;
-
-			} elseif ( is_ssl() ) {
-
-				return $local_cache[ $url ] = true;
-
-			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) && 'https' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) ) {
-
-				return $local_cache[ $url ] = true;
-
-			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) && 'on' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) ) {
-
-				return $local_cache[ $url ] = true;
-			}
-
-			return $local_cache[ $url ] = false;
-		}
-
 		public static function get_url( $remove_ignored_args = true ) {
 
 			static $local_cache = array();
@@ -1818,80 +1683,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function decamelize( $str ) {
 
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
-		}
-
-		public static function is_md5( $md5 ) {
-
-			return strlen( $md5 ) === 32 && preg_match( '/^[a-f0-9]+$/', $md5 ) ? true : false;
-		}
-
-		/*
-		 * Check that the id value is not true, false, null, or 'none'.
-		 */
-		public static function is_valid_option_id( $id ) {
-
-			if ( true === $id ) {
-
-				return false;
-
-			} elseif ( empty( $id ) && ! is_numeric( $id ) ) {	// Null or false.
-
-				return false;
-
-			} elseif ( 'none' === $id ) {	// Disabled option.
-
-				return false;
-
-			}
-
-			return true;
-		}
-
-		/*
-		 * Since WPSSO Core v1.21.0.
-		 *
-		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
-		 */
-		public static function is_assoc( $mixed ) {
-
-			$is_assoc = false;
-
-			if ( ! empty( $mixed ) ) {	// Optimize.
-
-				if ( is_array( $mixed ) ) {	// Just in case.
-
-					if ( ! is_numeric( implode( array_keys( $mixed ) ) ) ) {
-
-						$is_assoc = true;
-					}
-				}
-			}
-
-			return $is_assoc;
-		}
-
-		/*
-		 * Since WPSSO Core v7.7.0.
-		 *
-		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
-		 */
-		public static function is_non_assoc( $mixed ) {
-
-			$is_non_assoc = false;
-
-			if ( is_array( $mixed ) ) {	// Just in case.
-
-				if ( empty( $mixed ) ) {	// Optimize.
-
-					$is_non_assoc = true;
-
-				} elseif ( is_numeric( implode( array_keys( $mixed ) ) ) ) {
-
-					$is_non_assoc = true;
-				}
-			}
-
-			return $is_non_assoc;
 		}
 
 		/*
@@ -3301,297 +3092,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public static function is_auto_draft( array $mod ) {
-
-			if ( ! empty( $mod[ 'is_post' ] ) ) {
-
-				if ( empty( $mod[ 'post_status' ] ) || 'auto-draft' === $mod[ 'post_status' ] ) {
-
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public static function is_trashed( array $mod ) {
-
-			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
-
-				if ( 'trash' === $mod[ 'post_status' ] ) {
-
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public static function is_mod_current_screen( array $mod ) {
-
-			if ( ! is_admin() ) {	// Front-end does not have a "current screen".
-
-				return false;
-			}
-
-			if ( empty( $mod[ 'id' ] ) || ! is_numeric( $mod[ 'id' ] ) ) {
-
-				return false;
-			}
-
-			$screen_base = self::get_screen_base();
-
-			if ( empty( $mod[ 'name' ] ) || $mod[ 'name' ] !== $screen_base ) {
-
-				return false;
-			}
-
-			switch ( $screen_base ) {
-
-				case 'post':
-
-					$current_id = self::get_request_value( 'post_ID', 'POST' );
-
-					if ( '' === $current_id ) {
-
-						$current_id = self::get_request_value( 'post', 'GET' );
-					}
-
-					break;
-
-				case 'term':
-
-					$current_id = self::get_request_value( 'tag_ID' );
-
-					break;
-
-				case 'user':
-
-					$current_id = self::get_request_value( 'user_id' );
-
-					break;
-
-				default:
-
-					return false;
-
-					break;
-			}
-
-			if ( ! $current_id || ! is_numeric( $current_id ) ) {
-
-				return false;
-			}
-
-			if ( (int) $current_id === $mod[ 'id' ] ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		public static function is_post_type( $obj, $post_type ) {
-
-			if ( ! empty( $obj->post_type ) && $obj->post_type === $post_type ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		public static function is_mod_post_type( array $mod, $post_type ) {
-
-			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $mod[ 'post_type' ] === $post_type ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		public static function is_mod_tax_slug( array $mod, $tax_slug ) {
-
-			if ( $mod[ 'is_term' ] && $mod[ 'id' ] && $mod[ 'tax_slug' ] === $tax_slug ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		public static function is_home_page( $use_post = false ) {
-
-			$is_home_page = false;
-
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : 0;
-
-			if ( $post_id > 0 ) {	// The 'page_on_front' option post ID.
-
-				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
-
-					$is_home_page = true;
-
-				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
-
-					$is_home_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_home_page', $is_home_page, $use_post );
-		}
-
-		public static function is_home_posts( $use_post = false ) {
-
-			$is_home_posts = false;
-
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
-
-			if ( $post_id > 0 ) {	// The 'page_for_posts' option post ID.
-
-				if ( is_numeric( $use_post ) && (int) $post_id === $use_post ) {
-
-					$is_home_posts = true;
-
-				} elseif ( $post_id === self::get_post_object( $use_post, 'id' ) ) {
-
-					$is_home_posts = true;
-				}
-
-			} elseif ( false === $use_post && is_home() && is_front_page() ) {
-
-				$is_home_posts = true;
-			}
-
-			return apply_filters( 'sucom_is_home_posts', $is_home_posts, $use_post );
-		}
-
-		public static function is_post_exists( $post_id ) {
-
-			  return is_string( get_post_status( $post_id ) );
-		}
-
-		public static function is_post_page( $use_post = false ) {
-
-			$is_post_page = false;
-
-			if ( is_numeric( $use_post ) && $use_post > 0 ) {
-
-				$is_post_page = self::is_post_exists( $use_post );
-
-			} elseif ( true === $use_post && ! empty( $GLOBALS[ 'post' ]->ID ) ) {
-
-				$is_post_page = true;
-
-			} elseif ( false === $use_post && is_singular() ) {
-
-				$is_post_page = true;
-
-			} elseif ( false === $use_post && is_post_type_archive() ) {
-
-				$is_post_page = true;
-
-			} elseif ( ! is_home() && is_front_page() && 'page' === get_option( 'show_on_front' ) ) {	// Static front page.
-
-				$is_post_page = true;
-
-			} elseif ( is_home() && ! is_front_page() && 'page' === get_option( 'show_on_front' ) ) {	// Static posts page.
-
-				$is_post_page = true;
-
-			} elseif ( is_admin() ) {
-
-				$screen_base = self::get_screen_base();
-
-				if ( $screen_base === 'post' ) {
-
-					$is_post_page = true;
-
-				} elseif ( false === $screen_base &&	// Called too early for screen.
-					( '' !== self::get_request_value( 'post_ID', 'POST' ) ||	// Uses sanitize_text_field().
-						'' !== self::get_request_value( 'post', 'GET' ) ) ) {
-
-					$is_post_page = true;
-
-				} elseif ( 'post-new.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
-
-					$is_post_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_post_page', $is_post_page, $use_post );
-		}
-
-		public static function is_post_type_archive( $post_type, $post_slug ) {
-
-			$is_post_type_archive = false;
-
-			if ( $post_type && $post_slug && is_string( $post_slug ) ) {	// Just in case.
-
-				if ( is_object( $post_type ) ) {
-
-					$post_type_obj =& $post_type;
-
-				} elseif ( is_string( $post_type ) ) {
-
-					$post_type_obj = get_post_type_object( $post_type );
-
-				} else {	// Just in case.
-
-					return $is_post_type_archive;
-				}
-
-				if ( ! empty( $post_type_obj->has_archive ) ) {	// just in case.
-
-					$archive_slug = $post_type_obj->has_archive;
-
-					if ( true === $archive_slug ) {
-
-						$archive_slug = $post_type_obj->rewrite[ 'slug' ];
-					}
-
-					if ( $post_slug === $archive_slug ) {
-
-						$is_post_type_archive = true;
-					}
-				}
-			}
-
-			return $is_post_type_archive;
-		}
-
-		public static function is_post_type_public( $mixed ) {
-
-			$post_type_name = null;
-
-			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
-
-				/*
-				 * Returns the post type name.
-				 */
-				$post_type_name = get_post_type( $mixed );	// Post object or ID.
-
-			} else {
-
-				$post_type_name = $mixed;	// Post type name.
-			}
-
-			if ( $post_type_name ) {
-
-				$args = array( 'name' => $post_type_name, 'public'  => 1 );
-
-				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
-
-				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $post_type_name ) {
-
-					return true;
-				}
-			}
-
-			return false;
-		}
-
 		/*
 		 * $use_post can be true (uses the $post global object), false (uses the queried object), a numeric post ID, or a post object.
 		 */
@@ -3826,114 +3326,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			asort( $values );	// Sort by label.
 
 			return $values;
-		}
-
-		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
-
-			$is_term_page = false;
-
-			if ( is_numeric( $term_id ) && $term_id > 0 ) {
-
-				/*
-				 * Note that term_exists() requires an integer ID, not a string ID.
-				 */
-				$is_term_page = term_exists( (int) $term_id, $tax_slug );	// Since WP v3.0.
-
-			} elseif ( is_tax() || is_category() || is_tag() ) {
-
-				$is_term_page = true;
-
-			} elseif ( is_admin() ) {
-
-				$screen_base = self::get_screen_base();
-
-				if ( 'term' === $screen_base ) {	// Since WP v4.5.
-
-					$is_term_page = true;
-
-				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&
-					( '' !== self::get_request_value( 'taxonomy' ) &&
-						'' !== self::get_request_value( 'tag_ID' ) ) ) {
-
-					$is_term_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_term_page', $is_term_page );
-		}
-
-		public static function is_category_page( $term_id = 0 ) {
-
-			$is_cat_page = false;
-
-			if ( is_numeric( $term_id ) && $term_id > 0 ) {
-
-				/*
-				 * Note that term_exists() requires an integer ID, not a string ID.
-				 */
-				$is_cat_page = term_exists( (int) $term_id, 'category' );	// Since WP v3.0.
-
-			} elseif ( is_category() ) {
-
-				$is_cat_page = true;
-
-			} elseif ( is_admin() ) {
-
-				if ( self::is_term_page() && 'category' === self::get_request_value( 'taxonomy' ) ) {
-
-					$is_cat_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_category_page', $is_cat_page );
-		}
-
-		public static function is_tag_page( $term_id = 0 ) {
-
-			$is_tag_page = false;
-
-			if ( is_numeric( $term_id ) && $term_id > 0 ) {
-
-				/*
-				 * Note that term_exists() requires an integer ID, not a string ID.
-				 */
-				$is_tag_page = term_exists( (int) $term_id, 'post_tag' );	// Since WP v3.0.
-
-			} elseif ( is_tag() ) {
-
-				$is_tag_page = true;
-
-			} elseif ( is_admin() ) {
-
-				if ( self::is_term_page() && 'post_tag' === self::get_request_value( 'taxonomy' ) ) {
-
-					$is_tag_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_tag_page', $is_tag_page );
-		}
-
-		public static function is_term_tax_slug( $term_id, $tax_slug ) {
-
-			/*
-			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
-			 */
-			static $local_cache = array();
-
-			if ( ! isset( $local_cache[ $term_id ] ) ) {
-
-				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
-			}
-
-			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
-				! empty( $local_cache[ $term_id ]->taxonomy ) &&
-					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
-
-				return true;
-			}
-
-			return false;
 		}
 
 		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
@@ -4216,51 +3608,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
-		}
-
-		public static function is_author_page( $user_id = 0 ) {
-
-			return self::is_user_page( $user_id );
-		}
-
-		public static function is_user_page( $user_id = 0 ) {
-
-			$is_user_page = false;
-
-			if ( is_numeric( $user_id ) && $user_id > 0 ) {
-
-				$is_user_page = self::user_exists( $user_id );
-
-			} elseif ( is_author() ) {
-
-				$is_user_page = true;
-
-			} elseif ( is_admin() ) {
-
-				$screen_base = self::get_screen_base();
-
-				if ( false !== $screen_base ) {
-
-					switch ( $screen_base ) {
-
-						case 'profile':	// User profile page.
-						case 'user-edit':	// User editing page.
-						case ( 0 === strpos( $screen_base, 'profile_page_' ) ? true : false ):	// Your profile page.
-						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Users settings page.
-
-							$is_user_page = true;
-
-							break;
-					}
-
-				} elseif ( '' !== self::get_request_value( 'user_id' ) ||	// Called too early for screen.
-					'profile.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
-
-					$is_user_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_user_page', $is_user_page );
 		}
 
 		public static function get_author_object( $user_id = 0, $output = 'object' ) {
@@ -4879,31 +4226,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $table_rows;
 		}
 
-		public static function is_toplevel_edit( $hook_name ) {
-
-			if ( false !== strpos( $hook_name, 'toplevel_page_' ) ) {
-
-				if ( 'edit' === self::get_request_value( 'action', 'GET' ) && (int) self::get_request_value( 'post', 'GET' ) > 0 )  {
-
-					return true;
-				}
-
-				if ( 'create_new' === self::get_request_value( 'action', 'GET' ) && 'edit' === self::get_request_value( 'return', 'GET' ) ) {
-
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public static function is_true( $mixed, $allow_null = false ) {
-
-			$is_true = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
-
-		        return null === $is_true && ! $allow_null ? false : $is_true;
-		}
-
 		/*
 		 * Converts string to boolean.
 		 */
@@ -5381,6 +4703,684 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_options_transl( array $opts, $text_domain ) {
 
 			return self::get_options_label_transl( $opts, $text_domain );
+		}
+
+		public static function is_amp() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				if ( is_admin() ) {
+
+					$local_cache = false;
+
+				/*
+				 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
+				 * action has not run, leave the $local_cache as null to allow for future checks.
+				 */
+				} elseif ( function_exists( 'amp_is_request' ) ) {
+
+					if ( did_action( 'wp' ) ) {
+
+						$local_cache = amp_is_request();
+					}
+
+				} elseif ( function_exists( 'is_amp_endpoint' ) ) {
+
+					$local_cache = is_amp_endpoint();
+
+				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+
+					$local_cache = ampforwp_is_amp_endpoint();
+
+				} elseif ( defined( 'AMP_QUERY_VAR' ) ) {
+
+					$local_cache = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+
+				} else {
+
+					$local_cache = false;
+				}
+			}
+
+			return $local_cache;
+		}
+
+		/*
+		 * Since WPSSO Core v1.21.0.
+		 *
+		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
+		 */
+		public static function is_assoc( $mixed ) {
+
+			$is_assoc = false;
+
+			if ( ! empty( $mixed ) ) {	// Optimize.
+
+				if ( is_array( $mixed ) ) {	// Just in case.
+
+					if ( ! is_numeric( implode( array_keys( $mixed ) ) ) ) {
+
+						$is_assoc = true;
+					}
+				}
+			}
+
+			return $is_assoc;
+		}
+
+		public static function is_author_page( $user_id = 0 ) {
+
+			return self::is_user_page( $user_id );
+		}
+
+		public static function is_auto_draft( array $mod ) {
+
+			if ( ! empty( $mod[ 'is_post' ] ) ) {
+
+				if ( empty( $mod[ 'post_status' ] ) || 'auto-draft' === $mod[ 'post_status' ] ) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_category_page( $term_id = 0 ) {
+
+			$is_cat_page = false;
+
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
+				/*
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$is_cat_page = term_exists( (int) $term_id, 'category' );	// Since WP v3.0.
+
+			} elseif ( is_category() ) {
+
+				$is_cat_page = true;
+
+			} elseif ( is_admin() ) {
+
+				if ( self::is_term_page() && 'category' === self::get_request_value( 'taxonomy' ) ) {
+
+					$is_cat_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_category_page', $is_cat_page );
+		}
+
+		public static function is_home_page( $use_post = false ) {
+
+			$is_home_page = false;
+
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : 0;
+
+			if ( $post_id > 0 ) {	// The 'page_on_front' option post ID.
+
+				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
+
+					$is_home_page = true;
+
+				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
+
+					$is_home_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_home_page', $is_home_page, $use_post );
+		}
+
+		public static function is_home_posts( $use_post = false ) {
+
+			$is_home_posts = false;
+
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
+
+			if ( $post_id > 0 ) {	// The 'page_for_posts' option post ID.
+
+				if ( is_numeric( $use_post ) && (int) $post_id === $use_post ) {
+
+					$is_home_posts = true;
+
+				} elseif ( $post_id === self::get_post_object( $use_post, 'id' ) ) {
+
+					$is_home_posts = true;
+				}
+
+			} elseif ( false === $use_post && is_home() && is_front_page() ) {
+
+				$is_home_posts = true;
+			}
+
+			return apply_filters( 'sucom_is_home_posts', $is_home_posts, $use_post );
+		}
+
+		public static function is_https( $url = '' ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $url ] ) ) {
+
+				return $local_cache[ $url ];
+			}
+
+			if ( strpos( $url, '://' ) ) {
+
+				if ( 'https' === parse_url( $url, PHP_URL_SCHEME ) ) {
+
+					return $local_cache[ $url ] = true;
+
+				}
+
+				return $local_cache[ $url ] = false;
+
+			} elseif ( is_ssl() ) {
+
+				return $local_cache[ $url ] = true;
+
+			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) && 'https' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) ) {
+
+				return $local_cache[ $url ] = true;
+
+			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) && 'on' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) ) {
+
+				return $local_cache[ $url ] = true;
+			}
+
+			return $local_cache[ $url ] = false;
+		}
+
+		public static function is_md5( $md5 ) {
+
+			return strlen( $md5 ) === 32 && preg_match( '/^[a-f0-9]+$/', $md5 ) ? true : false;
+		}
+
+		public static function is_mod_current_screen( array $mod ) {
+
+			if ( ! is_admin() ) {	// Front-end does not have a "current screen".
+
+				return false;
+			}
+
+			if ( empty( $mod[ 'id' ] ) || ! is_numeric( $mod[ 'id' ] ) ) {
+
+				return false;
+			}
+
+			$screen_base = self::get_screen_base();
+
+			if ( empty( $mod[ 'name' ] ) || $mod[ 'name' ] !== $screen_base ) {
+
+				return false;
+			}
+
+			switch ( $screen_base ) {
+
+				case 'post':
+
+					$current_id = self::get_request_value( 'post_ID', 'POST' );
+
+					if ( '' === $current_id ) {
+
+						$current_id = self::get_request_value( 'post', 'GET' );
+					}
+
+					break;
+
+				case 'term':
+
+					$current_id = self::get_request_value( 'tag_ID' );
+
+					break;
+
+				case 'user':
+
+					$current_id = self::get_request_value( 'user_id' );
+
+					break;
+
+				default:
+
+					return false;
+
+					break;
+			}
+
+			if ( ! $current_id || ! is_numeric( $current_id ) ) {
+
+				return false;
+			}
+
+			if ( (int) $current_id === $mod[ 'id' ] ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function is_mod_post_type( array $mod, $post_type ) {
+
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $mod[ 'post_type' ] === $post_type ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function is_mod_tax_slug( array $mod, $tax_slug ) {
+
+			if ( $mod[ 'is_term' ] && $mod[ 'id' ] && $mod[ 'tax_slug' ] === $tax_slug ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		/*
+		 * Since WPSSO Core v7.7.0.
+		 *
+		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
+		 */
+		public static function is_non_assoc( $mixed ) {
+
+			$is_non_assoc = false;
+
+			if ( is_array( $mixed ) ) {	// Just in case.
+
+				if ( empty( $mixed ) ) {	// Optimize.
+
+					$is_non_assoc = true;
+
+				} elseif ( is_numeric( implode( array_keys( $mixed ) ) ) ) {
+
+					$is_non_assoc = true;
+				}
+			}
+
+			return $is_non_assoc;
+		}
+
+		public static function is_post_exists( $post_id ) {
+
+			  return is_string( get_post_status( $post_id ) );
+		}
+
+		public static function is_post_page( $use_post = false ) {
+
+			$is_post_page = false;
+
+			if ( is_numeric( $use_post ) && $use_post > 0 ) {
+
+				$is_post_page = self::is_post_exists( $use_post );
+
+			} elseif ( true === $use_post && ! empty( $GLOBALS[ 'post' ]->ID ) ) {
+
+				$is_post_page = true;
+
+			} elseif ( false === $use_post && is_singular() ) {
+
+				$is_post_page = true;
+
+			} elseif ( false === $use_post && is_post_type_archive() ) {
+
+				$is_post_page = true;
+
+			} elseif ( ! is_home() && is_front_page() && 'page' === get_option( 'show_on_front' ) ) {	// Static front page.
+
+				$is_post_page = true;
+
+			} elseif ( is_home() && ! is_front_page() && 'page' === get_option( 'show_on_front' ) ) {	// Static posts page.
+
+				$is_post_page = true;
+
+			} elseif ( is_admin() ) {
+
+				$screen_base = self::get_screen_base();
+
+				if ( $screen_base === 'post' ) {
+
+					$is_post_page = true;
+
+				} elseif ( false === $screen_base &&	// Called too early for screen.
+					( '' !== self::get_request_value( 'post_ID', 'POST' ) ||	// Uses sanitize_text_field().
+						'' !== self::get_request_value( 'post', 'GET' ) ) ) {
+
+					$is_post_page = true;
+
+				} elseif ( 'post-new.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
+
+					$is_post_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_post_page', $is_post_page, $use_post );
+		}
+
+		public static function is_post_type( $obj, $post_type ) {
+
+			if ( ! empty( $obj->post_type ) && $obj->post_type === $post_type ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function is_post_type_archive( $post_type, $post_slug ) {
+
+			$is_post_type_archive = false;
+
+			if ( $post_type && $post_slug && is_string( $post_slug ) ) {	// Just in case.
+
+				if ( is_object( $post_type ) ) {
+
+					$post_type_obj =& $post_type;
+
+				} elseif ( is_string( $post_type ) ) {
+
+					$post_type_obj = get_post_type_object( $post_type );
+
+				} else {	// Just in case.
+
+					return $is_post_type_archive;
+				}
+
+				if ( ! empty( $post_type_obj->has_archive ) ) {	// just in case.
+
+					$archive_slug = $post_type_obj->has_archive;
+
+					if ( true === $archive_slug ) {
+
+						$archive_slug = $post_type_obj->rewrite[ 'slug' ];
+					}
+
+					if ( $post_slug === $archive_slug ) {
+
+						$is_post_type_archive = true;
+					}
+				}
+			}
+
+			return $is_post_type_archive;
+		}
+
+		public static function is_post_type_public( $mixed ) {
+
+			$post_type_name = null;
+
+			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
+
+				/*
+				 * Returns the post type name.
+				 */
+				$post_type_name = get_post_type( $mixed );	// Post object or ID.
+
+			} else {
+
+				$post_type_name = $mixed;	// Post type name.
+			}
+
+			if ( $post_type_name ) {
+
+				$args = array( 'name' => $post_type_name, 'public'  => 1 );
+
+				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
+
+				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $post_type_name ) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_tag_page( $term_id = 0 ) {
+
+			$is_tag_page = false;
+
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
+				/*
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$is_tag_page = term_exists( (int) $term_id, 'post_tag' );	// Since WP v3.0.
+
+			} elseif ( is_tag() ) {
+
+				$is_tag_page = true;
+
+			} elseif ( is_admin() ) {
+
+				if ( self::is_term_page() && 'post_tag' === self::get_request_value( 'taxonomy' ) ) {
+
+					$is_tag_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_tag_page', $is_tag_page );
+		}
+
+		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
+
+			$is_term_page = false;
+
+			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
+				/*
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$is_term_page = term_exists( (int) $term_id, $tax_slug );	// Since WP v3.0.
+
+			} elseif ( is_tax() || is_category() || is_tag() ) {
+
+				$is_term_page = true;
+
+			} elseif ( is_admin() ) {
+
+				$screen_base = self::get_screen_base();
+
+				if ( 'term' === $screen_base ) {	// Since WP v4.5.
+
+					$is_term_page = true;
+
+				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&
+					( '' !== self::get_request_value( 'taxonomy' ) &&
+						'' !== self::get_request_value( 'tag_ID' ) ) ) {
+
+					$is_term_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_term_page', $is_term_page );
+		}
+
+		public static function is_term_tax_slug( $term_id, $tax_slug ) {
+
+			/*
+			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
+			 */
+			static $local_cache = array();
+
+			if ( ! isset( $local_cache[ $term_id ] ) ) {
+
+				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+			}
+
+			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
+				! empty( $local_cache[ $term_id ]->taxonomy ) &&
+					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function is_toplevel_edit( $hook_name ) {
+
+			if ( false !== strpos( $hook_name, 'toplevel_page_' ) ) {
+
+				if ( 'edit' === self::get_request_value( 'action', 'GET' ) && (int) self::get_request_value( 'post', 'GET' ) > 0 )  {
+
+					return true;
+				}
+
+				if ( 'create_new' === self::get_request_value( 'action', 'GET' ) && 'edit' === self::get_request_value( 'return', 'GET' ) ) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_trashed( array $mod ) {
+
+			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
+
+				if ( 'trash' === $mod[ 'post_status' ] ) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_true( $mixed, $allow_null = false ) {
+
+			$is_true = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
+
+		        return null === $is_true && ! $allow_null ? false : $is_true;
+		}
+
+		public static function is_user_page( $user_id = 0 ) {
+
+			$is_user_page = false;
+
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {
+
+				$is_user_page = self::user_exists( $user_id );
+
+			} elseif ( is_author() ) {
+
+				$is_user_page = true;
+
+			} elseif ( is_admin() ) {
+
+				$screen_base = self::get_screen_base();
+
+				if ( false !== $screen_base ) {
+
+					switch ( $screen_base ) {
+
+						case 'profile':	// User profile page.
+						case 'user-edit':	// User editing page.
+						case ( 0 === strpos( $screen_base, 'profile_page_' ) ? true : false ):	// Your profile page.
+						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Users settings page.
+
+							$is_user_page = true;
+
+							break;
+					}
+
+				} elseif ( '' !== self::get_request_value( 'user_id' ) ||	// Called too early for screen.
+					'profile.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
+
+					$is_user_page = true;
+				}
+			}
+
+			return apply_filters( 'sucom_is_user_page', $is_user_page );
+		}
+
+		/*
+		 * Checks for 'none' and invalid times for midday close and open.
+		 */
+		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
+
+			/*
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
+
+				return false;
+			}
+
+			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || 'none' === $hm_midday_c || 'none' === $hm_midday_o ) {
+
+				return false;
+			}
+
+			$hm_o_time        = strtotime( $hm_o );
+			$hm_midday_c_time = strtotime( $hm_midday_c );
+			$hm_midday_o_time = strtotime( $hm_midday_o );
+			$hm_c_time        = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_midday_c_time ) {
+
+				if ( $hm_midday_c_time < $hm_midday_o_time ) {
+
+					if ( $hm_midday_o_time < $hm_c_time ) {
+
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_valid_open_close( $hm_o, $hm_c ) {
+
+			/*
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
+
+				return false;
+			}
+
+			$hm_o_time = strtotime( $hm_o );
+			$hm_c_time = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_c_time ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		/*
+		 * Check that the id value is not true, false, null, or 'none'.
+		 */
+		public static function is_valid_option_id( $id ) {
+
+			if ( true === $id ) {
+
+				return false;
+
+			} elseif ( empty( $id ) && ! is_numeric( $id ) ) {	// Null or false.
+
+				return false;
+
+			} elseif ( 'none' === $id ) {	// Disabled option.
+
+				return false;
+
+			}
+
+			return true;
 		}
 	}
 }

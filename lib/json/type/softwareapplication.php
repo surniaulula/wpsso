@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 				$local_is_recursion = true;
 
-				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
+				if ( empty( $mt_og[ 'product:offers' ] ) ) {
 
 					$json_ret[ 'offers' ] = WpssoSchemaSingle::get_offer_data( $mod, $mt_og );
 

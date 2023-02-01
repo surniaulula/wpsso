@@ -178,9 +178,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mt_og[ 'product:retailer_category' ] = $this->p->og->get_product_retailer_category( $mod );
+			$mt_og[ 'product:retailer_item_id' ] = $mod[ 'id' ];
 
-			$mt_og[ 'product:retailer_item_id' ] = $mod[ 'id' ];	// The product ID is the post ID by default.
+			$mt_og[ 'product:retailer_category' ] = $this->p->og->get_product_retailer_category( $mod );
 
 			WpssoOpenGraph::check_mt_value_gtin( $mt_og, $mt_pre = 'product' );
 
@@ -196,6 +196,8 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				if ( ! empty( $mt_og[ $mt_name ] ) && is_array( $mt_og[ $mt_name ] ) ) {
 
 					foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
+
+						$mt_single[ 'product:item_group_id' ] = $mod[ 'id' ];
 
 						WpssoOpenGraph::check_mt_value_gtin( $mt_single, $mt_pre = 'product' );
 	
