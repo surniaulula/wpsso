@@ -239,12 +239,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
-	* Removed filter to allow sorting the WooCommerce variations array (no longer needed).
+	* Removed filter to allow sorting of the WooCommerce variations array (no longer needed).
 * **Bugfixes**
 	* Fixed potential missing price currency and value units meta tags for WooCommerce products with variations.
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
 	* Added a new `WpssoSchemaSingle::add_product_group_data()` method.
+	* Added a new `WpssoOpenGraph->get_product_retailer_item_image_urls()` method.
+	* Added a new `WpssoOpenGraph->get_product_retailer_item_image()` method.
+	* Added a new `WpssoOpenGraph->get_product_retailer_item_mod()` method.
 	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::add_offer_data()` method.
 	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::add_product_data()` method.
 	* Added a '$page_type_id' argument to the `WpssoSchemaSingle::get_offer_data()` method.
@@ -323,7 +326,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a filter to allow sorting the WooCommerce variations array (moving the requested variation first) for the WPSSO GMF add-on.
+	* Added a filter to allow sorting of the WooCommerce variations array (moving the requested variation first) for the WPSSO GMF add-on.
 	* Updated the post cache clearing method to clear the cache of any post children as well.
 * **Bugfixes**
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
@@ -1005,7 +1008,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 14.6.0 =
 
-(2023/01/22) Added a filter hook to allow sorting the WooCommerce variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
+(2023/01/22) Added a filter hook to allow sorting of the WooCommerce variations array. Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 
 = 14.5.0 =
 
