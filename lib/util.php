@@ -2694,12 +2694,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_json_pretty() {
 
-			if ( $this->p->debug->enabled ) {	// Always output pretty JSON when debug is enabled.
+			if ( $this->p->debug->enabled ) {	// Pretty JSON when debug is enabled.
 
 				return true;
 			}
 
-			$is_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true );	// True by default.
+			$is_pretty = empty( $this->p->options[ 'plugin_schema_json_min' ] ) ? true : false;
 
 			$is_pretty = (bool) apply_filters( 'wpsso_json_pretty_print', $is_pretty );
 

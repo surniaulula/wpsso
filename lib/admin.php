@@ -2492,6 +2492,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
 				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
 
+			$table_rows[ 'plugin_schema_json_min' ] = '' .
+				$form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_schema_json_min' ) .
+				'<td>' . $form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
+				self::get_option_site_use( 'plugin_schema_json_min', $form, $network, $is_enabled = true );
+
 			$table_rows[ 'plugin_cache_disable' ] = '' .
 				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
 				'<td>' . ( ! $network && $cache_status ?

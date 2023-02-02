@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.0.0-b.1\n"
+"Project-Id-Version: WPSSO Core 15.0.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2947,8 +2947,8 @@ msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:5 lib/messages-tooltip-plugin.php:277
-#: lib/messages-tooltip-plugin.php:294 lib/messages.php:1116
+#: gettext/gettext-lib-pro.php:5 lib/messages-tooltip-plugin.php:297
+#: lib/messages-tooltip-plugin.php:314 lib/messages.php:1116
 #: lib/pro/admin/advanced.php:91 lib/std/admin/advanced.php:89
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -3336,7 +3336,7 @@ msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:69 lib/messages-tooltip-plugin.php:531
+#: gettext/gettext-lib-pro.php:69 lib/messages-tooltip-plugin.php:551
 #: lib/page.php:137 lib/pro/admin/advanced.php:462
 #: lib/std/admin/advanced.php:458
 msgctxt "toolbar menu title"
@@ -5468,121 +5468,126 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2496 lib/util.php:3176
+#: lib/admin.php:2496
+msgctxt "option label"
+msgid "Minimize Schema JSON-LD"
+msgstr ""
+
+#: lib/admin.php:2501 lib/util.php:3176
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2504
+#: lib/admin.php:2509 lib/messages-tooltip-plugin.php:60
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2519
+#: lib/admin.php:2524
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2535
+#: lib/admin.php:2540
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2556
+#: lib/admin.php:2561
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2587
+#: lib/admin.php:2592
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2608
+#: lib/admin.php:2613
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2617
+#: lib/admin.php:2622
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2737
+#: lib/admin.php:2742
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2744
+#: lib/admin.php:2749
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2751
+#: lib/admin.php:2756
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2765
+#: lib/admin.php:2770
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2775
+#: lib/admin.php:2780
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2785
+#: lib/admin.php:2790
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3211
+#: lib/admin.php:3216
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3212
+#: lib/admin.php:3217
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3217
+#: lib/admin.php:3222
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3218
+#: lib/admin.php:3223
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3229
+#: lib/admin.php:3234
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3230
+#: lib/admin.php:3235
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3236
+#: lib/admin.php:3241
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3243
+#: lib/admin.php:3248
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3250
+#: lib/admin.php:3255
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3257
+#: lib/admin.php:3262
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
@@ -5643,7 +5648,7 @@ msgstr ""
 msgid "Twitter"
 msgstr ""
 
-#: lib/conflict-seo.php:151 lib/messages-tooltip-plugin.php:227
+#: lib/conflict-seo.php:151 lib/messages-tooltip-plugin.php:247
 msgid "The SEO Framework"
 msgstr ""
 
@@ -5829,8 +5834,8 @@ msgstr ""
 msgid "Social sharing block"
 msgstr ""
 
-#: lib/conflict-seo.php:508 lib/messages-tooltip-plugin.php:236
-#: lib/messages-tooltip-plugin.php:259
+#: lib/conflict-seo.php:508 lib/messages-tooltip-plugin.php:256
+#: lib/messages-tooltip-plugin.php:279
 msgid "Yoast SEO"
 msgstr ""
 
@@ -7800,8 +7805,8 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:58
 #: lib/messages-tooltip-meta-product.php:85
-#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:759
-#: lib/messages-tooltip-plugin.php:801 lib/messages-tooltip-schema.php:185
+#: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:821 lib/messages-tooltip-schema.php:185
 #: lib/messages-tooltip-schema.php:317
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -8238,7 +8243,7 @@ msgstr ""
 msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:122
+#: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
 #: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1670 lib/user.php:1702
 #: lib/user.php:1799 lib/user.php:1815 lib/user.php:1949
 msgctxt "user role"
@@ -8810,68 +8815,91 @@ msgstr ""
 msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:38
+#: lib/messages-tooltip-plugin.php:42
 msgid ""
-"Check this option to remove all %s settings when you <em>uninstall</em> the "
-"plugin. This includes any custom post, term, and user meta."
+"Check this option to remove all %1$s plugin and add-ons settings when you "
+"<em>uninstall</em> the %1$s plugin (default is %2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:46
+#: lib/messages-tooltip-plugin.php:44
 msgid ""
-"Prefer local translation files instead of translations from WordPress.org "
-"(default is %s)."
+"This includes any custom post, term, and user data entered in the %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:54
+#: lib/messages-tooltip-plugin.php:52
+msgid ""
+"Prefer local translation files for the %1$s plugin and its add-ons, instead "
+"of those from WordPress.org (default is %2$s)."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:62
+msgid ""
+"Minimize the Schema JSON-LD markup created by %1$s in the webpage (default "
+"is %2$s)."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:64
+msgid ""
+"Leaving this option unchecked creates human readable Schema JSON-LD (aka "
+"\"pretty print\") markup in the webpage."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:66
+msgid ""
+"Note that enabling the \"%s\" option will always create human readable "
+"Schema JSON-LD markup, even when this option is checked."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:74
 msgid ""
 "Disable the head markup transient cache for debugging purposes (default is "
 "%s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:62
+#: lib/messages-tooltip-plugin.php:82
 msgid ""
 "Add hidden debugging messages as HTML comments to front-end and admin "
 "webpages (default is %s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:73
+#: lib/messages-tooltip-plugin.php:93
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:73 lib/messages.php:1040
+#: lib/messages-tooltip-plugin.php:93 lib/messages.php:1040
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:75
+#: lib/messages-tooltip-plugin.php:95
 msgid ""
 "Please contact your theme author and request that they add support for the "
 "WordPress Title Tag feature (available since WordPress v4.1)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:80
+#: lib/messages-tooltip-plugin.php:100
 msgid "%1$s can provide a customized value for the %2$s HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:82
+#: lib/messages-tooltip-plugin.php:102
 msgid ""
 "The %s HTML tag value is used by web browsers to display the current webpage "
 "title in the browser tab."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:88 lib/messages.php:280
+#: lib/messages-tooltip-plugin.php:108 lib/messages.php:280
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images and/or embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:90 lib/messages.php:284
+#: lib/messages-tooltip-plugin.php:110 lib/messages.php:284
 msgid ""
 "Many themes and plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:92 lib/messages.php:286
+#: lib/messages-tooltip-plugin.php:112 lib/messages.php:286
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled - "
 "IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS "
@@ -8879,81 +8907,81 @@ msgid ""
 "and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:98
+#: lib/messages-tooltip-plugin.php:118
 msgid ""
 "Apply the WordPress \"get_the_excerpt\" filter to excerpt text (default is "
 "unchecked)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:100
+#: lib/messages-tooltip-plugin.php:120
 msgid "You should enable this option if you use shortcodes in your excerpts."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:106
+#: lib/messages-tooltip-plugin.php:126
 msgid "Enable the WordPress Excerpt metabox when editing a Page."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:108
+#: lib/messages-tooltip-plugin.php:128
 msgid ""
 "An excerpt is an optional hand-crafted summary of your content that %s can "
 "use as a default description for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:114
+#: lib/messages-tooltip-plugin.php:134
 msgid ""
 "Register a non-public Page Tags taxonomy and enable a WordPress Page Tags "
 "metabox when editing a Page."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:116
+#: lib/messages-tooltip-plugin.php:136
 msgid ""
 "%s can convert WordPress tags into Schema keywords and hashtags for social "
 "sites."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:122
+#: lib/messages-tooltip-plugin.php:142
 msgid "Automatically add the \"%s\" role when a new user is created."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:124
+#: lib/messages-tooltip-plugin.php:144
 msgid ""
 "You may also consider activating <a href=\"%s\">a plugin from WordPress.org "
 "to manage user roles and their members</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:130 lib/messages-tooltip-plugin.php:138
+#: lib/messages-tooltip-plugin.php:150 lib/messages-tooltip-plugin.php:158
 msgid ""
 "Posts, pages, custom post types, categories, tags, custom taxonomy terms, "
 "and user profiles should all have at least one image available for its meta "
 "tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:132
+#: lib/messages-tooltip-plugin.php:152
 msgid ""
 "Enable this option to make sure child pages without a featured image can "
 "inherit the featured image of their parents."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:140
+#: lib/messages-tooltip-plugin.php:160
 msgid ""
 "Enable this option to make sure child pages and terms without custom images "
 "can inherit the custom images of their parents."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:142
+#: lib/messages-tooltip-plugin.php:162
 msgid ""
 "Note that when enabled, this feature is only applied to publicly accessible "
 "posts, pages, custom post types, categories, tags, custom taxonomy terms, "
 "and user profiles."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:148 lib/messages.php:258
+#: lib/messages-tooltip-plugin.php:168 lib/messages.php:258
 msgid ""
 "Providing social and search sites with perfectly resized images is highly "
 "recommended, so this option should be enabled if possible."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:150 lib/messages.php:260
+#: lib/messages-tooltip-plugin.php:170 lib/messages.php:260
 msgid ""
 "Content authors often upload small featured images to the Media Library, "
 "without knowing that WordPress can create several different image sizes from "
@@ -8961,38 +8989,38 @@ msgid ""
 "warning messages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:152 lib/messages.php:262
+#: lib/messages-tooltip-plugin.php:172 lib/messages.php:262
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
 "</a> for more information on WordPress and its image sizes."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:158
+#: lib/messages-tooltip-plugin.php:178
 msgid ""
 "WordPress does not upscale (enlarge) images - WordPress can only create "
 "smaller images from larger full size originals."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:160
+#: lib/messages-tooltip-plugin.php:180
 msgid ""
 "Upscaled images do not look as sharp or clear, and if upscaled too much, "
 "will look fuzzy and unappealing - not something you want to promote on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:162
+#: lib/messages-tooltip-plugin.php:182
 msgid ""
 "%s includes an optional module to allow upscaling of WordPress Media Library "
 "images (up to a maximum upscale percentage)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:164
+#: lib/messages-tooltip-plugin.php:184
 msgid ""
 "Do not enable this option unless you want to publish lower quality images on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:172
+#: lib/messages-tooltip-plugin.php:192
 msgid ""
 "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller "
 "images are not upscaled beyond reason, which would publish very low "
@@ -9000,78 +9028,78 @@ msgid ""
 "%3$s%%)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:174
+#: lib/messages-tooltip-plugin.php:194
 msgid ""
 "If an image needs to be upscaled beyond this maximum, in either width or "
 "height, the image will not be upscaled."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:183
+#: lib/messages-tooltip-plugin.php:203
 msgid ""
 "A comma-delimited list of CSS selectors for sections of the webpage that are "
 "particularly speakable (see <a href=\"%s\">Google's Speakable guidelines</a> "
 "for more information)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:183
+#: lib/messages-tooltip-plugin.php:203
 msgid ""
 "https://developers.google.com/search/docs/appearance/structured-data/"
 "speakable"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:185
+#: lib/messages-tooltip-plugin.php:205
 msgid ""
 "The Schema speakable property is included in the Schema Article and WebPage "
 "types."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:193
+#: lib/messages-tooltip-plugin.php:213
 msgid ""
 "When editing posts and pages, %s can check the head section of the webpage "
 "for conflicting and/or duplicate HTML tags."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:195
+#: lib/messages-tooltip-plugin.php:215
 msgid ""
 "After %d <em>successful</em> checks, no additional checks will be performed "
 "until the theme or a plugin is updated."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:201
+#: lib/messages-tooltip-plugin.php:221
 msgid "Retrieve product prices from e-Commerce plugins with VAT included."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:209
+#: lib/messages-tooltip-plugin.php:229
 msgid "All in One SEO Pack"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:218
+#: lib/messages-tooltip-plugin.php:238
 msgid "Rank Math SEO"
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
-#: lib/messages-tooltip-plugin.php:242
+#: lib/messages-tooltip-plugin.php:262
 msgid ""
 "Import %1$s custom metadata for posts, pages, custom post types, terms, and "
 "users into the %2$s metabox options."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
-#: lib/messages-tooltip-plugin.php:245
+#: lib/messages-tooltip-plugin.php:265
 msgid ""
 "Note that %1$s custom metadata will only be imported into %2$s metabox "
 "options that are empty (ie. options that have not already been customized)."
 msgstr ""
 
 #. translators: %1$s is the plugin name.
-#: lib/messages-tooltip-plugin.php:248 lib/messages-tooltip-plugin.php:268
+#: lib/messages-tooltip-plugin.php:268 lib/messages-tooltip-plugin.php:288
 msgid ""
 "This option is checked by default if %1$s is active, or no SEO plugin is "
 "active and %1$s settings are found in the database."
 msgstr ""
 
 #. translators: %1$s is the plugin name.
-#: lib/messages-tooltip-plugin.php:251
+#: lib/messages-tooltip-plugin.php:271
 msgid ""
 "If this option is checked and %1$s is active, then only social metadata will "
 "be imported, and if %1$s is not active, then all available metadata will be "
@@ -9079,256 +9107,256 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
-#: lib/messages-tooltip-plugin.php:265
+#: lib/messages-tooltip-plugin.php:285
 msgid ""
 "Import the %1$s block attributes (how-to block step details, for example) "
 "into the %2$s metabox options."
 msgstr ""
 
 #. translators: %1$s is the "Webpage Title Tag" option label.
-#: lib/messages-tooltip-plugin.php:281
+#: lib/messages-tooltip-plugin.php:301
 msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:283 lib/submenu/essential.php:96
+#: lib/messages-tooltip-plugin.php:303 lib/submenu/essential.php:96
 #: lib/submenu/general.php:156
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
 
 #. translators: %1$s is the "WebSite Name" option label, %2$s is the "%%sitename%%" inline variable.
-#: lib/messages-tooltip-plugin.php:287
+#: lib/messages-tooltip-plugin.php:307
 msgid ""
 "The default SEO site name suffix is the %1$s value (aka %2$s inline "
 "variable)."
 msgstr ""
 
 #. translators: %1$s is the "Webpage Title Tag" option label.
-#: lib/messages-tooltip-plugin.php:298
+#: lib/messages-tooltip-plugin.php:318
 msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:300 lib/submenu/essential.php:102
+#: lib/messages-tooltip-plugin.php:320 lib/submenu/essential.php:102
 #: lib/submenu/general.php:167
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
 #. translators: %1$s is the "WebSite Description" option label, %2$s is the "%%sitedesc%%" inline variable.
-#: lib/messages-tooltip-plugin.php:304
+#: lib/messages-tooltip-plugin.php:324
 msgid ""
 "The default SEO tagline suffix is the %1$s value (aka %2$s inline variable)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:311
+#: lib/messages-tooltip-plugin.php:331
 msgid ""
 "Image <code>alt</code> text used in descriptions can be prefixed with an "
 "optional string."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:313 lib/messages-tooltip-plugin.php:324
-#: lib/messages-tooltip-plugin.php:335 lib/messages-tooltip-plugin.php:344
-#: lib/messages-tooltip-plugin.php:353 lib/messages-tooltip-plugin.php:362
-#: lib/messages-tooltip-plugin.php:371 lib/messages-tooltip-plugin.php:380
-#: lib/messages-tooltip-plugin.php:389 lib/messages-tooltip-plugin.php:398
-#: lib/messages-tooltip-plugin.php:410 lib/messages-tooltip-plugin.php:419
-#: lib/messages-tooltip-plugin.php:428 lib/messages-tooltip-plugin.php:437
-#: lib/messages-tooltip-plugin.php:446 lib/messages-tooltip-plugin.php:455
-#: lib/messages-tooltip-plugin.php:464 lib/messages-tooltip-plugin.php:473
-#: lib/messages-tooltip-plugin.php:482 lib/messages-tooltip-plugin.php:491
-#: lib/messages-tooltip-plugin.php:500 lib/messages-tooltip-plugin.php:509
+#: lib/messages-tooltip-plugin.php:333 lib/messages-tooltip-plugin.php:344
+#: lib/messages-tooltip-plugin.php:355 lib/messages-tooltip-plugin.php:364
+#: lib/messages-tooltip-plugin.php:373 lib/messages-tooltip-plugin.php:382
+#: lib/messages-tooltip-plugin.php:391 lib/messages-tooltip-plugin.php:400
+#: lib/messages-tooltip-plugin.php:409 lib/messages-tooltip-plugin.php:418
+#: lib/messages-tooltip-plugin.php:430 lib/messages-tooltip-plugin.php:439
+#: lib/messages-tooltip-plugin.php:448 lib/messages-tooltip-plugin.php:457
+#: lib/messages-tooltip-plugin.php:466 lib/messages-tooltip-plugin.php:475
+#: lib/messages-tooltip-plugin.php:484 lib/messages-tooltip-plugin.php:493
+#: lib/messages-tooltip-plugin.php:502 lib/messages-tooltip-plugin.php:511
+#: lib/messages-tooltip-plugin.php:520 lib/messages-tooltip-plugin.php:529
 msgid "The default value is \"<em>%s</em>\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:316
+#: lib/messages-tooltip-plugin.php:336
 msgid ""
 "Leave this option blank to prevent the image <code>alt</code> text from "
 "being prefixed."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:322
+#: lib/messages-tooltip-plugin.php:342
 msgid ""
 "Caption paragraphs found with the \"wp-caption-text\" CSS class can be "
 "prefixed with an optional string."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:327
+#: lib/messages-tooltip-plugin.php:347
 msgid ""
 "Leave this option blank to prevent caption paragraphs from being prefixed."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:333
+#: lib/messages-tooltip-plugin.php:353
 msgid "The comment title used for Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:342
+#: lib/messages-tooltip-plugin.php:362
 msgid "The comment title used for Schema markup when the comment has a parent."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:351
+#: lib/messages-tooltip-plugin.php:371
 msgid "The comment title used for Schema markup when the comment has a rating."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:360
+#: lib/messages-tooltip-plugin.php:380
 msgid "The product variation title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:369
+#: lib/messages-tooltip-plugin.php:389
 msgid "The 404 page title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:378
+#: lib/messages-tooltip-plugin.php:398
 msgid "The 404 page description used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:387
+#: lib/messages-tooltip-plugin.php:407
 msgid "A fallback title to use when there is no title text available."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:396
+#: lib/messages-tooltip-plugin.php:416
 msgid ""
 "A fallback description to use when there is no description text available."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:408
+#: lib/messages-tooltip-plugin.php:428
 msgid ""
 "The term (categories, tags, and custom taxonomy terms) title used for meta "
 "tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:417
+#: lib/messages-tooltip-plugin.php:437
 msgid ""
 "A fallback term (categories, tags, and custom taxonomy terms) description "
 "used for meta tags and Schema markup when the term description is empty."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:426
+#: lib/messages-tooltip-plugin.php:446
 msgid "The author title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:435
+#: lib/messages-tooltip-plugin.php:455
 msgid ""
 "A fallback author description used for meta tags and Schema markup when the "
 "author description is empty."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:444
+#: lib/messages-tooltip-plugin.php:464
 msgid "The search results page title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:453
+#: lib/messages-tooltip-plugin.php:473
 msgid ""
 "The search results page description used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:462
+#: lib/messages-tooltip-plugin.php:482
 msgid "The yearly archive page title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:471
+#: lib/messages-tooltip-plugin.php:491
 msgid ""
 "The yearly archive page description used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:480
+#: lib/messages-tooltip-plugin.php:500
 msgid "The monthly archive page title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:489
+#: lib/messages-tooltip-plugin.php:509
 msgid ""
 "The monthly archive page description used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:498
+#: lib/messages-tooltip-plugin.php:518
 msgid "The daily archive page title used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:507
+#: lib/messages-tooltip-plugin.php:527
 msgid ""
 "The daily archive page description used for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:521
+#: lib/messages-tooltip-plugin.php:541
 msgid ""
 "You can select the default set of options to display in settings pages and "
 "the %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:523
+#: lib/messages-tooltip-plugin.php:543
 msgid ""
 "The basic view shows the most commonly used options, and includes a link to "
 "temporarily show all options when desired."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:525
+#: lib/messages-tooltip-plugin.php:545
 msgid ""
 "Note that showing all options by default could be a bit overwhelming for new "
 "users."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:533
+#: lib/messages-tooltip-plugin.php:553
 msgid "Show a \"%s\" menu in the admin toolbar."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:541
+#: lib/messages-tooltip-plugin.php:561
 msgid "Optionally remove settings pages from the %s menu."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:549
+#: lib/messages-tooltip-plugin.php:569
 msgid ""
 "Add or remove the %s metabox from editing pages for posts, pages, custom "
 "post types, terms (categories and tags), and user profile pages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:555
+#: lib/messages-tooltip-plugin.php:575
 msgid ""
 "Additional columns can be included by default in the admin list tables for "
 "posts, pages, custom post types, terms (categories and tags), and user "
 "profile pages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:557
+#: lib/messages-tooltip-plugin.php:577
 msgid ""
 "Users can also hide columns by using the <em>Screen Options</em> tab when "
 "viewing admin list tables."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:563
+#: lib/messages-tooltip-plugin.php:583
 msgid "Select a preferred format for the Open Graph Type drop-down options."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:569
+#: lib/messages-tooltip-plugin.php:589
 msgid "Select a preferred format for the Schema Type drop-down options."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:581
+#: lib/messages-tooltip-plugin.php:601
 msgid ""
 "A customized image for each author can be selected in the WordPress user "
 "profile %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:583
+#: lib/messages-tooltip-plugin.php:603
 msgid ""
 "If a custom image has not been selected, fallback to using their Gravatar "
 "image."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:591
+#: lib/messages-tooltip-plugin.php:611
 msgid ""
 "The requested Gravatar image width and height (a number from 1 to 2048)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:593
+#: lib/messages-tooltip-plugin.php:613
 msgid ""
 "Note that users often upload low resolution images to Gravatar, so choosing "
 "a larger image size may result in pixelation and lower-quality images."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:595
+#: lib/messages-tooltip-plugin.php:615
 msgid "The default Gravatar image size is %d pixels."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:601
+#: lib/messages-tooltip-plugin.php:621
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
 "(Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API "
@@ -9337,181 +9365,181 @@ msgid ""
 "width / height, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:610
+#: lib/messages-tooltip-plugin.php:630
 msgid ""
 "A preferred URL shortening service used for the <code>%s</code> HTML tag "
 "value, Schema markup, and social sharing buttons."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:618
+#: lib/messages-tooltip-plugin.php:638
 msgid ""
 "Shorten URLs longer than this length (the default suggested by Twitter is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:624
+#: lib/messages-tooltip-plugin.php:644
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> function value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:630
+#: lib/messages-tooltip-plugin.php:650
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:636
+#: lib/messages-tooltip-plugin.php:656
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:638
+#: lib/messages-tooltip-plugin.php:658
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:644
+#: lib/messages-tooltip-plugin.php:664
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:646
+#: lib/messages-tooltip-plugin.php:666
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:652
+#: lib/messages-tooltip-plugin.php:672
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:659
+#: lib/messages-tooltip-plugin.php:679
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:665
+#: lib/messages-tooltip-plugin.php:685
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:671
+#: lib/messages-tooltip-plugin.php:691
 msgid ""
 "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:676
+#: lib/messages-tooltip-plugin.php:696
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured username (see YOURLS Token for an alternative to "
 "the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:682
+#: lib/messages-tooltip-plugin.php:702
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:688
+#: lib/messages-tooltip-plugin.php:708
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:697
+#: lib/messages-tooltip-plugin.php:717
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:703
+#: lib/messages-tooltip-plugin.php:723
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:709
+#: lib/messages-tooltip-plugin.php:729
 msgid "The maximum age of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:715
+#: lib/messages-tooltip-plugin.php:735
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:722
+#: lib/messages-tooltip-plugin.php:742
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:724
+#: lib/messages-tooltip-plugin.php:744
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:731
+#: lib/messages-tooltip-plugin.php:751
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:748
+#: lib/messages-tooltip-plugin.php:768
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:753
+#: lib/messages-tooltip-plugin.php:773
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:765
+#: lib/messages-tooltip-plugin.php:785
 msgid ""
 "The product attribute value can be an empty string or one of these values "
 "(case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:771 lib/messages-tooltip-plugin.php:813
+#: lib/messages-tooltip-plugin.php:791 lib/messages-tooltip-plugin.php:833
 msgid "Note that the \"%s\" option supports multiple values."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:773
+#: lib/messages-tooltip-plugin.php:793
 msgid ""
 "The product attribute string will be split using the comma \",\" character."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:792
+#: lib/messages-tooltip-plugin.php:812
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:795
+#: lib/messages-tooltip-plugin.php:815
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:807
+#: lib/messages-tooltip-plugin.php:827
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:815
+#: lib/messages-tooltip-plugin.php:835
 msgid ""
 "If the custom field value is a string, it will be split on the end of line "
 "character."

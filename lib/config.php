@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.0.0-b.1',	// Plugin version.
-					'opt_version' => '948',		// Increment when changing default option values.
+					'version'     => '15.0.0-b.2',	// Plugin version.
+					'opt_version' => '949',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1803,6 +1803,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
 					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
+					'plugin_schema_json_min'    => 0,	// Minimize Schema JSON-LD.
 					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
 					'plugin_debug_html'         => 0,	// Add HTML Debug Messages.
 
@@ -1815,7 +1816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'       => 0,		// Enable Excerpt for Pages.
 					'plugin_page_tags'          => 0,		// Enable Tags for Pages.
 					'plugin_new_user_is_person' => 0,		// Add Person Role for New Users.
-					'plugin_inherit_featured'   => 0,		// Inherit Featured Image.
+					'plugin_inherit_featured'   => 1,		// Inherit Featured Image.
 					'plugin_inherit_images'     => 0,		// Inherit Custom Images.
 					'plugin_check_img_dims'     => 0,		// Image Dimension Checks.
 					'plugin_upscale_images'     => 0,		// Upscale Media Library Images.
@@ -4863,7 +4864,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
-			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 600;		// 10 minutes.

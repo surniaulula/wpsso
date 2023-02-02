@@ -35,7 +35,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_clean_on_uninstall':	// Remove Settings on Uninstall.
 
-					$text = sprintf( __( 'Check this option to remove all %s settings when you <em>uninstall</em> the plugin. This includes any custom post, term, and user meta.', 'wpsso' ), $info[ 'short' ] );
+					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
+
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+					$text = sprintf( __( 'Check this option to remove all %1$s plugin and add-ons settings when you <em>uninstall</em> the %1$s plugin (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
+
+					$text .= sprintf( __( 'This includes any custom post, term, and user data entered in the %s metabox.', 'wpsso' ), $mb_title_transl );
 
 					break;
 
@@ -43,7 +49,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
 
-					$text = sprintf( __( 'Prefer local translation files instead of translations from WordPress.org (default is %s).', 'wpsso' ), $def_checked );
+					$text = sprintf( __( 'Prefer local translation files for the %1$s plugin and its add-ons, instead of those from WordPress.org (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked );
+
+					break;
+
+				case 'tooltip-plugin_schema_json_min': 		// Disable Cache for Debugging.
+
+					$def_checked = $this->get_def_checked( 'plugin_schema_json_min' );
+
+					$opt_label_transl = _x( 'Add HTML Debug Messages', 'option label', 'wpsso' );
+
+					$text = sprintf( __( 'Minimize the Schema JSON-LD markup created by %1$s in the webpage (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
+
+					$text .= __( 'Leaving this option unchecked creates human readable Schema JSON-LD (aka "pretty print") markup in the webpage.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'Note that enabling the "%s" option will always create human readable Schema JSON-LD markup, even when this option is checked.', 'wpsso' ), $opt_label_transl );
 
 					break;
 
