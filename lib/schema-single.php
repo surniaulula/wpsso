@@ -1874,9 +1874,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				$maybe_varies_by = array();
-				$not_varies_by   = array( '@context', '@type', 'url', 'name', 'description', 'image', 'subjectOf', 'inProductGroupWithID' );
-				$varies_by       = array();
+				$exclude_varies_by = array( '@context', '@type', 'url', 'name', 'description', 'image', 'subjectOf', 'inProductGroupWithID' );
+				$maybe_varies_by   = array();
+				$varies_by         = array();
 
 				foreach ( $json_ret[ 'hasVariant' ] as $variant ) {
 
@@ -1885,7 +1885,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$maybe_varies_by = array_unique( $maybe_varies_by );
 
-				foreach ( array_diff( $maybe_varies_by, $not_varies_by ) as $prop_name ) {
+				$exclude_varies_by = apply_filters( 'wpsso_json_data_single_product_group_exclude_varies_by', $exclude_varies_by, $mod );
+
+				if ( ! empty( $exclude_varies_by ) && is_array( $exclude_varies_by ) ) {	// Just in case.
+
+					$maybe_varies_by = array_diff( $maybe_varies_by, $exclude_varies_by );
+				}
+
+				foreach ( $maybe_varies_by as $prop_name ) {
 
 					$last_value = null;
 
@@ -1911,7 +1918,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
-				$varies_by = (array) apply_filters( 'wpsso_json_prop_https_schema_org_variesby', $varies_by, $maybe_varies_by, $not_varies_by );
+				$varies_by = apply_filters( 'wpsso_json_data_single_product_group_varies_by', $varies_by, $mod );
 
 				if ( ! empty( $varies_by ) ) {
 

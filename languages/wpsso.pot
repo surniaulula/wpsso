@@ -11640,7 +11640,7 @@ msgstr ""
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:1973
+#: lib/schema-single.php:1980
 msgid "adding schema product"
 msgstr ""
 
