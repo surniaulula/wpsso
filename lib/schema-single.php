@@ -1866,6 +1866,60 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
+			 * Add the variesBy property.
+			 *
+			 * Indicates the property or properties by which the variants in a ProductGroup vary, e.g. their size,
+			 * color etc. Schema.org properties can be referenced by their short name e.g. "color"; terms defined
+			 * elsewhere can be referenced with their URIs.
+			 */
+			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
+
+				$maybe_varies_by = array();
+				$not_varies_by   = array( '@context', '@type', 'url', 'name', 'description', 'image', 'subjectOf', 'inProductGroupWithID' );
+				$varies_by       = array();
+
+				foreach ( $json_ret[ 'hasVariant' ] as $variant ) {
+
+					$maybe_varies_by = array_merge( $maybe_varies_by, array_keys( $variant ) );
+				}
+
+				$maybe_varies_by = array_unique( $maybe_varies_by );
+
+				foreach ( array_diff( $maybe_varies_by, $not_varies_by ) as $prop_name ) {
+
+					$last_value = null;
+
+					foreach ( $json_ret[ 'hasVariant' ] as $num => $variant ) {
+
+						if ( ! isset( $variant[ $prop_name ] ) ) {	// If not set in one variant, then it automatically varies.
+
+							$varies_by[] = $prop_name;
+
+							continue 2;
+
+						} elseif ( null !== $last_value ) {	// We must have at least one previous value to compare.
+						
+							if ( $last_value !== $variant[ $prop_name ] ) {
+
+								$varies_by[] = $prop_name;
+
+								continue 2;
+							}
+						}
+
+						$last_value = $variant[ $prop_name ];
+					}
+				}
+
+				$varies_by = (array) apply_filters( 'wpsso_json_prop_https_schema_org_variesby', $varies_by, $maybe_varies_by, $not_varies_by );
+
+				if ( ! empty( $varies_by ) ) {
+
+					$json_ret[ 'variesBy' ] = $varies_by;
+				}
+			}
+
+			/*
 			 * Filter the single product group data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_product_group', $json_ret, $mod );
