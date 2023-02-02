@@ -247,6 +247,8 @@ This version changes the Schema markup for WooCommerce variations. Instead of cr
 	* Fixed potential missing price currency and value units meta tags for WooCommerce products with variations.
 	* Fixed extra min/max energy efficiency meta tags when no energy efficiency value selected.
 * **Developer Notes**
+	* Added a new 'wpsso_json_data_single_product_group_exclude_varies_by' filter.
+	* Added a new 'wpsso_json_data_single_product_group_varies_by' filter.
 	* Added a new `WpssoSchemaSingle::add_product_group_data()` method.
 	* Added a new `WpssoOpenGraph->get_product_retailer_item_image_urls()` method.
 	* Added a new `WpssoOpenGraph->get_product_retailer_item_image()` method.
