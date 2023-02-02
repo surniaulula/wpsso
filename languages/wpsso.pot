@@ -8840,8 +8840,8 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:64
 msgid ""
-"Leaving this option unchecked creates human readable Schema JSON-LD (aka "
-"\"pretty print\") markup in the webpage."
+"Leaving this option unchecked creates human readable (aka \"pretty print\") "
+"Schema JSON-LD markup in the webpage."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:66

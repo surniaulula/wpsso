@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$text = sprintf( __( 'Minimize the Schema JSON-LD markup created by %1$s in the webpage (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
-					$text .= __( 'Leaving this option unchecked creates human readable Schema JSON-LD (aka "pretty print") markup in the webpage.', 'wpsso' ) . ' ';
+					$text .= __( 'Leaving this option unchecked creates human readable (aka "pretty print") Schema JSON-LD markup in the webpage.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'Note that enabling the "%s" option will always create human readable Schema JSON-LD markup, even when this option is checked.', 'wpsso' ), $opt_label_transl );
 
