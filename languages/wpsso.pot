@@ -419,7 +419,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:471 lib/com/cache.php:628 lib/util-cache.php:226
+#: lib/com/cache.php:471 lib/com/cache.php:628 lib/util-cache.php:227
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -8245,7 +8245,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
 #: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1670 lib/user.php:1702
-#: lib/user.php:1799 lib/user.php:1815 lib/user.php:1949
+#: lib/user.php:1800 lib/user.php:1816 lib/user.php:1951
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11417,7 +11417,7 @@ msgid ""
 msgstr ""
 
 #: lib/post.php:1236
-msgid "Does a caching plugin or service needs to be refreshed?"
+msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
 #: lib/post.php:1269
@@ -12143,10 +12143,9 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:61 lib/util-cache.php:87 lib/util-cache.php:617
+#: lib/submenu/tools.php:61 lib/util-cache.php:87 lib/util-cache.php:618
 msgid ""
-"The maximum execution time for this background task is currently limited to "
-"%s."
+"The maximum execution time for this background task is currently set to %s."
 msgstr ""
 
 #: lib/submenu/tools.php:66
@@ -12321,8 +12320,8 @@ msgid ""
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1736 lib/user.php:1849 lib/util-cache.php:138
-#: lib/util-cache.php:676
+#: lib/user.php:1736 lib/user.php:1850 lib/util-cache.php:138
+#: lib/util-cache.php:677
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -12331,31 +12330,31 @@ msgstr ""
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1777
+#: lib/user.php:1778
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1778 lib/user.php:1886 lib/util-cache.php:188
-#: lib/util-cache.php:774
-msgid "The total execution time for this task was %0.3f seconds."
+#: lib/user.php:1779 lib/user.php:1888 lib/util-cache.php:189
+#: lib/util-cache.php:776
+msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1798
+#: lib/user.php:1799
 msgid ""
 "A background task will begin shortly to remove the %s role from all users."
 msgstr ""
 
-#: lib/user.php:1834
+#: lib/user.php:1835
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1850
+#: lib/user.php:1851
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1885
+#: lib/user.php:1887
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -12483,37 +12482,37 @@ msgid ""
 "cache have been cleared."
 msgstr ""
 
-#: lib/util-cache.php:256
+#: lib/util-cache.php:257
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:437
+#: lib/util-cache.php:438
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:616
+#: lib/util-cache.php:617
 msgid ""
 "A background task will begin shortly to refresh the post, term and user "
 "transient and metadata cache."
 msgstr ""
 
-#: lib/util-cache.php:662
+#: lib/util-cache.php:663
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:677
+#: lib/util-cache.php:678
 msgid "A task to refresh the cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:687
+#: lib/util-cache.php:688
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s for "
 "cache refresh."
 msgstr ""
 
-#: lib/util-cache.php:761
+#: lib/util-cache.php:762
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."

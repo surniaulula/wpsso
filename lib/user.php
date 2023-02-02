@@ -1774,8 +1774,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
+				$human_time  = human_time_diff( 0, $mtime_total );
 				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-end' );
 			}
@@ -1882,8 +1883,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
+				$human_time  = human_time_diff( 0, $mtime_total );
 				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-end' );
 			}

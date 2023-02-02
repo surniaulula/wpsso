@@ -1233,7 +1233,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$notice_msg = sprintf( __( 'The %1$s meta tags and Schema markup section was not found in <a href="%2$s">%2$s</a>.',
 						'wpsso' ), $short_name, $check_url ) . ' ';
 
-					$notice_msg .= __( 'Does a caching plugin or service needs to be refreshed?', 'wpsso' );
+					$notice_msg .= __( 'Does a caching plugin or service need to be refreshed?', 'wpsso' );
 
 					$this->p->notice->err( $notice_msg );
 				}

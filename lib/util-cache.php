@@ -82,9 +82,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {	// Just in case.
 
-				$time_limit = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
+				$human_time = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
 				$notice_msg = __( 'A background task will begin shortly to clear the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $time_limit ) . ' ';
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'clear-cache-scheduled' );
 			}
@@ -147,9 +147,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( ! set_time_limit( WPSSO_CACHE_CLEAR_MAX_TIME ) ) {
 
-					$time_limit = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
+					$human_time = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
 					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache clearing.', 'wpsso' ),
-						'<code>set_time_limit()</code>', $time_limit );
+						'<code>set_time_limit()</code>', $human_time );
 
 					$this->p->notice->err( $notice_msg, $user_id, $notice_key = 'clear-cache-time-limit-error' );
 				}
@@ -180,12 +180,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, and the WordPress object cache have been cleared.',
 				'wpsso' ), $cleared_files, $cleared_transients ) . ' ' . $cleared_other_msg . ' ';
 
-			$notice_msg = apply_filters( 'wpsso_cache_cleared_notice', $notice_msg, $user_id, $clear_other, $clear_short, $refresh );
+			$notice_msg = trim( apply_filters( 'wpsso_cache_cleared_notice', $notice_msg, $user_id, $clear_other, $clear_short, $refresh ) ) . ' ';
 
 			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total ) . ' ';
+				$human_time  = human_time_diff( 0, $mtime_total );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'clear-cache-ended' );
 			}
@@ -612,9 +613,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {	// Just in case.
 
-				$time_limit = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+				$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 				$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $time_limit ) . ' ';
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'refresh-cache-scheduled' );
 			}
@@ -683,9 +684,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				if ( ! set_time_limit( WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
-					$time_limit = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+					$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache refresh.', 'wpsso' ),
-						'<code>set_time_limit()</code>', $time_limit );
+						'<code>set_time_limit()</code>', $human_time );
 
 					$this->p->notice->err( $notice_msg, $user_id, $notice_key = 'refresh-cache-time-limit-error' );
 				}
@@ -766,12 +767,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 *
 			 * See WpssoGmfFilters->filter_cache_refreshed_notice().
 			 */
-			$notice_msg = apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id );
+			$notice_msg = trim( apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id ) ) . ' ';
 
 			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$human_time  = human_time_diff( 0, $mtime_total );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'refresh-cache-ended' );
 			}

@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function show_post_body_setting_form() {
 
-			$max_refresh_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+			$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 
 			echo '<div id="tools-content">' . "\n";
 
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '* ';
-			echo sprintf( __( 'The maximum execution time for this background task is currently limited to %s.', 'wpsso' ), $max_refresh_time ) . ' ';
+			echo sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
 			echo '</p>' . "\n";
 
 			echo '<p class="status-msg smaller left">';
