@@ -973,7 +973,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * See WpssoCmcfActions->check_product_image_urls().
 		 * See WpssoGmfActions->check_product_image_urls().
-		 * WpssoOpenGraph->get_product_retailer_item_images().
+		 * See WpssoOpenGraph->get_product_retailer_item_images().
+		 * See WpssoSchema::add_offers_aggregate_data_mt().
+		 * See WpssoSchema::add_offers_data_mt().
+		 * See WpssoSchema::add_variants_data_mt().
 		 */
 		public function get_product_retailer_item_mod( array $mt_single ) {
 
