@@ -234,11 +234,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.0-b.1 (2023/02/02)**
+**Version 15.0.0-b.2 (2023/02/02)**
+
+This version changes the Schema markup for WooCommerce variations. Instead of creating Schema Product markup with offers (one offer per variation), WPSSO Core now creates Schema ProductGroup markup with products (one product per variation) and one offer per product.
 
 * **New Features**
 	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
+	* Added a new "Minimize Schema JSON-LD" option in the SSO &gt; Advanced Settings page.
 	* Removed filter to allow sorting of the WooCommerce variations array (no longer needed).
 * **Bugfixes**
 	* Fixed potential missing price currency and value units meta tags for WooCommerce products with variations.
@@ -260,6 +263,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the `WpssoSchema::add_variants_data()` method to `WpssoSchema::add_variants_data_mt()`.
 	* Removed the `WpssoIntegEcomWooCommerce->maybe_sort_available_variations()` private method.
 	* Removed the 'wpsso_request_url_query_attrs_cache_disable' filter.
+	* Removed the WPSSO_JSON_PRETTY_PRINT constant.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -994,7 +998,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.0.0-b.1 =
+= 15.0.0-b.2 =
 
 (2023/02/02) Added support for Schema ProductGroup markup. Fixed potential missing price currency and value units meta tags. Fixed extra min/max energy efficiency meta tags.
 
