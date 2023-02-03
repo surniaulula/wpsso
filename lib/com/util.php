@@ -4347,36 +4347,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function safe_error_log( $error_msg, $strip_html = false ) {
 
-			$ini_set = array(
+			$ini_safe = array(
 				'display_errors' => 0,
 				'log_errors'     => 1,
-				'error_log'      => defined( 'WP_DEBUG_LOG' ) && is_string( WP_DEBUG_LOG ) && WP_DEBUG_LOG ?
-					WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
+				'error_log'      => defined( 'WP_DEBUG_LOG' ) && is_string( WP_DEBUG_LOG ) &&
+					WP_DEBUG_LOG ? WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
 			);
 
-			$ini_saved = array();
+			$ini_changed = array();
 
-			/*
-			 * Save old option values and define new option values.
-			 */
-			foreach ( $ini_set as $name => $value ) {
+			foreach ( $ini_safe as $name => $value ) {
 
-				$ini_saved[ $name ] = ini_get( $name );	// Returns false if option does not exist.
+				$orig_value = ini_get( $name );	// Returns false if option does not exist.
 
-				if ( false !== $ini_saved[ $name ] ) {
+				if ( false !== $orig_value && $value !== $orig_value ) {
 
-					if ( $ini_saved[ $name ] !== $value ) {
+					if ( false !== ini_set( $name, $value ) ) {
 
-						ini_set( $name, $value );
-
-					} else {
-
-						unset( $ini_saved[ $name ] );
+						$ini_changed[] = $name;
 					}
-
-				} else {
-
-					unset( $ini_saved[ $name ] );
 				}
 			}
 
@@ -4390,12 +4379,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			error_log( $error_msg );
 
-			/*
-			 * Only restore option values that were changed.
-			 */
-			foreach ( $ini_saved as $name => $value ) {
+			foreach ( $ini_changed as $name ) {
 
-				ini_set( $name, $value );
+				ini_restore( $name );
 			}
 		}
 
