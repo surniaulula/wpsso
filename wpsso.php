@@ -78,14 +78,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
 		public $id           = 'wpsso';	// Plugin id.
-		public $json         = array();	// Loaded json filters.
-		public $m            = array();	// Loaded modules from core plugin.
-		public $m_ext        = array();	// Loaded modules from extensions / add-ons.
+		public $json         = array();	// Loaded json filter objects..
+		public $m            = array();	// Loaded module objects from core plugin.
+		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array from WpssoConfig::get_config().
 		public $avail        = array();	// Third-party plugin checks.
-		public $options      = array();	// Blog options.
-		public $site_options = array();	// Multisite options.
-		public $sc           = array();	// Loaded shortcodes.
+		public $options      = array();	// Blog options array.
+		public $site_options = array();	// Multisite options array.
+		public $sc           = array();	// Loaded shortcode objects.
 
 		private $is_pp = null;		// Since WPSSO Core v9.8.0.
 
@@ -507,11 +507,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			foreach ( $classnames as $id => $classname ) {
 
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_init_json_filter_' . $id );
-
 				/*
 				 * Since WPSSO Core v15.0.0.
+				 *
+				 * Example $filter_name = 'wpsso_init_json_filter_prop_haspart'.
 				 */
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_init_json_filter_' . $id );
+
 				if ( apply_filters( $filter_name, true ) ) {
 
 					$this->json[ $id ] = new $classname( $this );

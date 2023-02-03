@@ -119,6 +119,8 @@
 
 'wpsso_inherit_featured_image' ( $bool, $mod )
 
+'wpsso_init_json_filter_{lib_dir}_{lib_id}' ( $bool = true )
+
 'wpsso_input_limits_{option_key}' ( array $limits )
 
 'wpsso_is_functions' ( $is_functions )

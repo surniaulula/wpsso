@@ -11013,7 +11013,7 @@ msgstr ""
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:1036 wpsso.php:602
+#: lib/messages.php:1036 wpsso.php:604
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
@@ -12835,40 +12835,40 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:605
+#: wpsso.php:607
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:773
+#: wpsso.php:775
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:780
+#: wpsso.php:782
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:788
+#: wpsso.php:790
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:790
+#: wpsso.php:792
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:802
+#: wpsso.php:804
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:804
+#: wpsso.php:806
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
