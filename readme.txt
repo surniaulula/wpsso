@@ -236,6 +236,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.0.1-dev.1 (2023/02/03)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `SucomUtil::safe_error_log()` method.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 15.0.0 (2023/02/03)**
 
 This version changes the Schema markup for WooCommerce variations. Instead of creating Schema Product markup with offers (one offer per variation), WPSSO Core now creates Schema ProductGroup markup with products (one product per variation) and one offer per product.
@@ -570,6 +584,10 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 15.0.1-dev.1 =
+
+(2023/02/03) None.
 
 = 15.0.0 =
 
