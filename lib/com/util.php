@@ -4358,11 +4358,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $ini_safe as $name => $value ) {
 
-				$orig_value = ini_get( $name );	// Returns false if option does not exist.
+				if ( $value !== ini_get( $name ) ) {	// Returns false on failure.
 
-				if ( false !== $orig_value && $value !== $orig_value ) {
-
-					if ( false !== ini_set( $name, $value ) ) {
+					if ( false !== ini_set( $name, $value ) ) {	// Returns false on failure.
 
 						$ini_changed[] = $name;
 					}
