@@ -251,6 +251,7 @@ This version changes the Schema markup for WooCommerce variations. Instead of cr
 * **Developer Notes**
 	* Added a new 'wpsso_json_data_single_product_group_exclude_varies_by' filter.
 	* Added a new 'wpsso_json_data_single_product_group_varies_by' filter.
+	* Added a new 'wpsso_init_json_filter_{lib_dir}_{lib_id}' filter.
 	* Added a new `WpssoSchemaSingle::add_product_group_data()` method.
 	* Added a new `WpssoOpenGraph->get_product_retailer_item_image_urls()` method.
 	* Added a new `WpssoOpenGraph->get_product_retailer_item_image()` method.
