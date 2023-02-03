@@ -77,15 +77,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Reference variables (config, options, modules, etc.).
 		 */
 		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
-		public $id           = 'wpsso';	// Plugin ID (since WPSSO Core v8.14.0).
-		public $json         = array();	// Schema json filters.
-		public $m            = array();	// Loaded module objects from core plugin.
-		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
+		public $id           = 'wpsso';	// Plugin id.
+		public $json         = array();	// Loaded json filters.
+		public $m            = array();	// Loaded modules from core plugin.
+		public $m_ext        = array();	// Loaded modules from extensions / add-ons.
 		public $cf           = array();	// Config array from WpssoConfig::get_config().
-		public $avail        = array();	// Assoc array for third-party plugin checks.
-		public $options      = array();	// Individual blog/site options.
+		public $avail        = array();	// Third-party plugin checks.
+		public $options      = array();	// Blog options.
 		public $site_options = array();	// Multisite options.
-		public $sc           = array();	// Shortcodes.
+		public $sc           = array();	// Loaded shortcodes.
 
 		private $is_pp = null;		// Since WPSSO Core v9.8.0.
 
@@ -489,6 +489,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function init_json_filters() {
 
+			$current_action = current_action();
+
+			if ( 'wpsso_init_json_filters' !== $current_action ) {
+
+				$this->debug->log( 'exiting early: current action ' . $current_action . ' is incorrect' );
+
+				return;
+			}
+
 			if ( $this->debug->enabled ) {
 
 				$this->debug->mark( 'init json filters' );	// Begin timer.
@@ -498,12 +507,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			foreach ( $classnames as $id => $classname ) {
 
-				/*
-				 * We only use the Wpsso->json array to prevent loading json filters more than once.
-				 */
-				if ( ! isset( $this->json[ $id ] ) ) {	// Just in case.
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_init_json_filter_' . $id );
 
-					new $classname( $this );
+				/*
+				 * Since WPSSO Core v15.0.0.
+				 */
+				if ( apply_filters( $filter_name, true ) ) {
+
+					$this->json[ $id ] = new $classname( $this );
 				}
 			}
 

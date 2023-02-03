@@ -36,11 +36,6 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 				'json_data_https_schema_org_creativework' => 5,
 			), $prio = 10000 );
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'added maybe_comment_json_scripts filter hook for the_content' );
-			}
-
 			/*
 			 * Comment json scripts saved in the self::$meta_name metadata array.
 			 *
@@ -49,6 +44,11 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 			 * add_filter( 'the_content', 'do_shortcode', 11 ); // After wpautop().
 			 */
 			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), 12 );	// After do_shortcode().
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'added maybe_comment_json_scripts filter hook for the_content' );
+			}
 		}
 
 		/*

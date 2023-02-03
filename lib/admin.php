@@ -1732,13 +1732,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
-			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
-			 * then unhooks itself from the action, so it can only be run once.
-			 */
-			do_action( 'wpsso_init_json_filters' );
-
 			$pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 			$media_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_media' );
