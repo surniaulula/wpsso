@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.0-rc.1 (2023/02/03)**
+**Version 15.0.0 (2023/02/03)**
 
 This version changes the Schema markup for WooCommerce variations. Instead of creating Schema Product markup with offers (one offer per variation), WPSSO Core now creates Schema ProductGroup markup with products (one product per variation) and one offer per product.
 
@@ -1002,7 +1002,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.0.0-rc.1 =
+= 15.0.0 =
 
 (2023/02/03) Added support for Schema ProductGroup markup. Fixed potential missing price currency and value units meta tags. Fixed extra min/max energy efficiency meta tags.
 
