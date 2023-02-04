@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.1-dev.1 (2023/02/04)**
+**Version 15.0.1-rc.1 (2023/02/04)**
 
 * **New Features**
 	* None.
@@ -585,7 +585,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.0.1-dev.1 =
+= 15.0.1-rc.1 =
 
 (2023/02/04) Fixed to avoid re-setting PHP 'error_log' to an empty value.
 
