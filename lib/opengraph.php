@@ -1159,11 +1159,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! empty( $mt_og[ $mt_name ] ) && is_array( $mt_og[ $mt_name ] ) ) {
 
 						foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
-	
+
 							unset ( $mt_single[ 'product:brand' ] );	// Allow only a single brand value (in the parent product).
-	
+
 							foreach ( $mt_single as $mt_single_name => $mt_single_value ) {
-	
+
 								/*
 								 * Avoid duplicate values (like prices) between the main product and its variations.
 								 */
@@ -1188,7 +1188,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 											continue;
 										}
 									}
-	
+
 									unset ( $mt_og[ $mt_single_name ] );
 								}
 							}

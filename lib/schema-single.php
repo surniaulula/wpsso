@@ -1905,7 +1905,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							continue 2;
 
 						} elseif ( null !== $last_value ) {	// We must have at least one previous value to compare.
-						
+
 							if ( $last_value !== $variant[ $prop_name ] ) {
 
 								$varies_by[] = $prop_name;

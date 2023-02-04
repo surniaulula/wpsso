@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Maybe do a 301 redirect.
 			 */
-			add_action( 'template_redirect', array( $this, 'maybe_redirect_url' ), -1000 );
+			add_action( 'template_redirect', array( $this, 'maybe_redirect_url' ), PHP_INT_MIN );
 		}
 
 		public function maybe_redirect_url() {

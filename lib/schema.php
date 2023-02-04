@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data = call_user_func( array( $this, $method_filter_name ), $json_data, $mod, $mt_og, $page_type_id, false );
 
 				} else {
-				
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'data filter not found: ' . $data_filter_name );
@@ -3107,7 +3107,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					continue;
 				}
-				
+
 				if ( ! $mod = $wpsso->og->get_product_retailer_item_mod( $mt_variant ) ) {
 
 					if ( $wpsso->debug->enabled ) {

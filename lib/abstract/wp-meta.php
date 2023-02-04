@@ -1195,7 +1195,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				return;
 			}
-			
+
 			$canonical_url = $this->p->util->get_canonical_url( $mod );
 
 			$ref_url = $this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'checking meta tags', 'wpsso' ) );

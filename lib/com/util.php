@@ -4350,19 +4350,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ini_safe = array(
 				'display_errors' => 0,
 				'log_errors'     => 1,
-				'error_log'      => defined( 'WP_DEBUG_LOG' ) && is_string( WP_DEBUG_LOG ) &&
-					WP_DEBUG_LOG ? WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
+				'error_log'      => defined( 'WP_DEBUG_LOG' ) && is_string( WP_DEBUG_LOG ) && WP_DEBUG_LOG ?
+					WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
 			);
 
-			$ini_changed = array();
+			$ini_orig = array();
 
 			foreach ( $ini_safe as $name => $value ) {
 
-				if ( $value !== ini_get( $name ) ) {	// Returns false on failure.
+				$value_orig = ini_get( $name );	// Returns false on failure.
+
+				if ( $value !== $value_orig ) {
 
 					if ( false !== ini_set( $name, $value ) ) {	// Returns false on failure.
 
-						$ini_changed[] = $name;
+						$ini_orig[ $name ] = $value_orig;
 					}
 				}
 			}
@@ -4377,9 +4379,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			error_log( $error_msg );
 
-			foreach ( $ini_changed as $name ) {
+			foreach ( $ini_orig as $name => $value_orig ) {
 
-				ini_restore( $name );
+				/*
+				 * Failed getting the original value.
+				 */
+				if ( false === $value_orig ) {
+
+					ini_restore( $name );
+
+				/*
+				 * PHP does not allow setting an empty 'error_log' when ini_get( 'open_basedir' ) is true.
+				 */
+				} elseif ( 'error_log' === $name && empty( $value_orig ) && ini_get( 'open_basedir' ) ) {
+
+					ini_restore( $name );
+
+				} else {
+
+					ini_set( $name, $value_orig );
+				}
 			}
 		}
 

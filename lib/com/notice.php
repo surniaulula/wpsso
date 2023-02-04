@@ -166,7 +166,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 
 					foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
-				
+
 						if ( empty( $notice_key ) || ( ! empty( $payload[ 'notice_key' ] ) && $notice_key === $payload[ 'notice_key' ] ) ) {
 
 							$this->unload_notice_cache( $user_id, $msg_type, $msg_key );
@@ -1123,7 +1123,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function unload_notice_cache( $user_id, $msg_type, $msg_key ) {
 
 			unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
-			
+
 			if ( empty( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
 
 				unset( $this->notice_cache[ $user_id ][ $msg_type ] );
@@ -1153,7 +1153,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								! isset( $this->notice_noload[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
 
 								$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
-								
+
 								$this->notice_noload[ $user_id ][ $msg_type ][ $msg_key ] = true;
 							}
 						}
@@ -1209,7 +1209,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $user_id ) ) {	// Just in case.
 
 				if ( $cur_uid !== $user_id ) {
-				
+
 					$this->load_notice_cache( $user_id );	// Read and merge notices from transient cache.
 				}
 
