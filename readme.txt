@@ -236,14 +236,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.0.1-dev.1 (2023/02/03)**
+**Version 15.0.1-dev.1 (2023/02/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed to avoid re-setting PHP 'error_log' to an empty value when PHP 'open_basedir' is true.
 * **Developer Notes**
 	* Refactored the `SucomUtil::safe_error_log()` method.
 * **Requires At Least**
@@ -587,7 +587,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 15.0.1-dev.1 =
 
-(2023/02/03) None.
+(2023/02/04) Fixed to avoid re-setting PHP 'error_log' to an empty value.
 
 = 15.0.0 =
 
