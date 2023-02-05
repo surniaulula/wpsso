@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed to avoid re-setting PHP 'error_log' to an empty value when PHP 'open_basedir' is true.
+	* Fixed re-setting PHP 'error_log' to an empty value when PHP 'open_basedir' is true.
 * **Developer Notes**
 	* Refactored the `SucomUtil::safe_error_log()` method.
 * **Requires At Least**
@@ -587,7 +587,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 15.0.1 =
 
-(2023/02/04) Fixed to avoid re-setting PHP 'error_log' to an empty value.
+(2023/02/04) Fixed re-setting PHP 'error_log' to an empty value.
 
 = 15.0.0 =
 
