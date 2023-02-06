@@ -236,6 +236,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.1.0-dev.1 (2023/02/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added inheritance of the product group 'aggregateRating' and 'review' properties for the product group variants.
+	* Added support for Schema products with offers or Schema product groups with variants, depending on the Schema Type selected in the Document SSO metabox.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a Schema '@id' property to reviews.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 15.0.1 (2023/02/04)**
 
 * **New Features**
@@ -584,6 +599,10 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 15.1.0-dev.1 =
+
+(2023/02/11) Added inheritance of the product group 'aggregateRating' and 'review' properties. Added support for Schema products with offers or Schema product groups with variants.
 
 = 15.0.1 =
 
