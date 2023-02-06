@@ -194,6 +194,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $post_mod, $comment_id );
 
 			/*
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $comment_id values.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $comment_id ) );
+
+			/*
 			 * Add or replace the json data.
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_element );

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.0.1',	// Plugin version.
-					'opt_version' => '949',		// Increment when changing default option values.
+					'version'     => '15.1.0-dev.1',	// Plugin version.
+					'opt_version' => '951',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1410,20 +1410,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'og_type_for_attachment'   => 'website',
-					'og_type_for_article'      => 'article',
-					'og_type_for_book'         => 'book',
-					'og_type_for_business'     => 'place',
-					'og_type_for_download'     => 'product',	// For Easy Digital Downloads.
-					'og_type_for_organization' => 'website',
-					'og_type_for_page'         => 'article',
-					'og_type_for_place'        => 'place',
-					'og_type_for_post'         => 'article',
-					'og_type_for_product'      => 'product', 	// For WooCommerce.
-					'og_type_for_question'     => 'article',
-					'og_type_for_tc_events'    => 'article',	// For Tickera.
-					'og_type_for_tribe_events' => 'article',	// For The Events Calendar.
-					'og_type_for_website'      => 'website',
+					'og_type_for_attachment'        => 'website',
+					'og_type_for_article'           => 'article',
+					'og_type_for_book'              => 'book',
+					'og_type_for_business'          => 'place',
+					'og_type_for_download'          => 'product',	// For Easy Digital Downloads.
+					'og_type_for_organization'      => 'website',
+					'og_type_for_page'              => 'article',
+					'og_type_for_place'             => 'place',
+					'og_type_for_post'              => 'article',
+					'og_type_for_product'           => 'product', 	// For WooCommerce.
+					'og_type_for_product_variation' => 'product', 	// For WooCommerce.
+					'og_type_for_question'          => 'article',
+					'og_type_for_tc_events'         => 'article',	// For Tickera.
+					'og_type_for_tribe_events'      => 'article',	// For The Events Calendar.
+					'og_type_for_website'           => 'website',
 
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
@@ -1495,28 +1496,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'schema_type_for_attachment'   => 'webpage',
-					'schema_type_for_article'      => 'article',
-					'schema_type_for_book'         => 'book',
-					'schema_type_for_business'     => 'local.business',
-					'schema_type_for_download'     => 'product',		// For Easy Digital Downloads.
-					'schema_type_for_event'        => 'event',
-					'schema_type_for_howto'        => 'howto',
-					'schema_type_for_job_listing'  => 'job.posting',	// For WP Job Manager.
-					'schema_type_for_jobpost'      => 'job.posting',	// For Simple Job Board.
-					'schema_type_for_organization' => 'organization',
-					'schema_type_for_page'         => 'article',
-					'schema_type_for_person'       => 'person',
-					'schema_type_for_place'        => 'place',
-					'schema_type_for_post'         => 'blog.posting',
-					'schema_type_for_product'      => 'product',		// For WooCommerce.
-					'schema_type_for_qa'           => 'webpage.qa',
-					'schema_type_for_question'     => 'question',		// For WPSSO FAQ.
-					'schema_type_for_review'       => 'review',		// For WP Product Review.
-					'schema_type_for_tc_events'    => 'event',		// For Tickera.
-					'schema_type_for_tribe_events' => 'event',		// For The Events Calendar.
-					'schema_type_for_webpage'      => 'webpage',
-					'schema_type_for_website'      => 'website',
+					'schema_type_for_attachment'        => 'webpage',
+					'schema_type_for_article'           => 'article',
+					'schema_type_for_book'              => 'book',
+					'schema_type_for_business'          => 'local.business',
+					'schema_type_for_download'          => 'product',	// For Easy Digital Downloads.
+					'schema_type_for_event'             => 'event',
+					'schema_type_for_howto'             => 'howto',
+					'schema_type_for_job_listing'       => 'job.posting',	// For WP Job Manager.
+					'schema_type_for_jobpost'           => 'job.posting',	// For Simple Job Board.
+					'schema_type_for_organization'      => 'organization',
+					'schema_type_for_page'              => 'article',
+					'schema_type_for_person'            => 'person',
+					'schema_type_for_place'             => 'place',
+					'schema_type_for_post'              => 'blog.posting',
+					'schema_type_for_product'           => 'product',	// For WooCommerce.
+					'schema_type_for_product_variation' => 'product', 	// For WooCommerce.
+					'schema_type_for_qa'                => 'webpage.qa',
+					'schema_type_for_question'          => 'question',	// For WPSSO FAQ.
+					'schema_type_for_review'            => 'review',	// For WP Product Review.
+					'schema_type_for_tc_events'         => 'event',		// For Tickera.
+					'schema_type_for_tribe_events'      => 'event',		// For The Events Calendar.
+					'schema_type_for_webpage'           => 'webpage',
+					'schema_type_for_website'           => 'website',
 
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.

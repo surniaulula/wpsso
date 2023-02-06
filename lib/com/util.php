@@ -2193,22 +2193,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':shipping_weight:units'  => null,
 				$mt_pre . ':shipping_class_id'      => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':shipping_offers'        => array(),	// Non-standard / internal meta tag.
+
+				/*
+				 * Product ratings and reviews.
+				 */
+				$mt_pre . ':rating:average' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:count'   => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:worst'   => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:best'    => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':reviews'        => array(),	// Non-standard / internal meta tag.
 			);
 
 			if ( ! empty( $mt_og[ 'og:type' ] ) &&  'product' === $mt_og[ 'og:type' ] ) {
 
 				$mt_ret = array_merge( $mt_ret, array(
-
-					/*
-					 * Product ratings and reviews.
-					 */
-					$mt_pre . ':rating:average' => null,	// Non-standard / internal meta tag.
-					$mt_pre . ':rating:count'   => null,	// Non-standard / internal meta tag.
-					$mt_pre . ':rating:worst'   => null,	// Non-standard / internal meta tag.
-					$mt_pre . ':rating:best'    => null,	// Non-standard / internal meta tag.
-					$mt_pre . ':review:count'   => null,	// Non-standard / internal meta tag.
-					$mt_pre . ':reviews'        => array(),	// Non-standard / internal meta tag.
-					$mt_pre . ':variants'       => array(),	// Non-standard / internal meta tag.
+					$mt_pre . ':variants' => array(),	// Non-standard / internal meta tag.
 				) );
 			}
 

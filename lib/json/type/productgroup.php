@@ -44,6 +44,26 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 
 			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_element = false );
 
+			/*
+			 * Inherit the product group 'aggregateRating' and 'review' properties for Google.
+			 */
+			foreach ( array( 'aggregateRating', 'review' ) as $prop_name ) {
+
+				if ( ! empty( $json_data[ $prop_name ] ) ) {
+
+					if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
+
+						foreach ( $json_ret[ 'hasVariant' ] as &$variant ) {
+
+							if ( empty( $variant[ $prop_name ] ) ) {
+
+								$variant[ $prop_name ] = $json_data[ $prop_name ];
+							}
+						}
+					}
+				}
+			}
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

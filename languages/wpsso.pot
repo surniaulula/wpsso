@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.0.1\n"
+"Project-Id-Version: WPSSO Core 15.1.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6668,60 +6668,60 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:143
+#: lib/integ/ecom/woocommerce.php:147
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:146
+#: lib/integ/ecom/woocommerce.php:150
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:150
+#: lib/integ/ecom/woocommerce.php:154
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:151
+#: lib/integ/ecom/woocommerce.php:155
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:152
+#: lib/integ/ecom/woocommerce.php:156
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:153
+#: lib/integ/ecom/woocommerce.php:157
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:158
+#: lib/integ/ecom/woocommerce.php:162
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:201
+#: lib/integ/ecom/woocommerce.php:205
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:805
+#: lib/integ/ecom/woocommerce.php:1465
+msgid "World"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:1552
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:808
+#: lib/integ/ecom/woocommerce.php:1555
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:811
+#: lib/integ/ecom/woocommerce.php:1558
 msgid "The rating count or the review count must be greater than 0."
-msgstr ""
-
-#: lib/integ/ecom/woocommerce.php:1578
-msgid "World"
 msgstr ""
 
 #: lib/integ/event/the-events-calendar.php:52
@@ -6848,7 +6848,7 @@ msgid ""
 "a>."
 msgstr ""
 
-#: lib/json/prop/review.php:218
+#: lib/json/prop/review.php:223
 msgid ""
 "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not "
 "allow reviews for the Schema %2$s type</a>."
@@ -11591,56 +11591,56 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:916
+#: lib/schema-single.php:921
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:917
+#: lib/schema-single.php:922
 msgid "adding schema organization ID %s"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1000
+#: lib/schema-single.php:1005
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1003
+#: lib/schema-single.php:1008
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1006
+#: lib/schema-single.php:1011
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1029
+#: lib/schema-single.php:1034
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1043 lib/schema-single.php:1052
+#: lib/schema-single.php:1048 lib/schema-single.php:1057
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1226
+#: lib/schema-single.php:1231
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1433
+#: lib/schema-single.php:1438
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:1857
+#: lib/schema-single.php:1862
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:1980
+#: lib/schema-single.php:1985
 msgid "adding schema product"
 msgstr ""
 
@@ -11663,7 +11663,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3753
+#: lib/schema.php:3752
 msgid "checking schema properties"
 msgstr ""
 

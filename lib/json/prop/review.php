@@ -150,6 +150,16 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 							);
 						}
 
+						if ( ! empty( $mt_review[ 'review:image' ] ) ) {
+
+							WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ 'review:image' ] );
+						}
+
+						if ( ! empty( $mt_review[ 'review:video' ] ) ) {
+
+							WpssoSchema::add_videos_data_mt( $single_review[ 'video' ], $mt_review[ 'review:video' ] );
+						}
+
 						/*
 						 * If we have a comment ID then add any replies to the comment.
 						 */
@@ -162,16 +172,11 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 
 								unset( $single_review[ 'comment' ] );
 							}
-						}
 
-						if ( ! empty( $mt_review[ 'review:image' ] ) ) {
-
-							WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ 'review:image' ] );
-						}
-
-						if ( ! empty( $mt_review[ 'review:video' ] ) ) {
-
-							WpssoSchema::add_videos_data_mt( $single_review[ 'video' ], $mt_review[ 'review:video' ] );
+							/*
+							 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $comment_id values.
+							 */
+							WpssoSchema::update_data_id( $single_review, array( $type_id = 'review', $mt_review[ 'review:id' ] ) );
 						}
 
 						/*

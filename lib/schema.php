@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} else {
 
-				self::update_data_id( $json_data, $page_type_id );
+				self::update_data_id( $json_data, empty( $mod[ 'id' ] ) ? $page_type_id : array( $page_type_id, $mod[ 'id' ] ) );
 
 				$json_data = array( $json_data );
 			}
@@ -2836,8 +2836,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$added_count = 0;	// Initialize the total posts added counter.
 
 			/*
-			 * The 6th argument used to be $posts_per_page (now $prop_type_ids) and 7th argument $prop_type_ids (now
-			 * $deprecated).
+			 * 6th arg used to be $posts_per_page (now $prop_type_ids) and 7th arg $prop_type_ids (now $deprecated).
 			 */
 			if ( ! is_array( $prop_type_ids ) && is_array( $deprecated ) ) {
 
@@ -3118,7 +3117,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant, $def_type_id = 'product' );
+				$single_variant = $wpsso->schema->get_mod_json_data( $mod );
 
 				if ( false === $single_variant ) {
 
@@ -4201,6 +4200,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( false === strpos( $id_url, $id_anchor ) ) {
 
+					/*
+					 * Remove the URL fragment.
+					 *
+					 * Example: http://woo.surniaulula.com/product/a-variable-product/#comment-2.
+					 */
+					if ( false !== ( $pos = strpos( $id_url, '#' ) ) ) {
+
+						$id_url = substr( $id_url, 0, $pos );
+					}
+
 					$id_url .= $id_anchor;
 				}
 
@@ -4299,6 +4308,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
+		/*
+		 * See WpssoBcFilters->filter_json_data_https_schema_org_breadcrumblist().
+		 * See WpssoSchemaGraph::optimize_json().
+		 * See WpssoSchema::update_data_id().
+		 */
 		public static function get_id_anchor() {
 
 			return '#sso/';

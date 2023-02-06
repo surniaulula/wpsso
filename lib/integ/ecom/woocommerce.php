@@ -20,6 +20,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 		private $p;	// Wpsso class object.
 
+		private $og_type        = 'product';
+		private $rating_meta    = 'rating';
+		private $worst_rating   = 1;
+		private $best_rating    = 5;
 		private $prod_post_type = 'product';
 		private $var_post_type  = 'product_variation';
 		private $cat_taxonomy   = 'product_cat';
@@ -393,7 +397,10 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 				} elseif ( $this->p->util->wc->is_mod_variable( $mod ) ) {
 
-					$type_id = 'product.group';
+					if ( $this->prod_post_type === $mod[ 'post_type' ] ) {
+
+						$type_id = 'product.group';
+					}
 				}
 			}
 
@@ -683,181 +690,64 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				return $mt_og;
 			}
 
-			$og_type      = 'product';
-			$rating_meta  = 'rating';
-			$worst_rating = 1;
-			$best_rating  = 5;
-			$have_schema  = $this->p->avail[ 'p' ][ 'schema' ] ? true : false;
-
 			/*
 			 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
 			 */
-			$mt_ecom = SucomUtil::get_mt_product_seed( $og_type, array( 'og:type' => $og_type ) );
+			$mt_ecom = SucomUtil::get_mt_product_seed( $this->og_type, array( 'og:type' => $this->og_type ) );
 
 			$this->add_mt_product( $mt_ecom, $mod, $product );
 
-			/*
-			 * Add product variants.
-			 */
-			if ( apply_filters( 'wpsso_og_add_mt_variants', $have_schema, $mod ) ) {
+			$this->add_mt_ratings( $mt_ecom, $mod, $product );
 
-				if ( $this->p->debug->enabled ) {
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
-					$this->p->debug->log( 'add variants meta tags is true' );
-				}
+				$this->add_mt_reviews( $mt_ecom, $mod, $product );
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
+				
+					$schema_type   = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
+					$add_mt_suffix = 'product.group' === $schema_type ? 'variants' : 'offers';
 
 					/*
-					 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
+					 * Add product variants or offers.
 					 */
-					$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( count( $avail_variations ) . ' variations returned' );
-					}
-
-					foreach( $avail_variations as $num => $variation ) {
-
-						/*
-						 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
-						 */
-						$mt_ecom_variant = SucomUtil::get_mt_product_seed( $og_type );
-
-						$this->add_mt_product( $mt_ecom_variant, $mod, $variation );
-
-						if ( ! empty( $mt_ecom_variant ) ) {
-
-							$mt_ecom[ $og_type . ':variants' ][] = $mt_ecom_variant;
+					if ( apply_filters( 'wpsso_og_add_mt_' . $add_mt_suffix, true, $mod ) ) {
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'add ' . $add_mt_suffix . ' meta tags is true' );
 						}
-					}
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'add variants meta tags is false' );
-			}
-
-			/*
-			 * Add product ratings.
-			 */
-			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
-			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
-
-			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
-			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
-
-			if ( apply_filters( 'wpsso_og_add_mt_rating', true, $mod ) ) {	// Enabled by default.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'add rating meta tags is true' );
-				}
-
-				/*
-				 * Add rating meta tags if WooCommerce product reviews and review ratings are enabled.
-				 */
-				if ( $wc_reviews_enabled && $wc_rating_enabled ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'woocommerce reviews and ratings are enabled' );
-					}
-
-					$average_rating = (float) $product->get_average_rating();
-					$rating_count   = (int) $product->get_rating_count();
-					$review_count   = (int) $product->get_review_count();
-
-					/*
-					 * An average rating value must be greater than 0.
-					 */
-					if ( $average_rating > 0 ) {
-
+	
 						/*
-						 * At least one rating or review is required.
+						 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 						 */
-						if ( $rating_count > 0 || $review_count > 0 ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'adding rating meta tags for product id ' . $mod[ 'id' ] );
-							}
-
-							$mt_ecom[ $og_type . ':rating:average' ] = $average_rating;
-							$mt_ecom[ $og_type . ':rating:count' ]   = $rating_count;
-							$mt_ecom[ $og_type . ':rating:worst' ]   = $worst_rating;
-							$mt_ecom[ $og_type . ':rating:best' ]    = $best_rating;
-							$mt_ecom[ $og_type . ':review:count' ]   = $review_count;
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( SucomUtil::preg_grep_keys( '/:(rating|review):/', $mt_ecom ) );
-							}
-
-						} else {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'rating and review count is invalid (must be greater than 0)' );
-							}
-
-							$notice_msg = sprintf( __( 'The rating and review counts provided by WooCommerce for product ID %d are invalid.',
-								'wpsso' ), $mod[ 'id' ] ) . ' ';
-
-							$notice_msg .= sprintf( __( 'The average rating is %.2f, but the rating count is %d and the review count is %d.',
-								'wpsso' ), $average_rating, $rating_count, $review_count ) . ' ';
-
-							$notice_msg .= __( 'The rating count or the review count must be greater than 0.', 'wpsso' );
-
-							$this->p->notice->warn( $notice_msg );
+						$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( count( $avail_variations ) . ' variations returned' );
 						}
-
+	
+						foreach( $avail_variations as $num => $variation ) {
+	
+							/*
+							 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
+							 */
+							$mt_ecom_var = SucomUtil::get_mt_product_seed( $this->og_type );
+	
+							$this->add_mt_product( $mt_ecom_var, $mod, $variation );
+	
+							if ( ! empty( $mt_ecom_var ) ) {
+	
+								$mt_ecom[ $this->og_type . ':' . $add_mt_suffix ][] = $mt_ecom_var;
+							}
+						}
+	
 					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'average rating is invalid (must be greater than 0)' );
+	
+						$this->p->debug->log( 'add variants meta tags is false' );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'woocommerce ratings are disabled' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'add rating meta tags is false' );
-			}
-
-			/*
-			 * Add product reviews.
-			 */
-			if ( apply_filters( 'wpsso_og_add_mt_reviews', $have_schema, $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'add reviews meta tags is true' );
-				}
-
-				/*
-				 * Add reviews array if WooCommerce product reviews are enabled.
-				 */
-				if ( $wc_reviews_enabled ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'woocommerce reviews are enabled' );
-					}
-
-					$mt_ecom[ $og_type . ':reviews' ] = $mod[ 'obj' ]->get_mt_reviews( $mod[ 'id' ], $rating_meta, $worst_rating, $best_rating );
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'woocommerce reviews are disabled' );
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'add reviews meta tags is false' );
 			}
 
 			$mt_ecom = (array) apply_filters( 'wpsso_og_ecom_woocommerce', $mt_ecom, $mod );
@@ -1144,11 +1034,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $parent_id : '';	// Product variation group ID.
 
 			/*
-			 * Add shipping information.
-			 */
-			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $parent_product );
-
-			/*
 			 * Add product availability.
 			 *
 			 * See https://docs.woocommerce.com/wc-apidocs/source-class-WC_Product.html#1534-1542
@@ -1265,6 +1150,25 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				 * Add custom fields meta data to the Open Graph meta tags.
 				 */
 				$this->p->og->add_data_og_type_md( $mt_ecom, 'product', $var_opts );
+
+			} else {	// Not a variation.
+
+				/*
+				 * Product variations do not have terms (categories or tags) so skip this section for variations.
+				 *
+				 * Retrieve the terms of the taxonomy that are attached to the post ID.  get_the_terms() returns an
+				 * array of WP_Term objects, false if there are no terms (or the post does not exist), or a
+				 * WP_Error object on failure.
+				 */
+				$terms = get_the_terms( $product_id, $this->tag_taxonomy );
+
+				if ( is_array( $terms ) ) {	// Not false or WP_Error object.
+
+					foreach( $terms as $term ) {
+
+						$mt_ecom[ 'product:tag' ][] = $term->name;
+					}
+				}
 			}
 
 			/*
@@ -1388,26 +1292,9 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			) = $this->get_shipping_length_width_height_weight( $product );
 
 			/*
-			 * Product variations do not have terms (categories or tags) so skip this section for variations.
+			 * Add shipping offers.
 			 */
-			if ( ! $is_variation ) {
-
-				/*
-				 * Retrieve the terms of the taxonomy that are attached to the post ID.
-				 *
-				 * get_the_terms() returns an array of WP_Term objects, false if there are no terms (or the post does not
-				 * exist), or a WP_Error object on failure.
-				 */
-				$terms = get_the_terms( $product_id, $this->tag_taxonomy );
-
-				if ( is_array( $terms ) ) {
-
-					foreach( $terms as $term ) {
-
-						$mt_ecom[ 'product:tag' ][] = $term->name;
-					}
-				}
-			}
+			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $parent_product );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1596,6 +1483,136 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 					}	// End of $world_zone_methods loop.
 				}
+			}
+
+		}
+
+		private function add_mt_ratings( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
+
+			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
+			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
+
+			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
+			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
+
+			if ( apply_filters( 'wpsso_og_add_mt_rating', true, $mod ) ) {	// Enabled by default.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'add rating meta tags is true' );
+				}
+
+				/*
+				 * Add rating meta tags if WooCommerce product reviews and review ratings are enabled.
+				 */
+				if ( $wc_reviews_enabled && $wc_rating_enabled ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'woocommerce reviews and ratings are enabled' );
+					}
+
+					$average_rating = (float) $product->get_average_rating();
+					$rating_count   = (int) $product->get_rating_count();
+					$review_count   = (int) $product->get_review_count();
+
+					/*
+					 * An average rating value must be greater than 0.
+					 */
+					if ( $average_rating > 0 ) {
+
+						/*
+						 * At least one rating or review is required.
+						 */
+						if ( $rating_count > 0 || $review_count > 0 ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'adding rating meta tags for product id ' . $mod[ 'id' ] );
+							}
+
+							$mt_ecom[ $this->og_type . ':rating:average' ] = $average_rating;
+							$mt_ecom[ $this->og_type . ':rating:count' ]   = $rating_count;
+							$mt_ecom[ $this->og_type . ':rating:worst' ]   = $this->worst_rating;
+							$mt_ecom[ $this->og_type . ':rating:best' ]    = $this->best_rating;
+							$mt_ecom[ $this->og_type . ':review:count' ]   = $review_count;
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( SucomUtil::preg_grep_keys( '/:(rating|review):/', $mt_ecom ) );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'rating and review count is invalid (must be greater than 0)' );
+							}
+
+							$notice_msg = sprintf( __( 'The rating and review counts provided by WooCommerce for product ID %d are invalid.',
+								'wpsso' ), $mod[ 'id' ] ) . ' ';
+
+							$notice_msg .= sprintf( __( 'The average rating is %.2f, but the rating count is %d and the review count is %d.',
+								'wpsso' ), $average_rating, $rating_count, $review_count ) . ' ';
+
+							$notice_msg .= __( 'The rating count or the review count must be greater than 0.', 'wpsso' );
+
+							$this->p->notice->warn( $notice_msg );
+						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'average rating is invalid (must be greater than 0)' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'woocommerce ratings are disabled' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'add rating meta tags is false' );
+			}
+
+		}
+
+		private function add_mt_reviews( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
+
+			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
+			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
+
+			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
+			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
+
+			if ( apply_filters( 'wpsso_og_add_mt_reviews', true, $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'add reviews meta tags is true' );
+				}
+
+				/*
+				 * Add reviews array if WooCommerce product reviews are enabled.
+				 */
+				if ( $wc_reviews_enabled ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'woocommerce reviews are enabled' );
+					}
+
+					$mt_ecom[ $this->og_type . ':reviews' ] = $mod[ 'obj' ]->get_mt_reviews( $mod[ 'id' ],
+						$this->rating_meta, $this->worst_rating, $this->best_rating );
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'woocommerce reviews are disabled' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'add reviews meta tags is false' );
 			}
 
 		}
