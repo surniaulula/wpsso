@@ -1973,14 +1973,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 		private function add_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
-			if ( empty( $variation[ 'variation_description' ] ) ) {
-
-				$desc_text = '';
-
-			} else {
-
-				$desc_text = $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
-			}
+			$desc_text = empty( $variation[ 'variation_description' ] ) ? '' : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
 			$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_variation_description', $desc_text, $variation );
 		}

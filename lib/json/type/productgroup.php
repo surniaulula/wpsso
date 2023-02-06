@@ -45,9 +45,9 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_element = false );
 
 			/*
-			 * Inherit the product group 'aggregateRating' and 'review' properties for Google.
+			 * Inherit required properties from the product group for Google.
 			 */
-			foreach ( array( 'aggregateRating', 'review' ) as $prop_name ) {
+			foreach ( array( 'description', 'aggregateRating', 'review' ) as $prop_name ) {
 
 				if ( ! empty( $json_data[ $prop_name ] ) ) {
 

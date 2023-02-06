@@ -3117,7 +3117,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_variant = $wpsso->schema->get_mod_json_data( $mod );
+				$single_variant = WpssoSchemaSingle::get_product_data( $mod, $mt_variant, $def_type_id = 'product' );
 
 				if ( false === $single_variant ) {
 

@@ -655,10 +655,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
 			 */
-			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
-
-				WpssoSchema::update_data_id( $json_ret, $type_id );
-			}
+			WpssoSchema::update_data_id( $json_ret, $type_id );
 
 			/*
 			 * Add or replace the json data.
@@ -1588,7 +1585,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $place_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, array( $type_id, $place_id ), $data_url = '' );
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $place_id ) );
 
 			/*
 			 * Add or replace the json data.
@@ -2186,6 +2183,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
+
+			/*
+			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
+			 */
+			WpssoSchema::update_data_id( $json_ret, empty( $mod[ 'id' ] ) ? $type_id : array( $type_id, $mod[ 'id' ] ) );
 
 			/*
 			 * Add or replace the json data.
