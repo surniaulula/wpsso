@@ -1633,6 +1633,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		/*
 		 * Merge and check submitted post, term, and user metabox options.
+		 *
+		 * See WpssoComment->save_options().
+		 * See WpssoPost->save_options().
+		 * See WpssoTerm->save_options().
+		 * See WpssoUser->save_options().
 		 */
 		protected function get_submit_opts( $mod ) {
 
@@ -1956,9 +1961,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 
-			/*
-			 * Return and apply filters, like 'wpsso_save_md_options' and 'wpsso_save_post_options'.
-			 */
 			return $md_opts;
 		}
 

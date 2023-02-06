@@ -285,7 +285,7 @@
 
 'wpsso_save_term_options' ( $opts, $term_id, $mod )
 
-'wpsso_save_user_options' ( $opts, $term_id, $mod )
+'wpsso_save_user_options' ( $opts, $user_id, $mod )
 
 'wpsso_schema_type' ( $type_id, $mod, $is_custom )
 
