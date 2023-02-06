@@ -47,11 +47,11 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			/*
 			 * Inherit required properties from the product group for Google.
 			 */
-			foreach ( array( 'description', 'aggregateRating', 'review' ) as $prop_name ) {
+			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				if ( ! empty( $json_data[ $prop_name ] ) ) {
+				foreach ( array( 'name', 'description', 'aggregateRating', 'review' ) as $prop_name ) {
 
-					if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
+					if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 						foreach ( $json_ret[ 'hasVariant' ] as &$variant ) {
 
