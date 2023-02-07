@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.1.0-dev.4 (2023/02/06)**
+**Version 15.1.0-b.1 (2023/02/07)**
 
 * **New Features**
 	* None.
@@ -605,9 +605,9 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.1.0-dev.4 =
+= 15.1.0-b.1 =
 
-(2023/02/06) Added support for Schema products with offers or Schema product groups with variants. Added inheritance of some Schema ProductGroup properties for the product group variants.
+(2023/02/07) Added support for Schema products with offers or Schema product groups with variants. Added inheritance of some Schema ProductGroup properties for the product group variants.
 
 = 15.0.1 =
 
