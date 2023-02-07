@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/*
 					 * If an "itemprop" contains a url, then make sure it's a "link".
 					 */
-					if ( $tag !== 'link' && false !== filter_var( $value, FILTER_VALIDATE_URL ) ) {
+					if ( $tag !== 'link' && is_string( $value ) && false !== filter_var( $value, FILTER_VALIDATE_URL ) ) {
 
 						$tag = 'link';
 					}
@@ -970,7 +970,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$log_prefix = $tag . ' ' . $type . ' ' . $name;
 
-			if ( is_array( $value ) ) {
+			if ( null === $value  ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $log_prefix . ' value is null (skipped)' );
+				}
+
+				return $mt_array;
+
+			} elseif ( is_array( $value ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
