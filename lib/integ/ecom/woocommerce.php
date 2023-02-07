@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
-	class WpssoIntegEcomWoocommerce {
+	class WpssoIntegEcomWooCommerce {
 
 		private $p;	// Wpsso class object.
 
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 		/*
 		 * WooCommerce product attributes do not have their own webpages - product attribute query strings are used to
 		 * pre-fill product selections on the front-end. The
-		 * WpssoIntegEcomWoocommerce->filter_request_url_query_cache_disable() method removes all product attributes from
+		 * WpssoIntegEcomWooCommerce->filter_request_url_query_cache_disable() method removes all product attributes from
 		 * the request URL, and if the $request_url and $canonical_url values match, the filter returns false (ie. do not
 		 * disable the cache).
 		 */
@@ -1106,7 +1106,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				 * See WpssoPost->get_options().
 				 * See WpssoAbstractWpMeta->get_defaults().
 				 * See WpssoUtilCustomFields->filter_import_custom_fields().
-				 * See WpssoIntegEcomWoocommerce->add_mt_product().
+				 * See WpssoIntegEcomWooCommerce->add_mt_product().
 				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -1119,7 +1119,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				/*
 				 * Since WPSSO Core v14.2.0.
 				 *
-				 * See WpssoIntegEcomWoocommerce->add_mt_product().
+				 * See WpssoIntegEcomWooCommerce->add_mt_product().
 				 */
 				if ( $this->p->debug->enabled ) {
 

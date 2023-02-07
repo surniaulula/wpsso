@@ -833,7 +833,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 * See WpssoPost->get_options().
 				 * See WpssoAbstractWpMeta->get_defaults().
 				 * See WpssoUtilCustomFields->filter_import_custom_fields().
-				 * See WpssoIntegEcomWoocommerce->add_mt_product().
+				 * See WpssoIntegEcomWooCommerce->add_mt_product().
 				 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 				 */
 				if ( 'post' === $mod[ 'name' ] ) {
@@ -848,7 +848,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Since WPSSO Core v14.2.0.
 					 *
-					 * See WpssoIntegEcomWoocommerce->add_mt_product().
+					 * See WpssoIntegEcomWooCommerce->add_mt_product().
 					 */
 					if ( $this->p->debug->enabled ) {
 

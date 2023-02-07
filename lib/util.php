@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public $reg;		// WpssoUtilReg.
 		public $robots;		// WpssoUtilRobots.
 		public $units;		// WpssoUtilUnits.
-		public $wc;		// WpssoUtilWoocommerce.
+		public $wc;		// WpssoUtilWooCommerce.
 
 		public function __construct( &$plugin ) {
 
@@ -200,16 +200,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->units = new WpssoUtilUnits( $plugin );
 
 			/*
-			 * Instantiate WpssoUtilWoocommerce.
+			 * Instantiate WpssoUtilWooCommerce.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 
-				if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
+				if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 					require_once WPSSO_PLUGINDIR . 'lib/util-woocommerce.php';
 				}
 
-				$this->wc = new WpssoUtilWoocommerce( $plugin );
+				$this->wc = new WpssoUtilWooCommerce( $plugin );
 			}
 		}
 

@@ -20,9 +20,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {	// Just in case.
 	require_once WPSSO_PLUGINDIR . 'lib/util-units.php';
 }
 
-if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
+if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
-	class WpssoUtilWoocommerce {
+	class WpssoUtilWooCommerce {
 
 		private $p;	// Wpsso class object.
 
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 		/*
 		 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 		 *
-		 * See WpssoIntegEcomWoocommerce->filter_og_seed().
+		 * See WpssoIntegEcomWooCommerce->filter_og_seed().
 		 */
 		public function get_available_variations( $product ) {
 

@@ -19,14 +19,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 	require_once WPSSO_PLUGINDIR . 'lib/integ/ecom/abstract/woocommerce-brands.php';
 }
 
-if ( ! class_exists( 'WpssoIntegEcomPerfectWoocommerceBrands' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomPerfectWooCommerceBrands' ) ) {
 
-	class WpssoIntegEcomPerfectWoocommerceBrands extends WpssoIntegEcomAbstractWoocommerceBrands {
+	class WpssoIntegEcomPerfectWooCommerceBrands extends WpssoIntegEcomAbstractWooCommerceBrands {
 
 		protected $brand_tax_slug  = 'pwb-brand';
 		protected $brand_image_key = 'pwb_brand_image';

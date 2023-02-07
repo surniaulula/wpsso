@@ -19,14 +19,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoIntegEcomAbstractWoocommerceBrands' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 	require_once WPSSO_PLUGINDIR . 'lib/integ/ecom/abstract/woocommerce-brands.php';
 }
 
-if ( ! class_exists( 'WpssoIntegEcomYithWoocommerceBrands' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomYithWooCommerceBrands' ) ) {
 
-	class WpssoIntegEcomYithWoocommerceBrands extends WpssoIntegEcomAbstractWoocommerceBrands {
+	class WpssoIntegEcomYithWooCommerceBrands extends WpssoIntegEcomAbstractWooCommerceBrands {
 
 		protected $brand_tax_slug  = 'yith_product_brand';	// Default brand taxonomy.
 		protected $brand_image_key = 'thumbnail_id';

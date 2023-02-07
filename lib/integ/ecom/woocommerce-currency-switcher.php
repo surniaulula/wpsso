@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
  * Integration module for the WooCommerce Currency Switcher plugin.
  */
-if ( ! class_exists( 'WpssoIntegEcomWoocommerceCurrencySwitcher' ) ) {
+if ( ! class_exists( 'WpssoIntegEcomWooCommerceCurrencySwitcher' ) ) {
 
-	class WpssoIntegEcomWoocommerceCurrencySwitcher {
+	class WpssoIntegEcomWooCommerceCurrencySwitcher {
 
 		private $p;	// Wpsso class object.
 
