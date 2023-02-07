@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 
 		public function refresh_post_cache( $post_id, $editor_data ) {
 
-			return $this->p->post->refresh_cache( $post_id );
+			$this->p->post->refresh_cache( $post_id );	// Refresh the cache for a single post ID.
 		}
 
 		public function filter_content_videos( $videos, $content ) {

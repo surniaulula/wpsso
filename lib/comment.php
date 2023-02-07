@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				if ( ! empty( $comment->comment_post_ID ) ) {
 
-					$this->p->post->refresh_cache( $comment->comment_post_ID );
+					$this->p->post->refresh_cache( $comment->comment_post_ID );	// Refresh the cache for a single post ID.
 				}
 			}
 		}
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				if ( ! empty( $comment->comment_post_ID ) ) {
 
-					$this->p->post->refresh_cache( $comment->comment_post_ID );
+					$this->p->post->refresh_cache( $comment->comment_post_ID );	// Refresh the cache for a single post ID.
 				}
 			}
 		}

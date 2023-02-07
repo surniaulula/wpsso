@@ -1578,6 +1578,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
+		 * Refresh the cache for a single user ID.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $user_id, $rel = false ) {

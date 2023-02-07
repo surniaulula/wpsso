@@ -1848,6 +1848,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
+		 * Refresh the cache for a single post ID.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $post_id, $rel = false ) {

@@ -6704,23 +6704,23 @@ msgstr ""
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1457
+#: lib/integ/ecom/woocommerce.php:1454
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1544
+#: lib/integ/ecom/woocommerce.php:1541
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1547
+#: lib/integ/ecom/woocommerce.php:1544
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1550
+#: lib/integ/ecom/woocommerce.php:1547
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -8244,8 +8244,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1670 lib/user.php:1702
-#: lib/user.php:1800 lib/user.php:1816 lib/user.php:1951
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1672 lib/user.php:1704
+#: lib/user.php:1802 lib/user.php:1818 lib/user.php:1953
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11488,7 +11488,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1903
+#: lib/post.php:1905
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12236,7 +12236,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:934
+#: lib/term.php:936
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12305,56 +12305,56 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1621
+#: lib/user.php:1623
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1669
+#: lib/user.php:1671
 msgid ""
 "A background task will begin shortly to add the %s role to content creators."
 msgstr ""
 
-#: lib/user.php:1721
+#: lib/user.php:1723
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1736 lib/user.php:1850 lib/util-cache.php:138
+#: lib/user.php:1738 lib/user.php:1852 lib/util-cache.php:138
 #: lib/util-cache.php:677
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1737
+#: lib/user.php:1739
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1778
+#: lib/user.php:1780
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1779 lib/user.php:1888 lib/util-cache.php:189
+#: lib/user.php:1781 lib/user.php:1890 lib/util-cache.php:189
 #: lib/util-cache.php:776
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1799
+#: lib/user.php:1801
 msgid ""
 "A background task will begin shortly to remove the %s role from all users."
 msgstr ""
 
-#: lib/user.php:1835
+#: lib/user.php:1837
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1851
+#: lib/user.php:1853
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1887
+#: lib/user.php:1889
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

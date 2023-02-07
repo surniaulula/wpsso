@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoIntegRatingRateMyPost' ) ) {
 
 		public function refresh_post_cache( $post_id, $avg_rating, $new_vote_count, $submitted_rating ) {
 
-			return $this->p->post->refresh_cache( $post_id );
+			$this->p->post->refresh_cache( $post_id );	// Refresh the cache for a single post ID.
 		}
 	}
 }

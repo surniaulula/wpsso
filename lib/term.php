@@ -887,6 +887,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
+		 * Refresh the cache for a single term ID.
+		 *
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $term_id, $term_tax_id = false ) {

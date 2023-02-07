@@ -148,7 +148,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 /*
  * Cache refresh functions.
  */
-if ( ! function_exists( 'wpsso_refresh_cache' ) ) {	// Since WPSSO Core v14.1.0.
+if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
 
 	function wpsso_refresh_cache( $read_cache = false ) {
 
@@ -160,7 +160,7 @@ if ( ! function_exists( 'wpsso_refresh_cache' ) ) {	// Since WPSSO Core v14.1.0.
 	}
 }
 
-if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {	// Since WPSSO Core v14.1.0.
+if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
 
 	function wpsso_refresh_post_cache( $post_id ) {
 

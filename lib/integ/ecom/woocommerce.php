@@ -216,18 +216,15 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		/*
-		 * Refresh the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
+		 * Refresh the post ID cache after WooCommerce updates the product object on the front-end or back-end.
 		 */
 		public function refresh_post_cache( $product, $data_store ) {
 
 			$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
-			if ( $product_id ) {
+			if ( $product_id ) {	// Just in case.
 
-				/*
-				 * Uses a local cache to clear the cache only once per post ID per page load.
-				 */
-				$this->p->post->refresh_cache( $product_id, $rel_id = false );
+				$this->p->post->refresh_cache( $product_id, $rel_id = false );	// Refresh the cache for a single post ID.
 			}
 		}
 
