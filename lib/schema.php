@@ -4257,15 +4257,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function return_data_from_filter( $json_data, $json_ret, $is_main = false ) {
 
-			if ( empty( $json_ret ) ) {	// Just in case - nothing to merge.
+			if ( empty( $json_ret ) ) {	// Just in case - nothing new to merge.
 
 				return $json_data;
 
-			} elseif ( empty( $json_data ) ) {	// Just in case - nothing to merge.
+			} elseif ( ! is_array( $json_data ) ) {	// Just in case - nothing to merge.
 
 				return $json_ret;
 
-			} elseif ( is_array( $json_data ) && is_array( $json_ret ) ) {
+			} elseif ( is_array( $json_ret ) ) {	// Just in case.
 
 				if ( ! $is_main || ! empty( $json_ret[ 'mainEntity' ] ) ) {
 
@@ -4285,28 +4285,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$json_data = self::return_data_head_first( array_merge( $json_data, $json_ret ) );
+				$json_data = array_merge( $json_data, $json_ret );
 			}
 
-			return $json_data;
+			return self::return_data_head_first( $json_data );
 		}
 
 		public static function return_data_head_first( $json_data ) {
 
-			$json_head = array(
-				'@id'              => null,
-				'@context'         => null,
-				'@type'            => null,
-				'mainEntityOfPage' => null,
-			);
+			if ( is_array( $json_data ) ) {	// Just in case.
 
-			$json_data = array_merge( $json_head, $json_data );
-
-			foreach ( $json_head as $prop_name => $prop_val ) {
-
-				if ( empty( $json_data[ $prop_name ] ) ) {
-
-					unset( $json_data[ $prop_name ] );
+				$json_head = array(
+					'@id'              => null,
+					'@context'         => null,
+					'@type'            => null,
+					'mainEntityOfPage' => null,
+				);
+	
+				$json_data = array_merge( $json_head, $json_data );
+	
+				foreach ( $json_head as $prop_name => $prop_val ) {
+	
+					if ( empty( $json_data[ $prop_name ] ) ) {
+	
+						unset( $json_data[ $prop_name ] );
+					}
 				}
 			}
 
