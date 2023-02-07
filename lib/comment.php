@@ -33,8 +33,8 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'comment_post', array( $this, 'clear_cache_comment_post' ), PHP_INT_MAX, 2 );
-			add_action( 'transition_comment_status', array( $this, 'clear_cache_transition_comment_status' ), PHP_INT_MAX, 3 );
+			add_action( 'comment_post', array( $this, 'refresh_cache_comment_post' ), PHP_INT_MAX, 2 );
+			add_action( 'transition_comment_status', array( $this, 'refresh_cache_transition_comment_status' ), PHP_INT_MAX, 3 );
 		}
 
 		/*
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return self::delete_meta( $comment_id, WPSSO_META_NAME );
 		}
 
-		public function clear_cache_comment_post( $comment_id, $comment_approved ) {
+		public function refresh_cache_comment_post( $comment_id, $comment_approved ) {
 
 			if ( $comment_id && $comment_approved ) {
 
@@ -299,18 +299,18 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				if ( ! empty( $comment->comment_post_ID ) ) {
 
-					$this->p->post->clear_cache( $comment->comment_post_ID );
+					$this->p->post->refresh_cache( $comment->comment_post_ID );
 				}
 			}
 		}
 
-		public function clear_cache_transition_comment_status( $new_status, $old_status, $comment ) {
+		public function refresh_cache_transition_comment_status( $new_status, $old_status, $comment ) {
 
 			if ( 'approved' === $new_status || 'approved' === $old_status ) {
 
 				if ( ! empty( $comment->comment_post_ID ) ) {
 
-					$this->p->post->clear_cache( $comment->comment_post_ID );
+					$this->p->post->refresh_cache( $comment->comment_post_ID );
 				}
 			}
 		}

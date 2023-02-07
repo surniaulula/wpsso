@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoIntegRatingRateMyPost' ) ) {
 				'og' => 2,
 			), $prio = 2000 );	// Run after the WPSSO RAR add-on.
 
-			add_action( 'rmp_after_vote', array( $this, 'clear_post_cache' ), 10, 4 );
+			add_action( 'rmp_after_vote', array( $this, 'refresh_post_cache' ), 10, 4 );
 
 			if ( is_admin() ) {
 
@@ -136,9 +136,9 @@ if ( ! class_exists( 'WpssoIntegRatingRateMyPost' ) ) {
 			return $mt_og;
 		}
 
-		public function clear_post_cache( $post_id, $avg_rating, $new_vote_count, $submitted_rating ) {
+		public function refresh_post_cache( $post_id, $avg_rating, $new_vote_count, $submitted_rating ) {
 
-			return $this->p->post->clear_cache( $post_id );
+			return $this->p->post->refresh_cache( $post_id );
 		}
 	}
 }

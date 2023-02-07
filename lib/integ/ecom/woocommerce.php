@@ -66,9 +66,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			/*
-			 * Clear the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
+			 * Refresh the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
 			 */
-			add_action( 'woocommerce_after_product_object_save', array( $this, 'maybe_clear_cache' ), 10, 2 );
+			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_post_cache' ), 10, 2 );
 
 			/*
 			 * Maybe load missing WooCommerce front-end libraries for 'the_content' filter.
@@ -216,12 +216,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		/*
-		 * Clear the post ID cache after WooCommerce updates the product object on the front-end (or back-end). The
-		 * WordPress 'save_post' action runs before this action (on the back-end) and WpssoPost->clear_cache() uses a
-		 * static cache to clear the cache only once per post ID, so it is safe to call WpssoPost->clear_cache() more than
-		 * once.
+		 * Refresh the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
 		 */
-		public function maybe_clear_cache( $product, $data_store ) {
+		public function refresh_post_cache( $product, $data_store ) {
 
 			$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
@@ -230,7 +227,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				/*
 				 * Uses a local cache to clear the cache only once per post ID per page load.
 				 */
-				$this->p->post->clear_cache( $product_id, $rel_id = false );
+				$this->p->post->refresh_cache( $product_id, $rel_id = false );
 			}
 		}
 

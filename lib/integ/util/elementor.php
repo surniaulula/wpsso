@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 
 			add_filter( 'sucom_get_post_types', array( $this, 'exclude_post_types' ), 10, 3 );
 
-			add_action( 'elementor/editor/after_save', array( $this, 'clear_cache' ), 1000, 2 );
+			add_action( 'elementor/editor/after_save', array( $this, 'refresh_post_cache' ), 1000, 2 );
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'content_videos' => 2,
@@ -62,9 +62,9 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 			return $post_types;
 		}
 
-		public function clear_cache( $post_id, $editor_data ) {
+		public function refresh_post_cache( $post_id, $editor_data ) {
 
-			return $this->p->post->clear_cache( $post_id );
+			return $this->p->post->refresh_cache( $post_id );
 		}
 
 		public function filter_content_videos( $videos, $content ) {
