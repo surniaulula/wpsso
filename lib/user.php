@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			$md_opts = $this->get_submit_opts( $mod );
+			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 

@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
 
-			$md_opts = $this->get_submit_opts( $mod );
+			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 

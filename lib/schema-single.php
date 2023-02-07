@@ -1986,6 +1986,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Note that there is no Schema 'availability' property for the 'product:availability' value.
 			 *
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 *
+			 * See https://support.google.com/merchants/answer/6324507 for 'inProductGroupWithID'.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'url'                   => 'product:url',
