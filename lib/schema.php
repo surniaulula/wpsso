@@ -1874,7 +1874,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/*
 			 * Get parent comments.
-			 * 
+			 *
 			 * The WpssoSchemaSingle::add_comment_data() method will recurse and add the replies (ie. children).
 			 */
 			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
@@ -4301,13 +4301,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'@type'            => null,
 					'mainEntityOfPage' => null,
 				);
-	
+
 				$json_data = array_merge( $json_head, $json_data );
-	
+
 				foreach ( $json_head as $prop_name => $prop_val ) {
-	
+
 					if ( empty( $json_data[ $prop_name ] ) ) {
-	
+
 						unset( $json_data[ $prop_name ] );
 					}
 				}

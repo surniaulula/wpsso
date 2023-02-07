@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 
 				$wc_compat = $this->cf[ 'plugin' ][ $this->ext ][ 'wc_compat' ];
 
-				add_action( 'before_woocommerce_init', function () use ( $plugin_file, $wc_compat ) { 
+				add_action( 'before_woocommerce_init', function () use ( $plugin_file, $wc_compat ) {
 
 					if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 

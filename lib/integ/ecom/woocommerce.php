@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( $request_url_no_attrs === $canonical_url ) {
 
-						return false;						
+						return false;
 					}
 				}
 			}
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->add_mt_reviews( $mt_ecom, $mod, $product );
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
-				
+
 					$schema_type   = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
 					$add_mt_suffix = 'product.group' === $schema_type ? 'variants' : 'offers';
 
@@ -712,39 +712,39 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					 * Add product variants or offers.
 					 */
 					if ( apply_filters( 'wpsso_og_add_mt_' . $add_mt_suffix, true, $mod ) ) {
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'add ' . $add_mt_suffix . ' meta tags is true' );
 						}
-	
+
 						/*
 						 * Similar to the WooCommerce method, except it does not exclude out of stock variations.
 						 */
 						$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( count( $avail_variations ) . ' variations returned' );
 						}
-	
+
 						foreach( $avail_variations as $num => $variation ) {
-	
+
 							/*
 							 * Get the pre-sorted product meta tags, with the og:type meta tag top-most in the array.
 							 */
 							$mt_ecom_var = SucomUtil::get_mt_product_seed( $this->og_type );
-	
+
 							$this->add_mt_product( $mt_ecom_var, $mod, $variation );
-	
+
 							if ( ! empty( $mt_ecom_var ) ) {
-	
+
 								$mt_ecom[ $this->og_type . ':' . $add_mt_suffix ][] = $mt_ecom_var;
 							}
 						}
-	
+
 					} elseif ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'add variants meta tags is false' );
 					}
 				}

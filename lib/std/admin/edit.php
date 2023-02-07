@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_min' ],
 							$css_class = 'rating' ) . ' ' .
 						_x( 'to', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_max' ], 
+						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_max' ],
 							$css_class = 'rating' ),
 				),
 				'schema_review_rating_alt_name' => array(

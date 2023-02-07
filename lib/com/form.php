@@ -2224,7 +2224,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '</div><!-- .multi_input -->' . "\n";
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = 'none' === $input_value || 
+				$one_more = 'none' === $input_value ||
 					( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;	// Allow for 0.
 			}
 

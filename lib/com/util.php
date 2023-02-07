@@ -569,7 +569,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'gbraid',
 			'wbraid',
 
-			// Google Web Stories: 
+			// Google Web Stories:
 			'_gl',
 
 			// Google DoubleClick:
