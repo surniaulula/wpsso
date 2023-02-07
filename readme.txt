@@ -236,17 +236,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.1.0-dev.3 (2023/02/11)**
+**Version 15.1.0-dev.3 (2023/02/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added inheritance of the product group 'aggregateRating' and 'review' properties for the product group variants.
 	* Added support for Schema products with offers or Schema product groups with variants, depending on the Schema Type selected in the Document SSO metabox.
+	* Added inheritance of some Schema ProductGroup properties ('name', 'description', 'aggregateRating', and 'review') for the product group variants.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a Schema '@id' property to reviews.
+	* Added a Schema '@id' property to product reviews.
+	* Added a new `WpssoIntegEcomWooCommerce->add_mt_ratings()` private method.
+	* Added a new `WpssoIntegEcomWooCommerce->add_mt_reviews()` private method.
+	* Updated the `WpssoIntegEcomWooCommerce->filter_og_seed()` method to return variants for the Schema ProductGroup type, and offers for the Schema Product type.
+	* Updated the `WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup()` method to provide inheritance of 'name', 'description', 'aggregateRating', 'review' properties for the product group variants.
+	* Updated the `WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product()` method to provide inheritance of 'og:description' for product offers and product group variants.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -447,9 +452,9 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* Added a new `SucomUtil::is_post_type()` method.
 	* Added a new `SucomUtil::get_options_value_transl()` method.
 	* Added a new `WpssoConfig::get_attr_md_index()` method.
-	* Added a new `WpssoIntegEcomWoocommerce->filter_import_product_attributes()` method.
-	* Added a new `WpssoIntegEcomWoocommerce->add_variation_title()` method.
-	* Added a new `WpssoIntegEcomWoocommerce->add_variation_description()` method.
+	* Added a new `WpssoIntegEcomWooCommerce->filter_import_product_attributes()` method.
+	* Added a new `WpssoIntegEcomWooCommerce->add_variation_title()` method.
+	* Added a new `WpssoIntegEcomWooCommerce->add_variation_description()` method.
 	* Added a new `WpssoOpenGraph->get_def_md_key()` method.
 	* Added a new `WpssoOpenGraph->add_data_og_type_md_values()` method.
 	* Added a new `WpssoOpenGraph->check_mt_value_energy_efficiency()` method.
@@ -495,12 +500,12 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 		* `wpsso_refresh_cache()`
 		* `wpsso_refresh_post_cache()`
 	* Refactored loading of the lib/abstract/wp-meta.php library in WpssoComment, WpssoPost, WpssoTerm, and WpssoUser.
-	* Re-added static methods to the `WpssoUtilWoocommerce` class with a deprecation notice:
-		* `WpssoUtilWoocommerce::get_dimension_label()`.
-		* `WpssoUtilWoocommerce::get_dimension()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume_label()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume_units()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume()`.
+	* Re-added static methods to the `WpssoUtilWooCommerce` class with a deprecation notice:
+		* `WpssoUtilWooCommerce::get_dimension_label()`.
+		* `WpssoUtilWooCommerce::get_dimension()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume_label()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume_units()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume()`.
 	* Renamed static methods in `WpssoUtilUnits`:
 		* `get_convert_dimension()`    to `get_dimension_convert()`
 		* `get_convert_fluid_volume()` to `get_fluid_volume_convert()`
@@ -563,16 +568,16 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* Updated `WpssoOpenGraph->add_og_type_mt_md()` to convert dimension and weight units.
 	* Renamed `WpssoSchema->get_data_unit_text()` to `WpssoSchema->get_unit_text()`.
 	* Removed `WpssoSchema->get_data_unit_from_assoc()`.
-	* Removed static methods from the `WpssoUtilWoocommerce` class:
-		* `WpssoUtilWoocommerce::get_dimension_label()`.
-		* `WpssoUtilWoocommerce::get_dimension_units()`.
-		* `WpssoUtilWoocommerce::get_dimension()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume_label()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume_units()`.
-		* `WpssoUtilWoocommerce::get_fluid_volume()`.
-		* `WpssoUtilWoocommerce::get_weight_label()`.
-		* `WpssoUtilWoocommerce::get_weight_units()`.
-		* `WpssoUtilWoocommerce::get_weight()`.
+	* Removed static methods from the `WpssoUtilWooCommerce` class:
+		* `WpssoUtilWooCommerce::get_dimension_label()`.
+		* `WpssoUtilWooCommerce::get_dimension_units()`.
+		* `WpssoUtilWooCommerce::get_dimension()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume_label()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume_units()`.
+		* `WpssoUtilWooCommerce::get_fluid_volume()`.
+		* `WpssoUtilWooCommerce::get_weight_label()`.
+		* `WpssoUtilWooCommerce::get_weight_units()`.
+		* `WpssoUtilWooCommerce::get_weight()`.
 	* Renamed internal meta tags:
 		* 'product:adult_oriented'    to 'product:adult_type'
 		* 'product:quantity:value'    to 'product:eligible_quantity:value'
@@ -602,7 +607,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 15.1.0-dev.3 =
 
-(2023/02/11) Added inheritance of the product group 'aggregateRating' and 'review' properties. Added support for Schema products with offers or Schema product groups with variants.
+(2023/02/06) Added support for Schema products with offers or Schema product groups with variants. Added inheritance of some Schema ProductGroup properties for the product group variants.
 
 = 15.0.1 =
 
