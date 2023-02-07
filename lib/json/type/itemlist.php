@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoJsonTypeItemList' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$item_count = WpssoSchema::add_itemlist_data( $json_data, $mod, $mt_og, $page_type_id, $is_main );
+			WpssoSchema::add_itemlist_data( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 			return $json_data;
 		}

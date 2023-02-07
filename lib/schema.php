@@ -4255,53 +4255,58 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Sanitation used by filters to return their data.
 		 */
-		public static function return_data_from_filter( $json_data, $merge_data, $is_main = false ) {
+		public static function return_data_from_filter( $json_data, $json_ret, $is_main = false ) {
 
-			if ( empty( $merge_data ) ) {	// Just in case - nothing to merge.
+			if ( empty( $json_ret ) ) {	// Just in case - nothing to merge.
 
 				return $json_data;
 
-			} elseif ( null === $json_data ) {	// Just in case - nothing to merge.
+			} elseif ( empty( $json_data ) ) {	// Just in case - nothing to merge.
 
-				return $merge_data;
+				return $json_ret;
 
-			} elseif ( is_array( $json_data ) ) {
+			} elseif ( is_array( $json_data ) && is_array( $json_ret ) ) {
 
-				if ( ! $is_main || ! empty( $merge_data[ 'mainEntity' ] ) ) {
+				if ( ! $is_main || ! empty( $json_ret[ 'mainEntity' ] ) ) {
 
 					unset( $json_data[ 'mainEntity' ] );
 					unset( $json_data[ 'mainEntityOfPage' ] );
 
-				} elseif ( ! isset( $merge_data[ 'mainEntityOfPage' ] ) ) {
+				} elseif ( ! isset( $json_ret[ 'mainEntityOfPage' ] ) ) {
 
-					if ( ! empty( $merge_data[ 'url' ] ) ) {
+					if ( ! empty( $json_ret[ 'url' ] ) ) {
 
 						/*
-						 * Remove any URL fragment from the main entity URL. The 'mainEntityOfPage' value
-						 * can be empty and will be removed by WpssoSchemaGraph::optimize_json().
+						 * Remove any URL fragment from the main entity URL.
+						 *
+						 * The 'mainEntityOfPage' can be empty and will be removed by WpssoSchemaGraph::optimize_json().
 						 */
-						$merge_data[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $merge_data[ 'url' ] );
+						$json_ret[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $json_ret[ 'url' ] );
 					}
 				}
 
-				$json_head = array(
-					'@id'              => null,
-					'@context'         => null,
-					'@type'            => null,
-					'mainEntityOfPage' => null,
-				);
+				$json_data = self::return_data_head_first( array_merge( $json_data, $json_ret ) );
+			}
 
-				$json_data = array_merge( $json_head, $json_data, $merge_data );
+			return $json_data;
+		}
 
-				/*
-				 * Remove any remaining empty keys from the $json_head array.
-				 */
-				foreach ( $json_head as $prop_name => $prop_val ) {
+		public static function return_data_head_first( $json_data ) {
 
-					if ( empty( $json_data[ $prop_name ] ) ) {
+			$json_head = array(
+				'@id'              => null,
+				'@context'         => null,
+				'@type'            => null,
+				'mainEntityOfPage' => null,
+			);
 
-						unset( $json_data[ $prop_name ] );
-					}
+			$json_data = array_merge( $json_head, $json_data );
+
+			foreach ( $json_head as $prop_name => $prop_val ) {
+
+				if ( empty( $json_data[ $prop_name ] ) ) {
+
+					unset( $json_data[ $prop_name ] );
 				}
 			}
 

@@ -69,12 +69,13 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_speakable_css_csv' ] ) ) {
 
-				$speakable_css_sel = SucomUtil::explode_csv( $this->p->options[ 'plugin_speakable_css_csv' ] );
+				$speakable_css_selector = SucomUtil::explode_csv( $this->p->options[ 'plugin_speakable_css_csv' ] );
 
-				if ( ! empty( $speakable_css_sel ) ) {
+				if ( ! empty( $speakable_css_selector ) ) {
 
 					$json_ret[ 'speakable' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/SpeakableSpecification', array(
-						'cssSelector' => $speakable_css_sel ) );
+						'cssSelector' => $speakable_css_selector,
+					) );
 				}
 			}
 
