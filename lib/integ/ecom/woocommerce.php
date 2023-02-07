@@ -1295,11 +1295,6 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			 * Add shipping offers.
 			 */
 			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $parent_product );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'mt_ecom', $mt_ecom );
-			}
 		}
 
 		/*
@@ -1971,9 +1966,12 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 			$mt_ecom[ 'product:title' ] = apply_filters( 'wpsso_variation_title', $title_text, $variation );
 		}
 
+		/*
+		 * Empty variation descriptions are fixed in WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product().
+		 */
 		private function add_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
-			$desc_text = empty( $variation[ 'variation_description' ] ) ? '' : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
+			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
 			$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_variation_description', $desc_text, $variation );
 		}

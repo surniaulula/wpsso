@@ -715,7 +715,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'og', $mt_og );
+				$this->p->debug->log_arr( 'mt_og', $mt_og );
 			}
 
 			return $mt_og;
@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'mt_og', $mt_og );
+				$this->p->debug->mark();
 			}
 
 			/*

@@ -181,6 +181,17 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			$mt_og[ 'product:retailer_item_id' ]  = $mod[ 'id' ];
 			$mt_og[ 'product:retailer_category' ] = $this->p->og->get_product_retailer_category( $mod );
 
+			/*
+			 * Fix empty product description.
+			 */
+			if ( empty( $mt_og[ 'product:description' ] ) ) {
+
+				if ( ! empty( $mt_og[ 'og:description' ] ) ) {
+
+					$mt_og[ 'product:description' ] = $mt_og[ 'og:description' ];
+				}
+			}
+
 			WpssoOpenGraph::check_mt_value_gtin( $mt_og, $mt_pre = 'product' );
 			WpssoOpenGraph::check_mt_value_price( $mt_og, $mt_pre = 'product' );
 			WpssoOpenGraph::check_mt_value_energy_efficiency( $mt_og, $mt_pre = 'product' );
@@ -195,6 +206,17 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
 
 						$mt_single[ 'product:item_group_id' ] = $mod[ 'id' ];
+
+						/*
+						 * Fix empty variation descriptions.
+						 */
+						if ( empty( $mt_single[ 'product:description' ] ) ) {
+
+							if ( ! empty( $mt_og[ 'og:description' ] ) ) {
+
+								$mt_single[ 'product:description' ] = $mt_og[ 'og:description' ];
+							}
+						}
 
 						WpssoOpenGraph::check_mt_value_gtin( $mt_single, $mt_pre = 'product' );
 						WpssoOpenGraph::check_mt_value_price( $mt_single, $mt_pre = 'product' );
