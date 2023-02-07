@@ -1001,7 +1001,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Expand inline variables.
 			 */
-			if ( false !== strpos( $value, '%%' ) ) {
+			if ( is_string( $value ) && false !== strpos( $value, '%%' ) ) {
 
 				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
