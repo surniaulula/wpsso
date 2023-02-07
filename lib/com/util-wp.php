@@ -311,10 +311,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * If the query arguments do not limit the number of posts returned with 'paged' and 'posts_per_page', then
 			 * use a while loop to save memory and fetch a default of 1000 posts at a time.
 			 */
-			$wp_query = new WP_Query;
+			$wp_query  = new WP_Query;
+			$has_paged = isset( $args[ 'paged' ] ) && false !== $args[ 'paged' ] ? true : false;
+			$has_ppp   = isset( $args[ 'posts_per_page' ] ) && -1 !== $args[ 'posts_per_page' ] ? true : false;
 
-			if ( ( ! isset( $args[ 'paged' ] ) || false === $args[ 'paged' ] ) &&
-				( ! isset( $args[ 'posts_per_page' ] ) || -1 === $args[ 'posts_per_page' ] ) ) {
+			if ( ! $has_paged && ! $has_ppp ) {
 
 				$args[ 'paged' ] = 1;
 
