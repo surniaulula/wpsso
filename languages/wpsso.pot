@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.1.0\n"
+"Project-Id-Version: WPSSO Core 15.1.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4713,7 +4713,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:340 gettext/gettext-lib-pro.php:351
 #: lib/conflict.php:209 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1630 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1628 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -5192,7 +5192,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:874 lib/post.php:970 lib/term.php:692 lib/user.php:687
+#: lib/admin.php:874 lib/post.php:968 lib/term.php:708 lib/user.php:703
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5597,7 +5597,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:366
+#: lib/comment.php:382
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -8244,8 +8244,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1681 lib/user.php:1713
-#: lib/user.php:1811 lib/user.php:1827 lib/user.php:1962
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1697 lib/user.php:1729
+#: lib/user.php:1827 lib/user.php:1843 lib/user.php:1978
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11359,136 +11359,136 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1108
+#: lib/post.php:1106
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1141
+#: lib/post.php:1139
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1144
+#: lib/post.php:1142
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1147
+#: lib/post.php:1145
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1177
+#: lib/post.php:1175
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1177
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1181
+#: lib/post.php:1179
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1182
+#: lib/post.php:1180
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1196
+#: lib/post.php:1194
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1210
+#: lib/post.php:1208
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1225
+#: lib/post.php:1223
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1242
+#: lib/post.php:1240
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1245
+#: lib/post.php:1243
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1278
+#: lib/post.php:1276
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1280
+#: lib/post.php:1278
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1282
+#: lib/post.php:1280
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1302
+#: lib/post.php:1300
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1321
+#: lib/post.php:1319
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1323
+#: lib/post.php:1321
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1326
+#: lib/post.php:1324
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1369
+#: lib/post.php:1367
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1371
+#: lib/post.php:1369
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1379
+#: lib/post.php:1377
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1383
+#: lib/post.php:1381
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1387
+#: lib/post.php:1385
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1582
+#: lib/post.php:1580
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1587
+#: lib/post.php:1585
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1914
+#: lib/post.php:1912
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12236,7 +12236,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:945
+#: lib/term.php:961
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12281,80 +12281,80 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:828
+#: lib/user.php:844
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:834
+#: lib/user.php:850
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:989
+#: lib/user.php:1005
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1115
+#: lib/user.php:1131
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1116
+#: lib/user.php:1132
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1117
+#: lib/user.php:1133
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1632
+#: lib/user.php:1648
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1680
+#: lib/user.php:1696
 msgid ""
 "A background task will begin shortly to add the %s role to content creators."
 msgstr ""
 
-#: lib/user.php:1732
+#: lib/user.php:1748
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1747 lib/user.php:1861 lib/util-cache.php:138
+#: lib/user.php:1763 lib/user.php:1877 lib/util-cache.php:138
 #: lib/util-cache.php:677
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1748
+#: lib/user.php:1764
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1789
+#: lib/user.php:1805
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1790 lib/user.php:1899 lib/util-cache.php:189
+#: lib/user.php:1806 lib/user.php:1915 lib/util-cache.php:189
 #: lib/util-cache.php:776
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1810
+#: lib/user.php:1826
 msgid ""
 "A background task will begin shortly to remove the %s role from all users."
 msgstr ""
 
-#: lib/user.php:1846
+#: lib/user.php:1862
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1862
+#: lib/user.php:1878
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1898
+#: lib/user.php:1914
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

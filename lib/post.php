@@ -413,7 +413,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );
 
-				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
+				if ( ! is_array( $md_opts ) ) {
+				
+					$md_opts = array();	// WPSSO_META_NAME not found.
+				}
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
@@ -544,12 +547,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/*
 					 * Since WPSSO Core v13.8.1.
 					 */
-					if ( ! empty( $md_opts[ 'seo_title' ] ) && $this->p->util->is_seo_title_disabled() ) {
+					if ( $this->p->util->is_seo_title_disabled() ) {
 
 						unset( $md_opts[ 'seo_title' ] );
 					}
 
-					if ( ! empty( $md_opts[ 'seo_desc' ] ) && $this->p->util->is_seo_desc_disabled() ) {
+					if ( $this->p->util->is_seo_desc_disabled() ) {
 
 						unset( $md_opts[ 'seo_desc' ] );
 					}
@@ -558,11 +561,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log_arr( 'md_opts', $md_opts );
-					}
 
 				}
 			}

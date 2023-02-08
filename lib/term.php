@@ -305,7 +305,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$md_opts = self::get_meta( $term_id, WPSSO_META_NAME, true );
 
-				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
+				if ( ! is_array( $md_opts ) ) {
+
+					$md_opts = array();	// WPSSO_META_NAME not found.
+				}
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
@@ -370,6 +373,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * Since WPSSO Core v4.31.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
+
+					/*
+					 * Since WPSSO Core v15.1.1.
+					 */
+					if ( $this->p->util->is_seo_title_disabled() ) {
+
+						unset( $md_opts[ 'seo_title' ] );
+					}
+
+					if ( $this->p->util->is_seo_desc_disabled() ) {
+
+						unset( $md_opts[ 'seo_desc' ] );
+					}
 
 					/*
 					 * Since WPSSO Core v8.2.0.

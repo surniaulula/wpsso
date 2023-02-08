@@ -3408,7 +3408,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $add_none ) {
 
-				$user_select = array( 'none' => 'none' ) + $user_select;
+				$user_select = array_merge( array( 'none' => 'none' ), $user_select );
 			}
 
 			return $user_select;
@@ -3452,7 +3452,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				while ( $role_users = self::get_users_names( $role, $blog_id, $limit = 1000 ) ) {
 
-					$user_names += $role_users;
+					$user_names = array_merge( $user_names, $role_users );
 				}
 			}
 
@@ -3526,7 +3526,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$offset = null;	// Allow the next call to start fresh.
 
-					return false;	// To break the while loop.
+					return false;	// Break the calling while loop.
 				}
 			}
 

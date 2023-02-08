@@ -295,7 +295,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
-					if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
+					if ( ! is_array( $md_opts ) ) {
+					
+						$md_opts = array();	// WPSSO_META_NAME not found.
+					}
 
 				} else {
 
@@ -356,6 +359,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 * Since WPSSO Core v4.31.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
+
+					/*
+					 * Since WPSSO Core v15.1.1.
+					 */
+					if ( $this->p->util->is_seo_title_disabled() ) {
+
+						unset( $md_opts[ 'seo_title' ] );
+					}
+
+					if ( $this->p->util->is_seo_desc_disabled() ) {
+
+						unset( $md_opts[ 'seo_desc' ] );
+					}
 
 					/*
 					 * Since WPSSO Core v8.2.0.
