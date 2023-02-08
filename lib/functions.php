@@ -150,13 +150,13 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
  */
 if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
 
-	function wpsso_refresh_cache( $read_cache = false ) {
+	function wpsso_refresh_cache() {
 
 		$wpsso =& Wpsso::get_instance();
 
 		$user_id = get_current_user_id();
 
-		return $wpsso->util->cache->schedule_refresh( $user_id, $read_cache );
+		return $wpsso->util->cache->schedule_refresh( $user_id );
 	}
 }
 

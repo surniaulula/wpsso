@@ -608,8 +608,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
-			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
+			if ( false === $md_opts ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: returned submit options is false' );
+				}
+
+				return;
+			}
+
+			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 			if ( empty( $md_opts ) ) {

@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $product_id ) {	// Just in case.
 
-				$this->p->post->refresh_cache( $product_id, $rel_id = false );	// Refresh the cache for a single post ID.
+				$this->p->post->refresh_cache( $product_id );	// Refresh the cache for a single post ID.
 			}
 		}
 

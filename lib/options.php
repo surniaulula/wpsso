@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					continue;
 
 				/*
-				 * Don't save the ':disabled' option qualifier.
+				 * Maybe save the disabled option, but don't save the ':disabled' qualifier.
 				 */
 				} elseif ( false !== strpos( $opt_key, ':disabled' ) ) {
 
