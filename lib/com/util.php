@@ -3452,7 +3452,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				while ( $role_users = self::get_users_names( $role, $blog_id, $limit = 1000 ) ) {
 
-					$users_names = array_merge( $users_names, $role_users );
+					$users_names = array_replace( $users_names, $role_users );
 				}
 			}
 
