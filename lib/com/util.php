@@ -2645,7 +2645,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $add_none ) {
 
-				$results = array( 'none' => 'none' ) + $results;	// Maintain numeric index.
+				/*
+				 * The union operator (+) gives priority to values in the first array, while array_replace() gives
+				 * priority to values in the the second array.
+				 */
+				$results = array( 'none' => 'none' ) + $results;	// Maintains numeric index.
 			}
 
 			return $results;
@@ -3408,7 +3412,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $add_none ) {
 
-				$user_select = array_replace( array( 'none' => 'none' ), $user_select );
+				/*
+				 * The union operator (+) gives priority to values in the first array, while array_replace() gives
+				 * priority to values in the the second array.
+				 */
+				$user_select = array( 'none' => 'none' ) + $user_select;	// Maintains numeric index.
 			}
 
 			return $user_select;
@@ -3452,7 +3460,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				while ( $role_users = self::get_users_names( $role, $blog_id, $limit = 1000 ) ) {
 
-					$users_names = array_replace( $users_names, $role_users );
+					/*
+					 * The union operator (+) gives priority to values in the first array, while
+					 * array_replace() gives priority to values in the the second array.
+					 */
+					$users_names = $users_names + $role_users;	// Maintains numeric index.
 				}
 			}
 
@@ -4596,6 +4608,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( true === $add_none ) {	// Prefix array with 'none'.
 
+				/*
+				 * The union operator (+) gives priority to values in the first array, while
+				 * array_replace() gives priority to values in the the second array.
+				 */
 				$arr = array( 'none' => 'none' ) + $arr;	// Maintains numeric index.
 			}
 
