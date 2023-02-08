@@ -3408,7 +3408,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $add_none ) {
 
-				$user_select = array_merge( array( 'none' => 'none' ), $user_select );
+				$user_select = array_replace( array( 'none' => 'none' ), $user_select );
 			}
 
 			return $user_select;
