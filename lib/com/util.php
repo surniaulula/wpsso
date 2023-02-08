@@ -3446,19 +3446,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$blog_id = get_current_blog_id();
 			}
 
-			$user_names = array();
+			$users_names = array();
 
 			foreach ( $roles as $role ) {
 
 				while ( $role_users = self::get_users_names( $role, $blog_id, $limit = 1000 ) ) {
 
-					$user_names = array_merge( $user_names, $role_users );
+					$users_names = array_merge( $users_names, $role_users );
 				}
 			}
 
-			self::natasort( $user_names );	// Maintain ID => display_name association.
+			self::natasort( $users_names );	// Maintain ID => display_name association.
 
-			return $user_names;
+			return $users_names;
 		}
 
 		/*
@@ -3510,19 +3510,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				)
 			);
 
-			$user_names = array();
+			$users_names = array();
 
 			/*
 			 * See https://developer.wordpress.org/reference/classes/WP_User_Query/prepare_query/.
 			 */
 			foreach ( get_users( $user_args ) as $user_obj ) {
 
-				$user_names[ $user_obj->ID ] = $user_obj->display_name;
+				$users_names[ $user_obj->ID ] = $user_obj->display_name;
 			}
 
-			if ( null !== $offset ) {	// 0 or multiple of $limit integer.
+			if ( null !== $offset ) {	// Null, 0, or multiple of $limit integer.
 
-				if ( empty( $user_names ) ) {
+				if ( empty( $users_names ) ) {
 
 					$offset = null;	// Allow the next call to start fresh.
 
@@ -3530,7 +3530,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return $user_names;
+			return $users_names;
 		}
 
 		/*
@@ -3574,13 +3574,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$users_ids[] = $user_obj->ID;
 			}
 
-			if ( null !== $offset ) {	// 0 or multiple of $limit integer.
+			if ( null !== $offset ) {	// Null, 0, or multiple of $limit integer.
 
 				if ( empty( $users_ids ) ) {
 
 					$offset = null;	// Allow the next call to start fresh.
 
-					return false;	// To break the while loop.
+					return false;	// Break the calling while loop.
 				}
 			}
 
