@@ -1114,14 +1114,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$post_ids = $this->get_posts_ids( $mod );
 
-			foreach ( $post_ids as $post_id ) {
+			if ( is_array( $post_ids ) ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
+				foreach ( $post_ids as $post_id ) {
 
-					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
+					}
+
+					$posts_mods[] = $this->p->post->get_mod( $post_id );
 				}
-
-				$posts_mods[] = $this->p->post->get_mod( $post_id );
 			}
 
 			return $posts_mods;

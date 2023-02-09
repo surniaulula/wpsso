@@ -1788,15 +1788,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$post_taxonomies = get_post_taxonomies( $post_id );
 
-				foreach ( $post_taxonomies as $tax_slug ) {
+				if ( is_array( $post_taxonomies ) ) {	// Just in case.
 
-					$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
+					foreach ( $post_taxonomies as $tax_slug ) {
 
-					if ( is_array( $post_terms ) ) {	// Just in case.
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-						foreach ( $post_terms as $term_obj ) {
+						if ( is_array( $post_terms ) ) {	// Just in case.
 
-							$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
+							foreach ( $post_terms as $term_obj ) {
+
+								$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
+							}
 						}
 					}
 				}
@@ -2215,18 +2218,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Start with the parent and work our way up - return the first value found.
 			 */
-			foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
+			$post_ancestors = get_post_ancestors( $post_id );
 
-				$metadata = $this->get_update_meta_cache( $parent_id );
+			if ( is_array( $post_ancestors ) ) {	// Just in case.
 
-				if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+				foreach ( $post_ancestors as $parent_id ) {
 
-					if ( $single ) {
+					$metadata = $this->get_update_meta_cache( $parent_id );
 
-						return maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+
+						if ( $single ) {
+
+							return maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+						}
+
+						return array_map( 'maybe_unserialize', $metadata[ $meta_key ] );
 					}
-
-					return array_map( 'maybe_unserialize', $metadata[ $meta_key ] );
 				}
 			}
 
@@ -2258,17 +2266,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( '' === $prev_value ) {	// No existing previous value.
 
-				foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
+				$post_ancestors = get_post_ancestors( $post_id );
 
-					$metadata = $this->get_update_meta_cache( $parent_id );
+				if ( is_array( $post_ancestors ) ) {	// Just in case.
 
-					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+					foreach ( $post_ancestors as $parent_id ) {
 
-						$parent_value = maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+						$metadata = $this->get_update_meta_cache( $parent_id );
 
-						if ( $meta_value == $parent_value ) {	// Allow integer to numeric string comparison.
+						if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
 
-							return false;	// Do not save the meta key value.
+							$parent_value = maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+
+							if ( $meta_value == $parent_value ) {	// Allow integer to numeric string comparison.
+
+								return false;	// Do not save the meta key value.
+							}
 						}
 					}
 				}

@@ -1197,7 +1197,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Google Merchant Feed XMLs for WooCommerce, Easy Digital Downloads, and "
-"Custom Product Pages."
+"Custom Products with Multilingual Support."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:123
@@ -4759,54 +4759,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1201
+#: lib/abstract/wp-meta.php:1204
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1272
+#: lib/abstract/wp-meta.php:1275
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1276
+#: lib/abstract/wp-meta.php:1279
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1279 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1282 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1283
+#: lib/abstract/wp-meta.php:1286
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1284
+#: lib/abstract/wp-meta.php:1287
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1285
+#: lib/abstract/wp-meta.php:1288
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1286
+#: lib/abstract/wp-meta.php:1289
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1624
+#: lib/abstract/wp-meta.php:1627
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1960 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1963 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1962
+#: lib/abstract/wp-meta.php:1965
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -11488,7 +11488,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1912
+#: lib/post.php:1915
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
