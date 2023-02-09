@@ -298,6 +298,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$is_admin   = is_admin();
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
+
+			/*
+			 * Check for defined constants:
+			 *
+			 * 'WPSSO_ADMIN_DEBUG_LOG' if is_admin() is true.
+			 * 'WPSSO_ADMIN_DEBUG_HTML' if is_admin() is true.
+			 *
+			 * 'WPSSO_DEBUG_LOG' if is_admin() is false or 'WPSSO_ADMIN_DEBUG_LOG' is not defined.
+			 * 'WPSSO_DEBUG_HTML' if is_admin() is false or 'WPSSO_ADMIN_DEBUG_HTML' is not defined.
+			 */
 			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
 			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
 
@@ -610,6 +620,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return '';
 		}
 
+		/*
+		 * Check for defined constants:
+		 *
+		 * 'WPSSO_ADMIN_*' if is_admin() is true.
+		 *
+		 * 'WPSSO_*' if is_admin() is false or 'WPSSO_ADMIN_*' is not defined.
+		 */
 		public function get_const_name( $const_suffix ) {
 
 			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
