@@ -1112,11 +1112,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$posts_mods = array();
 
-			$post_ids = $this->get_posts_ids( $mod );
+			$posts_ids = $this->get_posts_ids( $mod );
 
-			if ( is_array( $post_ids ) ) {	// Just in case.
+			if ( is_array( $posts_ids ) ) {	// Just in case.
 
-				foreach ( $post_ids as $post_id ) {
+				foreach ( $posts_ids as $post_id ) {
 
 					if ( $this->p->debug->enabled ) {
 
