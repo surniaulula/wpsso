@@ -236,6 +236,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.2.0-dev.1 (2023/02/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox:
+		* Default Place Schema Type
+		* Default Place Country
+		* Default Place Timezone
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 15.1.1 (2023/02/08)**
 
 * **New Features**
@@ -604,6 +621,10 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 15.2.0-dev.1 =
+
+(2023/02/10) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox.
 
 = 15.1.1 =
 
