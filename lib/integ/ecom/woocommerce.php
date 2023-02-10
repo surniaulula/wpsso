@@ -56,6 +56,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			/*
+			 * Return the primary category term for WooCommerce product breadcrumbs.
+			 */
+			add_filter( 'woocommerce_breadcrumb_main_term', array( $this, 'woocommerce_breadcrumb_main_term' ), 100, 2 );
+
+			/*
 			 * Check for possible missing page ID selections.
 			 */
 			if ( is_admin() ) {
@@ -106,6 +111,29 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			$this->disable_options_keys();
+		}
+
+		/*
+		 * Return the primary category term for WooCommerce product breadcrumbs.
+		 *
+		 * See WC_Breadcrumb->add_crumbs_attachment().
+		 * See WC_Breadcrumb->add_crumbs_single().
+		 */
+		public function woocommerce_breadcrumb_main_term( $term, $terms ) {
+
+			global $post;
+
+			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				$mod = $this->p->post->get_mod( $post->ID );
+
+				if ( $primary_id = $this->p->post->get_primary_term_id( $mod, $this->cat_taxonomy ) ) {
+
+					return get_term( $primary_id, $this->cat_taxonomy );
+				}
+			}
+
+			return $term;
 		}
 
 		/*
