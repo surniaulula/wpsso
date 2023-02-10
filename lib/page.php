@@ -1608,6 +1608,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->mark();	// Log execution time and memory usage.
+
 				$this->p->debug->log_args( array(
 					'mod' => $mod,
 				) );

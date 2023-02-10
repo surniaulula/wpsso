@@ -402,7 +402,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting post metadata for local cache' );
+					$this->p->debug->log( 'getting metadata for post id ' . $post_id );
 				}
 
 				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );
@@ -604,8 +604,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod = $this->get_mod( $post_id );
-
+			$mod     = $this->get_mod( $post_id );
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			if ( false === $md_opts ) {
@@ -621,10 +620,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
-			if ( empty( $md_opts ) ) {
-
-				return self::delete_meta( $post_id, WPSSO_META_NAME );
-			}
+			$this->md_cache_enable();	// Re-enable the local cache.
 
 			return self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}

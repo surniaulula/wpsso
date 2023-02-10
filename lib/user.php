@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting user metadata for local cache' );
+					$this->p->debug->log( 'getting metadata for user id ' . $user_id );
 				}
 
 				$user_exists = SucomUtil::user_exists( $user_id );
@@ -457,8 +457,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod = $this->get_mod( $user_id );
-
+			$mod     = $this->get_mod( $user_id );
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			if ( false === $md_opts ) {
@@ -474,10 +473,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
-			if ( empty( $md_opts ) ) {
-
-				return self::delete_meta( $user_id, WPSSO_META_NAME );
-			}
+			$this->md_cache_enable();	// Re-enable the local cache.
 
 			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
 		}

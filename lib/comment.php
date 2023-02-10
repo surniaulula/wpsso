@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting comment metadata for local cache' );
+					$this->p->debug->log( 'getting metadata for comment id ' . $comment_id );
 				}
 
 				$md_opts = self::get_meta( $comment_id, WPSSO_META_NAME, $single = true );
@@ -293,8 +293,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod = $this->get_mod( $comment_id );
-
+			$mod     = $this->get_mod( $comment_id );
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			if ( false === $md_opts ) {
@@ -310,10 +309,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
 
-			if ( empty( $md_opts ) ) {
-
-				return self::delete_meta( $comment_id, WPSSO_META_NAME );
-			}
+			$this->md_cache_enable();	// Re-enable the local cache.
 
 			return self::update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
 		}

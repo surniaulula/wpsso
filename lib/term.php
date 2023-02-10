@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting term metadata for local cache' );
+					$this->p->debug->log( 'getting metadata for term id ' . $term_id );
 				}
 
 				$md_opts = self::get_meta( $term_id, WPSSO_META_NAME, true );
@@ -445,10 +445,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$this->md_cache_disable();	// Disable the local cache.
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
-
-			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
-
-			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
+			$mod      = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
+			$md_opts  = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			if ( false === $md_opts ) {
 
@@ -463,10 +461,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
 
-			if ( empty( $md_opts ) ) {
-
-				return self::delete_meta( $term_id, WPSSO_META_NAME );
-			}
+			$this->md_cache_enable();	// Re-enable the local cache.
 
 			return self::update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 		}
