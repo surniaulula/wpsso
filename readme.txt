@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.2.0-dev.3 (2023/02/10)**
+**Version 15.2.0-dev.4 (2023/02/10)**
 
 * **New Features**
 	* None.
@@ -624,7 +624,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.2.0-dev.3 =
+= 15.2.0-dev.4 =
 
 (2023/02/10) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox. Removed the offers property from the Schema ProductGroup markup.
 
