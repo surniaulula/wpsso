@@ -210,7 +210,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $post_id ] ) ) {
+			/*
+			 * Maybe return the array from the local cache.
+			 */
+			if ( isset( $local_cache[ $post_id ] ) && ! $this->md_cache_disabled ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -314,6 +317,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
+			 * Filter the post mod array.
+			 *
 			 * See WpssoIntegUserCoAuthors->filter_get_post_mod().
 			 */
 			$mod = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
@@ -323,7 +328,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log_arr( 'mod', $mod );
 			}
 
-			return $local_cache[ $post_id ] = $mod;
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $post_id ] = $mod;
+			}
+
+			return $mod;
 		}
 
 		public function get_mod_wp_object( array $mod ) {
@@ -381,28 +394,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
 			/*
-			 * Maybe initialize the cache.
+			 * Maybe retrieve the array from the local cache.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id );
-				}
-
-				$local_cache[ $cache_id ] = null;
-
-			} elseif ( $this->md_cache_disabled ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
-				}
-
-				$local_cache[ $cache_id ] = null;
-			}
-
-			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
@@ -495,7 +489,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
 					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
@@ -507,7 +501,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_product_attributes filters for post ID ' . $post_id );
+						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $post_id );
 					}
 
 					$md_opts = (array) apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
@@ -565,6 +559,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $cache_id ] = $md_opts;
+			}
+
 			return $this->return_options( $post_id, $md_opts, $md_key, $merge_defs );
 		}
 
@@ -600,7 +602,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+			$this->md_cache_disable();	// Disable the local cache.
 
 			$mod = $this->get_mod( $post_id );
 

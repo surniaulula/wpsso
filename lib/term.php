@@ -164,13 +164,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
-			/*
-			 * Taxonomy term IDs from older WordPress versions may not be unique, so use the term ID and taxonomy slug
-			 * to cache the mod array.
-			 */
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $term_id ] ) ) {
+			/*
+			 * Maybe return the array from the local cache.
+			 *
+			 * Taxonomy term IDs from older WordPress versions may not be unique, so use both the term ID and the
+			 * taxonomy slug to cache the mod array.
+			 */
+			if ( isset( $local_cache[ $term_id ] ) && ! $this->md_cache_disabled ) {
 
 				if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
 
@@ -235,7 +237,25 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			return $local_cache[ $term_id ][ $tax_slug ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
+			/*
+			 * Filter the term mod array.
+			 */
+			$mod = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'mod', $mod );
+			}
+
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $term_id ][ $tax_slug ] = $mod;
+			}
+
+			return $mod;
 		}
 
 		public function get_mod_wp_object( array $mod ) {
@@ -273,28 +293,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
 			/*
-			 * Maybe initialize the cache.
+			 * Maybe retrieve the array from the local cache.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id );
-				}
-
-				$local_cache[ $cache_id ] = null;
-
-			} elseif ( $this->md_cache_disabled ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
-				}
-
-				$local_cache[ $cache_id ] = null;
-			}
-
-			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
 
 			if ( null === $md_opts ) {
 
@@ -394,6 +395,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $cache_id ] = $md_opts;
+			}
+
 			return $this->return_options( $term_id, $md_opts, $md_key, $merge_defs );
 		}
 
@@ -433,7 +442,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+			$this->md_cache_disable();	// Disable the local cache.
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 

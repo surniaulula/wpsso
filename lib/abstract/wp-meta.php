@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		protected $p;		// Wpsso class object.
 		protected $form;	// SucomForm class object.
 
-		protected $md_cache_disabled = false;	// Disable local caches when saving options.
+		protected $md_cache_disabled = false;	// Disable local caches.
 
 		protected static $head_tags = false;	// Must be false by default.
 
@@ -213,6 +213,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Disable local cache for get_mod(), get_options(), and get_defaults().
+		 */
+		public function md_cache_disable() {
+			
+			$this->md_cache_disabled = true;
+		}
+
+		public function md_cache_enable() {
+			
+			$this->md_cache_disabled = false;
+		}
+
+		/*
 		 * Add WordPress action and filters hooks.
 		 */
 		public function add_wp_hooks() {
@@ -290,21 +303,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				) );
 			}
 
-			/*
-			 * Note that the local cache is unique to each child class, so we can simply index by the object ID.
-			 */
 			static $local_cache = array();
 
-			if ( ! isset( $local_cache[ $obj_id ] ) ) {
-
-				$local_cache[ $obj_id ] = array();
-
-			} elseif ( $this->md_cache_disabled ) {
-
-				$local_cache[ $obj_id ] = array();
-			}
-
-			$md_defs =& $local_cache[ $obj_id ];	// Shortcut variable name.
+			/*
+			 * Maybe retrieve the array from the local cache.
+			 *
+			 * Note that the local cache is unique to each child class, so we can simply index by the object ID.
+			 */
+			$md_defs = isset( $local_cache[ $obj_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $obj_id ] : array();
 
 			if ( empty( $md_defs[ 'opt_filtered' ] ) ) {
 
@@ -840,7 +846,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $mod[ 'id' ] . ' metadata' );
+						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $mod[ 'id' ] . ' metadata' );
 					}
 
 					$md_defs = (array) apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
@@ -852,7 +858,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_product_attributes filters for post ID ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $mod[ 'id' ] );
 					}
 
 					$md_defs = (array) apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
@@ -901,6 +907,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( 'md_defs', $md_defs );
+			}
+
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $obj_id ] = $md_defs;
 			}
 
 			if ( false !== $md_key ) {

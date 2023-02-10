@@ -170,7 +170,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $user_id ] ) ) {
+			/*
+			 * Maybe return the array from the local cache.
+			 */
+			if ( isset( $local_cache[ $user_id ] ) && ! $this->md_cache_disabled ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -207,7 +210,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			return $local_cache[ $user_id ] = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );
+			/*
+			 * Filter the user mod array.
+			 */
+			$mod = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'mod', $mod );
+			}
+
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $user_id ] = $mod;
+			}
+
+			return $mod;
 		}
 
 		public function get_mod_wp_object( array $mod ) {
@@ -257,28 +278,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
 			/*
-			 * Maybe initialize the cache.
+			 * Maybe retrieve the array from the local cache.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id );
-				}
-
-				$local_cache[ $cache_id ] = null;
-
-			} elseif ( $this->md_cache_disabled ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
-				}
-
-				$local_cache[ $cache_id ] = null;
-			}
-
-			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
 
 			if ( null === $md_opts ) {
 
@@ -407,6 +409,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $cache_id ] = $md_opts;
+			}
+
 			return $this->return_options( $user_id, $md_opts, $md_key, $merge_defs );
 		}
 
@@ -445,7 +455,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+			$this->md_cache_disable();	// Disable the local cache.
 
 			$mod = $this->get_mod( $user_id );
 

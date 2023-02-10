@@ -53,7 +53,10 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $comment_id ] ) ) {
+			/*
+			 * Maybe return the array from the local cache.
+			 */
+			if ( isset( $local_cache[ $comment_id ] ) && ! $this->md_cache_disabled ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -101,7 +104,25 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
+			/*
+			 * Filter the comment mod array.
+			 */
+			$mod = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'mod', $mod );
+			}
+
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $comment_id ] = $mod;
+			}
+
+			return $mod;
 		}
 
 		public function get_mod_wp_object( array $mod ) {
@@ -139,28 +160,9 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $comment_id, 'filter' => $filter_opts ) );
 
 			/*
-			 * Maybe initialize the cache.
+			 * Maybe retrieve the array from the local cache.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id );
-				}
-
-				$local_cache[ $cache_id ] = null;
-
-			} elseif ( $this->md_cache_disabled ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
-				}
-
-				$local_cache[ $cache_id ] = null;
-			}
-
-			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
@@ -246,6 +248,14 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				}
 			}
 
+			/*
+			 * Maybe save the array to the local cache.
+			 */
+			if ( ! $this->md_cache_disabled ) {
+
+				$local_cache[ $cache_id ] = $md_opts;
+			}
+
 			return $this->return_options( $comment_id, $md_opts, $md_key, $merge_defs );
 		}
 
@@ -281,7 +291,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				return;
 			}
 
-			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+			$this->md_cache_disable();	// Disable the local cache.
 
 			$mod = $this->get_mod( $comment_id );
 
