@@ -245,6 +245,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Default Place Schema Type
 		* Default Place Country
 		* Default Place Timezone
+	* Removed the offers property from the Schema ProductGroup markup (not required as each variant has its own offers property).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -624,7 +625,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 = 15.2.0-dev.1 =
 
-(2023/02/10) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox.
+(2023/02/10) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox. Removed the offers property from the Schema ProductGroup markup.
 
 = 15.1.1 =
 
