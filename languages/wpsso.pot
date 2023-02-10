@@ -11378,7 +11378,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2146
+#: lib/page.php:2153
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
