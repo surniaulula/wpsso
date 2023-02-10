@@ -216,12 +216,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Disable local cache for get_mod(), get_options(), and get_defaults().
 		 */
 		public function md_cache_disable() {
-			
+
 			$this->md_cache_disabled = true;
 		}
 
 		public function md_cache_enable() {
-			
+
 			$this->md_cache_disabled = false;
 		}
 
@@ -1369,10 +1369,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
 
 			$media_html = '';
 
@@ -1438,10 +1435,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$media_html .= '<div class="wp-thumb-bg-img" style="background-image:url(' . $image_url . ');"></div><!-- .wp-thumb-bg-img -->';
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting thumbnail image' );	// End timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting thumbnail image' );	// End timer.
 
 			return $media_html;
 		}
@@ -1670,7 +1664,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
 			if ( empty( $_POST[ WPSSO_META_NAME ] ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: ' . WPSSO_META_NAME . ' array is empty' );
@@ -1678,7 +1672,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				return $md_prev;
 			}
-			
+
 			/*
 			 * Merge and sanitize the new options.
 			 */

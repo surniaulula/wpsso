@@ -202,12 +202,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-
-				$this->p->debug->mark( 'build schema array' );	// Begin timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'build schema array' );	// Begin timer.
 
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type_id( $mod );		// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
@@ -309,10 +304,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$page_type_added[ $type_id ] = true;	// Prevent adding duplicate schema types.
 				}
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->mark( 'schema type id ' . $type_id );	// Begin timer.
-				}
+				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'schema type id ' . $type_id );	// Begin timer.
 
 				if ( $type_id === $page_type_id ) {	// This is the main entity.
 
@@ -364,10 +356,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					WpssoSchemaGraph::add_data( $single_graph );
 				}
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->mark( 'schema type id ' . $type_id );	// End timer.
-				}
+				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'schema type id ' . $type_id );	// End timer.
 			}
 
 			/*
@@ -390,10 +379,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			unset( $graph_json );
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'build schema array' );	// End timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'build schema array' );	// End timer.
 
 			$schema_scripts = apply_filters( 'wpsso_schema_scripts', $schema_scripts, $mod, $mt_og );
 
@@ -2884,9 +2870,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$added_page_type_ids[ $page_type_id ] = true;
 			}
 
-			/*
-			 * Begin timer.
-			 */
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->mark( 'adding posts data' );	// Begin timer.

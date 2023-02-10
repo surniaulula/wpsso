@@ -345,20 +345,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
-				}
+				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
 
 				/*
 				 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
 				 */
 				$mt_videos = array_merge( $mt_videos, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $md_pre ) );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
-				}
+				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
 
 			}
 
@@ -371,17 +365,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! $this->p->util->is_maxed( $mt_videos, $num ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// Begin timer.
-					}
+					if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// Begin timer.
 
 					$mt_videos = array_merge( $mt_videos, $this->get_content_videos( $num_diff, $mod ) );
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// End timer.
-					}
+					if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// End timer.
 				}
 			}
 

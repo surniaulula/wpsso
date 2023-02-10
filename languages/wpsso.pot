@@ -508,8 +508,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:888
-#: lib/media-filters.php:114 lib/media.php:1470 lib/media.php:1621
-#: lib/media.php:3266
+#: lib/media-filters.php:114 lib/media.php:1458 lib/media.php:1609
+#: lib/media.php:3254
 msgid "Media Library"
 msgstr ""
 
@@ -4730,8 +4730,8 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
-#: lib/conflict.php:209 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1626 lib/pro/util/shorten.php:331
+#: lib/conflict.php:209 lib/integ/review/yotpowc.php:185 lib/loader.php:192
+#: lib/loader.php:206 lib/post.php:1626 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -4816,15 +4816,15 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1641
+#: lib/abstract/wp-meta.php:1635
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1977 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1971 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1979
+#: lib/abstract/wp-meta.php:1973
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -5466,12 +5466,12 @@ msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2461 lib/options.php:1181
+#: lib/admin.php:2461 lib/options.php:1163
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2466 lib/options.php:1186
+#: lib/admin.php:2466 lib/options.php:1168
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -6666,23 +6666,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:430
+#: lib/head.php:427
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:439
+#: lib/head.php:436
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:448
+#: lib/head.php:445
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:457
+#: lib/head.php:454
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:477
+#: lib/head.php:474
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -6722,23 +6722,23 @@ msgstr ""
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1482
+#: lib/integ/ecom/woocommerce.php:1473
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1569
+#: lib/integ/ecom/woocommerce.php:1560
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1572
+#: lib/integ/ecom/woocommerce.php:1563
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1575
+#: lib/integ/ecom/woocommerce.php:1566
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -6893,19 +6893,19 @@ msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:200
+#: lib/loader.php:188
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
-#: lib/loader.php:206
+#: lib/loader.php:194
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
-#: lib/loader.php:220
+#: lib/loader.php:208
 msgid "Library class name for \"%s\" cannot be determined."
 msgstr ""
 
-#: lib/loader.php:221
+#: lib/loader.php:209
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "required library file."
@@ -6915,7 +6915,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3276
+#: lib/media-filters.php:117 lib/media.php:3264
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6944,82 +6944,82 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1273
+#: lib/media.php:1261
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1474
+#: lib/media.php:1462
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1476 lib/media.php:1692
+#: lib/media.php:1464 lib/media.php:1680
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1492
+#: lib/media.php:1480
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1513
+#: lib/media.php:1501
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1532
+#: lib/media.php:1520
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1623
+#: lib/media.php:1611
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1661 lib/register.php:348 lib/util.php:843 lib/util.php:949
+#: lib/media.php:1649 lib/register.php:348 lib/util.php:843 lib/util.php:949
 #: lib/util.php:981 lib/util.php:3154
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1662 lib/util.php:844 lib/util.php:3155
+#: lib/media.php:1650 lib/util.php:844 lib/util.php:3155
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1663
+#: lib/media.php:1651
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1690
+#: lib/media.php:1678
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3292
+#: lib/media.php:3280
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3345
+#: lib/media.php:3333
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3380
+#: lib/media.php:3368
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -11104,268 +11104,268 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:739
+#: lib/options.php:721
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:748
+#: lib/options.php:730
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:756
+#: lib/options.php:738
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:774
+#: lib/options.php:756
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:884
+#: lib/options.php:866
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:885 lib/register.php:162
+#: lib/options.php:867 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1193
+#: lib/options.php:1175
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1208
+#: lib/options.php:1190
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1211
+#: lib/options.php:1193
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1225
+#: lib/options.php:1207
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1229
+#: lib/options.php:1211
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1244
+#: lib/options.php:1226
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1248
+#: lib/options.php:1230
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1283
+#: lib/options.php:1265
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1284
+#: lib/options.php:1266
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1285
+#: lib/options.php:1267
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1286
+#: lib/options.php:1268
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1287
+#: lib/options.php:1269
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1288
+#: lib/options.php:1270
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1289
+#: lib/options.php:1271
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1290
+#: lib/options.php:1272
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1291
+#: lib/options.php:1273
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1292
+#: lib/options.php:1274
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1293
+#: lib/options.php:1275
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1294
+#: lib/options.php:1276
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1295
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1776
+#: lib/options.php:1758
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1780
+#: lib/options.php:1762
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1784
+#: lib/options.php:1766
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1788
+#: lib/options.php:1770
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1792
+#: lib/options.php:1774
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1796
+#: lib/options.php:1778
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1800
+#: lib/options.php:1782
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1804
+#: lib/options.php:1786
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_sku%%"
 msgstr ""
 
-#: lib/options.php:1808
+#: lib/options.php:1790
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1812
+#: lib/options.php:1794
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1816
+#: lib/options.php:1798
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1820
+#: lib/options.php:1802
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1824
+#: lib/options.php:1806
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1828
+#: lib/options.php:1810
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1832
+#: lib/options.php:1814
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1836
+#: lib/options.php:1818
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1840
+#: lib/options.php:1822
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1844
+#: lib/options.php:1826
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1848
+#: lib/options.php:1830
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1852
+#: lib/options.php:1834
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1856
+#: lib/options.php:1838
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1860
+#: lib/options.php:1842
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1864
+#: lib/options.php:1846
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1868
+#: lib/options.php:1850
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -11674,26 +11674,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:595
+#: lib/schema.php:581
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1979
+#: lib/schema.php:1965
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2150
+#: lib/schema.php:2136
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2177
+#: lib/schema.php:2163
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3752
+#: lib/schema.php:3735
 msgid "checking schema properties"
 msgstr ""
 

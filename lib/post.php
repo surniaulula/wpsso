@@ -408,7 +408,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) {
-				
+
 					$md_opts = array();	// WPSSO_META_NAME not found.
 				}
 

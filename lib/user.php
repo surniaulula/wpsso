@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
 					if ( ! is_array( $md_opts ) ) {
-					
+
 						$md_opts = array();	// WPSSO_META_NAME not found.
 					}
 

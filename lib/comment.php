@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$md_opts = self::get_meta( $comment_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) {
-				
+
 					$md_opts = array();	// WPSSO_META_NAME not found.
 				}
 

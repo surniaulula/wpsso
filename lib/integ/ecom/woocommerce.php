@@ -590,10 +590,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				return $md_defs;
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting product defaults' );	// Begin timer.
 
 			$product_price = $this->get_product_price( $product );
 			$currency      = $this->get_currency();
@@ -666,10 +663,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting product defaults' );	// End timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting product defaults' );	// End timer.
 
 			return $md_defs;
 		}
@@ -846,10 +840,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} else return $md_opts;	// $mixed is not a variation array, product or post object.
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'importing product attributes' );	// Begin timer.
-			}
+			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'importing product attributes' );	// Begin timer.
 
 			$product_id     = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
