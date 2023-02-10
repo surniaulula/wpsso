@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.1.1',	// Plugin version.
-					'opt_version' => '952',		// Increment when changing default option values.
+					'version'     => '15.2.0-dev.1',	// Plugin version.
+					'opt_version' => '954',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1571,6 +1571,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
+
+					/*
+					 * Advanced Settings > Schema Defaults > Place.
+					 */
+					'schema_def_place_schema_type' => 'local.business',	// Default Place Schema Type.
+					'schema_def_place_country'     => 'none',		// Default Place Country.
+					'schema_def_place_timezone'    => 'UTC',		// Default Place Timezone.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Product.

@@ -100,8 +100,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$href_key_class = $tabset_class . $metabox_id . '-tab_' . $tab;
 
 				$metabox_html .= $this->get_table( $table_rows[ $tab ], $href_key_class,
-					( empty( $metabox_id ) ? '' : $tabset_class . $metabox_id ),
-						$tabset_class, $title_transl );
+					( empty( $metabox_id ) ? '' : $tabset_class . $metabox_id ), $tabset_class, $title_transl );
 			}
 
 			$metabox_html .= '</div><!-- .' . $mb_tabs_class . ' -->' . "\n";

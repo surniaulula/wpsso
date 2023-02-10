@@ -158,9 +158,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso' ),
 				'event'         => _x( 'Event', 'metabox tab', 'wpsso' ),
 				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso' ),
+				'place'         => _x( 'Place', 'metabox tab', 'wpsso' ),
 				'product'       => _x( 'Product', 'metabox tab', 'wpsso' ),
 				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
 			) );
+
+			$args = array(
+				'layout' => 'vertical',
+			);
 
 			$table_rows = array();
 
@@ -180,7 +185,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				}
 			}
 
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
 
 		public function show_metabox_contact_fields() {

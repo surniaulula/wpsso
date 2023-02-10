@@ -62,6 +62,11 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 						}
 					}
 				}
+
+				/*
+				 * Remove the product group offers to avoid confusing Google merchant.
+				 */
+				unset( $json_data[ 'offers' ] );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

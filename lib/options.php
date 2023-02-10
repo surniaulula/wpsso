@@ -100,6 +100,51 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'opt_filtered' ] = 1;
 
+				/*
+				 * If there is a plugin auth method configured, make sure the option key exists.
+				 */
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+					if ( ! empty( $info[ 'update_auth' ] ) && 'none' !== $info[ 'update_auth' ] ) {	// Just in case.
+
+						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+					}
+				}
+
+				/*
+				 * Complete the options array for custom post types and taxonomies.
+				 */
+				$this->add_custom_post_tax_options( $local_cache );
+
+				/*
+				 * Define the default organization or person ID for Knowledge Graph markup in the home page.
+				 */
+				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
+
+					case 'person':
+
+						$local_cache[ 'schema_def_pub_org_id' ]    = 'none';
+						$local_cache[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
+
+						break;
+
+					case 'organization':
+
+						$local_cache[ 'schema_def_pub_org_id' ]    = 'site';
+						$local_cache[ 'schema_def_pub_person_id' ] = 'none';
+
+						break;
+				}
+
+				/*
+				 * Update default place options based on the open graph defaults.
+				 */
+				$local_cache[ 'schema_def_place_country' ]  = $this->p->options[ 'og_def_country' ];
+				$local_cache[ 'schema_def_place_timezone' ] = $this->p->options[ 'og_def_timezone' ];
+
+				/*
+				 * Get translated strings for variable based options.
+				 */
 				$this->set_default_text( $local_cache, 'plugin_title_part_site' );	// Title Tag Site Prefix / Suffix.
 				$this->set_default_text( $local_cache, 'plugin_title_part_tagline' );	// Title Tag Tagline Prefix / Suffix.
 				$this->set_default_text( $local_cache, 'plugin_img_alt_prefix' );	// Content Image Alt Prefix.
@@ -124,11 +169,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_month_page_desc' );	// Month Archive Description.
 				$this->set_default_text( $local_cache, 'plugin_day_page_title' );	// Day Archive Title.
 				$this->set_default_text( $local_cache, 'plugin_day_page_desc' );	// Day Archive Description.
-
-				/*
-				 * Complete the options array for any custom post types and/or custom taxonomies.
-				 */
-				$this->add_custom_post_tax_options( $local_cache );
 
 				/*
 				 * Translate contact method field labels for current language.
@@ -181,38 +221,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								$local_cache[ $key ] = 1;
 							}
 						}
-					}
-				}
-
-				/*
-				 * Define the default organization or person ID for Knowledge Graph markup in the home page.
-				 */
-				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
-
-					case 'person':
-
-						$local_cache[ 'schema_def_pub_org_id' ]    = 'none';
-						$local_cache[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
-
-						break;
-
-					case 'organization':
-
-						$local_cache[ 'schema_def_pub_org_id' ]    = 'site';
-						$local_cache[ 'schema_def_pub_person_id' ] = 'none';
-
-						break;
-				}
-
-				/*
-				 * If there's an update authentication method available, make sure the option key for its value
-				 * exists.
-				 */
-				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-					if ( ! empty( $info[ 'update_auth' ] ) && 'none' !== $info[ 'update_auth' ] ) {	// Just in case.
-
-						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 					}
 				}
 

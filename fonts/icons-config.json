@@ -732,6 +732,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "8b4584b43f9858f2d38b3741ecdfe15c",
+      "css": "map-pin",
+      "code": 62070,
+      "src": "fontawesome"
+    },
+    {
       "uid": "63c24054a09c4e7ec9dcc3eced0147b7",
       "css": "dashicons-code-standards",
       "code": 59412,

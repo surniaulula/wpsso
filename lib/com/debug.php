@@ -81,7 +81,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 				$this->outputs[ $name ] = $state;
 
-				if ( $name === 'log' ) {
+				if ( 'log' === $name ) {
 
 					if ( ! isset( $_SESSION ) ) {
 

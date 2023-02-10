@@ -23,6 +23,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		private $org_names          = null;
 		private $person_names       = null;
 		private $place_names        = null;
+		private $place_types        = null;
 		private $product_categories = null;
 
 		public function __construct( &$plugin ) {
@@ -44,6 +45,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'schema_props_creative_work_rows' => 2,	// Schema Defaults > Creative Work tab.
 				'schema_props_event_rows'         => 2,	// Schema Defaults > Event tab.
 				'schema_props_job_posting_rows'   => 2,	// Schema Defaults > Job Posting tab.
+				'schema_props_place_rows'         => 2,	// Schema Defaults > Place tab.
 				'schema_props_product_rows'       => 2,	// Schema Defaults > Product tab.
 				'schema_props_review_rows'        => 2,	// Schema Defaults > Review tab.
 				'cm_custom_contacts_rows'         => 2,	// Contact Fields > Custom Contacts tab.
@@ -71,6 +73,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$this->person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$this->place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+			$this->place_types        = $this->p->util->get_form_cache( 'place_types_select' );
 			$this->product_categories = $this->p->util->get_google_product_categories();
 		}
 
@@ -837,7 +840,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_article_section' => array(
@@ -858,7 +861,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_book_format' => array(
@@ -880,7 +883,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_family_friendly' => array(
@@ -931,7 +934,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_event_attendance' => array(
@@ -988,7 +991,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_job_hiring_org_id' => array(
@@ -1019,12 +1022,54 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
+		public function filter_schema_props_place_rows( $table_rows, $form ) {
+
+			$this->maybe_set_vars();
+
+			$form_rows = array(
+				'wpsso_pro_feature_msg' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'schema_def_place_schema_type' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Place Schema Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_place_schema_type',
+					'content'  => $form->get_no_select( 'schema_def_place_schema_type', $this->place_types, $css_class = 'schema_type', $css_id = '',
+						$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array(
+								'json_var'  => 'schema_place_types',
+								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+								'is_transl' => true,					// No label translation required.
+								'is_sorted' => true,					// No label sorting required.
+							)
+						),
+				),
+				'schema_def_place_country' => array(
+					'td_class' => 'blank',
+					'label'   => _x( 'Default Place Country', 'option label', 'wpsso' ),
+					'tooltip' => 'schema_def_place_country',
+					'content' => $form->get_no_select_country( 'schema_def_place_country' ),
+				),
+				'schema_def_place_timezone' => array(
+					'td_class' => 'blank',
+					'label'   => _x( 'Default Place Timezone', 'option label', 'wpsso' ),
+					'tooltip' => 'schema_def_place_country',
+					'content' => $form->get_no_select_timezone( 'schema_def_place_timezone' ),
+				),
+			);
+
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );
+
+			return $table_rows;
+		}
+
 		public function filter_schema_props_product_rows( $table_rows, $form ) {
 
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_product_category' => array(	// Product Google Category ID.
@@ -1103,15 +1148,22 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->maybe_set_vars();
 
 			$form_rows = array(
-				'wpssojson_pro_feature_msg' => array(
+				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_review_item_type' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_review_item_type',
-					'content'  => $form->get_no_select( 'schema_def_review_item_type',
-						$this->schema_types, $css_class = 'schema_type' ),
+					'content'  => $form->get_no_select( 'schema_def_review_item_type', $this->schema_types, $css_class = 'schema_type', $css_id = '',
+						$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array(
+								'json_var'  => 'schema_types',
+								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+								'is_transl' => true,					// No label translation required.
+								'is_sorted' => true,					// No label sorting required.
+							)
+						),
 				),
 			);
 

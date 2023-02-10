@@ -292,6 +292,27 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/*
+				 * SSO > Advanced Settings > Schema Defaults > Place tab.
+				 */
+				case 'tooltip-schema_def_place_schema_type':	// Default Place Schema Type.
+
+					$text = __( 'Select the default Schema type to use when creating a new place.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-schema_def_place_country':	// Default Place Country.
+
+					$text = __( 'Select the default country to use when creating a new place.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-schema_def_place_timezone':	// Default Place Timezone.
+
+					$text = __( 'Select the default timezone to use when creating a new place.', 'wpsso' );
+
+				 	break;
+
+				/*
 				 * SSO > Advanced Settings > Schema Defaults > Product tab.
 				 *
 				 *	Default Product Google Category.
