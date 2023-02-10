@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.2.0-dev.1 (2023/02/10)**
+**Version 15.2.0-dev.2 (2023/02/10)**
 
 * **New Features**
 	* None.
@@ -249,7 +249,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoAbstractWpMeta->md_cache_disable()` method.
+	* Added a new `WpssoAbstractWpMeta->md_cache_enable()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -623,7 +624,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.2.0-dev.1 =
+= 15.2.0-dev.2 =
 
 (2023/02/10) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox. Removed the offers property from the Schema ProductGroup markup.
 
