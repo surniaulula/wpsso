@@ -482,6 +482,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod     = $this->get_mod( $user_id );
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
+			$this->md_cache_enable();	// Re-enable the local cache.
+
 			if ( false === $md_opts ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -492,10 +494,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
-			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
-
-			$this->md_cache_enable();	// Re-enable the local cache.
+			$md_opts = (array) apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
+			$md_opts = (array) apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
 			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
 		}

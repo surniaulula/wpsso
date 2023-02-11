@@ -1676,7 +1676,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->p->debug->log( 'exiting early: ' . WPSSO_META_NAME . ' array is empty' );
 				}
 
-				return $md_prev;
+				return $md_prev;	// Return pre-existing (aka previous) options.
 			}
 
 			/*

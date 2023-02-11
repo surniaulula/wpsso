@@ -507,6 +507,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				)
 			);
 
+			/*
+			 * Unset variables that are no longer needed.
+			 */
+			unset( $mt_gen, $link_rel, $mt_og, $mt_tc, $mt_name, $schema_scripts );
+
 			if ( $cache_exp_secs > 0 ) {
 
 				/*

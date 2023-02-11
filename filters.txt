@@ -279,7 +279,7 @@
 
 'wpsso_robots_is_noindex' ( $is_noindex, $mod )
 
-'wpsso_save_setting_options' ( $opts, $network, $upgrading )
+'wpsso_save_comment_options' ( $opts, $comment_id, $mod )
 
 'wpsso_save_post_options' ( $opts, $post_id, $mod )
 
