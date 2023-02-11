@@ -4731,7 +4731,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
 #: lib/conflict.php:209 lib/integ/review/yotpowc.php:185 lib/loader.php:204
-#: lib/loader.php:218 lib/post.php:1654 lib/pro/util/shorten.php:331
+#: lib/loader.php:218 lib/post.php:1651 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
 msgstr ""
@@ -5210,7 +5210,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:874 lib/post.php:994 lib/term.php:725 lib/user.php:722
+#: lib/admin.php:874 lib/post.php:991 lib/term.php:725 lib/user.php:722
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -11389,136 +11389,136 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1132
+#: lib/post.php:1129
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1165
+#: lib/post.php:1162
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1168
+#: lib/post.php:1165
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1171
+#: lib/post.php:1168
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1198
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1203
+#: lib/post.php:1200
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1205
+#: lib/post.php:1202
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1206
+#: lib/post.php:1203
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1220
+#: lib/post.php:1217
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1231
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1249
+#: lib/post.php:1246
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1266
+#: lib/post.php:1263
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1269
+#: lib/post.php:1266
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1302
+#: lib/post.php:1299
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1304
+#: lib/post.php:1301
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1306
+#: lib/post.php:1303
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1326
+#: lib/post.php:1323
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1345
+#: lib/post.php:1342
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1347
+#: lib/post.php:1344
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1350
+#: lib/post.php:1347
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1393
+#: lib/post.php:1390
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1395
+#: lib/post.php:1392
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1403
+#: lib/post.php:1400
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1407
+#: lib/post.php:1404
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1411
+#: lib/post.php:1408
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1606
+#: lib/post.php:1603
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1611
+#: lib/post.php:1608
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1941
+#: lib/post.php:1938
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

@@ -397,17 +397,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
-			/*
-			 * Maybe retrieve the array from the local cache.
-			 */
-			if ( empty( $local_cache[ $cache_id ] ) ) {
+			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
 			
 				$local_cache[ $cache_id ] = null;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
 
-			if ( null === $md_opts ) {	// Read post metadata into the new local cache element.
+			if ( null === $md_opts ) {	// Maybe read metadata into a new local cache element.
 
 				if ( $this->p->debug->enabled ) {
 
