@@ -400,9 +400,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Maybe retrieve the array from the local cache.
 			 */
-			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
+			if ( empty( $local_cache[ $cache_id ] ) ) {
+			
+				$local_cache[ $cache_id ] = null;
+			}
 
-			if ( null === $md_opts ) {	// Cache is empty.
+			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
+
+			if ( null === $md_opts ) {	// Read post metadata into the new local cache element.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -518,7 +523,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'inheriting parent metadata options' );
+						$this->p->debug->log( 'inheriting parent metadata options for post id ' . $post_id );
 					}
 
 					$parent_opts = $this->get_inherited_md_opts( $mod );
@@ -531,6 +536,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_md_options filters for post id ' . $post_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/*
@@ -540,6 +550,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for post id ' . $post_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 					/*
@@ -558,6 +573,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying sanitize_md_options filters for post id ' . $post_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 
 				}
@@ -566,9 +586,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Maybe save the array to the local cache.
 			 */
-			if ( ! $this->md_cache_disabled ) {
+			if ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = $md_opts;
+				$deref_md_opts = $local_cache[ $cache_id ];
+
+				unset( $local_cache[ $cache_id ], $md_opts );
+
+				return $this->return_options( $post_id, $deref_md_opts, $md_key, $merge_defs );
 			}
 
 			return $this->return_options( $post_id, $md_opts, $md_key, $merge_defs );

@@ -284,9 +284,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Maybe retrieve the array from the local cache.
 			 */
-			$md_opts = isset( $local_cache[ $cache_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $cache_id ] : null;
+			if ( empty( $local_cache[ $cache_id ] ) ) {
+			
+				$local_cache[ $cache_id ] = null;
+			}
 
-			if ( null === $md_opts ) {
+			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
+
+			if ( null === $md_opts ) {	// Read user metadata into the new local cache element.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -416,9 +421,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Maybe save the array to the local cache.
 			 */
-			if ( ! $this->md_cache_disabled ) {
+			if ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = $md_opts;
+				$deref_md_opts = $local_cache[ $cache_id ];
+
+				unset( $local_cache[ $cache_id ], $md_opts );
+			
+				return $this->return_options( $user_id, $deref_md_opts, $md_key, $merge_defs );
 			}
 
 			return $this->return_options( $user_id, $md_opts, $md_key, $merge_defs );
