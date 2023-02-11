@@ -274,7 +274,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 */
 		public function get_head_array( $use_post = false, $mod = false, $read_cache = true ) {
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'build head array' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'build head array' );	// Begin timer.
+			}
 
 			/*
 			 * The $mod array argument is preferred but not required.
@@ -522,7 +525,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'build head array' );	// End timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'build head array' );	// End timer.
+			}
 
 			return $cache_array[ $cache_index ];
 		}

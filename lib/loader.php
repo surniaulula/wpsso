@@ -37,7 +37,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		private function load_integ() {
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'loading integ modules' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'loading integ modules' );	// Begin timer.
+			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -51,12 +54,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->load_ext_mods( $ext, $mod_dir );
 			}
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'loading integ modules' );	// End timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'loading integ modules' );	// End timer.
+			}
 		}
 
 		private function load_dist() {
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'loading dist modules' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
+			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -72,7 +81,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->load_ext_mods( $ext, $mod_dir );
 			}
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'loading dist modules' );	// End timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'loading dist modules' );	// End timer.
+			}
 		}
 
 		private function load_ext_mods( $ext, $mod_dir ) {

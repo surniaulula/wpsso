@@ -1047,8 +1047,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 *
 					 * $md_key = 'schema_title_bc' will use array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' )
 					 */
-					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $term_mod, $md_key = 'schema_title_bc',
-							$max_len = 'schema_title_bc', $title_sep = false );
+					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $term_mod,
+						$md_key = 'schema_title_bc', $max_len = 'schema_title_bc', $title_sep = false );
 				}
 			}
 

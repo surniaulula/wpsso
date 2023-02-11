@@ -590,7 +590,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				return $md_defs;
 			}
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting product defaults' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
+			}
 
 			$product_price = $this->get_product_price( $product );
 			$currency      = $this->get_currency();
@@ -663,7 +666,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'getting product defaults' );	// End timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'getting product defaults' );	// End timer.
+			}
 
 			return $md_defs;
 		}
@@ -840,7 +846,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} else return $md_opts;	// $mixed is not a variation array, product or post object.
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'importing product attributes' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'importing product attributes' );	// Begin timer.
+			}
 
 			$product_id     = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
@@ -985,8 +994,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * This method does not return an array.
 		 *
 		 * $mt_ecom must be passed by reference to add the required meta tags.
-		 *
-		 * $mixed must be a product object or variation array.
+		 * $mod contains the main product information (not the variant).
+		 * $mixed is a product object or variation array.
 		 */
 		private function add_mt_product( array &$mt_ecom, array $mod, $mixed ) {	// Pass by reference is OK.
 
@@ -1034,6 +1043,22 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'product_price = ' . $product_price );
 				$this->p->debug->log( 'currency = ' . $currency );
 				$this->p->debug->log( 'include_vat = ' . ( $include_vat ? 'true' : 'false' ) );
+			}
+
+			if ( $is_variation ) {
+		
+				/*
+		 		 * $mod contains the main product information (not the variant).
+		 		 * $product contains the main product object (not the variant).
+		 		 * $variation contains the variation information.
+				 */
+				$this->add_product_variation_title( $mt_ecom, $mod, $product, $variation );
+				$this->add_product_variation_description( $mt_ecom, $mod, $product, $variation );
+
+			} else {
+
+				$mt_ecom[ 'product:title' ]       = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
+				$mt_ecom[ 'product:description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 			}
 
 			/*
@@ -1085,9 +1110,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$var_mod  = $this->p->page->get_mod( $product_id );
 				$var_opts = $var_mod[ 'obj' ]->get_options( $var_mod[ 'id' ] );
-
-				$this->add_variation_title( $mt_ecom, $mod, $product, $variation );
-				$this->add_variation_description( $mt_ecom, $mod, $product, $variation );
 
 				/*
 				 * Variation product attributes.
@@ -1967,7 +1989,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $product_price;
 		}
 
-		private function add_variation_title( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+		private function add_product_variation_title( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
@@ -1982,9 +2004,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		/*
 		 * Empty variation descriptions are fixed in WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product().
 		 */
-		private function add_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+		private function add_product_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
 
-			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
+			$desc_text = empty( $variation[ 'variation_description' ] ) ?
+				null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
 			$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_variation_description', $desc_text, $variation );
 		}

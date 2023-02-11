@@ -581,8 +581,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) && is_numeric( $mt_single[ $mt_pre . ':id' ] ) ) {
 
 				$post_id = $mt_single[ $mt_pre . ':id' ];
-
-				$mod = $wpsso->post->get_mod( $post_id );
+				$mod     = $wpsso->post->get_mod( $post_id );
 
 				/*
 				 * Get the image title.
@@ -612,8 +611,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * Get the image caption (aka excerpt of the post object).
 				 */
-				$json_ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
-
+				$json_ret[ 'caption' ]     = $wpsso->page->get_the_excerpt( $mod );
 				$json_ret[ 'description' ] = $wpsso->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
 				/*

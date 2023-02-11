@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			$mt_og[ 'product:retailer_category' ] = $this->p->og->get_product_retailer_category( $mod );
 
 			/*
-			 * Fix empty product description.
+			 * Maybe fix an empty product description.
 			 */
 			if ( empty( $mt_og[ 'product:description' ] ) ) {
 
@@ -208,13 +208,13 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 						$mt_single[ 'product:item_group_id' ] = $mod[ 'id' ];
 
 						/*
-						 * Fix empty variation descriptions.
+						 * Maybe fix an empty variation descriptions.
 						 */
 						if ( empty( $mt_single[ 'product:description' ] ) ) {
 
-							if ( ! empty( $mt_og[ 'og:description' ] ) ) {
+							if ( ! empty( $mt_og[ 'product:description' ] ) ) {
 
-								$mt_single[ 'product:description' ] = $mt_og[ 'og:description' ];
+								$mt_single[ 'product:description' ] = $mt_og[ 'product:description' ];
 							}
 						}
 

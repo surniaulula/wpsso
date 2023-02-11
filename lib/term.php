@@ -169,12 +169,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/*
 			 * Maybe return the array from the local cache.
 			 *
-			 * Taxonomy term IDs from older WordPress versions may not be unique, so use both the term ID and the
-			 * taxonomy slug to cache the mod array.
+			 * Term IDs in older WordPress versions are not unique, so use the term ID and the taxonomy slug as a cache index.
 			 */
-			if ( isset( $local_cache[ $term_id ] ) && ! $this->md_cache_disabled ) {
-
-				if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
+			if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
+			
+				if ( ! $this->md_cache_disabled ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -182,9 +181,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					}
 
 					return $local_cache[ $term_id ][ $tax_slug ];
-				}
 
-			} else $local_cache[ $term_id ] = array();	// Create the taxonomy slug array.
+				} else unset( $local_cache[ $term_id ][ $tax_slug ] );
+			}
 
 			$mod = self::get_mod_defaults();
 
@@ -251,6 +250,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * Maybe save the array to the local cache.
 			 */
 			if ( ! $this->md_cache_disabled ) {
+
+				if ( ! isset( $local_cache[ $term_id ] ) ) {
+
+					$local_cache[ $term_id ] = array();
+				}
 
 				$local_cache[ $term_id ][ $tax_slug ] = $mod;
 			}

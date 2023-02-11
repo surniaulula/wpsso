@@ -56,14 +56,18 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			/*
 			 * Maybe return the array from the local cache.
 			 */
-			if ( isset( $local_cache[ $comment_id ] ) && ! $this->md_cache_disabled ) {
+			if ( isset( $local_cache[ $comment_id ] ) ) {
+			
+				if ( ! $this->md_cache_disabled ) {
 
-				if ( $this->p->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: returning comment id ' . $comment_id . ' mod array from local cache' );
-				}
+						$this->p->debug->log( 'exiting early: returning comment id ' . $comment_id . ' mod array from local cache' );
+					}
 
-				return $local_cache[ $comment_id ];
+					return $local_cache[ $comment_id ];
+
+				} else unset( $local_cache[ $comment_id ] );
 			}
 
 			$mod = self::get_mod_defaults();

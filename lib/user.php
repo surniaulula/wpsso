@@ -173,14 +173,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Maybe return the array from the local cache.
 			 */
-			if ( isset( $local_cache[ $user_id ] ) && ! $this->md_cache_disabled ) {
+			if ( isset( $local_cache[ $user_id ] ) ) {
+			
+				if ( ! $this->md_cache_disabled ) {
 
-				if ( $this->p->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: returning user id ' . $user_id . ' mod array from local cache' );
-				}
+						$this->p->debug->log( 'exiting early: returning user id ' . $user_id . ' mod array from local cache' );
+					}
 
-				return $local_cache[ $user_id ];
+					return $local_cache[ $user_id ];
+				
+				} else unset( $local_cache[ $user_id ] );
 			}
 
 			$mod = self::get_mod_defaults();

@@ -129,11 +129,17 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 			if ( 'guest-author' === get_post_type( $user_id ) ) {
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'guest author / post ID ' . $user_id . ' images' );	// Begin timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'guest author / post ID ' . $user_id . ' images' );	// Begin timer.
+				}
 
 				$mt_ret = array_merge( $mt_ret, $this->p->media->get_post_images( $num, $size_names, $user_id, $md_pre ) );
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'guest author / post ID ' . $user_id . ' images' );	// End timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'guest author / post ID ' . $user_id . ' images' );	// End timer.
+				}
 			}
 
 			return $mt_ret;
@@ -146,13 +152,19 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 			if ( 'guest-author' === get_post_type( $user_id ) ) {
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'guest author / post ID ' . $user_id . ' meta' );	// Begin timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'guest author / post ID ' . $user_id . ' meta' );	// Begin timer.
+				}
 
 				$mod = $this->p->post->get_mod( $user_id );
 
 				$opts = $mod[ 'obj' ]->get_options( $user_id, $md_key = false, $filter_opts = false );	// Returns an empty string if no meta found.
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'guest author / post ID ' . $user_id . ' meta' );	// End timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'guest author / post ID ' . $user_id . ' meta' );	// End timer.
+				}
 			}
 
 			return $opts;

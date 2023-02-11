@@ -85,7 +85,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
+				}
 
 				/*
 				 * Set before calling filters to prevent recursion.
@@ -250,7 +253,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					unset( $local_cache[ 'opt_filtered' ] );
 				}
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'get_defaults filters' );	// End timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
+				}
 			}
 
 			if ( false !== $opt_key ) {
@@ -303,7 +309,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
+				}
 
 				/*
 				 * Set before calling filters to prevent recursion.
@@ -337,7 +346,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					unset( $local_cache[ 'opt_filtered' ] );
 				}
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
+				}
 			}
 
 			if ( false !== $opt_key ) {
@@ -358,7 +370,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 */
 		public function check_options( $options_name, array $opts, $network = false ) {
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking options' );	// Begin timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'checking options' );	// Begin timer.
+			}
 
 			$defs          = null;	// Optimize and only get the defaults array when needed.
 			$fixed         = array();
@@ -570,7 +585,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->save_options( $options_name, $opts, $network );
 			}
 
-			if ( $this->p->debug->enabled ) $this->p->debug->mark( 'checking options' );	// End timer.
+			if ( $this->p->debug->enabled ) {
+			
+				$this->p->debug->mark( 'checking options' );	// End timer.
+			}
 
 			return $opts;
 		}
