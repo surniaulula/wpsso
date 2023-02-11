@@ -117,17 +117,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * post meta for any post type. Don't hook the 'clean_post_cache' action since 'save_post' is run
 				 * after 'clean_post_cache' and our custom post meta has not been saved yet.
 				 */
-				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );		// Default is -100.
-				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );		// Default is -10.
-				add_action( 'save_post', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
+				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'save_post', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );
 
 				/*
 				 * The wp_insert_post() function returns after running the 'edit_attachment' action, so the
 				 * 'save_post' action is never run for attachments.
 				 */
-				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
-				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
-				add_action( 'edit_attachment', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );	// Default is 0.
+				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );
 			}
 
 			/*
@@ -1866,7 +1866,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 
-			/**
+			/*
 			 * Clear the cache for any direct children as well.
 			 */
 			$children_ids = $this->get_posts_ids( $mod );

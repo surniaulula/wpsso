@@ -133,19 +133,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				add_action( 'edit_user_profile', array( $this, 'show_metaboxes' ), 20, 1 );
 
-				add_action( 'edit_user_profile_update', array( $this, 'save_about_section' ), -1000, 1 );
-				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
-				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );	// Default is -100.
-				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );	// Default is -10.
+				add_action( 'edit_user_profile_update', array( $this, 'save_about_section' ), -3000, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -2000, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );
 
 				/*
 				 * Hooks when editing personal profile.
 				 */
-				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -1000, 1 );
-				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
-				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );		// Default is -100.
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );		// Default is -10.
-				add_action( 'personal_options_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );	// Default is 0.
+				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -3000, 1 );
+				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -2000, 1 );
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );
+				add_action( 'personal_options_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );
 
 				/*
 				 * Use the 'show_password_fields' filter as an action to get more information about the user.
