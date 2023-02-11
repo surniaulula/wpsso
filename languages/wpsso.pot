@@ -6686,59 +6686,59 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:175
+#: lib/integ/ecom/woocommerce.php:185
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:178
+#: lib/integ/ecom/woocommerce.php:188
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:182
+#: lib/integ/ecom/woocommerce.php:192
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:183
+#: lib/integ/ecom/woocommerce.php:193
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:184
+#: lib/integ/ecom/woocommerce.php:194
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:185
+#: lib/integ/ecom/woocommerce.php:195
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:190
+#: lib/integ/ecom/woocommerce.php:200
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:233
+#: lib/integ/ecom/woocommerce.php:243
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1495
+#: lib/integ/ecom/woocommerce.php:1505
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1582
+#: lib/integ/ecom/woocommerce.php:1592
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1585
+#: lib/integ/ecom/woocommerce.php:1595
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1588
+#: lib/integ/ecom/woocommerce.php:1598
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

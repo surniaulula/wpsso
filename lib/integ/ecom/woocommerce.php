@@ -127,9 +127,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$mod = $this->p->post->get_mod( $post->ID );
 
-				if ( $primary_id = $this->p->post->get_primary_term_id( $mod, $this->cat_taxonomy ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
-					return get_term( $primary_id, $this->cat_taxonomy );
+					$primary_id = $this->p->post->get_primary_term_id( $mod, $this->cat_taxonomy );
+
+					if ( ! empty( $primary_id ) ) {	// Just in case.
+
+						$primary_term = get_term( $primary_id, $this->cat_taxonomy );
+
+						if ( $primary_term instanceof WP_Term ) {	// Just in case.
+
+							return $primary_term;
+						}
+					}
 				}
 			}
 
