@@ -295,6 +295,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 This version changes the Schema markup for WooCommerce variations. Instead of creating Schema Product markup with offers (one offer per variation), WPSSO Core now creates Schema ProductGroup markup with products (one product per variation) and one offer per product.
 
+See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpsso/whats-new-in-wpsso-core-v15/
+
 * **New Features**
 	* Added support for Schema ProductGroup markup for WooCommerce product variations.
 * **Improvements**
