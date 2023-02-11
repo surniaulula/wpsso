@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.2.0-dev.6 (2023/02/11)**
+**Version 15.2.0-b.1 (2023/02/11)**
 
 * **New Features**
 	* None.
@@ -628,7 +628,7 @@ This version includes several code updates required for WPSSO Core v15.0.0.
 
 == Upgrade Notice ==
 
-= 15.2.0-dev.6 =
+= 15.2.0-b.1 =
 
 (2023/02/11) Added new Place tab options in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox. Added support for the WooCommerce 'woocommerce_breadcrumb_main_term' filter.
 
