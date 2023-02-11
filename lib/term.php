@@ -296,17 +296,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
-			/*
-			 * Maybe retrieve the array from the local cache.
-			 */
-			if ( empty( $local_cache[ $cache_id ] ) ) {
+			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
 			
 				$local_cache[ $cache_id ] = null;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
 
-			if ( null === $md_opts ) {	// Read term metadata into the new local cache element.
+			if ( null === $md_opts ) {	// Maybe read metadata into a new local cache element.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -335,24 +332,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {
+				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {	// Set before calling filters to prevent recursion.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'skipping filters: options have already been filtered' );
+						$this->p->debug->log( 'skipping filters: options already filtered' );
 					}
 
 				} else {
 
-					/*
-					 * Set before calling filters to prevent recursion.
-					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'setting opt_filtered to 1' );
 					}
 
-					$md_opts[ 'opt_filtered' ] = 1;
+					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
 					$mod = $this->get_mod( $term_id );
 
@@ -364,7 +358,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'inheriting parent metadata options' );
+						$this->p->debug->log( 'inheriting parent metadata options for term id ' . $term_id );
 					}
 
 					$parent_opts = $this->get_inherited_md_opts( $mod );
@@ -377,11 +371,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_md_options filters for term id ' . $term_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/*
 					 * Since WPSSO Core v4.31.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for term id ' . $term_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
 
 					/*
@@ -400,6 +404,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying sanitize_md_options filters for term id ' . $term_id );
+					}
+
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 				}
 			}

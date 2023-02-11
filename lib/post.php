@@ -438,24 +438,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {
+				if ( ! empty( $md_opts[ 'opt_filtered' ] ) ) {	// Set before calling filters to prevent recursion.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'skipping filters: options have already been filtered' );
+						$this->p->debug->log( 'skipping filters: options already filtered' );
 					}
 
 				} else {
 
-					/*
-					 * Set before calling filters to prevent recursion.
-					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'setting opt_filtered to 1' );
 					}
 
-					$md_opts[ 'opt_filtered' ] = 1;
+					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
 					$mod = $this->get_mod( $post_id );
 
