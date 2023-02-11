@@ -4076,9 +4076,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Returns false on error.
 		 *
-		 * $type_id can be a string, or an array.
+		 * $id_suffix can be a string, or an array.
 		 */
-		public static function update_data_id( &$json_data, $type_id, $data_url = null, $hash_url = false ) {
+		public static function update_data_id( &$json_data, $id_suffix, $data_url = null, $hash_url = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -4087,9 +4087,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 
 				$wpsso->debug->log_args( array(
-					'type_id'  => $type_id,
-					'data_url' => $data_url,
-					'hash_url' => $hash_url,
+					'id_suffix' => $id_suffix,
+					'data_url'  => $data_url,
+					'hash_url'  => $hash_url,
 				) );
 			}
 
@@ -4102,18 +4102,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$id_delim  = self::get_id_delim();
 			}
 
-			if ( is_array( $type_id ) ) {
+			if ( is_array( $id_suffix ) ) {
 
-				$type_id = implode( $id_delim, $type_id );
+				$id_suffix = implode( $id_delim, $id_suffix );
 			}
 
-			$type_id = rtrim( $type_id, $id_delim );	// Just in case.
+			$id_suffix = rtrim( $id_suffix, $id_delim );	// Just in case.
 
-			if ( empty( $type_id ) ) {
+			if ( empty( $id_suffix ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: $type_id value is empty and required' );
+					$wpsso->debug->log( 'exiting early: $id_suffix value is empty and required' );
 				}
 
 				return false;
@@ -4132,9 +4132,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * If $type_id is a URL, then use it as-is.
+			 * If $id_suffix is a URL, then use it as-is.
 			 */
-			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
+			if ( false !== filter_var( $id_suffix, FILTER_VALIDATE_URL ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -4143,7 +4143,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $json_data[ '@id' ] );	// Just in case.
 
-				$json_data = array( '@id' => $type_id ) + $json_data;		// Make @id the first value in the array.
+				$json_data = array( '@id' => $id_suffix ) + $json_data;		// Make @id the first value in the array.
 
 			} elseif ( null === $data_url && empty( $json_data[ 'url' ] ) ) {
 
@@ -4177,15 +4177,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * Maybe remove an anchor ID from the begining of the type id string.
 				 */
-				if ( 0 === strpos( $type_id, $id_anchor ) ) {
+				if ( 0 === strpos( $id_suffix, $id_anchor ) ) {
 
-					$type_id = substr( $type_id, strlen( $id_anchor ) - 1 );
+					$id_suffix = substr( $id_suffix, strlen( $id_anchor ) - 1 );
 				}
 
 				/*
-				 * Standardize the $type_id string.
+				 * Standardize the $id_suffix string.
 				 */
-				$type_id = preg_replace( '/[-_\. ]+/', '-', $type_id );
+				$id_suffix = preg_replace( '/[-_\. ]+/', '-', $id_suffix );
 
 				/*
 				 * Check if we already have an anchor ID in the URL.
@@ -4208,9 +4208,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * Check if we already have the type id in the URL.
 				 */
-				if ( false === strpos( $id_url, $id_anchor . $type_id ) ) {
+				if ( false === strpos( $id_url, $id_anchor . $id_suffix ) ) {
 
-					$id_url = trim( $id_url, $id_delim ) . $id_delim . $type_id;
+					$id_url = trim( $id_url, $id_delim ) . $id_delim . $id_suffix;
 				}
 
 				unset( $json_data[ '@id' ] );	// Just in case.

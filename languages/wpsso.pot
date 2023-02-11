@@ -6859,7 +6859,7 @@ msgid ""
 "an older version of Yoast SEO, please update now."
 msgstr ""
 
-#: lib/json/prop/aggregaterating.php:195
+#: lib/json/prop/aggregaterating.php:192
 msgid ""
 "An aggregate rating value for this markup has been ignored - <a href=\"%1$s"
 "\">Google does not allow an aggregate rating value for the Schema %2$s type</"

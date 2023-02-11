@@ -162,28 +162,25 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 			}
 
 			/*
-			 * Return if nothing to do.
+			 * No aggregate rating.
 			 */
 			if ( empty( $json_ret[ 'aggregateRating' ] ) && empty( $json_data[ 'aggregateRating' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no aggregate rating' );
+					$this->p->debug->log( 'no aggregate rating' );
 				}
 
 				unset( $json_ret[ 'aggregateRating' ], $json_data[ 'aggregateRating' ] );
 
-				return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
-			}
-
 			/*
-			 * Make sure aggregate ratings are allowed by Google for this Schema type.
+			 * Check that aggregate ratings are allowed by Google for this Schema type.
 			 */
-			if ( ! $this->p->schema->allow_aggregate_rating( $page_type_id ) ) {
+			} elseif ( ! $this->p->schema->allow_aggregate_rating( $page_type_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'cannot add aggregate rating to page type id ' . $page_type_id );
+					$this->p->debug->log( 'aggregate rating for page type id ' . $page_type_id . ' not allowed' );
 				}
 
 				unset( $json_ret[ 'aggregateRating' ], $json_data[ 'aggregateRating' ] );
@@ -197,6 +194,18 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 					$this->p->notice->warn( $notice_msg );
 
 				}
+
+			} elseif ( ! empty( $json_data[ 'url' ] ) ) {	// Just in case.
+
+				$id_suffix = array( $page_type_id );
+
+				if ( ! empty( $mod[ 'id' ] ) ) $id_suffix[] = $mod[ 'id' ];	// Just in case.
+
+				$id_suffix[] = 'rating.aggregate';
+
+				foreach ( SucomUtil::preg_grep_keys( '/^[a-z]/', $json_ret[ 'aggregateRating' ] ) as $val ) $id_suffix[] = $val;
+
+				WpssoSchema::update_data_id( $json_ret[ 'aggregateRating' ], $id_suffix, $json_data[ 'url' ] );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
