@@ -686,8 +686,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'user' => 0,
 			);
 
-			$sleep_secs = WPSSO_CACHE_REFRESH_SLEEP_TIME;
-
 			foreach ( $total_count as $obj_name => &$count ) {
 
 				$obj_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );	// Call static method.
@@ -697,8 +695,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
 					$this->refresh_mod_head_meta( $mod, $read_cache = false );
-
-					usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
 
 					$count++;	// Reference to post, term, or user total count.
 				}
