@@ -236,6 +236,27 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.3.0-dev.1 (2022/02/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated `WpssoUtilCache` class methods:
+		* Added a new `WpssoUtilCache->get_cache_id()` method.
+		* Added a new `WpssoUtilCache->doing_task()` method.
+		* Added a new `WpssoUtilCache->is_task_running()` method.
+		* Refactored `WpssoUtilCache->clear()` method.
+		* Refactored `WpssoUtilCache->refresh()` method.
+		* Removed `WpssoUtilCache->stop_refresh()` method.
+	* Added a new `SucomErrorException::http_error()` method.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 15.2.0 (2023/02/11)**
 
 * **New Features**
@@ -331,6 +352,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.3.0-dev.1 =
+
+(2022/02/12) Updated `WpssoUtilCache` class methods.
 
 = 15.2.0 =
 
