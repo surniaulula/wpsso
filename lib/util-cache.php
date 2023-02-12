@@ -94,42 +94,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function clear( $user_id = null, $clear_other = false, $clear_short = true, $refresh = true ) {
 
-			static $have_cleared = null;
+			static $clear_done = null;
 
-			if ( null !== $have_cleared ) {	// Already run once.
-
-				return;
-			}
-
-			$have_cleared = true;						// Prevent running a second time (by an external cache, for example).
-			$user_id      = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
-			/*
-			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
-			 */
-			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
-			$cache_exp_secs = WPSSO_CACHE_CLEAR_MAX_TIME;		// Prevent duplicate runs for max seconds.
-			$cache_salt     = __CLASS__ . '::clear';		// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_run_val  = 'running';
-			$cache_stop_val = 'stop';
-
-			/*
-			 * Prevent concurrent execution.
-			 */
-			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
-
-				if ( $user_id ) {
-
-					$notice_msg = __( 'Aborting task to clear the cache - another identical task is still running.', 'wpsso' );
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'clear-cache-aborted' );
-				}
+			if ( null !== $clear_done ) {	// Already ran once.
 
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$clear_done       = true;					// Prevent running a second time (by an external cache, for example).
+			$task_name        = 'clear';
+			$task_name_transl = _x( 'clear', 'task name', 'wpsso' );	// Translation used by is_task_running().
+			$cache_id         = $this->get_cache_id();
+
+			if ( $this->is_task_running( $task_name, WPSSO_CACHE_CLEAR_MAX_TIME, $user_id ) ) {
+			
+				return;
+			}
 
 			$mtime_start = microtime( $get_float = true );
 
@@ -140,8 +121,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'clear-cache-started' );
 			}
-
-			$this->stop_refresh();	// Just in case.
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
@@ -293,9 +272,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$count = 0;
 
-			$cache_ids = $this->get_db_transients_cache_ids( $clear_short, $key_prefix );
+			$transient_ids = $this->get_db_transients_cache_ids( $clear_short, $key_prefix );
 
-			foreach ( $cache_ids as $cache_id ) {
+			foreach ( $transient_ids as $cache_id ) {
 
 				if ( delete_transient( $cache_id ) ) {
 
@@ -308,66 +287,56 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function count_db_transients( $include_short = true, $key_prefix = '' ) {
 
-			$cache_ids = $this->get_db_transients_cache_ids( $include_short, $key_prefix );
+			$transient_ids = $this->get_db_transients_cache_ids( $include_short, $key_prefix );
 
-			return count( $cache_ids );
+			return count( $transient_ids );
 		}
 
 		public function get_db_transients_cache_ids( $include_short = false, $key_prefix = '' ) {
 
-			$cache_ids = array();
-
+			$transient_ids  = array();
 			$transient_keys = $this->get_db_transient_keys( $only_expired = false, $key_prefix );
 
-			foreach ( $transient_keys as $cache_id ) {
+			foreach ( $transient_keys as $key ) {
 
 				if ( 0 === strpos( $key_prefix, 'wpsso_' ) ) {
 
-					/*
-					 * Preserve transients that begin with "wpsso_!_".
-					 */
-					if ( 0 === strpos( $cache_id, 'wpsso_!_' ) ) {
+					if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
 
 						continue;
-					}
 
-					/*
-					 * Maybe delete shortened URLs.
-					 */
-					if ( ! $include_short ) {	// If not clearing short URLs.
+					} elseif ( ! $include_short ) {				// Not clearing short URLs.
 
-						if ( 0 === strpos( $cache_id, 'wpsso_s_' ) ) {	// This is a shortened URL.
+						if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
-							continue;	// Get the next transient.
+							continue;
 						}
 					}
 				}
 
-				if ( '' !== $key_prefix ) {	// We're only clearing a specific prefix.
+				if ( '' !== $key_prefix ) {					// We're only clearing a specific prefix.
 
-					if ( 0 !== strpos( $cache_id, $key_prefix ) ) {	// The cache ID does not match that prefix.
+					if ( 0 !== strpos( $key, $key_prefix ) ) {		// Transient does not match that prefix.
 
-						continue;	// Get the next transient.
+						continue;
 					}
 				}
 
-				$cache_ids[] = $cache_id;
+				$transient_ids[] = $key;
 			}
 
-			return $cache_ids;
+			return $transient_ids;
 		}
 
 		public function clear_expired_db_transients() {
 
-			$count = 0;
-
-			$key_prefix = 'wpsso_';
-
+			$count          = 0;
+			$key_prefix     = 'wpsso_';
 			$transient_keys = $this->get_db_transient_keys( $only_expired = true, $key_prefix );
 
-			foreach ( $transient_keys as $cache_id ) {
+			foreach ( $transient_keys as $key ) {
 
-				if ( delete_transient( $cache_id ) ) {
+				if ( delete_transient( $key ) ) {
 
 					$count++;
 				}
@@ -423,18 +392,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
 		}
 
-		/*
-		 * Deprecated on 2021/11/09.
-		 */
-		public function clear_column_meta() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/11/09', $replacement = '' );	// Deprecation message.
-		}
-
 		public function clear_other() {
 
-			$notice_msg = '';
-
+			$notice_msg  = '';
 			$cleared_msg = __( 'The cache for <strong>%s</strong> has also been cleared.', 'wpsso' ) . ' ';
 
 			/*
@@ -620,55 +580,17 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'refresh-cache-scheduled' );
 			}
 
-			$this->stop_refresh();	// Just in case.
-
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
-		}
-
-		public function stop_refresh() {
-
-			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = WPSSO_CACHE_REFRESH_MAX_TIME;	// Prevent duplicate runs for max seconds.
-			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_stop_val = 'stop';
-
-			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
-
-				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
-			}
 		}
 
 		public function refresh( $user_id = null ) {
 
-			$user_id = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$task_name        = 'refresh';
+			$task_name_transl = _x( 'refresh', 'task name', 'wpsso' );	// Translation used by is_task_running().
+			$cache_id         = $this->get_cache_id();
 
-			/*
-			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
-			 */
-			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = WPSSO_CACHE_REFRESH_MAX_TIME;	// Prevent duplicate runs for max seconds.
-			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_run_val  = 'running';
-			$cache_stop_val = 'stop';
-
-			/*
-			 * Prevent concurrent execution.
-			 */
-			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
-
-				if ( $user_id ) {
-
-					$notice_msg = __( 'Aborting task to refresh the transient cache - another identical task is still running.', 'wpsso' );
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'refresh-cache-aborted' );
-				}
-
-				return;
-			}
-
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+			if ( $this->is_task_running( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $user_id ) ) return;
 
 			$mtime_start = microtime( $get_float = true );
 
@@ -739,16 +661,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				foreach ( $obj_ids as $obj_id ) {
 
-					/*
-					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
-					 */
-					if ( $cache_run_val !== get_transient( $cache_id ) ) {
-
-						delete_transient( $cache_id );
-
-						return;	// Stop here.
-					}
-
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
 					$this->refresh_mod_head_meta( $mod, $read_cache = false );
@@ -793,6 +705,41 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
 
 			return array( $head_tags, $head_info );
+		}
+	
+		private function get_cache_id() {
+
+			return 'wpsso_!_' . md5( __CLASS__ . '::task_name_transl' );
+		}
+
+		public function doing_task() {
+
+			$cache_id = $this->get_cache_id();
+
+			return get_transient( $cache_id );
+		}
+
+		private function is_task_running( $task_name, $cache_exp_secs, $user_id ) {
+
+			$cache_id = $this->get_cache_id();
+
+			if ( false !== get_transient( $cache_id ) ) {
+
+				if ( $user_id ) {
+
+					$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+
+					$notice_msg = sprintf( __( 'Aborting task to %s the cache - another background task is running.', 'wpsso' ), $task_name_transl );
+
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'background-task-running' );
+				}
+
+				return true;
+			}
+
+			set_transient( $cache_id, $task_name, $cache_exp_secs );
+
+			return false;
 		}
 	}
 }

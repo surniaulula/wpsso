@@ -14,7 +14,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 
 	class SucomErrorException extends ErrorException {
 
-		protected $codes = array(
+		protected static $codes = array(
 
 			'curl' => array(
 				1  => 'CURLE_UNSUPPORTED_PROTOCOL',
@@ -184,19 +184,43 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 
 		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
 
-			$http_code = null;
+			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
 
-			if ( is_numeric( $errcode ) ) {	// Error codes are HTTP codes by default.
-
-				$http_code = (int) $errcode;
-			}
-
-			if ( null !== $http_code && isset( $this->codes[ 'http' ][ $http_code ] ) ) {
-
-				$errstr = trim( $errstr ) . ' HTTP ' . $http_code . ' ' . $this->codes[ 'http' ][ $http_code ] . '.';
+				$errstr = trim( $errstr . ' HTTP ' . $errcode . ' ' . self::$codes[ 'http' ][ $errcode ] . '.' );
 			}
 
 			parent::__construct( $errstr, $errcode, $severity, $filename, $lineno, $previous );	// Calls ErrorException::__construct().
+		}
+
+		public static function http_error( $errcode, $context = '' ) {
+
+			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
+
+				$httpcode = $errcode . ' ' . self::$codes[ 'http' ][ $errcode ];
+
+				header( 'HTTP/1.0 ' . $httpcode );
+
+				echo '<!DOCTYPE html>';
+				echo '<html>';
+				echo '<title>' . $httpcode . '</title>';
+				echo '</head>';
+				echo '<body>';
+				echo '<h1>' . $httpcode . '</h1>';
+
+				if ( $context ) {
+	
+					echo '<p>' . $context . '</p>';
+				}
+
+				echo '</body>';
+				echo '</html>';
+
+			} else {
+
+				header( 'HTTP/1.0 ' . $errcode );
+			}
+	
+			exit();
 		}
 	}
 }
