@@ -252,6 +252,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `WpssoUtilCache->clear()` method.
 	* Refactored `WpssoUtilCache->refresh()` method.
 	* Removed `WpssoUtilCache->stop_refresh()` method.
+	* Removed the 'WPSSO_CACHE_REFRESH_SLEEP_TIME' constant.
 	* Renamed the 'WPSSO_META_CACHE_PRIORITY' constant to 'WPSSO_META_CLEAR_PRIORITY'.
 * **Requires At Least**
 	* PHP v7.2.
