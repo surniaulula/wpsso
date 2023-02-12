@@ -75,18 +75,25 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_clear( $user_id = null, $clear_other = true, $clear_short = true, $refresh = true ) {
 
-			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = 'wpsso_clear_cache';
-			$event_args = array( $user_id, $clear_other, $clear_short, $refresh );
+			$user_id           = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$task_name        = 'clear';
+			$task_name_transl = _x( 'clear', 'task name', 'wpsso' );	// Translation used by is_task_running().
+			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_hook       = 'wpsso_clear_cache';
+			$event_args       = array( $user_id, $clear_other, $clear_short, $refresh );
 
 			if ( $user_id ) {	// Just in case.
 
 				$human_time = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
-				$notice_msg = __( 'A background task will begin shortly to clear the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'clear-cache-scheduled' );
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s the post, term and user transient and metadata cache.',
+					'wpsso' ), $task_name_transl ) . ' ';
+
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+
+				$notice_key = $task_name . '-cache-scheduled';
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -116,10 +123,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
-				$notice_msg = sprintf( __( 'A task to clear the cache was started at %s.', 'wpsso' ), $time_date );
+				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'clear-cache-started' );
+				$notice_msg = sprintf( __( 'A task to %1$s the cache was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
+
+				$notice_key = $task_name . '-cache-started';
+
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
@@ -127,10 +137,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				if ( ! set_time_limit( WPSSO_CACHE_CLEAR_MAX_TIME ) ) {
 
 					$human_time = human_time_diff( 0, WPSSO_CACHE_CLEAR_MAX_TIME );
-					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache clearing.', 'wpsso' ),
-						'<code>set_time_limit()</code>', $human_time );
 
-					$this->p->notice->err( $notice_msg, $user_id, $notice_key = 'clear-cache-time-limit-error' );
+					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache clearing.',
+						'wpsso' ), '<code>set_time_limit()</code>', $human_time );
+
+					$notice_key = $task_name . '-cache-time-limit-error';
+
+					$this->p->notice->err( $notice_msg, $user_id, $notice_key );
 				}
 			}
 
@@ -164,10 +177,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-				$human_time  = human_time_diff( 0, $mtime_total );
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
 
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'clear-cache-ended' );
+				$human_time = human_time_diff( 0, $mtime_total );
+
+				$notice_msg .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
+
+				$notice_key = $task_name . '-cache-ended';
+
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( $refresh ) {
@@ -566,18 +583,25 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function schedule_refresh( $user_id = null ) {
 
-			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = 'wpsso_refresh_cache';
-			$event_args = array( $user_id );
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$task_name        = 'refresh';
+			$task_name_transl = _x( 'refresh', 'task name', 'wpsso' );	// Translation used by is_task_running().
+			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_hook       = 'wpsso_refresh_cache';
+			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
 				$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
-				$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient and metadata cache.', 'wpsso' ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'refresh-cache-scheduled' );
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s the post, term and user transient and metadata cache.',
+					'wpsso' ), $task_name_transl ) . ' ';
+
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+
+				$notice_key = $task_name . '-cache-scheduled';
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -590,16 +614,22 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$task_name_transl = _x( 'refresh', 'task name', 'wpsso' );	// Translation used by is_task_running().
 			$cache_id         = $this->get_cache_id();
 
-			if ( $this->is_task_running( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $user_id ) ) return;
+			if ( $this->is_task_running( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $user_id ) ) {
+			
+				return;
+			}
 
 			$mtime_start = microtime( $get_float = true );
 
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
-				$notice_msg = sprintf( __( 'A task to refresh the cache was started at %s.', 'wpsso' ), $time_date );
+				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'refresh-cache-started' );
+				$notice_msg = sprintf( __( 'A task to %1$s the cache was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
+
+				$notice_key = $task_name . '-cache-started';
+
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
@@ -607,10 +637,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				if ( ! set_time_limit( WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
 					$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
-					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache refresh.', 'wpsso' ),
-						'<code>set_time_limit()</code>', $human_time );
 
-					$this->p->notice->err( $notice_msg, $user_id, $notice_key = 'refresh-cache-time-limit-error' );
+					$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s for cache refresh.',
+						'wpsso' ), '<code>set_time_limit()</code>', $human_time );
+
+					$notice_key = $task_name . '-cache-time-limit-error';
+
+					$this->p->notice->err( $notice_msg, $user_id, $notice_key );
 				}
 			}
 
@@ -684,10 +717,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-				$human_time  = human_time_diff( 0, $mtime_total );
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
 
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key = 'refresh-cache-ended' );
+				$human_time = human_time_diff( 0, $mtime_total );
+
+				$notice_msg .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
+
+				$notice_key = $task_name . '-cache-ended';
+
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
@@ -731,7 +768,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					$notice_msg = sprintf( __( 'Aborting task to %s the cache - another background task is running.', 'wpsso' ), $task_name_transl );
 
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'background-task-running' );
+					$notice_key = 'background-task-running';
+
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
 
 				return true;
