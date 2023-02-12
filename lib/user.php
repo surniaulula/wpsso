@@ -1618,16 +1618,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->clear_mod_cache( $mod );
 
-			/*
-			 * Clear the user column meta last.
-			 */
-			$col_meta_keys = parent::get_column_meta_keys();
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				self::delete_meta( $user_id, $meta_key );
-			}
-
 			do_action( 'wpsso_clear_user_cache', $user_id, $mod );
 		}
 

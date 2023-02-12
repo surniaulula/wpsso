@@ -8262,8 +8262,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1726 lib/user.php:1758
-#: lib/user.php:1856 lib/user.php:1872 lib/user.php:2007
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1716 lib/user.php:1748
+#: lib/user.php:1846 lib/user.php:1862 lib/user.php:1997
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11518,7 +11518,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1935
+#: lib/post.php:1925
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12271,7 +12271,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:987
+#: lib/term.php:977
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12340,56 +12340,56 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1677
+#: lib/user.php:1667
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1725
+#: lib/user.php:1715
 msgid ""
 "A background task will begin shortly to add the %s role to content creators."
 msgstr ""
 
-#: lib/user.php:1777
+#: lib/user.php:1767
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1792 lib/user.php:1906 lib/util-cache.php:126
+#: lib/user.php:1782 lib/user.php:1896 lib/util-cache.php:126
 #: lib/util-cache.php:626
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1793
+#: lib/user.php:1783
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1834
+#: lib/user.php:1824
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1835 lib/user.php:1944 lib/util-cache.php:183
+#: lib/user.php:1825 lib/user.php:1934 lib/util-cache.php:183
 #: lib/util-cache.php:723
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1855
+#: lib/user.php:1845
 msgid ""
 "A background task will begin shortly to remove the %s role from all users."
 msgstr ""
 
-#: lib/user.php:1891
+#: lib/user.php:1881
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1907
+#: lib/user.php:1897
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1943
+#: lib/user.php:1933
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
