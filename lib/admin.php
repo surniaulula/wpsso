@@ -3094,12 +3094,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $file_url && strpos( $file_url, '://' ) ) {
 
-					/*
-					 * Clear the cache first if reading the cache is disabled.
-					 */
 					if ( ! $read_cache ) {
 
-						$this->p->cache->clear( $file_url );
+						$this->p->cache->clear( $file_url );	// Clear the cached webpage.
 					}
 
 					$readme_from_url = true;

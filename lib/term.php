@@ -137,15 +137,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'created_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY, 2 );
 				add_action( 'created_' . $this->query_tax_slug, array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 2 );
 
 				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY, 2 );
 				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 2 );
 
 				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY, 2 );
 			}
 		}
 

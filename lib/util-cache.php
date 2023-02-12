@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
-		public function clear( $user_id = null, $clear_other = false, $clear_short = true, $refresh = true ) {
+		public function clear( $user_id = null, $clear_other = true, $clear_short = true, $refresh = true ) {
 
 			static $clear_done = null;
 
@@ -710,6 +710,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/*
 			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
 			 *
+			 * See WpssoCmcfFilters->filter_cache_refreshed_notice().
 			 * See WpssoGmfFilters->filter_cache_refreshed_notice().
 			 */
 			$notice_msg = trim( apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id ) ) . ' ';

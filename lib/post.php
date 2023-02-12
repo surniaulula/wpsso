@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * after 'clean_post_cache' and our custom post meta has not been saved yet.
 				 */
 				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY );
 				add_action( 'save_post', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );
 
 				/*
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * 'save_post' action is never run for attachments.
 				 */
 				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY );
 				add_action( 'edit_attachment', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY );
 			}
 
@@ -1134,7 +1134,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
 			);
 
-			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
+			$this->p->cache->clear( $check_url );	// Clear the cached webpage.
 
 			$exp_secs     = $this->p->debug->enabled ? false : null;
 			$webpage_html = $this->p->cache->get( $check_url, $format = 'raw', $cache_type = 'transient', $exp_secs, $pre_ext = '', $curl_opts );
@@ -1833,28 +1833,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->p->user->clear_cache( $author_id );
 
 			/*
-			 * Clear W3 Total Cache.
-			 */
-			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {
-
-				w3tc_pgcache_flush_post( $post_id );
-			}
-
-			/*
-			 * The WPSSO FAQ question shortcode attaches the post id to the question so the post cache can be cleared
-			 * if/when a question is updated.
+			 * The WPSSO FAQ add-on question shortcode attaches the post id to the question so the post cache can be
+			 * cleared if/when a question is updated.
 			 */
 			$attached_ids = self::get_attached( $post_id, 'post' );
 
-			foreach ( $attached_ids as $post_id => $bool ) {
+			foreach ( $attached_ids as $attach_id => $bool ) {
 
 				if ( $bool ) {
 
-					$this->p->post->clear_cache( $post_id );
+					$this->p->post->clear_cache( $attach_id );
 				}
 			}
-
-			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 
 			/*
 			 * Clear the cache for any direct children as well.
@@ -1865,6 +1855,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->clear_cache( $child_id, $rel = false );
 			}
+			
+			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 		}
 
 		/*

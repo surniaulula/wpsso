@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'edit_user_profile_update', array( $this, 'save_about_section' ), -3000, 1 );
 				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -2000, 1 );
 				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );
-				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY, 1 );
 				add_action( 'edit_user_profile_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );
 
 				/*
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -3000, 1 );
 				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -2000, 1 );
 				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CLEAR_PRIORITY, 1 );
 				add_action( 'personal_options_update', array( $this, 'refresh_cache' ), WPSSO_META_REFRESH_PRIORITY, 1 );
 
 				/*
