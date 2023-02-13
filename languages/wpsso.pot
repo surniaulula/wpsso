@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.3.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.3.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -419,37 +419,37 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:471 lib/com/cache.php:628 lib/util-cache.php:221
+#: lib/com/cache.php:472 lib/com/cache.php:629 lib/util-cache.php:103
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:530
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:531
 msgid ""
 "PHP cURL library missing - contact your hosting provider to have the cURL "
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:883
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:884
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:904
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:905
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1012
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1013
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1026
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1027
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1040
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1041
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1069
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1070
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -5491,7 +5491,7 @@ msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2496 lib/util.php:3176
+#: lib/admin.php:2496 lib/util.php:3178
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6987,12 +6987,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1661 lib/register.php:330 lib/util.php:843 lib/util.php:949
-#: lib/util.php:981 lib/util.php:3154
+#: lib/media.php:1661 lib/register.php:330 lib/util.php:845 lib/util.php:951
+#: lib/util.php:983 lib/util.php:3156
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1662 lib/util.php:844 lib/util.php:3155
+#: lib/media.php:1662 lib/util.php:846 lib/util.php:3157
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12347,8 +12347,7 @@ msgid ""
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1782 lib/user.php:1896 lib/util-cache.php:126
-#: lib/util-cache.php:624
+#: lib/user.php:1782 lib/user.php:1896 lib/util-cache.php:358
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -12361,8 +12360,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1825 lib/user.php:1934 lib/util-cache.php:182
-#: lib/util-cache.php:718
+#: lib/user.php:1825 lib/user.php:1934 lib/util-cache.php:457
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12482,64 +12480,47 @@ msgid ""
 "another one."
 msgstr ""
 
-#: lib/util-cache.php:80 lib/util-cache.php:114
-msgctxt "task name"
-msgid "clear"
+#: lib/util-cache.php:137
+msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:89 lib/util-cache.php:595
+#: lib/util-cache.php:320 lib/util-cache.php:346
+msgctxt "task name"
+msgid "refresh"
+msgstr ""
+
+#: lib/util-cache.php:329
 msgid ""
 "A background task will begin shortly to %s the post, term and user transient "
 "and metadata cache."
 msgstr ""
 
-#: lib/util-cache.php:92 lib/util-cache.php:598
+#: lib/util-cache.php:332
 msgid "The maximum execution time for this background task will be %s."
 msgstr ""
 
-#: lib/util-cache.php:127 lib/util-cache.php:626
+#: lib/util-cache.php:360
 msgid "A task to %1$s the cache was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:139
-msgid ""
-"The PHP %1$s function failed to set a maximum execution time of %2$s for "
-"cache clearing."
-msgstr ""
-
-#: lib/util-cache.php:162
-msgid ""
-"%1$d cached files, %2$d transient cache objects, and the WordPress object "
-"cache have been cleared."
-msgstr ""
-
-#: lib/util-cache.php:251
-msgid "Failed to open the cache folder %s for reading."
-msgstr ""
-
-#: lib/util-cache.php:413
-msgid "The cache for <strong>%s</strong> has also been cleared."
-msgstr ""
-
-#: lib/util-cache.php:586 lib/util-cache.php:612
-msgctxt "task name"
-msgid "refresh"
-msgstr ""
-
-#: lib/util-cache.php:639
+#: lib/util-cache.php:373
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s for "
 "cache refresh."
 msgstr ""
 
-#: lib/util-cache.php:701
+#: lib/util-cache.php:435
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:764
+#: lib/util-cache.php:503
 msgid "Aborting task to %s the cache - another background task is running."
+msgstr ""
+
+#: lib/util-cache.php:522
+msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
 #: lib/util-metabox.php:266
@@ -12680,182 +12661,182 @@ msgstr ""
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:845
+#: lib/util.php:847
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1306
+#: lib/util.php:1308
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1408
+#: lib/util.php:1410
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1539
+#: lib/util.php:1541
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1563
+#: lib/util.php:1565
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1593
+#: lib/util.php:1595
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1791
+#: lib/util.php:1793
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1805
+#: lib/util.php:1807
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3156
+#: lib/util.php:3158
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3179
+#: lib/util.php:3181
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3181
+#: lib/util.php:3183
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3183
+#: lib/util.php:3185
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3185
+#: lib/util.php:3187
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3580
+#: lib/util.php:3582
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3581
+#: lib/util.php:3583
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3585
+#: lib/util.php:3587
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3586
+#: lib/util.php:3588
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3590
+#: lib/util.php:3592
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3591
+#: lib/util.php:3593
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3595
+#: lib/util.php:3597
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3596
+#: lib/util.php:3598
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3600
+#: lib/util.php:3602
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3601
+#: lib/util.php:3603
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3605
+#: lib/util.php:3607
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3606
+#: lib/util.php:3608
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3610
+#: lib/util.php:3612
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3611
+#: lib/util.php:3613
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3615
+#: lib/util.php:3617
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3616
+#: lib/util.php:3618
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3620
+#: lib/util.php:3622
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3621
+#: lib/util.php:3623
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3626
+#: lib/util.php:3628
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3627
+#: lib/util.php:3629
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3697
+#: lib/util.php:3699
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3707
+#: lib/util.php:3709
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

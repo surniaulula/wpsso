@@ -81,15 +81,15 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
 			$count_cron_jobs     = number_format_i18n( $this->p->util->count_cron_jobs() );
 
-			$refresh_cache_label_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
+			$refresh_cache_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
 
-			$clear_cache_files_label_transl = sprintf( _nx( 'Clear %s Cached File', 'Clear %s Cached Files',
+			$clear_cache_files_transl = sprintf( _nx( 'Clear %s Cached File', 'Clear %s Cached Files',
 				$count_cache_files, 'submit button', 'wpsso' ), $count_cache_files );
 
-			$clear_ignored_urls_label_transl = sprintf( _nx( 'Clear %s Failed URL Connection', 'Clear %s Failed URL Connections',
+			$clear_ignored_urls_transl = sprintf( _nx( 'Clear %s Failed URL Connection', 'Clear %s Failed URL Connections',
 				$count_ignored_urls, 'submit button', 'wpsso' ), $count_ignored_urls );
 
-			$clear_cron_jobs_label_transl = sprintf( _nx( 'Clear %s WordPress Cron Job', 'Clear %s WordPress Cron Jobs',
+			$clear_cron_jobs_transl = sprintf( _nx( 'Clear %s WordPress Cron Job', 'Clear %s WordPress Cron Jobs',
 				$count_cron_jobs, 'submit button', 'wpsso' ), $count_cron_jobs );
 
 			$flush_rewrite_rules_transl = _x( 'Flush WordPress Rewrite Rules', 'submit button', 'wpsso' );
@@ -97,22 +97,22 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Row #1.
 			 */
-			$export_settings_label_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
-			$import_settings_label_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
+			$export_settings_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
+			$import_settings_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 
 			/*
 			 * Row #2.
 			 */
-			$add_persons_label_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label ) . ' **';
-			$remove_persons_label_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
-			$reload_image_sizes_label_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
+			$add_persons_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label ) . ' **';
+			$remove_persons_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
+			$reload_image_sizes_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
 
 			/*
 			 * Row #3.
 			 */
-			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
-			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
-			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
+			$change_show_next_key    = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
+			$change_show_next_transl = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
+			$change_show_transl      = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_next_transl );
 
 			$form_button_rows = array(
 
@@ -120,25 +120,25 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 * Row #0.
 				 */
 				array(
-					'refresh_cache'          => $refresh_cache_label_transl,
-					'clear_cache_files'      => $clear_cache_files_label_transl,
-					'clear_ignored_urls'     => $clear_ignored_urls_label_transl,
-					'clear_db_transients'    => null,
-					'clear_cron_jobs'        => $clear_cron_jobs_label_transl,
-					'flush_rewrite_rules'    => $flush_rewrite_rules_transl,
+					'refresh_cache'       => $refresh_cache_transl,
+					'clear_cache_files'   => $clear_cache_files_transl,
+					'clear_ignored_urls'  => $clear_ignored_urls_transl,
+					'clear_db_transients' => null,
+					'clear_cron_jobs'     => $clear_cron_jobs_transl,
+					'flush_rewrite_rules' => $flush_rewrite_rules_transl,
 				),
 
 				/*
 				 * Row #1.
 				 */
 				array(
-					'export_plugin_settings_json' => $export_settings_label_transl,
+					'export_plugin_settings_json' => $export_settings_transl,
 					'import_plugin_settings_json' => array(
 						'html' => '
 							<form enctype="multipart/form-data" action="' . $this->p->util->get_admin_url() . '" method="post">' .
 							wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) . '
 							<input type="hidden" name="wpsso-action" value="import_plugin_settings_json" />
-							<input type="submit" class="button-secondary button-alt" value="' . $import_settings_label_transl . '"
+							<input type="submit" class="button-secondary button-alt" value="' . $import_settings_transl . '"
 								style="display:inline-block;" />
 							<input type="file" name="file" accept="application/x-gzip" />
 							</form>
@@ -150,16 +150,16 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 * Row #2.
 				 */
 				array(
-					'add_persons'                => $add_persons_label_transl,
-					'remove_persons'             => $remove_persons_label_transl,
-					'reload_default_image_sizes' => $reload_image_sizes_label_transl,
+					'add_persons'                => $add_persons_transl,
+					'remove_persons'             => $remove_persons_transl,
+					'reload_default_image_sizes' => $reload_image_sizes_transl,
 				),
 
 				/*
 				 * Row #3.
 				 */
 				array(
-					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
+					'change_show_options&show-opts=' . $change_show_next_key => $change_show_transl,
 					'reset_user_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),
 					'reset_user_metabox_layout'    => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 				),
@@ -172,10 +172,10 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 */
 				$count_db_transients = number_format_i18n( $this->p->util->cache->count_db_transients( $include_short = true, $key_prefix = '' ) );
 
-				$clear_db_transients_label_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
+				$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
 					$count_db_transients, 'submit button', 'wpsso' ), $count_db_transients );
 
-				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_label_transl;
+				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_transl;
 			}
 
 			return $form_button_rows;

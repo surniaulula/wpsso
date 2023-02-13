@@ -338,6 +338,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function clear( $url, $cache_pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 
 			$this->clear_ignored_url( $url_nofrag );

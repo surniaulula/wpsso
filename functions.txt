@@ -1,6 +1,4 @@
 
-wpsso_clear_cache( $clear_other = true, $clear_short = true, $refresh = true );
-
 wpsso_clear_post_cache( $post_id );
 
 wpsso_get_canonical_url( $mod = false, $add_page = true );

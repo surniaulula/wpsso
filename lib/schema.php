@@ -4324,36 +4324,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2022/12/26.
-		 */
-		public static function get_data_unit_text( $mixed_key ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
-
-			return self::get_unit_text( $mixed_key );
-		}
-
-		/*
-		 * Deprecated on 2023/01/31.
-		 */
-		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_aggregate_data_mt()' );	// Deprecation message.
-
-			return self::add_offers_aggregate_data_mt( $json_data, $mt_offers );
-		}
-
-		/*
-		 * Deprecated on 2023/01/31.
-		 */
-		public static function add_offers_data( &$json_data, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_data_mt()' );	// Deprecation message.
-
-			return self::add_offers_data_mt( $json_data, $mt_offers );
-		}
-
-		/*
 		 * Add cross-references for schema sub-type arrays that exist under more than one type.
 		 *
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
@@ -4380,6 +4350,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Thing > Organization > Local Business.
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
+		}
+
+		/*
+		 * Deprecated on 2023/01/31.
+		 */
+		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_aggregate_data_mt()' );	// Deprecation message.
+
+			return self::add_offers_aggregate_data_mt( $json_data, $mt_offers );
+		}
+
+		/*
+		 * Deprecated on 2023/01/31.
+		 */
+		public static function add_offers_data( &$json_data, array $mt_offers ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_data_mt()' );	// Deprecation message.
+
+			return self::add_offers_data_mt( $json_data, $mt_offers );
+		}
+
+		/*
+		 * Deprecated on 2022/12/26.
+		 */
+		public static function get_data_unit_text( $mixed_key ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
+
+			return self::get_unit_text( $mixed_key );
 		}
 	}
 }

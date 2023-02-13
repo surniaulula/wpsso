@@ -575,8 +575,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
-		 * Called by WpssoMedia->get_all_images(), WpssoMedia->get_mt_pid_images(), WpssoUtil->clear_uniq_urls(),
-		 * WpssoSscShortcodeSchema->do_shortcode().
+		 * See WpssoMedia->get_all_images().
+		 * See WpssoMedia->get_mt_pid_images().
+		 * See WpssoUtil->clear_uniq_urls().
+		 * See WpssoSscShortcodeSchema->do_shortcode().
 		 */
 		public function get_image_size_names( $mixed = null, $sanitize = true ) {
 

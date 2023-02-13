@@ -41,8 +41,6 @@
 
 'wpsso_attached_images' ( $mt_ret, $num, $size_name, $post_id )
 
-'wpsso_cache_cleared_notice' ( $notice_msg, $user_id, $clear_other, $clear_short, $refresh )
-
 'wpsso_cache_expire_api_response' ( $secs, $cache_type, $mod )
 
 'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )

@@ -158,29 +158,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 
-			/*
-			 * Clear the disk cache.
-			 *
-			 * Do not call WpssoUtilCache->schedule_clear() since WPSSO will be deactivated before the scheduled task can begin.
-			 */
-			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
-
-				while ( $file_name = @readdir( $dh ) ) {
-
-					$cache_file = WPSSO_CACHE_DIR . $file_name;
-
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
-
-						@unlink( $cache_file );
-					}
-				}
-
-				closedir( $dh );
-			}
-
 			$this->reset_admin_checks();
 		}
 
+		/*
+		 * See WpssoAdmin->activated_plugin().
+		 * See WpssoAdmin->after_switch_theme().
+		 * See WpssoAdmin->upgrader_process_complete().
+		 */
 		public function reset_admin_checks() {
 
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
@@ -198,6 +183,21 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$blog_id = get_current_blog_id();
 			$opts    = get_option( WPSSO_OPTIONS_NAME, array() );
+
+			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
+
+				while ( $file_name = @readdir( $dh ) ) {
+
+					$cache_file = WPSSO_CACHE_DIR . $file_name;
+
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
+						@unlink( $cache_file );
+					}
+				}
+
+				closedir( $dh );
+			}
 
 			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			global $wpdb;
 
-			$prefix   = '_transient_';	// Clear all transients, even if no timeout value.
+			$prefix   = '_transient_';
 			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
 			$result   = $wpdb->get_col( $db_query );
 
