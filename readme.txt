@@ -241,7 +241,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Deprecated the WPSSO Core cache clearing function and method.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -368,7 +368,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.3.0-dev.5 =
 
-(2022/02/12) Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
+(2022/02/12) Deprecated the WPSSO Core cache clearing function and method. Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
 
 = 15.2.0 =
 
