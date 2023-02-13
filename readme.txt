@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.0-dev.4 (2022/02/12)**
+**Version 15.3.0-dev.5 (2022/02/12)**
 
 * **New Features**
 	* None.
@@ -246,18 +246,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
+	* Added a new `WpssoUser->get_cache_id()` method.
+	* Added a new `WpssoUser->doing_task()` method.
+	* Added a new `WpssoUtil->is_task_running()` method.
+	* Added a new `WpssoUtil->set_task_limit()` method.
 	* Added a new `WpssoUtilCache->get_cache_id()` method.
 	* Added a new `WpssoUtilCache->doing_task()` method.
-	* Added a new `WpssoUtilCache->is_task_running()` method.
-	* Refactored `WpssoUtilCache->clear()` method.
+	* Refactored `WpssoUser->schedule_add_person_role()` method.
+	* Refactored `WpssoUser->add_person_role()` method.
+	* Refactored `WpssoUser->schedule_remove_person_role()` method.
+	* Refactored `WpssoUser->remove_person_role()` method.
+	* Refactored `WpssoUtilCache->schedule_refresh()` method.
 	* Refactored `WpssoUtilCache->refresh()` method.
+	* Deprecated the `WpssoUser->stop_add_person_role()` method.
 	* Deprecated the `WpssoUtilCache->schedule_clear()` method.
 	* Deprecated the `WpssoUtilCache->clear()` method.
+	* Deprecated the `WpssoUtilCache->stop_refresh()` method.
 	* Deprecated the `wpsso_clear_cache()` function.
-	* Renamed the 'WPSSO_META_CACHE_PRIORITY' constant to 'WPSSO_META_CLEAR_PRIORITY'.
 	* Renamed the `WpssoUtilCache->clear_other()` method to `WpssoUtilCache->clear_cache()`.
+	* Renamed the 'WPSSO_META_CACHE_PRIORITY' constant to 'WPSSO_META_CLEAR_PRIORITY'.
 	* Removed the 'WPSSO_CACHE_REFRESH_SLEEP_TIME' constant.
-	* Removed `WpssoUtilCache->stop_refresh()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -358,7 +366,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.0-dev.4 =
+= 15.3.0-dev.5 =
 
 (2022/02/12) Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
 
