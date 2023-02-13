@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.0-dev.3 (2022/02/12)**
+**Version 15.3.0-dev.4 (2022/02/12)**
 
 * **New Features**
 	* None.
@@ -251,9 +251,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoUtilCache->is_task_running()` method.
 	* Refactored `WpssoUtilCache->clear()` method.
 	* Refactored `WpssoUtilCache->refresh()` method.
-	* Removed `WpssoUtilCache->stop_refresh()` method.
-	* Removed the 'WPSSO_CACHE_REFRESH_SLEEP_TIME' constant.
+	* Deprecated the `WpssoUtilCache->schedule_clear()` method.
+	* Deprecated the `WpssoUtilCache->clear()` method.
+	* Deprecated the `wpsso_clear_cache()` function.
 	* Renamed the 'WPSSO_META_CACHE_PRIORITY' constant to 'WPSSO_META_CLEAR_PRIORITY'.
+	* Renamed the `WpssoUtilCache->clear_other()` method to `WpssoUtilCache->clear_cache()`.
+	* Removed the 'WPSSO_CACHE_REFRESH_SLEEP_TIME' constant.
+	* Removed `WpssoUtilCache->stop_refresh()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -354,7 +358,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.0-dev.3 =
+= 15.3.0-dev.4 =
 
 (2022/02/12) Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
 
