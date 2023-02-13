@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.0-dev.2 (2022/02/12)**
+**Version 15.3.0-dev.3 (2022/02/12)**
 
 * **New Features**
 	* None.
@@ -354,7 +354,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.0-dev.2 =
+= 15.3.0-dev.3 =
 
 (2022/02/12) Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
 
