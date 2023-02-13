@@ -1881,7 +1881,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		private function get_cache_id() {
+		public function get_cache_id() {
 
 			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );
 		}

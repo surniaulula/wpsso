@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return array( $head_tags, $head_info );
 		}
 	
-		private function get_cache_id() {
+		public function get_cache_id() {
 
 			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );
 		}
