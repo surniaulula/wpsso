@@ -91,17 +91,19 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			if ( is_array( $img_meta ) && isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) &&
 				$img_meta[ 'width' ] < $size_info[ 'width' ] && $img_meta[ 'height' ] < $size_info[ 'height' ] ) {
 
-				$size_text = $img_meta[ 'width' ] . 'x' . $img_meta[ 'height' ] . ' (' . __( 'full size original', 'wpsso' ) . ')';
+				$img_dims        = $img_meta[ 'width' ] . 'x' . $img_meta[ 'height' ];
+				$img_dims_transl = $img_dims . ' (' . __( 'full size original', 'wpsso' ) . ')';
 
 			} else {
 
-				$size_text = $img_width . 'x' . $img_height;
+				$img_dims        = $img_width . 'x' . $img_height;
+				$img_dims_transl = $img_dims;
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'image ID ' . $pid . ' rejected - ' . $size_text . ' too small for the ' . $size_name .
-					' (' . $size_info[ 'dimensions' ] . ') image size' );
+				$this->p->debug->log( 'image ID ' . $pid . ' rejected - ' . $img_dims .
+					' too small for the ' . $size_name . ' (' . $size_info[ 'dimensions' ] . ') image size' );
 			}
 
 			/*
@@ -118,10 +120,10 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 
 				$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is too small for the required %4$s image dimensions.',
-					'wpsso' ), $img_lib, $img_label, $size_text, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) .
+					'wpsso' ), $img_lib, $img_label, $img_dims_transl, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) .
 						' ' . $this->p->msgs->get( 'notice-image-rejected' );
 
-				$notice_key = 'wp_' . $pid . '_' . $size_text . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
+				$notice_key = 'wp_' . $pid . '_' . $img_dims . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
 
 				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}

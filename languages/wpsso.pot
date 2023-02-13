@@ -508,7 +508,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:888
-#: lib/media-filters.php:114 lib/media.php:1470 lib/media.php:1621
+#: lib/media-filters.php:116 lib/media.php:1470 lib/media.php:1621
 #: lib/media.php:3266
 msgid "Media Library"
 msgstr ""
@@ -6911,27 +6911,27 @@ msgid ""
 "required library file."
 msgstr ""
 
-#: lib/media-filters.php:94
+#: lib/media-filters.php:95
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:117 lib/media.php:3276
+#: lib/media-filters.php:119 lib/media.php:3276
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: lib/media-filters.php:120
+#: lib/media-filters.php:122
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/media-filters.php:183
+#: lib/media-filters.php:185
 msgid ""
 "Image %1$s in content ignored - the image width and height is too small for "
 "the required %2$s image dimensions."
 msgstr ""
 
-#: lib/media-filters.php:186
+#: lib/media-filters.php:188
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
 "Library images - if this image was selected from the Media Library before "
