@@ -1714,9 +1714,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {	// Just in case.
 
-				$human_time = human_time_diff( 0, WPSSO_ADD_ROLE_MAX_TIME );
-				$notice_msg = sprintf( __( 'A background task will begin shortly to %s to content creators.', 'wpsso' ), $task_name_transl ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s to content creators.', 'wpsso' ), $task_name_transl );
 				$notice_key = $task_name . '-scheduled';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
@@ -1805,9 +1803,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {	// Just in case.
 
-				$human_time = human_time_diff( 0, WPSSO_REMOVE_ROLE_MAX_TIME );
-				$notice_msg = sprintf( __( 'A background task will begin shortly to %s from all users.', 'wpsso' ), $task_name_transl ) . ' ';
-				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s from all users.', 'wpsso' ), $task_name_transl );
 				$notice_key = $task_name . '-scheduled';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
