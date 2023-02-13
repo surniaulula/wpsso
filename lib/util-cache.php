@@ -124,10 +124,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( $user_id ) {
 
 				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
-
-				$notice_msg = sprintf( __( 'A task to %1$s the cache was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
-
-				$notice_key = $task_name . '-cache-started';
+				$notice_msg   = sprintf( __( 'A task to %1$s the cache was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
+				$notice_key   = $task_name . '-cache-started';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -161,28 +159,28 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			wp_cache_flush();	// Clear non-database transients as well.
 
+			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, and the WordPress object cache have been cleared.',
+				'wpsso' ), $cleared_files, $cleared_transients ) . ' ';
+
 			/*
 			 * Clear all other known caches (Comet Cache, W3TC, WP Rocket, etc.).
 			 */
-			$cleared_other_msg = $clear_other ? $this->clear_other() : '';
+			if ( $clear_other ) {
+
+				$notice_msg .= $this->clear_other();	// Any notice message ends with a space.
+			}
 
 			/*
 			 * The 'wpsso_cache_cleared_notice' filter allows add-ons to execute refresh tasks and append a notice message.
 			 */
-			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, and the WordPress object cache have been cleared.',
-				'wpsso' ), $cleared_files, $cleared_transients ) . ' ' . $cleared_other_msg . ' ';
-
 			$notice_msg = trim( apply_filters( 'wpsso_cache_cleared_notice', $notice_msg, $user_id, $clear_other, $clear_short, $refresh ) ) . ' ';
 
 			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-
-				$human_time = human_time_diff( 0, $mtime_total );
-
-				$notice_msg .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
-
-				$notice_key = $task_name . '-cache-ended';
+				$human_time  = human_time_diff( 0, $mtime_total );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_key  = $task_name . '-cache-ended';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}

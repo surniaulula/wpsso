@@ -149,29 +149,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 
 			/*
-			 * Clear all caches on activate.
+			 * Refresh cache on activate.
 			 */
 			$user_id = get_current_user_id();
 
-			$this->p->util->cache->schedule_clear( $user_id );
-
-			$short = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
-
-			$notice_msg = '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ';
-
-			$notice_msg .= __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
-
-			$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
-
-			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-
-			/*
-			 * End of plugin activation.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'done plugin activation' );
-			}
+			$this->p->util->cache->schedule_refresh( $user_id );
 		}
 
 		private function deactivate_plugin() {

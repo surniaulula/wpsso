@@ -877,15 +877,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( is_admin() ) {
 
-						$user_id = get_current_user_id();
-
-						$this->p->util->cache->schedule_clear( $user_id );
-
+						$user_id    = get_current_user_id();
 						$notice_msg = '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ';
-						$notice_msg .= __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
-						$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
+						$notice_key = 'settings-upgraded-and-saved';
 
 						$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+						
+						$this->p->util->cache->schedule_refresh( $user_id );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {

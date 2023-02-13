@@ -757,7 +757,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$cache_md5_pre  = 'wpsso_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
+			$user_id        = get_current_user_id();
 			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ';	// Note the trailing space.
+			$notice_key     = 'settings-saved';
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -770,7 +772,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$notice_msg .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ), $refresh_cache_link, $cache_exp_human );
 			}
 
-			$this->p->notice->upd( $notice_msg );
+			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
 			return $opts;
 		}
