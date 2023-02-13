@@ -202,6 +202,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 
 				echo '<!DOCTYPE html>';
 				echo '<html>';
+				echo '<head>';
 				echo '<title>' . $httpcode . '</title>';
 				echo '</head>';
 				echo '<body>';
