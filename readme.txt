@@ -236,11 +236,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.0-b.1 (2023/02/13)**
+**Version 15.3.0-b.2 (2023/02/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated the default "Product Variation Title" value in the Advanced Settings page to '%%var_title%% %%sep%% %%var_attrs%%'.
 	* Deprecated the WPSSO Core cache clearing function and method.
 * **Bugfixes**
 	* None.
@@ -366,9 +367,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.0-b.1 =
+= 15.3.0-b.2 =
 
-(2023/02/13) Deprecated the WPSSO Core cache clearing function and method. Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
+(2023/02/13) Updated the default "Product Variation Title" value in the Advanced Settings. Deprecated the WPSSO Core cache clearing function and method.
 
 = 15.2.0 =
 
