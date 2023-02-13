@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$cache_id         = $this->get_cache_id();
 
 			if ( $this->u->is_task_running( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $cache_id ) ) {
-			
+
 				return;
 			}
 
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			return array( $head_tags, $head_info );
 		}
-	
+
 		public function get_cache_id() {
 
 			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );

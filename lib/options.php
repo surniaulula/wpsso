@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
 				}
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
 				}
 			}
@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
 				}
 			}
@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function check_options( $options_name, array $opts, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
 			}
 
@@ -586,7 +586,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'checking options' );	// End timer.
 			}
 
@@ -882,7 +882,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$notice_key = 'settings-upgraded-and-saved';
 
 						$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-						
+
 						$this->p->util->cache->schedule_refresh( $user_id );
 					}
 
@@ -1799,7 +1799,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_product_var_title':	// Product Variation Title.
 
-						return _x( '%%var_title%% %%sep%% %%var_sku%%', 'option value', 'wpsso' );
+						return _x( '%%var_title%% %%sep%% %%var_attrs%%', 'option value', 'wpsso' );
 
 					case 'plugin_404_page_title':		// 404 Page Title.
 

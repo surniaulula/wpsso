@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			 */
 			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				foreach ( array( 'name', 'description', 'aggregateRating', 'review' ) as $prop_name ) {
+				foreach ( array( 'name', 'description', 'review' ) as $prop_name ) {
 
 					if ( ! empty( $json_data[ $prop_name ] ) ) {
 

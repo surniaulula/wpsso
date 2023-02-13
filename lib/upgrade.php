@@ -930,9 +930,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 925 ) {
 
-					if ( ! empty( $opts[ 'plugin_term_page_title' ] ) && '%%term_title%%' === $opts[ 'plugin_term_page_title' ] ) {
+					if ( ! empty( $opts[ 'plugin_term_page_title' ] ) ) {
 
-						$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
+						if ( '%%term_title%%' === $opts[ 'plugin_term_page_title' ] ) {
+
+							$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
+						}
 					}
 				}
 
@@ -941,6 +944,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					$opts[ 'og_def_dimension_units' ]    = $defs[ 'og_def_dimension_units' ];
 					$opts[ 'og_def_weight_units' ]       = $defs[ 'og_def_weight_units' ];
 					$opts[ 'og_def_fluid_volume_units' ] = $defs[ 'og_def_fluid_volume_units' ];
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 954 ) {
+
+					if ( ! empty( $opts[ 'plugin_product_var_title' ] ) ) {
+
+						if ( '%%var_title%% %%sep%% %%var_sku%%' === $opts[ 'plugin_product_var_title' ] ) {
+
+							$opts[ 'plugin_product_var_title' ] = '%%var_title%% %%sep%% %%var_attrs%%';
+						}
+					}
 				}
 			}
 

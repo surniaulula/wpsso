@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_sep = $this->maybe_get_title_sep( $title_sep = null );	// Returns default $title_sep if not provided.
+			$title_sep = $this->maybe_get_title_sep();
 
 			return $title_sep;
 		}

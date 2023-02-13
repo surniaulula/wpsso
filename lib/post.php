@@ -214,14 +214,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Maybe return the array from the local cache.
 			 */
 			if ( isset( $local_cache[ $post_id ] ) ) {
-			
+
 				if ( ! $this->md_cache_disabled ) {
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'exiting early: returning post id ' . $post_id . ' mod array from local cache' );
 					}
-	
+
 					return $local_cache[ $post_id ];
 
 				} else unset( $local_cache[ $post_id ] );
@@ -398,7 +398,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
 			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
-			
+
 				$local_cache[ $cache_id ] = null;
 			}
 
@@ -1855,7 +1855,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->clear_cache( $child_id, $rel = false );
 			}
-			
+
 			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 		}
 

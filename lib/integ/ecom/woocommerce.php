@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
 			}
 
@@ -677,7 +677,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'getting product defaults' );	// End timer.
 			}
 
@@ -857,7 +857,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			} else return $md_opts;	// $mixed is not a variation array, product or post object.
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'importing product attributes' );	// Begin timer.
 			}
 
@@ -1056,7 +1056,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			if ( $is_variation ) {
-		
+
 				/*
 		 		 * $mod contains the main product information (not the variant).
 		 		 * $product contains the main product object (not the variant).
@@ -2003,10 +2003,15 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
-			$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array(
+			$var_attrs = array_filter( array_values( $product->get_variation_attributes() ) );
+
+			$title_atts = array(
 				'var_title' => $product->get_title(),
-				'var_sku'   => $mt_ecom[ 'product:retailer_part_no' ],
-			) );
+				'var_sku'   => $product->get_sku(),
+				'var_attrs' => implode( ' %%sep%% ', $var_attrs ),
+			);
+
+			$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $title_atts );
 
 			$mt_ecom[ 'product:title' ] = apply_filters( 'wpsso_variation_title', $title_text, $variation );
 		}

@@ -1370,7 +1370,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
 			}
 
@@ -1439,7 +1439,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'getting thumbnail image' );	// End timer.
 			}
 

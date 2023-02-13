@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * Term IDs in older WordPress versions are not unique, so use the term ID and the taxonomy slug as a cache index.
 			 */
 			if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
-			
+
 				if ( ! $this->md_cache_disabled ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
 			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
-			
+
 				$local_cache[ $cache_id ] = null;
 			}
 
@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$deref_md_opts = $local_cache[ $cache_id ];
 
 				unset( $local_cache[ $cache_id ], $md_opts );
-			
+
 				return $this->return_options( $term_id, $deref_md_opts, $md_key, $merge_defs );
 			}
 

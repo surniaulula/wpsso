@@ -79,6 +79,8 @@
 
 %%title%%
 
+%%var_attrs%%
+
 %%var_sku%%
 
 %%var_title%%

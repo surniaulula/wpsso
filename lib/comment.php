@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			 * Maybe return the array from the local cache.
 			 */
 			if ( isset( $local_cache[ $comment_id ] ) ) {
-			
+
 				if ( ! $this->md_cache_disabled ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $comment_id, 'filter' => $filter_opts ) );
 
 			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
-			
+
 				$local_cache[ $cache_id ] = null;
 			}
 
@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$deref_md_opts = $local_cache[ $cache_id ];
 
 				unset( $local_cache[ $cache_id ], $md_opts );
-			
+
 				return $this->return_options( $comment_id, $deref_md_opts, $md_key, $merge_defs );
 			}
 

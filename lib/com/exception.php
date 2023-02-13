@@ -209,7 +209,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 				echo '<h1>' . $httpcode . '</h1>';
 
 				if ( $context ) {
-	
+
 					echo '<p>' . $context . '</p>';
 				}
 
@@ -220,7 +220,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 
 				header( 'HTTP/1.0 ' . $errcode );
 			}
-	
+
 			exit();
 		}
 	}

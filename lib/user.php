@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Maybe return the array from the local cache.
 			 */
 			if ( isset( $local_cache[ $user_id ] ) ) {
-			
+
 				if ( ! $this->md_cache_disabled ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 
 					return $local_cache[ $user_id ];
-				
+
 				} else unset( $local_cache[ $user_id ] );
 			}
 
@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
 			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
-			
+
 				$local_cache[ $cache_id ] = null;
 			}
 
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$deref_md_opts = $local_cache[ $cache_id ];
 
 				unset( $local_cache[ $cache_id ], $md_opts );
-			
+
 				return $this->return_options( $user_id, $deref_md_opts, $md_key, $merge_defs );
 			}
 
@@ -1737,7 +1737,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_id          = $this->get_cache_id();
 
 			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME, $cache_id ) ) {
-			
+
 				return;
 			}
 
@@ -1826,7 +1826,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cache_id          = $this->get_cache_id();
 
 			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME, $cache_id ) ) {
-			
+
 				return;
 			}
 

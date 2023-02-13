@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		private function load_integ() {
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'loading integ modules' );	// Begin timer.
 			}
 
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'loading integ modules' );	// End timer.
 			}
 		}
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		private function load_dist() {
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-			
+
 				$this->p->debug->mark( 'loading dist modules' );	// End timer.
 			}
 		}
