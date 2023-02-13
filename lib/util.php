@@ -3800,6 +3800,47 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $cache_exp_secs;
 		}
 
+		public function is_task_running( $user_id, $task_name, $cache_exp_secs, $cache_id ) {
+
+			$running_task_name = get_transient( $cache_id );
+
+			if ( false !== $running_task_name ) {
+
+				if ( $user_id ) {
+
+					$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+					$notice_msg       = sprintf( __( 'Aborting task to %s - another background task is running.', 'wpsso' ), $task_name_transl );
+					$notice_key       = $running_task_name . '-task-running';
+
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+				}
+
+				return true;
+			}
+
+			set_transient( $cache_id, $task_name, $cache_exp_secs );
+
+			return false;
+		}
+
+		public function set_task_limit( $user_id, $task_name, $cache_exp_secs ) {
+
+			$ret = set_time_limit( $cache_exp_secs );
+
+			if ( ! $ret ) {
+
+				$human_time       = human_time_diff( 0, $cache_exp_secs );
+				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+				$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
+					'<code>set_time_limit()</code>', $human_time, $task_name_transl );
+				$notice_key = $task_name . '-task-set-time-limit-error';
+
+				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
+			}
+
+			return $ret;
+		}
+
 		/*
 		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
 		 *

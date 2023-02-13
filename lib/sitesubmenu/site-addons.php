@@ -35,9 +35,9 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 		}
 
 		/*
-		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 * Add settings page filters and actions hooks.
 		 *
-		 * Add settings page filter and action hooks.
+		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
 		 */
 		protected function add_plugin_hooks() {
 
@@ -54,6 +54,9 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			return array();
 		}
 
+		/*
+		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 */
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -67,7 +70,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 		}
 
 		/*
-		 * Called by the extended WpssoAdmin class.
+		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
 		 */
 		protected function add_meta_boxes() {
 

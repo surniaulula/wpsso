@@ -54,9 +54,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! SucomUtil::role_exists( 'person' ) ) {
 
-				$role_label = _x( 'Person', 'user role', 'wpsso' );
+				$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 
-				add_role( 'person', $role_label, array() );
+				add_role( 'person', $role_label_transl, array() );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
@@ -697,7 +697,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				list(
 					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod );
 
 				/*
 				 * Check for missing open graph image and description values.
@@ -1630,7 +1630,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+			$this->p->util->cache->refresh_mod_head_meta( $mod );
 
 			do_action( 'wpsso_refresh_user_cache', $user_id, $mod );
 		}
@@ -1705,36 +1705,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_add_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = 'wpsso_add_person_role';
-			$event_args = array( $user_id );
+			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
+			$task_name        = 'add the Person role';
+			$task_name_transl = _x( 'add the Person role', 'task name', 'wpsso' );
+			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_hook       = 'wpsso_add_person_role';
+			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.', 'wpsso' ),
-					_x( 'Person', 'user role', 'wpsso' ) );
+				$human_time = human_time_diff( 0, WPSSO_ADD_ROLE_MAX_TIME );
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s to content creators.', 'wpsso' ), $task_name_transl ) . ' ';
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_key = $task_name . '-scheduled';
 
-				$this->p->notice->upd( $notice_msg, $user_id );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
-
-			$this->stop_add_person_role();	// Just in case.
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
-		}
-
-		public function stop_add_person_role() {
-
-			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_stop_val = 'stop';
-
-			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
-
-				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
-			}
 		}
 
 		public function add_person_role( $user_id = null ) {
@@ -1744,50 +1732,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
+			$user_id           = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
+			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
+			$task_name         = 'add the Person role';
+			$task_name_transl  = _x( 'add the Person role', 'task name', 'wpsso' );
+			$cache_id          = $this->get_cache_id();
 
-			/*
-			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
-			 */
-			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_run_val  = 'running';
-			$cache_stop_val = 'stop';
-
-			/*
-			 * Prevent concurrent execution.
-			 */
-			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
-
-				if ( $user_id ) {
-
-					$notice_msg = sprintf( __( 'Aborting task to add the %1$s role to content creators - another identical task is still running.',
-						'wpsso' ), $role_label );
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'add-person-role-abort' );
-				}
-
+			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME, $cache_id ) ) {
+			
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
-
-			$mtime_start = microtime( $get_float = true );
-
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
-				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.', 'wpsso' ), $role_label, $time_date );
+				$mtime_start  = microtime( $get_float = true );
+				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
+				$notice_msg   = sprintf( __( 'A task to %1$s to content creators was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
+				$notice_key   = $task_name . '-task-started';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-begin' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( WPSSO_ADD_ROLE_MAX_TIME );
+				$this->p->util->set_task_limit( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -1804,27 +1772,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $users_ids as $id ) {
 
-				/*
-				 * Check that we are allowed to continue. Stop if cache status is not 'running'.
-				 */
-				if ( get_transient( $cache_id ) !== $cache_run_val ) {
-
-					delete_transient( $cache_id );
-
-					return;	// Stop here.
-				}
-
 				$count += self::add_role_by_id( $id, $role = 'person' );
 			}
+
+			unset( $users_ids );
 
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 				$human_time  = human_time_diff( 0, $mtime_total );
-				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
+				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label_transl, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_key  = $task_name . '-task-ended';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'add-person-role-end' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
@@ -1835,17 +1796,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_remove_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = 'wpsso_remove_person_role';
-			$event_args = array( $user_id );
+			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
+			$task_name        = 'remove the Person role';
+			$task_name_transl = _x( 'remove the Person role', 'task name', 'wpsso' );
+			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_hook       = 'wpsso_remove_person_role';
+			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.', 'wpsso' ),
-					_x( 'Person', 'user role', 'wpsso' ) );
+				$human_time = human_time_diff( 0, WPSSO_REMOVE_ROLE_MAX_TIME );
+				$notice_msg = sprintf( __( 'A background task will begin shortly to %s from all users.', 'wpsso' ), $task_name_transl ) . ' ';
+				$notice_msg .= sprintf( __( 'The maximum execution time for this background task will be %s.', 'wpsso' ), $human_time ) . ' ';
+				$notice_key = $task_name . '-scheduled';
 
-				$this->p->notice->upd( $notice_msg, $user_id );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -1858,52 +1823,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
+			$user_id           = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
+			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
+			$task_name         = 'remove the Person role';
+			$task_name_transl  = _x( 'remove the Person role', 'task name', 'wpsso' );
+			$cache_id          = $this->get_cache_id();
 
-			/*
-			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
-			 */
-			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::remove_person_role';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_run_val  = 'running';
-			$cache_stop_val = 'stop';
-
-			/*
-			 * Prevent concurrent execution.
-			 */
-			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
-
-				if ( $user_id ) {
-
-					$notice_msg = sprintf( __( 'Aborting task to remove the %1$s role from all users - another identical task is still running.',
-						'wpsso' ), $role_label );
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key = 'remove-person-role-abort' );
-				}
-
+			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME, $cache_id ) ) {
+			
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
-
-			$mtime_start = microtime( $get_float = true );
-
 			if ( $user_id ) {
 
-				$time_date  = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
-				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.', 'wpsso' ), $role_label, $time_date );
+				$mtime_start  = microtime( $get_float = true );
+				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
+				$notice_msg   = sprintf( __( 'A task to %1$s from all users was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
+				$notice_key   = $task_name . '-task-started';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-begin' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
-
-			$this->stop_add_person_role();	// Just in case.
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( WPSSO_REMOVE_ROLE_MAX_TIME );
+				$this->p->util->set_task_limit( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -1926,17 +1869,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
+			unset( $users_ids );
+
 			if ( $user_id ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 				$human_time  = human_time_diff( 0, $mtime_total );
-				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
+				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d users.', 'wpsso' ), $role_label_transl, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time );
+				$notice_key  = $task_name . '-task-ended';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key = 'remove-person-role-end' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
+		}
+
+		private function get_cache_id() {
+
+			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );
+		}
+
+		public function doing_task() {
+
+			$cache_id = $this->get_cache_id();
+
+			return get_transient( $cache_id );
 		}
 
 		/*
@@ -1994,7 +1952,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			unset( $user_views[ 'all' ], $user_views[ 'person' ] );
 
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
+			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 
 			$role_view  = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
 
@@ -2002,7 +1960,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_count = $user_query->get_total();
 
-			$user_views[ 'person' ] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+			$user_views[ 'person' ] = '<a href="' . $role_view . '">' .  $role_label_transl . '</a> (' . $user_count . ')';
 
 			$user_views[ 'all' ] = $all_view_link;
 
@@ -2034,5 +1992,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			return delete_user_meta( $user_id, $meta_key );
 		}
+
+		/*
+		 * Deprecated on 2023/02/13.
+		 */
+		public function stop_add_person_role() {
+
+			_deprecated_function( __METHOD__ . '()', '2023/02/13', $replacement = '' );	// Deprecation message.
+		}
+
 	}
 }

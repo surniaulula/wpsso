@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.3.0-dev.4',	// Plugin version.
+					'version'     => '15.3.0-dev.5',	// Plugin version.
 					'opt_version' => '954',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4873,9 +4873,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
-			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
-			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 600;		// 10 minutes.
+			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.

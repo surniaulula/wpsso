@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				list(
 					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod );
 
 				/*
 				 * Check for missing open graph image and description values.
@@ -938,7 +938,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
 
-			$this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+			$this->p->util->cache->refresh_mod_head_meta( $mod );
 
 			do_action( 'wpsso_refresh_term_cache', $term_id, $mod );
 		}

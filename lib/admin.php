@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->get_form_object( $menu_ext );
 
-			$this->add_plugin_hooks();	// Add settings page filter and action hooks.
+			$this->add_plugin_hooks();	// Add settings page filters and actions hooks.
 
 			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
 
@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Add settings page filter and action hooks.
+		 * Add settings page filters and actions hooks.
 		 *
 		 * This method is extended by each submenu page.
 		 */

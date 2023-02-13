@@ -670,7 +670,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							list(
 								parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 								parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-							) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+							) = $this->p->util->cache->refresh_mod_head_meta( $mod );
 						}
 					}
 				}
@@ -936,7 +936,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				list(
 					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod );
 
 				/*
 				 * Check for missing open graph image and description values.
@@ -1570,7 +1570,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				list(
 					parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
 					parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-				) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+				) = $this->p->util->cache->refresh_mod_head_meta( $mod );
 
 				/*
 				 * Check for missing open graph image and description values.
@@ -1842,7 +1842,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $bool ) {
 
-					$this->p->post->clear_cache( $attach_id );
+					$this->clear_cache( $attach_id );
 				}
 			}
 
@@ -1868,10 +1868,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			list(
-				parent::$head_tags,	// Used by WpssoAbstractWpMeta->is_meta_page().
-				parent::$head_info	// Used by WpssoAbstractWpMeta->check_head_info().
-			) = $this->p->util->cache->refresh_mod_head_meta( $mod, $read_cache = false );
+			$this->p->util->cache->refresh_mod_head_meta( $mod );
 
 			/*
 			 * See WpssoCmcfActions->action_refresh_post_cache().
