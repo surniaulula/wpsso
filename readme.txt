@@ -236,6 +236,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.3.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an informational notice when a background task is running.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoUtil->action_show_admin_notices()` method.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.3.0 (2023/02/14)**
 
 * **New Features**
@@ -269,7 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the 'WPSSO_CACHE_REFRESH_SLEEP_TIME' constant.
 * **Requires At Least**
 	* PHP v7.2.
-	* WordPress v5.2.
+	* WordPress v5.4.
 
 **Version 15.2.0 (2023/02/11)**
 
@@ -290,7 +304,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoAbstractWpMeta->md_cache_enable()` method.
 * **Requires At Least**
 	* PHP v7.2.
-	* WordPress v5.2.
+	* WordPress v5.4.
 
 **Version 15.1.1 (2023/02/08)**
 
@@ -310,7 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the `WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product()` method to provide inheritance of 'og:description' for product offers and product group variants.
 * **Requires At Least**
 	* PHP v7.2.
-	* WordPress v5.2.
+	* WordPress v5.4.
 
 **Version 15.0.1 (2023/02/04)**
 
@@ -324,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `SucomUtil::safe_error_log()` method.
 * **Requires At Least**
 	* PHP v7.2.
-	* WordPress v5.2.
+	* WordPress v5.4.
 
 **Version 15.0.0 (2023/02/03)**
 
@@ -366,6 +380,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.3.1-dev.1 =
+
+(TBD) Added an informational notice when a background task is running.
 
 = 15.3.0 =
 
