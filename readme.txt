@@ -241,10 +241,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the default "Product Variation Title" value in the Advanced Settings page to '%%var_title%% %%sep%% %%var_attrs%%'.
+	* Changed the default "Product Variation Title" value in the Advanced Settings page to '%%var_title%% %%sep%% %%var_attrs%%'.
 	* Deprecated the WPSSO Core cache clearing function and method.
 * **Bugfixes**
-	* None.
+	* Fixed Google warning "Review has multiple aggregate ratings" for Schema ProductGroup variants.
 * **Developer Notes**
 	* Added a new `SucomErrorException::http_error()` method for the WPSSO GMF and CMCF add-ons.
 	* Added a new `WpssoUser->get_cache_id()` method.
@@ -369,7 +369,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.3.0 =
 
-(2023/02/14) Updated the default "Product Variation Title" value in the Advanced Settings. Deprecated the WPSSO Core cache clearing function and method.
+(2023/02/14) Changed the default "Product Variation Title" value in the Advanced Settings. Fixed Google warning "Review has multiple aggregate ratings" for Schema ProductGroup variants.
 
 = 15.2.0 =
 
