@@ -2302,11 +2302,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
-			$menu_icon = '<span class="ab-icon" id="wpsso-toolbar-notices-icon"></span>';
-
+			$menu_icon  = '<span class="ab-icon" id="wpsso-toolbar-notices-icon"></span>';
 			$menu_count = '<span class="ab-label" id="wpsso-toolbar-notices-count">0</span>';
-
-			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->get_menu_title() );
+			$menu_text  = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->get_menu_title() );
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'wpsso-toolbar-notices',
@@ -2319,7 +2317,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'wpsso-toolbar-notices-container',
-				'title'  => $no_notices_text,
+				'title'  => $menu_text,
 				'parent' => 'wpsso-toolbar-notices',
 				'href'   => false,
 				'group'  => false,
@@ -2727,6 +2725,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! isset( $_FILES[ 'file' ][ 'error' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'incomplete post method upload' );
 				}
 
@@ -2734,22 +2733,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} elseif ( $_FILES[ 'file' ][ 'error' ] === UPLOAD_ERR_NO_FILE ) {
 
-				$this->p->notice->err( sprintf( __( 'Please select a %1$s settings file to import.',
-					'wpsso' ), $dot_file_ext ) );
+				$this->p->notice->err( sprintf( __( 'Please select a %1$s settings file to import.', 'wpsso' ), $dot_file_ext ) );
 
 				return false;
 
 			} elseif ( $_FILES[ 'file' ][ 'type' ] !== 'application/x-gzip' ) {
 
-				$this->p->notice->err( sprintf( __( 'The %1$s settings file to import must be an "%2$s" mime type.',
-					'wpsso' ), $dot_file_ext, $mime_type_gz ) );
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file to import must be an "%2$s" mime type.', 'wpsso' ),
+					$dot_file_ext, $mime_type_gz ) );
 
 				return false;
 
 			} elseif ( $_FILES[ 'file' ][ 'size' ] > $max_file_size ) {	// Just in case.
 
-				$this->p->notice->err( sprintf( __( 'The %1$s settings file is larger than the maximum of %2$d bytes allowed.',
-					'wpsso' ), $dot_file_ext, $max_file_size ) );
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file is larger than the maximum of %2$d bytes allowed.', 'wpsso' ),
+					$dot_file_ext, $max_file_size ) );
 
 				return false;
 			}
@@ -2762,8 +2760,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts_encoded ) ) {	// false or empty array.
 
-				$this->p->notice->err( sprintf( __( 'The %1$s settings file is appears to be empty or corrupted.',
-					'wpsso' ), $dot_file_ext ) );
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file is appears to be empty or corrupted.', 'wpsso' ), $dot_file_ext ) );
 
 				return false;
 			}
@@ -2772,8 +2769,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts ) || ! is_array( $opts ) ) {	// false or empty array.
 
-				$this->p->notice->err( sprintf( __( 'The %1$s settings file could not be decoded into a settings array.',
-					'wpsso' ), $dot_file_ext ) );
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file could not be decoded into a settings array.', 'wpsso' ), $dot_file_ext ) );
 
 				return false;
 			}

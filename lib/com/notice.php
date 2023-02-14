@@ -455,19 +455,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function admin_header_notices() {
 
-			/*
-			 * 'network_admin_notices' prints network admin screen notices.
-			 *
-			 * 'user_admin_notices' prints user admin screen notices.
-			 *
-			 * 'admin_notices' prints admin screen notices.
-			 *
-			 * 'all_admin_notices' prints generic admin screen notices.
-			 */
 			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -1000 );
 		}
 
 		public function show_admin_notices() {
+
+			$user_id = get_current_user_id();	// Always returns an integer.
 
 			$notice_types = $this->all_types;
 
@@ -509,18 +502,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				 */
 				$this->clear();
 
-				$this->err( $msg_text, $user_id = null, $notice_key );
-			}
-
-			if ( ! empty( $this->p->debug->enabled ) ) {
-
-				$this->p->debug->log_arr( 'notice_types', $notice_types );
+				$this->err( $msg_text, $user_id, $notice_key );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.
 
 				return;
 			}
+
+			/*
+			 * An alternative to the 'admin_head' action hook to add notices.
+			 */
+			do_action( 'wpsso_show_admin_notices', $user_id );
 
 			/*
 			 * Exit early if this is a block editor page. The notices will be retrieved using an ajax call on page load
@@ -543,7 +536,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$nag_html         = '';
 			$msg_html         = '';
-			$user_id          = get_current_user_id();	// Always returns an integer.
 			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;	// Note that $user_id is the second argument.
 			$update_dismissed = false;
 
@@ -856,16 +848,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2021/01/19.
-		 */
-		public function get_notice_system() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_tb_types_showing()' );	// Deprecation message.
-
-			return $this->get_tb_types_showing();
-		}
-
-		/*
 		 * Returns false or an array of notice types to include in the toolbar menu.
 		 *
 		 * Called by WpssoScript->get_admin_page_script_data() to define the types shown for ajax calls.
@@ -984,7 +966,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			$do_once    = true;
+			$do_once = true;
+
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 
 			if ( is_admin() ) {

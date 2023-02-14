@@ -95,6 +95,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->add_plugin_actions( $this, array(
 				'scheduled_task_started' => 1,
+				'show_admin_notices'     => 1,
 			), $prio = -1000 );
 
 			/*
@@ -219,6 +220,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function action_scheduled_task_started( $user_id ) {
 
 			$this->add_plugin_image_sizes();
+		}
+
+		public function action_show_admin_notices( $user_id ) {
+			
+			if ( $task_name = $this->cache->doing_task() ) {
+
+				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+				$notice_msg       = sprintf( __( 'A background task to %s is currently running.', 'wpsso' ), $task_name_transl );
+				$notice_key       = $task_name . '-task-running';
+				
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+			}
 		}
 
 		/*
