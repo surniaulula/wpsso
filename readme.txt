@@ -236,7 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.1-dev.1 (TBD)**
+**Version 15.3.1-dev.2 (TBD)**
 
 * **New Features**
 	* None.
@@ -381,7 +381,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.1-dev.1 =
+= 15.3.1-dev.2 =
 
 (TBD) Added an informational notice when a background task is running.
 
