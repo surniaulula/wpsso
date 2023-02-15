@@ -236,14 +236,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.1-dev.2 (TBD)**
+**Version 15.3.1-dev.2 (2023/02/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an informational notice when a background task is running.
 * **Bugfixes**
-	* None.
+	* Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
 * **Developer Notes**
 	* Added a new `WpssoUtil->action_show_admin_notices()` method.
 * **Requires At Least**
@@ -383,7 +383,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.3.1-dev.2 =
 
-(TBD) Added an informational notice when a background task is running.
+(2023/02/15) Added an informational notice when a background task is running. Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
 
 = 15.3.0 =
 
