@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
 			/*
-			 * Optionally get more videos from the post content.
+			 * Maybe get more videos from the post content.
 			 */
 			if ( $mod[ 'is_comment' ] || $mod[ 'is_post' ] ) {
 
@@ -388,7 +388,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$this->p->util->slice_max( $mt_videos, $num );
 
 			/*
-			 * Optionally remove the image meta tags (aka video preview).
+			 * Maybe remove the image meta tags (aka video preview).
 			 */
 			if ( empty( $use_prev ) && empty( $force_prev ) ) {
 

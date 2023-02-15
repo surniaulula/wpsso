@@ -1175,9 +1175,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[ $currency_symbol ] = 'USD';
 			}
 
-			/*
-			 * Optionally decode the currency symbol values.
-			 */
 			$currency_symbols = self::get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode );
 
 			if ( is_array( $currency_symbols ) ) {	// Just in case.
@@ -1186,9 +1183,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( $value === $currency_symbol ) {	// Example: $ === $
 
-						/*
-						 * Cache by currency symbol and return the currency abbreviation.
-						 */
 						return $local_cache[ $currency_symbol ] = $key;
 					}
 				}

@@ -102,8 +102,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			) );
 
 			/*
-			 * Optionally add the Pinterest image to the WooCommerce template for displaying product archives,
-			 * including the main shop page which is a post type archive.
+			 * Maybe add the Pinterest image to the WooCommerce template for displaying product archives - including
+			 * the main shop page, which is a post type archive.
 			 */
 			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
 
