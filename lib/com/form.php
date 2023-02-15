@@ -1307,9 +1307,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						if ( $show_id ) {
 
-							/*
-							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-							 */
 							$html .= '<script>';
 							$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'focus\', function(){';
 							$html .= 'jQuery( \'' . $show_id . '\' ).show();';
@@ -1331,17 +1328,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_redirect':
 
-						/*
-						 * The sucomSelectChangeRedirect() javascript function replaces "%%${name}%%" by the value selected.
-						 */
 						$redirect_url = add_query_arg( array( $name => '%%' . $name . '%%' ),
 							SucomUtil::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ] );
 
 						$redirect_url_encoded = SucomUtil::esc_url_encode( $redirect_url );
 
-						/*
-						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-						 */
 						$html .= '<script>';
 						$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'change\', function(){';
 						$html .= 'sucomSelectChangeRedirect( \'' . esc_js( $name ) . '\', this.value, \'' . $redirect_url_encoded . '\' );';
@@ -1358,9 +1349,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_unhide_rows':
 
-						/*
-						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-						 */
 						$html .= '<script>';
 						$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'change\', function(){';
 						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
@@ -1378,9 +1366,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$hide_class = 'hide_' . esc_js( $name );
 							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
 
-							/*
-							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-							 */
 							$html .= '<script>';
 
 							if ( 'on_show_unhide_rows' === $event_name ) {
@@ -1753,13 +1738,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length )' .
 						' { jQuery(\'div#multi_' . $input_id_next . '\').show(); } else' .
+						' if ( ! jQuery(\'input#textarea_' . $input_id . '\').val().length )' .
 						' { jQuery(\'input#text_' . $input_id_prev . '\').focus(); }"';
 				}
 
 				$html .= '<div';
 				$html .= ' class="multi_container input_multi"';
 				$html .= ' id="multi_' . $input_id . '"';
-				$html .= $display ? '' : ' style="display:none;"';
+				$html .= $display || '' !== $input_value ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
@@ -2272,13 +2258,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$el_attr = 'onFocus="if ( jQuery(\'textarea#textarea_' . $input_id_prev . '\').val().length )' .
 						' { jQuery(\'div#multi_' . $input_id_next . '\').show(); } else' .
+						' if ( ! jQuery(\'textarea#textarea_' . $input_id . '\').val().length )' .
 						' { jQuery(\'textarea#textarea_' . $input_id_prev . '\').focus(); }"';
 				}
 
 				$html .= '<div';
 				$html .= ' class="multi_container textarea_multi"';
 				$html .= ' id="multi_' . $input_id . '"';
-				$html .= $display ? '' : ' style="display:none;"';
+				$html .= $display || '' !== $input_value ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
@@ -2999,9 +2986,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_id   = SucomUtil::sanitize_css_id( $input_id );
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
-			/*
-			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-			 */
 			$html = '<script>';
 
 			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';	// Make sure sucomTextLen() is available.
@@ -3071,17 +3055,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					} else {
 
-						/*
-						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-						 */
 						$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
 					}
 
 				} else {
 
-					/*
-					 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-					 */
 					$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
 				}
 
@@ -3094,8 +3072,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
 			 *
 			 * sucomSelectLoadJson() is loaded in the footer, so test to make sure the function is available.
-			 *
-			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
 			$select_id_esc = esc_js( $select_id );
 
@@ -3119,9 +3095,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$this->show_hide_js_added = true;
 
-			/*
-			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-			 */
 			$html = <<<EOF
 <script>
 
