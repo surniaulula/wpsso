@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$notice_msg = sprintf( __( 'A background task will begin shortly to %s for posts, terms and users.', 'wpsso' ), $task_name_transl );
 				$notice_key = $task_name . '-task-scheduled';
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
