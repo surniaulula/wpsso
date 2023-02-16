@@ -464,6 +464,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$notice_types = $this->all_types;
 
+			echo $this->get_notice_style();		// Always show the notice stylesheet.
+
 			/*
 			 * If toolbar notices are being used, exclude these from being shown.
 			 */
@@ -632,8 +634,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo "\n" . '<!-- ' . $this->plugin_id . ' admin notices begin -->' . "\n";
 
 			echo '<div id="' . sanitize_html_class( $this->plugin_id . '-admin-notices-begin' ) . '"></div>' . "\n";
-
-			echo $this->get_notice_style();
 
 			echo $nag_html . "\n";
 
