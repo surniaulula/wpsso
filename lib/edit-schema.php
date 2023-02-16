@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_howto_step' => array(
 							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'wide howto_step_name is_required',
+							'input_class' => 'wide howto_step_name',
 						),
 						'schema_howto_step_text' => array(
 							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_recipe_instruction' => array(
 							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'wide recipe_instruction_name is_required',
+							'input_class' => 'wide recipe_instruction_name',
 						),
 						'schema_recipe_instruction_text' => array(
 							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Serving Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_serv',
-					'content'  => $form->get_input( 'schema_recipe_nutri_serv', $css_class = 'long_name is_required' ),
+					'content'  => $form->get_input( 'schema_recipe_nutri_serv', $css_class = 'long_name' ),
 				),
 				'schema_recipe_nutri_cal' => array(
 					'tr_class' => $type_row_class[ 'recipe' ],

@@ -2881,7 +2881,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	'post:0_url:https://example.com/a-subject/'
 		 * 	'url:https://example.com/2022/01/'
 		 *
-		 * See SucomUtil::get_cache_index().
 		 * See WpssoHead->get_head_cache_index().
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false ) {

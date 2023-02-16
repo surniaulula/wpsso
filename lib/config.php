@@ -4774,19 +4774,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
 				}
-
-				/*
-				 * Since WPSSO Core v9.12.4.
-				 *
-				 * Provides backwards compatibility for older WPSSO JSON add-ons.
-				 */
-				if ( class_exists( 'WpssoJson' ) ) {
-
-					if ( empty( self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] ) ) {
-
-						self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] = 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/';
-					}
-				}
 			}
 
 			return self::$cf;

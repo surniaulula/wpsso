@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-schema_review_rating',
 					'content'  => '' .
 						$form->get_no_input_value( $form->defaults[ 'schema_review_rating' ],
-							$css_class = 'rating is_required' ) . ' ' .
+							$css_class = 'rating' ) . ' ' .
 						_x( 'from', 'option comment', 'wpsso' ) . ' ' .
 						$form->get_no_input_value( $form->defaults[ 'schema_review_rating_min' ],
 							$css_class = 'rating' ) . ' ' .
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_name',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide is_required' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_review_item_desc' => array(
 					'tr_class' => $type_row_class[ 'review' ],
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Webpage URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide is_required' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_review_item_sameas_url' => array(
 					'tr_class' => $type_row_class[ 'review' ],

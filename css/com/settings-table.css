@@ -957,19 +957,6 @@ table.sucom-settings td.checkbox.blank {
 	min-width:22px;
 }
 
-table.sucom-settings .required,
-table.sucom-settings input.required,
-table.sucom-settings textarea.required,
-table.sucom-settings td.required,
-table.sucom-settings td.blank.required
-table.sucom-settings .is_required,
-table.sucom-settings input.is_required,
-table.sucom-settings textarea.is_required,
-table.sucom-settings td.is_required,
-table.sucom-settings td.blank.is_required {
-	border:1px solid #47d147;
-}
-
 table.sucom-settings .video {
 	text-align:center;
 	margin:20px 0;
