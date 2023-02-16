@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.1-dev.2 (2023/02/15)**
+**Version 15.3.1-dev.3 (2023/02/15)**
 
 * **New Features**
 	* None.
@@ -239,6 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
 * **Developer Notes**
 	* Added a new `WpssoUtil->action_show_admin_notices()` method.
+	* Removed the 'is_required' CSS class from input fields.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -374,7 +375,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.1-dev.2 =
+= 15.3.1-dev.3 =
 
 (2023/02/15) Added an informational notice when a background task is running. Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
 
