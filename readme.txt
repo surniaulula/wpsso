@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.1-b.1 (2023/02/17)**
+**Version 15.3.1-rc.1 (2023/02/17)**
 
 * **New Features**
 	* None.
@@ -376,7 +376,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.1-b.1 =
+= 15.3.1-rc.1 =
 
 (2023/02/17) Added an informational notice when a background task is running. Fixed the missing notices stylesheet when in the WordPress block editor. Fixed multi input and textarea fields to always show if they have a value.
 
