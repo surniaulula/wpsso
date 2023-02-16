@@ -229,13 +229,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.3.1-dev.3 (2023/02/15)**
+**Version 15.3.1-b.1 (2023/02/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an informational notice when a background task is running.
 * **Bugfixes**
+	* Fixed the missing notices stylesheet when in the WordPress block editor.
 	* Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
 * **Developer Notes**
 	* Added a new `WpssoUtil->action_show_admin_notices()` method.
@@ -375,9 +376,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.3.1-dev.3 =
+= 15.3.1-b.1 =
 
-(2023/02/15) Added an informational notice when a background task is running. Fixed multi input and textarea fields to always show if they have a value (even if the previous field is empty).
+(2023/02/17) Added an informational notice when a background task is running. Fixed the missing notices stylesheet when in the WordPress block editor. Fixed multi input and textarea fields to always show if they have a value.
 
 = 15.3.0 =
 
