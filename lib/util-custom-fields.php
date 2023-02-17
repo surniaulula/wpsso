@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				 */
 				if ( isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
 
-					$mixed = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
+					$cf_val = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
 
 				} else {
 
@@ -141,24 +141,24 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$this->p->debug->log( 'no element 0 in ' . $wp_meta_key . ' array' );
 					}
 
-					$mixed = '';
+					continue;
 				}
 
 				$values = array();
 
 				/*
-				 * If $mixed is an array, then decode each array element.
+				 * Decode each array element or the string.
 				 */
-				if ( is_array( $mixed ) ) {
+				if ( is_array( $cf_val ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( $wp_meta_key . ' is an array of ' . count( $mixed ) . ' elements (decoding each value)' );
+						$this->p->debug->log( $wp_meta_key . ' is an array of ' . count( $cf_val ) . ' elements (decoding each value)' );
 					}
 
-					foreach ( $mixed as $val ) {
+					foreach ( $cf_val as $val ) {
 
-						if ( is_array( $val ) ) {
+						if ( is_array( $val ) ) {	// Just in case.
 
 							$val = SucomUtil::array_implode( $val );
 						}
@@ -170,56 +170,55 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'decoding ' . $wp_meta_key . ' as string of ' . strlen( $mixed ) . ' chars' );
+						$this->p->debug->log( 'decoding ' . $wp_meta_key . ' as string of ' . strlen( $cf_val ) . ' chars' );
 					}
 
-					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
+					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $cf_val ), ENT_QUOTES, $charset ) );
 				}
 
 				/*
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
-				if ( empty( $md_keys_multi[ $md_key ] ) ) {
+				if ( ! empty( $values ) ) {	// Just in case.
 
-					$md_opts[ $md_key ] = reset( $values );
-
-					$md_opts[ $md_key . ':disabled' ] = true;
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
-					}
-
-					/*
-					 * If this is a '_value' option, add the '_units' option.
-					 */
-					$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
-
-					/*
-					 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
-					 */
-					$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
-
-				} else {
-
-					/*
-					 * If the input meta is not an array, and the meta options key allows for multiple numbered
-					 * values, then split the first (and what should be the only) array element into an array.
-					 */
-					if ( ! is_array( $mixed ) ) {
-
+					if ( ! empty( $md_keys_multi[ $md_key ] ) ) {
+	
 						/*
-						 * Explode the first element into an array.
+						 * If $cf_val was not an array, then $values[ 0 ] will be a string - split that string into an array.
 						 */
-						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'exploded ' . $wp_meta_key . ' into array of ' . count( $values ) . ' elements' );
+						if ( ! is_array( $cf_val ) ) {
+	
+							$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );
+	
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'exploded ' . $wp_meta_key . ' into array of ' . count( $values ) . ' elements' );
+							}
 						}
-					}
-
-					$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values );
+	
+						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values, $is_disabled = true );
+	
+					} else {
+	
+						$md_opts[ $md_key ] = reset( $values );
+	
+						$md_opts[ $md_key . ':disabled' ] = true;
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
+						}
+	
+						/*
+						 * If this is a '_value' option, add the '_units' option.
+						 */
+						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
+	
+						/*
+						 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
+						 */
+						$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
+					}	
 				}
 			}
 

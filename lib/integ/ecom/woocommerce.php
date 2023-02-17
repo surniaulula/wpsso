@@ -895,30 +895,31 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'using attribute ' . $attr_name . ' name for ' . $md_key . ' option' );
 				}
 
+				$cf_val = false;
 				$values = array();
 
 				if ( $is_variation ) {
 
-					if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
+					if ( '' !== ( $cf_val = $product->get_attribute( $attr_name ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
+							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $cf_val );
 						}
 
-						$values[] = $attr_val;
+						$values[] = $cf_val;
 
 					/*
 					 * Fallback to the default value.
 					 */
-					} elseif ( '' !== ( $attr_val = $parent_product->get_variation_default_attribute( $attr_name ) ) ) {
+					} elseif ( '' !== ( $cf_val = $parent_product->get_variation_default_attribute( $attr_name ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'assigning ' . $attr_name . ' default value to ' . $md_key . ' = ' . $attr_val );
+							$this->p->debug->log( 'assigning ' . $attr_name . ' default value to ' . $md_key . ' = ' . $cf_val );
 						}
 
-						$values[] = $attr_val;
+						$values[] = $cf_val;
 
 					} else {
 
@@ -937,19 +938,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'skipping ' . $attr_name . ' selectable value = ' . $attr_val );
+							$this->p->debug->log( 'skipping ' . $attr_name . ' selectable value = ' . $cf_val );
 						}
 
 					} else {
 
-						if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
+						if ( '' !== ( $cf_val = $product->get_attribute( $attr_name ) ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
+								$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $cf_val );
 							}
 
-							$values[] = $attr_val;
+							$values[] = $cf_val;
 						}
 					}
 				}
@@ -959,7 +960,24 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( ! empty( $values ) ) {	// Just in case.
 
-					if ( empty( $md_keys_multi[ $md_key ] ) ) {
+					if ( ! empty( $md_keys_multi[ $md_key ] ) ) {
+
+						/*
+						 * If $cf_val was not an array, then $values[ 0 ] will be a string - split that string into an array.
+						 */
+						if ( ! is_array( $cf_val ) ) {
+
+							$values = array_map( 'trim', explode( ',', reset( $values ) ) );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'exploded ' . $md_key . ' into array of ' . count( $values ) . ' elements' );
+							}
+						}
+
+						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values, $is_disabled = true );
+
+					} else {
 
 						$md_opts[ $md_key ] = reset( $values );
 
@@ -974,20 +992,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						 * If this is a '_value' option, add the '_units' option.
 						 */
 						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
-
-					} else {
-
-						/*
-						 * Explode the first element into an array.
-						 */
-						$values = array_map( 'trim', explode( ',', reset( $values ) ) );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'exploded ' . $md_key . ' into array of ' . count( $values ) . ' elements' );
-						}
-
-						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values );
 					}
 				}
 			}

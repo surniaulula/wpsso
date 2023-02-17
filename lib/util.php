@@ -678,7 +678,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function maybe_renum_md_key( array &$md_opts, $md_key, array $values ) {
+		/*
+		 * See WpssoIntegEcomWooCommerce->filter_import_product_attributes().
+		 * See WpssoUtilCustomFields->filter_import_custom_fields().
+		 */
+		public function maybe_renum_md_key( array &$md_opts, $md_key, array $values, $is_disabled = true ) {
 
 			/*
 			 * Remove any old values from the options array.
@@ -694,7 +698,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$md_opts[ $md_num_key ] = $val;
 
-				$md_opts[ $md_num_key . ':disabled' ] = true;
+				if ( $is_disabled ) {
+
+					$md_opts[ $md_num_key . ':disabled' ] = true;
+				}
 
 				if ( $this->p->debug->enabled ) {
 
