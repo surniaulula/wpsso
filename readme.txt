@@ -229,12 +229,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.0-dev.1 (TBD)**
+**Version 15.4.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -390,9 +390,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.0-dev.1 =
+= 15.4.0-dev.2 =
 
-(TBD) Renamed the 'wpsso_status_std_features' filter to 'wpsso_features_status'.
+(TBD) Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 
 = 15.3.1 =
 
