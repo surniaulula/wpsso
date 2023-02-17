@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				/*
-				 * Check to see if we have an alternate $wp_meta_key value for WooCommerce variations.
+				 * Check to see if we have an alternate $cf_key value for WooCommerce variations.
 				 */
 				if ( isset( $alt_opts[ $opt_cf_key ] ) ) {
 
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						continue;
 					}
 
-					$wp_meta_key = $alt_opts[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
+					$cf_key = $alt_opts[ $opt_cf_key ];	// Example: 'hwp_var_gtin'.
 
 				} else {
 
@@ -119,26 +119,26 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						continue;
 					}
 
-					$wp_meta_key = $this->p->options[ $opt_cf_key ];	// Example: '_format_video_url'.
+					$cf_key = $this->p->options[ $opt_cf_key ];	// Example: '_format_video_url'.
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using custom field ' . $wp_meta_key . ' key for ' . $md_key . ' option' );
+					$this->p->debug->log( 'using custom field ' . $cf_key . ' key for ' . $md_key . ' option' );
 				}
 
 				/*
 				 * WordPress offers metadata in array element 0.
 				 */
-				if ( isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
+				if ( isset( $wp_meta[ $cf_key ][ 0 ] ) ) {
 
-					$cf_val = maybe_unserialize( $wp_meta[ $wp_meta_key ][ 0 ] );
+					$cf_val = maybe_unserialize( $wp_meta[ $cf_key ][ 0 ] );
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no element 0 in ' . $wp_meta_key . ' array' );
+						$this->p->debug->log( 'no element 0 in ' . $cf_key . ' array' );
 					}
 
 					continue;
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( $wp_meta_key . ' is an array of ' . count( $cf_val ) . ' elements (decoding each value)' );
+						$this->p->debug->log( $cf_key . ' is an array of ' . count( $cf_val ) . ' elements (decoding each value)' );
 					}
 
 					foreach ( $cf_val as $val ) {
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'decoding ' . $wp_meta_key . ' as string of ' . strlen( $cf_val ) . ' chars' );
+						$this->p->debug->log( 'decoding ' . $cf_key . ' as string of ' . strlen( $cf_val ) . ' chars' );
 					}
 
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $cf_val ), ENT_QUOTES, $charset ) );
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 	
 							if ( $this->p->debug->enabled ) {
 	
-								$this->p->debug->log( 'exploded ' . $wp_meta_key . ' into array of ' . count( $values ) . ' elements' );
+								$this->p->debug->log( 'exploded ' . $cf_key . ' into array of ' . count( $values ) . ' elements' );
 							}
 						}
 	
