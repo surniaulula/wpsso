@@ -124,10 +124,12 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 					$meta_key = $this->opt_meta_keys[ 'post' ][ $opt_key ];
 
-					// Skip options that have a custom value. An empty string and 'none' are not custom values.
+					/*
+					 * Skip options that have a custom value. An empty string and 'none' are not custom values.
+					 */
 					if ( isset( $md_opts[ $opt_key ] ) && '' !== $md_opts[ $opt_key ] && 'none' !== $md_opts[ $opt_key ] ) {
 
-						continue;
+						continue;	// Keep custom options value.
 
 					} elseif ( $this->add_mod_post_meta( $mod, $md_opts, $opt_key, $meta_key ) ) {
 
@@ -202,10 +204,12 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 					$meta_key = $this->opt_meta_keys[ 'term' ][ $opt_key ];
 
-					// Skip options that have a custom value. An empty string and 'none' are not custom values.
+					/*
+					 * Skip options that have a custom value. An empty string and 'none' are not custom values.
+					 */
 					if ( isset( $md_opts[ $opt_key ] ) && '' !== $md_opts[ $opt_key ] && 'none' !== $md_opts[ $opt_key ] ) {
 
-						continue;
+						continue;	// Keep custom options value.
 
 					} elseif ( $this->add_mod_term_meta( $mod, $md_opts, $opt_key, $meta_key ) ) {
 
@@ -287,10 +291,12 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 					$meta_key = $this->opt_meta_keys[ 'user' ][ $opt_key ];
 
-					// Skip options that have a custom value. An empty string and 'none' are not custom values.
+					/*
+					 * Skip options that have a custom value. An empty string and 'none' are not custom values.
+					 */
 					if ( isset( $md_opts[ $opt_key ] ) && '' !== $md_opts[ $opt_key ] && 'none' !== $md_opts[ $opt_key ] ) {
 
-						continue;
+						continue;	// Keep custom options value.
 
 					} elseif ( $this->add_mod_user_meta( $mod, $md_opts, $opt_key, $meta_key ) ) {
 
