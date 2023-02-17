@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.0-dev.2 (TBD)**
+**Version 15.4.0-dev.2 (2023/02/17)**
 
 * **New Features**
 	* None.
@@ -392,7 +392,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.0-dev.2 =
 
-(TBD) Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
+(2023/02/17) Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 
 = 15.3.1 =
 
