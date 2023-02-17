@@ -1458,9 +1458,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $page_id && $metabox_id ) {
 
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $page_id . '_' . $metabox_id . '_rows' );
-
 				$table_rows  = $this->get_table_rows( $page_id, $metabox_id );
-
 				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network = false );
 
 				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
@@ -1468,9 +1466,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} elseif ( $metabox_id && $tab_key ) {
 
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
-
 				$table_rows  = $this->get_table_rows( $metabox_id, $tab_key );
-
 				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network = false );
 
 				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id . '-' . $tab_key );
@@ -1727,7 +1723,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Feature Status dashboard metabox content.
 		 */
-		public function show_metabox_status_std() {
+		public function show_metabox_features_status() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1815,13 +1811,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 
+							/*
+							 * Example $filter_name = 'wpsso_features_status_integ_data_wpseo_meta'.
+							 */
+							$filter_name     = $ext . '_features_status_' . $type_dir. '_' . $sub_dir . '_' . $lib_name;
+							$filter_name     = SucomUtil::sanitize_hookname( $filter_name );
+							$features_status = class_exists( $classname ) ? $status_on : $status_off;
+							$features_status = apply_filters( $filter_name, $features_status );
+
 							$features[ $label ] = array(
 								'type'         => $type_dir,
 								'sub'          => $sub_dir,
 								'lib'          => $lib_name,
 								'label_transl' => $label_transl,
 								'label_url'    => $label_url,
-								'status'       => class_exists( $classname ) ? $status_on : $status_off,
+								'status'       => $features_status,
 							);
 						}
 					}
@@ -1864,7 +1868,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				$features = apply_filters( $ext . '_status_std_features', $features, $ext, $info, $pkg_info[ $ext ] );
+		
+				$filter_name = SucomUtil::sanitize_hookname( $ext . '_features_status' );
+				$features    = apply_filters( $filter_name, $features, $ext, $info );
 
 				if ( ! empty( $features ) ) {
 

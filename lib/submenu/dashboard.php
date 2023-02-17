@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ),
 				),
 				array(
-					'status_std' => _x( 'Feature Status', 'metabox title', 'wpsso' ),
+					'features_status' => _x( 'Features Status', 'metabox title', 'wpsso' ),
 				),
 			);
 

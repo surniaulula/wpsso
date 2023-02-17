@@ -49,6 +49,14 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 			$this->wpseo_opts = WPSEO_Options::get_all();
 
+			if ( is_admin() ) {
+
+				$this->p->util->add_plugin_filters( $this, array(
+					'features_status_integ_data_wpseo_blocks' => 1,
+					'features_status_integ_data_wpseo_meta'   => 1,
+				), 100 );
+			}
+
 			$this->p->util->add_plugin_filters( $this, array(
 				'robots_is_noindex' => 2,
 				'primary_term_id'   => 4,
@@ -57,6 +65,16 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 				'post_url'          => 2,
 				'term_url'          => 2,
 			), 100 );
+		}
+
+		public function filter_features_status_integ_data_wpseo_blocks( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
+		}
+
+		public function filter_features_status_integ_data_wpseo_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 
 		public function filter_robots_is_noindex( $value, $mod ) {

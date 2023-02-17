@@ -33,6 +33,13 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			$this->is_admin = is_admin();
 
+			if ( $this->is_admin ) {
+
+				$this->p->util->add_plugin_filters( $this, array(
+					'features_status_integ_data_seoframework_meta' => 1,
+				), 100 );
+			}
+
 			$this->p->util->add_plugin_filters( $this, array(
 				'redirect_disabled' => '__return_true',
 				'primary_term_id'   => 4,
@@ -46,6 +53,11 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 			add_filter( 'the_seo_framework_json_search_output', '__return_false', PHP_INT_MAX );
 			add_filter( 'the_seo_framework_ldjson_plugin_detected', '__return_false', PHP_INT_MAX );
 			add_filter( 'the_seo_framework_ldjson_scripts', '__return_empty_string', PHP_INT_MAX );
+		}
+
+		public function filter_features_status_integ_data_seoframework_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 
 		public function filter_primary_term_id( $primary_term_id, $mod, $tax_slug, $is_custom ) {

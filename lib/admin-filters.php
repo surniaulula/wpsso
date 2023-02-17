@@ -41,30 +41,30 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			if ( ! $doing_ajax ) {
 
 				$this->p->util->add_plugin_filters( $this, array(
-					'status_std_features' => 3,
+					'features_status' => 3,
 				), $prio = -10000 );
 			}
 		}
 
 		/*
-		 * Filter for 'wpsso_status_std_features'.
+		 * Filter for 'wpsso_features_status'.
 		 */
-		public function filter_status_std_features( $features, $ext, $info ) {
+		public function filter_features_status( $features, $ext, $info ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$features = $this->filter_status_std_features_basic( $features, $ext, $info );
-			$features = $this->filter_status_std_features_integ( $features, $ext, $info );
-			$features = $this->filter_status_std_features_schema( $features, $ext, $info );
-			$features = $this->filter_status_std_features_seo( $features, $ext, $info );
+			$features = $this->filter_features_status_basic( $features, $ext, $info );
+			$features = $this->filter_features_status_integ( $features, $ext, $info );
+			$features = $this->filter_features_status_schema( $features, $ext, $info );
+			$features = $this->filter_features_status_seo( $features, $ext, $info );
 
 			return $features;
 		}
 
-		private function filter_status_std_features_basic( $features, $ext, $info ) {
+		private function filter_features_status_basic( $features, $ext, $info ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			return $features;
 		}
 
-		private function filter_status_std_features_integ( $features, $ext, $info ) {
+		private function filter_features_status_integ( $features, $ext, $info ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			return $features;
 		}
 
-		private function filter_status_std_features_schema( $features, $ext, $info ) {
+		private function filter_features_status_schema( $features, $ext, $info ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			return $features;
 		}
 
-		private function filter_status_std_features_seo( $features, $ext, $info ) {
+		private function filter_features_status_seo( $features, $ext, $info ) {
 
 			if ( $this->p->debug->enabled ) {
 

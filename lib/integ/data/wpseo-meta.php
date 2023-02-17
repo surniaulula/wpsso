@@ -92,7 +92,6 @@ if ( ! class_exists( 'WpssoIntegDataWpseoMeta' ) ) {
 			if ( ! empty( $this->cache_imported_meta[ 'term' ] ) ) {
 
 				$tax_slug = $mod[ 'tax_slug' ];
-
 				$tax_meta = get_option( 'wpseo_taxonomy_meta' );
 
 				foreach( $this->cache_imported_meta[ 'term' ] as $meta_key => $bool ) {
@@ -114,7 +113,6 @@ if ( ! class_exists( 'WpssoIntegDataWpseoMeta' ) ) {
 			}
 
 			$tax_slug = $mod[ 'tax_slug' ];
-
 			$tax_meta = get_option( 'wpseo_taxonomy_meta' );
 
 			if ( empty( $tax_meta[ $tax_slug ][ $term_id ] ) ) {
