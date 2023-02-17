@@ -740,7 +740,9 @@ table.sucom-settings td div.multi_input textarea.recipe_instruction_text {
 	height:5em;
 }
 
-table.sucom-settings td div.multi_input input[type="text"].long_name { width:340px; }
+table.sucom-settings td div.multi_input input[type="text"].long_name {
+	width:340px;
+}
 
 table.sucom-settings td div.multi_input p.howto_step_section,
 table.sucom-settings td div.multi_input p.recipe_instruction_section {

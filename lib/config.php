@@ -2282,10 +2282,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/*
 				 * WpssoConfig::$cf[ 'opt' ][ 'md_keys_multi' ]
 				 *
-				 * Provides information to help read and split custom field values into numbered options.
+				 * Provides information to re-number multiple input/textarea fields and read/split custom field
+				 * values into numbered options.
 				 */
 				'md_keys_multi' => array(
 					'schema_addl_type_url' => true,			// Microdata Type URLs.
+					'schema_citation'      => true,			// Reference Citations.
 					'schema_howto_step'    => array(		// How-To Name.
 						'schema_howto_step_section',		// How-To Step or Group / Section.
 						'schema_howto_step_text',		// How-To Description.

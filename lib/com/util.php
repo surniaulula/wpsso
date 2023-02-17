@@ -3930,15 +3930,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function strip_html( $text ) {
 
-			$text = self::strip_shortcodes( $text );	// Remove any remaining shortcodes.
-			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
-			$text = preg_replace( '/<\?.*\?' . '>/U', ' ', $text );	// Remove php.
-			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
-			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );	// Remove inline stylesheets.
+			/*
+			 * i = Letters in the pattern match both upper and lower case letters.
+			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+			 *
+			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+			 */
+			$text = self::strip_shortcodes( $text );						// Remove any remaining shortcodes.
+			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );					// Put everything on one line.
+			$text = preg_replace( '/<\?.*\?' . '>/U', ' ', $text );					// Remove php.
+			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );		// Remove javascript.
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );			// Remove inline stylesheets.
 			$text = preg_replace( '/([\w])<\/(button|dt|h[0-9]+|li|th)>/i', '$1. ', $text );	// Add missing dot to buttons, headers, lists, etc.
-			$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text );	// Replace paragraph tags with a space.
-			$text = trim( strip_tags( $text ) );	// Remove remaining html tags.
-			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// Replace 1+ spaces to a single space.
+			$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text );				// Replace paragraph tags with a space.
+			$text = trim( strip_tags( $text ) );							// Remove remaining html tags.
+			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );				// Replace 1+ spaces to a single space.
 
 			return trim( $text );
 		}
@@ -4072,9 +4079,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/*
 			 * Remove containers that should not include json scripts.
 			 *
-			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+			 * i = Letters in the pattern match both upper and lower case letters.
 			 * m = The "^" and "$" constructs match newlines and the complete subject string.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+			 *
+			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 			 */
 			$html = preg_replace( '/<!--.*-->/Ums', '', $html );
 			$html = preg_replace( '/<pre[ >].*<\/pre>/Uims', '', $html );
@@ -4083,9 +4093,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$json_scripts = array();
 
 			/*
-			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 			 * i = Letters in the pattern match both upper and lower case letters.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 			 *
 			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 			 */

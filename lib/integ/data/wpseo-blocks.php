@@ -79,24 +79,30 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 
 			if ( ! empty( $attrs[ 'steps' ] ) && is_array( $attrs[ 'steps' ] ) ) {
 
-				$md_opts = SucomUtil::preg_grep_keys( '/^schema_howto_step/', $md_opts, $invert = true );
+				$md_opts = SucomUtil::preg_grep_keys( '/^schema_howto_step/', $md_opts, $invert = true );	// Remove any existing howto steps.
 
-				foreach ( $attrs[ 'steps' ] as $num => $step ) {
+				$step_num = 0;	// Start option number at 0.
 
-					$ret[ 'schema_howto_step_section_' . $num ] = 0;
-					$ret[ 'schema_howto_step_' . $num ]         = SucomUtil::strip_html( $step[ 'jsonName' ] );
-					$ret[ 'schema_howto_step_text_' . $num ]    = SucomUtil::strip_html( $step[ 'jsonText' ] );
+				foreach ( $attrs[ 'steps' ] as $key => $step ) {
 
-					if ( ! empty( $step[ 'jsonImageSrc' ] ) ) {
+					$step_name = isset( $step[ 'jsonName' ] ) ? SucomUtil::strip_html( $step[ 'jsonName' ] ) : '';
+					$step_desc = isset( $step[ 'jsonText' ] ) ? SucomUtil::strip_html( $step[ 'jsonText' ] ) : '';
+					$step_img  = isset( $step[ 'jsonImageSrc' ] ) ? SucomUtil::strip_html( $step[ 'jsonImageSrc' ] ) : '';
 
-						$image_url = $step[ 'jsonImageSrc' ];
-						$image_id  = attachment_url_to_postid( $image_url );
+					$ret[ 'schema_howto_step_section_' . $step_num ] = 0;
+					$ret[ 'schema_howto_step_' . $step_num ]         = $step_name;
+					$ret[ 'schema_howto_step_text_' . $step_num ]    = $step_desc;
 
-						$ret[ 'schema_howto_step_img_id_' . $num ]  = $image_id;
+					if ( $step_img ) {
+
+						if ( $image_id  = attachment_url_to_postid( $step_img ) ) {
+
+							$ret[ 'schema_howto_step_img_id_' . $step_num ] = $image_id;
+						}
 					}
+				
+					$step_num++;
 				}
-
-				$num++;
 			}
 
 			foreach ( $ret as $opt_key => $val ) {
