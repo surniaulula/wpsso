@@ -229,16 +229,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.0-dev.2 (2023/02/17)**
+**Version 15.4.0-dev.2 (2023/02/18)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
+	* Updated the default tabs layout to vertical.
+	* Updated import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Renamed the 'wpsso_status_std_features' filter to 'wpsso_features_status'.
+	* Removed the 'wpsso_metabox_tabs_layout_{metabox_id}' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -392,7 +394,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.0-dev.2 =
 
-(2023/02/17) Updated the import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
+(2023/02/18) Updated the default tabs layout to vertical. Updated import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 
 = 15.3.1 =
 
