@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.0-dev.2 (2023/02/18)**
+**Version 15.4.0-dev.3 (2023/02/18)**
 
 * **New Features**
 	* None.
@@ -392,7 +392,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.0-dev.2 =
+= 15.4.0-dev.3 =
 
 (2023/02/18) Updated the default tabs layout to vertical. Updated import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
 
