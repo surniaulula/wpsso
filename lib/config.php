@@ -4877,6 +4877,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 3.00;		// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
+			$var_const[ 'WPSSO_DEFAULT_TAB_LAYOUT' ]          = 'vertical';
 
 			/*
 			 * Schema limits.

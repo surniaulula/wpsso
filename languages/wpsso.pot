@@ -11018,7 +11018,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:976 lib/messages.php:992 lib/util-metabox.php:234
+#: lib/messages.php:976 lib/messages.php:992 lib/util-metabox.php:229
 msgid "No options available."
 msgstr ""
 
@@ -12492,22 +12492,22 @@ msgstr ""
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-metabox.php:266
+#: lib/util-metabox.php:261
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:269
+#: lib/util-metabox.php:264
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:274
+#: lib/util-metabox.php:269
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:277
+#: lib/util-metabox.php:272
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""

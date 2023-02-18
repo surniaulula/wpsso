@@ -189,8 +189,6 @@
 
 'wpsso_meta_name' ( $mt_name, $mod )
 
-'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
-
 'wpsso_og_add_mt_offers' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_rating' ( $bool = true, $mod )

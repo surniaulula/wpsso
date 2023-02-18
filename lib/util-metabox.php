@@ -56,12 +56,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$mb_tabs_class .= ' ' . $mb_tabs_id;
 			}
 
-			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_metabox_tabs_layout' . $metabox_id );
-
-			$tabs_layout = empty( $args[ 'layout' ] ) ? 'horizontal' : $args[ 'layout' ];
-			$tabs_layout = apply_filters( $filter_name, $tabs_layout );
-			$tabs_layout = empty( $tabs_layout ) ? 'horizontal' : $tabs_layout;	// Allow the filter to return false.
-
+			$tabs_layout   = empty( $args[ 'layout' ] ) ? WPSSO_DEFAULT_TAB_LAYOUT : $args[ 'layout' ];
 			$mb_tabs_class = SucomUtil::sanitize_css_class( $mb_tabs_class . ' ' . $tabs_layout );
 			$mb_tabs_id    = SucomUtil::sanitize_css_id( $mb_tabs_id );
 

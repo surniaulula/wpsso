@@ -141,10 +141,6 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 /*
  * Tabs - vertical layout.
  */
-div.sucom-metabox-tabs.vertical {
-	background-color:#f9f9f9;
-}
-
 ul.sucom-metabox-tabs.vertical {
 	float:left;
 	display:block;
@@ -184,10 +180,18 @@ ul.sucom-metabox-tabs.vertical > li.active {
 	background-color:#eee;
 }
 
+/*
+ * Add a top line to separate info messages.
+ */
+div.sucom-metabox-tabs.vertical {
+	margin:-1px;
+	border-top:1px solid #ccc;
+	background-color:#f9f9f9;
+}
+
 div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	background-color:#fff;
 	border-left:1px solid #e9e9e9;
-	min-height:390px;	/* Default is 300px. */
 }
 
 .inside div.sucom-metabox-tabs.vertical > div.hidden_opts_msg {
@@ -436,12 +440,11 @@ h3.sucom-metabox-tab_title {
 	display:none;
 	color:#555;			/* Match the active tab color. */
 	text-align:center;
-	font-size:1.1em;
-	font-weight:600;
-	padding:14px;			/* Match the vertical tab height. */
+	font-weight:400;
+	line-height:1em;
+	padding:15px;
 	margin:0;
-	border-bottom:1px solid #ccc;	/* Match the active tab color. */
-	background-color:#fff;		/* Match the active tab color. */
+	border-bottom:1px solid #ccc;
 }
 
 /*
@@ -455,6 +458,10 @@ h3.sucom-metabox-tab_title {
 
 	.sucom-tablink-text {
 		display:none;
+	}
+
+	h3.sucom-metabox-tab_title {
+		font-size:18px;
 	}
 
 	.sucom-tablink-icon::before {
@@ -480,6 +487,10 @@ h3.sucom-metabox-tab_title {
 }
 
 @media screen and ( max-width:782px ) {
+
+	h3.sucom-metabox-tab_title {
+		font-size:24px;
+	}
 
 	.sucom-tablink-icon::before {
 		font-size:24px;
