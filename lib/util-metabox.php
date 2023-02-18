@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$link_key_class = $tablink_class . ' ' . $tablink_class . $metabox_id . ' ' . $tablink_class . '-text ' . $tablink_class . '-href_' . $tab;
 
 				$metabox_html .= '<li' . "\n" . 'class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
-				$metabox_html .= '<li' . "\n" . 'class="' . $href_key_class . '">';
+				$metabox_html .= '<li' . "\n" . 'class="' . $href_key_class . ( $tab_num === 1 ? ' first_tab' : '' ) . '">';
 				$metabox_html .= '<a class="' . $icon_key_class . '" href="#' . $href_key_class . '"></a>';
 				$metabox_html .= '<a class="' . $link_key_class . '" href="#' . $href_key_class . '">' . $title_transl . '</a>';
 				$metabox_html .= '</li>';	// Do not add a newline.

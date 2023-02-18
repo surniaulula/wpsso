@@ -163,10 +163,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
 			) );
 
-			$args = array(
-				'layout' => 'vertical',
-			);
-
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
@@ -185,7 +181,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				}
 			}
 
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows, $args );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_contact_fields() {

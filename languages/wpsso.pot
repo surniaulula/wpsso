@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.4.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.4.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5019,7 +5019,7 @@ msgid "HTML Tags"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:100 lib/messages.php:1092
-#: lib/submenu/advanced.php:253
+#: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
 msgid "SEO and Others"
 msgstr ""
@@ -8251,8 +8251,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1734 lib/user.php:1823
-#: lib/user.php:1951
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1736 lib/user.php:1825
+#: lib/user.php:1953
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11503,7 +11503,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1914
+#: lib/post.php:1916
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -11809,7 +11809,7 @@ msgctxt "metabox tab"
 msgid "Ratings and Reviews"
 msgstr ""
 
-#: lib/submenu/advanced.php:135 lib/submenu/advanced.php:251
+#: lib/submenu/advanced.php:135 lib/submenu/advanced.php:247
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
@@ -11859,32 +11859,32 @@ msgctxt "metabox tab"
 msgid "Review"
 msgstr ""
 
-#: lib/submenu/advanced.php:203
+#: lib/submenu/advanced.php:199
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:204
+#: lib/submenu/advanced.php:200
 msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:227
+#: lib/submenu/advanced.php:223
 msgctxt "metabox tab"
 msgid "Product Attributes"
 msgstr ""
 
-#: lib/submenu/advanced.php:228
+#: lib/submenu/advanced.php:224
 msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:250 lib/submenu/general.php:119
+#: lib/submenu/advanced.php:246 lib/submenu/general.php:119
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:252 lib/submenu/general.php:122
+#: lib/submenu/advanced.php:248 lib/submenu/general.php:122
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
@@ -12252,7 +12252,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:977
+#: lib/term.php:979
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12305,66 +12305,66 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1034
+#: lib/user.php:1036
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1160
+#: lib/user.php:1162
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1161
+#: lib/user.php:1163
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1162
+#: lib/user.php:1164
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1667
+#: lib/user.php:1669
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1710 lib/user.php:1736
+#: lib/user.php:1712 lib/user.php:1738
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1717
+#: lib/user.php:1719
 msgid "A background task will begin shortly to %s to content creators."
 msgstr ""
 
-#: lib/user.php:1747 lib/user.php:1836 lib/util-cache.php:351
+#: lib/user.php:1749 lib/user.php:1838 lib/util-cache.php:351
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1748
+#: lib/user.php:1750
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1782
+#: lib/user.php:1784
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1783 lib/user.php:1875 lib/util-cache.php:438
+#: lib/user.php:1785 lib/user.php:1877 lib/util-cache.php:438
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1799 lib/user.php:1825
+#: lib/user.php:1801 lib/user.php:1827
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1806
+#: lib/user.php:1808
 msgid "A background task will begin shortly to %s from all users."
 msgstr ""
 
-#: lib/user.php:1837
+#: lib/user.php:1839
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1874
+#: lib/user.php:1876
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

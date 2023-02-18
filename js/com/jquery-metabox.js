@@ -194,14 +194,14 @@ function sucomTabs( metabox_name, tab_name ) {
 	var location_hash    = window.location.hash;
 	var active_tab_class = '.sucom-tabset' + metabox_name + '-tab' + tab_name;
 	var scroll_to_tab_id = '';
-	var min_vert_height  = jQuery( 'ul.sucom-metabox-tabs' + metabox_name + '.vertical' ).height();
+	var tabs_vert_height = jQuery( 'ul.sucom-metabox-tabs' + metabox_name + '.vertical' ).height();
 
 	/*
 	 * Set the minimum height of settings containers to the height of the vertical tabs.
 	 */
-	if ( min_vert_height ) {
+	if ( tabs_vert_height ) {
 
-		jQuery( 'div.sucom-tabset' + metabox_name ).css( { 'min-height': min_vert_height + 'px' } );
+		jQuery( 'div.sucom-tabset' + metabox_name ).css( { 'min-height': tabs_vert_height + 'px' } );
 	}
 
 	if ( location_hash !== '' && location_hash.search( 'sucom-tabset' + metabox_name + '-tab_' ) !== -1 ) {

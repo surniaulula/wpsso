@@ -17,8 +17,8 @@ a.sucom-tablink:focus {
 	line-height:1em;
 	padding:10px;
 	text-align:center;
-	border-top:1px solid #ccc;
-	background-color:#f9f9f9;
+	border-top:1px solid #eee;
+	background-color:#fafafa;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
@@ -42,7 +42,7 @@ ul.sucom-metabox-tabs {
 	line-height:1em;
 	margin:12px 0 0 0;
 	padding:0;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #eee;
 }
 
 /*
@@ -59,11 +59,11 @@ ul.sucom-metabox-tabs > li {
 	min-height:1.1em;
 	margin:0 0 -1px 0;
 	padding:10px 12px;
-	border-top:1px solid #e9e9e9;
-	border-left:1px solid #e9e9e9;
-	border-right:1px solid #e9e9e9;
-	border-bottom:1px solid #ccc;
-	background-color:#f9f9f9;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+	background-color:#fafafa;
 }
 
 ul.sucom-metabox-tabs li.tab_space {
@@ -85,9 +85,9 @@ ul.sucom-metabox-tabs li.tab_space.end_tabs {
 }
 
 ul.sucom-metabox-tabs > li.active {
-	border-top:1px solid #ccc;
-	border-left:1px solid #ccc;
-	border-right:1px solid #ccc;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
 	border-bottom:1px solid #fff;
 	background-color:#fff;
 }
@@ -141,17 +141,21 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 /*
  * Tabs - vertical layout.
  */
+#wpsso_sso .postbox-header {
+	border-bottom:1px solid #eee;
+}
+
 ul.sucom-metabox-tabs.vertical {
 	float:left;
 	display:block;
 	width:20%;
 	min-width:150px;
 	max-width:200px;
-	height:auto;
-	border:none;
-	margin:0 -1px 0 0;
+	margin:0;
 	padding:0;
-	border-right:1px solid #e9e9e9;
+	border:none;
+	background-color:#fafafa;
+	height:100%;
 }
 
 body.rtl ul.sucom-metabox-tabs.vertical {
@@ -161,12 +165,12 @@ body.rtl ul.sucom-metabox-tabs.vertical {
 ul.sucom-metabox-tabs.vertical > li {
 	display:block;
 	padding:14px;
-	margin:-1px 0 0 0;
-	border-top:1px solid #e9e9e9;
-	border-left:none;
-	border-right:none;
-	border-bottom:1px solid #e9e9e9;
-	background-color:#f9f9f9;
+	border:none;
+	border-top:1px solid #eee;
+}
+
+ul.sucom-metabox-tabs.vertical > li.first_tab {
+	border-top:none;
 }
 
 ul.sucom-metabox-tabs.vertical > li.tab_space {
@@ -174,24 +178,16 @@ ul.sucom-metabox-tabs.vertical > li.tab_space {
 }
 
 ul.sucom-metabox-tabs.vertical > li.active {
-	border-top:1px solid #e9e9e9;
-	border-left:none;
-	border-right:none;
 	background-color:#eee;
 }
 
-/*
- * Add a top line to separate info messages.
- */
 div.sucom-metabox-tabs.vertical {
-	margin:-1px;
-	border-top:1px solid #ccc;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 }
 
 div.sucom-metabox-tabs.vertical > div.sucom-tabset {
+	border-left:1px solid #eee;
 	background-color:#fff;
-	border-left:1px solid #e9e9e9;
 }
 
 .inside div.sucom-metabox-tabs.vertical > div.hidden_opts_msg {
@@ -442,9 +438,9 @@ h3.sucom-metabox-tab_title {
 	text-align:center;
 	font-weight:400;
 	line-height:1em;
-	padding:15px;
+	padding:14px;
 	margin:0;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #eee;
 }
 
 /*
@@ -458,10 +454,6 @@ h3.sucom-metabox-tab_title {
 
 	.sucom-tablink-text {
 		display:none;
-	}
-
-	h3.sucom-metabox-tab_title {
-		font-size:18px;
 	}
 
 	.sucom-tablink-icon::before {
@@ -483,14 +475,11 @@ h3.sucom-metabox-tab_title {
 
 	h3.sucom-metabox-tab_title {
 		display:block;
+		font-size:18px;
 	}
 }
 
 @media screen and ( max-width:782px ) {
-
-	h3.sucom-metabox-tab_title {
-		font-size:24px;
-	}
 
 	.sucom-tablink-icon::before {
 		font-size:24px;
@@ -505,5 +494,9 @@ h3.sucom-metabox-tab_title {
 	ul.sucom-metabox-tabs.vertical {
 		width:52px;		/* Default is 20%. */
 		min-width:52px;		/* Default is 150px. */
+	}
+
+	h3.sucom-metabox-tab_title {
+		font-size:24px;
 	}
 }

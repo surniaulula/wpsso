@@ -1686,8 +1686,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$table_rows[ $tab_key ] = apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
+			$tabbed_args = array( 'layout' => 'vertical' );	// Force vertical layout.
+
 			$metabox_html = "\n" . '<div id="' . $container_id . '">';
-			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $args = array( 'layout' => 'vertical' ) );
+			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 			$metabox_html .= '<!-- ' . $container_id . '_footer begin -->' . "\n";
 			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
 			$metabox_html .= '<!-- ' . $container_id . '_footer end -->' . "\n";
