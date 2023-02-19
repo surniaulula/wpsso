@@ -10,6 +10,10 @@ a.sucom-tablink:focus {
 	box-shadow:none;
 }
 
+#wpsso_sso .postbox-header {	/* Document SSO metabox. */
+	border-bottom:1px solid #eee;
+}
+
 .inside .hidden_opts_msg {
 	color:#999;
 	font-size:0.9em;
@@ -22,94 +26,6 @@ a.sucom-tablink:focus {
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
-}
-
-/*
- * Wrapper "div" for the tabs "ul".
- */
-div.sucom-metabox-tabs {
-	overflow:auto;
-}
-
-/*
- * Tabs - horizontal layout (default).
- */
-ul.sucom-metabox-tabs {
-	display:none;
-	white-space:nowrap;	/* Prevent inline-blocks from wrapping. */
-	list-style:none;
-	font-size:13px;
-	line-height:1em;
-	margin:12px 0 0 0;
-	padding:0;
-	border-bottom:1px solid #eee;
-}
-
-/*
- * Tabs - individual tabs.
- */
-ul.sucom-metabox-tabs > li {
-	display:inline-block;
-	vertical-align:top;
-	white-space:nowrap;
-	overflow:hidden;
-	font-size:13px;
-	line-height:1em;
-	height:1.1em;
-	min-height:1.1em;
-	margin:0 0 -1px 0;
-	padding:10px 12px;
-	border-top:1px solid #eee;
-	border-left:1px solid #eee;
-	border-right:1px solid #eee;
-	border-bottom:1px solid #eee;
-	background-color:#fafafa;
-}
-
-ul.sucom-metabox-tabs li.tab_space {
-	width:8px;
-	padding:10px 0;
-	border-top:1px solid transparent;
-	border-left:1px solid transparent;
-	border-right:1px solid transparent;
-	border-bottom:1px solid transparent;
-	background-color:transparent;
-}
-
-ul.sucom-metabox-tabs li.tab_space.start_tabs {
-	width:12px;
-}
-
-ul.sucom-metabox-tabs li.tab_space.end_tabs {
-	width:12px;
-}
-
-ul.sucom-metabox-tabs > li.active {
-	border-top:1px solid #eee;
-	border-left:1px solid #eee;
-	border-right:1px solid #eee;
-	border-bottom:1px solid #fff;
-	background-color:#fff;
-}
-
-ul.sucom-metabox-tabs > li > a,
-ul.sucom-metabox-tabs > li > a:active {
-	outline:none;
-	text-decoration:none;
-}
-
-ul.sucom-metabox-tabs > li.active a {
-	color:#555;
-}
-
-ul.sucom-metabox-tabs > li > a.nav-tab-active {
-	color:inherit;
-	background:inherit;
-	border-bottom:inherit;
-	margin-bottom:inherit;
-	-webkit-box-shadow:none;
-	-moz-box-shadow:none;
-	box-shadow:none;
 }
 
 .sucom-tabset,
@@ -139,17 +55,100 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 }
 
 /*
- * Tabs - vertical layout.
+ * Tabs - default horizontal layout.
  */
-#wpsso_sso .postbox-header {
+div.sucom-metabox-tabs {
+	overflow:auto;
+}
+
+ul.sucom-metabox-tabs,
+ul.sucom-metabox-tabs.horizontal {
+	display:none;
+	white-space:nowrap;	/* Prevent inline-blocks from wrapping. */
+	list-style:none;
+	font-size:13px;
+	line-height:13px;
+	margin:12px 0 0 0;
+	padding:0;
 	border-bottom:1px solid #eee;
 }
 
+ul.sucom-metabox-tabs li,
+ul.sucom-metabox-tabs.horizontal li {
+	display:inline-block;
+	vertical-align:top;
+	white-space:nowrap;
+	overflow:hidden;
+	margin:0 0 -1px 0;
+	padding:0;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+	background-color:#fafafa;
+}
+
+ul.sucom-metabox-tabs li.tab_space,
+ul.sucom-metabox-tabs.horizontal li.tab_space {
+	width:8px;
+	border-top:1px solid transparent;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	border-bottom:1px solid transparent;
+	background-color:transparent;
+}
+
+ul.sucom-metabox-tabs li.tab_space.start_tabs,
+ul.sucom-metabox-tabs.horizontal li.tab_space.start_tabs,
+ul.sucom-metabox-tabs li.tab_space.end_tabs,
+ul.sucom-metabox-tabs.horizontal li.tab_space.end_tabs {
+	width:12px;
+}
+
+ul.sucom-metabox-tabs li.active,
+ul.sucom-metabox-tabs.horizontal li.active {
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #fff;
+	background-color:#fff;
+}
+
+ul.sucom-metabox-tabs li a,
+ul.sucom-metabox-tabs.horizontal li a {
+	outline:none;
+	display:inline-block;
+	padding:12px 14px;
+	text-decoration:none;
+}
+
+ul.sucom-metabox-tabs li a.sucom-tablink-text,
+ul.sucom-metabox-tabs.horizontal li a.sucom-tablink-text {
+	padding-left:0;
+}
+
+ul.sucom-metabox-tabs li.active a {
+	color:#555;
+}
+
+ul.sucom-metabox-tabs li a.nav-tab-active {
+	color:inherit;
+	background:inherit;
+	border-bottom:inherit;
+	margin-bottom:inherit;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+}
+
+/*
+ * Tabs - vertical layout.
+ */
 ul.sucom-metabox-tabs.vertical {
 	float:left;
 	display:block;
 	width:20%;
-	min-width:150px;
+	min-width:180px;
 	max-width:200px;
 	margin:0;
 	padding:0;
@@ -162,23 +161,36 @@ body.rtl ul.sucom-metabox-tabs.vertical {
 	float:right;
 }
 
-ul.sucom-metabox-tabs.vertical > li {
-	display:block;
-	padding:14px;
+ul.sucom-metabox-tabs.vertical li {
+	display:flex;
+	margin:0;
+	padding:0;
 	border:none;
 	border-top:1px solid #eee;
 }
 
-ul.sucom-metabox-tabs.vertical > li.first_tab {
+ul.sucom-metabox-tabs.vertical li.first_tab {
 	border-top:none;
 }
 
-ul.sucom-metabox-tabs.vertical > li.tab_space {
+ul.sucom-metabox-tabs.vertical li.tab_space {
 	display:none;
 }
 
-ul.sucom-metabox-tabs.vertical > li.active {
+ul.sucom-metabox-tabs.vertical li.active {
 	background-color:#eee;
+}
+
+ul.sucom-metabox-tabs.vertical li a {
+	padding:14px 16px;
+}
+
+ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {
+	padding-left:0;
+}
+
+ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {
+	width:100%;	/* Takes the remaining width of the flex parent. */
 }
 
 div.sucom-metabox-tabs.vertical {
@@ -195,6 +207,93 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	width:100%;
 }
 
+h3.sucom-metabox-tab_title {
+	display:none;		/* Hidden by default. */
+	color:#555;		/* Match the active tab color. */
+	text-align:center;
+	font-weight:400;
+	line-height:1em;
+	padding:14px;
+	margin:0;
+	border-bottom:1px solid #eee;
+}
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1200px ) {
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a {
+		padding:14px;
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {	/* Document SSO metabox. */
+		display:none;
+	}
+
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:14px;
+		min-width:14px;
+		line-height:14px;
+	}
+
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:14px;
+		line-height:14px;
+	}
+}
+
+@media screen and ( max-width:960px ) {
+
+	ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	ul.sucom-metabox-tabs li a.sucom-tablink-text {
+		display:none;
+	}
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:16px;
+		min-width:16px;
+		line-height:16px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:16px;
+		line-height:16px;
+	}
+}
+
+@media screen and ( max-width:782px ) {
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso#wpsso_sso  .sucom-tablink-icon::before {
+		font-size:22px;
+		min-width:22px;
+		line-height:22px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		font-size:22px;
+		line-height:22px;
+	}
+}
 /*
  * Tab icons.
  *
@@ -204,13 +303,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	display:inline-block;
 	content:"\f1de";	/* .icon-sliders */
 	font-family:"WpssoIcons";
-	text-align:center;
-	margin:0 8px 0 0;
-	width:1.1em;
-}
-
-body.rtl .sucom-tablink-icon::before {
-	margin:0 0 0 8px;
 }
 
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
@@ -429,74 +521,3 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e816";	/* .icon-css */
 }
 
-/*
- * An h3 title for mobile devices (hidden by default), located just above the table.sucom-settings container.
- */
-h3.sucom-metabox-tab_title {
-	display:none;
-	color:#555;			/* Match the active tab color. */
-	text-align:center;
-	font-weight:400;
-	line-height:1em;
-	padding:14px;
-	margin:0;
-	border-bottom:1px solid #eee;
-}
-
-/*
- * WooCommerce changes their tabs to icons at 900px.
- * WordPress collapses the admin menu at 960px.
- * WordPress changes to larger icons at 782px.
- *
- * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
- */
-@media screen and ( max-width:960px ) {
-
-	.sucom-tablink-text {
-		display:none;
-	}
-
-	.sucom-tablink-icon::before {
-		font-size:18px;
-		min-width:18px;
-		margin-right:0;
-	}
-
-	ul.sucom-metabox-tabs > li {
-		font-size:18px;
-		height:18px;
-		text-align:center;
-	}
-
-	ul.sucom-metabox-tabs.vertical {
-		width:44px;		/* Default is 20%. */
-		min-width:44px;		/* Default is 150px. */
-	}
-
-	h3.sucom-metabox-tab_title {
-		display:block;
-		font-size:18px;
-	}
-}
-
-@media screen and ( max-width:782px ) {
-
-	.sucom-tablink-icon::before {
-		font-size:24px;
-		min-width:24px;
-	}
-
-	ul.sucom-metabox-tabs > li {
-		font-size:24px;
-		height:24px;
-	}
-
-	ul.sucom-metabox-tabs.vertical {
-		width:52px;		/* Default is 20%. */
-		min-width:52px;		/* Default is 150px. */
-	}
-
-	h3.sucom-metabox-tab_title {
-		font-size:24px;
-	}
-}
