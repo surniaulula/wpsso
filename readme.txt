@@ -229,13 +229,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.0-dev.5 (2023/02/19)**
+**Version 15.4.0-b.1 (2023/02/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the default tabs layout to vertical.
-	* Updated import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
+	* Updated custom fields import to ignore non-existant custom fields instead of using an empty string.
+	* Removed the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields options:
+		* How-To Steps Custom Field
+		* How-To Supplies Custom Field
+		* How-To Tools Custom Field
+		* Recipe Ingredients Custom Field
+		* Recipe Instructions Custom Field
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -392,9 +398,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.0-dev.5 =
+= 15.4.0-b.1 =
 
-(2023/02/19) Updated the default tabs layout to vertical. Updated import of custom fields to ignore non-existant custom fields (instead of using an empty string by default).
+(2023/02/20) Updated the default tabs layout to vertical. Updated custom fields import to ignore non-existant custom fields instead of using an empty string.
 
 = 15.3.1 =
 
