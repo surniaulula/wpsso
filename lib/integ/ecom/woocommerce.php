@@ -68,7 +68,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
 				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
-		
+	
+				/*
+				 * Add WPSSO RAR add-on filters.
+				 *
+				 * See WpssoIntegEcomWooCommerce->disable_options_keys().
+				 */
 				if ( ! empty( $this->p->avail[ 'p_ext' ][ 'rar' ] ) ) {
 
 					$this->p->util->add_plugin_filters( $this, array(
@@ -184,6 +189,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				'plugin_cf_product_shipping_height_units' => '',
 				'plugin_cf_product_shipping_weight_value' => '',
 				'plugin_cf_product_shipping_weight_units' => '',
+				'rar_add_to_product'                      => 0,		// Disable WPSSO Ratings and Reviews for WC Products.
 			) as $opt_key => $opt_val ) {
 
 				$this->p->options[ $opt_key ] = $opt_val;
