@@ -10,10 +10,6 @@ a.sucom-tablink:focus {
 	box-shadow:none;
 }
 
-#wpsso_sso .postbox-header {	/* Document SSO metabox. */
-	border-bottom:1px solid #eee;
-}
-
 .inside .hidden_opts_msg {
 	color:#999;
 	font-size:0.9em;
@@ -28,25 +24,27 @@ a.sucom-tablink:focus {
 	box-sizing:border-box;
 }
 
+div.sucom-no_tabset {
+	overflow:auto;
+	min-height:265px;
+	margin-top:-1px;
+	border-top:1px solid #eee;
+}
+
+div.sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
+div.sucom-no_tabset.metabox-rrssb_share,
+div.sucom-no_tabset.metabox-tie-wp-general {
+	min-height:0;
+}
+
 .sucom-tabset,
 .sucom-tabset-msg {
 	display:none;
 }
 
-.sucom-no_tabset {
-	min-height:265px;
-}
-
-.sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
-.sucom-no_tabset.metabox-rrssb_share,
-.sucom-no_tabset.metabox-tie-wp-general {
-	min-height:0;
-}
-
 .sucom-tabset.active {
 	display:block;
 	overflow:auto;
-	min-height:300px;
 	background-color:#fff;
 }
 
@@ -59,6 +57,8 @@ a.sucom-tablink:focus {
  */
 div.sucom-metabox-tabs {
 	overflow:auto;
+	margin-top:-1px;
+	border-top:1px solid #eee;
 }
 
 ul.sucom-metabox-tabs,
@@ -197,12 +197,12 @@ div.sucom-metabox-tabs.vertical {
 	background-color:#fafafa;
 }
 
-div.sucom-metabox-tabs.vertical > div.sucom-tabset {
+div.sucom-metabox-tabs.vertical div.sucom-tabset {
 	border-left:1px solid #eee;
 	background-color:#fff;
 }
 
-.inside div.sucom-metabox-tabs.vertical > div.hidden_opts_msg {
+.inside div.sucom-metabox-tabs.vertical div.hidden_opts_msg {
 	float:left;
 	width:100%;
 }

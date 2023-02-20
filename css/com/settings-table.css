@@ -1,4 +1,9 @@
 
+#poststuff div.postbox-dashboard div.inside {
+	margin-top:-1px;
+	border-top:1px solid #eee;
+}
+
 #poststuff table.sucom-settings.column-metabox h4,
 #poststuff .inner-sidebar table.sucom-settings h4 {
 	font-size:1em;
@@ -1202,8 +1207,8 @@ table.sucom-settings td.oembed_container > iframe {
  * SSO > Dashboard page.
  */
 table.sucom-settings.column-metabox {
+	padding:20px 40px;
 	border-spacing:2px;
-	padding:20px 30px;
 }
 
 table.sucom-settings.column-metabox p {
@@ -1211,30 +1216,30 @@ table.sucom-settings.column-metabox p {
 }
 
 table.sucom-settings.column-metabox .column-metabox-buttons {
-	margin-top:20px;
 	text-align:center;
+	margin-top:20px;
 }
 
 table.sucom-settings.column-metabox input[type="button"].button-primary,
 table.sucom-settings.column-metabox input[type="button"].button-secondary {
+	overflow:hidden;
 	width:100%;
 	min-width:100%;
 	max-width:100%;
 	margin:0 0 5px 0;
-	overflow:hidden;
 }
 
 table.sucom-settings.column-metabox ul {
 	color:#555;
+	margin:10px 0 20px 30px;
 	list-style-type:circle;
 	list-style-position:outside;	/* Default. */
-	margin:10px 0 20px 30px;
 }
 
 table.sucom-settings.column-metabox ol {
 	color:#555;
-	list-style-position:outside;	/* Default. */
 	margin:10px 0 20px 30px;
+	list-style-position:outside;	/* Default. */
 }
 
 table.sucom-settings.column-metabox.cache-status th,
@@ -1296,9 +1301,6 @@ table.sucom-settings.column-metabox td.latest-notice p {
 	margin:10px 0;
 }
 
-/*
- * SSO > Dashboard > Features Status metabox.
- */
 table.sucom-settings.column-metabox.feature-status td {
 	padding:2px 4px;
 	vertical-align:middle;
@@ -1310,7 +1312,7 @@ table.sucom-settings.column-metabox.feature-status .dashicons-before::before {
 	vertical-align:middle;
 }
 
-table.sucom-settings td .status-light {
+table.sucom-settings.column-metabox.feature-status td .status-light {
 	width:1em;
 	height:1em;
 	border-radius:50%;
@@ -1342,9 +1344,6 @@ table.sucom-settings td.module-is-recommended .status-light {
 	background-color:#ffb900;	/* Yellow. */
 }
 
-/*
- * SSO > Dashboard > Version Information metabox.
- */
 table.sucom-settings.column-metabox.version-info td.version-number.newer-version-available {
 	background-color:#ffb900;	/* Yellow. */
 }
