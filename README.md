@@ -59,7 +59,7 @@
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes All Google Search / Rich Results / Merchant Listings and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes All Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors:</strong></p>
 
 <ul>
 <li><em>A value for the headline field is required</em></li>
@@ -81,7 +81,7 @@
 <li><em>Missing field "review"</em></li>
 <li><em>No global identifier provided (e.g. gtin mpn isbn)</em></li>
 <li><em>Not a known valid target type for the itemReviewed property</em></li>
-<li>And many more...</li>
+<li><em>Price Mismatched value (page crawl): (price [price])</em></li>
 </ul>
 
 <p><strong>Reads settings and data from active plugins, including:</strong></p>

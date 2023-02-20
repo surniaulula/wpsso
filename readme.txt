@@ -60,7 +60,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes All Google Search / Rich Results / Merchant Listings and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes All Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
@@ -81,7 +81,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Missing field "review"*
 * *No global identifier provided (e.g. gtin mpn isbn)*
 * *Not a known valid target type for the itemReviewed property*
-* And many more...
+* *Price Mismatched value (page crawl): (price [price])*
 
 <p><strong>Reads settings and data from active plugins, including:</strong></p>
 
