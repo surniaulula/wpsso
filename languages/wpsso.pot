@@ -2859,65 +2859,25 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:503
 msgctxt "option value"
-msgid "Every day"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:504
 msgctxt "option value"
-msgid "Every two days"
+msgid "Alpha and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:505
 msgctxt "option value"
-msgid "Every three days"
+msgid "Beta and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:506
 msgctxt "option value"
-msgid "Every four days"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:507
-msgctxt "option value"
-msgid "Every five days"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:508
-msgctxt "option value"
-msgid "Every six days"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:509
-msgctxt "option value"
-msgid "Every week"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:510
-msgctxt "option value"
-msgid "Every two weeks"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:511
-msgctxt "option value"
-msgid "Development and Up"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:512
-msgctxt "option value"
-msgid "Alpha and Up"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:513
-msgctxt "option value"
-msgid "Beta and Up"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:514
-msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:515
+#: gettext/gettext-lib-config.php:507
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""

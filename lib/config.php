@@ -2354,16 +2354,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'um' => array(
 				'rec_version' => '4.16.0',	// Minimum update manager version (soft limit).
-				'check_hours' => array(
-					24  => 'Every day',
-					48  => 'Every two days',
-					72  => 'Every three days',
-					96  => 'Every four days',
-					120 => 'Every five days',
-					144 => 'Every six days',
-					168 => 'Every week',
-					336 => 'Every two weeks',
-				),
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
