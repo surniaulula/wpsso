@@ -35,6 +35,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			'transaction' => -1,
 			'shop'        => -1,
 		);
+		private $reviews_enabled = null;
+		private $rating_enabled  = null;
 
 		public function __construct( &$plugin ) {	// Pass by reference is OK.
 
@@ -50,30 +52,40 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$this->page_ids[ 'checkout' ] = wc_get_page_id( 'checkout' );	// Returns -1 if no page selected.
 			$this->page_ids[ 'shop' ]     = wc_get_page_id( 'shop' );	// Returns -1 if no page selected.
 
+			$this->reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
+			$this->rating_enabled  = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( 'page_ids', $this->page_ids );
 			}
 
-			/*
-			 * Return the primary category term for WooCommerce product breadcrumbs.
-			 */
-			add_filter( 'woocommerce_breadcrumb_main_term', array( $this, 'woocommerce_breadcrumb_main_term' ), 100, 2 );
-
-			/*
-			 * Check for possible missing page ID selections.
-			 */
 			if ( is_admin() ) {
 
+				/*
+				 * Check for possible missing page ID selections.
+				 */
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
 				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
+		
+				if ( ! empty( $this->p->avail[ 'p_ext' ][ 'rar' ] ) ) {
+
+					$this->p->util->add_plugin_filters( $this, array(
+						'post_column_rating_value' => 3,
+					), 10, 'wpssorar' );
+				}
 			}
 
 			/*
 			 * Refresh the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
 			 */
 			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_post_cache' ), 10, 2 );
+
+			/*
+			 * Return the primary category term for WooCommerce product breadcrumbs.
+			 */
+			add_filter( 'woocommerce_breadcrumb_main_term', array( $this, 'woocommerce_breadcrumb_main_term' ), 100, 2 );
 
 			/*
 			 * Maybe load missing WooCommerce front-end libraries for 'the_content' filter.
@@ -251,6 +263,24 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			echo '<div class="toolbar">';
 			echo '<strong>' . $suggest_transl . '</strong> ' . $suggest_list;
 			echo '</div>';
+		}
+
+		public function filter_post_column_rating_value( $value, $post_id, $rating_enabled ) {
+
+			if ( '' === $value && ! $rating_enabled && $this->rating_enabled ) {
+
+				if ( $this->prod_post_type === get_post_type( $post_id ) ) {
+
+					if ( $product = $this->p->util->wc->get_product( $post_id ) ) {
+
+						$average_rating = (float) $product->get_average_rating();
+
+						return number_format( $average_rating, 2, '.', '' );
+					}
+				}
+			}
+
+			return $value;
 		}
 
 		/*
@@ -1533,11 +1563,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function add_mt_ratings( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
 
-			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
-			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
-
-			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
-			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
+			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
+			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
 
 			if ( apply_filters( 'wpsso_og_add_mt_rating', true, $mod ) ) {	// Enabled by default.
 
@@ -1623,11 +1650,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function add_mt_reviews( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
 
-			$wc_reviews_enabled = 'yes' === get_option( 'woocommerce_enable_reviews' ) ? true : false;
-			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $wc_reviews_enabled );
-
-			$wc_rating_enabled = 'yes' === get_option( 'woocommerce_enable_review_rating' ) ? true : false;
-			$wc_rating_enabled = apply_filters( 'wpsso_og_add_wc_mt_rating', $wc_rating_enabled );
+			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
+			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
 
 			if ( apply_filters( 'wpsso_og_add_mt_reviews', true, $mod ) ) {
 
