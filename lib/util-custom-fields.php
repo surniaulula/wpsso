@@ -182,38 +182,38 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				if ( ! empty( $values ) ) {	// Just in case.
 
 					if ( ! empty( $md_keys_multi[ $md_key ] ) ) {
-	
+
 						/*
 						 * If $cf_val was not an array, then $values[ 0 ] will be a string - split that string into an array.
 						 */
 						if ( ! is_array( $cf_val ) ) {
-	
+
 							$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );
-	
+
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'exploded ' . $cf_key . ' into array of ' . count( $values ) . ' elements' );
 							}
 						}
-	
+
 						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values, $is_disabled = true );
-	
+
 					} else {
-	
+
 						$md_opts[ $md_key ] = reset( $values );
-	
+
 						$md_opts[ $md_key . ':disabled' ] = true;
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 						}
-	
+
 						/*
 						 * If this is a '_value' option, add the '_units' option.
 						 */
 						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
-	
+
 						/*
 						 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 						 */

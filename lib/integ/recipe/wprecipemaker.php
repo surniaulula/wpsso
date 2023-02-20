@@ -30,36 +30,11 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'cf_md_index'       => 1,
 				'get_post_options'  => 3,
 				'save_post_options' => 3,
 			) );
 
 			add_filter( 'wprm_recipe_metadata', '__return_empty_array', PHP_INT_MAX );
-		}
-
-		/*
-		 * Clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
-		 */
-		public function filter_cf_md_index( $cf_md_index ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			foreach ( array(
-				'plugin_cf_recipe_ingredients',
-				'plugin_cf_recipe_instructions',
-			) as $cf_key ) {
-
-				if ( isset( $cf_md_index[ $cf_key ] ) ) {	// Just in case.
-
-					$cf_md_index[ $cf_key ] = '';		// Disable the $md_key value.
-				}
-			}
-
-			return $cf_md_index;
 		}
 
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {

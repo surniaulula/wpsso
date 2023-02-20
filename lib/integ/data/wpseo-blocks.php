@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 							$ret[ 'schema_howto_step_img_id_' . $step_num ] = $image_id;
 						}
 					}
-				
+
 					$step_num++;
 				}
 			}

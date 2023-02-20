@@ -464,7 +464,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$notice_types = $this->all_types;
 
-			echo $this->get_notice_style();		// Always show the notice stylesheet.
+			echo $this->get_notice_style();		// Always include the notice styles in all admin webpages.
 
 			/*
 			 * If toolbar notices are being used, exclude these from being shown.
@@ -645,11 +645,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function admin_footer_script() {
 
 			echo $this->get_notice_script();
-		}
-
-		public function refresh_notice_style() {
-
-			$this->get_notice_style( $read_cache = false );
 		}
 
 		public function ajax_get_notices_json() {
@@ -1361,6 +1356,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $msg_html;
 		}
 
+		/*
+		 * See WpssoUtilCache->refresh().
+		 */
+		public function refresh_notice_style() {
+
+			$this->get_notice_style( $read_cache = false );
+		}
+
+		/*
+		 * See SucomNotice->show_admin_notices().
+		 */
 		private function get_notice_style( $read_cache = true ) {
 
 			global $wp_version;

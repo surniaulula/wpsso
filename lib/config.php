@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.4.0-dev.5',	// Plugin version.
+					'version'     => '15.4.0-b.1',	// Plugin version.
 					'opt_version' => '955',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2104,9 +2104,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_cf_addl_type_urls'                => '',	// Microdata Type URLs Custom Field.
 					'plugin_cf_book_isbn'                     => '',	// Book ISBN Custom Field.
-					'plugin_cf_howto_steps'                   => '',	// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'                => '',	// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'                   => '',	// How-To Tools Custom Field.
 					'plugin_cf_img_url'                       => '',	// Image URL Custom Field.
 					'plugin_cf_product_adult_type'            => '',	// Product Adult Type Custom Field.
 					'plugin_cf_product_age_group'             => '',	// Product Age Group Custom Field.
@@ -2143,8 +2140,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => '',	// Product Target Gender Custom Field.
 					'plugin_cf_product_weight_value'          => '',	// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => '',	// Product Net Width Custom Field.
-					'plugin_cf_recipe_ingredients'            => '',	// Recipe Ingredients Custom Field.
-					'plugin_cf_recipe_instructions'           => '',	// Recipe Instructions Custom Field.
 					'plugin_cf_sameas_urls'                   => '',	// Same-As URLs Custom Field.
 					'plugin_cf_vid_embed'                     => '',	// Video Embed HTML Custom Field.
 					'plugin_cf_vid_url'                       => '',	// Video URL Custom Field.
@@ -2233,9 +2228,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'                => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
 					'plugin_cf_book_isbn'                     => 'schema_book_isbn',
-					'plugin_cf_howto_steps'                   => 'schema_howto_step',		// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'                => 'schema_howto_supply',		// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'                   => 'schema_howto_tool',		// How-To Tools Custom Field.
 					'plugin_cf_img_url'                       => 'og_img_url',
 					'plugin_cf_product_adult_type'            => 'product_adult_type',
 					'plugin_cf_product_age_group'             => 'product_age_group',
@@ -2272,8 +2264,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => 'product_target_gender',
 					'plugin_cf_product_weight_value'          => 'product_weight_value',		// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => 'product_width_value',		// Product Net Width Custom Field.
-					'plugin_cf_recipe_ingredients'            => 'schema_recipe_ingredient',
-					'plugin_cf_recipe_instructions'           => 'schema_recipe_instruction',
 					'plugin_cf_sameas_urls'                   => 'schema_sameas_url',
 					'plugin_cf_vid_embed'                     => 'og_vid_embed',
 					'plugin_cf_vid_url'                       => 'og_vid_url',
@@ -2363,7 +2353,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.16.0-dev.5',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.16.0-b.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2959,9 +2949,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_labels' => array(
 					'plugin_cf_addl_type_urls'                => 'Microdata Type URLs Custom Field',
 					'plugin_cf_book_isbn'                     => 'Book ISBN Custom Field',
-					'plugin_cf_howto_steps'                   => 'How-To Steps Custom Field',
-					'plugin_cf_howto_supplies'                => 'How-To Supplies Custom Field',
-					'plugin_cf_howto_tools'                   => 'How-To Tools Custom Field',
 					'plugin_cf_img_url'                       => 'Image URL Custom Field',
 					'plugin_cf_product_adult_type'            => 'Product Adult Type Custom Field',
 					'plugin_cf_product_age_group'             => 'Product Age Group Custom Field',
@@ -2998,8 +2985,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => 'Product Target Gender Custom Field',
 					'plugin_cf_product_weight_value'          => 'Product Net Weight Custom Field',
 					'plugin_cf_product_width_value'           => 'Product Net Width Custom Field',
-					'plugin_cf_recipe_ingredients'            => 'Recipe Ingredients Custom Field',
-					'plugin_cf_recipe_instructions'           => 'Recipe Instructions Custom Field',
 					'plugin_cf_sameas_urls'                   => 'Same-As URLs Custom Field',
 					'plugin_cf_vid_url'                       => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'                     => 'Video Embed HTML Custom Field',

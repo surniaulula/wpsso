@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-		
+
 				$filter_name = SucomUtil::sanitize_hookname( $ext . '_features_status' );
 				$features    = apply_filters( $filter_name, $features, $ext, $info );
 
