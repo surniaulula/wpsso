@@ -213,8 +213,6 @@ _x( 'WordPress Title', 'option value', 'wpsso' );
 _x( 'SEO Title Tag', 'option value', 'wpsso' );
 _x( 'Schema Name', 'option value', 'wpsso' );
 _x( 'Schema Alternate Name', 'option value', 'wpsso' );
-_x( 'SSO Toolbar Notices', 'option value', 'wpsso' );
-_x( 'WP Admin Notices', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'First Activation', 'option value', 'wpsso' );

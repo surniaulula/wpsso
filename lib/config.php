@@ -2757,10 +2757,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_title'     => 'Schema Name',
 					'schema_title_alt' => 'Schema Alternate Name',
 				),
-				'notice_systems' => array(
-					'toolbar_notices' => 'SSO Toolbar Notices',
-					'admin_notices'   => 'WP Admin Notices',
-				),
 				'show_options' => array(
 					'basic' => 'Basic Options',
 					'all'   => 'All Options',
