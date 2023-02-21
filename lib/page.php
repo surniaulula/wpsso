@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'adding validators toolbar' );
 				}
 
-				add_action( 'admin_bar_menu', array( $this, 'add_toolbar_validate' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
+				add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu_validate' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $use_post.
 		 */
-		public function add_toolbar_validate( &$wp_admin_bar, $use_post = false ) {
+		public function add_admin_bar_menu_validate( &$wp_admin_bar, $use_post = false ) {	// Pass by reference OK.
 
 			if ( ! $user_id = get_current_user_id() ) {	// Just in case.
 

@@ -16,21 +16,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;	// Plugin class object.
 
-		private $plugin_id       = 'sucom';
-		private $plugin_ucid     = 'SUCOM';
-		private $text_domain     = 'sucom';
-		private $dismiss_name    = 'sucom_dismissed';
-		private $notices_name    = 'sucom_notices';
-		private $nonce_name      = '';
-		private $default_ttl     = 600;
-		private $label_transl    = false;
-		private $doing_dev       = false;
-		private $has_shown       = false;
-		private $all_types       = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
-		private $admin_bar_types = array( 'err', 'warn', 'inf', 'upd' );
-		private $notice_info     = array();
-		private $notice_cache    = array();
-		private $notice_noload   = array();
+		private $plugin_id     = 'sucom';
+		private $plugin_ucid   = 'SUCOM';
+		private $text_domain   = 'sucom';
+		private $dismiss_name  = 'sucom_dismissed';
+		private $notices_name  = 'sucom_notices';
+		private $nonce_name    = '';
+		private $default_ttl   = 600;
+		private $label_transl  = false;
+		private $doing_dev     = false;
+		private $has_shown     = false;
+		private $all_types     = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
+		private $toolbar_types = array( 'err', 'warn', 'inf', 'upd' );
+		private $notice_info   = array();
+		private $notice_cache  = array();
+		private $notice_noload = array();
 
 		public $enabled = true;
 
@@ -469,19 +469,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/*
 			 * If toolbar notices are being used, exclude these from being shown.
 			 */
-			$admin_bar_types = $this->get_admin_bar_types();	// Returns false or array.
+			$toolbar_types = $this->get_toolbar_types();	// Returns false or array.
 
-			if ( is_array( $admin_bar_types ) ) {	// Admin toolbar is available.
+			if ( is_array( $toolbar_types ) ) {	// Admin toolbar is available.
 
-				if ( ! empty( $admin_bar_types ) ) {
+				if ( ! empty( $toolbar_types ) ) {
 
-					$notice_types = array_diff( $notice_types, $admin_bar_types );
+					$notice_types = array_diff( $notice_types, $toolbar_types );
 				}
 
 			} elseif ( is_admin() ) {	// Just in case.
 
 				/*
-				 * SucomNotice->get_admin_bar_types() will always return false for these types of requests.
+				 * SucomNotice->get_toolbar_types() will always return false for these types of requests.
 				 *
 				 * See is_admin_bar_showing() in wordpress/wp-includes/admin-bar.php for details.
 				 */
@@ -847,7 +847,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function get_tb_types_showing() {
 
-			return $this->get_admin_bar_types();
+			return $this->get_toolbar_types();
 		}
 
 		/*
@@ -855,16 +855,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 *
 		 * Called by WpssoScript->get_admin_page_script_data() to define the types shown for ajax calls.
 		 */
-		public function get_admin_bar_types() {
+		public function get_toolbar_types() {
 
 			/*
 			 * is_admin_bar_showing() should always return true in the back-end for a standard request (ie. not xmlrpc, ajax, iframe).
 			 */
-			$admin_bar_types = is_admin_bar_showing() ? $this->admin_bar_types : false;
+			$toolbar_types = is_admin_bar_showing() ? $this->toolbar_types : false;
 
-			$admin_bar_types = apply_filters( 'sucom_admin_bar_notice_types', $admin_bar_types );
+			$toolbar_types = apply_filters( 'sucom_toolbar_notice_types', $toolbar_types );
 
-			return $admin_bar_types;
+			return $toolbar_types;
 		}
 
 		/*

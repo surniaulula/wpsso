@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
-		protected $admin_bar_notice_types = array( 'err', 'warn', 'inf', 'upd' );
+		protected $toolbar_notice_types = array( 'err', 'warn', 'inf', 'upd' );
 
 		public static $readme = array();
 
@@ -147,10 +147,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_filter( 'wp_redirect', array( $this, 'plugin_complete_redirect' ), 1000, 1 );
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
 
-				add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
-				add_action( 'admin_bar_menu', array( $this, 'check_admin_bar_notices_menu_item' ), PHP_INT_MAX );
+				add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu_notices' ), WPSSO_TB_NOTICE_MENU_ORDER );
+				add_action( 'admin_bar_menu', array( $this, 'check_admin_bar_menu_notices' ), PHP_INT_MAX );
 			
-				add_filter( 'sucom_admin_bar_notice_types', array( $this, 'filter_admin_bar_notice_types' ) );
+				add_filter( 'sucom_toolbar_notice_types', array( $this, 'filter_toolbar_notice_types' ) );
 			}
 		}
 
@@ -2299,7 +2299,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>' . "\n";
 		}
 
-		public function add_admin_bar_notices_menu_item( $wp_admin_bar ) {
+		public function add_admin_bar_menu_notices( $wp_admin_bar ) {
 
 			if ( ! current_user_can( 'edit_posts' ) ) {
 
@@ -2329,20 +2329,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
-		public function check_admin_bar_notices_menu_item( $wp_admin_bar ) {
+		public function check_admin_bar_menu_notices( $wp_admin_bar ) {
 
 			if ( ! $wp_admin_bar->get_node( 'wpsso-toolbar-notices' ) ) {
 
-				$this->admin_bar_notice_types = array();
+				$this->toolbar_notice_types = array();
 			}
 		}
 
 		/*
-		 * $admin_bar_notice_types will be false if is_admin_bar_showing() is false.
+		 * $toolbar_notice_types will be false if is_admin_bar_showing() is false.
 		 */
-		public function filter_admin_bar_notice_types( $admin_bar_notice_types ) {
+		public function filter_toolbar_notice_types( $toolbar_notice_types ) {
 
-			return is_array( $admin_bar_notice_types ) ? $this->admin_bar_notice_types : $admin_bar_notice_types;
+			return is_array( $toolbar_notice_types ) ? $this->toolbar_notice_types : $toolbar_notice_types;
 		}
 
 		public function admin_footer_ext( $footer_html ) {

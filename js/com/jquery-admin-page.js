@@ -100,7 +100,7 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'block_editor',
 		_ajax_nonce: cfg[ '_ajax_nonce' ],
-		_exclude_types: cfg[ '_admin_bar_notice_types' ],	// Exclude the toolbar notice types.
+		_exclude_types: cfg[ '_toolbar_notice_types' ],	// Exclude the toolbar notice types.
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
@@ -203,7 +203,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 		return;
 
-	} else if ( ! cfg[ '_admin_bar_notice_types' ] ) {	// No toolbar notice types to get.
+	} else if ( ! cfg[ '_toolbar_notice_types' ] ) {	// No toolbar notice types to get.
 
 		return;
 	}
@@ -218,7 +218,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'toolbar_notices',
 		_ajax_nonce: cfg[ '_ajax_nonce' ],
-		_notice_types: cfg[ '_admin_bar_notice_types' ],
+		_notice_types: cfg[ '_toolbar_notice_types' ],
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
@@ -293,10 +293,10 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			else if ( noticeTypeCount[ 'inf' ] )	noticeStatus = 'info';
 			else if ( noticeTypeCount[ 'upd' ] )	noticeStatus = 'success';
 
-			if ( noticeTypeCount[ 'upd' ] )		noticeTime = cfg[ '_admin_bar_notice_timeout' ][ 'upd' ] || -1;
-			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_admin_bar_notice_timeout' ][ 'inf' ] || -1;
-			else if ( noticeTypeCount[ 'warn' ] )	noticeTime = cfg[ '_admin_bar_notice_timeout' ][ 'warn' ] || -1;
-			else if ( noticeTypeCount[ 'err' ] )	noticeTime = cfg[ '_admin_bar_notice_timeout' ][ 'err' ] || -1;
+			if ( noticeTypeCount[ 'upd' ] )		noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'upd' ] || -1;
+			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'inf' ] || -1;
+			else if ( noticeTypeCount[ 'warn' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'warn' ] || -1;
+			else if ( noticeTypeCount[ 'err' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'err' ] || -1;
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
