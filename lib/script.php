@@ -243,14 +243,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$tb_types_showing = $this->p->notice->get_tb_types_showing();
+			$admin_bar_notice_types = $this->p->notice->get_admin_bar_types();
 
-			/*
-			 * Just in case - no use getting notices if there's nothing to get.
-			 *
-			 * Example $tb_types_showing = array( 'err', 'warn', 'inf' ).
-			 */
-			if ( empty( $tb_types_showing ) || ! is_array( $tb_types_showing ) ) {
+			if ( empty( $admin_bar_notice_types ) || ! is_array( $admin_bar_notice_types ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 
@@ -425,18 +420,12 @@ EOF;
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			) );
 
-			$tb_types_timeout = array(
-				'err'  => -1,
-				'warn' => -1,
-				'inf'  => -1,
-				'upd'  => 3000,
-			);
-
-			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
-			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
-			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
-			$notice_text_uniqid  = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
+			$admin_bar_notice_types   = $this->p->notice->get_admin_bar_types();
+			$admin_bar_notice_timeout = array( 'err'  => -1, 'warn' => -1, 'inf'  => -1, 'upd'  => 3000 );
+			$notice_text_uniqid       = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
+			$no_notices_transl        = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html          = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
+			$copy_notices_transl      = __( 'Copy notifications to clipboard.', 'wpsso' );
 
 			/*
 			 * Add an 'inline' class to toolbar notices to prevent WordPress from moving the notice.
@@ -464,15 +453,15 @@ EOF;
 						'wpsso_' . $metabox_id => 'wpsso_get_metabox_postbox_id_' . $metabox_id . '_inside',
 					),
 				),
-				'_option_labels'         => $option_labels,
-				'_tb_types_showing'      => $tb_types_showing,	// Maybe null, true, false, or array.
-				'_tb_types_timeout'      => $tb_types_timeout,
-				'_notice_text_id'        => $notice_text_uniqid,	// CSS id of hidden notice text container.
-				'_no_notices_html'       => $no_notices_html,
-				'_copy_notices_html'     => $copy_notices_html,
-				'_copy_clipboard_transl' => __( 'Copied to clipboard.', 'wpsso' ),
-				'_linked_to_transl'      => __( 'Value linked to {0} option', 'wpsso' ),
-				'_count_msgs_transl'     => array(
+				'_option_labels'            => $option_labels,
+				'_admin_bar_notice_types'   => $admin_bar_notice_types,	// Maybe null, true, false, or array.
+				'_admin_bar_notice_timeout' => $admin_bar_notice_timeout,
+				'_notice_text_id'           => $notice_text_uniqid,	// CSS id of hidden notice text container.
+				'_no_notices_html'          => $no_notices_html,
+				'_copy_notices_html'        => $copy_notices_html,
+				'_copy_clipboard_transl'    => __( 'Copied to clipboard.', 'wpsso' ),
+				'_linked_to_transl'         => __( 'Value linked to {0} option', 'wpsso' ),
+				'_count_msgs_transl'        => array(
 					'error' => sprintf( __( 'There are {0} important error messages under the %s notification icon.', 'wpsso' ),
 						$this->p->cf[ 'notice' ][ 'title' ] ),
 				),
