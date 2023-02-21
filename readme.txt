@@ -238,7 +238,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated "admin_bar" variable names to "toolbar" for uniformity.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -414,7 +414,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.1-dev.1 =
 
-(2023/02/21) None.
+(2023/02/21) Updated "admin_bar" variable names to "toolbar".
 
 = 15.4.0 =
 
