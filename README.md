@@ -59,7 +59,7 @@
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes All Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes all Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors, including:</strong></p>
 
 <ul>
 <li><em>A value for the headline field is required</em></li>

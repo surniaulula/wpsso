@@ -60,7 +60,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes All Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes all Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors, including:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
