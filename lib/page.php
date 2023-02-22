@@ -1619,6 +1619,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
 			 */
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
+			$filter_content = apply_filters( 'wpsso_the_content_filter_content', $filter_content );
+			$filter_blocks  = function_exists( 'do_blocks' ) ? true : false;	// Since WP v5.0.
+			$filter_blocks  = apply_filters( 'wpsso_the_content_filter_blocks', $filter_blocks );
 			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
@@ -1731,37 +1734,57 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $filter_content ) {
 
-				$use_bfo = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
-
+				$use_bfo   = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
 				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.00 );
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content filters' );	// Begin timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'applying the content filters' );	// Begin timer.
+				}
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content filters' );	// End timer.
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->mark( 'applying the content filters' );	// End timer.
+				}
 
-			/*
-			 * Maybe apply the 'do_blocks' filters.
-			 */
-			} elseif ( function_exists( 'do_blocks' ) ) {	// Since WP v5.0.
+			} else {
+			
+				/*
+				 * Maybe fallback and apply only the 'do_blocks' filters.
+				 */
+				if ( $filter_blocks ) {
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content do blocks' );	// Begin timer.
+					if ( $this->p->debug->enabled ) {
+				
+						$this->p->debug->mark( 'applying the content do blocks' );	// Begin timer.
+					}
 
-				$content = do_blocks( $content );
+					$content = do_blocks( $content );
 
-				if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content do blocks' );	// End timer.
+					if ( $this->p->debug->enabled ) {
+				
+						$this->p->debug->mark( 'applying the content do blocks' );	// End timer.
+					}
+				}
 
 				/*
 				 * When the content filter is disabled, fallback and apply our own shortcode filter.
 				 */
 				if ( false !== strpos( $content, '[' ) ) {
 
-					if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content do shortcode filters' );	// Begin timer.
+					if ( $this->p->debug->enabled ) {
+					
+						$this->p->debug->mark( 'applying the content do shortcode filters' );	// Begin timer.
+					}
 
 					$content = apply_filters( 'wpsso_do_shortcode', $content );
 
-					if ( $this->p->debug->enabled ) $this->p->debug->mark( 'applying the content do shortcode filters' );	// End timer.
+					if ( $this->p->debug->enabled ) {
+					
+						$this->p->debug->mark( 'applying the content do shortcode filters' );	// End timer.
+					}
 				}
 			}
 

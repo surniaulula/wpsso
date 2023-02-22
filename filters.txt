@@ -319,6 +319,10 @@
 
 'wpsso_the_content' ( $content, $mod, $md_key )
 
+'wpsso_the_content_filter_content' ( $bool )
+
+'wpsso_the_content_filter_blocks' ( $bool )
+
 'wpsso_the_content_seed' ( '', $mod, $md_key )
 
 'wpsso_the_description' ( $desc_text, $mod )
