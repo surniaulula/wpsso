@@ -239,6 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Updated "admin_bar" variable names to "toolbar" for uniformity.
+	* Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -414,7 +415,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.1-dev.2 =
 
-(2023/02/21) Updated "admin_bar" variable names to "toolbar".
+(2023/02/21) Updated "admin_bar" variable names to "toolbar". Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
 
 = 15.4.0 =
 
