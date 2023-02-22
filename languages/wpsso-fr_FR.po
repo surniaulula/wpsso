@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-02-22 02:35-0800\n"
+"PO-Revision-Date: 2023-02-22 06:21-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -9059,7 +9059,7 @@ msgstr "Tailles d'images"
 
 #: lib/messages.php:340
 msgid "Actions available to resolve this issue, in order of preference:"
-msgstr ""
+msgstr "Actions disponibles pour résoudre ce problème, par ordre de préférence:"
 
 #: lib/messages.php:346
 msgid "Replace the original with a higher resolution image."
