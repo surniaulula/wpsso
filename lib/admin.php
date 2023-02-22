@@ -2301,11 +2301,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_admin_bar_menu_notices( $wp_admin_bar ) {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
-
-				return;
-			}
-
 			$menu_icon  = '<span class="ab-icon" id="wpsso-toolbar-notices-icon"></span>';
 			$menu_count = '<span class="ab-label" id="wpsso-toolbar-notices-count">0</span>';
 			$menu_text  = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->get_menu_title() );
