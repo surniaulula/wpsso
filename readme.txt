@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.1-dev.1 (2023/02/21)**
+**Version 15.4.1-dev.2 (2023/02/21)**
 
 * **New Features**
 	* None.
@@ -412,7 +412,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.1-dev.1 =
+= 15.4.1-dev.2 =
 
 (2023/02/21) Updated "admin_bar" variable names to "toolbar".
 
