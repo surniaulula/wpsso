@@ -1482,7 +1482,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$admin_bar_class = apply_filters( 'wp_admin_bar_class', 'WP_Admin_Bar' );
 			$ajax_admin_bar  = new $admin_bar_class;
-			$parent_id       = $this->p->page->add_toolbar_validate( $ajax_admin_bar, $post_obj->ID );
+			$parent_id       = $this->p->page->add_admin_bar_menu_validate( $ajax_admin_bar, $post_obj->ID );
 			$metabox_html    = '';
 
 			if ( empty( $parent_id ) ) {
