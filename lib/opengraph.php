@@ -603,7 +603,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/*
 			 * If the module is a post object, define the author, publishing date, etc. These values may still be used
 			 * by other non-article filters, and if the og:type is not an article, the meta tags will be sanitized (ie.
-			 * non-valid meta tags removed) at the end of WpssoHead::get_head_array().
+			 * non-valid meta tags removed) at the end of WpssoHead->get_head_array().
 			 */
 			if ( ! isset( $mt_og[ 'article:author' ] ) ) {
 
@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/*
-		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
+		 * Called by WpssoHead->get_head_array() before merging all meta tag arrays.
 		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all
 		 * 'article' meta tags if the og_type is 'website'. Removing only known meta tags (using the 'og_type_mt' array as

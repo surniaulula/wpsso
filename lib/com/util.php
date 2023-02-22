@@ -1428,16 +1428,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$use_post = self::sanitize_use_post( $use_post );
 
-			if ( false === $use_post ) {
+			return self::get_bool_string( $use_post );
+		}
+
+		public static function get_bool_string( $mixed ) {
+
+			if ( false === $mixed ) {
 
 				return 'false';
 
-			} elseif ( true === $use_post ) {
+			} elseif ( true === $mixed ) {
 
 				return 'true';
+
+			} elseif ( null === $mixed ) {
+
+				return 'null';
 			}
 
-			return (string) $use_post;
+			return (string) $mixed;
 		}
 
 		public static function maybe_unserialize_array( array $arr ) {

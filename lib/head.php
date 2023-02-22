@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
 
-			$mod = $this->p->page->get_mod( $use_post );	// Get comment/post/term/user information.
+			$mod = $this->p->page->get_mod( $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -271,6 +271,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 *
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
+		 *
+		 * See WpssoAbstractWpMeta->get_head_info().
+		 * See WpssoHead->get_head_html().
+		 * See WpssoUtilCache->refresh_mod_head_meta().
 		 */
 		public function get_head_array( $use_post = false, $mod = false, $read_cache = true ) {
 
@@ -298,7 +302,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			/*
-			 * Disable head and content cache if the request URL contains an unknown/extra query string.
+			 * Disable head and content cache if the request URL contains one or more unknown query arguments.
 			 */
 			if ( ! is_admin() ) {
 
@@ -313,7 +317,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'query detected in request url' );
+						$this->p->debug->log( 'unknown query arguments detected in request url' );
 					}
 
 					/*
@@ -327,7 +331,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'head and content cache disabled' );
+							$this->p->debug->log( 'head and content cache disabled for query arguments' );
 						}
 
 						$this->p->util->add_plugin_filters( $this, array(
@@ -339,7 +343,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'head and content cache allowed' );
+							$this->p->debug->log( 'head and content cache allowed for query arguments' );
 						}
 					}
 				}
@@ -367,6 +371,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 				$this->p->debug->log( 'cache index = ' . $cache_index );
+				$this->p->debug->log( 'read_cache is ' . SucomUtil::get_bool_string( $read_cache ) );
 			}
 
 			$cache_array = SucomUtil::get_transient_array( $cache_id );
@@ -375,18 +380,26 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( isset( $cache_array[ $cache_index ] ) ) {
 				
-					if ( is_array( $cache_array[ $cache_index ] ) && $cache_exp_secs > 0 && $read_cache ) {	// Transient cache can be used.
+					if ( is_array( $cache_array[ $cache_index ] ) ) {
 
-						if ( $this->p->debug->enabled ) {
+						/*
+						 * $cache_exp_secs can be 0 if URL query arguments are present or caching has been
+						 * disabled for debugging.
+						 */
+						if ( $cache_exp_secs > 0 && $read_cache ) {
 
-							$this->p->debug->log( 'cache index found in transient cache' );
-
-							$this->p->debug->mark( 'build head array' );	// End timer.
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'cache index found in transient cache' );
+	
+								$this->p->debug->mark( 'build head array' );	// End timer.
+							}
+	
+							return $cache_array[ $cache_index ];	// Stop here.
 						}
 
-						return $cache_array[ $cache_index ];	// Stop here.
-
-					} else unset( $cache_array[ $cache_index ] );
+						unset( $cache_array[ $cache_index ] );
+					}
 				}
 
 			} else $cache_array = array();	// Initialize a new transient cache array.
@@ -499,11 +512,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			unset( $mt_gen, $link_rel, $mt_og, $mt_tc, $mt_name, $schema_scripts );
 
+			/*
+			 * Update the cached array and maintain the existing transient expiration time.
+			 */
 			if ( $cache_exp_secs > 0 ) {
 
-				/*
-				 * Update the cached array and maintain the existing transient expiration time.
-				 */
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.4.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 15.4.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4741,15 +4741,15 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1641
+#: lib/abstract/wp-meta.php:1636
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1977 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1972 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1979
+#: lib/abstract/wp-meta.php:1974
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -6580,23 +6580,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:417
+#: lib/head.php:430
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:426
+#: lib/head.php:439
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:435
+#: lib/head.php:448
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:444
+#: lib/head.php:457
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:464
+#: lib/head.php:477
 msgid "adding schema json-ld markup"
 msgstr ""
 

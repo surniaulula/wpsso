@@ -1328,26 +1328,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Called by WpssoAbstractWpMeta->check_sortable_meta().
-		 * Called by WpssoOembed->post_oembed_response_data().
-		 * Called by WpssoOembed->post_oembed_response_data_rich.
-		 * Called by WpssoOembed->the_embed_thumbnail_url().
-		 * Called by WpssoOembed->the_embed_thumbnail_url_image_shape().
-		 * Called by WpssoOembed->the_embed_thumbnail_id().
-		 * Called by WpssoOembed->the_embed_excerpt().
+		 * See WpssoAbstractWpMeta->check_sortable_meta().
+		 * See WpssoOembed->post_oembed_response_data().
+		 * See WpssoOembed->post_oembed_response_data_rich.
+		 * See WpssoOembed->the_embed_thumbnail_url().
+		 * See WpssoOembed->the_embed_thumbnail_url_image_shape().
+		 * See WpssoOembed->the_embed_thumbnail_id().
+		 * See WpssoOembed->the_embed_excerpt().
 		 */
 		public function get_head_info( $mixed, $read_cache = true ) {
 
 			static $local_cache = array();
 
-			if ( is_array( $mixed ) ) {
+			$mod = is_array( $mixed ) ? $mixed : $this->get_mod( $mixed );	// Uses a local cache.
 
-				$mod =& $mixed;
-
-			} else {
-
-				$mod = $this->get_mod( $mixed );
-			}
+			unset( $mixed );
 
 			if ( $read_cache ) {
 
@@ -1357,8 +1352,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
-
+			$use_post  = 'post' === $mod[ 'name' ] ? $mod[ 'id' ] : false;
+			$head_tags = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
 			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
 
 			return $local_cache[ $mod[ 'id' ] ] = $head_info;
@@ -2250,7 +2245,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $do_head_info ) {
 
-					$this->get_head_info( $mod, $read_cache = true );
+					$this->get_head_info( $mod, $read_cache = true );	// Uses a local cache.
 				}
 
 				unset( $local_is_recursion[ $mod_salt ][ $meta_key ] );
