@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the notice text for rejected images.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -415,7 +415,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.1-dev.3 =
 
-(2023/02/22) Updated "admin_bar" variable names to "toolbar". Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
+(2023/02/22) Updated the notice text for rejected images.
 
 = 15.4.0 =
 
