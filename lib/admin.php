@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu_notices' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				add_action( 'admin_bar_menu', array( $this, 'check_admin_bar_menu_notices' ), PHP_INT_MAX );
-			
+
 				add_filter( 'sucom_toolbar_notice_types', array( $this, 'filter_toolbar_notice_types' ) );
 			}
 		}

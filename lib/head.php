@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( is_array( $cache_array ) ) {
 
 				if ( isset( $cache_array[ $cache_index ] ) ) {
-				
+
 					if ( is_array( $cache_array[ $cache_index ] ) ) {
 
 						/*
@@ -389,12 +389,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( $cache_exp_secs > 0 && $read_cache ) {
 
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'cache index found in transient cache' );
-	
+
 								$this->p->debug->mark( 'build head array' );	// End timer.
 							}
-	
+
 							return $cache_array[ $cache_index ];	// Stop here.
 						}
 
@@ -403,7 +403,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 			} else $cache_array = array();	// Initialize a new transient cache array.
-	
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'cache index not in transient cache' );

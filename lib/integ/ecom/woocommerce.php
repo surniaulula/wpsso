@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
 				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
-	
+
 				/*
 				 * Add WPSSO RAR add-on filters.
 				 *

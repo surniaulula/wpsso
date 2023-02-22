@@ -1738,33 +1738,33 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.00 );
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'applying the content filters' );	// Begin timer.
 				}
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->mark( 'applying the content filters' );	// End timer.
 				}
 
 			} else {
-			
+
 				/*
 				 * Maybe fallback and apply only the 'do_blocks' filters.
 				 */
 				if ( $filter_blocks ) {
 
 					if ( $this->p->debug->enabled ) {
-				
+
 						$this->p->debug->mark( 'applying the content do blocks' );	// Begin timer.
 					}
 
 					$content = do_blocks( $content );
 
 					if ( $this->p->debug->enabled ) {
-				
+
 						$this->p->debug->mark( 'applying the content do blocks' );	// End timer.
 					}
 				}
@@ -1775,14 +1775,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( false !== strpos( $content, '[' ) ) {
 
 					if ( $this->p->debug->enabled ) {
-					
+
 						$this->p->debug->mark( 'applying the content do shortcode filters' );	// Begin timer.
 					}
 
 					$content = apply_filters( 'wpsso_do_shortcode', $content );
 
 					if ( $this->p->debug->enabled ) {
-					
+
 						$this->p->debug->mark( 'applying the content do shortcode filters' );	// End timer.
 					}
 				}
