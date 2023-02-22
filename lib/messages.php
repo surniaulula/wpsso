@@ -302,13 +302,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Please note that correct image sizes are required for several standards, including Google Rich Results.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Correct image sizes also improve click through rates by presenting your content better on social sites and in search results.', 'wpsso' ) . ' ';
+						$text .= __( 'Correct image sizes also improve click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 
 						if ( $is_meta_page ) {
 
-							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab );
+							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . ' ';
 						}
 
 						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
@@ -337,26 +337,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= ' <p><strong>';
 
-								$text .= __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' );
+								$text .= __( 'Actions available to resolve this issue, in order of preference:', 'wpsso' );
 
 								$text .= '</strong></p>';
 
 								$text .= '<ul>';
 
-								$text .= ' <li>' . __( 'Replace the original image with a higher resolution version.', 'wpsso' ) . '</li>';
+								$text .= ' <li>' . __( 'Replace the original with a higher resolution image.', 'wpsso' ) . '</li>';
 
 								if ( $is_meta_page ) {
 
-									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
+										'wpsso' ), $mb_title, $media_tab ) . '</li>';
 								}
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ),
+										$upscale_option_link ) . '</li>';
 
 								} else {
 
-									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ),
+										$percent_option_link ) . '</li>';
 								}
 
 								/*
@@ -366,11 +369,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $image_sizes_tab_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
+										'wpsso' ), $image_sizes_tab_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $image_dim_option_link ) . '</li>';
+										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).',
+											'wpsso' ), $image_dim_option_link ) . '</li>';
 									}
 								}
 
