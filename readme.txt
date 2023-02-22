@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.1-dev.2 (2023/02/21)**
+**Version 15.4.1-dev.3 (2023/02/22)**
 
 * **New Features**
 	* None.
@@ -413,9 +413,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.1-dev.2 =
+= 15.4.1-dev.3 =
 
-(2023/02/21) Updated "admin_bar" variable names to "toolbar". Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
+(2023/02/22) Updated "admin_bar" variable names to "toolbar". Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
 
 = 15.4.0 =
 
