@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.1-dev.3 (2023/02/22)**
+**Version 15.4.1-dev.4 (2023/02/22)**
 
 * **New Features**
 	* None.
@@ -413,7 +413,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.1-dev.3 =
+= 15.4.1-dev.4 =
 
 (2023/02/22) Updated the notice text for rejected images.
 
