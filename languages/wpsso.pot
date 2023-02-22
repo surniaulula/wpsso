@@ -6580,23 +6580,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:430
+#: lib/head.php:417
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:439
+#: lib/head.php:426
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:448
+#: lib/head.php:435
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:457
+#: lib/head.php:444
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:477
+#: lib/head.php:464
 msgid "adding schema json-ld markup"
 msgstr ""
 

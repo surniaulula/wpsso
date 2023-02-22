@@ -359,7 +359,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = $this->get_head_cache_index( $mod );	// Includes the page number.
-			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
 
@@ -370,43 +369,31 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache index = ' . $cache_index );
 			}
 
-			if ( $cache_exp_secs > 0 ) {
+			$cache_array = SucomUtil::get_transient_array( $cache_id );
 
-				if ( $read_cache ) {	// False when called by the post/term/user load_meta_page() method.
+			if ( is_array( $cache_array ) ) {
 
-					$cache_array = SucomUtil::get_transient_array( $cache_id );
-
-					if ( isset( $cache_array[ $cache_index ] ) ) {
-
-						if ( is_array( $cache_array[ $cache_index ] ) ) {	// Just in case.
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'cache index found in transient cache' );
-
-								$this->p->debug->mark( 'build head array' );	// End timer.
-							}
-
-							return $cache_array[ $cache_index ];	// Stop here.
-
-						} elseif ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'cache index is not an array' );
-						}
-
-					} else {
+				if ( isset( $cache_array[ $cache_index ] ) ) {
+				
+					if ( is_array( $cache_array[ $cache_index ] ) && $cache_exp_secs > 0 && $read_cache ) {	// Transient cache can be used.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'cache index not in transient cache' );
+							$this->p->debug->log( 'cache index found in transient cache' );
+
+							$this->p->debug->mark( 'build head array' );	// End timer.
 						}
 
-						if ( ! is_array( $cache_array ) ) {
+						return $cache_array[ $cache_index ];	// Stop here.
 
-							$cache_array = array();
-						}
-					}
+					} else unset( $cache_array[ $cache_index ] );
 				}
+
+			} else $cache_array = array();	// Initialize a new transient cache array.
+	
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'cache index not in transient cache' );
 			}
 
 			/*
