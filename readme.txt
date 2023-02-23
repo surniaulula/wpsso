@@ -236,10 +236,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Updated the notice text for rejected images.
 * **Bugfixes**
-	* None.
+	* Fixed the version number when registering the 'sucom-admin-page' script.
 * **Developer Notes**
 	* Updated "admin_bar" variable names to "toolbar" for uniformity.
 	* Refactored transient cache handling in the `WpssoHead->get_head_array()` method.
+	* Replaced the static version number for 'sucom-admin-page' in `WpssoScript->admin_register_page_scripts()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -415,7 +416,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.1-rc.1 =
 
-(2023/02/23) Updated the notice text for rejected images.
+(2023/02/23) Updated the notice text for rejected images. Fixed the version number when registering the 'sucom-admin-page' script.
 
 = 15.4.0 =
 
