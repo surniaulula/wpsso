@@ -352,7 +352,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_update_meta_cache( $obj_id, $meta_type ) {
 
-			if ( ! $meta_type || ! is_numeric( $obj_id ) ) {
+			if ( ! is_numeric( $obj_id ) || empty( $meta_type ) ) {
 
 				return array();
 			}

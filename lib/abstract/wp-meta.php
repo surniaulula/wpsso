@@ -2175,7 +2175,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$metadata = $mod[ 'obj' ]->get_update_meta_cache( $mod[ 'id' ] );
 
-			if ( ! empty( $metadata[ $col_info[ 'meta_key' ] ] ) ) {
+			if ( ! empty( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] ) ) {
 
 				$value = maybe_unserialize( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] );
 			}
@@ -2451,7 +2451,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
 
-					if ( isset( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
+					if ( ! empty( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
 
 						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
 						$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
