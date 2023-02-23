@@ -2333,7 +2333,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * $toolbar_notice_types will be false if is_admin_bar_showing() is false.
+		 * $toolbar_notice_types may be false if is_admin_bar_showing() is false.
 		 */
 		public function filter_toolbar_notice_types( $toolbar_notice_types ) {
 
