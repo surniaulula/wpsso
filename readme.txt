@@ -43,6 +43,8 @@ Present your content at its best on social sites and in search results - no matt
 	<li>WordPress Sitemaps XML</li>
 </ul>
 
+> Looking to fix the Google Merchant "*Price Mismatched value (page crawl): (price [price])*" error for WooCommerce variations? The WPSSO Core plugin fixes all Google Search and Google Merchant errors for WooCommerce products and product variations.
+
 <!-- /about -->
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
