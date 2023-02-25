@@ -43,7 +43,9 @@ Present your content at its best on social sites and in search results - no matt
 	<li>WordPress Sitemaps XML</li>
 </ul>
 
-> Looking to fix the Google Merchant "*Price Mismatched value (page crawl): (price [price])*" error for WooCommerce variations? The WPSSO Core plugin fixes all Google Search and Google Merchant errors for WooCommerce products and product variations.
+> **Looking to fix the Google Merchant "*Price Mismatched value (page crawl): (price [price])*" error for WooCommerce product variations?**
+>
+> The WPSSO Core plugin fixes all Google Search, Google Rich Results, and Google Merchant errors for WooCommerce products.
 
 <!-- /about -->
 
@@ -62,7 +64,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes all Google Search, Google Rich Results, Google Merchant Listings, and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes all Google Search, Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
