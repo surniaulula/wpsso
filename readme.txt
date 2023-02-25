@@ -28,10 +28,12 @@ Present your content at its best on social sites and in search results - no matt
 
 <ul>
 	<li>Facebook / Open Graph</li>
+	<li>Facebook Catalog Feed XMLs</li>
 	<li>Google Knowledge Graph</li>
 	<li>Google Merchant Feed XML</li>
 	<li>Google Rich Results / Rich Snippets</li>
 	<li>Image and Video SEO</li>
+	<li>Instagram Catalog Feed XMLs</li>
 	<li>Mobile Web Browsers</li>
 	<li>oEmbed for LinkedIn, Discord, and Drupal</li>
 	<li>Pinterest Rich Pins</li>
