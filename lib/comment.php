@@ -337,7 +337,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		}
 
 		/*
-		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->delete_options().
 		 */
 		public function delete_options( $comment_id, $rel = false ) {
 

@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->delete_options().
 		 */
 		public function delete_options( $user_id, $rel = false ) {
 

@@ -329,6 +329,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 
 				$def_currency      = $this->p->get_options( 'og_def_currency', 'USD' );
+				$def_country       = $this->p->get_options( 'og_def_country', 'none' );
+				$def_timezone      = $this->p->get_options( 'og_def_timezone', 'UTC' );
 				$def_art_section   = $this->p->get_options( 'schema_def_article_section', 'none' );
 				$def_adult_type    = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
 				$def_age_group     = $this->p->get_options( 'schema_def_product_age_group', 'none' );
@@ -341,19 +343,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_size_group_0  = $this->p->get_options( 'schema_def_product_size_group_0', 'none' );
 				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
 				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
-
-				/*
-				 * Default timezone.
-				 *
-				 * Note that the timezone option will be empty if a UTC offset (instead of a city) has been
-				 * selected in the WordPress settings.
-				 */
-				$def_timezone = get_option( 'timezone_string' );
-
-				if ( empty( $def_timezone ) ) {
-
-					$def_timezone = 'UTC';
-				}
 
 				$md_defs = array(
 					'checksum'          => '',	// Checksum of plugin versions.
@@ -704,7 +693,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_place_city'           => '',
 					'schema_review_item_place_region'         => '',
 					'schema_review_item_place_postal_code'    => '',
-					'schema_review_item_place_country'        => '',
+					'schema_review_item_place_country'        => $def_country,
 
 					/*
 					 * Schema Review Subject: Place / Local Business.
@@ -947,11 +936,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Maybe renamed some option keys.
 			 */
-			$mod = $this->get_mod( $obj_id );
-
-			$version_keys = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
-
-			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
+			$mod          = $this->get_mod( $obj_id );
+			$version_keys = (array) apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
+			$md_opts      = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
 			/*
 			 * Check for schema type IDs that need to be renamed.
