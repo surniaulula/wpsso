@@ -350,8 +350,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 */
 				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $ext_info[ 'short' ] );
 
-				$already_rated_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'Thank you for supporting and encouraging your developers!', 'wpsso' ), $ext_name_transl ) . '</p>';
+				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for supporting and encouraging your developers!',
+					'wpsso' ), $ext_name_transl ) . '</p>';
 
 				$already_rated_button = '<div class="notice-single-button">' .
 					$form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',

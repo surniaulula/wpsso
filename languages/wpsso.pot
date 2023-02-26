@@ -4995,7 +4995,7 @@ msgstr[1] ""
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:341 lib/admin-head.php:353 lib/admin-head.php:448
+#: lib/admin-head.php:341 lib/admin-head.php:448
 msgid "Awesome!"
 msgstr ""
 
@@ -5007,7 +5007,7 @@ msgstr ""
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:354
+#: lib/admin-head.php:353
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr ""
 
