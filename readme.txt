@@ -242,7 +242,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Re-added the WPSSO JSON add-on deprecation notice.
 * **Bugfixes**
-	* Fixed missing add-on names in deprecation notices.
+	* Fixed missing add-on names in deprecation notices for plugins that no longer exist.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
