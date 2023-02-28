@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.4.1\n"
+"Project-Id-Version: WPSSO Core 15.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-02-22 06:21-0800\n"
+"PO-Revision-Date: 2023-02-28 07:17-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4444,7 +4444,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
 #: gettext/gettext-lib-pro.php:334 gettext/gettext-lib-pro.php:337
-#: gettext/gettext-lib-pro.php:340 lib/conflict.php:296
+#: gettext/gettext-lib-pro.php:340 lib/conflict.php:324
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:174
 #: lib/pro/media/wistia.php:321
 msgid "Please contact your hosting provider to have the missing PHP function installed."
@@ -4459,7 +4459,7 @@ msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
-#: lib/conflict.php:184 lib/integ/review/yotpowc.php:185 lib/loader.php:204
+#: lib/conflict.php:213 lib/integ/review/yotpowc.php:185 lib/loader.php:204
 #: lib/loader.php:218 lib/post.php:1648 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
@@ -4505,54 +4505,54 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:1218
+#: lib/abstract/wp-meta.php:1205
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1289
+#: lib/abstract/wp-meta.php:1276
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1293
+#: lib/abstract/wp-meta.php:1280
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1296 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1283 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1300
+#: lib/abstract/wp-meta.php:1287
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1301
+#: lib/abstract/wp-meta.php:1288
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1302
+#: lib/abstract/wp-meta.php:1289
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1303
+#: lib/abstract/wp-meta.php:1290
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1636
+#: lib/abstract/wp-meta.php:1623
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:1972 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1959 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstract/wp-meta.php:1974
+#: lib/abstract/wp-meta.php:1961
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
@@ -4758,7 +4758,7 @@ msgstr[1] "SVP installer ces mises à jour dès que possible."
 msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
-#: lib/admin-head.php:341 lib/admin-head.php:353 lib/admin-head.php:448
+#: lib/admin-head.php:341 lib/admin-head.php:448
 msgid "Awesome!"
 msgstr "Excellent!"
 
@@ -4770,7 +4770,7 @@ msgstr "Merci d'avoir noté l'extension %s!"
 msgid "I've already rated %s."
 msgstr "J'ai déjà noté %s."
 
-#: lib/admin-head.php:354
+#: lib/admin-head.php:353
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr "Merci de soutenir et d'encourager vos développeurs!"
 
@@ -5117,154 +5117,154 @@ msgstr "%s adresses web de sites enregistrées"
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses web de sites enregistrées"
 
-#: lib/admin.php:2311
+#: lib/admin.php:2306
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:2465
+#: lib/admin.php:2460
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:2473
+#: lib/admin.php:2468
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr "Éditeur du site Web"
 
-#: lib/admin.php:2481 lib/options.php:1179
+#: lib/admin.php:2476 lib/options.php:1179
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:2486 lib/options.php:1184
+#: lib/admin.php:2481 lib/options.php:1184
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:2499
+#: lib/admin.php:2494
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:2504
+#: lib/admin.php:2499
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2509
+#: lib/admin.php:2504
 msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr "Minimiser le Schéma JSON-LD"
 
-#: lib/admin.php:2514 lib/util.php:3198
+#: lib/admin.php:2509 lib/util.php:3198
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
 
-#: lib/admin.php:2522 lib/messages-tooltip-plugin.php:60
+#: lib/admin.php:2517 lib/messages-tooltip-plugin.php:60
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
 
-#: lib/admin.php:2537
+#: lib/admin.php:2532
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:2553
+#: lib/admin.php:2548
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:2574
+#: lib/admin.php:2569
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2605
+#: lib/admin.php:2600
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2626
+#: lib/admin.php:2621
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2635
+#: lib/admin.php:2630
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:2756
+#: lib/admin.php:2751
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:2762
+#: lib/admin.php:2757
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:2769
+#: lib/admin.php:2764
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:2783
+#: lib/admin.php:2778
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:2792
+#: lib/admin.php:2787
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:2801
+#: lib/admin.php:2796
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:3224
+#: lib/admin.php:3219
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:3225
+#: lib/admin.php:3220
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:3230
+#: lib/admin.php:3225
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:3231
+#: lib/admin.php:3226
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:3242
+#: lib/admin.php:3237
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:3243
+#: lib/admin.php:3238
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:3249
+#: lib/admin.php:3244
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:3256
+#: lib/admin.php:3251
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:3263
+#: lib/admin.php:3258
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:3270
+#: lib/admin.php:3265
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
@@ -5571,95 +5571,108 @@ msgstr "Il n'y a absolument aucun avantage à continuer à utiliser l'extension 
 msgid "To avoid adding incorrect and confusing Schema markup to your webpages, <a href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
 msgstr "Pour éviter d'ajouter un balisage de Schéma incorrect et déroutant à vos pages Web, <a href=\"%1$s\">veuillez désactiver immédiatement l'extension %2$s</a>."
 
-#: lib/conflict.php:71
-msgid "The %1$s add-on has been discontinued."
-msgstr "L'ajout %1$s a été abandonné."
+#: lib/conflict.php:70
+msgid "WPSSO Inherit Parent Metadata"
+msgstr "WPSSO hériter métadonnées des parents"
 
-#: lib/conflict.php:73
+#: lib/conflict.php:72 lib/conflict.php:92
+msgid "The %1$s add-on has been deprecated."
+msgstr "L'ajout %1$s est obsolète."
+
+#: lib/conflict.php:74 lib/conflict.php:94
 msgid "All features of the %1$s add-on were integrated into the %2$s plugin."
 msgstr "Toutes les fonctionnalités de l'ajout %1$s ont été intégrées dans l'extension %2$s."
 
-#: lib/conflict.php:76
-msgid "<a href=\"%1$s\">You can now deactivate and delete the %2$s add-on</a>."
-msgstr "<a href=\"%1$s\">Vous pouvez désactiver et supprimer l'ajout %2$s</a>."
+#: lib/conflict.php:77 lib/conflict.php:97 lib/conflict.php:124
+#: lib/conflict.php:152
+msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
+msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout %2$s</a>."
 
-#: lib/conflict.php:92 lib/conflict.php:116
+#: lib/conflict.php:90
+msgid "WPSSO Schema JSON-LD Markup"
+msgstr "WPSSO balisage JSON-LD de Schéma"
+
+#: lib/conflict.php:110
+msgid "WPSSO Organization Markup"
+msgstr "WPSSO balisage d'organisation"
+
+#: lib/conflict.php:114 lib/conflict.php:142
 msgid "The %1$s add-on has been deprecated and replaced by the %2$s add-on."
 msgstr "L'ajout %1$s a été déprécié et remplacé par l'ajout %2$s."
 
-#: lib/conflict.php:96 lib/conflict.php:120
-msgid "After installing and activating the %1$s add-on, <a href=\"%2$s\">please deactivate and delete the deprecated %3$s add-on</a>."
+#: lib/conflict.php:119 lib/conflict.php:147
+msgid "After installing and activating %1$s, <a href=\"%2$s\">please deactivate and delete the %3$s add-on</a>."
 msgstr "Après avoir installé et activé l'ajout %1$s, <a href=\"%2$s\">veuillez désactiver et supprimer l'ajout obsolète %3$s</a>."
 
-#: lib/conflict.php:100 lib/conflict.php:124
-msgid "<a href=\"%1$s\">Please deactivate and delete the deprecated %2$s add-on</a>."
-msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout obsolète %2$s</a>."
+#: lib/conflict.php:138
+msgid "WPSSO Place and Local SEO Markup"
+msgstr "WPSSO balisage d'endroit et SEO local"
 
-#: lib/conflict.php:158
+#: lib/conflict.php:187
 msgid "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes)."
 msgstr "Votre base de données est configurée pour une taille \"%1$s\" de %2$d octets, ce qui est inférieure à la valeur minimale recommandée de %3$d octets (la valeur par défaut courante est %4$d octets)."
 
-#: lib/conflict.php:160
+#: lib/conflict.php:189
 msgid "Please contact your hosting provider and have the \"%1$s\" database option adjusted to a larger and safer value."
 msgstr "SVP contacter votre hébergeur pour que l'option de base de données \"%1$s\" soit ajustée à une valeur plus grande et plus sûre."
 
-#: lib/conflict.php:162
+#: lib/conflict.php:191
 msgid "See the %1$s sections %2$s and %3$s for more information on this database option."
 msgstr "Voir les sections %2$s et %3$s de %1$s pour plus d'informations sur cette option de base de données."
 
-#: lib/conflict.php:232
+#: lib/conflict.php:260
 msgid "WordPress is configured to use the %1$s image editing class but the <a href=\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr "WordPress est configuré pour utiliser la classe d'édition d'image %1$s mais le <a href=\"%2$s\">module d'extension PHP %3$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:236
+#: lib/conflict.php:264
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:243
+#: lib/conflict.php:271
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> pour \"%3$s\" retourne faux."
 
-#: lib/conflict.php:244
+#: lib/conflict.php:272
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr "https://secure.php.net/manual/fr/function.extension-loaded.php"
 
-#: lib/conflict.php:254
+#: lib/conflict.php:282
 msgid "Note that the ImageMagick application and the PHP \"%1$s\" extension are two different products - this error is for the PHP \"%1$s\" extension, not the ImageMagick application."
 msgstr "Notez que l'application ImageMagick et l'extension PHP \"%1$s\" sont deux produits différents - cette erreur est pour l'extension PHP \"%1$s\", et non l'application ImageMagick."
 
-#: lib/conflict.php:257
+#: lib/conflict.php:285
 msgid "Please contact your hosting provider to have the missing PHP \"%1$s\" extension installed and enabled."
 msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP \"%1$s\" manquante."
 
-#: lib/conflict.php:275
+#: lib/conflict.php:303
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s class is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la classe %3$s est manquante."
 
-#: lib/conflict.php:277
+#: lib/conflict.php:305
 msgid "Please contact your hosting provider to have the missing PHP class installed."
 msgstr "SVP contacter votre hébergeur pour installer la classe PHP manquante."
 
-#: lib/conflict.php:294
+#: lib/conflict.php:322
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/conflict.php:333
+#: lib/conflict.php:361
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:335
+#: lib/conflict.php:363
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:337
+#: lib/conflict.php:365
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:360 lib/messages.php:1242
+#: lib/conflict.php:388 lib/messages.php:1242
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines from indexing this site."
 msgstr "L'option WordPress <a href=\"%s\">Visibilité par les moteurs de recherche</a> est configurée pour décourager les moteurs de recherche d'indexer ce site."
 
-#: lib/conflict.php:362
+#: lib/conflict.php:390
 msgid "This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site."
 msgstr "Ceci n'est pas compatible avec l'objectif d'optimisation de votre contenu pour les moteurs sociaux et de recherche - veuillez décocher l'option pour permettre aux moteurs de recherche et aux sites sociaux d'accéder votre site."
 
@@ -10084,7 +10097,7 @@ msgstr "Page %1$d de %2$d"
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2153
+#: lib/page.php:2176
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
