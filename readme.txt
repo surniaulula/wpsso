@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.2-rc.1 (2023/02/28)**
+**Version 15.4.2 (2023/02/28)**
 
 * **New Features**
 	* None.
@@ -434,7 +434,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.2-rc.1 =
+= 15.4.2 =
 
 (2023/02/28) Re-added the WPSSO JSON add-on deprecation notice.
 
