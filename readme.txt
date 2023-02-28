@@ -235,6 +235,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.4.2-rc.1 (2023/02/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Re-added the WPSSO JSON add-on deprecation notice.
+* **Bugfixes**
+	* Fixed missing add-on names in deprecation notices.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.4.1 (2023/02/23)**
 
 * **New Features**
@@ -419,6 +433,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.4.2-rc.1 =
+
+(2023/02/28) Re-added the WPSSO JSON add-on deprecation notice.
 
 = 15.4.1 =
 
