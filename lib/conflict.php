@@ -67,16 +67,37 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso-inherit-parent-meta' ), $plugins_url );
+				$addon_name  = __( 'WPSSO Inherit Parent Metadata', 'plugin name', 'wpsso' );
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $pkg_info[ 'wpssoipm' ][ 'name' ] ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
 
 				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
-					$pkg_info[ 'wpssoipm' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+					$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
-				$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
-					$plugins_url, $pkg_info[ 'wpssoipm' ][ 'name' ] );
+				$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
+					$plugins_url, $addon_name ) . ' ';
 
 				$notice_key = 'deactivate-wpsso-inherit-parent-meta';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
+			}
+
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+				
+				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
+				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
+				$addon_name  = __( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
+
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
+
+				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
+					$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+
+				$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
+					$plugins_url, $addon_name ) . ' ';
+
+				$notice_key = 'deactivate-wpsso-schema-json-ld';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
@@ -86,18 +107,22 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso+organization+markup' ), $plugins_url );
-				$addon_name  = $pkg_info[ 'wpssoopm' ][ 'name' ];
-				$addon_link  = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $addon_name ) : $addon_name;
+				$addon_name  = __( 'WPSSO Organization Markup', 'plugin name', 'wpsso' );
+				$repl_name   = $pkg_info[ 'wpssoopm' ][ 'name' ];
+				$repl_link   = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $repl_name ) : $repl_name;
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoorg' ][ 'name' ], $addon_link ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
+					$addon_name, $repl_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
-					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $addon_link, $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
+					$notice_msg .= sprintf( __( 'After installing and activating %1$s, <a href="%2$s">please deactivate and delete the %3$s add-on</a>.',
+						'wpsso' ), $repl_link, $plugins_url, $addon_name ) . ' ';
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
+						$plugins_url, $addon_name ) . ' ';
 				}
 
 				$notice_key = 'deactivate-wpsso-organization';
@@ -110,18 +135,22 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso-plm' ), $plugins_url );
-				$addon_link  = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ?
-					$this->p->util->get_admin_url( 'addons#wpssoopm', $pkg_info[ 'wpssoopm' ][ 'name' ] ) : $pkg_info[ 'wpssoopm' ][ 'name' ];
+				$addon_name  = __( 'WPSSO Place and Local SEO Markup', 'plugin name', 'wpsso' );
+				$repl_name   = $pkg_info[ 'wpssoopm' ][ 'name' ];
+				$repl_link   = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $repl_name ) : $repl_name;
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoplm' ][ 'name' ], $addon_link ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
+					$addon_name, $repl_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
-					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $addon_link, $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+					$notice_msg .= sprintf( __( 'After installing and activating %1$s, <a href="%2$s">please deactivate and delete the %3$s add-on</a>.',
+						'wpsso' ), $repl_link, $plugins_url, $addon_name ) . ' ';
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
+						$plugins_url, $addon_name ) . ' ';
 				}
 
 				$notice_key = 'deactivate-wpsso-plm';
@@ -197,7 +226,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				$notice_msg = '';	// Clear any previous error message.
-
 				$notice_key = '';	// Clear any previous error message key.
 
 				/*
