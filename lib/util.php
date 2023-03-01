@@ -3872,5 +3872,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			return '#sso-' . ( $mod ? self::get_mod_anchor( $mod ) : '' );
 		}
+
+		/**
+		 * Deprecated since WPSSO Core v6.10.0 on 2019/10/28.
+		 *
+		 * Keep for old add-ons that still call this method on activation.
+		 */
+		public static function save_all_times( $ext, $version ) {
+
+			WpssoUtilReg::update_ext_version( $ext, $version );
+		}
 	}
 }
