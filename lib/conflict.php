@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$plugins_url = add_query_arg( array( 's' => 'wpsso-inherit-parent-meta' ), $plugins_url );
 				$addon_name  = __( 'WPSSO Inherit Parent Metadata', 'plugin name', 'wpsso' );
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $addon_name ) . ' ';
 
 				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
 					$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
@@ -84,15 +84,30 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
-				$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
+				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
+				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
+				$addon_name  = __( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
 
-				if ( empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) || ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+				if ( ! empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) && empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
-					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
-					$addon_name  = __( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
+					$notice_msg = sprintf( __( 'The %1$s add-on was discontinued in October 2021.', 'wpsso' ), $addon_name ) . ' ';
 
-					$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
+					$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s and %3$s plugins at that time.', 'wpsso' ),
+						$addon_name, $pkg_info[ 'wpsso' ][ 'name_std' ], $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( 'The add-on may continue to function as intended, but is no longer actively maintained or tested for compatibility with %1$s.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( '<a href="%1$s">We suggest deactivating the %2$s add-on in production sites</a>.', 'wpsso' ),
+						$plugins_url, $addon_name ) . ' ';
+
+					$notice_key = 'deactivate-wpsso-schema-json-ld-pro';
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, 3 * MONTH_IN_SECONDS );
+
+				} else {
+
+					$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $addon_name ) . ' ';
 
 					$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
 						$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
@@ -115,7 +130,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$repl_name   = $pkg_info[ 'wpssoopm' ][ 'name' ];
 				$repl_link   = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $repl_name ) : $repl_name;
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
+				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued and replaced by the %2$s add-on.', 'wpsso' ),
 					$addon_name, $repl_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
@@ -143,7 +158,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$repl_name   = $pkg_info[ 'wpssoopm' ][ 'name' ];
 				$repl_link   = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $repl_name ) : $repl_name;
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
+				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued and replaced by the %2$s add-on.', 'wpsso' ),
 					$addon_name, $repl_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
