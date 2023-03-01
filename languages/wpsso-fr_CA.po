@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-02-28 07:17-0800\n"
+"PO-Revision-Date: 2023-03-01 04:49-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4444,7 +4444,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
 #: gettext/gettext-lib-pro.php:334 gettext/gettext-lib-pro.php:337
-#: gettext/gettext-lib-pro.php:340 lib/conflict.php:324
+#: gettext/gettext-lib-pro.php:340 lib/conflict.php:343
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:174
 #: lib/pro/media/wistia.php:321
 msgid "Please contact your hosting provider to have the missing PHP function installed."
@@ -4459,7 +4459,7 @@ msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
-#: lib/conflict.php:213 lib/integ/review/yotpowc.php:185 lib/loader.php:204
+#: lib/conflict.php:232 lib/integ/review/yotpowc.php:185 lib/loader.php:204
 #: lib/loader.php:218 lib/post.php:1648 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
@@ -5575,16 +5575,16 @@ msgstr "Pour éviter d'ajouter un balisage de Schéma incorrect et déroutant à
 msgid "WPSSO Inherit Parent Metadata"
 msgstr "WPSSO hériter métadonnées des parents"
 
-#: lib/conflict.php:72 lib/conflict.php:92
-msgid "The %1$s add-on has been deprecated."
-msgstr "L'ajout %1$s est obsolète."
+#: lib/conflict.php:72 lib/conflict.php:110
+msgid "The %1$s add-on is deprecated."
+msgstr "L'ajout %1$s est déprécié."
 
-#: lib/conflict.php:74 lib/conflict.php:94
+#: lib/conflict.php:74 lib/conflict.php:112
 msgid "All features of the %1$s add-on were integrated into the %2$s plugin."
 msgstr "Toutes les fonctionnalités de l'ajout %1$s ont été intégrées dans l'extension %2$s."
 
-#: lib/conflict.php:77 lib/conflict.php:97 lib/conflict.php:124
-#: lib/conflict.php:152
+#: lib/conflict.php:77 lib/conflict.php:115 lib/conflict.php:143
+#: lib/conflict.php:171
 msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
 msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout %2$s</a>."
 
@@ -5592,87 +5592,103 @@ msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout %2$s</a>."
 msgid "WPSSO Schema JSON-LD Markup"
 msgstr "WPSSO balisage JSON-LD de Schéma"
 
-#: lib/conflict.php:110
+#: lib/conflict.php:94
+msgid "The %1$s add-on is deprecated since October 2021."
+msgstr "L'ajout %1$s est déprécié depuis Octobre 2021."
+
+#: lib/conflict.php:96
+msgid "All features of the %1$s add-on were integrated into the %2$s and %3$s plugins at that time."
+msgstr "Toutes les fonctionnalités de l'ajout %1$s ont été intégrées dans les extensions %2$s et %3$s à cette date."
+
+#: lib/conflict.php:99
+msgid "The add-on may continue to function as intended, but is no longer actively maintained or tested for compatibility with the %1$s plugin."
+msgstr "L'ajout peut continuer à fonctionner comme prévu, mais n'est plus activement maintenu ou testé pour la compatibilité avec l'extension %1$s."
+
+#: lib/conflict.php:101
+msgid "<a href=\"%1$s\">We suggest deactivating the %2$s add-on at your earliest convenience</a>."
+msgstr "<a href=\"%1$s\">Nous suggérons de désactiver l'ajout %2$s dès que possible, à votre convenance</a>."
+
+#: lib/conflict.php:129
 msgid "WPSSO Organization Markup"
 msgstr "WPSSO balisage d'organisation"
 
-#: lib/conflict.php:114 lib/conflict.php:142
-msgid "The %1$s add-on has been deprecated and replaced by the %2$s add-on."
-msgstr "L'ajout %1$s a été déprécié et remplacé par l'ajout %2$s."
+#: lib/conflict.php:133 lib/conflict.php:161
+msgid "The %1$s add-on is deprecated and replaced by the %2$s add-on."
+msgstr "L'ajout %1$s est déprécié et remplacé par l'ajout %2$s."
 
-#: lib/conflict.php:119 lib/conflict.php:147
+#: lib/conflict.php:138 lib/conflict.php:166
 msgid "After installing and activating %1$s, <a href=\"%2$s\">please deactivate and delete the %3$s add-on</a>."
 msgstr "Après avoir installé et activé l'ajout %1$s, <a href=\"%2$s\">veuillez désactiver et supprimer l'ajout obsolète %3$s</a>."
 
-#: lib/conflict.php:138
+#: lib/conflict.php:157
 msgid "WPSSO Place and Local SEO Markup"
 msgstr "WPSSO balisage d'endroit et SEO local"
 
-#: lib/conflict.php:187
+#: lib/conflict.php:206
 msgid "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes)."
 msgstr "Votre base de données est configurée pour une taille \"%1$s\" de %2$d octets, ce qui est inférieure à la valeur minimale recommandée de %3$d octets (la valeur par défaut courante est %4$d octets)."
 
-#: lib/conflict.php:189
+#: lib/conflict.php:208
 msgid "Please contact your hosting provider and have the \"%1$s\" database option adjusted to a larger and safer value."
 msgstr "SVP contacter votre hébergeur pour que l'option de base de données \"%1$s\" soit ajustée à une valeur plus grande et plus sûre."
 
-#: lib/conflict.php:191
+#: lib/conflict.php:210
 msgid "See the %1$s sections %2$s and %3$s for more information on this database option."
 msgstr "Voir les sections %2$s et %3$s de %1$s pour plus d'informations sur cette option de base de données."
 
-#: lib/conflict.php:260
+#: lib/conflict.php:279
 msgid "WordPress is configured to use the %1$s image editing class but the <a href=\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr "WordPress est configuré pour utiliser la classe d'édition d'image %1$s mais le <a href=\"%2$s\">module d'extension PHP %3$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:264
+#: lib/conflict.php:283
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:271
+#: lib/conflict.php:290
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> pour \"%3$s\" retourne faux."
 
-#: lib/conflict.php:272
+#: lib/conflict.php:291
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr "https://secure.php.net/manual/fr/function.extension-loaded.php"
 
-#: lib/conflict.php:282
+#: lib/conflict.php:301
 msgid "Note that the ImageMagick application and the PHP \"%1$s\" extension are two different products - this error is for the PHP \"%1$s\" extension, not the ImageMagick application."
 msgstr "Notez que l'application ImageMagick et l'extension PHP \"%1$s\" sont deux produits différents - cette erreur est pour l'extension PHP \"%1$s\", et non l'application ImageMagick."
 
-#: lib/conflict.php:285
+#: lib/conflict.php:304
 msgid "Please contact your hosting provider to have the missing PHP \"%1$s\" extension installed and enabled."
 msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP \"%1$s\" manquante."
 
-#: lib/conflict.php:303
+#: lib/conflict.php:322
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s class is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la classe %3$s est manquante."
 
-#: lib/conflict.php:305
+#: lib/conflict.php:324
 msgid "Please contact your hosting provider to have the missing PHP class installed."
 msgstr "SVP contacter votre hébergeur pour installer la classe PHP manquante."
 
-#: lib/conflict.php:322
+#: lib/conflict.php:341
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/conflict.php:361
+#: lib/conflict.php:380
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:363
+#: lib/conflict.php:382
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:365
+#: lib/conflict.php:384
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:388 lib/messages.php:1242
+#: lib/conflict.php:407 lib/messages.php:1242
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines from indexing this site."
 msgstr "L'option WordPress <a href=\"%s\">Visibilité par les moteurs de recherche</a> est configurée pour décourager les moteurs de recherche d'indexer ce site."
 
-#: lib/conflict.php:390
+#: lib/conflict.php:409
 msgid "This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site."
 msgstr "Ceci n'est pas compatible avec l'objectif d'optimisation de votre contenu pour les moteurs sociaux et de recherche - veuillez décocher l'option pour permettre aux moteurs de recherche et aux sites sociaux d'accéder votre site."
 

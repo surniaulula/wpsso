@@ -5848,7 +5848,7 @@ msgid "WPSSO Inherit Parent Metadata"
 msgstr ""
 
 #: lib/conflict.php:72 lib/conflict.php:110
-msgid "The %1$s add-on has been discontinued."
+msgid "The %1$s add-on is deprecated."
 msgstr ""
 
 #: lib/conflict.php:74 lib/conflict.php:112
@@ -5865,7 +5865,7 @@ msgid "WPSSO Schema JSON-LD Markup"
 msgstr ""
 
 #: lib/conflict.php:94
-msgid "The %1$s add-on was discontinued in October 2021."
+msgid "The %1$s add-on is deprecated since October 2021."
 msgstr ""
 
 #: lib/conflict.php:96
@@ -5877,13 +5877,13 @@ msgstr ""
 #: lib/conflict.php:99
 msgid ""
 "The add-on may continue to function as intended, but is no longer actively "
-"maintained or tested for compatibility with %1$s."
+"maintained or tested for compatibility with the %1$s plugin."
 msgstr ""
 
 #: lib/conflict.php:101
 msgid ""
-"<a href=\"%1$s\">We suggest deactivating the %2$s add-on in production "
-"sites</a>."
+"<a href=\"%1$s\">We suggest deactivating the %2$s add-on at your earliest "
+"convenience</a>."
 msgstr ""
 
 #: lib/conflict.php:129
@@ -5891,7 +5891,7 @@ msgid "WPSSO Organization Markup"
 msgstr ""
 
 #: lib/conflict.php:133 lib/conflict.php:161
-msgid "The %1$s add-on has been discontinued and replaced by the %2$s add-on."
+msgid "The %1$s add-on is deprecated and replaced by the %2$s add-on."
 msgstr ""
 
 #: lib/conflict.php:138 lib/conflict.php:166
