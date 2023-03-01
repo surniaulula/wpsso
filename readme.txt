@@ -235,6 +235,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.4.3-dev.1 (2023/03/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.4.2 (2023/02/28)**
 
 * **New Features**
@@ -433,6 +447,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.4.3-dev.1 =
+
+(2023/03/01) Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
 
 = 15.4.2 =
 
