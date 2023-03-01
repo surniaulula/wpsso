@@ -3876,7 +3876,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Deprecated since WPSSO Core v6.10.0 on 2019/10/28.
 		 *
-		 * Keep for old add-ons that still call this method on activation.
+		 * Keep for old deprecated add-ons that use this method on activation.
 		 */
 		public static function save_all_times( $ext, $version ) {
 
