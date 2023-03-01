@@ -83,23 +83,27 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-				
-				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
-				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
-				$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
-				$addon_name  = __( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
+				$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
-				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
-					$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+				if ( empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) || ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-				$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
-					$plugins_url, $addon_name ) . ' ';
+					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
+					$addon_name  = __( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
 
-				$notice_key = 'deactivate-wpsso-schema-json-ld';
+					$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $addon_name ) . ' ';
 
-				$this->p->notice->err( $notice_msg, null, $notice_key );
+					$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
+						$addon_name, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
+						$plugins_url, $addon_name ) . ' ';
+
+					$notice_key = 'deactivate-wpsso-schema-json-ld';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
+				}
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'org' ] ) ) {

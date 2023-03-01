@@ -4634,7 +4634,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:334 gettext/gettext-lib-pro.php:337
-#: gettext/gettext-lib-pro.php:340 lib/conflict.php:324
+#: gettext/gettext-lib-pro.php:340 lib/conflict.php:328
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:174
 #: lib/pro/media/wistia.php:321
 msgid ""
@@ -4655,7 +4655,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
-#: lib/conflict.php:213 lib/integ/review/yotpowc.php:185 lib/loader.php:204
+#: lib/conflict.php:217 lib/integ/review/yotpowc.php:185 lib/loader.php:204
 #: lib/loader.php:218 lib/post.php:1648 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526
 msgid "%s error:"
@@ -5847,131 +5847,131 @@ msgstr ""
 msgid "WPSSO Inherit Parent Metadata"
 msgstr ""
 
-#: lib/conflict.php:72 lib/conflict.php:92
+#: lib/conflict.php:72 lib/conflict.php:95
 msgid "The %1$s add-on has been deprecated."
 msgstr ""
 
-#: lib/conflict.php:74 lib/conflict.php:94
+#: lib/conflict.php:74 lib/conflict.php:97
 msgid "All features of the %1$s add-on were integrated into the %2$s plugin."
 msgstr ""
 
-#: lib/conflict.php:77 lib/conflict.php:97 lib/conflict.php:124
-#: lib/conflict.php:152
+#: lib/conflict.php:77 lib/conflict.php:100 lib/conflict.php:128
+#: lib/conflict.php:156
 msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
 msgstr ""
 
-#: lib/conflict.php:90
+#: lib/conflict.php:93
 msgid "WPSSO Schema JSON-LD Markup"
 msgstr ""
 
-#: lib/conflict.php:110
+#: lib/conflict.php:114
 msgid "WPSSO Organization Markup"
 msgstr ""
 
-#: lib/conflict.php:114 lib/conflict.php:142
+#: lib/conflict.php:118 lib/conflict.php:146
 msgid "The %1$s add-on has been deprecated and replaced by the %2$s add-on."
 msgstr ""
 
-#: lib/conflict.php:119 lib/conflict.php:147
+#: lib/conflict.php:123 lib/conflict.php:151
 msgid ""
 "After installing and activating %1$s, <a href=\"%2$s\">please deactivate and "
 "delete the %3$s add-on</a>."
 msgstr ""
 
-#: lib/conflict.php:138
+#: lib/conflict.php:142
 msgid "WPSSO Place and Local SEO Markup"
 msgstr ""
 
-#: lib/conflict.php:187
+#: lib/conflict.php:191
 msgid ""
 "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less "
 "than the recommended minimum value of %3$d bytes (a common default value is "
 "%4$d bytes)."
 msgstr ""
 
-#: lib/conflict.php:189
+#: lib/conflict.php:193
 msgid ""
 "Please contact your hosting provider and have the \"%1$s\" database option "
 "adjusted to a larger and safer value."
 msgstr ""
 
-#: lib/conflict.php:191
+#: lib/conflict.php:195
 msgid ""
 "See the %1$s sections %2$s and %3$s for more information on this database "
 "option."
 msgstr ""
 
-#: lib/conflict.php:260
+#: lib/conflict.php:264
 msgid ""
 "WordPress is configured to use the %1$s image editing class but the <a href="
 "\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:264
+#: lib/conflict.php:268
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:271
+#: lib/conflict.php:275
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr ""
 
-#: lib/conflict.php:272
+#: lib/conflict.php:276
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr ""
 
-#: lib/conflict.php:282
+#: lib/conflict.php:286
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
 "different products - this error is for the PHP \"%1$s\" extension, not the "
 "ImageMagick application."
 msgstr ""
 
-#: lib/conflict.php:285
+#: lib/conflict.php:289
 msgid ""
 "Please contact your hosting provider to have the missing PHP \"%1$s\" "
 "extension installed and enabled."
 msgstr ""
 
-#: lib/conflict.php:303
+#: lib/conflict.php:307
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "class is missing."
 msgstr ""
 
-#: lib/conflict.php:305
+#: lib/conflict.php:309
 msgid ""
 "Please contact your hosting provider to have the missing PHP class installed."
 msgstr ""
 
-#: lib/conflict.php:322
+#: lib/conflict.php:326
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "function is missing."
 msgstr ""
 
-#: lib/conflict.php:361
+#: lib/conflict.php:365
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:363
+#: lib/conflict.php:367
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:365
+#: lib/conflict.php:369
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:388 lib/messages.php:1242
+#: lib/conflict.php:392 lib/messages.php:1242
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
 msgstr ""
 
-#: lib/conflict.php:390
+#: lib/conflict.php:394
 msgid ""
 "This is not compatible with the purpose of optimizing your content for "
 "social and search engines - please uncheck the option to allow search "
