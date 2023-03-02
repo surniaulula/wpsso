@@ -235,12 +235,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.3-dev.1 (2023/03/01)**
+**Version 15.4.3-dev.1 (2023/03/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the WPSSO JSON add-on deprecation notice.
 * **Bugfixes**
 	* Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
 * **Developer Notes**
@@ -450,7 +450,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.4.3-dev.1 =
 
-(2023/03/01) Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
+(2023/03/02) Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
 
 = 15.4.2 =
 
