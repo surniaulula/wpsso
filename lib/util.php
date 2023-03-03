@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 
-						self::safe_error_log( $error_pre . ' ' . $function_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable');
+						self::safe_error_log( $error_pre . ' ' . $function_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -3849,13 +3849,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! $ret ) {
 
-				$human_time       = human_time_diff( 0, $cache_exp_secs );
+				$human_time = human_time_diff( 0, $cache_exp_secs );
+
 				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+
+				$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+
 				$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
 					'<code>set_time_limit()</code>', $human_time, $task_name_transl );
+
 				$notice_key = $task_name . '-task-set-time-limit-error';
 
 				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 			}
 
 			return $ret;
@@ -3879,6 +3886,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Keep for old deprecated add-ons that use this method on activation.
 		 */
 		public static function save_all_times( $ext, $version ) {
+
+			_deprecated_function( __METHOD__ . '()', '2019/10/28', $replacement = 'WpssoUtilReg::update_ext_version()' );	// Deprecation message.
 
 			WpssoUtilReg::update_ext_version( $ext, $version );
 		}

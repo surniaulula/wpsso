@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.4.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.4.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4657,7 +4657,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:343 gettext/gettext-lib-pro.php:354
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:185 lib/loader.php:204
 #: lib/loader.php:218 lib/post.php:1648 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526
+#: lib/pro/util/shorten.php:526 lib/util.php:3856
 msgid "%s error:"
 msgstr ""
 
@@ -12775,7 +12775,7 @@ msgstr ""
 msgid "Aborting task to %s - another background task is running."
 msgstr ""
 
-#: lib/util.php:3854
+#: lib/util.php:3858
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
