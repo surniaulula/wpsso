@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.4.3-dev.2',	// Plugin version.
+					'version'     => '15.4.3-dev.3',	// Plugin version.
 					'opt_version' => '959',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1826,7 +1826,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags'          => 0,		// Enable Tags for Pages.
 					'plugin_new_user_is_person' => 0,		// Add Person Role for New Users.
 					'plugin_inherit_featured'   => 1,		// Inherit Featured Image.
-					'plugin_inherit_images'     => 0,		// Inherit Custom Images.
+					'plugin_inherit_images'     => 1,		// Inherit Custom Images.
 					'plugin_check_img_dims'     => 0,		// Image Dimension Checks.
 					'plugin_upscale_images'     => 0,		// Upscale Media Library Images.
 					'plugin_upscale_pct_max'    => 33,		// Maximum Image Upscale Percent.

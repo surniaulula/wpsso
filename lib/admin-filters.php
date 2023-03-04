@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) Inherit Featured Image' ] = array(
 				'label_transl' => _x( '(feature) Inherit Featured Image', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->options[ 'plugin_inherit_featured' ] ? 'on' : 'off',
+				'status'       => $this->p->options[ 'plugin_inherit_featured' ] ? 'on' : 'rec',
 			);
 
 			/*

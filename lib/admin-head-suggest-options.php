@@ -72,6 +72,19 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 					}
 				}
 			}
+			
+			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+			
+				if ( empty( $this->p->options[ 'plugin_inherit_featured' ] ) ) {
+				
+					$notice_key = 'notice-wc-inherit-featured-disabled';
+
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					}
+				}
+			}
 		}
 
 		public function suggest_options_seo() {

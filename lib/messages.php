@@ -450,6 +450,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					case 'notice-recommend-version':
+
+						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
+
+						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
+
+						break;
+
 					case 'notice-um-activate-add-on':
 					case 'notice-um-add-on-required':
 
@@ -504,11 +512,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-recommend-version':
+					case 'notice-wc-inherit-featured-disabled':
 
-						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
+						$option_label = _x( 'Inherit Featured Image', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
+						$text = '<p class="top">';
+
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+
+						$text .= __( 'WooCommerce product variations are children of their product page.', 'wpsso' ) . ' ';
+
+						$text .= __( 'Unless you have an image selected for each product variation, we recommend enabling this option.', 'wpsso' ) . ' ';
+
+						$text .= '</p>';
 
 						break;
 
