@@ -235,11 +235,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.4.3-dev.3 (2023/03/04)**
+**Version 15.4.3-b.1 (2023/03/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a notice to recommend enabling the "Inherit Featured Image" option for WooCommerce.
 	* Updated the WPSSO JSON add-on deprecation notice.
 * **Bugfixes**
 	* Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
@@ -448,9 +449,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.4.3-dev.3 =
+= 15.4.3-b.1 =
 
-(2023/03/04) Fixed missing `WpssoUtil::save_all_times()` method for old deprecated add-ons.
+(2023/03/04) Added a notice to recommend enabling the "Inherit Featured Image" option for WooCommerce.
 
 = 15.4.2 =
 
