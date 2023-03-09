@@ -93,7 +93,6 @@ Present your content at its best on social sites and in search results - no matt
 
 * All in One SEO Pack
 * Co-Authors Plus
-* Easy Digital Downloads
 * Elementor Website Builder
 * Gravity Forms + GravityView
 * Perfect Images
@@ -111,7 +110,6 @@ Present your content at its best on social sites and in search results - no matt
 * WooCommerce Brands
 * WooCommerce Currency Switcher
 * WooCommerce UPC, EAN, and ISBN
-* WooCommerce Show Single Variations
 * WP Job Manager
 * WP Meta SEO
 * WP-PostRatings
@@ -234,6 +232,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 15.5.0-dev.2 (2023/03/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed support for the Easy Digital Downloads plugin.
+	* Removed support for the WooCommerce Show Single Variations plugin.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'product:quantity' internal meta tag for the WPSSO GMF add-on.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
 
 **Version 15.4.3 (2023/03/04)**
 
@@ -448,6 +461,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.5.0-dev.2 =
+
+(2023/03/09) Removed support for the Easy Digital Downloads and WooCommerce Show Single Variations plugins.
 
 = 15.4.3 =
 

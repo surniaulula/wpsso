@@ -97,7 +97,6 @@
 <ul>
 <li>All in One SEO Pack</li>
 <li>Co-Authors Plus</li>
-<li>Easy Digital Downloads</li>
 <li>Elementor Website Builder</li>
 <li>Gravity Forms + GravityView</li>
 <li>Perfect Images</li>
@@ -115,7 +114,6 @@
 <li>WooCommerce Brands</li>
 <li>WooCommerce Currency Switcher</li>
 <li>WooCommerce UPC, EAN, and ISBN</li>
-<li>WooCommerce Show Single Variations</li>
 <li>WP Job Manager</li>
 <li>WP Meta SEO</li>
 <li>WP-PostRatings</li>
