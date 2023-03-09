@@ -258,28 +258,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/*
-								 * Easy Digital Downloads.
-								 *
-								 * See https://wordpress.org/plugins/easy-digital-downloads/.
-								 */
-								case 'edd':
-
-									$chk[ 'class' ] = 'Easy_Digital_Downloads';
-
-									break;
-
-								/*
-								 * WooCommerce Show Single Variations.
-								 *
-								 * See https://iconicwp.com/products/woocommerce-show-single-variations/.
-								 */
-								case 'jck-wssv':
-
-									$chk[ 'class' ] = 'JCK_WSSV';
-
-									break;
-
-								/*
 								 * Perfect WooCommerce Brands.
 								 */
 								case 'perfect-woocommerce-brands':

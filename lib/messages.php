@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-ecom-product-msg':
 
-						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// No e-commerce plugin is active.
+						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// No e-commerce plugin active.
 
 							$text = '';
 

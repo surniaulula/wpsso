@@ -26,7 +26,7 @@ a.sucom-tablink:focus {
 
 div.sucom-no_tabset {
 	overflow:auto;
-	min-height:265px;
+	min-height:245px;
 	margin-top:-1px;
 	border-top:1px solid #eee;
 }

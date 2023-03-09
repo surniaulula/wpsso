@@ -2118,6 +2118,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':description'                 => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':adult_type'                  => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                   => null,
+				$mt_pre . ':quantity'                    => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':availability'                => null,
 				$mt_pre . ':brand'                       => null,
 				$mt_pre . ':category'                    => null,	// The product category according to the Google product taxonomy.

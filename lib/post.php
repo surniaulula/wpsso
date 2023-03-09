@@ -2312,7 +2312,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
@@ -2357,7 +2357,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
 				/*
-				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
 				 */
 				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 
@@ -2402,7 +2402,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $primary_term_id ) {
 
 					/*
-					 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+					 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
 					 */
 					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
 

@@ -487,7 +487,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_howto_step_section' => array(
 							'input_type'    => 'radio',
 							'input_class'   => 'howto_step_section',
-							'input_content' => _x( 'How-To %1$s Step or %2$s Section:', 'option label', 'wpsso' ),
+							'input_content' => _x( 'How-To %1$s Step or %2$s Section of Steps:', 'option label', 'wpsso' ),
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),
@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						'schema_recipe_instruction_section' => array(
 							'input_type'    => 'radio',
 							'input_class'   => 'recipe_instruction_section',
-							'input_content' => _x( 'Recipe %1$s Instruction or %2$s Section:', 'option label', 'wpsso' ),
+							'input_content' => _x( 'Recipe %1$s Instruction or %2$s Section of Steps:', 'option label', 'wpsso' ),
 							'input_values'  => array( 0, 1 ),
 							'input_default' => 0,
 						),

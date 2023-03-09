@@ -1124,7 +1124,24 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Add product availability.
 			 *
-			 * See https://docs.woocommerce.com/wc-apidocs/source-class-WC_Product.html#1534-1542
+			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_get_manage_stock.
+			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_get_stock_quantity.
+			 */
+			if ( $product->get_manage_stock() ) {	// Returns trus, false, or 'parent'.
+				
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product stock is managed' );
+				}
+
+				$mt_ecom[ 'product:quantity' ] = $product->get_stock_quantity();
+			}
+
+			/*
+			 * Add product availability.
+			 *
+			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_is_in_stock.
+			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_is_on_backorder.
 			 *
 			 * Hook 'woocommerce_product_is_in_stock' (returns true or false) to customize the "in stock" status.
 			 */

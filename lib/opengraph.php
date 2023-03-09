@@ -1015,7 +1015,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'objects' );
 
 			/*
-			 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+			 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
 			 */
 			$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
 

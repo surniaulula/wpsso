@@ -278,16 +278,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				$notice_key = 'suggest-wpssogmf-for-woocommerce';
 
-			} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'edd' ] ) ) {
-
-				// translators: Please ignore - translation uses a different text domain.
-				$ecom_plugin_name = __( 'Easy Digital Downloads', 'easy-digital-downloads' );
-
-				$notice_key = 'suggest-wpssogmf-for-edd';
-
 			} else {	// No active e-commerce plugin.
 
-				return $notices_shown;
+				return $notices_shown;	// Stop here.
 			}
 
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'gmf' ] ) ) {

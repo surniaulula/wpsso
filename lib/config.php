@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.4.3',	// Plugin version.
+					'version'     => '15.5.0-dev.2',	// Plugin version.
 					'opt_version' => '959',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -98,8 +98,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
 							),
 							'ecom' => array(
-								'edd'                           => '(plugin) Easy Digital Downloads',
-								'jck-wssv'                      => '(plugin) WooCommerce Show Single Variations',
 								'perfect-woocommerce-brands'    => '(plugin) Perfect WooCommerce Brands',
 								'woocommerce'                   => '(plugin) WooCommerce',
 								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
@@ -452,7 +450,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssocmcf' => array(			// Plugin acronym.
 					'short'       => 'WPSSO CMCF',	// Short plugin name.
 					'name'        => 'WPSSO Commerce Manager Catalog Feed XML',
-					'desc'        => 'Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Product Pages.',
+					'desc'        => 'Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce and custom product pages.',
 					'slug'        => 'wpsso-commerce-manager-catalog-feed',
 					'base'        => 'wpsso-commerce-manager-catalog-feed/wpsso-commerce-manager-catalog-feed.php',
 					'update_auth' => '',		// No premium version.
@@ -580,7 +578,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssogmf' => array(			// Plugin acronym.
 					'short'       => 'WPSSO GMF',	// Short plugin name.
 					'name'        => 'WPSSO Google Merchant Feed XML',
-					'desc'        => 'Google Merchant Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Products with Multilingual Support.',
+					'desc'        => 'Google Merchant Feed XMLs for WooCommerce and custom product pages, with multilingual support.',
 					'slug'        => 'wpsso-google-merchant-feed',
 					'base'        => 'wpsso-google-merchant-feed/wpsso-google-merchant-feed.php',
 					'update_auth' => '',		// No premium version.

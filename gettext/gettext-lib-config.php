@@ -16,8 +16,6 @@ _x( '(feature) Import Rank Math SEO Metadata', 'lib file description', 'wpsso' )
 _x( '(feature) Import The SEO Framework Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Block Attrs', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Metadata', 'lib file description', 'wpsso' );
-_x( '(plugin) Easy Digital Downloads', 'lib file description', 'wpsso' );
-_x( '(plugin) WooCommerce Show Single Variations', 'lib file description', 'wpsso' );
 _x( '(plugin) Perfect WooCommerce Brands', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce Brands', 'lib file description', 'wpsso' );
@@ -115,11 +113,11 @@ _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safa
 _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD format for Google Rich Results.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Commerce Manager Catalog Feed XML', 'plugin name', 'wpsso' );
-_x( 'Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Product Pages.', 'plugin description', 'wpsso' );
+_x( 'Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce and custom product pages.', 'plugin description', 'wpsso' );
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Google Merchant Feed XML', 'plugin name', 'wpsso' );
-_x( 'Google Merchant Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Products with Multilingual Support.', 'plugin description', 'wpsso' );
+_x( 'Google Merchant Feed XMLs for WooCommerce and custom product pages, with multilingual support.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization and Place Manager', 'plugin name', 'wpsso' );
 _x( 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ratings and Reviews', 'plugin name', 'wpsso' );

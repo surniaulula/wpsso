@@ -44,14 +44,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			$this->common_hooks();
 
-			if ( is_admin() ) {
-
-				$this->back_end_hooks();
-
-			} else {
-
-				$this->front_end_hooks();
-			}
+			is_admin() ? $this->back_end_hooks() : $this->front_end_hooks();
 		}
 
 		public function common_hooks() {
@@ -62,14 +55,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
 
 				add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
-			}
-
-			/*
-			 * Easy Digital Download.
-			 */
-			if ( $this->p->avail[ 'ecom' ][ 'edd' ] ) {
-
-				add_filter( 'edd_add_schema_microdata', '__return_false', PHP_INT_MAX );
 			}
 
 			/*
