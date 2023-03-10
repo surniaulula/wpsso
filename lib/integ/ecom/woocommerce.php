@@ -106,6 +106,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				'use_post'                        => 1,
 				'get_post_type'                   => 2,
 				'schema_type'                     => 3,
+				'schema_type_post_type_labels'    => 1,
 				'primary_tax_slug'                => 2,	// See WpssoPost->get_primary_terms().
 				'the_content_seed'                => 2,
 				'description_seed'                => 4,
@@ -467,12 +468,21 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( $this->prod_post_type === $mod[ 'post_type' ] ) {
 
-						$type_id = 'product.group';
+						$type_id = $this->p->schema->get_schema_type_id_for( 'product_group' );
 					}
 				}
 			}
 
 			return $type_id;
+		}
+		
+		public function filter_schema_type_post_type_labels( array $type_labels ) {
+
+			$type_labels[ 'schema_type_for_product_group' ] = __( 'Products Group', 'wpsso' );
+
+			asort( $type_labels );
+
+			return $type_labels;
 		}
 
 		public function filter_primary_tax_slug( $tax_slug, $mod ) {
@@ -773,17 +783,17 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
 
-					$schema_type   = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
-					$add_mt_suffix = 'product.group' === $schema_type ? 'variants' : 'offers';
+					$schema_type  = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
+					$og_mt_suffix = 'product.group' === $schema_type ? 'variants' : 'offers';
 
 					/*
 					 * Add product variants or offers.
 					 */
-					if ( apply_filters( 'wpsso_og_add_mt_' . $add_mt_suffix, true, $mod ) ) {
+					if ( apply_filters( 'wpsso_og_add_mt_' . $og_mt_suffix, true, $mod ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'add ' . $add_mt_suffix . ' meta tags is true' );
+							$this->p->debug->log( 'add ' . $og_mt_suffix . ' meta tags is true' );
 						}
 
 						/*
@@ -807,7 +817,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 							if ( ! empty( $mt_ecom_var ) ) {
 
-								$mt_ecom[ $this->og_type . ':' . $add_mt_suffix ][] = $mt_ecom_var;
+								$mt_ecom[ $this->og_type . ':' . $og_mt_suffix ][] = $mt_ecom_var;
 							}
 						}
 

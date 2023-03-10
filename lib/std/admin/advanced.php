@@ -753,6 +753,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_labels = SucomUtil::get_post_type_labels( $val_prefix = 'schema_type_for_' );
+			$type_labels = apply_filters( 'wpsso_schema_type_post_type_labels', $type_labels );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 

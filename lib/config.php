@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.5.0-dev.2',	// Plugin version.
-					'opt_version' => '959',		// Increment when changing default option values.
+					'version'     => '15.5.0-dev.3',	// Plugin version.
+					'opt_version' => '960',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1509,7 +1509,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_place'             => 'place',
 					'schema_type_for_post'              => 'blog.posting',
 					'schema_type_for_product'           => 'product',	// For WooCommerce.
-					'schema_type_for_product_variation' => 'product', 	// For WooCommerce.
+					'schema_type_for_product_group'     => 'product.group',	// For WooCommerce.
 					'schema_type_for_qa'                => 'webpage.qa',
 					'schema_type_for_question'          => 'question',	// For WPSSO FAQ.
 					'schema_type_for_review'            => 'review',	// For WP Product Review.
