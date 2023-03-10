@@ -6322,7 +6322,7 @@ msgstr ""
 
 #: lib/edit-schema.php:490
 msgctxt "option label"
-msgid "How-To %1$s Step or %2$s Section of Steps:"
+msgid "How-To %1$s step or %2$s section of steps:"
 msgstr ""
 
 #: lib/edit-schema.php:526
@@ -6367,7 +6367,7 @@ msgstr ""
 
 #: lib/edit-schema.php:594
 msgctxt "option label"
-msgid "Recipe %1$s Instruction or %2$s Section of Steps:"
+msgid "Recipe %1$s instruction or %2$s section of instructions:"
 msgstr ""
 
 #: lib/edit-schema.php:623
