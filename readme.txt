@@ -233,11 +233,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.5.0-dev.2 (2023/03/09)**
+**Version 15.5.0-dev.3 (2023/03/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a SSO &gt; Advanced Settings &gt; Document Types &gt; Schema &gt; Type by Post Type &gt; Products Group option.
 	* Removed support for the Easy Digital Downloads plugin.
 	* Removed support for the WooCommerce Show Single Variations plugin.
 * **Bugfixes**
@@ -462,9 +463,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.5.0-dev.2 =
+= 15.5.0-dev.3 =
 
-(2023/03/09) Removed support for the Easy Digital Downloads and WooCommerce Show Single Variations plugins.
+(2023/03/09) Added a Type by Post Type &gt; Products Group option. Removed support for the Easy Digital Downloads and WooCommerce Show Single Variations plugins.
 
 = 15.4.3 =
 
