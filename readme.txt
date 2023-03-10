@@ -233,7 +233,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.5.0-rc.1 (2023/03/10)**
+**Version 15.5.0 (2023/03/10)**
 
 * **New Features**
 	* None.
@@ -463,7 +463,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.5.0-rc.1 =
+= 15.5.0 =
 
 (2023/03/10) Added a Type by Post Type &gt; Products Group option. Removed support for the Easy Digital Downloads and WooCommerce Show Single Variations plugins.
 
