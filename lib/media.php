@@ -1743,27 +1743,42 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/*
-			 * Some image_downsize hooks may return only 3 elements, so use array_pad() to sanitize the returned array.
+			 * image_downsize() returns an array of image data, or boolean false if no image is available.
 			 */
-			$img_downsize = array_pad( image_downsize( $pid, ( $use_full_size ? 'full' : $size_name ) ), 4, null );
+			$img_downsized = image_downsize( $pid, ( $use_full_size ? 'full' : $size_name ) );	// Returns array or false.
+
+			if ( ! is_array( $img_downsized ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: image downsize for ' . $size_name . ' returned false' );
+				}
+
+				return self::reset_image_src_args();
+			}
+
+			/*
+			 * Some image_downsize() filter hooks may return only 3 elements, so use array_pad() to sanitize the returned array.
+			 */
+			$img_downsized = array_pad( $img_downsized, 4, null );
 
 			list(
 				$img_url,
 				$img_width,
 				$img_height,
 				$img_intermediate
-			) = apply_filters( 'wpsso_image_downsize', $img_downsize, $pid, $size_name );
+			) = apply_filters( 'wpsso_image_downsize', $img_downsized, $pid, $size_name );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'image_downsize for ' . $size_name . ' returned ' . $img_url . ' (' . $img_width . 'x' . $img_height . ')' );
+				$this->p->debug->log( 'image downsize for ' . $size_name . ' returned ' . $img_url . ' (' . $img_width . 'x' . $img_height . ')' );
 			}
 
 			if ( empty( $img_url ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: image_downsize for ' . $size_name . ' returned an empty url' );
+					$this->p->debug->log( 'exiting early: image downsize for ' . $size_name . ' returned an empty url' );
 				}
 
 				return self::reset_image_src_args();

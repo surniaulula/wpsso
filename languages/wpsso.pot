@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.5.0\n"
+"Project-Id-Version: WPSSO Core 15.5.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -509,7 +509,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:888
 #: lib/media-filters.php:116 lib/media.php:1470 lib/media.php:1621
-#: lib/media.php:3266
+#: lib/media.php:3281
 msgid "Media Library"
 msgstr ""
 
@@ -6853,7 +6853,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3276
+#: lib/media-filters.php:119 lib/media.php:3291
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6946,18 +6946,18 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3292
+#: lib/media.php:3307
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3345
+#: lib/media.php:3360
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3380
+#: lib/media.php:3395
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
