@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.4
 Tested Up To: 6.2.0
-WC Tested Up To: 7.5.0
+WC Tested Up To: 7.5.1
 Stable Tag: 15.5.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -44,10 +44,6 @@ Present your content at its best on social sites and in search results - no matt
 	<li>WordPress REST API</li>
 	<li>WordPress Sitemaps XML</li>
 </ul>
-
-> **Looking to fix the Google Merchant "*Price Mismatched value*" error for WooCommerce product variations?**
->
-> The WPSSO Core plugin fixes the "*Price Mismatched value*" error and all other Google Search, Google Rich Results, and Google Merchant errors for WooCommerce products.
 
 <!-- /about -->
 
@@ -233,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.5.1-dev.1 (2023/03/21)**
+**Version 15.5.1-dev.2 (2023/03/21)**
 
 * **New Features**
 	* None.
@@ -477,7 +473,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.5.1-dev.1 =
+= 15.5.1-dev.2 =
 
 (2023/03/21) Fixed an `array_pad()` error when `image_downsize()` returns false.
 
