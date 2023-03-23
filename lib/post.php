@@ -704,6 +704,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
+				$wpsso->debug->log_arr( 'posts_args', $posts_args );
+
 				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
