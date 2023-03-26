@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.5.1-dev.2 (2023/03/21)**
+**Version 15.5.1-rc.1 (2023/03/26)**
 
 * **New Features**
 	* None.
@@ -473,9 +473,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.5.1-dev.2 =
+= 15.5.1-rc.1 =
 
-(2023/03/21) Fixed an `array_pad()` error when `image_downsize()` returns false.
+(2023/03/26) Fixed an `array_pad()` error when `image_downsize()` returns false.
 
 = 15.5.0 =
 
