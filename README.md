@@ -129,7 +129,7 @@
 
 <h3>Premium Edition Features</h3>
 
-<p><strong>Reads data from remote service APIs, including:</strong></p>
+<p><strong>Retrieves data from remote service APIs, including:</strong></p>
 
 <ul>
 <li>Get Bitly Short URL</li>

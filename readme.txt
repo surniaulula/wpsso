@@ -126,7 +126,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <h3>Premium Edition Features</h3>
 
-**Reads data from remote service APIs, including:**
+**Retrieves data from remote service APIs, including:**
 
 * Get Bitly Short URL
 * Get DLMY.App Short URL
