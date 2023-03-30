@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			if ( $this->use_cache ) {
 
-				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 
 					if ( $this->p->debug->enabled ) {
 
