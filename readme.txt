@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin: Schema Markup and Meta Tags for Social and SEO ===
+=== WPSSO Core - The Complete Structured Data Plugin ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
