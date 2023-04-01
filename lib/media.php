@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			add_action( 'post-upload-ui', array( $this, 'show_post_upload_ui_message' ) );
 
 			add_filter( 'editor_max_image_size', array( $this, 'maybe_adjust_max_image_size' ), 10, 3 );
-			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_image_filename' ), -5000, 1 );
+			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_intermediate_size_filepath' ), -5000, 1 );
 			add_filter( 'wp_image_resize_identical_dimensions', array( $this, 'maybe_resize_fuzzy_dimensions' ), PHP_INT_MAX, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * 	unicorn-wallpaper-1200x628-cropped.jpg
 		 *	unicorn-wallpaper-1200x628-cropped-center-top.jpg
 		 */
-		public function maybe_update_image_filename( $file_path ) {
+		public function maybe_update_intermediate_size_filepath( $filepath ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -116,35 +116,35 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
 			 * information was set (presumably because we arrived here without passing through our own method).
 			 */
-			$img_info = self::get_image_src_args();
+			$img_src_args = self::get_image_src_args();
 
-			if ( empty( $img_info[ 'size_name' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping ' . $file_path . ': size name is empty' );
-				}
-
-				return $file_path;
-
-			} elseif ( 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
+			if ( empty( $img_src_args[ 'size_name' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping ' . $file_path . ': size name is ' . $img_info[ 'size_name' ] );
+					$this->p->debug->log( 'skipping ' . $filepath . ': size name is empty' );
 				}
 
-				return $file_path;
+				return $filepath;
+
+			} elseif ( 0 !== strpos( $img_src_args[ 'size_name' ], 'wpsso-' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping ' . $filepath . ': size name is ' . $img_src_args[ 'size_name' ] );
+				}
+
+				return $filepath;
 			}
-
-			$size_is_cropped = $this->p->util->is_size_cropped( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
 
 			/*
 			 * If the resized image is not cropped, then leave the file name as-is.
 			 */
+			$size_is_cropped = $this->p->util->is_size_cropped( $img_src_args[ 'size_name' ], $img_src_args[ 'pid' ] );
+
 			if ( ! $size_is_cropped ) {
 
-				return $file_path;
+				return $filepath;
 			}
 
 			/*
@@ -158,42 +158,43 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *	[opt_prefix] => og,
 			 * );
 			 */
-			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );	// Uses a local static cache.
+			$size_info    = $this->p->util->get_size_info( $img_src_args[ 'size_name' ], $img_src_args[ 'pid' ] );	// Uses a local static cache.
+			$new_filepath = $this->maybe_update_cropped_image_filepath( $filepath, $size_info );
 
-			$new_file_path = $this->get_cropped_image_filename( $file_path, $size_info );
-
-			if ( $file_path !== $new_file_path ) {		// Just in case
+			if ( $filepath !== $new_filepath ) {	// Just in case
 
 				/*
+				 * Determine if an image can be renamed or needs to be copied.
+				 *
 				 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
 				 */
-				$can_rename = $this->can_rename_image_filename( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+				$can_rename = $this->can_rename_image_filename( $img_src_args[ 'size_name' ], $img_src_args[ 'pid' ] );
 
 				if ( $can_rename ) {
 
-					if ( rename( $file_path, $new_file_path ) ) {	// No other plugin/theme uses the same dimensions.
+					if ( rename( $filepath, $new_filepath ) ) {	// No other plugin/theme uses the same dimensions.
 
-						return $new_file_path;	// Return the new file path on success.
+						return $new_filepath;	// Return the new file path on success.
 
-					} elseif ( copy( $file_path, $new_file_path ) ) {	// If rename failed, then copy and delete.
+					} elseif ( copy( $filepath, $new_filepath ) ) {	// If rename failed, then copy and delete.
 
-						if ( unlink( $file_path ) ) {	// Remove the old file path.
+						if ( unlink( $filepath ) ) {	// Remove the old file path.
 
-							return $new_file_path;	// Return the new file path on success.
+							return $new_filepath;	// Return the new file path on success.
 
 						} else {	// If deleting the original failed, then never mind. :)
 
-							unlink( $new_file_path );
+							unlink( $new_filepath );
 						}
 					}
 
-				} elseif ( copy( $file_path, $new_file_path ) ) {
+				} elseif ( copy( $filepath, $new_filepath ) ) {
 
-					return $new_file_path;	// Return the new file path on successful copy.
+					return $new_filepath;	// Return the new file path on successful copy.
 				}
 			}
 
-			return $file_path;
+			return $filepath;
 		}
 
 		/*
@@ -201,9 +202,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function maybe_resize_fuzzy_dimensions( $resize ) {
 
-			$img_info = self::get_image_src_args();
+			$img_src_args = self::get_image_src_args();
 
-			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
+			if ( empty( $img_src_args[ 'size_name' ] ) || 0 !== strpos( $img_src_args[ 'size_name' ], 'wpsso-' ) ) {
 
 				return $resize;
 			}
@@ -1562,9 +1563,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 * name. If the image size is ours, then add crop information to the file name as
 						 * well. This allows for different cropped versions for the same image resolution.
 						 */
-						$img_filename = $this->get_cropped_image_filename( $img_meta[ 'sizes' ][ $size_name ][ 'file' ], $size_info );
-
-						$is_accurate_filename = $img_filename === $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ? true : false;
+						$new_filepath         = $this->maybe_update_cropped_image_filepath( $img_meta[ 'sizes' ][ $size_name ][ 'file' ], $size_info );
+						$is_accurate_filename = $new_filepath === $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ? true : false;
 						$is_accurate_width    = $size_info[ 'width' ] === $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ? true : false;
 						$is_accurate_height   = $size_info[ 'height' ] === $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ? true : false;
 
@@ -1635,12 +1635,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 * false if no image was created.
 							 */
 							$mtime_start  = microtime( $get_float = true );
-
 							$resized_meta = image_make_intermediate_size( $fullsizepath,
 								$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
-
-							$mtime_total = microtime( $get_float = true ) - $mtime_start;
-							$mtime_max   = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
+							$mtime_total  = microtime( $get_float = true ) - $mtime_start;
+							$mtime_max    = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
 
 							if ( $this->p->debug->enabled ) {
 
@@ -3423,15 +3421,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->options[ 'plugin_upscale_images' ] ) {
 
-				$img_info = self::get_image_src_args();
-
-				$upscale_pct_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_pct_max' ], $img_info );
+				$img_src_args        = self::get_image_src_args();
+				$upscale_pct_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_pct_max' ], $img_src_args );
 				$upscale_multiplier  = 1 + ( $upscale_pct_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
-
-				$is_sufficient_w = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
-				$is_sufficient_h = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
+				$is_sufficient_w     = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
+				$is_sufficient_h     = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
 			}
 
 			if ( ( ! $size_info[ 'is_cropped' ] && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
@@ -3457,34 +3453,35 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/*
+		 * Determine if an image can be renamed or needs to be copied.
+		 *
 		 * Check for conflicting image sizes (ie. same dimensions uncropped, or same dimensions from other WordPress sizes).
 		 */
-		public function can_rename_image_filename( $size_name, $attachment_id ) {
+		public function can_rename_image_filename( $size_name, $pid ) {
 
-			$meta = wp_get_attachment_metadata( $attachment_id );	// Returns a WP_Error object on failure.
+			$img_meta = wp_get_attachment_metadata( $pid );	// Returns a WP_Error object on failure.
 
-			if ( isset( $meta[ 'sizes' ] ) ) {	// Just in case.
+			if ( isset( $img_meta[ 'sizes' ] ) ) {	// Just in case.
 
-				if ( isset( $meta[ 'sizes' ][ $size_name ] ) ) {	// Just in case.
+				if ( isset( $img_meta[ 'sizes' ][ $size_name ] ) ) {	// Just in case.
 
-					$size_info = $meta[ 'sizes' ][ $size_name ];
+					$size_dims       = $img_meta[ 'sizes' ][ $size_name ];
+					$size_is_cropped = $this->p->util->is_size_cropped( $size_name, $pid );
 
-					$size_is_cropped = $this->p->util->is_size_cropped( $size_name, $attachment_id );
+					foreach ( $img_meta[ 'sizes' ] as $img_meta_size_name => $img_meta_size_dims ) {
 
-					foreach ( $meta[ 'sizes' ] as $meta_name => $meta_info ) {
-
-						if ( $meta_name === $size_name ) {	// Ignore ourselves.
+						if ( $img_meta_size_name === $size_name ) {	// Ignore ourselves.
 
 							continue;
 						}
 
-						if ( $meta_info[ 'width' ] == $size_info[ 'width' ] && $meta_info[ 'height' ] == $size_info[ 'height' ] ) {
+						if ( $img_meta_size_dims[ 'width' ] == $size_dims[ 'width' ] && $img_meta_size_dims[ 'height' ] == $size_dims[ 'height' ] ) {
 
-							if ( 0 === strpos( $meta_name, 'wpsso-' ) ) {
+							if ( 0 === strpos( $img_meta_size_name, 'wpsso-' ) ) {
 
-								$meta_is_cropped = $this->p->util->is_size_cropped( $meta_name, $attachment_id );
+								$img_meta_is_cropped = $this->p->util->is_size_cropped( $img_meta_size_name, $pid );
 
-								if ( $meta_is_cropped !== $size_is_cropped ) {
+								if ( $img_meta_is_cropped !== $size_is_cropped ) {
 
 									return false;
 								}
@@ -3501,16 +3498,27 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return true;
 		}
 
-		public function get_cropped_image_filename( $file_path, $size_info ) {
+		/*
+		 * Example $size_info = Array (
+		 *	[width] => 1200,
+		 *	[height] => 630,
+		 *	[crop] => 1,
+		 *	[is_cropped] => 1,
+		 *	[dimensions] => 1200x630 cropped,
+		 *	[label_transl] => Open Graph (Facebook and oEmbed),
+		 *	[opt_prefix] => og,
+		 * );
+		 */
+		public function maybe_update_cropped_image_filepath( $filepath, $size_info ) {
 
-			$dir  = pathinfo( $file_path, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
-			$ext  = pathinfo( $file_path, PATHINFO_EXTENSION );
-			$base = wp_basename( $file_path, '.' . $ext );
-
-			$new_dir    = '.' === $dir ? '' : trailingslashit( $dir );
-			$new_ext    = '.' . $ext;
-			$new_base   = preg_replace( '/-cropped(-[a-z]+-[a-z]+)?$/', '', $base );
-			$new_suffix = '';
+			$dir          = pathinfo( $filepath, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
+			$ext          = pathinfo( $filepath, PATHINFO_EXTENSION );
+			$base         = wp_basename( $filepath, '.' . $ext );
+			$new_dir      = '.' === $dir ? '' : trailingslashit( $dir );
+			$new_ext      = '.' . $ext;
+			$new_base     = preg_replace( '/-cropped(-[a-z]+-[a-z]+)?$/', '', $base );
+			$new_suffix   = '';
+			$new_filepath = $new_dir . $new_base . $new_suffix . $new_ext;
 
 			if ( ! empty( $size_info[ 'crop' ] ) ) {
 
@@ -3523,9 +3531,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
 					}
 				}
+			
+				$new_filepath = $new_dir . $new_base . $new_suffix . $new_ext;
+				$new_filepath = apply_filters( 'wpsso_cropped_image_filepath', $new_filepath, $filepath, $size_info );
 			}
 
-			return $new_dir . $new_base . $new_suffix . $new_ext;
+			return $new_filepath;
 		}
 
 		public function get_gravatar_size() {

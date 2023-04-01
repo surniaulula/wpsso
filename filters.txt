@@ -67,6 +67,8 @@
 
 'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' )
 
+'wpsso_cropped_image_filepath' ( $new_filepath, $filepath, $size_info )
+
 'wpsso_default_term_id' ( $default_term_id, $mod, $tax_slug )
 
 'wpsso_description' ( $desc_text, $mod, $num_hashtags, $md_key )
