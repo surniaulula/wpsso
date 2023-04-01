@@ -229,6 +229,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.6.0-dev.1 (2023/04/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_cropped_image_filepath' filter.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.5.1 (2023/03/26)**
 
 * **New Features**
@@ -472,6 +486,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.6.0-dev.1 =
+
+(2023/04/01) None.
 
 = 15.5.1 =
 
