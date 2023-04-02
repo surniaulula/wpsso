@@ -1396,7 +1396,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					// No break.
 
 				case 'blank_num':
-					
+
 					$opt_val = trim( $opt_val );	// Just in case.
 
 					if ( '' === $opt_val ) {

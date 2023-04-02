@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			return $type_id;
 		}
-		
+
 		public function filter_schema_type_post_type_labels( array $type_labels ) {
 
 			$type_labels[ 'schema_type_for_product_group' ] = __( 'Products Group', 'wpsso' );
@@ -1138,7 +1138,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_get_stock_quantity.
 			 */
 			if ( $product->get_manage_stock() ) {	// Returns trus, false, or 'parent'.
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'product stock is managed' );
