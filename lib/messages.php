@@ -255,11 +255,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+							$text .= __( 'Users often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from uploaded images.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+							$text .= __( 'Providing social sites and search engines with correctly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 						}

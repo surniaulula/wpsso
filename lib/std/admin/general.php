@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = '' .
 				$form->get_th_html( _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_prevent_thumb_conflicts' ) .
-				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts' );
+				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts', _x( '(recommended)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' .
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),

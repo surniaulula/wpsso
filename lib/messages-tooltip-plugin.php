@@ -165,11 +165,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
 
-					$text = __( 'Providing social and search sites with correctly resized images is highly recommended, so this option should be enabled.', 'wpsso' ) . ' ';
+					$text = __( 'Users often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from uploaded images.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Authors often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from the original image.', 'wpsso' ) . ' ';
+					$text .= __( 'Providing social sites and search engines with correctly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
-					$text .= __( 'This option can be disabled use smaller images and avoid excessive small image warnings.', 'wpsso' ) . ' ';
+					$text .= __( 'This option can be disabled to use smaller images and avoid some rejected image warnings.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
@@ -177,9 +177,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_prevent_thumb_conflicts':	// Prevent Thumbnail Conflicts.
 
-					$text = __( 'WordPress appends the resized dimensions to the thumbnail file name (ie. 1200x628), but does not distinguish between cropped or uncropped dimensions, or different cropping areas from different image sizes with identical dimensions.', 'wpsso' ) . ' ';
+					$text = sprintf( __( 'WordPress appends the resized dimensions to the thumbnail file name (for example, %1$s), but does not distinguish between cropped or uncropped dimensions, or different cropping areas from different image sizes with identical dimensions.', 'wpsso' ), '1200x628' ) . ' ';
 
-					$text .= sprintf( __( '%s can customize its thumbnail file names to append cropping information (ie. 1200x628-cropped, 1200x628-cropped-center-top) in order to prevent conflicts from image sizes with different cropping areas.', 'wpsso' ), $this->p_name );
+					$text .= sprintf( __( '%1$s can customize its thumbnail file names to append cropping information (for example, %2$s, %3$s) in order to prevent conflicts from image sizes with different cropping areas.', 'wpsso' ), $this->p_name, '1200x628-cropped', '1200x628-cropped-center-top' );
 
 					break;
 
