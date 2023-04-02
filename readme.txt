@@ -229,12 +229,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.6.0-dev.1 (2023/04/01)**
+**Version 15.6.0-dev.2 (2023/04/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new SSO &gt; Advanced Settings &gt; Integration &gt; Prevent Thumbnail Conflicts option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -487,9 +487,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.6.0-dev.1 =
+= 15.6.0-dev.2 =
 
-(2023/04/01) None.
+(2023/04/02) Added a new SSO &gt; Advanced Settings &gt; Integration &gt; Prevent Thumbnail Conflicts option.
 
 = 15.5.1 =
 
