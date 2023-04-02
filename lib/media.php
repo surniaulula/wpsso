@@ -149,16 +149,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/*
 			 * Example $size_info = Array (
-			 *	[width] => 1200,
-			 *	[height] => 630,
-			 *	[crop] => 1,
-			 *	[is_cropped] => 1,
-			 *	[dimensions] => 1200x630 cropped,
-			 *	[label_transl] => Open Graph (Facebook and oEmbed),
-			 *	[opt_prefix] => og,
+			 *	[size_name]     => wpsso-opengraph,
+			 *	[attachment_id] => false,
+			 *	[width]         => 1200,
+			 *	[height]        => 630,
+			 *	[crop]          => 1,
+			 *	[is_cropped]    => 1,
+			 *	[dims_transl]   => 1200x630 cropped,
+			 *	[label_transl]  => Open Graph (Facebook and oEmbed),
+			 *	[opt_prefix]    => og,
 			 * );
 			 */
-			$size_info    = $this->p->util->get_size_info( $img_src_args[ 'size_name' ], $img_src_args[ 'pid' ] );	// Uses a local static cache.
+			$size_info = $this->p->util->get_size_info( $img_src_args[ 'size_name' ], $img_src_args[ 'pid' ] );	// Uses a local static cache.
+
 			$new_filepath = $this->maybe_update_cropped_image_filepath( $filepath, $size_info );
 
 			if ( $filepath !== $new_filepath ) {	// Just in case
@@ -643,6 +646,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
+			/*
+			 * Example $size_info = Array (
+			 *	[size_name]     => wpsso-opengraph,
+			 *	[attachment_id] => false,
+			 *	[width]         => 1200,
+			 *	[height]        => 630,
+			 *	[crop]          => 1,
+			 *	[is_cropped]    => 1,
+			 *	[dims_transl]   => 1200x630 cropped,
+			 *	[label_transl]  => Open Graph (Facebook and oEmbed),
+			 *	[opt_prefix]    => og,
+			 * );
+			 */
 			$size_info = $this->p->util->get_size_info( $size_name );
 
 			if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
@@ -1389,6 +1405,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
+			/*
+			 * Example $size_info = Array (
+			 *	[size_name]     => wpsso-opengraph,
+			 *	[attachment_id] => false,
+			 *	[width]         => 1200,
+			 *	[height]        => 630,
+			 *	[crop]          => 1,
+			 *	[is_cropped]    => 1,
+			 *	[dims_transl]   => 1200x630 cropped,
+			 *	[label_transl]  => Open Graph (Facebook and oEmbed),
+			 *	[opt_prefix]    => og,
+			 * );
+			 */
 			$size_info = $this->p->util->get_size_info( $size_name, $pid );
 
 			if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
@@ -1459,7 +1488,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'using full size image - dimension matches ' . $size_name .
-								' (' . $size_info[ 'dimensions' ] . ')' );
+								' (' . $size_info[ 'dims_transl' ] . ')' );
 						}
 
 						$use_full_size = true;
@@ -1685,7 +1714,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								 */
 								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-									$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
+									$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $size_name, $size_info[ 'dims_transl' ], $fullsizepath ) . ' ';
 
 									$notice_msg .= sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
@@ -3446,7 +3475,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					' upscaled by ' . $upscale_multiplier . ')' : '';
 
 				$this->p->debug->log( 'full size image of ' . $full_width . 'x' . $full_height . $upscaled_by .
-					( $ret ? ' sufficient' : ' too small' ) . ' to create ' . $size_info[ 'dimensions' ] );
+					( $ret ? ' sufficient' : ' too small' ) . ' to create ' . $size_info[ 'dims_transl' ] );
 			}
 
 			return $ret;
@@ -3498,17 +3527,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return true;
 		}
 
-		/*
-		 * Example $size_info = Array (
-		 *	[width] => 1200,
-		 *	[height] => 630,
-		 *	[crop] => 1,
-		 *	[is_cropped] => 1,
-		 *	[dimensions] => 1200x630 cropped,
-		 *	[label_transl] => Open Graph (Facebook and oEmbed),
-		 *	[opt_prefix] => og,
-		 * );
-		 */
 		public function maybe_update_cropped_image_filepath( $filepath, $size_info ) {
 
 			$dir          = pathinfo( $filepath, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
@@ -3522,17 +3540,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $size_info[ 'crop' ] ) ) {
 
-				$new_suffix .= '-cropped';
+				if ( ! isset( $this->p->options[ 'plugin_prevent_thumb_conflicts' ] ) ||	// Older versions.
+					! empty( $this->p->options[ 'plugin_prevent_thumb_conflicts' ] ) ) {	// Since WPSSO Core v15.6.0.
 
-				if ( is_array( $size_info[ 'crop' ] ) ) {
+					$new_suffix .= '-cropped';
 
-					if ( $size_info[ 'crop' ] !== array( 'center', 'center' ) ) {
+					if ( is_array( $size_info[ 'crop' ] ) ) {
 
-						$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
+						if ( $size_info[ 'crop' ] !== array( 'center', 'center' ) ) {
+
+							$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
+						}
 					}
+
+					$new_filepath = $new_dir . $new_base . $new_suffix . $new_ext;
 				}
-			
-				$new_filepath = $new_dir . $new_base . $new_suffix . $new_ext;
+
 				$new_filepath = apply_filters( 'wpsso_cropped_image_filepath', $new_filepath, $filepath, $size_info );
 			}
 

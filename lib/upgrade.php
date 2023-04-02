@@ -956,6 +956,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						}
 					}
 				}
+			
+				if ( $prev_version > 0 && $prev_version <= 960 ) {
+					
+					$opts[ 'plugin_prevent_thumb_conflicts' ] = 1;
+				}
 			}
 
 			/*

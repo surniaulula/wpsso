@@ -144,10 +144,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
 
+			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = '' .
+				$form->get_th_html( _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_prevent_thumb_conflicts' ) .
+				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_prevent_thumb_conflicts', $form, $network );
+
 			$table_rows[ 'plugin_upscale_images' ] = '' .
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) .
-				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( '(not recommended)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
 
 			$table_rows[ 'plugin_upscale_pct_max' ] = '' .

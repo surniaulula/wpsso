@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'image ID ' . $pid . ' rejected - ' . $img_dims .
-					' too small for the ' . $size_name . ' (' . $size_info[ 'dimensions' ] . ') image size' );
+					' too small for the ' . $size_name . ' (' . $size_info[ 'dims_transl' ] . ') image size' );
 			}
 
 			/*
@@ -120,10 +120,10 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 
 				$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is too small for the required %4$s image dimensions.',
-					'wpsso' ), $img_lib, $img_label, $img_dims_transl, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) .
+					'wpsso' ), $img_lib, $img_label, $img_dims_transl, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dims_transl' ] . ')' ) .
 						' ' . $this->p->msgs->get( 'notice-image-rejected' );
 
-				$notice_key = 'wp_' . $pid . '_' . $img_dims . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
+				$notice_key = 'wp_' . $pid . '_' . $img_dims . '_' . $size_name . '_' . $size_info[ 'dims_transl' ] . '_rejected';
 
 				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
 				$notice_msg = sprintf( __( 'Image %1$s in content ignored - the image width and height is too small for the required %2$s image dimensions.',
-					'wpsso' ), $image_url, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' );
+					'wpsso' ), $image_url, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dims_transl' ] . ')' );
 
 				$notice_msg .= $content_passed ? '' : ' ' . sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for WordPress Media Library images - if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.',
 					'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ] );

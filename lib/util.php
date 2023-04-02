@@ -455,6 +455,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function is_size_cropped( $size_name = 'thumbnail', $attachment_id = false ) {
 
+			/*
+			 * Example $size_info = Array (
+			 *	[size_name]     => wpsso-opengraph,
+			 *	[attachment_id] => false,
+			 *	[width]         => 1200,
+			 *	[height]        => 630,
+			 *	[crop]          => 1,
+			 *	[is_cropped]    => 1,
+			 *	[dims_transl]   => 1200x630 cropped,
+			 *	[label_transl]  => Open Graph (Facebook and oEmbed),
+			 *	[opt_prefix]    => og,
+			 * );
+			 */
 			$size_info = $this->get_size_info( $size_name, $attachment_id );
 
 			return empty( $size_info[ 'is_cropped' ] ) ? false : true;
@@ -549,13 +562,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Crop can be true, false, or an array.
 			 */
 			return $local_cache[ $size_name ][ $attachment_id ] = array(
-				'width'        => $width,
-				'height'       => $height,
-				'crop'         => $crop,
-				'is_cropped'   => $is_cropped,
-				'dimensions'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
-				'label_transl' => $this->get_image_size_label( $size_name ),
-				'opt_prefix'   => $this->get_image_size_opt( $size_name ),
+				'size_name'     => $size_name,
+				'attachment_id' => $attachment_id,
+				'width'         => $width,
+				'height'        => $height,
+				'crop'          => $crop,
+				'is_cropped'    => $is_cropped,
+				'dims_transl'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
+				'label_transl'  => $this->get_image_size_label( $size_name ),
+				'opt_prefix'    => $this->get_image_size_opt( $size_name ),
 			);
 		}
 

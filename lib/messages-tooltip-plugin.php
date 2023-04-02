@@ -173,6 +173,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_prevent_thumb_conflicts':	// Prevent Thumbnail Conflicts.
+
+					$text = __( 'WordPress appends the resized dimensions to the thumbnail file name (ie. 1200x628), but does not distinguish between cropped or uncropped dimensions, or different cropping areas from different image sizes with identical dimensions.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( '%s can customize its thumbnail file names to append cropping information (ie. 1200x628-cropped, 1200x628-cropped-center-top) in order to prevent conflicts from image sizes with different cropping areas.', 'wpsso' ), $this->p_name );
+
+					break;
+
 				case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
 
 					$text = __( 'WordPress does not upscale (enlarge) images - WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
