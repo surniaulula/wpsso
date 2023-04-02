@@ -165,9 +165,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
 
-					$text = __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+					$text = __( 'Providing social and search sites with correctly resized images is highly recommended, so this option should be enabled.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
+					$text .= __( 'Authors often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from the original image.', 'wpsso' ) . ' ';
+
+					$text .= __( 'This option can be disabled use smaller images and avoid excessive small image warnings.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 

@@ -735,6 +735,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'add_meta_name_robots'      => 'suggest-options-seo-add_meta_name_robots',
 				'plugin_filter_content'     => 'notice-content-filters-disabled',
 				'plugin_check_img_dims'     => 'notice-check-img-dims-disabled',
+				'plugin_inherit_featured'   => 'notice-wc-inherit-featured-disabled',
 			) as $opt_key ) {
 
 				if ( ! empty( $opts[ $opt_key ] ) ) {	// Option is enabled.

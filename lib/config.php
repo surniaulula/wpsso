@@ -1825,8 +1825,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_new_user_is_person'      => 0,			// Add Person Role for New Users.
 					'plugin_inherit_featured'        => 1,			// Inherit Featured Image.
 					'plugin_inherit_images'          => 1,			// Inherit Custom Images.
-					'plugin_check_img_dims'          => 0,			// Image Dimension Checks.
-					'plugin_prevent_thumb_conflicts' => 0,			// Prevent Thumbnail Conflicts.
+					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
+					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
 					'plugin_upscale_images'          => 0,			// Upscale Media Library Images.
 					'plugin_upscale_pct_max'         => 33,			// Maximum Image Upscale Percent.
 
