@@ -235,6 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Integration &gt; Prevent Thumbnail Conflicts option.
+	* Changed the default value for the SSO &gt; Advanced Settings &gt; Integration &gt; Image Dimension Checks option from disabled to enabled.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -489,7 +490,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.6.0 =
 
-(2023/04/02) Added a new SSO &gt; Advanced Settings &gt; Integration &gt; Prevent Thumbnail Conflicts option.
+(2023/04/02) Added a new SSO &gt; Advanced Settings &gt; Integration &gt; Prevent Thumbnail Conflicts option and changed the Image Dimension Checks option from disabled to enabled.
 
 = 15.5.1 =
 
