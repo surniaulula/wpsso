@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.6.0',	// Plugin version.
+					'version'     => '15.7.0-dev.1',	// Plugin version.
 					'opt_version' => '961',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4133,10 +4133,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'medical.test'                    => 'https://schema.org/MedicalTest',
 						),
 						'organization' => array(
-							'airline'                  => 'https://schema.org/Airline',
-							'corporation'              => 'https://schema.org/Corporation',
+							'airline'                 => 'https://schema.org/Airline',
+							'consortium'              => 'https://schema.org/Consortium',
+							'corporation'             => 'https://schema.org/Corporation',
 							// 'educational.organization' array added by WpssoSchema::add_schema_type_xrefs().
+							'funding.scheme'          => 'https://schema.org/FundingScheme',
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
+							'library.system'          => 'https://schema.org/LibrarySystem',
 							// 'local.business' array added by WpssoSchema::add_schema_type_xrefs().
 							'medical.organization'    => array(
 								'dentist.organization'        => 'https://schema.org/Dentist',
@@ -4151,6 +4154,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'veterinary.care'         => 'https://schema.org/VeterinaryCare',
 							),
 							'non-governmental.organization' => 'https://schema.org/NGO',
+							'news.media.organization'       => 'https://schema.org/NewsMediaOrganization',
+							'online.business'               => array(
+								'online.business' => 'https://schema.org/OnlineBusiness',
+								'online.store'    => 'https://schema.org/OnlineStore',
+							),
 							'organization'                  => 'https://schema.org/Organization',
 							'performing.group'              => array(
 								'dance.group'      => 'https://schema.org/DanceGroup',
@@ -4158,10 +4166,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'performing.group' => 'https://schema.org/PerformingGroup',
 								'theater.group'    => 'https://schema.org/TheaterGroup',
 							),
-							'sports.organization' => array(
+							'project' => array(
+								'funding.agency'   => 'https://schema.org/FundingAgency',
+								'project'          => 'https://schema.org/Project',
+								'research.project' => 'https://schema.org/ResearchProject',
+							),
+							'research.organization'      => 'https://schema.org/ResearchOrganization',
+							'search.rescue.organization' => 'https://schema.org/SearchRescueOrganization',
+							'sports.organization'        => array(
 								'sports.team'         => 'https://schema.org/SportsTeam',
 								'sports.organization' => 'https://schema.org/SportsOrganization',
 							),
+							'workers.union' => 'https://schema.org/WorkersUnion',
 						),
 						'person' => 'https://schema.org/Person',
 						'place'  => array(
