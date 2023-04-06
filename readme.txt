@@ -229,6 +229,32 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.7.0-dev.1 (2023/04/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for new Schema types:
+		* https://schema.org/Consortium
+		* https://schema.org/FundingScheme
+		* https://schema.org/LibrarySystem
+		* https://schema.org/NewsMediaOrganization
+		* https://schema.org/OnlineBusiness
+		* https://schema.org/OnlineStore
+		* https://schema.org/FundingAgency
+		* https://schema.org/Project
+		* https://schema.org/ResearchProject
+		* https://schema.org/ResearchOrganization
+		* https://schema.org/SearchRescueOrganization
+		* https://schema.org/WorkersUnion
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.6.0 (2023/04/02)**
 
 * **New Features**
@@ -487,6 +513,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.7.0-dev.1 =
+
+(2023/04/06) Added support for new Schema types.
 
 = 15.6.0 =
 
