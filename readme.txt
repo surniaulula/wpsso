@@ -85,7 +85,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Reads settings and data from active plugins, including:</strong></p>
+<p><strong>Reads settings and data from other active plugins, including:</strong></p>
 
 * All in One SEO Pack
 * Co-Authors Plus
