@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.7.0\n"
+"Project-Id-Version: WPSSO Core 15.7.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11639,22 +11639,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1979
+#: lib/schema.php:1987
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2150
+#: lib/schema.php:2158
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2177
+#: lib/schema.php:2185
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3746
+#: lib/schema.php:3754
 msgid "checking schema properties"
 msgstr ""
 
@@ -12327,7 +12327,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1785 lib/user.php:1877 lib/util-cache.php:438
+#: lib/user.php:1785 lib/user.php:1877 lib/util-cache.php:445
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12462,13 +12462,13 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:418
+#: lib/util-cache.php:425
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:477
+#: lib/util-cache.php:484
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

@@ -369,6 +369,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
+			 * Since WPSSO Core v15.7.1.
+			 *
+			 * Refresh the Schema types transient cache.
+			 */
+			$this->p->schema->refresh_schema_types();
+
+			/*
 			 * Since WPSSO Core v14.8.0.
 			 *
 			 * Refresh the minimized notice stylesheet.

@@ -1367,6 +1367,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/*
+		 * Refresh the minimized notice stylesheet.
+		 *
 		 * See WpssoUtilCache->refresh().
 		 */
 		public function refresh_notice_style() {

@@ -862,6 +862,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->get_mod_schema_type( $mod, $get_id = false, $use_md_opts );
 		}
 
+		/*
+		 * Since WPSSO Core v15.7.1.
+		 *
+		 * Refresh the Schema types transient cache.
+		 */
+		public function refresh_schema_types() {
+
+			$this->get_schema_types_array( $flatten = true, $read_cache = false );
+		}
+
 		public function get_schema_types_select( $schema_types = null ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -953,9 +963,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $cache_exp_secs > 0 ) {
 
-					$cache_salt = __METHOD__ . '(';
-					$cache_salt .= '_version:' . WpssoConfig::get_version();
-					$cache_salt .= ')';
+					$cache_salt = __METHOD__;
 					$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
 					if ( $read_cache ) {
