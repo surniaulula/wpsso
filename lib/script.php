@@ -420,8 +420,13 @@ EOF;
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			) );
 
-			$toolbar_notice_types   = $this->p->notice->get_toolbar_types();
+			/*
+			 * noticeTime = -1 to skip automatically showing notifications.
+			 * noticeTime = 0 to automatically show notifications until click or hover.
+			 * noticeTime = milliseconds to automatically show notifications.
+			 */
 			$toolbar_notice_timeout = array( 'err' => -1, 'warn' => -1, 'inf' => 3000, 'upd'  => 3000 );
+			$toolbar_notice_types   = $this->p->notice->get_toolbar_types();
 			$notice_text_uniqid     = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 			$no_notices_transl      = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html        = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
@@ -454,8 +459,8 @@ EOF;
 					),
 				),
 				'_option_labels'          => $option_labels,
-				'_toolbar_notice_types'   => $toolbar_notice_types,	// Maybe null, true, false, or array.
 				'_toolbar_notice_timeout' => $toolbar_notice_timeout,
+				'_toolbar_notice_types'   => $toolbar_notice_types,	// Maybe null, true, false, or array.
 				'_notice_text_id'         => $notice_text_uniqid,	// CSS id of hidden notice text container.
 				'_no_notices_html'        => $no_notices_html,
 				'_copy_notices_html'      => $copy_notices_html,

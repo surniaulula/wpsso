@@ -11658,39 +11658,39 @@ msgstr ""
 msgid "checking schema properties"
 msgstr ""
 
-#: lib/script.php:426
+#: lib/script.php:431
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:428
+#: lib/script.php:433
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:462
+#: lib/script.php:467
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:463
+#: lib/script.php:468
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:465
+#: lib/script.php:470
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
-#: lib/script.php:468
+#: lib/script.php:473
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:469
+#: lib/script.php:474
 msgid "{0} of {1} characters recommended"
 msgstr ""
 
-#: lib/script.php:470
+#: lib/script.php:475
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:471
+#: lib/script.php:476
 msgid "{0} characters"
 msgstr ""
 

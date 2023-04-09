@@ -302,9 +302,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			/*
 			 * noticeTime = -1 to skip automatically showing notifications.
-			 *
 			 * noticeTime = 0 to automatically show notifications until click or hover.
-			 *
 			 * noticeTime = milliseconds to automatically show notifications.
 			 */
 			if ( noticeTime < 0 ) {
