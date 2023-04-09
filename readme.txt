@@ -229,6 +229,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.7.1-dev.1 (2023/04/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an update of the Schema types cache on cache refresh.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoSchema->refresh_schema_types()` method.
+	* Updated `WpssoUtilCache->refresh()` to refresh the Schema types cache.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.4.
+
 **Version 15.7.0 (2023/04/08)**
 
 * **New Features**
@@ -513,6 +528,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.7.1-dev.1 =
+
+(2023/04/09) Added an update of the Schema types cache on cache refresh.
 
 = 15.7.0 =
 
