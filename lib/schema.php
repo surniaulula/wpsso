@@ -953,7 +953,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $cache_exp_secs > 0 ) {
 
-					$cache_salt = __METHOD__;
+					$cache_salt = __METHOD__ . '(';
+					$cache_salt .= '_version:' . WpssoConfig::get_version();
+					$cache_salt .= ')';
 					$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
 					if ( $read_cache ) {
