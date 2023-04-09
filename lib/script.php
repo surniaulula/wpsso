@@ -421,7 +421,7 @@ EOF;
 			) );
 
 			$toolbar_notice_types   = $this->p->notice->get_toolbar_types();
-			$toolbar_notice_timeout = array( 'err'  => -1, 'warn' => -1, 'inf'  => -1, 'upd'  => 3000 );
+			$toolbar_notice_timeout = array( 'err' => -1, 'warn' => -1, 'inf' => 3000, 'upd'  => 3000 );
 			$notice_text_uniqid     = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 			$no_notices_transl      = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html        = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
