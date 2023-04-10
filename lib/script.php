@@ -429,7 +429,7 @@ EOF;
 				'err'  => 4000,
 				'warn' => 4000,
 				'inf'  => 3000,
-				'upd'  => 3000,
+				'upd'  => 2000,
 			);
 
 			$toolbar_notice_types = $this->p->notice->get_toolbar_types();
