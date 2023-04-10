@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added update of the Schema types cache on cache refresh.
-	* Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information and update).
+	* Added automatic display and timeout for notices (4 secs for error and warning, 3 secs for information, and 2 secs update messages).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
