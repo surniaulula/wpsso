@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Since WPSSO Core v15.7.1.
+			 * Since WPSSO Core v15.8.0.
 			 *
 			 * Refresh the Schema types transient cache.
 			 */

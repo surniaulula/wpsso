@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.7.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.8.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11658,39 +11658,39 @@ msgstr ""
 msgid "checking schema properties"
 msgstr ""
 
-#: lib/script.php:431
+#: lib/script.php:437
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:433
+#: lib/script.php:439
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:467
+#: lib/script.php:473
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:468
+#: lib/script.php:474
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:470
+#: lib/script.php:476
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
-#: lib/script.php:473
+#: lib/script.php:479
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:474
+#: lib/script.php:480
 msgid "{0} of {1} characters recommended"
 msgstr ""
 
-#: lib/script.php:475
+#: lib/script.php:481
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:476
+#: lib/script.php:482
 msgid "{0} characters"
 msgstr ""
 

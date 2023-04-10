@@ -425,12 +425,18 @@ EOF;
 			 * noticeTime = 0 to automatically show notifications until click or hover.
 			 * noticeTime = milliseconds to automatically show notifications.
 			 */
-			$toolbar_notice_timeout = array( 'err' => -1, 'warn' => -1, 'inf' => 2500, 'upd'  => 2500 );
-			$toolbar_notice_types   = $this->p->notice->get_toolbar_types();
-			$notice_text_uniqid     = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
-			$no_notices_transl      = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html        = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
-			$copy_notices_transl    = __( 'Copy notifications to clipboard.', 'wpsso' );
+			$toolbar_notice_timeout = array(
+				'err'  => 4000,
+				'warn' => 4000,
+				'inf'  => 3000,
+				'upd'  => 3000,
+			);
+
+			$toolbar_notice_types = $this->p->notice->get_toolbar_types();
+			$notice_text_uniqid   = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
+			$no_notices_transl    = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html      = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
+			$copy_notices_transl  = __( 'Copy notifications to clipboard.', 'wpsso' );
 
 			/*
 			 * Add an 'inline' class to toolbar notices to prevent WordPress from moving the notice.

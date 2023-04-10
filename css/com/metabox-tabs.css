@@ -301,8 +301,10 @@ h3.sucom-metabox-tab_title {
  */
 .sucom-tablink-icon::before {						/* Default tab. */
 	display:inline-block;
+	text-align:center;
 	content:"\f1de";	/* .icon-sliders */
 	font-family:"WpssoIcons";
+	width:1em;
 }
 
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
