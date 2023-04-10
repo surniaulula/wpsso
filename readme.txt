@@ -229,12 +229,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.7.1-dev.1 (2023/04/09)**
+**Version 15.8.0-dev.2 (2023/04/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added an update of the Schema types cache on cache refresh.
+	* Added update of the Schema types cache on cache refresh.
+	* Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information and update).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -529,9 +530,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.7.1-dev.1 =
+= 15.8.0-dev.2 =
 
-(2023/04/09) Added an update of the Schema types cache on cache refresh.
+(2023/04/10) Added update of the Schema types cache on cache refresh. Added automatic display and timeout for notices.
 
 = 15.7.0 =
 
