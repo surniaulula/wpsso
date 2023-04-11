@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.8.0-dev.3 (2023/04/11)**
+**Version 15.8.0-dev.4 (2023/04/11)**
 
 * **New Features**
 	* None.
@@ -240,6 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoSchema->refresh_schema_types()` method.
 	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method.
+	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_exclude()` method.
 	* Updated `WpssoUtilCache->refresh()` to refresh the Schema types cache.
 	* Updated `WpssoUtilCache->refresh()` to refresh posts, terms, and users without cache metadata first.
 	* Refactored the `WpssoPost::get_public_ids()` method.
@@ -538,7 +539,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.8.0-dev.3 =
+= 15.8.0-dev.4 =
 
 (2023/04/11) Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
 
