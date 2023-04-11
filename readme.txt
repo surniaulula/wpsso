@@ -229,18 +229,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.8.0-dev.2 (2023/04/10)**
+**Version 15.8.0-dev.3 (2023/04/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added update of the Schema types cache on cache refresh.
-	* Added automatic display and timeout for notices (4 secs for error and warning, 3 secs for information, and 2 secs update messages).
+	* Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoSchema->refresh_schema_types()` method.
+	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method.
 	* Updated `WpssoUtilCache->refresh()` to refresh the Schema types cache.
+	* Updated `WpssoUtilCache->refresh()` to refresh posts, terms, and users without cache metadata first.
+	* Refactored the `WpssoPost::get_public_ids()` method.
+	* Refactored the `WpssoTerm::get_public_ids()` method.
+	* Refactored the `WpssoUser::get_public_ids()` method.
+	* Updated filter arguments:
+		* 'wpsso_post_public_ids' ( array $public_ids, array $posts_args )
+		* 'wpsso_term_public_ids' ( array $public_ids, array $terms_args )
+		* 'wpsso_user_public_ids' ( array $public_ids, array $users_args )
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.4.
@@ -530,9 +538,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.8.0-dev.2 =
+= 15.8.0-dev.3 =
 
-(2023/04/10) Added update of the Schema types cache on cache refresh. Added automatic display and timeout for notices.
+(2023/04/11) Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
 
 = 15.7.0 =
 
