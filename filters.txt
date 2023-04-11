@@ -313,7 +313,7 @@
 
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id )
 
-'wpsso_term_public_ids' ( array $public_ids, array $tax_names )
+'wpsso_term_public_ids' ( array $public_ids, array $terms_args )
 
 'wpsso_term_url' ( $url, $mod )
 
@@ -345,7 +345,7 @@
 
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
 
-'wpsso_user_public_ids' ( array $public_ids, array $roles )
+'wpsso_user_public_ids' ( array $public_ids, array $users_args )
 
 'wpsso_user_url' ( $url, $mod )
 

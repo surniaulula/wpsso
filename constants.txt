@@ -27,6 +27,7 @@ WPSSO_ARTICLE_SECTIONS_LIST              = WPSSO_PLUGINDIR . 'share/article-sect
 WPSSO_CACHE_DISABLE                      = false	// Disable head markup transient cache for debugging purposes.
 WPSSO_CACHE_DIR                          = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
 WPSSO_CACHE_URL                          = content_url( 'cache/wpsso/' )
+WPSSO_CACHE_REFRESH_MAX_TIME             = 1800		// 30 minutes.
 WPSSO_CONTENT_BLOCK_FILTER_OUTPUT        = true 	// Monitor and control incorrectly coded filter output.
 WPSSO_CONTENT_FILTERS_MAX_TIME           = 1.00 	// Issue a warning if the content filter takes longer than 1 second.
 WPSSO_CONTENT_IMAGES_MAX                 = 5    	// Maximum number of images extracted from the content.

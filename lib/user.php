@@ -512,31 +512,46 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/*
 		 * Get all publicly accessible user ids in the 'creator' array.
 		 */
-		public static function get_public_ids() {
+		public static function get_public_ids( array $users_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$public_ids = array();
+			$mtime_start = microtime( $get_float = true );
+			$public_ids  = array();
+			$role_names  = empty( $users_args[ 'role' ] ) ? $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ] : array( $users_args[ 'role' ] );
+			$users_args  = array_merge( $users_args, array( 'fields' => 'ids' ) );
 
-			/*
-			 * Default 'creator' roles are:
-			 *
-			 * 'creator' => array(	// Users that can write posts.
-			 *	'administrator',
-			 *	'editor',
-			 *	'author',
-			 *	'contributor',
-			 * );
-			 */
-			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ];
+			foreach ( $role_names as $name ) {
+				
+				/*
+				 * See https://developer.wordpress.org/reference/classes/wp_user_query/__construct/.
+				 */
+				$query_args = array_merge( $users_args, array( 'role' => $name ) );
+				$users_ids  = get_users( $query_args );
 
-			if ( $wpsso->debug->enabled ) {
+				if ( is_array( $users_ids ) ) {
 
-				$wpsso->debug->log_arr( 'roles', $roles );
+					foreach ( $users_ids as $user_id ) {
+
+						if ( is_numeric( $user_id ) ) {
+
+							$public_ids[ $user_id ] = $user_id;	// Prevents duplicates.
+						}
+					}
+				}
 			}
 
-			$mtime_start = microtime( $get_float = true );
-			$public_ids  = SucomUtil::get_roles_users_ids( $roles, $blog_id = null );
+			unset( $query_args, $users_ids );
+
+			/*
+			 * Sort public user IDs with the newest user ID first.
+			 *
+			 * Note that rsort() assigns new keys to elements in the array.
+			 *
+			 * See https://www.php.net/manual/en/function.rsort.php.
+			 */
+			rsort( $public_ids );
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $wpsso->debug->enabled ) {
@@ -544,7 +559,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
+			return apply_filters( 'wpsso_user_public_ids', $public_ids, $users_args );
 		}
 
 		/*

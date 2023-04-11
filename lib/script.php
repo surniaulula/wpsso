@@ -426,10 +426,10 @@ EOF;
 			 * noticeTime = milliseconds to automatically show notifications.
 			 */
 			$toolbar_notice_timeout = array(
-				'err'  => 4000,
-				'warn' => 4000,
-				'inf'  => 3000,
-				'upd'  => 2000,
+				'err'  => 3000,
+				'warn' => 3000,
+				'inf'  => 2000,
+				'upd'  => 1500,
 			);
 
 			$toolbar_notice_types = $this->p->notice->get_toolbar_types();

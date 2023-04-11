@@ -497,58 +497,47 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Get all publicly accessible term ids for taxonomy slugs (optional).
+		 * Get all publicly accessible term ids.
 		 */
-		public static function get_public_ids( $tax_names = null ) {
+		public static function get_public_ids( array $terms_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$public_ids = array();
-
-			if ( null === $tax_names ) {
-
-				$tax_names = SucomUtil::get_taxonomies( $output = 'names' );
-
-			} elseif ( is_string( $tax_names ) ) {
-
-				$tax_names = array( $tax_names );
-			}
-
 			$mtime_start = microtime( $get_float = true );
+			$public_ids  = array();
+			$tax_names   = empty( $terms_args[ 'taxonomy' ] ) ? SucomUtil::get_taxonomies( $output = 'names' ) : array( $terms_args[ 'taxonomy' ] );
+			$terms_args  = array_merge( $terms_args, array( 'fields' => 'ids' ) );
 
-			if ( is_array( $tax_names ) ) {
-
-				$terms_args  = array( 'fields' => 'ids' );	// Return an array of ids.
-
-				foreach ( $tax_names as $name ) {
-
-					$terms_args[ 'taxonomy' ] = $name;
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log_arr( 'terms_args', $terms_args );
-					}
-
-					/*
-					 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
-					 */
-					$term_ids = get_terms( $terms_args );
-
-					foreach ( $term_ids as $term_id ) {
-
-						$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
-					}
-				}
+			foreach ( $tax_names as $name ) {
 
 				/*
-				 * Sort public term IDs with the newest term ID first.
-				 *
-				 * Note that rsort() assigns new keys to elements in the array.
-				 *
-				 * See https://www.php.net/manual/en/function.rsort.php.
+				 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
 				 */
-				rsort( $public_ids );
+				$query_args = array_merge( $terms_args, array( 'taxonomy' => $name ) );
+				$terms_ids  = get_terms( $query_args );
+
+				if ( is_array( $terms_ids ) ) {
+
+					foreach ( $terms_ids as $term_id ) {
+
+						if ( is_numeric( $term_id ) ) {
+
+							$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
+						}
+					}
+				}
 			}
+
+			unset( $query_args, $terms_ids );
+
+			/*
+			 * Sort public term IDs with the newest term ID first.
+			 *
+			 * Note that rsort() assigns new keys to elements in the array.
+			 *
+			 * See https://www.php.net/manual/en/function.rsort.php.
+			 */
+			rsort( $public_ids );
 
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
@@ -557,7 +546,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return apply_filters( 'wpsso_term_public_ids', $public_ids, $tax_names );
+			return apply_filters( 'wpsso_term_public_ids', $public_ids, $terms_args );
 		}
 
 		/*

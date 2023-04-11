@@ -383,23 +383,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$this->p->notice->refresh_notice_style();
 
 			/*
-			 * Since WPSSO Core v8.0.0.
-			 */
-			$public_ids = WpssoPost::get_public_ids();
-
-			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
-
-			foreach ( $public_ids as $post_id ) {
-
-				foreach ( $size_names as $size_name ) {
-
-					$mt_ret = $this->p->media->get_featured( $num = 1, $size_name, $post_id );
-				}
-			}
-
-			unset( $public_ids );
-
-			/*
 			 * Refresh the cache for each public post, term, and user ID.
 			 */
 			$total_count = array(
@@ -408,9 +391,25 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'user' => 0,
 			);
 
+			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );
+
 			foreach ( $total_count as $obj_name => &$count ) {
 
-				$obj_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );	// Call static method.
+				$prio_args = array(
+					'meta_query' => array(
+						'relation' => 'AND',
+						array(
+							'key'     => $og_type_key,
+							'compare' => 'NOT EXISTS',
+						),
+					),
+				);
+			
+				$prio_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ), $prio_args );
+				$obj_ids  = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );
+				$obj_ids  = array_unique( $prio_ids + $obj_ids );
+
+				unset( $prio_args, $prio_ids );
 
 				foreach ( $obj_ids as $obj_id ) {
 

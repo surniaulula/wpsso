@@ -813,7 +813,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( ! empty( $parent_opts ) ) {
 
-					$md_defs = array_merge( $md_defs, $parent_opts );
+					$md_defs = SucomUtil::array_merge_recursive_distinct( $md_defs, $parent_opts );
 				}
 
 				/*
@@ -1099,7 +1099,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Get all publicly accessible post, term, or user IDs.
 		 */
-		public static function get_public_ids() {
+		public static function get_public_ids( array $args = array() ) {
 
 			return self::must_be_extended( $ret_val = array() );
 		}
@@ -1666,7 +1666,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$md_opts = $_POST[ WPSSO_META_NAME ];
 			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
-			$md_opts = array_merge( $md_prev, $md_opts );	// Complete the array with previous options.
+			$md_opts = SucomUtil::array_merge_recursive_distinct( $md_prev, $md_opts );	// Complete the array with previous options.
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/*
@@ -2080,6 +2080,46 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $local_cache;
 		}
 
+		/*
+		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
+		 */
+		static public function get_column_meta_query_og_type( $og_type = 'product' ) {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache  = '';	// Default WP_Query value is an empty string.
+				$og_type_key  = self::get_column_meta_keys( 'og_type' );
+				$noindex_key  = self::get_column_meta_keys( 'is_noindex' );
+				$redirect_key = self::get_column_meta_keys( 'is_redirect' );
+
+				$local_cache = array(
+					'relation' => 'AND',
+					array(
+						'key'     => $og_type_key,
+						'value'   => $og_type,
+						'compare' => '=',
+						'type'    => 'CHAR',
+					),
+					array(
+						'key'     => $noindex_key,
+						'value'   => '1',
+						'compare' => '!=',
+						'type'    => 'CHAR',
+					),
+					array(
+						'key'     => $redirect_key,
+						'value'   => '1',
+						'compare' => '!=',
+						'type'    => 'CHAR',
+					),
+				);
+			}
+
+			return $local_cache;
+		}
+
 		public static function get_column_by_meta_key( $meta_key ) {
 
 			$sortable_cols = self::get_sortable_columns();
@@ -2442,7 +2482,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
 						$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
-						$md_opts     = array_merge( $md_opts, $parent_opts );
+						$md_opts     = SucomUtil::array_merge_recursive_distinct( $md_opts, $parent_opts );
 					}
 				}
 

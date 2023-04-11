@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.8.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 15.8.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5124,7 +5124,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:875 lib/post.php:990 lib/term.php:734 lib/user.php:732
+#: lib/admin.php:875 lib/post.php:990 lib/term.php:723 lib/user.php:747
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -8203,8 +8203,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1736 lib/user.php:1825
-#: lib/user.php:1953
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1751 lib/user.php:1840
+#: lib/user.php:1968
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -12232,7 +12232,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:979
+#: lib/term.php:968
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12277,74 +12277,74 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:873
+#: lib/user.php:888
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:879
+#: lib/user.php:894
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1036
+#: lib/user.php:1051
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1162
+#: lib/user.php:1177
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1163
+#: lib/user.php:1178
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1164
+#: lib/user.php:1179
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1669
+#: lib/user.php:1684
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1712 lib/user.php:1738
+#: lib/user.php:1727 lib/user.php:1753
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1719
+#: lib/user.php:1734
 msgid "A background task will begin shortly to %s to content creators."
 msgstr ""
 
-#: lib/user.php:1749 lib/user.php:1838 lib/util-cache.php:351
+#: lib/user.php:1764 lib/user.php:1853 lib/util-cache.php:351
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1750
+#: lib/user.php:1765
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1784
+#: lib/user.php:1799
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1785 lib/user.php:1877 lib/util-cache.php:445
+#: lib/user.php:1800 lib/user.php:1892 lib/util-cache.php:444
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1801 lib/user.php:1827
+#: lib/user.php:1816 lib/user.php:1842
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1808
+#: lib/user.php:1823
 msgid "A background task will begin shortly to %s from all users."
 msgstr ""
 
-#: lib/user.php:1839
+#: lib/user.php:1854
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1876
+#: lib/user.php:1891
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 
@@ -12462,13 +12462,13 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:425
+#: lib/util-cache.php:424
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:484
+#: lib/util-cache.php:483
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$defs = $this->p->opt->get_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $this->p->options, $opts );
+			$opts = SucomUtil::array_merge_recursive_distinct( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = false );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
 
@@ -829,7 +829,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$defs = $this->p->opt->get_site_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $this->p->site_options, $opts );	// Complete the array with previous options.
+			$opts = SucomUtil::array_merge_recursive_distinct( $this->p->site_options, $opts );	// Complete the array with previous options.
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
 
@@ -1012,7 +1012,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$img_defs = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $defs );
 
-							$this->p->options = array_merge( $this->p->options, $img_defs );
+							$this->p->options = SucomUtil::array_merge_recursive_distinct( $this->p->options, $img_defs );
 
 							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $this->p->options, $network = false );
 
