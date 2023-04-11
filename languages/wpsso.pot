@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.8.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.8.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12327,7 +12327,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1800 lib/user.php:1892 lib/util-cache.php:448
+#: lib/user.php:1800 lib/user.php:1892 lib/util-cache.php:451
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12462,13 +12462,13 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:428
+#: lib/util-cache.php:431
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:487
+#: lib/util-cache.php:490
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

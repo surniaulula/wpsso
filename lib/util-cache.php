@@ -391,10 +391,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'user' => 0,
 			);
 
-			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );
+			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
+				/*
+				 * Refresh post, term, and user IDs with missing cache metadata first.
+				 */
 				$prio_args = array(
 					'meta_query' => array(
 						'relation' => 'AND',

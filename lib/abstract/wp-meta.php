@@ -2089,10 +2089,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( null === $local_cache ) {
 
-				$local_cache  = '';	// Default WP_Query value is an empty string.
-				$og_type_key  = self::get_column_meta_keys( 'og_type' );
-				$noindex_key  = self::get_column_meta_keys( 'is_noindex' );
-				$redirect_key = self::get_column_meta_keys( 'is_redirect' );
+				$local_cache  = '';						// Default WP_Query value is an empty string.
+				$og_type_key  = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
+				$noindex_key  = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
+				$redirect_key = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
 
 				$local_cache = array(
 					'relation' => 'AND',
@@ -2120,7 +2120,42 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_column_by_meta_key( $meta_key ) {
+		/*
+		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
+		 */
+		static public function get_column_meta_query_exclude() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$noindex_key  = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
+				$redirect_key = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+
+				$local_cache = array(
+					'relation' => 'OR',
+					array(
+						'key'     => $noindex_key,
+						'value'   => '1',
+						'compare' => '=',
+						'type'    => 'CHAR',
+					),
+					array(
+						'key'     => $redirect_key,
+						'value'   => '1',
+						'compare' => '=',
+						'type'    => 'CHAR',
+					),
+				);
+			}
+
+			return $local_cache;	// Return an empty string or array.
+		}
+
+		/*
+		 * See WpssoAbstractWpMeta::check_sortable_meta().
+		 */
+		public static function get_column_info_by_meta_key( $meta_key ) {
 
 			$sortable_cols = self::get_sortable_columns();
 
@@ -2246,7 +2281,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return $value;	// Return null.
 			}
 
-			$col_info = self::get_column_by_meta_key( $meta_key );
+			$col_info = self::get_column_info_by_meta_key( $meta_key );
 
 			if ( ! empty( $col_info ) ) {
 
