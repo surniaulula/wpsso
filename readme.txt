@@ -229,14 +229,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.8.0-dev.4 (2023/04/11)**
+**Version 15.8.0-dev.5 (2023/04/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
 * **Bugfixes**
-	* None.
+	* Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
 * **Developer Notes**
 	* Added a new `WpssoSchema->refresh_schema_types()` method.
 	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method.
@@ -539,9 +539,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.8.0-dev.4 =
+= 15.8.0-dev.5 =
 
-(2023/04/11) Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
+(2023/04/11) Added automatic display and timeout for notices. Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
 
 = 15.7.0 =
 
