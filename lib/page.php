@@ -1322,15 +1322,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
+				/*
+				 * The default 'plugin_term_page_title' value is '%%term_hierarchy%%'.
+				 *
+				 * If $title_sep is false, then use '%%term_title%%' instead.
+				 */
 				if ( false === $title_sep ) {
 
-					$title_text = $this->get_term_title( $mod[ 'id' ], $title_sep );
+					$title_text = '%%term_title%%';
 
 				} else {
 
-					/*
-					 * The default 'plugin_term_page_title' value is '%%term_hierarchy%%'.
-					 */
 					$title_text = $this->p->opt->get_text( 'plugin_term_page_title' );
 				}
 
@@ -2072,9 +2074,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/*
-		 * Includes parent names in the term title if $title_sep is not false.
+		 * Includes parent names in the term title by default, unless the $title_sep value is false.
 		 *
-		 * See WpssoPage->get_the_title().
 		 * See WpssoUtilInline->replace_callback().
 		 * See WpssoFaqShortcodeFaq->do_shortcode().
 		 */
