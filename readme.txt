@@ -229,12 +229,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.8.0-dev.6 (2023/04/12)**
+**Version 15.8.0-b.1 (2023/04/12)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added automatic display and timeout for notices (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
+	* Added automatic display of notices with a timeout (3 secs for error and warning, 2 secs for information, and 1.5 secs update messages).
 * **Bugfixes**
 	* Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
 * **Developer Notes**
@@ -539,9 +539,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.8.0-dev.6 =
+= 15.8.0-b.1 =
 
-(2023/04/12) Added automatic display and timeout for notices. Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
+(2023/04/12) Added automatic display of notices. Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
 
 = 15.7.0 =
 
