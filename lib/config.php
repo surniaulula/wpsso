@@ -4851,7 +4851,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
-			$var_const[ 'WPSSO_CACHE_SINGLE_EVENT_TIME' ]     = 8;			// Schedule single events for now + 8 seconds.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.
@@ -4861,10 +4860,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
 			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 5.00;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
 			$var_const[ 'WPSSO_INLINE_VARS_MAX_DEPTH' ]       = 3;			// Maximum recursion for inline variables.
+			$var_const[ 'WPSSO_METABOX_TAB_LAYOUT' ]          = 'vertical';		// Default tab layout (vertical or horizontal).
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 3.00;		// Send an error to trigger_error() if getimagesize() takes longer.
-			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
-			$var_const[ 'WPSSO_DEFAULT_TAB_LAYOUT' ]          = 'vertical';
+			$var_const[ 'WPSSO_SCHEDULE_SINGLE_EVENT_TIME' ]  = 8;			// Schedule single events for now + 8 seconds.
+			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 
 			/*
 			 * Schema limits.

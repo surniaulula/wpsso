@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_CACHE_SINGLE_EVENT_TIME;
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;
 			$event_hook       = 'wpsso_refresh_cache';
 			$event_args       = array( $user_id );
 
