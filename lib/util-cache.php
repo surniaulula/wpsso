@@ -73,6 +73,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
+		 * Clear cache files.
+		 *
+		 * See WpssoUtilCache->refresh().
 		 * See WpssoAdmin->load_setting_page().
 		 */
 		public function clear_cache_files() {
@@ -318,7 +321,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_time       = time() + WPSSO_CACHE_SINGLE_EVENT_TIME;
 			$event_hook       = 'wpsso_refresh_cache';
 			$event_args       = array( $user_id );
 
@@ -440,6 +443,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg = trim( apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id ) ) . ' ';
 
 			/*
+			 * Clear cache files.
+			 */
+			$cleared_count = $this->clear_cache_files();
+
+			if ( $cleared_count > 0 ) {
+
+				$notice_msg .= sprintf( __( '%s cache files have been cleared.', 'wpsso' ), $cleared_count ) . ' ';
+			}
+
+			/*
 			 * Clear cache plugins.
 			 */
 			$notice_msg .= $this->clear_cache();
@@ -473,7 +486,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function get_cache_id() {
 
-			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );
+			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
 		}
 
 		public function doing_task() {
@@ -483,6 +496,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return get_transient( $cache_id );
 		}
 
+		/*
+		 * Clear cache plugins.
+		 */
 		public function clear_cache() {
 
 			wp_cache_flush();

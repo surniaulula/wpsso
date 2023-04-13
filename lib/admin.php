@@ -752,7 +752,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->options = $opts;
 
 			/*
-			 * Create a clear cache URL from the current page URL.
+			 * Create a saved settings and refresh cache notice.
 			 */
 			$cache_md5_pre  = 'wpsso_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );

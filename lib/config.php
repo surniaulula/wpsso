@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.8.0-rc.1',	// Plugin version.
+					'version'     => '15.8.0-rc.2',	// Plugin version.
 					'opt_version' => '962',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4841,8 +4841,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
 
-			$var_const[ 'WPSSO_CACHE_DIR' ] = self::get_cache_dir();
-			$var_const[ 'WPSSO_CACHE_URL' ] = self::get_cache_url();
 
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 80.0;		// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
@@ -4850,7 +4848,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
+			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
+			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
+			$var_const[ 'WPSSO_CACHE_SINGLE_EVENT_TIME' ]     = 8;			// Schedule single events for now + 8 seconds.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.

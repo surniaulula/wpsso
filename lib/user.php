@@ -1725,7 +1725,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'add the Person role';
 			$task_name_transl = _x( 'add the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_time       = time() + WPSSO_CACHE_SINGLE_EVENT_TIME;
 			$event_hook       = 'wpsso_add_person_role';
 			$event_args       = array( $user_id );
 
@@ -1814,7 +1814,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'remove the Person role';
 			$task_name_transl = _x( 'remove the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + 5;	// Add a 5 second event buffer.
+			$event_time       = time() + WPSSO_CACHE_SINGLE_EVENT_TIME;
 			$event_hook       = 'wpsso_remove_person_role';
 			$event_args       = array( $user_id );
 
@@ -1900,7 +1900,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_cache_id() {
 
-			return 'wpsso_!_' . md5( __CLASS__ . '::task_name' );
+			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
 		}
 
 		public function doing_task() {
