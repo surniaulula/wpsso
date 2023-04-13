@@ -282,6 +282,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 15.6.0 (2023/04/02)**
 
+Note that the *default* Image Dimension Checks option has changed from disabled to enabled. This is an Advanced Setting option, so the existing option value will be updated automatically in the Free / Standard version. The existing option value in the Premium version will not change, only the default value for new activations has changed.
+
 * **New Features**
 	* None.
 * **Improvements**
