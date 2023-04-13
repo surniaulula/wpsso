@@ -238,7 +238,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed the possible incorrect addition of term hierarchy in the breadcrumb title.
 * **Developer Notes**
-	* Added a new `WPSSO_CACHE_SINGLE_EVENT_TIME` constant (default is 8 seconds).
+	* Added a new `WPSSO_SCHEDULE_SINGLE_EVENT_TIME` constant (default is 8 seconds).
 	* Added a new `WpssoSchema->refresh_schema_types()` method.
 	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method.
 	* Added a new `WpssoAbstractWpMeta::get_column_meta_query_exclude()` method.
