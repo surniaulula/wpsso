@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, seo, woocommerce, meta tags, google search console, google merchant, open graph, rich results, knowledge graph, xml sitemap, structured data
 Contributors: jsmoriss
 Requires PHP: 7.2
-Requires At Least: 5.4
+Requires At Least: 5.5
 Tested Up To: 6.2.0
 WC Tested Up To: 7.5.1
 Stable Tag: 15.7.0
@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_user_public_ids' ( array $public_ids, array $users_args )
 * **Requires At Least**
 	* PHP v7.2.
-	* WordPress v5.4.
+	* WordPress v5.5.
 
 **Version 15.7.0 (2023/04/08)**
 
