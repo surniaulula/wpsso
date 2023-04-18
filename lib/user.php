@@ -1725,7 +1725,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'add the Person role';
 			$task_name_transl = _x( 'add the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 8 seconds.
 			$event_hook       = 'wpsso_add_person_role';
 			$event_args       = array( $user_id );
 
@@ -1814,7 +1814,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'remove the Person role';
 			$task_name_transl = _x( 'remove the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 8 seconds.
 			$event_hook       = 'wpsso_remove_person_role';
 			$event_args       = array( $user_id );
 
