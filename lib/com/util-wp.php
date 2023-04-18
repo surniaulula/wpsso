@@ -316,6 +316,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$has_paged    = isset( $args[ 'paged' ] ) && false !== $args[ 'paged' ] ? true : false;
 			$has_ppp      = isset( $args[ 'posts_per_page' ] ) && -1 !== $args[ 'posts_per_page' ] ? true : false;
 
+			if ( defined( 'SUCOM_GET_POSTS_DEBUG_LOG' ) && SUCOM_GET_POSTS_DEBUG_LOG ) {
+
+				error_log( print_r( $args, true ) );
+			}
+
 			if ( ! $has_nopaging && ! $has_paged && ! $has_ppp ) {
 
 				$args[ 'paged' ] = 1;
@@ -331,17 +336,19 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				$posts = array();
 
-				while ( $result = $wp_query->query( $args ) ) {
+				while ( $result = $wp_query->query( $args ) ) {	// Return an array of post objects or post IDs.
 
 					$posts = array_merge( $posts, $result );
 
 					$args[ 'paged' ]++;	// Get the next page.
 				}
 
-				return $posts;
+			} else {
+
+				$posts = $wp_query->query( $args );
 			}
 
-			return $wp_query->query( $args );
+			return $posts;
 		}
 
 		/*
