@@ -2759,9 +2759,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$locale_cache[ $cache_index ] = $locale;
 		}
 
+		/*
+		 * Calls SucomUtil::get_available_locale_names() and applies the 'sucom_available_feed_locale_names' filter.
+		 *
+		 * Returns an associative array with locale keys and native names (example: 'en_US' => 'English (United States)').
+		 */
 		public static function get_available_feed_locale_names() {
 
-			$locale_names = self::get_available_locale_names();
+			$locale_names = self::get_available_locale_names();	// Uses a local cache.
 
 			$locale_names = apply_filters( 'sucom_available_feed_locale_names', $locale_names );
 
@@ -2789,7 +2794,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$native_name = $translations[ $locale ][ 'native_name' ];
 
-				} elseif ( 'en_US' === $locale ) {
+				} elseif ( 'en' === $locale || 'en_US' === $locale ) {
 
 					$native_name = 'English (United States)';
 
