@@ -827,7 +827,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
 			/*
-			 * Maybe get a customized Facebook locale from the plugin settings.
+			 * Maybe get an alternate Facebook locale from the plugin settings.
 			 */
 			if ( $use_opts ) {
 
@@ -839,7 +839,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning settings locale "' . $fb_locale . '" for ' . $fb_locale_key . ' key' );
+						$this->p->debug->log( 'returning fb locale "' . $fb_locale . '" from ' . $fb_locale_key . ' options key' );
 					}
 
 					return $fb_locale;
@@ -849,35 +849,36 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/*
 			 * Maybe return the Facebook equivalent for this locale.
 			 */
-			$fb_locale    = $this->p->schema->get_schema_lang( $mixed );
+			$schema_lang = $this->p->schema->get_schema_lang( $mixed );
+
 			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
 
 			/*
 			 * Fix known exceptions.
 			 */
-			switch ( $fb_locale ) {
+			switch ( $schema_lang ) {
 
 				case 'en_UK':
 
-					$fb_locale = 'en_GB';
+					$schema_lang = 'en_GB';
 
 					break;
 
 				case 'de_DE_formal':
 
-					$fb_locale = 'de_DE';
+					$schema_lang = 'de_DE';
 
 					break;
 			}
 
-			if ( ! empty( $fb_languages[ $fb_locale ] ) ) {
+			if ( ! empty( $fb_languages[ $schema_lang ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning facebook locale "' . $fb_locale . '"' );
+					$this->p->debug->log( 'returning schema language "' . $schema_lang . '"' );
 				}
 
-				return $fb_locale;
+				return $schema_lang;
 			}
 
 			/*
