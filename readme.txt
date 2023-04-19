@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.9.0-rc.1 (2023/04/19)**
+**Version 15.9.0 (2023/04/19)**
 
 * **New Features**
 	* None.
@@ -564,7 +564,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.9.0-rc.1 =
+= 15.9.0 =
 
 (2023/04/19) Updated the WP List Table Columns options. Updated the Facebook supported locales list.
 
