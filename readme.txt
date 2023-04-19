@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.5
 Tested Up To: 6.2.0
 WC Tested Up To: 7.6.0
-Stable Tag: 15.8.0
+Stable Tag: 15.9.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.9.0 (2023/04/19)**
+**Version 15.9.0 (2023/04/20)**
 
 * **New Features**
 	* None.
@@ -566,7 +566,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.9.0 =
 
-(2023/04/19) Updated the WP List Table Columns options. Updated the Facebook supported locales list.
+(2023/04/20) Updated the WP List Table Columns options. Updated the Facebook supported locales list.
 
 = 15.8.0 =
 
