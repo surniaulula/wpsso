@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.9.0-b.1',	// Plugin version.
+					'version'     => '15.9.0-rc.1',	// Plugin version.
 					'opt_version' => '964',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2699,12 +2699,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'    => 'auto',
 						'def_val'   => 'none',
 					),
-					'og_type' => array(
+					'og_type' => array(	// Open Graph Type ID.
 						'mt_name'  => 'og:type',
 						'meta_key' => '_wpsso_head_info_og_type',
 						'def_val'  => 'none',
 					),
-					'schema_type' => array(
+					'schema_type' => array(	// Schema Type ID.
 						'mt_name'  => 'schema:type:id',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'def_val'  => 'none',
