@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.9.0-dev.2 (2023/04/19)**
+**Version 15.9.0-dev.3 (2023/04/19)**
 
 * **New Features**
 	* None.
@@ -246,6 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method:
 		* Added an $schema_lang argument.
 		* Added the '_wpsso_head_info_schema_lang' key to the meta query.
+	* Renamed (and refectored) the `WpssoSchema ->get_lang()` method to `WpssoSchema ->get_mod_language()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.5.
@@ -563,7 +564,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.9.0-dev.2 =
+= 15.9.0-dev.3 =
 
 (2023/04/19) Updated the WP List Table Columns options. Updated the Facebook supported locales list.
 
