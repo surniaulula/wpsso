@@ -147,7 +147,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $md_opts;
 		}
 
+		/*
+		 * Deprecated on 2023/04/19.
+		 */
 		public function get_lang( array $mod ) {
+
+			return $this->get_mod_language( $mod );
+		}
+
+		public function get_mod_language( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -198,7 +206,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Called by WpssoHead->get_head_array().
 		 *
-		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
+		 * Pass $mt_og by reference to assign values to the schema:* internal meta tags.
 		 */
 		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
 
@@ -207,6 +215,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
+			$page_language = $mt_og[ 'schema:language' ] = $this->get_mod_language( $mod );
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type_id( $mod );		// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
 

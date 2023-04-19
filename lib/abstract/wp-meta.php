@@ -2065,15 +2065,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
 		 */
-		static public function get_column_meta_query_og_type( $og_type = 'product', $og_locale = null ) {
+		static public function get_column_meta_query_og_type( $og_type = 'product', $schema_lang = null ) {
 
 			static $local_cache = array();
 
-			if ( null === $og_locale ) {
+			if ( null === $schema_lang ) {
 
-				$wpsso =& Wpsso::get_instance();
-
-				$og_locale = $wpsso->og->get_fb_locale();
+				$schema_lang = SucomUtil::get_locale();
 			}
 
 			if ( ! isset( $local_cache[ $og_type ] ) ) {
@@ -2081,18 +2079,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$local_cache[ $og_type ] = array();
 			}
 
-			if ( ! isset( $local_cache[ $og_type ][ $og_locale ] ) ) {
+			if ( ! isset( $local_cache[ $og_type ][ $schema_lang ] ) ) {
 
-				$og_locale_key = self::get_column_meta_keys( 'og_locale' );	// Example: '_wpsso_head_info_og_locale'.
-				$og_type_key   = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
-				$noindex_key   = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
-				$redirect_key  = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+				$og_type_key     = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
+				$schema_lang_key = self::get_column_meta_keys( 'schema_lang' );	// Example: '_wpsso_head_info_schema_lang'.
+				$noindex_key     = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
+				$redirect_key    = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
 
-				$local_cache[ $og_type ][ $og_locale ] = array(
+				$local_cache[ $og_type ][ $schema_lang ] = array(
 					'relation' => 'AND',
 					array(
-						'key'     => $og_locale_key,
-						'value'   => $og_locale,
+						'key'     => $schema_lang_key,
+						'value'   => $schema_lang,
 						'compare' => '=',
 						'type'    => 'CHAR',
 					),
@@ -2117,7 +2115,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				);
 			}
 
-			return $local_cache[ $og_type ][ $og_locale ];
+			return $local_cache[ $og_type ][ $schema_lang ];
 		}
 
 		/*

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.9.0-dev.1',	// Plugin version.
-					'opt_version' => '963',		// Increment when changing default option values.
+					'version'     => '15.9.0-dev.2',	// Plugin version.
+					'opt_version' => '964',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1908,23 +1908,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_user_page'            => 1,
 
 					/*
-					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Locale.
-					 */
-					'plugin_og_locale_col_attachment'           => 0,
-					'plugin_og_locale_col_download'             => 0,		// For Easy Digital Downloads.
-					'plugin_og_locale_col_page'                 => 0,
-					'plugin_og_locale_col_post'                 => 0,
-					'plugin_og_locale_col_product'              => 0,		// For WooCommerce.
-					'plugin_og_locale_col_tax_category'         => 0,
-					'plugin_og_locale_col_tax_faq_category'     => 0,
-					'plugin_og_locale_col_tax_link_category'    => 0,
-					'plugin_og_locale_col_tax_post_tag'         => 0,
-					'plugin_og_locale_col_tax_product_cat'      => 0,		// For WooCommerce.
-					'plugin_og_locale_col_tax_product_tag'      => 0,		// For WooCommerce.
-					'plugin_og_locale_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
-					'plugin_og_locale_col_user_page'            => 0,
-
-					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Type.
 					 */
 					'plugin_og_type_col_attachment'           => 0,
@@ -1940,6 +1923,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_type_col_tax_product_tag'      => 0,		// For WooCommerce.
 					'plugin_og_type_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
 					'plugin_og_type_col_user_page'            => 0,
+
+					/*
+					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Locale.
+					 */
+					'plugin_schema_lang_col_attachment'           => 0,
+					'plugin_schema_lang_col_download'             => 0,		// For Easy Digital Downloads.
+					'plugin_schema_lang_col_page'                 => 0,
+					'plugin_schema_lang_col_post'                 => 0,
+					'plugin_schema_lang_col_product'              => 0,		// For WooCommerce.
+					'plugin_schema_lang_col_tax_category'         => 0,
+					'plugin_schema_lang_col_tax_faq_category'     => 0,
+					'plugin_schema_lang_col_tax_link_category'    => 0,
+					'plugin_schema_lang_col_tax_post_tag'         => 0,
+					'plugin_schema_lang_col_tax_product_cat'      => 0,		// For WooCommerce.
+					'plugin_schema_lang_col_tax_product_tag'      => 0,		// For WooCommerce.
+					'plugin_schema_lang_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
+					'plugin_schema_lang_col_user_page'            => 0,
 
 					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Schema ID.
@@ -2672,12 +2672,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'   => 'auto',
 						'def_val'  => 'none',
 					),
-					'og_locale' => array(
-						'header'    => 'SSO Locale',
-						'mt_name'   => 'og:locale',
-						'meta_key'  => '_wpsso_head_info_og_locale',
+					'schema_lang' => array(
+						'header'    => 'SSO Lang',
+						'mt_name'   => 'schema:language',
+						'meta_key'  => '_wpsso_head_info_schema_lang',
 						'orderby'   => 'meta_value',
-						'width'     => '8em',
+						'width'     => '7em',
 						'height'    => 'auto',
 						'def_val'   => 'none',
 					),

@@ -160,7 +160,7 @@ _x( 'Twitter @username', 'option value', 'wpsso' );
 _x( 'Wikipedia Page URL', 'option value', 'wpsso' );
 _x( 'YouTube Channel URL', 'option value', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );
-_x( 'SSO Locale', 'column header', 'wpsso' );
+_x( 'SSO Lang', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO Description', 'column header', 'wpsso' );
 _x( 'Document Markup', 'option label', 'wpsso' );
