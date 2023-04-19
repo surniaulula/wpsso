@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 
 						$alternates[] = array(
 							'href'     => $this->p->util->get_canonical_url( $transl_mod ),
-							'hreflang' => $this->p->schema->get_mod_language( $transl_mod ),
+							'hreflang' => $this->p->schema->get_schema_lang( $transl_mod ),
 						);
 
 						if ( $this->p->debug->enabled ) {

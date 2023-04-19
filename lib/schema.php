@@ -152,30 +152,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_lang( array $mod ) {
 
-			return $this->get_mod_language( $mod );
+			return $this->get_schema_lang( $mod );
 		}
 
-		public function get_mod_language( array $mod ) {
+		/*
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public function get_schema_lang( $mixed = 'current' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$schema_lang = SucomUtil::get_locale( $mod );
+			$schema_lang = SucomUtil::get_locale( $mixed );
 
 			/*
-			 * If there is a multilingual plugin available, trust the plugin and ignore any custom language value.
+			 * If there is a multilingual plugin available, skip any custom language value.
 			 */
 			if ( empty( $this->p->avail[ 'lang' ][ 'any' ] ) ) {
 
-				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+				if ( ! empty( $mixed[ 'obj' ] ) && $mixed[ 'id' ] ) {
 
-					$schema_type_id = $this->get_mod_schema_type_id( $mod );
+					$schema_type_id = $this->get_mod_schema_type_id( $mixed );
 
 					if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
 
-						$custom_schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang' );
+						$custom_schema_lang = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'schema_lang' );
 
 						/*
 						 * Check that the id value is not true, false, null, empty string, or 'none'.
@@ -213,7 +216,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
-			$page_language = $mt_og[ 'schema:language' ] = $this->get_mod_language( $mod );
+			$page_language = $mt_og[ 'schema:language' ] = $this->get_schema_lang( $mod );
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type_id( $mod );		// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
 

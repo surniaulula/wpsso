@@ -827,9 +827,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
 			/*
-			 * Check for customized locale for the $mixed value.
+			 * Maybe get a customized Facebook locale from the plugin settings.
 			 */
-			if ( $use_opts && ! empty( $this->p->options ) ) {
+			if ( $use_opts ) {
 
 				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options, $mixed );
 
@@ -839,7 +839,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning options locale "' . $fb_locale . '" for ' . $fb_locale_key . ' key' );
+						$this->p->debug->log( 'returning settings locale "' . $fb_locale . '" for ' . $fb_locale_key . ' key' );
 					}
 
 					return $fb_locale;
@@ -847,21 +847,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/*
-			 * Get the locale requested in $mixed.
-			 *
-			 * $mixed = 'default' | 'current' | post ID | $mod array
+			 * Maybe return the Facebook equivalent for this locale.
 			 */
-			$fb_locale = SucomUtil::get_locale( $mixed );
-
-			if ( empty( $fb_locale ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: locale value is empty' );
-				}
-
-				return $fb_locale;
-			}
+			$fb_locale    = $this->p->schema->get_schema_lang( $mixed );
+			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
 
 			/*
 			 * Fix known exceptions.
@@ -881,11 +870,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					break;
 			}
 
-			/*
-			 * Return the Facebook equivalent for this WordPress locale.
-			 */
-			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
-
 			if ( ! empty( $fb_languages[ $fb_locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -894,13 +878,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				return $fb_locale;
-
 			}
 
 			/*
-			 * Fallback to the default WordPress locale.
+			 * Maybe fallback to the default locale.
 			 */
-			$def_locale  = SucomUtil::get_locale( 'default' );
+			$def_locale = $this->p->schema->get_schema_lang( 'default' );
 
 			if ( ! empty( $fb_languages[ $def_locale ] ) ) {
 
