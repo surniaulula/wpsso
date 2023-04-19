@@ -1,3 +1,7 @@
+
+Notice: $_SERVER['HTTP_HOST'] or $_SERVER['REQUEST_URI'] are required but not set. in /var/www/wpadm/wordpress/wp-content/plugins/polylang/include/functions.php on line 87
+
+Notice: $_SERVER['HTTP_HOST'] or $_SERVER['REQUEST_URI'] are required but not set. in /var/www/wpadm/wordpress/wp-content/plugins/polylang/include/functions.php on line 87
 <h1>WPSSO Core - The Complete Structured Data Plugin</h1>
 
 <table>
