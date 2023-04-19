@@ -229,13 +229,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.9.0-b.1 (2023/04/19)**
+**Version 15.9.0-rc.1 (2023/04/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; WP List Table Columns options:
-		* Added an SSO Locale column.
+		* Added an SSO Lang column.
 		* Removed the OG ID column.
 		* Removed the Schema ID column.
 		* Renamed the Schema Type column to SSO Schema.
@@ -246,7 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method:
 		* Added an $schema_lang argument.
 		* Added the '_wpsso_head_info_schema_lang' key to the meta query.
-	* Renamed (and refectored) the `WpssoSchema ->get_lang()` method to `WpssoSchema ->get_mod_language()`.
+	* Renamed and refectored the `WpssoSchema ->get_lang()` method to `WpssoSchema ->get_mod_language()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.5.
@@ -564,7 +564,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.9.0-b.1 =
+= 15.9.0-rc.1 =
 
 (2023/04/19) Updated the WP List Table Columns options. Updated the Facebook supported locales list.
 
