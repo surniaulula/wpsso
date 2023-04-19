@@ -185,9 +185,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$local_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( $mixed = 'default', $use_opts = false );
 
-				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
+				$current_fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' );
 
-					$local_cache[ $locale_key ] = $this->p->og->get_fb_locale( $mixed = 'current', $use_opts = false );
+				if ( 'fb_locale' !== $current_fb_locale_key ) {
+
+					$local_cache[ $current_fb_locale_key ] = $this->p->og->get_fb_locale( $mixed = 'current', $use_opts = false );
 				}
 
 				/*

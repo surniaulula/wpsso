@@ -827,7 +827,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
 			/*
-			 * Check for customized locale.
+			 * Check for customized locale for the $mixed value.
 			 */
 			if ( $use_opts && ! empty( $this->p->options ) ) {
 
@@ -835,13 +835,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! empty( $this->p->options[ $fb_locale_key ] ) ) {
 
+					$fb_locale = $this->p->options[ $fb_locale_key ];
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning "' . $this->p->options[ $fb_locale_key ] . '" ' .
-							'locale for "' . $fb_locale_key . '" option key' );
+						$this->p->debug->log( 'returning options locale "' . $fb_locale . '" for ' . $fb_locale_key . ' key' );
 					}
 
-					return $this->p->options[ $fb_locale_key ];
+					return $fb_locale;
 				}
 			}
 
@@ -850,26 +851,32 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * $mixed = 'default' | 'current' | post ID | $mod array
 			 */
-			$locale = SucomUtil::get_locale( $mixed );
+			$fb_locale = SucomUtil::get_locale( $mixed );
 
-			if ( empty( $locale ) ) {
+			if ( empty( $fb_locale ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: locale value is empty' );
 				}
 
-				return $locale;
+				return $fb_locale;
 			}
 
 			/*
 			 * Fix known exceptions.
 			 */
-			switch ( $locale ) {
+			switch ( $fb_locale ) {
+
+				case 'en_UK':
+
+					$fb_locale = 'en_GB';
+
+					break;
 
 				case 'de_DE_formal':
 
-					$locale = 'de_DE';
+					$fb_locale = 'de_DE';
 
 					break;
 			}
@@ -879,14 +886,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
 
-			if ( ! empty( $fb_languages[ $locale ] ) ) {
+			if ( ! empty( $fb_languages[ $fb_locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning facebook locale "' . $locale . '"' );
+					$this->p->debug->log( 'returning facebook locale "' . $fb_locale . '"' );
 				}
 
-				return $locale;
+				return $fb_locale;
 
 			}
 

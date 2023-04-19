@@ -1974,25 +1974,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Return sortable column keys and their query sort info.
-		 *
-		 * Example Array (
-		 *	[schema_type] => Array (
-		 *		[header] => Schema ID
-		 *		[mt_name] => schema:type:id
-		 *		[meta_key] => _wpsso_head_info_schema_type
-		 *		[orderby] => meta_value
-		 *		[width] => 9em
-		 *		[height] => auto
-		 *	)
-		 *	[og_type] => Array (
-		 *		[header] => OG ID
-		 *		[mt_name] => og:type
-		 *		[meta_key] => _wpsso_head_info_og_type
-		 *		[orderby] => meta_value
-		 *		[width] => 7em
-		 *		[height] => auto
-		 *	)
+		 * Return column keys and their column info.
 		 */
 		public static function get_sortable_columns( $col_key = false ) {
 
@@ -2024,7 +2006,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$headers = array();
 
-			$sortable_cols = self::get_sortable_columns();
+			$sortable_cols = self::get_sortable_columns();	// Uses a local cache.
 
 			foreach ( $sortable_cols as $col_key => $col_info ) {
 
@@ -2056,7 +2038,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$local_cache = array();
 
-				$sortable_cols = self::get_sortable_columns();
+				$sortable_cols = self::get_sortable_columns();	// Uses a local cache.
 
 				foreach ( $sortable_cols as $cache_key => $cache_info ) {	// Avoid variable name conflict with args.
 
@@ -2083,19 +2065,37 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
 		 */
-		static public function get_column_meta_query_og_type( $og_type = 'product' ) {
+		static public function get_column_meta_query_og_type( $og_type = 'product', $og_locale = null ) {
 
-			static $local_cache = null;
+			static $local_cache = array();
 
-			if ( null === $local_cache ) {
+			if ( null === $og_locale ) {
 
-				$local_cache  = '';						// Default WP_Query value is an empty string.
-				$og_type_key  = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
-				$noindex_key  = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
-				$redirect_key = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+				$wpsso =& Wpsso::get_instance();
 
-				$local_cache = array(
+				$og_locale = $wpsso->og->get_fb_locale();
+			}
+
+			if ( ! isset( $local_cache[ $og_type ] ) ) {
+
+				$local_cache[ $og_type ] = array();
+			}
+
+			if ( ! isset( $local_cache[ $og_type ][ $og_locale ] ) ) {
+
+				$og_locale_key = self::get_column_meta_keys( 'og_locale' );	// Example: '_wpsso_head_info_og_locale'.
+				$og_type_key   = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
+				$noindex_key   = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
+				$redirect_key  = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+
+				$local_cache[ $og_type ][ $og_locale ] = array(
 					'relation' => 'AND',
+					array(
+						'key'     => $og_locale_key,
+						'value'   => $og_locale,
+						'compare' => '=',
+						'type'    => 'CHAR',
+					),
 					array(
 						'key'     => $og_type_key,
 						'value'   => $og_type,
@@ -2117,7 +2117,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				);
 			}
 
-			return $local_cache;
+			return $local_cache[ $og_type ][ $og_locale ];
 		}
 
 		/*
@@ -2157,7 +2157,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function get_column_info_by_meta_key( $meta_key ) {
 
-			$sortable_cols = self::get_sortable_columns();
+			$sortable_cols = self::get_sortable_columns();	// Uses a local cache.
 
 			foreach ( $sortable_cols as $col_key => $col_info ) {
 
@@ -2182,7 +2182,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$col_key = str_replace( 'wpsso_', '', $column_name );
 
-			if ( $col_info = self::get_sortable_columns( $col_key ) ) {
+			if ( $col_info = self::get_sortable_columns( $col_key ) ) {	// Uses a local cache.
 
 				$mod = $this->get_mod( $obj_id );
 
@@ -2295,7 +2295,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$do_head_info = true;
 
-				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
+				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Value stored by locale.
 
 					$locale = SucomUtil::get_locale();
 
@@ -2323,11 +2323,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				return;
 			}
 
-			if ( $col_info = self::get_sortable_columns( $col_key ) ) {
+			if ( $col_info = self::get_sortable_columns( $col_key ) ) {	// Uses a local cache.
 
 				if ( ! empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
-					if ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
+					if ( ! empty( $col_info[ 'localized' ] ) ) {	// Value stored by locale.
 
 						$locale   = SucomUtil::get_locale();
 						$content  = array( $locale => $content );
@@ -2346,7 +2346,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		public function add_sortable_columns( $columns ) {
 
-			$sortable_cols = self::get_sortable_columns();
+			$sortable_cols = self::get_sortable_columns();	// Uses a local cache.
 
 			foreach ( $sortable_cols as $col_key => $col_info ) {
 
@@ -2367,7 +2367,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$col_key = str_replace( 'wpsso_', '', $col_name );
 
-				if ( $col_info = self::get_sortable_columns( $col_key ) ) {
+				if ( $col_info = self::get_sortable_columns( $col_key ) ) {	// Uses a local cache.
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
@@ -2666,9 +2666,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
 
-					if ( $wpsso->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping image #' . $num . ': url "' . $url . '" is invalid' );
+						$this->p->debug->log( 'skipping image #' . $num . ': url "' . $url . '" is invalid' );
 					}
 
 				} else {

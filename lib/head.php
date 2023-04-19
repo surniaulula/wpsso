@@ -585,10 +585,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				switch ( $mt_match ) {
 
-					case 'property-og:url':
-					case 'property-og:type':
-					case 'property-og:title':
 					case 'property-og:description':
+					case 'property-og:locale':
+					case 'property-og:title':
+					case 'property-og:type':
+					case 'property-og:url':
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
 					case ( strpos( $mt_match, 'name-twitter:' ) === 0 ? true : false ):
@@ -717,7 +718,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			} elseif ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
+				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();	// Uses a local cache.
 
 				foreach ( $sortable_cols as $col_key => $col_info ) {
 

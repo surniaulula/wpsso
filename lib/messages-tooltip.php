@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-fb_author_field':		// Author Profile URL Field.
+					case 'tooltip-fb_author_field':	// Author Profile URL Field.
 
 						$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_fb_label', $this->p->options );
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-fb_app_id':		// Facebook Application ID.
+					case 'tooltip-fb_app_id':	// Facebook Application ID.
 
 						$fb_docs_url = __( 'https://developers.facebook.com/docs/development/create-an-app', 'wpsso' );
 
@@ -184,7 +184,9 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-fb_locale':		// Facebook Locale.
+					case 'tooltip-fb_locale':	// Facebook Locale.
+
+						// See SucomUtil::get_publisher_languages( 'facebook' ).
 
 						$text = __( 'Facebook does not understand all WordPress locale values.', 'wpsso' ) . ' ';
 
