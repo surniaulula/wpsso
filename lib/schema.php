@@ -162,36 +162,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$schema_lang = '';
+			$schema_lang = SucomUtil::get_locale( $mod );
 
 			/*
-			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
-			 * language value.
+			 * If there is a multilingual plugin available, trust the plugin and ignore any custom language value.
 			 */
-			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
+			if ( empty( $this->p->avail[ 'lang' ][ 'any' ] ) ) {
 
-				$schema_lang = SucomUtil::get_locale( $mod );
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-			} else {
+					$schema_type_id = $this->get_mod_schema_type_id( $mod );
 
-				$schema_type_id = $this->get_mod_schema_type_id( $mod );
+					if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
 
-				if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
+						$custom_schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang' );
 
-					$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang' );
+						/*
+						 * Check that the id value is not true, false, null, empty string, or 'none'.
+						 */
+						if ( SucomUtil::is_valid_option_value( $custom_schema_lang ) ) {
+			
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'custom schema_lang = ' . $custom_schema_lang );
+							}
 
-					if ( empty( $schema_lang ) || 'none' === $schema_lang ) {
-
-						$schema_lang = SucomUtil::get_locale( $mod );
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'custom schema_lang = ' . $schema_lang );
+							$schema_lang = $custom_schema_lang;
+						}
 					}
-
-				} else {
-
-					$schema_lang = SucomUtil::get_locale( $mod );
 				}
 			}
 

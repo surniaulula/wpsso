@@ -354,9 +354,9 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 	function wpsso_get_post_organization_options( $post_id, $type_id = 'site' ) {
 
 		/*
-		 * Check that the id value is not true, false, null, or 'none'.
+		 * Check that the option value is not true, false, null, empty string, or 'none'.
 		 */
-		if ( ! SucomUtil::is_valid_option_id( $type_id ) ) {
+		if ( ! SucomUtil::is_valid_option_value( $type_id ) ) {
 
 			return array();
 		}

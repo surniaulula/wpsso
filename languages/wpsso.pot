@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.9.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 15.9.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11630,26 +11630,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:602
+#: lib/schema.php:600
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1996
+#: lib/schema.php:1994
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2167
+#: lib/schema.php:2165
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2194
+#: lib/schema.php:2192
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3763
+#: lib/schema.php:3761
 msgid "checking schema properties"
 msgstr ""
 

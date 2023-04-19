@@ -430,9 +430,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
 
 					/*
-					 * Check that the id value is not true, false, null, or 'none'.
+					 * Check that the option value is not true, false, null, empty string, or 'none'.
 					 */
-					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+					if ( ! SucomUtil::is_valid_option_value( $id ) ) {
 
 						continue;
 					}
@@ -788,9 +788,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
 
 					/*
-					 * Check that the id value is not true, false, null, or 'none'.
+					 * Check that the option value is not true, false, null, empty string, or 'none'.
 					 */
-					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+					if ( ! SucomUtil::is_valid_option_value( $id ) ) {
 
 						continue;
 					}
@@ -847,9 +847,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Check that the id is not true, false, null, or 'none'.
+			 * Check that the option value is not true, false, null, empty string, or 'none'.
 			 */
-			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
+			if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
 
 				return 0;	// Return count of organizations added.
 			}
@@ -1070,9 +1070,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( isset( $org_opts[ 'org_place_id' ] ) ) {
 
 				/*
-				 * Check that the id is not true, false, null, or 'none'.
+				 * Check that the option value is not true, false, null, empty string, or 'none'.
 				 */
-				if ( SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_value( $org_opts[ 'org_place_id' ] ) ) {
 
 					/*
 					 * Check for a custom place id that might have precedence.
@@ -1384,9 +1384,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Check that the id is not true, false, null, or 'none'.
+			 * Check that the option value is not true, false, null, empty string, or 'none'.
 			 */
-			if ( ! SucomUtil::is_valid_option_id( $place_id ) ) {
+			if ( ! SucomUtil::is_valid_option_value( $place_id ) ) {
 
 				return 0;	// Return count of places added.
 			}

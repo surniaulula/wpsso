@@ -5361,22 +5361,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Check that the id value is not true, false, null, or 'none'.
+		 * Deprecated on 2023/04/19.
 		 */
 		public static function is_valid_option_id( $id ) {
 
-			if ( true === $id ) {
+			return self::is_valid_option_value( $id );
+		}
+
+		/*
+		 * Check that the option value is not true, false, null, empty string, or 'none'.
+		 */
+		public static function is_valid_option_value( $value ) {
+
+			if ( true === $value ) {
 
 				return false;
 
-			} elseif ( empty( $id ) && ! is_numeric( $id ) ) {	// Null or false.
+			} elseif ( empty( $value ) && ! is_numeric( $value ) ) {	// False, null, or empty string.
 
 				return false;
 
-			} elseif ( 'none' === $id ) {	// Disabled option.
+			} elseif ( 'none' === $value ) {	// Disabled option.
 
 				return false;
-
 			}
 
 			return true;
