@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
+				$meta_key = 'wpms_category_metatitle';
 
 			} else {
 
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
+				$meta_key = 'wpms_category_metadesc';
 
 			} else {
 
