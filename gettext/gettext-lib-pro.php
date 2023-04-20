@@ -27,6 +27,7 @@ _x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
 _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' );
 _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' );
+_x( 'Import WP Meta SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Block Attrs', 'option label', 'wpsso' );
 _x( 'Title Tag Site Suffix', 'option label', 'wpsso' );

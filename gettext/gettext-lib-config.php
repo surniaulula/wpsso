@@ -14,6 +14,7 @@ _x( 'WPSSO Core', 'plugin name', 'wpsso' );
 _x( '(feature) Import All in One SEO Pack Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) Import Rank Math SEO Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) Import The SEO Framework Metadata', 'lib file description', 'wpsso' );
+_x( '(feature) Import WP Meta SEO Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Block Attrs', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Metadata', 'lib file description', 'wpsso' );
 _x( '(plugin) Perfect WooCommerce Brands', 'lib file description', 'wpsso' );

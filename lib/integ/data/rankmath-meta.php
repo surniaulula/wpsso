@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 }
 
 /*
- * Import Rank Math SEO Metadata.
+ * Import Rank Math SEO metadata.
  */
 if ( ! class_exists( 'WpssoIntegDataRankmathMeta' ) ) {
 

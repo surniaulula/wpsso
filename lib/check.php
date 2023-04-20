@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/*
-								 * Import All in One SEO Pack Metadata.
+								 * Import All in One SEO Pack metadata.
 								 */
 								case 'aioseop-meta':
 
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/*
-								 * Import Rank Math SEO Metadata.
+								 * Import Rank Math SEO metadata.
 								 */
 								case 'rankmath-meta':
 
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/*
-								 * Import The SEO Framework Metadata.
+								 * Import The SEO Framework metadata.
 								 */
 								case 'seoframework-meta':
 
@@ -361,7 +361,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/*
-								 * Import Yoast SEO Block Attrs.
+								 * Import WP Meta SEO metadata.
+								 */
+								case 'wpmetaseo-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_wpmetaseo_meta';
+
+									break;
+
+								/*
+								 * Import Yoast SEO block attrs.
 								 */
 								case 'wpseo-blocks':
 
@@ -370,7 +379,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/*
-								 * Import Yoast SEO Metadata.
+								 * Import Yoast SEO metadata.
 								 */
 								case 'wpseo-meta':
 

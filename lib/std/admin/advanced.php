@@ -204,6 +204,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_import_seoframework_meta' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_import_seoframework_meta', $form, $network );
 
+			$table_rows[ 'plugin_import_wpmetaseo_meta' ] = '' .
+				$form->get_th_html( _x( 'Import WP Meta SEO Metadata', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_import_wpmetaseo_meta' ) .
+				$form->get_no_td_checkbox( 'plugin_import_wpmetaseo_meta' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_import_wpmetaseo_meta', $form, $network );
+
 			$table_rows[ 'plugin_import_wpseo_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_wpseo_meta' ) .

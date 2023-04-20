@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 }
 
 /*
- * Import The SEO Framework Metadata.
+ * Import The SEO Framework metadata.
  */
 if ( ! class_exists( 'WpssoIntegDataSeoframeworkMeta' ) ) {
 

@@ -16,7 +16,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 }
 
 /*
- * Import Yoast SEO Block Attrs.
+ * Import Yoast SEO block attrs.
  */
 if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 }
 
 /*
- * Import All in One SEO Pack Metadata.
+ * Import All in One SEO Pack metadata.
  */
 if ( ! class_exists( 'WpssoIntegDataAioseopMeta' ) ) {
 

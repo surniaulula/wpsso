@@ -199,6 +199,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'aioseop'      => 'aioseo_options',			// All in One SEO Pack.
 					'rankmath'     => 'rank-math-options-general',		// Rank Math SEO.
 					'seoframework' => 'autodescription-site-settings',	// The SEO Framework.
+					'wpmetaseo'    => 'wpmetaseo',				// WP Meta SEO.
 					'wpseo'        => 'wpseo',				// Yoast SEO.
 				) as $avail_key => $option_key ) {
 
@@ -213,6 +214,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							 * 'plugin_import_aioseop_meta'
 							 * 'plugin_import_rankmath_meta'
 							 * 'plugin_import_seoframework_meta'
+							 * 'plugin_import_wpmetaseo_meta'
 							 * 'plugin_import_wpseo_meta'
 							 * 'plugin_import_wpseo_blocks'
 							 */

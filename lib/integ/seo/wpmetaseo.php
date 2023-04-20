@@ -47,15 +47,11 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
-			 * WP Meta SEO provides a metabox for post objects and the category taxonomy, but does not provide a
-			 * metabox for other taxonomies or the user profile page.
-			 */
 			if ( $mod[ 'is_post' ] ) {
 
 				$meta_key = '_metaseo_metatitle';
 
-			} elseif ( $mod[ 'is_term' ] && 'category' === $mod[ 'tax_slug' ] ) {
+			} elseif ( $mod[ 'is_term' ] ) {
 
 				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
 
@@ -74,15 +70,11 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
-			 * WP Meta SEO provides a metabox for post objects and the category taxonomy, but does not provide a
-			 * metabox for other taxonomies or the user profile page.
-			 */
 			if ( $mod[ 'is_post' ] ) {
 
 				$meta_key = '_metaseo_metadesc';
 
-			} elseif ( $mod[ 'is_term' ] && 'category' === $mod[ 'tax_slug' ] ) {
+			} elseif ( $mod[ 'is_term' ] ) {
 
 				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
 

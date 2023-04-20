@@ -259,6 +259,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					// No break.
 
+				case 'tooltip-plugin_import_wpmetaseo_meta':	// Import WP Meta SEO Metadata.
+
+					if ( empty( $plugin_name_transl ) ) {
+
+						$plugin_name_transl = __( 'WP Meta SEO', 'wpsso' );
+					}
+
+					// No break.
+
 				case 'tooltip-plugin_import_wpseo_meta':	// Import Yoast SEO Metadata.
 
 					if ( empty( $plugin_name_transl ) ) {

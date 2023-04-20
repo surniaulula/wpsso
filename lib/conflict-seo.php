@@ -477,7 +477,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				}
 			}
 
-			if ( ! empty( $opts[ 'metaseo_showsocial' ] ) ) {
+			if ( ! isset( $opts[ 'metaseo_showsocial' ] ) || ! empty( $opts[ 'metaseo_showsocial' ] ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
 				$label_transl = '<strong>' . __( 'Social sharing block', 'wp-meta-seo' ) . '</strong>';

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 }
 
 /*
- * Import Yoast SEO Metadata.
+ * Import Yoast SEO metadata.
  */
 if ( ! class_exists( 'WpssoIntegDataWpseoMeta' ) ) {
 
