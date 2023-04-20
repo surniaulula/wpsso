@@ -2255,7 +2255,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$value = isset( $value[ $locale ] ) ? $value[ $locale ] : '';
 			}
 
-			return (string) $value;
+			return $value;
 		}
 
 		/*

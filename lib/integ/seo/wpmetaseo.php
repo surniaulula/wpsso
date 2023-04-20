@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 				$meta_key = 'wpms_category_metatitle';
 
-			} else {
+			} else {	// Nothing to do.
 
 				return $title_text;
 			}
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 				$meta_key = 'wpms_category_metadesc';
 
-			} else {
+			} else {	// Nothing to do.
 
 				return $title_text;
 			}
