@@ -1,11 +1,7 @@
 <?php
 /*
- * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
- * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
- * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- *
- * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- *
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -14,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/*
+ * Integration module for the SEOPress plugin.
+ *
+ * See https://wordpress.org/plugins/wp-seopress/.
+ */
 if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 
 	class WpssoIntegSeoSeoPress {

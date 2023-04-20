@@ -4644,7 +4644,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:345 gettext/gettext-lib-pro.php:356
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:185 lib/loader.php:204
+#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:204
 #: lib/loader.php:218 lib/post.php:1650 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util.php:3871
 msgid "%s error:"
@@ -5528,8 +5528,8 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/conflict-seo.php:48 lib/integ/rating/rate-my-post.php:64
-#: lib/integ/rating/wppostratings.php:62
+#: lib/conflict-seo.php:48 lib/integ/rating/rate-my-post.php:60
+#: lib/integ/rating/wppostratings.php:58
 msgid "Plugin conflict detected:"
 msgstr ""
 
@@ -5728,7 +5728,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:452 lib/conflict-seo.php:541 lib/conflict-seo.php:583
-#: lib/conflict-seo.php:625 lib/integ/rating/rate-my-post.php:75
+#: lib/conflict-seo.php:625 lib/integ/rating/rate-my-post.php:71
 msgid "Settings"
 msgstr ""
 
@@ -6618,178 +6618,178 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:204
+#: lib/integ/ecom/woocommerce.php:200
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:207
+#: lib/integ/ecom/woocommerce.php:203
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:211
+#: lib/integ/ecom/woocommerce.php:207
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:212
+#: lib/integ/ecom/woocommerce.php:208
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:213
+#: lib/integ/ecom/woocommerce.php:209
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:214
+#: lib/integ/ecom/woocommerce.php:210
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:219
+#: lib/integ/ecom/woocommerce.php:215
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:262
+#: lib/integ/ecom/woocommerce.php:258
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:481
+#: lib/integ/ecom/woocommerce.php:477
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1572
+#: lib/integ/ecom/woocommerce.php:1568
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1656
+#: lib/integ/ecom/woocommerce.php:1652
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1659
+#: lib/integ/ecom/woocommerce.php:1655
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1662
+#: lib/integ/ecom/woocommerce.php:1658
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:52
+#: lib/integ/event/the-events-calendar.php:48
 msgid "TEC: %s"
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:62
+#: lib/integ/event/the-events-calendar.php:58
 msgctxt "option value"
 msgid "TEC: %s"
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:272
-#: lib/integ/event/the-events-calendar.php:331
+#: lib/integ/event/the-events-calendar.php:268
+#: lib/integ/event/the-events-calendar.php:327
 msgid "getting TEC options"
 msgstr ""
 
-#: lib/integ/form/gravityview.php:57
+#: lib/integ/form/gravityview.php:53
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/integ/form/gravityview.php:85
+#: lib/integ/form/gravityview.php:81
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/integ/form/gravityview.php:89
+#: lib/integ/form/gravityview.php:85
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/integ/form/gravityview.php:93
+#: lib/integ/form/gravityview.php:89
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/integ/job/wpjobmanager.php:54 lib/integ/job/wpjobmanager.php:67
+#: lib/integ/job/wpjobmanager.php:50 lib/integ/job/wpjobmanager.php:63
 msgctxt "option value"
 msgid "WPJM: %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/rate-my-post.php:67
+#: lib/integ/rating/rate-my-post.php:63
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/rate-my-post.php:73
+#: lib/integ/rating/rate-my-post.php:69
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/rate-my-post.php:77
+#: lib/integ/rating/rate-my-post.php:73
 msgid "Rating Widget Settings"
 msgstr ""
 
-#: lib/integ/rating/rate-my-post.php:84 lib/integ/rating/wppostratings.php:82
+#: lib/integ/rating/rate-my-post.php:80 lib/integ/rating/wppostratings.php:78
 msgid "Please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/wppostratings.php:65
+#: lib/integ/rating/wppostratings.php:61
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/wppostratings.php:71
+#: lib/integ/rating/wppostratings.php:67
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/wppostratings.php:73
+#: lib/integ/rating/wppostratings.php:69
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/integ/rating/wppostratings.php:75
+#: lib/integ/rating/wppostratings.php:71
 msgid "Ratings Options"
 msgstr ""
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: lib/integ/review/yotpowc.php:197 lib/integ/review/yotpowc.php:217
+#: lib/integ/review/yotpowc.php:193 lib/integ/review/yotpowc.php:213
 msgid "Yotpo for WooCommerce \"%s\" option value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: lib/integ/review/yotpowc.php:237
+#: lib/integ/review/yotpowc.php:233
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: lib/integ/review/yotpowc.php:258
+#: lib/integ/review/yotpowc.php:254
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: lib/integ/review/yotpowc.php:286
+#: lib/integ/review/yotpowc.php:282
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: lib/integ/review/yotpowc.php:308
+#: lib/integ/review/yotpowc.php:304
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: lib/integ/review/yotpowc.php:335
+#: lib/integ/review/yotpowc.php:331
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
 #. translators: %1$s is the class::method name.
-#: lib/integ/seo/wpseo.php:44
+#: lib/integ/seo/wpseo.php:45
 msgid ""
 "The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using "
 "an older version of Yoast SEO, please update now."

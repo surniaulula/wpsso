@@ -1,11 +1,7 @@
 <?php
 /*
- * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
- * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
- * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- *
- * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- *
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -14,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/*
+ * Integration module for the WP Meta SEO plugin.
+ *
+ * See https://wordpress.org/plugins/wp-meta-seo/.
+ */
 if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 	class WpssoIntegSeoWpMetaSeo {
@@ -46,6 +47,10 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * WP Meta SEO provides a metabox for post objects and the category taxonomy, but does not provide a
+			 * metabox for other taxonomies or the user profile page.
+			 */
 			if ( $mod[ 'is_post' ] ) {
 
 				$meta_key = '_metaseo_metatitle';
@@ -69,6 +74,10 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * WP Meta SEO provides a metabox for post objects and the category taxonomy, but does not provide a
+			 * metabox for other taxonomies or the user profile page.
+			 */
 			if ( $mod[ 'is_post' ] ) {
 
 				$meta_key = '_metaseo_metadesc';
