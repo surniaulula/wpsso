@@ -237,7 +237,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for WP Meta SEO taxonomy term metadata.
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration &gt; Import WP Meta SEO Metadata option.
 * **Bugfixes**
-	* None.
+	* Fixed an array to string conversion error in WpssoAbstractWpMeta->get_column_wp_cache().
 * **Developer Notes**
 	* None.
 * **Requires At Least**
