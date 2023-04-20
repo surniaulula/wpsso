@@ -46,7 +46,20 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key = '_metaseo_metatitle', $single = true );
+			if ( $mod[ 'is_post' ] ) {
+
+				$meta_key = '_metaseo_metatitle';
+
+			} elseif ( $mod[ 'is_term' ] && 'category' === $mod[ 'tax_slug' ] ) {
+
+				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
+
+			} else {
+
+				return $title_text;
+			}
+
+			return WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key, $single = true );
 		}
 
 		public function filter_description_seed( $desc_text, $mod, $num_hashtags, $md_key ) {
@@ -56,7 +69,20 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key = '_metaseo_metadesc', $single = true );
+			if ( $mod[ 'is_post' ] ) {
+
+				$meta_key = '_metaseo_metadesc';
+
+			} elseif ( $mod[ 'is_term' ] && 'category' === $mod[ 'tax_slug' ] ) {
+
+				$meta_key = 'wpms_' . $mod[ 'tax_slug' ] . '_metatitle';
+
+			} else {
+
+				return $title_text;
+			}
+
+			return WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key, $single = true );
 		}
 	}
 }
