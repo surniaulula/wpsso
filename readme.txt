@@ -229,12 +229,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.10.0-dev.1 (2023/04/20)**
+**Version 15.10.0-dev.2 (2023/04/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for WP Meta SEO taxonomy 'wpms_category_metatitle' metadata.
+	* Added support for WP Meta SEO taxonomy term metadata.
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration &gt; Import WP Meta SEO Metadata option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -578,9 +579,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.10.0-dev.1 =
+= 15.10.0-dev.2 =
 
-(2023/04/20) Added support for WP Meta SEO taxonomy 'wpms_category_metatitle' metadata.
+(2023/04/20) Added support for WP Meta SEO taxonomy term metadata. Added a new Import WP Meta SEO Metadata option.
 
 = 15.9.0 =
 
