@@ -410,7 +410,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						),
 					),
 				);
-			
+
 				$prio_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ), $prio_args );
 				$obj_ids  = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );
 

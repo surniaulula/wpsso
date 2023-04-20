@@ -522,7 +522,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$users_args  = array_merge( $users_args, array( 'fields' => 'ids' ) );
 
 			foreach ( $role_names as $name ) {
-				
+
 				/*
 				 * See https://developer.wordpress.org/reference/classes/wp_user_query/__construct/.
 				 */

@@ -184,9 +184,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 * Check that the id value is not true, false, null, empty string, or 'none'.
 						 */
 						if ( SucomUtil::is_valid_option_value( $custom_schema_lang ) ) {
-			
+
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'custom schema_lang = ' . $custom_schema_lang );
 							}
 
