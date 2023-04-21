@@ -229,7 +229,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.10.0-dev.4 (2023/04/21)**
+**Version 15.10.0-dev.5 (2023/04/21)**
 
 * **New Features**
 	* None.
@@ -579,7 +579,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.10.0-dev.4 =
+= 15.10.0-dev.5 =
 
 (2023/04/21) Added support for WP Meta SEO taxonomy term metadata. Added a new Import WP Meta SEO Metadata option.
 
