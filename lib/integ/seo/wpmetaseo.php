@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpMetaSeo' ) ) {
 
 			} else {	// Nothing to do.
 
-				return $title_text;
+				return $desc_text;
 			}
 
 			return WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key, $single = true );
