@@ -2237,7 +2237,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( ! empty( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] ) ) {
 
-				$value = maybe_unserialize( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] );
+				$value = maybe_unserialize( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] );	// String or localized array.
 			}
 
 			/*
@@ -2253,6 +2253,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( $locale ) {	// Values stored by locale.
 
 				$value = isset( $value[ $locale ] ) ? $value[ $locale ] : '';
+			}
+
+			if ( is_array( $value ) ) {	// Just in case.
+
+				$value = reset( $value );
 			}
 
 			return $value;
