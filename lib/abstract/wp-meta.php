@@ -2257,7 +2257,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( is_array( $value ) ) {	// Just in case.
 
-				$value = reset( $value );
+				$value = '';
 			}
 
 			return $value;
