@@ -229,6 +229,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.11.0-dev.1 (2023/04/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a cache refresh when a known / supported plugin is activated.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `WpssoAdmin->activated_plugin()` method.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.5.
+
 **Version 15.10.0 (2023/04/22)**
 
 * **New Features**
@@ -578,6 +592,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.11.0-dev.1 =
+
+(2023/04/25) Added a cache refresh when a known / supported plugin is activated.
 
 = 15.10.0 =
 
