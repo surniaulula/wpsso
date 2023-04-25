@@ -289,6 +289,8 @@
 
 'wpsso_schema_types' ( (array) $schema_types )
 
+'wpsso_schema_units' ( (array) $schema_units )
+
 'wpsso_search_url' ( $url, $mod )
 
 'wpsso_server_request_url' ( $url, $mod )

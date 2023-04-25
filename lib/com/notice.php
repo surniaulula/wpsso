@@ -460,8 +460,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function show_admin_notices() {
 
-			$user_id = get_current_user_id();	// Always returns an integer.
-
+			$user_id      = get_current_user_id();	// Always returns an integer.
 			$notice_types = $this->all_types;
 
 			echo $this->get_notice_style();		// Always include the notice styles in all admin webpages.

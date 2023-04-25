@@ -1753,9 +1753,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$task_name_transl  = _x( 'add the Person role', 'task name', 'wpsso' );
 			$cache_id          = $this->get_cache_id();
 
-			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->p->util->start_task( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME, $cache_id ) ) {
 
-				return;
+				return;	// Stop here - background task already running.
 			}
 
 			if ( $user_id ) {
@@ -1842,9 +1842,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$task_name_transl  = _x( 'remove the Person role', 'task name', 'wpsso' );
 			$cache_id          = $this->get_cache_id();
 
-			if ( $this->p->util->is_task_running( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->p->util->start_task( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME, $cache_id ) ) {
 
-				return;
+				return;	// Stop here - background task already running.
 			}
 
 			if ( $user_id ) {

@@ -83,6 +83,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$get_avail = array();	// Initialize the array to return.
 
+			$is_admin   = is_admin();
 			$lib_checks = $this->extend_lib_checks;
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $lib_checks, $this->p->cf[ '*' ][ 'lib' ][ 'integ' ] );
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $lib_checks, $this->p->cf[ '*' ][ 'lib' ][ 'pro' ] );
@@ -100,6 +101,18 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$get_avail[ $sub ][ $id ] = false;	// Default value.
 
 					switch ( $sub ) {
+
+						case 'admin':
+
+							/*
+							 * Load admin modules in back-end.
+							 */
+							if ( $is_admin ) {
+
+								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+							}
+
+							break;
 
 						case 'amp':
 

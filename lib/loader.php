@@ -107,19 +107,6 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] as $sub_dir => $libs ) {
 
-				/*
-				 * Skip loading admin modules if not in admin back-end.
-				 */
-				if ( 'admin' === $sub_dir && ! $is_admin ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $ext . ' lib/' . $mod_dir . '/' . $sub_dir . '/ skipped' );
-					}
-
-					continue;
-				}
-
 				$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . ': ';
 
 				foreach ( $libs as $id => $label ) {
@@ -127,15 +114,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . '/' . $id . ': ';
 
 					/*
-					 * Loading of admin modules in back-end is always allowed.
-					 */
-					if ( 'admin' === $sub_dir && $is_admin ) {
-
-						$this->p->avail[ $sub_dir ][ 'any' ] = $this->p->avail[ $sub_dir ][ $id ] = true;
-					}
-
-					/*
-					 * Check if the dependent resource (active plugin or enabled option) is available.
+					 * Check if the resource (active plugin or enabled option) is available.
 					 */
 					if ( ! empty( $this->p->avail[ $sub_dir ][ $id ] ) ) {
 

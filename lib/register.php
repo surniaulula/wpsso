@@ -26,13 +26,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p =& $plugin;
 
 			register_activation_hook( WPSSO_FILEPATH, array( $this, 'network_activate' ) );
-
 			register_deactivation_hook( WPSSO_FILEPATH, array( $this, 'network_deactivate' ) );
 
 			if ( is_multisite() ) {
 
 				add_action( 'wpmu_new_blog', array( $this, 'wpmu_new_blog' ), 10, 6 );
-
 				add_action( 'wpmu_activate_blog', array( $this, 'wpmu_activate_blog' ), 10, 5 );
 			}
 		}
@@ -91,7 +89,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 		}
 
-		private static function do_multisite( $sitewide, $method, $args = array() ) {
+		/*
+		 * See WpssoAdmin->activated_plugin().
+		 * See WpssoRegister->network_activate()
+		 * See WpssoRegister->network_deactivate()
+		 * See WpssoRegister->network_uninstall()
+		 */
+		public static function do_multisite( $sitewide, $method, $args = array() ) {
 
 			if ( is_multisite() && $sitewide ) {
 
@@ -123,9 +127,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->check_required( WpssoConfig::$cf );
 
 			$this->p->set_config( $activate = true );  // Force a refresh of the plugin config.
-
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
-
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
 			/*
@@ -169,9 +171,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		public function reset_admin_checks() {
 
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
-
 			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
-
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 		}
 

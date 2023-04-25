@@ -93,11 +93,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->set_util_instances( $plugin );
 
-			$this->add_plugin_actions( $this, array(
-				'scheduled_task_started' => 1,
-				'show_admin_notices'     => 1,
-			), $prio = -1000 );
-
+			$this->add_plugin_actions( $this, array( 'scheduled_task_started' => 1 ), $prio = -1000 );
+			$this->add_plugin_actions( $this, array( 'show_admin_notices' => 1 ), $prio = -1000, $ext = 'sucom' );
+			
 			/*
 			 * Log the locale change and clear the Sucom::get_locale() cache.
 			 */
@@ -222,12 +220,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->add_plugin_image_sizes();
 		}
 
-		public function action_show_admin_notices( $user_id ) {
+		/*
+		 * Hooked to 'sucom_show_admin_notices' action.
+		 */
+		public function action_show_admin_notices() {
 
 			if ( $task_name = $this->cache->doing_task() ) {
 
+				$user_id          = get_current_user_id();	// Always returns an integer.
 				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-				$notice_msg       = sprintf( __( 'A background task to %s is currently running.', 'wpsso' ), $task_name_transl );
+				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
 				$notice_key       = $task_name . '-task-running';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
@@ -3835,7 +3837,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $cache_exp_secs;
 		}
 
-		public function is_task_running( $user_id, $task_name, $cache_exp_secs, $cache_id ) {
+		public function start_task( $user_id, $task_name, $cache_exp_secs, $cache_id ) {
 
 			$running_task_name = get_transient( $cache_id );
 
@@ -3844,18 +3846,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( $user_id ) {
 
 					$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-					$notice_msg       = sprintf( __( 'Aborting task to %s - another background task is running.', 'wpsso' ), $task_name_transl );
-					$notice_key       = $running_task_name . '-task-running';
+					$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
+					$notice_key       = $running_task_name . '-task-ignored';
 
 					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
 
-				return true;
+				return false;
 			}
 
 			set_transient( $cache_id, $task_name, $cache_exp_secs );
 
-			return false;
+			return true;
 		}
 
 		public function set_task_limit( $user_id, $task_name, $cache_exp_secs ) {

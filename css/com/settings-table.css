@@ -315,9 +315,6 @@ table.sucom-settings td.ext-info-plugin-icon {
 	vertical-align:top;
 	text-align:left;
 	padding:10px;
-	width:168px;
-	min-width:168px;
-	max-width:168px;
 }
 
 body.rtl table.sucom-settings td.ext-info-plugin-icon {

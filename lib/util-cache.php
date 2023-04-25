@@ -343,9 +343,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 			$cache_id         = $this->get_cache_id();
 
-			if ( $this->u->is_task_running( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->u->start_task( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $cache_id ) ) {
 
-				return;
+				return;	// Stop here - background task already running.
 			}
 
 			if ( $user_id ) {
