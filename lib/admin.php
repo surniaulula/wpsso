@@ -166,7 +166,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->reg->reset_admin_checks();
 
 			/*
-			 * If the array of known / supported plugins has changed, then refresh the cache.
+			 * Since WPSSO Core v15.11.0.
+			 *
+			 * If the array of supported plugins has changed, then refresh the cache.
 			 */
 			$old_avail = $this->p->avail;
 			$new_avail = $this->p->check->get_avail();

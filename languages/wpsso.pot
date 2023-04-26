@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.11.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.11.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -518,7 +518,7 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/admin.php:2191 lib/com/notice.php:295
+#: gettext/gettext-lib-com.php:48 lib/admin.php:2193 lib/com/notice.php:295
 msgid "Edit"
 msgstr ""
 
@@ -5087,445 +5087,445 @@ msgid ""
 "great extra features!"
 msgstr ""
 
-#: lib/admin.php:248
+#: lib/admin.php:250
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:596
+#: lib/admin.php:598
 msgctxt "plugin action link"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:599
+#: lib/admin.php:601
 msgctxt "plugin action link"
 msgid "Plugin Add-ons"
 msgstr ""
 
-#: lib/admin.php:607
+#: lib/admin.php:609
 msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr ""
 
-#: lib/admin.php:778
+#: lib/admin.php:780
 msgid "Plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:786
+#: lib/admin.php:788
 msgid "refresh the cache now"
 msgstr ""
 
-#: lib/admin.php:789
+#: lib/admin.php:791
 msgid "You can %1$s or let the cache refresh over the next %2$s."
 msgstr ""
 
-#: lib/admin.php:817
+#: lib/admin.php:819
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:825
+#: lib/admin.php:827
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:861
+#: lib/admin.php:863
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:893 lib/post.php:990 lib/term.php:723 lib/user.php:747
+#: lib/admin.php:895 lib/post.php:990 lib/term.php:723 lib/user.php:747
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:911 lib/util-cache.php:452
+#: lib/admin.php:913 lib/util-cache.php:452
 msgid "%s cache files have been cleared."
 msgstr ""
 
-#: lib/admin.php:921
+#: lib/admin.php:923
 msgid "%s failed URL connections have been cleared."
 msgstr ""
 
-#: lib/admin.php:931
+#: lib/admin.php:933
 msgid "%s database transients have been cleared."
 msgstr ""
 
-#: lib/admin.php:943
+#: lib/admin.php:945
 msgid "%s WordPress cron jobs have been cleared."
 msgstr ""
 
-#: lib/admin.php:958
+#: lib/admin.php:960
 msgid "The WordPress rewrite rules have been flushed."
 msgstr ""
 
-#: lib/admin.php:984
+#: lib/admin.php:986
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:999
+#: lib/admin.php:1001
 msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:1018
+#: lib/admin.php:1020
 msgid "Option preference has been saved."
 msgstr ""
 
-#: lib/admin.php:1020
+#: lib/admin.php:1022
 msgid "Now viewing \"%s\" by default."
 msgstr ""
 
-#: lib/admin.php:1037
+#: lib/admin.php:1039
 msgid ""
 "Image size settings have been reloaded with their default values and saved."
 msgstr ""
 
-#: lib/admin.php:1121
+#: lib/admin.php:1123
 msgid ""
 "Please note that your current language is different from the default site "
 "language (%s)."
 msgstr ""
 
-#: lib/admin.php:1124
+#: lib/admin.php:1126
 msgid ""
 "Localized option values (%s) are used for webpages and content in that "
 "language only (not for the default language, or any other language)."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1225
+#: lib/admin.php:1227
 msgid "Profile updated."
 msgstr ""
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1354
+#: lib/admin.php:1356
 msgid "Upgrade to %s"
 msgstr ""
 
-#: lib/admin.php:1366
+#: lib/admin.php:1368
 msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1384
+#: lib/admin.php:1386
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr ""
 
-#: lib/admin.php:1388
+#: lib/admin.php:1390
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1393 lib/submenu/tools.php:115
+#: lib/admin.php:1395 lib/submenu/tools.php:115
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1496
+#: lib/admin.php:1498
 msgid ""
 "Missing page ID, metabox ID, and/or tab key to create the metabox table."
 msgstr ""
 
-#: lib/admin.php:1523
+#: lib/admin.php:1525
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:1528
+#: lib/admin.php:1530
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin.php:1533
+#: lib/admin.php:1535
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:1534
+#: lib/admin.php:1536
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin.php:1538
+#: lib/admin.php:1540
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:1564
+#: lib/admin.php:1566
 msgid "%s Database Transients"
 msgstr ""
 
-#: lib/admin.php:1569
+#: lib/admin.php:1571
 msgid "Count"
 msgstr ""
 
-#: lib/admin.php:1570
+#: lib/admin.php:1572
 msgid "MB"
 msgstr ""
 
-#: lib/admin.php:1571
+#: lib/admin.php:1573
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin.php:1600
+#: lib/admin.php:1602
 msgid "disabled"
 msgstr ""
 
-#: lib/admin.php:1655 lib/admin.php:1656
+#: lib/admin.php:1657 lib/admin.php:1658
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin.php:1703
+#: lib/admin.php:1705
 msgctxt "option label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:1711
+#: lib/admin.php:1713
 msgctxt "option label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:1715
+#: lib/admin.php:1717
 msgctxt "option label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:1730
+#: lib/admin.php:1732
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:1806
+#: lib/admin.php:1808
 msgid "(%d sub-types)"
 msgstr ""
 
-#: lib/admin.php:1866
+#: lib/admin.php:1868
 msgctxt "lib file description"
 msgid "(api) Get %s Short URL"
 msgstr ""
 
-#: lib/admin.php:1938
+#: lib/admin.php:1940
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:1939
+#: lib/admin.php:1941
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:1940
+#: lib/admin.php:1942
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:1941 lib/admin.php:1942
+#: lib/admin.php:1943 lib/admin.php:1944
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:1991
+#: lib/admin.php:1993
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:1998
+#: lib/admin.php:2000
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2005
+#: lib/admin.php:2007
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2012
+#: lib/admin.php:2014
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2019
+#: lib/admin.php:2021
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2026
+#: lib/admin.php:2028
 msgid "Sharing Functionality"
 msgstr ""
 
-#: lib/admin.php:2204
+#: lib/admin.php:2206
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2217
+#: lib/admin.php:2219
 msgctxt "option label"
 msgid "Current Site Address"
 msgstr ""
 
-#: lib/admin.php:2223
+#: lib/admin.php:2225
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2224
+#: lib/admin.php:2226
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2233
+#: lib/admin.php:2235
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2239
+#: lib/admin.php:2241
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
-#: lib/admin.php:2247
+#: lib/admin.php:2249
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2259
+#: lib/admin.php:2261
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2333
+#: lib/admin.php:2335
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2486
+#: lib/admin.php:2488
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr ""
 
-#: lib/admin.php:2494
+#: lib/admin.php:2496
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2502 lib/options.php:1183
+#: lib/admin.php:2504 lib/options.php:1183
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2507 lib/options.php:1188
+#: lib/admin.php:2509 lib/options.php:1188
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2520
+#: lib/admin.php:2522
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2525
+#: lib/admin.php:2527
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2530
+#: lib/admin.php:2532
 msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2535 lib/util.php:3215
+#: lib/admin.php:2537 lib/util.php:3215
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2543 lib/messages-tooltip-plugin.php:60
+#: lib/admin.php:2545 lib/messages-tooltip-plugin.php:60
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2558
+#: lib/admin.php:2560
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2574
+#: lib/admin.php:2576
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2595
+#: lib/admin.php:2597
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2626
+#: lib/admin.php:2628
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2647
+#: lib/admin.php:2649
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2656
+#: lib/admin.php:2658
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2777
+#: lib/admin.php:2779
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2783
+#: lib/admin.php:2785
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2790
+#: lib/admin.php:2792
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2804
+#: lib/admin.php:2806
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2813
+#: lib/admin.php:2815
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2822
+#: lib/admin.php:2824
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3245
+#: lib/admin.php:3247
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3246
+#: lib/admin.php:3248
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3251
+#: lib/admin.php:3253
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3252
+#: lib/admin.php:3254
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3263
+#: lib/admin.php:3265
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3264
+#: lib/admin.php:3266
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3270
+#: lib/admin.php:3272
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3277
+#: lib/admin.php:3279
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3284
+#: lib/admin.php:3286
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3291
+#: lib/admin.php:3293
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
