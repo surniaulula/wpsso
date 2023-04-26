@@ -2450,8 +2450,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private static function sort_active_plugins( $a, $b ) {
 
 			$plugin_prefix = 'wpsso/';
-
-			$addon_prefix = 'wpsso-';
+			$addon_prefix  = 'wpsso-';
 
 			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core plugin.
 
