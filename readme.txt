@@ -229,14 +229,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.11.0-dev.3 (2023/04/26)**
+**Version 15.11.0-dev.4 (2023/04/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a cache refresh when a supported plugin is activated.
 * **Bugfixes**
-	* None.
+	* Fixed using "show once" text in a dismissed notice.
 * **Developer Notes**
 	* Refactored the `WpssoAdmin->activated_plugin()` method.
 * **Requires At Least**
@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for WP Meta SEO taxonomy term metadata.
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration &gt; Import WP Meta SEO Metadata option.
 * **Bugfixes**
-	* Fixed an array to string conversion error in WpssoAbstractWpMeta->get_column_wp_cache().
+	* Fixed an array to string conversion error in `WpssoAbstractWpMeta->get_column_wp_cache()`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -593,7 +593,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.11.0-dev.3 =
+= 15.11.0-dev.4 =
 
 (2023/04/26) Added a cache refresh when a supported plugin is activated.
 
