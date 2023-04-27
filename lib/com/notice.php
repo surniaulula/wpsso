@@ -365,7 +365,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function reset_dismissed( $user_id = null ) {
 
-			$cur_uid = get_current_user_id();					// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( $user_id ) {
@@ -381,7 +381,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$cur_uid = get_current_user_id();					// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
@@ -407,7 +407,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( isset( $user_dismissed[ $notice_key ] ) ) {	// Notice has been dismissed.
 
 					$current_time = time();
-
 					$dismiss_time = $user_dismissed[ $notice_key ];
 
 					if ( ! $force_expire && ( empty( $dismiss_time ) || $dismiss_time > $current_time ) ) {
@@ -541,9 +540,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$update_dismissed = false;
 
 			$this->has_shown = true;
-
 			$this->load_notice_cache( $user_id );	// Read and merge notices from transient cache.
-
 			$this->load_update_notices( $user_id );
 
 			/*
@@ -701,9 +698,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$ajax_context     = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
 
 			$this->has_shown = true;
-
 			$this->load_notice_cache( $user_id );	// Read and merge notices from transient cache.
-
 			$this->load_update_notices( $user_id );
 
 			/*
@@ -1015,7 +1010,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
@@ -1023,6 +1018,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
+			$payload[ 'user_id' ]      = $user_id;
 			$payload[ 'notice_label' ] = isset( $payload[ 'notice_label' ] ) ? $payload[ 'notice_label' ] : $this->label_transl;
 			$payload[ 'notice_key' ]   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 			$payload[ 'notice_time' ]  = time();
@@ -1124,9 +1120,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		private function load_notice_cache( $user_id = null ) {
 
-			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
-			$result  = $this->get_notice_cache( $user_id );			// Always returns an array.
+			$result  = $this->get_notice_cache( $user_id );	// Always returns an array.
 
 			if ( ! empty( $result ) ) {
 
@@ -1188,7 +1184,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function update_notice_cache( $user_id = null ) {
 
-			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 			$update  = true;
 			$result  = false;
@@ -1210,7 +1206,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_cache( $user_id = null ) {
 
-			$cur_uid = get_current_user_id();				// Always returns an integer.
+			$cur_uid = get_current_user_id();	// Always returns an integer.
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $cur_uid;	// $user_id can be true, false, null, or numeric.
 			$result  = array();
 
@@ -1344,7 +1340,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$match_md5 = md5( $matches[ 0 ] );
 
-				if ( isset( $show_once[ $match_md5 ] ) ) {
+				/*
+				 * Remove the "show once" text if it has already been shown, or remove it from dismisible and
+				 * dismissed notices, so it can be shown in a later notice.
+				 */
+				if ( isset( $show_once[ $match_md5 ] ) || ( $is_dismissible && $this->is_dismissed( $payload[ 'notice_key' ] ) ) ) {
 
 					/*
 					 * The $payload is a reference variable so we can modify the 'msg_text' element and remove
@@ -1359,7 +1359,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$msg_html .= '<div class="notice-message">' . $payload[ 'msg_text' ] . '</div><!-- .notice-message -->';
-
 			$msg_html .= '</div><!-- .' . $this->plugin_id . '-notice -->' . "\n";
 
 			return $msg_html;
@@ -1471,7 +1470,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
 					min-width:65vw;
-					max-height:90vh;
+					max-height:75vh;
 					overflow-y:scroll;
 				}
 				@media screen and ( max-width:1330px ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.11.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.11.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -526,31 +526,31 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:492
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:491
 msgid ""
 "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
 "%s</code> function returned false)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:51 lib/com/notice.php:495
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:494
 msgid ""
 "As a consequence, showing discreet notices in the admin toolbar is not "
 "possible."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:52 lib/com/notice.php:497
+#: gettext/gettext-lib-com.php:52 lib/com/notice.php:496
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1050
+#: gettext/gettext-lib-com.php:53 lib/com/notice.php:1046
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1052
+#: gettext/gettext-lib-com.php:54 lib/com/notice.php:1048
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1064
+#: gettext/gettext-lib-com.php:55 lib/com/notice.php:1060
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
