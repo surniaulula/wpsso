@@ -475,6 +475,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( false !== has_filter( $valid_filter_name ) ) {
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'applying data validation filter: ' . $data_filter_name );
+						}
+
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
 
@@ -497,14 +502,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( isset( $json_data[ 0 ] ) && SucomUtil::is_non_assoc( $json_data ) ) {	// Multiple json arrays returned.
+			if ( empty( $json_data ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'multiple json data arrays returned' );
+					$this->p->debug->log( 'json data is empty' );
 				}
 
-			} elseif ( ! empty( $json_data ) ) {	// Just in case.
+				$json_data = array();	// Just in case.
+
+			} elseif ( isset( $json_data[ 0 ] ) && SucomUtil::is_non_assoc( $json_data ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'json data includes ' . count( $json_data ) . ' data arrays' );
+				}
+
+			} else {
 
 				self::update_data_id( $json_data, empty( $mod[ 'id' ] ) ? $page_type_id : array( $page_type_id, $mod[ 'id' ] ) );
 
