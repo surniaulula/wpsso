@@ -229,12 +229,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.11.0-rc.1 (2023/04/26)**
+**Version 15.11.0 (2023/04/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a cache refresh when a supported plugin is activated.
+	* Changed the maximum notice container height from 90vw to 75vw.
 * **Bugfixes**
 	* Fixed using "show once" text in a dismissed notice.
 * **Developer Notes**
@@ -250,6 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for WP Meta SEO taxonomy term metadata.
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration &gt; Import WP Meta SEO Metadata option.
+	* Changed timeout of notices display (2 secs for error and warning, 1.5 secs for information, and 1 secs update messages).
 * **Bugfixes**
 	* Fixed an array to string conversion error in `WpssoAbstractWpMeta->get_column_wp_cache()`.
 * **Developer Notes**
@@ -593,9 +595,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.11.0-rc.1 =
+= 15.11.0 =
 
-(2023/04/26) Added a cache refresh when a supported plugin is activated.
+(2023/04/27) Added a cache refresh when a supported plugin is activated.
 
 = 15.10.0 =
 
