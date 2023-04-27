@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a cache refresh when a supported plugin is activated.
-	* Changed the maximum notice container height from 90vw to 75vw.
+	* Changed the maximum notice container height from 90vh to 60vh when notices are shown automatically.
 * **Bugfixes**
 	* Fixed using "show once" text in a dismissed notice.
 * **Developer Notes**
