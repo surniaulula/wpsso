@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'multiple json data arrays returned' );
 				}
 
-			} else {
+			} elseif ( ! empty( $json_data ) ) {	// Just in case.
 
 				self::update_data_id( $json_data, empty( $mod[ 'id' ] ) ? $page_type_id : array( $page_type_id, $mod[ 'id' ] ) );
 
