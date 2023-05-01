@@ -353,5 +353,7 @@
 
 'wpsso_variation_title' ( $title, $variation )
 
+'wpsso_variation_description' ( $desc, $variation )
+
 'wpsso_weight_units' ( $units );
 
