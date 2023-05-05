@@ -74,13 +74,14 @@
 <li><em>The headline field is recommended</em></li>
 <li><em>The image field is recommended</em></li>
 <li><em>The review field is recommended</em></li>
-<li><em>Missing field "image"</em></li>
 <li><em>Missing field "address"</em></li>
-<li><em>Missing field "telephone"</em></li>
-<li><em>Missing field "priceRange"</em></li>
-<li><em>Missing field "brand"</em></li>
 <li><em>Missing field "aggregateRating"</em></li>
+<li><em>Missing field "brand"</em></li>
+<li><em>Missing field "image"</em></li>
+<li><em>Missing field "priceRange"</em></li>
 <li><em>Missing field "review"</em></li>
+<li><em>Missing field "shippingDetails"</em></li>
+<li><em>Missing field "telephone"</em></li>
 <li><em>No global identifier provided (e.g. gtin mpn isbn)</em></li>
 <li><em>Not a known valid target type for the itemReviewed property</em></li>
 <li><em>Price Mismatched value (page crawl): (price [price])</em></li>

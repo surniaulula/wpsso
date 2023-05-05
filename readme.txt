@@ -74,13 +74,14 @@ Present your content at its best on social sites and in search results - no matt
 * *The headline field is recommended*
 * *The image field is recommended*
 * *The review field is recommended*
-* *Missing field "image"*
 * *Missing field "address"*
-* *Missing field "telephone"*
-* *Missing field "priceRange"*
-* *Missing field "brand"*
 * *Missing field "aggregateRating"*
+* *Missing field "brand"*
+* *Missing field "image"*
+* *Missing field "priceRange"*
 * *Missing field "review"*
+* *Missing field "shippingDetails"*
+* *Missing field "telephone"*
 * *No global identifier provided (e.g. gtin mpn isbn)*
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
