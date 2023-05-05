@@ -1740,7 +1740,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'shippingDetails' property.
+			 * Schema shippingDetails property.
 			 */
 			if ( empty( $mt_single[ 'product:shipping_offers' ] ) ) {
 
