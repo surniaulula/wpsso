@@ -43,7 +43,7 @@
 
 </blockquote>
 
-<p>Under the <em>SSO &gt; Advanced Settings &gt; Integration</em> tab, you can uncheck the "Use Filtered Content" and "Use Filtered Excerpt" to see if your problem is related to a WordPress filter hook. If unchecking these options fixes your problem, <strong>you should determine which plugin or theme is at fault and report the issue with the plugin or theme author</strong>. Using the WordPress <code>apply_filters()</code> function should not create timeout or HTML page layout issues.</p>
+<p>Under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration</em> tab, you can uncheck the "Use Filtered Content" and "Use Filtered Excerpt" to see if your problem is related to a WordPress filter hook. If unchecking these options fixes your problem, <strong>you should determine which plugin or theme is at fault and report the issue with the plugin or theme author</strong>. Using the WordPress <code>apply_filters()</code> function should not create timeout or HTML page layout issues.</p>
 
 <p>If you disable the content filter, <em>and your Post / Page content relies upon shortcodes for its text</em>, then you may find that WPSSO Core cannot create accurate description meta tags. WPSSO Core looks for a custom description and excerpt before falling back to using the content text. In the case where content filters are disabled, and the content uses shortcodes for its text, then you may have to enter an excerpt and/or custom description for those Posts / Pages.</p>
 
