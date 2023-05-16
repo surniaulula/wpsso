@@ -1347,7 +1347,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'api_key':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' !== $opt_val && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
 
@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'at_name':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
@@ -1389,7 +1389,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'dashed':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					$opt_val = sanitize_title_with_dashes( $opt_val );
 
@@ -1406,7 +1406,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'blank_num':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' === $opt_val ) {
 
@@ -1616,7 +1616,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$fmt = false;
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( 'color' === $option_type ) {
 
@@ -1645,7 +1645,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'ok_blank':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					break;
 
@@ -1668,7 +1668,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'img_url':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
@@ -1684,7 +1684,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'url':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
@@ -1705,7 +1705,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'url_base':
 
-					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
