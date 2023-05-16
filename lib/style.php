@@ -474,6 +474,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;
 				}
+				table.wp-list-table > thead > tr > th.column-wr2x_column,
+				table.wp-list-table > tbody > tr > td.column-wr2x_column {		/* Perfect Images */
+					width:20%;
+				}
 				table.wp-list-table > tbody > tr > td.column-wpsso_schema_type,
 				table.wp-list-table > tbody > tr > td.column-wpsso_og_type,
 				table.wp-list-table > tbody > tr > td.column-wpsso_og_desc {
