@@ -790,6 +790,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $local_cache = array(); // Optimize and get image size for a given URL only once.
 
+			$image_url = trim( $image_url );	// Just in case.
+
 			if ( isset( $local_cache[ $image_url ] ) ) {
 
 				if ( $this->p->debug->enabled ) {

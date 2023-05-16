@@ -1320,6 +1320,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				default:
 
 					$opt_val = wp_filter_nohtml_kses( $opt_val );	// Strips all the HTML in the content.
+
 					$opt_val = stripslashes( $opt_val );		// Strip slashes added by wp_filter_nohtml_kses().
 
 					break;
@@ -1362,6 +1363,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'at_name':
 
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+
 					if ( '' !== $opt_val ) {
 
 						$opt_val = SucomUtil::sanitize_twitter_name( $opt_val, $add_at = true );
@@ -1386,7 +1389,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'dashed':
 
-					$opt_val = trim( sanitize_title_with_dashes( $opt_val ) );
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+
+					$opt_val = sanitize_title_with_dashes( $opt_val );
 
 					break;
 
@@ -1401,7 +1406,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'blank_num':
 
-					$opt_val = trim( $opt_val );	// Just in case.
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					if ( '' === $opt_val ) {
 
@@ -1611,7 +1616,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$fmt = false;
 
-					$opt_val = trim( $opt_val );
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					if ( 'color' === $option_type ) {
 
@@ -1640,10 +1645,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'ok_blank':
 
-					if ( '' !== $opt_val ) {
-
-						$opt_val = trim( $opt_val );
-					}
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					break;
 
@@ -1666,7 +1668,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'img_url':
 
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
+
 					if ( '' !== $opt_val ) {
+
+						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
 
 						if ( ! $this->p->util->is_image_url( $opt_val ) ) {
 
@@ -1677,6 +1683,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 				case 'url':
+
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
@@ -1696,6 +1704,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Strip leading URLs off facebook usernames.
 				 */
 				case 'url_base':
+
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					if ( '' !== $opt_val ) {
 
