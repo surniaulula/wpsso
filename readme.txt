@@ -230,6 +230,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.11.1-dev.1 (2023/05/16)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed missing trimming of spaces for image URL options.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.5.
+	* WordPress v5.5.
+
 **Version 15.11.0 (2023/04/27)**
 
 * **New Features**
@@ -595,6 +609,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.11.1-dev.1 =
+
+(2023/05/16) Fixed missing trimming of spaces for image URL options.
 
 = 15.11.0 =
 
