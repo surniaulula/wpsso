@@ -228,7 +228,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				if ( $curl_errnum ) {
 
-					$errors[] = sprintf( __( 'cURL error code %1$d %2$s.', $this->text_domain ), $curl_errnum, $curl_errmsg );
+					$errors[] = sprintf( __( 'cURL error code %1$d %2$s.', $this->text_domain ),
+						$curl_errnum, trim( $curl_errmsg, ' .' ) );
 				}
 
 				if ( $ssl_verify ) {

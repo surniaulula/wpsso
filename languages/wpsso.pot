@@ -377,79 +377,79 @@ msgstr ""
 msgid "cURL error code %1$d %2$s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:236
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:237
 msgid "SSL verification failed with code %1$d."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:241
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:242
 msgid "HTTP connection returned code %1$d."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:12 gettext/gettext-lib-com.php:15
-#: lib/com/cache.php:256 lib/com/cache.php:273
+#: lib/com/cache.php:257 lib/com/cache.php:274
 msgid ""
 "The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL "
 "redirects."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:13 lib/com/cache.php:259
+#: gettext/gettext-lib-com.php:13 lib/com/cache.php:260
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:262
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:263
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:16 lib/com/cache.php:276
+#: gettext/gettext-lib-com.php:16 lib/com/cache.php:277
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:281
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:282
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:286
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:287
 msgid ""
 "Additional requests to retrieve this URL will be ignored for another %d "
 "second(s)."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:472 lib/com/cache.php:629 lib/util-cache.php:106
+#: lib/com/cache.php:473 lib/com/cache.php:630 lib/util-cache.php:106
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:531
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:532
 msgid ""
 "PHP cURL library missing - contact your hosting provider to have the cURL "
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:884
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:885
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:905
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:906
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1013
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1014
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1027
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1028
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1041
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1042
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1070
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1071
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
