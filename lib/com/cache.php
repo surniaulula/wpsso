@@ -707,10 +707,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 */
 			$allowed_curl_const = array(
 				'CAINFO',
+				'CONNECTTIMEOUT',
 				'PROXY',
 				'PROXYUSERPWD',
+				'SSLVERSION',
 				'USERAGENT',
-				'CONNECTTIMEOUT',
 			);
 
 			foreach ( $allowed_curl_const as $const_suffix ) {
