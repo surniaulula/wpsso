@@ -230,7 +230,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.11.1-rc.1 (2023/05/21)**
+**Version 15.11.1 (2023/05/21)**
 
 * **New Features**
 	* None.
@@ -610,7 +610,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.11.1-rc.1 =
+= 15.11.1 =
 
 (2023/05/21) Fixed missing trimming of spaces for image URL options.
 
