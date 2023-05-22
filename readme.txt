@@ -230,6 +230,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.12.0-dev.4 (2023/05/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Update the notification toolbar after an async upload.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoScript->on_async_upload_update_toolbar_script()` method.
+* **Requires At Least**
+	* PHP v7.2.5.
+	* WordPress v5.5.
+
 **Version 15.11.1 (2023/05/21)**
 
 * **New Features**
@@ -609,6 +623,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.12.0-dev.4 =
+
+(2023/05/22) Update the notification toolbar after an async upload.
 
 = 15.11.1 =
 
