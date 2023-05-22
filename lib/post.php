@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_action( 'wp_ajax_wpsso_get_validate_submenu', array( $this, 'ajax_get_validate_submenu' ) );
 
-				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
+				if ( ! empty( $_GET ) || 'post-new' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
 
 					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
@@ -919,6 +919,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'head meta skipped: post is being trashed' );
+				}
+
+			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'head meta skipped: post is being deleted' );
 				}
 
 			} elseif ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {

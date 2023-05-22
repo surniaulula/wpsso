@@ -5054,7 +5054,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$is_post_page = true;
 
-				} elseif ( 'post-new.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
+				} elseif ( 'post-new' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
 
 					$is_post_page = true;
 				}
@@ -5293,7 +5293,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 
 				} elseif ( '' !== self::get_request_value( 'user_id' ) ||	// Called too early for screen.
-					'profile.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
+					'profile' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
 
 					$is_user_page = true;
 				}

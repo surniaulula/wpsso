@@ -40,9 +40,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
-			if ( ! $doing_ajax ) {
+			if ( is_admin() ) {
+			
+				$this->on_async_upload_update_toolbar_script();
 
-				if ( is_admin() ) {
+				if ( ! $doing_ajax ) {
 
 					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), WPSSO_BLOCK_ASSETS_PRIORITY );
 
@@ -286,11 +288,28 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			echo '<script>';
 			echo 'jQuery( window ).on( \'load\', function(){';
-			echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
-			echo 'sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
-			echo '}';
+			echo ' if ( \'function\' === typeof sucomToolbarNotices ) {';
+			echo '  sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
+			echo ' }';
 			echo '});';
 			echo '</script>' . "\n";
+		}
+
+		public function on_async_upload_update_toolbar_script() {
+
+			if ( 'async-upload' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
+
+				if ( isset( $_REQUEST[ 'attachment_id' ] ) && (int) $_REQUEST[ 'attachment_id' ] && ! empty( $_REQUEST['fetch'] ) ) {
+
+					$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
+
+					echo '<script>';
+					echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
+					echo ' sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
+					echo '}';
+					echo '</script>' . "\n";
+				}
+			}
 		}
 
 		/*
@@ -364,8 +383,9 @@ EOF;
 
 			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
+			// The version number should match the version in js/com/jquery-admin-page.js.
 			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
-				$deps = array( 'jquery' ), $this->version, $in_footer = true );
+				$deps = array( 'jquery' ), '20230522', $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', $admin_l10n, $this->get_admin_page_script_data() );
 		}

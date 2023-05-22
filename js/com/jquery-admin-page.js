@@ -1,9 +1,9 @@
 /*
  * Common library for admin pages.
  *
- * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
+ * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20220318-02
+ * Version: 20230522
  */
 
 /*
