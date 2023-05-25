@@ -24,16 +24,16 @@ a.sucom-tablink:focus {
 	box-sizing:border-box;
 }
 
-div.sucom-no_tabset {
+div.inside > div.sucom-no_tabset {
 	overflow:auto;
 	min-height:245px;
 	margin-top:-1px;
-	border-top:1px solid #eee;
+	border-top:1px solid #c3c4c7;
 }
 
-div.sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
-div.sucom-no_tabset.metabox-rrssb_share,
-div.sucom-no_tabset.metabox-tie-wp-general {
+div.inside > div.sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
+div.inside > div.sucom-no_tabset.metabox-rrssb_share,
+div.inside > div.sucom-no_tabset.metabox-tie-wp-general {
 	min-height:0;
 }
 

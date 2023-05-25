@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.12.0-dev.4',	// Plugin version.
+					'version'     => '15.12.0-dev.5',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4867,7 +4867,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 80.0;		// Position of the SSO settings menu item.
+			/*
+			 * MENU_ORDER (aka menu_position):
+			 *
+			 *	null – below Comments
+			 *	5 – below Posts
+			 *	10 – below Media
+			 *	15 – below Links
+			 *	20 – below Pages
+			 *	25 – below comments
+			 *	60 – below first separator
+			 *	65 – below Plugins
+			 *	70 – below Users
+			 *	75 – below Tools
+			 *	80 – below Settings
+			 *	100 – below second separator
+			 */
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 80;			// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
