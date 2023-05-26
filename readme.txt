@@ -230,7 +230,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.12.0-rc.1 (2023/05/26)**
+**Version 15.12.0 (2023/05/26)**
 
 * **New Features**
 	* None.
@@ -625,7 +625,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.12.0-rc.1 =
+= 15.12.0 =
 
 (2023/05/26) Update the notification toolbar after an async upload.
 
