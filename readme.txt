@@ -236,6 +236,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Update the notification toolbar after an async upload.
+	* Changed the notice container height from 60vh to 40vh when notices are shown automatically.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -264,7 +265,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a cache refresh when a supported plugin is activated.
-	* Changed the maximum notice container height from 90vh to 60vh when notices are shown automatically.
+	* Changed the notice container height from 90vh to 60vh when notices are shown automatically.
 * **Bugfixes**
 	* Fixed using "show once" text in a dismissed notice.
 * **Developer Notes**
