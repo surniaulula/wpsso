@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-05-26 03:58-0700\n"
+"PO-Revision-Date: 2023-05-26 05:04-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -10341,12 +10341,12 @@ msgid "← Back to page tags"
 msgstr "← Retour aux étiquettes de page"
 
 #: lib/register.php:373
-msgctxt "Taxonomy label"
+msgctxt "taxonomy label"
 msgid "Page Tags"
 msgstr "Étiquettes de page"
 
 #: lib/register.php:384
-msgctxt "Taxonomy description"
+msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
