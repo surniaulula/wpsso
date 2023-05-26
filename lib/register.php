@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			);
 
 			$args = array(
-				'label'              => _x( 'Page Tags', 'Taxonomy label', 'wpsso' ),
+				'label'              => _x( 'Page Tags', 'taxonomy label', 'wpsso' ),
 				'labels'             => $labels,
 				'public'             => false,
 				'publicly_queryable' => false,
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				'show_in_quick_edit' => true,
 				'show_in_rest'       => true,	// Show this taxonomy in the block editor.
 				'show_tagcloud'      => false,
-				'description'        => _x( 'Tags for the page post type.', 'Taxonomy description', 'wpsso' ),
+				'description'        => _x( 'Tags for the page post type.', 'taxonomy description', 'wpsso' ),
 				'hierarchical'       => false,
 			);
 

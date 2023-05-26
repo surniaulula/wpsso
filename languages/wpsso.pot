@@ -11579,12 +11579,12 @@ msgid "← Back to page tags"
 msgstr ""
 
 #: lib/register.php:373
-msgctxt "Taxonomy label"
+msgctxt "taxonomy label"
 msgid "Page Tags"
 msgstr ""
 
 #: lib/register.php:384
-msgctxt "Taxonomy description"
+msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
