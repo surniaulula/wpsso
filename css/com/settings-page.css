@@ -359,8 +359,8 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 	content:"\e80b";	/* .icon-ok-circled */
 }
 
-.postbox-dashboard_status_std > h2:before,
-.postbox-dashboard_status_std > div.postbox-header:before {
+.postbox-dashboard_features_status > h2:before,
+.postbox-dashboard_features_status > div.postbox-header:before {
 	content:"\e80e";	/* .icon-cog-alt */
 }
 

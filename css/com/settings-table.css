@@ -6,7 +6,7 @@
 
 #poststuff table.sucom-settings.column-metabox h4,
 #poststuff .inner-sidebar table.sucom-settings h4 {
-	font-size:1em;
+	font-size:1.05em;
 	font-weight:600;
 	padding:0;
 	margin:5px 0;
@@ -1282,20 +1282,18 @@ body.rtl table.sucom-settings.column-metabox.cache-status .cache-expiration {
 }
 
 table.sucom-settings.column-metabox th.version-label {
-	color:#555;
-	font-weight:600;
-	padding:2px 4px;
+	padding:0 4px;
+	font-weight:normal;
 }
 
-table.sucom-settings.column-metabox td.version-number {
-	color:#555;
+table.sucom-settings.column-metabox td.version-number,
+table.sucom-settings.column-metabox td.latest-notice {
 	padding:2px 4px;
+	font-weight:normal;
 }
 
-table.sucom-settings.column-metabox td.latest-notice p {
-	font-size:0.95em;
-	word-wrap:break-word;
-	margin:10px 0;
+table.sucom-settings.column-metabox td.latest-notice {
+	font-style:italic;
 }
 
 table.sucom-settings.column-metabox.feature-status td {

@@ -1701,37 +1701,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info[ 'name' ] . '</h4></td></tr>';
-
-				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>
-					<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
+				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>';
+				echo '<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
 
 				/*
 				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
 				 */
 				if ( $stable_version !== $latest_version ) {
 
-					echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>
-						<td class="version-number">' . $stable_version . '</td></tr>';
+					echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>';
+					echo '<td class="version-number">' . $stable_version . '</td></tr>';
 				}
 
-				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>
-					<td class="version-number">' . $latest_version . '</td></tr>';
+				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>';
+				echo '<td class="version-number">' . $latest_version . '</td></tr>';
 
 				/*
 				 * Only show the latest version notice message if there's a newer / non-matching version.
 				 */
 				if ( $plugin_version !== $stable_version || $plugin_version !== $latest_version ) {
 
-					echo '<tr><td colspan="' . $table_cols . '" class="latest-notice">';
+					echo '<tr><th class="version-label">' . _x( 'Update Notice', 'option label', 'wpsso' ) . ':</th>';
+					echo '<td class="latest-notice">';
 
 					if ( ! empty( $latest_notice ) ) {
 
-						echo '<p><em><strong>Version ' . $latest_version . '</strong> ' . $latest_notice . '</em></p>';
+						echo $latest_notice . ' ';
 					}
 
-					echo '<p><a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...', 'wpsso'),
-						$info[ 'short' ] ) . '</a></p>';
-
+					echo '<a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...', 'wpsso'), $info[ 'short' ] ) . '</a>';
 					echo '</td></tr>';
 				}
 			}
