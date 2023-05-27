@@ -230,6 +230,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.12.1-dev.5 (2023/05/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the SSO &gt; Dashboard &gt; Version Information layout.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.5.
+	* WordPress v5.5.
+
 **Version 15.12.0 (2023/05/26)**
 
 * **New Features**
@@ -624,6 +638,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.12.1-dev.5 =
+
+(2023/05/27) Updated the SSO &gt; Dashboard &gt; Version Information layout.
 
 = 15.12.0 =
 
