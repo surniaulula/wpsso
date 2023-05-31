@@ -233,7 +233,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_tr_on_change( $select_id, $select_value ) {
 
-			return '<tr class="hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value . '">';
+			$css_class = $this->get_css_class_on_change( $select_id, $select_value );
+
+			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
 		public function get_tr_hide( $in_view, $opt_keys = array() ) {
@@ -243,16 +245,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_tr_hide_prefix( $in_view, $opt_name_prefix ) {
+		public function get_tr_hide_img_dim( $in_view, $opt_name ) {
 
-			$css_class = $this->get_css_class_hide_prefix( $in_view, $opt_name_prefix );
+			$css_class = $this->get_css_class_hide_img_dim( $in_view, $opt_name );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_tr_hide_img_dim( $in_view, $opt_name ) {
+		public function get_tr_hide_prefix( $in_view, $opt_name_prefix ) {
 
-			$css_class = $this->get_css_class_hide_img_dim( $in_view, $opt_name );
+			$css_class = $this->get_css_class_hide_prefix( $in_view, $opt_name_prefix );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
@@ -291,6 +293,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= '>' . $label . $tooltip_text . '</th>';
 
 			return $html;
+		}
+
+		public function get_css_class_on_change( $select_id, $select_value ) {
+
+			$select_value = SucomUtil::sanitize_css_class( $select_value );	// Just in case.
+
+			return 'hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value;
 		}
 
 		public function get_css_class_hide_img_dim( $in_view, $opt_name ) {
@@ -847,10 +856,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
 			}
 
-			return $this->get_input( $name_prefix . '_days', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $days_sep .
-				$this->get_input( $name_prefix . '_hours', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $hours_sep .
-				$this->get_input( $name_prefix . '_mins', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $mins_sep .
-				$this->get_input( $name_prefix . '_secs', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $secs_sep;
+			return $this->get_input( $name_prefix . '_days', $css_class = 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $days_sep .
+				$this->get_input( $name_prefix . '_hours', $css_class = 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $hours_sep .
+				$this->get_input( $name_prefix . '_mins', $css_class = 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $mins_sep .
+				$this->get_input( $name_prefix . '_secs', $css_class = 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $secs_sep;
 		}
 
 		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
@@ -1372,7 +1381,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						if ( '' !== $selected_value ) {
 
 							$hide_class = 'hide_' . esc_js( $name );
-							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
+							$show_class = 'hide_' . esc_js( $name . '_' . SucomUtil::sanitize_css_class( $selected_value ) );
 
 							$html .= '<script>';
 
@@ -2528,10 +2537,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
 			}
 
-			return $this->get_no_input_value( $value = '0', 'xshort' ) . $days_sep .
-				$this->get_no_input_value( $value = '0', 'xshort' ) . $hours_sep .
-				$this->get_no_input_value( $value = '0', 'xshort' ) . $mins_sep .
-				$this->get_no_input_value( $value = '0', 'xshort' ) . $secs_sep;
+			return $this->get_no_input_value( $value = '0', $css_class = 'xshort' ) . $days_sep .
+				$this->get_no_input_value( $value = '0', $css_class = 'xshort' ) . $hours_sep .
+				$this->get_no_input_value( $value = '0', $css_class = 'xshort' ) . $mins_sep .
+				$this->get_no_input_value( $value = '0', $css_class = 'xshort' ) . $secs_sep;
 		}
 
 		public function get_no_input_image_crop_area( $name, $add_none = false ) {

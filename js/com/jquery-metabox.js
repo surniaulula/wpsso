@@ -338,14 +338,20 @@ function sucomSelectChangeUnhideRows( row_hide_class, row_show_class ) {
 
 	if ( row_hide_class ) {
 
-		row_hide_class = row_hide_class.replace( /[:\/\-\. ]+/g, '_' );
+		/*
+		 * See SucomUtil::sanitize_css_class().
+		 */
+		row_hide_class = row_hide_class.replace( /[^a-zA-Z0-9\-_ ]+/g, '-' );
 
 		jQuery( 'tr.' + row_hide_class ).hide();
 	}
 
 	if ( row_show_class ) {
 
-		row_show_class = row_show_class.replace( /[:\/\-\. ]+/g, '_' );
+		/*
+		 * See SucomUtil::sanitize_css_class().
+		 */
+		row_show_class = row_show_class.replace( /[^a-zA-Z0-9\-_ ]+/g, '-' );
 
 		jQuery( 'tr.' + row_show_class ).show();
 	}

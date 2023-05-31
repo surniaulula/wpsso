@@ -1566,18 +1566,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $key );
 		}
 
+		/*
+		 * See sucomSelectChangeUnhideRows() in jquery-metabox.js.
+		 */
 		public static function sanitize_css_class( $class ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]/', '-', $class ) );	// Allow spaces between css class names.
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $class ), $characters = "- \n\r\t\v\x00" );	// Spaces allowed between css class names.
 		}
 
-		/*
-		 * Do not allow colons and periods as they may cause issues with some browsers, CSS editors and Javascript
-		 * framworks. jQuery, for example, has issues with ids that contain periods and colons.
-		 */
 		public static function sanitize_css_id( $id ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_]/', '-', $id ) );
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $id ), $characters = "- \n\r\t\v\x00" );	// Spaces not allowed.
 		}
 
 		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {

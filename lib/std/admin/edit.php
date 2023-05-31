@@ -886,8 +886,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Select a Place', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_place_id',
 					'content'  => $form->get_no_select( 'schema_place_id', $names[ 'place_custom' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true,
-							 $selected = true, $event_names = 'on_show_unhide_rows' ),
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 			);
 
