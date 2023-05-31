@@ -617,6 +617,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+
+		public function get_checklist_countries( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
+			
+			$values = SucomUtil::get_alpha2_countries();
+			
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
+		}
+
 		public function get_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );

@@ -3218,6 +3218,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
+				 * Validated on 2023/05/31.
+				 *
+				 * See https://schema.org/MerchantReturnEnumeration.
+				 */
+				'merchant_return' => array(
+					'https://schema.org/MerchantReturnFiniteReturnWindow' => 'Finite Return Window',
+					'https://schema.org/MerchantReturnNotPermitted'       => 'Not Permitted',
+					'https://schema.org/MerchantReturnUnlimitedWindow'    => 'Unlimited Window',
+					'https://schema.org/MerchantReturnUnspecified'        => 'Unspecified',
+				),
+
+				/*
 				 * Validated on 2022/09/14.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().

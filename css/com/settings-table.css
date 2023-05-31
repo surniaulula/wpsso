@@ -898,6 +898,16 @@ table.sucom-settings td div.input_vertical_list > span {
 	line-height:2em;
 }
 
+table.sucom-settings td div.input_vertical_list.input_cols_2 > span {
+	display:inline-block;
+	width:49%;
+}
+
+table.sucom-settings td div.input_vertical_list.input_cols_3 > span {
+	display:inline-block;
+	width:32%;
+}
+
 table.sucom-settings td div.input_vertical_list input[type="checkbox"] {
 	margin-right:4px;
 }

@@ -454,52 +454,52 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:29
-#: lib/com/form.php:622 lib/com/form.php:681
+#: lib/com/form.php:630 lib/com/form.php:689
 msgctxt "option label"
 msgid "Post Type"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:30 lib/com/form.php:685
+#: gettext/gettext-lib-com.php:30 lib/com/form.php:693
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:31 lib/com/form.php:689
+#: gettext/gettext-lib-com.php:31 lib/com/form.php:697
 msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:32 gettext/gettext-lib-com.php:42
-#: lib/com/form.php:836 lib/com/form.php:2517
+#: lib/com/form.php:844 lib/com/form.php:2525
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:837 lib/com/form.php:2518
+#: lib/com/form.php:845 lib/com/form.php:2526
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:838 lib/com/form.php:2519
+#: lib/com/form.php:846 lib/com/form.php:2527
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:839 lib/com/form.php:2520
+#: lib/com/form.php:847 lib/com/form.php:2528
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:36 lib/com/form.php:877
+#: gettext/gettext-lib-com.php:36 lib/com/form.php:885
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:37 gettext/gettext-lib-pro.php:212
-#: gettext/gettext-lib-pro.php:307 lib/com/form.php:878
+#: gettext/gettext-lib-pro.php:307 lib/com/form.php:886
 #: lib/pro/admin/edit.php:290 lib/pro/admin/edit.php:1117
 #: lib/std/admin/edit.php:320 lib/std/admin/edit.php:987
 msgctxt "option comment"
@@ -507,14 +507,14 @@ msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:39 lib/com/form.php:888
+#: gettext/gettext-lib-com.php:39 lib/com/form.php:896
 #: lib/media-filters.php:116 lib/media.php:1500 lib/media.php:1650
 #: lib/media.php:3308
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:41 lib/com/form.php:971 lib/script.php:373
+#: gettext/gettext-lib-com.php:41 lib/com/form.php:979 lib/script.php:373
 msgid "Select Image"
 msgstr ""
 
@@ -1685,9 +1685,9 @@ msgstr ""
 #: gettext/gettext-lib-config.php:409 gettext/gettext-lib-config.php:419
 #: gettext/gettext-lib-config.php:431 gettext/gettext-lib-config.php:436
 #: gettext/gettext-lib-config.php:443 gettext/gettext-lib-config.php:455
-#: gettext/gettext-lib-config.php:461 gettext/gettext-lib-config.php:465
-#: gettext/gettext-lib-config.php:473 gettext/gettext-lib-config.php:481
-#: gettext/gettext-lib-config.php:494 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:461 gettext/gettext-lib-config.php:469
+#: gettext/gettext-lib-config.php:477 gettext/gettext-lib-config.php:485
+#: gettext/gettext-lib-config.php:498 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -1701,9 +1701,9 @@ msgstr ""
 #: gettext/gettext-lib-config.php:410 gettext/gettext-lib-config.php:420
 #: gettext/gettext-lib-config.php:432 gettext/gettext-lib-config.php:437
 #: gettext/gettext-lib-config.php:444 gettext/gettext-lib-config.php:456
-#: gettext/gettext-lib-config.php:462 gettext/gettext-lib-config.php:466
-#: gettext/gettext-lib-config.php:474 gettext/gettext-lib-config.php:482
-#: gettext/gettext-lib-config.php:495
+#: gettext/gettext-lib-config.php:462 gettext/gettext-lib-config.php:470
+#: gettext/gettext-lib-config.php:478 gettext/gettext-lib-config.php:486
+#: gettext/gettext-lib-config.php:499
 msgctxt "option value"
 msgid "None"
 msgstr ""
@@ -2707,157 +2707,177 @@ msgctxt "option value"
 msgid "Telecommute"
 msgstr ""
 
+#: gettext/gettext-lib-config.php:465
+msgctxt "option value"
+msgid "Finite Return Window"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:466
+msgctxt "option value"
+msgid "Not Permitted"
+msgstr ""
+
 #: gettext/gettext-lib-config.php:467
 msgctxt "option value"
-msgid "Invoice Price"
+msgid "Unlimited Window"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:468
 msgctxt "option value"
-msgid "List Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:469
-msgctxt "option value"
-msgid "Manufacturer Suggested Retail Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:470
-msgctxt "option value"
-msgid "Minimum Advertised Price"
+msgid "Unspecified"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:471
 msgctxt "option value"
-msgid "Sale Price"
+msgid "Invoice Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:472
 msgctxt "option value"
-msgid "Suggested Retail Price"
+msgid "List Price"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:473
+msgctxt "option value"
+msgid "Manufacturer Suggested Retail Price"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:474
+msgctxt "option value"
+msgid "Minimum Advertised Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:475
 msgctxt "option value"
-msgid "Regular"
+msgid "Sale Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:476
 msgctxt "option value"
-msgid "Petite"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:477
-msgctxt "option value"
-msgid "Plus"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:478
-msgctxt "option value"
-msgid "Tall"
+msgid "Suggested Retail Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:479
 msgctxt "option value"
-msgid "Big"
+msgid "Regular"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:480
 msgctxt "option value"
-msgid "Maternity"
+msgid "Petite"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:481
+msgctxt "option value"
+msgid "Plus"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:482
+msgctxt "option value"
+msgid "Tall"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:483
 msgctxt "option value"
-msgid "AU"
+msgid "Big"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:484
 msgctxt "option value"
-msgid "BR"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:485
-msgctxt "option value"
-msgid "CN"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:486
-msgctxt "option value"
-msgid "DE"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:487
 msgctxt "option value"
-msgid "EU"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:488
 msgctxt "option value"
-msgid "FR"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:489
 msgctxt "option value"
-msgid "IT"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:490
 msgctxt "option value"
-msgid "JP"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:491
 msgctxt "option value"
-msgid "MX"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:492
 msgctxt "option value"
-msgid "UK"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:493
 msgctxt "option value"
-msgid "US"
+msgid "IT"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:494
+msgctxt "option value"
+msgid "JP"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:495
+msgctxt "option value"
+msgid "MX"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:496
 msgctxt "option value"
-msgid "Female"
+msgid "UK"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:497
 msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:498
-msgctxt "option value"
-msgid "Unisex"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:499
-msgctxt "option value"
-msgid "Development and Up"
+msgid "US"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:500
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Female"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:501
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Male"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:502
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Unisex"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:503
+msgctxt "option value"
+msgid "Development and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:504
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:505
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:506
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:507
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -5491,12 +5511,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5214
+#: lib/config.php:5226
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5214
+#: lib/config.php:5226
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
