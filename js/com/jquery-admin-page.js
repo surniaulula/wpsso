@@ -3,7 +3,7 @@
  *
  * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20230522
+ * Version: 20230531
  */
 
 /*
@@ -516,6 +516,17 @@ function sucomEscAttr ( string ) {
 
 		return entity_map[ s ];
 	} );
+}
+
+/*
+ * See SucomUtil::sanitize_css_id().
+ */
+function sucomSanitizeCssId( string ) {
+
+	string = string.replace( /[^a-zA-Z0-9\-_]+/g, '-' );
+	string = string.replace( /^-+|-+$/g, '' );
+
+	return string;
 }
 
 /*

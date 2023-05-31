@@ -231,13 +231,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $value;
 		}
 
-		public function get_tr_on_change( $select_id, $select_value ) {
-
-			$css_class = $this->get_css_class_on_change( $select_id, $select_value );
-
-			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
-		}
-
 		public function get_tr_hide( $in_view, $opt_keys = array() ) {
 
 			$css_class = $this->get_css_class_hide( $in_view, $opt_keys );
@@ -262,6 +255,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_tr_hide_vid_dim( $in_view, $opt_name ) {
 
 			$css_class = $this->get_css_class_hide_vid_dim( $in_view, $opt_name );
+
+			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
+		}
+
+		public function get_tr_on_change( $select_id, $select_value ) {
+
+			$css_class = $this->get_css_class_on_change( $select_id, $select_value );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
@@ -295,13 +295,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_css_class_on_change( $select_id, $select_value ) {
-
-			$select_value = SucomUtil::sanitize_css_class( $select_value );	// Just in case.
-
-			return 'hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value;
-		}
-
 		public function get_css_class_hide_img_dim( $in_view, $opt_name ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_name_suffix ) {
@@ -312,19 +305,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
 
+		public function get_css_class_hide_prefix( $in_view, $opt_name_prefix ) {
+
+			$opt_keys = SucomUtil::get_opts_begin( $opt_name_prefix, $this->options );
+
+			return $this->get_css_class_hide( $in_view, $opt_keys );
+		}
+
 		public function get_css_class_hide_vid_dim( $in_view, $opt_name ) {
 
 			foreach ( array( 'width', 'height' ) as $opt_name_suffix ) {
 
 				$opt_keys[] = $opt_name . '_' . $opt_name_suffix;
 			}
-
-			return $this->get_css_class_hide( $in_view, $opt_keys );
-		}
-
-		public function get_css_class_hide_prefix( $in_view, $opt_name_prefix ) {
-
-			$opt_keys = SucomUtil::get_opts_begin( $opt_name_prefix, $this->options );
 
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
@@ -403,6 +396,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return $css_class;	// Hide option.
+		}
+
+		public function get_css_class_on_change( $select_id, $select_value ) {
+
+			$select_value = SucomUtil::sanitize_css_id( $select_value );	// Just in case.
+
+			return 'hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value;
 		}
 
 		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array() ) {

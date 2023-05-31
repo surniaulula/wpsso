@@ -1566,17 +1566,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $key );
 		}
 
+		public static function sanitize_css_class( $css_class ) {
+
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
+		}
+
 		/*
 		 * See sucomSelectChangeUnhideRows() in jquery-metabox.js.
 		 */
-		public static function sanitize_css_class( $class ) {
+		public static function sanitize_css_id( $css_id ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $class ), $characters = "- \n\r\t\v\x00" );	// Spaces allowed between css class names.
-		}
-
-		public static function sanitize_css_id( $id ) {
-
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $id ), $characters = "- \n\r\t\v\x00" );	// Spaces not allowed.
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
 		}
 
 		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {
