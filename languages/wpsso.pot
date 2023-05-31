@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.12.1-dev.5\n"
+"Project-Id-Version: WPSSO Core 15.12.1-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4986,105 +4986,52 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:339
-msgid "Yes! Rate %s 5 stars!"
+#: lib/admin-head.php:340
+msgid "Rate the %1$s %2$s"
 msgstr ""
 
-#: lib/admin-head.php:341 lib/admin-head.php:448
-msgid "Awesome!"
+#: lib/admin-head.php:341 lib/admin-head.php:349
+msgid "Thank you!"
 msgstr ""
 
-#: lib/admin-head.php:342
-msgid "Thank you for rating the %s plugin!"
+#: lib/admin-head.php:348
+msgid "I've already rated this %2$s"
 msgstr ""
 
-#: lib/admin-head.php:351
-msgid "I've already rated %s."
+#: lib/admin-head.php:366 lib/admin-head.php:456
+msgid "You've been using the %1$s %2$s for a little over %3$s now."
 msgstr ""
 
-#: lib/admin-head.php:353
-msgid "Thank you for supporting and encouraging your developers!"
+#: lib/admin-head.php:371
+msgid "Please help support and encourage your developers by rating the %1$s."
 msgstr ""
 
-#: lib/admin-head.php:373
-msgid ""
-"Now that you've been using %s for a while, you can rate the plugin on "
-"WordPress.org!"
+#: lib/admin-head.php:375
+msgid "It only takes a second."
 msgstr ""
 
-#: lib/admin-head.php:377 lib/messages.php:599
-msgid ""
-"Great ratings are an excellent way to ensure the continued development of "
-"your favorite plugins."
+#: lib/admin-head.php:433
+msgid "View the %s edition prices"
 msgstr ""
 
-#: lib/admin-head.php:381 lib/messages.php:603
-msgid ""
-"Without new ratings, plugins and add-ons that you and your site depend on "
-"could be discontinued prematurely."
+#: lib/admin-head.php:434
+msgid "Thank you for supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:383 lib/messages.php:605
-msgid "Don't let that happen!"
+#: lib/admin-head.php:438
+msgid "I'll stay with the %s edition"
 msgstr ""
 
-#: lib/admin-head.php:385 lib/messages.php:607
-msgid ""
-"Rate your active plugins today - it only takes a few seconds to rate a "
-"plugin!"
+#: lib/admin-head.php:439
+msgid "Please consider supporting the development of %s in the future."
 msgstr ""
 
-#: lib/admin-head.php:423
-msgid "two months"
+#: lib/admin-head.php:461
+msgid "Have you thought about purchasing the %s edition?"
 msgstr ""
 
-#: lib/admin-head.php:444
-msgid "Yes! I'd like to get the %s edition!"
-msgstr ""
-
-#: lib/admin-head.php:446
-msgid "No thanks. I'll stay with the %s edition."
-msgstr ""
-
-#: lib/admin-head.php:449
-msgid ""
-"Thank you for encouraging and supporting the continued development of %s."
-msgstr ""
-
-#: lib/admin-head.php:452
-msgid "Thank you."
-msgstr ""
-
-#: lib/admin-head.php:453
-msgid ""
-"Hopefully you'll change your mind and help support the continued development "
-"of %s."
-msgstr ""
-
-#: lib/admin-head.php:477
-msgid "Fantastic!"
-msgstr ""
-
-#: lib/admin-head.php:479
-msgid "You've been using %1$s for more than %2$s now, which is awesome!"
-msgstr ""
-
-#: lib/admin-head.php:483
-msgid ""
-"We've put many years of time and effort into making %s and its add-ons the "
-"best possible."
-msgstr ""
-
-#: lib/admin-head.php:485
-msgid ""
-"I hope you've enjoyed all the new features, improvements and updates over "
-"the past %s."
-msgstr ""
-
-#: lib/admin-head.php:489
-msgid ""
-"Have you thought about purchasing the %s edition? It comes with a lot of "
-"great extra features!"
+#: lib/admin-head.php:463
+msgid "It comes with a lot of extra awesome features!"
 msgstr ""
 
 #: lib/admin.php:250
@@ -5542,6 +5489,16 @@ msgstr ""
 
 #: lib/comment.php:410
 msgid "Insufficient privileges to save settings for comment ID %1$s."
+msgstr ""
+
+#: lib/config.php:5214
+msgctxt "plugin type"
+msgid "plugin"
+msgstr ""
+
+#: lib/config.php:5214
+msgctxt "plugin type"
+msgid "add-on"
 msgstr ""
 
 #: lib/conflict-seo.php:48 lib/integ/rating/rate-my-post.php:60
@@ -10428,6 +10385,28 @@ msgstr ""
 msgid ""
 "<strong>Development of %s is driven by user requests</strong> - we welcome "
 "all your comments and suggestions."
+msgstr ""
+
+#: lib/messages.php:599
+msgid ""
+"Great ratings are an excellent way to ensure the continued development of "
+"your favorite plugins."
+msgstr ""
+
+#: lib/messages.php:603
+msgid ""
+"Without new ratings, plugins and add-ons that you and your site depend on "
+"could be discontinued prematurely."
+msgstr ""
+
+#: lib/messages.php:605
+msgid "Don't let that happen!"
+msgstr ""
+
+#: lib/messages.php:607
+msgid ""
+"Rate your active plugins today - it only takes a few seconds to rate a "
+"plugin!"
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.

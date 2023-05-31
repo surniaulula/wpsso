@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.12.1-dev.5',	// Plugin version.
+					'version'     => '15.12.1-dev.6',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5207,6 +5207,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			return $cf[ 'plugin' ];
+		}
+
+		public static function get_ext_type_transl( $ext ) {
+		
+			return 'wpsso' === $ext ? _x( 'plugin', 'plugin type', 'wpsso' ) : _x( 'add-on', 'plugin type', 'wpsso' );
 		}
 
 		private static function sort_plugin_by_name_key( $a, $b ) {
