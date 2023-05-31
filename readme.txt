@@ -230,7 +230,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.12.1-dev.7 (2023/05/31)**
+**Version 15.13.0-dev.7 (2023/05/31)**
 
 * **New Features**
 	* None.
@@ -641,7 +641,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.12.1-dev.7 =
+= 15.13.0-dev.7 =
 
 (2023/05/31) Updated the SSO &gt; Dashboard &gt; Version Information layout.
 
