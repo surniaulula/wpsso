@@ -239,7 +239,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the `SucomUtil::sanitize_css_class()` method.
+	* Refactored the `SucomUtil::sanitize_css_id()` method.
+	* Refactored the `sucomSelectChangeUnhideRows()` function in js/com/jquery-metabox.js.
 * **Requires At Least**
 	* PHP v7.2.5.
 	* WordPress v5.5.
