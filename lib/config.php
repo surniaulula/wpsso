@@ -4998,7 +4998,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * Load all essential library files.
 		 *
 		 * Avoid calling is_admin() here as it can be unreliable this early in the load process - some plugins that operate
-		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required to by
+		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required by
 		 * is_admin() this early in the WordPress load process).
 		 */
 		public static function require_libs( $plugin_file ) {

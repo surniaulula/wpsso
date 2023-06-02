@@ -1572,7 +1572,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * See sucomSelectChangeUnhideRows() in jquery-metabox.js.
+		 * See sucomChangeHideShowRows() in jquery-metabox.js.
 		 */
 		public static function sanitize_css_id( $css_id ) {
 
