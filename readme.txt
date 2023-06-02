@@ -239,13 +239,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `SucomUtil::sanitize_input_name()` method.
-	* Refactored the `SucomUtil::sanitize_css_class()` method.
-	* Refactored the `SucomUtil::sanitize_css_id()` method.
-	* Refactored the `sucomSelectChangeUnhideRows()` function in js/com/jquery-metabox.js.
-	* Refactored the `WpssoMessagesTooltipMeta->get()` method.
 	* Added a `$event_names` argument to the `SucomForm->get_checklist()` method.
 	* Added a new `SucomForm->get_css_class_on_change()` method.
+	* Added a new `SucomUtil::sanitize_input_name()` method.
+	* Renamed the `sucomSelectChangeUnhideRows()` function to `sucomChangeHideShowRows()` in js/com/jquery-metabox.js.
+	* Refactored the `SucomUtil::sanitize_css_class()` method.
+	* Refactored the `SucomUtil::sanitize_css_id()` method.
+	* Refactored the `sucomChangeHideShowRows()` function in js/com/jquery-metabox.js.
+	* Refactored the `WpssoMessagesTooltipMeta->get()` method.
 * **Requires At Least**
 	* PHP v7.2.5.
 	* WordPress v5.5.
