@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.13.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 15.13.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -454,52 +454,52 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:29
-#: lib/com/form.php:639 lib/com/form.php:698
+#: lib/com/form.php:700 lib/com/form.php:759
 msgctxt "option label"
 msgid "Post Type"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:30 lib/com/form.php:702
+#: gettext/gettext-lib-com.php:30 lib/com/form.php:763
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:31 lib/com/form.php:706
+#: gettext/gettext-lib-com.php:31 lib/com/form.php:767
 msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:32 gettext/gettext-lib-com.php:42
-#: lib/com/form.php:853 lib/com/form.php:2534
+#: lib/com/form.php:914 lib/com/form.php:2596
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:854 lib/com/form.php:2535
+#: lib/com/form.php:915 lib/com/form.php:2597
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:855 lib/com/form.php:2536
+#: lib/com/form.php:916 lib/com/form.php:2598
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:856 lib/com/form.php:2537
+#: lib/com/form.php:917 lib/com/form.php:2599
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:36 lib/com/form.php:894
+#: gettext/gettext-lib-com.php:36 lib/com/form.php:955
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:37 gettext/gettext-lib-pro.php:212
-#: gettext/gettext-lib-pro.php:307 lib/com/form.php:895
+#: gettext/gettext-lib-pro.php:307 lib/com/form.php:956
 #: lib/pro/admin/edit.php:290 lib/pro/admin/edit.php:1116
 #: lib/std/admin/edit.php:320 lib/std/admin/edit.php:986
 msgctxt "option comment"
@@ -507,14 +507,14 @@ msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:39 lib/com/form.php:905
+#: gettext/gettext-lib-com.php:39 lib/com/form.php:966
 #: lib/media-filters.php:116 lib/media.php:1500 lib/media.php:1650
 #: lib/media.php:3308
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:41 lib/com/form.php:988 lib/script.php:373
+#: gettext/gettext-lib-com.php:41 lib/com/form.php:1049 lib/script.php:373
 msgid "Select Image"
 msgstr ""
 
@@ -1686,8 +1686,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:431 gettext/gettext-lib-config.php:436
 #: gettext/gettext-lib-config.php:443 gettext/gettext-lib-config.php:455
 #: gettext/gettext-lib-config.php:461 gettext/gettext-lib-config.php:469
-#: gettext/gettext-lib-config.php:477 gettext/gettext-lib-config.php:485
-#: gettext/gettext-lib-config.php:498 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:480 gettext/gettext-lib-config.php:488
+#: gettext/gettext-lib-config.php:501 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -1702,8 +1702,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:432 gettext/gettext-lib-config.php:437
 #: gettext/gettext-lib-config.php:444 gettext/gettext-lib-config.php:456
 #: gettext/gettext-lib-config.php:462 gettext/gettext-lib-config.php:470
-#: gettext/gettext-lib-config.php:478 gettext/gettext-lib-config.php:486
-#: gettext/gettext-lib-config.php:499
+#: gettext/gettext-lib-config.php:481 gettext/gettext-lib-config.php:489
+#: gettext/gettext-lib-config.php:502
 msgctxt "option value"
 msgid "None"
 msgstr ""
@@ -2757,127 +2757,142 @@ msgctxt "option value"
 msgid "Suggested Retail Price"
 msgstr ""
 
+#: gettext/gettext-lib-config.php:477
+msgctxt "option value"
+msgid "At Kiosk"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:478
+msgctxt "option value"
+msgid "By Mail"
+msgstr ""
+
 #: gettext/gettext-lib-config.php:479
 msgctxt "option value"
-msgid "Regular"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:480
-msgctxt "option value"
-msgid "Petite"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:481
-msgctxt "option value"
-msgid "Plus"
+msgid "In Store"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:482
 msgctxt "option value"
-msgid "Tall"
+msgid "Regular"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:483
 msgctxt "option value"
-msgid "Big"
+msgid "Petite"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:484
 msgctxt "option value"
-msgid "Maternity"
+msgid "Plus"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:485
+msgctxt "option value"
+msgid "Tall"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:486
+msgctxt "option value"
+msgid "Big"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:487
 msgctxt "option value"
-msgid "AU"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:488
-msgctxt "option value"
-msgid "BR"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:489
-msgctxt "option value"
-msgid "CN"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:490
 msgctxt "option value"
-msgid "DE"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:491
 msgctxt "option value"
-msgid "EU"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:492
 msgctxt "option value"
-msgid "FR"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:493
 msgctxt "option value"
-msgid "IT"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:494
 msgctxt "option value"
-msgid "JP"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:495
 msgctxt "option value"
-msgid "MX"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:496
 msgctxt "option value"
-msgid "UK"
+msgid "IT"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:497
 msgctxt "option value"
-msgid "US"
+msgid "JP"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:498
+msgctxt "option value"
+msgid "MX"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:499
+msgctxt "option value"
+msgid "UK"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:500
 msgctxt "option value"
-msgid "Female"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:501
-msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:502
-msgctxt "option value"
-msgid "Unisex"
+msgid "US"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:503
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Female"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:504
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Male"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:505
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Unisex"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:506
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:507
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:508
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:509
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:510
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -3766,8 +3781,8 @@ msgid "Show"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:163 gettext/gettext-lib-pro.php:166
-#: lib/messages-info.php:114 lib/messages-tooltip.php:731
-#: lib/messages-tooltip.php:733 lib/messages-tooltip.php:745
+#: lib/messages-info.php:114 lib/messages-tooltip.php:717
+#: lib/messages-tooltip.php:719 lib/messages-tooltip.php:731
 #: lib/pro/admin/advanced.php:1249 lib/pro/admin/advanced.php:1279
 #: lib/std/admin/advanced.php:1197 lib/std/admin/advanced.php:1229
 msgctxt "column title"
@@ -3775,7 +3790,7 @@ msgid "Contact Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:164 gettext/gettext-lib-pro.php:167
-#: lib/messages-info.php:116 lib/messages-tooltip.php:739
+#: lib/messages-info.php:116 lib/messages-tooltip.php:725
 #: lib/pro/admin/advanced.php:1250 lib/pro/admin/advanced.php:1281
 #: lib/std/admin/advanced.php:1198 lib/std/admin/advanced.php:1231
 msgctxt "column title"
@@ -5511,12 +5526,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5226
+#: lib/config.php:5237
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5226
+#: lib/config.php:5237
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -7219,13 +7234,13 @@ msgid ""
 "Schema markup."
 msgstr ""
 
-#: lib/messages-info.php:114 lib/messages-tooltip.php:731
+#: lib/messages-info.php:114 lib/messages-tooltip.php:717
 msgid ""
 "You should not modify the <em>%s</em> column unless you have a <em>very</em> "
 "good reason to do so."
 msgstr ""
 
-#: lib/messages-info.php:116 lib/messages-tooltip.php:739
+#: lib/messages-info.php:116 lib/messages-tooltip.php:725
 msgid ""
 "The %s column is for display purposes only and can be changed as you wish."
 msgstr ""
@@ -7452,8 +7467,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:950 lib/messages-tooltip-meta.php:112
-#: lib/messages-tooltip-meta.php:133 lib/messages-tooltip-opengraph.php:128
+#: lib/messages-tooltip-meta-schema.php:950 lib/messages-tooltip-meta.php:82
+#: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -7470,8 +7485,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:958 lib/messages-tooltip-meta.php:122
-#: lib/messages-tooltip-meta.php:144 lib/messages-tooltip-opengraph.php:145
+#: lib/messages-tooltip-meta-schema.php:958 lib/messages-tooltip-meta.php:92
+#: lib/messages-tooltip-meta.php:213 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -7556,8 +7571,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:38
 msgid ""
-"The place name may appear on WordPress admin edit pages and in the Schema "
-"Place \"name\" property."
+"The place name may appear in WordPress editing pages and in the Schema Place "
+"\"name\" property."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:44
@@ -8465,116 +8480,116 @@ msgid ""
 "Schema meta tags and JSON-LD markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:61
-msgid "The primary (ie. top most) category for breadcrumbs markup."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:67
-msgid ""
-"A customized description for the SEO title tag and the default for all other "
-"title values."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:73
-msgid ""
-"A customized description for the SEO description meta tag and the default "
-"for all other description values."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:81
+#: lib/messages-tooltip-meta.php:70
 msgid "A customized description for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:83 lib/messages-tooltip-meta.php:99
+#: lib/messages-tooltip-meta.php:72 lib/messages-tooltip-meta.php:188
 msgid "The default value is inherited from the social or SEO description."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:89
-msgid ""
-"A customized title for the Twitter Card title meta tag (all Twitter Card "
-"formats)."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:91
-msgid "The default value is inherited from the social or SEO title."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:97
-msgid ""
-"A customized description for the Twitter Card description meta tag (all "
-"Twitter Card formats)."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:108
+#: lib/messages-tooltip-meta.php:78
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:110 lib/messages-tooltip-meta.php:120
+#: lib/messages-tooltip-meta.php:80 lib/messages-tooltip-meta.php:90
 msgid ""
 "The default value is inherited from the Schema markup or priority image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:118
+#: lib/messages-tooltip-meta.php:88
 msgid ""
 "A customized image URL (instead of an image ID) for the Pinterest Pin It "
 "browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:129
-msgid "A customized image ID for the Twitter Card image."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:131 lib/messages-tooltip-meta.php:142
-msgid "The default value is inherited from the priority image."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:140
-msgid ""
-"A customized image URL (instead of an image ID) for the Twitter Card image."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:153
-msgid "A customized URL for meta tags and Schema markup."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:155 lib/messages-tooltip-meta.php:163
-msgid ""
-"Make sure the custom URL you enter here is functional and redirects "
-"correctly."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:161
-msgid "Permanently redirect this URL to another."
-msgstr ""
-
-#: lib/messages-tooltip-meta.php:172
+#: lib/messages-tooltip-meta.php:113
 msgid "Do not show a cached link in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:181
+#: lib/messages-tooltip-meta.php:122
 msgid "Do not follow links on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:190
+#: lib/messages-tooltip-meta.php:131
 msgid "Do not index images on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:199
+#: lib/messages-tooltip-meta.php:140
 msgid "Do not show this webpage in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:208
+#: lib/messages-tooltip-meta.php:149
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:210
+#: lib/messages-tooltip-meta.php:151
 msgid ""
 "Google may still show a static image thumbnail (if available) when it "
 "determines that using an image provides a better user-experience."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:219
+#: lib/messages-tooltip-meta.php:160
 msgid "Do not offer translation of this webpage in search results."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:178
+msgid ""
+"A customized title for the Twitter Card title meta tag (all Twitter Card "
+"formats)."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:180
+msgid "The default value is inherited from the social or SEO title."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:186
+msgid ""
+"A customized description for the Twitter Card description meta tag (all "
+"Twitter Card formats)."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:198
+msgid "A customized image ID for the Twitter Card image."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:200 lib/messages-tooltip-meta.php:211
+msgid "The default value is inherited from the priority image."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:209
+msgid ""
+"A customized image URL (instead of an image ID) for the Twitter Card image."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:231
+msgid "The primary (ie. top most) category for breadcrumbs markup."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:237
+msgid ""
+"A customized description for the SEO title tag and the default for all other "
+"title values."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:243
+msgid ""
+"A customized description for the SEO description meta tag and the default "
+"for all other description values."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:251
+msgid "A customized URL for meta tags and Schema markup."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:253 lib/messages-tooltip-meta.php:261
+msgid ""
+"Make sure the custom URL you enter here is functional and redirects "
+"correctly."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:259
+msgid "Permanently redirect this URL to another."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:38
@@ -10088,13 +10103,13 @@ msgstr ""
 msgid "https://youtube.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:733
+#: lib/messages-tooltip.php:719
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages-tooltip.php:745
+#: lib/messages-tooltip.php:731
 msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 

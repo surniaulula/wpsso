@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.0-dev.7',	// Plugin version.
+					'version'     => '15.13.0-dev.8',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3244,6 +3244,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/MinimumAdvertisedPrice' => 'Minimum Advertised Price',
 					'https://schema.org/SalePrice'              => 'Sale Price',
 					'https://schema.org/SRP'                    => 'Suggested Retail Price',
+				),
+
+				/*
+				 * Validated on 2023/06/02.
+				 *
+				 * See https://schema.org/ReturnMethodEnumeration.
+				 */
+				'return_method' => array(
+					'https://schema.org/ReturnAtKiosk' => 'At Kiosk',
+					'https://schema.org/ReturnByMail'  => 'By Mail',
+					'https://schema.org/ReturnInStore' => 'In Store',
 				),
 
 				/*

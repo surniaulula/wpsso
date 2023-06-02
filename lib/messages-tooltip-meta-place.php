@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					$text = __( 'A name for this place (required).', 'wpsso' ) . ' ';
 
-					$text .= __( 'The place name may appear on WordPress admin edit pages and in the Schema Place "name" property.', 'wpsso' );
+					$text .= __( 'The place name may appear in WordPress editing pages and in the Schema Place "name" property.', 'wpsso' );
 
 					break;
 

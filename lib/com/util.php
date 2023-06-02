@@ -1579,6 +1579,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
 		}
 
+		/*
+		 * See WpssoConfig::$cf[ 'opt' ][ 'defaults' ] for example input names.
+		 *
+		 * A colon can be used for qualifiers (example, ':disabled', ':width', ':height', etc.).
+		 * A hashtag can be used for the locale (language).
+		 *
+		 * Example sanitation:
+		 *
+		 *	'mrp_method_https://schema.org/ReturnByMail' -> 'mrp_method_https_schema_org_ReturnByMail'
+		 */
+		public static function sanitize_input_name( $input_name ) {
+
+			$input_name = preg_replace( '/:\/\//', '_', $input_name );
+			$input_name = preg_replace( '/[^a-zA-Z0-9\-_#:]+/', '_', $input_name );
+
+			return trim( $input_name, $characters = '-' );
+		}
+
 		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {
 
 			if ( '' !== $twitter_name ) {

@@ -398,11 +398,23 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $css_class;	// Hide option.
 		}
 
-		public function get_css_class_on_change( $select_id, $select_value ) {
+		public function get_css_class_on_change( $select_id, $select_values ) {
 
-			$select_value = SucomUtil::sanitize_css_id( $select_value );	// Just in case.
+			if ( ! is_array( $select_values ) ) {
 
-			return 'hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value;
+				$select_values = array( $select_values );
+			}
+
+			$select_id = SucomUtil::sanitize_css_id( $select_id );
+			$css_class = 'hide_' . $select_id;
+
+			foreach ( $select_values as $select_value ) {
+
+				$select_value = SucomUtil::sanitize_css_id( $select_value );
+				$css_class    .= ' hide_' . $select_id . '_' . $select_value;
+			}
+
+			return $css_class;
 		}
 
 		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array() ) {
@@ -550,7 +562,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *
 		 * The $name_prefix is combined with the $values array names to create the checbox option name.
 		 */
-		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false ) {
+		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false,
+			$event_names = array() ) {
 
 			if ( empty( $name_prefix ) || ! is_array( $values ) ) {
 
@@ -562,8 +575,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
-			unset( $values[ 'none' ] );	// Just in case - remove 'none' value for selects.
+			if ( is_string( $event_names ) ) {
 
+				$event_names = array( $event_names );
+
+			} elseif ( ! is_array( $event_names ) ) {	// Ignore true, false, null, etc.
+
+				$event_names = array();
+			}
+
+			unset( $values[ 'none' ] );	// Just in case - remove 'none' value for select arrays.
+
+			$doing_ajax      = SucomUtilWP::doing_ajax();
 			$container_class = SucomUtil::sanitize_css_class( $css_class );
 			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name_prefix : $css_id );
 
@@ -592,6 +615,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_name = $name_prefix . '_' . $label;
 				}
 
+				$input_name = SucomUtil::sanitize_input_name( $input_name );
+
 				if ( $this->in_options( $input_name ) ) {
 
 					$input_checked = checked( $this->options[ $input_name ], 1, false );
@@ -607,6 +632,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
 				$input_class    = SucomUtil::sanitize_css_class( $input_class );
+				$input_id       = SucomUtil::sanitize_css_id( $input_name );
 				$default_status = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 'checked' : 'unchecked';
 				$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
 				$label_transl   = $this->get_option_value_transl( $label );
@@ -616,9 +642,44 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '" value="1"';
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
 				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
+				$html .= $input_id ? ' id="checkbox_' . $input_id . '"' : '';	// Already sanitized.
 				$html .= ' title="' . $title_transl . '"';
 				$html .= ' ' . $input_checked . '/>';
 				$html .= '&nbsp;&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
+			
+				foreach ( $event_names as $event_num => $event_name ) {
+					
+					$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
+
+					switch ( $event_name ) {
+
+						case 'on_change_unhide_rows':
+						
+							$def_hide_class = 'hide_' . esc_js( $input_name );
+							$def_show_class = 'hide_' . esc_js( $input_name . '_' . ( $input_checked ? 1 : 0 ) );
+
+							$html .= '<script>';
+							$html .= 'jQuery( \'#checkbox_' . $input_id . '\' ).on( \'change\', function(){';
+							$html .= 'value = this.checked ? 1 : 0;';
+							$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $input_name ) . '_\' + value );';
+							$html .= '});';
+	
+							if ( $doing_ajax ) {
+	
+								$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+	
+							} else {
+	
+								$html .= 'jQuery( window ).on( \'load\', function(){';
+								$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+								$html .= '});';
+							}
+	
+							$html .= '</script>' . "\n";
+
+							break;
+					}
+				}
 			}
 
 			$html .= '</div>' . "\n";
@@ -1366,29 +1427,30 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_unhide_rows':
 
+						$def_hide_class = 'hide_' . esc_js( $name );
+						$def_show_class = 'hide_' . esc_js( $name . '_' . SucomUtil::sanitize_css_id( $selected_value ) );
+
 						$html .= '<script>';
 						$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'change\', function(){';
-						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
+						$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
 						$html .= '});';
 						$html .= '</script>' . "\n";
 
 						$html .= '<!-- selected value: ' . $selected_value . ' -->' . "\n";
 
 						/*
-						 * If we have an option selected, unhide those rows. Test for a non-empty string to
-						 * allow for a value of 0.
+						 * If we have an option selected, unhide those rows.
+						 *
+						 * Test for a non-empty string to allow for a value of 0.
 						 */
 						if ( '' !== $selected_value ) {
-
-							$hide_class = 'hide_' . esc_js( $name );
-							$show_class = 'hide_' . esc_js( $name . '_' . SucomUtil::sanitize_css_class( $selected_value ) );
 
 							$html .= '<script>';
 
 							if ( 'on_show_unhide_rows' === $event_name ) {
 
 								$html .= 'jQuery( \'tr#' . esc_js( $row_id ) . '\' ).on( \'show\', function(){';
-								$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+								$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 								$html .= '});';
 
 							} else {
@@ -1397,12 +1459,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								if ( $doing_ajax ) {
 
-									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+									$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 
 								} else {
 
 									$html .= 'jQuery( window ).on( \'load\', function(){';
-									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+									$html .= 'sucomSelectChangeUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 									$html .= '});';
 								}
 							}

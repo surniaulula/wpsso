@@ -742,7 +742,8 @@ table.sucom-settings td div.multi_input textarea.recipe_instruction_text {
 	height:5em;
 }
 
-table.sucom-settings td div.multi_input input[type="text"].long_name {
+table.sucom-settings td div.multi_input input[type="text"].long_name,
+table.sucom-settings td div.multi_input select.long_name {
 	width:340px;
 }
 
@@ -809,9 +810,11 @@ table.sucom-settings td select.timezone { width:255px; }
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.primary_term_id,
-table.sucom-settings td select.long_name { width:320px; }
-
-table.sucom-settings td div.multi_input select.long_name { width:340px; }
+table.sucom-settings td select.long_name,
+table.sucom-settings td input[type="text"].long_name,
+table.sucom-settings td input[type="text"].schema_type {
+	width:340px;
+}
 
 table.sucom-settings td select.wide { width:100%; }
 
@@ -866,10 +869,10 @@ table.sucom-settings td input[type="text"].altitude { width:220px; }
 
 table.sucom-settings td input[type="text"].tid { width:320px; }
 
-table.sucom-settings td input[type="text"].long_name,
-table.sucom-settings td input[type="text"].schema_type { width:350px; }
-
-table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"Courier", monospace; }
+table.sucom-settings td input[type="text"].api_key {
+	font-family:"Courier", monospace;
+	width:400px;
+}
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
