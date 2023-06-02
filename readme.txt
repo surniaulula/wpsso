@@ -230,7 +230,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.0-dev.7 (2023/05/31)**
+**Version 15.13.0-dev.8 (2023/06/02)**
 
 * **New Features**
 	* None.
@@ -239,9 +239,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new `SucomUtil::sanitize_input_name()` method.
 	* Refactored the `SucomUtil::sanitize_css_class()` method.
 	* Refactored the `SucomUtil::sanitize_css_id()` method.
 	* Refactored the `sucomSelectChangeUnhideRows()` function in js/com/jquery-metabox.js.
+	* Refactored the `WpssoMessagesTooltipMeta->get()` method.
+	* Added a `$event_names` argument to the `SucomForm->get_checklist()` method.
+	* Added a new `SucomForm->get_css_class_on_change()` method.
 * **Requires At Least**
 	* PHP v7.2.5.
 	* WordPress v5.5.
@@ -641,9 +645,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.0-dev.7 =
+= 15.13.0-dev.8 =
 
-(2023/05/31) Updated the SSO &gt; Dashboard &gt; Version Information layout.
+(2023/06/02) Updated the SSO &gt; Dashboard &gt; Version Information layout.
 
 = 15.12.0 =
 
