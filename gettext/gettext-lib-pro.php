@@ -296,6 +296,7 @@ _x( 'Select a Person', 'option label', 'wpsso' );
 _x( 'Schema Place Information', 'metabox title', 'wpsso' );
 _x( 'Select a Place', 'option label', 'wpsso' );
 _x( 'Schema Product Information (Main Product)', 'metabox title', 'wpsso' );
+_x( 'Product Return Policy', 'option label', 'wpsso' );
 _x( 'Product Google Category', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );

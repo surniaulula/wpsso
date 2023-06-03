@@ -2458,7 +2458,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					if ( ! empty( $defined_region ) ) {
+					if ( ! empty( $defined_region ) ) {	// Ships to the World.
 
 						if  ( ! empty( $dest_opts[ 'destination_id' ] ) ) {
 

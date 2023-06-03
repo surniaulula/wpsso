@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.13.0-dev.8\n"
+"Project-Id-Version: WPSSO Core 15.13.0-dev.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -499,9 +499,9 @@ msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:37 gettext/gettext-lib-pro.php:212
-#: gettext/gettext-lib-pro.php:307 lib/com/form.php:956
-#: lib/pro/admin/edit.php:290 lib/pro/admin/edit.php:1116
-#: lib/std/admin/edit.php:320 lib/std/admin/edit.php:986
+#: gettext/gettext-lib-pro.php:308 lib/com/form.php:956
+#: lib/pro/admin/edit.php:290 lib/pro/admin/edit.php:1128
+#: lib/std/admin/edit.php:322 lib/std/admin/edit.php:1001
 msgctxt "option comment"
 msgid "from"
 msgstr ""
@@ -1069,7 +1069,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:103
-#: lib/admin-head-suggest-options.php:111 lib/messages.php:1110
+#: lib/admin-head-suggest-options.php:111 lib/messages.php:1120
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -1331,7 +1331,7 @@ msgid "Document SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:145 gettext/gettext-lib-pro.php:284
-#: lib/pro/admin/edit.php:893 lib/std/admin/edit.php:752
+#: lib/pro/admin/edit.php:893 lib/std/admin/edit.php:754
 msgctxt "option label"
 msgid "Job Title"
 msgstr ""
@@ -1606,12 +1606,12 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:205 lib/messages.php:970
+#: gettext/gettext-lib-config.php:205 lib/messages.php:980
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:206 lib/messages.php:971
+#: gettext/gettext-lib-config.php:206 lib/messages.php:981
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
@@ -2898,7 +2898,7 @@ msgid "Stable / Production"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:5 lib/messages-tooltip-plugin.php:316
-#: lib/messages-tooltip-plugin.php:333 lib/messages.php:1136
+#: lib/messages-tooltip-plugin.php:333 lib/messages.php:1146
 #: lib/pro/admin/advanced.php:94 lib/std/admin/advanced.php:92
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -3394,7 +3394,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:348
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:349
 #: lib/pro/admin/advanced.php:607 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -3415,7 +3415,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:91 gettext/gettext-lib-pro.php:350
+#: gettext/gettext-lib-pro.php:91 gettext/gettext-lib-pro.php:351
 #: lib/pro/admin/advanced.php:625 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -3426,7 +3426,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:93 gettext/gettext-lib-pro.php:352
+#: gettext/gettext-lib-pro.php:93 gettext/gettext-lib-pro.php:353
 #: lib/pro/admin/advanced.php:635 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -3437,7 +3437,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:95 gettext/gettext-lib-pro.php:354
+#: gettext/gettext-lib-pro.php:95 gettext/gettext-lib-pro.php:355
 #: lib/pro/admin/advanced.php:645 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3702,7 +3702,7 @@ msgctxt "option label"
 msgid "Default Place Timezone"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:151 lib/messages-tooltip-meta-product.php:42
+#: gettext/gettext-lib-pro.php:151 lib/messages.php:730
 #: lib/pro/admin/advanced.php:1148 lib/std/admin/advanced.php:1090
 msgctxt "option label"
 msgid "Default Product Google Category"
@@ -3727,10 +3727,10 @@ msgid "Default Product Energy Rating Range"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:155 gettext/gettext-lib-pro.php:213
-#: gettext/gettext-lib-pro.php:308 lib/pro/admin/advanced.php:1176
-#: lib/pro/admin/edit.php:293 lib/pro/admin/edit.php:1119
-#: lib/std/admin/advanced.php:1113 lib/std/admin/edit.php:323
-#: lib/std/admin/edit.php:989
+#: gettext/gettext-lib-pro.php:309 lib/pro/admin/advanced.php:1176
+#: lib/pro/admin/edit.php:293 lib/pro/admin/edit.php:1131
+#: lib/std/admin/advanced.php:1113 lib/std/admin/edit.php:325
+#: lib/std/admin/edit.php:1004
 msgctxt "option comment"
 msgid "to"
 msgstr ""
@@ -3828,7 +3828,7 @@ msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:185 lib/messages.php:942
+#: gettext/gettext-lib-pro.php:185 lib/messages.php:952
 #: lib/pro/admin/edit.php:69 lib/std/admin/edit.php:70
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -3957,122 +3957,122 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:230
 #: lib/pro/admin/edit.php:233 lib/pro/admin/edit.php:453
-#: lib/std/admin/edit.php:256
+#: lib/std/admin/edit.php:257
 msgctxt "option label"
 msgid "Movie Director Names"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:207 lib/pro/admin/edit.php:241
-#: lib/std/admin/edit.php:264
+#: lib/std/admin/edit.php:266
 msgctxt "option label"
 msgid "Production Company"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:208 lib/pro/admin/edit.php:249
-#: lib/std/admin/edit.php:273
+#: lib/std/admin/edit.php:275
 msgctxt "option label"
 msgid "Movie Release Date"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:209 lib/pro/admin/edit.php:256
-#: lib/std/admin/edit.php:281
+#: lib/std/admin/edit.php:283
 msgctxt "option label"
 msgid "Movie Runtime"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:210 lib/pro/admin/edit.php:280
-#: lib/std/admin/edit.php:305
+#: lib/std/admin/edit.php:307
 msgctxt "metabox title"
 msgid "Schema Review Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:211 lib/pro/admin/edit.php:285
-#: lib/std/admin/edit.php:315
+#: lib/std/admin/edit.php:317
 msgctxt "option label"
 msgid "Review Rating"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:214 lib/pro/admin/edit.php:300
-#: lib/std/admin/edit.php:331
+#: lib/std/admin/edit.php:333
 msgctxt "option label"
 msgid "Rating Value Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:215 lib/pro/admin/edit.php:327
-#: lib/std/admin/edit.php:358
+#: lib/std/admin/edit.php:360
 msgctxt "metabox title"
 msgid "Review Subject Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:216 lib/pro/admin/edit.php:332
-#: lib/std/admin/edit.php:364
+#: lib/std/admin/edit.php:366
 msgctxt "option label"
 msgid "Subject Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:217 lib/pro/admin/edit.php:339
-#: lib/std/admin/edit.php:372
+#: lib/std/admin/edit.php:374
 msgctxt "option label"
 msgid "Subject Description"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:218 lib/pro/admin/edit.php:346
-#: lib/std/admin/edit.php:380
+#: lib/std/admin/edit.php:382
 msgctxt "option label"
 msgid "Subject Image ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:219 lib/edit-media.php:120
 #: lib/edit-media.php:179 lib/edit-media.php:225 lib/edit-media.php:279
-#: lib/pro/admin/edit.php:353 lib/std/admin/edit.php:388
+#: lib/pro/admin/edit.php:353 lib/std/admin/edit.php:390
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:220 lib/pro/admin/edit.php:360
-#: lib/std/admin/edit.php:412
+#: lib/std/admin/edit.php:414
 msgctxt "option label"
 msgid "Subject Webpage URL"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:221 lib/pro/admin/edit.php:367
-#: lib/std/admin/edit.php:420
+#: lib/std/admin/edit.php:422
 msgctxt "option label"
 msgid "Subject Same-As URLs"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:222 lib/pro/admin/edit.php:375
-#: lib/std/admin/edit.php:396
+#: lib/std/admin/edit.php:398
 msgctxt "option label"
 msgid "Subject Schema Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:223 lib/pro/admin/edit.php:394
-#: lib/std/admin/edit.php:432
+#: lib/std/admin/edit.php:434
 msgctxt "option label"
 msgid "Subject Author Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:224 lib/pro/admin/edit.php:401
-#: lib/std/admin/edit.php:440
+#: lib/std/admin/edit.php:442
 msgctxt "option label"
 msgid "Subject Author Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:225 lib/pro/admin/edit.php:408
-#: lib/std/admin/edit.php:448
+#: lib/std/admin/edit.php:450
 msgctxt "option label"
 msgid "Subject Author URL"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:226 lib/pro/admin/edit.php:415
-#: lib/std/admin/edit.php:456
+#: lib/std/admin/edit.php:458
 msgctxt "option label"
 msgid "Subject Published Date"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:227 lib/pro/admin/edit.php:422
-#: lib/std/admin/edit.php:464
+#: lib/std/admin/edit.php:466
 msgctxt "option label"
 msgid "Subject Created Date"
 msgstr ""
@@ -4084,14 +4084,14 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:231 gettext/gettext-lib-pro.php:259
 #: lib/pro/admin/edit.php:465 lib/pro/admin/edit.php:681
-#: lib/std/admin/edit.php:516
+#: lib/std/admin/edit.php:518
 msgctxt "option label"
 msgid "Operating System"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:232 gettext/gettext-lib-pro.php:260
 #: lib/pro/admin/edit.php:472 lib/pro/admin/edit.php:688
-#: lib/std/admin/edit.php:524
+#: lib/std/admin/edit.php:526
 msgctxt "option label"
 msgid "Application Category"
 msgstr ""
@@ -4207,469 +4207,475 @@ msgid "Subject Product MPN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:255 lib/pro/admin/edit.php:648
-#: lib/std/admin/edit.php:476
+#: lib/std/admin/edit.php:478
 msgctxt "metabox title"
 msgid "Schema Claim Review Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:256 lib/pro/admin/edit.php:653
-#: lib/std/admin/edit.php:482
+#: lib/std/admin/edit.php:484
 msgctxt "option label"
 msgid "Short Summary of Claim"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:257 lib/pro/admin/edit.php:660
-#: lib/std/admin/edit.php:490
+#: lib/std/admin/edit.php:492
 msgctxt "option label"
 msgid "First Appearance URL"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:258 lib/pro/admin/edit.php:676
-#: lib/std/admin/edit.php:506
+#: lib/std/admin/edit.php:508
 msgctxt "metabox title"
 msgid "Schema Software App Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:261 lib/pro/admin/edit.php:704
-#: lib/std/admin/edit.php:540
+#: lib/std/admin/edit.php:542
 msgctxt "metabox title"
 msgid "Schema QA Page Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:262 lib/pro/admin/edit.php:709
-#: lib/std/admin/edit.php:550
+#: lib/std/admin/edit.php:552
 msgctxt "option label"
 msgid "QA Heading"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:263 lib/pro/admin/edit.php:728
-#: lib/std/admin/edit.php:569
+#: lib/std/admin/edit.php:571
 msgctxt "metabox title"
 msgid "Schema Event Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:264 lib/pro/admin/edit.php:733
-#: lib/std/admin/edit.php:579
+#: lib/std/admin/edit.php:581
 msgctxt "option label"
 msgid "Event Language"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:265 lib/pro/admin/edit.php:740
-#: lib/std/admin/edit.php:587
+#: lib/std/admin/edit.php:589
 msgctxt "option label"
 msgid "Event Attendance"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:266 lib/pro/admin/edit.php:748
-#: lib/std/admin/edit.php:596
+#: lib/std/admin/edit.php:598
 msgctxt "option label"
 msgid "Event Online URL"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:267 lib/pro/admin/edit.php:755
-#: lib/std/admin/edit.php:604
+#: lib/std/admin/edit.php:606
 msgctxt "option label"
 msgid "Event Physical Venue"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:763
-#: lib/std/admin/edit.php:613
+#: lib/std/admin/edit.php:615
 msgctxt "option label"
 msgid "Organizer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:269 lib/pro/admin/edit.php:771
-#: lib/std/admin/edit.php:622
+#: lib/std/admin/edit.php:624
 msgctxt "option label"
 msgid "Organizer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:270 lib/pro/admin/edit.php:781
-#: lib/std/admin/edit.php:631
+#: lib/std/admin/edit.php:633
 msgctxt "option label"
 msgid "Performer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:271 lib/pro/admin/edit.php:789
-#: lib/std/admin/edit.php:640
+#: lib/std/admin/edit.php:642
 msgctxt "option label"
 msgid "Performer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:272 lib/pro/admin/edit.php:799
-#: lib/std/admin/edit.php:649
+#: lib/std/admin/edit.php:651
 msgctxt "option label"
 msgid "Event Status"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:273 lib/pro/admin/edit.php:807
-#: lib/std/admin/edit.php:658
+#: lib/std/admin/edit.php:660
 msgctxt "option label"
 msgid "Event Start"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:274 lib/pro/admin/edit.php:814
-#: lib/std/admin/edit.php:666
+#: lib/std/admin/edit.php:668
 msgctxt "option label"
 msgid "Event End"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:275 lib/pro/admin/edit.php:821
-#: lib/std/admin/edit.php:674
+#: lib/std/admin/edit.php:676
 msgctxt "option label"
 msgid "Event Previous Start"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:276 lib/pro/admin/edit.php:828
-#: lib/std/admin/edit.php:682
+#: lib/std/admin/edit.php:684
 msgctxt "option label"
 msgid "Event Offers Start"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:277 lib/pro/admin/edit.php:835
-#: lib/std/admin/edit.php:690
+#: lib/std/admin/edit.php:692
 msgctxt "option label"
 msgid "Event Offers End"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:278 lib/pro/admin/edit.php:842
-#: lib/std/admin/edit.php:698
+#: lib/std/admin/edit.php:700
 msgctxt "option label"
 msgid "Event Offers"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:279 lib/pro/admin/edit.php:846
-#: lib/std/admin/edit.php:702
+#: lib/std/admin/edit.php:704
 msgctxt "option label"
 msgid "Event Offer Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:280 lib/pro/admin/edit.php:851
-#: lib/std/admin/edit.php:707
+#: lib/std/admin/edit.php:709
 msgctxt "option label"
 msgid "Event Offer Price"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:281 lib/pro/admin/edit.php:856
-#: lib/std/admin/edit.php:712
+#: lib/std/admin/edit.php:714
 msgctxt "option label"
 msgid "Event Offer Currency"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:282 lib/pro/admin/edit.php:865
-#: lib/std/admin/edit.php:719
+#: lib/std/admin/edit.php:721
 msgctxt "option label"
 msgid "Event Offer Availability"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:283 lib/pro/admin/edit.php:888
-#: lib/std/admin/edit.php:742
+#: lib/std/admin/edit.php:744
 msgctxt "metabox title"
 msgid "Schema Job Posting Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:285 lib/pro/admin/edit.php:901
-#: lib/std/admin/edit.php:760
+#: lib/std/admin/edit.php:762
 msgctxt "option label"
 msgid "Hiring Organization"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:286 lib/pro/admin/edit.php:909
-#: lib/std/admin/edit.php:769
+#: lib/std/admin/edit.php:771
 msgctxt "option label"
 msgid "Job Location"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:287 lib/pro/admin/edit.php:917
-#: lib/std/admin/edit.php:778
+#: lib/std/admin/edit.php:780
 msgctxt "option label"
 msgid "Job Location Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:288 lib/pro/admin/edit.php:925
-#: lib/std/admin/edit.php:787
+#: lib/std/admin/edit.php:789
 msgctxt "option label"
 msgid "Base Salary"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:289 lib/pro/admin/edit.php:932
-#: lib/std/admin/edit.php:791
+#: lib/std/admin/edit.php:793
 msgctxt "option comment"
 msgid "per"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:290 lib/pro/admin/edit.php:938
-#: lib/std/admin/edit.php:798
+#: lib/std/admin/edit.php:800
 msgctxt "option label"
 msgid "Employment Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:291 lib/pro/admin/edit.php:945
-#: lib/std/admin/edit.php:806
+#: lib/std/admin/edit.php:808
 msgctxt "option label"
 msgid "Job Posting Expires"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:292 lib/pro/admin/edit.php:961
-#: lib/std/admin/edit.php:822
+#: lib/std/admin/edit.php:824
 msgctxt "metabox title"
 msgid "Schema Organization Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:293 lib/pro/admin/edit.php:966
-#: lib/std/admin/edit.php:832
+#: lib/std/admin/edit.php:834
 msgctxt "option label"
 msgid "Select an Organization"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:294 lib/pro/admin/edit.php:983
-#: lib/std/admin/edit.php:849
+#: lib/std/admin/edit.php:851
 msgctxt "metabox title"
 msgid "Schema Person Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:295 lib/pro/admin/edit.php:988
-#: lib/std/admin/edit.php:859
+#: lib/std/admin/edit.php:861
 msgctxt "option label"
 msgid "Select a Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:296 lib/pro/admin/edit.php:1007
-#: lib/std/admin/edit.php:876
+#: lib/std/admin/edit.php:878
 msgctxt "metabox title"
 msgid "Schema Place Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:297 lib/pro/admin/edit.php:1012
-#: lib/std/admin/edit.php:886
+#: lib/std/admin/edit.php:888
 msgctxt "option label"
 msgid "Select a Place"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:298 lib/pro/admin/edit.php:1038
-#: lib/std/admin/edit.php:912
+#: lib/std/admin/edit.php:914
 msgctxt "metabox title"
 msgid "Schema Product Information (Main Product)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:299 lib/messages.php:726
-#: lib/pro/admin/edit.php:1048 lib/std/admin/edit.php:921
+#: gettext/gettext-lib-pro.php:299 lib/messages.php:840
+#: lib/pro/admin/edit.php:1052 lib/std/admin/edit.php:928
+msgctxt "option label"
+msgid "Product Return Policy"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:300 lib/messages.php:726
+#: lib/pro/admin/edit.php:1060 lib/std/admin/edit.php:936
 msgctxt "option label"
 msgid "Product Google Category"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:300 lib/messages.php:719
-#: lib/pro/admin/edit.php:1063 lib/std/admin/edit.php:929
+#: gettext/gettext-lib-pro.php:301 lib/messages.php:719
+#: lib/pro/admin/edit.php:1075 lib/std/admin/edit.php:944
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:301 lib/messages.php:844
-#: lib/pro/admin/edit.php:1070 lib/std/admin/edit.php:937
+#: gettext/gettext-lib-pro.php:302 lib/messages.php:854
+#: lib/pro/admin/edit.php:1082 lib/std/admin/edit.php:952
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:302 lib/messages.php:849
-#: lib/pro/admin/edit.php:1080 lib/std/admin/edit.php:946
+#: gettext/gettext-lib-pro.php:303 lib/messages.php:859
+#: lib/pro/admin/edit.php:1092 lib/std/admin/edit.php:961
 msgctxt "option label"
 msgid "Product Price Type"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:303 lib/messages.php:832
-#: lib/pro/admin/edit.php:1088 lib/std/admin/edit.php:955
+#: gettext/gettext-lib-pro.php:304 lib/messages.php:834
+#: lib/pro/admin/edit.php:1100 lib/std/admin/edit.php:970
 msgctxt "option label"
 msgid "Product Min Advert Price"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:304 lib/messages.php:712
-#: lib/pro/admin/edit.php:1095 lib/std/admin/edit.php:963
+#: gettext/gettext-lib-pro.php:305 lib/messages.php:712
+#: lib/pro/admin/edit.php:1107 lib/std/admin/edit.php:978
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:305 lib/messages.php:739
-#: lib/pro/admin/edit.php:1103 lib/std/admin/edit.php:972
+#: gettext/gettext-lib-pro.php:306 lib/messages.php:741
+#: lib/pro/admin/edit.php:1115 lib/std/admin/edit.php:987
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:306 lib/messages.php:751
-#: lib/pro/admin/edit.php:1111 lib/std/admin/edit.php:981
+#: gettext/gettext-lib-pro.php:307 lib/messages.php:753
+#: lib/pro/admin/edit.php:1123 lib/std/admin/edit.php:996
 msgctxt "option label"
 msgid "Product Energy Rating"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:309 lib/messages.php:820
-#: lib/pro/admin/edit.php:1126 lib/std/admin/edit.php:998
+#: gettext/gettext-lib-pro.php:310 lib/messages.php:822
+#: lib/pro/admin/edit.php:1138 lib/std/admin/edit.php:1013
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:310 lib/messages.php:838
-#: lib/pro/admin/edit.php:1133 lib/std/admin/edit.php:1006
+#: gettext/gettext-lib-pro.php:311 lib/messages.php:848
+#: lib/pro/admin/edit.php:1145 lib/std/admin/edit.php:1021
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:311 lib/messages.php:733
-#: lib/pro/admin/edit.php:1140 lib/std/admin/edit.php:1014
+#: gettext/gettext-lib-pro.php:312 lib/messages.php:735
+#: lib/pro/admin/edit.php:1152 lib/std/admin/edit.php:1029
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:312 lib/messages.php:907
-#: lib/pro/admin/edit.php:1147 lib/std/admin/edit.php:1022
+#: gettext/gettext-lib-pro.php:313 lib/messages.php:917
+#: lib/pro/admin/edit.php:1159 lib/std/admin/edit.php:1037
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:313 lib/messages.php:885
-#: lib/pro/admin/edit.php:1155 lib/std/admin/edit.php:1031
+#: gettext/gettext-lib-pro.php:314 lib/messages.php:895
+#: lib/pro/admin/edit.php:1167 lib/std/admin/edit.php:1046
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:314 lib/messages.php:891
-#: lib/pro/admin/edit.php:1162 lib/std/admin/edit.php:1039
+#: gettext/gettext-lib-pro.php:315 lib/messages.php:901
+#: lib/pro/admin/edit.php:1174 lib/std/admin/edit.php:1054
 msgctxt "option label"
 msgid "Product Size Group"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:315 lib/messages.php:899
-#: lib/pro/admin/edit.php:1173 lib/std/admin/edit.php:1051
+#: gettext/gettext-lib-pro.php:316 lib/messages.php:909
+#: lib/pro/admin/edit.php:1185 lib/std/admin/edit.php:1066
 msgctxt "option label"
 msgid "Product Size System"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:316 lib/messages.php:704
-#: lib/pro/admin/edit.php:1180 lib/std/admin/edit.php:1059
+#: gettext/gettext-lib-pro.php:317 lib/messages.php:704
+#: lib/pro/admin/edit.php:1192 lib/std/admin/edit.php:1074
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:317 lib/messages.php:696
-#: lib/pro/admin/edit.php:1187 lib/std/admin/edit.php:1067
+#: gettext/gettext-lib-pro.php:318 lib/messages.php:696
+#: lib/pro/admin/edit.php:1199 lib/std/admin/edit.php:1082
 msgctxt "option label"
 msgid "Product Adult Type"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:318 lib/messages.php:814
-#: lib/pro/admin/edit.php:1194 lib/std/admin/edit.php:1075
+#: gettext/gettext-lib-pro.php:319 lib/messages.php:816
+#: lib/pro/admin/edit.php:1206 lib/std/admin/edit.php:1090
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:319 lib/messages.php:921
-#: lib/pro/admin/edit.php:1202 lib/std/admin/edit.php:1084
+#: gettext/gettext-lib-pro.php:320 lib/messages.php:931
+#: lib/pro/admin/edit.php:1214 lib/std/admin/edit.php:1099
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:320 lib/messages.php:802
-#: lib/pro/admin/edit.php:1210 lib/std/admin/edit.php:1093
+#: gettext/gettext-lib-pro.php:321 lib/messages.php:804
+#: lib/pro/admin/edit.php:1222 lib/std/admin/edit.php:1108
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:321 lib/messages.php:915
-#: lib/pro/admin/edit.php:1218 lib/std/admin/edit.php:1102
+#: gettext/gettext-lib-pro.php:322 lib/messages.php:925
+#: lib/pro/admin/edit.php:1230 lib/std/admin/edit.php:1117
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:322 lib/messages.php:767
-#: lib/pro/admin/edit.php:1226 lib/std/admin/edit.php:1111
+#: gettext/gettext-lib-pro.php:323 lib/messages.php:769
+#: lib/pro/admin/edit.php:1238 lib/std/admin/edit.php:1126
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:323 lib/messages.php:867
-#: lib/pro/admin/edit.php:1234 lib/std/admin/edit.php:1120
+#: gettext/gettext-lib-pro.php:324 lib/messages.php:877
+#: lib/pro/admin/edit.php:1246 lib/std/admin/edit.php:1135
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:324 lib/messages.php:879
-#: lib/pro/admin/edit.php:1242 lib/std/admin/edit.php:1129
+#: gettext/gettext-lib-pro.php:325 lib/messages.php:889
+#: lib/pro/admin/edit.php:1254 lib/std/admin/edit.php:1144
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:325 lib/messages.php:861
-#: lib/pro/admin/edit.php:1250 lib/std/admin/edit.php:1138
+#: gettext/gettext-lib-pro.php:326 lib/messages.php:871
+#: lib/pro/admin/edit.php:1262 lib/std/admin/edit.php:1153
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:326 lib/messages.php:873
-#: lib/pro/admin/edit.php:1258 lib/std/admin/edit.php:1147
+#: gettext/gettext-lib-pro.php:327 lib/messages.php:883
+#: lib/pro/admin/edit.php:1270 lib/std/admin/edit.php:1162
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:327 lib/messages.php:856
-#: lib/pro/admin/edit.php:1266 lib/std/admin/edit.php:1156
+#: gettext/gettext-lib-pro.php:328 lib/messages.php:866
+#: lib/pro/admin/edit.php:1278 lib/std/admin/edit.php:1171
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:328 lib/messages.php:826
-#: lib/pro/admin/edit.php:1273 lib/std/admin/edit.php:1164
+#: gettext/gettext-lib-pro.php:329 lib/messages.php:828
+#: lib/pro/admin/edit.php:1285 lib/std/admin/edit.php:1179
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:329 lib/messages.php:772
-#: lib/pro/admin/edit.php:1280 lib/std/admin/edit.php:1172
+#: gettext/gettext-lib-pro.php:330 lib/messages.php:774
+#: lib/pro/admin/edit.php:1292 lib/std/admin/edit.php:1187
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:330 lib/messages.php:778
-#: lib/pro/admin/edit.php:1287 lib/std/admin/edit.php:1180
+#: gettext/gettext-lib-pro.php:331 lib/messages.php:780
+#: lib/pro/admin/edit.php:1299 lib/std/admin/edit.php:1195
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:331 lib/messages.php:784
-#: lib/pro/admin/edit.php:1294 lib/std/admin/edit.php:1188
+#: gettext/gettext-lib-pro.php:332 lib/messages.php:786
+#: lib/pro/admin/edit.php:1306 lib/std/admin/edit.php:1203
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:332 lib/messages.php:790
-#: lib/pro/admin/edit.php:1301 lib/std/admin/edit.php:1196
+#: gettext/gettext-lib-pro.php:333 lib/messages.php:792
+#: lib/pro/admin/edit.php:1313 lib/std/admin/edit.php:1211
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:333 lib/messages.php:796
-#: lib/pro/admin/edit.php:1308 lib/std/admin/edit.php:1204
+#: gettext/gettext-lib-pro.php:334 lib/messages.php:798
+#: lib/pro/admin/edit.php:1320 lib/std/admin/edit.php:1219
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:334 lib/messages.php:808
-#: lib/pro/admin/edit.php:1315 lib/std/admin/edit.php:1212
+#: gettext/gettext-lib-pro.php:335 lib/messages.php:810
+#: lib/pro/admin/edit.php:1327 lib/std/admin/edit.php:1227
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:335 gettext/gettext-lib-pro.php:338
-#: gettext/gettext-lib-pro.php:341 lib/pro/media/slideshare.php:192
+#: gettext/gettext-lib-pro.php:336 gettext/gettext-lib-pro.php:339
+#: gettext/gettext-lib-pro.php:342 lib/pro/media/slideshare.php:192
 #: lib/pro/media/vimeo.php:170 lib/pro/media/wistia.php:317
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:336 gettext/gettext-lib-pro.php:339
-#: gettext/gettext-lib-pro.php:342 lib/pro/media/slideshare.php:193
+#: gettext/gettext-lib-pro.php:337 gettext/gettext-lib-pro.php:340
+#: gettext/gettext-lib-pro.php:343 lib/pro/media/slideshare.php:193
 #: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:318
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:337 gettext/gettext-lib-pro.php:340
-#: gettext/gettext-lib-pro.php:343 lib/conflict.php:343
+#: gettext/gettext-lib-pro.php:338 gettext/gettext-lib-pro.php:341
+#: gettext/gettext-lib-pro.php:344 lib/conflict.php:343
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:174
 #: lib/pro/media/wistia.php:321
 msgid ""
@@ -4677,63 +4683,63 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:344 lib/pro/media/upscale.php:249
+#: gettext/gettext-lib-pro.php:345 lib/pro/media/upscale.php:249
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:345 lib/pro/media/upscale.php:257
+#: gettext/gettext-lib-pro.php:346 lib/pro/media/upscale.php:257
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:346 gettext/gettext-lib-pro.php:357
+#: gettext/gettext-lib-pro.php:347 gettext/gettext-lib-pro.php:358
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1657 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util.php:3875
 msgid "%s error:"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:347 gettext/gettext-lib-pro.php:349
-#: gettext/gettext-lib-pro.php:351 gettext/gettext-lib-pro.php:353
+#: gettext/gettext-lib-pro.php:348 gettext/gettext-lib-pro.php:350
+#: gettext/gettext-lib-pro.php:352 gettext/gettext-lib-pro.php:354
 #: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
 #: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:355 lib/pro/util/shorten.php:451
+#: gettext/gettext-lib-pro.php:356 lib/pro/util/shorten.php:451
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:356 lib/pro/util/shorten.php:492
+#: gettext/gettext-lib-pro.php:357 lib/pro/util/shorten.php:492
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:358 lib/pro/util/shorten.php:529
+#: gettext/gettext-lib-pro.php:359 lib/pro/util/shorten.php:529
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:359 lib/pro/review/shopperapproved.php:171
+#: gettext/gettext-lib-pro.php:360 lib/pro/review/shopperapproved.php:171
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:360 gettext/gettext-lib-pro.php:363
+#: gettext/gettext-lib-pro.php:361 gettext/gettext-lib-pro.php:364
 #: lib/pro/review/shopperapproved.php:337 lib/pro/review/stamped.php:327
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:361 gettext/gettext-lib-pro.php:364
+#: gettext/gettext-lib-pro.php:362 gettext/gettext-lib-pro.php:365
 #: lib/pro/review/shopperapproved.php:340 lib/pro/review/stamped.php:330
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:362 lib/pro/review/stamped.php:171
+#: gettext/gettext-lib-pro.php:363 lib/pro/review/stamped.php:171
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
@@ -4962,18 +4968,18 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:110 lib/messages.php:1109
+#: lib/admin-head-suggest-options.php:110 lib/messages.php:1119
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:112 lib/messages.php:1111
+#: lib/admin-head-suggest-options.php:112 lib/messages.php:1121
 #: lib/submenu/advanced.php:56
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:113 lib/messages.php:1112
+#: lib/admin-head-suggest-options.php:113 lib/messages.php:1122
 #: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
 msgid "SEO and Others"
@@ -5526,12 +5532,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5237
+#: lib/config.php:5238
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5237
+#: lib/config.php:5238
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -5979,7 +5985,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:407 lib/messages.php:1257
+#: lib/conflict.php:407 lib/messages.php:1267
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
@@ -6077,7 +6083,7 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/edit-media.php:114 lib/edit-media.php:172 lib/edit-media.php:219
-#: lib/edit-media.php:272 lib/edit-schema.php:505 lib/edit-schema.php:609
+#: lib/edit-media.php:272 lib/edit-schema.php:506 lib/edit-schema.php:610
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
@@ -6094,7 +6100,7 @@ msgstr ""
 msgid "getting schema 1:1 image"
 msgstr ""
 
-#: lib/edit-media.php:215 lib/edit-schema.php:72
+#: lib/edit-media.php:215 lib/edit-schema.php:73
 msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
 msgstr ""
@@ -6157,341 +6163,341 @@ msgstr ""
 msgid "oEmbed HTML Not Available."
 msgstr ""
 
-#: lib/edit-schema.php:88 lib/edit-schema.php:495 lib/edit-schema.php:599
+#: lib/edit-schema.php:89 lib/edit-schema.php:496 lib/edit-schema.php:600
 msgctxt "option label"
 msgid "Name"
 msgstr ""
 
-#: lib/edit-schema.php:95
+#: lib/edit-schema.php:96
 msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: lib/edit-schema.php:102 lib/edit-schema.php:500 lib/edit-schema.php:604
+#: lib/edit-schema.php:103 lib/edit-schema.php:501 lib/edit-schema.php:605
 msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/edit-schema.php:109 lib/messages.php:659
+#: lib/edit-schema.php:110 lib/messages.php:659
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/edit-schema.php:116 lib/messages.php:937
+#: lib/edit-schema.php:117 lib/messages.php:947
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/edit-schema.php:223
+#: lib/edit-schema.php:224
 msgctxt "metabox title"
 msgid "Schema Creative Work Information"
 msgstr ""
 
-#: lib/edit-schema.php:228
+#: lib/edit-schema.php:229
 msgctxt "option label"
 msgid "Headline"
 msgstr ""
 
-#: lib/edit-schema.php:236
+#: lib/edit-schema.php:237
 msgctxt "option label"
 msgid "Full Text"
 msgstr ""
 
-#: lib/edit-schema.php:243
+#: lib/edit-schema.php:244
 msgctxt "option label"
 msgid "Keywords"
 msgstr ""
 
-#: lib/edit-schema.php:250
+#: lib/edit-schema.php:251
 msgctxt "option label"
 msgid "Language"
 msgstr ""
 
-#: lib/edit-schema.php:258
+#: lib/edit-schema.php:259
 msgctxt "option label"
 msgid "Family Friendly"
 msgstr ""
 
-#: lib/edit-schema.php:266
+#: lib/edit-schema.php:267
 msgctxt "option label"
 msgid "Copyright Year"
 msgstr ""
 
-#: lib/edit-schema.php:273
+#: lib/edit-schema.php:274
 msgctxt "option label"
 msgid "License URL"
 msgstr ""
 
-#: lib/edit-schema.php:280
+#: lib/edit-schema.php:281
 msgctxt "option label"
 msgid "Publisher Org."
 msgstr ""
 
-#: lib/edit-schema.php:288
+#: lib/edit-schema.php:289
 msgctxt "option label"
 msgid "Publisher Person"
 msgstr ""
 
-#: lib/edit-schema.php:298
+#: lib/edit-schema.php:299
 msgctxt "option label"
 msgid "Service Provider Org."
 msgstr ""
 
-#: lib/edit-schema.php:306
+#: lib/edit-schema.php:307
 msgctxt "option label"
 msgid "Service Provider Person"
 msgstr ""
 
-#: lib/edit-schema.php:316
+#: lib/edit-schema.php:317
 msgctxt "option label"
 msgid "Is Part of URLs"
 msgstr ""
 
-#: lib/edit-schema.php:334
+#: lib/edit-schema.php:335
 msgctxt "option label"
 msgid "Reference Citations"
 msgstr ""
 
-#: lib/edit-schema.php:354
+#: lib/edit-schema.php:355
 msgctxt "metabox title"
 msgid "Schema Article Information"
 msgstr ""
 
-#: lib/edit-schema.php:359 lib/messages.php:664
+#: lib/edit-schema.php:360 lib/messages.php:664
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit-schema.php:375
+#: lib/edit-schema.php:376
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit-schema.php:378
+#: lib/edit-schema.php:379
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit-schema.php:398
+#: lib/edit-schema.php:399
 msgctxt "metabox title"
 msgid "Schema WebPage Information"
 msgstr ""
 
-#: lib/edit-schema.php:403
+#: lib/edit-schema.php:404
 msgctxt "option label"
 msgid "Reviewed By Org."
 msgstr ""
 
-#: lib/edit-schema.php:411
+#: lib/edit-schema.php:412
 msgctxt "option label"
 msgid "Reviewed By Person"
 msgstr ""
 
-#: lib/edit-schema.php:421
+#: lib/edit-schema.php:422
 msgctxt "option label"
 msgid "Reviewed Last"
 msgstr ""
 
-#: lib/edit-schema.php:442
+#: lib/edit-schema.php:443
 msgctxt "metabox title"
 msgid "Schema How-To Information"
 msgstr ""
 
-#: lib/edit-schema.php:447
+#: lib/edit-schema.php:448
 msgctxt "option label"
 msgid "How-To Makes"
 msgstr ""
 
-#: lib/edit-schema.php:454 lib/edit-schema.php:559
+#: lib/edit-schema.php:455 lib/edit-schema.php:560
 msgctxt "option label"
 msgid "Preparation Time"
 msgstr ""
 
-#: lib/edit-schema.php:461 lib/edit-schema.php:573
+#: lib/edit-schema.php:462 lib/edit-schema.php:574
 msgctxt "option label"
 msgid "Total Time"
 msgstr ""
 
-#: lib/edit-schema.php:468 lib/messages.php:681
+#: lib/edit-schema.php:469 lib/messages.php:681
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/edit-schema.php:476 lib/messages.php:686
+#: lib/edit-schema.php:477 lib/messages.php:686
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/edit-schema.php:484 lib/messages.php:676
+#: lib/edit-schema.php:485 lib/messages.php:676
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/edit-schema.php:490
+#: lib/edit-schema.php:491
 msgctxt "option label"
 msgid "How-To %1$s step or %2$s section of steps:"
 msgstr ""
 
-#: lib/edit-schema.php:526
+#: lib/edit-schema.php:527
 msgctxt "metabox title"
 msgid "Schema Recipe Information"
 msgstr ""
 
-#: lib/edit-schema.php:531
+#: lib/edit-schema.php:532
 msgctxt "option label"
 msgid "Recipe Cuisine"
 msgstr ""
 
-#: lib/edit-schema.php:538
+#: lib/edit-schema.php:539
 msgctxt "option label"
 msgid "Recipe Course"
 msgstr ""
 
-#: lib/edit-schema.php:545
+#: lib/edit-schema.php:546
 msgctxt "option label"
 msgid "Recipe Makes"
 msgstr ""
 
-#: lib/edit-schema.php:552
+#: lib/edit-schema.php:553
 msgctxt "option label"
 msgid "Cooking Method"
 msgstr ""
 
-#: lib/edit-schema.php:566
+#: lib/edit-schema.php:567
 msgctxt "option label"
 msgid "Cooking Time"
 msgstr ""
 
-#: lib/edit-schema.php:580 lib/messages.php:927
+#: lib/edit-schema.php:581 lib/messages.php:937
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/edit-schema.php:588 lib/messages.php:932
+#: lib/edit-schema.php:589 lib/messages.php:942
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/edit-schema.php:594
+#: lib/edit-schema.php:595
 msgctxt "option label"
 msgid "Recipe %1$s instruction or %2$s section of instructions:"
 msgstr ""
 
-#: lib/edit-schema.php:623
+#: lib/edit-schema.php:624
 msgctxt "metabox title"
 msgid "Schema Recipe Nutrition Information"
 msgstr ""
 
-#: lib/edit-schema.php:628
+#: lib/edit-schema.php:629
 msgctxt "option label"
 msgid "Serving Size"
 msgstr ""
 
-#: lib/edit-schema.php:635
+#: lib/edit-schema.php:636
 msgctxt "option label"
 msgid "Calories"
 msgstr ""
 
-#: lib/edit-schema.php:638
+#: lib/edit-schema.php:639
 msgctxt "option comment"
 msgid "calories"
 msgstr ""
 
-#: lib/edit-schema.php:643
+#: lib/edit-schema.php:644
 msgctxt "option label"
 msgid "Protein"
 msgstr ""
 
-#: lib/edit-schema.php:646
+#: lib/edit-schema.php:647
 msgctxt "option comment"
 msgid "grams of protein"
 msgstr ""
 
-#: lib/edit-schema.php:651
+#: lib/edit-schema.php:652
 msgctxt "option label"
 msgid "Fiber"
 msgstr ""
 
-#: lib/edit-schema.php:654
+#: lib/edit-schema.php:655
 msgctxt "option comment"
 msgid "grams of fiber"
 msgstr ""
 
-#: lib/edit-schema.php:659
+#: lib/edit-schema.php:660
 msgctxt "option label"
 msgid "Carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:662
+#: lib/edit-schema.php:663
 msgctxt "option comment"
 msgid "grams of carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:667
+#: lib/edit-schema.php:668
 msgctxt "option label"
 msgid "Sugar"
 msgstr ""
 
-#: lib/edit-schema.php:670
+#: lib/edit-schema.php:671
 msgctxt "option comment"
 msgid "grams of sugar"
 msgstr ""
 
-#: lib/edit-schema.php:675
+#: lib/edit-schema.php:676
 msgctxt "option label"
 msgid "Sodium"
 msgstr ""
 
-#: lib/edit-schema.php:678
+#: lib/edit-schema.php:679
 msgctxt "option comment"
 msgid "milligrams of sodium"
 msgstr ""
 
-#: lib/edit-schema.php:683
+#: lib/edit-schema.php:684
 msgctxt "option label"
 msgid "Fat"
 msgstr ""
 
-#: lib/edit-schema.php:686
+#: lib/edit-schema.php:687
 msgctxt "option comment"
 msgid "grams of fat"
 msgstr ""
 
-#: lib/edit-schema.php:691
+#: lib/edit-schema.php:692
 msgctxt "option label"
 msgid "Saturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:694
+#: lib/edit-schema.php:695
 msgctxt "option comment"
 msgid "grams of saturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:699
+#: lib/edit-schema.php:700
 msgctxt "option label"
 msgid "Unsaturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:702
+#: lib/edit-schema.php:703
 msgctxt "option comment"
 msgid "grams of unsaturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:707
+#: lib/edit-schema.php:708
 msgctxt "option label"
 msgid "Trans Fat"
 msgstr ""
 
-#: lib/edit-schema.php:710
+#: lib/edit-schema.php:711
 msgctxt "option comment"
 msgid "grams of trans fat"
 msgstr ""
 
-#: lib/edit-schema.php:715
+#: lib/edit-schema.php:716
 msgctxt "option label"
 msgid "Cholesterol"
 msgstr ""
 
-#: lib/edit-schema.php:718
+#: lib/edit-schema.php:719
 msgctxt "option comment"
 msgid "milligrams of cholesterol"
 msgstr ""
@@ -6666,23 +6672,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1568
+#: lib/integ/ecom/woocommerce.php:1572
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1652
+#: lib/integ/ecom/woocommerce.php:1676
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1655
+#: lib/integ/ecom/woocommerce.php:1679
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1658
+#: lib/integ/ecom/woocommerce.php:1682
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -7171,7 +7177,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:316 lib/messages.php:994 lib/messages.php:1192
+#: lib/messages-info-meta.php:316 lib/messages.php:1004 lib/messages.php:1202
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -7748,25 +7754,47 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is a lower case item name, for example 'product Google category'.
-#: lib/messages-tooltip-meta-product.php:49
+#: lib/messages-tooltip-meta-product.php:52
 #: lib/messages-tooltip-meta-schema.php:175
 msgid ""
 "A custom value for the %1$s, which may be different than the %2$s option "
 "value."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:52
+#: lib/messages-tooltip-meta-product.php:54
 #: lib/messages-tooltip-meta-schema.php:178
 msgid "Select \"[None]\" to exclude the %s from Schema markup and meta tags."
 msgstr ""
 
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+#. translators: %s is a singular item reference, for example 'a product size group'.
+#: lib/messages-tooltip-meta-product.php:59
+msgid "A custom value for the %s can be provided for the main product."
+msgstr ""
+
+#: lib/messages-tooltip-meta-product.php:61
+msgid ""
+"If product variations are available, the information from each variation may "
+"supersede this value in Schema product offers."
+msgstr ""
+
+#. translators: %s is the option label.
+#: lib/messages-tooltip-meta-product.php:64
+msgid ""
+"The <strong>%s</strong> option may be read-only if a custom field or e-"
+"commerce plugin is the authoritative source for this value."
+msgstr ""
+
+#: lib/messages-tooltip-meta-product.php:66
+msgid ""
+"In this case, you should update the product information in the custom field "
+"or e-commerce plugin to update this value."
+msgstr ""
+
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-#: lib/messages-tooltip-meta-product.php:58
-#: lib/messages-tooltip-meta-product.php:85
+#: lib/messages-tooltip-meta-product.php:72
 #: lib/messages-tooltip-meta-schema.php:184 lib/messages-tooltip-plugin.php:798
 #: lib/messages-tooltip-plugin.php:840 lib/messages-tooltip-schema.php:185
 #: lib/messages-tooltip-schema.php:338
@@ -7775,31 +7803,7 @@ msgid ""
 "value</a>."
 msgstr ""
 
-#. translators: %s is a singular item reference, for example 'a product size group'.
-#: lib/messages-tooltip-meta-product.php:72
-msgid "A custom value for the %s can be provided for the main product."
-msgstr ""
-
-#: lib/messages-tooltip-meta-product.php:75
-msgid ""
-"If product variations are available, the information from each variation may "
-"supersede this value in Schema product offers."
-msgstr ""
-
-#. translators: %s is the option label.
-#: lib/messages-tooltip-meta-product.php:78
-msgid ""
-"The <strong>%s</strong> option may be read-only if a custom field or e-"
-"commerce plugin is the authoritative source for this value."
-msgstr ""
-
-#: lib/messages-tooltip-meta-product.php:80
-msgid ""
-"In this case, you should update the product information in the custom field "
-"or e-commerce plugin to update this value."
-msgstr ""
-
-#: lib/messages-tooltip-meta-product.php:91
+#: lib/messages-tooltip-meta-product.php:77
 msgid ""
 "Note that the %s value is automatically inherited as a default value by any "
 "child pages (like WooCommerce product variations, for example)."
@@ -8828,7 +8832,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:93 lib/messages.php:1060
+#: lib/messages-tooltip-plugin.php:93 lib/messages.php:1070
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -9937,7 +9941,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:350 lib/messages.php:1197
+#: lib/messages-tooltip.php:350 lib/messages.php:1207
 #: lib/submenu/general.php:379
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -10480,7 +10484,7 @@ msgctxt "tooltip fragment"
 msgid "book ISBN"
 msgstr ""
 
-#: lib/messages.php:673 lib/messages.php:810
+#: lib/messages.php:673 lib/messages.php:812
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
@@ -10585,514 +10589,529 @@ msgstr ""
 msgid "https://support.google.com/merchants/answer/6324436"
 msgstr ""
 
-#: lib/messages.php:734
+#: lib/messages.php:736
 msgctxt "tooltip fragment"
 msgid "product color"
 msgstr ""
 
-#: lib/messages.php:735
+#: lib/messages.php:737
 msgctxt "tooltip fragment"
 msgid "a product color"
 msgstr ""
 
-#: lib/messages.php:736
+#: lib/messages.php:738
 msgid "https://support.google.com/merchants/answer/6324487"
 msgstr ""
 
-#: lib/messages.php:740
+#: lib/messages.php:742
 msgctxt "tooltip fragment"
 msgid "product condition"
 msgstr ""
 
-#: lib/messages.php:741
+#: lib/messages.php:743
 msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
-#: lib/messages.php:742
+#: lib/messages.php:744
 msgid "https://support.google.com/merchants/answer/6324469"
 msgstr ""
 
-#: lib/messages.php:746
+#: lib/messages.php:748
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:747
+#: lib/messages.php:749
 msgctxt "tooltip fragment"
 msgid "product currency"
 msgstr ""
 
-#: lib/messages.php:748
+#: lib/messages.php:750
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:752
+#: lib/messages.php:754
 msgctxt "tooltip fragment"
 msgid "product energy efficiency rating"
 msgstr ""
 
-#: lib/messages.php:753
+#: lib/messages.php:755
 msgctxt "tooltip fragment"
 msgid "a product energy efficiency rating"
 msgstr ""
 
-#: lib/messages.php:759
+#: lib/messages.php:761
 msgctxt "option label"
 msgid "Product Energy Rating Range"
 msgstr ""
 
-#: lib/messages.php:760
+#: lib/messages.php:762
 msgctxt "tooltip fragment"
 msgid "product energy efficiency rating minimum and maximum"
 msgstr ""
 
-#: lib/messages.php:761
+#: lib/messages.php:763
 msgctxt "tooltip fragment"
 msgid "a product energy efficiency rating range"
 msgstr ""
 
-#: lib/messages.php:768
+#: lib/messages.php:770
 msgctxt "tooltip fragment"
 msgid "product fluid volume"
 msgstr ""
 
-#: lib/messages.php:769
+#: lib/messages.php:771
 msgctxt "tooltip fragment"
 msgid "a product fluid volume"
 msgstr ""
 
-#: lib/messages.php:773
+#: lib/messages.php:775
 msgctxt "tooltip fragment"
 msgid "product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:774
+#: lib/messages.php:776
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr ""
 
-#: lib/messages.php:775 lib/messages.php:781 lib/messages.php:787
-#: lib/messages.php:793 lib/messages.php:799 lib/messages.php:811
+#: lib/messages.php:777 lib/messages.php:783 lib/messages.php:789
+#: lib/messages.php:795 lib/messages.php:801 lib/messages.php:813
 msgid "https://support.google.com/merchants/answer/6324461"
 msgstr ""
 
-#: lib/messages.php:779
+#: lib/messages.php:781
 msgctxt "tooltip fragment"
 msgid "product GTIN-13 (EAN)"
 msgstr ""
 
-#: lib/messages.php:780
+#: lib/messages.php:782
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:785
+#: lib/messages.php:787
 msgctxt "tooltip fragment"
 msgid "product GTIN-12 (UPC)"
 msgstr ""
 
-#: lib/messages.php:786
+#: lib/messages.php:788
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a UPC "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:791
+#: lib/messages.php:793
 msgctxt "tooltip fragment"
 msgid "product GTIN-8"
 msgstr ""
 
-#: lib/messages.php:792
+#: lib/messages.php:794
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:797
+#: lib/messages.php:799
 msgctxt "tooltip fragment"
 msgid "product GTIN"
 msgstr ""
 
-#: lib/messages.php:798
+#: lib/messages.php:800
 msgctxt "tooltip fragment"
 msgid "a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)"
 msgstr ""
 
-#: lib/messages.php:803
+#: lib/messages.php:805
 msgctxt "tooltip fragment"
 msgid "product net height"
 msgstr ""
 
-#: lib/messages.php:804
+#: lib/messages.php:806
 msgctxt "tooltip fragment"
 msgid ""
 "a product net height, as opposed to a shipping or packaged height used for "
 "shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:805 lib/messages.php:817 lib/messages.php:918
-#: lib/messages.php:924
+#: lib/messages.php:807 lib/messages.php:819 lib/messages.php:928
+#: lib/messages.php:934
 msgid "https://support.google.com/merchants/answer/11018531"
 msgstr ""
 
-#: lib/messages.php:809
+#: lib/messages.php:811
 msgctxt "tooltip fragment"
 msgid "product ISBN"
 msgstr ""
 
-#: lib/messages.php:815
+#: lib/messages.php:817
 msgctxt "tooltip fragment"
 msgid "product net length or depth"
 msgstr ""
 
-#: lib/messages.php:816
+#: lib/messages.php:818
 msgctxt "tooltip fragment"
 msgid ""
 "a product net length or depth, as opposed to a shipping or packaged length "
 "used for shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:821
+#: lib/messages.php:823
 msgctxt "tooltip fragment"
 msgid "product material"
 msgstr ""
 
-#: lib/messages.php:822
+#: lib/messages.php:824
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:823
+#: lib/messages.php:825
 msgid "https://support.google.com/merchants/answer/6324410"
 msgstr ""
 
-#: lib/messages.php:827
+#: lib/messages.php:829
 msgctxt "tooltip fragment"
 msgid "product MPN"
 msgstr ""
 
-#: lib/messages.php:828
+#: lib/messages.php:830
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:829
+#: lib/messages.php:831
 msgid "https://support.google.com/merchants/answer/6324482"
 msgstr ""
 
-#: lib/messages.php:833
+#: lib/messages.php:835
 msgctxt "tooltip fragment"
 msgid "product minimum advertised price"
 msgstr ""
 
-#: lib/messages.php:834
+#: lib/messages.php:836
 msgctxt "tooltip fragment"
 msgid "a Minimum Advertised Price (MAP)"
 msgstr ""
 
-#: lib/messages.php:839
+#: lib/messages.php:841
+msgctxt "tooltip fragment"
+msgid "product return policy"
+msgstr ""
+
+#: lib/messages.php:842
+msgctxt "tooltip fragment"
+msgid "a product return policy"
+msgstr ""
+
+#: lib/messages.php:843
+msgctxt "option label"
+msgid "Default Product Return Policy"
+msgstr ""
+
+#: lib/messages.php:849
 msgctxt "tooltip fragment"
 msgid "product pattern"
 msgstr ""
 
-#: lib/messages.php:840
+#: lib/messages.php:850
 msgctxt "tooltip fragment"
 msgid "a product pattern"
 msgstr ""
 
-#: lib/messages.php:841
+#: lib/messages.php:851
 msgid "https://support.google.com/merchants/answer/6324483"
 msgstr ""
 
-#: lib/messages.php:845
+#: lib/messages.php:855
 msgctxt "tooltip fragment"
 msgid "product price"
 msgstr ""
 
-#: lib/messages.php:846
+#: lib/messages.php:856
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:850
+#: lib/messages.php:860
 msgctxt "tooltip fragment"
 msgid "product price type"
 msgstr ""
 
-#: lib/messages.php:851
+#: lib/messages.php:861
 msgctxt "tooltip fragment"
 msgid "a product price type"
 msgstr ""
 
-#: lib/messages.php:857
+#: lib/messages.php:867
 msgctxt "tooltip fragment"
 msgid "product SKU"
 msgstr ""
 
-#: lib/messages.php:858
+#: lib/messages.php:868
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (SKU)"
 msgstr ""
 
-#: lib/messages.php:862
+#: lib/messages.php:872
 msgctxt "tooltip fragment"
 msgid "product shipping height"
 msgstr ""
 
-#: lib/messages.php:863
+#: lib/messages.php:873
 msgctxt "tooltip fragment"
 msgid ""
 "a product shipping or packaged height used for shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:864 lib/messages.php:870 lib/messages.php:882
+#: lib/messages.php:874 lib/messages.php:880 lib/messages.php:892
 msgid "https://support.google.com/merchants/answer/6324498"
 msgstr ""
 
-#: lib/messages.php:868
+#: lib/messages.php:878
 msgctxt "tooltip fragment"
 msgid "product shipping length"
 msgstr ""
 
-#: lib/messages.php:869
+#: lib/messages.php:879
 msgctxt "tooltip fragment"
 msgid ""
 "a product shipping or packaged length used for shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:874
+#: lib/messages.php:884
 msgctxt "tooltip fragment"
 msgid "product shipping weight"
 msgstr ""
 
-#: lib/messages.php:875
+#: lib/messages.php:885
 msgctxt "tooltip fragment"
 msgid ""
 "a product shipping or packaged weight used for shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:876
+#: lib/messages.php:886
 msgid "https://support.google.com/merchants/answer/6324503"
 msgstr ""
 
-#: lib/messages.php:880
+#: lib/messages.php:890
 msgctxt "tooltip fragment"
 msgid "product shipping width"
 msgstr ""
 
-#: lib/messages.php:881
+#: lib/messages.php:891
 msgctxt "tooltip fragment"
 msgid ""
 "a product shipping or packaged width used for shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:886
+#: lib/messages.php:896
 msgctxt "tooltip fragment"
 msgid "product size"
 msgstr ""
 
-#: lib/messages.php:887
+#: lib/messages.php:897
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:888
+#: lib/messages.php:898
 msgid "https://support.google.com/merchants/answer/6324492"
 msgstr ""
 
-#: lib/messages.php:892
+#: lib/messages.php:902
 msgctxt "tooltip fragment"
 msgid "product size group"
 msgstr ""
 
-#: lib/messages.php:893
+#: lib/messages.php:903
 msgctxt "tooltip fragment"
 msgid "a product size group"
 msgstr ""
 
-#: lib/messages.php:894
+#: lib/messages.php:904
 msgid "https://support.google.com/merchants/answer/6324497"
 msgstr ""
 
-#: lib/messages.php:900
+#: lib/messages.php:910
 msgctxt "tooltip fragment"
 msgid "product size system"
 msgstr ""
 
-#: lib/messages.php:901
+#: lib/messages.php:911
 msgctxt "tooltip fragment"
 msgid "a product size system"
 msgstr ""
 
-#: lib/messages.php:902
+#: lib/messages.php:912
 msgid "https://support.google.com/merchants/answer/6324502"
 msgstr ""
 
-#: lib/messages.php:908
+#: lib/messages.php:918
 msgctxt "tooltip fragment"
 msgid "product target gender"
 msgstr ""
 
-#: lib/messages.php:909
+#: lib/messages.php:919
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:910
+#: lib/messages.php:920
 msgid "https://support.google.com/merchants/answer/6324479"
 msgstr ""
 
-#: lib/messages.php:916
+#: lib/messages.php:926
 msgctxt "tooltip fragment"
 msgid "product net weight"
 msgstr ""
 
-#: lib/messages.php:917
+#: lib/messages.php:927
 msgctxt "tooltip fragment"
 msgid ""
 "a product net weight, as opposed to a shipping or packaged weight used for "
 "shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:922
+#: lib/messages.php:932
 msgctxt "tooltip fragment"
 msgid "product net width"
 msgstr ""
 
-#: lib/messages.php:923
+#: lib/messages.php:933
 msgctxt "tooltip fragment"
 msgid ""
 "a product net width, as opposed to a shipping or packaged width used for "
 "shipping cost calculations"
 msgstr ""
 
-#: lib/messages.php:928 lib/messages.php:929
+#: lib/messages.php:938 lib/messages.php:939
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:933 lib/messages.php:934
+#: lib/messages.php:943 lib/messages.php:944
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:938
+#: lib/messages.php:948
 msgctxt "tooltip fragment"
 msgid "same-as URLs"
 msgstr ""
 
-#: lib/messages.php:939
+#: lib/messages.php:949
 msgctxt "tooltip fragment"
 msgid "additional same-as URLs"
 msgstr ""
 
-#: lib/messages.php:943
+#: lib/messages.php:953
 msgctxt "tooltip fragment"
 msgid "video embed HTML"
 msgstr ""
 
-#: lib/messages.php:944
+#: lib/messages.php:954
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:947
+#: lib/messages.php:957
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:948
+#: lib/messages.php:958
 msgctxt "tooltip fragment"
 msgid "video URL"
 msgstr ""
 
-#: lib/messages.php:949
+#: lib/messages.php:959
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
-#: lib/messages.php:982
+#: lib/messages.php:992
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:982
+#: lib/messages.php:992
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:996 lib/messages.php:1012 lib/util-metabox.php:229
+#: lib/messages.php:1006 lib/messages.php:1022 lib/util-metabox.php:229
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:1038
+#: lib/messages.php:1048
 msgid ""
 "Facebook prefers images of %1$s cropped (for Retina and high-PPI displays), "
 "%2$s cropped as a recommended minimum, and ignores images smaller than %3$s."
 msgstr ""
 
-#: lib/messages.php:1052 lib/messages.php:1131 lib/messages.php:1158
+#: lib/messages.php:1062 lib/messages.php:1141 lib/messages.php:1168
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:1056 wpsso.php:614
+#: lib/messages.php:1066 wpsso.php:614
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
 
-#: lib/messages.php:1062
+#: lib/messages.php:1072
 msgctxt "option comment"
 msgid "No theme support for <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:1094
+#: lib/messages.php:1104
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:1114
+#: lib/messages.php:1124
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:1116
+#: lib/messages.php:1126
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:1139
+#: lib/messages.php:1149
 msgid "Modifications disabled (%1$s option is not \"%2$s\")."
 msgstr ""
 
-#: lib/messages.php:1162
+#: lib/messages.php:1172
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1186
+#: lib/messages.php:1196
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1202
+#: lib/messages.php:1212
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:1209
+#: lib/messages.php:1219
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1227
+#: lib/messages.php:1237
 msgid ""
 "Video discovery and service API modules are provided with the %s edition."
 msgstr ""
 
-#: lib/messages.php:1249
+#: lib/messages.php:1259
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1267
+#: lib/messages.php:1277
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."

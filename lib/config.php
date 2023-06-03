@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.0-dev.8',	// Plugin version.
+					'version'     => '15.13.0-dev.9',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3038,6 +3038,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_energy_efficiency_min' => null,
 					'product_energy_efficiency_max' => null,
 					'product_min_advert_price'      => null,
+					'product_mrp'                   => null,	// Product Return Policy.
 					'product_price_type'            => null,
 					'product_size_group_0'          => null,
 					'product_size_group_1'          => null,

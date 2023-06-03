@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						'metabox_sso_edit_schema_organization_rows'  => 6,	// Schema Organization.
 						'metabox_sso_edit_schema_person_rows'        => 6,	// Schema Person.
 						'metabox_sso_edit_schema_place_rows'         => 6,	// Schema Place.
-						'metabox_sso_edit_schema_product_rows'       => 5,	// Schema Product.
+						'metabox_sso_edit_schema_product_rows'       => 6,	// Schema Product.
 					) );
 				}
 			}
@@ -247,7 +247,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Movie Cast Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_actor_person_names',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name', $css_id = '', '', $repeat = 5 ),
+					'content'  => $form->get_no_input_value( $value = '',
+						$css_class = 'long_name', $css_id = '', '', $repeat = 5 ),
 				),
 				'schema_movie_director_person_names' => array(
 					'tr_class' => $type_row_class[ 'movie' ],
@@ -255,7 +256,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Movie Director Names', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_director_person_names',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name', $css_id = '', '', $repeat = 2 ),
+					'content'  => $form->get_no_input_value( $value = '',
+						$css_class = 'long_name', $css_id = '', '', $repeat = 2 ),
 				),
 				'schema_movie_prodco_org_id' => array(
 					'tr_class' => $type_row_class[ 'movie' ],
@@ -264,7 +266,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Production Company', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_prodco_org_id',
 					'content'  => $form->get_no_select( 'schema_movie_prodco_org_id', $names[ 'org' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_movie_released' => array(
 					'tr_class' => $type_row_class[ 'movie' ],
@@ -604,7 +606,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Event Physical Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_location_id',
 					'content'  => $form->get_no_select( 'schema_event_location_id', $names[ 'place' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_organizer_org_id' => array(
 					'tr_class' => $type_row_class[ 'event' ],
@@ -613,7 +615,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_org_id',
 					'content'  => $form->get_no_select( 'schema_event_organizer_org_id', $names[ 'org' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_organizer_person_id' => array(
 					'tr_class' => $type_row_class[ 'event' ],
@@ -622,7 +624,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Organizer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_person_id',
 					'content'  => $form->get_no_select( 'schema_event_organizer_person_id', $names[ 'person' ],
-						$css_class = 'long_name' ),
+						$css_class = 'wide' ),
 				),
 				'schema_event_performer_org_id' => array(
 					'tr_class' => $type_row_class[ 'event' ],
@@ -631,7 +633,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_org_id',
 					'content'  => $form->get_no_select( 'schema_event_performer_org_id', $names[ 'org' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_performer_person_id' => array(
 					'tr_class' => $type_row_class[ 'event' ],
@@ -640,7 +642,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Performer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_person_id',
 					'content'  => $form->get_no_select( 'schema_event_performer_person_id', $names[ 'person' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_status' => array(
 					'tr_class' => $type_row_class[ 'event' ],
@@ -760,7 +762,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Hiring Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_hiring_org_id',
 					'content'  => $form->get_no_select( 'schema_job_hiring_org_id', $names[ 'org' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_id' => array(
 					'tr_class' => $type_row_class[ 'job_posting' ],
@@ -769,7 +771,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_location_id',
 					'content'  => $form->get_no_select( 'schema_job_location_id', $names[ 'place' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_type' => array(
 					'tr_class' => $type_row_class[ 'job_posting' ],
@@ -832,7 +834,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Select an Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_organization_id',
 					'content'  => $form->get_no_select( 'schema_organization_id', $names[ 'org' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
 
@@ -859,7 +861,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Select a Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_person_id',
 					'content'  => $form->get_no_select( 'schema_person_id', $names[ 'person' ],
-						$css_class = 'long_name' ),
+						$css_class = 'wide' ),
 				),
 			);
 
@@ -886,14 +888,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Select a Place', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_place_id',
 					'content'  => $form->get_no_select( 'schema_place_id', $names[ 'place_custom' ],
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
 
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
@@ -914,6 +916,19 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'pro_feature_msg_schema_product' => array(
 					'tr_class'  => $type_row_class[ 'product' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+
+				/*
+				 * See https://developers.google.com/search/docs/appearance/structured-data/product#json-ld_5.
+				 */
+				'schema_product_mrp' => array(
+					'tr_class' => $type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Return Policy', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_mrp',
+					'content'  => $form->get_no_select( 'product_mrp', $names[ 'mrp' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_category' => array(	// Product Google Category ID.
 					'tr_class' => $type_row_class[ 'product' ],

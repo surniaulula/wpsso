@@ -722,12 +722,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'about'   => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 						'inherit' => true,
 					),
-					'product_category' => array(	// Product Google Category ID.
-						'label'   => _x( 'Product Google Category', 'option label', 'wpsso' ),
-						'name'    => _x( 'product Google category', 'tooltip fragment', 'wpsso' ),
-						'desc'    => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),
-						'about'   => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
-						'inherit' => true,
+					'product_category' => array(	// Product Google Category.
+						'label'       => _x( 'Product Google Category', 'option label', 'wpsso' ),
+						'name'        => _x( 'product Google category', 'tooltip fragment', 'wpsso' ),
+						'desc'        => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),
+						'about'       => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
+						'opt_label'   => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
+						'opt_menu_id' => 'advanced#sucom-tabset_schema_props-tab_product',
+						'inherit'     => true,
 					),
 					'product_color' => array(
 						'label' => _x( 'Product Color', 'option label', 'wpsso' ),
@@ -833,6 +835,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'    => _x( 'product minimum advertised price', 'tooltip fragment', 'wpsso' ),
 						'desc'    => _x( 'a Minimum Advertised Price (MAP)', 'tooltip fragment', 'wpsso' ),
 						'inherit' => true,
+					),
+					'product_mrp' => array(	// Product Return Policy.
+						'label'       => _x( 'Product Return Policy', 'option label', 'wpsso' ),
+						'name'        => _x( 'product return policy', 'tooltip fragment', 'wpsso' ),
+						'desc'        => _x( 'a product return policy', 'tooltip fragment', 'wpsso' ),
+						'opt_label'   => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
+						'opt_menu_id' => 'advanced#sucom-tabset_schema_props-tab_product',
+						'inherit'     => true,
 					),
 					'product_pattern' => array(
 						'label' => _x( 'Product Pattern', 'option label', 'wpsso' ),

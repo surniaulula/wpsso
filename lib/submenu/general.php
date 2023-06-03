@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
 						$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_org_place_id' ) .
-						'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'long_name', $css_id = '',
+						'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'wide', $css_id = '',
 							$is_assoc = true ) . '</td>';
 
 					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_aggr_offers' ) .

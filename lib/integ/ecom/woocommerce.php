@@ -1551,7 +1551,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $zone_id, $zone_name,
 							$method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) ) {
 
-							if ( ! empty( $shipping_destinations ) ) {
+							if ( empty( $shipping_destinations ) ) {	// Ships to the World.
+
+								$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
+
+							} else {
 
 								$shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
 							}
@@ -1581,6 +1585,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $world_zone_id, $world_zone_name,
 							$method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) ) {
 
+							$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
+
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
 						}
 
@@ -1588,6 +1594,24 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				}
 			}
 
+		}
+
+		private function get_world_shipping_destinations() {
+
+			$all_countries = SucomUtil::get_alpha2_countries();
+
+			$shipping_destinations = array();
+
+			foreach ( $all_countries as $country_code => $country_name ) {
+				
+				$shipping_destinations[] = array(
+					'destination_id'  => 'country-a2-' . $country_code,
+					'destination_rel' => '/',
+					'country_code'    => $country_code,
+				);
+			}
+
+			return $shipping_destinations;
 		}
 
 		private function add_mt_ratings( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
