@@ -2709,7 +2709,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:465
 msgctxt "option value"
-msgid "Finite Return Window"
+msgid "Limited Return Window"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:466
@@ -5072,7 +5072,7 @@ msgid "Have you thought about purchasing the %s edition?"
 msgstr ""
 
 #: lib/admin-head.php:463
-msgid "It comes with a lot of extra awesome features!"
+msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr ""
 
 #: lib/admin.php:250
@@ -5255,22 +5255,22 @@ msgid "Not Available"
 msgstr ""
 
 #: lib/admin.php:1704
-msgctxt "option label"
+msgctxt "version label"
 msgid "Installed"
 msgstr ""
 
 #: lib/admin.php:1712
-msgctxt "option label"
+msgctxt "version label"
 msgid "Stable"
 msgstr ""
 
 #: lib/admin.php:1716
-msgctxt "option label"
+msgctxt "version label"
 msgid "Latest"
 msgstr ""
 
 #: lib/admin.php:1724
-msgctxt "option label"
+msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 

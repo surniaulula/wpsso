@@ -1701,7 +1701,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info[ 'name' ] . '</h4></td></tr>';
-				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>';
+				echo '<tr><th class="version-label">' . _x( 'Installed', 'version label', 'wpsso' ) . ':</th>';
 				echo '<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
 
 				/*
@@ -1709,11 +1709,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( $stable_version !== $latest_version ) {
 
-					echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>';
+					echo '<tr><th class="version-label">' . _x( 'Stable', 'version label', 'wpsso' ) . ':</th>';
 					echo '<td class="version-number">' . $stable_version . '</td></tr>';
 				}
 
-				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>';
+				echo '<tr><th class="version-label">' . _x( 'Latest', 'version label', 'wpsso' ) . ':</th>';
 				echo '<td class="version-number">' . $latest_version . '</td></tr>';
 
 				/*
@@ -1721,7 +1721,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( $plugin_version !== $stable_version || $plugin_version !== $latest_version ) {
 
-					echo '<tr><th class="version-label">' . _x( 'Update Notice', 'option label', 'wpsso' ) . ':</th>';
+					echo '<tr><th class="version-label">' . _x( 'Update Notice', 'version label', 'wpsso' ) . ':</th>';
 					echo '<td class="latest-notice">';
 
 					if ( ! empty( $latest_notice ) ) {

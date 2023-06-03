@@ -3224,7 +3224,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/MerchantReturnEnumeration.
 				 */
 				'merchant_return' => array(
-					'https://schema.org/MerchantReturnFiniteReturnWindow' => 'Finite Return Window',
+					'https://schema.org/MerchantReturnFiniteReturnWindow' => 'Limited Return Window',
 					'https://schema.org/MerchantReturnNotPermitted'       => 'Not Permitted',
 					'https://schema.org/MerchantReturnUnlimitedWindow'    => 'Unlimited Window',
 					'https://schema.org/MerchantReturnUnspecified'        => 'Unspecified',

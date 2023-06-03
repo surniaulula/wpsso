@@ -462,7 +462,7 @@ _x( '[None]', 'option value', 'wpsso' );
 _x( 'None', 'option value', 'wpsso' );
 _x( 'Telecommute (100% Remote)', 'option value', 'wpsso' );
 _x( 'Telecommute', 'option value', 'wpsso' );
-_x( 'Finite Return Window', 'option value', 'wpsso' );
+_x( 'Limited Return Window', 'option value', 'wpsso' );
 _x( 'Not Permitted', 'option value', 'wpsso' );
 _x( 'Unlimited Window', 'option value', 'wpsso' );
 _x( 'Unspecified', 'option value', 'wpsso' );

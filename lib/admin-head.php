@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s edition?', 'wpsso' ), $pkg_pro_transl ) . ' ';
 
-			$notice_msg .= __( 'It comes with a lot of extra awesome features!', 'wpsso' ) . ' ' . convert_smilies( ':-)' ) . ' ';
+			$notice_msg .= __( 'The %s edition comes loaded with a lot of extra features!', 'wpsso' ) . ' ' . convert_smilies( ':-)' ) . ' ';
 
 			$notice_msg .= '</p>';
 
