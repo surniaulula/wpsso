@@ -230,14 +230,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.0-dev.9 (2023/06/03)**
+**Version 15.13.0-dev.10 (2023/06/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new "Product Return Policy" option in the Document SSO metabox.
-	* Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
+	* Added a new "Default Product Return Policy" option in the SSO &gt; Advanced Settings page.
 	* Updated the SSO &gt; Dashboard &gt; Version Information layout.
+	* Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -648,9 +649,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.0-dev.9 =
+= 15.13.0-dev.10 =
 
-(2023/06/03) Added a new "Product Return Policy" option in the Document SSO metabox. Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
+(2023/06/04) Added a new "Product Return Policy" option in the Document SSO metabox. Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 
 = 15.12.0 =
 
