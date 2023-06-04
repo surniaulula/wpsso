@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-06-03 14:20-0700\n"
+"PO-Revision-Date: 2023-06-03 21:16-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4800,11 +4800,11 @@ msgstr "Merci!"
 
 #: lib/admin-head.php:348
 msgid "I've already rated this %2$s"
-msgstr "J'ai déjà noté cette %s"
+msgstr "J'ai déjà noté cette %2$s"
 
 #: lib/admin-head.php:366 lib/admin-head.php:456
 msgid "You've been using the %1$s %2$s for a little over %3$s now."
-msgstr "Vous utilisez l'%2$s %1$s depuis un peu plus de %1$s maintenant."
+msgstr "Vous utilisez l'%2$s %1$s depuis un peu plus de %3$s maintenant."
 
 #: lib/admin-head.php:371
 msgid "Please help support and encourage your developers by rating the %1$s."
