@@ -195,10 +195,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_job_location_type':		// Default Job Location Type.
 					case 'schema_def_product_adult_type':		// Default Product Adult Type.
 					case 'schema_def_product_age_group':		// Default Product Age Group.
-					case 'schema_def_product_category':		// Default Product Google Category ID.
+					case 'schema_def_product_category':		// Default Product Google Category.
 					case 'schema_def_product_condition':		// Default Product Condition.
 					case 'schema_def_product_energy_efficiency_min':
 					case 'schema_def_product_energy_efficiency_max':
+					case 'schema_def_product_mrp':			// Default Product Return Policy.
 					case 'schema_def_product_price_type':		// Default Product Price Type.
 					case 'schema_def_product_size_system':		// Default Product Size System.
 					case 'schema_def_prov_org_id':			// Default Service Provider Org.
@@ -489,6 +490,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_energy_efficiency':		// Product Energy Rating.
 				case 'product_energy_efficiency_min':
 				case 'product_energy_efficiency_max':
+				case 'product_mrp':				// Product Return Policy.
 				case 'product_price_type':
 				case 'product_size_group':
 				case 'product_size_system':

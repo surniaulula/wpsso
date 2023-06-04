@@ -1276,25 +1276,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( null === $errors_transl ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'translating error messages' );
-				}
-
 				$errors_transl = array(
-					'api_key'   => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
-					'blank_num' => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
-					'color'     => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
-					'csv_urls'  => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
-					'date'      => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
-					'html'      => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
-					'img_id'    => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
-					'img_url'   => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
-					'not_blank' => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
-					'numeric'   => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
-					'pos_num'   => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
-					'time'      => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
-					'url'       => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
+					'api_key'      => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
+					'color'        => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
+					'csv_urls'     => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
+					'date'         => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
+					'html'         => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
+					'img_id'       => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
+					'img_url'      => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
+					'not_blank'    => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
+					'numeric'      => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
+					'ok_blank_num' => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
+					'pos_num'      => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'time'         => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
+					'url'          => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
 
@@ -1329,9 +1324,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/*
 			 * Optional cast on return.
 			 */
-			$ret_int  = false;
+			$ret_int  = null;
 			$ret_fnum = false;
 			$num_prec = 0;
+			$min_int  = null;
 
 			if ( 0 === strpos( $option_type, 'fnum' ) ) {
 
@@ -1399,12 +1395,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be blank or integer / numeric.
 				 */
 				case 'blank_int':
+				case 'ok_blank_int':
 
 					$ret_int = true;
 
 					// No break.
 
 				case 'blank_num':
+				case 'ok_blank_num':
 
 					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
@@ -1414,7 +1412,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					} elseif ( ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $errors_transl[ 'blank_num' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'ok_blank_num' ], $opt_key ) );
 
 						$opt_val = $def_val;
 
@@ -1571,7 +1569,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Integer / numeric options that must be 1 or more (not zero).
+				 * Integer options that must be 0 or more.
+				 */
+				case 'zero_pos_int':
+				case 'zero_pos_integer':
+
+					$min_int = 0;
+
+					// No break.
+
+				/*
+				 * Integer options that must be 1 or more.
 				 */
 				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
@@ -1582,19 +1590,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// No break.
 
+				/*
+				 * Integer or numeric options that must be $min_int or more.
+				 */
 				case 'pos_num':
 				case 'pos_number':
 
 					/*
 					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
 					 */
-					if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
+					if ( null === $min_int ) {
 
-						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
+						if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
 
-					} else {
+							$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
 
-						$min_int = 1;
+						} else {
+
+							$min_int = 1;
+						}
 					}
 
 					if ( ! empty( $mod[ 'name' ] ) && '' === $opt_val ) {	// Custom meta options can be empty.

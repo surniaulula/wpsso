@@ -148,6 +148,7 @@ _x( 'Default Job Location Type', 'option label', 'wpsso' );
 _x( 'Default Place Schema Type', 'option label', 'wpsso' );
 _x( 'Default Place Country', 'option label', 'wpsso' );
 _x( 'Default Place Timezone', 'option label', 'wpsso' );
+_x( 'Default Product Return Policy', 'option label', 'wpsso' );
 _x( 'Default Product Google Category', 'option label', 'wpsso' );
 _x( 'Default Product Price Type', 'option label', 'wpsso' );
 _x( 'Default Product Condition', 'option label', 'wpsso' );

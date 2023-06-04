@@ -334,8 +334,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_art_section   = $this->p->get_options( 'schema_def_article_section', 'none' );
 				$def_adult_type    = $this->p->get_options( 'schema_def_product_adult_type', 'none' );
 				$def_age_group     = $this->p->get_options( 'schema_def_product_age_group', 'none' );
-				$def_product_cat   = $this->p->get_options( 'schema_def_product_category', 'none' );
-				$def_product_cond  = $this->p->get_options( 'schema_def_product_condition', 'none' );
+				$def_product_cat   = $this->p->get_options( 'schema_def_product_category', 'none' );	// Default Product Google Category.
+				$def_product_cond  = $this->p->get_options( 'schema_def_product_condition', 'none' );	// Default Product Condition.
+				$def_product_mrp   = $this->p->get_options( 'schema_def_product_mrp', 'none' );		// Default Product Return Policy.
 				$def_ener_eff_min  = $this->p->get_options( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
 				$def_ener_eff_max  = $this->p->get_options( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
 				$def_price_type    = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
@@ -412,7 +413,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 *
 					 * See WpssoOpengraph->add_data_og_type_md().
 					 */
-					'product_category'              => $def_product_cat,		// Product Google Category ID.
+					'product_category'              => $def_product_cat,		// Product Google Category.
 					'product_brand'                 => '',
 					'product_price'                 => '0.00',			// Product Price.
 					'product_price_type'            => $def_price_type,
@@ -424,6 +425,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_energy_efficiency_min' => $def_ener_eff_min,
 					'product_energy_efficiency_max' => $def_ener_eff_max,
 					'product_material'              => '',
+					'product_mrp'                   => $def_product_mrp,		// Product Return Policy.
 					'product_pattern'               => '',
 					'product_color'                 => '',
 					'product_target_gender'         => $def_target_gender,

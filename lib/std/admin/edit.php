@@ -898,9 +898,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
 
 			$currencies         = SucomUtil::get_currency_abbrev();
-			$product_categories = $this->p->util->get_google_product_categories();
 			$dimension_units    = WpssoUtilUnits::get_dimension_units();
 			$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
+			$product_categories = $this->p->util->get_google_product_categories();
 			$weight_units       = WpssoUtilUnits::get_weight_units();
 
 			/*
@@ -935,7 +935,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
-					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_no_select( 'product_category', $product_categories,
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_brand' => array(
 					'tr_class' => $type_row_class[ 'product' ],

@@ -20,6 +20,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		private $og_types           = null;
 		private $schema_types       = null;
 		private $article_sections   = null;
+		private $mrp_names          = null;
 		private $org_names          = null;
 		private $person_names       = null;
 		private $place_names        = null;
@@ -70,6 +71,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->og_types           = $this->p->og->get_og_types_select();
 			$this->schema_types       = $this->p->schema->get_schema_types_select();
 			$this->article_sections   = $this->p->util->get_article_sections();
+			$this->mrp_names          = $this->p->util->get_form_cache( 'mrp_names', $add_none = true );
 			$this->org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$this->person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$this->place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
@@ -382,15 +384,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$this->p->opt->get_text( 'plugin_no_desc_text' ) : $post_type_obj->description;
 
 					$table_rows[ $title_key ] = '' .
-						$form->get_th_html_locale( _x( 'Archive Page Title', 'option label', 'wpsso' ),
-							$css_class = '', $title_key ) .
+						$form->get_th_html_locale( _x( 'Archive Page Title', 'option label', 'wpsso' ), $css_class = '', $title_key ) .
 						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '', $def_title_text ) . '</td>';
 
 					$table_rows[ $desc_key ] = '' .
-						$form->get_th_html_locale( _x( 'Archive Page Description', 'option label', 'wpsso' ),
-							$css_class = '', $desc_key ) .
-						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '',
-							$len = 0, $def_desc_text ) . '</td>';
+						$form->get_th_html_locale( _x( 'Archive Page Description', 'option label', 'wpsso' ), $css_class = '', $desc_key ) .
+						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '', $len = 0, $def_desc_text ) . '</td>';
 				}
 			}
 
@@ -1085,11 +1084,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
+				'schema_def_product_mrp' => array(
+					'label'    => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_mrp',
+					'content'  => $form->get_no_select( 'schema_def_product_mrp', $this->mrp_names,
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+				),
 				'schema_def_product_category' => array(	// Product Google Category ID.
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',
-					'content'  => $form->get_no_select( 'schema_def_product_category', $this->product_categories ),
+					'content'  => $form->get_no_select( 'schema_def_product_category', $this->product_categories,
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_price_type' => array(
 					'td_class' => 'blank',

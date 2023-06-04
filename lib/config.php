@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.0-dev.9',	// Plugin version.
+					'version'     => '15.13.0-dev.10',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1587,6 +1587,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_condition'             => 'https://schema.org/NewCondition',		// Default Product Condition.
 					'schema_def_product_energy_efficiency_min' => 'https://schema.org/EUEnergyEfficiencyCategoryD',
 					'schema_def_product_energy_efficiency_max' => 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus',
+					'schema_def_product_mrp'                   => 'none',						// Default Product Return Policy.
 					'schema_def_product_price_type'            => 'https://schema.org/ListPrice',			// Default Product Price Type.
 					'schema_def_product_size_group_0'          => 'none',
 					'schema_def_product_size_group_1'          => 'none',
@@ -2254,7 +2255,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_age_group'             => 'product_age_group',
 					'plugin_cf_product_avail'                 => 'product_avail',
 					'plugin_cf_product_brand'                 => 'product_brand',			// Product Brand Custom Field.
-					'plugin_cf_product_category'              => 'product_category',		// Product Google Category ID Custom Field.
+					'plugin_cf_product_category'              => 'product_category',		// Product Google Category Custom Field.
 					'plugin_cf_product_color'                 => 'product_color',
 					'plugin_cf_product_condition'             => 'product_condition',		// Product Condition Custom Field.
 					'plugin_cf_product_currency'              => 'product_currency',
@@ -3033,7 +3034,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product_adult_type'            => null,
 					'product_age_group'             => null,
 					'product_brand'                 => null,
-					'product_category'              => null,
+					'product_category'              => null,	// Product Google Category.
 					'product_energy_efficiency'     => null,
 					'product_energy_efficiency_min' => null,
 					'product_energy_efficiency_max' => null,
@@ -3630,7 +3631,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'                   => 'product_age_group',
 						'product:availability'                => 'product_avail',
 						'product:brand'                       => 'product_brand',
-						'product:category'                    => 'product_category',		// Product Google Category ID.
+						'product:category'                    => 'product_category',		// Product Google Category.
 						'product:color'                       => 'product_color',
 						'product:condition'                   => 'product_condition',
 						'product:ean'                         => 'product_gtin13',
