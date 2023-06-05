@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 						}
 
-						$adv_include = array(
+						$adv_incl = array(
 							'add_.*',
 							'og_type_for_.*',
 							'plugin_.*',
@@ -535,16 +535,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'.*_img_(width|height|crop|crop_x|crop_y)',
 						);
 
-						$adv_exclude = array(
+						$adv_excl = apply_filters( 'wpsso_plugin_upgrade_advanced_exclude', array(
 							'plugin_clean_on_uninstall',
 							'plugin_load_mofiles',
 							'plugin_cache_disable',
 							'plugin_debug_html',
 							'plugin_.*_tid',
-						);
+						) );
 
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_include ) . ')$/', $defs );
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_exclude ) . ')$/', $adv_check, $invert = true );
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_incl ) . ')$/', $defs );
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_excl ) . ')$/', $adv_check, $invert = true );
 
 						foreach ( $fixed as $key => $val ) {
 
