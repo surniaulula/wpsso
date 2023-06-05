@@ -201,10 +201,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'seoframework' => 'autodescription-site-settings',	// The SEO Framework.
 					'wpmetaseo'    => 'wpmetaseo',				// WP Meta SEO.
 					'wpseo'        => 'wpseo',				// Yoast SEO.
-				) as $avail_key => $option_key ) {
+				) as $avail_key => $seo_option_key ) {
 
 					if ( ! empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ||
-						( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( $option_key ) ) ) {
+						( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( $seo_option_key ) ) ) {
 
 						foreach ( array( 'meta', 'blocks' ) as $import_type ) {
 
@@ -813,6 +813,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		/*
 		 * Save both options and site options.
+		 *
+		 * See WpssoUtilReg::update_options_key() to update an options key value.
 		 *
 		 * Called by WpssoAdmin->load_setting_page() for the 'reload_default_image_sizes' action.
 		 * Called by WpssoAdmin->import_plugin_settings_json().

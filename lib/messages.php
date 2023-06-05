@@ -420,7 +420,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the plugin has not been installed yet - you can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page but the plugin has not been installed yet.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
+
+						$text .= sprintf( __( 'You can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl );
 
 						break;
 
@@ -429,7 +431,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the %3$s version has not been installed yet - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page but the %3$s version has not been installed yet.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
+
+						$text .= sprintf( __( 'Don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl );
 
 						break;
 

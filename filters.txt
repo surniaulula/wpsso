@@ -121,7 +121,7 @@
 
 'wpsso_init_json_filter_{lib_dir}_{lib_id}' ( $bool = true )
 
-'wpsso_input_limits_{option_key}' ( array $limits )
+'wpsso_input_limits_{options_key}' ( array $limits )
 
 'wpsso_is_functions' ( $is_functions )
 
@@ -183,7 +183,7 @@
 
 'wpsso_load_lib' ( $success = false, $filespec = '', $classname = '' )
 
-'wpsso_md_keys_fallback_{option_key}' ( array $fallback )
+'wpsso_md_keys_fallback_{options_key}' ( array $fallback )
 
 'wpsso_menu_title' ( $title )
 

@@ -57,9 +57,11 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->pkg_pro_transl ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with installation instructions and your unique Authentication ID for that license pack.', 'wpsso' ), $this->p_name_pro, $this->pkg_pro_transl ) . ' ';
 
-					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be installed and active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->pkg_pro_transl );
+					$text .= '</p><p>';
+
+					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->pkg_pro_transl );
 
 					$text .= '</p>';
 

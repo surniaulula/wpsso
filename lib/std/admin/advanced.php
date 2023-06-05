@@ -1085,6 +1085,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_def_product_mrp' => array(
+					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_mrp',
 					'content'  => $form->get_no_select( 'schema_def_product_mrp', $this->mrp_names,
