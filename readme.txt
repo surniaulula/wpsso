@@ -230,7 +230,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.0-rc.1 (2023/06/04)**
+**Version 15.13.0-rc.1 (2023/06/05)**
 
 * **New Features**
 	* None.
@@ -653,7 +653,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.13.0-rc.1 =
 
-(2023/06/04) Added a new "Product Return Policy" option in the Document SSO metabox. Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
+(2023/06/05) Added a new "Product Return Policy" option in the Document SSO metabox. Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 
 = 15.12.0 =
 
