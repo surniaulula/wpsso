@@ -230,13 +230,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.0-dev.10 (2023/06/04)**
+**Version 15.13.0-dev.11 (2023/06/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new "Product Return Policy" option in the Document SSO metabox.
 	* Added a new "Default Product Return Policy" option in the SSO &gt; Advanced Settings page.
+	* Added a 'hasMerchantReturnPolicy' property to Schema Product markup (WPSSO MRP add-on required).
 	* Updated the SSO &gt; Dashboard &gt; Version Information layout.
 	* Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 * **Bugfixes**
@@ -245,6 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a `$event_names` argument to the `SucomForm->get_checklist()` method.
 	* Added a new `SucomForm->get_css_class_on_change()` method.
 	* Added a new `SucomUtil::sanitize_input_name()` method.
+	* Added a new `WpssoSchemaSingle::add_merchant_return_policy_data()` method.
 	* Renamed the `sucomSelectChangeUnhideRows()` function to `sucomChangeHideShowRows()` in js/com/jquery-metabox.js.
 	* Refactored the `SucomUtil::sanitize_css_class()` method.
 	* Refactored the `SucomUtil::sanitize_css_id()` method.
@@ -649,7 +651,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.0-dev.10 =
+= 15.13.0-dev.11 =
 
 (2023/06/04) Added a new "Product Return Policy" option in the Document SSO metabox. Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 
