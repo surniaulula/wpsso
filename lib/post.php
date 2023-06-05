@@ -805,6 +805,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->add_column_headings( $columns, $post_type = 'attachment' );
 		}
 
+		/*
+		 * Hooked to the 'manage_pages_custom_column' action.
+		 * Hooked to the 'manage_posts_custom_column' action.
+		 * Hooked to the 'manage_media_custom_column' action.
+		 */
 		public function show_column_content( $column_name, $post_id ) {
 
 			echo $this->get_column_content( '', $column_name, $post_id );
@@ -2200,12 +2205,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function get_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $single ) {
 
-			if ( '_thumbnail_id' !== $meta_key ) {
+			if ( '_thumbnail_id' !== $meta_key ) {	// Inherit only the featured image (aka '_thumbnail_id').
 
 				return $check;
 			}
 
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
+
+			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
+				
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
+				}
+
+				return $check;
+			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
@@ -2259,12 +2274,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function update_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $meta_value, $prev_value ) {
 
-			if ( '_thumbnail_id' !== $meta_key ) {
+			if ( '_thumbnail_id' !== $meta_key ) {	// Inherit only the featured image (aka '_thumbnail_id').
 
 				return $check;
 			}
 
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
+
+			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
+				
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
+				}
+
+				return $check;
+			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );

@@ -2432,8 +2432,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$md_opts      = array();
-			$parent_ids   = array();
+			$md_opts    = array();
+			$parent_ids = array();
+
+			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
+				}
+
+				return $md_opts;
+			}
+
 			$inherit_opts = $this->p->cf[ 'form' ][ 'inherited_md_opts' ];
 			$inherit_opts = (array) apply_filters( 'wpsso_inherited_md_opts', $inherit_opts, $mod );
 
