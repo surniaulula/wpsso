@@ -77,6 +77,7 @@
 <li><em>Missing field "address"</em></li>
 <li><em>Missing field "aggregateRating"</em></li>
 <li><em>Missing field "brand"</em></li>
+<li><em>Missing field "hasMerchantReturnPolicy"</em></li>
 <li><em>Missing field "image"</em></li>
 <li><em>Missing field "priceRange"</em></li>
 <li><em>Missing field "review"</em></li>
