@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			unset( $json_data[ 'dateModified' ] );
 
 			/*
-			 * Begin Schema book markup creation.
+			 * Begin schema book markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'comment', $list_element );
 
 			/*
-			 * Begin Schema comment markup creation.
+			 * Begin schema comment markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
@@ -386,7 +386,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
 			/*
-			 * Begin Schema event markup creation.
+			 * Begin schema event markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -556,7 +556,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'image.object', $list_element );
 
 			/*
-			 * Begin Schema image markup creation.
+			 * Begin schema image markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url' => SucomUtil::esc_url_encode( $image_url ),
@@ -730,7 +730,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			/*
-			 * Begin Schema job markup creation.
+			 * Begin schema job markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -831,6 +831,136 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
+		 * See https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listings_merchant-return-policy.
+		 */
+		public static function add_merchant_return_policy_data( &$json_data, array $mod, $mrp_id, $list_element = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			/*
+			 * Check that the option value is not true, false, null, empty string, or 'none'.
+			 */
+			if ( ! SucomUtil::is_valid_option_value( $mrp_id ) ) {
+
+				return 0;	// Return count of retun policies added.
+			}
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding return policy data for mrp id "' . $mrp_id . '"' );
+			}
+
+			/*
+			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
+			 */
+			$mrp_opts = apply_filters( 'wpsso_get_merchant_return_policy_options', false, $mod, $mrp_id );
+
+			if ( ! empty( $mrp_opts ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_merchant_return_policy_options', $mrp_opts );
+				}
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: no return policy options' );
+				}
+
+				return 0;	// Return count of return policies added.
+			}
+
+			list( $type_id, $type_url ) = array( 'merchant.return.policy', 'https://schema.org/MerchantReturnPolicy' );
+
+			$countries = SucomUtil::preg_grep_keys( '/^mrp_country_(.*)$/', $mrp_opts, $invert = false, $replace = '$1' );
+			$countries = array_keys( $countries );
+
+			$methods = SucomUtil::preg_grep_keys( '/^mrp_method_https_schema_org_(.*)$/', $mrp_opts, $invert = false, $replace = 'https://schema.org/$1' );
+			$methods = array_keys( array_filter( $methods ) );	// Remove unchecked options.
+
+			/*
+			 * Begin schema merchant return policy markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Add schema properties from the return policy options.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mrp_opts, array(
+				'name'                 => 'mrp_name',
+				'description'          => 'mrp_desc',
+				'returnPolicyCategory' => 'mrp_category',
+			) );
+
+			if ( isset( $mrp_opts[ 'mrp_category' ] ) ) {
+			
+				switch ( basename( $mrp_opts[ 'mrp_category' ] ) ) {
+
+					case 'MerchantReturnFiniteReturnWindow':
+
+						if ( isset( $mrp_opts[ 'mrp_days' ] ) ) {
+
+							$json_ret[ 'merchantReturnDays' ] = $mrp_opts[ 'mrp_days' ];
+						}
+
+						// No break.
+
+					case 'MerchantReturnUnlimitedWindow':
+
+						$json_ret[ 'returnMethod' ] = $methods;
+
+						break;
+				}
+			}
+
+			/*
+			 * The type of return fees. This property is only required if there's no cost to return the product. If you
+			 * use this property, you must set the value to https://schema.org/FreeReturn (other return fee types
+			 * aren't supported; if there are fees, use the returnShippingFeesAmount property instead).
+			 */
+			if ( empty( $mrp_opts[ 'mrp_shipping_fees' ] ) ) {
+
+				$json_ret[ 'returnFees' ] = 'https://schema.org/FreeReturn';
+
+			} elseif ( ! empty( $mrp_opts[ 'mrp_shipping_currency' ] ) ) {
+				
+				$json_ret[ 'returnShippingFeesAmount' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', array(
+					'value'    => $mrp_opts[ 'mrp_shipping_fees' ],
+					'currency' => $mrp_opts[ 'mrp_shipping_currency' ],
+				) );
+			}
+
+			/*
+			 * Add applicableCountry property.
+			 */
+			if ( ! empty( $countries ) ) {
+
+				$json_ret[ 'applicableCountry' ] = $countries;
+			}
+
+			/*
+			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $mrp_id values.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $mrp_id ), '/' );
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+
+			return 1;	// Return count of return policies added.
+		}
+
+		/*
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 *
 		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
@@ -860,7 +990,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Returned organization option values can change depending on the locale, but the option key names should NOT be localized.
+			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
 			 *
 			 * Example: 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
 			 */
@@ -901,7 +1033,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
 			/*
-			 * Begin Schema organization markup creation.
+			 * Begin schema organization markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -1294,7 +1426,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_element );
 
 			/*
-			 * Begin Schema person markup creation.
+			 * Begin schema person markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -1393,6 +1525,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
 			 */
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
@@ -1419,7 +1553,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
 
 			/*
-			 * Begin Schema place markup creation.
+			 * Begin schema place markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -1611,16 +1745,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
 
 			/*
-			 * Begin Schema product markup creation.
+			 * Begin schema product markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
 			/*
 			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 *
-			 * Note that there is no Schema 'ean' property.
+			 * Note that there is no Schema ean property.
 			 *
-			 * Note that there is no Schema 'size' property.
+			 * Note that there is no Schema size property.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'url'                   => 'product:url',
@@ -1688,7 +1822,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'priceSpecification' property.
+			 * Schema priceSpecification property.
 			 */
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
 				'priceType'             => 'product:price_type',
@@ -1775,6 +1909,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
+			 * Schema hasMerchantReturnPolicy property.
+			 */
+			if ( WpssoSchema::is_valid_key( $mt_single, 'product:mrp_id' ) ) {	// Not null, an empty string, or 'none'.
+
+				self::add_merchant_return_policy_data( $json_ret[ 'hasMerchantReturnPolicy' ], $mod,
+					$mt_single[ 'product:mrp_id' ], $mrp_list_el = false );
+			}
+
+			/*
 			 * Add the seller organization data.
 			 */
 			switch ( $wpsso->options[ 'site_pub_schema_type' ] ) {
@@ -1841,7 +1984,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
 
 			/*
-			 * Begin Schema product markup creation.
+			 * Begin schema product markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'productGroupID' => $mt_single[ 'product:retailer_item_id' ],
@@ -1966,7 +2109,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
 
 			/*
-			 * Begin Schema product markup creation.
+			 * Begin schema product markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
 
@@ -1981,9 +2124,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Note that there is no Schema 'availability' property for the 'product:availability' value.
+			 * Note that there is no Schema availability property for the 'product:availability' value.
 			 *
-			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 * Note that there is no Schema ean property for the 'product:ean' value.
 			 *
 			 * See https://support.google.com/merchants/answer/6324507 for 'inProductGroupWithID'.
 			 */
@@ -2015,7 +2158,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::check_prop_value_gtin( $json_ret );
 
 			/*
-			 * Schema 'productID' property.
+			 * Schema productID property.
 			 */
 			foreach ( array( 'isbn' ) as $pref_id ) {
 
@@ -2028,7 +2171,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'brand' property.
+			 * Schema brand property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
 
@@ -2043,7 +2186,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'audience' property.
+			 * Schema audience property.
 			 *
 			 * See https://support.google.com/merchants/answer/6324479 for 'suggestedGender'.
 			 * See https://support.google.com/merchants/answer/6324463 for 'suggestedMinAge' and 'suggestedMaxAge'.
@@ -2079,7 +2222,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'size' property.
+			 * Schema size property.
 			 *
 			 * See https://support.google.com/merchants/answer/6324492 for 'name'.
 			 * See https://support.google.com/merchants/answer/6324497 for 'sizeGroup'.
@@ -2097,7 +2240,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Schema 'length', 'width', 'height', 'weight' properties.
+			 * Schema length, width, height, weight properties.
 			 */
 			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, $names = array(
 				'length'       => 'product:length:value',
@@ -2108,7 +2251,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
-			 * Schema 'hasEnergyConsumptionDetails' property.
+			 * Schema hasEnergyConsumptionDetails property.
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:energy_efficiency:value' ) ) {	// Not null, an empty string, or 'none'.
 
@@ -2256,7 +2399,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
 
 			/*
-			 * Begin Schema video markup creation.
+			 * Begin schema video markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url, array(
 				'url' => SucomUtil::esc_url_encode( $media_url ),

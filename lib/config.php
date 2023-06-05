@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.0-dev.10',	// Plugin version.
+					'version'     => '15.13.0-dev.11',	// Plugin version.
 					'opt_version' => '965',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -638,6 +638,70 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/update/',
 						'download'  => 'https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/latest/',
+					),
+				),
+				'wpssomrp' => array(			// Plugin acronym.
+					'short'       => 'WPSSO MRP',	// Short plugin name.
+					'name'        => 'WPSSO Merchant Return Policy Manager',
+					'desc'        => 'Manage any number of Merchant Return Policies for Google Merchant listings.',
+					'slug'        => 'wpsso-merchant-return-policy',
+					'base'        => 'wpsso-merchant-return-policy/wpsso-merchant-return-policy.php',
+					'update_auth' => '',		// No premium version.
+
+					/*
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets' => array(
+
+						/*
+						 * Banner image array keys are 'low' and 'high'.
+						 */
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-merchant-return-policy/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-merchant-return-policy/assets/banner-1544x500.jpg',
+						),
+
+						/*
+						 * Icon image array keys are '1x' and '2x'.
+						 */
+						'icons' => array(
+							'1x' => 'https://surniaulula.github.io/wpsso-merchant-return-policy/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-merchant-return-policy/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => true,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/*
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-merchant-return-policy/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy/reviews/?rate=5#new-post',
+
+						/*
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-merchant-return-policy/master/readme.txt',
+						'setup_html' => '',
+
+						/*
+						 * WPSSO.com.
+						 */
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-merchant-return-policy/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-merchant-return-policy/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-merchant-return-policy/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-merchant-return-policy/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-merchant-return-policy/latest/',
 					),
 				),
 				'wpssoopm' => array(			// Plugin acronym.
@@ -1732,7 +1796,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:age_group'               => 1,
 					'add_meta_property_product:availability'            => 1,
 					'add_meta_property_product:brand'                   => 1,
-					'add_meta_property_product:category'                => 1,
+					'add_meta_property_product:category'                => 1,	// Product Google Category.
 					'add_meta_property_product:color'                   => 1,
 					'add_meta_property_product:condition'               => 1,
 					'add_meta_property_product:ean'                     => 1,
@@ -3656,6 +3720,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:mfr_part_no'                 => 'product_mfr_part_no',		// Product MPN.
 						'product:min_advert_price:amount'     => 'product_min_advert_price',	// Non-standard / internal meta tag.
 						'product:min_advert_price:currency'   => '',				// Non-standard / internal meta tag.
+						'product:mrp_id'                      => 'product_mrp',			// Non-standard / internal meta tag.
 						'product:original_price:amount'       => '',				// Used by WooCommerce module.
 						'product:original_price:currency'     => '',				// Used by WooCommerce module.
 						'product:pattern'                     => 'product_pattern',

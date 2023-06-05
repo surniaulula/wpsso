@@ -1625,7 +1625,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_to_keywords( array $tags = array() ) {
 
 			$keywords = array_map( 'sanitize_text_field', $tags );
-
 			$keywords = trim( implode( $glue = ', ', $keywords ) );
 
 			return $keywords;
@@ -1634,9 +1633,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_to_hashtags( array $tags = array() ) {
 
 			$hashtags = self::sanitize_hashtags( $tags );
-
 			$hashtags = array_filter( $hashtags );	// Removes empty array elements.
-
 			$hashtags = trim( implode( $glue = ' ', $hashtags ) );
 
 			return $hashtags;
@@ -2109,6 +2106,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':expiration_time'             => null,
 				$mt_pre . ':color'                       => null,
 				$mt_pre . ':material'                    => null,
+				$mt_pre . ':mrp_id'                      => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':pattern'                     => null,
 				$mt_pre . ':purchase_limit'              => null,
 				$mt_pre . ':eligible_quantity:value'     => null,	// Non-standard / internal meta tag.

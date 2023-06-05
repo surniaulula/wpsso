@@ -1496,7 +1496,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Must be a floating-point number. The decimal precision defined before the switch() statement.
+				 * Must be a floating-point number.
+				 * 
+				 * The decimal precision is defined before the switch() statement.
 				 */
 				case 'fnum':
 

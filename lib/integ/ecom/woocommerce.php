@@ -2062,8 +2062,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				}
 
 				/*
-				 * $decimals = Number of decimal points, blank to use woocommerce_price_num_decimals, or false
-				 * false to avoid all rounding.
+				 * $decimals = Number of decimal points, blank to use woocommerce_price_num_decimals, or false to
+				 * avoid all rounding.
 				 */
 				$product_price = wc_format_decimal( $product_price, $decimals = '', $trim_zeros = false );
 

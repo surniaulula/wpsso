@@ -771,6 +771,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $values;
 		}
 
+		public function get_amount_currency( $amount_name, $currency_name, $css_class = 'price', $css_id = '', $max_len = 0, $holder = '' ) {
+
+			$currencies = SucomUtil::get_currency_abbrev();	// Uses a local cache.
+
+			return $this->get_input( $amount_name, $css_class, $css_id, $max_len, $holder ) . ' ' .
+				$this->get_select( $currency_name, $currencies, $css_class = 'currency', $css_id = '',
+					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = array( 'json_var' => 'currencies' ) );
+		}
+
 		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
 			$selected = false;
