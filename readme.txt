@@ -241,7 +241,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the SSO &gt; Dashboard &gt; Version Information layout.
 	* Updated the WooCommerce shipping destination markup for "Everywhere" to include all countries.
 * **Bugfixes**
-	* None.
+	* Fix to avoid triggering a bug in WooCommerce, where a variation image in the Media Library would inherit the featured image of the main product image.
 * **Developer Notes**
 	* Added a `$event_names` argument to the `SucomForm->get_checklist()` method.
 	* Added a new `SucomForm->get_css_class_on_change()` method.
