@@ -670,7 +670,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => true,
+						'wp_org' => false,	// 2023/06/05 - Approved is pending on wordpress.org.
 						'github' => true,
 						'wpsso'  => true,
 					),
@@ -678,10 +678,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 						/*
 						 * WordPress.org.
+						 *
+						 * 2023/06/05 - Approval is pending on wordpress.org.
+						 *
+						 * 'home'   => 'https://wordpress.org/plugins/wpsso-merchant-return-policy/',
+						 * 'forum'  => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy',
+						 * 'review' => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy/reviews/?rate=5#new-post',
 						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-merchant-return-policy/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-merchant-return-policy/reviews/?rate=5#new-post',
+						'home'      => 'https://wpsso.com/extend/plugins/wpsso-merchant-return-policy/',
+						'forum'     => '',
+						'review'    => '',
 
 						/*
 						 * GitHub.com.

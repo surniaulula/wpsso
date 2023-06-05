@@ -5549,12 +5549,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5304
+#: lib/config.php:5310
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5304
+#: lib/config.php:5310
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
