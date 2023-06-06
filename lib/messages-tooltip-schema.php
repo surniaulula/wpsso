@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_org_id':		// Default Publisher Org.
+				case 'tooltip-schema_def_pub_org_id':		// Default Publisher Organization.
 
 					$text = __( 'Select a default publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Event tab.
 				 */
-				case 'tooltip-schema_def_event_attendance':	// Event Attendance.
+				case 'tooltip-schema_def_event_attendance':	// Event Event Attendance.
 
 					$text = __( 'Select a default attendance for the Schema Event type.', 'wpsso' );
 
@@ -246,25 +246,25 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_event_organizer_org_id':	// Default Organizer Org.
+				case 'tooltip-schema_def_event_organizer_org_id':	// Default Event Organizer Org.
 
 					$text = __( 'Select a default organizer (organization) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_organizer_person_id':	// Default Organizer Person.
+				case 'tooltip-schema_def_event_organizer_person_id':	// Default Event Organizer Person.
 
 					$text = __( 'Select a default organizer (person) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_performer_org_id':	// Default Performer Org.
+				case 'tooltip-schema_def_event_performer_org_id':	// Default Event Performer Org.
 
 					$text = __( 'Select a default performer (organization) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_performer_person_id':	// Default Performer Person.
+				case 'tooltip-schema_def_event_performer_person_id':	// Default Event Performer Person.
 
 					$text = __( 'Select a default performer (person) for the Schema Event type.', 'wpsso' );
 

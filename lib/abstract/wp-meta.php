@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_license_url'     => '',						// License URL.
 					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Provider Org.
 					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Provider Person.
-					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
+					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Organization.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
 
 					/*

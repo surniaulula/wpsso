@@ -184,13 +184,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_book_author_type':			// Book Author Type.
 					case 'schema_def_article_section':		// Default Article Section.
 					case 'schema_def_book_format':			// Default Book Format.
+					case 'schema_def_event_attendance':		// Default Event Attendance.
 					case 'schema_def_event_location_id':		// Default Event Venue.
-					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
-					case 'schema_def_event_organizer_person_id':	// Default Organizer Person.
-					case 'schema_def_event_performer_org_id':	// Default Performer Org.
-					case 'schema_def_event_performer_person_id':	// Default Performer Person.
+					case 'schema_def_event_organizer_org_id':	// Default Event Organizer Org.
+					case 'schema_def_event_organizer_person_id':	// Default Event Organizer Person.
+					case 'schema_def_event_performer_org_id':	// Default Event Performer Org.
+					case 'schema_def_event_performer_person_id':	// Default Event Performer Person.
 					case 'schema_def_family_friendly':		// Default Family Friendly.
-					case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
+					case 'schema_def_job_hiring_org_id':		// Default Job Hiring Organization.
 					case 'schema_def_job_location_id':		// Default Job Location.
 					case 'schema_def_job_location_type':		// Default Job Location Type.
 					case 'schema_def_product_adult_type':		// Default Product Adult Type.
@@ -204,7 +205,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_product_size_system':		// Default Product Size System.
 					case 'schema_def_prov_org_id':			// Default Service Provider Org.
 					case 'schema_def_prov_person_id':		// Default Service Provider Person.
-					case 'schema_def_pub_org_id':			// Default Publisher Org.
+					case 'schema_def_pub_org_id':			// Default Publisher Organization.
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_review_item_type':		// Default Subject Schema Type.
 					case 'schema_article_section':			// Article Section.
@@ -228,7 +229,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_movie_prodco_org_id':		// Production Company.
 					case 'schema_prov_org_id':			// Service Provider Org.
 					case 'schema_prov_person_id':			// Service Provider Person.
-					case 'schema_pub_org_id':			// Publisher Org.
+					case 'schema_pub_org_id':			// Publisher Organization.
 					case 'schema_pub_person_id':			// Publisher Person.
 					case 'schema_review_item_type':			// Review: Subject Schema Type.
 					case 'schema_review_item_cw_author_type':	// Review: Subject Author Type.

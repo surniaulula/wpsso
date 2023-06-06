@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.1-dev.1',	// Plugin version.
+					'version'     => '15.13.1-dev.2',	// Plugin version.
 					'opt_version' => '966',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1549,7 +1549,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Note that 'schema_def_pub_org_id' may be updated in WpssoOptions->get_defaults() based on the 'site_pub_schema_type' value.
 					 */
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
-					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
+					'schema_def_pub_org_id'      => 'site',	// Default Publisher Organization.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
 					'schema_def_prov_org_id'     => 'none',	// Default Service Provider Org.
 					'schema_def_prov_person_id'  => 'none',	// Default Service Provider Person.
@@ -1557,12 +1557,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Event.
 					 */
-					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
+					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Event Attendance.
 					'schema_def_event_location_id'         => 'none',						// Default Event Venue.
-					'schema_def_event_organizer_org_id'    => 'none',						// Default Organizer Org.
-					'schema_def_event_organizer_person_id' => 'none',						// Default Organizer Person.
-					'schema_def_event_performer_org_id'    => 'none',						// Default Performer Org.
-					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
+					'schema_def_event_organizer_org_id'    => 'none',						// Default Event Organizer Org.
+					'schema_def_event_organizer_person_id' => 'none',						// Default Event Organizer Person.
+					'schema_def_event_performer_org_id'    => 'none',						// Default Event Performer Org.
+					'schema_def_event_performer_person_id' => 'none',						// Default Event Performer Person.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Job Posting.

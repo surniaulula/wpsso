@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_pub_org_id' => array(
 					'tr_class' => $type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Publisher Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Publisher Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
 					'content'  => $form->get_select( 'schema_pub_org_id', $names[ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),

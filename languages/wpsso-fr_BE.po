@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.13.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-06-05 19:44-0700\n"
+"PO-Revision-Date: 2023-06-05 19:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -9189,7 +9189,7 @@ msgstr "Google exige au moins une propriété image pour ce type de Schéma."
 
 #: lib/messages.php:423
 msgid "An Authentication ID for %1$s has been entered in the %2$s settings page but the plugin has not been installed yet."
-msgstr "Un ID d'authentification a été fourni dans la page de réglages %1$s mais l'extension n'a pas encore été installée."
+msgstr "Un ID d'authentification pour %1$s a été fourni dans la page de réglages %2$s mais l'extension n'a pas encore été installée."
 
 #: lib/messages.php:425
 msgid "You can install and activate the %3$s plugin from the %2$s settings page."
@@ -9197,7 +9197,7 @@ msgstr "Vous pouvez installer et activer l'extension %3$s à partir de la page d
 
 #: lib/messages.php:434
 msgid "An Authentication ID for %1$s has been entered in the %2$s settings page but the %3$s version has not been installed yet."
-msgstr "Un ID d'authentification a été fourni dans la page de réglages %1$s mais la version %3$s n'a pas encore été installée."
+msgstr "Un ID d'authentification pour %1$s a été fourni dans la page de réglages %2$s mais la version %3$s n'a pas encore été installée."
 
 #: lib/messages.php:436
 msgid "Don't forget to update the plugin to install the latest %3$s version."

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.13.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.13.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3620,7 +3620,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:135 lib/pro/admin/advanced.php:991
 #: lib/std/admin/advanced.php:910
 msgctxt "option label"
-msgid "Default Publisher Org."
+msgid "Default Publisher Organization"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:136 lib/pro/admin/advanced.php:998
@@ -3644,7 +3644,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:139 lib/pro/admin/advanced.php:1030
 #: lib/std/admin/advanced.php:954
 msgctxt "option label"
-msgid "Default Attendance"
+msgid "Default Event Attendance"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:140 lib/pro/admin/advanced.php:1036
@@ -3656,31 +3656,30 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:141 lib/pro/admin/advanced.php:1042
 #: lib/std/admin/advanced.php:968
 msgctxt "option label"
-msgid "Default Organizer Org."
+msgid "Default Event Organizer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:142 lib/pro/admin/advanced.php:1048
-#: lib/std/admin/advanced.php:975
 msgctxt "option label"
-msgid "Default Organizer Person"
+msgid "Default Event Organizer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:143 lib/pro/admin/advanced.php:1055
 #: lib/std/admin/advanced.php:982
 msgctxt "option label"
-msgid "Default Performer Org."
+msgid "Default Event Performer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:144 lib/pro/admin/advanced.php:1061
 #: lib/std/admin/advanced.php:989
 msgctxt "option label"
-msgid "Default Performer Person"
+msgid "Default Event Performer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:145 lib/pro/admin/advanced.php:1080
 #: lib/std/admin/advanced.php:1011
 msgctxt "option label"
-msgid "Default Hiring Organization"
+msgid "Default Job Hiring Organization"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:146 lib/pro/admin/advanced.php:1086
@@ -6247,7 +6246,7 @@ msgstr ""
 
 #: lib/edit-schema.php:281
 msgctxt "option label"
-msgid "Publisher Org."
+msgid "Publisher Organization"
 msgstr ""
 
 #: lib/edit-schema.php:289
@@ -11786,6 +11785,11 @@ msgstr ""
 #: lib/sitesubmenu/site-licenses.php:54 lib/submenu/licenses.php:67
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
+msgstr ""
+
+#: lib/std/admin/advanced.php:975
+msgctxt "option label"
+msgid "Default Organizer Person"
 msgstr ""
 
 #: lib/submenu/addons.php:62

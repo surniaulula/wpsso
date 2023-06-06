@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_pub_org_id':		// Publisher Org.
+				case 'tooltip-meta-schema_pub_org_id':		// Publisher Organization.
 
 					$text = __( 'Select a publisher organization for this creative work.', 'wpsso' );
 
