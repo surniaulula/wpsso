@@ -62,7 +62,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
-<p><strong>Fixes all Google Search, Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes all Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.1-dev.1 (2023/06/05)**
+**Version 15.13.1-dev.2 (2023/06/06)**
 
 * **New Features**
 	* None.
@@ -669,9 +669,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.1-dev.1 =
+= 15.13.1-dev.2 =
 
-(2023/06/05) None.
+(2023/06/06) None.
 
 = 15.13.0 =
 
