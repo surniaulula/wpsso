@@ -77,6 +77,9 @@ Present your content at its best on social sites and in search results - no matt
 * *Missing field "address"*
 * *Missing field "aggregateRating"*
 * *Missing field "brand"*
+* *Missing field "businessDays"*
+* *Missing field "cutoffTime"*
+* *Missing field "deliveryTime"*
 * *Missing field "hasMerchantReturnPolicy"*
 * *Missing field "image"*
 * *Missing field "priceRange"*

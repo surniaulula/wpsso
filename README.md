@@ -77,6 +77,9 @@
 <li><em>Missing field "address"</em></li>
 <li><em>Missing field "aggregateRating"</em></li>
 <li><em>Missing field "brand"</em></li>
+<li><em>Missing field "businessDays"</em></li>
+<li><em>Missing field "cutoffTime"</em></li>
+<li><em>Missing field "deliveryTime"</em></li>
 <li><em>Missing field "hasMerchantReturnPolicy"</em></li>
 <li><em>Missing field "image"</em></li>
 <li><em>Missing field "priceRange"</em></li>
