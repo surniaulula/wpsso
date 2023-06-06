@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_book_author_type':			// Book Author Type.
 					case 'schema_def_article_section':		// Default Article Section.
 					case 'schema_def_book_format':			// Default Book Format.
-					case 'schema_def_event_location_id':		// Default Physical Venue.
+					case 'schema_def_event_location_id':		// Default Event Venue.
 					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
 					case 'schema_def_event_organizer_person_id':	// Default Organizer Person.
 					case 'schema_def_event_performer_org_id':	// Default Performer Org.
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_review_item_type':		// Default Subject Schema Type.
 					case 'schema_article_section':			// Article Section.
 					case 'schema_event_lang':			// Event Language.
-					case 'schema_event_location_id':		// Event Physical Venue.
+					case 'schema_event_location_id':		// Event Venue.
 					case 'schema_event_offer_currency':
 					case 'schema_event_offer_avail':
 					case 'schema_event_organizer_org_id':		// Event Organizer Org.

@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_event_location_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Physical Venue', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Event Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_location_id',
 					'content'  => $form->get_no_select( 'schema_def_event_location_id', $this->place_names,
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),

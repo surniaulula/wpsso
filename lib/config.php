@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.0',	// Plugin version.
+					'version'     => '15.13.1-dev.1',	// Plugin version.
 					'opt_version' => '966',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1558,7 +1558,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Schema Defaults > Event.
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
-					'schema_def_event_location_id'         => 'none',						// Default Physical Venue.
+					'schema_def_event_location_id'         => 'none',						// Default Event Venue.
 					'schema_def_event_organizer_org_id'    => 'none',						// Default Organizer Org.
 					'schema_def_event_organizer_person_id' => 'none',						// Default Organizer Person.
 					'schema_def_event_performer_org_id'    => 'none',						// Default Performer Org.

@@ -603,7 +603,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'event' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Event Physical Venue', 'option label', 'wpsso' ),
+					'label'    => _x( 'Event Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_location_id',
 					'content'  => $form->get_no_select( 'schema_event_location_id', $names[ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),

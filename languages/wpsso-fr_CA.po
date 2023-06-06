@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.13.0\n"
+"Project-Id-Version: WPSSO Core 15.13.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-06-05 11:44-0700\n"
+"PO-Revision-Date: 2023-06-05 19:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -474,568 +474,568 @@ msgstr "Standard"
 
 #: gettext/gettext-lib-config.php:7
 msgctxt "plugin name"
+msgid "WPSSO Merchant Return Policy Manager"
+msgstr "WPSSO Gestionnaire politique de retour de marchand"
+
+#: gettext/gettext-lib-config.php:8
+msgctxt "plugin description"
+msgid "Manage any number of Merchant Return Policies for Google Merchant listings."
+msgstr "Gérez n'importe quel nombre de politiques de retour de marchand pour les listes de marchands Google."
+
+#: gettext/gettext-lib-config.php:9
+msgctxt "plugin name"
 msgid "WPSSO Schema Shortcode"
 msgstr "WPSSO Code court de Schéma"
 
-#: gettext/gettext-lib-config.php:8
+#: gettext/gettext-lib-config.php:10
 msgctxt "plugin description"
 msgid "Schema shortcode to define and customize additional properties and types for sections of the content."
 msgstr "Shortcode de Schéma pour définir et personnaliser des propriétés et des types supplémentaires pour des sections de contenu."
 
-#: gettext/gettext-lib-config.php:9 gettext/gettext-lib-config.php:10
+#: gettext/gettext-lib-config.php:11 gettext/gettext-lib-config.php:12
 msgctxt "lib file description"
 msgid "Update Manager"
 msgstr "Mises à jour"
 
-#: gettext/gettext-lib-config.php:11
+#: gettext/gettext-lib-config.php:13
 msgctxt "plugin name"
 msgid "WPSSO Update Manager"
 msgstr "WPSSO Gestionnaire de mise à jour"
 
-#: gettext/gettext-lib-config.php:12
+#: gettext/gettext-lib-config.php:14
 msgctxt "plugin description"
 msgid "Update Manager for the WPSSO Core Premium plugin."
 msgstr "Gestionnaire de mise à jour pour l'extension WPSSO Core Premium."
 
-#: gettext/gettext-lib-config.php:13 gettext/gettext-lib-config.php:108
+#: gettext/gettext-lib-config.php:15 gettext/gettext-lib-config.php:110
 msgctxt "plugin name"
 msgid "WPSSO Core"
 msgstr "WPSSO Core"
 
-#: gettext/gettext-lib-config.php:14
+#: gettext/gettext-lib-config.php:16
 msgctxt "lib file description"
 msgid "(feature) Import All in One SEO Pack Metadata"
 msgstr "(feature) Importer métadonnées All in One SEO Pack"
 
-#: gettext/gettext-lib-config.php:15
+#: gettext/gettext-lib-config.php:17
 msgctxt "lib file description"
 msgid "(feature) Import Rank Math SEO Metadata"
 msgstr "(feature) Importer métadonnées Rank Math SEO"
 
-#: gettext/gettext-lib-config.php:16
+#: gettext/gettext-lib-config.php:18
 msgctxt "lib file description"
 msgid "(feature) Import The SEO Framework Metadata"
 msgstr "(feature) Importer métadonnées The SEO Framework"
 
-#: gettext/gettext-lib-config.php:17
+#: gettext/gettext-lib-config.php:19
 msgctxt "lib file description"
 msgid "(feature) Import WP Meta SEO Metadata"
 msgstr "(feature) Importer métadonnées WP Meta SEO"
 
-#: gettext/gettext-lib-config.php:18
+#: gettext/gettext-lib-config.php:20
 msgctxt "lib file description"
 msgid "(feature) Import Yoast SEO Block Attrs"
 msgstr "(feature) Importer attrs de blocs Yoast SEO"
 
-#: gettext/gettext-lib-config.php:19
+#: gettext/gettext-lib-config.php:21
 msgctxt "lib file description"
 msgid "(feature) Import Yoast SEO Metadata"
 msgstr "(feature) Importer métadonnées Yoast SEO"
 
-#: gettext/gettext-lib-config.php:20
+#: gettext/gettext-lib-config.php:22
 msgctxt "lib file description"
 msgid "(plugin) Perfect WooCommerce Brands"
 msgstr "(plugin) Perfect WooCommerce Brands"
 
-#: gettext/gettext-lib-config.php:21
+#: gettext/gettext-lib-config.php:23
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce"
 msgstr "(plugin) WooCommerce"
 
-#: gettext/gettext-lib-config.php:22
+#: gettext/gettext-lib-config.php:24
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce Brands"
 msgstr "(plugin) WooCommerce Brands"
 
-#: gettext/gettext-lib-config.php:23
+#: gettext/gettext-lib-config.php:25
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce Currency Switcher"
 msgstr "(plugin) WooCommerce Currency Switcher"
 
-#: gettext/gettext-lib-config.php:24
+#: gettext/gettext-lib-config.php:26
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce UPC, EAN, and ISBN"
 msgstr "(plugin) WooCommerce UPC, EAN, and ISBN"
 
-#: gettext/gettext-lib-config.php:25
+#: gettext/gettext-lib-config.php:27
 msgctxt "lib file description"
 msgid "(plugin) Product GTIN for WooCommerce"
 msgstr "(plugin) Product GTIN for WooCommerce"
 
-#: gettext/gettext-lib-config.php:26
+#: gettext/gettext-lib-config.php:28
 msgctxt "lib file description"
 msgid "(plugin) YITH WooCommerce Brands Add-on"
 msgstr "(plugin) YITH WooCommerce Brands Add-on"
 
-#: gettext/gettext-lib-config.php:27
+#: gettext/gettext-lib-config.php:29
 msgctxt "lib file description"
 msgid "(plugin) The Events Calendar"
 msgstr "(plugin) The Events Calendar"
 
-#: gettext/gettext-lib-config.php:28
+#: gettext/gettext-lib-config.php:30
 msgctxt "lib file description"
 msgid "(plugin) GravityView"
 msgstr "(plugin) GravityView"
 
-#: gettext/gettext-lib-config.php:29
+#: gettext/gettext-lib-config.php:31
 msgctxt "lib file description"
 msgid "(plugin) Simple Job Board"
 msgstr "(plugin) Simple Job Board"
 
-#: gettext/gettext-lib-config.php:30
+#: gettext/gettext-lib-config.php:32
 msgctxt "lib file description"
 msgid "(plugin) WP Job Manager"
 msgstr "(plugin) WP Job Manager"
 
-#: gettext/gettext-lib-config.php:31
+#: gettext/gettext-lib-config.php:33
 msgctxt "lib file description"
 msgid "(plugin) Polylang"
 msgstr "(plugin) Polylang"
 
-#: gettext/gettext-lib-config.php:32
+#: gettext/gettext-lib-config.php:34
 msgctxt "lib file description"
 msgid "(plugin) WPML"
 msgstr "(plugin) WPML"
 
-#: gettext/gettext-lib-config.php:33
+#: gettext/gettext-lib-config.php:35
 msgctxt "lib file description"
 msgid "(plugin) Perfect Images"
 msgstr "(plugin) Perfect Images"
 
-#: gettext/gettext-lib-config.php:34
+#: gettext/gettext-lib-config.php:36
 msgctxt "lib file description"
 msgid "(plugin) Rate my Post"
 msgstr "(plugin) Rate my Post"
 
-#: gettext/gettext-lib-config.php:35
+#: gettext/gettext-lib-config.php:37
 msgctxt "lib file description"
 msgid "(plugin) WP-PostRatings"
 msgstr "(plugin) WP-PostRatings"
 
-#: gettext/gettext-lib-config.php:36
+#: gettext/gettext-lib-config.php:38
 msgctxt "lib file description"
 msgid "(plugin) WP Recipe Maker"
 msgstr "(plugin) WP Recipe Maker"
 
-#: gettext/gettext-lib-config.php:37
+#: gettext/gettext-lib-config.php:39
 msgctxt "lib file description"
 msgid "(plugin) WP Product Review"
 msgstr "(plugin) WP Product Review"
 
-#: gettext/gettext-lib-config.php:38
+#: gettext/gettext-lib-config.php:40
 msgctxt "lib file description"
 msgid "(plugin) Yotpo Social Reviews for WooCommerce"
 msgstr "(plugin) Yotpo Social Reviews for WooCommerce"
 
-#: gettext/gettext-lib-config.php:39
+#: gettext/gettext-lib-config.php:41
 msgctxt "lib file description"
 msgid "(plugin) All in One SEO Pack"
 msgstr "(plugin) All in One SEO Pack"
 
-#: gettext/gettext-lib-config.php:40
+#: gettext/gettext-lib-config.php:42
 msgctxt "lib file description"
 msgid "(plugin) Rank Math SEO"
 msgstr "(plugin) Rank Math SEO"
 
-#: gettext/gettext-lib-config.php:41
+#: gettext/gettext-lib-config.php:43
 msgctxt "lib file description"
 msgid "(plugin) The SEO Framework"
 msgstr "(plugin) The SEO Framework"
 
-#: gettext/gettext-lib-config.php:42
+#: gettext/gettext-lib-config.php:44
 msgctxt "lib file description"
 msgid "(plugin) SEOPress"
 msgstr "(plugin) SEOPress"
 
-#: gettext/gettext-lib-config.php:43
+#: gettext/gettext-lib-config.php:45
 msgctxt "lib file description"
 msgid "(plugin) WP Meta SEO"
 msgstr "(plugin) WP Meta SEO"
 
-#: gettext/gettext-lib-config.php:44
+#: gettext/gettext-lib-config.php:46
 msgctxt "lib file description"
 msgid "(plugin) Yoast SEO"
 msgstr "(plugin) Yoast SEO"
 
-#: gettext/gettext-lib-config.php:45
+#: gettext/gettext-lib-config.php:47
 msgctxt "lib file description"
 msgid "(plugin) Co-Authors Plus"
 msgstr "(plugin) Co-Authors Plus"
 
-#: gettext/gettext-lib-config.php:46
+#: gettext/gettext-lib-config.php:48
 msgctxt "lib file description"
 msgid "(plugin) Ultimate Member"
 msgstr "(plugin) Ultimate Member"
 
-#: gettext/gettext-lib-config.php:47
+#: gettext/gettext-lib-config.php:49
 msgctxt "lib file description"
 msgid "(plugin) Elementor Website Builder"
 msgstr "(plugin) Elementor Website Builder"
 
-#: gettext/gettext-lib-config.php:48
+#: gettext/gettext-lib-config.php:50
 msgctxt "lib file description"
 msgid "(code) Schema Type Article [schema_type:article]"
 msgstr "(code) Type de Schéma Article [schema_type:article]"
 
-#: gettext/gettext-lib-config.php:49
+#: gettext/gettext-lib-config.php:51
 msgctxt "lib file description"
 msgid "(code) Schema Type Audiobook [schema_type:book.audio]"
 msgstr "(code) Type de Schéma Audiobook [schema_type:book.audio]"
 
-#: gettext/gettext-lib-config.php:50
+#: gettext/gettext-lib-config.php:52
 msgctxt "lib file description"
 msgid "(code) Schema Type Blog [schema_type:blog]"
 msgstr "(code) Type de Schéma Blog [schema_type:blog]"
 
-#: gettext/gettext-lib-config.php:51
+#: gettext/gettext-lib-config.php:53
 msgctxt "lib file description"
 msgid "(code) Schema Type Book [schema_type:book]"
 msgstr "(code) Type de Schéma Book [schema_type:book]"
 
-#: gettext/gettext-lib-config.php:52
+#: gettext/gettext-lib-config.php:54
 msgctxt "lib file description"
 msgid "(code) Schema Type Brand [schema_type:brand]"
 msgstr "(code) Type de Schéma Brand [schema_type:brand]"
 
-#: gettext/gettext-lib-config.php:53
+#: gettext/gettext-lib-config.php:55
 msgctxt "lib file description"
 msgid "(code) Schema Type Claim Review [schema_type:review.claim]"
 msgstr "(code) Type de Schéma Claim Review [schema_type:review.claim]"
 
-#: gettext/gettext-lib-config.php:54
+#: gettext/gettext-lib-config.php:56
 msgctxt "lib file description"
 msgid "(code) Schema Type Collection Page [schema_type:webpage.collection]"
 msgstr "(code) Type de Schéma Collection Page [schema_type:webpage.collection]"
 
-#: gettext/gettext-lib-config.php:55
+#: gettext/gettext-lib-config.php:57
 msgctxt "lib file description"
 msgid "(code) Schema Type Course [schema_type:course]"
 msgstr "(code) Type de Schéma Course [schema_type:course]"
 
-#: gettext/gettext-lib-config.php:56
+#: gettext/gettext-lib-config.php:58
 msgctxt "lib file description"
 msgid "(code) Schema Type CreativeWork [schema_type:creative.work]"
 msgstr "(code) Type de Schéma CreativeWork [schema_type:creative.work]"
 
-#: gettext/gettext-lib-config.php:57
+#: gettext/gettext-lib-config.php:59
 msgctxt "lib file description"
 msgid "(code) Schema Type Event [schema_type:event]"
 msgstr "(code) Type de Schéma Event [schema_type:event]"
 
-#: gettext/gettext-lib-config.php:58
+#: gettext/gettext-lib-config.php:60
 msgctxt "lib file description"
 msgid "(code) Schema Type FAQPage [schema_type:webpage.faq]"
 msgstr "(code) Type de Schéma FAQPage [schema_type:webpage.faq]"
 
-#: gettext/gettext-lib-config.php:59
+#: gettext/gettext-lib-config.php:61
 msgctxt "lib file description"
 msgid "(code) Schema Type Food Establishment [schema_type:food.establishment]"
 msgstr "(code) Type de Schéma Food Establishment [schema_type:food.establishment]"
 
-#: gettext/gettext-lib-config.php:60
+#: gettext/gettext-lib-config.php:62
 msgctxt "lib file description"
 msgid "(code) Schema Type How-To [schema_type:howto]"
 msgstr "(code) Type de Schéma How-To [schema_type:howto]"
 
-#: gettext/gettext-lib-config.php:61
+#: gettext/gettext-lib-config.php:63
 msgctxt "lib file description"
 msgid "(code) Schema Type ItemList [schema_type:item.list]"
 msgstr "(code) Type de Schéma ItemList [schema_type:item.list]"
 
-#: gettext/gettext-lib-config.php:62
+#: gettext/gettext-lib-config.php:64
 msgctxt "lib file description"
 msgid "(code) Schema Type Job Posting [schema_type:job.posting]"
 msgstr "(code) Type de Schéma Job Posting [schema_type:job.posting]"
 
-#: gettext/gettext-lib-config.php:63
+#: gettext/gettext-lib-config.php:65
 msgctxt "lib file description"
 msgid "(code) Schema Type Local Business [schema_type:local.business]"
 msgstr "(code) Type de Schéma Local Business [schema_type:local.business]"
 
-#: gettext/gettext-lib-config.php:64
+#: gettext/gettext-lib-config.php:66
 msgctxt "lib file description"
 msgid "(code) Schema Type Movie [schema_type:movie]"
 msgstr "(code) Type de Schéma Movie [schema_type:movie]"
 
-#: gettext/gettext-lib-config.php:65
+#: gettext/gettext-lib-config.php:67
 msgctxt "lib file description"
 msgid "(code) Schema Type Organization [schema_type:organization]"
 msgstr "(code) Type de Schéma Organization [schema_type:organization]"
 
-#: gettext/gettext-lib-config.php:66
+#: gettext/gettext-lib-config.php:68
 msgctxt "lib file description"
 msgid "(code) Schema Type Person [schema_type:person]"
 msgstr "(code) Type de Schéma Person [schema_type:person]"
 
-#: gettext/gettext-lib-config.php:67
+#: gettext/gettext-lib-config.php:69
 msgctxt "lib file description"
 msgid "(code) Schema Type Place [schema_type:place]"
 msgstr "(code) Type de Schéma Place [schema_type:place]"
 
-#: gettext/gettext-lib-config.php:68
+#: gettext/gettext-lib-config.php:70
 msgctxt "lib file description"
 msgid "(code) Schema Type Product [schema_type:product]"
 msgstr "(code) Type de Schéma Product [schema_type:product]"
 
-#: gettext/gettext-lib-config.php:69
+#: gettext/gettext-lib-config.php:71
 msgctxt "lib file description"
 msgid "(code) Schema Type Product Group [schema_type:product.group]"
 msgstr "(code) Type de Schéma ProductGroup [schema_type:product.group]"
 
-#: gettext/gettext-lib-config.php:70
+#: gettext/gettext-lib-config.php:72
 msgctxt "lib file description"
 msgid "(code) Schema Type Profile Page [schema_type:webpage.profile]"
 msgstr "(code) Type de Schéma Profile Page [schema_type:webpage.profile]"
 
-#: gettext/gettext-lib-config.php:71
+#: gettext/gettext-lib-config.php:73
 msgctxt "lib file description"
 msgid "(code) Schema Type QAPage [schema_type:webpage.qa]"
 msgstr "(code) Type de Schéma QAPage [schema_type:webpage.qa]"
 
-#: gettext/gettext-lib-config.php:72
+#: gettext/gettext-lib-config.php:74
 msgctxt "lib file description"
 msgid "(code) Schema Type Question and Answer [schema_type:question]"
 msgstr "(code) Type de Schéma Question and Answer [schema_type:question]"
 
-#: gettext/gettext-lib-config.php:73
+#: gettext/gettext-lib-config.php:75
 msgctxt "lib file description"
 msgid "(code) Schema Type Recipe [schema_type:recipe]"
 msgstr "(code) Type de Schéma Recipe [schema_type:recipe]"
 
-#: gettext/gettext-lib-config.php:74
+#: gettext/gettext-lib-config.php:76
 msgctxt "lib file description"
 msgid "(code) Schema Type Review [schema_type:review]"
 msgstr "(code) Type de Schéma Review [schema_type:review]"
 
-#: gettext/gettext-lib-config.php:75
+#: gettext/gettext-lib-config.php:77
 msgctxt "lib file description"
 msgid "(code) Schema Type Search Results Page [schema_type:webpage.search.results]"
 msgstr "(code) Type de Schéma Search Results Page [schema_type:webpage.search.results]"
 
-#: gettext/gettext-lib-config.php:76
+#: gettext/gettext-lib-config.php:78
 msgctxt "lib file description"
 msgid "(code) Schema Type Software Application [schema_type:software.application]"
 msgstr "(code) Type de Schéma Software Application [schema_type:software.application]"
 
-#: gettext/gettext-lib-config.php:77
+#: gettext/gettext-lib-config.php:79
 msgctxt "lib file description"
 msgid "(code) Schema Type Thing [schema_type:thing]"
 msgstr "(code) Type de Schéma Thing [schema_type:thing]"
 
-#: gettext/gettext-lib-config.php:78
+#: gettext/gettext-lib-config.php:80
 msgctxt "lib file description"
 msgid "(code) Schema Type WebPage [schema_type:webpage]"
 msgstr "(code) Type de Schéma WebPage [schema_type:webpage]"
 
-#: gettext/gettext-lib-config.php:79
+#: gettext/gettext-lib-config.php:81
 msgctxt "lib file description"
 msgid "(code) Schema Type WebSite [schema_type:website]"
 msgstr "(code) Type de Schéma WebSite [schema_type:website]"
 
-#: gettext/gettext-lib-config.php:80
+#: gettext/gettext-lib-config.php:82
 msgctxt "lib file description"
 msgid "(code-plus) Schema Property aggregateRating"
 msgstr "(code-plus) Propriété de Schéma aggregateRating"
 
-#: gettext/gettext-lib-config.php:81
+#: gettext/gettext-lib-config.php:83
 msgctxt "lib file description"
 msgid "(code-plus) Schema Property hasPart"
 msgstr "(code-plus) Propriété de Schéma hasPart"
 
-#: gettext/gettext-lib-config.php:82
+#: gettext/gettext-lib-config.php:84
 msgctxt "lib file description"
 msgid "(code-plus) Schema Property review"
 msgstr "(code-plus) Propriété de Schéma review"
 
-#: gettext/gettext-lib-config.php:83
+#: gettext/gettext-lib-config.php:85
 msgctxt "lib file description"
 msgid "(api) Get Facebook Video Data"
 msgstr "(api) Obtenir données vidéo Facebook"
 
-#: gettext/gettext-lib-config.php:84
+#: gettext/gettext-lib-config.php:86
 msgctxt "lib file description"
 msgid "(api) Get Gravatar Image Data"
 msgstr "(api) Obtenir données d'image Gravatar"
 
-#: gettext/gettext-lib-config.php:85
+#: gettext/gettext-lib-config.php:87
 msgctxt "lib file description"
 msgid "(api) Get Slideshare Presentation Data"
 msgstr "(api) Obtenir données présentation Slideshare"
 
-#: gettext/gettext-lib-config.php:86
+#: gettext/gettext-lib-config.php:88
 msgctxt "lib file description"
 msgid "(api) Get Soundcloud Track Data"
 msgstr "(api) Obtenir données piste Soundcloud"
 
-#: gettext/gettext-lib-config.php:87
+#: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
 msgid "(api) Get Vimeo Video Data"
 msgstr "(api) Obtenir données vidéo Vimeo"
 
-#: gettext/gettext-lib-config.php:88
+#: gettext/gettext-lib-config.php:90
 msgctxt "lib file description"
 msgid "(api) Get Wistia Video Data"
 msgstr "(api) Obtenir données vidéo Wistia"
 
-#: gettext/gettext-lib-config.php:89
+#: gettext/gettext-lib-config.php:91
 msgctxt "lib file description"
 msgid "(api) Get WordPress Video Data"
 msgstr "(api) Obtenir données vidéo WordPress"
 
-#: gettext/gettext-lib-config.php:90
+#: gettext/gettext-lib-config.php:92
 msgctxt "lib file description"
 msgid "(api) Get YouTube Video and Playlist Data"
 msgstr "(api) Obtenir données vidéo et liste YouTube"
 
-#: gettext/gettext-lib-config.php:91 lib/admin-filters.php:170
+#: gettext/gettext-lib-config.php:93 lib/admin-filters.php:170
 msgctxt "lib file description"
 msgid "(feature) Upscale Media Library Images"
 msgstr "(feature) Agrandir les images de la médiathèque"
 
-#: gettext/gettext-lib-config.php:92
+#: gettext/gettext-lib-config.php:94
 msgctxt "lib file description"
 msgid "(api) Get Shopper Approved Review Data"
 msgstr "(api) Obtenir données critique Shopper Approved"
 
-#: gettext/gettext-lib-config.php:93
+#: gettext/gettext-lib-config.php:95
 msgctxt "lib file description"
 msgid "(api) Get Stamped.io Review Data"
 msgstr "(api) Obtenir données critique Stamped.io"
 
-#: gettext/gettext-lib-config.php:94
+#: gettext/gettext-lib-config.php:96
 msgctxt "lib file description"
 msgid "(feature) URL Shortening Services"
 msgstr "(feature) Services de raccourcissement d'URL"
 
-#: gettext/gettext-lib-config.php:95
+#: gettext/gettext-lib-config.php:97
 msgctxt "lib file description"
 msgid "Profile SSO - Social and Search Optimization"
 msgstr "SSO du profil - optimisation sociale et de recherche"
 
-#: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:103
+#: gettext/gettext-lib-config.php:98 gettext/gettext-lib-config.php:105
 #: lib/admin-head-suggest-options.php:111 lib/messages.php:1124
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
 
-#: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:104
+#: gettext/gettext-lib-config.php:99 gettext/gettext-lib-config.php:106
 #: lib/messages.php:469
 msgctxt "lib file description"
 msgid "Plugin Add-ons"
 msgstr "Ajouts d'extension"
 
-#: gettext/gettext-lib-config.php:98 gettext/gettext-lib-config.php:105
+#: gettext/gettext-lib-config.php:100 gettext/gettext-lib-config.php:107
 #: lib/messages-info.php:77 lib/messages.php:420 lib/messages.php:431
 #: lib/messages.php:472
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr "Licences Premium"
 
-#: gettext/gettext-lib-config.php:99
+#: gettext/gettext-lib-config.php:101
 msgctxt "lib file description"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: gettext/gettext-lib-config.php:100
+#: gettext/gettext-lib-config.php:102
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr "Guide de config."
 
-#: gettext/gettext-lib-config.php:101
+#: gettext/gettext-lib-config.php:103
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr "Réglages essentiels"
 
-#: gettext/gettext-lib-config.php:102
+#: gettext/gettext-lib-config.php:104
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#: gettext/gettext-lib-config.php:106 lib/messages-info.php:262
+#: gettext/gettext-lib-config.php:108 lib/messages-info.php:262
 #: lib/messages.php:503
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr "Outils et actions"
 
-#: gettext/gettext-lib-config.php:107
+#: gettext/gettext-lib-config.php:109
 msgctxt "lib file description"
 msgid "Add Person"
 msgstr "Ajouter une personne"
 
-#: gettext/gettext-lib-config.php:109
+#: gettext/gettext-lib-config.php:111
 msgctxt "plugin description"
 msgid "Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
-#: gettext/gettext-lib-config.php:110
+#: gettext/gettext-lib-config.php:112
 msgctxt "plugin name"
 msgid "WPSSO Add Five Stars"
 msgstr "WPSSO Ajouter cinq étoiles"
 
-#: gettext/gettext-lib-config.php:111
+#: gettext/gettext-lib-config.php:113
 msgctxt "plugin description"
 msgid "Add a 5 star rating and review from the site organization if the Schema markup does not already have an 'aggregateRating' property."
 msgstr "Ajoute une note de 5 étoiles et une critiques de l'organisation du site si le balisage de Schéma n'a pas déjà une propriété 'aggregateRating'."
 
-#: gettext/gettext-lib-config.php:112
+#: gettext/gettext-lib-config.php:114
 msgctxt "plugin name"
 msgid "WPSSO Mobile App Meta Tags"
 msgstr "WPSSO Balises méta d'App mobile"
 
-#: gettext/gettext-lib-config.php:113
+#: gettext/gettext-lib-config.php:115
 msgctxt "plugin description"
 msgid "Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari banner and Twitter's App Card."
 msgstr "Balises méta Apple Store / iTunes et Google Play App pour la bannière mobile Safari de Apple et la carte app de Twitter."
 
-#: gettext/gettext-lib-config.php:114
+#: gettext/gettext-lib-config.php:116
 msgctxt "plugin name"
 msgid "WPSSO Schema Breadcrumbs Markup"
 msgstr "WPSSO Balisage de Schéma fil d'Ariane"
 
-#: gettext/gettext-lib-config.php:115
+#: gettext/gettext-lib-config.php:117
 msgctxt "plugin description"
 msgid "Schema BreadcrumbList markup in JSON-LD format for Google Rich Results."
 msgstr "Balisage de Schéma BreadcrumbList en format JSON-LD pour résultats enrichis Google."
 
-#: gettext/gettext-lib-config.php:116
+#: gettext/gettext-lib-config.php:118
 msgctxt "plugin name"
 msgid "WPSSO Commerce Manager Catalog Feed XML"
 msgstr "WPSSO Flux XML de catalogue Gestionnaire des ventes"
 
-#: gettext/gettext-lib-config.php:117
+#: gettext/gettext-lib-config.php:119
 msgctxt "plugin description"
 msgid "Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce and custom product pages."
 msgstr "Flux XML de catalogue Gestionnaire des ventes Facebook et Instagram pour WooCommerce et pages de produits personnalisées."
 
-#: gettext/gettext-lib-config.php:118
+#: gettext/gettext-lib-config.php:120
 msgctxt "plugin name"
 msgid "WPSSO FAQ Manager"
 msgstr "WPSSO Gestionnaire de FAQ"
 
-#: gettext/gettext-lib-config.php:119
+#: gettext/gettext-lib-config.php:121
 msgctxt "plugin description"
 msgid "Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content."
 msgstr "Créez des pages FAQ et questions / réponses avec codes courts facultatifs pour inclure des FAQs et questions / réponses dans votre contenu."
 
-#: gettext/gettext-lib-config.php:120
+#: gettext/gettext-lib-config.php:122
 msgctxt "plugin name"
 msgid "WPSSO Google Merchant Feed XML"
 msgstr "WPSSO Flux XML de marchand Google"
 
-#: gettext/gettext-lib-config.php:121
+#: gettext/gettext-lib-config.php:123
 msgctxt "plugin description"
 msgid "Google Merchant Feed XMLs for WooCommerce and custom product pages, with multilingual support."
 msgstr "Flux XML de marchands Google pour WooCommerce et produits personnalisés avec support multilingue."
-
-#: gettext/gettext-lib-config.php:122
-msgctxt "plugin name"
-msgid "WPSSO Merchant Return Policy Manager"
-msgstr "WPSSO Gestionnaire politique de retour de marchand"
-
-#: gettext/gettext-lib-config.php:123
-msgctxt "plugin description"
-msgid "Manage any number of Merchant Return Policies for Google Merchant listings."
-msgstr "Gérez n'importe quel nombre de politiques de retour de marchand pour les listes de marchands Google."
 
 #: gettext/gettext-lib-config.php:124
 msgctxt "plugin name"
@@ -3461,8 +3461,8 @@ msgstr "Participation par défaut"
 #: gettext/gettext-lib-pro.php:140 lib/pro/admin/advanced.php:1036
 #: lib/std/admin/advanced.php:961
 msgctxt "option label"
-msgid "Default Physical Venue"
-msgstr "Lieu physique par défaut pour l'événement"
+msgid "Default Event Venue"
+msgstr "Lieu par défaut pour l'événement"
 
 #: gettext/gettext-lib-pro.php:141 lib/pro/admin/advanced.php:1042
 #: lib/std/admin/advanced.php:968
@@ -4095,8 +4095,8 @@ msgstr "URL de l'événement en ligne"
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:755
 #: lib/std/admin/edit.php:606
 msgctxt "option label"
-msgid "Event Physical Venue"
-msgstr "Lieu physique pour l'événement"
+msgid "Event Venue"
+msgstr "Lieu pour l'événement"
 
 #: gettext/gettext-lib-pro.php:269 lib/pro/admin/edit.php:763
 #: lib/std/admin/edit.php:615
@@ -5299,12 +5299,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5304
+#: lib/config.php:5240
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5304
+#: lib/config.php:5240
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"

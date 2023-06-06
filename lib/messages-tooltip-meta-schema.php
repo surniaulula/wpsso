@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_location_id':	// Event Physical Venue.
+						case 'tooltip-meta-schema_event_location_id':	// Event Venue.
 
 							$text = __( 'Select a physical venue for the event.', 'wpsso' );
 

@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_event_location_id':	// Default Physical Venue.
+				case 'tooltip-schema_def_event_location_id':	// Default Event Venue.
 
 					$text = __( 'Select a default venue for the Schema Event type.', 'wpsso' );
 

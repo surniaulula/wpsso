@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.13.0\n"
+"Project-Id-Version: WPSSO Core 15.13.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3650,7 +3650,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:140 lib/pro/admin/advanced.php:1036
 #: lib/std/admin/advanced.php:961
 msgctxt "option label"
-msgid "Default Physical Venue"
+msgid "Default Event Venue"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:141 lib/pro/admin/advanced.php:1042
@@ -4286,7 +4286,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:755
 #: lib/std/admin/edit.php:606
 msgctxt "option label"
-msgid "Event Physical Venue"
+msgid "Event Venue"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:269 lib/pro/admin/edit.php:763

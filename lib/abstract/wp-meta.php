@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_lang'                  => $def_lang,						// Event Language.
 					'schema_event_attendance'            => $opts[ 'schema_def_event_attendance' ],			// Event Attendance.
 					'schema_event_online_url'            => '',							// Event Online URL.
-					'schema_event_location_id'           => $opts[ 'schema_def_event_location_id' ],		// Event Physical Venue.
+					'schema_event_location_id'           => $opts[ 'schema_def_event_location_id' ],		// Event Venue.
 					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer Org.
 					'schema_event_organizer_person_id'   => $opts[ 'schema_def_event_organizer_person_id' ],	// Organizer Person.
 					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer Org.
