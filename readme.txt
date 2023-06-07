@@ -234,12 +234,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.1-dev.2 (2023/06/06)**
+**Version 15.13.1-dev.3 (2023/06/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated some label string values for consistency with the WPSSO MRP and OPM add-ons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -669,9 +669,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.1-dev.2 =
+= 15.13.1-dev.3 =
 
-(2023/06/06) None.
+(2023/06/06) Updated some label string values for consistency with the WPSSO MRP and OPM add-ons.
 
 = 15.13.0 =
 
