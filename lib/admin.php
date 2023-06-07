@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$new_avail = $this->p->check->get_avail();
 
 			foreach ( array( 'p', 'p_ext' ) as $key ) {	// Remove plugin and add-on information.
-			
+
 				unset( $old_avail[ $key], $new_avail[ $key ] );
 			}
 
@@ -3324,7 +3324,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $icons[ '1x' ] ) ) {
 
 					$img_src = $icons[ '1x' ];
-					
+
 					$img_srcset .= $icons[ '1x' ] . ' 128w, ';
 				}
 

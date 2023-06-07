@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			if ( is_admin() ) {
-			
+
 				$this->on_async_upload_update_toolbar_script();
 
 				if ( ! $doing_ajax ) {

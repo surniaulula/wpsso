@@ -1603,7 +1603,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$shipping_destinations = array();
 
 			foreach ( $all_countries as $country_code => $country_name ) {
-				
+
 				$shipping_destinations[] = array(
 					'destination_id'  => 'country-a2-' . $country_code,
 					'destination_rel' => '/',

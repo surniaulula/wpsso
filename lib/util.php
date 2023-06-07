@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->add_plugin_actions( $this, array( 'scheduled_task_started' => 1 ), $prio = -1000 );
 			$this->add_plugin_actions( $this, array( 'show_admin_notices' => 1 ), $prio = -1000, $ext = 'sucom' );
-			
+
 			/*
 			 * Log the locale change and clear the Sucom::get_locale() cache.
 			 */

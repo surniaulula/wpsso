@@ -646,15 +646,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= ' title="' . $title_transl . '"';
 				$html .= ' ' . $input_checked . '/>';
 				$html .= '&nbsp;&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
-			
+
 				foreach ( $event_names as $event_num => $event_name ) {
-					
+
 					$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
 
 					switch ( $event_name ) {
 
 						case 'on_change_unhide_rows':
-						
+
 							$def_hide_class = 'hide_' . esc_js( $input_name );
 							$def_show_class = 'hide_' . esc_js( $input_name . '_' . ( $input_checked ? 1 : 0 ) );
 
@@ -663,18 +663,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$html .= 'value = this.checked ? 1 : 0;';
 							$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $input_name ) . '_\' + value );';
 							$html .= '});';
-	
+
 							if ( $doing_ajax ) {
-	
+
 								$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
-	
+
 							} else {
-	
+
 								$html .= 'jQuery( window ).on( \'load\', function(){';
 								$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 								$html .= '});';
 							}
-	
+
 							$html .= '</script>' . "\n";
 
 							break;
@@ -689,9 +689,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 
 		public function get_checklist_countries( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
-			
+
 			$values = SucomUtil::get_alpha2_countries();
-			
+
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
 

@@ -2213,7 +2213,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
 			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
@@ -2282,7 +2282,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
 			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );

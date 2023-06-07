@@ -902,7 +902,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			if ( isset( $mrp_opts[ 'mrp_category' ] ) ) {
-			
+
 				switch ( basename( $mrp_opts[ 'mrp_category' ] ) ) {
 
 					case 'MerchantReturnFiniteReturnWindow':
@@ -923,6 +923,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
+			 * https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listings_merchant-return-policy
+			 *
 			 * The type of return fees. This property is only required if there's no cost to return the product. If you
 			 * use this property, you must set the value to https://schema.org/FreeReturn (other return fee types
 			 * aren't supported; if there are fees, use the returnShippingFeesAmount property instead).
@@ -932,7 +934,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'returnFees' ] = 'https://schema.org/FreeReturn';
 
 			} elseif ( ! empty( $mrp_opts[ 'mrp_shipping_currency' ] ) ) {
-				
+
 				$json_ret[ 'returnShippingFeesAmount' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', array(
 					'value'    => $mrp_opts[ 'mrp_shipping_fees' ],
 					'currency' => $mrp_opts[ 'mrp_shipping_currency' ],
