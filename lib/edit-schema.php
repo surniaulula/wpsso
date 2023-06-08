@@ -73,11 +73,11 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
 				),
 				'info_schema_faq' => array(
-					'tr_class'  => $type_row_class[ 'faq' ],
+					'tr_class'  => $type_row_class[ 'webpage.faq' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-faq' ) . '</td>',
 				),
 				'info_schema_qa' => array(
-					'tr_class'  => $type_row_class[ 'qa' ],
+					'tr_class'  => $type_row_class[ 'webpage.qa' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-qa' ) . '</td>',
 				),
 				'info_schema_question' => array(
@@ -218,13 +218,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_creative_work' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Creative Work Information', 'metabox title', 'wpsso' )
 				),
 				'schema_headline' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Headline', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_headline',
@@ -232,21 +232,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$limits[ 'schema_headline' ], $def_schema_headline, $is_disabled = false, $dep_id = 'schema_title' ),
 				),
 				'schema_text' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Full Text', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_text',
 					'content'  => $form->get_textarea( 'schema_text', $css_class = 'full_text', $css_id = '', $max_len = 0, $def_schema_text ),
 				),
 				'schema_keywords_csv' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Keywords', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_keywords_csv',
 					'content'  => $form->get_input( 'schema_keywords_csv', $css_class = 'wide', $css_id = '', $max_len = 0, $def_schema_keywords_csv ),
 				),
 				'schema_lang' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Language', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_lang',
@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$is_assoc = false, $schema_lang_disabled ),
 				),
 				'schema_family_friendly' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Family Friendly', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_family_friendly',
@@ -262,21 +262,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$this->p->cf[ 'form' ][ 'yes_no' ], $css_class = 'yes-no', $css_id = '', $is_assoc = true ),
 				),
 				'schema_copyright_year' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Copyright Year', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_copyright_year',
 					'content'  => $form->get_input( 'schema_copyright_year', $css_class = 'year', $css_id = '', $max_len = 0, $holder = true ),
 				),
 				'schema_license_url' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'License URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_license_url',
 					'content'  => $form->get_input( 'schema_license_url', $css_class = 'wide' ),
 				),
 				'schema_pub_org_id' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_pub_person_id' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_person_id',
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_prov_org_id' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Service Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_prov_person_id' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Service Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_person_id',
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_ispartof_url' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_ispartof_url',
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
 				 */
 				'schema_citation' => array(
-					'tr_class' => $type_row_class[ 'creative_work' ],
+					'tr_class' => $type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Reference Citations', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_citation',

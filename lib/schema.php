@@ -894,6 +894,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function refresh_schema_types() {
 
 			$this->get_schema_types_array( $flatten = true, $read_cache = false );
+
+			self::get_schema_type_row_class( $name = 'schema_type', $read_cache = false );
+			self::get_schema_type_row_class( $name = 'schema_review_item_type', $read_cache = false );
 		}
 
 		public function get_schema_types_select( $schema_types = null ) {
@@ -1357,8 +1360,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * Javascript classes to hide/show table rows by the selected schema type value.
+		 *
+		 * See WpssoSchema->refresh_schema_types().
 		 */
-		public static function get_schema_type_row_class( $name = 'schema_type' ) {
+		public static function get_schema_type_row_class( $name = 'schema_type', $read_cache = true ) {
 
 			static $local_cache = null;
 
@@ -1376,11 +1381,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$cache_salt  = __METHOD__;
 				$cache_id    = $cache_md5_pre . md5( $cache_salt );
-				$local_cache = get_transient( $cache_id );	// Returns false when not found.
+			
+				if ( $read_cache ) {
 
-				if ( isset( $local_cache[ $name ] ) ) {
+					$local_cache = get_transient( $cache_id );	// Returns false when not found.
 
-					return $local_cache[ $name ];
+					if ( isset( $local_cache[ $name ] ) ) {
+
+						return $local_cache[ $name ];
+					}
 				}
 			}
 
@@ -1389,56 +1398,56 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$local_cache = array();
 			}
 
-			$class_type_ids = array();
+			$type_ids = array();
 
 			switch ( $name ) {
 
 				case 'schema_type':
 
-					$class_type_ids = array(
-						'article'        => 'article',
-						'book'           => 'book',
-						'book_audio'     => 'book.audio',
-						'creative_work'  => 'creative.work',
-						'course'         => 'course',
-						'event'          => 'event',
-						'faq'            => 'webpage.faq',
-						'howto'          => 'howto',
-						'job_posting'    => 'job.posting',
-						'local_business' => 'local.business',
-						'movie'          => 'movie',
-						'organization'   => 'organization',
-						'person'         => 'person',
-						'place'          => 'place',
-						'product'        => 'product',
-						'qa'             => 'webpage.qa',
-						'question'       => 'question',
-						'recipe'         => 'recipe',
-						'review'         => 'review',
-						'review_claim'   => 'review.claim',
-						'software_app'   => 'software.application',
-						'webpage'        => 'webpage',
+					$type_ids = array(
+						'article',
+						'book',
+						'book.audio',
+						'creative.work',
+						'course',
+						'event',
+						'webpage.faq',
+						'howto',
+						'job.posting',
+						'local.business',
+						'movie',
+						'organization',
+						'person',
+						'place',
+						'product',
+						'webpage.qa',
+						'question',
+						'recipe',
+						'review',
+						'review.claim',
+						'software.application',
+						'webpage',
 					);
 
 					break;
 
 				case 'schema_review_item_type':
 
-					$class_type_ids = array(
-						'book'               => 'book',
-						'creative_work'      => 'creative.work',
-						'food_establishment' => 'food.establishment',
-						'local_business'     => 'local.business',
-						'movie'              => 'movie',
-						'place'              => 'place',
-						'product'            => 'product',
-						'software_app'       => 'software.application',
+					$type_ids = array(
+						'book',
+						'creative.work',
+						'food.establishment',
+						'local.business',
+						'movie',
+						'place',
+						'product',
+						'software.application',
 					);
 
 					break;
 			}
 
-			foreach ( $class_type_ids as $class_name => $type_id ) {
+			foreach ( $type_ids as $type_id ) {
 
 				switch ( $type_id ) {
 
@@ -1455,7 +1464,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						break;
 				}
 
-				$local_cache[ $name ][ $class_name ] = $wpsso->schema->get_children_css_class( $type_id,
+				$local_cache[ $name ][ $type_id ] = $wpsso->schema->get_children_css_class( $type_id,
 					$class_prefix = 'hide_' . $name, $exclude_match );
 			}
 
@@ -1556,7 +1565,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 
 				$css_classes  = $class_prefix;
-				$class_prefix = SucomUtil::sanitize_hookname( $class_prefix ) . '_';
+				$class_prefix = SucomUtil::sanitize_css_id( $class_prefix ) . '_';
 			}
 
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
@@ -1569,7 +1578,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$css_classes .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
+				$css_classes .= ' ' . $class_prefix . SucomUtil::sanitize_css_id( $child );
 			}
 
 			$css_classes = trim( $css_classes );

@@ -207,13 +207,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 * Schema CreativeWork > Book > Audiobook.
 				 */
 				'subsection_schema_audiobook' => array(
-					'tr_class' => $type_row_class[ 'book_audio' ],
+					'tr_class' => $type_row_class[ 'book.audio' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Audiobook Information', 'metabox title', 'wpsso' )
 				),
 				'schema_book_audio_duration_time' => array(
-					'tr_class' => $type_row_class[ 'book_audio' ],
+					'tr_class' => $type_row_class[ 'book.audio' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Audiobook Duration', 'option label', 'wpsso' ),
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 * Schema Review Subject: Creative Work.
 				 */
 				'schema_review_item_cw_author_type' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative_work' ],
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Author Type', 'option label', 'wpsso' ),
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'schema_review_item_cw_author_type', $this->p->cf[ 'form' ][ 'author_types' ] ),
 				),
 				'schema_review_item_cw_author_name' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative_work' ],
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Author Name', 'option label', 'wpsso' ),
@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_review_item_cw_author_url' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative_work' ],
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Author URL', 'option label', 'wpsso' ),
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_review_item_cw_pub' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative_work' ],
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Published Date', 'option label', 'wpsso' ),
@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_date_time_tz( 'schema_review_item_cw_pub' ),
 				),
 				'schema_review_item_cw_created' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative_work' ],
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Created Date', 'option label', 'wpsso' ),
@@ -472,13 +472,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 * Schema Creative Work > Review > Claim Review.
 				 */
 				'subsection_schema_claim_review' => array(
-					'tr_class' => $type_row_class[ 'review_claim' ],
+					'tr_class' => $type_row_class[ 'review.claim' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Claim Review Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_claim_reviewed' => array(
-					'tr_class' => $type_row_class[ 'review_claim' ],
+					'tr_class' => $type_row_class[ 'review.claim' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Short Summary of Claim', 'option label', 'wpsso' ),
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_review_claim_first_url' => array(
-					'tr_class' => $type_row_class[ 'review_claim' ],
+					'tr_class' => $type_row_class[ 'review.claim' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'First Appearance URL', 'option label', 'wpsso' ),
@@ -502,17 +502,17 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_software_app' => array(
-					'tr_class' => $type_row_class[ 'software_app' ],
+					'tr_class' => $type_row_class[ 'software.app' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Software App Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_software_app' => array(
-					'tr_class'  => $type_row_class[ 'software_app' ],
+					'tr_class'  => $type_row_class[ 'software.app' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_software_app_os' => array(
-					'tr_class' => $type_row_class[ 'software_app' ],
+					'tr_class' => $type_row_class[ 'software.app' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Operating System', 'option label', 'wpsso' ),
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_software_app_cat' => array(
-					'tr_class' => $type_row_class[ 'software_app' ],
+					'tr_class' => $type_row_class[ 'software.app' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
@@ -536,17 +536,17 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_qa' => array(
-					'tr_class' => $type_row_class[ 'qa' ],
+					'tr_class' => $type_row_class[ 'webpage.qa' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema QA Page Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_qa' => array(
-					'tr_class'  => $type_row_class[ 'qa' ],
+					'tr_class'  => $type_row_class[ 'webpage.qa' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_qa_desc' => array(
-					'tr_class' => $type_row_class[ 'qa' ],
+					'tr_class' => $type_row_class[ 'webpage.qa' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'QA Heading', 'option label', 'wpsso' ),
@@ -738,17 +738,17 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_job_posting' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Job Posting Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_job_posting' => array(
-					'tr_class'  => $type_row_class[ 'job_posting' ],
+					'tr_class'  => $type_row_class[ 'job.posting' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_job_title' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Job Title', 'option label', 'wpsso' ),
@@ -756,7 +756,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $def_schema_title, $css_class = 'wide' ),
 				),
 				'schema_job_hiring_org_id' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Hiring Organization', 'option label', 'wpsso' ),
@@ -765,7 +765,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_id' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Job Location', 'option label', 'wpsso' ),
@@ -774,7 +774,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_type' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Job Location Type', 'option label', 'wpsso' ),
@@ -783,7 +783,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_salary' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Base Salary', 'option label', 'wpsso' ),
@@ -794,7 +794,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						$form->get_no_select( 'schema_job_salary_period', $this->p->cf[ 'form' ][ 'time_text' ], 'short' ),
 				),
 				'schema_job_empl_type' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Employment Type', 'option label', 'wpsso' ),
@@ -802,7 +802,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_checklist( 'schema_job_empl_type', $this->p->cf[ 'form' ][ 'employment_type' ] ),
 				),
 				'schema_job_expire' => array(
-					'tr_class' => $type_row_class[ 'job_posting' ],
+					'tr_class' => $type_row_class[ 'job.posting' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Job Posting Expires', 'option label', 'wpsso' ),

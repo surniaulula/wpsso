@@ -661,17 +661,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$html .= '<script>';
 							$html .= 'jQuery( \'#checkbox_' . $input_id . '\' ).on( \'change\', function(){';
 							$html .= 'value = this.checked ? 1 : 0;';
-							$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $input_name ) . '_\' + value );';
+							$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $input_name ) . '_\' + value );';
 							$html .= '});';
 
 							if ( $doing_ajax ) {
 
-								$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+								$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 
 							} else {
 
 								$html .= 'jQuery( window ).on( \'load\', function(){';
-								$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+								$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 								$html .= '});';
 							}
 
@@ -1442,7 +1442,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$html .= '<script>';
 						$html .= 'jQuery( \'#select_' . $input_id . '\' ).on( \'change\', function(){';
-						$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
+						$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
 						$html .= '});';
 						$html .= '</script>' . "\n";
 
@@ -1460,7 +1460,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							if ( 'on_show_unhide_rows' === $event_name ) {
 
 								$html .= 'jQuery( \'tr#' . esc_js( $row_id ) . '\' ).on( \'show\', function(){';
-								$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+								$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 								$html .= '});';
 
 							} else {
@@ -1469,12 +1469,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								if ( $doing_ajax ) {
 
-									$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+									$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 
 								} else {
 
 									$html .= 'jQuery( window ).on( \'load\', function(){';
-									$html .= 'sucomChangeHideShowRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
+									$html .= 'sucomChangeHideUnhideRows( \'' . $def_hide_class . '\', \'' . $def_show_class . '\' );';
 									$html .= '});';
 								}
 							}

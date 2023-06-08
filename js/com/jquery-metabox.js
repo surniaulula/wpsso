@@ -332,9 +332,9 @@ function sucomViewUnhideRows( container_id, show_opts_key, hide_in_pre ) {
 }
 
 /*
- * Example: sucomChangeHideShowRows( "hide_schema_type", "hide_schema_type_article" );
+ * Example: sucomChangeHideUnhideRows( "hide_schema_type", "hide_schema_type_article" );
  */
-function sucomChangeHideShowRows( row_hide_class, row_show_class ) {
+function sucomChangeHideUnhideRows( row_hide_class, row_show_class ) {
 
 	if ( row_hide_class ) {
 
