@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.13.2-dev.2 (2023/06/07)**
+**Version 15.13.2-dev.3 (2023/06/08)**
 
 * **New Features**
 	* None.
@@ -684,9 +684,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.13.2-dev.2 =
+= 15.13.2-dev.3 =
 
-(2023/06/07) Fixed sanitation of periods for hide/unhide class names.
+(2023/06/08) Fixed sanitation of periods for hide/unhide class names.
 
 = 15.13.1 =
 
