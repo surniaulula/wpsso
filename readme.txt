@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.13.2-dev.2 (2023/06/07)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Fixed sanitation of periods for hide/unhide class names.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.5.
+	* WordPress v5.5.
+
 **Version 15.13.1 (2023/06/06)**
 
 * **New Features**
@@ -266,10 +280,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomForm->get_css_class_on_change()` method.
 	* Added a new `SucomUtil::sanitize_input_name()` method.
 	* Added a new `WpssoSchemaSingle::add_merchant_return_policy_data()` method.
-	* Renamed the `sucomSelectChangeUnhideRows()` function to `sucomChangeHideShowRows()` in js/com/jquery-metabox.js.
+	* Renamed the `sucomSelectChangeUnhideRows()` function to `sucomChangeHideUnhideRows()` in js/com/jquery-metabox.js.
 	* Refactored the `SucomUtil::sanitize_css_class()` method.
 	* Refactored the `SucomUtil::sanitize_css_id()` method.
-	* Refactored the `sucomChangeHideShowRows()` function in js/com/jquery-metabox.js.
+	* Refactored the `sucomChangeHideUnhideRows()` function in js/com/jquery-metabox.js.
 	* Refactored the `WpssoMessagesTooltipMeta->get()` method.
 * **Requires At Least**
 	* PHP v7.2.5.
@@ -669,6 +683,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.13.2-dev.2 =
+
+(2023/06/07) Fixed sanitation of periods for hide/unhide class names.
 
 = 15.13.1 =
 
