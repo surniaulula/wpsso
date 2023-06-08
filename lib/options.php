@@ -876,6 +876,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $is_option_upg ) {
 
+					/*
+					 * Refresh the Schema types transient cache and the minimized notice stylesheet immediately.
+					 */
+					$this->p->schema->refresh_schema_types();
+
+					$this->p->notice->refresh_notice_style();
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );

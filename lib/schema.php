@@ -1368,9 +1368,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $local_cache = null;
 
-			if ( isset( $local_cache[ $name ] ) && $read_cache ) {
+			if ( $read_cache ) {
 
-				return $local_cache[ $name ];
+				if ( isset( $local_cache[ $name ] ) ) {
+
+					return $local_cache[ $name ];
+				}
 			}
 
 			$wpsso =& Wpsso::get_instance();
@@ -1394,12 +1397,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( ! is_array( $local_cache ) || ! $read_cache ) {
-
-				$local_cache = array();
-			}
-
-			$type_ids = array();
+			$local_cache = array();
+			$type_ids    = array();
 
 			switch ( $name ) {
 
