@@ -502,17 +502,17 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_software_app' => array(
-					'tr_class' => $type_row_class[ 'software.app' ],
+					'tr_class' => $type_row_class[ 'software.application' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Schema Software App Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_software_app' => array(
-					'tr_class'  => $type_row_class[ 'software.app' ],
+					'tr_class'  => $type_row_class[ 'software.application' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'schema_software_app_os' => array(
-					'tr_class' => $type_row_class[ 'software.app' ],
+					'tr_class' => $type_row_class[ 'software.application' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Operating System', 'option label', 'wpsso' ),
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'schema_software_app_cat' => array(
-					'tr_class' => $type_row_class[ 'software.app' ],
+					'tr_class' => $type_row_class[ 'software.application' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Application Category', 'option label', 'wpsso' ),
