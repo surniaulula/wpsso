@@ -896,6 +896,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$this->get_schema_types_array( $flatten = true, $read_cache = false );
 
 			self::get_schema_type_row_class( $name = 'schema_type', $read_cache = false );
+
 			self::get_schema_type_row_class( $name = 'schema_review_item_type', $read_cache = false );
 		}
 
@@ -1367,7 +1368,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $local_cache = null;
 
-			if ( isset( $local_cache[ $name ] ) ) {
+			if ( isset( $local_cache[ $name ] ) && $read_cache ) {
 
 				return $local_cache[ $name ];
 			}
@@ -1393,7 +1394,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( ! is_array( $local_cache ) ) {
+			if ( ! is_array( $local_cache ) || ! $read_cache ) {
 
 				$local_cache = array();
 			}
