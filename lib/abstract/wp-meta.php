@@ -1653,20 +1653,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
-			if ( empty( $_POST[ WPSSO_META_NAME ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: ' . WPSSO_META_NAME . ' array is empty' );
-				}
-
-				return $md_prev;	// Return pre-existing (aka previous) options.
-			}
-
 			/*
 			 * Merge and sanitize the new options.
+			 *
+			 * If no options were changed, then merge and re-sanitize the previous options.
 			 */
-			$md_opts = $_POST[ WPSSO_META_NAME ];
+			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
 			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
 			$md_opts = SucomUtil::array_merge_recursive_distinct( $md_prev, $md_opts );	// Complete the array with previous options.
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
