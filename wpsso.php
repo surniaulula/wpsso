@@ -15,7 +15,7 @@
  * Requires At Least: 5.5
  * Tested Up To: 6.2.2
  * WC Tested Up To: 7.6.1
- * Version: 15.13.2
+ * Version: 15.14.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -596,16 +596,37 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return $wp_mofile;
 		}
 
+		/*
+		 * Check for defined WPSSO constants for admin and front-end.
+		 *
+		 * Return 'WPSSO_ADMIN_*' if is_admin() is true and the constant is defined, otherwise return 'WPSSO_*' if the
+		 * constant is defined, or return null. This allows for constants to be defined if necessary, like
+		 * WPSSO_ADMIN_DEBUG_HTML = false and WPSSO_DEBUG_HTML = true.
+		 */
+		public function get_const( $const_suffix ) {
+
+			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+
+				return 'WPSSO_ADMIN_' . $const_suffix;
+
+			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
+
+				return 'WPSSO_' . $const_suffix;
+			}
+
+			return null;	// Constant not defined.
+		}
+
 		public function get_const_status( $const_suffix ) {
 
-			$const_name = $this->get_const_name( $const_suffix );	// Returns null if constant not defined.
+			$const_name = $this->get_const( $const_suffix );	// Returns null if constant not defined.
 
 			return $const_name ? constant( $const_name ) : null;
 		}
 
 		public function get_const_status_transl( $const_suffix ) {
 
-			$const_name = $this->get_const_name( $const_suffix );	// Returns null if constant not defined.
+			$const_name = $this->get_const( $const_suffix );	// Returns null if constant not defined.
 
 			if ( $const_name ) {
 
@@ -618,27 +639,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			return '';
-		}
-
-		/*
-		 * Check for defined constants:
-		 *
-		 * 'WPSSO_ADMIN_*' if is_admin() is true.
-		 *
-		 * 'WPSSO_*' if is_admin() is false or 'WPSSO_ADMIN_*' is not defined.
-		 */
-		public function get_const_name( $const_suffix ) {
-
-			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
-
-				return 'WPSSO_ADMIN_' . $const_suffix;
-
-			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
-
-				return 'WPSSO_' . $const_suffix;
-			}
-
-			return null;	// Constant not defined.
 		}
 
 		public function get_lib_classnames( $type_dir ) {
@@ -778,7 +778,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->log( 'HTML debug mode is active' );
 			}
 
-			if ( is_admin() ) {
+			$doing_dev = $this->get_const( 'DEV' );
+
+			if ( ! $doing_dev && is_admin() ) {
 
 				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_msg   = '';

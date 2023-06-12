@@ -773,6 +773,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 								$type_id = $this->get_schema_type_id_for( 'page' );
 							}
+
+							/*
+							 * If we have a post mime type group (ie. audio, image, or video), then
+							 * check for a more precise schema type. If a schema type option for this
+							 * post mime type group is not available, then fallback to the current
+							 * schema type.
+							 */
+							if ( ! empty( $mod[ 'post_mime_group' ] ) ) {
+
+								$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] . '_' . $mod[ 'post_mime_group' ], $type_id );
+							}
 						}
 
 					} elseif ( $this->p->debug->enabled ) {
@@ -2614,17 +2625,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * then set the first media array element mainEntityOfPage to the page url, and set the page
 			 * mainEntityOfPage property to false (so it doesn't get defined later).
 			 */
-			$main_prop = $mod[ 'is_attachment' ] ? preg_replace( '/\/.*$/', '', $mod[ 'post_mime' ] ) : '';
+			$main_prop = $mod[ 'is_attachment' ] ? $mod[ 'post_mime_group' ] : '';
+
 			$main_prop = apply_filters( 'wpsso_json_media_main_prop', $main_prop, $mod );
 
 			if ( ! empty( $main_prop ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $main_prop . ' property is main entity' );
+					$wpsso->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' "' . $main_prop . '" property is main entity' );
 				}
 
-				if ( ! empty( $json_data[ $main_prop ] ) && is_array( $json_data[ $main_prop ] ) ) {
+				if ( empty( $json_data[ $main_prop ] ) || ! is_array( $json_data[ $main_prop ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' "' . $main_prop . '" property is empty or not an array' );
+					}
+
+				} else {
 
 					reset( $json_data[ $main_prop ] );
 
@@ -2634,14 +2653,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'mainEntityOfPage for ' . $main_prop . ' key ' . $media_key . ' = ' . $mt_og[ 'og:url' ] );
+							$wpsso->debug->log( 'mainEntityOfPage for "' . $main_prop . '" key ' . $media_key . ' = ' . $mt_og[ 'og:url' ] );
 						}
 
 						$json_data[ $main_prop ][ $media_key ][ 'mainEntityOfPage' ] = $mt_og[ 'og:url' ];
 
 					} elseif ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'mainEntityOfPage for ' . $main_prop . ' key ' . $media_key . ' already defined' );
+						$wpsso->debug->log( 'mainEntityOfPage for "' . $main_prop . '" key ' . $media_key . ' already defined' );
 					}
 
 					$json_data[ 'mainEntityOfPage' ] = false;

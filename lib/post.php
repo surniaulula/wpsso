@@ -251,14 +251,37 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {	// Just in case.
 
-					$mod[ 'post_type' ]          = get_post_type( $mod[ 'wp_obj' ] );			// Post type name.
 					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
-					$mod[ 'post_mime' ]          = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
+					$mod[ 'post_type' ]          = get_post_type( $mod[ 'wp_obj' ] );			// Post type name.
+					$mod[ 'post_mime_type' ]     = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
 					$mod[ 'post_status' ]        = get_post_status( $mod[ 'wp_obj' ] );			// Post status name.
 					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $mod[ 'wp_obj' ] );	// Post author id.
 					$mod[ 'post_coauthors' ]     = array();
 					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );		// ISO 8601 date or false.
 					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
+
+					/*
+					 * Find the post mime type group and subgroup values.
+					 * 
+					 * See wp_post_mime_type_where() in wordpress/wp-includes/post.php.
+					 */
+					if ( ! empty( $mod[ 'post_mime_type' ] ) ) {
+
+						if ( false !== $slashpos = strpos( $mod[ 'post_mime_type' ], '/' ) ) {
+
+							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '',
+								substr( $mod[ 'post_mime_type' ], 0, $slashpos ) );
+
+							$mod[ 'post_mime_subgroup' ] = preg_replace( '/[^-*.+a-zA-Z0-9]/', '',
+								substr( $mod[ 'post_mime_type' ], $slashpos + 1 ) );
+
+						} else {
+
+							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '', $mod[ 'post_mime_type' ] );
+							
+							$mod[ 'post_mime_subgroup' ] = '*';
+						}
+					}
 
 					if ( ! empty( $mod[ 'wp_obj' ]->post_parent ) ) {
 

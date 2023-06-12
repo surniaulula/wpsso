@@ -617,12 +617,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * Set the 'encodingFormat' property to the image mime type.
 				 */
-				$json_ret[ 'encodingFormat' ] = get_post_mime_type( $mod[ 'id' ] );
+				$json_ret[ 'encodingFormat' ] = $mod[ 'post_mime_type' ];
 
 				/*
 				 * Set the 'uploadDate' property to the image attachment publish time.
 				 */
-				$json_ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
+				$json_ret[ 'uploadDate' ] = $mod[ 'post_time' ];
 			}
 
 			if ( ! empty( $mt_single[ $mt_pre . ':alt' ] ) ) {

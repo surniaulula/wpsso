@@ -766,13 +766,17 @@ table.sucom-settings td textarea {
 	box-sizing:border-box;
 }
 
-table.sucom-settings td input[type="checkbox"] {
-	margin:6px;
-}
-
 table.sucom-settings td textarea { width:100%; }
 
-table.sucom-settings td select { width:255px; }	/* Default width. */
+table.sucom-settings td select,		/* Default width. */
+table.sucom-settings td select.og_type,
+table.sucom-settings td select.primary_term_id,
+table.sucom-settings td select.schema_type,
+table.sucom-settings td select.timezone,
+table.sucom-settings td input[type="text"],	/* Default width. */
+table.sucom-settings td input[type="text"].schema_type {
+	width:255px;
+}
 
 table.sucom-settings td select.xshort { width:60px; }
 
@@ -805,22 +809,14 @@ table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.update_filter { width:220px; }
 
-table.sucom-settings td select.timezone { width:255px; }
-
-table.sucom-settings td select.og_type,
-table.sucom-settings td select.schema_type,
-table.sucom-settings td select.primary_term_id,
-table.sucom-settings td select.long_name,
-table.sucom-settings td input[type="text"].long_name,
-table.sucom-settings td input[type="text"].schema_type {
-	width:340px;
-}
-
 table.sucom-settings td select.wide { width:100%; }
 
-table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
+table.sucom-settings td select.long_name,
+table.sucom-settings td input[type="text"].long_name { width:340px; }
 
-table.sucom-settings td input[type="text"] { width:255px; }	/* Default width. */
+table.sucom-settings td input[type="checkbox"] { margin:6px; }
+
+table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
 
 table.sucom-settings td input[type="text"].datepicker {
 	width:110px;

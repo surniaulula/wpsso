@@ -1466,7 +1466,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						if ( empty( $desc_text ) ) {
 
-							if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+							if ( $mod[ 'is_attachment' ] && 'image' === $mod[ 'post_mime_group' ] ) {
 
 								if ( $this->p->debug->enabled ) {
 

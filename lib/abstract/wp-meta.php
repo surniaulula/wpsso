@@ -192,7 +192,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'post_type'              => false,	// Post type name.
 			'post_type_label_plural' => false,	// Post type plural name.
 			'post_type_label_single' => false,	// Post type singular name.
-			'post_mime'              => false,	// Post mime type (ie. image/jpg).
+			'post_mime_type'         => false,	// Post mime type (ie. image/jpg).
+			'post_mime_group'        => false,	// Post mime group (ie. image).
+			'post_mime_subgroup'     => false,	// Post mime subgroup (ie. jpg).
 			'post_status'            => false,	// Post status name.
 			'post_author'            => false,	// Post author id.
 			'post_coauthors'         => array(),

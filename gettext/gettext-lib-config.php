@@ -165,7 +165,7 @@ _x( 'YouTube Channel URL', 'option value', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );
 _x( 'SSO Lang', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
-_x( 'SSO Description', 'column header', 'wpsso' );
+_x( 'SSO Desc', 'column header', 'wpsso' );
 _x( 'Document Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
 _x( 'API Response', 'option label', 'wpsso' );

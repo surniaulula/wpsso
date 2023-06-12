@@ -551,8 +551,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_ret = array();
 
-			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting all video preview images' );
@@ -578,6 +576,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+
+			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'size_names', $size_names );
+			}
 
 			if ( $num_diff >= 1 ) {	// Just in case.
 
@@ -957,21 +962,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$local_cache_attached_ids[ $post_id ] = array();
 
-					/*
-					 * Featured images are handled beforehand by WpssoMedia->get_featured().
-					 *
-					 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
-					 */
-					$featured_id = get_post_thumbnail_id( $post_id );
-
 					$images = get_children( array(
 						'post_parent'    => $post_id,
 						'post_type'      => 'attachment',
-						'post_mime_type' => 'image'
+						'post_mime_type' => 'image'	// Aka 'image/%' query.
 					), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
+
+					$featured_id = get_post_thumbnail_id( $post_id );
 
 					foreach ( $images as $attachment ) {
 
+						/*
+						 * Featured images are handled beforehand by WpssoMedia->get_featured().
+						 *
+						 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
+						 */
 						if ( ! empty( $attachment->ID ) && $featured_id !== $attachment->ID ) {
 
 							$local_cache_attached_ids[ $post_id ][] = $attachment->ID;

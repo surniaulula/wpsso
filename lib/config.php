@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.13.2',	// Plugin version.
-					'opt_version' => '971',		// Increment when changing default option values.
+					'version'     => '15.14.0-dev.2',	// Plugin version.
+					'opt_version' => '972',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1559,7 +1559,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'schema_type_for_attachment'        => 'webpage',
+					'schema_type_for_attachment'        => 'media.object',
+					'schema_type_for_attachment_audio'  => 'audio.object',
+					'schema_type_for_attachment_image'  => 'image.object',
+					'schema_type_for_attachment_video'  => 'video.object',
 					'schema_type_for_article'           => 'article',
 					'schema_type_for_book'              => 'book',
 					'schema_type_for_business'          => 'local.business',
@@ -2758,7 +2761,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'def_val'   => 'none',
 					),
 					'og_desc' => array(
-						'header'    => 'SSO Description',
+						'header'    => 'SSO Desc',
 						'mt_name'   => 'og:description',
 						'meta_key'  => '_wpsso_head_info_og_desc',
 						'orderby'   => true,
