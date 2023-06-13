@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/*
 			 * Instantiate WpssoUtilWooCommerce.
 			 */
-			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ?? FALSE ) {
 
 				if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
