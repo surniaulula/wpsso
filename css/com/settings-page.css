@@ -50,8 +50,8 @@ h1 > div.dashicons-before::before {
 	display:table-cell	!important;
 	visibility:visible	!important;
 	vertical-align:top;
-	width:255px;
-	min-width:255px;
+	width:245px;
+	min-width:245px;
 	padding:10px 0 0 20px;
 }
 
@@ -60,8 +60,8 @@ h1 > div.dashicons-before::before {
 	visibility:visible	!important;
 	padding:0;
 	margin:0 0 10px 0;
-	width:255px;
-	min-width:255px;
+	width:245px;
+	min-width:245px;
 	min-height:50px;
 }
 
@@ -99,13 +99,13 @@ h1 > div.dashicons-before::before {
 @media screen and ( max-width:1330px ) {
 
 	#side-column {
-		width:245px;
-		min-width:245px;
+		width:200px;
+		min-width:200px;
 	}
 
 	#side-column .side-box {
-		width:245px;
-		min-width:245px;
+		width:200px;
+		min-width:200px;
 	}
 }
 
@@ -122,14 +122,14 @@ h1 > div.dashicons-before::before {
 	#side-column {
 		display:block !important;
 		width:100%;
+		padding:0;
 	}
 
 	#side-column .side-box {
-		float:left;
-		width:33%;
-		min-height:580px;
-		margin:0;
-		padding:10px;
+		width:50%;
+		min-width:50%;
+		margin:0 auto;	/* Center the side box. */
+		padding:0;
 	}
 
 	#side-column .side-box-header h2 {
@@ -138,6 +138,14 @@ h1 > div.dashicons-before::before {
 
 	#side-column .side-box-content p {
 		text-align:center;
+	}
+}
+
+@media screen and ( max-width:800px ) {
+
+	#side-column .side-box {
+		width:75%;
+		min-width:75%;
 	}
 }
 

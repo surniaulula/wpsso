@@ -1272,7 +1272,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;
 			}
 
-			$opt_key      = 'schema_type_for_' . $opt_suffix;
+			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
 			$type_id      = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
 
@@ -1291,7 +1291,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;
 			}
 
-			$opt_key      = 'schema_type_for_' . $opt_suffix;
+			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
 			$type_id      = $this->p->opt->get_defaults( $opt_key );		// Uses a local cache.
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
 

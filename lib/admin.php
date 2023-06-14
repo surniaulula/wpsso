@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) ) {	// Settings page can be disabled.
 
-							$opt_key       = 'plugin_add_' . $menu_lib . '_' . $menu_id;
+							$opt_key       = SucomUtil::sanitize_key( 'plugin_add_' . $menu_lib . '_' . $menu_id );
 							$filter_name   = SucomUtil::sanitize_hookname( 'wpsso_add_menu_' . $menu_lib . '_item_' . $menu_id );
 							$add_menu_item = isset( $this->p->options[ $opt_key ] ) ? (bool) $this->p->options[ $opt_key ] : true;
 							$add_menu_item = apply_filters( $filter_name, $add_menu_item );

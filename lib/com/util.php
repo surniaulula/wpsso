@@ -1555,11 +1555,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
+		 * Sanitize an option key.
+		 *
 		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
-			if ( ! $allow_upper ) $key = strtolower( $key );
+			if ( ! $allow_upper ) {
+			
+				$key = strtolower( $key );
+			}
 
 			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
 

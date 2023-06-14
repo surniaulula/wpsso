@@ -743,16 +743,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-						$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-								'is_transl' => true,					// No label translation required.
-								'is_sorted' => true,					// No label sorting required.
-							)
-						) .
-					'</td>';
+					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . '</td>';
 			}
 
 			/*
@@ -768,21 +759,28 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array(
-							'json_var'  => 'schema_types',
-							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-							'is_transl' => true,					// No label translation required.
-							'is_sorted' => true,					// No label sorting required.
-						)
-					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'schema_type_for_pt' ] = '' .
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'schema_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
+
+			/*
+			 * Schema Type by Media Type.
+			 */
+			foreach ( array(
+				'schema_type_for_attachment_audio' => _x( 'Type for Media Type Audio', 'option label', 'wpsso' ),
+				'schema_type_for_attachment_image' => _x( 'Type for Media Type Image', 'option label', 'wpsso' ),
+				'schema_type_for_attachment_video' => _x( 'Type for Media Type Video', 'option label', 'wpsso' ),
+			) as $opt_key => $th_label ) {
+
+				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
+					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
+					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . '</td>';
+			}
 
 			/*
 			 * Schema Type by Post Type Archive.
@@ -795,15 +793,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array(
-							'json_var'  => 'schema_types',
-							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-							'is_transl' => true,					// No label translation required.
-							'is_sorted' => true,					// No label sorting required.
-						)
-					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			if ( ! empty( $type_select ) ) {
@@ -825,15 +816,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array(
-							'json_var'  => 'schema_types',
-							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-							'is_transl' => true,					// No label translation required.
-							'is_sorted' => true,					// No label sorting required.
-						)
-					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
