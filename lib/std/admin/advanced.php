@@ -734,11 +734,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type.
 			 */
 			foreach ( array(
-				'schema_type_for_home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'schema_type_for_home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'schema_type_for_user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
-				'schema_type_for_search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'schema_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
+				'schema_type_for_home_page'        => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_home_posts'       => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_user_page'        => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
+				'schema_type_for_search_page'      => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'schema_type_for_archive_page'     => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
+				'schema_type_for_attachment_audio' => _x( 'Type for Media Audio', 'option label', 'wpsso' ),
+				'schema_type_for_attachment_image' => _x( 'Type for Media Image', 'option label', 'wpsso' ),
+				'schema_type_for_attachment_video' => _x( 'Type for Media Video', 'option label', 'wpsso' ),
 			) as $opt_key => $th_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
@@ -767,20 +770,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'schema_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
-
-			/*
-			 * Schema Type by Media Type.
-			 */
-			foreach ( array(
-				'schema_type_for_attachment_audio' => _x( 'Type for Media Type Audio', 'option label', 'wpsso' ),
-				'schema_type_for_attachment_image' => _x( 'Type for Media Type Image', 'option label', 'wpsso' ),
-				'schema_type_for_attachment_video' => _x( 'Type for Media Type Video', 'option label', 'wpsso' ),
-			) as $opt_key => $th_label ) {
-
-				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
-					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type' ) . '</td>';
-			}
 
 			/*
 			 * Schema Type by Post Type Archive.
