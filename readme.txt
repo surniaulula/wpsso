@@ -234,16 +234,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.14.0-dev.3 (TBD)**
+**Version 15.14.0-dev.4 (2023/06/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new options under the SSO &gt; Advanced Settings &gt; Document Types &gt; Schema tab:
+		* Type for Media Type Audio
+		* Type for Media Type Image
+		* Type for Media Type Video
+	* Updated the default Schema type for the Post Type Media from "WebPage" to "Media.Object".
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Skip the reminder notice when debug mode is on and the 'WPSSO_DEV' constant is defined as true.
+	* Added new array keys in the `$mod` array:
+		* 'post_mime_group'
+		* 'post_mime_subgroup'
+	* Renamed array keys in the `$mod` array:
+		* 'post_mime' to 'post_mime_type'
 * **Requires At Least**
 	* PHP v7.2.5.
 	* WordPress v5.5.
@@ -698,9 +707,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.14.0-dev.3 =
+= 15.14.0-dev.4 =
 
-(TBD) None.
+(2023/06/14) Added new options under the SSO &gt; Advanced Settings &gt; Document Types &gt; Schema tab.
 
 = 15.13.2 =
 
