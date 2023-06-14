@@ -234,15 +234,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.14.0-dev.4 (2023/06/14)**
+**Version 15.14.0-b.1 (2023/06/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Document Types &gt; Schema tab:
-		* Type for Media Type Audio
-		* Type for Media Type Image
-		* Type for Media Type Video
+		* Type for Media Audio
+		* Type for Media Image
+		* Type for Media Video
 	* Updated the default Schema type for the Post Type Media from "WebPage" to "Media.Object".
 * **Bugfixes**
 	* None.
@@ -707,7 +707,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.14.0-dev.4 =
+= 15.14.0-b.1 =
 
 (2023/06/14) Added new options under the SSO &gt; Advanced Settings &gt; Document Types &gt; Schema tab.
 
