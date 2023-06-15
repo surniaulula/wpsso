@@ -80,11 +80,11 @@
 <li><em>Missing field "businessDays"</em></li>
 <li><em>Missing field "cutoffTime"</em></li>
 <li><em>Missing field "deliveryTime"</em></li>
-<li><em>Missing field "hasMerchantReturnPolicy"</em></li>
+<li><em>Missing field "hasMerchantReturnPolicy" (in "offers")</em></li>
 <li><em>Missing field "image"</em></li>
 <li><em>Missing field "priceRange"</em></li>
 <li><em>Missing field "review"</em></li>
-<li><em>Missing field "shippingDetails"</em></li>
+<li><em>Missing field "shippingDetails" (in "offers")</em></li>
 <li><em>Missing field "telephone"</em></li>
 <li><em>No global identifier provided (e.g. gtin mpn isbn)</em></li>
 <li><em>Not a known valid target type for the itemReviewed property</em></li>

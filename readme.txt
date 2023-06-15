@@ -80,11 +80,11 @@ Present your content at its best on social sites and in search results - no matt
 * *Missing field "businessDays"*
 * *Missing field "cutoffTime"*
 * *Missing field "deliveryTime"*
-* *Missing field "hasMerchantReturnPolicy"*
+* *Missing field "hasMerchantReturnPolicy" (in "offers")*
 * *Missing field "image"*
 * *Missing field "priceRange"*
 * *Missing field "review"*
-* *Missing field "shippingDetails"*
+* *Missing field "shippingDetails" (in "offers")*
 * *Missing field "telephone"*
 * *No global identifier provided (e.g. gtin mpn isbn)*
 * *Not a known valid target type for the itemReviewed property*
