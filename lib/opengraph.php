@@ -775,6 +775,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				switch ( $this->p->options[ 'plugin_og_types_select_format' ] ) {
 
+					case 'name':	// Options default.
+
+						$select[ $type_id ] = $type_name;
+
+						break;
+
+					case 'name_id':
+
+						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
+
+						break;
+
 					case 'id':
 
 						$select[ $type_id ] = $type_id;
@@ -790,12 +802,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'id_name':
 
 						$select[ $type_id ] = $type_id . ' | ' . $type_name;
-
-						break;
-
-					case 'name_id':
-
-						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
 
 						break;
 
