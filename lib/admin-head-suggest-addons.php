@@ -42,9 +42,8 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 		public function suggest_addons() {
 
 			$this->suggest_addons_update_manager();
-			$this->suggest_addons_wp_sitemaps();
 			$this->suggest_addons_woocommerce();
-			$this->suggest_addons_ecommerce();
+			$this->suggest_addons_wp_sitemaps();
 		}
 
 		private function suggest_addons_update_manager() {
@@ -125,52 +124,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notices_shown++;
 				}
-			}
-
-			return $notices_shown;
-		}
-
-		private function suggest_addons_wp_sitemaps() {
-
-			$notices_shown = 0;
-
-			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) {	// Already active.
-
-				return $notices_shown;
-
-			} elseif ( SucomUtilWP::sitemaps_disabled() ) {
-
-				return $notices_shown;
-
-			} elseif ( $this->p->util->robots->is_disabled() ) {
-
-				return $notices_shown;
-			}
-
-			$notice_key = 'suggest-wpssowpsm';
-
-			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-				$action_links = array();	// Init a new action array for the notice message.
-
-				if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowpsm' ) ) {
-
-					$action_links[] = $install_activate_link;
-				}
-
-				$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
-				$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
-				$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
-
-				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
-
-				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
-
-				$notice_msg .= SucomUtil::array_to_list_html( $action_links );
-
-				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-				$notices_shown++;
 			}
 
 			return $notices_shown;
@@ -260,30 +213,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				}
 			}
 
-			return $notices_shown;
-		}
-
-		private function suggest_addons_ecommerce() {
-
-			$notices_shown = 0;
-
-			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssogmf' ] ) ) {	// Just in case.
-
-				return $notices_shown;
-
-			} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
-
-				// translators: Please ignore - translation uses a different text domain.
-				$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'gmf' ] ) ) {
 
 				$notice_key = 'suggest-wpssogmf-for-woocommerce';
-
-			} else {	// No active e-commerce plugin.
-
-				return $notices_shown;	// Stop here.
-			}
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'gmf' ] ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
@@ -296,10 +228,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
 					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
+					$gmf_addons_link = $this->p->util->get_admin_url( 'addons#wpssogmf', $gmf_name_transl );
 
 					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product feeds in your site\'s language(s) from Polylang, WPML, or the installed WordPress languages.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
-					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feeds.', 'wpsso' ), $gmf_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feeds.', 'wpsso' ), $gmf_addons_link ) . ' ';
 
 					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
@@ -307,6 +240,81 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notices_shown++;
 				}
+			}
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'mrp' ] ) ) {
+
+				$notice_key = 'suggest-wpssomrp-for-woocommerce';
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+					$action_links = array();	// Init a new action array for the notice message.
+
+					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssomrp' ) ) {
+
+						$action_links[] = $install_activate_link;
+					}
+
+					$mrp_info        = $this->p->cf[ 'plugin' ][ 'wpssomrp' ];
+					$mrp_name_transl = _x( $mrp_info[ 'name' ], 'plugin name', 'wpsso' );
+					$mrp_addons_link = $this->p->util->get_admin_url( 'addons#wpssomrp', $mrp_name_transl );
+
+					$notice_msg = __( 'Google suggests including a return policy in Schema Product offers.', 'wpsso' ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If you have not created a return policy for your products in Google Merchant, you should activate the %s add-on to manage return policies and select a default return policy for your products.', 'wpsso' ), $mrp_addons_link ) . ' ';
+
+					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+					$notices_shown++;
+				}
+			}
+
+			return $notices_shown;
+		}
+
+		private function suggest_addons_wp_sitemaps() {
+
+			$notices_shown = 0;
+
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) {	// Already active.
+
+				return $notices_shown;
+
+			} elseif ( SucomUtilWP::sitemaps_disabled() ) {
+
+				return $notices_shown;
+
+			} elseif ( $this->p->util->robots->is_disabled() ) {
+
+				return $notices_shown;
+			}
+
+			$notice_key = 'suggest-wpssowpsm';
+
+			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+				$action_links = array();	// Init a new action array for the notice message.
+
+				if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowpsm' ) ) {
+
+					$action_links[] = $install_activate_link;
+				}
+
+				$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
+				$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
+				$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+
+				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
+
+				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
+
+				$notice_msg .= SucomUtil::array_to_list_html( $action_links );
+
+				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+				$notices_shown++;
 			}
 
 			return $notices_shown;

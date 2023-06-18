@@ -2110,8 +2110,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin name, description and links.
 				 */
 				$table_rows[ 'plugin_name' ] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					$ext_name_html . $ext_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
-						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
+					'<a class="ext-anchor" id="' . $ext . '"></a>' . $ext_name_html . $ext_desc_html .
+					( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( $glue = ' | ', $ext_links ) . '</div>' ) .
+					'</td>';
 
 				/*
 				 * Plugin separator.
@@ -2139,8 +2140,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$icon_style  = 'width:' . $icon_col_px . 'px; min-width:' . $icon_col_px . 'px; max-width:' . $icon_col_px . 'px;';
 
 						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" ' .
-							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >' . "\n";
-						echo '<a class="ext-anchor" id="' . $ext . '"></a>' . "\n";	// Add an anchor for the add-on.
+							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >';
 						echo $this->get_ext_img_icon( $ext, $icon_px );
 						echo '</td>';
 					}
@@ -2194,8 +2194,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin name, description, and action links.
 				 */
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					$ext_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
-						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
+					'<a class="ext-anchor" id="' . $ext . '"></a>' . $ext_name_html .
+					( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( $glue = ' | ', $ext_links ) . '</div>' ) .
+					'</td>';
 
 				/*
 				 * Authentication ID.
@@ -2313,13 +2314,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$icon_style  = 'width:' . $icon_col_px . 'px; min-width:' . $icon_col_px . 'px; max-width:' . $icon_col_px . 'px;';
 
 						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" ' .
-							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >' . "\n";
-						echo '<a class="ext-anchor" id="' . $ext . '"></a>' . "\n";	// Add an anchor for the add-on.
+							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >';
 						echo $this->get_ext_img_icon( $ext, $icon_px );
 						echo '</td>';
 					}
 
-					echo $row . '</tr>';
+					echo $row . '</tr>' . "\n";
 				}
 			}
 

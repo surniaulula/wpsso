@@ -408,14 +408,6 @@ table.sucom-settings td span.option-info a {
 	margin-left:4px;
 }
 
-table.sucom-settings td a.ext-anchor {
-	display:block;
-	position:relative;
-	visibility:hidden;
-	margin-top:-20px;
-	margin-bottom:20px;
-}
-
 table.sucom-settings td.status {
 	color:#555;
 }
