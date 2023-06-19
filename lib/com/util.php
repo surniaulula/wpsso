@@ -1562,7 +1562,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
 			if ( ! $allow_upper ) {
-			
+
 				$key = strtolower( $key );
 			}
 

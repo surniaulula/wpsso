@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 							default:
 
-								continue 2;
+								continue 2;	// Get another $key.
 						}
 
 						$app_label   = WpssoConfig::$cf[ $key ][ 'label' ];

@@ -145,127 +145,96 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			// translators: Please ignore - translation uses a different text domain.
 			$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
 
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcmd' ] ) &&
-				empty( $this->p->avail[ 'ecom' ][ 'woo-add-gtin' ] ) &&
-				empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) {
+			foreach ( array( 'wcmd', 'wcsdt', 'gmf', 'mrp', 'cmcf' ) as $p_ext ) {
 
-				$notice_key = 'suggest-wpssowcmd-for-woocommerce';
+				$ext        = 'wpsso' . $p_ext;
+				$notice_key = 'suggest-' . $ext. '-for-woocommerce';
 
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+				if ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {
 
-					$action_links = array();	// Init a new action array for the notice message.
+					continue;
 
-					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcmd' ) ) {
+				} elseif ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-						$action_links[] = $install_activate_link;
-					}
+					continue;
+				}
 
-					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
-					$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
-					$wcmd_addons_link = $this->p->util->get_admin_url( 'addons#wpssowcmd', $wcmd_name_transl );
+				$notice_msg      = '';
+				$action_links    = array();	// Init a new action array for the notice message.
+				$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
+				$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_addons_link = $this->p->util->get_admin_url( 'addons#' . $ext, $ext_name_transl );
 
-					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
+				if ( $install_activate_link = $this->get_install_activate_addon_link( $ext ) ) {
 
-					$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a valid unique product ID.', 'wpsso' ), $ecom_plugin_name ) . ' ';
+					$action_links[] = $install_activate_link;
+				}
 
-					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs for WooCommerce.', 'wpsso' ), $wcmd_addons_link ) . ' ';
+				switch ( $p_ext ) {
+
+					case 'cmcf':
+
+						$notice_msg = sprintf( __( 'If you advertise or sell items on Facebook and Instagram, the %s add-on can provide a product feed for Meta\'s Commerce Manager.', 'wpsso' ), $ext_name_transl ) . ' ';
+
+						$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Commerce Manager product feed XML.', 'wpsso' ), $ext_addons_link ) . ' ';
+
+						break;
+
+					case 'gmf':
+
+						$notice_msg = sprintf( __( 'If you have created an account with Google Merchant, the %s add-on can provide a product feed for Google Merchant.', 'wpsso' ), $ext_name_transl ) . ' ';
+
+						$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feed XML.', 'wpsso' ), $ext_addons_link ) . ' ';
+
+						break;
+
+					case 'mrp':
+
+						$notice_msg = __( 'Google suggests including a merchant return policy in Schema Product offers markup.', 'wpsso' ) . ' ';
+
+						$notice_msg .= sprintf( __( 'If you have not created a return policy in Google Merchant, you should activate the %s add-on to manage return policies and select a return policy for your product offers.', 'wpsso' ), $ext_addons_link ) . ' ';
+
+						break;
+
+					case 'wcmd':
+
+						if ( ! empty( $this->p->avail[ 'ecom' ][ 'woo-add-gtin' ] ) ||
+							! empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) {
+
+							continue 2;	// Get another $ext.
+						}
+
+						$notice_msg = __( 'Google requires at least one unique product identifier for Schema Product markup, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
+
+						$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a unique product identifier.', 'wpsso' ), $ecom_plugin_name ) . ' ';
+
+						$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product identifiers for WooCommerce.', 'wpsso' ), $ext_addons_link ) . ' ';
+
+						break;
+
+					case 'wcsdt':
+
+						$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
+						$shipping_countries  = WC()->countries->get_shipping_countries();
+						$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
+
+						if ( ! $shipping_enabled ) {
+
+							continue 2;	// Get another $ext.
+						}
+
+						$notice_msg = sprintf( __( 'Product shipping features are enabled in %1$s but the %2$s add-on is not active.', 'wpsso' ), $ecom_plugin_name, $ext_name_transl ) . ' ';
+
+						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
+
+						break;
+				}
+
+				if ( ! empty( $notice_msg ) ) {
 
 					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-					$notices_shown++;
-				}
-			}
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcsdt' ] ) ) {
-
-				$notice_key = 'suggest-wpssowcsdt-for-woocommerce';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					$action_links = array();	// Init a new action array for the notice message.
-
-					$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
-					$shipping_countries  = WC()->countries->get_shipping_countries();
-					$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
-
-					if ( $shipping_enabled ) {
-
-						if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcsdt' ) ) {
-
-							$action_links[] = $install_activate_link;
-						}
-
-						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
-						$wcsdt_name_transl = _x( $wcsdt_info[ 'name' ], 'plugin name', 'wpsso' );
-
-						$notice_msg = sprintf( __( 'Product shipping features are enabled in %1$s but the %2$s add-on is not active.', 'wpsso' ), $ecom_plugin_name, $wcsdt_name_transl ) . ' ';
-
-						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
-
-						$notice_msg .= SucomUtil::array_to_list_html( $action_links );
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-						$notices_shown++;
-					}
-				}
-			}
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'gmf' ] ) ) {
-
-				$notice_key = 'suggest-wpssogmf-for-woocommerce';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					$action_links = array();	// Init a new action array for the notice message.
-
-					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssogmf' ) ) {
-
-						$action_links[] = $install_activate_link;
-					}
-
-					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
-					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
-					$gmf_addons_link = $this->p->util->get_admin_url( 'addons#wpssogmf', $gmf_name_transl );
-
-					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product feeds in your site\'s language(s) from Polylang, WPML, or the installed WordPress languages.', 'wpsso' ), $gmf_name_transl ) . ' ';
-
-					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feeds.', 'wpsso' ), $gmf_addons_link ) . ' ';
-
-					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
-
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-					$notices_shown++;
-				}
-			}
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'mrp' ] ) ) {
-
-				$notice_key = 'suggest-wpssomrp-for-woocommerce';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					$action_links = array();	// Init a new action array for the notice message.
-
-					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssomrp' ) ) {
-
-						$action_links[] = $install_activate_link;
-					}
-
-					$mrp_info        = $this->p->cf[ 'plugin' ][ 'wpssomrp' ];
-					$mrp_name_transl = _x( $mrp_info[ 'name' ], 'plugin name', 'wpsso' );
-					$mrp_addons_link = $this->p->util->get_admin_url( 'addons#wpssomrp', $mrp_name_transl );
-
-					$notice_msg = __( 'Google suggests including a return policy in Schema Product offers.', 'wpsso' ) . ' ';
-
-					$notice_msg .= sprintf( __( 'If you have not created a return policy for your products in Google Merchant, you should activate the %s add-on to manage return policies and select a default return policy for your products.', 'wpsso' ), $mrp_addons_link ) . ' ';
-
-					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
-
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
 					$notices_shown++;
 				}
@@ -302,11 +271,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$action_links[] = $install_activate_link;
 				}
 
-				$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
-				$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
-				$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+				$ext_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
+				$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
+				$sitemaps_url    = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
 
-				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
+				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $ext_name_transl ) . ' ';
 
 				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
 

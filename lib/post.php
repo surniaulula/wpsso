@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						} else {
 
 							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '', $mod[ 'post_mime_type' ] );
-							
+
 							$mod[ 'post_mime_subgroup' ] = '*';
 						}
 					}

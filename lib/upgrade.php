@@ -956,9 +956,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						}
 					}
 				}
-				
+
 				if ( $prev_version > 0 && $prev_version <= 972 ) {
-					
+
 					if ( 'webpage' === $opts[ 'schema_type_for_attachment' ] ) {
 
 						$opts[ 'schema_type_for_attachment' ] = 'media.object';

@@ -1402,7 +1402,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$cache_salt  = __METHOD__;
 				$cache_id    = $cache_md5_pre . md5( $cache_salt );
-			
+
 				if ( $read_cache ) {
 
 					$local_cache = get_transient( $cache_id );	// Returns false when not found.

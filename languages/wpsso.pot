@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.14.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.14.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4925,69 +4925,82 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:167
+#: lib/admin-head-suggest-addons.php:177
 msgid ""
-"Schema Product markup for Google Rich Results requires at least one unique "
-"product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
-"or ISBN."
+"If you advertise or sell items on Facebook and Instagram, the %s add-on can "
+"provide a product feed for Meta's Commerce Manager."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:169
-msgid ""
-"The product SKU (Stock Keeping Unit) from %s is not a valid unique product "
-"ID."
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:171 lib/messages-info.php:190
+#: lib/admin-head-suggest-addons.php:179
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
-"manage unique product IDs for WooCommerce."
+"manage your Commerce Manager product feed XML."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:203
+#: lib/admin-head-suggest-addons.php:185
+msgid ""
+"If you have created an account with Google Merchant, the %s add-on can "
+"provide a product feed for Google Merchant."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:187
+msgid ""
+"You should activate the %s add-on if you don't already have a plugin to "
+"manage your Google merchant feed XML."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:193
+msgid ""
+"Google suggests including a merchant return policy in Schema Product offers "
+"markup."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:195
+msgid ""
+"If you have not created a return policy in Google Merchant, you should "
+"activate the %s add-on to manage return policies and select a return policy "
+"for your product offers."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:207
+msgid ""
+"Google requires at least one unique product identifier for Schema Product "
+"markup, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or "
+"ISBN."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:209
+msgid ""
+"The product SKU (Stock Keeping Unit) from %s is not a unique product "
+"identifier."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:211
+msgid ""
+"You should activate the %s add-on if you don't already have a plugin to "
+"manage unique product identifiers for WooCommerce."
+msgstr ""
+
+#: lib/admin-head-suggest-addons.php:226
 msgid ""
 "Product shipping features are enabled in %1$s but the %2$s add-on is not "
 "active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:205
+#: lib/admin-head-suggest-addons.php:228
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
 "more appealing in Google search results."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:233
-msgid ""
-"If you have a Google Merchant account, the %s add-on can provide XML product "
-"feeds in your site's language(s) from Polylang, WPML, or the installed "
-"WordPress languages."
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:235
-msgid ""
-"You should activate the %s add-on if you don't already have a plugin to "
-"manage your Google merchant feeds."
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:262
-msgid "Google suggests including a return policy in Schema Product offers."
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:264
-msgid ""
-"If you have not created a return policy for your products in Google "
-"Merchant, you should activate the %s add-on to manage return policies and "
-"select a default return policy for your products."
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:309
+#: lib/admin-head-suggest-addons.php:278
 msgid ""
 "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in "
 "WordPress v5.5) is enabled, but the %2$s add-on is not active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:311
+#: lib/admin-head-suggest-addons.php:280
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
 "the WordPress sitemaps XML, exclude posts, pages, custom post types, "
@@ -4996,20 +5009,20 @@ msgid ""
 "modification times."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:338
+#: lib/admin-head-suggest-addons.php:307
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:344
+#: lib/admin-head-suggest-addons.php:313
 msgid "Install and activate the %s add-on."
 msgstr ""
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest-addons.php:361
+#: lib/admin-head-suggest-addons.php:330
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:364
+#: lib/admin-head-suggest-addons.php:333
 msgid "Purchase the %s plugin."
 msgstr ""
 
@@ -7375,6 +7388,12 @@ msgstr ""
 msgid ""
 "Using the WooCommerce \"%s\" option may not be suitable for unique product "
 "IDs (like GTIN, ISBN, and MPN)."
+msgstr ""
+
+#: lib/messages-info.php:190
+msgid ""
+"You should activate the %s add-on if you don't already have a plugin to "
+"manage unique product IDs for WooCommerce."
 msgstr ""
 
 #: lib/messages-info.php:205
