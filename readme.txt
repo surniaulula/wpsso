@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.14.1-b.1 (2023/06/19)**
+**Version 15.14.1-rc.1 (2023/06/19)**
 
 * **New Features**
 	* None.
@@ -721,7 +721,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.14.1-b.1 =
+= 15.14.1-rc.1 =
 
 (2023/06/19) Added a notice to suggest activating the WPSSO CMCF and MRP add-ons if the WooCommerce plugin is active.
 
