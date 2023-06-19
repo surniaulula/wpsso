@@ -234,12 +234,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.14.1-dev.1 (2023/06/18)**
+**Version 15.14.1-dev.2 (2023/06/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a notice to suggest activating the WPSSO MRP add-on if the WooCommerce plugin is active.
+	* Added a notice to suggest activating the WPSSO CMCF and MRP add-ons if the WooCommerce plugin is active.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -721,9 +721,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.14.1-dev.1 =
+= 15.14.1-dev.2 =
 
-(2023/06/18) Added a notice to suggest activating the WPSSO MRP add-on if the WooCommerce plugin is active.
+(2023/06/19) Added a notice to suggest activating the WPSSO CMCF and MRP add-ons if the WooCommerce plugin is active.
 
 = 15.14.0 =
 
