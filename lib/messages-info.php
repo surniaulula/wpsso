@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 						$text .= sprintf( __( 'Using the WooCommerce "%s" option may not be suitable for unique product IDs (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
 
-						$text .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs for WooCommerce.', 'wpsso' ), $wcmd_addons_link ) . ' ';
+						$text .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product identifiers for WooCommerce.', 'wpsso' ), $wcmd_addons_link ) . ' ';
 
 						$text .= '</center></p>';
 					}

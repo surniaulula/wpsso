@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					case 'gmf':
 
-						$notice_msg = sprintf( __( 'If you have created an account with Google Merchant, the %s add-on can provide a product feed for Google Merchant.', 'wpsso' ), $ext_name_transl ) . ' ';
+						$notice_msg = sprintf( __( 'If you have created an account with Google Merchant Center, the %s add-on can provide a product feed for Google Merchant Center.', 'wpsso' ), $ext_name_transl ) . ' ';
 
 						$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feed XML.', 'wpsso' ), $ext_addons_link ) . ' ';
 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$notice_msg = __( 'Google suggests including a merchant return policy in Schema Product offers markup.', 'wpsso' ) . ' ';
 
-						$notice_msg .= sprintf( __( 'If you have not created a return policy in Google Merchant, you should activate the %s add-on to manage return policies and select a return policy for your product offers.', 'wpsso' ), $ext_addons_link ) . ' ';
+						$notice_msg .= sprintf( __( 'If you have not created a return policy in Google Merchant Center, you should activate the %s add-on to manage return policies and select a return policy for your product offers.', 'wpsso' ), $ext_addons_link ) . ' ';
 
 						break;
 

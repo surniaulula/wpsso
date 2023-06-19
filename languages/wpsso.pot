@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.14.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 15.14.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4939,8 +4939,8 @@ msgstr ""
 
 #: lib/admin-head-suggest-addons.php:185
 msgid ""
-"If you have created an account with Google Merchant, the %s add-on can "
-"provide a product feed for Google Merchant."
+"If you have created an account with Google Merchant Center, the %s add-on "
+"can provide a product feed for Google Merchant Center."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:187
@@ -4957,9 +4957,9 @@ msgstr ""
 
 #: lib/admin-head-suggest-addons.php:195
 msgid ""
-"If you have not created a return policy in Google Merchant, you should "
-"activate the %s add-on to manage return policies and select a return policy "
-"for your product offers."
+"If you have not created a return policy in Google Merchant Center, you "
+"should activate the %s add-on to manage return policies and select a return "
+"policy for your product offers."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:207
@@ -4975,7 +4975,7 @@ msgid ""
 "identifier."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:211
+#: lib/admin-head-suggest-addons.php:211 lib/messages-info.php:190
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage unique product identifiers for WooCommerce."
@@ -7388,12 +7388,6 @@ msgstr ""
 msgid ""
 "Using the WooCommerce \"%s\" option may not be suitable for unique product "
 "IDs (like GTIN, ISBN, and MPN)."
-msgstr ""
-
-#: lib/messages-info.php:190
-msgid ""
-"You should activate the %s add-on if you don't already have a plugin to "
-"manage unique product IDs for WooCommerce."
 msgstr ""
 
 #: lib/messages-info.php:205
