@@ -335,28 +335,28 @@ if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
 
 if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
-	function wpsso_get_post_event_options( $post_id, $type_id = false ) {
+	function wpsso_get_post_event_options( $post_id, $event_id = false ) {
 
-		return WpssoSchema::get_post_type_options( $post_id, $type = 'event', $type_id );
+		return WpssoSchema::get_post_type_options( $post_id, $type = 'event', $event_id );
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 
-	function wpsso_get_post_job_options( $post_id, $type_id = false ) {
+	function wpsso_get_post_job_options( $post_id, $job_id = false ) {
 
-		return WpssoSchema::get_post_type_options( $post_id, $type = 'job', $type_id );
+		return WpssoSchema::get_post_type_options( $post_id, $type = 'job', $job_id );
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
-	function wpsso_get_post_organization_options( $post_id, $type_id = 'site' ) {
+	function wpsso_get_post_organization_options( $post_id, $org_id = 'site' ) {
 
 		/*
 		 * Check that the option value is not true, false, null, empty string, or 'none'.
 		 */
-		if ( ! SucomUtil::is_valid_option_value( $type_id ) ) {
+		if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
 
 			return array();
 		}
@@ -369,7 +369,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 		$mod = wpsso_get_post_mod( $post_id );
 
-		$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $type_id );
+		$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
 
 		if ( empty( $org_opts ) ) {
 
@@ -385,7 +385,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
-	function wpsso_get_post_place_options( $post_id, $type_id = 'custom' ) {
+	function wpsso_get_post_place_options( $post_id, $place_id = 'custom' ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 
@@ -394,7 +394,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 		$mod = wpsso_get_post_mod( $post_id );
 
-		return apply_filters( 'wpsso_get_place_options', false, $mod, $type_id );
+		return apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 	}
 }
 
