@@ -154,8 +154,12 @@ if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
 }
 
 /*
- * Get the $mod array for the current webpage. If $use_post is true, then the requested object is assumed to be a post, and the
- * global $post object will be used to determine the post ID. The use of 'page' here refers to the 'webpage'.
+ * Get the $mod array for the current webpage.
+ *
+ * If $use_post is true, then the requested object is assumed to be a post, and the global $post object will be used to determine
+ * the post ID.
+ *
+ * The use of 'page' here refers to a webpage, not the WordPress Page post type.
  */
 if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
@@ -167,6 +171,9 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 	}
 }
 
+/*
+ * Get the $mod array for a given comment ID.
+ */
 if ( ! function_exists( 'wpsso_get_comment_mod' ) ) {
 
 	function wpsso_get_comment_mod( $comment_id ) {
@@ -177,6 +184,9 @@ if ( ! function_exists( 'wpsso_get_comment_mod' ) ) {
 	}
 }
 
+/*
+ * Get the $mod array for a given post ID.
+ */
 if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 
 	function wpsso_get_post_mod( $post_id ) {
@@ -187,6 +197,9 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 	}
 }
 
+/*
+ * Get the $mod array for a given term ID.
+ */
 if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 
 	function wpsso_get_term_mod( $term_id ) {
@@ -197,6 +210,9 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 	}
 }
 
+/*
+ * Get the $mod array for a given user ID.
+ */
 if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 	function wpsso_get_user_mod( $user_id ) {
@@ -333,6 +349,11 @@ if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
 	}
 }
 
+/*
+ * Return any third-party and custom post options for a given event ID.
+ *
+ * See WpssoIntegEventTheEventsCalendar->filter_get_event_options().
+ */
 if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
 	function wpsso_get_post_event_options( $post_id, $event_id = false ) {
@@ -341,6 +362,12 @@ if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 	}
 }
 
+/*
+ * Return any third-party and custom post options for a given job ID.
+ *
+ * See WpssoIntegJobSimpleJobBoard->filter_get_job_options().
+ * See WpssoIntegJobWpJobManager->filter_get_job_options().
+ */
 if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 
 	function wpsso_get_post_job_options( $post_id, $job_id = false ) {
@@ -349,6 +376,12 @@ if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 	}
 }
 
+/*
+ * Return any third-party and custom post options for a given organization ID.
+ *
+ * See WpssoIntegJobWpJobManager->filter_get_organization_options().
+ * See WpssoOpmOrgFiltersOptions->filter_get_organization_options().
+ */
 if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 	function wpsso_get_post_organization_options( $post_id, $org_id = 'site' ) {
@@ -383,6 +416,13 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 	}
 }
 
+/*
+ * Return any third-party and custom post options for a given place ID.
+ *
+ * See WpssoIntegEventTheEventsCalendar->filter_get_place_options().
+ * See WpssoIntegJobWpJobManager->filter_get_place_options().
+ * See WpssoOpmPlaceFiltersOptions->filter_get_place_options().
+ */
 if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 	function wpsso_get_post_place_options( $post_id, $place_id = 'custom' ) {
@@ -521,4 +561,3 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 		echo $attr;
 	}
 }
-

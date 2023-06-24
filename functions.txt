@@ -13,9 +13,9 @@ wpsso_get_page_mod( $use_post = false );
 
 wpsso_get_post_canonical_short_url( $post_id );
 
-wpsso_get_post_event_options( $post_id, $type_id = false );
+wpsso_get_post_event_options( $post_id, $event_id = false );
 
-wpsso_get_post_job_options( $post_id, $type_id = false );
+wpsso_get_post_job_options( $post_id, $job_id = false );
 
 wpsso_get_post_mod( $post_id );
 
@@ -23,9 +23,9 @@ wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );		// Returns an im
 
 wpsso_get_post_og_image_url( $post_id, $size_name = 'thumbnail' );	// Returns image URL or empty string.
 
-wpsso_get_post_organization_options( $post_id, $type_id = 'site' );
+wpsso_get_post_organization_options( $post_id, $org_id = 'site' );
 
-wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
+wpsso_get_post_place_options( $post_id, $place_id = 'custom' );
 
 wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' );
 

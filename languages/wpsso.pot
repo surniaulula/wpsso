@@ -11781,7 +11781,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3812
+#: lib/schema.php:3811
 msgid "checking schema properties"
 msgstr ""
 

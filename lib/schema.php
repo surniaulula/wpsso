@@ -383,7 +383,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$graph_json     = WpssoSchemaGraph::get_json_reset_data();
-			$filter_name    = 'wpsso_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
+			$filter_name    = SucomUtil::sanitize_hookname( 'wpsso_json_prop_' . $graph_type_url );
 			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og );
 
 			$schema_scripts  = array();
@@ -3281,12 +3281,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Return any third-party and custom post options for a given option type.
+		 * Return any third-party and custom post options for a given type and type ID.
 		 *
-		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
-		 *
-		 * 	WpssoSchema::get_post_type_options( $post_id, $type = 'event', $event_id );
-		 * }
+		 * See wpsso_get_post_event_options() in lib/functions.php
+		 * See wpsso_get_post_job_options() in lib/functions.php
 		 */
 		public static function get_post_type_options( $post_id, $type, $type_id = false ) {
 
@@ -3314,7 +3312,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			$type_opts = apply_filters( 'wpsso_get_' . $type . '_options', false, $mod, $type_id );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $type . '_options' );
+			$type_opts   = apply_filters( $filter_name, false, $mod, $type_id );
 
 			if ( ! empty( $type_opts ) ) {
 
