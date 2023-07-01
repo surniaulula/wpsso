@@ -7,7 +7,8 @@
  * When an existing post is embedded in an iframe, this template is used to create the content output.
  *
  * Required by the WpssoOembed->template_part_embed() method.
- * Original source from wordpress/wp-includes/theme-compat/embed-content.php.
+ *
+ * See wordpress/wp-includes/theme-compat/embed-content.php.
  */
 
 $embed_class     = esc_attr( implode( ' ', get_post_class( 'wpsso-embed wp-embed' ) ) );
