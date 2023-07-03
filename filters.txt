@@ -255,7 +255,13 @@
 
 'wpsso_product_attribute_names' ( array $attr_names )
 
-'wpsso_product_price' ( $product_price, $product )
+'wpsso_product_price' ( $price, $product )
+
+'wpsso_product_title' ( $title, $product )
+
+'wpsso_product_variation_title' ( $title, $product, $variation )
+
+'wpsso_product_variation_description' ( $desc, $product, $variation )
 
 'wpsso_quote' ( $quote, $mod )
 
@@ -350,10 +356,6 @@
 'wpsso_user_public_ids' ( array $public_ids, array $users_args )
 
 'wpsso_user_url' ( $url, $mod )
-
-'wpsso_variation_title' ( $title, $variation )
-
-'wpsso_variation_description' ( $desc, $variation )
 
 'wpsso_weight_units' ( $units );
 

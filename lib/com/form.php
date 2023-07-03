@@ -2191,7 +2191,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$html .= "\n" . '<select ';
 								$html .= $is_disabled ? ' disabled="disabled"' : '';
-								$html .= $input_class ? ' class="' . esc_attr( $input_class ) . '"' : '';	// Already sanitized.
+								$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 								$html .= $input_id ? ' id="select_' . $input_id . '"' : '';			// Already sanitized.
 								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
 								$html .= ' title="' . esc_attr( $input_title ) . '"';

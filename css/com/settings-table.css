@@ -772,7 +772,7 @@ table.sucom-settings td input[type="text"].schema_type {
 
 table.sucom-settings td select.xshort { width:60px; }
 
-table.sucom-settings td select.currency { width:70px; }
+table.sucom-settings td select.currency { width:67px; }
 
 table.sucom-settings td select.time-hh-mm { width:82px; }
 
@@ -839,7 +839,7 @@ table.sucom-settings td input[type="text"].bigchars { width:80px; }	/* Character
 
 table.sucom-settings td input[type="text"].rating { width:83px; }	/* Rating int, from int, and to int. */
 
-table.sucom-settings td input[type="text"].price { width:100px; }
+table.sucom-settings td input[type="text"].price { width:83px; }
 
 table.sucom-settings td input[type="text"].short { width:110px; }
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.14.1',	// Plugin version.
+					'version'     => '15.15.0-dev.1',	// Plugin version.
 					'opt_version' => '973',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2464,7 +2464,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'php' => array(
 				'label'       => 'PHP',
-				'min_version' => '7.2',		// Hard limit - deactivate the plugin when activating.
+				'min_version' => '7.2.5',	// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '7.4.33',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://www.php.net/supported-versions.php',
 				'extensions'  => array(

@@ -716,6 +716,27 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$md_defs[ 'product_shipping_weight_units' ],
 			) = $this->get_shipping_length_width_height_weight( $product );
 
+			/*
+			 * Add event offers.
+			 */
+			$md_defs = SucomUtil::preg_grep_keys( '/^schema_event_offer_/', $md_defs, $invert = true );
+
+			$avail_variations = $this->p->util->wc->get_available_variations( $product );	// Always returns an array.
+
+			if ( ! empty( $avail_variations ) ) {
+
+				foreach( $avail_variations as $num => $variation ) {
+				}
+
+			} else {
+			
+				$md_defs[ 'schema_event_offer_name_0' ]     = $this->get_product_title( $mod, $product );
+				$md_defs[ 'schema_event_offer_url_0' ]      = $product->get_permalink();
+				$md_defs[ 'schema_event_offer_price_0' ]    = $md_defs[ 'product_price' ];
+				$md_defs[ 'schema_event_offer_currency_0' ] = $md_defs[ 'product_currency' ];
+				$md_defs[ 'schema_event_offer_avail_0' ]    = $md_defs[ 'product_avail' ];
+			}
+
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
 
 			if ( $this->p->debug->enabled ) {
@@ -2028,6 +2049,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			if ( null === $currency ) {	// Get value only once.
 
 				$currency = get_woocommerce_currency();
+
 				$currency = apply_filters( 'wpsso_currency', $currency );
 			}
 
@@ -2037,6 +2059,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		private function get_product_price( $product ) {
 
 			$product_price = $product->get_price();
+
 			$product_price = apply_filters( 'wpsso_product_price', $product_price, $product );
 
 			return $product_price;
@@ -2080,7 +2103,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $product_price;
 		}
 
+		private function get_product_title( $mod, $product ) {
+
+			$title_text = $product->get_title();
+
+			return apply_filters( 'wpsso_product_title', $title_text, $product );
+		}
+
 		private function add_product_variation_title( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+
+			$mt_ecom[ 'product:title' ] = $this->get_product_variation_title( $mod, $product, $variation );
+		}
+
+		private function get_product_variation_title( $mod, $product, $variation ) {
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
@@ -2094,18 +2129,22 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $title_atts );
 
-			$mt_ecom[ 'product:title' ] = apply_filters( 'wpsso_variation_title', $title_text, $variation );
+			return apply_filters( 'wpsso_product_variation_title', $title_text, $product, $variation );
 		}
 
 		/*
 		 * Empty variation descriptions are fixed in WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product().
 		 */
 		private function add_product_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+			
+			$mt_ecom[ 'product:description' ] = $this->get_product_variation_description( $mod, $product, $variation );
+		}
 
-			$desc_text = empty( $variation[ 'variation_description' ] ) ?
-				null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
+		private function get_product_variation_description( $mod, $product, $variation ) {
 
-			$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_variation_description', $desc_text, $variation );
+			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
+
+			return apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
 		}
 
 		private function is_variation_selectable_attribute( $product, $attr_name ) {

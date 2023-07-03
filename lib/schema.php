@@ -138,7 +138,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_status', $enum_key = 'event_status' );
 
-				foreach ( SucomUtil::preg_grep_keys( '/^schema_(.*)_offer_avail/', $md_opts ) as $prop_name => $prop_val ) {
+				/*
+				 * Check offer availability values and skip any ':disabled' status keys.
+				 */
+				foreach ( SucomUtil::preg_grep_keys( '/^schema_(.*)_offer_avail[^:]*$/', $md_opts ) as $prop_name => $prop_val ) {
 
 					self::check_prop_value_enumeration( $md_opts, $prop_name, $enum_key = 'item_availability' );
 				}
