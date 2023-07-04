@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.15.0-dev.1 (2023/07/03)**
+**Version 15.15.0-dev.2 (2023/07/03)**
 
 * **New Features**
 	* None.
@@ -243,6 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a hook for 'woocommerce_ajax_save_product_variations' to refresh the Document SSO metabox and toolbar notices.
 	* Updated filters to insert a `$product` argument:
 		* 'wpsso_product_variation_title'
 		* 'wpsso_product_variation_description'
@@ -737,7 +738,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.15.0-dev.1 =
+= 15.15.0-dev.2 =
 
 (2023/07/03) Updated the WooCommerce integration module to provide event offer details.
 
