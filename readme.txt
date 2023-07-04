@@ -8,10 +8,10 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, seo, woocommerce, meta tags, google search console, google merchant, open graph, rich results, knowledge graph, xml sitemap, structured data
 Contributors: jsmoriss
-Requires PHP: 7.2.5
+Requires PHP: 7.2.34
 Requires At Least: 5.5
 Tested Up To: 6.2.2
-WC Tested Up To: 7.8.0
+WC Tested Up To: 7.8.2
 Stable Tag: 15.14.1
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -249,7 +249,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_product_variation_description'
 	* Renamed the `sucomBlockPostbox()` javascript function to `sucomEditorPostbox()`.
 * **Requires At Least**
-	* PHP v7.2.5.
+	* PHP v7.2.34.
 	* WordPress v5.5.
 
 **Version 15.14.1 (2023/06/19)**
