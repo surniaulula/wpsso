@@ -2464,7 +2464,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'php' => array(
 				'label'       => 'PHP',
-				'min_version' => '7.2.5',	// Hard limit - deactivate the plugin when activating.
+				'min_version' => '7.2.34',	// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '7.4.33',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://www.php.net/supported-versions.php',
 				'extensions'  => array(
