@@ -234,19 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.15.0-dev.2 (2023/07/03)**
+**Version 15.15.0-dev.3 (2023/07/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the WooCommerce integration module to provide event offer details.
 * **Bugfixes**
-	* None.
+	* Fixed sanitation of disabled product availability options.
 * **Developer Notes**
-	* Added a hook for 'woocommerce_ajax_save_product_variations' to refresh the Document SSO metabox and toolbar notices.
-	* Updated filters to insert a `$product` argument:
+	* Added a 'woocommerce_ajax_save_product_variations' hook to refresh the Document SSO metabox and toolbar notices.
+	* Updated filter arguments to insert a `$product` variable:
 		* 'wpsso_product_variation_title'
 		* 'wpsso_product_variation_description'
+	* Renamed the `sucomBlockPostbox()` javascript function to `sucomEditorPostbox()`.
 * **Requires At Least**
 	* PHP v7.2.5.
 	* WordPress v5.5.
@@ -738,9 +739,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.15.0-dev.2 =
+= 15.15.0-dev.3 =
 
-(2023/07/03) Updated the WooCommerce integration module to provide event offer details.
+(2023/07/04) Updated the WooCommerce integration module to provide event offer details.
 
 = 15.14.1 =
 
