@@ -191,9 +191,9 @@ function sucomTabs( metabox_name, tab_name ) {
 	metabox_name = metabox_name ? metabox_name : '_default';
 	tab_name     = tab_name ? tab_name : '_default';
 
+	var scroll_to_tab_id = '';
 	var location_hash    = window.location.hash;
 	var active_tab_class = '.sucom-tabset' + metabox_name + '-tab' + tab_name;
-	var scroll_to_tab_id = '';
 	var tabs_vert_height = jQuery( 'ul.sucom-metabox-tabs' + metabox_name + '.vertical' ).height();
 
 	/*
@@ -217,11 +217,13 @@ function sucomTabs( metabox_name, tab_name ) {
 	if ( scroll_to_tab_id ) {
 
 		/*
-		 * Do not scroll the metabox into view if this is a visual editor page.
+		 * Prevent scrolling the metabox into view if this is a visual editor page or scrolling is disabled.
 		 */
-		var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
+		var editor_content       = jQuery( 'div.interface-interface-skeleton__content' );
+		var is_visual_editor     = editor_content.length ? true : false;
+		var allow_scroll_to_hash = ( 'undefined' === window.allowScrollToHash ) ? true : window.allowScrollToHash;
 
-		if ( ! editor_content.length ) {	// Scrolling is allowed if the visual editor container length is 0.
+		if ( ! is_visual_editor && allow_scroll_to_hash ) {
 
 			sucomScrollIntoView( scroll_to_tab_id );
 		}
@@ -251,18 +253,12 @@ function sucomTabs( metabox_name, tab_name ) {
 
 function sucomScrollIntoView( container_id ) {
 
-	if ( ! container_id ) {	// A container id string is required.
+	if ( ! container_id ) return false;	// A container id string is required.
+	
+	var wpbody_content   = jQuery( 'div#wpbody-content' );	// Located below the admin toolbar.
+	var container        = jQuery( container_id );
 
-		return false;
-	}
-
-	var wpbody_content = jQuery( 'div#wpbody-content' );	// Located below the admin toolbar.
-	var container      = jQuery( container_id );
-
-	if ( ! wpbody_content.length || ! container.length ) {
-
-		return false;
-	}
+	if ( ! wpbody_content.length || ! container.length ) return false;
 
 	var toolbar_offset = wpbody_content.offset().top;	// Just under the admin toolbar.
 	var footer_offset  = 0;

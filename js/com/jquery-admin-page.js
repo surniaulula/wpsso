@@ -9,12 +9,13 @@
 /*
  * Update block-editor metaboxes.
  */
-function sucomBlockPostbox( pluginId, adminPageL10n ) {
+function sucomBlockPostbox( pluginId, adminPageL10n, postId ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-	var post_id = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var cfg     = window[ adminPageL10n ];
+	if ( 'undefined' === typeof postId ) postId = wp.data.select( 'core/editor' ).getCurrentPostId;
+
+	var cfg = window[ adminPageL10n ];
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
@@ -55,7 +56,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 		var ajaxData = {
 			action: ajax_action_update_postbox,
-			post_id: post_id,
+			post_id: postId,
 			_ajax_nonce: cfg[ '_ajax_nonce' ],
 		}
 
@@ -75,9 +76,11 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 /*
  * Create block-editor notices first, excluding any toolbar notice types, then update toolbar notices.
  */
-function sucomBlockNotices( pluginId, adminPageL10n ) {
+function sucomBlockNotices( pluginId, adminPageL10n, postId ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
+
+	if ( 'undefined' === typeof postId ) postId = wp.data.select( 'core/editor' ).getCurrentPostId;
 
 	var createNotice  = wp.data.dispatch( 'core/notices' ).createNotice;
 	var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
@@ -353,10 +356,11 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 	} );
 }
 
-function sucomToolbarValidators( pluginId, adminPageL10n ) {
+function sucomToolbarValidators( pluginId, adminPageL10n, postId ) {
 
-	var post_id = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var cfg     = window[ adminPageL10n ];
+	if ( 'undefined' === typeof postId ) postId = wp.data.select( 'core/editor' ).getCurrentPostId;
+
+	var cfg = window[ adminPageL10n ];
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
@@ -375,7 +379,7 @@ function sucomToolbarValidators( pluginId, adminPageL10n ) {
 
 	var ajaxData = {
 		action: cfg[ '_ajax_actions' ][ 'get_validate_submenu' ],
-		post_id: post_id,
+		post_id: postId,
 		_ajax_nonce: cfg[ '_ajax_nonce' ],
 	}
 

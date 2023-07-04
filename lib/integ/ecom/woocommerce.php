@@ -63,7 +63,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
-				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
+				/*
+				 * Update the Document SSO metabox and toobar notices after saving product variations.
+				 *
+				 * See WC_AJAX->save_variations() in woocommerce/includes/class-wc-ajax.php.
+				 */
+				add_action( 'woocommerce_ajax_save_product_variations', array( $this, 'ajax_save_product_variations' ), 1000, 1 );
 
 				/*
 				 * Add WPSSO RAR add-on filters.
@@ -218,6 +223,26 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 		}
 
+		/*
+		 * Update the Document SSO metabox and toobar notices after saving product variations.
+		 *
+		 * See WC_AJAX->save_variations() in woocommerce/includes/class-wc-ajax.php.
+		 */
+		public function ajax_save_product_variations( $product_id ) {
+
+			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
+
+			echo '<script>';
+			echo 'window.allowScrollToHash = false;';
+			echo 'if ( \'function\' === typeof sucomBlockPostbox ) {';
+			echo ' sucomBlockPostbox( \'wpsso\', \'' . $admin_l10n . '\', \'' . $product_id . '\' );';
+			echo '}';
+			echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
+			echo ' sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
+			echo '}';
+			echo '</script>' . "\n";
+		}
+
 		public function show_product_attributes_footer() {
 
 			global $post;
@@ -353,7 +378,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function filter_head_cache_index( $cache_index ) {
 
-			return $cache_index . '_currency:' . $this->get_currency();
+			return $cache_index . '_currency:' . $this->get_product_currency();
 		}
 
 		public function filter_use_post( $use_post ) {
@@ -647,55 +672,25 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
 			}
 
-			$product_price = $this->get_product_price( $product );
-			$currency      = $this->get_currency();
-			$include_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
+			$product_incl_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
+			$product_price      = $this->get_product_price( $product );
+			$product_price_fmtd = $this->get_product_price_formatted( $product, $product_price, $product_incl_vat );
+			$product_currency   = $this->get_product_currency();
+			$product_avail      = $this->get_product_avail( $product );
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
-				$this->p->debug->log( 'currency = ' . $currency );
-				$this->p->debug->log( 'include_vat = ' . ( $include_vat ? 'true' : 'false' ) );
+				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
+				$this->p->debug->log( 'product_currency = ' . $product_currency );
+				$this->p->debug->log( 'product_avail = ' . $product_avail );
 			}
 
-			$md_defs[ 'product_price' ]            = $this->get_product_price_formatted( $product, $product_price, $include_vat );
-			$md_defs[ 'product_currency' ]         = $currency;
+			$md_defs[ 'product_price' ]            = $product_price_fmtd;
+			$md_defs[ 'product_currency' ]         = $product_currency;
+			$md_defs[ 'product_avail' ]            = $product_avail;
 			$md_defs[ 'product_retailer_part_no' ] = $product->get_sku();	// Product SKU.
-
-			/*
-			 * Add product availability.
-			 *
-			 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_is_in_stock
-			 *
-			 * Hook 'woocommerce_product_is_in_stock' (returns true or false) to customize the "in stock" status.
-			 */
-			if ( $product->is_in_stock() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'product is in stock' );
-				}
-
-				$md_defs[ 'product_avail' ] = 'https://schema.org/InStock';
-
-			} elseif ( $product->is_on_backorder() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'product is on backorder' );
-				}
-
-				$md_defs[ 'product_avail' ] = 'https://schema.org/BackOrder';
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'product is out of stock' );
-				}
-
-				$md_defs[ 'product_avail' ] = 'https://schema.org/OutOfStock';
-			}
 
 			/*
 			 * Get product shipping dimensions and weight.
@@ -726,15 +721,27 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			if ( ! empty( $avail_variations ) ) {
 
 				foreach( $avail_variations as $num => $variation ) {
+				
+					if ( $var_product = $this->p->util->wc->get_variation_product( $variation ) ) {
+
+						$var_product_price      = $this->get_product_price( $var_product );
+						$var_product_price_fmtd = $this->get_product_price_formatted( $var_product, $var_product_price, $product_incl_vat );
+
+						$md_defs[ 'schema_event_offer_name_' . $num ]     = $this->get_product_variation_title( $mod, $var_product, $variation );
+						$md_defs[ 'schema_event_offer_url_' . $num ]      = $var_product->get_permalink();
+						$md_defs[ 'schema_event_offer_price_' . $num ]    = $var_product_price_fmtd;
+						$md_defs[ 'schema_event_offer_currency_' . $num ] = $product_currency;
+						$md_defs[ 'schema_event_offer_avail_' . $num ]    = $this->get_product_avail( $var_product );
+					}
 				}
 
 			} else {
-			
+
 				$md_defs[ 'schema_event_offer_name_0' ]     = $this->get_product_title( $mod, $product );
 				$md_defs[ 'schema_event_offer_url_0' ]      = $product->get_permalink();
-				$md_defs[ 'schema_event_offer_price_0' ]    = $md_defs[ 'product_price' ];
-				$md_defs[ 'schema_event_offer_currency_0' ] = $md_defs[ 'product_currency' ];
-				$md_defs[ 'schema_event_offer_avail_0' ]    = $md_defs[ 'product_avail' ];
+				$md_defs[ 'schema_event_offer_price_0' ]    = $product_price_fmtd;
+				$md_defs[ 'schema_event_offer_currency_0' ] = $product_currency;
+				$md_defs[ 'schema_event_offer_avail_0' ]    = $product_avail;
 			}
 
 			$md_defs = apply_filters( 'wpsso_get_md_defaults_woocommerce', $md_defs, $mod );
@@ -1106,20 +1113,22 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} else return false;	// $mixed is not a variation array, product or post object.
 
-			$product_id     = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
-			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
-			$parent_product = $is_variation ? $this->p->util->wc->get_product( $parent_id ) : $product;
-			$product_price  = $this->get_product_price( $product );
-			$currency       = $this->get_currency();
-			$include_vat    = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
+			$product_id         = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
+			$parent_id          = $is_variation ? $product->get_parent_id() : $product_id;
+			$parent_product     = $is_variation ? $this->p->util->wc->get_product( $parent_id ) : $product;
+			$product_incl_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
+			$product_price      = $this->get_product_price( $product );
+			$product_price_fmtd = $this->get_product_price_formatted( $product, $product_price, $product_incl_vat );
+			$product_currency   = $this->get_product_currency();
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'product_id = ' . $product_id );
 				$this->p->debug->log( 'parent_id = ' . $parent_id );
+				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
-				$this->p->debug->log( 'currency = ' . $currency );
-				$this->p->debug->log( 'include_vat = ' . ( $include_vat ? 'true' : 'false' ) );
+				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
+				$this->p->debug->log( 'product_currency = ' . $product_currency );
 			}
 
 			if ( $is_variation ) {
@@ -1303,7 +1312,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Add an extra meta tag to signal that VAT is included (used for the Schema valueAddedTaxIncluded property).
 			 */
-			if ( $include_vat ) {
+			if ( $product_incl_vat ) {
 
 				$mt_ecom[ 'product:price:vat_included' ] = true;
 			}
@@ -1314,10 +1323,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			$mt_ecom[ 'product:pretax_price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, false );	// Exclude VAT.
-			$mt_ecom[ 'product:pretax_price:currency' ] = $currency;
+			$mt_ecom[ 'product:pretax_price:currency' ] = $product_currency;
 			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/ListPrice';
-			$mt_ecom[ 'product:price:amount' ]          = $this->get_product_price_formatted( $product, $product_price, $include_vat );
-			$mt_ecom[ 'product:price:currency' ]        = $currency;
+			$mt_ecom[ 'product:price:amount' ]          = $product_price_fmtd;
+			$mt_ecom[ 'product:price:currency' ]        = $product_currency;
 
 			if ( method_exists( $product, 'get_regular_price' ) ) {
 
@@ -1326,10 +1335,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'getting original price formatted' );
 				}
 
-				$regular_price = $product->get_regular_price();
+				$regular_price      = $product->get_regular_price();
+				$regular_price_fmtd = $this->get_product_price_formatted( $product, $regular_price, $product_incl_vat );
 
-				$mt_ecom[ 'product:original_price:amount' ]   = $this->get_product_price_formatted( $product, $regular_price, $include_vat );
-				$mt_ecom[ 'product:original_price:currency' ] = $currency;
+				$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
+				$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -1347,10 +1357,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 
-					$sale_price = $product->get_sale_price();
+					$sale_price      = $product->get_sale_price();
+					$sale_price_fmtd = $this->get_product_price_formatted( $product, $sale_price, $product_incl_vat );
 
-					$mt_ecom[ 'product:sale_price:amount' ]   = $this->get_product_price_formatted( $product, $sale_price, $include_vat );
-					$mt_ecom[ 'product:sale_price:currency' ] = $currency;
+					$mt_ecom[ 'product:sale_price:amount' ]   = $sale_price_fmtd;
+					$mt_ecom[ 'product:sale_price:currency' ] = $product_currency;
 
 				} elseif ( $this->p->debug->enabled ) {
 
@@ -1454,7 +1465,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$product_url      = $product->get_permalink();
 			$product_can_ship = $product->needs_shipping();
 			$parent_url       = $parent_product->get_permalink();
-			$currency         = $this->get_currency();
+			$product_currency = $this->get_product_currency();
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1769,9 +1780,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'method instance id = ' . $method_inst_id );
 			}
 
-			$parent_url    = $parent_product->get_permalink();
-			$product_price = $this->get_product_price( $product );
-			$currency      = $this->get_currency();
+			$parent_url       = $parent_product->get_permalink();
+			$product_price    = $this->get_product_price( $product );
+			$product_currency = $this->get_product_currency();
 
 			$shipping_offer      = false;
 			$shipping_class_obj  = $shipping_class_id ? get_term_by( 'id', $shipping_class_id, 'product_shipping_class' ) : false;
@@ -1873,7 +1884,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$shipping_rate = array(
 					'shipping_rate_name'     => $rate_name,
 					'shipping_rate_cost'     => $rate_cost,
-					'shipping_rate_currency' => $currency,
+					'shipping_rate_currency' => $product_currency,
 				);
 
 				/*
@@ -1946,7 +1957,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
 			$weight_unit_text    = WpssoUtilUnits::get_weight_text();
-
 
 			$ret = array(
 				0 => '',			// Shipping length value.
@@ -2042,18 +2052,63 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $ret;
 		}
 
-		private function get_currency() {
+		/*
+		 * See WpssoIntegEcomWooCommerce->filter_head_cache_index().
+		 */
+		private function get_product_currency() {
 
-			static $currency = null;
+			static $product_currency = null;
 
-			if ( null === $currency ) {	// Get value only once.
+			if ( null === $product_currency ) {	// Get value only once.
 
-				$currency = get_woocommerce_currency();
+				$product_currency = get_woocommerce_currency();
 
-				$currency = apply_filters( 'wpsso_currency', $currency );
+				$product_currency = apply_filters( 'wpsso_product_currency', $product_currency );
 			}
 
-			return $currency;
+			return $product_currency;
+		}
+
+		/*
+		 * Get product availability.
+		 *
+		 * See https://woocommerce.github.io/code-reference/classes/WC-Product.html#method_is_in_stock
+		 *
+		 * Hook 'woocommerce_product_is_in_stock' (returns true or false) to customize the "in stock" status.
+		 */
+		private function get_product_avail( $product ) {
+
+			$product_avail = null;
+
+			if ( $product->is_in_stock() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product is in stock' );
+				}
+
+				$product_avail = 'https://schema.org/InStock';
+
+			} elseif ( $product->is_on_backorder() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product is on backorder' );
+				}
+
+				$product_avail = 'https://schema.org/BackOrder';
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product is out of stock' );
+				}
+
+				$product_avail = 'https://schema.org/OutOfStock';
+			}
+
+			return $product_avail;
 		}
 
 		private function get_product_price( $product ) {
@@ -2065,11 +2120,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $product_price;
 		}
 
-		private function get_product_price_formatted( $product, $product_price, $include_vat = false ) {
+		private function get_product_price_formatted( $product, $product_price, $product_incl_vat = false ) {
 
 			if ( is_numeric( $product_price ) ) {	// Just in case.
 
-				if ( $include_vat ) {
+				if ( $product_incl_vat ) {
 
 					if ( $this->p->debug->enabled ) {
 
