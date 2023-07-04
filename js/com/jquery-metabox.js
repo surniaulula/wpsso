@@ -217,13 +217,13 @@ function sucomTabs( metabox_name, tab_name ) {
 	if ( scroll_to_tab_id ) {
 
 		/*
-		 * Prevent scrolling the metabox into view if this is a visual editor page or scrolling is disabled.
+		 * Prevent scrolling the metabox into view if this is a block editor page or scrolling is disabled.
 		 */
-		var editor_content       = jQuery( 'div.interface-interface-skeleton__content' );
-		var is_visual_editor     = editor_content.length ? true : false;
+		var block_editor_content = jQuery( 'div.interface-interface-skeleton__content' );
+		var is_block_editor      = block_editor_content.length ? true : false;
 		var allow_scroll_to_hash = ( 'undefined' === window.allowScrollToHash ) ? true : window.allowScrollToHash;
 
-		if ( ! is_visual_editor && allow_scroll_to_hash ) {
+		if ( ! is_block_editor && allow_scroll_to_hash ) {
 
 			sucomScrollIntoView( scroll_to_tab_id );
 		}
@@ -247,8 +247,10 @@ function sucomTabs( metabox_name, tab_name ) {
 		jQuery( '.' + href + '-msg' ).addClass( 'active' );
 		jQuery( this ).parent().addClass( 'active' );
 
-		sucomScrollIntoView( 'div#sucom-metabox-tabs' + metabox_name );
-	});
+		scroll_to_tab_id = 'div#sucom-metabox-tabs' + metabox_name;
+
+		sucomScrollIntoView( scroll_to_tab_id );
+	} );
 }
 
 function sucomScrollIntoView( container_id ) {
@@ -260,12 +262,12 @@ function sucomScrollIntoView( container_id ) {
 
 	if ( ! wpbody_content.length || ! container.length ) return false;
 
-	var toolbar_offset = wpbody_content.offset().top;	// Just under the admin toolbar.
-	var footer_offset  = 0;
-	var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
-	var viewport       = {};
-       	var bounds         = {};
-	var scroll_offset  = 0;
+	var block_editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a block editor container.
+	var toolbar_offset       = wpbody_content.offset().top;	// Just under the admin toolbar.
+	var footer_offset        = 0;
+	var viewport             = {};
+       	var bounds               = {};
+	var scroll_offset        = 0;
 
 	viewport.top    = jQuery( window ).scrollTop();
 	viewport.bottom = viewport.top + jQuery( window ).height();
@@ -278,13 +280,13 @@ function sucomScrollIntoView( container_id ) {
 		return false;
 	}
 
-	if ( editor_content.length ) {	// This is a visual editor page.
+	if ( block_editor_content.length ) {	// This is a block editor page.
 
 		var editor_top    = jQuery( 'div.edit-post-visual-editor' ).offset().top;	// Block editor section.
 		var footer_offset = jQuery( 'div.interface-interface-skeleton__footer' ).height();
 
-		toolbar_offset   = editor_content.offset().top;	// Just under the 'interface-interface-skeleton__header'.
-		scroll_container = editor_content;
+		toolbar_offset   = block_editor_content.offset().top;	// Just under the 'interface-interface-skeleton__header'.
+		scroll_container = block_editor_content;
 		scroll_offset    = bounds.top - editor_top + 1;
 
 	} else {

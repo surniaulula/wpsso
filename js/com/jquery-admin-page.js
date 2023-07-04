@@ -3,13 +3,9 @@
  *
  * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20230531
+ * Version: 20230704
  */
-
-/*
- * Update block-editor metaboxes.
- */
-function sucomBlockPostbox( pluginId, adminPageL10n, postId ) {
+function sucomEditorPostbox( pluginId, adminPageL10n, postId ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
@@ -76,11 +72,9 @@ function sucomBlockPostbox( pluginId, adminPageL10n, postId ) {
 /*
  * Create block-editor notices first, excluding any toolbar notice types, then update toolbar notices.
  */
-function sucomBlockNotices( pluginId, adminPageL10n, postId ) {
+function sucomBlockEditorNotices( pluginId, adminPageL10n ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
-
-	if ( 'undefined' === typeof postId ) postId = wp.data.select( 'core/editor' ).getCurrentPostId;
 
 	var createNotice  = wp.data.dispatch( 'core/notices' ).createNotice;
 	var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
@@ -741,4 +735,20 @@ String.prototype.formatUnicorn = function() {
 	}
 
 	return str;
+}
+
+/*
+ * Deprecated on 2023/07/04.
+ */
+function sucomBlockPostbox( pluginId, adminPageL10n, postId ) {
+
+	sucomEditorPostbox( pluginId, adminPageL10n, postId );
+}
+
+/*
+ * Deprecated on 2023/07/04.
+ */
+function sucomBlockNotices( pluginId, adminPageL10n ) {
+
+	sucomBlockEditorNotices( pluginId, adminPageL10n );
 }

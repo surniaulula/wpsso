@@ -234,8 +234,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			echo '<script>';
 			echo 'window.allowScrollToHash = false;';
-			echo 'if ( \'function\' === typeof sucomBlockPostbox ) {';
-			echo ' sucomBlockPostbox( \'wpsso\', \'' . $admin_l10n . '\', \'' . $product_id . '\' );';
+			echo 'if ( \'function\' === typeof sucomEditorPostbox ) {';
+			echo ' sucomEditorPostbox( \'wpsso\', \'' . $admin_l10n . '\', \'' . $product_id . '\' );';
 			echo '}';
 			echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
 			echo ' sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
