@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoJsonPropAggregateRating' ) ) {
 
 			$aggr_rating = WpssoSchema::get_schema_type_context( 'https://schema.org/AggregateRating', $aggr_rating );
 
-			$aggr_rating = (array) apply_filters( 'wpsso_json_prop_https_schema_org_aggregaterating', $aggr_rating, $mod, $mt_og, $page_type_id, $is_main );
+			$aggr_rating = apply_filters( 'wpsso_json_prop_https_schema_org_aggregaterating', $aggr_rating, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
 

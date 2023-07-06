@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				$mt_name[ 'robots' ] = $this->p->util->robots->get_content( $mod );
 			}
 
-			return (array) apply_filters( 'wpsso_meta_name', $mt_name, $mod );
+			return apply_filters( 'wpsso_meta_name', $mt_name, $mod );
 		}
 	}
 }

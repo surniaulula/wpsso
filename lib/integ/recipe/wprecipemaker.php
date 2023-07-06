@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 			} else {
 
 				$post_obj      = get_post( $post_id );
-				$shortcode_ids = (array) WPRM_Recipe_Manager::get_recipe_ids_from_content( $post_obj->post_content );
+				$shortcode_ids = WPRM_Recipe_Manager::get_recipe_ids_from_content( $post_obj->post_content );
 				$recipe_id     = reset( $shortcode_ids );
 
 				if ( empty( $recipe_id ) ) {

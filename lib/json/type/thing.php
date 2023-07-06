@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				}
 			}
 
-			$json_ret[ 'additionalType' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_additionaltype',
+			$json_ret[ 'additionalType' ] = apply_filters( 'wpsso_json_prop_https_schema_org_additionaltype',
 				$json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
@@ -193,7 +193,8 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$this->p->debug->log( 'applying sameAs property filter' );
 			}
 
-			$json_ret[ 'sameAs' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_sameas', $json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
+			$json_ret[ 'sameAs' ] = apply_filters( 'wpsso_json_prop_https_schema_org_sameas',
+				$json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -230,7 +231,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			 */
 			$json_ret[ 'potentialAction' ] = array();
 
-			$json_ret[ 'potentialAction' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_potentialaction',
+			$json_ret[ 'potentialAction' ] = apply_filters( 'wpsso_json_prop_https_schema_org_potentialaction',
 				$json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*

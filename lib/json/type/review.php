@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 				'bestRating'    => 'schema_review_rating_max',
 			) );
 
-			$json_ret[ 'reviewRating' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_reviewrating',
+			$json_ret[ 'reviewRating' ] = apply_filters( 'wpsso_json_prop_https_schema_org_reviewrating',
 				$json_ret[ 'reviewRating' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

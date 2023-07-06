@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/*
 			 * $is_option_upg is true when the option versions, not the plugin versions, have changed.
 			 */
-			$opts = (array) apply_filters( 'wpsso_save_setting_options', $opts, $network, $is_option_upg );
+			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network, $is_option_upg );
 
 			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').

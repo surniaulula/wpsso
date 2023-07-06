@@ -204,7 +204,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 
 				$filter_name = 'wpsso_json_prop_https_schema_org_' . strtolower( $prop_name );
 
-				$prop_values = (array) apply_filters( $filter_name, $prop_values, $mod, $mt_og, $page_type_id, $is_main );
+				$prop_values = apply_filters( $filter_name, $prop_values, $mod, $mt_og, $page_type_id, $is_main );
 
 				if ( isset( $prop_values[ 0 ] ) ) {
 

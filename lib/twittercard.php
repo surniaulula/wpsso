@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mt_tc = (array) apply_filters( 'wpsso_tc_seed', array(), $mod );
+			$mt_tc = apply_filters( 'wpsso_tc_seed', array(), $mod );
 
 			/*
 			 * The twitter:domain is used in place of the 'view on web' text.
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			$this->maybe_add_extra_data( $mt_tc, $mod, $mt_og, $author_id );
 
-			return (array) apply_filters( 'wpsso_tc', $mt_tc, $mod );
+			return apply_filters( 'wpsso_tc', $mt_tc, $mod );
 		}
 
 		/*

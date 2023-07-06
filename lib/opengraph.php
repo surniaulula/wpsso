@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/*
 			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
 			 */
-			$mt_og = (array) apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
+			$mt_og = apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -708,10 +708,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$filter_name = 'wpsso_og_data_' . SucomUtil::sanitize_hookname( $og_ns );
 
-				$mt_og = (array) apply_filters( $filter_name, $mt_og, $mod );
+				$mt_og = apply_filters( $filter_name, $mt_og, $mod );
 			}
 
-			$mt_og = (array) apply_filters( 'wpsso_og', $mt_og, $mod );
+			$mt_og = apply_filters( 'wpsso_og', $mt_og, $mod );
 
 			if ( $this->p->debug->enabled ) {
 

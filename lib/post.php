@@ -649,7 +649,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod     = $this->get_mod( $post_id );
+			$mod = $this->get_mod( $post_id );
+
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			$this->md_cache_enable();	// Re-enable the local cache.
@@ -664,8 +665,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$md_opts = (array) apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
-			$md_opts = (array) apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
+
+			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 			return self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}

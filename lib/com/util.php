@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $remove_ignored_args ) {	// Remove tracking and advertising query args.
 
-				$ignored_args = (array) apply_filters( 'sucom_ignored_url_query_args', self::$ignored_url_query_args );
+				$ignored_args = apply_filters( 'sucom_ignored_url_query_args', self::$ignored_url_query_args );
 
 				if ( ! empty( $ignored_args ) ) {	// Just in case.
 
@@ -2830,8 +2830,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
-				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				$md_defs = $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				if ( empty( $opts_md_pre ) ) {	// Nothing to rename.
 

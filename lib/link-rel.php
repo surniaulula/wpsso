@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );
 			}
 
-			return (array) apply_filters( 'wpsso_link_rel', $link_rel, $mod );
+			return apply_filters( 'wpsso_link_rel', $link_rel, $mod );
 		}
 	}
 }

@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				}
 			}
 
-			$json_ret[ 'isPartOf' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
+			$json_ret[ 'isPartOf' ] = apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
 				$json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 				}
 			}
 
-			$json_ret[ 'citation' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
+			$json_ret[ 'citation' ] = apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
 				$json_ret[ 'citation' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*

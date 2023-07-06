@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 				}
 			}
 
-			$json_ret[ 'review' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_review', $all_reviews, $mod, $mt_og, $page_type_id, $is_main );
+			$json_ret[ 'review' ] = apply_filters( 'wpsso_json_prop_https_schema_org_review', $all_reviews, $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
 			 * Return if nothing to do.

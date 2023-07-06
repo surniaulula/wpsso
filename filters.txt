@@ -293,9 +293,9 @@
 
 'wpsso_schema_type' ( $type_id, $mod, $is_custom )
 
-'wpsso_schema_types' ( (array) $schema_types )
+'wpsso_schema_types' ( $schema_types )
 
-'wpsso_schema_units' ( (array) $schema_units )
+'wpsso_schema_units' ( $schema_units )
 
 'wpsso_search_url' ( $url, $mod )
 
@@ -305,7 +305,7 @@
 
 'wpsso_sharing_url' ( $url, $mod, $add_page )
 
-'wpsso_social_accounts' ( (array) $social_accounts )
+'wpsso_social_accounts' ( $social_accounts )
 
 'wpsso_tag_names' ( $tags = array(), $mod )
 

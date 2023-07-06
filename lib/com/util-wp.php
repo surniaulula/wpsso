@@ -583,11 +583,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$parent_tmpl_dir   = get_template_directory();
 			$child_tmpl_dir    = get_stylesheet_directory();
 			$header_file_paths = array();
-			$tmpl_file_paths   = (array) glob( $parent_tmpl_dir . '/header*.php' );	// Returns false on error.
+			$tmpl_file_paths   = glob( $parent_tmpl_dir . '/header*.php' );	// Returns false on error.
 
 			if ( $parent_tmpl_dir !== $child_tmpl_dir ) {
 
-				$tmpl_file_paths = array_merge( $tmpl_file_paths, (array) glob( $child_tmpl_dir . '/header*.php' ) );
+				$tmpl_file_paths = array_merge( $tmpl_file_paths, glob( $child_tmpl_dir . '/header*.php' ) );
 			}
 
 			foreach ( $tmpl_file_paths as $tmpl_file ) {

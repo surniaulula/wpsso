@@ -942,7 +942,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$mod = $this->get_mod( $obj_id );
 
-			$version_keys = (array) apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
+			$version_keys = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
 
 			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts, $mod );
+			$md_opts = apply_filters( 'wpsso_upgraded_md_options', $md_opts, $mod );
 
 			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
@@ -1984,7 +1984,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$columns = $cf[ 'edit' ][ 'columns' ];
 
-				$local_cache = (array) apply_filters( 'wpsso_get_sortable_columns', $columns );
+				$local_cache = apply_filters( 'wpsso_get_sortable_columns', $columns );
 			}
 
 			if ( false !== $col_key ) {
@@ -2442,7 +2442,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$inherit_opts = $this->p->cf[ 'form' ][ 'inherited_md_opts' ];
-			$inherit_opts = (array) apply_filters( 'wpsso_inherited_md_opts', $inherit_opts, $mod );
+			$inherit_opts = apply_filters( 'wpsso_inherited_md_opts', $inherit_opts, $mod );
 
 			/*
 			 * Since WPSSO Core v9.10.0.

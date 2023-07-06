@@ -4934,7 +4934,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( ! is_array( $var_const ) ) {
 
-				$var_const = (array) self::get_variable_constants();
+				$var_const = self::get_variable_constants();
 			}
 
 			/*
@@ -5427,7 +5427,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( null === $local_cache ) {
 
-				$local_cache = (array) apply_filters( 'wpsso_social_accounts', self::$cf[ 'form' ][ 'social_accounts' ] );
+				$local_cache = apply_filters( 'wpsso_social_accounts', self::$cf[ 'form' ][ 'social_accounts' ] );
 
 				foreach ( $local_cache as $k => $label ) {
 
@@ -5592,7 +5592,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/*
 				 * See WpssoIntegRecipeWpRecipeMaker->filter_cf_md_index().
 				 */
-				$local_cache[ $md_index ] = (array) apply_filters( 'wpsso_' . $md_index, $local_cache[ $md_index ] );
+				$local_cache[ $md_index ] = apply_filters( 'wpsso_' . $md_index, $local_cache[ $md_index ] );
 			}
 
 			if ( false !== $md_key ) {

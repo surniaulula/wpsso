@@ -1038,7 +1038,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Filtered array.
 					 */
-					$this->types_cache[ 'filtered' ] = (array) apply_filters( 'wpsso_schema_types', $this->p->cf[ 'head' ][ 'schema_type' ] );
+					$this->types_cache[ 'filtered' ] = apply_filters( 'wpsso_schema_types', $this->p->cf[ 'head' ][ 'schema_type' ] );
 
 					/*
 					 * Flattened array (before adding cross-references).
@@ -2554,7 +2554,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
 			}
 
-			$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+			$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
 
 			return $item_count;
 		}
@@ -3110,7 +3110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
 				}
 
-				$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
 			}
 
 			unset( $added_page_type_ids[ $page_type_id ] );

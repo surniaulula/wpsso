@@ -1993,7 +1993,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_sitemaps_alternates( array $mod ) {
 
-			$alternates = (array) apply_filters( 'wpsso_sitemaps_alternates', array(), $mod );
+			$alternates = apply_filters( 'wpsso_sitemaps_alternates', array(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 

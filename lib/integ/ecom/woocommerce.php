@@ -852,7 +852,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				}
 			}
 
-			$mt_ecom = (array) apply_filters( 'wpsso_og_ecom_woocommerce', $mt_ecom, $mod );
+			$mt_ecom = apply_filters( 'wpsso_og_ecom_woocommerce', $mt_ecom, $mod );
 
 			return array_merge( $mt_og, $mt_ecom );
 		}

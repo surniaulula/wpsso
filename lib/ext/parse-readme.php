@@ -283,7 +283,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 				if ( $screenshots ) {
 
-					foreach ( (array) $screenshots as $ss ) {
+					foreach ( $screenshots as $ss ) {
 
 						$final_screenshots[] = $ss[ 1 ];
 					}

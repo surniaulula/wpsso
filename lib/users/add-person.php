@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$contact_methods = wp_get_user_contact_methods();
 
-			$illegal_logins = (array) apply_filters( 'illegal_user_logins', array() );
+			$illegal_logins = apply_filters( 'illegal_user_logins', array() );
 
 			/*
 			 * Create a user object.

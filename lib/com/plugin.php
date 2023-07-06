@@ -186,7 +186,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			if ( ! empty( $update_plugins->response ) ) {
 
-				foreach ( (array) $update_plugins->response as $plugin_base => $data ) {
+				foreach ( $update_plugins->response as $plugin_base => $data ) {
 
 					if ( ! empty( $plugin_prefix ) ) {
 
