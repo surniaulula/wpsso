@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
+					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
 
 					/*
 					 * Since WPSSO Core v14.2.0.
@@ -530,7 +530,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $post_id );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
+					$md_opts = apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
 
 					/*
 					 * Since WPSSO Core v9.5.0.

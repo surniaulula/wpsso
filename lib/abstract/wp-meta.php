@@ -842,7 +842,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $mod[ 'id' ] . ' metadata' );
 					}
 
-					$md_defs = (array) apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
+					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
 
 					/*
 					 * Since WPSSO Core v14.2.0.
@@ -854,7 +854,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $mod[ 'id' ] );
 					}
 
-					$md_defs = (array) apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
+					$md_defs = apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
 				}
 
 				/*
@@ -940,9 +940,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Maybe renamed some option keys.
 			 */
-			$mod          = $this->get_mod( $obj_id );
+			$mod = $this->get_mod( $obj_id );
+
 			$version_keys = (array) apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext, $mod );
-			$md_opts      = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
+
+			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
 			/*
 			 * Check for schema type IDs that need to be renamed.
