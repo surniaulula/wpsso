@@ -420,26 +420,32 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use get_metadata() instead of get_comment_meta() for consistency.
 		 */
 		public static function get_meta( $comment_id, $meta_key = '', $single = false ) {
 
-			return get_comment_meta( $comment_id, $meta_key, $single );
+			return get_metadata( 'comment', $comment_id, $meta_key, $single );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use update_metadata() instead of update_comment_meta() for consistency.
 		 */
 		public static function update_meta( $comment_id, $meta_key, $value ) {
 
-			return update_comment_meta( $comment_id, $meta_key, $value );
+			return update_metadata( 'comment', $comment_id, $meta_key, $value );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use delete_metadata() instead of delete_comment_meta() for consistency.
 		 */
 		public static function delete_meta( $comment_id, $meta_key ) {
 
-			return delete_comment_meta( $comment_id, $meta_key );
+			return delete_metadata( 'comment', $comment_id, $meta_key );
 		}
 	}
 }

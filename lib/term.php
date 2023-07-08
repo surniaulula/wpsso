@@ -1002,7 +1002,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Backwards compatible methods for handling term meta, which did not exist before WordPress v4.4.
+		 * Backwards compatible methods for handling term meta (which did not exist before WordPress v4.4).
+		 *
+		 * Use get_metadata() instead of get_term_meta() for consistency.
+		 * Use update_metadata() instead of update_term_meta() for consistency.
 		 */
 		public static function get_term_meta( $term_id, $meta_key, $single = false ) {
 
@@ -1010,7 +1013,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				$term_meta = get_term_meta( $term_id, $meta_key, $single );	// Since WP v4.4.
+				$term_meta = get_metadata( 'term', $term_id, $meta_key, $single );
 
 				/*
 				 * Fallback to checking for deprecated term meta in the options table.
@@ -1022,13 +1025,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 */
 					if ( ( $opt_term_meta = get_option( $meta_key . '_term_' . $term_id, null ) ) !== null ) {
 
-						$updated = update_term_meta( $term_id, $meta_key, $opt_term_meta );	// Since WP v4.4.
+						$updated = update_metadata( 'term', $term_id, $meta_key, $opt_term_meta );
 
 						if ( ! is_wp_error( $updated ) ) {
 
 							delete_option( $meta_key . '_term_' . $term_id );
 
-							$term_meta = get_term_meta( $term_id, $meta_key, $single );
+							$term_meta = get_metadata( 'term', $term_id, $meta_key, $single );
 
 						} else {
 							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
@@ -1044,21 +1047,27 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $term_meta;
 		}
 
+		/*
+		 * Use update_metadata() instead of update_term_meta() for consistency.
+		 */
 		public static function update_term_meta( $term_id, $meta_key, $value ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return update_term_meta( $term_id, $meta_key, $value );	// Since WP v4.4.
+				return update_metadata( 'term', $term_id, $meta_key, $value );	// Since WP v4.4.
 			}
 
 			return update_option( $meta_key . '_term_' . $term_id, $value );
 		}
 
+		/*
+		 * Use delete_metadata() instead of delete_term_meta() for consistency.
+		 */
 		public static function delete_term_meta( $term_id, $meta_key ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return delete_term_meta( $term_id, $meta_key );	// Since WP v4.4.
+				return delete_metadata( 'term', $term_id, $meta_key );	// Since WP v4.4.
 			}
 
 			return delete_option( $meta_key . '_term_' . $term_id );

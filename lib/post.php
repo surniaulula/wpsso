@@ -420,7 +420,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
-			if ( empty( $local_cache[ $cache_id ] ) ) {	// Maybe initialize a new local cache element.
+			/*
+			 * Maybe initialize a new local cache element. Allow for an empty array.
+			 */
+			if ( ! isset( $local_cache[ $cache_id ] ) || ! is_array( $local_cache[ $cache_id ] ) ) {
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -642,6 +645,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: user cannot save post id ' . $post_id );
+				}
+
+				return;
+			}
+
+			/*
+			 * We cannot edit revision metadata so there is no metadata to save.
+			 */
+			if ( 'revision' === get_post_type( $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
 				}
 
 				return;
@@ -1769,6 +1785,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
+			/*
+			 * We cannot edit or save revision metadata so there is no cache to clear.
+			 */
+			if ( 'revision' === get_post_type( $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
+				}
+
+				return;
+			}
+
 			$post_status = get_post_status( $post_id );
 
 			switch ( $post_status ) {
@@ -1906,6 +1935,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $post_id, $rel = false ) {
+
+			/*
+			 * We cannot edit or save revision metadata so there is no cache to refresh.
+			 */
+			if ( 'revision' === get_post_type( $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
+				}
+
+				return;
+			}
 
 			$mod = $this->get_mod( $post_id );
 
@@ -2526,26 +2568,40 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use get_metadata() instead of get_post_meta().
+		 *
+		 * WordPress get_post_meta() does NOT call wp_is_post_revision(), so it retrieves the revision metadata.
 		 */
 		public static function get_meta( $post_id, $meta_key = '', $single = false ) {
 
-			return get_post_meta( $post_id, $meta_key, $single );
+			return get_metadata( 'post', $post_id, $meta_key, $single );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use update_metadata() instead of update_post_meta().
+		 *
+		 * WordPress update_post_meta() calls wp_is_post_revision(), so it updates the post metadata NOT the revision metadata.
+		 *
+		 * If get_post_meta() and update_post_meta() are used on a revision, it will update and clear the post metadata.
 		 */
 		public static function update_meta( $post_id, $meta_key, $value ) {
 
-			return update_post_meta( $post_id, $meta_key, $value );
+			return update_metadata( 'post', $post_id, $meta_key, $value );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use delete_metadata() instead of delete_post_meta().
+		 *
+		 * WordPress delete_post_meta() calls wp_is_post_revision(), so it deletes the post metadata NOT the revision metadata.
 		 */
 		public static function delete_meta( $post_id, $meta_key ) {
 
-			return delete_post_meta( $post_id, $meta_key );
+			return delete_metadata( 'post', $post_id, $meta_key );
 		}
 	}
 }

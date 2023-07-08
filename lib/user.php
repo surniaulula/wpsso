@@ -1986,26 +1986,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use get_metadata() instead of get_user_meta() for consistency.
 		 */
 		public static function get_meta( $user_id, $meta_key = '', $single = false ) {
 
-			return get_user_meta( $user_id, $meta_key, $single );
+			return get_metadata( 'user', $user_id, $meta_key, $single );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use update_metadata() instead of update_user_meta() for consistency.
 		 */
 		public static function update_meta( $user_id, $meta_key, $value ) {
 
-			return update_user_meta( $user_id, $meta_key, $value );
+			return update_metadata( 'user', $user_id, $meta_key, $value );
 		}
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Use delete_metadata() instead of delete_user_meta() for consistency.
 		 */
 		public static function delete_meta( $user_id, $meta_key ) {
 
-			return delete_user_meta( $user_id, $meta_key );
+			return delete_metadata( 'user', $user_id, $meta_key );
 		}
 
 		/*
