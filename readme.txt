@@ -234,6 +234,34 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.15.1-dev.1 (2023/07/08)**
+
+IMPORTANT UPDATE to bypass a bug in the WordPress `get_post_meta()` function.
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the following methods to bypass a bug in the WordPress `get_post_meta()` function:
+		* `WpssoComment::delete_meta()`
+		* `WpssoComment::get_meta()`
+		* `WpssoComment::update_meta()`
+		* `WpssoPost::delete_meta()`
+		* `WpssoPost::get_meta()`
+		* `WpssoPost::update_meta()`
+		* `WpssoTerm::delete_meta()`
+		* `WpssoTerm::get_meta()`
+		* `WpssoTerm::update_meta()`
+		* `WpssoUser::delete_meta()`
+		* `WpssoUser::get_meta()`
+		* `WpssoUser::update_meta()`
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.15.0 (2023/07/04)**
 
 * **New Features**
@@ -738,6 +766,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.15.1-dev.1 =
+
+(2023/07/08) IMPORTANT UPDATE to bypass a bug in the WordPress `get_post_meta()` function.
 
 = 15.15.0 =
 
