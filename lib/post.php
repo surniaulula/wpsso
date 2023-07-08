@@ -953,32 +953,39 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
-			if ( 'trash' === $post_obj->post_status ) {
+			if ( 'inherit' === $post_obj->post_status ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'head meta skipped: post_status is trash' );
+					$this->p->debug->log( 'skipping head meta: post_status is inherit' );
+				}
+
+			} elseif ( 'trash' === $post_obj->post_status ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping head meta: post_status is trash' );
 				}
 
 			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'trash' === $_REQUEST[ 'action' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'head meta skipped: post is being trashed' );
+					$this->p->debug->log( 'skipping head meta: post is being trashed' );
 				}
 
 			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'head meta skipped: post is being deleted' );
+					$this->p->debug->log( 'skipping head meta: post is being deleted' );
 				}
 
 			} elseif ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
+					$this->p->debug->log( 'skipping head meta: doing block editor for meta box' );
 				}
 
 			} elseif ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
@@ -1677,6 +1684,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					die( -1 );
 
+				} elseif ( 'inherit' === $post_obj->post_status ) {
+
+					die( -1 );
+
 				} elseif ( 'trash' === $post_obj->post_status ) {
 
 					die( -1 );
@@ -1807,21 +1818,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: cache clearing ignored for post status ' .  $post_status );
+						$this->p->debug->log( 'exiting early: cache clearing ignored for post status ' . $post_status );
 					}
 
 					return;	// Stop here.
-
-				case 'auto-draft':
-				case 'draft':
-				case 'expired':
-				case 'future':
-				case 'pending':
-				case 'private':
-				case 'publish':
-				default:	// Any other post status.
-
-					break;
 			}
 
 			/*
@@ -1872,8 +1872,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
-			$post_status = get_post_status( $post_id );
-
 			if ( 'publish' === $post_status ) {
 
 				$post_taxonomies = get_post_taxonomies( $post_id );
@@ -1947,6 +1945,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				return;
+			}
+
+			$post_status = get_post_status( $post_id );
+
+			switch ( $post_status ) {
+
+				case 'inherit':	// Post revision.
+				case 'trash':
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'exiting early: cache refresh ignored for post status ' . $post_status );
+					}
+
+					return;	// Stop here.
 			}
 
 			$mod = $this->get_mod( $post_id );
@@ -2189,24 +2202,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				return $shortlink;	// Return original shortlink.
+			}
 
-			} elseif ( 'auto-draft' === $mod[ 'post_status' ] ) {
+			switch ( $mod[ 'post_status' ] ) {
 
-				if ( $this->p->debug->enabled ) {
+				case 'auto-draft':
+				case 'inherit':	// Post revision.
+				case 'trash':
 
-					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
-				}
+					if ( $this->p->debug->enabled ) {
 
-				return $shortlink;	// Return original shortlink.
+						$this->p->debug->log( 'exiting early: post status is ' . $mod[ 'post_status' ] );
+					}
 
-			} elseif ( 'trash' === $mod[ 'post_status' ] ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: post_status is trash' );
-				}
-
-				return $shortlink;	// Return original shortlink.
+					return $shortlink;	// Return original shortlink.
 			}
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
