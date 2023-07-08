@@ -5176,7 +5176,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:895 lib/post.php:1043 lib/term.php:726 lib/user.php:749
+#: lib/admin.php:895 lib/post.php:1043 lib/term.php:729 lib/user.php:752
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5586,7 +5586,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:412
+#: lib/comment.php:415
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -8274,8 +8274,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1753 lib/user.php:1842
-#: lib/user.php:1970
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1756 lib/user.php:1845
+#: lib/user.php:1973
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -12364,7 +12364,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:971
+#: lib/term.php:974
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12409,74 +12409,74 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:890
+#: lib/user.php:893
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:896
+#: lib/user.php:899
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1053
+#: lib/user.php:1056
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1179
+#: lib/user.php:1182
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1180
+#: lib/user.php:1183
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1181
+#: lib/user.php:1184
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1686
+#: lib/user.php:1689
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1729 lib/user.php:1755
+#: lib/user.php:1732 lib/user.php:1758
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1736
+#: lib/user.php:1739
 msgid "A background task will begin shortly to %s to content creators."
 msgstr ""
 
-#: lib/user.php:1766 lib/user.php:1855 lib/util-cache.php:354
+#: lib/user.php:1769 lib/user.php:1858 lib/util-cache.php:354
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1767
+#: lib/user.php:1770
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1801
+#: lib/user.php:1804
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1802 lib/user.php:1894 lib/util-cache.php:464
+#: lib/user.php:1805 lib/user.php:1897 lib/util-cache.php:464
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1818 lib/user.php:1844
+#: lib/user.php:1821 lib/user.php:1847
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1825
+#: lib/user.php:1828
 msgid "A background task will begin shortly to %s from all users."
 msgstr ""
 
-#: lib/user.php:1856
+#: lib/user.php:1859
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1893
+#: lib/user.php:1896
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

@@ -421,9 +421,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
 			/*
-			 * Maybe initialize a new local cache element. Allow for an empty array.
+			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) || ! is_array( $local_cache[ $cache_id ] ) ) {
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
 				$local_cache[ $cache_id ] = null;
 			}
