@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.15.1-rc.1 (2023/07/08)**
+**Version 15.15.1 (2023/07/08)**
 
 IMPORTANT UPDATE to bypass a bug in the WordPress `get_post_meta()` function.
 
@@ -767,7 +767,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.15.1-rc.1 =
+= 15.15.1 =
 
 (2023/07/08) IMPORTANT UPDATE to bypass a bug in the WordPress `get_post_meta()` function.
 
