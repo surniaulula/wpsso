@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.15.2-dev.1 (TBD)**
+**Version 15.15.2-dev.1 (2023/07/08)**
 
 * **New Features**
 	* None.
@@ -243,7 +243,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Minor code optimization and standardization:
+		* Replaced `{get|update|delete}_{comment|post|term|user}_meta()` functions by `{get|update|delete}_metadata()`.
+		* Refactored the `WpssoAbstractWpMeta::get_mod_meta()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -785,7 +787,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.15.2-dev.1 =
 
-(TBD) None.
+(2023/07/08) Minor code optimization and standardization.
 
 = 15.15.1 =
 
