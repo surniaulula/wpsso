@@ -236,7 +236,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 15.15.1 (2023/07/08)**
 
-IMPORTANT UPDATE to bypass a bug in the WordPress `get_post_meta()` function.
+**IMPORTANT UPDATE** to bypass a bug in the WordPress `get_post_meta()` function:
+
+The WordPress `add_post_meta()`, `delete_post_meta()`, and `update_post_meta()` functions all use `wp_is_post_revision()` to add/delete/update metadata of the post, not its revision. That's fine, but the `get_post_meta()` function does NOT use `wp_is_post_revision()`. As a consequence, if `get_post_meta()` and `update_post_meta()` are used during the save process for a revision, the post metadata ends up being overwritten - the `get_post_meta()` function gets the **revision** metadata and the `update_post_meta()` function updates the **post** metadata NOT the revision metadata.
 
 * **New Features**
 	* None.
