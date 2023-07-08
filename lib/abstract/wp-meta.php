@@ -585,6 +585,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/*
 					 * Schema Movie.
+					 *
+					 *	'schema_movie_actor_person_name_0'    => '',
+					 *	'schema_movie_actor_person_name_1'    => '',
+					 *	'schema_movie_actor_person_name_2'    => '',
+					 *	'schema_movie_director_person_name_0' => '',
+					 *	'schema_movie_director_person_name_1' => '',
+					 *	'schema_movie_director_person_name_2' => '',
 					 */
 					'schema_movie_prodco_org_id'     => 'none',		// Movie Production Company.
 					'schema_movie_released_date'     => '',			// Movie Release Date.
@@ -661,6 +668,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/*
 					 * Schema Review Subject.
+					 *
+					 *	'schema_review_item_sameas_url_0' => '',
+					 *	'schema_review_item_sameas_url_1' => '',
+					 *	'schema_review_item_sameas_url_2' => '',
 					 */
 					'schema_review_item_name' => '',					// Subject Name.
 					'schema_review_item_desc' => '',					// Subject Description.
@@ -687,6 +698,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/*
 					 * Schema Review Subject: Creative Work / Movie.
+					 *
+					 *	'schema_review_item_cw_movie_actor_person_name_0'    => '',
+					 *	'schema_review_item_cw_movie_actor_person_name_1'    => '',
+					 *	'schema_review_item_cw_movie_actor_person_name_2'    => '',
+					 *	'schema_review_item_cw_movie_director_person_name_0' => '',
+					 *	'schema_review_item_cw_movie_director_person_name_1' => '',
+					 *	'schema_review_item_cw_movie_director_person_name_2' => '',
 					 */
 
 					/*
@@ -842,7 +860,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $mod[ 'id' ] . ' metadata' );
 					}
 
-					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_post_meta( $mod[ 'id' ] ) );
+					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_metadata( 'post', $mod[ 'id' ] ) );
 
 					/*
 					 * Since WPSSO Core v14.2.0.
@@ -2875,7 +2893,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *
 			 * Rating values must be larger than 0 to include rating info.
 			 */
-			$rating_value = (float) get_comment_meta( $comment_mod[ 'id' ], $rating_meta, $single = true );
+			$rating_value = (float) get_metadata( 'comment', $comment_mod[ 'id' ], $rating_meta, $single = true );
 
 			if ( $rating_value > 0 ) {
 
@@ -3044,31 +3062,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
-					if ( ! empty( $mod[ 'is_post' ] ) ) {
+					if ( ! empty( $mod[ 'name' ] ) ) {
 
-						$ret_val = get_post_meta( $mod[ 'id' ], $meta_key, $single );
-
-						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
-
-							delete_post_meta( $mod[ 'id' ], $meta_key );
-						}
-
-					} elseif ( ! empty( $mod[ 'is_term' ] ) ) {
-
-						$ret_val = get_term_meta( $mod[ 'id' ], $meta_key, $single );
+						$ret_val = get_metadata( $mod[ 'name' ], $mod[ 'id' ], $meta_key, $single );
 
 						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
 
-							delete_term_meta( $mod[ 'id' ], $meta_key );
-						}
-
-					} elseif ( ! empty( $mod[ 'is_user' ] ) ) {
-
-						$ret_val = get_user_meta( $mod[ 'id' ], $meta_key, $single );
-
-						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
-
-							delete_user_meta( $mod[ 'id' ], $meta_key );
+							delete_metadata( $mod[ 'name' ], $mod[ 'id' ], $meta_key );
 						}
 					}
 

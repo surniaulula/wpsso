@@ -1473,7 +1473,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 									$this->p->debug->log( 'falling back to attachment image alt text' );
 								}
 
-								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
+								$desc_text = get_metadata( 'post', $mod[ 'id' ], '_wp_attachment_image_alt', $single = true );
 							}
 						}
 

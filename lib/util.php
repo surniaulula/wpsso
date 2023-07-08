@@ -2312,7 +2312,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = $this->get_canonical_url( $mod );
 
-					$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
+					$url = get_oembed_endpoint_url( $url, $format );
 				}
 			}
 
@@ -2581,7 +2581,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * to the current WordPress locale and load the user locale if required.
 			 */
 			$current_locale = get_locale();	// Use the WordPress locale.
-			$user_locale    = get_user_meta( $user_id, 'locale', $single = true );
+			$user_locale    = get_metadata( 'user', $user_id, 'locale', $single = true );
 
 			$this->maybe_load_textdomain( $current_locale, $user_locale, $plugin_slug = 'wpsso' );
 

@@ -50,14 +50,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 			if ( $this->brand_tax_slug === $mod[ 'tax_slug' ] ) {
 
-				if ( function_exists( 'get_term_meta' ) ) {	// Since WP v4.4.
-
-					$pid = get_term_meta( $term_id, $key = $this->brand_image_key, $single = true );
-
-				} else {
-
-					$pid = get_metadata( 'woocommerce_term', $term_id, $key = $this->brand_image_key, $single = true );
-				}
+				$pid = get_metadata( 'term', $term_id, $this->brand_image_key, $single = true );
 
 				if ( ! empty( $pid ) ) {
 

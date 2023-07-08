@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.15.1\n"
+"Project-Id-Version: WPSSO Core 15.15.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4777,54 +4777,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1211
+#: lib/abstract/wp-meta.php:1229
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1282
+#: lib/abstract/wp-meta.php:1300
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1286
+#: lib/abstract/wp-meta.php:1304
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1289 lib/messages.php:294
+#: lib/abstract/wp-meta.php:1307 lib/messages.php:294
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1293
+#: lib/abstract/wp-meta.php:1311
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1294
+#: lib/abstract/wp-meta.php:1312
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1295
+#: lib/abstract/wp-meta.php:1313
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1296
+#: lib/abstract/wp-meta.php:1314
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1629
+#: lib/abstract/wp-meta.php:1647
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1957 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1975 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1959
+#: lib/abstract/wp-meta.php:1977
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -6730,23 +6730,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1604
+#: lib/integ/ecom/woocommerce.php:1597
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1708
+#: lib/integ/ecom/woocommerce.php:1701
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1711
+#: lib/integ/ecom/woocommerce.php:1704
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1714
+#: lib/integ/ecom/woocommerce.php:1707
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

@@ -1037,6 +1037,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 							$term_meta = get_metadata( 'term', $term_id, $meta_key, $single );
 
 						} else {
+
 							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 						}
 					}
@@ -1057,7 +1058,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return update_metadata( 'term', $term_id, $meta_key, $value );	// Since WP v4.4.
+				return update_metadata( 'term', $term_id, $meta_key, $value );
 			}
 
 			return update_option( $meta_key . '_term_' . $term_id, $value );
@@ -1070,7 +1071,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return delete_metadata( 'term', $term_id, $meta_key );	// Since WP v4.4.
+				return delete_metadata( 'term', $term_id, $meta_key );
 			}
 
 			return delete_option( $meta_key . '_term_' . $term_id );

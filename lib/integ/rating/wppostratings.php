@@ -89,8 +89,8 @@ if ( ! class_exists( 'WpssoIntegRatingWpPostRatings' ) ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-				$average_rating = (float) get_post_meta( $mod[ 'id' ], 'ratings_average', true );
-				$rating_count   = (int) get_post_meta( $mod[ 'id' ], 'ratings_users', true );
+				$average_rating = (float) get_metadata( 'post', $mod[ 'id' ], 'ratings_average', $single = true );
+				$rating_count   = (int) get_metadata( 'post', $mod[ 'id' ], 'ratings_users', $single = true );
 				$worst_rating   = 1;
 				$best_rating    = (int) get_option( 'postratings_max' );
 

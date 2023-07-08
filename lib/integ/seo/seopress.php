@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 
 					if ( $mod[ 'is_post' ] ) {
 
-						if ( $ret = get_post_meta( $mod[ 'id' ], $meta_key = '_seopress_robots_primary_cat', $single = true ) ) {
+						if ( $ret = get_metadata( 'post', $mod[ 'id' ], $meta_key = '_seopress_robots_primary_cat', $single = true ) ) {
 
 							return $ret;
 						}
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 
 			if ( $mod[ 'id' ] ) {
 
-				$canonical = get_post_meta( $mod[ 'id' ], $meta_key = '_seopress_robots_canonical', $single = true );
+				$canonical = get_metadata( 'post', $mod[ 'id' ], $meta_key = '_seopress_robots_canonical', $single = true );
 			}
 
 			if ( ! empty( $canonical ) ) {
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 
 			if ( $mod[ 'id' ] ) {
 
-				$canonical = get_term_meta( $mod[ 'id' ], $meta_key = '_seopress_robots_canonical', $single = true );
+				$canonical = get_metadata( 'term', $mod[ 'id' ], $meta_key = '_seopress_robots_canonical', $single = true );
 			}
 
 			if ( ! empty( $canonical ) ) {

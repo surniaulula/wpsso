@@ -76,14 +76,14 @@ if ( ! class_exists( 'WpssoIntegDataSeoframeworkMeta' ) ) {
 
 			if ( ! empty( $this->cache_imported_meta[ 'term' ] ) ) {
 
-				$term_opts = get_term_meta( $term_id, 'autodescription-term-settings', $single = true );
+				$term_opts = get_metadata( 'term', $term_id, 'autodescription-term-settings', $single = true );
 
 				foreach( $this->cache_imported_meta[ 'term' ] as $meta_key => $bool ) {
 
 					unset( $term_opts[ $meta_key ] );
 				}
 
-				update_term_meta( $term_id, 'autodescription-term-settings', $term_opts );
+				update_metadata( 'term', $term_id, 'autodescription-term-settings', $term_opts );
 			}
 
 			return $md_opts;
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoIntegDataSeoframeworkMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$term_opts = get_term_meta( $term_id, 'autodescription-term-settings', $single = true );
+			$term_opts = get_metadata( 'term', $term_id, 'autodescription-term-settings', $single = true );
 
 			if ( empty( $term_opts ) ) {
 

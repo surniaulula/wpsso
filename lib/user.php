@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$user_exists_id = $user_id;
 
-					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
+					$md_opts = get_metadata( 'user', $user_exists_id, WPSSO_META_NAME, $single = true );
 
 					if ( ! is_array( $md_opts ) ) {
 
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $user_exists ) {
 
-						update_user_meta( $user_exists_id, WPSSO_META_NAME, $md_opts );
+						update_metadata( 'user', $user_exists_id, WPSSO_META_NAME, $md_opts );
 
 					} else {
 
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
-			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
+			return update_metadata( 'user', $user_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/*
@@ -867,7 +867,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $user_id ) {	// 0 when adding a new user.
 
-					$val = get_user_meta( $user_id, $key, $single = true );
+					$val = get_metadata( 'user', $user_id, $key, $single = true );
 				}
 
 				echo '<tr>';
@@ -1088,7 +1088,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						 */
 						default:
 
-							update_user_meta( $user_id, $key, sanitize_text_field( $_POST[ $key ] ) );
+							update_metadata( 'user', $user_id, $key, sanitize_text_field( $_POST[ $key ] ) );
 
 							break;
 					}
@@ -1509,7 +1509,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$wpsso =& Wpsso::get_instance();
 
-				self::$cache_user_prefs[ $user_id ] = get_user_meta( $user_id, WPSSO_PREF_NAME, $single = true );
+				self::$cache_user_prefs[ $user_id ] = get_metadata( 'user', $user_id, WPSSO_PREF_NAME, $single = true );
 
 				if ( ! is_array( self::$cache_user_prefs[ $user_id ] ) ) {
 
@@ -1572,7 +1572,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				unset( $new_prefs[ 'prefs_filtered' ] );
 
-				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
+				update_metadata( 'user', $user_id, WPSSO_PREF_NAME, $new_prefs );
 
 				return true;
 			}

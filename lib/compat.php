@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 					if ( strpos( $notif_html, $notif_msg ) === false ) {
 
-						update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
+						update_metadata( 'user', get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
 
 						$notif_obj = new Yoast_Notification( $notif_msg, array( 'id' => $notif_id ) );
 

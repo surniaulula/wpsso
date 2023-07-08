@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * Use the image "Alternative Text" for the 'alternativeHeadline' property.
 				 */
-				$json_ret[ 'alternativeHeadline' ] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
+				$json_ret[ 'alternativeHeadline' ] = get_metadata( 'post', $mod[ 'id' ], '_wp_attachment_image_alt', true );
 
 				if ( $json_ret[ 'name' ] === $json_ret[ 'alternativeHeadline' ] ) {	// Prevent duplicate values.
 

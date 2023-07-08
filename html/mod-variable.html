@@ -80,7 +80,7 @@ $mod = $wpsso-&gt;user-&gt;get_mod( 123 );
 <pre>
 if ( $mod[ 'is_post' ] &amp;&amp; $mod[ 'id' ] ) {
 
-    $value = get_post_meta( $mod[ 'id' ], '_example_meta_name', $single = true );
+    $value = get_metadata( 'post', $mod[ 'id' ], '_example_meta_name', $single = true );
 }
 </pre>
 

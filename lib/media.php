@@ -1461,7 +1461,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$img_meta = wp_get_attachment_metadata( $pid );	// Returns a WP_Error object on failure.
-			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', $single = true );
+			$img_alt  = get_metadata( 'post', $pid, '_wp_attachment_image_alt', $single = true );
 
 			/*
 			 * Check to see if the full size image width / height matches the resize width / height we require.

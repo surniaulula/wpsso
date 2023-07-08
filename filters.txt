@@ -115,6 +115,12 @@
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
+'wpsso_import_content_blocks' ( $md_opts, $mod, $content );
+
+'wpsso_import_custom_fields' ( $md_opts, $mod, $metadata );
+
+'wpsso_import_product_attributes' ( $md_opts, $mod, $wp_obj );
+
 'wpsso_inherit_custom_images' ( $bool, $mod )
 
 'wpsso_inherit_featured_image' ( $bool, $mod )

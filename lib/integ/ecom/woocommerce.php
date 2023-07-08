@@ -621,14 +621,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( SucomUtil::is_term_tax_slug( $term_id, $this->cat_taxonomy ) || SucomUtil::is_term_tax_slug( $term_id, $this->tag_taxonomy ) ) {
 
-				if ( function_exists( 'get_term_meta' ) ) {
-
-					$pid = get_term_meta( $term_id, $key = 'thumbnail_id', $single = true );
-
-				} else {
-
-					$pid = get_metadata( 'woocommerce_term', $term_id, $key = 'thumbnail_id', $single = true );
-				}
+				$pid = get_metadata( 'term', $term_id, $key = 'thumbnail_id', $single = true );
 
 				if ( ! empty( $pid ) ) {
 

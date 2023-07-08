@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 				foreach( $this->cache_imported_meta[ 'post' ] as $meta_key => $bool ) {
 
-					delete_post_meta( $post_id, $meta_key );
+					delete_metadata( 'post', $post_id, $meta_key );
 				}
 
 				unset( $this->cache_imported_meta[ 'post' ] );
@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = (string) get_post_meta( $mod[ 'id' ], $meta_key, $single = true );
+			$meta_value = (string) get_metadata( 'post', $mod[ 'id' ], $meta_key, $single = true );
 
 			if ( '' === $meta_value ) {
 
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 				foreach( $this->cache_imported_meta[ 'user' ] as $meta_key => $bool ) {
 
-					delete_user_meta( $user_id, $meta_key );
+					delete_metadata( 'user', $user_id, $meta_key );
 				}
 
 				unset( $this->cache_imported_meta[ 'user' ] );
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = (string) get_user_meta( $mod[ 'id' ], $meta_key, $single = true );
+			$meta_value = (string) get_metadata( 'user', $mod[ 'id' ], $meta_key, $single = true );
 
 			if ( '' === $meta_value ) {
 

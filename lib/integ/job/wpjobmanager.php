@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 					'schema_job_expire_date' => '_job_expires',
 				) as $md_key => $meta_key ) {
 
-					$local_cache[ $post_id ][ $md_key ] = get_post_meta( $post_id, $meta_key, $single = true );
+					$local_cache[ $post_id ][ $md_key ] = get_metadata( 'post', $post_id, $meta_key, $single = true );
 				}
 
 				$job_types = wpjm_get_job_employment_types( $post_obj );
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 				'place_longitude' => 'geolocation_long',
 			) as $md_key => $meta_key ) {
 
-				$place_opts[ $md_key ] = get_post_meta( $post_id, $meta_key, $single = true );
+				$place_opts[ $md_key ] = get_metadata( 'post', $post_id, $meta_key, $single = true );
 			}
 
 			if ( empty( $place_opts ) ) {

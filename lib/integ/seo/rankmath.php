@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 					if ( $mod[ 'is_post' ] ) {
 
-						if ( $ret = get_post_meta( $mod[ 'id' ], $meta_key = 'rank_math_primary_category', $single = true ) ) {
+						if ( $ret = get_metadata( 'post', $mod[ 'id' ], $meta_key = 'rank_math_primary_category', $single = true ) ) {
 
 							return $ret;
 						}
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			if ( $mod[ 'id' ] ) {
 
-				$canonical = get_post_meta( $mod[ 'id' ], $meta_key = 'rank_math_canonical_url', $single = true );
+				$canonical = get_metadata( 'post', $mod[ 'id' ], $meta_key = 'rank_math_canonical_url', $single = true );
 			}
 
 			if ( ! empty( $canonical ) ) {
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			if ( $mod[ 'id' ] ) {
 
-				$canonical = get_term_meta( $mod[ 'id' ], $meta_key = 'rank_math_canonical_url', $single = true );
+				$canonical = get_metadata( 'term', $mod[ 'id' ], $meta_key = 'rank_math_canonical_url', $single = true );
 			}
 
 			if ( ! empty( $canonical ) ) {

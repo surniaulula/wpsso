@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 							$this->p->debug->log( 'deleting ' . self::$meta_name . ' metadata for post id ' . $mod[ 'id' ] );
 						}
 
-						delete_post_meta( $mod[ 'id' ], self::$meta_name );
+						delete_metadata( 'post', $mod[ 'id' ], self::$meta_name );
 					}
 				}
 			}
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 
 				self::$meta_saved = true;
 
-				update_post_meta( $mod[ 'id' ], self::$meta_name, $added_script_ids );
+				update_metadata( 'post', $mod[ 'id' ], self::$meta_name, $added_script_ids );
 			}
 
 			foreach ( $prop_data as $prop_name => $prop_values ) {
@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 				return $failure . $content;
 			}
 
-			$added_script_ids = get_post_meta( $post_id, self::$meta_name, $single = true );
+			$added_script_ids = get_metadata( 'post', $post_id, self::$meta_name, $single = true );
 
 			if ( empty( $added_script_ids ) || ! is_array( $added_script_ids ) ) {	// Nothing to do.
 

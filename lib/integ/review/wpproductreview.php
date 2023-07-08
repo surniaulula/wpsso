@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 		public function get_review_options( $post_id ) {
 
 			return array(
-				'schema_review_rating'     => (float) get_post_meta( $post_id, $rating_meta = 'wppr_rating', $single = true ),
+				'schema_review_rating'     => (float) get_metadata( 'post', $post_id, $rating_meta = 'wppr_rating', $single = true ),
 				'schema_review_rating_min' => 1,
 				'schema_review_rating_max' => 100,
 			);
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 			 */
 			if ( ! $review_enabled = SucomUtil::get_request_value( 'cwp_meta_box_check', 'POST' ) ) {	// Uses sanitize_text_field.
 
-				$review_enabled = get_post_meta( $post_id, 'cwp_meta_box_check', $single = true );
+				$review_enabled = get_metadata( 'post', $post_id, 'cwp_meta_box_check', $single = true );
 			}
 
 			if ( SucomUtil::is_true( $review_enabled ) ) {	// Handles true/false/yes/no.
