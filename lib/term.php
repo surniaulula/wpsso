@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			/*
-			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid term page.
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a term page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
 

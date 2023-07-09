@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.15.2-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.15.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4731,7 +4731,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:351 gettext/gettext-lib-pro.php:362
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
-#: lib/loader.php:197 lib/post.php:1714 lib/pro/util/shorten.php:331
+#: lib/loader.php:197 lib/post.php:1685 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util.php:3875
 msgid "%s error:"
 msgstr ""
@@ -11602,15 +11602,15 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1662
-msgid "invalid ajax referer nonce value"
+#: lib/post.php:1661
+msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1667
-msgid "ajax request missing the post_id"
+#: lib/post.php:1665
+msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:2010
+#: lib/post.php:1987
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

@@ -638,9 +638,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				return;
-			}
 
-			if ( ! $this->user_can_save( $post_id ) ) {
+			} elseif ( ! $this->user_can_save( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -648,16 +647,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				return;
-			}
 
 			/*
-			 * We cannot edit revision metadata so there is no metadata to save.
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
 			 */
-			if ( 'revision' === get_post_type( $post_id ) ) {
+			} elseif ( ! $this->post_can_have_meta( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
 				}
 
 				return;
@@ -665,8 +670,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod = $this->get_mod( $post_id );
-
+			$mod     = $this->get_mod( $post_id );
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			$this->md_cache_enable();	// Re-enable the local cache.
@@ -905,41 +909,58 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$post_obj = SucomUtil::get_post_object( true );
 			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			/*
-			 * Make sure we have at least a post type and status.
-			 */
 			if ( ! $post_obj instanceof WP_Post ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post_obj is not a post object' );
-				}
-
-				return;
-
-			} elseif ( empty( $post_obj->post_type ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: post_type is empty' );
-				}
-
-				return;
-
-			} elseif ( empty( $post_obj->post_status ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: post_status is empty' );
+					$this->p->debug->log( 'exiting early: post object is not an instance of WP_Post' );
 				}
 
 				return;
 			}
-
+			
 			/*
-			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid post page.
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a post page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
+
+			/*
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
+			 */
+			if ( ! $this->post_can_have_meta( $post_obj ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+				}
+
+				return;
+
+			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'trash' === $_REQUEST[ 'action' ] ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is being trashed' );
+				}
+
+				return;
+
+			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is being deleted' );
+				}
+
+				return;
+			}
 
 			$mod = $this->get_mod( $post_id );
 
@@ -953,42 +974,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
-			if ( 'inherit' === $post_obj->post_status ) {
+			if ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping head meta: post_status is inherit' );
+					$this->p->debug->log( 'skipping head: doing block editor for metabox' );
 				}
 
-			} elseif ( 'trash' === $post_obj->post_status ) {
+			} elseif ( empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping head meta: post_status is trash' );
+					$this->p->debug->log( 'skipping head: metabox not enabled for post type ' . $post_obj->post_type );
 				}
 
-			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'trash' === $_REQUEST[ 'action' ] ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping head meta: post is being trashed' );
-				}
-
-			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'delete' === $_REQUEST[ 'action' ] ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping head meta: post is being deleted' );
-				}
-
-			} elseif ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping head meta: doing block editor for meta box' );
-				}
-
-			} elseif ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
+			} else {
 
 				/*
 				 * Hooked by woocommerce module to load front-end libraries and start a session.
@@ -1650,48 +1650,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		private function die_or_get_ajax_post_obj() {
 
-			$error_msg = false;
+			$error_msg = '';
 
 			if ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
 
 				die( -1 );
-			}
 
-			if ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', $die = false ) ) {
+			} elseif ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', $die = false ) ) {
 
-				$error_msg = __( 'invalid ajax referer nonce value', 'wpsso' );
-			}
+				$error_msg = __( 'ajax request invalid nonce', 'wpsso' );
 
-			if ( empty( $_POST[ 'post_id' ] ) ) {
+			} elseif ( empty( $_POST[ 'post_id' ] ) ) {
 
-				$error_msg = __( 'ajax request missing the post_id', 'wpsso' );
-			}
-
-			if ( ! $error_msg ) {
-
-				$post_id = $_POST[ 'post_id' ];
-				$post_obj = SucomUtil::get_post_object( $post_id );
-
-				if ( ! $post_obj instanceof WP_Post ) {
-
-					die( -1 );
-
-				} elseif ( empty( $post_obj->post_type ) ) {
-
-					die( -1 );
-
-				} elseif ( empty( $post_obj->post_status ) ) {
-
-					die( -1 );
-
-				} elseif ( 'inherit' === $post_obj->post_status ) {
-
-					die( -1 );
-
-				} elseif ( 'trash' === $post_obj->post_status ) {
-
-					die( -1 );
-				}
+				$error_msg = __( 'ajax request post id is empty', 'wpsso' );
 			}
 
 			if ( $error_msg ) {
@@ -1714,6 +1685,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$error_pre = trim( sprintf( __( '%s error:', 'wpsso' ), $from  ) );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+
+				die( -1 );
+			}
+
+			$post_id = $_POST[ 'post_id' ];
+			$post_obj = SucomUtil::get_post_object( $post_id );
+
+			/*
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
+			 */
+			if ( ! post_can_have_meta( $post_obj ) ) {
 
 				die( -1 );
 			}
@@ -1791,37 +1780,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$do_once[ $post_id ] = true;
 
-			if ( empty( $post_id ) ) {	// Just in case.
-
-				return;
-			}
-
 			/*
-			 * We cannot edit or save revision metadata so there is no cache to clear.
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
 			 */
-			if ( 'revision' === get_post_type( $post_id ) ) {
+			if ( ! post_can_have_meta( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
 				}
 
 				return;
-			}
-
-			$post_status = get_post_status( $post_id );
-
-			switch ( $post_status ) {
-
-				case 'inherit':	// Post revision.
-				case 'trash':
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: cache clearing ignored for post status ' . $post_status );
-					}
-
-					return;	// Stop here.
 			}
 
 			/*
@@ -1872,6 +1848,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
+			$post_status = get_post_status( $post_id );
+
 			if ( 'publish' === $post_status ) {
 
 				$post_taxonomies = get_post_taxonomies( $post_id );
@@ -1934,32 +1912,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function refresh_cache( $post_id, $rel = false ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'post_id' => $post_id,
+				) );
+			}
+
 			/*
-			 * We cannot edit or save revision metadata so there is no cache to refresh.
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
 			 */
-			if ( 'revision' === get_post_type( $post_id ) ) {
+			if ( ! post_can_have_meta( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' is a revision' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
 				}
 
 				return;
-			}
-
-			$post_status = get_post_status( $post_id );
-
-			switch ( $post_status ) {
-
-				case 'inherit':	// Post revision.
-				case 'trash':
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: cache refresh ignored for post status ' . $post_status );
-					}
-
-					return;	// Stop here.
 			}
 
 			$mod = $this->get_mod( $post_id );
@@ -2173,11 +2150,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-			} elseif ( ! is_numeric( $post_id ) ) {
-
+			/*
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
+			 */
+			} elseif ( ! post_can_have_meta( $post_id ) ) {
+				
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post_id argument is not numeric' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
 				}
 
 				return $shortlink;	// Return original shortlink.
@@ -2185,45 +2172,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			if ( empty( $mod[ 'post_type' ] ) ) {
+			if ( 'auto-draft' === $mod[ 'post_status' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post_type is empty' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-
-			} elseif ( empty( $mod[ 'post_status' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: post_status is empty' );
+					$this->p->debug->log( 'exiting early: post status is ' . $mod[ 'post_status' ] );
 				}
 
 				return $shortlink;	// Return original shortlink.
 			}
-
-			switch ( $mod[ 'post_status' ] ) {
-
-				case 'auto-draft':
-				case 'inherit':	// Post revision.
-				case 'trash':
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: post status is ' . $mod[ 'post_status' ] );
-					}
-
-					return $shortlink;	// Return original shortlink.
-			}
-
-			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			/*
 			 * Shorten URL using the selected shortening service.
 			 */
-			$short_url = $this->p->util->shorten_url( $canonical_url, $mod );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+			$short_url     = $this->p->util->shorten_url( $canonical_url, $mod );
 
 			if ( $short_url === $canonical_url ) {
 
@@ -2573,6 +2536,93 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return apply_filters( 'wpsso_primary_terms', $primary_terms, $mod, $tax_slug, $output );
+		}
+
+		/*
+		 * Since WPSSO Core v15.15.1.
+		 *
+		 * WpssoPost->post_can_have_meta() returns false:
+		 *
+		 *	If the $post argument is not numeric or an instance of WP_Post.
+		 *	If the post ID is empty.
+		 *	If the post type is empty.
+		 *	If the post status is empty.
+		 *	If the post type is 'revision'.
+		 *	If the post status is 'trash'.
+		 */
+		public function post_can_have_meta( $post ) {
+
+			if ( is_numeric( $post ) ) {
+			
+				$post_id     = $post;
+				$post_type   = get_post_type( $post_id );
+				$post_status = get_post_status( $post_id );
+				
+			} elseif ( $post instanceof WP_Post ) {
+
+				$post_id     = isset( $post->ID ) ? $post->ID : 0;
+				$post_type   = isset( $post->post_type ) ? $post->post_type : '';
+				$post_status = isset( $post->post_status ) ? $post->post_status : '';
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post argument is not numeric or an instance of WP_Post' );
+				}
+	
+				return false;
+			}
+
+			if ( empty( $post_id ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->log( 'exiting early: post id is empty' );
+				}
+
+				return false;
+
+			} elseif ( empty( $post_type ) ) {
+
+				if ( $this->p->debug->enabled ) {
+			
+					$this->p->debug->log( 'exiting early: post type is empty' );
+				}
+
+				return false;
+
+			} elseif ( empty( $post_status ) ) {
+
+				if ( $this->p->debug->enabled ) {
+			
+					$this->p->debug->log( 'exiting early: post status is empty' );
+				}
+
+				return false;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'post id ' . $post_id . ' post type is ' . $post_type );
+				$this->p->debug->log( 'post id ' . $post_id . ' post status is ' . $post_status );
+			}
+
+			switch ( $post_type ) {
+
+				case 'revision':
+
+					return false;
+			}
+
+			switch ( $post_status ) {
+
+				case 'trash':
+
+					return false;
+			}
+
+			return true;
 		}
 
 		/*

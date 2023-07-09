@@ -696,7 +696,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			/*
-			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid user page.
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a user page.
 			 */
 			parent::$head_tags = array();	// Used by WpssoAbstractWpMeta->is_meta_page().
 
