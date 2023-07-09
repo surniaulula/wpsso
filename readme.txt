@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -788,7 +788,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.15.2-dev.4 =
 
-(2023/07/09) Minor code optimization and standardization.
+(2023/07/09) Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 
 = 15.15.1 =
 
