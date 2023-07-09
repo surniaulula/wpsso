@@ -1702,7 +1702,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post type is 'revision'.
 			 *	If the post status is 'trash'.
 			 */
-			if ( ! post_can_have_meta( $post_obj ) ) {
+			if ( ! $this->post_can_have_meta( $post_obj ) ) {
 
 				die( -1 );
 			}
@@ -1790,7 +1790,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post type is 'revision'.
 			 *	If the post status is 'trash'.
 			 */
-			if ( ! post_can_have_meta( $post_id ) ) {
+			if ( ! $this->post_can_have_meta( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1929,7 +1929,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post type is 'revision'.
 			 *	If the post status is 'trash'.
 			 */
-			if ( ! post_can_have_meta( $post_id ) ) {
+			if ( ! $this->post_can_have_meta( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2160,7 +2160,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post type is 'revision'.
 			 *	If the post status is 'trash'.
 			 */
-			} elseif ( ! post_can_have_meta( $post_id ) ) {
+			} elseif ( ! $this->post_can_have_meta( $post_id ) ) {
 				
 				if ( $this->p->debug->enabled ) {
 
