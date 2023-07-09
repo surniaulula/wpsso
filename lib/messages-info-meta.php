@@ -33,7 +33,51 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				/*
 				 * Document SSO > Edit Schema tab.
 				 */
-				case 'info-meta-schema-faq':
+				case 'info-meta-schema-item-list':
+					
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= __( 'Schema ItemList elements are added dynamically based on the WordPress archive page query (ie. taxonomy term, sort order, date based, search query, etc.).', 'wpsso' ) . ' ';
+					
+					$text .= __( 'The Schema ItemList type can also be selected for a singular (ie. non-archive) parent page with child pages.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Schema ItemList markup without elements (ie. an archive page without posts or a parent page without children) is considered invalid by Google.', 'wpsso' ) . ' ';
+
+					$text .= '</p>';
+
+					$text .= '</blockquote>';
+
+					break;
+
+				case 'info-meta-schema-question':
+
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= __( 'The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer.', 'wpsso' ) . ' ';
+
+					/*
+					 * Avoid showing possible duplicate and confusing information.
+					 */
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
+
+						$faq_info      = $this->p->cf[ 'plugin' ][ 'wpssofaq' ];
+						$faq_info_name = _x( $faq_info[ 'name' ], 'plugin name', 'wpsso' );
+
+						$text .= __( 'The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
+						$text .= sprintf( __( 'Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ groups and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
+					}
+
+					$text .= '</p>';
+
+					$text .= '</blockquote>';
+
+					break;
+
+				case 'info-meta-schema-webpage-faq':
 
 					/*
 					 * Avoid showing possible duplicate and confusing information.
@@ -62,7 +106,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					break;
 
-				case 'info-meta-schema-qa':
+				case 'info-meta-schema-webpage-qa':
 
 					$text = '<blockquote class="top-info">';
 
@@ -71,32 +115,6 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
 
 					$text .= __( 'The Schema QAPage document name / title is a summary of the question, and the full text is the complete question.', 'wpsso' ) . ' ';
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-meta-schema-question':
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= __( 'The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer.', 'wpsso' ) . ' ';
-
-					/*
-					 * Avoid showing possible duplicate and confusing information.
-					 */
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
-
-						$faq_info      = $this->p->cf[ 'plugin' ][ 'wpssofaq' ];
-						$faq_info_name = _x( $faq_info[ 'name' ], 'plugin name', 'wpsso' );
-
-						$text .= __( 'The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
-						$text .= sprintf( __( 'Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ groups and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
-					}
 
 					$text .= '</p>';
 

@@ -2867,9 +2867,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * A cache salt string based on $mod values.
+		 * A cache salt string based on the $mod array. If $mod is not an array, then use the canonical URL value.
 		 *
-		 * Note that the page number and locale are not added to the salt string.
+		 * Note that the page number, sort order, locale, and amp check are added to the cache index not the salt string.
 		 *
 		 * Example mod salts:
 		 *
@@ -2879,6 +2879,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	'url:https://example.com/2022/01/'
 		 *
 		 * See WpssoHead->get_head_cache_index().
+		 * See SucomUtil->get_cache_index().
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false ) {
 
@@ -2929,15 +2930,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
+		 * A cache index string based on current locale or $mod array.
+		 *
 		 * See WpssoHead->get_head_cache_index().
+		 * See SucomUtil->get_mod_salt().
 		 */
 		public static function get_cache_index( $mixed = 'current' ) {
 
 			$cache_index = '';
 
 			if ( is_array( $mixed ) ) {
+			
+				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
+					
+					$cache_index .= '_order:' . $mixed[ 'query_vars' ][ 'order' ];
+				}
 
-				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or numeric.
+				if ( ! empty( $mixed[ 'paged' ] ) ) {	// Page number.
 
 					$cache_index .= '_paged:' . $mixed[ 'paged' ];
 				}

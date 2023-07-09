@@ -1403,7 +1403,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				$cache_salt  = __METHOD__;
+				$opt_version = $wpsso->opt->get_version( $wpsso->options, 'wpsso' );	// Returns 'opt_version'.
+				$cache_salt  = __METHOD__ . '(opt_version:' . $opt_version . ')';
 				$cache_id    = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $read_cache ) {
@@ -1428,11 +1429,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'article',
 						'book',
 						'book.audio',
-						'creative.work',
 						'course',
+						'creative.work',
 						'event',
-						'webpage.faq',
 						'howto',
+						'item.list',
 						'job.posting',
 						'local.business',
 						'movie',
@@ -1440,13 +1441,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'person',
 						'place',
 						'product',
-						'webpage.qa',
 						'question',
 						'recipe',
 						'review',
 						'review.claim',
 						'software.application',
 						'webpage',
+						'webpage.faq',
+						'webpage.qa',
 					);
 
 					break;

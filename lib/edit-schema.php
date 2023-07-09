@@ -72,17 +72,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'header'   => 'h4',
 					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
 				),
-				'info_schema_faq' => array(
-					'tr_class'  => $type_row_class[ 'webpage.faq' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-faq' ) . '</td>',
-				),
-				'info_schema_qa' => array(
-					'tr_class'  => $type_row_class[ 'webpage.qa' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-qa' ) . '</td>',
+				'info_schema_item_list' => array(
+					'tr_class'  => $type_row_class[ 'item.list' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-item-list' ) . '</td>',
 				),
 				'info_schema_question' => array(
 					'tr_class'  => $type_row_class[ 'question' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-question' ) . '</td>',
+				),
+				'info_schema_webpage_faq' => array(
+					'tr_class'  => $type_row_class[ 'webpage.faq' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-webpage-faq' ) . '</td>',
+				),
+				'info_schema_webpae_qa' => array(
+					'tr_class'  => $type_row_class[ 'webpage.qa' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-webpage-qa' ) . '</td>',
 				),
 				'schema_title' => array(
 					'th_class' => 'medium',

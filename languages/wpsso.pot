@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.15.2-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.15.2-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6141,7 +6141,7 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/edit-media.php:114 lib/edit-media.php:172 lib/edit-media.php:219
-#: lib/edit-media.php:272 lib/edit-schema.php:506 lib/edit-schema.php:610
+#: lib/edit-media.php:272 lib/edit-schema.php:510 lib/edit-schema.php:614
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
@@ -6221,341 +6221,341 @@ msgstr ""
 msgid "oEmbed HTML Not Available."
 msgstr ""
 
-#: lib/edit-schema.php:89 lib/edit-schema.php:496 lib/edit-schema.php:600
+#: lib/edit-schema.php:93 lib/edit-schema.php:500 lib/edit-schema.php:604
 msgctxt "option label"
 msgid "Name"
 msgstr ""
 
-#: lib/edit-schema.php:96
+#: lib/edit-schema.php:100
 msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: lib/edit-schema.php:103 lib/edit-schema.php:501 lib/edit-schema.php:605
+#: lib/edit-schema.php:107 lib/edit-schema.php:505 lib/edit-schema.php:609
 msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/edit-schema.php:110 lib/messages.php:663
+#: lib/edit-schema.php:114 lib/messages.php:663
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/edit-schema.php:117 lib/messages.php:951
+#: lib/edit-schema.php:121 lib/messages.php:951
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/edit-schema.php:224
+#: lib/edit-schema.php:228
 msgctxt "metabox title"
 msgid "Schema Creative Work Information"
 msgstr ""
 
-#: lib/edit-schema.php:229
+#: lib/edit-schema.php:233
 msgctxt "option label"
 msgid "Headline"
 msgstr ""
 
-#: lib/edit-schema.php:237
+#: lib/edit-schema.php:241
 msgctxt "option label"
 msgid "Full Text"
 msgstr ""
 
-#: lib/edit-schema.php:244
+#: lib/edit-schema.php:248
 msgctxt "option label"
 msgid "Keywords"
 msgstr ""
 
-#: lib/edit-schema.php:251
+#: lib/edit-schema.php:255
 msgctxt "option label"
 msgid "Language"
 msgstr ""
 
-#: lib/edit-schema.php:259
+#: lib/edit-schema.php:263
 msgctxt "option label"
 msgid "Family Friendly"
 msgstr ""
 
-#: lib/edit-schema.php:267
+#: lib/edit-schema.php:271
 msgctxt "option label"
 msgid "Copyright Year"
 msgstr ""
 
-#: lib/edit-schema.php:274
+#: lib/edit-schema.php:278
 msgctxt "option label"
 msgid "License URL"
 msgstr ""
 
-#: lib/edit-schema.php:281
+#: lib/edit-schema.php:285
 msgctxt "option label"
 msgid "Publisher Organization"
 msgstr ""
 
-#: lib/edit-schema.php:289
+#: lib/edit-schema.php:293
 msgctxt "option label"
 msgid "Publisher Person"
 msgstr ""
 
-#: lib/edit-schema.php:299
+#: lib/edit-schema.php:303
 msgctxt "option label"
 msgid "Service Provider Org."
 msgstr ""
 
-#: lib/edit-schema.php:307
+#: lib/edit-schema.php:311
 msgctxt "option label"
 msgid "Service Provider Person"
 msgstr ""
 
-#: lib/edit-schema.php:317
+#: lib/edit-schema.php:321
 msgctxt "option label"
 msgid "Is Part of URLs"
 msgstr ""
 
-#: lib/edit-schema.php:335
+#: lib/edit-schema.php:339
 msgctxt "option label"
 msgid "Reference Citations"
 msgstr ""
 
-#: lib/edit-schema.php:355
+#: lib/edit-schema.php:359
 msgctxt "metabox title"
 msgid "Schema Article Information"
 msgstr ""
 
-#: lib/edit-schema.php:360 lib/messages.php:668
+#: lib/edit-schema.php:364 lib/messages.php:668
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit-schema.php:376
+#: lib/edit-schema.php:380
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit-schema.php:379
+#: lib/edit-schema.php:383
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit-schema.php:399
+#: lib/edit-schema.php:403
 msgctxt "metabox title"
 msgid "Schema WebPage Information"
 msgstr ""
 
-#: lib/edit-schema.php:404
+#: lib/edit-schema.php:408
 msgctxt "option label"
 msgid "Reviewed By Org."
 msgstr ""
 
-#: lib/edit-schema.php:412
+#: lib/edit-schema.php:416
 msgctxt "option label"
 msgid "Reviewed By Person"
 msgstr ""
 
-#: lib/edit-schema.php:422
+#: lib/edit-schema.php:426
 msgctxt "option label"
 msgid "Reviewed Last"
 msgstr ""
 
-#: lib/edit-schema.php:443
+#: lib/edit-schema.php:447
 msgctxt "metabox title"
 msgid "Schema How-To Information"
 msgstr ""
 
-#: lib/edit-schema.php:448
+#: lib/edit-schema.php:452
 msgctxt "option label"
 msgid "How-To Makes"
 msgstr ""
 
-#: lib/edit-schema.php:455 lib/edit-schema.php:560
+#: lib/edit-schema.php:459 lib/edit-schema.php:564
 msgctxt "option label"
 msgid "Preparation Time"
 msgstr ""
 
-#: lib/edit-schema.php:462 lib/edit-schema.php:574
+#: lib/edit-schema.php:466 lib/edit-schema.php:578
 msgctxt "option label"
 msgid "Total Time"
 msgstr ""
 
-#: lib/edit-schema.php:469 lib/messages.php:685
+#: lib/edit-schema.php:473 lib/messages.php:685
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/edit-schema.php:477 lib/messages.php:690
+#: lib/edit-schema.php:481 lib/messages.php:690
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/edit-schema.php:485 lib/messages.php:680
+#: lib/edit-schema.php:489 lib/messages.php:680
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/edit-schema.php:491
+#: lib/edit-schema.php:495
 msgctxt "option label"
 msgid "How-To %1$s step or %2$s section of steps:"
 msgstr ""
 
-#: lib/edit-schema.php:527
+#: lib/edit-schema.php:531
 msgctxt "metabox title"
 msgid "Schema Recipe Information"
 msgstr ""
 
-#: lib/edit-schema.php:532
+#: lib/edit-schema.php:536
 msgctxt "option label"
 msgid "Recipe Cuisine"
 msgstr ""
 
-#: lib/edit-schema.php:539
+#: lib/edit-schema.php:543
 msgctxt "option label"
 msgid "Recipe Course"
 msgstr ""
 
-#: lib/edit-schema.php:546
+#: lib/edit-schema.php:550
 msgctxt "option label"
 msgid "Recipe Makes"
 msgstr ""
 
-#: lib/edit-schema.php:553
+#: lib/edit-schema.php:557
 msgctxt "option label"
 msgid "Cooking Method"
 msgstr ""
 
-#: lib/edit-schema.php:567
+#: lib/edit-schema.php:571
 msgctxt "option label"
 msgid "Cooking Time"
 msgstr ""
 
-#: lib/edit-schema.php:581 lib/messages.php:941
+#: lib/edit-schema.php:585 lib/messages.php:941
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/edit-schema.php:589 lib/messages.php:946
+#: lib/edit-schema.php:593 lib/messages.php:946
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/edit-schema.php:595
+#: lib/edit-schema.php:599
 msgctxt "option label"
 msgid "Recipe %1$s instruction or %2$s section of instructions:"
 msgstr ""
 
-#: lib/edit-schema.php:624
+#: lib/edit-schema.php:628
 msgctxt "metabox title"
 msgid "Schema Recipe Nutrition Information"
 msgstr ""
 
-#: lib/edit-schema.php:629
+#: lib/edit-schema.php:633
 msgctxt "option label"
 msgid "Serving Size"
 msgstr ""
 
-#: lib/edit-schema.php:636
+#: lib/edit-schema.php:640
 msgctxt "option label"
 msgid "Calories"
 msgstr ""
 
-#: lib/edit-schema.php:639
+#: lib/edit-schema.php:643
 msgctxt "option comment"
 msgid "calories"
 msgstr ""
 
-#: lib/edit-schema.php:644
+#: lib/edit-schema.php:648
 msgctxt "option label"
 msgid "Protein"
 msgstr ""
 
-#: lib/edit-schema.php:647
+#: lib/edit-schema.php:651
 msgctxt "option comment"
 msgid "grams of protein"
 msgstr ""
 
-#: lib/edit-schema.php:652
+#: lib/edit-schema.php:656
 msgctxt "option label"
 msgid "Fiber"
 msgstr ""
 
-#: lib/edit-schema.php:655
+#: lib/edit-schema.php:659
 msgctxt "option comment"
 msgid "grams of fiber"
 msgstr ""
 
-#: lib/edit-schema.php:660
+#: lib/edit-schema.php:664
 msgctxt "option label"
 msgid "Carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:663
+#: lib/edit-schema.php:667
 msgctxt "option comment"
 msgid "grams of carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:668
+#: lib/edit-schema.php:672
 msgctxt "option label"
 msgid "Sugar"
 msgstr ""
 
-#: lib/edit-schema.php:671
+#: lib/edit-schema.php:675
 msgctxt "option comment"
 msgid "grams of sugar"
 msgstr ""
 
-#: lib/edit-schema.php:676
+#: lib/edit-schema.php:680
 msgctxt "option label"
 msgid "Sodium"
 msgstr ""
 
-#: lib/edit-schema.php:679
+#: lib/edit-schema.php:683
 msgctxt "option comment"
 msgid "milligrams of sodium"
 msgstr ""
 
-#: lib/edit-schema.php:684
+#: lib/edit-schema.php:688
 msgctxt "option label"
 msgid "Fat"
 msgstr ""
 
-#: lib/edit-schema.php:687
+#: lib/edit-schema.php:691
 msgctxt "option comment"
 msgid "grams of fat"
 msgstr ""
 
-#: lib/edit-schema.php:692
+#: lib/edit-schema.php:696
 msgctxt "option label"
 msgid "Saturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:695
+#: lib/edit-schema.php:699
 msgctxt "option comment"
 msgid "grams of saturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:700
+#: lib/edit-schema.php:704
 msgctxt "option label"
 msgid "Unsaturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:703
+#: lib/edit-schema.php:707
 msgctxt "option comment"
 msgid "grams of unsaturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:708
+#: lib/edit-schema.php:712
 msgctxt "option label"
 msgid "Trans Fat"
 msgstr ""
 
-#: lib/edit-schema.php:711
+#: lib/edit-schema.php:715
 msgctxt "option comment"
 msgid "grams of trans fat"
 msgstr ""
 
-#: lib/edit-schema.php:716
+#: lib/edit-schema.php:720
 msgctxt "option label"
 msgid "Cholesterol"
 msgstr ""
 
-#: lib/edit-schema.php:719
+#: lib/edit-schema.php:723
 msgctxt "option comment"
 msgid "milligrams of cholesterol"
 msgstr ""
@@ -7033,209 +7033,228 @@ msgid ""
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/messages-info-meta.php:50
-msgid "Schema FAQPage markup is a collection of Questions and Answers."
-msgstr ""
-
-#: lib/messages-info-meta.php:52
+#: lib/messages-info-meta.php:42
 msgid ""
-"WordPress manages related singular content, like Questions and Answers, in "
-"two different ways:"
+"Schema ItemList elements are added dynamically based on the WordPress "
+"archive page query (ie. taxonomy term, sort order, date based, search query, "
+"etc.)."
 msgstr ""
 
-#: lib/messages-info-meta.php:54
+#: lib/messages-info-meta.php:44
 msgid ""
-"A Schema FAQPage can be a parent page with Schema Question child pages, or a "
-"taxonomy term (ie. categories, tags or custom taxonomies) with Schema "
-"Question pages assigned to that term."
+"The Schema ItemList type can also be selected for a singular (ie. non-"
+"archive) parent page with child pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:56
+#: lib/messages-info-meta.php:46
 msgid ""
-"Note that using the %1$s add-on is the easiest and preferred way to manage "
-"FAQ pages and its associated question pages."
+"Schema ItemList markup without elements (ie. an archive page without posts "
+"or a parent page without children) is considered invalid by Google."
 msgstr ""
 
-#: lib/messages-info-meta.php:71
-msgid ""
-"Google requires that Schema QAPage markup include one or more user submitted "
-"and upvoted answers."
-msgstr ""
-
-#: lib/messages-info-meta.php:73
-msgid ""
-"The Schema QAPage document name / title is a summary of the question, and "
-"the full text is the complete question."
-msgstr ""
-
-#: lib/messages-info-meta.php:87
+#: lib/messages-info-meta.php:60
 msgid ""
 "The Schema Question document name / title is a summary of the question, the "
 "description is a summary of the answer, and the full text is the complete "
 "answer."
 msgstr ""
 
-#: lib/messages-info-meta.php:97
+#: lib/messages-info-meta.php:70
 msgid ""
 "The Schema Question type can be a child page of a Schema FAQPage parent, or "
 "assigned to a Schema FAQPage taxonomy term."
 msgstr ""
 
-#: lib/messages-info-meta.php:98
+#: lib/messages-info-meta.php:71
 msgid ""
 "Note that using the %1$s add-on is often the easiest and preferred way to "
 "manage FAQ groups and Question pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:118
+#: lib/messages-info-meta.php:94
+msgid "Schema FAQPage markup is a collection of Questions and Answers."
+msgstr ""
+
+#: lib/messages-info-meta.php:96
+msgid ""
+"WordPress manages related singular content, like Questions and Answers, in "
+"two different ways:"
+msgstr ""
+
+#: lib/messages-info-meta.php:98
+msgid ""
+"A Schema FAQPage can be a parent page with Schema Question child pages, or a "
+"taxonomy term (ie. categories, tags or custom taxonomies) with Schema "
+"Question pages assigned to that term."
+msgstr ""
+
+#: lib/messages-info-meta.php:100
+msgid ""
+"Note that using the %1$s add-on is the easiest and preferred way to manage "
+"FAQ pages and its associated question pages."
+msgstr ""
+
+#: lib/messages-info-meta.php:115
+msgid ""
+"Google requires that Schema QAPage markup include one or more user submitted "
+"and upvoted answers."
+msgstr ""
+
+#: lib/messages-info-meta.php:117
+msgid ""
+"The Schema QAPage document name / title is a summary of the question, and "
+"the full text is the complete question."
+msgstr ""
+
+#: lib/messages-info-meta.php:136
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred image cropping area (ie. top or bottom) and optimize the "
 "image SEO information."
 msgstr ""
 
-#: lib/messages-info-meta.php:122
+#: lib/messages-info-meta.php:140
 msgid ""
 "Note that the Schema CreativeWork type (and its sub-types) has a 'video' "
 "property for VideoObject markup, but other Schema types (like Event, Job "
 "Posting, Place, Product, and Brand) do not have a 'video' property."
 msgstr ""
 
-#: lib/messages-info-meta.php:124
+#: lib/messages-info-meta.php:142
 msgid ""
 "In these cases - assuming the video(s) are about the content subject - they "
 "will be added to a 'subjectOf' property instead."
 msgstr ""
 
-#: lib/messages-info-meta.php:141
+#: lib/messages-info-meta.php:159
 msgid ""
 "The robots meta tag lets you utilize a granular, webpage-specific approach "
 "to controlling how an individual webpage should be indexed and served to "
 "users in Google Search results."
 msgstr ""
 
-#: lib/messages-info-meta.php:160
+#: lib/messages-info-meta.php:178
 msgid ""
 "The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages-info-meta.php:164
+#: lib/messages-info-meta.php:182
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred cropping area (ie. top or bottom), along with optimizing "
 "the social and SEO texts for the image."
 msgstr ""
 
-#: lib/messages-info-meta.php:177
+#: lib/messages-info-meta.php:195
 msgid "oEmbed HTML provided by the <code>%s</code> template."
 msgstr ""
 
-#: lib/messages-info-meta.php:190
+#: lib/messages-info-meta.php:208
 msgid ""
 "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
 "Pages) webpage."
 msgstr ""
 
-#: lib/messages-info-meta.php:194
+#: lib/messages-info-meta.php:212
 msgid ""
 "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr ""
 
-#: lib/messages-info-meta.php:205
+#: lib/messages-info-meta.php:223
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:207
+#: lib/messages-info-meta.php:225
 msgid ""
 "The Facebook debugger allows you to validate Open Graph meta tags and "
 "refresh Facebook's cache."
 msgstr ""
 
-#: lib/messages-info-meta.php:209
+#: lib/messages-info-meta.php:227
 msgid ""
 "The Facebook debugger is the most reliable validation tool for Open Graph "
 "meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:219
+#: lib/messages-info-meta.php:237
 msgid ""
 "The Facebook catalog microdata debug tool allows you to validate the "
 "structured data used to indicate key information about the items on your "
 "website, such as their name, description and prices."
 msgstr ""
 
-#: lib/messages-info-meta.php:229
+#: lib/messages-info-meta.php:247
 msgid ""
 "Analyzes the webpage content and suggests ways to make the webpage faster "
 "for better ranking in search results."
 msgstr ""
 
-#: lib/messages-info-meta.php:239
+#: lib/messages-info-meta.php:257
 msgid ""
 "Check the webpage structured data markup for <a href=\"%s\">Google Rich "
 "Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr ""
 
-#: lib/messages-info-meta.php:239 lib/messages-info-meta.php:273
+#: lib/messages-info-meta.php:257 lib/messages-info-meta.php:291
 msgid ""
 "https://developers.google.com/search/docs/appearance/structured-data/search-"
 "gallery"
 msgstr ""
 
-#: lib/messages-info-meta.php:241
+#: lib/messages-info-meta.php:259
 msgid ""
 "To test and validate Schema markup beyond the limited subset of Google Rich "
 "Result types, use the Schema Markup Validator."
 msgstr ""
 
-#: lib/messages-info-meta.php:251
+#: lib/messages-info-meta.php:269
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr ""
 
-#: lib/messages-info-meta.php:261
+#: lib/messages-info-meta.php:279
 msgid ""
 "Validate Rich Pin markup and submit a request to show Rich Pin markup in "
 "zoomed pins."
 msgstr ""
 
-#: lib/messages-info-meta.php:271
+#: lib/messages-info-meta.php:289
 msgid ""
 "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data "
 "markup."
 msgstr ""
 
-#: lib/messages-info-meta.php:273
+#: lib/messages-info-meta.php:291
 msgid ""
 "This tool provides additional validation for Schema types beyond the limited "
 "subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr ""
 
-#: lib/messages-info-meta.php:283
+#: lib/messages-info-meta.php:301
 msgid ""
 "The Twitter Card validator does not (currently) accept query arguments - "
 "paste the following URL in the Twitter Card validator \"Card URL\" input "
 "field:"
 msgstr ""
 
-#: lib/messages-info-meta.php:293
+#: lib/messages-info-meta.php:311
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates."
 msgstr ""
 
-#: lib/messages-info-meta.php:295
+#: lib/messages-info-meta.php:313
 msgid ""
 "Validating your theme templates is important - theme templates with serious "
 "errors can prevent social and search crawlers from understanding the webpage "
 "structure."
 msgstr ""
 
-#: lib/messages-info-meta.php:307
+#: lib/messages-info-meta.php:325
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:316 lib/messages.php:1008 lib/messages.php:1206
+#: lib/messages-info-meta.php:334 lib/messages.php:1008 lib/messages.php:1206
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -11766,22 +11785,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2040
+#: lib/schema.php:2042
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2211
+#: lib/schema.php:2213
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2238
+#: lib/schema.php:2240
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3814
+#: lib/schema.php:3816
 msgid "checking schema properties"
 msgstr ""
 
