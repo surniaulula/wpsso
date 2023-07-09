@@ -391,9 +391,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$mb_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 						$prop_name = str_replace( 'notice-missing-og-', '', $get_key );	// Use $get_key for mixed case.
 
-						$text = sprintf( __( 'An Open Graph %1$s meta tag could not be generated from this webpage content or its custom %2$s metabox settings.', 'wpsso' ), $prop_name, $mb_title ) . ' ';
+						$text = sprintf( __( 'An Open Graph %1$s meta tag could not be generated from this content or its custom %2$s metabox options.',
+							'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= sprintf( __( 'Facebook requires at least one %s meta tag to render shared content correctly.', 'wpsso' ), $prop_name );
+						$text .= sprintf( __( 'Facebook requires at least one %s meta tag to render shared content correctly.',
+							'wpsso' ), $prop_name );
 
 						break;
 
@@ -403,9 +405,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$mb_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 						$prop_name = str_replace( 'notice-missing-schema-', '', $get_key );	// Use $get_key for mixed case.
 
-						$text = sprintf( __( 'A Schema %1$s property could not be generated from this webpage content or its custom %2$s metabox settings.', 'wpsso' ), $prop_name, $mb_title ) . ' ';
+						$text = sprintf( __( 'A Schema %1$s property could not be generated from this content or its custom %2$s metabox options.',
+							'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= sprintf( __( 'Google requires at least one %s property for this Schema type.', 'wpsso' ), $prop_name );
+						$text .= sprintf( __( 'Google requires at least one %s property for this Schema type.',
+							'wpsso' ), $prop_name );
 
 						break;
 
