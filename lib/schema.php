@@ -2506,16 +2506,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
 
-			if ( empty( $page_posts_mods ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: page_posts_mods array is empty' );
-				}
-
-				return $item_count;
-			}
-
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'page_posts_mods array has ' . count( $page_posts_mods ) . ' elements' );
@@ -2557,6 +2547,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+
+			if ( empty( $json_data[ $prop_name ] ) ) {
+
+				/*
+				 * An is_admin() test is required to make sure the WpssoMessages class is available.
+				 */
+				if ( $wpsso->notice->is_admin_pre_notices() ) {
+
+					$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+
+					$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
+
+					if ( ! empty( $notice_msg ) ) {	// Just in case.
+
+						$wpsso->notice->err( $notice_msg, null, $notice_key );
+					}
+				}
+			}
 
 			return $item_count;
 		}

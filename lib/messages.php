@@ -44,11 +44,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 		}
 
-		public function get( $msg_key = false, $info = array() ) {
+		public function get( $get_key = false, $info = array() ) {
 
 			$this->maybe_set_properties();
 
-			$msg_key = sanitize_title_with_dashes( $msg_key );
+			$msg_key = sanitize_title_with_dashes( $get_key );
 
 			/*
 			 * Set a default text string, if one is provided.
@@ -386,32 +386,26 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'notice-missing-og-description':
-
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
-
-						$text .= __( 'Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' );
-
-						break;
-
 					case 'notice-missing-og-image':
 
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$prop_name = str_replace( 'notice-missing-og-', '', $get_key );	// Use $get_key for mixed case.
 
-						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
+						$text = sprintf( __( 'An Open Graph %1$s meta tag could not be generated from this webpage content or its custom %2$s metabox settings.', 'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= __( 'Facebook requires at least one image meta tag to render shared content correctly.', 'wpsso' );
+						$text .= sprintf( __( 'Facebook requires at least one %s meta tag to render shared content correctly.', 'wpsso' ), $prop_name );
 
 						break;
 
 					case 'notice-missing-schema-image':
+					case 'notice-missing-schema-itemlistelement':
 
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$prop_name = str_replace( 'notice-missing-schema-', '', $get_key );	// Use $get_key for mixed case.
 
-						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
+						$text = sprintf( __( 'A Schema %1$s property could not be generated from this webpage content or its custom %2$s metabox settings.', 'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= __( 'Google requires at least one image property for this Schema type.', 'wpsso' );
+						$text .= sprintf( __( 'Google requires at least one %s property for this Schema type.', 'wpsso' ), $prop_name );
 
 						break;
 
@@ -558,8 +552,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'column-' ) ) {
 
-				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
+				$mb_title        = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 				$li_support_text = __( 'Premium plugin support.', 'wpsso' );
 				$li_support_link = empty( $info[ 'url' ][ 'support' ] ) ? '' :
 					'<li><strong><a href="' . $info[ 'url' ][ 'support' ] . '">' . $li_support_text . '</a></strong></li>';
@@ -639,7 +632,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
 
 					$tooltip_class = $this->p->cf[ 'form' ][ 'tooltip_class' ];
-
 					$tooltip_icon  = '<span class="' . $tooltip_class . '-icon"></span>';
 
 					if ( false === strpos( $text, '<span class="' . $tooltip_class . '"' ) ) {	// Only add the tooltip wrapper once.
