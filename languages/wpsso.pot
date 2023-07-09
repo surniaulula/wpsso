@@ -7042,8 +7042,8 @@ msgstr ""
 
 #: lib/messages-info-meta.php:44
 msgid ""
-"The Schema ItemList type can also be selected for a singular (ie. non-"
-"archive) parent page with child pages."
+"The Schema ItemList type can also be selected for a parent page with child "
+"pages."
 msgstr ""
 
 #: lib/messages-info-meta.php:46

@@ -40,8 +40,8 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					$text .= '<p>';
 
 					$text .= __( 'Schema ItemList elements are added dynamically based on the WordPress archive page query (ie. taxonomy term, sort order, date based, search query, etc.).', 'wpsso' ) . ' ';
-					
-					$text .= __( 'The Schema ItemList type can also be selected for a singular (ie. non-archive) parent page with child pages.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The Schema ItemList type can also be selected for a parent page with child pages.', 'wpsso' ) . ' ';
 
 					$text .= __( 'Schema ItemList markup without elements (ie. an archive page without posts or a parent page without children) is considered invalid by Google.', 'wpsso' ) . ' ';
 
