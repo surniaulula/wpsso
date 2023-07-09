@@ -240,6 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
+	* Added an error notice for a empty Schema ItemList itemListElement property.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
