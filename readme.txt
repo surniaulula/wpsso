@@ -248,6 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Replaced `{get|update|delete}_{comment|post|term|user}_meta()` functions by `{get|update|delete}_metadata()`.
 		* Refactored the `WpssoAbstractWpMeta::get_mod_meta()` method.
 	* Added a new `WpssoPost->post_can_have_meta()` method to check for invalid or ignored post objects.
+	* Updated the `WpssoSchema->add_itemlist_data()` method to provide markup only for the Schema ItemList type, not its sub-types.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
