@@ -2946,7 +2946,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$cache_index .= '_order:' . $mixed[ 'query_vars' ][ 'order' ];
 				}
 
-				if ( ! empty( $mixed[ 'paged' ] ) ) {	// Page number.
+				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or greater than 1.
 
 					$cache_index .= '_paged:' . $mixed[ 'paged' ];
 				}
