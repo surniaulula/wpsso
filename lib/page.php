@@ -1241,7 +1241,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * so this method is safe to call in WpssoUtilInline->replace_variables().
 		 *
 		 * See WpssoUtilInline->replace_callback().
-		 * See WpssoBcBreadcrumb->add_itemlist_data().
+		 * See WpssoBcBreadcrumb->add_breadcrumblist_data().
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
 
