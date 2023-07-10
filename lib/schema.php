@@ -580,7 +580,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: mod name or id is empty' );
+					$this->p->debug->log( 'exiting early: mod name or mod id is empty' );
 				}
 
 				return false;
@@ -1889,7 +1889,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
+					$wpsso->debug->log( 'exiting early: user id is empty or "none"' );
 				}
 
 				return 0;	// Return count of authors and coauthors added.
@@ -2480,92 +2480,92 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$prop_name = 'itemListElement';
-
+			$prop_name  = 'itemListElement';
 			$item_count = isset( $json_data[ $prop_name ] ) ? count( $json_data[ $prop_name ] ) : 0;
 
-			$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListUnordered';
-
-			if ( isset( $mod[ 'query_vars' ][ 'order' ] ) ) {
-
-				switch ( $mod[ 'query_vars' ][ 'order' ] ) {
-
-					case 'ASC':
-
-						$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderAscending';
-
-						break;
-
-					case 'DESC':
-
-						$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderDescending';
-
-						break;
-				}
-			}
-
-			$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'page_posts_mods array has ' . count( $page_posts_mods ) . ' elements' );
-			}
-
-			if ( empty( $json_data[ $prop_name ] ) ) {
-
-				$json_data[ $prop_name ] = array();
-
-			} elseif ( ! is_array( $json_data[ $prop_name ] ) ) {	// Convert single value to an array.
-
-				$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
-			}
-
-			foreach ( $page_posts_mods as $post_mod ) {
-
-				$item_count++;
-
-				$post_canonical_url = $wpsso->util->get_canonical_url( $post_mod );
-
-				$post_json_data = self::get_schema_type_context( 'https://schema.org/ListItem', array(
-					'position' => $item_count,
-					'url'      => $post_canonical_url,
-				) );
+			if ( empty( $page_type_id ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'adding post ID ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $item_count );
+					$wpsso->debug->log( 'exiting early: page type id is empty and required' );
 				}
 
-				$json_data[ $prop_name ][] = $post_json_data;	// Add the post data.
+				return $item_count;
 			}
 
-			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_json_prop_https_schema_org_' . $prop_name );
+			/*
+			 * Create markup specifically for the Schema ItemList type (not its sub-types like breadcrumb.list,
+			 * howto.section, howto.step, or offer.catalog).
+			 */
+			if ( 'item.list' === $page_type_id ) {
+				
+				$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListUnordered';
 
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
-			}
-
-			$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
-
-			if ( empty( $json_data[ $prop_name ] ) ) {
-
-				/*
-				 * An is_admin() test is required to make sure the WpssoMessages class is available.
-				 */
-				if ( $wpsso->notice->is_admin_pre_notices() ) {
-
-					$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
-
-					$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
-
-					if ( ! empty( $notice_msg ) ) {	// Just in case.
-
-						$wpsso->notice->err( $notice_msg, null, $notice_key );
+				if ( isset( $mod[ 'query_vars' ][ 'order' ] ) ) {
+	
+					switch ( $mod[ 'query_vars' ][ 'order' ] ) {
+	
+						case 'ASC':
+	
+							$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderAscending';
+	
+							break;
+	
+						case 'DESC':
+	
+							$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderDescending';
+	
+							break;
 					}
 				}
+	
+				$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
+	
+				if ( $wpsso->debug->enabled ) {
+	
+					$wpsso->debug->log( 'page_posts_mods array has ' . count( $page_posts_mods ) . ' elements' );
+				}
+	
+				if ( empty( $json_data[ $prop_name ] ) ) {
+	
+					$json_data[ $prop_name ] = array();
+	
+				} elseif ( ! is_array( $json_data[ $prop_name ] ) ) {	// Convert single value to an array.
+	
+					$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
+				}
+	
+				foreach ( $page_posts_mods as $post_mod ) {
+	
+					$item_count++;
+	
+					$post_canonical_url = $wpsso->util->get_canonical_url( $post_mod );
+	
+					$post_json_data = self::get_schema_type_context( 'https://schema.org/ListItem', array(
+						'position' => $item_count,
+						'url'      => $post_canonical_url,
+					) );
+	
+					if ( $wpsso->debug->enabled ) {
+	
+						$wpsso->debug->log( 'adding post ID ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $item_count );
+					}
+	
+					$json_data[ $prop_name ][] = $post_json_data;	// Add the post data.
+				}
+	
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_json_prop_https_schema_org_' . $prop_name );
+	
+				if ( $wpsso->debug->enabled ) {
+	
+					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
+				}
+	
+				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+	
+				WpssoSchema::check_required_props( $json_data, $mod, array( $prop_name ) );
 			}
-
+	
 			return $item_count;
 		}
 
@@ -2893,7 +2893,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Example:
 		 *
 		 *	$prop_type_ids = array( 'mentions' => false )
-		 *
 		 *	$prop_type_ids = array( 'blogPosting' => 'blog.posting' )
 		 *
 		 * The 6th argument used to be $posts_per_page (now $prop_type_ids).
@@ -2931,7 +2930,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: page_type_id is empty' );
+					$wpsso->debug->log( 'exiting early: page type id is empty' );
 				}
 
 				return $added_count;
@@ -2940,7 +2939,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: prop_type_ids is empty' );
+					$wpsso->debug->log( 'exiting early: prop type ids is empty' );
 				}
 
 				return $added_count;
@@ -2953,7 +2952,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: preventing recursion of page_type_id ' . $page_type_id );
+					$wpsso->debug->log( 'exiting early: preventing recursion of page type id ' . $page_type_id );
 				}
 
 				return $added_count;
@@ -2974,7 +2973,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: page_posts_mods array is empty' );
+					$wpsso->debug->log( 'exiting early: page posts mods array is empty' );
 
 					$wpsso->debug->mark( 'adding posts data' );	// End timer.
 				}
@@ -4193,7 +4192,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: $id_suffix value is empty and required' );
+					$wpsso->debug->log( 'exiting early: id suffix is empty and required' );
 				}
 
 				return false;
@@ -4229,7 +4228,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: data_url and json_data url are empty' );
+					$wpsso->debug->log( 'exiting early: data url and json data url are empty' );
 				}
 
 				return false;
