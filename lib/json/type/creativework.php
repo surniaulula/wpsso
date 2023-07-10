@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			/*
 			 * Check for required CreativeWork properties.
 			 */
-			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ) );
+			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ), $page_type_id );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

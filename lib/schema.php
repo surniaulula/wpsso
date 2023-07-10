@@ -226,6 +226,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			list(
 				$mt_og[ 'schema:type:context' ],
 				$mt_og[ 'schema:type:name' ],
+				$mt_og[ 'schema:type:path' ],
 			) = self::get_schema_type_url_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
 
 			$page_type_ids   = array();
@@ -932,8 +933,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $schema_types as $type_id => $type_url ) {
 
-				$type_url  = preg_replace( '/^.*\/\//', '', $type_url );
-				$type_name = preg_replace( '/^.*\//U', '', $type_url );
+				list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
 
 				switch ( $this->p->options[ 'plugin_schema_types_select_format' ] ) {
 
@@ -957,7 +957,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					case 'id_url':
 
-						$select[ $type_id ] = $type_id . ' | ' . $type_url;
+						$select[ $type_id ] = $type_id . ' | ' . $type_path;
 
 						break;
 
@@ -1317,9 +1317,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_id = $default_id;
 			}
 
-			$type_url = preg_replace( '/^.*\/\//', '', $schema_types[ $type_id ] );
+			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
 
-			return preg_replace( '/^.*\//U', '', $type_url );
+			return $type_name;
 		}
 
 		/*
@@ -1508,15 +1508,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting schema url for ' . $type_id );
 			}
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			if ( ! empty( $type_id ) ) {	// Not null, false, 0, or empty string.
 
-			if ( 'none' !== $type_id && isset( $schema_types[ $type_id ] ) ) {
+				$schema_types = $this->get_schema_types_array( $flatten = true );
 
-				return $schema_types[ $type_id ];
+				if ( 'none' !== $type_id && isset( $schema_types[ $type_id ] ) ) {
 
-			} elseif ( false !== $default_id && isset( $schema_types[ $default_id ] ) ) {
+					return $schema_types[ $type_id ];
 
-				return $schema_types[ $default_id ];
+				} elseif ( false !== $default_id && isset( $schema_types[ $default_id ] ) ) {
+
+					return $schema_types[ $default_id ];
+				}
 			}
 
 			return false;
@@ -1560,16 +1563,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $default_id;
 		}
 
+		/*
+		 * Returns the Schema type context and name.
+		 *
+		 * Example array( 'https://schema.org', 'TechArticle', 'schema.org/TechArticle' ).
+		 */
 		public static function get_schema_type_url_parts( $type_url ) {
 
-			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
+			if ( preg_match( '/^(.+:\/\/.+)\/(.+)$/', $type_url, $match ) ) {
 
-				return array( $match[1], $match[2] );
+				$type_path = preg_replace( '/^.*\/\//', '', $type_url );	// Remove 'https://'.
 
-			} else {
-
-				return array( null, null );	// Return two elements.
+				return array( $match[ 1 ], $match[ 2 ], $type_path );
 			}
+
+			return array( null, null, null );
 		}
 
 		public function get_children_css_class( $type_id, $class_prefix = 'hide_schema_type', $exclude_match = '' ) {
@@ -2208,9 +2216,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_url = $wpsso->schema->get_schema_type_url( $type_id );
 
+			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
+
 			if ( ! $wpsso->schema->allow_review( $type_id ) ) {
 
-				$notice_msg = sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google does not allow reviews for the Schema %2$s type</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet', $type_url ) . ' ';
+				$notice_msg = sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google does not allow reviews for the Schema %2$s type</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet', $type_name ) . ' ';
 
 				$wpsso->notice->warn( $notice_msg );
 			}
@@ -2563,7 +2573,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
 	
-				WpssoSchema::check_required_props( $json_data, $mod, array( $prop_name ) );
+				WpssoSchema::check_required_props( $json_data, $mod, array( $prop_name ), $page_type_id );
 			}
 	
 			return $item_count;
@@ -3804,7 +3814,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * See WpssoAbstractWpMeta->check_head_info().
 		 */
-		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ) ) {
+		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ), $type_id = null ) {
 
 			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
 
@@ -3820,7 +3830,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$wpsso =& Wpsso::get_instance();
 
-			$ref_url = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
+			$ref_url   = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
+			$type_url  = $wpsso->schema->get_schema_type_url( $type_id );	// Returns false on empty string.
+
+			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
 
 			foreach ( $prop_names as $prop_name ) {
 
@@ -3836,8 +3849,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					if ( $wpsso->notice->is_admin_pre_notices() ) {
 
-						$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
-
+						$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name, array( 'type_name' => $type_name ) );
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
 
 						if ( ! empty( $notice_msg ) ) {	// Just in case.

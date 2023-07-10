@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( 'An Open Graph %1$s meta tag could not be generated from this content or its custom %2$s metabox options.',
 							'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= sprintf( __( 'Facebook requires at least one %s meta tag to render shared content correctly.',
+						$text .= sprintf( __( 'Facebook requires at least one %1$s meta tag to render shared content correctly.',
 							'wpsso' ), $prop_name );
 
 						break;
@@ -408,8 +408,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( 'A Schema %1$s property could not be generated from this content or its custom %2$s metabox options.',
 							'wpsso' ), $prop_name, $mb_title ) . ' ';
 
-						$text .= sprintf( __( 'Google requires at least one %s property for this Schema type.',
-							'wpsso' ), $prop_name );
+						if ( empty( $info[ 'type_name' ] ) ) {
+
+							$text .= sprintf( __( 'Google requires at least one %1$s property for this Schema type.',
+								'wpsso' ), $prop_name );
+
+						} else {
+
+							$text .= sprintf( __( 'Google requires at least one %1$s property for the Schema %2$s type.',
+								'wpsso' ), $prop_name, $info[ 'type_name' ] );
+						}
 
 						break;
 

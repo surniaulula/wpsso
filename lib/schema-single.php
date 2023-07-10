@@ -2314,7 +2314,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * The "image" property is required for Google's Merchant listings validator.
 			 */
-			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ) );
+			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ), $type_id );
 
 			/*
 			 * Filter the single product data.
