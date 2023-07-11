@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.16.0-b.2 (2023/07/11)**
+**Version 15.16.0-b.3 (2023/07/11)**
 
 * **New Features**
 	* Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab:
@@ -799,7 +799,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.16.0-b.2 =
+= 15.16.0-b.3 =
 
 (2023/07/11) Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab.
 
