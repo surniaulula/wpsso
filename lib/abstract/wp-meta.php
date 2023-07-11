@@ -501,11 +501,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_author_type'      => 'none',				// Book Author Type.
 					'schema_book_author_name'      => '',					// Book Author Name.
 					'schema_book_author_url'       => '',					// Book Author URL.
-					'schema_book_pub_date'         => '',					// Book Published Date.
-					'schema_book_pub_time'         => 'none',				// Book Published Time.
+					'schema_book_pub_date'         => '',					// Book Published Date (Y-m-d).
+					'schema_book_pub_time'         => 'none',				// Book Published Time (H:i).
 					'schema_book_pub_timezone'     => $def_timezone,			// Book Published Timezone.
-					'schema_book_created_date'     => '',					// Book Created Date.
-					'schema_book_created_time'     => 'none',				// Book Created Time.
+					'schema_book_created_date'     => '',					// Book Created Date (Y-m-d).
+					'schema_book_created_time'     => 'none',				// Book Created Time (H:i).
 					'schema_book_created_timezone' => $def_timezone,			// Book Created Timezone.
 					'schema_book_edition'          => '',					// Book Edition.
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],	// Book Format.
@@ -532,21 +532,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer Org.
 					'schema_event_performer_person_id'   => $opts[ 'schema_def_event_performer_person_id' ],	// Performer Person.
 					'schema_event_status'                => 'https://schema.org/EventScheduled',			// Event Status.
-					'schema_event_start_date'            => '',							// Event Start (Date).
-					'schema_event_start_time'            => 'none',							// Event Start (Time).
-					'schema_event_start_timezone'        => $def_timezone,						// Event Start (Timezone).
-					'schema_event_end_date'              => '',							// Event End (Date).
-					'schema_event_end_time'              => 'none',							// Event End (Time).
-					'schema_event_end_timezone'          => $def_timezone,						// Event End (Timezone).
-					'schema_event_previous_date'         => '',							// Event Previous Start (Date).
-					'schema_event_previous_time'         => 'none',							// Event Previous Start (Time).
-					'schema_event_previous_timezone'     => $def_timezone,						// Event Previous Start (Timezone).
-					'schema_event_offers_start_date'     => '',							// Event Offers Start (Date.
-					'schema_event_offers_start_time'     => 'none',							// Event Offers Start (Time.
-					'schema_event_offers_start_timezone' => $def_timezone,						// Event Offers Start (Timezone.
-					'schema_event_offers_end_date'       => '',							// Event Offers End (Date).
-					'schema_event_offers_end_time'       => 'none',							// Event Offers End (Time).
-					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End (Timezone).
+					'schema_event_start_date'            => '',							// Event Start Date (Y-m-d).
+					'schema_event_start_time'            => 'none',							// Event Start Time (H:i).
+					'schema_event_start_timezone'        => $def_timezone,						// Event Start Timezone.
+					'schema_event_end_date'              => '',							// Event End Date (Y-m-d).
+					'schema_event_end_time'              => 'none',							// Event End Time (H:i).
+					'schema_event_end_timezone'          => $def_timezone,						// Event End Timezone.
+					'schema_event_previous_date'         => '',							// Event Previous Start Date (Y-m-d).
+					'schema_event_previous_time'         => 'none',							// Event Previous Start Time (H:i).
+					'schema_event_previous_timezone'     => $def_timezone,						// Event Previous Start Timezone.
+					'schema_event_offers_start_date'     => '',							// Event Offers Start Date (Y-m-d).
+					'schema_event_offers_start_time'     => 'none',							// Event Offers Start Time (H:i).
+					'schema_event_offers_start_timezone' => $def_timezone,						// Event Offers Start Timezone.
+					'schema_event_offers_end_date'       => '',							// Event Offers End Date (Y-m-d).
+					'schema_event_offers_end_time'       => 'none',							// Event Offers End Time (H:i).
+					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End Timezone.
 
 					/*
 					 * Schema How-To.
@@ -579,28 +579,27 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_job_empl_type_VOLUNTEER'  => 0,
 					'schema_job_empl_type_PER_DIEM'   => 0,
 					'schema_job_empl_type_OTHER'      => 0,
-					'schema_job_expire_date'          => '',					// Job Posting Expires (Date).
-					'schema_job_expire_time'          => 'none',					// Job Posting Expires (Time).
-					'schema_job_expire_timezone'      => $def_timezone,				// Job Posting Expires (Timezone).
+					'schema_job_expire_date'          => '',					// Job Posting Expires Date (Y-m-d).
+					'schema_job_expire_time'          => 'none',					// Job Posting Expires Time (H:i).
+					'schema_job_expire_timezone'      => $def_timezone,				// Job Posting Expires Timezone.
 
 					/*
 					 * Schema Movie.
-					 *
-					 *	'schema_movie_actor_person_name_0'    => '',
-					 *	'schema_movie_actor_person_name_1'    => '',
-					 *	'schema_movie_actor_person_name_2'    => '',
-					 *	'schema_movie_director_person_name_0' => '',
-					 *	'schema_movie_director_person_name_1' => '',
-					 *	'schema_movie_director_person_name_2' => '',
 					 */
-					'schema_movie_prodco_org_id'     => 'none',		// Movie Production Company.
-					'schema_movie_released_date'     => '',			// Movie Release Date.
-					'schema_movie_released_time'     => 'none',		// Movie Release Time.
-					'schema_movie_released_timezone' => $def_timezone,	// Movie Release Timezone.
-					'schema_movie_duration_days'     => 0,			// Movie Runtime (Days).
-					'schema_movie_duration_hours'    => 0,			// Movie Runtime (Hours).
-					'schema_movie_duration_mins'     => 0,			// Movie Runtime (Mins).
-					'schema_movie_duration_secs'     => 0,			// Movie Runtime (Secs).
+					'schema_movie_actor_person_name_0'    => '',
+					'schema_movie_actor_person_name_1'    => '',
+					'schema_movie_actor_person_name_2'    => '',
+					'schema_movie_director_person_name_0' => '',
+					'schema_movie_director_person_name_1' => '',
+					'schema_movie_director_person_name_2' => '',
+					'schema_movie_prodco_org_id'          => 'none',	// Movie Production Company.
+					'schema_movie_released_date'          => '',		// Movie Release Date (Y-m-d).
+					'schema_movie_released_time'          => 'none',	// Movie Release Time (H:i).
+					'schema_movie_released_timezone'      => $def_timezone,	// Movie Release Timezone.
+					'schema_movie_duration_days'          => 0,		// Movie Runtime (Days).
+					'schema_movie_duration_hours'         => 0,		// Movie Runtime (Hours).
+					'schema_movie_duration_mins'          => 0,		// Movie Runtime (Mins).
+					'schema_movie_duration_secs'          => 0,		// Movie Runtime (Secs).
 
 					/*
 					 * Schema Organization.
@@ -668,15 +667,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/*
 					 * Schema Review Subject.
-					 *
-					 *	'schema_review_item_sameas_url_0' => '',
-					 *	'schema_review_item_sameas_url_1' => '',
-					 *	'schema_review_item_sameas_url_2' => '',
 					 */
-					'schema_review_item_name' => '',					// Subject Name.
-					'schema_review_item_desc' => '',					// Subject Description.
-					'schema_review_item_url'  => '',					// Subject Webpage URL.
-					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Schema Type.
+					'schema_review_item_name'         => '',					// Subject Name.
+					'schema_review_item_desc'         => '',					// Subject Description.
+					'schema_review_item_img_id'       => '',
+					'schema_review_item_img_url'      => '',
+					'schema_review_item_url'          => '',					// Subject Webpage URL.
+					'schema_review_item_type'         => $opts[ 'schema_def_review_item_type' ],	// Subject Schema Type.
+					'schema_review_item_sameas_url_0' => '',
+					'schema_review_item_sameas_url_1' => '',
+					'schema_review_item_sameas_url_2' => '',
 
 					/*
 					 * Schema Review Subject: Creative Work.
@@ -684,11 +684,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_author_type'      => 'none',		// Subject Author Type.
 					'schema_review_item_cw_author_name'      => '',			// Subject Author Name.
 					'schema_review_item_cw_author_url'       => '',			// Subject Author URL.
-					'schema_review_item_cw_pub_date'         => '',			// Subject Published Date.
-					'schema_review_item_cw_pub_time'         => 'none',		// Subject Published Time.
+					'schema_review_item_cw_pub_date'         => '',			// Subject Published Date (Y-m-d).
+					'schema_review_item_cw_pub_time'         => 'none',		// Subject Published Time (H:i).
 					'schema_review_item_cw_pub_timezone'     => $def_timezone,	// Subject Published Timezone.
-					'schema_review_item_cw_created_date'     => '',			// Subject Created Date.
-					'schema_review_item_cw_created_time'     => 'none',		// Subject Created Time.
+					'schema_review_item_cw_created_date'     => '',			// Subject Created Date (Y-m-d).
+					'schema_review_item_cw_created_time'     => 'none',		// Subject Created Time (H:i).
 					'schema_review_item_cw_created_timezone' => $def_timezone,	// Subject Created Timezone.
 
 					/*
@@ -698,14 +698,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/*
 					 * Schema Review Subject: Creative Work / Movie.
-					 *
-					 *	'schema_review_item_cw_movie_actor_person_name_0'    => '',
-					 *	'schema_review_item_cw_movie_actor_person_name_1'    => '',
-					 *	'schema_review_item_cw_movie_actor_person_name_2'    => '',
-					 *	'schema_review_item_cw_movie_director_person_name_0' => '',
-					 *	'schema_review_item_cw_movie_director_person_name_1' => '',
-					 *	'schema_review_item_cw_movie_director_person_name_2' => '',
 					 */
+					'schema_review_item_cw_movie_actor_person_name_0'    => '',
+					'schema_review_item_cw_movie_actor_person_name_1'    => '',
+					'schema_review_item_cw_movie_actor_person_name_2'    => '',
+					'schema_review_item_cw_movie_director_person_name_0' => '',
+					'schema_review_item_cw_movie_director_person_name_1' => '',
+					'schema_review_item_cw_movie_director_person_name_2' => '',
 
 					/*
 					 * Schema Review Subject: Place.
@@ -755,8 +754,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema WebPage.
 					 */
-					'schema_webpage_reviewed_last_date'     => '',			// Reviewed Last Date.
-					'schema_webpage_reviewed_last_time'     => 'none',		// Reviewed Last Time.
+					'schema_webpage_reviewed_last_date'     => '',			// Reviewed Last Date (Y-m-d).
+					'schema_webpage_reviewed_last_time'     => 'none',		// Reviewed Last Time (H:i).
 					'schema_webpage_reviewed_last_timezone' => $def_timezone,	// Reviewed Last Timezone.
 				);
 
