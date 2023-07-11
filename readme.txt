@@ -237,7 +237,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 15.16.0-b.2 (2023/07/11)**
 
 * **New Features**
-	* None.
+	* Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab:
+		* Publishing Principles URL (localized).
+		* Corrections Policy URL (localized).
+		* Diversity URL (localized).
+		* Ethics Policy URL (localized).
+		* Feedback Policy URL (localized).
+		* Unnamed Sources Policy URL (localized).
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
@@ -795,7 +801,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.16.0-b.2 =
 
-(2023/07/11) Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
+(2023/07/11) Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab.
 
 = 15.15.1 =
 
