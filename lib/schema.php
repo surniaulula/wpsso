@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og[ 'schema:type:context' ],
 				$mt_og[ 'schema:type:name' ],
 				$mt_og[ 'schema:type:path' ],
-			) = $this->get_schema_type_url_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
+			) = $this->get_schema_type_url_parts( $page_type_url );
 
 			$page_type_ids   = array();
 			$page_type_added = array();	// Prevent duplicate schema types.

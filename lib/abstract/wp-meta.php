@@ -569,6 +569,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_offers_end_date'       => '',							// Event Offers End Date (Y-m-d).
 					'schema_event_offers_end_time'       => 'none',							// Event Offers End Time (H:i).
 					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End Timezone.
+					'schema_event_offer_name_0'          => '',
+					'schema_event_offer_name_1'          => '',
+					'schema_event_offer_name_2'          => '',
+					'schema_event_offer_price_0'         => '',
+					'schema_event_offer_price_1'         => '',
+					'schema_event_offer_price_2'         => '',
+					'schema_event_offer_currency_0'      => $def_currency,
+					'schema_event_offer_currency_1'      => $def_currency,
+					'schema_event_offer_currency_2'      => $def_currency,
+					'schema_event_offer_avail_0'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_1'         => 'https://schema.org/InStock',
+					'schema_event_offer_avail_2'         => 'https://schema.org/InStock',
 
 					/*
 					 * Schema How-To.
@@ -661,21 +673,37 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Recipe.
 					 */
-					'schema_recipe_cook_method' => '',	// Recipe Cooking Method.
-					'schema_recipe_course'      => '',	// Recipe Course.
-					'schema_recipe_cuisine'     => '',	// Recipe Cuisine.
-					'schema_recipe_prep_days'   => 0,	// Recipe Preparation Time (Days).
-					'schema_recipe_prep_hours'  => 0,	// Recipe Preparation Time (Hours).
-					'schema_recipe_prep_mins'   => 0,	// Recipe Preparation Time (Mins).
-					'schema_recipe_prep_secs'   => 0,	// Recipe Preparation Time (Secs).
-					'schema_recipe_cook_days'   => 0,	// Recipe Cooking Time (Days).
-					'schema_recipe_cook_hours'  => 0,	// Recipe Cooking Time (Hours).
-					'schema_recipe_cook_mins'   => 0,	// Recipe Cooking Time (Mins).
-					'schema_recipe_cook_secs'   => 0,	// Recipe Cooking Time (Secs).
-					'schema_recipe_total_days'  => 0,	// How-To Total Time (Days).
-					'schema_recipe_total_hours' => 0,	// How-To Total Time (Hours).
-					'schema_recipe_total_mins'  => 0,	// How-To Total Time (Mins).
-					'schema_recipe_total_secs'  => 0,	// How-To Total Time (Secs).
+					'schema_recipe_cuisine'               => '',	// Recipe Cuisine.
+					'schema_recipe_course'                => '',	// Recipe Course.
+					'schema_recipe_yield'                 => '',	// Recipe Yield.
+					'schema_recipe_cook_method'           => '',	// Recipe Cooking Method.
+					'schema_recipe_prep_days'             => 0,	// Recipe Preparation Time (Days).
+					'schema_recipe_prep_hours'            => 0,	// Recipe Preparation Time (Hours).
+					'schema_recipe_prep_mins'             => 0,	// Recipe Preparation Time (Mins).
+					'schema_recipe_prep_secs'             => 0,	// Recipe Preparation Time (Secs).
+					'schema_recipe_cook_days'             => 0,	// Recipe Cooking Time (Days).
+					'schema_recipe_cook_hours'            => 0,	// Recipe Cooking Time (Hours).
+					'schema_recipe_cook_mins'             => 0,	// Recipe Cooking Time (Mins).
+					'schema_recipe_cook_secs'             => 0,	// Recipe Cooking Time (Secs).
+					'schema_recipe_total_days'            => 0,	// How-To Total Time (Days).
+					'schema_recipe_total_hours'           => 0,	// How-To Total Time (Hours).
+					'schema_recipe_total_mins'            => 0,	// How-To Total Time (Mins).
+					'schema_recipe_total_secs'            => 0,	// How-To Total Time (Secs).
+					'schema_recipe_ingredient_0'          => '',
+					'schema_recipe_ingredient_1'          => '',
+					'schema_recipe_ingredient_2'          => '',
+					'schema_recipe_instruction_section_0' => 0,
+					'schema_recipe_instruction_section_1' => 0,
+					'schema_recipe_instruction_section_2' => 0,
+					'schema_recipe_instruction_0'         => '',
+					'schema_recipe_instruction_1'         => '',
+					'schema_recipe_instruction_2'         => '',
+					'schema_recipe_instruction_text_0'    => '',
+					'schema_recipe_instruction_text_1'    => '',
+					'schema_recipe_instruction_text_2'    => '',
+					'schema_recipe_instruction_img_0'     => '',
+					'schema_recipe_instruction_img_1'     => '',
+					'schema_recipe_instruction_img_2'     => '',
 
 					/*
 					 * Schema Recipe - Nutrition Information.
@@ -692,7 +720,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_recipe_nutri_sat_fat'   => '',	// Saturated Fat.
 					'schema_recipe_nutri_unsat_fat' => '',	// Unsaturated Fat.
 					'schema_recipe_nutri_chol'      => '',	// Cholesterol.
-					'schema_recipe_yield'           => '',	// Recipe Yield.
 
 					/*
 					 * Schema Review.
@@ -729,12 +756,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_created_timezone' => $def_timezone,	// Subject Created Timezone.
 
 					/*
-					 * Schema Review Subject: Creative Work / Book.
+					 * Schema Review Subject: Creative Work > Book.
 					 */
 					'schema_review_item_cw_book_isbn' => '',	// Subject Book ISBN.
 
 					/*
-					 * Schema Review Subject: Creative Work / Movie.
+					 * Schema Review Subject: Creative Work > Movie.
 					 */
 					'schema_review_item_cw_movie_actor_person_name_0'    => '',
 					'schema_review_item_cw_movie_actor_person_name_1'    => '',
@@ -754,12 +781,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_place_country'        => $def_country,
 
 					/*
-					 * Schema Review Subject: Place / Local Business.
+					 * Schema Review Subject: Place > Local Business.
 					 */
 					'schema_review_item_place_price_range' => '',
 
 					/*
-					 * Schema Review Subject: Place / Food Establishment.
+					 * Schema Review Subject: Place > Food Establishment.
 					 */
 					'schema_review_item_place_cuisine' => '',
 
@@ -767,14 +794,38 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema Review Subject: Product.
 					 */
 					'schema_review_item_product_brand'            => '',	// Product Brand.
+					'schema_review_item_product_offer_name_0'     => '',
+					'schema_review_item_product_offer_name_1'     => '',
+					'schema_review_item_product_offer_name_2'     => '',
+					'schema_review_item_product_offer_price_0'    => '',
+					'schema_review_item_product_offer_price_1'    => '',
+					'schema_review_item_product_offer_price_2'    => '',
+					'schema_review_item_product_offer_currency_0' => $def_currency,
+					'schema_review_item_product_offer_currency_1' => $def_currency,
+					'schema_review_item_product_offer_currency_2' => $def_currency,
+					'schema_review_item_product_offer_avail_0'    => 'https://schema.org/InStock',
+					'schema_review_item_product_offer_avail_1'    => 'https://schema.org/InStock',
+					'schema_review_item_product_offer_avail_2'    => 'https://schema.org/InStock',
 					'schema_review_item_product_retailer_part_no' => '',	// Product SKU.
 					'schema_review_item_product_mfr_part_no'      => '',	// Product MPN.
 
 					/*
 					 * Schema Review Subject: Software Application.
 					 */
-					'schema_review_item_software_app_cat' => '',	// Application Category.
-					'schema_review_item_software_app_os'  => '',	// Operating System.
+					'schema_review_item_software_app_os'               => '',	// Operating System.
+					'schema_review_item_software_app_cat'              => '',	// Application Category.
+					'schema_review_item_software_app_offer_name_0'     => '',
+					'schema_review_item_software_app_offer_name_1'     => '',
+					'schema_review_item_software_app_offer_name_2'     => '',
+					'schema_review_item_software_app_offer_price_0'    => '',
+					'schema_review_item_software_app_offer_price_1'    => '',
+					'schema_review_item_software_app_offer_price_2'    => '',
+					'schema_review_item_software_app_offer_currency_0' => $def_currency,
+					'schema_review_item_software_app_offer_currency_1' => $def_currency,
+					'schema_review_item_software_app_offer_currency_2' => $def_currency,
+					'schema_review_item_software_app_offer_avail_0'    => 'https://schema.org/InStock',
+					'schema_review_item_software_app_offer_avail_1'    => 'https://schema.org/InStock',
+					'schema_review_item_software_app_offer_avail_2'    => 'https://schema.org/InStock',
 
 					/*
 					 * Schema Claim Review.
