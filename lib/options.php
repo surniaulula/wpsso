@@ -420,12 +420,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$fixed[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 
 			/*
-			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
-			 * types. The WebSite organization type ID should be "organization" unless you are confident that
-			 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
-			 * select a different organization type ID for your WebSite, define the
-			 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
-			 * URL).
+			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher types.
+			 * The site organization type ID should be "organization" unless you are confident that Google will
+			 * recognize your preferred Schema Organization sub-type as a valid organization. To select a different
+			 * organization type ID for your site, define the WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your
+			 * preferred type ID (not the Schema type URL).
 			 */
 			$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
 
@@ -1162,7 +1161,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/*
-			 * Skip if the WebSite Publisher Type is not an organization.
+			 * Skip if the "Site Publisher Type" option is not an organization.
 			 */
 			if ( empty( $opts[ 'site_pub_schema_type' ] ) || 'organization' !== $opts[ 'site_pub_schema_type' ] ) {
 

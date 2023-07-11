@@ -1801,12 +1801,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:251
 msgctxt "option value"
-msgid "[WebSite Organization]"
+msgid "[Site Organization]"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:252
 msgctxt "option value"
-msgid "WebSite Organization"
+msgid "Site Organization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:253
@@ -2977,8 +2977,8 @@ msgstr ""
 #: lib/std/admin/advanced.php:146 lib/std/admin/advanced.php:152
 #: lib/std/admin/general.php:49 lib/std/admin/general.php:54
 #: lib/std/admin/general.php:59 lib/std/admin/general.php:64
-#: lib/submenu/general.php:370 lib/submenu/general.php:376
-#: lib/submenu/general.php:382
+#: lib/submenu/general.php:405 lib/submenu/general.php:411
+#: lib/submenu/general.php:417
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -5429,20 +5429,20 @@ msgstr ""
 
 #: lib/admin.php:2486
 msgctxt "option label"
-msgid "WebSite Publisher Type"
+msgid "Site Publisher Type"
 msgstr ""
 
 #: lib/admin.php:2494
 msgctxt "option label"
-msgid "WebSite Publisher Person"
+msgid "Site Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2502 lib/options.php:1192
+#: lib/admin.php:2502 lib/options.php:1191
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2507 lib/options.php:1197
+#: lib/admin.php:2507 lib/options.php:1196
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5590,12 +5590,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5311
+#: lib/config.php:5317
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5311
+#: lib/config.php:5317
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -6640,13 +6640,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:136 lib/submenu/general.php:340
+#: lib/edit-visibility.php:136 lib/submenu/general.php:375
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:137 lib/edit-visibility.php:153
-#: lib/submenu/general.php:341 lib/submenu/general.php:355
+#: lib/submenu/general.php:376 lib/submenu/general.php:390
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -6661,7 +6661,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:152 lib/submenu/general.php:354
+#: lib/edit-visibility.php:152 lib/submenu/general.php:389
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -9189,12 +9189,12 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:322 lib/submenu/essential.php:96
-#: lib/submenu/general.php:156
+#: lib/submenu/general.php:158
 msgctxt "option label"
-msgid "WebSite Name"
+msgid "Site Name"
 msgstr ""
 
-#. translators: %1$s is the "WebSite Name" option label, %2$s is the "%%sitename%%" inline variable.
+#. translators: %1$s is the "Site Name" option label, %2$s is the "%%sitename%%" inline variable.
 #: lib/messages-tooltip-plugin.php:326
 msgid ""
 "The default SEO site name suffix is the %1$s value (aka %2$s inline "
@@ -9207,12 +9207,12 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:339 lib/submenu/essential.php:102
-#: lib/submenu/general.php:167
+#: lib/submenu/general.php:169
 msgctxt "option label"
-msgid "WebSite Description"
+msgid "Site Description"
 msgstr ""
 
-#. translators: %1$s is the "WebSite Description" option label, %2$s is the "%%sitedesc%%" inline variable.
+#. translators: %1$s is the "Site Description" option label, %2$s is the "%%sitedesc%%" inline variable.
 #: lib/messages-tooltip-plugin.php:343
 msgid ""
 "The default SEO tagline suffix is the %1$s value (aka %2$s inline variable)."
@@ -9790,67 +9790,67 @@ msgstr ""
 msgid "The website home URL used in meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:66
+#: lib/messages-tooltip-site.php:59
+msgid "Select a Schema type for the publisher of content for this website."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:61
 msgid ""
-"A URL for this organization's logo image that Google can show in its search "
-"results and <em>Knowledge Graph</em>."
+"Traditionally, the Schema Organization type is selected for business "
+"websites, where-as the Schema Person type is selected for personal websites."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:67
+msgid "Select a user for the Schema Person publisher markup."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:69
+msgid "The available Person list includes all users in the %1$s or %2$s roles."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:70
+msgctxt "user role"
+msgid "Administrator"
+msgstr ""
+
+#: lib/messages-tooltip-site.php:70
+msgctxt "user role"
+msgid "Editor"
+msgstr ""
+
+#: lib/messages-tooltip-site.php:83
+msgid ""
+"A URL for this organization's logo image that Google can show in search "
+"results and its Knowledge Graph."
 msgstr ""
 
 #. translators: %s is 600x60px.
-#: lib/messages-tooltip-site.php:69
+#: lib/messages-tooltip-site.php:86
 msgid ""
 "The image must be at least %s for Google, but preferably 1200x1200px or more."
 msgstr ""
 
 #. translators: %s is 600x60px.
-#: lib/messages-tooltip-site.php:83
+#: lib/messages-tooltip-site.php:100
 msgid ""
 "A URL for this organization's banner image <strong>measuring exactly %s</"
 "strong>, that Google News can show for Schema Article type content from this "
 "publisher."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:89
+#: lib/messages-tooltip-site.php:106
+msgid "Select an optional location for this organization."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:114
 msgid ""
 "Google does not recognize most Schema Organization sub-types as valid "
 "organizations."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:91
-msgid ""
-"The site Schema Organization type should be Organization and not a sub-type."
-msgstr ""
-
-#: lib/messages-tooltip-site.php:97
-msgid "Select an optional location for this organization."
-msgstr ""
-
-#: lib/messages-tooltip-site.php:105
-msgid "Select a user for the Schema Person publisher markup."
-msgstr ""
-
-#: lib/messages-tooltip-site.php:107
-msgid "The available Person list includes all users in the %1$s or %2$s roles."
-msgstr ""
-
-#: lib/messages-tooltip-site.php:108
-msgctxt "user role"
-msgid "Administrator"
-msgstr ""
-
-#: lib/messages-tooltip-site.php:108
-msgctxt "user role"
-msgid "Editor"
-msgstr ""
-
-#: lib/messages-tooltip-site.php:114
-msgid "Select a Schema type for the publisher of content for this website."
-msgstr ""
-
 #: lib/messages-tooltip-site.php:116
 msgid ""
-"Traditionally, the Schema Organization type is selected for business "
-"websites, where-as the Schema Person type is selected for personal websites."
+"The site Schema Organization type should be Organization and not a sub-type."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:122
@@ -10042,7 +10042,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:350 lib/messages.php:1215
-#: lib/submenu/general.php:379
+#: lib/submenu/general.php:414
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -11211,264 +11211,264 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:743
+#: lib/options.php:742
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:752
+#: lib/options.php:751
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:760
+#: lib/options.php:759
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:778
+#: lib/options.php:777
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:894
+#: lib/options.php:893
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1204
+#: lib/options.php:1203
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1219
+#: lib/options.php:1218
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1222
+#: lib/options.php:1221
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1236
+#: lib/options.php:1235
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1240
+#: lib/options.php:1239
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1255
+#: lib/options.php:1254
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1259
+#: lib/options.php:1258
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1289
+#: lib/options.php:1288
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1290
+#: lib/options.php:1289
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1291
+#: lib/options.php:1290
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1292
+#: lib/options.php:1291
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1293
+#: lib/options.php:1292
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1294
+#: lib/options.php:1293
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1295
+#: lib/options.php:1294
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1296
+#: lib/options.php:1295
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1297
+#: lib/options.php:1296
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1298
+#: lib/options.php:1297
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1299
+#: lib/options.php:1298
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1300
+#: lib/options.php:1299
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1301
+#: lib/options.php:1300
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1815
+#: lib/options.php:1814
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1819
+#: lib/options.php:1818
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1823
+#: lib/options.php:1822
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1827
+#: lib/options.php:1826
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1831
+#: lib/options.php:1830
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1835
+#: lib/options.php:1834
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1839
+#: lib/options.php:1838
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1843
+#: lib/options.php:1842
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1847
+#: lib/options.php:1846
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1851
+#: lib/options.php:1850
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1855
+#: lib/options.php:1854
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1859
+#: lib/options.php:1858
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1863
+#: lib/options.php:1862
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1867
+#: lib/options.php:1866
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1871
+#: lib/options.php:1870
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1875
+#: lib/options.php:1874
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1879
+#: lib/options.php:1878
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1883
+#: lib/options.php:1882
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1887
+#: lib/options.php:1886
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1891
+#: lib/options.php:1890
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1895
+#: lib/options.php:1894
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1899
+#: lib/options.php:1898
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1903
+#: lib/options.php:1902
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1907
+#: lib/options.php:1906
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -11729,47 +11729,47 @@ msgid "adding schema organization ID %s"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1134
+#: lib/schema-single.php:1140
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1137
+#: lib/schema-single.php:1143
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1140
+#: lib/schema-single.php:1146
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1163
+#: lib/schema-single.php:1171
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1177 lib/schema-single.php:1186
+#: lib/schema-single.php:1185 lib/schema-single.php:1194
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1360
+#: lib/schema-single.php:1368
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1569
+#: lib/schema-single.php:1577
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2002
+#: lib/schema-single.php:2010
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2125
+#: lib/schema-single.php:2133
 msgid "adding schema product"
 msgstr ""
 
@@ -11777,22 +11777,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2057
+#: lib/schema.php:2071
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2230
+#: lib/schema.php:2244
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2257
+#: lib/schema.php:2271
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3840
+#: lib/schema.php:3854
 msgid "checking schema properties"
 msgstr ""
 
@@ -12037,12 +12037,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:108 lib/submenu/general.php:246
+#: lib/submenu/essential.php:108 lib/submenu/general.php:304
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:251
+#: lib/submenu/essential.php:113 lib/submenu/general.php:309
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -12084,7 +12084,7 @@ msgstr ""
 
 #: lib/submenu/general.php:120
 msgctxt "metabox tab"
-msgid "Google and Schema"
+msgid "Google"
 msgstr ""
 
 #: lib/submenu/general.php:121
@@ -12097,182 +12097,217 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:162
+#: lib/submenu/general.php:164
 msgctxt "option label"
-msgid "WebSite Alternate Name"
+msgid "Site Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:173
+#: lib/submenu/general.php:175
 msgctxt "option label"
-msgid "WebSite Home URL"
+msgid "Site Home URL"
 msgstr ""
 
-#: lib/submenu/general.php:179
+#: lib/submenu/general.php:181
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:184
+#: lib/submenu/general.php:186
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:189
+#: lib/submenu/general.php:191
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:194
+#: lib/submenu/general.php:196
 msgctxt "option label"
 msgid "Default Dimension Units"
 msgstr ""
 
-#: lib/submenu/general.php:200
+#: lib/submenu/general.php:202
 msgctxt "option label"
 msgid "Default Weight Units"
 msgstr ""
 
-#: lib/submenu/general.php:206
+#: lib/submenu/general.php:208
 msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:216
-msgctxt "option label"
-msgid "Title Separator"
-msgstr ""
-
-#: lib/submenu/general.php:221
-msgctxt "option label"
-msgid "Truncated Text Ellipsis"
-msgstr ""
-
-#: lib/submenu/general.php:226
-msgctxt "option label"
-msgid "Description Hashtags"
-msgstr ""
-
-#: lib/submenu/general.php:230
-msgctxt "option comment"
-msgid "tag names"
-msgstr ""
-
-#: lib/submenu/general.php:239
-msgctxt "option label"
-msgid "Maximum Images to Include"
-msgstr ""
-
-#: lib/submenu/general.php:266
-msgctxt "option label"
-msgid "Facebook Domain Verification ID"
-msgstr ""
-
-#: lib/submenu/general.php:271
-msgctxt "option label"
-msgid "Facebook Locale"
-msgstr ""
-
-#: lib/submenu/general.php:276
-msgctxt "option label"
-msgid "Facebook Application ID"
-msgstr ""
-
-#: lib/submenu/general.php:296
-msgctxt "option label"
-msgid "Google Website Verification ID"
-msgstr ""
-
-#: lib/submenu/general.php:306
-msgctxt "option label"
-msgid "Organization Schema Type"
-msgstr ""
-
-#: lib/submenu/general.php:313
+#: lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:319
+#: lib/submenu/general.php:224
+msgctxt "option label"
+msgid "Organization Schema Type"
+msgstr ""
+
+#: lib/submenu/general.php:235
+msgctxt "metabox title"
+msgid "Organization Principles and Policies"
+msgstr ""
+
+#: lib/submenu/general.php:239
+msgctxt "option label"
+msgid "Publishing Principles URL"
+msgstr ""
+
+#: lib/submenu/general.php:244
+msgctxt "option label"
+msgid "Corrections Policy URL"
+msgstr ""
+
+#: lib/submenu/general.php:249
+msgctxt "option label"
+msgid "Diversity Policy URL"
+msgstr ""
+
+#: lib/submenu/general.php:254
+msgctxt "option label"
+msgid "Ethics Policy URL"
+msgstr ""
+
+#: lib/submenu/general.php:259
+msgctxt "option label"
+msgid "Feedback Policy URL"
+msgstr ""
+
+#: lib/submenu/general.php:264
+msgctxt "option label"
+msgid "Unnamed Sources Policy URL"
+msgstr ""
+
+#: lib/submenu/general.php:274
+msgctxt "option label"
+msgid "Title Separator"
+msgstr ""
+
+#: lib/submenu/general.php:279
+msgctxt "option label"
+msgid "Truncated Text Ellipsis"
+msgstr ""
+
+#: lib/submenu/general.php:284
+msgctxt "option label"
+msgid "Description Hashtags"
+msgstr ""
+
+#: lib/submenu/general.php:288
+msgctxt "option comment"
+msgid "tag names"
+msgstr ""
+
+#: lib/submenu/general.php:297
+msgctxt "option label"
+msgid "Maximum Images to Include"
+msgstr ""
+
+#: lib/submenu/general.php:324
+msgctxt "option label"
+msgid "Facebook Domain Verification ID"
+msgstr ""
+
+#: lib/submenu/general.php:329
+msgctxt "option label"
+msgid "Facebook Locale"
+msgstr ""
+
+#: lib/submenu/general.php:334
+msgctxt "option label"
+msgid "Facebook Application ID"
+msgstr ""
+
+#: lib/submenu/general.php:346
+msgctxt "option label"
+msgid "Google Website Verification ID"
+msgstr ""
+
+#: lib/submenu/general.php:353
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:322
+#: lib/submenu/general.php:356
 msgctxt "option comment"
 msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
-#: lib/submenu/general.php:326
+#: lib/submenu/general.php:360
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:336
+#: lib/submenu/general.php:371
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:344
+#: lib/submenu/general.php:379
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:350
+#: lib/submenu/general.php:385
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:362
+#: lib/submenu/general.php:397
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:402
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:373
+#: lib/submenu/general.php:408
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:389
+#: lib/submenu/general.php:424
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:390
+#: lib/submenu/general.php:425
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:429
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:399
+#: lib/submenu/general.php:434
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:408
+#: lib/submenu/general.php:443
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:413
+#: lib/submenu/general.php:448
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:418
+#: lib/submenu/general.php:453
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:423
+#: lib/submenu/general.php:458
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""

@@ -93,13 +93,13 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$def_site_desc = get_bloginfo( 'description' );
 
 					$table_rows[ 'site_name' ] = '' .
-						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_name' ) .
 						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
 							$len = 0, $def_site_name ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' .
-						$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Description', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_desc' ) .
 						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';

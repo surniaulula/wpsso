@@ -2483,19 +2483,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$site_owners = WpssoUser::get_persons_names( $add_none = true, $roles_id = 'owner' );
 
 			$table_rows[ 'site_pub_schema_type' ] = '' .
-				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
+				$this->form->get_th_html( _x( 'Site Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
 				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
 			/*
-			 * Website person.
+			 * Publisher Type Person.
 			 */
 			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
-				$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
+				$this->form->get_th_html( _x( 'Site Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
 				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/*
-			 * Website organization.
+			 * Publisher Type Organization.
 			 */
 			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .

@@ -30,27 +30,44 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-site_name':	// WebSite Name.
+				case 'tooltip-site_name':	// Site Name.
 
 					$text = __( 'The website name used in meta tags and Schema markup.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-site_name_alt':	// WebSite Alternate Name.
+				case 'tooltip-site_name_alt':	// Site Alternate Name.
 
 					$text = __( 'An optional alternate name that you want Google to consider for your website.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-site_desc':	// WebSite Description.
+				case 'tooltip-site_desc':	// Site Description.
 
 					$text = __( 'A short description for the home page tagline and the blog (non-static) front page description.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-site_home_url':	// WebSite Home URL.
+				case 'tooltip-site_home_url':	// Site Home URL.
 
 					$text = __( 'The website home URL used in meta tags and Schema markup.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-site_pub_schema_type':	// Site Publisher Type.
+
+					$text .= __( 'Select a Schema type for the publisher of content for this website.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-site_pub_person_id':	// Site Publisher Person.
+
+					$text = __( 'Select a user for the Schema Person publisher markup.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'The available Person list includes all users in the %1$s or %2$s roles.', 'wpsso' ),
+						_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 
 					break;
 
@@ -63,7 +80,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 					$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
 					$minimum_dims = $min_width . 'x' . $min_height . 'px';
 
-					$text = __( 'A URL for this organization\'s logo image that Google can show in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
+					$text = __( 'A URL for this organization\'s logo image that Google can show in search results and its Knowledge Graph.', 'wpsso' );
 
 					// translators: %s is 600x60px.
 					$text .= sprintf( __( 'The image must be at least %s for Google, but preferably 1200x1200px or more.', 'wpsso' ), $minimum_dims );
@@ -84,14 +101,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-				case 'tooltip-site_org_schema_type':	// Organization Schema Type.
-
-					$text = __( 'Google does not recognize most Schema Organization sub-types as valid organizations.', 'wpsso' );
-
-					$text .= __( 'The site Schema Organization type should be Organization and not a sub-type.', 'wpsso' );
-
-					break;
-
 				case 'tooltip-site_org_place_id':	// Organization Location.
 
 					$text = __( 'Select an optional location for this organization.', 'wpsso' );
@@ -100,20 +109,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-				case 'tooltip-site_pub_person_id':	// WebSite Publisher Person.
+				case 'tooltip-site_org_schema_type':	// Organization Schema Type.
 
-					$text = __( 'Select a user for the Schema Person publisher markup.', 'wpsso' ) . ' ';
+					$text = __( 'Google does not recognize most Schema Organization sub-types as valid organizations.', 'wpsso' );
 
-					$text .= sprintf( __( 'The available Person list includes all users in the %1$s or %2$s roles.', 'wpsso' ),
-						_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
-
-					break;
-
-				case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
-
-					$text .= __( 'Select a Schema type for the publisher of content for this website.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
+					$text .= __( 'The site Schema Organization type should be Organization and not a sub-type.', 'wpsso' );
 
 					break;
 

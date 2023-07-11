@@ -1414,16 +1414,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Site options.
 					 */
-					'site_name'            => '',			// WebSite Name (localized).
-					'site_name_alt'        => '',			// WebSite Alternate Name (localized).
-					'site_desc'            => '',			// WebSite Description (localized).
-					'site_home_url'        => '',			// WebSite Home URL (localized).
-					'site_org_logo_url'    => '',			// Organization Logo URL (localized)
-					'site_org_banner_url'  => '',			// Organization Banner URL (localized).
-					'site_org_schema_type' => 'organization',	// Organization Schema Type.
-					'site_org_place_id'    => 'none',		// Organization Location.
-					'site_pub_person_id'   => 'none',		// WebSite Publisher Person.
-					'site_pub_schema_type' => 'organization',	// WebSite Publisher Type.
+					'site_name'                       => '',		// Site Name (localized).
+					'site_name_alt'                   => '',		// Site Alternate Name (localized).
+					'site_desc'                       => '',		// Site Description (localized).
+					'site_home_url'                   => '',		// Site Home URL (localized).
+					'site_pub_schema_type'            => 'organization',	// Site Publisher Type.
+					'site_pub_person_id'              => 'none',		// Site Publisher Person.
+					'site_org_logo_url'               => '',		// Organization Logo URL (localized)
+					'site_org_banner_url'             => '',		// Organization Banner URL (localized).
+					'site_org_place_id'               => 'none',		// Organization Location.
+					'site_org_schema_type'            => 'organization',	// Organization Schema Type.
+					'site_org_pub_principles_url'     => '',		// Publishing Principles URL (localized).
+					'site_org_corrections_policy_url' => '',		// Corrections Policy URL (localized).
+					'site_org_diversity_policy_url'   => '',		// Diversity URL (localized).
+					'site_org_ethics_policy_url'      => '',		// Ethics Policy URL (localized).
+					'site_org_feedback_policy_url'    => '',		// Feedback Policy URL (localized).
+					'site_org_sources_policy_url'     => '',		// Unnamed Sources Policy URL (localized).
 
 					/*
 					 * Facebook options.
@@ -2896,7 +2902,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'org_select' => array(
 					'none' => '[None]',
 					'new'  => '[New Organization]',
-					'site' => '[WebSite Organization]',
+					'site' => '[Site Organization]',
 				),
 				'og_schema_types_select_format' => array(
 					'id'      => 'ID',

@@ -991,26 +991,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
 			}
 
-			/*
-			 * Maybe get options from integration modules.
-			 *
-			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
-			 *
-			 * Example: 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
-			 */
-			$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
+			$org_opts = false;
 
-			if ( ! empty( $org_opts ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
-				}
-
-			/*
-			 * Fallback to using organization data from the WordPress site organization.
-			 */
-			} elseif ( 'site' === $org_id ) {
+			if ( 'site' === $org_id ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1018,6 +1001,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				$org_opts = WpssoSchema::get_site_organization( $mod ); // Returns localized values (not the key names).
+			}
+
+			/*
+			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
+			 *
+			 * Example 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
+			 */
+			$org_opts = apply_filters( 'wpsso_get_organization_options', $org_opts, $mod, $org_id );
+
+			if ( ! empty( $org_opts ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
+				}
 
 			} else {
 
@@ -1055,12 +1055,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add schema properties from the organization options.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
-				'url'           => 'org_url',
-				'name'          => 'org_name',
-				'alternateName' => 'org_name_alt',
-				'description'   => 'org_desc',
-				'email'         => 'org_email',
-				'telephone'     => 'org_phone',
+				'url'                      => 'org_url',
+				'name'                     => 'org_name',
+				'alternateName'            => 'org_name_alt',
+				'description'              => 'org_desc',
+				'email'                    => 'org_email',
+				'telephone'                => 'org_phone',
+				'publishingPrinciples'     => 'org_pub_principles_url',		// Publishing Principles URL.
+				'correctionsPolicy'        => 'org_corrections_policy_url',	// Corrections Policy URL.
+				'diversityPolicy'          => 'org_diversity_policy_url',	// Diversity Policy URL.
+				'ethicsPolicy'             => 'org_ethics_policy_url',		// Ethics Policy URL.
+				'actionableFeedbackPolicy' => 'org_feedback_policy_url',	// Feedback Policy URL.
+				'unnamedSourcesPolicy'     => 'org_sources_policy_url',		// Unnamed Sources Policy URL.
 			) );
 
 			/*
@@ -1141,11 +1147,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if ( 'org_logo_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ], '<a href="' . $type_url . '">'. $type_url . '</a>' );
+								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ],
+									'<a href="' . $type_url . '">'. $type_url . '</a>' );
 
 							} elseif ( 'org_banner_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ], '<a href="' . $type_url . '">'. $type_url . '</a>' );
+								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ],
+									'<a href="' . $type_url . '">'. $type_url . '</a>' );
 
 							} else {
 
@@ -1155,7 +1163,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							if ( $notice_msg ) {
 
 								/*
-								 * WebSite organization.
+								 * Site organization.
 								 */
 								if ( 'site' === $org_id ) {
 

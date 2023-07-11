@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * 	Array (
 		 * 		[title]   => A Title
 		 * 		[page]    => Page 2
-		 * 		[site]    => WebSite Name
+		 * 		[site]    => Site Name
 		 * 		[tagline] =>
 		 * 	)
 		 *

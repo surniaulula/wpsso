@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'google'      => _x( 'Google and Schema', 'metabox tab', 'wpsso' ),
+				'google'      => _x( 'Google', 'metabox tab', 'wpsso' ),
 				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
@@ -151,26 +151,28 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$dimension_units    = WpssoUtilUnits::get_dimension_units();
 					$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
 					$weight_units       = WpssoUtilUnits::get_weight_units();
+					$org_types_select   = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
+					$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
 					$table_rows[ 'site_name' ] = '' .
-						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_name' ) .
 						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
 							$len = 0, $def_site_name ) . '</td>';
 
 					$table_rows[ 'site_name_alt' ] = $this->form->get_tr_hide( $in_view = 'basic', 'site_name_alt' ) .
-						$this->form->get_th_html_locale( _x( 'WebSite Alternate Name', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Alternate Name', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_name_alt' ) .
 						'<td>' . $this->form->get_input_locale( 'site_name_alt', $css_class = 'long_name' ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' .
-						$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Description', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_desc' ) .
 						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';
 
 					$table_rows[ 'site_home_url' ] = $this->form->get_tr_hide( $in_view = 'basic', 'site_home_url' ) .
-						$this->form->get_th_html_locale( _x( 'WebSite Home URL', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Site Home URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_home_url' ) .
 						'<td>' . $this->form->get_input_locale( 'site_home_url', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_home_url ) . '</td>';
@@ -207,6 +209,62 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'og_def_fluid_volume_units' ) .
 						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', $fluid_volume_units,
 							$css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
+
+					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+
+						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
+
+						$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_place_id' ) .
+							'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'wide', $css_id = '',
+								$is_assoc = true ) . '</td>';
+
+						$table_rows[ 'site_org_schema_type' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_schema_type' ) .
+							'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
+								$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+									$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
+	
+						/*
+						 * Organization Principles and Policies section.
+						 */
+						$table_rows[ 'subsection_site_org_policy_urls' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							'<td colspan="4" class="subsection"><h4>' .
+							_x( 'Organization Principles and Policies', 'metabox title', 'wpsso' ) .
+							'</h4></td>';
+
+						$table_rows[ 'site_org_pub_principles_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Publishing Principles URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_pub_principles_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_pub_principles_url', $css_class = 'wide' ) . '</td>';
+
+						$table_rows[ 'site_org_corrections_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Corrections Policy URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_corrections_policy_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_corrections_policy_url', $css_class = 'wide' ) . '</td>';
+
+						$table_rows[ 'site_org_diversity_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Diversity Policy URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_diversity_policy_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_diversity_policy_url', $css_class = 'wide' ) . '</td>';
+					
+						$table_rows[ 'site_org_ethics_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Ethics Policy URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_ethics_policy_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_ethics_policy_url', $css_class = 'wide' ) . '</td>';
+					
+						$table_rows[ 'site_org_feedback_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Feedback Policy URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_feedback_policy_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_feedback_policy_url', $css_class = 'wide' ) . '</td>';
+					
+						$table_rows[ 'site_org_sources_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+							$this->form->get_th_html_locale( _x( 'Unnamed Sources Policy URL', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'site_org_sources_policy_url' ) .
+							'<td>' . $this->form->get_input_locale( 'site_org_sources_policy_url', $css_class = 'wide' ) . '</td>';
+					}
 
 					break;
 
@@ -281,51 +339,28 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
-					if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
-
-						return $this->p->msgs->get_schema_disabled_rows( $table_rows );
-					}
-
-					$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
-					$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
-
 					/*
-					 * Google and Schema settings.
+					 * Google settings.
 					 */
 					$table_rows[ 'g_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'g_site_verify' ) .
 						'<td>' . $this->form->get_input( 'g_site_verify', $css_class = 'api_key' ) . '</td>';
 
-					/*
-					 * Schema settings.
-					 */
-					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
+					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
-					$table_rows[ 'site_org_schema_type' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-						$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'site_org_schema_type' ) .
-						'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
-							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
+						$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_aggr_offers' ) .
+							$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'schema_aggr_offers' ) .
+							'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
+							sprintf( _x( '(not compatible with <a href="%s">price drop appearance</a>)', 'option comment', 'wpsso' ),
+								'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
 
-					$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-						$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'site_org_place_id' ) .
-						'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'wide', $css_id = '',
-							$is_assoc = true ) . '</td>';
-
-					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_aggr_offers' ) .
-						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'schema_aggr_offers' ) .
-						'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
-						sprintf( _x( '(not compatible with <a href="%s">price drop appearance</a>)', 'option comment', 'wpsso' ),
-							'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
-
-					$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_add_text_prop' ) .
-						$this->form->get_th_html( _x( 'Add Text / Article Body Properties', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'schema_add_text_prop' ) .
-						'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
+						$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_add_text_prop' ) .
+							$this->form->get_th_html( _x( 'Add Text / Article Body Properties', 'option label', 'wpsso' ),
+								$css_class = '', $css_id = 'schema_add_text_prop' ) .
+							'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
+					}
 
 					/*
 					 * Robots settings.

@@ -319,10 +319,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					// translators: %1$s is the "Webpage Title Tag" option label.
 					$text = sprintf( __( 'The SEO site name suffix for the %1$s option value.', 'wpsso' ), $option_link ) . ' ';
 
-					$option_label = _x( 'WebSite Name', 'option label', 'wpsso' );
+					$option_label = _x( 'Site Name', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
 
-					// translators: %1$s is the "WebSite Name" option label, %2$s is the "%%sitename%%" inline variable.
+					// translators: %1$s is the "Site Name" option label, %2$s is the "%%sitename%%" inline variable.
 					$text .= sprintf( __( 'The default SEO site name suffix is the %1$s value (aka %2$s inline variable).', 'wpsso' ),
 						$option_link, '<code>%%sitename%%</code>' );
 
@@ -336,10 +336,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					// translators: %1$s is the "Webpage Title Tag" option label.
 					$text = sprintf( __( 'The SEO tagline suffix for the %1$s option value.', 'wpsso' ), $option_link ) . ' ';
 
-					$option_label = _x( 'WebSite Description', 'option label', 'wpsso' );
+					$option_label = _x( 'Site Description', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
 
-					// translators: %1$s is the "WebSite Description" option label, %2$s is the "%%sitedesc%%" inline variable.
+					// translators: %1$s is the "Site Description" option label, %2$s is the "%%sitedesc%%" inline variable.
 					$text .= sprintf( __( 'The default SEO tagline suffix is the %1$s value (aka %2$s inline variable).', 'wpsso' ),
 						$option_link, '<code>%%sitedesc%%</code>' );
 

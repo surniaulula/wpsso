@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * Include Schema Organization or Person, and WebSite markup on the home page.
+			 * Include Schema Organization or Person, and Schema WebSite markup on the home page.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
@@ -1831,13 +1831,48 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$org_sameas = array();
+			$org_opts = array(
+				'org_url'         => SucomUtil::get_home_url( $wpsso->options, $mixed ),
+				'org_name'        => SucomUtil::get_site_name( $wpsso->options, $mixed ),
+				'org_name_alt'    => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
+				'org_desc'        => SucomUtil::get_site_description( $wpsso->options, $mixed ),
+				'org_place_id'    => $wpsso->options[ 'site_org_place_id' ],
+				'org_schema_type' => $wpsso->options[ 'site_org_schema_type' ],
+			);
+
+			/*
+			 * Add localized option values.
+			 *
+			 * Example 'site_org_logo_url:width#fr_FR'.
+			 */
+			foreach ( array(
+				'org_logo_url',
+				'org_logo_url:width',
+				'org_logo_url:height',
+				'org_banner_url',
+				'org_banner_url:width',
+				'org_banner_url:height',
+				'org_pub_principles_url',	// Publishing Principles URL (localized).
+				'org_corrections_policy_url',	// Corrections Policy URL (localized).
+				'org_diversity_policy_url',	// Diversity Policy URL (localized).
+				'org_ethics_policy_url',	// Ethics Policy URL (localized).
+				'org_feedback_policy_url',	// Feedback Policy URL (localized).
+				'org_sources_policy_url',	// Unnamed Sources Policy URL (localized).
+			) as $opt_key ) {
+				
+				$org_opts[ $opt_key ] = SucomUtil::get_key_value( 'site_' . $opt_key, $wpsso->options, $mixed );
+			}
+
+			/*
+			 * Add sameas option values.
+			 */
+			$org_opts[ 'org_sameas' ] = array();
 
 			foreach ( WpssoConfig::get_social_accounts() as $social_key => $social_label ) {
 
 				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// Localized value.
 
-				if ( empty( $url ) ) {
+				if ( empty( $url ) ) {	// Nothing to do.
 
 					continue;
 
@@ -1855,30 +1890,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} else {
 
-					$org_sameas[] = $url;
+					$org_opts[ 'org_sameas' ][] = $url;
 				}
 			}
-
-			/*
-			 * Logo and banner image dimensions are localized as well.
-			 *
-			 * Example: 'site_org_logo_url:width#fr_FR'.
-			 */
-			$org_opts = array(
-				'org_url'               => SucomUtil::get_home_url( $wpsso->options, $mixed ),
-				'org_name'              => SucomUtil::get_site_name( $wpsso->options, $mixed ),
-				'org_name_alt'          => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
-				'org_desc'              => SucomUtil::get_site_description( $wpsso->options, $mixed ),
-				'org_logo_url'          => SucomUtil::get_key_value( 'site_org_logo_url', $wpsso->options, $mixed ),
-				'org_logo_url:width'    => SucomUtil::get_key_value( 'site_org_logo_url:width', $wpsso->options, $mixed ),
-				'org_logo_url:height'   => SucomUtil::get_key_value( 'site_org_logo_url:height', $wpsso->options, $mixed ),
-				'org_banner_url'        => SucomUtil::get_key_value( 'site_org_banner_url', $wpsso->options, $mixed ),
-				'org_banner_url:width'  => SucomUtil::get_key_value( 'site_org_banner_url:width', $wpsso->options, $mixed ),
-				'org_banner_url:height' => SucomUtil::get_key_value( 'site_org_banner_url:height', $wpsso->options, $mixed ),
-				'org_schema_type'       => $wpsso->options[ 'site_org_schema_type' ],
-				'org_place_id'          => $wpsso->options[ 'site_org_place_id' ],
-				'org_sameas'            => $org_sameas,
-			);
 
 			return $org_opts;
 		}
