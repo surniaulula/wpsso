@@ -467,11 +467,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * All Schema Types.
 					 */
-					'schema_type'      => $def_schema_type,	// Schema Type.
-					'schema_title'     => '',		// Schema Name.
-					'schema_title_alt' => '',		// Schema Alternate Name.
-					'schema_title_bc'  => '',		// Schema Breadcrumb Name.
-					'schema_desc'      => '',		// Schema Description.
+					'schema_type'            => $def_schema_type,	// Schema Type.
+					'schema_title'           => '',			// Schema Name.
+					'schema_title_alt'       => '',			// Schema Alternate Name.
+					'schema_title_bc'        => '',			// Schema Breadcrumb Name.
+					'schema_desc'            => '',			// Schema Description.
+					'schema_addl_type_url_0' => '',	
+					'schema_addl_type_url_1' => '',	
+					'schema_addl_type_url_2' => '',	
+					'schema_sameas_url_0'    => '',	
+					'schema_sameas_url_1'    => '',	
+					'schema_sameas_url_2'    => '',	
 
 					/*
 					 * Schema Creative Work.
@@ -484,10 +490,26 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
 					'schema_copyright_year'  => '',						// Copyright Year.
 					'schema_license_url'     => '',						// License URL.
-					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Provider Org.
-					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Provider Person.
 					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Organization.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
+					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Provider Org.
+					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Provider Person.
+					'schema_ispartof_url_0'  => '',
+					'schema_ispartof_url_1'  => '',
+					'schema_ispartof_url_2'  => '',
+
+					/*
+					 * See https://schema.org/citation.
+					 *
+					 * There is very little information available from Google about the expected JSON markup structure
+					 * for citations - the only information available is from the the Google's Dataset type
+					 * documentation.
+					 *
+					 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
+					 */
+					'schema_citation_0' => '',
+					'schema_citation_1' => '',
+					'schema_citation_2' => '',
 
 					/*
 					 * Schema Article.
@@ -551,15 +573,30 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema How-To.
 					 */
-					'schema_howto_prep_days'   => 0,	// How-To Preparation Time (Days).
-					'schema_howto_prep_hours'  => 0,	// How-To Preparation Time (Hours).
-					'schema_howto_prep_mins'   => 0,	// How-To Preparation Time (Mins).
-					'schema_howto_prep_secs'   => 0,	// How-To Preparation Time (Secs).
-					'schema_howto_total_days'  => 0,	// How-To Total Time (Days).
-					'schema_howto_total_hours' => 0,	// How-To Total Time (Hours).
-					'schema_howto_total_mins'  => 0,	// How-To Total Time (Mins).
-					'schema_howto_total_secs'  => 0,	// How-To Total Time (Secs).
-					'schema_howto_yield'       => '',	// How-To Yield.
+					'schema_howto_yield'           => '',	// How-To Yield.
+					'schema_howto_prep_days'       => 0,	// How-To Preparation Time (Days).
+					'schema_howto_prep_hours'      => 0,	// How-To Preparation Time (Hours).
+					'schema_howto_prep_mins'       => 0,	// How-To Preparation Time (Mins).
+					'schema_howto_prep_secs'       => 0,	// How-To Preparation Time (Secs).
+					'schema_howto_total_days'      => 0,	// How-To Total Time (Days).
+					'schema_howto_total_hours'     => 0,	// How-To Total Time (Hours).
+					'schema_howto_total_mins'      => 0,	// How-To Total Time (Mins).
+					'schema_howto_total_secs'      => 0,	// How-To Total Time (Secs).
+					'schema_howto_supply_0'        => '',
+					'schema_howto_supply_1'        => '',
+					'schema_howto_supply_2'        => '',
+					'schema_howto_step_section_0'  => 0,
+					'schema_howto_step_section_1'  => 0,
+					'schema_howto_step_section_2'  => 0,
+					'schema_howto_step_0'          => '',
+					'schema_howto_step_1'          => '',
+					'schema_howto_step_2'          => '',
+					'schema_howto_step_text_0'     => '',
+					'schema_howto_step_text_1'     => '',
+					'schema_howto_step_text_2'     => '',
+					'schema_howto_step_image_id_0' => '',
+					'schema_howto_step_image_id_1' => '',
+					'schema_howto_step_image_id_2' => '',
 
 					/*
 					 * Schema Job Posting.
@@ -754,9 +791,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema WebPage.
 					 */
-					'schema_webpage_reviewed_last_date'     => '',			// Reviewed Last Date (Y-m-d).
-					'schema_webpage_reviewed_last_time'     => 'none',		// Reviewed Last Time (H:i).
-					'schema_webpage_reviewed_last_timezone' => $def_timezone,	// Reviewed Last Timezone.
+					'schema_webpage_reviewed_by_org_id_0'    => '',
+					'schema_webpage_reviewed_by_org_id_1'    => '',
+					'schema_webpage_reviewed_by_org_id_2'    => '',
+					'schema_webpage_reviewed_by_person_id_0' => '',
+					'schema_webpage_reviewed_by_person_id_1' => '',
+					'schema_webpage_reviewed_by_person_id_2' => '',
+					'schema_webpage_reviewed_last_date'      => '',			// Reviewed Last Date (Y-m-d).
+					'schema_webpage_reviewed_last_time'      => 'none',		// Reviewed Last Time (H:i).
+					'schema_webpage_reviewed_last_timezone'  => $def_timezone,	// Reviewed Last Timezone.
 				);
 
 				$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
