@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og[ 'schema:type:context' ],
 				$mt_og[ 'schema:type:name' ],
 				$mt_og[ 'schema:type:path' ],
-			) = self::get_schema_type_url_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
+			) = $this->get_schema_type_url_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
 
 			$page_type_ids   = array();
 			$page_type_added = array();	// Prevent duplicate schema types.
@@ -933,7 +933,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $schema_types as $type_id => $type_url ) {
 
-				list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
+				list( $type_context, $type_name, $type_path ) = $this->get_schema_type_url_parts( $type_url );
 
 				switch ( $this->p->options[ 'plugin_schema_types_select_format' ] ) {
 
@@ -1317,7 +1317,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_id = $default_id;
 			}
 
-			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
+			list( $type_context, $type_name, $type_path ) = $this->get_schema_type_url_parts_by_id( $type_id );
 
 			return $type_name;
 		}
@@ -1568,7 +1568,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Example array( 'https://schema.org', 'TechArticle', 'schema.org/TechArticle' ).
 		 */
-		public static function get_schema_type_url_parts( $type_url ) {
+		public function get_schema_type_url_parts( $type_url ) {
 
 			if ( preg_match( '/^(.+:\/\/.+)\/(.+)$/', $type_url, $match ) ) {
 
@@ -1578,6 +1578,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return array( null, null, null );
+		}
+
+		public function get_schema_type_url_parts_by_id( $type_id ) {
+			
+			$type_url = $this->get_schema_type_url( $type_id );
+			
+			return $this->get_schema_type_url_parts( $type_url );
 		}
 
 		public function get_children_css_class( $type_id, $class_prefix = 'hide_schema_type', $exclude_match = '' ) {
@@ -2216,9 +2223,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_url = $wpsso->schema->get_schema_type_url( $type_id );
 
-			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
-
 			if ( ! $wpsso->schema->allow_review( $type_id ) ) {
+
+				list( $type_context, $type_name, $type_path ) = $wpsso->schema->get_schema_type_url_parts( $type_url );
 
 				$notice_msg = sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google does not allow reviews for the Schema %2$s type</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet', $type_name ) . ' ';
 
@@ -3830,10 +3837,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$wpsso =& Wpsso::get_instance();
 
-			$ref_url   = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
-			$type_url  = $wpsso->schema->get_schema_type_url( $type_id );	// Returns false on empty string.
+			$ref_url = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
 
-			list( $type_context, $type_name, $type_path ) = self::get_schema_type_url_parts( $type_url );
+			list( $type_context, $type_name, $type_path ) = $wpsso->schema->get_schema_type_url_parts_by_id( $type_id );
 
 			foreach ( $prop_names as $prop_name ) {
 

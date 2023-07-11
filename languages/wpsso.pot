@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.15.2-dev.7\n"
+"Project-Id-Version: WPSSO Core 15.15.2-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1068,7 +1068,7 @@ msgctxt "lib file description"
 msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:103
+#: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:102
 #: lib/admin-head-suggest-options.php:111 lib/messages.php:1128
 msgctxt "lib file description"
 msgid "Advanced Settings"
@@ -1080,7 +1080,7 @@ msgctxt "lib file description"
 msgid "Plugin Add-ons"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:98 gettext/gettext-lib-config.php:105
+#: gettext/gettext-lib-config.php:98 gettext/gettext-lib-config.php:103
 #: lib/messages-info.php:77 lib/messages.php:426 lib/messages.php:437
 #: lib/messages.php:478
 msgctxt "lib file description"
@@ -1094,23 +1094,23 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:100
 msgctxt "lib file description"
-msgid "Setup Guide"
+msgid "Essential Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101
 msgctxt "lib file description"
-msgid "Essential Settings"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:102
-msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:106 lib/messages-info.php:262
+#: gettext/gettext-lib-config.php:105 lib/messages-info.php:262
 #: lib/messages.php:509
 msgctxt "lib file description"
 msgid "Tools and Actions"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:106
+msgctxt "lib file description"
+msgid "Setup Guide"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:107
@@ -11777,22 +11777,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2050
+#: lib/schema.php:2057
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2223
+#: lib/schema.php:2230
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2250
+#: lib/schema.php:2257
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3833
+#: lib/schema.php:3840
 msgid "checking schema properties"
 msgstr ""
 
