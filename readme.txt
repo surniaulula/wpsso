@@ -252,6 +252,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
+	* Added an error notice for identical Schema "sku" and "mpn" property values.
 	* Added new Schema CreativeWork options in the Document SSO metabox:
 		* Funder Org.
 		* Funder Person.
@@ -272,6 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a `$type_path` value to the array returned by `WpssoSchema->get_schema_type_url_parts()`.
 	* Added a new `WpssoPost->post_can_have_meta()` method to check for invalid or ignored post objects.
 	* Added a new `WpssoSchema->get_schema_type_url_parts_by_id()` method.
+	* Added a new `WpssoSchema::check_prop_value_sku_mpn()` method.
 	* Changed the `WpssoSchema::get_schema_type_url_parts()` static method to dynamic.
 	* Updated the `WpssoSchema->add_itemlist_data()` method to provide markup only for the Schema ItemList type, not its sub-types.
 	* Updated the `WpssoAbstractWpMeta->get_defaults()` method to include option numbered default options.
