@@ -421,10 +421,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			foreach ( array(
 				'event_online_url'          => 'location',
 				'event_location_id'         => 'location',
-				'event_organizer_org_id'    => 'organizer',
-				'event_organizer_person_id' => 'organizer',
 				'event_performer_org_id'    => 'performer',
 				'event_performer_person_id' => 'performer',
+				'event_organizer_org_id'    => 'organizer',
+				'event_organizer_person_id' => 'organizer',
+				'event_fund_org_id'         => 'funder',
+				'event_fund_person_id'      => 'funder',
 			) as $opt_pre => $prop_name ) {
 
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {

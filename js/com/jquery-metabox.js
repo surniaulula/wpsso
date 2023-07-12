@@ -221,7 +221,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		 */
 		var block_editor_content = jQuery( 'div.interface-interface-skeleton__content' );
 		var is_block_editor      = block_editor_content.length ? true : false;
-		var allow_scroll_to_hash = ( 'undefined' === window.allowScrollToHash ) ? true : window.allowScrollToHash;
+		var allow_scroll_to_hash = 'undefined' === typeof window.allowScrollToHash ? true : window.allowScrollToHash;
 
 		if ( ! is_block_editor && allow_scroll_to_hash ) {
 
