@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.16.0-b.4 (2023/07/12)**
+**Version 15.16.0-b.5 (2023/07/12)**
 
 * **New Features**
 	* Added support for new Schema Organization type properties:
@@ -267,16 +267,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Minor code optimization and standardization:
-		* Replaced `{get|update|delete}_{comment|post|term|user}_meta()` functions by `{get|update|delete}_metadata()`.
-		* Refactored the `WpssoAbstractWpMeta::get_mod_meta()` method.
-	* Changed the `WpssoSchema::get_schema_type_url_parts()` static method to dynamic.
+	* Added an `$event_args` to Organization and Place select options.
 	* Added a `$type_id` argument to the `WpssoSchema::check_required_props()` method.
 	* Added a `$type_path` value to the array returned by `WpssoSchema->get_schema_type_url_parts()`.
 	* Added a new `WpssoPost->post_can_have_meta()` method to check for invalid or ignored post objects.
 	* Added a new `WpssoSchema->get_schema_type_url_parts_by_id()` method.
+	* Changed the `WpssoSchema::get_schema_type_url_parts()` static method to dynamic.
 	* Updated the `WpssoSchema->add_itemlist_data()` method to provide markup only for the Schema ItemList type, not its sub-types.
 	* Updated the `WpssoAbstractWpMeta->get_defaults()` method to include option numbered default options.
+	* Replaced `{get|update|delete}_{comment|post|term|user}_meta()` functions by `{get|update|delete}_metadata()`.
+	* Refactored the `WpssoAbstractWpMeta::get_mod_meta()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -816,7 +816,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.16.0-b.4 =
+= 15.16.0-b.5 =
 
 (2023/07/12) Added support for new Schema Organization and NewsMediaOrganization type properties. Added an error notice for a empty Schema ItemList itemListElement property.
 
