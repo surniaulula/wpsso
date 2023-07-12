@@ -252,6 +252,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
+	* Added new Schema CreativeWork options in the Document SSO metabox:
+		* Funder Org.
+		* Funder Person.
+	* Added new Schema Event options in the Document SSO metabox:
+		* Event Funder Org.
+		* Event Funder Person.
+	* Added new default Schema CreativeWork options in the Advanced settings page:
+		* Default Funder Org.
+		* Default Funder Person.
+	* Added new default Schema Event options in the Advanced settings page:
+		* Default Event Funder Org.
+		* Default Event Funder Person.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
