@@ -1495,8 +1495,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} else {
 
 				$table_rows = array( '<td><p class="status-msg">' .
-					__( 'Missing page ID, metabox ID, and/or tab key to create the metabox table.', 'wpsso' ) .
-						'</p></td>' );
+					__( 'Missing page ID, metabox ID, and/or tab key to create the metabox table.', 'wpsso' ) . '</p></td>' );
 
 				$this->p->util->metabox->do_table( $table_rows );
 			}
@@ -2484,15 +2483,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'site_pub_schema_type' ] = '' .
 				$this->form->get_th_html( _x( 'Site Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
-				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
+				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ],
+					$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
+						$selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
 			/*
 			 * Publisher Type Person.
 			 */
 			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
 				$this->form->get_th_html( _x( 'Site Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
-				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
+				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners,
+					$css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/*
 			 * Publisher Type Organization.

@@ -3157,11 +3157,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $added_count;
 		}
 
-		public static function add_person_names_data( &$json_data, $prop_name, array $assoc, $key_name = '' ) {
+		public static function add_person_names_data( &$json_data, $prop_name, array $assoc, $assoc_key = '' ) {
 
-			if ( ! empty( $prop_name ) && ! empty( $key_name ) ) {
+			if ( ! empty( $prop_name ) && ! empty( $assoc_key ) ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $key_name .'_[0-9]+$/', $assoc ) as $value ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $assoc_key .'_[0-9]+$/', $assoc ) as $value ) {
 
 					if ( ! empty( $value ) ) {
 
@@ -3479,7 +3479,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Example $names array:
+		 * Example $prop_names array:
 		 *
 		 * array(
 		 * 	'prepTime'  => 'schema_recipe_prep',
@@ -3487,16 +3487,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'totalTime' => 'schema_recipe_total',
 		 * );
 		 */
-		public static function add_data_time_from_assoc( array &$json_data, array $assoc, array $names ) {
+		public static function add_data_time_from_assoc( array &$json_data, array $assoc, array $prop_names ) {
 
-			foreach ( $names as $prop_name => $key_name ) {
+			foreach ( $prop_names as $prop_name => $assoc_key ) {
 
 				$t = array();
 
 				foreach ( array( 'days', 'hours', 'mins', 'secs' ) as $time_incr ) {
 
-					$t[ $time_incr ] = empty( $assoc[ $key_name . '_' . $time_incr ] ) ?	// 0 or empty string.
-						0 : (int) $assoc[ $key_name . '_' . $time_incr ];		// Define as 0 by default.
+					$t[ $time_incr ] = empty( $assoc[ $assoc_key . '_' . $time_incr ] ) ?	// 0 or empty string.
+						0 : (int) $assoc[ $assoc_key . '_' . $time_incr ];		// Define as 0 by default.
 				}
 
 				if ( $t[ 'days' ] . $t[ 'hours' ] . $t[ 'mins' ] . $t[ 'secs' ] > 0 ) {
@@ -3563,9 +3563,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Examples $names array:
+		 * Examples $key_map array:
 		 *
-		 * $names = array(
+		 * $key_map = array(
 		 * 	'length'       => 'product:length:value',
 		 * 	'width'        => 'product:width:value',
 		 * 	'height'       => 'product:height:value',
@@ -3573,12 +3573,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'fluid_volume' => 'product:fluid_volume:value',
 		 * );
 		 *
-		 * $names = array(
+		 * $key_map = array(
 		 *	'width_px'  => 'og:image:width',
 		 *	'height_px' => 'og:image:height',
 		 * );
 		 */
-		public static function add_data_unit_from_assoc( array &$json_data, array $assoc, array $names ) {
+		public static function add_data_unit_from_assoc( array &$json_data, array $assoc, array $key_map ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3589,12 +3589,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_units = WpssoConfig::get_schema_units();	// Uses a local cache.
 
-			foreach ( $names as $key => $key_name ) {
+			foreach ( $key_map as $unit_key => $assoc_key ) {
 
 				/*
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
-				if ( empty( $schema_units[ $key ] ) || ! is_array( $schema_units[ $key ] ) ) {
+				if ( empty( $schema_units[ $unit_key ] ) || ! is_array( $schema_units[ $unit_key ] ) ) {
 
 					continue;
 				}
@@ -3602,12 +3602,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * Exclude empty string values.
 				 */
-				if ( isset( $assoc[ $key_name ] ) ) {
+				if ( isset( $assoc[ $assoc_key ] ) ) {
 
-					$assoc[ $key_name ] = trim( $assoc[ $key_name ] );	// Just in case.
+					$assoc[ $assoc_key ] = trim( $assoc[ $assoc_key ] );	// Just in case.
 				}
 
-				if ( ! isset( $assoc[ $key_name ] ) || '' === $assoc[ $key_name ] ) {
+				if ( ! isset( $assoc[ $assoc_key ] ) || '' === $assoc[ $assoc_key ] ) {
 
 					continue;
 				}
@@ -3625,13 +3625,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *		),
 				 *	),
 				 */
-				foreach ( $schema_units[ $key ] as $prop_name => $prop_data ) {
+				foreach ( $schema_units[ $unit_key ] as $prop_name => $prop_data ) {
 
-					$quant_id = 'qv-' . $key . '-' . $assoc[ $key_name ];	// Example '@id' = '#sso/qv-width-px-1200'.
+					$quant_id = 'qv-' . $unit_key . '-' . $assoc[ $assoc_key ];	// Example '@id' = '#sso/qv-width-px-1200'.
 
 					self::update_data_id( $prop_data, $quant_id, '/' );
 
-					$prop_data[ 'value' ] = $assoc[ $key_name ];
+					$prop_data[ 'value' ] = $assoc[ $assoc_key ];
 
 					$json_data[ $prop_name ][] = $prop_data;
 				}
@@ -3658,7 +3658,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *	) );
 		 *
 		 */
-		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
+		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $key_map, $overwrite = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3667,18 +3667,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$is_assoc = SucomUtil::is_assoc( $names );
+			$is_assoc = SucomUtil::is_assoc( $key_map );
 
 			$prop_added = 0;
 
-			foreach ( $names as $prop_name => $key_name ) {
+			foreach ( $key_map as $prop_name => $assoc_key ) {
 
 				if ( ! $is_assoc ) {
 
-					$prop_name = $key_name;
+					$prop_name = $assoc_key;
 				}
 
-				if ( self::is_valid_key( $assoc, $key_name ) ) {	// Not null, an empty string, or 'none'.
+				if ( self::is_valid_key( $assoc, $assoc_key ) ) {	// Not null, an empty string, or 'none'.
 
 					if ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
 
@@ -3691,18 +3691,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					}
 
-					if ( is_string( $assoc[ $key_name ] ) && false !== filter_var( $assoc[ $key_name ], FILTER_VALIDATE_URL ) ) {
+					if ( is_string( $assoc[ $assoc_key ] ) && false !== filter_var( $assoc[ $assoc_key ], FILTER_VALIDATE_URL ) ) {
 
-						$json_data[ $prop_name ] = SucomUtil::esc_url_encode( $assoc[ $key_name ] );
+						$json_data[ $prop_name ] = SucomUtil::esc_url_encode( $assoc[ $assoc_key ] );
 
 					} else {
 
-						$json_data[ $prop_name ] = $assoc[ $key_name ];
+						$json_data[ $prop_name ] = $assoc[ $assoc_key ];
 					}
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
+						$wpsso->debug->log( 'assigned ' . $assoc_key . ' value to itemprop ' .
 							$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
 					}
 
@@ -3766,13 +3766,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Since WPSSO Core v7.7.0.
 		 */
-		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $names, $overwrite = true ) {
+		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $key_map, $overwrite = true ) {
 
-			$prop_added = self::add_data_itemprop_from_assoc( $json_data, $assoc, $names, $overwrite );
+			$prop_added = self::add_data_itemprop_from_assoc( $json_data, $assoc, $key_map, $overwrite );
 
-			foreach ( $names as $prop_name => $key_name ) {
+			foreach ( $key_map as $prop_name => $assoc_key ) {
 
-				unset( $assoc[ $key_name ] );
+				unset( $assoc[ $assoc_key ] );
 			}
 
 			return $prop_added;
@@ -3793,7 +3793,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *		'priceValidUntil' => 'product:sale_price_dates:end',
 		 *	) );
 		 */
-		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
+		public static function get_data_itemprop_from_assoc( array $assoc, array $key_map, $exclude = array( '' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3804,17 +3804,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_data = array();
 
-			foreach ( $names as $prop_name => $key_name ) {
+			foreach ( $key_map as $prop_name => $assoc_key ) {
 
-				if ( isset( $assoc[ $key_name ] ) ) {
+				if ( isset( $assoc[ $assoc_key ] ) ) {
 
-					if ( ! in_array( $assoc[ $key_name ], $exclude, $strict = true ) ) {
+					if ( ! in_array( $assoc[ $assoc_key ], $exclude, $strict = true ) ) {
 
-						$json_data[ $prop_name ] = $assoc[ $key_name ];
+						$json_data[ $prop_name ] = $assoc[ $assoc_key ];
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' .
+							$wpsso->debug->log( 'assigned ' . $assoc_key . ' value to itemprop ' .
 								$prop_name . ' = ' . print_r( $json_data[ $prop_name ], true ) );
 						}
 					}

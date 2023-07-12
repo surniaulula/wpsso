@@ -219,15 +219,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$table_rows[ 'site_org_place_id' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
 								$css_class = '', $css_id = 'site_org_place_id' ) .
-							'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'wide', $css_id = '',
-								$is_assoc = true ) . '</td>';
+							'<td>' . $this->form->get_select( 'site_org_place_id', $place_names,
+								$css_class = 'wide', $css_id = '', $is_assoc = true ) . '</td>';
 
 						$table_rows[ 'site_org_schema_type' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
 								$css_class = '', $css_id = 'site_org_schema_type' ) .
-							'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
-								$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-									$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
+							'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select,
+								$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
+									$selected = false, $event_names = array( 'on_focus_load_json' ),
+										$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
 					}
 
 					break;

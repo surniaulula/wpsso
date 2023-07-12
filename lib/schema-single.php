@@ -2280,7 +2280,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema length, width, height, weight properties.
 			 */
-			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, $names = array(
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
 				'length'       => 'product:length:value',
 				'width'        => 'product:width:value',
 				'height'       => 'product:height:value',

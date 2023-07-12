@@ -36,10 +36,10 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_schema_rows'               => 4,
 				'metabox_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
-				'metabox_sso_edit_schema_article_rows'       => 5,	// Schema CreativeWork > Article.
+				'metabox_sso_edit_schema_article_rows'       => 6,	// Schema CreativeWork > Article.
 				'metabox_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
-				'metabox_sso_edit_schema_howto_rows'         => 5,	// Schema CreativeWork > HowTo.
-				'metabox_sso_edit_schema_recipe_rows'        => 5,	// Schema CreativeWork > HowTo > Recipe.
+				'metabox_sso_edit_schema_howto_rows'         => 6,	// Schema CreativeWork > HowTo.
+				'metabox_sso_edit_schema_recipe_rows'        => 6,	// Schema CreativeWork > HowTo > Recipe.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
@@ -50,15 +50,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				return $table_rows;
 			}
 
-			$limits               = WpssoConfig::get_input_limits();	// Uses a local cache.
-			$type_row_class       = WpssoSchema::get_schema_type_row_class( 'schema_type' );
 			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
 			$addl_type_url_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 );
 			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
-
-			$names = array(
+			$schema_tr_class      = WpssoSchema::get_schema_type_row_class( 'schema_type' );
+			$limits               = WpssoConfig::get_input_limits();	// Uses a local cache.
+			$select_names         = array(
 				'org'          => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
 				'person'       => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
 				'place'        => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
@@ -73,19 +72,19 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
 				),
 				'info_schema_item_list' => array(
-					'tr_class'  => $type_row_class[ 'item.list' ],
+					'tr_class'  => $schema_tr_class[ 'item.list' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-item-list' ) . '</td>',
 				),
 				'info_schema_question' => array(
-					'tr_class'  => $type_row_class[ 'question' ],
+					'tr_class'  => $schema_tr_class[ 'question' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-question' ) . '</td>',
 				),
 				'info_schema_webpage_faq' => array(
-					'tr_class'  => $type_row_class[ 'webpage.faq' ],
+					'tr_class'  => $schema_tr_class[ 'webpage.faq' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-webpage-faq' ) . '</td>',
 				),
 				'info_schema_webpae_qa' => array(
-					'tr_class'  => $type_row_class[ 'webpage.qa' ],
+					'tr_class'  => $schema_tr_class[ 'webpage.qa' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-webpage-qa' ) . '</td>',
 				),
 				'schema_title' => array(
@@ -130,87 +129,87 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			/*
 			 * Schema CreativeWork.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > Article.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > WebPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > Book.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > HowTo.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > HowTo > Recipe.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > Movie.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > Review.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > Software Application.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema CreativeWork > WebPage > QAPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $type_row_class );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Event.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Intangible > JobPosting.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Organization.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Person.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Place.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			/*
 			 * Schema Product.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $type_row_class, $names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
 
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
+		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$limits                  = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
@@ -222,13 +221,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_creative_work' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Creative Work Information', 'metabox title', 'wpsso' )
 				),
 				'schema_headline' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Headline', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_headline',
@@ -236,21 +235,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$limits[ 'schema_headline' ], $def_schema_headline, $is_disabled = false, $dep_id = 'schema_title' ),
 				),
 				'schema_text' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Full Text', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_text',
 					'content'  => $form->get_textarea( 'schema_text', $css_class = 'full_text', $css_id = '', $max_len = 0, $def_schema_text ),
 				),
 				'schema_keywords_csv' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Keywords', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_keywords_csv',
 					'content'  => $form->get_input( 'schema_keywords_csv', $css_class = 'wide', $css_id = '', $max_len = 0, $def_schema_keywords_csv ),
 				),
 				'schema_lang' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Language', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_lang',
@@ -258,7 +257,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$is_assoc = false, $schema_lang_disabled ),
 				),
 				'schema_family_friendly' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Family Friendly', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_family_friendly',
@@ -266,75 +265,81 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$this->p->cf[ 'form' ][ 'yes_no' ], $css_class = 'yes-no', $css_id = '', $is_assoc = true ),
 				),
 				'schema_copyright_year' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Copyright Year', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_copyright_year',
 					'content'  => $form->get_input( 'schema_copyright_year', $css_class = 'year', $css_id = '', $max_len = 0, $holder = true ),
 				),
 				'schema_license_url' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'License URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_license_url',
 					'content'  => $form->get_input( 'schema_license_url', $css_class = 'wide' ),
 				),
 				'schema_pub_org_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
-					'content'  => $form->get_select( 'schema_pub_org_id', $names[ 'org' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_select( 'schema_pub_org_id', $select_names[ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
 				'schema_pub_person_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_person_id',
-					'content'  => $form->get_select( 'schema_pub_person_id', $names[ 'person' ],
+					'content'  => $form->get_select( 'schema_pub_person_id', $select_names[ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_prov_org_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
-					'content'  => $form->get_select( 'schema_prov_org_id', $names[ 'org' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_select( 'schema_prov_org_id', $select_names[ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
 				'schema_prov_person_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_person_id',
-					'content'  => $form->get_select( 'schema_prov_person_id', $names[ 'person' ],
+					'content'  => $form->get_select( 'schema_prov_person_id', $select_names[ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_fund_org_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_fund_org_id',
-					'content'  => $form->get_select( 'schema_fund_org_id', $names[ 'org' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_select( 'schema_fund_org_id', $select_names[ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
 				'schema_fund_person_id' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_fund_person_id',
-					'content'  => $form->get_select( 'schema_fund_person_id', $names[ 'person' ],
+					'content'  => $form->get_select( 'schema_fund_person_id', $select_names[ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_ispartof_url' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_ispartof_url',
@@ -352,7 +357,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
 				 */
 				'schema_citation' => array(
-					'tr_class' => $type_row_class[ 'creative.work' ],
+					'tr_class' => $schema_tr_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Reference Citations', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_citation',
@@ -364,20 +369,20 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_metabox_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+		public function filter_metabox_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$article_sections = $this->p->util->get_article_sections();
 			$def_reading_mins = $this->p->page->get_reading_mins( $mod );
 
 			$form_rows = array(
 				'subsection_schema_article' => array(
-					'tr_class' => $type_row_class[ 'article' ],
+					'tr_class' => $schema_tr_class[ 'article' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
 				),
 				'schema_article_section' => array(
-					'tr_class' => $type_row_class[ 'article' ],
+					'tr_class' => $schema_tr_class[ 'article' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_article_section',
@@ -393,7 +398,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						),
 				),
 				'schema_reading_mins' => array(
-					'tr_class' => $type_row_class[ 'article' ],
+					'tr_class' => $schema_tr_class[ 'article' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_reading_mins',
@@ -409,37 +414,39 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Since WPSSO Core v13.10.0.
 		 */
-		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
+		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
 
 			$form_rows = array(
 				'subsection_schema_webpage' => array(
-					'tr_class' => $type_row_class[ 'webpage' ],
+					'tr_class' => $schema_tr_class[ 'webpage' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'WebPage Information', 'metabox title', 'wpsso' )
 				),
 				'schema_webpage_reviewed_by_org_id' => array(
-					'tr_class' => $type_row_class[ 'webpage' ],
+					'tr_class' => $schema_tr_class[ 'webpage' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed By Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_org_id',
-					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $names[ 'org' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1 ),
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $select_names[ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
+							$is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
 				'schema_webpage_reviewed_by_person_id' => array(
-					'tr_class' => $type_row_class[ 'webpage' ],
+					'tr_class' => $schema_tr_class[ 'webpage' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed By Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_person_id',
-					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $names[ 'person' ],
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $select_names[ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
 							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
 				),
 				'schema_webpage_reviewed_last' => array(
-					'tr_class' => $type_row_class[ 'webpage' ],
+					'tr_class' => $schema_tr_class[ 'webpage' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed Last', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_last',
@@ -451,7 +458,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		}
 
 
-		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$howto_steps_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
 			$howto_supplies_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
@@ -459,34 +466,34 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			$form_rows = array(
 				'subsection_schema_howto' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'How-To Information', 'metabox title', 'wpsso' )
 				),
 				'schema_howto_yield' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'How-To Makes', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_yield',
 					'content'  => $form->get_input( 'schema_howto_yield', $css_class = 'wide' ),
 				),
 				'schema_howto_prep_time' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_prep_time',
 					'content'  => $form->get_input_time_dhms( 'schema_howto_prep' ),
 				),
 				'schema_howto_total_time' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_total_time',
 					'content'  => $form->get_input_time_dhms( 'schema_howto_total' ),
 				),
 				'schema_howto_supplies' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'How-To Supplies', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_supplies',
@@ -494,7 +501,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$howto_supplies_max, $show_first = 5 ),
 				),
 				'schema_howto_tools' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'How-To Tools', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_tools',
@@ -502,7 +509,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$howto_tools_max, $show_first = 5 ),
 				),
 				'schema_howto_steps' => array(
-					'tr_class' => $type_row_class[ 'howto' ],
+					'tr_class' => $schema_tr_class[ 'howto' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'How-To Steps', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_steps',
@@ -536,69 +543,69 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $type_row_class ) {
+		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$recipe_ingr_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 );
 			$recipe_inst_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 );
 
 			$form_rows = array(
 				'subsection_schema_recipe' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Recipe Information', 'metabox title', 'wpsso' )
 				),
 				'schema_recipe_cuisine' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Recipe Cuisine', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cuisine',
 					'content'  => $form->get_input( 'schema_recipe_cuisine', $css_class = 'wide' ),
 				),
 				'schema_recipe_course' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Recipe Course', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_course',
 					'content'  => $form->get_input( 'schema_recipe_course', $css_class = 'wide' ),
 				),
 				'schema_recipe_yield' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Recipe Makes', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_yield',
 					'content'  => $form->get_input( 'schema_recipe_yield', $css_class = 'wide' ),
 				),
 				'schema_recipe_cook_method' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Cooking Method', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cook_method',
 					'content'  => $form->get_input( 'schema_recipe_cook_method', $css_class = 'wide' ),
 				),
 				'schema_recipe_prep_time' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_prep_time',
 					'content'  => $form->get_input_time_dhms( 'schema_recipe_prep' ),
 				),
 				'schema_recipe_cook_time' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Cooking Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cook_time',
 					'content'  => $form->get_input_time_dhms( 'schema_recipe_cook' ),
 				),
 				'schema_recipe_total_time' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_total_time',
 					'content'  => $form->get_input_time_dhms( 'schema_recipe_total' ),
 				),
 				'schema_recipe_ingredients' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_ingredients',
@@ -606,7 +613,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$recipe_ingr_max, $show_first = 5 ),
 				),
 				'schema_recipe_instructions' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Recipe Instructions', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_instructions',
@@ -640,20 +647,20 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				 * Recipe Nutrition Information.
 				 */
 				'subsection_schema_recipe_nutrition' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Recipe Nutrition Information', 'metabox title', 'wpsso' )
 				),
 				'schema_recipe_nutri_serv' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Serving Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_serv',
 					'content'  => $form->get_input( 'schema_recipe_nutri_serv', $css_class = 'wide' ),
 				),
 				'schema_recipe_nutri_cal' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Calories', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_cal',
@@ -661,7 +668,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					_x( 'calories', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_prot' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Protein', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_prot',
@@ -669,7 +676,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of protein', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_fib' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Fiber', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_fib',
@@ -677,7 +684,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of fiber', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_carb' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Carbohydrates', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_carb',
@@ -685,7 +692,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of carbohydrates', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sugar' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Sugar', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sugar',
@@ -693,7 +700,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of sugar', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sod' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Sodium', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sod',
@@ -701,7 +708,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'milligrams of sodium', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_fat' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_fat',
@@ -709,7 +716,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_sat_fat' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Saturated Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_sat_fat',
@@ -717,7 +724,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of saturated fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_unsat_fat' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Unsaturated Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_unsat_fat',
@@ -725,7 +732,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of unsaturated fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_trans_fat' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Trans Fat', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_trans_fat',
@@ -733,7 +740,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						_x( 'grams of trans fat', 'option comment', 'wpsso' ),
 				),
 				'schema_recipe_nutri_chol' => array(
-					'tr_class' => $type_row_class[ 'recipe' ],
+					'tr_class' => $schema_tr_class[ 'recipe' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Cholesterol', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_chol',

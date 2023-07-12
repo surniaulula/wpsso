@@ -14,8 +14,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 	class WpssoSubmenuAdvanced extends WpssoAdmin {
 
-		private $pp = null;
-
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -29,13 +27,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
-
-			/*
-			 * Since WPSSO Core v14.4.0.
-			 */
-			$pkg_info = $this->p->util->get_pkg_info();     // Uses a local cache.
-
-			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
 		}
 
 		/*
@@ -44,6 +35,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		protected function add_meta_boxes() {
 
 			$this->maybe_show_language_notice();
+
+			$select_names = array(
+				'org'          => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
+				'person'       => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
+				'place'        => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
+				'place_custom' => $this->p->util->get_form_cache( 'place_names_custom', $add_none = true ),
+				'mrp'          => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
+			);
 
 			foreach ( array(
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
@@ -60,8 +59,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$metabox_context = 'normal';
 				$metabox_prio    = 'default';
 				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'    => $this->menu_id,
-					'metabox_id' => $metabox_id,
+					'page_id'      => $this->menu_id,
+					'metabox_id'   => $metabox_id,
+					'select_names' => $select_names,
 				);
 
 				if ( method_exists( $this, 'show_metabox_' . $metabox_id ) ) {
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			}
 		}
 
-		public function show_metabox_plugin() {
+		public function show_metabox_plugin( $obj, $mb ) {
 
 			$metabox_id = 'plugin';
 			$table_rows = array();
@@ -97,13 +97,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_services() {
+		public function show_metabox_services( $obj, $mb ) {
 
 			$metabox_id = 'services';
 			$table_rows = array();
@@ -120,13 +120,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_doc_types() {
+		public function show_metabox_doc_types( $obj, $mb ) {
 
 			$metabox_id = 'doc_types';
 			$table_rows = array();
@@ -142,13 +142,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_schema_props() {
+		public function show_metabox_schema_props( $obj, $mb ) {
 
 			$metabox_id = 'schema_props';
 
@@ -177,14 +177,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 					$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-					$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+					$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 				}
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_contact_fields() {
+		public function show_metabox_contact_fields( $obj, $mb ) {
 
 			/*
 			 * Translate contact method field labels for current language.
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_metadata() {
+		public function show_metabox_metadata( $obj, $mb ) {
 
 			$metabox_id = 'metadata';
 			$table_rows = array();
@@ -230,13 +230,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_head_tags() {
+		public function show_metabox_head_tags( $obj, $mb ) {
 
 			$metabox_id = 'head_tags';
 			$table_rows = array();
@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false, $this->pp );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
 			}
 
 			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
