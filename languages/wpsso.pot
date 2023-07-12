@@ -11842,11 +11842,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2038
+#: lib/schema-single.php:2040
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2161
+#: lib/schema-single.php:2163
 msgid "adding schema product"
 msgstr ""
 
@@ -11869,8 +11869,20 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3848
+#: lib/schema.php:3850
 msgid "checking schema properties"
+msgstr ""
+
+#: lib/schema.php:4209
+msgid ""
+"The Stock Keeping Unit (SKU) and the Manufacturer Part Number (MPN) are both "
+"\"%s\" and these Schema property values cannot be identical."
+msgstr ""
+
+#: lib/schema.php:4211
+msgid ""
+"Google requires that the Manufacturer Part Number (MPN) be a globally unique "
+"part number provided by the manufacturer."
 msgstr ""
 
 #: lib/script.php:457

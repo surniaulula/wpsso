@@ -411,12 +411,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( empty( $info[ 'type_name' ] ) ) {
 
 							$text .= sprintf( __( 'Google requires at least one %1$s property for this Schema type.',
-								'wpsso' ), $prop_name );
+								'wpsso' ), $prop_name ) . ' ';
 
 						} else {
 
 							$text .= sprintf( __( 'Google requires at least one %1$s property for the Schema %2$s type.',
-								'wpsso' ), $prop_name, $info[ 'type_name' ] );
+								'wpsso' ), $prop_name, $info[ 'type_name' ] ) . ' ';
 						}
 
 						break;
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page but the plugin has not been installed yet.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
 
-						$text .= sprintf( __( 'You can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl );
+						$text .= sprintf( __( 'You can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
 
 						break;
 
@@ -439,7 +439,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page but the %3$s version has not been installed yet.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
 
-						$text .= sprintf( __( 'Don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl );
+						$text .= sprintf( __( 'Don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ';
 
 						break;
 
@@ -462,7 +462,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
 
-						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
+						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] ) . ' ';
 
 						break;
 
@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'You can activate the %1$s add-on from <a href="%2$s">the WordPress Plugins page</a>.', 'wpsso' ), $um_info_name, $search_url ) . ' ';
 						}
 
-						$text .= sprintf( __( 'Once the %1$s add-on is active, %2$s updates may be available for the %3$s plugin.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl, $this->p_name_pro );
+						$text .= sprintf( __( 'Once the %1$s add-on is active, %2$s updates may be available for the %3$s plugin.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl, $this->p_name_pro ) . ' ';
 
 						break;
 
@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $this->p_name_pro, $info[ 'version' ], $um_info_name, $um_rec_version, $um_version ) . ' ';
 
 						// translators: %1$s is the WPSSO Update Manager add-on name.
-						$text .= sprintf( __( 'If an update for the %1$s add-on is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info_name, $wp_updates_page_link, $um_check_updates, $tools_page_link );
+						$text .= sprintf( __( 'If an update for the %1$s add-on is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info_name, $wp_updates_page_link, $um_check_updates, $tools_page_link ) . ' ';
 
 						break;
 
