@@ -234,16 +234,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.16.0-b.3 (2023/07/11)**
+**Version 15.16.0-b.4 (2023/07/12)**
 
 * **New Features**
-	* Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab:
-		* Publishing Principles URL (localized).
-		* Corrections Policy URL (localized).
-		* Diversity URL (localized).
-		* Ethics Policy URL (localized).
-		* Feedback Policy URL (localized).
-		* Unnamed Sources Policy URL (localized).
+	* Added support for new Schema Organization type properties:
+		* actionableFeedbackPolicy
+		* correctionsPolicy
+		* diversityPolicy
+		* ethicsPolicy
+		* publishingPrinciples
+		* unnamedSourcesPolicy
+	* Added support for new Schema NewsMediaOrganization type properties:
+		* masthead
+		* missionCoveragePrioritiesPolicy
+		* noBylinesPolicy
+		* unnamedSourcesPolicy
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
@@ -799,9 +804,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.16.0-b.3 =
+= 15.16.0-b.4 =
 
-(2023/07/11) Added new Organization options under the SSO &gt; General &gt; General Settings &gt; Site Information tab.
+(2023/07/12) Added support for new Schema Organization and NewsMediaOrganization type properties. Added an error notice for a empty Schema ItemList itemListElement property.
 
 = 15.15.1 =
 
