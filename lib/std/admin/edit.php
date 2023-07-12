@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'book' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Book Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Book Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_book' => array(
 					'tr_class'  => $type_row_class[ 'book' ],
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'book.audio' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Audiobook Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Audiobook Information', 'metabox title', 'wpsso' )
 				),
 				'schema_book_audio_duration_time' => array(
 					'tr_class' => $type_row_class[ 'book.audio' ],
@@ -235,7 +235,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'movie' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Movie Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Movie Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_movie' => array(
 					'tr_class'  => $type_row_class[ 'movie' ],
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'review' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Review Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Review Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_review' => array(
 					'tr_class'  => $type_row_class[ 'review' ],
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'review.claim' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Claim Review Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Claim Review Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_claim_reviewed' => array(
 					'tr_class' => $type_row_class[ 'review.claim' ],
@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'software.application' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Software App Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Software App Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_software_app' => array(
 					'tr_class'  => $type_row_class[ 'software.application' ],
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'webpage.qa' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema QA Page Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'QA Page Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_qa' => array(
 					'tr_class'  => $type_row_class[ 'webpage.qa' ],
@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'event' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Event Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Event Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_event' => array(
 					'tr_class'  => $type_row_class[ 'event' ],
@@ -741,7 +741,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'job.posting' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Job Posting Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Job Posting Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_job_posting' => array(
 					'tr_class'  => $type_row_class[ 'job.posting' ],
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'organization' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Organization Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Organization Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_organization' => array(
 					'tr_class'  => $type_row_class[ 'organization' ],
@@ -848,7 +848,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'person' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Person Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Person Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_person' => array(
 					'tr_class'  => $type_row_class[ 'person' ],
@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'place' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Place Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Place Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_place' => array(
 					'tr_class'  => $type_row_class[ 'place' ],
@@ -897,11 +897,11 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $type_row_class, $names ) {
 
-			$currencies         = SucomUtil::get_currency_abbrev();
-			$dimension_units    = WpssoUtilUnits::get_dimension_units();
-			$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
-			$product_categories = $this->p->util->get_google_product_categories();
-			$weight_units       = WpssoUtilUnits::get_weight_units();
+			$currencies       = SucomUtil::get_currency_abbrev();
+			$dimension_units  = WpssoUtilUnits::get_dimension_units();
+			$fl_volume_units  = WpssoUtilUnits::get_fluid_volume_units();
+			$weight_units     = WpssoUtilUnits::get_weight_units();
+			$google_prod_cats = $this->p->util->get_google_product_categories();
 
 			/*
 			 * Note that unlike most schema option names, product options start with 'product_' and not 'schema_'.
@@ -911,7 +911,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $type_row_class[ 'product' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Product Information (Main Product)', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Product Information (Main Product)', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_schema_product' => array(
 					'tr_class'  => $type_row_class[ 'product' ],
@@ -935,7 +935,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
-					'content'  => $form->get_no_select( 'product_category', $product_categories,
+					'content'  => $form->get_no_select( 'product_category', $google_prod_cats,
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_brand' => array(
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_fluid_volume_value',
 					'content'  => $form->get_no_input( 'product_fluid_volume_value', $css_class = 'unit_value', $css_id = '', $holder = true ) . ' ' .
-						$form->get_no_select( 'product_fluid_volume_units', $fluid_volume_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
+						$form->get_no_select( 'product_fluid_volume_units', $fl_volume_units, $css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ),
 				),
 				'schema_product_shipping_length_value' => array(
 					'tr_class' => $type_row_class[ 'product' ],

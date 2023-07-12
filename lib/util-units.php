@@ -39,9 +39,9 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 			$to   = 'lbs' === $to   ? 'lb' : $to;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
 			$from = 'lbs' === $from ? 'lb' : $from;	// WooCommerce uses 'lbs' and WPSSO uses 'lb'.
 
-			$dimension_units    = self::get_dimension_units();	// Uses a local cache.
-			$fluid_volume_units = self::get_fluid_volume_units();	// Uses a local cache.
-			$weight_units       = self::get_weight_units();		// Uses a local cache.
+			$dimension_units = self::get_dimension_units();		// Uses a local cache.
+			$fl_volume_units = self::get_fluid_volume_units();	// Uses a local cache.
+			$weight_units    = self::get_weight_units();		// Uses a local cache.
 
 			if ( isset( $dimension_units[ $to ] ) ) {
 
@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoUtilUnits' ) ) {
 					return self::get_dimension_convert( $value, $to, $from );
 				}
 
-			} elseif ( isset( $fluid_volume_units[ $to ] ) ) {
+			} elseif ( isset( $fl_volume_units[ $to ] ) ) {
 
 				if ( '' === $from || isset( $fluid_value_units[ $from ] ) ) {
 

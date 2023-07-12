@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.16.0-b.3',	// Plugin version.
-					'opt_version' => '974',		// Increment when changing default option values.
+					'version'     => '15.16.0-b.4',	// Plugin version.
+					'opt_version' => '975',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1424,12 +1424,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_org_banner_url'             => '',		// Organization Banner URL (localized).
 					'site_org_place_id'               => 'none',		// Organization Location.
 					'site_org_schema_type'            => 'organization',	// Organization Schema Type.
-					'site_org_pub_principles_url'     => '',		// Publishing Principles URL (localized).
-					'site_org_corrections_policy_url' => '',		// Corrections Policy URL (localized).
-					'site_org_diversity_policy_url'   => '',		// Diversity URL (localized).
-					'site_org_ethics_policy_url'      => '',		// Ethics Policy URL (localized).
-					'site_org_feedback_policy_url'    => '',		// Feedback Policy URL (localized).
-					'site_org_sources_policy_url'     => '',		// Unnamed Sources Policy URL (localized).
 
 					/*
 					 * Facebook options.

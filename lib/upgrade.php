@@ -574,6 +574,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				947 => array(
 					'plugin_clear_short_urls' => '',
 				),
+				974 => array(
+					'site_org_pub_principles_url'     => '',
+					'site_org_corrections_policy_url' => '',
+					'site_org_diversity_policy_url'   => '',
+					'site_org_ethics_policy_url'      => '',
+					'site_org_feedback_policy_url'    => '',
+					'site_org_sources_policy_url'     => '',
+				),
 			),
 		);
 

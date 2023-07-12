@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'creative.work' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Creative Work Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Creative Work Information', 'metabox title', 'wpsso' )
 				),
 				'schema_headline' => array(
 					'tr_class' => $type_row_class[ 'creative.work' ],
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'article' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Article Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
 				),
 				'schema_article_section' => array(
 					'tr_class' => $type_row_class[ 'article' ],
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'webpage' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema WebPage Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'WebPage Information', 'metabox title', 'wpsso' )
 				),
 				'schema_webpage_reviewed_by_org_id' => array(
 					'tr_class' => $type_row_class[ 'webpage' ],
@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'howto' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema How-To Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'How-To Information', 'metabox title', 'wpsso' )
 				),
 				'schema_howto_yield' => array(
 					'tr_class' => $type_row_class[ 'howto' ],
@@ -528,7 +528,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'recipe' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Recipe Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Recipe Information', 'metabox title', 'wpsso' )
 				),
 				'schema_recipe_cuisine' => array(
 					'tr_class' => $type_row_class[ 'recipe' ],
@@ -625,7 +625,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $type_row_class[ 'recipe' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Recipe Nutrition Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Recipe Nutrition Information', 'metabox title', 'wpsso' )
 				),
 				'schema_recipe_nutri_serv' => array(
 					'tr_class' => $type_row_class[ 'recipe' ],

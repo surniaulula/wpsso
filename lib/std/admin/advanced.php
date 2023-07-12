@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_facebook_rows'         => 3,	// HTML Tags > Facebook tab.
 				'head_tags_open_graph_rows'       => 3,	// HTML Tags > Open Graph tab.
 				'head_tags_twitter_rows'          => 3,	// HTML Tags > Twitter tab.
-				'head_tags_seo_other_rows'        => 3,	// HTML Tags > SEO and Others tab.
+				'head_tags_seo_other_rows'        => 3,	// HTML Tags > SEO and Other tab.
 			) );
 		}
 
@@ -68,15 +68,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				return;
 			}
 
-			$this->og_types           = $this->p->og->get_og_types_select();
-			$this->schema_types       = $this->p->schema->get_schema_types_select();
-			$this->article_sections   = $this->p->util->get_article_sections();
-			$this->mrp_names          = $this->p->util->get_form_cache( 'mrp_names', $add_none = true );
-			$this->org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
-			$this->person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
-			$this->place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
-			$this->place_types        = $this->p->util->get_form_cache( 'place_types_select' );
-			$this->product_categories = $this->p->util->get_google_product_categories();
+			$this->og_types         = $this->p->og->get_og_types_select();
+			$this->schema_types     = $this->p->schema->get_schema_types_select();
+			$this->article_sections = $this->p->util->get_article_sections();
+			$this->mrp_names        = $this->p->util->get_form_cache( 'mrp_names', $add_none = true );
+			$this->org_names        = $this->p->util->get_form_cache( 'org_names', $add_none = true );
+			$this->person_names     = $this->p->util->get_form_cache( 'person_names', $add_none = true );
+			$this->place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+			$this->place_types      = $this->p->util->get_form_cache( 'place_types_select' );
+			$this->google_prod_cats = $this->p->util->get_google_product_categories();
 		}
 
 		/*
@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',
-					'content'  => $form->get_no_select( 'schema_def_product_category', $this->product_categories,
+					'content'  => $form->get_no_select( 'schema_def_product_category', $this->google_prod_cats,
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_price_type' => array(
@@ -1359,7 +1359,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/*
-		 * HTML Tags > SEO and Others tab.
+		 * HTML Tags > SEO and Other tab.
 		 */
 		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network = false ) {
 

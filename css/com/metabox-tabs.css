@@ -451,7 +451,7 @@ h3.sucom-metabox-tab_title {
 	content:"\f121";	/* .icon-code */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO and Others tab. */
+.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO and Other tab. */
 	content:"\e81c";	/* .icon-robot-5 */
 }
 

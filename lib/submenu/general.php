@@ -145,14 +145,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
-					$def_site_name      = get_bloginfo( 'name' );
-					$def_site_desc      = get_bloginfo( 'description' );
-					$def_home_url       = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
-					$dimension_units    = WpssoUtilUnits::get_dimension_units();
-					$fluid_volume_units = WpssoUtilUnits::get_fluid_volume_units();
-					$weight_units       = WpssoUtilUnits::get_weight_units();
-					$org_types_select   = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
-					$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+					$def_site_name    = get_bloginfo( 'name' );
+					$def_site_desc    = get_bloginfo( 'description' );
+					$def_home_url     = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
+					$dimension_units  = WpssoUtilUnits::get_dimension_units();
+					$fl_volume_units  = WpssoUtilUnits::get_fluid_volume_units();
+					$weight_units     = WpssoUtilUnits::get_weight_units();
+					$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
+					$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
 					$table_rows[ 'site_name' ] = '' .
 						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
@@ -207,63 +207,27 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'og_def_fluid_volume_units' ] = '' .
 						$this->form->get_th_html( _x( 'Default Fluid Volume Units', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_fluid_volume_units' ) .
-						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', $fluid_volume_units,
+						'<td>' . $this->form->get_select( 'og_def_fluid_volume_units', $fl_volume_units,
 							$css_class = 'unit_text', $css_id = '', $is_assoc = 'sorted' ) . '</td>';
 
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
+						$tr_on_change_organization_html = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' );
+
 						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
 
-						$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+						$table_rows[ 'site_org_place_id' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
 								$css_class = '', $css_id = 'site_org_place_id' ) .
 							'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'wide', $css_id = '',
 								$is_assoc = true ) . '</td>';
 
-						$table_rows[ 'site_org_schema_type' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+						$table_rows[ 'site_org_schema_type' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
 								$css_class = '', $css_id = 'site_org_schema_type' ) .
 							'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
 								$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 									$event_args = array( 'json_var' => 'schema_org_types' ) ) . '</td>';
-	
-						/*
-						 * Organization Principles and Policies section.
-						 */
-						$table_rows[ 'subsection_site_org_policy_urls' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							'<td colspan="4" class="subsection"><h4>' .
-							_x( 'Organization Principles and Policies', 'metabox title', 'wpsso' ) .
-							'</h4></td>';
-
-						$table_rows[ 'site_org_pub_principles_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Publishing Principles URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_pub_principles_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_pub_principles_url', $css_class = 'wide' ) . '</td>';
-
-						$table_rows[ 'site_org_corrections_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Corrections Policy URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_corrections_policy_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_corrections_policy_url', $css_class = 'wide' ) . '</td>';
-
-						$table_rows[ 'site_org_diversity_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Diversity Policy URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_diversity_policy_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_diversity_policy_url', $css_class = 'wide' ) . '</td>';
-					
-						$table_rows[ 'site_org_ethics_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Ethics Policy URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_ethics_policy_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_ethics_policy_url', $css_class = 'wide' ) . '</td>';
-					
-						$table_rows[ 'site_org_feedback_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Feedback Policy URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_feedback_policy_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_feedback_policy_url', $css_class = 'wide' ) . '</td>';
-					
-						$table_rows[ 'site_org_sources_policy_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-							$this->form->get_th_html_locale( _x( 'Unnamed Sources Policy URL', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'site_org_sources_policy_url' ) .
-							'<td>' . $this->form->get_input_locale( 'site_org_sources_policy_url', $css_class = 'wide' ) . '</td>';
 					}
 
 					break;

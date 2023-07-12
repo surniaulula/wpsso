@@ -1852,12 +1852,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_banner_url',
 				'org_banner_url:width',
 				'org_banner_url:height',
-				'org_pub_principles_url',	// Publishing Principles URL (localized).
-				'org_corrections_policy_url',	// Corrections Policy URL (localized).
-				'org_diversity_policy_url',	// Diversity Policy URL (localized).
-				'org_ethics_policy_url',	// Ethics Policy URL (localized).
-				'org_feedback_policy_url',	// Feedback Policy URL (localized).
-				'org_sources_policy_url',	// Unnamed Sources Policy URL (localized).
 			) as $opt_key ) {
 				
 				$org_opts[ $opt_key ] = SucomUtil::get_key_value( 'site_' . $opt_key, $wpsso->options, $mixed );

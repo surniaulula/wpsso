@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'open_graph' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
 				'twitter'    => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'seo_other'  => _x( 'SEO and Others', 'metabox tab', 'wpsso' ),
+				'seo_other'  => _x( 'SEO and Other', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {

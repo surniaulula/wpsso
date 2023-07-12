@@ -259,9 +259,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_tr_on_change( $select_id, $select_value ) {
+		public function get_tr_on_change( $select_id, $select_values ) {
 
-			$css_class = $this->get_css_class_on_change( $select_id, $select_value );
+			$css_class = $this->get_css_class_on_change( $select_id, $select_values );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}

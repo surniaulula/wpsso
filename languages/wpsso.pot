@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.16.0-b.3\n"
+"Project-Id-Version: WPSSO Core 15.16.0-b.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2977,8 +2977,8 @@ msgstr ""
 #: lib/std/admin/advanced.php:146 lib/std/admin/advanced.php:152
 #: lib/std/admin/general.php:49 lib/std/admin/general.php:54
 #: lib/std/admin/general.php:59 lib/std/admin/general.php:64
-#: lib/submenu/general.php:405 lib/submenu/general.php:411
-#: lib/submenu/general.php:417
+#: lib/submenu/general.php:369 lib/submenu/general.php:375
+#: lib/submenu/general.php:381
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -3907,7 +3907,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:122
 #: lib/std/admin/edit.php:126
 msgctxt "metabox title"
-msgid "Schema Book Information"
+msgid "Book Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:127
@@ -3967,7 +3967,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:206 lib/pro/admin/edit.php:196
 #: lib/std/admin/edit.php:213
 msgctxt "metabox title"
-msgid "Schema Audiobook Information"
+msgid "Audiobook Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:207 lib/pro/admin/edit.php:201
@@ -3979,7 +3979,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:208 lib/pro/admin/edit.php:220
 #: lib/std/admin/edit.php:238
 msgctxt "metabox title"
-msgid "Schema Movie Information"
+msgid "Movie Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:233
@@ -4017,7 +4017,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:214 lib/pro/admin/edit.php:280
 #: lib/std/admin/edit.php:307
 msgctxt "metabox title"
-msgid "Schema Review Information"
+msgid "Review Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:215 lib/pro/admin/edit.php:285
@@ -4243,7 +4243,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:259 lib/pro/admin/edit.php:648
 #: lib/std/admin/edit.php:478
 msgctxt "metabox title"
-msgid "Schema Claim Review Information"
+msgid "Claim Review Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:260 lib/pro/admin/edit.php:653
@@ -4261,13 +4261,13 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:262 lib/pro/admin/edit.php:676
 #: lib/std/admin/edit.php:508
 msgctxt "metabox title"
-msgid "Schema Software App Information"
+msgid "Software App Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:265 lib/pro/admin/edit.php:704
 #: lib/std/admin/edit.php:542
 msgctxt "metabox title"
-msgid "Schema QA Page Information"
+msgid "QA Page Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:266 lib/pro/admin/edit.php:709
@@ -4279,7 +4279,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:267 lib/pro/admin/edit.php:728
 #: lib/std/admin/edit.php:571
 msgctxt "metabox title"
-msgid "Schema Event Information"
+msgid "Event Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:733
@@ -4399,7 +4399,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:287 lib/pro/admin/edit.php:888
 #: lib/std/admin/edit.php:744
 msgctxt "metabox title"
-msgid "Schema Job Posting Information"
+msgid "Job Posting Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:289 lib/pro/admin/edit.php:901
@@ -4447,7 +4447,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:296 lib/pro/admin/edit.php:961
 #: lib/std/admin/edit.php:824
 msgctxt "metabox title"
-msgid "Schema Organization Information"
+msgid "Organization Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:297 lib/pro/admin/edit.php:966
@@ -4459,7 +4459,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:298 lib/pro/admin/edit.php:983
 #: lib/std/admin/edit.php:851
 msgctxt "metabox title"
-msgid "Schema Person Information"
+msgid "Person Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:299 lib/pro/admin/edit.php:988
@@ -4471,7 +4471,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:300 lib/pro/admin/edit.php:1007
 #: lib/std/admin/edit.php:878
 msgctxt "metabox title"
-msgid "Schema Place Information"
+msgid "Place Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:301 lib/pro/admin/edit.php:1012
@@ -4483,7 +4483,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:302 lib/pro/admin/edit.php:1038
 #: lib/std/admin/edit.php:914
 msgctxt "metabox title"
-msgid "Schema Product Information (Main Product)"
+msgid "Product Information (Main Product)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:303 lib/messages.php:848
@@ -5040,7 +5040,7 @@ msgstr ""
 #: lib/admin-head-suggest-options.php:113 lib/messages.php:1130
 #: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
-msgid "SEO and Others"
+msgid "SEO and Other"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:115
@@ -5590,12 +5590,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5317
+#: lib/config.php:5311
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5317
+#: lib/config.php:5311
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -6248,7 +6248,7 @@ msgstr ""
 
 #: lib/edit-schema.php:228
 msgctxt "metabox title"
-msgid "Schema Creative Work Information"
+msgid "Creative Work Information"
 msgstr ""
 
 #: lib/edit-schema.php:233
@@ -6318,7 +6318,7 @@ msgstr ""
 
 #: lib/edit-schema.php:359
 msgctxt "metabox title"
-msgid "Schema Article Information"
+msgid "Article Information"
 msgstr ""
 
 #: lib/edit-schema.php:364 lib/messages.php:672
@@ -6337,7 +6337,7 @@ msgstr ""
 
 #: lib/edit-schema.php:403
 msgctxt "metabox title"
-msgid "Schema WebPage Information"
+msgid "WebPage Information"
 msgstr ""
 
 #: lib/edit-schema.php:408
@@ -6357,7 +6357,7 @@ msgstr ""
 
 #: lib/edit-schema.php:447
 msgctxt "metabox title"
-msgid "Schema How-To Information"
+msgid "How-To Information"
 msgstr ""
 
 #: lib/edit-schema.php:452
@@ -6397,7 +6397,7 @@ msgstr ""
 
 #: lib/edit-schema.php:531
 msgctxt "metabox title"
-msgid "Schema Recipe Information"
+msgid "Recipe Information"
 msgstr ""
 
 #: lib/edit-schema.php:536
@@ -6442,7 +6442,7 @@ msgstr ""
 
 #: lib/edit-schema.php:628
 msgctxt "metabox title"
-msgid "Schema Recipe Nutrition Information"
+msgid "Recipe Nutrition Information"
 msgstr ""
 
 #: lib/edit-schema.php:633
@@ -6640,13 +6640,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:136 lib/submenu/general.php:375
+#: lib/edit-visibility.php:136 lib/submenu/general.php:339
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:137 lib/edit-visibility.php:153
-#: lib/submenu/general.php:376 lib/submenu/general.php:390
+#: lib/submenu/general.php:340 lib/submenu/general.php:354
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -6661,7 +6661,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:152 lib/submenu/general.php:389
+#: lib/edit-visibility.php:152 lib/submenu/general.php:353
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -7637,12 +7637,16 @@ msgid "The website URL for this organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:72
+msgid "Select an optional place (ie. location) for this organization."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:78
 msgid ""
 "You may optionally choose a more accurate Schema type for this organization "
 "(default is Organization)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:74
+#: lib/messages-tooltip-meta-org.php:80
 msgid ""
 "Note that Google does not recognize most Schema Organization sub-types as "
 "valid organizations, so do not change this value unless you are certain that "
@@ -7650,8 +7654,57 @@ msgid ""
 "Organization by Google."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:80
-msgid "Select an optional place (ie. location) for this organization."
+#: lib/messages-tooltip-meta-org.php:86
+msgid ""
+"A document describing the editorial principles of an Organization that "
+"relate to their activities as a publisher."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:92
+msgid ""
+"A statement describing (in news media, the newsroom's) disclosure and "
+"correction policy for errors."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:98
+msgid ""
+"A statement describing (in news media, the newsroom's) diversity policy on "
+"both staffing and sources. "
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:104
+msgid ""
+"A statement describing the personal, organizational, and corporate standards "
+"of behavior expected by the organization."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:110
+msgid ""
+"A statement describing verification and fact-checking processes for a news "
+"media organization or other fact-checking organization."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:116
+msgid ""
+"A statement about public engagement activities (for news media, the "
+"newsroom's), including involving the public - digitally or otherwise - in "
+"coverage decisions, reporting and activities after publication."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:125
+msgid "A link to the masthead page or a page listing top editorial management."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:131
+msgid ""
+"A statement on coverage priorities, including any public agenda or stance on "
+"issues."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:137 lib/messages-tooltip-meta-org.php:143
+msgid ""
+"A statement about policy on use of unnamed sources and the decision process "
+"required."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:36
@@ -10042,7 +10095,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:350 lib/messages.php:1215
-#: lib/submenu/general.php:414
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -11729,47 +11782,47 @@ msgid "adding schema organization ID %s"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1140
+#: lib/schema-single.php:1161
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1143
+#: lib/schema-single.php:1164
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1146
+#: lib/schema-single.php:1167
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1171
+#: lib/schema-single.php:1192
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1185 lib/schema-single.php:1194
+#: lib/schema-single.php:1206 lib/schema-single.php:1215
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1368
+#: lib/schema-single.php:1389
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1577
+#: lib/schema-single.php:1598
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2010
+#: lib/schema-single.php:2036
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2133
+#: lib/schema-single.php:2159
 msgid "adding schema product"
 msgstr ""
 
@@ -11777,22 +11830,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2071
+#: lib/schema.php:2065
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2244
+#: lib/schema.php:2238
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2271
+#: lib/schema.php:2265
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3854
+#: lib/schema.php:3848
 msgid "checking schema properties"
 msgstr ""
 
@@ -12037,12 +12090,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:108 lib/submenu/general.php:304
+#: lib/submenu/essential.php:108 lib/submenu/general.php:268
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:309
+#: lib/submenu/essential.php:113 lib/submenu/general.php:273
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -12137,177 +12190,142 @@ msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:218
+#: lib/submenu/general.php:220
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:224
+#: lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:235
-msgctxt "metabox title"
-msgid "Organization Principles and Policies"
-msgstr ""
-
-#: lib/submenu/general.php:239
-msgctxt "option label"
-msgid "Publishing Principles URL"
-msgstr ""
-
-#: lib/submenu/general.php:244
-msgctxt "option label"
-msgid "Corrections Policy URL"
-msgstr ""
-
-#: lib/submenu/general.php:249
-msgctxt "option label"
-msgid "Diversity Policy URL"
-msgstr ""
-
-#: lib/submenu/general.php:254
-msgctxt "option label"
-msgid "Ethics Policy URL"
-msgstr ""
-
-#: lib/submenu/general.php:259
-msgctxt "option label"
-msgid "Feedback Policy URL"
-msgstr ""
-
-#: lib/submenu/general.php:264
-msgctxt "option label"
-msgid "Unnamed Sources Policy URL"
-msgstr ""
-
-#: lib/submenu/general.php:274
+#: lib/submenu/general.php:238
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:279
+#: lib/submenu/general.php:243
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:284
+#: lib/submenu/general.php:248
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:288
+#: lib/submenu/general.php:252
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:297
+#: lib/submenu/general.php:261
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:324
+#: lib/submenu/general.php:288
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:293
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:334
+#: lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:346
+#: lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:353
+#: lib/submenu/general.php:317
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:356
+#: lib/submenu/general.php:320
 msgctxt "option comment"
 msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
-#: lib/submenu/general.php:360
+#: lib/submenu/general.php:324
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:371
+#: lib/submenu/general.php:335
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:379
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:385
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:397
+#: lib/submenu/general.php:361
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:402
+#: lib/submenu/general.php:366
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:408
+#: lib/submenu/general.php:372
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:424
+#: lib/submenu/general.php:388
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:425
+#: lib/submenu/general.php:389
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:429
+#: lib/submenu/general.php:393
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:434
+#: lib/submenu/general.php:398
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:443
+#: lib/submenu/general.php:407
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:448
+#: lib/submenu/general.php:412
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:453
+#: lib/submenu/general.php:417
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:458
+#: lib/submenu/general.php:422
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""

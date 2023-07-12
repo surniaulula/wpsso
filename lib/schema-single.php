@@ -1055,19 +1055,40 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add schema properties from the organization options.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
-				'url'                      => 'org_url',
-				'name'                     => 'org_name',
-				'alternateName'            => 'org_name_alt',
-				'description'              => 'org_desc',
-				'email'                    => 'org_email',
-				'telephone'                => 'org_phone',
-				'publishingPrinciples'     => 'org_pub_principles_url',		// Publishing Principles URL.
-				'correctionsPolicy'        => 'org_corrections_policy_url',	// Corrections Policy URL.
-				'diversityPolicy'          => 'org_diversity_policy_url',	// Diversity Policy URL.
-				'ethicsPolicy'             => 'org_ethics_policy_url',		// Ethics Policy URL.
-				'actionableFeedbackPolicy' => 'org_feedback_policy_url',	// Feedback Policy URL.
-				'unnamedSourcesPolicy'     => 'org_sources_policy_url',		// Unnamed Sources Policy URL.
+				'url'                            => 'org_url',
+				'name'                           => 'org_name',
+				'alternateName'                  => 'org_name_alt',
+				'description'                    => 'org_desc',
+				'email'                          => 'org_email',
+				'telephone'                      => 'org_phone',
+				'publishingPrinciples'           => 'org_pub_principles_url',		// Publishing Principles URL.
+				'correctionsPolicy'              => 'org_corrections_policy_url',	// Corrections Policy URL.
+				'diversityPolicy'                => 'org_diversity_policy_url',		// Diversity Policy URL.
+				'ethicsPolicy'                   => 'org_ethics_policy_url',		// Ethics Policy URL.
+				'verificationFactCheckingPolicy' => 'org_fact_check_policy_url',	// Fact Checking Policy URL.
+				'actionableFeedbackPolicy'       => 'org_feedback_policy_url',		// Feedback Policy URL.
 			) );
+
+			/*
+			 * Maybe add properties for Schema Organization sub-types.
+			 */
+			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
+				$org_opts[ 'org_schema_type' ] !== 'none' &&
+				$org_opts[ 'org_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
+				
+				/*
+				 * Schema NewsMediaOrganization type properties.
+				 */
+				if ( $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' ) ) {
+			
+					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
+						'masthead'                        => 'org_masthead_url',		// Masthead Page URL.
+						'missionCoveragePrioritiesPolicy' => 'org_coverage_policy_url',		// Coverage Priorities Policy URL.
+						'noBylinesPolicy'                 => 'org_no_bylines_policy_url',	// No Bylines Policy URL.
+						'unnamedSourcesPolicy'            => 'org_sources_policy_url',		// Unnamed Sources Policy URL.
+					) );
+				}
+			}
 
 			/*
 			 * Organization images.
@@ -1631,10 +1652,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'openingHoursSpecification' ] = $opening_hours_spec;
 			}
 
-			if ( ! empty( $place_opts[ 'place_schema_type' ] ) && $place_opts[ 'place_schema_type' ] !== 'none' ) {
+			/*
+			 * Maybe add properties for Schema Place sub-types.
+			 */
+			if ( ! empty( $place_opts[ 'place_schema_type' ] ) &&
+				$place_opts[ 'place_schema_type' ] !== 'none' &&
+				$place_opts[ 'place_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
 
 				/*
-				 * LocalBusiness schema type properties.
+				 * Schema LocalBusiness type properties.
 				 */
 				if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' ) ) {
 
@@ -1656,7 +1682,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					/*
-					 * FoodEstablishment schema type properties.
+					 * Schema FoodEstablishment type properties.
 					 */
 					if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
 
