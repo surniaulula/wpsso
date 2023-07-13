@@ -252,7 +252,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
-	* Added an error notice for identical Schema "sku" and "mpn" property values.
 	* Added new Schema CreativeWork options in the Document SSO metabox:
 		* Funder Org.
 		* Funder Person.
