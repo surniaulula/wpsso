@@ -1827,8 +1827,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			WpssoSchema::check_prop_value_gtin( $json_ret );
 
-			WpssoSchema::check_prop_value_sku_mpn( $json_ret );
-
 			/*
 			 * Prevents a missing property warning from the Google validator.
 			 *
@@ -2196,8 +2194,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::check_prop_value_category( $json_ret );
 
 			WpssoSchema::check_prop_value_gtin( $json_ret );
-
-			WpssoSchema::check_prop_value_sku_mpn( $json_ret );
 
 			/*
 			 * Schema productID property.

@@ -2452,8 +2452,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'mpn'  => 'schema_review_item_product_mfr_part_no',
 				) );
 
-				self::check_prop_value_sku_mpn( $json_data );
-
 				/*
 				 * Add the product brand.
 				 */
@@ -4177,47 +4175,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$json_data[ $prop_name ] = array_values( $json_data[ $prop_name ] );	// Reindex / renumber the array.
-			}
-		}
-
-		/*
-		 * Since WPSSO Core v15.16.0.
-		 */
-		public static function check_prop_value_sku_mpn( &$json_data, $sku_name = 'sku', $mpn_name = 'mpn' ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'checking ' . $sku_name . ' and ' . $mpn_name . ' property values' );
-			}
-
-			if ( ! empty( $json_data[ $sku_name ] ) && ! empty( $json_data[ $mpn_name ] ) ) {
-
-				if ( $json_data[ $sku_name ] === $json_data[ $mpn_name ] ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( $sku_name . ' and ' . $mpn_name . ' property values are identical' );
-					}
-
-					/*
-					 * An is_admin() test is required to make sure the WpssoMessages class is available.
-					 */
-					if ( $wpsso->notice->is_admin_pre_notices() ) {
-
-						$notice_msg = sprintf( __( 'The Stock Keeping Unit (SKU) and the Manufacturer Part Number (MPN) are both "%s" and these Schema property values cannot be identical.', 'wpsso' ), $json_data[ $sku_name ] ) . ' ';
-
-						$notice_msg .= __( 'Google requires that the Manufacturer Part Number (MPN) be a globally unique part number provided by the manufacturer.', 'wpsso' ) . ' ';
-
-						$notice_key = 'notice-identical-sku-mpn-' . $json_data[ $sku_name ];
-
-						if ( ! empty( $notice_msg ) ) {	// Just in case.
-
-							$wpsso->notice->err( $notice_msg, null, $notice_key );
-						}
-					}
-				}
 			}
 		}
 

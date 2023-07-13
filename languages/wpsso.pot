@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.16.0-b.5\n"
+"Project-Id-Version: WPSSO Core 15.16.0-b.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11842,11 +11842,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2040
+#: lib/schema-single.php:2038
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2163
+#: lib/schema-single.php:2161
 msgid "adding schema product"
 msgstr ""
 
@@ -11869,20 +11869,8 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3850
+#: lib/schema.php:3848
 msgid "checking schema properties"
-msgstr ""
-
-#: lib/schema.php:4209
-msgid ""
-"The Stock Keeping Unit (SKU) and the Manufacturer Part Number (MPN) are both "
-"\"%s\" and these Schema property values cannot be identical."
-msgstr ""
-
-#: lib/schema.php:4211
-msgid ""
-"Google requires that the Manufacturer Part Number (MPN) be a globally unique "
-"part number provided by the manufacturer."
 msgstr ""
 
 #: lib/script.php:457
