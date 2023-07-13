@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.16.0-b.7 (2023/07/12)**
+**Version 15.16.0-rc.1 (2023/07/13)**
 
 * **New Features**
 	* Added support for new Schema Organization type properties:
@@ -817,9 +817,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.16.0-b.7 =
+= 15.16.0-rc.1 =
 
-(2023/07/12) Added support for new Schema Organization and NewsMediaOrganization type properties. Added an error notice for a empty Schema ItemList itemListElement property.
+(2023/07/13) Added support for new Schema Organization and NewsMediaOrganization type properties. Added an error notice for a empty Schema ItemList itemListElement property.
 
 = 15.15.1 =
 
