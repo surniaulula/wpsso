@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.16.0-b.6 (2023/07/12)**
+**Version 15.16.0-b.7 (2023/07/12)**
 
 * **New Features**
 	* Added support for new Schema Organization type properties:
@@ -250,7 +250,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* noBylinesPolicy
 		* unnamedSourcesPolicy
 * **Improvements**
-	* Added a contextual information message in the Document SSO > Schema tab for the Schema ItemList type.
+	* Added a new SSO &gt; General Settings &gt; Location Defaults tab.
+	* Added a contextual information message in the Document SSO &gt; Schema tab for the Schema ItemList type.
 	* Added an error notice for a empty Schema ItemList itemListElement property.
 	* Added new Schema CreativeWork options in the Document SSO metabox:
 		* Funder Org.
@@ -816,7 +817,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.16.0-b.6 =
+= 15.16.0-b.7 =
 
 (2023/07/12) Added support for new Schema Organization and NewsMediaOrganization type properties. Added an error notice for a empty Schema ItemList itemListElement property.
 
