@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					break;
 
-				case 'info-cm':
+				case 'info-contact_fields':
 
 					// translators: Please ignore - translation uses a different text domain.
 					$section_label = __( 'Contact Info' );

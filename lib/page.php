@@ -2239,11 +2239,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( is_string( $max_len ) ) {
 
-				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local cache.
+				$input_limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local cache.
 
-				if ( ! empty( $limits[ 'max' ] ) ) {
+				if ( ! empty( $input_limits[ 'max' ] ) ) {
 
-					return (int) $limits[ 'max' ];
+					return (int) $input_limits[ 'max' ];
 				}
 			}
 

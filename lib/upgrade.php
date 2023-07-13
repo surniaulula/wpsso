@@ -991,7 +991,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			/*
 			 * Refresh the schema types transient cache.
 			 */
-			$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
+			$this->p->schema->get_schema_types( $flatten = true, $read_cache = false );
 
 			return $opts;
 		}

@@ -1243,9 +1243,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$payload[ 'notice_label' ] = '';	// No label for nag notices.
 
-					$msg_type       = 'nag';
-					$css_class      = 'update-nag';
-					$notice_display = 'inline-block';
+					$msg_type  = 'nag';
+					$css_class = 'update-nag';
 
 					break;
 

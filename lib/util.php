@@ -1188,47 +1188,52 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				switch ( $filter_key ) {
 
-					case 'half_hours':
+					case 'business_types':	// Returns a multi-dimentional array.
 
-						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
-							$step_secs = 60 * 30, $label_format = 'H:i' );
+						$this->get_form_cache( 'schema_types', false );
 
-						break;
-
-					case 'quarter_hours':
-
-						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
-							$step_secs = 60 * 15, $label_format = 'H:i' );
-
-						break;
-
-					case 'all_types':
-
-						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_array( $flatten = false );
-
-						break;
-
-					case 'business_types':
-
-						$this->get_form_cache( 'all_types', false );	// Sets $local_cache[ 'all_types' ].
-
-						$local_cache[ $filter_key ] =& $local_cache[ 'all_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
+						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
 
 						break;
 
 					case 'business_types_select':
 
-						$this->get_form_cache( 'business_types', false );	// Sets $local_cache[ 'business_types' ].
+						$this->get_form_cache( 'business_types', false );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'business_types' ] );
 
 						break;
 
-					case 'org_types':
+					case 'half_hours':
 
-						$this->get_form_cache( 'all_types', false );	// Sets $local_cache[ 'all_types' ].
+						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0,
+							$end_secs = DAY_IN_SECONDS, $step_secs = 60 * 30, $label_format = 'H:i' );
 
-						$local_cache[ $filter_key ] =& $local_cache[ 'all_types' ][ 'thing' ][ 'organization' ];
+						break;
+
+					case 'og_types':
+
+						$local_cache[ $filter_key ] = $this->p->og->get_og_types();
+
+						break;
+
+					case 'og_types_select':
+
+						$local_cache[ $filter_key ] = $this->p->og->get_og_types_select();
+
+						break;
+
+					case 'org_names':
+
+						$local_cache[ $filter_key ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
+
+						break;
+
+					case 'org_types':	// Returns a multi-dimentional array.
+
+						$this->get_form_cache( 'schema_types' );
+
+						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'organization' ];
 
 						break;
 
@@ -1240,36 +1245,47 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						break;
 
-					case 'org_names':
-
-						$local_cache[ $filter_key ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
-
-						break;
-
 					case 'person_names':
 
 						$local_cache[ $filter_key ] = WpssoUser::get_persons_names();
 
 						break;
 
-					case 'place_types':
+					case 'place_types':	// Returns a multi-dimentional array.
 
-						$this->get_form_cache( 'all_types', false );	// Sets $local_cache[ 'all_types' ].
+						$this->get_form_cache( 'schema_types' );
 
-						$local_cache[ $filter_key ] =& $local_cache[ 'all_types' ][ 'thing' ][ 'place' ];
+						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'place' ];
 
 						break;
 
 					case 'place_types_select':
 
-						$this->get_form_cache( 'place_types', false );	// Sets $local_cache[ 'place_types' ].
+						$this->get_form_cache( 'place_types' );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'place_types' ] );
 
 						break;
 
-					case 'place_names_custom':
-					case 'place_names':
+					case 'quarter_hours':
+
+						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0,
+							$end_secs = DAY_IN_SECONDS, $step_secs = 60 * 15, $label_format = 'H:i' );
+
+						break;
+
+					case 'schema_types':	// Returns a multi-dimentional array.
+
+						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types( $flatten = false );
+
+						break;
+
+					case 'schema_types_select':
+
+						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select();
+
+						break;
+
 					default:
 
 						break;
@@ -3782,7 +3798,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoProReviewShopperApproved->filter_og().
 		 * See WpssoProReviewStamped->filter_og().
 		 * See WpssoProUtilShorten->get_short_url().
-		 * See WpssoSchema->get_schema_types_array().
+		 * See WpssoSchema->get_schema_types().
 		 * See WpssoSchema->get_schema_type_child_family().
 		 * See WpssoSchema->get_schema_type_children().
 		 * See WpssoSchema->get_schema_type_row_class().

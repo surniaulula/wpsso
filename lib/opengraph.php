@@ -757,6 +757,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $type_id;
 		}
 
+		public function get_og_types() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			return $this->p->cf[ 'head' ][ 'og_type_ns_compat' ];
+		}
+
 		public function get_og_types_select() {
 
 			if ( $this->p->debug->enabled ) {
@@ -764,7 +774,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns_compat' ];
+			$og_type_ns = $this->get_og_types();
 
 			$select = array();
 

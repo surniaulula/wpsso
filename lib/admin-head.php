@@ -444,32 +444,20 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			 * The notice message.
 			 */
 			$notice_msg = '<div style="display:table-cell;">';
-
 			$notice_msg .= '<p style="margin-right:30px;">' . $this->p->admin->get_ext_img_icon( 'wpsso' ) . '</p>';
-
 			$notice_msg .= '</div>';
-
 			$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
-
 			$notice_msg .= '<p><strong>';
-
 			$notice_msg .= sprintf( __( 'You\'ve been using the %1$s %2$s for a little over %3$s now.', 'wpsso' ), $wp_plugin_link,
 				$ext_type_transl, $installed_ago ) . ' ';
-
 			$notice_msg .= '</strong></p><p>';
-
 			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s edition?', 'wpsso' ), $pkg_pro_transl ) . ' ';
-
-			$notice_msg .= __( 'The %s edition comes loaded with a lot of extra features!', 'wpsso' ) . ' ' . convert_smilies( ':-)' ) . ' ';
-
+			$notice_msg .= sprintf( __( 'The %s edition comes loaded with a lot of extra features!', 'wpsso' ), $pkg_pro_transl ) . ' ';
+			$notice_msg .= convert_smilies( ':-)' ) . ' ';
 			$notice_msg .= '</p>';
-
 			$notice_msg .= '<div class="notice-actions">';
-
 			$notice_msg .= $purchase_button . $no_thanks_button;
-
 			$notice_msg .= '</div>';
-
 			$notice_msg .= '</div>';
 
 			$this->p->notice->nag( $notice_msg, $user_id, $notice_key, $dismiss_time );

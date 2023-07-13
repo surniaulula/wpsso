@@ -323,11 +323,11 @@ h3.sucom-metabox-tab_title {
 	content:"\e80c";	/* .icon-key */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_custom_contacts::before {	/* SSO > Advanced Settings > Contact Fields > Custom Contacts tab. */
+.sucom-tablink-icon.sucom-tablink-href_custom_cm::before {		/* SSO > Advanced Settings > Contact Fields > Custom Contacts tab. */
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_default_contacts::before {	/* SSO > Advanced Settings > Contact Fields > Default Contacts tab. */
+.sucom-tablink-icon.sucom-tablink-href_default_cm::before {		/* SSO > Advanced Settings > Contact Fields > Default Contacts tab. */
 	content:"\f2c2";	/* .icon-id-card */
 }
 
@@ -469,6 +469,10 @@ h3.sucom-metabox-tab_title {
 
 .sucom-tablink-icon.sucom-tablink-href_site::before {			/* SSO > General Settings > General Settings > Site Information tab. */
 	content:"\e803";	/* .icon-home */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_loc_defs::before {		/* SSO > General Settings > General Settings > Location Defaults tab. */
+	content:"\e835";	/* .icon-admin-site */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* SSO > General Settings > Social and Search Sites > Twitter tab. */

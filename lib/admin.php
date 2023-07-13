@@ -1474,13 +1474,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_id       = isset( $mb[ 'args' ][ 'page_id' ] ) ? $mb[ 'args' ][ 'page_id' ] : '';
 			$metabox_id    = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
 			$metabox_title = isset( $mb[ 'args' ][ 'metabox_title' ] ) ? $mb[ 'args' ][ 'metabox_title' ] : '';
+			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
+			$network       = isset( $mb[ 'args' ][ 'network' ] ) ? $mb[ 'args' ][ 'network' ] : false;
 			$tab_key       = isset( $mb[ 'args' ][ 'tab_key' ] ) ? $mb[ 'args' ][ 'tab_key' ] : '';
 
 			if ( $page_id && $metabox_id ) {
 
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $page_id . '_' . $metabox_id . '_rows' );
 				$table_rows  = $this->get_table_rows( $page_id, $metabox_id, $metabox_title );
-				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network = false );
+				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network, $select_names );
 
 				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
 
@@ -1488,7 +1490,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
 				$table_rows  = $this->get_table_rows( $metabox_id, $tab_key, $metabox_title );
-				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network = false );
+				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network, $select_names );
 
 				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id . '-' . $tab_key );
 

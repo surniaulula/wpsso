@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.16.0-b.6',	// Plugin version.
+					'version'     => '15.16.0-b.7',	// Plugin version.
 					'opt_version' => '977',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5473,11 +5473,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				$local_cache = self::$cf[ 'form' ][ 'input_limits' ];
 
-				foreach ( $local_cache as $key => $limits ) {
+				foreach ( $local_cache as $key => $input_limits ) {
 
 					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_input_limits_' . $key );
 
-					$local_cache[ $key ] = apply_filters( $filter_name, $limits );
+					$local_cache[ $key ] = apply_filters( $filter_name, $input_limits );
 				}
 			}
 

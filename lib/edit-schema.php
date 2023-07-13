@@ -55,14 +55,16 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
 			$addl_type_url_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 );
 			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
+			$input_limits         = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$schema_tr_class      = WpssoSchema::get_schema_type_row_class( 'schema_type' );
-			$limits               = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$select_names         = array(
-				'org'          => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
-				'person'       => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
-				'place'        => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
-				'place_custom' => $this->p->util->get_form_cache( 'place_names_custom', $add_none = true ),
-				'mrp'          => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
+				'google_prod_cats' => $this->p->util->get_google_product_categories(),
+				'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
+				'org'              => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
+				'person'           => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
+				'place'            => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
+				'place_custom'     => $this->p->util->get_form_cache( 'place_names_custom', $add_none = true ),
+				'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
 			);
 
 			$form_rows = array(
@@ -92,21 +94,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_title',
 					'content'  => $form->get_input_dep( 'schema_title', $css_class = 'wide', $css_id = '',
-						$limits[ 'schema_title' ], $def_schema_title, $is_disabled = false, $dep_id = 'seo_title' ),
+						$input_limits[ 'schema_title' ], $def_schema_title, $is_disabled = false, $dep_id = 'seo_title' ),
 				),
 				'schema_title_alt' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Alternate Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_title_alt',
 					'content'  => $form->get_input_dep( 'schema_title_alt', $css_class = 'wide', $css_id = '',
-						$limits[ 'schema_title_alt' ], $def_schema_title_alt, $is_disabled = false, $dep_id = 'schema_title' ),
+						$input_limits[ 'schema_title_alt' ], $def_schema_title_alt, $is_disabled = false, $dep_id = 'schema_title' ),
 				),
 				'schema_desc' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_desc',
 					'content'  => $form->get_textarea_dep( 'schema_desc', $css_class = '', $css_id = '',
-						$limits[ 'schema_desc' ], $def_schema_desc, $is_disabled = false, $dep_id = 'seo_desc' ),
+						$input_limits[ 'schema_desc' ], $def_schema_desc, $is_disabled = false, $dep_id = 'seo_desc' ),
 				),
 				'schema_addl_type_url' => array(
 					'th_class' => 'medium',
@@ -211,13 +213,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
-			$limits                  = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
 			$schema_lang_disabled    = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
 			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
+			$input_limits            = WpssoConfig::get_input_limits();	// Uses a local cache.
 
 			$form_rows = array(
 				'subsection_schema_creative_work' => array(
@@ -232,7 +234,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Headline', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_headline',
 					'content'  => $form->get_input_dep( 'schema_headline', $css_class = 'wide', $css_id = '',
-						$limits[ 'schema_headline' ], $def_schema_headline, $is_disabled = false, $dep_id = 'schema_title' ),
+						$input_limits[ 'schema_headline' ], $def_schema_headline, $is_disabled = false, $dep_id = 'schema_title' ),
 				),
 				'schema_text' => array(
 					'tr_class' => $schema_tr_class[ 'creative.work' ],

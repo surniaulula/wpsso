@@ -695,7 +695,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$type_id      = null;
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$schema_types = $this->get_schema_types( $flatten = true );
 
 			/*
 			 * Maybe get a custom schema type id from the post, term, or user meta.
@@ -908,83 +908,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function refresh_schema_types() {
 
-			$this->get_schema_types_array( $flatten = true, $read_cache = false );
+			$this->get_schema_types( $flatten = true, $read_cache = false );
 
 			self::get_schema_type_row_class( $name = 'schema_type', $read_cache = false );
 
 			self::get_schema_type_row_class( $name = 'schema_review_item_type', $read_cache = false );
-		}
-
-		public function get_schema_types_select( $schema_types = null ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( ! is_array( $schema_types ) ) {
-
-				$schema_types = $this->get_schema_types_array( $flatten = false );
-			}
-
-			$schema_types = SucomUtil::array_flatten( $schema_types );
-
-			$select = array();
-
-			foreach ( $schema_types as $type_id => $type_url ) {
-
-				list( $type_context, $type_name, $type_path ) = $this->get_schema_type_url_parts( $type_url );
-
-				switch ( $this->p->options[ 'plugin_schema_types_select_format' ] ) {
-
-					case 'name':	// Options default.
-
-						$select[ $type_id ] = $type_name;
-
-						break;
-
-					case 'name_id':
-
-						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
-
-						break;
-
-					case 'id':
-
-						$select[ $type_id ] = $type_id;
-
-						break;
-
-					case 'id_url':
-
-						$select[ $type_id ] = $type_id . ' | ' . $type_path;
-
-						break;
-
-					case 'id_name':
-
-						$select[ $type_id ] = $type_id . ' | ' . $type_name;
-
-						break;
-
-					default:
-
-						$select[ $type_id ] = $type_name;
-
-						break;
-				}
-			}
-
-			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
-
-				asort( $select, SORT_STRING );
-
-			} else {
-
-				asort( $select );
-			}
-
-			return $select;
 		}
 
 		/*
@@ -995,7 +923,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Uses a transient cache object and the $types_cache class property.
 		 */
-		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
+		public function get_schema_types( $flatten = true, $read_cache = true ) {
 
 			if ( ! $read_cache ) {
 
@@ -1084,6 +1012,78 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->types_cache[ 'filtered' ];
 		}
 
+		public function get_schema_types_select( $schema_types = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( ! is_array( $schema_types ) ) {
+
+				$schema_types = $this->get_schema_types( $flatten = false );
+			}
+
+			$schema_types = SucomUtil::array_flatten( $schema_types );
+
+			$select = array();
+
+			foreach ( $schema_types as $type_id => $type_url ) {
+
+				list( $type_context, $type_name, $type_path ) = $this->get_schema_type_url_parts( $type_url );
+
+				switch ( $this->p->options[ 'plugin_schema_types_select_format' ] ) {
+
+					case 'name':	// Options default.
+
+						$select[ $type_id ] = $type_name;
+
+						break;
+
+					case 'name_id':
+
+						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
+
+						break;
+
+					case 'id':
+
+						$select[ $type_id ] = $type_id;
+
+						break;
+
+					case 'id_url':
+
+						$select[ $type_id ] = $type_id . ' | ' . $type_path;
+
+						break;
+
+					case 'id_name':
+
+						$select[ $type_id ] = $type_id . ' | ' . $type_name;
+
+						break;
+
+					default:
+
+						$select[ $type_id ] = $type_name;
+
+						break;
+				}
+			}
+
+			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
+
+				asort( $select, SORT_STRING );
+
+			} else {
+
+				asort( $select );
+			}
+
+			return $select;
+		}
+
 		/*
 		 * Returns an array of schema type ids with gparent, parent, child (in that order).
 		 *
@@ -1114,7 +1114,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
+			$schema_types = $this->get_schema_types( $flatten = true );	// Defines the 'parents' array.
 
 			if ( isset( $this->types_cache[ 'parents' ][ $child_id ] ) ) {
 
@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$children[] = $type_id;	// Add children before parents.
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
+			$schema_types = $this->get_schema_types( $flatten = true );	// Defines the 'parents' array.
 
 			foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_ids ) {
 
@@ -1283,7 +1283,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
 			$type_id      = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
-			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
+			$schema_types = $this->get_schema_types( $flatten = true );	// Uses a class variable cache.
 
 			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
 
@@ -1302,7 +1302,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
 			$type_id      = $this->p->opt->get_defaults( $opt_key );		// Uses a local cache.
-			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
+			$schema_types = $this->get_schema_types( $flatten = true );	// Uses a class variable cache.
 
 			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
 
@@ -1510,7 +1510,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $type_id ) ) {	// Not null, false, 0, or empty string.
 
-				$schema_types = $this->get_schema_types_array( $flatten = true );
+				$schema_types = $this->get_schema_types( $flatten = true );
 
 				if ( 'none' !== $type_id && isset( $schema_types[ $type_id ] ) ) {
 
@@ -1532,7 +1532,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_ids = array();
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$schema_types = $this->get_schema_types( $flatten = true );
 
 			foreach ( $schema_types as $id => $url ) {
 
@@ -1550,7 +1550,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_schema_type_url_id( $type_url, $default_id = false ) {
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$schema_types = $this->get_schema_types( $flatten = true );
 
 			foreach ( $schema_types as $id => $url ) {
 
@@ -4455,6 +4455,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Thing > Organization > Local Business.
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
+		}
+
+		/*
+		 * Deprecated on 2023/07/13.
+		 */
+		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
+
+			return $this->get_schema_types( $flatten, $read_cache );
 		}
 
 		/*

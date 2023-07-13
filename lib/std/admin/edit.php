@@ -292,7 +292,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 		public function filter_metabox_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
 			$currencies          = SucomUtil::get_currency_abbrev();
-			$schema_types        = $this->p->schema->get_schema_types_select();
 			$item_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_review_item_type' );
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
@@ -397,9 +396,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_type',
-					'content'  => $form->get_no_select( 'schema_review_item_type', $schema_types,
-						$css_class = 'schema_type', $css_id = '', $is_assoc = true,
-							$selected = false, $event_names = array( 'on_focus_load_json', 'on_show_unhide_rows' ),
+					'content'  => $form->get_no_select( 'schema_review_item_type', $select_names[ 'schema_types' ],
+						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $selected = false,
+							$event_names = array( 'on_focus_load_json', 'on_show_unhide_rows' ),
 								$event_args = array(
 									'json_var'  => 'schema_types',
 									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
@@ -915,11 +914,10 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
 
-			$currencies       = SucomUtil::get_currency_abbrev();
-			$dimension_units  = WpssoUtilUnits::get_dimension_units();
-			$fl_volume_units  = WpssoUtilUnits::get_fluid_volume_units();
-			$weight_units     = WpssoUtilUnits::get_weight_units();
-			$google_prod_cats = $this->p->util->get_google_product_categories();
+			$currencies      = SucomUtil::get_currency_abbrev();
+			$dimension_units = WpssoUtilUnits::get_dimension_units();
+			$fl_volume_units = WpssoUtilUnits::get_fluid_volume_units();
+			$weight_units    = WpssoUtilUnits::get_weight_units();
 
 			/*
 			 * Note that unlike most schema option names, product options start with 'product_' and not 'schema_'.
@@ -953,7 +951,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
-					'content'  => $form->get_no_select( 'product_category', $google_prod_cats,
+					'content'  => $form->get_no_select( 'product_category', $select_names[ 'google_prod_cats' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_brand' => array(

@@ -738,6 +738,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "1e89103762be72b0720eda0468e62b90",
+      "css": "globe-alt",
+      "code": 59445,
+      "src": "linecons"
+    },
+    {
+      "uid": "197375a3cea8cb90b02d06e4ddf1433d",
+      "css": "globe",
+      "code": 59446,
+      "src": "fontawesome"
+    },
+    {
       "uid": "63c24054a09c4e7ec9dcc3eced0147b7",
       "css": "dashicons-code-standards",
       "code": 59412,
