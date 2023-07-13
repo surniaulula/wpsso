@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-07-13 10:25-0700\n"
+"PO-Revision-Date: 2023-07-13 10:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -7177,7 +7177,7 @@ msgstr "Une déclaration sur les activités d'engagement du public (pour les mé
 
 #: lib/messages-tooltip-meta-org.php:125
 msgid "A link to the masthead page or a page listing top editorial management."
-msgstr "Un lien vers la page masthead ou une page répertoriant la haute direction éditoriale."
+msgstr "Un lien vers la page d'en-tête administratif ou une page répertoriant la haute direction éditoriale."
 
 #: lib/messages-tooltip-meta-org.php:131
 msgid "A statement on coverage priorities, including any public agenda or stance on issues."
