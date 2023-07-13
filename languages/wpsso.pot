@@ -7706,7 +7706,7 @@ msgstr ""
 #: lib/messages-tooltip-meta-org.php:98
 msgid ""
 "A statement describing (in news media, the newsroom's) diversity policy on "
-"both staffing and sources. "
+"both staffing and sources."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:104

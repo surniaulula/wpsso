@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 				case 'tooltip-meta-org_diversity_policy_url':	// Diversity Policy URL.
 
-					$text .= __( 'A statement describing (in news media, the newsroom\'s) diversity policy on both staffing and sources. ', 'wpsso' );
+					$text .= __( 'A statement describing (in news media, the newsroom\'s) diversity policy on both staffing and sources.', 'wpsso' );
 
 					break;
 
