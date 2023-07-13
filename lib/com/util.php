@@ -2940,9 +2940,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$cache_index = '';
 
 			if ( is_array( $mixed ) ) {
-			
+
 				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
-					
+
 					$cache_index .= '_order:' . $mixed[ 'query_vars' ][ 'order' ];
 				}
 

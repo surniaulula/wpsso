@@ -918,7 +918,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;
 			}
-			
+
 			/*
 			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a post page.
 			 */
@@ -2161,7 +2161,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post status is 'trash'.
 			 */
 			} elseif ( ! $this->post_can_have_meta( $post_id ) ) {
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
@@ -2553,11 +2553,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function post_can_have_meta( $post ) {
 
 			if ( is_numeric( $post ) ) {
-			
+
 				$post_id     = $post;
 				$post_type   = get_post_type( $post_id );
 				$post_status = get_post_status( $post_id );
-				
+
 			} elseif ( $post instanceof WP_Post ) {
 
 				$post_id     = isset( $post->ID ) ? $post->ID : 0;
@@ -2570,14 +2570,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->p->debug->log( 'exiting early: post argument is not numeric or an instance of WP_Post' );
 				}
-	
+
 				return false;
 			}
 
 			if ( empty( $post_id ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->log( 'exiting early: post id is empty' );
 				}
 
@@ -2586,7 +2586,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} elseif ( empty( $post_type ) ) {
 
 				if ( $this->p->debug->enabled ) {
-			
+
 					$this->p->debug->log( 'exiting early: post type is empty' );
 				}
 
@@ -2595,7 +2595,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} elseif ( empty( $post_status ) ) {
 
 				if ( $this->p->debug->enabled ) {
-			
+
 					$this->p->debug->log( 'exiting early: post status is empty' );
 				}
 

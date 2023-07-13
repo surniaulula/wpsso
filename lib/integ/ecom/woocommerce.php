@@ -714,7 +714,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			if ( ! empty( $avail_variations ) ) {
 
 				foreach( $avail_variations as $num => $variation ) {
-				
+
 					if ( $var_product = $this->p->util->wc->get_variation_product( $variation ) ) {
 
 						$var_product_price      = $this->get_product_price( $var_product );
@@ -2184,7 +2184,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * Empty variation descriptions are fixed in WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product().
 		 */
 		private function add_product_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
-			
+
 			$mt_ecom[ 'product:description' ] = $this->get_product_variation_description( $mod, $product, $variation );
 		}
 

@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 * Document SSO > Edit Schema tab.
 				 */
 				case 'info-meta-schema-item-list':
-					
+
 					$text = '<blockquote class="top-info">';
 
 					$text .= '<p>';

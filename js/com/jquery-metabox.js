@@ -256,7 +256,7 @@ function sucomTabs( metabox_name, tab_name ) {
 function sucomScrollIntoView( container_id ) {
 
 	if ( ! container_id ) return false;	// A container id string is required.
-	
+
 	var wpbody_content   = jQuery( 'div#wpbody-content' );	// Located below the admin toolbar.
 	var container        = jQuery( container_id );
 

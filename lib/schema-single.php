@@ -1077,12 +1077,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
 				$org_opts[ 'org_schema_type' ] !== 'none' &&
 				$org_opts[ 'org_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
-				
+
 				/*
 				 * Schema NewsMediaOrganization type properties.
 				 */
 				if ( $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' ) ) {
-			
+
 					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
 						'masthead'                        => 'org_masthead_url',		// Masthead Page URL.
 						'missionCoveragePrioritiesPolicy' => 'org_coverage_policy_url',		// Coverage Priorities Policy URL.

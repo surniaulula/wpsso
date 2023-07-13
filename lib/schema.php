@@ -1581,9 +1581,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_schema_type_url_parts_by_id( $type_id ) {
-			
+
 			$type_url = $this->get_schema_type_url( $type_id );
-			
+
 			return $this->get_schema_type_url_parts( $type_url );
 		}
 
@@ -1853,7 +1853,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_banner_url:width',
 				'org_banner_url:height',
 			) as $opt_key ) {
-				
+
 				$org_opts[ $opt_key ] = SucomUtil::get_key_value( 'site_' . $opt_key, $wpsso->options, $mixed );
 			}
 
@@ -2523,74 +2523,74 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * howto.section, howto.step, or offer.catalog).
 			 */
 			if ( 'item.list' === $page_type_id ) {
-				
+
 				$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListUnordered';
 
 				if ( isset( $mod[ 'query_vars' ][ 'order' ] ) ) {
-	
+
 					switch ( $mod[ 'query_vars' ][ 'order' ] ) {
-	
+
 						case 'ASC':
-	
+
 							$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderAscending';
-	
+
 							break;
-	
+
 						case 'DESC':
-	
+
 							$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderDescending';
-	
+
 							break;
 					}
 				}
-	
+
 				$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
-	
+
 				if ( $wpsso->debug->enabled ) {
-	
+
 					$wpsso->debug->log( 'page_posts_mods array has ' . count( $page_posts_mods ) . ' elements' );
 				}
-	
+
 				if ( empty( $json_data[ $prop_name ] ) ) {
-	
+
 					$json_data[ $prop_name ] = array();
-	
+
 				} elseif ( ! is_array( $json_data[ $prop_name ] ) ) {	// Convert single value to an array.
-	
+
 					$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
 				}
-	
+
 				foreach ( $page_posts_mods as $post_mod ) {
-	
+
 					$item_count++;
-	
+
 					$post_canonical_url = $wpsso->util->get_canonical_url( $post_mod );
-	
+
 					$post_json_data = self::get_schema_type_context( 'https://schema.org/ListItem', array(
 						'position' => $item_count,
 						'url'      => $post_canonical_url,
 					) );
-	
+
 					if ( $wpsso->debug->enabled ) {
-	
+
 						$wpsso->debug->log( 'adding post ID ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $item_count );
 					}
-	
+
 					$json_data[ $prop_name ][] = $post_json_data;	// Add the post data.
 				}
-	
+
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_json_prop_https_schema_org_' . $prop_name );
-	
+
 				if ( $wpsso->debug->enabled ) {
-	
+
 					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
 				}
-	
+
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
-	
+
 				WpssoSchema::check_required_props( $json_data, $mod, array( $prop_name ), $page_type_id );
 			}
-	
+
 			return $item_count;
 		}
 
