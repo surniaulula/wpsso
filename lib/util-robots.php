@@ -129,7 +129,13 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			}
 
 			$directives = self::get_default_directives();
-			$md_opts    = array();
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'default directives', $directives );
+			}
+
+			$md_opts = array();
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
@@ -190,12 +196,14 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			 */
 			self::sanitize_directives( $directives );
 
+			$directives = apply_filters( 'wpsso_robots_directives', $directives, $mod );
+
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'directives', $directives );
+				$this->p->debug->log_arr( 'returning directives', $directives );
 			}
 
-			return apply_filters( 'wpsso_robots_directives', $directives, $mod );
+			return $directives;
 		}
 
 		/*
