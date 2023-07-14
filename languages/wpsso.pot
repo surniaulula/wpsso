@@ -4769,7 +4769,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:357 gettext/gettext-lib-pro.php:368
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1685 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util.php:3891
+#: lib/pro/util/shorten.php:526 lib/util.php:3893
 msgid "%s error:"
 msgstr ""
 
@@ -5499,7 +5499,7 @@ msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2538 lib/util.php:3233
+#: lib/admin.php:2538 lib/util.php:3235
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -7032,12 +7032,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1693 lib/register.php:330 lib/util.php:884 lib/util.php:990
-#: lib/util.php:1022 lib/util.php:3211
+#: lib/media.php:1693 lib/register.php:330 lib/util.php:886 lib/util.php:992
+#: lib/util.php:1024 lib/util.php:3213
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1694 lib/util.php:885 lib/util.php:3212
+#: lib/media.php:1694 lib/util.php:887 lib/util.php:3214
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12822,202 +12822,202 @@ msgctxt "option value"
 msgid "st"
 msgstr ""
 
-#: lib/util.php:232
+#: lib/util.php:234
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util.php:573
+#: lib/util.php:575
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:573
+#: lib/util.php:575
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:886
+#: lib/util.php:888
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1363
+#: lib/util.php:1365
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1465
+#: lib/util.php:1467
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1596
+#: lib/util.php:1598
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1620
+#: lib/util.php:1622
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1650
+#: lib/util.php:1652
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1848
+#: lib/util.php:1850
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1862
+#: lib/util.php:1864
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3213
+#: lib/util.php:3215
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3236
+#: lib/util.php:3238
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3238
+#: lib/util.php:3240
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3240
+#: lib/util.php:3242
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3242
+#: lib/util.php:3244
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3637
+#: lib/util.php:3639
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3638
+#: lib/util.php:3640
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3642
+#: lib/util.php:3644
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3643
+#: lib/util.php:3645
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3647
+#: lib/util.php:3649
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3648
+#: lib/util.php:3650
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3652
+#: lib/util.php:3654
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3653
+#: lib/util.php:3655
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3657
+#: lib/util.php:3659
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3658
+#: lib/util.php:3660
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3662
+#: lib/util.php:3664
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3663
+#: lib/util.php:3665
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3667
+#: lib/util.php:3669
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3668
+#: lib/util.php:3670
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3672
+#: lib/util.php:3674
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3673
+#: lib/util.php:3675
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3677
+#: lib/util.php:3679
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3678
+#: lib/util.php:3680
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3683
+#: lib/util.php:3685
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3684
+#: lib/util.php:3686
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3754
+#: lib/util.php:3756
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3764
+#: lib/util.php:3766
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: lib/util.php:3867
+#: lib/util.php:3869
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util.php:3893
+#: lib/util.php:3895
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""

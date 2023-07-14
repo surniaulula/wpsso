@@ -31,12 +31,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		private $cache_uniq_urls   = array();	// Array to detect duplicate image URLs.
 
 		private $is_functions = array(
+			'is_404',
 			'is_admin',
 			'is_archive',
 			'is_attachment',
 			'is_author',
 			'is_category',
 			'is_customize_preview',
+			'is_embed',
 			'is_front_page',
 			'is_home',
 			'is_multisite',
