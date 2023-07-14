@@ -172,6 +172,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				if ( 'noindex' === $directive_key ) {
 
 					$value = apply_filters( 'wpsso_robots_is_noindex', $value, $mod );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'robots is noindex = ' . SucomUtil::get_bool_string( $value ) );
+					}
 				}
 
 				if ( $default_value !== $value ) {
@@ -184,6 +189,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			 * Sanity check - make sure inverse directives are removed.
 			 */
 			self::sanitize_directives( $directives );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'directives', $directives );
+			}
 
 			return apply_filters( 'wpsso_robots_directives', $directives, $mod );
 		}
