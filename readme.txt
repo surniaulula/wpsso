@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.17.0-dev.1 (2023/07/15)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Anchor ID" input field for How-To and Recipe steps.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.16.0 (2023/07/13)**
 
 * **New Features**
@@ -816,6 +830,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.17.0-dev.1 =
+
+(2023/07/15) Added a new "Anchor ID" input field for How-To and Recipe steps.
 
 = 15.16.0 =
 
