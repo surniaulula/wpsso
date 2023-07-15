@@ -959,11 +959,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_dimensions( $name_prefix, $is_disabled = false ) {
 
-			$html = $this->get_input( $name_prefix . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x';
+			$html = $this->get_input( $name_prefix . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled );
+			$html .= 'x' . "\n";
 			$html .= $this->get_input( $name_prefix . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
 			$html .= $this->get_checkbox( $name_prefix . '_crop', '', '', $is_disabled ) . ' ';
 			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ';
-			$html .= '<div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
+			$html .= '<div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . "\n";
 			$html .= $this->get_input_image_crop_area( $name_prefix, $add_none = false, $is_disabled );
 			$html .= '</div>';
 
@@ -1836,10 +1837,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= ' id="multi_' . $input_id . '"';
 				$html .= $display || '' !== $input_value ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
-
+				$html .= '<div class="multi_input_el">' . "\n";	// Container for each input field.
 				$html .= '<input type="text"';
 				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
@@ -1847,9 +1847,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $input_id ? ' id="text_' . $input_id . '"' : '';	// Already sanitized.
 				$html .= ' value="' . esc_attr( $input_value ) . '"';
 				$html .= ' ' . $el_attr . '/>' . "\n";
-
+				$html .= '</div><!-- .multi_input_el -->' . "\n";
 				$html .= '</div><!-- .multi_input -->' . "\n";
-				$html .= '</div><!-- .multi_container -->' . "\n";
+				$html .= '</div><!-- .multi_container.input_multi -->' . "\n";
 
 				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;	// Allow for 0.
 			}
@@ -1884,12 +1884,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$el_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
 
-				$html .= '<div class="' . $multi_class . '" id="multi_' . esc_attr( $multi_id ) . '"';
+				$html .= '<div class="' . $multi_class . '" id="multi_' . esc_attr( $multi_id ) . '"';	// .multi_container.mixed_multi.
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-
 				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
-
 				$html .= '<div class="multi_input">' . "\n";
 
 				$one_more = false;	// Return to default.
@@ -1947,6 +1945,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						continue;
 					}
 
+					$html .= '<div class="multi_input_el">' . "\n";
+
 					/*
 					 * Default paragraph display is an inline-block.
 					 */
@@ -1954,14 +1954,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$multi_label_num++;
 
-						$html .= '<p class="multi_label' .
-							( 1 === $multi_label_num ? ' first_label' : '' ) . '">' .
-							$atts[ 'input_label' ] . ':</p> ';
+						$html .= '<div class="multi_input_label ' . $container_class . ( 1 === $multi_label_num ? ' first_label' : '' ) . '">';
+						$html .= $atts[ 'input_label' ] . ':';
+						$html .= '</div>' . "\n";
 					}
 
 					if ( isset( $atts[ 'input_type' ] ) ) {
 
 						switch ( $atts[ 'input_type' ] ) {
+
+							case 'image':
+
+								$html .= '<div tabindex="-1" ' . $el_attr . ' style="display:inline-block;">' . "\n";
+								$html .= $this->get_input_image_upload( $input_name, $holder, $is_disabled, $el_attr );
+								$html .= '</div>'. "\n";
+
+								break;
 
 							case 'radio':
 
@@ -1996,53 +2004,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								if ( ! empty( $radio_inputs ) ) {
 
-									$html .= '<p';
+									$html .= '<div';
 									$html .= ' class="' . $container_class . '"';	// Already sanitized.
 									$html .= ' id="' . $input_id . '"';		// Already sanitized.
 									$html .= ' ' . $el_attr . '>';
 									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
-									$html .= '</p>' . "\n";
-								}
-
-								break;
-
-							case 'text':
-
-								$input_value = $in_options ? $this->options[ $input_name ] : '';
-
-								$html .= '<input type="text"';
-								$html .= $is_disabled ? ' disabled="disabled"' : '';
-								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
-								$html .= ' title="' . esc_attr( $input_title ) . '"';
-								$html .= ' class="' . $input_class . '"';	// Already sanitized.
-								$html .= ' id="text_' . $input_id . '"';	// Already sanitized.
-								$html .= ' value="' . esc_attr( $input_value ) . '"';
-								$html .= ' ' . $el_attr . '/>' . "\n";
-
-								if ( $input_value || is_numeric( $input_value ) ) {
-
-									$one_more = true;
-								}
-
-								break;
-
-							case 'textarea':
-
-								$input_value = $in_options ? $this->options[ $input_name ] : '';
-
-								$html .= '<textarea';
-								$html .= $is_disabled ? ' disabled="disabled"' : '';
-								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
-								$html .= ' title="' . esc_attr( $input_title ) . '"';
-								$html .= ' class="' . $input_class . '"';	// Already sanitized.
-								$html .= ' id="textarea_' . $input_id . '"';	// Already sanitized.
-								$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder );
-								$html .= ' ' . $el_attr . '>' . esc_attr( $input_value );
-								$html .= '</textarea>' . "\n";
-
-								if ( $input_value || is_numeric( $input_value ) ) {
-
-									$one_more = true;
+									$html .= '</div>' . "\n";
 								}
 
 								break;
@@ -2219,21 +2186,53 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								break;
 
-							case 'image':
+							case 'text':
 
-								$html .= '<div tabindex="-1" ' . $el_attr . '>' . "\n";
+								$input_value = $in_options ? $this->options[ $input_name ] : '';
 
-								$html .= $this->get_input_image_upload( $input_name, $holder, $is_disabled, $el_attr );
+								$html .= '<input type="text"';
+								$html .= $is_disabled ? ' disabled="disabled"' : '';
+								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
+								$html .= ' title="' . esc_attr( $input_title ) . '"';
+								$html .= ' class="' . $input_class . '"';	// Already sanitized.
+								$html .= ' id="text_' . $input_id . '"';	// Already sanitized.
+								$html .= ' value="' . esc_attr( $input_value ) . '"';
+								$html .= ' ' . $el_attr . '/>' . "\n";
 
-								$html .= '</div>' . "\n";
+								if ( $input_value || is_numeric( $input_value ) ) {
+
+									$one_more = true;
+								}
+
+								break;
+
+							case 'textarea':
+
+								$input_value = $in_options ? $this->options[ $input_name ] : '';
+
+								$html .= '<textarea';
+								$html .= $is_disabled ? ' disabled="disabled"' : '';
+								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
+								$html .= ' title="' . esc_attr( $input_title ) . '"';
+								$html .= ' class="' . $input_class . '"';	// Already sanitized.
+								$html .= ' id="textarea_' . $input_id . '"';	// Already sanitized.
+								$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder );
+								$html .= ' ' . $el_attr . '>' . esc_attr( $input_value );
+								$html .= '</textarea>' . "\n";
+
+								if ( $input_value || is_numeric( $input_value ) ) {
+
+									$one_more = true;
+								}
 
 								break;
 						}
 					}
+					
+					$html .= '</div><!-- .multi_input_el -->' . "\n";
 				}
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
-
 				$html .= '</div><!-- .multi_container.mixed_multi -->' . "\n";
 			}
 
@@ -2284,9 +2283,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="multi_container select_multi" id="multi_' . $input_id . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
+				$html .= '<div class="multi_input_el">' . "\n";	// Container for each input field.
 
 				/*
 				 * $is_disabled can be true, false, or an option value for the disabled select.
@@ -2296,11 +2295,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow comment.
 
+				$html .= '</div><!-- .multi_input_el -->' . "\n";
 				$html .= '</div><!-- .multi_input -->' . "\n";
-				$html .= '</div><!-- .multi_container -->' . "\n";
+				$html .= '</div><!-- .multi_container.select_multi -->' . "\n";
 
-				$one_more = 'none' === $input_value ||
-					( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;	// Allow for 0.
+				$one_more = 'none' === $input_value || ( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;	// Allow for 0.
 			}
 
 			return $html;
@@ -2356,10 +2355,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= ' id="multi_' . $input_id . '"';
 				$html .= $display || '' !== $input_value ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-
 				$html .= '<div class="multi_number">' . $disp_num . '.</div>' . "\n";
 				$html .= '<div class="multi_input">' . "\n";
-
+				$html .= '<div class="multi_input_el">' . "\n";	// Container for each input field.
 				$html .= '<textarea';
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
 				$html .= ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"';
@@ -2367,9 +2365,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $input_id ? ' id="textarea_' . $input_id . '"' : '';	// Already sanitized.
 				$html .= ' ' . $el_attr . '>' . esc_attr( $input_value );
 				$html .= '</textarea>' . "\n";
-
+				$html .= '</div><!-- .multi_input_el -->' . "\n";
 				$html .= '</div><!-- .multi_input -->' . "\n";
-				$html .= '</div><!-- .multi_container -->' . "\n";
+				$html .= '</div><!-- .multi_container.textarea_multi -->' . "\n";
 
 				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;	// Allow for 0.
 			}
@@ -2651,6 +2649,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$html .= '<div class="multi_container">' . "\n";
 					$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 					$html .= '<div class="multi_input">' . "\n";
+					$html .= '<div class="multi_input_el">' . "\n";	// Container for each input field.
 				}
 
 				$html .= '<input type="text" disabled="disabled"';
@@ -2674,6 +2673,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( $show_max > 1 ) {
 
+					$html .= '</div><!-- .multi_input_el -->' . "\n";
 					$html .= '</div><!-- .multi_input -->' . "\n";
 					$html .= '</div><!-- .multi_container -->' . "\n";
 				}

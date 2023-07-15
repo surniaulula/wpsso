@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.16.0\n"
+"Project-Id-Version: WPSSO Core 15.17.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -470,36 +470,36 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:32 gettext/gettext-lib-com.php:42
-#: lib/com/form.php:924 lib/com/form.php:2606
+#: lib/com/form.php:924 lib/com/form.php:2604
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:925 lib/com/form.php:2607
+#: lib/com/form.php:925 lib/com/form.php:2605
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:926 lib/com/form.php:2608
+#: lib/com/form.php:926 lib/com/form.php:2606
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:927 lib/com/form.php:2609
+#: lib/com/form.php:927 lib/com/form.php:2607
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:36 lib/com/form.php:965
+#: gettext/gettext-lib-com.php:36 lib/com/form.php:966
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:37 gettext/gettext-lib-pro.php:220
-#: gettext/gettext-lib-pro.php:318 lib/com/form.php:966
+#: gettext/gettext-lib-pro.php:318 lib/com/form.php:967
 #: lib/pro/admin/edit.php:291 lib/pro/admin/edit.php:1158
 #: lib/std/admin/edit.php:321 lib/std/admin/edit.php:1018
 msgctxt "option comment"
@@ -507,14 +507,14 @@ msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:39 lib/com/form.php:976
+#: gettext/gettext-lib-com.php:39 lib/com/form.php:977
 #: lib/media-filters.php:116 lib/media.php:1505 lib/media.php:1655
 #: lib/media.php:3313
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:41 lib/com/form.php:1059 lib/script.php:373
+#: gettext/gettext-lib-com.php:41 lib/com/form.php:1060 lib/script.php:373
 msgid "Select Image"
 msgstr ""
 
@@ -6178,7 +6178,7 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/edit-media.php:114 lib/edit-media.php:172 lib/edit-media.php:219
-#: lib/edit-media.php:272 lib/edit-schema.php:537 lib/edit-schema.php:641
+#: lib/edit-media.php:272 lib/edit-schema.php:542 lib/edit-schema.php:651
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
@@ -6258,7 +6258,7 @@ msgstr ""
 msgid "oEmbed HTML Not Available."
 msgstr ""
 
-#: lib/edit-schema.php:94 lib/edit-schema.php:527 lib/edit-schema.php:631
+#: lib/edit-schema.php:94 lib/edit-schema.php:527 lib/edit-schema.php:636
 msgctxt "option label"
 msgid "Name"
 msgstr ""
@@ -6268,7 +6268,7 @@ msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: lib/edit-schema.php:108 lib/edit-schema.php:532 lib/edit-schema.php:636
+#: lib/edit-schema.php:108 lib/edit-schema.php:532 lib/edit-schema.php:641
 msgctxt "option label"
 msgid "Description"
 msgstr ""
@@ -6402,12 +6402,12 @@ msgctxt "option label"
 msgid "How-To Makes"
 msgstr ""
 
-#: lib/edit-schema.php:486 lib/edit-schema.php:591
+#: lib/edit-schema.php:486 lib/edit-schema.php:596
 msgctxt "option label"
 msgid "Preparation Time"
 msgstr ""
 
-#: lib/edit-schema.php:493 lib/edit-schema.php:605
+#: lib/edit-schema.php:493 lib/edit-schema.php:610
 msgctxt "option label"
 msgid "Total Time"
 msgstr ""
@@ -6432,167 +6432,172 @@ msgctxt "option label"
 msgid "How-To %1$s step or %2$s section of steps:"
 msgstr ""
 
-#: lib/edit-schema.php:558
+#: lib/edit-schema.php:537 lib/edit-schema.php:646
+msgctxt "option label"
+msgid "Anchor ID"
+msgstr ""
+
+#: lib/edit-schema.php:563
 msgctxt "metabox title"
 msgid "Recipe Information"
 msgstr ""
 
-#: lib/edit-schema.php:563
+#: lib/edit-schema.php:568
 msgctxt "option label"
 msgid "Recipe Cuisine"
 msgstr ""
 
-#: lib/edit-schema.php:570
+#: lib/edit-schema.php:575
 msgctxt "option label"
 msgid "Recipe Course"
 msgstr ""
 
-#: lib/edit-schema.php:577
+#: lib/edit-schema.php:582
 msgctxt "option label"
 msgid "Recipe Makes"
 msgstr ""
 
-#: lib/edit-schema.php:584
+#: lib/edit-schema.php:589
 msgctxt "option label"
 msgid "Cooking Method"
 msgstr ""
 
-#: lib/edit-schema.php:598
+#: lib/edit-schema.php:603
 msgctxt "option label"
 msgid "Cooking Time"
 msgstr ""
 
-#: lib/edit-schema.php:612 lib/messages.php:945
+#: lib/edit-schema.php:617 lib/messages.php:945
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/edit-schema.php:620 lib/messages.php:950
+#: lib/edit-schema.php:625 lib/messages.php:950
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/edit-schema.php:626
+#: lib/edit-schema.php:631
 msgctxt "option label"
 msgid "Recipe %1$s instruction or %2$s section of instructions:"
 msgstr ""
 
-#: lib/edit-schema.php:655
+#: lib/edit-schema.php:665
 msgctxt "metabox title"
 msgid "Recipe Nutrition Information"
 msgstr ""
 
-#: lib/edit-schema.php:660
+#: lib/edit-schema.php:670
 msgctxt "option label"
 msgid "Serving Size"
 msgstr ""
 
-#: lib/edit-schema.php:667
+#: lib/edit-schema.php:677
 msgctxt "option label"
 msgid "Calories"
 msgstr ""
 
-#: lib/edit-schema.php:670
+#: lib/edit-schema.php:680
 msgctxt "option comment"
 msgid "calories"
 msgstr ""
 
-#: lib/edit-schema.php:675
+#: lib/edit-schema.php:685
 msgctxt "option label"
 msgid "Protein"
 msgstr ""
 
-#: lib/edit-schema.php:678
+#: lib/edit-schema.php:688
 msgctxt "option comment"
 msgid "grams of protein"
 msgstr ""
 
-#: lib/edit-schema.php:683
+#: lib/edit-schema.php:693
 msgctxt "option label"
 msgid "Fiber"
 msgstr ""
 
-#: lib/edit-schema.php:686
+#: lib/edit-schema.php:696
 msgctxt "option comment"
 msgid "grams of fiber"
 msgstr ""
 
-#: lib/edit-schema.php:691
+#: lib/edit-schema.php:701
 msgctxt "option label"
 msgid "Carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:694
+#: lib/edit-schema.php:704
 msgctxt "option comment"
 msgid "grams of carbohydrates"
 msgstr ""
 
-#: lib/edit-schema.php:699
+#: lib/edit-schema.php:709
 msgctxt "option label"
 msgid "Sugar"
 msgstr ""
 
-#: lib/edit-schema.php:702
+#: lib/edit-schema.php:712
 msgctxt "option comment"
 msgid "grams of sugar"
 msgstr ""
 
-#: lib/edit-schema.php:707
+#: lib/edit-schema.php:717
 msgctxt "option label"
 msgid "Sodium"
 msgstr ""
 
-#: lib/edit-schema.php:710
+#: lib/edit-schema.php:720
 msgctxt "option comment"
 msgid "milligrams of sodium"
 msgstr ""
 
-#: lib/edit-schema.php:715
+#: lib/edit-schema.php:725
 msgctxt "option label"
 msgid "Fat"
 msgstr ""
 
-#: lib/edit-schema.php:718
+#: lib/edit-schema.php:728
 msgctxt "option comment"
 msgid "grams of fat"
 msgstr ""
 
-#: lib/edit-schema.php:723
+#: lib/edit-schema.php:733
 msgctxt "option label"
 msgid "Saturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:726
+#: lib/edit-schema.php:736
 msgctxt "option comment"
 msgid "grams of saturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:731
+#: lib/edit-schema.php:741
 msgctxt "option label"
 msgid "Unsaturated Fat"
 msgstr ""
 
-#: lib/edit-schema.php:734
+#: lib/edit-schema.php:744
 msgctxt "option comment"
 msgid "grams of unsaturated fat"
 msgstr ""
 
-#: lib/edit-schema.php:739
+#: lib/edit-schema.php:749
 msgctxt "option label"
 msgid "Trans Fat"
 msgstr ""
 
-#: lib/edit-schema.php:742
+#: lib/edit-schema.php:752
 msgctxt "option comment"
 msgid "grams of trans fat"
 msgstr ""
 
-#: lib/edit-schema.php:747
+#: lib/edit-schema.php:757
 msgctxt "option label"
 msgid "Cholesterol"
 msgstr ""
 
-#: lib/edit-schema.php:750
+#: lib/edit-schema.php:760
 msgctxt "option comment"
 msgid "milligrams of cholesterol"
 msgstr ""

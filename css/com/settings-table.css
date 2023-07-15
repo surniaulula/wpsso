@@ -703,6 +703,23 @@ table.sucom-settings th.textinfo p {
 	margin:2px 2px 10px 2px;
 }
 
+/*
+ * <div class="multi_container mixed_multi" style="display:none;">
+ *	<div class="multi_number">
+ *	</div>
+ *	<div class="multi_input">
+ *		<div class="multi_input_el">
+ *			<div class="multi_label">
+ *			</div>
+ *		</div>
+ *		<div class="multi_input_el">
+ *			<div class="multi_label">
+ *			</div>
+ *		</div>
+ *	</div>
+ * </div><!-- multi_container.mixed_multi -->
+ *
+ */
 table.sucom-settings td div.multi_container {
 	display:table;
 	border-spacing:0;
@@ -713,7 +730,7 @@ table.sucom-settings td div.multi_container.mixed_multi {
 }
 
 table.sucom-settings td div.multi_container.mixed_multi.single_line {
-	margin-bottom:6px;
+	margin-bottom:5px;
 }
 
 table.sucom-settings td div.multi_number {
@@ -721,7 +738,7 @@ table.sucom-settings td div.multi_number {
 	min-width:20px;
 	vertical-align:top;
 	text-align:right;
-	padding:2px 8px 0 0;
+	padding:0 8px 0 0;
 }
 
 table.sucom-settings td div.multi_input {
@@ -729,23 +746,22 @@ table.sucom-settings td div.multi_input {
 	width:100%;
 }
 
+table.sucom-settings td div.multi_input_el {
+	margin-bottom:5px;
+}
+
+table.sucom-settings td div.multi_input_label {
+	min-width:75px;
+}
+
+table.sucom-settings td div.multi_input_label.howto_step_id,
+table.sucom-settings td div.multi_input_label.howto_step_img {
+	display:inline-block;
+}
+
 table.sucom-settings td div.multi_input textarea.howto_step_text,
 table.sucom-settings td div.multi_input textarea.recipe_instruction_text {
 	height:5em;
-}
-
-table.sucom-settings td div.multi_input input[type="text"].long_name,
-table.sucom-settings td div.multi_input select.long_name {
-	width:340px;
-}
-
-table.sucom-settings td div.multi_input p.howto_step_section,
-table.sucom-settings td div.multi_input p.recipe_instruction_section {
-	margin:0 0 2px 0;
-}
-
-table.sucom-settings td p.multi_label {
-	margin:0;
 }
 
 table.sucom-settings td select,
@@ -789,11 +805,9 @@ table.sucom-settings td select.unit_text { width:100px; }
 
 table.sucom-settings td select.short { width:110px; }
 
+table.sucom-settings td select.locale,
+table.sucom-settings td select.year,
 table.sucom-settings td select.size_group { width:124px; }
-
-table.sucom-settings td select.locale { width:124px; }
-
-table.sucom-settings td select.year { width:124px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
@@ -837,23 +851,22 @@ table.sucom-settings td input[type="text"].xshort { width:60px; }
 
 table.sucom-settings td input[type="text"].bigchars { width:80px; }	/* Character length (big number). */
 
-table.sucom-settings td input[type="text"].rating { width:83px; }	/* Rating int, from int, and to int. */
-
-table.sucom-settings td input[type="text"].price { width:83px; }
+table.sucom-settings td input[type="text"].rating,		/* Rating int, from int, and to int. */
+table.sucom-settings td input[type="text"].price,
+table.sucom-settings td input[type="text"].year,
+table.sucom-settings td input[type="text"].sucom_image_upload_id { width:85px; }
 
 table.sucom-settings td input[type="text"].short { width:110px; }
-
-table.sucom-settings td input[type="text"].year { width:110px; }
 
 table.sucom-settings td input[type="text"].unit_value { width:145px; }
 
 table.sucom-settings td input[type="text"].medium { width:180px; }
 
-table.sucom-settings td input[type="text"].offer_name { width:220px; }
-
+table.sucom-settings td input[type="text"].anchor,		/* HTML anchor ID. */
 table.sucom-settings td input[type="text"].latitude,
 table.sucom-settings td input[type="text"].longitude,
-table.sucom-settings td input[type="text"].altitude { width:220px; }
+table.sucom-settings td input[type="text"].altitude,
+table.sucom-settings td input[type="text"].offer_name { width:200px; }
 
 table.sucom-settings td input[type="text"].tid { width:320px; }
 
@@ -974,7 +987,7 @@ table.sucom-settings .sucom_image_upload {
 }
 
 table.sucom-settings .sucom_image_upload > * {
-	margin:0 3px 0 0;
+	margin:2px;				/* Default for input fields. */
 	vertical-align:middle;
 }
 
@@ -982,11 +995,8 @@ body.rtl table.sucom-settings .sucom_image_upload > * {
 	margin:0 0 0 3px;
 }
 
-table.sucom-settings input[type="text"].sucom_image_upload_id {
-	width:90px;
-}
-
 table.sucom-settings input[type="button"].sucom_image_upload_button {
+	min-width:110px;
 }
 
 table.sucom-settings select.sucom_image_upload_lib {
