@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.17.0-dev.2 (2023/07/15)**
+**Version 15.17.0-b.1 (2023/07/15)**
 
 * **New Features**
 	* None.
@@ -831,7 +831,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.17.0-dev.2 =
+= 15.17.0-b.1 =
 
 (2023/07/15) Added a new "CSS ID" input field for How-To and Recipe steps. Fixed saving radio button options (ie. the How-To step or section option).
 
