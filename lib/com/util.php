@@ -2858,11 +2858,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Add a anchor CSS ID to the URL.
+		 * Add a anchor ID to the URL.
 		 */
-		public static function get_anchored_url( $url, $css_id ) {
+		public static function get_anchored_url( $url, $anchor_id ) {
 
-			return preg_replace( '/#.*/', '', $url ) . ( empty( $css_id ) ? '' : '#' . self::sanitize_css_id( $css_id ) );
+			return preg_replace( '/#.*/', '', $url ) . ( empty( $anchor_id ) ? '' : '#' . self::sanitize_css_id( $anchor_id ) );
 		}
 
 		public static function get_mod_anchor( array $mod ) {

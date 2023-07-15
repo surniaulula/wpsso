@@ -170,8 +170,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'one_line';
 
-					case 'schema_howto_step_css_id':		// How-To Step CSS ID.
-					case 'schema_recipe_instruction_css_id':	// Recipe Instruction CSS ID.
+					case 'schema_howto_step_anchor':		// How-To Step Anchor ID.
+					case 'schema_recipe_instruction_anchor':	// Recipe Instruction Anchor ID.
 
 						return 'css_id';
 

@@ -150,6 +150,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				944 => array(	// Renamed for WPSSO Core v14.4.0.
 					'schema_keywords' => 'schema_keywords_csv',
 				),
+				977 => array(
+					'schema_howto_step_css_id'         => 'schema_howto_step_anchor',
+					'schema_recipe_instruction_css_id' => 'schema_recipe_instruction_anchor',
+				),
 			),
 		);
 

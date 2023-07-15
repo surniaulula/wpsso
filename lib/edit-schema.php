@@ -533,10 +533,10 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'textarea',
 							'input_class' => 'wide howto_step_text',
 						),
-						'schema_howto_step_css_id' => array(
-							'input_label' => _x( 'CSS ID', 'option label', 'wpsso' ),
+						'schema_howto_step_anchor' => array(
+							'input_label' => _x( 'Anchor ID', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'css_id howto_step_css_id',
+							'input_class' => 'css_id howto_step_anchor',
 						),
 						'schema_howto_step_img' => array(
 							'input_label' => _x( 'Image ID', 'option label', 'wpsso' ),
@@ -642,10 +642,10 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 							'input_type'  => 'textarea',
 							'input_class' => 'wide recipe_instruction_text',
 						),
-						'schema_recipe_instruction_css_id' => array(
-							'input_label' => _x( 'CSS ID', 'option label', 'wpsso' ),
+						'schema_recipe_instruction_anchor' => array(
+							'input_label' => _x( 'Anchor ID', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'css_id recipe_instruction_css_id',
+							'input_class' => 'css_id recipe_instruction_anchor',
 						),
 						'schema_recipe_instruction_img' => array(
 							'input_label' => _x( 'Image ID', 'option label', 'wpsso' ),

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '15.17.0-rc.1',	// Plugin version.
-					'opt_version' => '977',		// Increment when changing default option values.
+					'opt_version' => '978',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2372,7 +2372,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_howto_step'    => array(		// How-To Name.
 						'schema_howto_step_section',		// How-To Step or Section.
 						'schema_howto_step_text',		// How-To Description.
-						'schema_howto_step_css_id',		// How-To CSS ID.
+						'schema_howto_step_anchor',		// How-To Anchor ID.
 						'schema_howto_step_img_id',		// How-To Image ID.
 						'schema_howto_step_img_id_lib',
 					),
@@ -2384,7 +2384,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_recipe_instruction'         => array(	// Recipe Instructions.
 						'schema_recipe_instruction_section',	// Recipe Instruction or Section.
 						'schema_recipe_instruction_text',	// Recipe Description.
-						'schema_recipe_instruction_css_id',	// Recipe CSS ID.
+						'schema_recipe_instruction_anchor',	// Recipe Anchor ID.
 						'schema_recipe_instruction_img_id',	// Recipe Image ID.
 						'schema_recipe_instruction_img_id_lib',
 					),

@@ -758,9 +758,9 @@ table.sucom-settings td div.multi_input_label {
 	min-width:100px;
 }
 
-table.sucom-settings td div.multi_input_label.howto_step_css_id,
+table.sucom-settings td div.multi_input_label.howto_step_anchor,
 table.sucom-settings td div.multi_input_label.howto_step_img,
-table.sucom-settings td div.multi_input_label.recipe_instruction_css_id,
+table.sucom-settings td div.multi_input_label.recipe_instruction_anchor,
 table.sucom-settings td div.multi_input_label.recipe_instruction_img {
 	text-align:right;
 	display:inline-block;

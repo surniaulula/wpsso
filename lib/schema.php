@@ -2050,10 +2050,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					/*
-					 * Get the section or step anchored URL, if a CSS ID has been provided.
+					 * Get the section or step anchored URL, if an anchor ID has been provided.
 					 */
-					$step_css_id = empty( $md_opts[ $opt_pre . '_css_id_' . $num ] ) ? '' : $md_opts[ $opt_pre . '_css_id_' . $num ];
-					$step_url    = empty( $step_css_id ) ? '' : SucomUtil::get_anchored_url( $canonical_url, $step_css_id );
+					$step_anchor = empty( $md_opts[ $opt_pre . '_anchor_' . $num ] ) ? '' : $md_opts[ $opt_pre . '_anchor_' . $num ];
+					$step_url    = empty( $step_anchor ) ? '' : SucomUtil::get_anchored_url( $canonical_url, $step_anchor );
 
 					/*
 					 * Get images for the section or step.
