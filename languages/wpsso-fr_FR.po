@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-07-15 13:31-0700\n"
+"PO-Revision-Date: 2023-07-15 14:02-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4616,54 +4616,54 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:1330
+#: lib/abstract/wp-meta.php:1332
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1401
+#: lib/abstract/wp-meta.php:1403
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1405
+#: lib/abstract/wp-meta.php:1407
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1408 lib/messages.php:294
+#: lib/abstract/wp-meta.php:1410 lib/messages.php:294
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1412
+#: lib/abstract/wp-meta.php:1414
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1413
+#: lib/abstract/wp-meta.php:1415
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1414
+#: lib/abstract/wp-meta.php:1416
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1415
+#: lib/abstract/wp-meta.php:1417
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1748
+#: lib/abstract/wp-meta.php:1750
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2076 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:2078 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstract/wp-meta.php:2078
+#: lib/abstract/wp-meta.php:2080
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
@@ -6134,8 +6134,8 @@ msgstr "%1$s étape ou %2$s section d'étapes de How-To:"
 
 #: lib/edit-schema.php:537 lib/edit-schema.php:646
 msgctxt "option label"
-msgid "Anchor ID"
-msgstr "ID d'ancre"
+msgid "Container ID"
+msgstr "ID du conteneur"
 
 #: lib/edit-schema.php:563
 msgctxt "metabox title"
@@ -11779,3 +11779,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "option label"
+#~ msgid "Anchor ID"
+#~ msgstr "ID d'ancre"
