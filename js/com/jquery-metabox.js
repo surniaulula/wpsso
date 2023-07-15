@@ -25,8 +25,8 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	} );
 
 	/*
-	 * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute
-	 * (which prevents values from being submitted).
+	 * Softly disable input fields for the 'disabled' CSS class (instead of using the standard 'disabled' HTML tag attribute
+	 * which prevents values from being submitted).
 	 */
 	jQuery( table_id + ' input' ).click( sucomBlurDisabled );
 	jQuery( table_id + ' input' ).focus( sucomBlurDisabled );
@@ -36,6 +36,8 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 	/*
 	 * Add a "changed" the options class when their value might have changed.
+	 *
+	 * Note that the focusin and focusout events bubble, and the focus and blur events don't.
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
 	jQuery( table_id + ' input' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
@@ -44,14 +46,14 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 	jQuery( document ).on( 'click', table_id + ' input[type="checkbox"][data-group]', function() {
 
-		var actor      = jQuery( this );
-		var checked    = actor.prop( 'checked' );
-		var group      = actor.data( 'group' );
-		var checkboxes = jQuery( 'input[type="checkbox"][data-group="' + group + '"]' );
+		var actor   = jQuery( this );
+		var checked = actor.prop( 'checked' );
+		var group   = actor.data( 'group' );
+		var grouped = jQuery( 'input[type="checkbox"][data-group="' + group + '"]' );
 
-		checkboxes.prop( 'checked', checked );
+		grouped.prop( 'checked', checked );
 
-		checkboxes.addClass( 'changed' );
+		grouped.addClass( 'changed' );
 	} );
 
 	/*
@@ -427,28 +429,32 @@ function sucomDisableUnchanged( container_id ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	jQuery( table_id + ' .changed' ).prop( 'disabled', false );
-
+	/*
+	 * Remove hidden input fields for unchanged checkboxes.
+	 */
 	jQuery( table_id + ' input[type="checkbox"]:not( .changed )' ).each( function() {
-
-		jQuery( this ).prop( 'disabled', true );
 
 		var checkbox_name = jQuery( this ).attr( 'name' );
 
 		if ( 'undefined' !== typeof checkbox_name && checkbox_name.length ) {
 
-			/*
-			 * When disabling a checkbox, also disable it's associated hidden input field.
-			 */
 			hidden_checkbox_name = checkbox_name.replace( /^(.*)\[(.*)\]$/, '$1\\[is_checkbox_$2\\]' );
 
 			jQuery( table_id + ' input[name="' + hidden_checkbox_name + '"]' ).remove();
 		}
 	} );
 
-	jQuery( table_id + ' input:not( .changed )' ).prop( 'disabled', true );
+	/*
+	 * Disable all unchanged input fields (but not hidden input fields), textarea, and select options.
+	 */
+	jQuery( table_id + ' input[type!="hidden"]:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
+	
+	/*
+	 * Make sure changed options are enabled.
+	 */
+	jQuery( table_id + ' .changed' ).prop( 'disabled', false );
 }
 
 function sucomToggle( css_id ) {
