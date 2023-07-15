@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Anchor ID" input field for How-To and Recipe steps.
+	* Added a new "Container ID" input field for How-To and Recipe steps.
 * **Bugfixes**
 	* Fixed saving radio button options (ie. the How-To step or section option).
 * **Developer Notes**
@@ -833,7 +833,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.17.0 =
 
-(2023/07/15) Added a new "Anchor ID" input field for How-To and Recipe steps. Fixed saving radio button options (ie. the How-To step or section option).
+(2023/07/15) Added a new "Container ID" input field for How-To and Recipe steps. Fixed saving radio button options (ie. the How-To step or section option).
 
 = 15.16.0 =
 
