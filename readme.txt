@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed saving radio button options (ie. the How-To step or section option).
 * **Developer Notes**
-	* None.
+	* Refactored the `sucomInitMetabox()` and `sucomDisableUnchanged()` jQuery functions to support to all input types (not just checkbox, radio, and text).
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
