@@ -758,10 +758,10 @@ table.sucom-settings td div.multi_input_label {
 	min-width:100px;
 }
 
-table.sucom-settings td div.multi_input_label.howto_step_anchor,
-table.sucom-settings td div.multi_input_label.howto_step_img,
-table.sucom-settings td div.multi_input_label.recipe_instruction_anchor,
-table.sucom-settings td div.multi_input_label.recipe_instruction_img {
+table.sucom-settings td div.multi_input_label.howto_step_container_id,			/* How-To Step Container ID. */
+table.sucom-settings td div.multi_input_label.howto_step_img,				/* How-To Step Image ID. */
+table.sucom-settings td div.multi_input_label.recipe_instruction_container_id,		/* Recipe Instruction Container ID. */
+table.sucom-settings td div.multi_input_label.recipe_instruction_img {			/* Recipe Instruction Image ID. */
 	text-align:right;
 	display:inline-block;
 }

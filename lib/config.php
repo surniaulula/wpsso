@@ -2371,21 +2371,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_citation'      => true,			// Reference Citations.
 					'schema_howto_step'    => array(		// How-To Name.
 						'schema_howto_step_section',		// How-To Step or Section.
-						'schema_howto_step_text',		// How-To Description.
-						'schema_howto_step_anchor',		// How-To Anchor ID.
-						'schema_howto_step_img_id',		// How-To Image ID.
+						'schema_howto_step_text',		// How-To Step Description.
+						'schema_howto_step_container_id',	// How-To Step Container ID.
+						'schema_howto_step_img_id',		// How-To Step Image ID.
 						'schema_howto_step_img_id_lib',
 					),
 					'schema_howto_supply'               => true,	// How-To Supplies.
 					'schema_howto_tool'                 => true,	// How-To Tools.
 					'schema_movie_actor_person_name'    => true,
 					'schema_movie_director_person_name' => true,
-					'schema_recipe_ingredient'          => true,	// Recipe Ingredients.
-					'schema_recipe_instruction'         => array(	// Recipe Instructions.
-						'schema_recipe_instruction_section',	// Recipe Instruction or Section.
-						'schema_recipe_instruction_text',	// Recipe Description.
-						'schema_recipe_instruction_anchor',	// Recipe Anchor ID.
-						'schema_recipe_instruction_img_id',	// Recipe Image ID.
+					'schema_recipe_ingredient'          => true,		// Recipe Ingredients.
+					'schema_recipe_instruction'         => array(		// Recipe Instructions.
+						'schema_recipe_instruction_section',		// Recipe Instruction or Section.
+						'schema_recipe_instruction_text',		// Recipe Instruction Description.
+						'schema_recipe_instruction_container_id',	// Recipe Instruction Container ID.
+						'schema_recipe_instruction_img_id',		// Recipe Instruction Image ID.
 						'schema_recipe_instruction_img_id_lib',
 					),
 					'schema_review_item_cw_movie_actor_person_name'    => true,
