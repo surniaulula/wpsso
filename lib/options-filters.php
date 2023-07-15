@@ -170,6 +170,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'one_line';
 
+					case 'schema_howto_step_css_id':		// How-To Step CSS ID.
+					case 'schema_recipe_instruction_css_id':	// Recipe Instruction CSS ID.
+
+						return 'css_id';
+
 					/*
 					 * CSV strings that can be blank (line breaks are removed).
 					 */
@@ -352,10 +357,12 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/*
 				 * Cast as integer (zero and -1 is ok).
 				 */
-				case 'og_img_max':			// Maximum Images.
-				case 'og_vid_max':			// Maximum Videos.
-				case 'og_desc_hashtags': 		// Description Hashtags.
-				case 'primary_term_id':			// Primary Category.
+				case 'og_img_max':				// Maximum Images.
+				case 'og_vid_max':				// Maximum Videos.
+				case 'og_desc_hashtags': 			// Description Hashtags.
+				case 'primary_term_id':				// Primary Category.
+				case 'schema_howto_step_section':		// How-To Step or Section (0 or 1).
+				case 'schema_recipe_instruction_section':	// Recipe Instruction or Section (0 or 1).
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
@@ -364,11 +371,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/*
 				 * Numeric options that must be positive (1 or more).
 				 */
-				case 'plugin_gravatar_size':		// Gravatar Image Size.
-				case 'plugin_min_shorten':		// Minimum URL Length to Shorten.
-				case 'plugin_ratings_reviews_num_max':	// Maximum Number of Reviews.
-				case 'plugin_ratings_reviews_age_max':	// Maximum Age of Reviews.
-				case 'plugin_upscale_pct_max':		// Maximum Image Upscale Percent.
+				case 'plugin_gravatar_size':			// Gravatar Image Size.
+				case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
+				case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
+				case 'plugin_ratings_reviews_age_max':		// Maximum Age of Reviews.
+				case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
 					return 'pos_integer';	// Aka 'pos_int'.

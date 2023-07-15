@@ -1383,18 +1383,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'auth_id':
 
 					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
-
 					$opt_val = preg_replace( '/^ID-/', '', $opt_val );	// Just in case.
 
 					break;
 
-				/*
-				 * Applies sanitize_title_with_dashes().
-				 */
+				case 'css_class':
+
+					$opt_val = SucomUtil::sanitize_css_class( $opt_val );
+
+					break;
+
+				case 'css_id':
+
+					$opt_val = SucomUtil::sanitize_css_id( $opt_val );
+
+					break;
+
 				case 'dashed':
 
 					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
-
 					$opt_val = sanitize_title_with_dashes( $opt_val );
 
 					break;

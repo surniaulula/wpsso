@@ -2372,6 +2372,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_howto_step'    => array(		// How-To Name.
 						'schema_howto_step_section',		// How-To Step or Section.
 						'schema_howto_step_text',		// How-To Description.
+						'schema_howto_step_css_id',		// How-To CSS ID.
 						'schema_howto_step_img_id',		// How-To Image ID.
 						'schema_howto_step_img_id_lib',
 					),
@@ -2383,6 +2384,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_recipe_instruction'         => array(	// Recipe Instructions.
 						'schema_recipe_instruction_section',	// Recipe Instruction or Section.
 						'schema_recipe_instruction_text',	// Recipe Description.
+						'schema_recipe_instruction_css_id',	// Recipe CSS ID.
 						'schema_recipe_instruction_img_id',	// Recipe Image ID.
 						'schema_recipe_instruction_img_id_lib',
 					),

@@ -730,7 +730,11 @@ table.sucom-settings td div.multi_container.mixed_multi {
 }
 
 table.sucom-settings td div.multi_container.mixed_multi.single_line {
-	margin-bottom:5px;
+	margin-bottom:0;
+}
+
+table.sucom-settings td div.multi_container.single_line .multi_input_el {
+	display:inline-block;
 }
 
 table.sucom-settings td div.multi_number {
@@ -751,11 +755,14 @@ table.sucom-settings td div.multi_input_el {
 }
 
 table.sucom-settings td div.multi_input_label {
-	min-width:75px;
+	min-width:100px;
 }
 
-table.sucom-settings td div.multi_input_label.howto_step_id,
-table.sucom-settings td div.multi_input_label.howto_step_img {
+table.sucom-settings td div.multi_input_label.howto_step_css_id,
+table.sucom-settings td div.multi_input_label.howto_step_img,
+table.sucom-settings td div.multi_input_label.recipe_instruction_css_id,
+table.sucom-settings td div.multi_input_label.recipe_instruction_img {
+	text-align:right;
 	display:inline-block;
 }
 
@@ -862,7 +869,7 @@ table.sucom-settings td input[type="text"].unit_value { width:145px; }
 
 table.sucom-settings td input[type="text"].medium { width:180px; }
 
-table.sucom-settings td input[type="text"].anchor,		/* HTML anchor ID. */
+table.sucom-settings td input[type="text"].css_id,
 table.sucom-settings td input[type="text"].latitude,
 table.sucom-settings td input[type="text"].longitude,
 table.sucom-settings td input[type="text"].altitude,

@@ -5627,12 +5627,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5313
+#: lib/config.php:5315
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5313
+#: lib/config.php:5315
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -6434,7 +6434,7 @@ msgstr ""
 
 #: lib/edit-schema.php:537 lib/edit-schema.php:646
 msgctxt "option label"
-msgid "Anchor ID"
+msgid "CSS ID"
 msgstr ""
 
 #: lib/edit-schema.php:563
@@ -11435,122 +11435,122 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/options.php:1814
+#: lib/options.php:1821
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1818
+#: lib/options.php:1825
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1822
+#: lib/options.php:1829
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1826
+#: lib/options.php:1833
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1830
+#: lib/options.php:1837
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1834
+#: lib/options.php:1841
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1838
+#: lib/options.php:1845
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1842
+#: lib/options.php:1849
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1846
+#: lib/options.php:1853
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1850
+#: lib/options.php:1857
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1854
+#: lib/options.php:1861
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1858
+#: lib/options.php:1865
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1862
+#: lib/options.php:1869
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1866
+#: lib/options.php:1873
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1870
+#: lib/options.php:1877
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1874
+#: lib/options.php:1881
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1878
+#: lib/options.php:1885
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1882
+#: lib/options.php:1889
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1886
+#: lib/options.php:1893
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1890
+#: lib/options.php:1897
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1894
+#: lib/options.php:1901
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1898
+#: lib/options.php:1905
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1902
+#: lib/options.php:1909
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1906
+#: lib/options.php:1913
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -11859,22 +11859,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2065
+#: lib/schema.php:2070
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2238
+#: lib/schema.php:2245
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2265
+#: lib/schema.php:2272
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3848
+#: lib/schema.php:3855
 msgid "checking schema properties"
 msgstr ""
 

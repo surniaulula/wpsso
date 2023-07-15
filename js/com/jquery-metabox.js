@@ -28,7 +28,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute
 	 * (which prevents values from being submitted).
 	 */
-	jQuery( table_id + ' input' ).click( sucomBlurDisabled );	// Includes checkbox and radio.
+	jQuery( table_id + ' input' ).click( sucomBlurDisabled );
 	jQuery( table_id + ' input' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' textarea' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' select' ).focus( sucomBlurDisabled );
@@ -38,8 +38,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * Add a "changed" the options class when their value might have changed.
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
-	jQuery( table_id + ' input[type="checkbox"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-	jQuery( table_id + ' input[type="text"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+	jQuery( table_id + ' input' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' select' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 
@@ -447,8 +446,7 @@ function sucomDisableUnchanged( container_id ) {
 		}
 	} );
 
-	jQuery( table_id + ' input[type="radio"]:not( .changed )' ).prop( 'disabled', true );
-	jQuery( table_id + ' input[type="text"]:not( .changed )' ).prop( 'disabled', true );
+	jQuery( table_id + ' input:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
 }

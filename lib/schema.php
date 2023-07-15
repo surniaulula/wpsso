@@ -2015,14 +2015,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$howto_steps = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+			$canonical_url = $wpsso->util->get_canonical_url( $mod );
+			$steps         = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log_arr( 'howto_steps', $howto_steps );
+				$wpsso->debug->log_arr( 'steps', $steps );
 			}
 
-			if ( ! empty( $howto_steps ) ) {
+			if ( ! empty( $steps ) ) {
 
 				$section_ref = false;
 				$section_pos = 1;
@@ -2033,7 +2034,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * $md_val is the section/step name.
 				 */
-				foreach ( $howto_steps as $num => $md_val ) {
+				foreach ( $steps as $num => $md_val ) {
 
 					/*
 					 * Maybe get a longer text / description value.
@@ -2049,6 +2050,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					/*
+					 * Get the section or step anchored URL, if a CSS ID has been provided.
+					 */
+					$step_css_id = empty( $md_opts[ $opt_pre . '_css_id_' . $num ] ) ? '' : $md_opts[ $opt_pre . '_css_id_' . $num ];
+					$step_url    = empty( $step_css_id ) ? '' : SucomUtil::get_anchored_url( $canonical_url, $step_css_id );
+
+					/*
 					 * Get images for the section or step.
 					 */
 					$step_images = array();
@@ -2059,8 +2066,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 * Set reference values for admin notices.
 						 */
 						if ( is_admin() ) {
-
-							$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
 							$wpsso->notice->set_ref( $canonical_url, $mod, sprintf( __( 'adding schema %s #%d image', 'wpsso' ),
 								$prop_name, $num + 1 ) );
@@ -2089,7 +2094,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$json_data[ $prop_name ][ $step_idx ] = self::get_schema_type_context( 'https://schema.org/HowToSection',
 							array(
-								'name'            => $md_val,
+								'url'             => $step_url,
+								'name'            => $md_val,	// Section name.
 								'description'     => $step_text,
 								'numberOfItems'   => 0,
 								'itemListOrder'   => 'https://schema.org/ItemListOrderAscending',
@@ -2118,8 +2124,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$step_arr = self::get_schema_type_context( 'https://schema.org/HowToStep',
 							array(
 								'position' => $step_pos,
-								'name'     => $md_val,		// The step name.
-								'text'     => $step_text,	// The step text / description.
+								'url'      => $step_url,
+								'name'     => $md_val,	// Step name.
+								'text'     => $step_text,
 								'image'    => null,
 							)
 						);
