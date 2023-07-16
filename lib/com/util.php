@@ -2858,11 +2858,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Add a CSS ID to a URL.
+		 * Add a fragment to a URL.
 		 */
-		public static function append_url_fragment( $url, $css_id ) {
+		public static function append_url_fragment( $url, $fragment ) {
 
-			return preg_replace( '/#.*/', '', $url ) . ( empty( $css_id ) ? '' : '#' . self::sanitize_css_id( $css_id ) );
+			return preg_replace( '/#.*/', '', $url ) . ( empty( $fragment ) ? '' : '#' . self::sanitize_css_id( $fragment ) );
 		}
 
 		public static function get_mod_anchor( array $mod ) {
