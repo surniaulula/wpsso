@@ -2968,6 +2968,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/*
 			 * Since WPSSO Core v15.17.1.
+			 *
+			 * Include a check for embedded pages as they are "noindex" by default.
+			 *
+			 * 404, attachment, date, and search pages are not cached, so there is no need to include a check for them.
 			 */
 			foreach ( array( 'is_embed' => 'embed:true' ) as $function => $index_val ) {
 
