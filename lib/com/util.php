@@ -2969,11 +2969,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/*
 			 * Since WPSSO Core v15.17.1.
 			 */
-			foreach ( array( 'is_embed' => '_embed:true' ) as $function => $index_val ) {
+			foreach ( array( 'is_embed' => 'embed:true' ) as $function => $index_val ) {
 
 				if ( function_exists( 'is_embed' ) && $function() ) {
 
-					$cache_index .= $index_val;
+					$cache_index .= '_' . $index_val;
 				}
 			}
 
