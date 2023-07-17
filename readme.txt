@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.17.1-rc.1 (2023/07/17)**
+**Version 15.17.1 (2023/07/17)**
 
 * **New Features**
 	* None.
@@ -845,7 +845,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.17.1-rc.1 =
+= 15.17.1 =
 
 (2023/07/17) Fixed a possible incorrect robots "noindex" value in the cache array by adding a check for `is_embed()` in the caching index.
 
