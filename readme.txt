@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.17.1-rc.1 (2023/07/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a possible incorrect robots "noindex" value in the cache array by adding a check for `is_embed()` in the caching index.
+* **Developer Notes**
+	* Updated `SucomUtil::get_cache_index()` to add a check for `is_embed()`.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.17.0 (2023/07/15)**
 
 * **New Features**
@@ -830,6 +844,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.17.1-rc.1 =
+
+(2023/07/17) Fixed a possible incorrect robots "noindex" value in the cache array by adding a check for `is_embed()` in the caching index.
 
 = 15.17.0 =
 
