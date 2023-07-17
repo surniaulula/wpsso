@@ -2966,6 +2966,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$cache_index .= '_amp:true';
 			}
 
+			/*
+			 * Since WPSSO Core v15.17.1.
+			 */
+			foreach ( array( 'is_embed' => '_embed:true' ) as $function => $index_val ) {
+
+				if ( function_exists( 'is_embed' ) && $function() ) {
+
+					$cache_index .= $index_val;
+				}
+			}
+
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
 			$cache_index = apply_filters( 'sucom_cache_index', $cache_index, $mixed );
