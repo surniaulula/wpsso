@@ -234,14 +234,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.17.2-dev.1 (2023/07/21)**
+**Version 15.17.2-rc.1 (2023/07/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed check for possible non-existant woocommerce availability key in `WpssoCompat->common_hooks()`.
+	* Fixed array offset error for woocommerce availability check in `WpssoCompat->common_hooks()`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -859,9 +859,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.17.2-dev.1 =
+= 15.17.2-rc.1 =
 
-(2023/07/21) Fixed check for possible non-existant woocommerce availability key in `WpssoCompat->common_hooks()`.
+(2023/07/21) Fixed array offset error for woocommerce availability check.
 
 = 15.17.1 =
 
