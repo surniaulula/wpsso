@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.17.2-dev.1 (2023/07/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed check for possible non-existant woocommerce availability key in `WpssoCompat->common_hooks()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.17.1 (2023/07/17)**
 
 * **New Features**
@@ -844,6 +858,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.17.2-dev.1 =
+
+(2023/07/21) Fixed check for possible non-existant woocommerce availability key in `WpssoCompat->common_hooks()`.
 
 = 15.17.1 =
 
