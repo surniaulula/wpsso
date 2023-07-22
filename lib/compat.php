@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/*
 			 * WooCommerce.
 			 */
-			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
 				add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
 				add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
