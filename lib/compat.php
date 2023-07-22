@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				/*
 				 * Remove everything except for the BreadcrumbList markup.
@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 *
 			 * The WPSSO BC add-on removes the BreadcrumbList markup.
 			 */
-			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				return SucomUtil::preg_grep_keys( '/^BreadcrumbList$/', $data );
 			}
@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/*
 			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
-			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				$custom_style_css .= '
 					.rank-math-tabs > div > a[href="#setting-panel-richsnippet"] { display: none; }
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/*
 			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
-			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				$custom_style_css .= '
 					#wpseo-meta-tab-schema { display: none; }
