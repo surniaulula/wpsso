@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.17.2-rc.1 (2023/07/21)**
+**Version 15.17.2 (2023/07/22)**
 
 * **New Features**
 	* None.
@@ -859,9 +859,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.17.2-rc.1 =
+= 15.17.2 =
 
-(2023/07/21) Fixed array offset error for woocommerce availability check.
+(2023/07/22) Fixed array offset error for woocommerce availability check.
 
 = 15.17.1 =
 
