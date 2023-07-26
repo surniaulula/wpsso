@@ -234,6 +234,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.18.0-dev.2 (2023/07/26)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated `WpssoUtilCache` class methods to move the `$key_prefix` argument first:
+		* `clear_db_transients()`
+		* `count_db_transients()`
+		* `get_db_transients_keys()`
+		* `get_db_transients_size_mb()`
+		* `get_db_transients_subset()`
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.17.2 (2023/07/22)**
 
 * **New Features**
@@ -858,6 +877,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.18.0-dev.2 =
+
+(2023/07/26) Updated `WpssoUtilCache` class methods to move the `$key_prefix` argument first.
 
 = 15.17.2 =
 
