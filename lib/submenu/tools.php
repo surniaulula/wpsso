@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				/*
 				 * Clear All Database Transients.
 				 */
-				$count_db_transients = number_format_i18n( $this->p->util->cache->count_db_transients( $include_short = true, $key_prefix = '' ) );
+				$count_db_transients = number_format_i18n( $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_short = true ) );
 
 				$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
 					$count_db_transients, 'submit button', 'wpsso' ), $count_db_transients );

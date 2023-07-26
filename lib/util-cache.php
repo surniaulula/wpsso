@@ -179,15 +179,18 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
+		 * Clear database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
+		 * and optionally exclude transients for shortened URLs.
+		 *
 		 * See WpssoAdmin->load_setting_page().
 		 */
-		public function clear_db_transients( $clear_short = true, $key_prefix = '' ) {
+		public function clear_db_transients( $key_prefix = '', $clear_short = true ) {
 
 			$count = 0;
 
-			$transient_ids = $this->get_db_transients_cache_ids( $clear_short, $key_prefix );
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $clear_short );
 
-			foreach ( $transient_ids as $key ) {
+			foreach ( $transients_subset as $key ) {
 
 				if ( delete_transient( $key ) ) {
 
@@ -199,21 +202,112 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * See WpssoSubmenuTools->filter_form_button_rows().
+		 * Hooked to WordPress 'wp_scheduled_delete' action.
+		 *
+		 * See WpssoUtilCache->__construct().
 		 */
-		public function count_db_transients( $include_short = true, $key_prefix = '' ) {
+		public function clear_expired_db_transients() {
 
-			$transient_ids = $this->get_db_transients_cache_ids( $include_short, $key_prefix );
+			$count           = 0;
+			$transients_keys = $this->get_db_transients_keys( $key_prefix = 'wpsso_', $expired_only = true );
 
-			return count( $transient_ids );
+			foreach ( $transients_keys as $key ) {
+
+				if ( delete_transient( $key ) ) {
+
+					$count++;
+				}
+			}
+
+			return $count;
 		}
 
-		public function get_db_transients_cache_ids( $include_short = false, $key_prefix = '' ) {
+		/*
+		 * Count database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
+		 * and optionally exclude transients for shortened URLs.
+		 *
+		 * See WpssoSubmenuTools->filter_form_button_rows().
+		 */
+		public function count_db_transients( $key_prefix = '', $incl_short = true ) {
 
-			$transient_ids  = array();
-			$transient_keys = $this->get_db_transient_keys( $only_expired = false, $key_prefix );
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_short );
 
-			foreach ( $transient_keys as $key ) {
+			return count( $transients_subset );
+		}
+
+		/*
+		 * Get all transients from the database or optionally only those that are expired.
+		 *
+		 * Call the get_db_transients_subset() method instead to exclude transients that must be preserved (transient key
+		 * begins with 'wpsso_!_'), and optionally exclude transients for shortened URLs.
+		 *
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 * See WpssoUtilCache->clear_expired_db_transients().
+		 * See WpssoUtilCache->get_db_transients_subset().
+		 */
+		public function get_db_transients_keys( $key_prefix = '', $expired_only = false ) {
+
+			global $wpdb;
+
+			$transients_keys = array();
+			$opt_row_prefix  = $expired_only ? '_transient_timeout_' : '_transient_';
+			$current_time    = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
+
+			$db_query = 'SELECT option_name';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $key_prefix . '%\'';
+
+			if ( $expired_only ) {
+
+				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+			}
+
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			/*
+			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
+			 */
+			foreach( $result as $option_name ) {
+
+				$transients_keys[] = str_replace( $opt_row_prefix, '', $option_name );
+			}
+
+			return $transients_keys;
+		}
+
+		/*
+		 * See WpssoAdmin->show_metabox_cache_status().
+		 */
+		public function get_db_transients_size_mb( $key_prefix = '', $decimals = 1 ) {
+
+			global $wpdb;
+
+			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
+			$db_query .= ', CHAR_LENGTH( option_value )';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			return number_format_i18n( array_sum( $result ), $decimals );
+		}
+
+		/*
+		 * A wrapper for the get_db_transients_keys() method to exclude transients that must be preserved (transient key
+		 * begins with 'wpsso_!_'), and optionally exclude transients for shortened URLs.
+		 *
+		 * See WpssoUtilCache->clear_db_transients().
+		 * See WpssoUtilCache->count_db_transients().
+		 */
+		public function get_db_transients_subset( $key_prefix = '', $incl_short = true ) {
+
+			$transients_keys   = $this->get_db_transients_keys( $key_prefix, $expired_only = false );
+			$transients_subset = array();
+
+			foreach ( $transients_keys as $key ) {
 
 				if ( 0 === strpos( $key_prefix, 'wpsso_' ) ) {
 
@@ -221,7 +315,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 						continue;
 
-					} elseif ( ! $include_short ) {				// Not clearing short URLs.
+					} elseif ( ! $incl_short ) {				// Not clearing short URLs.
 
 						if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
@@ -238,82 +332,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					}
 				}
 
-				$transient_ids[] = $key;
+				$transients_subset[] = $key;
 			}
 
-			return $transient_ids;
-		}
-
-		/*
-		 * Hooked to WordPress 'wp_scheduled_delete' action.
-		 *
-		 * See WpssoUtilCache->__construct().
-		 */
-		public function clear_expired_db_transients() {
-
-			$count          = 0;
-			$key_prefix     = 'wpsso_';
-			$transient_keys = $this->get_db_transient_keys( $only_expired = true, $key_prefix );
-
-			foreach ( $transient_keys as $key ) {
-
-				if ( delete_transient( $key ) ) {
-
-					$count++;
-				}
-			}
-
-			return $count;
-		}
-
-		public function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
-
-			global $wpdb;
-
-			$transient_keys = array();
-			$opt_row_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
-			$current_time   = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
-
-			$db_query = 'SELECT option_name';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $key_prefix . '%\'';
-
-			if ( $only_expired ) {
-
-				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
-			}
-
-			$db_query .= ';';	// End of query.
-
-			$result = $wpdb->get_col( $db_query );
-
-			/*
-			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
-			 */
-			foreach( $result as $option_name ) {
-
-				$transient_keys[] = str_replace( $opt_row_prefix, '', $option_name );
-			}
-
-			return $transient_keys;
-		}
-
-		/*
-		 * See WpssoAdmin->show_metabox_cache_status().
-		 */
-		public function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $key_prefix = '' ) {
-
-			global $wpdb;
-
-			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
-			$db_query .= ', CHAR_LENGTH( option_value )';
-			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
-			$db_query .= ';';	// End of query.
-
-			$result = $wpdb->get_col( $db_query );
-
-			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
+			return $transients_subset;
 		}
 
 		public function schedule_refresh( $user_id = null ) {
