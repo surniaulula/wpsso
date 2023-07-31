@@ -445,16 +445,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-ratings-reviews-wc-enabled':
 
-						$option_label = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
-
-						$wc_settings_page_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
+						$option_label    = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
+						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
+						$wc_settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
 
 						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
-							_x( 'Stamped.io (Ratings and Reviews)', 'metabox title', 'wpsso' ) ) . ' ';
+							$info[ 'svc_title_transl' ] ) . ' ';
 
 						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable the product reviews in WooCommerce</a>.',
-							'wpsso' ), $option_link, $wc_settings_page_url ) . ' ';
+							'wpsso' ), $option_link, $wc_settings_url ) . ' ';
 
 						break;
 

@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 				}
 			}
 
-			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
 				if ( empty( $this->p->options[ 'plugin_inherit_featured' ] ) ) {
 
