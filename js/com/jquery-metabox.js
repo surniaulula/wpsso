@@ -450,7 +450,7 @@ function sucomDisableUnchanged( container_id ) {
 	jQuery( table_id + ' input[type!="hidden"]:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
-	
+
 	/*
 	 * Make sure changed options are enabled.
 	 */

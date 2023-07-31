@@ -2228,7 +2228,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								break;
 						}
 					}
-					
+
 					$html .= '</div><!-- .multi_input_el -->' . "\n";
 				}
 
