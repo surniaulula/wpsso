@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.18.1-rc.1 (2023/07/31)**
+**Version 15.18.1 (2023/07/31)**
 
 * **New Features**
 	* None.
@@ -895,7 +895,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.18.1-rc.1 =
+= 15.18.1 =
 
 (2023/07/31) Fixed two array offset errors for woocommerce availability checks. Fixed an incorrect service name for the 'notice-ratings-reviews-wc-enabled' error notice.
 
