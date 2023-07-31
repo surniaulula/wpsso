@@ -443,16 +443,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					/*
+					 * Example $info = array(
+					 *	'svc_title_transl' => _x( 'Shopper Approved (Ratings and Reviews)', 'metabox title', 'wpsso' ),
+					 * );
+					 */
 					case 'notice-ratings-reviews-wc-enabled':
 
 						$option_label    = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
 						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
 						$wc_settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
+						$svc_label_transl = empty( $info[ 'svc_title_transl' ] ) ?	// Just in case.
+							_x( 'ratings and reviews', 'metabox title', 'wpsso' ) : $info[ 'svc_title_transl' ];
 
 						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
-							$info[ 'svc_title_transl' ] ) . ' ';
+							$svc_label_transl ) . ' ';
 
-						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable the product reviews in WooCommerce</a>.',
+						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable product reviews in WooCommerce</a>.',
 							'wpsso' ), $option_link, $wc_settings_url ) . ' ';
 
 						break;
