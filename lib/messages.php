@@ -450,11 +450,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					 */
 					case 'notice-ratings-reviews-wc-enabled':
 
-						$option_label    = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
-						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
-						$wc_settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
-						$svc_label_transl = empty( $info[ 'svc_title_transl' ] ) ?	// Just in case.
-							_x( 'ratings and reviews', 'metabox title', 'wpsso' ) : $info[ 'svc_title_transl' ];
+						$option_label     = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
+						$option_link      = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
+						$wc_settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
+						$svc_label_transl = empty( $info[ 'svc_title_transl' ] ) ?
+							_x( 'ratings and reviews', 'tooltip fragment', 'wpsso' ) : $info[ 'svc_title_transl' ];
 
 						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
 							$svc_label_transl ) . ' ';

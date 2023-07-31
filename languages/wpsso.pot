@@ -10461,7 +10461,7 @@ msgid "Don't forget to update the plugin to install the latest %3$s version."
 msgstr ""
 
 #: lib/messages.php:457
-msgctxt "metabox title"
+msgctxt "tooltip fragment"
 msgid "ratings and reviews"
 msgstr ""
 
