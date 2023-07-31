@@ -234,6 +234,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.18.1-dev.1 (2023/07/31)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed array offset errors for woocommerce availability checks in:
+		* `WpssoUtil->set_util_instances()`
+		* `WpssoAdminHeadSuggestOptions->suggest_options_integration()`
+	* Fixed an incorrect service name for the 'notice-ratings-reviews-wc-enabled' error notice.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.18.0 (2023/07/28)**
 
 * **New Features**
@@ -877,6 +894,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.18.1-dev.1 =
+
+(2023/07/31) Fixed two array offset errors for woocommerce availability checks. Fixed an incorrect service name for the 'notice-ratings-reviews-wc-enabled' error notice.
 
 = 15.18.0 =
 
