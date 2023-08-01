@@ -45,43 +45,49 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 			$this->suggest_options_seo();
 		}
 
+		/*
+		 * See WpssoAdmin->registered_setting_sanitation().
+		 */
 		public function suggest_options_integration() {
 
-			if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {	// Premium edition feature.
 
 				$notice_key = 'notice-content-filters-disabled';
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {	// Message returned if using Premium edition.
 
 						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 					}
 				}
 			}
 
-			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {	// Premium edition feature.
 
 				$notice_key = 'notice-check-img-dims-disabled';
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {	// Message returned if using Premium edition.
 
 						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 					}
 				}
 			}
 
-			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
 
-				if ( empty( $this->p->options[ 'plugin_inherit_featured' ] ) ) {
+				if ( empty( $this->p->options[ 'plugin_inherit_featured' ] ) ) {	// Premium edition feature.
 
 					$notice_key = 'notice-wc-inherit-featured-disabled';
 
-					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+		
+						if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
 
-						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+						}
 					}
 				}
 			}

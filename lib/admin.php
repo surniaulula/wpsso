@@ -747,6 +747,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			/*
 			 * Maybe clear dismissed notices for enabled options that were previously disabled.
+			 *
+			 * See WpssoAdminHeadSuggestOptions->suggest_options_integration().
 			 */
 			foreach ( array(
 				'add_link_rel_canonical'    => 'suggest-options-seo-add_link_rel_canonical',
