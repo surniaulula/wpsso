@@ -239,7 +239,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated default SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration option values:
+		* Inherit Featured Image (default is unchecked)
+		* Inherit Custom Images (default is unchecked)
+		* Image Dimension Checks (default is unchecked)
+		* Prevent Thumbnail Conflicts (default is unchecked)
 * **Bugfixes**
 	* Fixed array offset errors for woocommerce availability checks in:
 		* `WpssoUtil->set_util_instances()`
