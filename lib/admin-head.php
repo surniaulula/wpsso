@@ -137,6 +137,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( current_user_can( 'manage_options' ) ) {
 
+				$user_id = get_current_user_id();
+
 				foreach ( array( 'wp', 'php' ) as $key ) {
 
 					if ( isset( WpssoConfig::$cf[ $key ][ 'rec_version' ] ) ) {
@@ -176,11 +178,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								'version_url' => WpssoConfig::$cf[ $key ][ 'version_url' ],
 							) );
 
-							$notice_key   = 'notice-recommend-version-' .
-								WpssoConfig::get_version( $add_slug = true ) . '-' .
-									$app_label . '-' . $app_version;
+							$notice_key = 'notice-recommend-version-' . $key . '-' . $rec_version;
 
-							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
+							$this->p->notice->warn( $warn_msg, $user_id, $notice_key, $dismiss_time );
 						}
 					}
 				}
