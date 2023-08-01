@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.18.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the WP and PHP recommended version notice dismissal key to use the recommended version number (instead of the installed version number).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.18.1 (2023/07/31)**
 
 * **New Features**
@@ -898,6 +912,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.18.2-dev.1 =
+
+(2023/08/01) Fixed the WP and PHP recommended version notice dismissal key.
 
 = 15.18.1 =
 
