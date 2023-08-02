@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.18.2-dev.1 (TBD)**
+**Version 15.18.2-dev.1 (2023/08/02)**
 
 * **New Features**
 	* None.
@@ -915,7 +915,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.18.2-dev.1 =
 
-(2023/08/01) Fixed the WP and PHP recommended version notice dismissal key.
+(2023/08/02) Fixed the WP and PHP recommended version notice dismissal key.
 
 = 15.18.1 =
 
