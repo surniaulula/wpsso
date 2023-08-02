@@ -348,17 +348,7 @@ jQuery( function(){
 });
 EOF;
 
-			if ( function_exists( 'wp_add_inline_script' ) ) {	// Since WP v4.5.0.
-
-				wp_add_inline_script( 'plugin-install', $custom_script_js );
-
-			} else {
-
-				/*
-				 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-				 */
-				echo '<script>' . "\n" . $custom_script_js . '</script>' . "\n";
-			}
+			wp_add_inline_script( 'plugin-install', $custom_script_js );
 		}
 
 		/*

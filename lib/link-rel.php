@@ -71,21 +71,13 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			/*
 			 * If WPSSO is providing the canonical URL, then disable the WordPress and AMP canonical meta tags.
 			 */
-			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
-
-				$current  = current_action();
-
-			} else {
-
-				$current  = current_filter();
-			}
+			$current = function_exists( 'current_action' ) ? current_action() : current_filter();
 
 			switch( $current ) {
 
 				case 'wp_head':
 
 					remove_filter( $current, 'rel_canonical' );
-
 					remove_action( $current, 'amp_frontend_add_canonical' );
 
 					break;

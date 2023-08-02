@@ -2399,7 +2399,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 *
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
-				if ( ! empty( $primary_term_id ) && term_exists( (int) $primary_term_id ) ) {	// Since WP v3.0.
+				if ( ! empty( $primary_term_id ) && term_exists( (int) $primary_term_id ) ) {
 
 					$is_custom = true;
 

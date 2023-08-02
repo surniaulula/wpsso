@@ -392,10 +392,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_wp() {
 
-			$is_public     = get_option( 'blog_public' );
-			$is_production = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
+			$is_public   = get_option( 'blog_public' );
+			$is_prod_env = 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
-			if ( ! $is_public && $is_production ) {
+			if ( ! $is_public && $is_prod_env ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -408,8 +408,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$notice_msg .= __( 'This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' );
 
-				$notice_key = 'wp-search-engine-visibility-disabled';
-
+				$notice_key   = 'wp-search-engine-visibility-disabled';
 				$dismiss_time = MONTH_IN_SECONDS;
 
 				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );

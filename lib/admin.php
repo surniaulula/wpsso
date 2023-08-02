@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
 
-				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
+				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );
 			}
 
 			/*

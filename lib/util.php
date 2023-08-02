@@ -1941,7 +1941,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
 
-				$shortlink = wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );	// Since WP v3.0.
+				$shortlink = wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );
 
 				if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
 
@@ -2324,7 +2324,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
+			if ( function_exists( 'get_oembed_endpoint_url' ) ) {
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
 
@@ -2359,7 +2359,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
+			if ( function_exists( 'get_oembed_response_data' ) ) {
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {	// Just in case.
 

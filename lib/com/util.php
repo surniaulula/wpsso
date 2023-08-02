@@ -918,7 +918,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$timezones = array_combine( $timezones, $timezones );	// Create an associative array.
 
-			$offset_range = array( -12, -11.5, -11, -10.5, -10, -9.5, -9, -8.5, -8, -7.5, -7, -6.5, -6, -5.5, -5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 5.75, 6, 6.5, 7, 7.5, 8, 8.5, 8.75, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.75, 13, 13.75, 14 );
+			$offset_range = array( -12, -11.5, -11, -10.5, -10, -9.5, -9, -8.5, -8, -7.5, -7, -6.5, -6, -5.5, -5, -4.5,
+				-4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 5.75, 6,
+				6.5, 7, 7.5, 8, 8.5, 8.75, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.75, 13, 13.75, 14 );
 
 			/*
 			 * Create date( 'P' ) formatted timezone values (ie. -07:00).
@@ -947,7 +949,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache;
 			}
 
-			if ( function_exists( wp_timezone_string() ) ) {	// Since WP v5.3.
+			if ( function_exists( wp_timezone_string() ) ) {
 
 				return $local_cache = wp_timezone_string();
 			}
@@ -1669,9 +1671,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
-		/*
-		 * Since WPSSO Core v4.17.0.
-		 */
 		public static function a_to_aa( array $arr ) {
 
 			$arr_arr = array();
@@ -2766,7 +2765,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
 
-			$translations  = wp_get_available_translations();	// Since WP v4.0.
+			$translations  = wp_get_available_translations();
 			$avail_locales = self::get_available_locales();		// Uses a local cache.
 			$local_cache   = array();
 
@@ -2967,8 +2966,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			/*
-			 * Since WPSSO Core v15.17.1.
-			 *
 			 * Include a check for embedded pages as they are "noindex" by default.
 			 */
 			foreach ( array( 'is_embed' => 'embed:true' ) as $function => $index_val ) {
@@ -4796,8 +4793,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v1.21.0.
-		 *
 		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
 		 */
 		public static function is_assoc( $mixed ) {
@@ -4845,7 +4840,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
-				$is_cat_page = term_exists( (int) $term_id, 'category' );	// Since WP v3.0.
+				$is_cat_page = term_exists( (int) $term_id, 'category' );
 
 			} elseif ( is_category() ) {
 
@@ -5033,8 +5028,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v7.7.0.
-		 *
 		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
 		 */
 		public static function is_non_assoc( $mixed ) {
@@ -5200,7 +5193,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
-				$is_tag_page = term_exists( (int) $term_id, 'post_tag' );	// Since WP v3.0.
+				$is_tag_page = term_exists( (int) $term_id, 'post_tag' );
 
 			} elseif ( is_tag() ) {
 
@@ -5226,7 +5219,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/*
 				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
-				$is_term_page = term_exists( (int) $term_id, $tax_slug );	// Since WP v3.0.
+				$is_term_page = term_exists( (int) $term_id, $tax_slug );
 
 			} elseif ( is_tax() || is_category() || is_tag() ) {
 
@@ -5236,7 +5229,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$screen_base = self::get_screen_base();
 
-				if ( 'term' === $screen_base ) {	// Since WP v4.5.
+				if ( 'term' === $screen_base ) {
 
 					$is_term_page = true;
 

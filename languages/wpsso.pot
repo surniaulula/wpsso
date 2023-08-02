@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.18.1\n"
+"Project-Id-Version: WPSSO Core 15.18.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -514,7 +514,7 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:41 lib/com/form.php:1060 lib/script.php:373
+#: gettext/gettext-lib-com.php:41 lib/com/form.php:1060 lib/script.php:363
 msgid "Select Image"
 msgstr ""
 
@@ -6099,7 +6099,7 @@ msgctxt "option label"
 msgid "Crop Area"
 msgstr ""
 
-#: lib/edit-general.php:83 lib/script.php:440
+#: lib/edit-general.php:83 lib/script.php:430
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -8384,8 +8384,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1756 lib/user.php:1845
-#: lib/user.php:1973
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1738 lib/user.php:1827
+#: lib/user.php:1955
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11569,7 +11569,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2189
+#: lib/page.php:2185
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11884,39 +11884,39 @@ msgstr ""
 msgid "checking schema properties"
 msgstr ""
 
-#: lib/script.php:457
+#: lib/script.php:447
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:459
+#: lib/script.php:449
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:493
+#: lib/script.php:483
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:494
+#: lib/script.php:484
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:496
+#: lib/script.php:486
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
-#: lib/script.php:499
+#: lib/script.php:489
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:500
+#: lib/script.php:490
 msgid "{0} of {1} characters recommended"
 msgstr ""
 
-#: lib/script.php:501
+#: lib/script.php:491
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:502
+#: lib/script.php:492
 msgid "{0} characters"
 msgstr ""
 
@@ -12520,62 +12520,50 @@ msgstr ""
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1182
-msgid "AIM"
-msgstr ""
-
-#: lib/user.php:1183
-msgid "Jabber / Google Talk"
-msgstr ""
-
-#: lib/user.php:1184
-msgid "Yahoo Messenger"
-msgstr ""
-
-#: lib/user.php:1689
+#: lib/user.php:1671
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1732 lib/user.php:1758
+#: lib/user.php:1714 lib/user.php:1740
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1739
+#: lib/user.php:1721
 msgid "A background task will begin shortly to %s to content creators."
 msgstr ""
 
-#: lib/user.php:1769 lib/user.php:1858 lib/util-cache.php:376
+#: lib/user.php:1751 lib/user.php:1840 lib/util-cache.php:376
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1770
+#: lib/user.php:1752
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1804
+#: lib/user.php:1786
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1805 lib/user.php:1897 lib/util-cache.php:486
+#: lib/user.php:1787 lib/user.php:1879 lib/util-cache.php:486
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1821 lib/user.php:1847
+#: lib/user.php:1803 lib/user.php:1829
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1828
+#: lib/user.php:1810
 msgid "A background task will begin shortly to %s from all users."
 msgstr ""
 
-#: lib/user.php:1859
+#: lib/user.php:1841
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1896
+#: lib/user.php:1878
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

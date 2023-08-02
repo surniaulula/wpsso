@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$html        = '';
 			$is_public   = get_option( 'blog_public' );
-			$is_prod_env = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
+			$is_prod_env = 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
 			if ( ! $is_prod_env && $is_notice ) {	// Only show notice for production sites.
 

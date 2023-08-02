@@ -1632,8 +1632,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$filter_content = apply_filters( 'wpsso_the_content_filter_content', $filter_content );
-			$filter_blocks  = function_exists( 'do_blocks' ) ? true : false;	// Since WP v5.0.
-			$filter_blocks  = apply_filters( 'wpsso_the_content_filter_blocks', $filter_blocks );
+			$filter_blocks  = apply_filters( 'wpsso_the_content_filter_blocks', true );
 			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
@@ -2181,9 +2180,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $reading_mins;
 		}
 
-		/*
-		 * Since WPSSO Core v13.5.0.
-		 */
 		public function fmt_reading_mins( $reading_mins ) {
 
 			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';

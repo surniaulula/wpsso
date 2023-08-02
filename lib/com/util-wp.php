@@ -18,7 +18,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function doing_ajax() {
 
-			if ( function_exists( 'wp_doing_ajax' ) ) {	// Since WP v4.7.0.
+			if ( function_exists( 'wp_doing_ajax' ) ) {
 
 				return wp_doing_ajax();
 			}
@@ -144,7 +144,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function doing_cron() {
 
-			if ( function_exists( 'wp_doing_cron' ) ) {	// Since WP v4.8.0.
+			if ( function_exists( 'wp_doing_cron' ) ) {
 
 				return wp_doing_cron();
 			}
@@ -200,7 +200,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function oembed_enabled() {
 
-			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
+			if ( function_exists( 'get_oembed_response_data' ) ) {
 
 				return true;
 			}
@@ -217,21 +217,19 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			static $locale_cache = null;
 
-			if ( null === $locale_cache ) {
+			if ( null !== $locale_cache ) {
 
-				global $wp_sitemaps;
-
-				if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {	// Since WP v5.5.
-
-					$locale_cache = (bool) $wp_sitemaps->sitemaps_enabled();
-
-				} else {
-
-					$locale_cache = false;
-				}
+				return $locale_cache;
 			}
 
-			return $locale_cache;
+			global $wp_sitemaps;
+
+			if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {	// Since WP v5.5.
+
+				return $locale_cache = (bool) $wp_sitemaps->sitemaps_enabled();
+			}
+
+			return $locale_cache = false;
 		}
 
 		public static function sprintf_date_time( $fmt = '%1$s %2$s' ) {
@@ -239,7 +237,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$wp_timezone = wp_timezone();
 			$wp_date_fmt = get_option( 'date_format' );
 			$wp_time_fmt = get_option( 'time_format' );
-
 
 			$now = date_create_immutable( $datetime = 'now', $wp_timezone );
 
@@ -1137,7 +1134,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 
-			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
+			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );
 
 			if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
 

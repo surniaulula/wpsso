@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'adding sucom-admin-page inline style from cache' );
 					}
 
-					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
+					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 
 					return;
 				}
@@ -558,7 +558,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'adding sucom-admin-page inline style' );
 			}
 
-			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
+			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 
 			if ( $this->p->debug->enabled ) {
 

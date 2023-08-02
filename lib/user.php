@@ -1162,31 +1162,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Provides backwards compatibility for wp 3.0.
+		 * Convert user ID to user object and call wp_get_user_contact_methods().
 		 */
 		public static function get_user_id_contact_methods( $user_id ) {
 
 			$user_obj = get_user_by( 'ID', $user_id );
 
-			if ( function_exists( 'wp_get_user_contact_methods' ) ) {	// Since WP v3.7.
-
-				return wp_get_user_contact_methods( $user_obj );
-
-			} else {
-
-				$methods = array();
-
-				if ( get_site_option( 'initial_db_version' ) < 23588 ) {
-
-					$methods = array(
-						'aim'    => __( 'AIM' ),
-						'jabber' => __( 'Jabber / Google Talk' ),
-						'yim'    => __( 'Yahoo Messenger' )
-					);
-				}
-
-				return apply_filters( 'user_contactmethods', $methods, $user_obj );
-			}
+			return wp_get_user_contact_methods( $user_obj );
 		}
 
 		/*
