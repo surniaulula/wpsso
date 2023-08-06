@@ -2301,10 +2301,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach ( $post_ancestors as $parent_id ) {
 
+					/*
+					 * Get the parent's metadata array.
+					 */
 					$metadata = $this->get_update_meta_cache( $parent_id );
 
 					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
 
+						/*
+						 * Return the parent's metadata single value or its array.
+						 */
 						if ( $single ) {
 
 							return maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
@@ -2371,6 +2377,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					foreach ( $post_ancestors as $parent_id ) {
 
+						/*
+						 * Get the parent's metadata array.
+						 */
 						$metadata = $this->get_update_meta_cache( $parent_id );
 
 						if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
