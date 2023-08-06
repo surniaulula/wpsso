@@ -183,15 +183,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Maybe inherit a featured image from the post/page parent.
-			 */
-			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), 100, 4 );
-			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), 100, 5 );
-
-			/*
 			 * Maybe create or update the post column content.
 			 */
 			add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
+
+			/*
+			 * Maybe inherit a featured image ID from the post/page parent, if the 'plugin_inherit_featured' option is
+			 * enabled, and ignore saving the same featured image ID.
+			 */
+			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), PHP_INT_MAX, 4 );
+			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), PHP_INT_MIN, 5 );
 		}
 
 		/*
@@ -2237,16 +2238,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Maybe inherit a featured image from the post/page parent.
+		 * Maybe inherit a featured image ID from the post/page parent, if the 'plugin_inherit_featured' option is enabled.
 		 *
-		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
-		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
+		 * See get_metadata_raw() in wordpress/wp-includes/meta.php.
+		 * See metadata_exists() in wordpress/wp-includes/meta.php.
 		 */
 		public function get_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $single ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {	// Inherit only the featured image (aka '_thumbnail_id').
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
@@ -2258,7 +2259,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
 				}
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
@@ -2278,7 +2279,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: inherit featured image is disabled' );
 				}
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			$metadata = $this->get_update_meta_cache( $post_id );
@@ -2288,7 +2289,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( ! empty( $metadata[ $meta_key ] ) ) {
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			/*
@@ -2314,20 +2315,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			return $check;
+			return $check;	// Null by default.
 		}
 
 		/*
-		 * When inheriting a featured image from the post/page parent, ignore saving the same thumbnail ID.
+		 * Maybe inherit a featured image ID from the post/page parent, if the 'plugin_inherit_featured' option is enabled,
+		 * and ignore saving the same featured image ID.
 		 *
-		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
-		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
+		 * See update_metadata() in wordpress/wp-includes/meta.php.
 		 */
 		public function update_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $meta_value, $prev_value ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {	// Inherit only the featured image (aka '_thumbnail_id').
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
@@ -2339,7 +2340,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: attachments do not inherit metadata' );
 				}
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
@@ -2359,7 +2360,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: inherit featured image is disabled' );
 				}
 
-				return $check;
+				return $check;	// Null by default.
 			}
 
 			if ( '' === $prev_value ) {	// No existing previous value.
@@ -2385,7 +2386,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			return $check;
+			return $check;	// Null by default.
 		}
 
 		/*
