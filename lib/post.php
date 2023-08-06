@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * enabled, and ignore saving the same featured image ID.
 			 */
 			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), PHP_INT_MAX, 4 );
-			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), PHP_INT_MIN, 5 );
+			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), PHP_INT_MAX, 5 );
 		}
 
 		/*
