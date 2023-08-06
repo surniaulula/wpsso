@@ -2264,7 +2264,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
-			if ( ! $inherit_featured ) {
+			if ( $inherit_featured ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'inherit featured image is enabled' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: inherit featured image is disabled' );
+				}
 
 				return $check;
 			}
@@ -2333,7 +2345,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
-			if ( ! $inherit_featured ) {
+			if ( $inherit_featured ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'inherit featured image is enabled' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: inherit featured image is disabled' );
+				}
 
 				return $check;
 			}

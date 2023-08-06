@@ -2581,14 +2581,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'inherit md images is enabled' );
+					$this->p->debug->log( 'inherit custom images is enabled' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'inherit md images is disabled' );
+					$this->p->debug->log( 'inherit custom images is disabled' );
 				}
 
 				$inherit_opts = SucomUtil::preg_grep_keys( '/_img_/', $inherit_opts, $invert = true );
