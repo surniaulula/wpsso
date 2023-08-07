@@ -3130,6 +3130,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/*
 				 * Inherit required properties from the product group for Google.
 				 *
+				 * Use an associative array to avoid property names from being translated.
+				 *
 				 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 				 */
 				'inherited_variant_props' => array(
