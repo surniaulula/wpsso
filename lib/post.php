@@ -2301,7 +2301,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: featured image is = ' . $metadata[ $meta_key ][ 0 ] );
+					$this->p->debug->log( 'exiting early: featured image = ' . $metadata[ $meta_key ][ 0 ] );
 				}
 
 				return $check;	// Null by default.
@@ -2334,6 +2334,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$metadata = $this->get_update_meta_cache( $parent_id );
 
 					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+			
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'found parent ID ' . $parent_id . ' featured image = ' . $metadata[ $meta_key ][ 0 ] );
+						}
 
 						/*
 						 * Return the parent's metadata single value or its array.
