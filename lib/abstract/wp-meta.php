@@ -2653,7 +2653,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					} else {
 
 						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
-					
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log_arr( 'parent_opts', $parent_opts );
