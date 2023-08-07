@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			 */
 			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				$inherit_props = $this->p->cf[ 'form' ][ 'inherited_variant_props' ];
+				$inherit_props = array_keys( $this->p->cf[ 'form' ][ 'inherited_variant_props' ] );
 
 				foreach ( $inherit_props as $prop_name ) {
 

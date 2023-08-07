@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.18.3-b.1',	// Plugin version.
+					'version'     => '15.18.3-rc.1',	// Plugin version.
 					'opt_version' => '981',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3133,10 +3133,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 				 */
 				'inherited_variant_props' => array(
-					'name',
-					'description',
-					'brand',
-					'review',
+					'name'        => null,
+					'description' => null,
+					'brand'       => null,
+					'review'      => null,
 				),
 
 				/*
