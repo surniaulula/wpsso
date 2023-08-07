@@ -241,7 +241,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Updated the inherit featured image filter hook priority.
 * **Bugfixes**
-	* None.
+	* Fixed detection of invalid feature image ID values.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -929,7 +929,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.18.3-dev.4 =
 
-(2023/08/07) Updated the inherit featured image filter hook priority.
+(2023/08/07) Updated the inherit featured image filter hook priority. Fixed detection of invalid feature image ID values.
 
 = 15.18.2 =
 
