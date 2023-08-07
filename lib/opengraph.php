@@ -1032,7 +1032,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$parent_term_id = $parent_term_obj->term_id;
 
-				$ancestor_ids = get_ancestors( $parent_term_id, $primary_tax_slug, 'taxonomy' );
+				$ancestor_ids = get_ancestors( $parent_term_id, $primary_tax_slug, $resource_type = 'taxonomy' );
 
 				if ( empty( $ancestor_ids ) || ! is_array( $ancestor_ids ) ) {
 

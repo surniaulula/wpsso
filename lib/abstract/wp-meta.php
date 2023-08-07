@@ -2551,8 +2551,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$md_opts    = array();
-			$parent_ids = array();
+			$md_opts      = array();
+			$ancestor_ids = array();
 
 			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
 
@@ -2596,17 +2596,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				/*
-				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name.
-				 *
-				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
-				 */
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
 				}
 
-				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
+				$ancestor_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
@@ -2615,17 +2610,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->p->debug->log( 'getting ancestors for taxonomy = ' . $mod[ 'tax_slug' ] );
 				}
 
-				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
+				$ancestor_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
 			}
 
-			/*
-			 * Merge the custom options array top-down, so we merge the closest parent last.
-			 */
-			if ( empty( $parent_ids ) ) {
+			if ( empty( $ancestor_ids ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'no parent ids for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+					$this->p->debug->log( 'no ancestors for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
 
 			} elseif ( empty( $inherit_opts ) ) {
@@ -2637,9 +2629,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			} else {
 
-				$parent_ids = array_reverse( $parent_ids );
+				/*
+				 * Merge the custom options array top-down, so we merge the closest parent last.
+				 */
+				$ancestor_ids = array_reverse( $ancestor_ids );
 
-				foreach ( $parent_ids as $parent_id ) {
+				foreach ( $ancestor_ids as $parent_id ) {
 
 					if ( $this->p->debug->enabled ) {
 
