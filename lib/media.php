@@ -2380,7 +2380,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					foreach ( $all_matches as $match_num => $args ) {
 
-						if ( is_array( $args ) ) { // Just in case.
+						if ( is_array( $args ) ) {	// Just in case.
 
 							if ( ! empty( $args[ 'url' ] ) ) {
 

@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			/*
 			 * Since WPSSO Core v14.4.0.
 			 */
-			$pkg_info = $this->p->util->get_pkg_info();     // Uses a local cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
 		}

@@ -292,7 +292,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				$args[ 'post__in' ] = wp_parse_id_list( $args[ 'include' ] );
 
-				$args[ 'posts_per_page' ] = count( $args[ 'post__in' ] );  // Only the number of posts included.
+				$args[ 'posts_per_page' ] = count( $args[ 'post__in' ] );	// Only the number of posts included.
 
 				unset( $args[ 'include' ] );
 			}

@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/*
 			 * Instantiate WpssoUtilReg.
 			 */
-			if ( ! class_exists( 'WpssoUtilRobots' ) ) { // Since WPSSO Core v6.13.1.
+			if ( ! class_exists( 'WpssoUtilRobots' ) ) {	// Since WPSSO Core v6.13.1.
 
 				require_once WPSSO_PLUGINDIR . 'lib/util-robots.php';
 			}
@@ -790,7 +790,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array(); // Optimize and get image size for a given URL only once.
+			static $local_cache = array();	// Optimize and get image size for a given URL only once.
 
 			$image_url = trim( $image_url );	// Just in case.
 
@@ -2583,7 +2583,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$current_user_id = get_current_user_id();	// Always returns an integer.
 
-			$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// // User ID can be true, false, null, or a number.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// User ID can be true, false, null, or a number.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
 
@@ -3442,7 +3442,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_keys as $old_key => $new_key ) {
 
-				if ( empty( $old_key ) ) { // Just in case.
+				if ( empty( $old_key ) ) {	// Just in case.
 
 					continue;
 				}
@@ -3451,7 +3451,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				foreach ( preg_grep( $old_key_preg, array_keys( $opts ) ) as $old_key_matched ) {
 
-					if ( ! empty( $new_key ) ) { // Can be empty to remove the option.
+					if ( ! empty( $new_key ) ) {	// Can be empty to remove the option.
 
 						$new_key_matched = preg_replace( $old_key_preg, $new_key . '$1', $old_key_matched );
 

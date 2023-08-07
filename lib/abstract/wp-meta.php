@@ -1284,7 +1284,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		public function get_metabox_document_meta( $obj ) {
 
-			return self::must_be_extended( $ret_val = '' );	 // Empty html.
+			return self::must_be_extended( $ret_val = '' );	// Empty html.
 		}
 
 		public function get_metabox_javascript( $container_id ) {
@@ -3135,7 +3135,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function update_meta( $obj_id, $meta_key, $value ) {
 
-			return self::must_be_extended( $ret_val = false ); // No update.
+			return self::must_be_extended( $ret_val = false );	// No update.
 		}
 
 		/*
@@ -3146,7 +3146,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function delete_meta( $obj_id, $meta_key ) {
 
-			return self::must_be_extended( $ret_val = false ); // No delete.
+			return self::must_be_extended( $ret_val = false );	// No delete.
 		}
 
 		/*

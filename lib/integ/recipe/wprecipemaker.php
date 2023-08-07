@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 
 			$post_type = get_post_type( $post_id );
 
-			if ( 'attachment' === $post_type || WPRM_POST_TYPE === $post_type ) { // Skip attachments and recipe objects.
+			if ( 'attachment' === $post_type || WPRM_POST_TYPE === $post_type ) {	// Skip attachments and recipe objects.
 
 				$recipe_id = false;
 

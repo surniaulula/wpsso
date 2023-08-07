@@ -41,13 +41,13 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 		public function errorMessage( $ret = false ) {
 
 			/*
-			 * getMessage();        // Message of exception.
-			 * getCode();           // Code of exception.
-			 * getFile();           // Source filename.
-			 * getLine();           // Source line.
-			 * getTrace();          // An array of the backtrace().
-			 * getPrevious();       // Previous exception.
-			 * getTraceAsString();  // Formatted string of trace.
+			 * getMessage();	// Message of exception.
+			 * getCode();		// Code of exception.
+			 * getFile();		// Source filename.
+			 * getLine();		// Source line.
+			 * getTrace();		// An array of the backtrace().
+			 * getPrevious();	// Previous exception.
+			 * getTraceAsString();	// Formatted string of trace.
 			 */
 			$errstr = $this->getMessage();
 

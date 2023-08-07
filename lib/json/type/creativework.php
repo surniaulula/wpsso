@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			$json_ret[ 'isPartOf' ] = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) )	{ // Just in case.
+			if ( ! empty( $mod[ 'obj' ] ) )	{	// Just in case.
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			$json_ret[ 'citation' ] = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) )	{ // Just in case.
+			if ( ! empty( $mod[ 'obj' ] ) )	{	// Just in case.
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 

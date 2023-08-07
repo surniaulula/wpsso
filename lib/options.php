@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 								$key = 'plugin_import_' . $avail_key . '_' . $import_type;
 
-								if ( isset( $opts[ $key ] ) ) { // Make sure the option exists.
+								if ( isset( $opts[ $key ] ) ) {	// Make sure the option exists.
 
 									$fixed[ $key ] = 0;
 								}

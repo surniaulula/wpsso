@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoJsonPropHasPart' ) ) {
 			 *
 			 * See wordpress/wp-includes/default-filters.php:
 			 *
-			 * add_filter( 'the_content', 'do_shortcode', 11 ); // After wpautop().
+			 * add_filter( 'the_content', 'do_shortcode', 11 );	// After wpautop().
 			 */
 			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), 12 );	// After do_shortcode().
 

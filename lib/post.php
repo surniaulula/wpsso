@@ -2289,6 +2289,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( ! empty( $metadata[ $meta_key ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: featured image is = ' . $metadata[ $meta_key ] );
+				}
+
 				return $check;	// Null by default.
 			}
 
@@ -2396,7 +2401,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$this->p->debug->log( 'no ancestors for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 					}
-	
+
 				} elseif ( is_array( $ancestor_ids ) ) {	// Just in case.
 
 					foreach ( $ancestor_ids as $parent_id ) {

@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log( 'getting site organization options array' );
 				}
 
-				$org_opts = WpssoSchema::get_site_organization( $mod ); // Returns localized values (not the key names).
+				$org_opts = WpssoSchema::get_site_organization( $mod );	// Returns localized values (not the key names).
 			}
 
 			/*

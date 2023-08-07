@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					if ( ! $this->single_notice_upsell() ) {
 
-						 // Add more timed notices here as needed.
+						// Add more timed notices here as needed.
 					}
 				}
 			}

@@ -126,9 +126,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config( $activate = true );  // Force a refresh of the plugin config.
-			$this->p->set_options( $activate = true ); // Read / create options and site_options.
-			$this->p->set_objects( $activate = true ); // Load all the class objects.
+			$this->p->set_config( $activate = true );	// Force a refresh of the plugin config.
+			$this->p->set_options( $activate = true );	// Read / create options and site_options.
+			$this->p->set_objects( $activate = true );	// Load all the class objects.
 
 			/*
 			 * Returns the event timestamp, or false if the event has not been registered.

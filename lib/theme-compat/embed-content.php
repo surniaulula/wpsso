@@ -47,7 +47,7 @@ if ( $thumbnail_url ) {
 
 		$aspect_ratio = 1;
 		$measurements = array( 1, 1 );
-		$image_size   = 'full'; // Fallback.
+		$image_size   = 'full';	// Fallback.
 		$img_meta     = wp_get_attachment_metadata( $thumbnail_id );	// Returns a WP_Error object on failure.
 
 		if ( is_array( $img_meta ) ) {

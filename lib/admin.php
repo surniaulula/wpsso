@@ -1656,9 +1656,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$plugin_version = isset( $info[ 'version' ] ) ? $info[ 'version' ] : ''; // Static value from config.
-				$stable_version = __( 'Not Available', 'wpsso' ); // Default value.
-				$latest_version = __( 'Not Available', 'wpsso' ); // Default value.
+				$plugin_version = isset( $info[ 'version' ] ) ? $info[ 'version' ] : '';	// Static value from config.
+				$stable_version = __( 'Not Available', 'wpsso' );	// Default value.
+				$latest_version = __( 'Not Available', 'wpsso' );	// Default value.
 				$latest_notice  = '';
 				$changelog_url  = isset( $info[ 'url' ][ 'changelog' ] ) ? $info[ 'url' ][ 'changelog' ] : '';
 				$readme_info    = $this->get_readme_info( $ext, $read_cache = true );
