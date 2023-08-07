@@ -49,6 +49,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
 					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'plugin cache is enabled' );
 			}
 		}
 
