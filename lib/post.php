@@ -481,6 +481,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'required call to WpssoPost->get_mod() for post ID ' . $post_id );
+					}
+
 					$mod = $this->get_mod( $post_id );
 
 					/*
@@ -2357,6 +2362,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( '_thumbnail_id' !== $meta_key ) {	// Inherit only the featured image (aka '_thumbnail_id').
 
 				return $check;	// Null by default.
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'required call to WpssoPost->get_mod() for post ID ' . $post_id );
 			}
 
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
