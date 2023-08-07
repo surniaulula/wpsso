@@ -2250,6 +2250,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;	// Null by default.
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'required call to WpssoPost->get_mod() for post ID ' . $post_id );
+			}
+
 			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
 			if ( $mod[ 'is_attachment' ] ) {	// Attachments do not inherit metadata.
