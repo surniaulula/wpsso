@@ -632,6 +632,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $image_ids;
 		}
 
+		/*
+		 * See WpssoIntegEcomAbstractWooCommerceBrands->filter_get_md_defaults_woocommerce().
+		 */
 		public function filter_get_md_defaults( array $md_defs, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {

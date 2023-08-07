@@ -119,6 +119,10 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			return $mt_ecom;
 		}
 
+		/*
+		 * See WpssoIntegEcomWooCommerce->filter_get_md_defaults().
+		 * See WpssoIntegEcomWooCommerce->filter_get_post_options().
+		 */
 		public function filter_get_md_defaults_woocommerce( array $md_defs, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -136,6 +140,12 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			return $md_defs;
 		}
 
+		/*
+		 * Note that product group variants will automatically inherit the brand property from the main product.
+		 *
+		 * See WpssoConfig::$cf[ 'form' ][ 'inherited_variant_props' ].
+		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
+		 */
 		public function filter_json_data_https_schema_org_product( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
