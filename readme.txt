@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.18.3-dev.6 (2023/08/07)**
+**Version 15.18.3-b.1 (2023/08/07)**
 
 * **New Features**
 	* None.
@@ -928,7 +928,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.18.3-dev.6 =
+= 15.18.3-b.1 =
 
 (2023/08/07) Fixed detection of invalid feature image ID values. Fixed inheritance of the Schema 'brand' property for product group variants.
 
