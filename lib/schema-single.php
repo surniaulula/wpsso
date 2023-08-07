@@ -1992,6 +1992,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
+		 * Adds the 'productGroupID', 'hasVariant', and 'variesBy' properties.
+		 *
 		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 		 */
 		public static function add_product_group_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_element = true ) {
@@ -2210,6 +2212,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Schema brand property.
+			 *
+			 * Note that product group variants will automatically inherit the brand property from the main product.
+			 *
+			 * See WpssoConfig::$cf[ 'form' ][ 'inherited_variant_props' ].
+			 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.
 

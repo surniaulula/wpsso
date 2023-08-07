@@ -121,6 +121,11 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 		public function filter_get_md_defaults_woocommerce( array $md_defs, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$mt_ecom = $this->filter_og_ecom_woocommerce( array(), $mod );
 
 			if ( ! empty( $mt_ecom[ 'product:brand' ] ) ) {

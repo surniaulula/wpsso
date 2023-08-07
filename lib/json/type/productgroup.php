@@ -42,6 +42,9 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 
 			$json_ret = array();
 
+			/*
+			 * Adds the 'productGroupID', 'hasVariant', and 'variesBy' properties.
+			 */
 			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_element = false );
 
 			/*
@@ -49,7 +52,9 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			 */
 			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				foreach ( array( 'name', 'description', 'review' ) as $prop_name ) {
+				$inherit_props = $this->p->cf[ 'form' ][ 'inherited_variant_props' ];
+
+				foreach ( $inherit_props as $prop_name ) {
 
 					if ( ! empty( $json_data[ $prop_name ] ) ) {
 
