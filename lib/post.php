@@ -2297,11 +2297,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * If the meta key already has a value, then no need to check the parents.
 			 */
-			if ( ! empty( $metadata[ $meta_key ] ) ) {
+			if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: featured image is = ' . $metadata[ $meta_key ] );
+					$this->p->debug->log( 'exiting early: featured image is = ' . $metadata[ $meta_key ][ 0 ] );
 				}
 
 				return $check;	// Null by default.
