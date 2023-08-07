@@ -338,6 +338,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$max_nums = $this->p->util->get_max_nums( $mod );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'applying wpsso_og_seed filters' );	// Begin timer.
+			}
+
 			/*
 			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
 			 */
@@ -346,6 +351,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( 'og_seed', $mt_og );
+
+				$this->p->debug->mark( 'applying wpsso_og_seed filters' );	// End timer.
 			}
 
 			/*
