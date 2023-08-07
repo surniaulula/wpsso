@@ -239,11 +239,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the inherit featured image filter hook priority.
-* **Bugfixes**
-	* Fixed detection of invalid feature image ID values.
-* **Developer Notes**
 	* None.
+* **Bugfixes**
+	* Fixed detection of invalid feature image ID values (ie. empty strings).
+	* Fixed inheritance of the Schema 'brand' property for product group variants.
+* **Developer Notes**
+	* Updated the inherit featured image filter hook priority.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -929,7 +930,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.18.3-dev.6 =
 
-(2023/08/07) Updated the inherit featured image filter hook priority. Fixed detection of invalid feature image ID values.
+(2023/08/07) Fixed detection of invalid feature image ID values. Fixed inheritance of the Schema 'brand' property for product group variants.
 
 = 15.18.2 =
 
