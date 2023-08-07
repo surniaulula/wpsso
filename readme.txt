@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.18.3-dev.2 (2023/08/06)**
+**Version 15.18.3-dev.3 (2023/08/07)**
 
 * **New Features**
 	* None.
@@ -927,9 +927,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.18.3-dev.2 =
+= 15.18.3-dev.3 =
 
-(2023/08/06) Updated the inherit featured image filter hook priority.
+(2023/08/07) Updated the inherit featured image filter hook priority.
 
 = 15.18.2 =
 
