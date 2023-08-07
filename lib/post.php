@@ -2294,12 +2294,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			/*
 			 * Start with the parent and work our way up - return the first value found.
+			 *
+			 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name.
+			 *
+			 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
 			 */
-			$post_ancestors = get_post_ancestors( $post_id );
+			if ( $this->p->debug->enabled ) {
 
-			if ( is_array( $post_ancestors ) ) {	// Just in case.
+				$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
+			}
 
-				foreach ( $post_ancestors as $parent_id ) {
+			$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
+
+			if ( empty( $parent_ids ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no parent ids for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+				}
+
+			} elseif ( is_array( $parent_ids ) ) {	// Just in case.
+
+				foreach ( $parent_ids as $parent_id ) {
 
 					/*
 					 * Get the parent's metadata array.
@@ -2371,11 +2387,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( '' === $prev_value ) {	// No existing previous value.
 
-				$post_ancestors = get_post_ancestors( $post_id );
+				/*
+				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name.
+				 *
+				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
+				 */
+				if ( $this->p->debug->enabled ) {
 
-				if ( is_array( $post_ancestors ) ) {	// Just in case.
+					$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
+				}
 
-					foreach ( $post_ancestors as $parent_id ) {
+				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
+
+				if ( empty( $parent_ids ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no parent ids for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+					}
+	
+				} elseif ( is_array( $parent_ids ) ) {	// Just in case.
+
+					foreach ( $parent_ids as $parent_id ) {
 
 						/*
 						 * Get the parent's metadata array.

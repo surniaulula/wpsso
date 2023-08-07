@@ -1274,7 +1274,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( ! empty( $parent_opts ) ) {
 
-					$var_opts = array_merge( $parent_opts, $var_opts );
+					$var_opts = SucomUtil::array_merge_recursive_distinct( $parent_opts, $var_opts );
 				}
 
 				/*

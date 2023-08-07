@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoIntegEcomYithWooCommerceBrands' ) ) {
 
 	class WpssoIntegEcomYithWooCommerceBrands extends WpssoIntegEcomAbstractWooCommerceBrands {
 
-		protected $brand_tax_slug  = 'yith_product_brand';	// Default brand taxonomy.
+		protected $brand_tax_slug  = 'yith_product_brand';
 		protected $brand_image_key = 'thumbnail_id';
 
 		public function __construct( &$plugin ) {
