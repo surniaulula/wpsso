@@ -234,15 +234,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.18.3-b.1 (2023/08/07)**
+**Version 15.18.3-rc.1 (2023/08/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed detection of invalid feature image ID values (ie. empty strings).
 	* Fixed inheritance of the Schema 'brand' property for product group variants.
+	* Fixed detection of invalid feature image ID values (ie. empty strings).
 * **Developer Notes**
 	* Updated the inherit featured image filter hook priority.
 * **Requires At Least**
@@ -928,9 +928,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.18.3-b.1 =
+= 15.18.3-rc.1 =
 
-(2023/08/07) Fixed detection of invalid feature image ID values. Fixed inheritance of the Schema 'brand' property for product group variants.
+(2023/08/07) Fixed inheritance of the Schema 'brand' property for product group variants. Fixed detection of invalid feature image ID values.
 
 = 15.18.2 =
 
