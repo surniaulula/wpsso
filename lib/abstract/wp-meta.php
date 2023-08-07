@@ -2638,14 +2638,27 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' parent id ' . $parent_id . ' metadata' );
+						$this->p->debug->log( 'getting parent ID ' . $parent_id . ' metadata for ' . mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 					}
 
 					$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
 
-					if ( ! empty( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
+					if ( empty( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no metadata for parent ID ' . $parent_id );
+						}
+
+					} else {
 
 						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
+					
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log_arr( 'parent_opts', $parent_opts );
+						}
+
 						$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
 						$md_opts     = SucomUtil::array_merge_recursive_distinct( $md_opts, $parent_opts );
 					}
