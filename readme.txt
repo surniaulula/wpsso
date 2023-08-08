@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.19.0-dev.1 (TBD)**
+**Version 15.19.0-dev.1 (2023/08/08)**
 
 * **New Features**
 	* None.
@@ -244,6 +244,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoAdmin->settings_saved_notice()` method.
+	* Renamed the 'save_setting_options' filter to 'save_settings_options'.
+	* Renamed the 'load_setting_page_*' filter to 'load_settings_page_*'.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -944,7 +946,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.19.0-dev.1 =
 
-(TBD) Added a new `WpssoAdmin->settings_saved_notice()` method.
+(2023/08/08) Added a new `WpssoAdmin->settings_saved_notice()` method. Renamed the 'save_setting_options' and 'load_setting_page_*' filters.
 
 = 15.18.3 =
 
