@@ -815,7 +815,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 *
 		 * See WpssoUtilReg::update_options_key() to update an options key value.
 		 *
-		 * Called by WpssoAdmin->load_setting_page() for the 'reload_default_image_sizes' action.
+		 * Called by WpssoAdmin->load_settings_page() for the 'reload_default_image_sizes' action.
 		 * Called by WpssoAdmin->import_plugin_settings_json().
 		 */
 		public function save_options( $options_name, array $opts, $network = false ) {

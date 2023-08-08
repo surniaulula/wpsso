@@ -418,7 +418,7 @@ function sucomColorChanged( e, ui ) {
 /*
  * sucomDisableUnchanged() should be called from a form submit event.
  *
- * Example: container_id = '#sucom_setting_form_general'
+ * Example: container_id = '#sucom_settings_form_general'
  */
 function sucomDisableUnchanged( container_id ) {
 

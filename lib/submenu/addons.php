@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Add settings page filters and actions hooks.
 		 *
-		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
 		 */
 		protected function add_plugin_hooks() {
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
 		 */
 		protected function add_meta_boxes() {
 

@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
+		 * Called by show_settings_page() and extended by the sitesubmenu classes to load site options instead.
 		 *
 		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
 		 */
@@ -527,12 +527,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
 			$icon_url    = 'none';	// Icon provided by WpssoStyle::admin_register_page_styles().
-			$function    = array( $this, 'show_setting_page' );
+			$function    = array( $this, 'show_settings_page' );
 			$position    = WPSSO_MENU_ORDER;
 
 			$this->pagehook = add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 
-			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
+			add_action( 'load-' . $this->pagehook, array( $this, 'load_settings_page' ) );
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id, $menu_title, $menu_lib, $menu_ext, $css_class = '' ) {
@@ -544,7 +544,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug   = 'wpsso-' . $menu_id;
-			$function    = array( $this, 'show_setting_page' );
+			$function    = array( $this, 'show_settings_page' );
 			$position    = null;
 
 			if ( isset( $cf_wp_admin[ $menu_lib ][ 'sub' ][ $menu_id ] ) ) {
@@ -556,7 +556,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function, $position );
 
-			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
+			add_action( 'load-' . $this->pagehook, array( $this, 'load_settings_page' ) );
 		}
 
 		/*
@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			exit;	// Stop after redirect.
 		}
 
-		public function load_setting_page() {
+		public function load_settings_page() {
 
 			$user_id      = get_current_user_id();
 			$action_query = 'wpsso-action';
@@ -1056,7 +1056,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						default:
 
-							do_action( 'wpsso_load_setting_page_' . $action_value,
+							do_action( 'wpsso_load_settings_page_' . $action_value,
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
 
 							break;
@@ -1133,7 +1133,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function show_setting_page() {
+		public function show_settings_page() {
 
 			if ( ! $this->is_settings() ) {	// Default check is for $this->menu_id.
 
@@ -1167,7 +1167,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<div id="post-body" class="no-sidebar">' . "\n";
 			echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
 
-			$this->show_post_body_setting_form();
+			$this->show_post_body_settings_form();
 
 			echo '</div><!-- #post-body-content -->' . "\n";
 			echo '</div><!-- #post-body -->' . "\n";
@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $url;
 		}
 
-		protected function show_post_body_setting_form() {
+		protected function show_post_body_settings_form() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
 			$form_css_id   = 'wpsso_settings_form_' . $menu_hookname;
@@ -1378,8 +1378,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called by WpssoAdmin->show_post_body_setting_form().
-		 * Called by WpssoSubmenuTools->show_post_body_setting_form().
+		 * Called by WpssoAdmin->show_post_body_settings_form().
+		 * Called by WpssoSubmenuTools->show_post_body_settings_form().
 		 */
 		protected function get_form_buttons() {
 

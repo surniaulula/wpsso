@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Add settings page filters and actions hooks.
 		 *
-		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
 		 */
 		protected function add_plugin_hooks() {
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			wp_enqueue_script( 'user-profile' );
 		}
 
-		protected function show_post_body_setting_form() {
+		protected function show_post_body_settings_form() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 

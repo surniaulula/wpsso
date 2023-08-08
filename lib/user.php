@@ -852,7 +852,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Called by the WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_setting_form() methods.
+		 * Called by the WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_settings_form() methods.
 		 */
 		public function show_about_section( $user_id = 0 ) {
 

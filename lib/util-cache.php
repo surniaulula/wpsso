@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * Clear cache files.
 		 *
 		 * See WpssoUtilCache->refresh().
-		 * See WpssoAdmin->load_setting_page().
+		 * See WpssoAdmin->load_settings_page().
 		 */
 		public function clear_cache_files() {
 
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * See WpssoAdmin->load_setting_page().
+		 * See WpssoAdmin->load_settings_page().
 		 */
 		public function clear_ignored_urls() {
 
@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * Clear database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
 		 * and optionally exclude transients for shortened URLs.
 		 *
-		 * See WpssoAdmin->load_setting_page().
+		 * See WpssoAdmin->load_settings_page().
 		 */
 		public function clear_db_transients( $key_prefix = '', $clear_short = true ) {
 
