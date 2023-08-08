@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.18.3\n"
+"Project-Id-Version: WPSSO Core 15.19.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5190,23 +5190,23 @@ msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr ""
 
-#: lib/admin.php:782
+#: lib/admin.php:785
 msgid "Plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:790
+#: lib/admin.php:793
 msgid "refresh the cache now"
 msgstr ""
 
-#: lib/admin.php:793
+#: lib/admin.php:796
 msgid "You can %1$s or let the cache refresh over the next %2$s."
 msgstr ""
 
-#: lib/admin.php:821
+#: lib/admin.php:822
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:829
+#: lib/admin.php:830
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 

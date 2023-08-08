@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
 					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY, 0 );
-					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_options' ) );
+					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_settings' ) );
 				}
 
 				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
@@ -427,8 +427,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function register_setting() {
 
-			register_setting( 'wpsso_setting', WPSSO_OPTIONS_NAME, $args = array(
-				'sanitize_callback' => array( $this, 'registered_setting_sanitation' ),
+			register_setting( 'wpsso_settings', WPSSO_OPTIONS_NAME, $args = array(
+				'sanitize_callback' => array( $this, 'settings_sanitation' ),
 			) );
 		}
 
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * WordPress handles the actual saving of the options to the database table.
 		 */
-		public function registered_setting_sanitation( $opts ) {
+		public function settings_sanitation( $opts ) {
 
 			$current_user_id = get_current_user_id();	// Always returns an integer.
 
@@ -739,11 +739,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$defs = $this->p->opt->get_defaults();
-
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = SucomUtil::array_merge_recursive_distinct( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = false );
-			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
+			$opts = apply_filters( 'wpsso_save_settings_options', $opts, $network = false, $upgrading = false );
 
 			/*
 			 * Maybe clear dismissed notices for enabled options that were previously disabled.
@@ -773,9 +772,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->options = $opts;
 
-			/*
-			 * Create a saved settings and refresh cache notice.
-			 */
+			$this->settings_saved_notice();
+
+			return $opts;
+		}
+
+		public function settings_saved_notice() {
+
 			$cache_md5_pre  = 'wpsso_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 			$user_id        = get_current_user_id();
@@ -794,11 +797,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-
-			return $opts;
 		}
 
-		public function save_site_options() {
+		public function save_site_settings() {
 
 			$default_page     = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 			$default_page_url = $this->p->util->get_admin_url( $default_page );
@@ -849,11 +850,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$defs = $this->p->opt->get_site_defaults();
-
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = SucomUtil::array_merge_recursive_distinct( $this->p->site_options, $opts );	// Complete the array with previous options.
 			$opts = $this->p->opt->sanitize( $opts, $defs, $network = true );
-			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
+			$opts = apply_filters( 'wpsso_save_settings_options', $opts, $network = true, $upgrading = false );
 
 			/*
 			 * Update the current options with any changes.
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_post_body_setting_form() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
-			$form_css_id   = 'wpsso_setting_form_' . $menu_hookname;
+			$form_css_id   = 'wpsso_settings_form_' . $menu_hookname;
 
 			switch ( $this->menu_lib ) {
 
@@ -1283,7 +1283,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<form name="wpsso" id="' . $form_css_id . '" action="options.php" method="post">' . "\n";
 
-					settings_fields( 'wpsso_setting' );
+					settings_fields( 'wpsso_settings' );
 
 					break;
 

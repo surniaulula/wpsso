@@ -599,8 +599,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/*
 		 * Sanitize and validate options, including both the plugin options and custom meta options arrays.
 		 *
-		 * Called by WpssoAdmin->registered_setting_sanitation().
-		 * Called by WpssoAdmin->save_site_options().
+		 * Called by WpssoAdmin->settings_sanitation().
+		 * Called by WpssoAdmin->save_site_settings().
 		 * Called by WpssoAbstractWpMeta->get_submit_opts().
 		 */
 		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
@@ -843,7 +843,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/*
 			 * $is_option_upg is true when the option versions, not the plugin versions, have changed.
 			 */
-			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network, $is_option_upg );
+			$opts = apply_filters( 'wpsso_save_settings_options', $opts, $network, $is_option_upg );
 
 			/*
 			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').

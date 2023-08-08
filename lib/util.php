@@ -3788,7 +3788,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/*
 		 * See WpssoCmcfXml->get().
 		 * See WpssoGmfXml->get().
-		 * See WpssoAdmin->registered_setting_sanitation().
+		 * See WpssoAdmin->settings_sanitation().
 		 * See WpssoAdmin->show_metabox_cache_status().
 		 * See WpssoHead->get_head_array().
 		 * See WpssoMessagesTooltipPlugin->get().

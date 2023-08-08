@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 		}
 
 		/*
-		 * See WpssoAdmin->registered_setting_sanitation().
+		 * See WpssoAdmin->settings_sanitation().
 		 */
 		public function suggest_options_integration() {
 
