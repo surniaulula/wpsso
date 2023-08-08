@@ -245,7 +245,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoAdmin->settings_saved_notice()` method.
 	* Renamed the 'save_setting_options' filter to 'save_settings_options'.
-	* Renamed the 'load_setting_page_*' filter to 'load_settings_page_*'.
+	* Renamed the 'load_setting_page_*' filters to 'load_settings_page_*'.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
