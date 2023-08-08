@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.19.0-dev.1',	// Plugin version.
+					'version'     => '15.19.0-dev.2',	// Plugin version.
 					'opt_version' => '981',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2450,7 +2450,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.18.0-dev.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.18.0-dev.2',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -3081,7 +3081,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * See WpssoAbstractWpMeta->get_inherited_md_opts().
 				 */
-				'inherited_md_opts' => array(
+				'inherit_md_opts' => array(
 
 					/*
 					 * Inherited image options.
@@ -3134,11 +3134,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 				 */
-				'inherited_variant_props' => array(
+				'inherit_variant_props' => array(
 					'name'        => null,
 					'description' => null,
 					'brand'       => null,
 					'review'      => null,
+				),
+				'excl_varies_by_props' => array(
+					'@id'                  => null,
+					'@context'             => null,
+					'@type'                => null,
+					'url'                  => null,
+					'name'                 => null,
+					'description'          => null,
+					'image'                => null,
+					'subjectOf'            => null,
+					'inProductGroupWithID' => null,
 				),
 
 				/*

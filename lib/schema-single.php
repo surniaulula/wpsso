@@ -2057,25 +2057,29 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! empty( $json_ret[ 'hasVariant' ] ) ) {	// Just in case.
 
-				$exclude_varies_by = array( '@context', '@type', 'url', 'name', 'description', 'image', 'subjectOf', 'inProductGroupWithID' );
-				$maybe_varies_by   = array();
-				$varies_by         = array();
+				$varies_by      = array();
+				$incl_varies_by = array();
+				$excl_varies_by = array_keys( $this->p->cf[ 'form' ][ 'excl_varies_by_props' ] );
 
+				/*
+				 * Get the property names used by all variants.
+				 */
 				foreach ( $json_ret[ 'hasVariant' ] as $variant ) {
 
-					$maybe_varies_by = array_merge( $maybe_varies_by, array_keys( $variant ) );
+					$incl_varies_by = array_merge( $incl_varies_by, array_keys( $variant ) );
 				}
 
-				$maybe_varies_by = array_unique( $maybe_varies_by );
+				$incl_varies_by = array_unique( $incl_varies_by );
 
-				$exclude_varies_by = apply_filters( 'wpsso_json_data_single_product_group_exclude_varies_by', $exclude_varies_by, $mod );
+				/*
+				 * Get the property names that are not excluded.
+				 */
+				if ( ! empty( $excl_varies_by ) && is_array( $excl_varies_by ) ) {	// Just in case.
 
-				if ( ! empty( $exclude_varies_by ) && is_array( $exclude_varies_by ) ) {	// Just in case.
-
-					$maybe_varies_by = array_diff( $maybe_varies_by, $exclude_varies_by );
+					$incl_varies_by = array_diff( $incl_varies_by, $excl_varies_by );
 				}
 
-				foreach ( $maybe_varies_by as $prop_name ) {
+				foreach ( $incl_varies_by as $prop_name ) {
 
 					$last_value = null;
 
@@ -2215,7 +2219,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Note that product group variants will automatically inherit the brand property from the main product.
 			 *
-			 * See WpssoConfig::$cf[ 'form' ][ 'inherited_variant_props' ].
+			 * See WpssoConfig::$cf[ 'form' ][ 'inherit_variant_props' ].
 			 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:brand' ) ) {	// Not null, an empty string, or 'none'.

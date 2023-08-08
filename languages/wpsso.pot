@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.19.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.19.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5628,12 +5628,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5329
+#: lib/config.php:5340
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5329
+#: lib/config.php:5340
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -11857,7 +11857,7 @@ msgstr ""
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2163
+#: lib/schema-single.php:2167
 msgid "adding schema product"
 msgstr ""
 

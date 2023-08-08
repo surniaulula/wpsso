@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.18.3\n"
+"Project-Id-Version: WPSSO Core 15.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-08-07 11:51-0700\n"
+"PO-Revision-Date: 2023-08-08 08:32-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4944,23 +4944,23 @@ msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr "Réglages de l'ajout"
 
-#: lib/admin.php:782
+#: lib/admin.php:785
 msgid "Plugin settings have been saved."
 msgstr "Les réglages ont été sauvegardés."
 
-#: lib/admin.php:790
+#: lib/admin.php:793
 msgid "refresh the cache now"
 msgstr "actualiser le cache maintenant"
 
-#: lib/admin.php:793
+#: lib/admin.php:796
 msgid "You can %1$s or let the cache refresh over the next %2$s."
 msgstr "Vous pouvez %1$s ou laisser le cache s'actualiser au cours du prochain %2$s."
 
-#: lib/admin.php:821
+#: lib/admin.php:822
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr "La validation du jeton nonce pour les options de réseau a échoué (mise à jour ignorée)."
 
-#: lib/admin.php:829
+#: lib/admin.php:830
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 

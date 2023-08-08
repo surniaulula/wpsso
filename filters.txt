@@ -149,8 +149,6 @@
 
 'wpsso_json_data_single_place' ( $place_data, $mod, $place_id )
 
-'wpsso_json_data_single_product_group_exclude_varies_by' ( $exclude_varies_by, $mod )
-
 'wpsso_json_data_single_product_group_varies_by' ( $varies_by, $mod )
 
 'wpsso_json_ld_search_url' ( $search_url, $mod, $add_page )

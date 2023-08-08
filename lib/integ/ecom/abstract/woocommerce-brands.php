@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 		/*
 		 * Note that product group variants will automatically inherit the brand property from the main product.
 		 *
-		 * See WpssoConfig::$cf[ 'form' ][ 'inherited_variant_props' ].
+		 * See WpssoConfig::$cf[ 'form' ][ 'inherit_variant_props' ].
 		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 		 */
 		public function filter_json_data_https_schema_org_product( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {

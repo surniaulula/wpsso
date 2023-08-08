@@ -2567,8 +2567,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * See https://www.php.net/manual/en/function.array-intersect-key.php.
 			 */
-			$inherit_opts = $this->p->cf[ 'form' ][ 'inherited_md_opts' ];
-			$inherit_opts = apply_filters( 'wpsso_inherited_md_opts', $inherit_opts, $mod );
+			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
+			$inherit_opts = apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
 
 			/*
 			 * Since WPSSO Core v9.10.0.
