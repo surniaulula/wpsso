@@ -5055,7 +5055,8 @@ msgstr ""
 msgid "Install and activate the %s add-on."
 msgstr ""
 
-#. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
+#. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a
+#. pre-translated comment.
 #: lib/admin-head-suggest-addons.php:330
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
@@ -6943,7 +6944,8 @@ msgstr ""
 msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr ""
 
-#. translators: %1$s is the PHP library path, %2$s is the PHP library class name
+#. translators: %1$s is the PHP library path, %2$s is the PHP library class
+#. name
 #: lib/loader.php:179
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
@@ -7501,7 +7503,8 @@ msgid ""
 "tags, you may uncheck them here to prevent duplicates from being added."
 msgstr ""
 
-#. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
+#. translators: %1$s is "link rel canonical", %2$s is "meta name description",
+#. and %3$s is "meta name robots".
 #: lib/messages-info.php:252
 msgid ""
 "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
@@ -7932,7 +7935,8 @@ msgid ""
 "property."
 msgstr ""
 
-#. translators: %1$s is a lower case item name, for example 'product Google category'.
+#. translators: %1$s is a lower case item name, for example 'product Google
+#. category'.
 #: lib/messages-tooltip-meta-product.php:52
 #: lib/messages-tooltip-meta-schema.php:172
 msgid ""
@@ -7945,7 +7949,8 @@ msgstr ""
 msgid "Select \"[None]\" to exclude the %s from Schema markup and meta tags."
 msgstr ""
 
-#. translators: %s is a singular item reference, for example 'a product size group'.
+#. translators: %s is a singular item reference, for example 'a product size
+#. group'.
 #: lib/messages-tooltip-meta-product.php:59
 msgid "A custom value for the %s can be provided for the main product."
 msgstr ""
@@ -7969,10 +7974,14 @@ msgid ""
 "or e-commerce plugin to update this value."
 msgstr ""
 
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product size'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:72
 #: lib/messages-tooltip-meta-schema.php:181 lib/messages-tooltip-plugin.php:798
 #: lib/messages-tooltip-plugin.php:840 lib/messages-tooltip-schema.php:221
@@ -8896,7 +8905,8 @@ msgstr ""
 msgid "Select a default %s type for a static front page."
 msgstr ""
 
-#. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
+#. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and
+#. %2$s is the type name.
 #: lib/messages-tooltip-opengraph.php:183
 #: lib/messages-tooltip-opengraph.php:195
 #: lib/messages-tooltip-opengraph.php:207
@@ -9285,7 +9295,8 @@ msgctxt "option label"
 msgid "Site Name"
 msgstr ""
 
-#. translators: %1$s is the "Site Name" option label, %2$s is the "%%sitename%%" inline variable.
+#. translators: %1$s is the "Site Name" option label, %2$s is the
+#. "%%sitename%%" inline variable.
 #: lib/messages-tooltip-plugin.php:326
 msgid ""
 "The default SEO site name suffix is the %1$s value (aka %2$s inline "
@@ -9303,7 +9314,8 @@ msgctxt "option label"
 msgid "Site Description"
 msgstr ""
 
-#. translators: %1$s is the "Site Description" option label, %2$s is the "%%sitedesc%%" inline variable.
+#. translators: %1$s is the "Site Description" option label, %2$s is the
+#. "%%sitedesc%%" inline variable.
 #: lib/messages-tooltip-plugin.php:343
 msgid ""
 "The default SEO tagline suffix is the %1$s value (aka %2$s inline variable)."
@@ -10635,7 +10647,8 @@ msgid ""
 "plugin!"
 msgstr ""
 
-#. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
+#. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector
+#. add-on.
 #: lib/messages.php:645
 msgid ""
 "This option is localized - <a href=\"%s\">you may change the WordPress "
@@ -11830,7 +11843,8 @@ msgid ""
 "organization Schema %2$s markup."
 msgstr ""
 
-#. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
+#. translators: %1$s is the organization name, %2$s is 'site' (translated) or
+#. 'ID #'.
 #: lib/schema-single.php:1169
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
@@ -13002,12 +13016,14 @@ msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
-#. translators: %1$s is an action message, %2$s is the module or post type name.
+#. translators: %1$s is an action message, %2$s is the module or post type
+#. name.
 #: lib/util.php:3756
 msgid "%1$s for this %2$s"
 msgstr ""
 
-#. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
+#. translators: %1$s is an action message, %2$s is the module or post type name
+#. and %3$d is the object ID.
 #: lib/util.php:3766
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""

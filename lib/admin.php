@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				$refresh_cache_url  = SucomUtil::get_request_value( '_wp_http_referer', 'POST', $this->p->util->get_admin_url() );
+				$refresh_cache_url  = $this->p->util->get_admin_url( $menu_id = 'tools' );
 				$refresh_cache_url  = add_query_arg( 'wpsso-action', 'refresh_cache', $refresh_cache_url );
 				$refresh_cache_url  = wp_nonce_url( $refresh_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 				$refresh_cache_link = '<a href="' . $refresh_cache_url . '">' . __( 'refresh the cache now', 'wpsso' ) . '</a>';
