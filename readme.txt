@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.19.0-rc.1 (2023/08/09)**
+**Version 15.19.0 (2023/08/09)**
 
 * **New Features**
 	* None.
@@ -948,7 +948,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.19.0-rc.1 =
+= 15.19.0 =
 
 (2023/08/09) Added a new `WpssoAdmin->settings_saved_notice()` method. Renamed the 'save_setting_options' and 'load_setting_page_*' filters.
 
