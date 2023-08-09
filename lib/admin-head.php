@@ -436,7 +436,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				'', $p_purchase_url, true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
 			$no_thanks_label   = sprintf( __( 'I\'ll stay with the %s edition', 'wpsso' ), $pkg_std_transl );
-			$no_thanks_clicked = '<p>' . sprintf( __( 'Please consider supporting the development of %s in the future.', 'wpsso' ), $p_name_transl ) . '</p>';
+			$no_thanks_clicked = '<p>' . sprintf( __( 'Please consider supporting the development of %s in the future.', 'wpsso' ), $p_name_transl ) . ' ' .
+				__( 'Thank you.', 'wpsso' ) . '</p>';
 			$no_thanks_button  = '<div class="notice-single-button">' . $form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click',
 				'', '', false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-08-08 08:32-0700\n"
+"PO-Revision-Date: 2023-08-09 09:03-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4823,7 +4823,8 @@ msgstr "Activer l'ajout %s."
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
-#. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
+#. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a
+#. pre-translated comment.
 #: lib/admin-head-suggest-addons.php:330
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr "<a href=\"%1$s\">Acheter l'extension %2$s</a> %3$s."
@@ -4889,7 +4890,7 @@ msgstr "Merci!"
 msgid "I've already rated this %2$s"
 msgstr "J'ai déjà noté cette %2$s"
 
-#: lib/admin-head.php:366 lib/admin-head.php:451
+#: lib/admin-head.php:366 lib/admin-head.php:452
 msgid "You've been using the %1$s %2$s for a little over %3$s now."
 msgstr "Vous utilisez l'%2$s %1$s depuis un peu plus de %3$s maintenant."
 
@@ -4917,11 +4918,15 @@ msgstr "Je vais rester avec l'édition %s"
 msgid "Please consider supporting the development of %s in the future."
 msgstr "SVP envisager de soutenir le développement de %s à un moment donné dans le futur."
 
-#: lib/admin-head.php:454
+#: lib/admin-head.php:440
+msgid "Thank you."
+msgstr "Merci."
+
+#: lib/admin-head.php:455
 msgid "Have you thought about purchasing the %s edition?"
 msgstr "Avez-vous pensé à acheter l'édition %s?"
 
-#: lib/admin-head.php:455
+#: lib/admin-head.php:456
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr "L'édition %s est dotée de nombreuses fonctionnalités supplémentaires!"
 
@@ -5370,12 +5375,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5329
+#: lib/config.php:5340
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5329
+#: lib/config.php:5340
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -6625,7 +6630,8 @@ msgstr "Aucune question trouvée pour le balisage de Schéma FAQPage."
 msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr "Google requiert au moins une question pour le balisage de Schéma FAQPage."
 
-#. translators: %1$s is the PHP library path, %2$s is the PHP library class name
+#. translators: %1$s is the PHP library path, %2$s is the PHP library class
+#. name
 #: lib/loader.php:179
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" est manquante."
@@ -7011,7 +7017,8 @@ msgstr "%1$s ajoute les balises HTML Facebook, Open Graph, Twitter, Schéma, Pin
 msgid "If your theme or another plugin already creates one or more of these HTML tags, you may uncheck them here to prevent duplicates from being added."
 msgstr "Si votre thème ou une autre extension crée déjà une ou plusieurs de ces balises HTML, vous pouvez les décocher ici pour éviter l'ajout de doublons."
 
-#. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
+#. translators: %1$s is "link rel canonical", %2$s is "meta name description",
+#. and %3$s is "meta name robots".
 #: lib/messages-info.php:252
 msgid "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if another known SEO plugin is detected."
 msgstr "Notez que les balises %1$s, %2$s et %3$s sont automatiquement désactivées si une autre extension SEO connue est détectée."
@@ -7343,7 +7350,8 @@ msgstr "Une liste délimitée par des virgules d'URL de site Web et d'applicatio
 msgid "These order action URL(s) will be used in the Schema potentialAction property."
 msgstr "Ces URL d'action de commande seront utilisées dans la propriété de Schéma potentialAction."
 
-#. translators: %1$s is a lower case item name, for example 'product Google category'.
+#. translators: %1$s is a lower case item name, for example 'product Google
+#. category'.
 #: lib/messages-tooltip-meta-product.php:52
 #: lib/messages-tooltip-meta-schema.php:172
 msgid "A custom value for the %1$s, which may be different than the %2$s option value."
@@ -7354,7 +7362,8 @@ msgstr "Une valeur personnalisée pour %1$s, qui peut être différente de la va
 msgid "Select \"[None]\" to exclude the %s from Schema markup and meta tags."
 msgstr "Sélectionnez \"[Aucun]\" pour exclure la %s du balisage de Schéma et des balises méta."
 
-#. translators: %s is a singular item reference, for example 'a product size group'.
+#. translators: %s is a singular item reference, for example 'a product size
+#. group'.
 #: lib/messages-tooltip-meta-product.php:59
 msgid "A custom value for the %s can be provided for the main product."
 msgstr "Une valeur personnalisée pour le/la %s peut être fournie pour le produit principal."
@@ -7372,10 +7381,14 @@ msgstr "L'option <strong>%s</strong> peut être en lecture seule si un champ per
 msgid "In this case, you should update the product information in the custom field or e-commerce plugin to update this value."
 msgstr "Dans ce cas, vous devez mettre à jour les informations sur le produit dans le champ personnalisé ou l'extension de commerce électronique pour mettre à jour cette valeur."
 
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-#. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product size'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
+#. translators: %1$s is a webpage URL and %2$s is a singular item reference,
+#. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:72
 #: lib/messages-tooltip-meta-schema.php:181 lib/messages-tooltip-plugin.php:798
 #: lib/messages-tooltip-plugin.php:840 lib/messages-tooltip-schema.php:221
@@ -8124,7 +8137,8 @@ msgstr "Si possible, ajoutez ou modifiez l'argument \"autoplay\" de l'URL de la 
 msgid "Select a default %s type for a static front page."
 msgstr "Sélectionnez un type %s par défaut pour la page statique d'avant du site."
 
-#. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
+#. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and
+#. %2$s is the type name.
 #: lib/messages-tooltip-opengraph.php:183
 #: lib/messages-tooltip-opengraph.php:195
 #: lib/messages-tooltip-opengraph.php:207
@@ -8407,7 +8421,8 @@ msgctxt "option label"
 msgid "Site Name"
 msgstr "Nom du site"
 
-#. translators: %1$s is the "Site Name" option label, %2$s is the "%%sitename%%" inline variable.
+#. translators: %1$s is the "Site Name" option label, %2$s is the
+#. "%%sitename%%" inline variable.
 #: lib/messages-tooltip-plugin.php:326
 msgid "The default SEO site name suffix is the %1$s value (aka %2$s inline variable)."
 msgstr "Le suffixe SEO de nom du site par défaut est la valeur %1$s (alias %2$s variable en ligne)."
@@ -8423,7 +8438,8 @@ msgctxt "option label"
 msgid "Site Description"
 msgstr "Description du site"
 
-#. translators: %1$s is the "Site Description" option label, %2$s is the "%%sitedesc%%" inline variable.
+#. translators: %1$s is the "Site Description" option label, %2$s is the
+#. "%%sitedesc%%" inline variable.
 #: lib/messages-tooltip-plugin.php:343
 msgid "The default SEO tagline suffix is the %1$s value (aka %2$s inline variable)."
 msgstr "Le suffixe SEO de slogan par défaut est la valeur %1$s (alias %2$s variable en ligne)."
@@ -9421,16 +9437,16 @@ msgid "The %s plugin includes:"
 msgstr "L'extension %s incluent:"
 
 #: lib/messages.php:590
-msgid "<strong><a href=\"%s\">Customize advanced settings</a></strong>, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more."
-msgstr "<strong><a href=\"%s\">Personnalisez les réglages avancés</a></strong>, y compris les tailles d'image, l'expiration des caches, les services vidéo, les services de raccourcissement, les types de documents, les champs de contact, les attributs de produit, les champs personnalisés, etc."
+msgid "<strong><a href=\"%s\">Customize advanced settings</a></strong>, including image sizes, video services, shortening services, default types, contact fields, product attributes, custom fields, and more."
+msgstr "<strong><a href=\"%s\">Personnalisez les réglages avancés</a></strong>, y compris les tailles d'image, les services vidéo, les services de raccourcissement, les types par défaut, les champs de contact, les attributs de produit, les champs personnalisés, etc."
 
 #: lib/messages.php:592
-msgid "<strong>Additional Schema options</strong> in the %s metabox to events, how-tos, job postings, movies, products, recipes, reviews, and more."
-msgstr "<strong>Options de Schéma supplémentaires</strong> dans la métabox %s pour personnaliser les es événements, les procédures, les offres d'emploi, les films, les produits, les recettes, les critiques, etc."
+msgid "<strong>Additional Schema options</strong> in the %s metabox for events, job postings, movies, products, recipes, reviews, and more."
+msgstr "<strong>Options de Schéma supplémentaires</strong> dans la métabox %s pour personnaliser les événements, les offres d'emploi, les films, les produits, les recettes, les critiques, etc."
 
 #: lib/messages.php:594
-msgid "<strong>Get video and short URL data from external services</strong> (Bitly, Vimeo, Youtube, etc.)."
-msgstr "<strong>Obtenir des données vidéo et URL courtes à partir de services externes</strong> (Bitly, Vimeo, Youtube, etc.)."
+msgid "<strong>Get video and URL shortening data from external services</strong> (Bitly, Vimeo, Youtube, etc.)."
+msgstr "<strong>Obtenir des données de vidéo et de raccourcissement d'URL à partir de services externes</strong> (Bitly, Vimeo, Youtube, etc.)."
 
 #: lib/messages.php:604
 msgid "<strong>Development of %s is driven by user requests</strong> - we welcome all your comments and suggestions."
@@ -9452,7 +9468,8 @@ msgstr "Ne laissez pas cela arriver!"
 msgid "Rate your active plugins today - it only takes a few seconds to rate a plugin!"
 msgstr "Notez vos extensions actives aujourd'hui - cela ne prend que quelques secondes pour noter une extension!"
 
-#. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
+#. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector
+#. add-on.
 #: lib/messages.php:645
 msgid "This option is localized - <a href=\"%s\">you may change the WordPress locale</a> to define alternate values for different languages."
 msgstr "Cette option est localisé - v<a href=\"%s\">ous pouvez changer la langue WordPress</a> pour définir des valeurs d'option pour d'autres langues."
@@ -10566,7 +10583,8 @@ msgstr "Une image de logo d'organisation est manquante et requise pour le balisa
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
-#. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
+#. translators: %1$s is the organization name, %2$s is 'site' (translated) or
+#. 'ID #'.
 #: lib/schema-single.php:1169
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
@@ -10591,7 +10609,7 @@ msgstr "ajout de schéma d'endroit"
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2163
+#: lib/schema-single.php:2167
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
@@ -11707,12 +11725,14 @@ msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
-#. translators: %1$s is an action message, %2$s is the module or post type name.
+#. translators: %1$s is an action message, %2$s is the module or post type
+#. name.
 #: lib/util.php:3756
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
-#. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
+#. translators: %1$s is an action message, %2$s is the module or post type name
+#. and %3$d is the object ID.
 #: lib/util.php:3766
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"

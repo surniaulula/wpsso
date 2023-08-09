@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.19.0-b.1\n"
+"Project-Id-Version: WPSSO Core 15.19.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5136,7 +5136,7 @@ msgstr ""
 msgid "I've already rated this %2$s"
 msgstr ""
 
-#: lib/admin-head.php:366 lib/admin-head.php:451
+#: lib/admin-head.php:366 lib/admin-head.php:452
 msgid "You've been using the %1$s %2$s for a little over %3$s now."
 msgstr ""
 
@@ -5164,11 +5164,15 @@ msgstr ""
 msgid "Please consider supporting the development of %s in the future."
 msgstr ""
 
-#: lib/admin-head.php:454
-msgid "Have you thought about purchasing the %s edition?"
+#: lib/admin-head.php:440
+msgid "Thank you."
 msgstr ""
 
 #: lib/admin-head.php:455
+msgid "Have you thought about purchasing the %s edition?"
+msgstr ""
+
+#: lib/admin-head.php:456
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr ""
 
@@ -10603,20 +10607,20 @@ msgstr ""
 #: lib/messages.php:590
 msgid ""
 "<strong><a href=\"%s\">Customize advanced settings</a></strong>, including "
-"image sizes, cache expiry, video services, shortening services, document "
-"types, contact fields, product attributes, custom fields, and more."
+"image sizes, video services, shortening services, default types, contact "
+"fields, product attributes, custom fields, and more."
 msgstr ""
 
 #: lib/messages.php:592
 msgid ""
-"<strong>Additional Schema options</strong> in the %s metabox to events, how-"
-"tos, job postings, movies, products, recipes, reviews, and more."
+"<strong>Additional Schema options</strong> in the %s metabox for events, job "
+"postings, movies, products, recipes, reviews, and more."
 msgstr ""
 
 #: lib/messages.php:594
 msgid ""
-"<strong>Get video and short URL data from external services</strong> (Bitly, "
-"Vimeo, Youtube, etc.)."
+"<strong>Get video and URL shortening data from external services</strong> "
+"(Bitly, Vimeo, Youtube, etc.)."
 msgstr ""
 
 #: lib/messages.php:604
