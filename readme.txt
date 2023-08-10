@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.19.1 (2023/08/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed using $this when not in object context in lib/schema-single.php:2062.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.19.0 (2023/08/09)**
 
 * **New Features**
@@ -947,6 +961,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.19.1 =
+
+(2023/08/10) Fixed using $this when not in object context in lib/schema-single.php:2062.
 
 = 15.19.0 =
 
