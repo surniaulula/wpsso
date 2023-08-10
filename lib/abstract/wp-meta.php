@@ -2641,7 +2641,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting parent ID ' . $parent_id . ' metadata for ' . mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'getting parent ID ' . $parent_id . ' metadata for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 					}
 
 					$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
