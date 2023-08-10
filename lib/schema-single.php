@@ -2059,7 +2059,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$varies_by      = array();
 				$incl_varies_by = array();
-				$excl_varies_by = array_keys( $this->p->cf[ 'form' ][ 'excl_varies_by_props' ] );
+				$excl_varies_by = array_keys( $wpsso->cf[ 'form' ][ 'excl_varies_by_props' ] );
 
 				/*
 				 * Get the property names used by all variants.
