@@ -284,6 +284,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key  = $this->p->options[ 'plugin_title_tag' ];
 				$max_len = $this->p->options[ 'plugin_title_tag' ];
 
+				/*
+				 * Return a decoded title, which may be used in the RSS XML <title> tag.
+				 */
 				$title_parts[ 'title' ] = $this->get_title( $mod, $md_key, $max_len, $title_sep = null, $num_hashtags = false, $do_encode = false );
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
