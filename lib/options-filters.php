@@ -493,6 +493,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_comment_reply_title':		// Reply Comment Title.
 				case 'plugin_comment_review_title':		// Review Comment Title.
 				case 'plugin_product_var_title':		// Product Variation Title.
+				case 'plugin_feed_title':			// RSS Feed Title.
 				case 'plugin_404_page_title':			// 404 Page Title.
 				case 'plugin_404_page_desc':			// 404 Page Description.
 				case 'plugin_no_title_text':			// No Title Text.

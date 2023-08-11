@@ -403,6 +403,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_feed_title':	// RSS Feed Title.
+
+					$text = __( 'The RSS feed webpage title tag value.' ) . ' ';
+
+					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
+						$this->p->opt->get_text( 'plugin_feed_title', $use_opts = false ) );
+
+					break;
+
 				case 'tooltip-plugin_404_page_title':	// 404 Page Title.
 
 					$text = __( 'The 404 page title used for meta tags and Schema markup.' ) . ' ';

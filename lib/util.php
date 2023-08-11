@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_category',
 			'is_customize_preview',
 			'is_embed',
+			'is_feed',
 			'is_front_page',
 			'is_home',
 			'is_multisite',

@@ -153,6 +153,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_comment_reply_title' );	// Reply Comment Title.
 				$this->set_default_text( $local_cache, 'plugin_comment_review_title' );	// Review Comment Title.
 				$this->set_default_text( $local_cache, 'plugin_product_var_title' );	// Product Variation Title.
+				$this->set_default_text( $local_cache, 'plugin_feed_title' );		// RSS Feed Title.
 				$this->set_default_text( $local_cache, 'plugin_404_page_title' );	// 404 Page Title.
 				$this->set_default_text( $local_cache, 'plugin_404_page_desc' );	// 404 Page Description.
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
@@ -1847,6 +1848,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					case 'plugin_product_var_title':	// Product Variation Title.
 
 						return _x( '%%var_title%% %%sep%% %%var_attrs%%', 'option value', 'wpsso' );
+
+					case 'plugin_feed_title':		// RSS Feed Title.
+
+						return _x( '%%sitename%% %%sep%% RSS Feed', 'option value', 'wpsso' );
 
 					case 'plugin_404_page_title':		// 404 Page Title.
 

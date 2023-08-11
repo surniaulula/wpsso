@@ -229,7 +229,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_sep = $this->maybe_get_title_sep();
+			$title_sep = $this->maybe_get_title_sep();	// Returns default title separator (decoded).
+
+			$title_sep = SucomUtil::encode_html_emoji( $title_sep );
 
 			return $title_sep;
 		}
@@ -617,6 +619,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$mod[ 'is_home_posts' ] = true;		// Static posts page or blog archive page.
 
+				} elseif ( is_feed() ) {
+
+					$mod[ 'is_feed' ] = true;
+
 				} elseif ( is_404() ) {
 
 					$mod[ 'is_404' ] = true;
@@ -868,7 +874,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'both':
 
-						$title_sep = $this->maybe_get_title_sep();	// Returns default $title_sep if not provided.
+						$title_sep = $this->maybe_get_title_sep();	// Returns default title separator (decoded).
 
 						$caption_text = $this->get_title( $mod, $md_key_title = 'og_title', $max_len = 'og_title',
 							$title_sep, $num_hashtags_title = false, $do_encode_title = false );
@@ -926,8 +932,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$mod        = $this->maybe_get_mod( $mod );					// Returns $mod array if not provided.
 			$md_key     = $this->sanitize_md_key( $md_key, $def_key = 'seo_title' );	// Returns an array of metadata keys (can be empty).
 			$max_len    = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
-			$dots       = $this->maybe_get_ellipsis();					// Returns default $dots.
-			$title_sep  = $this->maybe_get_title_sep( $title_sep );				// Returns default $title_sep if not provided.
+			$dots       = $this->maybe_get_ellipsis();					// Returns default ellipsis (decoded).
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );				// Returns default title separator (decoded) if not provided.
 			$title_text = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
 			$is_custom  = empty( $title_text ) ? false : true;
 			$hashtags   = '';
@@ -1079,7 +1085,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$mod       = $this->maybe_get_mod( $mod );				// Returns $mod array if not provided.
 			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'seo_desc' );	// Returns an array of metadata keys (can be empty).
 			$max_len   = $this->sanitize_max_len( $max_len );			// Returns max integer for numeric, string, or array value.
-			$dots      = $this->maybe_get_ellipsis();				// Returns default $dots.
+			$dots      = $this->maybe_get_ellipsis();				// Returns default ellipsis (decoded).
 			$desc_text = $this->maybe_get_custom( $mod, $md_key );			// Returns null or custom value.
 			$is_custom = empty( $desc_text ) ? false : true;
 			$hashtags  = '';
@@ -1188,7 +1194,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$mod       = $this->maybe_get_mod( $mod );					// Returns $mod array if not provided.
 			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'schema_text' );	// Returns an array of metadata keys (can be empty).
 			$max_len   = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
-			$dots      = $this->maybe_get_ellipsis();					// Returns default $dots.
+			$dots      = $this->maybe_get_ellipsis();					// Returns default ellipsis (decoded).
 			$text      = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
 			$is_custom = empty( $text ) ? false : true;
 
@@ -1250,7 +1256,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default $title_sep if not provided.
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default title separator (decoded) if not provided.
 			$title_text = '';
 
 			/*
@@ -1339,6 +1345,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod[ 'is_user' ] ) {
 
 				$title_text = $this->p->opt->get_text( 'plugin_author_page_title' );
+
+			} elseif ( $mod[ 'is_feed' ] ) {
+
+				$title_text = $this->p->opt->get_text( 'plugin_feed_title' );
 
 			} elseif ( $mod[ 'is_404' ] ) {
 
@@ -2086,7 +2096,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$term_obj   = false;
-			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default $title_sep if not provided.
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default title separator (decoded) if not provided.
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
@@ -2248,6 +2258,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * Returns default ellipsis (decoded) if not provided (ie. $ellipsis = null).
 		 */
 		private function maybe_get_ellipsis( $ellipsis = null ) {
 
@@ -2261,6 +2273,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * Returns default title separator (decoded) if not provided (ie. $title_sep = null).
 		 */
 		private function maybe_get_title_sep( $title_sep = null ) {
 

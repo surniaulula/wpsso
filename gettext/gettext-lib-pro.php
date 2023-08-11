@@ -38,6 +38,7 @@ _x( 'Comment Title', 'option label', 'wpsso' );
 _x( 'Reply Comment Title', 'option label', 'wpsso' );
 _x( 'Review Comment Title', 'option label', 'wpsso' );
 _x( 'Product Variation Title', 'option label', 'wpsso' );
+_x( 'RSS Feed Title', 'option label', 'wpsso' );
 _x( '404 Page Title', 'option label', 'wpsso' );
 _x( '404 Page Description', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );
