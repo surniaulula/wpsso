@@ -234,6 +234,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.20.0-dev.1 (2023/08/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text &gt; RSS Feed Title option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.19.1 (2023/08/10)**
 
 * **New Features**
@@ -961,6 +975,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.20.0-dev.1 =
+
+(2023/08/11) Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text &gt; RSS Feed Title option.
 
 = 15.19.1 =
 
