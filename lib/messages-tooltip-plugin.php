@@ -405,7 +405,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_feed_title':	// RSS Feed Title.
 
-					$text = __( 'The RSS feed webpage title tag value.' ) . ' ';
+					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+					$option_value = _x( '[WordPress Title]', 'option value', 'wpsso' );
+
+					$text = sprintf( __( 'The RSS feed title tag value when the %1$s option is not "<em>%2$s</em>".' ),
+						$option_link, $option_value ) . ' ';
 
 					$text .= sprintf( __( 'The default value is "<em>%s</em>".', 'wpsso' ),
 						$this->p->opt->get_text( 'plugin_feed_title', $use_opts = false ) );
