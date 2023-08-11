@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.20.0-dev.2 (2023/08/11)**
+**Version 15.20.0-dev.3 (2023/08/11)**
 
 * **New Features**
 	* None.
@@ -976,7 +976,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.20.0-dev.2 =
+= 15.20.0-dev.3 =
 
 (2023/08/11) Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text &gt; RSS Feed Title option.
 
