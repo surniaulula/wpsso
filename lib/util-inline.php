@@ -245,7 +245,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 							 */
 							$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
-							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep = null );
+							$ret_val = $this->p->page->get_term_title( $term_obj, null );
 
 							break;
 
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 							 */
 							$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
-							$ret_val = $this->p->page->get_term_title( $term_obj, $title_sep = false );
+							$ret_val = $this->p->page->get_term_title( $term_obj, false );
 
 							break;
 					}

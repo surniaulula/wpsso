@@ -972,6 +972,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						$opts[ 'schema_type_for_attachment' ] = 'media.object';
 					}
 				}
+
+				if ( $prev_version > 0 && $prev_version <= 982 ) {
+
+					if ( '%%sitename%% %%sep%% RSS Feed' === $opts[ 'plugin_feed_title' ] ) {
+
+						$opts[ 'plugin_feed_title' ] = '%%sitename%% RSS Feed';
+					}
+				}
 			}
 
 			/*

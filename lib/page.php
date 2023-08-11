@@ -231,8 +231,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$title_sep = $this->maybe_get_title_sep();	// Returns default title separator (decoded).
 
-			$title_sep = SucomUtil::encode_html_emoji( $title_sep );
-
 			return $title_sep;
 		}
 
@@ -286,7 +284,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key  = $this->p->options[ 'plugin_title_tag' ];
 				$max_len = $this->p->options[ 'plugin_title_tag' ];
 
-				$title_parts[ 'title' ] = $this->get_title( $mod, $md_key, $max_len );
+				$title_parts[ 'title' ] = $this->get_title( $mod, $md_key, $max_len, $title_sep = null, $num_hashtags = false, $do_encode = false );
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
