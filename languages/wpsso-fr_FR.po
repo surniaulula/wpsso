@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.19.0\n"
+"Project-Id-Version: WPSSO Core 15.19.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-08-09 09:03-0700\n"
+"PO-Revision-Date: 2023-08-11 08:55-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4617,54 +4617,54 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:1334
+#: lib/abstract/wp-meta.php:1335
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1405
+#: lib/abstract/wp-meta.php:1406
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1409
+#: lib/abstract/wp-meta.php:1410
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1412 lib/messages.php:294
+#: lib/abstract/wp-meta.php:1413 lib/messages.php:294
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1416
+#: lib/abstract/wp-meta.php:1417
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1417
+#: lib/abstract/wp-meta.php:1418
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1418
+#: lib/abstract/wp-meta.php:1419
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1419
+#: lib/abstract/wp-meta.php:1420
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1752
+#: lib/abstract/wp-meta.php:1753
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2080 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:2081 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstract/wp-meta.php:2082
+#: lib/abstract/wp-meta.php:2083
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
@@ -6669,8 +6669,8 @@ msgid "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media L
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la médiathèque WordPress - si cette image a été sélectionnée dans la médiathèque avant l'activation de %1$s, essayez de supprimer et de rajouter l'image à votre contenu."
 
 #: lib/media.php:64
-msgid "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels."
-msgstr "<strong>Dimension minimale suggérée pour les images téléchargées</strong> (pour satisfaire toutes les %1$d tailles d'image): %2$d par %3$d pixels."
+msgid "Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height."
+msgstr "Dimension minimale d'image pour satisfaire les %1$d tailles d'image: %2$dpx de largeur sur %3$dpx de hauteur."
 
 #: lib/media.php:1295
 msgid "Content"

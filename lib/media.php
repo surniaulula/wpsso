@@ -61,11 +61,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function show_post_upload_ui_message() {
 
-			$msg_transl = __( '<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels.', 'wpsso' );
+			$msg_transl = '<strong>' . __( 'Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height.', 'wpsso' ) . '</strong>';
 
 			list( $min_width, $min_height, $size_count ) = SucomUtil::get_minimum_image_wh();
 
-			echo '<p class="minimum-dimensions">';
+			echo '<p class="minimum-image-dimensions">';
 
 			echo sprintf( $msg_transl, $size_count, $min_width, $min_height );
 
