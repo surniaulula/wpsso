@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'is_feed' key in the `$mod` array.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
