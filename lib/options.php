@@ -1851,7 +1851,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_feed_title':		// RSS Feed Title.
 
-						return _x( '%%sitename%% %%sep%% RSS Feed', 'option value', 'wpsso' );
+						return _x( '%%sitename%% RSS Feed', 'option value', 'wpsso' );
 
 					case 'plugin_404_page_title':		// 404 Page Title.
 

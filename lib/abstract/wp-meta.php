@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'is_comment'             => false,
 			'is_date'                => false,
 			'is_day'                 => false,
-			'is_feed'                => false,
+			'is_feed'                => false,	// RSS feed.
 			'is_home'                => false,	// Home page (static or blog archive).
 			'is_home_page'           => false,	// Static front page (singular post).
 			'is_home_posts'          => false,	// Static posts page or blog archive page.
