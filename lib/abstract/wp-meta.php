@@ -23,6 +23,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 	abstract class WpssoAbstractWpMeta {
 
 		protected $p;		// Wpsso class object.
+		protected $a;		// Wpsso add-on class object.
 		protected $form;	// SucomForm class object.
 
 		protected $md_cache_disabled = false;	// Disable local caches.
