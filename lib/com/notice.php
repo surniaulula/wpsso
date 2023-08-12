@@ -1473,7 +1473,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					overflow-y:scroll;
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices.show-timeout #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
-					max-height:20vh;	/* Minimum height for timeout. */
+					max-height:20vh;	/* Minimum height with timeout. */
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice,
 				#wpadminbar .' . $this->plugin_id . '-notice.error,
