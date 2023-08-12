@@ -2546,7 +2546,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'wp' => array(
 				'label'       => 'WordPress',
 				'min_version' => '5.5',		// Hard limit - deactivate the plugin when activating.
-				'rec_version' => '6.3.0',	// Soft limit - issue warning if lower version found.
+				'rec_version' => '6.3',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe'   => array(		// Thickbox iframe.
 					'width'  => 772,	// Url query argument.
