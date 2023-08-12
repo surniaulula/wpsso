@@ -71,7 +71,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), $title_tag_prio, 1 );
 				add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), $title_tag_prio, 1 );
 				add_filter( 'document_title', array( $this, 'document_title' ), $title_tag_prio, 1 );
-				add_filter( 'get_wp_title_rss', array( $this, 'document_title_rss' ), $title_tag_prio, 1 );
+				add_filter( 'get_wp_title_rss', array( $this, 'get_wp_title_rss' ), $title_tag_prio, 1 );
+				add_filter( 'get_bloginfo_rss', array( $this, 'get_bloginfo_rss' ), $title_tag_prio, 2 );
 			}
 		}
 
@@ -357,18 +358,42 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/*
 		 * Since WPSSO Core v15.20.0.
 		 *
-		 * Filters the document title from wp_get_document_title() and fixes HTML entities for get_wp_title_rss() and
-		 * wp_title_rss().
+		 * Filters the string from wp_get_document_title() for get_wp_title_rss() and wp_title_rss() to convert HTML named
+		 * entities into numbered entities.
 		 *
-		 * See wordpress/wp-includes/feed.php:			return apply_filters( 'get_wp_title_rss', wp_get_document_title(), $deprecated );
-		 * See wordpress/wp-includes/feed-rdf.php:		<title><?php wp_title_rss(); ?></title>
-		 * See wordpress/wp-includes/feed-rss2.php:		<title><?php wp_title_rss(); ?></title>
-		 * See wordpress/wp-includes/feed-rss2-comments.php:	<title><?php printf( ent2ncr( __( 'Comments for %s' ) ), get_wp_title_rss() ); ?></title>
-		 * See wordpress/wp-includes/feed-rss.php:		<title><?php wp_title_rss(); ?></title>
+		 * See wordpress/wp-includes/feed.php:
+		 *	return apply_filters( 'get_wp_title_rss', wp_get_document_title(), $deprecated );
+		 *
+		 * See wordpress/wp-includes/feed-rdf.php:
+		 *	<title><?php wp_title_rss(); ?></title>
+		 *
+		 * See wordpress/wp-includes/feed-rss2.php:
+		 *	<title><?php wp_title_rss(); ?></title>
+		 *
+		 * See wordpress/wp-includes/feed-rss2-comments.php:
+		 *	<title><?php printf( ent2ncr( __( 'Comments for %s' ) ), get_wp_title_rss() ); ?></title>
+		 *
+		 * See wordpress/wp-includes/feed-rss.php:
+		 *	<title><?php wp_title_rss(); ?></title>
 		 */
-		public function document_title_rss( $title ) {
+		public function get_wp_title_rss( $wp_title ) {
 
-			return ent2ncr( $title );	// Converts named entities into numbered entities.
+			return ent2ncr( $wp_title );	// Converts named entities into numbered entities.
+		}
+
+		/*
+		 * Since WPSSO Core v15.20.0.
+		 *
+		 * Filters the string from get_bloginfo() for get_bloginfo_rss() and bloginfo_rss() to encode special characters
+		 * and convert HTML named entities into numbered entities.
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_bloginfo/.
+		 */
+		public function get_bloginfo_rss( $bloginfo, $show ) {
+
+			$bloginfo = SucomUtil::encode_html_emoji( $bloginfo );	// Does not double-encode.
+
+			return ent2ncr( $bloginfo );	// Converts named entities into numbered entities.
 		}
 
 		/*

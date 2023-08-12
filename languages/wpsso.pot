@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.20.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 15.20.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3315,7 +3315,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:72 lib/messages-tooltip-plugin.php:584
-#: lib/page.php:138 lib/pro/admin/advanced.php:462
+#: lib/page.php:139 lib/pro/admin/advanced.php:462
 #: lib/std/admin/advanced.php:450
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -11596,15 +11596,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1001 lib/util-inline.php:413
+#: lib/page.php:1026 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1005
+#: lib/page.php:1030
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2214
+#: lib/page.php:2239
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
