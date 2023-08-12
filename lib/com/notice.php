@@ -1468,12 +1468,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:0;
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
-					min-width:70vw;
-					max-height:90vh;
+					min-width:60vw;		/* Minimum width. */
+					max-height:90vh;	/* Minimum height. */
 					overflow-y:scroll;
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices.show-timeout #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
-					max-height:30vh;
+					max-height:20vh;	/* Minimum height for timeout. */
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice,
 				#wpadminbar .' . $this->plugin_id . '-notice.error,
