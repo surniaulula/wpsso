@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.20.0-rc.1 (2023/08/13)**
+**Version 15.20.0 (2023/08/13)**
 
 * **New Features**
 	* None.
@@ -979,7 +979,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.20.0-rc.1 =
+= 15.20.0 =
 
 (2023/08/13) Added a new RSS Feed Title option. Added filters to fix the WordPress RSS feed title and description.
 
