@@ -234,16 +234,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.20.0-dev.4 (2023/08/11)**
+**Version 15.20.0-b.1 (2023/08/12)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text &gt; RSS Feed Title option.
+	* Added filters to fix the WordPress RSS feed title and description for HTML named entities and special characters.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'is_feed' key in the `$mod` array.
+	* Added a 'is_feed' key in the `$mod` array.
+	* Added a 'get_wp_title_rss' filter hook in `WpssoPage->get_wp_title_rss()`.
+	* Added a 'get_bloginfo_rss' filter hook in `WpssoPage->get_bloginfo_rss()`.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -976,9 +979,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.20.0-dev.4 =
+= 15.20.0-b.1 =
 
-(2023/08/11) Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text &gt; RSS Feed Title option.
+(2023/08/12) Added a new RSS Feed Title option. Added filters to fix the WordPress RSS feed title and description.
 
 = 15.19.1 =
 
