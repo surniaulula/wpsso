@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.19.1\n"
+"Project-Id-Version: WPSSO Core 15.20.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-08-11 10:37-0700\n"
+"PO-Revision-Date: 2023-08-13 11:20-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3126,7 +3126,7 @@ msgid "Options to Show by Default"
 msgstr "Options à afficher par défaut"
 
 #: gettext/gettext-lib-pro.php:72 lib/messages-tooltip-plugin.php:584
-#: lib/page.php:137 lib/pro/admin/advanced.php:462
+#: lib/page.php:139 lib/pro/admin/advanced.php:462
 #: lib/std/admin/advanced.php:450
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -8499,7 +8499,7 @@ msgid "The product variation title used for meta tags and Schema markup."
 msgstr "Le titre de variante d'un produit utilisé pour les balises méta et le balisage de Schéma."
 
 #: lib/messages-tooltip-plugin.php:412
-msgid "The RSS feed webpage title tag value when the %1$s option is not \"<em>%2$s</em>\"."
+msgid "The RSS feed title tag value when the %1$s option is not \"<em>%2$s</em>\"."
 msgstr "La valeur de la balise de titre du flux RSS lorsque l'option %1$s n'est pas \"<em>%2$s</em>\"."
 
 #: lib/messages-tooltip-plugin.php:422
@@ -10231,7 +10231,7 @@ msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est r
 msgid "The value of option \"%s\" must be a valid URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1822
+#: lib/options.php:1822 lib/options.php:1854
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr "%%sitename%%"
@@ -10270,11 +10270,6 @@ msgstr "Critique de %%comment_author%% le %%comment_date%%"
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr "%%var_title%% %%sep%% %%var_attrs%%"
-
-#: lib/options.php:1854
-msgctxt "option value"
-msgid "%%sitename%% %%sep%% RSS Feed"
-msgstr "%%sitename%% %%sep%% Flux RSS"
 
 #: lib/options.php:1858
 msgctxt "option value"
@@ -10356,15 +10351,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:982 lib/util-inline.php:413
+#: lib/page.php:1026 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/page.php:986
+#: lib/page.php:1030
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2195
+#: lib/page.php:2239
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
