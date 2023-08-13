@@ -11471,7 +11471,7 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/options.php:1822
+#: lib/options.php:1822 lib/options.php:1854
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
@@ -11509,11 +11509,6 @@ msgstr ""
 #: lib/options.php:1850
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
-msgstr ""
-
-#: lib/options.php:1854
-msgctxt "option value"
-msgid "%%sitename%% RSS Feed"
 msgstr ""
 
 #: lib/options.php:1858
