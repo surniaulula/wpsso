@@ -90,7 +90,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Reads settings and data from other active plugins, including:</strong></p>
+<p><strong>Reads data from active plugins, including:</strong></p>
 
 * All in One SEO Pack
 * Co-Authors Plus
@@ -133,21 +133,21 @@ Present your content at its best on social sites and in search results - no matt
 
 **Retrieves data from remote service APIs, including:**
 
-* Get Bitly Short URL
-* Get DLMY.App Short URL
-* Get Facebook Video Data
-* Get Gravatar Image Data
-* Get Ow.ly Short URL
-* Get Shopper Approved Review Data
-* Get Slideshare Presentation Data
-* Get Soundcloud Track Data
-* Get Stamped.io Review Data
-* Get TinyURL Short URL
-* Get Vimeo Video Data
-* Get Wistia Video Data
-* Get WordPress Video Data
-* Get Your Own URL Shortener (YOURLS) Short URL
-* Get YouTube Video and Playlist Data
+* Bitly Short URL
+* DLMY.App Short URL
+* Facebook Video Data
+* Gravatar Image Data
+* Ow.ly Short URL
+* Shopper Approved Review Data
+* Slideshare Presentation Data
+* Soundcloud Track Data
+* Stamped.io Review Data
+* TinyURL Short URL
+* Vimeo Video Data
+* Wistia Video Data
+* WordPress Video Data
+* Your Own URL Shortener (YOURLS) Short URL
+* YouTube Video and Playlist Data
 
 **Additional customization options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
 

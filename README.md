@@ -91,7 +91,7 @@
 <li><em>Price Mismatched value (page crawl): (price [price])</em></li>
 </ul>
 
-<p><strong>Reads settings and data from other active plugins, including:</strong></p>
+<p><strong>Reads data from active plugins, including:</strong></p>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -137,21 +137,21 @@
 <p><strong>Retrieves data from remote service APIs, including:</strong></p>
 
 <ul>
-<li>Get Bitly Short URL</li>
-<li>Get DLMY.App Short URL</li>
-<li>Get Facebook Video Data</li>
-<li>Get Gravatar Image Data</li>
-<li>Get Ow.ly Short URL</li>
-<li>Get Shopper Approved Review Data</li>
-<li>Get Slideshare Presentation Data</li>
-<li>Get Soundcloud Track Data</li>
-<li>Get Stamped.io Review Data</li>
-<li>Get TinyURL Short URL</li>
-<li>Get Vimeo Video Data</li>
-<li>Get Wistia Video Data</li>
-<li>Get WordPress Video Data</li>
-<li>Get Your Own URL Shortener (YOURLS) Short URL</li>
-<li>Get YouTube Video and Playlist Data</li>
+<li>Bitly Short URL</li>
+<li>DLMY.App Short URL</li>
+<li>Facebook Video Data</li>
+<li>Gravatar Image Data</li>
+<li>Ow.ly Short URL</li>
+<li>Shopper Approved Review Data</li>
+<li>Slideshare Presentation Data</li>
+<li>Soundcloud Track Data</li>
+<li>Stamped.io Review Data</li>
+<li>TinyURL Short URL</li>
+<li>Vimeo Video Data</li>
+<li>Wistia Video Data</li>
+<li>WordPress Video Data</li>
+<li>Your Own URL Shortener (YOURLS) Short URL</li>
+<li>YouTube Video and Playlist Data</li>
 </ul>
 
 <p><strong>Additional customization options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
