@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin for Meta Tags, Schema Markup and SEO ===
+=== WPSSO Core - The Complete Structured Data Plugin for Meta Tags, Schema Markup, Rich Results and SEO ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: schema, seo, woocommerce, meta tags, google search console, google merchant, open graph, rich results, knowledge graph, xml sitemap, structured data
+Tags: schema, seo, woocommerce, meta tags, google search console, google merchant, rich results, open graph, knowledge graph, xml sitemap, structured data
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.5

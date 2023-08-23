@@ -1,4 +1,4 @@
-<h1>WPSSO Core - The Complete Structured Data Plugin for Meta Tags, Schema Markup and SEO</h1>
+<h1>WPSSO Core - The Complete Structured Data Plugin for Meta Tags, Schema Markup, Rich Results and SEO</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -10,7 +10,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>8.0.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, seo, woocommerce, meta tags, google search console, google merchant, open graph, rich results, knowledge graph, xml sitemap, structured data</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, seo, woocommerce, meta tags, google search console, google merchant, rich results, open graph, knowledge graph, xml sitemap, structured data</td></tr>
 </table>
 
 <h2>Description</h2>
