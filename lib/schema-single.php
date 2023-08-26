@@ -2343,7 +2343,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				} elseif ( is_array( $mt_single[ 'product:offers' ] ) ) {
 
-					if ( empty( $wpsso->options[ 'schema_aggr_offers' ] ) ) {
+					if ( empty( $wpsso->options[ 'schema_def_product_aggr_offers' ] ) ) {
 
 						WpssoSchema::add_offers_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
 

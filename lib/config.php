@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.21.0-dev.1',	// Plugin version.
-					'opt_version' => '983',		// Increment when changing default option values.
+					'version'     => '15.21.0-dev.2',	// Plugin version.
+					'opt_version' => '985',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1541,8 +1541,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16x9_img_crop'   => 1,
 					'schema_16x9_img_crop_x' => 'center',
 					'schema_16x9_img_crop_y' => 'center',
-					'schema_aggr_offers'     => 0,		// Aggregate Offers by Currency.
-					'schema_add_text_prop'   => 1,		// Add Text / Article Body Properties.
 
 					/*
 					 * Advanced Settings > Document Types > Schema.
@@ -1613,6 +1611,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 */
+					'schema_def_add_text_prop'   => 1,	// Add Text or Article Body Property.
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
 					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
@@ -1650,6 +1649,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Product.
 					 */
+					'schema_def_product_aggr_offers'           => 0,						// Aggregate Offers by Currency.
 					'schema_def_product_adult_type'            => 'none',						// Default Product Adult Type.
 					'schema_def_product_age_group'             => 'none',						// Default Product Age Group.
 					'schema_def_product_category'              => 'none',						// Default Product Google Category.

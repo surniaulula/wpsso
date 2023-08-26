@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 				} elseif ( is_array( $mt_og[ 'product:offers' ] ) ) {
 
-					if ( empty( $this->p->options[ 'schema_aggr_offers' ] ) ) {
+					if ( empty( $this->p->options[ 'schema_def_product_aggr_offers' ] ) ) {
 
 						WpssoSchema::add_offers_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
 

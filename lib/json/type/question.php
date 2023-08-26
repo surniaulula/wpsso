@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_data, array(
 				'url'        => 'url',
 				'name'       => 'description',	// The Answer name is CreativeWork custom description or excerpt.
-				'text'       => 'text',		// May not exist if the 'schema_add_text_prop' option is disabled.
+				'text'       => 'text',		// May not exist if the 'schema_def_add_text_prop' option is disabled.
 				'inLanguage' => 'inLanguage',
 			) );
 

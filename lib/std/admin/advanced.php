@@ -839,6 +839,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
+				'schema_def_add_text_prop' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Text or Article Body Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_add_text_prop',
+					'content'  => $form->get_no_checkbox( 'schema_def_add_text_prop' ),
+				),
 				'schema_def_family_friendly' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Family Friendly', 'option label', 'wpsso' ),
@@ -1036,6 +1042,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'schema_def_product_aggr_offers' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_aggr_offers',
+					'content'  => $form->get_no_checkbox( 'schema_def_product_aggr_offers' ) . ' ' .
+						sprintf( _x( '(not compatible with <a href="%s">price drop appearance</a>)', 'option comment', 'wpsso' ),
+							'https://developers.google.com/search/docs/data-types/product#price-drop'),
 				),
 				'schema_def_product_mrp' => array(
 					'td_class' => 'blank',

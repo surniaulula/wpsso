@@ -306,28 +306,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
-					/*
-					 * Google settings.
-					 */
 					$table_rows[ 'g_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'g_site_verify' ) .
 						'<td>' . $this->form->get_input( 'g_site_verify', $css_class = 'api_key' ) . '</td>';
-
-					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
-
-						$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_aggr_offers' ) .
-							$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'schema_aggr_offers' ) .
-							'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
-							sprintf( _x( '(not compatible with <a href="%s">price drop appearance</a>)', 'option comment', 'wpsso' ),
-								'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
-
-						$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_add_text_prop' ) .
-							$this->form->get_th_html( _x( 'Add Text / Article Body Properties', 'option label', 'wpsso' ),
-								$css_class = '', $css_id = 'schema_add_text_prop' ) .
-							'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
-					}
 
 					/*
 					 * Robots settings.

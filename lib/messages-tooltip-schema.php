@@ -53,20 +53,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				case 'tooltip-schema_aggr_offers':		// Aggregate Offers by Currency.
-
-					$text = __( 'Aggregate (ie. group) product offers by currency.', 'wpsso' ) . ' ';
-
-					$text .= sprintf( __( 'Note that to be eligible for <a href="%s">price drop appearance in Google search results</a>, product offers cannot be aggregated.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/product#price-drop' );
-
-		 			break;
-
-				case 'tooltip-schema_add_text_prop':		// Add Text / Article Body Properties.
-
-					$text = __( 'Add a "text" or "articleBody" property to Schema CreativeWork markup with the complete textual content of the post / page.', 'wpsso' );
-
-				 	break;
-
 				/*
 				 * SSO > Advanced Settings > Document Types > Schema tab.
 				 */
@@ -237,6 +223,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
 				 */
+				case 'tooltip-schema_def_add_text_prop':	// Add Text or Article Body Property.
+
+					$text = __( 'Add a "text" or "articleBody" property to the Schema CreativeWork markup with the complete text of the post / page.', 'wpsso' );
+
+				 	break;
+
 				case 'tooltip-schema_def_family_friendly':	// Default Family Friendly.
 
 					$text = __( 'Select a default family friendly value for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
@@ -342,11 +334,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Product tab.
-				 *
-				 *	Default Product Google Category.
-				 * 	Default Product Condition.
-				 * 	Default Product Price Type.
 				 */
+				case 'tooltip-schema_def_product_aggr_offers':		// Aggregate Offers by Currency.
+
+					$text = __( 'Aggregate (ie. group) product offers by currency.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'Note that to be eligible for <a href="%s">price drop appearance in Google search results</a>, product offers cannot be aggregated.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/product#price-drop' );
+
+		 			break;
+
 				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_product_' ) ? true : false ):
 
 					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
