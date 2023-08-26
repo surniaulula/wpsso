@@ -234,16 +234,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.21.0-dev.1 (TBD)**
+**Version 15.21.0-dev.1 (2023/08/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the `WpssoProMediaWpvideo` integration module.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wp_video_shortcode'.
+	* Refactored the `WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode()` method.
+	* Added a new `WpssoMedia->add_video_details_attached()` method.
+	* Added a new `WpssoMedia->add_video_details_attachment()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -995,7 +998,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.21.0-dev.1 =
 
-(TBD) None.
+(2023/08/26) Updated the `WpssoProMediaWpvideo` integration module.
 
 = 15.20.0 =
 
