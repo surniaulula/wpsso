@@ -234,11 +234,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.21.0-dev.1 (2023/08/26)**
+**Version 15.21.0-dev.2 (2023/08/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Moved the "Add Text or Article Body Property" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab.
+	* Moved the "Aggregate Offers by Currency" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 	* Updated the `WpssoProMediaWpvideo` integration module.
 * **Bugfixes**
 	* None.
@@ -996,9 +998,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.21.0-dev.1 =
+= 15.21.0-dev.2 =
 
-(2023/08/26) Updated the `WpssoProMediaWpvideo` integration module.
+(2023/08/26) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page.
 
 = 15.20.0 =
 
