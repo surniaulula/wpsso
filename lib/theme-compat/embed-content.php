@@ -29,7 +29,7 @@ if ( $thumbnail_url ) {
 		$thumbnail_id = get_post_thumbnail_id();
 	}
 
-	if ( 'attachment' === get_post_type() && wp_attachment_is_image() ) {
+	if ( 'attachment' === get_post_type() && wp_attachment_is( 'image' ) ) {
 
 		$thumbnail_id = get_the_ID();
 	}

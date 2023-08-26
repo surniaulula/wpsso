@@ -691,7 +691,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
+					if ( $mod[ 'is_attachment' ] && wp_attachment_is( 'image', $mod[ 'id' ] ) ) {
 
 						/*
 						 * $size_name must be a string.
@@ -902,7 +902,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/*
 				 * If the post ID is an attachment page, then use the post ID as the image ID.
 				 */
-				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is_image( $post_id ) ) {
+				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is( 'image', $post_id ) ) {
 
 					$pid = $local_cache_featured_ids[ $post_id ] = $post_id;
 
@@ -1352,7 +1352,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $attachment_id ) ) {
 
-				if ( wp_attachment_is_image( $attachment_id ) ) {
+				if ( wp_attachment_is( 'image', $attachment_id ) ) {
 
 					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
@@ -1444,7 +1444,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_height    = WPSSO_UNDEF;
 			$use_full_size = false;
 
-			if ( ! wp_attachment_is_image( $pid ) ) {
+			if ( ! wp_attachment_is( 'image', $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2688,20 +2688,33 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/*
 		 * Since WPSSO Core v15.21.0.
 		 *
-		 * Shows a warning notice is the video url is not attached to the post ID.
+		 * The 'url' and 'post_id' args array values are required unless an 'attach_id' value is provided.
 		 *
-		 * Note that both the 'url' and 'post_id' args array values are required.
+		 * Shows a warning notice if the 'attach_id' value is not provided and the video 'url' value is not found attached to the post ID.
 		 *
 		 * See WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode().
 		 */
-		public function add_video_details_attached( array &$mt_single_video, array $args ) {
+		public function add_og_video_from_attached( array &$mt_single_video, array $args ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $args[ 'url' ] ) ) {	// Just in case.
+			/*
+			 * If we already have an 'attach_id' value, then skip finding the attachment ID and add the video details
+			 * immediately (the 'url' and 'post_id' args array values are not required).
+			 */
+			if ( ! empty( $args[ 'attach_id' ] ) ) {	// Attachment ID provided.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping finding attached: args attach id ' . $args[ 'attach_id' ] . ' provided' );
+				}
+
+				return $this->add_og_video_from_attachment( $mt_single_video, $args );
+
+			} elseif ( empty( $args[ 'url' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2737,7 +2750,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'skipping ' . $video_url . ' - video url does not match' );
+							$this->p->debug->log( 'skipping ' . $video_url . ': video url does not match' );
 						}
 
 						continue;	// Check the next one.
@@ -2745,12 +2758,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'adding video details from attachment id ' . $attachment_id . ' for ' . $video_url );
+						$this->p->debug->log( 'adding video details from attach id ' . $attachment_id . ' for ' . $video_url );
 					}
 
 					$args[ 'attach_id' ] = $attachment_id;
 
-					$this->add_video_details_attachment( $mt_single_video, $args );
+					$this->add_og_video_from_attachment( $mt_single_video, $args );
 		
 					return;	// Stop here.
 				}
@@ -2770,9 +2783,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/*
 		 * Since WPSSO Core v15.21.0.
 		 *
-		 * See WpssoMedia->add_video_details_attached().
+		 * See WpssoMedia->add_og_video_from_attached().
 		 */
-		public function add_video_details_attachment( array &$mt_single_video, array $args ) {
+		public function add_og_video_from_attachment( array &$mt_single_video, array $args ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2787,79 +2800,148 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return;
-			}
+			
+			} elseif ( ! wp_attachment_is( 'video', $args[ 'attach_id' ] ) ) {	// Just in case.
 
-			$mod = $this->p->post->get_mod( $args[ 'attach_id' ] );
+				if ( $this->p->debug->enabled ) {
 
-			$post_obj = SucomUtil::get_post_object( $args[ 'attach_id' ] );
-
-			/*
-			 * Video upload date.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'getting video upload date' );
-			}
-
-			if ( ! empty( $post_obj->post_date_gmt ) ) {
-
-				$mt_single_video[ 'og:video:upload_date' ] = date_format( date_create( (string) $post_obj->post_date_gmt ), 'c' );
-
-			} elseif ( ! empty( $post_obj->post_date ) ) {
-
-				$mt_single_video[ 'og:video:upload_date' ] = date_format( date_create( (string) $post_obj->post_date ), 'c' );
-			}
-
-			/*
-			 * Video title.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'getting video title' );
-			}
-
-			$mt_single_video[ 'og:video:title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
-
-			/*
-			 * Video description.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'getting video description' );
-			}
-
-			$mt_single_video[ 'og:video:description' ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc' );
-
-			/*
-			 * Video width, height, and duration.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'getting video metadata' );
-			}
-
-			$attachment_metadata = wp_get_attachment_metadata( $args[ 'attach_id' ] );	// Returns a WP_Error object on failure.
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'attachment_metadata', $attachment_metadata );
-			}
-
-			if ( is_array( $attachment_metadata ) ) {
-
-				if ( ! empty( $attachment_metadata[ 'width' ] ) ) {
-
-					$mt_single_video[ 'og:video:width' ] = $attachment_metadata[ 'width' ];
+					$this->p->debug->log( 'exiting early: args attach id is not a video' );
 				}
 
-				if ( ! empty( $attachment_metadata[ 'height' ] ) ) {
+				return;
+			}
 
-					$mt_single_video[ 'og:video:height' ] = $attachment_metadata[ 'height' ];
+			$mod             = $this->p->post->get_mod( $args[ 'attach_id' ] );
+			$post_obj        = SucomUtil::get_post_object( $args[ 'attach_id' ] );
+			$attach_metadata = wp_get_attachment_metadata( $args[ 'attach_id' ] );	// Returns a WP_Error object on failure.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'attach_metadata', $attach_metadata );
+			}
+
+			foreach( array(
+				'og:video:url',
+				'og:video:thumbnail_url',
+				'og:video:title',
+				'og:video:description',
+				'og:video:upload_date',
+				'og:video:width',
+				'og:video:height',
+				'og:video:duration',
+			) as $mt_name ) {
+
+				if ( ! empty( $mt_single_video[ $mt_name ] ) ) {
+			
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping ' . $mt_name . ' = ' . $mt_single_video[ $mt_name ] );
+					}
+
+					continue;
 				}
 
-				if ( ! empty( $attachment_metadata[ 'length' ] ) ) {
+				$mt_single_video[ $mt_name ] = null;	// Just in case.
 
-					$mt_single_video[ 'og:video:duration' ] = 'PT' . $attachment_metadata[ 'length' ] . 'S';
+				switch ( $mt_name ) {
+
+					case 'og:video:url':
+			
+						$mt_single_video[ $mt_name ] = wp_get_attachment_url( $args[ 'attach_id ' ] );
+
+						break;
+
+					case 'og:video:thumbnail_url':
+
+						if ( ! empty( $mt_single_video[ 'og:video:has_image' ] ) ) {	// Just in case.
+					
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping ' . $mt_name . ' - og:video:has_image is true' );
+							}
+							
+							break;
+						}
+
+						$featured_image_id = get_post_thumbnail_id( $args[ 'attach_id' ] );
+
+						if ( ! empty( $featured_image_id ) ) {	// Just in case.
+
+							$mt_single_video[ $mt_name ] = wp_get_attachment_image_url( $featured_image_id, 'full' );
+
+							if ( ! empty( $mt_single_video[ $mt_name ] ) ) {	// Just in case.
+
+								$mt_single_video[ 'og:video:has_image' ] = true;
+
+								$mt_single_video[ 'og:image:url' ] = $mt_single_video[ $mt_name ];
+
+								/*
+								 * Add correct image sizes for the image URL using getimagesize().
+								 *
+								 * Note that PHP v7.1 or better is required to get the image size of WebP images.
+								 */
+								$this->p->util->add_image_url_size( $mt_single_video );
+							}
+						}
+
+						break;
+
+					case 'og:video:title':
+
+						$mt_single_video[ $mt_name ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
+
+						break;
+
+					case 'og:video:description':
+			
+						$mt_single_video[ $mt_name ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc' );
+
+						break;
+
+					case 'og:video:upload_date':
+
+						if ( ! empty( $post_obj->post_date_gmt ) ) {
+
+							$mt_single_video[ $mt_name ] = date_format( date_create( (string) $post_obj->post_date_gmt ), 'c' );
+
+						} elseif ( ! empty( $post_obj->post_date ) ) {
+
+							$mt_single_video[ $mt_name ] = date_format( date_create( (string) $post_obj->post_date ), 'c' );
+						}
+
+						break;	// End of switch.
+			
+					case 'og:video:width':
+
+						if ( ! empty( $attach_metadata[ 'width' ] ) ) {
+
+							$mt_single_video[ $mt_name ] = $attach_metadata[ 'width' ];
+						}
+
+						break;
+
+					case 'og:video:height':
+
+						if ( ! empty( $attach_metadata[ 'height' ] ) ) {
+
+							$mt_single_video[ $mt_name ] = $attach_metadata[ 'height' ];
+						}
+
+						break;
+
+					case 'og:video:duration':
+
+						if ( ! empty( $attach_metadata[ 'length' ] ) ) {
+
+							$mt_single_video[ $mt_name ] = 'PT' . $attach_metadata[ 'length' ] . 'S';
+						}
+
+						break;
+				}
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'added ' . $mt_name . ' = ' . $mt_single_video[ $mt_name ] );
 				}
 			}
 		}

@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
-				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
+				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is( 'image', $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Crop Area', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_crop_area',
