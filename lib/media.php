@@ -283,10 +283,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_all_videos( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
 			$cache_salt_args = array(
-				'num'         => $num,
-				'mod'         => $mod,
-				'md_pre'      => $md_pre,
-				'force_prev'  => $force_prev,
+				'num'        => $num,
+				'mod'        => $mod,
+				'md_pre'     => $md_pre,
+				'force_prev' => $force_prev,
 			);
 
 			if ( $this->p->debug->enabled ) {
@@ -363,13 +363,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$this->p->debug->mark( 'checking for videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
 				}
-
 			}
 
 			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
 			/*
-			 * Maybe get more videos from the post content.
+			 * Maybe get more videos from the comment or post content.
 			 */
 			if ( $mod[ 'is_comment' ] || $mod[ 'is_post' ] ) {
 
@@ -2362,53 +2361,47 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
 
-			if ( false !== has_filter( $filter_name ) ) {
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+			}
+
+			$all_matches = apply_filters( $filter_name, array(), $content );
+
+			if ( is_array( $all_matches ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+					$this->p->debug->log( count( $all_matches ) . ' videos returned by ' . $filter_name . ' filters' );
 				}
 
-				$all_matches = apply_filters( $filter_name, array(), $content );
+				foreach ( $all_matches as $match_num => $args ) {	// Check each match until WpssoUtil->push_max() is true.
 
-				if ( is_array( $all_matches ) ) {	// Just in case.
+					if ( is_array( $args ) ) {	// Just in case.
 
-					if ( $this->p->debug->enabled ) {
+						if ( ! empty( $args[ 'url' ] ) ) {
 
-						$this->p->debug->log( count( $all_matches ) . ' videos returned by ' . $filter_name . ' filters' );
-					}
+							if ( $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
 
-					foreach ( $all_matches as $match_num => $args ) {
+								$mt_single_video = $this->get_video_details( $args, $mod );	// Returns a single video associative array.
 
-						if ( is_array( $args ) ) {	// Just in case.
+								if ( ! empty( $mt_single_video ) ) {
 
-							if ( ! empty( $args[ 'url' ] ) ) {
+									if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
 
-								if ( $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
-
-									/*
-									 * Returns a single video associative array.
-									 */
-									$mt_single_video = $this->get_video_details( $args, $mod );
-
-									if ( ! empty( $mt_single_video ) ) {
-
-										if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-
-											return $mt_videos;
-										}
+										break;	// Stop here.
 									}
 								}
-
-							} elseif ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
+							$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
 					}
 				}
 			}
@@ -2442,13 +2435,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Make sure we have all array keys defined.
 			 */
 			$args = array_merge( array(
-				'url'      => '',
-				'width'    => null,
-				'height'   => null,
-				'type'     => '',
-				'prev_url' => '',
-				'post_id'  => null,
-				'api'      => '',
+				'url'       => '',
+				'width'     => null,
+				'height'    => null,
+				'type'      => '',
+				'prev_url'  => '',
+				'post_id'   => null,
+				'attach_id' => null,
+				'api'       => '',
 			), $args );
 
 			/*
@@ -2461,18 +2455,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args[ 'api' ] );
 			}
 
-			if ( false === has_filter( $filter_name ) ) {	// Just in case.
-
-				return array();
-			}
-
 			/*
 			 * Create and filter an associative array of video details.
 			 */
-			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
-				'og:video:width'  => $args[ 'width' ],	// Default width.
-				'og:video:height' => $args[ 'height' ],	// Default height.
-			) );
+			$mt_single_video = array_merge(
+				SucomUtil::get_mt_video_seed(),
+				array(
+					'og:video:width'  => $args[ 'width' ],	// Default width.
+					'og:video:height' => $args[ 'height' ],	// Default height.
+				)
+			);
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2691,6 +2683,149 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $mt_single_video;
+		}
+
+		public function add_video_details_attached( array &$mt_single_video, array $args ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $args[ 'url' ] ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no video args url' );
+				}
+
+				return;
+
+			} elseif ( empty( $args[ 'post_id' ] ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no video args post id' );
+				}
+
+				return;
+			}
+
+			$attached_videos = get_attached_media( 'video', $args[ 'post_id' ] );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'attached_videos', $attached_videos );
+			}
+
+			if ( is_array( $attached_videos ) ) {
+
+				foreach ( $attached_videos as $attachment_id => $attachment_obj ) {	// Break after first video.
+		
+					$video_url = wp_get_attachment_url( $attachment_id );
+
+					if ( $args[ 'url' ] !== $video_url ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping ' . $video_url . ' - video url does not match' );
+						}
+
+						continue;	// Check the next one.
+					}
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'adding video details from attachment id ' . $attachment_id . ' for ' . $video_url );
+					}
+
+					$args[ 'attach_id' ] = $attachment_id;
+
+					$this->p->media->add_video_details_attachment( $mt_single_video, $args );
+		
+					break;	// Stop here.
+				}
+			}
+		}
+
+		public function add_video_details_attachment( array &$mt_single_video, array $args ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $args[ 'attach_id' ] ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no video args attach id' );
+				}
+
+				return;
+			}
+
+			$mod = $this->p->post->get_mod( $args[ 'attach_id' ] );
+
+			$post_obj = SucomUtil::get_post_object( $args[ 'attach_id' ] );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting video upload date' );
+			}
+
+			if ( ! empty( $post_obj->post_date_gmt ) ) {
+
+				$mt_single_video[ 'og:video:upload_date' ] = date_format( date_create( (string) $post_obj->post_date_gmt ), 'c' );
+
+			} elseif ( ! empty( $post_obj->post_date ) ) {
+
+				$mt_single_video[ 'og:video:upload_date' ] = date_format( date_create( (string) $post_obj->post_date ), 'c' );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting video title' );
+			}
+
+			$mt_single_video[ 'og:video:title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting video description' );
+			}
+
+			$mt_single_video[ 'og:video:description' ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc' );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting video metadata' );
+			}
+
+			$attachment_metadata = wp_get_attachment_metadata( $args[ 'attach_id' ] );	// Returns a WP_Error object on failure.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'attachment_metadata', $attachment_metadata );
+			}
+
+			if ( is_array( $attachment_metadata ) ) {
+
+				if ( ! empty( $attachment_metadata[ 'width' ] ) ) {
+
+					$mt_single_video[ 'og:video:width' ] = $attachment_metadata[ 'width' ];
+				}
+
+				if ( ! empty( $attachment_metadata[ 'height' ] ) ) {
+
+					$mt_single_video[ 'og:video:height' ] = $attachment_metadata[ 'height' ];
+				}
+
+				if ( ! empty( $attachment_metadata[ 'length' ] ) ) {
+
+					$mt_single_video[ 'og:video:duration' ] = 'PT' . $attachment_metadata[ 'length' ] . 'S';
+				}
+			}
 		}
 
 		/*
