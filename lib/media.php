@@ -2446,7 +2446,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			), $args );
 
 			/*
-			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideo'.
+			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wp_video_shortcode'.
 			 */
 			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
@@ -2480,7 +2480,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( isset( $mt_single_video[ 'al:web:url' ] ) ) {	// Just in case.
 
-				if ( $mt_single_video[ 'al:web:url' ] === '' ) {
+				if ( '' === $mt_single_video[ 'al:web:url' ] ) {
 
 					$mt_single_video[ 'al:web:should_fallback' ] = '';	// False by default.
 				}
@@ -2685,6 +2685,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_single_video;
 		}
 
+		/*
+		 * Since WPSSO Core v15.21.0.
+		 *
+		 * Shows a warning notice is the video url is not attached to the post ID.
+		 *
+		 * Note that both the 'url' and 'post_id' args array values are required.
+		 *
+		 * See WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode().
+		 */
 		public function add_video_details_attached( array &$mt_single_video, array $args ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2696,7 +2705,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no video args url' );
+					$this->p->debug->log( 'exiting early: args url is empty' );
 				}
 
 				return;
@@ -2705,7 +2714,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no video args post id' );
+					$this->p->debug->log( 'exiting early: args post id is empty' );
 				}
 
 				return;
@@ -2718,7 +2727,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_arr( 'attached_videos', $attached_videos );
 			}
 
-			if ( is_array( $attached_videos ) ) {
+			if ( is_array( $attached_videos ) ) {	// Just in case.
 
 				foreach ( $attached_videos as $attachment_id => $attachment_obj ) {	// Break after first video.
 		
@@ -2741,13 +2750,28 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$args[ 'attach_id' ] = $attachment_id;
 
-					$this->p->media->add_video_details_attachment( $mt_single_video, $args );
+					$this->add_video_details_attachment( $mt_single_video, $args );
 		
-					break;	// Stop here.
+					return;	// Stop here.
 				}
+			}
+
+			if ( $this->p->notice->is_admin_pre_notices() ) {
+						
+				$notice_msg = sprintf( __( 'Unable to include additional video details for %1$s - the video is not attached to post ID %2$s.',
+					'wpsso' ), $args[ 'url' ], $args[ 'post_id' ] );
+
+				$notice_key = 'video-' . $args[ 'url' ] . '-not-attached-post-id-' . $args[ 'post_id' ];
+
+				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
 		}
 
+		/*
+		 * Since WPSSO Core v15.21.0.
+		 *
+		 * See WpssoMedia->add_video_details_attached().
+		 */
 		public function add_video_details_attachment( array &$mt_single_video, array $args ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2759,7 +2783,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no video args attach id' );
+					$this->p->debug->log( 'exiting early: args attach id is empty' );
 				}
 
 				return;
@@ -2769,6 +2793,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$post_obj = SucomUtil::get_post_object( $args[ 'attach_id' ] );
 
+			/*
+			 * Video upload date.
+			 */
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting video upload date' );
@@ -2783,6 +2810,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_single_video[ 'og:video:upload_date' ] = date_format( date_create( (string) $post_obj->post_date ), 'c' );
 			}
 
+			/*
+			 * Video title.
+			 */
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting video title' );
@@ -2790,6 +2820,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_single_video[ 'og:video:title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
 
+			/*
+			 * Video description.
+			 */
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting video description' );
@@ -2797,6 +2830,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_single_video[ 'og:video:description' ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc' );
 
+			/*
+			 * Video width, height, and duration.
+			 */
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting video metadata' );

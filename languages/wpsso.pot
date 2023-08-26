@@ -509,7 +509,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:977
 #: lib/media-filters.php:116 lib/media.php:1504 lib/media.php:1654
-#: lib/media.php:3448
+#: lib/media.php:3484
 msgid "Media Library"
 msgstr ""
 
@@ -6979,7 +6979,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3458
+#: lib/media-filters.php:119 lib/media.php:3494
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -7072,18 +7072,24 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3474
+#: lib/media.php:2761
+msgid ""
+"Unable to include additional video details for %1$s - the video is not "
+"attached to post ID %2$s."
+msgstr ""
+
+#: lib/media.php:3510
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3527
+#: lib/media.php:3563
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3562
+#: lib/media.php:3598
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
