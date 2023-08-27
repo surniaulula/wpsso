@@ -994,9 +994,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( ! empty( $mod[ 'name' ] ) ) {
 
+					/*
+					 * Example $filter_name = 'wpsso_get_post_defaults'.
+					 */
 					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $mod[ 'name' ] . '_defaults' );
 
-					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod[ 'term_tax_id' ], $mod );
+					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod );
 				}
 
 				/*

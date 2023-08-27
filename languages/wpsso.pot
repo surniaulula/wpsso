@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.21.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.21.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4840,54 +4840,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1336
+#: lib/abstract/wp-meta.php:1339
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1407
+#: lib/abstract/wp-meta.php:1410
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1411
+#: lib/abstract/wp-meta.php:1414
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1414 lib/messages.php:294
+#: lib/abstract/wp-meta.php:1417 lib/messages.php:294
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1418
+#: lib/abstract/wp-meta.php:1421
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1419
+#: lib/abstract/wp-meta.php:1422
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1420
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1424
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1754
+#: lib/abstract/wp-meta.php:1757
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2082 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:2085 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2084
+#: lib/abstract/wp-meta.php:2087
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."

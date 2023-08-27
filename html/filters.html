@@ -103,17 +103,25 @@
 
 <tr><th>wpsso_get_defaults</th><td>(&nbsp;$defaults&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_md_options</th><td>(&nbsp;array $options, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_md_defaults</th><td>(&nbsp;array $md_defs, array $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_post_options</th><td>(&nbsp;array $options, $post_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_md_options</th><td>(&nbsp;array $md_opts, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_post_defaults</th><td>(&nbsp;array $md_defs, $post_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_post_options</th><td>(&nbsp;array $md_opts, $post_id, array $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_get_short_url</th><td>(&nbsp;$url, $service, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_site_defaults</th><td>(&nbsp;$defaults&nbsp;)</td></tr>
+<tr><th>wpsso_get_site_defaults</th><td>(&nbsp;$site_defaults&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_term_options</th><td>(&nbsp;array $options, $term_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_term_defaults</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_user_options</th><td>(&nbsp;array $options, $user_id, array $mod&nbsp;)</td></tr>
+<tr><th>wpsso_get_term_options</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_user_defaults</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_user_options</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_google_product_categories</th><td>(&nbsp;array $categories&nbsp;)</td></tr>
 
@@ -275,11 +283,11 @@
 
 <tr><th>wpsso_ratings_reviews_for_{post_type}</th><td>(&nbsp;$bool&nbsp;)</td></tr>
 
-<tr><th>wpsso_rename_md_options_keys</th><td>(&nbsp;$options_keys&nbsp;)</td></tr>
+<tr><th>wpsso_rename_md_options_keys</th><td>(&nbsp;$md_opts_keys&nbsp;)</td></tr>
 
 <tr><th>wpsso_rename_options_keys</th><td>(&nbsp;$options_keys&nbsp;)</td></tr>
 
-<tr><th>wpsso_rename_site_options_keys</th><td>(&nbsp;$options_keys&nbsp;)</td></tr>
+<tr><th>wpsso_rename_site_options_keys</th><td>(&nbsp;$site_options_keys&nbsp;)</td></tr>
 
 <tr><th>wpsso_request_url_query_cache_disable</th><td>(&nbsp;$bool = true, $request_url, $canonical_url, $mod&nbsp;)</td></tr>
 
@@ -289,13 +297,13 @@
 
 <tr><th>wpsso_robots_is_noindex</th><td>(&nbsp;$is_noindex, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_save_comment_options</th><td>(&nbsp;$opts, $comment_id, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_save_comment_options</th><td>(&nbsp;$md_opts, $comment_id, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_save_post_options</th><td>(&nbsp;$opts, $post_id, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_save_post_options</th><td>(&nbsp;$md_opts, $post_id, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_save_term_options</th><td>(&nbsp;$opts, $term_id, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_save_term_options</th><td>(&nbsp;$md_opts, $term_id, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_save_user_options</th><td>(&nbsp;$opts, $user_id, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_save_user_options</th><td>(&nbsp;$md_opts, $user_id, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_schema_type</th><td>(&nbsp;$type_id, $mod, $is_custom&nbsp;)</td></tr>
 

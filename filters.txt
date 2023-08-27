@@ -87,17 +87,25 @@
 
 'wpsso_get_defaults' ( $defaults )
 
-'wpsso_get_md_options' ( array $options, array $mod )
+'wpsso_get_md_defaults' ( array $md_defs, array $mod )
 
-'wpsso_get_post_options' ( array $options, $post_id, array $mod )
+'wpsso_get_md_options' ( array $md_opts, array $mod )
+
+'wpsso_get_post_defaults' ( array $md_defs, $post_id, array $mod )
+
+'wpsso_get_post_options' ( array $md_opts, $post_id, array $mod )
 
 'wpsso_get_short_url' ( $url, $service, $mod )
 
-'wpsso_get_site_defaults' ( $defaults )
+'wpsso_get_site_defaults' ( $site_defaults )
 
-'wpsso_get_term_options' ( array $options, $term_id, array $mod )
+'wpsso_get_term_defaults' ( array $md_defs, $term_id, array $mod )
 
-'wpsso_get_user_options' ( array $options, $user_id, array $mod )
+'wpsso_get_term_options' ( array $md_opts, $term_id, array $mod )
+
+'wpsso_get_user_defaults' ( array $md_defs, $user_id, array $mod )
+
+'wpsso_get_user_options' ( array $md_opts, $user_id, array $mod )
 
 'wpsso_google_product_categories' ( array $categories )
 
@@ -273,11 +281,11 @@
 
 'wpsso_ratings_reviews_for_{post_type}' ( $bool )
 
-'wpsso_rename_md_options_keys' ( $options_keys )
+'wpsso_rename_md_options_keys' ( $md_opts_keys )
 
 'wpsso_rename_options_keys' ( $options_keys )
 
-'wpsso_rename_site_options_keys' ( $options_keys )
+'wpsso_rename_site_options_keys' ( $site_options_keys )
 
 'wpsso_request_url_query_cache_disable' ( $cache_disable = true, $request_url, $canonical_url, $mod )
 
@@ -287,13 +295,13 @@
 
 'wpsso_robots_is_noindex' ( $is_noindex, $mod )
 
-'wpsso_save_comment_options' ( $opts, $comment_id, $mod )
+'wpsso_save_comment_options' ( $md_opts, $comment_id, $mod )
 
-'wpsso_save_post_options' ( $opts, $post_id, $mod )
+'wpsso_save_post_options' ( $md_opts, $post_id, $mod )
 
-'wpsso_save_term_options' ( $opts, $term_id, $mod )
+'wpsso_save_term_options' ( $md_opts, $term_id, $mod )
 
-'wpsso_save_user_options' ( $opts, $user_id, $mod )
+'wpsso_save_user_options' ( $md_opts, $user_id, $mod )
 
 'wpsso_schema_type' ( $type_id, $mod, $is_custom )
 
