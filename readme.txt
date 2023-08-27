@@ -145,7 +145,7 @@ Present your content at its best on social sites and in search results - no matt
 * TinyURL Short URL
 * Vimeo Video Data
 * Wistia Video Data
-* WordPress Video Data
+* WordPress Video Shortcode Data
 * Your Own URL Shortener (YOURLS) Short URL
 * YouTube Video and Playlist Data
 
@@ -245,8 +245,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing Schema 'articleSection' property when the "Article Section" value is the default.
 * **Developer Notes**
-	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wp_video_shortcode'.
-	* Refactored the `WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode()` method.
+	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wpvideoshortcode'.
+	* Refactored the `WpssoProMediaWpvideo->filter_video_details_wpvideoshortcode()` method.
 	* Added a new `WpssoMedia->add_og_video_from_attached()` method.
 	* Added a new `WpssoMedia->add_og_video_from_attachment()` method.
 	* Replaced calls to `wp_attachment_is_image()` by `wp_attachment_is( 'image' )`.
