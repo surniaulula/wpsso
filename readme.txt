@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the "Aggregate Offers by Currency" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 	* Updated the `WpssoProMediaWpvideo` integration module.
 * **Bugfixes**
-	* None.
+	* Fixed the missing Schema 'articleSection' property when the "Article Section" value is the default value.
 * **Developer Notes**
 	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wp_video_shortcode'.
 	* Refactored the `WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode()` method.
