@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.21.0-rc.1 (2023/08/27)**
+**Version 15.21.0 (2023/08/27)**
 
 * **New Features**
 	* None.
@@ -1002,7 +1002,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.21.0-rc.1 =
+= 15.21.0 =
 
 (2023/08/27) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page (Premium edition).
 
