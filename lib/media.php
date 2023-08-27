@@ -2692,7 +2692,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * Shows a warning notice if the 'attach_id' value is not provided and the video 'url' value is not found attached to the post ID.
 		 *
-		 * See WpssoProMediaWpvideo->filter_video_details_wpvideoshortcode().
+		 * See WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode().
 		 */
 		public function add_og_video_from_attached( array &$mt_single_video, array $args ) {
 
