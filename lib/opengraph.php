@@ -597,9 +597,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key = false, $filter_opts = true, $merge_defs = true );
 
-				} else $md_opts = array();
+				} else {
+				
+					$md_opts = array();
+				}
 
 				/*
 				 * Add post/term/user meta data to the Open Graph meta tags.
@@ -1164,7 +1167,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								$content_map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
 							}
 
-						} else $og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
+						} else {
+						
+							$og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
+						}
 					}
 				}
 
