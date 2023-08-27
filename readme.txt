@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.21.0-dev.3 (2023/08/26)**
+**Version 15.21.0-dev.4 (2023/08/27)**
 
 * **New Features**
 	* None.
@@ -250,6 +250,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoMedia->add_og_video_from_attached()` method.
 	* Added a new `WpssoMedia->add_og_video_from_attachment()` method.
 	* Replaced calls to `wp_attachment_is_image()` by `wp_attachment_is( 'image' )`.
+	* Removed the 'wpsso_get_{post|term|user}_defaults' filter `$rel` argument:
+		* 'wpsso_get_post_defaults' ( array $md_defs, $post_id, array $mod )
+		* 'wpsso_get_term_defaults' ( array $md_defs, $term_id, array $mod )
+		* 'wpsso_get_user_defaults' ( array $md_defs, $user_id, array $mod )
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -999,9 +1003,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.21.0-dev.3 =
+= 15.21.0-dev.4 =
 
-(2023/08/26) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page.
+(2023/08/27) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page.
 
 = 15.20.0 =
 
