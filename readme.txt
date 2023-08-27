@@ -239,13 +239,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Moved the "Add Text or Article Body Property" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab (Premium editon).
-	* Moved the "Aggregate Offers by Currency" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab (Premium editon).
+	* Moved the "Add Text or Article Body Property" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab (Premium edition).
+	* Moved the "Aggregate Offers by Currency" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab (Premium edition).
 * **Bugfixes**
-	* Fixed a missing Schema 'articleSection' property when the "Article Section" value is the default (Premium editon).
+	* Fixed a missing Schema 'articleSection' property when the "Article Section" value is the default (Premium edition).
 * **Developer Notes**
-	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wpvideoshortcode' (Premium editon).
-	* Refactored the `WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode()` method (Premium editon).
+	* Renamed the 'wpsso_video_details_wpvideo' filter to 'wpsso_video_details_wpvideoshortcode' (Premium edition).
+	* Refactored the `WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode()` method (Premium edition).
 	* Added a new `WpssoMedia->add_og_video_from_attached()` method.
 	* Added a new `WpssoMedia->add_og_video_from_attachment()` method.
 	* Replaced calls to `wp_attachment_is_image()` by `wp_attachment_is( 'image' )`.
@@ -1004,7 +1004,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.21.0-rc.1 =
 
-(2023/08/27) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page.
+(2023/08/27) Moved the "Add Text or Article Body Property" and the "Aggregate Offers by Currency" options to the SSO &gt; Advanced Settings page (Premium edition).
 
 = 15.20.0 =
 
