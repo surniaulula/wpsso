@@ -2446,7 +2446,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			), $args );
 
 			/*
-			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wp_video_shortcode'.
+			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideoshortcode'.
 			 */
 			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
@@ -2692,7 +2692,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * Shows a warning notice if the 'attach_id' value is not provided and the video 'url' value is not found attached to the post ID.
 		 *
-		 * See WpssoProMediaWpvideo->filter_video_details_wp_video_shortcode().
+		 * See WpssoProMediaWpvideo->filter_video_details_wpvideoshortcode().
 		 */
 		public function add_og_video_from_attached( array &$mt_single_video, array $args ) {
 

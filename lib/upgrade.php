@@ -582,7 +582,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'site_org_feedback_policy_url'    => '',
 					'site_org_sources_policy_url'     => '',
 				),
-				984 => array(
+				985 => array(
+					'plugin_wpvideo_api'   => 'plugin_wpvideoshortcode_api',	// Check for Embedded Media: WordPress Video Shortcodes.
 					'schema_add_text_prop' => 'schema_def_add_text_prop',		// Add Text or Article Body Property.
 					'schema_aggr_offers'   => 'schema_def_product_aggr_offers',	// Aggregate Offers by Currency.
 				),

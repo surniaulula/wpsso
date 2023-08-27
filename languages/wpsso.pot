@@ -1035,7 +1035,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
-msgid "(api) Get WordPress Video Data"
+msgid "(api) Get WordPress Video Shortcode Data"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:90
@@ -2027,7 +2027,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:309
 msgctxt "option value"
-msgid "WordPress Videos"
+msgid "WordPress Video Shortcodes"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:310
