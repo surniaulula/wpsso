@@ -10,7 +10,7 @@ Tags: schema, seo, woocommerce, google search console, google merchant, rich res
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.5
-Tested Up To: 6.3.0
+Tested Up To: 6.3.1
 WC Tested Up To: 8.0.2
 Stable Tag: 15.21.0
 
@@ -234,7 +234,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.22.0-dev.1 (2023/08/29)**
+**Version 15.22.0-dev.2 (2023/08/29)**
 
 * **New Features**
 	* None.
@@ -1020,7 +1020,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.22.0-dev.1 =
+= 15.22.0-dev.2 =
 
 (2023/08/29) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
 
