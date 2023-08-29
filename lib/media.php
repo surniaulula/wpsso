@@ -2737,9 +2737,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->util->add_image_url_size( $mt_single_video );
 			}
 
-			/*
-			 * If possible, determine the WordPress attachment ID from the self-hosted video URL.
-			 */
 			if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
 
 				$attach_mod = $this->p->post->get_mod( $attach_id );
