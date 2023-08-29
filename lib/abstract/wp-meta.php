@@ -2936,13 +2936,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						}
 
 						$args = array(
-							'url'      => $embed_url,
-							'width'    => null,
-							'height'   => null,
-							'type'     => '',
-							'prev_url' => '',
-							'post_id'  => null,
-							'api'      => '',
+							'url'        => $embed_url,
+							'stream_url' => '',
+							'width'      => null,
+							'height'     => null,
+							'type'       => '',
+							'prev_url'   => '',
+							'api'        => '',
 						);
 
 						/*

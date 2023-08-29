@@ -2216,6 +2216,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:thumbnail_url'   => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:embed_url'       => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:stream_url'      => null,	// Non-standard / internal meta tag. VideoObject contentUrl.
+				$mt_pre . ':video:stream_size'     => null,	// Non-standard / internal meta tag. VideoObject contentSize.
 				$mt_pre . ':video:has_image'       => false,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:iphone_name'     => null,	// Non-standard / internal meta tag for Twitter player card.
 				$mt_pre . ':video:iphone_id'       => null,	// Non-standard / internal meta tag for Twitter player card.

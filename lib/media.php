@@ -2275,9 +2275,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$all_matches = array();
 
+			/*
+			 * Matches raw video URLs when the "Use Filtered Content" option is disabled.
+			 */
 			if ( preg_match_all( '/<(figure) class="(wp-block-embed[^ "]*) [^"]+"><div class="wp-block-embed__wrapper">' .
-				' *([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+) *<\/div><\/figure>/i',
-					$content, $html_tag_matches, PREG_SET_ORDER ) ) {
+				' *([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?|watch\?)[^ \'"<>]+) *' .	// Raw URL.
+				'<\/div><\/figure>/i', $content, $html_tag_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2295,7 +2298,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]' .
-				'([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+)[\'"][^<>]*>/i',
+				'([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?|watch\?)[^ \'"<>]+)[\'"][^<>]*>/i',
 					$content, $html_tag_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -2435,18 +2438,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Make sure we have all array keys defined.
 			 */
 			$args = array_merge( array(
-				'url'       => '',
-				'width'     => null,
-				'height'    => null,
-				'type'      => '',
-				'prev_url'  => '',
-				'post_id'   => null,
-				'attach_id' => null,
-				'api'       => '',
+				'url'        => '',
+				'stream_url' => '',
+				'width'      => null,
+				'height'     => null,
+				'type'       => '',
+				'prev_url'   => '',
+				'api'        => '',
 			), $args );
 
 			/*
-			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideoshortcode'.
+			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideoblock'.
 			 */
 			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
@@ -2458,20 +2460,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/*
 			 * Create and filter an associative array of video details.
 			 */
-			$mt_single_video = array_merge(
-				SucomUtil::get_mt_video_seed(),
-				array(
-					'og:video:width'  => $args[ 'width' ],	// Default width.
-					'og:video:height' => $args[ 'height' ],	// Default height.
-				)
-			);
+			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(),
+				array( 'og:video:width' => $args[ 'width' ], 'og:video:height' => $args[ 'height' ] ) );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 			}
 
-			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args );
+			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args, $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2686,134 +2683,107 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v15.21.0.
+		 * Since WPSSO Core v15.22.0.
 		 *
-		 * The 'url' and 'post_id' args array values are required unless an 'attach_id' value is provided.
-		 *
-		 * Shows a warning notice if the 'attach_id' value is not provided and the video 'url' value is not found attached to the post ID.
-		 *
+		 * See WpssoProMediaWpvideoblock->filter_video_details_wpvideoblock().
 		 * See WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode().
 		 */
-		public function add_og_video_from_attached( array &$mt_single_video, array $args ) {
+		public function add_og_video_from_wpvideo_args( array &$mt_single_video, array $args ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_arr( 'args', $args );
+			}
+
+			if ( '' !== SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: returned video information found' );
+				}
+
+				return $mt_single_video;
+
+			} elseif ( empty( $args[ 'url' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: media url element is empty' );
+				}
+
+				return $mt_single_video;
+			}
+
+			foreach ( array( 'url', 'stream_url', 'width', 'height', 'type' ) as $key ) {
+
+				if ( ! empty( $args[ $key ] ) ) {	// Just in case.
+
+					$mt_single_video[ 'og:video:' . $key ] = $args[ $key ];
+				}
+			}
+
+			if ( ! empty( $args[ 'prev_url' ] ) ) {
+
+				$mt_single_video[ 'og:video:thumbnail_url' ] = $args[ 'prev_url' ];
+				$mt_single_video[ 'og:video:has_image' ]     = true;
+
+				$mt_single_video[ 'og:image:url' ] = $args[ 'prev_url' ];
+
+				/*
+				 * Add correct image sizes for the image URL using getimagesize().
+				 *
+				 * Note that PHP v7.1 or better is required to get the image size of WebP images.
+				 */
+				$this->p->util->add_image_url_size( $mt_single_video );
 			}
 
 			/*
-			 * If we already have an 'attach_id' value, then skip finding the attachment ID and add the video details
-			 * immediately (the 'url' and 'post_id' args array values are not required).
+			 * If possible, determine the WordPress attachment ID from the self-hosted video URL.
 			 */
-			if ( ! empty( $args[ 'attach_id' ] ) ) {	// Attachment ID provided.
+			if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				$attach_mod = $this->p->post->get_mod( $attach_id );
 
-					$this->p->debug->log( 'skipping finding attached: args attach id ' . $args[ 'attach_id' ] . ' provided' );
-				}
-
-				return $this->add_og_video_from_attachment( $mt_single_video, $args );
-
-			} elseif ( empty( $args[ 'url' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: args url is empty' );
-				}
-
-				return;
-
-			} elseif ( empty( $args[ 'post_id' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: args post id is empty' );
-				}
-
-				return;
+				$this->p->media->add_og_video_from_attachment( $mt_single_video, $attach_mod );
 			}
-
-			$attached_videos = get_attached_media( 'video', $args[ 'post_id' ] );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'attached_videos', $attached_videos );
-			}
-
-			if ( is_array( $attached_videos ) ) {	// Just in case.
-
-				foreach ( $attached_videos as $attachment_id => $attachment_obj ) {	// Break after first video.
-		
-					$video_url = wp_get_attachment_url( $attachment_id );
-
-					if ( $args[ 'url' ] !== $video_url ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'skipping ' . $video_url . ': video url does not match' );
-						}
-
-						continue;	// Check the next one.
-					}
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'adding video details from attach id ' . $attachment_id . ' for ' . $video_url );
-					}
-
-					$args[ 'attach_id' ] = $attachment_id;
-
-					$this->add_og_video_from_attachment( $mt_single_video, $args );
-		
-					return;	// Stop here.
-				}
-			}
-
-			if ( $this->p->notice->is_admin_pre_notices() ) {
-						
-				$notice_msg = sprintf( __( 'Unable to include additional video details for %1$s - the video is not attached to post ID %2$s.',
-					'wpsso' ), $args[ 'url' ], $args[ 'post_id' ] );
-
-				$notice_key = 'video-' . $args[ 'url' ] . '-not-attached-post-id-' . $args[ 'post_id' ];
-
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+				$this->p->debug->log( $mt_single_video );
 			}
 		}
 
 		/*
 		 * Since WPSSO Core v15.21.0.
-		 *
-		 * See WpssoMedia->add_og_video_from_attached().
 		 */
-		public function add_og_video_from_attachment( array &$mt_single_video, array $args ) {
+		public function add_og_video_from_attachment( array &$mt_single_video, array $attach_mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $args[ 'attach_id' ] ) ) {	// Just in case.
+			if ( empty( $attach_mod[ 'id' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: args attach id is empty' );
+					$this->p->debug->log( 'exiting early: args attachment mod id is empty' );
 				}
 
 				return;
 			
-			} elseif ( ! wp_attachment_is( 'video', $args[ 'attach_id' ] ) ) {	// Just in case.
+			} elseif ( ! wp_attachment_is( 'video', $attach_mod[ 'id' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: args attach id is not a video' );
+					$this->p->debug->log( 'exiting early: args attachment mod id is not a video' );
 				}
 
 				return;
 			}
 
-			$mod             = $this->p->post->get_mod( $args[ 'attach_id' ] );
-			$post_obj        = SucomUtil::get_post_object( $args[ 'attach_id' ] );
-			$attach_metadata = wp_get_attachment_metadata( $args[ 'attach_id' ] );	// Returns a WP_Error object on failure.
+			$post_obj        = SucomUtil::get_post_object( $attach_mod[ 'id' ] );
+			$attach_metadata = wp_get_attachment_metadata( $attach_mod[ 'id' ] );	// Returns a WP_Error object on failure.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2822,10 +2792,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			foreach( array(
 				'og:video:url',
+				'og:video:embed_url',
+				'og:video:stream_url',
+				'og:video:stream_size',
 				'og:video:thumbnail_url',
 				'og:video:title',
 				'og:video:description',
 				'og:video:upload_date',
+				'og:video:type',
 				'og:video:width',
 				'og:video:height',
 				'og:video:duration',
@@ -2846,8 +2820,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				switch ( $mt_name ) {
 
 					case 'og:video:url':
+					case 'og:video:stream_url':	// VideoObject contentUrl.
 			
-						$mt_single_video[ $mt_name ] = wp_get_attachment_url( $args[ 'attach_id ' ] );
+						$mt_single_video[ $mt_name ] = wp_get_attachment_url( $attach_mod[ 'id' ] );
+
+						break;
+
+					case 'og:video:stream_size':	// VideoObject contentSize.
+
+						if ( ! empty( $attach_metadata[ 'filesize' ] ) ) {
+
+							$mt_single_video[ $mt_name ] = $attach_metadata[ 'filesize' ];
+						}
+
+						break;
+
+					case 'og:video:embed_url':
+
+						$mt_single_video[ $mt_name ] = get_post_embed_url( $attach_mod[ 'id' ] );
 
 						break;
 
@@ -2863,7 +2853,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							break;
 						}
 
-						$featured_image_id = get_post_thumbnail_id( $args[ 'attach_id' ] );
+						$featured_image_id = get_post_thumbnail_id( $attach_mod[ 'id' ] );
 
 						if ( ! empty( $featured_image_id ) ) {	// Just in case.
 
@@ -2888,13 +2878,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					case 'og:video:title':
 
-						$mt_single_video[ $mt_name ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
+						$mt_single_video[ $mt_name ] = $this->p->page->get_title( $attach_mod, $md_key = 'og_title', $max_len = 'og_title' );
 
 						break;
 
 					case 'og:video:description':
 			
-						$mt_single_video[ $mt_name ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc' );
+						$mt_single_video[ $mt_name ] = $this->p->page->get_description( $attach_mod, $md_key = 'og_desc', $max_len = 'og_desc' );
 
 						break;
 
@@ -2911,6 +2901,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						break;	// End of switch.
 			
+					case 'og:video:type':
+
+						if ( ! empty( $attach_metadata[ 'mime_type' ] ) ) {
+
+							$mt_single_video[ $mt_name ] = $attach_metadata[ 'mime_type' ];
+						}
+
+						break;
+
 					case 'og:video:width':
 
 						if ( ! empty( $attach_metadata[ 'width' ] ) ) {

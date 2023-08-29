@@ -2459,6 +2459,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'description'    => $mt_pre . ':description',
 				'embedUrl'       => $mt_pre . ':embed_url',
 				'contentUrl'     => $mt_pre . ':stream_url',
+				'contentSize'    => $mt_pre . ':stream_size',
 				'encodingFormat' => $mt_pre . ':type',	// Mime type.
 				'duration'       => $mt_pre . ':duration',
 				'uploadDate'     => $mt_pre . ':upload_date',

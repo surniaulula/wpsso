@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Stream URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-vid_stream_url',
+					'tooltip'  => 'meta-og_vid_stream_url',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 				'og_vid_dimensions' => array(

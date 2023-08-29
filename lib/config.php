@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.21.0',	// Plugin version.
-					'opt_version' => '986',		// Increment when changing default option values.
+					'version'     => '15.22.0-dev.1',	// Plugin version.
+					'opt_version' => '987',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -205,6 +205,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'soundcloud'       => '(api) Get Soundcloud Track Data',
 								'vimeo'            => '(api) Get Vimeo Video Data',
 								'wistia'           => '(api) Get Wistia Video Data',
+								'wpvideoblock'     => '(api) Get WordPress Video Block Data',
 								'wpvideoshortcode' => '(api) Get WordPress Video Shortcode Data',
 								'youtube'          => '(api) Get YouTube Video and Playlist Data',
 								'upscale'          => '(feature) Upscale Media Library Images',
@@ -2068,6 +2069,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_soundcloud_api'       => 1,	// Check for Embedded Media: Soundcloud Tracks.
 					'plugin_vimeo_api'            => 1,	// Check for Embedded Media: Vimeo Videos.
 					'plugin_wistia_api'           => 1,	// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideoblock_api'     => 1,	// Check for Embedded Media: WordPress Video Blocks.
 					'plugin_wpvideoshortcode_api' => 1,	// Check for Embedded Media: WordPress Video Shortcodes.
 					'plugin_youtube_api'          => 1,	// Check for Embedded Media: Youtube Videos and Playlists.
 
@@ -3000,6 +3002,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_soundcloud_api'       => 'Soundcloud Tracks',
 					'plugin_vimeo_api'            => 'Vimeo Videos',
 					'plugin_wistia_api'           => 'Wistia Videos',
+					'plugin_wpvideoblock_api'     => 'WordPress Video Blocks',
 					'plugin_wpvideoshortcode_api' => 'WordPress Video Shortcodes',
 					'plugin_youtube_api'          => 'YouTube Videos and Playlists',
 				),
