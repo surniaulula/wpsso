@@ -600,7 +600,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key = false, $filter_opts = true, $merge_defs = true );
 
 				} else {
-				
+
 					$md_opts = array();
 				}
 
@@ -1168,7 +1168,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 
 						} else {
-						
+
 							$og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
 						}
 					}

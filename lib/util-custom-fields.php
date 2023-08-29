@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 						 */
 						$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
-					}	
+					}
 				}
 			}
 

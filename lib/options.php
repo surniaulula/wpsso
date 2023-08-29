@@ -1513,7 +1513,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				/*
 				 * Must be a floating-point number.
-				 * 
+				 *
 				 * The decimal precision is defined before the switch() statement.
 				 */
 				case 'fnum':

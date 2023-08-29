@@ -482,12 +482,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_title_alt'       => '',			// Schema Alternate Name.
 					'schema_title_bc'        => '',			// Schema Breadcrumb Name.
 					'schema_desc'            => '',			// Schema Description.
-					'schema_addl_type_url_0' => '',	
-					'schema_addl_type_url_1' => '',	
-					'schema_addl_type_url_2' => '',	
-					'schema_sameas_url_0'    => '',	
-					'schema_sameas_url_1'    => '',	
-					'schema_sameas_url_2'    => '',	
+					'schema_addl_type_url_0' => '',
+					'schema_addl_type_url_1' => '',
+					'schema_addl_type_url_2' => '',
+					'schema_sameas_url_0'    => '',
+					'schema_sameas_url_1'    => '',
+					'schema_sameas_url_2'    => '',
 
 					/*
 					 * Schema Creative Work.

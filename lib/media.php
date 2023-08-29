@@ -2737,6 +2737,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->util->add_image_url_size( $mt_single_video );
 			}
 
+			/*
+			 * If possible, determine the WordPress attachment ID from the self-hosted video URL.
+			 */
 			if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
 
 				$attach_mod = $this->p->post->get_mod( $attach_id );
@@ -2768,7 +2771,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return;
-			
+
 			} elseif ( ! wp_attachment_is( 'video', $attach_mod[ 'id' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
@@ -2803,7 +2806,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) as $mt_name ) {
 
 				if ( ! empty( $mt_single_video[ $mt_name ] ) ) {
-			
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'skipping ' . $mt_name . ' = ' . $mt_single_video[ $mt_name ] );
@@ -2818,7 +2821,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					case 'og:video:url':
 					case 'og:video:stream_url':	// VideoObject contentUrl.
-			
+
 						$mt_single_video[ $mt_name ] = wp_get_attachment_url( $attach_mod[ 'id' ] );
 
 						break;
@@ -2841,12 +2844,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					case 'og:video:thumbnail_url':
 
 						if ( ! empty( $mt_single_video[ 'og:video:has_image' ] ) ) {	// Just in case.
-					
+
 							if ( $this->p->debug->enabled ) {
 
 								$this->p->debug->log( 'skipping ' . $mt_name . ' - og:video:has_image is true' );
 							}
-							
+
 							break;
 						}
 
@@ -2880,7 +2883,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						break;
 
 					case 'og:video:description':
-			
+
 						$mt_single_video[ $mt_name ] = $this->p->page->get_description( $attach_mod, $md_key = 'og_desc', $max_len = 'og_desc' );
 
 						break;
@@ -2897,7 +2900,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						break;	// End of switch.
-			
+
 					case 'og:video:type':
 
 						if ( ! empty( $attach_metadata[ 'mime_type' ] ) ) {

@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/*
 					 * Find the post mime type group and subgroup values.
-					 * 
+					 *
 					 * See wp_post_mime_type_where() in wordpress/wp-includes/post.php.
 					 */
 					if ( ! empty( $mod[ 'post_mime_type' ] ) ) {
