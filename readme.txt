@@ -234,6 +234,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.22.0-dev.1 (2023/08/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoProMediaWpvideoblock` class (Premium edition).
+	* Refactored the `WpssoProMediaWpvideoshortcode` class (Premium edition).
+	* Added a new `WpssoMedia->add_og_video_from_wpvideo_args()` method.
+	* Removed the `WpssoMedia->add_og_video_from_attached()` method.
+	* Refactored the `WpssoMedia->add_og_video_from_attachment()` method.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.21.0 (2023/08/27)**
 
 * **New Features**
@@ -1001,6 +1019,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.22.0-dev.1 =
+
+(2023/08/29) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
 
 = 15.21.0 =
 
