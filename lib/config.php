@@ -5087,9 +5087,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * PHP cURL library settings.
 			 */
-			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]               = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
-			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]            = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:70.0) Gecko/20100101 Firefox/70.0';
-			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ]   = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
+			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/116.0';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
 			/*
 			 * Maybe override the default constant value with a pre-defined constant value.
