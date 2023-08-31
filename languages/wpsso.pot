@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.22.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 15.22.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1035,12 +1035,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
-msgid "(api) Get WordPress Video Block Data"
+msgid "(api) Get WP Media Library Video Block Data"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:90
 msgctxt "lib file description"
-msgid "(api) Get WordPress Video Shortcode Data"
+msgid "(api) Get WP Media Library Video Shortcode Data"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:91
@@ -2032,12 +2032,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:310
 msgctxt "option value"
-msgid "WordPress Video Blocks"
+msgid "WP Media Library Video Blocks"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:311
 msgctxt "option value"
-msgid "WordPress Video Shortcodes"
+msgid "WP Media Library Video Shortcodes"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:312

@@ -527,14 +527,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/*
 								 * Premium edition feature / option.
 								 */
-								case 'facebook':		// Check for Embedded Media: Facebook Videos.
-								case 'slideshare':		// Check for Embedded Media: Slideshare Presentations.
-								case 'soundcloud':		// Check for Embedded Media: Soundcloud Tracks.
-								case 'vimeo':			// Check for Embedded Media: Vimeo Videos.
-								case 'wistia':			// Check for Embedded Media: Wistia Videos.
-								case 'wpvideoblock':		// Check for Embedded Media: WordPress Video Block.
-								case 'wpvideoshortcode':	// Check for Embedded Media: WordPress Video Shortcodes.
-								case 'youtube':			// Check for Embedded Media: Youtube Videos and Playlists.
+								case 'facebook':		// Check for Embedded Media: Facebook Video.
+								case 'slideshare':		// Check for Embedded Media: Slideshare Presentation.
+								case 'soundcloud':		// Check for Embedded Media: Soundcloud Track.
+								case 'vimeo':			// Check for Embedded Media: Vimeo Video.
+								case 'wistia':			// Check for Embedded Media: Wistia Video.
+								case 'wpvideoblock':		// Check for Embedded Media: WP Media Library Video Block.
+								case 'wpvideoshortcode':	// Check for Embedded Media: WP Media Library Video Shortcode.
+								case 'youtube':			// Check for Embedded Media: Youtube Videos and Playlist.
 
 									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
 
