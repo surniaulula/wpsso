@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.5
 Tested Up To: 6.3.1
-WC Tested Up To: 8.0.2
+WC Tested Up To: 8.0.3
 Stable Tag: 15.21.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -145,7 +145,8 @@ Present your content at its best on social sites and in search results - no matt
 * TinyURL Short URL
 * Vimeo Video Data
 * Wistia Video Data
-* WordPress Video Shortcode Data
+* WP Media Library Video Block Data
+* WP Media Library Video Shortcode Data
 * Your Own URL Shortener (YOURLS) Short URL
 * YouTube Video and Playlist Data
 
@@ -234,12 +235,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.22.0-dev.3 (2023/08/30)**
+**Version 15.22.0-b.1 (2023/08/31)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
+	* Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WP Media Library Video Blocks option (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1020,9 +1021,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.22.0-dev.3 =
+= 15.22.0-b.1 =
 
-(2023/08/30) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
+(2023/08/31) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
 
 = 15.21.0 =
 
