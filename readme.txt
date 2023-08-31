@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.22.0-b.1 (2023/08/31)**
+**Version 15.22.0-rc.1 (2023/09/01)**
 
 * **New Features**
 	* None.
@@ -1021,9 +1021,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.22.0-b.1 =
+= 15.22.0-rc.1 =
 
-(2023/08/31) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
+(2023/09/01) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WordPress Video Blocks option (Premium edition).
 
 = 15.21.0 =
 
