@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.22.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 15.22.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4770,20 +4770,20 @@ msgid "Product ISBN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:350 gettext/gettext-lib-pro.php:353
-#: gettext/gettext-lib-pro.php:356 lib/pro/media/slideshare.php:205
+#: gettext/gettext-lib-pro.php:356 lib/pro/media/slideshare.php:206
 #: lib/pro/media/vimeo.php:183 lib/pro/media/wistia.php:330
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:351 gettext/gettext-lib-pro.php:354
-#: gettext/gettext-lib-pro.php:357 lib/pro/media/slideshare.php:206
+#: gettext/gettext-lib-pro.php:357 lib/pro/media/slideshare.php:207
 #: lib/pro/media/vimeo.php:184 lib/pro/media/wistia.php:331
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:352 gettext/gettext-lib-pro.php:355
 #: gettext/gettext-lib-pro.php:358 lib/conflict.php:343
-#: lib/pro/media/slideshare.php:209 lib/pro/media/vimeo.php:187
+#: lib/pro/media/slideshare.php:210 lib/pro/media/vimeo.php:187
 #: lib/pro/media/wistia.php:334
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
@@ -4805,7 +4805,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:361 gettext/gettext-lib-pro.php:372
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1691 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util.php:3894
+#: lib/pro/util/shorten.php:526 lib/util.php:3817
 msgid "%s error:"
 msgstr ""
 
@@ -5540,7 +5540,7 @@ msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2540 lib/util.php:3236
+#: lib/admin.php:2540 lib/util.php:3159
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -7080,11 +7080,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1692 lib/register.php:330 lib/util.php:887 lib/util.php:993
-#: lib/util.php:1025 lib/util.php:3214
+#: lib/util.php:1025 lib/util.php:3137
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1693 lib/util.php:888 lib/util.php:3215
+#: lib/media.php:1693 lib/util.php:888 lib/util.php:3138
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12889,180 +12889,180 @@ msgstr ""
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1599
+#: lib/util.php:1595
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1623
+#: lib/util.php:1624
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1653
+#: lib/util.php:1654
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1851
+#: lib/util.php:1774
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1865
+#: lib/util.php:1788
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3216
+#: lib/util.php:3139
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3239
+#: lib/util.php:3162
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3241
+#: lib/util.php:3164
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3243
+#: lib/util.php:3166
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3245
+#: lib/util.php:3168
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3640
+#: lib/util.php:3563
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3641
+#: lib/util.php:3564
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3645
+#: lib/util.php:3568
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3646
+#: lib/util.php:3569
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3650
+#: lib/util.php:3573
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3651
+#: lib/util.php:3574
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3655
+#: lib/util.php:3578
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3656
+#: lib/util.php:3579
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3660
+#: lib/util.php:3583
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3661
+#: lib/util.php:3584
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3665
+#: lib/util.php:3588
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3666
+#: lib/util.php:3589
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3670
+#: lib/util.php:3593
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3671
+#: lib/util.php:3594
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3675
+#: lib/util.php:3598
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3676
+#: lib/util.php:3599
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3680
+#: lib/util.php:3603
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3681
+#: lib/util.php:3604
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3686
+#: lib/util.php:3609
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3687
+#: lib/util.php:3610
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3757
+#: lib/util.php:3680
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3767
+#: lib/util.php:3690
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: lib/util.php:3870
+#: lib/util.php:3793
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util.php:3896
+#: lib/util.php:3819
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""

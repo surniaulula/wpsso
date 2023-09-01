@@ -1534,11 +1534,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$is_admin       = is_admin();	// Optimize and call once.
-			$cache_format   = 'raw';
-			$cache_type     = 'transient';
-			$cache_exp_secs = 300;
-			$cache_pre_ext  = '';
+			$is_admin = is_admin();	// Optimize and call once.
 
 			if ( ! function_exists( 'mb_convert_encoding' ) ) {
 
@@ -1608,6 +1604,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
+
+				$cache_format   = 'raw';
+				$cache_type     = 'file';
+				$cache_exp_secs = DAY_IN_SECONDS;
+				$cache_pre_ext  = '.html';
 
 				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_pre_ext, $curl_opts, $throttle_secs );
 
@@ -1758,84 +1759,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $mt_ret;
-		}
-
-		public function get_html_body( $request, $remove_script = true ) {
-
-			$html           = '';
-			$cache_format   = 'raw';
-			$cache_type     = 'transient';
-			$cache_exp_secs = 300;
-
-			if ( 0 === strpos( $request, '//' ) ) {
-
-				$request = self::get_prot() . ':' . $request;
-			}
-
-			if ( 0 === strpos( $request, '<' ) ) {	// Check for HTML content.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'using html submitted in the request argument' );
-				}
-
-				$html = $request;
-
-			} elseif ( empty( $request ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: request argument is empty' );
-				}
-
-				return false;
-
-			} elseif ( 0 === strpos( $request, 'data:' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: request argument is inline data' );
-				}
-
-				return false;
-
-			} elseif ( false === filter_var( $request, FILTER_VALIDATE_URL ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
-				}
-
-				return false;
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting HTML for ' . $request );
-				}
-
-				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs );
-
-				if ( ! $html ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: error getting HTML from ' . $request );
-					}
-
-					return false;
-				}
-			}
-
-			$html = preg_replace( '/^.*<body[^>]*>(.*)<\/body>.*$/Ums', '$1', $html );
-
-			if ( $remove_script ) {
-
-				$html = preg_replace( '/<script[^>]*>.*<\/script>/Ums', '', $html );
-			}
-
-			return $html;
 		}
 
 		public function php_class_missing( $class, $method = null ) {
