@@ -246,7 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoProMediaWpvideoblock` class (Premium edition).
 	* Added a new `WpssoMedia->add_og_video_from_wpvideo_args()` method.
-	* Updated the `WpssoUtil->get_html_head_meta()` cache expiration from 5 mins to 1 hour.
+	* Updated the `WpssoUtil->get_html_head_meta()` cache expiration from 5 mins to 1 hour and changed cache location from transient to file.
 	* Refactored the `WpssoProMediaWpvideoshortcode` class (Premium edition).
 	* Refactored the `WpssoMedia->add_og_video_from_attachment()` method.
 	* Removed the `WpssoMedia->add_og_video_from_attached()` method.
