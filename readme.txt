@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.5
 Tested Up To: 6.3.1
 WC Tested Up To: 8.0.3
-Stable Tag: 15.21.0
+Stable Tag: 15.22.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.22.0 (2023/09/01)**
+**Version 15.22.0 (2023/09/02)**
 
 * **New Features**
 	* None.
@@ -245,10 +245,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoProMediaWpvideoblock` class (Premium edition).
-	* Refactored the `WpssoProMediaWpvideoshortcode` class (Premium edition).
 	* Added a new `WpssoMedia->add_og_video_from_wpvideo_args()` method.
-	* Removed the `WpssoMedia->add_og_video_from_attached()` method.
+	* Updated the `WpssoUtil->get_html_head_meta()` cache expiration from 5 mins to 1 hour.
+	* Refactored the `WpssoProMediaWpvideoshortcode` class (Premium edition).
 	* Refactored the `WpssoMedia->add_og_video_from_attachment()` method.
+	* Removed the `WpssoMedia->add_og_video_from_attached()` method.
+	* Removed the `WpssoUtil->get_html_body()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -1023,7 +1025,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.22.0 =
 
-(2023/09/01) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WP Media Library Video Blocks option (Premium edition).
+(2023/09/02) Added a new SSO &gt; Advanced Settings &gt; Service APIs &gt; Media Services &gt; WP Media Library Video Blocks option (Premium edition).
 
 = 15.21.0 =
 
