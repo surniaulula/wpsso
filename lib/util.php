@@ -1608,9 +1608,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$cache_format   = 'raw';
 				$cache_type     = 'file';
 				$cache_exp_secs = HOUR_IN_SECONDS;
-				$cache_pre_ext  = '.html';
+				$cache_file_ext = '.html';
 
-				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_pre_ext, $curl_opts, $throttle_secs );
+				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext, $curl_opts, $throttle_secs );
 
 				if ( empty( $html ) ) {
 
