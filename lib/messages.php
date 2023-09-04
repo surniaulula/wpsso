@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-						$text .= sprintf( __( 'Purchase the %s edition to upgrade and get the following features.', 'wpsso' ), $info[ 'short_pro' ] );
+						$text .= sprintf( __( 'Upgrade to the %s edition and get the following features.', 'wpsso' ), $info[ 'short_pro' ] );
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
 

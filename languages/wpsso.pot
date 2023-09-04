@@ -5532,22 +5532,22 @@ msgstr ""
 
 #: lib/admin.php:2530
 msgctxt "option label"
-msgid "Use Local Plugin Translations"
+msgid "Minimize Schema JSON-LD"
 msgstr ""
 
 #: lib/admin.php:2535
 msgctxt "option label"
-msgid "Minimize Schema JSON-LD"
+msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2540 lib/util.php:3159
-msgctxt "option label"
-msgid "Disable Cache for Debugging"
-msgstr ""
-
-#: lib/admin.php:2548 lib/messages-tooltip-plugin.php:60
+#: lib/admin.php:2540 lib/messages-tooltip-plugin.php:52
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
+msgstr ""
+
+#: lib/admin.php:2548 lib/util.php:3159
+msgctxt "option label"
+msgid "Disable Cache for Debugging"
 msgstr ""
 
 #: lib/admin.php:2563
@@ -9017,40 +9017,40 @@ msgid ""
 "This includes any custom post, term, and user data entered in the %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:52
-msgid ""
-"Prefer local translation files for the %1$s plugin and its add-ons, instead "
-"of those from WordPress.org (default is %2$s)."
-msgstr ""
-
-#: lib/messages-tooltip-plugin.php:62
+#: lib/messages-tooltip-plugin.php:54
 msgid ""
 "Minimize the Schema JSON-LD markup created by %1$s in the webpage (default "
 "is %2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:64
+#: lib/messages-tooltip-plugin.php:56
 msgid ""
 "Leaving this option unchecked creates human readable (aka \"pretty print\") "
 "Schema JSON-LD markup in the webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:66
+#: lib/messages-tooltip-plugin.php:58
 msgid ""
 "Note that enabling the \"%s\" option will always create human readable "
 "Schema JSON-LD markup, even when this option is checked."
 msgstr ""
 
+#: lib/messages-tooltip-plugin.php:66
+msgid ""
+"Prefer local translation files for the %1$s plugin and its add-ons, instead "
+"of those from WordPress.org (default is %2$s)."
+msgstr ""
+
 #: lib/messages-tooltip-plugin.php:74
 msgid ""
-"Disable the head markup transient cache for debugging purposes (default is "
-"%s)."
+"Add hidden debugging messages as HTML comments to front-end and admin "
+"webpages (default is %s)."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:82
 msgid ""
-"Add hidden debugging messages as HTML comments to front-end and admin "
-"webpages (default is %s)."
+"Disable the head markup transient cache for debugging purposes (default is "
+"%s)."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:93
@@ -10358,7 +10358,7 @@ msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 
 #: lib/messages.php:159
-msgid "Purchase the %s edition to upgrade and get the following features."
+msgid "Upgrade to the %s edition and get the following features."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.

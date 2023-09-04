@@ -45,14 +45,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
-
-					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
-
-					$text = sprintf( __( 'Prefer local translation files for the %1$s plugin and its add-ons, instead of those from WordPress.org (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked );
-
-					break;
-
 				case 'tooltip-plugin_schema_json_min': 		// Disable Cache for Debugging.
 
 					$def_checked = $this->get_def_checked( 'plugin_schema_json_min' );
@@ -67,11 +59,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_cache_disable': 		// Disable Cache for Debugging.
+				case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
 
-					$def_checked = $this->get_def_checked( 'plugin_cache_disable' );
+					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
 
-					$text = sprintf( __( 'Disable the head markup transient cache for debugging purposes (default is %s).', 'wpsso' ), $def_checked );
+					$text = sprintf( __( 'Prefer local translation files for the %1$s plugin and its add-ons, instead of those from WordPress.org (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked );
 
 					break;
 
@@ -80,6 +72,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$def_checked = $this->get_def_checked( 'plugin_debug_html' );
 
 					$text = sprintf( __( 'Add hidden debugging messages as HTML comments to front-end and admin webpages (default is %s).', 'wpsso' ), $def_checked );
+
+					break;
+
+				case 'tooltip-plugin_cache_disable': 		// Disable Cache for Debugging.
+
+					$def_checked = $this->get_def_checked( 'plugin_cache_disable' );
+
+					$text = sprintf( __( 'Disable the head markup transient cache for debugging purposes (default is %s).', 'wpsso' ), $def_checked );
 
 					break;
 

@@ -2526,23 +2526,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
-			$table_rows[ 'plugin_load_mofiles' ] = '' .
-				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
-				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
-				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
-
 			$table_rows[ 'plugin_schema_json_min' ] = '' .
 				$form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_schema_json_min' ) .
 				'<td>' . $form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
 				self::get_option_site_use( 'plugin_schema_json_min', $form, $network, $is_enabled = true );
 
-			$table_rows[ 'plugin_cache_disable' ] = '' .
-				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
-				'<td>' . ( ! $network && $cache_status ?
-				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
-				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
-				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
+			$table_rows[ 'plugin_load_mofiles' ] = '' .
+				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
+				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
+				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_debug_html' ] = '' .
 				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) .
@@ -2551,6 +2543,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
 				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
+
+			$table_rows[ 'plugin_cache_disable' ] = '' .
+				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
+				'<td>' . ( ! $network && $cache_status ?
+				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
+				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
+				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
 		}
 
 		/*

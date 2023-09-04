@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 15.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-09-01 20:35-0700\n"
+"PO-Revision-Date: 2023-09-04 07:23-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5280,23 +5280,23 @@ msgstr "Supprimer les réglages lors de la désinstallation"
 
 #: lib/admin.php:2530
 msgctxt "option label"
-msgid "Use Local Plugin Translations"
-msgstr "Utiliser les traductions locale"
-
-#: lib/admin.php:2535
-msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr "Minimiser le Schéma JSON-LD"
 
-#: lib/admin.php:2540 lib/util.php:3159
+#: lib/admin.php:2535
 msgctxt "option label"
-msgid "Disable Cache for Debugging"
-msgstr "Désactiver le cache pour débogage"
+msgid "Use Local Plugin Translations"
+msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2548 lib/messages-tooltip-plugin.php:60
+#: lib/admin.php:2540 lib/messages-tooltip-plugin.php:52
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
+
+#: lib/admin.php:2548 lib/util.php:3159
+msgctxt "option label"
+msgid "Disable Cache for Debugging"
+msgstr "Désactiver le cache pour débogage"
 
 #: lib/admin.php:2563
 msgctxt "option comment"
@@ -8236,29 +8236,29 @@ msgstr "Cochez cette option pour supprimer tous les réglages de l'extension %1$
 msgid "This includes any custom post, term, and user data entered in the %s metabox."
 msgstr "Cela inclut toutes les données personnalisées d'article, de terme et d'utilisateur saisies dans la métabox %s."
 
-#: lib/messages-tooltip-plugin.php:52
-msgid "Prefer local translation files for the %1$s plugin and its add-ons, instead of those from WordPress.org (default is %2$s)."
-msgstr "Préférez les fichiers de traduction locaux pour l'extension %1$s et ses ajouts, plutôt que ceux de WordPress.org (%2$s par défaut)"
-
-#: lib/messages-tooltip-plugin.php:62
+#: lib/messages-tooltip-plugin.php:54
 msgid "Minimize the Schema JSON-LD markup created by %1$s in the webpage (default is %2$s)."
 msgstr "Minimiser le balisage de Schéma JSON-LD créé par %1$s dans la page Web (%2$s par défaut)."
 
-#: lib/messages-tooltip-plugin.php:64
+#: lib/messages-tooltip-plugin.php:56
 msgid "Leaving this option unchecked creates human readable (aka \"pretty print\") Schema JSON-LD markup in the webpage."
 msgstr "Laisser cette option décochée crée un balisage de Schéma JSON-LD lisible par les humains (alias \"pretty print\") dans la page Web."
 
-#: lib/messages-tooltip-plugin.php:66
+#: lib/messages-tooltip-plugin.php:58
 msgid "Note that enabling the \"%s\" option will always create human readable Schema JSON-LD markup, even when this option is checked."
 msgstr "Notez que l'activation de l'option \"%s\" créera toujours un balisage de Schéma JSON-LD lisible par les humains, même lorsque cette option est cochée."
 
-#: lib/messages-tooltip-plugin.php:74
-msgid "Disable the head markup transient cache for debugging purposes (default is %s)."
-msgstr "Désactivez le cache transitoire de balisage d'en-tête à des fins de débogage (%s par défaut)."
+#: lib/messages-tooltip-plugin.php:66
+msgid "Prefer local translation files for the %1$s plugin and its add-ons, instead of those from WordPress.org (default is %2$s)."
+msgstr "Préférez les fichiers de traduction locaux pour l'extension %1$s et ses ajouts, plutôt que ceux de WordPress.org (%2$s par défaut)"
 
-#: lib/messages-tooltip-plugin.php:82
+#: lib/messages-tooltip-plugin.php:74
 msgid "Add hidden debugging messages as HTML comments to front-end and admin webpages (default is %s)."
 msgstr "Ajoutez des messages de débogage masqués en tant que commentaires HTML aux pages Web d'avant et d'administration (%s par défaut)."
+
+#: lib/messages-tooltip-plugin.php:82
+msgid "Disable the head markup transient cache for debugging purposes (default is %s)."
+msgstr "Désactivez le cache transitoire de balisage d'en-tête à des fins de débogage (%s par défaut)."
 
 #: lib/messages-tooltip-plugin.php:93
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
@@ -9248,8 +9248,8 @@ msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr "La colonne intégrée WordPress <em>%s</em> ne peut pas être modifiée."
 
 #: lib/messages.php:159
-msgid "Purchase the %s edition to upgrade and get the following features."
-msgstr "Achetez l'édition %s pour mettre à niveau et obtenir les fonctionnalités suivantes."
+msgid "Upgrade to the %s edition and get the following features."
+msgstr "Mettez à niveau vers l'édition %s et bénéficiez des fonctionnalités suivantes."
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:178
