@@ -255,9 +255,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-							$text .= __( 'Users often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from uploaded images.', 'wpsso' ) . ' ';
+							$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to ceate) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Providing social sites and search engines with correctly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+							$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Providing social sites and search engines with correctly sized images is highly recommended, so this option should be enabled if possible, to double-check the dimension of images provided by WordPress.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 						}
@@ -363,7 +365,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								/*
 								 * Note that WpssoMedia->is_image_within_config_limits() sets
 								 * 'show_adjust_img_size_opts' to false for images that are too
-								 * small for the hard-coded config limits.
+								 * small for the hard-coded limits. It would be pointless to update
+								 * the image size dimensions or disable the image dimension checks
+								 * in this case.
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 

@@ -165,11 +165,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
 
-					$text = __( 'Users often upload small featured images to the Media Library, without knowing that WordPress creates different image sizes from uploaded images.', 'wpsso' ) . ' ';
+					$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to ceate) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Providing social sites and search engines with correctly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+					$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
 
-					$text .= __( 'This option can be disabled to use smaller images and avoid some rejected image warnings.', 'wpsso' ) . ' ';
+					$text .= __( 'Providing social sites and search engines with correctly sized images is highly recommended, so this option should be enabled if possible, to double-check the dimension of images provided by WordPress.', 'wpsso' ) . ' ';
+
+					$text .= __( 'This option can be disabled to allow the use of smaller images and avoid some rejected image warnings.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
