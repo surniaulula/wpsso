@@ -7190,7 +7190,7 @@ msgid ""
 "the full text is the complete question."
 msgstr ""
 
-#: lib/messages-info-meta.php:136
+#: lib/messages-info-meta.php:136 lib/messages-info-meta.php:182
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred image cropping area (ie. top or bottom) and optimize the "
@@ -7221,13 +7221,6 @@ msgstr ""
 msgid ""
 "The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
-msgstr ""
-
-#: lib/messages-info-meta.php:182
-msgid ""
-"You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
-"select a preferred cropping area (ie. top or bottom), along with optimizing "
-"the social and SEO texts for the image."
 msgstr ""
 
 #: lib/messages-info-meta.php:195
@@ -9169,8 +9162,8 @@ msgstr ""
 #: lib/messages-tooltip-plugin.php:168 lib/messages.php:258
 msgid ""
 "Users may upload small images to the Media Library without knowing that "
-"WordPress creates (or tries to ceate) several different image sizes from the "
-"uploaded originals."
+"WordPress creates (or tries to create) several different image sizes from "
+"the uploaded originals."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:170 lib/messages.php:260

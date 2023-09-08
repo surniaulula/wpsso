@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
 
-					$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to ceate) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
+					$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
 					$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
 

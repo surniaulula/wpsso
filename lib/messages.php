@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-							$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to ceate) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
+							$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
 
