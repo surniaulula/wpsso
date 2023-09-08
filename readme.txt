@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.0-dev.1 (2023/09/06)**
+**Version 15.23.0-dev.2 (2023/09/08)**
 
 * **New Features**
 	* None.
@@ -244,7 +244,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoMedia->get_video_details()` to detect self-hosted videos from any known embedded video markup.
+	* Removed the `WpssoMedia->add_og_video_from_wpvideo_args()` method.
+	* Removed the `WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoblock()` method (Premium edition).
+	* Removed the `WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode()` method (Premium edition).
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -1037,9 +1040,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.0-dev.1 =
+= 15.23.0-dev.2 =
 
-(2023/09/06) Updated the "Image Dimension Checks" option help text.
+(2023/09/08) Updated the "Image Dimension Checks" option help text.
 
 = 15.22.0 =
 
