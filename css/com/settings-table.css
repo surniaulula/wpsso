@@ -1322,13 +1322,13 @@ table.sucom-settings.column-metabox.feature-status td {
 table.sucom-settings.column-metabox.feature-status .dashicons-before::before {
 	font-size:1.2em;
 	line-height:1.2em;
-	vertical-align:middle;
 }
 
 table.sucom-settings.column-metabox.feature-status td .status-light {
 	width:1em;
 	height:1em;
 	border-radius:50%;
+	margin-top:2px;
 	margin-left:5px;
 }
 
