@@ -2449,11 +2449,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'attach_id'  => null,
 			), $args );
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'args', $args );
-			}
-
 			/*
 			 * Create the array of video details.
 			 */
@@ -2498,6 +2493,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$this->p->media->add_og_video_from_attachment( $mt_single_video, $attach_mod );
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'args', $args );
 			}
 
 			/*
