@@ -2441,11 +2441,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$args = array_merge( array(
 				'url'        => '',
+				'type'       => '',
 				'stream_url' => '',
 				'prev_url'   => '',
 				'width'      => null,
 				'height'     => null,
-				'type'       => '',
+				'attach_id'  => null,
 			), $args );
 
 			if ( $this->p->debug->enabled ) {
@@ -2483,16 +2484,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				/*
-				 * Get a WordPress attachment ID for self-hosted video URLs.
+				 * If we have a WordPress attachment ID for the video URL (self-hosted videos), then add the Open
+				 * Graph video meta tags from the attachment's post.
 				 */
-				if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
+				if ( ! empty( $args[ 'attach_id' ] ) || $args[ 'attach_id' ] = attachment_url_to_postid( $args[ 'url' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'adding video meta tags from attachment ID = ' . $attach_id );
+						$this->p->debug->log( 'adding video meta tags from attachment ID = ' . $args[ 'attach_id' ] );
 					}
 
-					$attach_mod = $this->p->post->get_mod( $attach_id );
+					$attach_mod = $this->p->post->get_mod( $args[ 'attach_id' ] );
 
 					$this->p->media->add_og_video_from_attachment( $mt_single_video, $attach_mod );
 				}
