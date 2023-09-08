@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 15.23.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 15.23.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -509,7 +509,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:39 lib/com/form.php:977
 #: lib/media-filters.php:116 lib/media.php:1504 lib/media.php:1654
-#: lib/media.php:3565
+#: lib/media.php:3532
 msgid "Media Library"
 msgstr ""
 
@@ -4770,20 +4770,20 @@ msgid "Product ISBN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:350 gettext/gettext-lib-pro.php:353
-#: gettext/gettext-lib-pro.php:356 lib/pro/media/slideshare.php:206
+#: gettext/gettext-lib-pro.php:356 lib/pro/media/slideshare.php:201
 #: lib/pro/media/vimeo.php:183 lib/pro/media/wistia.php:330
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:351 gettext/gettext-lib-pro.php:354
-#: gettext/gettext-lib-pro.php:357 lib/pro/media/slideshare.php:207
+#: gettext/gettext-lib-pro.php:357 lib/pro/media/slideshare.php:202
 #: lib/pro/media/vimeo.php:184 lib/pro/media/wistia.php:331
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:352 gettext/gettext-lib-pro.php:355
 #: gettext/gettext-lib-pro.php:358 lib/conflict.php:343
-#: lib/pro/media/slideshare.php:210 lib/pro/media/vimeo.php:187
+#: lib/pro/media/slideshare.php:205 lib/pro/media/vimeo.php:187
 #: lib/pro/media/wistia.php:334
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
@@ -7007,7 +7007,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3575
+#: lib/media-filters.php:119 lib/media.php:3542
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -7100,18 +7100,18 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3591
+#: lib/media.php:3558
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3644
+#: lib/media.php:3611
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3679
+#: lib/media.php:3646
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

@@ -2342,10 +2342,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
 							);
 
-							/*
-							 * Returns a single video associative array.
-							 */
-							$mt_single_video = $this->get_video_details( $args, $mod );
+							$mt_single_video = $this->get_video_details( $args, $mod );	// Returns a single video associative array.
 
 							if ( ! empty( $mt_single_video ) ) {
 
@@ -2431,6 +2428,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( empty( $args[ 'url' ] ) ) {	// Just in case.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no video URL' );
+				}
+
 				return array();
 			}
 
@@ -2440,28 +2442,66 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$args = array_merge( array(
 				'url'        => '',
 				'stream_url' => '',
+				'prev_url'   => '',
 				'width'      => null,
 				'height'     => null,
 				'type'       => '',
-				'prev_url'   => '',
-				'api'        => '',
 			), $args );
 
-			/*
-			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideoblock'.
-			 */
-			$filter_name = 'wpsso_video_details';	// No need to sanitize.
+			if ( $this->p->debug->enabled ) {
 
-			if ( ! empty( $args[ 'api' ] ) ) {
-
-				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args[ 'api' ] );
+				$this->p->debug->log_arr( 'args', $args );
 			}
 
 			/*
-			 * Create and filter an associative array of video details.
+			 * Create the array of video details.
 			 */
-			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(),
-				array( 'og:video:width' => $args[ 'width' ], 'og:video:height' => $args[ 'height' ] ) );
+			$mt_single_video = SucomUtil::get_mt_video_seed();
+
+			if ( ! empty( $args[ 'url' ] ) ) {
+
+				foreach ( array( 'url', 'stream_url', 'width', 'height', 'type' ) as $key ) {
+
+					if ( ! empty( $args[ $key ] ) ) {	// Just in case.
+
+						$mt_single_video[ 'og:video:' . $key ] = $args[ $key ];
+					}
+				}
+
+				if ( ! empty( $args[ 'prev_url' ] ) ) {
+
+					$mt_single_video[ 'og:image:url' ]           = $args[ 'prev_url' ];
+					$mt_single_video[ 'og:video:thumbnail_url' ] = $args[ 'prev_url' ];
+					$mt_single_video[ 'og:video:has_image' ]     = true;
+
+					/*
+					 * Add correct image sizes for the image URL using getimagesize().
+					 *
+					 * Note that PHP v7.1 or better is required to get the image size of WebP images.
+					 */
+					$this->p->util->add_image_url_size( $mt_single_video );
+				}
+
+				/*
+				 * Get a WordPress attachment ID for self-hosted video URLs.
+				 */
+				if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'adding video meta tags from attachment ID = ' . $attach_id );
+					}
+
+					$attach_mod = $this->p->post->get_mod( $attach_id );
+
+					$this->p->media->add_og_video_from_attachment( $mt_single_video, $attach_mod );
+				}
+			}
+
+			/*
+			 * Filter the array of video details.
+			 */
+			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2472,9 +2512,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'single video after filters', $mt_single_video );
+				$this->p->debug->log_arr( 'mt_single_video', $mt_single_video );
 			}
 
+			/*
+			 * Sanitize the array of video details.
+			 */
 			if ( isset( $mt_single_video[ 'al:web:url' ] ) ) {	// Just in case.
 
 				if ( '' === $mt_single_video[ 'al:web:url' ] ) {
@@ -2483,9 +2526,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/*
-			 * Sanitation of media.
-			 */
 			foreach ( array( 'og:video', 'og:image' ) as $mt_media_pre ) {
 
 				$media_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $mt_media_pre );
@@ -2499,9 +2539,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'no video returned by filters' );
-
-							$this->p->debug->log( 'falling back to media url: ' . $args[ 'url' ] );
+							$this->p->debug->log( 'falling back to media url = ' . $args[ 'url' ] );
 						}
 
 						$media_url = $mt_single_video[ 'og:video:url' ] = $args[ 'url' ];
@@ -2514,7 +2552,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'og:video:type is empty - using URL to determine the mime-type' );
+							$this->p->debug->log( 'og:video:type is empty - using media URL to determine the mime-type' );
 						}
 
 						/*
@@ -2525,7 +2563,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'matched url substr "' . $match[ 1 ] . '"' );
+								$this->p->debug->log( 'matched media URL substr "' . $match[ 1 ] . '"' );
 							}
 
 							switch ( $match[ 1 ] ) {
@@ -2617,13 +2655,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$have_media[ $mt_media_pre ] = empty( $media_url ) ? false : true;
 
 				/*
-				 * Remove all meta tags if there's no media URL or media is a duplicate.
+				 * Remove all meta tags if there's no media URL or the media URL is a duplicate.
 				 */
 				if ( empty( $have_media[ $mt_media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no media url or duplicate media - removing ' . $mt_media_pre . ' meta tags' );
+						$this->p->debug->log( 'no media URL or duplicate media - removing ' . $mt_media_pre . ' meta tags' );
 					}
 
 					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video ) as $k => $v ) {
@@ -2632,7 +2670,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 				/*
-				 * If the media is an image, then check and maybe add missing sizes.
+				 * If the media is an image, then maybe add missing sizes.
 				 */
 				} elseif ( 'og:image' === $mt_media_pre ) {
 
@@ -2654,7 +2692,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					} elseif ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'video image width / height values: ' .
+						$this->p->debug->log( 'video image width and height: ' .
 							$mt_single_video[ 'og:image:width' ] . 'x' . $mt_single_video[ 'og:image:height' ] );
 					}
 				}
@@ -2667,7 +2705,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'no media found - returning an empty array' );
+					$this->p->debug->log( 'exiting early: no media found' );
 				}
 
 				return array();
@@ -2680,77 +2718,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $mt_single_video;
-		}
-
-		/*
-		 * Since WPSSO Core v15.22.0.
-		 *
-		 * See WpssoProMediaWpvideoblock->filter_video_details_wpvideoblock().
-		 * See WpssoProMediaWpvideoshortcode->filter_video_details_wpvideoshortcode().
-		 */
-		public function add_og_video_from_wpvideo_args( array &$mt_single_video, array $args ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'args', $args );
-			}
-
-			if ( '' !== SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: returned video information found' );
-				}
-
-				return $mt_single_video;
-
-			} elseif ( empty( $args[ 'url' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: media url element is empty' );
-				}
-
-				return $mt_single_video;
-			}
-
-			foreach ( array( 'url', 'stream_url', 'width', 'height', 'type' ) as $key ) {
-
-				if ( ! empty( $args[ $key ] ) ) {	// Just in case.
-
-					$mt_single_video[ 'og:video:' . $key ] = $args[ $key ];
-				}
-			}
-
-			if ( ! empty( $args[ 'prev_url' ] ) ) {
-
-				$mt_single_video[ 'og:video:thumbnail_url' ] = $args[ 'prev_url' ];
-				$mt_single_video[ 'og:video:has_image' ]     = true;
-
-				$mt_single_video[ 'og:image:url' ] = $args[ 'prev_url' ];
-
-				/*
-				 * Add correct image sizes for the image URL using getimagesize().
-				 *
-				 * Note that PHP v7.1 or better is required to get the image size of WebP images.
-				 */
-				$this->p->util->add_image_url_size( $mt_single_video );
-			}
-
-			/*
-			 * If possible, determine the WordPress attachment ID from the self-hosted video URL.
-			 */
-			if ( $attach_id = attachment_url_to_postid( $args[ 'url' ] ) ) {
-
-				$attach_mod = $this->p->post->get_mod( $attach_id );
-
-				$this->p->media->add_og_video_from_attachment( $mt_single_video, $attach_mod );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $mt_single_video );
-			}
 		}
 
 		/*
