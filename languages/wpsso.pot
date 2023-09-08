@@ -4771,20 +4771,20 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:350 gettext/gettext-lib-pro.php:353
 #: gettext/gettext-lib-pro.php:356 lib/pro/media/slideshare.php:183
-#: lib/pro/media/vimeo.php:165 lib/pro/media/wistia.php:321
+#: lib/pro/media/vimeo.php:165 lib/pro/media/wistia.php:324
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:351 gettext/gettext-lib-pro.php:354
 #: gettext/gettext-lib-pro.php:357 lib/pro/media/slideshare.php:184
-#: lib/pro/media/vimeo.php:166 lib/pro/media/wistia.php:322
+#: lib/pro/media/vimeo.php:166 lib/pro/media/wistia.php:325
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:352 gettext/gettext-lib-pro.php:355
 #: gettext/gettext-lib-pro.php:358 lib/conflict.php:343
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:169
-#: lib/pro/media/wistia.php:325
+#: lib/pro/media/wistia.php:328
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
