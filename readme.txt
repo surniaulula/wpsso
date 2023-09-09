@@ -235,11 +235,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.0-b.1 (2023/09/08)**
+**Version 15.23.0-rc.1 (2023/09/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Improved the detection of self-hosted video URLs.
 	* Updated the "Image Dimension Checks" option help text.
 * **Bugfixes**
 	* None.
@@ -1040,9 +1041,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.0-b.1 =
+= 15.23.0-rc.1 =
 
-(2023/09/08) Updated the "Image Dimension Checks" option help text.
+(2023/09/09) Updated the "Image Dimension Checks" option help text. Improved the detection of self-hosted video URLs.
 
 = 15.22.0 =
 
