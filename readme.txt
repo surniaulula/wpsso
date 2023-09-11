@@ -235,6 +235,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 15.23.1-dev.1 (2023/09/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed unnecessary Advanced Settings options for Schema media object types (Premium edition):
+		* Type for Media Audio
+		* Type for Media Image
+		* Type for Media Video
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added `$mt_single_video[ 'og:video:has_video' ]` to optimize video API checks.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 15.23.0 (2023/09/09)**
 
 * **New Features**
@@ -1040,6 +1057,10 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 	* WordPress v5.4.
 
 == Upgrade Notice ==
+
+= 15.23.1-dev.1 =
+
+(2023/09/11) Removed unnecessary Advanced Settings options for Schema media object types (Premium edition).
 
 = 15.23.0 =
 
