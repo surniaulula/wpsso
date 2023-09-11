@@ -470,8 +470,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					unset( $og_single_embed[ 'og:video:secure_url' ] );	// Just in case.
 
-					$og_single_embed[ 'og:video:url' ]  = $mt_single_video[ 'og:video:embed_url' ];
-					$og_single_embed[ 'og:video:type' ] = 'text/html';
+					$og_single_embed[ 'og:video:url' ]       = $mt_single_video[ 'og:video:embed_url' ];
+					$og_single_embed[ 'og:video:has_video' ] = true;	// Used by video API modules.
+					$og_single_embed[ 'og:video:type' ]      = 'text/html';
 
 					/*
 					 * Embedded videos may not have width / height information defined.
@@ -2466,9 +2467,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $args[ 'prev_url' ] ) ) {
 
-					$mt_single_video[ 'og:image:url' ]           = $args[ 'prev_url' ];
 					$mt_single_video[ 'og:video:thumbnail_url' ] = $args[ 'prev_url' ];
 					$mt_single_video[ 'og:video:has_image' ]     = true;
+					$mt_single_video[ 'og:image:url' ]           = $args[ 'prev_url' ];
 
 					/*
 					 * Add correct image sizes for the image URL using getimagesize().
@@ -2768,6 +2769,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'og:video:title',
 				'og:video:description',
 				'og:video:upload_date',
+				'og:video:has_video',	// Used by video API modules.
 				'og:video:type',
 				'og:video:width',
 				'og:video:height',
@@ -2868,7 +2870,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$mt_single_video[ $mt_name ] = date_format( date_create( (string) $post_obj->post_date ), 'c' );
 						}
 
-						break;	// End of switch.
+						break;
+
+					case 'og:video:has_video':	// Used by video API modules.
+
+						$mt_single_video[ $mt_name ] = true;
+
+						break;
 
 					case 'og:video:type':
 

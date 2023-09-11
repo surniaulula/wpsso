@@ -587,6 +587,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_add_text_prop' => 'schema_def_add_text_prop',		// Add Text or Article Body Property.
 					'schema_aggr_offers'   => 'schema_def_product_aggr_offers',	// Aggregate Offers by Currency.
 				),
+				988 => array(
+					'schema_type_for_attachment_audio' => '',
+					'schema_type_for_attachment_image' => '',
+					'schema_type_for_attachment_video' => '',
+				),
 			),
 		);
 
@@ -970,17 +975,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 972 ) {
-
-					if ( ! empty( $opts[ 'schema_type_for_attachment' ] ) ) {
-
-						if ( 'webpage' === $opts[ 'schema_type_for_attachment' ] ) {
-
-							$opts[ 'schema_type_for_attachment' ] = 'media.object';
-						}
-					}
-				}
-
 				if ( $prev_version > 0 && $prev_version <= 982 ) {
 
 					if ( ! empty( $opts[ 'plugin_feed_title' ] ) ) {
@@ -988,6 +982,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 						if ( '%%sitename%% %%sep%% RSS Feed' === $opts[ 'plugin_feed_title' ] ) {
 
 							$opts[ 'plugin_feed_title' ] = '%%sitename%% RSS Feed';
+						}
+					}
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 988 ) {
+
+					if ( ! empty( $opts[ 'schema_type_for_attachment' ] ) ) {
+
+						if ( 'media.object' === $opts[ 'schema_type_for_attachment' ] ) {
+
+							$opts[ 'schema_type_for_attachment' ] = 'webpage';
 						}
 					}
 				}

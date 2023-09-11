@@ -777,17 +777,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 								$type_id = $this->get_schema_type_id_for( 'page' );
 							}
-
-							/*
-							 * If we have a post mime type group (ie. audio, image, or video), then
-							 * check for a more precise schema type. If a schema type option for this
-							 * post mime type group is not available, then fallback to the current
-							 * schema type.
-							 */
-							if ( ! empty( $mod[ 'post_mime_group' ] ) ) {
-
-								$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] . '_' . $mod[ 'post_mime_group' ], $type_id );
-							}
 						}
 
 					} elseif ( $this->p->debug->enabled ) {

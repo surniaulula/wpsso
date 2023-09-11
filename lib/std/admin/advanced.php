@@ -708,14 +708,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type.
 			 */
 			foreach ( array(
-				'schema_type_for_home_page'        => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'schema_type_for_home_posts'       => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'schema_type_for_user_page'        => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
-				'schema_type_for_search_page'      => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'schema_type_for_archive_page'     => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
-				'schema_type_for_attachment_audio' => _x( 'Type for Media Audio', 'option label', 'wpsso' ),
-				'schema_type_for_attachment_image' => _x( 'Type for Media Image', 'option label', 'wpsso' ),
-				'schema_type_for_attachment_video' => _x( 'Type for Media Video', 'option label', 'wpsso' ),
+				'schema_type_for_home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
+				'schema_type_for_search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'schema_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
 			) as $opt_key => $th_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .

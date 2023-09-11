@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.23.0',	// Plugin version.
-					'opt_version' => '988',		// Increment when changing default option values.
+					'version'     => '15.23.1-dev.1',	// Plugin version.
+					'opt_version' => '989',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1558,32 +1558,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'schema_type_for_attachment'        => 'media.object',
-					'schema_type_for_attachment_audio'  => 'audio.object',
-					'schema_type_for_attachment_image'  => 'image.object',
-					'schema_type_for_attachment_video'  => 'video.object',
-					'schema_type_for_article'           => 'article',
-					'schema_type_for_book'              => 'book',
-					'schema_type_for_business'          => 'local.business',
-					'schema_type_for_download'          => 'product',	// For Easy Digital Downloads.
-					'schema_type_for_event'             => 'event',
-					'schema_type_for_howto'             => 'howto',
-					'schema_type_for_job_listing'       => 'job.posting',	// For WP Job Manager.
-					'schema_type_for_jobpost'           => 'job.posting',	// For Simple Job Board.
-					'schema_type_for_organization'      => 'organization',
-					'schema_type_for_page'              => 'article',
-					'schema_type_for_person'            => 'person',
-					'schema_type_for_place'             => 'place',
-					'schema_type_for_post'              => 'blog.posting',
-					'schema_type_for_product'           => 'product',	// For WooCommerce.
-					'schema_type_for_product_group'     => 'product.group',	// For WooCommerce.
-					'schema_type_for_qa'                => 'webpage.qa',
-					'schema_type_for_question'          => 'question',	// For WPSSO FAQ.
-					'schema_type_for_review'            => 'review',	// For WP Product Review.
-					'schema_type_for_tc_events'         => 'event',		// For Tickera.
-					'schema_type_for_tribe_events'      => 'event',		// For The Events Calendar.
-					'schema_type_for_webpage'           => 'webpage',
-					'schema_type_for_website'           => 'website',
+					'schema_type_for_attachment'    => 'webpage',
+					'schema_type_for_article'       => 'article',
+					'schema_type_for_book'          => 'book',
+					'schema_type_for_business'      => 'local.business',
+					'schema_type_for_download'      => 'product',	// For Easy Digital Downloads.
+					'schema_type_for_event'         => 'event',
+					'schema_type_for_howto'         => 'howto',
+					'schema_type_for_job_listing'   => 'job.posting',	// For WP Job Manager.
+					'schema_type_for_jobpost'       => 'job.posting',	// For Simple Job Board.
+					'schema_type_for_organization'  => 'organization',
+					'schema_type_for_page'          => 'article',
+					'schema_type_for_person'        => 'person',
+					'schema_type_for_place'         => 'place',
+					'schema_type_for_post'          => 'blog.posting',
+					'schema_type_for_product'       => 'product',	// For WooCommerce.
+					'schema_type_for_product_group' => 'product.group',	// For WooCommerce.
+					'schema_type_for_qa'            => 'webpage.qa',
+					'schema_type_for_question'      => 'question',	// For WPSSO FAQ.
+					'schema_type_for_review'        => 'review',	// For WP Product Review.
+					'schema_type_for_tc_events'     => 'event',		// For Tickera.
+					'schema_type_for_tribe_events'  => 'event',		// For The Events Calendar.
+					'schema_type_for_webpage'       => 'webpage',
+					'schema_type_for_website'       => 'website',
 
 					/*
 					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
@@ -4731,18 +4728,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
-				 * The Schema standard provides 'aggregateRating' and 'review' properties for these types:
+				 * See https://developers.google.com/search/docs/appearance/structured-data/review-snippet.
 				 *
-				 * 	Brand
-				 * 	CreativeWork
-				 * 	Event
-				 * 	Offer
-				 * 	Organization
-				 * 	Place
-				 * 	Product
-				 * 	Service
-				 *
-				 * Unfortunately Google allows the 'aggregateRating' property only for these types:
+				 * Google allows the 'aggregateRating' property only for these types:
 				 *
 				 *	Book
 				 *	Course
@@ -4753,7 +4741,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *	Product
 				 *	SoftwareApplication
 				 *
-				 * And the 'review' property only for these types:
+				 * Google allows the 'review' property only for these types:
 				 *
 				 *	Book
 				 *	Course

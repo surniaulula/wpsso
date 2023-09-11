@@ -116,42 +116,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				case 'tooltip-schema_type_for_attachment_audio':	// Type for Media Audio.
-
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'attachment_audio' );
-
-					// translators: %s is the markup standard name (ie. Open Graph or Schema).
-					$text = sprintf( __( 'Select a default %s type for media audio attachment pages.', 'wpsso' ), 'Schema' ) . ' ';
-
-					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
-
-					break;
-
-				case 'tooltip-schema_type_for_attachment_image':	// Type for Media Audio.
-
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'attachment_image' );
-
-					// translators: %s is the markup standard name (ie. Open Graph or Schema).
-					$text = sprintf( __( 'Select a default %s type for media image attachment pages.', 'wpsso' ), 'Schema' ) . ' ';
-
-					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
-
-					break;
-
-				case 'tooltip-schema_type_for_attachment_video':	// Type for Media Audio.
-
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'attachment_video' );
-
-					// translators: %s is the markup standard name (ie. Open Graph or Schema).
-					$text = sprintf( __( 'Select a default %s type for media video attachment pages.', 'wpsso' ), 'Schema' ) . ' ';
-
-					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
-
-					break;
-
 				case 'tooltip-schema_type_for_pt':	// Type by Post Type.
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
