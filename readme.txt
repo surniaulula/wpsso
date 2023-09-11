@@ -240,6 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Changed the default Schema type for the Media Post Type (aka attachment page) back to "WebPage".
 	* Removed unnecessary Advanced Settings options for Schema media object types (Premium edition):
 		* Type for Media Audio
 		* Type for Media Image
@@ -1060,7 +1061,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 = 15.23.1-b.1 =
 
-(2023/09/11) Removed unnecessary Advanced Settings options for Schema media object types (Premium edition).
+(2023/09/11) Changed the default Schema type for the Media Post Type (aka attachment page) back to "WebPage".
 
 = 15.23.0 =
 
