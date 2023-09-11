@@ -4752,21 +4752,21 @@ msgid "Product ISBN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:347 gettext/gettext-lib-pro.php:350
-#: gettext/gettext-lib-pro.php:353 lib/pro/media/slideshare.php:202
-#: lib/pro/media/vimeo.php:181 lib/pro/media/wistia.php:343
+#: gettext/gettext-lib-pro.php:353 lib/pro/media/slideshare.php:208
+#: lib/pro/media/vimeo.php:187 lib/pro/media/wistia.php:349
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:348 gettext/gettext-lib-pro.php:351
-#: gettext/gettext-lib-pro.php:354 lib/pro/media/slideshare.php:203
-#: lib/pro/media/vimeo.php:182 lib/pro/media/wistia.php:344
+#: gettext/gettext-lib-pro.php:354 lib/pro/media/slideshare.php:209
+#: lib/pro/media/vimeo.php:188 lib/pro/media/wistia.php:350
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:349 gettext/gettext-lib-pro.php:352
 #: gettext/gettext-lib-pro.php:355 lib/conflict.php:343
-#: lib/pro/media/slideshare.php:206 lib/pro/media/vimeo.php:185
-#: lib/pro/media/wistia.php:347
+#: lib/pro/media/slideshare.php:212 lib/pro/media/vimeo.php:191
+#: lib/pro/media/wistia.php:353
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
