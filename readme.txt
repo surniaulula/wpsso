@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.1-dev.1 (2023/09/11)**
+**Version 15.23.1-dev.2 (2023/09/11)**
 
 * **New Features**
 	* None.
@@ -1058,7 +1058,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.1-dev.1 =
+= 15.23.1-dev.2 =
 
 (2023/09/11) Removed unnecessary Advanced Settings options for Schema media object types (Premium edition).
 
