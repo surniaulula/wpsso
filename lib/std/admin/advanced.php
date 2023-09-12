@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
 				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-			$table_rows[ 'plugin_speakable_css_csv' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_speakable_css_csv' ) .
+			$table_rows[ 'plugin_speakable_css_csv' ] = '' .
 				$form->get_th_html( _x( 'Speakable CSS Selectors', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_speakable_css_csv' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_speakable_css_csv', $css_class = 'wide' ) .

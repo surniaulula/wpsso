@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_speakable_css_csv':	// Speakable CSS Selectors.
 
-					$text = sprintf( __( 'A comma-delimited list of CSS selectors for sections of the webpage that are particularly speakable (see <a href="%s">Google\'s Speakable guidelines</a> for more information).', 'wpsso' ), __( 'https://developers.google.com/search/docs/appearance/structured-data/speakable', 'wpsso' ) );
+					$text = sprintf( __( 'A comma-delimited list of CSS selectors for sections of the webpage that are particularly speakable (see <a href="%s">Google\'s Speakable guidelines</a> for more information).', 'wpsso' ), __( 'https://developers.google.com/search/docs/appearance/structured-data/speakable', 'wpsso' ) ) . ' ';
 
 					$text .= __( 'The Schema speakable property is included in the Schema Article and WebPage types.', 'wpsso' );
 

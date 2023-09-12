@@ -1902,15 +1902,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Integration > Plugin and Theme Integration.
 					 */
-					'plugin_speakable_css_csv'        => '.wp-block-post-title, .speakable',	// Speakable CSS Selectors.
-					'plugin_check_head'               => 1,						// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat'      => 0,						// Include VAT in Product Prices.
-					'plugin_import_aioseop_meta'      => 0,						// Import All in One SEO Pack Metadata.
-					'plugin_import_rankmath_meta'     => 0,						// Import Rank Math SEO Metadata.
-					'plugin_import_seoframework_meta' => 0,						// Import The SEO Framework Metadata.
-					'plugin_import_wpmetaseo_meta'    => 0,						// Import WP Meta SEO Metadata.
-					'plugin_import_wpseo_meta'        => 0,						// Import Yoast SEO Metadata.
-					'plugin_import_wpseo_blocks'      => 0,						// Import Yoast SEO Block Attrs.
+					'plugin_speakable_css_csv'        => '',	// Speakable CSS Selectors.
+					'plugin_check_head'               => 1,		// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'      => 0,		// Include VAT in Product Prices.
+					'plugin_import_aioseop_meta'      => 0,		// Import All in One SEO Pack Metadata.
+					'plugin_import_rankmath_meta'     => 0,		// Import Rank Math SEO Metadata.
+					'plugin_import_seoframework_meta' => 0,		// Import The SEO Framework Metadata.
+					'plugin_import_wpmetaseo_meta'    => 0,		// Import WP Meta SEO Metadata.
+					'plugin_import_wpseo_meta'        => 0,		// Import Yoast SEO Metadata.
+					'plugin_import_wpseo_blocks'      => 0,		// Import Yoast SEO Block Attrs.
 
 					/*
 					 * Advanced Settings > Default Text.
