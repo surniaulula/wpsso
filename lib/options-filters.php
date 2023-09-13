@@ -50,6 +50,132 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				return $type;
 
+			} elseif ( 0 === strpos( $base_key, 'plugin_' ) ) {
+
+				switch ( $base_key ) {
+				
+					case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
+
+						return 'checkbox';
+				
+					case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
+					
+						return 'api_key';
+				
+					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
+
+						return 'csv_blank';
+
+					case 'plugin_gravatar_size':			// Gravatar Image Size.
+					case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
+					case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
+					case 'plugin_ratings_reviews_age_max':		// Maximum Age of Reviews.
+					case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
+
+						return 'pos_integer';
+				
+					case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
+
+						return 'blank_num';
+
+					case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
+					case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
+					case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
+					case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
+					case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
+					case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
+					case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
+					case 'plugin_dlmyapp_api_key':
+					case 'plugin_owly_api_key':
+					case 'plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
+					case 'plugin_shopperapproved_token':	// Shopper Approved API Token.
+					case 'plugin_yourls_username':
+					case 'plugin_yourls_password':
+					case 'plugin_yourls_token':
+					case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
+					case ( 0 === strpos( $base_key, 'plugin_attr_product_' ) ? true : false ):	// Value is the name of a product attribute.
+						
+						return 'one_line';
+				
+					case 'plugin_comment_title':			// Comment Title.
+					case 'plugin_comment_reply_title':		// Reply Comment Title.
+					case 'plugin_comment_review_title':		// Review Comment Title.
+					case 'plugin_product_var_title':		// Product Variation Title.
+					case 'plugin_feed_title':			// RSS Feed Title.
+					case 'plugin_404_page_title':			// 404 Page Title.
+					case 'plugin_404_page_desc':			// 404 Page Description.
+					case 'plugin_no_title_text':			// No Title Text.
+					case 'plugin_no_desc_text':			// No Description Text.
+					case 'plugin_shortener':
+						
+						return 'not_blank';
+				
+					case 'plugin_yourls_api_url':
+						
+						return 'url';
+				}
+
+			} elseif ( 0 === strpos( $base_key, 'product_' ) ) {
+
+				switch ( $base_key ) {
+
+					case 'product_fluid_volume_value':	// Product Fluid Volume.
+					case 'product_gtin14':
+					case 'product_gtin13':
+					case 'product_gtin12':
+					case 'product_gtin8':
+					case 'product_gtin':
+					case 'product_height_value':		// Product Net Height.
+					case 'product_isbn':			// Product ISBN.
+					case 'product_length_value':		// Product Net Len. / Depth.
+					case 'product_min_advert_price':	// Product Min Advert Price.
+					case 'product_price':			// Product Price.
+					case 'product_shipping_height_value':	// Product Shipping Height.
+					case 'product_shipping_length_value':	// Product Shipping Length.
+					case 'product_shipping_weight_value':	// Product Shipping Weight.
+					case 'product_shipping_width_value':	// Product Shipping Width.
+					case 'product_weight_value':		// Product Net Weight.
+					case 'product_width_value':		// Product Net Width.
+
+						return 'blank_num';
+
+					case 'product_brand':
+					case 'product_color':
+					case 'product_currency':		// Product Price Currency.
+					case 'product_fluid_volume_units':
+					case 'product_height_units':
+					case 'product_length_units':
+					case 'product_material':
+					case 'product_mfr_part_no':		// Product MPN.
+					case 'product_pattern':
+					case 'product_retailer_part_no':	// Product SKU.
+					case 'product_shipping_height_units':
+					case 'product_shipping_length_units':
+					case 'product_shipping_weight_units':
+					case 'product_shipping_width_units':
+					case 'product_size':
+					case 'product_weight_units':
+					case 'product_width_units':
+						
+						return 'one_line';
+
+					case 'product_adult_type':
+					case 'product_age_group':
+					case 'product_avail':
+					case 'product_category':			// Product Google Category ID.
+					case 'product_condition':			// Product Condition.
+					case 'product_energy_efficiency':		// Product Energy Rating.
+					case 'product_energy_efficiency_min':
+					case 'product_energy_efficiency_max':
+					case 'product_mrp':				// Product Return Policy.
+					case 'product_price_type':
+					case 'product_size_group':
+					case 'product_size_system':
+					case 'product_target_gender':
+						
+						return 'not_blank';
+				}
+
 			/*
 			 * Optimize and check for a schema option prefix first.
 			 */
@@ -57,9 +183,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				switch ( $base_key ) {
 
-					/*
-					 * Cast as integer (zero and -1 is ok).
-					 */
 					case 'schema_book_pages':	// Number of Pages.
 					case 'schema_reading_mins':
 					case 'schema_vid_max':
@@ -69,15 +192,18 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 							return 'integer';
 						}
 
-						return 'blank_int';		// Allow blank (ie. default) for options.
+						return 'blank_int';
 
-					/*
-					 * Must be numeric (blank and zero are ok).
-					 */
+					case 'schema_howto_step_section':		// How-To Step or Section (0 or 1).
+					case 'schema_recipe_instruction_section':	// Recipe Instruction or Section (0 or 1).
+
+						return 'integer';
+
 					case 'schema_book_audio_duration_days':		// Audiobook Duration.
 					case 'schema_book_audio_duration_hours':
 					case 'schema_book_audio_duration_mins':
 					case 'schema_book_audio_duration_secs':
+					case 'schema_book_isbn':			// Book ISBN.
 					case 'schema_event_offer_price':
 					case 'schema_howto_prep_days':			// How-To Preparation Time.
 					case 'schema_howto_prep_hours':
@@ -117,23 +243,19 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_rating':
 					case 'schema_review_rating_min':
 					case 'schema_review_rating_max':
+					case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
 
 						return 'blank_num';
 
-					/*
-					 * Empty string or an image ID.
-					 */
 					case 'schema_img_id':
 
 						return 'img_id';
 
-					/*
-					 * Text strings that can be blank (line breaks are removed).
-					 */
 					case 'schema_title':				// Schema Name.
 					case 'schema_title_alt':			// Schema Alternate Name.
 					case 'schema_title_bc':				// Schema Breadcrumb Name.
 					case 'schema_book_author_name':			// Book Author Name.
+					case 'schema_book_edition':			// Book Edition.
 					case 'schema_desc':				// Schema Description.
 					case 'schema_headline':				// Headline.
 					case 'schema_text':				// Full Text.
@@ -175,17 +297,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'css_id';
 
-					/*
-					 * CSV strings that can be blank (line breaks are removed).
-					 */
-					case 'schema_keywords_csv':		// Keywords.
-					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
+					case 'schema_keywords_csv':			// Keywords.
 
 						return 'csv_blank';
 
-					/*
-					 * Options that cannot be blank.
-					 */
 					case 'schema_book_author_type':			// Book Author Type.
 					case 'schema_def_article_section':		// Default Article Section.
 					case 'schema_def_book_format':			// Default Book Format.
@@ -250,16 +365,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'not_blank';
 
-					/*
-					 * Empty string or image URL.
-					 */
 					case 'schema_img_url':
 
 						return 'img_url';
 
-					/*
-					 * Empty string or a URL.
-					 */
 					case 'schema_addl_type_url':			// Microdata Type URLs.
 					case 'schema_book_author_url':			// Book Author URL.
 					case 'schema_ispartof_url':			// Is Part of URLs.
@@ -288,12 +397,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 * Optimize and check for add meta tags options first.
 				 */
 				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
-				case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
 
 					return 'checkbox';
 
 				/*
-				 * twitter-style usernames (prepend with an at).
+				 * Twitter-style usernames (prepend with an @ character).
 				 */
 				case 'tc_site':
 
@@ -307,7 +415,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'fb_site_verify':			// Facebook Domain Verification ID.
 				case 'g_site_verify':			// Google Website Verification ID.
 				case 'pin_site_verify':			// Pinterest Website Verification ID.
-				case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
 					return 'api_key';
@@ -320,7 +427,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'dashed';
 
 				/*
-				 * Empty or 'none' string, or color as #000000.
+				 * Empty string, 'none', or color as #000000.
 				 */
 				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
 
@@ -361,50 +468,17 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'og_vid_max':				// Maximum Videos.
 				case 'og_desc_hashtags': 			// Description Hashtags.
 				case 'primary_term_id':				// Primary Category.
-				case 'schema_howto_step_section':		// How-To Step or Section (0 or 1).
-				case 'schema_recipe_instruction_section':	// Recipe Instruction or Section (0 or 1).
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
-					return 'integer';	// Aka 'int'.
+					return 'integer';
 
 				/*
 				 * Numeric options that must be positive (1 or more).
 				 */
-				case 'plugin_gravatar_size':			// Gravatar Image Size.
-				case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
-				case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
-				case 'plugin_ratings_reviews_age_max':		// Maximum Age of Reviews.
-				case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
-					return 'pos_integer';	// Aka 'pos_int'.
-
-				/*
-				 * Must be numeric (blank and zero are ok).
-				 */
-				case 'product_fluid_volume_value':	// Product Fluid Volume.
-				case 'product_gtin14':
-				case 'product_gtin13':
-				case 'product_gtin12':
-				case 'product_gtin8':
-				case 'product_gtin':
-				case 'product_height_value':		// Product Net Height.
-				case 'product_isbn':			// Product ISBN.
-				case 'product_length_value':		// Product Net Len. / Depth.
-				case 'product_min_advert_price':	// Product Min Advert Price.
-				case 'product_price':			// Product Price.
-				case 'product_shipping_height_value':	// Product Shipping Height.
-				case 'product_shipping_length_value':	// Product Shipping Length.
-				case 'product_shipping_weight_value':	// Product Shipping Weight.
-				case 'product_shipping_width_value':	// Product Shipping Width.
-				case 'product_weight_value':		// Product Net Weight.
-				case 'product_width_value':		// Product Net Width.
-				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
-				case 'schema_book_isbn':		// Book ISBN.
-				case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
-
-					return 'blank_num';
+					return 'pos_integer';
 
 				/*
 				 * Empty string or an image ID.
@@ -417,14 +491,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'img_id';
 
 				/*
-				 * Empty string or must include at least one HTML tag.
+				 * Empty string, or must include at least one HTML tag.
 				 */
 				case 'og_vid_embed':
 
 					return 'html';
 
 				/*
-				 * Must be texturized.
+				 * Texturized.
 				 */
 				case 'og_title_sep':
 
@@ -443,40 +517,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'tc_title':			// Twitter Card Title.
 				case 'tc_desc':				// Twitter Card Description.
 				case 'pin_desc':
-				case 'product_brand':
-				case 'product_color':
-				case 'product_currency':		// Product Price Currency.
-				case 'product_fluid_volume_units':
-				case 'product_height_units':
-				case 'product_length_units':
-				case 'product_material':
-				case 'product_mfr_part_no':		// Product MPN.
-				case 'product_pattern':
-				case 'product_retailer_part_no':	// Product SKU.
-				case 'product_shipping_height_units':
-				case 'product_shipping_length_units':
-				case 'product_shipping_weight_units':
-				case 'product_shipping_width_units':
-				case 'product_size':
-				case 'product_weight_units':
-				case 'product_width_units':
-				case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
-				case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
-				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
-				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
-				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
-				case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
-				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
-				case 'plugin_dlmyapp_api_key':
-				case 'plugin_owly_api_key':
-				case 'plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
-				case 'plugin_shopperapproved_token':	// Shopper Approved API Token.
-				case 'plugin_yourls_username':
-				case 'plugin_yourls_password':
-				case 'plugin_yourls_token':
-				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
-				case ( 0 === strpos( $base_key, 'plugin_attr_product_' ) ? true : false ):	// Value is the name of a product attribute.
-				case 'schema_book_edition':		// Book Edition.
 
 					return 'one_line';
 
@@ -489,29 +529,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'og_def_country':				// Default Country.
 				case 'og_def_timezone':				// Default Timezone.
 				case 'og_img_id_lib':
-				case 'plugin_comment_title':			// Comment Title.
-				case 'plugin_comment_reply_title':		// Reply Comment Title.
-				case 'plugin_comment_review_title':		// Review Comment Title.
-				case 'plugin_product_var_title':		// Product Variation Title.
-				case 'plugin_feed_title':			// RSS Feed Title.
-				case 'plugin_404_page_title':			// 404 Page Title.
-				case 'plugin_404_page_desc':			// 404 Page Description.
-				case 'plugin_no_title_text':			// No Title Text.
-				case 'plugin_no_desc_text':			// No Description Text.
-				case 'plugin_shortener':
-				case 'product_adult_type':
-				case 'product_age_group':
-				case 'product_avail':
-				case 'product_category':			// Product Google Category ID.
-				case 'product_condition':			// Product Condition.
-				case 'product_energy_efficiency':		// Product Energy Rating.
-				case 'product_energy_efficiency_min':
-				case 'product_energy_efficiency_max':
-				case 'product_mrp':				// Product Return Policy.
-				case 'product_price_type':
-				case 'product_size_group':
-				case 'product_size_system':
-				case 'product_target_gender':
 				case 'robots_max_image_preview':
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
@@ -549,7 +566,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'fb_page_url':
 				case 'og_vid_url':
 				case 'pin_publisher_url':
-				case 'plugin_yourls_api_url':
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';
