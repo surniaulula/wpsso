@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.2-dev.1 (2023/09/13)**
+**Version 15.23.2-b.1 (2023/09/13)**
 
 * **New Features**
 	* None.
@@ -1073,7 +1073,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.2-dev.1 =
+= 15.23.2-b.1 =
 
 (2023/09/13) Fix to allow an empty "Speakable CSS Selectors" option value.
 
