@@ -178,8 +178,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/*
 					 * CSV strings that can be blank (line breaks are removed).
 					 */
-					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
 					case 'schema_keywords_csv':		// Keywords.
+					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
 
 						return 'csv_blank';
 
