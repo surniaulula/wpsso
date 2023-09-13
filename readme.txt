@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.2-b.1 (2023/09/13)**
+**Version 15.23.2-rc.1 (2023/09/13)**
 
 * **New Features**
 	* None.
@@ -244,7 +244,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fix to allow an empty "Speakable CSS Selectors" option value.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoOptionsFilters->filter_option_type()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -1073,7 +1073,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.2-b.1 =
+= 15.23.2-rc.1 =
 
 (2023/09/13) Fix to allow an empty "Speakable CSS Selectors" option value.
 
