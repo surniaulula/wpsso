@@ -757,11 +757,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'plugin_filter_content'     => 'notice-content-filters-disabled',
 				'plugin_check_img_dims'     => 'notice-check-img-dims-disabled',
 				'plugin_inherit_featured'   => 'notice-wc-inherit-featured-disabled',
-			) as $opt_key ) {
+			) as $opt_key => $notice_key ) {
 
 				if ( ! empty( $opts[ $opt_key ] ) ) {	// Option is enabled.
-
-					$notice_key = 'suggest-options-seo-' . $opt_key;
 
 					$this->p->notice->clear_dismissed( $notice_key, $current_user_id );
 				}

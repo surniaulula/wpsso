@@ -53,15 +53,15 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 			} elseif ( 0 === strpos( $base_key, 'plugin_' ) ) {
 
 				switch ( $base_key ) {
-				
+
 					case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
 
 						return 'checkbox';
-				
+
 					case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
-					
+
 						return 'api_key';
-				
+
 					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
 
 						return 'csv_blank';
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 
 						return 'pos_integer';
-				
+
 					case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 
 						return 'blank_num';
@@ -94,9 +94,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_yourls_token':
 					case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
 					case ( 0 === strpos( $base_key, 'plugin_attr_product_' ) ? true : false ):	// Value is the name of a product attribute.
-						
+
 						return 'one_line';
-				
+
 					case 'plugin_comment_title':			// Comment Title.
 					case 'plugin_comment_reply_title':		// Reply Comment Title.
 					case 'plugin_comment_review_title':		// Review Comment Title.
@@ -107,11 +107,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_no_title_text':			// No Title Text.
 					case 'plugin_no_desc_text':			// No Description Text.
 					case 'plugin_shortener':
-						
+
 						return 'not_blank';
-				
+
 					case 'plugin_yourls_api_url':
-						
+
 						return 'url';
 				}
 
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'product_size':
 					case 'product_weight_units':
 					case 'product_width_units':
-						
+
 						return 'one_line';
 
 					case 'product_adult_type':
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'product_size_group':
 					case 'product_size_system':
 					case 'product_target_gender':
-						
+
 						return 'not_blank';
 				}
 

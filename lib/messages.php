@@ -246,47 +246,41 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-check-img-dims-disabled':
 
-						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+						$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-							$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						$text = '<p class="top">';
 
-							$text = '<p class="top">';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
 
-							$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
+						$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Uploading small images to the Media Library means that WordPress cannot create image sizes that are larger than the uploaded image, and <strong>WordPress will provide images that are too small for larger image sizes</strong>.', 'wpsso' ) . ' ';
+						$text .= __( 'Providing social sites and search engines with correctly sized images is highly recommended, so this option should be enabled if possible, to double-check the dimension of images provided by WordPress.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Providing social sites and search engines with correctly sized images is highly recommended, so this option should be enabled if possible, to double-check the dimension of images provided by WordPress.', 'wpsso' ) . ' ';
-
-							$text .= '</p>';
-						}
+						$text .= '</p>';
 
 						break;
 
 					case 'notice-content-filters-disabled':
 
-						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+						$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-							$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
-							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						$text = '<p class="top">';
 
-							$text = '<p class="top">';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
 
-							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
+						$text .= '</p> <p>';
 
-							$text .= '</p> <p>';
+						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
-							$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
+						$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
 
-							$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
-
-							$text .= '</p>';
-						}
+						$text .= '</p>';
 
 						break;
 
