@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 		 */
 		public function suggest_options_integration() {
 
-			if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+			/* if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
 				if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
 
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 						}
 					}
 				}
-			}
+			} */
 
 			if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 

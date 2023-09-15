@@ -455,7 +455,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					return $cache_url;
 
-				} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
+				} elseif ( @unlink( $cache_file ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -896,7 +896,18 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( $cache_file . ' is expired' );
 						}
 
-					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
+						@unlink( $cache_file );
+
+					} elseif ( ! $fz = filesize( $cache_file ) ) {	// Check if file size is greater then 0.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $cache_file . ' is empty' );
+						}
+						
+						@unlink( $cache_file );
+
+					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {	// Check if we get a file handle.
 
 						if ( $this->p->debug->enabled ) {
 
@@ -912,7 +923,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					} else {
 
-						$cache_data = fread( $fh, filesize( $cache_file ) );
+						$cache_data = fread( $fh, $fz );
 
 						fclose( $fh );
 					}
@@ -1001,7 +1012,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						if ( file_exists( $cache_file ) ) {
 
-							unlink( $cache_file );
+							@unlink( $cache_file );
 						}
 
 					} elseif ( ! is_dir( $this->base_dir ) && ! mkdir( $this->base_dir ) ) {
@@ -1061,7 +1072,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						fclose( $fh );
 
-						@unlink( $cache_file );	// Just in case.
+						@unlink( $cache_file );
 
 						if ( $this->p->debug->enabled ) {
 
