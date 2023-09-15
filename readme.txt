@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.3-dev.1 (TBD)**
+**Version 15.23.3-dev.2 (2023/09/15)**
 
 * **New Features**
 	* None.
@@ -244,7 +244,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a check for 0 file size before opening a cache file.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -1087,9 +1087,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.3-dev.1 =
+= 15.23.3-dev.2 =
 
-(TBD) None.
+(2023/09/15) Added a check for 0 file size before opening a cache file.
 
 = 15.23.2 =
 
