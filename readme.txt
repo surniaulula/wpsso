@@ -90,37 +90,6 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Reads data from active plugins, including:</strong></p>
-
-* All in One SEO Pack
-* Co-Authors Plus
-* Elementor Website Builder
-* Gravity Forms + GravityView
-* Perfect Images
-* Perfect WooCommerce Brands
-* Polylang
-* Product GTIN (EAN, UPC, ISBN) for WooCommerce
-* Rank Math SEO
-* Rate my Post
-* SEOPress
-* Simple Job Board
-* The Events Calendar
-* The SEO Framework
-* Ultimate Member
-* WooCommerce
-* WooCommerce Brands
-* WooCommerce Currency Switcher
-* WooCommerce UPC, EAN, and ISBN
-* WP Job Manager
-* WP Meta SEO
-* WP-PostRatings
-* WP Product Review
-* WP Recipe Maker
-* WPML
-* YITH WooCommerce Brands Add-on
-* Yoast SEO
-* Yotpo Social Reviews for WooCommerce
-
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
