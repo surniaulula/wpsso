@@ -235,12 +235,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.3-dev.2 (2023/09/15)**
+**Version 15.23.3-b.1 (2023/09/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Removed notice to recommend enabling the "Use Filtered Content" option (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1087,9 +1087,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.3-dev.2 =
+= 15.23.3-b.1 =
 
-(2023/09/15) Added a check for 0 file size before opening a cache file.
+(2023/09/16) Removed notice to recommend enabling the "Use Filtered Content" option (Premium edition).
 
 = 15.23.2 =
 
