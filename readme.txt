@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 15.23.3-rc.1 (2023/09/16)**
+**Version 15.23.3 (2023/09/16)**
 
 * **New Features**
 	* None.
@@ -1087,7 +1087,7 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 15.23.3-rc.1 =
+= 15.23.3 =
 
 (2023/09/16) Removed notice to recommend enabling the "Use Filtered Content" option (Premium edition).
 
