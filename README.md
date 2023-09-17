@@ -44,6 +44,8 @@
 
 <!-- /about -->
 
+<p><strong>Support for over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
+
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 <ul>
@@ -58,8 +60,6 @@
 <li>Twitter Summary Card Large Image</li>
 <li>Video Preview Images</li>
 </ul>
-
-<p><strong>Supports over 500 different Schema types and sub-types, including Schema Event for WooCommerce products.</strong></p>
 
 <p><strong>Fixes all Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
 

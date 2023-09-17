@@ -47,6 +47,8 @@ Present your content at its best on social sites and in search results - no matt
 
 <!-- /about -->
 
+<p><strong>Support for over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
+
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 * Google Merchant Feed XML
@@ -59,8 +61,6 @@ Present your content at its best on social sites and in search results - no matt
 * Twitter Summary Card
 * Twitter Summary Card Large Image
 * Video Preview Images
-
-<p><strong>Supports over 500 different Schema types and sub-types, including Schema Event for WooCommerce products.</strong></p>
 
 <p><strong>Fixes all Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
 
