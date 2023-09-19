@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 */
-					'schema_def_add_text_prop'   => 1,	// Add Text or Article Body Property.
+					'schema_def_add_text_prop'   => 0,	// Add Text or Article Body Property.
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
 					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
