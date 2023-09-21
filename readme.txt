@@ -90,7 +90,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Includes data in meta tags and Schema markup from active plugins, including:</strong></p>
+<p><strong>Includes additional data from active plugins, including:</strong></p>
 
 * All in One SEO Pack
 * Co-Authors Plus
@@ -128,29 +128,6 @@ Present your content at its best on social sites and in search results - no matt
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
-
-<h3>Premium Edition Features</h3>
-
-**Reads data from service APIs, including:**
-
-* Bitly Short URL
-* DLMY.App Short URL
-* Facebook Video Data
-* Gravatar Image Data
-* Ow.ly Short URL
-* Shopper Approved Review Data
-* Slideshare Presentation Data
-* Soundcloud Track Data
-* Stamped.io Review Data
-* TinyURL Short URL
-* Vimeo Video Data
-* Wistia Video Data
-* WP Media Library Video Block Data
-* WP Media Library Video Shortcode Data
-* Your Own URL Shortener (YOURLS) Short URL
-* YouTube Video and Playlist Data
-
-**Additional customization options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
 
 == Installation ==
 
