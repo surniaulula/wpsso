@@ -68,14 +68,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2021/10/20.
-		 */
-		public static function clear_plugins_cache() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/10/20', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
 		 * Returns an associative array of true/false values.
 		 *
 		 * Used by self::is_plugin_active() and Wpsso->show_config().

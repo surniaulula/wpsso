@@ -150,6 +150,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Article tab.
 				 */
+				case 'tooltip-schema_def_add_articlebody_prop':	// Add Article Body Property.
+
+					$text = __( 'Add an "articleBody" property to the Schema Article markup with the complete text of the post / page.', 'wpsso' );
+
+				 	break;
+
 				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_article_' ) ? true : false ):
 
 					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
@@ -187,9 +193,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
 				 */
-				case 'tooltip-schema_def_add_text_prop':	// Add Text or Article Body Property.
+				case 'tooltip-schema_def_add_text_prop':	// Add Text Property.
 
-					$text = __( 'Add a "text" or "articleBody" property to the Schema CreativeWork markup with the complete text of the post / page.', 'wpsso' );
+					$text = __( 'Add a "text" property to the Schema CreativeWork markup with the complete text of the post / page.', 'wpsso' );
 
 				 	break;
 

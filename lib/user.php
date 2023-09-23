@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( $is_admin ) {
 
-				if ( ! empty( $_GET ) ) {
+				if ( ! empty( $_GET ) ) {	// Skip some action hooks if no query argument(s).
 
 					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
@@ -2006,6 +2006,5 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			_deprecated_function( __METHOD__ . '()', '2023/02/13', $replacement = '' );	// Deprecation message.
 		}
-
 	}
 }

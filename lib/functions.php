@@ -535,29 +535,3 @@ if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 		_deprecated_function( __FUNCTION__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
 	}
 }
-
-/*
- * Deprecated on 2021/09/04.
- */
-if ( ! function_exists( 'wpsso_get_short_url' ) ) {
-
-	function wpsso_get_short_url( $mod = false, $add_page = true ) {
-
-		_deprecated_function( __FUNCTION__ . '()', '2021/09/04', $replacement = 'wpsso_get_canonical_short_url' );	// Deprecation message.
-
-		return wpsso_get_canonical_short_url( $mod, $add_page );
-	}
-}
-
-/*
- * Deprecated on 2021/09/15.
- */
-if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
-
-	function wpsso_schema_attributes( $attr = '' ) {
-
-		_deprecated_function( __FUNCTION__ . '()', '2021/09/15', $replacement = '' );	// Deprecation message.
-
-		echo $attr;
-	}
-}

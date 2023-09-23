@@ -797,6 +797,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
+				'schema_def_add_articlebody_prop' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Article Body Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_add_articlebody_prop',
+					'content'  => $form->get_no_checkbox( 'schema_def_add_articlebody_prop' ),
+				),
 				'schema_def_article_section' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Article Section', 'option label', 'wpsso' ),
@@ -838,7 +844,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_add_text_prop' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Add Text or Article Body Property', 'option label', 'wpsso' ),
+					'label'    => _x( 'Add Text Property', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_add_text_prop',
 					'content'  => $form->get_no_checkbox( 'schema_def_add_text_prop' ),
 				),

@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_action( 'wp_ajax_wpsso_get_validate_submenu', array( $this, 'ajax_get_validate_submenu' ) );
 
-				if ( ! empty( $_GET ) || 'post-new' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
+				if ( ! empty( $_GET ) || 'post-new' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {	// Skip some action hooks if no query argument(s).
 
 					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.

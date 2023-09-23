@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '15.23.3',	// Plugin version.
-					'opt_version' => '990',		// Increment when changing default option values.
+					'version'     => '15.24.0-dev.1',	// Plugin version.
+					'opt_version' => '991',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1599,7 +1599,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Article.
 					 */
-					'schema_def_article_section' => 'none',	// Default Article Section.
+					'schema_def_add_articlebody_prop' => 0,		// Add Article Body Property.
+					'schema_def_article_section'      => 'none',	// Default Article Section.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Book.
@@ -1609,7 +1610,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 */
-					'schema_def_add_text_prop'   => 0,	// Add Text or Article Body Property.
+					'schema_def_add_text_prop'   => 0,	// Add Text Property.
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
 					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.

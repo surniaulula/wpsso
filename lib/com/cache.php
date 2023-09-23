@@ -539,7 +539,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
-			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
+			$url_path   = wp_parse_url( $url_nofrag, PHP_URL_PATH );
 
 			if ( '' === $cache_pre_ext ) {	// Default is an empty string.
 
@@ -549,7 +549,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			$url_fragment = parse_url( $url, PHP_URL_FRAGMENT );
+			$url_fragment = wp_parse_url( $url, PHP_URL_FRAGMENT );
 
 			if ( ! empty( $url_fragment ) ) {
 
@@ -1133,7 +1133,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( ! empty( $url ) ) {
 
 						$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
-						$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
+						$url_path   = wp_parse_url( $url_nofrag, PHP_URL_PATH );
 
 						if ( $cache_pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
 
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
-			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
+			$url_path   = wp_parse_url( $url_nofrag, PHP_URL_PATH );
 
 			if ( '' === $cache_pre_ext ) {	// Default is an empty string.
 
@@ -1214,7 +1214,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( $throttle_secs ) {
 
 				$url_nofrag     = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
-				$url_host       = parse_url( $url_nofrag, PHP_URL_HOST );
+				$url_host       = wp_parse_url( $url_nofrag, PHP_URL_HOST );
 				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
 				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );

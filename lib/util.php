@@ -3303,7 +3303,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( null === $rand_arg ) {
 
-					$rand_arg = rand( 100000, 999999 );
+					$rand_arg = wp_rand( 100000, 999999 );
 				}
 
 				$admin_url .= '&' . $rand_arg;

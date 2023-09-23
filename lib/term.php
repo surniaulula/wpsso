@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * do_action( "edited_term",       $term_id, $tt_id, $taxonomy );
 				 * do_action( 'delete_term',       $term_id, $tt_id, $taxonomy, $deleted_term );
 				 */
-				if ( ! empty( $_GET ) ) {
+				if ( ! empty( $_GET ) ) {	// Skip some action hooks if no query argument(s).
 
 					/*
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term

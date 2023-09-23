@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 										unset( $wpseo_notif[ $num ] );
 
-										set_transient( Yoast_Notification_Center::TRANSIENT_KEY, json_encode( $wpseo_notif ) );
+										set_transient( Yoast_Notification_Center::TRANSIENT_KEY, wp_json_encode( $wpseo_notif ) );
 									}
 								}
 							}

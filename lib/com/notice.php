@@ -656,6 +656,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				die( -1 );
 			}
 
+			/*
+			 * Check nonce value before using $_REQUEST.
+			 */
+			check_ajax_referer( $this->nonce_name, '_ajax_nonce', $die = true );
+
 			$notice_types = $this->all_types;
 
 			if ( ! empty( $_REQUEST[ '_notice_types' ] ) ) {
@@ -688,8 +693,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				die( -1 );
 			}
-
-			check_ajax_referer( $this->nonce_name, '_ajax_nonce', $die = true );
 
 			$user_id          = get_current_user_id();	// Always returns an integer.
 			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;	// Note that $user_id is the second argument.
@@ -834,14 +837,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
 
 			die( '1' );
-		}
-
-		/*
-		 * Deprecated on 2023/02/21.
-		 */
-		public function get_tb_types_showing() {
-
-			return $this->get_toolbar_types();
 		}
 
 		/*
@@ -1769,6 +1764,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	} );
 
 </script>' . "\n";
+		}
+
+		/*
+		 * Deprecated on 2023/02/21.
+		 */
+		public function get_tb_types_showing() {
+
+			_deprecated_function( __METHOD__ . '()', '2023/02/21', $replacement = __CLASS__ . '::get_toolbar_types()' );	// Deprecation message.
+
+			return $this->get_toolbar_types();
 		}
 	}
 }

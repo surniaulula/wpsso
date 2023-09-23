@@ -1943,16 +1943,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2023/01/07.
-		 */
-		public function get_keywords( array $mod, $md_key = null ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/01/07', $replacement = 'WpssoPage::get_keywords_csv()' );	// Deprecation message.
-
-			return $this->get_keywords_csv( $mod, $md_key );
-		}
-
-		/*
 		 * Returns a comma delimited text string of keywords (ie. post tag names).
 		 */
 		public function get_keywords_csv( array $mod, $md_key = null ) {
@@ -2344,6 +2334,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return null;
+		}
+
+		/*
+		 * Deprecated on 2023/01/07.
+		 */
+		public function get_keywords( array $mod, $md_key = null ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/01/07', $replacement = 'WpssoPage::get_keywords_csv()' );	// Deprecation message.
+
+			return $this->get_keywords_csv( $mod, $md_key );
 		}
 	}
 }

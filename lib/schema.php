@@ -151,14 +151,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2023/04/19.
-		 */
-		public function get_lang( array $mod ) {
-
-			return $this->get_schema_lang( $mod );
-		}
-
-		/*
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_schema_lang( $mixed = 'current' ) {
@@ -4454,11 +4446,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2023/07/13.
+		 * Deprecated on 2022/12/26.
 		 */
-		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
+		public static function get_data_unit_text( $mixed_key ) {
 
-			return $this->get_schema_types( $flatten, $read_cache );
+			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
+
+			return self::get_unit_text( $mixed_key );
 		}
 
 		/*
@@ -4482,13 +4476,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2022/12/26.
+		 * Deprecated on 2023/04/19.
 		 */
-		public static function get_data_unit_text( $mixed_key ) {
+		public function get_lang( array $mod ) {
 
-			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
+			return $this->get_schema_lang( $mod );
+		}
 
-			return self::get_unit_text( $mixed_key );
+		/*
+		 * Deprecated on 2023/07/13.
+		 */
+		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
+
+			return $this->get_schema_types( $flatten, $read_cache );
 		}
 	}
 }

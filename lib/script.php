@@ -212,7 +212,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					if ( isset( $_GET[ 'plugin' ] ) ) {
 
-						$plugin_slug = $_GET[ 'plugin' ];
+						/*
+						 * See wordpress/wp-admin/plugins.php line 21.
+						 */
+						$plugin_slug = wp_unslash( $_GET[ 'plugin' ] );
 
 						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
@@ -299,14 +302,17 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			if ( 'async-upload' === basename( $_SERVER[ 'PHP_SELF' ], '.php' ) ) {
 
-				if ( isset( $_REQUEST[ 'attachment_id' ] ) && (int) $_REQUEST[ 'attachment_id' ] && ! empty( $_REQUEST['fetch'] ) ) {
+				/*
+				 * See wordpress/wp-admin/async-upload.php line 42.
+				 */
+				if ( ! empty( $_REQUEST[ 'fetch' ] ) && ! empty( $_REQUEST[ 'attachment_id' ] ) && is_numeric( $_REQUEST[ 'attachment_id' ] ) ) {
 
 					$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
 					echo '<script>';
-					echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
-					echo ' sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
-					echo '}';
+					echo 'if ( \'function\' === typeof sucomToolbarNotices ) { ';
+					echo 'sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
+					echo ' }';
 					echo '</script>' . "\n";
 				}
 			}

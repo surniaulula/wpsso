@@ -1772,16 +1772,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $opt_val;
 		}
 
-		/*
-		 * Deprecated on 2021/09/15.
-		 */
-		public static function can_cache() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/07', $replacement = 'WpssoOptions::is_cache_allowed()' );	// Deprecation message.
-
-			return self::is_cache_allowed();
-		}
-
 		public function set_default_text( array &$defs, $opt_key ) {
 
 			if ( $opt_key && is_string( $opt_key ) ) {	// Just in case.

@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoJsonTypeQuestion' ) ) {
 
 			unset( $json_data[ 'description' ] );
 
-			if ( empty( $accepted_answer[ 'text' ] ) ) {
+			if ( empty( $accepted_answer[ 'text' ] ) ) {	// May not exist if the 'schema_def_add_text_prop' option is disabled.
 
 				$accepted_answer[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 			}

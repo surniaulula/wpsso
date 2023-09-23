@@ -1428,197 +1428,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/*
-		 * Note that an empty string or a null is sanitized as false.
-		 *
-		 * Used by the wpssorrssb_get_sharing_buttons() function and the WpssoRrssbShortcodeSharing->do_shortcode() method.
-		 */
-		public static function sanitize_use_post( $mixed, $default = true ) {
-
-			if ( is_array( $mixed ) ) {
-
-				$use_post = isset( $mixed[ 'use_post' ] ) ? $mixed[ 'use_post' ] : $default;
-
-			} elseif ( is_object( $mixed ) ) {
-
-				$use_post = isset( $mixed->use_post ) ? $mixed->use_post : $default;
-
-			} else {
-
-				$use_post = $mixed;
-			}
-
-			if ( empty( $use_post ) || 'false' === $use_post ) {	// 0, false, or 'false'
-
-				return false;
-
-			} elseif ( is_numeric( $use_post ) ) {
-
-				return (int) $use_post;
-			}
-
-			return $default;
-		}
-
-		public static function sanitize_file_path( $file_path ) {
-
-			if ( empty( $file_path ) ) {
-
-				return false;
-			}
-
-			$file_path = implode( $glue = '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
-
-			return $file_path;
-		}
-
-		public static function sanitize_file_name( $file_name ) {
-
-			$special_chars = array(
-				'?',
-				'[',
-				']',
-				'/',
-				'\\',
-				'=',
-				'<',
-				'>',
-				':',
-				';',
-				',',
-				'\'',
-				'"',
-				'&',
-				'$',
-				'#',
-				'*',
-				'(',
-				')',
-				'|',
-				'~',
-				'`',
-				'!',
-				'{',
-				'}',
-				'%',
-				'+',
-				chr( 0 )
-			);
-
-			$file_name = preg_replace( '#\x{00a0}#siu', ' ', $file_name );
-			$file_name = str_replace( $special_chars, '', $file_name );
-			$file_name = str_replace( array( '%20', '+' ), '-', $file_name );
-			$file_name = preg_replace( '/[\r\n\t -]+/', '-', $file_name );
-			$file_name = trim( $file_name, '.-_' );
-
-			return $file_name;
-		}
-
-		public static function sanitize_tag( $tag ) {
-
-			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
-
-			$tag = urldecode( $tag );
-
-			return $tag;
-		}
-
-		/*
-		 * Note that hashtags cannot begin with a number - this method truncates tags that begin with a number.
-		 */
-		public static function sanitize_hashtags( array $tags = array() ) {
-
-			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
-		}
-
-		public static function sanitize_hookname( $name ) {
-
-			$name = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $name );
-
-			$name = rtrim( $name, '_' );	// Do not trim leading underscores to allow for '__return_false', for example.
-
-			return self::sanitize_key( $name );
-		}
-
-		public static function sanitize_classname( $name, $allow_underscore = true ) {
-
-			$name = preg_replace( '/[#:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
-
-			return self::sanitize_key( $name );
-		}
-
-		public static function sanitize_locale( $locale ) {
-
-			$locale = str_replace( '-', '_', $locale );	// Convert 'en-US' to 'en_US'.
-
-			$locale = preg_replace( '/[^a-zA-Z_]/', '', $locale );
-
-			return $locale;
-		}
-
-		/*
-		 * Sanitize an option key.
-		 *
-		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
-		 */
-		public static function sanitize_key( $key, $allow_upper = false ) {
-
-			if ( ! $allow_upper ) {
-
-				$key = strtolower( $key );
-			}
-
-			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
-
-			return trim( $key );
-		}
-
-		public static function sanitize_css_class( $css_class ) {
-
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
-		}
-
-		/*
-		 * See sucomChangeHideUnhideRows() in jquery-metabox.js.
-		 */
-		public static function sanitize_css_id( $css_id ) {
-
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
-		}
-
-		/*
-		 * See WpssoConfig::$cf[ 'opt' ][ 'defaults' ] for example input names.
-		 *
-		 * A colon can be used for qualifiers (example, ':disabled', ':width', ':height', etc.).
-		 * A hashtag can be used for the locale (language).
-		 *
-		 * Example sanitation:
-		 *
-		 *	'mrp_method_https://schema.org/ReturnByMail' -> 'mrp_method_https_schema_org_ReturnByMail'
-		 */
-		public static function sanitize_input_name( $input_name ) {
-
-			$input_name = preg_replace( '/:\/\//', '_', $input_name );
-			$input_name = preg_replace( '/[^a-zA-Z0-9\-_#:]+/', '_', $input_name );
-
-			return trim( $input_name, $characters = '-' );
-		}
-
-		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {
-
-			if ( '' !== $twitter_name ) {
-
-				$twitter_name = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $twitter_name ), 0, 15 );
-
-				if ( ! empty( $twitter_name ) && $add_at )  {
-
-					$twitter_name = '@' . $twitter_name;
-				}
-			}
-
-			return $twitter_name;
-		}
-
 		public static function array_key_last( array $array ) {
 
 			if ( function_exists( 'array_key_last' ) ) {
@@ -3907,7 +3716,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$parsed_url = parse_url( self::decode_html( urldecode( $url ) ) );
+			$parsed_url = wp_parse_url( self::decode_html( urldecode( $url ) ) );
 
 			if ( empty( $parsed_url ) ) {
 
@@ -4645,112 +4454,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		/*
-		 * Deprecated on 2022/02/04.
-		 */
-		public static function get_min_int() {
-
-			return PHP_INT_MIN;	// Since PHP v7.0.0.
-		}
-
-		/*
-		 * Deprecated on 2022/02/04.
-		 */
-		public static function get_max_int() {
-
-			return PHP_INT_MAX;	// Since PHP 5.0.2.
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_first_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $first;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_last_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $last;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_next_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $next;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 */
-		protected static function get_first_last_next_nums( array $input ) {
-
-			$keys  = array_keys( $input );
-			$count = count( $keys );
-
-			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// Check for non-numeric keys.
-
-				$keys = array();
-
-				foreach ( $input as $key => $value ) {	// Keep only the numeric keys.
-
-					if ( is_numeric( $key ) ) {
-
-						$keys[] = $key;
-					}
-				}
-
-				$count = count( $keys );
-			}
-
-			sort( $keys );	// Sort numerically.
-
-			$first = (int) reset( $keys );	// Get the first number.
-			$last  = (int) end( $keys );	// Get the last number.
-			$next  = $count ? $last + 1 : $last;	// Next is 0 (not 1) for an empty array.
-
-			return array( $first, $last, $next );
-		}
-
-		/*
-		 * Deprecated on 2022/02/09.
-		 */
-		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
-
-			return wp_json_encode( $data, $options, $depth );
-		}
-
-		/*
-		 * Deprecated on 2023/01/03.
-		 */
-		public static function get_options_transl( array $opts, $text_domain ) {
-
-			return self::get_options_label_transl( $opts, $text_domain );
-		}
-
 		public static function is_amp() {
 
 			static $local_cache = null;
@@ -4915,7 +4618,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( strpos( $url, '://' ) ) {
 
-				if ( 'https' === parse_url( $url, PHP_URL_SCHEME ) ) {
+				if ( 'https' === wp_parse_url( $url, PHP_URL_SCHEME ) ) {
 
 					return $local_cache[ $url ] = true;
 
@@ -5404,14 +5107,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2023/04/19.
-		 */
-		public static function is_valid_option_id( $id ) {
-
-			return self::is_valid_option_value( $id );
-		}
-
-		/*
 		 * Check that the option value is not true, false, null, empty string, or 'none'.
 		 */
 		public static function is_valid_option_value( $value ) {
@@ -5430,6 +5125,309 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return true;
+		}
+
+		public static function sanitize_classname( $name, $allow_underscore = true ) {
+
+			$name = preg_replace( '/[#:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
+
+			return self::sanitize_key( $name );
+		}
+
+		public static function sanitize_css_class( $css_class ) {
+
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
+		}
+
+		/*
+		 * See sucomChangeHideUnhideRows() in jquery-metabox.js.
+		 */
+		public static function sanitize_css_id( $css_id ) {
+
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
+		}
+
+		public static function sanitize_file_name( $file_name ) {
+
+			$special_chars = array(
+				'?',
+				'[',
+				']',
+				'/',
+				'\\',
+				'=',
+				'<',
+				'>',
+				':',
+				';',
+				',',
+				'\'',
+				'"',
+				'&',
+				'$',
+				'#',
+				'*',
+				'(',
+				')',
+				'|',
+				'~',
+				'`',
+				'!',
+				'{',
+				'}',
+				'%',
+				'+',
+				chr( 0 )
+			);
+
+			$file_name = preg_replace( '#\x{00a0}#siu', ' ', $file_name );
+			$file_name = str_replace( $special_chars, '', $file_name );
+			$file_name = str_replace( array( '%20', '+' ), '-', $file_name );
+			$file_name = preg_replace( '/[\r\n\t -]+/', '-', $file_name );
+			$file_name = trim( $file_name, '.-_' );
+
+			return $file_name;
+		}
+
+		public static function sanitize_file_path( $file_path ) {
+
+			if ( empty( $file_path ) ) {
+
+				return false;
+			}
+
+			$file_path = implode( $glue = '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
+
+			return $file_path;
+		}
+
+		/*
+		 * Note that hashtags cannot begin with a number - this method truncates tags that begin with a number.
+		 */
+		public static function sanitize_hashtags( array $tags = array() ) {
+
+			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
+		}
+
+		public static function sanitize_hookname( $name ) {
+
+			$name = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $name );
+			$name = rtrim( $name, '_' );	// Do not trim leading underscores to allow for '__return_false', for example.
+
+			return self::sanitize_key( $name );
+		}
+
+		/*
+		 * See WpssoConfig::$cf[ 'opt' ][ 'defaults' ] for example input names.
+		 *
+		 * A colon can be used for qualifiers (example, ':disabled', ':width', ':height', etc.).
+		 * A hashtag can be used for the locale (language).
+		 *
+		 * Example sanitation:
+		 *
+		 *	'mrp_method_https://schema.org/ReturnByMail' -> 'mrp_method_https_schema_org_ReturnByMail'
+		 */
+		public static function sanitize_input_name( $input_name ) {
+
+			$input_name = preg_replace( '/:\/\//', '_', $input_name );
+			$input_name = preg_replace( '/[^a-zA-Z0-9\-_#:]+/', '_', $input_name );
+
+			return trim( $input_name, $characters = '-' );
+		}
+
+		/*
+		 * Sanitize an option key.
+		 *
+		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
+		 */
+		public static function sanitize_key( $key, $allow_upper = false ) {
+
+			if ( ! $allow_upper ) {
+
+				$key = strtolower( $key );
+			}
+
+			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
+
+			return trim( $key );
+		}
+
+		public static function sanitize_locale( $locale ) {
+
+			$locale = str_replace( '-', '_', $locale );	// Convert 'en-US' to 'en_US'.
+			$locale = preg_replace( '/[^a-zA-Z_]/', '', $locale );
+
+			return $locale;
+		}
+
+		public static function sanitize_tag( $tag ) {
+
+			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
+
+			$tag = urldecode( $tag );
+
+			return $tag;
+		}
+
+		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {
+
+			if ( '' !== $twitter_name ) {
+
+				$twitter_name = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $twitter_name ), 0, 15 );
+
+				if ( ! empty( $twitter_name ) && $add_at )  {
+
+					$twitter_name = '@' . $twitter_name;
+				}
+			}
+
+			return $twitter_name;
+		}
+
+		/*
+		 * Note that an empty string or a null is sanitized as false.
+		 *
+		 * Used by the wpssorrssb_get_sharing_buttons() function and the WpssoRrssbShortcodeSharing->do_shortcode() method.
+		 */
+		public static function sanitize_use_post( $mixed, $default = true ) {
+
+			if ( is_array( $mixed ) ) {
+
+				$use_post = isset( $mixed[ 'use_post' ] ) ? $mixed[ 'use_post' ] : $default;
+
+			} elseif ( is_object( $mixed ) ) {
+
+				$use_post = isset( $mixed->use_post ) ? $mixed->use_post : $default;
+
+			} else {
+
+				$use_post = $mixed;
+			}
+
+			if ( empty( $use_post ) || 'false' === $use_post ) {	// 0, false, or 'false'
+
+				return false;
+
+			} elseif ( is_numeric( $use_post ) ) {
+
+				return (int) $use_post;
+			}
+
+			return $default;
+		}
+
+		/*
+		 * Deprecated on 2023/01/03.
+		 */
+		public static function get_options_transl( array $opts, $text_domain ) {
+
+			return self::get_options_label_transl( $opts, $text_domain );
+		}
+
+		/*
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_first_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $first;
+		}
+
+		/*
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_last_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $last;
+		}
+
+		/*
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_next_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $next;
+		}
+
+		/*
+		 * Deprecated on 2022/01/23.
+		 */
+		protected static function get_first_last_next_nums( array $input ) {
+
+			$keys  = array_keys( $input );
+			$count = count( $keys );
+
+			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// Check for non-numeric keys.
+
+				$keys = array();
+
+				foreach ( $input as $key => $value ) {	// Keep only the numeric keys.
+
+					if ( is_numeric( $key ) ) {
+
+						$keys[] = $key;
+					}
+				}
+
+				$count = count( $keys );
+			}
+
+			sort( $keys );	// Sort numerically.
+
+			$first = (int) reset( $keys );	// Get the first number.
+			$last  = (int) end( $keys );	// Get the last number.
+			$next  = $count ? $last + 1 : $last;	// Next is 0 (not 1) for an empty array.
+
+			return array( $first, $last, $next );
+		}
+
+		/*
+		 * Deprecated on 2022/02/04.
+		 */
+		public static function get_min_int() {
+
+			return PHP_INT_MIN;	// Since PHP v7.0.0.
+		}
+
+		/*
+		 * Deprecated on 2022/02/04.
+		 */
+		public static function get_max_int() {
+
+			return PHP_INT_MAX;	// Since PHP 5.0.2.
+		}
+
+		/*
+		 * Deprecated on 2022/02/09.
+		 */
+		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
+
+			return wp_json_encode( $data, $options, $depth );
+		}
+
+		/*
+		 * Deprecated on 2023/04/19.
+		 */
+		public static function is_valid_option_id( $id ) {
+
+			return self::is_valid_option_value( $id );
 		}
 	}
 }

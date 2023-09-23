@@ -1219,7 +1219,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$parent_slug   = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ];
 				$referer_match = '/' . $parent_slug . '?page=wpsso-';
 
-				parse_str( parse_url( $url, PHP_URL_QUERY ), $parts );
+				/*
+				 * Parses string as if it were the query string passed via a URL and sets variables in the current
+				 * scope (or in the array if result is provided). 
+				 *
+				 * See https://www.php.net/manual/en/function.parse-str.php.
+				 */
+				parse_str( wp_parse_url( $url, PHP_URL_QUERY ), $parts );
 
 				if ( strpos( $parts[ 'wp_http_referer' ], $referer_match ) ) {
 
@@ -3397,54 +3403,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $cache_content;
-		}
-
-		/*
-		 * Deprecated on 2021/09/15.
-		 */
-		public function check_tmpl_head_attributes() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_og_types_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2021/09/08.
-		 */
-		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/08', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 	}
 }

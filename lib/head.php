@@ -775,14 +775,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/*
-		 * Deprecated on 2021/07/04.
-		 */
-		public function get_mt_mark( $type ) {
-
-			return $this->get_mt_data( $type );
-		}
-
-		/*
 		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
 		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
 		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.

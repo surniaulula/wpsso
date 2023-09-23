@@ -451,11 +451,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_col_def_width_max'   => '',	// Deprecated on 2021/09/08.
 				),
 				815 => array(
-					'plugin_wpssoam_tid'         => '',	// Deprecated on 2019/11/14.
+					'plugin_wpssoam_tid'         => '',
 					'plugin_wpssoorg_tid'        => '',	// Deprecated on 2021/08/25.
 					'plugin_wpssoplm_tid'        => '',	// Deprecated on 2021/08/30.
-					'plugin_wpssorrssb_tid'      => '',	// Deprecated on 2019/11/06.
-					'plugin_wpssotie_tid'        => '',	// Deprecated on 2019/11/21.
+					'plugin_wpssorrssb_tid'      => '',
+					'plugin_wpssotie_tid'        => '',
 					'p_site_verify'              => 'pin_site_verify',
 					'p_publisher_url'            => 'pin_publisher_url',
 					'p_add_nopin_header_img_tag' => 'pin_add_nopin_header_img_tag',
@@ -995,6 +995,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 							$opts[ 'schema_type_for_attachment' ] = 'webpage';
 						}
 					}
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 990 ) {
+
+					$opts[ 'schema_def_add_text_prop' ] = 0;	// Default is unchecked.
 				}
 			}
 

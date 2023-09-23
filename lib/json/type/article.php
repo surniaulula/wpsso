@@ -57,12 +57,19 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 			/*
 			 * See https://schema.org/articleBody.
 			 */
-			if ( isset( $json_data[ 'text' ] ) ) {
+			if ( ! empty( $this->p->options[ 'schema_def_add_articlebody_prop' ] ) ) {
 
-				$json_ret[ 'articleBody' ] = $json_data[ 'text' ];
+				if ( ! empty( $json_data[ 'text' ] ) ) {	// Optimize and inherit the value from the 'text' property.
 
-				unset( $json_data[ 'text' ] );
+					$json_ret[ 'articleBody' ] = $json_data[ 'text' ];
+
+				} else {
+				
+					$json_ret[ 'articleBody' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
+				}
 			}
+
+			unset( $json_data[ 'text' ] );	// Prefer the articleBody property.
 
 			/*
 			 * See https://schema.org/speakable.

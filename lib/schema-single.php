@@ -2930,7 +2930,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							}
 						}
 
-						$hours_id = array( 'hours', md5( json_encode( $weekday_spec ) ) );
+						$hours_id = array( 'hours', md5( wp_json_encode( $weekday_spec ) ) );
 
 						WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
 

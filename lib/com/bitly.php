@@ -126,7 +126,7 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 
 		private function api_call( $api_url, $api_data = array() ) {
 
-			$api_data_enc = json_encode( $api_data );
+			$api_data_enc = wp_json_encode( $api_data );
 
 			$ch = curl_init();
 

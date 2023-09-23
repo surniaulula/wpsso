@@ -147,7 +147,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					if ( isset( $_GET[ 'plugin' ] ) ) {
 
-						$plugin_slug = $_GET[ 'plugin' ];
+						/*
+						 * See wordpress/wp-admin/plugins.php line 21.
+						 */
+						$plugin_slug = wp_unslash( $_GET[ 'plugin' ] );
 
 						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
