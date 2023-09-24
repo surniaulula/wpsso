@@ -212,23 +212,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.0.0-dev.1 (2023/09/23)**
+**Version 16.0.0-dev.2 (2023/09/24)**
 
 * **New Features**
 	* Added support in the WPSSO Core Standard edition for editing additional Schema details under the Document SSO &gt; Edit Schema tab:
-		* Schema CreativeWork > Book
-		* Schema CreativeWork > Movie
-		* Schema CreativeWork > Review
-		* Schema CreativeWork > Software Application
-		* Schema CreativeWork > WebPage > QAPage
+		* Schema Book
 		* Schema Event
-		* Schema Intangible > JobPosting
+		* Schema JobPosting
+		* Schema Movie
 		* Schema Organization
 		* Schema Person
 		* Schema Place
 		* Schema Product
+		* Schema QAPage
+		* Schema Review
+		* Schema Software Application
 * **Improvements**
 	* Added a "Add Article Body Property" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab (Premium edition).
+	* Added a video API module notice when a supported video service is detected (Standard edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1089,9 +1090,9 @@ See here for more info: https://surniaulula.com/2023/apps/wordpress/plugins/wpss
 
 == Upgrade Notice ==
 
-= 16.0.0-dev.1 =
+= 16.0.0-dev.2 =
 
-(2023/09/23) Added support in the WPSSO Core Standard edition for editing additional Schema details under the Document SSO &gt; Edit Schema tab.
+(2023/09/24) Added support in the WPSSO Core Standard edition for editing additional Schema details under the Document SSO &gt; Edit Schema tab.
 
 = 15.23.3 =
 
