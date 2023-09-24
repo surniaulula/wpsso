@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoStdMediaSoundcloud' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( __( 'SoundCloud', 'wpsso' ), $mod );
+				$this->p->msgs->pro_feature_video_found_notice( _x( 'SoundCloud', 'video service name', 'wpsso' ), $mod );
 			}
 
 			return array();

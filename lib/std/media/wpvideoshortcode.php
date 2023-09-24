@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoStdMediaWpvideoshortcode' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$this->p->msgs->pro_feature_video_found_notice( __( 'WordPress shortcode', 'wpsso' ), $mod );
+						$this->p->msgs->pro_feature_video_found_notice( _x( 'WordPress shortcode', 'video service name', 'wpsso' ), $mod );
 					}
 				}
 

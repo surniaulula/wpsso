@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoStdMediaVimeo' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( __( 'Vimeo', 'wpsso' ), $mod );
+				$this->p->msgs->pro_feature_video_found_notice( _x( 'Vimeo', 'video service name', 'wpsso' ), $mod );
 			}
 
 			return array();

@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoStdMediaWistia' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( __( 'Wistia', 'wpsso' ), $mod );
+				$this->p->msgs->pro_feature_video_found_notice( _x( 'Wistia', 'video service name', 'wpsso' ), $mod );
 			}
 
 			return array();

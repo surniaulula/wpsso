@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoStdMediaSlideshare' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$this->p->msgs->pro_feature_video_found_notice( __( 'SlideShare', 'wpsso' ), $mod );
+				$this->p->msgs->pro_feature_video_found_notice( _x( 'SlideShare', 'video service name', 'wpsso' ), $mod );
 			}
 
 			return array();

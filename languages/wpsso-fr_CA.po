@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-09-24 12:43-0700\n"
+"PO-Revision-Date: 2023-09-24 12:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3709,49 +3709,49 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr "Forcer a jouer lorsque possible"
 
-#: gettext/gettext-lib-pro.php:194 lib/pro/admin/edit.php:64
+#: gettext/gettext-lib-pro.php:194 lib/pro/admin/edit.php:48
 #: lib/std/admin/edit.php:39
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr "Informations du vidéo prioritaire"
 
 #: gettext/gettext-lib-pro.php:195 lib/messages.php:964
-#: lib/pro/admin/edit.php:68 lib/std/admin/edit.php:47
+#: lib/pro/admin/edit.php:52 lib/std/admin/edit.php:47
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr "HTML du vidéo intégrée"
 
-#: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:74
+#: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:58
 #: lib/std/admin/edit.php:54
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr "ou URL d'un vidéo"
 
-#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:81
+#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:65
 #: lib/std/admin/edit.php:61
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr "Informations vidéo de l’API vidéo"
 
-#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:85
+#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:69
 #: lib/std/admin/edit.php:66
 msgctxt "option label"
 msgid "Video Name"
 msgstr "Nom de la vidéo"
 
-#: gettext/gettext-lib-pro.php:199 lib/pro/admin/edit.php:92
+#: gettext/gettext-lib-pro.php:199 lib/pro/admin/edit.php:76
 #: lib/std/admin/edit.php:73
 msgctxt "option label"
 msgid "Video Description"
 msgstr "Description du vidéo"
 
-#: gettext/gettext-lib-pro.php:200 lib/pro/admin/edit.php:99
+#: gettext/gettext-lib-pro.php:200 lib/pro/admin/edit.php:83
 #: lib/std/admin/edit.php:80
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr "URL du flux vidéo"
 
-#: gettext/gettext-lib-pro.php:201 lib/pro/admin/edit.php:105
+#: gettext/gettext-lib-pro.php:201 lib/pro/admin/edit.php:89
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
@@ -4625,7 +4625,6 @@ msgstr "Réseaux Sociaux"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:100 lib/conflict-seo.php:556
-#: lib/std/media/facebook.php:78 lib/std/media/facebook.php:85
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -10595,35 +10594,48 @@ msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr "Licences d'extension et d'ajout"
 
+#: lib/std/media/facebook.php:78 lib/std/media/facebook.php:85
+#| msgid "Facebook"
+msgctxt "video service name"
+msgid "Facebook"
+msgstr "Facebook"
+
 #: lib/std/media/slideshare.php:128
+#| msgid "SlideShare"
+msgctxt "video service name"
 msgid "SlideShare"
 msgstr "SlideShare"
 
 #: lib/std/media/soundcloud.php:84
-#| msgctxt "option value"
-#| msgid "Soundcloud URL"
+#| msgid "SoundCloud"
+msgctxt "video service name"
 msgid "SoundCloud"
 msgstr "SoundCloud"
 
 #: lib/std/media/vimeo.php:83
+#| msgid "Vimeo"
+msgctxt "video service name"
 msgid "Vimeo"
 msgstr "Vimeo"
 
 #: lib/std/media/wistia.php:158
-#| msgctxt "option value"
-#| msgid "Wistia Videos"
+#| msgid "Wistia"
+msgctxt "video service name"
 msgid "Wistia"
 msgstr "Wistia"
 
 #: lib/std/media/wpvideoblock.php:85
+msgctxt "video service name"
 msgid "WordPress block"
 msgstr "WordPress de type bloc"
 
 #: lib/std/media/wpvideoshortcode.php:88
+msgctxt "video service name"
 msgid "WordPress shortcode"
 msgstr "WordPress de type code court"
 
 #: lib/std/media/youtube.php:84
+msgctxt "video service name"
 msgid "YouTube"
 msgstr "YouTube"
 
