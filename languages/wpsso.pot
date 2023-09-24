@@ -4885,7 +4885,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:100 lib/conflict-seo.php:556
-#: lib/std/media/facebook.php:82 lib/std/media/facebook.php:89
+#: lib/std/media/facebook.php:78 lib/std/media/facebook.php:85
 msgid "Facebook"
 msgstr ""
 
@@ -11872,31 +11872,31 @@ msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr ""
 
-#: lib/std/media/slideshare.php:132
+#: lib/std/media/slideshare.php:128
 msgid "SlideShare"
 msgstr ""
 
-#: lib/std/media/soundcloud.php:88
+#: lib/std/media/soundcloud.php:84
 msgid "SoundCloud"
 msgstr ""
 
-#: lib/std/media/vimeo.php:87
+#: lib/std/media/vimeo.php:83
 msgid "Vimeo"
 msgstr ""
 
-#: lib/std/media/wistia.php:162
+#: lib/std/media/wistia.php:158
 msgid "Wistia"
 msgstr ""
 
-#: lib/std/media/wpvideoblock.php:89
+#: lib/std/media/wpvideoblock.php:85
 msgid "WordPress block"
 msgstr ""
 
-#: lib/std/media/wpvideoshortcode.php:92
+#: lib/std/media/wpvideoshortcode.php:88
 msgid "WordPress shortcode"
 msgstr ""
 
-#: lib/std/media/youtube.php:88
+#: lib/std/media/youtube.php:84
 msgid "YouTube"
 msgstr ""
 
