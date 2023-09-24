@@ -587,9 +587,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong><a href="%s">Customize advanced settings</a></strong>, including image sizes, video services, shortening services, default types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
 
-						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox for events, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
-
-						$text .= '<li>' . __( '<strong>Get video and URL shortening data from external services</strong> (Bitly, Vimeo, Youtube, etc.).', 'wpsso' ) . '</li>';
+						$text .= '<li>' . __( '<strong>Get video details and URL shortening data from external services</strong> (Bitly, Vimeo, Youtube, etc.).', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
