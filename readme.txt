@@ -228,8 +228,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Review
 		* Schema Software Application
 * **Improvements**
+	* Added a notice when an unsupported video URL is detected (Standard edition).
 	* Added a "Add Article Body Property" option to the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab (Premium edition).
-	* Added a video API module notice when a supported video service is detected (Standard edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
