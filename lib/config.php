@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '16.0.0-dev.1',	// Plugin version.
+					'version'     => '16.0.0-dev.2',	// Plugin version.
 					'opt_version' => '991',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -231,6 +231,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'advanced' => 'Advanced Settings Filters',
 								'edit'     => 'Document SSO Metabox Filters',
 								'general'  => 'General Settings Filters',
+							),
+							'media' => array(
+								'facebook'         => '(api) Get Facebook Video Data',
+								'slideshare'       => '(api) Get Slideshare Presentation Data',
+								'soundcloud'       => '(api) Get Soundcloud Track Data',
+								'vimeo'            => '(api) Get Vimeo Video Data',
+								'wistia'           => '(api) Get Wistia Video Data',
+								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
+								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
+								'youtube'          => '(api) Get YouTube Video and Playlist Data',
 							),
 						),
 						'submenu' => array(

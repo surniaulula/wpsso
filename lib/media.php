@@ -315,16 +315,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_videos =& $local_cache[ $cache_salt ];
 
-			if ( ! $this->p->check->pp() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no video modules available' );
-				}
-
-				return $mt_videos;	// Return an empty array.
-			}
-
 			$this->p->util->clear_uniq_urls( array( 'video', 'video_details' ), $mod );
 
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
@@ -2367,7 +2357,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 			}
 
-			$all_matches = apply_filters( $filter_name, array(), $content );
+			$all_matches = apply_filters( $filter_name, array(), $content, $mod );
 
 			if ( is_array( $all_matches ) ) {	// Just in case.
 

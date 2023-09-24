@@ -97,6 +97,14 @@ _x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wps
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
+_x( '(api) Get Facebook Video Data', 'lib file description', 'wpsso' );
+_x( '(api) Get Slideshare Presentation Data', 'lib file description', 'wpsso' );
+_x( '(api) Get Soundcloud Track Data', 'lib file description', 'wpsso' );
+_x( '(api) Get Vimeo Video Data', 'lib file description', 'wpsso' );
+_x( '(api) Get Wistia Video Data', 'lib file description', 'wpsso' );
+_x( '(api) Get WP Media Library Video Block Data', 'lib file description', 'wpsso' );
+_x( '(api) Get WP Media Library Video Shortcode Data', 'lib file description', 'wpsso' );
+_x( '(api) Get YouTube Video and Playlist Data', 'lib file description', 'wpsso' );
 _x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'Essential Settings', 'lib file description', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
