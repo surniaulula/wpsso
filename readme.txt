@@ -212,6 +212,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.1.0-dev.1 (2023/09/26)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab.
+	* Updated the "Organization Schema Type" option help text.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.0.0 (2023/09/24)**
 
 * **New Features**
@@ -239,6 +254,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.1.0-dev.1 =
+
+(2023/09/26) Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab.
 
 = 16.0.0 =
 
