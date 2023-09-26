@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 					break;
 
 				/*
-				 * SSO > General Settings > Titles and Descriptions tab.
+				 * SSO > General Settings > Titles / Descriptions tab.
 				 */
 				case 'tooltip-og_title_sep':		// Title Separator.
 

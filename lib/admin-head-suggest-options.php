@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 								_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
 								_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
 								_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-								_x( 'SEO and Other', 'metabox tab', 'wpsso' ) );
+								_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
 							$notice_msg = sprintf( __( 'Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), '<code>' . $tag_name . '</code>' ) . ' ';
 

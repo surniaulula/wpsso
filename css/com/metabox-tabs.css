@@ -315,7 +315,7 @@ h3.sucom-metabox-tab_title {
 	content:"\f1c0";	/* .icon-database */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles and Descriptions tab. */
+.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles / Descriptions tab. */
 	content:"\e809";	/* .icon-edit */
 }
 
@@ -451,7 +451,7 @@ h3.sucom-metabox-tab_title {
 	content:"\f121";	/* .icon-code */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO and Other tab. */
+.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO / Other tab. */
 	content:"\e81c";	/* .icon-robot-5 */
 }
 

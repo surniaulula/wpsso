@@ -517,48 +517,45 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/*
 				 * Check for incompatible options between plugin versions.
 				 */
-				if ( $is_plugin_upg ) {
+				if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
-					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
+					if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
 
-						if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
+						$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
+					}
 
-							$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
-						}
+					$adv_incl = array(
+						'add_.*',
+						'og_type_for_.*',
+						'plugin_.*',
+						'schema_def_.*',
+						'schema_type_for_.*',
+						'.*_img_(width|height|crop|crop_x|crop_y)',
+					);
 
-						$adv_incl = array(
-							'add_.*',
-							'og_type_for_.*',
-							'plugin_.*',
-							'schema_def_.*',
-							'schema_type_for_.*',
-							'.*_img_(width|height|crop|crop_x|crop_y)',
-						);
+					$adv_excl = apply_filters( 'wpsso_plugin_upgrade_advanced_exclude', array(
+						'plugin_clean_on_uninstall',
+						'plugin_load_mofiles',
+						'plugin_cache_disable',
+						'plugin_debug_html',
+						'plugin_.*_tid',
+					) );
 
-						$adv_excl = apply_filters( 'wpsso_plugin_upgrade_advanced_exclude', array(
-							'plugin_clean_on_uninstall',
-							'plugin_load_mofiles',
-							'plugin_cache_disable',
-							'plugin_debug_html',
-							'plugin_.*_tid',
-						) );
+					$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_incl ) . ')$/', $defs );
+					$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_excl ) . ')$/', $adv_check, $invert = true );
 
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_incl ) . ')$/', $defs );
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_excl ) . ')$/', $adv_check, $invert = true );
+					foreach ( $fixed as $key => $val ) {
 
-						foreach ( $fixed as $key => $val ) {
+						unset( $adv_check[ $key ] );
+					}
 
-							unset( $adv_check[ $key ] );
-						}
+					foreach ( $adv_check as $key => $val ) {
 
-						foreach ( $adv_check as $key => $val ) {
+						if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
 
-							if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
+							$opts[ $key ] = $val;
 
-								$opts[ $key ] = $val;
-
-								$save_changes = true;	// Save the options.
-							}
+							$save_changes = true;	// Save the options.
 						}
 					}
 				}

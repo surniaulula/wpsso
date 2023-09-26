@@ -1129,7 +1129,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
 					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
 					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-					_x( 'SEO and Other', 'metabox tab', 'wpsso' ) );
+					_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
 				$html .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $mt_name ) . ' ';
 

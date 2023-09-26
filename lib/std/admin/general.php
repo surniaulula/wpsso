@@ -26,54 +26,8 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'og_images_rows' => 2,
 				'og_videos_rows' => 2,
 			) );
-		}
-
-		/*
-		 * SSO > General Settings > Images tab.
-		 */
-		public function filter_og_images_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$table_rows[ 'plugin_inherit_featured' ] = '' .
-				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_inherit_featured' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_featured', _x( '(recommended)', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_inherit_images' ] = '' .
-				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_inherit_images' ) .
-				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_check_img_dims' ] = '' .
-				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_check_img_dims' ) .
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = '' .
-				$form->get_th_html( _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_prevent_thumb_conflicts' ) .
-				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts', _x( '(recommended)', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_upscale_images' ] = '' .
-				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_images' ) .
-				$form->get_no_td_checkbox( 'plugin_upscale_images' );
-
-			$table_rows[ 'plugin_gravatar_api' ] = '' .
-				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_gravatar_api' ) .
-				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
-
-			return $table_rows;
 		}
 
 		/*

@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'site'     => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'loc_defs' => _x( 'Location Defaults', 'metabox tab', 'wpsso' ),
-				'content'  => _x( 'Titles and Descriptions', 'metabox tab', 'wpsso' ),
+				'content'  => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'images'   => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos'   => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );

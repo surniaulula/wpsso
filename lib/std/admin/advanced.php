@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_facebook_rows'         => 4,	// HTML Tags > Facebook tab.
 				'head_tags_open_graph_rows'       => 4,	// HTML Tags > Open Graph tab.
 				'head_tags_twitter_rows'          => 4,	// HTML Tags > Twitter tab.
-				'head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO and Other tab.
+				'head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO / Other tab.
 			) );
 		}
 
@@ -1346,7 +1346,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/*
-		 * HTML Tags > SEO and Other tab.
+		 * HTML Tags > SEO / Other tab.
 		 */
 		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network, $select_names ) {
 
