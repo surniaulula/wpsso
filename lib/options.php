@@ -372,6 +372,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		/*
 		 * Returns a checked, fixed, and/or upgraded options array.
+		 *
+		 * See WpssoAdmin->init_check_options().
+		 * See WpssoAdmin->import_plugin_settings_json().
 		 */
 		public function check_options( $options_name, array $opts, $network = false ) {
 
@@ -515,7 +518,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/*
-				 * Check for incompatible options between plugin versions.
+				 * Check for incompatible option values between plugin editions.
 				 */
 				if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
