@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-09-24 13:56-0700\n"
+"PO-Revision-Date: 2023-09-26 05:01-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2776,58 +2776,44 @@ msgctxt "option label"
 msgid "Add Person Role for New Users"
 msgstr "Ajouter rôle de personne pour les nouveaux utilisateurs"
 
-#: gettext/gettext-lib-pro.php:13 gettext/gettext-lib-pro.php:180
-#: lib/messages.php:529 lib/pro/admin/advanced.php:118
-#: lib/pro/admin/general.php:49 lib/std/admin/advanced.php:105
-#: lib/std/admin/general.php:47
+#: gettext/gettext-lib-pro.php:13 lib/messages.php:529
+#: lib/pro/admin/advanced.php:118 lib/std/admin/advanced.php:105
 msgctxt "option label"
 msgid "Inherit Featured Image"
 msgstr "Hériter l'image en vedette"
 
 #: gettext/gettext-lib-pro.php:14 gettext/gettext-lib-pro.php:16
 #: gettext/gettext-lib-pro.php:18 gettext/gettext-lib-pro.php:20
-#: gettext/gettext-lib-pro.php:181 gettext/gettext-lib-pro.php:183
-#: gettext/gettext-lib-pro.php:185 gettext/gettext-lib-pro.php:187
 #: lib/pro/admin/advanced.php:121 lib/pro/admin/advanced.php:128
 #: lib/pro/admin/advanced.php:135 lib/pro/admin/advanced.php:142
-#: lib/pro/admin/general.php:52 lib/pro/admin/general.php:58
-#: lib/pro/admin/general.php:64 lib/pro/admin/general.php:70
 #: lib/std/admin/advanced.php:107 lib/std/admin/advanced.php:113
 #: lib/std/admin/advanced.php:119 lib/std/admin/advanced.php:125
-#: lib/std/admin/general.php:49 lib/std/admin/general.php:54
-#: lib/std/admin/general.php:59 lib/std/admin/general.php:64
 #: lib/submenu/general.php:354 lib/submenu/general.php:360
 #: lib/submenu/general.php:366
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr "(recommandé)"
 
-#: gettext/gettext-lib-pro.php:15 gettext/gettext-lib-pro.php:182
-#: lib/pro/admin/advanced.php:125 lib/pro/admin/general.php:55
-#: lib/std/admin/advanced.php:111 lib/std/admin/general.php:52
+#: gettext/gettext-lib-pro.php:15 lib/pro/admin/advanced.php:125
+#: lib/std/admin/advanced.php:111
 msgctxt "option label"
 msgid "Inherit Custom Images"
 msgstr "Hériter les images personnalisées"
 
-#: gettext/gettext-lib-pro.php:17 gettext/gettext-lib-pro.php:184
-#: lib/messages.php:249 lib/messages.php:327 lib/pro/admin/advanced.php:132
-#: lib/pro/admin/general.php:61 lib/std/admin/advanced.php:117
-#: lib/std/admin/general.php:57
+#: gettext/gettext-lib-pro.php:17 lib/messages.php:249 lib/messages.php:327
+#: lib/pro/admin/advanced.php:132 lib/std/admin/advanced.php:117
 msgctxt "option label"
 msgid "Image Dimension Checks"
 msgstr "Vérifications taille d'image"
 
-#: gettext/gettext-lib-pro.php:19 gettext/gettext-lib-pro.php:186
-#: lib/pro/admin/advanced.php:139 lib/pro/admin/general.php:67
-#: lib/std/admin/advanced.php:123 lib/std/admin/general.php:62
+#: gettext/gettext-lib-pro.php:19 lib/pro/admin/advanced.php:139
+#: lib/std/admin/advanced.php:123
 msgctxt "option label"
 msgid "Prevent Thumbnail Conflicts"
 msgstr "Prévenir conflits de vignettes"
 
-#: gettext/gettext-lib-pro.php:21 gettext/gettext-lib-pro.php:188
-#: lib/messages.php:321 lib/pro/admin/advanced.php:146
-#: lib/pro/admin/general.php:73 lib/std/admin/advanced.php:129
-#: lib/std/admin/general.php:67
+#: gettext/gettext-lib-pro.php:21 lib/messages.php:321
+#: lib/pro/admin/advanced.php:146 lib/std/admin/advanced.php:129
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr "Agrandir les images de la médiathèque"
@@ -3175,9 +3161,8 @@ msgctxt "option label"
 msgid "Schema Type Select Format"
 msgstr "Format sélection de type Schéma"
 
-#: gettext/gettext-lib-pro.php:79 gettext/gettext-lib-pro.php:189
-#: lib/pro/admin/advanced.php:532 lib/pro/admin/general.php:78
-#: lib/std/admin/advanced.php:522 lib/std/admin/general.php:72
+#: gettext/gettext-lib-pro.php:79 lib/pro/admin/advanced.php:532
+#: lib/std/admin/advanced.php:522
 msgctxt "option label"
 msgid "Gravatar is Default Author Image"
 msgstr "Gravatar est l'img d'auteur par défaut"
@@ -3188,9 +3173,9 @@ msgctxt "option label"
 msgid "Gravatar Image Size"
 msgstr "Taille d'image Gravatar"
 
-#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:193
-#: lib/pro/admin/advanced.php:549 lib/pro/admin/general.php:121
-#: lib/std/admin/advanced.php:539 lib/std/admin/general.php:114
+#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:183
+#: lib/pro/admin/advanced.php:549 lib/pro/admin/general.php:73
+#: lib/std/admin/advanced.php:539 lib/std/admin/general.php:68
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr "Découvrir les médias intégrés"
@@ -3230,7 +3215,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr "Bitly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
+#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:205
 #: lib/pro/admin/advanced.php:592 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -3251,7 +3236,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr "DLMY.App (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:217
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:207
 #: lib/pro/admin/advanced.php:610 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -3262,7 +3247,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr "Ow.ly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:219
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:209
 #: lib/pro/admin/advanced.php:620 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -3273,7 +3258,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr "YOURLS (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:221
+#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:211
 #: lib/pro/admin/advanced.php:630 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3324,7 +3309,7 @@ msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr "Obtenir critiques pour type d'articles"
 
-#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:226
+#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:216
 #: lib/pro/admin/advanced.php:681 lib/pro/review/shopperapproved.php:45
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
@@ -3340,7 +3325,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr "Jeton d'API Shopper Approved"
 
-#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:230
+#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:220
 #: lib/pro/admin/advanced.php:697 lib/pro/review/stamped.php:45
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -3691,143 +3676,143 @@ msgstr "Titre du champ contact"
 msgid "An SEO plugin has been detected - some basic SEO meta tags have been unchecked and disabled automatically."
 msgstr "Une extension SEO a été détectée - certaines balises méta SEO de base ont été décochées et désactivées automatiquement."
 
-#: gettext/gettext-lib-pro.php:190 lib/pro/admin/general.php:98
-#: lib/std/admin/general.php:94
+#: gettext/gettext-lib-pro.php:180 lib/pro/admin/general.php:50
+#: lib/std/admin/general.php:48
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr "Vidéos maximum a inclure"
 
-#: gettext/gettext-lib-pro.php:191 lib/pro/admin/general.php:104
-#: lib/std/admin/general.php:99
+#: gettext/gettext-lib-pro.php:181 lib/pro/admin/general.php:56
+#: lib/std/admin/general.php:53
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr "Inclure l'image d'aperçu des vidéos"
 
-#: gettext/gettext-lib-pro.php:192 lib/pro/admin/general.php:109
-#: lib/std/admin/general.php:103
+#: gettext/gettext-lib-pro.php:182 lib/pro/admin/general.php:61
+#: lib/std/admin/general.php:57
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr "Forcer a jouer lorsque possible"
 
-#: gettext/gettext-lib-pro.php:194 lib/pro/admin/edit.php:48
+#: gettext/gettext-lib-pro.php:184 lib/pro/admin/edit.php:48
 #: lib/std/admin/edit.php:39
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr "Informations du vidéo prioritaire"
 
-#: gettext/gettext-lib-pro.php:195 lib/messages.php:962
+#: gettext/gettext-lib-pro.php:185 lib/messages.php:962
 #: lib/pro/admin/edit.php:52 lib/std/admin/edit.php:47
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr "HTML du vidéo intégrée"
 
-#: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:58
+#: gettext/gettext-lib-pro.php:186 lib/pro/admin/edit.php:58
 #: lib/std/admin/edit.php:54
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr "ou URL d'un vidéo"
 
-#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:65
+#: gettext/gettext-lib-pro.php:187 lib/pro/admin/edit.php:65
 #: lib/std/admin/edit.php:61
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr "Informations vidéo de l’API vidéo"
 
-#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:69
+#: gettext/gettext-lib-pro.php:188 lib/pro/admin/edit.php:69
 #: lib/std/admin/edit.php:66
 msgctxt "option label"
 msgid "Video Name"
 msgstr "Nom de la vidéo"
 
-#: gettext/gettext-lib-pro.php:199 lib/pro/admin/edit.php:76
+#: gettext/gettext-lib-pro.php:189 lib/pro/admin/edit.php:76
 #: lib/std/admin/edit.php:73
 msgctxt "option label"
 msgid "Video Description"
 msgstr "Description du vidéo"
 
-#: gettext/gettext-lib-pro.php:200 lib/pro/admin/edit.php:83
+#: gettext/gettext-lib-pro.php:190 lib/pro/admin/edit.php:83
 #: lib/std/admin/edit.php:80
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr "URL du flux vidéo"
 
-#: gettext/gettext-lib-pro.php:201 lib/pro/admin/edit.php:89
+#: gettext/gettext-lib-pro.php:191 lib/pro/admin/edit.php:89
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr "Dimensions du vidéo"
 
-#: gettext/gettext-lib-pro.php:202 gettext/gettext-lib-pro.php:205
-#: gettext/gettext-lib-pro.php:208 lib/pro/media/slideshare.php:208
+#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:195
+#: gettext/gettext-lib-pro.php:198 lib/pro/media/slideshare.php:208
 #: lib/pro/media/vimeo.php:187 lib/pro/media/wistia.php:349
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
-#: gettext/gettext-lib-pro.php:203 gettext/gettext-lib-pro.php:206
-#: gettext/gettext-lib-pro.php:209 lib/pro/media/slideshare.php:209
+#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:196
+#: gettext/gettext-lib-pro.php:199 lib/pro/media/slideshare.php:209
 #: lib/pro/media/vimeo.php:188 lib/pro/media/wistia.php:350
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
-#: gettext/gettext-lib-pro.php:204 gettext/gettext-lib-pro.php:207
-#: gettext/gettext-lib-pro.php:210 lib/conflict.php:343
+#: gettext/gettext-lib-pro.php:194 gettext/gettext-lib-pro.php:197
+#: gettext/gettext-lib-pro.php:200 lib/conflict.php:343
 #: lib/pro/media/slideshare.php:212 lib/pro/media/vimeo.php:191
 #: lib/pro/media/wistia.php:353
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:249
+#: gettext/gettext-lib-pro.php:201 lib/pro/media/upscale.php:249
 msgid "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s (dépasse le maximum défini de %7$s)."
 
-#: gettext/gettext-lib-pro.php:212 lib/pro/media/upscale.php:257
+#: gettext/gettext-lib-pro.php:202 lib/pro/media/upscale.php:257
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
+#: gettext/gettext-lib-pro.php:203 gettext/gettext-lib-pro.php:214
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1691 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util.php:3817
 msgid "%s error:"
 msgstr "Erreur %s:"
 
-#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
-#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:204 gettext/gettext-lib-pro.php:206
+#: gettext/gettext-lib-pro.php:208 gettext/gettext-lib-pro.php:210
 #: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
 #: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
 msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:451
+#: gettext/gettext-lib-pro.php:212 lib/pro/util/shorten.php:451
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr "Boucle détectée: l'URL de l'API YOURLS correspond à l'URL actuelle (%s)"
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:223 lib/pro/util/shorten.php:492
+#: gettext/gettext-lib-pro.php:213 lib/pro/util/shorten.php:492
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr "Impossible d'instancier le service de raccourcissement \"%s\"."
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:225 lib/pro/util/shorten.php:529
+#: gettext/gettext-lib-pro.php:215 lib/pro/util/shorten.php:529
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr "Fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est manquant et requis."
 
-#: gettext/gettext-lib-pro.php:227 lib/pro/review/shopperapproved.php:173
+#: gettext/gettext-lib-pro.php:217 lib/pro/review/shopperapproved.php:173
 msgid "getting shopper approved ratings and reviews"
 msgstr "obtenir notes et critiques de shopper approved"
 
-#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:222
 #: lib/pro/review/shopperapproved.php:339 lib/pro/review/stamped.php:329
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
-#: gettext/gettext-lib-pro.php:229 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:219 gettext/gettext-lib-pro.php:223
 #: lib/pro/review/shopperapproved.php:342 lib/pro/review/stamped.php:332
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
-#: gettext/gettext-lib-pro.php:231 lib/pro/review/stamped.php:173
+#: gettext/gettext-lib-pro.php:221 lib/pro/review/stamped.php:173
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
@@ -4061,8 +4046,8 @@ msgstr "Balises HTML"
 #: lib/admin-head-suggest-options.php:125 lib/messages.php:1132
 #: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
-msgid "SEO and Other"
-msgstr "SEO et autre"
+msgid "SEO / Other"
+msgstr "SEO / autre"
 
 #: lib/admin-head-suggest-options.php:127
 msgid "Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected."
@@ -7056,43 +7041,47 @@ msgstr "Sélectionnez un endroit (c'est-à-dire un emplacement) facultatif pour 
 msgid "You may optionally choose a more accurate Schema type for this organization (default is Organization)."
 msgstr "Vous pouvez aussi choisir un type de schéma plus précis pour cette organisation (la valeur par défaut est Organisation)."
 
-#: lib/messages-tooltip-meta-org.php:80
-msgid "Note that Google does not recognize most Schema Organization sub-types as valid organizations, so do not change this value unless you are certain that your selected Schema Organization sub-type will be recognized as a valid Organization by Google."
-msgstr "Notez que Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides. Par conséquent, ne modifiez pas cette valeur, sauf si vous êtes certain que le sous-types de Schéma Organisation que vous avez sélectionné sera reconnu comme une organisation valide par Google."
+#: lib/messages-tooltip-meta-org.php:80 lib/messages-tooltip-site.php:114
+msgid "Google classifies most Schema Organization sub-types as places and local businesses, not organizations."
+msgstr "Google classe la plupart des sous-types de Schéma Organisation en tant que lieux et entreprises locales, et non comme organisations."
 
-#: lib/messages-tooltip-meta-org.php:86
+#: lib/messages-tooltip-meta-org.php:82
+msgid "Do not change this value unless you are certain that your selected Schema Organization sub-type will be recognized as an organization by Google."
+msgstr "Ne modifiez pas cette valeur, sauf si vous êtes certain que le sous-type de Schéma Organisation sélectionné sera reconnu comme une organisation par Google."
+
+#: lib/messages-tooltip-meta-org.php:88
 msgid "A document describing the editorial principles of an Organization that relate to their activities as a publisher."
 msgstr "Un document décrivant les principes éditoriaux d'une organisation qui se rapportent à leurs activités en tant qu'éditeur."
 
-#: lib/messages-tooltip-meta-org.php:92
+#: lib/messages-tooltip-meta-org.php:94
 msgid "A statement describing (in news media, the newsroom's) disclosure and correction policy for errors."
 msgstr "Une déclaration décrivant (dans les médias d'information, la salle de rédaction) la politique de divulgation et de correction des erreurs."
 
-#: lib/messages-tooltip-meta-org.php:98
+#: lib/messages-tooltip-meta-org.php:100
 msgid "A statement describing (in news media, the newsroom's) diversity policy on both staffing and sources."
 msgstr "Une déclaration décrivant (dans les médias d'information, la salle de rédaction) la politique de diversité concernant à la fois le personnel et les sources."
 
-#: lib/messages-tooltip-meta-org.php:104
+#: lib/messages-tooltip-meta-org.php:106
 msgid "A statement describing the personal, organizational, and corporate standards of behavior expected by the organization."
 msgstr "Une déclaration décrivant les normes de comportement personnelles, organisationnelles et d'entreprise attendues par l'organisation."
 
-#: lib/messages-tooltip-meta-org.php:110
+#: lib/messages-tooltip-meta-org.php:112
 msgid "A statement describing verification and fact-checking processes for a news media organization or other fact-checking organization."
 msgstr "Une déclaration décrivant les processus de vérification et de vérification des faits pour une organisation de presse ou une autre organisation de vérification des faits."
 
-#: lib/messages-tooltip-meta-org.php:116
+#: lib/messages-tooltip-meta-org.php:118
 msgid "A statement about public engagement activities (for news media, the newsroom's), including involving the public - digitally or otherwise - in coverage decisions, reporting and activities after publication."
 msgstr "Une déclaration sur les activités d'engagement du public (pour les médias d'information, la salle de rédaction), y compris l'implication du public - numériquement ou autrement - dans les décisions de couverture, les reportages et les activités après la publication."
 
-#: lib/messages-tooltip-meta-org.php:125
+#: lib/messages-tooltip-meta-org.php:127
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr "Un lien vers la page d'en-tête administratif ou une page répertoriant la haute direction éditoriale."
 
-#: lib/messages-tooltip-meta-org.php:131
+#: lib/messages-tooltip-meta-org.php:133
 msgid "A statement on coverage priorities, including any public agenda or stance on issues."
 msgstr "Une déclaration sur les priorités de couverture, y compris tout agenda public ou position sur les enjeux."
 
-#: lib/messages-tooltip-meta-org.php:137 lib/messages-tooltip-meta-org.php:143
+#: lib/messages-tooltip-meta-org.php:139 lib/messages-tooltip-meta-org.php:145
 msgid "A statement about policy on use of unnamed sources and the decision process required."
 msgstr "Une déclaration sur la politique d'utilisation des sources anonymes et le processus de décision requis."
 
@@ -8818,13 +8807,9 @@ msgstr "L'URL d'image de bannière pour cette organisation <strong>mesurant exac
 msgid "Select an optional location for this organization."
 msgstr "Choisissez un emplacement optionnel pour cette organisation."
 
-#: lib/messages-tooltip-site.php:114
-msgid "Google does not recognize most Schema Organization sub-types as valid organizations."
-msgstr "Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides."
-
 #: lib/messages-tooltip-site.php:116
-msgid "The site Schema Organization type should be Organization and not a sub-type."
-msgstr "Le type de Schéma Organisation du site doit être Organisation et non un sous-type."
+msgid "The site organization type should be \"Organization\", and not a sub-type of Schema Organization."
+msgstr "Le type d'organisation du site doit être \"Organisation\" et non un sous-type de Schéma Organisation."
 
 #: lib/messages-tooltip-site.php:122
 msgid "Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value."
@@ -10842,8 +10827,8 @@ msgstr "Défauts d'emplacement"
 
 #: lib/submenu/general.php:96
 msgctxt "metabox tab"
-msgid "Titles and Descriptions"
-msgstr "Titres et descriptions"
+msgid "Titles / Descriptions"
+msgstr "Titres / descriptions"
 
 #: lib/submenu/general.php:97
 msgctxt "metabox tab"
