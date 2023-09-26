@@ -77,7 +77,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 					$text = __( 'You may optionally choose a more accurate Schema type for this organization (default is Organization).', 'wpsso' ) . ' ';
 
-					$text .= __( 'Note that Google does not recognize most Schema Organization sub-types as valid organizations, so do not change this value unless you are certain that your selected Schema Organization sub-type will be recognized as a valid Organization by Google.', 'wpsso' );
+					$text .= __( 'Google classifies most Schema Organization sub-types as places and local businesses, not organizations.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Do not change this value unless you are certain that your selected Schema Organization sub-type will be recognized as an organization by Google.', 'wpsso' );
 
 					break;
 

@@ -7574,62 +7574,66 @@ msgid ""
 "(default is Organization)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:80
+#: lib/messages-tooltip-meta-org.php:80 lib/messages-tooltip-site.php:114
 msgid ""
-"Note that Google does not recognize most Schema Organization sub-types as "
-"valid organizations, so do not change this value unless you are certain that "
-"your selected Schema Organization sub-type will be recognized as a valid "
-"Organization by Google."
+"Google classifies most Schema Organization sub-types as places and local "
+"businesses, not organizations."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:86
+#: lib/messages-tooltip-meta-org.php:82
+msgid ""
+"Do not change this value unless you are certain that your selected Schema "
+"Organization sub-type will be recognized as an organization by Google."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:88
 msgid ""
 "A document describing the editorial principles of an Organization that "
 "relate to their activities as a publisher."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:92
+#: lib/messages-tooltip-meta-org.php:94
 msgid ""
 "A statement describing (in news media, the newsroom's) disclosure and "
 "correction policy for errors."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:98
+#: lib/messages-tooltip-meta-org.php:100
 msgid ""
 "A statement describing (in news media, the newsroom's) diversity policy on "
 "both staffing and sources."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:104
+#: lib/messages-tooltip-meta-org.php:106
 msgid ""
 "A statement describing the personal, organizational, and corporate standards "
 "of behavior expected by the organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:110
+#: lib/messages-tooltip-meta-org.php:112
 msgid ""
 "A statement describing verification and fact-checking processes for a news "
 "media organization or other fact-checking organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:116
+#: lib/messages-tooltip-meta-org.php:118
 msgid ""
 "A statement about public engagement activities (for news media, the "
 "newsroom's), including involving the public - digitally or otherwise - in "
 "coverage decisions, reporting and activities after publication."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:125
+#: lib/messages-tooltip-meta-org.php:127
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:131
+#: lib/messages-tooltip-meta-org.php:133
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:137 lib/messages-tooltip-meta-org.php:143
+#: lib/messages-tooltip-meta-org.php:139 lib/messages-tooltip-meta-org.php:145
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
@@ -9824,15 +9828,10 @@ msgstr ""
 msgid "Select an optional location for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:114
-msgid ""
-"Google does not recognize most Schema Organization sub-types as valid "
-"organizations."
-msgstr ""
-
 #: lib/messages-tooltip-site.php:116
 msgid ""
-"The site Schema Organization type should be Organization and not a sub-type."
+"The site organization type should be \"Organization\", and not a sub-type of "
+"Schema Organization."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:122
