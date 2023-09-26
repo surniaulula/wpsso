@@ -587,7 +587,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong><a href="%s">Customize advanced settings</a></strong>, including image sizes, video services, shortening services, default types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
 
-						$text .= '<li>' . __( '<strong>Get video details and URL shortening data from external services</strong> (Bitly, Vimeo, Youtube, etc.).', 'wpsso' ) . '</li>';
+						$text .= '<li>' . __( '<strong>Get video details from video hosting platforms</strong> (Facebook, Gravatar, SlideShare, Soundcloud, Vimeo, Wistia, Youtube).', 'wpsso' ) . '</li>';
+
+						$text .= '<li>' . __( '<strong>Get short URLs from shortening services</strong> (Bitly, DLMY.App, Ow.ly, TinyURL, YOURLS).', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
