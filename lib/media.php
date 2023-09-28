@@ -3764,8 +3764,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $size_info[ 'crop' ] ) ) {
 
-				if ( ! isset( $this->p->options[ 'plugin_prevent_thumb_conflicts' ] ) ||	// Older versions.
-					! empty( $this->p->options[ 'plugin_prevent_thumb_conflicts' ] ) ) {	// Since WPSSO Core v15.6.0.
+				if ( ! empty( $this->p->options[ 'plugin_prevent_thumb_conflicts' ] ) ) {	// Since WPSSO Core v15.6.0.
 
 					$new_suffix .= '-cropped';
 

@@ -50,34 +50,33 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 		 */
 		public function suggest_options_integration() {
 
-			/* if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+			if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-				if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
+				return;
+			}
 
-					$notice_key = 'notice-content-filters-disabled';
+			/* if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
 
-					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+				$notice_key = 'notice-content-filters-disabled';
 
-						if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-						}
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 					}
 				}
 			} */
 
-			if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-				if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+				$notice_key = 'notice-check-img-dims-disabled';
 
-					$notice_key = 'notice-check-img-dims-disabled';
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
 
-						if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
-
-							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-						}
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 					}
 				}
 			}

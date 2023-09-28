@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.1.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 16.1.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1072,7 +1072,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:111
-#: lib/admin-head-suggest-options.php:123 lib/messages.php:1132
+#: lib/admin-head-suggest-options.php:122 lib/messages.php:1132
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -4264,30 +4264,30 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:122 lib/messages.php:1131
+#: lib/admin-head-suggest-options.php:121 lib/messages.php:1131
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:124 lib/messages.php:1133
+#: lib/admin-head-suggest-options.php:123 lib/messages.php:1133
 #: lib/submenu/advanced.php:60
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:125 lib/messages.php:1134
+#: lib/admin-head-suggest-options.php:124 lib/messages.php:1134
 #: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:127
+#: lib/admin-head-suggest-options.php:126
 msgid ""
 "Please note that the %s HTML tag is currently disabled and a known SEO "
 "plugin has not been detected."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:129
+#: lib/admin-head-suggest-options.php:128
 msgid ""
 "If another SEO plugin or your theme templates are not adding the %1$s HTML "
 "tag to your webpages, you should enable this option under the %2$s tab."
@@ -8939,8 +8939,8 @@ msgstr ""
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled - "
 "IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS "
-"OPTION, determine which theme or plugin is filtering the content incorrectly "
-"and report the problem to its author(s)."
+"OPTION, disable the option or determine which theme or plugin is filtering "
+"the content incorrectly and report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:118
