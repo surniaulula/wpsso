@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-09-26 05:17-0700\n"
+"PO-Revision-Date: 2023-09-28 06:38-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -916,7 +916,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr "SSO du profil - optimisation sociale et de recherche"
 
 #: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:111
-#: lib/admin-head-suggest-options.php:123 lib/messages.php:1132
+#: lib/admin-head-suggest-options.php:122 lib/messages.php:1132
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
@@ -4032,28 +4032,28 @@ msgstr "<a href=\"%1$s\">Acheter l'extension %2$s</a> %3$s."
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
-#: lib/admin-head-suggest-options.php:122 lib/messages.php:1131
+#: lib/admin-head-suggest-options.php:121 lib/messages.php:1131
 msgctxt "menu title"
 msgid "SSO"
 msgstr "SSO"
 
-#: lib/admin-head-suggest-options.php:124 lib/messages.php:1133
+#: lib/admin-head-suggest-options.php:123 lib/messages.php:1133
 #: lib/submenu/advanced.php:60
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr "Balises HTML"
 
-#: lib/admin-head-suggest-options.php:125 lib/messages.php:1134
+#: lib/admin-head-suggest-options.php:124 lib/messages.php:1134
 #: lib/submenu/advanced.php:249
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / autre"
 
-#: lib/admin-head-suggest-options.php:127
+#: lib/admin-head-suggest-options.php:126
 msgid "Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected."
 msgstr "Veuillez noter que la balise HTML %s est actuellement désactivée et qu'aucune extension SEO connue n'a été détectée."
 
-#: lib/admin-head-suggest-options.php:129
+#: lib/admin-head-suggest-options.php:128
 msgid "If another SEO plugin or your theme templates are not adding the %1$s HTML tag to your webpages, you should enable this option under the %2$s tab."
 msgstr "Si une autre extension SEO ou vos modèles de thème n'ajoutent pas la balise HTML %1$s à vos pages Web, vous devez activer cette option sous l'onglet %2$s."
 
@@ -8137,8 +8137,8 @@ msgid "Many themes and plugins have badly coded content filters, so this option 
 msgstr "Plusieurs thèmes et extensions ont des filtres de contenu mal codé, donc cette option est désactivée par défaut."
 
 #: lib/messages-tooltip-plugin.php:112 lib/messages.php:281
-msgid "If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s)."
-msgstr "Si vous utilisez des codes courts dans votre contenu, cette option devrait être activée - SI VOUS RENCONTREZ DES PROBLÈMES DE MISE EN PAGE OU DE PERFORMANCES APRÈS AVOIR ACTIVÉ CETTE OPTION, déterminer quel thème ou extension filtre le contenu d'une façon incorrecte et signalez le problème à son auteur(s)."
+msgid "If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, disable the option or determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s)."
+msgstr "Si vous utilisez des codes courts dans votre contenu, cette option devrait être activée - SI VOUS RENCONTREZ DES PROBLÈMES DE MISE EN PAGE OU DE PERFORMANCES APRÈS AVOIR ACTIVÉ CETTE OPTION, désactivez l'option ou déterminer quel thème ou extension filtre le contenu d'une façon incorrecte et signalez le problème à son auteur(s)."
 
 #: lib/messages-tooltip-plugin.php:118
 msgid "Apply the WordPress \"get_the_excerpt\" filter to excerpt text (default is unchecked)."
