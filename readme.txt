@@ -212,13 +212,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.1.0-dev.2 (2023/09/28)**
+**Version 16.1.0-b.1 (2023/09/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab.
 	* Updated the "Organization Schema Type" option help text.
+	* Updated SSO &gt; Advanced Settings &gt; Integration default option values to checked:
+		* Inherit Featured Image
+		* Inherit Custom Images
+		* Image Dimension Checks
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -255,7 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.1.0-dev.2 =
+= 16.1.0-b.1 =
 
 (2023/09/28) Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab.
 
