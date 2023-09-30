@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 			if ( current_user_can( 'install_plugins' ) ) {
 
-				add_action( 'admin_head', array( $this, 'suggest_addons' ), 100 );
+				add_action( 'admin_head', array( $this, 'suggest_addons' ), 120 );
 			}
 		}
 

@@ -71,9 +71,8 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 				case 'info-plugin-tid-network':
 
-					$um_info      = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-					$um_info_name = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
-
+					$um_info            = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+					$um_info_name       = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
 					$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 					$text = '<blockquote class="top-info">';
@@ -101,8 +100,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 				case 'info-contact_fields':
 
 					// translators: Please ignore - translation uses a different text domain.
-					$section_label = __( 'Contact Info' );
-
+					$section_label    = __( 'Contact Info' );
 					$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
 
 					$text = '<blockquote class="top-info">';
@@ -136,8 +134,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 				case 'info-user-about':
 
 					// translators: Please ignore - translation uses a different text domain.
-					$section_label = __( 'About Yourself' );
-
+					$section_label    = __( 'About Yourself' );
 					$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
 
 					$text = '<blockquote class="top-info"><p>';

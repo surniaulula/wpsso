@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 					$json_ret[ 'articleBody' ] = $json_data[ 'text' ];
 
 				} else {
-				
+
 					$json_ret[ 'articleBody' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 				}
 			}

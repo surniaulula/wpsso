@@ -524,6 +524,43 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					case 'notice-wc-attributes-available':
+
+						$attr_md_index = WpssoConfig::get_attr_md_index();	// Uses a local cache.
+						$suggest_names = array();
+
+						foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
+
+							if ( empty( $md_key ) ) {	// Just in case.
+
+								continue;
+
+							} elseif ( empty( $this->p->options[ $opt_attr_key ] ) ) {
+
+								continue;
+							}
+
+							$suggest_names[] = $this->p->options[ $opt_attr_key ];	// Example: 'Size Group'.
+						}
+
+						if ( ! empty( $suggest_names ) ) {	// Just in case.
+
+							$suggest_list  = implode( $glue = ', ', $suggest_names );
+							$attr_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_metadata-tab_product_attrs',
+								_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+								_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+								_x( 'Attributes and Metadata', 'metabox title', 'wpsso' ) . ' &gt; ' .
+								_x( 'Product Attributes', 'metabox tab', 'wpsso' ) );
+
+							$text .= sprintf( __( '%1$s can read these additional WooCommerce product attributes: %2$s.',
+								'wpsso' ), $this->p_name, '<strong>' . $suggest_list . '</strong>' ) . ' ';
+
+							$text .= sprintf( __( 'You can view and modify the complete list of supported product attributes under the %s tab.',
+								'wpsso' ), $attr_tab_link );
+						}
+
+						break;
+
 					case 'notice-wc-inherit-featured-disabled':
 
 						$option_label = _x( 'Inherit Featured Image', 'option label', 'wpsso' );

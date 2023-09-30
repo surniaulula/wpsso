@@ -43,6 +43,24 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-options.php';
 
 			$this->options = new WpssoAdminHeadSuggestOptions( $plugin );
+
+			add_action( 'admin_head', array( $this, 'suggest_attributes' ), 100 );
+		}
+
+		public function suggest_attributes() {
+
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
+
+				$notice_key = 'notice-wc-attributes-available';
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					}
+				}
+			}
 		}
 	}
 }

@@ -904,7 +904,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 							$this->p->debug->log( $cache_file . ' is empty' );
 						}
-						
+
 						@unlink( $cache_file );
 
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {	// Check if we get a file handle.
