@@ -62,7 +62,7 @@ Present your content at its best on social sites and in search results - no matt
 * Twitter Summary Card Large Image
 * Video Preview Images
 
-<p><strong>Fixes all Google Rich Results, Google Merchant, and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes all Google Rich Results, Google Merchant errors, including:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
