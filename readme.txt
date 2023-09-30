@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.5
 Tested Up To: 6.3.1
 WC Tested Up To: 8.1.1
-Stable Tag: 16.0.0
+Stable Tag: 16.1.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -153,7 +153,7 @@ Present your content at its best on social sites and in search results - no matt
 * YITH WooCommerce Brands Add-on
 * Yotpo Social Reviews for WooCommerce
 
-<p><strong>Optionally improves the structured data markup of SEO plugins:</strong></p>
+<p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
 WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to **improve their performance and structured data markup**.
 

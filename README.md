@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawl</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>16.0.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>16.1.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.2.34 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.5 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>6.3.1</td></tr>
@@ -158,7 +158,7 @@
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul>
 
-<p><strong>Optionally improves the structured data markup of SEO plugins:</strong></p>
+<p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
 <p>WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to <strong>improve their performance and structured data markup</strong>.</p>
 
