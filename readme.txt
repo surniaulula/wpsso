@@ -90,7 +90,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Supports additional WooCommerce product attributes and custom fields:</strong></p>
+<p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
 * Product Adult Type
 * Product Age Group

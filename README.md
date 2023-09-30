@@ -91,7 +91,7 @@
 <li><em>Price Mismatched value (page crawl): (price [price])</em></li>
 </ul>
 
-<p><strong>Supports additional WooCommerce product attributes and custom fields:</strong></p>
+<p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
 <ul>
 <li>Product Adult Type</li>
