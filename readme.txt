@@ -155,7 +155,9 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
-WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to **improve that SEO plugin's performance and structured data markup**.
+WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines.
+
+Optionally, WPSSO Core and its add-ons can also run in combination with other SEO plugins to **improve that SEO plugin's performance and structured data markup**.
 
 * All in One SEO Pack
 * Rank Math SEO
