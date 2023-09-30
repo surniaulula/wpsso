@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.1.0-rc.2 (2023/09/30)**
+**Version 16.1.0 (2023/09/30)**
 
 * **New Features**
 	* None.
@@ -302,7 +302,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.1.0-rc.2 =
+= 16.1.0 =
 
 (2023/09/30) Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab. Updated SSO &gt; Advanced Settings &gt; Integration default option values.
 
