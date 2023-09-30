@@ -90,9 +90,46 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
+<p><strong>Supports WooCommerce product attributes and custom fields:</strong></p>
+
+* Product Adult Type
+* Product Age Group
+* Product Availability
+* Product Brand
+* Product Google Category ID
+* Product Color
+* Product Condition
+* Product Currency
+* Product Energy Rating
+* Product Fluid Volume
+* Product GTIN-14
+* Product GTIN-13 (EAN)
+* Product GTIN-12 (UPC)
+* Product GTIN-8
+* Product GTIN
+* Product Net Height
+* Product ISBN
+* Product Net Len. / Depth
+* Product Material
+* Product MPN
+* Product Min Advert Price
+* Product Pattern
+* Product Price
+* Product Price Type
+* Product SKU
+* Product Shipping Height
+* Product Shipping Length
+* Product Shipping Weight
+* Product Shipping Width
+* Product Size
+* Product Size Group
+* Product Size System
+* Product Target Gender
+* Product Net Weight
+* Product Net Width
+
 <p><strong>Includes additional data from active plugins, including:</strong></p>
 
-* All in One SEO Pack
 * Co-Authors Plus
 * Elementor Website Builder
 * Gravity Forms + GravityView
@@ -100,26 +137,32 @@ Present your content at its best on social sites and in search results - no matt
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
-* Rank Math SEO
 * Rate my Post
-* SEOPress
 * Simple Job Board
 * The Events Calendar
-* The SEO Framework
 * Ultimate Member
 * WooCommerce
 * WooCommerce Brands
 * WooCommerce Currency Switcher
 * WooCommerce UPC, EAN, and ISBN
 * WP Job Manager
-* WP Meta SEO
 * WP-PostRatings
 * WP Product Review
 * WP Recipe Maker
 * WPML
 * YITH WooCommerce Brands Add-on
-* Yoast SEO
 * Yotpo Social Reviews for WooCommerce
+
+<p><strong>Optionally improves the structured data markup of SEO plugins:</strong></p>
+
+WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to improve their performance and structured data markup.
+
+* All in One SEO Pack
+* Rank Math SEO
+* SEOPress
+* The SEO Framework
+* WP Meta SEO
+* Yoast SEO
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
