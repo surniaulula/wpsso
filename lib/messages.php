@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'Attributes and Metadata', 'metabox title', 'wpsso' ) . ' &gt; ' .
 								_x( 'Product Attributes', 'metabox tab', 'wpsso' ) );
 
-							$text .= sprintf( __( '%1$s can read these additional WooCommerce product attributes: %2$s.',
+							$text .= sprintf( __( '%1$s can read additional WooCommerce product attributes: %2$s.',
 								'wpsso' ), $this->p_name, '<strong>' . $suggest_list . '</strong>' ) . ' ';
 
 							$text .= sprintf( __( 'You can view and modify the complete list of supported product attributes under the %s tab.',

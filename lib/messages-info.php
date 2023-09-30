@@ -170,6 +170,8 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 						$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
 						$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
 						$wcmd_addons_link = $this->p->util->get_admin_url( 'addons#wpssowcmd', $wcmd_name_transl );
+						// translators: Please ignore - translation uses a different text domain.
+						$used_for_variations = __( 'Used for variations', 'woocommerce' );
 
 						$text .= '<p><center><strong>';
 
@@ -177,10 +179,9 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 						$text .= '</strong></br>';
 
-						$text .= __( 'Please note that WooCommerce creates a selector on the purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
+						$text .= sprintf( __( 'See the %s documentation for information on creating and managing product attributes in WooCommerce.', 'wpsso' ), '<a href="https://woocommerce.com/document/managing-product-taxonomies/">' . __( 'Managing Product Categories, Tags and Attributes', 'wpsso' ) . '</a>' ) . ' ';
 
-						// translators: Please ignore - translation uses a different text domain.
-						$used_for_variations = __( 'Used for variations', 'woocommerce' );
+						$text .= __( 'Note that WooCommerce creates a selector on the purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
 
 						$text .= sprintf( __( 'Using the WooCommerce "%s" option may not be suitable for unique product IDs (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
 

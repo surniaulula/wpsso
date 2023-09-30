@@ -1106,7 +1106,7 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:114 lib/messages-info.php:259
+#: gettext/gettext-lib-config.php:114 lib/messages-info.php:260
 #: lib/messages.php:513
 msgctxt "lib file description"
 msgid "Tools and Actions"
@@ -4213,7 +4213,7 @@ msgid ""
 "identifier."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:211 lib/messages-info.php:187
+#: lib/admin-head-suggest-addons.php:211 lib/messages-info.php:188
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage unique product identifiers for WooCommerce."
@@ -7317,71 +7317,81 @@ msgid ""
 "corresponding values in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages-info.php:176 lib/messages-info.php:218
-msgid "An active WooCommerce plugin has been detected."
-msgstr ""
-
-#: lib/messages-info.php:180
-msgid ""
-"Please note that WooCommerce creates a selector on the purchase page for "
-"product attributes used for variations."
-msgstr ""
-
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages-info.php:183
+#: lib/messages-info.php:174
 msgid "Used for variations"
 msgstr ""
 
-#: lib/messages-info.php:185
+#: lib/messages-info.php:178 lib/messages-info.php:219
+msgid "An active WooCommerce plugin has been detected."
+msgstr ""
+
+#: lib/messages-info.php:182
+msgid ""
+"See the %s documentation for information on creating and managing product "
+"attributes in WooCommerce."
+msgstr ""
+
+#: lib/messages-info.php:182
+msgid "Managing Product Categories, Tags and Attributes"
+msgstr ""
+
+#: lib/messages-info.php:184
+msgid ""
+"Note that WooCommerce creates a selector on the purchase page for product "
+"attributes used for variations."
+msgstr ""
+
+#: lib/messages-info.php:186
 msgid ""
 "Using the WooCommerce \"%s\" option may not be suitable for unique product "
 "IDs (like GTIN, ISBN, and MPN)."
 msgstr ""
 
-#: lib/messages-info.php:202
+#: lib/messages-info.php:203
 msgid ""
 "These options allow you to customize custom field names (aka metadata names) "
 "that %s can use to get additional information about your content."
 msgstr ""
 
-#: lib/messages-info.php:206
+#: lib/messages-info.php:207
 msgid ""
 "Do not enter custom field values here &ndash; these options are for custom "
 "field names only."
 msgstr ""
 
-#: lib/messages-info.php:210
+#: lib/messages-info.php:211
 msgid ""
 "Use the following custom field names when creating custom fields for your "
 "posts, pages, and custom post types."
 msgstr ""
 
-#: lib/messages-info.php:222
+#: lib/messages-info.php:223
 msgid ""
 "Note that product attributes from WooCommerce have precedence over custom "
 "field values."
 msgstr ""
 
-#: lib/messages-info.php:224
+#: lib/messages-info.php:225
 msgid ""
 "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for "
 "information on setting up product attributes and custom fields."
 msgstr ""
 
-#: lib/messages-info.php:226
+#: lib/messages-info.php:227
 msgid ""
 "We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
 "and MPN values for variations."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is <head>.
-#: lib/messages-info.php:242
+#: lib/messages-info.php:243
 msgid ""
 "%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
 "and SEO HTML tags to the %2$s section of your webpages."
 msgstr ""
 
-#: lib/messages-info.php:244
+#: lib/messages-info.php:245
 msgid ""
 "If your theme or another plugin already creates one or more of these HTML "
 "tags, you may uncheck them here to prevent duplicates from being added."
@@ -7389,36 +7399,36 @@ msgstr ""
 
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description",
 #. and %3$s is "meta name robots".
-#: lib/messages-info.php:249
+#: lib/messages-info.php:250
 msgid ""
 "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
 "another known SEO plugin is detected."
 msgstr ""
 
-#: lib/messages-info.php:265
+#: lib/messages-info.php:266
 msgid ""
 "%s and WordPress create image files for social sites and search engines "
 "based on the following image dimensions and crop settings."
 msgstr ""
 
-#: lib/messages-info.php:267
+#: lib/messages-info.php:268
 msgid ""
 "Image sizes that use the same dimensions and crop settings will create just "
 "one image file."
 msgstr ""
 
-#: lib/messages-info.php:269
+#: lib/messages-info.php:270
 msgid ""
 "The default dimensions and crop settings from %1$s create only %2$s image "
 "files from an original full size image (provided the original image is large "
 "enough or image upscaling has been enabled)."
 msgstr ""
 
-#: lib/messages-info.php:269
+#: lib/messages-info.php:270
 msgid "five"
 msgstr ""
 
-#: lib/messages-info.php:271
+#: lib/messages-info.php:272
 msgid "You can reload the default image sizes from the %s settings page."
 msgstr ""
 
@@ -10457,7 +10467,7 @@ msgid "Product Attributes"
 msgstr ""
 
 #: lib/messages.php:555
-msgid "%1$s can read these additional WooCommerce product attributes: %2$s."
+msgid "%1$s can read additional WooCommerce product attributes: %2$s."
 msgstr ""
 
 #: lib/messages.php:558
