@@ -222,8 +222,6 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 						$text .= __( 'Note that product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' ) . ' ';
-
 						$text .= __( 'We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' ) . ' ';
 
 						$text .= '</center></p>';
