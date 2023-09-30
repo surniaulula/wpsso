@@ -90,7 +90,7 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Supports WooCommerce product attributes and custom fields:</strong></p>
+<p><strong>Supports additional WooCommerce product attributes and custom fields:</strong></p>
 
 * Product Adult Type
 * Product Age Group
@@ -128,7 +128,7 @@ Present your content at its best on social sites and in search results - no matt
 * Product Net Weight
 * Product Net Width
 
-<p><strong>Includes additional data from active plugins, including:</strong></p>
+<p><strong>Supports additional data from active plugins, including:</strong></p>
 
 * Co-Authors Plus
 * Elementor Website Builder
@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.1.0-rc.1 (2023/09/29)**
+**Version 16.1.0-rc.2 (2023/09/30)**
 
 * **New Features**
 	* None.
@@ -302,9 +302,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.1.0-rc.1 =
+= 16.1.0-rc.2 =
 
-(2023/09/29) Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab. Updated SSO &gt; Advanced Settings &gt; Integration default option values.
+(2023/09/30) Removed duplicated advanced options under the SSO &gt; General Settings &gt; Images tab. Updated SSO &gt; Advanced Settings &gt; Integration default option values.
 
 = 16.0.0 =
 
