@@ -50,24 +50,29 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 		 */
 		public function suggest_options_integration() {
 
-			if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+			/*
+			 * Use Filtered Content (disabled by default).
+			 *
+			 * if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
+			 *
+			 *	if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+			 *
+			 *		$notice_key = 'notice-content-filters-disabled';
+			 *
+			 *		if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+			 *
+			 *			if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+			 *
+			 *				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+			 *			}
+			 *		}
+			 *	}
+			 * }
+			 */
 
-				return;
-			}
-
-			/* if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
-
-				$notice_key = 'notice-content-filters-disabled';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
-
-						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-					}
-				}
-			} */
-
+			/*
+			 * Image Dimension Checks (enabled by default).
+			 */
 			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
 				$notice_key = 'notice-check-img-dims-disabled';
@@ -81,6 +86,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 				}
 			}
 
+			/*
+			 * Inherit Featured Image (enabled by default).
+			 */
 			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
 
 				if ( empty( $this->p->options[ 'plugin_inherit_featured' ] ) ) {
