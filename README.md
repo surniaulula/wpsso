@@ -160,7 +160,7 @@
 
 <p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
-<p>WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to <strong>improve their performance and structured data markup</strong>.</p>
+<p>WPSSO Core and its add-ons are designed to create complete meta tags and Schema markup for social sites and search engines. Optionally, they can also run in combination with other SEO plugins to <strong>improve that SEO plugin's performance and structured data markup</strong>.</p>
 
 <ul>
 <li>All in One SEO Pack</li>
