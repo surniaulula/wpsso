@@ -538,6 +538,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$adv_excl = apply_filters( 'wpsso_plugin_upgrade_advanced_exclude', array(
 						'plugin_clean_on_uninstall',
+						'plugin_schema_json_min',
 						'plugin_load_mofiles',
 						'plugin_cache_disable',
 						'plugin_debug_html',
