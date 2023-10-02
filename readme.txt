@@ -255,6 +255,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.1.1-dev.1 (2023/10/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the missing 'text' property in Schema QAPage markup.
+	* Fixed saving the "Minimize Schema JSON-LD" option checked value (Standard edition).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.1.0 (2023/09/30)**
 
 * **New Features**
@@ -301,6 +316,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.1.1-dev.1 =
+
+(2023/10/02) Fixed the missing 'text' property in Schema QAPage markup.
 
 = 16.1.0 =
 
