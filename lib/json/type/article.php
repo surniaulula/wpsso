@@ -59,13 +59,16 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'schema_def_add_articlebody_prop' ] ) ) {
 
-				if ( ! empty( $json_data[ 'text' ] ) ) {	// Optimize and inherit the value from the 'text' property.
+				/*
+				 * The CreativeWork 'text' property may be empty if 'schema_def_add_text_prop' is unchecked.
+				 */
+				if ( empty( $json_data[ 'text' ] ) ) {
 
-					$json_ret[ 'articleBody' ] = $json_data[ 'text' ];
+					$json_ret[ 'articleBody' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 
 				} else {
 
-					$json_ret[ 'articleBody' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
+					$json_ret[ 'articleBody' ] = $json_data[ 'text' ];
 				}
 			}
 

@@ -46,6 +46,9 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 
 			$question = WpssoSchema::get_schema_type_context( 'https://schema.org/Question' );
 
+			/*
+			 * $question and $json_data are passed by reference.
+			 */
 			WpssoSchema::move_data_itemprop_from_assoc( $question, $json_data, array(
 				'url'           => 'url',
 				'name'          => 'name',
@@ -64,6 +67,14 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 			 * If the question has a group heading then this may be an appropriate place to call out what that heading is.
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {
+
+				/*
+				 * The CreativeWork 'text' property may be empty if 'schema_def_add_text_prop' is unchecked.
+				 */
+				if ( empty( $question[ 'text' ] ) ) {
+					
+					$question[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
+				}
 
 				$question[ 'description' ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_qa_desc' );
 

@@ -3753,6 +3753,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * Since WPSSO Core v7.7.0.
+		 *
+		 * See WpssoJsonTypeQAPage->filter_json_data_https_schema_org_qapage().
 		 */
 		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $key_map, $overwrite = true ) {
 
