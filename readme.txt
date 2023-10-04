@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.1.1-rc.1 (2023/10/04)**
+**Version 16.1.1 (2023/10/04)**
 
 * **New Features**
 	* None.
@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.1.1-rc.1 =
+= 16.1.1 =
 
 (2023/10/04) Fixed the missing 'text' property in Schema QAPage markup. Fixed saving the "Minimize Schema JSON-LD" option value when checked (Standard edition).
 
