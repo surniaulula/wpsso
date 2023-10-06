@@ -3121,7 +3121,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( null === $cache_exp_secs ) {
 
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
 
 			$readme_info     = false;

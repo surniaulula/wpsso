@@ -5127,11 +5127,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return true;
 		}
 
-		public static function sanitize_classname( $name, $allow_underscore = true ) {
+		/*
+		 * Used by WpssoConfig::load_lib() to sanitize file names to class names.
+		 *
+		 * See https://www.php.net/manual/en/language.variables.basics.php.
+		 */
+		public static function sanitize_classname( $classname, $allow_underscore = true ) {
 
-			$name = preg_replace( '/[#:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
+			if ( ! $allow_underscore ) {
+			
+				$classname = preg_replace( '/_/', '', $classname );	# Remove underscores.
+			}
 
-			return self::sanitize_key( $name );
+			$classname = preg_replace( '/^[^a-zA-Z_\x80-\xff]+/', '', $classname );	# Cannot start with numeric characters.
+			$classname = preg_replace( '/[^a-zA-Z0-9_\x80-\xff]/', '', $classname );
+
+			return $classname;
 		}
 
 		public static function sanitize_css_class( $css_class ) {
@@ -5209,12 +5220,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
 		}
 
-		public static function sanitize_hookname( $name ) {
+		public static function sanitize_hookname( $hookname ) {
 
-			$name = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $name );
-			$name = rtrim( $name, '_' );	// Do not trim leading underscores to allow for '__return_false', for example.
+			$hookname = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $hookname );
 
-			return self::sanitize_key( $name );
+			$hookname = rtrim( $hookname, '_' );	// Only trim right side underscores to allow for '__return_false'.
+
+			return self::sanitize_key( $hookname, $allow_upper = false );
 		}
 
 		/*
@@ -5236,20 +5248,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Sanitize an option key.
+		 * Sanitize an option array key.
 		 *
-		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
+		 * Unlike the WordPress sanitize_key() function, this method allows for upper case characters, a colon and hash.
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
-			if ( ! $allow_upper ) {
+			/*
+			 * Scalar variables are those containing an int, float, string or bool.
+			 * 
+			 * Types array, object, resource and null are not scalar. 
+			 */
+			if ( is_scalar( $key ) ) {
 
-				$key = strtolower( $key );
+				if ( ! $allow_upper ) {
+
+					$key = strtolower( $key );	// Convert upper case characters to lower case.
+				}
+
+				return preg_replace( '/[^a-zA-Z0-9\-_#:]/', '', $key );
 			}
 
-			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
-
-			return trim( $key );
+			return '';
 		}
 
 		public static function sanitize_locale( $locale ) {

@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_db_transients' ) );
+			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_cache_files' ) );
 			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// Single scheduled task.
 
 			if ( $this->is_disabled() ) {
@@ -77,37 +77,55 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
+		 * Clear cache files older than 30 days.
+		 */
+		public function clear_expired_cache_files() {
+
+			return $this->clear_cache_files( MONTH_IN_SECONDS );
+		}
+
+		/*
 		 * Clear cache files.
 		 *
 		 * See WpssoUtilCache->refresh().
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		public function clear_cache_files() {
+		public function clear_cache_files( $file_exp_secs = null ) {
 
-			$count = 0;
+			$cleared_count = 0;
+			$cache_files   = $this->get_cache_files();	// Excludes hidden files and index.php.
 
-			$cache_files = $this->get_cache_files();
+			foreach ( $cache_files as $cache_file ) {
 
-			foreach ( $cache_files as $file_path ) {
+				if ( null !== $file_exp_secs ) {
 
-				if ( @unlink( $file_path ) ) {
+					/*
+					 * Skip cache files that are newer than the expiration time.
+					 */
+					if ( filemtime( $cache_file ) > time() - $file_exp_secs ) {
+
+						continue;
+					}
+				}
+
+				if ( @unlink( $cache_file ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'removed the cache file ' . $file_path );
+						$this->p->debug->log( 'removed the cache file ' . $cache_file );
 					}
 
-					$count++;
+					$cleared_count++;
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'error removing cache file ' . $file_path );
+						$this->p->debug->log( 'error removing cache file ' . $cache_file );
 					}
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
-					$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $file_path );
+					$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $cache_file );
 
 					$this->p->notice->err( $error_msg );
 
@@ -115,7 +133,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			return $count++;
+			return $cleared_count++;
 		}
 
 		/*
@@ -123,7 +141,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function count_cache_files() {
 
-			$cache_files = $this->get_cache_files();
+			$cache_files = $this->get_cache_files();	// Excludes hidden files and index.php.
 
 			return count( $cache_files );
 		}
@@ -132,7 +150,22 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cache_files = array();
 
-			if ( ! $dh = @opendir( WPSSO_CACHE_DIR ) ) {
+			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
+
+				while ( $file_name = @readdir( $dh ) ) {
+
+					$cache_file = WPSSO_CACHE_DIR . $file_name;
+
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
+						$cache_files[] = $cache_file;
+
+					}
+				}
+
+				closedir( $dh );
+
+			} else {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -146,21 +179,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->notice->err( $error_msg );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
-
-			} else {
-
-				while ( $file_name = @readdir( $dh ) ) {
-
-					$file_path = WPSSO_CACHE_DIR . $file_name;
-
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $file_path ) ) {
-
-						$cache_files[] = $file_path;
-
-					}
-				}
-
-				closedir( $dh );
 			}
 
 			return $cache_files;
@@ -190,40 +208,18 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function clear_db_transients( $key_prefix = '', $clear_short = true ) {
 
-			$count = 0;
-
+			$cleared_count     = 0;
 			$transients_subset = $this->get_db_transients_subset( $key_prefix, $clear_short );
 
 			foreach ( $transients_subset as $key ) {
 
 				if ( delete_transient( $key ) ) {
 
-					$count++;
+					$cleared_count++;
 				}
 			}
 
-			return $count;
-		}
-
-		/*
-		 * Hooked to WordPress 'wp_scheduled_delete' action.
-		 *
-		 * See WpssoUtilCache->__construct().
-		 */
-		public function clear_expired_db_transients() {
-
-			$count           = 0;
-			$transients_keys = $this->get_db_transients_keys( $key_prefix = 'wpsso_', $expired_only = true );
-
-			foreach ( $transients_keys as $key ) {
-
-				if ( delete_transient( $key ) ) {
-
-					$count++;
-				}
-			}
-
-			return $count;
+			return $cleared_count;
 		}
 
 		/*
@@ -246,7 +242,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * begins with 'wpsso_!_'), and optionally exclude transients for shortened URLs.
 		 *
 		 * See WpssoAdmin->show_metabox_cache_status().
-		 * See WpssoUtilCache->clear_expired_db_transients().
 		 * See WpssoUtilCache->get_db_transients_subset().
 		 */
 		public function get_db_transients_keys( $key_prefix = '', $expired_only = false ) {
