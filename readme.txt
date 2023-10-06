@@ -255,6 +255,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.2.0-dev.1 (2023/10/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a scheduled action to clear expired cache files.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoUtilCache->clear_expired_cache_files()` method hooked to the 'wp_scheduled_delete' action.
+	* Added a `$file_exp_secs` argument to the `WpssoUtilCache->clear_cache_files()` method.
+	* Removed the `WpssoUtilCache->clear_expired_db_transients()` method as WordPress now clears expired transients (old WordPress versions did not).
+	* Refactored the `SucomUtil::sanitize_key()` method.
+	* Refactored the `SucomUtil::sanitize_classname()` method.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.1.1 (2023/10/04)**
 
 * **New Features**
@@ -316,6 +334,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.2.0-dev.1 =
+
+(2023/10/06) Added a scheduled action to clear expired cache files.
 
 = 16.1.1 =
 
