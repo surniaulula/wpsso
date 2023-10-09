@@ -1,4 +1,3 @@
-
 /*
  * Hard-coded / fixed constants. These values cannot be modified.
  */
@@ -82,4 +81,3 @@ WPSSO_SITE_OPTIONS_NAME                  = 'wpsso_site_options'
 WPSSO_TITLE_TAG_DISABLE                  = false	// Disable filters for the WordPress title tag.
 WPSSO_TITLE_TAG_PRIORITY                 = 1000
 WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE          = false	// Disable SEO related meta tags.
-
