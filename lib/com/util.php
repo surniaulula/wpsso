@@ -5147,7 +5147,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_css_class( $css_class ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
+			return trim( preg_replace( '/[^a-zA-Z0-9_\- ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
 		}
 
 		/*
@@ -5155,7 +5155,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_css_id( $css_id ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9\-_]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
+			return trim( preg_replace( '/[^a-zA-Z0-9_\-]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
 		}
 
 		public static function sanitize_file_name( $file_name ) {
@@ -5222,7 +5222,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_hookname( $hookname ) {
 
-			$hookname = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $hookname );
+			$hookname = preg_replace( '/[\/\-\. \[\]:#]+/', '_', $hookname );
 
 			$hookname = rtrim( $hookname, '_' );	// Only trim right side underscores to allow for '__return_false'.
 
@@ -5242,7 +5242,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_input_name( $input_name ) {
 
 			$input_name = preg_replace( '/:\/\//', '_', $input_name );
-			$input_name = preg_replace( '/[^a-zA-Z0-9\-_#:]+/', '_', $input_name );
+			$input_name = preg_replace( '/[^a-zA-Z0-9_\-:#]+/', '_', $input_name );
 
 			return trim( $input_name, $characters = '-' );
 		}
@@ -5250,7 +5250,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Sanitize an option array key.
 		 *
-		 * Unlike the WordPress sanitize_key() function, this method allows for upper case characters, a colon and hash.
+		 * Unlike the WordPress sanitize_key() function, this method allows for colon and hash characters, and (optionally)
+		 * upper case characters.
+		 *
+		 * See wordpress/wp-includes/formatting.php.
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
@@ -5266,7 +5269,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$key = strtolower( $key );	// Convert upper case characters to lower case.
 				}
 
-				return preg_replace( '/[^a-zA-Z0-9\-_#:]/', '', $key );
+				return preg_replace( '/[^a-zA-Z0-9_\-:#]/', '', $key );
 			}
 
 			return '';
