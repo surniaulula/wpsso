@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.2.0-rc.2 (2023/10/09)**
+**Version 16.2.0 (2023/10/09)**
 
 * **New Features**
 	* None.
@@ -266,6 +266,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoUtilCache->clear_expired_cache_files()` method hooked to the 'wp_scheduled_delete' action.
 	* Added a `$file_exp_secs` argument to the `WpssoUtilCache->clear_cache_files()` method.
+	* Replaced the 'comment_post' action hook to clear the post cache by the 'wp_insert_comment' action hook.
 	* Removed the `WpssoUtilCache->clear_expired_db_transients()` method as WordPress now clears expired transients (old WordPress versions did not).
 	* Refactored the `SucomUtil::sanitize_key()` method.
 	* Refactored the `SucomUtil::sanitize_classname()` method.
@@ -335,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.2.0-rc.2 =
+= 16.2.0 =
 
 (2023/10/09) Added a scheduled action to clear expired cache files.
 
