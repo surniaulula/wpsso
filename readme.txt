@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.2.0-b.1 (2023/10/08)**
+**Version 16.2.0-rc.1 (2023/10/09)**
 
 * **New Features**
 	* None.
@@ -335,9 +335,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.2.0-b.1 =
+= 16.2.0-rc.1 =
 
-(2023/10/08) Added a scheduled action to clear expired cache files.
+(2023/10/09) Added a scheduled action to clear expired cache files.
 
 = 16.1.1 =
 
