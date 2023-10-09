@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			}
 
 			/*
-			 * Called by wp_insert_comment().
+			 * Called by wp_insert_comment(), which is called by wp_new_comment().
 			 */
 			add_action( 'wp_insert_comment', array( $this, 'refresh_cache_insert_comment' ), PHP_INT_MAX, 2 );
 
