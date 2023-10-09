@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a scheduled action to clear expired cache files.
+	* Added a scheduled action to clear cache files older than 30 days.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.2.0 =
 
-(2023/10/09) Added a scheduled action to clear expired cache files.
+(2023/10/09) Added a scheduled action to clear cache files older than 30 days.
 
 = 16.1.1 =
 
