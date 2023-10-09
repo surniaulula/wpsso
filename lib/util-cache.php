@@ -357,6 +357,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
+		/*
+		 * See WpssoRarActions->action_refresh_cache().
+		 */
 		public function refresh( $user_id = null ) {
 
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
