@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoJsonTypeQAPage' ) ) {
 				 * The CreativeWork 'text' property may be empty if 'schema_def_add_text_prop' is unchecked.
 				 */
 				if ( empty( $question[ 'text' ] ) ) {
-					
+
 					$question[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 				}
 

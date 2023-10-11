@@ -30,20 +30,15 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
-
 			/*
-			 * Remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag.
+			 * Always disable the WordPress shortlink meta tag.
 			 */
-			if ( $add_link_rel_shortlink ) {
+			if ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'removing default wp_shortlink_wp_head action' );
-				}
-
-				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+				$this->p->debug->log( 'removing default wp_shortlink_wp_head action' );
 			}
+
+			remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
 			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 

@@ -5135,7 +5135,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_classname( $classname, $allow_underscore = true ) {
 
 			if ( ! $allow_underscore ) {
-			
+
 				$classname = preg_replace( '/_/', '', $classname );	# Remove underscores.
 			}
 
