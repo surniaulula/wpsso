@@ -1334,6 +1334,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$regular_price      = $product->get_regular_price();
 				$regular_price_fmtd = $this->get_product_price_formatted( $product, $regular_price, $product_incl_vat );
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'get_regular_price() returned ' . $regular_price );
+				}
+
 				$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
 				$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
 
@@ -1355,6 +1360,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					$sale_price      = $product->get_sale_price();
 					$sale_price_fmtd = $this->get_product_price_formatted( $product, $sale_price, $product_incl_vat );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'get_sale_price() returned ' . $sale_price );
+					}
 
 					$mt_ecom[ 'product:sale_price:amount' ]   = $sale_price_fmtd;
 					$mt_ecom[ 'product:sale_price:currency' ] = $product_currency;
@@ -2059,6 +2069,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$product_currency = get_woocommerce_currency();
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'get_woocommerce_currency() returned ' . $product_currency );
+				}
+
 				$product_currency = apply_filters( 'wpsso_product_currency', $product_currency );
 			}
 
@@ -2110,6 +2125,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		private function get_product_price( $product ) {
 
 			$product_price = $product->get_price();
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'get_price() returned ' . $product_price );
+			}
 
 			$product_price = apply_filters( 'wpsso_product_price', $product_price, $product );
 

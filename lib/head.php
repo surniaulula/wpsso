@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returned cache index is "' . $cache_index . '"' );
+				$this->p->debug->log( 'head cache index = ' . $cache_index );
 			}
 
 			return $cache_index;
