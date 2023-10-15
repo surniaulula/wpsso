@@ -151,9 +151,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * Returns the language and country code, like "en_US".
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public function get_schema_lang( $mixed = 'current' ) {
+		public function get_schema_lang( $mixed = 'current', $prime_lang = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -188,6 +190,48 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$schema_lang = $custom_schema_lang;
 						}
 					}
+				}
+			}
+
+			if ( $prime_lang ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting primary language for ' . $schema_lang );
+				}
+
+				/*
+				 * Exceptions.
+				 *
+				 * See https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap.
+				 */
+				switch ( $schema_lang ) {
+
+					case 'zh_CN':	// Simplified Chinese (China).
+
+						$schema_lang = 'zh-cn';
+
+						break;
+
+					case 'zh_HK':	// Traditional Chinese (Hong Kong).
+					case 'zh_TW':	// Traditional Chinese (Taiwan).
+
+						$schema_lang = 'zh-tw';
+
+						break;
+
+					default:
+
+						if ( function_exists( 'locale_get_primary_language' ) ) {	// Requires the PHP Intl package.
+		
+							$schema_lang = locale_get_primary_language( $schema_lang );
+
+						} else {
+
+							$schema_lang = substr( $schema_lang, 0, 2 );
+						}
+
+						break;
 				}
 			}
 

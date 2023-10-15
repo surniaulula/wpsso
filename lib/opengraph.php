@@ -920,7 +920,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				return $def_locale;
-
 			}
 
 			/*
