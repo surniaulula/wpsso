@@ -255,6 +255,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.3.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.2.0 (2023/10/09)**
 
 * **New Features**
@@ -335,6 +349,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.3.0-dev.1 =
+
+(TBD) None.
 
 = 16.2.0 =
 
