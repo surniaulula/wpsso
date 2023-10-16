@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.3.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 16.3.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3969,7 +3969,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:203 gettext/gettext-lib-pro.php:214
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
-#: lib/loader.php:197 lib/post.php:1691 lib/pro/util/shorten.php:331
+#: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util.php:3817
 msgid "%s error:"
 msgstr ""
@@ -4015,54 +4015,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1339
+#: lib/abstract/wp-meta.php:1341
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1410
+#: lib/abstract/wp-meta.php:1412
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1414
+#: lib/abstract/wp-meta.php:1416
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1417 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1419 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1424
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1425
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1424
+#: lib/abstract/wp-meta.php:1426
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1757
+#: lib/abstract/wp-meta.php:1759
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2085 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:2087 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2087
+#: lib/abstract/wp-meta.php:2089
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -4420,7 +4420,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:895 lib/post.php:1056 lib/term.php:729 lib/user.php:752
+#: lib/admin.php:895 lib/post.php:1058 lib/term.php:729 lib/user.php:752
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -11515,136 +11515,136 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1194
+#: lib/post.php:1196
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1227
+#: lib/post.php:1229
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1230
+#: lib/post.php:1232
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1235
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1263
+#: lib/post.php:1265
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1265
+#: lib/post.php:1267
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1267
+#: lib/post.php:1269
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1268
+#: lib/post.php:1270
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1282
+#: lib/post.php:1284
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1296
+#: lib/post.php:1298
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1311
+#: lib/post.php:1313
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1328
+#: lib/post.php:1330
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1331
+#: lib/post.php:1333
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1364
+#: lib/post.php:1366
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1366
+#: lib/post.php:1368
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1368
+#: lib/post.php:1370
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1390
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1407
+#: lib/post.php:1409
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1409
+#: lib/post.php:1411
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1412
+#: lib/post.php:1414
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1455
+#: lib/post.php:1457
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1457
+#: lib/post.php:1459
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1465
+#: lib/post.php:1467
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1469
+#: lib/post.php:1471
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1473
+#: lib/post.php:1475
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1667
+#: lib/post.php:1669
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1671
+#: lib/post.php:1673
 msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:1993
+#: lib/post.php:1995
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

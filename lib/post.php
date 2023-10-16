@@ -252,14 +252,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {	// Just in case.
 
-					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
-					$mod[ 'post_type' ]          = get_post_type( $mod[ 'wp_obj' ] );			// Post type name.
-					$mod[ 'post_mime_type' ]     = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
-					$mod[ 'post_status' ]        = get_post_status( $mod[ 'wp_obj' ] );			// Post status name.
-					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $mod[ 'wp_obj' ] );	// Post author id.
-					$mod[ 'post_coauthors' ]     = array();
-					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );		// ISO 8601 date or false.
-					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
+					$mod[ 'post_slug' ]               = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
+					$mod[ 'post_type' ]               = get_post_type( $mod[ 'wp_obj' ] );				// Post type name.
+					$mod[ 'post_mime_type' ]          = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
+					$mod[ 'post_status' ]             = get_post_status( $mod[ 'wp_obj' ] );			// Post status name.
+					$mod[ 'post_author' ]             = (int) get_post_field( 'post_author', $mod[ 'wp_obj' ] );	// Post author id.
+					$mod[ 'post_coauthors' ]          = array();
+					$mod[ 'post_time' ]               = get_post_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );		// ISO 8601 date or false.
+					$mod[ 'post_timestamp' ]          = get_post_time( 'U', $gmt = true, $mod[ 'wp_obj' ] );		// Unix timestamp or false.
+					$mod[ 'post_modified_time' ]      = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
+					$mod[ 'post_modified_timestamp' ] = get_post_modified_time( 'U', $gmt = true, $mod[ 'wp_obj' ] );	// Unix timestamp or false.
 
 					/*
 					 * Find the post mime type group and subgroup values.
