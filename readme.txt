@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.3.0-dev.3 (2023/10/16)**
+**Version 16.3.0-b.1 (2023/10/16)**
 
 * **New Features**
 	* None.
@@ -351,7 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.3.0-dev.3 =
+= 16.3.0-b.1 =
 
 (2023/10/16) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
 
