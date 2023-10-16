@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '16.3.0-dev.3',	// Plugin version.
+					'version'     => '16.3.0-b.1',	// Plugin version.
 					'opt_version' => '991',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2865,6 +2865,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'unchecked'  => 'unchecked',
 					'at'         => 'at',
 					'tz'         => 'tz',
+
+					/*
+					 * See SucomForm->get_checklist_post_types().
+					 * See SucomForm->get_checklist_post_tax_user_values().
+					 */
+					'post_type'     => 'Post Type',
+					'taxonomy'      => 'Taxonomy',
+					'user_profiles' => 'User Profiles',
 				),
 				'document_title' => array(	// Webpage Title Tag.
 					'wp_title'         => '[WordPress Title]',

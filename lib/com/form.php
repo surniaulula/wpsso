@@ -697,7 +697,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
-			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
+			$label_prefix = $this->get_option_value_transl( 'Post Type' );
 
 			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
 
@@ -756,15 +756,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private function get_checklist_post_tax_user_values() {
 
-			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
+			$label_prefix = $this->get_option_value_transl( 'Post Type' );
 
 			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
 
-			$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain );
+			$label_prefix = $this->get_option_value_transl( 'Taxonomy' );
 
 			$values += SucomUtil::get_taxonomy_labels( $val_prefix = 'tax_', $label_prefix );
 
-			$values[ 'user_page' ] = _x( 'User Profiles', 'option label', $this->text_domain );
+			$values[ 'user_page' ] = $this->get_option_value_transl( 'User Profiles' );
 
 			asort( $values );	// Sort by label.
 
