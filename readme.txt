@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.3.0-rc.2 (2023/10/16)**
+**Version 16.3.0 (2023/10/17)**
 
 * **New Features**
 	* None.
@@ -352,9 +352,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.3.0-rc.2 =
+= 16.3.0 =
 
-(2023/10/16) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
+(2023/10/17) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
 
 = 16.2.0 =
 
