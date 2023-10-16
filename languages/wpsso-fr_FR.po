@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-10-16 13:05-0700\n"
+"PO-Revision-Date: 2023-10-16 13:42-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1122,8 +1122,8 @@ msgstr "WPSSO Meilleur XML plans de site WordPress"
 
 #: gettext/gettext-lib-config.php:152
 msgctxt "plugin description"
-msgid "Include Schema images, alternate language URLs, post type archive pages, select post types and taxonomies, exclude \"No Index\" and redirected pages."
-msgstr "Inclut les images de Schéma, URL de langue alternative, pages d'archives d'article, types d'article et les taxonomies sélectionnés, exclut les pages \"Pas d'index\" et redirigées."
+msgid "Improves the WordPress sitemaps XML with article modification times, alternate language URLs, images sitemaps, news sitemaps and more."
+msgstr "Améliore le XML des plans de site WordPress avec les temps de modification d'articles, URL de langues alternatives, plans de site d'images et d'actualités, et plus encore."
 
 #: gettext/gettext-lib-config.php:153
 msgctxt "menu title"
@@ -4007,12 +4007,12 @@ msgid "Adding shipping details to your Schema Product markup is important if you
 msgstr "L'ajout des détails d'expédition à votre balisage de produit de Schéma est important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
 #: lib/admin-head-suggest-addons.php:278
-msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active."
-msgstr "La fonctionnalité <a href=\"%1$s\">XML des sitemaps WordPress</a> (introduite dans WordPress v5.5) est activée, mais l'ajout %2$s n'est pas actif."
+msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> is enabled, but the %2$s add-on is not active."
+msgstr "Le <a href=\"%1$s\">XML des plans de site WordPress</a> est activé, mais l'ajout %2$s n'est pas actif."
 
 #: lib/admin-head-suggest-addons.php:280
-msgid "You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as \"No Index\", and automatically enhance the WordPress sitemaps XML with article modification times."
-msgstr "Vous pouvez activer cet ajout pour gérer les types d'article et taxonomie inclus dans le XML des sitemaps WordPress, exclure les articles, pages, types d'articles personnalisés, termes (catégories, étiquettes, etc.), et profil d'utilisateurs marquées comme \"Pas d'indexation\", et améliorez le XML des sitemaps WordPress automatiquement avec les heures de modification des articles."
+msgid "You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and/or user profiles, enhance the sitemaps XML with article modification times, images sitemaps, news sitemaps and more."
+msgstr "Vous pouvez activer cet ajout pour gérer les types d'article et de taxonomie inclus dans le XML des plans de site, exclure des articles, pages, types de publication personnalisés, termes de taxonomie (catégories, étiquettes, etc.) et/ou profils utilisateur, améliorer le XML des plans de site avec les temps de modification d'articles, plans de site d'images, plans de site d'actualités et plus encore."
 
 #: lib/admin-head-suggest-addons.php:307
 msgid "Activate the %s add-on."
@@ -9086,8 +9086,8 @@ msgid "As an example, to match the <em>%1$s</em> of a theme or other plugin, you
 msgstr "Par exemple, pour correspondre l'<em>%1$s</em> d'un thème ou d'une autre extension, vous pourriez remplacer \"%2$s\" par \"%3$s\" ou une autre valeur."
 
 #: lib/messages-tooltip.php:731
-msgid "The built-in WordPress <em>%s</em> column cannot be modified."
-msgstr "La colonne intégrée WordPress <em>%s</em> ne peut pas être modifiée."
+msgid "The WordPress <em>%s</em> column cannot be modified."
+msgstr "La colonne WordPress <em>%s</em> ne peut pas être modifiée."
 
 #: lib/messages.php:159
 msgid "Upgrade to the %s edition and get the following features."

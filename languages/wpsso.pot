@@ -4241,7 +4241,7 @@ msgstr ""
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
 "the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms "
-"(categories, tags, etc.), and/or user profiles, and enhance the sitemaps XML "
+"(categories, tags, etc.), and/or user profiles, enhance the sitemaps XML "
 "with article modification times, images sitemaps, news sitemaps and more."
 msgstr ""
 
