@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $ext_name_transl ) . ' ';
 
-				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the sitemaps XML with article modification times, images sitemaps and news sitemaps.', 'wpsso' );
+				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and/or user profiles, and enhance the sitemaps XML with article modification times, images sitemaps, news sitemaps and more.', 'wpsso' );
 
 				$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
