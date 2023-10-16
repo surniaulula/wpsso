@@ -7,7 +7,7 @@
 #poststuff table.sucom-settings.column-metabox h4,
 #poststuff .inner-sidebar table.sucom-settings h4 {
 	font-size:1.05em;
-	font-weight:600;
+	font-weight:500;
 	padding:0;
 	margin:5px 0;
 	border:none;
@@ -258,12 +258,12 @@ table.sucom-settings table.plugin_list_table_cols {
 
 table.sucom-settings th {
 	color:#333;
-	font-weight:600;
+	font-weight:500;
 	text-align:right;
 	vertical-align:top;
-	line-height:1.8em;
-	width:270px;
-	max-width:270px;
+	line-height:2em;
+	width:280px;
+	max-width:280px;
 }
 
 table.sucom-settings th.plugin_name {
