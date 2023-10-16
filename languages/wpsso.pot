@@ -10200,7 +10200,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:731
-msgid "The built-in WordPress <em>%s</em> column cannot be modified."
+msgid "The WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 
 #: lib/messages.php:159
