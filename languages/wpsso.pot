@@ -1310,8 +1310,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:152
 msgctxt "plugin description"
 msgid ""
-"Include Schema images, alternate language URLs, post type archive pages, "
-"select post types and taxonomies, exclude \"No Index\" and redirected pages."
+"Improves the WordPress sitemaps XML with article modification times, "
+"alternate language URLs, images sitemaps, news sitemaps and more."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:153
@@ -4233,17 +4233,17 @@ msgstr ""
 
 #: lib/admin-head-suggest-addons.php:278
 msgid ""
-"The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in "
-"WordPress v5.5) is enabled, but the %2$s add-on is not active."
+"The <a href=\"%1$s\">WordPress sitemaps XML</a> is enabled, but the %2$s add-"
+"on is not active."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:280
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
-"the WordPress sitemaps XML, exclude posts, pages, custom post types, "
-"taxonomy terms (categories, tags, etc.), and user profiles marked as \"No "
-"Index\", and automatically enhance the WordPress sitemaps XML with article "
-"modification times."
+"the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms "
+"(categories, tags, etc.), and user profiles marked as \"No Index\", and "
+"automatically enhance the sitemaps XML with article modification times, "
+"images sitemaps and news sitemaps."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:307
