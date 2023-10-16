@@ -898,7 +898,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
-			static $do_once = array();
+			static $do_once = array();	// Just in case - prevent recursion.
 
 			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {
 
@@ -912,9 +912,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			/*
-			 * Clear the post meta, content, and head caches.
-			 */
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
@@ -930,6 +927,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $term_id, $term_tax_id = false ) {
+
+			static $do_once = array();	// Just in case - prevent recursion.
+
+			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {
+
+				return;
+			}
+
+			$do_once[ $term_id ][ $term_tax_id ] = true;
+
+			if ( empty( $term_id ) ) {	// Just in case.
+
+				return;
+			}
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 

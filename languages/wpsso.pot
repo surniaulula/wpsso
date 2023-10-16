@@ -4057,11 +4057,11 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2087 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:2095 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2089
+#: lib/abstract/wp-meta.php:2097
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -8284,8 +8284,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1738 lib/user.php:1827
-#: lib/user.php:1955
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1774 lib/user.php:1863
+#: lib/user.php:1991
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11643,7 +11643,7 @@ msgstr ""
 msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:1995
+#: lib/post.php:2004
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12413,7 +12413,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:974
+#: lib/term.php:985
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12453,7 +12453,7 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: lib/user.php:198
+#: lib/user.php:196
 msgctxt "module name"
 msgid "user"
 msgstr ""
@@ -12470,50 +12470,50 @@ msgstr ""
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1671
+#: lib/user.php:1707
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1714 lib/user.php:1740
+#: lib/user.php:1750 lib/user.php:1776
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1721
+#: lib/user.php:1757
 msgid "A background task will begin shortly to %s to content creators."
 msgstr ""
 
-#: lib/user.php:1751 lib/user.php:1840 lib/util-cache.php:378
+#: lib/user.php:1787 lib/user.php:1876 lib/util-cache.php:378
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1752
+#: lib/user.php:1788
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1786
+#: lib/user.php:1822
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1787 lib/user.php:1879 lib/util-cache.php:488
+#: lib/user.php:1823 lib/user.php:1915 lib/util-cache.php:488
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1803 lib/user.php:1829
+#: lib/user.php:1839 lib/user.php:1865
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1810
+#: lib/user.php:1846
 msgid "A background task will begin shortly to %s from all users."
 msgstr ""
 
-#: lib/user.php:1841
+#: lib/user.php:1877
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1878
+#: lib/user.php:1914
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

@@ -1792,9 +1792,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *
 			 * If no options were changed, then merge and re-sanitize the previous options.
 			 */
-			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
-			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
-			$md_opts = SucomUtil::array_merge_recursive_distinct( $md_prev, $md_opts );	// Complete the array with previous options.
+			if ( empty( $_POST[ WPSSO_META_NAME ] ) ) {
+
+				$md_opts = $md_prev;
+
+			} else {
+
+				$md_opts = $_POST[ WPSSO_META_NAME ];
+				$md_opts = SucomUtil::restore_checkboxes( $md_opts );
+				$md_opts = SucomUtil::array_merge_recursive_distinct( $md_prev, $md_opts );	// Complete the array with previous options.
+			}
+
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/*

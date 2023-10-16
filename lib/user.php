@@ -72,11 +72,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
-
 			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'modify_fb_contact_label' ), 20, 1 );
 
 			add_action( 'wpsso_add_person_role', array( $this, 'add_person_role' ), 10, 1 );	// For single scheduled task.
-
 			add_action( 'wpsso_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
 
 			/*
@@ -470,6 +468,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			/*
 			 * Make sure the current user can submit and same metabox options.
+			 *
+			 * WpssoUser->user_can_save() returns false when saving a profile page without a metabox.
 			 */
 			if ( ! $this->user_can_save( $user_id ) ) {
 
@@ -1065,7 +1065,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function save_about_section( $user_id ) {
 
-			if ( ! current_user_can( 'edit_user', $user_id ) ) {	// Just in case.
+			static $do_once = array();	// Just in case - prevent recursion.
+
+			if ( isset( $do_once[ $user_id ] ) ) {
+
+				return;
+			}
+
+			$do_once[ $user_id ] = true;
+
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 
 				return;
 			}
@@ -1098,7 +1107,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function sanitize_submit_cm( $user_id ) {
 
-			if ( ! current_user_can( 'edit_user', $user_id ) ) {	// Just in case.
+			static $do_once = array();	// Just in case - prevent recursion.
+
+			if ( isset( $do_once[ $user_id ] ) ) {
+
+				return;
+			}
+
+			$do_once[ $user_id ] = true;
+
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 
 				return;
 			}
@@ -1106,7 +1124,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $id => $opt_pre ) {
 
 				/*
-				 * Not all social websites have contact fields, so check.
+				 * Check that the social site has a contact field.
 				 */
 				if ( isset( $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ] ) ) {
 
@@ -1601,7 +1619,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				) );
 			}
 
-			static $do_once = array();
+			static $do_once = array();	// Just in case - prevent recursion.
 
 			if ( isset( $do_once[ $user_id ] ) ) {
 
@@ -1615,9 +1633,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			/*
-			 * Clear the post meta, content, and head caches.
-			 */
 			$mod = $this->get_mod( $user_id );
 
 			$this->clear_mod_cache( $mod );
@@ -1631,6 +1646,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
 		 */
 		public function refresh_cache( $user_id, $rel = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'user_id' => $user_id,
+				) );
+			}
+
+			static $do_once = array();	// Just in case - prevent recursion.
+
+			if ( isset( $do_once[ $user_id ] ) ) {
+
+				return;
+			}
+
+			$do_once[ $user_id ] = true;
+
+			if ( empty( $user_id ) ) {	// Just in case.
+
+				return;
+			}
 
 			$mod = $this->get_mod( $user_id );
 

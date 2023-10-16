@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			static $do_once = array();
+			static $do_once = array();	// Just in case - prevent recursion.
 
 			if ( isset( $do_once[ $post_id ] ) ) {
 
@@ -1926,6 +1926,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'post_id' => $post_id,
 				) );
 			}
+
+			static $do_once = array();	// Just in case - prevent recursion.
+
+			if ( isset( $do_once[ $post_id ] ) ) {
+
+				return;
+			}
+
+			$do_once[ $post_id ] = true;
 
 			/*
 			 * WpssoPost->post_can_have_meta() returns false:
