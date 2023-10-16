@@ -255,16 +255,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.3.0-dev.1 (TBD)**
+**Version 16.3.0-dev.2 (2023/10/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a `$prime_lang` argument to the `WpssoSchema->get_schema_lang()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -350,9 +350,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.3.0-dev.1 =
+= 16.3.0-dev.2 =
 
-(TBD) None.
+(2023/10/15) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
 
 = 16.2.0 =
 
