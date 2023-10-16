@@ -142,8 +142,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
-					$def_site_name = get_bloginfo( 'name' );
-					$def_site_desc = get_bloginfo( 'description' );
+					$def_site_name = SucomUtil::get_site_name();
+					$def_site_desc = SucomUtil::get_site_description();
 					$def_home_url  = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
 					$org_types     = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
 					$place_names   = $this->p->util->get_form_cache( 'place_names', $add_none = true );
