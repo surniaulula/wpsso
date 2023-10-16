@@ -266,6 +266,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a `$prime_lang` argument to the `WpssoSchema->get_schema_lang()` method.
 	* Added 'post_timestamp' and 'post_modified_timestamp' to the `$mod` variable.
+	* Added recursion detection/prevention when WordPress is saving the user profile.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
