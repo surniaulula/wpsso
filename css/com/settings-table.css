@@ -261,9 +261,10 @@ table.sucom-settings th {
 	font-weight:500;
 	text-align:right;
 	vertical-align:top;
-	line-height:2em;
-	width:280px;
-	max-width:280px;
+	padding-top:4px;
+	line-height:1.6em;
+	width:270px;
+	max-width:270px;
 }
 
 table.sucom-settings th.plugin_name {
