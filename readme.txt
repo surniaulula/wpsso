@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.3.0-dev.2 (2023/10/15)**
+**Version 16.3.0-dev.3 (2023/10/16)**
 
 * **New Features**
 	* None.
@@ -265,6 +265,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a `$prime_lang` argument to the `WpssoSchema->get_schema_lang()` method.
+	* Added 'post_timestamp' and 'post_modified_timestamp' to the `$mod` variable.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -350,9 +351,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.3.0-dev.2 =
+= 16.3.0-dev.3 =
 
-(2023/10/15) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
+(2023/10/16) Updated the `WpssoSchema->get_schema_lang()` method for the WPSSO WPSM add-on.
 
 = 16.2.0 =
 
