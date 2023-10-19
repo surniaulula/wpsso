@@ -1,37 +1,56 @@
 
-<p>The <code>$mod</code> variable is defined early in the WPSSO load process (in <code>WpssoHead-&gt;show_head()</code>, which is hooked to the 'wp_head' action) and is passed to most WPSSO methods and filters.</p>
+<p>The <code>$mod</code> variable is defined early in the load process (in <code>WpssoHead-&gt;show_head()</code>, which is hooked to the 'wp_head' action) and is passed to most WPSSO methods and filters.</p>
 
 <pre>
 $wpsso =&amp; Wpsso::get_instance();
 
-// Maybe prefer the global $post object.
+// In case we prefer using the global $post object.
 $use_post = apply_filters( 'wpsso_use_post', false );
 
 // Get information about the current webpage.
 $mod = $wpsso-&gt;page-&gt;get_mod( $use_post );
 </pre>
 
-<p>The <code>$mod</code> variable name stands for <em>module</em> and defines important reference values for the current WPSSO object type. The WPSSO object type can be a comment, post, term, or user. An archive does not have an object type since an archive page is a collection of object types. For example, a monthly archive is a collection of posts for that month. In this case, <code>$mod[ 'obj' ]</code> would be false and other properties would be true, like <code>$mod[ 'is_archive' ]</code>, <code>$mod[ 'is_date' ]</code>, and <code>$mod[ 'is_month' ]</code>.</p>
+<p>The <code>$mod</code> variable name stands for <em>module</em> and defines important reference values for the current WPSSO object type. The WPSSO object type can be a comment, post, term, or user object. An archive does not have an object type since an archive page is a collection of objects. For example, a monthly archive is a collection of posts for that month. In this case, <code>$mod[ 'obj' ]</code> would be false and other properties like <code>$mod[ 'is_archive' ]</code>, <code>$mod[ 'is_date' ]</code>, and <code>$mod[ 'is_month' ]</code> would be true.</p>
 
-<p>The <code>WpssoPage-&gt;get_mod()</code> method can be used to determine the current webpage module. If you need to setup a <code>$mod</code> variable for a specific comment, post, term, or user, you can call the <code>get_mod()</code> methods from those class objects directly.</p>
+<p>The <code>WpssoPage-&gt;get_mod()</code> method can be used to determine the current webpage module. If you need to setup a <code>$mod</code> variable for a specific comment, post, term, or user, you can call the <code>get_mod()</code> method from those class objects.</p>
 
 <pre>
 $wpsso =&amp; Wpsso::get_instance();
 
 // Get information for comment ID 123.
-$mod = $wpsso-&gt;comment-&gt;get_mod( 123 );
+$mod = $wpsso-&gt;comment-&gt;get_mod( $comment_id = 123 );
 
 // Get information for post ID 123.
-$mod = $wpsso-&gt;post-&gt;get_mod( 123 );
+$mod = $wpsso-&gt;post-&gt;get_mod( $post_id = 123 );
 
 // Get information for term ID 123.
-$mod = $wpsso-&gt;term-&gt;get_mod( 123 );
+$mod = $wpsso-&gt;term-&gt;get_mod( $term_id = 123 );
 
 // Get information for user ID 123.
-$mod = $wpsso-&gt;user-&gt;get_mod( 123 );
+$mod = $wpsso-&gt;user-&gt;get_mod( $user_id = 123 );
 </pre>
 
-<p>Here is a <code>$mod</code> array for an example post:</p>
+<p>Functions to get the <code>$mod</code> array are also available:</p>
+
+<pre>
+// Get information about the current webpage (post, term, user, archive page, etc.).
+$mod = wpsso_get_page_mod();
+
+// Get information for comment ID 123.
+$mod = wpsso_get_comment_mod( $comment_id = 123 );
+
+// Get information for post ID 123.
+$mod = wpsso_get_post_mod( $post_id = 123 );
+
+// Get information for term ID 123.
+$mod = wpsso_get_term_mod( $term_id = 123 );
+
+// Get information for user ID 123.
+$mod = wpsso_get_user_mod( $user_id = 123 );
+</pre>
+
+<p>Here is an example <code>$mod</code> array for a post:</p>
 
 <pre>Array (
     [id] =&gt; 123
@@ -80,38 +99,4 @@ $mod = $wpsso-&gt;user-&gt;get_mod( 123 );
     [tax_label_single] =&gt; false
     [user_name] =&gt; ''
 )</pre>
-
-<p>An example to retrieve custom post meta:</p>
-
-<pre>
-if ( $mod[ 'is_post' ] &amp;&amp; $mod[ 'id' ] ) {
-
-    $value = get_metadata( 'post', $mod[ 'id' ], '_example_meta_name', $single = true );
-}
-</pre>
-
-<p>The 'obj' element can be used to call object methods. Here's an example to get a custom Open Graph description value (if one has been defined):</p>
-
-<pre>
-$og_desc = $mod[ 'obj' ]-&gt;get_options( $mod[ 'id' ], 'og_desc' );
-</pre>
-
-<p>Function wrappers for the WPSSO <code>get_mod()</code> methods are also available:</p>
-
-<pre>
-// Get information about the current webpage (post, term, user, archive page, etc.).
-$mod = wpsso_get_page_mod();
-
-// Get information for a comment ID.
-$mod = wpsso_get_comment_mod( $comment_id );
-
-// Get information for a post ID.
-$mod = wpsso_get_post_mod( $post_id );
-
-// Get information for a term ID.
-$mod = wpsso_get_term_mod( $term_id );
-
-// Get information for a user ID.
-$mod = wpsso_get_user_mod( $user_id );
-</pre>
 
