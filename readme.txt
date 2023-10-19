@@ -255,6 +255,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.4.0-dev.1 (2023/10/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added new options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Review tab:
+		* Default Review Rating Min
+		* Default Review Rating Max
+	* Added new options under the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields tab:
+		* Review Rating Alt Name Custom Field
+		* Review Rating Custom Field
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.3.0 (2023/10/17)**
 
 * **New Features**
@@ -351,6 +370,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.4.0-dev.1 =
+
+(2023/10/19) Added new options in the SSO &gt; Advanced Settings page.
 
 = 16.3.0 =
 
