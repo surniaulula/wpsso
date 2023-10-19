@@ -212,10 +212,10 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 <h3>Notes and Documentation</h3>
 
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
+	* [$mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 	* [Actions](https://wpsso.com/docs/plugins/wpsso/notes/developer/actions/)
 	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
-	* [The $mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 * [Inline Variables](https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/)
 * [Multisite / Network Support](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
 
@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.4.0-dev.1 (2023/10/19)**
+**Version 16.4.0-dev.2 (2023/10/19)**
 
 * **New Features**
 	* None.
@@ -270,6 +270,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook.
+	* Updated developer documentation: 
+		* [$mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
+		* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -371,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.4.0-dev.1 =
+= 16.4.0-dev.2 =
 
 (2023/10/19) Added new options in the SSO &gt; Advanced Settings page.
 
