@@ -27,7 +27,7 @@
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
 
-'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )
+'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )	// Remove an SSO menu item (ie. 'dashboard', 'setup', etc.).
 
 'wpsso_add_toolbar_validate' ( $bool )
 
@@ -75,9 +75,9 @@
 
 'wpsso_description_seed' ( '', $mod, $num_hashtags, $md_key )
 
-'wpsso_dimension_units' ( $units );
+'wpsso_dimension_units' ( $units )
 
-'wpsso_fluid_volume_units' ( $units );
+'wpsso_fluid_volume_units' ( $units )
 
 'wpsso_form_select_{option_name}' ( $values )
 
@@ -123,13 +123,13 @@
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
-'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// $value is null if the custom field does not exist.
+'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// $value = null if the custom field does not exist.
 
-'wpsso_import_content_blocks' ( array $md_opts, array $mod, $content );
+'wpsso_import_content_blocks' ( array $md_opts, array $mod, $content )
 
-'wpsso_import_custom_fields' ( array $md_opts, array $mod, array $wp_meta );
+'wpsso_import_custom_fields' ( array $md_opts, array $mod, array $wp_meta )
 
-'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj );
+'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj )
 
 'wpsso_inherit_custom_images' ( $bool, array $mod )
 
@@ -199,9 +199,9 @@
 
 'wpsso_md_keys_fallback_{options_key}' ( array $fallback )
 
-'wpsso_menu_title' ( $title )
+'wpsso_menu_title' ( $title )	// Translated menu title (default is "SSO - Social and Search Optimization").
 
-'wpsso_menu_your_sso_title' ( $title )
+'wpsso_menu_your_sso_title' ( $title )	// Translated profile SSO title (default is "Profile SSO - Social and Search Optimization").
 
 'wpsso_meta_name' ( $mt_name, $mod )
 
@@ -371,5 +371,5 @@
 
 'wpsso_user_url' ( $url, $mod )
 
-'wpsso_weight_units' ( $units );
+'wpsso_weight_units' ( $units )
 

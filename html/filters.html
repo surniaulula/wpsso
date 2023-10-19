@@ -49,7 +49,7 @@
 
 <tr><th>wpsso_add_link_rel_shortlink</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_add_menu_submenu_item_{menu_id}</th><td>(&nbsp;$bool&nbsp;)</td><td>Dynamically remove an SSO menu item using their menu ID (ie. 'dashboard', 'setup', etc.).</tr>
+<tr><th>wpsso_add_menu_submenu_item_{menu_id}</th><td>(&nbsp;$bool&nbsp;)</td><td>Remove an SSO menu item (ie. 'dashboard', 'setup', etc.).</tr>
 
 <tr><th>wpsso_add_toolbar_validate</th><td>(&nbsp;$bool&nbsp;)</td></tr>
 
@@ -89,11 +89,17 @@
 
 <tr><th>wpsso_content_image_preg_pid_attr</th><td>(&nbsp;$default = 'data-[a-z]+-pid'&nbsp;)</td></tr>
 
+<tr><th>wpsso_cropped_image_filepath</th><td>(&nbsp;$new_filepath, $filepath, $size_info&nbsp;)</td></tr>
+
 <tr><th>wpsso_default_term_id</th><td>(&nbsp;$default_term_id, $mod, $tax_slug&nbsp;)</td></tr>
 
 <tr><th>wpsso_description</th><td>(&nbsp;$desc_text, $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
 
 <tr><th>wpsso_description_seed</th><td>(&nbsp;'', $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_dimension_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
+
+<tr><th>wpsso_fluid_volume_units</th><td>(&nbsp;$units )</td></tr>
 
 <tr><th>wpsso_form_select_{option_name}</th><td>(&nbsp;$values&nbsp;)</td></tr>
 
@@ -139,9 +145,19 @@
 
 <tr><th>wpsso_image_upscale_test</th><td>(&nbsp;WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args&nbsp;)</td></tr>
 
+<tr><th>wpsso_import_cf_{custom_field_name}</th><td>(&nbsp;$value, array $mod, array $wp_meta&nbsp;)</td><td>$value = null if the custom field does not exist.</td></tr>
+
+<tr><th>wpsso_import_content_blocks</th><td>(&nbsp;array $md_opts, array $mod, $content&nbsp;)</td></tr>
+
+<tr><th>wpsso_import_custom_fields</th><td>(&nbsp;array $md_opts, array $mod, array $wp_meta&nbsp;)</td></tr>
+
+<tr><th>wpsso_import_product_attributes</th><td>(&nbsp;array $md_opts, array $mod, $wp_obj&nbsp;)</td></tr>
+
 <tr><th>wpsso_inherit_custom_images</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_inherit_featured_image</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_init_json_filter_{lib_dir}_{lib_id}</th><td>(&nbsp;$bool = true&nbsp;)</td></tr>
 
 <tr><th>wpsso_input_limits_{options_key}</th><td>(&nbsp;array $limits&nbsp;)</td></tr>
 
@@ -164,6 +180,8 @@
 <tr><th>wpsso_json_data_single_person_sameas</th><td>(&nbsp;$person_sameas, $mod, $user_id&nbsp;)</td></tr>
 
 <tr><th>wpsso_json_data_single_place</th><td>(&nbsp;$place_data, $mod, $place_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_product_group_varies_by</th><td>(&nbsp;$varies_by, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_json_ld_search_url</th><td>(&nbsp;$search_url, $mod, $add_page&nbsp;)</td></tr>
 
@@ -199,7 +217,7 @@
 
 <tr><th>wpsso_link_rel</th><td>(&nbsp;$link_rel, $mod&nbsp;)</td></tr>
 
-<tr><th>wpsso_load_lib</th><td>(&nbsp;$success = false, $filespec = '', $classname = ''&nbsp;)</td><td>General purpose class loader for WPSSO Core and its add-ons. </td></tr>
+<tr><th>wpsso_load_lib</th><td>(&nbsp;$success = false, $filespec = '', $classname = ''&nbsp;)</td></tr>
 
 <tr><th>wpsso_md_keys_fallback_{options_key}</th><td>(&nbsp;array $fallback&nbsp;)</td></tr>
 
@@ -214,6 +232,8 @@
 <tr><th>wpsso_og_add_mt_rating</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_og_add_mt_reviews</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_mt_variants</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_og_add_wc_mt_rating</th><td>(&nbsp;$bool = false, $mod&nbsp;)</td><td>$bool = true if 'woocommerce_enable_review_rating' option is 'yes'.</td></tr>
 
@@ -253,13 +273,15 @@
 
 <tr><th>wpsso_post_image_urls</th><td>(&nbsp;array $urls, $size_name, $post_id&nbsp;)</td></tr>
 
-<tr><th>wpsso_posts_per_page</th><td>(&nbsp;$num, $mod&nbsp;)</td></tr>
+<tr><th>wpsso_post_public_ids</th><td>(&nbsp;array $public_ids, array $posts_args&nbsp;)</td></tr>
 
 <tr><th>wpsso_post_type_has_archive</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_post_types</th><td>(&nbsp;$post_types, $output&nbsp;)</td></tr>
 
 <tr><th>wpsso_post_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_posts_per_page</th><td>(&nbsp;$num, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_primary_tax_slug</th><td>(&nbsp;$tax_slug, $mod&nbsp;)</td></tr>
 
@@ -309,6 +331,8 @@
 
 <tr><th>wpsso_schema_types</th><td>(&nbsp;$schema_types&nbsp;)</td></tr>
 
+<tr><th>wpsso_schema_units</th><td>(&nbsp;$schema_units&nbsp;)</td></tr>
+
 <tr><th>wpsso_search_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_server_request_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
@@ -333,11 +357,17 @@
 
 <tr><th>wpsso_term_image_urls</th><td>(&nbsp;array $urls, $size_name, $term_id&nbsp;)</td></tr>
 
+<tr><th>wpsso_term_public_ids</th><td>(&nbsp;array $public_ids, array $terms_args&nbsp;)</td></tr>
+
 <tr><th>wpsso_term_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_text</th><td>(&nbsp;$text, $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
 
 <tr><th>wpsso_the_content</th><td>(&nbsp;$content, $mod, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content_filter_content</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content_filter_blocks</th><td>(&nbsp;$bool&nbsp;)</td></tr>
 
 <tr><th>wpsso_the_content_seed</th><td>(&nbsp;'', $mod, $md_key&nbsp;)</td></tr>
 
@@ -359,6 +389,10 @@
 
 <tr><th>wpsso_user_image_urls</th><td>(&nbsp;array $urls, $size_name, $user_id&nbsp;)</td></tr>
 
+<tr><th>wpsso_user_public_ids</th><td>(&nbsp;array $public_ids, array $users_args&nbsp;)</td></tr>
+
 <tr><th>wpsso_user_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_weight_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
 
 </table>
