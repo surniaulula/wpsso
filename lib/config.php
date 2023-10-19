@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '16.3.0',	// Plugin version.
-					'opt_version' => '991',		// Increment when changing default option values.
+					'version'     => '16.4.0-dev.1',	// Plugin version.
+					'opt_version' => '993',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1674,7 +1674,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Review.
 					 */
-					'schema_def_review_item_type' => 'product',	// Default Subject Schema Type.
+					'schema_def_review_rating_min' => 1,		// Default Review Rating Min.
+					'schema_def_review_rating_max' => 5,		// Default Review Rating Max.
+					'schema_def_review_item_type'  => 'product',	// Default Subject Schema Type.
 
 					/*
 					 * Twitter Card options.
@@ -2246,6 +2248,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => '',	// Product Target Gender Custom Field.
 					'plugin_cf_product_weight_value'          => '',	// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => '',	// Product Net Width Custom Field.
+					'plugin_cf_review_rating'                 => '',	// Review Rating Custom Field.
+					'plugin_cf_review_rating_alt_name'        => '',	// Review Rating Alt Name Custom Field.
 					'plugin_cf_sameas_urls'                   => '',	// Same-As URLs Custom Field.
 					'plugin_cf_vid_embed'                     => '',	// Video Embed HTML Custom Field.
 					'plugin_cf_vid_url'                       => '',	// Video URL Custom Field.
@@ -2370,6 +2374,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => 'product_target_gender',
 					'plugin_cf_product_weight_value'          => 'product_weight_value',		// Product Net Weight Custom Field.
 					'plugin_cf_product_width_value'           => 'product_width_value',		// Product Net Width Custom Field.
+					'plugin_cf_review_rating'                 => 'schema_review_rating',		// Review Rating Custom Field.
+					'plugin_cf_review_rating_alt_name'        => 'schema_review_rating_alt_name',	// Review Rating Alt Name Custom Field.
 					'plugin_cf_sameas_urls'                   => 'schema_sameas_url',
 					'plugin_cf_vid_embed'                     => 'og_vid_embed',
 					'plugin_cf_vid_url'                       => 'og_vid_url',
@@ -3095,6 +3101,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_target_gender'         => 'Product Target Gender Custom Field',
 					'plugin_cf_product_weight_value'          => 'Product Net Weight Custom Field',
 					'plugin_cf_product_width_value'           => 'Product Net Width Custom Field',
+					'plugin_cf_review_rating'                 => 'Review Rating Custom Field',
+					'plugin_cf_review_rating_alt_name'        => 'Review Rating Alt Name Custom Field',
 					'plugin_cf_sameas_urls'                   => 'Same-As URLs Custom Field',
 					'plugin_cf_vid_url'                       => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'                     => 'Video Embed HTML Custom Field',

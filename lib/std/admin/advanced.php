@@ -1139,6 +1139,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
+				'schema_def_review_rating_min' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Review Rating Min', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_review_rating_min',
+					'content'  => $form->get_no_input( 'schema_def_review_rating_min', $css_class = 'rating' ),
+				),
+				'schema_def_review_rating_max' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Review Rating Max', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_review_rating_max',
+					'content'  => $form->get_no_input( 'schema_def_review_rating_max', $css_class = 'rating' ),
+				),
 				'schema_def_review_item_type' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Subject Schema Type', 'option label', 'wpsso' ),

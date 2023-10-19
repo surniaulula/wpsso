@@ -383,6 +383,8 @@ _x( 'Product Size System Custom Field', 'option label', 'wpsso' );
 _x( 'Product Target Gender Custom Field', 'option label', 'wpsso' );
 _x( 'Product Net Weight Custom Field', 'option label', 'wpsso' );
 _x( 'Product Net Width Custom Field', 'option label', 'wpsso' );
+_x( 'Review Rating Custom Field', 'option label', 'wpsso' );
+_x( 'Review Rating Alt Name Custom Field', 'option label', 'wpsso' );
 _x( 'Same-As URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Video URL Custom Field', 'option label', 'wpsso' );
 _x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' );

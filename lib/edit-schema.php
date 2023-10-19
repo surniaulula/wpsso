@@ -935,7 +935,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'schema_review_rating_alt_name' => array(
 					'tr_class' => $schema_tr_class[ 'review' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Rating Value Name', 'option label', 'wpsso' ),
+					'label'    => _x( 'Rating Alt Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_rating_alt_name',
 					'content'  => $form->get_input( 'schema_review_rating_alt_name' ),
 				),

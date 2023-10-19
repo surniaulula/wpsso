@@ -700,13 +700,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 							$text = __( 'A rating for the subject being reviewed, along with the low / high rating scale (default is 1 to 5).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you are reviewing a claim, the following rating scale is used: 1 = False, 2 = Mostly false, 3 = Half true, 4 = Mostly true, 5 = True.', 'wpsso' );
+							$text .= __( 'If you are reviewing a claim, the following rating scale is used: 1 = False, 2 = Mostly false, 3 = Half true, 4 = Mostly true, 5 = True.', 'wpsso' ) . ' ';
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_rating_alt_name':	// Review: Rating Value Name
+						case 'tooltip-meta-schema_review_rating_alt_name':	// Review: Rating Alt Name
 
-							$text = __( 'An alternate name for the rating value (example: False, Misleading, Accurate, etc.).', 'wpsso' );
+							$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-schema_/', '', $msg_key ) );     // Uses a local cache.
+
+							$text = __( 'An alternate name for the rating value (example: False, Misleading, Accurate, etc.).', 'wpsso' ) . ' ';
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+                                                        $text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+                                                                'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 
 						 	break;
 

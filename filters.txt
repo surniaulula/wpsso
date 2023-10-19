@@ -123,9 +123,11 @@
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
+'wpsso_import_cf_{custom_field_name}' ( $value, $mod, $wp_meta )	// $value is null if the custom field does not exist.
+
 'wpsso_import_content_blocks' ( $md_opts, $mod, $content );
 
-'wpsso_import_custom_fields' ( $md_opts, $mod, $metadata );
+'wpsso_import_custom_fields' ( $md_opts, $mod, $wp_meta );
 
 'wpsso_import_product_attributes' ( $md_opts, $mod, $wp_obj );
 

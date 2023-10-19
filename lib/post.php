@@ -511,8 +511,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/*
 					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
-					 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get
-					 * overwritten by later filters.
+					 * 'wpsso_get_post_options' filters, custom field values may get overwritten by these
+					 * filters.
 					 *
 					 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults'
 					 * and 'wpsso_get_post_defaults' filters, so submitted form values that are identical to

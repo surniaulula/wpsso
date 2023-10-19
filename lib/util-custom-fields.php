@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 		/*
 		 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and 'wpsso_get_post_options'
-		 * filters, so values retrieved from custom fields may get overwritten by later filters.
+		 * filters, custom field values may get overwritten by these filters.
 		 *
 		 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults' and
 		 * 'wpsso_get_post_defaults' filters, so submitted form values that are identical can be removed.
@@ -130,25 +130,25 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				/*
 				 * WordPress offers metadata in array element 0.
 				 */
+				$cf_val = null;
+
 				if ( isset( $wp_meta[ $cf_key ][ 0 ] ) ) {
 
 					$cf_val = maybe_unserialize( $wp_meta[ $cf_key ][ 0 ] );
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no element 0 in ' . $cf_key . ' array' );
-					}
-
-					continue;
+					$this->p->debug->log( 'no element 0 in ' . $cf_key . ' array' );
 				}
 
-				$values = array();
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_cf_' . $cf_key );
+				$cf_val      = apply_filters( $filter_name, $cf_val, $mod, $wp_meta );
 
 				/*
-				 * Decode each array element or the string.
+				 * Decode and trim the string or each array element.
 				 */
+				$values = array();
+
 				if ( is_array( $cf_val ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -156,9 +156,9 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$this->p->debug->log( $cf_key . ' is an array of ' . count( $cf_val ) . ' elements (decoding each value)' );
 					}
 
-					foreach ( $cf_val as $val ) {
+					foreach ( $cf_val as $val ) {	// Decode and trim each array element.
 
-						if ( is_array( $val ) ) {	// Just in case.
+						if ( is_array( $val ) ) {	// Just in case - flatten multi-dimensional arrays.
 
 							$val = SucomUtil::array_implode( $val );
 						}
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $val ), ENT_QUOTES, $charset ) );
 					}
 
-				} else {
+				} elseif ( null !== $cf_val ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				/*
 				 * Check if the value(s) should be split into multiple numeric options.
 				 */
-				if ( ! empty( $values ) ) {	// Just in case.
+				if ( ! empty( $values ) ) {
 
 					if ( ! empty( $md_keys_multi[ $md_key ] ) ) {
 

@@ -339,6 +339,22 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Review tab.
 				 */
+				case 'tooltip-schema_def_review_rating_min':	// Default Review Rating Min.
+
+					$def_value = $this->p->opt->get_defaults( 'schema_def_review_rating_min' );
+
+					$text = sprintf( __( 'The lowest rating value for the Schema Review rating (default is %s).', 'wpsso' ), $def_value ) . ' ';
+
+				 	break;
+
+				case 'tooltip-schema_def_review_rating_max':	// Default Review Rating Max.
+
+					$def_value = $this->p->opt->get_defaults( 'schema_def_review_rating_max' );
+
+					$text = sprintf( __( 'The highest rating value for the Schema Review rating (default is %s).', 'wpsso' ), $def_value ) . ' ';
+
+				 	break;
+
 				case 'tooltip-schema_def_review_item_type':	// Default Subject Schema Type.
 
 					$text = __( 'A default Schema type for the subject of this review (for example, Schema type "Product" for a review of a product).', 'wpsso' ) . ' ';

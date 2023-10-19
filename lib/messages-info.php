@@ -200,7 +200,13 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'These options allow you to customize custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $this->p_name ) . ' ';
+					$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can read to get additional information about the content.', 'wpsso' ), $this->p_name ) . ' ';
+
+					$text .= __( 'Custom fields are often used by plugins and themes to store additional data, but can also be created manually using the WordPress Custom Fields metabox (enabled in the block editor preferences).', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'Custom field names and their values (for comments, posts, terms, and/or users) can be <a href="%s">shown by activating these plugins</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/jsm+show+metadata/' ) . ' ';
+
+					$text .= sprintf( __( 'Developers should note that the %1$s filters are applied before the %2$s and %3$s filters.', 'wpsso' ), '<code>wpsso_import_cf_{custom_field_name}</code>', '<code>wpsso_get_md_options</code>', '<code>wpsso_get_{comment|post|term|user}_options</code>' ) . ' ';
 
 					$text .= '</p> <p><center><strong>';
 

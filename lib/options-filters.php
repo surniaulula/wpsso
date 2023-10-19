@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				switch ( $base_key ) {
 
-					case 'schema_book_pages':	// Number of Pages.
+					case 'schema_book_pages':			// Number of Pages.
 					case 'schema_reading_mins':
 					case 'schema_vid_max':
 
@@ -246,6 +246,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
 
 						return 'blank_num';
+
+					case 'schema_def_review_rating_min':		// Default Review Rating Min.
+					case 'schema_def_review_rating_max':		// Default Review Rating Max.
+
+						return 'pos_num';
 
 					case 'schema_img_id':
 

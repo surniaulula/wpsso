@@ -982,6 +982,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product net width, as opposed to a shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
+					'review_rating' => array(
+						'label' => _x( 'Review Rating', 'option label', 'wpsso' ),
+						'name'  => _x( 'review rating', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a Schema Review rating', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://schema.org/Review', 'wpsso' ),
+					),
+					'review_rating_alt_name' => array(
+						'label' => _x( 'Rating Alt Name', 'option label', 'wpsso' ),
+						'name'  => _x( 'rating alternate name', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a Schema Review rating alternate name', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://developers.google.com/search/docs/appearance/structured-data/factcheck#rating', 'wpsso' ),
+					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
 						'name'  => _x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
