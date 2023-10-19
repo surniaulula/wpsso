@@ -113,9 +113,9 @@
 
 'wpsso_hashtags_seed' ( '', $post_id )
 
-'wpsso_head_disable' ( $bool, $mod )
+'wpsso_head_disable' ( $bool, array $mod )
 
-'wpsso_home_url' ( $url, $mod )
+'wpsso_home_url' ( $url, array $mod )
 
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
@@ -123,17 +123,17 @@
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
-'wpsso_import_cf_{custom_field_name}' ( $value, $mod, $wp_meta )	// $value is null if the custom field does not exist.
+'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// $value is null if the custom field does not exist.
 
-'wpsso_import_content_blocks' ( $md_opts, $mod, $content );
+'wpsso_import_content_blocks' ( array $md_opts, array $mod, $content );
 
-'wpsso_import_custom_fields' ( $md_opts, $mod, $wp_meta );
+'wpsso_import_custom_fields' ( array $md_opts, array $mod, array $wp_meta );
 
-'wpsso_import_product_attributes' ( $md_opts, $mod, $wp_obj );
+'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj );
 
-'wpsso_inherit_custom_images' ( $bool, $mod )
+'wpsso_inherit_custom_images' ( $bool, array $mod )
 
-'wpsso_inherit_featured_image' ( $bool, $mod )
+'wpsso_inherit_featured_image' ( $bool, array $mod )
 
 'wpsso_init_json_filter_{lib_dir}_{lib_id}' ( $bool = true )
 

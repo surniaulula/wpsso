@@ -141,6 +141,9 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					$this->p->debug->log( 'no element 0 in ' . $cf_key . ' array' );
 				}
 
+				/*
+				 * Apply filters for the custom field (value is null if the custom field does not exist).
+				 */
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_cf_' . $cf_key );
 				$cf_val      = apply_filters( $filter_name, $cf_val, $mod, $wp_meta );
 
