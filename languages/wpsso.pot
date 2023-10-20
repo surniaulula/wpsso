@@ -8515,16 +8515,16 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:761
 msgid ""
-"A Schema type for the subject or item being reviews (for example, Schema "
-"Product type for a review of a product, Schema Book for a review of a book, "
-"etc.)."
+"A Schema type for the subject or item being reviewed (for example, Schema "
+"Product type for the review of a product, Schema Book for the review of a "
+"book, etc.)."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:763
 msgid ""
-"Note that although the Schema standard allows the subject of a review (aka "
-"item reviewed) to be any Schema type, <a href=\"%1$s\">Google only allows "
-"reviews for a few specific Schema types (and their sub-types)</a>."
+"Although the Schema standard allows the subject of a review (aka the item "
+"reviewed) to be any Schema type, <a href=\"%1$s\">Google only allows reviews "
+"for a few specific Schema types (and their sub-types)</a>."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:805
