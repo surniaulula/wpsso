@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_rating':		// Review: Review Rating
 
-							$text = __( 'A rating for the subject being reviewed, along with the low / high rating scale (default is 1 to 5).', 'wpsso' ) . ' ';
+							$text = __( 'A rating for the subject or item being reviewed, along with the low / high rating scale (default is 1 to 5).', 'wpsso' ) . ' ';
 
 							$text .= __( 'If you are reviewing a claim, the following rating scale is used: 1 = False, 2 = Mostly false, 3 = Half true, 4 = Mostly true, 5 = True.', 'wpsso' ) . ' ';
 
@@ -718,19 +718,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_name':		// Review: Subject Name.
 
-							$text = __( 'A name for the subject of the review.', 'wpsso' );
+							$text = __( 'A name for the subject or item being reviewed.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_review_item_desc':		// Review: Subject Description.
 
-							$text = __( 'A description for the subject of the review.', 'wpsso' );
+							$text = __( 'A description for the subject or item being reviewed.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_review_item_img_id':		// Review: Subject Image ID.
 
-							$text = __( 'An image ID showing the subject of the review.', 'wpsso' ) . ' ';
+							$text = __( 'An image ID showing the subject or item being reviewed.', 'wpsso' ) . ' ';
 
 							$text .= '<em>' . __( 'This option is disabled if a subject image URL is entered.', 'wpsso' ) . '</em>';
 
@@ -738,7 +738,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_img_url':		// Review: Subject Image URL.
 
-							$text = __( 'An image URL (instead of an image ID) showing the subject of the review.', 'wpsso' ) . ' ';
+							$text = __( 'An image URL (instead of an image ID) showing the subject or item being reviewed.', 'wpsso' ) . ' ';
 
 							$text .= '<em>' . __( 'This option is disabled if a subject image ID is selected.', 'wpsso' ) . '</em>';
 
@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_url':		// Review: Subject Webpage URL.
 
-							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
+							$text = __( 'A webpage URL for the subject or item being reviewed.', 'wpsso' );
 
 						 	break;
 
@@ -758,9 +758,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_type':		// Review: Subject Schema Type.
 
-							$text = __( 'A Schema type for the subject of this review (for example, Schema type "Product" for a review of a product).', 'wpsso' ) . ' ';
+							$text = __( 'A Schema type for the subject or item being reviews (for example, Schema Product type for a review of a product, Schema Book for a review of a book, etc.).', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Note that although the Schema.org standard allows the subject of a review to be any Schema type, <a href="%1$s">Google only allows reviews for a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
+							$text .= sprintf( __( 'Note that although the Schema standard allows the subject of a review (aka item reviewed) to be any Schema type, <a href="%1$s">Google only allows reviews for a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
+
 						 	break;
 
 						/*

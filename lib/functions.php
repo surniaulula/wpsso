@@ -68,7 +68,7 @@ if ( ! function_exists( '__return_year_in_seconds' ) ) {
 }
 
 /*
- * The wpsso_error_handler() function can be used for cases where errors need to be captured and sent to the toolbar notification area.
+ * wpsso_error_handler() can be used when PHP errors need to be captured and sent to the toolbar notification area.
  *
  * Example:
  *
@@ -98,76 +98,29 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
+/*
+ * Get the canonical URL.
+ */
+if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
 
-	function wpsso_get_is_functions() {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->util->get_is_functions();
-	}
-}
-
-if ( ! function_exists( 'wpsso_show_head' ) ) {
-
-	function wpsso_show_head( $attr = '' ) {
+	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		echo $wpsso->head->show_head();
-	}
-}
-
-if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
-
-	function wpsso_clear_post_cache( $post_id ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->post->clear_cache( $post_id );
+		return $wpsso->util->get_canonical_url( $mod, $add_page );
 	}
 }
 
 /*
- * Cache refresh functions.
+ * Get the shortened canonical URL.
  */
-if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
+if ( ! function_exists( 'wpsso_get_canonical_short_url' ) ) {
 
-	function wpsso_refresh_cache() {
-
-		$wpsso =& Wpsso::get_instance();
-
-		$user_id = get_current_user_id();
-
-		return $wpsso->util->cache->schedule_refresh( $user_id );
-	}
-}
-
-if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
-
-	function wpsso_refresh_post_cache( $post_id ) {
+	function wpsso_get_canonical_short_url( $mod = false, $add_page = true ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		return $wpsso->post->refresh_cache( $post_id );
-	}
-}
-
-/*
- * Get the $mod array for the current webpage.
- *
- * If $use_post is true, then the requested object is assumed to be a post, and the global $post object will be used to determine
- * the post ID.
- *
- * The use of 'page' here refers to a webpage, not the WordPress Page post type.
- */
-if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
-
-	function wpsso_get_page_mod( $use_post = false ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->page->get_mod( $use_post );
+		return $wpsso->util->get_canonical_short_url( $mod, $add_page );
 	}
 }
 
@@ -185,46 +138,20 @@ if ( ! function_exists( 'wpsso_get_comment_mod' ) ) {
 }
 
 /*
- * Get the $mod array for a given post ID.
+ * Get an array for the results of test functions.
  */
-if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
+if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 
-	function wpsso_get_post_mod( $post_id ) {
+	function wpsso_get_is_functions() {
 
 		$wpsso =& Wpsso::get_instance();
 
-		return $wpsso->post->get_mod( $post_id );
+		return $wpsso->util->get_is_functions();
 	}
 }
 
 /*
- * Get the $mod array for a given term ID.
- */
-if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
-
-	function wpsso_get_term_mod( $term_id ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->term->get_mod( $term_id );
-	}
-}
-
-/*
- * Get the $mod array for a given user ID.
- */
-if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
-
-	function wpsso_get_user_mod( $user_id ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->user->get_mod( $user_id );
-	}
-}
-
-/*
- * Returns a single dimension array of image meta tags or false if no image is found.
+ * Get a single dimension array of image meta tags, or false if no image is found.
  *
  * Example:
  *
@@ -259,46 +186,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 }
 
 /*
- * Returns a single dimension array of image meta tags or false if no image is found.
- */
-if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
-
-	function wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' ) {
-
-		$mod = wpsso_get_post_mod( $post_id );
-
-		return wpsso_get_mod_og_image( $mod, $size_name );
-	}
-}
-
-/*
- * Returns a single dimension array of image meta tags or false if no image is found.
- */
-if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
-
-	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
-
-		$mod = wpsso_get_term_mod( $term_id );
-
-		return wpsso_get_mod_og_image( $mod, $size_name );
-	}
-}
-
-/*
- * Returns a single dimension array of image meta tags or false if no image is found.
- */
-if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
-
-	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
-
-		$mod = wpsso_get_user_mod( $user_id );
-
-		return wpsso_get_mod_og_image( $mod, $size_name );
-	}
-}
-
-/*
- * Returns an image URL or an empty string.
+ * Get an image URL, or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
 
@@ -311,46 +199,36 @@ if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
 }
 
 /*
- * Returns an image URL or an empty string.
+ * Get the $mod array for the current webpage. If $use_post = true, then the requested object is assumed to be a post and the
+ * global $post object will be used to determine the post ID.
+ *
+ * The use of 'page' here refers to a webpage, not the WordPress Page post type.
  */
-if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
+if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
-	function wpsso_get_post_og_image_url( $post_id, $size_name = 'thumbnail' ) {
+	function wpsso_get_page_mod( $use_post = false ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->page->get_mod( $use_post );
+	}
+}
+
+/*
+ * Get the shortened post canonical URL.
+ */
+if ( ! function_exists( 'wpsso_get_post_canonical_short_url' ) ) {
+
+	function wpsso_get_post_canonical_short_url( $post_id ) {
 
 		$mod = wpsso_get_post_mod( $post_id );
 
-		return wpsso_get_mod_og_image_url( $mod, $size_name );
+		return wpsso_get_canonical_short_url( $mod, $add_page = false );
 	}
 }
 
 /*
- * Returns an image URL or an empty string.
- */
-if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
-
-	function wpsso_get_term_og_image_url( $term_id, $size_name = 'thumbnail' ) {
-
-		$mod = wpsso_get_term_mod( $term_id );
-
-		return wpsso_get_mod_og_image_url( $mod, $size_name );
-	}
-}
-
-/*
- * Returns an image URL or an empty string.
- */
-if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
-
-	function wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' ) {
-
-		$mod = wpsso_get_user_mod( $user_id );
-
-		return wpsso_get_mod_og_image_url( $mod, $size_name );
-	}
-}
-
-/*
- * Return any third-party and custom post options for a given event ID.
+ * Get third-party and custom post options for a given event ID.
  *
  * See WpssoIntegEventTheEventsCalendar->filter_get_event_options().
  */
@@ -363,7 +241,7 @@ if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 }
 
 /*
- * Return any third-party and custom post options for a given job ID.
+ * Get third-party and custom post options for a given job ID.
  *
  * See WpssoIntegJobSimpleJobBoard->filter_get_job_options().
  * See WpssoIntegJobWpJobManager->filter_get_job_options().
@@ -377,7 +255,59 @@ if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 }
 
 /*
- * Return any third-party and custom post options for a given organization ID.
+ * Get the $mod array for a given post ID.
+ */
+if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
+
+	function wpsso_get_post_mod( $post_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->post->get_mod( $post_id );
+	}
+}
+
+/*
+ * Get a single dimension array of image meta tags, or false if no image is found.
+ */
+if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
+
+	function wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_post_mod( $post_id );
+
+		return wpsso_get_mod_og_image( $mod, $size_name );
+	}
+}
+
+/*
+ * Get an image URL or an empty string.
+ */
+if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
+
+	function wpsso_get_post_og_image_url( $post_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_post_mod( $post_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
+	}
+}
+
+/*
+ * Get the complete filtered post options array, or the value of a single key if $md_key is provided.
+ */
+if ( ! function_exists( 'wpsso_get_post_options_full' ) ) {
+
+	function wpsso_get_post_options_full( $post_id, $md_key = false ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->post->get_options( $post_id, $md_key, $filter_opts = true, $merge_defs = true );
+	}
+}
+
+/*
+ * Get third-party and custom post options for a given organization ID.
  *
  * See WpssoIntegJobWpJobManager->filter_get_organization_options().
  * See WpssoOpmOrgFiltersOptions->filter_get_organization_options().
@@ -417,7 +347,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 }
 
 /*
- * Return any third-party and custom post options for a given place ID.
+ * Get third-party and custom post options for a given place ID.
  *
  * See WpssoIntegEventTheEventsCalendar->filter_get_place_options().
  * See WpssoIntegJobWpJobManager->filter_get_place_options().
@@ -439,7 +369,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 }
 
 /*
- * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
+ * Get a custom or default term ID, or false if a term for the $tax_slug is not found.
  */
 if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 
@@ -459,40 +389,7 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 }
 
 /*
- * Functions to get the canonical URL.
- */
-if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
-
-	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->util->get_canonical_url( $mod, $add_page );
-	}
-}
-
-if ( ! function_exists( 'wpsso_get_canonical_short_url' ) ) {
-
-	function wpsso_get_canonical_short_url( $mod = false, $add_page = true ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->util->get_canonical_short_url( $mod, $add_page );
-	}
-}
-
-if ( ! function_exists( 'wpsso_get_post_canonical_short_url' ) ) {
-
-	function wpsso_get_post_canonical_short_url( $post_id ) {
-
-		$mod = wpsso_get_post_mod( $post_id );
-
-		return wpsso_get_canonical_short_url( $mod, $add_page = false );
-	}
-}
-
-/*
- * Functions to get the sharing URL.
+ * Get the sharing URL, which may be different than the canonical URL.
  */
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
@@ -502,6 +399,9 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 	}
 }
 
+/*
+ * Get the shortened sharing URL, which may be different than the shortened canonical URL.
+ */
 if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 
 	function wpsso_get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
@@ -513,7 +413,139 @@ if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 }
 
 /*
- * Shorten URL using the selected shortening service.
+ * Get the $mod array for a given term ID.
+ */
+if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
+
+	function wpsso_get_term_mod( $term_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->term->get_mod( $term_id );
+	}
+}
+
+/*
+ * Get a single dimension array of image meta tags or false if no image is found.
+ */
+if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
+
+	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_term_mod( $term_id );
+
+		return wpsso_get_mod_og_image( $mod, $size_name );
+	}
+}
+
+/*
+ * Get an image URL or an empty string.
+ */
+if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
+
+	function wpsso_get_term_og_image_url( $term_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_term_mod( $term_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
+	}
+}
+
+/*
+ * Get the complete filtered term options array, or the value of a single key if $md_key is provided.
+ */
+if ( ! function_exists( 'wpsso_get_term_options_full' ) ) {
+
+	function wpsso_get_term_options_full( $term_id, $md_key = false ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->term->get_options( $term_id, $md_key, $filter_opts = true, $merge_defs = true );
+	}
+}
+
+/*
+ * Get the $mod array for a given user ID.
+ */
+if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
+
+	function wpsso_get_user_mod( $user_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->user->get_mod( $user_id );
+	}
+}
+
+/*
+ * Get a single dimension array of image meta tags or false if no image is found.
+ */
+if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
+
+	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_user_mod( $user_id );
+
+		return wpsso_get_mod_og_image( $mod, $size_name );
+	}
+}
+
+/*
+ * Get an image URL or an empty string.
+ */
+if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
+
+	function wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_user_mod( $user_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
+	}
+}
+
+/*
+ * Get the complete filtered user options array, or the value of a single key if $md_key is provided.
+ */
+if ( ! function_exists( 'wpsso_get_user_options_full' ) ) {
+
+	function wpsso_get_user_options_full( $user_id, $md_key = false ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->user->get_options( $user_id, $md_key, $filter_opts = true, $merge_defs = true );
+	}
+}
+
+/*
+ * Refresh all cache.
+ */
+if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
+
+	function wpsso_refresh_cache() {
+
+		$wpsso =& Wpsso::get_instance();
+
+		$user_id = get_current_user_id();
+
+		return $wpsso->util->cache->schedule_refresh( $user_id );
+	}
+}
+
+/*
+ * Refresh only the post cache.
+ */
+if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
+
+	function wpsso_refresh_post_cache( $post_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->post->refresh_cache( $post_id );
+	}
+}
+
+/*
+ * Shorten any URL.
  */
 if ( ! function_exists( 'wpsso_shorten_url' ) ) {
 
@@ -526,6 +558,19 @@ if ( ! function_exists( 'wpsso_shorten_url' ) ) {
 }
 
 /*
+ * Show head meta tags and Schema markup.
+ */
+if ( ! function_exists( 'wpsso_show_head' ) ) {
+
+	function wpsso_show_head( $attr = '' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		$wpsso->head->show_head();
+	}
+}
+
+/*
  * Deprecated on 2023/02/12.
  */
 if ( ! function_exists( 'wpsso_clear_cache' ) ) {
@@ -533,5 +578,16 @@ if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 	function wpsso_clear_cache() {
 
 		_deprecated_function( __FUNCTION__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
+	}
+}
+
+/*
+ * Deprecated on 2023/10/19.
+ */
+if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
+
+	function wpsso_clear_post_cache() {
+
+		_deprecated_function( __FUNCTION__ . '()', '2023/10/19', $replacement = '' );	// Deprecation message.
 	}
 }

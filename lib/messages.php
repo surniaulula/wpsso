@@ -982,6 +982,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product net width, as opposed to a shipping or packaged width used for shipping cost calculations', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/11018531', 'wpsso' ),
 					),
+					'review_item_name' => array(
+						'label' => _x( 'Review Subject Name', 'option label', 'wpsso' ),
+						'name'  => _x( 'review subject name', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a Schema Review subject (aka item reviewed) name', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties', 'wpsso' ),
+					),
+					'review_item_desc' => array(
+						'label' => _x( 'Review Subject Description', 'option label', 'wpsso' ),
+						'name'  => _x( 'review subject description', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a Schema Review subject (aka item reviewed) description', 'tooltip fragment', 'wpsso' ),
+					),
 					'review_rating' => array(
 						'label' => _x( 'Review Rating', 'option label', 'wpsso' ),
 						'name'  => _x( 'review rating', 'tooltip fragment', 'wpsso' ),

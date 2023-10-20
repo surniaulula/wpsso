@@ -962,7 +962,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class' => $schema_tr_class[ 'review' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Review Subject Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Review Subject (aka Item Reviewed) Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_item_name' => array(
 					'tr_class' => $schema_tr_class[ 'review' ],

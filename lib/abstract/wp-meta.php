@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_rating_alt_name' => '',						// Rating Alt Name.
 
 					/*
-					 * Schema Review Subject.
+					 * Schema Review Subject (aka Item Reviewed).
 					 */
 					'schema_review_item_name'         => '',	// Subject Name.
 					'schema_review_item_desc'         => '',	// Subject Description.
@@ -1152,8 +1152,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		protected function return_options( $obj_id, array $md_opts, $md_key = false, $merge_defs = false ) {
 
 			/*
-			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
-			 * language value.
+			 * If a multilingual plugin is available, trust the plugin and ignore previous / inherited custom language values.
 			 */
 			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
 
@@ -1192,7 +1191,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( empty( $md_opts[ 'options_merged' ] ) ) {
 
-				$md_defs = $this->get_defaults( $obj_id );
+				$md_defs = $this->get_defaults( $obj_id );	// Uses a local cache.
 
 				if ( is_array( $md_defs ) ) {	// Just in case.
 
@@ -1783,8 +1782,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$mod = $this->get_mod( $mod );
 			}
 
-			$md_defs = $this->get_defaults( $mod[ 'id' ] );
-			$md_prev = $this->get_options( $mod[ 'id' ] );
+			$md_defs = $this->get_defaults( $mod[ 'id' ] );	// Uses a local cache.
+			$md_prev = $this->get_options( $mod[ 'id' ] );	// Uses a local cache.
 
 			/*
 			 * Merge and sanitize the new options.

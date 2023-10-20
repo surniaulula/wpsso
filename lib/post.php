@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			static $local_cache = array();
 
 			/*
-			 * Use $post_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
+			 * Use $post_id and $filter_opts to create the cache ID string, but DO NOT ADD $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
