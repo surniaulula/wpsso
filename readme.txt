@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.4.0-dev.2 (2023/10/19)**
+**Version 16.4.0-dev.3 (2023/10/20)**
 
 * **New Features**
 	* None.
@@ -266,10 +266,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new options under the SSO &gt; Advanced Settings &gt; Attributes and Metadata &gt; Custom Fields tab:
 		* Review Rating Alt Name Custom Field
 		* Review Rating Custom Field
+		* Review Subject Desc Custom Field
+		* Review Subject Name Custom Field
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook.
+	* Added new helper functions for developers:
+		* wpsso_get_post_options_full()
+		* wpsso_get_term_options_full()
+		* wpsso_get_user_options_full()
 	* Updated developer documentation: 
 		* [$mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 		* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
@@ -374,9 +380,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.4.0-dev.2 =
+= 16.4.0-dev.3 =
 
-(2023/10/19) Added new options in the SSO &gt; Advanced Settings page.
+(2023/10/20) Added new options in the SSO &gt; Advanced Settings page.
 
 = 16.3.0 =
 
