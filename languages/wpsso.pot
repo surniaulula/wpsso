@@ -1090,7 +1090,7 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:114 lib/messages-info.php:264
+#: gettext/gettext-lib-config.php:114 lib/messages-info.php:257
 #: lib/messages.php:513
 msgctxt "lib file description"
 msgid "Tools and Actions"
@@ -7427,51 +7427,38 @@ msgid ""
 "and MPN values for variations."
 msgstr ""
 
-#. translators: %1$s is the plugin name, %2$s is <head>.
-#: lib/messages-info.php:247
-msgid ""
-"%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
-"and SEO HTML tags to the %2$s section of your webpages."
-msgstr ""
-
-#: lib/messages-info.php:249
-msgid ""
-"If your theme or another plugin already creates one or more of these HTML "
-"tags, you may uncheck them here to prevent duplicates from being added."
-msgstr ""
-
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description",
 #. and %3$s is "meta name robots".
-#: lib/messages-info.php:254
+#: lib/messages-info.php:247
 msgid ""
 "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
 "another known SEO plugin is detected."
 msgstr ""
 
-#: lib/messages-info.php:270
+#: lib/messages-info.php:263
 msgid ""
 "%s and WordPress create image files for social sites and search engines "
 "based on the following image dimensions and crop settings."
 msgstr ""
 
-#: lib/messages-info.php:272
+#: lib/messages-info.php:265
 msgid ""
 "Image sizes that use the same dimensions and crop settings will create just "
 "one image file."
 msgstr ""
 
-#: lib/messages-info.php:274
+#: lib/messages-info.php:267
 msgid ""
 "The default dimensions and crop settings from %1$s create only %2$s image "
 "files from an original full size image (provided the original image is large "
 "enough or image upscaling has been enabled)."
 msgstr ""
 
-#: lib/messages-info.php:274
+#: lib/messages-info.php:267
 msgid "five"
 msgstr ""
 
-#: lib/messages-info.php:276
+#: lib/messages-info.php:269
 msgid "You can reload the default image sizes from the %s settings page."
 msgstr ""
 

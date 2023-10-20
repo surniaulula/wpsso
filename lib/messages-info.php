@@ -243,13 +243,6 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					// translators: %1$s is the plugin name, %2$s is <head>.
-					$text .= sprintf( __( '%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO HTML tags to the %2$s section of your webpages.', 'wpsso' ), $info[ 'short' ], '<code>&lt;head&gt;</code>' ) . ' ';
-
-					$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you may uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
-
-					$text .= '</p><p>';
-
 					// translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
 					$text .= sprintf( __( 'Note that the %1$s, %2$s, and %3$s tags are disabled automatically if another known SEO plugin is detected.', 'wpsso' ), '<code>link rel canonical</code>', '<code>meta name description</code>', '<code>meta name robots</code>' );
 
