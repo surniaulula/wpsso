@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.4.0-b.2 (2023/10/21)**
+**Version 16.4.0-b.3 (2023/10/21)**
 
 * **New Features**
 	* None.
@@ -277,6 +277,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* wpsso_get_post_options_full()
 		* wpsso_get_term_options_full()
 		* wpsso_get_user_options_full()
+	* Added new helper methods for developers:
+		* WpssoPost::update_options_key( $post_id, $key, $value, $protect = false )
+		* WpssoTerm::update_options_key( $term_id, $key, $value, $protect = false )
+		* WpssoUser::update_options_key( $user_id, $key, $value, $protect = false )
 	* Updated developer documentation: 
 		* [$mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 		* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
@@ -381,7 +385,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.4.0-b.2 =
+= 16.4.0-b.3 =
 
 (2023/10/21) Added new options in the SSO &gt; Advanced Settings page.
 
