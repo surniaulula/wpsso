@@ -169,22 +169,17 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
 
-			if ( $site ) {
+			$opts = $site ?
+				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );	// Returns an array by default.
 
-				$opts = get_site_option( $options_name, $default = array() );	// Returns an array by default.
-
-			} else {
-
-				$opts = get_option( $options_name, $default = array() );	// Returns an array by default.
-			}
-
-			if ( isset( $opts[ $key ] ) ) {	// Key exists and value is not null.
+			if ( array_key_exists( $key, $opts ) ) {
 
 				if ( $protect ) {	// Prevent overwriting an existing value.
 
 					return false;	// No update.
 
-				} elseif ( $value === $opts[ $key ] ) {
+				} elseif ( $value === $opts[ $key ] ) {	// Nothing to do.
 
 					return false;	// No update.
 				}
@@ -192,12 +187,9 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			$opts[ $key ] = $value;
 
-			if ( $site ) {
-
-				return update_site_option( $options_name, $opts );
-			}
-
-			return update_option( $options_name, $opts );
+			return $site ?
+				update_site_option( $options_name, $opts ) :
+				update_option( $options_name, $opts );
 		}
 
 		public static function get_site_options_key( $options_name, $key ) {
@@ -207,16 +199,11 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 		public static function get_options_key( $options_name, $key, $site = false ) {
 
-			if ( $site ) {
+			$opts = $site ?
+				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );	// Returns an array by default.
 
-				$opts = get_site_option( $options_name, $default = array() );	// Returns an array by default.
-
-			} else {
-
-				$opts = get_option( $options_name, $default = array() );	// Returns an array by default.
-			}
-
-			if ( isset( $opts[ $key ] ) ) {
+			if ( array_key_exists( $key, $opts ) ) {
 
 				return $opts[ $key ];
 			}
@@ -231,42 +218,27 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 		public static function delete_options_key( $options_name, $key, $site = false ) {
 
-			if ( $site ) {
+			$opts = $site ?
+				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );	// Returns an array by default.
 
-				$opts = get_site_option( $options_name, $default = array() );	// Returns an array by default.
+			if ( ! array_key_exists( $key, $opts ) ) {	// Nothing to do.
 
-			} else {
-
-				$opts = get_option( $options_name, $default = array() );	// Returns an array by default.
+				return false;	// No update.
 			}
 
-			if ( isset( $opts[ $key ] ) ) {
+			unset( $opts[ $key ] );
 
-				unset( $opts[ $key ] );
+			if ( empty( $opts ) ) {	// Just in case.
 
-				if ( empty( $opts ) ) {	// Cleanup.
-
-					if ( $site ) {
-
-						return delete_site_option( $options_name );
-
-					} else {
-
-						return delete_option( $options_name );
-					}
-				}
-
-				if ( $site ) {
-
-					return update_site_option( $options_name, $opts );
-
-				} else {
-
-					return update_option( $options_name, $opts );
-				}
+				return $site ?
+					delete_site_option( $options_name ) :
+					delete_option( $options_name );
 			}
 
-			return false;	// No delete.
+			return $site ?
+				update_site_option( $options_name, $opts ) :
+				update_option( $options_name, $opts );
 		}
 	}
 }

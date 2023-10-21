@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					default:
 
 						if ( function_exists( 'locale_get_primary_language' ) ) {	// Requires the PHP Intl package.
-		
+
 							$schema_lang = locale_get_primary_language( $schema_lang );
 
 						} else {

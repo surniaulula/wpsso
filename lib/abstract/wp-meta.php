@@ -1233,7 +1233,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Example: WpssoPost::update_options_key( 123, 'schema_review_rating', 1 );
 		 */
 		public static function update_options_key( $obj_id, $key, $value, $protect = false ) {
-				
+
 			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
 
 			if ( ! is_array( $md_opts ) ) {
@@ -1241,19 +1241,54 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$md_opts = array();	// WPSSO_META_NAME not found.
 			}
 
-			if ( isset( $md_opts[ $key ] ) ) {	// Key exists and value is not null.
+			if ( array_key_exists( $key, $md_opts ) ) {
 
 				if ( $protect ) {	// Prevent overwriting an existing value.
 
 					return false;	// No update.
 
-				} elseif ( $value === $md_opts[ $key ] ) {
+				} elseif ( $value === $md_opts[ $key ] ) {	// Nothing to do.
 
 					return false;	// No update.
 				}
 			}
 
 			$md_opts[ $key ] = $value;
+
+			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
+		}
+
+		/*
+		 * If $value !== null, then delete only if the value matches.
+		 */
+		public static function delete_options_key( $obj_id, $key, $value = null ) {
+
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+
+			if ( ! is_array( $md_opts ) ) {	// Nothing to do.
+
+				return false;	// No update.
+			}
+
+			if ( ! array_key_exists( $key, $md_opts ) ) {	// Nothing to do.
+
+				return false;	// No update.
+			}
+
+			if ( null !== $value ) {	// Delete only if the value matches.
+
+				if ( $value !== $md_opts[ $key ] ) {	// Value does not match.
+
+					return false;	// No update.
+				}
+			}
+
+			unset( $md_opts[ $key ] );
+
+			if ( empty( $md_opts ) ) {	// Just in case.
+
+				return static::delete_meta( $obj_id, WPSSO_META_NAME );	// Use static method from child.
+			}
 
 			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
 		}
