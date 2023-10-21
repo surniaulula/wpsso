@@ -5,7 +5,7 @@
 $wpsso =&amp; Wpsso::get_instance();
 
 // In case we prefer using the global $post object.
-$use_post = apply_filters( 'wpsso_use_post', false );
+$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 // Get information about the current webpage.
 $mod = $wpsso-&gt;page-&gt;get_mod( $use_post );

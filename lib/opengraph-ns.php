@@ -30,6 +30,17 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$this->add_html_attributes_filter();
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'og_data_https_ogp_me_ns_article' => 2,
+				'og_data_https_ogp_me_ns_book'    => 2,
+				'og_data_https_ogp_me_ns_product' => 2,
+			) );
+		}
+
+		private function add_html_attributes_filter() {
+
 			$filter_name = SucomUtil::get_const( 'WPSSO_HTML_ATTR_FILTER_NAME', 'language_attributes' );
 			$filter_prio = SucomUtil::get_const( 'WPSSO_HTML_ATTR_FILTER_PRIO', 1000 );
 
@@ -50,11 +61,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				}
 			}
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'og_data_https_ogp_me_ns_article' => 2,
-				'og_data_https_ogp_me_ns_book'    => 2,
-				'og_data_https_ogp_me_ns_product' => 2,
-			) );
 		}
 
 		public function filter_html_attributes( $html_attr ) {

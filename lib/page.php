@@ -79,9 +79,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/*
 		 * This method is hooked to the 'admin_bar_menu' action and receives a reference to the $wp_admin_bar variable.
 		 *
-		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $use_post.
+		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $post_id.
 		 */
-		public function add_admin_bar_menu_validate( &$wp_admin_bar, $use_post = false ) {	// Pass by reference OK.
+		public function add_admin_bar_menu_validate( &$wp_admin_bar, $post_id = false ) {	// Pass by reference OK.
 
 			if ( ! $user_id = get_current_user_id() ) {	// Just in case.
 
@@ -93,9 +93,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', $use_post );
-
-			$mod = $this->get_mod( $use_post );
+			$mod = $this->get_mod( $post_id );
 
 			if ( $mod[ 'is_post' ] ) {
 
@@ -120,7 +118,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for ' . $mod[ 'name' ] . ' id ' . $post_id );
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
 
 				return false;	// Stop here.
@@ -263,7 +261,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', false );
+			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 			$mod = $this->get_mod( $use_post );
 
@@ -345,7 +343,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 				}
 
-				$use_post = apply_filters( 'wpsso_use_post', false );
+				$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 				$mod = $this->get_mod( $use_post );
 

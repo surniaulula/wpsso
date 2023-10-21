@@ -123,7 +123,7 @@
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
-'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// The custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.
+'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// The WordPress custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.
 
 'wpsso_import_content_blocks' ( array $md_opts, array $mod, $content )
 
