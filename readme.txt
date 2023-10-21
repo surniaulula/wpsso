@@ -278,9 +278,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* wpsso_get_term_options_full()
 		* wpsso_get_user_options_full()
 	* Added new helper methods for developers:
-		* WpssoPost::delete_options_key( $post_id, $key, $value = null )
-		* WpssoTerm::delete_options_key( $term_id, $key, $value = null )
-		* WpssoUser::delete_options_key( $user_id, $key, $value = null )
+		* WpssoPost::delete_options_key( $post_id, $key )
+		* WpssoTerm::delete_options_key( $term_id, $key )
+		* WpssoUser::delete_options_key( $user_id, $key )
 		* WpssoPost::update_options_key( $post_id, $key, $value, $protect = false )
 		* WpssoTerm::update_options_key( $term_id, $key, $value, $protect = false )
 		* WpssoUser::update_options_key( $user_id, $key, $value, $protect = false )
