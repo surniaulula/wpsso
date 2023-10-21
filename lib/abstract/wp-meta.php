@@ -2084,15 +2084,28 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$md_opts[ 'schema_book_format' ] = 'https://schema.org/AudiobookFormat';
 
+				} elseif ( 'review' === $md_opts[ 'schema_type' ] ) {
+
+					if ( isset( $md_opts[ 'schema_review_item_type' ] ) && 'review' === $md_opts[ 'schema_review_item_type' ] ) {
+
+						$md_opts[ 'schema_review_item_type' ] = $this->p->options[ 'schema_def_review_item_type' ];
+
+						$notice_msg = __( 'Another review cannot be the subject of a review.', 'wpsso' ) . ' ';
+
+						$notice_msg .= __( 'Please select a Schema type for the review subject that describes the subject being reviewed.', 'wpsso' );
+
+						$this->p->notice->err( $notice_msg );
+					}
+
 				} elseif ( 'review.claim' === $md_opts[ 'schema_type' ] ) {
 
 					if ( isset( $md_opts[ 'schema_review_item_type' ] ) && 'review.claim' === $md_opts[ 'schema_review_item_type' ] ) {
 
 						$md_opts[ 'schema_review_item_type' ] = $this->p->options[ 'schema_def_review_item_type' ];
 
-						$notice_msg = __( 'A claim review cannot be the subject of another claim review.', 'wpsso' ) . ' ';
+						$notice_msg = __( 'Another claim review cannot be the subject of a claim review.', 'wpsso' ) . ' ';
 
-						$notice_msg .= __( 'Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+						$notice_msg .= __( 'Please select a Schema type for the review subject that describes the subject being reviewed.', 'wpsso' );
 
 						$this->p->notice->err( $notice_msg );
 					}

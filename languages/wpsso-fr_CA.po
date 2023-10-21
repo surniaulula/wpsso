@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.3.0\n"
+"Project-Id-Version: WPSSO Core 16.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-10-21 08:00-0700\n"
+"PO-Revision-Date: 2023-10-21 08:21-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3891,13 +3891,17 @@ msgstr "Validateurs"
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2093 lib/json/type/claimreview.php:69
-msgid "A claim review cannot be the subject of another claim review."
-msgstr "Une critique d'une déclaration ne peut faire l’objet d'une autre critique d'une déclaration."
+#: lib/abstract/wp-meta.php:2093
+msgid "Another review cannot be the subject of a review."
+msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2095
-msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
-msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
+#: lib/abstract/wp-meta.php:2095 lib/abstract/wp-meta.php:2108
+msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
+msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
+
+#: lib/abstract/wp-meta.php:2106
+msgid "Another claim review cannot be the subject of a claim review."
+msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
 #: lib/admin-filters.php:75
 msgctxt "lib file description"
@@ -6529,6 +6533,10 @@ msgstr "Une valeur de note agrégé pour ce balisage a été ignorée - <a href=
 #: lib/json/prop/review.php:223
 msgid "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Les critiques pour ce balisage ont été ignorés - <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a> ."
+
+#: lib/json/type/claimreview.php:69
+msgid "A claim review cannot be the subject of another claim review."
+msgstr "Une critique d'une déclaration ne peut faire l’objet d'une autre critique d'une déclaration."
 
 #: lib/json/type/claimreview.php:71
 msgid "CreativeWork will be used instead as the Schema type for the subject of the webpage (ie. the content) being reviewed."
@@ -9951,7 +9959,6 @@ msgid "a Schema Review subject (aka item reviewed) name"
 msgstr "un nom pour le sujet de Schéma Review (c'est-à-dire l'élément critiqué)"
 
 #: lib/messages.php:989
-#| msgid "https://developers.google.com/search/docs/appearance/structured-data/speakable"
 msgid "https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties"
 msgstr "https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties"
 
@@ -9981,7 +9988,6 @@ msgid "a Schema Review rating"
 msgstr "une note de Schéma Review"
 
 #: lib/messages.php:1000
-#| msgid "https://schema.org/articleSection"
 msgid "https://schema.org/Review"
 msgstr "https://schema.org/Review"
 
@@ -9996,7 +10002,6 @@ msgid "a Schema Review rating alternate name"
 msgstr "un nom alternatif pour la note de Schema Review"
 
 #: lib/messages.php:1006
-#| msgid "https://developers.google.com/search/docs/appearance/structured-data/speakable"
 msgid "https://developers.google.com/search/docs/appearance/structured-data/factcheck#rating"
 msgstr "https://developers.google.com/search/docs/appearance/structured-data/factcheck#rating"
 

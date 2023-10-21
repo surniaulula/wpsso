@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.4.0-b.1\n"
+"Project-Id-Version: WPSSO Core 16.4.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4089,14 +4089,18 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2093 lib/json/type/claimreview.php:69
-msgid "A claim review cannot be the subject of another claim review."
+#: lib/abstract/wp-meta.php:2093
+msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2095
+#: lib/abstract/wp-meta.php:2095 lib/abstract/wp-meta.php:2108
 msgid ""
-"Please select a subject webpage type that better describes the subject of "
-"the webpage (ie. the content) being reviewed."
+"Please select a Schema type for the review subject that describes the "
+"subject being reviewed."
+msgstr ""
+
+#: lib/abstract/wp-meta.php:2106
+msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
 #: lib/admin-filters.php:75
@@ -6843,6 +6847,10 @@ msgstr ""
 msgid ""
 "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not "
 "allow reviews for the Schema %2$s type</a>."
+msgstr ""
+
+#: lib/json/type/claimreview.php:69
+msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
 #: lib/json/type/claimreview.php:71
