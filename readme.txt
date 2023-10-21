@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.4.0-dev.3 (2023/10/20)**
+**Version 16.4.0-b.1 (2023/10/21)**
 
 * **New Features**
 	* None.
@@ -271,7 +271,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook.
+	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook ($value = null if the custom field does not exist):
+		* 'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )
 	* Added new helper functions for developers:
 		* wpsso_get_post_options_full()
 		* wpsso_get_term_options_full()
@@ -380,9 +381,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.4.0-dev.3 =
+= 16.4.0-b.1 =
 
-(2023/10/20) Added new options in the SSO &gt; Advanced Settings page.
+(2023/10/21) Added new options in the SSO &gt; Advanced Settings page.
 
 = 16.3.0 =
 
