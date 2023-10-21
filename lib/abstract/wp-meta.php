@@ -1221,6 +1221,44 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates an array element
+		 * value, then saves the array back to the WordPress metadata table. Because of the overhead required to both read
+		 * and save the array from/to the WordPress metadata table, calling this method for every page load is not
+		 * recommended.
+		 *
+		 * Use $protect = true to prevent overwriting an existing value.
+		 *
+		 * Example: WpssoPost::update_options_key( 123, 'schema_review_rating', 1 );
+		 */
+		public static function update_options_key( $obj_id, $key, $value, $protect = false ) {
+				
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+
+			if ( ! is_array( $md_opts ) ) {
+
+				$md_opts = array();	// WPSSO_META_NAME not found.
+			}
+
+			if ( isset( $md_opts[ $key ] ) ) {	// Key exists and value is not null.
+
+				if ( $protect ) {	// Prevent overwriting an existing value.
+
+					return false;	// No update.
+
+				} elseif ( $value === $md_opts[ $key ] ) {
+
+					return false;	// No update.
+				}
+			}
+
+			$md_opts[ $key ] = $value;
+
+			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
+		}
+
+		/*
 		 * Extended by WpssoPost->delete_options( $post_id, $rel = false );
 		 * Extended by WpssoTerm->delete_options( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->delete_options( $user_id, $rel = false );
@@ -3065,7 +3103,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function get_attached( $obj_id, $attach_type ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ] ) ) {
 
@@ -3085,7 +3123,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function add_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -3096,7 +3134,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts[ $attach_type ][ $attachment_id ] = true;
 
-				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
 			}
 
 			return false;	// No addition.
@@ -3107,7 +3145,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function delete_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -3118,7 +3156,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					return static::delete_meta( $obj_id, WPSSO_META_ATTACHED_NAME );	// Use static method from child.
 				}
 
-				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
 			}
 
 			return false;	// No delete.

@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			self::update_ext_event_time( $ext, $version, 'update', $version );
 
-			self::update_ext_event_time( $ext, $version, 'install', $protect = true );
+			self::update_ext_event_time( $ext, $version, 'install', $protect = true );	// Do not overwrite existing value.
 
 			self::update_ext_event_time( $ext, $version, 'activate' );
 		}
@@ -136,14 +136,9 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 						$protect = true;
 
-					} else {
+					} else $protect = false;
 
-						$protect = false;
-					}
-
-				} else {
-					$protect = true;	// Just in case.
-				}
+				} else $protect = true;	// Just in case.
 			}
 
 			if ( ! empty( $version ) ) {
@@ -169,6 +164,9 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			return self::update_options_key( $options_name, $key, $value, $protect, $site = true );
 		}
 
+		/*
+		 * Use $protect = true to prevent overwriting an existing value.
+		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
 
 			if ( $site ) {
@@ -180,9 +178,16 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 				$opts = get_option( $options_name, $default = array() );	// Returns an array by default.
 			}
 
-			if ( $protect && isset( $opts[ $key ] ) ) {
+			if ( isset( $opts[ $key ] ) ) {	// Key exists and value is not null.
 
-				return false;	// No update.
+				if ( $protect ) {	// Prevent overwriting an existing value.
+
+					return false;	// No update.
+
+				} elseif ( $value === $opts[ $key ] ) {
+
+					return false;	// No update.
+				}
 			}
 
 			$opts[ $key ] = $value;

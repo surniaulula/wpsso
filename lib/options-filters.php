@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_rating':
 					case 'schema_review_rating_min':
 					case 'schema_review_rating_max':
-					case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
+					case 'schema_review_item_cw_book_isbn':		// Review: Subject Book ISBN.
 
 						return 'blank_num';
 
