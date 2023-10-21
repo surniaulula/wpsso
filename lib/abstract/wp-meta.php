@@ -1258,10 +1258,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
 		}
 
-		/*
-		 * If $value !== null, then delete only if the value matches.
-		 */
-		public static function delete_options_key( $obj_id, $key, $value = null ) {
+		public static function delete_options_key( $obj_id, $key ) {
 
 			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
 
@@ -1273,14 +1270,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( ! array_key_exists( $key, $md_opts ) ) {	// Nothing to do.
 
 				return false;	// No update.
-			}
-
-			if ( null !== $value ) {	// Delete only if the value matches.
-
-				if ( $value !== $md_opts[ $key ] ) {	// Value does not match.
-
-					return false;	// No update.
-				}
 			}
 
 			unset( $md_opts[ $key ] );
