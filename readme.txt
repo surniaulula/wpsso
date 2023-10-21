@@ -278,12 +278,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* wpsso_get_term_options_full()
 		* wpsso_get_user_options_full()
 	* Added new helper methods for developers:
-		* WpssoPost::update_options_key( $post_id, $key, $value, $protect = false )
-		* WpssoTerm::update_options_key( $term_id, $key, $value, $protect = false )
-		* WpssoUser::update_options_key( $user_id, $key, $value, $protect = false )
 		* WpssoPost::delete_options_key( $post_id, $key, $value = null )
 		* WpssoTerm::delete_options_key( $term_id, $key, $value = null )
 		* WpssoUser::delete_options_key( $user_id, $key, $value = null )
+		* WpssoPost::update_options_key( $post_id, $key, $value, $protect = false )
+		* WpssoTerm::update_options_key( $term_id, $key, $value, $protect = false )
+		* WpssoUser::update_options_key( $user_id, $key, $value, $protect = false )
+	* Refactored methods:
+		* WpssoUtilReg::delete_options_key()
+		* WpssoUtilReg::get_options_key()
+		* WpssoUtilReg::update_options_key()
 	* Updated developer documentation: 
 		* [$mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 		* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
