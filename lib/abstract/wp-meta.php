@@ -1223,10 +1223,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Since WPSSO Core v16.4.0.
 		 *
-		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates an array element
-		 * value, then saves the array back to the WordPress metadata table. Because of the overhead required to both read
-		 * and save the array from/to the WordPress metadata table, calling this method for every page load is not
-		 * recommended.
+		 * Update a metadata options array element, if the array key does not exit, or its value is different.
+		 *
+		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates the array element
+		 * value (if different), then saves the array back to the WordPress metadata table (if the array has changed).
+		 * Because of the overhead required to read and save the array from/to the WordPress metadata table, this method
+		 * should be used only for metadata maintenance purposes. Calling this method on every page load is not recommended.
 		 *
 		 * Use $protect = true to prevent overwriting an existing value.
 		 *
@@ -1258,6 +1260,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
 		}
 
+		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * Delete an element from a metadata options array, if the array key exists.
+		 */
 		public static function delete_options_key( $obj_id, $key ) {
 
 			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.

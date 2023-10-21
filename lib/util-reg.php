@@ -149,29 +149,39 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			self::update_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
 		}
 
+		/*
+		 * Add an element to a site options array, if the array key does not already exist.
+		 */
 		public static function add_site_options_key( $options_name, $key, $value ) {
 
 			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = true );
 		}
 
+		/*
+		 * Add an element to an options array, if the array key does not already exist.
+		 */
 		public static function add_options_key( $options_name, $key, $value ) {
 
 			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = false );
 		}
 
+		/*
+		 * Update a site options array element, if the array key does not exit, or its value is different.
+		 */
 		public static function update_site_options_key( $options_name, $key, $value, $protect = false ) {
 
 			return self::update_options_key( $options_name, $key, $value, $protect, $site = true );
 		}
 
 		/*
+		 * Update an options array element, if the array key does not exit, or its value is different.
+		 *
 		 * Use $protect = true to prevent overwriting an existing value.
 		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
 
-			$opts = $site ?
-				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );	// Returns an array by default.
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
 
 			if ( array_key_exists( $key, $opts ) ) {
 
@@ -187,21 +197,25 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			$opts[ $key ] = $value;
 
-			return $site ?
-				update_site_option( $options_name, $opts ) :
+			return $site ? update_site_option( $options_name, $opts ) :
 				update_option( $options_name, $opts );
 		}
 
+		/*
+		 * Add an element from a site options array. Returns null if the array key does not exist.
+		 */
 		public static function get_site_options_key( $options_name, $key ) {
 
 			return self::get_options_key( $options_name, $key, $site = true );
 		}
 
+		/*
+		 * Add an element from an options array. Returns null if the array key does not exist.
+		 */
 		public static function get_options_key( $options_name, $key, $site = false ) {
 
-			$opts = $site ?
-				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );	// Returns an array by default.
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
 
 			if ( array_key_exists( $key, $opts ) ) {
 
@@ -211,16 +225,21 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			return null;	// No value.
 		}
 
+		/*
+		 * Delete an element from a site options array, if the array key exists.
+		 */
 		public static function delete_site_options_key( $options_name, $key ) {
 
 			return self::delete_options_key( $options_name, $key, $site = true );
 		}
 
+		/*
+		 * Delete an element from an options array, if the array key exists.
+		 */
 		public static function delete_options_key( $options_name, $key, $site = false ) {
 
-			$opts = $site ?
-				get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );	// Returns an array by default.
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
 
 			if ( ! array_key_exists( $key, $opts ) ) {	// Nothing to do.
 
@@ -231,13 +250,11 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			if ( empty( $opts ) ) {	// Just in case.
 
-				return $site ?
-					delete_site_option( $options_name ) :
+				return $site ? delete_site_option( $options_name ) :
 					delete_option( $options_name );
 			}
 
-			return $site ?
-				update_site_option( $options_name, $opts ) :
+			return $site ? update_site_option( $options_name, $opts ) :
 				update_option( $options_name, $opts );
 		}
 	}
