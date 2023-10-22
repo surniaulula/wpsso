@@ -527,7 +527,7 @@ if ( ! function_exists( 'wpsso_refresh_cache' ) ) {
 
 		$user_id = get_current_user_id();
 
-		return $wpsso->util->cache->schedule_refresh( $user_id );
+		return $wpsso->util->cache->refresh( $user_id );
 	}
 }
 
@@ -577,7 +577,7 @@ if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 
 	function wpsso_clear_cache() {
 
-		_deprecated_function( __FUNCTION__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
+		_deprecated_function( __FUNCTION__ . '()', '2023/02/12', $replacement = 'wpsso_refresh_cache()' );	// Deprecation message.
 	}
 }
 
@@ -588,6 +588,6 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 
 	function wpsso_clear_post_cache() {
 
-		_deprecated_function( __FUNCTION__ . '()', '2023/10/19', $replacement = '' );	// Deprecation message.
+		_deprecated_function( __FUNCTION__ . '()', '2023/10/19', $replacement = 'wpsso_refresh_post_cache()' );	// Deprecation message.
 	}
 }
