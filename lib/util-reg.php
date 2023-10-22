@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		}
 
 		/*
-		 * Add an element from a site options array. Returns null if the array key does not exist.
+		 * Get an element from a site options array. Returns null if the array key does not exist.
 		 */
 		public static function get_site_options_key( $options_name, $key ) {
 
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		}
 
 		/*
-		 * Add an element from an options array. Returns null if the array key does not exist.
+		 * Get an element from an options array. Returns null if the array key does not exist.
 		 */
 		public static function get_options_key( $options_name, $key, $site = false ) {
 

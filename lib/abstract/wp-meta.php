@@ -1221,89 +1221,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Add an element to the metadata options array, if the array key does not already exist.
-		 *
-		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
-		 */
-		public static function add_options_key( $obj_id, $key, $value ) {
-
-			return self::update_options_key( $obj_id, $key, $value, $protect = true );
-		}
-
-		/*
-		 * Since WPSSO Core v16.4.0.
-		 *
-		 * Update a metadata options array element, if the array key does not exit, or its value is different.
-		 *
-		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates the array element
-		 * value (if different), then saves the array back to the WordPress metadata table (if the array has changed).
-		 * Because of the overhead required to read and save the array from/to the WordPress metadata table, this method
-		 * should be used only for metadata maintenance purposes. Calling this method on every page load is not recommended.
-		 *
-		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
-		 *
-		 * Use $protect = true to prevent overwriting an existing value.
-		 *
-		 * Example: WpssoPost::update_options_key( 123, 'schema_review_rating', 1 );
-		 */
-		public static function update_options_key( $obj_id, $key, $value, $protect = false ) {
-
-			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
-
-			if ( ! is_array( $md_opts ) ) {
-
-				$md_opts = array();	// WPSSO_META_NAME not found.
-			}
-
-			if ( array_key_exists( $key, $md_opts ) ) {
-
-				if ( $protect ) {	// Prevent overwriting an existing value.
-
-					return false;	// No update.
-
-				} elseif ( $value === $md_opts[ $key ] ) {	// Nothing to do.
-
-					return false;	// No update.
-				}
-			}
-
-			$md_opts[ $key ] = $value;
-
-			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
-		}
-
-		/*
-		 * Since WPSSO Core v16.4.0.
-		 *
-		 * Delete an element from a metadata options array, if the array key exists.
-		 *
-		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
-		 */
-		public static function delete_options_key( $obj_id, $key ) {
-
-			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
-
-			if ( ! is_array( $md_opts ) ) {	// Nothing to do.
-
-				return false;	// No update.
-			}
-
-			if ( ! array_key_exists( $key, $md_opts ) ) {	// Nothing to do.
-
-				return false;	// No update.
-			}
-
-			unset( $md_opts[ $key ] );
-
-			if ( empty( $md_opts ) ) {	// Just in case.
-
-				return static::delete_meta( $obj_id, WPSSO_META_NAME );	// Use static method from child.
-			}
-
-			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
-		}
-
-		/*
 		 * Extended by WpssoPost->delete_options( $post_id, $rel = false );
 		 * Extended by WpssoTerm->delete_options( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->delete_options( $user_id, $rel = false );
@@ -3148,13 +3065,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function get_attached( $obj_id, $attach_type ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
-			if ( isset( $opts[ $attach_type ] ) ) {
+			if ( isset( $md_opts[ $attach_type ] ) ) {
 
-				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+				if ( is_array( $md_opts[ $attach_type ] ) ) {	// Just in case.
 
-					return $opts[ $attach_type ];
+					return $md_opts[ $attach_type ];
 				}
 			}
 
@@ -3168,18 +3085,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function add_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
-			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
+			if ( ! isset( $md_opts[ $attach_type ][ $attachment_id ] ) ) {
 
-				if ( ! is_array( $opts ) ) {
+				if ( ! is_array( $md_opts ) ) {
 
-					$opts = array();
+					$md_opts = array();
 				}
 
-				$opts[ $attach_type ][ $attachment_id ] = true;
+				$md_opts[ $attach_type ][ $attachment_id ] = true;
 
-				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $md_opts );	// Use static method from child.
 			}
 
 			return false;	// No addition.
@@ -3190,18 +3107,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public static function delete_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
-			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
+			if ( isset( $md_opts[ $attach_type ][ $attachment_id ] ) ) {
 
-				unset( $opts[ $attach_type ][ $attachment_id ] );
+				unset( $md_opts[ $attach_type ][ $attachment_id ] );
 
-				if ( empty( $opts ) ) {	// Cleanup.
+				if ( empty( $md_opts ) ) {	// Cleanup.
 
 					return static::delete_meta( $obj_id, WPSSO_META_ATTACHED_NAME );	// Use static method from child.
 				}
 
-				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $md_opts );	// Use static method from child.
 			}
 
 			return false;	// No delete.
@@ -3240,6 +3157,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * Add an element to the metadata options array, if the array key does not already exist.
+		 *
+		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
+		 */
+		public static function add_meta_key( $obj_id, $meta_key, $value ) {
+
+			return self::update_meta_key( $obj_id, $meta_key, $value, $protect = true );
+		}
+
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
@@ -3250,6 +3179,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$ret_val = $single ? '' : array();
 
 			return self::must_be_extended( $ret_val );
+		}
+
+		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * Get an element from the metadata options array. Returns null if the array key does not exist.
+		 */
+		public static function get_meta_key( $obj_key, $meta_key ) {
+
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+
+			if ( array_key_exists( $meta_key, $md_opts ) ) {
+
+				return $md_opts[ $meta_key ];
+			}
+
+			return null;	// No value.
 		}
 
 		/*
@@ -3264,6 +3210,48 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * Update a metadata options array element, if the array key does not exit, or its value is different.
+		 *
+		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates the array element
+		 * value (if different), then saves the array back to the WordPress metadata table (if the array has changed).
+		 * Because of the overhead required to read and save the array from/to the WordPress metadata table, this method
+		 * should be used only for metadata maintenance purposes. Calling this method on every page load is not recommended.
+		 *
+		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
+		 *
+		 * Use $protect = true to prevent overwriting an existing value.
+		 *
+		 * Example: WpssoPost::update_meta_key( 123, 'schema_review_rating', 1 );
+		 */
+		public static function update_meta_key( $obj_id, $meta_key, $value, $protect = false ) {
+
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+
+			if ( ! is_array( $md_opts ) ) {
+
+				$md_opts = array();	// WPSSO_META_NAME not found.
+			}
+
+			if ( array_key_exists( $meta_key, $md_opts ) ) {
+
+				if ( $protect ) {	// Prevent overwriting an existing value.
+
+					return false;	// No update.
+
+				} elseif ( $value === $md_opts[ $meta_key ] ) {	// Nothing to do.
+
+					return false;	// No update.
+				}
+			}
+
+			$md_opts[ $meta_key ] = $value;
+
+			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
+		}
+
+		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
 		 * Always call this method as staticdelete_meta(), and not selfdelete_meta(), to execute the method via the child
@@ -3272,6 +3260,37 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		public static function delete_meta( $obj_id, $meta_key ) {
 
 			return self::must_be_extended( $ret_val = false );	// No delete.
+		}
+
+		/*
+		 * Since WPSSO Core v16.4.0.
+		 *
+		 * Delete an element from a metadata options array, if the array key exists.
+		 *
+		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
+		 */
+		public static function delete_meta_key( $obj_id, $meta_key ) {
+
+			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+
+			if ( ! is_array( $md_opts ) ) {	// Nothing to do.
+
+				return false;	// No update.
+			}
+
+			if ( ! array_key_exists( $meta_key, $md_opts ) ) {	// Nothing to do.
+
+				return false;	// No update.
+			}
+
+			unset( $md_opts[ $meta_key ] );
+
+			if ( empty( $md_opts ) ) {	// Just in case.
+
+				return static::delete_meta( $obj_id, WPSSO_META_NAME );	// Use static method from child.
+			}
+
+			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
 		}
 
 		/*
