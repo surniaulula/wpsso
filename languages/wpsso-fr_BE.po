@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-10-22 08:59-0700\n"
+"PO-Revision-Date: 2023-10-22 11:35-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6626,7 +6626,7 @@ msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image ple
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1683 lib/register.php:330 lib/util.php:887 lib/util.php:993
+#: lib/media.php:1683 lib/register.php:305 lib/util.php:887 lib/util.php:993
 #: lib/util.php:1025 lib/util.php:3137
 msgid "%s warning:"
 msgstr "Alerte %s:"
@@ -9291,7 +9291,7 @@ msgstr "Les critiques de produits de WooCommerce ne sont pas compatibles avec l'
 msgid "Please choose another %1$s or <a href=\"%2$s\">disable product reviews in WooCommerce</a>."
 msgstr "Veuillez choisir un autre %1$s ou <a href=\"%2$s\">désactiver les critiques de produits dans WooCommerce</a>."
 
-#: lib/messages.php:467 lib/register.php:339
+#: lib/messages.php:467 lib/register.php:314
 msgid "You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
 msgstr "Vous utilisez la version %2$s de %1$s - <a href=\"%3$s\">cette version de %1$s est obsolète, non supportée, peut-être insécure</a> et pourrait manquer certaines mises à jour et caractéristiques importantes."
 
@@ -10500,93 +10500,93 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages %1$s ID %2$s."
 msgid "Invalid user ID."
 msgstr "ID d'utilisateur invalide."
 
-#: lib/register.php:332 lib/register.php:341
+#: lib/register.php:307 lib/register.php:316
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé."
 
-#: lib/register.php:343
+#: lib/register.php:318
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/register.php:352
+#: lib/register.php:327
 msgid "Page Tags"
 msgstr "Étiquettes de page"
 
-#: lib/register.php:353
+#: lib/register.php:328
 msgid "Page Tag"
 msgstr "Étiquette de page"
 
-#: lib/register.php:354
+#: lib/register.php:329
 msgctxt "admin menu name"
 msgid "Page Tags"
 msgstr "Étiquettes de page"
 
-#: lib/register.php:355
+#: lib/register.php:330
 msgid "All Page Tags"
 msgstr "Toutes les étiquettes de page"
 
-#: lib/register.php:356
+#: lib/register.php:331
 msgid "Edit Page Tag"
 msgstr "Modifier l'étiquette de page"
 
-#: lib/register.php:357
+#: lib/register.php:332
 msgid "View Page Tag"
 msgstr "Afficher l'étiquette de page"
 
-#: lib/register.php:358
+#: lib/register.php:333
 msgid "Update Page Tag"
 msgstr "Mettre à jour l'étiquette de page"
 
-#: lib/register.php:359
+#: lib/register.php:334
 msgid "Add New Page Tag"
 msgstr "Ajouter une nouvelle étiquette de page"
 
-#: lib/register.php:360
+#: lib/register.php:335
 msgid "New Page Tag Name"
 msgstr "Nom de la nouvelle étiquette de page"
 
-#: lib/register.php:361
+#: lib/register.php:336
 msgid "Parent Page Tag"
 msgstr "Étiquette de page parente"
 
-#: lib/register.php:362
+#: lib/register.php:337
 msgid "Parent Page Tag:"
 msgstr "Étiquette de page parente:"
 
-#: lib/register.php:363
+#: lib/register.php:338
 msgid "Search Page Tags"
 msgstr "Rechercher des étiquettes de page"
 
-#: lib/register.php:364
+#: lib/register.php:339
 msgid "Popular Page Tags"
 msgstr "Étiquettes de page populaires"
 
-#: lib/register.php:365
+#: lib/register.php:340
 msgid "Separate page tags with commas"
 msgstr "Séparez les étiquettes de page par des virgules"
 
-#: lib/register.php:366
+#: lib/register.php:341
 msgid "Add or remove page tags"
 msgstr "Ajouter ou supprimer des étiquettes de page"
 
-#: lib/register.php:367
+#: lib/register.php:342
 msgid "Choose from the most used"
 msgstr "Choisir parmi les plus utilisées"
 
-#: lib/register.php:368
+#: lib/register.php:343
 msgid "No page tags found."
 msgstr "Aucune étiquettes de page trouvée."
 
-#: lib/register.php:369
+#: lib/register.php:344
 msgid "← Back to page tags"
 msgstr "← Retour aux étiquettes de page"
 
-#: lib/register.php:373
+#: lib/register.php:348
 msgctxt "taxonomy label"
 msgid "Page Tags"
 msgstr "Étiquettes de page"
 
-#: lib/register.php:384
+#: lib/register.php:359
 msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
