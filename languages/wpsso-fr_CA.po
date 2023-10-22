@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-10-21 08:21-0700\n"
+"PO-Revision-Date: 2023-10-22 08:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3139,7 +3139,7 @@ msgid "Options to Show by Default"
 msgstr "Options à afficher par défaut"
 
 #: gettext/gettext-lib-pro.php:72 lib/messages-tooltip-plugin.php:586
-#: lib/page.php:139 lib/pro/admin/advanced.php:462
+#: lib/page.php:137 lib/pro/admin/advanced.php:462
 #: lib/std/admin/advanced.php:450
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -10365,15 +10365,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:1026 lib/util-inline.php:413
+#: lib/page.php:1024 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/page.php:1030
+#: lib/page.php:1028
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2229
+#: lib/page.php:2227
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
