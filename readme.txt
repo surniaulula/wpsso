@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.4.0-rc.2 (2023/10/22)**
+**Version 16.4.0-rc.3 (2023/10/22)**
 
 * **New Features**
 	* None.
@@ -400,7 +400,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.4.0-rc.2 =
+= 16.4.0-rc.3 =
 
 (2023/10/22) Added new options in the SSO &gt; Advanced Settings page.
 
