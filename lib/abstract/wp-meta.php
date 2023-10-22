@@ -3163,9 +3163,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
 		 */
-		public static function add_meta_key( $obj_id, $meta_key, $value ) {
+		public static function add_meta_opts_key( $obj_id, $meta_key, $opts_key, $value ) {
 
-			return self::update_meta_key( $obj_id, $meta_key, $value, $protect = true );
+			return self::update_meta_opts_key( $obj_id, $meta_key, $opts_key, $value, $protect = true );
 		}
 
 		/*
@@ -3173,6 +3173,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
+		 *
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */
 		public static function get_meta( $obj_id, $meta_key = '', $single = false ) {
 
@@ -3186,13 +3190,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Get an element from the metadata options array. Returns null if the array key does not exist.
 		 */
-		public static function get_meta_key( $obj_key, $meta_key ) {
+		public static function get_meta_opts_key( $obj_key, $meta_key, $opts_key ) {
 
-			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
-			if ( array_key_exists( $meta_key, $md_opts ) ) {
+			if ( array_key_exists( $opts_key, $md_opts ) ) {
 
-				return $md_opts[ $meta_key ];
+				return $md_opts[ $opts_key ];
 			}
 
 			return null;	// No value.
@@ -3214,41 +3218,41 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Update a metadata options array element, if the array key does not exit, or its value is different.
 		 *
-		 * This method reads the WPSSO_META_NAME options array from the WordPress metadata table, updates the array element
-		 * value (if different), then saves the array back to the WordPress metadata table (if the array has changed).
-		 * Because of the overhead required to read and save the array from/to the WordPress metadata table, this method
-		 * should be used only for metadata maintenance purposes. Calling this method on every page load is not recommended.
+		 * This method reads the $meta_key options array from the WordPress metadata table, updates the array element value
+		 * (if different), then saves the array back to the WordPress metadata table (if the array has changed). Because of
+		 * the overhead required to read and save the array from/to the WordPress metadata table, this method should be
+		 * used only for metadata maintenance purposes. Calling this method on every page load is not recommended.
 		 *
 		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
 		 *
 		 * Use $protect = true to prevent overwriting an existing value.
 		 *
-		 * Example: WpssoPost::update_meta_key( 123, 'schema_review_rating', 1 );
+		 * Example: WpssoPost::update_meta_opts_key( 123, 'schema_review_rating', 1 );
 		 */
-		public static function update_meta_key( $obj_id, $meta_key, $value, $protect = false ) {
+		public static function update_meta_opts_key( $obj_id, $meta_key, $opts_key, $value, $protect = false ) {
 
-			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
 			if ( ! is_array( $md_opts ) ) {
 
-				$md_opts = array();	// WPSSO_META_NAME not found.
+				$md_opts = array();	// $meta_key not found.
 			}
 
-			if ( array_key_exists( $meta_key, $md_opts ) ) {
+			if ( array_key_exists( $opts_key, $md_opts ) ) {
 
 				if ( $protect ) {	// Prevent overwriting an existing value.
 
 					return false;	// No update.
 
-				} elseif ( $value === $md_opts[ $meta_key ] ) {	// Nothing to do.
+				} elseif ( $value === $md_opts[ $opts_key ] ) {	// Nothing to do.
 
 					return false;	// No update.
 				}
 			}
 
-			$md_opts[ $meta_key ] = $value;
+			$md_opts[ $opts_key ] = $value;
 
-			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
+			return static::update_meta( $obj_id, $meta_key, $md_opts );	// Use static method from child.
 		}
 
 		/*
@@ -3269,58 +3273,49 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * After changing the metadata options element, do not forget to refresh the cache for that object ID.
 		 */
-		public static function delete_meta_key( $obj_id, $meta_key ) {
+		public static function delete_meta_opts_key( $obj_id, $meta_key, $opts_key ) {
 
-			$md_opts = static::get_meta( $obj_id, WPSSO_META_NAME, $single = true );	// Use static method from child.
+			$md_opts = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
 			if ( ! is_array( $md_opts ) ) {	// Nothing to do.
 
 				return false;	// No update.
 			}
 
-			if ( ! array_key_exists( $meta_key, $md_opts ) ) {	// Nothing to do.
+			if ( ! array_key_exists( $opts_key, $md_opts ) ) {	// Nothing to do.
 
 				return false;	// No update.
 			}
 
-			unset( $md_opts[ $meta_key ] );
+			unset( $md_opts[ $opts_key ] );
 
 			if ( empty( $md_opts ) ) {	// Just in case.
 
-				return static::delete_meta( $obj_id, WPSSO_META_NAME );	// Use static method from child.
+				return static::delete_meta( $obj_id, $meta_key );	// Use static method from child.
 			}
 
-			return static::update_meta( $obj_id, WPSSO_META_NAME, $md_opts );	// Use static method from child.
+			return static::update_meta( $obj_id, $meta_key, $md_opts );	// Use static method from child.
 		}
 
 		/*
 		 * Since WPSSO Core v8.12.0.
 		 *
-		 * Used by several SEO integration modules.
+		 * See WpssoIntegSeoRankmath->filter_title_seed().
+		 * See WpssoIntegSeoRankmath->filter_description_seed().
+		 * See WpssoIntegSeoSeoPress->filter_title_seed().
+		 * See WpssoIntegSeoSeoPress->filter_description_seed().
+		 * See WpssoIntegSeoSeoPress->filter_get_md_options().
+		 * See WpssoIntegSeoWpMetaSeo->filter_title_seed().
+		 * See WpssoIntegSeoWpMetaSeo->filter_description_seed().
 		 */
-		public static function get_mod_meta( $mod, $meta_key, $single = false, $delete = false ) {
+		public static function get_mod_meta( $mod, $meta_key = '', $single = false ) {
 
-			$ret_val = $not_found = $single ? '' : array();	// Default if no metadata found.
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
-			if ( $meta_key ) {	// Just in case.
-
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
-
-					if ( ! empty( $mod[ 'name' ] ) ) {
-
-						$ret_val = get_metadata( $mod[ 'name' ], $mod[ 'id' ], $meta_key, $single );
-
-						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
-
-							delete_metadata( $mod[ 'name' ], $mod[ 'id' ], $meta_key );
-						}
-					}
-
-					return $ret_val;
-				}
+				return get_metadata( $mod[ 'name' ], $mod[ 'id' ], $meta_key, $single );
 			}
 
-			return $ret_val;
+			return $single ? '' : array();
 		}
 
 		protected static function must_be_extended( $method, $ret_val = null ) {

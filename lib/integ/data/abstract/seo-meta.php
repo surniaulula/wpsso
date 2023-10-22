@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 				foreach( $this->cache_imported_meta[ 'term' ] as $meta_key => $bool ) {
 
-					WpssoTerm::delete_term_meta( $term_id, $meta_key );
+					delete_metadata( 'term', $term_id, $meta_key );
 				}
 
 				unset( $this->cache_imported_meta[ 'term' ] );
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 			if ( null === $term_opts ) {
 
-				$meta_value = (string) WpssoTerm::get_term_meta( $mod[ 'id' ], $meta_key, $single = true );
+				$meta_value = (string) get_metadata( 'term', $mod[ 'id' ], $meta_key, $single = true );
 
 			} else {
 

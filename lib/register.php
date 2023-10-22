@@ -206,42 +206,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				$col_meta_keys = WpssoAbstractWpMeta::get_column_meta_keys();
 
-				foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-					delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
-				}
-
-				/*
-				 * Delete post settings and meta.
-				 */
-				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
-				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
-
-				/*
-				 * Delete term settings and meta.
-				 */
-				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
+				foreach ( array( 'comment', 'post', 'term', 'user' ) as $obj_name ) {
 
 					foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-						WpssoTerm::delete_term_meta( $term_id, $meta_key );
+						delete_metadata( $obj_name, $obj_id = null, $meta_key, $meta_value = null, $delete_all = true );
 					}
 
-					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
-					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_ATTACHED_NAME );
+					delete_metadata( $obj_name, $obj_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
+					delete_metadata( $obj_name, $obj_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
+					delete_metadata( $obj_name, $obj_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 				}
-
-				/*
-				 * Delete user settings and meta.
-				 */
-				foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-					delete_metadata( $meta_type = 'user', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
-				}
-
-				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
-				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
-				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 
 				while ( $result = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
 

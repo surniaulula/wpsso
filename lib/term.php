@@ -993,10 +993,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */
 		public static function get_meta( $term_id, $meta_key = '', $single = false ) {
 
-			return self::get_term_meta( $term_id, $meta_key, $single );
+			return get_metadata( 'term', $term_id, $meta_key, $single );
 		}
 
 		/*
@@ -1004,7 +1008,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public static function update_meta( $term_id, $meta_key, $value ) {
 
-			return self::update_term_meta( $term_id, $meta_key, $value );
+			return update_metadata( 'term', $term_id, $meta_key, $value );
 		}
 
 		/*
@@ -1012,102 +1016,47 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public static function delete_meta( $term_id, $meta_key ) {
 
-			return self::delete_term_meta( $term_id, $meta_key );
+			return delete_metadata( 'term', $term_id, $meta_key );
 		}
 
 		/*
-		 * Backwards compatible methods for handling term meta (which did not exist before WordPress v4.4).
-		 *
-		 * Use get_metadata() instead of get_term_meta() for consistency.
-		 * Use update_metadata() instead of update_term_meta() for consistency.
+		 * Deprecated on 2023/10/22.
 		 */
-		public static function get_term_meta( $term_id, $meta_key, $single = false ) {
+		public static function get_term_meta( $term_id, $meta_key = '', $single = false ) {
 
-			$term_meta = false === $single ? array() : '';
+			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = '' );	// Deprecation message.
 
-			if ( self::use_term_meta_table( $term_id ) ) {
-
-				$term_meta = get_metadata( 'term', $term_id, $meta_key, $single );
-
-				/*
-				 * Fallback to checking for deprecated term meta in the options table.
-				 */
-				if ( ( $single && $term_meta === '' ) || ( ! $single && $term_meta === array() ) ) {
-
-					/*
-					 * If deprecated meta is found, update the meta table and delete the deprecated meta.
-					 */
-					if ( ( $opt_term_meta = get_option( $meta_key . '_term_' . $term_id, null ) ) !== null ) {
-
-						$updated = update_metadata( 'term', $term_id, $meta_key, $opt_term_meta );
-
-						if ( ! is_wp_error( $updated ) ) {
-
-							delete_option( $meta_key . '_term_' . $term_id );
-
-							$term_meta = get_metadata( 'term', $term_id, $meta_key, $single );
-
-						} else {
-
-							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
-						}
-					}
-				}
-
-			} elseif ( ( $opt_term_meta = get_option( $meta_key . '_term_' . $term_id, null ) ) !== null ) {
-
-				$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
-			}
-
-			return $term_meta;
+			return $single ? '' : array();
 		}
 
 		/*
-		 * Use update_metadata() instead of update_term_meta() for consistency.
+		 * Deprecated on 2023/10/22.
 		 */
 		public static function update_term_meta( $term_id, $meta_key, $value ) {
 
-			if ( self::use_term_meta_table( $term_id ) ) {
+			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = '' );	// Deprecation message.
 
-				return update_metadata( 'term', $term_id, $meta_key, $value );
-			}
-
-			return update_option( $meta_key . '_term_' . $term_id, $value );
+			return false;
 		}
 
 		/*
-		 * Use delete_metadata() instead of delete_term_meta() for consistency.
+		 * Deprecated on 2023/10/22.
 		 */
 		public static function delete_term_meta( $term_id, $meta_key ) {
+			
+			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = '' );	// Deprecation message.
 
-			if ( self::use_term_meta_table( $term_id ) ) {
-
-				return delete_metadata( 'term', $term_id, $meta_key );
-			}
-
-			return delete_option( $meta_key . '_term_' . $term_id );
+			return false;
 		}
 
+		/*
+		 * Deprecated on 2023/10/22.
+		 */
 		public static function use_term_meta_table( $term_id = false ) {
 
-			static $local_cache = array();
+			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = '' );	// Deprecation message.
 
-			if ( isset( $local_cache[ $term_id ] ) ) {	// Optimize and check only once.
-
-				return $local_cache[ $term_id ];
-			}
-
-			if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
-
-				if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
-
-					return $local_cache[ $term_id ] = true;
-				}
-
-				return $local_cache[ $term_id ] = false;
-			}
-
-			return $local_cache[ $term_id ] = false;
+			return true;
 		}
 	}
 }

@@ -2722,9 +2722,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
-		 * Use get_metadata() instead of get_post_meta().
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
 		 *
-		 * WordPress get_post_meta() does NOT call wp_is_post_revision(), so it retrieves the revision metadata.
+		 * Use get_metadata() instead of get_post_meta() as the WordPress get_post_meta() function does not check
+		 * wp_is_post_revision(), so it retrieves the revision metadata instead of the post metadata.
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */
 		public static function get_meta( $post_id, $meta_key = '', $single = false ) {
 
@@ -2733,12 +2736,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
-		 *
-		 * Use update_metadata() instead of update_post_meta().
-		 *
-		 * WordPress update_post_meta() calls wp_is_post_revision(), so it updates the post metadata NOT the revision metadata.
-		 *
-		 * If get_post_meta() and update_post_meta() are used on a revision, it will update and clear the post metadata.
 		 */
 		public static function update_meta( $post_id, $meta_key, $value ) {
 
@@ -2747,10 +2744,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
-		 *
-		 * Use delete_metadata() instead of delete_post_meta().
-		 *
-		 * WordPress delete_post_meta() calls wp_is_post_revision(), so it deletes the post metadata NOT the revision metadata.
 		 */
 		public static function delete_meta( $post_id, $meta_key ) {
 

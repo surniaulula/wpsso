@@ -2008,7 +2008,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
-		 * Use get_metadata() instead of get_user_meta() for consistency.
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */
 		public static function get_meta( $user_id, $meta_key = '', $single = false ) {
 
@@ -2017,8 +2019,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
-		 *
-		 * Use update_metadata() instead of update_user_meta() for consistency.
 		 */
 		public static function update_meta( $user_id, $meta_key, $value ) {
 
@@ -2027,20 +2027,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/*
 		 * Since WPSSO Core v8.4.0.
-		 *
-		 * Use delete_metadata() instead of delete_user_meta() for consistency.
 		 */
 		public static function delete_meta( $user_id, $meta_key ) {
 
 			return delete_metadata( 'user', $user_id, $meta_key );
-		}
-
-		/*
-		 * Deprecated on 2023/02/13.
-		 */
-		public function stop_add_person_role() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/02/13', $replacement = '' );	// Deprecation message.
 		}
 	}
 }
