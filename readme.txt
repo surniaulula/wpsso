@@ -271,7 +271,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook ($value = null if the custom field does not exist):
+	* Added a new 'wpsso_import_cf_{custom_field_name}' filter hook:
 		* 'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )
 	* Added new helper functions for developers:
 		* wpsso_get_post_options_full()
