@@ -2009,7 +2009,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$videos     = array();
 			$md_pre     = array( 'schema', 'og' );
-			$mt_videos  = $this->p->media->get_all_videos( $num, $mod, $md_pre, $force_prev = true );
+			$max_nums   = $this->p->util->get_max_nums( $mod );
+			$mt_videos  = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre, $force_prev = true );
 			$added_urls = array();
 
 			foreach ( $mt_videos as $mt_single_video ) {

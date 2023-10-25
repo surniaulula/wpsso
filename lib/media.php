@@ -244,8 +244,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * original number to get all possible videos (from its cache), then maybe limit the number of preview
 			 * images if necessary.
 			 */
-			$max_nums = $this->p->util->get_max_nums( $mod );
-
+			$max_nums  = $this->p->util->get_max_nums( $mod );
 			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre, $force_prev );
 
 			$this->p->util->clear_uniq_urls( $uniq_context = array( 'preview' ), $mod );
