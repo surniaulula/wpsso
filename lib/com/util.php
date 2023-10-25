@@ -909,6 +909,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $title );
 		}
 
+		public static function maybe_iso8601_to_seconds( $mixed ) {
+
+			if ( 0 === strpos( $mixed, 'P' ) ) {
+
+				return self::iso8601_to_seconds( $mixed );
+			}
+
+			return $mixed;
+		}
+
+		/*
+		 * Convert ISO 8601 value (like P2DT15M33S) to seconds.
+		 */
+		public static function iso8601_to_seconds( $iso8601 ) {
+		
+			$interval = new \DateInterval( $iso8601 );
+
+		        return ( $interval->d * 24 * 60 * 60 ) + ( $interval->h * 60 * 60 ) + ( $interval->i * 60 ) + $interval->s;
+		}
+		
 		/*
 		 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 		 */
@@ -2015,11 +2035,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:url'             => null,
 				$mt_pre . ':video:title'           => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:description'     => null,	// Non-standard / internal meta tag.
-				$mt_pre . ':video:type'            => null,	// Example: 'application/x-shockwave-flash' or 'text/html'.
+				$mt_pre . ':video:family_friendly' => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':video:regions_allowed' => array(),	// Non-standard / internal meta tag.
+				$mt_pre . ':video:type'            => null,	// Example: 'application/x-shockwave-flash', 'text/html', 'video/mp4', etc.
 				$mt_pre . ':video:width'           => null,
 				$mt_pre . ':video:height'          => null,
 				$mt_pre . ':video:tag'             => array(),
 				$mt_pre . ':video:duration'        => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':video:published_date'  => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:upload_date'     => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:thumbnail_url'   => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:embed_url'       => null,	// Non-standard / internal meta tag.
@@ -2084,12 +2107,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_first_og_image_id( array $assoc ) {
 
-			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':id' ) );
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image',
+				$mt_suffixes = array( ':id' ) );
 		}
 
 		public static function get_first_og_image_url( array $assoc ) {
 
-			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':secure_url', ':url', '' ) );
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image',
+				$mt_suffixes = array( ':secure_url', ':url', '' ) );
+		}
+
+		public static function get_first_og_video_url( array $assoc ) {
+
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:video',
+				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url', ':stream_url' ) );
 		}
 
 		public static function get_first_mt_media_id( array $assoc, $media_pre = 'og:image' ) {
@@ -5336,88 +5367,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $default;
-		}
-
-		/*
-		 * Deprecated on 2023/01/03.
-		 */
-		public static function get_options_transl( array $opts, $text_domain ) {
-
-			return self::get_options_label_transl( $opts, $text_domain );
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_first_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $first;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_last_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $last;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_next_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $next;
-		}
-
-		/*
-		 * Deprecated on 2022/01/23.
-		 */
-		protected static function get_first_last_next_nums( array $input ) {
-
-			$keys  = array_keys( $input );
-			$count = count( $keys );
-
-			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// Check for non-numeric keys.
-
-				$keys = array();
-
-				foreach ( $input as $key => $value ) {	// Keep only the numeric keys.
-
-					if ( is_numeric( $key ) ) {
-
-						$keys[] = $key;
-					}
-				}
-
-				$count = count( $keys );
-			}
-
-			sort( $keys );	// Sort numerically.
-
-			$first = (int) reset( $keys );	// Get the first number.
-			$last  = (int) end( $keys );	// Get the last number.
-			$next  = $count ? $last + 1 : $last;	// Next is 0 (not 1) for an empty array.
-
-			return array( $first, $last, $next );
 		}
 
 		/*

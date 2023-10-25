@@ -1945,23 +1945,122 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $alternates;
 		}
 
-		public function get_sitemaps_images( array $mod ) {
+		/*
+		 * See https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps.
+		 * See WpssoWpsmSitemapsFilters->wp_sitemaps_posts_entry().
+		 * See WpssoWpsmSitemapsFilters->wp_sitemaps_taxonomies_entry().
+		 * See WpssoWpsmSitemapsFilters->wp_sitemaps_users_entry().
+		 */
+		public function get_sitemaps_images( array $mod, $num = 1 ) {
 
-			$sitemaps_images = array();
-
-			$mt_images = $this->p->media->get_all_images( $num = 1, $size_names = 'schema', $mod, $md_pre = array( 'schema', 'og' ) );
+			$images     = array();
+			$size_names = 'schema';
+			$md_pre     = array( 'schema', 'og' );
+			$mt_images  = $this->p->media->get_all_images( $num, $size_names, $mod, $md_pre );
 
 			foreach ( $mt_images as $mt_single_image ) {
 
 				if ( $image_url = SucomUtil::get_first_og_image_url( $mt_single_image ) ) {
 
-					$sitemaps_images[] = array(
+					$images[] = array(
 						'image:loc' => $image_url,
 					);
 				}
 			}
 
-			return $sitemaps_images;
+			return $images;
+		}
+
+		/*
+		 * See https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap.
+		 * See WpssoWpsmSitemapsFilters->wp_sitemaps_posts_entry().
+		 */
+		public function get_sitemaps_news( array $mod, $news_pub_time, $news_pub_name ) {
+
+			$news = array();
+
+			$is_recent = $mod[ 'post_timestamp' ] > time() - $news_pub_time ? true : false;
+
+			if ( $is_recent ) {
+
+				$schema_lang  = $this->p->schema->get_schema_lang( $mod, $prime_lang = true );
+				$schema_title = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
+
+				$news[] = array(
+					'news:publication'      => array(
+						array(
+							'news:name'     => $news_pub_name,
+							'news:language' => $schema_lang,
+						),
+					),
+					'news:title'            => $schema_title,
+					'news:publication_date' => $mod[ 'post_time' ],
+				);
+			}
+
+			return $news;
+		}
+
+		/*
+		 * See https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps.
+		 * See WpssoWpsmSitemapsFilters->wp_sitemaps_posts_entry().
+		 */
+		public function get_sitemaps_videos( array $mod, $num = 1 ) {
+
+			$videos     = array();
+			$md_pre     = array( 'schema', 'og' );
+			$mt_videos  = $this->p->media->get_all_videos( $num, $mod, $md_pre, $force_prev = true );
+			$added_urls = array();
+
+			foreach ( $mt_videos as $mt_single_video ) {
+
+				$video_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video',
+					$mt_suffixes = array( ':embed_url', ':stream_url' ) );
+
+				if ( $video_url ) {
+
+					if ( isset( $added_urls[ $video_url ] ) ) {	// Prevent duplicates from 'text/html' and 'video/mp4' videos.
+
+						continue;
+					}
+
+					$added_urls[ $video_url ] = true;
+
+					$image_url = SucomUtil::get_first_og_image_url( $mt_single_video );
+
+					$video = array(
+						'video:thumbnail_loc' => $image_url,
+					);
+
+					WpssoSchema::add_data_itemprop_from_assoc( $video, $mt_single_video, array( 
+						'video:player_loc'        => 'og:video:embed_url',
+						'video:content_loc'       => 'og:video:stream_url',
+						'video:title'             => 'og:video:title',
+						'video:description'       => 'og:video:description',
+						'video:duration'          => 'og:video:duration',
+						'video:publication_date'  => 'og:video:published_date',
+						'video:family_friendly'   => 'og:video:family_friendly',
+						'video:restriction_allow' => 'og:video:regions_allowed',
+					) );
+
+					if ( isset( $video[ 'video:duration' ] ) ) {
+
+						$video[ 'video:duration' ] = SucomUtil::maybe_iso8601_to_seconds( $video[ 'video:duration' ] );
+					}
+					
+					if ( isset( $video[ 'video:restriction_allow' ] ) ) {
+					
+						if ( is_array( $video[ 'video:restriction_allow' ] ) ) {
+
+							$video[ 'video:restriction_allow' ] = implode( ' ', $video[ 'video:restriction_allow' ] );
+						}
+					}
+
+					$videos[] = $video;
+				}
+			}
+
+			return $videos;
 		}
 
 		/*

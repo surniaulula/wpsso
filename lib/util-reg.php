@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 				if ( ! empty( $protect ) ) {
 
-					$event_version = self::get_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
+					$event_version = SucomUtilWP::get_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
 
 					if ( $event_version === $protect ) {
 
@@ -143,119 +143,74 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			if ( ! empty( $version ) ) {
 
-				self::update_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
+				SucomUtilWP::update_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
 			}
 
-			self::update_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
+			SucomUtilWP::update_options_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
 		}
 
 		/*
-		 * Add an element to a site options array, if the array key does not already exist.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function add_site_options_key( $options_name, $key, $value ) {
 
-			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = true );
+			return SucomUtilWP::add_site_options_key( $options_name, $key, $value );
 		}
 
 		/*
-		 * Add an element to an options array, if the array key does not already exist.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function add_options_key( $options_name, $key, $value ) {
 
-			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = false );
+			return SucomUtilWP::add_options_key( $options_name, $key, $value );
 		}
 
 		/*
-		 * Update a site options array element, if the array key does not exit, or its value is different.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function update_site_options_key( $options_name, $key, $value, $protect = false ) {
 
-			return self::update_options_key( $options_name, $key, $value, $protect, $site = true );
+			return SucomUtilWP::update_site_options_key( $options_name, $key, $value, $protect );
 		}
 
 		/*
-		 * Update an options array element, if the array key does not exit, or its value is different.
-		 *
-		 * Use $protect = true to prevent overwriting an existing value.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
 
-			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );		// Returns an array by default.
-
-			if ( array_key_exists( $key, $opts ) ) {
-
-				if ( $protect ) {	// Prevent overwriting an existing value.
-
-					return false;	// No update.
-
-				} elseif ( $value === $opts[ $key ] ) {	// Nothing to do.
-
-					return false;	// No update.
-				}
-			}
-
-			$opts[ $key ] = $value;
-
-			return $site ? update_site_option( $options_name, $opts ) :
-				update_option( $options_name, $opts );
+			return SucomUtilWP::update_options_key( $options_name, $key, $value, $protect, $site );
 		}
 
 		/*
-		 * Get an element from a site options array. Returns null if the array key does not exist.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function get_site_options_key( $options_name, $key ) {
 
-			return self::get_options_key( $options_name, $key, $site = true );
+			return SucomUtilWP::get_site_options_key( $options_name, $key );
 		}
 
 		/*
-		 * Get an element from an options array. Returns null if the array key does not exist.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function get_options_key( $options_name, $key, $site = false ) {
 
-			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );		// Returns an array by default.
-
-			if ( array_key_exists( $key, $opts ) ) {
-
-				return $opts[ $key ];
-			}
-
-			return null;	// No value.
+			return SucomUtilWP::get_options_key( $options_name, $key, $site );
 		}
 
 		/*
-		 * Delete an element from a site options array, if the array key exists.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function delete_site_options_key( $options_name, $key ) {
 
-			return self::delete_options_key( $options_name, $key, $site = true );
+			return SucomUtilWP::delete_site_options_key( $options_name, $key );
 		}
 
 		/*
-		 * Delete an element from an options array, if the array key exists.
+		 * Deprecated on 2023/10/23.
 		 */
 		public static function delete_options_key( $options_name, $key, $site = false ) {
 
-			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );		// Returns an array by default.
-
-			if ( ! array_key_exists( $key, $opts ) ) {	// Nothing to do.
-
-				return false;	// No update.
-			}
-
-			unset( $opts[ $key ] );
-
-			if ( empty( $opts ) ) {	// Just in case.
-
-				return $site ? delete_site_option( $options_name ) :
-					delete_option( $options_name );
-			}
-
-			return $site ? update_site_option( $options_name, $opts ) :
-				update_option( $options_name, $opts );
+			return SucomUtilWP::delete_options_key( $options_name, $key, $site );
 		}
 	}
 }

@@ -3308,7 +3308,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * See WpssoIntegSeoWpMetaSeo->filter_title_seed().
 		 * See WpssoIntegSeoWpMetaSeo->filter_description_seed().
 		 */
-		public static function get_mod_meta( $mod, $meta_key = '', $single = false ) {
+		public static function get_mod_meta( array $mod, $meta_key = '', $single = false ) {
 
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 

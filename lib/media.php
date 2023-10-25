@@ -3482,9 +3482,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;
 
 							case 'itemprop-datePublished':
+
+								$mt_single_video[ 'og:video:published_date' ] = gmdate( 'c', strtotime( $content ) );
+								
+								if ( empty( $mt_single_video[ 'og:video:upload_date' ] ) ) {
+
+									$mt_single_video[ 'og:video:upload_date' ] = $mt_single_video[ 'og:video:published_date' ];
+								}
+
+								break;
+
 							case 'itemprop-uploadDate':
 
 								$mt_single_video[ 'og:video:upload_date' ] = gmdate( 'c', strtotime( $content ) );
+
+								if ( empty( $mt_single_video[ 'og:video:published_date' ] ) ) {
+
+									$mt_single_video[ 'og:video:published_date' ] = $mt_single_video[ 'og:video:upload_date' ];
+								}
 
 								break;
 
@@ -3498,6 +3513,36 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'itemprop-embedURL':
 
 								$mt_single_video[ 'og:video:embed_url' ] = SucomUtil::decode_html( $content );
+
+								break;
+							
+							case 'itemprop-isFamilyFriendly':
+								
+								/*
+								 * See WpssoUtil->get_sitemaps_videos().
+								 */
+								switch ( $content ) {
+
+									case 'yes':
+									case 'true':
+
+										$mt_single_video[ 'og:video:family_friendly' ] = 'yes';
+
+										break;
+
+									case 'no':
+									case 'false':
+
+										$mt_single_video[ 'og:video:family_friendly' ] = 'no';
+
+										break;
+								}
+
+								break;
+							
+							case 'itemprop-regionsAllowed':
+
+								$mt_single_video[ 'og:video:regions_allowed' ] = preg_split( '|,[\s]*?|', trim( $content ) );	// Example: AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW.
 
 								break;
 						}

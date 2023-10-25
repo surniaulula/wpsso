@@ -625,6 +625,115 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $wp_config_file_path;
 		}
 
+		/*
+		 * Add an element to a site options array, if the array key does not already exist.
+		 */
+		public static function add_site_options_key( $options_name, $key, $value ) {
+
+			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = true );
+		}
+
+		/*
+		 * Add an element to an options array, if the array key does not already exist.
+		 */
+		public static function add_options_key( $options_name, $key, $value ) {
+
+			return self::update_options_key( $options_name, $key, $value, $protect = true, $site = false );
+		}
+
+		/*
+		 * Update a site options array element, if the array key does not exit, or its value is different.
+		 */
+		public static function update_site_options_key( $options_name, $key, $value, $protect = false ) {
+
+			return self::update_options_key( $options_name, $key, $value, $protect, $site = true );
+		}
+
+		/*
+		 * Update an options array element, if the array key does not exit, or its value is different.
+		 *
+		 * Use $protect = true to prevent overwriting an existing value.
+		 */
+		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
+
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
+
+			if ( array_key_exists( $key, $opts ) ) {
+
+				if ( $protect ) {	// Prevent overwriting an existing value.
+
+					return false;	// No update.
+
+				} elseif ( $value === $opts[ $key ] ) {	// Nothing to do.
+
+					return false;	// No update.
+				}
+			}
+
+			$opts[ $key ] = $value;
+
+			return $site ? update_site_option( $options_name, $opts ) :
+				update_option( $options_name, $opts );
+		}
+
+		/*
+		 * Get an element from a site options array. Returns null if the array key does not exist.
+		 */
+		public static function get_site_options_key( $options_name, $key ) {
+
+			return self::get_options_key( $options_name, $key, $site = true );
+		}
+
+		/*
+		 * Get an element from an options array. Returns null if the array key does not exist.
+		 */
+		public static function get_options_key( $options_name, $key, $site = false ) {
+
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
+
+			if ( array_key_exists( $key, $opts ) ) {
+
+				return $opts[ $key ];
+			}
+
+			return null;	// No value.
+		}
+
+		/*
+		 * Delete an element from a site options array, if the array key exists.
+		 */
+		public static function delete_site_options_key( $options_name, $key ) {
+
+			return self::delete_options_key( $options_name, $key, $site = true );
+		}
+
+		/*
+		 * Delete an element from an options array, if the array key exists.
+		 */
+		public static function delete_options_key( $options_name, $key, $site = false ) {
+
+			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
+				get_option( $options_name, $default = array() );		// Returns an array by default.
+
+			if ( ! array_key_exists( $key, $opts ) ) {	// Nothing to do.
+
+				return false;	// No update.
+			}
+
+			unset( $opts[ $key ] );
+
+			if ( empty( $opts ) ) {	// Just in case.
+
+				return $site ? delete_site_option( $options_name ) :
+					delete_option( $options_name );
+			}
+
+			return $site ? update_site_option( $options_name, $opts ) :
+				update_option( $options_name, $opts );
+		}
+
 		public static function raw_update_post( $post_id, array $args ) {
 
 			if ( wp_is_post_revision( $post_id ) ) {
