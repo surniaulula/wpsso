@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.5.0-dev.2 (2023/10/26)**
+**Version 16.5.0-dev.3 (2023/10/26)**
 
 * **New Features**
 	* None.
@@ -279,7 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `delete_site_options_key()`
 		* `get_site_options_key()`
 		* `update_site_options_key()`
-	* Added a new `WpssoUtilCache->is_refresh_pending()` to provide a pending cache refresh notice.
+	* Added a new `WpssoUtilCache->show_refresh_pending()` to provide a pending cache refresh notice.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -429,7 +429,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.5.0-dev.2 =
+= 16.5.0-dev.3 =
 
 (2023/10/26) Added a notice for a pending cache refresh task.
 
