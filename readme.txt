@@ -255,12 +255,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.5.0-dev.1 (2023/10/25)**
+**Version 16.5.0-dev.2 (2023/10/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a notice for a pending cache refresh task.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -279,6 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `delete_site_options_key()`
 		* `get_site_options_key()`
 		* `update_site_options_key()`
+	* Added a new `WpssoUtilCache->is_refresh_pending()` to provide a pending cache refresh notice.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -428,9 +429,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.5.0-dev.1 =
+= 16.5.0-dev.2 =
 
-(2023/10/25) Added methods to data for video sitemaps.
+(2023/10/26) Added a notice for a pending cache refresh task.
 
 = 16.4.0 =
 
