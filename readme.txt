@@ -279,7 +279,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `delete_site_options_key()`
 		* `get_site_options_key()`
 		* `update_site_options_key()`
-	* Added a new `WpssoUtilCache->show_refresh_pending()` to provide a pending cache refresh notice.
+	* Added methods to provide pending cache refresh information:
+		* `WpssoUtilCache->is_refresh_running()`
+		* `WpssoUtilCache->show_refresh_running()`
+		* `WpssoUtilCache->show_refresh_pending()`
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
