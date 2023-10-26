@@ -1777,9 +1777,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 			$task_name         = 'add the Person role';
 			$task_name_transl  = _x( 'add the Person role', 'task name', 'wpsso' );
-			$cache_id          = $this->get_cache_id();
 
-			if ( ! $this->p->util->start_task( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->p->util->cache->start_task( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -1796,7 +1795,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				$this->p->util->set_task_limit( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME );
+				$this->p->util->cache->set_task_limit( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -1829,7 +1828,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			delete_transient( $cache_id );
+			$this->p->util->cache->end_task( $user_id, $task_name );
 		}
 
 		/*
@@ -1869,9 +1868,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 			$task_name         = 'remove the Person role';
 			$task_name_transl  = _x( 'remove the Person role', 'task name', 'wpsso' );
-			$cache_id          = $this->get_cache_id();
 
-			if ( ! $this->p->util->start_task( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->p->util->cache->start_task( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -1888,7 +1886,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				$this->p->util->set_task_limit( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME );
+				$this->p->util->cache->set_task_limit( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -1924,19 +1922,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			delete_transient( $cache_id );
-		}
-
-		public function get_cache_id() {
-
-			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
-		}
-
-		public function doing_task() {
-
-			$cache_id = $this->get_cache_id();
-
-			return get_transient( $cache_id );
+			$this->p->util->cache->end_task( $user_id, $task_name );
 		}
 
 		/*

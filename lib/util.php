@@ -2585,6 +2585,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		/*
 		 * Called by scheduled tasks to check the user ID value and possibly load a different textdomain language.
+		 *
+		 * See WpssoUser->schedule_add_person_role().
+		 * See WpssoUser->add_person_role().
+		 * See WpssoUser->schedule_remove_person_role().
+		 * See WpssoUser->remove_person_role().
+		 * See WpssoUtilCache->show_refresh_pending().
+		 * See WpssoUtilCache->schedule_refresh().
+		 * See WpssoUtilCache->refresh().
 		 */
 		public function maybe_change_user_id( $user_id ) {
 
@@ -3862,54 +3870,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $cache_exp_secs;
-		}
-
-		public function start_task( $user_id, $task_name, $cache_exp_secs, $cache_id ) {
-
-			$running_task_name = get_transient( $cache_id );
-
-			if ( false !== $running_task_name ) {
-
-				if ( $user_id ) {
-
-					$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-					$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
-					$notice_key       = $running_task_name . '-task-ignored';
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-				}
-
-				return false;
-			}
-
-			set_transient( $cache_id, $task_name, $cache_exp_secs );
-
-			return true;
-		}
-
-		public function set_task_limit( $user_id, $task_name, $cache_exp_secs ) {
-
-			$ret = set_time_limit( $cache_exp_secs );
-
-			if ( ! $ret ) {
-
-				$human_time = human_time_diff( 0, $cache_exp_secs );
-
-				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-
-				$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
-
-				$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
-					'<code>set_time_limit()</code>', $human_time, $task_name_transl );
-
-				$notice_key = $task_name . '-task-set-time-limit-error';
-
-				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
-
-				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
-			}
-
-			return $ret;
 		}
 
 		/*

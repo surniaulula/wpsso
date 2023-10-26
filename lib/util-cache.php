@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->p->debug->log( 'plugin cache is disabled' );
 				}
 
-				$this->u->add_plugin_filters( $this, array(
+				$this->p->util->add_plugin_filters( $this, array(
 					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
 					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
@@ -341,23 +341,54 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$user_id = get_current_user_id();	// Always returns an integer.
 
-			if ( $task_name = $this->doing_task() ) {
+			if ( ! $this->show_refresh_running( $user_id ) ) {
 
-				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+				$this->show_refresh_pending( $user_id );
+			}
+		}
+
+		/*
+		 * See WpssoCmcfRewrite::template_redirect().
+		 * See WpssoCmcfSubmenuGmfGeneral->filter_form_button_rows().
+		 * See WpssoCmcfSubmenuGmfGeneral->get_table_rows().
+		 * See WpssoGmfRewrite::template_redirect().
+		 * See WpssoGmfSubmenuGmfGeneral->filter_form_button_rows().
+		 * See WpssoGmfSubmenuGmfGeneral->get_table_rows().
+		 */
+		public function is_refresh_running() {
+			
+			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
+
+			return is_array( $running_task ) ? true : false;
+		}
+
+		/*
+		 * See WpssoUtilCache->show_admin_notices().
+		 */
+		public function show_refresh_running( $user_id = null ) {
+
+			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
+
+			if ( is_array( $running_task ) ) {
+
+				$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
 				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
 				$notice_key       = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
-				return;
+				return true;
 			}
 
-			$this->is_refresh_pending( $user_id );
+			return false;
 		}
 
-		public function is_refresh_pending( $user_id = null ) {
+		/*
+		 * See WpssoUtilCache->show_admin_notices().
+		 */
+		public function show_refresh_pending( $user_id = null ) {
 
-			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 			$event_hook       = 'wpsso_refresh_cache';
@@ -422,14 +453,18 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 							}
 						}
+
+						return true;
 					}
 				}
 			}
+
+			return false;
 		}
 
 		public function schedule_refresh( $user_id = null ) {
 
-			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
@@ -455,12 +490,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function refresh( $user_id = null ) {
 
-			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$cache_id         = $this->get_cache_id();
 
-			if ( ! $this->u->start_task( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME, $cache_id ) ) {
+			if ( ! $this->start_task( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -477,7 +511,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				$this->u->set_task_limit( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );
+				$this->set_task_limit( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -587,7 +621,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			delete_transient( $cache_id );
+			$this->end_task( $user_id, $task_name );
 		}
 
 		public function refresh_mod_head_meta( array $mod ) {
@@ -604,16 +638,86 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return array( $head_tags, $head_info );
 		}
 
-		public function doing_task() {
+		public function start_task( $user_id, $task_name, $cache_exp_secs ) {
 
-			$cache_id = $this->get_cache_id();
+			$task_cache_id = $this->get_task_cache_id( $task_name );
+			$running_task  = get_transient( $task_cache_id );
 
-			return get_transient( $cache_id );
+			if ( false !== $running_task ) {
+
+				if ( $user_id === $running_task[ 0 ] && $task_name === $running_task[ 1 ] ) {
+
+					$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
+					$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
+					$notice_key       = $running_task[ 1 ] . '-task-ignored';
+
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+				}
+
+				return false;
+			}
+
+			set_transient( $task_cache_id, array( $user_id, $task_name ), $cache_exp_secs );
+
+			return true;
 		}
 
-		public function get_cache_id() {
+		public function end_task( $user_id, $task_name ) {
 
-			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
+			$task_cache_id = $this->get_task_cache_id( $task_name );
+
+			delete_transient( $task_cache_id );
+		}
+
+		public function set_task_limit( $user_id, $task_name, $cache_exp_secs ) {
+
+			$ret = set_time_limit( $cache_exp_secs );
+
+			if ( ! $ret ) {
+
+				$human_time = human_time_diff( 0, $cache_exp_secs );
+
+				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+
+				$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+
+				$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
+					'<code>set_time_limit()</code>', $human_time, $task_name_transl );
+
+				$notice_key = $task_name . '-task-set-time-limit-error';
+
+				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
+			}
+
+			return $ret;
+		}
+
+		/*
+		 * Returns false or an array.
+		 *
+		 * See WpssoUtilCache->is_refresh_running().
+		 * See WpssoUtilCache->show_refresh_running().
+		 */
+		public function get_running_task( $task_name ) {
+
+			$task_cache_id = $this->get_task_cache_id( $task_name );
+
+			return get_transient( $task_cache_id );
+		}
+
+		/*
+		 * Returns a transient cache id.
+		 *
+		 * See WpssoUser->add_person_role().
+		 * See WpssoUser->remove_person_role().
+		 * See WpssoUtilCache->refresh().
+		 * See WpssoUtilCache->get_running_task().
+		 */
+		public function get_task_cache_id( $task_name ) {
+
+			return 'wpsso_!_' . md5( __CLASS__ . '::running-'. $task_name );
 		}
 
 		/*
@@ -816,6 +920,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		public function stop_refresh() {
 
 			_deprecated_function( __METHOD__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
+		}
+
+		/*
+		 * Deprecated on 2023/10/26.
+		 */
+		public function doing_task() {
+
+			return false;
 		}
 	}
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.5.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 16.5.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4001,7 +4001,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util.php:3900
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:682
 msgid "%s error:"
 msgstr ""
 
@@ -4458,7 +4458,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:913 lib/util-cache.php:572
+#: lib/admin.php:913 lib/util-cache.php:606
 msgid "%s cache files have been cleared."
 msgstr ""
 
@@ -4745,7 +4745,7 @@ msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2552 lib/util.php:3242
+#: lib/admin.php:2552 lib/util.php:3250
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6970,11 +6970,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1682 lib/register.php:305 lib/util.php:870 lib/util.php:976
-#: lib/util.php:1008 lib/util.php:3220
+#: lib/util.php:1008 lib/util.php:3228
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1683 lib/util.php:871 lib/util.php:3221
+#: lib/media.php:1683 lib/util.php:871 lib/util.php:3229
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -8330,8 +8330,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1777 lib/user.php:1869
-#: lib/user.php:1997
+#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1777 lib/user.php:1868
+#: lib/user.php:1983
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -12613,37 +12613,37 @@ msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1790 lib/user.php:1882 lib/util-cache.php:471
+#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:505
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1791
+#: lib/user.php:1790
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1825
+#: lib/user.php:1824
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1826 lib/user.php:1921 lib/util-cache.php:584
+#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:618
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1842 lib/user.php:1871
+#: lib/user.php:1841 lib/user.php:1870
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1850
+#: lib/user.php:1849
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1883
+#: lib/user.php:1881
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1920
+#: lib/user.php:1918
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 
@@ -12748,36 +12748,45 @@ msgstr ""
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:347
+#: lib/util-cache.php:375
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:362 lib/util-cache.php:434 lib/util-cache.php:460
+#: lib/util-cache.php:393 lib/util-cache.php:469 lib/util-cache.php:495
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:415
+#: lib/util-cache.php:446
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:442
+#: lib/util-cache.php:477
 msgid ""
 "A background task will begin in the next %1$s to %2$s for posts, terms and "
 "users."
 msgstr ""
 
-#: lib/util-cache.php:472
+#: lib/util-cache.php:506
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:554
+#: lib/util-cache.php:588
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:626
+#: lib/util-cache.php:651
+msgid "Ignoring request to %s - this task is already running."
+msgstr ""
+
+#: lib/util-cache.php:684
+msgid ""
+"The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
+msgstr ""
+
+#: lib/util-cache.php:730
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
@@ -12957,156 +12966,147 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3222
+#: lib/util.php:3230
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3245
+#: lib/util.php:3253
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3247
+#: lib/util.php:3255
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3249
+#: lib/util.php:3257
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3251
+#: lib/util.php:3259
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3646
+#: lib/util.php:3654
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3647
+#: lib/util.php:3655
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3651
+#: lib/util.php:3659
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3652
+#: lib/util.php:3660
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3656
+#: lib/util.php:3664
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3657
+#: lib/util.php:3665
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3661
+#: lib/util.php:3669
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3662
+#: lib/util.php:3670
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3666
+#: lib/util.php:3674
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3667
+#: lib/util.php:3675
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3671
+#: lib/util.php:3679
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3672
+#: lib/util.php:3680
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3676
+#: lib/util.php:3684
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3677
+#: lib/util.php:3685
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3681
+#: lib/util.php:3689
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3682
+#: lib/util.php:3690
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3686
+#: lib/util.php:3694
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3687
+#: lib/util.php:3695
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3692
+#: lib/util.php:3700
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3693
+#: lib/util.php:3701
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3763
+#: lib/util.php:3771
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3773
+#: lib/util.php:3781
 msgid "%1$s for %2$s ID %3$d"
-msgstr ""
-
-#: lib/util.php:3876
-msgid "Ignoring request to %s - this task is already running."
-msgstr ""
-
-#: lib/util.php:3902
-msgid ""
-"The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
 #: wpsso.php:638
