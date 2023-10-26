@@ -56,6 +56,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				add_action( 'admin_head', array( $this, 'wp_php_versions' ), -200 );	// Requires 'manage_options' capability.
 				add_action( 'admin_head', array( $this, 'pending_updates' ), -100 );	// Requires 'update_plugins' capability.
 				add_action( 'admin_head', array( $this->p->util, 'log_is_functions' ), 10 );
+				add_action( 'admin_head', array( $this->p->util->cache, 'show_admin_notices' ), -1000 );
 				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );	// Requires 'manage_options' capability.
 			}
 		}

@@ -97,7 +97,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->set_util_instances( $plugin );
 
 			$this->add_plugin_actions( $this, array( 'scheduled_task_started' => 1 ), $prio = -1000 );
-			$this->add_plugin_actions( $this, array( 'show_admin_notices' => 1 ), $prio = -1000, $ext = 'sucom' );
 
 			/*
 			 * Log the locale change and clear the Sucom::get_locale() cache.
@@ -221,22 +220,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function action_scheduled_task_started( $user_id ) {
 
 			$this->add_plugin_image_sizes();
-		}
-
-		/*
-		 * Hooked to 'sucom_show_admin_notices' action.
-		 */
-		public function action_show_admin_notices() {
-
-			if ( $task_name = $this->cache->doing_task() ) {
-
-				$user_id          = get_current_user_id();	// Always returns an integer.
-				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
-				$notice_key       = $task_name . '-task-running';
-
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
-			}
 		}
 
 		/*
@@ -2048,9 +2031,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$video[ 'video:duration' ] = SucomUtil::maybe_iso8601_to_seconds( $video[ 'video:duration' ] );
 					}
-					
+
 					if ( isset( $video[ 'video:restriction_allow' ] ) ) {
-					
+
 						if ( is_array( $video[ 'video:restriction_allow' ] ) ) {
 
 							$video[ 'video:restriction_allow' ] = implode( ' ', $video[ 'video:restriction_allow' ] );

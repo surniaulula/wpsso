@@ -923,12 +923,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Convert ISO 8601 value (like P2DT15M33S) to seconds.
 		 */
 		public static function iso8601_to_seconds( $iso8601 ) {
-		
+
 			$interval = new \DateInterval( $iso8601 );
 
 		        return ( $interval->d * 24 * 60 * 60 ) + ( $interval->h * 60 * 60 ) + ( $interval->i * 60 ) + $interval->s;
 		}
-		
+
 		/*
 		 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 		 */

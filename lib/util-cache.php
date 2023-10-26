@@ -337,19 +337,112 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $transients_subset;
 		}
 
+		public function show_admin_notices() {
+
+			$user_id = get_current_user_id();	// Always returns an integer.
+
+			if ( $task_name = $this->doing_task() ) {
+
+				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
+				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
+				$notice_key       = $task_name . '-task-info';
+
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+
+				return;
+			}
+
+			$this->is_refresh_pending( $user_id );
+		}
+
+		public function is_refresh_pending( $user_id = null ) {
+
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$task_name        = 'refresh the cache';
+			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
+			$event_hook       = 'wpsso_refresh_cache';
+			$event_args       = array( $user_id );
+			$crons            = _get_cron_array();
+
+			if ( ! is_array( $crons ) ) {	// Just in case.
+
+				return;
+			}
+
+			foreach ( $crons as $timestamp => $cronhooks ) {
+
+				if ( ! is_array( $cronhooks ) ) {	// Just in case.
+
+					continue;
+				}
+
+				foreach ( $cronhooks as $hook => $args ) {
+
+					if ( ! is_array( $args ) ) {	// Just in case.
+
+						continue;
+
+					} elseif ( $event_hook !== $hook ) {	// Only check our own hook.
+
+						continue;
+					}
+
+					foreach ( $args as $key => $event_args ) {
+
+						if ( ! is_array( $event_args ) ) {	// Just in case.
+
+							continue;
+						}
+
+						if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
+
+							$now        = time();
+							$human_time = human_time_diff( $now, $timestamp );
+							$notice_key = $task_name . '-task-info';
+
+							if ( $now <= $timestamp ) {
+
+								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s' .
+									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
+
+								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+
+							} else {
+
+								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago' .
+									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
+
+								$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.', 'wpsso' ),
+									'<code>' . $event_hook . '</code>' ) . ' ';
+
+								$notice_msg .= sprintf( __( 'If the scheduled event does not run, this would indicate a problem' .
+									' with your hosting provider\'s scheduler and a lack of support for the WordPress %s function.',
+										'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
+
+								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+							}
+						}
+					}
+				}
+			}
+		}
+
 		public function schedule_refresh( $user_id = null ) {
 
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 8 seconds.
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
+			$human_time       = human_time_diff( 0, WPSSO_SCHEDULE_SINGLE_EVENT_TIME );
 			$event_hook       = 'wpsso_refresh_cache';
 			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin shortly to %s for posts, terms and users.', 'wpsso' ), $task_name_transl );
-				$notice_key = $task_name . '-task-scheduled';
+				$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for posts, terms and users.', 'wpsso' ),
+					$human_time, $task_name_transl );
+
+				$notice_key = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -377,7 +470,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$mtime_start  = microtime( $get_float = true );
 				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
-				$notice_key   = $task_name . '-task-started';
+				$notice_key   = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -455,6 +548,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
+			/*
+			 * Create the notification for the end of this task.
+			 */
 			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
@@ -486,7 +582,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 				$human_time  = human_time_diff( 0, $mtime_total );
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
-				$notice_key  = $task_name . '-task-ended';
+				$notice_key  = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -508,11 +604,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return array( $head_tags, $head_info );
 		}
 
-		public function get_cache_id() {
-
-			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
-		}
-
 		public function doing_task() {
 
 			$cache_id = $this->get_cache_id();
@@ -520,8 +611,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return get_transient( $cache_id );
 		}
 
+		public function get_cache_id() {
+
+			return 'wpsso_!_' . md5( __CLASS__ . '::running_task_name' );
+		}
+
 		/*
-		 * Clear cache plugins.
+		 * Clear known caching plugins.
 		 */
 		public function clear_cache() {
 

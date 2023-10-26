@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '16.5.0-dev.1',	// Plugin version.
+					'version'     => '16.5.0-dev.2',	// Plugin version.
 					'opt_version' => '993',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5059,7 +5059,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_METABOX_TAB_LAYOUT' ]          = 'vertical';		// Default tab layout (vertical or horizontal).
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 3.00;		// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
-			$var_const[ 'WPSSO_SCHEDULE_SINGLE_EVENT_TIME' ]  = 8;			// Schedule single events for now + 8 seconds.
+			$var_const[ 'WPSSO_SCHEDULE_SINGLE_EVENT_TIME' ]  = 10;			// Schedule single events for now + 10 seconds.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
 
 			/*

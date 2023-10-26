@@ -1748,13 +1748,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'add the Person role';
 			$task_name_transl = _x( 'add the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 8 seconds.
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
+			$human_time       = human_time_diff( 0, WPSSO_SCHEDULE_SINGLE_EVENT_TIME );
 			$event_hook       = 'wpsso_add_person_role';
 			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin shortly to %s to content creators.', 'wpsso' ), $task_name_transl );
+				$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for content creators.', 'wpsso' ),
+					$human_time, $task_name_transl );
+
 				$notice_key = $task_name . '-scheduled';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
@@ -1786,7 +1789,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$mtime_start  = microtime( $get_float = true );
 				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s to content creators was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
-				$notice_key   = $task_name . '-task-started';
+				$notice_key   = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -1821,7 +1824,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$human_time  = human_time_diff( 0, $mtime_total );
 				$notice_msg  = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label_transl, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
-				$notice_key  = $task_name . '-task-ended';
+				$notice_key  = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -1837,13 +1840,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$task_name        = 'remove the Person role';
 			$task_name_transl = _x( 'remove the Person role', 'task name', 'wpsso' );
-			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 8 seconds.
+			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
+			$human_time       = human_time_diff( 0, WPSSO_SCHEDULE_SINGLE_EVENT_TIME );
 			$event_hook       = 'wpsso_remove_person_role';
 			$event_args       = array( $user_id );
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin shortly to %s from all users.', 'wpsso' ), $task_name_transl );
+				$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s from all users.', 'wpsso' ),
+					$human_time, $task_name_transl );
+
 				$notice_key = $task_name . '-scheduled';
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
@@ -1875,7 +1881,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$mtime_start  = microtime( $get_float = true );
 				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s from all users was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
-				$notice_key   = $task_name . '-task-started';
+				$notice_key   = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
@@ -1913,7 +1919,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$human_time  = human_time_diff( 0, $mtime_total );
 				$notice_msg  = sprintf( __( 'The %1$s role has been removed from %2$d users.', 'wpsso' ), $role_label_transl, $count ) . ' ';
 				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time );
-				$notice_key  = $task_name . '-task-ended';
+				$notice_key  = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
