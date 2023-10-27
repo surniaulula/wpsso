@@ -255,16 +255,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.5.0-dev.3 (2023/10/26)**
+**Version 16.5.0-dev.4 (2023/10/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a notice for a pending cache refresh task.
+	* Added a method to provide video sitemaps data:
+		* 'video:content_loc'
+		* 'video:description'
+		* 'video:duration'
+		* 'video:family_friendly'
+		* 'video:player_loc'
+		* 'video:publication_date'
+		* 'video:restriction_allow'
+		* 'video:title'
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added methods to data for video sitemaps:
+	* Added methods to support video sitemaps:
 		* `SucomUtil::get_first_og_video_url()`
 		* `SucomUtil::iso8601_to_seconds()`
 		* `SucomUtil::maybe_iso8601_to_seconds()`
@@ -432,9 +441,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.5.0-dev.3 =
+= 16.5.0-dev.4 =
 
-(2023/10/26) Added a notice for a pending cache refresh task.
+(2023/10/27) Added a notice for a pending cache refresh task. Added a method to provide video sitemaps data.
 
 = 16.4.0 =
 
