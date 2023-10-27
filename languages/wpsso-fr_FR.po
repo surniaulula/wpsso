@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 16.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-10-27 09:13-0700\n"
+"PO-Revision-Date: 2023-10-27 12:57-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3804,7 +3804,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:686
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:679
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -4213,7 +4213,7 @@ msgstr "Les réglages réseau ont été sauvegardés."
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:913 lib/util-cache.php:610
+#: lib/admin.php:913 lib/util-cache.php:603
 msgid "%s cache files have been cleared."
 msgstr "%s fichiers de cache ont été supprimés."
 
@@ -11320,7 +11320,7 @@ msgstr "ajouter le rôle Personne"
 msgid "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s aux créateurs de contenu."
 
-#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:509
+#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:502
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -11333,7 +11333,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:622
+#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:615
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -11453,44 +11453,52 @@ msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:429 lib/util-cache.php:473 lib/util-cache.php:499
+#: lib/util-cache.php:429 lib/util-cache.php:466 lib/util-cache.php:492
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
 
-#: lib/util-cache.php:446
-msgid "WordPress should have run the %s event hook at that time."
-msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
-
-#: lib/util-cache.php:453
-msgid "You can activate a plugin like %s to view all scheduled events."
-msgstr "Vous pouvez activer une extension comme %s pour afficher tous les événements programmés."
-
-#: lib/util-cache.php:455
-msgid "WP Crontrol"
-msgstr "WP Crontrol"
-
-#: lib/util-cache.php:481
+#: lib/util-cache.php:436 lib/util-cache.php:474
 msgid "A background task will begin in the next %1$s to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:510
+#: lib/util-cache.php:442
+msgid "A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users."
+msgstr "Une tâche en arrière-plan devait commencer il y a %1$s pour %2$s les articles, les termes et les utilisateurs."
+
+#: lib/util-cache.php:444
+msgid "WordPress should have run the %s event hook at that time."
+msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
+
+#: lib/util-cache.php:446
+msgid "If the task does not run, this could indicate a problem with your hosting provider's event scheduler and/or a lack of support for the WordPress %s function."
+msgstr "Si la tâche ne s'exécute pas, cela peut indiquer un problème avec le planificateur d'événements de votre fournisseur d'hébergement et/ou un manque de prise en charge de la fonction %s de WordPress."
+
+#: lib/util-cache.php:448
+msgid "You can activate a plugin like %s to view all scheduled events."
+msgstr "Vous pouvez activer une extension comme %s pour afficher tous les événements programmés."
+
+#: lib/util-cache.php:448
+msgid "WP Crontrol"
+msgstr "WP Crontrol"
+
+#: lib/util-cache.php:503
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:592
+#: lib/util-cache.php:585
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:655
+#: lib/util-cache.php:648
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:688
+#: lib/util-cache.php:681
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:734
+#: lib/util-cache.php:727
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 

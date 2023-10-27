@@ -433,26 +433,19 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 							if ( $time_now < $timestamp ) {
 
-								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s' .
-									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
+								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
 							} elseif ( $time_now > $timestamp + 5 ) {	// Add a few seconds buffer.
 
-								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago' .
-									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
+								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
 
-								$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.', 'wpsso' ),
-									'<code>' . $event_hook . '</code>' ) . ' ';
+								$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.', 'wpsso' ), '<code>' . $event_hook . '</code>' ) . ' ';
 
-								$notice_msg .= sprintf( __( 'If the scheduled event does not run, this could indicate a problem' .
-									' with your hosting provider\'s scheduler, and a lack of support for the WordPress %s function.',
-										'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
+								$notice_msg .= sprintf( __( 'If the task does not run, this could indicate a problem with your hosting provider\'s event scheduler and/or a lack of support for the WordPress %s function.', 'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
 
-								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to view all scheduled events.', 'wpsso' ),
-									'<a href="https://wordpress.org/plugins/wp-crontrol/">' . 
-										esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
+								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to view all scheduled events.', 'wpsso' ), '<a href="https://wordpress.org/plugins/wp-crontrol/">' . esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
 
 								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 							}
