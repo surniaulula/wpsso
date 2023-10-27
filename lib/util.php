@@ -2596,9 +2596,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function maybe_change_user_id( $user_id ) {
 
-			$current_user_id = get_current_user_id();	// Always returns an integer.
-
-			$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// User ID can be true, false, null, or a number.
+			$current_user_id = get_current_user_id();					// Always returns an integer.
+			$user_id         = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// User ID can be true, false, null, or a number.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
 

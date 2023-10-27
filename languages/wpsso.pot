@@ -4745,7 +4745,7 @@ msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2552 lib/util.php:3250
+#: lib/admin.php:2552 lib/util.php:3249
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6970,11 +6970,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1682 lib/register.php:305 lib/util.php:870 lib/util.php:976
-#: lib/util.php:1008 lib/util.php:3228
+#: lib/util.php:1008 lib/util.php:3227
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1683 lib/util.php:871 lib/util.php:3229
+#: lib/media.php:1683 lib/util.php:871 lib/util.php:3228
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12748,11 +12748,11 @@ msgstr ""
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:375
+#: lib/util-cache.php:376
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:393 lib/util-cache.php:473 lib/util-cache.php:499
+#: lib/util-cache.php:429 lib/util-cache.php:473 lib/util-cache.php:499
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
@@ -12974,146 +12974,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3230
+#: lib/util.php:3229
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3253
+#: lib/util.php:3252
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3255
+#: lib/util.php:3254
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3257
+#: lib/util.php:3256
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3259
+#: lib/util.php:3258
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3654
+#: lib/util.php:3653
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3655
+#: lib/util.php:3654
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3659
+#: lib/util.php:3658
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3660
+#: lib/util.php:3659
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3664
+#: lib/util.php:3663
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3665
+#: lib/util.php:3664
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3669
+#: lib/util.php:3668
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3670
+#: lib/util.php:3669
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3674
+#: lib/util.php:3673
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3675
+#: lib/util.php:3674
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3679
+#: lib/util.php:3678
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3680
+#: lib/util.php:3679
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3684
+#: lib/util.php:3683
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3685
+#: lib/util.php:3684
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3689
+#: lib/util.php:3688
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3690
+#: lib/util.php:3689
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3694
+#: lib/util.php:3693
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3695
+#: lib/util.php:3694
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3700
+#: lib/util.php:3699
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3701
+#: lib/util.php:3700
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3771
+#: lib/util.php:3770
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3781
+#: lib/util.php:3780
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

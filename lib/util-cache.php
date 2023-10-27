@@ -371,9 +371,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( is_array( $running_task ) ) {
 
+				$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 				$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
 				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
-				$notice_key       = $task_name . '-task-info';
+				$notice_key       = $running_task[ 1 ] . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
@@ -388,12 +389,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function show_refresh_pending( $user_id = null ) {
 
-			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$task_name        = 'refresh the cache';
-			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$event_hook       = 'wpsso_refresh_cache';
-			$event_args       = array( $user_id );
-			$crons            = _get_cron_array();
+			$event_hook = 'wpsso_refresh_cache';
+			$crons      = _get_cron_array();
 
 			if ( ! is_array( $crons ) ) {	// Just in case.
 
@@ -427,18 +424,21 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 						if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
 
-							$now        = time();
-							$human_time = human_time_diff( $now, $timestamp );
-							$notice_key = $task_name . '-task-info';
+							$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+							$task_name        = 'refresh the cache';
+							$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
+							$time_now         = time();
+							$human_time       = human_time_diff( $time_now, $timestamp );
+							$notice_key       = $task_name . '-task-info';
 
-							if ( $now < $timestamp ) {
+							if ( $time_now < $timestamp ) {
 
 								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s' .
 									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
-							} elseif ( $now > $timestamp + 5 ) {	// Add a few seconds buffer.
+							} elseif ( $time_now > $timestamp + 5 ) {	// Add a few seconds buffer.
 
 								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago' .
 									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function get_task_cache_id( $task_name ) {
 
-			return 'wpsso_!_' . md5( __CLASS__ . '::running-'. $task_name );
+			return 'wpsso_!_' . md5( __CLASS__ . '::running-task-'. $task_name );
 		}
 
 		/*
