@@ -559,8 +559,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 *
 				 * Option key exceptions:
 				 *
-				 *	'add_meta_property_og:image:secure_url' = 1
-				 *	'add_meta_property_og:video:secure_url' = 1
+				 *	'add_meta_property_og:image:secure_url' = 0
+				 *	'add_meta_property_og:video:secure_url' = 0
 				 *	'plugin_cf_img_url'                     = ''	// Image URL Custom Field.
 				 *	'plugin_cf_vid_url'                     = ''	// Video URL Custom Field.
 				 */

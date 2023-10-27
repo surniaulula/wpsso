@@ -431,14 +431,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 							$human_time = human_time_diff( $now, $timestamp );
 							$notice_key = $task_name . '-task-info';
 
-							if ( $now <= $timestamp ) {
+							if ( $now < $timestamp ) {
 
 								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s' .
 									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
-							} else {
+							} elseif ( $now > $timestamp + 5 ) {	// Add a few seconds buffer.
 
 								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago' .
 									' to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
@@ -446,9 +446,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 								$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.', 'wpsso' ),
 									'<code>' . $event_hook . '</code>' ) . ' ';
 
-								$notice_msg .= sprintf( __( 'If the scheduled event does not run, this would indicate a problem' .
-									' with your hosting provider\'s scheduler and a lack of support for the WordPress %s function.',
+								$notice_msg .= sprintf( __( 'If the scheduled event does not run, this could indicate a problem' .
+									' with your hosting provider\'s scheduler, and a lack of support for the WordPress %s function.',
 										'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
+
+								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to view all scheduled events.', 'wpsso' ),
+									'<a href="https://wordpress.org/plugins/wp-crontrol/">' . 
+										esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
 
 								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 							}
@@ -927,7 +931,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function doing_task() {
 
-			return false;
+			_deprecated_function( __METHOD__ . '()', '2023/10/26', $replacement = __CLASS__ . '::is_refresh_running()' );	// Deprecation message.
+
+			return $this->is_refresh_running();
 		}
 	}
 }

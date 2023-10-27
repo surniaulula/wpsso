@@ -154,6 +154,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 */
 		public static function add_site_options_key( $options_name, $key, $value ) {
 
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::add_site_options_key()' );	// Deprecation message.
+
 			return SucomUtilWP::add_site_options_key( $options_name, $key, $value );
 		}
 
@@ -161,6 +163,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 * Deprecated on 2023/10/23.
 		 */
 		public static function add_options_key( $options_name, $key, $value ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::add_options_key()' );	// Deprecation message.
 
 			return SucomUtilWP::add_options_key( $options_name, $key, $value );
 		}
@@ -170,6 +174,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 */
 		public static function update_site_options_key( $options_name, $key, $value, $protect = false ) {
 
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::update_site_options_key()' );	// Deprecation message.
+
 			return SucomUtilWP::update_site_options_key( $options_name, $key, $value, $protect );
 		}
 
@@ -177,6 +183,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 * Deprecated on 2023/10/23.
 		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::update_options_key()' );	// Deprecation message.
 
 			return SucomUtilWP::update_options_key( $options_name, $key, $value, $protect, $site );
 		}
@@ -186,6 +194,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 */
 		public static function get_site_options_key( $options_name, $key ) {
 
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::get_site_options_key()' );	// Deprecation message.
+
 			return SucomUtilWP::get_site_options_key( $options_name, $key );
 		}
 
@@ -193,6 +203,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 * Deprecated on 2023/10/23.
 		 */
 		public static function get_options_key( $options_name, $key, $site = false ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::get_options_key()' );	// Deprecation message.
 
 			return SucomUtilWP::get_options_key( $options_name, $key, $site );
 		}
@@ -202,6 +214,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 */
 		public static function delete_site_options_key( $options_name, $key ) {
 
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::delete_site_options_key()' );	// Deprecation message.
+
 			return SucomUtilWP::delete_site_options_key( $options_name, $key );
 		}
 
@@ -209,6 +223,8 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 		 * Deprecated on 2023/10/23.
 		 */
 		public static function delete_options_key( $options_name, $key, $site = false ) {
+
+			_deprecated_function( __METHOD__ . '()', '2023/10/23', $replacement = 'SucomUtilWP::delete_options_key()' );	// Deprecation message.
 
 			return SucomUtilWP::delete_options_key( $options_name, $key, $site );
 		}
