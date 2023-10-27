@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.5.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 16.5.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1304,7 +1304,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:151
 msgctxt "plugin name"
-msgid "WPSSO Better WordPress Sitemaps XML"
+msgid "WPSSO WP Sitemaps XML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:152

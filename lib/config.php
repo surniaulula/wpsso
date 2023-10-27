@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '16.5.0-dev.4',	// Plugin version.
+					'version'     => '16.5.0-b.1',	// Plugin version.
 					'opt_version' => '993',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1353,7 +1353,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssowpsm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WPSM',	// Short plugin name.
-					'name'        => 'WPSSO Better WordPress Sitemaps XML',
+					'name'        => 'WPSSO WP Sitemaps XML',
 					'desc'        => 'Improves the WordPress sitemaps XML with article modification times, alternate language URLs, images sitemaps, news sitemaps and more.',
 					'slug'        => 'wpsso-wp-sitemaps',
 					'base'        => 'wpsso-wp-sitemaps/wpsso-wp-sitemaps.php',

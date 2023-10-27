@@ -148,7 +148,7 @@ _x( 'WPSSO Product Metadata for WooCommerce SEO', 'plugin name', 'wpsso' );
 _x( 'MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for WooCommerce products and variations.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Shipping Delivery Time for WooCommerce SEO', 'plugin name', 'wpsso' );
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Better WordPress Sitemaps XML', 'plugin name', 'wpsso' );
+_x( 'WPSSO WP Sitemaps XML', 'plugin name', 'wpsso' );
 _x( 'Improves the WordPress sitemaps XML with article modification times, alternate language URLs, images sitemaps, news sitemaps and more.', 'plugin description', 'wpsso' );
 _x( 'SSO - Social and Search Optimization', 'menu title', 'wpsso' );
 _x( 'SSO', 'notice title', 'wpsso' );
