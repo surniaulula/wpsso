@@ -383,9 +383,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$notice_key       = $running_task[ 1 ] . '-task-info';
 
 					$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
-
-					return true;
 				}
+
+				return true;
 			}
 
 			return false;
@@ -429,22 +429,26 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 							continue;
 						}
 
-						if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
+						$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+						$task_name        = 'refresh the cache';
+						$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
+						$time_now         = time();
+						$human_time       = human_time_diff( $time_now, $timestamp );
+						$notice_key       = $task_name . '-task-info';
 
-							$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-							$task_name        = 'refresh the cache';
-							$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-							$time_now         = time();
-							$human_time       = human_time_diff( $time_now, $timestamp );
-							$notice_key       = $task_name . '-task-info';
+						if ( $time_now < $timestamp ) {
 
-							if ( $time_now < $timestamp ) {
+							if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
+
 
 								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+							}
 
-							} elseif ( $time_now > $timestamp + 3 ) {	// Add a few seconds buffer.
+						} elseif ( $time_now > $timestamp + 3 ) {	// Add a few seconds buffer.
+
+							if ( $user_id === $event_args[ 'args' ][ 0 ] || current_user_can( 'manage_options' ) ) {
 
 								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
 

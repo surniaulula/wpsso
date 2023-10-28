@@ -4001,7 +4001,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:696
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:700
 msgid "%s error:"
 msgstr ""
 
@@ -4458,7 +4458,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:913 lib/util-cache.php:610
+#: lib/admin.php:913 lib/util-cache.php:614
 msgid "%s cache files have been cleared."
 msgstr ""
 
@@ -12613,7 +12613,7 @@ msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:509
+#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:513
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -12626,7 +12626,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:622
+#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:626
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12752,62 +12752,62 @@ msgstr ""
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:436 lib/util-cache.php:473 lib/util-cache.php:499
+#: lib/util-cache.php:434 lib/util-cache.php:477 lib/util-cache.php:503
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:443 lib/util-cache.php:481
+#: lib/util-cache.php:444 lib/util-cache.php:485
 msgid ""
 "A background task will begin in the next %1$s to %2$s for posts, terms and "
 "users."
 msgstr ""
 
-#: lib/util-cache.php:449
+#: lib/util-cache.php:453
 msgid ""
 "A background task was scheduled to begin %1$s ago to %2$s for posts, terms "
 "and users."
 msgstr ""
 
-#: lib/util-cache.php:451
+#: lib/util-cache.php:455
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:453
+#: lib/util-cache.php:457
 msgid ""
 "If the task does not run, this could indicate a problem with your hosting "
 "provider's event scheduler and/or a lack of support for the WordPress %s "
 "function."
 msgstr ""
 
-#: lib/util-cache.php:455
+#: lib/util-cache.php:459
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr ""
 
-#: lib/util-cache.php:455
+#: lib/util-cache.php:459
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:510
+#: lib/util-cache.php:514
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:592
+#: lib/util-cache.php:596
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:658
+#: lib/util-cache.php:662
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:698
+#: lib/util-cache.php:702
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:744
+#: lib/util-cache.php:748
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
