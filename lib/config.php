@@ -4050,8 +4050,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'webpage.checkout'   => 'https://schema.org/CheckoutPage',
 								'webpage.collection' => array(
 									'webpage.collection'    => 'https://schema.org/CollectionPage',
-									'webpage.gallery.image' => 'https://schema.org/ImageGallery',
-									'webpage.gallery.video' => 'https://schema.org/VideoGallery',
+									'webpage.gallery.media' => array(
+										'webpage.gallery.media' => 'https://schema.org/MediaGallery',
+										'webpage.gallery.image' => 'https://schema.org/ImageGallery',
+										'webpage.gallery.video' => 'https://schema.org/VideoGallery',
+									),
 								),
 								'webpage.contact'             => 'https://schema.org/ContactPage',
 								'webpage.faq'                 => 'https://schema.org/FAQPage',
