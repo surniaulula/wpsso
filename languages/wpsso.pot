@@ -12759,8 +12759,7 @@ msgstr ""
 
 #: lib/util-cache.php:444 lib/util-cache.php:485
 msgid ""
-"A background task will begin in the next %1$s to %2$s for posts, terms and "
-"users."
+"A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
 
 #: lib/util-cache.php:453

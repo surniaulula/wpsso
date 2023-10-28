@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 							if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
 
 
-								$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
+								$notice_msg = sprintf( __( 'A background task will begin in %1$s to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 							}
@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {	// Just in case.
 
-				$notice_msg = sprintf( __( 'A background task will begin in the next %1$s to %2$s for posts, terms and users.', 'wpsso' ),
+				$notice_msg = sprintf( __( 'A background task will begin in %1$s to %2$s for posts, terms and users.', 'wpsso' ),
 					$human_time, $task_name_transl );
 
 				$notice_key = $task_name . '-task-info';
