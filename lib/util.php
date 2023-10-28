@@ -1113,13 +1113,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		public function get_pkg_info() {
+		public function get_pkg_info( $get_ext = null, $get_key = null ) {
 
 			static $pkg_info = array();
 
 			if ( ! empty( $pkg_info ) ) {
 
-				return $pkg_info;
+				return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
 			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -1153,7 +1153,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
 			}
 
-			return $pkg_info;
+			return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
 		}
 
 		public function get_form_cache( $name, $add_none = false ) {

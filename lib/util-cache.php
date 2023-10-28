@@ -369,16 +369,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
 
-			if ( is_array( $running_task ) ) {
+			if ( is_array( $running_task ) ) {	// A task is running.
 
-				$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-				$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
-				$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
-				$notice_key       = $running_task[ 1 ] . '-task-info';
+				/*
+				 * Only the cache refresh status to the user who started the cache refresh.
+				 */
+				$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
-				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+				if ( $user_id === $running_task[ 0 ] ) {
 
-				return true;
+					$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
+					$notice_msg       = sprintf( __( 'A task to %s is currently running.', 'wpsso' ), $task_name_transl );
+					$notice_key       = $running_task[ 1 ] . '-task-info';
+
+					$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
+
+					return true;
+				}
 			}
 
 			return false;
@@ -437,7 +444,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
-							} elseif ( $time_now > $timestamp + 5 ) {	// Add a few seconds buffer.
+							} elseif ( $time_now > $timestamp + 3 ) {	// Add a few seconds buffer.
 
 								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
 
@@ -445,7 +452,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 								$notice_msg .= sprintf( __( 'If the task does not run, this could indicate a problem with your hosting provider\'s event scheduler and/or a lack of support for the WordPress %s function.', 'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
 
-								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to view all scheduled events.', 'wpsso' ), '<a href="https://wordpress.org/plugins/wp-crontrol/">' . esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
+								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to manage scheduled events.', 'wpsso' ), '<a href="https://wordpress.org/plugins/wp-crontrol/">' . esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
 
 								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 							}
@@ -637,22 +644,29 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function start_task( $user_id, $task_name, $cache_exp_secs ) {
 
-			$task_cache_id = $this->get_task_cache_id( $task_name );
-			$running_task  = get_transient( $task_cache_id );
+			/*
+			 * Maybe get the running task details.
+			 */
+			$running_task = $this->get_running_task( $task_name );	// Returns false or an array.
 
-			if ( false !== $running_task ) {
+			if ( is_array( $running_task ) ) {	// A task is running.
 
-				if ( $user_id === $running_task[ 0 ] && $task_name === $running_task[ 1 ] ) {
+				/*
+				 * Show the ignore request notice, no matter who started the task.
+				 */
+				$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
+				$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
+				$notice_key       = $running_task[ 1 ] . '-task-ignored';
 
-					$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
-					$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
-					$notice_key       = $running_task[ 1 ] . '-task-ignored';
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-				}
+				$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 
 				return false;
 			}
+
+			/*
+			 * Save the running task details.
+			 */
+			$task_cache_id = $this->get_task_cache_id( $task_name );
 
 			set_transient( $task_cache_id, array( $user_id, $task_name ), $cache_exp_secs );
 
@@ -661,6 +675,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function end_task( $user_id, $task_name ) {
 
+			/*
+			 * Delete the running task details.
+			 */
 			$task_cache_id = $this->get_task_cache_id( $task_name );
 
 			delete_transient( $task_cache_id );
