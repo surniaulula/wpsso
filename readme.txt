@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.5.0-b.1 (2023/10/27)**
+**Version 16.5.0-b.2 (2023/10/27)**
 
 * **New Features**
 	* None.
@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.5.0-b.1 =
+= 16.5.0-b.2 =
 
 (2023/10/27) Added a notice for a pending cache refresh task. Added a method to provide video sitemaps data.
 
