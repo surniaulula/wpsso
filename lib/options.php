@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							/*
 							 * Note that SucomUpdate->refresh_upd_config() has already been run by
 							 * WpssoUmFiltersOptions->filter_save_settings_options(), so we can check
-							 * for updates without first updating update manager config.
+							 * for updates without first updating the update manager config.
 							 */
 							$wpssoum->update->check_ext_for_updates( $check_ext = 'wpsso', $quiet = true );
 						}
