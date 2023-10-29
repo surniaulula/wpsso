@@ -255,6 +255,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 16.6.0-dev.1 (2023/10/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added debug messages to the pending cache refresh check:
+		* `WpssoUtilCache->show_refresh_pending()`
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 16.5.0 (2023/10/28)**
 
 * **New Features**
@@ -440,6 +455,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 16.6.0-dev.1 =
+
+(2023/10/29) Added debug messages to the pending cache refresh check.
 
 = 16.5.0 =
 
