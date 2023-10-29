@@ -895,6 +895,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
+						if ( ! empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'checking for plugin update' );
+							}
+
+							$wpssoum =& WpssoUm::get_instance();
+
+							$wpssoum->update->check_ext_for_updates( $check_ext = 'wpsso', $quiet = true );
+						}
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'scheduling cache refresh' );
+						}
+
 						$this->p->util->cache->schedule_refresh( $user_id );
 					}
 
