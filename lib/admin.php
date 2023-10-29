@@ -789,9 +789,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$refresh_cache_url  = add_query_arg( 'wpsso-action', 'refresh_cache', $refresh_cache_url );
 				$refresh_cache_url  = wp_nonce_url( $refresh_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 				$refresh_cache_link = '<a href="' . $refresh_cache_url . '">' . __( 'refresh the cache now', 'wpsso' ) . '</a>';
-				$cache_exp_human    = human_time_diff( 0, $cache_exp_secs );
+				$human_cache_exp    = human_time_diff( 0, $cache_exp_secs );
 
-				$notice_msg .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ), $refresh_cache_link, $cache_exp_human );
+				$notice_msg .= sprintf( __( 'You can %1$s or let the cache refresh over the next %2$s.', 'wpsso' ), $refresh_cache_link, $human_cache_exp );
 			}
 
 			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
@@ -1606,7 +1606,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
 				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_md5_pre, $decimals = 1 );
 				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
-				$cache_exp_human    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
+				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
 				echo '<tr>';
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $cache_md5_pre !== $all_transients_pre ) {
 
-					echo '<td class="cache-expiration">' . $cache_exp_human . '</td>';
+					echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
 				}
 
 				echo '</tr>' . "\n";
