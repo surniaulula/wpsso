@@ -339,6 +339,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function show_admin_notices() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$user_id = get_current_user_id();	// Always returns an integer.
 
 			if ( ! $this->show_refresh_running( $user_id ) ) {
@@ -357,6 +362,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function is_refresh_running() {
 			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
 
 			return is_array( $running_task ) ? true : false;
@@ -366,6 +376,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoUtilCache->show_admin_notices().
 		 */
 		public function show_refresh_running( $user_id = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
 
@@ -396,6 +411,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function show_refresh_pending( $user_id = null ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$event_hook = 'wpsso_refresh_cache';
 			$crons      = _get_cron_array();
 
@@ -404,27 +424,39 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;
 			}
 
-			foreach ( $crons as $timestamp => $cronhooks ) {
+			foreach ( $crons as $timestamp => $cron_hooks ) {
 
-				if ( ! is_array( $cronhooks ) ) {	// Just in case.
+				if ( ! is_array( $cron_hooks ) ) {	// Just in case.
 
 					continue;
 				}
 
-				foreach ( $cronhooks as $hook => $args ) {
+				foreach ( $cron_hooks as $cron_hook => $hook_args ) {
 
-					if ( ! is_array( $args ) ) {	// Just in case.
+					if ( ! is_array( $hook_args ) ) {	// Just in case.
 
 						continue;
 
-					} elseif ( $event_hook !== $hook ) {	// Only check our own hook.
+					} elseif ( $event_hook !== $cron_hook ) {	// Only check our own event hook.
 
 						continue;
 					}
 
-					foreach ( $args as $key => $event_args ) {
+					if ( $this->p->debug->enabled ) {
 
-						if ( ! is_array( $event_args ) ) {	// Just in case.
+						$this->p->debug->log( 'event hook ' . $event_hook . ' found' );
+
+						$this->p->debug->log_arr( 'hook_args', $hook_args );
+					}
+
+					/*
+					 * The $hook_key value is a checksum of the $hook_arr.
+					 *
+					 * The same task could be scheduled several times provided the $hook_arr elements are different.
+					 */
+					foreach ( $hook_args as $hook_key => $hook_arr ) {
+
+						if ( ! is_array( $hook_arr ) ) {	// Just in case.
 
 							continue;
 						}
@@ -435,36 +467,61 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						$time_now         = time();
 						$human_time       = human_time_diff( $time_now, $timestamp );
 						$notice_key       = $task_name . '-task-info';
+						$event_args       = $hook_arr[ 'args' ];
 
 						if ( $time_now < $timestamp ) {
 
-							if ( $user_id === $event_args[ 'args' ][ 0 ] ) {
+							if ( $this->p->debug->enabled ) {
 
+								$this->p->debug->log( 'task to ' . $task_name . ' for user id ' . $event_args[ 0 ] .
+									' scheduled to start in ' . $human_time );
+							}
 
-								$notice_msg = sprintf( __( 'A background task will begin in %1$s to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl );
+							if ( $user_id === $event_args[ 0 ] ) {
+
+								$notice_msg = sprintf( __( 'A background task will begin in %1$s to %2$s for posts, terms and users.',
+									'wpsso' ), $human_time, $task_name_transl );
 
 								$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 							}
 
-						} elseif ( $time_now > $timestamp + 3 ) {	// Add a few seconds buffer.
-
-							if ( $user_id === $event_args[ 'args' ][ 0 ] || current_user_can( 'manage_options' ) ) {
-
-								$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.', 'wpsso' ), $human_time, $task_name_transl ) . ' ';
-
-								$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.', 'wpsso' ), '<code>' . $event_hook . '</code>' ) . ' ';
-
-								$notice_msg .= sprintf( __( 'If the task does not run, this could indicate a problem with your hosting provider\'s event scheduler and/or a lack of support for the WordPress %s function.', 'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
-
-								$notice_msg .= sprintf( __( 'You can activate a plugin like %s to manage scheduled events.', 'wpsso' ), '<a href="https://wordpress.org/plugins/wp-crontrol/">' . esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
-
-								$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-							}
+							continue;	// Get the next $hook_args.
 						}
 
-						return true;
-					}
-				}
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'task to ' . $task_name . ' for user id ' . $event_args[ 0 ] .
+								' was scheduled to start ' . $human_time . ' ago' );
+						}
+
+						if ( $time_now > $timestamp + 3 && $user_id === $event_args[ 0 ] ) {	// Add a 3 second buffer.
+
+							$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.',
+								'wpsso' ), $human_time, $task_name_transl ) . ' ';
+
+							$notice_msg .= sprintf( __( 'WordPress should have run the %s event hook at that time.',
+								'wpsso' ), '<code>' . $event_hook . '</code>' ) . ' ';
+
+							$notice_msg .= sprintf( __( 'If the task does not run, this could indicate a problem with your hosting provider\'s event scheduler and/or a lack of support for the WordPress %s function.', 'wpsso' ), '<code>wp_schedule_single_event()</code>' ) . ' ';
+
+							$notice_msg .= sprintf( __( 'You can activate a plugin like %s to manage scheduled events.',
+								'wpsso' ), '<a href="https://wordpress.org/plugins/wp-crontrol/">' .
+									esc_html__( 'WP Crontrol', 'wp-crontrol' ) . '</a>' ) . ' ';
+
+							$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+						}
+
+					}	// End of $hook_args loop.
+
+					return true;	// Found one or more $event_hook.
+
+				}	// End of $cron_hooks loop.
+
+			}	// End of $crons loop.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'event hook ' . $event_hook . ' not found' );
 			}
 
 			return false;

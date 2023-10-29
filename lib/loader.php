@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$mod_dir = ! empty( $info[ 'update_auth' ] ) && $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) === 1 ? 'pro' : 'std';
+				$mod_dir = ! empty( $info[ 'update_auth' ] ) && 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'pro' : 'std';
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_dir ] = true;
 

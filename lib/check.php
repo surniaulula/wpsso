@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			static $lc = array();
 
 			$ext = null === $ext ? $this->p->id : $ext;
-			$id  = '|' . $ext . '-' . $li . '-' . $rv . '-' . $mx . '|';
+			$id  = $ext . '-' . $li . '-' . $rv . '-' . $mx;
 			$rv  = null === $mx ? $rv : $rv * $mx;
 
 			if ( $rc && isset( $lc[ $id ] ) ) {

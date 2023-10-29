@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_all_videos( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
-			$cache_salt_args = array(
+			$cache_salt = array(
 				'num'        => $num,
 				'mod'        => $mod,
 				'md_pre'     => $md_pre,
@@ -292,27 +292,44 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$this->p->debug->mark( 'getting all videos' );	// Begin timer.
 
-				$this->p->debug->log_args( $cache_salt_args );
+				$this->p->debug->log_args( $cache_salt );
 			}
 
 			static $local_cache = array();
 
-			$cache_salt = SucomUtil::pretty_array( $cache_salt_args, $flatten = true );
+			$cache_id = md5( SucomUtil::pretty_array( $cache_salt, $flatten = true ) );
 
-			if ( isset( $local_cache[ $cache_salt ] ) ) {
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->log( 'cache id = ' . $cache_id );
+			}
+
+			if ( isset( $local_cache[ $cache_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'returning video data from local cache' );
+				
+					$this->p->debug->mark( 'getting all videos' );	// End timer.
 				}
 
-				return $local_cache[ $cache_salt ];
+				return $local_cache[ $cache_id ];
 
+			} elseif ( 1 !== $this->p->check->pp( $ext = 'wpsso', true, WPSSO_UNDEF, true, -1 ) ) {
+				
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no video modules' );
+					
+					$this->p->debug->mark( 'getting all videos' );	// End timer.
+				}
+
+				return $local_cache[ $cache_id ] = array();
 			}
 
-			$local_cache[ $cache_salt ] = array();
+			$local_cache[ $cache_id ] = array();
 
-			$mt_videos =& $local_cache[ $cache_salt ];
+			$mt_videos =& $local_cache[ $cache_id ];	// Set reference variable.
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'video_details' ), $mod );
 

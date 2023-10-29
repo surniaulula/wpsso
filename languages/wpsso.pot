@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.5.0\n"
+"Project-Id-Version: WPSSO Core 16.6.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -490,8 +490,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:977
-#: lib/media-filters.php:116 lib/media.php:1494 lib/media.php:1644
-#: lib/media.php:3576
+#: lib/media-filters.php:116 lib/media.php:1511 lib/media.php:1661
+#: lib/media.php:3593
 msgid "Media Library"
 msgstr ""
 
@@ -4001,7 +4001,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:700
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:757
 msgid "%s error:"
 msgstr ""
 
@@ -4458,7 +4458,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:913 lib/util-cache.php:614
+#: lib/admin.php:913 lib/util-cache.php:671
 msgid "%s cache files have been cleared."
 msgstr ""
 
@@ -6897,7 +6897,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3586
+#: lib/media-filters.php:119 lib/media.php:3603
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -6926,82 +6926,82 @@ msgid ""
 "%3$dpx height."
 msgstr ""
 
-#: lib/media.php:1284
+#: lib/media.php:1301
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1498
+#: lib/media.php:1515
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1500 lib/media.php:1713
+#: lib/media.php:1517 lib/media.php:1730
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1516
+#: lib/media.php:1533
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1537
+#: lib/media.php:1554
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1556
+#: lib/media.php:1573
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1646
+#: lib/media.php:1663
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1682 lib/register.php:305 lib/util.php:870 lib/util.php:976
+#: lib/media.php:1699 lib/register.php:305 lib/util.php:870 lib/util.php:976
 #: lib/util.php:1008 lib/util.php:3227
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1683 lib/util.php:871 lib/util.php:3228
+#: lib/media.php:1700 lib/util.php:871 lib/util.php:3228
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1684
+#: lib/media.php:1701
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1711
+#: lib/media.php:1728
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3602
+#: lib/media.php:3619
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3655
+#: lib/media.php:3672
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3690
+#: lib/media.php:3707
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -12613,7 +12613,7 @@ msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:513
+#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:570
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -12626,7 +12626,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:626
+#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:683
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12748,65 +12748,65 @@ msgstr ""
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:382
+#: lib/util-cache.php:397
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:434 lib/util-cache.php:477 lib/util-cache.php:503
+#: lib/util-cache.php:466 lib/util-cache.php:534 lib/util-cache.php:560
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:444 lib/util-cache.php:485
+#: lib/util-cache.php:482 lib/util-cache.php:542
 msgid ""
 "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
 
-#: lib/util-cache.php:453
+#: lib/util-cache.php:499
 msgid ""
 "A background task was scheduled to begin %1$s ago to %2$s for posts, terms "
 "and users."
 msgstr ""
 
-#: lib/util-cache.php:455
+#: lib/util-cache.php:502
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:457
+#: lib/util-cache.php:505
 msgid ""
 "If the task does not run, this could indicate a problem with your hosting "
 "provider's event scheduler and/or a lack of support for the WordPress %s "
 "function."
 msgstr ""
 
-#: lib/util-cache.php:459
+#: lib/util-cache.php:507
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr ""
 
-#: lib/util-cache.php:459
+#: lib/util-cache.php:509
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:514
+#: lib/util-cache.php:571
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:596
+#: lib/util-cache.php:653
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:662
+#: lib/util-cache.php:719
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:702
+#: lib/util-cache.php:759
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:748
+#: lib/util-cache.php:805
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
