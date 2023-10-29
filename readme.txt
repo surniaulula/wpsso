@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.6.0-dev.1 (2023/10/29)**
+**Version 16.6.0-dev.2 (2023/10/29)**
 
 * **New Features**
 	* None.
@@ -264,7 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added debug messages to the pending cache refresh check:
+	* Added debug messages to the pending cache refresh method:
 		* `WpssoUtilCache->show_refresh_pending()`
 * **Requires At Least**
 	* PHP v7.2.34.
@@ -456,9 +456,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.6.0-dev.1 =
+= 16.6.0-dev.2 =
 
-(2023/10/29) Added debug messages to the pending cache refresh check.
+(2023/10/29) Added debug messages to the pending cache refresh method.
 
 = 16.5.0 =
 
