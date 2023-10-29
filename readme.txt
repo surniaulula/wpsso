@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.6.0-dev.2 (2023/10/29)**
+**Version 16.6.0-dev.3 (2023/10/29)**
 
 * **New Features**
 	* None.
@@ -264,6 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added an update check after upgrading the options array.
 	* Added debug messages to the pending cache refresh method:
 		* `WpssoUtilCache->show_refresh_pending()`
 * **Requires At Least**
@@ -456,9 +457,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.6.0-dev.2 =
+= 16.6.0-dev.3 =
 
-(2023/10/29) Added debug messages to the pending cache refresh method.
+(2023/10/29) Added an update check after upgrading the options array. Added debug messages to the pending cache refresh method.
 
 = 16.5.0 =
 
