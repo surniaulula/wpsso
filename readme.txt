@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.6.0-rc.1 (2023/20/30)**
+**Version 16.6.0 (2023/20/30)**
 
 * **New Features**
 	* None.
@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.6.0-rc.1 =
+= 16.6.0 =
 
 (2023/20/30) Updated CSS for disabled options. Added an update check after upgrading the options array. Added debug messages to the pending cache refresh method.
 
