@@ -841,7 +841,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$is_option_upg = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
 
 			/*
+			 * $opts is the new options to be saved. Wpsso->options and Wpsso->site_options are still the old options.
+			 *
+			 * $network is true if we're saving the multisite network settings.
+			 *
 			 * $is_option_upg is true when the option versions, not the plugin versions, have changed.
+			 *
+			 * Also applied by WpssoAdmin->settings_sanitation().
+			 * Also applied by WpssoAdmin->save_site_settings().
+			 *
+			 * See WpssoRrssbFiltersOptions->filter_save_settings_options().
+			 * See WpssoUmFiltersOptions->filter_save_settings_options().
 			 */
 			$opts = apply_filters( 'wpsso_save_settings_options', $opts, $network, $is_option_upg );
 
@@ -875,17 +885,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $is_option_upg ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
+					}
+
 					/*
 					 * Refresh the Schema types transient cache and the minimized notice stylesheet immediately.
 					 */
 					$this->p->schema->refresh_schema_types();
 
 					$this->p->notice->refresh_notice_style();
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
-					}
 
 					if ( is_admin() ) {
 
@@ -895,23 +905,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
-						if ( ! empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'checking for plugin update' );
-							}
-
-							$wpssoum =& WpssoUm::get_instance();
-
-							/*
-							 * Note that SucomUpdate->refresh_upd_config() has already been run by
-							 * WpssoUmFiltersOptions->filter_save_settings_options(), so we can check
-							 * for updates without first updating the update manager config.
-							 */
-							$wpssoum->update->check_ext_for_updates( $check_ext = 'wpsso', $quiet = true );
-						}
-
+						/*
+						 * Schedule a cache refresh.
+						 */
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'scheduling cache refresh' );
