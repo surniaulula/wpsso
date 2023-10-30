@@ -755,10 +755,9 @@ table.sucom-settings td select.og_type,
 table.sucom-settings td select.primary_term_id,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.timezone,
+table.sucom-settings td select.update_filter,
 table.sucom-settings td input[type="text"],	/* Default width. */
-table.sucom-settings td input[type="text"].schema_type {
-	width:255px;
-}
+table.sucom-settings td input[type="text"].schema_type { width:255px; }
 
 table.sucom-settings td select.xshort { width:60px; }
 
@@ -786,8 +785,6 @@ table.sucom-settings td select.size_group { width:124px; }
 table.sucom-settings td select.medium { width:180px; }
 
 table.sucom-settings td select.site-use { width:200px; }
-
-table.sucom-settings td select.update_filter { width:220px; }
 
 table.sucom-settings td select.wide,
 table.sucom-settings td input[type="text"].wide { width:100%; }
