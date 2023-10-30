@@ -863,7 +863,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_pub_person_id' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_def_pub_person_id' ),
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_person_id',
@@ -1200,7 +1199,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$table_rows[] = '' .
 					$form->get_th_html( $opt_label ) .
 					$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) .
-					'<td class="medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' .
+					'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' .
 					'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
 			}
 

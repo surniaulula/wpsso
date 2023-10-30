@@ -1092,7 +1092,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				asort( $local_cache[ $format ] );	// Sort by value.
 			}
 
-			return self::maybe_get_array( $local_cache[ $format ], $currency_abbrev, $add_none );
+			return self::array_or_key( $local_cache[ $format ], $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_abbrev( $currency_abbrev = false, $add_none = false ) {
@@ -1114,7 +1114,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				ksort( $local_cache );	// Sort by key (same as value).
 			}
 
-			return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
+			return self::array_or_key( $local_cache, $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
@@ -1127,18 +1127,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$local_cache = array();
 
-					foreach ( self::$currency_symbols as $key => $value ) {
+					foreach ( self::$currency_symbols as $key => $value ) {	// Example: USD => $
 
-						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
+						$local_cache[ $key ] = self::decode_html( $value );
 					}
 
 					ksort( $local_cache );	// Sort by key.
 				}
 
-				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
+				return self::array_or_key( $local_cache, $currency_abbrev, $add_none );
 			}
 
-			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
+			return self::array_or_key( self::$currency_symbols, $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_symbol_abbrev( $currency_symbol = false, $default = 'USD', $decode = true ) {
@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_dashicons( $icon_number = false, $add_none = false ) {
 
-			return self::maybe_get_array( self::$dashicons, $icon_number, $add_none );
+			return self::array_or_key( self::$dashicons, $icon_number, $add_none );
 		}
 
 		public static function get_publisher_languages( $publisher = '' ) {
@@ -1210,6 +1210,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/*
+		 * Get the current $_SERVER[ 'REQUEST_URI' ] URL, optionally with tracking and advertising query args removed.
+		 */
 		public static function get_url( $remove_ignored_args = true ) {
 
 			static $local_cache = array();
@@ -1284,6 +1287,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/^([a-z]+:\/\/)/', $prot_slash, $url );
 		}
 
+		/*
+		 * Return a constant value, or $undef if not defined.
+		 */
 		public static function get_const( $const, $undef = null ) {
 
 			return defined( $const ) ? constant( $const ) : $undef;
@@ -1325,6 +1331,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		/*
+		 * Return array( $min_width, $min_height, $size_count ).
+		 *
+		 * See WpssoMedia->show_post_upload_ui_message().
+		 */
 		public static function get_minimum_image_wh() {
 
 			static $local_cache = null;
@@ -4444,9 +4455,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Used by self::get_currencies(), self::get_currency_abbrev(), and self::get_dashicons().
+		 * See SucomUtil::get_currencies().
+		 * See SucomUtil::get_currency_abbrev().
+		 * See SucomUtil::get_dashicons().
 		 */
-		protected static function maybe_get_array( $arr, $key = false, $add_none = false ) {
+		public static function array_or_key( $arr, $key = false, $add_none = false ) {
 
 			if ( null === $key ) {
 
@@ -4469,6 +4482,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $arr[ $key ];
 
 			} else {
+
 				return null;	// Array key not found - return null.
 			}
 

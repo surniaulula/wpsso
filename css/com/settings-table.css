@@ -658,40 +658,6 @@ table.sucom-settings td.validate input[type="button"].button-secondary {
 	margin:5px 0 10px 5px;
 }
 
-table.sucom-settings th.blank,
-table.sucom-settings td.blank {
-	color:#999;
-	min-width:100px;
-	min-height:1em;
-	background-color:#f9f9f9;
-	border:1px dotted #e3e3e3;
-	padding-right:5px;
-}
-
-table.sucom-settings table.business_hours td.blank {
-	min-width:auto;
-}
-
-table.sucom-settings td.blank a {
-	color:#999;
-}
-
-table.sucom-settings th.blank strong,
-table.sucom-settings td.blank strong {
-	color:#666;
-}
-
-table.sucom-settings td.blank input[type="text"],
-table.sucom-settings td.blank select,
-table.sucom-settings td.blank textarea {
-	font-size:1em;
-	color:#ccc;
-	background-color:#f9f9f9;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
-}
-
 table.sucom-settings th.textinfo {
 	font-weight:normal;
 	text-align:left;
@@ -823,7 +789,8 @@ table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.update_filter { width:220px; }
 
-table.sucom-settings td select.wide { width:100%; }
+table.sucom-settings td select.wide,
+table.sucom-settings td input[type="text"].wide { width:100%; }
 
 table.sucom-settings td select.long_name,
 table.sucom-settings td input[type="text"].long_name { width:340px; }
@@ -882,8 +849,6 @@ table.sucom-settings td input[type="text"].api_key {
 	font-family:"Courier", monospace;
 	width:400px;
 }
-
-table.sucom-settings td input[type="text"].wide { width:100%; }
 
 table.sucom-settings td input[type="button"] { margin:0; }
 
@@ -965,22 +930,12 @@ table.sucom-settings th.checkbox {
 	width:20px;
 	min-width:20px;
 	max-width:60px;
-}
-
-table.sucom-settings td.checkbox,
-table.sucom-settings th.checkbox,
-table.sucom-settings td.checkbox.blank {
 	text-align:center;
-	padding:0;
 }
 
-table.sucom-settings th.checkbox.left {
+table.sucom-settings th.checkbox.left,
+table.sucom-settings td.checkbox.left {
 	text-align:left;
-}
-
-table.sucom-settings td.checkbox.blank {
-	width:22px;
-	min-width:22px;
 }
 
 table.sucom-settings .video {
@@ -1048,6 +1003,58 @@ table.sucom-settings .button-secondary {
 
 table.sucom-settings #info-meta-social-preview {
 	color:#888;
+}
+
+/*
+ * Disabled (ie. blank) style adjustments.
+ */
+table.sucom-settings th.blank,
+table.sucom-settings td.blank {
+	color:#999;
+	background-color:#f9f9f9;
+	border:1px dotted #e3e3e3;
+}
+
+table.sucom-settings table.business_hours td.blank {
+	min-width:auto;
+}
+
+table.sucom-settings th.blank.checkbox,
+table.sucom-settings td.blank.checkbox {
+	padding:0;
+}
+
+table.sucom-settings th.blank.medium,
+table.sucom-settings td.blank.medium {
+	width:184px;		/* Default is 270px. */
+	min-width:114px;
+	max-width:184px;	/* Default is 270px. */
+}
+table.sucom-settings td.blank a {
+	color:#999;
+}
+
+table.sucom-settings th.blank strong,
+table.sucom-settings td.blank strong {
+	color:#666;
+}
+
+table.sucom-settings td.blank input[type="text"],
+table.sucom-settings td.blank select,
+table.sucom-settings td.blank textarea {
+	font-size:1em;
+	color:#ccc;
+	background-color:#f9f9f9;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+table.sucom-settings td.blank select.wide,
+table.sucom-settings td.blank input[type="text"].wide {
+	width: -webkit-calc(100% - 4px);
+	width:    -moz-calc(100% - 4px);
+	width:         calc(100% - 4px);
 }
 
 /*
