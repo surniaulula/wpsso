@@ -255,12 +255,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.6.0-dev.3 (2023/10/29)**
+**Version 16.6.0-dev.4 (2023/20/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated CSS for disabled options.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -457,9 +457,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.6.0-dev.3 =
+= 16.6.0-dev.4 =
 
-(2023/10/29) Added an update check after upgrading the options array. Added debug messages to the pending cache refresh method.
+(2023/20/30) Updated CSS for disabled options. Added an update check after upgrading the options array. Added debug messages to the pending cache refresh method.
 
 = 16.5.0 =
 
