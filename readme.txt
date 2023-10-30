@@ -255,7 +255,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.6.0 (2023/20/30)**
+**Version 16.7.0-dev.1 (2023/10/30)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for WPSSO meta revisions available since WordPress v6.4.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
+**Version 16.6.0 (2023/10/30)**
 
 * **New Features**
 	* None.
@@ -456,9 +470,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 16.7.0-dev.1 =
+
+(2023/10/30) Added support for WPSSO meta revisions available since WordPress v6.4.
+
 = 16.6.0 =
 
-(2023/20/30) Updated CSS for disabled options. Added debug messages to the pending cache refresh method.
+(2023/10/30) Updated CSS for disabled options. Added debug messages to the pending cache refresh method.
 
 = 16.5.0 =
 
