@@ -1212,7 +1212,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions_checksum( $md_opts );	// Note that $md_opts must be an array.
+			$this->p->opt->add_versions_checksum( $md_opts );	// $md_opts must be an array.
 
 			return $md_opts;
 		}
@@ -2186,7 +2186,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions_checksum( $md_opts );	// Note that $md_opts must be an array.
+			$this->p->opt->add_versions_checksum( $md_opts );	// $md_opts must be an array.
 
 			return $md_opts;
 		}

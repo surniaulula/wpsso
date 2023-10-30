@@ -858,7 +858,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/*
 			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions_checksum( $opts );	// Note that $opts must be an array.
+			$this->p->opt->add_versions_checksum( $opts );	// $opts must be an array.
 
 			/*
 			 * Since WPSSO Core v8.5.1.
