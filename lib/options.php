@@ -856,9 +856,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts = apply_filters( 'wpsso_save_settings_options', $opts, $network, $is_option_upg );
 
 			/*
-			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $opts );	// Note that $opts must be an array.
+			$this->p->opt->add_versions_checksum( $opts );	// Note that $opts must be an array.
 
 			/*
 			 * Since WPSSO Core v8.5.1.
@@ -1022,17 +1022,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/*
-		 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+		 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 		 */
-		public function add_versions( array &$opts ) {	// Pass by reference is OK.
-
-			$opts[ 'checksum' ] = md5( $this->p->cf[ '*' ][ 'version' ] );
-			$opts[ 'opt_checksum' ]    = md5( $this->p->cf[ 'opt' ][ 'version' ] );
+		public function add_versions_checksum( array &$opts ) {	// Pass by reference is OK.
 
 			if ( isset( $opts[ 'options_version' ] ) ) {	// Deprecated options checksum key.
 
 				unset( $opts[ 'options_version' ] );
 			}
+
+			$opts[ 'checksum' ] = md5( $this->p->cf[ '*' ][ 'version' ] );
+
+			$opts[ 'opt_checksum' ] = md5( $this->p->cf[ 'opt' ][ 'version' ] );
 
 			if ( ! isset( $opts[ 'opt_versions' ] ) || ! is_array( $opts[ 'opt_versions' ] ) ) {
 
@@ -1041,16 +1042,30 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
+				if ( isset( $opts[ 'plugin_' . $ext . '_opt_version' ] ) ) {	// Deprecated options version key.
+
+					unset( $opts[ 'plugin_' . $ext . '_opt_version' ] );
+				}
+
 				if ( isset( $info[ 'opt_version' ] ) ) {	// Just in case.
 
 					$opts[ 'opt_versions' ][ $ext ] = $info[ 'opt_version' ];
-
-					if ( isset( $opts[ 'plugin_' . $ext . '_opt_version' ] ) ) {	// Deprecated options version key.
-
-						unset( $opts[ 'plugin_' . $ext . '_opt_version' ] );
-					}
 				}
 			}
+		}
+
+		/*
+		 * Since WPSSO Core v16.7.0.
+		 *
+		 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+		 */
+		public function remove_versions_checksum( array &$opts ) {	// Pass by reference is OK.
+			
+			unset( $opts[ 'checksum' ] );
+
+			unset( $opts[ 'opt_checksum' ] );
+
+			unset( $opts[ 'opt_versions' ] );
 		}
 
 		/*

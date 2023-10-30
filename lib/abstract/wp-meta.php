@@ -278,6 +278,44 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				'show_in_rest'      => false,
 				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
 			) );
+
+			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ) );
+		}
+
+		/*
+		 * Since WPSSO Core v16.7.0.
+		 *
+		 * Add WPSSO_META_NAME to the revision fields shown.
+		 */
+		public function revision_fields_meta_title( $fields ) {
+
+			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+			$fields[ WPSSO_META_NAME ] = $metabox_title;
+
+			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta' ), 10, 3 );
+
+			return $fields;
+		}
+
+		/*
+		 * Since WPSSO Core v16.7.0.
+		 *
+		 * Convert the WPSSO_META_NAME options array to a text string.
+		 */
+		public function get_revision_fields_meta( $meta_val, $meta_key, $wp_obj ) {
+
+			/*
+			 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+			 */
+			if ( is_array( $meta_val ) ) {
+
+				$this->p->opt->remove_versions_checksum( $meta_val );	// $meta_val must be an array.
+
+				return print_r( $meta_val, true );
+			}
+
+			return $meta_val;
 		}
 
 		/*
@@ -1172,9 +1210,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts = apply_filters( 'wpsso_upgraded_md_options', $md_opts, $mod );
 
 			/*
-			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
+			$this->p->opt->add_versions_checksum( $md_opts );	// Note that $md_opts must be an array.
 
 			return $md_opts;
 		}
@@ -1806,7 +1844,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * See WpssoUser->save_options().
 		 */
 		protected function get_submit_opts( $mod ) {
-error_log( __METHOD__ );	// TODO delete.
 
 			/*
 			 * The $mod array argument is preferred but not required.
@@ -2147,9 +2184,9 @@ error_log( __METHOD__ );	// TODO delete.
 			}
 
 			/*
-			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
+			$this->p->opt->add_versions_checksum( $md_opts );	// Note that $md_opts must be an array.
 
 			return $md_opts;
 		}
