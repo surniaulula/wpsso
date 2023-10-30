@@ -305,11 +305,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_revision_fields_meta( $meta_val, $meta_key, $wp_obj ) {
 
-			/*
-			 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
-			 */
 			if ( is_array( $meta_val ) ) {
 
+				/*
+				 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
+				 */
 				$this->p->opt->remove_versions_checksum( $meta_val );	// $meta_val must be an array.
 
 				return print_r( $meta_val, true );
