@@ -264,7 +264,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added an update check after upgrading the options array.
 	* Added debug messages to the pending cache refresh method:
 		* `WpssoUtilCache->show_refresh_pending()`
 * **Requires At Least**
@@ -459,7 +458,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.6.0 =
 
-(2023/20/30) Updated CSS for disabled options. Added an update check after upgrading the options array. Added debug messages to the pending cache refresh method.
+(2023/20/30) Updated CSS for disabled options. Added debug messages to the pending cache refresh method.
 
 = 16.5.0 =
 
