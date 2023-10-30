@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Register our comment, post, term, and user meta.
 		 *
 		 * Do not register a sanitation callback as the sanitation filter is executed much too frequently by WordPress, and
-		 * only provides $meta_value, $meta_key, and $object_type arguments (no object ID).
+		 * only provides $meta_value, $meta_key, and $object_type arguments.
 		 *
 		 * See sanitize_meta() in wordpress/wp-includes/meta.php.
 		 * See WpssoComment->add_wp_callbacks().
