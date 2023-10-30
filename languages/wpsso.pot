@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.6.0\n"
+"Project-Id-Version: WPSSO Core 16.7.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4000,7 +4000,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
-#: lib/loader.php:197 lib/post.php:1693 lib/pro/util/shorten.php:331
+#: lib/loader.php:197 lib/post.php:1698 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:757
 msgid "%s error:"
 msgstr ""
@@ -4046,60 +4046,60 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1339
+#: lib/abstract/wp-meta.php:1372
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1410
+#: lib/abstract/wp-meta.php:1443
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1414
+#: lib/abstract/wp-meta.php:1447
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1417 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1450 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1454
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1455
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1456
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1424
+#: lib/abstract/wp-meta.php:1457
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1757
+#: lib/abstract/wp-meta.php:1790
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2093
+#: lib/abstract/wp-meta.php:2127
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2095 lib/abstract/wp-meta.php:2108
+#: lib/abstract/wp-meta.php:2129 lib/abstract/wp-meta.php:2142
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2106
+#: lib/abstract/wp-meta.php:2140
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -4454,7 +4454,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:895 lib/post.php:1058 lib/term.php:729 lib/user.php:752
+#: lib/admin.php:895 lib/post.php:1063 lib/term.php:739 lib/user.php:762
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -4859,12 +4859,12 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/comment.php:87
+#: lib/comment.php:110
 msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:420
+#: lib/comment.php:443
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -8330,8 +8330,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:57 lib/user.php:1777 lib/user.php:1868
-#: lib/user.php:1983
+#: lib/submenu/tools.php:75 lib/user.php:67 lib/user.php:1787 lib/user.php:1878
+#: lib/user.php:1993
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11638,141 +11638,141 @@ msgid_plural "%s minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/post.php:238
+#: lib/post.php:243
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1196
+#: lib/post.php:1201
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1229
+#: lib/post.php:1234
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1232
+#: lib/post.php:1237
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1235
+#: lib/post.php:1240
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1265
+#: lib/post.php:1270
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1267
+#: lib/post.php:1272
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1269
+#: lib/post.php:1274
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1270
+#: lib/post.php:1275
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1284
+#: lib/post.php:1289
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1298
+#: lib/post.php:1303
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1313
+#: lib/post.php:1318
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1330
+#: lib/post.php:1335
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1333
+#: lib/post.php:1338
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1366
+#: lib/post.php:1371
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1368
+#: lib/post.php:1373
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1370
+#: lib/post.php:1375
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1390
+#: lib/post.php:1395
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1409
+#: lib/post.php:1414
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1411
+#: lib/post.php:1416
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1414
+#: lib/post.php:1419
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1457
+#: lib/post.php:1462
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1459
+#: lib/post.php:1464
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1467
+#: lib/post.php:1472
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1471
+#: lib/post.php:1476
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1475
+#: lib/post.php:1480
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1669
+#: lib/post.php:1674
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1673
+#: lib/post.php:1678
 msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:2004
+#: lib/post.php:2009
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -12537,12 +12537,12 @@ msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/term.php:195
+#: lib/term.php:205
 msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:985
+#: lib/term.php:995
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12582,68 +12582,68 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: lib/user.php:196
+#: lib/user.php:206
 msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:893
+#: lib/user.php:903
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:899
+#: lib/user.php:909
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1056
+#: lib/user.php:1066
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1707
+#: lib/user.php:1717
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1750 lib/user.php:1779
+#: lib/user.php:1760 lib/user.php:1789
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1758
+#: lib/user.php:1768
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1789 lib/user.php:1880 lib/util-cache.php:570
+#: lib/user.php:1799 lib/user.php:1890 lib/util-cache.php:570
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1790
+#: lib/user.php:1800
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1824
+#: lib/user.php:1834
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1825 lib/user.php:1919 lib/util-cache.php:683
+#: lib/user.php:1835 lib/user.php:1929 lib/util-cache.php:683
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1841 lib/user.php:1870
+#: lib/user.php:1851 lib/user.php:1880
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1849
+#: lib/user.php:1859
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1881
+#: lib/user.php:1891
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1918
+#: lib/user.php:1928
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

@@ -59,32 +59,37 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						WpssoRegister::register_taxonomy_page_tag();
 					}
 
-				} else {
+				} elseif ( taxonomy_exists( $page_tag_taxonomy ) ) {
 
-					if ( taxonomy_exists( $page_tag_taxonomy ) ) {
-
-						unregister_taxonomy( $page_tag_taxonomy );
-					}
+					unregister_taxonomy( $page_tag_taxonomy );
 				}
 			}
 
 			/*
 			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
 			 */
-			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
+			add_action( 'wp_loaded', array( $this, 'add_wp_callbacks' ) );
 		}
 
 		/*
-		 * Add WordPress action and filters hooks.
+		 * Add WordPress action and filter callbacks.
 		 */
-		public function add_wp_hooks() {
+		public function add_wp_callbacks() {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$is_admin   = is_admin();	// Only check once.
+			/*
+			 * Since WPSSO Core v16.7.0.
+			 *
+			 * Register our post meta.
+			 */
+			$this->register_meta( $object_type = 'post' );
+
+			$is_admin = is_admin();	// Only check once.
+
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			if ( $is_admin ) {

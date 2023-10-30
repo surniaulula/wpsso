@@ -34,6 +34,29 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			}
 
 			/*
+			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
+			 */
+			add_action( 'wp_loaded', array( $this, 'add_wp_callbacks' ) );
+		}
+
+		/*
+		 * Add WordPress action and filter callbacks.
+		 */
+		public function add_wp_callbacks() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Since WPSSO Core v16.7.0.
+			 *
+			 * Register our comment meta.
+			 */
+			$this->register_meta( $object_type = 'comment' );
+
+			/*
 			 * Called by wp_insert_comment(), which is called by wp_new_comment().
 			 */
 			add_action( 'wp_insert_comment', array( $this, 'refresh_cache_insert_comment' ), PHP_INT_MAX, 2 );

@@ -48,7 +48,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 
-			$this->add_wp_hooks();
+			$this->add_wp_callbacks();
 		}
 
 		public function set_textdomain( $text_domain = null ) {
@@ -949,9 +949,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/*
-		 * Add WordPress action and filters hooks.
+		 * Add WordPress action and filter callbacks.
 		 */
-		private function add_wp_hooks() {
+		private function add_wp_callbacks() {
 
 			static $do_once = null;	// Just in case.
 

@@ -605,7 +605,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 * Called by WpssoAdmin->save_site_settings().
 		 * Called by WpssoAbstractWpMeta->get_submit_opts().
 		 */
-		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
+		public function sanitize( array $opts, $defs = array(), $network = false, $mod = false ) {
 
 			if ( $this->p->debug->enabled ) {
 

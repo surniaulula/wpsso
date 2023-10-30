@@ -242,9 +242,42 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Add WordPress action and filters hooks.
 		 */
-		public function add_wp_hooks() {
+		public function add_wp_callbacks() {
 
 			return self::must_be_extended();
+		}
+
+		/*
+		 * Since WPSSO Core v16.7.0.
+		 *
+		 * Register our comment, post, term, and user meta.
+		 *
+		 * Do not register a sanitation callback as the sanitation filter is executed too frequently by WordPress, and only
+		 * provides $meta_value, $meta_key, and $object_type arguments.
+		 *
+		 * See sanitize_meta() in wordpress/wp-includes/meta.php.
+		 * See WpssoComment->add_wp_callbacks().
+		 * See WpssoPost->add_wp_callbacks().
+		 * See WpssoTerm->add_wp_callbacks().
+		 * See WpssoUser->add_wp_callbacks().
+		 */
+		protected function register_meta( $object_type ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			register_meta( $object_type, WPSSO_META_NAME, $args = array(
+				'type'              => 'array',
+				'description'       => 'WPSSO meta options array.',
+				'default'           => array(),
+				'single'            => true,
+				'sanitize_callback' => null,
+				'auth_callback'     => null,
+				'show_in_rest'      => false,
+				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
+			) );
 		}
 
 		/*
@@ -1773,6 +1806,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * See WpssoUser->save_options().
 		 */
 		protected function get_submit_opts( $mod ) {
+error_log( __METHOD__ );	// TODO delete.
 
 			/*
 			 * The $mod array argument is preferred but not required.

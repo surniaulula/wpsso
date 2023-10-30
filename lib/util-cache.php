@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 								' was scheduled to start ' . $human_time . ' ago' );
 						}
 
-						if ( $time_now > $timestamp + 3 && $user_id === $event_args[ 0 ] ) {	// Add a 3 second buffer.
+						if ( $time_now > $timestamp + 10 && $user_id === $event_args[ 0 ] ) {	// Add a 10 second buffer.
 
 							$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.',
 								'wpsso' ), $human_time, $task_name_transl ) . ' ';
