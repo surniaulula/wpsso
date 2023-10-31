@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.7.0-dev.2 (2023/10/30)**
+**Version 16.7.0-dev.3 (2023/10/30)**
 
 * **New Features**
 	* None.
@@ -470,7 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.7.0-dev.2 =
+= 16.7.0-dev.3 =
 
 (2023/10/30) Added support for Document SSO post meta revisions available since WordPress v6.4.
 
