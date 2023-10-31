@@ -279,6 +279,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
 			) );
 
+			/*
+			 * Since WordPress v6.4.
+			 */
 			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ) );
 		}
 
@@ -291,8 +294,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$fields[ WPSSO_META_NAME ] = $metabox_title;
+			$fields[ WPSSO_META_NAME ] = sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $metabox_title );
 
+			/*
+			 * Since WordPress v6.4.
+			 */
 			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_md_opts' ), 10, 3 );
 
 			return $fields;
@@ -305,14 +311,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_revision_fields_md_opts( $md_opts, $meta_key, $wp_obj ) {
 
-			if ( is_array( $md_opts ) ) {	// Can be an empty string if metadata does not exist.
+			if ( is_array( $md_opts ) ) {
 
-				/*
-				 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
-				 */
-				$this->p->opt->remove_versions_checksum( $md_opts );	// $md_opts must be an array.
+				$this->p->opt->remove_versions_checksum( $md_opts );
 
-				return print_r( $md_opts, true );	// Always return a string.
+				$md_opts = SucomUtil::pretty_print( $md_opts );
 			}
 
 			return $md_opts;	// Return as-is if not an array.

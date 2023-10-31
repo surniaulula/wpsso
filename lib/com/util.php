@@ -4291,14 +4291,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function flatten_mixed( $mixed ) {
+		public static function pretty_print( $mixed ) {
 
-			return self::pretty_array( $mixed, $flatten = true );
+			$mixed = print_r( self::pretty_array( $mixed ), true );
+
+			$mixed = preg_replace( '/^Array\n\(/s', 'Array (', $mixed );
+
+			return $mixed;
 		}
 
 		public static function pretty_array( $mixed, $flatten = false ) {
 
-			$prettied = '';
+			$pretty = '';
 
 			if ( is_array( $mixed ) ) {
 
@@ -4308,7 +4312,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( $flatten ) {
 
-						$prettied .= $key.'=' . $val.', ';
+						$pretty .= $key . '=' . $val.', ';
 
 					} else {
 
@@ -4321,41 +4325,34 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				if ( $flatten ) {
-
-					$prettied = '(' . trim( $prettied, ', ' ) . ')';
-
-				} else {
-
-					$prettied = $mixed;
-				}
+				$pretty = $flatten ? '(' . trim( $pretty, ', ' ) . ')' : $mixed;
 
 			} elseif ( false === $mixed ) {
 
-				$prettied = 'false';
+				$pretty = 'false';
 
 			} elseif ( true === $mixed ) {
 
-				$prettied = 'true';
+				$pretty = 'true';
 
 			} elseif ( null === $mixed ) {
 
-				$prettied = 'null';
+				$pretty = 'null';
 
 			} elseif ( '' === $mixed ) {
 
-				$prettied = '\'\'';
+				$pretty = '\'\'';
 
 			} elseif ( is_object( $mixed ) ) {
 
-				$prettied = 'object ' . get_class( $mixed );
+				$pretty = 'object ' . get_class( $mixed );
 
 			} else {
 
-				$prettied = $mixed;
+				$pretty = $mixed;
 			}
 
-			return $prettied;
+			return $pretty;
 		}
 
 		/*
