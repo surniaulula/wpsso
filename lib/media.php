@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$cache_id = md5( SucomUtil::pretty_array( $cache_salt, $flatten = true ) );
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 			}
 
@@ -309,18 +309,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'returning video data from local cache' );
-				
+
 					$this->p->debug->mark( 'getting all videos' );	// End timer.
 				}
 
 				return $local_cache[ $cache_id ];
 
 			} elseif ( 1 !== $this->p->check->pp( $ext = 'wpsso', true, WPSSO_UNDEF, true, -1 ) ) {
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'no video modules' );
-					
+
 					$this->p->debug->mark( 'getting all videos' );	// End timer.
 				}
 

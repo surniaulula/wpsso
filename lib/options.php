@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 		 */
 		public function remove_versions_checksum( array &$opts ) {	// Pass by reference is OK.
-			
+
 			unset( $opts[ 'checksum' ] );
 
 			unset( $opts[ 'opt_checksum' ] );

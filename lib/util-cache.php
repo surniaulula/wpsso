@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoGmfSubmenuGmfGeneral->get_table_rows().
 		 */
 		public function is_refresh_running() {
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
