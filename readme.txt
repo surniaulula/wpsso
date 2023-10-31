@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for WPSSO meta revisions available since WordPress v6.4.
+	* Added support for Document SSO post meta revisions available since WordPress v6.4.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -472,7 +472,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.7.0-dev.2 =
 
-(2023/10/30) Added support for WPSSO meta revisions available since WordPress v6.4.
+(2023/10/30) Added support for Document SSO post meta revisions available since WordPress v6.4.
 
 = 16.6.0 =
 
