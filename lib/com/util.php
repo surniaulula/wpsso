@@ -4295,7 +4295,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$mixed = print_r( self::pretty_array( $mixed ), true );
 
-			$mixed = preg_replace( '/^Array\n\(/', 'Array (', $mixed );
+			$mixed = preg_replace( '/Array\n\(/', 'Array (', $mixed );
 
 			return $mixed;
 		}

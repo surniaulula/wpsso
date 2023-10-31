@@ -311,14 +311,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_revision_fields_md_opts( $md_opts, $meta_key, $wp_obj ) {
 
-			if ( is_array( $md_opts ) ) {
+			if ( is_string( $md_opts ) ) {	// Nothing to do.
+
+				return $md_opts;
+
+			} elseif ( is_array( $md_opts ) ) {	// Convert array to string.
 
 				$this->p->opt->remove_versions_checksum( $md_opts );
 
-				$md_opts = SucomUtil::pretty_print( $md_opts );
+				return var_export( $md_opts, true );
 			}
 
-			return $md_opts;	// Return as-is if not an array.
+			return '';
 		}
 
 		/*

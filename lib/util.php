@@ -2767,7 +2767,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_json_pretty() {
 
-			if ( $this->p->debug->enabled ) {	// Pretty JSON when debug is enabled.
+			if ( $this->p->debug->enabled ) {	// Always pretty JSON when debug is enabled.
 
 				return true;
 			}
