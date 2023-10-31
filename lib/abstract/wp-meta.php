@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$fields[ WPSSO_META_NAME ] = $metabox_title;
 
-			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta' ), 10, 3 );
+			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_md_opts' ), 10, 3 );
 
 			return $fields;
 		}
@@ -301,21 +301,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Since WPSSO Core v16.7.0.
 		 *
-		 * Convert the WPSSO_META_NAME options array to a text string.
+		 * Cleanup and convert the WPSSO_META_NAME options array to a text string.
 		 */
-		public function get_revision_fields_meta( $meta_val, $meta_key, $wp_obj ) {
+		public function get_revision_fields_md_opts( $md_opts, $meta_key, $wp_obj ) {
 
-			if ( is_array( $meta_val ) ) {
+			if ( is_array( $md_opts ) ) {	// Can be an empty string if metadata does not exist.
 
 				/*
 				 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 				 */
-				$this->p->opt->remove_versions_checksum( $meta_val );	// $meta_val must be an array.
+				$this->p->opt->remove_versions_checksum( $md_opts );	// $md_opts must be an array.
 
-				return print_r( $meta_val, true );
+				return print_r( $md_opts, true );	// Always return a string.
 			}
 
-			return $meta_val;
+			return $md_opts;	// Return as-is if not an array.
 		}
 
 		/*
