@@ -41,17 +41,12 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$def_canonical_url  = $this->p->util->get_canonical_url( $mod, $add_page = false );
 			$canonical_url_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
 			$canonical_disabled = $canonical_url_msg ? true : false;
+			$def_canonical_url  = $this->p->util->get_canonical_url( $mod, $add_page = false, $md_key = '' );
 
-			/*
-			 * WpssoUtil->is_redirect_disabled() returns true if:
-			 *
-			 *	- An SEO plugin is active.
-			 *	- The 'wpsso_redirect_disabled' filter returns true.
-			 */
 			$redirect_disabled = $this->p->util->is_redirect_disabled();
+			$def_redirect_url  = $this->p->util->get_redirect_url( $mod, $mod_id = null, $md_key = '' );
 
 			$form_rows = array(
 				'canonical_url' => $mod[ 'is_public' ] ? array(
@@ -66,7 +61,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 					'label'    => _x( '301 Redirect URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-redirect_url',
 					'content'  => $form->get_input( 'redirect_url', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $holder = '', $redirect_disabled ),
+						$max_len = 0, $def_redirect_url, $redirect_disabled ),
 				) : '',
 			);
 

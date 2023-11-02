@@ -4745,7 +4745,7 @@ msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2628 lib/util.php:3371
+#: lib/admin.php:2628 lib/util.php:3375
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -5471,7 +5471,7 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit-prev.php:106 lib/edit-visibility.php:59
+#: lib/edit-prev.php:106 lib/edit-visibility.php:54
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -6534,103 +6534,103 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/edit-visibility.php:66
+#: lib/edit-visibility.php:61
 msgctxt "option label"
 msgid "301 Redirect URL"
 msgstr ""
 
-#: lib/edit-visibility.php:89
+#: lib/edit-visibility.php:84
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit-visibility.php:97
+#: lib/edit-visibility.php:92
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit-visibility.php:100
+#: lib/edit-visibility.php:95
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:104
+#: lib/edit-visibility.php:99
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit-visibility.php:107
+#: lib/edit-visibility.php:102
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:111
+#: lib/edit-visibility.php:106
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit-visibility.php:114
+#: lib/edit-visibility.php:109
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:118
+#: lib/edit-visibility.php:113
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit-visibility.php:121
+#: lib/edit-visibility.php:116
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:125
+#: lib/edit-visibility.php:120
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit-visibility.php:128
+#: lib/edit-visibility.php:123
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:132
+#: lib/edit-visibility.php:127
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit-visibility.php:135
+#: lib/edit-visibility.php:130
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:139
+#: lib/edit-visibility.php:134
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:143 lib/submenu/general.php:288
+#: lib/edit-visibility.php:138 lib/submenu/general.php:288
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit-visibility.php:144 lib/edit-visibility.php:160
+#: lib/edit-visibility.php:139 lib/edit-visibility.php:155
 #: lib/submenu/general.php:289 lib/submenu/general.php:303
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
 
-#: lib/edit-visibility.php:148
+#: lib/edit-visibility.php:143
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit-visibility.php:155
+#: lib/edit-visibility.php:150
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:159 lib/submenu/general.php:302
+#: lib/edit-visibility.php:154 lib/submenu/general.php:302
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -6970,11 +6970,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1699 lib/register.php:305 lib/util.php:870 lib/util.php:976
-#: lib/util.php:1008 lib/util.php:1046 lib/util.php:3349
+#: lib/util.php:1008 lib/util.php:1046 lib/util.php:3353
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1700 lib/util.php:871 lib/util.php:3350
+#: lib/media.php:1700 lib/util.php:871 lib/util.php:3354
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12987,146 +12987,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3351
+#: lib/util.php:3355
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3374
+#: lib/util.php:3378
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3376
+#: lib/util.php:3380
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3378
+#: lib/util.php:3382
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3380
+#: lib/util.php:3384
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3775
+#: lib/util.php:3779
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3776
+#: lib/util.php:3780
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3780
+#: lib/util.php:3784
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3781
+#: lib/util.php:3785
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3785
+#: lib/util.php:3789
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3786
+#: lib/util.php:3790
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3790
+#: lib/util.php:3794
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3791
+#: lib/util.php:3795
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3795
+#: lib/util.php:3799
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3796
+#: lib/util.php:3800
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3800
+#: lib/util.php:3804
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3801
+#: lib/util.php:3805
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3805
+#: lib/util.php:3809
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3806
+#: lib/util.php:3810
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3810
+#: lib/util.php:3814
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3811
+#: lib/util.php:3815
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3815
+#: lib/util.php:3819
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3816
+#: lib/util.php:3820
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3821
+#: lib/util.php:3825
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3822
+#: lib/util.php:3826
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3892
+#: lib/util.php:3896
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3902
+#: lib/util.php:3906
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

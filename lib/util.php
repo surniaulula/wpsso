@@ -2053,20 +2053,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		/*
 		 * Shorten the canonical URL using the selected shortening service.
+		 *
+		 * $mod = true | false | post_id | $mod array ($mod array is preferred but not required).
+		 *
+		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL).
 		 */
-		public function get_canonical_short_url( $mod = false, $add_page = true ) {
+		public function get_canonical_short_url( $mod = false, $add_page = true, $md_key = 'canonical_url' ) {
 
-			$url = $this->get_canonical_url( $mod, $add_page );
+			$url = $this->get_canonical_url( $mod, $add_page, $md_key );
 
 			return $this->shorten_url( $url, $mod );
 		}
 
 		/*
-		 * The $mod array argument is preferred but not required.
+		 * $mod = true | false | post_id | $mod array ($mod array is preferred but not required).
 		 *
-		 * $mod = true | false | post_id | $mod array
+		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL)
 		 */
-		public function get_canonical_url( $mod = false, $add_page = true ) {
+		public function get_canonical_url( $mod = false, $add_page = true, $md_key = 'canonical_url' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2110,9 +2114,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'skipped custom canonical url: canonical is disabled' );
 					}
 
-				} else {
+				} elseif ( ! empty( $md_key ) ) {
 
-					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
+					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
 
 					if ( ! empty( $url ) ) {
 
@@ -2380,11 +2384,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
-		 * The $mod array argument is preferred but not required.
+		 * $mixed = true | false | post_id | $mod array ($mod array is preferred but not required).
 		 *
-		 * $mod = true | false | post_id | $mod array
+		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL).
 		 */
-		public function get_redirect_url( $mixed, $mod_id = null ) {
+		public function get_redirect_url( $mixed, $mod_id = null, $md_key = 'redirect_url' ) {
 
 			$mod = false;
 
@@ -2424,9 +2428,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'skipped custom redirect url: redirect is disabled' );
 					}
 
-				} else {
+				} elseif ( ! empty( $md_key ) ) {
 
-					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'redirect_url' );	// Returns null if an index key is not found.
+					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
 
 					if ( ! empty( $url ) ) {
 
