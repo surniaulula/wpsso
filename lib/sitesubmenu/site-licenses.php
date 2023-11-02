@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/*
-	 * Please note that this settings page also requires enqueuing special scripts and styles for the plugin details / install
-	 * thickbox link. See the WpssoScript and WpssoStyle classes for more info.
+	 * This settings page also requires enqueuing special scripts and styles for the plugin details / install thickbox link.
+	 * See the WpssoScript and WpssoStyle classes for more info.
 	 */
 	class WpssoSiteSubmenuSiteLicenses extends WpssoAdmin {
 
@@ -31,8 +31,18 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+
+			/*
+			 * See WpssoAdmin->add_meta_boxes().
+			 */
+			$this->menu_mbs  = array(
+				'licenses' => _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' ),
+			);
 		}
 
+		/*
+		 * See WpssoAdmin->get_form_object().
+		 */
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -46,29 +56,14 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 		}
 
 		/*
-		 * Called by the extended WpssoAdmin class.
+		 * See WpssoAdmin->add_meta_boxes().
 		 */
-		protected function add_meta_boxes() {
+		public function show_metabox_licenses( $obj, $mb ) {
 
-			$metabox_id      = 'licenses';
-			$metabox_title   = _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+			if ( $this->p->debug->enabled ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_licenses' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/*
-			 * Add a class to set a minimum width for the network postboxes.
-			 */
-			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_licenses', array( $this, 'add_class_postbox_network' ) );
-		}
-
-		public function show_metabox_licenses() {
+				$this->p->debug->mark();
+			}
 
 			$this->licenses_metabox_content( $network = true );
 		}

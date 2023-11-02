@@ -423,10 +423,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$table_rows[ $key ] = '';
 
-				/*
-				 * Placeholder.
-				 */
-				if ( empty( $val ) ) {
+				if ( empty( $val ) ) {	// Placeholder.
 
 					continue;
 				}
@@ -479,14 +476,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$col_span = empty( $val[ 'col_span' ] ) ? '' : ' colspan="' . $val[ 'col_span' ] .'"';
 
-					$table_rows[ $key ] .= $tr_html . $this->get_th_html( $val[ 'label' ],
-						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
-						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
-					) . "\n";
+					$labels = empty( $val[ 'label' ] ) ? array( '' ) : $val[ 'label' ];	// Add at least one empty label.
+					$labels = is_array( $labels ) ? $labels : array( $labels );
 
-					$table_rows[ $key ] .= '<td' . $col_span . $td_class . '>';
-					$table_rows[ $key ] .= empty( $val[ 'content' ] ) ? '' : $val[ 'content' ];
-					$table_rows[ $key ] .= '</td>' . "\n";
+					foreach ( $labels as $th_num => $th_label ) {
+
+						$table_rows[ $key ] .= $tr_html . $this->get_th_html( $th_label,
+							( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
+							( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] ) ) . "\n";
+					}
+
+					$contents = empty( $val[ 'content' ] ) ? array() : $val[ 'content' ];	// Skip if no content.
+					$contents = is_array( $contents ) ? $contents : array( $contents );
+
+					foreach ( $contents as $td_num => $td_content ) {
+
+						$table_rows[ $key ] .= '<td' . $col_span . $td_class . '>';
+						$table_rows[ $key ] .= $td_content;
+						$table_rows[ $key ] .= '</td>' . "\n";
+					}
 				}
 			}
 

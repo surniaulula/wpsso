@@ -14,8 +14,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 	class WpssoSiteSubmenuSiteAdvanced extends WpssoAdmin {
 
-		private $pp = null;
-
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -31,13 +29,16 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->menu_ext  = $ext;
 
 			/*
-			 * Since WPSSO Core v14.4.0.
+			 * See WpssoAdmin->add_meta_boxes().
 			 */
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
-			$this->pp = $pkg_info[ 'wpsso' ][ 'pp' ];
+			$this->menu_mbs  = array(
+				'plugin' => _x( 'Network Plugin Settings', 'metabox title', 'wpsso' ),
+			);
 		}
 
+		/*
+		 * See WpssoAdmin->get_form_object().
+		 */
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -51,58 +52,34 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 		}
 
 		/*
-		 * Called by the extended WpssoAdmin class.
+		 * See WpssoAdmin->add_meta_boxes().
 		 */
-		protected function add_meta_boxes() {
+		public function show_metabox_plugin( $obj, $mb ) {
 
-			$metabox_id      = 'plugin';
-			$metabox_title   = _x( 'Network Advanced Settings', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+			if ( $this->p->debug->enabled ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_plugin' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/*
-			 * Add a class to set a minimum width for the network postboxes.
-			 */
-			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_plugin', array( $this, 'add_class_postbox_network' ) );
-		}
-
-		public function show_metabox_plugin() {
-
-			$metabox_id = 'plugin';
-
-			$tabs = apply_filters( 'wpsso_site_advanced_' . $metabox_id . '_tabs', array(
-				'settings'    => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
-				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
-			) );
-
-			$table_rows = array();
-
-			foreach ( $tabs as $tab_key => $title ) {
-
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
-
-				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
-
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = true, $this->pp );
+				$this->p->debug->mark();
 			}
 
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+			$tabs = array(
+				'settings'    => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
+				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
+			);
+
+			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		protected function get_table_rows( $metabox_id, $tab_key ) {
+		/*
+		 * See WpssoAdmin->show_metabox_tabbed().
+		 */
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title = '' ) {
 
 			$table_rows = array();
+			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
 
-			switch ( $metabox_id . '-' . $tab_key ) {
+			switch ( $match_rows ) {
 
-				case 'plugin-settings':
+				case 'site-advanced-plugin-settings':
 
 					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $network = true );
 

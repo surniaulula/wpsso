@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->p->debug->log( 'plugin cache is disabled' );
 				}
 
-				$this->p->util->add_plugin_filters( $this, array(
+				$this->u->add_plugin_filters( $this, array(
 					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
 					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				/*
 				 * Only the cache refresh status to the user who started the cache refresh.
 				 */
-				$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+				$user_id = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
 				if ( $user_id === $running_task[ 0 ] ) {
 
@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 							continue;
 						}
 
-						$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+						$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 						$task_name        = 'refresh the cache';
 						$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 						$time_now         = time();
@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 								' was scheduled to start ' . $human_time . ' ago' );
 						}
 
-						if ( $time_now > $timestamp + 10 && $user_id === $event_args[ 0 ] ) {	// Add a 10 second buffer.
+						if ( $time_now > $timestamp + 60 && $user_id === $event_args[ 0 ] ) {	// Add a 60 second buffer.
 
 							$notice_msg = sprintf( __( 'A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users.',
 								'wpsso' ), $human_time, $task_name_transl ) . ' ';
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function schedule_refresh( $user_id = null ) {
 
-			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 			$event_time       = time() + WPSSO_SCHEDULE_SINGLE_EVENT_TIME;	// Default event time is now + 10 seconds.
@@ -555,7 +555,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function refresh( $user_id = null ) {
 
-			$user_id          = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 

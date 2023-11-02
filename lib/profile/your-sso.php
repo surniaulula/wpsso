@@ -39,14 +39,15 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'metabox_id'    => $metabox_id,
+				'metabox_title' => $metabox_title,
 			);
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_document_meta' ), $this->pagehook,
-					$metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_' . $metabox_id ),
+				$this->pagehook, $metabox_context, $metabox_prio, $callback_args );
 		}
 
-		public function show_metabox_document_meta() {
+		public function show_metabox_sso() {
 
 			$user_id  = get_current_user_id();
 			$user_obj = get_userdata( $user_id );
@@ -56,7 +57,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 				wp_die( __( 'Invalid user ID.' ) );
 			}
 
-			$this->p->user->show_metabox_document_meta( $user_obj );
+			$this->p->user->show_metabox_sso( $user_obj );
 		}
 	}
 }

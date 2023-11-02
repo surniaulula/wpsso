@@ -97,6 +97,7 @@ _x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wps
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
+_x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( '(api) Get Facebook Video Data', 'lib file description', 'wpsso' );
 _x( '(api) Get Slideshare Presentation Data', 'lib file description', 'wpsso' );
 _x( '(api) Get Soundcloud Track Data', 'lib file description', 'wpsso' );

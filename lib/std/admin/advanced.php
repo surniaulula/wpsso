@@ -23,43 +23,53 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->p =& $plugin;
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_integration_rows'         => 4,	// Plugin Settings > Integration tab.
-				'plugin_default_text_rows'        => 4,	// Plugin Settings > Default Text tab.
-				'plugin_image_sizes_rows'         => 4,	// Plugin Settings > Image Sizes tab.
-				'plugin_interface_rows'           => 4,	// Plugin Settings > Interface tab.
-				'services_media_rows'             => 4,	// Service APIs > Media Services tab.
-				'services_shortening_rows'        => 4,	// Service APIs > Shortening Services tab.
-				'services_ratings_reviews_rows'   => 4,	// Service APIs > Ratings and Reviews tab.
-				'doc_types_og_types_rows'         => 4,	// Document Types > Open Graph tab.
-				'doc_types_schema_types_rows'     => 4,	// Document Types > Schema tab.
-				'schema_props_article_rows'       => 4,	// Schema Defaults > Article tab.
-				'schema_props_book_rows'          => 4,	// Schema Defaults > Book tab.
-				'schema_props_creative_work_rows' => 4,	// Schema Defaults > Creative Work tab.
-				'schema_props_event_rows'         => 4,	// Schema Defaults > Event tab.
-				'schema_props_job_posting_rows'   => 4,	// Schema Defaults > Job Posting tab.
-				'schema_props_place_rows'         => 4,	// Schema Defaults > Place tab.
-				'schema_props_product_rows'       => 4,	// Schema Defaults > Product tab.
-				'schema_props_review_rows'        => 4,	// Schema Defaults > Review tab.
-				'contact_fields_default_cm_rows'  => 4,	// Contact Fields > Default Contacts tab.
-				'contact_fields_custom_cm_rows'   => 4,	// Contact Fields > Custom Contacts tab.
-				'advanced_user_about_rows'        => 4,	// About the User metabox.
-				'metadata_product_attrs_rows'     => 4,	// Attributes and Metadata > Product Attributes tab.
-				'metadata_custom_fields_rows'     => 4,	// Attributes and Metadata > Custom Fields tab.
-				'head_tags_facebook_rows'         => 4,	// HTML Tags > Facebook tab.
-				'head_tags_open_graph_rows'       => 4,	// HTML Tags > Open Graph tab.
-				'head_tags_twitter_rows'          => 4,	// HTML Tags > Twitter tab.
-				'head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO / Other tab.
+				'mb_advanced_plugin_integration_rows' => array(		// Plugin Settings > Integration tab.
+					'mb_advanced_plugin_integration_rows'      => 4,
+					'mb_site_advanced_plugin_integration_rows' => 4,
+				),
+				'mb_advanced_plugin_default_text_rows'        => 4,	// Plugin Settings > Default Text tab.
+				'mb_advanced_plugin_image_sizes_rows'         => 4,	// Plugin Settings > Image Sizes tab.
+				'mb_advanced_plugin_interface_rows'           => 4,	// Plugin Settings > Interface tab.
+				'mb_advanced_services_media_rows'             => 4,	// Service APIs > Media Services tab.
+				'mb_advanced_services_shortening_rows'        => 4,	// Service APIs > Shortening Services tab.
+				'mb_advanced_services_ratings_reviews_rows'   => 4,	// Service APIs > Ratings and Reviews tab.
+				'mb_advanced_doc_types_og_types_rows'         => 4,	// Document Types > Open Graph tab.
+				'mb_advanced_doc_types_schema_types_rows'     => 4,	// Document Types > Schema tab.
+				'mb_advanced_schema_defs_article_rows'        => 4,	// Schema Defaults > Article tab.
+				'mb_advanced_schema_defs_book_rows'           => 4,	// Schema Defaults > Book tab.
+				'mb_advanced_schema_defs_creative_work_rows'  => 4,	// Schema Defaults > Creative Work tab.
+				'mb_advanced_schema_defs_event_rows'          => 4,	// Schema Defaults > Event tab.
+				'mb_advanced_schema_defs_job_posting_rows'    => 4,	// Schema Defaults > Job Posting tab.
+				'mb_advanced_schema_defs_place_rows'          => 4,	// Schema Defaults > Place tab.
+				'mb_advanced_schema_defs_product_rows'        => 4,	// Schema Defaults > Product tab.
+				'mb_advanced_schema_defs_review_rows'         => 4,	// Schema Defaults > Review tab.
+				'mb_advanced_contact_fields_default_cm_rows'  => 4,	// Contact Fields > Default Contacts tab.
+				'mb_advanced_contact_fields_custom_cm_rows'   => 4,	// Contact Fields > Custom Contacts tab.
+				'mb_advanced_user_about_rows'                 => 4,	// About the User metabox.
+				'mb_advanced_metadata_product_attrs_rows'     => 4,	// Attributes and Metadata > Product Attributes tab.
+				'mb_advanced_metadata_custom_fields_rows'     => 4,	// Attributes and Metadata > Custom Fields tab.
+				'mb_advanced_head_tags_facebook_rows'         => 4,	// HTML Tags > Facebook tab.
+				'mb_advanced_head_tags_open_graph_rows'       => 4,	// HTML Tags > Open Graph tab.
+				'mb_advanced_head_tags_twitter_rows'          => 4,	// HTML Tags > Twitter tab.
+				'mb_advanced_head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO / Other tab.
 			) );
 		}
 
 		/*
 		 * Plugin Settings > Integration tab.
 		 */
-		public function filter_plugin_integration_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_integration_rows( $table_rows, $form, $network, $select_names ) {
 
-			$doc_title_source   = $this->p->cf[ 'form' ][ 'document_title' ];
+			/*
+			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 */
 			$doc_title_msg      = $this->p->msgs->maybe_doc_title_disabled();
 			$doc_title_disabled = $doc_title_msg ? true : false;
+			$doc_title_source   = $this->p->cf[ 'form' ][ 'document_title' ];
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -203,8 +213,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Default Text tab.
 		 */
-		public function filter_plugin_default_text_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_default_text_rows( $table_rows, $form, $network, $select_names ) {
 
+			/*
+			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 */
 			$doc_title_msg      = $this->p->msgs->maybe_doc_title_disabled();
 			$doc_title_disabled = $doc_title_msg ? true : false;
 
@@ -377,7 +394,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * SSO > Advanced Settings > Plugin Settings > Image Sizes tab.
 		 */
-		public function filter_plugin_image_sizes_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_image_sizes_rows( $table_rows, $form, $network, $select_names ) {
 
 			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
@@ -435,7 +452,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Interface tab.
 		 */
-		public function filter_plugin_interface_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_interface_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -514,7 +531,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Media Services tab.
 		 */
-		public function filter_services_media_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_media_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -546,7 +563,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Shortening Services tab.
 		 */
-		public function filter_services_shortening_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_shortening_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -578,7 +595,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Ratings and Reviews tab.
 		 */
-		public function filter_services_ratings_reviews_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_ratings_reviews_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -611,7 +628,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Open Graph tab.
 		 */
-		public function filter_doc_types_og_types_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_doc_types_og_types_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -700,7 +717,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Schema tab.
 		 */
-		public function filter_doc_types_schema_types_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_doc_types_schema_types_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -791,7 +808,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Since WPSSO Core v13.5.0.
 		 */
-		public function filter_schema_props_article_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_article_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -816,7 +833,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_book_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_book_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -836,7 +853,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_creative_work_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_creative_work_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -904,7 +921,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_event_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_event_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -973,7 +990,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_job_posting_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_job_posting_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1007,7 +1024,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_place_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_place_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1039,7 +1056,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_product_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_product_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1132,7 +1149,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_schema_props_review_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_review_rows( $table_rows, $form, $network, $select_names ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1166,7 +1183,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Default Contacts tab.
 		 */
-		public function filter_contact_fields_default_cm_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_contact_fields_default_cm_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1209,7 +1226,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Custom Contacts tab.
 		 */
-		public function filter_contact_fields_custom_cm_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_contact_fields_custom_cm_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1240,7 +1257,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * About the User metabox.
 		 */
-		public function filter_advanced_user_about_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_user_about_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="3">' . $this->p->msgs->get( 'info-user-about' ) . '</td>';
 
@@ -1266,7 +1283,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Product Attributes tab.
 		 */
-		public function filter_metadata_product_attrs_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_metadata_product_attrs_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
 
@@ -1289,7 +1306,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Custom Fields tab.
 		 */
-		public function filter_metadata_custom_fields_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_metadata_custom_fields_rows( $table_rows, $form, $network, $select_names ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
 
@@ -1335,7 +1352,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Facebook tab.
 		 */
-		public function filter_head_tags_facebook_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_facebook_rows( $table_rows, $form, $network, $select_names ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
@@ -1343,7 +1360,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Open Graph tab.
 		 */
-		public function filter_head_tags_open_graph_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_open_graph_rows( $table_rows, $form, $network, $select_names ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
@@ -1351,7 +1368,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Twitter tab.
 		 */
-		public function filter_head_tags_twitter_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $network, $select_names ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
@@ -1359,7 +1376,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > SEO / Other tab.
 		 */
-		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_seo_other_rows( $table_rows, $form, $network, $select_names ) {
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 

@@ -49,6 +49,8 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		}
 
 		/*
+		 * Maybe disable the WordPress and AMP canonical tags.
+		 *
 		 * Called by 'wp_head' and 'amp_post_template_head' actions.
 		 */
 		public function maybe_disable_rel_canonical() {
@@ -58,7 +60,20 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $this->p->util->is_canonical_disabled() ) {	// WPSSO canonical URL meta tag is disabled.
+			/*
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_link_rel_canonical' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+			 *	- The 'wpsso_canonical_disabled' filter returns true.
+			 */
+			if ( $this->p->util->is_canonical_disabled() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: canonical is disabled' );
+				}
 
 				return;
 			}
@@ -99,20 +114,33 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			/*
 			 * Link rel canonical.
+			 *
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_link_rel_canonical' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+			 *	- The 'wpsso_canonical_disabled' filter returns true.
 			 */
-			$add_link_rel_canonical = $this->p->util->is_canonical_disabled() ? false : true;
-
-			if ( apply_filters( 'wpsso_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
+			if ( ! $this->p->util->is_canonical_disabled() ) {
 
 				$link_rel[ 'canonical' ] = $this->p->util->get_canonical_url( $mod );
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'skipping canonical: canonical is disabled' );
 			}
 
 			/*
 			 * Link rel shortlink.
+			 *
+			 * WpssoUtil->is_shortlink_disabled() returns true if:
+			 *
+			 *	- The 'add_link_rel_shortlink' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_shortlink' filter returns false.
+			 *	- The 'wpsso_shortlink_disabled' filter returns true.
 			 */
-			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
-
-			if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
+			if ( ! $this->p->util->is_shortlink_disabled() ) {
 
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
@@ -156,7 +184,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );
+				$this->p->debug->log( 'skipping shortlink: shortlink is disabled' );
 			}
 
 			return apply_filters( 'wpsso_link_rel', $link_rel, $mod );

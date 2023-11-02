@@ -63,29 +63,33 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 
-			/*
-			 * Essential Settings metabox.
-			 */
-			$metabox_id      = 'general';
-			$metabox_title   = _x( 'Essential Settings', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-				'page_id'    => $this->menu_id,
-				'metabox_id' => $metabox_id,
-			);
+			foreach ( array(
+				'general' => _x( 'Essential Settings', 'metabox title', 'wpsso' ),
+			) as $metabox_id => $metabox_title ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_table' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'page_id'       => $this->menu_id,
+					'metabox_id'    => $metabox_id,
+					'metabox_title' => $metabox_title,
+				);
+
+				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
+					'show_metabox_' . $metabox_id : 'show_metabox_table';
+
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
+					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
+			}
 		}
 
-		protected function get_table_rows( $page_id, $metabox_id ) {
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '' ) {
 
 			$table_rows = array();
+			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
 
-			switch ( $page_id . '-' . $metabox_id ) {
+			switch ( $match_rows ) {
 
 				case 'essential-general':
 

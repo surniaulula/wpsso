@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->set_util_instances( $plugin );
+			$this->set_util_instances();
 
 			$this->add_plugin_actions( $this, array( 'scheduled_task_started' => 1 ), $prio = -1000 );
 
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// REST API compatibility.
 		}
 
-		public function set_util_instances( &$plugin ) {
+		public function set_util_instances() {
 
 			/*
 			 * Instantiate WpssoUtilBlocks.
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-blocks.php';
 			}
 
-			$this->blocks = new WpssoUtilBlocks( $plugin, $this );
+			$this->blocks = new WpssoUtilBlocks( $this->p, $this );
 
 			/*
 			 * Instantiate WpssoUtilCache.
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-cache.php';
 			}
 
-			$this->cache = new WpssoUtilCache( $plugin, $this );
+			$this->cache = new WpssoUtilCache( $this->p, $this );
 
 			/*
 			 * Instantiate WpssoUtilCustomFields.
@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-custom-fields.php';
 			}
 
-			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
+			$this->cf = new WpssoUtilCustomFields( $this->p, $this );
 
 			/*
 			 * Instantiate WpssoUtilInline.
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-inline.php';
 			}
 
-			$this->inline = new WpssoUtilInline( $plugin, $this );
+			$this->inline = new WpssoUtilInline( $this->p, $this );
 
 			/*
 			 * Instantiate WpssoUtilMetabox.
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-metabox.php';
 			}
 
-			$this->metabox = new WpssoUtilMetabox( $plugin );
+			$this->metabox = new WpssoUtilMetabox( $this->p );
 
 			/*
 			 * Instantiate WpssoUtilReg.
@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
 			}
 
-			$this->reg = new WpssoUtilReg( $plugin );
+			$this->reg = new WpssoUtilReg( $this->p );
 
 			/*
 			 * Instantiate WpssoUtilReg.
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-robots.php';
 			}
 
-			$this->robots = new WpssoUtilRobots( $plugin );
+			$this->robots = new WpssoUtilRobots( $this->p );
 
 			/*
 			 * Instantiate WpssoUtilUnits.
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-units.php';
 			}
 
-			$this->units = new WpssoUtilUnits( $plugin );
+			$this->units = new WpssoUtilUnits( $this->p );
 
 			/*
 			 * Instantiate WpssoUtilWooCommerce.
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					require_once WPSSO_PLUGINDIR . 'lib/util-woocommerce.php';
 				}
 
-				$this->wc = new WpssoUtilWooCommerce( $plugin );
+				$this->wc = new WpssoUtilWooCommerce( $this->p );
 			}
 		}
 
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 
-						self::safe_error_log( $error_pre . ' ' . $function_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
+						self::safe_error_log( $error_pre . ' ' . $method_name . ' method ' . $type . ' for ' . $hook_name . ' is not callable' );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1038,10 +1038,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'added ' . $method_name . ' method ' . $type . ' for ' . $hook_name, 3 );
+								$this->p->debug->log( 'added ' . $method_name . ' method ' . $type . ' for ' . $hook_name, $class_seq = 3 );
 							}
 
 						} else {
+
+							$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
+							self::safe_error_log( $error_pre . ' ' . $method_name . ' method ' . $type . ' for ' . $hook_name . ' is not callable' );
 
 							if ( $this->p->debug->enabled ) {
 
@@ -2085,11 +2089,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			/*
-			 * Optimize and return the URL from local cache if possible.
-			 */
-			static $local_cache = array();
-
 			$url        = null;
 			$is_custom  = false;
 			$cache_salt = false;
@@ -2097,25 +2096,33 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				/*
-				 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+				 * WpssoUtil->is_canonical_disabled() returns true if:
+				 *
+				 *	- An SEO plugin is active.
+				 *	- The 'add_link_rel_canonical' option is unchecked.
+				 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+				 *	- The 'wpsso_canonical_disabled' filter returns true.
 				 */
-				$cache_salt = self::get_mod_salt( $mod ) . '_add:' . (string) $add_page;
-
-				if ( isset( $local_cache[ $cache_salt ] ) ) {
-
-					return $local_cache[ $cache_salt ];
-				}
-
-				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
-
-				if ( ! empty( $url ) ) {
+				if ( $this->is_canonical_disabled() ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom canonical url = ' . $url );
+						$this->p->debug->log( 'skipped custom canonical url: canonical is disabled' );
 					}
 
-					$is_custom = true;
+				} else {
+
+					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
+
+					if ( ! empty( $url ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'custom canonical url = ' . $url );
+						}
+
+						$is_custom = true;
+					}
 				}
 			}
 
@@ -2301,11 +2308,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page, $is_custom );
 
-			if ( ! empty( $cache_salt ) ) {
-
-				$local_cache[ $cache_salt ] = $url;
-			}
-
 			return $url;
 		}
 
@@ -2409,16 +2411,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'redirect_url' );	// Returns null if an index key is not found.
-
-				if ( ! empty( $url ) ) {
+				/*
+				 * WpssoUtil->is_redirect_disabled() returns true if:
+				 *
+				 *	- An SEO plugin is active.
+				 *	- The 'wpsso_redirect_disabled' filter returns true.
+				 */
+				if ( $this->is_redirect_disabled() ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom redirect url = ' . $url );
+						$this->p->debug->log( 'skipped custom redirect url: redirect is disabled' );
 					}
 
-					$is_custom  = true;
+				} else {
+
+					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'redirect_url' );	// Returns null if an index key is not found.
+
+					if ( ! empty( $url ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'custom redirect url = ' . $url );
+						}
+
+						$is_custom  = true;
+					}
 				}
 			}
 
@@ -2698,56 +2716,148 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
+		/*
+		 * WpssoUtil->is_canonical_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The 'add_link_rel_canonical' option is unchecked.
+		 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+		 *	- The 'wpsso_canonical_disabled' filter returns true.
+		 */
 		public function is_canonical_disabled() {
 
-			return empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+			$disabled = false;
+
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				$disabled = true;
+
+			} elseif ( empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
+			
+				$disabled = true;
+			}
+
+			$disabled = apply_filters( 'wpsso_add_link_rel_canonical', ( $disabled ? false : true ) ) ? false : true;
+			$disabled = apply_filters( 'wpsso_canonical_disabled', $disabled );
+
+			return $disabled;
 		}
 
 		/*
-		 * Since WPSSO Core v12.0.0.
+		 * WpssoUtil->is_redirect_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The 'wpsso_redirect_disabled' filter returns true.
 		 */
-		public function is_redirect_enabled() {
-
-			return $this->is_redirect_disabled() ? false : true;
-		}
-
 		public function is_redirect_disabled() {
 
-			return apply_filters( 'wpsso_redirect_disabled', false );
-		}
+			$disabled = false;
 
-		public function is_title_tag_disabled() {
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-			if ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
-
-				return true;
+				$disabled = true;
 			}
 
-			return current_theme_supports( 'title-tag' ) ? false : true;
+			$disabled = apply_filters( 'wpsso_redirect_disabled', $disabled );
+
+			return $disabled;
 		}
 
+		/*
+		 * WpssoUtil->is_shortlink_disabled() returns true if:
+		 *
+		 *	- The 'add_link_rel_shortlink' option is unchecked.
+		 *	- The 'wpsso_add_link_rel_shortlink' filter returns false.
+		 *	- The 'wpsso_shortlink_disabled' filter returns true.
+		 */
+		public function is_shortlink_disabled() {
+
+			$disabled = false;
+
+			if ( empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ) {
+			
+				$disabled = true;
+			}
+
+			$disabled = apply_filters( 'wpsso_add_link_rel_shortlink', ( $disabled ? false : true ) ) ? false : true;
+			$disabled = apply_filters( 'wpsso_shortlink_disabled', $disabled );
+
+			return $disabled;
+		}
+
+		/*
+		 * WpssoUtil->is_title_tag_disabled() returns true if:
+		 *
+		 *	- The theme does not support the 'title-tag' feature.
+		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+		 *
+		 * See WpssoAdminFilters->filter_features_status_integ().
+		 * See WpssoMessages->maybe_doc_title_disabled().
+		 */
+		public function is_title_tag_disabled() {
+
+			$disabled = false;
+
+			if ( ! current_theme_supports( 'title-tag' ) ) {
+			
+				$disabled = true;
+
+			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
+
+				$disabled = true;
+			}
+
+			return $disabled;
+		}
+
+		/*
+		 * WpssoUtil->is_canonical_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The theme does not support the 'title-tag' feature.
+		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+		 *	- The 'plugin_title_tag' option is not 'seo_title'.
+		 */
 		public function is_seo_title_disabled() {
 
-			if ( $this->is_title_tag_disabled() ) {
+			$disabled = false;
 
-				return true;
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				$disabled = true;
+
+			/*
+			 * WpssoUtil->is_title_tag_disabled() returns true if:
+			 *
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 */
+			} elseif ( $this->is_title_tag_disabled() ) {
+
+				$disabled = true;
 
 			} elseif ( 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
 
-				return true;
+				$disabled = true;
 			}
 
-			return false;
+			return $disabled;
 		}
 
 		public function is_seo_desc_disabled() {
 
-			return empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
-		}
+			$disabled = false;
 
-		public function is_pin_img_disabled() {
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-			return empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
+				$disabled = true;
+
+			} elseif ( empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
+
+				$disabled = true;
+			}
+
+			return $disabled;
 		}
 
 		public function is_robots_disabled() {
@@ -2757,12 +2867,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_schema_disabled() {
 
-			return isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ? true : false;
+			$disabled = false;
+
+			if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			
+				$disabled = true;
+			}
+			
+			return $disabled;
 		}
 
 		public function is_sitemaps_disabled() {
 
 			return apply_filters( 'wp_sitemaps_enabled', true ) ? false : true;
+		}
+
+		public function is_pin_img_disabled() {
+
+			return empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
 		}
 
 		public function is_json_pretty() {

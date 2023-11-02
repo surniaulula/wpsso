@@ -139,13 +139,25 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				/*
+				 * Ignore custom directives if an SEO plugin is active.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipped custom directives: seo plugin is active' );
+					}
+
+				} else {
+
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				}
 			}
 
 			foreach ( $directives as $directive_key => $default_value ) {
 
-				$value = null;
-
+				$value   = null;
 				$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
 				if ( isset( $md_opts[ $opt_key ] ) ) {
@@ -259,17 +271,30 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
-
-				if ( isset( $md_opts[ 'robots_' . $key ] ) ) {
+				/*
+				 * Ignore custom robots keys if an SEO plugin is active.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'robots ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is true' );
+						$this->p->debug->log( 'skipped custom robots keys: seo plugin is active' );
 					}
 
-					$is_nokey  = $md_opts[ 'robots_' . $key ] ? true : false;
-					$is_custom = true;
+				} else {
+
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+					if ( isset( $md_opts[ 'robots_' . $key ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'robots ' . $key . ' for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is true' );
+						}
+
+						$is_nokey  = $md_opts[ 'robots_' . $key ] ? true : false;
+						$is_custom = true;
+					}
 				}
 			}
 

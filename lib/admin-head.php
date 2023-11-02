@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_review() {
 
-			$form          = $this->p->admin->get_form_object( 'wpsso' );
+			$form          = $this->p->admin->get_form_object( 'wpsso' );	// Return and maybe set/reset the WpssoAdmin->form value.
 			$user_id       = get_current_user_id();
 			$ext_reg       = $this->p->util->reg->get_ext_reg();
 			$week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );

@@ -777,7 +777,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'        => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),
 						'about'       => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
 						'opt_label'   => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
-						'opt_menu_id' => 'advanced#sucom-tabset_schema_props-tab_product',
+						'opt_menu_id' => 'advanced#sucom-tabset_schema_defs-tab_product',
 						'inherit'     => true,
 					),
 					'product_color' => array(
@@ -890,7 +890,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'        => _x( 'product return policy', 'tooltip fragment', 'wpsso' ),
 						'desc'        => _x( 'a product return policy', 'tooltip fragment', 'wpsso' ),
 						'opt_label'   => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
-						'opt_menu_id' => 'advanced#sucom-tabset_schema_props-tab_product',
+						'opt_menu_id' => 'advanced#sucom-tabset_schema_defs-tab_product',
 						'inherit'     => true,
 					),
 					'product_pattern' => array(
@@ -1124,27 +1124,130 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		/*
 		 * Used by the Advanced Settings page for the "Webpage Title Tag" option.
+		 *
+		 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The theme does not support the 'title-tag' feature.
+		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
 		 */
 		public function maybe_doc_title_disabled() {
 
 			$html = '';
 
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+			/*
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 *	- The 'plugin_title_tag' option is not 'seo_title'.
+			 */
+			if ( $this->p->util->is_seo_title_disabled() ) {
 
-				$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
+					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
 
-				$html = sprintf( _x( '(%s constant is true)', 'option comment', 'wpsso' ), 'WPSSO_TITLE_TAG_DISABLE' );
+				} elseif ( ! current_theme_supports( 'title-tag' ) ) {
 
-			} elseif ( $this->p->util->is_title_tag_disabled() ) {
+					$title_tag_url = __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' );
 
-				$title_tag_url = __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' );
+					$html = sprintf( __( 'No theme support for <a href="%s">WordPress Title Tag</a>.', 'wpsso' ), $title_tag_url );
 
-				$html = sprintf( _x( 'No theme support for <a href="%s">WordPress Title Tag</a>.', 'option comment', 'wpsso' ), $title_tag_url );
+				} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
+
+					$html = sprintf( __( 'Modifications disabled (%s constant is true).', 'wpsso' ), 'WPSSO_TITLE_TAG_DISABLE' );
+				}
+
+				if ( ! empty( $html ) ) {
+
+					$html = '<p class="status-msg smaller long_name">' . $html . '</p>';
+				}
+			}
+	
+			return $html;
+		}
+
+		/*
+		 * WpssoMessages->maybe_seo_title_disabled() returns a message if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The theme does not support the 'title-tag' feature.
+		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+		 *	- The 'plugin_title_tag' option is not 'seo_title'.
+		 *
+		 * See WpssoEditGeneral->filter_metabox_sso_edit_general_rows().
+		 */
+		public function maybe_seo_title_disabled() {
+
+			$html = '';
+
+			/*
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 *	- The 'plugin_title_tag' option is not 'seo_title'.
+			 */
+			if ( $this->p->util->is_seo_title_disabled() ) {
+
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+
+				} elseif ( ! current_theme_supports( 'title-tag' ) ) {
+
+					$html = __( 'Modifications disabled (no theme support).', 'wpsso' );
+
+				} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
+
+					$html = __( 'Modifications disabled (constant is true)', 'wpsso' );
+
+				} elseif ( 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
+
+					$opt_key          = 'seo_title';
+					$opt_val_transl   = _x( $this->p->cf[ 'form' ][ 'document_title' ][ $opt_key ], 'option value', 'wpsso' );
+					$opt_label_transl = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+					$opt_link         = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label_transl );
+
+					$html = sprintf( __( 'Modifications disabled (%1$s option not "%2$s").', 'wpsso' ), $opt_link, $opt_val_transl );
+				}
+
+				if ( $html ) {
+
+					$html = '<p class="status-msg smaller">' . $html . '</p>';
+				}
 			}
 
-			return $html ? '<p class="status-msg smaller long_name">' . $html . '</p>' : '';
+			return $html;
+		}
+
+		/*
+		 * Returns a message if an SEO plugin is active or the meta tag is disabled.
+		 */
+		public function maybe_seo_tag_disabled( $mt_name ) {
+
+			$html        = '';
+			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
+			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
+
+			if ( $is_disabled ) {
+
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+
+				} else {
+
+					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
+				}
+
+				$html = '<p class="status-msg smaller">' . $html . '</p>';
+			}
+
+			return $html;
 		}
 
 		/*
@@ -1201,55 +1304,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function maybe_seo_title_disabled() {
-
-			$html        = '';
-			$is_disabled = $this->p->util->is_seo_title_disabled();
-
-			if ( $is_disabled ) {
-
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
-
-				} else {
-
-					$opt_val   = _x( $this->p->cf[ 'form' ][ 'document_title' ][ 'seo_title' ], 'option value', 'wpsso' );
-					$opt_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
-					$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
-
-					$html = sprintf( __( 'Modifications disabled (%1$s option is not "%2$s").', 'wpsso' ), $opt_link, $opt_val );
-				}
-
-				$html = '<p class="status-msg smaller">' . $html . '</p>';
-			}
-
-			return $html;
-		}
-
-		public function maybe_seo_tag_disabled( $mt_name ) {
-
-			$html        = '';
-			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
-			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
-
-			if ( $is_disabled ) {
-
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
-
-				} else {
-
-					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
-				}
-
-				$html = '<p class="status-msg smaller">' . $html . '</p>';
-			}
-
-			return $html;
-		}
-
 		/*
 		 * Pinterest disabled.
 		 *
@@ -1278,7 +1332,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$option_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
 
-			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_label );
+			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest', $option_label );
 
 			// translators: %s is the option name, linked to its settings page.
 			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );

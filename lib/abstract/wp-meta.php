@@ -1353,19 +1353,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
-		public function ajax_get_metabox_document_meta() {
+		public function ajax_get_metabox_sso() {
 
 			self::must_be_extended();
 
 			die( -1 );	// Nothing to do.
 		}
 
-		public function show_metabox_document_meta( $obj ) {
+		public function show_metabox_sso( $obj ) {
 
-			echo $this->get_metabox_document_meta( $obj );
+			echo $this->get_metabox_sso( $obj );
 		}
 
-		public function get_metabox_document_meta( $obj ) {
+		public function get_metabox_sso( $obj ) {
 
 			return self::must_be_extended( $ret_val = '' );	// Empty html.
 		}
@@ -1523,7 +1523,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $tabs[ 'prev_oembed' ] );
 			}
 
-			return apply_filters( 'wpsso_' . $mod[ 'name' ] . '_document_meta_tabs', $tabs, $mod, $metabox_id );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_mb_'. $metabox_id . '_tabs', $tabs, $mod );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			return apply_filters( $filter_name, $tabs, $mod, $metabox_id );
 		}
 
 		/*
@@ -1882,9 +1889,43 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/*
-			 * Do not save the SEO meta description if the meta description is disabled.
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_link_rel_canonical' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+			 *	- The 'wpsso_canonical_disabled' filter returns true.
 			 */
-			if ( empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
+			if ( ! empty( $md_opts[ 'canonical_url' ] ) && $this->p->util->is_canonical_disabled() ) {
+
+				unset( $md_opts[ 'canonical_url' ] );
+			}
+
+			/*
+			 * WpssoUtil->is_redirect_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'wpsso_redirect_disabled' filter returns true.
+			 */
+			if ( ! empty( $md_opts[ 'redirect_url' ] ) && $this->p->util->is_redirect_disabled() ) {
+
+				unset( $md_opts[ 'redirect_url' ] );
+			}
+
+			/*
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 *	- The 'plugin_title_tag' option is not 'seo_title'.
+			 */
+			if ( ! empty( $md_opts[ 'seo_title' ] ) && $this->p->util->is_seo_title_disabled() ) {
+
+				unset( $md_opts[ 'seo_title' ] );
+			}
+
+			if ( ! empty( $md_opts[ 'seo_desc' ] ) && $this->p->util->is_seo_desc_disabled() ) {
 
 				unset( $md_opts[ 'seo_desc' ] );
 			}

@@ -244,8 +244,8 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 				return $table_rows;
 			}
 
-			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
+			$pin_img_disabled = $pin_img_msg? true : false;
 			$media_info       = array( 'pid' => '' );
 
 			if ( ! $pin_img_disabled ) {

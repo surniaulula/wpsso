@@ -78,6 +78,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				return;
 
+			/*
+			 * WpssoUtil->is_redirect_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'wpsso_redirect_disabled' filter returns true.
+			 */
 			} elseif ( $this->p->util->is_redirect_disabled() ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -565,7 +571,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * Called by WpssoAbstractWpMeta->get_head_info().
 		 * Called by WpssoPost->load_meta_page().
-		 * Called by WpssoPost->ajax_get_metabox_document_meta().
+		 * Called by WpssoPost->ajax_get_metabox_sso().
 		 * Called by WpssoTerm->load_meta_page().
 		 * Called by WpssoUser->load_meta_page().
 		 * Called by WpssoUtilCache->refresh_mod_head_meta().

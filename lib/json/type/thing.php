@@ -124,9 +124,14 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				 */
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-					$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
-
-					if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
+					/*
+					 * WpssoUtil->is_shortlink_disabled() returns true if:
+					 *
+					 *	- The 'add_link_rel_shortlink' option is unchecked.
+					 *	- The 'wpsso_add_link_rel_shortlink' filter returns false.
+					 *	- The 'wpsso_shortlink_disabled' filter returns true.
+					 */
+					if ( ! $this->p->util->is_shortlink_disabled() ) {
 
 						if ( $shortlink = $this->p->util->get_shortlink( $mod, $context = 'post' ) ) {
 

@@ -498,6 +498,7 @@ table.sucom-settings th.left p {
 table.sucom-settings th.wide,
 table.sucom-settings td.wide {
 	width:auto;
+	max-width:0;
 }
 
 table.sucom-settings td.top {

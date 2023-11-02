@@ -58,20 +58,28 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_meta_boxes() {
 
-			$metabox_id      = 'addons';
-			$metabox_title   = _x( 'Free Plugin Add-ons', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+			foreach ( array(
+				'addons' => _x( 'Free Plugin Add-ons', 'metabox title', 'wpsso' ),
+			) as $metabox_id => $metabox_title ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_addons' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'page_id'       => $this->menu_id,
+					'metabox_id'    => $metabox_id,
+					'metabox_title' => $metabox_title,
+				);
+
+				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
+					'show_metabox_' . $metabox_id : 'show_metabox_table';
+
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
+					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
+			}
 		}
 
-		public function show_metabox_addons() {
+		public function show_metabox_addons( $obj, $mb ) {
 
 			$this->addons_metabox_content( $network = false );
 		}

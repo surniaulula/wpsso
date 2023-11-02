@@ -197,6 +197,8 @@
 
 'wpsso_load_lib' ( $success = false, $filespec = '', $classname = '' )
 
+'wpsso_mb_sso_tabs' ( array $tabs, $mod )	// Associative array of metabox tab IDs and labels.
+
 'wpsso_md_keys_fallback_{options_key}' ( array $fallback )
 
 'wpsso_menu_title' ( $title )	// Translated menu title (default is "SSO - Social and Search Optimization").
@@ -244,8 +246,6 @@
 'wpsso_option_type' ( false, $base_key, $network, $mod )
 
 'wpsso_plugin_image_sizes' ( $sizes )
-
-'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id )
 
@@ -329,8 +329,6 @@
 
 'wpsso_tc' ( $tc, $mod )
 
-'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
-
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id )
 
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id )
@@ -360,8 +358,6 @@
 'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
 
 'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
-
-'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
 

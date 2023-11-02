@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) Pinterest Hidden Image' ] = array(
 				'label_transl' => _x( '(code) Pinterest Hidden Image', 'lib file description', 'wpsso' ),
-				'label_url'    => $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' ),
+				'label_url'    => $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest' ),
 				'status'       => $this->p->util->is_pin_img_disabled() ? 'off' : 'on',
 			);
 
@@ -111,11 +111,16 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			/*
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Webpage Title Tag.
+			 *
+			 * WpssoUtil->is_title_tag_disabled() returns true if:
+			 *
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
 			 */
 			$features[ '(code) Webpage Title Tag' ] = array(
 				'label_transl' => _x( '(code) Webpage Title Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->util->is_seo_title_disabled() ? 'off' : 'on',
+				'status'       => $this->p->util->is_title_tag_disabled() ? 'off' : 'on',
 			);
 
 			/*
@@ -182,7 +187,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$google_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' );
+			$google_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_google' );
 
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
@@ -243,19 +248,34 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(code) SEO Robots Meta Tag' ] = array(
 				'label_transl' => _x( '(code) SEO Robots Meta Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $seo_tab_url,
-				'status'       => $this->p->util->robots->is_disabled() ? $status_off : $status_on,
+				'status'       => $this->p->util->is_robots_disabled() ? $status_off : $status_on,
 			);
 
+			/*
+			 * WpssoUtil->is_canonical_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_link_rel_canonical' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_canonical' filter returns false.
+			 *	- The 'wpsso_canonical_disabled' filter returns true.
+			 */
 			$features[ '(code) SEO Link Relation Canonical Tag' ] = array(
 				'label_transl' => _x( '(code) SEO Link Relation Canonical Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $seo_tab_url,
 				'status'       => $this->p->util->is_canonical_disabled() ? $status_off : $status_on,
 			);
 
+			/*
+			 * WpssoUtil->is_shortlink_disabled() returns true if:
+			 *
+			 *	- The 'add_link_rel_shortlink' option is unchecked.
+			 *	- The 'wpsso_add_link_rel_shortlink' filter returns false.
+			 *	- The 'wpsso_shortlink_disabled' filter returns true.
+			 */
 			$features[ '(code) SEO Link Relation Shortlink Tag' ] = array(
 				'label_transl' => _x( '(code) SEO Link Relation Shortlink Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $seo_tab_url,
-				'status'       => empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? $status_off : $status_on,
+				'status'       => $this->p->util->is_shortlink_disabled() ? $status_off : $status_on,
 			);
 
 			return $features;

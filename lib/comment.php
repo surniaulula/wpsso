@@ -275,19 +275,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
 
 					/*
-					 * Since WPSSO Core v15.1.1.
-					 */
-					if ( $this->p->util->is_seo_title_disabled() ) {
-
-						unset( $md_opts[ 'seo_title' ] );
-					}
-
-					if ( $this->p->util->is_seo_desc_disabled() ) {
-
-						unset( $md_opts[ 'seo_desc' ] );
-					}
-
-					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					if ( $this->p->debug->enabled ) {

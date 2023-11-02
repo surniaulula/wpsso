@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
-				add_action( 'wp_ajax_wpsso_get_metabox_postbox_id_' . $metabox_id . '_inside', array( $this, 'ajax_get_metabox_document_meta' ) );
+				add_action( 'wp_ajax_wpsso_get_metabox_postbox_id_' . $metabox_id . '_inside', array( $this, 'ajax_get_metabox_sso' ) );
 
 				add_action( 'wp_ajax_wpsso_get_validate_submenu', array( $this, 'ajax_get_validate_submenu' ) );
 
@@ -591,19 +591,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 					/*
-					 * Since WPSSO Core v13.8.1.
-					 */
-					if ( $this->p->util->is_seo_title_disabled() ) {
-
-						unset( $md_opts[ 'seo_title' ] );
-					}
-
-					if ( $this->p->util->is_seo_desc_disabled() ) {
-
-						unset( $md_opts[ 'seo_desc' ] );
-					}
-
-					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -683,7 +670,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->md_cache_disable();	// Disable the local cache.
 
-			$mod     = $this->get_mod( $post_id );
+			$mod = $this->get_mod( $post_id );
+
 			$md_opts = $this->get_submit_opts( $mod );	// Merge previous + submitted options and then sanitize.
 
 			$this->md_cache_enable();	// Re-enable the local cache.
@@ -1409,7 +1397,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$validator_url = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
 
-						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
+						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest' );
 
 						$notice_msg = sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ';
 
@@ -1529,6 +1517,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'metabox_id'                         => $metabox_id,
+				'metabox_title'                      => $metabox_title,
 				'__block_editor_compatible_meta_box' => true,
 			);
 
@@ -1537,9 +1527,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id . ' for screen ' . $metabox_screen );
 			}
 
-			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_' . $metabox_id ),
+				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function ajax_get_validate_submenu() {
@@ -1627,7 +1616,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			die( $metabox_html );
 		}
 
-		public function ajax_get_metabox_document_meta() {
+		public function ajax_get_metabox_sso() {
 
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
@@ -1656,7 +1645,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$metabox_html = $this->get_metabox_document_meta( $post_obj );
+			$metabox_html = $this->get_metabox_sso( $post_obj );
 
 			die( $metabox_html );
 		}
@@ -1723,7 +1712,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_obj;
 		}
 
-		public function get_metabox_document_meta( $post_obj ) {
+		public function get_metabox_sso( $post_obj ) {
 
 			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';

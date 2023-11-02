@@ -388,19 +388,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
 					/*
-					 * Since WPSSO Core v15.1.1.
-					 */
-					if ( $this->p->util->is_seo_title_disabled() ) {
-
-						unset( $md_opts[ 'seo_title' ] );
-					}
-
-					if ( $this->p->util->is_seo_desc_disabled() ) {
-
-						unset( $md_opts[ 'seo_desc' ] );
-					}
-
-					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -817,6 +804,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback.
+				'metabox_id'                         => $metabox_id,
+				'metabox_title'                      => $metabox_title,
 				'__block_editor_compatible_meta_box' => true,
 			);
 
@@ -825,9 +814,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id . ' for screen ' . $metabox_screen );
 			}
 
-			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_' . $metabox_id ),
+				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
 		}
 
 		/*
@@ -942,12 +930,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			echo "\n" . '</div><!-- .metabox-holder -->' . "\n";
 		}
 
-		public function ajax_get_metabox_document_meta() {
+		public function ajax_get_metabox_sso() {
 
 			die( -1 );	// Nothing to do.
 		}
 
-		public function get_metabox_document_meta( $user_obj ) {
+		public function get_metabox_sso( $user_obj ) {
 
 			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';

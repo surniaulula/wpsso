@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 							}
 						}
 
-						$this->p->util->maybe_renum_md_key( $md_opts, $md_key, $values, $is_disabled = true );
+						$this->u->maybe_renum_md_key( $md_opts, $md_key, $values, $is_disabled = true );
 
 					} else {
 
@@ -215,12 +215,12 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						/*
 						 * If this is a '_value' option, add the '_units' option.
 						 */
-						$this->p->util->maybe_add_md_key_units( $md_opts, $md_key );
+						$this->u->maybe_add_md_key_units( $md_opts, $md_key );
 
 						/*
 						 * If this is an '_img_url' option, add the image dimensions and unset the '_img_id' option.
 						 */
-						$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
+						$this->u->maybe_add_img_url_size( $md_opts, $md_key );
 					}
 				}
 			}

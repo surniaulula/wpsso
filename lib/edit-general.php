@@ -58,7 +58,12 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			$def_tc_desc      = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'tc_desc' );
 
 			/*
-			 * Check for disabled options.
+			 * WpssoMessages->maybe_seo_title_disabled() returns a message if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The theme does not support the 'title-tag' feature.
+			 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
+			 *	- The 'plugin_title_tag' option is not 'seo_title'.
 			 */
 			$seo_title_msg = $this->p->msgs->maybe_seo_title_disabled();
 			$seo_desc_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'meta name description' );

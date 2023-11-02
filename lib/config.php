@@ -225,6 +225,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'site-advanced' => 'Advanced Settings',
 							'site-addons'   => 'Plugin Add-ons',
 							'site-licenses' => 'Premium Licenses',
+							'site-setup'    => 'Setup Guide',
 						),
 						'std' => array(	// Standard distribution modules.
 							'admin' => array(
@@ -1620,14 +1621,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 */
-					'schema_def_add_text_prop'   => 0,	// Add Text Property.
-					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
-					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
-					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
-					'schema_def_prov_org_id'     => 'none',	// Default Provider Org.
-					'schema_def_prov_person_id'  => 'none',	// Default Provider Person.
-					'schema_def_fund_org_id'     => 'none',	// Default Funder Org.
-					'schema_def_fund_person_id'  => 'none',	// Default Funder Person.
+					'schema_def_add_text_prop'        => 0,		// Add Text Property.
+					'schema_def_family_friendly'      => 'none',	// Default Family Friendly.
+					'schema_def_family_friendly_hide' => 0,
+					'schema_def_pub_org_id'           => 'site',	// Default Publisher Org.
+					'schema_def_pub_org_id_hide'      => 0,
+					'schema_def_pub_person_id'        => 'none',	// Default Publisher Person.
+					'schema_def_pub_person_id_hide'   => 0,
+					'schema_def_prov_org_id'          => 'none',	// Default Provider Org.
+					'schema_def_prov_org_id_hide'     => 1,
+					'schema_def_prov_person_id'       => 'none',	// Default Provider Person.
+					'schema_def_prov_person_id_hide'  => 1,
+					'schema_def_fund_org_id'          => 'none',	// Default Funder Org.
+					'schema_def_fund_org_id_hide'     => 1,
+					'schema_def_fund_person_id'       => 'none',	// Default Funder Person.
+					'schema_def_fund_person_id_hide'  => 1,
 
 					/*
 					 * Advanced Settings > Schema Defaults > Event.
@@ -2475,7 +2483,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.20.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.21.0-dev.4',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',

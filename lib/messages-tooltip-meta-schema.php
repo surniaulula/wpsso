@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_article_section':	// Article Section.
 
-					$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_schema_props-tab_article',
+					$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_schema_defs-tab_article',
 						_x( 'Default Article Section', 'option label', 'wpsso' ) );
 
 					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-schema_/', '', $msg_key ) );	// Uses a local cache.

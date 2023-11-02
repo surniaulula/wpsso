@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			/*
 			 * Meta name "description".
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
+			if ( ! $this->p->util->is_seo_desc_disabled() ) {
 
 				$mt_name[ 'description' ] = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'seo_desc' );
 			}

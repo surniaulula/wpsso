@@ -34,6 +34,15 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 		}
 
+		/*
+		 * Filters to unset tab IDs in the Document SSO metabox:
+		 *
+		 *	'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
+		 *	'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
+		 *	'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
+		 *
+		 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+		 */
 		public function do_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
 			echo $this->get_tabbed( $metabox_id, $tabs, $table_rows, $args );
@@ -142,6 +151,13 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			foreach ( $table_rows as $key => $row ) {
 
+				if ( ! empty( $key ) ) {	// Just in case.
+
+					$filter_name = SucomUtil::sanitize_hookname( $href_key_class . '_' . $key . '_row' );
+
+					$row = apply_filters( $filter_name, $row );
+				}
+
 				if ( empty( $row ) ) {	// Just in case.
 
 					continue;
@@ -195,14 +211,16 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 						/*
 						 * Add the attribute value.
 						 */
-						$row = preg_replace( '/(<tr [^>]*' . $att . '=")([^"]*)(")/', '$1$2 ' . $tr[ $att ] . '$3', $row, -1, $cnt );
+						$replace_count = null;
+
+						$row = preg_replace( '/(<tr [^>]*' . $att . '=")([^"]*)(")/', '$1$2 ' . $tr[ $att ] . '$3', $row, -1, $replace_count );
 
 						/*
 						 * If one hasn't been added, then add both the attribute and its value.
 						 */
-						if ( $cnt < 1 ) {
+						if ( $replace_count < 1 ) {
 
-							$row = preg_replace( '/(<tr )/', '$1' . $att . '="' . $tr[ $att ] . '" ', $row, -1, $cnt );
+							$row = preg_replace( '/(<tr )/', '$1' . $att . '="' . $tr[ $att ] . '" ', $row, -1, $replace_count );
 						}
 					}
 				}

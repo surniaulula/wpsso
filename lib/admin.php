@@ -26,6 +26,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_name;
 		protected $menu_lib;
 		protected $menu_ext;	// Lowercase acronyn for plugin or add-on.
+		protected $menu_mbs;
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
@@ -378,9 +379,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called by show_settings_page() and extended by the sitesubmenu classes to load site options instead.
-		 *
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 * Return and maybe set/reset the WpssoAdmin->form value.
 		 */
 		public function &get_form_object( $menu_ext ) {
 
@@ -411,6 +410,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $this->form;
 		}
 
+		/*
+		 * Set the WpssoAdmin->form value.
+		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {
@@ -1054,8 +1056,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						default:
 
-							do_action( 'wpsso_load_settings_page_' . $action_value,
-								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
+							do_action( 'wpsso_load_settings_page_' . $action_value, $this->pagehook,
+								$this->menu_id, $this->menu_name, $this->menu_lib );
 
 							break;
 					}
@@ -1069,27 +1071,65 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_ext = $this->p->id;
 			}
 
-			$this->get_form_object( $menu_ext );
+			$this->get_form_object( $menu_ext );	// Return and maybe set/reset the WpssoAdmin->form value.
 
-			$this->add_plugin_hooks();	// Add settings page filters and actions hooks.
+			$this->add_plugin_hooks();		// Add settings page filters and actions hooks.
 
-			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
+			$this->add_meta_boxes();		// Add last to move any duplicate side metaboxes.
 
-			$this->add_footer_hooks();	// Include add-on name and version in settings page footer.
+			$this->add_footer_hooks();		// Include add-on name and version in settings page footer.
 		}
 
 		/*
-		 * Add settings page filters and actions hooks.
+		 * Add actions and filters for this settings page.
 		 *
-		 * This method is extended by each submenu page.
+		 * See WpssoAdmin->load_settings_page().
 		 */
 		protected function add_plugin_hooks() {
 		}
 
 		/*
-		 * This method is extended by each submenu page.
+		 * Add metaboxes for this settings page.
+		 *
+		 * See WpssoAdmin->load_settings_page().
 		 */
 		protected function add_meta_boxes() {
+
+			/*
+			 * Defined in the child construct method of this settings page.
+			 */
+			if ( empty( $this->menu_mbs ) ) {
+				
+				return;
+			}
+
+			foreach ( $this->menu_mbs as $metabox_id => $metabox_title ) {
+
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'page_id'       => $this->menu_id,
+					'metabox_id'    => $metabox_id,
+					'metabox_title' => $metabox_title,
+					'network'       => 'sitesubmenu' === $this->menu_lib ? true : false,
+				);
+
+				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
+					'show_metabox_' . $metabox_id : 'show_metabox_table';
+
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
+					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
+
+				/*
+				 * Add a class to set a minimum width for the network postboxes.
+				 */
+				if ( 'sitesubmenu' === $this->menu_lib ) {
+
+					add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_id,
+						array( $this, 'add_class_postbox_network' ) );
+				}
+			}
 		}
 
 		/*
@@ -1105,7 +1145,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * This method is extended by each submenu page.
 		 */
-		protected function get_table_rows( $metabox_id, $tab_key ) {
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '' ) {
 
 			return array();
 		}
@@ -1480,33 +1520,70 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_id       = isset( $mb[ 'args' ][ 'page_id' ] ) ? $mb[ 'args' ][ 'page_id' ] : '';
 			$metabox_id    = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
 			$metabox_title = isset( $mb[ 'args' ][ 'metabox_title' ] ) ? $mb[ 'args' ][ 'metabox_title' ] : '';
-			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
 			$network       = isset( $mb[ 'args' ][ 'network' ] ) ? $mb[ 'args' ][ 'network' ] : false;
-			$tab_key       = isset( $mb[ 'args' ][ 'tab_key' ] ) ? $mb[ 'args' ][ 'tab_key' ] : '';
+			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
+			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
-			if ( $page_id && $metabox_id ) {
+			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title );
 
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $page_id . '_' . $metabox_id . '_rows' );
-				$table_rows  = $this->get_table_rows( $page_id, $metabox_id, $metabox_title );
-				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network, $select_names );
+			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_rows' );
+error_log( $filter_name );	// TODO removed.
 
-				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
+			if ( $this->p->debug->enabled ) {
 
-			} elseif ( $metabox_id && $tab_key ) {
-
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
-				$table_rows  = $this->get_table_rows( $metabox_id, $tab_key, $metabox_title );
-				$table_rows  = apply_filters( $filter_name, $table_rows, $this->form, $network, $select_names );
-
-				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id . '-' . $tab_key );
-
-			} else {
-
-				$table_rows = array( '<td><p class="status-msg">' .
-					__( 'Missing page ID, metabox ID, and/or tab key to create the metabox table.', 'wpsso' ) . '</p></td>' );
-
-				$this->p->util->metabox->do_table( $table_rows );
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
+
+			$table_rows = apply_filters( $filter_name, $table_rows, $this->form, $network, $select_names );
+
+			$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
+		}
+
+		/*
+		 * Since WPSSO Core v16.7.0.
+		 */
+		protected function show_metabox_tabbed( $obj, $mb, array $tabs ) {
+
+			$page_id       = isset( $mb[ 'args' ][ 'page_id' ] ) ? $mb[ 'args' ][ 'page_id' ] : '';
+			$metabox_id    = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
+			$metabox_title = isset( $mb[ 'args' ][ 'metabox_title' ] ) ? $mb[ 'args' ][ 'metabox_title' ] : '';
+			$network       = isset( $mb[ 'args' ][ 'network' ] ) ? $mb[ 'args' ][ 'network' ] : false;
+			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
+			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
+
+			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
+error_log( $filter_name );	// TODO remove.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$tabs = apply_filters( $filter_name, $tabs );
+
+			if ( empty( $tabs ) ) {
+
+				return $this->show_metabox_table( $obj, $mb );
+			}
+
+			$table_rows = array();
+
+			foreach ( $tabs as $tab_key => $tab_title ) {
+
+				$table_rows[ $tab_key ] = $this->get_table_rows( $page_id, $metabox_id, $tab_key, $metabox_title );
+
+				$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_' . $tab_key . '_rows' );
+error_log( $filter_name );	// TODO removed.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
+
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network, $select_names );
+			}
+
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		/*
@@ -1639,8 +1716,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function show_metabox_version_info() {
 
-			$table_cols = 2;
-
+			$table_cols  = 2;
 			$label_width = '30%';
 
 			echo '<table class="sucom-settings wpsso column-metabox version-info" style="table-layout:fixed;">';
@@ -1759,8 +1835,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 			$media_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_media' );
-			$review_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews' );
 			$shorten_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening' );
+			$review_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews' );
 
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
@@ -3348,7 +3424,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called from WpssoSubmenuSetup->show_metabox_setup_guide() and WpssoJsonSubmenuSchemaShortcode->show_metabox_schema_shortcode().
+		 * See WpssoSubmenuSetup->show_metabox_setup_guide().
 		 */
 		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
 

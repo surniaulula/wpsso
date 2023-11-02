@@ -38,109 +38,73 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 
-			/*
-			 * General Settings metabox.
-			 */
-			$metabox_id      = 'og';
-			$metabox_title   = _x( 'General Settings', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+			foreach ( array(
+				'og'            => _x( 'General Settings', 'metabox title', 'wpsso' ),
+				'social_search' => _x( 'Social and Search Sites', 'metabox title', 'wpsso' ),
+				'social_pages'  => _x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ),
+			) as $metabox_id => $metabox_title ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'page_id'       => $this->menu_id,
+					'metabox_id'    => $metabox_id,
+					'metabox_title' => $metabox_title,
+				);
 
-			/*
-			 * Social and Search Sites metabox.
-			 */
-			$metabox_id      = 'pub';
-			$metabox_title   = _x( 'Social and Search Sites', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
+					'show_metabox_' . $metabox_id : 'show_metabox_table';
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/*
-			 * Social and Search Sites metabox.
-			 */
-			$metabox_id      = 'social_pages';
-			$metabox_title   = _x( 'Social Pages and Accounts', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-				'page_id'    => $this->menu_id,
-				'metabox_id' => $metabox_id,
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_table' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
+					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
+			}
 		}
 
-		public function show_metabox_og() {
+		public function show_metabox_og( $obj, $mb ) {
 
-			$metabox_id = 'og';
+			if ( $this->p->debug->enabled ) {
 
-			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
+				$this->p->debug->mark();
+			}
+
+			$tabs = array(
 				'site'     => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'loc_defs' => _x( 'Location Defaults', 'metabox tab', 'wpsso' ),
 				'content'  => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'images'   => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos'   => _x( 'Videos', 'metabox tab', 'wpsso' ),
-			) );
+			);
 
-			$table_rows = array();
-
-			foreach ( $tabs as $tab_key => $title ) {
-
-				$filter_name            = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
-				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
-			}
-
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		public function show_metabox_pub() {
+		public function show_metabox_social_search( $obj, $mb ) {
 
-			$metabox_id = 'pub';
+			if ( $this->p->debug->enabled ) {
 
-			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
+				$this->p->debug->mark();
+			}
+
+			$tabs = array(
 				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google'      => _x( 'Google', 'metabox tab', 'wpsso' ),
 				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
-			) );
+			);
 
-			$table_rows = array();
-
-			foreach ( $tabs as $tab_key => $title ) {
-
-				$filter_name            = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
-				$table_rows[ $tab_key ] = $this->get_table_rows( $metabox_id, $tab_key );
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network = false );
-			}
-
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		protected function get_table_rows( $metabox_id, $tab_key ) {
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '' ) {
 
 			$table_rows = array();
+			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
 
-			switch ( $metabox_id . '-' . $tab_key ) {
+			switch ( $match_rows ) {
 
-				case 'og-site':
+				case 'general-og-site':
 
 					$def_site_name = SucomUtil::get_site_name();
 					$def_site_desc = SucomUtil::get_site_description();
@@ -194,7 +158,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'og-loc_defs':
+				case 'general-og-loc_defs':
 
 					$dimension_units  = WpssoUtilUnits::get_dimension_units();
 					$fl_volume_units  = WpssoUtilUnits::get_fluid_volume_units();
@@ -235,7 +199,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'og-content':
+				case 'general-og-content':
 
 					$table_rows[ 'og_title_sep' ] = '' .
 						$this->form->get_th_html( _x( 'Title Separator', 'option label', 'wpsso' ),
@@ -256,7 +220,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'og-images':
+				case 'general-og-images':
 
 					$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
@@ -279,11 +243,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'og-videos':
+				case 'general-og-videos':
 
 					break;
 
-				case 'pub-facebook':
+				case 'general-social_search-facebook':
 
 					$user_contacts = $this->p->user->get_form_contact_fields();
 
@@ -304,7 +268,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-google':
+				case 'general-social_search-google':
 
 					$table_rows[ 'g_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
@@ -340,7 +304,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-pinterest':
+				case 'general-social_search-pinterest':
 
 					$table_rows[ 'pin_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Pinterest Website Verification ID', 'option label', 'wpsso' ),
@@ -367,7 +331,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-twitter':
+				case 'general-social_search-twitter':
 
 					$tc_types = array(
 						'summary'             => _x( 'Summary', 'option value', 'wpsso' ),
@@ -386,7 +350,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-other_sites':
+				case 'general-social_search-other_sites':
 
 					$table_rows[ 'ahrefs_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Ahrefs Website Verification ID', 'option label', 'wpsso' ),
