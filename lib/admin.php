@@ -1527,7 +1527,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title );
 
 			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_rows' );
-error_log( $filter_name );	// TODO removed.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1552,7 +1551,6 @@ error_log( $filter_name );	// TODO removed.
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
 			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
-error_log( $filter_name );	// TODO remove.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1573,7 +1571,6 @@ error_log( $filter_name );	// TODO remove.
 				$table_rows[ $tab_key ] = $this->get_table_rows( $page_id, $metabox_id, $tab_key, $metabox_title );
 
 				$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_' . $tab_key . '_rows' );
-error_log( $filter_name );	// TODO removed.
 
 				if ( $this->p->debug->enabled ) {
 

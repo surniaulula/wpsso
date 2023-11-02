@@ -500,7 +500,7 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/admin.php:2274 lib/com/notice.php:295
+#: gettext/gettext-lib-com.php:44 lib/admin.php:2271 lib/com/notice.php:295
 msgid "Edit"
 msgstr ""
 
@@ -4546,315 +4546,315 @@ msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1609
+#: lib/admin.php:1606
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:1614
+#: lib/admin.php:1611
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin.php:1619
+#: lib/admin.php:1616
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:1620
+#: lib/admin.php:1617
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin.php:1624
+#: lib/admin.php:1621
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:1650
+#: lib/admin.php:1647
 msgid "%s Database Transients"
 msgstr ""
 
-#: lib/admin.php:1655
+#: lib/admin.php:1652
 msgid "Count"
 msgstr ""
 
-#: lib/admin.php:1656
+#: lib/admin.php:1653
 msgid "MB"
 msgstr ""
 
-#: lib/admin.php:1657
+#: lib/admin.php:1654
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin.php:1686
+#: lib/admin.php:1683
 msgid "disabled"
 msgstr ""
 
-#: lib/admin.php:1740 lib/admin.php:1741
+#: lib/admin.php:1737 lib/admin.php:1738
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin.php:1787
+#: lib/admin.php:1784
 msgctxt "version label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:1795
+#: lib/admin.php:1792
 msgctxt "version label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:1799
+#: lib/admin.php:1796
 msgctxt "version label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:1807
+#: lib/admin.php:1804
 msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 
-#: lib/admin.php:1815
+#: lib/admin.php:1812
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:1889
+#: lib/admin.php:1886
 msgid "(%d sub-types)"
 msgstr ""
 
-#: lib/admin.php:1949
+#: lib/admin.php:1946
 msgctxt "lib file description"
 msgid "(api) Get %s Short URL"
 msgstr ""
 
-#: lib/admin.php:2021
+#: lib/admin.php:2018
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2022
+#: lib/admin.php:2019
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2023
+#: lib/admin.php:2020
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2024 lib/admin.php:2025
+#: lib/admin.php:2021 lib/admin.php:2022
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2074
+#: lib/admin.php:2071
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2081
+#: lib/admin.php:2078
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2088
+#: lib/admin.php:2085
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2095
+#: lib/admin.php:2092
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2102
+#: lib/admin.php:2099
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2109
+#: lib/admin.php:2106
 msgid "Sharing Functionality"
 msgstr ""
 
-#: lib/admin.php:2288
+#: lib/admin.php:2285
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2301
+#: lib/admin.php:2298
 msgctxt "option label"
 msgid "Current Site Address"
 msgstr ""
 
-#: lib/admin.php:2307
+#: lib/admin.php:2304
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2308
+#: lib/admin.php:2305
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2317
+#: lib/admin.php:2314
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2323
+#: lib/admin.php:2320
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
-#: lib/admin.php:2331
+#: lib/admin.php:2328
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2343
+#: lib/admin.php:2340
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2416
+#: lib/admin.php:2413
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2569
+#: lib/admin.php:2566
 msgctxt "option label"
 msgid "Site Publisher Type"
 msgstr ""
 
-#: lib/admin.php:2578
+#: lib/admin.php:2575
 msgctxt "option label"
 msgid "Site Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2587 lib/options.php:1224
+#: lib/admin.php:2584 lib/options.php:1224
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2592 lib/options.php:1229
+#: lib/admin.php:2589 lib/options.php:1229
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2605
+#: lib/admin.php:2602
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2610
+#: lib/admin.php:2607
 msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2615
+#: lib/admin.php:2612
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2620 lib/messages-tooltip-plugin.php:52
+#: lib/admin.php:2617 lib/messages-tooltip-plugin.php:52
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2628 lib/util.php:3381
+#: lib/admin.php:2625 lib/util.php:3381
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2643
+#: lib/admin.php:2640
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2659
+#: lib/admin.php:2656
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2680
+#: lib/admin.php:2677
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2711
+#: lib/admin.php:2708
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2732
+#: lib/admin.php:2729
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2741
+#: lib/admin.php:2738
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2862
+#: lib/admin.php:2859
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2868
+#: lib/admin.php:2865
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2875
+#: lib/admin.php:2872
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2889
+#: lib/admin.php:2886
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2898
+#: lib/admin.php:2895
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2907
+#: lib/admin.php:2904
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3330
+#: lib/admin.php:3327
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3331
+#: lib/admin.php:3328
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3336
+#: lib/admin.php:3333
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3337
+#: lib/admin.php:3334
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3348
+#: lib/admin.php:3345
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3349
+#: lib/admin.php:3346
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3355
+#: lib/admin.php:3352
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3362
+#: lib/admin.php:3359
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3369
+#: lib/admin.php:3366
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3376
+#: lib/admin.php:3373
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
