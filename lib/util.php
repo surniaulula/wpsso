@@ -2870,6 +2870,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $disabled;
 		}
 
+		/*
+		 * WpssoUtilRobots->is_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The 'add_meta_name_robots' option is unchecked.
+		 *	- The 'wpsso_robots_disabled' filter returns true.
+		 */
 		public function is_robots_disabled() {
 
 			return $this->robots->is_disabled();

@@ -277,6 +277,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					/*
 					 * Robots settings.
+					 *
+					 * WpssoUtilRobots->is_disabled() returns true if:
+					 *
+					 *	- An SEO plugin is active.
+					 *	- The 'add_meta_name_robots' option is unchecked.
+					 *	- The 'wpsso_robots_disabled' filter returns true.
 					 */
 					$robots_disabled = $this->p->util->robots->is_disabled();
 

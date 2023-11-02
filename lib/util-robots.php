@@ -315,23 +315,34 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			return $is_nokey;
 		}
 
+		/*
+		 * WpssoUtilRobots->is_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The 'add_meta_name_robots' option is unchecked.
+		 *	- The 'wpsso_robots_disabled' filter returns true.
+		 */
 		public function is_disabled() {
 
-			return $this->is_enabled() ? false : true;
+			$disabled = false;
+
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				$disabled = true;
+
+			} elseif ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				$disabled = true;
+			}
+
+			$disabled = apply_filters( 'wpsso_robots_disabled', $disabled );
+
+			return $disabled;
 		}
 
 		public function is_enabled() {
 
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-
-				$local_cache = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? false : true;
-
-				$local_cache = (bool) apply_filters( 'wpsso_robots_is_enabled', $local_cache );
-			}
-
-			return $local_cache;
+			return $this->is_disabled() ? false : true;
 		}
 	}
 }

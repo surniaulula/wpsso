@@ -35,7 +35,14 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 		public function maybe_disable_noindex() {
 
-			if ( $this->p->util->robots->is_enabled() ) {
+			/*
+			 * WpssoUtilRobots->is_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_robots' option is unchecked.
+			 *	- The 'wpsso_robots_disabled' filter returns true.
+			 */
+			if ( ! $this->p->util->robots->is_disabled() ) {
 
 				remove_action( 'wp_head', 'noindex', 1 );
 
@@ -112,8 +119,14 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 			/*
 			 * Meta name "robots".
+			 *
+			 * WpssoUtilRobots->is_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_robots' option is unchecked.
+			 *	- The 'wpsso_robots_disabled' filter returns true.
 			 */
-			if ( $this->p->util->robots->is_enabled() ) {
+			if ( ! $this->p->util->robots->is_disabled() ) {
 
 				$mt_name[ 'robots' ] = $this->p->util->robots->get_content( $mod );
 			}

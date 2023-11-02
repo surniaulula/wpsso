@@ -251,10 +251,17 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->util->is_seo_desc_disabled() ? $status_off : $status_on,
 			);
 
+			/*
+			 * WpssoUtilRobots->is_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_robots' option is unchecked.
+			 *	- The 'wpsso_robots_disabled' filter returns true.
+			 */
 			$features[ '(code) SEO Robots Meta Tag' ] = array(
 				'label_transl' => _x( '(code) SEO Robots Meta Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $seo_tab_url,
-				'status'       => $this->p->util->is_robots_disabled() ? $status_off : $status_on,
+				'status'       => $this->p->util->robots->is_disabled() ? $status_off : $status_on,
 			);
 
 			/*

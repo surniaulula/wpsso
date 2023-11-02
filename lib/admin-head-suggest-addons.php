@@ -255,6 +255,13 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				return $notices_shown;
 
+			/*
+			 * WpssoUtilRobots->is_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_robots' option is unchecked.
+			 *	- The 'wpsso_robots_disabled' filter returns true.
+			 */
 			} elseif ( $this->p->util->robots->is_disabled() ) {
 
 				return $notices_shown;
