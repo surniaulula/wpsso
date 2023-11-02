@@ -266,6 +266,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the settings page load process:
 		* Added a new `WpssoAdmin->menu_mbs` variable.
+		* Added `$obj` and `$md` args to all `show_metabox_*()` methods.
+		* Added 'page_id', 'metabox_id', and 'metabox_title' to `$callback_args` for all `show_metabox_*()` methods.
 		* Refactored `WpssoAdmin->add_meta_boxes()`
 		* Refactored `WpssoAdmin->show_metabox_table()`
 		* Refactored `WpssoAdmin->show_metabox_tabbed()`
@@ -275,6 +277,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtil->is_shortlink_disabled()`
 		* `WpssoUtil->is_title_tag_disabled()`
 		* `WpssoUtil->is_seo_title_disabled()`
+		* `WpssoUtil->is_seo_desc_disabled()`
+	* Added an `$md_key` argument to methods:
+		* `WpssoUtil->get_canonical_url()`
+		* `WpssoUtil->get_redirect_url()`
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
