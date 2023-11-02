@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.7.0-dev.4 (2023/11/02)**
+**Version 16.7.0-dev.5 (2023/11/02)**
 
 * **New Features**
 	* None.
@@ -278,6 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtil->is_title_tag_disabled()`
 		* `WpssoUtil->is_seo_title_disabled()`
 		* `WpssoUtil->is_seo_desc_disabled()`
+		* `WpssoUtilRobots->is_disabled()`
 	* Added an `$md_key` argument to methods:
 		* `WpssoUtil->get_canonical_url()`
 		* `WpssoUtil->get_redirect_url()`
@@ -486,9 +487,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.7.0-dev.4 =
+= 16.7.0-dev.5 =
 
-(2023/11/02) Added support for Document SSO post meta revisions available since WordPress v6.4. Refactored the settings page load process.
+(2023/11/02) Added support for Document SSO post meta revisions available since WordPress v6.4. Refactored the settings page load process and disabled check methods.
 
 = 16.6.0 =
 
