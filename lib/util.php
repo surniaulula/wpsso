@@ -2886,6 +2886,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$disabled = false;
 
+			/*
+			 * Array element is false when the WPSSO_SCHEMA_MARKUP_DISABLE constant is true.
+			 *
+			 * See WpssoCheck->get_avail().
+			 */
 			if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 			
 				$disabled = true;

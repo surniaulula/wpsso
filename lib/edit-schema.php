@@ -58,6 +58,11 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 			if ( $this->p->util->is_schema_disabled() ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->mark( 'exiting early: schema markup is disabled' );
+				}
+
 				return $table_rows;
 			}
 
