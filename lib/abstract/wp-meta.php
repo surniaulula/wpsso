@@ -1925,6 +1925,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $md_opts[ 'seo_title' ] );
 			}
 
+			/*
+			 * WpssoUtil->is_seo_desc_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_description' option is unchecked.
+			 */
 			if ( ! empty( $md_opts[ 'seo_desc' ] ) && $this->p->util->is_seo_desc_disabled() ) {
 
 				unset( $md_opts[ 'seo_desc' ] );

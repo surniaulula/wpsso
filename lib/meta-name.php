@@ -72,6 +72,11 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 			/*
 			 * Meta name "description".
+			 *
+			 * WpssoUtil->is_seo_desc_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_description' option is unchecked.
 			 */
 			if ( ! $this->p->util->is_seo_desc_disabled() ) {
 

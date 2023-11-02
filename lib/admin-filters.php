@@ -239,6 +239,12 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$status_off = 'disabled';
 			}
 
+			/*
+			 * WpssoUtil->is_seo_desc_disabled() returns true if:
+			 *
+			 *	- An SEO plugin is active.
+			 *	- The 'add_meta_name_description' option is unchecked.
+			 */
 			$features[ '(code) SEO Meta Description Tag' ] = array(
 				'label_transl' => _x( '(code) SEO Meta Description Tag', 'lib file description', 'wpsso' ),
 				'label_url'    => $seo_tab_url,

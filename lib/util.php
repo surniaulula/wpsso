@@ -2815,7 +2815,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
-		 * WpssoUtil->is_canonical_disabled() returns true if:
+		 * WpssoUtil->is_seo_title_disabled() returns true if:
 		 *
 		 *	- An SEO plugin is active.
 		 *	- The theme does not support the 'title-tag' feature.
@@ -2848,6 +2848,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $disabled;
 		}
 
+		/*
+		 * WpssoUtil->is_seo_desc_disabled() returns true if:
+		 *
+		 *	- An SEO plugin is active.
+		 *	- The 'add_meta_name_description' option is unchecked.
+		 */
 		public function is_seo_desc_disabled() {
 
 			$disabled = false;
