@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.7.0-dev.4 (2023/10/30)**
+**Version 16.7.0-dev.4 (2023/11/02)**
 
 * **New Features**
 	* None.
@@ -264,7 +264,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the settings page load process:
+		* Added a new `WpssoAdmin->menu_mbs` variable.
+		* Refactored `WpssoAdmin->add_meta_boxes()`
+		* Refactored `WpssoAdmin->show_metabox_table()`
+		* Refactored `WpssoAdmin->show_metabox_tabbed()`
+	* Refactored disabled check methods:
+		* `WpssoUtil->is_canonical_disabled()`
+		* `WpssoUtil->is_redirect_disabled()`
+		* `WpssoUtil->is_shortlink_disabled()`
+		* `WpssoUtil->is_title_tag_disabled()`
+		* `WpssoUtil->is_seo_title_disabled()`
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -472,7 +482,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.7.0-dev.4 =
 
-(2023/10/30) Added support for Document SSO post meta revisions available since WordPress v6.4.
+(2023/11/02) Added support for Document SSO post meta revisions available since WordPress v6.4. Refactored the settings page load process.
 
 = 16.6.0 =
 
