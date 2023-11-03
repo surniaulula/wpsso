@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.7.0-dev.7 (2023/11/02)**
+**Version 16.7.0-dev.8 (2023/11/03)**
 
 * **New Features**
 	* None.
@@ -268,7 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
 		* Added a new `WpssoAdmin->menu_select_names` variable.
 		* Added `$obj` and `$md` args to all `show_metabox_*()` methods.
-		* Added 'page_id', 'metabox_id', and 'metabox_title' to `$callback_args` for all `show_metabox_*()` methods.
+		* Added 'page_id', 'metabox_id', and 'metabox_title' to `$callback_args` for `show_metabox_*()` methods.
 		* Refactored `WpssoAdmin->add_meta_boxes()`
 		* Refactored `WpssoAdmin->show_metabox_table()`
 		* Refactored `WpssoAdmin->show_metabox_tabbed()`
@@ -488,9 +488,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 16.7.0-dev.7 =
+= 16.7.0-dev.8 =
 
-(2023/11/02) Added support for Document SSO post meta revisions available since WordPress v6.4. Fixed locale detection in the back-end.
+(2023/11/03) Added support for Document SSO post meta revisions available since WordPress v6.4. Fixed locale detection in the back-end.
 
 = 16.6.0 =
 
