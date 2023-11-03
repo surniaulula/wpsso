@@ -266,7 +266,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the settings page load process:
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
-		* Added a new `WpssoAdmin->menu_select_names` variable.
 		* Added `$obj` and `$md` args to all `show_metabox_*()` methods.
 		* Added 'page_id', 'metabox_id', and 'metabox_title' to `$callback_args` for `show_metabox_*()` methods.
 		* Refactored `WpssoAdmin->add_meta_boxes()`
