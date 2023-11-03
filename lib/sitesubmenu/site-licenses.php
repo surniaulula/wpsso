@@ -32,10 +32,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
 
-			/*
-			 * See WpssoAdmin->add_meta_boxes().
-			 */
-			$this->menu_mbs  = array(
+			$this->menu_metaboxes = array(
 				'licenses' => _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' ),
 			);
 		}

@@ -399,6 +399,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:locale' ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling get_fb_locale()' );
+				}
+
 				$mt_og[ 'og:locale' ] = $this->get_fb_locale( $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
@@ -849,6 +854,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			/*
 			 * Maybe get an alternate Facebook locale from the plugin settings.
 			 */
@@ -872,6 +882,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/*
 			 * Maybe return the Facebook equivalent for this locale.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling get_schema_lang()' );
+			}
+
 			$schema_lang = $this->p->schema->get_schema_lang( $mixed );
 
 			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );

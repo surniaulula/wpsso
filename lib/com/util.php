@@ -2560,6 +2560,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
+			} elseif ( 'current' === $mixed && is_admin() ) {
+
+				$locale = get_user_locale();
+
 			} elseif ( 'current' === $mixed || is_array( $mixed ) ) {
 
 				$locale = get_locale();

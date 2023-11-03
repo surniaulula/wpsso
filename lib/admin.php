@@ -26,7 +26,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_name;
 		protected $menu_lib;
 		protected $menu_ext;	// Lowercase acronyn for plugin or add-on.
-		protected $menu_mbs;
+		protected $menu_metaboxes;
+		protected $menu_select_names;
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
@@ -1098,12 +1099,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Defined in the child construct method of this settings page.
 			 */
-			if ( empty( $this->menu_mbs ) ) {
+			if ( empty( $this->menu_metaboxes ) ) {
 				
 				return;
 			}
 
-			foreach ( $this->menu_mbs as $metabox_id => $metabox_title ) {
+			foreach ( $this->menu_metaboxes as $metabox_id => $metabox_title ) {
 
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'normal';
@@ -1113,6 +1114,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'metabox_id'    => $metabox_id,
 					'metabox_title' => $metabox_title,
 					'network'       => 'sitesubmenu' === $this->menu_lib ? true : false,
+					'select_names'  => empty( $this->menu_select_names ) ? array() : $this->menu_select_names,
 				);
 
 				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
@@ -1160,12 +1162,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
-				$notice_msg = sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ),
-					$default_locale ) . ' ';
+				$notice_msg = sprintf( __( 'Your current language selection [%1$s] is different from the default site language [%2$s].', 'wpsso' ),
+					$current_locale, $default_locale ) . ' ';
 
-				$notice_msg .= sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale );
+				$notice_msg .= sprintf( __( 'Localized option values [%1$s] will be used for webpages and content in that language.', 'wpsso' ),
+					$current_locale );
 
-				$notice_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
+				$notice_key = $this->menu_id . '-language-notice-' . $current_locale . '-' . $default_locale;
 
 				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}

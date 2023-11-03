@@ -32,10 +32,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
 
-			/*
-			 * See WpssoAdmin->add_meta_boxes().
-			 */
-			$this->menu_mbs  = array(
+			$this->menu_metaboxes = array(
 				'addons' => _x( 'Free Plugin Add-ons', 'metabox title', 'wpsso' ),
 			);
 		}

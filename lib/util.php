@@ -239,6 +239,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			SucomUtil::clear_locale_cache();
 		}
 
+		/*
+		 * Cache is cleared by WpssoUtil->wp_locale_changed().
+		 */
 		public function wp_locale_switched( $locale ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -247,6 +250,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
+		/*
+		 * Cache is cleared by WpssoUtil->wp_locale_changed().
+		 */
 		public function wp_locale_restored( $locale, $previous_locale ) {
 
 			if ( $this->p->debug->enabled ) {

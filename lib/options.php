@@ -184,11 +184,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/*
 				 * Define the default Facebook locale and current locale values.
 				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'calling get_fb_locale() for default' );
+				}
+
 				$local_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( $mixed = 'default', $use_opts = false );
 
 				$current_fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' );
 
 				if ( 'fb_locale' !== $current_fb_locale_key ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'calling get_fb_locale() for current' );
+					}
 
 					$local_cache[ $current_fb_locale_key ] = $this->p->og->get_fb_locale( $mixed = 'current', $use_opts = false );
 				}

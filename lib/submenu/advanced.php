@@ -27,16 +27,19 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
-		}
 
-		/*
-		 * Called by the extended WpssoAdmin class.
-		 */
-		protected function add_meta_boxes() {
+			$this->menu_metaboxes = array(
+				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
+				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
+				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
+				'schema_defs'    => _x( 'Schema Defaults', 'metabox title', 'wpsso' ),
+				'metadata'       => _x( 'Attributes and Metadata', 'metabox title', 'wpsso' ),
+				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
+				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
+				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
+			);
 
-			$this->maybe_show_language_notice();
-
-			$select_names = array(
+			$this->menu_select_names = array(
 				'article_sections' => $this->p->util->get_article_sections(),
 				'google_prod_cats' => $this->p->util->get_google_product_categories(),
 				'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
@@ -48,34 +51,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'place_types'      => $this->p->util->get_form_cache( 'place_types_select' ),
 				'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
 			);
+		}
 
-			foreach ( array(
-				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
-				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
-				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
-				'schema_defs'    => _x( 'Schema Defaults', 'metabox title', 'wpsso' ),
-				'metadata'       => _x( 'Attributes and Metadata', 'metabox title', 'wpsso' ),
-				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
-				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
-				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
-			) as $metabox_id => $metabox_title ) {
+		protected function add_meta_boxes() {
 
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'normal';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'       => $this->menu_id,
-					'metabox_id'    => $metabox_id,
-					'metabox_title' => $metabox_title,
-					'select_names'  => $select_names,
-				);
+			$this->maybe_show_language_notice();
 
-				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
-					'show_metabox_' . $metabox_id : 'show_metabox_table';
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
-					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
-			}
+			parent::add_meta_boxes();
 		}
 
 		public function show_metabox_plugin( $obj, $mb ) {
