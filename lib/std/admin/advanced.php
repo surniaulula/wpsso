@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Integration tab.
 		 */
-		public function filter_mb_advanced_plugin_integration_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_integration_rows( $table_rows, $form, $network, $args ) {
 
 			/*
 			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Default Text tab.
 		 */
-		public function filter_mb_advanced_plugin_default_text_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_default_text_rows( $table_rows, $form, $network, $args ) {
 
 			/*
 			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * SSO > Advanced Settings > Plugin Settings > Image Sizes tab.
 		 */
-		public function filter_mb_advanced_plugin_image_sizes_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_image_sizes_rows( $table_rows, $form, $network, $args ) {
 
 			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Interface tab.
 		 */
-		public function filter_mb_advanced_plugin_interface_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_plugin_interface_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Media Services tab.
 		 */
-		public function filter_mb_advanced_services_media_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_media_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -563,7 +563,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Shortening Services tab.
 		 */
-		public function filter_mb_advanced_services_shortening_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_shortening_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Ratings and Reviews tab.
 		 */
-		public function filter_mb_advanced_services_ratings_reviews_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_services_ratings_reviews_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Open Graph tab.
 		 */
-		public function filter_mb_advanced_doc_types_og_types_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_doc_types_og_types_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -645,7 +645,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $select_names[ 'og_types' ], $css_class = 'og_type' ) . '</td>';
+					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+						$css_class = 'og_type' ) . '</td>';
 			}
 
 			/*
@@ -660,8 +661,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'og_types' ], $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'og_type_for_pt' ] = '' .
@@ -680,8 +682,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'og_types' ], $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			if ( ! empty( $type_select ) ) {
@@ -703,8 +706,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'og_types' ], $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'og_type_for_tax' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
@@ -717,7 +721,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Schema tab.
 		 */
-		public function filter_mb_advanced_doc_types_schema_types_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_doc_types_schema_types_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -734,7 +738,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $select_names[ 'schema_types' ], $css_class = 'schema_type' ) . '</td>';
+					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+						$css_class = 'schema_type' ) . '</td>';
 			}
 
 			/*
@@ -750,8 +755,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'schema_types' ], $css_class = 'schema_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'schema_type_for_pt' ] = '' .
@@ -770,8 +776,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'schema_types' ], $css_class = 'schema_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			if ( ! empty( $type_select ) ) {
@@ -793,8 +800,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $select_names[ 'schema_types' ], $css_class = 'schema_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+						$obj_label ) . '</p>' . "\n";
 			}
 
 			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
@@ -808,7 +816,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Since WPSSO Core v13.5.0.
 		 */
-		public function filter_mb_advanced_schema_defs_article_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_article_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -824,7 +832,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Article Section', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_article_section',
-					'content'  => $form->get_no_select( 'schema_def_article_section', $select_names[ 'article_sections' ] ),
+					'content'  => $form->get_no_select( 'schema_def_article_section', $args[ 'select_names' ][ 'article_sections' ] ),
 				),
 			);
 
@@ -833,7 +841,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_book_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_book_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -853,7 +861,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_creative_work_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_creative_work_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -876,42 +884,42 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_org_id',
-					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_pub_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_person_id',
-					'content'  => $form->get_no_select( 'schema_def_pub_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_pub_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_org_id',
-					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_person_id',
-					'content'  => $form->get_no_select( 'schema_def_prov_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_prov_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_fund_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_fund_org_id',
-					'content'  => $form->get_no_select( 'schema_def_fund_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_fund_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_fund_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_fund_person_id',
-					'content'  => $form->get_no_select( 'schema_def_fund_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_fund_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
@@ -921,7 +929,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_event_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_event_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -938,49 +946,49 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_location_id',
-					'content'  => $form->get_no_select( 'schema_def_event_location_id', $select_names[ 'place' ],
+					'content'  => $form->get_no_select( 'schema_def_event_location_id', $args[ 'select_names' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_performer_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_performer_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_performer_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_performer_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_performer_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Performer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_performer_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_performer_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_performer_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 				'schema_def_event_organizer_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_organizer_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_organizer_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_organizer_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_organizer_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Organizer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_organizer_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_organizer_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_organizer_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 				'schema_def_event_fund_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_fund_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_fund_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_fund_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_fund_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_fund_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_fund_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_fund_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 			);
@@ -990,7 +998,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_job_posting_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_job_posting_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1000,14 +1008,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Job Hiring Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_hiring_org_id',
-					'content'  => $form->get_no_select( 'schema_def_job_hiring_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_job_hiring_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_location_id',
-					'content'  => $form->get_no_select( 'schema_def_job_location_id', $select_names[ 'place' ],
+					'content'  => $form->get_no_select( 'schema_def_job_location_id', $args[ 'select_names' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_type' => array(
@@ -1024,7 +1032,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_place_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_place_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1034,7 +1042,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Place Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_place_schema_type',
-					'content'  => $form->get_no_select( 'schema_def_place_schema_type', $select_names[ 'place_types' ], $css_class = 'schema_type' ),
+					'content'  => $form->get_no_select( 'schema_def_place_schema_type', $args[ 'select_names' ][ 'place_types' ],
+						$css_class = 'schema_type' ),
 				),
 				'schema_def_place_country' => array(
 					'td_class' => 'blank',
@@ -1056,7 +1065,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_product_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_product_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1074,14 +1083,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_mrp',
-					'content'  => $form->get_no_select( 'schema_def_product_mrp', $select_names[ 'mrp' ],
+					'content'  => $form->get_no_select( 'schema_def_product_mrp', $args[ 'select_names' ][ 'mrp' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_category' => array(	// Product Google Category ID.
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',
-					'content'  => $form->get_no_select( 'schema_def_product_category', $select_names[ 'google_prod_cats' ],
+					'content'  => $form->get_no_select( 'schema_def_product_category', $args[ 'select_names' ][ 'google_prod_cats' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_price_type' => array(
@@ -1149,7 +1158,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_review_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_schema_defs_review_rows( $table_rows, $form, $network, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1171,7 +1180,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_review_item_type',
-					'content'  => $form->get_no_select( 'schema_def_review_item_type', $select_names[ 'schema_types' ], $css_class = 'schema_type' ),
+					'content'  => $form->get_no_select( 'schema_def_review_item_type', $args[ 'select_names' ][ 'schema_types' ],
+						$css_class = 'schema_type' ),
 				),
 			);
 
@@ -1183,7 +1193,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Default Contacts tab.
 		 */
-		public function filter_mb_advanced_contact_fields_default_cm_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_contact_fields_default_cm_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1226,7 +1236,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Custom Contacts tab.
 		 */
-		public function filter_mb_advanced_contact_fields_custom_cm_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_contact_fields_custom_cm_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1257,7 +1267,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * About the User metabox.
 		 */
-		public function filter_mb_advanced_user_about_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_user_about_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="3">' . $this->p->msgs->get( 'info-user-about' ) . '</td>';
 
@@ -1283,7 +1293,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Product Attributes tab.
 		 */
-		public function filter_mb_advanced_metadata_product_attrs_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_metadata_product_attrs_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
 
@@ -1306,7 +1316,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Custom Fields tab.
 		 */
-		public function filter_mb_advanced_metadata_custom_fields_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_metadata_custom_fields_rows( $table_rows, $form, $network, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
 
@@ -1352,7 +1362,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Facebook tab.
 		 */
-		public function filter_mb_advanced_head_tags_facebook_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_facebook_rows( $table_rows, $form, $network, $args ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
@@ -1360,7 +1370,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Open Graph tab.
 		 */
-		public function filter_mb_advanced_head_tags_open_graph_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_open_graph_rows( $table_rows, $form, $network, $args ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
@@ -1368,7 +1378,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Twitter tab.
 		 */
-		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $network, $args ) {
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
@@ -1376,7 +1386,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > SEO / Other tab.
 		 */
-		public function filter_mb_advanced_head_tags_seo_other_rows( $table_rows, $form, $network, $select_names ) {
+		public function filter_mb_advanced_head_tags_seo_other_rows( $table_rows, $form, $network, $args ) {
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 

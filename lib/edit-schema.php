@@ -73,14 +73,17 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
 			$input_limits         = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$schema_tr_class      = WpssoSchema::get_schema_type_row_class( 'schema_type' );
-			$select_names         = array(
-				'google_prod_cats' => $this->p->util->get_google_product_categories(),
-				'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
-				'org'              => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
-				'person'           => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
-				'place'            => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
-				'place_custom'     => $this->p->util->get_form_cache( 'place_names_custom', $add_none = true ),
-				'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
+
+			$args = array(
+				'select_names' => array(
+					'google_prod_cats' => $this->p->util->get_google_product_categories(),
+					'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
+					'org'              => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
+					'person'           => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
+					'place'            => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
+					'place_custom'     => $this->p->util->get_form_cache( 'place_names_custom', $add_none = true ),
+					'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
+				),
 			);
 
 			$form_rows = array(
@@ -147,82 +150,82 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			/*
 			 * Schema CreativeWork.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Article.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Book.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > HowTo.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > HowTo > Recipe.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Movie.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Review.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Software Application.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > WebPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > WebPage > QAPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Event.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Intangible > JobPosting.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Organization.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Person.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Place.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Product.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			return $table_rows;
 		}
@@ -230,7 +233,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork.
 		 */
-		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
@@ -304,7 +307,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
-					'content'  => $form->get_select( 'schema_pub_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_pub_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -314,7 +317,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_person_id',
-					'content'  => $form->get_select( 'schema_pub_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_pub_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -324,7 +327,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
-					'content'  => $form->get_select( 'schema_prov_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_prov_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -334,7 +337,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_person_id',
-					'content'  => $form->get_select( 'schema_prov_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_prov_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -344,7 +347,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_fund_org_id',
-					'content'  => $form->get_select( 'schema_fund_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_fund_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -354,7 +357,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_fund_person_id',
-					'content'  => $form->get_select( 'schema_fund_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_fund_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -393,7 +396,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Article.
 		 */
-		public function filter_metabox_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$article_sections = $this->p->util->get_article_sections();
 			$def_reading_mins = $this->p->page->get_reading_mins( $mod );
@@ -438,7 +441,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Book.
 		 */
-		public function filter_metabox_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_book' => array(
@@ -536,7 +539,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > HowTo.
 		 */
-		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$howto_steps_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
 			$howto_supplies_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
@@ -629,7 +632,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > HowTo > Recipe.
 		 */
-		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$recipe_ingr_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 );
 			$recipe_inst_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 );
@@ -846,7 +849,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Movie.
 		 */
-		public function filter_metabox_sso_edit_schema_movie_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_movie_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
 			$movie_directors_max = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 );
@@ -879,7 +882,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Production Company', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_prodco_org_id',
-					'content'  => $form->get_select( 'schema_movie_prodco_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_movie_prodco_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -906,7 +909,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Review.
 		 */
-		public function filter_metabox_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies          = SucomUtil::get_currency_abbrev();
 			$item_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_review_item_type' );
@@ -1017,7 +1020,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_type',
-					'content'  => $form->get_select( 'schema_review_item_type', $select_names[ 'schema_types' ],
+					'content'  => $form->get_select( 'schema_review_item_type', $args[ 'select_names' ][ 'schema_types' ],
 						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 							$event_names = array( 'on_focus_load_json', 'on_show_unhide_rows' ),
 								$event_args = array(
@@ -1312,7 +1315,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Software Application.
 		 */
-		public function filter_metabox_sso_edit_schema_software_app_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_software_app_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_software_app' => array(
@@ -1343,7 +1346,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > WebPage.
 		 */
-		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
 
@@ -1359,7 +1362,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed By Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_org_id',
-					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
 							$is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -1369,7 +1372,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed By Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_person_id',
-					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
 							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -1390,7 +1393,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > WebPage > QAPage.
 		 */
-		public function filter_metabox_sso_edit_schema_qa_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_qa_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_qa' => array(
@@ -1414,7 +1417,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Event.
 		 */
-		public function filter_metabox_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies          = SucomUtil::get_currency_abbrev();
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
@@ -1453,7 +1456,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_location_id',
-					'content'  => $form->get_select( 'schema_event_location_id', $select_names[ 'place' ],
+					'content'  => $form->get_select( 'schema_event_location_id', $args[ 'select_names' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'place_names' ) ),
@@ -1463,7 +1466,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_org_id',
-					'content'  => $form->get_select( 'schema_event_performer_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_event_performer_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -1473,7 +1476,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Performer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_person_id',
-					'content'  => $form->get_select( 'schema_event_performer_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_event_performer_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -1483,7 +1486,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_org_id',
-					'content'  => $form->get_select( 'schema_event_organizer_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_event_organizer_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -1493,7 +1496,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Organizer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_person_id',
-					'content'  => $form->get_select( 'schema_event_organizer_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_event_organizer_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -1503,7 +1506,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_fund_org_id',
-					'content'  => $form->get_select( 'schema_event_fund_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_event_fund_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -1513,7 +1516,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_fund_person_id',
-					'content'  => $form->get_select( 'schema_event_fund_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_event_fund_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -1603,7 +1606,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Intangible > JobPosting.
 		 */
-		public function filter_metabox_sso_edit_schema_job_posting_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_job_posting_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies       = SucomUtil::get_currency_abbrev();
 			$def_schema_title = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
@@ -1628,7 +1631,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Hiring Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_hiring_org_id',
-					'content'  => $form->get_select( 'schema_job_hiring_org_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_job_hiring_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
@@ -1638,7 +1641,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_location_id',
-					'content'  => $form->get_select( 'schema_job_location_id', $select_names[ 'place' ],
+					'content'  => $form->get_select( 'schema_job_location_id', $args[ 'select_names' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'places_names' ) ),
@@ -1686,7 +1689,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Organization.
 		 */
-		public function filter_metabox_sso_edit_schema_organization_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_organization_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_organization' => array(
@@ -1700,7 +1703,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Select an Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_organization_id',
-					'content'  => $form->get_select( 'schema_organization_id', $select_names[ 'org' ],
+					'content'  => $form->get_select( 'schema_organization_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
@@ -1711,7 +1714,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Person.
 		 */
-		public function filter_metabox_sso_edit_schema_person_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_person_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_person' => array(
@@ -1725,7 +1728,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Select a Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_person_id',
-					'content'  => $form->get_select( 'schema_person_id', $select_names[ 'person' ],
+					'content'  => $form->get_select( 'schema_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
@@ -1738,7 +1741,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Place.
 		 */
-		public function filter_metabox_sso_edit_schema_place_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_place_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_place' => array(
@@ -1752,7 +1755,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Select a Place', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_place_id',
-					'content'  => $form->get_select( 'schema_place_id', $select_names[ 'place_custom' ],
+					'content'  => $form->get_select( 'schema_place_id', $args[ 'select_names' ][ 'place_custom' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
@@ -1763,7 +1766,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Product.
 		 */
-		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $select_names ) {
+		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies      = SucomUtil::get_currency_abbrev();
 			$dimension_units = WpssoUtilUnits::get_dimension_units();
@@ -1794,7 +1797,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Return Policy', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_mrp',
-					'content'  => $form->get_select( 'product_mrp', $select_names[ 'mrp' ],
+					'content'  => $form->get_select( 'product_mrp', $args[ 'select_names' ][ 'mrp' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_category' => array(	// Product Google Category ID.
@@ -1802,7 +1805,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
-					'content'  => $form->get_select( 'product_category', $select_names[ 'google_prod_cats' ],
+					'content'  => $form->get_select( 'product_category', $args[ 'select_names' ][ 'google_prod_cats' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 							$event_names = array( 'on_focus_load_json' ), $event_args = array(
 								'json_var'  => 'product_categories',

@@ -1511,8 +1511,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						break;
 				}
 
-				$local_cache[ $name ][ $type_id ] = $wpsso->schema->get_children_css_class( $type_id,
-					$class_prefix = 'hide_' . $name, $exclude_match );
+				$local_cache[ $name ][ $type_id ] = $wpsso->schema->get_children_css_class( $type_id, $class_prefix = 'hide_' . $name, $exclude_match );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
