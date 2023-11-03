@@ -152,14 +152,14 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				} elseif ( ! empty( $canonical_url ) ) {	// Just in case.
 
+					/*
+					 * Shorten URL using the selected shortening service.
+					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'calling WpssoUtil->shorten_url() to shorten the canonical URL' );
 					}
 
-					/*
-					 * Shorten URL using the selected shortening service.
-					 */
 					$shortlink = $this->p->util->shorten_url( $canonical_url, $mod );
 				}
 

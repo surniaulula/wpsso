@@ -2336,6 +2336,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/*
 					 * Get the parent's metadata array.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'getting metadata for parent id ' . $parent_id );
+					}
+
 					$metadata = $this->get_update_meta_cache( $parent_id );
 
 					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
@@ -2434,6 +2439,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						/*
 						 * Get the parent's metadata array.
 						 */
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'getting metadata for parent id ' . $parent_id );
+						}
+
 						$metadata = $this->get_update_meta_cache( $parent_id );
 
 						if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
@@ -2447,6 +2457,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( '$check', $check );
 			}
 
 			return $check;	// Null by default.

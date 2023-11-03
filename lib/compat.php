@@ -26,15 +26,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function __construct( &$plugin ) {
 
-			static $do_once = null;
-
-			if ( true === $do_once ) {
-
-				return;	// Stop here.
-			}
-
-			$do_once = true;
-
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

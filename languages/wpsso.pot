@@ -4334,21 +4334,21 @@ msgid ""
 "tag to your webpages, you should enable this option under the %2$s tab."
 msgstr ""
 
-#: lib/admin-head.php:119
+#: lib/admin-head.php:110
 msgid ""
 "The WordPress <a href=\"%1$s\">Search Engine Visibility</a> option is set to "
 "allow search engines and social sites to access this site, but your <a href="
 "\"%2$s\">Site Address URL</a> value is an IP address (%3$s)."
 msgstr ""
 
-#: lib/admin-head.php:121
+#: lib/admin-head.php:112
 msgid ""
 "Please update your Search Engine Visibility option to discourage search "
 "engines from indexing this site, or use a fully qualified domain name as "
 "your Site Address URL."
 msgstr ""
 
-#: lib/admin-head.php:207
+#: lib/admin-head.php:198
 msgid ""
 "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and its "
 "add-on(s)</a>."
@@ -4358,61 +4358,61 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:211
+#: lib/admin-head.php:202
 msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:341
+#: lib/admin-head.php:332
 msgid "Rate the %1$s %2$s"
 msgstr ""
 
-#: lib/admin-head.php:342 lib/admin-head.php:350
+#: lib/admin-head.php:333 lib/admin-head.php:341
 msgid "Thank you!"
 msgstr ""
 
-#: lib/admin-head.php:349
+#: lib/admin-head.php:340
 msgid "I've already rated this %2$s"
 msgstr ""
 
-#: lib/admin-head.php:367 lib/admin-head.php:453
+#: lib/admin-head.php:358 lib/admin-head.php:444
 msgid "You've been using the %1$s %2$s for a little over %3$s now."
 msgstr ""
 
-#: lib/admin-head.php:372
+#: lib/admin-head.php:363
 msgid "Please help support and encourage your developers by rating the %1$s."
 msgstr ""
 
-#: lib/admin-head.php:376
+#: lib/admin-head.php:367
 msgid "It only takes a second."
 msgstr ""
 
-#: lib/admin-head.php:434
+#: lib/admin-head.php:425
 msgid "View the %s edition prices"
 msgstr ""
 
-#: lib/admin-head.php:435
+#: lib/admin-head.php:426
 msgid "Thank you for supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:439
+#: lib/admin-head.php:430
 msgid "I'll stay with the %s edition"
 msgstr ""
 
-#: lib/admin-head.php:440
+#: lib/admin-head.php:431
 msgid "Please consider supporting the development of %s in the future."
 msgstr ""
 
-#: lib/admin-head.php:441
+#: lib/admin-head.php:432
 msgid "Thank you."
 msgstr ""
 
-#: lib/admin-head.php:456
+#: lib/admin-head.php:447
 msgid "Have you thought about purchasing the %s edition?"
 msgstr ""
 
-#: lib/admin-head.php:457
+#: lib/admin-head.php:448
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr ""
 
@@ -4745,7 +4745,7 @@ msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2626 lib/util.php:3399
+#: lib/admin.php:2626 lib/util.php:3424
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6970,11 +6970,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1699 lib/register.php:305 lib/util.php:876 lib/util.php:982
-#: lib/util.php:1014 lib/util.php:1052 lib/util.php:3377
+#: lib/util.php:1014 lib/util.php:1052 lib/util.php:3402
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1700 lib/util.php:877 lib/util.php:3378
+#: lib/media.php:1700 lib/util.php:877 lib/util.php:3403
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -12987,146 +12987,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3379
+#: lib/util.php:3404
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3402
+#: lib/util.php:3427
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3404
+#: lib/util.php:3429
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3406
+#: lib/util.php:3431
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3408
+#: lib/util.php:3433
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3803
+#: lib/util.php:3828
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3804
+#: lib/util.php:3829
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3808
+#: lib/util.php:3833
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3809
+#: lib/util.php:3834
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3813
+#: lib/util.php:3838
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3814
+#: lib/util.php:3839
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3818
+#: lib/util.php:3843
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3819
+#: lib/util.php:3844
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3823
+#: lib/util.php:3848
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3824
+#: lib/util.php:3849
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3828
+#: lib/util.php:3853
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3829
+#: lib/util.php:3854
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3833
+#: lib/util.php:3858
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3834
+#: lib/util.php:3859
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3838
+#: lib/util.php:3863
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3839
+#: lib/util.php:3864
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3843
+#: lib/util.php:3868
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3844
+#: lib/util.php:3869
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3849
+#: lib/util.php:3874
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3850
+#: lib/util.php:3875
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3920
+#: lib/util.php:3945
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3930
+#: lib/util.php:3955
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

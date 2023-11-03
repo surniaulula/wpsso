@@ -2099,11 +2099,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
+			/*
+			 * Prevent loops and optimize by returning the URL from local cache if possible.
+			 */
+			static $local_cache = array();
+
 			$url        = null;
 			$is_custom  = false;
 			$cache_salt = false;
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+
+				/*
+				 * SucomUtil::get_mod_salt() does not include the page number or locale.
+				 */
+				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . (string) $add_page;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'cache salt = ' . $cache_salt );
+				}
+
+				if ( isset( $local_cache[ $cache_salt ] ) ) {
+
+					return $local_cache[ $cache_salt ];
+				}
 
 				/*
 				 * WpssoUtil->is_canonical_disabled() returns true if:
@@ -2318,6 +2338,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page, $is_custom );
 
+			if ( ! empty( $cache_salt ) ) {
+				
+				$local_cache[ $cache_salt ] = $url;
+			}
+
 			return $url;
 		}
 
@@ -2392,7 +2417,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/*
 		 * $mixed = true | false | post_id | $mod array ($mod array is preferred but not required).
 		 *
-		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL).
+		 * $md_key = 'redirect_url' | '' (empty value ignores custom URL).
 		 */
 		public function get_redirect_url( $mixed, $mod_id = null, $md_key = 'redirect_url' ) {
 
