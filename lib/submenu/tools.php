@@ -33,41 +33,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
-		/*
-		 * Add settings page filters and actions hooks.
-		 *
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			), PHP_INT_MIN );			// Run filter first to initializes a new form buttons array.
-		}
-
-		/*
-		 * Called from WpssoAdmin->show_settings_page().
-		 */
-		protected function show_post_body_settings_form() {
-
-			$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
-
-			echo '<div id="tools-content">' . "\n";
-
-			echo $this->get_form_buttons();
-
-			echo '<p class="status-msg smaller left">';
-			echo '* ';
-			echo sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
-			echo '</p>' . "\n";
-
-			echo '<p class="status-msg smaller left">';
-			echo '** ';
-			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
-			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
-			echo '</p>' . "\n";
-
-			echo '</div><!-- #tools-content -->' . "\n";
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MIN );
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
@@ -138,8 +106,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 							<form enctype="multipart/form-data" action="' . $this->p->util->get_admin_url() . '" method="post">' .
 							wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) . '
 							<input type="hidden" name="wpsso-action" value="import_plugin_settings_json" />
-							<input type="submit" class="button-secondary button-alt" value="' . $import_settings_transl . '"
-								style="display:inline-block;" />
+							<input type="submit" class="button-secondary button-alt" 
+								value="' . $import_settings_transl . '" style="display:inline-block;" />
 							<input type="file" name="file" accept="application/x-gzip" />
 							</form>
 						',
@@ -179,6 +147,31 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $form_button_rows;
+		}
+
+		/*
+		 * Called from WpssoAdmin->show_settings_page().
+		 */
+		protected function show_post_body_settings_form() {
+
+			$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+
+			echo '<div id="tools-content">' . "\n";
+
+			echo $this->get_form_buttons();
+
+			echo '<p class="status-msg smaller left">';
+			echo '* ';
+			echo sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
+			echo '</p>' . "\n";
+
+			echo '<p class="status-msg smaller left">';
+			echo '** ';
+			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
+			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
+			echo '</p>' . "\n";
+
+			echo '</div><!-- #tools-content -->' . "\n";
 		}
 	}
 }

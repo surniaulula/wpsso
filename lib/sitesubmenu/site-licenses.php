@@ -52,9 +52,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
-		/*
-		 * See WpssoAdmin->add_meta_boxes().
-		 */
 		public function show_metabox_licenses( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {

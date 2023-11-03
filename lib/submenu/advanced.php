@@ -38,8 +38,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
 			);
+		}
 
-			$this->menu_select_names = array(
+		protected function add_meta_boxes( $callback_args = array() ) {
+
+			$this->maybe_show_language_notice();
+
+			$callback_args[ 'select_names' ] = array(
 				'article_sections' => $this->p->util->get_article_sections(),
 				'google_prod_cats' => $this->p->util->get_google_product_categories(),
 				'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
@@ -51,13 +56,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'place_types'      => $this->p->util->get_form_cache( 'place_types_select' ),
 				'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
 			);
-		}
 
-		protected function add_meta_boxes() {
-
-			$this->maybe_show_language_notice();
-
-			parent::add_meta_boxes();
+			parent::add_meta_boxes( $callback_args );
 		}
 
 		public function show_metabox_plugin( $obj, $mb ) {

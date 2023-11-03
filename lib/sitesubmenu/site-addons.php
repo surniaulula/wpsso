@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/*
-	 * This settings page also requires enqueuing special scripts and styles for the plugin details / install thickbox link.
+	 * This settings page requires enqueuing special scripts and styles for the plugin details / install thickbox link.
+	 *
 	 * See the WpssoScript and WpssoStyle classes for more info.
 	 */
 	class WpssoSiteSubmenuSiteAddons extends WpssoAdmin {
@@ -37,21 +38,16 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			);
 		}
 
-		/*
-		 * Add actions and filters for this settings page.
-		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 		}
 
-		/*
-		 * Remove action buttons for this settings page.
-		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			/*
+			 * Remove action buttons for this settings page.
+			 */
 			return array();
 		}
 
@@ -70,9 +66,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $site_defs, $menu_ext );
 		}
 
-		/*
-		 * See WpssoAdmin->add_meta_boxes().
-		 */
 		public function show_metabox_addons( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {

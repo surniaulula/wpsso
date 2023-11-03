@@ -311,10 +311,6 @@ h3.sucom-metabox-tab_title {
 	content:"\e815";	/* .icon-download-bar */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Plugin Settings > Caching tab. */
-	content:"\f1c0";	/* .icon-database */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles / Descriptions tab. */
 	content:"\e809";	/* .icon-edit */
 }
@@ -455,11 +451,12 @@ h3.sucom-metabox-tab_title {
 	content:"\e81c";	/* .icon-robot-5 */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_addon-settings::before,		/* SSO > FAQ Settings > Add-on Settings tab. */
 .sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Plugin Settings > Plugin Admin tab. */
 	content:"\e80e";	/* .icon-cog-alt */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_shortcodes::before {		/* SSO > FAQ Settings > Frequently Asked Questions > Shortcode Defaults tab. */
+.sucom-tablink-icon.sucom-tablink-href_shortcode-defaults::before {	/* SSO > FAQ Settings > Frequently Asked Questions > Shortcode Defaults tab. */
 	content:"\f12e";	/* .icon-puzzle */
 }
 

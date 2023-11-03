@@ -27,7 +27,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_lib;
 		protected $menu_ext;	// Lowercase acronyn for plugin or add-on.
 		protected $menu_metaboxes;
-		protected $menu_select_names;
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
@@ -1094,7 +1093,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		protected function add_meta_boxes() {
+		protected function add_meta_boxes( $callback_args = array() ) {
 
 			/*
 			 * Defined in the child construct method of this settings page.
@@ -1109,13 +1108,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'normal';
 				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'       => $this->menu_id,
-					'metabox_id'    => $metabox_id,
-					'metabox_title' => $metabox_title,
-					'network'       => 'sitesubmenu' === $this->menu_lib ? true : false,
-					'select_names'  => empty( $this->menu_select_names ) ? array() : $this->menu_select_names,
-				);
+
+				$callback_args[ 'page_id' ]       = $this->menu_id;
+				$callback_args[ 'metabox_id' ]    = $metabox_id;
+				$callback_args[ 'metabox_title' ] = $metabox_title;
+				$callback_args[ 'network' ]       = 'sitesubmenu' === $this->menu_lib ? true : false;
 
 				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
 					'show_metabox_' . $metabox_id : 'show_metabox_table';
@@ -1145,15 +1142,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * This method is extended by each submenu page.
+		 * This method is extended by each submenu page with additional arguments:
+		 *
+		 * get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() );
 		 */
-		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '' ) {
+		protected function get_table_rows( $page_id, $metabox_id ) {
 
 			return array();
 		}
 
 		/*
-		 * Called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
+		 * Called from the add_meta_boxes() method in specific settings pages (essential, general, and advanced).
 		 */
 		protected function maybe_show_language_notice() {
 
@@ -1520,14 +1519,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_table( $obj, $mb ) {
 
-			$page_id       = isset( $mb[ 'args' ][ 'page_id' ] ) ? $mb[ 'args' ][ 'page_id' ] : '';
-			$metabox_id    = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
-			$metabox_title = isset( $mb[ 'args' ][ 'metabox_title' ] ) ? $mb[ 'args' ][ 'metabox_title' ] : '';
-			$network       = isset( $mb[ 'args' ][ 'network' ] ) ? $mb[ 'args' ][ 'network' ] : false;
-			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
+			$args          = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
+			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
+			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
+			$network       = isset( $args[ 'network' ] ) ? $args[ 'network' ] : false;
+			$select_names  = isset( $args[ 'select_names' ] ) ? $args[ 'select_names' ] : array();
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
-			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title );
+			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $args );
 
 			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_rows' );
 
@@ -1546,11 +1545,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function show_metabox_tabbed( $obj, $mb, array $tabs ) {
 
-			$page_id       = isset( $mb[ 'args' ][ 'page_id' ] ) ? $mb[ 'args' ][ 'page_id' ] : '';
-			$metabox_id    = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
-			$metabox_title = isset( $mb[ 'args' ][ 'metabox_title' ] ) ? $mb[ 'args' ][ 'metabox_title' ] : '';
-			$network       = isset( $mb[ 'args' ][ 'network' ] ) ? $mb[ 'args' ][ 'network' ] : false;
-			$select_names  = isset( $mb[ 'args' ][ 'select_names' ] ) ? $mb[ 'args' ][ 'select_names' ] : array();
+			$args          = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
+			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
+			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
+			$network       = isset( $args[ 'network' ] ) ? $args[ 'network' ] : false;
+			$select_names  = isset( $args[ 'select_names' ] ) ? $args[ 'select_names' ] : array();
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
 			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
@@ -1571,7 +1570,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $tabs as $tab_key => $tab_title ) {
 
-				$table_rows[ $tab_key ] = $this->get_table_rows( $page_id, $metabox_id, $tab_key, $metabox_title );
+				$table_rows[ $tab_key ] = $this->get_table_rows( $page_id, $metabox_id, $tab_key, $args );
 
 				$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_' . $tab_key . '_rows' );
 
@@ -2269,9 +2268,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$home_path     = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
 				$table_rows    = array();
 
-				$home_url_edit_link = '(<a href="' . ( is_multisite() ?
-					network_admin_url( 'site-settings.php?id=' . $blog_id ) :
-					get_admin_url( $blog_id, 'options-general.php' ) ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
+				$admin_url = is_multisite() ? network_admin_url( 'site-settings.php?id=' . $blog_id ) : get_admin_url( $blog_id, 'options-general.php' );
+				$edit_link = '(<a href="' . $admin_url . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
 
 				/*
 				 * Plugin name, description, and action links.
@@ -2299,7 +2297,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				$table_rows[ 'home_url' ] = '' .
 					'<th class="medium nowrap">' . _x( 'Current Site Address', 'option label', 'wpsso' ) . '</th>' .
-					'<td width="100%">' . $home_path . ' ' . $home_url_edit_link . '</td>';
+					'<td width="100%">' . $home_path . ' ' . $edit_link . '</td>';
 
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) && class_exists( 'SucomUpdate' ) ) {
 

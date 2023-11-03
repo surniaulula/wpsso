@@ -13,8 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/*
-	 * Please note that this settings page also requires enqueuing special scripts and styles for the plugin details / install
-	 * thickbox link. See the WpssoScript and WpssoStyle classes for more info.
+	 * This settings page requires enqueuing special scripts and styles for the plugin details / install thickbox link.
+	 *
+	 * See the WpssoScript and WpssoStyle classes for more info.
 	 */
 	class WpssoSubmenuAddons extends WpssoAdmin {
 
@@ -37,23 +38,16 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 		}
 
-		/*
-		 * Add settings page filters and actions hooks.
-		 *
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 		}
 
-		/*
-		 * Remove all action buttons from this settings page.
-		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			/*
+			 * Remove all action buttons from this settings page.
+			 */
 			return array();
 		}
 

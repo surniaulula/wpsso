@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 16.7.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 16.7.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -500,7 +500,7 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/admin.php:2274 lib/com/notice.php:295
+#: gettext/gettext-lib-com.php:44 lib/admin.php:2272 lib/com/notice.php:295
 msgid "Edit"
 msgstr ""
 
@@ -2997,8 +2997,8 @@ msgstr ""
 #: lib/pro/admin/advanced.php:145 lib/pro/admin/advanced.php:152
 #: lib/std/admin/advanced.php:117 lib/std/admin/advanced.php:123
 #: lib/std/admin/advanced.php:129 lib/std/admin/advanced.php:135
-#: lib/submenu/general.php:324 lib/submenu/general.php:330
-#: lib/submenu/general.php:336
+#: lib/submenu/general.php:307 lib/submenu/general.php:313
+#: lib/submenu/general.php:319
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -4416,445 +4416,445 @@ msgstr ""
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr ""
 
-#: lib/admin.php:252
+#: lib/admin.php:251
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:601
+#: lib/admin.php:600
 msgctxt "plugin action link"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:604
+#: lib/admin.php:603
 msgctxt "plugin action link"
 msgid "Plugin Add-ons"
 msgstr ""
 
-#: lib/admin.php:612
+#: lib/admin.php:611
 msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr ""
 
-#: lib/admin.php:786
+#: lib/admin.php:785
 msgid "Plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:794
+#: lib/admin.php:793
 msgid "refresh the cache now"
 msgstr ""
 
-#: lib/admin.php:797
+#: lib/admin.php:796
 msgid "You can %1$s or let the cache refresh over the next %2$s."
 msgstr ""
 
-#: lib/admin.php:823
+#: lib/admin.php:822
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr ""
 
-#: lib/admin.php:831
+#: lib/admin.php:830
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:866
+#: lib/admin.php:865
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:898 lib/post.php:1051 lib/term.php:726 lib/user.php:749
+#: lib/admin.php:897 lib/post.php:1051 lib/term.php:726 lib/user.php:749
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:916 lib/util-cache.php:671
+#: lib/admin.php:915 lib/util-cache.php:671
 msgid "%s cache files have been cleared."
 msgstr ""
 
-#: lib/admin.php:926
+#: lib/admin.php:925
 msgid "%s failed URL connections have been cleared."
 msgstr ""
 
-#: lib/admin.php:936
+#: lib/admin.php:935
 msgid "%s database transients have been cleared."
 msgstr ""
 
-#: lib/admin.php:948
+#: lib/admin.php:947
 msgid "%s WordPress cron jobs have been cleared."
 msgstr ""
 
-#: lib/admin.php:963
+#: lib/admin.php:962
 msgid "The WordPress rewrite rules have been flushed."
 msgstr ""
 
-#: lib/admin.php:989
+#: lib/admin.php:988
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:1004
+#: lib/admin.php:1003
 msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:1023
+#: lib/admin.php:1022
 msgid "Option preference has been saved."
 msgstr ""
 
-#: lib/admin.php:1025
+#: lib/admin.php:1024
 msgid "Now viewing \"%s\" by default."
 msgstr ""
 
-#: lib/admin.php:1042
+#: lib/admin.php:1041
 msgid ""
 "Image size settings have been reloaded with their default values and saved."
 msgstr ""
 
-#: lib/admin.php:1165
+#: lib/admin.php:1164
 msgid ""
 "Your current language selection [%1$s] is different from the default site "
 "language [%2$s]."
 msgstr ""
 
-#: lib/admin.php:1168
+#: lib/admin.php:1167
 msgid ""
 "Localized option values [%1$s] will be used for webpages and content in that "
 "language."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1276
+#: lib/admin.php:1275
 msgid "Profile updated."
 msgstr ""
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1405
+#: lib/admin.php:1404
 msgid "Upgrade to %s"
 msgstr ""
 
-#: lib/admin.php:1417
+#: lib/admin.php:1416
 msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1435
+#: lib/admin.php:1434
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr ""
 
-#: lib/admin.php:1439
+#: lib/admin.php:1438
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1444 lib/submenu/tools.php:115
+#: lib/admin.php:1443 lib/submenu/tools.php:83
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1609
+#: lib/admin.php:1608
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:1614
+#: lib/admin.php:1613
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin.php:1619
+#: lib/admin.php:1618
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:1620
+#: lib/admin.php:1619
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin.php:1624
+#: lib/admin.php:1623
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:1650
+#: lib/admin.php:1649
 msgid "%s Database Transients"
 msgstr ""
 
-#: lib/admin.php:1655
+#: lib/admin.php:1654
 msgid "Count"
 msgstr ""
 
-#: lib/admin.php:1656
+#: lib/admin.php:1655
 msgid "MB"
 msgstr ""
 
-#: lib/admin.php:1657
+#: lib/admin.php:1656
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin.php:1686
+#: lib/admin.php:1685
 msgid "disabled"
 msgstr ""
 
-#: lib/admin.php:1740 lib/admin.php:1741
+#: lib/admin.php:1739 lib/admin.php:1740
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin.php:1787
+#: lib/admin.php:1786
 msgctxt "version label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:1795
+#: lib/admin.php:1794
 msgctxt "version label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:1799
+#: lib/admin.php:1798
 msgctxt "version label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:1807
+#: lib/admin.php:1806
 msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 
-#: lib/admin.php:1815
+#: lib/admin.php:1814
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:1889
+#: lib/admin.php:1888
 msgid "(%d sub-types)"
 msgstr ""
 
-#: lib/admin.php:1949
+#: lib/admin.php:1948
 msgctxt "lib file description"
 msgid "(api) Get %s Short URL"
 msgstr ""
 
-#: lib/admin.php:2021
+#: lib/admin.php:2020
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2022
+#: lib/admin.php:2021
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2023
+#: lib/admin.php:2022
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2024 lib/admin.php:2025
+#: lib/admin.php:2023 lib/admin.php:2024
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2074
+#: lib/admin.php:2073
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2081
+#: lib/admin.php:2080
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2088
+#: lib/admin.php:2087
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2095
+#: lib/admin.php:2094
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2102
+#: lib/admin.php:2101
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2109
+#: lib/admin.php:2108
 msgid "Sharing Functionality"
 msgstr ""
 
-#: lib/admin.php:2288
+#: lib/admin.php:2286
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2301
+#: lib/admin.php:2299
 msgctxt "option label"
 msgid "Current Site Address"
 msgstr ""
 
-#: lib/admin.php:2307
+#: lib/admin.php:2305
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2308
+#: lib/admin.php:2306
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2317
+#: lib/admin.php:2315
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2323
+#: lib/admin.php:2321
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
-#: lib/admin.php:2331
+#: lib/admin.php:2329
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2343
+#: lib/admin.php:2341
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2416
+#: lib/admin.php:2414
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2569
+#: lib/admin.php:2567
 msgctxt "option label"
 msgid "Site Publisher Type"
 msgstr ""
 
-#: lib/admin.php:2578
+#: lib/admin.php:2576
 msgctxt "option label"
 msgid "Site Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2587 lib/options.php:1234
+#: lib/admin.php:2585 lib/options.php:1234
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2592 lib/options.php:1239
+#: lib/admin.php:2590 lib/options.php:1239
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2605
+#: lib/admin.php:2603
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2610
+#: lib/admin.php:2608
 msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/admin.php:2615
+#: lib/admin.php:2613
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2620 lib/messages-tooltip-plugin.php:52
+#: lib/admin.php:2618 lib/messages-tooltip-plugin.php:52
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2628 lib/util.php:3399
+#: lib/admin.php:2626 lib/util.php:3399
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2643
+#: lib/admin.php:2641
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2659
+#: lib/admin.php:2657
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2680
+#: lib/admin.php:2678
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2711
+#: lib/admin.php:2709
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2732
+#: lib/admin.php:2730
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2741
+#: lib/admin.php:2739
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2862
+#: lib/admin.php:2860
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2868
+#: lib/admin.php:2866
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2875
+#: lib/admin.php:2873
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2889
+#: lib/admin.php:2887
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2898
+#: lib/admin.php:2896
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2907
+#: lib/admin.php:2905
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3330
+#: lib/admin.php:3328
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3331
+#: lib/admin.php:3329
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3336
+#: lib/admin.php:3334
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3337
+#: lib/admin.php:3335
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3348
+#: lib/admin.php:3346
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3349
+#: lib/admin.php:3347
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3355
+#: lib/admin.php:3353
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3362
+#: lib/admin.php:3360
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3369
+#: lib/admin.php:3367
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3376
+#: lib/admin.php:3374
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
@@ -6609,13 +6609,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:138 lib/submenu/general.php:294
+#: lib/edit-visibility.php:138 lib/submenu/general.php:277
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:139 lib/edit-visibility.php:155
-#: lib/submenu/general.php:295 lib/submenu/general.php:309
+#: lib/submenu/general.php:278 lib/submenu/general.php:292
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -6630,7 +6630,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:154 lib/submenu/general.php:308
+#: lib/edit-visibility.php:154 lib/submenu/general.php:291
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -8330,7 +8330,7 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:75 lib/user.php:67 lib/user.php:1775 lib/user.php:1866
+#: lib/submenu/tools.php:43 lib/user.php:67 lib/user.php:1775 lib/user.php:1866
 #: lib/user.php:1981
 msgctxt "user role"
 msgid "Person"
@@ -9236,8 +9236,8 @@ msgstr ""
 msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:324 lib/submenu/essential.php:100
-#: lib/submenu/general.php:116
+#: lib/messages-tooltip-plugin.php:324 lib/submenu/essential.php:76
+#: lib/submenu/general.php:99
 msgctxt "option label"
 msgid "Site Name"
 msgstr ""
@@ -9255,8 +9255,8 @@ msgstr ""
 msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:341 lib/submenu/essential.php:106
-#: lib/submenu/general.php:127
+#: lib/messages-tooltip-plugin.php:341 lib/submenu/essential.php:82
+#: lib/submenu/general.php:110
 msgctxt "option label"
 msgid "Site Description"
 msgstr ""
@@ -10091,7 +10091,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:350 lib/messages.php:1333
-#: lib/submenu/general.php:333
+#: lib/submenu/general.php:316
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -11782,7 +11782,7 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/profile/your-sso.php:57
+#: lib/profile/your-sso.php:45
 msgid "Invalid user ID."
 msgstr ""
 
@@ -11990,7 +11990,7 @@ msgstr ""
 msgid "{0} characters"
 msgstr ""
 
-#: lib/sitesubmenu/site-addons.php:36 lib/submenu/addons.php:36
+#: lib/sitesubmenu/site-addons.php:37 lib/submenu/addons.php:37
 msgctxt "metabox title"
 msgid "Free Plugin Add-ons"
 msgstr ""
@@ -12000,17 +12000,17 @@ msgctxt "metabox title"
 msgid "Network Plugin Settings"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:62 lib/submenu/advanced.php:71
+#: lib/sitesubmenu/site-advanced.php:59 lib/submenu/advanced.php:71
 msgctxt "metabox tab"
 msgid "Plugin Admin"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:63 lib/submenu/advanced.php:72
+#: lib/sitesubmenu/site-advanced.php:60 lib/submenu/advanced.php:72
 msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
 
-#: lib/sitesubmenu/site-licenses.php:36 lib/submenu/licenses.php:67
+#: lib/sitesubmenu/site-licenses.php:36 lib/submenu/licenses.php:36
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr ""
@@ -12180,363 +12180,363 @@ msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:188 lib/submenu/general.php:90
+#: lib/submenu/advanced.php:188 lib/submenu/general.php:73
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:190 lib/submenu/general.php:93
+#: lib/submenu/advanced.php:190 lib/submenu/general.php:76
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/dashboard.php:92
+#: lib/submenu/dashboard.php:80
 msgctxt "metabox title"
 msgid "Get Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:93
+#: lib/submenu/dashboard.php:81
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:94
+#: lib/submenu/dashboard.php:82
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""
 
-#: lib/submenu/dashboard.php:97
+#: lib/submenu/dashboard.php:85
 msgctxt "metabox title"
 msgid "Features Status"
 msgstr ""
 
-#: lib/submenu/essential.php:67
+#: lib/submenu/essential.php:32
 msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:112 lib/submenu/general.php:235
+#: lib/submenu/essential.php:88 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:117 lib/submenu/general.php:240
+#: lib/submenu/essential.php:93 lib/submenu/general.php:223
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
 
-#: lib/submenu/general.php:42
+#: lib/submenu/general.php:32
 msgctxt "metabox title"
 msgid "General Settings"
 msgstr ""
 
-#: lib/submenu/general.php:43
+#: lib/submenu/general.php:33
 msgctxt "metabox title"
 msgid "Social and Search Sites"
 msgstr ""
 
-#: lib/submenu/general.php:44
+#: lib/submenu/general.php:34
 msgctxt "metabox title"
 msgid "Social Pages and Accounts"
 msgstr ""
 
-#: lib/submenu/general.php:72
+#: lib/submenu/general.php:55
 msgctxt "metabox tab"
 msgid "Site Information"
 msgstr ""
 
-#: lib/submenu/general.php:73
+#: lib/submenu/general.php:56
 msgctxt "metabox tab"
 msgid "Location Defaults"
 msgstr ""
 
-#: lib/submenu/general.php:74
+#: lib/submenu/general.php:57
 msgctxt "metabox tab"
 msgid "Titles / Descriptions"
 msgstr ""
 
-#: lib/submenu/general.php:75
+#: lib/submenu/general.php:58
 msgctxt "metabox tab"
 msgid "Images"
 msgstr ""
 
-#: lib/submenu/general.php:76
+#: lib/submenu/general.php:59
 msgctxt "metabox tab"
 msgid "Videos"
 msgstr ""
 
-#: lib/submenu/general.php:91
+#: lib/submenu/general.php:74
 msgctxt "metabox tab"
 msgid "Google"
 msgstr ""
 
-#: lib/submenu/general.php:92
+#: lib/submenu/general.php:75
 msgctxt "metabox tab"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/general.php:94
+#: lib/submenu/general.php:77
 msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:122
+#: lib/submenu/general.php:105
 msgctxt "option label"
 msgid "Site Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:133
+#: lib/submenu/general.php:116
 msgctxt "option label"
 msgid "Site Home URL"
 msgstr ""
 
-#: lib/submenu/general.php:145
+#: lib/submenu/general.php:128
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:151
+#: lib/submenu/general.php:134
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:168
+#: lib/submenu/general.php:151
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:173
+#: lib/submenu/general.php:156
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:178
+#: lib/submenu/general.php:161
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:183
+#: lib/submenu/general.php:166
 msgctxt "option label"
 msgid "Default Dimension Units"
 msgstr ""
 
-#: lib/submenu/general.php:189
+#: lib/submenu/general.php:172
 msgctxt "option label"
 msgid "Default Weight Units"
 msgstr ""
 
-#: lib/submenu/general.php:195
+#: lib/submenu/general.php:178
 msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:205
+#: lib/submenu/general.php:188
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:210
+#: lib/submenu/general.php:193
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:215
+#: lib/submenu/general.php:198
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:219
+#: lib/submenu/general.php:202
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:228
+#: lib/submenu/general.php:211
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:255
+#: lib/submenu/general.php:238
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:260
+#: lib/submenu/general.php:243
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:265
+#: lib/submenu/general.php:248
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:274
+#: lib/submenu/general.php:257
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:290
+#: lib/submenu/general.php:273
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:298
+#: lib/submenu/general.php:281
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:304
+#: lib/submenu/general.php:287
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:299
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:321
+#: lib/submenu/general.php:304
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:327
+#: lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:343
+#: lib/submenu/general.php:326
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:344
+#: lib/submenu/general.php:327
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:348
+#: lib/submenu/general.php:331
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:353
+#: lib/submenu/general.php:336
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:362
+#: lib/submenu/general.php:345
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:350
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:372
+#: lib/submenu/general.php:355
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:360
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
 
-#: lib/submenu/setup.php:61
+#: lib/submenu/setup.php:32
 msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:61
-msgid ""
-"The maximum execution time for this background task is currently set to %s."
-msgstr ""
-
-#: lib/submenu/tools.php:66
-msgid "Members of the role are used for some Schema property selections."
-msgstr ""
-
-#: lib/submenu/tools.php:67
-msgid ""
-"Content Creators are defined as being all administrators, editors, authors, "
-"and contributors."
-msgstr ""
-
-#: lib/submenu/tools.php:84
+#: lib/submenu/tools.php:52
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:86
+#: lib/submenu/tools.php:54
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:89
+#: lib/submenu/tools.php:57
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:92
+#: lib/submenu/tools.php:60
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Job"
 msgid_plural "Clear %s WordPress Cron Jobs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:95
+#: lib/submenu/tools.php:63
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr ""
 
-#: lib/submenu/tools.php:100
+#: lib/submenu/tools.php:68
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:101
+#: lib/submenu/tools.php:69
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:106
+#: lib/submenu/tools.php:74
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:107
+#: lib/submenu/tools.php:75
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:108
+#: lib/submenu/tools.php:76
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:163
+#: lib/submenu/tools.php:131
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:164
+#: lib/submenu/tools.php:132
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:175
+#: lib/submenu/tools.php:143
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
+
+#: lib/submenu/tools.php:165
+msgid ""
+"The maximum execution time for this background task is currently set to %s."
+msgstr ""
+
+#: lib/submenu/tools.php:170
+msgid "Members of the role are used for some Schema property selections."
+msgstr ""
+
+#: lib/submenu/tools.php:171
+msgid ""
+"Content Creators are defined as being all administrators, editors, authors, "
+"and contributors."
+msgstr ""
 
 #: lib/term.php:205
 msgctxt "module name"

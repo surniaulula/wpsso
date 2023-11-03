@@ -29,27 +29,18 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$this->menu_ext  = $ext;
 		}
 
-		/*
-		 * Add settings page filters and actions hooks.
-		 *
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 
-			$this->p->util->add_plugin_actions( $this, array(
-				'form_content_metaboxes_dashboard' => 1,
-			) );
+			$this->p->util->add_plugin_actions( $this, array( 'form_content_metaboxes_dashboard' => 1 ) );
 		}
 
-		/*
-		 * Remove all action buttons from this settings page.
-		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			/*
+			 * Remove all action buttons from this settings page.
+			 */
 			return array();
 		}
 
@@ -69,7 +60,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				$class_last = $metabox_col === $max_cols ? ' metabox_col_last' : '';
 
 				/*
-				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
+				 * Note that CSS id values must use underscores, instead of hyphens, to sort the metaboxes.
 				 */
 				echo '<div id="metabox_col_' . $metabox_col . '" class="metabox_col max_cols_' . $max_cols . $class_last . '">' . "\n";
 
@@ -82,10 +73,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			echo '<div style="clear:both;"></div>' . "\n";
 		}
 
-		/*
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
-		protected function add_meta_boxes() {
+		protected function add_meta_boxes( $callback_args = array() ) {
 
 			$metaboxes = array(
 				array(
@@ -108,11 +96,11 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 						$metabox_screen  = $this->pagehook;
 						$metabox_context = 'metabox_col_' . $metabox_col;	// Use underscores (not hyphens) to order metaboxes.
 						$metabox_prio    = 'default';
-						$callback_args   = array(	// Second argument passed to the callback function / method.
-							'page_id'       => $this->menu_id,
-							'metabox_id'    => $metabox_id,
-							'metabox_title' => $metabox_title,
-						);
+
+						$callback_args[ 'page_id' ]       = $this->menu_id;
+						$callback_args[ 'metabox_id' ]    = $metabox_id;
+						$callback_args[ 'metabox_title' ] = $metabox_title;
+						$callback_args[ 'network' ]       = 'sitesubmenu' === $this->menu_lib ? true : false;
 
 						$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
 							'show_metabox_' . $metabox_id : 'show_metabox_table';

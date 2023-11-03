@@ -27,55 +27,23 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+
+			$this->menu_metaboxes = array(
+				'setup_guide' => _x( 'Setup Guide', 'metabox title', 'wpsso' ),
+			);
 		}
 
-		/*
-		 * Add settings page filters and actions hooks.
-		 *
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
 		protected function add_plugin_hooks() {
 
-			/*
-			 * Make sure this filter runs last as it removes all form buttons.
-			 */
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			), PHP_INT_MAX );			// Run filter last to remove all form buttons.
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 		}
 
-		/*
-		 * Remove all action buttons from this settings page.
-		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			/*
+			 * Remove all action buttons from this settings page.
+			 */
 			return array();
-		}
-
-		/*
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
-		protected function add_meta_boxes() {
-
-			foreach ( array(
-				'setup_guide' => _x( 'Setup Guide', 'metabox title', 'wpsso' ),
-			) as $metabox_id => $metabox_title ) {
-
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'normal';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'       => $this->menu_id,
-					'metabox_id'    => $metabox_id,
-					'metabox_title' => $metabox_title,
-				);
-
-				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
-					'show_metabox_' . $metabox_id : 'show_metabox_table';
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
-					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
-			}
 		}
 
 		public function show_metabox_setup_guide( $obj, $mb ) {

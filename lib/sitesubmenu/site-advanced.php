@@ -48,9 +48,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
-		/*
-		 * See WpssoAdmin->add_meta_boxes().
-		 */
 		public function show_metabox_plugin( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -66,9 +63,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		/*
-		 * See WpssoAdmin->show_metabox_tabbed().
-		 */
 		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title = '' ) {
 
 			$table_rows = array();

@@ -31,57 +31,28 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+			
+			$this->menu_metaboxes = array(
+				'licenses' => _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' ),
+			);
 		}
 
-		/*
-		 * Add settings page filters and actions hooks.
-		 *
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,	// Form buttons for this settings page.
-			) );
+			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ) );
 		}
 
-		/*
-		 * Remove the "Change to View" button from this settings page.
-		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			/*
+			 * Remove the "Change to View" button from this settings page.
+			 */
 			if ( isset( $form_button_rows[ 0 ] ) ) {
 
 				$form_button_rows[ 0 ] = SucomUtil::preg_grep_keys( '/^change_show_options/', $form_button_rows[ 0 ], $invert = true );
 			}
 
 			return $form_button_rows;
-		}
-
-		/*
-		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
-		 */
-		protected function add_meta_boxes() {
-
-			foreach ( array(
-				'licenses' => _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' ),
-			) as $metabox_id => $metabox_title ) {
-
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'normal';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'       => $this->menu_id,
-					'metabox_id'    => $metabox_id,
-					'metabox_title' => $metabox_title,
-				);
-
-				$method_name = method_exists( $this, 'show_metabox_' . $metabox_id ) ?
-					'show_metabox_' . $metabox_id : 'show_metabox_table';
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, $method_name ),
-					$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
-			}
 		}
 
 		public function show_metabox_licenses( $obj, $mb ) {
