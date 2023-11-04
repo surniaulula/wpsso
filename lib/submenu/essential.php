@@ -33,7 +33,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			);
 		}
 
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ) );
 		}
@@ -51,13 +56,23 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			return $form_button_rows;
 		}
 
-		protected function add_meta_boxes( $callback_args = array() ) {
+		/*
+		 * Add metaboxes for this settings page.
+		 *
+		 * See WpssoAdmin->load_settings_page().
+		 */
+		protected function add_settings_page_metaboxes( $callback_args = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->maybe_show_language_notice();
 
 			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 
-			parent::add_meta_boxes( $callback_args );
+			parent::add_settings_page_metaboxes( $callback_args );
 		}
 
 		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() ) {
@@ -96,7 +111,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the General Settings page.
+						$this->add_table_rows_schema_publisher_type( $table_rows, $this->form );	// Also used in the General Settings page.
 					}
 
 					break;

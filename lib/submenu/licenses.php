@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 			);
 		}
 
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -65,6 +65,11 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 			return $form_button_rows;
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_licenses( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -927,7 +927,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
 
-			$this->add_plugin_hooks( $type = 'filter', $class, $filters, $prio, $ext );
+			$this->add_plugin_callbacks( $type = 'filter', $class, $filters, $prio, $ext );
 		}
 
 		/*
@@ -935,13 +935,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
 
-			$this->add_plugin_hooks( $type = 'action', $class, $actions, $prio, $ext );
+			$this->add_plugin_callbacks( $type = 'action', $class, $actions, $prio, $ext );
 		}
 
 		/*
-		 * $type = 'filter' or 'action'.
+		 * Called by WpssoUtil->add_plugin_filters().
+		 * Called by WpssoUtil->add_plugin_actions().
+		 *
+		 * $type = 'filter' | 'action'.
 		 */
-		private function add_plugin_hooks( $type, $class, $hook_list, $prio, $ext = '' ) {
+		private function add_plugin_callbacks( $type, $class, $hook_list, $prio, $ext = '' ) {
 
 			$ext = $ext === '' ? $this->p->id : $ext;
 

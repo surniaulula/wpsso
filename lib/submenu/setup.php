@@ -33,7 +33,12 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 		}
 
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 		}
@@ -46,6 +51,11 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			return array();
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_setup_guide( $obj, $mb ) {
 
 			echo '<table class="sucom-settings wpsso html-content-metabox">';

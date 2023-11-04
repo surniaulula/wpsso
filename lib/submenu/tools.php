@@ -33,7 +33,12 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MIN );
 		}

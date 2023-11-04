@@ -48,6 +48,11 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_plugin( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -72,7 +77,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 				case 'site-advanced-plugin-settings':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $args );
+					$this->add_table_rows_advanced_plugin_settings( $table_rows, $this->form, $args );
 
 					break;
 			}

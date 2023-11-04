@@ -142,7 +142,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
 
 					add_action( $this->query_tax_slug . '_pre_edit_form', array( $this, 'add_meta_boxes' ), 10, 2 );
-
 					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 2 );
 				}
 

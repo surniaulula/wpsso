@@ -35,15 +35,30 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 		}
 
-		protected function add_meta_boxes( $callback_args = array() ) {
+		/*
+		 * Add metaboxes for this settings page.
+		 *
+		 * See WpssoAdmin->load_settings_page().
+		 */
+		protected function add_settings_page_metaboxes( $callback_args = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->maybe_show_language_notice();
 
 			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 
-			parent::add_meta_boxes( $callback_args );
+			parent::add_settings_page_metaboxes( $callback_args );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_open_graph( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -62,6 +77,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_social_search( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -122,7 +142,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 						$tr_on_change_organization_html = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' );
 
-						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
+						$this->add_table_rows_schema_publisher_type( $table_rows, $this->form );	// Also used in the Essential Settings page.
 
 						$table_rows[ 'site_org_place_id' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),

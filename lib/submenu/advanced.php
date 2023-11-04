@@ -40,7 +40,17 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			);
 		}
 
-		protected function add_meta_boxes( $callback_args = array() ) {
+		/*
+		 * Add metaboxes for this settings page.
+		 *
+		 * See WpssoAdmin->load_settings_page().
+		 */
+		protected function add_settings_page_metaboxes( $callback_args = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->maybe_show_language_notice();
 
@@ -57,9 +67,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'schema_types'     => $this->p->util->get_form_cache( 'schema_types_select' ),
 			);
 
-			parent::add_meta_boxes( $callback_args );
+			parent::add_settings_page_metaboxes( $callback_args );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_plugin( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -78,6 +93,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_services( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -94,6 +114,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_doc_types( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -109,6 +134,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_schema_defs( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -130,6 +160,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_contact_fields( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -156,6 +191,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_metadata( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -171,6 +211,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_head_tags( $obj, $mb ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -203,7 +248,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				case 'advanced-plugin-settings':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $args );
+					$this->add_table_rows_advanced_plugin_settings( $table_rows, $this->form, $args );
 
 					break;
 			}

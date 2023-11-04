@@ -30,11 +30,14 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox_id    = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$this->menu_metaboxes = array(
-				$metabox_id => $metabox_title,
-			);
+			$this->menu_metaboxes = array( $metabox_id => $metabox_title );
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_sso() {
 
 			$user_id  = get_current_user_id();

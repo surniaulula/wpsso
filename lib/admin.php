@@ -1073,11 +1073,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->get_form_object( $menu_ext );	// Return and maybe set/reset the WpssoAdmin->form value.
 
-			$this->add_plugin_hooks();		// Add settings page filters and actions hooks.
+			$this->add_settings_page_callbacks();	// Add settings page filters and actions hooks.
 
-			$this->add_meta_boxes();		// Add last to move any duplicate side metaboxes.
+			$this->add_settings_page_metaboxes();	// Add last to move any duplicate side metaboxes.
 
-			$this->add_footer_hooks();		// Include add-on name and version in settings page footer.
+			$this->add_settings_page_footer();	// Include add-on name and version in settings page footer.
 		}
 
 		/*
@@ -1085,7 +1085,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
 		}
 
 		/*
@@ -1093,7 +1093,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		protected function add_meta_boxes( $callback_args = array() ) {
+		protected function add_settings_page_metaboxes( $callback_args = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			/*
 			 * Defined in the child construct method of this settings page.
@@ -1134,26 +1139,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Include add-on name and version in settings page footer.
 		 */
-		protected function add_footer_hooks() {
+		protected function add_settings_page_footer() {
 
 			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext' ) );
 
 			add_filter( 'update_footer', array( $this, 'admin_footer_host' ) );
 		}
 
-		/*
-		 * This method is extended by each submenu page with additional arguments:
-		 *
-		 * get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() );
-		 */
-		protected function get_table_rows( $page_id, $metabox_id ) {
-
-			return array();
-		}
-
-		/*
-		 * Called from the add_meta_boxes() method in specific settings pages (essential, general, and advanced).
-		 */
 		protected function maybe_show_language_notice() {
 
 			$current_locale = SucomUtil::get_locale();
@@ -1517,6 +1509,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $buttons_html;
 		}
 
+		/*
+		 * Callback method must be public for add_meta_box() hook.
+		 *
+		 * See WpssoAdmin->add_settings_page_metaboxes().
+		 */
 		public function show_metabox_table( $obj, $mb ) {
 
 			$args          = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
@@ -1582,407 +1579,90 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Get Help and Support dashboard metabox content.
+		 * This method is extended by each submenu page with additional arguments:
+		 *
+		 * get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() );
 		 */
-		public function show_metabox_help_support() {
+		protected function get_table_rows( $page_id, $metabox_id ) {
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
-			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
-
-					continue;
-				}
-
-				$action_links = array();
-
-				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info[ 'url' ][ 'faqs' ] );
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) .
-						' (' . __( 'Premium edition', 'wpsso' ) . ')';
-
-				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info[ 'url' ][ 'forum' ] );
-				}
-
-				if ( ! empty( $action_links ) ) {
-
-					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
-
-					echo SucomUtil::array_to_list_html( $action_links );
-				}
-			}
-
-			echo '</td></tr></table>';
+			return array();
 		}
 
-		/*
-		 * Cache Status dashboard metabox content.
-		 */
-		public function show_metabox_cache_status() {
-
-			$table_cols         = 4;
-			$db_transient_keys  = $this->p->util->cache->get_db_transients_keys();
-			$all_transients_pre = 'wpsso_';
-
-			echo '<table class="sucom-settings wpsso column-metabox cache-status">';
-
-			echo '<tr><td colspan="' . $table_cols . '"><h4>';
-			echo sprintf( __( '%s Database Transients', 'wpsso' ), $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ] );
-			echo '</h4></td></tr>';
-
-			echo '<tr>';
-			echo '<th class="cache-label"></th>';
-			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
-			echo '<th class="cache-size">' . __( 'MB', 'wpsso' ) . '</th>';
-			echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
-			echo '</tr>';
-
-			/*
-			 * Sort the transient array and make sure the "All Transients" count is last.
-			 */
-			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( 'self', 'sort_by_label_key' ) );
-
-			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {
-
-				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
-			}
-
-			foreach ( $this->p->cf[ 'wp' ][ 'transient' ] as $cache_md5_pre => $cache_info ) {
-
-				if ( empty( $cache_info ) ) {
-
-					continue;
-
-				} elseif ( empty( $cache_info[ 'label' ] ) ) {	// Skip cache info without labels.
-
-					continue;
-				}
-
-				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->id : $cache_info[ 'text_domain' ];
-				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
-				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
-				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_md5_pre, $decimals = 1 );
-				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
-				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
-
-				echo '<tr>';
-				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
-				echo '<td class="cache-count">' . $cache_count . '</td>';
-				echo '<td class="cache-size">' . $cache_size . '</td>';
-
-				if ( $cache_md5_pre !== $all_transients_pre ) {
-
-					echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
-				}
-
-				echo '</tr>' . "\n";
-			}
-
-			echo '</table>';
-		}
-
-		private static function sort_by_label_key( $a, $b ) {
-
-			if ( isset( $a[ 'label' ] ) && isset( $b[ 'label' ] ) ) {
-
-				return strcmp( $a[ 'label' ], $b[ 'label' ] );
-			}
-
-			return 0;	// No change.
-		}
-
-		/*
-		 * Version Information dashboard metabox content.
-		 */
-		public function show_metabox_version_info() {
-
-			$table_cols  = 2;
-			$label_width = '30%';
-
-			echo '<table class="sucom-settings wpsso column-metabox version-info" style="table-layout:fixed;">';
-
-			/*
-			 * Required for chrome to display a fixed table layout.
-			 */
-			echo '<colgroup>';
-			echo '<col style="width:' . $label_width . ';"/>';
-			echo '<col/>';
-			echo '</colgroup>';
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
-
-					continue;
-				}
-
-				$plugin_version = isset( $info[ 'version' ] ) ? $info[ 'version' ] : '';	// Static value from config.
-				$stable_version = __( 'Not Available', 'wpsso' );	// Default value.
-				$latest_version = __( 'Not Available', 'wpsso' );	// Default value.
-				$latest_notice  = '';
-				$changelog_url  = isset( $info[ 'url' ][ 'changelog' ] ) ? $info[ 'url' ][ 'changelog' ] : '';
-				$readme_info    = $this->get_readme_info( $ext, $read_cache = true );
-				$td_addl_class = '';
-
-				if ( ! empty( $readme_info[ 'stable_tag' ] ) ) {
-
-					$stable_version = $readme_info[ 'stable_tag' ];
-					$is_newer_avail = version_compare( $plugin_version, $stable_version, '<' );
-
-					if ( is_array( $readme_info[ 'upgrade_notice' ] ) ) {
-
-						/*
-						 * Hooked by the update manager to apply the version filter.
-						 */
-						$upgrade_notice = apply_filters( 'wpsso_readme_upgrade_notices', $readme_info[ 'upgrade_notice' ], $ext );
-
-						if ( ! empty( $upgrade_notice ) ) {
-
-							reset( $upgrade_notice );
-
-							$latest_version = key( $upgrade_notice );
-							$latest_notice  = $upgrade_notice[ $latest_version ];
-						}
-					}
-
-					/*
-					 * Hooked by the update manager to check installed version against the latest version, if a
-					 * non-stable filter is selected for that plugin / add-on.
-					 */
-					if ( apply_filters( 'wpsso_newer_version_available', $is_newer_avail, $ext, $plugin_version, $stable_version, $latest_version ) ) {
-
-						$td_addl_class = ' newer-version-available';
-
-					} elseif ( preg_match( '/[a-z]/', $plugin_version ) ) {		// Current but not stable (alpha chars in version).
-
-						$td_addl_class = ' current-version-not-stable';
-
-					} else {
-
-						$td_addl_class = ' current-version';
-					}
-				}
-
-				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info[ 'name' ] . '</h4></td></tr>';
-				echo '<tr><th class="version-label">' . _x( 'Installed', 'version label', 'wpsso' ) . ':</th>';
-				echo '<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
-
-				/*
-				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
-				 */
-				if ( $stable_version !== $latest_version ) {
-
-					echo '<tr><th class="version-label">' . _x( 'Stable', 'version label', 'wpsso' ) . ':</th>';
-					echo '<td class="version-number">' . $stable_version . '</td></tr>';
-				}
-
-				echo '<tr><th class="version-label">' . _x( 'Latest', 'version label', 'wpsso' ) . ':</th>';
-				echo '<td class="version-number">' . $latest_version . '</td></tr>';
-
-				/*
-				 * Only show the latest version notice message if there's a newer / non-matching version.
-				 */
-				if ( $plugin_version !== $stable_version || $plugin_version !== $latest_version ) {
-
-					echo '<tr><th class="version-label">' . _x( 'Update Notice', 'version label', 'wpsso' ) . ':</th>';
-					echo '<td class="latest-notice">';
-
-					if ( ! empty( $latest_notice ) ) {
-
-						echo $latest_notice . ' ';
-					}
-
-					echo '<a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...', 'wpsso'), $info[ 'short' ] ) . '</a>';
-					echo '</td></tr>';
-				}
-			}
-
-			do_action( 'wpsso_column_metabox_version_info_table_rows', $table_cols, $this->form );
-
-			echo '</table>';
-		}
-
-		/*
-		 * Feature Status dashboard metabox content.
-		 */
-		public function show_metabox_features_status() {
+		protected function add_table_rows_schema_publisher_type( array &$table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
-			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
-			$media_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_media' );
-			$shorten_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening' );
-			$review_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews' );
+			$site_owners = WpssoUser::get_persons_names( $add_none = true, $roles_id = 'owner' );
 
-			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
+			$table_rows[ 'site_pub_schema_type' ] = '' .
+				$this->form->get_th_html( _x( 'Site Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
+				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ],
+					$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
+						$selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
-			$ext_num = 0;
+			/*
+			 * Publisher Type Person.
+			 */
+			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
+				$this->form->get_th_html( _x( 'Site Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
+				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners,
+					$css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+			/*
+			 * Publisher Type Organization.
+			 */
+			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .
+				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) .
+				'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide' ) . '</td>';
 
-				$features = array();
+			$table_rows[ 'site_org_banner_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
+				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) .
+				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide' ) . '</td>';
+		}
 
-				foreach ( array( 'integ', 'pro' ) as $type_dir ) {
+		protected function add_table_rows_advanced_plugin_settings( array &$table_rows, $form, $args ) {
 
-					if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {
+			$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
+			$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
 
-						continue;
-					}
+			$debug_val    = $this->p->get_const_status( 'DEBUG_HTML' ) ? 1 : 0;
+			$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
 
-					foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
+			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
+				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
+				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
+				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $args[ 'network' ], $is_enabled = true );
 
-						if ( 'admin' === $sub_dir ) {	// Skip status for admin options.
+			$table_rows[ 'plugin_schema_json_min' ] = '' .
+				$form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_schema_json_min' ) .
+				'<td>' . $form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
+				self::get_option_site_use( 'plugin_schema_json_min', $form, $args[ 'network' ], $is_enabled = true );
 
-							continue;
+			$table_rows[ 'plugin_load_mofiles' ] = '' .
+				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
+				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
+				self::get_option_site_use( 'plugin_load_mofiles', $form, $args[ 'network' ], $is_enabled = true );
 
-						} elseif ( ! is_array( $libs ) ) {	// Just in case.
+			$table_rows[ 'plugin_debug_html' ] = '' .
+				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) .
+				'<td>' . ( ! $args[ 'network' ] && $debug_status ?
+				$form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
+				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
+				self::get_option_site_use( 'plugin_debug_html', $form, $args[ 'network' ], $is_enabled = true );
 
-							continue;
-						}
-
-						foreach ( $libs as $lib_name => $label ) {
-
-							$label_transl = _x( $label, 'lib file description', $info[ 'text_domain' ] );
-							$label_url    = '';
-							$classname    = SucomUtil::sanitize_classname( $ext . $type_dir . $sub_dir . $lib_name, $allow_underscore = false );
-							$status_off   = 'off';
-							$status_on    = 'on';
-
-							if ( 'integ' === $type_dir ) {
-
-								if ( 'data' === $sub_dir ) {
-
-									$label_url = $integ_tab_url;
-								}
-
-							} elseif ( 'json' === $type_dir ) {
-
-								if ( 'type' === $sub_dir ) {
-
-									if ( preg_match( '/^(.*) \[schema_type:(.+)\]$/', $label_transl, $match ) ) {
-
-										$type_count   = $this->p->schema->count_schema_type_children( $match[ 2 ] );
-										$label_transl = $match[ 1 ] . ' ' . sprintf( __( '(%d sub-types)', 'wpsso' ), $type_count );
-									}
-								}
-
-								$status_off = 'disabled';
-								$status_on  = 'on';
-
-							} elseif ( 'pro' === $type_dir ) {
-
-								$status_off = empty( $this->p->avail[ $sub_dir ][ $lib_name ] ) ? 'off' : 'rec';
-								$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
-
-								if ( 'media' === $sub_dir ) {
-
-									$label_url = $media_tab_url;
-
-								} elseif ( 'review' === $sub_dir ) {
-
-									$label_url = $review_tab_url;
-
-								} elseif ( 'util' === $sub_dir && 'shorten' === $lib_name ) {
-
-									$label_url  = $shorten_tab_url;
-									$status_off = 'rec';
-								}
-							}
-
-							/*
-							 * Example $filter_name = 'wpsso_features_status_integ_data_wpseo_meta'.
-							 */
-							$filter_name     = $ext . '_features_status_' . $type_dir. '_' . $sub_dir . '_' . $lib_name;
-							$filter_name     = SucomUtil::sanitize_hookname( $filter_name );
-							$features_status = class_exists( $classname ) ? $status_on : $status_off;
-							$features_status = apply_filters( $filter_name, $features_status );
-
-							$features[ $label ] = array(
-								'type'         => $type_dir,
-								'sub'          => $sub_dir,
-								'lib'          => $lib_name,
-								'label_transl' => $label_transl,
-								'label_url'    => $label_url,
-								'status'       => $features_status,
-							);
-						}
-					}
-				}
-
-				if ( 'wpsso' === $ext ) {
-
-					/*
-					 * SSO > Advanced Settings > Service APIs > Shortening Services > URL Shortening Service.
-					 */
-					foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $svc_name ) {
-
-						if ( 'none' === $svc_id ) {
-
-							continue;
-						}
-
-						$svc_name_transl = _x( $svc_name, 'option value', 'wpsso' );
-						$label_transl    = sprintf( _x( '(api) Get %s Short URL', 'lib file description', 'wpsso' ), $svc_name_transl );
-						$svc_status      = 'off';	// Off unless selected or configured.
-
-						if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
-
-							if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
-
-								$svc_status = 'rec';	// Recommended if selected.
-
-								if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
-
-									$svc_status = 'on';	// On if configured.
-								}
-							}
-						}
-
-						$features[ '(api) ' . $svc_name . ' Shortener API' ] = array(
-							'label_transl' => $label_transl,
-							'label_url'    => $shorten_tab_url,
-							'status'       => $svc_status,
-						);
-					}
-				}
-
-
-				$filter_name = SucomUtil::sanitize_hookname( $ext . '_features_status' );
-				$features    = apply_filters( $filter_name, $features, $ext, $info );
-
-				if ( ! empty( $features ) ) {
-
-					$ext_num++;
-
-					echo '<tr><td colspan="3">';
-					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
-					echo _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-					echo '</h4></td></tr>';
-
-					$this->show_features_status( $ext, $info, $features );
-				}
-			}
-
-			echo '</table>';
+			$table_rows[ 'plugin_cache_disable' ] = '' .
+				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
+				'<td>' . ( ! $args[ 'network' ] && $cache_status ?
+				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
+				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
+				self::get_option_site_use( 'plugin_cache_disable', $form, $args[ 'network' ], $is_enabled = true );
 		}
 
 		/*
@@ -2008,226 +1688,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return isset( $this->p->cf[ '*' ][ 'lib' ][ $lib_name ][ $menu_id ] ) ? true : false;
-		}
-
-		private function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
-
-			$status_titles = array(
-				'disabled'    => __( 'Feature is disabled.', 'wpsso' ),
-				'off'         => __( 'Feature is not active.', 'wpsso' ),
-				'on'          => __( 'Feature is active.', 'wpsso' ),
-				'rec'         => __( 'Feature is recommended but not active.', 'wpsso' ),
-				'recommended' => __( 'Feature is recommended but not active.', 'wpsso' ),
-			);
-
-			foreach ( $features as $label => $arr ) {
-
-				if ( ! empty( $arr[ 'label_transl' ] ) ) {
-
-					$label_transl = $arr[ 'label_transl' ];
-
-					unset( $features[ $label ], $arr[ 'label_transl' ] );
-
-					$features[ $label_transl ] = $arr;
-				}
-			}
-
-			uksort( $features, array( 'self', 'sort_plugin_features' ) );
-
-			foreach ( $features as $label_transl => $arr ) {
-
-				if ( isset( $arr[ 'status' ] ) ) {	// Use provided status before class or constant check.
-
-					$status_key = $arr[ 'status' ];
-
-				} elseif ( isset( $arr[ 'classname' ] ) ) {
-
-					$status_key = class_exists( $arr[ 'classname' ] ) ? 'on' : 'off';
-
-				} elseif ( isset( $arr[ 'constant' ] ) ) {
-
-					$status_key = SucomUtil::get_const( $arr[ 'constant' ] ) ? 'on' : 'off';
-
-				} else {
-
-					$status_key = '';
-				}
-
-				if ( ! empty( $status_key ) ) {
-
-					$dashicon_title = '';
-					$dashicon_name  = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
-					$label_transl   = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
-					$label_url      = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
-					$td_class       = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
-					$td_class_is    = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
-
-					switch ( $dashicon_name ) {
-
-						case 'api':
-
-							$dashicon_title = __( 'Service API', 'wpsso' );
-							$dashicon_name  = 'download';
-
-							break;
-
-						case 'code':
-
-							$dashicon_title = __( 'Structured Data', 'wpsso' );
-							$dashicon_name  = 'media-code';
-
-							break;
-
-						case 'code-plus':
-
-							$dashicon_title = __( 'Structured Data Property', 'wpsso' );
-							$dashicon_name  = 'welcome-add-page';
-
-							break;
-
-						case 'feature':
-
-							$dashicon_title = __( 'Additional Feature', 'wpsso' );
-							$dashicon_name  = 'pressthis';
-
-							break;
-
-						case 'plugin':
-
-							$dashicon_title = __( 'Plugin Integration', 'wpsso' );
-							$dashicon_name  = 'admin-plugins';
-
-							break;
-
-						case 'sharing':
-
-							$dashicon_title = __( 'Sharing Functionality', 'wpsso' );
-							$dashicon_name  = 'share';
-
-							break;
-					}
-
-					echo '<tr>';
-
-					echo '<td class="module-icon' . $td_class_is . '">';
-					echo '<span class="dashicons-before dashicons-' . $dashicon_name . '" title="' . $dashicon_title . '"></span>';
-					echo '</td>';
-
-					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';
-					echo $label_url ? '<a href="' . $label_url . '">' : '';
-					echo $label_transl;
-					echo $label_url ? '</a>' : '';
-					echo '</td>';
-
-					echo '<td class="module-status' . $td_class_is .'">';
-					echo '<div class="status-light" title="';
-					echo isset( $status_titles[ $status_key ] ) ? $status_titles[ $status_key ] : '';
-					echo '"></div>';
-					echo '</td>';
-
-					echo '</tr>' . "\n";
-				}
-			}
-		}
-
-		private static function sort_plugin_features( $feature_a, $feature_b ) {
-
-			return strnatcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
-		}
-
-		private static function feature_priority( $feature ) {
-
-			if ( strpos( $feature, '(feature)' ) === 0 ) {
-
-				return '(10) ' . $feature;
-			}
-
-			return $feature;
-		}
-
-		public function addons_metabox_content() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$ext_sorted = WpssoConfig::get_ext_sorted();
-
-			unset( $ext_sorted[ $this->p->id ] );
-
-			$tabindex  = 0;
-			$ext_num   = 0;
-			$ext_total = count( $ext_sorted );
-			$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
-			$charset   = get_bloginfo( $show = 'charset', $filter = 'raw' );
-			$icon_px   = 100;
-
-			echo '<table class="sucom-settings wpsso addons-metabox" style="padding-bottom:10px">' . "\n";
-
-			foreach ( $ext_sorted as $ext => $info ) {
-
-				if ( empty( $info[ 'name' ] ) ) {
-
-					continue;
-				}
-
-				$ext_num++;
-
-				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
-				$ext_name_html   = '<h4>' .
-					htmlentities( $pkg_info[ $ext ][ 'name' ], ENT_QUOTES, $charset, $double_encode = false ) . ' (' .
-					htmlentities( $pkg_info[ $ext ][ 'short' ], ENT_QUOTES, $charset, $double_encode = false ) . ')' .
-					'</h4>';
-				$ext_desc_transl = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
-				$ext_desc_html   = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
-
-				$table_rows = array();
-
-				/*
-				 * Plugin name, description and links.
-				 */
-				$table_rows[ 'plugin_name' ] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					'<a class="ext-anchor" id="' . $ext . '"></a>' . $ext_name_html . $ext_desc_html .
-					( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( $glue = ' | ', $ext_links ) . '</div>' ) .
-					'</td>';
-
-				/*
-				 * Plugin separator.
-				 */
-				if ( $ext_num < $ext_total ) {
-
-					$table_rows[ 'dotted_line' ] = '<td class="ext-info-plugin-separator"></td>';
-
-				} else {
-
-					$table_rows[] = '<td></td>';
-				}
-
-				/*
-				 * Show the plugin icon and table rows.
-				 */
-				foreach ( $table_rows as $key => $row ) {
-
-					echo '<tr>';
-
-					if ( $key === 'plugin_name' ) {
-
-						$span_rows   = count( $table_rows );
-						$icon_col_px = $icon_px + 30;
-						$icon_style  = 'width:' . $icon_col_px . 'px; min-width:' . $icon_col_px . 'px; max-width:' . $icon_col_px . 'px;';
-
-						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" ' .
-							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >';
-						echo $this->get_ext_img_icon( $ext, $icon_px );
-						echo '</td>';
-					}
-
-					echo $row . '</tr>' . "\n";
-				}
-			}
-
-			echo '</table>' . "\n";
 		}
 
 		public function licenses_metabox_content( $network = false ) {
@@ -2515,112 +1975,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $current;
-		}
-
-		/*
-		 * Sort the WPSSO Core plugin slug before the WPSSO add-on slugs.
-		 */
-		private static function sort_active_plugins( $a, $b ) {
-
-			$plugin_prefix = 'wpsso/';
-			$addon_prefix  = 'wpsso-';
-
-			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core plugin.
-
-				if ( 0 === strpos( $b, $addon_prefix ) ) {	// WPSSO add-on.
-
-					return -1;				// Sort WPSSO Core before the add-on.
-				}
-
-			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// WPSSO add-on.
-
-				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core plugin.
-
-					return 1;				// Sort the add-on after WPSSO Core.
-				}
-			}
-
-			return strcmp( $a, $b );				// Fallback to sorting like WordPress.
-		}
-
-		/*
-		 * Called from the Essential and General Settings pages.
-		 */
-		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$site_owners = WpssoUser::get_persons_names( $add_none = true, $roles_id = 'owner' );
-
-			$table_rows[ 'site_pub_schema_type' ] = '' .
-				$this->form->get_th_html( _x( 'Site Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
-				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ],
-					$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
-						$selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
-
-			/*
-			 * Publisher Type Person.
-			 */
-			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
-				$this->form->get_th_html( _x( 'Site Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
-				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners,
-					$css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
-
-			/*
-			 * Publisher Type Organization.
-			 */
-			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .
-				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) .
-				'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide' ) . '</td>';
-
-			$table_rows[ 'site_org_banner_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
-				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) .
-				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide' ) . '</td>';
-		}
-
-		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $args ) {
-
-			$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
-			$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
-
-			$debug_val    = $this->p->get_const_status( 'DEBUG_HTML' ) ? 1 : 0;
-			$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
-
-			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
-				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
-				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $args[ 'network' ], $is_enabled = true );
-
-			$table_rows[ 'plugin_schema_json_min' ] = '' .
-				$form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_schema_json_min' ) .
-				'<td>' . $form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
-				self::get_option_site_use( 'plugin_schema_json_min', $form, $args[ 'network' ], $is_enabled = true );
-
-			$table_rows[ 'plugin_load_mofiles' ] = '' .
-				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
-				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
-				self::get_option_site_use( 'plugin_load_mofiles', $form, $args[ 'network' ], $is_enabled = true );
-
-			$table_rows[ 'plugin_debug_html' ] = '' .
-				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) .
-				'<td>' . ( ! $args[ 'network' ] && $debug_status ?
-				$form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
-				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
-				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_debug_html', $form, $args[ 'network' ], $is_enabled = true );
-
-			$table_rows[ 'plugin_cache_disable' ] = '' .
-				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
-				'<td>' . ( ! $args[ 'network' ] && $cache_status ?
-				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
-				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
-				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_cache_disable', $form, $args[ 'network' ], $is_enabled = true );
 		}
 
 		/*
@@ -3469,6 +2823,207 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $cache_content;
+		}
+
+		/*
+		 * See WpssoSubmenuDashboard->show_metabox_features_status().
+		 */
+		protected function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
+
+			$status_titles = array(
+				'disabled'    => __( 'Feature is disabled.', 'wpsso' ),
+				'off'         => __( 'Feature is not active.', 'wpsso' ),
+				'on'          => __( 'Feature is active.', 'wpsso' ),
+				'rec'         => __( 'Feature is recommended but not active.', 'wpsso' ),
+				'recommended' => __( 'Feature is recommended but not active.', 'wpsso' ),
+			);
+
+			foreach ( $features as $label => $arr ) {
+
+				if ( ! empty( $arr[ 'label_transl' ] ) ) {
+
+					$label_transl = $arr[ 'label_transl' ];
+
+					unset( $features[ $label ], $arr[ 'label_transl' ] );
+
+					$features[ $label_transl ] = $arr;
+				}
+			}
+
+			uksort( $features, array( 'self', 'sort_plugin_features' ) );
+
+			foreach ( $features as $label_transl => $arr ) {
+
+				if ( isset( $arr[ 'status' ] ) ) {	// Use provided status before class or constant check.
+
+					$status_key = $arr[ 'status' ];
+
+				} elseif ( isset( $arr[ 'classname' ] ) ) {
+
+					$status_key = class_exists( $arr[ 'classname' ] ) ? 'on' : 'off';
+
+				} elseif ( isset( $arr[ 'constant' ] ) ) {
+
+					$status_key = SucomUtil::get_const( $arr[ 'constant' ] ) ? 'on' : 'off';
+
+				} else {
+
+					$status_key = '';
+				}
+
+				if ( ! empty( $status_key ) ) {
+
+					$dashicon_title = '';
+					$dashicon_name  = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
+					$label_transl   = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
+					$label_url      = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
+					$td_class       = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
+					$td_class_is    = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
+
+					switch ( $dashicon_name ) {
+
+						case 'api':
+
+							$dashicon_title = __( 'Service API', 'wpsso' );
+							$dashicon_name  = 'download';
+
+							break;
+
+						case 'code':
+
+							$dashicon_title = __( 'Structured Data', 'wpsso' );
+							$dashicon_name  = 'media-code';
+
+							break;
+
+						case 'code-plus':
+
+							$dashicon_title = __( 'Structured Data Property', 'wpsso' );
+							$dashicon_name  = 'welcome-add-page';
+
+							break;
+
+						case 'feature':
+
+							$dashicon_title = __( 'Additional Feature', 'wpsso' );
+							$dashicon_name  = 'pressthis';
+
+							break;
+
+						case 'plugin':
+
+							$dashicon_title = __( 'Plugin Integration', 'wpsso' );
+							$dashicon_name  = 'admin-plugins';
+
+							break;
+
+						case 'sharing':
+
+							$dashicon_title = __( 'Sharing Functionality', 'wpsso' );
+							$dashicon_name  = 'share';
+
+							break;
+					}
+
+					echo '<tr>';
+
+					echo '<td class="module-icon' . $td_class_is . '">';
+					echo '<span class="dashicons-before dashicons-' . $dashicon_name . '" title="' . $dashicon_title . '"></span>';
+					echo '</td>';
+
+					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';
+					echo $label_url ? '<a href="' . $label_url . '">' : '';
+					echo $label_transl;
+					echo $label_url ? '</a>' : '';
+					echo '</td>';
+
+					echo '<td class="module-status' . $td_class_is .'">';
+					echo '<div class="status-light" title="';
+					echo isset( $status_titles[ $status_key ] ) ? $status_titles[ $status_key ] : '';
+					echo '"></div>';
+					echo '</td>';
+
+					echo '</tr>' . "\n";
+				}
+			}
+		}
+
+		/*
+		 * See WpssoSubmenuDashboard->show_metabox_cache_status().
+		 */
+		protected static function sort_by_label_key( $a, $b ) {
+
+			if ( isset( $a[ 'label' ] ) && isset( $b[ 'label' ] ) ) {
+
+				return strcmp( $a[ 'label' ], $b[ 'label' ] );
+			}
+
+			return 0;	// No change.
+		}
+
+		private static function sort_plugin_features( $feature_a, $feature_b ) {
+
+			return strnatcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
+		}
+
+		private static function feature_priority( $feature ) {
+
+			if ( strpos( $feature, '(feature)' ) === 0 ) {
+
+				return '(10) ' . $feature;
+			}
+
+			return $feature;
+		}
+
+		/*
+		 * Sort the WPSSO Core plugin slug before the WPSSO add-on slugs.
+		 */
+		private static function sort_active_plugins( $a, $b ) {
+
+			$plugin_prefix = 'wpsso/';
+			$addon_prefix  = 'wpsso-';
+
+			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core plugin.
+
+				if ( 0 === strpos( $b, $addon_prefix ) ) {	// WPSSO add-on.
+
+					return -1;				// Sort WPSSO Core before the add-on.
+				}
+
+			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// WPSSO add-on.
+
+				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core plugin.
+
+					return 1;				// Sort the add-on after WPSSO Core.
+				}
+			}
+
+			return strcmp( $a, $b );				// Fallback to sorting like WordPress.
+		}
+
+		/*
+		 * Deprecated on 2023/11/04.
+		 */
+		protected function add_plugin_hooks() {
+
+			_deprecated_function( __METHOD__ . '()', '2023/11/04', $replacement = __CLASS__ .  '::add_settings_page_callbacks()' );
+		}
+
+		/*
+		 * Deprecated on 2023/11/04.
+		 */
+		protected function add_meta_boxes() {
+
+			_deprecated_function( __METHOD__ . '()', '2023/11/04', $replacement = __CLASS__ .  '::add_settings_page_metaboxes()' );
+		}
+
+		/*
+		 * Deprecated on 2023/11/04.
+		 */
+		protected function add_footer_hooks() {
+
+			_deprecated_function( __METHOD__ . '()', '2023/11/04', $replacement = __CLASS__ .  '::add_settings_page_footer()' );
 		}
 	}
 }

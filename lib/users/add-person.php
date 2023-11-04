@@ -38,7 +38,12 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * Called by WpssoAdmin->load_settings_page() after the 'wpsso-action' query is handled.
 		 */
-		protected function add_plugin_hooks() {
+		protected function add_settings_page_callbacks() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 
