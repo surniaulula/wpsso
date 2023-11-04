@@ -40,10 +40,20 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 
 		protected function add_plugin_hooks() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			/*
 			 * Remove action buttons for this settings page.
@@ -73,7 +83,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 				$this->p->debug->mark();
 			}
 
-			$this->addons_metabox_content( $network = true );
+			$this->addons_metabox_content();
 		}
 	}
 }

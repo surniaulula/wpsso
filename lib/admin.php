@@ -1522,7 +1522,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$args          = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
 			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
 			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
-			$network       = isset( $args[ 'network' ] ) ? $args[ 'network' ] : false;
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
 			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $args );
@@ -1534,7 +1533,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
 
-			$table_rows = apply_filters( $filter_name, $table_rows, $this->form, $network, $args );
+			$table_rows = apply_filters( $filter_name, $table_rows, $this->form, $args );
 
 			$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
 		}
@@ -1547,7 +1546,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$args          = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
 			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
 			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
-			$network       = isset( $args[ 'network' ] ) ? $args[ 'network' ] : false;
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
 
 			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
@@ -1577,7 +1575,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
 
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $network, $args );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $args );
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
@@ -2147,7 +2145,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $feature;
 		}
 
-		public function addons_metabox_content( $network = false ) {
+		public function addons_metabox_content() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2285,10 +2283,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<td width="100%">' . $this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
 						$placeholder, $is_disabled = false, ++$tabindex ) . '</td>';
 
-				if ( $network ) {
-
-					$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, $is_enabled = true );
-				}
+				$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network );
 
 				/*
 				 * License information.
@@ -2362,10 +2357,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
 					}
 
-				} else {
-
-					$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
-				}
+				} else $table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
 
 				/*
 				 * Plugin separator.
@@ -2374,31 +2366,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'dotted_line' ] = '<td colspan="2" class="ext-info-plugin-separator"></td>';
 
-				} else {
-
-					$table_rows[] = '<td></td>';
-				}
+				} else $table_rows[] = '<td></td>';
 
 				/*
 				 * Show the plugin icon and table rows.
 				 */
 				foreach ( $table_rows as $key => $row ) {
 
-					echo '<tr>';
+					if ( ! empty( $row ) ) {
 
-					if ( $key === 'plugin_name' ) {
+						echo '<tr>';
 
-						$span_rows   = count( $table_rows );
-						$icon_col_px = $icon_px + 30;
-						$icon_style  = 'width:' . $icon_col_px . 'px; min-width:' . $icon_col_px . 'px; max-width:' . $icon_col_px . 'px;';
+						if ( $key === 'plugin_name' ) {
 
-						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" ' .
-							'rowspan="' . $span_rows . '" style="' . $icon_style . '" >';
-						echo $this->get_ext_img_icon( $ext, $icon_px );
-						echo '</td>';
+							$span_rows   = count( $table_rows );
+							$icon_col_px = $icon_px + 30;
+							$icon_style  = 'width:' . $icon_col_px . 'px; min-width:' . $icon_col_px . 'px; max-width:' . $icon_col_px . 'px;';
+
+							echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" ' .
+								'rowspan="' . $span_rows . '" style="' . $icon_style . '" >';
+
+							echo $this->get_ext_img_icon( $ext, $icon_px );
+
+							echo '</td>';
+						}
+					
+						echo $row . '</tr>' . "\n";
 					}
-
-					echo $row . '</tr>' . "\n";
 				}
 			}
 
@@ -2589,7 +2583,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide' ) . '</td>';
 		}
 
-		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
+		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $args ) {
 
 			$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
 			$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
@@ -2600,33 +2594,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
 				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
-				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
+				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $args[ 'network' ], $is_enabled = true );
 
 			$table_rows[ 'plugin_schema_json_min' ] = '' .
 				$form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_schema_json_min' ) .
 				'<td>' . $form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
-				self::get_option_site_use( 'plugin_schema_json_min', $form, $network, $is_enabled = true );
+				self::get_option_site_use( 'plugin_schema_json_min', $form, $args[ 'network' ], $is_enabled = true );
 
 			$table_rows[ 'plugin_load_mofiles' ] = '' .
 				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) .
 				'<td>' . $form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
-				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
+				self::get_option_site_use( 'plugin_load_mofiles', $form, $args[ 'network' ], $is_enabled = true );
 
 			$table_rows[ 'plugin_debug_html' ] = '' .
 				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) .
-				'<td>' . ( ! $network && $debug_status ?
+				'<td>' . ( ! $args[ 'network' ] && $debug_status ?
 				$form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
 				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
+				self::get_option_site_use( 'plugin_debug_html', $form, $args[ 'network' ], $is_enabled = true );
 
 			$table_rows[ 'plugin_cache_disable' ] = '' .
 				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) .
-				'<td>' . ( ! $network && $cache_status ?
+				'<td>' . ( ! $args[ 'network' ] && $cache_status ?
 				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
 				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
+				self::get_option_site_use( 'plugin_cache_disable', $form, $args[ 'network' ], $is_enabled = true );
 		}
 
 		/*

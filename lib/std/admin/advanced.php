@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Integration tab.
 		 */
-		public function filter_mb_advanced_plugin_integration_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_plugin_integration_rows( $table_rows, $form, $args ) {
 
 			/*
 			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
@@ -79,73 +79,73 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_select( 'plugin_title_tag', $doc_title_source,
 					$css_class = 'long_name', $css_id = '', $is_assoc = true ) .
 				$doc_title_msg . '</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_title_tag', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_title_tag', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_filter_content' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) .
 				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended - see help text)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_filter_excerpt' ) .
 				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) .
 				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( '(recommended - only if using shortcodes in excerpts)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_page_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_excerpt' ) .
 				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_excerpt' ) .
 				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_tags' ) .
 				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_tags' ) .
 				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_new_user_is_person' ] = '' .
 				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_new_user_is_person' ) .
 				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_inherit_featured' ] = '' .
 				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_featured' ) .
 				$form->get_no_td_checkbox( 'plugin_inherit_featured', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_inherit_images' ] = '' .
 				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_inherit_images' ) .
 				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) .
 				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_prevent_thumb_conflicts' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_prevent_thumb_conflicts' ) .
 				$form->get_th_html( _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_prevent_thumb_conflicts' ) .
 				$form->get_no_td_checkbox( 'plugin_prevent_thumb_conflicts', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_prevent_thumb_conflicts', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_prevent_thumb_conflicts', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' .
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) .
 				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_upscale_pct_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_pct_max' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_pct_max', $css_class = 'short' ) . ' %</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_upscale_pct_max', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_pct_max', $form, $args[ 'network' ] );
 
 			/*
 			 * Plugin and theme integration options.
@@ -157,55 +157,55 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Speakable CSS Selectors', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_speakable_css_csv' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_speakable_css_csv', $css_class = 'wide' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_speakable_css_csv', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_speakable_css_csv', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_check_head' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_check_head' ) .
 				$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_head' ) .
 				$form->get_no_td_checkbox( 'plugin_check_head' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_check_head', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_check_head', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_product_include_vat' ] = '' .
 				$form->get_th_html( _x( 'Include VAT in Product Prices', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_product_include_vat' ) .
 				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_aioseop_meta' ] = '' .
 				$form->get_th_html( _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_aioseop_meta' ) .
 				$form->get_no_td_checkbox( 'plugin_import_aioseop_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_aioseop_meta', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_aioseop_meta', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_rankmath_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_rankmath_meta' ) .
 				$form->get_no_td_checkbox( 'plugin_import_rankmath_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_rankmath_meta', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_rankmath_meta', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_seoframework_meta' ] = '' .
 				$form->get_th_html( _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_seoframework_meta' ) .
 				$form->get_no_td_checkbox( 'plugin_import_seoframework_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_seoframework_meta', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_seoframework_meta', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_wpmetaseo_meta' ] = '' .
 				$form->get_th_html( _x( 'Import WP Meta SEO Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_wpmetaseo_meta' ) .
 				$form->get_no_td_checkbox( 'plugin_import_wpmetaseo_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_wpmetaseo_meta', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_wpmetaseo_meta', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_wpseo_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_wpseo_meta' ) .
 				$form->get_no_td_checkbox( 'plugin_import_wpseo_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_meta', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_meta', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_import_wpseo_blocks' ] = '' .
 				$form->get_th_html( _x( 'Import Yoast SEO Block Attrs', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_wpseo_blocks' ) .
 				$form->get_no_td_checkbox( 'plugin_import_wpseo_blocks' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_blocks', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_blocks', $form, $args[ 'network' ] );
 
 			return $table_rows;
 		}
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Default Text tab.
 		 */
-		public function filter_mb_advanced_plugin_default_text_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_plugin_default_text_rows( $table_rows, $form, $args ) {
 
 			/*
 			 * WpssoMessages->maybe_doc_title_disabled() returns a message if:
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * SSO > Advanced Settings > Plugin Settings > Image Sizes tab.
 		 */
-		public function filter_mb_advanced_plugin_image_sizes_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_plugin_image_sizes_rows( $table_rows, $form, $args ) {
 
 			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Plugin Settings > Interface tab.
 		 */
-		public function filter_mb_advanced_plugin_interface_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_plugin_interface_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Media Services tab.
 		 */
-		public function filter_mb_advanced_services_media_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_services_media_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -563,7 +563,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Shortening Services tab.
 		 */
-		public function filter_mb_advanced_services_shortening_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_services_shortening_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Service APIs > Ratings and Reviews tab.
 		 */
-		public function filter_mb_advanced_services_ratings_reviews_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_services_ratings_reviews_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Open Graph tab.
 		 */
-		public function filter_mb_advanced_doc_types_og_types_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_doc_types_og_types_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Document Types > Schema tab.
 		 */
-		public function filter_mb_advanced_doc_types_schema_types_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_doc_types_schema_types_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -816,7 +816,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Since WPSSO Core v13.5.0.
 		 */
-		public function filter_mb_advanced_schema_defs_article_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_article_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -841,7 +841,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_book_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_book_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_creative_work_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_creative_work_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -929,7 +929,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_event_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_event_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -998,7 +998,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_job_posting_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_job_posting_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1032,7 +1032,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_place_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_place_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_product_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_product_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1158,7 +1158,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_mb_advanced_schema_defs_review_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_schema_defs_review_rows( $table_rows, $form, $args ) {
 
 			$form_rows = array(
 				'wpsso_pro_feature_msg' => array(
@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Default Contacts tab.
 		 */
-		public function filter_mb_advanced_contact_fields_default_cm_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_contact_fields_default_cm_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1236,7 +1236,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Contact Fields > Custom Contacts tab.
 		 */
-		public function filter_mb_advanced_contact_fields_custom_cm_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_contact_fields_custom_cm_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * About the User metabox.
 		 */
-		public function filter_mb_advanced_user_about_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_user_about_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="3">' . $this->p->msgs->get( 'info-user-about' ) . '</td>';
 
@@ -1293,7 +1293,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Product Attributes tab.
 		 */
-		public function filter_mb_advanced_metadata_product_attrs_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_metadata_product_attrs_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
 
@@ -1316,7 +1316,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * Attributes and Metadata > Custom Fields tab.
 		 */
-		public function filter_mb_advanced_metadata_custom_fields_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_metadata_custom_fields_rows( $table_rows, $form, $args ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
 
@@ -1362,31 +1362,31 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/*
 		 * HTML Tags > Facebook tab.
 		 */
-		public function filter_mb_advanced_head_tags_facebook_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_head_tags_facebook_rows( $table_rows, $form, $args ) {
 
-			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
 		/*
 		 * HTML Tags > Open Graph tab.
 		 */
-		public function filter_mb_advanced_head_tags_open_graph_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_head_tags_open_graph_rows( $table_rows, $form, $args ) {
 
-			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
 		/*
 		 * HTML Tags > Twitter tab.
 		 */
-		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $args ) {
 
-			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
 		/*
 		 * HTML Tags > SEO / Other tab.
 		 */
-		public function filter_mb_advanced_head_tags_seo_other_rows( $table_rows, $form, $network, $args ) {
+		public function filter_mb_advanced_head_tags_seo_other_rows( $table_rows, $form, $args ) {
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
@@ -1395,10 +1395,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						'</p></blockquote></td>';
 			}
 
-			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}
 
-		private function get_head_tags_rows( $table_rows, $form, $network, array $opt_preg_include ) {
+		private function get_head_tags_rows( $table_rows, $form, array $opt_preg_include ) {
 
 			$table_cells = array();
 

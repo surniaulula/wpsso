@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '' ) {
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() ) {
 
 			$table_rows = array();
 			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );

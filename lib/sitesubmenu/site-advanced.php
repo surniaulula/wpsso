@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
 		}
 
-		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $metabox_title = '' ) {
+		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() ) {
 
 			$table_rows = array();
 			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 				case 'site-advanced-plugin-settings':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $network = true );
+					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $args );
 
 					break;
 			}

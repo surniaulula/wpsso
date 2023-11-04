@@ -39,10 +39,20 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		protected function add_plugin_hooks() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ) );
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			/*
 			 * Remove the "Change to View" button from this settings page.
@@ -56,6 +66,11 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 		}
 
 		public function show_metabox_licenses( $obj, $mb ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->licenses_metabox_content( $network = false );
 		}
