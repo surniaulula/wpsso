@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->menu_ext  = $ext;
 
 			$this->menu_metaboxes = array(
-				'plugin' => _x( 'Network Plugin Settings', 'metabox title', 'wpsso' ),
+				'plugin' => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 			);
 		}
 

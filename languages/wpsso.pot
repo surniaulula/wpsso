@@ -11295,16 +11295,12 @@ msgstr ""
 msgid "No theme support for <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:1160
+#: lib/messages.php:1160 lib/messages.php:1206
 msgid "Modifications disabled (%s constant is true)."
 msgstr ""
 
 #: lib/messages.php:1202
 msgid "Modifications disabled (no theme support)."
-msgstr ""
-
-#: lib/messages.php:1206
-msgid "Modifications disabled (constant is true)"
 msgstr ""
 
 #: lib/messages.php:1215
@@ -11995,9 +11991,9 @@ msgctxt "metabox title"
 msgid "Free Plugin Add-ons"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:32
+#: lib/sitesubmenu/site-advanced.php:32 lib/submenu/advanced.php:32
 msgctxt "metabox title"
-msgid "Network Plugin Settings"
+msgid "Plugin Settings"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:59 lib/submenu/advanced.php:71
@@ -12053,11 +12049,6 @@ msgstr ""
 #: lib/std/media/youtube.php:84
 msgctxt "video service name"
 msgid "YouTube"
-msgstr ""
-
-#: lib/submenu/advanced.php:32
-msgctxt "metabox title"
-msgid "Plugin Settings"
 msgstr ""
 
 #: lib/submenu/advanced.php:33

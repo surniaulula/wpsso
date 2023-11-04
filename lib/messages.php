@@ -1203,7 +1203,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
 
-					$html = __( 'Modifications disabled (constant is true)', 'wpsso' );
+					$html = sprintf( __( 'Modifications disabled (%s constant is true).', 'wpsso' ), 'WPSSO_TITLE_TAG_DISABLE' );
 
 				} elseif ( 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
 
