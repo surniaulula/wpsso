@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.7.0.
+		 * Since WPSSO Core v17.0.0.
 		 *
 		 * Remove plugin and add-on versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 		 */

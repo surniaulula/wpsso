@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.7.0.
+		 * Since WPSSO Core v17.0.0.
 		 *
 		 * Register our comment, post, term, and user meta.
 		 *
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.7.0.
+		 * Since WPSSO Core v17.0.0.
 		 *
 		 * Add WPSSO_META_NAME to the revision fields shown.
 		 */
@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.7.0.
+		 * Since WPSSO Core v17.0.0.
 		 *
 		 * Cleanup and convert the WPSSO_META_NAME options array to a text string.
 		 */

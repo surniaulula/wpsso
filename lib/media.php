@@ -895,37 +895,34 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_ret = array();
 
-			if ( ! empty( $post_id ) ) {
-
-				/*
-				 * Avoid making duplicate queries to the database.
-				 */
-				static $local_cache_featured_ids = array();
-
-				if ( isset( $local_cache_featured_ids[ $post_id ] ) ) {	// False or image ID.
-
-					$pid = $local_cache_featured_ids[ $post_id ];
+			if ( ! empty( $post_id ) ) {	// Just in case.
 
 				/*
 				 * If the post ID is an attachment page, then use the post ID as the image ID.
 				 */
-				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is( 'image', $post_id ) ) {
+				if ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is( 'image', $post_id ) ) {
 
-					$pid = $local_cache_featured_ids[ $post_id ] = $post_id;
+					$pid = $post_id;
 
 				} elseif ( has_post_thumbnail( $post_id ) ) {
 
-					$pid = $local_cache_featured_ids[ $post_id ] = get_post_thumbnail_id( $post_id );
+					$pid = get_post_thumbnail_id( $post_id );
 
-				} else {
+				} else $pid = false;
+			
+				$filter_name = 'wpsso_featured_image_id';
 
-					$pid = $local_cache_featured_ids[ $post_id ] = false;
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
 
-				if ( ! empty( $pid ) ) {	// False or image ID.
+				$pid = apply_filters( $filter_name, $pid, $post_id );
+
+				if ( ! empty( $pid ) && is_numeric( $pid ) ) {	// Just in case.
 
 					/*
-					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+					 * Returns an og:image:url value, not an og:image:secure_url.
 					 */
 					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name );
 
@@ -938,7 +935,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return apply_filters( 'wpsso_og_featured', $mt_ret, $num, $size_name, $post_id );
+			$filter_name = 'wpsso_og_featured';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			return apply_filters( $filter_name, $mt_ret, $num, $size_name, $post_id );
 		}
 
 		/*
@@ -957,16 +961,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_ret = array();
 
-			if ( ! empty( $post_id ) ) {
+			if ( ! empty( $post_id ) ) {	// Just in case.
 
-				/*
-				 * Avoid making duplicate queries to the database.
-				 */
-				static $local_cache_attached_ids = array();
+				static $local_cache = array();
 
-				if ( ! isset( $local_cache_attached_ids[ $post_id ] ) ) {
+				if ( ! isset( $local_cache[ $post_id ] ) ) {
 
-					$local_cache_attached_ids[ $post_id ] = array();
+					$local_cache[ $post_id ] = array();
 
 					$images = get_children( array(
 						'post_parent'    => $post_id,
@@ -974,36 +975,40 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						'post_mime_type' => 'image'	// Aka 'image/%' query.
 					), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
 
-					$featured_id = get_post_thumbnail_id( $post_id );
+					/*
+					 * Featured images are handled beforehand by WpssoMedia->get_featured().
+					 *
+					 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
+					 */
+					$post_thumbnail_id = get_post_thumbnail_id( $post_id );
 
 					foreach ( $images as $attachment ) {
 
-						/*
-						 * Featured images are handled beforehand by WpssoMedia->get_featured().
-						 *
-						 * Avoid duplicates by excluding attached image IDs that are also featured image IDs.
-						 */
-						if ( ! empty( $attachment->ID ) && $featured_id !== $attachment->ID ) {
+						if ( ! empty( $attachment->ID ) && $post_thumbnail_id !== $attachment->ID ) {
 
-							$local_cache_attached_ids[ $post_id ][] = $attachment->ID;
+							$local_cache[ $post_id ][] = $attachment->ID;
 						}
 					}
 
-					rsort( $local_cache_attached_ids[ $post_id ], SORT_NUMERIC );
+					rsort( $local_cache[ $post_id ], SORT_NUMERIC );
 
 					$filter_name = 'wpsso_attached_image_ids';
 
-					$local_cache_attached_ids[ $post_id ] = apply_filters( $filter_name, $local_cache_attached_ids[ $post_id ], $post_id );
+					if ( $this->p->debug->enabled ) {
 
-					$local_cache_attached_ids[ $post_id ] = array_unique( $local_cache_attached_ids[ $post_id ] );	// Just in case.
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					}
+
+					$local_cache[ $post_id ] = apply_filters( $filter_name, $local_cache[ $post_id ], $post_id );
+					$local_cache[ $post_id ] = array_unique( $local_cache[ $post_id ] );	// Just in case.
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'found ' . count( $local_cache_attached_ids[ $post_id ] ) . ' attached images for post_id ' . $post_id );
+					$this->p->debug->log( 'found ' . count( $local_cache[ $post_id ] ) . ' attached images for post id ' . $post_id );
 				}
 
-				foreach ( $local_cache_attached_ids[ $post_id ] as $pid ) {
+				foreach ( $local_cache[ $post_id ] as $pid ) {
 
 					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
@@ -1014,13 +1019,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
-							break;	// Stop here and apply the 'wpsso_attached_images' filter.
+							break;	// Stop here and apply the 'wpsso_og_attached_images' filter.
 						}
 					}
 				}
 			}
 
-			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id );
+			$filter_name = 'wpsso_og_attached_images';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			return apply_filters( $filter_name, $mt_ret, $num, $size_name, $post_id );
 		}
 
 		/*
@@ -1084,15 +1096,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$filter_name = 'wpsso_content_image_preg_' . $type;	// No need to sanitize.
 
-				if ( false !== has_filter( $filter_name ) ) {
+				if ( $this->p->debug->enabled ) {
 
-					$content_img_preg[ $type ] = apply_filters( $filter_name, $this->default_content_img_preg[ $type ] );
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'filtered image preg ' . $type . ' = "' . $content_img_preg[ $type ] . '"' );
-					}
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
+
+				$content_img_preg[ $type ] = apply_filters( $filter_name, $this->default_content_img_preg[ $type ] );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'content_img_preg', $content_img_preg );
 			}
 
 			/*
@@ -1171,7 +1185,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+									$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 								}
 
 								list(
@@ -1318,7 +1332,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = $this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] );
-						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
+
+						$filter_name = 'wpsso_rewrite_image_url';
+
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $img_url );
+						}
+
+						$mt_single_image[ 'og:image:url' ] = apply_filters( $filter_name, $mt_single_image[ 'og:image:url' ] );
 
 						if ( $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
 
@@ -1829,12 +1851,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( apply_filters( 'wpsso_attached_accept_img_dims', $img_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
+				$img_url = $this->p->util->fix_relative_url( $img_url );
+
+				$filter_name = 'wpsso_rewrite_image_url';
+
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying rewrite_image_url filter for ' . $img_url );
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $img_url );
 				}
-
-				$img_url = $this->p->util->fix_relative_url( $img_url );
 
 				$img_url = apply_filters( 'wpsso_rewrite_image_url', $img_url );
 
@@ -2370,7 +2394,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
 
 			$all_matches = apply_filters( $filter_name, array(), $content, $mod );
@@ -2514,7 +2538,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
 
 			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args, $mod );

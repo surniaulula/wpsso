@@ -1538,7 +1538,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.7.0.
+		 * Since WPSSO Core v17.0.0.
 		 */
 		protected function show_metabox_tabbed( $obj, $mb, array $tabs ) {
 

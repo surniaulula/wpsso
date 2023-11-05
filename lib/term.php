@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			/*
-			 * Since WPSSO Core v16.7.0.
+			 * Since WPSSO Core v17.0.0.
 			 *
 			 * Register our term meta.
 			 */
