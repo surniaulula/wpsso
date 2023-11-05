@@ -34,11 +34,11 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_general_rows' => 4,
+				'mb_sso_edit_general_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$og_types      = $this->p->og->get_og_types_select();
 			$schema_types  = $this->p->schema->get_schema_types_select();

@@ -1523,6 +1523,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $tabs[ 'prev_oembed' ] );
 			}
 
+			/*
+			 * See WpssoAmFiltersEdit->filter_mb_sso_tabs().
+			 */
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_mb_'. $metabox_id . '_tabs', $tabs, $mod );
 
 			if ( $this->p->debug->enabled ) {
@@ -2927,8 +2930,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_user_image_ids'
 			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_ids';
-
-			$image_ids = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+			$image_ids   = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( $image_ids as $pid ) {
 
@@ -2956,8 +2958,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_user_image_urls'
 			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
-
-			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+			$image_urls  = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( array_unique( $image_urls ) as $num => $url ) {
 

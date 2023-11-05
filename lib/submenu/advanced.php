@@ -172,12 +172,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$this->p->debug->mark();
 			}
 
+			$args       = isset( $mb[ 'args' ] ) ? $mb[ 'args' ] : array();
+			$metabox_id = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
+
 			/*
 			 * Translate contact method field labels for current language.
 			 */
 			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
-
-			$metabox_id = isset( $mb[ 'args' ][ 'metabox_id' ] ) ? $mb[ 'args' ][ 'metabox_id' ] : '';
 
 			$info_msg = $this->p->msgs->get( 'info-' . $metabox_id );
 
@@ -247,8 +248,49 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $match_rows ) {
 
 				case 'advanced-plugin-settings':
+				case 'site-advanced-plugin-settings':
 
-					$this->add_table_rows_advanced_plugin_settings( $table_rows, $this->form, $args );
+					$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
+					$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
+
+					$debug_val    = $this->p->get_const_status( 'DEBUG_HTML' ) ? 1 : 0;
+					$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
+
+					$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
+						$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
+						'<td>' . $this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
+						self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $args[ 'network' ] );
+		
+					$table_rows[ 'plugin_schema_json_min' ] = '' .
+						$this->form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'plugin_schema_json_min' ) .
+						'<td>' . $this->form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
+						self::get_option_site_use( 'plugin_schema_json_min', $this->form, $args[ 'network' ] );
+		
+					$table_rows[ 'plugin_load_mofiles' ] = '' .
+						$this->form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'plugin_load_mofiles' ) .
+						'<td>' . $this->form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
+						self::get_option_site_use( 'plugin_load_mofiles', $this->form, $args[ 'network' ] );
+		
+					$table_rows[ 'plugin_debug_html' ] = '' .
+						$this->form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'plugin_debug_html' ) .
+						'<td>' . ( ! $args[ 'network' ] && $debug_status ?
+						$this->form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
+						$this->form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
+						$this->form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
+						self::get_option_site_use( 'plugin_debug_html', $this->form, $args[ 'network' ] );
+		
+					$table_rows[ 'plugin_cache_disable' ] = '' .
+						$this->form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'plugin_cache_disable' ) .
+						'<td>' . ( ! $args[ 'network' ] && $cache_status ?
+						$this->form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
+						$this->form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
+						$this->form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
+						self::get_option_site_use( 'plugin_cache_disable', $this->form, $args[ 'network' ] );
 
 					break;
 			}

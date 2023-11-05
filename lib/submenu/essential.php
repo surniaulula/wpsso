@@ -10,9 +10,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
-	class WpssoSubmenuEssential extends WpssoAdmin {
+	die( 'Do. Or do not. There is no try.' );
+}
+
+if ( ! class_exists( 'WpssoSubmenuGeneral' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/submenu/general.php';
+}
+
+if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoSubmenuGeneral' ) ) {
+
+	class WpssoSubmenuEssential extends WpssoSubmenuGeneral {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -33,91 +43,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			);
 		}
 
-		protected function add_settings_page_callbacks() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ) );
-		}
-
-		public function filter_form_button_rows( $form_button_rows ) {
-
-			/*
-			 * Remove the "Change to View" button from this settings page.
-			 */
-			if ( isset( $form_button_rows[ 0 ] ) ) {
-
-				$form_button_rows[ 0 ] = SucomUtil::preg_grep_keys( '/^change_show_options/', $form_button_rows[ 0 ], $invert = true );
-			}
-
-			return $form_button_rows;
-		}
-
 		/*
-		 * Add metaboxes for this settings page.
-		 *
-		 * See WpssoAdmin->load_settings_page().
+		 * Remove the "Change to View" button from this settings page.
 		 */
-		protected function add_settings_page_metaboxes( $callback_args = array() ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$this->maybe_show_language_notice();
-
-			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
-
-			parent::add_settings_page_metaboxes( $callback_args );
-		}
-
-		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() ) {
-
-			$table_rows = array();
-			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
-
-			switch ( $match_rows ) {
-
-				case 'essential-settings':
-
-					$def_site_name = get_bloginfo( 'name' );
-					$def_site_desc = get_bloginfo( 'description' );
-
-					$table_rows[ 'site_name' ] = '' .
-						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'site_name' ) .
-						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
-							$len = 0, $def_site_name ) . '</td>';
-
-					$table_rows[ 'site_desc' ] = '' .
-						$this->form->get_th_html_locale( _x( 'Site Description', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'site_desc' ) .
-						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
-							$len = 0, $def_site_desc ) . '</td>';
-
-					$table_rows[ 'og_def_img_id' ] = '' .
-						$this->form->get_th_html_locale( _x( 'Default Image ID', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_img_id' ) .
-						'<td>' . $this->form->get_input_image_upload_locale( 'og_def_img' ) . '</td>';
-
-					$table_rows[ 'og_def_img_url' ] = '' .
-						$this->form->get_th_html_locale( _x( 'or Default Image URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_img_url' ) .
-						'<td>' . $this->form->get_input_image_url_locale( 'og_def_img' ) . '</td>';
-
-					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-						$this->add_table_rows_schema_publisher_type( $table_rows, $this->form );	// Also used in the General Settings page.
-					}
-
-					break;
-			}
-
-			return $table_rows;
+		protected function add_form_buttons_change_show_options( &$form_button_rows ) {
 		}
 	}
 }

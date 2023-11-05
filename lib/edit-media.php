@@ -34,15 +34,15 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_media_rows'            => 4,
-				'metabox_sso_edit_media_prio_image_rows' => 5,
-				'metabox_sso_edit_media_twitter_rows'    => 5,
-				'metabox_sso_edit_media_schema_rows'     => 5,
-				'metabox_sso_edit_media_pinterest_rows'  => 5,
+				'mb_sso_edit_media_rows'            => 4,
+				'mb_sso_edit_media_prio_image_rows' => 5,
+				'mb_sso_edit_media_twitter_rows'    => 5,
+				'mb_sso_edit_media_schema_rows'     => 5,
+				'mb_sso_edit_media_pinterest_rows'  => 5,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$canonical_url   = $this->p->util->get_canonical_url( $mod );
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
@@ -78,22 +78,22 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_og_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_og_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting open graph image', 'wpsso' ) );
 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		 *
 		 * Only show custom image options for the Summary and Summary Large Image cards.
 		 */
-		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		/*
 		 * Schema.
 		 */
-		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		/*
 		 * Pinterest Pin It.
 		 */
-		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 

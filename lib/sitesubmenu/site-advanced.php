@@ -10,9 +10,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
-	class WpssoSiteSubmenuSiteAdvanced extends WpssoAdmin {
+	die( 'Do. Or do not. There is no try.' );
+}
+
+if ( ! class_exists( 'WpssoSubmenuAdvanced' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/submenu/advanced.php';
+}
+
+if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoSubmenuAdvanced' ) ) {
+
+	class WpssoSiteSubmenuSiteAdvanced extends WpssoSubmenuAdvanced {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -66,23 +76,6 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			);
 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );
-		}
-
-		protected function get_table_rows( $page_id, $metabox_id, $tab_key = '', $args = array() ) {
-
-			$table_rows = array();
-			$match_rows = trim( $page_id . '-' . $metabox_id . '-' . $tab_key, '-' );
-
-			switch ( $match_rows ) {
-
-				case 'site-advanced-plugin-settings':
-
-					$this->add_table_rows_advanced_plugin_settings( $table_rows, $this->form, $args );
-
-					break;
-			}
-
-			return $table_rows;
 		}
 	}
 }

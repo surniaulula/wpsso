@@ -10,7 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
+	die( 'Do. Or do not. There is no try.' );
+}
+
+if ( ! class_exists( 'WpssoSubmenuAddons' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/submenu/addons.php';
+}
+
+if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoSubmenuAddons' ) ) {
 
 	/*
 	 * This settings page requires enqueuing special scripts and styles for the plugin details / install thickbox link.

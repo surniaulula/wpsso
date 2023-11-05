@@ -38,27 +38,12 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 		}
 
-		protected function add_settings_page_callbacks() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
-		}
-
-		public function filter_form_button_rows( $form_button_rows ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/*
-			 * Remove all action buttons from this settings page.
-			 */
-			return array();
+		/*
+		 * Remove all action buttons.
+		 */
+		protected function add_form_buttons( &$form_button_rows ) {
+			
+			$form_button_rows = array();
 		}
 
 		/*

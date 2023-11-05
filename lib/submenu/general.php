@@ -107,6 +107,40 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			switch ( $match_rows ) {
 
+				case 'essential-settings':
+
+					$def_site_name = get_bloginfo( 'name' );
+					$def_site_desc = get_bloginfo( 'description' );
+
+					$table_rows[ 'site_name' ] = '' .
+						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_name' ) .
+						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
+							$len = 0, $def_site_name ) . '</td>';
+
+					$table_rows[ 'site_desc' ] = '' .
+						$this->form->get_th_html_locale( _x( 'Site Description', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_desc' ) .
+						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
+							$len = 0, $def_site_desc ) . '</td>';
+
+					$table_rows[ 'og_def_img_id' ] = '' .
+						$this->form->get_th_html_locale( _x( 'Default Image ID', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_img_id' ) .
+						'<td>' . $this->form->get_input_image_upload_locale( 'og_def_img' ) . '</td>';
+
+					$table_rows[ 'og_def_img_url' ] = '' .
+						$this->form->get_th_html_locale( _x( 'or Default Image URL', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_img_url' ) .
+						'<td>' . $this->form->get_input_image_url_locale( 'og_def_img' ) . '</td>';
+
+					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+						$this->add_table_rows_schema_publisher_type( $table_rows );
+					}
+
+					break;
+
 				case 'general-open_graph-site':
 
 					$def_site_name = SucomUtil::get_site_name();
@@ -142,7 +176,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 						$tr_on_change_organization_html = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' );
 
-						$this->add_table_rows_schema_publisher_type( $table_rows, $this->form );	// Also used in the Essential Settings page.
+						$this->add_table_rows_schema_publisher_type( $table_rows );
 
 						$table_rows[ 'site_org_place_id' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
@@ -420,6 +454,43 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $table_rows;
+		}
+
+		private function add_table_rows_schema_publisher_type( array &$table_rows ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$site_owners = WpssoUser::get_persons_names( $add_none = true, $roles_id = 'owner' );
+
+			$table_rows[ 'site_pub_schema_type' ] = '' .
+				$this->form->get_th_html( _x( 'Site Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) .
+				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ],
+					$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
+						$selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
+
+			/*
+			 * Publisher Type Person.
+			 */
+			$table_rows[ 'site_pub_person_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'person' ) .
+				$this->form->get_th_html( _x( 'Site Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) .
+				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners,
+					$css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
+
+			/*
+			 * Publisher Type Organization.
+			 */
+			$table_rows[ 'site_org_logo_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+				$this->form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .
+				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) .
+				'<td>' . $this->form->get_input_locale( 'site_org_logo_url', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'site_org_banner_url' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+				$this->form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
+				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) .
+				'<td>' . $this->form->get_input_locale( 'site_org_banner_url', $css_class = 'wide' ) . '</td>';
 		}
 	}
 }

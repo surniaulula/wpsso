@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/submenu/setup.php';
 }
 
-if ( ! class_exists( 'WpssoSiteSubmenuSiteSetup' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSiteSubmenuSiteSetup' ) && class_exists( 'WpssoSubmenuSetup' ) ) {
 
 	class WpssoSiteSubmenuSiteSetup extends WpssoSubmenuSetup {
 	}

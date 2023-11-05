@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * See WpssoSubmenuTools->filter_form_button_rows().
+		 * See WpssoSubmenuTools->add_form_buttons().
 		 */
 		public function count_cache_files() {
 
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * See WpssoSubmenuTools->filter_form_button_rows().
+		 * See WpssoSubmenuTools->add_form_buttons().
 		 */
 		public function count_ignored_urls() {
 
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * Count database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
 		 * and optionally exclude transients for shortened URLs.
 		 *
-		 * See WpssoSubmenuTools->filter_form_button_rows().
+		 * See WpssoSubmenuTools->add_form_buttons().
 		 */
 		public function count_db_transients( $key_prefix = '', $incl_short = true ) {
 
@@ -354,10 +354,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		/*
 		 * See WpssoCmcfRewrite::template_redirect().
-		 * See WpssoCmcfSubmenuGmfGeneral->filter_form_button_rows().
+		 * See WpssoCmcfSubmenuGmfGeneral->add_form_buttons().
 		 * See WpssoCmcfSubmenuGmfGeneral->get_table_rows().
 		 * See WpssoGmfRewrite::template_redirect().
-		 * See WpssoGmfSubmenuGmfGeneral->filter_form_button_rows().
+		 * See WpssoGmfSubmenuGmfGeneral->add_form_buttons().
 		 * See WpssoGmfSubmenuGmfGeneral->get_table_rows().
 		 */
 		public function is_refresh_running() {

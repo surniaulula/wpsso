@@ -34,15 +34,6 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 		}
 
-		/*
-		 * Filters to unset tab IDs in the Document SSO metabox:
-		 *
-		 *	'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
-		 *	'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
-		 *	'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
-		 *
-		 * See WpssoAbstractWpMeta->get_document_meta_tabs().
-		 */
 		public function do_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
 			echo $this->get_tabbed( $metabox_id, $tabs, $table_rows, $args );

@@ -34,12 +34,12 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_visibility_rows'        => 4,
-				'metabox_sso_edit_visibility_robots_rows' => 4,
+				'mb_sso_edit_visibility_rows'        => 4,
+				'mb_sso_edit_visibility_robots_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$canonical_url_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
 			$canonical_disabled = $canonical_url_msg ? true : false;
@@ -67,12 +67,12 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_visibility_robots_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_visibility_robots_rows', $table_rows, $form, $head_info, $mod );
 
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$robots_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'meta name robots' );
 			$robots_disabled = $robots_msg ? true : false;

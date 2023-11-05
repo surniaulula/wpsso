@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
 		 *	- The 'plugin_title_tag' option is not 'seo_title'.
 		 *
-		 * See WpssoEditGeneral->filter_metabox_sso_edit_general_rows().
+		 * See WpssoEditGeneral->filter_mb_sso_edit_general_rows().
 		 */
 		public function maybe_seo_title_disabled() {
 

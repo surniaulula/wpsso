@@ -687,7 +687,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
-
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 			return self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
@@ -1734,13 +1733,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				/*
+				 * See WpssoAmFiltersEdit->filter_mb_sso_edit_appmeta_rows().
+				 * See WpssoBcFiltersEdit->filter_mb_sso_edit_schema_rows().
+				 * See WpssoEditGeneral->filter_mb_sso_edit_general_rows().
+				 * See WpssoEditMedia->filter_mb_sso_edit_media_rows().
+				 * See WpssoEditSchema->filter_mb_sso_edit_schema_rows().
+				 * See WpssoEditVisibility->filter_mb_sso_edit_visibility_rows().
+				 */
+				$filter_name = 'wpsso_mb_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
-
-				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
-
-				$table_rows[ $tab_key ] = apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );	// Force vertical layout.

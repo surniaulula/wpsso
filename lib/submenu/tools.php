@@ -14,8 +14,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoSubmenuTools extends WpssoAdmin {
 
-		public $using_db_cache = true;
-
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -29,21 +27,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
-
-			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
-		protected function add_settings_page_callbacks() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MIN );
-		}
-
-		public function filter_form_button_rows( $form_button_rows ) {
+		protected function add_form_buttons( &$form_button_rows ) {
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -138,7 +124,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			if ( $this->using_db_cache ) {
+			$using_db_cache = wp_using_ext_object_cache() ? false : true;
+
+			if ( $using_db_cache ) {
 
 				/*
 				 * Clear All Database Transients.
@@ -150,8 +138,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_transl;
 			}
-
-			return $form_button_rows;
 		}
 
 		/*

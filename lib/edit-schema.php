@@ -34,27 +34,27 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_schema_rows'               => 4,
-				'metabox_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
-				'metabox_sso_edit_schema_article_rows'       => 6,	// Schema CreativeWork > Article.
-				'metabox_sso_edit_schema_book_rows'          => 6,	// Schema CreativeWork > Book.
-				'metabox_sso_edit_schema_howto_rows'         => 6,	// Schema CreativeWork > HowTo.
-				'metabox_sso_edit_schema_recipe_rows'        => 6,	// Schema CreativeWork > HowTo > Recipe.
-				'metabox_sso_edit_schema_movie_rows'         => 6,	// Schema CreativeWork > Movie.
-				'metabox_sso_edit_schema_review_rows'        => 6,	// Schema CreativeWork > Review.
-				'metabox_sso_edit_schema_software_app_rows'  => 6,	// Schema CreativeWork > Software Application.
-				'metabox_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
-				'metabox_sso_edit_schema_qa_rows'            => 6,	// Schema CreativeWork > WebPage > QAPage.
-				'metabox_sso_edit_schema_event_rows'         => 6,	// Schema Event.
-				'metabox_sso_edit_schema_job_posting_rows'   => 6,	// Schema Intangible > JobPosting.
-				'metabox_sso_edit_schema_organization_rows'  => 6,	// Schema Organization.
-				'metabox_sso_edit_schema_person_rows'        => 6,	// Schema Person.
-				'metabox_sso_edit_schema_place_rows'         => 6,	// Schema Place.
-				'metabox_sso_edit_schema_product_rows'       => 6,	// Schema Product.
+				'mb_sso_edit_schema_rows'               => 4,
+				'mb_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
+				'mb_sso_edit_schema_article_rows'       => 6,	// Schema CreativeWork > Article.
+				'mb_sso_edit_schema_book_rows'          => 6,	// Schema CreativeWork > Book.
+				'mb_sso_edit_schema_howto_rows'         => 6,	// Schema CreativeWork > HowTo.
+				'mb_sso_edit_schema_recipe_rows'        => 6,	// Schema CreativeWork > HowTo > Recipe.
+				'mb_sso_edit_schema_movie_rows'         => 6,	// Schema CreativeWork > Movie.
+				'mb_sso_edit_schema_review_rows'        => 6,	// Schema CreativeWork > Review.
+				'mb_sso_edit_schema_software_app_rows'  => 6,	// Schema CreativeWork > Software Application.
+				'mb_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
+				'mb_sso_edit_schema_qa_rows'            => 6,	// Schema CreativeWork > WebPage > QAPage.
+				'mb_sso_edit_schema_event_rows'         => 6,	// Schema Event.
+				'mb_sso_edit_schema_job_posting_rows'   => 6,	// Schema Intangible > JobPosting.
+				'mb_sso_edit_schema_organization_rows'  => 6,	// Schema Organization.
+				'mb_sso_edit_schema_person_rows'        => 6,	// Schema Person.
+				'mb_sso_edit_schema_place_rows'         => 6,	// Schema Place.
+				'mb_sso_edit_schema_product_rows'       => 6,	// Schema Product.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_edit_schema_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_schema_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->util->is_schema_disabled() ) {
 
@@ -150,82 +150,82 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			/*
 			 * Schema CreativeWork.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_creative_work_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Article.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_article_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Book.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_book_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > HowTo.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_howto_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > HowTo > Recipe.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_recipe_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Movie.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_movie_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Review.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_review_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > Software Application.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_software_app_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > WebPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_webpage_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema CreativeWork > WebPage > QAPage.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_qa_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Event.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_event_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Intangible > JobPosting.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_job_posting_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Organization.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_organization_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Person.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_person_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Place.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_place_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			/*
 			 * Schema Product.
 			 */
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
+			$table_rows = apply_filters( 'wpsso_mb_sso_edit_schema_product_rows', $table_rows, $form, $head_info, $mod, $schema_tr_class, $args );
 
 			return $table_rows;
 		}
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork.
 		 */
-		public function filter_metabox_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_creative_work_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Article.
 		 */
-		public function filter_metabox_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_article_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$article_sections = $this->p->util->get_article_sections();
 			$def_reading_mins = $this->p->page->get_reading_mins( $mod );
@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Book.
 		 */
-		public function filter_metabox_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_book_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_book' => array(
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > HowTo.
 		 */
-		public function filter_metabox_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_howto_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$howto_steps_max     = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_STEPS_MAX', 40 );
 			$howto_supplies_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX', 30 );
@@ -632,7 +632,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > HowTo > Recipe.
 		 */
-		public function filter_metabox_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_recipe_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$recipe_ingr_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX', 40 );
 			$recipe_inst_max = SucomUtil::get_const( 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX', 40 );
@@ -849,7 +849,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Movie.
 		 */
-		public function filter_metabox_sso_edit_schema_movie_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_movie_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
 			$movie_directors_max = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX', 5 );
@@ -909,7 +909,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Review.
 		 */
-		public function filter_metabox_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies          = SucomUtil::get_currency_abbrev();
 			$item_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_review_item_type' );
@@ -1315,7 +1315,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > Software Application.
 		 */
-		public function filter_metabox_sso_edit_schema_software_app_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_software_app_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_software_app' => array(
@@ -1346,7 +1346,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > WebPage.
 		 */
-		public function filter_metabox_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_webpage_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
 
@@ -1393,7 +1393,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema CreativeWork > WebPage > QAPage.
 		 */
-		public function filter_metabox_sso_edit_schema_qa_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_qa_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_qa' => array(
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Event.
 		 */
-		public function filter_metabox_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies          = SucomUtil::get_currency_abbrev();
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
@@ -1606,7 +1606,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Intangible > JobPosting.
 		 */
-		public function filter_metabox_sso_edit_schema_job_posting_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_job_posting_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies       = SucomUtil::get_currency_abbrev();
 			$def_schema_title = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
@@ -1689,7 +1689,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Organization.
 		 */
-		public function filter_metabox_sso_edit_schema_organization_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_organization_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_organization' => array(
@@ -1714,7 +1714,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Person.
 		 */
-		public function filter_metabox_sso_edit_schema_person_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_person_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_person' => array(
@@ -1741,7 +1741,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Place.
 		 */
-		public function filter_metabox_sso_edit_schema_place_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_place_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$form_rows = array(
 				'subsection_schema_place' => array(
@@ -1766,7 +1766,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		/*
 		 * Schema Product.
 		 */
-		public function filter_metabox_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
+		public function filter_mb_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $schema_tr_class, $args ) {
 
 			$currencies      = SucomUtil::get_currency_abbrev();
 			$dimension_units = WpssoUtilUnits::get_dimension_units();

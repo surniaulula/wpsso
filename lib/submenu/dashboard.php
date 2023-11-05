@@ -36,17 +36,15 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 'form_button_rows' => 1 ), PHP_INT_MAX );
-
 			$this->p->util->add_plugin_actions( $this, array( 'form_content_metaboxes_dashboard' => 1 ) );
 		}
 
-		public function filter_form_button_rows( $form_button_rows ) {
-
-			/*
-			 * Remove all action buttons from this settings page.
-			 */
-			return array();
+		/*
+		 * Remove all action buttons.
+		 */
+		protected function add_form_buttons( &$form_button_rows ) {
+			
+			$form_button_rows = array();
 		}
 
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {

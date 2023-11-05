@@ -26,11 +26,11 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_media_prio_video_rows' => 4,
+				'mb_sso_edit_media_prio_video_rows' => 4,
 			) );
 		}
 
-		public function filter_metabox_sso_edit_media_prio_video_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_edit_media_prio_video_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$form_rows = array(
 				'subsection_priority_video' => array(
