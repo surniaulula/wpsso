@@ -264,7 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed locale detection in the back-end.
 * **Developer Notes**
-	* Refactored the settings page load process:
+	* Refactored the settings page and metabox load process:
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
 		* Added `$obj` and `$md` args to all `show_metabox_*()` methods.
 		* Refactored `WpssoAdmin->add_meta_boxes()`
@@ -488,7 +488,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.7.0-dev.12 =
 
-(2023/11/05) Added support for Document SSO post meta revisions available since WordPress v6.4. Fixed locale detection in the back-end.
+(2023/11/05) Added support for Document SSO post meta revisions. Fixed locale detection in the back-end. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
