@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 16.7.0-dev.11 (2023/11/04)**
+**Version 16.7.0-dev.11 (2023/11/05)**
 
 * **New Features**
 	* None.
@@ -489,7 +489,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 16.7.0-dev.11 =
 
-(2023/11/04) Added support for Document SSO post meta revisions available since WordPress v6.4. Fixed locale detection in the back-end.
+(2023/11/05) Added support for Document SSO post meta revisions available since WordPress v6.4. Fixed locale detection in the back-end.
 
 = 16.6.0 =
 
