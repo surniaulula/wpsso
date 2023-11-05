@@ -2483,7 +2483,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '5.0.0-dev.12',	// Minimum update manager version (soft limit).
+				'rec_version' => '5.0.0-dev.13',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
