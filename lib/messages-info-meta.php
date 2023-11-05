@@ -192,7 +192,11 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	$text = '<p class="status-msg">';
 
-					$text .= sprintf( __( 'oEmbed HTML provided by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
+					$text .= sprintf( __( 'oEmbed HTML provided by the <code>%s</code> template.', 'wpsso' ),
+						'wpsso/embed-content' ) . '<br/>';
+
+					$text .= sprintf( __( 'Hook the <code>%s</code> filter to modify the oEmbed template path.', 'wpsso' ),
+						'wpsso_embed_content_template_path' ) . '<br/>';
 
 					$text .= '</p>';
 

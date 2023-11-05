@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 			}
 
 			/*
-			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'mb_sso_edit_media_rows'            => 4,
@@ -44,8 +44,11 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 		public function filter_mb_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$canonical_url   = $this->p->util->get_canonical_url( $mod );
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
+			$args = array(
+				'canonical_url' => $this->p->util->get_canonical_url( $mod ),
+			);
 
 			$form_rows = array(
 				'info_priority_media' => array(
@@ -78,30 +81,35 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+			foreach( array(
+				'wpsso_mb_sso_edit_media_prio_image_rows',
+				'wpsso_mb_sso_edit_media_prio_video_rows',
+				'wpsso_mb_sso_edit_media_og_rows',
+				'wpsso_mb_sso_edit_media_twitter_rows',
+				'wpsso_mb_sso_edit_media_schema_rows',
+				'wpsso_mb_sso_edit_media_pinterest_rows',
+			) as $filter_name ) {
 
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+				if ( $this->p->debug->enabled ) {
 
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_og_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
 
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
-
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
-
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
+				$table_rows = apply_filters( $filter_name, $table_rows, $form, $head_info, $mod, $args );
+			}
 
 			return $table_rows;
 		}
 
-		public function filter_mb_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting open graph image', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $args[ 'canonical_url' ], $mod, __( 'getting open graph image', 'wpsso' ) );
 
 			$size_name     = 'wpsso-opengraph';
 			$media_request = array( 'pid' );
 			$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
-			$this->p->util->maybe_unset_ref( $canonical_url );
+			$this->p->util->maybe_unset_ref( $args[ 'canonical_url' ] );
 
 			$form_rows = array(
 				'subsection_priority_image' => array(
@@ -133,7 +141,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		 *
 		 * Only show custom image options for the Summary and Summary Large Image cards.
 		 */
-		public function filter_mb_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -160,12 +168,12 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 				} else {
 
-					$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting twitter card image', 'wpsso' ) );
+					$this->p->util->maybe_set_ref( $args[ 'canonical_url' ], $mod, __( 'getting twitter card image', 'wpsso' ) );
 
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
-					$this->p->util->maybe_unset_ref( $canonical_url );
+					$this->p->util->maybe_unset_ref( $args[ 'canonical_url' ] );
 
 					$form_rows[ $tc_prefix . '_img_id' ] = array(
 						'th_class' => 'medium',
@@ -191,7 +199,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		/*
 		 * Schema.
 		 */
-		public function filter_mb_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -212,13 +220,13 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 				return $table_rows;
 			}
 
-			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $args[ 'canonical_url' ], $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
 
 			$size_name     = 'wpsso-schema-1x1';
 			$media_request = array( 'pid' );
 			$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
-			$this->p->util->maybe_unset_ref( $canonical_url );
+			$this->p->util->maybe_unset_ref( $args[ 'canonical_url' ] );
 
 			$form_rows = array(
 				'subsection_schema' => array(
@@ -248,7 +256,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		/*
 		 * Pinterest Pin It.
 		 */
-		public function filter_mb_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+		public function filter_mb_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -261,13 +269,13 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 			if ( ! $pin_img_disabled ) {
 
-				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting pinterest image', 'wpsso' ) );
+				$this->p->util->maybe_set_ref( $args[ 'canonical_url' ], $mod, __( 'getting pinterest image', 'wpsso' ) );
 
 				$size_name     = 'wpsso-pinterest';
 				$media_request = array( 'pid' );
 				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 
-				$this->p->util->maybe_unset_ref( $canonical_url );
+				$this->p->util->maybe_unset_ref( $args[ 'canonical_url' ] );
 			}
 
 			$form_rows = array(

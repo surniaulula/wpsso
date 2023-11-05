@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 			}
 
 			/*
-			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'mb_sso_edit_visibility_rows'        => 4,
@@ -67,7 +67,17 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_mb_sso_edit_visibility_robots_rows', $table_rows, $form, $head_info, $mod );
+			foreach( array(
+				'wpsso_mb_sso_edit_visibility_robots_rows',
+			) as $filter_name ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
+
+				$table_rows = apply_filters( $filter_name, $table_rows, $form, $head_info, $mod );
+			}
 
 			return $table_rows;
 		}

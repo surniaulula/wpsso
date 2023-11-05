@@ -1360,14 +1360,79 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			die( -1 );	// Nothing to do.
 		}
 
-		public function show_metabox_sso( $obj ) {
+		public function show_metabox_sso( $wp_obj ) {
 
-			echo $this->get_metabox_sso( $obj );
+			echo $this->get_metabox_sso( $wp_obj );
 		}
 
-		public function get_metabox_sso( $obj ) {
+		public function get_metabox_sso( $wp_obj ) {
 
-			return self::must_be_extended( $ret_val = '' );	// Empty html.
+			$mod        = $this->p->page->get_mod( $use_post = false, $mod = false, $wp_obj );
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
+			$tabs       = $this->get_document_sso_tabs( $metabox_id, $mod );
+			$md_opts    = $this->get_options( $mod[ 'id' ] );
+			$md_defs    = $this->get_defaults( $mod[ 'id' ] );
+
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
+
+			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// Start timer.
+			}
+
+			$table_rows = array();
+
+			foreach ( $tabs as $tab_key => $title ) {
+
+				/*
+				 * See WpssoAmFiltersEdit->filter_mb_sso_edit_appmeta_rows().
+				 * See WpssoBcFiltersEdit->filter_mb_sso_edit_schema_rows().
+				 * See WpssoEditGeneral->filter_mb_sso_edit_general_rows().
+				 * See WpssoEditMedia->filter_mb_sso_edit_media_rows().
+				 * See WpssoEditSchema->filter_mb_sso_edit_schema_rows().
+				 * See WpssoEditVisibility->filter_mb_sso_edit_visibility_rows().
+				 */
+				$filter_name = 'wpsso_mb_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
+
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, self::$head_info, $mod );
+			}
+
+			$tabbed_args = array( 'layout' => 'vertical' );	// Force vertical layout.
+
+			$container_id = 'wpsso_mb_' . $metabox_id . '_inside';
+
+			$metabox_html = "\n" . '<div id="' . $container_id . '">';
+
+			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+
+			$metabox_html .= '<!-- ' . $container_id . '_footer begin -->' . "\n";
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $container_id . '\'' );
+			}
+
+			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
+
+			$metabox_html .= '<!-- ' . $container_id . '_footer end -->' . "\n";
+
+			$metabox_html .= $this->get_metabox_javascript( $container_id );
+
+			$metabox_html .= '</div><!-- #'. $container_id . ' -->' . "\n";
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
+			}
+
+			return $metabox_html;
 		}
 
 		public function get_metabox_javascript( $container_id ) {
@@ -1452,7 +1517,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Extended by WpssoTerm->add_meta_boxes( $term_obj, $tax_slug = false );
 		 * Extended by WpssoUser->add_meta_boxes( $user_obj, $rel = false );
 		 */
-		public function add_meta_boxes( $obj, $rel = false ) {
+		public function add_meta_boxes( $mixed, $rel = false ) {
 
 			return self::must_be_extended();
 		}
@@ -1477,7 +1542,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::$head_tags;
 		}
 
-		protected function get_document_meta_tabs( $metabox_id, array $mod ) {
+		protected function get_document_sso_tabs( $metabox_id, array $mod ) {
 
 			$tabs = array();
 

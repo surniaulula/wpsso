@@ -31,14 +31,14 @@ if ( ! class_exists( 'WpssoEditValidators' ) ) {
 			}
 
 			/*
-			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_validators_rows' => 4,
+				'mb_sso_validators_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_validators_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_validators_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$validators = $this->p->util->get_validators( $mod, $form );
 

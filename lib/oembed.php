@@ -95,9 +95,22 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		 */
 		public function template_part_embed( $slug, $name, $args ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( 0 === strpos( $slug, 'wpsso/' ) ) {	// Just in case.
 
-				$template = preg_replace( '/^wpsso\/(.*)/', WPSSO_PLUGINDIR . 'lib/theme-compat/$1-' . $name . '.php', $slug );
+				$template    = preg_replace( '/^wpsso\/(.*)/', WPSSO_PLUGINDIR . 'lib/theme-compat/$1-' . $name . '.php', $slug );
+				$filter_name = SucomUtil::sanitize_hookname( $slug . '_' . $name . '_template_path' );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
+
+				$template = apply_filters( $filter_name, $template, $args );
 
 				if ( file_exists( $template ) ) {	// Just in case.
 

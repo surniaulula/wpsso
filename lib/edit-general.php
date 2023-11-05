@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 			}
 
 			/*
-			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'mb_sso_edit_general_rows' => 4,

@@ -31,15 +31,15 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 			}
 
 			/*
-			 * See WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_prev_social_rows' => 4,
-				'metabox_sso_prev_oembed_rows' => 4,
+				'mb_sso_prev_social_rows' => 4,
+				'mb_sso_prev_oembed_rows' => 4,
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_prev_social_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_prev_social_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
@@ -47,15 +47,8 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 
 			$image_url     = SucomUtil::get_first_mt_media_url( $head_info );
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
-
-			if ( $mod[ 'is_post' ] ) {
-
-				$shortlink_url = $this->p->util->get_shortlink( $mod, $context = 'post' );
-
-			} else {
-
-				$shortlink_url = $this->p->util->shorten_url( $canonical_url, $mod );
-			}
+			$shortlink_url = $mod[ 'is_post' ] ? $this->p->util->get_shortlink( $mod, $context = 'post' ) :
+				$this->p->util->shorten_url( $canonical_url, $mod );
 
 			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 &&
 				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ? true : false;
@@ -141,7 +134,7 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_prev_oembed_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_mb_sso_prev_oembed_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$json_url = $this->p->util->get_oembed_url( $mod, 'json' );
 			$xml_url  = $this->p->util->get_oembed_url( $mod, 'xml' );
@@ -160,8 +153,7 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 
 			if ( ! empty( $data[ 'html' ] ) ) {
 
-				$table_rows[ 'oembed_html' ] = '<td colspan="2" class="oembed_container">' . $data[ 'html' ] . '</td><!-- .oembed_container -->';
-
+				$table_rows[ 'oembed_html' ]   = '<td colspan="2" class="oembed_container">' . $data[ 'html' ] . '</td><!-- .oembed_container -->';
 				$table_rows[ 'oembed_footer' ] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-footer' ) . '</td>';
 
 			} else {

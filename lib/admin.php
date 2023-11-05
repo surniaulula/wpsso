@@ -1420,12 +1420,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function get_form_buttons() {
 
 			$this->add_form_buttons_submit( $form_button_rows );
-
 			$this->add_form_buttons_change_show_options( $form_button_rows );
-
 			$this->add_form_buttons( $form_button_rows );
 
-			$form_button_rows = apply_filters( 'wpsso_form_button_rows', $form_button_rows, $this->menu_id );
+			$filter_name = 'wpsso_form_button_rows';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$form_button_rows = apply_filters( $filter_name, $form_button_rows, $this->menu_id );
 
 			$buttons_html   = '';
 			$button_row_num = 1;
@@ -1519,10 +1524,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
 			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
-
-			$table_rows = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $args );
-
-			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_rows' );
+			$filter_name   = SucomUtil::sanitize_hookname( $filter_prefix . '_rows' );
+			$table_rows    = $this->get_table_rows( $page_id, $metabox_id, $tab_key = '', $args );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1543,8 +1546,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_id       = isset( $args[ 'page_id' ] ) ? $args[ 'page_id' ] : '';
 			$metabox_id    = isset( $args[ 'metabox_id' ] ) ? $args[ 'metabox_id' ] : '';
 			$filter_prefix = 'wpsso_mb_' . $page_id . '_' . $metabox_id;
-
-			$filter_name = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
+			$filter_name   = SucomUtil::sanitize_hookname( $filter_prefix . '_tabs' );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2008,7 +2010,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_menu_title() {
 
-			$menu_title = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+			$filter_name = 'wpsso_menu_title';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
 
 			return apply_filters( 'wpsso_menu_title', $menu_title );
 		}
@@ -2159,6 +2167,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_menu_' . $menu_id . '_title' );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
 
 			return apply_filters( $filter_name, $menu_title );
 		}

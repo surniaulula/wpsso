@@ -935,56 +935,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			die( -1 );	// Nothing to do.
 		}
 
-		public function get_metabox_sso( $user_obj ) {
-
-			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
-			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
-			$mod          = $this->get_mod( $user_obj->ID );
-			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
-			$md_opts      = $this->get_options( $user_obj->ID );
-			$md_defs      = $this->get_defaults( $user_obj->ID );
-
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
-
-			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( $metabox_id . ' table rows' );	// start timer
-			}
-
-			$table_rows = array();
-
-			foreach ( $tabs as $tab_key => $title ) {
-
-				$filter_name = 'wpsso_mb_' . $metabox_id . '_' . $tab_key . '_rows';
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
-				}
-
-				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
-			}
-
-			$tabbed_args = array( 'layout' => 'vertical' );	// Force vertical layout.
-
-			$metabox_html = "\n" . '<div id="' . $container_id . '">';
-			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-			$metabox_html .= '<!-- ' . $container_id . '_footer begin -->' . "\n";
-			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
-			$metabox_html .= '<!-- ' . $container_id . '_footer end -->' . "\n";
-			$metabox_html .= $this->get_metabox_javascript( $container_id );
-			$metabox_html .= '</div><!-- #'. $container_id . ' -->' . "\n";
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
-			}
-
-			return $metabox_html;
-		}
-
 		public function get_form_contact_fields( $fields = array() ) {
 
 			return array( 'none' => '[None]' ) + $this->add_contact_methods( array(
