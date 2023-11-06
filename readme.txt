@@ -263,6 +263,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for Document SSO post meta revisions available since WordPress v6.4.
 * **Bugfixes**
 	* Fixed locale detection in the back-end.
+	* Fixed potentially incorrect canonical URL when copying a post/page.
 * **Developer Notes**
 	* Refactored the settings page and metabox load process:
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
