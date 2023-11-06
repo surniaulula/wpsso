@@ -1,0 +1,81 @@
+
+__return_hour_in_seconds()
+
+__return_day_in_seconds()
+
+__return_week_in_seconds()
+
+__return_month_in_seconds()
+
+__return_year_in_seconds()
+
+wpsso_error_handler( $severity, $errstr, $filename, $lineno );
+
+wpsso_get_canonical_url( $mod = false, $add_page = true );
+
+wpsso_get_canonical_short_url( $mod = false, $add_page = true );
+
+wpsso_get_comment_mod( $comment_id );
+
+wpsso_get_is_functions();
+
+wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
+
+wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' );
+
+wpsso_get_page_mod( $use_post = false );
+
+wpsso_get_post_canonical_short_url( $post_id );
+
+wpsso_get_post_event_options( $post_id, $event_id = false );
+
+wpsso_get_post_job_options( $post_id, $job_id = false );
+
+wpsso_get_post_mod( $post_id );
+
+wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
+
+wpsso_get_post_og_image_url( $post_id, $size_name = 'thumbnail' );
+
+wpsso_get_post_options_full( $post_id, $md_key = false );
+
+wpsso_get_post_organization_options( $post_id, $org_id = 'site' );
+
+wpsso_get_post_place_options( $post_id, $place_id = 'custom' );
+
+wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' );
+
+wpsso_get_sharing_url( $mod = false, $add_page = true, $atts = array() );
+
+wpsso_get_sharing_short_url( $mod = false, $add_page = true, $atts = array() );
+
+wpsso_get_term_mod( $term_id );
+
+wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );
+
+wpsso_get_term_og_image_url( $term_id, $size_name = 'thumbnail' );
+
+wpsso_get_user_mod( $user_id );
+
+wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
+
+wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' );
+
+wpsso_get_term_options_full( $term_id, $md_key = false );
+
+wpsso_get_user_mod( $user_id );
+
+wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
+
+wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' );
+
+wpsso_get_user_options_full( $user_id, $md_key = false );
+
+wpsso_refresh_cache();
+
+wpsso_refresh_post_cache( $post_id );
+
+wpsso_shorten_url( $url );
+
+wpsso_show_head( $attr = '' );
+

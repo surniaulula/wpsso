@@ -1,0 +1,375 @@
+
+'sucom_get_post_object' ( $post_obj, $use_post )
+
+'sucom_get_term_object' ( $term_obj, $term_id, $tax_slug )
+
+'sucom_get_user_object' ( $user_obj, $user_id )
+
+'sucom_ignored_url_query_args' ( array $ignored_url_query_args )
+
+'sucom_is_home_page' ( $bool, $use_post )
+
+'sucom_is_home_posts' ( $bool, $use_post )
+
+'sucom_is_post_page' ( $bool, $use_post )
+
+'sucom_is_term_page' ( $bool )
+
+'sucom_is_user_page' ( $bool )
+
+'sucom_robots_default_directives' ( $directives )
+
+'sucom_strip_shortcodes' ( $preg_array )
+
+'wpsso_{post_type}_tag_taxonomy' ( $taxonomy = 'post_tag', $mod )
+
+'wpsso_add_link_rel_canonical' ( $bool, $mod )
+
+'wpsso_add_link_rel_shortlink' ( $bool, $mod )
+
+'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )	// Remove an SSO menu item (ie. 'dashboard', 'setup', etc.).
+
+'wpsso_add_toolbar_validate' ( $bool )
+
+'wpsso_archive_page_url' ( $url, $mod )
+
+'wpsso_article_sections' ( array $sections )
+
+'wpsso_attached_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $pid )
+
+'wpsso_attached_image_ids' ( $attach_ids, $post_id )
+
+'wpsso_cache_expire_api_response' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_expire_image_info' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_expire_schema_types' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_expire_short_url' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id )
+
+'wpsso_canonical_url' ( $url, $mod, $add_page )
+
+'wpsso_caption' ( $caption, $mod, $num_hashtags, $md_key )
+
+'wpsso_check_post_head' ( $bool, $post_id, $post_obj )
+
+'wpsso_content_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $mod )
+
+'wpsso_content_image_preg_html_tag' ( $default = 'img' )
+
+'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' )
+
+'wpsso_cropped_image_filepath' ( $new_filepath, $filepath, $size_info )
+
+'wpsso_default_term_id' ( $default_term_id, $mod, $tax_slug )
+
+'wpsso_description' ( $desc_text, $mod, $num_hashtags, $md_key )
+
+'wpsso_description_seed' ( '', $mod, $num_hashtags, $md_key )
+
+'wpsso_dimension_units' ( $units )
+
+'wpsso_featured_image_id' ( $pid, $post_id )
+
+'wpsso_fluid_volume_units' ( $units )
+
+'wpsso_form_select_{option_name}' ( $values )
+
+'wpsso_get_avail' ( $ret )
+
+'wpsso_get_config' ( array $cf )
+
+'wpsso_get_defaults' ( $defaults )
+
+'wpsso_get_md_defaults' ( array $md_defs, array $mod )
+
+'wpsso_get_md_options' ( array $md_opts, array $mod )
+
+'wpsso_get_post_defaults' ( array $md_defs, $post_id, array $mod )
+
+'wpsso_get_post_options' ( array $md_opts, $post_id, array $mod )
+
+'wpsso_get_short_url' ( $url, $service, $mod )
+
+'wpsso_get_site_defaults' ( $site_defaults )
+
+'wpsso_get_term_defaults' ( array $md_defs, $term_id, array $mod )
+
+'wpsso_get_term_options' ( array $md_opts, $term_id, array $mod )
+
+'wpsso_get_user_defaults' ( array $md_defs, $user_id, array $mod )
+
+'wpsso_get_user_options' ( array $md_opts, $user_id, array $mod )
+
+'wpsso_google_product_categories' ( array $categories )
+
+'wpsso_hashtags' ( $hashtags, $post_id )
+
+'wpsso_hashtags_seed' ( '', $post_id )
+
+'wpsso_head_disable' ( $bool, array $mod )
+
+'wpsso_home_url' ( $url, array $mod )
+
+'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
+
+'wpsso_image_upscale_max' ( $upscale_max = 33, $image_src_args )
+
+'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
+
+'wpsso_import_cf_{custom_field_name}' ( $value, array $mod, array $wp_meta )	// The WordPress custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.
+
+'wpsso_import_content_blocks' ( array $md_opts, array $mod, $content )
+
+'wpsso_import_custom_fields' ( array $md_opts, array $mod, array $wp_meta )
+
+'wpsso_import_product_attributes' ( array $md_opts, array $mod, $wp_obj )
+
+'wpsso_inherit_custom_images' ( $bool, array $mod )
+
+'wpsso_inherit_featured_image' ( $bool, array $mod )
+
+'wpsso_init_json_filter_{lib_dir}_{lib_id}' ( $bool = true )
+
+'wpsso_input_limits_{options_key}' ( array $limits )
+
+'wpsso_is_functions' ( $is_functions )
+
+'wpsso_js_url_facebook' ( $url, $pos )
+
+'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod )
+
+'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_data_single_event' ( $event_data, $mod, $event_id )
+
+'wpsso_json_data_single_organization' ( $org_data, $mod, $org_id )
+
+'wpsso_json_data_single_organization_sameas' ( $org_sameas, $mod, $org_id )
+
+'wpsso_json_data_single_person' ( $person_data, $mod, $user_id )
+
+'wpsso_json_data_single_person_sameas' ( $person_sameas, $mod, $user_id )
+
+'wpsso_json_data_single_place' ( $place_data, $mod, $place_id )
+
+'wpsso_json_data_single_product_group_varies_by' ( $varies_by, $mod )
+
+'wpsso_json_ld_search_url' ( $search_url, $mod, $add_page )
+
+'wpsso_json_pretty_print' ( $bool = true )
+
+'wpsso_json_prop_https_schema_org_additionaltype' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_aggregaterating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_blogposting' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_breadcrumb' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_graph' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_haspart' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_ispartof' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_itemlistelement' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_itemreviewed' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_mentions' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_potentialaction' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_review' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_reviewrating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_json_prop_https_schema_org_sameas' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
+
+'wpsso_link_rel' ( $link_rel, $mod )
+
+'wpsso_load_lib' ( $success = false, $filespec = '', $classname = '' )
+
+'wpsso_mb_sso_tabs' ( array $tabs, $mod )	// Associative array of metabox tab IDs and labels.
+
+'wpsso_md_keys_fallback_{options_key}' ( array $fallback )
+
+'wpsso_menu_title' ( $title )	// Translated menu title (default is "SSO - Social and Search Optimization").
+
+'wpsso_menu_your_sso_title' ( $title )	// Translated profile SSO title (default is "Profile SSO - Social and Search Optimization").
+
+'wpsso_meta_name' ( $mt_name, $mod )
+
+'wpsso_og_add_mt_offers' ( $bool = true, $mod )
+
+'wpsso_og_add_mt_rating' ( $bool = true, $mod )
+
+'wpsso_og_add_mt_reviews' ( $bool = true, $mod )
+
+'wpsso_og_add_mt_variants' ( $bool = true, $mod )
+
+'wpsso_og_add_wc_mt_rating' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_review_rating' option is 'yes'.
+
+'wpsso_og_add_wc_mt_reviews' ( $bool = false, $mod )	// $book = true if 'woocommerce_enable_reviews' option is 'yes'.
+
+'wpsso_og_attached_images' ( $mt_ret, $num, $size_name, $post_id )
+
+'wpsso_og_data_https_ogp_me_ns_{og_type}' ( $mt_og, $mod )
+
+'wpsso_og_default_img_id' ( $image_id )
+
+'wpsso_og_default_img_on_index' ( $bool )
+
+'wpsso_og_default_img_on_search' ( $bool )
+
+'wpsso_og_default_img_url' ( $image_url )
+
+'wpsso_og_ecom_edd' ( $mt_ecom, $mod )
+
+'wpsso_og_ecom_woocommerce' ( $mt_ecom, $mod )
+
+'wpsso_og_featured' ( $mt_ret, $num, $size_name, $post_id )
+
+'wpsso_og_ns' ( $ns )
+
+'wpsso_og' ( $og, $mod )
+
+'wpsso_og_seed' ( $og, $mod )
+
+'wpsso_og_type' ( $type_id, $mod, $is_custom )
+
+'wpsso_option_type' ( false, $base_key, $network, $mod )
+
+'wpsso_plugin_image_sizes' ( $sizes )
+
+'wpsso_post_image_ids' ( array $ids, $size_name, $post_id )
+
+'wpsso_post_image_urls' ( array $urls, $size_name, $post_id )
+
+'wpsso_post_public_ids' ( array $public_ids, array $posts_args )
+
+'wpsso_post_type_has_archive' ( $bool, $mod )
+
+'wpsso_post_types' ( $post_types, $output )
+
+'wpsso_post_url' ( $url, $mod )
+
+'wpsso_posts_per_page' ( $num, $mod )
+
+'wpsso_primary_tax_slug' ( $tax_slug, $mod )
+
+'wpsso_primary_term_id' ( $primary_term_id, $mod, $tax_slug, $is_custom )
+
+'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug, $output )
+
+'wpsso_product_attribute_names' ( array $attr_names )
+
+'wpsso_product_price' ( $price, $product )
+
+'wpsso_product_title' ( $title, $product )
+
+'wpsso_product_variation_title' ( $title, $product, $variation )
+
+'wpsso_product_variation_description' ( $desc, $product, $variation )
+
+'wpsso_quote' ( $quote, $mod )
+
+'wpsso_quote_seed' ( '', $mod )
+
+'wpsso_ratings_reviews_for_{post_type}' ( $bool )
+
+'wpsso_rename_md_options_keys' ( $md_opts_keys )
+
+'wpsso_rename_options_keys' ( $options_keys )
+
+'wpsso_rename_site_options_keys' ( $site_options_keys )
+
+'wpsso_request_url_query_cache_disable' ( $cache_disable = true, $request_url, $canonical_url, $mod )
+
+'wpsso_rewrite_image_url' ( $image_url )
+
+'wpsso_robots_content' ( $content, $mod, $directives )
+
+'wpsso_robots_directives' ( $directives, $mod )
+
+'wpsso_robots_is_noindex' ( $is_noindex, $mod )
+
+'wpsso_save_comment_options' ( $md_opts, $comment_id, $mod )
+
+'wpsso_save_post_options' ( $md_opts, $post_id, $mod )
+
+'wpsso_save_term_options' ( $md_opts, $term_id, $mod )
+
+'wpsso_save_user_options' ( $md_opts, $user_id, $mod )
+
+'wpsso_schema_type' ( $type_id, $mod, $is_custom )
+
+'wpsso_schema_types' ( $schema_types )
+
+'wpsso_schema_units' ( $schema_units )
+
+'wpsso_search_url' ( $url, $mod )
+
+'wpsso_server_request_url' ( $url, $mod )
+
+'wpsso_sharing_utm_args' ( $utm, $mod )
+
+'wpsso_sharing_url' ( $url, $mod, $add_page )
+
+'wpsso_social_accounts' ( $social_accounts )
+
+'wpsso_tag_names' ( $tags = array(), $mod )
+
+'wpsso_tag_names_seed' ( $tags = array(), $mod )
+
+'wpsso_tc_seed' ( $tc, $mod )
+
+'wpsso_tc' ( $tc, $mod )
+
+'wpsso_term_image_ids' ( array $ids, $size_name, $term_id )
+
+'wpsso_term_image_urls' ( array $urls, $size_name, $term_id )
+
+'wpsso_term_public_ids' ( array $public_ids, array $terms_args )
+
+'wpsso_term_url' ( $url, $mod )
+
+'wpsso_text' ( $text, $mod, $num_hashtags, $md_key )
+
+'wpsso_the_content' ( $content, $mod, $md_key )
+
+'wpsso_the_content_filter_content' ( $bool )
+
+'wpsso_the_content_filter_blocks' ( $bool )
+
+'wpsso_the_content_seed' ( '', $mod, $md_key )
+
+'wpsso_the_description' ( $desc_text, $mod )
+
+'wpsso_the_excerpt' ( $excerpt_text, $mod )
+
+'wpsso_the_text' ( $text, $mod, $title_sep )
+
+'wpsso_the_title' ( $title_text, $mod, $title_sep )
+
+'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
+
+'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
+
+'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
+
+'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
+
+'wpsso_user_public_ids' ( array $public_ids, array $users_args )
+
+'wpsso_user_url' ( $url, $mod )
+
+'wpsso_weight_units' ( $units )
+

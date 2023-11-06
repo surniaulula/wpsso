@@ -1,0 +1,27 @@
+
+'wpsso_check_head_info' ( $head_info, $mod, $canonical_url )
+
+'wpsso_clear_mod_cache' ( $mod )
+
+'wpsso_clear_post_cache' ( $post_id, $mod )
+
+'wpsso_clear_term_cache' ( $term_id, $mod )
+
+'wpsso_clear_user_cache' ( $user_id, $mod )
+
+'wpsso_refresh_post_cache' ( $post_id, $mod )
+
+'wpsso_refresh_term_cache' ( $term_id, $mod )
+
+'wpsso_refresh_user_cache' ( $user_id, $mod )
+
+'wpsso_init_objects' ()
+
+'wpsso_init_plugin' ()
+
+'wpsso_init_textdomain' ()
+
+'wpsso_pre_apply_filters_text' ( $filter_name )
+
+'wpsso_after_apply_filters_text' ( $filter_name )
+

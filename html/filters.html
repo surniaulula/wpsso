@@ -1,0 +1,398 @@
+
+<style type="text/css">
+
+	table.wpsso-filters {
+		font-size:0.9em;
+	}
+
+	table.wpsso-filters tr {
+		border-bottom:1px solid #ccc;
+	}
+
+	table.wpsso-filters th {
+		vertical-align:top;
+		padding:15px 15px 15px 0;
+	}
+
+	table.wpsso-filters td {
+		vertical-align:top;
+		padding:15px 0 15px 15px;
+	}
+
+</style>
+
+<table class="wpsso-filters">
+
+<tr><th>sucom_get_post_object</th><td>(&nbsp;$post_obj, $use_post&nbsp;)</td></tr>
+
+<tr><th>sucom_get_term_object</th><td>(&nbsp;$term_obj, $term_id, $tax_slug&nbsp;)</td></tr>
+
+<tr><th>sucom_get_user_object</th><td>(&nbsp;$user_obj, $user_id&nbsp;)</td></tr>
+
+<tr><th>sucom_is_home_page</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+
+<tr><th>sucom_is_home_posts</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+
+<tr><th>sucom_is_post_page</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+
+<tr><th>sucom_is_term_page</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+
+<tr><th>sucom_is_user_page</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+
+<tr><th>sucom_robots_default_directives</th><td>(&nbsp;$directives&nbsp;)</td></tr>
+
+<tr><th>sucom_strip_shortcodes</th><td>(&nbsp;$preg_array&nbsp;)</td></tr>
+
+<tr><th>wpsso_{post_type}_tag_taxonomy</th><td>(&nbsp;$taxonomy = 'post_tag', $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_add_link_rel_canonical</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_add_link_rel_shortlink</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_add_menu_submenu_item_{menu_id}</th><td>(&nbsp;$bool&nbsp;)</td><td>Remove an SSO menu item (ie. 'dashboard', 'setup', etc.).</tr>
+
+<tr><th>wpsso_add_toolbar_validate</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_archive_page_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_article_sections</th><td>(&nbsp;array $sections&nbsp;)</td></tr>
+
+<tr><th>wpsso_attached_accept_img_dims</th><td>(&nbsp;$accept, $img_url, $img_width, $img_height, $size_name, $pid&nbsp;)</td></tr>
+
+<tr><th>wpsso_attached_image_ids</th><td>(&nbsp;$attach_ids, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_api_response</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_head_markup</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_image_info</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_schema_types</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_short_url</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_expire_the_content</th><td>(&nbsp;$secs, $cache_type, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_cache_refreshed_notice</th><td>(&nbsp;$notice_msg, $user_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_canonical_url</th><td>(&nbsp;$url, $mod, $add_page&nbsp;)</td></tr>
+
+<tr><th>wpsso_caption</th><td>(&nbsp;$caption, $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_check_post_head</th><td>(&nbsp;$bool, $post_id, $post_obj&nbsp;)</td></tr>
+
+<tr><th>wpsso_content_accept_img_dims</th><td>(&nbsp;$accept, $img_url, $img_width, $img_height, $size_name, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_content_image_preg_html_tag</th><td>(&nbsp;$default = 'img'&nbsp;)</td></tr>
+
+<tr><th>wpsso_content_image_preg_pid_attr</th><td>(&nbsp;$default = 'data-[a-z]+-pid'&nbsp;)</td></tr>
+
+<tr><th>wpsso_cropped_image_filepath</th><td>(&nbsp;$new_filepath, $filepath, $size_info&nbsp;)</td></tr>
+
+<tr><th>wpsso_default_term_id</th><td>(&nbsp;$default_term_id, $mod, $tax_slug&nbsp;)</td></tr>
+
+<tr><th>wpsso_description</th><td>(&nbsp;$desc_text, $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_description_seed</th><td>(&nbsp;'', $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_dimension_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
+
+<tr><th>wpsso_featured_image_id</th><td>(&nbsp;$pid, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_fluid_volume_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
+
+<tr><th>wpsso_form_select_{option_name}</th><td>(&nbsp;$values&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_avail</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_config</th><td>(&nbsp;array $cf&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_defaults</th><td>(&nbsp;$defaults&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_md_defaults</th><td>(&nbsp;array $md_defs, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_md_options</th><td>(&nbsp;array $md_opts, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_post_defaults</th><td>(&nbsp;array $md_defs, $post_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_post_options</th><td>(&nbsp;array $md_opts, $post_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_short_url</th><td>(&nbsp;$url, $service, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_site_defaults</th><td>(&nbsp;$site_defaults&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_term_defaults</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_term_options</th><td>(&nbsp;array $md_opts, $term_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_user_defaults</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_get_user_options</th><td>(&nbsp;array $md_opts, $user_id, array $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_google_product_categories</th><td>(&nbsp;array $categories&nbsp;)</td></tr>
+
+<tr><th>wpsso_hashtags</th><td>(&nbsp;$hashtags, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_hashtags_seed</th><td>(&nbsp;'', $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_head_disable</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_home_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_image_upscale_all</th><td>(&nbsp;WPSSO_IMAGE_UPSCALE_ALL = false&nbsp;)</td></tr>
+
+<tr><th>wpsso_image_upscale_max</th><td>(&nbsp;$upscale_max = 33, $image_src_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_image_upscale_test</th><td>(&nbsp;WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_import_cf_{custom_field_name}</th><td>(&nbsp;$value, array $mod, array $wp_meta&nbsp;)</td><td>The WordPress custom field (aka metadata) does not need to exist - $value = null if the custom field does not exist.</td></tr>
+
+<tr><th>wpsso_import_content_blocks</th><td>(&nbsp;array $md_opts, array $mod, $content&nbsp;)</td></tr>
+
+<tr><th>wpsso_import_custom_fields</th><td>(&nbsp;array $md_opts, array $mod, array $wp_meta&nbsp;)</td></tr>
+
+<tr><th>wpsso_import_product_attributes</th><td>(&nbsp;array $md_opts, array $mod, $wp_obj&nbsp;)</td></tr>
+
+<tr><th>wpsso_inherit_custom_images</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_inherit_featured_image</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_init_json_filter_{lib_dir}_{lib_id}</th><td>(&nbsp;$bool = true&nbsp;)</td></tr>
+
+<tr><th>wpsso_input_limits_{options_key}</th><td>(&nbsp;array $limits&nbsp;)</td></tr>
+
+<tr><th>wpsso_is_functions</th><td>(&nbsp;$is_functions&nbsp;)</td></tr>
+
+<tr><th>wpsso_js_url_facebook</th><td>(&nbsp;$url, $pos&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_array_schema_page_type_ids</th><td>(&nbsp;$page_type_ids, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_https_schema_org_{item_type}</th><td>(&nbsp;$json_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_event</th><td>(&nbsp;$event_data, $mod, $event_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_organization</th><td>(&nbsp;$org_data, $mod, $org_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_organization_sameas</th><td>(&nbsp;$org_sameas, $mod, $org_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_person</th><td>(&nbsp;$person_data, $mod, $user_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_person_sameas</th><td>(&nbsp;$person_sameas, $mod, $user_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_place</th><td>(&nbsp;$place_data, $mod, $place_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_data_single_product_group_varies_by</th><td>(&nbsp;$varies_by, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_ld_search_url</th><td>(&nbsp;$search_url, $mod, $add_page&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_pretty_print</th><td>(&nbsp;$bool = true&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_additionaltype</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_aggregaterating</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_blogposting</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_breadcrumb</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_graph</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_haspart</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_ispartof</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_itemlistelement</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_itemreviewed</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_mentions</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_potentialaction</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_review</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_reviewrating</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_json_prop_https_schema_org_sameas</th><td>(&nbsp;$prop_data, $mod, $mt_og, $page_type_id, $is_main&nbsp;)</td></tr>
+
+<tr><th>wpsso_link_rel</th><td>(&nbsp;$link_rel, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_load_lib</th><td>(&nbsp;$success = false, $filespec = '', $classname = ''&nbsp;)</td></tr>
+
+<tr><th>wpsso_mb_sso_tabs</th><td>(&nbsp;array $tabs, $mod&nbsp;)</td><td>Associative array of metabox tab IDs and labels.</td></tr>
+
+<tr><th>wpsso_md_keys_fallback_{options_key}</th><td>(&nbsp;array $fallback&nbsp;)</td></tr>
+
+<tr><th>wpsso_menu_title</th><td>(&nbsp;$title&nbsp;)</td><td>Translated menu title (default is "SSO - Social and Search Optimization").</td></tr>
+
+<tr><th>wpsso_menu_your_sso_title</th><td>(&nbsp;$title&nbsp;)</td><td>Translated profile SSO title (default is "Profile SSO - Social and Search Optimization").</td></tr>
+
+<tr><th>wpsso_meta_name</th><td>(&nbsp;$mt_name, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_mt_offers</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_mt_rating</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_mt_reviews</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_mt_variants</th><td>(&nbsp;$bool = true, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_add_wc_mt_rating</th><td>(&nbsp;$bool = false, $mod&nbsp;)</td><td>$bool = true if 'woocommerce_enable_review_rating' option is 'yes'.</td></tr>
+
+<tr><th>wpsso_og_add_wc_mt_reviews</th><td>(&nbsp;$bool = false, $mod&nbsp;)</td><td>$bool = true if 'woocommerce_enable_reviews' option is 'yes'.</td></tr>
+
+<tr><th>wpsso_og_attached_images</th><td>(&nbsp;$mt_ret, $num, $size_name, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_data_https_ogp_me_ns_{og_type}</th><td>(&nbsp;$mt_og, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_default_img_id</th><td>(&nbsp;$image_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_default_img_on_index</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_default_img_on_search</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_default_img_url</th><td>(&nbsp;$image_url&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_ecom_edd</th><td>(&nbsp;$mt_ecom, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_ecom_woocommerce</th><td>(&nbsp;$mt_ecom, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_featured</th><td>(&nbsp;$mt_ret, $num, $size_name, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_ns</th><td>(&nbsp;$ns&nbsp;)</td></tr>
+
+<tr><th>wpsso_og</th><td>(&nbsp;$og, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_seed</th><td>(&nbsp;$og, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_og_type</th><td>(&nbsp;$type_id, $mod, $is_custom&nbsp;)</td></tr>
+
+<tr><th>wpsso_option_type</th><td>(&nbsp;false, $base_key, $network, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_plugin_image_sizes</th><td>(&nbsp;$sizes&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_image_ids</th><td>(&nbsp;array $ids, $size_name, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_image_urls</th><td>(&nbsp;array $urls, $size_name, $post_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_public_ids</th><td>(&nbsp;array $public_ids, array $posts_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_type_has_archive</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_types</th><td>(&nbsp;$post_types, $output&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_posts_per_page</th><td>(&nbsp;$num, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_primary_tax_slug</th><td>(&nbsp;$tax_slug, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_primary_term_id</th><td>(&nbsp;$primary_term_id, $mod, $tax_slug, $is_custom&nbsp;)</td></tr>
+
+<tr><th>wpsso_primary_terms</th><td>(&nbsp;$primary_terms, $mod, $tax_slug, $output&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_attribute_names</th><td>(&nbsp;array $attr_names&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_price</th><td>(&nbsp;$price, $product&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_title</th><td>(&nbsp;$title, $product&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_variation_title</th><td>(&nbsp;$title, $product, $variation&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_variation_description</th><td>(&nbsp;$desc, $product, $variation&nbsp;)</td></tr>
+
+<tr><th>wpsso_quote</th><td>(&nbsp;$quote, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_quote_seed</th><td>(&nbsp;'', $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_ratings_reviews_for_{post_type}</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_rename_md_options_keys</th><td>(&nbsp;$md_opts_keys&nbsp;)</td></tr>
+
+<tr><th>wpsso_rename_options_keys</th><td>(&nbsp;$options_keys&nbsp;)</td></tr>
+
+<tr><th>wpsso_rename_site_options_keys</th><td>(&nbsp;$site_options_keys&nbsp;)</td></tr>
+
+<tr><th>wpsso_request_url_query_cache_disable</th><td>(&nbsp;$bool = true, $request_url, $canonical_url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_rewrite_image_url</th><td>(&nbsp;$image_url&nbsp;)</td></tr>
+
+<tr><th>wpsso_robots_content</th><td>(&nbsp;$content, $mod, $directives&nbsp;)</td></tr>
+
+<tr><th>wpsso_robots_directives</th><td>(&nbsp;$directives, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_robots_is_noindex</th><td>(&nbsp;$is_noindex, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_save_comment_options</th><td>(&nbsp;$md_opts, $comment_id, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_save_post_options</th><td>(&nbsp;$md_opts, $post_id, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_save_term_options</th><td>(&nbsp;$md_opts, $term_id, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_save_user_options</th><td>(&nbsp;$md_opts, $user_id, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_schema_type</th><td>(&nbsp;$type_id, $mod, $is_custom&nbsp;)</td></tr>
+
+<tr><th>wpsso_schema_types</th><td>(&nbsp;$schema_types&nbsp;)</td></tr>
+
+<tr><th>wpsso_schema_units</th><td>(&nbsp;$schema_units&nbsp;)</td></tr>
+
+<tr><th>wpsso_search_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_server_request_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_sharing_utm_args</th><td>(&nbsp;$utm, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_sharing_url</th><td>(&nbsp;$url, $mod, $add_page&nbsp;)</td></tr>
+
+<tr><th>wpsso_social_accounts</th><td>(&nbsp;$social_accounts&nbsp;)</td></tr>
+
+<tr><th>wpsso_tag_names</th><td>(&nbsp;$tags = array(), $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_tag_names_seed</th><td>(&nbsp;$tags = array(), $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_tc_seed</th><td>(&nbsp;$tc, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_tc</th><td>(&nbsp;$tc, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_term_image_ids</th><td>(&nbsp;array $ids, $size_name, $term_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_term_image_urls</th><td>(&nbsp;array $urls, $size_name, $term_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_term_public_ids</th><td>(&nbsp;array $public_ids, array $terms_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_term_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_text</th><td>(&nbsp;$text, $mod, $num_hashtags, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content</th><td>(&nbsp;$content, $mod, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content_filter_content</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content_filter_blocks</th><td>(&nbsp;$bool&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_content_seed</th><td>(&nbsp;'', $mod, $md_key&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_description</th><td>(&nbsp;$desc_text, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_excerpt</th><td>(&nbsp;$excerpt_text, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_text</th><td>(&nbsp;$text, $mod, $title_sep&nbsp;)</td></tr>
+
+<tr><th>wpsso_the_title</th><td>(&nbsp;$title_text, $mod, $title_sep&nbsp;)</td></tr>
+
+<tr><th>wpsso_title_seed</th><td>(&nbsp;'', $mod, $num_hashtags, $md_key, $title_sep&nbsp;)</td></tr>
+
+<tr><th>wpsso_title</th><td>(&nbsp;$title_text, $mod, $num_hashtags, $md_key, $title_sep&nbsp;)</td></tr>
+
+<tr><th>wpsso_user_image_ids</th><td>(&nbsp;array $ids, $size_name, $user_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_user_image_urls</th><td>(&nbsp;array $urls, $size_name, $user_id&nbsp;)</td></tr>
+
+<tr><th>wpsso_user_public_ids</th><td>(&nbsp;array $public_ids, array $users_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_user_url</th><td>(&nbsp;$url, $mod&nbsp;)</td></tr>
+
+<tr><th>wpsso_weight_units</th><td>(&nbsp;$units&nbsp;)</td></tr>
+
+</table>

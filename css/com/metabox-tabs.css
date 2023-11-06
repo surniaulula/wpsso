@@ -1,0 +1,526 @@
+
+/*
+ * Prevent Firefox from outlining links.
+ */
+a.sucom-tablink
+a.sucom-tablink:active,
+a.sucom-tablink:focus {
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+}
+
+.inside .hidden_opts_msg {
+	color:#999;
+	font-size:0.9em;
+	font-weight:400;
+	line-height:1em;
+	padding:10px;
+	text-align:center;
+	border-top:1px solid #eee;
+	background-color:#fafafa;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+div.inside > div.sucom-no_tabset {
+	overflow:auto;
+	min-height:245px;
+	margin-top:-1px;
+	border-top:1px solid #c3c4c7;
+}
+
+div.inside > div.sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
+div.inside > div.sucom-no_tabset.metabox-rrssb_share,
+div.inside > div.sucom-no_tabset.metabox-tie-wp-general {
+	min-height:0;
+}
+
+.sucom-tabset,
+.sucom-tabset-msg {
+	display:none;
+}
+
+.sucom-tabset.active {
+	display:block;
+	overflow:auto;
+	background-color:#fff;
+}
+
+.sucom-tabset-msg.active {
+	display:block;
+}
+
+/*
+ * Tabs - default horizontal layout.
+ */
+div.sucom-metabox-tabs {
+	overflow:auto;
+	margin-top:-1px;
+	border-top:1px solid #eee;
+}
+
+ul.sucom-metabox-tabs,
+ul.sucom-metabox-tabs.horizontal {
+	display:none;
+	white-space:nowrap;	/* Prevent inline-blocks from wrapping. */
+	list-style:none;
+	font-size:13px;
+	line-height:13px;
+	margin:12px 0 0 0;
+	padding:0;
+	border-bottom:1px solid #eee;
+}
+
+ul.sucom-metabox-tabs li,
+ul.sucom-metabox-tabs.horizontal li {
+	display:inline-block;
+	vertical-align:top;
+	white-space:nowrap;
+	overflow:hidden;
+	margin:0 0 -1px 0;
+	padding:0;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+	background-color:#fafafa;
+}
+
+ul.sucom-metabox-tabs li.tab_space,
+ul.sucom-metabox-tabs.horizontal li.tab_space {
+	width:8px;
+	border-top:1px solid transparent;
+	border-left:1px solid transparent;
+	border-right:1px solid transparent;
+	border-bottom:1px solid transparent;
+	background-color:transparent;
+}
+
+ul.sucom-metabox-tabs li.tab_space.start_tabs,
+ul.sucom-metabox-tabs.horizontal li.tab_space.start_tabs,
+ul.sucom-metabox-tabs li.tab_space.end_tabs,
+ul.sucom-metabox-tabs.horizontal li.tab_space.end_tabs {
+	width:12px;
+}
+
+ul.sucom-metabox-tabs li.active,
+ul.sucom-metabox-tabs.horizontal li.active {
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #fff;
+	background-color:#fff;
+}
+
+ul.sucom-metabox-tabs li a,
+ul.sucom-metabox-tabs.horizontal li a {
+	outline:none;
+	display:inline-block;
+	padding:12px 14px;
+	text-decoration:none;
+}
+
+ul.sucom-metabox-tabs li a.sucom-tablink-text,
+ul.sucom-metabox-tabs.horizontal li a.sucom-tablink-text {
+	padding-left:0;
+}
+
+ul.sucom-metabox-tabs li.active a {
+	color:#555;
+}
+
+ul.sucom-metabox-tabs li a.nav-tab-active {
+	color:inherit;
+	background:inherit;
+	border-bottom:inherit;
+	margin-bottom:inherit;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+}
+
+/*
+ * Tabs - vertical layout.
+ */
+ul.sucom-metabox-tabs.vertical {
+	float:left;
+	display:block;
+	width:20%;
+	min-width:180px;
+	max-width:200px;
+	margin:0;
+	padding:0;
+	border:none;
+	background-color:#fafafa;
+	height:100%;
+}
+
+body.rtl ul.sucom-metabox-tabs.vertical {
+	float:right;
+}
+
+ul.sucom-metabox-tabs.vertical li {
+	display:flex;
+	margin:0;
+	padding:0;
+	border:none;
+	border-top:1px solid #eee;
+}
+
+ul.sucom-metabox-tabs.vertical li.first_tab {
+	border-top:none;
+}
+
+ul.sucom-metabox-tabs.vertical li.tab_space {
+	display:none;
+}
+
+ul.sucom-metabox-tabs.vertical li.active {
+	background-color:#eee;
+}
+
+ul.sucom-metabox-tabs.vertical li a {
+	padding:14px 16px;
+}
+
+ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {
+	padding-left:0;
+}
+
+ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {
+	width:100%;	/* Takes the remaining width of the flex parent. */
+}
+
+div.sucom-metabox-tabs.vertical {
+	background-color:#fafafa;
+}
+
+div.sucom-metabox-tabs.vertical div.sucom-tabset {
+	border-left:1px solid #eee;
+	background-color:#fff;
+}
+
+.inside div.sucom-metabox-tabs.vertical div.hidden_opts_msg {
+	float:left;
+	width:100%;
+}
+
+h3.sucom-metabox-tab_title {
+	display:none;		/* Hidden by default. */
+	color:#555;		/* Match the active tab color. */
+	text-align:center;
+	font-weight:400;
+	line-height:1em;
+	padding:14px;
+	margin:0;
+	border-bottom:1px solid #eee;
+}
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1200px ) {
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a {
+		padding:14px;
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {	/* Document SSO metabox. */
+		display:none;
+	}
+
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:14px;
+		min-width:14px;
+		line-height:14px;
+	}
+
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:14px;
+		line-height:14px;
+	}
+}
+
+@media screen and ( max-width:960px ) {
+
+	ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	ul.sucom-metabox-tabs li a.sucom-tablink-text {
+		display:none;
+	}
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:16px;
+		min-width:16px;
+		line-height:16px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:16px;
+		line-height:16px;
+	}
+}
+
+@media screen and ( max-width:782px ) {
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso#wpsso_sso  .sucom-tablink-icon::before {
+		font-size:22px;
+		min-width:22px;
+		line-height:22px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		font-size:22px;
+		line-height:22px;
+	}
+}
+/*
+ * Tab icons.
+ *
+ * See http://fontello.com.
+ */
+.sucom-tablink-icon::before {						/* Default tab. */
+	display:inline-block;
+	text-align:center;
+	content:"\f1de";	/* .icon-sliders */
+	font-family:"WpssoIcons";
+	width:1em;
+}
+
+.sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
+	content:"\e815";	/* .icon-download-bar */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles / Descriptions tab. */
+	content:"\e809";	/* .icon-edit */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Attributes and Metadata > Custom Fields tab. */
+	content:"\e80c";	/* .icon-key */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_custom_cm::before {		/* SSO > Advanced Settings > Contact Fields > Custom Contacts tab. */
+	content:"\f2c3";	/* .icon-id-card-o */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_default_cm::before {		/* SSO > Advanced Settings > Contact Fields > Default Contacts tab. */
+	content:"\f2c2";	/* .icon-id-card */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_default_text::before {		/* SSO > Advanced Settings > Plugin Settings > Default Text tab. */
+	content:"\e809";	/* .icon-edit */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_general::before {		/* Document SSO > Edit General tab. */
+	content:"\e809";	/* .icon-edit */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_schema::before {		/* Document SSO > Edit Schema tab. */
+	content:"\f121";	/* .icon-code */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_media::before {		/* Document SSO > Edit Media tab. */
+	content:"\e808";	/* .icon-picture */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_appmeta::before {		/* Document SSO > Edit Mobile Apps tab. */
+	content:"\e82f";	/* .icon-mobile */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_share::before {		/* Document SSO > Edit Share Buttons tab. */
+	content:"\e807";	/* .icon-export */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_visibility::before {	/* Document SSO > Edit Visibility tab. */
+	content:"\e805";	/* .icon-eye */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_facebook::before {		/* SSO > General Settings > Social and Search Sites > Facebook tab. */
+	content:"\f308";	/* .icon-facebook-squared */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_filters::before {		/* Version Filters tab. */
+	content:"\f0b0";	/* .icon-filter */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_google::before {			/* SSO > General Settings > Social and Search Sites > Google tab. */
+	content:"\f1a0";	/* .icon-google */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_head_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Head Section tab. */
+	content:"\e814";	/* .icon-upload-bar */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_image_sizes::before {		/* SSO > Advanced Settings > Plugin Settings > Image Sizes tab. */
+	content:"\e82d";	/* .icon-resize-full */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_images::before {			/* SSO > General Settings > General Settings > Images tab. */
+	content:"\e808";	/* .icon-picture */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_imagick::before {		/* ImageMagick tab. */
+	content:"\f0d0";	/* .icon-magic */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_integration::before {		/* SSO > Advanced Settings > Plugin Settings > Integration tab. */
+	content:"\f2b5";	/* .icon-handshake-o */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_interface::before {		/* SSO > Advanced Settings > Plugin Settings > Interface tab. */
+	content:"\f108";	/* .icon-desktop */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_itunes::before {			/* Apple Store App tab. */
+	content:"\f179";	/* .icon-apple */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_knowledge_graph::before {	/* Knowledge Graph tab. */
+	content:"\f1a0";	/* .icon-google */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_media::before {			/* SSO > Advanced Settings > Service APIs > Media Services tab. */
+	content:"\e808";	/* .icon-picture */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_og_types::before {		/* SSO > Advanced Settings > Document Types > Open Graph Types tab. */
+	content:"\f1e1";	/* .icon-share-squared */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_open_graph::before {		/* SSO > Advanced Settings > HTML Tags > Open Graph tab. */
+	content:"\f1e1";	/* .icon-share-squared */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_other::before {			/* SSO > Organizations > Other Organizations tab. */
+	content:"\f0f7";	/* .icon-building */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_other_sites::before {		/* SSO > General Settings > Social and Search Sites > Other Sites tab. */
+	content:"\e81c";	/* .icon-robot-5 */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_pinterest::before {		/* SSO > General Settings > Social and Search Sites > Pinterest tab. */
+	content:"\f0d3";	/* .icon-pinterest-squared */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_prev_oembed::before {		/* Document SSO > Preview oEmbed tab. */
+	content:"\f2c3";	/* .icon-id-card-o */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_prev_social::before {		/* Document SSO > Preview Social tab. */
+	content:"\f1e0";	/* .icon-share */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Attributes and Metadata > Product Attributes tab. */
+	content:"\e80f";	/* .icon-barcode */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_ratings_reviews::before {	/* SSO > Advanced Settings > Service APIs > Ratings and Reviews tab. */
+	content:"\f123";	/* .icon-star-half-alt */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_schema::before {			/* SSO > Advanced Settings > HTML Tags > Schema tab. */
+	content:"\f121";	/* .icon-code */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_schema_types::before {		/* SSO > Advanced Settings > Document Types > Schema Types tab. */
+	content:"\f121";	/* .icon-code */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO / Other tab. */
+	content:"\e81c";	/* .icon-robot-5 */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_addon-settings::before,		/* SSO > FAQ Settings > Add-on Settings tab. */
+.sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Plugin Settings > Plugin Admin tab. */
+	content:"\e80e";	/* .icon-cog-alt */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_shortcode-defaults::before {	/* SSO > FAQ Settings > Frequently Asked Questions > Shortcode Defaults tab. */
+	content:"\f12e";	/* .icon-puzzle */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_shortening::before {		/* SSO > Advanced Settings > Service APIs > Shortening Services tab. */
+	content:"\e82c";	/* .icon-link */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_site::before {			/* SSO > General Settings > General Settings > Site Information tab. */
+	content:"\e803";	/* .icon-home */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_loc_defs::before {		/* SSO > General Settings > General Settings > Location Defaults tab. */
+	content:"\e835";	/* .icon-globe-alt */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* SSO > General Settings > Social and Search Sites > Twitter tab. */
+	content:"\f304";	/* .icon-twitter-squared */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_validators::before {		/* Document SSO > Validators tab. */
+	content:"\e81b";	/* .icon-robot-4 */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_videos::before {			/* SSO > General Settings > General Settings > Videos tab. */
+	content:"\e800";	/* .icon-videocam */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_article::before {		/* SSO > Advanced Settings > Schema Defaults > Article tab. */
+	content:"\f1ea";	/* .icon-newspaper */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_book::before {			/* SSO > Advanced Settings > Schema Defaults > Book tab. */
+	content:"\e830";	/* .icon-book */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_creative_work::before {		/* SSO > Advanced Settings > Schema Defaults > Creative Work tab. */
+	content:"\f1fc";	/* .icon-brush */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_event::before {			/* SSO > Advanced Settings > Schema Defaults > Event tab. */
+	content:"\f145";	/* .icon-ticket */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_job_posting::before {		/* SSO > Advanced Settings > Schema Defaults > Job Posting tab. */
+	content:"\e831";	/* .icon-pin */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_organization::before {		/* SSO > Advanced Settings > Schema Defaults > Organization tab. */
+	content:"\f0f7";	/* .icon-building */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_place::before {			/* SSO > Advanced Settings > Schema Defaults > Place tab. */
+	content:"\e806";	/* .icon-location */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_product::before {		/* SSO > Advanced Settings > Schema Defaults > Product tab. */
+	content:"\e832";	/* .icon-tag */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_review::before {			/* SSO > Advanced Settings > Schema Defaults > Review tab. */
+	content:"\e818";	/* .icon-comment */
+}
+
+.sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */
+	content:"\e816";	/* .icon-css */
+}
+

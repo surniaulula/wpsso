@@ -1,0 +1,85 @@
+
+/*
+ * Hard-coded / fixed constants. These values cannot be modified.
+ */
+WPSSO_FILEPATH
+WPSSO_NONCE_NAME
+WPSSO_PLUGINBASE
+WPSSO_PLUGINDIR
+WPSSO_PLUGINSLUG
+WPSSO_UNDEF
+WPSSO_URLPATH
+WPSSO_VERSION
+
+/*
+ * Define in your wp-config.php file to change the default value.
+ */
+FORCE_SSL                                = false
+FORCE_SSL_ADMIN                          = false
+FORCE_SSL_LOGIN                          = false
+WPSSO_ADD_MENU_PRIORITY                  = -20
+WPSSO_ADD_SUBMENU_PRIORITY               = -10
+WPSSO_ADMIN_DEBUG_HTML                   = false	// Add only back-end debug messages to the webpage HTML.
+WPSSO_ADMIN_DEBUG_LOG                    = false	// Log only back-end debug messages to the PHP error log.
+WPSSO_ADMIN_SCRIPTS_PRIORITY             = -1000
+WPSSO_BLOCK_ASSETS_PRIORITY              = -1000
+WPSSO_ARTICLE_SECTIONS_LIST              = WPSSO_PLUGINDIR . 'share/article-sections.txt'
+WPSSO_CACHE_DISABLE                      = false	// Disable head markup transient cache for debugging purposes.
+WPSSO_CACHE_DIR                          = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
+WPSSO_CACHE_URL                          = content_url( 'cache/wpsso/' )
+WPSSO_CACHE_REFRESH_MAX_TIME             = 1800		// 30 minutes.
+WPSSO_CONTENT_BLOCK_FILTER_OUTPUT        = true 	// Monitor and control incorrectly coded filter output.
+WPSSO_CONTENT_FILTERS_MAX_TIME           = 1.00 	// Issue a warning if the content filter takes longer than 1 second.
+WPSSO_CONTENT_IMAGES_MAX                 = 5    	// Maximum number of images extracted from the content.
+WPSSO_DEBUG_HTML                         = false	// Add both front-end and back-end debug messages to the webpage HTML.
+WPSSO_DEBUG_LOG                          = false	// Log both front-end and back-end debug messages to the PHP error log.
+WPSSO_DISMISS_NAME                       = 'wpsso_dismissed'
+WPSSO_DUPE_CHECK_HEADER_COUNT            = 3
+WPSSO_DUPE_CHECK_TIMEOUT_TIME            = 3.0
+WPSSO_DUPE_CHECK_WARNING_TIME            = 2.5
+WPSSO_HEAD_PRIORITY                      = 10
+WPSSO_HTML_ATTR_FILTER_NAME              = 'language_attributes'	// <html> attributes filter hook name.
+WPSSO_HTML_ATTR_FILTER_PRIO              = 1000				// <html> attributes filter hook priority.
+WPSSO_IMAGE_MAKE_SIZE_MAX_TIME           = 5.00
+WPSSO_IMAGE_UPSCALE_ALL                  = false
+WPSSO_IMAGE_UPSCALE_TEST                 = false
+WPSSO_JSON_PRETTY_PRINT                  = true		// Allows for better visual cues in the Google validator.
+WPSSO_MENU_ORDER                         = 80
+WPSSO_META_NAME                          = '_wpsso_meta'
+WPSSO_META_ATTACHED_NAME                 = '_wpsso_meta_attached'
+WPSSO_META_RATING_NAME                   = 'rating'
+WPSSO_META_SAVE_PRIORITY                 = -1000
+WPSSO_META_CLEAR_PRIORITY                = -100
+WPSSO_META_REFRESH_PRIORITY              = -10
+WPSSO_META_GENERATOR_DISABLE             = false	// Note that generator meta tags must be enabled for plugin support.
+WPSSO_OPTIONS_NAME                       = 'wpsso_options'
+WPSSO_PHP_CURL_CAINFO                    = ABSPATH . WPINC . '/certificates/ca-bundle.crt'
+WPSSO_PHP_CURL_USERAGENT                 = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
+WPSSO_PHP_GETIMGSIZE_MAX_TIME            = 2.00
+WPSSO_PREF_NAME                          = '_wpsso_pref'
+WPSSO_PRODUCT_CATEGORIES_LIST            = WPSSO_PLUGINDIR . 'share/product-categories.txt'
+WPSSO_PRODUCT_PRICE_INCLUDE_VAT          = false
+WPSSO_REG_TS_NAME                        = 'wpsso_timestamps'
+WPSSO_RESET_ON_ACTIVATE                  = false
+WPSSO_SCHEDULE_SINGLE_EVENT_TIME         = 8		// Schedule single events for now + 8 seconds.
+WPSSO_SCHEMA_ADDL_TYPE_URL_MAX           = 5
+WPSSO_SCHEMA_HOWTO_STEPS_MAX             = 40
+WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX          = 30
+WPSSO_SCHEMA_HOWTO_TOOLS_MAX             = 20
+WPSSO_SCHEMA_ISPARTOF_URL_MAX            = 20
+WPSSO_SCHEMA_MARKUP_DISABLE              = false	// Disable Schema markup features.
+WPSSO_SCHEMA_METADATA_OFFERS_MAX         = 5
+WPSSO_SCHEMA_MOVIE_ACTORS_MAX            = 15
+WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX         = 5
+WPSSO_SCHEMA_ORGANIZATION_TYPE_ID        = 'organization'
+WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME      = YEAR_IN_SECONDS
+WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX      = 40
+WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX     = 40
+WPSSO_SCHEMA_SAMEAS_URL_MAX              = 5
+WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX     = 5
+WPSSO_SELECT_PERSON_NAMES_MAX            = 100
+WPSSO_SITE_OPTIONS_NAME                  = 'wpsso_site_options'
+WPSSO_TITLE_TAG_DISABLE                  = false	// Disable filters for the WordPress title tag.
+WPSSO_TITLE_TAG_PRIORITY                 = 1000
+WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE          = false	// Disable SEO related meta tags.
+
