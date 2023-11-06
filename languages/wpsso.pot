@@ -6959,7 +6959,8 @@ msgid "oEmbed HTML provided by the <code>%s</code> template."
 msgstr ""
 
 #: lib/messages-info-meta.php:198
-msgid "Hook the <code>%s</code> filter to modify the oEmbed template path."
+msgid ""
+"You may use the <code>%s</code> filter to modify the oEmbed template path."
 msgstr ""
 
 #: lib/messages-info-meta.php:212

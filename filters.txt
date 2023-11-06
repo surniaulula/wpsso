@@ -75,6 +75,8 @@
 
 'wpsso_dimension_units' ( $units )
 
+'wpsso_embed_content_template_path' ( $template_path )
+
 'wpsso_featured_image_id' ( $pid, $post_id )
 
 'wpsso_fluid_volume_units' ( $units )
