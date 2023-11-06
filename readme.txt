@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.0.0-dev.13 (2023/11/05)**
+**Version 17.0.0-dev.14 (2023/11/06)**
 
 * **New Features**
 	* None.
@@ -486,9 +486,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.0.0-dev.13 =
+= 17.0.0-dev.14 =
 
-(2023/11/05) Added support for Document SSO post meta revisions. Fixed locale detection in the back-end. Refactored the settings page and metabox load process.
+(2023/11/06) Added support for Document SSO post meta revisions. Fixed locale detection in the back-end. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
