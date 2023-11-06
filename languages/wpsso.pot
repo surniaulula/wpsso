@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.0.0-dev.13\n"
+"Project-Id-Version: WPSSO Core 17.0.0-dev.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4052,60 +4052,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1482
+#: lib/abstract/wp-meta.php:1475
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1553
+#: lib/abstract/wp-meta.php:1546
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1557
+#: lib/abstract/wp-meta.php:1550
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1560 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1553 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1564
+#: lib/abstract/wp-meta.php:1557
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1565
+#: lib/abstract/wp-meta.php:1558
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1566
+#: lib/abstract/wp-meta.php:1559
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1567
+#: lib/abstract/wp-meta.php:1560
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1910
+#: lib/abstract/wp-meta.php:1903
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2286
+#: lib/abstract/wp-meta.php:2279
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2288 lib/abstract/wp-meta.php:2301
+#: lib/abstract/wp-meta.php:2281 lib/abstract/wp-meta.php:2294
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2299
+#: lib/abstract/wp-meta.php:2292
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -4610,93 +4610,93 @@ msgstr ""
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:2440
+#: lib/admin.php:2444
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:2441
+#: lib/admin.php:2445
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:2446
+#: lib/admin.php:2450
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:2447
+#: lib/admin.php:2451
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:2458
+#: lib/admin.php:2462
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:2459
+#: lib/admin.php:2463
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:2465
+#: lib/admin.php:2469
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:2472
+#: lib/admin.php:2476
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:2479
+#: lib/admin.php:2483
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:2486
+#: lib/admin.php:2490
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:2600
+#: lib/admin.php:2604
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2601
+#: lib/admin.php:2605
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2602
+#: lib/admin.php:2606
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2603 lib/admin.php:2604
+#: lib/admin.php:2607 lib/admin.php:2608
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2653
+#: lib/admin.php:2657
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2660
+#: lib/admin.php:2664
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2667
+#: lib/admin.php:2671
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2674
+#: lib/admin.php:2678
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2681
+#: lib/admin.php:2685
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2688
+#: lib/admin.php:2692
 msgid "Sharing Functionality"
 msgstr ""
 

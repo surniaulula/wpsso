@@ -2010,7 +2010,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_menu_title() {
 
-			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+			$menu_title = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+
 			$filter_name = 'wpsso_menu_title';
 
 			if ( $this->p->debug->enabled ) {
@@ -2042,6 +2043,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $dashicon;
+		}
+
+		public function get_submenu_title( $info, $menu_lib, $menu_id ) {
+
+			$menu_title = '';
+
+			if ( ! empty( $info[ 'lib' ][ $menu_lib ][ $menu_id ] ) ) {	// Just in case.
+
+				$menu_title = $info[ 'lib' ][ $menu_lib ][ $menu_id ];
+			}
+
+			if ( ! empty( $info[ 'text_domain' ] ) ) {
+
+				$menu_title = _x( $menu_title, 'lib file description', $info[ 'text_domain' ] );
+			}
+
+			/*
+			 * Example $filter_name = 'wpsso_menu_your_sso_title'
+			 */
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_menu_' . $menu_id . '_title' );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			return apply_filters( $filter_name, $menu_title );
 		}
 
 		/*
@@ -2150,30 +2178,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $local_cache[ $menu_lib ];
-		}
-
-		public function get_submenu_title( $info, $menu_lib, $menu_id ) {
-
-			$menu_title = '';
-
-			if ( ! empty( $info[ 'lib' ][ $menu_lib ][ $menu_id ] ) ) {	// Just in case.
-
-				$menu_title = $info[ 'lib' ][ $menu_lib ][ $menu_id ];
-			}
-
-			if ( ! empty( $info[ 'text_domain' ] ) ) {
-
-				$menu_title = _x( $menu_title, 'lib file description', $info[ 'text_domain' ] );
-			}
-
-			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_menu_' . $menu_id . '_title' );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
-			}
-
-			return apply_filters( $filter_name, $menu_title );
 		}
 
 		/*

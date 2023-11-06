@@ -1360,6 +1360,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			die( -1 );	// Nothing to do.
 		}
 
+		/*
+		 * See WpssoProfileYourSSO->show_metabox_sso().
+		 */
 		public function show_metabox_sso( $wp_obj ) {
 
 			echo $this->get_metabox_sso( $wp_obj );
@@ -1376,11 +1379,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( $metabox_id . ' table rows' );	// Start timer.
-			}
 
 			$table_rows = array();
 
@@ -1426,11 +1424,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$metabox_html .= $this->get_metabox_javascript( $container_id );
 
 			$metabox_html .= '</div><!-- #'. $container_id . ' -->' . "\n";
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
-			}
 
 			return $metabox_html;
 		}
