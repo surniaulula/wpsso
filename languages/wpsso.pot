@@ -6960,7 +6960,8 @@ msgstr ""
 
 #: lib/messages-info-meta.php:198
 msgid ""
-"You may use the <code>%s</code> filter to modify the oEmbed template path."
+"You may use the <code>%s</code> filter to modify the oEmbed template file "
+"path."
 msgstr ""
 
 #: lib/messages-info-meta.php:212
