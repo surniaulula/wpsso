@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.0.0-b.5 (2023/11/07)**
+**Version 17.0.0-b.6 (2023/11/07)**
 
 * **New Features**
 	* None.
@@ -494,7 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.0.0-b.5 =
+= 17.0.0-b.6 =
 
 (2023/11/07) Added support for post meta revisions. Refactored the settings page and metabox load process.
 
