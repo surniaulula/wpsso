@@ -255,15 +255,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.0.0-b.1 (2023/11/07)**
+**Version 17.0.0-b.2 (2023/11/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for Document SSO post meta revisions available since WordPress v6.4.
+	* Added a "View Profile" link in the toolbar menu when editing a user profile.
 * **Bugfixes**
 	* Fixed locale detection in the back-end.
 	* Fixed potentially incorrect canonical URL when copying a post/page.
+	* Fixed missing 'posts_per_page' argument for admin user/term posts queries. 
 * **Developer Notes**
 	* Refactored the settings page and metabox load process:
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
@@ -487,7 +489,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.0.0-b.1 =
+= 17.0.0-b.2 =
 
 (2023/11/07) Added support for Document SSO post meta revisions. Fixed locale detection in the back-end. Refactored the settings page and metabox load process.
 
