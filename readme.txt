@@ -491,7 +491,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.0.0-b.2 =
 
-(2023/11/07) Added support for Document SSO post meta revisions. Fixed locale detection in the back-end. Refactored the settings page and metabox load process.
+(2023/11/07) Added support for post meta revisions. Fixed locale detection in the back-end, potentially incorrect canonical URL, missing 'posts_per_page' argument. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
