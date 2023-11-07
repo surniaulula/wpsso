@@ -255,17 +255,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.0.0-b.2 (2023/11/07)**
+**Version 17.0.0-b.3 (2023/11/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for Document SSO post meta revisions available since WordPress v6.4.
 	* Added a "View Profile" link in the toolbar menu when editing a user profile.
+	* Added a "Creative Work Awards" option for Schema CreativeWork in the Document SSO metabox.
+	* Added a "Product Awards" option for Schema Product in the Document SSO metabox.
+	* Added an "Awards" option in the SSO &gt; Advanced Settings &gt; About the User metabox.
+	* Added an "Awards" option in the WordPress Profile user page.
 * **Bugfixes**
 	* Fixed locale detection in the back-end.
-	* Fixed potentially incorrect canonical URL when copying a post/page.
 	* Fixed missing 'posts_per_page' argument for admin user/term posts queries. 
+	* Fixed potentially incorrect canonical URL when copying a post/page.
+	* Fixed potentially empty offer details for a product review.
 * **Developer Notes**
 	* Refactored the settings page and metabox load process:
 		* Added a new `WpssoAdmin->menu_metaboxes` variable.
@@ -489,9 +494,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.0.0-b.2 =
+= 17.0.0-b.3 =
 
-(2023/11/07) Added support for post meta revisions. Fixed locale detection in the back-end, potentially incorrect canonical URL, missing 'posts_per_page' argument. Refactored the settings page and metabox load process.
+(2023/11/07) Added support for post meta revisions. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
