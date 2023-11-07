@@ -255,12 +255,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.1.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for Document SSO post meta revisions.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.0.0-b.7 (2023/11/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for Document SSO post meta revisions available since WordPress v6.4.
 	* Added a "View Profile" link in the toolbar menu when editing a user profile.
 	* Added a "Creative Work Awards" option for Schema CreativeWork in the Document SSO metabox.
 	* Added a "Product Awards" option for Schema Product in the Document SSO metabox.
@@ -496,7 +509,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.0.0-b.7 =
 
-(2023/11/07) Added support for post meta revisions. Refactored the settings page and metabox load process.
+(2023/11/07) Four bug fixes. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
