@@ -40,7 +40,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$this->charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
+			/*
+			 * Maybe add the Validators toolbar menu.
+			 */
 			$add_toolbar_validate = empty( $this->p->options[ 'plugin_add_toolbar_validate' ] ) ? false : true;
+
 			$add_toolbar_validate = apply_filters( 'wpsso_add_toolbar_validate', $add_toolbar_validate );
 
 			if ( $add_toolbar_validate ) {
@@ -58,21 +62,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
+			 * Maybe add title tag filters.
+			 *
 			 * Since WordPress v4.4.
 			 *
 			 * See wordpress/wp-includes/general-template.php.
 			 */
-			$title_tag_disabled = SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' );
-			$title_tag_prio     = WPSSO_TITLE_TAG_PRIORITY;
+			if ( ! $this->p->util->is_title_tag_disabled() ) {
 
-			if ( ! $title_tag_disabled ) {
+				if ( $this->p->debug->enabled ) {
 
-				add_filter( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), $title_tag_prio, 1 );
-				add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), $title_tag_prio, 1 );
-				add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), $title_tag_prio, 1 );
-				add_filter( 'document_title', array( $this, 'document_title' ), $title_tag_prio, 1 );
-				add_filter( 'get_wp_title_rss', array( $this, 'get_wp_title_rss' ), $title_tag_prio, 1 );
-				add_filter( 'get_bloginfo_rss', array( $this, 'get_bloginfo_rss' ), $title_tag_prio, 2 );
+					$this->p->debug->log( 'adding title tag filters' );
+				}
+
+				add_filter( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+				add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+				add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+				add_filter( 'document_title', array( $this, 'document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+				add_filter( 'get_wp_title_rss', array( $this, 'get_wp_title_rss' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+				add_filter( 'get_bloginfo_rss', array( $this, 'get_bloginfo_rss' ), WPSSO_TITLE_TAG_PRIORITY, 2 );
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'title tag is disabled' );
 			}
 		}
 
@@ -818,6 +830,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'using module object to get post mods' );
+				}
+
+				$mod[ 'posts_args' ][ 'posts_per_page' ] = get_option( 'posts_per_page' );
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'using posts_per_page = ' . $mod[ 'posts_args' ][ 'posts_per_page' ] );
 				}
 
 				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod );

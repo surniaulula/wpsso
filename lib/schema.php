@@ -2951,12 +2951,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *	$prop_type_ids = array( 'mentions' => false )
 		 *	$prop_type_ids = array( 'blogPosting' => 'blog.posting' )
 		 *
-		 * The 6th argument used to be $posts_per_page (now $prop_type_ids).
-		 * The 7th argument used to be $prop_type_ids (now $deprecated).
-		 *
 		 * Do not cast $prop_type_ids as an array to allow for backwards compatibility.
 		 */
-		public static function add_posts_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $prop_type_ids, $deprecated = null ) {
+		public static function add_posts_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $prop_type_ids ) {
 
 			static $added_page_type_ids = array();
 
@@ -2969,9 +2966,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$added_count = 0;	// Initialize the total posts added counter.
 
-			/*
-			 * 6th arg used to be $posts_per_page (now $prop_type_ids) and 7th arg $prop_type_ids (now $deprecated).
-			 */
 			if ( ! is_array( $prop_type_ids ) && is_array( $deprecated ) ) {
 
 				$prop_type_ids = $deprecated;

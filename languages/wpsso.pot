@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.0.0-b.1\n"
+"Project-Id-Version: WPSSO Core 17.0.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3329,7 +3329,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:72 lib/messages-tooltip-plugin.php:586
-#: lib/page.php:137 lib/pro/admin/advanced.php:479
+#: lib/page.php:149 lib/pro/admin/advanced.php:479
 #: lib/std/admin/advanced.php:467
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -4460,7 +4460,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:895 lib/post.php:1050 lib/term.php:725 lib/user.php:749
+#: lib/admin.php:895 lib/post.php:1050 lib/term.php:730 lib/user.php:748
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -4709,12 +4709,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5380
+#: lib/config.php:5381
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5380
+#: lib/config.php:5381
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -8177,8 +8177,8 @@ msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:535 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1726 lib/user.php:1817
-#: lib/user.php:1932
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1771 lib/user.php:1862
+#: lib/user.php:1977
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11488,15 +11488,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1024 lib/util-inline.php:413
+#: lib/page.php:1043 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1028
+#: lib/page.php:1047
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2227
+#: lib/page.php:2246
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11808,7 +11808,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3881
+#: lib/schema.php:3875
 msgid "checking schema properties"
 msgstr ""
 
@@ -12541,7 +12541,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:933
+#: lib/term.php:938
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -12581,68 +12581,73 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: lib/user.php:206
+#: lib/user.php:205
 msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:891
+#: lib/user.php:890
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:897
+#: lib/user.php:896
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1005
+#: lib/user.php:1004
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1656
+#: lib/user.php:1655
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1699 lib/user.php:1728
+#: lib/user.php:1698 lib/user.php:1773
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1707
+#: lib/user.php:1706
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1738 lib/user.php:1829 lib/util-cache.php:570
+#: lib/user.php:1746
+msgctxt "toolbar menu title"
+msgid "View Profile"
+msgstr ""
+
+#: lib/user.php:1783 lib/user.php:1874 lib/util-cache.php:570
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1739
+#: lib/user.php:1784
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1773
+#: lib/user.php:1818
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1774 lib/user.php:1868 lib/util-cache.php:683
+#: lib/user.php:1819 lib/user.php:1913 lib/util-cache.php:683
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1790 lib/user.php:1819
+#: lib/user.php:1835 lib/user.php:1864
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1798
+#: lib/user.php:1843
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1830
+#: lib/user.php:1875
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1867
+#: lib/user.php:1912
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

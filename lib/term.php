@@ -505,6 +505,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
 			$mtime_start = microtime( $get_float = true );
 			$public_ids  = array();
 			$tax_names   = empty( $terms_args[ 'taxonomy' ] ) ? SucomUtil::get_taxonomies( $output = 'names' ) : array( $terms_args[ 'taxonomy' ] );
@@ -545,7 +550,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$wpsso->debug->log( count( $public_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return apply_filters( 'wpsso_term_public_ids', $public_ids, $terms_args );
@@ -604,7 +609,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $posts_ids;

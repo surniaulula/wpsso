@@ -75,10 +75,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					add_action( 'wpmu_new_user', array( __CLASS__, 'add_role_by_id' ), 20, 1 );
 
-				} else {
-
-					add_action( 'user_register', array( __CLASS__, 'add_role_by_id' ), 20, 1 );
-				}
+				} else add_action( 'user_register', array( __CLASS__, 'add_role_by_id' ), 20, 1 );
 			}
 
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
@@ -107,6 +104,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 */
 					add_action( 'edit_user_profile', array( $this, 'add_meta_boxes' ), 10, 1 );
 				}
+
+				add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu_view_profile' ), WPSSO_TB_VIEW_PROFILE_MENU_ORDER, 1 );
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
 
@@ -558,7 +557,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( count( $public_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$wpsso->debug->log( count( $public_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return apply_filters( 'wpsso_user_public_ids', $public_ids, $users_args );
@@ -599,7 +598,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'getting posts for authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->log( 'getting posts for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 
 				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
@@ -610,7 +609,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $posts_ids ) . ' ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $posts_ids;
@@ -666,10 +665,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					break;
 
-				case 'profile':		// User profile page.
-				case 'user-edit':	// User editing page.
+				case 'profile':										// User profile page.
+				case 'user-edit':									// User editing page.
 				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):			// Your profile page.
-				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id ) ? true : false ):	// Users settings page.
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id ) ? true : false ):	// Profile SSO page.
 
 					/*
 					 * Get the user id.
@@ -1713,6 +1712,52 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
+		}
+
+		public function add_admin_bar_menu_view_profile( &$wp_admin_bar ) {	// Pass by reference OK.
+
+			if ( ! is_admin() ) {	// Just in case.
+
+				return;
+			}
+
+			$screen_id = SucomUtil::get_screen_id();
+			
+			switch ( $screen_id ) {
+				
+				case 'profile':										// User profile page.
+				case ( 0 === strpos( $screen_id, 'profile_page_' ) ? true : false ):			// Your profile page.
+				case ( 0 === strpos( $screen_id, 'users_page_' . $this->p->id ) ? true : false ):	// Profile SSO page.
+
+					$user_id = SucomUtil::get_user_object( false, 'id' );
+
+					$mod = $this->get_mod( $user_id );
+
+					break;
+
+				default:
+
+					return false;
+			}
+
+			if ( $mod[ 'is_user' ] ) {
+
+				$parent_id     = 'wpsso-view-profile';
+				$menu_title    = _x( 'View Profile', 'toolbar menu title', 'wpsso' );
+				$canonical_url = $this->p->util->get_canonical_url( $mod );
+
+				$wp_admin_bar->add_node( array(
+					'id'     => $parent_id,
+					'title'  => $menu_title,
+					'parent' => false,
+					'href'   => $canonical_url,
+					'group'  => false,
+				) );
+
+				return $parent_id;
+			}
+
+			return false;
 		}
 
 		public function add_person_role( $user_id = null ) {

@@ -271,8 +271,6 @@
 
 'wpsso_post_url' ( $url, $mod )
 
-'wpsso_posts_per_page' ( $num, $mod )
-
 'wpsso_primary_tax_slug' ( $tax_slug, $mod )
 
 'wpsso_primary_term_id' ( $primary_term_id, $mod, $tax_slug, $is_custom )

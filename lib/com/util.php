@@ -1300,9 +1300,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_screen_id( $screen = false ) {
 
-			if ( false === $screen && function_exists( 'get_current_screen' ) ) {
+			if ( false === $screen ) {
+			
+				if ( function_exists( 'get_current_screen' ) ) {
 
-				$screen = get_current_screen();
+					$screen = get_current_screen();
+				}
 			}
 
 			if ( isset( $screen->id ) ) {
@@ -5073,10 +5076,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					switch ( $screen_base ) {
 
-						case 'profile':	// User profile page.
-						case 'user-edit':	// User editing page.
+						case 'profile':								// User profile page.
+						case 'user-edit':							// User editing page.
 						case ( 0 === strpos( $screen_base, 'profile_page_' ) ? true : false ):	// Your profile page.
-						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Users settings page.
+						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Profile SSO page.
 
 							$is_user_page = true;
 

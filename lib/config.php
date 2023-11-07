@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.0.0-b.1',	// Plugin version.
+					'version'     => '17.0.0-b.2',	// Plugin version.
 					'opt_version' => '994',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2483,7 +2483,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '5.0.0-b.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '5.0.0-b.2',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -5053,6 +5053,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
+			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;			// Position of the view profile menu item.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
