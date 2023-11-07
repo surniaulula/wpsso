@@ -269,11 +269,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			/*
-			 * WordPress v6.3, including the current development version, cannot post meta revisions for arrays:
+			 * WordPress v6.4 cannot use post meta arrays for revisions:
 			 *
 			 * https://core.trac.wordpress.org/ticket/59827
 			 */
-			return;	// TODO remove when this WordPress bug is fixed or a work-around is found.
+			return;	// Stop here.
 
 			register_meta( $object_type, WPSSO_META_NAME, $args = array(
 				'type'              => 'array',
