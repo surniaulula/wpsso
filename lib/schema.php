@@ -1130,11 +1130,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$cache_salt   = __METHOD__ . '(child_id:' . $child_id . ')';
 					$cache_id     = $cache_md5_pre . md5( $cache_salt );
-					$child_family = get_transient( $cache_id );	// Returns false when not found.
+					$cache_family = get_transient( $cache_id );	// Returns false when not found.
 
-					if ( is_array( $child_family ) ) {
+					if ( is_array( $cache_family ) ) {
 
-						return $child_family;
+						return $cache_family;
 					}
 				}
 			}
