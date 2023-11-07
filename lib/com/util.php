@@ -5079,7 +5079,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						case 'profile':								// User profile page.
 						case 'user-edit':							// User editing page.
 						case ( 0 === strpos( $screen_base, 'profile_page_' ) ? true : false ):	// Your profile page.
-						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Profile SSO page.
+						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Users settings page.
 
 							$is_user_page = true;
 
