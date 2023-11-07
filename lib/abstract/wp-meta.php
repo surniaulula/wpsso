@@ -268,6 +268,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * WordPress v6.3, including the current development version, cannot post meta revisions for arrays:
+			 *
+			 * https://core.trac.wordpress.org/ticket/59827
+			 */
+			return;	// TODO remove when this WordPress bug is fixed or a work-around is found.
+
 			register_meta( $object_type, WPSSO_META_NAME, $args = array(
 				'type'              => 'array',
 				'description'       => 'WPSSO meta options array.',
