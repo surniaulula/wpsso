@@ -1591,7 +1591,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
 
-			return apply_filters( $filter_name, $tabs, $mod, $metabox_id );
+			return apply_filters( $filter_name, $tabs, $mod );
 		}
 
 		/*
