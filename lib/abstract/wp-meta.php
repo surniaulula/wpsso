@@ -2087,71 +2087,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
-			$md_keys_multi = WpssoConfig::get_md_keys_multi();
-
-			foreach ( $md_keys_multi as $multi_key => $is_multi ) {
-
-				if ( empty( $is_multi ) ) {	// True, false, or array.
-
-					continue;
-				}
-
-				/*
-				 * Get multi option values indexed only by their number.
-				 */
-				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
-
-				$md_renum_opts = array();	// Start with a fresh array.
-
-				$renum = 0;	// Start a new index at 0.
-
-				foreach ( $md_multi_opts as $md_num => $md_val ) {
-
-					if ( '' !== $md_val ) {	// Only save non-empty values.
-
-						$md_renum_opts[ $multi_key . '_' . $renum ] = $md_val;
-					}
-
-					/*
-					 * Check if there are linked options, and if so, re-number those options as well.
-					 */
-					if ( is_array( $is_multi ) ) {
-
-						foreach ( $is_multi as $md_linked_key ) {
-
-							if ( isset( $md_opts[ $md_linked_key . '_' . $md_num ] ) ) {	// Just in case.
-
-								$md_renum_opts[ $md_linked_key . '_' . $renum ] = $md_opts[ $md_linked_key . '_' . $md_num ];
-							}
-						}
-					}
-
-					$renum++;	// Increment the new index number.
-				}
-
-				/*
-				 * Remove any existing multi options, including any linked options.
-				 */
-				$md_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
-
-				if ( is_array( $is_multi ) ) {
-
-					foreach ( $is_multi as $md_linked_key ) {
-
-						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_linked_key . '_([0-9]+)$/', $md_opts, $invert = true );
-					}
-				}
-
-				/*
-				 * Save the re-numbered options.
-				 */
-				foreach ( $md_renum_opts as $md_key => $md_val ) {
-
-					$md_opts[ $md_key ] = $md_val;
-				}
-
-				unset( $md_renum_opts );
-			}
+			$this->md_keys_multi_renum( $md_opts );
 
 			/*
 			 * Check for default recipe values.
@@ -2324,6 +2260,96 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$this->p->opt->add_versions_checksum( $md_opts );	// $md_opts must be an array.
 
 			return $md_opts;
+		}
+
+		/*
+		 * Convert multiple options into an array.
+		 */
+		public function md_keys_multi_array( array &$md_opts, $opt_prefix, $opt_key = null ) {
+
+			if ( null === $opt_key ) {
+
+				$opt_key = $opt_prefix;
+			}
+
+			$array = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_[0-9]+$/', $md_opts );
+
+			$md_opts[ $opt_key ] = array_values( $array );
+		}
+
+		/*
+		 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
+		 */
+		public function md_keys_multi_renum( array &$md_opts ) {
+
+			$md_keys_multi = WpssoConfig::get_md_keys_multi();
+
+			foreach ( $md_keys_multi as $multi_key => $is_multi ) {
+
+				/*
+				 * $is_multi = true | false | array.
+				 */
+				if ( empty( $is_multi ) ) {	// False.
+
+					continue;
+				}
+
+				/*
+				 * Get multi option values indexed by their number.
+				 */
+				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+
+				$md_renum_opts = array();	// Start with a fresh array.
+
+				$renum = 0;	// Start a new index at 0.
+
+				foreach ( $md_multi_opts as $md_num => $md_val ) {
+
+					if ( '' !== $md_val ) {	// Only save non-empty values.
+
+						$md_renum_opts[ $multi_key . '_' . $renum ] = $md_val;
+					}
+
+					/*
+					 * Check if there are linked options, and if so, re-number those options as well.
+					 */
+					if ( is_array( $is_multi ) ) {
+
+						foreach ( $is_multi as $md_linked_key ) {
+
+							if ( isset( $md_opts[ $md_linked_key . '_' . $md_num ] ) ) {	// Just in case.
+
+								$md_renum_opts[ $md_linked_key . '_' . $renum ] = $md_opts[ $md_linked_key . '_' . $md_num ];
+							}
+						}
+					}
+
+					$renum++;	// Increment the new index number.
+				}
+
+				/*
+				 * Remove any existing multi options, including any linked options.
+				 */
+				$md_opts = SucomUtil::preg_grep_keys( '/^' . $multi_key . '_([0-9]+)$/', $md_opts, $invert = true );
+
+				if ( is_array( $is_multi ) ) {
+
+					foreach ( $is_multi as $md_linked_key ) {
+
+						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_linked_key . '_([0-9]+)$/', $md_opts, $invert = true );
+					}
+				}
+
+				/*
+				 * Save the re-numbered options.
+				 */
+				foreach ( $md_renum_opts as $md_key => $md_val ) {
+
+					$md_opts[ $md_key ] = $md_val;
+				}
+
+				unset( $md_renum_opts );
+			}
 		}
 
 		/*

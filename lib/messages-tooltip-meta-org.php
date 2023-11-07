@@ -119,6 +119,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 					break;
 
+				case 'tooltip-meta-org_award':			// Organization Awards.
+
+					$text = __( 'One or more awards this organization has won.', 'wpsso' );
+
+					break;
+
 				/*
 				 * News Media Organization section.
 				 */

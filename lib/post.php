@@ -762,7 +762,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 
-				$wpsso->debug->log( count( $public_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$wpsso->debug->log( count( $public_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
@@ -820,7 +820,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $posts_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $posts_ids;

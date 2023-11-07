@@ -695,7 +695,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * All options (site and meta as well) are sanitized here, so always use isset() or array_key_exists() on
 			 * all tests to make sure additional / unnecessary options are not created in post meta.
 			 */
-			foreach ( SucomUtil::preg_grep_keys( '/^(.*)_img_width$/', $opts, $invert = false, $replace = '$1' ) as $opt_pre => $img_width ) {
+			$opt_prefixes = SucomUtil::preg_grep_keys( '/^(.*)_img_width$/', $opts, $invert = false, $replace = '$1' );
+
+			foreach ( $opt_prefixes as $opt_pre => $img_width ) {
 
 				if ( ! isset( $opts[ $opt_pre . '_img_height' ] ) ) {	// Just in case;
 

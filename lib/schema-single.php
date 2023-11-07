@@ -1069,6 +1069,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'ethicsPolicy'                   => 'org_ethics_policy_url',		// Ethics Policy URL.
 				'verificationFactCheckingPolicy' => 'org_fact_check_policy_url',	// Fact Checking Policy URL.
 				'actionableFeedbackPolicy'       => 'org_feedback_policy_url',		// Feedback Policy URL.
+				'award'                          => 'org_awards',			// Organization Awards.
 			) );
 
 			/*

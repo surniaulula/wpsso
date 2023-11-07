@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( count( $public_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$wpsso->debug->log( count( $public_ids ) . ' user IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return apply_filters( 'wpsso_user_public_ids', $public_ids, $users_args );
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $posts_ids ) . ' IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $posts_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $posts_ids;

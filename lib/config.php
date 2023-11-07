@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.0.0-b.3',	// Plugin version.
+					'version'     => '17.0.0-b.4',	// Plugin version.
 					'opt_version' => '995',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2401,6 +2401,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * values into numbered options.
 				 */
 				'md_keys_multi' => array(
+					'org_award'            => true,				// Organization Awards.
 					'product_award'        => true,				// Product Awards.
 					'product_size_group'   => true,				// Product Size Group.
 					'schema_addl_type_url' => true,				// Microdata Type URLs.
