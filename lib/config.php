@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.0.0-b.2',	// Plugin version.
-					'opt_version' => '994',		// Increment when changing default option values.
+					'version'     => '17.0.0-b.3',	// Plugin version.
+					'opt_version' => '995',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2186,6 +2186,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_user_about_honorific_prefix' => 1,	// Honorific Prefix.
 					'plugin_user_about_honorific_suffix' => 1,	// Honorific Suffix.
 					'plugin_user_about_additional_name'  => 1,	// Middle or Additional Name.
+					'plugin_user_about_award'            => 1,	// Awards.
 
 					/*
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
@@ -2236,8 +2237,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin12'                => '',	// Product GTIN-12 (UPC) Custom Field.
 					'plugin_cf_product_gtin8'                 => '',	// Product GTIN-8 Custom Field.
 					'plugin_cf_product_gtin'                  => '',	// Product GTIN Custom Field.
-					'plugin_cf_product_height_value'          => '',	// Product Net Height Custom Field.
 					'plugin_cf_product_isbn'                  => '',	// Product ISBN Custom Field.
+					'plugin_cf_product_height_value'          => '',	// Product Net Height Custom Field.
 					'plugin_cf_product_length_value'          => '',	// Product Net Len. / Depth Custom Field.
 					'plugin_cf_product_material'              => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'           => '',	// Product MPN Custom Field.
@@ -2400,17 +2401,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * values into numbered options.
 				 */
 				'md_keys_multi' => array(
-					'schema_addl_type_url' => true,			// Microdata Type URLs.
-					'schema_citation'      => true,			// Reference Citations.
-					'schema_howto_step'    => array(		// How-To Name.
-						'schema_howto_step_section',		// How-To Step or Section.
-						'schema_howto_step_text',		// How-To Step Description.
-						'schema_howto_step_anchor_id',		// How-To Step Anchor ID.
-						'schema_howto_step_img_id',		// How-To Step Image ID.
+					'product_award'        => true,				// Product Awards.
+					'product_size_group'   => true,				// Product Size Group.
+					'schema_addl_type_url' => true,				// Microdata Type URLs.
+					'schema_award'         => true,				// Creative Work Awards.
+					'schema_citation'      => true,				// Reference Citations.
+					'schema_howto_step'    => array(			// How-To Name.
+						'schema_howto_step_section',			// How-To Step or Section.
+						'schema_howto_step_text',			// How-To Step Description.
+						'schema_howto_step_anchor_id',			// How-To Step Anchor ID.
+						'schema_howto_step_img_id',			// How-To Step Image ID.
 						'schema_howto_step_img_id_lib',
 					),
-					'schema_howto_supply'               => true,	// How-To Supplies.
-					'schema_howto_tool'                 => true,	// How-To Tools.
+					'schema_howto_supply'               => true,		// How-To Supplies.
+					'schema_howto_tool'                 => true,		// How-To Tools.
+					'schema_ispartof_url'               => true,		// Is Part of URLs.
 					'schema_movie_actor_person_name'    => true,
 					'schema_movie_director_person_name' => true,
 					'schema_recipe_ingredient'          => true,		// Recipe Ingredients.
@@ -2424,7 +2429,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_review_item_cw_movie_actor_person_name'    => true,
 					'schema_review_item_cw_movie_director_person_name' => true,
 					'schema_sameas_url'                                => true,	// Same-As URLs.
-					'product_size_group'                               => true,
 					'schema_webpage_reviewed_by_org_id'                => true,
 					'schema_webpage_reviewed_by_person_id'             => true,
 				),
@@ -2466,6 +2470,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'honorific_prefix' => 'Honorific Prefix',
 					'honorific_suffix' => 'Honorific Suffix',
 					'additional_name'  => 'Middle or Additional Name',
+					'award'            => 'Awards',
 				),
 
 				'site_verify_meta_names' => array(
@@ -2483,7 +2488,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '5.0.0-b.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '5.0.0-b.3',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -3093,8 +3098,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin12'                => 'Product GTIN-12 (UPC) Custom Field',
 					'plugin_cf_product_gtin8'                 => 'Product GTIN-8 Custom Field',
 					'plugin_cf_product_gtin'                  => 'Product GTIN Custom Field',
-					'plugin_cf_product_height_value'          => 'Product Net Height Custom Field',
 					'plugin_cf_product_isbn'                  => 'Product ISBN Custom Field',
+					'plugin_cf_product_height_value'          => 'Product Net Height Custom Field',
 					'plugin_cf_product_length_value'          => 'Product Net Len. / Depth Custom Field',
 					'plugin_cf_product_material'              => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'           => 'Product MPN Custom Field',
@@ -3776,6 +3781,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:adult_type'                  => 'product_adult_type',		// Non-standard / internal meta tag.
 						'product:age_group'                   => 'product_age_group',
 						'product:availability'                => 'product_avail',
+						'product:awards'                      => '',				// Non-standard / internal meta tag.
 						'product:brand'                       => 'product_brand',
 						'product:category'                    => 'product_category',		// Product Google Category.
 						'product:color'                       => 'product_color',

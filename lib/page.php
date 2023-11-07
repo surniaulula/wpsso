@@ -757,22 +757,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $mod;
 		}
 
+		/*
+		 * See WpssoFaqShortcodeFaq->do_shortcode().
+		 * See WpssoSchema->add_itemlist_data().
+		 * See WpssoSchema->add_posts_data().
+		 */
 		public function get_posts_mods( array $mod ) {
 
-			$wpsso =& Wpsso::get_instance();
+			if ( $this->p->debug->enabled ) {
 
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
+				$this->p->debug->mark();
 			}
 
 			$page_posts_mods = array();
 
 			if ( ! empty( $mod[ 'query_vars' ] ) ) {
 
-				if ( $wpsso->debug->enabled ) {
+				if ( $this->p->debug->enabled ) {
 
-					$wpsso->debug->log( 'using WP_Query query_vars to get post mods' );
+					$this->p->debug->log( 'using WP_Query query_vars to get post mods' );
 				}
 
 				global $wp_query;
@@ -788,9 +791,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( have_posts() ) {
 
-					if ( $wpsso->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-						$wpsso->debug->log( 'looping through posts' );
+						$this->p->debug->log( 'looping through posts' );
 					}
 
 					$have_num = 0;
@@ -803,57 +806,47 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						global $post;
 
-						if ( $wpsso->debug->enabled ) {
+						if ( $this->p->debug->enabled ) {
 
-							$wpsso->debug->log( 'getting mod for post ID ' . $post->ID );
+							$this->p->debug->log( 'getting mod for post ID ' . $post->ID );
 						}
 
-						$page_posts_mods[] = $wpsso->post->get_mod( $post->ID );
+						$page_posts_mods[] = $this->p->post->get_mod( $post->ID );
 					}
 
-					if ( $wpsso->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-						$wpsso->debug->log( 'retrieved ' . $have_num . ' post mods' );
+						$this->p->debug->log( 'retrieved ' . $have_num . ' post mods' );
 					}
 
 					rewind_posts();
 
-				} elseif ( $wpsso->debug->enabled ) {
+				} elseif ( $this->p->debug->enabled ) {
 
-					$wpsso->debug->log( 'no posts to add' );
+					$this->p->debug->log( 'no posts to add' );
 				}
 
 				$wp_query = $saved_wp_query;
 
 			} elseif ( ! empty( $mod[ 'obj' ] ) ) {
 
-				if ( $wpsso->debug->enabled ) {
+				if ( $this->p->debug->enabled ) {
 
-					$wpsso->debug->log( 'using module object to get post mods' );
-				}
-
-				$mod[ 'posts_args' ][ 'posts_per_page' ] = get_option( 'posts_per_page' );
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'using posts_per_page = ' . $mod[ 'posts_args' ][ 'posts_per_page' ] );
+					$this->p->debug->log( 'using module object to get post mods' );
 				}
 
 				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod );
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'no source to get post mods' );
-				}
+				$this->p->debug->log( 'no source to get post mods' );
 			}
 
 			$page_posts_mods = apply_filters( 'wpsso_page_posts_mods', $page_posts_mods, $mod );
 
-			if ( $wpsso->debug->enabled ) {
+			if ( $this->p->debug->enabled ) {
 
-				$wpsso->debug->log( 'returning ' . count( $page_posts_mods ) . ' post mods' );
+				$this->p->debug->log( 'returning ' . count( $page_posts_mods ) . ' post mods' );
 			}
 
 			return $page_posts_mods;

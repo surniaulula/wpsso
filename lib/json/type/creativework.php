@@ -119,28 +119,29 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 				if ( is_array( $md_opts ) ) {	// Just in case.
 
-					$ispartof_urls = SucomUtil::preg_grep_keys( '/^schema_ispartof_url_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+					$values = SucomUtil::preg_grep_keys( '/^schema_ispartof_url_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
-					foreach ( $ispartof_urls as $num => $url ) {
+					foreach ( $values as $num => $url ) {
 
 						if ( empty( $md_opts[ 'schema_ispartof_type_' . $num ] ) ) {
 
 							$type_url = 'https://schema.org/CreativeWork';
 
-						} else {
+						} else $type_url = $this->p->schema->get_schema_type_url( $md_opts[ 'schema_ispartof_type_' . $num ] );
 
-							$type_url = $this->p->schema->get_schema_type_url( $md_opts[ 'schema_ispartof_type_' . $num ] );
-						}
-
-						$json_ret[ 'isPartOf' ][] = WpssoSchema::get_schema_type_context( $type_url, array(
-							'url' => $url,
-						) );
+						$json_ret[ 'isPartOf' ][] = WpssoSchema::get_schema_type_context( $type_url, array( 'url' => $url ) );
 					}
 				}
 			}
 
-			$json_ret[ 'isPartOf' ] = apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
-				$json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
+			$filter_name = 'wpsso_json_prop_https_schema_org_ispartof';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$json_ret[ 'isPartOf' ] = apply_filters( $filter_name, $json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
 			 * See https://schema.org/headline.
@@ -212,6 +213,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
 			/*
+			 * See https://schema.org/award.
 			 * See https://schema.org/citation.
 			 *
 			 * There is very little information available from Google about the expected JSON markup structure for
@@ -219,25 +221,37 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 *
 			 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
 			 */
-			$json_ret[ 'citation' ] = array();
+			foreach ( array(
+				'schema_award'    => 'award',
+				'schema_citation' => 'citation',
+			) as $md_key => $prop_name ) {
 
-			if ( ! empty( $mod[ 'obj' ] ) )	{	// Just in case.
+				$json_ret[ $prop_name ] = array();
 
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				if ( ! empty( $mod[ 'obj' ] ) ) {
 
-				if ( is_array( $md_opts ) ) {	// Just in case.
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-					$citations = SucomUtil::preg_grep_keys( '/^schema_citation_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+					if ( is_array( $md_opts ) ) {	// Just in case.
 
-					foreach ( $citations as $num => $text ) {
+						$values = SucomUtil::preg_grep_keys( '/^' . $md_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
-						$json_ret[ 'citation' ][] = $text;
+						foreach ( $values as $num => $text ) {
+
+							$json_ret[ $prop_name ][] = $text;
+						}
 					}
 				}
-			}
 
-			$json_ret[ 'citation' ] = apply_filters( 'wpsso_json_prop_https_schema_org_ispartof',
-				$json_ret[ 'citation' ], $mod, $mt_og, $page_type_id, $is_main );
+				$filter_name = 'wpsso_json_prop_https_schema_org_' . $prop_name;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				}
+
+				$json_ret[ $prop_name ] = apply_filters( $filter_name, $json_ret[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+			}
 
 			/*
 			 * See https://schema.org/comment as https://schema.org/Comment.

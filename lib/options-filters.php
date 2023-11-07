@@ -139,6 +139,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'blank_num';
 
+					case 'product_award':			// Product Awards.
 					case 'product_brand':
 					case 'product_color':
 					case 'product_currency':		// Product Price Currency.
@@ -256,6 +257,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'img_id';
 
+					case 'schema_award':				// Creative Work Awards.
 					case 'schema_title':				// Schema Name.
 					case 'schema_title_alt':			// Schema Alternate Name.
 					case 'schema_title_bc':				// Schema Breadcrumb Name.

@@ -251,7 +251,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Calls WP_Query->query() with the supplied arguments.
 		 *
-		 * Alternative to the WordPress get_posts() function, which sets 'ignore_sticky_posts' and 'no_found_rows' to true.
+		 * Alternative to the WordPress get_posts() function which sets 'ignore_sticky_posts' and 'no_found_rows' to true.
 		 *
 		 * See wordpress/wp-includes/post.php.
 		 * See WpssoPost->get_posts_ids().

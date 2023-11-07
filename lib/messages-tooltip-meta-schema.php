@@ -152,6 +152,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
+				case 'tooltip-meta-schema_award':		// Creative Work Awards.
+
+					$text = __( 'One or more awards this creative work has won.', 'wpsso' );
+
+				 	break;
+
 				case 'tooltip-meta-schema_citation':		// Reference Citations.
 
 					$text = __( 'Reference citations to creative works, such as other publications, web pages, scholarly articles, etc.', 'wpsso' ) . ' ';

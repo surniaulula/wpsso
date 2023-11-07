@@ -253,12 +253,14 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					$filter_name = 'wpsso_get_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_md_options filters for comment id ' . $comment_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
 					 * Since WPSSO Core v4.31.0.
@@ -267,22 +269,26 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
+					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for comment id ' . $comment_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $comment_id, $mod );
 
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					$filter_name = 'wpsso_sanitize_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying sanitize_md_options filters for comment id ' . $comment_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 				}
 			}
 

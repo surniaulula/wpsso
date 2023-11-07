@@ -186,6 +186,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
 			$schema_lang_disabled    = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
+			$awards_max              = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
 			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
 			$input_limits            = WpssoConfig::get_input_limits();	// Uses a local cache.
@@ -316,6 +317,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_ispartof_url',
 					'content'  => $form->get_input_multi( 'schema_ispartof_url', $css_class = 'wide', $css_id = '',
 						$ispartof_url_max, $show_first = 1 ),
+				),
+				'schema_award' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'creative.work' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Creative Work Awards', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_award',
+					'content'  => $form->get_input_multi( 'schema_award', $css_class = 'wide', $css_id = '',
+						$awards_max, $show_first = 1 ),
 				),
 
 				/*
@@ -1715,6 +1724,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
+			$awards_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$currencies      = SucomUtil::get_currency_abbrev();
 			$dimension_units = WpssoUtilUnits::get_dimension_units();
 			$fl_volume_units = WpssoUtilUnits::get_fluid_volume_units();
@@ -2048,6 +2058,15 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'content'  => $form->get_input( 'product_isbn',
 						$css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ), $holder = true ),
 				),
+				'schema_product_award' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'product' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Product Awards', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_award',
+					'content'  => $form->get_input_multi( 'product_award', $css_class = 'wide', $css_id = '',
+						$awards_max, $show_first = 1 ),
+				),
+
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

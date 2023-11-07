@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 			}
 
 			$job_opts = self::get_schema_job_options( $mod[ 'id' ] );
+
 			$job_opts = SucomUtil::preg_grep_keys( '/^schema_(job_.*)$/', $job_opts, $invert = false, $replace = '$1' );
 
 			return $job_opts;

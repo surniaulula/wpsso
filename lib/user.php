@@ -369,32 +369,38 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					$filter_name = 'wpsso_get_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_md_options filters for user id ' . $user_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
 					 * Since WPSSO Core v4.31.0.
 					 */
+					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for user id ' . $user_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $user_id, $mod );
 
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					$filter_name = 'wpsso_sanitize_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying sanitize_md_options filters for user id ' . $user_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
 					 * Since WPSSO Core v10.0.0.
@@ -408,12 +414,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						'redirect_url',
 					);
 
+					$filter_name = 'wpsso_get_user_options_keys_disabled';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_user_options_disable_keys filters' );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$disable_keys = apply_filters( 'wpsso_get_user_options_disable_keys', $disable_keys, $user_id, $mod );
+					$disable_keys = apply_filters( $filter_name, $disable_keys, $user_id, $mod );
 
 					if ( ! empty( $disable_keys ) ) {
 
@@ -564,9 +572,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Get post ids authored by a user.
+		 * Get the posts for a user.
 		 *
-		 * Return an array of post IDs for a given $mod object.
+		 * Returns an array of post IDs for a given $mod object.
+		 *
+		 * The 'posts_per_page' value should be set for an archive page before calling this method.
 		 *
 		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
@@ -604,7 +614,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
+			$posts_ids = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
@@ -853,37 +865,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function show_about_section( $user_id = 0 ) {
 
-			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $about_key => $about_label ) {
 
-				if ( empty( $this->p->options[ 'plugin_user_about_' . $key ] ) ) {
+				if ( empty( $this->p->options[ 'plugin_user_about_' . $about_key ] ) ) {
 
 					continue;
 				}
 
-				$val = '';
-
-				if ( $user_id ) {	// 0 when adding a new user.
-
-					$val = get_metadata( 'user', $user_id, $key, $single = true );
-				}
-
 				echo '<tr>';
+				echo '<th><label for="' . $about_key . '">' . esc_html( _x( $about_label, 'option label', 'wpsso' ) ) . '</label></th><td>';
 
-				echo '<th><label for="' . $key . '">' . esc_html( _x( $label, 'option label', 'wpsso' ) ) . '</label></th><td>';
+				foreach ( $this->get_user_about_meta_keys( $about_key ) as $meta_key ) {
 
-				switch ( $key ) {
+					$val = $user_id ? get_metadata( 'user', $user_id, $meta_key, $single = true ) : '';
 
-					/*
-					 * Regular text input fields.
-					 */
-					default:
-
-						echo '<input type="text" class="regular-text" name="' . $key . '" id="' . $key . '" value="' . esc_attr( $val ) . '">';
-
-						break;
+					echo '<p><input type="text" class="regular-text" name="' . $meta_key . '" id="' . $meta_key . '" value="' . esc_attr( $val ) . '"></p>';
 				}
 
-				switch ( $key ) {
+				switch ( $about_key ) {
 
 					case 'honorific_prefix':
 
@@ -1027,27 +1026,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $about_key => $about_label ) {
 
-				if ( empty( $this->p->options[ 'plugin_user_about_' . $key ] ) ) {
+				if ( empty( $this->p->options[ 'plugin_user_about_' . $about_key ] ) ) {
 
 					continue;
 				}
 
-				if ( isset( $_POST[ $key ] ) ) {
+				foreach ( $this->get_user_about_meta_keys( $about_key ) as $meta_key ) {
 
-					switch ( $key ) {
+					/*
+					 * Regular text input fields.
+					 *
+					 * See https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/.
+					 */
+					if ( isset( $_POST[ $meta_key ] ) ) {
 
-						/*
-						 * Regular text input fields.
-						 *
-						 * See https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/.
-						 */
-						default:
-
-							update_metadata( 'user', $user_id, $key, sanitize_text_field( $_POST[ $key ] ) );
-
-							break;
+						update_metadata( 'user', $user_id, $meta_key, sanitize_text_field( $_POST[ $meta_key ] ) );
 					}
 				}
 			}
@@ -1125,6 +1120,38 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $user_id;
+		}
+
+		public function get_user_sameas( $user_id ) {
+
+			$user_sameas = array();
+
+			$contact_methods = WpssoUser::get_user_id_contact_methods( $user_id );
+
+			foreach ( $contact_methods as $cm_id => $cm_label ) {
+
+				$url = $this->get_author_meta( $user_id, $cm_id );
+
+				if ( empty( $url ) ) {
+
+					continue;
+
+				} elseif ( $cm_id === $this->p->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
+
+					$url = 'https://twitter.com/' . SucomUtil::sanitize_twitter_name( $url, $add_at = false );
+				}
+
+				if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping ' . $cm_id . ': url "' . $url . '" is invalid' );
+					}
+
+				} else $user_sameas[] = $url;
+			}
+
+			return $user_sameas;
 		}
 
 		/*
@@ -1236,6 +1263,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						break;
 
+					case 'awards':
+
+						$author_meta = array();
+
+						foreach ( $this->get_user_about_meta_keys( 'award' ) as $meta_key ) {
+
+							$val = get_metadata( 'user', $user_id, $meta_key, $single = true );
+
+							if ( SucomUtil::is_valid_option_value( $val ) ) {
+
+								$author_meta[] = $val;
+							}
+						}
+
+						break;
+
 					default:
 
 						$author_meta = get_the_author_meta( $meta_key, $user_id );
@@ -1243,16 +1286,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 
-				$author_meta = trim( $author_meta );	// Just in case.
+				if ( is_string( $author_meta ) ) {
+
+					$author_meta = trim( $author_meta );	// Just in case.
+				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$author_meta = apply_filters( 'wpsso_get_author_meta', $author_meta, $user_id, $meta_key, $user_exists );
+			$filter_name = 'wpsso_get_author_meta';
 
-			return $local_cache[ $user_id ][ $meta_key ] = (string) $author_meta;
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$author_meta = apply_filters( $filter_name, $author_meta, $user_id, $meta_key, $user_exists );
+
+			return $local_cache[ $user_id ][ $meta_key ] = $author_meta;
 		}
 
 		public function get_author_website( $user_id, $meta_key = 'url' ) {
@@ -1989,6 +2042,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_views = array_reverse( $user_views );
 
 			return $user_views;
+		}
+
+		private function get_user_about_meta_keys( $about_key ) {
+
+			$meta_keys = array();
+
+			if ( 'award' === $about_key ) {
+
+				if ( $awards_max = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 ) ) {
+
+					foreach ( range( 0, $awards_max - 1, 1 ) as $key_num ) {
+				
+						$meta_keys[] = $about_key . '_' . $key_num;
+					}
+				}
+
+			} else $meta_keys[] = $about_key;
+
+			return $meta_keys;
 		}
 
 		/*

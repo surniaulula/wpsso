@@ -547,12 +547,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_shipping_weight_units' => $def_weight_units,
 					'product_retailer_part_no'      => '',				// Product SKU.
 					'product_mfr_part_no'           => '',				// Product MPN.
-					'product_gtin14'                => '',
-					'product_gtin13'                => '',
-					'product_gtin12'                => '',
-					'product_gtin8'                 => '',
-					'product_gtin'                  => '',
-					'product_isbn'                  => '',
+					'product_gtin14'                => '',				// Product GTIN-14.
+					'product_gtin13'                => '',				// Product GTIN-13 (EAN).
+					'product_gtin12'                => '',				// Product GTIN-12 (UPC).
+					'product_gtin8'                 => '',				// Product GTIN-8.
+					'product_gtin'                  => '',				// Product GTIN.
+					'product_isbn'                  => '',				// Product ISBN.
+					'product_award_0'               => '',				// Product Awards.
+					'product_award_1'               => '',				// Product Awards.
+					'product_award_2'               => '',				// Product Awards.
 
 					/*
 					 * All Schema Types.
@@ -572,7 +575,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Creative Work.
 					 */
-					'schema_ispartof_url'    => '',						// Is Part of URLs.
 					'schema_headline'        => '',						// Headline.
 					'schema_text'            => '',						// Full Text.
 					'schema_keywords_csv'    => '',						// Keywords.
@@ -586,9 +588,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Provider Person.
 					'schema_fund_org_id'     => $opts[ 'schema_def_fund_org_id' ],		// Funder Org.
 					'schema_fund_person_id'  => $opts[ 'schema_def_fund_person_id' ],	// Funder Person.
-					'schema_ispartof_url_0'  => '',
-					'schema_ispartof_url_1'  => '',
-					'schema_ispartof_url_2'  => '',
+					'schema_ispartof_url_0'  => '',						// Is Part of URLs.
+					'schema_ispartof_url_1'  => '',						// Is Part of URLs.
+					'schema_ispartof_url_2'  => '',						// Is Part of URLs.
+					'schema_award_0'         => '',						// Creative Work Awards.
+					'schema_award_1'         => '',						// Creative Work Awards.
+					'schema_award_2'         => '',						// Creative Work Awards.
 
 					/*
 					 * See https://schema.org/citation.
@@ -599,9 +604,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 *
 					 * See https://developers.google.com/search/docs/appearance/structured-data/dataset.
 					 */
-					'schema_citation_0' => '',
-					'schema_citation_1' => '',
-					'schema_citation_2' => '',
+					'schema_citation_0' => '',	// Reference Citations.
+					'schema_citation_1' => '',	// Reference Citations.
+					'schema_citation_2' => '',	// Reference Citations.
 
 					/*
 					 * Schema Article.
@@ -1319,13 +1324,28 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Return an array of post mods for a given $mod object.
 		 *
+		 * If 'posts_per_page' is not set for an archive page, it will be set to the WordPress settings value.
+		 *
 		 * See WpssoPage->get_posts_mods().
 		 */
 		public function get_posts_mods( array $mod ) {
 
 			$posts_mods = array();
 
-			$posts_ids = $this->get_posts_ids( $mod );
+			if ( $mod[ 'is_archive' ] ) {
+
+				if ( ! isset( $mod[ 'posts_args' ][ 'posts_per_page' ] ) ) {
+
+					$mod[ 'posts_args' ][ 'posts_per_page' ] = get_option( 'posts_per_page' );
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'using posts_per_page = ' . $mod[ 'posts_args' ][ 'posts_per_page' ] );
+			}
+
+			$posts_ids = $this->get_posts_ids( $mod );	// Extended method.
 
 			if ( is_array( $posts_ids ) ) {	// Just in case.
 
@@ -1344,7 +1364,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Return an array of post IDs for a given $mod object.
+		 * Returns an array of post IDs for a given $mod object.
 		 *
 		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */

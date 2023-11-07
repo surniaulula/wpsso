@@ -186,6 +186,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			$mt_og[ 'product:retailer_item_id' ]  = $mod[ 'id' ];
 			$mt_og[ 'product:retailer_category' ] = $this->p->og->get_product_retailer_category( $mod );
+			$mt_og[ 'product:awards' ]            = $this->p->og->get_product_awards( $mod );
 
 			/*
 			 * Maybe fix an empty product description.

@@ -1096,6 +1096,23 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/*
+		 * Returns an array of strings.
+		 */
+		public function get_product_awards( array $mod ) {
+
+			$awards = array();
+
+			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+			if ( is_array( $md_opts ) ) {	// Just in case.
+
+				$awards = SucomUtil::preg_grep_keys( '/^product_award_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+			}
+
+			return $awards;
+		}
+
+		/*
 		 * Called by WpssoHead->get_head_array() before merging all meta tag arrays.
 		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all

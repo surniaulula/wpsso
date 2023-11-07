@@ -1391,33 +1391,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->util->maybe_set_ref( $local_cache_person_urls[ $person_id ], $user_mod, __( 'adding schema person', 'wpsso' ) );
 					}
 
-					$user_sameas = array();
-
-					foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
-
-						$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
-
-						if ( empty( $url ) ) {
-
-							continue;
-
-						} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
-
-							$url = 'https://twitter.com/' . SucomUtil::sanitize_twitter_name( $url, $add_at = false );
-						}
-
-						if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
-
-							if ( $wpsso->debug->enabled ) {
-
-								$wpsso->debug->log( 'skipping ' . $cm_id . ': url "' . $url . '" is invalid' );
-							}
-
-						} else {
-
-							$user_sameas[] = $url;
-						}
-					}
+					$user_description = $wpsso->page->get_description( $user_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
+					$user_images      = $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod, $md_pre = array( 'schema', 'og' ) );
+					$user_sameas      = $wpsso->user->get_user_sameas( $person_id );
 
 					$local_cache_person_opts[ $person_id ] = array(
 						'person_type'       => 'person',
@@ -1425,13 +1401,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_name'       => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'display_name' ),
 						'person_first_name' => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'first_name' ),
 						'person_last_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'last_name' ),
-						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),
+						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
 						'person_prefix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_prefix' ),
 						'person_suffix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_suffix' ),
-						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
-						'person_desc'       => $wpsso->page->get_description( $user_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' ),
-						'person_images'     => $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod,
-							$md_pre = array( 'schema', 'og' ) ),
+						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),
+						'person_awards'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'awards' ),
+						'person_desc'       => $user_description,
+						'person_images'     => $user_images,
 						'person_sameas'     => $user_sameas,
 					);
 
@@ -1468,9 +1444,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'name'            => 'person_name',
 				'givenName'       => 'person_first_name',
 				'familyName'      => 'person_last_name',
-				'additionalName'  => 'person_addl_name',
 				'honorificPrefix' => 'person_prefix',
 				'honorificSuffix' => 'person_suffix',
+				'additionalName'  => 'person_addl_name',
+				'award'           => 'person_awards',
 				'description'     => 'person_desc',
 				'jobTitle'        => 'person_job_title',
 				'email'           => 'person_email',
@@ -1847,10 +1824,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						$price_valid_until = gmdate( 'c', time() + $valid_max_time );
 
-					} else {
-
-						$price_valid_until = false;	// Check only once.
-					}
+					} else $price_valid_until = false;	// Check only once.
 				}
 
 				if ( $price_valid_until ) {
@@ -2192,6 +2166,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'color'                 => 'product:color',
 				'material'              => 'product:material',
 				'pattern'               => 'product:pattern',
+				'award'                 => 'product:awards',
 			) );
 
 			/*

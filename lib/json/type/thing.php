@@ -77,8 +77,14 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				}
 			}
 
-			$json_ret[ 'additionalType' ] = apply_filters( 'wpsso_json_prop_https_schema_org_additionaltype',
-				$json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
+			$filter_name = 'wpsso_json_prop_https_schema_org_additionaltype';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$json_ret[ 'additionalType' ] = apply_filters( $filter_name, $json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
 			 * See https://schema.org/url.
@@ -193,13 +199,14 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				}
 			}
 
+			$filter_name = 'wpsso_json_prop_https_schema_org_sameas';
+
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying sameAs property filter' );
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 			}
 
-			$json_ret[ 'sameAs' ] = apply_filters( 'wpsso_json_prop_https_schema_org_sameas',
-				$json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
+			$json_ret[ 'sameAs' ] = apply_filters( $filter_name, $json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -236,8 +243,14 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 			 */
 			$json_ret[ 'potentialAction' ] = array();
 
-			$json_ret[ 'potentialAction' ] = apply_filters( 'wpsso_json_prop_https_schema_org_potentialaction',
-				$json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );
+			$filter_name = 'wpsso_json_prop_https_schema_org_potentialaction';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$json_ret[ 'potentialAction' ] = apply_filters( $filter_name, $json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );
 
 			/*
 			 * Get additional Schema properties from the optional post content shortcode.

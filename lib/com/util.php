@@ -1945,6 +1945,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':brand'                       => null,
 				$mt_pre . ':category'                    => null,	// The product category according to the Google product taxonomy.
 				$mt_pre . ':retailer_category'           => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':awards'                      => array(),	// Non-standard / internal meta tag.
 				$mt_pre . ':condition'                   => null,
 				$mt_pre . ':energy_efficiency:value'     => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':energy_efficiency:min_value' => null,	// Non-standard / internal meta tag.

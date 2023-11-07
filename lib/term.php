@@ -383,9 +383,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					$filter_name = 'wpsso_get_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_md_options filters for term id ' . $term_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
@@ -393,22 +395,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/*
 					 * Since WPSSO Core v4.31.0.
 					 */
+					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for term id ' . $term_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $term_id, $mod );
 
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					$filter_name = 'wpsso_sanitize_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying sanitize_md_options filters for term id ' . $term_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 				}
 			}
 
@@ -557,9 +563,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Get post ids of a term.
+		 * Get the posts for a term.
 		 *
-		 * Return an array of post ids for a given $mod object, including posts in child terms as well.
+		 * Returns an array of post ids for a given $mod object, including posts in child terms as well.
+		 *
+		 * The 'posts_per_page' value should be set for an archive page before calling this method.
 		 *
 		 * See WpssoAbstractWpMeta->get_posts_mods().
 		 */
@@ -604,7 +612,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
+			$posts_ids = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {

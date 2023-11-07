@@ -42,7 +42,14 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 
 			$json_ret = array();
 
-			$crumb_data = apply_filters( 'wpsso_json_prop_https_schema_org_breadcrumb', array(), $mod, $mt_og, $page_type_id, $is_main );
+			$filter_name = 'wpsso_json_prop_https_schema_org_breadcrumb';
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$crumb_data = apply_filters( $filter_name, array(), $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( ! empty( $crumb_data ) ) {
 

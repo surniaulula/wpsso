@@ -2040,7 +2040,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$canonical_url = $wpsso->util->get_canonical_url( $mod );
-			$steps         = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+
+			$steps = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -2412,7 +2413,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						/*
 						 * Must have at least an offer name and price.
 						 */
-						if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+						if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts[ 'offer_price' ] ) ) {
 
 							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 								'name'          => 'offer_name',
@@ -2505,7 +2506,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Must have at least an offer name and price.
 					 */
-					if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+					if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts[ 'offer_price' ] ) ) {
 
 						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 							'name'          => 'offer_name',
@@ -3750,7 +3751,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				return false;
 
-			} elseif ( ! self::is_valid_val( $assoc[ $key ] ) ) {	// Not null, an empty string, or 'none'.
+			} elseif ( ! self::is_valid_val( $assoc[ $key ] ) ) {	// Not null, empty string, or 'none'.
 
 				return false;
 

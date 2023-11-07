@@ -36,6 +36,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 				/*
 				 * Document SSO > Edit Schema tab.
 				 */
+				case 'tooltip-meta-product_award':	// Product Awards.
+
+					$text = __( 'One or more awards this product has won.', 'wpsso' );
+
+				 	break;
+
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
 					$tp_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.

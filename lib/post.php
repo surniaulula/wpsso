@@ -502,12 +502,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( isset( $mod[ 'wp_obj' ]->post_content ) ) {
 
+						$filter_name = 'wpsso_import_content_blocks';
+
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying import_content_blocks filter' );
+							$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 						}
 
-						$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $mod[ 'wp_obj' ]->post_content );
+						$md_opts = apply_filters( $filter_name, $md_opts, $mod[ 'wp_obj' ]->post_content );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -529,24 +531,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoIntegEcomWooCommerce->add_mt_product().
 					 * See WpssoIntegEcomWooAddGtin->filter_wc_variation_alt_options().
 					 */
+					$filter_name = 'wpsso_import_custom_fields';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, $mod, self::get_meta( $post_id ) );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod, self::get_meta( $post_id ) );
 
 					/*
 					 * Since WPSSO Core v14.2.0.
 					 *
 					 * See WpssoIntegEcomWooCommerce->add_mt_product().
 					 */
+					$filter_name = 'wpsso_import_product_attributes';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $post_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_import_product_attributes', $md_opts, $mod, $mod[ 'wp_obj' ] );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod, $mod[ 'wp_obj' ] );
 
 					/*
 					 * Since WPSSO Core v9.5.0.
@@ -569,12 +575,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/*
 					 * Since WPSSO Core v7.1.0.
 					 */
+					$filter_name = 'wpsso_get_md_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_md_options filters for post id ' . $post_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
 					 * Since WPSSO Core v4.31.0.
@@ -583,23 +591,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
+					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_' . $mod[ 'name' ] . '_options filters for post id ' . $post_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
+					$md_opts = apply_filters( $filter_name, $md_opts, $post_id, $mod );
 
 					/*
 					 * Since WPSSO Core v8.2.0.
 					 */
+					$filter_name = 'wpsso_sanitize_md_options';;
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying sanitize_md_options filters for post id ' . $post_id );
+						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
-
+					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 				}
 			}
 
@@ -758,9 +769,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Get child post ids of a post.
+		 * Get the children for a post.
 		 *
-		 * Return an array of post ids for a given $mod object.
+		 * Returns an array of post ids for a given $mod object.
+		 *
+		 * The 'posts_per_page' value should be set for an archive page before calling this method.
 		 *
 		 * See WpssoPost->clear_cache().
 		 * See WpssoAbstractWpMeta->get_posts_mods().
@@ -800,7 +813,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$posts_ids   = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
+			$posts_ids = SucomUtilWP::get_posts( $posts_args );	// Alternative to get_posts() that does not exclude sticky posts.
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
