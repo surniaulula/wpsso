@@ -952,9 +952,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! $read_cache ) {
 
-				$this->types_cache[ 'filtered' ]  = null;
-				$this->types_cache[ 'flattened' ] = null;
-				$this->types_cache[ 'parents' ]   = null;
+				$this->types_cache = array();
 			}
 
 			if ( ! isset( $this->types_cache[ 'filtered' ] ) ) {
@@ -977,7 +975,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 								$this->p->debug->log( 'using schema types array from transient ' . $cache_id );
 							}
-						}
+
+						} else $this->types_cache = array();
 					}
 				}
 
@@ -1130,12 +1129,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$cache_salt   = __METHOD__ . '(child_id:' . $child_id . ')';
 					$cache_id     = $cache_md5_pre . md5( $cache_salt );
-					$cache_family = get_transient( $cache_id );	// Returns false when not found.
+					$child_family = get_transient( $cache_id );	// Returns false when not found.
 
-					if ( is_array( $cache_family ) ) {
+					if ( is_array( $child_family ) ) {
 
-						return $cache_family;
-					}
+						return $child_family;
+
+					} else $child_family = array();
 				}
 			}
 
@@ -1177,6 +1177,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_schema_type_children( $type_id, $use_cache = true, &$children = array() ) {
 
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting children for type id ' . $type_id );
@@ -1196,7 +1197,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( is_array( $children ) ) {
 
 						return $children;
-					}
+
+					} else $children = array();
 				}
 			}
 
@@ -1204,16 +1206,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_types = $this->get_schema_types( $flatten = true );	// Defines the 'parents' array.
 
-			foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_ids ) {
+			if ( isset( $this->types_cache[ 'parents' ] ) && is_array( $this->types_cache[ 'parents' ] ) ) {
 
-				foreach( $parent_ids as $parent_id ) {
+				foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_ids ) {
 
-					if ( $parent_id === $type_id ) {
+					foreach( $parent_ids as $parent_id ) {
 
-						/*
-						 * $use_cache is false for recursive calls.
-						 */
-						$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
+						if ( $parent_id === $type_id ) {
+
+							/*
+							 * $use_cache is false for recursive calls.
+							 */
+							$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
+						}
 					}
 				}
 			}

@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_webpage_reviewed_by_org_id',
 					'content'  => $form->get_select_multi( 'schema_webpage_reviewed_by_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $reviewed_by_max, $show_first = 1,
-							$is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$is_disabled = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'org_names' ) ),
 				),
 				'schema_webpage_reviewed_by_person_id' => array(
