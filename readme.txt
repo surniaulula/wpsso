@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.0.0-rc.1 (2023/11/07)**
+**Version 17.0.0-rc.2 (2023/11/08)**
 
 * **New Features**
 	* None.
@@ -507,9 +507,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.0.0-rc.1 =
+= 17.0.0-rc.2 =
 
-(2023/11/07) Four bug fixes. Refactored the settings page and metabox load process.
+(2023/11/08) Four bug fixes. Refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
