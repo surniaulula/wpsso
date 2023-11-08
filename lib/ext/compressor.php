@@ -239,8 +239,9 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		 */
 		protected function _fontFamilyCB($m)
 		{
-			// Issue 210: must not eliminate WS between words in unquoted families
-			// Update on 2023/11/07 by jsmoriss: Changed null to $limit = -1.
+			/*
+			 * Update on 2023/11/07 by jsmoriss: Changed null to $limit = -1.
+			 */
 			$pieces = preg_split( '/(\'[^\']+\'|"[^"]+")/', $m[ 1 ], $limit = -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
 
 			$out = 'font-family:';

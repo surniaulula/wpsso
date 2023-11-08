@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			/*
 			 * Sort the transient array and make sure the "All Transients" count is last.
 			 */
-			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( 'self', 'sort_by_label_key' ) );
+			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( __CLASS__, 'sort_by_label_key' ) );
 
 			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {
 

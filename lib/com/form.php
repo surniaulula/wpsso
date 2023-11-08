@@ -1366,7 +1366,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( 'sorted' !== $is_assoc && empty( $event_args[ 'is_sorted' ] ) ) {
 
-				uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
+				uasort( $select_opt_arr, array( __CLASS__, 'sort_select_opt_by_label' ) );
 			}
 
 			$html .= "\n";
@@ -2161,7 +2161,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								if ( empty( $event_args[ 'is_sorted' ] ) ) {
 
-									uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
+									uasort( $select_opt_arr, array( __CLASS__, 'sort_select_opt_by_label' ) );
 								}
 
 								$html .= "\n" . '<select ';

@@ -1726,7 +1726,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( 'active_plugins' === $option ) {	// Just in case.
 
-				usort( $current, array( 'self', 'sort_active_plugins' ) );
+				usort( $current, array( __CLASS__, 'sort_active_plugins' ) );
 			}
 
 			return $current;
@@ -2620,7 +2620,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			uksort( $features, array( 'self', 'sort_plugin_features' ) );
+			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
 
 			foreach ( $features as $label_transl => $arr ) {
 
