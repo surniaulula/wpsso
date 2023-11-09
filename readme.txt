@@ -255,16 +255,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.1.0-dev.1 (TBD)**
+**Version 17.1.0-dev.1 (2023/11/08)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for Document SSO post meta revisions.
+	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827)
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoUpgradeMeta` class.
+	* Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -507,9 +508,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 17.1.0-dev.1 =
+
+(2023/11/08) Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
+
 = 17.0.0 =
 
-(2023/11/08) Four bug fixes. Refactored the settings page and metabox load process.
+(2023/11/08) Bug fixes and refactored the settings page and metabox load process.
 
 = 16.6.0 =
 
