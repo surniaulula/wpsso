@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			/*
-			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
+			 * This hook is fired once WordPress, plugins, and the theme are fully loaded and instantiated.
 			 */
 			add_action( 'wp_loaded', array( $this, 'add_wp_callbacks' ) );
 		}
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 *
 			 * Register our user meta.
 			 */
-			$this->register_meta( $object_type = 'user' );
+			$this->register_meta( $object_type = 'user', WPSSO_META_NAME );
 
 			$is_admin = is_admin();	// Only check once.
 

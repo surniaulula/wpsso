@@ -60,6 +60,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				/*
 				 * Check for possible missing page ID selections.
+				 *
+				 * This hook is fired once WordPress, plugins, and the theme are fully loaded and instantiated.
 				 */
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 

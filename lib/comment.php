@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			}
 
 			/*
-			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
+			 * This hook is fired once WordPress, plugins, and the theme are fully loaded and instantiated.
 			 */
 			add_action( 'wp_loaded', array( $this, 'add_wp_callbacks' ) );
 		}
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			 *
 			 * Register our comment meta.
 			 */
-			$this->register_meta( $object_type = 'comment' );
+			$this->register_meta( $object_type = 'comment', WPSSO_META_NAME );
 
 			/*
 			 * Called by wp_insert_comment(), which is called by wp_new_comment().

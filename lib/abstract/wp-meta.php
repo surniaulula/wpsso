@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Add WordPress action and filters hooks.
+		 * Add WordPress action and filters callbacks.
 		 */
 		public function add_wp_callbacks() {
 
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * See WpssoTerm->add_wp_callbacks().
 		 * See WpssoUser->add_wp_callbacks().
 		 */
-		protected function register_meta( $object_type ) {
+		protected function register_meta( $object_type, $meta_key ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			return;	// Stop here.
 
-			register_meta( $object_type, WPSSO_META_NAME, $args = array(
+			register_meta( $object_type, $meta_key, $args = array(
 				'type'              => 'array',
 				'description'       => 'WPSSO meta options array.',
 				'default'           => array(),
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/*
 			 * Since WordPress v6.4.
 			 */
-			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ) );
+			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
 		}
 
 		/*
@@ -167,11 +167,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Add WPSSO_META_NAME to the revision fields shown.
 		 */
-		public function revision_fields_meta_title( $fields ) {
+		public function revision_fields_meta_title( $fields, $post ) {
 
-			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$fields[ WPSSO_META_NAME ] = sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $metabox_title );
+			$fields[ WPSSO_META_NAME ] = sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $meta_title );
 
 			/*
 			 * Since WordPress v6.4.

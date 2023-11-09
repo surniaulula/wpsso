@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
+			 * This hook is fired once WordPress, plugins, and the theme are fully loaded and instantiated.
 			 */
 			add_action( 'wp_loaded', array( $this, 'add_wp_callbacks' ) );
 		}
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *
 			 * Register our post meta.
 			 */
-			$this->register_meta( $object_type = 'post' );
+			$this->register_meta( $object_type = 'post', WPSSO_META_NAME );
 
 			$is_admin = is_admin();	// Only check once.
 
