@@ -944,7 +944,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Returns a one-dimensional (flat) array of schema types by default, otherwise returns a multi-dimensional array
 		 * of all schema types, including cross-references for sub-types with multiple parent types.
 		 *
-		 * $read_cache is false when called from the WpssoOptionsUpgrade::options() method.
+		 * $read_cache is false when called from the WpssoUpgrade::options() method.
 		 *
 		 * Uses a transient cache object and the $types_cache class property.
 		 */

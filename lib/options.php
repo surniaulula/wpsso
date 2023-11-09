@@ -20,7 +20,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 	class WpssoOptions {
 
 		private $p;		// Wpsso class object.
-		private $upg;		// WpssoOptionsUpgrade class object.
+		private $upgrade;	// WpssoUpgrade class object.
 		private $filters;	// WpssoOptionsFilters class object.
 
 		private static $cache_allowed = false;
@@ -406,19 +406,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'upgrading the ' . $options_name . ' settings' );
+					$this->p->debug->log( 'upgrading ' . $options_name . ' options' );
 				}
 
-				if ( ! is_object( $this->upg ) ) {
+				if ( ! is_object( $this->upgrade ) ) {
 
 					require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
 
-					$this->upg = new WpssoOptionsUpgrade( $this->p );
+					$this->upgrade = new WpssoUpgrade( $this->p );
 				}
 
 				$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 
-				$opts = $this->upg->options( $options_name, $opts, $defs, $network );
+				$opts = $this->upgrade->options( $options_name, $opts, $defs, $network );
 			}
 
 			/*

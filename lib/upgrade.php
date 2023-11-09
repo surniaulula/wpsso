@@ -10,18 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+if ( ! class_exists( 'WpssoUpgrade' ) ) {
 
-	die( 'Do. Or do not. There is no try.' );
-}
-
-if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
-
-	class WpssoOptionsUpgrade {
+	class WpssoUpgrade {
 
 		private $p;	// Wpsso class object.
 
-		private static $rename_keys_by_ext = array(
+		private static $rename_options = array(
 			'wpsso' => array(	// WPSSO Core plugin.
 				500 => array(
 					'og_img_resize'                  => '',
@@ -615,10 +610,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 				$is_site_options = true;
 
-			} else {	// Nothing to do.
-
-				return $opts;
-			}
+			} else return $opts;	// Nothing to do.
 
 			/*
 			 * Get the current options version number for checks to follow.
@@ -629,8 +621,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			 * Maybe renamed some option keys.
 			 */
 			$version_keys = $is_site_options ?
-				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :	// Network options filter.
-				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
+				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_options ) :	// Network options filter.
+				apply_filters( 'wpsso_rename_options_keys', self::$rename_options );
 
 			$opts = $this->p->util->rename_options_by_ext( $opts, $version_keys );
 

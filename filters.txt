@@ -293,9 +293,9 @@
 
 'wpsso_ratings_reviews_for_{post_type}' ( $bool )
 
-'wpsso_rename_md_options_keys' ( $md_opts_keys )
+'wpsso_rename_md_options_keys' ( $rename_md_options )
 
-'wpsso_rename_options_keys' ( $options_keys )
+'wpsso_rename_options_keys' ( $rename_options )
 
 'wpsso_rename_site_options_keys' ( $site_options_keys )
 

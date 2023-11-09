@@ -1628,7 +1628,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Since 2021/09/17.
 		 *
-		 * Used by WpssoOptions->sanitize() and WpssoOptionsUpgrade->options().
+		 * Used by WpssoOptions->sanitize() and WpssoUpgrade->options().
 		 */
 		public static function unset_numeric_keys( &$arr ) {
 
@@ -3299,7 +3299,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/*
 		 * See WpssoUser->get_public_ids().
-		 * See WpssoOptionsUpgrade->options().
+		 * See WpssoUpgrade->options().
 		 */
 		public static function get_roles_users_ids( array $roles, $blog_id = null ) {
 

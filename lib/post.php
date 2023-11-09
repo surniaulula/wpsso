@@ -459,11 +459,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'upgrade is required' );
-					}
-
 					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
 					self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
@@ -2426,7 +2421,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$check', $check );
+				$this->p->debug->log_arr( 'check', $check );
 			}
 
 			return $check;	// Null by default.

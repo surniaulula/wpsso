@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$user_exists_id = $user_id;
 
-					$md_opts = get_metadata( 'user', $user_exists_id, WPSSO_META_NAME, $single = true );
+					$md_opts = self::get_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
 					if ( ! is_array( $md_opts ) ) {
 
@@ -337,12 +337,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $user_exists ) {
 
-						update_metadata( 'user', $user_exists_id, WPSSO_META_NAME, $md_opts );
+						self::update_meta( $user_exists_id, WPSSO_META_NAME, $md_opts );
 
-					} else {
-
-						apply_filters( 'wpsso_update_other_user_meta', $md_opts, $user_id );
-					}
+					} else apply_filters( 'wpsso_update_other_user_meta', $md_opts, $user_id );
 				}
 			}
 
@@ -507,7 +504,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
-			return update_metadata( 'user', $user_id, WPSSO_META_NAME, $md_opts );
+			return self::update_meta( $user_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/*
@@ -877,7 +874,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				foreach ( $this->get_user_about_meta_keys( $about_key ) as $meta_key ) {
 
-					$val = $user_id ? get_metadata( 'user', $user_id, $meta_key, $single = true ) : '';
+					$val = $user_id ? self::get_meta( $user_id, $meta_key, $single = true ) : '';
 
 					echo '<p><input type="text" class="regular-text" name="' . $meta_key . '" id="' . $meta_key . '" value="' . esc_attr( $val ) . '"></p>';
 				}
@@ -1042,7 +1039,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 */
 					if ( isset( $_POST[ $meta_key ] ) ) {
 
-						update_metadata( 'user', $user_id, $meta_key, sanitize_text_field( $_POST[ $meta_key ] ) );
+						self::update_meta( $user_id, $meta_key, sanitize_text_field( $_POST[ $meta_key ] ) );
 					}
 				}
 			}
@@ -1269,7 +1266,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						foreach ( $this->get_user_about_meta_keys( 'award' ) as $meta_key ) {
 
-							$val = get_metadata( 'user', $user_id, $meta_key, $single = true );
+							$val = self::get_meta( $user_id, $meta_key, $single = true );
 
 							if ( SucomUtil::is_valid_option_value( $val ) ) {
 
@@ -1510,7 +1507,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$wpsso =& Wpsso::get_instance();
 
-				self::$cache_user_prefs[ $user_id ] = get_metadata( 'user', $user_id, WPSSO_PREF_NAME, $single = true );
+				self::$cache_user_prefs[ $user_id ] = self::get_meta( $user_id, WPSSO_PREF_NAME, $single = true );
 
 				if ( ! is_array( self::$cache_user_prefs[ $user_id ] ) ) {
 
@@ -1573,7 +1570,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				unset( $new_prefs[ 'prefs_filtered' ] );
 
-				update_metadata( 'user', $user_id, WPSSO_PREF_NAME, $new_prefs );
+				self::update_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
 
 				return true;
 			}
