@@ -195,31 +195,28 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 		public static function http_error( $errcode, $context = '' ) {
 
 			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
+			
+				$http_error = $errcode . ' ' . self::$codes[ 'http' ][ $errcode ];
 
-				$httpcode = $errcode . ' ' . self::$codes[ 'http' ][ $errcode ];
+				header( 'HTTP/1.1 ' . $http_error );	// Must be HTTP/1.1 for error code and error message.
 
-				header( 'HTTP/1.0 ' . $httpcode );
+				if ( ! empty( $context ) ) {
 
-				echo '<!DOCTYPE html>';
-				echo '<html>';
-				echo '<head>';
-				echo '<title>' . $httpcode . '</title>';
-				echo '</head>';
-				echo '<body>';
-				echo '<h1>' . $httpcode . '</h1>';
+					header( 'Content-Type: text/html' );
 
-				if ( $context ) {
-
+					echo '<!DOCTYPE html>';
+					echo '<html>';
+					echo '<head>';
+					echo '<title>' . $http_error . '</title>';
+					echo '</head>';
+					echo '<body>';
+					echo '<h1>' . $http_error . '</h1>';
 					echo '<p>' . $context . '</p>';
+					echo '</body>';
+					echo '</html>';
 				}
 
-				echo '</body>';
-				echo '</html>';
-
-			} else {
-
-				header( 'HTTP/1.0 ' . $errcode );
-			}
+			} else header( 'HTTP/1.0 ' . $errcode );
 
 			exit();
 		}
