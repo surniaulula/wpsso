@@ -255,17 +255,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.1.0-dev.1 (2023/11/08)**
+**Version 17.1.0-dev.2 (2023/11/08)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827)
+	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoUpgradeMeta` class.
 	* Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
+	* Refactored the `SucomErrorException::http_error()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -508,7 +509,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.1.0-dev.1 =
+= 17.1.0-dev.2 =
 
 (2023/11/08) Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
 
