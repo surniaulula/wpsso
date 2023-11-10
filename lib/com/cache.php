@@ -48,7 +48,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 
-			add_action( 'shutdown', array( $this, 'save_ignored_urls' ) );
+			add_action( 'shutdown', array( $this, 'save_ignored_urls' ), -1000, 0 );
 		}
 
 		/*

@@ -1337,7 +1337,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 	
-							$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $img_url );
+							$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $mt_single_image[ 'og:image:url' ] );
 						}
 
 						$mt_single_image[ 'og:image:url' ] = apply_filters( $filter_name, $mt_single_image[ 'og:image:url' ] );

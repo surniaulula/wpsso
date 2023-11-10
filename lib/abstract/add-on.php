@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 			 * If SucomAbstractAddOn->init_plugin_notices() is not executed, then show any missing requirements using
 			 * the standard WordPress admin notices action.
 			 */
-			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), 10, 0 );
+			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), 100, 0 );
 
 			/*
 			 * Declare compatibility with WooCommerce features.

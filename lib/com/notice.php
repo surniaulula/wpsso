@@ -15,7 +15,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	class SucomNotice {
 
 		private $p;	// Plugin class object.
-
 		private $plugin_id     = 'sucom';
 		private $plugin_ucid   = 'SUCOM';
 		private $text_domain   = 'sucom';
@@ -454,12 +453,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function admin_header_notices() {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
 			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -1000 );
 		}
 
 		public function show_admin_notices() {
 
-			$user_id      = get_current_user_id();	// Always returns an integer.
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
+			$user_id = get_current_user_id();	// Always returns an integer.
+
 			$notice_types = $this->all_types;
 
 			echo $this->get_notice_style();		// Always include the notice styles in all admin webpages.
@@ -513,6 +523,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/*
 			 * An alternative to the 'admin_head' action hook to add notices.
 			 */
+			$action_name = 'sucom_show_admin_notices';
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->log( 'doing action \'' . $action_name . '\'' );
+			}
+
 			do_action( 'sucom_show_admin_notices', $user_id );
 
 			/*
@@ -636,11 +653,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo $msg_html . "\n";
 
 			echo '<!-- ' . $this->plugin_id . ' admin notices end -->' . "\n";
-		}
 
-		public function admin_footer_script() {
+			if ( ! empty( $this->p->debug->enabled ) ) {
 
-			echo $this->get_notice_script();
+				$this->p->debug->log( $this->plugin_id . ' admin notices end' );
+			}
 		}
 
 		public function ajax_get_notices_json() {
@@ -856,10 +873,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $toolbar_types;
 		}
 
+		public function admin_footer_script() {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
+			echo $this->get_notice_script();
+		}
+
 		/*
 		 * Called by the WordPress 'shutdown' action. Save notices for all user IDs in the notice cache.
 		 */
 		public function shutdown_notice_cache() {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
 
 			foreach ( $this->notice_cache as $user_id => $msg_types ) {
 
@@ -980,7 +1012,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( is_admin() || $doing_cron ) {
 
-				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ), 10, 0 );
+				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ), -1000, 0 );
 			}
 		}
 
@@ -1725,6 +1757,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_notice_script() {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
 
 			return '
 <script>

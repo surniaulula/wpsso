@@ -14,8 +14,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 	abstract class SucomAbstractAddOn {
 
-		protected $p;	// Plugin class object.
-
+		protected $p;			// Plugin class object.
 		protected $ext   = '';		// Add-on lowercase classname, for example: 'wpssoum'.
 		protected $p_ext = '';		// Add-on lowercase acronym, for example: 'um'.
 		protected $cf    = array();	// Add-on config array, for example: WpssoUmConfig::$cf.
@@ -63,6 +62,11 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 		 */
 		public function init_plugin_notices() {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
 			$is_admin     = is_admin();
 			$doing_ajax   = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
@@ -82,7 +86,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 							SucomUtil::safe_error_log( __METHOD__ . ' error: ' . $req_info[ 'notice' ], $strip_html = true );
 						}
 
-						if ( $this->p->debug->enabled ) {
+						if ( ! empty( $this->p->debug->enabled ) ) {
 
 							$this->p->debug->log( strtolower( $req_info[ 'notice' ] ) );
 						}
@@ -93,7 +97,17 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 		public function show_admin_notices() {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( $this->did_plugin_notices ) {	// True when $this->init_plugin_notices() has run.
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+
+					$this->p->debug->log( 'admin notices already done' );
+				}
 
 				return;	// Stop here.
 			}
@@ -102,9 +116,19 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 			if ( $missing_reqs ) {
 
+				if ( ! empty( $this->p->debug->enabled ) ) {
+
+					$this->p->debug->log( 'have missing requirements' );
+				}
+
 				foreach ( $missing_reqs as $key => $req_info ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
+
+						if ( ! empty( $this->p->debug->enabled ) ) {
+
+							$this->p->debug->log( 'required notice: ' . $req_info[ 'notice' ] );
+						}
 
 						/*
 						 * The 'notice' message is HTML generated from the add-on config (ie. the required
@@ -120,6 +144,11 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 		 * Returns false or an array of missing requirements.
 		 */
 		protected function get_missing_requirements() {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
 
 			static $local_cache = null;
 
@@ -200,6 +229,11 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 		protected function get_requires_plugin_notice( array $info, array $req_info ) {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
 			$this->init_textdomain();	// If not already loaded, load the textdomain now.
 
 			$text_domain = $info[ 'text_domain' ];
@@ -213,6 +247,11 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 		}
 
 		protected function get_requires_version_notice( array $info, array $req_info ) {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->init_textdomain();	// If not already loaded, load the textdomain now.
 
