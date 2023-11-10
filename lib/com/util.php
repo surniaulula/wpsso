@@ -3474,34 +3474,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $users_ids;
 		}
 
-		public static function user_exists( $user_id ) {
-
-			if ( is_numeric( $user_id ) && $user_id > 0 ) {
-
-				static $local_cache = array();
-
-				$user_id = (int) $user_id;	// Cast as integer for the cache index.
-
-				if ( isset( $local_cache[ $user_id ] ) ) {
-
-					return $local_cache[ $user_id ];
-				}
-
-				global $wpdb;
-
-				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
-
-				return $local_cache[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
-			}
-
-			return false;
-		}
-
-		public static function get_author_object( $user_id = 0, $output = 'object' ) {
-
-			return self::get_user_object( $user_id, $output );
-		}
-
 		public static function get_user_object( $user_id = 0, $output = 'object' ) {
 
 			$user_obj = false;	// Return false by default.
@@ -3549,6 +3521,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
+		}
+
+		public static function get_author_object( $user_id = 0, $output = 'object' ) {
+
+			return self::get_user_object( $user_id, $output );
 		}
 
 		/*
@@ -4802,18 +4779,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $is_non_assoc;
 		}
 
-		public static function is_post_exists( $post_id ) {
-
-			  return is_string( get_post_status( $post_id ) );
-		}
-
 		public static function is_post_page( $use_post = false ) {
 
 			$is_post_page = false;
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 
-				$is_post_page = self::is_post_exists( $use_post );
+				$is_post_page = SucomUtilWP::post_exists( $use_post );
 
 			} elseif ( true === $use_post && ! empty( $GLOBALS[ 'post' ]->ID ) ) {
 
@@ -5063,7 +5035,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
 
-				$is_user_page = self::user_exists( $user_id );
+				$is_user_page = SucomUtilWP::user_exists( $user_id );
 
 			} elseif ( is_author() ) {
 

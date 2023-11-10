@@ -348,6 +348,49 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $posts;
 		}
 
+		public static function comment_exists( $comment_id ) {
+
+			return self::obj_exists( 'comments', $comment_id );	// Uses a local cache.
+		}
+
+		public static function post_exists( $post_id ) {
+
+			return self::obj_exists( 'posts', $post_id );	// Uses a local cache.
+		}
+
+		public static function term_exists( $term_id ) {
+
+			return self::obj_exists( 'terms', $term_id );	// Uses a local cache.
+		}
+
+		public static function user_exists( $user_id ) {
+
+			return self::obj_exists( 'users', $user_id );	// Uses a local cache.
+		}
+
+		private static function obj_exists( $table, $obj_id ) {
+
+			if ( $table && is_numeric( $obj_id ) && $obj_id > 0 ) {
+
+				static $local_cache = array();
+
+				$obj_id = (int) $obj_id;	// Cast as integer for the cache index.
+
+				if ( isset( $local_cache[ $table ][ $obj_id ] ) ) {
+
+					return $local_cache[ $table ][ $obj_id ];
+				}
+
+				global $wpdb;
+
+				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->$table . ' WHERE ID = %d';
+
+				return $local_cache[ $table ][ $obj_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $obj_id ) ) ? true : false;
+			}
+
+			return false;
+		}
+
 		/*
 		 * Retrieves or updates the metadata cache by key and group.
 		 *

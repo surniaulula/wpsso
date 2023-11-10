@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.1.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 17.1.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6543,35 +6543,35 @@ msgstr ""
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:222
+#: lib/integ/ecom/woocommerce.php:223
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:285
+#: lib/integ/ecom/woocommerce.php:289
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:504
+#: lib/integ/ecom/woocommerce.php:508
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1611
+#: lib/integ/ecom/woocommerce.php:1615
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1715
+#: lib/integ/ecom/woocommerce.php:1719
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1718
+#: lib/integ/ecom/woocommerce.php:1722
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1721
+#: lib/integ/ecom/woocommerce.php:1725
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

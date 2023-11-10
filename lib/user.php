@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'getting metadata for user id ' . $user_id );
 				}
 
-				$user_exists = SucomUtil::user_exists( $user_id );
+				$user_exists = SucomUtilWP::user_exists( $user_id );
 
 				if ( $user_exists ) {
 
@@ -1236,7 +1236,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$local_cache[ $user_id ] = array();
 			}
 
-			$user_exists = SucomUtil::user_exists( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );
 
 			$author_meta = '';
 
@@ -1329,7 +1329,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$local_cache[ $user_id ] = array();
 			}
 
-			$user_exists = SucomUtil::user_exists( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );
 
 			$website_url = '';
 
@@ -1728,7 +1728,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Check if this is a valid WordPress user.
 			 */
-			$user_exists = SucomUtil::user_exists( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );
 
 			if ( $user_exists ) {
 

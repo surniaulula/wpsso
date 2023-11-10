@@ -217,10 +217,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				'shop'     => __( 'Shop page', 'woocommerce' ),
 			) as $page_type => $label_transl ) {
 
-				if ( ! is_int( $this->page_ids[ $page_type ] ) || $this->page_ids[ $page_type ] < 1 ) {
+				if ( ! is_int( $this->page_ids[ $page_type ] ) || $this->page_ids[ $page_type ] < 1 ||
+					! SucomUtilWP::post_exists( $this->page_ids[ $page_type ] ) ) {
 
-					$this->p->notice->warn( sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ),
-						$label_transl ) . ' ' . ( 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg ) );
+					$notice_msg = sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ), $label_transl ) . ' ';
+					
+					$notice_msg .= 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg;
+
+					$this->p->notice->warn( $notice_msg );
 				}
 			}
 		}
