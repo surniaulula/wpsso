@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.1.0-rc.1 (2023/11/11)**
+**Version 17.1.0 (2023/11/11)**
 
 * **New Features**
 	* None.
@@ -528,7 +528,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.1.0-rc.1 =
+= 17.1.0 =
 
 (2023/11/11) Refactored the `WpssoAbstractWpMeta->upgrade_options()` and `SucomErrorException::http_error()` methods.
 
