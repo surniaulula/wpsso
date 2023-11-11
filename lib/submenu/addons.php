@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		 * Remove all action buttons.
 		 */
 		protected function add_form_buttons( &$form_button_rows ) {
-			
+
 			$form_button_rows = array();
 		}
 

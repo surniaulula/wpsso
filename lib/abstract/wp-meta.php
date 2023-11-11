@@ -1163,10 +1163,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$this->p->debug->log( 'using posts_per_page = ' . $mod[ 'posts_args' ][ 'posts_per_page' ] );
 
-				} else {
-					
-					$this->p->debug->log( 'posts_per_page not defined' );
-				}
+				} else $this->p->debug->log( 'posts_per_page not defined' );
 			}
 
 			$posts_ids = $this->get_posts_ids( $mod );	// Extended method.

@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					! SucomUtilWP::post_exists( $this->page_ids[ $page_type ] ) ) {
 
 					$notice_msg = sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ), $label_transl ) . ' ';
-					
+
 					$notice_msg .= 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg;
 
 					$this->p->notice->warn( $notice_msg );

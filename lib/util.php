@@ -2342,7 +2342,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page, $is_custom );
 
 			if ( ! empty( $cache_salt ) ) {
-				
+
 				$local_cache[ $cache_salt ] = $url;
 			}
 
@@ -2771,7 +2771,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$disabled = true;
 
 			} elseif ( empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
-			
+
 				$disabled = true;
 			}
 
@@ -2813,7 +2813,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$disabled = false;
 
 			if ( empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ) {
-			
+
 				$disabled = true;
 			}
 
@@ -2837,7 +2837,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$disabled = false;
 
 			if ( ! current_theme_supports( 'title-tag' ) ) {
-			
+
 				$disabled = true;
 
 			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
@@ -2926,10 +2926,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * See WpssoCheck->get_avail().
 			 */
 			if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-			
+
 				$disabled = true;
 			}
-			
+
 			return $disabled;
 		}
 

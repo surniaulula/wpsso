@@ -1301,7 +1301,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_screen_id( $screen = false ) {
 
 			if ( false === $screen ) {
-			
+
 				if ( function_exists( 'get_current_screen' ) ) {
 
 					$screen = get_current_screen();

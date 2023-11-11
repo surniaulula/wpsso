@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
-			
+
 			$this->menu_metaboxes = array(
 				'licenses' => _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' ),
 			);
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 
 							echo '</td>';
 						}
-					
+
 						echo $row . '</tr>' . "\n";
 					}
 				}

@@ -261,19 +261,19 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 							$css_class = '', $css_id = 'plugin_clean_on_uninstall' ) .
 						'<td>' . $this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
 						self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $args[ 'network' ] );
-		
+
 					$table_rows[ 'plugin_schema_json_min' ] = '' .
 						$this->form->get_th_html( _x( 'Minimize Schema JSON-LD', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_schema_json_min' ) .
 						'<td>' . $this->form->get_checkbox( 'plugin_schema_json_min' ) . '</td>' .
 						self::get_option_site_use( 'plugin_schema_json_min', $this->form, $args[ 'network' ] );
-		
+
 					$table_rows[ 'plugin_load_mofiles' ] = '' .
 						$this->form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_load_mofiles' ) .
 						'<td>' . $this->form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
 						self::get_option_site_use( 'plugin_load_mofiles', $this->form, $args[ 'network' ] );
-		
+
 					$table_rows[ 'plugin_debug_html' ] = '' .
 						$this->form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_debug_html' ) .
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 						$this->form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
 						$this->form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
 						self::get_option_site_use( 'plugin_debug_html', $this->form, $args[ 'network' ] );
-		
+
 					$table_rows[ 'plugin_cache_disable' ] = '' .
 						$this->form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_cache_disable' ) .

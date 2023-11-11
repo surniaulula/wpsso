@@ -909,7 +909,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$pid = get_post_thumbnail_id( $post_id );
 
 				} else $pid = false;
-			
+
 				$filter_name = 'wpsso_featured_image_id';
 
 				if ( $this->p->debug->enabled ) {
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$filter_name = 'wpsso_rewrite_image_url';
 
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $mt_single_image[ 'og:image:url' ] );
 						}
 

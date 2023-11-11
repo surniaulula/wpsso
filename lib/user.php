@@ -1772,9 +1772,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$screen_id = SucomUtil::get_screen_id();
-			
+
 			switch ( $screen_id ) {
-				
+
 				case 'profile':										// User profile page.
 				case ( 0 === strpos( $screen_id, 'profile_page_' ) ? true : false ):			// Your profile page.
 				case ( 0 === strpos( $screen_id, 'users_page_' . $this->p->id ) ? true : false ):	// Profile SSO page.
@@ -2050,7 +2050,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( $awards_max = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 ) ) {
 
 					foreach ( range( 0, $awards_max - 1, 1 ) as $key_num ) {
-				
+
 						$meta_keys[] = $about_key . '_' . $key_num;
 					}
 				}

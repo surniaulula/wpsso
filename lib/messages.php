@@ -1165,7 +1165,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$html = '<p class="status-msg smaller long_name">' . $html . '</p>';
 				}
 			}
-	
+
 			return $html;
 		}
 

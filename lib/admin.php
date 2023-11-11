@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_settings_page_callbacks();
 
 			if ( method_exists( $this, 'add_meta_boxes' ) ) {	// Deprecated on 2023/11/05.
-				
+
 				$this->add_meta_boxes();
 			}
 
@@ -1102,7 +1102,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Defined in the child construct method of this settings page.
 			 */
 			if ( empty( $this->menu_metaboxes ) ) {
-				
+
 				return;
 			}
 

@@ -195,7 +195,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 		public static function http_error( $errcode, $context = '' ) {
 
 			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
-			
+
 				$http_error = $errcode . ' ' . self::$codes[ 'http' ][ $errcode ];
 
 				header( 'HTTP/1.1 ' . $http_error );	// Must be HTTP/1.1 for error code and error message.
