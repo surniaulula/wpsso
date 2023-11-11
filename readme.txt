@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.2.0-dev.3 (TBD)**
+**Version 17.2.0-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.1.0-dev.3 (2023/11/10)**
+**Version 17.1.0-rc.1 (2023/11/11)**
 
 * **New Features**
 	* None.
@@ -278,12 +278,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoUpgradeMeta` class.
 	* Added new methods:
 		* `SucomUtilWP::comment_exists()`
 		* `SucomUtilWP::post_exists()`
 		* `SucomUtilWP::term_exists()`
 		* `SucomUtilWP::user_exists()`
+	* Added a new `WpssoUpgradeMeta->md_options()` class and method.
 	* Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
 	* Refactored the `SucomErrorException::http_error()` method.
 * **Requires At Least**
@@ -528,9 +528,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.1.0-dev.3 =
+= 17.1.0-rc.1 =
 
-(2023/11/10) Refactored the `WpssoAbstractWpMeta->upgrade_options()` method.
+(2023/11/11) Refactored the `WpssoAbstractWpMeta->upgrade_options()` and `SucomErrorException::http_error()` methods.
 
 = 17.0.0 =
 
