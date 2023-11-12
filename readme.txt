@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.1.1-dev.1 (2023/11/12)**
+**Version 17.1.1-rc.1 (2023/11/12)**
 
 * **New Features**
 	* None.
@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.1.1-dev.1 =
+= 17.1.1-rc.1 =
 
 (2023/11/12) Fixed error calling `WpssoSchema::is_valid_key()` for items reviewed.
 
