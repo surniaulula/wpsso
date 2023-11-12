@@ -269,6 +269,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
+**Version 17.1.1-dev.1 (2023/11/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed error calling `WpssoSchema::is_valid_key()` for items reviewed.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.1.0 (2023/11/11)**
 
 * **New Features**
@@ -328,6 +342,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.1.1-dev.1 =
+
+(2023/11/12) Fixed error calling `WpssoSchema::is_valid_key()` for items reviewed.
 
 = 17.1.0 =
 
