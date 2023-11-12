@@ -2417,8 +2417,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						/*
 						 * Must have at least an offer name and price.
+						 *
+						 * Values cannot be null, an empty string, or 'none'.
 						 */
-						if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts[ 'offer_price' ] ) ) {
+						if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 								'name'          => 'offer_name',
@@ -2510,8 +2512,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					/*
 					 * Must have at least an offer name and price.
+					 *
+					 * Values cannot be null, an empty string, or 'none'.
 					 */
-					if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts[ 'offer_price' ] ) ) {
+					if ( self::is_valid_key( $offer_opts, 'offer_name' ) && self::is_valid_key( $offer_opts, 'offer_price' ) ) {
 
 						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array(
 							'name'          => 'offer_name',
@@ -3747,8 +3751,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Since WPSSO Core v8.0.0.
 		 *
-		 * Checks both the array key and its value. The array key must exist, and its value cannot be null, an empty
-		 * string, the 'none' string, and if the key is a width or height, the value cannot be -1.
+		 * Checks both the array key and its value.
+		 * 
+		 * The array key must exist, and its value cannot be null, an empty string, or 'none'.
+		 *
+		 * If the key is a width or height, the value cannot be -1.
+		 *
+		 * See WpssoJsonTypeMovie->filter_json_data_https_schema_org_movie().
+		 * See WpssoSchema::add_item_reviewed_data().
+		 * See WpssoSchema::add_data_itemprop_from_assoc().
+		 * WpssoSchemaSingle->add_book_data().
+		 * WpssoSchemaSingle->add_offer_data().
+		 * WpssoSchemaSingle->add_product_data().
 		 */
 		public static function is_valid_key( $assoc, $key ) {
 
@@ -3775,6 +3789,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v8.0.0.
 		 *
 		 * The value cannot be null, an empty string, or the 'none' string.
+		 *
+		 * WpssoJsonTypeCreativeWork->filter_json_data_https_schema_org_creativework().
+		 * See WpssoSchema::is_valid_key().
 		 */
 		public static function is_valid_val( $val ) {
 
