@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.2.0-dev.1 (2023/11/15)**
+**Version 17.2.0-dev.2 (2023/11/15)**
 
 * **New Features**
 	* None.
@@ -345,7 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.2.0-dev.1 =
+= 17.2.0-dev.2 =
 
 (2023/11/15) Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
 
