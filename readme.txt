@@ -260,11 +260,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
 	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a callback for the 'get_the_archive_description' filter.
+	* Added a `in_the_loop()` check to skip adding Pinterest images to posts in the loop.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
