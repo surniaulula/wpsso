@@ -267,6 +267,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a callback for the 'get_the_archive_description' filter.
 	* Added a `in_the_loop()` check to skip adding Pinterest images to posts in the loop.
+	* Renamed the `WpssoPinterest->get_pinterest_img_html()` method to `prepend_image_html()`.
+	* Renamed the `WpssoPinterest->show_pinterest_img_html()` method to `show_image_html()`.
+	* Added a new `WpssoPinterest->get_mod_image_html()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
