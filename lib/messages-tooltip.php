@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-pin_add_img_html':			// Add Hidden Image for Pinterest.
 
-						$text = sprintf( __( '%s can add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+						$text = __( 'Add an extra hidden image in the WordPress singular post / page content, author description, post types archive description, and term description for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Although generally recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
 

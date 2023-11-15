@@ -46,7 +46,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					'plugin_image_sizes' => 1,
 				) );
 
+				/*
+				 * Filters the post content.
+				 *
+				 * See https://developer.wordpress.org/reference/hooks/the_content/.
+				 */
 				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), PHP_INT_MAX );
+
+				/*
+				 * Filters the author description, post type archive description, and the term description.
+				 *
+				 * See https://developer.wordpress.org/reference/functions/get_the_archive_description/.
+				 */
+				add_filter( 'get_the_archive_description', array( $this, 'get_pinterest_img_html' ), PHP_INT_MAX );
 			}
 		}
 
@@ -138,22 +150,37 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			}
 
 			/*
-			 * Do not add the pinterest image if the current webpage is amp or rss feed.
+			 * Do not add a Pinterest image if the current webpage is amp, an rss feed, we're in the loop, or WPSSO is
+			 * applying the content filter to create a Schema or meta tag description value.
 			 */
-			if ( SucomUtil::is_amp() || is_feed() ) {
+			if ( SucomUtil::is_amp() ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: is amp or feed' );
+					$this->p->debug->log( 'exiting early: is amp' );
 				}
 
 				return $content;	// Stop here.
-			}
 
-			/*
-			 * Check if the content filter is being applied to create a description text.
-			 */
-			if ( ! empty( $GLOBALS[ 'wpsso_doing_filter_the_content' ] ) ) {
+			} elseif ( is_feed() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: is feed' );
+				}
+
+				return $content;	// Stop here.
+			
+			} elseif ( in_the_loop() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: in the loop' );
+				}
+
+				return $content;	// Stop here.
+
+			} elseif ( ! empty( $GLOBALS[ 'wpsso_doing_filter_the_content' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -172,16 +199,16 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
 
-			$cache_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			$recursion_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
-			static $local_is_recursion = array();
+			static $local_recursion = array();	// Check for any unexpected recursion.
 
-			if ( ! empty( $local_is_recursion[ $cache_salt ] ) ) {
+			if ( ! empty( $local_recursion[ $recursion_salt ] ) ) {
 
-				return $content;
+				return $content;	// Stop here.
 			}
 
-			$local_is_recursion[ $cache_salt ] = true;
+			$local_recursion[ $recursion_salt ] = true;
 
 			$size_name = 'wpsso-pinterest';
 
@@ -189,7 +216,11 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 
-			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="display:none !important;">' . "\n";
+			/*
+			 * Do not add newline characters or HTML comments as they can be wrapped in paragraph tags by some
+			 * WordPress filters.
+			 */
+			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="width:0;height:0;display:none !important;">';
 
 			if ( empty( $image_url ) ) {
 
@@ -221,12 +252,12 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
 					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' .
-					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
+					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />';
 			}
 
-			$image_html .= '</div><!-- .wpsso-pinterest-pin-it-image -->' . "\n\n";
+			$image_html .= '</div>';
 
-			unset( $local_is_recursion[ $cache_salt ] );
+			unset( $local_recursion[ $recursion_salt ] );
 
 			return $image_html . $content;
 		}

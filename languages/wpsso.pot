@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.1.1\n"
+"Project-Id-Version: WPSSO Core 17.2.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3285,7 +3285,7 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:121
+#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:133
 #: lib/pro/admin/advanced.php:429 lib/std/admin/advanced.php:415
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -9995,7 +9995,8 @@ msgstr ""
 
 #: lib/messages-tooltip.php:362
 msgid ""
-"%s can add an extra hidden image in the WordPress post / page content for "
+"Add an extra hidden image in the WordPress singular post / page content, "
+"author description, post types archive description, and term description for "
 "the Pinterest Pin It browser button."
 msgstr ""
 
