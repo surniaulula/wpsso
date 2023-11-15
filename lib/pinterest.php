@@ -51,14 +51,14 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 *
 				 * See https://developer.wordpress.org/reference/hooks/the_content/.
 				 */
-				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), PHP_INT_MAX );
+				add_filter( 'the_content', array( $this, 'prepend_image_html' ), PHP_INT_MAX );
 
 				/*
 				 * Filters the author description, post type archive description, and the term description.
 				 *
 				 * See https://developer.wordpress.org/reference/functions/get_the_archive_description/.
 				 */
-				add_filter( 'get_the_archive_description', array( $this, 'get_pinterest_img_html' ), PHP_INT_MAX );
+				add_filter( 'get_the_archive_description', array( $this, 'prepend_image_html' ), PHP_INT_MAX );
 			}
 		}
 
@@ -137,12 +137,12 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $sizes;
 		}
 
-		public function show_pinterest_img_html() {
+		public function show_image_html() {
 
-			echo $this->get_pinterest_img_html();
+			echo $this->prepend_image_html();
 		}
 
-		public function get_pinterest_img_html( $content = '' ) {
+		public function prepend_image_html( $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -199,26 +199,36 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
 
+			$image_html = $this->get_mod_image_html( $mod );
+
+			return $image_html . $content;
+		}
+		
+		public function get_mod_image_html( array $mod ) {
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$image_html     = '';
 			$recursion_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
 
 			static $local_recursion = array();	// Check for any unexpected recursion.
 
 			if ( ! empty( $local_recursion[ $recursion_salt ] ) ) {
 
-				return $content;	// Stop here.
+				return $image_html;	// Stop here.
 			}
 
 			$local_recursion[ $recursion_salt ] = true;
 
 			$size_name = 'wpsso-pinterest';
-
 			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre = array( 'pin', 'schema', 'og' ) );
-
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 
 			/*
-			 * Do not add newline characters or HTML comments as they can be wrapped in paragraph tags by some
-			 * WordPress filters.
+			 * Avoid newline characters and HTML comments as they could be wrapped in paragraph tags by some filters.
 			 */
 			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="width:0;height:0;display:none !important;">';
 
@@ -250,7 +260,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 *
 				 * The 'skip-lazy' class is used by WP Rocket to skip the lazy loading of an image.
 				 */
-				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
+				$image_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
 					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' .
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />';
 			}
@@ -259,7 +269,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			unset( $local_recursion[ $recursion_salt ] );
 
-			return $image_html . $content;
+			return $image_html;
 		}
 	}
 }

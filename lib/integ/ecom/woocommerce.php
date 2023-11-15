@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
 
-				add_action( 'woocommerce_archive_description', array( $this->p->pinterest, 'show_pinterest_img_html' ) );
+				add_action( 'woocommerce_archive_description', array( $this->p->pinterest, 'show_image_html' ) );
 			}
 
 			$this->disable_options_keys();
