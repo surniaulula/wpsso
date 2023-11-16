@@ -255,13 +255,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.2.0-dev.2 (2023/11/15)**
+**Version 17.3.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
+**Version 17.2.0-b.1 (2023/11/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
-	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -348,9 +361,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.2.0-dev.2 =
+= 17.2.0-b.1 =
 
-(2023/11/15) Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
+(2023/11/16) Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
 
 = 17.1.1 =
 
