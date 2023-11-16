@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.2.0-b.1 (2023/11/16)**
+**Version 17.2.0-rc.1 (2023/11/16)**
 
 * **New Features**
 	* None.
@@ -361,7 +361,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.2.0-b.1 =
+= 17.2.0-rc.1 =
 
 (2023/11/16) Added the "Add Hidden Image for Pinterest" option to author, post type archive, and term descriptions.
 
