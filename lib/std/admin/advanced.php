@@ -380,11 +380,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 					$table_rows[ $title_key ] = '' .
 						$form->get_th_html_locale( _x( 'Archive Page Title', 'option label', 'wpsso' ), $css_class = '', $title_key ) .
-						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '', $def_title_text ) . '</td>';
+						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '',
+							$def_title_text ) . '</td>';
 
 					$table_rows[ $desc_key ] = '' .
 						$form->get_th_html_locale( _x( 'Archive Page Description', 'option label', 'wpsso' ), $css_class = '', $desc_key ) .
-						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '', $len = 0, $def_desc_text ) . '</td>';
+						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '',
+							$len = 0, $def_desc_text ) . '</td>';
 				}
 			}
 
