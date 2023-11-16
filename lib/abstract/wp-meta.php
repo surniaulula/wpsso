@@ -142,6 +142,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 * WordPress v6.4 cannot use post meta arrays for revisions:
 			 *
 			 * https://core.trac.wordpress.org/ticket/59827
+			 *
+			 * See wp_save_post_revision() in wordpress/wp-includes/revision.php.
 			 */
 			return;	// Stop here.
 
@@ -150,7 +152,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				'description'       => 'WPSSO meta options array.',
 				'default'           => array(),
 				'single'            => true,
-				'sanitize_callback' => null,
+				'sanitize_callback' => null,	// Executed much too frequently by WordPress.
 				'auth_callback'     => null,
 				'show_in_rest'      => false,
 				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
