@@ -20,7 +20,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>WPSSO Core is a social and search optimization plugin to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Provides complete structured data for WordPress to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
