@@ -147,9 +147,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			return;	// Stop here.
 
+			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
 			register_meta( $object_type, $meta_key, $args = array(
 				'type'              => 'array',
-				'description'       => 'WPSSO meta options array.',
+				'description'       => sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $meta_title ),
 				'default'           => array(),
 				'single'            => true,
 				'sanitize_callback' => null,	// Executed much too frequently by WordPress.
