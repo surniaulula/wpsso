@@ -4058,7 +4058,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public static function get_fragment_anchor( $mod = null ) {
 
-			return '#sso-' . ( $mod ? self::get_mod_anchor( $mod ) : '' );
+			return '#sso-' . ( $mod ? self::get_mod_css_id( $mod ) : '' );
 		}
 
 		/**

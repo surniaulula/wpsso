@@ -40,7 +40,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			add_filter( 'get_avatar', array( $this, 'get_avatar_image_tag' ), 10, 6 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
-			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
+			if ( empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'pinterest hidden image is disabled' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'pinterest hidden image is enabled' );
+				}
 
 				$this->p->util->add_plugin_filters( $this, array(
 					'plugin_image_sizes' => 1,
@@ -137,11 +149,17 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $sizes;
 		}
 
+		/*
+		 * Hooked to the 'woocommerce_archive_description' action.
+		 */
 		public function show_image_html() {
 
 			echo $this->prepend_image_html();
 		}
 
+		/*
+		 * Hooked to 'the_content' and 'get_the_archive_description' filters.
+		 */
 		public function prepend_image_html( $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -171,11 +189,16 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 				return $content;	// Stop here.
 			
-			} elseif ( in_the_loop() ) {
+			/*
+			 * Do not add a Pinterest image for individual posts within an archive page.
+			 *
+			 * Note that in_the_loop() can be true in both archive and singular pages.
+			 */
+			} elseif ( is_archive() && in_the_loop() ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: in the loop' );
+					$this->p->debug->log( 'exiting early: archive page and in the loop' );
 				}
 
 				return $content;	// Stop here.
@@ -195,6 +218,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
+			/*
+			 * Note that in_the_loop() can be true in both archive and singular pages.
+			 */
 			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
@@ -203,7 +229,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			return $image_html . $content;
 		}
-		
+	
+		/*
+		 * See WpssoPinterest->prepend_image_html().
+		 */
 		public function get_mod_image_html( array $mod ) {
 			
 			if ( $this->p->debug->enabled ) {
@@ -211,26 +240,43 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$image_html     = '';
-			$recursion_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			$image_html = '';
+			
+			if ( empty( $mod[ 'name' ] ) || empty( $mod[ 'id' ] ) ) {
 
-			static $local_recursion = array();	// Check for any unexpected recursion.
+				if ( $this->p->debug->enabled ) {
 
-			if ( ! empty( $local_recursion[ $recursion_salt ] ) ) {
+					$this->p->debug->log( 'exiting early: mod name or id is empty' );
+				}
 
 				return $image_html;	// Stop here.
 			}
 
-			$local_recursion[ $recursion_salt ] = true;
+			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+
+			static $local_recursion = array();	// Check for any unexpected recursion.
+
+			if ( ! empty( $local_recursion[ $mod_salt ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: recursion detected for ' . $mod_salt );
+				}
+
+				return $image_html;	// Stop here.
+			}
+
+			$local_recursion[ $mod_salt ] = true;
 
 			$size_name = 'wpsso-pinterest';
 			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre = array( 'pin', 'schema', 'og' ) );
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
+			$css_id    = 'pin-it-' . SucomUtil::sanitize_css_id( $mod_salt );
 
 			/*
-			 * Avoid newline characters and HTML comments as they could be wrapped in paragraph tags by some filters.
+			 * Avoid newline characters and HTML comments as they can be wrapped in paragraph tags by some WordPress filters.
 			 */
-			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="width:0;height:0;display:none !important;">';
+			$image_html = '<div class="wpsso-pinterest-image" id="' . $css_id . '" style="width:0;height:0;display:none !important;">';
 
 			if ( empty( $image_url ) ) {
 
@@ -267,7 +313,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_html .= '</div>';
 
-			unset( $local_recursion[ $recursion_salt ] );
+			unset( $local_recursion[ $mod_salt ] );
 
 			return $image_html;
 		}

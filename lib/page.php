@@ -273,6 +273,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
+			/*
+			 * Note that in_the_loop() can be true in both archive and singular pages.
+			 */
 			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 			$mod = $this->get_mod( $use_post );
@@ -355,6 +358,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 				}
 
+				/*
+				 * Note that in_the_loop() can be true in both archive and singular pages.
+				 */
 				$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 				$mod = $this->get_mod( $use_post );

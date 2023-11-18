@@ -394,6 +394,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * Note that in_the_loop() can be true in both archive and singular pages.
+			 */
 			if ( in_the_loop() ) {
 
 				if ( $this->p->debug->enabled ) {

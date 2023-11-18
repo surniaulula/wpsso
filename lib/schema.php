@@ -617,7 +617,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: mod name or mod id is empty' );
+					$this->p->debug->log( 'exiting early: mod name or id is empty' );
 				}
 
 				return false;

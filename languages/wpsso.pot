@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.2.0\n"
+"Project-Id-Version: WPSSO Core 17.3.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3285,7 +3285,7 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:133
+#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:145
 #: lib/pro/admin/advanced.php:431 lib/std/admin/advanced.php:417
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -6551,27 +6551,27 @@ msgstr ""
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:508
+#: lib/integ/ecom/woocommerce.php:511
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1615
+#: lib/integ/ecom/woocommerce.php:1618
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1719
+#: lib/integ/ecom/woocommerce.php:1722
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1722
+#: lib/integ/ecom/woocommerce.php:1725
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1725
+#: lib/integ/ecom/woocommerce.php:1728
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -11516,15 +11516,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1036 lib/util-inline.php:413
+#: lib/page.php:1042 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1040
+#: lib/page.php:1046
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2239
+#: lib/page.php:2245
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
