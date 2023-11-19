@@ -257,7 +257,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.1 (2023/11/19)**
+**Version 17.3.0-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -271,7 +271,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.2.1-rc.1 (2023/11/19)**
+**Version 17.2.1 (2023/11/19)**
 
 * **New Features**
 	* None.
@@ -377,7 +377,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.2.1-rc.1 =
+= 17.2.1 =
 
 (2023/11/19) Added a CSS ID value to the pinterest image container. Fixed `in_the_loop()` check for hidden Pinterest image in singular posts.
 
