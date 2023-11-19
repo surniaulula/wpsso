@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.2.0\n"
+"Project-Id-Version: WPSSO Core 17.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-11-16 06:43-0800\n"
+"PO-Revision-Date: 2023-11-19 10:33-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3096,7 +3096,7 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr "Open Graph (Facebook et oEmbed)"
 
-#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:133
+#: gettext/gettext-lib-pro.php:64 lib/pinterest.php:145
 #: lib/pro/admin/advanced.php:431 lib/std/admin/advanced.php:417
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -3854,63 +3854,63 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:174
+#: lib/abstract/wp-meta.php:154 lib/abstract/wp-meta.php:180
 msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr "Métadonnées %s"
 
-#: lib/abstract/wp-meta.php:1316
+#: lib/abstract/wp-meta.php:1317
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1387
+#: lib/abstract/wp-meta.php:1388
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1391
+#: lib/abstract/wp-meta.php:1392
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1394 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1395 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1398
+#: lib/abstract/wp-meta.php:1399
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1399
+#: lib/abstract/wp-meta.php:1400
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1400
+#: lib/abstract/wp-meta.php:1401
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1401
+#: lib/abstract/wp-meta.php:1402
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1744
+#: lib/abstract/wp-meta.php:1745
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2056
+#: lib/abstract/wp-meta.php:2057
 msgid "Another review cannot be the subject of a review."
 msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2058 lib/abstract/wp-meta.php:2071
+#: lib/abstract/wp-meta.php:2059 lib/abstract/wp-meta.php:2072
 msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
 msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
 
-#: lib/abstract/wp-meta.php:2069
+#: lib/abstract/wp-meta.php:2070
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
@@ -6249,23 +6249,23 @@ msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 msgid "Suggested attributes:"
 msgstr "Attributs suggérés:"
 
-#: lib/integ/ecom/woocommerce.php:508
+#: lib/integ/ecom/woocommerce.php:511
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1615
+#: lib/integ/ecom/woocommerce.php:1618
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1719
+#: lib/integ/ecom/woocommerce.php:1722
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1722
+#: lib/integ/ecom/woocommerce.php:1725
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1725
+#: lib/integ/ecom/woocommerce.php:1728
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -10255,15 +10255,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:1036 lib/util-inline.php:413
+#: lib/page.php:1042 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/page.php:1040
+#: lib/page.php:1046
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2239
+#: lib/page.php:2245
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
