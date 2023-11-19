@@ -271,16 +271,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.2.1-b.1 (2023/11/19)**
+**Version 17.2.1-rc.1 (2023/11/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed `in_the_loop()` check for singular posts in `WpssoPinterest->prepend_image_html()`.
-* **Developer Notes**
 	* Added a CSS ID value to the pinterest image container.
+* **Bugfixes**
+	* Fixed `in_the_loop()` check for hidden Pinterest image in singular posts.
+* **Developer Notes**
+	* None.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -377,9 +377,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.2.1-b.1 =
+= 17.2.1-rc.1 =
 
-(2023/11/19) Fixed `in_the_loop()` check for hidden Pinterest image.
+(2023/11/19) Added a CSS ID value to the pinterest image container. Fixed `in_the_loop()` check for hidden Pinterest image in singular posts.
 
 = 17.2.0 =
 
