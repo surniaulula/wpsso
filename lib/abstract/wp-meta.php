@@ -164,10 +164,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 * Since WordPress v6.4.
 			 */
 			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
+			
+			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta_options' ), 10, 3 );
 		}
 
 		/*
-		 * Since WPSSO Core v17.0.0.
+		 * Since WPSSO Core v17.3.0.
 		 *
 		 * Add WPSSO_META_NAME to the revision fields shown.
 		 */
@@ -177,20 +179,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$fields[ WPSSO_META_NAME ] = sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $meta_title );
 
-			/*
-			 * Since WordPress v6.4.
-			 */
-			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_md_opts' ), 10, 3 );
-
 			return $fields;
 		}
 
 		/*
-		 * Since WPSSO Core v17.0.0.
+		 * Since WPSSO Core v17.3.0.
 		 *
 		 * Cleanup and convert the WPSSO_META_NAME options array to a text string.
 		 */
-		public function get_revision_fields_md_opts( $md_opts, $meta_key, $wp_obj ) {
+		public function get_revision_fields_meta_options( $md_opts, $meta_key, $wp_obj ) {
 
 			if ( is_string( $md_opts ) ) {	// Nothing to do.
 
