@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Add WPSSO_META_NAME to the revision fields shown.
 		 */
-		public function revision_fields_meta_title( $fields, $post ) {
+		public function revision_fields_meta_title( $fields, $wp_obj ) {
 
 			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
