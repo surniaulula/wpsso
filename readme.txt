@@ -257,12 +257,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.1 (2023/11/18)**
+**Version 17.3.0-dev.1 (2023/11/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
+**Version 17.2.1-b.1 (2023/11/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
 * **Bugfixes**
 	* Fixed `in_the_loop()` check for singular posts in `WpssoPinterest->prepend_image_html()`.
 * **Developer Notes**
@@ -363,9 +377,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.0-dev.1 =
+= 17.2.1-b.1 =
 
-(2023/11/18) Added support for Document SSO post meta revisions (pending). Fixed `in_the_loop()` check for hidden Pinterest image.
+(2023/11/19) Fixed `in_the_loop()` check for hidden Pinterest image.
 
 = 17.2.0 =
 
