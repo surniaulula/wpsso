@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.5
 Tested Up To: 6.4.1
-WC Tested Up To: 8.3.0
+WC Tested Up To: 8.3.1
 Stable Tag: 17.2.1
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -376,6 +376,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.3.0-dev.1 =
+
+(TBD) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 
 = 17.2.1 =
 
