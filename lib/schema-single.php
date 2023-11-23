@@ -1898,26 +1898,26 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			} elseif ( is_array( $mt_single[ 'product:shipping_offers' ] ) ) {
 
-				foreach ( $mt_single[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
+				foreach ( $mt_single[ 'product:shipping_offers' ] as $ship_num => $ship_offer ) {
 
-					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
+					if ( ! is_array( $ship_offer ) ) {	// Just in case.
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
+							$wpsso->debug->log( 'skipping shipping #' . $ship_num . ': not an array' );
 						}
 
 						continue;
 					}
 
-					$shipping_details = self::get_shipping_offer_data( $mod, $shipping_opts, $json_ret[ 'url' ] );
+					$ship_details = self::get_shipping_offer_data( $mod, $ship_offer, $json_ret[ 'url' ] );
 
-					if ( false === $shipping_details ) {
+					if ( false === $ship_details ) {
 
 						continue;
 					}
 
-					$json_ret[ 'shippingDetails' ][] = $shipping_details;
+					$json_ret[ 'shippingDetails' ][] = $ship_details;
 				}
 			}
 
@@ -2526,7 +2526,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
 		 */
-		public static function get_shipping_offer_data( array $mod, array $shipping_opts, $offer_url = '' ) {
+		public static function get_shipping_offer_data( array $mod, array $ship_offer, $offer_url = '' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2541,11 +2541,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
 			 * $offer_url values.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $shipping_opts, array(
+			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $ship_offer, array(
 				'name' => 'shipping_name',
 			) );
 
-			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
+			if ( isset( $ship_offer[ 'shipping_destinations' ] ) ) {
 
 				/*
 				 * Each destination options array can include an array of countries, a single country, or a single
@@ -2559,7 +2559,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					'postal_code'  => 'postalCode',		// Can be a string or an array.
 				);
 
-				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
+				foreach ( $ship_offer[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
 
 					$defined_region = array();
 
@@ -2621,10 +2621,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								}
 							}
 
-						} else {
-
-							$defined_region[ $prop_name ] = $val;
-						}
+						} else $defined_region[ $prop_name ] = $val;
 					}
 
 					if ( ! empty( $defined_region ) ) {	// Ships to the World.
@@ -2647,7 +2644,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			if ( isset( $shipping_opts[ 'shipping_rate' ] ) ) {
+			if ( isset( $ship_offer[ 'shipping_rate' ] ) ) {
 
 				/*
 				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
@@ -2660,7 +2657,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$shipping_rate = array();
 
-				foreach ( $shipping_opts[ 'shipping_rate' ] as $opt_key => $val ) {
+				foreach ( $ship_offer[ 'shipping_rate' ] as $opt_key => $val ) {
 
 					if ( isset( $shipping_rate_keys[ $opt_key ] ) ) {
 
@@ -2676,7 +2673,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Example $shipping_opts[ 'delivery_time' ] = Array (
+			 * Example $ship_offer[ 'delivery_time' ] = Array (
 			 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
 			 * 	[shipdept_timezone] => America/Vancouver
 			 * 	[shipdept_midday_close] => 12:00
@@ -2711,9 +2708,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * 	[transit_name] => Days
 			 * )
 			 */
-			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
+			if ( isset( $ship_offer[ 'delivery_time' ] ) ) {
 
-				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
+				$delivery_opts =& $ship_offer[ 'delivery_time' ];
 
 				/*
 				 * See https://schema.org/ShippingDeliveryTime.
@@ -2808,15 +2805,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			if  ( ! empty( $shipping_opts[ 'shipping_id' ] ) ) {
+			if  ( ! empty( $ship_offer[ 'shipping_id' ] ) ) {
 
-				if  ( ! empty( $shipping_opts[ 'shipping_rel' ] ) ) {
+				if  ( ! empty( $ship_offer[ 'shipping_rel' ] ) ) {
 
-					WpssoSchema::update_data_id( $json_data, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
+					WpssoSchema::update_data_id( $json_data, $ship_offer[ 'shipping_id' ], $ship_offer[ 'shipping_rel' ] );
 
 				} else {
 
-					WpssoSchema::update_data_id( $json_data, $shipping_opts[ 'shipping_id' ], $offer_url );
+					WpssoSchema::update_data_id( $json_data, $ship_offer[ 'shipping_id' ], $offer_url );
 				}
 			}
 

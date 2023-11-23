@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 * Since WordPress v6.4.
 			 */
 			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
-			
+
 			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta_options' ), 10, 3 );
 		}
 

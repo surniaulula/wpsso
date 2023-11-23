@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				}
 
 				return $content;	// Stop here.
-			
+
 			/*
 			 * Do not add a Pinterest image for individual posts within an archive page.
 			 *
@@ -229,19 +229,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			return $image_html . $content;
 		}
-	
+
 		/*
 		 * See WpssoPinterest->prepend_image_html().
 		 */
 		public function get_mod_image_html( array $mod ) {
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
 			$image_html = '';
-			
+
 			if ( empty( $mod[ 'name' ] ) || empty( $mod[ 'id' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
