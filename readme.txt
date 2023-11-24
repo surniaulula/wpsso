@@ -257,7 +257,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.1 (TBD)**
+**Version 17.3.0-dev.1 (2023/11/24)**
 
 * **New Features**
 	* None.
@@ -379,7 +379,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.3.0-dev.1 =
 
-(TBD) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
+(2023/11/24) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 
 = 17.2.1 =
 
