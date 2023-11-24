@@ -138,15 +138,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
-			 * WordPress v6.4 cannot use post meta arrays for revisions:
-			 *
-			 * https://core.trac.wordpress.org/ticket/59827
-			 *
-			 * See wp_save_post_revision() in wordpress/wp-includes/revision.php.
-			 */
-			return;	// Stop here.
-
 			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 			register_meta( $object_type, $meta_key, $args = array(

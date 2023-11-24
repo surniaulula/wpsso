@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.2.1\n"
+"Project-Id-Version: WPSSO Core 17.3.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4052,65 +4052,65 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:154 lib/abstract/wp-meta.php:180
+#: lib/abstract/wp-meta.php:145 lib/abstract/wp-meta.php:171
 msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1317
+#: lib/abstract/wp-meta.php:1308
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1388
+#: lib/abstract/wp-meta.php:1379
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1392
+#: lib/abstract/wp-meta.php:1383
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1395 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1386 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1399
+#: lib/abstract/wp-meta.php:1390
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1400
+#: lib/abstract/wp-meta.php:1391
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1401
+#: lib/abstract/wp-meta.php:1392
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1402
+#: lib/abstract/wp-meta.php:1393
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1745
+#: lib/abstract/wp-meta.php:1736
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2057
+#: lib/abstract/wp-meta.php:2048
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2059 lib/abstract/wp-meta.php:2072
+#: lib/abstract/wp-meta.php:2050 lib/abstract/wp-meta.php:2063
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2070
+#: lib/abstract/wp-meta.php:2061
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
