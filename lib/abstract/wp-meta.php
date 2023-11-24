@@ -138,6 +138,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * WordPress v6.4.1 and older cannot use post meta arrays for revisions:
+			 *
+			 * https://core.trac.wordpress.org/ticket/59827
+			 */
+			global $wp_version;
+
+			if ( version_compare( $wp_version, '6.4.1', '<=' ) ) {
+
+				return;
+			}
+
 			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 			register_meta( $object_type, $meta_key, $args = array(
@@ -176,7 +188,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Since WPSSO Core v17.3.0.
 		 *
-		 * Cleanup and convert the WPSSO_META_NAME options array to a text string.
+		 * Cleanup and convert the options array to a text string.
 		 */
 		public function get_revision_fields_meta_options( $md_opts, $meta_key, $wp_obj ) {
 
