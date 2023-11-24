@@ -257,7 +257,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.2 (2023/11/24)**
+**Version 17.3.0-dev.3 (2023/11/24)**
 
 * **New Features**
 	* None.
@@ -377,7 +377,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.0-dev.2 =
+= 17.3.0-dev.3 =
 
 (2023/11/24) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 
