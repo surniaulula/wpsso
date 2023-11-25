@@ -350,7 +350,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an "Awards" option in the WordPress Profile user page.
 * **Bugfixes**
 	* Fixed locale detection in the back-end.
-	* Fixed missing 'posts_per_page' argument for admin user/term posts queries. 
+	* Fixed missing 'posts_per_page' argument for admin user/term posts queries.
 	* Fixed potentially incorrect canonical URL when copying a post/page.
 	* Fixed potentially empty offer details for a product review.
 * **Developer Notes**
