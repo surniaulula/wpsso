@@ -957,7 +957,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
-		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */

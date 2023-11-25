@@ -3229,7 +3229,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
 		 *
-		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
 		 */

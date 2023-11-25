@@ -1253,7 +1253,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				/*
 				 * Parses string as if it were the query string passed via a URL and sets variables in the current
-				 * scope (or in the array if result is provided). 
+				 * scope (or in the array if result is provided).
 				 *
 				 * See https://www.php.net/manual/en/function.parse-str.php.
 				 */

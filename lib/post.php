@@ -2691,7 +2691,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/*
 		 * Since WPSSO Core v8.4.0.
 		 *
-		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID. 
+		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * Use get_metadata() instead of get_post_meta() as the WordPress get_post_meta() function does not check
 		 * wp_is_post_revision(), so it retrieves the revision metadata instead of the post metadata.

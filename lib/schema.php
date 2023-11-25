@@ -3752,7 +3752,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v8.0.0.
 		 *
 		 * Checks both the array key and its value.
-		 * 
+		 *
 		 * The array key must exist, and its value cannot be null, an empty string, or 'none'.
 		 *
 		 * If the key is a width or height, the value cannot be -1.

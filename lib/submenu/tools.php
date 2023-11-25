@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 							<form enctype="multipart/form-data" action="' . $this->p->util->get_admin_url() . '" method="post">' .
 							wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) . '
 							<input type="hidden" name="wpsso-action" value="import_plugin_settings_json" />
-							<input type="submit" class="button-secondary button-alt" 
+							<input type="submit" class="button-secondary button-alt"
 								value="' . $import_settings_transl . '" style="display:inline-block;" />
 							<input type="file" name="file" accept="application/x-gzip" />
 							</form>

@@ -5281,8 +5281,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/*
 			 * Scalar variables are those containing an int, float, string or bool.
-			 * 
-			 * Types array, object, resource and null are not scalar. 
+			 *
+			 * Types array, object, resource and null are not scalar.
 			 */
 			if ( is_scalar( $key ) ) {
 

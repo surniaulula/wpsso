@@ -2029,7 +2029,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						'video:thumbnail_loc' => $image_url,
 					);
 
-					WpssoSchema::add_data_itemprop_from_assoc( $video, $mt_single_video, array( 
+					WpssoSchema::add_data_itemprop_from_assoc( $video, $mt_single_video, array(
 						'video:player_loc'        => 'og:video:embed_url',
 						'video:content_loc'       => 'og:video:stream_url',
 						'video:title'             => 'og:video:title',
