@@ -419,7 +419,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:630 lib/util-cache.php:128
+#: lib/com/cache.php:473 lib/com/cache.php:630 lib/util-cache.php:129
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -4007,7 +4007,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
 #: lib/loader.php:197 lib/post.php:1696 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:757
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:758
 msgid "%s error:"
 msgstr ""
 
@@ -4469,7 +4469,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:913 lib/util-cache.php:671
+#: lib/admin.php:913 lib/util-cache.php:672
 msgid "%s cache files have been cleared."
 msgstr ""
 
@@ -12645,7 +12645,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1833 lib/user.php:1924 lib/util-cache.php:570
+#: lib/user.php:1833 lib/user.php:1924 lib/util-cache.php:571
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -12658,7 +12658,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1869 lib/user.php:1963 lib/util-cache.php:683
+#: lib/user.php:1869 lib/user.php:1963 lib/util-cache.php:684
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -12776,69 +12776,69 @@ msgid ""
 "another one."
 msgstr ""
 
-#: lib/util-cache.php:177
+#: lib/util-cache.php:178
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:397
+#: lib/util-cache.php:398
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:466 lib/util-cache.php:534 lib/util-cache.php:560
+#: lib/util-cache.php:467 lib/util-cache.php:535 lib/util-cache.php:561
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:482 lib/util-cache.php:542
+#: lib/util-cache.php:483 lib/util-cache.php:543
 msgid ""
 "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
 
-#: lib/util-cache.php:499
+#: lib/util-cache.php:500
 msgid ""
 "A background task was scheduled to begin %1$s ago to %2$s for posts, terms "
 "and users."
 msgstr ""
 
-#: lib/util-cache.php:502
+#: lib/util-cache.php:503
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:505
+#: lib/util-cache.php:506
 msgid ""
 "If the task does not run, this could indicate a problem with your hosting "
 "provider's event scheduler and/or a lack of support for the WordPress %s "
 "function."
 msgstr ""
 
-#: lib/util-cache.php:507
+#: lib/util-cache.php:508
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr ""
 
-#: lib/util-cache.php:509
+#: lib/util-cache.php:510
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:571
+#: lib/util-cache.php:572
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:653
+#: lib/util-cache.php:654
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:719
+#: lib/util-cache.php:720
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:759
+#: lib/util-cache.php:760
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:805
+#: lib/util-cache.php:806
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
