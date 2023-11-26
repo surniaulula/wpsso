@@ -22,8 +22,6 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Provides complete structured data for WordPress to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
-<p>Integrates with WordPress posts/pages, custom post types, users/profiles, terms (categories and tags), and settings editing pages using the standard WordPress <em>look and feel</em>.</p>
-
 <!-- about -->
 
 <p><strong>Provides structured data markup for:</strong></p>
