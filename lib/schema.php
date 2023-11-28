@@ -3490,7 +3490,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
 
-				$md_date = gmdate( 'Y-m-d', time() );
+				$md_date = gmdate( 'Y-m-d' );
 
 				if ( $wpsso->debug->enabled ) {
 

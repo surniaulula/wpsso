@@ -1989,7 +1989,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					} else {
 
-						$md_opts[ $md_pre . '_date' ] = gmdate( 'Y-m-d', time() );
+						$md_opts[ $md_pre . '_date' ] = gmdate( 'Y-m-d' );
 					}
 				}
 			}

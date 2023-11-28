@@ -364,6 +364,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/*
+			 * Current ISO 8601 date and time (non-standard / internal meta tag).
+			 */
+			$mt_og[ 'og:time' ] = gmdate( 'c' );
+
+			/*
 			 * Type id meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:type' ] ) ) {

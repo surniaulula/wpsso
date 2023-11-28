@@ -15,7 +15,7 @@
  * Requires At Least: 5.5
  * Tested Up To: 6.4.1
  * WC Tested Up To: 8.3.1
- * Version: 17.3.0-dev.5
+ * Version: 17.3.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -337,7 +337,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					global $wp_version;
 
-					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
+					$this->debug->log( 'debug enabled on ' . gmdate( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );
 					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );

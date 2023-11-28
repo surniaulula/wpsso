@@ -2246,6 +2246,52 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/*
+		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * Returns default ellipsis (decoded) if not provided (ie. $ellipsis = null).
+		 */
+		public function maybe_get_ellipsis( $ellipsis = null ) {
+
+			if ( null === $ellipsis ) {
+
+				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, $this->charset );
+			}
+
+			return $ellipsis;
+		}
+
+		/*
+		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * Returns default title separator (decoded) if not provided (ie. $title_sep = null).
+		 */
+		public function maybe_get_title_sep( $title_sep = null ) {
+
+			if ( null === $title_sep ) {
+
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
+			}
+
+			return $title_sep;
+		}
+
+		/*
+		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 */
+		private function maybe_get_custom( $mod, $md_key ) {
+
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
+
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+
+					return $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
+				}
+			}
+
+			return null;
+		}
+
+		/*
 		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
 		 * Returns an array of metadata keys (can be empty).
@@ -2304,52 +2350,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return 0;
-		}
-
-		/*
-		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
-		 *
-		 * Returns default ellipsis (decoded) if not provided (ie. $ellipsis = null).
-		 */
-		private function maybe_get_ellipsis( $ellipsis = null ) {
-
-			if ( null === $ellipsis ) {
-
-				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, $this->charset );
-			}
-
-			return $ellipsis;
-		}
-
-		/*
-		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
-		 *
-		 * Returns default title separator (decoded) if not provided (ie. $title_sep = null).
-		 */
-		private function maybe_get_title_sep( $title_sep = null ) {
-
-			if ( null === $title_sep ) {
-
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
-			}
-
-			return $title_sep;
-		}
-
-		/*
-		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
-		 */
-		private function maybe_get_custom( $mod, $md_key ) {
-
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
-
-				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
-
-					return $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
-				}
-			}
-
-			return null;
 		}
 
 		/*

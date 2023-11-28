@@ -1875,6 +1875,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array(
 				'fb:admins'       => null,
 				'fb:app_id'       => null,
+				'og:time'         => null,	// Non-standard / internal meta tag.
 				'og:type'         => null,
 				'og:url'          => null,
 				'og:redirect_url' => null,	// Non-standard / internal meta tag.
