@@ -139,13 +139,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			/*
-			 * WordPress v6.4.1 and older cannot use post meta arrays for revisions:
+			 * WordPress v6.4 and older cannot use post meta arrays for revisions:
 			 *
-			 * https://core.trac.wordpress.org/ticket/59827
+			 * See https://core.trac.wordpress.org/ticket/59827
 			 */
 			global $wp_version;
 
-			if ( version_compare( $wp_version, '6.4.1', '<=' ) ) {
+			if ( version_compare( $wp_version, '6.5', '<' ) ) {
 
 				return;
 			}
@@ -163,9 +163,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
 			) );
 
-			/*
-			 * Since WordPress v6.4.
-			 */
 			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
 
 			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta_options' ), 10, 3 );
