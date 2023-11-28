@@ -46,9 +46,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 
 				$this->u->add_plugin_filters( $this, array(
-					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
-					'cache_expire_cmcf_xml'    => '__return_zero',	// Used by WpssoCmcfXml->get().
-					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
+					'cache_expire_head_markup'       => '__return_zero',	// Used by WpssoHead->get_head_array().
+					'cache_expire_cmcf_feed_xml'     => '__return_zero',	// Used by WpssoCmcfXml->get().
+					'cache_expire_gmf_feed_xml'      => '__return_zero',	// Used by WpssoGmfXml->get().
+					'cache_expire_gmf_inventory_xml' => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
 
 			} elseif ( $this->p->debug->enabled ) {

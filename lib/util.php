@@ -3998,16 +3998,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoSchema->get_schema_type_row_class().
 		 * See WpssoUtil->get_image_url_info().
 		 */
-		public function get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod = false ) {
+		public function get_cache_exp_secs( $cache_key, $cache_type = 'transient', $mod = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$cache_exp_secs = 0;	// No caching by default.
 
-			if ( empty( $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_md5_pre ] ) ) {
+			if ( empty( $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ] ) ) {
 
 				return $cache_exp_secs;
 			}
 
-			$cache_info = $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_md5_pre ];
+			$cache_info = $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_key ];
 
 			if ( isset( $cache_info[ 'value' ] ) ) {	// Allow for 0.
 

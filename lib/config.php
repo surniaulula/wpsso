@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.3.0-dev.6',	// Plugin version.
+					'version'     => '17.3.0-dev.7',	// Plugin version.
 					'opt_version' => '997',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2486,7 +2486,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),	// End of 'opt' array.
 
 			/*
-			 * Update manager config.
+			 * Update manager.
 			 */
 			'um' => array(
 				'rec_version' => '5.0.0',	// Minimum update manager version (soft limit).
@@ -2507,7 +2507,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),	// End of 'um' array.
 
 			/*
-			 * PHP config.
+			 * PHP.
 			 */
 			'php' => array(
 				'label'       => 'PHP',
@@ -2575,7 +2575,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),	// End of 'php' array.
 
 			/*
-			 * WordPress config.
+			 * WordPress.
 			 */
 			'wp' => array(
 				'label'       => 'WordPress',
@@ -2663,16 +2663,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'cache' => array(
 					'file' => array(
-						'wpsso_f_' => array(
-							'label'  => 'Commerce Manager Catalog Feed XML',
-							'value'  => WEEK_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_cmcf_xml',	// See WpssoUtil->get_cache_exp_secs().
-						),
-						'wpsso_g_' => array(
-							'label'  => 'Google Merchant Feed XML',
-							'value'  => WEEK_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_gmf_xml',	// See WpssoUtil->get_cache_exp_secs().
-						),
 					),
 					'transient' => array(
 						'wpsso_!_' => array(	// Preserved on clear cache.
