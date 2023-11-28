@@ -387,7 +387,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$file_path = $this->get( $image_url, 'file_path', 'file', $exp_secs, '', $curl_opts );
+			$file_path = $this->get( $image_url, 'file_path', $cache_type = 'file', $exp_secs, '', $curl_opts );
 
 			if ( ! empty( $file_path ) ) {	// False on error.
 

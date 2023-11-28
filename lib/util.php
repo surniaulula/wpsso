@@ -1179,7 +1179,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			static $local_cache = array();
 
 			$filter_key  = self::sanitize_key( $name );
-			$filter_name = 'wpsso_form_cache_' . $filter_key;
+			$filter_name = self::sanitize_hookname( 'wpsso_form_cache_' . $filter_key );
 
 			if ( ! isset( $local_cache[ $filter_key ] ) ) {
 
@@ -4002,48 +4002,42 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_exp_secs = 0;	// No caching by default.
 
-			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $cache_md5_pre ] ) ) {
+			if ( empty( $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_md5_pre ] ) ) {
 
-				$cache_info =& $this->p->cf[ 'wp' ][ $cache_type ][ $cache_md5_pre ];	// Shortcut variable.
+				return $cache_exp_secs;
+			}
 
-				if ( isset( $cache_info[ 'value' ] ) ) {
+			$cache_info = $this->p->cf[ 'wp' ][ 'cache' ][ $cache_type ][ $cache_md5_pre ];
 
-					$cache_exp_secs = $cache_info[ 'value' ];
-				}
+			if ( isset( $cache_info[ 'value' ] ) ) {	// Allow for 0.
 
-				if ( is_array( $mod ) ) {
+				$cache_exp_secs = (int) $cache_info[ 'value' ];
+			}
 
-					if ( ! empty( $cache_info[ 'conditional_values' ] ) ) {
+			if ( is_array( $mod ) ) {
 
-						foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
+				if ( ! empty( $cache_info[ 'conditional_values' ] ) ) {
 
-							/*
-							 * If one of these $mod array conditions is true, then use the associated value.
-							 */
-							if ( ! empty( $mod[ $cond ] ) ) {
+					foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
 
-								$cache_exp_secs = $val;
+						/*
+						 * If the $mod array condition is true, use the associated value.
+						 */
+						if ( ! empty( $mod[ $cond ] ) ) {
 
-								break;	// Stop here.
-							}
+							$cache_exp_secs = (int) $val;
+
+							break;	// Stop here.
 						}
 					}
 				}
+			}
 
-				/*
-				 * Example filter names:
-				 *
-				 *	'wpsso_cache_expire_api_response' ( DAY_IN_SECONDS )
-				 *	'wpsso_cache_expire_head_markup' ( MONTH_IN_SECONDS )
-				 *	'wpsso_cache_expire_image_info' ( DAY_IN_SECONDS )
-				 *	'wpsso_cache_expire_schema_types' ( MONTH_IN_SECONDS )
-				 *	'wpsso_cache_expire_short_url' ( YEAR_IN_SECONDS )
-				 *	'wpsso_cache_expire_the_content' ( HOUR_IN_SECONDS )
-				 */
-				if ( ! empty( $cache_info[ 'filter' ] ) ) {
+			if ( ! empty( $cache_info[ 'filter' ] ) ) {
 
-					$cache_exp_secs = (int) apply_filters( $cache_info[ 'filter' ], $cache_exp_secs, $cache_type, $mod );
-				}
+				$filter_name = self::sanitize_hookname( $cache_info[ 'filter' ] );
+
+				$cache_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs, $cache_type, $mod );
 			}
 
 			return $cache_exp_secs;
