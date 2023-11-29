@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.3.0-dev.7',	// Plugin version.
+					'version'     => '17.3.0-dev.8',	// Plugin version.
 					'opt_version' => '997',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2671,7 +2671,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'label'  => 'Document Markup',
 							'value'  => MONTH_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_head_markup',	// See WpssoUtil->get_cache_exp_secs().
-	
+
 							/*
 							 * If the $mod array condition is true, use the associated value.
 							 */

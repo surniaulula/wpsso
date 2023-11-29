@@ -481,6 +481,13 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'integer';
 
 				/*
+				 * Numeric options that must be zero or more.
+				 */
+				case ( preg_match( '/_exp_secs$/', $base_key ) ? true : false ):
+
+					return 'zero_pos_int';
+
+				/*
 				 * Numeric options that must be positive (1 or more).
 				 */
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):

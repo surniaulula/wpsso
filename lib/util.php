@@ -4017,6 +4017,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( isset( $cache_info[ 'value' ] ) ) {	// Allow for 0.
 
 				$cache_exp_secs = (int) $cache_info[ 'value' ];
+
+			} elseif ( isset( $cache_info[ 'opt_key' ] ) &&
+				isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {	// Allow for 0.
+
+				$cache_exp_secs = (int) $this->p->options[ $cache_info[ 'opt_key' ] ];
 			}
 
 			if ( is_array( $mod ) ) {
