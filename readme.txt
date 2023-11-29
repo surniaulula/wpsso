@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.7 (2023/11/28)**
+**Version 17.3.0-dev.8 (2023/11/29)**
 
 * **New Features**
 	* None.
@@ -264,7 +264,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored `WpssoUtil->get_cache_exp_secs()` and added support for an 'opt_key' value.
+	* Changed the `WpssoPage->maybe_get_ellipsis()` method from private to public.
+	* Changed the `WpssoPage->maybe_get_title_sep()` method from private to public.
+	* Changed the `WpssoPage->maybe_get_custom()` method from private to public.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -375,9 +378,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.0-dev.7 =
+= 17.3.0-dev.8 =
 
-(2023/11/28) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
+(2023/11/29) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827). Refactored `WpssoUtil->get_cache_exp_secs()`.
 
 = 17.2.1 =
 
