@@ -138,6 +138,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+			register_meta( $object_type, $meta_key, $args = array(
+				'type'              => 'array',
+				'description'       => sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $meta_title ),
+				'default'           => array(),
+				'single'            => true,
+				'sanitize_callback' => null,	// Executed much too frequently by WordPress.
+				'auth_callback'     => null,
+				'show_in_rest'      => false,
+				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
+			) );
+
 			/*
 			 * Although announced as a feature, WordPress v6.4 cannot use post meta arrays for revisions.
 			 *
@@ -159,19 +172,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				return;	// Stop here.
 			}
-
-			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-			register_meta( $object_type, $meta_key, $args = array(
-				'type'              => 'array',
-				'description'       => sprintf( _x( '%s Metadata', 'metadata title', 'wpsso' ), $meta_title ),
-				'default'           => array(),
-				'single'            => true,
-				'sanitize_callback' => null,	// Executed much too frequently by WordPress.
-				'auth_callback'     => null,
-				'show_in_rest'      => false,
-				'revisions_enabled' => 'post' === $object_type? true : false,	// Can only be used when the object type is 'post'.
-			) );
 
 			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
 

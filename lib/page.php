@@ -905,7 +905,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$caption_max_len = $this->sanitize_max_len( $caption_max_len );		// Returns max integer for numeric, string, or array value.
 			$mod             = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
-			$caption_text    = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$caption_text    = $this->maybe_get_opt_multi( $mod, $md_key );		// Returns null or custom value.
 			$is_custom       = empty( $caption_text ) ? false : true;
 
 			/*
@@ -994,7 +994,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$max_len    = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
 			$dots       = $this->maybe_get_ellipsis();					// Returns default ellipsis (decoded).
 			$title_sep  = $this->maybe_get_title_sep( $title_sep );				// Returns default title separator (decoded) if not provided.
-			$title_text = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
+			$title_text = $this->maybe_get_opt_multi( $mod, $md_key );			// Returns null or custom value.
 			$is_custom  = empty( $title_text ) ? false : true;
 			$hashtags   = '';
 
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'seo_desc' );	// Returns an array of metadata keys (can be empty).
 			$max_len   = $this->sanitize_max_len( $max_len );			// Returns max integer for numeric, string, or array value.
 			$dots      = $this->maybe_get_ellipsis();				// Returns default ellipsis (decoded).
-			$desc_text = $this->maybe_get_custom( $mod, $md_key );			// Returns null or custom value.
+			$desc_text = $this->maybe_get_opt_multi( $mod, $md_key );		// Returns null or custom value.
 			$is_custom = empty( $desc_text ) ? false : true;
 			$hashtags  = '';
 
@@ -1255,7 +1255,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'schema_text' );	// Returns an array of metadata keys (can be empty).
 			$max_len   = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
 			$dots      = $this->maybe_get_ellipsis();					// Returns default ellipsis (decoded).
-			$text      = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
+			$text      = $this->maybe_get_opt_multi( $mod, $md_key );			// Returns null or custom value.
 			$is_custom = empty( $text ) ? false : true;
 
 			/*
@@ -2250,7 +2250,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Returns default ellipsis (decoded) if not provided (ie. $ellipsis = null).
 		 */
-		public function maybe_get_ellipsis( $ellipsis = null ) {
+		private function maybe_get_ellipsis( $ellipsis = null ) {
 
 			if ( null === $ellipsis ) {
 
@@ -2265,7 +2265,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Returns default title separator (decoded) if not provided (ie. $title_sep = null).
 		 */
-		public function maybe_get_title_sep( $title_sep = null ) {
+		private function maybe_get_title_sep( $title_sep = null ) {
 
 			if ( null === $title_sep ) {
 
@@ -2278,7 +2278,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/*
 		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 */
-		private function maybe_get_custom( $mod, $md_key ) {
+		private function maybe_get_opt_multi( $mod, $md_key ) {
 
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
 
