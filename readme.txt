@@ -28,12 +28,12 @@ Present your content at its best on social sites and in search results - no matt
 
 <ul>
 	<li>Facebook / Open Graph</li>
-	<li>Facebook Catalog Feed XMLs</li>
 	<li>Google Knowledge Graph</li>
 	<li>Google Merchant Feed XML</li>
 	<li>Google Rich Results / Rich Snippets</li>
 	<li>Image and Video SEO</li>
 	<li>Instagram Catalog Feed XMLs</li>
+	<li>Meta (Facebook and Instagram) Catalog Feed XMLs</li>
 	<li>Mobile Web Browsers</li>
 	<li>oEmbed for LinkedIn, Discord, and Drupal</li>
 	<li>Pinterest Rich Pins</li>
@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.0-dev.8 (2023/11/29)**
+**Version 17.3.0-b.1 (2023/11/29)**
 
 * **New Features**
 	* None.
@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.0-dev.8 =
+= 17.3.0-b.1 =
 
 (2023/11/29) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827). Refactored `WpssoUtil->get_cache_exp_secs()`.
 
