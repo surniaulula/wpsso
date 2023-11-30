@@ -4052,65 +4052,65 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:145 lib/abstract/wp-meta.php:190
+#: lib/abstract/wp-meta.php:145 lib/abstract/wp-meta.php:193
 msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1327
+#: lib/abstract/wp-meta.php:1330
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1398
+#: lib/abstract/wp-meta.php:1401
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1402
+#: lib/abstract/wp-meta.php:1405
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1405 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1408 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1409
+#: lib/abstract/wp-meta.php:1412
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1410
+#: lib/abstract/wp-meta.php:1413
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1411
+#: lib/abstract/wp-meta.php:1414
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1412
+#: lib/abstract/wp-meta.php:1415
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1755
+#: lib/abstract/wp-meta.php:1758
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2067
+#: lib/abstract/wp-meta.php:2070
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2069 lib/abstract/wp-meta.php:2082
+#: lib/abstract/wp-meta.php:2072 lib/abstract/wp-meta.php:2085
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2080
+#: lib/abstract/wp-meta.php:2083
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 

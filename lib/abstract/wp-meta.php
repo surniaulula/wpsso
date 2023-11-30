@@ -152,14 +152,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			) );
 
 			/*
-			 * Although announced as a feature, WordPress v6.4 cannot use post meta arrays for revisions.
+			 * Although announced as a feature, WordPress v6.4 cannot display revisions with post meta arrays.
+			 *
+			 * Hooking the '_wp_post_revision_fields' filter to add the WPSSO_META_NAME array to the revision page will
+			 * cause a PHP fatal error in PHP v8.2.
 			 *
 			 * See https://core.trac.wordpress.org/ticket/59827
 			 */
 			return;
 
 			/*
-			 * Update this version check when WordPress is able to use post meta arrays for revisions.
+			 * Update this version check when WordPress is able to display revisions with post meta arrays.
 			 */
 			global $wp_version;
 
