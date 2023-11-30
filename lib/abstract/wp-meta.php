@@ -139,15 +139,25 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			/*
-			 * WordPress v6.4 and older cannot use post meta arrays for revisions:
+			 * Although announced as a feature, WordPress v6.4 cannot use post meta arrays for revisions.
 			 *
 			 * See https://core.trac.wordpress.org/ticket/59827
 			 */
+			return;
+
+			/*
+			 * Update this version check when WordPress is able to use post meta arrays for revisions.
+			 */
 			global $wp_version;
 
-			if ( version_compare( $wp_version, '6.5', '<' ) ) {
+			if ( version_compare( $wp_version, '6.4.2', '<' ) ) {
 
-				return;
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no revisions for post meta arrays in WordPress v' .  $wp_version );
+				}
+
+				return;	// Stop here.
 			}
 
 			$meta_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );

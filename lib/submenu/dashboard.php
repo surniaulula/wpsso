@@ -206,14 +206,16 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			/*
 			 * Sort the transient array and make sure the "All Transients" count is last.
 			 */
-			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( __CLASS__, 'sort_by_label_key' ) );
+			$transients_info = $this->p->cf[ 'wp' ][ 'cache' ][ 'transient' ];
 
-			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {
+			uasort( $transients_info, array( __CLASS__, 'sort_by_label_key' ) );
 
-				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
+			if ( isset( $transients_info[ $all_transients_pre ] ) ) {	// Just in case.
+
+				SucomUtil::move_to_end( $transients_info, $all_transients_pre );
 			}
 
-			foreach ( $this->p->cf[ 'wp' ][ 'transient' ] as $cache_md5_pre => $cache_info ) {
+			foreach ( $transients_info as $cache_key => $cache_info ) {
 
 				if ( empty( $cache_info ) ) {
 
@@ -226,9 +228,9 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->id : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
-				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
-				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_md5_pre, $decimals = 1 );
-				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
+				$cache_count        = count( preg_grep( '/^' . $cache_key . '/', $db_transient_keys ) );
+				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_key, $decimals = 1 );
+				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_key, $cache_type = 'transient' );
 				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
 				echo '<tr>';
@@ -236,7 +238,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-size">' . $cache_size . '</td>';
 
-				if ( $cache_md5_pre !== $all_transients_pre ) {
+				if ( $cache_key !== $all_transients_pre ) {
 
 					echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
 				}
