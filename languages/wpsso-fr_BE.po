@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-11-29 09:53-0800\n"
+"PO-Revision-Date: 2023-11-30 19:41-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1013,8 +1013,8 @@ msgstr "WPSSO Flux XML de marchand Google"
 
 #: gettext/gettext-lib-config.php:131
 msgctxt "plugin description"
-msgid "Google Merchant Feed XMLs for WooCommerce and custom product pages, with multilingual support."
-msgstr "Flux XML de marchands Google pour WooCommerce et produits personnalisés avec support multilingue."
+msgid "Google Merchant feed and inventory XMLs for WooCommerce and custom product pages, including multilingual support."
+msgstr "Flux de produit et d'inventaire XML de marchands Google pour WooCommerce et produits personnalisés avec support multilingue."
 
 #: gettext/gettext-lib-config.php:132
 msgctxt "plugin name"
@@ -3854,63 +3854,63 @@ msgstr "Les demandes de récupération et de mise en cache de cette URL sont ign
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: lib/abstract/wp-meta.php:157 lib/abstract/wp-meta.php:180
+#: lib/abstract/wp-meta.php:145 lib/abstract/wp-meta.php:193
 msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr "Métadonnées %s"
 
-#: lib/abstract/wp-meta.php:1317
+#: lib/abstract/wp-meta.php:1330
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1388
+#: lib/abstract/wp-meta.php:1401
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1392
+#: lib/abstract/wp-meta.php:1405
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1395 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1408 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1399
+#: lib/abstract/wp-meta.php:1412
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1400
+#: lib/abstract/wp-meta.php:1413
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1401
+#: lib/abstract/wp-meta.php:1414
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1402
+#: lib/abstract/wp-meta.php:1415
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1745
+#: lib/abstract/wp-meta.php:1758
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2057
+#: lib/abstract/wp-meta.php:2070
 msgid "Another review cannot be the subject of a review."
 msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2059 lib/abstract/wp-meta.php:2072
+#: lib/abstract/wp-meta.php:2072 lib/abstract/wp-meta.php:2085
 msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
 msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
 
-#: lib/abstract/wp-meta.php:2070
+#: lib/abstract/wp-meta.php:2083
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
@@ -10851,43 +10851,43 @@ msgstr "Mo"
 msgid "Expiration"
 msgstr "Expiration"
 
-#: lib/submenu/dashboard.php:232
+#: lib/submenu/dashboard.php:234
 msgid "disabled"
 msgstr "désactivé"
 
-#: lib/submenu/dashboard.php:278 lib/submenu/dashboard.php:279
+#: lib/submenu/dashboard.php:280 lib/submenu/dashboard.php:281
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/submenu/dashboard.php:325
+#: lib/submenu/dashboard.php:327
 msgctxt "version label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/submenu/dashboard.php:333
+#: lib/submenu/dashboard.php:335
 msgctxt "version label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/submenu/dashboard.php:337
+#: lib/submenu/dashboard.php:339
 msgctxt "version label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/submenu/dashboard.php:345
+#: lib/submenu/dashboard.php:347
 msgctxt "version label"
 msgid "Update Notice"
 msgstr "Avis de mise à jour"
 
-#: lib/submenu/dashboard.php:353
+#: lib/submenu/dashboard.php:355
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
-#: lib/submenu/dashboard.php:429
+#: lib/submenu/dashboard.php:431
 msgid "(%d sub-types)"
 msgstr "(%d sous-types)"
 
-#: lib/submenu/dashboard.php:489
+#: lib/submenu/dashboard.php:491
 msgctxt "lib file description"
 msgid "(api) Get %s Short URL"
 msgstr "(api) Obtenir %s URL courte"
