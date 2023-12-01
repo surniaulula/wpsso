@@ -128,7 +128,7 @@ _x( 'Facebook and Instagram Commerce Manager Catalog Feed XMLs for WooCommerce a
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Google Merchant Feed XML', 'plugin name', 'wpsso' );
-_x( 'Google Merchant feed and inventory XMLs for WooCommerce and custom product pages, including multilingual support.', 'plugin description', 'wpsso' );
+_x( 'Google Merchant product and inventory feed XML for WooCommerce and custom product pages, including multilingual support.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Merchant Return Policy Manager', 'plugin name', 'wpsso' );
 _x( 'Manage any number of Merchant Return Policies for Google Merchant listings.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization and Place Manager', 'plugin name', 'wpsso' );
