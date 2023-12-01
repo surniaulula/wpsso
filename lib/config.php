@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssogmf' => array(			// Plugin acronym.
 					'short'       => 'WPSSO GMF',	// Short plugin name.
 					'name'        => 'WPSSO Google Merchant Feed XML',
-					'desc'        => 'Google Merchant Feed XMLs for WooCommerce and custom product pages, with multilingual support.',
+					'desc'        => 'Google Merchant feed and inventory XMLs for WooCommerce and custom product pages, including multilingual support.',
 					'slug'        => 'wpsso-google-merchant-feed',
 					'base'        => 'wpsso-google-merchant-feed/wpsso-google-merchant-feed.php',
 					'update_auth' => '',		// No premium version.
