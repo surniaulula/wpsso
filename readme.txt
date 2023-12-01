@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.5.
 
-**Version 17.3.0-rc.2 (2023/11/30)**
+**Version 17.3.0 (2023/12/01)**
 
 * **New Features**
 	* None.
@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Refactored `WpssoUtil->get_cache_exp_secs()` and added support for an 'opt_key' value.
+	* Refactored `WpssoUtil->get_cache_exp_secs()` to add support for an 'opt_key' value.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -389,9 +389,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.0-rc.2 =
+= 17.3.0 =
 
-(2023/11/30) Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827). Refactored `WpssoUtil->get_cache_exp_secs()`.
+(2023/12/01) Refactored `WpssoUtil->get_cache_exp_secs()` to add support for an 'opt_key' value.
 
 = 17.2.1 =
 
