@@ -780,7 +780,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_md5_pre  = 'wpsso_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 			$user_id        = get_current_user_id();
-			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ';	// Note the trailing space.
+			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' . ' ';
 			$notice_key     = 'settings-saved';
 
 			if ( $cache_exp_secs > 0 ) {
@@ -2299,20 +2299,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
 			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
-			$cache_md5_pre    = 'wpsso_';
-			$cache_salt       = __METHOD__ . '(ext:' . $ext . ')';
-			$cache_id         = $cache_md5_pre . md5( $cache_salt );
-			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
-
-			/*
-			 * Set and filter the cache expiration value only once.
-			 */
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			}
+			$cache_md5_pre  = 'wpsso__r_';
+			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
 
 			$readme_info     = false;
 			$readme_content  = false;
@@ -2338,22 +2328,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					$readme_from_url = true;
-
-					$readme_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+					$readme_content  = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
 				}
 
-			} else {
-
-				delete_transient( $cache_id );	// Just in case.
-			}
+			} else delete_transient( $cache_id );	// Just in case.
 
 			if ( empty( $readme_content ) ) {
 
 				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
 
 					$readme_from_url = false;
-
-					$readme_content = fread( $fh, filesize( $file_path ) );
+					$readme_content  = fread( $fh, filesize( $file_path ) );
 
 					fclose( $fh );
 				}
@@ -2540,14 +2525,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * See WpssoSubmenuSetup->show_metabox_setup_guide().
 		 */
-		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
+		public function get_ext_file_content( $ext, $rel_file ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'ext'            => $ext,
-					'rel_file'       => $rel_file,
-					'cache_exp_secs' => $cache_exp_secs,
+					'ext'      => $ext,
+					'rel_file' => $rel_file,
 				) );
 			}
 
@@ -2557,14 +2541,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_url    = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
 
-			if ( null === $cache_exp_secs ) {
-
-				$cache_exp_secs = WEEK_IN_SECONDS;
-			}
-
-			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_setup_html'.
-			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
-			$cache_content    = false;
+			$cache_md5_pre  = 'wpsso_c_';
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+			$cache_content  = false;
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -2584,7 +2563,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( $text_domain ) {
+			if ( $text_domain ) {	// False or text domain string.
 
 				/*
 				 * Translate HTML headers, paragraphs, and list items.

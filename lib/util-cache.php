@@ -79,11 +79,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Clear cache files older than 30 days.
+		 * Clear cache files older than WPSSO_CACHE_FILES_EXP_SECS.
 		 */
 		public function clear_expired_cache_files() {
 
-			return $this->clear_cache_files( MONTH_IN_SECONDS );
+			return $this->clear_cache_files( WPSSO_CACHE_FILES_EXP_SECS );
 		}
 
 		/*

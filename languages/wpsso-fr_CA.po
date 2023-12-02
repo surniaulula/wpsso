@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-11-30 19:41-0800\n"
+"PO-Revision-Date: 2023-12-01 07:00-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1013,7 +1013,7 @@ msgstr "WPSSO Flux XML de marchand Google"
 
 #: gettext/gettext-lib-config.php:131
 msgctxt "plugin description"
-msgid "Google Merchant feed and inventory XMLs for WooCommerce and custom product pages, including multilingual support."
+msgid "Google Merchant product and inventory feed XML for WooCommerce and custom product pages, including multilingual support."
 msgstr "Flux de produit et d'inventaire XML de marchands Google pour WooCommerce et produits personnalisés avec support multilingue."
 
 #: gettext/gettext-lib-config.php:132

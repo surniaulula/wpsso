@@ -177,6 +177,8 @@ _x( 'SSO Schema', 'column header', 'wpsso' );
 _x( 'SSO Lang', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO Desc', 'column header', 'wpsso' );
+_x( 'File Content', 'option label', 'wpsso' );
+_x( 'readme.txt URL', 'option label', 'wpsso' );
 _x( 'Document Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
 _x( 'API Response', 'option label', 'wpsso' );

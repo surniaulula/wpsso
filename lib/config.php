@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.3.0',	// Plugin version.
+					'version'     => '17.3.1-dev.1',	// Plugin version.
 					'opt_version' => '997',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2663,6 +2663,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'cache' => array(
 					'file' => array(
+						'wpsso_c_' => array(	// See WpssoAdmin->get_ext_file_content().
+							'label'  => 'File Content',
+							'value'  => DAY_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_file_content',	// See WpssoUtil->get_cache_exp_secs().
+						),
+						'wpsso_r_' => array(	// See WpssoAdmin->get_readme_info().
+							'label'  => 'readme.txt URL',
+							'value'  => DAY_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_readme_txt',	// See WpssoUtil->get_cache_exp_secs().
+						),
 					),
 					'transient' => array(
 						'wpsso_!_' => array(	// Preserved on clear cache.
@@ -5065,8 +5075,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
+			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = WEEK_IN_SECONDS;	// See WpssoUtilCache->clear_expired_cache_files().
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
-			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
+			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = WEEK_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX' ]          = 5;			// Maximum number of images extracted from the content.

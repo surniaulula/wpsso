@@ -387,7 +387,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$file_path = $this->get( $image_url, 'file_path', $cache_type = 'file', $exp_secs, '', $curl_opts );
+			$file_path = $this->get( $image_url, 'file_path', $cache_type = 'file', $exp_secs, $cache_pre_ext = '', $curl_opts );
 
 			if ( ! empty( $file_path ) ) {	// False on error.
 
@@ -477,12 +477,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 				}
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'cached file not found: creating ' . $cache_url );
-				}
+				$this->p->debug->log( 'cached file not found: creating ' . $cache_url );
 			}
 
 			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $cache_pre_ext ) ) {
@@ -517,7 +514,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$failure = $format === 'url' ? $url : false;
+			$failure = 'url' === $format ? $url : false;
 
 			$this->url_get_mtimes[ $url ] = false;	// Default value for failure.
 
@@ -608,9 +605,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 								return $cache_url;
 
-							} else {
-								return $cache_file;
-							}
+							} else return $cache_file;
 
 						} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
 
@@ -645,8 +640,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 
 					return $failure;
-
-					break;
 			}
 
 			if ( $this->is_ignored_url( $url_nofrag ) ) {	// Returns false or time in seconds.
@@ -807,19 +800,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						return $cache_data;
 
-						break;
-
 					case 'url':
 
 						return $cache_url;
 
-						break;
-
 					case 'file_path':
 
 						return $cache_file;
-
-						break;
 				}
 			}
 
