@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.1-dev.1 (2023/12/02)**
+**Version 17.3.1-dev.2 (2023/12/02)**
 
 * **New Features**
 	* None.
@@ -263,7 +263,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
 	* Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
 * **Bugfixes**
-	* None.
+	* Fixed missing dismiss time for the pending update(s) information notice.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -390,9 +390,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.1-dev.1 =
+= 17.3.1-dev.2 =
 
-(2023/12/02) Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
+(2023/12/02) Fixed missing dismiss time for the pending update(s) information notice. Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time.
 
 = 17.3.0 =
 
