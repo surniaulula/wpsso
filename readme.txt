@@ -255,12 +255,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.4.0-dev.1 (TBD)**
+**Version 17.3.1-dev.1 (2023/12/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
+	* Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -388,6 +389,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.3.1-dev.1 =
+
+(2023/12/02) Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
 
 = 17.3.0 =
 
