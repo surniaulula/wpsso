@@ -172,8 +172,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function get_updates_count( $plugin_prefix = '' ) {
 
-			$count = 0;
-
+			$updates_count  = 0;
 			$update_plugins = get_site_transient( 'update_plugins' );
 
 			if ( ! empty( $update_plugins->response ) ) {
@@ -191,17 +190,14 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 						 */
 						if ( isset( $data->slug ) && strpos( $data->slug, $plugin_prefix ) === 0 ) {
 
-							$count++;
+							$updates_count++;
 						}
 
-					} else {
-
-						$count++;
-					}
+					} else $updates_count++;
 				}
 			}
 
-			return $count;
+			return $updates_count;
 		}
 
 		/*
