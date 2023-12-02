@@ -2664,12 +2664,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cache' => array(
 					'file' => array(
 						'wpsso_c_' => array(	// See WpssoAdmin->get_ext_file_content().
-							'label'  => 'File Content',
+							'label'  => 'Get File Content',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_file_content',	// See WpssoUtil->get_cache_exp_secs().
 						),
 						'wpsso_r_' => array(	// See WpssoAdmin->get_readme_info().
-							'label'  => 'readme.txt URL',
+							'label'  => 'Get Readme URL',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_readme_txt',	// See WpssoUtil->get_cache_exp_secs().
 						),

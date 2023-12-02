@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-12-02 13:11-0800\n"
+"PO-Revision-Date: 2023-12-02 13:14-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1258,13 +1258,13 @@ msgstr "Desc SSO"
 
 #: gettext/gettext-lib-config.php:180
 msgctxt "option label"
-msgid "File Content"
-msgstr "Contenu de fichier"
+msgid "Get File Content"
+msgstr "Obtenir contenu de fichier"
 
 #: gettext/gettext-lib-config.php:181
 msgctxt "option label"
-msgid "readme.txt URL"
-msgstr "URL readme.txt"
+msgid "Get Readme URL"
+msgstr "Obtenir URL lisez-moi"
 
 #: gettext/gettext-lib-config.php:182
 msgctxt "option label"

@@ -1447,12 +1447,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:180
 msgctxt "option label"
-msgid "File Content"
+msgid "Get File Content"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:181
 msgctxt "option label"
-msgid "readme.txt URL"
+msgid "Get Readme URL"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:182
