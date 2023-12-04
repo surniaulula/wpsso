@@ -255,17 +255,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.1-dev.2 (2023/12/02)**
+**Version 17.3.1-dev.3 (2023/12/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for Document SSO post meta revisions (pending https://core.trac.wordpress.org/ticket/59827).
-	* Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
+	* None.
 * **Bugfixes**
+	* Fixed missing 'mainEntity' property for Schema ProfilePage.
 	* Fixed missing dismiss time for the pending update(s) information notice.
 * **Developer Notes**
-	* None.
+	* Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time from 1 month to 1 week.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -390,9 +390,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.1-dev.2 =
+= 17.3.1-dev.3 =
 
-(2023/12/02) Fixed missing dismiss time for the pending update(s) information notice. Updated `WpssoUtilCache->clear_expired_cache_files()` expiration time.
+(2023/12/04) Fixed missing 'mainEntity' property for Schema ProfilePage. Fixed missing dismiss time for the pending update(s) information notice.
 
 = 17.3.0 =
 
