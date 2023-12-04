@@ -554,6 +554,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;
 
+				case 'tooltip-meta-schema_profile_person_id':
+
+					$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
+
+					$text = __( 'Select a person for the Schema ProfilePage markup.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'A user must be member of the WordPress "%s" role to be included in this list.', 'wpsso' ), $role_label_transl );
+
+				 	break;
+
 				case 'tooltip-meta-schema_qa_desc':
 
 			 		$text = __( 'An optional heading / description of the question and it\'s answer.', 'wpsso' ) . ' ';

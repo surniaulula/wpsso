@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_howto_step_image_id_2' => '',
 
 					/*
-					 * Schema Job Posting.
+					 * Schema JobPosting.
 					 */
 					'schema_job_title'                => '',					// Job Title.
 					'schema_job_hiring_org_id'        => $opts[ 'schema_def_job_hiring_org_id' ],	// Job Hiring Org.
@@ -654,6 +654,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema Place.
 					 */
 					'schema_place_id' => 'none',	// Place.
+
+					/*
+					 * Schema Profile Page.
+					 */
+					'schema_profile_person_id' => 'none',	// Person.
 
 					/*
 					 * Schema QA Page.
