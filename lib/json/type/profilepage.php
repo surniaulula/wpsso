@@ -33,6 +33,9 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 			) );
 		}
 
+		/*
+		 * See https://developers.google.cn/search/docs/appearance/structured-data/profile-page.
+		 */
 		public function filter_json_data_https_schema_org_profilepage( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -43,6 +46,51 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 			$prop_type_ids = array( 'mentions' => false );	// Allow any post schema type to be added.
 
 			WpssoSchema::add_posts_data( $json_data, $mod, $mt_og, $page_type_id, $is_main, $prop_type_ids );
+
+			/*
+			 * Add the Schema Person as the 'mainEntity'.
+			 */
+			$user_id = 'none';
+
+			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_profile_person_id', $filter_opts = true, $merge_defs = true );
+			}
+
+			if ( empty( $user_id ) || 'none' === $user_id ) {
+
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+					$user_id = $this->p->options[ 'site_pub_person_id' ];	// 'none' by default.
+
+				} elseif ( $mod[ 'is_user' ] ) {
+
+					$user_id = $mod[ 'id' ];	// Could be false.
+
+				} else $user_id = 'none';
+
+				if ( empty( $user_id ) || 'none' === $user_id ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'exiting early: user ID is empty or "none"' );
+					}
+
+					return $json_data;
+				}
+			}
+
+		 	/*
+			 * $user_id can be 'none' or a number (including 0).
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding data for person id = ' . $user_id );
+			}
+
+			$json_data[ 'mainEntity' ] = null;
+
+			WpssoSchemaSingle::add_person_data( $json_data[ 'mainEntity' ], $mod, $user_id, $list_element = false );
 
 			return $json_data;
 		}

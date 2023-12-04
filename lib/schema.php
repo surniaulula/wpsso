@@ -1478,6 +1478,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'software.application',
 						'webpage',
 						'webpage.faq',
+						'webpage.profile',
 						'webpage.qa',
 					);
 

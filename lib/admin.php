@@ -2302,7 +2302,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_md5_pre  = 'wpsso__r_';
 			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
 
 			$readme_info     = false;
 			$readme_content  = false;
@@ -2542,7 +2542,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
 
 			$cache_md5_pre  = 'wpsso_c_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
 			$cache_content  = false;
 
 			if ( $cache_exp_secs > 0 ) {

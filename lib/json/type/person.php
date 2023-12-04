@@ -57,10 +57,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 
 					$user_id = $mod[ 'id' ];	// Could be false.
 
-				} else {
-
-					$user_id = 'none';
-				}
+				} else $user_id = 'none';
 
 				if ( empty( $user_id ) || 'none' === $user_id ) {
 

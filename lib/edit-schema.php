@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'mb_sso_edit_schema_review_rows'        => 6,	// Schema CreativeWork > Review.
 				'mb_sso_edit_schema_software_app_rows'  => 6,	// Schema CreativeWork > Software Application.
 				'mb_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
+				'mb_sso_edit_schema_profilepage_rows'   => 6,	// Schema CreativeWork > WebPage > ProfilePage.
 				'mb_sso_edit_schema_qa_rows'            => 6,	// Schema CreativeWork > WebPage > QAPage.
 				'mb_sso_edit_schema_event_rows'         => 6,	// Schema Event.
 				'mb_sso_edit_schema_job_posting_rows'   => 6,	// Schema Intangible > JobPosting.
@@ -157,6 +158,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'wpsso_mb_sso_edit_schema_review_rows',
 				'wpsso_mb_sso_edit_schema_software_app_rows',
 				'wpsso_mb_sso_edit_schema_webpage_rows',
+				'wpsso_mb_sso_edit_schema_profilepage_rows',	// Schema CreativeWork > WebPage > ProfilePage.
 				'wpsso_mb_sso_edit_schema_qa_rows',
 				'wpsso_mb_sso_edit_schema_event_rows',
 				'wpsso_mb_sso_edit_schema_job_posting_rows',
@@ -1345,6 +1347,32 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
+		/*
+		 * Schema CreativeWork > WebPage > ProfilePage.
+		 */
+		public function filter_mb_sso_edit_schema_profilepage_rows( $table_rows, $form, $head_info, $mod, $args ) {
+
+			$form_rows = array(
+				'subsection_schema_profilepage' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'webpage.profile' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'QA Page Information', 'metabox title', 'wpsso' )
+				),
+				'schema_profile_person_id' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'webpage.profile' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Select a Person', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_profile_person_id',
+					'content'  => $form->get_select( 'schema_profile_person_id', $args[ 'select_names' ][ 'person' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'person_names' ) ),
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
 
 		/*
 		 * Schema CreativeWork > WebPage > QAPage.
