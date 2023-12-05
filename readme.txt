@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.1-dev.3 (2023/12/04)**
+**Version 17.3.1-b.1 (2023/12/05)**
 
 * **New Features**
 	* None.
@@ -390,9 +390,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.1-dev.3 =
+= 17.3.1-b.1 =
 
-(2023/12/04) Fixed missing 'mainEntity' property for Schema ProfilePage. Fixed missing dismiss time for the pending update(s) information notice.
+(2023/12/05) Fixed missing 'mainEntity' property for Schema ProfilePage. Fixed missing dismiss time for the pending update(s) information notice.
 
 = 17.3.0 =
 
