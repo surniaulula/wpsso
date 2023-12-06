@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.3.1-b.1\n"
+"Project-Id-Version: WPSSO Core 17.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6725,17 +6725,17 @@ msgid ""
 "webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/json/type/faqpage.php:74
+#: lib/json/type/faqpage.php:77
 msgid "%d question added to the Schema FAQPage markup."
 msgid_plural "%d questions added to the Schema FAQPage markup."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/json/type/faqpage.php:81
+#: lib/json/type/faqpage.php:84
 msgid "No question(s) found for the Schema FAQPage markup."
 msgstr ""
 
-#: lib/json/type/faqpage.php:83
+#: lib/json/type/faqpage.php:86
 msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr ""
 

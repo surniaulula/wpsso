@@ -10,9 +10,9 @@ Tags: schema, seo, woocommerce, google search console, google merchant, rich res
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.5
-Tested Up To: 6.4.1
+Tested Up To: 6.4.2
 WC Tested Up To: 8.3.1
-Stable Tag: 17.3.0
+Stable Tag: 17.3.1
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.3.1-b.1 (2023/12/05)**
+**Version 17.3.1 (2023/12/05)**
 
 * **New Features**
 	* None.
@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.3.1-b.1 =
+= 17.3.1 =
 
 (2023/12/05) Fixed missing 'mainEntity' property for Schema ProfilePage. Fixed missing dismiss time for the pending update(s) information notice.
 

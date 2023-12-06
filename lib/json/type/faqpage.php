@@ -34,6 +34,9 @@ if ( ! class_exists( 'WpssoJsonTypeFAQPage' ) ) {
 			) );
 		}
 
+		/*
+		 * See https://developers.google.com/search/docs/appearance/structured-data/faqpage.
+		 */
 		public function filter_json_data_https_schema_org_faqpage( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
