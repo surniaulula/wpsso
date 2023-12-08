@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_images = array();
 
-			foreach ( $mt_videos as $mt_single_video ) {
+			foreach ( $mt_videos as $num => $mt_single_video ) {
 
 				$image_url = SucomUtil::get_first_mt_media_url( $mt_single_video );
 
@@ -271,6 +271,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 				}
+
+				unset( $mt_videos[ $num ] );
 			}
 
 			return $mt_images;
@@ -502,10 +504,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$mt_extend[] = $og_single_embed;
 
-				} else {
-
-					$mt_extend[] = $mt_single_video;
-				}
+				} else $mt_extend[] = $mt_single_video;
 			}
 
 			if ( $this->p->debug->enabled ) {
