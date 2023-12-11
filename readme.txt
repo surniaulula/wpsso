@@ -255,6 +255,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.4.0-rc.1 (2023/12/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added `SucomDebug->mark_diff()`.
+	* Renamed `SucomDebug->caller()` to `SucomDebug->mark_caller()`.
+	* Refactored `WpssoPage->get_tag_names()`.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.3.1 (2023/12/05)**
 
 * **New Features**
@@ -389,6 +405,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.4.0-rc.1 =
+
+(2023/12/11) Added `SucomDebug->mark_diff()`. Refactored `WpssoPage->get_tag_names()`.
 
 = 17.3.1 =
 
