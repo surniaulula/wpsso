@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.4.0-rc.1 (2023/12/11)**
+**Version 17.4.0-rc.1 (2023/12/12)**
 
 * **New Features**
 	* None.
@@ -408,7 +408,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.4.0-rc.1 =
 
-(2023/12/11) Added `SucomDebug->mark_diff()`. Refactored `WpssoPage->get_tag_names()`.
+(2023/12/12) Added `SucomDebug->mark_diff()`. Refactored `WpssoPage->get_tag_names()`.
 
 = 17.3.1 =
 
