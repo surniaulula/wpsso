@@ -44,8 +44,6 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 			$this->reg = new $register_class();	// Activate, deactivate, uninstall hooks.
 
 			$this->add_hooks( $plugin_file );
-
-			unset( $plugin_dir, $config_class, $register_class );
 		}
 
 		protected function add_hooks( $plugin_file ) {
