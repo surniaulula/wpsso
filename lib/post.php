@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'post_id' => $post_id,
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'post_id'     => $post_id,

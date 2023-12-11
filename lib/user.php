@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'user_id' => $user_id,
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'user_id'     => $user_id,

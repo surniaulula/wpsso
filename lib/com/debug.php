@@ -20,8 +20,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $log_prefix   = '';
 		private $log_buffer   = array();	// Accumulate text strings going to html output.
 		private $outputs      = array();	// Associative array to enable various outputs.
-		private $start_stats  = null;
-		private $begin_marks  = array();
+		private $const_stats  = array();
+		private $begin_stats  = array();
+		private $last_stats   = array();
 		private $log_msg_cols = array(
 			'%-40s:: ',
 			'%-55s: ',
@@ -38,7 +39,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			$this->p =& $plugin;
 
-			$this->start_stats = array(
+			$this->const_stats = $this->last_stats = array(
 				'mtime' => microtime( $get_float = true ),
 				'mem'   => memory_get_usage(),
 			);
@@ -249,59 +250,71 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 		}
 
-		public function mark( $id = false, $comment = '' ) {
+		public function mark( $id = false, $comment = '', $class_seq = 2 ) {
 
 			if ( ! $this->enabled ) {
 
 				return;
 			}
 
+			$comment   = $comment ? ' ' . $comment : '';
+			$sep_text  = '';
 			$cur_stats = array(
 				'mtime' => microtime( $get_float = true ),
 				'mem'   => memory_get_usage(),
 			);
 
-			if ( null === $this->start_stats ) {
-
-				$this->start_stats = $cur_stats;
-			}
-
 			if ( false !== $id ) {
 
-				$append_text = '- - - - - - ' . $id;
+				$sep_text .= "\n\t" . '- - - - - - ' . $id;
 
-				if ( isset( $this->begin_marks[ $id ] ) ) {
+				if ( isset( $this->begin_stats[ $id ] ) ) {
 
-					$mtime_diff = $cur_stats[ 'mtime' ] - $this->begin_marks[ $id ][ 'mtime' ];
-					$mem_diff   = $cur_stats[ 'mem' ] - $this->begin_marks[ $id ][ 'mem' ];
-					$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
+					$mtime_diff = $cur_stats[ 'mtime' ] - $this->begin_stats[ $id ][ 'mtime' ];
+					$mem_diff   = $cur_stats[ 'mem' ] - $this->begin_stats[ $id ][ 'mem' ];
+					$stats_text = '+' . $this->get_time_text( $mtime_diff ) . ' / +' . $this->get_mem_text( $mem_diff );
 
-					$append_text .= ' end + (' . $stats_text . ')';
+					$sep_text .= ' end diff (' . $stats_text . ')';
 
-					unset( $this->begin_marks[ $id ] );
+					unset( $this->begin_stats[ $id ] );
 
 				} else {
 
-					$append_text .= ' begin';
+					$sep_text .= ' begin';
 
-					$this->begin_marks[ $id ] = array(
+					$this->begin_stats[ $id ] = array(
 						'mtime' => $cur_stats[ 'mtime' ],
 						'mem'   => $cur_stats[ 'mem' ],
 					);
 				}
 			}
 
-			$mtime_diff = $cur_stats[ 'mtime' ] - $this->start_stats[ 'mtime' ];
-			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
+			/*
+			 * $this->const_stats is defined in the class __construct().
+			 */
+			$mtime_diff = $cur_stats[ 'mtime' ] - $this->const_stats[ 'mtime' ];
+			$mem_diff   = $cur_stats[ 'mem' ] - $this->const_stats[ 'mem' ];
 			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
-			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), $class_seq = 2 );
+			$this->log( 'mark (' . $stats_text . ')' . $comment . $sep_text, $class_seq );
 		}
 
 		/*
+		 * See WpssoComment->get_mod().
+		 * See WpssoComment->get_options().
 		 * See WpssoPost->get_mod().
+		 * See WpssoPost->get_options().
+		 * See WpssoTerm->get_mod().
+		 * See WpssoTerm->get_options().
+		 * See WpssoUser->get_mod().
+		 * See WpssoUser->get_options().
 		 */
-		public function caller() {
+		public function mark_caller() {
+
+			$this->mark( $id = false, $comment = '', $class_seq = 4 );
+		}
+
+		public function mark_diff( $class_seq = 2 ) {
 
 			if ( ! $this->enabled ) {
 
@@ -313,16 +326,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				'mem'   => memory_get_usage(),
 			);
 
-			if ( null === $this->start_stats ) {
+			$mtime_diff = $cur_stats[ 'mtime' ] - $this->last_stats[ 'mtime' ];
+			$mem_diff   = $cur_stats[ 'mem' ] - $this->last_stats[ 'mem' ];
+			$stats_text = '+' . $this->get_time_text( $mtime_diff ) . ' / +' . $this->get_mem_text( $mem_diff );
 
-				$this->start_stats = $cur_stats;
-			}
+			$this->last_stats = $cur_stats;
 
-			$mtime_diff = $cur_stats[ 'mtime' ] - $this->start_stats[ 'mtime' ];
-			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
-			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
-
-			$this->log( 'mark caller (' . $stats_text . ')', $class_seq = 3 );
+			$this->log( 'mark diff (' . $stats_text . ')', $class_seq );
 		}
 
 		private function get_time_text( $time ) {

@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'comment_id' => $comment_id,
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'comment_id'  => $comment_id,

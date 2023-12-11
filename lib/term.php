@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'term_id'  => $term_id,
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->caller();
+				$this->p->debug->mark_caller();
 
 				$this->p->debug->log_args( array(
 					'term_id'     => $term_id,

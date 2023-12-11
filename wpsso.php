@@ -162,7 +162,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						}
 					}
 				}, 10, 0 );
+
+				unset( $wc_compat );
 			}
+
+			unset( $plugin_file, $plugin_dir );
+
 		}
 
 		public static function &get_instance() {

@@ -1177,7 +1177,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_schema_type_children( $type_id, $use_cache = true, &$children = array() ) {
 
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting children for type id ' . $type_id );
@@ -1519,6 +1518,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$local_cache[ $name ][ $type_id ] = $wpsso->schema->get_children_css_class( $type_id, $class_prefix = 'hide_' . $name, $exclude_match );
 			}
+
+			unset( $type_ids, $type_id, $exclude_match );
 
 			if ( $cache_exp_secs > 0 ) {
 

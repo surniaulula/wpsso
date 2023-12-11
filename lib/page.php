@@ -2070,57 +2070,39 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: returning tags from static cache' );
-				}
-
-				return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];
-			}
-
 			/*
-			 * The 'wpsso_tag_names_seed' filter is hooked by the WpssoIntegEcomEdd, WpssoIntegEcomWooCommerce, and
-			 * WpssoIntegForumBbpress classes.
+			 * See WpssoIntegEcomWooCommerce->filter_tag_names_seed().
 			 */
-			$tags = apply_filters( 'wpsso_tag_names_seed', array(), $mod );
+			$tags = apply_filters( 'wpsso_tag_names_seed', null, $mod );
 
-			if ( ! empty( $tags ) ) {
+			if ( ! is_array( $tags ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				if ( $mod[ 'is_post' ] ) {
 
-					$this->p->debug->log( 'tags seed = ' . implode( ',', $tags ) );
-				}
+					if ( 'post' === $mod[ 'post_type' ] ) {
 
-			} elseif ( $mod[ 'is_post' ] ) {
+						$taxonomy = 'post_tag';
+	
+					} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
+	
+						$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
+	
+					} else $taxonomy = '';
+	
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
+	
+					$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
+	
+					if ( ! empty( $taxonomy ) ) {
+	
+						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
+					}
 
-				if ( 'post' === $mod[ 'post_type' ] ) {
-
-					$taxonomy = 'post_tag';
-
-				} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
-
-					$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
-
-				} else {
-
-					$taxonomy = '';
-				}
-
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
-
-				$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
-
-				if ( ! empty( $taxonomy ) ) {
-
-					$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
+					unset( $filter_name, $taxonomy );
 				}
 			}
 
-			$tags = array_unique( $tags );
+			$tags = is_array( $tags ) ? array_unique( $tags ) : array();
 
 			$tags = apply_filters( 'wpsso_tag_names', $tags, $mod );
 
@@ -2129,7 +2111,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log_arr( 'tags', $tags );
 			}
 
-			return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = $tags;
+			return $tags;
 		}
 
 		/*

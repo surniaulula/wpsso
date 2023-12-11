@@ -11540,7 +11540,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2245
+#: lib/page.php:2227
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11837,22 +11837,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2101
+#: lib/schema.php:2102
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2276
+#: lib/schema.php:2277
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2303
+#: lib/schema.php:2304
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3899
+#: lib/schema.php:3900
 msgid "checking schema properties"
 msgstr ""
 
@@ -13177,45 +13177,45 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:635
+#: wpsso.php:640
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
 
-#: wpsso.php:638
+#: wpsso.php:643
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:794
+#: wpsso.php:799
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:801
+#: wpsso.php:806
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:809
+#: wpsso.php:814
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:811
+#: wpsso.php:816
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:823
+#: wpsso.php:828
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:825
+#: wpsso.php:830
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
