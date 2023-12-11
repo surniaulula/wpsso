@@ -2082,19 +2082,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( 'post' === $mod[ 'post_type' ] ) {
 
 						$taxonomy = 'post_tag';
-	
+
 					} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
-	
+
 						$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
-	
+
 					} else $taxonomy = '';
-	
+
 					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
-	
+
 					$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
-	
+
 					if ( ! empty( $taxonomy ) ) {
-	
+
 						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
 					}
 
