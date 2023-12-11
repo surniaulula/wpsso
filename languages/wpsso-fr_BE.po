@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.3.1\n"
+"Project-Id-Version: WPSSO Core 17.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-12-04 14:38-0800\n"
+"PO-Revision-Date: 2023-12-11 10:01-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -348,8 +348,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:985
-#: lib/media-filters.php:116 lib/media.php:1533 lib/media.php:1683
-#: lib/media.php:3617
+#: lib/media-filters.php:116 lib/media.php:1532 lib/media.php:1682
+#: lib/media.php:3616
 msgid "Media Library"
 msgstr "la médiathèque"
 
@@ -6409,17 +6409,17 @@ msgstr "Une critique d'une déclaration ne peut faire l’objet d'une autre crit
 msgid "CreativeWork will be used instead as the Schema type for the subject of the webpage (ie. the content) being reviewed."
 msgstr "CreativeWork sera utilisé à la place comme type de Schéma pour le sujet de la page Web (c'est-à-dire le contenu) critiqué."
 
-#: lib/json/type/faqpage.php:74
+#: lib/json/type/faqpage.php:77
 msgid "%d question added to the Schema FAQPage markup."
 msgid_plural "%d questions added to the Schema FAQPage markup."
 msgstr[0] "%d question ajoutée au balisage de Schéma FAQPage."
 msgstr[1] "%d questions ajoutées au balisage de Schéma FAQPage."
 
-#: lib/json/type/faqpage.php:81
+#: lib/json/type/faqpage.php:84
 msgid "No question(s) found for the Schema FAQPage markup."
 msgstr "Aucune question trouvée pour le balisage de Schéma FAQPage."
 
-#: lib/json/type/faqpage.php:83
+#: lib/json/type/faqpage.php:86
 msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr "Google requiert au moins une question pour le balisage de Schéma FAQPage."
 
@@ -6445,7 +6445,7 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media-filters.php:119 lib/media.php:3627
+#: lib/media-filters.php:119 lib/media.php:3626
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
@@ -6465,60 +6465,60 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height."
 msgstr "Dimension minimale d'image pour satisfaire les %1$d tailles d'image: %2$dpx de largeur sur %3$dpx de hauteur."
 
-#: lib/media.php:1315
+#: lib/media.php:1314
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1537
+#: lib/media.php:1536
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1539 lib/media.php:1752
+#: lib/media.php:1538 lib/media.php:1751
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la médiathèque WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1555
+#: lib/media.php:1554
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1576
+#: lib/media.php:1575
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1595
+#: lib/media.php:1594
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1685
+#: lib/media.php:1684
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1721 lib/register.php:305 lib/util.php:876 lib/util.php:985
+#: lib/media.php:1720 lib/register.php:305 lib/util.php:876 lib/util.php:985
 #: lib/util.php:1017 lib/util.php:1055 lib/util.php:3405
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1722 lib/util.php:877 lib/util.php:3406
+#: lib/media.php:1721 lib/util.php:877 lib/util.php:3406
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1723
+#: lib/media.php:1722
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1750
+#: lib/media.php:1749
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3643
+#: lib/media.php:3642
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3696
+#: lib/media.php:3695
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3731
+#: lib/media.php:3730
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -10279,7 +10279,7 @@ msgstr "Page %1$d de %2$d"
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2245
+#: lib/page.php:2227
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
@@ -10549,19 +10549,19 @@ msgstr "ajout de schéma de produit"
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:2101
+#: lib/schema.php:2102
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour schéma %s"
 
-#: lib/schema.php:2276
+#: lib/schema.php:2277
 msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
 
-#: lib/schema.php:2303
+#: lib/schema.php:2304
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:3899
+#: lib/schema.php:3900
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -11852,37 +11852,37 @@ msgstr "%1$s pour cet %2$s"
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
-#: wpsso.php:635
+#: wpsso.php:640
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr "(constante %s est vraie)"
 
-#: wpsso.php:638
+#: wpsso.php:643
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr "(constante %s est fausse)"
 
-#: wpsso.php:794
+#: wpsso.php:799
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:801
+#: wpsso.php:806
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
-#: wpsso.php:809
+#: wpsso.php:814
 msgid "The %s plugin's debug mode generates thousands of messages during page load, which affects website performance."
 msgstr "Le mode débogage de l'extension %s génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
 
-#: wpsso.php:811
+#: wpsso.php:816
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:823
+#: wpsso.php:828
 msgid "The %s plugin's cache feature is disabled for debugging, which affects website performance."
 msgstr "La fonctionnalité de cache de l'extension %s est désactivée pour le débogage, ce qui affecte les performances du site Web."
 
-#: wpsso.php:825
+#: wpsso.php:830
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr "N'oubliez pas de réactiver la mise en cache lorsque le débogage est terminé."
 
