@@ -44,13 +44,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				'mem'   => memory_get_usage(),
 			);
 
-			$this->display_name = $this->p->id;
+			$this->display_name = isset( $this->p->id ) ? $this->p->id : 'sucom';
 			$this->log_prefix   = strtoupper( $this->display_name );
 			$this->outputs      = $outputs;
 
 			$this->is_enabled();	// Sets $this->enabled value.
 
-			if ( ! empty( $outputs[ 'log' ] ) ) {
+			if ( ! empty( $this->outputs[ 'log' ] ) ) {
 
 				if ( ! isset( $_SESSION ) ) {
 
@@ -210,10 +210,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_name );
 
-			} else {
-
-				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_seq );
-			}
+			} else $log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_seq );
 
 			if ( is_multisite() ) {
 
@@ -230,10 +227,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 				$log_msg .= print_r( 'object ' . get_class( $input ), true );
 
-			} else {
-
-				$log_msg .= $input;
-			}
+			} else $log_msg .= $input;
 
 			if ( $this->outputs[ 'html' ] ) {
 
@@ -242,8 +236,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( $this->outputs[ 'log' ] ) {
 
-				$session_id = session_id();
-
+				$session_id    = session_id();
 				$connection_id = $session_id ? $session_id : $_SERVER[ 'REMOTE_ADDR' ];
 
 				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );

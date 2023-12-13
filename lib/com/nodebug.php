@@ -24,6 +24,8 @@ if ( ! class_exists( 'SucomNoDebug' ) ) {
 		public function log_arr() {}
 		public function log() {}
 		public function mark() {}
+		public function mark_caller() {}
+		public function mark_diff() {}
 		public function show_html() {}
 		public function get_html() { return ''; }
 	}

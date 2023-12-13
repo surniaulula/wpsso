@@ -348,10 +348,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );
 				}
 
-			} else {
-
-				$this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
-			}
+			} else $this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
 
 			/*
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
