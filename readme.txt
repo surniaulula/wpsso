@@ -255,14 +255,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.5.0-dev.1 (2023/12/17)**
+**Version 17.5.0-dev.2 (2023/12/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Updated `$local_cache` array to maintain a maximum of 5 elements:
+	* Updated static cache in methods to limit the number of elements:
 		* `WpssoComment->get_mod()`
 		* `WpssoComment->get_options()`
 		* `WpssoMedia->get_all_videos()`
@@ -274,6 +274,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoTerm->get_options()`
 		* `WpssoUser->get_mod()`
 		* `WpssoUser->get_options()`
+	* Added a new `SucomUtil::array_fifo()` method.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -431,9 +432,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.5.0-dev.1 =
+= 17.5.0-dev.2 =
 
-(2023/12/17) Updated `$local_cache` array to maintain a maximum of 5 elements.
+(2023/12/17) Updated static cache in methods to limit the number of elements.
 
 = 17.4.0 =
 
