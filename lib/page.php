@@ -509,6 +509,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
+			unset( $wp_obj );	// Done with $wp_obj.
+
 			if ( empty( $mod[ 'name' ] ) ) {
 
 				if ( SucomUtil::is_post_page( $use_post ) ) {	// $use_post = true | false | post ID.
@@ -538,10 +540,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$mod[ 'name' ] = 'user';
 
-				} else {
-
-					$mod[ 'name' ] = false;
-				}
+				} else $mod[ 'name' ] = false;
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
@@ -754,6 +753,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 									$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 								}
 							}
+
+							unset( $post_type_obj );	// Done with $post_type_obj.
 						}
 
 						break;

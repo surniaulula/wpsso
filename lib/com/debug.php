@@ -302,18 +302,19 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		 * See WpssoUser->get_mod().
 		 * See WpssoUser->get_options().
 		 */
-		public function mark_caller() {
+		public function mark_caller( $comment = '' ) {
 
-			$this->mark( $id = false, $comment = '', $class_seq = 4 );
+			$this->mark( $id = false, $comment, $class_seq = 4 );
 		}
 
-		public function mark_diff( $class_seq = 2 ) {
+		public function mark_diff( $comment = '', $class_seq = 2 ) {
 
 			if ( ! $this->enabled ) {
 
 				return;
 			}
 
+			$comment   = $comment ? ' ' . $comment : '';
 			$cur_stats = array(
 				'mtime' => microtime( $get_float = true ),
 				'mem'   => memory_get_usage(),
@@ -325,7 +326,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			$this->last_stats = $cur_stats;
 
-			$this->log( 'mark diff (' . $stats_text . ')', $class_seq );
+			$this->log( 'mark diff (' . $stats_text . ')' . $comment, $class_seq );
 		}
 
 		private function get_time_text( $time ) {

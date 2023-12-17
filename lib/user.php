@@ -187,13 +187,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: returning user id ' . $user_id . ' mod array from local cache' );
+						$this->p->debug->log( 'exiting early: user id ' . $user_id . ' mod array from local cache' );
 					}
 
 					return $local_cache[ $user_id ];
 
 				} else unset( $local_cache[ $user_id ] );
 			}
+
+			/*
+			 * Maintain a maximum of 5 cache elements.
+			 */
+			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 			$mod = self::get_mod_defaults();
 
@@ -293,6 +298,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+
+				/*
+				 * Maintain a maximum of 5 cache elements.
+				 */
+				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -435,9 +445,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];
+				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );
+				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
 
 				return $this->return_options( $user_id, $deref_md_opts, $md_key, $merge_defs );
 			}
@@ -1231,10 +1241,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					return $local_cache[ $user_id ][ $meta_key ];
 				}
 
-			} else {
-
-				$local_cache[ $user_id ] = array();
-			}
+			} else $local_cache[ $user_id ] = array();
 
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
@@ -1324,10 +1331,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					return $local_cache[ $user_id ][ $meta_key ];
 				}
 
-			} else {
-
-				$local_cache[ $user_id ] = array();
-			}
+			} else $local_cache[ $user_id ] = array();
 
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
@@ -2009,7 +2013,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( isset( $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ] ) ) {	// Just in case.
 
 				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
+
 				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none );
+
 				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ), $preserve_keys = true );
 			}
 

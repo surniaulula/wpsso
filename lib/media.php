@@ -329,6 +329,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $local_cache[ $cache_id ] = array();
 			}
 
+			/*
+			 * Maintain a maximum of 5 cache elements.
+			 */
+			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+
 			$local_cache[ $cache_id ] = array();
 
 			$mt_videos =& $local_cache[ $cache_id ];	// Set reference variable.
@@ -965,6 +970,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				static $local_cache = array();
 
 				if ( ! isset( $local_cache[ $post_id ] ) ) {
+
+					/*
+					 * Maintain a maximum of 5 cache elements.
+					 */
+					$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 					$local_cache[ $post_id ] = array();
 

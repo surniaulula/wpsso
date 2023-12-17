@@ -186,13 +186,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: returning term id ' . $term_id . ' mod array from local cache' );
+						$this->p->debug->log( 'exiting early: term id ' . $term_id . ' mod array from local cache' );
 					}
 
 					return $local_cache[ $term_id ][ $tax_slug ];
 
 				} else unset( $local_cache[ $term_id ][ $tax_slug ] );
 			}
+
+			/*
+			 * Maintain a maximum of 5 cache elements.
+			 */
+			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 			$mod = self::get_mod_defaults();
 
@@ -310,6 +315,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
+				/*
+				 * Maintain a maximum of 5 cache elements.
+				 */
+				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+
 				$local_cache[ $cache_id ] = null;
 			}
 
@@ -423,9 +433,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];
+				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );
+				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
 
 				return $this->return_options( $term_id, $deref_md_opts, $md_key, $merge_defs );
 			}

@@ -15,7 +15,7 @@
  * Requires At Least: 5.5
  * Tested Up To: 6.4.2
  * WC Tested Up To: 8.4.0
- * Version: 17.4.0
+ * Version: 17.5.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -350,6 +350,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			} else $this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
 
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark_diff( 'debug class loaded' );
+			}
+
 			/*
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
 			 *
@@ -368,9 +373,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->msgs   = new WpssoMessages( $this );	// Admin tooltip messages.
 				$this->notice = new SucomNotice( $this );
 
-			} else {
+			} else $this->notice = new SucomNoNotice();	// Class always loaded in WpssoConfig::require_libs().
 
-				$this->notice = new SucomNoNotice();	// Class always loaded in WpssoConfig::require_libs().
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark_diff( 'notice class loaded' );
 			}
 
 			$this->cache = new SucomCache( $this );
@@ -396,7 +403,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			/*
-			 * Setup resource classes:
+			 * Setup media and module classes:
 			 *
 			 *	$comment
 			 *	$media
@@ -411,6 +418,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->post    = new WpssoPost( $this );		// Extends WpssoAbstractWpMeta.
 			$this->term    = new WpssoTerm( $this );		// Extends WpssoAbstractWpMeta.
 			$this->user    = new WpssoUser( $this );		// Extends WpssoAbstractWpMeta.
+
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark_diff( 'media and module classes loaded' );
+			}
 
 			/*
 			 * Setup classe for meta tags and Schema markup:
@@ -433,6 +445,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark_diff( 'meta tags and schema classes loaded' );
+			}
+
 			/*
 			 * Load integration and std/pro distribution modules.
 			 */
@@ -449,7 +466,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$this->debug_reminder();
 
-				$this->debug->log( 'done setting objects' );
+				$this->debug->mark_diff( 'objects defined' );
 			}
 		}
 
@@ -457,6 +474,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Runs at init priority 11.
 		 */
 		public function init_shortcodes() {
+
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark( 'init shortcodes' );	// Begin timer.
+			}
 
 			/*
 			 * Load lib/shortcode/* library files.
@@ -471,7 +493,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( ! isset( $this->sc[ $id ] ) ) {	// Just in case.
 
 					$this->sc[ $id ] = new $classname( $this );
+			
+					if ( $this->debug->enabled ) {
+
+						$this->debug->mark_diff( 'added ' . $id . ' shortcode' );
+					}
 				}
+			}
+			
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark( 'init shortcodes' );	// Begin timer.
 			}
 		}
 

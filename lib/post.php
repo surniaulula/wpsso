@@ -225,13 +225,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: returning post id ' . $post_id . ' mod array from local cache' );
+						$this->p->debug->log( 'exiting early: post id ' . $post_id . ' mod array from local cache' );
 					}
 
 					return $local_cache[ $post_id ];
 
 				} else unset( $local_cache[ $post_id ] );
 			}
+
+			/*
+			 * Maintain a maximum of 5 cache elements.
+			 */
+			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 			$mod = self::get_mod_defaults();
 
@@ -328,6 +333,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 							$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 						}
+
+						unset( $post_type_obj );	// Done with $post_type_obj.
 					}
 
 					/*
@@ -432,6 +439,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+
+				/*
+				 * Maintain a maximum of 5 cache elements.
+				 */
+				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -614,9 +626,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];
+				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );
+				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
 
 				return $this->return_options( $post_id, $deref_md_opts, $md_key, $merge_defs );
 			}
@@ -2446,6 +2458,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					return $local_cache[ $post_id ][ $tax_slug ];	// Return value from local cache.
 				}
+
+				/*
+				 * Maintain a maximum of 5 cache elements.
+				 */
+				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
 
 				/*
 				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
