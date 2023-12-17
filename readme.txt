@@ -262,7 +262,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Updated `$local_cache` array to maintain a maximum of 5 elements:
+		* `WpssoComment->get_mod()`
+		* `WpssoComment->get_options()`
+		* `WpssoMedia->get_all_videos()`
+		* `WpssoMedia->get_attached_images()`
+		* `WpssoPost->get_mod()`
+		* `WpssoPost->get_options()`
+		* `WpssoPost->get_primary_term_id()`
+		* `WpssoTerm->get_mod()`
+		* `WpssoTerm->get_options()`
+		* `WpssoUser->get_mod()`
+		* `WpssoUser->get_options()`
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -422,7 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.5.0-dev.1 =
 
-(2023/12/17) None.
+(2023/12/17) Updated `$local_cache` array to maintain a maximum of 5 elements.
 
 = 17.4.0 =
 
