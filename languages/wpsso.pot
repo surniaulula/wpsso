@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.5.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 17.5.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4724,12 +4724,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5399
+#: lib/config.php:5400
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5399
+#: lib/config.php:5400
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -8215,8 +8215,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1825 lib/user.php:1916
-#: lib/user.php:2033
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1841 lib/user.php:1932
+#: lib/user.php:2049
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11817,19 +11817,19 @@ msgstr ""
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1392
+#: lib/schema-single.php:1398
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1578
+#: lib/schema-single.php:1586
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2015
+#: lib/schema-single.php:2023
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2142
+#: lib/schema-single.php:2150
 msgid "adding schema product"
 msgstr ""
 
@@ -12642,56 +12642,56 @@ msgstr ""
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1709
+#: lib/user.php:1725
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1752 lib/user.php:1827
+#: lib/user.php:1768 lib/user.php:1843
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1760
+#: lib/user.php:1776
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1800
+#: lib/user.php:1816
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1837 lib/user.php:1928 lib/util-cache.php:572
+#: lib/user.php:1853 lib/user.php:1944 lib/util-cache.php:572
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1838
+#: lib/user.php:1854
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1872
+#: lib/user.php:1888
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1873 lib/user.php:1967 lib/util-cache.php:685
+#: lib/user.php:1889 lib/user.php:1983 lib/util-cache.php:685
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1889 lib/user.php:1918
+#: lib/user.php:1905 lib/user.php:1934
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1897
+#: lib/user.php:1913
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1929
+#: lib/user.php:1945
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1966
+#: lib/user.php:1982
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

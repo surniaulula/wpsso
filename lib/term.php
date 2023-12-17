@@ -173,14 +173,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Maybe return the array from the local cache.
 			 *
 			 * Term IDs in older WordPress versions are not unique, so use the term ID and the taxonomy slug as a cache index.
 			 */
-			if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
+			if ( isset( $local_fifo[ $term_id ][ $tax_slug ] ) ) {
 
 				if ( ! $this->md_cache_disabled ) {
 
@@ -189,15 +189,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'exiting early: term id ' . $term_id . ' mod array from local cache' );
 					}
 
-					return $local_cache[ $term_id ][ $tax_slug ];
+					return $local_fifo[ $term_id ][ $tax_slug ];
 
-				} else unset( $local_cache[ $term_id ][ $tax_slug ] );
+				} else unset( $local_fifo[ $term_id ][ $tax_slug ] );
 			}
 
 			/*
-			 * Maintain a maximum of 5 cache elements.
+			 * Maybe limit the number of array elements.
 			 */
-			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -265,12 +265,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( ! $this->md_cache_disabled ) {
 
-				if ( ! isset( $local_cache[ $term_id ] ) ) {
+				if ( ! isset( $local_fifo[ $term_id ] ) ) {
 
-					$local_cache[ $term_id ] = array();
+					$local_fifo[ $term_id ] = array();
 				}
 
-				$local_cache[ $term_id ][ $tax_slug ] = $mod;
+				$local_fifo[ $term_id ][ $tax_slug ] = $mod;
 			}
 
 			return $mod;
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Use $term_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
@@ -313,17 +313,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/*
 			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+			if ( ! isset( $local_fifo[ $cache_id ] ) ) {
 
 				/*
-				 * Maintain a maximum of 5 cache elements.
+				 * Maybe limit the number of array elements.
 				 */
-				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-				$local_cache[ $cache_id ] = null;
+				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
 
-			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
+			$md_opts =& $local_fifo[ $cache_id ];	// Reference the local cache element.
 
 			if ( null === $md_opts ) {	// Maybe read metadata into a new local cache element.
 
@@ -433,9 +433,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
+				$deref_md_opts = $local_fifo[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
+				unset( $local_fifo, $md_opts );
 
 				return $this->return_options( $term_id, $deref_md_opts, $md_key, $merge_defs );
 			}

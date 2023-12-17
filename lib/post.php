@@ -214,12 +214,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Maybe return the array from the local cache.
 			 */
-			if ( isset( $local_cache[ $post_id ] ) ) {
+			if ( isset( $local_fifo[ $post_id ] ) ) {
 
 				if ( ! $this->md_cache_disabled ) {
 
@@ -228,15 +228,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'exiting early: post id ' . $post_id . ' mod array from local cache' );
 					}
 
-					return $local_cache[ $post_id ];
+					return $local_fifo[ $post_id ];
 
-				} else unset( $local_cache[ $post_id ] );
+				} else unset( $local_fifo[ $post_id ] );
 			}
 
 			/*
-			 * Maintain a maximum of 5 cache elements.
+			 * Maybe limit the number of array elements.
 			 */
-			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( ! $this->md_cache_disabled ) {
 
-				$local_cache[ $post_id ] = $mod;
+				$local_fifo[ $post_id ] = $mod;
 			}
 
 			return $mod;
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Use $post_id and $filter_opts to create the cache ID string, but DO NOT ADD $merge_defs.
@@ -438,17 +438,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+			if ( ! isset( $local_fifo[ $cache_id ] ) ) {
 
 				/*
-				 * Maintain a maximum of 5 cache elements.
+				 * Maybe limit the number of array elements.
 				 */
-				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-				$local_cache[ $cache_id ] = null;
+				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
 
-			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
+			$md_opts =& $local_fifo[ $cache_id ];	// Reference the local cache element.
 
 			if ( null === $md_opts ) {	// Maybe read metadata into a new local cache element.
 
@@ -626,9 +626,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
+				$deref_md_opts = $local_fifo[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
+				unset( $local_fifo, $md_opts );
 
 				return $this->return_options( $post_id, $deref_md_opts, $md_key, $merge_defs );
 			}
@@ -2450,19 +2450,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				static $local_cache = array();
+				static $local_fifo = array();
 
 				$post_id = $mod[ 'id' ];
 
-				if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
+				if ( isset( $local_fifo[ $post_id ][ $tax_slug ] ) ) {
 
-					return $local_cache[ $post_id ][ $tax_slug ];	// Return value from local cache.
+					return $local_fifo[ $post_id ][ $tax_slug ];	// Return value from local cache.
 				}
 
 				/*
-				 * Maintain a maximum of 5 cache elements.
+				 * Maybe limit the number of array elements.
 				 */
-				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				/*
 				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
@@ -2492,7 +2492,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $tax_slug, $is_custom );
 
-				$local_cache[ $post_id ][ $tax_slug ] = empty( $primary_term_id ) ? false : (int) $primary_term_id;
+				$local_fifo[ $post_id ][ $tax_slug ] = empty( $primary_term_id ) ? false : (int) $primary_term_id;
 			}
 
 			return $primary_term_id;

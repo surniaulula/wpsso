@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $cache_salt );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			$cache_id = md5( SucomUtil::pretty_array( $cache_salt, $flatten = true ) );
 
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 			}
 
-			if ( isset( $local_cache[ $cache_id ] ) ) {
+			if ( isset( $local_fifo[ $cache_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->mark( 'getting all videos' );	// End timer.
 				}
 
-				return $local_cache[ $cache_id ];
+				return $local_fifo[ $cache_id ];
 
 			} elseif ( 1 !== $this->p->check->pp( $ext = 'wpsso', true, WPSSO_UNDEF, true, -1 ) ) {
 
@@ -326,17 +326,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->mark( 'getting all videos' );	// End timer.
 				}
 
-				return $local_cache[ $cache_id ] = array();
+				return $local_fifo[ $cache_id ] = array();
 			}
 
 			/*
-			 * Maintain a maximum of 5 cache elements.
+			 * Maybe limit the number of array elements.
 			 */
-			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-			$local_cache[ $cache_id ] = array();
+			$local_fifo[ $cache_id ] = array();
 
-			$mt_videos =& $local_cache[ $cache_id ];	// Set reference variable.
+			$mt_videos =& $local_fifo[ $cache_id ];	// Set reference variable.
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'video_details' ), $mod );
 
@@ -967,16 +967,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {	// Just in case.
 
-				static $local_cache = array();
+				static $local_fifo = array();
 
-				if ( ! isset( $local_cache[ $post_id ] ) ) {
+				if ( ! isset( $local_fifo[ $post_id ] ) ) {
 
 					/*
-					 * Maintain a maximum of 5 cache elements.
+					 * Maybe limit the number of array elements.
 					 */
-					$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+					$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-					$local_cache[ $post_id ] = array();
+					$local_fifo[ $post_id ] = array();
 
 					$images = get_children( array(
 						'post_parent'    => $post_id,
@@ -995,11 +995,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( ! empty( $attachment->ID ) && $post_thumbnail_id !== $attachment->ID ) {
 
-							$local_cache[ $post_id ][] = $attachment->ID;
+							$local_fifo[ $post_id ][] = $attachment->ID;
 						}
 					}
 
-					rsort( $local_cache[ $post_id ], SORT_NUMERIC );
+					rsort( $local_fifo[ $post_id ], SORT_NUMERIC );
 
 					$filter_name = 'wpsso_attached_image_ids';
 
@@ -1008,16 +1008,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 					}
 
-					$local_cache[ $post_id ] = apply_filters( $filter_name, $local_cache[ $post_id ], $post_id );
-					$local_cache[ $post_id ] = array_unique( $local_cache[ $post_id ] );	// Just in case.
+					$local_fifo[ $post_id ] = apply_filters( $filter_name, $local_fifo[ $post_id ], $post_id );
+					$local_fifo[ $post_id ] = array_unique( $local_fifo[ $post_id ] );	// Just in case.
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'found ' . count( $local_cache[ $post_id ] ) . ' attached images for post id ' . $post_id );
+					$this->p->debug->log( 'found ' . count( $local_fifo[ $post_id ] ) . ' attached images for post id ' . $post_id );
 				}
 
-				foreach ( $local_cache[ $post_id ] as $pid ) {
+				foreach ( $local_fifo[ $post_id ] as $pid ) {
 
 					/*
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.

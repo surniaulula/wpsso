@@ -176,12 +176,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Maybe return the array from the local cache.
 			 */
-			if ( isset( $local_cache[ $user_id ] ) ) {
+			if ( isset( $local_fifo[ $user_id ] ) ) {
 
 				if ( ! $this->md_cache_disabled ) {
 
@@ -190,15 +190,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'exiting early: user id ' . $user_id . ' mod array from local cache' );
 					}
 
-					return $local_cache[ $user_id ];
+					return $local_fifo[ $user_id ];
 
-				} else unset( $local_cache[ $user_id ] );
+				} else unset( $local_fifo[ $user_id ] );
 			}
 
 			/*
-			 * Maintain a maximum of 5 cache elements.
+			 * Maybe limit the number of array elements.
 			 */
-			$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( ! $this->md_cache_disabled ) {
 
-				$local_cache[ $user_id ] = $mod;
+				$local_fifo[ $user_id ] = $mod;
 			}
 
 			return $mod;
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return array();
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Use $user_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
@@ -297,17 +297,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Maybe initialize a new local cache element. Use isset() instead of empty() to allow for an empty array.
 			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+			if ( ! isset( $local_fifo[ $cache_id ] ) ) {
 
 				/*
-				 * Maintain a maximum of 5 cache elements.
+				 * Maybe limit the number of array elements.
 				 */
-				$local_cache = array_slice( $local_cache, $offset = -4, $length = null, $preserve_keys = true );
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-				$local_cache[ $cache_id ] = null;
+				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
 
-			$md_opts =& $local_cache[ $cache_id ];	// Reference the local cache element.
+			$md_opts =& $local_fifo[ $cache_id ];	// Reference the local cache element.
 
 			if ( null === $md_opts ) {	// Maybe read metadata into a new local cache element.
 
@@ -445,9 +445,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( $this->md_cache_disabled ) {
 
-				$deref_md_opts = $local_cache[ $cache_id ];	// Dereference.
+				$deref_md_opts = $local_fifo[ $cache_id ];	// Dereference.
 
-				unset( $local_cache[ $cache_id ], $md_opts );	// Unset the cache element.
+				unset( $local_fifo, $md_opts );
 
 				return $this->return_options( $user_id, $deref_md_opts, $md_key, $merge_defs );
 			}
@@ -1232,16 +1232,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
-			if ( isset( $local_cache[ $user_id ] ) ) {
+			if ( isset( $local_fifo[ $user_id ] ) ) {
 
-				if ( isset( $local_cache[ $user_id ][ $meta_key ] ) ) {
+				if ( isset( $local_fifo[ $user_id ][ $meta_key ] ) ) {
 
-					return $local_cache[ $user_id ][ $meta_key ];
+					return $local_fifo[ $user_id ][ $meta_key ];
 				}
 
-			} else $local_cache[ $user_id ] = array();
+			} else {
+			
+				/*
+				 * Maybe limit the number of array elements.
+				 */
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+
+				$local_fifo[ $user_id ] = array();
+			}
 
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
@@ -1309,7 +1317,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$author_meta = apply_filters( $filter_name, $author_meta, $user_id, $meta_key, $user_exists );
 
-			return $local_cache[ $user_id ][ $meta_key ] = $author_meta;
+			return $local_fifo[ $user_id ][ $meta_key ] = $author_meta;
 		}
 
 		public function get_author_website( $user_id, $meta_key = 'url' ) {
@@ -1322,16 +1330,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
-			if ( isset( $local_cache[ $user_id ] ) ) {
+			if ( isset( $local_fifo[ $user_id ] ) ) {
 
-				if ( isset( $local_cache[ $user_id ][ $meta_key ] ) ) {
+				if ( isset( $local_fifo[ $user_id ][ $meta_key ] ) ) {
 
-					return $local_cache[ $user_id ][ $meta_key ];
+					return $local_fifo[ $user_id ][ $meta_key ];
 				}
 
-			} else $local_cache[ $user_id ] = array();
+			} else {
+
+				/*
+				 * Maybe limit the number of array elements.
+				 */
+				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				
+				$local_fifo[ $user_id ] = array();
+			}
 
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
@@ -1385,7 +1401,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$website_url = apply_filters( 'wpsso_get_author_website', $website_url, $user_id, $meta_key, $user_exists );
 
-			return $local_cache[ $user_id ][ $meta_key ] = (string) $website_url;
+			return $local_fifo[ $user_id ][ $meta_key ] = (string) $website_url;
 		}
 
 		/*
