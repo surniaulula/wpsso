@@ -336,11 +336,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		private function get_mem_text( $mem ) {
 
-			if ( $mem < 1024 ) {
+			$abs = abs( $mem );
+
+			if ( $abs < 1024 ) {
 
 				return $mem . ' bytes';
 
-			} elseif ( $mem < 1048576 ) {
+			} elseif ( $abs < 1048576 ) {
 
 				return round( $mem / 1024, 2) . ' kb';
 
