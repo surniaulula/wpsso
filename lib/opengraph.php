@@ -1354,7 +1354,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$values = array();
 
-					if ( ! $this->add_data_og_type_md_values( $values, $type_id, $md_opts, $mt_name, $md_key ) ) {
+					/*
+					 * Use custom value(s) if available. Returns true or false.
+					 */
+					if ( ! $this->have_og_type_md_values( $values, $type_id, $md_opts, $mt_name, $md_key ) ) {
 
 						$def_md_key = $this->get_def_md_key( $md_key );
 
@@ -1385,7 +1388,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 					}
 
-					foreach ( $values as $mt_name => $val ) {
+					foreach ( $values as $mt_name => $val ) {	// Can be an empty array.
 
 						if ( 'none' === $val ) {
 
@@ -1434,88 +1437,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			return $def_md_key;
-		}
-
-		public function add_data_og_type_md_values( array &$values, $type_id, array $md_opts, $mt_name, $md_key ) {	// Pass by reference is OK.
-
-			/*
-			 * Use a custom value if one is available.
-			 */
-			if ( empty( $md_key ) || ! isset( $md_opts[ $md_key ] ) || '' === $md_opts[ $md_key ] ) {
-
-				return false;
-			}
-
-			/*
-			 * Check for meta tags that require a unit value and may need to be converted.
-			 */
-			if ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
-				}
-
-				$values[ $mt_name ] = $md_opts[ $md_key ];
-
-				/*
-				 * Check if the value meta tag needs a units meta tag.
-				 */
-				$mt_units_name = $mt_match[ 1 ] . ':units';
-
-				/*
-				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
-				 */
-				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
-
-				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
-
-					$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
-
-					$values[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
-
-					if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $mt_units_name . ' from metadata = ' . $md_opts[ $md_units_key ] );
-						}
-
-						$values[ $mt_units_name ] = $md_opts[ $md_units_key ];
-					}
-
-					/*
-					 * Since WPSSO Core v14.0.0.
-					 *
-					 * Check if we need to convert the value.
-					 */
-					if ( $values[ $mt_units_name ] !== $unit_text ) {
-
-						$unit_value = WpssoUtilUnits::get_convert( $values[ $mt_name ], $unit_text, $values[ $mt_units_name ] );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'converted ' . $values[ $mt_name ] . ' ' .
-								$values[ $mt_units_name ] . ' to ' . $unit_value . ' ' . $unit_text );
-						}
-
-						$values[ $mt_name ] = $unit_value;
-
-						$values[ $mt_units_name ] = $unit_text;
-					}
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
-				}
-
-				$values[ $mt_name ] = $md_opts[ $md_key ];
-			}
-
-			return true;
 		}
 
 		/*
@@ -1633,6 +1554,90 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og[ $mt_pre . ':energy_efficiency:min_value' ] = null;
 				$mt_og[ $mt_pre . ':energy_efficiency:max_value' ] = null;
 			}
+		}
+
+		/*
+		 * Use custom value(s) if available. Returns true or false.
+		 */
+		private function have_og_type_md_values( array &$values, $type_id, array $md_opts, $mt_name, $md_key ) {	// Pass by reference is OK.
+
+			if ( empty( $md_key ) || ! isset( $md_opts[ $md_key ] ) || '' === $md_opts[ $md_key ] ) {
+
+				return false;
+			}
+
+			/*
+			 * Check for meta tags that require a unit value and may need to be converted.
+			 */
+			if ( false !== strpos( $mt_name, ':value' ) && preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+				}
+
+				$values[ $mt_name ] = $md_opts[ $md_key ];
+
+				/*
+				 * Check if the value meta tag needs a units meta tag.
+				 */
+				$mt_units_name = $mt_match[ 1 ] . ':units';
+
+				/*
+				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
+				 */
+				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
+
+				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
+
+					$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
+
+					$values[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
+
+					if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $mt_units_name . ' from metadata = ' . $md_opts[ $md_units_key ] );
+						}
+
+						$values[ $mt_units_name ] = $md_opts[ $md_units_key ];
+					}
+
+					/*
+					 * Since WPSSO Core v14.0.0.
+					 *
+					 * Check if we need to convert the value.
+					 */
+					if ( $values[ $mt_units_name ] !== $unit_text ) {
+
+						$unit_value = WpssoUtilUnits::get_convert( $values[ $mt_name ], $unit_text, $values[ $mt_units_name ] );
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'converted ' . $values[ $mt_name ] . ' ' . $values[ $mt_units_name ] .
+								' to ' . $unit_value . ' ' . $unit_text );
+						}
+
+						$values[ $mt_name ]       = $unit_value;
+						$values[ $mt_units_name ] = $unit_text;
+					}
+				}
+
+				return true;
+			}
+
+			/*
+			 * If the value does not need to be converted, then add the custom metadata value as-is.
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+			}
+
+			$values[ $mt_name ] = $md_opts[ $md_key ];
+
+			return true;
 		}
 
 		/*
