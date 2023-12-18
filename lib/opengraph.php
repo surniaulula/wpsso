@@ -732,10 +732,93 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->mark_diff( 'mt_og created' );
+				
 				$this->p->debug->log_arr( 'mt_og', $mt_og );
 			}
 
+			self::optimize_array( $mt_og );
+
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->mark_diff( 'mt_og optimized' );
+			}
+
 			return $mt_og;
+		}
+
+		public static function optimize_array( array &$mt_og ) {	// Pass by reference is OK.
+			
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			foreach ( $mt_og as $key => $value ) {
+					
+				$mt_og[ $key ] =& self::optimize_array_cache( $value, $mt_og );
+			}
+		}
+
+		private static function &optimize_array_cache( $value, array &$mt_og ) {	// Pass by reference is OK.
+
+			$wpsso =& Wpsso::get_instance();
+
+			static $local_recursion = 0;
+			
+			if ( $local_recursion > 32 ) {	// Just in case.
+
+				return $value;
+
+			} elseif ( is_array( $value ) ) {
+
+				foreach ( $value as $recurs_key => $recurs_val ) {
+
+					$local_recursion++;
+
+					$value[ $recurs_key ] =& self::optimize_array_cache( $recurs_val, $mt_og );
+			
+					$local_recursion--;
+				}
+			}
+
+			/*
+			 * The associative array key can be a string or integer. The value can be any type.
+			 *
+			 * Strings containing valid decimal ints, unless the number is preceded by a + sign, will be cast to the
+			 * int type. E.g. the key "8" will actually be stored under 8. On the other hand "08" will not be cast, as
+			 * it isn't a valid decimal integer.
+			 *
+			 * Floats are also cast to ints, which means that the fractional part will be truncated. E.g. the key 8.7
+			 * will actually be stored under 8.
+			 *
+			 * Bools are cast to ints, too, i.e. the key true will actually be stored under 1 and the key false under
+			 * 0.
+			 *
+			 * Null will be cast to the empty string, i.e. the key null will actually be stored under "".
+			 *
+			 * Arrays and objects can not be used as keys. Doing so will result in a warning: Illegal offset type.
+			 *
+			 * See https://www.php.net/manual/en/language.types.array.php
+			 */
+			if ( is_string( $value ) ) {
+
+				$key = strlen( $value ) > 32 || is_numeric( $value ) ? md5( $value ) : $value;
+
+			} elseif ( is_int( $value ) ) {
+
+				$key = $value;
+
+			} else $key = md5( serialize( $value ) );
+
+			if ( ! isset( $mt_og[ '__cache' ][ $key ] ) ) {
+
+				$mt_og[ '__cache' ][ $key ] = $value;
+			}
+
+			return $mt_og[ '__cache' ][ $key ];
 		}
 
 		public function get_og_type_id_for( $opt_suffix, $default_id = null ) {
@@ -1138,11 +1221,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/*
 			 * Array of meta tags to allow, reject, and map.
 			 */
-			static $og_allow    = null;
-			static $og_reject   = null;
-			static $content_map = null;
+			static $og_allow        = array();
+			static $og_reject       = array();
+			static $content_map     = array();
+			static $local_recursion = 0;
+			
+			if ( $local_recursion > 32 ) {	// Just in case.
 
-			if ( null === $og_allow ) {	// Define the static variables once.
+				return $val;
+			}
+
+			if ( 0 === $local_recursion ) {	// Define the static variables once.
 
 				/*
 				 * The og:type is only needed when first run, to define the allow, reject, and map arrays.
@@ -1151,16 +1240,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: og:type is empty and required for sanitation' );
+						$this->p->debug->log( 'exiting early: og:type is empty and required' );
 					}
 
 					return $mt_og;
 				}
 
-				$og_type     = $mt_og[ 'og:type' ];
-				$og_allow    = array();
-				$og_reject   = array();
-				$content_map = array();
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'setting og allow, reject, and content map arrays' );
+				}
+
+				$og_type = $mt_og[ 'og:type' ];
 
 				/*
 				 * An array of Open Graph types, their meta tags, and their associated metadata keys.
@@ -1200,10 +1291,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								$content_map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
 							}
 
-						} else {
-
-							$og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
-						}
+						} else $og_reject[ $mt_name ] = true;	// Mark meta tag as disallowed.
 					}
 				}
 
@@ -1255,7 +1343,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			foreach ( $mt_og as $key => $val ) {
 
-				if ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
+				if ( '__cache' === $key ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'ignoring meta tag ' . $key );
+					}
+
+				} elseif ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
 
 					/*
 					 * If we have a matching value in the content map, then assign the mapped value.
@@ -1266,7 +1361,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'mapping content value for ' . $key );
+							$this->p->debug->log( 'mapping meta tag ' . $key . ' = ' . $content_map[ $key ][ $val ] );
 						}
 
 						$mt_og[ $key ] = $content_map[ $key ][ $val ];
@@ -1276,14 +1371,23 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'removing extra meta tag ' . $key );
+						$this->p->debug->log( 'removing meta tag ' . $key );
 					}
 
 					unset( $mt_og[ $key ] );
 
 				} elseif ( is_array( $val ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'sanitizing meta tag ' . $key . ' array' );
+					}
+
+					$local_recursion++;
+
 					$mt_og[ $key ] = $this->sanitize_mt_array( $val );
+			
+					$local_recursion--;
 				}
 			}
 
@@ -1370,10 +1474,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'unsetting ' . $mt_name . ' for value "none"' );
+									$this->p->debug->log( 'setting ' . $mt_name . ' = null for value none' );
 								}
 
-								unset( $mt_og[ $mt_name ] );
+								$mt_og[ $mt_name ] = null;
 
 							} elseif ( $is_multi ) {
 

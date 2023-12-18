@@ -869,12 +869,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$log_prefix = $tag . ' ' . $type . ' ' . $key;
 
-						if ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
+						if ( '__cache' === $key ) {
 
-							continue;
-						}
+							if ( $this->p->debug->enabled ) {
 
-						if ( is_array( $value ) ) {
+								$this->p->debug->log( $log_prefix . ' skipped: meta tag cache' );
+							}
+
+						} elseif ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( $log_prefix . ' skipped: use image is false' );
+							}
+
+						} elseif ( is_array( $value ) ) {
 
 							$opt_key = strtolower( 'add_' . $tag . '_' . $type . '_' . $key );
 
@@ -887,11 +896,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								$this->p->debug->log( $log_prefix . ' array skipped: option is disabled' );
 							}
 
-						} else {
-
-							$this->add_mt_singles( $mt_array, $tag, $type, $key, $value, $cmt, $mod );
-						}
-
+						} else $this->add_mt_singles( $mt_array, $tag, $type, $key, $value, $cmt, $mod );
 					}
 
 				} else {
@@ -904,10 +909,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							$this->add_mt_array( $mt_array, $tag, $type, $name, $value, $cmt_num, $mod, $use_image );
 
-						} else {
-
-							$this->add_mt_singles( $mt_array, $tag, $type, $name, $value, $cmt_num, $mod );
-						}
+						} else $this->add_mt_singles( $mt_array, $tag, $type, $name, $value, $cmt_num, $mod );
 					}
 				}
 
