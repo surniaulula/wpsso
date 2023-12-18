@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			static $local_home_url  = null;
 
-			if ( null === $local_home_url ) {
+			if ( null === $local_home_url ) {	// Optimize and call just once.
 
 				$local_home_url = untrailingslashit( get_home_url() );
 			}
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				$local_id_anchor = WpssoSchema::get_id_anchor();
 			}
 
-			if ( null === $local_home_url ) {
+			if ( null === $local_home_url ) {	// Optimize and call just once.
 
 				$local_home_url = untrailingslashit( get_home_url() );
 			}
