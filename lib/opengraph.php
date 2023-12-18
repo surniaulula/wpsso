@@ -1260,14 +1260,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			foreach ( $mt_og as $key => $val ) {
 
-				if ( '__cache' === $key ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'ignoring meta tag ' . $key );
-					}
-
-				} elseif ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
+				if ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
 
 					/*
 					 * If we have a matching value in the content map, then assign the mapped value.

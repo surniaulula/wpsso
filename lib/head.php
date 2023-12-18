@@ -869,14 +869,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$log_prefix = $tag . ' ' . $type . ' ' . $key;
 
-						if ( '__cache' === $key ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( $log_prefix . ' skipped: meta tag cache' );
-							}
-
-						} elseif ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
+						if ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 

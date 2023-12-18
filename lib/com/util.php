@@ -1886,7 +1886,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_og_seed() {
 
 			return array(
-				'__cache'         => null,	// Non-standard / internal meta tag.
 				'fb:admins'       => null,
 				'fb:app_id'       => null,
 				'og:time'         => null,	// Non-standard / internal meta tag.
