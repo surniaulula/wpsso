@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.4.0\n"
+"Project-Id-Version: WPSSO Core 17.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-12-11 10:01-0800\n"
+"PO-Revision-Date: 2023-12-18 08:25-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -348,8 +348,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:985
-#: lib/media-filters.php:116 lib/media.php:1532 lib/media.php:1682
-#: lib/media.php:3616
+#: lib/media-filters.php:116 lib/media.php:1542 lib/media.php:1692
+#: lib/media.php:3626
 msgid "Media Library"
 msgstr "la médiathèque"
 
@@ -3819,7 +3819,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 
 #: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:216
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:183
-#: lib/loader.php:197 lib/post.php:1696 lib/pro/util/shorten.php:331
+#: lib/loader.php:197 lib/post.php:1708 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:759
 msgid "%s error:"
 msgstr "Erreur %s:"
@@ -4230,7 +4230,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:895 lib/post.php:1060 lib/term.php:740 lib/user.php:757
+#: lib/admin.php:895 lib/post.php:1072 lib/term.php:750 lib/user.php:767
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -4459,21 +4459,21 @@ msgstr "Intégration d'extension"
 msgid "Sharing Functionality"
 msgstr "Fonctionnalité de partage"
 
-#: lib/comment.php:110
+#: lib/comment.php:115
 msgctxt "module name"
 msgid "comment"
 msgstr "commentaire"
 
-#: lib/comment.php:436
+#: lib/comment.php:446
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5399
+#: lib/config.php:5400
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5399
+#: lib/config.php:5400
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -6445,7 +6445,7 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media-filters.php:119 lib/media.php:3626
+#: lib/media-filters.php:119 lib/media.php:3636
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
@@ -6465,60 +6465,60 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height."
 msgstr "Dimension minimale d'image pour satisfaire les %1$d tailles d'image: %2$dpx de largeur sur %3$dpx de hauteur."
 
-#: lib/media.php:1314
+#: lib/media.php:1324
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1536
+#: lib/media.php:1546
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1538 lib/media.php:1751
+#: lib/media.php:1548 lib/media.php:1761
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la médiathèque WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1554
+#: lib/media.php:1564
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1575
+#: lib/media.php:1585
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1594
+#: lib/media.php:1604
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1684
+#: lib/media.php:1694
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1720 lib/register.php:305 lib/util.php:876 lib/util.php:985
+#: lib/media.php:1730 lib/register.php:305 lib/util.php:876 lib/util.php:985
 #: lib/util.php:1017 lib/util.php:1055 lib/util.php:3405
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1721 lib/util.php:877 lib/util.php:3406
+#: lib/media.php:1731 lib/util.php:877 lib/util.php:3406
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1722
+#: lib/media.php:1732
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1749
+#: lib/media.php:1759
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3642
+#: lib/media.php:3652
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3695
+#: lib/media.php:3705
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3730
+#: lib/media.php:3740
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -7547,8 +7547,8 @@ msgstr "Sélectionnez une organisation pour le balisage de Schéma Organization.
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1821 lib/user.php:1912
-#: lib/user.php:2027
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1841 lib/user.php:1932
+#: lib/user.php:2049
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -10271,134 +10271,134 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:1042 lib/util-inline.php:413
+#: lib/page.php:1043 lib/util-inline.php:413
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/page.php:1046
+#: lib/page.php:1047
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2227
+#: lib/page.php:2228
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
 msgstr[1] "%s minutes"
 
-#: lib/post.php:243
+#: lib/post.php:248
 msgctxt "module name"
 msgid "post"
 msgstr "article"
 
-#: lib/post.php:1198
+#: lib/post.php:1210
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:1231
+#: lib/post.php:1243
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr "L'HTML de la page Web récupérée de %1$s est %2$s octets."
 
-#: lib/post.php:1234
+#: lib/post.php:1246
 msgid "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr "Cela dépasse la limite maximale de %1$s octets imposée par le robot d'exploration de Google."
 
-#: lib/post.php:1237
+#: lib/post.php:1249
 msgid "If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage."
 msgstr "Si vous ne réduisez pas la taille du HTML de la page Web, Google refusera d'analyser cette page Web."
 
-#: lib/post.php:1267
+#: lib/post.php:1279
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr "Récupérer l'HTML de la page Web pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:1269
+#: lib/post.php:1281
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:1271
+#: lib/post.php:1283
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:1272
+#: lib/post.php:1284
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1286
+#: lib/post.php:1298
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:1300
+#: lib/post.php:1312
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Une balise %1$s est introuvable dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1315
+#: lib/post.php:1327
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1332
+#: lib/post.php:1344
 msgid "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "La section de balises et balisage de Schéma %1$s n'a pas été trouvé dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1335
+#: lib/post.php:1347
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr "Une extension ou un service de mise en cache doit-il être actualisé?"
 
-#: lib/post.php:1368
+#: lib/post.php:1380
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr "La fonction PHP %1$s n'a pas réussi à supprimer la section de balise méta %2$s."
 
-#: lib/post.php:1370
+#: lib/post.php:1382
 msgid "This could indicate a problem with PHP's PCRE library, or an optimization plugin / service corrupting the webpage HTML."
 msgstr "Cela pourrait indiquer un problème avec la bibliothèque PCRE de PHP, ou une extension / service d'optimisation corrompant le HTML de la page Web."
 
-#: lib/post.php:1372
+#: lib/post.php:1384
 msgid "You should consider updating or having your hosting provider update your PHP installation and its PCRE library."
 msgstr "Vous devriez envisager de mettre à jour ou de demander à votre hébergeur de mettre à jour votre installation PHP et sa bibliothèque PCRE."
 
-#: lib/post.php:1392
+#: lib/post.php:1404
 msgid "Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté - votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1411
+#: lib/post.php:1423
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1413
+#: lib/post.php:1425
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le document HTML."
 
-#: lib/post.php:1416
+#: lib/post.php:1428
 msgid "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and correct any syntax errors."
 msgstr "Veuillez consulter les résultats du <a href=\"%1$s\">validateur de balisage W3C</a> et corriger les erreurs de syntaxe."
 
-#: lib/post.php:1459
+#: lib/post.php:1471
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1461
+#: lib/post.php:1473
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1469
+#: lib/post.php:1481
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1473
+#: lib/post.php:1485
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1477
+#: lib/post.php:1489
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1672
+#: lib/post.php:1684
 msgid "ajax request invalid nonce"
 msgstr "la requête ajax a un nonce invalide"
 
-#: lib/post.php:1676
+#: lib/post.php:1688
 msgid "ajax request post id is empty"
 msgstr "l'id d'article demandé par ajax est vide"
 
-#: lib/post.php:1958
+#: lib/post.php:1970
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages %1$s ID %2$s."
 
@@ -10529,19 +10529,19 @@ msgstr "site"
 msgid "ID #%s"
 msgstr "ID #%s"
 
-#: lib/schema-single.php:1392
+#: lib/schema-single.php:1398
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1578
+#: lib/schema-single.php:1586
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2015
+#: lib/schema-single.php:2023
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2142
+#: lib/schema-single.php:2150
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
@@ -11286,12 +11286,12 @@ msgstr "Les membres du rôle sont utilisés pour certaines sélections de propri
 msgid "Content Creators are defined as being all administrators, editors, authors, and contributors."
 msgstr "Les créateurs de contenu sont définis comme étant tous les administrateurs, éditeurs, auteurs et contributeurs."
 
-#: lib/term.php:204
+#: lib/term.php:209
 msgctxt "module name"
 msgid "term"
 msgstr "terme"
 
-#: lib/term.php:948
+#: lib/term.php:958
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages terme ID %1$s."
 
@@ -11331,72 +11331,72 @@ msgstr "Prix"
 msgid "Availability"
 msgstr "Disponibilité"
 
-#: lib/user.php:205
+#: lib/user.php:210
 msgctxt "module name"
 msgid "user"
 msgstr "utilisateur"
 
-#: lib/user.php:886
+#: lib/user.php:896
 msgid "Examples: Dr, Mrs, Mr."
 msgstr "Exemples: Dr, Mrs, Mr."
 
-#: lib/user.php:892
+#: lib/user.php:902
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr "Exemples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 
-#: lib/user.php:1000
+#: lib/user.php:1010
 msgid "(not a Facebook Pages URL)"
 msgstr "(pas un URL de Pages Facebook)"
 
-#: lib/user.php:1705
+#: lib/user.php:1725
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages utilisateur ID %1$s."
 
-#: lib/user.php:1748 lib/user.php:1823
+#: lib/user.php:1768 lib/user.php:1843
 msgctxt "task name"
 msgid "add the Person role"
 msgstr "ajouter le rôle Personne"
 
-#: lib/user.php:1756
+#: lib/user.php:1776
 msgid "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s aux créateurs de contenu."
 
-#: lib/user.php:1796
+#: lib/user.php:1816
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1833 lib/user.php:1924 lib/util-cache.php:572
+#: lib/user.php:1853 lib/user.php:1944 lib/util-cache.php:572
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
 
-#: lib/user.php:1834
+#: lib/user.php:1854
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s."
 
-#: lib/user.php:1868
+#: lib/user.php:1888
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1869 lib/user.php:1963 lib/util-cache.php:685
+#: lib/user.php:1889 lib/user.php:1983 lib/util-cache.php:685
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
-#: lib/user.php:1885 lib/user.php:1914
+#: lib/user.php:1905 lib/user.php:1934
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr "supprimer le rôle Personne"
 
-#: lib/user.php:1893
+#: lib/user.php:1913
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s de tous les utilisateurs."
 
-#: lib/user.php:1925
+#: lib/user.php:1945
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr "Une tâche pour %1$s de tous les utilisateurs a été démarré à %2$s."
 
-#: lib/user.php:1962
+#: lib/user.php:1982
 msgid "The %1$s role has been removed from %2$d users."
 msgstr "Le rôle %1$s a été supprimé de %2$d utilisateurs."
 
@@ -11852,37 +11852,37 @@ msgstr "%1$s pour cet %2$s"
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
-#: wpsso.php:640
+#: wpsso.php:669
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr "(constante %s est vraie)"
 
-#: wpsso.php:643
+#: wpsso.php:672
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr "(constante %s est fausse)"
 
-#: wpsso.php:799
+#: wpsso.php:828
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:806
+#: wpsso.php:835
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
-#: wpsso.php:814
+#: wpsso.php:843
 msgid "The %s plugin's debug mode generates thousands of messages during page load, which affects website performance."
 msgstr "Le mode débogage de l'extension %s génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
 
-#: wpsso.php:816
+#: wpsso.php:845
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:828
+#: wpsso.php:857
 msgid "The %s plugin's cache feature is disabled for debugging, which affects website performance."
 msgstr "La fonctionnalité de cache de l'extension %s est désactivée pour le débogage, ce qui affecte les performances du site Web."
 
-#: wpsso.php:830
+#: wpsso.php:859
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr "N'oubliez pas de réactiver la mise en cache lorsque le débogage est terminé."
 
