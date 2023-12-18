@@ -15,7 +15,7 @@
  * Requires At Least: 5.5
  * Tested Up To: 6.4.2
  * WC Tested Up To: 8.4.0
- * Version: 17.5.0-b.1
+ * Version: 17.5.0-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -345,6 +345,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'debug enabled on ' . gmdate( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );
+					$this->debug->log( 'WP home URL ' . get_home_url() );
+					$this->debug->log( 'WP site URL ' . get_site_url() );
 					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );
 				}
 
