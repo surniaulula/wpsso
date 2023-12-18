@@ -1145,7 +1145,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			
 			if ( $local_recursion > 32 ) {	// Just in case.
 
-				return $val;
+				return $mt_og;
 			}
 
 			if ( 0 === $local_recursion ) {	// Define the static variables once.
@@ -1225,12 +1225,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								/*
 								 * Avoid duplicate values (like prices) between the main product and its variations.
 								 */
-								if ( isset( $mt_og[ $mt_single_name ] ) && $mt_single_value === $mt_og[ $mt_single_name ] ) {
+								if ( isset( $mt_og[ $mt_single_name ] ) && $mt_og[ $mt_single_name ] === $mt_single_value ) {
 
 									/*
-									 * Do not remove the currency if the amount has not been removed.
-									 *
-									 * Do not remove the units if the value has not been removed.
+									 * Duplicate prices and values are removed first. Check if
+									 * the currency or units meta tag needs to be removed as
+									 * well (ie. if the price or value no longer exists).
 									 */
 									if ( preg_match( '/^(.*:)(currency|units)$/', $mt_single_name, $matches ) ) {
 
@@ -1241,6 +1241,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 											default:         $check_mt_name = null;
 										}
 
+										/*
+										 * Do not remove the currency if the amount has not
+										 * been removed. Do not remove the units if the
+										 * value has not been removed.
+										 */
 										if ( $check_mt_name && isset( $mt_og[ $check_mt_name ] ) ) {
 
 											continue;
