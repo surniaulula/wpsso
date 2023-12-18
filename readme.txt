@@ -255,13 +255,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.5.0-dev.2 (2023/12/17)**
+**Version 17.5.0-dev.3 (2023/12/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added an optimization method to shrink the Open Graph array size.
 * **Bugfixes**
+	* None.
+* **Developer Notes**
 	* Updated static cache in methods to limit the number of elements:
 		* `WpssoComment->get_mod()`
 		* `WpssoComment->get_options()`
@@ -275,8 +277,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUser->get_mod()`
 		* `WpssoUser->get_options()`
 	* Added a new `SucomUtil::array_fifo()` method.
-* **Developer Notes**
-	* None.
+	* Added a new `WpssoOpenGraph::optimize_array()` method.
+	* Added a new `WpssoOpenGraph::optimize_array_cache()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -432,9 +434,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.5.0-dev.2 =
+= 17.5.0-dev.3 =
 
-(2023/12/17) Updated static cache in methods to limit the number of elements.
+(2023/12/17) Added an optimization method to shrink the Open Graph array size. Updated static cache in methods to limit the number of elements.
 
 = 17.4.0 =
 
