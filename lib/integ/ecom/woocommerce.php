@@ -1971,8 +1971,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
 			$weight_unit_text    = WpssoUtilUnits::get_weight_text();
-
-			$ret = array(
+			$ship_dims_weight    = array(
 				0 => '',			// Shipping length value.
 				1 => $dimension_unit_text,	// Shipping lenth units.
 				2 => '',			// Shipping width value.
@@ -1996,7 +1995,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
 
-						$ret[ 0 ] = $length;
+						$ship_dims_weight[ 0 ] = $length;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -2010,7 +2009,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
-						$ret[ 2 ] = $width;
+						$ship_dims_weight[ 2 ] = $width;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -2024,7 +2023,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
 
-						$ret[ 4 ] = $height;
+						$ship_dims_weight[ 4 ] = $height;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -2050,7 +2049,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
 
-						$ret[ 6 ] = $weight;
+						$ship_dims_weight[ 6 ] = $weight;
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -2063,7 +2062,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'product does not have a shipping weight' );
 			}
 
-			return $ret;
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'ship_dims_weight', $ship_dims_weight );
+			}
+
+			return $ship_dims_weight;
 		}
 
 		/*

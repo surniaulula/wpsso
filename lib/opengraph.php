@@ -1341,6 +1341,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( empty( $md_key_pre ) ) {	// Most of the metadata keys are empty.
 
 					continue;
+
+				} elseif ( false !== strpos( $mt_name, ':units' ) ) {	// Define units when we define the value.
+
+					continue;
 				}
 
 				$is_multi   = empty( $md_keys_multi[ $md_key_pre ] ) ? false : true;
@@ -1370,7 +1374,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$values[ $mt_name ] = $this->p->options[ $def_md_key ];
 
-						} else {				// Add missing meta tag with null value.
+						} else {	// Add missing meta tag with null value.
 
 							if ( $this->p->debug->enabled ) {
 
@@ -1381,28 +1385,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 					}
 
-					if ( ! empty( $values ) ) {
+					foreach ( $values as $mt_name => $val ) {
 
-						foreach ( $values as $mt_name => $val ) {
+						if ( 'none' === $val ) {
 
-							if ( 'none' === $val ) {
+							if ( $this->p->debug->enabled ) {
 
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'setting ' . $mt_name . ' = null for value none' );
-								}
-
-								$mt_og[ $mt_name ] = null;
-
-							} elseif ( $is_multi ) {
-
-								$mt_og[ $mt_name ][] = $val;
-
-							} else {
-
-								$mt_og[ $mt_name ] = $val;
+								$this->p->debug->log( 'setting ' . $mt_name . ' = null for value none' );
 							}
-						}
+
+							$mt_og[ $mt_name ] = null;
+
+						} elseif ( $is_multi ) {
+
+							$mt_og[ $mt_name ][] = $val;
+
+						} else $mt_og[ $mt_name ] = $val;
 					}
 				}
 			}
@@ -1506,13 +1504,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$values[ $mt_units_name ] = $unit_text;
 					}
 				}
-
-			/*
-			 * Do not define units by themselves - define the units meta tag when we define the value.
-			 */
-			} elseif ( false !== strpos( $mt_name, ':units' ) ) {
-
-				return;	// Get the next meta data key.
 
 			} else {
 
