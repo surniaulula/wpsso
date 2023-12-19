@@ -262,7 +262,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed adding 'product:shipping_weight:units' without 'product:shipping_weight:value'.
 * **Developer Notes**
 	* Updated static cache in methods to limit the number of elements:
 		* `WpssoComment->get_mod()`
@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.5.0-b.3 =
 
-(2023/12/19) Updated static cache in methods to limit the number of elements.
+(2023/12/19) Fixed adding 'product:shipping_weight:units' without 'product:shipping_weight:value'. Updated static cache in methods to limit the number of elements.
 
 = 17.4.0 =
 
