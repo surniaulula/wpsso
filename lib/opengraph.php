@@ -1229,7 +1229,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 									 */
 									if ( true === $this->have_currency_units_value( $mt_og, $mt_single_name ) ) {
 
+										if ( $this->p->debug->enabled ) {
+
+											$this->p->debug->log( 'main product duplicate ' . $mt_single_name . ' kept' );
+										}
+
 										continue;
+									}
+
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( 'main product duplicate ' . $mt_single_name . ' removed' );
 									}
 
 									unset ( $mt_og[ $mt_single_name ] );
@@ -1279,7 +1289,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$mt_og[ $key ] = null;
 					}
 
-				} elseif ( ! empty( $og_reject[ $key ] ) ) {	// Meta tag is disallowed - remove it.
+				} elseif ( ! empty( $og_reject[ $key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -1569,7 +1579,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $mt_value_key ) {
 				
-					return isset( $mt_og[ $mt_value_key ] ) ? true : false;
+					return isset( $mt_og[ $mt_value_key ] ) && '' !== $mt_og[ $mt_value_key ] ? true : false;
 				}			
 			}
 
