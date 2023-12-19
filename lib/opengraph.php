@@ -1130,11 +1130,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public function sanitize_mt_array( array $mt_og ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			/*
 			 * Array of meta tags to allow, reject, and map.
 			 */
@@ -1230,26 +1225,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 									/*
 									 * Duplicate prices and values are removed first. Check if
 									 * the currency or units meta tag needs to be removed as
-									 * well (ie. if the price or value no longer exists).
+									 * well (ie. if the price or value does not exist).
 									 */
-									if ( preg_match( '/^(.*:)(currency|units)$/', $mt_single_name, $matches ) ) {
+									if ( true === $this->have_currency_units_value( $mt_og, $mt_single_name ) ) {
 
-										switch ( $matches[ 2 ] ) {
-
-											case 'currency': $check_mt_name = $matches[ 1 ] . 'amount'; break;
-											case 'units':    $check_mt_name = $matches[ 1 ] . 'value';  break;
-											default:         $check_mt_name = null;
-										}
-
-										/*
-										 * Do not remove the currency if the amount has not
-										 * been removed. Do not remove the units if the
-										 * value has not been removed.
-										 */
-										if ( $check_mt_name && isset( $mt_og[ $check_mt_name ] ) ) {
-
-											continue;
-										}
+										continue;
 									}
 
 									unset ( $mt_og[ $mt_single_name ] );
@@ -1267,6 +1247,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! empty( $og_allow[ $key ] ) ) {	// Meta tag is allowed - check it's value.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'allowed meta tag ' . $key );
+					}
+
 					/*
 					 * If we have a matching value in the content map, then assign the mapped value.
 					 *
@@ -1280,13 +1265,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						$mt_og[ $key ] = $content_map[ $key ][ $val ];
+
+					/*
+					 * If this is a currency or units meta tag without a price or value, then set the meta tag to null.
+					 */
+					} elseif ( false === $this->have_currency_units_value( $mt_og, $key ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'setting meta tag ' . $key . ' = null' );
+						}
+
+						$mt_og[ $key ] = null;
 					}
 
 				} elseif ( ! empty( $og_reject[ $key ] ) ) {	// Meta tag is disallowed - remove it.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'removing meta tag ' . $key );
+						$this->p->debug->log( 'rejected meta tag ' . $key );
 					}
 
 					unset( $mt_og[ $key ] );
@@ -1295,7 +1292,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'sanitizing meta tag ' . $key . ' array' );
+						if ( is_string( $key ) ) {
+
+							$this->p->debug->log( 'sanitizing meta tag ' . $key . ' array' );
+						}
 					}
 
 					$local_recursion++;
@@ -1554,6 +1554,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og[ $mt_pre . ':energy_efficiency:min_value' ] = null;
 				$mt_og[ $mt_pre . ':energy_efficiency:max_value' ] = null;
 			}
+		}
+
+		private function have_currency_units_value( $mt_og, $mt_key ) {
+
+			if ( preg_match( '/^(.*:)(currency|units)$/', $mt_key, $matches ) ) {
+
+				switch ( $matches[ 2 ] ) {
+
+					case 'currency': $mt_value_key = $matches[ 1 ] . 'amount'; break;
+					case 'units':    $mt_value_key = $matches[ 1 ] . 'value';  break;
+					default:         $mt_value_key = null; break;
+				}
+
+				if ( $mt_value_key ) {
+				
+					return isset( $mt_og[ $mt_value_key ] ) ? true : false;
+				}			
+			}
+
+			return null;
 		}
 
 		/*
