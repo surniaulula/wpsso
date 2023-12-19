@@ -1972,13 +1972,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
 			$weight_unit_text    = WpssoUtilUnits::get_weight_text();
 			$ship_dims_weight    = array(
-				0 => '',			// Shipping length value.
+				0 => null,			// Shipping length value.
 				1 => $dimension_unit_text,	// Shipping lenth units.
-				2 => '',			// Shipping width value.
+				2 => null,			// Shipping width value.
 				3 => $dimension_unit_text,	// Shipping width units.
-				4 => '',			// Shipping height value.
+				4 => null,			// Shipping height value.
 				5 => $dimension_unit_text,	// Shipping height units.
-				6 => '',			// Shipping weight value.
+				6 => null,			// Shipping weight value.
 				7 => $weight_unit_text,		// Shipping weight units.
 			);
 

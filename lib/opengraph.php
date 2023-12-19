@@ -1588,13 +1588,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
 
-				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {		// Value needs a units meta tag.
+				if ( isset( $og_type_mt_md[ $mt_units_name ] ) ) {	// Value needs a units meta tag.
 
 					$md_units_key = $og_type_mt_md[ $mt_units_name ];	// An empty string or metadata options key.
 
 					$values[ $mt_units_name ] = $unit_text = WpssoSchema::get_unit_text( $md_key );
 
-					if ( ! empty( $md_opts[ $md_units_key ] ) ) {		// Custom unit text found.
+					if ( ! empty( $md_opts[ $md_units_key ] ) ) {	// Custom unit text found.
 
 						if ( $this->p->debug->enabled ) {
 
