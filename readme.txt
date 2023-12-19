@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.5.0-b.2 (2023/12/18)**
+**Version 17.5.0-b.3 (2023/12/19)**
 
 * **New Features**
 	* None.
@@ -432,9 +432,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.5.0-b.2 =
+= 17.5.0-b.3 =
 
-(2023/12/18) Updated static cache in methods to limit the number of elements.
+(2023/12/19) Updated static cache in methods to limit the number of elements.
 
 = 17.4.0 =
 
