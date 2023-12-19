@@ -264,7 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed adding 'product:shipping_weight:units' without 'product:shipping_weight:value'.
 * **Developer Notes**
-	* Updated static cache in methods to limit the number of elements:
+	* Updated static cache in methods to limit the number of cached elements to 5:
 		* `WpssoComment->get_mod()`
 		* `WpssoComment->get_options()`
 		* `WpssoMedia->get_all_videos()`
