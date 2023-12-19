@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-12-18 13:53-0800\n"
+"PO-Revision-Date: 2023-12-19 09:29-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4187,275 +4187,275 @@ msgstr "Avez-vous pensé à acheter l'édition %s?"
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr "L'édition %s est dotée de nombreuses fonctionnalités supplémentaires!"
 
-#: lib/admin.php:251
+#: lib/admin.php:256
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr "La valeur de l'URL d'adresse web du site est passée de %1$s à %2$s."
 
-#: lib/admin.php:598
+#: lib/admin.php:614
 msgctxt "plugin action link"
 msgid "Plugin Settings"
 msgstr "Réglages de l'extension"
 
-#: lib/admin.php:601
+#: lib/admin.php:617
 msgctxt "plugin action link"
 msgid "Plugin Add-ons"
 msgstr "Ajouts d'extension"
 
-#: lib/admin.php:609
+#: lib/admin.php:625
 msgctxt "plugin action link"
 msgid "Add-on Settings"
 msgstr "Réglages de l'ajout"
 
-#: lib/admin.php:783
+#: lib/admin.php:799
 msgid "Plugin settings have been saved."
 msgstr "Les réglages ont été sauvegardés."
 
-#: lib/admin.php:791
+#: lib/admin.php:807
 msgid "refresh the cache now"
 msgstr "actualiser le cache maintenant"
 
-#: lib/admin.php:794
+#: lib/admin.php:810
 msgid "You can %1$s or let the cache refresh over the next %2$s."
 msgstr "Vous pouvez %1$s ou laisser le cache s'actualiser au cours du prochain %2$s."
 
-#: lib/admin.php:820
+#: lib/admin.php:836
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr "La validation du jeton nonce pour les options de réseau a échoué (mise à jour ignorée)."
 
-#: lib/admin.php:828
+#: lib/admin.php:844
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:863
+#: lib/admin.php:879
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:895 lib/post.php:1072 lib/term.php:750 lib/user.php:767
+#: lib/admin.php:911 lib/post.php:1072 lib/term.php:750 lib/user.php:767
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:913 lib/util-cache.php:673
+#: lib/admin.php:929 lib/util-cache.php:673
 msgid "%s cache files have been cleared."
 msgstr "%s fichiers de cache ont été supprimés."
 
-#: lib/admin.php:923
+#: lib/admin.php:939
 msgid "%s failed URL connections have been cleared."
 msgstr "%s connexions d'URL échoué ont été supprimées."
 
-#: lib/admin.php:933
+#: lib/admin.php:949
 msgid "%s database transients have been cleared."
 msgstr "%s objets transitoires ont été supprimés de la base de données."
 
-#: lib/admin.php:945
+#: lib/admin.php:961
 msgid "%s WordPress cron jobs have been cleared."
 msgstr "%s tâches cron WordPress ont été effacées."
 
-#: lib/admin.php:960
+#: lib/admin.php:976
 msgid "The WordPress rewrite rules have been flushed."
 msgstr "Les règles de réécriture de WordPress ont été vidées."
 
-#: lib/admin.php:986
+#: lib/admin.php:1002
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr "Préférences de positionnement des métabox pour l'ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:1001
+#: lib/admin.php:1017
 msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr "Avis masquées pour l'ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:1020
+#: lib/admin.php:1036
 msgid "Option preference has been saved."
 msgstr "La préférence d'option a été enregistrée."
 
-#: lib/admin.php:1022
+#: lib/admin.php:1038
 msgid "Now viewing \"%s\" by default."
 msgstr "Affichage \"%s\" par défaut."
 
-#: lib/admin.php:1039
+#: lib/admin.php:1055
 msgid "Image size settings have been reloaded with their default values and saved."
 msgstr "Les tailles d'images ont été rechargés avec leur valeurs par défaut et sauvegardés."
 
-#: lib/admin.php:1154
+#: lib/admin.php:1170
 msgid "Your current language selection [%1$s] is different from the default site language [%2$s]."
 msgstr "Votre sélection de langue actuelle [%1$s] est différente de la langue par défaut du site [%2$s]."
 
-#: lib/admin.php:1157
+#: lib/admin.php:1173
 msgid "Localized option values [%1$s] will be used for webpages and content in that language."
 msgstr "Les valeurs d'option localisées [%1$s] seront utilisées pour les pages Web et le contenu dans cette langue."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1265
+#: lib/admin.php:1281
 msgid "Profile updated."
 msgstr "Profil mis à jour."
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1394
+#: lib/admin.php:1410
 msgid "Upgrade to %s"
 msgstr "Passer à %s"
 
-#: lib/admin.php:1406
+#: lib/admin.php:1422
 msgctxt "submit button"
 msgid "Get %s"
 msgstr "Obtenir %s"
 
-#: lib/admin.php:1493
+#: lib/admin.php:1509
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr "Enregistrer réglages du profil"
 
-#: lib/admin.php:1495
+#: lib/admin.php:1511
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr "Enregistrer réglages d'extension"
 
-#: lib/admin.php:1508 lib/submenu/tools.php:74
+#: lib/admin.php:1524 lib/submenu/tools.php:74
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr "Passer à l'affichage \"%s\""
 
-#: lib/admin.php:1621
+#: lib/admin.php:1637
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:1742
+#: lib/admin.php:1758
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:1758
+#: lib/admin.php:1774
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:1779
+#: lib/admin.php:1795
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1810
+#: lib/admin.php:1826
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:1831
+#: lib/admin.php:1847
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:1840
+#: lib/admin.php:1856
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:1961
+#: lib/admin.php:1977
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:1967
+#: lib/admin.php:1983
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:1974
+#: lib/admin.php:1990
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:1988
+#: lib/admin.php:2004
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:1997
+#: lib/admin.php:2013
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:2006
+#: lib/admin.php:2022
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:2429
+#: lib/admin.php:2445
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:2430
+#: lib/admin.php:2446
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:2435
+#: lib/admin.php:2451
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:2436
+#: lib/admin.php:2452
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:2447
+#: lib/admin.php:2463
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:2448
+#: lib/admin.php:2464
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:2454
+#: lib/admin.php:2470
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:2461
+#: lib/admin.php:2477
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:2468
+#: lib/admin.php:2484
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:2475
+#: lib/admin.php:2491
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
 
-#: lib/admin.php:2583
+#: lib/admin.php:2599
 msgid "Feature is disabled."
 msgstr "Fonctionnalité désactivée."
 
-#: lib/admin.php:2584
+#: lib/admin.php:2600
 msgid "Feature is not active."
 msgstr "Fonctionnalité n'est pas active."
 
-#: lib/admin.php:2585
+#: lib/admin.php:2601
 msgid "Feature is active."
 msgstr "Fonctionnalité est active."
 
-#: lib/admin.php:2586 lib/admin.php:2587
+#: lib/admin.php:2602 lib/admin.php:2603
 msgid "Feature is recommended but not active."
 msgstr "Fonctionnalité recommandée mais pas active."
 
-#: lib/admin.php:2636
+#: lib/admin.php:2652
 msgid "Service API"
 msgstr "Service API"
 
-#: lib/admin.php:2643
+#: lib/admin.php:2659
 msgid "Structured Data"
 msgstr "Données structurées"
 
-#: lib/admin.php:2650
+#: lib/admin.php:2666
 msgid "Structured Data Property"
 msgstr "Propriétés de données structurées"
 
-#: lib/admin.php:2657
+#: lib/admin.php:2673
 msgid "Additional Feature"
 msgstr "Fonctionnalités supplémentaires"
 
-#: lib/admin.php:2664
+#: lib/admin.php:2680
 msgid "Plugin Integration"
 msgstr "Intégration d'extension"
 
-#: lib/admin.php:2671
+#: lib/admin.php:2687
 msgid "Sharing Functionality"
 msgstr "Fonctionnalité de partage"
 
@@ -11852,37 +11852,37 @@ msgstr "%1$s pour cet %2$s"
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
-#: wpsso.php:669
+#: wpsso.php:671
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr "(constante %s est vraie)"
 
-#: wpsso.php:672
+#: wpsso.php:674
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr "(constante %s est fausse)"
 
-#: wpsso.php:828
+#: wpsso.php:830
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:835
+#: wpsso.php:837
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
-#: wpsso.php:843
+#: wpsso.php:845
 msgid "The %s plugin's debug mode generates thousands of messages during page load, which affects website performance."
 msgstr "Le mode débogage de l'extension %s génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
 
-#: wpsso.php:845
+#: wpsso.php:847
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:857
+#: wpsso.php:859
 msgid "The %s plugin's cache feature is disabled for debugging, which affects website performance."
 msgstr "La fonctionnalité de cache de l'extension %s est désactivée pour le débogage, ce qui affecte les performances du site Web."
 
-#: wpsso.php:859
+#: wpsso.php:861
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr "N'oubliez pas de réactiver la mise en cache lorsque le débogage est terminé."
 
