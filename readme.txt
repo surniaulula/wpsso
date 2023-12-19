@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.5.0-b.3 (2023/12/19)**
+**Version 17.5.0-rc.1 (2023/12/19)**
 
 * **New Features**
 	* None.
@@ -432,7 +432,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.5.0-b.3 =
+= 17.5.0-rc.1 =
 
 (2023/12/19) Fixed adding 'product:shipping_weight:units' without 'product:shipping_weight:value'. Updated static cache in methods to limit the number of elements.
 
