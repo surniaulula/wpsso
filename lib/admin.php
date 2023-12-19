@@ -81,8 +81,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ), 10, 2 );
 			add_action( 'after_switch_theme', array( $this, 'after_switch_theme' ), 10, 2 );
 			add_action( 'upgrader_process_complete', array( $this, 'upgrader_process_complete' ), 10, 2 );
-			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
-			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
+
+			/*
+			 * Refresh the cache if/when the WordPress home URL is changed.
+			 *
+			 * See WpssAdmin->wp_site_option_changed().
+			 * See SucomUpdate->wp_site_option_changed().
+			 * See SucomUtilWP->raw_do_option().
+			 * See SucomUpdateUtilWP->raw_do_option().
+			 */
+			add_action( 'update_option_home', array( $this, 'wp_site_option_changed' ), PHP_INT_MAX, 3 );
+			add_action( 'update_option_blog_public', array( $this, 'wp_site_option_changed' ), PHP_INT_MAX, 3 );
+			add_action( 'sucom_update_option_home', array( $this, 'wp_site_option_changed' ), PHP_INT_MAX, 3 );
 
 			/*
 			 * This filter re-sorts (if necessary) the active plugins array to load WPSSO Core before its add-ons.
@@ -209,20 +219,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.5.1.
+		 * Refresh the cache if/when the WordPress home URL is changed.
 		 *
-		 * Called when the WordPress Settings > Site Address URL or the WP_HOME constant value is changed.
+		 * See WpssAdmin->wp_site_option_changed().
+		 * See SucomUpdate->wp_site_option_changed().
+		 * See SucomUtilWP->raw_do_option().
+		 * See SucomUpdateUtilWP->raw_do_option().
 		 */
-		public function site_address_changed( $old_value, $new_value, $option = 'home' ) {
-
-			static $do_once = null;
-
-			if ( true === $do_once ) {
-
-				return;	// Stop here.
-			}
-
-			$do_once = true;
+		public function wp_site_option_changed( $old_value, $new_value, $option_name ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -233,7 +237,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Standardize old and new values for string comparison.
 			 */
 			$old_value = untrailingslashit( strtolower( $old_value ) );
-
 			$new_value = untrailingslashit( strtolower( $new_value ) );
 
 			if ( $old_value === $new_value ) {	// Nothing to do.
@@ -248,11 +251,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+			if ( 'home' === $option_name ) {
 
-			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
+				$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+				$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
 
-			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+			}
+
+			static $do_once = null;
+
+			if ( true === $do_once ) {
+
+				return;	// Stop here.
+			}
+
+			$do_once = true;
+
+			$this->p->util->cache->schedule_refresh( $user_id );
 		}
 
 		public function load_network_menu_objects() {

@@ -40,8 +40,8 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 		 */
 		public static function get_default_directives() {
 
-			$directives = self::$default_directives;
 			$is_public  = get_option( 'blog_public' );
+			$directives = self::$default_directives;
 
 			/*
 			 * If the site is not public, discourage robots from indexing the site.
