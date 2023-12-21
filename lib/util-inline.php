@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 							break;
 
-						case 'term_description':	// Used by AIOSEOP and Yoast SEO.
+						case 'term_description':	// Used by AIOSEOP, Rank Math, and Yoast SEO.
 
 							$ret_val = $this->p->page->get_the_description( $mod );
 
@@ -303,8 +303,18 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						break;
 
 					case 'description':
+					case 'seo_description':	// Used by Rank Math.
 
 						$ret_val = $this->p->page->get_the_description( $mod );
+
+						break;
+
+					case 'user_description':	// Used by Rank Math.
+
+						/*
+						 * Returns the description for a user module or post author.
+						 */
+						$ret_val = $this->p->user->get_author_description( $mod );
 
 						break;
 
@@ -356,7 +366,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						break;
 
-					case 'sitedesc':
+					case 'sitedesc':	// Used by Rank Math.
 					case 'tagline':		// Used by SEOPress.
 
 						$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
@@ -377,6 +387,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						break;
 
 					case 'title':
+					case 'seo_title':	// Used by Rank Math.
 
 						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
 
@@ -398,9 +409,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					case 'name':		// Used by Yoast SEO.
 
 						/*
-						 * Returns the display name for a comment author, post author, or user module.
+						 * Returns the display name for a user module, comment author, or post author.
 						 */
-						$ret_val = WpssoUser::get_author_name( $mod );
+						$ret_val = $this->p->user->get_author_name( $mod );
 
 						break;
 

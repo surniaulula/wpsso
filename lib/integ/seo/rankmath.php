@@ -108,6 +108,11 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			$title_text = WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key = 'rank_math_title', $single = true );
 
+			if ( empty( $title_text ) ) {
+
+				$title_text = RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_name' );
+			}
+
 			$title_text = $this->maybe_convert_vars( $mod, $title_text );
 
 			return $title_text;
@@ -121,6 +126,11 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 			}
 
 			$desc_text =  WpssoAbstractWpMeta::get_mod_meta( $mod, $meta_key = 'rank_math_description', $single = true );
+
+			if ( empty( $desc_text ) ) {
+
+				$desc_text = RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_desc' );
+			}
 
 			$desc_text = $this->maybe_convert_vars( $mod, $desc_text );
 

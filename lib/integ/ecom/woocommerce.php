@@ -1488,7 +1488,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			/*
-			 * The WPSSO WCSDT add-on returns true for the 'wpsso_og_add_mt_shipping_offers' filter.
+			 * The WPSSO WCSDT add-on returns true at priority -1000.
+			 *
+			 * The WPSSO GMF add-on returns true or false (depending on the 'gmf_add_shipping' option) at priority 1000.
+			 *
+			 * See WpssoGmfXml->get().
+			 * See WpssoWcsdtFilters->__construct().
 			 */
 			if ( $product_can_ship && $shipping_enabled && apply_filters( 'wpsso_og_add_mt_shipping_offers', false, $mod ) ) {
 

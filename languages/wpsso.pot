@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.5.0\n"
+"Project-Id-Version: WPSSO Core 17.6.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6565,23 +6565,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1618
+#: lib/integ/ecom/woocommerce.php:1623
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1722
+#: lib/integ/ecom/woocommerce.php:1727
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1725
+#: lib/integ/ecom/woocommerce.php:1730
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1728
+#: lib/integ/ecom/woocommerce.php:1733
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -8215,8 +8215,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1841 lib/user.php:1932
-#: lib/user.php:2049
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1864 lib/user.php:1955
+#: lib/user.php:2072
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -11532,7 +11532,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1043 lib/util-inline.php:413
+#: lib/page.php:1043 lib/util-inline.php:424
 msgid "Page %1$d of %2$d"
 msgstr ""
 
@@ -12642,56 +12642,56 @@ msgstr ""
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1725
+#: lib/user.php:1748
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1768 lib/user.php:1843
+#: lib/user.php:1791 lib/user.php:1866
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1776
+#: lib/user.php:1799
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1816
+#: lib/user.php:1839
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1853 lib/user.php:1944 lib/util-cache.php:572
+#: lib/user.php:1876 lib/user.php:1967 lib/util-cache.php:572
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1854
+#: lib/user.php:1877
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1888
+#: lib/user.php:1911
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1889 lib/user.php:1983 lib/util-cache.php:685
+#: lib/user.php:1912 lib/user.php:2006 lib/util-cache.php:685
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1905 lib/user.php:1934
+#: lib/user.php:1928 lib/user.php:1957
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1913
+#: lib/user.php:1936
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1945
+#: lib/user.php:1968
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1982
+#: lib/user.php:2005
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

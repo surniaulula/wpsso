@@ -1178,7 +1178,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$author_id = false;
 
-			if ( $mod[ 'is_comment' ] ) {
+			if ( $mod[ 'is_user' ] ) {
+
+				$author_id = $mod[ 'id' ];
+
+			} elseif ( $mod[ 'is_comment' ] ) {
 
 				if ( $mod[ 'comment_author' ] ) {
 
@@ -1191,25 +1195,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$author_id = $mod[ 'post_author' ];
 				}
-
-			} elseif ( $mod[ 'is_user' ] ) {
-
-				$author_id = $mod[ 'id' ];
 			}
 
 			return $author_id;
 		}
 
 		/*
-		 * Returns the display name for a comment author, post author, or user module.
+		 * Returns the display name for a user module, comment author, or post author.
 		 */
-		public static function get_author_name( array $mod ) {
+		public function get_author_name( array $mod ) {
 
 			$author_name = '';
 
-			if ( $author_id = self::get_author_id( $mod ) ) {
+			if ( $mod[ 'is_user' ] ) {
 
-				$author_name = get_the_author_meta( 'display_name', $author_id );
+				$author_name = get_the_author_meta( 'display_name', $mod[ 'id' ] );
 
 			} elseif ( $mod[ 'is_comment' ] ) {
 
@@ -1217,9 +1217,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$author_id = $mod[ 'comment_author_name' ];
 				}
+
+			} elseif ( $author_id = self::get_author_id( $mod ) ) {
+
+				$author_name = get_the_author_meta( 'display_name', $author_id );
 			}
 
 			return $author_name;
+		}
+
+		/*
+		 * Returns the description for a user module or post author.
+		 */
+		public function get_author_description( array $mod ) {
+
+			$author_desc = '';
+
+			if ( $mod[ 'is_user' ] ) {
+
+				$author_desc = get_the_author_meta( 'description', $mod[ 'id' ] );
+
+			} elseif ( $author_id = self::get_author_id( $mod ) ) {
+
+				$author_desc = get_the_author_meta( 'description', $author_id );
+			}
+
+			return $author_desc;
 		}
 
 		public function get_author_meta( $user_id, $meta_key ) {
