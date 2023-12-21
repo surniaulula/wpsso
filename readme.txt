@@ -255,6 +255,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.6.0-dev.1 (2023/12/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for default title and description values from Rank Math settings.
+	* Added support for the 'seo_description', 'seo_title', and 'user_description' inline variables.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.5.0 (2023/12/19)**
 
 * **New Features**
@@ -431,6 +446,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.6.0-dev.1 =
+
+(2023/12/21) Added support for default title and description values from Rank Math settings.
 
 = 17.5.0 =
 
