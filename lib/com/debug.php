@@ -389,7 +389,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 				$data = $this->log_buffer;
 
-				$this->log_buffer = array();
+				$this->log_buffer = array();	// Truncate the buffer.
 			}
 
 			if ( ! empty( $from ) ) {
@@ -434,11 +434,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						$val = str_replace( '--', '&hyphen;&hyphen;', $val );
 
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
+
+						unset( $data[ $key ] );	// Optimize memory usage.
 					}
 
-				} else {
-					$html .= $data;
-				}
+				} else $html .= $data;
 			}
 
 			$html .= ' -->' . "\n";
