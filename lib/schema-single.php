@@ -1278,7 +1278,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$org_opts[ 'org_sameas' ] = apply_filters( 'wpsso_json_data_single_organization_sameas', $org_opts[ 'org_sameas' ], $mod, $org_id );
 
 			if ( ! empty( $org_opts[ 'org_sameas' ] ) && is_array( $org_opts[ 'org_sameas' ] ) ) {	// Just in case.
-				
+
 				foreach ( $org_opts[ 'org_sameas' ] as $url ) {
 
 					if ( ! empty( $url ) ) {	// Just in case.
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$json_ret[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
-			
+
 				WpssoSchema::check_prop_value_sameas( $json_ret );
 			}
 

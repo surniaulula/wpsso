@@ -1265,7 +1265,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 			} else {
-			
+
 				/*
 				 * Maybe limit the number of array elements.
 				 */
@@ -1368,7 +1368,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * Maybe limit the number of array elements.
 				 */
 				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
-				
+
 				$local_fifo[ $user_id ] = array();
 			}
 

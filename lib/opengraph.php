@@ -1137,7 +1137,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			static $og_reject       = array();
 			static $content_map     = array();
 			static $local_recursion = 0;
-			
+
 			if ( $local_recursion > 32 ) {	// Just in case.
 
 				return $mt_og;
@@ -1311,7 +1311,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$local_recursion++;
 
 					$mt_og[ $key ] = $this->sanitize_mt_array( $val );
-			
+
 					$local_recursion--;
 				}
 			}
@@ -1578,7 +1578,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( $mt_value_key ) {
-				
+
 					return isset( $mt_og[ $mt_value_key ] ) && '' !== $mt_og[ $mt_value_key ] ? true : false;
 				}			
 			}

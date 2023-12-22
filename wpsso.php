@@ -495,14 +495,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( ! isset( $this->sc[ $id ] ) ) {	// Just in case.
 
 					$this->sc[ $id ] = new $classname( $this );
-			
+
 					if ( $this->debug->enabled ) {
 
 						$this->debug->mark_diff( 'added ' . $id . ' shortcode' );
 					}
 				}
 			}
-			
+
 			if ( $this->debug->enabled ) {
 
 				$this->debug->mark( 'init shortcodes' );	// Begin timer.
