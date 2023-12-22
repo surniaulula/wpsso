@@ -262,14 +262,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for default title and description values from Rank Math settings.
 	* Added support for the 'seo_description', 'seo_title', and 'user_description' inline variables.
+	* Improved expansion of inline variables in Schema markup.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added `WpssoUser->get_author_description()`
-	* Added call to `WpssoUtilInline->replace_variables()` in `WpssoOpenGraph->get_array()`.
-	* Refactored `WpssoUtilInline->replace_variables()` to accept arrays.
+	* Added a call to `WpssoUtilInline->replace_variables()` in `WpssoOpenGraph->get_array()`.
 	* Removed call to `WpssoUtilInline->replace_variables()` from `WpssoHead->add_mt_singles()`.
 	* Removed 'WPSSO_INLINE_VARS_MAX_DEPTH' constant.
+	* Refactored `WpssoUtilInline->replace_variables()` to accept arrays.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -453,7 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.6.0-dev.3 =
 
-(2023/12/22) Added support for default title and description values from Rank Math settings.
+(2023/12/22) Added support for default title and description values from Rank Math settings. Improved expansion of inline variables in Schema markup.
 
 = 17.5.0 =
 
