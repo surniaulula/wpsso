@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.6.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 17.6.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4724,12 +4724,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5400
+#: lib/config.php:5399
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5400
+#: lib/config.php:5399
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -11532,7 +11532,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1043 lib/util-inline.php:424
+#: lib/page.php:1043 lib/util-inline.php:455
 msgid "Page %1$d of %2$d"
 msgstr ""
 

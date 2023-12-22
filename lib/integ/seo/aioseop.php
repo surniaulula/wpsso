@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 				$title_text = aioseo()->meta->title->getTermTitle( $term_obj );
 			}
 
-			$title_text = $this->maybe_convert_vars( $mod, $title_text );
+			$title_text = $this->maybe_convert_vars( $title_text, $mod );
 
 			return $title_text;
 		}
@@ -103,19 +103,21 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 				$desc_text = aioseo()->meta->description->getTermDescription( $term_obj );
 			}
 
-			$desc_text = $this->maybe_convert_vars( $mod, $desc_text );
+			$desc_text = $this->maybe_convert_vars( $desc_text, $mod );
 
 			return $desc_text;
 		}
 
-		private function maybe_convert_vars( array $mod, $text ) {
+		private function maybe_convert_vars( $value, array $mod ) {
 
-			if ( false !== strpos( $text, '#' ) ) {
+			if ( false !== strpos( $value, '#' ) ) {
 
-				$text = preg_replace( '/(^| )#([^#]+)( |$)/', '%%$2%%', $text );	// Convert inline variable names.
+				$value = preg_replace( '/(^| )#([^#]+)( |$)/', '%%$2%%', $value );	// Convert inline variable names.
 			}
 
-			return $text;
+			$value = $this->p->util->inline->replace_variables( $value, $mod );
+
+			return $value;
 		}
 	}
 }

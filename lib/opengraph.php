@@ -606,10 +606,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key = false, $filter_opts = true, $merge_defs = true );
 
-				} else {
-
-					$md_opts = array();
-				}
+				} else $md_opts = array();
 
 				/*
 				 * Add post/term/user meta data to the Open Graph meta tags.
@@ -728,7 +725,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og = apply_filters( $filter_name, $mt_og, $mod );
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying wpsso_og filters' );
+			}
+
 			$mt_og = apply_filters( 'wpsso_og', $mt_og, $mod );
+
+			/*
+			 * Expand inline variables.
+			 */
+			$mt_og = $this->p->util->inline->replace_variables( $mt_og, $mod );
 
 			if ( $this->p->debug->enabled ) {
 

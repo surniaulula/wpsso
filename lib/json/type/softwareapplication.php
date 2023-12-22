@@ -76,11 +76,11 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 			/*
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
-			static $local_is_recursion = false;
+			static $local_recursion = false;
 
-			if ( ! $local_is_recursion ) {
+			if ( ! $local_recursion ) {
 
-				$local_is_recursion = true;
+				$local_recursion = true;
 
 				if ( empty( $mt_og[ 'product:offers' ] ) ) {
 
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 					}
 				}
 
-				$local_is_recursion = false;
+				$local_recursion = false;
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

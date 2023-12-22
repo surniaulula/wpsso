@@ -82,14 +82,16 @@ if ( ! class_exists( 'WpssoIntegDataRankmathMeta' ) ) {
 			),
 		);
 
-		protected function maybe_convert_vars( array $mod, $text ) {
+		protected function maybe_convert_vars( $value, array $mod ) {
 
-			if ( false !== strpos( $text, '%' ) ) {
+			if ( false !== strpos( $value, '%' ) ) {
 
-				$text = preg_replace( '/%+([^%]+)%+/', '%%$1%%', $text );	// Convert inline variable names.
+				$value = preg_replace( '/%+([^%]+)%+/', '%%$1%%', $value );	// Convert inline variable names.
 			}
 
-			return $text;
+			$value = $this->p->util->inline->replace_variables( $value, $mod );
+
+			return $value;
 		}
 	}
 }

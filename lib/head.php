@@ -493,10 +493,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
 
 			/*
+			 * Unset mis-matched og_type meta tags.
+			 */
+			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );
+
+			/*
 			 * Combine and return all meta tags.
 			 */
-			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );	// Unset mis-matched og_type meta tags.
-
 			$cache_array[ $cache_index ] = array_merge(
 				array(
 					array( $this->get_mt_data( 'begin' ) ),
@@ -906,11 +909,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 				}
 
-			} else {
-
-				$this->add_mt_singles( $mt_array, $tag, $type, $name, $mixed, $cmt, $mod );
-
-			}
+			} else $this->add_mt_singles( $mt_array, $tag, $type, $name, $mixed, $cmt, $mod );
 
 			return $mt_array;
 		}
@@ -995,14 +994,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				return $mt_array;
-			}
-
-			/*
-			 * Expand inline variables.
-			 */
-			if ( is_string( $value ) && false !== strpos( $value, '%%' ) ) {
-
-				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
 
 			$singles = array();

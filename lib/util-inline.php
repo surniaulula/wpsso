@@ -41,25 +41,58 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		 *
 		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
 		 *
-		 * See WpssoHead->add_mt_singles().
 		 * See WpssoPage->get_title().
 		 * See WpssoPage->get_description().
 		 */
-		public function replace_variables( $subject, $mod = false, array $atts = array() ) {
+		public function replace_variables( $value, $mod = false, array $atts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( false === strpos( $subject, '%%' ) ) {
+			static $local_recursion = 0;
 
-				if ( $this->p->debug->enabled ) {
+			if ( $local_recursion > 32 ) {	// Just in case.
 
-					$this->p->debug->log( 'exiting early: no inline variables in subject' );
+				return $value;
+			}
+
+			if ( is_array( $value ) ) {
+
+				/*
+				 * The $mod array argument is preferred but not required.
+				 *
+				 * $mod = true | false | post_id | $mod array
+				 */
+				if ( ! is_array( $mod ) ) {
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+					}
+	
+					$mod = $this->p->page->get_mod( $mod );
+				}
+	
+				foreach ( $value as $key => $el ) {
+
+					$local_recursion++;
+
+					$value[ $key ] = $this->replace_variables( $el, $mod, $atts );
+					
+					$local_recursion--;
 				}
 
-				return $subject;
+				return $value;
+
+			} elseif ( ! is_string( $value ) ) {
+
+				return $value;
+
+			} elseif ( false === strpos( $value, '%%' ) ) {
+
+				return $value;
 			}
 
 			/*
@@ -87,18 +120,16 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				return $this->replace_callback( $matches, $mod, $atts );
 			};
 
-			static $depth = 0;
+			static $local_depth = 0;
 
-			$max_depth = WPSSO_INLINE_VARS_MAX_DEPTH;
+			while ( ++$local_depth <= 5 && false !== strpos( $value, '%%' ) ) {
 
-			while ( ++$depth <= $max_depth && false !== strpos( $subject, '%%' ) ) {
-
-				$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
+				$value = preg_replace_callback( '/%%([^%]+)%%/', $callback, $value );
 			}
 
-			$depth = 0;
+			$local_depth = 0;
 
-			return $subject;
+			return $value;
 		}
 
 		private function replace_callback( array $matches, array $mod, array $atts ) {
@@ -147,14 +178,14 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			/*
 			 * Detect and prevent recursion, just in case.
 			 */
-			static $local_is_recursion = array();
+			static $local_recursion = array();
 
-			if ( ! empty( $local_is_recursion[ $varname ] ) ) {	// Recursion detected.
+			if ( ! empty( $local_recursion[ $varname ] ) ) {	// Recursion detected.
 
 				return $ret_val;	// Stop here.
 			}
 
-			$local_is_recursion[ $varname ] = true;	// Prevent recursion.
+			$local_recursion[ $varname ] = true;	// Prevent recursion.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -562,7 +593,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				}
 			}
 
-			unset( $local_is_recursion[ $varname ] );	// Done preventing recursion.
+			unset( $local_recursion[ $varname ] );	// Done preventing recursion.
 
 			return $url_enc ? rawurlencode( $ret_val ) : $ret_val;
 		}

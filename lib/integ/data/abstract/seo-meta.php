@@ -144,9 +144,9 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = (string) get_metadata( 'post', $mod[ 'id' ], $meta_key, $single = true );
+			$value = (string) get_metadata( 'post', $mod[ 'id' ], $meta_key, $single = true );
 
-			if ( '' === $meta_value ) {
+			if ( '' === $value ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -156,14 +156,14 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $meta_value );
+			$value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $value );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'adding ' . $opt_key . ' from post meta ' . $meta_key );
 			}
 
-			$md_opts[ $opt_key ] = $meta_value;
+			$md_opts[ $opt_key ] = $value;
 
 			return true;
 		}
@@ -226,14 +226,14 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 			if ( null === $term_opts ) {
 
-				$meta_value = (string) get_metadata( 'term', $mod[ 'id' ], $meta_key, $single = true );
+				$value = (string) get_metadata( 'term', $mod[ 'id' ], $meta_key, $single = true );
 
 			} else {
 
-				$meta_value = isset( $term_opts[ $meta_key ] ) ? (string) $term_opts[ $meta_key ] : '';
+				$value = isset( $term_opts[ $meta_key ] ) ? (string) $term_opts[ $meta_key ] : '';
 			}
 
-			if ( '' === $meta_value ) {
+			if ( '' === $value ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -243,14 +243,14 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $meta_value );
+			$value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $value );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'adding ' . $opt_key . ' from term meta ' . $meta_key );
 			}
 
-			$md_opts[ $opt_key ] = $meta_value;
+			$md_opts[ $opt_key ] = $value;
 
 			return true;
 		}
@@ -311,9 +311,9 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = (string) get_metadata( 'user', $mod[ 'id' ], $meta_key, $single = true );
+			$value = (string) get_metadata( 'user', $mod[ 'id' ], $meta_key, $single = true );
 
-			if ( '' === $meta_value ) {
+			if ( '' === $value ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -323,21 +323,21 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				return false;
 			}
 
-			$meta_value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $meta_value );
+			$value = $this->maybe_convert_value( $mod, $opt_key, $meta_key, $value );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'adding ' . $opt_key . ' from user meta ' . $meta_key );
 			}
 
-			$md_opts[ $opt_key ] = $meta_value;
+			$md_opts[ $opt_key ] = $value;
 
 			return true;
 		}
 
-		protected function maybe_convert_value( array $mod, $opt_key, $meta_key, $meta_value ) {
+		protected function maybe_convert_value( array $mod, $opt_key, $meta_key, $value ) {
 
-			$meta_value = $this->maybe_convert_vars( $mod, $meta_value );
+			$value = $this->maybe_convert_vars( $value, $mod );
 
 			switch ( $opt_key ) {
 
@@ -345,19 +345,19 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 				case 'robots_nofollow':
 				case 'robots_noindex':
 
-					if ( '1' === $meta_value || 'on' === $meta_value ) {
+					if ( '1' === $value || 'on' === $value ) {
 
 						return 1;
 
-					} elseif ( '-1' === $meta_value || 'off' === $meta_value ) {
+					} elseif ( '-1' === $value || 'off' === $value ) {
 
 						return 0;
 
-					} elseif ( 'robots_noindex' === $opt_key && 'noindex' === $meta_value ) {
+					} elseif ( 'robots_noindex' === $opt_key && 'noindex' === $value ) {
 
 						return 1;
 
-					} elseif ( 'robots_noindex' === $opt_key && 'index' === $meta_value ) {
+					} elseif ( 'robots_noindex' === $opt_key && 'index' === $value ) {
 
 						return 0;
 					}
@@ -365,12 +365,14 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 					break;
 			}
 
-			return $meta_value;
+			return $value;
 		}
 
-		protected function maybe_convert_vars( array $mod, $text ) {
+		protected function maybe_convert_vars( $value, array $mod ) {
 
-			return $text;
+			$value = $this->p->util->inline->replace_variables( $value, $mod );
+
+			return $value;
 		}
 	}
 }

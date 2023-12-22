@@ -2315,11 +2315,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
-			static $local_is_recursion = false;
+			static $local_recursion = false;
 
-			if ( ! $local_is_recursion ) {
+			if ( ! $local_recursion ) {
 
-				$local_is_recursion = true;
+				$local_recursion = true;
 
 				if ( empty( $mt_single[ 'product:offers' ] ) ) {
 
@@ -2337,7 +2337,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
-				$local_is_recursion = false;
+				$local_recursion = false;
 			}
 
 			/*
