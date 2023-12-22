@@ -370,8 +370,6 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 		protected function maybe_convert_vars( $value, array $mod ) {
 
-			$value = $this->p->util->inline->replace_variables( $value, $mod );
-
 			return $value;
 		}
 	}
