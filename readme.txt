@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.6.0-dev.1 (2023/12/21)**
+**Version 17.6.0-dev.1 (2023/12/22)**
 
 * **New Features**
 	* None.
@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 17.6.0-dev.1 =
 
-(2023/12/21) Added support for default title and description values from Rank Math settings.
+(2023/12/22) Added support for default title and description values from Rank Math settings.
 
 = 17.5.0 =
 
