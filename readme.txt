@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.6.0-dev.2 (2023/12/22)**
+**Version 17.6.0-dev.3 (2023/12/22)**
 
 * **New Features**
 	* None.
@@ -265,7 +265,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added `WpssoUser->get_author_description()`
+	* Added call to `WpssoUtilInline->replace_variables()` in `WpssoOpenGraph->get_array()`.
+	* Refactored `WpssoUtilInline->replace_variables()` to accept arrays.
+	* Removed call to `WpssoUtilInline->replace_variables()` from `WpssoHead->add_mt_singles()`.
+	* Removed 'WPSSO_INLINE_VARS_MAX_DEPTH' constant.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.5.
@@ -447,7 +451,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.6.0-dev.2 =
+= 17.6.0-dev.3 =
 
 (2023/12/22) Added support for default title and description values from Rank Math settings.
 
