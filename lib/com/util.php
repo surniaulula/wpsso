@@ -2979,7 +2979,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$opts[ $key ] = 0;	// Add missing checkbox as empty.
 					}
 
-					unset ( $opts[ 'is_checkbox_' . $key] );
+					unset( $opts[ 'is_checkbox_' . $key] );
 				}
 			}
 
@@ -4318,7 +4318,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 						if ( is_object( $mixed[ $key ] ) ) {
 
-							unset ( $mixed[ $key ] );	// Dereference the object first.
+							unset( $mixed[ $key ] );	// Dereference the object first.
 						}
 
 						$mixed[ $key ] = $val;

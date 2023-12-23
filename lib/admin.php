@@ -2379,7 +2379,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
 
-						unset ( $readme_info[ $key ] );
+						unset( $readme_info[ $key ] );
 					}
 				}
 			}

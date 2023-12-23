@@ -1804,7 +1804,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'using full size image - removing ' . $size_name . ' image metadata' );
 						}
 
-						unset ( $img_meta[ 'sizes' ][ $size_name ] );
+						unset( $img_meta[ 'sizes' ][ $size_name ] );
 
 						wp_update_attachment_metadata( $pid, $img_meta );
 					}
@@ -2708,7 +2708,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video ) as $k => $v ) {
 
-						unset ( $mt_single_video[ $k ] );
+						unset( $mt_single_video[ $k ] );
 					}
 
 				/*

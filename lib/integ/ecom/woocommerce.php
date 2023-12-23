@@ -927,11 +927,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark( 'importing product attributes' );	// Begin timer.
 			}
 
-			$product_id     = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
-			$parent_id      = $is_variation ? $product->get_parent_id() : $product_id;
-			$parent_product = $is_variation ? $this->p->util->wc->get_product( $parent_id ) : $product;
-			$attr_md_index  = WpssoConfig::get_attr_md_index();	// Uses a local cache.
-			$md_keys_multi  = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
+			$product_id        = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
+			$product_parent_id = $is_variation ? $product->get_parent_id() : $product_id;
+			$product_parent    = $is_variation ? $this->p->util->wc->get_product( $product_parent_id ) : $product;
+			$attr_md_index     = WpssoConfig::get_attr_md_index();	// Uses a local cache.
+			$md_keys_multi     = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
 
 			foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
 
@@ -978,7 +978,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					/*
 					 * Fallback to the default value.
 					 */
-					} elseif ( '' !== ( $attr_val = $parent_product->get_variation_default_attribute( $attr_name ) ) ) {
+					} elseif ( '' !== ( $attr_val = $product_parent->get_variation_default_attribute( $attr_name ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1110,8 +1110,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			} else return false;	// $mixed is not a variation array, product or post object.
 
 			$product_id         = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
-			$parent_id          = $is_variation ? $product->get_parent_id() : $product_id;
-			$parent_product     = $is_variation ? $this->p->util->wc->get_product( $parent_id ) : $product;
+			$product_parent_id  = $is_variation ? $product->get_parent_id() : $product_id;
+			$product_parent     = $is_variation ? $this->p->util->wc->get_product( $product_parent_id ) : $product;
 			$product_incl_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
 			$product_price      = $this->get_product_price( $product );
 			$product_price_fmtd = $this->get_product_price_formatted( $product, $product_price, $product_incl_vat );
@@ -1121,8 +1121,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'product_id = ' . $product_id );
-				$this->p->debug->log( 'parent_id = ' . $parent_id );
-				$this->p->debug->log( 'parent_product = ' . get_class( $parent_product ) );
+				$this->p->debug->log( 'product_parent_id = ' . $product_parent_id );
+				$this->p->debug->log( 'product_parent = ' . get_class( $product_parent ) );
 				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
 				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
@@ -1151,9 +1151,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 * are not in a product group).
 			 */
 			$mt_ecom[ 'product:url' ]              = $product->get_permalink();
-			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;				// Product ID.
-			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();			// Product SKU.
-			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $parent_id : '';	// Product variation group ID.
+			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;					// Product ID.
+			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();				// Product SKU.
+			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $product_parent_id : '';	// Product variation group ID.
 
 			/*
 			 * Add product availability.
@@ -1251,6 +1251,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$var_opts = apply_filters( 'wpsso_import_custom_fields', $var_opts, $mod, $var_wp_meta, $alt_opts );
 
+				unset( $var_wp_meta, $alt_opts );
+
 				/*
 				 * Since WPSSO Core v14.2.0.
 				 *
@@ -1274,12 +1276,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'inheriting variable parent metadata options' );
 				}
 
-				$parent_opts = $var_mod[ 'obj' ]->get_inherited_md_opts( $var_mod );
+				$product_parent_opts = $var_mod[ 'obj' ]->get_inherited_md_opts( $var_mod );
 
-				if ( ! empty( $parent_opts ) ) {
+				if ( ! empty( $product_parent_opts ) ) {
 
-					$var_opts = SucomUtil::array_merge_recursive_distinct( $parent_opts, $var_opts );
+					$var_opts = SucomUtil::array_merge_recursive_distinct( $product_parent_opts, $var_opts );
 				}
+
+				unset( $product_parent_opts );
 
 				/*
 				 * Add custom fields meta data to the Open Graph meta tags.
@@ -1446,7 +1450,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Add shipping offers.
 			 */
-			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $parent_product );
+			$this->add_mt_shipping_offers( $mt_ecom, $mod, $product, $product_parent );
 		}
 
 		/*
@@ -1454,9 +1458,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 *
 		 * The $shipping_class_id corresponds to the "Shipping class" selected when editing a product.
 		 *
-		 * Unless $product is a WC_Product_Variation, $product and $parent_product will be the same.
+		 * Unless $product is a WC_Product_Variation, $product and $product_parent will be the same.
 		 */
-		private function add_mt_shipping_offers( array &$mt_ecom, $mod, WC_Product $product, WC_Product $parent_product ) {	// Pass by reference is OK.
+		private function add_mt_shipping_offers( array &$mt_ecom, $mod, WC_Product $product, WC_Product $product_parent ) {	// Pass by reference is OK.
 
 			static $shipping_zones      = null;
 			static $shipping_continents = null;
@@ -1473,11 +1477,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
 			}
 
-			$product_id       = $this->p->util->wc->get_product_id( $product );
-			$product_url      = $product->get_permalink();
-			$product_can_ship = $product->needs_shipping();
-			$parent_url       = $parent_product->get_permalink();
-			$product_currency = $this->get_product_currency();
+			$product_id         = $this->p->util->wc->get_product_id( $product );
+			$product_url        = $product->get_permalink();
+			$product_can_ship   = $product->needs_shipping();
+			$product_parent_url = $product_parent->get_permalink();
+			$product_currency   = $this->get_product_currency();
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1583,7 +1587,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 							}
 
 							$destination_opts[ 'destination_id' ]  = 'dest-z' . $zone_id . '-d' . $location_key;
-							$destination_opts[ 'destination_rel' ] = $parent_url;
+							$destination_opts[ 'destination_rel' ] = $product_parent_url;
 
 							$shipping_destinations[] = $destination_opts;
 						}
@@ -1598,7 +1602,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						 * Returns false or a shipping offer options array.
 						 */
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $zone_id, $zone_name,
-							$method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) ) {
+							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent ) ) {
 
 							if ( empty( $shipping_destinations ) ) {	// Ships to the World.
 
@@ -1632,7 +1636,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						 * Returns false or a shipping offer options array.
 						 */
 						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $world_zone_id, $world_zone_name,
-							$method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) ) {
+							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent ) ) {
 
 							$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
@@ -1791,16 +1795,16 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * Returns false or a shipping offer options array.
 		 */
 		private function get_zone_method_shipping_offer( $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id,
-			WC_Product $product, WC_Product $parent_product ) {
+			WC_Product $product, WC_Product $product_parent ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'method instance id = ' . $method_inst_id );
 			}
 
-			$parent_url       = $parent_product->get_permalink();
-			$product_price    = $this->get_product_price( $product );
-			$product_currency = $this->get_product_currency();
+			$product_price      = $this->get_product_price( $product );
+			$product_currency   = $this->get_product_currency();
+			$product_parent_url = $product_parent->get_permalink();
 
 			$shipping_offer      = false;
 			$shipping_class_obj  = $shipping_class_id ? get_term_by( 'id', $shipping_class_id, 'product_shipping_class' ) : false;
@@ -1943,14 +1947,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 * 	[transit_name] => Days
 				 * )
 				 */
-				$delivery_time = apply_filters( 'wpsso_wc_shipping_delivery_time', array(), $zone_id, $method_inst_id, $shipping_class_id, $parent_url );
+				$delivery_time = apply_filters( 'wpsso_wc_shipping_delivery_time', array(), $zone_id, $method_inst_id, $shipping_class_id, $product_parent_url );
 
 				$shipping_offer = array(
-					'shipping_id'           => 'shipping-z' . $zone_id . '-m' . $method_inst_id . '-c' . $shipping_class_id,
-					'shipping_rel'          => $parent_url,
-					'shipping_name'         => $zone_name,
-					'shipping_rate'         => $shipping_rate,
-					'delivery_time'         => $delivery_time,
+					'shipping_id'   => 'shipping-z' . $zone_id . '-m' . $method_inst_id . '-c' . $shipping_class_id,
+					'shipping_rel'  => $product_parent_url,
+					'shipping_name' => $zone_name,
+					'shipping_rate' => $shipping_rate,
+					'delivery_time' => $delivery_time,
 				);
 			}
 

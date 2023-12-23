@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 					$opts[ 'schema_recipe_ingredient_' . $num ] = $md_val;
 				}
 
-				unset ( $ingredients );
+				unset( $ingredients );
 			}
 
 			/*
@@ -237,7 +237,7 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 					$opts[ 'schema_recipe_instruction_img_id_' . $num ]     = $arr[ 'img_id' ];
 				}
 
-				unset ( $instructions );
+				unset( $instructions );
 			}
 
 			/*

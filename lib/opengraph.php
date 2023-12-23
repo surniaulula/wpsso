@@ -1220,7 +1220,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						foreach ( $mt_og[ $mt_name ] as $num => &$mt_single ) {	// Allow changes to the variation array.
 
-							unset ( $mt_single[ 'product:brand' ] );	// Allow only a single brand value (in the parent product).
+							unset( $mt_single[ 'product:brand' ] );	// Allow only a single brand value (in the parent product).
 
 							foreach ( $mt_single as $mt_single_name => $mt_single_value ) {
 
@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 										$this->p->debug->log( 'main product duplicate ' . $mt_single_name . ' removed' );
 									}
 
-									unset ( $mt_og[ $mt_single_name ] );
+									unset( $mt_og[ $mt_single_name ] );
 								}
 							}
 						}
