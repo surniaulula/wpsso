@@ -685,6 +685,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
 				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
@@ -727,7 +728,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				foreach( $avail_variations as $num => $variation ) {
 
-					if ( $var_product = $this->p->util->wc->get_variation_product( $variation ) ) {
+					if ( $var_product = $this->p->util->wc->get_variation_product( $variation ) ) {	// Get the product for the variation.
 
 						$var_product_price      = $this->get_product_price( $var_product );
 						$var_product_price_fmtd = $this->get_product_price_formatted( $var_product, $var_product_price, $product_incl_vat );
@@ -893,7 +894,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				return $md_opts;
 
-			} elseif ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation array.
+			} elseif ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Get the product for the variation.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -905,23 +906,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} elseif ( is_object( $mixed ) ) {
 
-				if ( $mixed instanceof WC_Product ) {	// Product object.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'using product object' );
-					}
+				if ( $mixed instanceof WC_Product ) {	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
 					$product = $mixed;
 
-				} elseif ( $mixed instanceof WP_Post ) {	// Post object.
+				} elseif ( $mixed instanceof WP_Post ) {
 
 					if ( SucomUtil::is_post_type( $mixed, $this->prod_post_type ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'getting product object' );
-						}
 
 						$product = $this->p->util->wc->get_product( $mixed->ID );
 
@@ -1095,18 +1086,18 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$is_variation = false;	// Default value.
 
-			if ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Product variation array.
+			if ( $product = $this->p->util->wc->get_variation_product( $mixed ) ) {	// Get the product for the variation.
 
 				$is_variation = true;
 				$variation    = $mixed;
 
 			} elseif ( is_object( $mixed ) ) {
 
-				if ( $mixed instanceof WC_Product ) {	// Product object.
+				if ( $mixed instanceof WC_Product ) {	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
 					$product = $mixed;
 
-				} elseif ( $mixed instanceof WP_Post ) {	// Post object.
+				} elseif ( $mixed instanceof WP_Post ) {
 
 					if ( SucomUtil::is_post_type( $mixed, $this->prod_post_type ) ) {
 
@@ -1128,8 +1119,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'product_id = ' . $product_id );
 				$this->p->debug->log( 'parent_id = ' . $parent_id );
+				$this->p->debug->log( 'parent_product = ' . get_class( $parent_product ) );
 				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
 				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
@@ -1434,6 +1427,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Get product shipping dimensions and weight.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting product shipping dimensions' );
+			}
+
 			list(
 				$mt_ecom[ 'product:shipping_length:value' ],
 				$mt_ecom[ 'product:shipping_length:units' ],
@@ -1456,9 +1454,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 *
 		 * The $shipping_class_id corresponds to the "Shipping class" selected when editing a product.
 		 *
-		 * Unless $product is a variation, $product and $parent_product will be the same.
+		 * Unless $product is a WC_Product_Variation, $product and $parent_product will be the same.
 		 */
-		private function add_mt_shipping_offers( array &$mt_ecom, $mod, $product, $parent_product ) {	// Pass by reference is OK.
+		private function add_mt_shipping_offers( array &$mt_ecom, $mod, WC_Product $product, WC_Product $parent_product ) {	// Pass by reference is OK.
 
 			static $shipping_zones      = null;
 			static $shipping_continents = null;
@@ -1665,7 +1663,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $shipping_destinations;
 		}
 
-		private function add_mt_ratings( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
+		private function add_mt_ratings( array &$mt_ecom, $mod, WC_Product $product ) {	// Pass by reference is OK.
 
 			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
 			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
@@ -1752,7 +1750,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		}
 
-		private function add_mt_reviews( array &$mt_ecom, $mod, $product ) {	// Pass by reference is OK.
+		private function add_mt_reviews( array &$mt_ecom, $mod, WC_Product $product ) {	// Pass by reference is OK.
 
 			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
 			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
@@ -1792,7 +1790,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		/*
 		 * Returns false or a shipping offer options array.
 		 */
-		private function get_zone_method_shipping_offer( $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $parent_product ) {
+		private function get_zone_method_shipping_offer( $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id,
+			WC_Product $product, WC_Product $parent_product ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1962,20 +1961,35 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * Example:
 		 *
 		 *	list(
-		 *		$md_defs[ 'product_shipping_length_value' ],
-		 *		$md_defs[ 'product_shipping_length_units' ],
-		 *		$md_defs[ 'product_shipping_width_value' ],
-		 *		$md_defs[ 'product_shipping_width_units' ],
-		 *		$md_defs[ 'product_shipping_height_value' ],
-		 *		$md_defs[ 'product_shipping_height_units' ],
-		 *		$md_defs[ 'product_shipping_weight_value' ],
-		 *		$md_defs[ 'product_shipping_weight_units' ],
+		 *		$mt_ecom[ 'product:shipping_length:value' ],
+		 *		$mt_ecom[ 'product:shipping_length:units' ],
+		 *		$mt_ecom[ 'product:shipping_width:value' ],
+		 *		$mt_ecom[ 'product:shipping_width:units' ],
+		 *		$mt_ecom[ 'product:shipping_height:value' ],
+		 *		$mt_ecom[ 'product:shipping_height:units' ],
+		 *		$mt_ecom[ 'product:shipping_weight:value' ],
+		 *		$mt_ecom[ 'product:shipping_weight:units' ],
 		 *	) = $this->get_shipping_length_width_height_weight( $product );
+		 *
+		 * See WpssoIntegEcomWooCommerce->add_mt_product().
+		 * See WpssoIntegEcomWooCommerce->filter_get_md_defaults().
 		 */
-		private function get_shipping_length_width_height_weight( $product ) {
+		private function get_shipping_length_width_height_weight( WC_Product $product ) {	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
-			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();
-			$weight_unit_text    = WpssoUtilUnits::get_weight_text();
+			$has_dimensions      = $product->has_dimensions();
+			$has_weight          = $product->has_weight();
+			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();	// Returns 'og_def_dimension_units' value.
+			$weight_unit_text    = WpssoUtilUnits::get_weight_text();	// Returns 'og_def_weight_units' value.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
+				$this->p->debug->log( 'has_dimensions = ' . ( $has_dimensions ? 'true' : 'false' ) );
+				$this->p->debug->log( 'has_weight = ' . ( $has_weight ? 'true' : 'false' ) );
+				$this->p->debug->log( 'dimension_unit_text = ' . $dimension_unit_text );
+				$this->p->debug->log( 'weight_unit_text = ' . $weight_unit_text );
+			}
+
 			$ship_dims_weight    = array(
 				0 => null,			// Shipping length value.
 				1 => $dimension_unit_text,	// Shipping lenth units.
@@ -1987,7 +2001,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				7 => $weight_unit_text,		// Shipping weight units.
 			);
 
-			if ( $product->has_dimensions() ) {	// Has shipping dimensions.
+			if ( $has_dimensions ) {	// Has shipping dimensions.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2041,7 +2055,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'product does not have shipping dimensions' );
 			}
 
-			if ( $product->has_weight() ) {	// Has shipping weight.
+			if ( $has_weight ) {	// Has shipping weight.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2191,19 +2205,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $product_price;
 		}
 
-		private function get_product_title( $mod, $product ) {
+		private function get_product_title( $mod, WC_Product $product ) {
 
 			$title_text = $product->get_title();
 
 			return apply_filters( 'wpsso_product_title', $title_text, $product );
 		}
 
-		private function add_product_variation_title( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+		private function add_product_variation_title( &$mt_ecom, $mod, WC_Product $product, $variation ) {	// Pass by reference is OK.
 
 			$mt_ecom[ 'product:title' ] = $this->get_product_variation_title( $mod, $product, $variation );
 		}
 
-		private function get_product_variation_title( $mod, $product, $variation ) {
+		private function get_product_variation_title( $mod, WC_Product $product, $variation ) {
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
@@ -2223,12 +2237,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		/*
 		 * Empty variation descriptions are fixed in WpssoOpenGraphNS->filter_og_data_https_ogp_me_ns_product().
 		 */
-		private function add_product_variation_description( &$mt_ecom, $mod, $product, $variation ) {	// Pass by reference is OK.
+		private function add_product_variation_description( &$mt_ecom, $mod, WC_Product $product, $variation ) {	// Pass by reference is OK.
 
 			$mt_ecom[ 'product:description' ] = $this->get_product_variation_description( $mod, $product, $variation );
 		}
 
-		private function get_product_variation_description( $mod, $product, $variation ) {
+		private function get_product_variation_description( $mod, WC_Product $product, $variation ) {
 
 			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
