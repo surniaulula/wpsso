@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.6.0-b.1 (2023/12/23)**
+**Version 17.6.0-rc.1 (2023/12/23)**
 
 * **New Features**
 	* None.
@@ -452,7 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.6.0-b.1 =
+= 17.6.0-rc.1 =
 
 (2023/12/23) Added support for default title and description values from Rank Math settings. Improved expansion of inline variables in Schema markup.
 
