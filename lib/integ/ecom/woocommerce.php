@@ -332,12 +332,22 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function action_admin_post_head( $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$user_id = get_current_user_id();
 
 			$this->include_frontend_libs( $user_id );
 		}
 
 		public function action_scheduled_task_started( $user_id ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->include_frontend_libs( $user_id );
 		}
@@ -354,7 +364,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			WC()->frontend_includes();
 
-			WC()->initialize_session();	// Since WC v3.6.4.
+			WC()->initialize_session();
 		}
 
 		/*
@@ -2006,84 +2016,70 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				7 => $weight_unit_text,		// Shipping weight units.
 			);
 
-			if ( $has_dimensions ) {	// Has shipping dimensions.
+			if ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting product shipping dimensions' );
-				}
-
-				if ( is_callable( array( $product, 'get_length' ) ) ) {
-
-					$length = $product->get_length();	// Shipping length.
-
-					if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
-
-						$ship_dims_weight[ 0 ] = $length;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product shipping length is not numeric' );
-					}
-				}
-
-				if ( is_callable( array( $product, 'get_width' ) ) ) {
-
-					$width = $product->get_width();	// Shipping width.
-
-					if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
-
-						$ship_dims_weight[ 2 ] = $width;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product shipping width is not numeric' );
-					}
-				}
-
-				if ( is_callable( array( $product, 'get_height' ) ) ) {
-
-					$height = $product->get_height();	// Shipping height.
-
-					if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
-
-						$ship_dims_weight[ 4 ] = $height;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product shipping height is not numeric' );
-					}
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'product does not have shipping dimensions' );
+				$this->p->debug->log( 'getting product shipping dimensions' );
 			}
 
-			if ( $has_weight ) {	// Has shipping weight.
+			if ( is_callable( array( $product, 'get_length' ) ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				$length = $product->get_length();	// Shipping length.
 
-					$this->p->debug->log( 'getting product shipping weight' );
+				if ( is_numeric( $length ) ) {		// Required to ignore undefined values.
+
+					$ship_dims_weight[ 0 ] = $length;
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product shipping length is not numeric' );
 				}
+			}
 
-				if ( is_callable( array( $product, 'get_weight' ) ) ) {	// Just in case.
+			if ( is_callable( array( $product, 'get_width' ) ) ) {
 
-					$weight = $product->get_weight();	// Shipping weight.
+				$width = $product->get_width();	// Shipping width.
 
-					if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
+				if ( is_numeric( $width ) ) {	// Required to ignore undefined values.
 
-						$ship_dims_weight[ 6 ] = $weight;
+					$ship_dims_weight[ 2 ] = $width;
 
-					} elseif ( $this->p->debug->enabled ) {
+				} elseif ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'product shipping weight is not numeric' );
-					}
+					$this->p->debug->log( 'product shipping width is not numeric' );
 				}
+			}
 
-			} elseif ( $this->p->debug->enabled ) {
+			if ( is_callable( array( $product, 'get_height' ) ) ) {
 
-				$this->p->debug->log( 'product does not have a shipping weight' );
+				$height = $product->get_height();	// Shipping height.
+
+				if ( is_numeric( $height ) ) {		// Required to ignore undefined values.
+
+					$ship_dims_weight[ 4 ] = $height;
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product shipping height is not numeric' );
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting product shipping weight' );
+			}
+
+			if ( is_callable( array( $product, 'get_weight' ) ) ) {	// Just in case.
+
+				$weight = $product->get_weight();	// Shipping weight.
+
+				if ( is_numeric( $weight ) ) {		// Required to ignore undefined values.
+
+					$ship_dims_weight[ 6 ] = $weight;
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product shipping weight is not numeric' );
+				}
 			}
 
 			if ( $this->p->debug->enabled ) {
