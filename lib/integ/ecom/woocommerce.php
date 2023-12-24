@@ -1161,6 +1161,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 * markup. The 'product:item_group_id' must be provided for variations, but not simple products (as they
 			 * are not in a product group).
 			 */
+			$mt_ecom[ 'product:updated_time' ]     = $mod[ 'post_modified_time' ];
 			$mt_ecom[ 'product:url' ]              = $product->get_permalink();
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;					// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();				// Product SKU.

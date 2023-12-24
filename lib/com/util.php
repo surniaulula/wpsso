@@ -1952,6 +1952,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':url'                         => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':title'                       => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':description'                 => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':updated_time'                => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':adult_type'                  => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                   => null,
 				$mt_pre . ':quantity'                    => null,	// Non-standard / internal meta tag.
