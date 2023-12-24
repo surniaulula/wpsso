@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.6.1-dev.1 (2023/12/24)**
+**Version 17.6.1-dev.2 (2023/12/24)**
 
 * **New Features**
 	* None.
@@ -264,6 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a non-standard / internal 'product:updated_time' meta tag.
 	* Removed WooCommerce `has_dimensions()` and `has_weight()` checks.
 * **Requires At Least**
 	* PHP v7.2.34.
@@ -468,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.6.1-dev.1 =
+= 17.6.1-dev.2 =
 
 (2023/12/24) Removed WooCommerce `has_dimensions()` and `has_weight()` checks.
 
