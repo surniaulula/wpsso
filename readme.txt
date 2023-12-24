@@ -266,6 +266,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new filter:
+		* 'wpsso_product_description' ( $desc, $product )
 	* Added `WpssoUser->get_author_description()`
 	* Added a call to `WpssoUtilInline->replace_variables()` in `WpssoOpenGraph->get_array()`.
 	* Removed call to `WpssoUtilInline->replace_variables()` from `WpssoHead->add_mt_singles()`.
