@@ -279,6 +279,8 @@
 
 'wpsso_product_attribute_names' ( array $attr_names )
 
+'wpsso_product_description' ( $desc, $product )
+
 'wpsso_product_price' ( $price, $product )
 
 'wpsso_product_title' ( $title, $product )
