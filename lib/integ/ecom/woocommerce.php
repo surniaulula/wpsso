@@ -2251,7 +2251,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
-			return apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
+			$desc_text = apply_filters( 'wpsso_the_description', $desc_text, $mod );
+
+			$desc_text = apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
+
+			return $desc_text;
 		}
 
 		private function is_variation_selectable_attribute( $product, $attr_name ) {
