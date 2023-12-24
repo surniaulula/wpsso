@@ -1143,6 +1143,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$mt_ecom[ 'product:title' ]       = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 				$mt_ecom[ 'product:description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
+				$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_product_description', $mt_ecom[ 'product:description' ], $product );
 			}
 
 			/*
