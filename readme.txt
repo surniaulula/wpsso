@@ -255,6 +255,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.6.1-dev.1 (2023/12/24)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Removed WooCommerce `has_dimensions()` and `has_weight()` checks.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.6.0 (2023/12/23)**
 
 * **New Features**
@@ -453,6 +467,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.6.1-dev.1 =
+
+(2023/12/24) Removed WooCommerce `has_dimensions()` and `has_weight()` checks.
 
 = 17.6.0 =
 
