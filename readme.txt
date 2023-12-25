@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.6.1-dev.2 (2023/12/24)**
+**Version 17.6.1-dev.3 (2023/12/24)**
 
 * **New Features**
 	* None.
@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.6.1-dev.2 =
+= 17.6.1-dev.3 =
 
 (2023/12/24) Removed WooCommerce `has_dimensions()` and `has_weight()` checks.
 
