@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 			if ( false !== strpos( $value, '#' ) ) {
 
 				$value = preg_replace( '/(^| )#([^#]+)( |$)/', '%%$2%%', $value );	// Convert inline variable names.
-			
+
 				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
 

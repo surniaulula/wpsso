@@ -66,21 +66,21 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				 * $mod = true | false | post_id | $mod array
 				 */
 				if ( ! is_array( $mod ) ) {
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 					}
-	
+
 					$mod = $this->p->page->get_mod( $mod );
 				}
-	
+
 				foreach ( $value as $key => $el ) {
 
 					$local_recursion++;
 
 					$value[ $key ] = $this->replace_variables( $el, $mod, $atts );
-					
+
 					$local_recursion--;
 				}
 

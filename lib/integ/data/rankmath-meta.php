@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoIntegDataRankmathMeta' ) ) {
 			if ( false !== strpos( $value, '%' ) ) {
 
 				$value = preg_replace( '/%+([^%]+)%+/', '%%$1%%', $value );	// Convert inline variable names.
-			
+
 				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
 
