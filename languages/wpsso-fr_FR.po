@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.5.0\n"
+"Project-Id-Version: WPSSO Core 17.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2023-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-12-19 09:29-0800\n"
+"PO-Revision-Date: 2023-12-26 15:54-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: gettext/gettext-html-setup.php:5
 msgctxt "html header"
@@ -4468,12 +4468,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5400
+#: lib/config.php:5399
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5400
+#: lib/config.php:5399
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -6259,23 +6259,23 @@ msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 msgid "Suggested attributes:"
 msgstr "Attributs suggérés:"
 
-#: lib/integ/ecom/woocommerce.php:511
+#: lib/integ/ecom/woocommerce.php:521
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1618
+#: lib/integ/ecom/woocommerce.php:1637
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1722
+#: lib/integ/ecom/woocommerce.php:1741
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1725
+#: lib/integ/ecom/woocommerce.php:1744
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1728
+#: lib/integ/ecom/woocommerce.php:1747
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -7547,8 +7547,8 @@ msgstr "Sélectionnez une organisation pour le balisage de Schéma Organization.
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:142
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1841 lib/user.php:1932
-#: lib/user.php:2049
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1864 lib/user.php:1955
+#: lib/user.php:2072
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -10271,7 +10271,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:1043 lib/util-inline.php:413
+#: lib/page.php:1043 lib/util-inline.php:455
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
@@ -11348,55 +11348,55 @@ msgstr "Exemples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgid "(not a Facebook Pages URL)"
 msgstr "(pas un URL de Pages Facebook)"
 
-#: lib/user.php:1725
+#: lib/user.php:1748
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages utilisateur ID %1$s."
 
-#: lib/user.php:1768 lib/user.php:1843
+#: lib/user.php:1791 lib/user.php:1866
 msgctxt "task name"
 msgid "add the Person role"
 msgstr "ajouter le rôle Personne"
 
-#: lib/user.php:1776
+#: lib/user.php:1799
 msgid "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s aux créateurs de contenu."
 
-#: lib/user.php:1816
+#: lib/user.php:1839
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1853 lib/user.php:1944 lib/util-cache.php:572
+#: lib/user.php:1876 lib/user.php:1967 lib/util-cache.php:572
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
 
-#: lib/user.php:1854
+#: lib/user.php:1877
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s."
 
-#: lib/user.php:1888
+#: lib/user.php:1911
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1889 lib/user.php:1983 lib/util-cache.php:685
+#: lib/user.php:1912 lib/user.php:2006 lib/util-cache.php:685
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
-#: lib/user.php:1905 lib/user.php:1934
+#: lib/user.php:1928 lib/user.php:1957
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr "supprimer le rôle Personne"
 
-#: lib/user.php:1913
+#: lib/user.php:1936
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr "Une tâche en arrière-plan commencera dans les %1$s suivants pour %2$s de tous les utilisateurs."
 
-#: lib/user.php:1945
+#: lib/user.php:1968
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr "Une tâche pour %1$s de tous les utilisateurs a été démarré à %2$s."
 
-#: lib/user.php:1982
+#: lib/user.php:2005
 msgid "The %1$s role has been removed from %2$d users."
 msgstr "Le rôle %1$s a été supprimé de %2$d utilisateurs."
 
