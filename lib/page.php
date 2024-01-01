@@ -1050,17 +1050,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * Replace inline variables in the string.
-			 */
-			if ( false !== strpos( $title_text, '%%' ) ) {
-
-				/*
-				 * Override the default 'title_sep' value.
-				 */
-				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
-			}
-
-			/*
 			 * Titles comprised entirely of HTML content will be empty after running cleanup_html_tags(), so remove the
 			 * HTML tags before maybe falling back to the generic title.
 			 */
@@ -1077,6 +1066,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
+			}
+
+			/*
+			 * Replace any inline variables in the string before checking/adjusting its length.
+			 */
+			if ( false !== strpos( $title_text, '%%' ) ) {
+
+				/*
+				 * Override the default 'title_sep' value.
+				 */
+				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
 			}
 
 			/*
@@ -1098,7 +1098,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * Once the description length has been adjusted, we can add the page number and hashtags.
+			 * Once the title length has been adjusted, we can add the page number and hashtags.
 			 */
 			if ( ! empty( $page_number_transl ) ) {
 
@@ -1181,14 +1181,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * Replace any inline variables in the string.
-			 */
-			if ( false !== strpos( $desc_text, '%%' ) ) {
-
-				$desc_text = $this->p->util->inline->replace_variables( $desc_text, $mod );
-			}
-
-			/*
 			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
 			 * remove the HTML tags before maybe falling back to the generic description.
 			 */
@@ -1205,6 +1197,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
+			}
+
+			/*
+			 * Replace any inline variables in the string before checking/adjusting its length.
+			 */
+			if ( false !== strpos( $desc_text, '%%' ) ) {
+
+				$desc_text = $this->p->util->inline->replace_variables( $desc_text, $mod );
 			}
 
 			/*
@@ -1303,9 +1303,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		/*
 		 * Use $title_sep = false to avoid adding term parent names in the term title.
-		 *
-		 * Note that WpssoUtilInline->replace_variables() is called in the WpssoPage->get_title() method, not in this one,
-		 * so this method is safe to call in WpssoUtilInline->replace_variables().
 		 *
 		 * See WpssoUtilInline->replace_callback().
 		 * See WpssoBcBreadcrumb->add_breadcrumblist_data().
