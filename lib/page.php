@@ -1304,8 +1304,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/*
 		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
-		 * See WpssoUtilInline->replace_callback().
+		 * WpssoUtilInline->replace_variables() is called from the WpssoPage->get_title() method. Do not use
+		 * WpssoUtilInline->replace_variables() in this method as WpssoPage->get_title() is also called from
+		 * WpssoUtilInline->replace_variables(), and this would create a circular loop.
+		 *
 		 * See WpssoBcBreadcrumb->add_breadcrumblist_data().
+		 * See WpssoPage->get_title().
+		 * See WpssoUtilInline->replace_callback().
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
 
@@ -1438,6 +1443,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_the_title', $title_text, $mod, $title_sep );
 		}
 
+		/*
+		 * WpssoUtilInline->replace_variables() is called from the WpssoPage->get_description() method. Do not use
+		 * WpssoUtilInline->replace_variables() in this method as WpssoPage->get_description() is also called from
+		 * WpssoUtilInline->replace_variables(), and this would create a circular loop.
+		 *
+		 * See WpssoPage->get_description().
+		 * See WpssoUtilInline->replace_callback().
+		 */
 		public function get_the_description( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
