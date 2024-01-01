@@ -676,7 +676,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_wp_shortlink':	// Use Short URL for WP Shortlink.
 
-					$text = sprintf( __( 'Use the selected URL shortening service to replace the WordPress <code>%s</code> function value.', 'wpsso' ), 'wp_get_shortlink()' );
+					$text = sprintf( __( 'Use the selected URL shortening service to replace the WordPress <code>%s</code> function value.', 'wpsso' ), 'wp_get_shortlink()' ) . ' ';
+
+					$text .= sprintf( __( 'If the URL shortening service is set to "%1$s" then enabling or disabling option has no effect on the WordPress <code>%2$s</code> function as there is no URL shortening service available to replace its value.', 'wpsso' ), _x( '[None]', 'option value', 'wpsso' ), 'wp_get_shortlink()' );
 
 					break;
 

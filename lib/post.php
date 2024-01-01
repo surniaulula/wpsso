@@ -163,9 +163,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 			}
 
-			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+			if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {	// Use Short URL for WP Shortlink.
 
-				if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {	// Use Short URL for WP Shortlink.
+				if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 					if ( $this->p->debug->enabled ) {
 

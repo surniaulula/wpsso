@@ -1716,7 +1716,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:466 gettext/gettext-lib-config.php:478
 #: gettext/gettext-lib-config.php:484 gettext/gettext-lib-config.php:492
 #: gettext/gettext-lib-config.php:503 gettext/gettext-lib-config.php:511
-#: gettext/gettext-lib-config.php:524 lib/users/add-person.php:101
+#: gettext/gettext-lib-config.php:524 lib/messages-tooltip-plugin.php:681
+#: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -7800,8 +7801,8 @@ msgstr ""
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:78
 #: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:730 lib/messages-tooltip-plugin.php:814
-#: lib/messages-tooltip-plugin.php:856 lib/messages-tooltip-schema.php:177
+#: lib/messages-tooltip-meta-schema.php:730 lib/messages-tooltip-plugin.php:816
+#: lib/messages-tooltip-plugin.php:858 lib/messages-tooltip-schema.php:177
 #: lib/messages-tooltip-schema.php:332
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -9404,163 +9405,170 @@ msgid ""
 "code> function value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:685
+#: lib/messages-tooltip-plugin.php:681
+msgid ""
+"If the URL shortening service is set to \"%1$s\" then enabling or disabling "
+"option has no effect on the WordPress <code>%2$s</code> function as there is "
+"no URL shortening service available to replace its value."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:687
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:691
+#: lib/messages-tooltip-plugin.php:693
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:693
+#: lib/messages-tooltip-plugin.php:695
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:699
+#: lib/messages-tooltip-plugin.php:701
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:701
+#: lib/messages-tooltip-plugin.php:703
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:707
+#: lib/messages-tooltip-plugin.php:709
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:714
+#: lib/messages-tooltip-plugin.php:716
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:720
+#: lib/messages-tooltip-plugin.php:722
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:726
+#: lib/messages-tooltip-plugin.php:728
 msgid ""
 "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:731
+#: lib/messages-tooltip-plugin.php:733
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured username (see YOURLS Token for an alternative to "
 "the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:737
+#: lib/messages-tooltip-plugin.php:739
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:743
+#: lib/messages-tooltip-plugin.php:745
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:752
+#: lib/messages-tooltip-plugin.php:754
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:758
+#: lib/messages-tooltip-plugin.php:760
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:764
+#: lib/messages-tooltip-plugin.php:766
 msgid "The maximum age of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:770
+#: lib/messages-tooltip-plugin.php:772
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:777
+#: lib/messages-tooltip-plugin.php:779
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:781
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:786
+#: lib/messages-tooltip-plugin.php:788
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:803
+#: lib/messages-tooltip-plugin.php:805
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:808
+#: lib/messages-tooltip-plugin.php:810
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:820
+#: lib/messages-tooltip-plugin.php:822
 msgid ""
 "The product attribute value can be an empty string or one of these values "
 "(case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:826 lib/messages-tooltip-plugin.php:868
+#: lib/messages-tooltip-plugin.php:828 lib/messages-tooltip-plugin.php:870
 msgid "Note that the \"%s\" option supports multiple values."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:828
+#: lib/messages-tooltip-plugin.php:830
 msgid ""
 "The product attribute string will be split using the comma \",\" character."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:847
+#: lib/messages-tooltip-plugin.php:849
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:850
+#: lib/messages-tooltip-plugin.php:852
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:862
+#: lib/messages-tooltip-plugin.php:864
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:870
+#: lib/messages-tooltip-plugin.php:872
 msgid ""
 "If the custom field value is a string, it will be split on the end of line "
 "character."
