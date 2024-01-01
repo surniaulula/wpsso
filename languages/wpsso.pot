@@ -9407,7 +9407,7 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:681
 msgid ""
-"If the URL shortening service is set to \"%1$s\" then enabling or disabling "
+"If the URL shortening service is set to \"%1$s\" then checking or unchecking "
 "option has no effect on the WordPress <code>%2$s</code> function as there is "
 "no URL shortening service available to replace its value."
 msgstr ""
