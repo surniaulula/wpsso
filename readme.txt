@@ -255,6 +255,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.7.1-rc.1 (2024/01/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect cache expiry when retrieving readme info.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.5.
+
 **Version 17.7.0 (2023/12/27)**
 
 * **New Features**
@@ -468,6 +482,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.7.1-rc.1 =
+
+(2024/01/02) Fixed incorrect cache expiry when retrieving readme info.
 
 = 17.7.0 =
 
