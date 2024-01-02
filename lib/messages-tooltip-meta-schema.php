@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				/*
 				 * Document SSO > Edit Schema tab.
 				 */
-				case 'tooltip-meta-schema_title':	// Schema Name.
+				case 'tooltip-meta-schema_title':	// Name.
 
 					$text = __( 'A customized name (aka title) for the Schema "name" property.', 'wpsso' ) . ' ';
 
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_title_alt':	// Schema Alternate Name.
+				case 'tooltip-meta-schema_title_alt':	// Alternate Name.
 
 					$text = __( 'A customized alternate name (aka title) for the Schema "alternateName" property.', 'wpsso' ) . ' ';
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_title_bc':	// Schema Breadcrumb Name.
+				case 'tooltip-meta-schema_title_bc':	// Breadcrumb Name.
 
 					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' ) . ' ';
 
@@ -57,11 +57,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_desc':	// Schema Description.
+				case 'tooltip-meta-schema_desc':	// Description.
 
 					$text = __( 'A customized description for the Schema "description" property.', 'wpsso' ) . ' ';
 
 					$text .= __( 'The default value is inherited from the SEO description.', 'wpsso' ) . ' ';
+
+				 	break;
+
+				case 'tooltip-meta-schema_lang':	// Language.
+
+					$text = __( 'The language (aka locale) of this webpage.', 'wpsso' );
 
 				 	break;
 
@@ -98,12 +104,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				case 'tooltip-meta-schema_keywords_csv':	// Keywords.
 
 					$text = __( 'A comma delimited list of keywords or tags describing the creative work.', 'wpsso' );
-
-				 	break;
-
-				case 'tooltip-meta-schema_lang':	// Language.
-
-					$text = __( 'The language (aka locale) of this creative work.', 'wpsso' );
 
 				 	break;
 

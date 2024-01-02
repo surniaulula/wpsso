@@ -70,6 +70,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
+			$schema_lang_disabled = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 			$addl_type_url_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX', 5 );
 			$sameas_url_max       = SucomUtil::get_const( 'WPSSO_SCHEMA_SAMEAS_URL_MAX', 5 );
 			$input_limits         = WpssoConfig::get_input_limits();	// Uses a local cache.
@@ -130,6 +131,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'content'  => $form->get_textarea_dep( 'schema_desc', $css_class = '', $css_id = '',
 						$input_limits[ 'schema_desc' ], $def_schema_desc, $is_disabled = false, $dep_id = 'seo_desc' ),
 				),
+				'schema_lang' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Language', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_lang',
+					'content'  => $form->get_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale', $css_id = '',
+						$is_assoc = false, $schema_lang_disabled ),
+				),
 				'schema_addl_type_url' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
@@ -187,7 +195,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
-			$schema_lang_disabled    = $this->p->avail[ 'lang' ][ 'any' ] ? true : false;
 			$awards_max              = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 20 );
 			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
@@ -221,14 +228,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Keywords', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_keywords_csv',
 					'content'  => $form->get_input( 'schema_keywords_csv', $css_class = 'wide', $css_id = '', $max_len = 0, $def_schema_keywords_csv ),
-				),
-				'schema_lang' => array(
-					'tr_class' => $args[ 'schema_tr_class' ][ 'creative.work' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Language', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_lang',
-					'content'  => $form->get_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale', $css_id = '',
-						$is_assoc = false, $schema_lang_disabled ),
 				),
 				'schema_family_friendly' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'creative.work' ],
