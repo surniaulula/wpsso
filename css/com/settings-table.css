@@ -773,16 +773,16 @@ table.sucom-settings td select.yes-no { width:85px; }
 
 table.sucom-settings td select.stock { width:90px; }
 
-table.sucom-settings td select.energy_efficiency { width:107px; }	/* Rating code, from code, and to code. */
-
 table.sucom-settings td select.unit_text { width:100px; }
+
+table.sucom-settings td select.energy_efficiency { width:107px; }	/* Rating code, from code, and to code. */
 
 table.sucom-settings td select.short { width:110px; }
 
-table.sucom-settings td select.locale,
 table.sucom-settings td select.year,
 table.sucom-settings td select.size_group { width:124px; }
 
+table.sucom-settings td select.locale,
 table.sucom-settings td select.medium { width:180px; }
 
 table.sucom-settings td select.site-use { width:200px; }
