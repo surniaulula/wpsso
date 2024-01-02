@@ -226,10 +226,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$schema_lang = locale_get_primary_language( $schema_lang );
 
-						} else {
-
-							$schema_lang = substr( $schema_lang, 0, 2 );
-						}
+						} else $schema_lang = substr( $schema_lang, 0, 2 );
 
 						break;
 				}

@@ -110,6 +110,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tr_class'  => $args[ 'schema_tr_class' ][ 'webpage.qa' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-webpage-qa' ) . '</td>',
 				),
+				'schema_lang' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Language', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_lang',
+					'content'  => $form->get_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale', $css_id = '',
+						$is_assoc = false, $schema_lang_disabled ),
+				),
 				'schema_title' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Name', 'option label', 'wpsso' ),
@@ -130,13 +137,6 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_desc',
 					'content'  => $form->get_textarea_dep( 'schema_desc', $css_class = '', $css_id = '',
 						$input_limits[ 'schema_desc' ], $def_schema_desc, $is_disabled = false, $dep_id = 'seo_desc' ),
-				),
-				'schema_lang' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Language', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_lang',
-					'content'  => $form->get_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale', $css_id = '',
-						$is_assoc = false, $schema_lang_disabled ),
 				),
 				'schema_addl_type_url' => array(
 					'th_class' => 'medium',

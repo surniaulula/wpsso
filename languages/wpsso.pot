@@ -5362,24 +5362,24 @@ msgstr ""
 msgid "oEmbed HTML Not Available."
 msgstr ""
 
-#: lib/edit-schema.php:115 lib/edit-schema.php:563 lib/edit-schema.php:675
+#: lib/edit-schema.php:115
+msgctxt "option label"
+msgid "Language"
+msgstr ""
+
+#: lib/edit-schema.php:122 lib/edit-schema.php:563 lib/edit-schema.php:675
 msgctxt "option label"
 msgid "Name"
 msgstr ""
 
-#: lib/edit-schema.php:122
+#: lib/edit-schema.php:129
 msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: lib/edit-schema.php:129 lib/edit-schema.php:568 lib/edit-schema.php:680
+#: lib/edit-schema.php:136 lib/edit-schema.php:568 lib/edit-schema.php:680
 msgctxt "option label"
 msgid "Description"
-msgstr ""
-
-#: lib/edit-schema.php:136
-msgctxt "option label"
-msgid "Language"
 msgstr ""
 
 #: lib/edit-schema.php:143 lib/messages.php:708
@@ -11841,26 +11841,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:657
+#: lib/schema.php:654
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2102
+#: lib/schema.php:2099
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2277
+#: lib/schema.php:2274
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2304
+#: lib/schema.php:2301
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3900
+#: lib/schema.php:3897
 msgid "checking schema properties"
 msgstr ""
 
