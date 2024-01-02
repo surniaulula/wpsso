@@ -2,7 +2,7 @@
 /*
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Copyright 2012-2023 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2012-2024 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -2315,7 +2315,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
 			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
-			$cache_md5_pre  = 'wpsso__r_';
+			$cache_md5_pre  = 'wpsso_r_';
 			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
@@ -2567,7 +2567,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$cache_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
 				}
-			}
+
+			} else delete_transient( $cache_id );	// Just in case.
 
 			if ( empty( $cache_content ) ) {	// No content from the file URL cache.
 

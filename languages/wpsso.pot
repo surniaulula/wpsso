@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.7.0\n"
+"Project-Id-Version: WPSSO Core 17.7.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4676,43 +4676,43 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:2599
+#: lib/admin.php:2600
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2600
+#: lib/admin.php:2601
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2601
+#: lib/admin.php:2602
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2602 lib/admin.php:2603
+#: lib/admin.php:2603 lib/admin.php:2604
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2652
+#: lib/admin.php:2653
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2659
+#: lib/admin.php:2660
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2666
+#: lib/admin.php:2667
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2673
+#: lib/admin.php:2674
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2680
+#: lib/admin.php:2681
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2687
+#: lib/admin.php:2688
 msgid "Sharing Functionality"
 msgstr ""
 
