@@ -255,7 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.7.1-rc.1 (2024/01/02)**
+**Version 17.7.1 (2024/01/02)**
 
 * **New Features**
 	* None.
@@ -483,7 +483,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.7.1-rc.1 =
+= 17.7.1 =
 
 (2024/01/02) Fixed incorrect cache expiry when retrieving readme info.
 
