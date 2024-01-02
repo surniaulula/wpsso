@@ -153,6 +153,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Returns the language and country code, like "en_US".
 		 *
+		 * If the $prime_lang argument value is true, then return the 2 character primary language instead, like "en". Note
+		 * that some Chinese languages will return a 5 character string instead, like 'zh-cn' or 'zh-tw'.
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_schema_lang( $mixed = 'current', $prime_lang = false ) {

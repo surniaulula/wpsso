@@ -11841,26 +11841,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:654
+#: lib/schema.php:657
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2099
+#: lib/schema.php:2102
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2274
+#: lib/schema.php:2277
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2301
+#: lib/schema.php:2304
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3897
+#: lib/schema.php:3900
 msgid "checking schema properties"
 msgstr ""
 
