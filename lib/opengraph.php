@@ -863,6 +863,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 * Returns an optional and customized locale value for the og:locale meta tag.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 *
+		 * See WpssoOpenGraph->get_array().
+		 * See WpssoOptions->get_defaults().
 		 */
 		public function get_fb_locale( $mixed = 'current', $use_opts = true ) {
 
@@ -876,15 +879,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_opts ) {
 
-				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options, $mixed );
+				$key_locale = SucomUtil::get_key_locale( 'fb_locale', $this->p->options, $mixed );
 
-				if ( ! empty( $this->p->options[ $fb_locale_key ] ) ) {
+				if ( ! empty( $this->p->options[ $key_locale ] ) ) {	// Maybe use an alternate locale value.
 
-					$fb_locale = $this->p->options[ $fb_locale_key ];
+					$fb_locale = $this->p->options[ $key_locale ];
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning fb locale "' . $fb_locale . '" from ' . $fb_locale_key . ' options key' );
+						$this->p->debug->log( 'returning fb locale "' . $fb_locale . '" from ' . $key_locale . ' options key' );
 					}
 
 					return $fb_locale;

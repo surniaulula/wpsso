@@ -186,8 +186,9 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-fb_locale':	// Facebook Locale.
 
-						// See SucomUtil::get_publisher_languages( 'facebook' ).
-
+						/*
+						 * See SucomUtil::get_publisher_languages( 'facebook' ).
+						 */
 						$text = __( 'Facebook does not understand all WordPress locale values.', 'wpsso' ) . ' ';
 
 						$text .= sprintf( __( 'If the Facebook debugger returns an error parsing the %s meta tag, you should choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
