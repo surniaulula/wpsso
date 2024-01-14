@@ -1,16 +1,16 @@
-<h1>WPSSO Core - The Complete Structured Data Plugin (Schema, Meta Tags, oEmbed, Pins, Feeds, Sitemaps and More)</h1>
+<h1>WPSSO Core - The Complete Structured Data Plugin (Schema, Meta Tags, oEmbed, Feed XML, etc.)</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawl</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>17.8.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>17.7.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.2.34 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.8 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>6.4.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>8.4.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, seo, woocommerce, google search console, video seo, rich results, meta tags, open graph, knowledge graph, xml sitemap, structured data</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, seo, woocommerce, google search console, google merchant, rich results, meta tags, open graph, knowledge graph, xml sitemap, structured data</td></tr>
 </table>
 
 <h2>Description</h2>
