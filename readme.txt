@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin ===
+=== WPSSO Core - The Complete Structured Data Plugin (Schema, Meta Tags, oEmbed, Pins, Feeds, Sitemaps and More) ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,13 +6,13 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: schema, seo, woocommerce, google search console, google merchant, rich results, meta tags, open graph, knowledge graph, xml sitemap, structured data
+Tags: schema, seo, woocommerce, google search console, video seo, rich results, meta tags, open graph, knowledge graph, xml sitemap, structured data
 Contributors: jsmoriss
 Requires PHP: 7.2.34
-Requires At Least: 5.5
+Requires At Least: 5.8
 Tested Up To: 6.4.2
 WC Tested Up To: 8.4.0
-Stable Tag: 17.7.1
+Stable Tag: 17.8.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -145,6 +145,7 @@ Present your content at its best on social sites and in search results - no matt
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
+* qTranslate-XT
 * Rate my Post
 * Simple Job Board
 * The Events Calendar
@@ -254,6 +255,51 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 17.9.0-dev.2 (2024/01/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added excerpt translation for the qTranslate-XT plugin.
+	* Re-added the "Suggested attributes:" footer to the WooCommerce Product data metabox &gt; Attributes tab.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed `SucomUtil::get_multi_key_locale()` to `SucomUtil::get_key_values_multi()`.
+	* Renamed `SucomUtil::get_opts_label_transl()` to `SucomUtil::get_opts_labels_transl()`.
+	* Renamed `SucomUtil::get_opts_value_transl()` to `SucomUtil::get_opts_values_transl()`.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
+**Version 17.8.0 (2024/01/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an integration module for the qTranslate-XT plugin.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `SucomCurrencies` class.
+	* Added a new `SucomDashicons` class.
+	* Added a new `WpssoConfig->get_ext_file_url()` method.
+	* Added a new `WpssoConfig->get_ext_text_domain()` method.
+	* Added a new `SucomUtilWP::get_comment_object()` method.
+	* Added a new 'wpsso_post_public_ids_posts_args' filter.
+	* Added a new 'wpsso_post_public_ids_suppress_filters' filter (returns false when the WPML plugin is active).
+	* Refactored the `WpssoAdmin->get_readme_info()` and `WpssoAdmin->get_ext_file_content()` methods.
+	* Refactored the `WpssoAbstractWpMeta::get_column_meta_query_og_type()` method.
+	* Refactored the `WpssoComment->get_mod_wp_object()` method.
+	* Refactored the `WpssoPost->get_mod_wp_object()` method.
+	* Refactored the `WpssoTerm->get_mod_wp_object()` method.
+	* Refactored the `WpssoUser->get_mod_wp_object()` method.
+	* Refactored the `SucomUtilWP::maybe_load_post()` method.
+	* Reorganized the `SucomUtil` and `SucomUtilWP` classes.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
 
 **Version 17.7.1 (2024/01/02)**
 
@@ -482,6 +528,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.9.0-dev.2 =
+
+(2024/01/14) Added excerpt translation for the qTranslate-XT plugin. Re-added the "Suggested attributes:" footer to the WooCommerce Product data metabox &gt; Attributes tab.
+
+= 17.8.0 =
+
+(2024/01/12) Added an integration module for the qTranslate-XT plugin.
 
 = 17.7.1 =
 
