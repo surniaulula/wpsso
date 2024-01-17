@@ -318,7 +318,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->check = new WpssoCheck( $this );
 
-			$this->is_pp = $this->check->is_pp();		// Since WPSSO Core v9.8.0.
+			$this->is_pp = $this->check->is_pp();
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
 			/*

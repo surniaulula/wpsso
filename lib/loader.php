@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'SucomPlugin' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
+}
+
 if ( ! class_exists( 'WpssoLoader' ) ) {
 
 	class WpssoLoader {
@@ -44,14 +49,14 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$mod_dir = 'integ';
+				$mod_sub = 'integ';
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'loading integ modules for ' . $ext );
 				}
 
-				$this->load_ext_mods( $ext, $mod_dir );
+				$this->maybe_load_ext_mods( $ext, $mod_sub );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -69,16 +74,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$mod_dir = ! empty( $info[ 'update_auth' ] ) && 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'pro' : 'std';
+				$ext_pp = empty( $info[ 'update_auth' ] ) ? false : $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 );
 
-				$GLOBALS[ $ext . '_pkg_' . $mod_dir ] = true;
+				$mod_sub = false === $ext_pp || 1 !== $ext_pp ? 'std' : 'pro';
+
+				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'loading dist modules for ' . $ext . ' from ' . $mod_dir );
+					$this->p->debug->log( 'loading dist modules for ' . $ext . ' from ' . $mod_sub );
 				}
 
-				$this->load_ext_mods( $ext, $mod_dir );
+				$this->maybe_load_ext_mods( $ext, $mod_sub );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -87,17 +94,36 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 		}
 
-		private function load_ext_mods( $ext, $mod_dir ) {
+		private function maybe_load_ext_mods( $ext, $mod_sub ) {
 
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] ) ) {	// Just in case.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
 
 				return;
 
-			} elseif ( ! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] ) ) {	// Just in case.
+			} elseif ( ! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $ext . ' lib/' . $mod_dir . ' not an array' );
+					$this->p->debug->log( $ext . ' lib/' . $mod_sub . ' not an array' );
+				}
+
+				return;
+			}
+
+			$ext_base = $this->p->cf[ 'plugin' ][ $ext ][ 'base' ];
+
+			if ( SucomPlugin::is_plugin_active( $ext_base ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $ext_base . ' is active' );
+				}
+			
+			} else {
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $ext_base . ' not active' );
 				}
 
 				return;
@@ -105,20 +131,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			$is_admin = is_admin();
 
-			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] as $sub_dir => $libs ) {
+			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] as $mod_type => $libs ) {
 
-				$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . ': ';
+				$log_prefix = 'loading ' . $ext . ' ' . $mod_sub . '/' . $mod_type . ': ';
 
 				foreach ( $libs as $id => $label ) {
 
-					$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . '/' . $id . ': ';
+					$log_prefix = 'loading ' . $ext . ' ' . $mod_sub . '/' . $mod_type . '/' . $id . ': ';
 
 					/*
 					 * Check if the resource (active plugin or enabled option) is available.
 					 */
-					if ( ! empty( $this->p->avail[ $sub_dir ][ $id ] ) ) {
+					if ( ! empty( $this->p->avail[ $mod_type ][ $id ] ) ) {
 
-						$lib_path = $mod_dir . '/' . $sub_dir . '/' . $id;
+						$lib_path = $mod_sub . '/' . $mod_type . '/' . $id;
 
 						$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
@@ -145,9 +171,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 									}
 
-									if ( ! isset( $this->p->m[ $sub_dir ][ $id ] ) ) {
+									if ( ! isset( $this->p->m[ $mod_type ][ $id ] ) ) {
 
-										$this->p->m[ $sub_dir ][ $id ] = new $classname( $this->p );
+										$this->p->m[ $mod_type ][ $id ] = new $classname( $this->p );
 
 									} elseif ( $this->p->debug->enabled ) {
 
@@ -157,9 +183,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								/*
 								 * Loaded module objects from extensions / add-ons.
 								 */
-								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub_dir ][ $id ] ) ) {
+								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $mod_type ][ $id ] ) ) {
 
-									$this->p->m_ext[ $ext ][ $sub_dir ][ $id ] = new $classname( $this->p );
+									$this->p->m_ext[ $ext ][ $mod_type ][ $id ] = new $classname( $this->p );
 
 								} elseif ( $this->p->debug->enabled ) {
 

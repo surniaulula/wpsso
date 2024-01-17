@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'SucomPlugin' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
+}
+
 if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoAdmin {
@@ -1187,6 +1192,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
+			if ( ! $this->is_plugin_found() ) {	// Just in case.
+
+				$pkg_info   = $this->p->util->get_pkg_info();	// Uses a local cache.
+				$notice_msg = sprintf( __( '%s plugin not found.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] );
+
+				$this->p->notice->err( $notice_msg );
+
+				return;
+			}
+
 			$side_col_boxes = $this->get_side_col_boxes();
 			$dashicon_html  = $this->get_menu_dashicon_html( $this->menu_id );
 
@@ -1637,6 +1652,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return md5( $salt );
 		}
 
+		private function is_plugin_found() {
+			
+			return SucomPlugin::is_plugin_active( 'wpsso/wpsso.php' );
+		}
+
 		private function is_settings( $menu_id = false ) {
 
 			return $this->is_lib( 'settings', $menu_id );
@@ -1700,8 +1720,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return '';
 			}
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
+			$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$footer_html = '<div class="admin-footer-ext">';
 
 			if ( isset( $pkg_info[ $this->menu_ext ][ 'name_pkg' ] ) ) {

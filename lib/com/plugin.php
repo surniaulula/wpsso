@@ -69,8 +69,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/*
 		 * Returns an associative array of true/false values.
-		 *
-		 * Used by self::is_plugin_active() and Wpsso->show_config().
 		 */
 		public static function get_active_plugins( $read_cache = true ) {
 
@@ -84,8 +82,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				}
 			}
 
-			$local_cache = array();
-
+			$local_cache    = array();
 			$active_plugins = get_option( 'active_plugins', array() );
 
 			if ( is_multisite() ) {
@@ -108,10 +105,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/*
 		 * Returns true/false.
-		 *
-		 * Example: $plugin_base = wpsso/wpsso.php.
-		 *
-		 * Used by WpssoAdmin->get_ext_action_links().
 		 */
 		public static function is_plugin_installed( $plugin_base, $read_cache = true ) {
 
@@ -146,10 +139,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/*
 		 * Returns true/false.
-		 *
-		 * Example: $plugin_base = wpsso/wpsso.php.
-		 *
-		 * Used by WpssoCheck->get_avail().
 		 */
 		public static function is_plugin_active( $plugin_base, $read_cache = true ) {
 
@@ -167,8 +156,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug prefix.
 		 *
 		 * Example: $plugin_prefix = 'wpsso'
-		 *
-		 * Used by WpssoHead->pending_updates_notice().
 		 */
 		public static function get_updates_count( $plugin_prefix = '' ) {
 
@@ -202,8 +189,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/*
 		 * Returns true/false.
-		 *
-		 * Used by WpssoAdmin->get_ext_action_links().
 		 */
 		public static function have_plugin_update( $plugin_base ) {
 

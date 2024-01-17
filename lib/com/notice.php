@@ -1177,9 +1177,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! class_exists( 'SucomUpdate' ) ) {
 
 				return;
-			}
 
-			if ( empty( $this->p->cf[ 'plugin' ] ) ) {
+			} elseif ( empty( $this->p->cf[ 'plugin' ] ) ) {
 
 				return;
 			}

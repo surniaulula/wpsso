@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'SucomPlugin' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
+}
+
 if ( ! class_exists( 'WpssoCheck' ) ) {
 
 	class WpssoCheck {
