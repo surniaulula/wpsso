@@ -1,4 +1,4 @@
-<h1>WPSSO Core - The Complete Structured Data Plugin: Schema, Meta Tags, oEmbed, Pins, Feeds, SEO, Sitemaps and More</h1>
+<h1>WPSSO Core - The Complete Structured Data Plugin: Schema, Meta Tags, SEO, Pins, Feeds, Sitemaps, and Breadcrumbs</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
