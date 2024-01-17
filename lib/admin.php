@@ -1195,7 +1195,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! $this->is_plugin_found() ) {	// Just in case.
 
 				$pkg_info   = $this->p->util->get_pkg_info();	// Uses a local cache.
-				$notice_msg = sprintf( __( '%s plugin not found.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] );
+				$notice_msg = sprintf( __( 'The %s plugin is not active and/or not found.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] );
 
 				$this->p->notice->err( $notice_msg );
 

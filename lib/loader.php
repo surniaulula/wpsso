@@ -123,11 +123,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $ext_base . ' not active' );
+					$this->p->debug->log( $ext_base . ' is not active and/or not found' );
 				}
 
 				return;
 			}
+
+			unset( $ext_base );
 
 			$is_admin = is_admin();
 

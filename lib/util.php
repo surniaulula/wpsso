@@ -1152,18 +1152,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
 				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
 
-				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
-				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
-				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
-				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
-				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
-				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
-				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
 				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
-				$pkg_info[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
+				$pkg_info[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $ext_pp ? $pkg_pro_transl : $pkg_std_transl );
 				$pkg_info[ $ext ][ 'name_pro' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_pro_transl );
 				$pkg_info[ $ext ][ 'name_std' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_std_transl );
+				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
+				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
+				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
+				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
+				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
+				$pkg_info[ $ext ][ 'slug' ]      = $info[ 'slug' ];
 			}
 
 			return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
