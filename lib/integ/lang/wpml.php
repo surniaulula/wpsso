@@ -25,22 +25,23 @@ if ( ! class_exists( 'WpssoIntegLangWpml' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'change_locale', array( $this, 'wp_locale_changed' ), -200, 1 );
+			add_action( 'change_locale', array( $this, 'locale_changed' ), -200, 1 );
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'sitemaps_alternates' => 2,
+				'sitemaps_alternates'              => 2,
+				'post_public_ids_suppress_filters' => '__return_false',
 			) );
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'available_feed_locale_names' => 1,
-				'get_locale'                  => 2,
-			), $prio = 1000, $ext = 'sucom' );
+				'available_feed_locale_names'      => 1,
+				'get_locale'                       => 2,
+			), $prio = 1000, $ext = 'sucom' );	// Note the 'sucom' filter prefix.
 		}
 
 		/*
 		 * Check that the active WPML language matches the changed WordPress locale.
 		 */
-		public function wp_locale_changed( $wp_locale ) {
+		public function locale_changed( $wp_locale ) {
 
 			$wpml_locale = $this->get_active_locale();	// Get the active WPML locale.
 

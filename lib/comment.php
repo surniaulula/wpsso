@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			/*
 			 * Maybe limit the number of array elements.
 			 */
-			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -122,15 +122,16 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'wp_obj' ] = get_comment( $mod[ 'id' ] );	// Optimize and fetch once.
+				$mod[ 'wp_obj' ] = SucomUtilWP::get_comment_object( $mod[ 'id' ] );
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Comment ) {	// Just in case.
 
-					$mod[ 'comment_author' ]      = (int) $mod[ 'wp_obj' ]->user_id;		// Comment author user ID.
-					$mod[ 'comment_author_name' ] = $mod[ 'wp_obj' ]->comment_author;		// Comment author name.
+					$mod[ 'comment_author' ]      = (int) $mod[ 'wp_obj' ]->user_id;	// Comment author user ID.
+					$mod[ 'comment_author_name' ] = $mod[ 'wp_obj' ]->comment_author;	// Comment author name.
 					$mod[ 'comment_author_url' ]  = $mod[ 'wp_obj' ]->comment_author_url;
 					$mod[ 'comment_parent' ]      = $mod[ 'wp_obj' ]->comment_parent;
 					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
+					$mod[ 'comment_timestamp' ]   = mysql2date( 'U', $mod[ 'wp_obj' ]->comment_date_gmt );	// Unix timestamp.
 					$mod[ 'is_public' ]           = $mod[ 'wp_obj' ]->comment_approved ? true : false;
 
 					$comment_rating = self::get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
@@ -166,7 +167,12 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 		public function get_mod_wp_object( array $mod ) {
 
-			return get_comment( $mod[ 'id' ] );
+			if ( $mod[ 'wp_obj' ] instanceof WP_Comment ) {
+
+				return $mod[ 'wp_obj' ];
+			}
+
+			return SucomUtilWP::get_comment_object( $mod[ 'id' ] );
 		}
 
 		/*
@@ -206,7 +212,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
@@ -426,8 +432,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				return false;
 			}
-
-			$comment_obj = get_comment( $comment_id );
 
 			$capability = 'edit_comment';
 

@@ -29,6 +29,7 @@ _x( '(plugin) GravityView', 'lib file description', 'wpsso' );
 _x( '(plugin) Simple Job Board', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Job Manager', 'lib file description', 'wpsso' );
 _x( '(plugin) Polylang', 'lib file description', 'wpsso' );
+_x( '(plugin) qTranslate-XT', 'lib file description', 'wpsso' );
 _x( '(plugin) WPML', 'lib file description', 'wpsso' );
 _x( '(plugin) Perfect Images', 'lib file description', 'wpsso' );
 _x( '(plugin) Rate my Post', 'lib file description', 'wpsso' );

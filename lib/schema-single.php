@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Automatically renames 'schema_book_*' options from the Document SSO metabox to 'book_*'.
 			 */
-			SucomUtil::add_type_opts_md_pad( $book_opts, $mod, array( 'book' => 'schema_book' ) );
+			WpssoSchema::add_type_opts_md_pad( $book_opts, $mod, array( 'book' => 'schema_book' ) );
 
 			if ( empty( $book_opts ) ) {
 
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Automatically renames 'schema_event_*' options from the Document SSO metabox to 'event_*'.
 			 */
-			SucomUtil::add_type_opts_md_pad( $event_opts, $mod, array( 'event' => 'schema_event' ) );
+			WpssoSchema::add_type_opts_md_pad( $event_opts, $mod, array( 'event' => 'schema_event' ) );
 
 			if ( empty( $event_opts ) ) {
 
@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Automatically renames 'schema_job_*' options from the Document SSO metabox to 'job_*'.
 			 */
-			SucomUtil::add_type_opts_md_pad( $job_opts, $mod, array( 'job' => 'schema_job' ) );
+			WpssoSchema::add_type_opts_md_pad( $job_opts, $mod, array( 'job' => 'schema_job' ) );
 
 			if ( empty( $job_opts ) ) {
 
@@ -2879,7 +2879,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 *
 				 * -07:00 is a timezone offset.
 				 */
-				$open_close = SucomUtil::get_opts_open_close_hm_tz(
+				$open_close = self::get_open_close_pairs(
 					$opts,
 					$opt_prefix . '_day_' . $day_name . '_open',
 					$opt_prefix . '_midday_close',
@@ -2921,6 +2921,112 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return empty( $opening_hours_spec ) ? false : $opening_hours_spec;
+		}
+
+		/*
+		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
+		 *
+		 * $open_close = Array (
+		 *	[08:00:00-07:00] => 17:00:00-07:00
+		 * )
+		 *
+		 * Note that "-07:00" is a timezone offset, not a range. :)
+		 *
+		 * See WpssoSchemaSingle::get_opening_hours_data().
+		 */
+		private static function get_open_close_pairs( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
+
+			$open_close_pairs    = array();
+			$is_valid_open_close = false;
+			$is_valid_midday     = false;
+
+			if ( ! empty( $opts[ $key_day_o ] ) && ! empty( $opts[ $key_day_c ] ) ) {
+
+				$is_valid_open_close = self::is_valid_open_close( $opts[ $key_day_o ], $opts[ $key_day_c ] );
+
+				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
+
+					$is_valid_midday = self::is_valid_midday( $opts[ $key_day_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_day_c ] );
+				}
+
+				if ( $is_valid_open_close ) {
+
+					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtil::get_default_timezone() : $opts[ $key_tz ];
+					$tz_offset = SucomUtil::get_timezone_offset_hours( $timezone );
+					$hm_tz_o   = $opts[ $key_day_o ] . ':00' . $tz_offset;
+					$hm_tz_c   = $opts[ $key_day_c ] . ':00' . $tz_offset;
+
+					if ( $is_valid_midday ) {
+
+						$hm_tz_midday_c = $opts[ $key_midday_c ] . ':00' . $tz_offset;
+						$hm_tz_midday_o = $opts[ $key_midday_o ] . ':00' . $tz_offset;
+
+						$open_close_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
+						$open_close_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
+
+					} else $open_close_pairs[ $hm_tz_o ] = $hm_tz_c;
+				}
+			}
+
+			return $open_close_pairs;
+		}
+
+		private static function is_valid_open_close( $hm_o, $hm_c ) {
+
+			/*
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
+
+				return false;
+			}
+
+			$hm_o_time = strtotime( $hm_o );
+			$hm_c_time = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_c_time ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
+		/*
+		 * Checks for 'none' and invalid times for midday close and open.
+		 */
+		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
+
+			/*
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
+
+				return false;
+			}
+
+			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || 'none' === $hm_midday_c || 'none' === $hm_midday_o ) {
+
+				return false;
+			}
+
+			$hm_o_time        = strtotime( $hm_o );
+			$hm_midday_c_time = strtotime( $hm_midday_c );
+			$hm_midday_o_time = strtotime( $hm_midday_o );
+			$hm_c_time        = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_midday_c_time ) {
+
+				if ( $hm_midday_c_time < $hm_midday_o_time ) {
+
+					if ( $hm_midday_o_time < $hm_c_time ) {
+
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 
 		/*

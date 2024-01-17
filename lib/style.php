@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'hook name = ' . $hook_name );
-				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'screen base = ' . SucomUtilWP::get_screen_base() );
 			}
 
 			/*
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case 'edit-tags.php':	// Term edit.
 				case 'user-edit.php':	// User edit.
 				case 'profile.php':	// User edit.
-				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
+				case ( SucomUtilWP::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
 

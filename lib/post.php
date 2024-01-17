@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Maybe limit the number of array elements.
 			 */
-			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -252,13 +252,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * WpssoPost elements.
 			 */
 			$mod[ 'is_post' ]       = true;
-			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $post_id );						// Static front page (singular post).
-			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $post_id );	// Static posts page or blog archive page.
+			$mod[ 'is_home_page' ]  = SucomUtilWP::is_home_page( $post_id );					// Static front page (singular post).
+			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtilWP::is_home_posts( $post_id );	// Static posts page or blog archive page.
 			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;		// Home page (static or blog archive).
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'wp_obj' ] = get_post( $mod[ 'id' ] );	// Optimize and fetch once.
+				$mod[ 'wp_obj' ] = SucomUtilWP::get_post_object( $mod[ 'id' ] );
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {	// Just in case.
 
@@ -329,7 +329,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 								$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
 							}
 
-							$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
+							$mod[ 'is_post_type_archive' ] = SucomUtilWP::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
 
 							$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 						}
@@ -383,7 +383,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_mod_wp_object( array $mod ) {
 
-			return get_post( $mod[ 'id' ] );
+			if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {
+
+				return $mod[ 'wp_obj' ];
+			}
+
+			return SucomUtilWP::get_post_object( $mod[ 'id' ] );
 		}
 
 		/*
@@ -443,7 +448,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
@@ -742,12 +747,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Get all publicly accessible post ids using WP_Query->query().
-		 *
-		 * Use 'suppress_filters' = false to allow WPML (and others) to filter posts for the current language.
 		 */
 		public static function get_public_ids( array $posts_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
+
+			/*
+			 * The WPML integration module returns true so WPML can filter posts for the current language.
+			 *
+			 * See WpssoAbstractWpMeta->get_column_meta_query_og_type().
+			 * See WpssoIntegLangWpml->__construct().
+			 * See WpssoIntegLangQtranslateXt->__construct().
+			 */
+			$filter_name = 'wpsso_post_public_ids_suppress_filters';
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$suppress_filters = apply_filters( $filter_name, true );
 
 			$posts_args = array_merge( array(
 				'has_password'     => false,
@@ -758,21 +777,45 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'paged'            => false,
 				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
-				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
+				'suppress_filters' => $suppress_filters,
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
-			$mtime_start = microtime( $get_float = true );
-			$public_ids  = SucomUtilWP::get_posts( $posts_args );
-			$mtime_total = microtime( $get_float = true ) - $mtime_start;
+			/*
+			 * See WpssoIntegLangQtranslateXt->filter_post_public_ids_posts_args().
+			 */
+			$filter_name = 'wpsso_post_public_ids_posts_args';
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			$posts_args = apply_filters( $filter_name, $posts_args );
 
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
+			}
+
+			$mtime_start = microtime( $get_float = true );
+
+			$public_ids = SucomUtilWP::get_posts( $posts_args );
+
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
+
+			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( count( $public_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
-			return apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
+			$filter_name = 'wpsso_post_public_ids';
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+			}
+
+			return apply_filters( $filter_name, $public_ids, $posts_args );
 		}
 
 		/*
@@ -928,14 +971,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Get the post object for sanity checks.
 			 */
-			$post_obj = SucomUtil::get_post_object( true );
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling get_post_object( $use_post = true )' );
+			}
+
+			$post_obj = SucomUtilWP::get_post_object( $use_post = true );
 			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			if ( ! $post_obj instanceof WP_Post ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post object is not an instance of WP_Post' );
+					if ( is_object( $post_obj ) ) {
+
+						$this->p->debug->log( 'exiting early: ' . get_class( $post_obj ) . ' object is not an instance of WP_Post' );
+
+					} else $this->p->debug->log( 'exiting early: post object is not an object' );
 				}
 
 				return;
@@ -990,10 +1042,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->p->debug->log( 'post id = ' . $post_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
-				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtilWP::get_locale() );
+				$this->p->debug->log( 'locale default = ' . SucomUtilWP::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtilWP::get_locale( $mod ) );
+				$this->p->debug->log( SucomUtil::get_array_pretty( $mod ) );
 			}
 
 			if ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {
@@ -1101,7 +1153,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ! is_object( $post_obj ) ) {
 
-				$post_obj = SucomUtil::get_post_object( $post_id );
+				$post_obj = SucomUtilWP::get_post_object( $post_id );
 
 				if ( empty( $post_obj ) ) {
 
@@ -1151,7 +1203,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( empty( $post_obj->post_type ) || SucomUtil::is_post_type_public( $post_obj->post_type ) ) {
+			if ( empty( $post_obj->post_type ) || SucomUtilWP::is_post_type_public( $post_obj->post_type ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1713,7 +1765,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$post_id = $_POST[ 'post_id' ];
-			$post_obj = SucomUtil::get_post_object( $post_id );
+
+			$post_obj = SucomUtilWP::get_post_object( $post_id );
 
 			/*
 			 * WpssoPost->post_can_have_meta() returns false:
@@ -1775,27 +1828,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Clear the permalink, canonical / shortlink url cache.
-			 */
-			$permalink = get_permalink( $post_id );
-
-			$this->p->cache->clear( $permalink );
-
-			if ( ini_get( 'open_basedir' ) ) {
-
-				$other_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
-
-			} else {
-
-				$other_url = $this->p->util->get_shortlink( $post_id, $context = 'post' );
-			}
-
-			if ( $permalink !== $other_url ) {
-
-				$this->p->cache->clear( $other_url );
-			}
-
-			/*
 			 * Clear the post meta, content, and head caches.
 			 */
 			$mod = $this->get_mod( $post_id );
@@ -1803,11 +1835,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->clear_mod_cache( $mod );
 
 			/*
+			 * Clear the permalink, canonical / shortlink url cache.
+			 */
+			$permalink = get_permalink( $mod[ 'wp_obj' ] );
+
+			$this->p->cache->clear( $permalink );
+
+			if ( ini_get( 'open_basedir' ) ) {
+
+				$other_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+
+			} else $other_url = $this->p->util->get_shortlink( $mod, $context = 'post' );
+
+			if ( $permalink !== $other_url ) {
+
+				$this->p->cache->clear( $other_url );
+			}
+
+			/*
 			 * Clear post date, term, and author archive pages.
 			 */
-			$post_year  = get_the_time( 'Y', $post_id );
-			$post_month = get_the_time( 'm', $post_id );
-			$post_day   = get_the_time( 'd', $post_id );
+			$post_year  = get_the_time( 'Y', $mod[ 'wp_obj' ] );
+			$post_month = get_the_time( 'm', $mod[ 'wp_obj' ] );
+			$post_day   = get_the_time( 'd', $mod[ 'wp_obj' ] );
 
 			$home_url       = home_url( '/' );
 			$post_year_url  = get_year_link( $post_year );
@@ -1822,11 +1872,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
-			$post_status = get_post_status( $post_id );
+			if ( 'publish' === $mod[ 'post_status' ] ) {
 
-			if ( 'publish' === $post_status ) {
-
-				$post_taxonomies = get_post_taxonomies( $post_id );
+				$post_taxonomies = get_post_taxonomies( $mod[ 'wp_obj' ] );
 
 				if ( is_array( $post_taxonomies ) ) {	// Just in case.
 
@@ -1848,9 +1896,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Clear the post author archive page.
 			 */
-			$author_id = get_post_field( 'post_author', $post_id );
-
-			$this->p->user->clear_cache( $author_id );
+			$this->p->user->clear_cache( $mod[ 'post_author' ] );
 
 			/*
 			 * The WPSSO FAQ add-on question shortcode attaches the post id to the question so the post cache can be
@@ -2127,10 +2173,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$shortlink = home_url( '/' );
 
-					} else {
-
-						$shortlink = home_url( '?p=' . $post_id );
-					}
+					} else $shortlink = home_url( '?p=' . $post_id );
 				}
 
 			/*
@@ -2462,7 +2505,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				/*
 				 * The 'wpsso_primary_tax_slug' filter is hooked by the WooCommerce integration module.
@@ -2632,17 +2675,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function post_can_have_meta( $post ) {
 
-			if ( is_numeric( $post ) ) {
-
-				$post_id     = $post;
-				$post_type   = get_post_type( $post_id );
-				$post_status = get_post_status( $post_id );
-
-			} elseif ( $post instanceof WP_Post ) {
+			if ( $post instanceof WP_Post ) {
 
 				$post_id     = isset( $post->ID ) ? $post->ID : 0;
 				$post_type   = isset( $post->post_type ) ? $post->post_type : '';
 				$post_status = isset( $post->post_status ) ? $post->post_status : '';
+
+			} elseif ( is_numeric( $post ) ) {
+
+				$post_id     = $post;
+				$post_type   = get_post_type( $post_id );
+				$post_status = get_post_status( $post_id );
 
 			} else {
 

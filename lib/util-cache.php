@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			if ( $user_id ) {
 
 				$mtime_start  = microtime( $get_float = true );
-				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
+				$time_on_date = SucomUtil::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s was started at %2$s.', 'wpsso' ), $task_name_transl, $time_on_date );
 				$notice_key   = $task_name . '-task-info';
 

@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				$this->p->debug->log( 'no method or class to get product' );
 			}
 
-			return $product;
+			return apply_filters( 'wpsso_wc_get_product_object', $product, $product_id );
 		}
 
 		/*
@@ -290,8 +290,6 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 					$this->p->debug->log( 'exiting early: no product for variation id ' . $variation[ 'variation_id' ] );
 				}
-
-				return false;	// Stop here.
 			}
 
 			return $product;
@@ -299,9 +297,6 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 		/*
 		 * Check if a simple product, variable product or any of its variations, has a meta data value.
-		 *
-		 * Called by WpssoWcmdWooCommerce->filter_product_enable_dimensions_display().
-		 * Called by WpssoWcmdWooCommerce->filter_display_product_attributes().
 		 */
 		public function has_meta( $product, $meta_key ) {
 

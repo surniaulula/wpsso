@@ -168,9 +168,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
-				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtilWP::get_locale() );
+				$this->p->debug->log( 'locale default = ' . SucomUtilWP::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtilWP::get_locale( $mod ) );
 
 				$this->p->util->log_is_functions();
 			}
@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'read_cache is ' . SucomUtil::get_bool_string( $read_cache ) );
 			}
 
-			$cache_array = SucomUtil::get_transient_array( $cache_id );
+			$cache_array = get_transient( $cache_id );
 
 			if ( is_array( $cache_array ) ) {
 
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( $cache_exp_secs > 0 ) {
 
-				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
+				$expires_in_secs = SucomUtilWP::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -548,16 +548,48 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/*
+		 * A cache index string based on current locale or $mod array.
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 *
-		 * See WpssoIntegEcomEdd->filter_head_cache_index().
 		 * See WpssoIntegEcomWooCommerce->filter_head_cache_index().
 		 */
 		public function get_head_cache_index( $mixed = 'current' ) {
 
-			$cache_index = SucomUtil::get_cache_index( $mixed );
+			$cache_index = '';
 
-			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed );
+			if ( is_array( $mixed ) ) {
+
+				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
+
+					$cache_index .= '_order:' . $mixed[ 'query_vars' ][ 'order' ];
+				}
+
+				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// Greater than 1.
+
+					$cache_index .= '_paged:' . $mixed[ 'paged' ];
+				}
+			}
+
+			$cache_index .= '_locale:' . SucomUtilWP::get_locale( $mixed );
+
+			if ( SucomUtilWP::is_amp() ) {	// Returns null, true, or false.
+
+				$cache_index .= '_amp:true';
+			}
+
+			/*
+			 * Include a check for embedded pages as they are "noindex" by default.
+			 */
+			foreach ( array( 'is_embed' => 'embed:true' ) as $function => $index_val ) {
+
+				if ( function_exists( 'is_embed' ) && $function() ) {
+
+					$cache_index .= '_' . $index_val;
+				}
+			}
+
+			$cache_index = apply_filters( 'wpsso_head_cache_index', trim( $cache_index, '_' ), $mixed );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1251,7 +1283,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
+					if ( isset( $this->p->options[ $opt_key ] ) ) {
+
+						$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
+
+					} else $this->p->debug->log( $log_prefix . ' skipped: internal meta tag' );
 				}
 
 				$mt_array[] = $parts;	// Save the HTML and encoded value.

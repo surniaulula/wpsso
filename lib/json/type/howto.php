@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoJsonTypeHowTo' ) ) {
 			$json_ret = array();
 			$md_opts  = array();
 
-			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
+			WpssoSchema::add_type_opts_md_pad( $md_opts, $mod );
 
 			/*
 			 * See https://schema.org/yield.

@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filter ' . $filter_name );
+					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
 
 				$md_opts = apply_filters( $filter_name, $md_opts, $block[ 'attrs' ] );

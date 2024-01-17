@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_day_page_desc' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_day_page_desc', $css_class = 'wide' ) . '</td>';
 
-			$post_type_archives = SucomUtil::get_post_type_archives( $output = 'objects', $sort = true );
+			$post_type_archives = SucomUtilWP::get_post_type_archives( $output = 'objects', $sort = true );
 
 			if ( ! empty( $post_type_archives ) ) {
 
@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				foreach ( $post_type_archives as $num => $post_type_obj ) {
 
-					$obj_label = sprintf( _x( '%s Archive Page', 'metabox title', 'wpsso' ), SucomUtil::get_object_label( $post_type_obj ) );
+					$obj_label = sprintf( _x( '%s Archive Page', 'metabox title', 'wpsso' ), SucomUtilWP::get_object_label( $post_type_obj ) );
 					$title_key = 'plugin_pta_' . $post_type_obj->name . '_title';
 					$desc_key  = 'plugin_pta_' . $post_type_obj->name . '_desc';
 
@@ -654,12 +654,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/*
 			 * Open Graph Type by Post Type.
 			 *
-			 * SucomUtil::get_post_type_labels() calls SucomUtil::get_post_types(), which returns post types registered
-			 * as 'public' = true and 'show_ui' = true by default. Note that the 'wp_block' custom post type for
-			 * reusable blocks is registered as 'public' = false and 'show_ui' = true.
+			 * SucomUtilWP::get_post_type_labels() calls SucomUtilWP::get_post_types(), which returns post types
+			 * registered as 'public' = true and 'show_ui' = true by default. Note that the 'wp_block' custom post type
+			 * for reusable blocks is registered as 'public' = false and 'show_ui' = true.
 			 */
 			$type_select = '';
-			$type_labels = SucomUtil::get_post_type_labels( $val_prefix = 'og_type_for_' );
+			$type_labels = SucomUtilWP::get_post_type_labels( $val_prefix = 'og_type_for_' );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
@@ -678,7 +678,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$type_labels = SucomUtil::get_post_type_archive_labels( $val_prefix = 'og_type_for_pta_' );
+			$type_labels = SucomUtilWP::get_post_type_archive_labels( $val_prefix = 'og_type_for_pta_' );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$type_labels = SucomUtil::get_taxonomy_labels( $val_prefix = 'og_type_for_tax_' );
+			$type_labels = SucomUtilWP::get_taxonomy_labels( $val_prefix = 'og_type_for_tax_' );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
@@ -747,12 +747,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/*
 			 * Schema Type by Post Type.
 			 *
-			 * SucomUtil::get_post_type_labels() calls SucomUtil::get_post_types(), which returns post types registered
-			 * as 'public' = true and 'show_ui' = true by default. Note that the 'wp_block' custom post type for
-			 * reusable blocks is registered as 'public' = false and 'show_ui' = true.
+			 * SucomUtilWP::get_post_type_labels() calls SucomUtilWP::get_post_types(), which returns post types
+			 * registered as 'public' = true and 'show_ui' = true by default. Note that the 'wp_block' custom post type
+			 * for reusable blocks is registered as 'public' = false and 'show_ui' = true.
 			 */
 			$type_select = '';
-			$type_labels = SucomUtil::get_post_type_labels( $val_prefix = 'schema_type_for_' );
+			$type_labels = SucomUtilWP::get_post_type_labels( $val_prefix = 'schema_type_for_' );
 			$type_labels = apply_filters( 'wpsso_schema_type_post_type_labels', $type_labels );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
@@ -772,7 +772,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$type_labels = SucomUtil::get_post_type_archive_labels( $val_prefix = 'schema_type_for_pta_' );
+			$type_labels = SucomUtilWP::get_post_type_archive_labels( $val_prefix = 'schema_type_for_pta_' );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
@@ -796,7 +796,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$type_labels = SucomUtil::get_taxonomy_labels( $val_prefix = 'schema_type_for_tax_' );
+			$type_labels = SucomUtilWP::get_taxonomy_labels( $val_prefix = 'schema_type_for_tax_' );
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
@@ -1301,7 +1301,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$opts_transl = SucomUtil::get_options_label_transl( $this->p->cf[ 'form' ][ 'attr_labels' ], $text_domain = 'wpsso' );
+			$opts_transl = SucomUtil::get_opts_labels_transl( $this->p->cf[ 'form' ][ 'attr_labels' ], $text_domain = 'wpsso' );
 
 			foreach ( $opts_transl as $opt_key => $opt_label_transl ) {
 
@@ -1338,7 +1338,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				}
 			}
 
-			$opts_transl = SucomUtil::get_options_label_transl( $opts_labels, $text_domain = 'wpsso' );
+			$opts_transl = SucomUtil::get_opts_labels_transl( $opts_labels, $text_domain = 'wpsso' );
 
 			foreach ( $opts_transl as $opt_cf_key => $opt_label_transl ) {
 
@@ -1450,7 +1450,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				}
 			}
 
-			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
+			return array_merge( $table_rows, $this->p->admin->get_table_rows_cols( $table_cells, 2 ) );
 		}
 	}
 }

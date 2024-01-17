@@ -29,19 +29,17 @@
 
 <tr><th>sucom_get_user_object</th><td>(&nbsp;$user_obj, $user_id&nbsp;)</td></tr>
 
-<tr><th>sucom_is_home_page</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+<tr><th>sucom_is_home_page</th><td>(&nbsp;$bool, $use_post&nbsp;)</td></tr>
 
-<tr><th>sucom_is_home_posts</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+<tr><th>sucom_is_home_posts</th><td>(&nbsp;$bool, $use_post&nbsp;)</td></tr>
 
-<tr><th>sucom_is_post_page</th><td>(&nbsp;$ret, $use_post&nbsp;)</td></tr>
+<tr><th>sucom_is_post_page</th><td>(&nbsp;$bool, $use_post&nbsp;)</td></tr>
 
-<tr><th>sucom_is_term_page</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+<tr><th>sucom_is_term_page</th><td>(&nbsp;$bool&nbsp;)</td></tr>
 
-<tr><th>sucom_is_user_page</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+<tr><th>sucom_is_user_page</th><td>(&nbsp;$bool&nbsp;)</td></tr>
 
 <tr><th>sucom_robots_default_directives</th><td>(&nbsp;$directives&nbsp;)</td></tr>
-
-<tr><th>sucom_strip_shortcodes</th><td>(&nbsp;$preg_array&nbsp;)</td></tr>
 
 <tr><th>wpsso_{post_type}_tag_taxonomy</th><td>(&nbsp;$taxonomy = 'post_tag', $mod&nbsp;)</td></tr>
 
@@ -105,7 +103,7 @@
 
 <tr><th>wpsso_form_select_{option_name}</th><td>(&nbsp;$values&nbsp;)</td></tr>
 
-<tr><th>wpsso_get_avail</th><td>(&nbsp;$ret&nbsp;)</td></tr>
+<tr><th>wpsso_get_avail</th><td>(&nbsp;array $avail&nbsp;)</td></tr>
 
 <tr><th>wpsso_get_config</th><td>(&nbsp;array $cf&nbsp;)</td></tr>
 
@@ -287,6 +285,10 @@
 
 <tr><th>wpsso_post_public_ids</th><td>(&nbsp;array $public_ids, array $posts_args&nbsp;)</td></tr>
 
+<tr><th>wpsso_post_public_ids_posts_args</th><td>(&nbsp;array $posts_args&nbsp;)</td></tr>
+
+<tr><th>wpsso_post_public_ids_suppress_filters</th><td>(&nbsp;true&nbsp;)</td><td>False when the WPML or qTranslate-XT plugins are active.</td></tr>
+
 <tr><th>wpsso_post_type_has_archive</th><td>(&nbsp;$bool, $mod&nbsp;)</td></tr>
 
 <tr><th>wpsso_post_types</th><td>(&nbsp;$post_types, $output&nbsp;)</td></tr>
@@ -299,13 +301,13 @@
 
 <tr><th>wpsso_primary_terms</th><td>(&nbsp;$primary_terms, $mod, $tax_slug, $output&nbsp;)</td></tr>
 
-<tr><th>wpsso_product_attribute_names</th><td>(&nbsp;array $attr_names&nbsp;)</td></tr>
-
-<tr><th>wpsso_product_description</th><td>(&nbsp;$desc, $product&nbsp;)</td></tr>
+<tr><th>wpsso_product_currency</th><td>(&nbsp;$currency, $product&nbsp;)</td></tr>
 
 <tr><th>wpsso_product_price</th><td>(&nbsp;$price, $product&nbsp;)</td></tr>
 
 <tr><th>wpsso_product_title</th><td>(&nbsp;$title, $product&nbsp;)</td></tr>
+
+<tr><th>wpsso_product_url</th><td>(&nbsp;$url, $product&nbsp;)</td></tr>
 
 <tr><th>wpsso_product_variation_title</th><td>(&nbsp;$title, $product, $variation&nbsp;)</td></tr>
 

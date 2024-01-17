@@ -17,7 +17,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
-	class SucomUtilMetabox {
+	class SucomUtilMetabox extends SucomUtil {
 
 		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
 
@@ -56,7 +56,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				$is_added     = isset( $metadata[ $key ] ) ? false : true;
 				$key          = sanitize_key( $key );	// Just in case.
 				$key_esc      = esc_html( $key );
-				$value        = SucomUtil::maybe_unserialize_array( $value );
+				$value        = self::array_maybe_unserialize( $value );
 				$value_esc    = esc_html( var_export( $value, true ) );
 				$table_row_id = sanitize_key( $metabox_id . '_' . $obj_id . '_' . $key );
 				$onclick_js   = 'sucomDeleteMeta( \'' . $metabox_id . '\', \'' . $obj_id . '\', \'' . $key . '\', \'' . $admin_l10n . '\' );';
@@ -149,7 +149,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				}
 			';
 
-			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $metabox_id );
+			$custom_style_css = self::minify_css( $custom_style_css, $metabox_id );
 
 			return '<style type="text/css">' . $custom_style_css . '</style>';
 		}

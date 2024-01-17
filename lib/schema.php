@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$schema_lang = SucomUtil::get_locale( $mixed );
+			$schema_lang = SucomUtilWP::get_locale( $mixed );
 
 			/*
 			 * If there is a multilingual plugin available, skip any custom language value.
@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying data filter: ' . $data_filter_name );
+						$this->p->debug->log( 'applying filters \'' . $data_filter_name . '\'' );
 					}
 
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying data validation filter: ' . $data_filter_name );
+							$this->p->debug->log( 'applying filters \'' . $data_filter_name . '\'' );
 						}
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
@@ -1863,10 +1863,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$org_opts = array(
-				'org_url'         => SucomUtil::get_home_url( $wpsso->options, $mixed ),
-				'org_name'        => SucomUtil::get_site_name( $wpsso->options, $mixed ),
-				'org_name_alt'    => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
-				'org_desc'        => SucomUtil::get_site_description( $wpsso->options, $mixed ),
+				'org_url'         => SucomUtilWP::get_home_url( $wpsso->options, $mixed ),
+				'org_name'        => SucomUtilWP::get_site_name( $wpsso->options, $mixed ),
+				'org_name_alt'    => SucomUtilWP::get_site_name_alt( $wpsso->options, $mixed ),
+				'org_desc'        => SucomUtilWP::get_site_description( $wpsso->options, $mixed ),
 				'org_place_id'    => $wpsso->options[ 'site_org_place_id' ],
 				'org_schema_type' => $wpsso->options[ 'site_org_schema_type' ],
 			);
@@ -2626,7 +2626,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
+					$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
 
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
@@ -3178,7 +3178,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
+					$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
 				}
 
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
@@ -3381,10 +3381,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$mod = $wpsso->post->get_mod( $post_id );
 
-			} else {
-
-				return false;
-			}
+			} else return false;
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $type . '_options' );
 			$type_opts   = apply_filters( $filter_name, false, $mod, $type_id );
@@ -3402,9 +3399,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * $type_opts can be false, an empty array, or an array of one or more options.
 			 */
-			SucomUtil::add_type_opts_md_pad( $type_opts, $mod, array( $type => 'schema_' . $type ) );
+			self::add_type_opts_md_pad( $type_opts, $mod, array( $type => 'schema_' . $type ) );
 
 			return $type_opts;
+		}
+
+		/*
+		 * Add metadata defaults and custom values to the $type_opts array.
+		 *
+		 * $type_opts can be false, an empty array, or an array of one or more options.
+		 */
+		public static function add_type_opts_md_pad( &$type_opts, array $mod, array $opts_md_pre = array() ) {
+
+			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+
+				$md_defs = $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+				if ( empty( $opts_md_pre ) ) {	// Nothing to rename.
+
+					$type_opts = array_merge( $md_defs, $md_opts );
+
+				} else {
+
+					foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+
+						$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
+						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
+
+						if ( is_array( $type_opts ) ) {
+
+							$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
+
+						} else $type_opts = array_merge( $md_defs, $md_opts );
+					}
+				}
+			}
 		}
 
 		/*
@@ -3996,7 +4026,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$enums_transl = SucomUtil::get_options_value_transl( $enumerations, $text_domain = 'wpsso' );
+				$enums_transl = SucomUtil::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' );
 
 				foreach ( $enumerations as $key => $val ) {
 
@@ -4023,11 +4053,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					$values[ $key ] = $key;
-				}
-
-				foreach ( $enums_transl as $key => $val ) {
-
-					$values[ $val ] = $val;
 				}
 
 				SucomUtil::natasort( $values );
@@ -4085,7 +4110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$enums_labels = array_flip( $enumerations );
-				$enums_transl = array_flip( SucomUtil::get_options_value_transl( $enumerations, $text_domain = 'wpsso' ) );
+				$enums_transl = array_flip( SucomUtil::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' ) );
 				$prop_val     = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
 
 				if ( ! isset( $enumerations[ $prop_val ] ) ) {
@@ -4507,16 +4532,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Thing > Organization > Local Business.
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
-		}
-
-		/*
-		 * Deprecated on 2022/12/26.
-		 */
-		public static function get_data_unit_text( $mixed_key ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/12/26', $replacement = __CLASS__ . '::get_unit_text()' );	// Deprecation message.
-
-			return self::get_unit_text( $mixed_key );
 		}
 
 		/*

@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoJsonTypeMovie' ) ) {
 			$json_ret = array();
 			$md_opts  = array();
 
-			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
+			WpssoSchema::add_type_opts_md_pad( $md_opts, $mod );
 
 			/*
 			 * Movie Release Date, Time, Timezone.

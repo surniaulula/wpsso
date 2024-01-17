@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying get_defaults filters' );
+					$this->p->debug->log( 'applying filters \'wpsso_get_defaults\'' );
 				}
 
 				$local_cache = apply_filters( 'wpsso_get_defaults', $local_cache );
@@ -351,7 +351,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying get_site_defaults filters' );
+					$this->p->debug->log( 'applying filters \'wpsso_get_site_defaults\'' );
 				}
 
 				$local_cache = apply_filters( 'wpsso_get_site_defaults', $local_cache );

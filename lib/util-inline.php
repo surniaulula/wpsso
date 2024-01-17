@@ -317,7 +317,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					case 'org_url':		// Used by Rank Math.
 					case 'site_url':
 
-						$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
+						$ret_val = SucomUtilWP::get_home_url( $this->p->options, $mod );
 
 						break;
 
@@ -387,20 +387,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					case 'sitename':
 					case 'sitetitle':	// Used by SEOPress.
 
-						$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
+						$ret_val = SucomUtilWP::get_site_name( $this->p->options, $mod );
 
 						break;
 
 					case 'sitealtname':
 
-						$ret_val = SucomUtil::get_site_name_alt( $this->p->options, $mod );
+						$ret_val = SucomUtilWP::get_site_name_alt( $this->p->options, $mod );
 
 						break;
 
 					case 'sitedesc':	// Used by Rank Math.
 					case 'tagline':		// Used by SEOPress.
 
-						$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
+						$ret_val = SucomUtilWP::get_site_description( $this->p->options, $mod );
 
 						break;
 

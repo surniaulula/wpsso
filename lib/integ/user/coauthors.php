@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'get_user_object' => 2,
-			), $prio = 50, $ext = 'sucom' );
+			), $prio = 50, $ext = 'sucom' );	// Note the 'sucom' filter prefix.
 
 			add_filter( 'coauthors_guest_author_fields', array( $this, 'add_contact_methods' ), 20, 2 );
 		}

@@ -59,6 +59,7 @@ $mod = wpsso_get_user_mod( $user_id = 123 );
     [obj] =&gt; object WpssoPost
     [wp_obj] =&gt; object WP_Post
     [query_vars] =&gt; Array ()
+    [posts_args] =&gt; Array ()
     [paged] =&gt; false
     [paged_total] =&gt; 1
     [is_404] =&gt; false
@@ -78,12 +79,19 @@ $mod = wpsso_get_user_mod( $user_id = 123 );
     [is_term] =&gt; false
     [is_user] =&gt; false
     [is_year] =&gt; false
+    [comment_author] =&gt; false
+    [comment_author_name] =&gt; false
+    [comment_author_url] =&gt; false
+    [comment_paged] =&gt; false
+    [comment_parent] =&gt; false
+    [comment_rating] =&gt; false
+    [comment_time] =&gt; false
     [use_post] =&gt; false
     [post_slug] =&gt; the-post-slug
     [post_type] =&gt; post
     [post_type_label_plural] =&gt; Posts
     [post_type_label_single] =&gt; Post
-    [post_mime] =&gt; ''
+    [post_mime_type] =&gt; ''
     [post_mime_group] =&gt; ''
     [post_mime_subgroup] =&gt; ''
     [post_status] =&gt; publish
@@ -98,5 +106,128 @@ $mod = wpsso_get_user_mod( $user_id = 123 );
     [tax_label_plural] =&gt; false
     [tax_label_single] =&gt; false
     [user_name] =&gt; ''
+    [wpml_code] =&gt; ''
+)</pre>
+
+<p>Here is an example <code>$mod</code> array for a WooCommerce product:</p>
+
+<pre>Array (
+    [id] =&gt; 4567
+    [name] =&gt; post
+    [name_transl] =&gt; post
+    [obj] =&gt; object WpssoPost
+    [wp_obj] =&gt; object WP_Post
+    [query_vars] =&gt; Array ()
+    [posts_args] =&gt; Array ()
+    [paged] =&gt; false
+    [paged_total] =&gt; 1
+    [is_404] =&gt; false
+    [is_archive] =&gt; false
+    [is_attachment] =&gt; false
+    [is_comment] =&gt; false
+    [is_date] =&gt; false
+    [is_day] =&gt; false
+    [is_feed] =&gt; false
+    [is_home] =&gt; false
+    [is_home_page] =&gt; false
+    [is_home_posts] =&gt; false
+    [is_month] =&gt; false
+    [is_post] =&gt; true
+    [is_post_type_archive] =&gt; false
+    [is_public] =&gt; true
+    [is_search] =&gt; false
+    [is_term] =&gt; false
+    [is_user] =&gt; false
+    [is_year] =&gt; false
+    [comment_author] =&gt; false
+    [comment_author_name] =&gt; false
+    [comment_author_url] =&gt; false
+    [comment_paged] =&gt; false
+    [comment_parent] =&gt; false
+    [comment_rating] =&gt; false
+    [comment_time] =&gt; false
+    [use_post] =&gt; false
+    [post_slug] =&gt; hoodie
+    [post_type] =&gt; product
+    [post_type_label_plural] =&gt; Products
+    [post_type_label_single] =&gt; Product
+    [post_mime_type] =&gt; ''
+    [post_mime_group] =&gt; false
+    [post_mime_subgroup] =&gt; false
+    [post_status] =&gt; publish
+    [post_author] =&gt; 123
+    [post_coauthors] =&gt; Array ()
+    [post_time] =&gt; 2023-02-16T12:34:11+00:00
+    [post_timestamp] =&gt; 1676550851
+    [post_modified_time] =&gt; 2023-07-04T00:54:41+00:00
+    [post_modified_timestamp] =&gt; 1688432081
+    [post_parent] =&gt; false
+    [term_tax_id] =&gt; false
+    [tax_slug] =&gt; ''
+    [tax_label_plural] =&gt; false
+    [tax_label_single] =&gt; false
+    [user_name] =&gt; ''
+    [wpml_code] =&gt; ''
+)</pre>
+
+<p>Here is an example <code>$mod</code> array for a WooCommerce product category term:</p>
+
+<pre>Array (
+    [id] =&gt; 890
+    [name] =&gt; term
+    [name_transl] =&gt; term
+    [obj] =&gt; object WpssoTerm
+    [wp_obj] =&gt; object WP_Term
+    [query_vars] =&gt; Array ()
+    [posts_args] =&gt; Array ()
+    [paged] =&gt; false
+    [paged_total] =&gt; false
+    [is_404] =&gt; false
+    [is_archive] =&gt; true
+    [is_attachment] =&gt; false
+    [is_comment] =&gt; false
+    [is_date] =&gt; false
+    [is_day] =&gt; false
+    [is_feed] =&gt; false
+    [is_home] =&gt; false
+    [is_home_page] =&gt; false
+    [is_home_posts] =&gt; false
+    [is_month] =&gt; false
+    [is_post] =&gt; false
+    [is_post_type_archive] =&gt; false
+    [is_public] =&gt; true
+    [is_search] =&gt; false
+    [is_term] =&gt; true
+    [is_user] =&gt; false
+    [is_year] =&gt; false
+    [comment_author] =&gt; false
+    [comment_author_name] =&gt; false
+    [comment_author_url] =&gt; false
+    [comment_paged] =&gt; false
+    [comment_parent] =&gt; false
+    [comment_rating] =&gt; false
+    [comment_time] =&gt; false
+    [use_post] =&gt; false
+    [post_slug] =&gt; false
+    [post_type] =&gt; false
+    [post_type_label_plural] =&gt; false
+    [post_type_label_single] =&gt; false
+    [post_mime_type] =&gt; false
+    [post_mime_group] =&gt; false
+    [post_mime_subgroup] =&gt; false
+    [post_status] =&gt; false
+    [post_author] =&gt; false
+    [post_coauthors] =&gt; Array ()
+    [post_time] =&gt; false
+    [post_timestamp] =&gt; false
+    [post_modified_time] =&gt; false
+    [post_modified_timestamp] =&gt; false
+    [post_parent] =&gt; false
+    [term_tax_id] =&gt; 761
+    [tax_slug] =&gt; product_cat
+    [tax_label_plural] =&gt; Product categories
+    [tax_label_single] =&gt; Category
+    [user_name] =&gt; ''
+    [wpml_code] =&gt; ''
 )</pre>
 

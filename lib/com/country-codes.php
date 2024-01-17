@@ -1267,29 +1267,21 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 
 		private static $codes = array();
 
-		public function __construct() {
-		}
-
-		public static function get( $key = '' ) {
-
-			if ( empty( $key ) ) {
-
-				return self::$codes;
-			}
+		/*
+		 * $key = 'alpha2', 'alpha3', or 'numeric'.
+		 */
+		public static function get( $key ) {
 
 			if ( ! isset( self::$codes[ $key ] ) ) {
 
+				self::$codes[ $key ] = array();
+
 				foreach ( self::$countries as $name => $arr ) {
 
-					if ( isset( $arr[ $key ] ) ) {
+					if ( isset( $arr[ $key ] ) ) {	// 'alpha2', 'alpha3', or 'numeric'.
 
 						self::$codes[ $key ][ $arr[ $key ] ] = $name;
 					}
-				}
-
-				if ( ! isset( self::$codes[ $key ] ) ) {	// Just in case.
-
-					self::$codes[ $key ] = false;
 				}
 			}
 

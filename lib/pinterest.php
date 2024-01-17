@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 * Do not add a Pinterest image if the current webpage is amp, an rss feed, we're in the loop, or WPSSO is
 			 * applying the content filter to create a Schema or meta tag description value.
 			 */
-			if ( SucomUtil::is_amp() ) {
+			if ( SucomUtilWP::is_amp() ) {
 
 				if ( $this->p->debug->enabled ) {
 

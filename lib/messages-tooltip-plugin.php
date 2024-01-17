@@ -794,10 +794,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
-					$tp_frags    = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );	// Uses a local cache.
+					$tp_frags    = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );
 					$attr_key    = str_replace( 'tooltip-', '', $msg_key );
 					$attr_md_key = WpssoConfig::get_attr_md_index( $attr_key );
-					$is_multi    = $attr_md_key ? WpssoConfig::get_md_keys_multi( $attr_md_key ) : false;	// Uses a local cache.
+					$is_multi    = $attr_md_key ? WpssoConfig::get_md_keys_multi( $attr_md_key ) : false;
 					$def_attr    = $this->p->opt->get_defaults( $attr_key );
 
 					if ( ! empty( $tp_frags ) ) {	// Just in case.

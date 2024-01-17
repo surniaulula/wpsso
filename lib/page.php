@@ -121,10 +121,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$capability = 'edit_user';
 
-			} else {	// Validators are only provided for known modules (post, term, and user).
-
-				return false;	// Stop here.
-			}
+			} else return false;	// Validators are only provided for known modules (post, term, and user).
 
 			if ( ! current_user_can( $capability, $mod[ 'id' ] ) ) {
 
@@ -479,7 +476,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$mod[ 'name' ] = 'comment';
 
-						$mod[ 'id' ] = $wp_obj->ID;
+						$mod[ 'id' ] = $wp_obj->comment_ID;
 
 						break;
 
@@ -506,14 +503,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$mod[ 'id' ] = $wp_obj->ID;
 
 						break;
+
+					default:
+					
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'unknown wp object class = ' . get_class( $wp_obj ) );
+						}
+
+						break;
 				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp_obj argument is not an object' );
 			}
+
 
 			unset( $wp_obj );	// Done with $wp_obj.
 
 			if ( empty( $mod[ 'name' ] ) ) {
 
-				if ( SucomUtil::is_post_page( $use_post ) ) {	// $use_post = true | false | post ID.
+				if ( SucomUtilWP::is_post_page( $use_post ) ) {	// $use_post = true | false | post ID.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -522,7 +533,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$mod[ 'name' ] = 'post';
 
-				} elseif ( SucomUtil::is_term_page() ) {
+				} elseif ( SucomUtilWP::is_term_page() ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -531,7 +542,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$mod[ 'name' ] = 'term';
 
-				} elseif ( SucomUtil::is_user_page() ) {
+				} elseif ( SucomUtilWP::is_user_page() ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -547,21 +558,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				switch ( $mod[ 'name' ] ) {
 
+					case 'comment':
+
+						$mod[ 'id' ] = SucomUtilWP::get_comment_object( false, 'id' );
+
+						break;
+
 					case 'post':
 
-						$mod[ 'id' ] = SucomUtil::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
+						$mod[ 'id' ] = SucomUtilWP::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
 
 						break;
 
 					case 'term':
 
-						$mod[ 'id' ] = SucomUtil::get_term_object( false, '', 'id' );
+						$mod[ 'id' ] = SucomUtilWP::get_term_object( false, '', 'id' );
 
 						break;
 
 					case 'user':
 
-						$mod[ 'id' ] = SucomUtil::get_user_object( false, 'id' );
+						$mod[ 'id' ] = SucomUtilWP::get_user_object( false, 'id' );
 
 						break;
 
@@ -611,7 +628,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'module object is unknown: merging $mod defaults' );
+						$this->p->debug->log( 'unknown module object - merging $mod defaults array' );
 					}
 
 					$mod = array_merge( WpssoAbstractWpMeta::get_mod_defaults(), $mod );
@@ -947,7 +964,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$caption_desc = $this->get_description( $mod, $md_key_desc = 'og_desc', $adj_max_len,
 							$num_hashtags, $do_encode_desc = false );
 
-						SucomUtil::add_title_part( $caption_text, $title_sep, $caption_desc );
+						$this->add_title_part( $caption_text, $title_sep, $caption_desc );
 
 						break;
 				}
@@ -957,10 +974,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$caption_text = SucomUtil::encode_html_emoji( $caption_text );	// Does not double-encode.
 
-			} else {	// Just in case.
-
-				$caption_text = html_entity_decode( SucomUtil::decode_utf8( $caption_text ), ENT_QUOTES, $this->charset );
-			}
+			} else $caption_text = html_entity_decode( SucomUtil::decode_utf8( $caption_text ), ENT_QUOTES, $this->charset );
 
 			return apply_filters( 'wpsso_caption', $caption_text, $mod, $num_hashtags, $md_key );
 		}
@@ -1102,12 +1116,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $page_number_transl ) ) {
 
-				SucomUtil::add_title_part( $title_text, $title_sep, $page_number_transl );
+				$this->add_title_part( $title_text, $title_sep, $page_number_transl );
 			}
 
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtil::add_title_part( $title_text, '', $hashtags );
+				$this->add_title_part( $title_text, '', $hashtags );
 			}
 
 			/*
@@ -1225,7 +1239,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtil::add_title_part( $desc_text, '', $hashtags );
+				$this->add_title_part( $desc_text, '', $hashtags );
 			}
 
 			/*
@@ -1287,7 +1301,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtil::add_title_part( $text, '', $hashtags );
+				$this->add_title_part( $text, '', $hashtags );
 			}
 
 			/*
@@ -1333,7 +1347,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
-				$title_text = SucomUtil::get_site_name( $this->p->options );
+				$title_text = SucomUtilWP::get_site_name( $this->p->options );
 
 			} elseif ( $mod[ 'is_comment' ] ) {
 
@@ -1368,21 +1382,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
+					} elseif ( $mod[ 'wp_obj' ] instanceof WP_Post ) {
+
+						/*
+						 * Note that get_the_title() applies the 'the_title' filter, not the 'wp_title' filter.
+						 */
+						$title_text = get_the_title( $mod[ 'wp_obj' ] );
+
 					} elseif ( $mod[ 'id' ] ) {
 
 						/*
-						 * The get_the_title() function does not apply the 'wp_title' filter.
-						 *
-						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
+						 * Note that get_the_title() applies the 'the_title' filter, not the 'wp_title' filter.
 						 */
 						$title_text = get_the_title( $mod[ 'id' ] );
 
-						$title_text = html_entity_decode( $title_text, ENT_QUOTES, $this->charset );
-
 					} elseif ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no post id' );
+						$this->p->debug->log( 'no post object or id' );
 					}
+
+					$title_text = html_entity_decode( $title_text, ENT_QUOTES, $this->charset );
 
 				} elseif ( $this->p->debug->enabled ) {
 
@@ -1478,12 +1497,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( empty( $desc_text ) ) {
 
-					$desc_text = SucomUtil::get_site_description( $this->p->options );
+					$desc_text = SucomUtilWP::get_site_description( $this->p->options );
 				}
 
 			} elseif ( $mod[ 'is_comment' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_Comment ) {
+
+					$desc_text = get_comment_excerpt( $mod[ 'wp_obj' ] );
+
+				} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
 					$desc_text = get_comment_excerpt( $mod[ 'id' ] );
 				}
@@ -1506,7 +1529,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
-					} elseif ( $mod[ 'id' ] ) {	// Just in case.
+					} else {
 
 						$desc_text = $this->get_the_excerpt( $mod );
 
@@ -1557,10 +1580,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$desc_text = get_metadata( 'post', $mod[ 'id' ], '_wp_attachment_image_alt', $single = true );
 							}
 						}
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no post id' );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
@@ -1570,36 +1589,50 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_Term ) {
 
-					$term_obj = $this->p->term->get_mod_wp_object( $mod );
+					if ( isset( $mod[ 'wp_obj' ]->description ) ) {
+
+						$desc_text = $mod[ 'wp_obj' ]->description;
+					}
+
+				} elseif ( $mod[ 'id' ] ) {
+
+					$term_obj = SucomUtilWP::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 					if ( isset( $term_obj->description ) ) {
 
 						$desc_text = $term_obj->description;
 					}
+				}
 
-					if ( '' === $desc_text ) {
+				if ( '' === $desc_text ) {
 
-						$desc_text = $this->p->opt->get_text( 'plugin_term_page_desc' );
-					}
+					$desc_text = $this->p->opt->get_text( 'plugin_term_page_desc' );
 				}
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_User ) {
 
-					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+					if ( isset( $mod[ 'wp_obj' ]->description ) ) {
+
+						$desc_text = $mod[ 'wp_obj' ]->description;
+					}
+
+				} elseif ( $mod[ 'id' ] ) {	// Just in case.
+
+					$user_obj = SucomUtilWP::get_user_object( $mod[ 'id' ] );
 
 					if ( isset( $user_obj->description ) ) {
 
 						$desc_text = $user_obj->description;
 					}
+				}
 
-					if ( '' === $desc_text ) {
+				if ( '' === $desc_text ) {
 
-						$desc_text = $this->p->opt->get_text( 'plugin_author_page_desc' );
-					}
+					$desc_text = $this->p->opt->get_text( 'plugin_author_page_desc' );
 				}
 
 			} elseif ( $mod[ 'is_404' ] ) {
@@ -1643,21 +1676,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {	// Only post objects have excerpts.
 
-				if ( has_excerpt( $mod[ 'id' ] ) ) {
+				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {
 
-					if ( $this->p->debug->enabled ) {
+					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'wp_obj' ] );
 
-						$this->p->debug->log( 'getting the excerpt for post ID ' . $mod[ 'id' ] );
-					}
+				} elseif ( $mod[ 'id' ] ) {
 
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
+				}
 
-					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
+				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
+				$filter_excerpt = apply_filters( 'wpsso_the_excerpt_filter_excerpt', $filter_excerpt );
 
-					if ( $filter_excerpt ) {
+				if ( $filter_excerpt ) {
 
-						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $mod[ 'wp_obj' ] ), $mod );
-					}
+					$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $mod[ 'wp_obj' ] ), $mod );
 				}
 			}
 
@@ -1719,7 +1752,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
 			$cache_salt     = __CLASS__ . '::the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
+			$cache_index    = 'locale:' . SucomUtilWP::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
 			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
@@ -1831,14 +1864,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'applying the content filters' );	// Begin timer.
+					$this->p->debug->mark( 'applying filters \'the_content\'' );	// Begin timer.
 				}
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'applying the content filters' );	// End timer.
+					$this->p->debug->mark( 'applying filters \'the_content\'' );	// End timer.
 				}
 
 			} else {
@@ -1850,14 +1883,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying the content do blocks' );	// Begin timer.
+						$this->p->debug->mark( 'calling do_blocks()' );	// Begin timer.
 					}
 
 					$content = do_blocks( $content );
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying the content do blocks' );	// End timer.
+						$this->p->debug->mark( 'calling do_blocks()' );	// End timer.
 					}
 				}
 
@@ -1868,14 +1901,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying the content do shortcode filters' );	// Begin timer.
+						$this->p->debug->mark( 'applying filters \'wpsso_do_shortcode\'' );	// Begin timer.
 					}
 
 					$content = apply_filters( 'wpsso_do_shortcode', $content );
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying the content do shortcode filters' );	// End timer.
+						$this->p->debug->mark( 'applying filters \'wpsso_do_shortcode\'' );	// End timer.
 					}
 				}
 			}
@@ -2058,7 +2091,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $tags ) ) {
 
-						$hashtags = SucomUtil::array_to_hashtags( $tags );	// Remove special characters incompatible with Twitter.
+						$hashtags = SucomUtil::array_to_hashtags( $tags );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -2138,44 +2171,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$term_obj   = false;
+			$term_obj   = SucomUtilWP::get_term_object( $term_id );
+			$term_id    = isset( $term_obj->term_id ) ? $term_obj->term_id : 0;
+			$title_text = isset( $term_obj->name ) ? $term_obj->name : '';
 			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default title separator (decoded) if not provided.
-			$title_text = '';
-
-			if ( is_object( $term_id ) ) {
-
-				if ( ! $term_id instanceof WP_Term ) {	// Just in case.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: object is not WP_Term' );
-					}
-
-					return $title_text;
-				}
-
-				$term_obj = $term_id;
-				$term_id  = $term_obj->term_id;
-
-			} elseif ( is_numeric( $term_id ) ) {
-
-				$mod      = $this->p->term->get_mod( $term_id );
-				$term_obj = $this->p->term->get_mod_wp_object( $mod );
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: term_id is not an object or numeric' );
-				}
-
-				return $title_text;
-			}
-
-			if ( ! empty( $term_obj->name ) ) {
-
-				$title_text = $term_obj->name;
-			}
 
 			/*
 			 * If we have a title separator and a parent, then redefine the title text with the parent list.
@@ -2184,7 +2183,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( ! empty( $term_obj->parent ) ) {
 
-					$term_parents = get_term_parents_list( $term_obj->term_id, $term_obj->taxonomy, $args = array(
+					$term_parents = get_term_parents_list( $term_id, $term_obj->taxonomy, $args = array(
 						'format'    => 'name',			// Use term names or slugs for display.
 						'separator' => ' ' . $title_sep . ' ',	// Separator for between the terms.
 						'link'      => false,			// Whether to format as a link.
@@ -2220,14 +2219,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
 			$reading_mins  = null;
 
-			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
 
 				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_reading_mins' );
 			}
 
 			if ( null === $reading_mins ) {	// Default value or no custom value.
 
-				$reading_mins = SucomUtil::get_text_reading_mins( $content, $words_per_min );
+				$reading_mins = round( str_word_count( wp_strip_all_tags( $content ) ) / $words_per_min );
 			}
 
 			return $reading_mins;
@@ -2236,6 +2235,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		public function fmt_reading_mins( $reading_mins ) {
 
 			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
+		}
+
+		/*
+		 * Add a separator and a value to the left/right hand side of the title.
+		 */
+		private function add_title_part( &$title, $title_sep, $part, $hand = 'right' ) {
+
+			if ( $part ) {	// Adding an empty $part would leave a hanging separator.
+
+				if ( $title ) {
+
+					if ( 'left' === $hand ) {
+
+						$title = $part . ' ' . trim( $title_sep . ' ' . $title );
+
+					} else $title = trim( $title . ' ' . $title_sep ) . ' ' . $part;
+
+				} else $title = $part;	// We have a part, but no title.
+			}
+
+			return trim( $title );
 		}
 
 		/*

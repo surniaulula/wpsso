@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'tax_label_plural'        => false,	// Taxonomy plural name.
 			'tax_label_single'        => false,	// Taxonomy singular name.
 			'user_name'               => '',	// User display name.
-			'wpml_code'               => '',
+			'wpml_code'               => '',	// WPML language code.
 		);
 
 		public function __construct( &$plugin ) {
@@ -158,27 +158,25 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 * cause a PHP fatal error in PHP v8.2.
 			 *
 			 * See https://core.trac.wordpress.org/ticket/59827
+			 *
+			 * Enable this code and update the version check when WordPress is able to display revisions with post meta arrays.
+			 *
+			 * global $wp_version;
+			 *
+			 * if ( version_compare( $wp_version, '6.4.2', '<' ) ) {
+			 *
+			 * 	if ( $this->p->debug->enabled ) {
+			 *
+			 * 		$this->p->debug->log( 'exiting early: no revisions for post meta arrays in WordPress v' .  $wp_version );
+			 * 	}
+			 *
+			 * 	return;	// Stop here.
+			 * }
+			 *
+			 * add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
+			 *
+			 * add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta_options' ), 10, 3 );
 			 */
-			return;
-
-			/*
-			 * Update this version check when WordPress is able to display revisions with post meta arrays.
-			 */
-			global $wp_version;
-
-			if ( version_compare( $wp_version, '6.4.2', '<' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: no revisions for post meta arrays in WordPress v' .  $wp_version );
-				}
-
-				return;	// Stop here.
-			}
-
-			add_filter( '_wp_post_revision_fields', array( $this, 'revision_fields_meta_title' ), 10, 2 );
-
-			add_filter( '_wp_post_revision_field_' . WPSSO_META_NAME, array( $this, 'get_revision_fields_meta_options' ), 10, 3 );
 		}
 
 		/*
@@ -301,7 +299,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
+				$def_lang            = SucomUtilWP::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$def_dimension_units = WpssoUtilUnits::get_dimension_text();
 				$def_fluid_vol_units = WpssoUtilUnits::get_fluid_volume_text();
 				$def_weight_units    = WpssoUtilUnits::get_weight_text();
@@ -944,7 +942,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $mod[ 'id' ] . ' metadata' );
+						$this->p->debug->log( 'applying filters \'wpsso_import_custom_fields\' for post id ' . $mod[ 'id' ] . ' metadata' );
 					}
 
 					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_metadata( 'post', $mod[ 'id' ] ) );
@@ -956,7 +954,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_product_attributes filters for post id ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'applying filters \'wpsso_import_product_attributes\' for post id ' . $mod[ 'id' ] );
 					}
 
 					$md_defs = apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
@@ -967,7 +965,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying get_md_defaults filters' );
+					$this->p->debug->log( 'applying filters \'wpsso_get_md_defaults\'' );
 				}
 
 				$md_defs = apply_filters( 'wpsso_get_md_defaults', $md_defs, $mod );
@@ -987,7 +985,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying sanitize_md_defaults filters' );
+					$this->p->debug->log( 'applying filters \'wpsso_sanitize_md_defaults\'' );
 				}
 
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
@@ -1517,10 +1515,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 *		$mt_pre . ':image:url'        => '',
 				 *		$mt_pre . ':image:width'      => '',
 				 *		$mt_pre . ':image:height'     => '',
-				 *		$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
-				 *		$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:cropped'    => '',	// Internal meta tag.
+				 *		$mt_pre . ':image:id'         => '',	// Internal meta tag.
 				 *		$mt_pre . ':image:alt'        => '',
-				 *		$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:size_name'  => '',	// Internal meta tag.
 				 * 	);
 				 */
 				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $mt_pre );
@@ -2282,15 +2280,24 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * See WpssoCmcfXml::get().
+		 * See WpssoGmfXml::get().
 		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
 		 */
 		static public function get_column_meta_query_og_type( $og_type = 'product', $schema_lang = null ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
 
 			static $local_cache = array();
 
 			if ( null === $schema_lang ) {
 
-				$schema_lang = SucomUtil::get_locale();
+				$schema_lang = SucomUtilWP::get_locale();
 			}
 
 			if ( ! isset( $local_cache[ $og_type ] ) ) {
@@ -2300,19 +2307,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( ! isset( $local_cache[ $og_type ][ $schema_lang ] ) ) {
 
-				$og_type_key     = self::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
-				$schema_lang_key = self::get_column_meta_keys( 'schema_lang' );	// Example: '_wpsso_head_info_schema_lang'.
-				$noindex_key     = self::get_column_meta_keys( 'is_noindex' );	// Example: '_wpsso_head_info_is_noindex'.
-				$redirect_key    = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+				$og_type_key      = self::get_column_meta_keys( 'og_type' );		// Example: '_wpsso_head_info_og_type'.
+				$noindex_key      = self::get_column_meta_keys( 'is_noindex' );		// Example: '_wpsso_head_info_is_noindex'.
+				$redirect_key     = self::get_column_meta_keys( 'is_redirect' );	// Example: '_wpsso_head_info_is_redirect'.
+				$schema_lang_key  = self::get_column_meta_keys( 'schema_lang' );	// Example: '_wpsso_head_info_schema_lang'.
 
 				$local_cache[ $og_type ][ $schema_lang ] = array(
 					'relation' => 'AND',
-					array(
-						'key'     => $schema_lang_key,
-						'value'   => $schema_lang,
-						'compare' => '=',
-						'type'    => 'CHAR',
-					),
 					array(
 						'key'     => $og_type_key,
 						'value'   => $og_type,
@@ -2332,6 +2333,36 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						'type'    => 'CHAR',
 					),
 				);
+
+				/*
+				 * The WPML integration module returns true so WPML can filter posts for the current language.
+				 *
+				 * See WpssoIntegLangWpml->__construct().
+				 */
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'applying filters \'wpsso_post_public_ids_suppress_filters\'' );
+				}
+
+				$suppress_filters = apply_filters( 'wpsso_post_public_ids_suppress_filters', true );
+
+				if ( $suppress_filters ) {
+
+					$local_cache[ $og_type ][ $schema_lang ][] = array(
+						'key'     => $schema_lang_key,
+						'value'   => $schema_lang,
+						'compare' => '=',
+						'type'    => 'CHAR',
+					);
+				}
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'applying filters \'wpsso_column_meta_query_og_type\'' );
+				}
+
+				$local_cache[ $og_type ][ $schema_lang ] = apply_filters( 'wpsso_column_meta_query_og_type',
+					$local_cache[ $og_type ][ $schema_lang ], $og_type, $schema_lang );
 			}
 
 			return $local_cache[ $og_type ][ $schema_lang ];
@@ -2341,6 +2372,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * See https://developer.wordpress.org/reference/classes/wp_meta_query/.
 		 */
 		static public function get_column_meta_query_exclude() {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
 
 			static $local_cache = null;
 
@@ -2442,7 +2480,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$value  = '';
-			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale();
+			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtilWP::get_locale();
 
 			if ( empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
@@ -2519,7 +2557,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Value stored by locale.
 
-					$locale = SucomUtil::get_locale();
+					$locale = SucomUtilWP::get_locale();
 
 					if ( empty( $metadata[ $locale ] ) ) {
 
@@ -2551,7 +2589,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( ! empty( $col_info[ 'localized' ] ) ) {	// Value stored by locale.
 
-						$locale   = SucomUtil::get_locale();
+						$locale   = SucomUtilWP::get_locale();
 						$content  = array( $locale => $content );
 						$metadata = static::get_meta( $obj_id, $col_info[ 'meta_key' ], $single = true );
 

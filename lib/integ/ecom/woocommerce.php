@@ -66,6 +66,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				add_action( 'wp_loaded', array( $this, 'check_woocommerce_pages' ), 10, 0 );
 
 				/*
+				 * Show a suggested list of product attributes.
+				 */
+				add_action( 'woocommerce_product_options_attributes', array( $this, 'show_product_attributes_footer' ), -1000, 0 );
+
+				/*
 				 * Update the Document SSO metabox and toobar notices after saving product variations.
 				 *
 				 * See WC_AJAX->save_variations() in woocommerce/includes/class-wc-ajax.php.
@@ -249,40 +254,42 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			echo '</script>' . "\n";
 		}
 
+		/*
+		 * Show a suggested list of translated product attribute names.
+		 *
+		 * Hooked to the 'woocommerce_product_options_attributes' action.
+		 */
 		public function show_product_attributes_footer() {
 
 			global $post;
 
 			$product        = $this->p->util->wc->get_product( $post->ID );
-			$attr_md_index  = WpssoConfig::get_attr_md_index();	// Uses a local cache.
+			$attr_md_index  = WpssoConfig::get_attr_md_index();
 			$wc_attributes  = $product->get_attributes();
 			$wc_attr_labels = array();
 			$suggest_names  = array();
 
 			foreach ( $wc_attributes as $attribute ) {
 
-				$attr_name  = $attribute->get_name();
-				$attr_label = wc_attribute_label( $attr_name, $product );
+				$attr_name = $attribute->get_name();
 
-				$wc_attr_labels[ $attr_label ] = true;
+				$wc_attr_names[ $attr_name ] = true;
 			}
 
 			foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
 
-				if ( empty( $md_key ) ) {	// Just in case.
+				if ( empty( $md_key ) ) continue;
 
-					continue;
+				if ( empty( $this->p->options[ $opt_attr_key ] ) ) continue;
 
-				} elseif ( empty( $this->p->options[ $opt_attr_key ] ) ) {
+				$attr_name  = $this->p->options[ $opt_attr_key ];	// Untranslated name.
 
-					continue;
-				}
+				/*
+				 * Check that this attribute name has not already been added to this product.
+				 */
+				if ( empty( $wc_attr_names[ $attr_name ] ) ) {
 
-				$attr_name = $this->p->options[ $opt_attr_key ];	// Example: 'Size Group'.
-
-				if ( empty( $wc_attr_labels[ $attr_name ] ) ) {
-
-					$suggest_names[] = $attr_name;
+					$suggest_names[] = SucomUtil::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
 				}
 			}
 
@@ -608,7 +615,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$mod = $this->p->post->get_mod( $post_id );
 
-			if ( ! SucomUtil::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+			if ( ! SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
 
 				return $image_ids;
 
@@ -638,7 +645,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function filter_term_image_ids( $image_ids, $size_names, $term_id ) {
 
-			if ( SucomUtil::is_term_tax_slug( $term_id, $this->cat_taxonomy ) || SucomUtil::is_term_tax_slug( $term_id, $this->tag_taxonomy ) ) {
+			if ( SucomUtilWP::is_term_tax_slug( $term_id, $this->cat_taxonomy ) || 
+				SucomUtilWP::is_term_tax_slug( $term_id, $this->tag_taxonomy ) ) {
 
 				$pid = get_metadata( 'term', $term_id, $key = 'thumbnail_id', $single = true );
 
@@ -661,7 +669,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtil::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+			if ( ! SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
 
 				return $md_defs;
 
@@ -744,7 +752,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						$var_product_price_fmtd = $this->get_product_price_formatted( $var_product, $var_product_price, $product_incl_vat );
 
 						$md_defs[ 'schema_event_offer_name_' . $num ]     = $this->get_product_variation_title( $mod, $var_product, $variation );
-						$md_defs[ 'schema_event_offer_url_' . $num ]      = $var_product->get_permalink();
+						$md_defs[ 'schema_event_offer_url_' . $num ]      = $this->get_product_url( $var_product );
 						$md_defs[ 'schema_event_offer_price_' . $num ]    = $var_product_price_fmtd;
 						$md_defs[ 'schema_event_offer_currency_' . $num ] = $product_currency;
 						$md_defs[ 'schema_event_offer_avail_' . $num ]    = $this->get_product_avail( $var_product );
@@ -753,8 +761,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} else {
 
-				$md_defs[ 'schema_event_offer_name_0' ]     = $this->get_product_title( $mod, $product );
-				$md_defs[ 'schema_event_offer_url_0' ]      = $product->get_permalink();
+				$md_defs[ 'schema_event_offer_name_0' ]     = $this->get_product_title( $product );
+				$md_defs[ 'schema_event_offer_url_0' ]      = $this->get_product_url( $product );
 				$md_defs[ 'schema_event_offer_price_0' ]    = $product_price_fmtd;
 				$md_defs[ 'schema_event_offer_currency_0' ] = $product_currency;
 				$md_defs[ 'schema_event_offer_avail_0' ]    = $product_avail;
@@ -799,7 +807,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtil::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+			if ( ! SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
 
 				return $mt_og;
 
@@ -823,7 +831,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $this->p->util->wc->is_product_variable( $product ) ) {
 
-					$schema_type  = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
+					$schema_type = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = true );
+
 					$og_mt_suffix = 'product.group' === $schema_type ? 'variants' : 'offers';
 
 					/*
@@ -880,7 +889,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtil::is_mod_post_type( $mod, $this->prod_post_type ) ) {
+			if ( ! SucomUtilWP::is_mod_post_type( $mod, $this->prod_post_type ) ) {
 
 				return $tags;
 			}
@@ -900,7 +909,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$is_variation = false;	// Default value.
 
-			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {
+			if ( function_exists( 'is_sitemap' ) && is_sitemap() ) {	// Nothing to do - no attribute values in sitemaps.
 
 				return $md_opts;
 
@@ -922,7 +931,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				} elseif ( $mixed instanceof WP_Post ) {
 
-					if ( SucomUtil::is_post_type( $mixed, $this->prod_post_type ) ) {
+					if ( SucomUtilWP::is_post_type( $mixed, $this->prod_post_type ) ) {
 
 						$product = $this->p->util->wc->get_product( $mixed->ID );
 
@@ -940,71 +949,59 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$product_id        = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 			$product_parent_id = $is_variation ? $product->get_parent_id() : $product_id;
 			$product_parent    = $is_variation ? $this->p->util->wc->get_product( $product_parent_id ) : $product;
-			$attr_md_index     = WpssoConfig::get_attr_md_index();	// Uses a local cache.
-			$md_keys_multi     = WpssoConfig::get_md_keys_multi();	// Uses a local cache.
+			$attr_md_index     = WpssoConfig::get_attr_md_index();
+			$md_keys_multi     = WpssoConfig::get_md_keys_multi();
 
 			foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
 
-				if ( empty( $md_key ) ) {	// Just in case.
+				if ( empty( $md_key ) ) continue;
 
-					if ( $this->p->debug->enabled ) {
+				if ( empty( $this->p->options[ $opt_attr_key ] ) ) continue;
 
-						$this->p->debug->log( 'attribute ' . $opt_attr_key . ' key is disabled' );
-					}
-
-					continue;
-
-				} elseif ( empty( $this->p->options[ $opt_attr_key ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'attribute ' . $opt_attr_key . ' option is empty' );
-					}
-
-					continue;
-				}
-
-				$attr_name = $this->p->options[ $opt_attr_key ];	// Example: 'Size Group'.
+				$attr_name  = $this->p->options[ $opt_attr_key ];	// Untranslated name.
+				$attr_value = false;
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using attribute ' . $attr_name . ' name for ' . $md_key . ' option' );
+					$this->p->debug->log( 'checking for ' . $attr_name . ' attribute values' );
 				}
 
-				$attr_val = false;
-				$values   = array();
+				$values = array();
 
+				/*
+				 * Product variation.
+				 */
 				if ( $is_variation ) {
 
-					if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
+					if ( '' !== ( $attr_value = $product->get_attribute( $attr_name ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
+							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_value );
 						}
 
-						$values[] = $attr_val;
+						$values[] = $attr_value;
 
 					/*
 					 * Fallback to the default value.
 					 */
-					} elseif ( '' !== ( $attr_val = $product_parent->get_variation_default_attribute( $attr_name ) ) ) {
+					} elseif ( '' !== ( $attr_value = $product_parent->get_variation_default_attribute( $attr_name ) ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'assigning ' . $attr_name . ' default value to ' . $md_key . ' = ' . $attr_val );
+							$this->p->debug->log( 'assigning ' . $attr_name . ' default value to ' . $md_key . ' = ' . $attr_value );
 						}
 
-						$values[] = $attr_val;
+						$values[] = $attr_value;
 
-					} else {
+					} elseif ( $this->p->debug->enabled ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'no ' . $attr_name . ' default value for variation' );
-						}
+						$this->p->debug->log( 'no ' . $attr_name . ' default value for variation' );
 					}
 
+				/*
+				 * Main product or simple product.
+				 */
 				} else {
 
 					/*
@@ -1014,20 +1011,17 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'skipping ' . $attr_name . ' selectable value = ' . $attr_val );
+							$this->p->debug->log( 'skipping ' . $attr_name . ' selectable value = ' . $attr_value );
 						}
 
-					} else {
+					} elseif ( '' !== ( $attr_value = $product->get_attribute( $attr_name ) ) ) {
 
-						if ( '' !== ( $attr_val = $product->get_attribute( $attr_name ) ) ) {
+						if ( $this->p->debug->enabled ) {
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_val );
-							}
-
-							$values[] = $attr_val;
+							$this->p->debug->log( 'assigning ' . $attr_name . ' value to ' . $md_key . ' = ' . $attr_value );
 						}
+
+						$values[] = $attr_value;
 					}
 				}
 
@@ -1039,9 +1033,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					if ( ! empty( $md_keys_multi[ $md_key ] ) ) {
 
 						/*
-						 * If $attr_val was not an array, then $values[ 0 ] will be a string - split that string into an array.
+						 * If $attr_value was not an array, then $values[ 0 ] will be a string - split that string into an array.
 						 */
-						if ( ! is_array( $attr_val ) ) {
+						if ( ! is_array( $attr_value ) ) {
 
 							$values = array_map( 'trim', explode( ',', reset( $values ) ) );
 
@@ -1109,7 +1103,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				} elseif ( $mixed instanceof WP_Post ) {
 
-					if ( SucomUtil::is_post_type( $mixed, $this->prod_post_type ) ) {
+					if ( SucomUtilWP::is_post_type( $mixed, $this->prod_post_type ) ) {
 
 						$product = $this->p->util->wc->get_product( $mixed->ID );
 
@@ -1153,7 +1147,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$mt_ecom[ 'product:title' ]       = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 				$mt_ecom[ 'product:description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
-				$mt_ecom[ 'product:description' ] = apply_filters( 'wpsso_product_description', $mt_ecom[ 'product:description' ], $product );
 			}
 
 			/*
@@ -1162,7 +1155,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 * are not in a product group).
 			 */
 			$mt_ecom[ 'product:updated_time' ]     = $mod[ 'post_modified_time' ];
-			$mt_ecom[ 'product:url' ]              = $product->get_permalink();
+			$mt_ecom[ 'product:url' ]              = $this->get_product_url( $product );
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;					// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();				// Product SKU.
 			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $product_parent_id : '';	// Product variation group ID.
@@ -1221,7 +1214,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $is_variation ) {
 
-				$var_mod  = $this->p->page->get_mod( $product_id );
+				$var_mod = $this->p->page->get_mod( $product_id );
+
 				$var_opts = $var_mod[ 'obj' ]->get_options( $var_mod[ 'id' ] );
 
 				/*
@@ -1258,7 +1252,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying import_custom_fields filters for variation id ' . $product_id . ' metadata' );
+					$this->p->debug->log( 'applying filters \'wpsso_import_custom_fields\' for variation id ' . $product_id . ' metadata' );
 				}
 
 				$var_opts = apply_filters( 'wpsso_import_custom_fields', $var_opts, $mod, $var_wp_meta, $alt_opts );
@@ -1272,7 +1266,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying import_product_attributes filters for variation id ' . $product_id );
+					$this->p->debug->log( 'applying filters \'wpsso_import_product_attributes\' for variation id ' . $product_id );
 				}
 
 				$var_opts = apply_filters( 'wpsso_import_product_attributes', $var_opts, $mod, $variation );
@@ -1490,9 +1484,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			$product_id         = $this->p->util->wc->get_product_id( $product );
-			$product_url        = $product->get_permalink();
+			$product_url        = $this->get_product_url( $product );
 			$product_can_ship   = $product->needs_shipping();
-			$product_parent_url = $product_parent->get_permalink();
+			$product_parent_url = $this->get_product_url( $product_parent );
 			$product_currency   = $this->get_product_currency();
 
 			if ( $this->p->debug->enabled ) {
@@ -1620,10 +1614,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 								$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
-							} else {
-
-								$shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
-							}
+							} else $shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
 
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
 						}
@@ -1816,7 +1807,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$product_price      = $this->get_product_price( $product );
 			$product_currency   = $this->get_product_currency();
-			$product_parent_url = $product_parent->get_permalink();
+			$product_parent_url = $this->get_product_url( $product_parent );
 
 			$shipping_offer      = false;
 			$shipping_class_obj  = $shipping_class_id ? get_term_by( 'id', $shipping_class_id, 'product_shipping_class' ) : false;
@@ -1868,10 +1859,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Free shipping.
 			 */
-			} else {
-
-				$rate_cost = 0;
-			}
+			} else $rate_cost = 0;
 
 			/*
 			 * Maybe resolve the [cost], [qty], and [fee] shortcodes.
@@ -2194,10 +2182,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				$product_price = wc_format_decimal( $product_price, $decimals = '', $trim_zeros = false );
 
-			} else {
-
-				$product_price = '';
-			}
+			} else $product_price = '';
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2207,11 +2192,18 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $product_price;
 		}
 
-		private function get_product_title( $mod, WC_Product $product ) {
+		private function get_product_title( WC_Product $product ) {
 
 			$title_text = $product->get_title();
 
 			return apply_filters( 'wpsso_product_title', $title_text, $product );
+		}
+
+		private function get_product_url( WC_Product $product ) {
+
+			$url = $product->get_permalink();
+
+			return apply_filters( 'wpsso_product_url', $url, $product );
 		}
 
 		private function add_product_variation_title( &$mt_ecom, $mod, WC_Product $product, $variation ) {	// Pass by reference is OK.
@@ -2226,7 +2218,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$var_attrs = array_filter( array_values( $product->get_variation_attributes() ) );
 
 			$title_atts = array(
-				'var_title' => $product->get_title(),
+				'var_title' => $this->get_product_title( $product ),
 				'var_sku'   => $product->get_sku(),
 				'var_attrs' => implode( ' %%sep%% ', $var_attrs ),
 			);
@@ -2246,13 +2238,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function get_product_variation_description( $mod, WC_Product $product, $variation ) {
 
-			$desc_text = empty( $variation[ 'variation_description' ] ) ? null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
+			$desc_text = empty( $variation[ 'variation_description' ] ) ?
+				null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );
 
 			$desc_text = apply_filters( 'wpsso_the_description', $desc_text, $mod );
 
-			$desc_text = apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
-
-			return $desc_text;
+			return apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
 		}
 
 		private function is_variation_selectable_attribute( $product, $attr_name ) {

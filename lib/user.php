@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$cm_fb_name = $this->p->options[ 'plugin_cm_fb_name' ];
 
-			if ( ! SucomUtil::role_exists( 'person' ) ) {
+			if ( ! SucomUtilWP::role_exists( 'person' ) ) {
 
 				$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Maybe limit the number of array elements.
 			 */
-			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'wp_obj' ] = get_userdata( $mod[ 'id' ] );	// Optimize and fetch once.
+				$mod[ 'wp_obj' ] = SucomUtilWP::get_user_object( $mod[ 'id' ] );	// Optimize and fetch once.
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_User ) {	// Just in case.
 
@@ -250,7 +250,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_mod_wp_object( array $mod ) {
 
-			return get_userdata( $mod[ 'id' ] );
+			if ( $mod[ 'wp_obj' ] instanceof WP_User ) {
+
+				return $mod[ 'wp_obj' ];
+			}
+
+			return SucomUtilWP::get_user_object( $mod[ 'id' ] );
 		}
 
 		/*
@@ -302,7 +307,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
@@ -533,9 +538,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$mtime_start = microtime( $get_float = true );
-			$public_ids  = array();
-			$role_names  = empty( $users_args[ 'role' ] ) ? $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ] : array( $users_args[ 'role' ] );
-			$users_args  = array_merge( $users_args, array( 'fields' => 'ids' ) );
+
+			$role_names = empty( $users_args[ 'role' ] ) ? $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ] : array( $users_args[ 'role' ] );
+
+			$users_args = array_merge( $users_args, array( 'fields' => 'ids' ) );
+
+			$public_ids = array();
 
 			foreach ( $role_names as $name ) {
 
@@ -543,7 +551,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * See https://developer.wordpress.org/reference/classes/wp_user_query/__construct/.
 				 */
 				$query_args = array_merge( $users_args, array( 'role' => $name ) );
-				$users_ids  = get_users( $query_args );
+
+				$users_ids = get_users( $query_args );
 
 				if ( is_array( $users_ids ) ) {
 
@@ -694,7 +703,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 *
 					 * Returns the current user id if the 'user_id' query argument is empty.
 					 */
-					$user_id = SucomUtil::get_user_object( false, 'id' );
+					$user_id = SucomUtilWP::get_user_object( false, 'id' );
 
 					$mod = $this->get_mod( $user_id );
 
@@ -719,10 +728,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$this->p->debug->log( 'user id = ' . $user_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
-				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale() );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
+				$this->p->debug->log( 'locale default = ' . SucomUtilWP::get_locale() );
+				$this->p->debug->log( 'locale current = ' . SucomUtilWP::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtilWP::get_locale( $mod ) );
+				$this->p->debug->log( SucomUtil::get_array_pretty( $mod ) );
 			}
 
 			if ( $user_id && ! empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
@@ -1269,7 +1278,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $user_id ] = array();
 			}
@@ -1367,7 +1376,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $user_id ] = array();
 			}
@@ -1814,7 +1823,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$screen_id = SucomUtil::get_screen_id();
+			$screen_id = SucomUtilWP::get_screen_id();
 
 			switch ( $screen_id ) {
 
@@ -1822,7 +1831,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case ( 0 === strpos( $screen_id, 'profile_page_' ) ? true : false ):			// Your profile page.
 				case ( 0 === strpos( $screen_id, 'users_page_' . $this->p->id ) ? true : false ):	// Profile SSO page.
 
-					$user_id = SucomUtil::get_user_object( false, 'id' );
+					$user_id = SucomUtilWP::get_user_object( false, 'id' );
 
 					$mod = $this->get_mod( $user_id );
 
@@ -1873,7 +1882,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_start  = microtime( $get_float = true );
-				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
+				$time_on_date = SucomUtil::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s to content creators was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
 				$notice_key   = $task_name . '-task-info';
 
@@ -1964,7 +1973,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_id ) {
 
 				$mtime_start  = microtime( $get_float = true );
-				$time_on_date = SucomUtilWP::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
+				$time_on_date = SucomUtil::sprintf_date_time( _x( '%2$s on %1$s', 'time on date', 'wpsso' ) );
 				$notice_msg   = sprintf( __( 'A task to %1$s from all users was started at %2$s.', 'wpsso' ), $role_label_transl, $time_on_date );
 				$notice_key   = $task_name . '-task-info';
 
@@ -1988,7 +1997,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$blog_id = get_current_blog_id();
 
-			while ( $users_ids = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
+			while ( $users_ids = SucomUtilWP::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
 
 				foreach ( $users_ids as $id ) {
 
@@ -2053,7 +2062,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
 
-				$users = SucomUtil::get_roles_users_select( $roles, $blog_id = null, $add_none );
+				$users = SucomUtilWP::get_roles_users_select( $roles, $blog_id = null, $add_none );
 
 				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ), $preserve_keys = true );
 			}

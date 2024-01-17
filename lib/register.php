@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					delete_metadata( $obj_name, $obj_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 				}
 
-				while ( $result = SucomUtil::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
+				while ( $result = SucomUtilWP::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
 
 					foreach ( $result as $user_id ) {
 
@@ -311,8 +311,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				wp_die(
-					'<p>' . sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',
-						'wpsso' ), $app_label, $app_version, $version_url ) . '</p>' .
+					'<p>' . sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $app_label, $app_version, $version_url ) . '</p>' .
 					'<p>' . sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 						'wpsso' ), $plugin_name, $app_label, $min_version ) . '</p>' .
 					'<p>' . sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',

@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoIntegLangPolylang' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'available_feed_locale_names' => 1,
 				'get_locale'                  => 2,
-			), $prio = 200, $ext = 'sucom' );
+			), $prio = 200, $ext = 'sucom' );	// Note the 'sucom' filter prefix.
 		}
 
 		public function filter_home_url( $url, $mod ) {

@@ -63,13 +63,13 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
+				$post_obj = SucomUtilWP::get_post_object( $mod[ 'id' ] );
 
 				$title_text = aioseo()->meta->title->getPostTitle( $post_obj );
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$term_obj = SucomUtil::get_term_object( $mod[ 'id' ] );
+				$term_obj = SucomUtilWP::get_term_object( $mod[ 'id' ] );
 
 				$title_text = aioseo()->meta->title->getTermTitle( $term_obj );
 			}
@@ -92,13 +92,13 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
+				$post_obj = SucomUtilWP::get_post_object( $mod[ 'id' ] );
 
 				$desc_text = aioseo()->meta->description->getPostDescription( $post_obj );
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$term_obj = SucomUtil::get_term_object( $mod[ 'id' ] );
+				$term_obj = SucomUtilWP::get_term_object( $mod[ 'id' ] );
 
 				$desc_text = aioseo()->meta->description->getTermDescription( $term_obj );
 			}

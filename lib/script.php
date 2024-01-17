@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( SucomUtil::is_post_page() ) {
+			if ( SucomUtilWP::is_post_page() ) {
 
 				$src = WPSSO_URLPATH . 'js/jquery-block-editor.' . $this->file_ext;
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'hook name = ' . $hook_name );
-				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'screen base = ' . SucomUtilWP::get_screen_base() );
 			}
 
 			/*
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case 'edit-tags.php':	// Term edit.
 				case 'user-edit.php':	// User edit.
 				case 'profile.php':	// User edit.
-				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
+				case ( SucomUtilWP::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -188,14 +188,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							$this->p->debug->log( 'wp_enqueue_media() function is available' );
 						}
 
-						if ( SucomUtil::is_post_page( false ) && ( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
+						if ( SucomUtilWP::is_post_page() && ( $post_id = SucomUtilWP::get_post_object( false, 'id' ) ) > 0 ) {
 
 							wp_enqueue_media( array( 'post' => $post_id ) );
 
-						} else {
-
-							wp_enqueue_media();
-						}
+						} else wp_enqueue_media();
 
 						wp_enqueue_script( 'sucom-admin-media' );
 

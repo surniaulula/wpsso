@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			$og_ns = apply_filters( 'wpsso_og_ns', $og_ns, $mod );
 
-			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
+			if ( SucomUtilWP::is_amp() ) {	// Returns null, true, or false.
 
 				/*
 				 * Nothing to do.

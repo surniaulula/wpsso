@@ -41,13 +41,13 @@ if ( ! class_exists( 'WpssoJsonTypeWebsite' ) ) {
 			}
 
 			$json_ret = WpssoSchema::get_schema_type_context( 'https://schema.org/WebSite', array(
-				'url' => SucomUtil::get_home_url( $this->p->options, $mod ),
+				'url' => SucomUtilWP::get_home_url( $this->p->options, $mod ),
 			) );
 
 			foreach ( array(
-				'name'          => SucomUtil::get_site_name( $this->p->options, $mod ),
-				'alternateName' => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
-				'description'   => SucomUtil::get_site_description( $this->p->options, $mod ),
+				'name'          => SucomUtilWP::get_site_name( $this->p->options, $mod ),
+				'alternateName' => SucomUtilWP::get_site_name_alt( $this->p->options, $mod ),
+				'description'   => SucomUtilWP::get_site_description( $this->p->options, $mod ),
 			) as $key => $value ) {
 
 				if ( ! empty( $value ) ) {

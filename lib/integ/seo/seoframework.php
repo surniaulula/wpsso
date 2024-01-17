@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 						if ( $this->is_admin ) {
 
-							SucomUtil::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+							SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
 						}
 
 						$tsf = the_seo_framework();
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $this->is_admin ) {
 
-				SucomUtil::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+				SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
 			}
 
 			/*
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			if ( $mod[ 'is_post' ] && $this->is_admin ) {
 
-				SucomUtil::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+				SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
 			}
 
 			/*
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			if ( $mod[ 'is_post' ] && $this->is_admin ) {
 
-				SucomUtil::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+				SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
 			}
 
 			$tsf = the_seo_framework();
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			if ( $mod[ 'is_post' ] && $this->is_admin ) {
 
-				SucomUtil::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
+				SucomUtilWP::maybe_load_post( $mod[ 'id' ] );	// Maybe re-define the $post global.
 			}
 
 			$tsf = the_seo_framework();

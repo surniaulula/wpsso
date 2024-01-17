@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					if ( ! isset( $info[ $info_key . '_pro' ] ) ) {
 
-						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $this->pkg_pro_transl );
+						$info[ $info_key . '_pro' ] = $this->p->util->get_pkg_name( $info[ $info_key ], $this->pkg_pro_transl );
 					}
 				}
 			}
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
 
-						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] ) . ' ';
+						$text .= sprintf( __( 'Please update to the latest %1$s version (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] ) . ' ';
 
 						break;
 
@@ -526,21 +526,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-wc-attributes-available':
 
-						$attr_md_index = WpssoConfig::get_attr_md_index();	// Uses a local cache.
+						$attr_md_index = WpssoConfig::get_attr_md_index();
 						$suggest_names = array();
 
 						foreach ( $attr_md_index as $opt_attr_key => $md_key ) {
 
-							if ( empty( $md_key ) ) {	// Just in case.
+							if ( empty( $md_key ) ) continue;
 
-								continue;
+							$attr_name_transl = SucomUtil::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
 
-							} elseif ( empty( $this->p->options[ $opt_attr_key ] ) ) {
+							if ( empty( $attr_name_transl ) ) continue;
 
-								continue;
-							}
-
-							$suggest_names[] = $this->p->options[ $opt_attr_key ];	// Example: 'Size Group'.
+							$suggest_names[] = $attr_name_transl;
 						}
 
 						if ( ! empty( $suggest_names ) ) {	// Just in case.

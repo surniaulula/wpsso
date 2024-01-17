@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/*
 			 * Maybe limit the number of array elements.
 			 */
-			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$mod = self::get_mod_defaults();
 
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'wp_obj' ] = get_term( $mod[ 'id' ], (string) $tax_slug );	// Optimize and fetch once.
+				$mod[ 'wp_obj' ] = SucomUtilWP::get_term_object( $mod[ 'id' ], (string) $tax_slug );
 
 				if ( $mod[ 'wp_obj' ] instanceof WP_Term ) {	// Just in case.
 
@@ -278,7 +278,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_mod_wp_object( array $mod ) {
 
-			return get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+			if ( $mod[ 'wp_obj' ] instanceof WP_Term ) {
+
+				return $mod[ 'wp_obj' ];
+			}
+
+			return SucomUtilWP::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 		}
 
 		/*
@@ -318,7 +323,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/*
 				 * Maybe limit the number of array elements.
 				 */
-				$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+				$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 				$local_fifo[ $cache_id ] = null;	// Create an element to reference.
 			}
@@ -527,9 +532,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$mtime_start = microtime( $get_float = true );
-			$public_ids  = array();
-			$tax_names   = empty( $terms_args[ 'taxonomy' ] ) ? SucomUtil::get_taxonomies( $output = 'names' ) : array( $terms_args[ 'taxonomy' ] );
-			$terms_args  = array_merge( $terms_args, array( 'fields' => 'ids' ) );
+
+			$tax_names = empty( $terms_args[ 'taxonomy' ] ) ? SucomUtilWP::get_taxonomies( $output = 'names' ) : array( $terms_args[ 'taxonomy' ] );
+
+			$terms_args = array_merge( $terms_args, array( 'fields' => 'ids' ) );
+
+			$public_ids = array();
 
 			foreach ( $tax_names as $name ) {
 
@@ -537,7 +545,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * See https://developer.wordpress.org/reference/classes/wp_term_query/__construct/.
 				 */
 				$query_args = array_merge( $terms_args, array( 'taxonomy' => $name ) );
-				$terms_ids  = get_terms( $query_args );
+
+				$terms_ids = get_terms( $query_args );
 
 				if ( is_array( $terms_ids ) ) {
 
@@ -703,10 +712,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$this->p->debug->log( 'term id = ' . $this->query_term_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
-				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtilWP::get_locale() );
+				$this->p->debug->log( 'locale default = ' . SucomUtilWP::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtilWP::get_locale( $mod ) );
+				$this->p->debug->log( SucomUtil::get_array_pretty( $mod ) );
 			}
 
 			if ( $this->query_term_id && ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {

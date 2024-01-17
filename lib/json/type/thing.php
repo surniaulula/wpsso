@@ -96,12 +96,9 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 			if ( empty( $mod[ 'is_public' ] ) ) {	// Since WPSSO Core v7.0.0.
 
-				$json_ret[ 'url' ] = WpssoUtil::get_fragment_anchor( $mod );	// Since WPSSO Core v7.0.0.
+				$json_ret[ 'url' ] = $this->p->util->get_fragment_anchor( $mod );	// Since WPSSO Core v7.0.0.
 
-			} else {
-
-				$json_ret[ 'url' ] = $this->p->util->get_canonical_url( $mod );
-			}
+			} else $json_ret[ 'url' ] = $this->p->util->get_canonical_url( $mod );
 
 			/*
 			 * See https://schema.org/sameAs.

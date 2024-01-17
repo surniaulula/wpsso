@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 								$info_url = add_query_arg( array(
 									'tid'            => $this->p->options[ 'plugin_' . $ext . '_tid' ],
 									'user_direction' => is_rtl() ? 'rtl' : 'ltr',
-									'user_locale'    => SucomUtil::get_locale(),
+									'user_locale'    => SucomUtilWP::get_locale(),
 									'TB_iframe'      => 'true',
 									'width'          => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
 									'height'         => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],

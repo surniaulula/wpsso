@@ -127,7 +127,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$func_seq = 2;
 			}
 
-			$this->log( 'args ' . SucomUtil::pretty_array( $arr, $flatten = true ), $class_seq, $func_seq );
+			$this->log( 'args ' . SucomUtil::get_array_pretty( $arr, $flatten = true ), $class_seq, $func_seq );
 		}
 
 		public function log_arr( $prefix, $mixed, $class_seq = 1, $func_seq = false ) {
@@ -165,7 +165,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_array( $mixed ) ) {
 
-				$this->log( $prefix . ' = ' . trim( print_r( SucomUtil::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
+				$this->log( $prefix . ' = ' . trim( print_r( SucomUtil::get_array_pretty( $mixed, false ), true ) ), $class_seq, $func_seq );
 
 			} else {
 

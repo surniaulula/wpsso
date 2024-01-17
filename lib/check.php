@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									$chk[ 'version_const' ] = 'WC_VERSION';
 
-									$chk[ 'min_version' ] = '5.0.0';
+									$chk[ 'min_version' ] = '6.0.0';
 
 									break;
 
@@ -492,6 +492,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'polylang':
 
 									$chk[ 'class' ] = 'Polylang';
+
+									break;
+
+								/*
+								 * qTranslate-XT.
+								 *
+								 * https://github.com/qtranslate/qtranslate-xt.
+								 */
+								case 'qtranslate-xt':
+
+									$chk[ 'constant' ] = 'QTX_VERSION';
 
 									break;
 

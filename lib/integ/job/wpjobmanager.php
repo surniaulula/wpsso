@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 
 		public function filter_form_select_schema_job_hiring_org_id( $values ) {
 
-			if ( $post_obj = SucomUtil::get_post_object( $use_post = false, $output = 'object' ) ) {
+			if ( $post_obj = SucomUtilWP::get_post_object( $use_post = false, $output = 'object' ) ) {
 
 				if ( $org_name = get_the_company_name( $post_obj ) ) {
 
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 
 		public function filter_form_select_schema_job_location_id( $values ) {
 
-			if ( $post_obj = SucomUtil::get_post_object( $use_post = false, $output = 'object' ) ) {
+			if ( $post_obj = SucomUtilWP::get_post_object( $use_post = false, $output = 'object' ) ) {
 
 				if ( $place_name = get_the_job_location( $post_obj ) ) {
 
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 				return $md_defs;
 			}
 
-			$post_obj = SucomUtil::get_post_object( $mod[ 'id' ], $output = 'object' );
+			$post_obj = SucomUtilWP::get_post_object( $mod[ 'id' ], $output = 'object' );
 
 			if ( $org_name = get_the_company_name( $post_obj ) ) {
 

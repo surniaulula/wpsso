@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.7.1',	// Plugin version.
-					'opt_version' => '998',		// Increment when changing default option values.
+					'version'     => '17.9.0',	// Plugin version.
+					'opt_version' => '999',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -118,8 +118,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpjobmanager'   => '(plugin) WP Job Manager',
 							),
 							'lang' => array(
-								'polylang' => '(plugin) Polylang',
-								'wpml'     => '(plugin) WPML',
+								'polylang'      => '(plugin) Polylang',
+								'qtranslate-xt' => '(plugin) qTranslate-XT',
+								'wpml'          => '(plugin) WPML',
 							),
 							'media' => array(
 								'wp-retina-2x' => '(plugin) Perfect Images',
@@ -1829,8 +1830,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:item_group_id'           => 1,
 					'add_meta_property_product:material'                => 1,
 					'add_meta_property_product:mfr_part_no'             => 1,
-					'add_meta_property_product:offers'                  => 1,	// Non-standard / internal meta tag.
-					'add_meta_property_product:variants'                => 1,	// Non-standard / internal meta tag.
+					'add_meta_property_product:offers'                  => 1,	// Internal meta tag.
+					'add_meta_property_product:variants'                => 1,	// Internal meta tag.
 					'add_meta_property_product:original_price:amount'   => 1,
 					'add_meta_property_product:original_price:currency' => 1,
 					'add_meta_property_product:pattern'                 => 1,
@@ -2191,30 +2192,66 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
-					'plugin_attr_product_adult_type'         => 'Adult Type',	// Adult Type Attribute.
-					'plugin_attr_product_age_group'          => 'Age Group',	// Age Group Attribute.
-					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute.
-					'plugin_attr_product_color'              => 'Color',		// Color Attribute.
-					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute.
-					'plugin_attr_product_energy_efficiency'  => 'Energy Rating',	// Energy Rating Attribute.
-					'plugin_attr_product_fluid_volume_value' => '',			// Fluid Volume Attribute.
-					'plugin_attr_product_gtin14'             => '',			// GTIN-14 Attribute.
-					'plugin_attr_product_gtin13'             => '',			// GTIN-13 (EAN) Attribute.
-					'plugin_attr_product_gtin12'             => '',			// GTIN-12 (UPC) Attribute.
-					'plugin_attr_product_gtin8'              => '',			// GTIN-8 Attribute.
-					'plugin_attr_product_gtin'               => '',			// GTIN Attribute.
-					'plugin_attr_product_height_value'       => '',			// Net Height Attribute.
-					'plugin_attr_product_isbn'               => '',			// ISBN Attribute.
-					'plugin_attr_product_length_value'       => '',			// Net Len. / Depth Attribute.
-					'plugin_attr_product_material'           => 'Material',		// Material Attribute.
-					'plugin_attr_product_mfr_part_no'        => '',			// MPN Attribute.
-					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute.
-					'plugin_attr_product_size'               => 'Size',		// Size Attribute.
-					'plugin_attr_product_size_group'         => 'Size Group',	// Size Group Attribute.
-					'plugin_attr_product_size_system'        => 'Size System',	// Size System Attribute.
-					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute.
-					'plugin_attr_product_weight_value'       => '',			// Net Weight Attribute.
-					'plugin_attr_product_width_value'        => '',			// Net Width Attribute.
+					'plugin_attr_product_adult_type'              => 'Adult Type',		// Adult Type Attribute.
+					'plugin_attr_product_adult_type#fr_BE'        => 'Type adulte',
+					'plugin_attr_product_adult_type#fr_CA'        => 'Type adulte',
+					'plugin_attr_product_adult_type#fr_FR'        => 'Type adulte',
+					'plugin_attr_product_age_group'               => 'Age Group',		// Age Group Attribute.
+					'plugin_attr_product_age_group#fr_BE'         => 'Groupe d\'âge',
+					'plugin_attr_product_age_group#fr_CA'         => 'Groupe d\'âge',
+					'plugin_attr_product_age_group#fr_FR'         => 'Groupe d\'âge',
+					'plugin_attr_product_brand'                   => 'Brand',		// Brand Attribute.
+					'plugin_attr_product_brand#fr_BE'             => 'Marque',
+					'plugin_attr_product_brand#fr_CA'             => 'Marque',
+					'plugin_attr_product_brand#fr_FR'             => 'Marque',
+					'plugin_attr_product_color'                   => 'Color',		// Color Attribute.
+					'plugin_attr_product_color#fr_BE'             => 'Couleur',
+					'plugin_attr_product_color#fr_CA'             => 'Couleur',
+					'plugin_attr_product_color#fr_FR'             => 'Couleur',
+					'plugin_attr_product_condition'               => 'Condition',		// Condition Attribute.
+					'plugin_attr_product_condition#fr_BE'         => 'État',
+					'plugin_attr_product_condition#fr_CA'         => 'État',
+					'plugin_attr_product_condition#fr_FR'         => 'État',
+					'plugin_attr_product_energy_efficiency'       => 'Energy Rating',	// Energy Rating Attribute.
+					'plugin_attr_product_energy_efficiency#fr_BE' => 'Classe énergétique',
+					'plugin_attr_product_energy_efficiency#fr_CA' => 'Classe énergétique',
+					'plugin_attr_product_energy_efficiency#fr_FR' => 'Classe énergétique',
+					'plugin_attr_product_fluid_volume_value'      => '',			// Fluid Volume Attribute.
+					'plugin_attr_product_gtin14'                  => '',			// GTIN-14 Attribute.
+					'plugin_attr_product_gtin13'                  => '',			// GTIN-13 (EAN) Attribute.
+					'plugin_attr_product_gtin12'                  => '',			// GTIN-12 (UPC) Attribute.
+					'plugin_attr_product_gtin8'                   => '',			// GTIN-8 Attribute.
+					'plugin_attr_product_gtin'                    => '',			// GTIN Attribute.
+					'plugin_attr_product_height_value'            => '',			// Net Height Attribute.
+					'plugin_attr_product_isbn'                    => '',			// ISBN Attribute.
+					'plugin_attr_product_length_value'            => '',			// Net Len. / Depth Attribute.
+					'plugin_attr_product_material'                => 'Material',		// Material Attribute.
+					'plugin_attr_product_material#fr_BE'          => 'Matériel',
+					'plugin_attr_product_material#fr_CA'          => 'Matériel',
+					'plugin_attr_product_material#fr_FR'          => 'Matériel',
+					'plugin_attr_product_mfr_part_no'             => '',			// MPN Attribute.
+					'plugin_attr_product_pattern'                 => 'Pattern',		// Pattern Attribute.
+					'plugin_attr_product_pattern#fr_BE'           => 'Motif',
+					'plugin_attr_product_pattern#fr_CA'           => 'Motif',
+					'plugin_attr_product_pattern#fr_FR'           => 'Motif',
+					'plugin_attr_product_size'                    => 'Size',		// Size Attribute.
+					'plugin_attr_product_size#fr_BE'              => 'Taille',
+					'plugin_attr_product_size#fr_CA'              => 'Taille',
+					'plugin_attr_product_size#fr_FR'              => 'Taille',
+					'plugin_attr_product_size_group'              => 'Size Group',		// Size Group Attribute.
+					'plugin_attr_product_size_group#fr_BE'        => 'Groupe de taille',
+					'plugin_attr_product_size_group#fr_CA'        => 'Groupe de taille',
+					'plugin_attr_product_size_group#fr_FR'        => 'Groupe de taille',
+					'plugin_attr_product_size_system'             => 'Size System',		// Size System Attribute.
+					'plugin_attr_product_size_system#fr_BE'       => 'Système de taille',
+					'plugin_attr_product_size_system#fr_CA'       => 'Système de taille',
+					'plugin_attr_product_size_system#fr_FR'       => 'Système de taille',
+					'plugin_attr_product_target_gender'           => 'Gender',		// Target Gender Attribute.
+					'plugin_attr_product_target_gender#fr_BE'     => 'Sexe',
+					'plugin_attr_product_target_gender#fr_CA'     => 'Sexe',
+					'plugin_attr_product_target_gender#fr_FR'     => 'Sexe',
+					'plugin_attr_product_weight_value'            => '',			// Net Weight Attribute.
+					'plugin_attr_product_width_value'             => '',			// Net Width Attribute.
 
 					/*
 					 * Advanced Settings > Attributes and Metadata > Custom Fields.
@@ -3789,47 +3826,47 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 					 */
 					'product' => array(
-						'product:adult_type'                  => 'product_adult_type',		// Non-standard / internal meta tag.
+						'product:adult_type'                  => 'product_adult_type',		// Internal meta tag.
 						'product:age_group'                   => 'product_age_group',
 						'product:availability'                => 'product_avail',
-						'product:awards'                      => '',				// Non-standard / internal meta tag.
+						'product:awards'                      => '',				// Internal meta tag.
 						'product:brand'                       => 'product_brand',
 						'product:category'                    => 'product_category',		// Product Google Category.
 						'product:color'                       => 'product_color',
 						'product:condition'                   => 'product_condition',
 						'product:ean'                         => 'product_gtin13',
-						'product:energy_efficiency:value'     => 'product_energy_efficiency',		// Non-standard / internal meta tag.
-						'product:energy_efficiency:min_value' => 'product_energy_efficiency_min',	// Non-standard / internal meta tag.
-						'product:energy_efficiency:max_value' => 'product_energy_efficiency_max',	// Non-standard / internal meta tag.
+						'product:energy_efficiency:value'     => 'product_energy_efficiency',		// Internal meta tag.
+						'product:energy_efficiency:min_value' => 'product_energy_efficiency_min',	// Internal meta tag.
+						'product:energy_efficiency:max_value' => 'product_energy_efficiency_max',	// Internal meta tag.
 						'product:expiration_time'             => '',
-						'product:fluid_volume:value'          => 'product_fluid_volume_value',	// Non-standard / internal meta tag.
-						'product:fluid_volume:units'          => 'product_fluid_volume_units',	// Non-standard / internal meta tag.
-						'product:gtin14'                      => 'product_gtin14',		// Non-standard / internal meta tag.
-						'product:gtin13'                      => 'product_gtin13',		// Non-standard / internal meta tag.
-						'product:gtin12'                      => 'product_gtin12',		// Non-standard / internal meta tag.
-						'product:gtin8'                       => 'product_gtin8',		// Non-standard / internal meta tag.
-						'product:gtin'                        => 'product_gtin',		// Non-standard / internal meta tag.
-						'product:height:value'                => 'product_height_value',	// Non-standard / internal meta tag.
-						'product:height:units'                => 'product_height_units',	// Non-standard / internal meta tag.
+						'product:fluid_volume:value'          => 'product_fluid_volume_value',	// Internal meta tag.
+						'product:fluid_volume:units'          => 'product_fluid_volume_units',	// Internal meta tag.
+						'product:gtin14'                      => 'product_gtin14',		// Internal meta tag.
+						'product:gtin13'                      => 'product_gtin13',		// Internal meta tag.
+						'product:gtin12'                      => 'product_gtin12',		// Internal meta tag.
+						'product:gtin8'                       => 'product_gtin8',		// Internal meta tag.
+						'product:gtin'                        => 'product_gtin',		// Internal meta tag.
+						'product:height:value'                => 'product_height_value',	// Internal meta tag.
+						'product:height:units'                => 'product_height_units',	// Internal meta tag.
 						'product:isbn'                        => 'product_isbn',
 						'product:item_group_id'               => '',				// Product variant group ID.
-						'product:length:value'                => 'product_length_value',	// Non-standard / internal meta tag.
-						'product:length:units'                => 'product_length_units',	// Non-standard / internal meta tag.
+						'product:length:value'                => 'product_length_value',	// Internal meta tag.
+						'product:length:units'                => 'product_length_units',	// Internal meta tag.
 						'product:material'                    => 'product_material',
 						'product:mfr_part_no'                 => 'product_mfr_part_no',		// Product MPN.
-						'product:min_advert_price:amount'     => 'product_min_advert_price',	// Non-standard / internal meta tag.
-						'product:min_advert_price:currency'   => '',				// Non-standard / internal meta tag.
-						'product:mrp_id'                      => 'product_mrp',			// Non-standard / internal meta tag.
+						'product:min_advert_price:amount'     => 'product_min_advert_price',	// Internal meta tag.
+						'product:min_advert_price:currency'   => '',				// Internal meta tag.
+						'product:mrp_id'                      => 'product_mrp',			// Internal meta tag.
 						'product:original_price:amount'       => '',				// Used by WooCommerce module.
 						'product:original_price:currency'     => '',				// Used by WooCommerce module.
 						'product:pattern'                     => 'product_pattern',
 						'product:pretax_price:amount'         => '',				// Used by WooCommerce module.
 						'product:pretax_price:currency'       => '',				// Used by WooCommerce module.
-						'product:price_type'                  => 'product_price_type',		// Non-standard / internal meta tag.
+						'product:price_type'                  => 'product_price_type',		// Internal meta tag.
 						'product:price:amount'                => 'product_price',
 						'product:price:currency'              => 'product_currency',
 						'product:purchase_limit'              => '',
-						'product:retailer_category'           => '',				// Non-standard / internal meta tag.
+						'product:retailer_category'           => '',				// Internal meta tag.
 						'product:retailer_item_id'            => '',				// Product ID.
 						'product:retailer_part_no'            => 'product_retailer_part_no',	// Product SKU.
 						'product:sale_price:amount'           => '',				// Used by WooCommerce module.
@@ -3838,23 +3875,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:sale_price_dates:end'        => '',				// Used by WooCommerce module.
 						'product:shipping_cost:amount'        => '',
 						'product:shipping_cost:currency'      => '',
-						'product:shipping_height:value'       => 'product_shipping_height_value',	// Non-standard / internal meta tag.
-						'product:shipping_height:units'       => 'product_shipping_height_units',	// Non-standard / internal meta tag.
-						'product:shipping_length:value'       => 'product_shipping_length_value',	// Non-standard / internal meta tag.
-						'product:shipping_length:units'       => 'product_shipping_length_units',	// Non-standard / internal meta tag.
+						'product:shipping_height:value'       => 'product_shipping_height_value',	// Internal meta tag.
+						'product:shipping_height:units'       => 'product_shipping_height_units',	// Internal meta tag.
+						'product:shipping_length:value'       => 'product_shipping_length_value',	// Internal meta tag.
+						'product:shipping_length:units'       => 'product_shipping_length_units',	// Internal meta tag.
 						'product:shipping_weight:value'       => 'product_shipping_weight_value',
 						'product:shipping_weight:units'       => 'product_shipping_weight_units',
-						'product:shipping_width:value'        => 'product_shipping_width_value',	// Non-standard / internal meta tag.
-						'product:shipping_width:units'        => 'product_shipping_width_units',	// Non-standard / internal meta tag.
+						'product:shipping_width:value'        => 'product_shipping_width_value',	// Internal meta tag.
+						'product:shipping_width:units'        => 'product_shipping_width_units',	// Internal meta tag.
 						'product:size'                        => 'product_size',
-						'product:size_group'                  => 'product_size_group',		// Non-standard / internal meta tag.
-						'product:size_system'                 => 'product_size_system',		// Non-standard / internal meta tag.
+						'product:size_group'                  => 'product_size_group',		// Internal meta tag.
+						'product:size_system'                 => 'product_size_system',		// Internal meta tag.
 						'product:target_gender'               => 'product_target_gender',
 						'product:upc'                         => 'product_gtin12',
 						'product:weight:value'                => 'product_weight_value',
 						'product:weight:units'                => 'product_weight_units',
-						'product:width:value'                 => 'product_width_value',		// Non-standard / internal meta tag.
-						'product:width:units'                 => 'product_width_units',		// Non-standard / internal meta tag.
+						'product:width:value'                 => 'product_width_value',		// Internal meta tag.
+						'product:width:units'                 => 'product_width_units',		// Internal meta tag.
 					),
 					'profile' => array(
 						'profile:first_name' => '',
@@ -4962,10 +4999,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				}
 
 				/*
-				 * Maybe complete relative paths in the image arrays.
+				 * Maybe complete relative paths in the assets array.
 				 */
 				if ( ! empty( $info[ 'base' ] ) ) {	// Just in case.
 
+					/*
+					 * Returns a plugin base URL like 'https://wpsso.com/wp-content/plugins/wpsso/'.
+					 */
 					$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
 
 					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
@@ -5369,6 +5409,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		/*
 		 * Since WPSSO Core v3.38.3.
+		 *
+		 * Returns $cf[ 'plugin' ] with 'wpsso' as the first array element and all other plugins sorted by translated name.
 		 */
 		public static function get_ext_sorted() {
 
@@ -5394,25 +5436,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $cf[ 'plugin' ];
 		}
 
+		/*
+		 * Returns 'plugin' or 'add-on' translated string.
+		 */
 		public static function get_ext_type_transl( $ext ) {
 
 			return 'wpsso' === $ext ? _x( 'plugin', 'plugin type', 'wpsso' ) : _x( 'add-on', 'plugin type', 'wpsso' );
 		}
 
-		private static function sort_plugin_by_name_key( $a, $b ) {
+		public static function get_ext_text_domain( $ext ) {
 
-			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {
+			$cf          = self::get_config();
+			$text_domain = false;
 
-				$a[ 'name' ] = _x( $a[ 'name' ], 'plugin name', 'wpsso' );
-				$b[ 'name' ] = _x( $b[ 'name' ], 'plugin name', 'wpsso' );
+			if ( isset( $cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ) {
 
-				/*
-				 * Case insensitive string comparisons using a "natural order" algorithm.
-				 */
-				return strnatcasecmp( $a[ 'name' ], $b[ 'name' ] );
+				$text_domain = $cf[ 'plugin' ][ $ext ][ 'text_domain' ];
 			}
 
-			return 0;	// No change.
+			return $text_domain;
 		}
 
 		/*
@@ -5470,29 +5512,49 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * Returns false, a slashed directory path, or the file name path.
 		 *
-		 * Use $is_dir = true when specifically checking for a sub-folder path.
+		 * Use $file_is_dir = true when specifically checking for a sub-folder path.
 		 */
-		public static function get_ext_file_path( $ext, $file_name = '', $is_dir = false ) {
+		public static function get_ext_file_path( $ext, $rel_file = '', $file_is_dir = false ) {
+
+			$file_path = false;
 
 			if ( $ext_dir = self::get_ext_dir( $ext ) ) {	// Returns false or a slashed directory path.
 
-				if ( $is_dir ) {	// Must be a directory.
+				$rel_file = SucomUtil::sanitize_file_path( $rel_file );
 
-					if ( is_dir( $sub_dir = trailingslashit( $ext_dir . $file_name ) ) ) {
+				if ( $file_is_dir ) {	// Must be a directory.
 
-						return $sub_dir;
+					if ( is_dir( trailingslashit( $ext_dir . $rel_file ) ) ) {
+
+						$file_path = trailingslashit( $ext_dir . $rel_file );
 					}
 
-				} else {
+				} elseif ( file_exists( $ext_dir . $rel_file ) ) {
 
-					if ( file_exists( $file_path = $ext_dir . $file_name ) ) {
-
-						return $file_path;
-					}
+					$file_path = $ext_dir . $rel_file;
 				}
 			}
 
-			return false;
+			return $file_path;
+		}
+
+		public static function get_ext_file_url( $ext, $rel_file ) {
+
+			$cf       = self::get_config();
+			$file_key = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
+			$file_url = false;
+
+			if ( isset( $cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ) {
+
+				/*
+				 * Returns URL or false on failure.
+				 *
+				 * See https://developer.wordpress.org/reference/functions/wp_http_validate_url/
+				 */
+				$file_url = wp_http_validate_url( $cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] );
+			}
+
+			return $file_url;
 		}
 
 		/*
@@ -5698,6 +5760,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			return $local_cache[ $md_index ];
+		}
+
+		private static function sort_plugin_by_name_key( $a, $b ) {
+
+			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {
+
+				$a[ 'name' ] = _x( $a[ 'name' ], 'plugin name', 'wpsso' );
+				$b[ 'name' ] = _x( $b[ 'name' ], 'plugin name', 'wpsso' );
+
+				/*
+				 * Case insensitive string comparisons using a "natural order" algorithm.
+				 */
+				return strnatcasecmp( $a[ 'name' ], $b[ 'name' ] );
+			}
+
+			return 0;	// No change.
 		}
 	}
 }

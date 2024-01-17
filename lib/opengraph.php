@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying wpsso_og_seed filters' );	// Begin timer.
+				$this->p->debug->mark( 'applying filters \'wpsso_og_seed\'' );	// Begin timer.
 			}
 
 			/*
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$this->p->debug->log_arr( 'og_seed', $mt_og );
 
-				$this->p->debug->mark( 'applying wpsso_og_seed filters' );	// End timer.
+				$this->p->debug->mark( 'applying filters \'wpsso_og_seed\'' );	// End timer.
 			}
 
 			/*
@@ -426,7 +426,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting site name for og:site_name meta tag' );
 				}
 
-				$mt_og[ 'og:site_name' ] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
+				$mt_og[ 'og:site_name' ] = SucomUtilWP::get_site_name( $this->p->options, $mod );	// localized
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -727,7 +727,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying wpsso_og filters' );
+				$this->p->debug->log( 'applying filters \'wpsso_og\'' );
 			}
 
 			$mt_og = apply_filters( 'wpsso_og', $mt_og, $mod );
@@ -1132,8 +1132,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all
 		 * 'article' meta tags if the og_type is 'website'. Removing only known meta tags (using the 'og_type_mt' array as
-		 * a reference) protects internal meta tags that may be used later by WpssoHead->extract_head_info(). For
-		 * example, the schema:type:id and p:image meta tags.
+		 * a reference) protects internal meta tags that may be used later by WpssoHead->extract_head_info().
 		 *
 		 * The 'og_content_map' array is also checked for Schema values that need to be swapped for simpler Open Graph meta
 		 * tag values.
@@ -1733,46 +1732,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			return $md_opts;
-		}
-
-		/*
-		 * Deprecated on 2022/02/22.
-		 */
-		public function get_all_previews( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_previews()' );	// Deprecation message.
-
-			return $this->p->media->get_all_previews( $num, $mod, $md_pre, $force_prev );
-		}
-
-		/*
-		 * Deprecated on 2022/02/22.
-		 */
-		public function get_all_videos( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_videos()' );	// Deprecation message.
-
-			return $this->p->media->get_all_videos( $num, $mod, $md_pre, $force_prev );
-		}
-
-		/*
-		 * Deprecated on 2022/02/22.
-		 */
-		public function get_all_images( $num, $size_names, array $mod, $check_dupes = true, $md_pre = 'og' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_images()' );	// Deprecation message.
-
-			return $this->p->media->get_all_images( $num, $size_names, $mod, $md_pre );
-		}
-
-		/*
-		 * Deprecated on 2022/02/22.
-		 */
-		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_media_info()' );	// Deprecation message.
-
-			return $this->p->media->get_media_info( $size_name, $request, $mod, $md_pre, $mt_pre );
 		}
 	}
 }

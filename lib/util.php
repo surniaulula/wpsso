@@ -17,7 +17,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
-	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';	// Loads the SucomUtilWP class.
+	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 }
 
 if ( ! class_exists( 'WpssoUtil' ) ) {
@@ -99,11 +99,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->add_plugin_actions( $this, array( 'scheduled_task_started' => 1 ), $prio = -1000 );
 
 			/*
-			 * Log the locale change and clear the Sucom::get_locale() cache.
+			 * Log the locale change and clear the SucomUtilWP::get_locale() cache.
 			 */
-			add_action( 'change_locale', array( $this, 'wp_locale_changed' ), -100, 1 );
-			add_action( 'switch_locale', array( $this, 'wp_locale_switched' ), -100, 1 );
-			add_action( 'restore_previous_locale', array( $this, 'wp_locale_restored' ), -100, 2 );
+			add_action( 'change_locale', array( $this, 'locale_changed' ), -100, 1 );
+			add_action( 'switch_locale', array( $this, 'locale_switched' ), -100, 1 );
+			add_action( 'restore_previous_locale', array( $this, 'locale_restored' ), -100, 2 );
 
 			/*
 			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
@@ -227,22 +227,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * Monitor the WordPress 'change_locale' action for locale changes.
 		 *
-		 * Log the locale change and clear the Sucom::get_locale() cache.
+		 * Log the locale change and clear the SucomUtilWP::get_locale() cache.
 		 */
-		public function wp_locale_changed( $locale ) {
+		public function locale_changed( $locale ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'wp locale changed to ' . $locale );
 			}
 
-			SucomUtil::clear_locale_cache();
+			SucomUtilWP::clear_locale_cache();
 		}
 
 		/*
-		 * Cache is cleared by WpssoUtil->wp_locale_changed().
+		 * Cache is cleared by WpssoUtil->locale_changed().
 		 */
-		public function wp_locale_switched( $locale ) {
+		public function locale_switched( $locale ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -251,9 +251,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
-		 * Cache is cleared by WpssoUtil->wp_locale_changed().
+		 * Cache is cleared by WpssoUtil->locale_changed().
 		 */
-		public function wp_locale_restored( $locale, $previous_locale ) {
+		public function locale_restored( $locale, $previous_locale ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$post_type_names = SucomUtil::get_post_types( $output = 'names', $sort = false, $args );
+				$post_type_names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
 
 				foreach ( $post_type_names as $opt_suffix ) {
 
@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$tax_names = self::get_taxonomies( $output = 'names' );
+				$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
 
 				foreach ( $tax_names as $opt_suffix ) {
 
@@ -1161,12 +1161,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
 				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
-				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
-				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_pro_transl );
-				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
+				$pkg_info[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
+				$pkg_info[ $ext ][ 'name_pro' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_pro_transl );
+				$pkg_info[ $ext ][ 'name_std' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_std_transl );
 			}
 
 			return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
+		}
+
+		public function get_pkg_name( $name, $pkg ) {
+
+			if ( false !== strpos( $name, $pkg ) ) {
+
+				$name = preg_replace( '/^(.*) ' . $pkg . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
+			}
+
+			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $pkg . '$2', $name );
 		}
 
 		public function get_form_cache( $name, $add_none = false ) {
@@ -1200,13 +1210,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->get_form_cache( 'business_types', false );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'business_types' ] );
-
-						break;
-
-					case 'half_hours':
-
-						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0,
-							$end_secs = DAY_IN_SECONDS, $step_secs = 60 * 30, $label_format = 'H:i' );
 
 						break;
 
@@ -1263,13 +1266,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->get_form_cache( 'place_types' );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'place_types' ] );
-
-						break;
-
-					case 'quarter_hours':
-
-						$local_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0,
-							$end_secs = DAY_IN_SECONDS, $step_secs = 60 * 15, $label_format = 'H:i' );
 
 						break;
 
@@ -2172,7 +2168,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 */
 				if ( $mod[ 'is_home' ] ) {
 
-					$url = self::get_home_url( $this->p->options, $mod );
+					$url = SucomUtilWP::get_home_url( $this->p->options, $mod );
 
 					$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
@@ -2631,12 +2627,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$page_number = $add_page > 1 ? $add_page : 1;
 
-			} else {
-
-				$page_number = $mod[ 'paged' ];	// False or a number.
-			}
+			} else $page_number = $mod[ 'paged' ];	// False or a number.
 
 			return $page_number;
+		}
+
+		/*
+		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
+		 *
+		 * Called by WpssoFaqShortcodeFaq->do_shortcode().
+		 * Called by WpssoFaqShortcodeQuestion->do_shortcode().
+		 * Called by WpssoJsonTypeThing->filter_json_data_https_schema_org_thing().
+		 */
+		public function get_fragment_anchor( $mod = null ) {
+
+			return '#sso-' . ( $mod ? SucomUtilWP::get_mod_css_id( $mod ) : '' );
 		}
 
 		/*
@@ -3274,7 +3279,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: global variable wpsso_doing_filter_' . $filter_name . ' is true' );
+					$this->p->debug->log( 'exiting early: global variable "wpsso_doing_filter_' . $filter_name . '" is true' );
 				}
 
 				return $filter_value;
@@ -3321,14 +3326,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
-					if ( ! isset( $post->ID ) || $post->ID !== $mod[ 'id' ] ) {
+					if ( ! isset( $post->ID ) || (int) $post->ID !== (int) $mod[ 'id' ] ) {
 
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
 						}
 
-						$post = self::get_post_object( $mod[ 'id' ] );	// Redefine the $post global.
+						$post = SucomUtilWP::get_post_object( $mod[ 'id' ] );	// Redefine the $post global.
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -3361,7 +3366,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
+				$this->p->debug->mark( 'applying filters \'' . $filter_name . '\'' );	// Begin timer.
 			}
 
 			$mtime_start  = microtime( $get_float = true );
@@ -3370,7 +3375,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// End timer.
+				$this->p->debug->mark( 'applying filters \'' . $filter_name . '\'' );	// End timer.
 			}
 
 			/*
@@ -3706,7 +3711,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
 
-			$text = self::strip_shortcodes( $text );					// Remove any remaining shortcodes.
+			$text = SucomUtil::strip_shortcodes( $text );					// Remove any remaining shortcodes.
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
 			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
@@ -3942,7 +3947,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$name_transl = $mod[ 'name_transl' ];	// Translated module name.
 			}
 
-			if ( self::is_mod_current_screen( $mod ) ) {
+			if ( SucomUtilWP::is_mod_screen_obj( $mod ) ) {
 
 				// translators: %1$s is an action message, %2$s is the module or post type name.
 				$msg_transl = sprintf( __( '%1$s for this %2$s', 'wpsso' ), $msg_transl, $name_transl );
@@ -4051,18 +4056,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $cache_exp_secs;
-		}
-
-		/*
-		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
-		 *
-		 * Called by WpssoFaqShortcodeFaq->do_shortcode().
-		 * Called by WpssoFaqShortcodeQuestion->do_shortcode().
-		 * Called by WpssoJsonTypeThing->filter_json_data_https_schema_org_thing().
-		 */
-		public static function get_fragment_anchor( $mod = null ) {
-
-			return '#sso-' . ( $mod ? self::get_mod_css_id( $mod ) : '' );
 		}
 
 		/**

@@ -98,6 +98,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * This filter re-sorts (if necessary) the active plugins array to load WPSSO Core before its add-ons.
 			 */
 			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
+			add_filter( 'pre_update_option_active_sitewide_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
 
 			/*
 			 * Define and disable the "Expect: 100-continue" header.
@@ -1162,8 +1163,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function maybe_show_language_notice() {
 
-			$current_locale = SucomUtil::get_locale();
-			$default_locale = SucomUtil::get_locale( 'default' );
+			$current_locale = SucomUtilWP::get_locale();
+			$default_locale = SucomUtilWP::get_locale( 'default' );
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
@@ -1605,6 +1606,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return array();
 		}
 
+		public function get_table_rows_cols( array $table_cells, $row_cols = 2 ) {
+
+			sort( $table_cells );
+
+			$per_col = ceil( count( $table_cells ) / $row_cols );
+
+			$table_rows = array();
+
+			foreach ( $table_cells as $num => $cell ) {
+
+				if ( empty( $table_rows[ $num % $per_col ] ) ) {	// Initialize the array element.
+
+					$table_rows[ $num % $per_col ] = '';
+				}
+
+				$table_rows[ $num % $per_col ] .= $cell;	// Create the html for each row.
+			}
+
+			return $table_rows;
+		}
+
 		/*
 		 * Always call as WpssoAdmin::get_nonce_action() to have a reliable __METHOD__ value.
 		 */
@@ -1706,18 +1728,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_version;
 
-			$home_url = SucomUtilWP::raw_get_home_url();
-
+			$home_url  = SucomUtilWP::raw_get_home_url();
 			$home_path = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );
 
 			$footer_html = '<div class="admin-footer-host">';
-
 			$footer_html .= $home_path . '<br/>';
-
 			$footer_html .= 'WordPress ' . $wp_version . '<br/>';
-
 			$footer_html .= 'PHP ' . phpversion() . '<br/>';
-
 			$footer_html .= '</div>';
 
 			return $footer_html;
@@ -1740,10 +1757,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function pre_update_active_plugins( $current, $old_value, $option = 'active_plugins' ) {
 
-			if ( 'active_plugins' === $option ) {	// Just in case.
-
-				usort( $current, array( __CLASS__, 'sort_active_plugins' ) );
-			}
+			usort( $current, array( __CLASS__, 'sort_active_plugins' ) );
 
 			return $current;
 		}
@@ -2310,82 +2324,46 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$rel_file  = 'readme.txt';
-			$file_path = WpssoConfig::get_ext_file_path( $ext, $rel_file );
-			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
-			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
-
+			$rel_file       = 'readme.txt';
+			$file_content   = '';
 			$cache_md5_pre  = 'wpsso_r_';
 			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+			$readme_info    = array();
 
-			$readme_info     = false;
-			$readme_content  = false;
-			$readme_from_url = false;
+			/*
+			 * Maybe get parsed readme from transient cache.
+			 */
+			if ( $cache_exp_secs > 0 && $read_cache ) {
 
-			if ( $cache_exp_secs > 0 ) {
+				$readme_info = get_transient( $cache_id );
 
-				if ( $read_cache ) {
+				if ( ! empty( $readme_info ) && is_array( $readme_info ) ) {
 
-					$readme_info = get_transient( $cache_id );
+					if ( $this->p->debug->enabled ) {
 
-					if ( is_array( $readme_info ) ) {
-
-						return $readme_info;	// Stop here.
-					}
-				}
-
-				if ( $file_url && strpos( $file_url, '://' ) ) {
-
-					if ( ! $read_cache ) {
-
-						$this->p->cache->clear( $file_url );	// Clear the cached webpage.
+						$this->p->debug->log( 'readme_info retrieved from transient' );
 					}
 
-					$readme_from_url = true;
-					$readme_content  = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+					return $readme_info;	// Stop here.
 				}
 
 			} else delete_transient( $cache_id );	// Just in case.
 
-			if ( empty( $readme_content ) ) {
+			$file_content = $this->get_ext_file_content( $ext, $rel_file );
 
-				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-
-					$readme_from_url = false;
-					$readme_content  = fread( $fh, filesize( $file_path ) );
-
-					fclose( $fh );
-				}
-			}
-
-			if ( empty( $readme_content ) ) {
-
-				$readme_info = array();	// Save an empty array.
-
-			} else {
+			if ( ! empty( $file_content ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 
 				$readme_parser =& SuextParseReadme::get_instance();
 
-				$readme_info = $readme_parser->parse_content( $readme_content );
-
-				/*
-				 * Remove possibly inaccurate information from the local readme file.
-				 */
-				if ( ! $readme_from_url && is_array( $readme_info ) ) {
-
-					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
-
-						unset( $readme_info[ $key ] );
-					}
-				}
+				$readme_info = $readme_parser->parse_content( $file_content );
 			}
 
 			/*
-			 * Save the parsed readme to the transient cache.
+			 * Save the parsed readme to transient cache.
 			 */
 			if ( $cache_exp_secs > 0 ) {
 
@@ -2398,6 +2376,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
+		}
+
+		/*
+		 * See WpssoSubmenuSetup->show_metabox_setup_guide().
+		 */
+		public function get_ext_file_content( $ext, $rel_file ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'ext'      => $ext,
+					'rel_file' => $rel_file,
+				) );
+			}
+
+			$file_path      = WpssoConfig::get_ext_file_path( $ext, $rel_file );
+			$file_url       = WpssoConfig::get_ext_file_url( $ext, $rel_file );	// Returns sanitized URL or false.
+			$file_content   = '';
+			$text_domain    = WpssoConfig::get_ext_text_domain( $ext );
+			$cache_md5_pre  = 'wpsso_c_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+
+			if ( $file_url ) {	// Sanitized URL or false.
+
+				if ( $cache_exp_secs > 0 ) {
+
+					$file_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+
+				} else {
+
+					$this->p->cache->clear( $file_url );
+
+					$file_content = wp_remote_retrieve_body( wp_remote_get( $file_url ) );
+				}
+			}
+
+			if ( empty( $file_content ) ) {	// No content from the file URL.
+
+				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+
+					$file_content = fread( $fh, filesize( $file_path ) );
+
+					fclose( $fh );
+				}
+			}
+
+			if ( $text_domain ) {	// False or text domain string.
+
+				/*
+				 * Translate HTML headers, paragraphs, list items, and blockquotes.
+				 */
+				$file_content = SucomUtil::get_html_transl( $file_content, $text_domain );
+			}
+
+			return $file_content;
 		}
 
 		/*
@@ -2516,15 +2549,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
 
-				/*
-				 * Icon image array keys are '1x' and '2x'.
-				 */
 				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
 
 				if ( ! empty( $icons[ '1x' ] ) ) {
 
-					$img_src = $icons[ '1x' ];
-
+					$img_src    = $icons[ '1x' ];
 					$img_srcset .= $icons[ '1x' ] . ' 128w, ';
 				}
 
@@ -2536,59 +2565,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			return '<img src="' . $img_src . '" srcset="' . trim( $img_srcset, $chars = ', ' ) . '" '
 				. 'width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
-		}
-
-		/*
-		 * See WpssoSubmenuSetup->show_metabox_setup_guide().
-		 */
-		public function get_ext_file_content( $ext, $rel_file ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array(
-					'ext'      => $ext,
-					'rel_file' => $rel_file,
-				) );
-			}
-
-			$rel_file    = SucomUtil::sanitize_file_path( $rel_file );
-			$file_path   = WpssoConfig::get_ext_file_path( $ext, $rel_file );
-			$file_key    = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
-			$file_url    = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
-			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
-
-			$cache_md5_pre  = 'wpsso_c_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
-			$cache_content  = false;
-
-			if ( $cache_exp_secs > 0 ) {
-
-				if ( $file_url && strpos( $file_url, '://' ) ) {
-
-					$cache_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
-				}
-
-			} else delete_transient( $cache_id );	// Just in case.
-
-			if ( empty( $cache_content ) ) {	// No content from the file URL cache.
-
-				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-
-					$cache_content = fread( $fh, filesize( $file_path ) );
-
-					fclose( $fh );
-				}
-			}
-
-			if ( $text_domain ) {	// False or text domain string.
-
-				/*
-				 * Translate HTML headers, paragraphs, and list items.
-				 */
-				$cache_content = SucomUtil::get_html_transl( $cache_content, $text_domain );
-			}
-
-			return $cache_content;
 		}
 
 		/*
@@ -2750,22 +2726,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$plugin_prefix = 'wpsso/';
 			$addon_prefix  = 'wpsso-';
 
-			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core plugin.
+			if ( 0 === strpos( $a, $plugin_prefix ) && 0 === strpos( $b, $addon_prefix ) ) {
 
-				if ( 0 === strpos( $b, $addon_prefix ) ) {	// WPSSO add-on.
+				return -1;	// Sort the WPSSO Core plugin before.
 
-					return -1;				// Sort WPSSO Core before the add-on.
-				}
+			} elseif ( 0 === strpos( $a, $addon_prefix ) && 0 === strpos( $b, $plugin_prefix ) ) {
 
-			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// WPSSO add-on.
+				return 1;	// Sort the WSSO add-on after.
 
-				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core plugin.
+			} elseif ( 0 === strpos( $a, 'jsm-show-' ) ) {
 
-					return 1;				// Sort the add-on after WPSSO Core.
-				}
-			}
+				return 1;	// Sort the JSM plugin after.
 
-			return strcmp( $a, $b );				// Fallback to sorting like WordPress.
+			} else return strcmp( $a, $b );	
 		}
 	}
 }

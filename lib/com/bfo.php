@@ -160,7 +160,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 						$new_hook_group[ $hook_ref ] = $hook_info;	// Add the original callback first, followed by the check.
 
-						$hook_name = self::get_hook_function_name( $hook_info );	// Create a human readable class / method name.
+						$hook_name = self::get_filter_hook_function( $hook_info );
 
 						if ( $hook_name === '' ) {	// Just in case.
 
@@ -350,19 +350,15 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			return $value;
 		}
 
-		/*
-		 * Get a human readable class/method/function name from the callback array.
-		 */
-		public static function get_hook_function_name( array $hook_info ) {
+		private static function get_filter_hook_function( array $hook_info ) {
 
 			$hook_name = '';
 
 			if ( isset( $hook_info[ 'function' ] ) ) {
 
-				if ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class method.
+				if ( is_array( $hook_info[ 'function' ] ) ) {
 
-					$class_name = '';
-
+					$class_name    = '';
 					$function_name = '';
 
 					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
@@ -381,7 +377,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 					$hook_name = $class_name . '::' . $function_name;
 
-				} elseif ( is_string( $hook_info[ 'function' ] ) ) {	// Hook is a function.
+				} elseif ( is_string( $hook_info[ 'function' ] ) ) {
 
 					$hook_name = $hook_info[ 'function' ];
 				}

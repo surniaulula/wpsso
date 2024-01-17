@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
-				$json_ret[ 'url' ] = SucomUtil::get_home_url( $this->p->options, $mod );
+				$json_ret[ 'url' ] = SucomUtilWP::get_home_url( $this->p->options, $mod );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

@@ -5,8 +5,6 @@
 
 'sucom_get_user_object' ( $user_obj, $user_id )
 
-'sucom_ignored_url_query_args' ( array $ignored_url_query_args )
-
 'sucom_is_home_page' ( $bool, $use_post )
 
 'sucom_is_home_posts' ( $bool, $use_post )
@@ -18,8 +16,6 @@
 'sucom_is_user_page' ( $bool )
 
 'sucom_robots_default_directives' ( $directives )
-
-'sucom_strip_shortcodes' ( $preg_array )
 
 'wpsso_{post_type}_tag_taxonomy' ( $taxonomy = 'post_tag', $mod )
 
@@ -83,7 +79,7 @@
 
 'wpsso_form_select_{option_name}' ( $values )
 
-'wpsso_get_avail' ( $ret )
+'wpsso_get_avail' ( array $avail )
 
 'wpsso_get_config' ( array $cf )
 
@@ -265,6 +261,10 @@
 
 'wpsso_post_public_ids' ( array $public_ids, array $posts_args )
 
+'wpsso_post_public_ids_posts_args' ( array $posts_args )
+
+'wpsso_post_public_ids_suppress_filters' ( true )	// False when the WPML or qTranslate-XT plugins are active.
+
 'wpsso_post_type_has_archive' ( $bool, $mod )
 
 'wpsso_post_types' ( $post_types, $output )
@@ -277,13 +277,13 @@
 
 'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug, $output )
 
-'wpsso_product_attribute_names' ( array $attr_names )
-
-'wpsso_product_description' ( $desc, $product )
+'wpsso_product_currency' ( $currency )
 
 'wpsso_product_price' ( $price, $product )
 
 'wpsso_product_title' ( $title, $product )
+
+'wpsso_product_url' ( $url, $product )
 
 'wpsso_product_variation_title' ( $title, $product, $variation )
 
@@ -364,6 +364,8 @@
 'wpsso_the_description' ( $desc_text, $mod )
 
 'wpsso_the_excerpt' ( $excerpt_text, $mod )
+
+'wpsso_the_excerpt_filter_excerpt' ( $bool )
 
 'wpsso_the_text' ( $text, $mod, $title_sep )
 

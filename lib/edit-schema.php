@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Language', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_lang',
-					'content'  => $form->get_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale', $css_id = '',
+					'content'  => $form->get_select( 'schema_lang', SucomUtilWP::get_available_locales(), $css_class = 'locale', $css_id = '',
 						$is_assoc = false, $schema_lang_disabled ),
 				),
 				'schema_title' => array(
@@ -868,7 +868,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_review_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies          = SucomUtil::get_currency_abbrev();
+			$currencies          = SucomUtil::get_currencies_abbrev();
 			$item_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_review_item_type' );
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$movie_actors_max    = SucomUtil::get_const( 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX', 15 );
@@ -1402,7 +1402,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_event_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies          = SucomUtil::get_currency_abbrev();
+			$currencies          = SucomUtil::get_currencies_abbrev();
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 
 			$form_rows = array(
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Language', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_lang',
-					'content'  => $form->get_select( 'schema_event_lang', SucomUtil::get_available_locales(), 'locale' ),
+					'content'  => $form->get_select( 'schema_event_lang', SucomUtilWP::get_available_locales(), $css_class = 'locale' ),
 				),
 				'schema_event_attendance' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
@@ -1591,7 +1591,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_job_posting_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
-			$currencies       = SucomUtil::get_currency_abbrev();
+			$currencies       = SucomUtil::get_currencies_abbrev();
 			$def_schema_title = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 
 			$form_rows = array(
@@ -1752,7 +1752,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		public function filter_mb_sso_edit_schema_product_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			$awards_max      = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
-			$currencies      = SucomUtil::get_currency_abbrev();
+			$currencies      = SucomUtil::get_currencies_abbrev();
 			$dimension_units = WpssoUtilUnits::get_dimension_units();
 			$fl_volume_units = WpssoUtilUnits::get_fluid_volume_units();
 			$weight_units    = WpssoUtilUnits::get_weight_units();

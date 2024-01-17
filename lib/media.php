@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$msg_transl = '<strong>' . __( 'Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height.', 'wpsso' ) . '</strong>';
 
-			list( $min_width, $min_height, $size_count ) = SucomUtil::get_minimum_image_wh();
+			list( $min_width, $min_height, $size_count ) = SucomUtilWP::get_minimum_image_wh();
 
 			echo '<p class="minimum-image-dimensions">';
 
@@ -230,9 +230,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
 
-			$html = SucomUtil::insert_html_tag_attributes( $html, array(
-				'data-wp-pid' => $id,
-			) );
+			$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-wp-pid' => $id ) );
 
 			return $html;
 		}
@@ -299,7 +297,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			static $local_fifo = array();
 
-			$cache_id = md5( SucomUtil::pretty_array( $cache_salt, $flatten = true ) );
+			$cache_id = md5( SucomUtil::get_array_pretty( $cache_salt, $flatten = true ) );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -332,7 +330,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/*
 			 * Maybe limit the number of array elements.
 			 */
-			$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$local_fifo[ $cache_id ] = array();
 
@@ -342,7 +340,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
 
-			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
+			$num_diff = SucomUtil::array_count_diff( $mt_videos, $num );
 
 			/*
 			 * Get video information and preview enable/disable option from the post/term/user meta.
@@ -378,7 +376,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
+			$num_diff = SucomUtil::array_count_diff( $mt_videos, $num );
 
 			/*
 			 * Maybe get more videos from the comment or post content.
@@ -585,7 +583,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_ret = array_merge( $mt_ret, $preview_images );
 			}
 
-			$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+			$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
 
@@ -768,7 +766,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'checking the content text for images' );
 					}
 
-					$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+					$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 					$content_images = $this->get_content_images( $num_diff, $size_name, $mod );
 
@@ -863,14 +861,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
-				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+				$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id ) );
 			}
 
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
-				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+				$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id ) );
 			}
@@ -974,7 +972,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/*
 					 * Maybe limit the number of array elements.
 					 */
-					$local_fifo = SucomUtil::array_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+					$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 					$local_fifo[ $post_id ] = array();
 
@@ -2791,7 +2789,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return;
 			}
 
-			$post_obj        = SucomUtil::get_post_object( $attach_mod[ 'id' ] );
+			$post_obj        = SucomUtilWP::get_post_object( $attach_mod[ 'id' ] );
 			$attach_metadata = wp_get_attachment_metadata( $attach_mod[ 'id' ] );	// Returns a WP_Error object on failure.
 
 			if ( $this->p->debug->enabled ) {

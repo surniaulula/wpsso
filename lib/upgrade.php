@@ -175,10 +175,10 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'og_post_type' => '',
 				),
 				592 => array(
-					'add_meta_property_product:rating:average' => '',	// Non-standard / internal meta tag.
-					'add_meta_property_product:rating:count'   => '',	// Non-standard / internal meta tag.
-					'add_meta_property_product:rating:worst'   => '',	// Non-standard / internal meta tag.
-					'add_meta_property_product:rating:best'    => '',	// Non-standard / internal meta tag.
+					'add_meta_property_product:rating:average' => '',
+					'add_meta_property_product:rating:count'   => '',
+					'add_meta_property_product:rating:worst'   => '',
+					'add_meta_property_product:rating:best'    => '',
 				),
 				599 => array(
 					'plugin_add_person_role' => 'plugin_new_user_is_person',
@@ -310,8 +310,8 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_clear_all_refresh' => '',
 				),
 				708 => array(
-					'plugin_bitly_login'   => '',	// Bitly Username.
-					'plugin_bitly_api_key' => '',	// Bitly API Key (deprecated).
+					'plugin_bitly_login'   => '',
+					'plugin_bitly_api_key' => '',
 				),
 				711 => array(
 					'plugin_term_title_prefix' => '',
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_list_cache_exp' => '',
 				),
 				722 => array(
-					'plugin_add_to_term' => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
+					'plugin_add_to_term' => '',
 					'plugin_add_to_user' => 'plugin_add_to_user_page',
 				),
 				744 => array(
@@ -404,20 +404,20 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'og_def_img_id_pre' => '',
 				),
 				795 => array(
-					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
-					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
-					'plugin_add_to_shop_coupon'  => '',	// Fix for private post type.
-					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
+					'plugin_clear_on_activate'   => '',
+					'plugin_clear_on_deactivate' => '',
+					'plugin_add_to_shop_coupon'  => '',
+					'plugin_add_to_shop_order'   => '',
 				),
 				797 => array(
-					'plugin_vidinfo_cache_exp'            => '',		// Renamed on 2021/06/24.
-					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',	// Renamed on 2021/06/24.
-					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',	// Renamed on 2021/06/24.
-					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',	// Renamed on 2021/06/24.
-					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',	// Renamed on 2021/06/24.
+					'plugin_vidinfo_cache_exp'            => '',
+					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',
+					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',
+					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',
+					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',
 				),
 				798 => array(
-					'og_author_field' => '',	// Renamed to 'fb_author_field' on 2021/07/01, then deleted on 2022/01/29.
+					'og_author_field' => '',
 				),
 				800 => array(
 					'plugin_apiresp_cache_exp'   => '',
@@ -430,25 +430,25 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_types_cache_exp'     => '',
 				),
 				801 => array(
-					'fb_admins'          => '',	// Deprecated on 2020/10/23.
+					'fb_admins'          => '',
 					'plugin_p_strip'     => '',
 					'plugin_use_img_alt' => '',
 				),
 				811 => array(
-					'plm_def_country'     => 'og_def_country',	// Moved to WPSSO Core on 2021/08/27.
-					'seo_author_name'     => '',			// Deprecated on 2021/09/01.
+					'plm_def_country'     => 'og_def_country',
+					'seo_author_name'     => '',
 				),
 				814 => array(
-					'add_5_star_rating'          => '',	// Deprecated on 2021/09/08.
-					'plugin_col_title_width'     => '',	// Deprecated on 2021/09/08.
-					'plugin_col_title_width_max' => '',	// Deprecated on 2021/09/08.
-					'plugin_col_def_width'       => '',	// Deprecated on 2021/09/08.
-					'plugin_col_def_width_max'   => '',	// Deprecated on 2021/09/08.
+					'add_5_star_rating'          => '',
+					'plugin_col_title_width'     => '',
+					'plugin_col_title_width_max' => '',
+					'plugin_col_def_width'       => '',
+					'plugin_col_def_width_max'   => '',
 				),
 				815 => array(
 					'plugin_wpssoam_tid'         => '',
-					'plugin_wpssoorg_tid'        => '',	// Deprecated on 2021/08/25.
-					'plugin_wpssoplm_tid'        => '',	// Deprecated on 2021/08/30.
+					'plugin_wpssoorg_tid'        => '',
+					'plugin_wpssoplm_tid'        => '',
 					'plugin_wpssorrssb_tid'      => '',
 					'plugin_wpssotie_tid'        => '',
 					'p_site_verify'              => 'pin_site_verify',
@@ -465,32 +465,32 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'p_img_desc_warn_len'        => '',
 				),
 				816 => array(
-					'add_link_itemprop_url'                         => '',	// Deprecated on 2021/09/15.
-					'add_link_itemprop_image'                       => '',	// Deprecated on 2021/09/15.
-					'add_link_itemprop_thumbnailurl'                => '',	// Deprecated on 2021/09/15.
-					'add_link_itemprop_hasmenu'                     => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_name'                        => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_alternatename'               => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_description'                 => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_aggregaterating.ratingvalue' => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_aggregaterating.ratingcount' => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_aggregaterating.worstrating' => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_aggregaterating.bestrating'  => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_aggregaterating.reviewcount' => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_address'                     => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_telephone'                   => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_currenciesaccepted'          => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_paymentaccepted'             => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_pricerange'                  => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_acceptsreservations'         => '',	// Deprecated on 2021/09/15.
-					'add_meta_itemprop_servescuisine'               => '',	// Deprecated on 2021/09/15.
+					'add_link_itemprop_url'                         => '',
+					'add_link_itemprop_image'                       => '',
+					'add_link_itemprop_thumbnailurl'                => '',
+					'add_link_itemprop_hasmenu'                     => '',
+					'add_meta_itemprop_name'                        => '',
+					'add_meta_itemprop_alternatename'               => '',
+					'add_meta_itemprop_description'                 => '',
+					'add_meta_itemprop_aggregaterating.ratingvalue' => '',
+					'add_meta_itemprop_aggregaterating.ratingcount' => '',
+					'add_meta_itemprop_aggregaterating.worstrating' => '',
+					'add_meta_itemprop_aggregaterating.bestrating'  => '',
+					'add_meta_itemprop_aggregaterating.reviewcount' => '',
+					'add_meta_itemprop_address'                     => '',
+					'add_meta_itemprop_telephone'                   => '',
+					'add_meta_itemprop_currenciesaccepted'          => '',
+					'add_meta_itemprop_paymentaccepted'             => '',
+					'add_meta_itemprop_pricerange'                  => '',
+					'add_meta_itemprop_acceptsreservations'         => '',
+					'add_meta_itemprop_servescuisine'               => '',
 				),
 				831 => array(
-					'plugin_clear_post_terms'  => '',	// Deprecated on 2021/11/01.
-					'plugin_clear_for_comment' => '',	// Deprecated on 2021/11/01.
+					'plugin_clear_post_terms'  => '',
+					'plugin_clear_for_comment' => '',
 				),
 				832 => array(
-					'upscale_img_max'  => 'upscale_pct_max',	// Renamed on 2021/11/03.
+					'upscale_img_max'  => 'upscale_pct_max',
 				),
 				846 => array(
 					'plugin_schema_type_col_post' => '',
@@ -507,19 +507,19 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_og_desc_col_user'     => '',
 				),
 				853 => array(
-					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',	// Renamed on 2022/01/14.
-					'plugin_wpseo_show_import' => '',				// Deprecated on 2022/01/15.
+					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',
+					'plugin_wpseo_show_import' => '',
 				),
 				864 => array(
 					'og_type_for_post_archive'     => '',
 					'schema_type_for_post_archive' => '',
-					'fb_author_field'              => '',	// Deprecated on 2022/01/29.
+					'fb_author_field'              => '',
 				),
 				870 => array(
-					'plugin_checksum'       => 'checksum',	// Renamed on 2022/02/04.
-					'plugin_filter_title'   => '',		// Deprecated on 2022/02/02.
-					'plugin_document_title' => '',		// Deprecated on 2022/02/04.
-					'plugin_seo_title_part' => '',		// Deprecated on 2022/02/04.
+					'plugin_checksum'       => 'checksum',
+					'plugin_filter_title'   => '',
+					'plugin_document_title' => '',
+					'plugin_seo_title_part' => '',
 				),
 				877 => array(
 					'seo_title_max_len'     => '',
@@ -578,9 +578,9 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'site_org_sources_policy_url'     => '',
 				),
 				985 => array(
-					'plugin_wpvideo_api'   => 'plugin_wpvideoshortcode_api',	// Check for Embedded Media: WP Media Library Video Shortcodes.
-					'schema_add_text_prop' => 'schema_def_add_text_prop',		// Add Text or Article Body Property.
-					'schema_aggr_offers'   => 'schema_def_product_aggr_offers',	// Aggregate Offers by Currency.
+					'plugin_wpvideo_api'   => 'plugin_wpvideoshortcode_api',
+					'schema_add_text_prop' => 'schema_def_add_text_prop',
+					'schema_aggr_offers'   => 'schema_def_product_aggr_offers',
 				),
 				989 => array(
 					'schema_type_for_attachment_audio' => '',
@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 
-					foreach ( SucomUtil::get_opts_begin( 'inc_', $opts ) as $key => $val ) {
+					foreach ( SucomUtil::get_opts_begin( $opts, 'inc_' ) as $key => $val ) {
 
 						$new_key = '';
 
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 
 					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
 
-						while ( $result = SucomUtil::get_roles_users_ids( $roles = array( 'subscriber' ), $blog_id = null, $limit = 1000 ) ) {
+						while ( $result = SucomUtilWP::get_roles_users_ids( $roles = array( 'subscriber' ), $blog_id = null, $limit = 1000 ) ) {
 
 							foreach ( $result as $user_id ) {
 
@@ -778,7 +778,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
 
-					foreach ( SucomUtil::get_opts_begin( 'add_meta_property_product:', $opts ) as $key => $val ) {
+					foreach ( SucomUtil::get_opts_begin( $opts, 'add_meta_property_product:' ) as $key => $val ) {
 
 						$opts[ $key ] = 1;
 					}
@@ -891,7 +891,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 834 ) {
 
-					foreach ( SucomUtil::get_opts_begin( 'plugin_sitemaps_for', $opts ) as $key => $val ) {
+					foreach ( SucomUtil::get_opts_begin( $opts, 'plugin_sitemaps_for' ) as $key => $val ) {
 
 						$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );
 

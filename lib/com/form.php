@@ -282,7 +282,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( isset( $atts[ 'is_locale' ] ) ) {
 
-				$label .= ' <span class="option_locale">[' . SucomUtil::get_locale() . ']</span>';
+				$label .= ' <span class="option_locale">[' . SucomUtilWP::get_locale() . ']</span>';
 			}
 
 			$html = '<th';
@@ -307,7 +307,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_css_class_hide_prefix( $in_view, $opt_name_prefix ) {
 
-			$opt_keys = SucomUtil::get_opts_begin( $opt_name_prefix, $this->options );
+			$opt_keys = SucomUtil::get_opts_begin( $this->options, $opt_name_prefix );
 
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
@@ -707,7 +707,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = $this->get_option_value_transl( 'Post Type' );
 
-			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
+			$values = SucomUtilWP::get_post_type_labels( $val_prefix = '', $label_prefix );
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
@@ -766,11 +766,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = $this->get_option_value_transl( 'Post Type' );
 
-			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
+			$values = SucomUtilWP::get_post_type_labels( $val_prefix = '', $label_prefix );
 
 			$label_prefix = $this->get_option_value_transl( 'Taxonomy' );
 
-			$values += SucomUtil::get_taxonomy_labels( $val_prefix = 'tax_', $label_prefix );
+			$values += SucomUtilWP::get_taxonomy_labels( $val_prefix = 'tax_', $label_prefix );
 
 			$values[ 'user_page' ] = $this->get_option_value_transl( 'User Profiles' );
 
@@ -781,7 +781,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_amount_currency( $amount_name, $currency_name, $css_class = 'price', $css_id = '', $max_len = 0, $holder = '' ) {
 
-			$currencies = SucomUtil::get_currency_abbrev();	// Uses a local cache.
+			$currencies = SucomUtil::get_currencies_abbrev();
 
 			return $this->get_input( $amount_name, $css_class, $css_id, $max_len, $holder ) . ' ' .
 				$this->get_select( $currency_name, $currencies, $css_class = 'currency', $css_id = '',
@@ -1586,8 +1586,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( empty( $local_cache[ $step_mins ] ) ) {
 
-				$local_cache[ $step_mins ] = SucomUtil::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
-					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
+				$local_cache[ $step_mins ] = SucomUtil::get_hours( 60 * $step_mins );
 			}
 
 			$css_class   = trim( 'time-hh-mm ' . $css_class );
@@ -3139,7 +3138,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					/*
 					 * Array values may be localized, so include the current locale in the cache salt string.
 					 */
-					$cache_salt = $event_json_var . '_locale:' . SucomUtil::get_locale();
+					$cache_salt = $event_json_var . '_locale:' . SucomUtilWP::get_locale();
 
 					/*
 					 * Returns false on error.
