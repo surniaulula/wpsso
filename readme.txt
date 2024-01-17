@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin: Schema, Meta Tags, oEmbed, Pins, Feeds, Sitemaps and More ===
+=== WPSSO Core - The Complete Structured Data Plugin: Schema, Meta Tags, oEmbed, Pins, Feeds, SEO, Sitemaps and More ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
