@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( current_user_can( 'update_plugins' ) ) {
 
-				$update_count = SucomPlugin::get_updates_count( $plugin_prefix = 'wpsso' );
+				$update_count = SucomPlugin::get_update_count( $plugin_prefix = 'wpsso' );
 
 				if ( $update_count > 0 ) {
 

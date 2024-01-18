@@ -1652,7 +1652,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return md5( $salt );
 		}
 
-		private function is_plugin_found() {
+		private function is_plugin_found( $ext = null ) {
 			
 			return SucomPlugin::is_plugin_active( 'wpsso/wpsso.php' );
 		}

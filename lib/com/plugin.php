@@ -17,6 +17,47 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		public function __construct() {}
 
 		/*
+		 * GET PLUGINS METHODS:
+		 *
+		 *	get_active_plugins()
+		 *	get_plugins()
+		 *
+		 * Returns an associative array of true/false values.
+		 */
+		public static function get_active_plugins( $read_cache = true ) {
+
+			static $local_cache = null;
+
+			if ( $read_cache ) {
+
+				if ( null !== $local_cache ) {
+
+					return $local_cache;
+				}
+			}
+
+			$local_cache    = array();
+			$active_plugins = get_option( 'active_plugins', array() );
+
+			if ( is_multisite() ) {
+
+				$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+
+				if ( ! empty( $active_network_plugins ) ) {
+
+					$active_plugins = array_merge( $active_plugins, $active_network_plugins );
+				}
+			}
+
+			foreach ( $active_plugins as $plugin_base ) {
+
+				$local_cache[ $plugin_base ] = true;
+			}
+
+			return $local_cache;
+		}
+
+		/*
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
 		 *
 		 * Used by self::is_plugin_installed().
@@ -68,39 +109,23 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		}
 
 		/*
-		 * Returns an associative array of true/false values.
+		 * IS CHECK METHODS:
+		 *
+		 *	is_plugin_active()
+		 *	is_plugin_installed()
+		 *
+		 * Returns true/false.
 		 */
-		public static function get_active_plugins( $read_cache = true ) {
+		public static function is_plugin_active( $plugin_base, $read_cache = true ) {
 
-			static $local_cache = null;
+			$active_plugins = self::get_active_plugins( $read_cache );
 
-			if ( $read_cache ) {
+			if ( isset( $active_plugins[ $plugin_base ] ) ) {	// Associative array of true/false values.
 
-				if ( null !== $local_cache ) {
-
-					return $local_cache;
-				}
+				return $active_plugins[ $plugin_base ];	// Return true/false.
 			}
 
-			$local_cache    = array();
-			$active_plugins = get_option( 'active_plugins', array() );
-
-			if ( is_multisite() ) {
-
-				$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
-
-				if ( ! empty( $active_network_plugins ) ) {
-
-					$active_plugins = array_merge( $active_plugins, $active_network_plugins );
-				}
-			}
-
-			foreach ( $active_plugins as $plugin_base ) {
-
-				$local_cache[ $plugin_base ] = true;
-			}
-
-			return $local_cache;
+			return false;
 		}
 
 		/*
@@ -138,26 +163,16 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		}
 
 		/*
-		 * Returns true/false.
-		 */
-		public static function is_plugin_active( $plugin_base, $read_cache = true ) {
-
-			$active_plugins = self::get_active_plugins( $read_cache );
-
-			if ( isset( $active_plugins[ $plugin_base ] ) ) {	// Associative array of true/false values.
-
-				return $active_plugins[ $plugin_base ];	// Return true/false.
-			}
-
-			return false;
-		}
-
-		/*
-		 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug prefix.
+		 * PLUGIN UPDATE METHODS:
+		 *
+		 *	get_update_count()
+		 *	have_plugin_update()
+		 *
+		 * Get the 'update_plugins' site transient and return the number of pending updates for a given slug prefix.
 		 *
 		 * Example: $plugin_prefix = 'wpsso'
 		 */
-		public static function get_updates_count( $plugin_prefix = '' ) {
+		public static function get_update_count( $plugin_prefix = '' ) {
 
 			$updates_count  = 0;
 			$update_plugins = get_site_transient( 'update_plugins' );

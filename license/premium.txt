@@ -1,12 +1,114 @@
 
-WPSSO CORE PREMIUM APPLICATION LICENSE PACKS MAY BE PURCHASED AS A LIFETIME
-NONTRANSFERABLE LICENSE PACK, OR A YEARLY RENEWABLE AND TRANSFERABLE LICENSE
-PACK.
+WPSSO CORE PREMIUM LIFETIME NONTRANSFERABLE LICENSE AGREEMENT
 
-IF YOU HAVE PURCHASED A LIFETIME NONTRANSFERABLE LICENSE PACK, REFER TO THE
-FOLLOWING URL FOR THE COMPLETE LICENSE AGREEMENT:
+IMPORTANT: READ THIS AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR
+OTHERWISE USING THE WPSSO CORE PREMIUM APPLICATION, YOU AGREE TO BE BOUND BY
+THE TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS
+LICENSE AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE
+PREMIUM APPLICATION.
 
-https://wpsso.com/wp-content/plugins/wpsso/license/premium-lifetime.txt
+This License Agreement ("License") is a legal agreement between you and
+Jean-Sebastien Morisset ("the Author") concerning your use of the WPSSO Core
+Premium application, together with any electronic documentation that may be
+provided therewith (collectively, "the Application") through the Application.
+YOU HEREBY AGREE, BOTH ON YOUR OWN BEHALF AND AS AN AUTHORIZED REPRESENTATIVE
+OF ANY ORGANIZATION FOR WHICH YOU ARE USING THE APPLICATION ("EMPLOYER"), THAT
+YOU AND THE EMPLOYER WILL USE THE APPLICATION ONLY IN ACCORDANCE WITH THE
+FOLLOWING TERMS:
 
-YEARLY RENEWABLE AND TRANSFERABLE LICENSE PACKS WILL BE AVAILABLE SOON.
+1. Disclaimer of Warranty. You expressly acknowledge and agree that use of the
+Application is at your sole risk. THE APPLICATION IS PROVIDED "AS IS," WITH ALL
+FAULTS AND WITHOUT WARRANTY OF ANY KIND. The Author does not warrant that the
+functions contained in the Application will meet your requirements, or that the
+operation of the Application will be uninterrupted or error-free. Furthermore,
+the Author does not warrant or make any representation regarding the use or the
+results of the use of the Application (including the related documentation) in
+terms of their correctness, accuracy, reliability, or otherwise.
+
+THE AUTHOR EXPRESSLY DISCLAIMS ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE OR TITLE WITH RESPECT TO THE APPLICATION.
+
+The Application may be provided with third-party plug-ins or other third-party
+software, or this Application may be provided as a plug-in for or otherwise in
+association with third-party software. Use of any such third-party software
+will be governed by the applicable license agreement, if any, with such third
+party.
+
+THE AUTHOR IS NOT RESPONSIBLE FOR ANY THIRD-PARTY APPLICATION AND WILL HAVE NO
+LIABILITY OF ANY KIND FOR YOUR USE OF SUCH THIRD-PARTY APPLICATION AND MAKES NO
+WARRANTY OF ANY KIND WITH RESPECT TO SUCH THIRD-PARTY APPLICATION.
+
+SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF IMPLIED
+WARRANTIES, SO THE ABOVE EXCLUSIONS MIGHT NOT APPLY TO YOU.
+
+2. Limitation of Liability. In no event will the Authors' total liability for
+all damages exceed the amount of money paid to the Author for the software that
+caused the damages unless caused by the gross negligence or intentional
+misconduct of the Author.
+
+UNDER NO CIRCUMSTANCES, INCLUDING NEGLIGENCE, WILL THE AUTHOR BE LIABLE FOR ANY
+INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE, OR CONSEQUENTIAL DAMAGES, INCLUDING
+LOST DATA, LOST REVENUE, OR LOST PROFITS, ARISING OUT OF OR RELATING TO THIS
+LICENSE OR THE APPLICATION UNLESS CAUSED BY THE GROSS NEGLIGENCE OR INTENTIONAL
+MISCONDUCT OF THE AUTHOR.
+
+SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CONSEQUENTIAL OR
+INDIRECT DAMAGES, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+
+3. License Grant. Subject to the terms and conditions of this Agreement and
+upon Licensee's full payment of the applicable fees the Author grants to you,
+and you accept, a personal, nonexclusive, nontransferable license to install
+and use the Application at a single Site Address per License purchased. For the
+purposes of this License a single Site Address shall mean a website, accessible
+by one fully qualified domain name and path to its document root as shown in
+the WordPress general settings Site Address (URL) option ("Site Address"). This
+License is effective until terminated as provided below. You may terminate this
+License by destroying the Application and any copies of the Application in your
+possession. This License will terminate automatically upon any violation of its
+terms.
+
+4. Support and upgrading. Licensee is entitled to receive upgrades of the
+Application, using the WordPress Upgrade system, at no additional fees for each
+licensed single Site Address. There is no support included or implied with the
+Application license.
+
+5. License Restrictions. You may not do any of the following yourself, or
+through any third party, and you may not permit any third party with whom you
+have a business relationship to do any of the following: (A) modify or create
+derivative works based upon the Application; (B) decompile, disassemble, or
+reverse engineer the Application in whole or in part; (C) defeat, disable, or
+circumvent any protection mechanism related to the Application; (D) use the
+Application or any parts of it to develop a product directly competing with the
+Application.
+
+6. Title and Ownership. This software is protected by copyright laws and
+international treaty provisions. Except for the rights expressly granted above,
+this License transfers to you no right, tide, or interest in the Application,
+or any copyright, patent, trademark, trade secret, or other intellectual
+property or proprietary right in the Application. The Author retains sole and
+exclusive title to all portions of the Application and any copies thereof. You
+agree not to disclose the Application to anyone.
+
+7. Indemnification. Licensor will indemnify Licensee against liability to third
+parties resulting from claims that the Licensed Application infringes on or
+violates any patents, copyrights, trade secrets or any other intellectual
+property rights of such third parties.
+
+8. Controlling Law and Severability. This License will be governed by the laws
+of Canada without regard to their provisions regarding conflicts of laws. This
+License will not be governed by the United Nations Convention on Contracts for
+the International Sale of Goods, the application of which is expressly
+excluded. You irrevocably submit to the jurisdiction of the state courts
+sitting in, and any action or proceeding arising out of this License will be
+heard and determined in such court. If for any reason a court of competent
+jurisdiction finds any provision, or portion thereof, to be unenforceable, such
+provision will be interpreted in order to give effect to such provision to the
+maximum extent permitted by law, and the remainder of this License will
+continue in full force and effect.
+
+9. Complete Agreement. This License constitutes the entire agreement between
+the parties with respect to the use of the Application and supersedes all prior
+or contemporaneous understandings regarding such subject matter. No amendment
+to or modification of this License will be binding unless in writing and signed
+by the Author.
 

@@ -1045,7 +1045,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$ext_pp      = $ext_auth_id && $this->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 
-				$local_cache[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
+				$local_cache[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;;
 			}
 
 			return $local_cache;
