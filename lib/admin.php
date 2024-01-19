@@ -1194,11 +1194,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! $this->is_plugin_found() ) {	// Just in case.
 
-				$pkg_info   = $this->p->util->get_pkg_info();	// Uses a local cache.
-				$notice_msg = sprintf( __( 'The %s plugin is not active and/or not found.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] );
-
-				$this->p->notice->err( $notice_msg );
-
 				return;
 			}
 
@@ -1652,9 +1647,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return md5( $salt );
 		}
 
-		private function is_plugin_found( $ext = null ) {
+		private function is_plugin_found() {
 			
-			return SucomPlugin::is_plugin_active( 'wpsso/wpsso.php' );
+			if ( ! SucomPlugin::is_plugin_active( 'wpsso/wpsso.php' ) ) {
+
+				$pkg_info   = $this->p->util->get_pkg_info();	// Uses a local cache.
+				$notice_msg = sprintf( __( 'The %s plugin is not active and/or not found.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] );
+				$notice_key = 'wpsso-not-found';
+
+				$this->p->notice->err( $notice_msg, $user_id = null, $notice_key );
+
+				return false;
+			}
+
+			return true;
 		}
 
 		private function is_settings( $menu_id = false ) {
