@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			if ( empty( $title_text ) ) {
 
-				$title_text = RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_name' );
+				$title_text = \RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_name' );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			if ( empty( $desc_text ) ) {
 
-				$desc_text = RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_desc' );
+				$desc_text = \RankMath\Helpers\Api::get_settings( 'titles.pt_' . $mod[ 'post_type' ] . '_default_snippet_desc' );
 
 				if ( $this->p->debug->enabled ) {
 

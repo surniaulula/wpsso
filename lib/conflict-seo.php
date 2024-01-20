@@ -48,6 +48,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$this->notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 			$this->conflict_check_aioseop();	// All in One SEO Pack.
+			$this->conflict_check_rankmath();	// Rank Math.
 			$this->conflict_check_seoframework();	// The SEO Framework.
 			$this->conflict_check_seopress();	// SEOPress.
 			$this->conflict_check_seoultimate();	// SEO Ultimate.
@@ -139,6 +140,44 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 		}
 
 		/*
+		 * Rank Math.
+		 */
+		private function conflict_check_rankmath() {
+
+			if ( empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
+
+				return;
+			}
+
+			$plugin_name = __( 'Rank Math', 'wpsso' );
+
+			/*
+			 * Check for Schema (Structured Data) module.
+			 */
+			if ( \RankMath\Helper::is_module_active( 'rich-snippet' ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$label_transl  = __( 'Schema (Structured Data)', 'rank-math' );
+
+				$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=rank-math' );
+
+				// translators: Please ignore - translation uses a different text domain.
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' . __( 'Dashboard', 'rank-math' ) . '</a>';
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $this->log_pre . 'rankmath schema module is enabled' );
+				}
+
+				$notice_msg = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
+				$notice_msg = sprintf( $notice_msg, $label_transl, $settings_link );
+				$notice_key = 'rankmath-schema-module-enabled';
+
+				$this->p->notice->err( $this->notice_pre . $notice_msg, null, $notice_key );
+			}
+		}
+
+		/*
 		 * The SEO Framework.
 		 */
 		private function conflict_check_seoframework() {
@@ -159,7 +198,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
-			$social_general_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+			$social_gen_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Social Meta Settings', 'autodescription' ) . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
@@ -184,7 +223,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 * The SEO Framework options that must be disabled.
 			 */
 			foreach ( array(
-				$social_general_link => array(
+				$social_gen_link => array(
 					// translators: Please ignore - translation uses a different text domain.
 					'og_tags'        => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
@@ -230,7 +269,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 * The SEO Framework options that must be enabled.
 			 */
 			foreach ( array(
-				$social_general_link => array(
+				$social_gen_link => array(
 					// translators: Please ignore - translation uses a different text domain.
 					'social_title_rem_additions' => '<strong>' . __( 'Remove site title from generated social titles?', 'autodescription' ) . '</strong>',
 				),
