@@ -256,7 +256,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.10.0-dev.1 (2024/01/20)**
+**Version 17.10.0-rc.1 (2024/01/20)**
+
+Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 * **New Features**
 	* None.
@@ -265,7 +267,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added new `SucomUtil::sanitize_int()` method.
+	* Added new `SucomUtil::sanitize_meta_key()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -543,9 +546,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 17.10.0-dev.1 =
+= 17.10.0-rc.1 =
 
-(2024/01/20) None.
+(2024/01/20) Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 = 17.9.0 =
 
