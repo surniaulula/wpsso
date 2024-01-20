@@ -1,9 +1,11 @@
 /*
+ * jquery-admin-page.js
+ *
  * Common library for admin pages.
  *
- * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
- *
  * Version: 20230704
+ *
+ * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  */
 function sucomEditorPostbox( pluginId, adminPageL10n, postId ) {
 

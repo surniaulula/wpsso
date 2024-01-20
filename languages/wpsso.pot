@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.9.0\n"
+"Project-Id-Version: WPSSO Core 17.10.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3350,7 +3350,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:72 lib/messages-tooltip-plugin.php:586
-#: lib/page.php:146 lib/pro/admin/advanced.php:484
+#: lib/page.php:150 lib/pro/admin/advanced.php:484
 #: lib/std/admin/advanced.php:469
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -5205,7 +5205,7 @@ msgctxt "option label"
 msgid "Crop Area"
 msgstr ""
 
-#: lib/edit-general.php:88 lib/script.php:433
+#: lib/edit-general.php:88 lib/script.php:435
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -11552,15 +11552,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1057 lib/util-inline.php:455
+#: lib/page.php:1061 lib/util-inline.php:455
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1061
+#: lib/page.php:1065
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2237
+#: lib/page.php:2241
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11876,39 +11876,39 @@ msgstr ""
 msgid "checking schema properties"
 msgstr ""
 
-#: lib/script.php:450
+#: lib/script.php:452
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:452
+#: lib/script.php:454
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:486
+#: lib/script.php:488
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:487
+#: lib/script.php:489
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:489
+#: lib/script.php:491
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
-#: lib/script.php:492
+#: lib/script.php:494
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:493
+#: lib/script.php:495
 msgid "{0} of {1} characters recommended"
 msgstr ""
 
-#: lib/script.php:494
+#: lib/script.php:496
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:495
+#: lib/script.php:497
 msgid "{0} characters"
 msgstr ""
 

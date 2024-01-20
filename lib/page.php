@@ -107,7 +107,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			if ( $mod[ 'is_post' ] ) {
+			if ( $mod[ 'is_comment' ] ) {
+
+				$capability = 'edit_comment';
+
+			} elseif ( $mod[ 'is_post' ] ) {
 
 				$capability = 'page' === $mod[ 'post_type' ] ? 'edit_page' : 'edit_post';
 

@@ -376,7 +376,9 @@ EOF;
 
 			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
-			// The version number should match the version in js/com/jquery-admin-page.js.
+			/*
+			 * The version number should match the version in js/com/jquery-admin-page.js.
+			 */
 			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
 				$deps = array( 'jquery' ), '20230704', $in_footer = true );
 

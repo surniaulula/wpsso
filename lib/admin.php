@@ -2759,10 +2759,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				return 1;	// Sort the WSSO add-on after.
 
-			} elseif ( 0 === strpos( $a, 'jsm-show-' ) ) {
-
-				return 1;	// Sort the JSM plugin after.
-
 			} else return strcmp( $a, $b );	
 		}
 	}
