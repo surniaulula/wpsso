@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 * Disable Rank Math social meta tags.
 			 */
 			remove_all_actions( 'rank_math/opengraph/facebook' );
-
+			remove_all_actions( 'rank_math/opengraph/slack' );
 			remove_all_actions( 'rank_math/opengraph/twitter' );
 		}
 
