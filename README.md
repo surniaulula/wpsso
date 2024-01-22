@@ -1,4 +1,4 @@
-<h1>WPSSO Core - The Complete Structured Data Plugin: SEO, Schema, Meta Tags, Feeds, Sitemaps, Breadcrumbs, and More</h1>
+<h1>WPSSO Core - The Complete Structured Data Plugin: SEO, Schema, Meta Tags, Merchant Feeds, Sitemaps, Breadcrumbs, and More</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -17,7 +17,7 @@
 
 <h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>Provides complete structured data for WordPress (SEO, Schema, Meta Tags, Feeds, Sitemaps, Breadcrumbs, and More) to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Provides complete structured data for WordPress to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
