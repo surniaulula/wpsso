@@ -146,6 +146,8 @@
 <li>Elementor Website Builder</li>
 <li>Gravity Forms</li>
 <li>Gravity View</li>
+<li>Jetpack</li>
+<li>Jetpack Boost</li>
 <li>Perfect Images</li>
 <li>Perfect WooCommerce Brands</li>
 <li>Polylang</li>
