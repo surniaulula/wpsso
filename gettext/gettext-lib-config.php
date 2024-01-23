@@ -47,6 +47,8 @@ _x( '(plugin) Yoast SEO', 'lib file description', 'wpsso' );
 _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
 _x( '(plugin) Ultimate Member', 'lib file description', 'wpsso' );
 _x( '(plugin) Elementor Website Builder', 'lib file description', 'wpsso' );
+_x( '(plugin) Jetpack', 'lib file description', 'wpsso' );
+_x( '(plugin) Jetpack Boost', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Article [schema_type:article]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Audiobook [schema_type:book.audio]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Blog [schema_type:blog]', 'lib file description', 'wpsso' );

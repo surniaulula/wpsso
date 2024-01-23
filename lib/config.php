@@ -150,7 +150,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'ultimate-member' => '(plugin) Ultimate Member',
 							),
 							'util' => array(
-								'elementor' => '(plugin) Elementor Website Builder',
+								'elementor'     => '(plugin) Elementor Website Builder',
+								'jetpack'       => '(plugin) Jetpack',
+								'jetpack-boost' => '(plugin) Jetpack Boost',
 							),
 						),
 						'json' => array(	// Schema JSON filters.

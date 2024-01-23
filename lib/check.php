@@ -59,8 +59,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'util' => array(
 				'autoptimize'   => 'Autoptimize',
-				'jetpack'       => 'Jetpack',
-				'jetpack-boost' => 'Jetpack Boost',
 			),
 		);
 
