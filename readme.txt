@@ -257,21 +257,30 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.11.0-dev.1 (2024/01/23)**
+**Version 17.11.0-dev.2 (2024/01/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for Jetpack Boost to exclude WPSSO schema markup from the "Defer Non-Essential JavaScript" function.
+	* Added support for the Jetpack Boost plugin (excludes WPSSO schema markup from the "Defer Non-Essential JavaScript" function).
+	* Removed support for the NextScripts: Social Networks Auto-Poster plugin.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a `WpssoIntegFormGravityforms` class.
+	* Added a `WpssoIntegFormGravityview` class.
+	* Added a `WpssoIntegUtilJetpack` class.
+	* Added a `WpssoIntegUtilJetpackBoost` class.
 	* Moved compatibility code for All In One SEO Pack from `WpssoCompat` to the `WpssoIntegSeoAioseop` class.
+	* Moved compatibility code for Gravity Forms from `WpssoCompat` to the `WpssoIntegFormGravityforms` class.
+	* Moved compatibility code for Gravity View from `WpssoCompat` to the `WpssoIntegFormGravityview` class.
+	* Moved compatibility code for Jetpack from `WpssoCompat` to the `WpssoIntegUtilJetpack` class.
 	* Moved compatibility code for RankMath from `WpssoCompat` to the `WpssoIntegSeoRankmath` class.
 	* Moved compatibility code for SEOPress from `WpssoCompat` to the `WpssoIntegSeoSeopress` class.
 	* Moved compatibility code for The SEO Framework from `WpssoCompat` to the `WpssoIntegSeoSeoframework` class.
 	* Moved compatibility code for WooCommerce from `WpssoCompat` to the `WpssoIntegEcomWooCommerce` class.
 	* Moved compatibility code for Yoast SEO from `WpssoCompat` to the `WpssoIntegSeoWpseo` class.
+	* Removed the `WpssoCompat` class.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -566,9 +575,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.11.0-dev.1 =
+= 17.11.0-dev.2 =
 
-(2024/01/23) Added support for Jetpack Boost to exclude WPSSO schema markup from the "Defer Non-Essential JavaScript" function.
+(2024/01/23) Added support for the Jetpack Boost plugin. Removed support for the NextScripts: Social Networks Auto-Poster plugin.
 
 = 17.10.0 =
 
