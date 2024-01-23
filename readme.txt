@@ -142,6 +142,8 @@ Present your content at its best on social sites and in search results - no matt
 * Elementor Website Builder
 * Gravity Forms
 * Gravity View
+* Jetpack
+* Jetpack Boost
 * Perfect Images
 * Perfect WooCommerce Brands
 * Polylang
