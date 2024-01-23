@@ -32,6 +32,11 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$this->p->util->add_plugin_filters( $this, array(
+				'title_seed'       => 5,
+				'description_seed' => 4,
+			), 100 );
+
 			if ( is_admin() ) {
 
 				$this->p->util->add_plugin_filters( $this, array(
@@ -39,15 +44,7 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 				), 100 );
 			}
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'title_seed'       => 5,
-				'description_seed' => 4,
-			), 100 );
-		}
-
-		public function filter_features_status_integ_data_aioseop_meta( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
+			add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
 		}
 
 		public function filter_title_seed( $title_text, $mod, $num_hashtags, $md_key, $title_sep ) {
@@ -118,6 +115,11 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 			}
 
 			return $value;
+		}
+
+		public function filter_features_status_integ_data_aioseop_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 	}
 }

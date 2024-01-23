@@ -58,8 +58,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
 			'util' => array(
-				'autoptimize' => 'Autoptimize',
-				'jetpack'     => 'Jetpack',
+				'autoptimize'   => 'Autoptimize',
+				'jetpack'       => 'Jetpack',
+				'jetpack-boost' => 'Jetpack Boost',
 			),
 		);
 
@@ -885,6 +886,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'jetpack':
 
 									$chk[ 'class' ] = 'Jetpack';
+
+									break;
+
+								/*
+								 * Jetpack Boost.
+								 *
+								 * See https://wordpress.org/plugins/jetpack-boost/.
+								 */
+								case 'jetpack-boost':
+
+									$chk[ 'constant' ] = 'JETPACK_BOOST_VERSION';
 
 									break;
 

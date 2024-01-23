@@ -50,14 +50,6 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 			$this->wpseo_opts = WPSEO_Options::get_all();
 
-			if ( is_admin() ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_wpseo_blocks' => 1,
-					'features_status_integ_data_wpseo_meta'   => 1,
-				), 100 );
-			}
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'robots_is_noindex' => 2,
 				'primary_term_id'   => 4,
@@ -66,16 +58,22 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 				'post_url'          => 2,
 				'term_url'          => 2,
 			), 100 );
-		}
 
-		public function filter_features_status_integ_data_wpseo_blocks( $features_status ) {
+			if ( is_admin() ) {
 
-			return 'off' === $features_status ? 'rec' : $features_status;
-		}
+				$this->p->util->add_plugin_filters( $this, array(
+					'features_status_integ_data_wpseo_blocks' => 1,
+					'features_status_integ_data_wpseo_meta'   => 1,
+					'admin_page_style_css'                    => 1,
+				), 100 );
 
-		public function filter_features_status_integ_data_wpseo_meta( $features_status ) {
+				add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 
-			return 'off' === $features_status ? 'rec' : $features_status;
+			} else {
+
+				add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 1 );
+				add_filter( 'wpseo_schema_graph', array( $this, 'cleanup_wpseo_schema_graph' ), 1000, 2 );
+			}
 		}
 
 		public function filter_robots_is_noindex( $value, $mod ) {
@@ -423,6 +421,224 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			}
 
 			return $meta_val;
+		}
+
+		/*
+		 * Fix Yoast SEO CSS on back-end pages.
+		 */
+		public function filter_admin_page_style_css( $custom_style_css ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Fix the width of Yoast SEO list table columns.
+			 */
+			$custom_style_css .= '
+				table.wp-list-table > thead > tr > th.column-wpseo-links,
+				table.wp-list-table > tbody > tr > td.column-wpseo-links,
+				table.wp-list-table > thead > tr > th.column-wpseo-linked,
+				table.wp-list-table > tbody > tr > td.column-wpseo-linked,
+				table.wp-list-table > thead > tr > th.column-wpseo-score,
+				table.wp-list-table > tbody > tr > td.column-wpseo-score,
+				table.wp-list-table > thead > tr > th.column-wpseo-score-readability,
+				table.wp-list-table > tbody > tr > td.column-wpseo-score-readability {
+					width:40px;
+				}
+				table.wp-list-table > thead > tr > th.column-wpseo-title,
+				table.wp-list-table > tbody > tr > td.column-wpseo-title,
+				table.wp-list-table > thead > tr > th.column-wpseo-metadesc,
+				table.wp-list-table > tbody > tr > td.column-wpseo-metadesc {
+					width:20%;
+				}
+				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,
+				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
+					width:8em;	/* Leave room for the sort arrow. */
+				}
+			';
+
+			/*
+			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				$custom_style_css .= '
+					#wpseo-meta-tab-schema { display: none; }
+					#wpseo-meta-section-schema { display: none; }
+				';
+			}
+
+			return $custom_style_css;
+		}
+
+		public function filter_features_status_integ_data_wpseo_blocks( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
+		}
+
+		public function filter_features_status_integ_data_wpseo_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
+		}
+
+		/*
+		 * Cleanup incorrect Yoast SEO notifications.
+		 */
+		public function cleanup_wpseo_notifications() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Yoast SEO only checks for a conflict with WPSSO if the Open Graph option is enabled.
+			 */
+			if ( method_exists( 'WPSEO_Options', 'get' ) ) {
+
+				if ( ! WPSEO_Options::get( 'opengraph' ) ) {
+
+					return;
+				}
+			}
+
+			if ( class_exists( 'Yoast_Notification_Center' ) ) {
+
+				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
+				$name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'name' ];
+
+				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
+
+					$notif_id     = 'wpseo-conflict-' . md5( $info[ 'base' ] );
+					$notif_msg    = '<style type="text/css">#' . $notif_id . '{display:none;}</style>';	// Hide our empty notification.
+					$notif_center = Yoast_Notification_Center::get();
+					$notif_obj    = $notif_center->get_notification_by_id( $notif_id );
+
+					if ( empty( $notif_obj ) ) {
+
+						return;
+					}
+
+					/*
+					 * Note that Yoast_Notification::render() wraps the notification message with
+					 * '<div class="yoast-alert"></div>'.
+					 */
+					if ( method_exists( 'Yoast_Notification', 'render' ) ) {
+
+						$notif_html = $notif_obj->render();
+
+					} else $notif_html = $notif_obj->message;
+
+					if ( false === strpos( $notif_html, $notif_msg ) ) {
+
+						update_metadata( 'user', get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
+
+						$notif_obj = new Yoast_Notification( $notif_msg, array( 'id' => $notif_id ) );
+
+						$notif_center->add_notification( $notif_obj );
+					}
+
+				} elseif ( defined( 'Yoast_Notification_Center::TRANSIENT_KEY' ) ) {
+
+					if ( false !== ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) ) {
+
+						$wpseo_notif = json_decode( $wpseo_notif, $assoc = false );
+
+						if ( ! empty( $wpseo_notif ) ) {
+
+							foreach ( $wpseo_notif as $num => $notif_msgs ) {
+
+								if ( isset( $notif_msgs->options->type ) && $notif_msgs->options->type == 'error' ) {
+
+									if ( false !== strpos( $notif_msgs->message, $name ) ) {
+
+										unset( $wpseo_notif[ $num ] );
+
+										set_transient( Yoast_Notification_Center::TRANSIENT_KEY, wp_json_encode( $wpseo_notif ) );
+									}
+								}
+							}
+                                        	}
+					}
+				}
+			}
+		}
+
+		/*
+		 * Since Yoast SEO v14.0.
+		 *
+		 * Disable Yoast SEO social meta tags.
+		 *
+		 * Yoast SEO provides two arguments to this filter, but older versions only provided one.
+		 */
+		public function cleanup_wpseo_frontend_presenters( $presenters ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$remove = array( 'Open_Graph', 'Slack', 'Twitter', 'WooCommerce' );
+
+			$remove_preg = '/(' . implode( '|', $remove ) . ')/';
+
+			foreach ( $presenters as $num => $obj ) {
+
+				$class_name = get_class( $obj );
+
+				if ( preg_match( $remove_preg, $class_name ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'removing presenter: ' . $class_name );
+					}
+
+					unset( $presenters[ $num ] );
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipping presenter: ' . $class_name );
+					}
+				}
+			}
+
+			return $presenters;
+		}
+
+		public function cleanup_wpseo_schema_graph( $graph, $context ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				/*
+				 * Remove everything except for the BreadcrumbList markup.
+				 *
+				 * The WPSSO BC add-on removes the BreadcrumbList markup.
+				 */
+				foreach ( $graph as $num => $piece ) {
+
+					if ( ! empty( $piece[ '@type' ] ) ) {
+
+						if ( 'BreadcrumbList' === $piece[ '@type' ] ) {	// Keep breadcrumbs.
+
+							continue;
+						}
+
+					}
+
+					unset( $graph[ $num ] );	// Remove everything else.
+				}
+			}
+
+			return array_values( $graph );
 		}
 	}
 }

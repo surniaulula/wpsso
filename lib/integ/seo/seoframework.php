@@ -34,13 +34,6 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			$this->is_admin = is_admin();
 
-			if ( $this->is_admin ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_seoframework_meta' => 1,
-				), 100 );
-			}
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'redirect_disabled' => '__return_true',
 				'primary_term_id'   => 4,
@@ -54,11 +47,17 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 			add_filter( 'the_seo_framework_json_search_output', '__return_false', PHP_INT_MAX );
 			add_filter( 'the_seo_framework_ldjson_plugin_detected', '__return_false', PHP_INT_MAX );
 			add_filter( 'the_seo_framework_ldjson_scripts', '__return_empty_string', PHP_INT_MAX );
-		}
 
-		public function filter_features_status_integ_data_seoframework_meta( $features_status ) {
+			if ( $this->is_admin ) {
 
-			return 'off' === $features_status ? 'rec' : $features_status;
+				$this->p->util->add_plugin_filters( $this, array(
+					'features_status_integ_data_seoframework_meta' => 1,
+				), 100 );
+
+				add_action( 'current_screen', array( $this, 'cleanup_seoframework_edit_view' ), PHP_INT_MIN, 1 );
+
+				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000, 1 );
+			}
 		}
 
 		public function filter_primary_term_id( $primary_term_id, $mod, $tax_slug, $is_custom ) {
@@ -297,6 +296,29 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 			}
 
 			return $obj_id;
+		}
+
+		public function filter_features_status_integ_data_seoframework_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
+		}
+
+		/*
+		 * Remove the "Authorial Info" section from the user editing page.
+		 */
+		public function cleanup_seoframework_edit_view( $screen ) {
+
+			if ( in_array( $screen->base, array( 'profile', 'user-edit' ) ) ) {
+
+				SucomUtilWP::remove_filter_hook_name( 'current_screen', 'The_SEO_Framework\Load::_init_user_edit_view' );
+			}
+		}
+
+		public function cleanup_seoframework_tabs( $tabs ) {
+
+			unset( $tabs[ 'social' ] );
+
+			return $tabs;
 		}
 	}
 }

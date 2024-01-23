@@ -3410,9 +3410,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * See WpssoIntegSeoRankmath->filter_title_seed().
 		 * See WpssoIntegSeoRankmath->filter_description_seed().
-		 * See WpssoIntegSeoSeoPress->filter_title_seed().
-		 * See WpssoIntegSeoSeoPress->filter_description_seed().
-		 * See WpssoIntegSeoSeoPress->filter_get_md_options().
+		 * See WpssoIntegSeoSeopress->filter_title_seed().
+		 * See WpssoIntegSeoSeopress->filter_description_seed().
+		 * See WpssoIntegSeoSeopress->filter_get_md_options().
 		 * See WpssoIntegSeoWpMetaSeo->filter_title_seed().
 		 * See WpssoIntegSeoWpMetaSeo->filter_description_seed().
 		 */

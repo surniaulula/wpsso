@@ -30,13 +30,6 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( is_admin() ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_rankmath_meta' => 1,
-				), 100 );
-			}
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'primary_term_id'  => 4,
 				'primary_terms'    => 3,
@@ -45,11 +38,20 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 				'post_url'         => 2,
 				'term_url'         => 2,
 			), 100 );
-		}
 
-		public function filter_features_status_integ_data_rankmath_meta( $features_status ) {
+			if ( is_admin() ) {
 
-			return 'off' === $features_status ? 'rec' : $features_status;
+				$this->p->util->add_plugin_filters( $this, array(
+					'features_status_integ_data_rankmath_meta' => 1,
+					'admin_page_style_css'                     => 1,
+				), 100 );
+
+			} else {
+				
+				add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000, 0 );
+
+				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX, 1 );
+			}
 		}
 
 		public function filter_primary_term_id( $primary_term_id, $mod, $tax_slug, $is_custom ) {
@@ -201,6 +203,94 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 			}
 
 			return $value;
+		}
+
+		public function filter_features_status_integ_data_rankmath_meta( $features_status ) {
+
+			return 'off' === $features_status ? 'rec' : $features_status;
+		}
+
+		/*
+		 * Fix Rank Math CSS on back-end pages.
+		 */
+		public function filter_admin_page_style_css( $custom_style_css ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Fix the width of Rank Math list table columns.
+			 */
+			$custom_style_css .= '
+				table.wp-list-table > thead > tr > th.column-rank_math_seo_details,
+				table.wp-list-table > tbody > tr > td.column-rank_math_seo_details {
+					width:170px;
+				}
+			';
+
+			/*
+			 * The "Social" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			$custom_style_css .= '
+				.rank-math-tabs > div > a[href="#setting-panel-social"] { display: none; }
+				.rank-math-tabs-content .setting-panel-social { display: none; }
+			';
+
+			/*
+			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				$custom_style_css .= '
+					.rank-math-tabs > div > a[href="#setting-panel-richsnippet"] { display: none; }
+					.rank-math-tabs-content .setting-panel-richsnippet { display: none; }
+				';
+			}
+
+			return $custom_style_css;
+		}
+
+		/*
+		 * Disable Rank Math Facebook and Twitter meta tags.
+		 */
+		public function cleanup_rankmath_actions() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Disable Rank Math social meta tags.
+			 */
+			remove_all_actions( 'rank_math/opengraph/facebook' );
+			remove_all_actions( 'rank_math/opengraph/slack' );
+			remove_all_actions( 'rank_math/opengraph/twitter' );
+		}
+
+		/*
+		 * Disable Rank Math Schema markup.
+		 */
+		public function cleanup_rankmath_json_ld( $data ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Remove everything except for the BreadcrumbList markup.
+			 *
+			 * The WPSSO BC add-on removes the BreadcrumbList markup.
+			 */
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				return SucomUtil::preg_grep_keys( '/^BreadcrumbList$/', $data );
+			}
+
+			return $data;
 		}
 	}
 }

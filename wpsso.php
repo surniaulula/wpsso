@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.4.2
  * WC Tested Up To: 8.5.1
- * Version: 17.10.0
+ * Version: 17.11.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -342,6 +342,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					global $wp_version;
 
+					$this->debug->log( __METHOD__ . ' init ' . WPSSO_INIT_OBJECTS_PRIORITY );
 					$this->debug->log( 'debug enabled on ' . gmdate( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );

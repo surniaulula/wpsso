@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.10.0',	// Plugin version.
+					'version'     => '17.11.0-dev.1',	// Plugin version.
 					'opt_version' => '999',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -111,7 +111,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'the-events-calendar' => '(plugin) The Events Calendar',
 							),
 							'form' => array(
-								'gravityview' => '(plugin) GravityView',
+								'gravityforms' => '(plugin) Gravity Forms',
+								'gravityview'  => '(plugin) Gravity View',
 							),
 							'job' => array(
 								'simplejobboard' => '(plugin) Simple Job Board',

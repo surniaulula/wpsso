@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * See https://wordpress.org/plugins/wp-seopress/.
  */
-if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
+if ( ! class_exists( 'WpssoIntegSeoSeopress' ) ) {
 
-	class WpssoIntegSeoSeoPress {
+	class WpssoIntegSeoSeopress {
 
 		private $p;	// Wpsso class object.
 
@@ -39,6 +39,15 @@ if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 				'term_url'         => 2,
 				'get_md_options'   => 2,
 			), 100 );
+
+			if ( is_admin() ) {
+				
+				add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000, 1 );
+
+			} else {
+				
+				add_filter( 'seopress_titles_author', '__return_empty_string', 1000, 0 );
+			}
 		}
 
 		public function filter_primary_term_id( $primary_term_id, $mod, $tax_slug, $is_custom ) {
@@ -185,6 +194,13 @@ if ( ! class_exists( 'WpssoIntegSeoSeoPress' ) ) {
 			}
 
 			return $md_opts;
+		}
+
+		public function cleanup_seopress_tabs( $tabs ) {
+
+			unset( $tabs[ 'social-tab' ] );
+
+			return $tabs;
 		}
 	}
 }

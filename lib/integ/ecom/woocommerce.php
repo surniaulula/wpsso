@@ -137,6 +137,10 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			$this->disable_options_keys();
+
+			add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
+			add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
+			add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 		}
 
 		/*

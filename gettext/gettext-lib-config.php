@@ -25,7 +25,8 @@ _x( '(plugin) WooCommerce UPC, EAN, and ISBN', 'lib file description', 'wpsso' )
 _x( '(plugin) Product GTIN for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) YITH WooCommerce Brands Add-on', 'lib file description', 'wpsso' );
 _x( '(plugin) The Events Calendar', 'lib file description', 'wpsso' );
-_x( '(plugin) GravityView', 'lib file description', 'wpsso' );
+_x( '(plugin) Gravity Forms', 'lib file description', 'wpsso' );
+_x( '(plugin) Gravity View', 'lib file description', 'wpsso' );
 _x( '(plugin) Simple Job Board', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Job Manager', 'lib file description', 'wpsso' );
 _x( '(plugin) Polylang', 'lib file description', 'wpsso' );
