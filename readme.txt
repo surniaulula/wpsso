@@ -140,7 +140,8 @@ Present your content at its best on social sites and in search results - no matt
 
 * Co-Authors Plus
 * Elementor Website Builder
-* Gravity Forms + GravityView
+* Gravity Forms
+* Gravity View
 * Perfect Images
 * Perfect WooCommerce Brands
 * Polylang
@@ -255,6 +256,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 17.11.0-dev.1 (2024/01/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for Jetpack Boost to exclude WPSSO schema markup from the "Defer Non-Essential JavaScript" function.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved compatibility code for All In One SEO Pack from `WpssoCompat` to the `WpssoIntegSeoAioseop` class.
+	* Moved compatibility code for RankMath from `WpssoCompat` to the `WpssoIntegSeoRankmath` class.
+	* Moved compatibility code for SEOPress from `WpssoCompat` to the `WpssoIntegSeoSeopress` class.
+	* Moved compatibility code for The SEO Framework from `WpssoCompat` to the `WpssoIntegSeoSeoframework` class.
+	* Moved compatibility code for WooCommerce from `WpssoCompat` to the `WpssoIntegEcomWooCommerce` class.
+	* Moved compatibility code for Yoast SEO from `WpssoCompat` to the `WpssoIntegSeoWpseo` class.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
 
 **Version 17.10.0 (2024/01/20)**
 
@@ -545,6 +565,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.11.0-dev.1 =
+
+(2024/01/23) Added support for Jetpack Boost to exclude WPSSO schema markup from the "Defer Non-Essential JavaScript" function.
 
 = 17.10.0 =
 
