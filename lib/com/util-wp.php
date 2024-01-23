@@ -2085,8 +2085,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Loop through all action/filter hooks and remove any that match the given function or static method name.
 		 *
 		 * Note that class object methods are matched using a class static method name.
-		 *
-		 * See WpssoCompat->cleanup_seoframework_edit_view().
 		 */
 		public static function remove_filter_hook_name( $filter_name, $hook_name ) {
 

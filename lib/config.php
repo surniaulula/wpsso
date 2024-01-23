@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.11.0-dev.1',	// Plugin version.
+					'version'     => '17.11.0-dev.2',	// Plugin version.
 					'opt_version' => '999',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5214,7 +5214,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';
-			require_once WPSSO_PLUGINDIR . 'lib/compat.php';	// Third-party plugin and theme compatibility actions and filters.
 			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
 			require_once WPSSO_PLUGINDIR . 'lib/head.php';

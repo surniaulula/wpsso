@@ -50,10 +50,7 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 					}
 				}
 
-			} else {
-
-				unset( $post_types[ 'elementor_library' ] );
-			}
+			} else unset( $post_types[ 'elementor_library' ] );
 
 			return $post_types;
 		}
@@ -104,12 +101,9 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 					}
 				}
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no <div/> elementor widget video tag(s) found' );
-				}
+				$this->p->debug->log( 'no <div/> elementor widget video tag(s) found' );
 			}
 
 			return $videos;

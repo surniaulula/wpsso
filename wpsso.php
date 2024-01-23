@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.4.2
  * WC Tested Up To: 8.5.1
- * Version: 17.11.0-dev.1
+ * Version: 17.11.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -43,7 +43,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $cache;		// SucomCache (object and file caching) class object.
 		public $check;		// WpssoCheck class object.
 		public $comment;	// WpssoComment class object (extends WpssoAbstractWpMeta).
-		public $compat;		// WpssoCompat (third-party plugin and theme compatibility actions and filters) class object.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks) class object.
 		public $debug;		// SucomDebug or SucomNoDebug class object.
 		public $edit;		// WpssoEdit class object.
@@ -389,7 +388,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			do_action( 'wpsso_init_options' );
 
-			$this->compat = new WpssoCompat( $this );	// Actions and filters for compatibility.
 			$this->script = new WpssoScript( $this );
 			$this->style  = new WpssoStyle( $this );
 
