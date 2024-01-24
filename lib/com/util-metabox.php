@@ -19,11 +19,11 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 	class SucomUtilMetabox extends SucomUtil {
 
-		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
+		public static function get_table_metadata( array $metadata, array $exclude_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
 
 			$metabox_id     = SucomUtil::sanitize_key( $metabox_id );	// Just in case.
 			$md_filtered    = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
-			$skip_keys      = apply_filters( $metabox_id . '_metabox_table_skip_keys', $skip_keys, $obj );
+			$exclude_keys   = apply_filters( $metabox_id . '_metabox_table_exclude_keys', $exclude_keys, $obj );
 			$delete_cap     = apply_filters( $metabox_id . '_delete_meta_capability', 'manage_options', $obj );
 			$del_icon_class = apply_filters( $metabox_id . '_delete_meta_icon_class', 'dashicons dashicons-table-row-delete' );
 			$can_delete     = current_user_can( $delete_cap, $obj_id, $obj );
@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 			foreach( $md_filtered as $meta_key => $value ) {
 
-				foreach ( $skip_keys as $key_preg ) {
+				foreach ( $exclude_keys as $key_preg ) {
 
 					if ( preg_match( $key_preg, $meta_key ) ) {
 
