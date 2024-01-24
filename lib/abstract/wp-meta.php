@@ -1523,7 +1523,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $mt_pre );
 
-				$media_html .= '<!-- getting ' . $size_name . ' size for image ID ' . $pid . ' = ';
+				$media_html .= '<!-- get ' . $size_name . ' for image ID ' . $pid . ' = ';
 
 				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
 
