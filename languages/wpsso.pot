@@ -12629,7 +12629,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:967
+#: lib/term.php:974
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
