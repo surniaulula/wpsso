@@ -10,7 +10,7 @@ Tags: schema, seo, woocommerce, google search console, video seo, rich results, 
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.8
-Tested Up To: 6.4.2
+Tested Up To: 6.4.3
 WC Tested Up To: 8.5.2
 Stable Tag: 17.10.0
 
