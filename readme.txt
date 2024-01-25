@@ -259,7 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.11.0-b.1 (2024/01/24)**
+**Version 17.11.0-b.2 (2024/01/24)**
 
 * **New Features**
 	* None.
@@ -282,6 +282,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved compatibility code for The SEO Framework from `WpssoCompat` to the `WpssoIntegSeoSeoframework` class.
 	* Moved compatibility code for WooCommerce from `WpssoCompat` to the `WpssoIntegEcomWooCommerce` class.
 	* Moved compatibility code for Yoast SEO from `WpssoCompat` to the `WpssoIntegSeoWpseo` class.
+	* Refactored the `WpssoAdminHeadSuggest`, `WpssoAdminHeadSuggestAddons`, `WpssoAdminHeadSuggestOptions`, and `WpssoAdminHeadSuggestAttributes` classes.
 	* Removed the `WpssoCompat` class.
 * **Requires At Least**
 	* PHP v7.2.34.
@@ -577,7 +578,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.11.0-b.1 =
+= 17.11.0-b.2 =
 
 (2024/01/24) Added support for the Jetpack Boost plugin. Removed support for the NextScripts: Social Networks Auto-Poster plugin.
 
