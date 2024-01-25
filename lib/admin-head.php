@@ -21,8 +21,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		protected $suggest;
-
 		/*
 		 * Instantiated by WpssoAdmin->__construct().
 		 */
@@ -41,7 +39,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest.php';
 
-				$this->suggest = new WpssoAdminHeadSuggest( $plugin );
+				new WpssoAdminHeadSuggest( $plugin );
 
 				add_action( 'admin_head', array( $this, 'wp_config_check' ), -300 );
 				add_action( 'admin_head', array( $this, 'wp_php_versions' ), -200 );	// Requires 'manage_options' capability.

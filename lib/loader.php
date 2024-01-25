@@ -118,9 +118,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					$this->p->debug->log( $ext_base . ' is active' );
 				}
-			
+
 			} else {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( $ext_base . ' is not active and/or not found' );

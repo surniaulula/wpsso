@@ -2933,12 +2933,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function set_key_value( $key, $value, array &$opts ) {
-			
+
 			$opts[ $key ] = $value;
 		}
 
 		public static function set_key_value_disabled( $key, $value, array &$opts ) {
-			
+
 			$opts[ $key ]               = $value;
 			$opts[ $key . ':disabled' ] = true;
 		}
@@ -3177,7 +3177,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return self::get_opts_labels_transl( $opts, $text_domain );
 		}
-		
+
 		/*
 		 * Deprecated on 2024/01/13.
 		 */
@@ -3366,7 +3366,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2024/01/13.
 		 */
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
-		
+
 			return self::get_key_values_multi( $prefix, $opts, $add_none );
 		}
 

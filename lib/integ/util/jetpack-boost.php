@@ -24,9 +24,9 @@ if ( ! class_exists( 'WpssoIntegUtilJetpackBoost' ) ) {
 
 				$this->p->debug->mark();
 			}
-			
+
 			if ( ! is_admin() ) {
-				
+
 				/*
 				 * Exclude the WPSSO schema markup from the Jetpack Boost "Defer Non-Essential JavaScript" function.
 				 */

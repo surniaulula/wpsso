@@ -32,46 +32,26 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			if ( current_user_can( 'manage_options' ) ) {
-
-				add_action( 'admin_head', array( $this, 'suggest_options' ), 110 );
-			}
 		}
 
-		public function suggest_options() {
+		public function suggest() {
 
-			$this->suggest_options_integration();
-			$this->suggest_options_seo();
-		}
-
-		/*
-		 * See WpssoAdmin->settings_sanitation().
-		 */
-		public function suggest_options_integration() {
+			if ( ! current_user_can( 'manage_options' ) ) return;
 
 			/*
-			 * Use Filtered Content (disabled by default).
-			 *
-			 * if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
-			 *
-			 *	if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-			 *
-			 *		$notice_key = 'notice-content-filters-disabled';
-			 *
-			 *		if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-			 *
-			 *			if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
-			 *
-			 *				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-			 *			}
-			 *		}
-			 *	}
-			 * }
+			 * Suggest integration and seo options, in that order.
 			 */
+			if ( $suggested = $this->suggest_options_integration() ) return $suggested;
+
+			if ( $suggested = $this->suggest_options_seo() ) return $suggested;
+		}
+
+		private function suggest_options_integration() {
+
+			$suggested = 0;
 
 			/*
-			 * Image Dimension Checks (enabled by default).
+			 * Image Dimension Checks.
 			 */
 			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
@@ -82,12 +62,14 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
 
 						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+						return ++$suggested;
 					}
 				}
 			}
 
 			/*
-			 * Inherit Featured Image (enabled by default).
+			 * Inherit Featured Image for WooCommerce.
 			 */
 			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
 
@@ -100,18 +82,25 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 						if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
 
 							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+							return ++$suggested;
 						}
 					}
 				}
 			}
+
+			return $suggested;
 		}
 
-		public function suggest_options_seo() {
+		private function suggest_options_seo() {
 
-			$notices_shown = 0;
+			$suggested = 0;
 
-			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
+			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
 
+				/*
+				 * If the option is not checked and not disabled, then show a notice and return.
+				 */
 				foreach ( array(
 					'add_link_rel_canonical'    => 'link rel canonical',
 					'add_link_rel_shortlink'    => 'link rel shortlink',
@@ -119,31 +108,32 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 					'add_meta_name_robots'      => 'meta name robots',
 				) as $opt_key => $tag_name ) {
 
-					if ( empty( $this->p->options[ $opt_key ] ) && empty( $this->p->options[ $opt_key . ':disabled' ] ) ) {
+					$notice_key = 'suggest-options-seo-' . $opt_key;
 
-						$notice_key = 'suggest-options-seo-' . $opt_key;
+					if ( ! empty( $this->p->options[ $opt_key ] ) ) continue;
 
-						if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+					if ( ! empty( $this->p->options[ $opt_key . ':disabled' ] ) ) continue;
 
-							$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-								_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-								_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-								_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-								_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
+					if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) continue;
 
-							$notice_msg = sprintf( __( 'Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), '<code>' . $tag_name . '</code>' ) . ' ';
+					$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+						_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+						_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+						_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+						_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
-							$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the %1$s HTML tag to your webpages, you should enable this option under the %2$s tab.', 'wpsso' ), '<code>' . $tag_name . '</code>', $seo_other_tab_link ) . ' ';
+					$notice_msg = sprintf( __( 'Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected.',
+						'wpsso' ), '<code>' . $tag_name . '</code>' ) . ' ';
 
-							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the %1$s HTML tag to your webpages, you should enable this option under the %2$s tab.', 'wpsso' ), '<code>' . $tag_name . '</code>', $seo_other_tab_link ) . ' ';
 
-							$notices_shown++;
-						}
-					}
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+					return ++$suggested;
 				}
 			}
 
-			return $notices_shown;
+			return $suggested;
 		}
 	}
 }

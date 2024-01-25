@@ -41,11 +41,11 @@ if ( ! class_exists( 'WpssoIntegSeoSeopress' ) ) {
 			), 100 );
 
 			if ( is_admin() ) {
-				
+
 				add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000, 1 );
 
 			} else {
-				
+
 				add_filter( 'seopress_titles_author', '__return_empty_string', 1000, 0 );
 			}
 		}

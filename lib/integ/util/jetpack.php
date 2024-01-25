@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoIntegUtilJetpack' ) ) {
 			}
 
 			if ( ! is_admin() ) {
-				
+
 				add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
 				add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
 				add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );

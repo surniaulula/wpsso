@@ -509,7 +509,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						break;
 
 					default:
-					
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'unknown wp object class = ' . get_class( $wp_obj ) );

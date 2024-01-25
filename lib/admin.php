@@ -1648,7 +1648,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function is_plugin_found() {
-			
+
 			if ( ! SucomPlugin::is_plugin_active( 'wpsso/wpsso.php' ) ) {
 
 				$pkg_info   = $this->p->util->get_pkg_info();	// Uses a local cache.

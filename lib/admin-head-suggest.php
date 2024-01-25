@@ -21,9 +21,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		protected $addons;
-		protected $options;
-
 		/*
 		 * Instantiated by WpssoAdminHead->__construct().
 		 */
@@ -36,29 +33,30 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 				$this->p->debug->mark();
 			}
 
-			require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-addons.php';
-
-			$this->addons = new WpssoAdminHeadSuggestAddons( $plugin );
-
-			require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-options.php';
-
-			$this->options = new WpssoAdminHeadSuggestOptions( $plugin );
-
-			add_action( 'admin_head', array( $this, 'suggest_attributes' ), 100 );
+			add_action( 'admin_head', array( $this, 'suggest' ), 100 );
 		}
 
-		public function suggest_attributes() {
+		/*
+		 * Do not overwhelm the user - only show one notice at a time.
+		 */
+		public function suggest() {
 
-			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
+			/*
+			 * Suggest options, addons, and attributes, in that order.
+			 */
+			foreach ( array( 'options', 'addons', 'attributes' ) as $lib ) {
 
-				$notice_key = 'notice-wc-attributes-available';
+				require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-' . $lib . '.php';
 
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+				$classname = 'WpssoAdminHeadSuggest' . $lib;
 
-					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+				$obj = new $classname( $this->p );
 
-						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-					}
+				if ( $suggested = $obj->suggest() ) {
+
+					if ( 'options' === $lib ) continue;	// Continue and suggest addons, like the update manager.
+
+					return $suggested;
 				}
 			}
 		}

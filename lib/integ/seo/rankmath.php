@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 				), 100 );
 
 			} else {
-				
+
 				add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000, 0 );
 
 				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX, 1 );

@@ -32,70 +32,56 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			if ( current_user_can( 'install_plugins' ) ) {
-
-				add_action( 'admin_head', array( $this, 'suggest_addons' ), 120 );
-			}
 		}
 
-		public function suggest_addons() {
+		public function suggest() {
 
-			$this->suggest_addons_update_manager();
-			$this->suggest_addons_woocommerce();
-			$this->suggest_addons_wp_sitemaps();
+			if ( ! current_user_can( 'install_plugins' ) ) return;
+
+			/*
+			 * Suggest update manager, sitemaps, and woocommerce addons, in that order.
+			 */
+			if ( $suggested = $this->suggest_addons_update_manager() ) return $suggested;
+
+			if ( $suggested = $this->suggest_addons_wp_sitemaps() ) return $suggested;
+
+			if ( $suggested = $this->suggest_addons_woocommerce() ) return $suggested;
 		}
 
 		private function suggest_addons_update_manager() {
 
-			$pkg_info      = $this->p->util->get_pkg_info();	// Uses a local cache.
-			$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-			$have_tid      = false;
-			$notices_shown = 0;
+			$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
+			$um_info   = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+			$have_tid  = false;
+			$suggested = 0;
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
-				if ( empty( $ext_info[ 'name' ] ) ) {	// Just in case.
+				if ( empty( $ext_info[ 'base' ] ) ) continue;	// Just in case.
 
-					continue;
+				if ( empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) continue;
+
+				$have_tid = true;	// Found at least one plugin with an auth id.
+
+				if ( empty( $um_info[ 'version' ] ) ) break;	// Update manager is not active.
+
+				if ( ! empty( $pkg_info[ $ext ][ 'pdir' ] ) ) continue;	// Already updated to Pro.
+
+				if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
+
+					$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
+
+					return ++$suggested;
 				}
 
-				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+				$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
 
-					$have_tid = true;	// Found at least one plugin with an auth id.
-
-					/*
-					 * If the update manager version is not available, skip the warning notices and show a nag
-					 * notice to install the update manager.
-					 */
-					if ( empty( $um_info[ 'version' ] ) ) {
-
-						break;
-
-					} elseif ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
-
-						if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
-
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
-
-							$notices_shown++;
-
-						} else {
-
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
-
-							$notices_shown++;
-						}
-					}
-				}
+				return ++$suggested;
 			}
 
-			if ( $have_tid ) {
+			if ( $have_tid ) {	// One or more auth ids have been found.
 
-				/*
-				 * If the update manager is active, its version should be available.
-				 */
-				if ( ! empty( $um_info[ 'version' ] ) ) {
+				if ( ! empty( $um_info[ 'version' ] ) ) {	// Update manager is active.
 
 					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
 
@@ -103,44 +89,33 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
 
-						$notices_shown++;
+						return ++$suggested;
 					}
 
-				/*
-				 * Check if update manager is installed.
-				 */
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {	// Update manager is installed.
 
 					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
-					$notices_shown++;
+					return ++$suggested;
 
-				/*
-				 * The update manager is not installed.
-				 */
-				} else {
+				} else {	// Update manager is not installed.
 
 					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-add-on-required' ) );
 
-					$notices_shown++;
+					return ++$suggested;
 				}
 			}
 
-			return $notices_shown;
+			return $suggested;
 		}
 
 		private function suggest_addons_woocommerce() {
 
-			$notices_shown = 0;
+			$suggested = 0;
 
-			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce is not active.
+			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) return $suggested;	// WooCommerce is not active.
 
-				return $notices_shown;
-
-			} elseif ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Schema markup is disabled.
-
-				return $notices_shown;
-			}
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) return $suggested;	// Schema markup is disabled.
 
 			// translators: Please ignore - translation uses a different text domain.
 			$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
@@ -150,14 +125,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				$ext        = 'wpsso' . $p_ext;
 				$notice_key = 'suggest-' . $ext. '-for-woocommerce';
 
-				if ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {
+				if ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) continue;
 
-					continue;
-
-				} elseif ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					continue;
-				}
+				if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) continue;
 
 				$notice_msg      = '';
 				$action_links    = array();	// Init a new action array for the notice message.
@@ -199,14 +169,12 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					case 'wcmd':
 
 						if ( ! empty( $this->p->avail[ 'ecom' ][ 'woo-add-gtin' ] ) ||
-							! empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) {
-
-							continue 2;	// Get another $ext.
-						}
+							! empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) continue 2;	// Get another $ext.
 
 						$notice_msg = __( 'Google requires at least one unique product identifier for Schema Product markup, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
-						$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a unique product identifier.', 'wpsso' ), $ecom_plugin_name ) . ' ';
+						$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a unique product identifier.',
+							'wpsso' ), $ecom_plugin_name ) . ' ';
 
 						$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product identifiers for WooCommerce.', 'wpsso' ), $ext_addons_link ) . ' ';
 
@@ -218,12 +186,10 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 						$shipping_countries  = WC()->countries->get_shipping_countries();
 						$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
 
-						if ( ! $shipping_enabled ) {
+						if ( ! $shipping_enabled ) continue 2;	// Get another $ext.
 
-							continue 2;	// Get another $ext.
-						}
-
-						$notice_msg = sprintf( __( 'Product shipping features are enabled in %1$s but the %2$s add-on is not active.', 'wpsso' ), $ecom_plugin_name, $ext_name_transl ) . ' ';
+						$notice_msg = sprintf( __( 'Product shipping features are enabled in %1$s but the %2$s add-on is not active.',
+							'wpsso' ), $ecom_plugin_name, $ext_name_transl ) . ' ';
 
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
 
@@ -236,64 +202,47 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					$notices_shown++;
+					return ++$suggested;
 				}
 			}
 
-			return $notices_shown;
+			return $suggested;
 		}
 
 		private function suggest_addons_wp_sitemaps() {
 
-			$notices_shown = 0;
-
-			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) {	// Already active.
-
-				return $notices_shown;
-
-			} elseif ( SucomUtilWP::sitemaps_disabled() ) {
-
-				return $notices_shown;
-
-			/*
-			 * WpssoUtilRobots->is_disabled() returns true if:
-			 *
-			 *	- An SEO plugin is active.
-			 *	- The 'add_meta_name_robots' option is unchecked.
-			 *	- The 'wpsso_robots_disabled' filter returns true.
-			 */
-			} elseif ( $this->p->util->robots->is_disabled() ) {
-
-				return $notices_shown;
-			}
-
+			$suggested  = 0;
 			$notice_key = 'suggest-wpssowpsm';
 
-			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) return $suggested;	// Already active.
 
-				$action_links = array();	// Init a new action array for the notice message.
+			if ( SucomUtilWP::sitemaps_disabled() ) return $suggested;
 
-				if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowpsm' ) ) {
+			if ( $this->p->util->robots->is_disabled() ) return $suggested;
 
-					$action_links[] = $install_activate_link;
-				}
+			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) return $suggested;
 
-				$ext_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
-				$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
-				$sitemaps_url    = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+			$action_links = array();	// Init a new action array for the notice message.
 
-				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $ext_name_transl ) . ' ';
+			if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowpsm' ) ) {
 
-				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and/or user profiles, enhance the sitemaps XML with article modification times, images sitemaps, news sitemaps and more.', 'wpsso' );
-
-				$notice_msg .= SucomUtil::array_to_list_html( $action_links );
-
-				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-				$notices_shown++;
+				$action_links[] = $install_activate_link;
 			}
 
-			return $notices_shown;
+			$ext_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
+			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
+			$sitemaps_url    = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+
+			$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> is enabled, but the %2$s add-on is not active.',
+				'wpsso' ), $sitemaps_url, $ext_name_transl ) . ' ';
+
+			$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and/or user profiles, enhance the sitemaps XML with article modification times, images sitemaps, news sitemaps and more.', 'wpsso' );
+
+			$notice_msg .= SucomUtil::array_to_list_html( $action_links );
+
+			$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+			return ++$suggested;
 		}
 
 		private function get_install_activate_addon_link( $ext ) {
@@ -318,26 +267,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			$addons_url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
 			return '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ), $ext_name_transl ) . '</a>';
-		}
-
-		private function get_purchase_plugin_link( $ext, $cmt = '' ) {
-
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ 'purchase' ] ) ) {	// Just in case.
-
-				return false;
-			}
-
-			$pkg_info         = $this->p->util->get_pkg_info();	// Uses a local cache.
-			$ext_info         = $this->p->cf[ 'plugin' ][ $ext ];
-			$ext_purchase_url = $ext_info[ 'url' ][ 'purchase' ];
-
-			if ( $cmt ) {
-
-				// translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-				return sprintf( __( '<a href="%1$s">Purchase the %2$s plugin</a> %3$s.', 'wpsso' ), $ext_purchase_url, $pkg_info[ $ext ][ 'name_pro' ], $cmt );
-			}
-
-			return '<a href="' . $ext_purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg_info[ $ext ][ 'name_pro' ] ) . '</a>';
 		}
 	}
 }
