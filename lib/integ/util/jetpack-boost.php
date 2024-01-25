@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoIntegUtilJetpackBoost' ) ) {
 
 				if ( isset( $match[ 0 ] ) ) {	// Just in case.
 
-					if ( false !== strpos( $match[ 0 ], '<script type="application/ld+json" id="wpsso-schema-' ) ) {
+					if ( false !== strpos( $match[ 0 ], '<script type="application/ld+json" id="wpsso-' ) ) {
 
 						unset( $script_tags[ $num ] );
 					}
