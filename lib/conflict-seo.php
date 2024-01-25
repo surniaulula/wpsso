@@ -149,7 +149,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$plugin_name = __( 'Rank Math', 'wpsso' );
+			// translators: Please ignore - translation uses a different text domain.
+			$plugin_name = __( 'Rank Math', 'rank-math' );
 
 			/*
 			 * Check for Schema (Structured Data) module.
