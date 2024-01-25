@@ -259,7 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.11.0-dev.2 (2024/01/23)**
+**Version 17.11.0-b.1 (2024/01/24)**
 
 * **New Features**
 	* None.
@@ -577,9 +577,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.11.0-dev.2 =
+= 17.11.0-b.1 =
 
-(2024/01/23) Added support for the Jetpack Boost plugin. Removed support for the NextScripts: Social Networks Auto-Poster plugin.
+(2024/01/24) Added support for the Jetpack Boost plugin. Removed support for the NextScripts: Social Networks Auto-Poster plugin.
 
 = 17.10.0 =
 
