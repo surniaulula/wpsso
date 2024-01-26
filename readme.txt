@@ -259,7 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.11.0-rc.1 (2024/01/26)**
+**Version 17.11.0 (2024/01/26)**
 
 * **New Features**
 	* None.
@@ -579,7 +579,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.11.0-rc.1 =
+= 17.11.0 =
 
 (2024/01/26) Added support for the Jetpack Boost plugin. Added a maximum of two suggestion notifications per page load. Removed support for the NextScripts plugin.
 
