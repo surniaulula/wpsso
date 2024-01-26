@@ -45,9 +45,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 			/*
 			 * Suggest integration and seo options, in that order.
 			 */
-			foreach ( array( 'integration', 'seo' ) as $lib ) {
+			foreach ( array( 'integration', 'seo' ) as $suffix ) {
 
-				$methodname = 'suggest_options_' . $lib;
+				$methodname = 'suggest_options_' . $suffix;
 				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
 
 				if ( $this->p->debug->enabled ) {

@@ -45,9 +45,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			/*
 			 * Suggest update manager, woocommerce, sitemaps addons, in that order.
 			 */
-			foreach ( array( 'update_manager', 'woocommerce', 'sitemaps' ) as $lib ) {
+			foreach ( array( 'update_manager', 'woocommerce', 'sitemaps' ) as $suffix ) {
 				
-				$methodname = 'suggest_addons_' . $lib;
+				$methodname = 'suggest_addons_' . $suffix;
 				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
 
 				if ( $this->p->debug->enabled ) {

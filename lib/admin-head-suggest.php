@@ -50,11 +50,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			/*
 			 * Suggest options, addons, and attributes, in that order.
 			 */
-			foreach ( array( 'options', 'addons', 'attributes' ) as $lib ) {
+			foreach ( array( 'options', 'addons', 'attributes' ) as $suffix ) {
 
-				require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-' . $lib . '.php';
+				require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-' . $suffix . '.php';
 
-				$classname   = 'wpssoadminheadsuggest' . $lib;
+				$classname   = 'wpssoadminheadsuggest' . $suffix;
 				$suggest_obj = new $classname( $this->p );
 				$suggested   = $suggested + $suggest_obj->suggest( $suggest_max - $suggested );
 

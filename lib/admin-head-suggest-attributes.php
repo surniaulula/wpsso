@@ -43,9 +43,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAttributes' ) ) {
 			/*
 			 * Suggest woocommerce attributes, in that order.
 			 */
-			foreach ( array( 'woocommerce' ) as $lib ) {
+			foreach ( array( 'woocommerce' ) as $suffix ) {
 
-				$methodname = 'suggest_attributes_' . $lib;
+				$methodname = 'suggest_attributes_' . $suffix;
 				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
 
 				if ( $this->p->debug->enabled ) {
