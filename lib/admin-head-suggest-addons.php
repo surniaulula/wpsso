@@ -27,25 +27,43 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
+		}
+
+		public function suggest( $suggest_max = 2 ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'suggest_max' => $suggest_max,
+				) );
 			}
-		}
 
-		public function suggest() {
+			$suggested = 0;
 
-			if ( ! current_user_can( 'install_plugins' ) ) return;
+			if ( ! current_user_can( 'install_plugins' ) ) return $suggested;
 
 			/*
-			 * Suggest update manager, sitemaps, and woocommerce addons, in that order.
+			 * Suggest update manager, woocommerce, sitemaps addons, in that order.
 			 */
-			if ( $suggested = $this->suggest_addons_update_manager() ) return $suggested;
+			foreach ( array( 'update_manager', 'woocommerce', 'sitemaps' ) as $lib ) {
+				
+				$methodname = 'suggest_addons_' . $lib;
+				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
 
-			if ( $suggested = $this->suggest_addons_wp_sitemaps() ) return $suggested;
+				if ( $this->p->debug->enabled ) {
 
-			if ( $suggested = $this->suggest_addons_woocommerce() ) return $suggested;
+					$this->p->debug->log( $methodname . ' suggested = ' . $suggested );
+				}
+
+				if ( $suggested >= $suggest_max ) break;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'return suggested = ' . $suggested );
+			}
+
+			return $suggested;
 		}
 
 		private function suggest_addons_update_manager() {
@@ -209,7 +227,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			return $suggested;
 		}
 
-		private function suggest_addons_wp_sitemaps() {
+		private function suggest_addons_sitemaps() {
 
 			$suggested  = 0;
 			$notice_key = 'suggest-wpssowpsm';

@@ -27,23 +27,43 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
+		}
+
+		public function suggest( $suggest_max = 2 ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'suggest_max' => $suggest_max,
+				) );
 			}
-		}
 
-		public function suggest() {
+			$suggested = 0;
 
-			if ( ! current_user_can( 'manage_options' ) ) return;
+			if ( ! current_user_can( 'manage_options' ) ) return $suggested;
 
 			/*
 			 * Suggest integration and seo options, in that order.
 			 */
-			if ( $suggested = $this->suggest_options_integration() ) return $suggested;
+			foreach ( array( 'integration', 'seo' ) as $lib ) {
 
-			if ( $suggested = $this->suggest_options_seo() ) return $suggested;
+				$methodname = 'suggest_options_' . $lib;
+				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $methodname . ' suggested = ' . $suggested );
+				}
+
+				if ( $suggested >= $suggest_max ) break;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'return suggested = ' . $suggested );
+			}
+
+			return $suggested;
 		}
 
 		private function suggest_options_integration() {

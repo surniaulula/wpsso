@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.11.0-b.2\n"
+"Project-Id-Version: WPSSO Core 17.11.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1077,7 +1077,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 gettext/gettext-lib-config.php:116
-#: lib/admin-head-suggest-options.php:121 lib/messages.php:548
+#: lib/admin-head-suggest-options.php:141 lib/messages.php:548
 #: lib/messages.php:1292
 msgctxt "lib file description"
 msgid "Advanced Settings"
@@ -4236,86 +4236,86 @@ msgid "(code) SEO Link Relation Shortlink Tag"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:121
+#: lib/admin-head-suggest-addons.php:139
 msgid "WooCommerce"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:147
+#: lib/admin-head-suggest-addons.php:165
 msgid ""
 "If you advertise or sell items on Facebook and Instagram, the %s add-on can "
 "provide a product feed for Meta's Commerce Manager."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:149
+#: lib/admin-head-suggest-addons.php:167
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage your Commerce Manager product feed XML."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:155
+#: lib/admin-head-suggest-addons.php:173
 msgid ""
 "If you have created an account with Google Merchant Center, the %s add-on "
 "can provide a product feed for Google Merchant Center."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:157
+#: lib/admin-head-suggest-addons.php:175
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage your Google merchant feed XML."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:163
+#: lib/admin-head-suggest-addons.php:181
 msgid ""
 "Google suggests including a merchant return policy in Schema Product offers "
 "markup."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:165
+#: lib/admin-head-suggest-addons.php:183
 msgid ""
 "If you have not created a return policy in Google Merchant Center, you "
 "should activate the %s add-on to manage return policies and select a return "
 "policy for your product offers."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:174
+#: lib/admin-head-suggest-addons.php:192
 msgid ""
 "Google requires at least one unique product identifier for Schema Product "
 "markup, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or "
 "ISBN."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:176
+#: lib/admin-head-suggest-addons.php:194
 msgid ""
 "The product SKU (Stock Keeping Unit) from %s is not a unique product "
 "identifier."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:179 lib/messages-info.php:188
+#: lib/admin-head-suggest-addons.php:197 lib/messages-info.php:188
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
 "manage unique product identifiers for WooCommerce."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:191
+#: lib/admin-head-suggest-addons.php:209
 msgid ""
 "Product shipping features are enabled in %1$s but the %2$s add-on is not "
 "active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:194
+#: lib/admin-head-suggest-addons.php:212
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
 "more appealing in Google search results."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:236
+#: lib/admin-head-suggest-addons.php:254
 msgid ""
 "The <a href=\"%1$s\">WordPress sitemaps XML</a> is enabled, but the %2$s add-"
 "on is not active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:239
+#: lib/admin-head-suggest-addons.php:257
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
 "the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms "
@@ -4323,39 +4323,39 @@ msgid ""
 "with article modification times, images sitemaps, news sitemaps and more."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:263
+#: lib/admin-head-suggest-addons.php:281
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:269
+#: lib/admin-head-suggest-addons.php:287
 msgid "Install and activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:120 lib/messages.php:547
+#: lib/admin-head-suggest-options.php:140 lib/messages.php:547
 #: lib/messages.php:1291
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:122 lib/messages.php:1293
+#: lib/admin-head-suggest-options.php:142 lib/messages.php:1293
 #: lib/submenu/advanced.php:39
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:123 lib/messages.php:1294
+#: lib/admin-head-suggest-options.php:143 lib/messages.php:1294
 #: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:125
+#: lib/admin-head-suggest-options.php:145
 msgid ""
 "Please note that the %s HTML tag is currently disabled and a known SEO "
 "plugin has not been detected."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:128
+#: lib/admin-head-suggest-options.php:148
 msgid ""
 "If another SEO plugin or your theme templates are not adding the %1$s HTML "
 "tag to your webpages, you should enable this option under the %2$s tab."

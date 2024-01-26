@@ -33,13 +33,19 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'admin_head', array( $this, 'suggest' ), 100 );
+			add_action( 'admin_head', array( $this, 'suggest' ), 100, 0 );
 		}
 
-		/*
-		 * Do not overwhelm the user - only show one notice at a time.
-		 */
-		public function suggest() {
+		public function suggest( $suggest_max = 2 ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'suggest_max' => $suggest_max,
+				) );
+			}
+
+			$suggested = 0;
 
 			/*
 			 * Suggest options, addons, and attributes, in that order.
@@ -48,17 +54,19 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/admin-head-suggest-' . $lib . '.php';
 
-				$classname = 'WpssoAdminHeadSuggest' . $lib;
+				$classname   = 'wpssoadminheadsuggest' . $lib;
+				$suggest_obj = new $classname( $this->p );
+				$suggested   = $suggested + $suggest_obj->suggest( $suggest_max - $suggested );
 
-				$obj = new $classname( $this->p );
-
-				if ( $suggested = $obj->suggest() ) {
-
-					if ( 'options' === $lib ) continue;	// Continue and suggest addons, like the update manager.
-
-					return $suggested;
-				}
+				if ( $suggested >= $suggest_max ) break;
 			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'return suggested = ' . $suggested );
+			}
+
+			return $suggested;
 		}
 	}
 }

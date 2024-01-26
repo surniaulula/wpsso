@@ -27,16 +27,41 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAttributes' ) ) {
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
+		}
+
+		public function suggest( $suggest_max = 2 ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'suggest_max' => $suggest_max,
+				) );
 			}
-		}
 
-		public function suggest() {
+			$suggested = 0;
 
-			if ( $suggested = $this->suggest_attributes_woocommerce() ) return $suggested;
+			/*
+			 * Suggest woocommerce attributes, in that order.
+			 */
+			foreach ( array( 'woocommerce' ) as $lib ) {
+
+				$methodname = 'suggest_attributes_' . $lib;
+				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $methodname . ' suggested = ' . $suggested );
+				}
+
+				if ( $suggested >= $suggest_max ) break;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'return suggested = ' . $suggested );
+			}
+
+			return $suggested;
 		}
 
 		private function suggest_attributes_woocommerce() {
