@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			return $suggested;
 		}
 
-		private function suggest_addons_update_manager() {
+		private function suggest_addons_update_manager( $suggest_max ) {
 
 			$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$um_info   = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
@@ -89,12 +89,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
 
-					return ++$suggested;
-				}
+				} else $this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
 
-				$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
-
-				return ++$suggested;
+				if ( ++$suggested >= $suggest_max ) return $suggested;
 			}
 
 			if ( $have_tid ) {	// One or more auth ids have been found.
@@ -107,27 +104,25 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
 
-						return ++$suggested;
+						if ( ++$suggested >= $suggest_max ) return $suggested;
 					}
 
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {	// Update manager is installed.
+				} else {
+				
+					if ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {	// Update manager is installed.
 
-					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
-					return ++$suggested;
+					} else $this->p->notice->warn( $this->p->msgs->get( 'notice-um-add-on-required' ) );	// Update manager is not installed.
 
-				} else {	// Update manager is not installed.
-
-					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-add-on-required' ) );
-
-					return ++$suggested;
+					if ( ++$suggested >= $suggest_max ) return $suggested;
 				}
 			}
 
 			return $suggested;
 		}
 
-		private function suggest_addons_woocommerce() {
+		private function suggest_addons_woocommerce( $suggest_max ) {
 
 			$suggested = 0;
 
@@ -220,14 +215,14 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					return ++$suggested;
+					if ( ++$suggested >= $suggest_max ) return $suggested;
 				}
 			}
 
 			return $suggested;
 		}
 
-		private function suggest_addons_sitemaps() {
+		private function suggest_addons_sitemaps( $suggest_max ) {
 
 			$suggested  = 0;
 			$notice_key = 'suggest-wpssowpsm';

@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 			return $suggested;
 		}
 
-		private function suggest_options_integration() {
+		private function suggest_options_integration( $suggest_max ) {
 
 			$suggested = 0;
 
@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						return ++$suggested;
+						if ( ++$suggested >= $suggest_max ) return $suggested;
 					}
 				}
 			}
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-							return ++$suggested;
+							if ( ++$suggested >= $suggest_max ) return $suggested;
 						}
 					}
 				}
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 			return $suggested;
 		}
 
-		private function suggest_options_seo() {
+		private function suggest_options_seo( $suggest_max ) {
 
 			$suggested = 0;
 
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					return ++$suggested;
+					if ( ++$suggested >= $suggest_max ) return $suggested;
 				}
 			}
 

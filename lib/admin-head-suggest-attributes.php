@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAttributes' ) ) {
 			return $suggested;
 		}
 
-		private function suggest_attributes_woocommerce() {
+		private function suggest_attributes_woocommerce( $suggest_max ) {
 
 			$suggested  = 0;
 			$notice_key = 'notice-wc-attributes-available';
