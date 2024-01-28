@@ -353,18 +353,21 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<p><strong>';
 
+				// translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin" or "add-on"), and %3$s is a measure of time.
 				$notice_msg .= sprintf( __( 'You\'ve been using the %1$s %2$s for a little over %3$s now.', 'wpsso' ),
 					$wp_plugin_link, $ext_type_transl, $activated_ago ) . ' ';
 
 				$notice_msg .= '</strong></p><p>';
 
+				// translators: %1$s is the plugin type (ie. "plugin" or "add-on").
 				$notice_msg .= sprintf( __( 'If you have a moment, please support and encourage your developers by rating the %1$s.', 'wpsso' ),
 					$ext_type_transl ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'It only takes a moment, and it really encourages us to keep improving the plugin.', 'wpsso' ) .
-					' ' . convert_smilies( ':-)' ) . ' ';
+				// translators: %1$s is the plugin type (ie. "plugin" or "add-on").
+				$notice_msg .= sprintf( __( 'It only takes a moment, and it really encourages us to keep improving the %1$s.', 'wpsso' ),
+					$ext_type_transl ) . ' ' . convert_smilies( ':-)' ) . ' ';
 
 				$notice_msg .= '</p>';
 

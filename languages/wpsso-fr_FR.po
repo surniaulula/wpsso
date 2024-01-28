@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-01-25 13:42-0800\n"
+"PO-Revision-Date: 2024-01-28 03:47-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -921,7 +921,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr "SSO du profil - optimisation sociale et de recherche"
 
 #: gettext/gettext-lib-config.php:101 gettext/gettext-lib-config.php:116
-#: lib/admin-head-suggest-options.php:121 lib/messages.php:548
+#: lib/admin-head-suggest-options.php:141 lib/messages.php:548
 #: lib/messages.php:1292
 msgctxt "lib file description"
 msgid "Advanced Settings"
@@ -4036,93 +4036,93 @@ msgid "(code) SEO Link Relation Shortlink Tag"
 msgstr "(code) Balise lien court lien de relation SEO"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:121
+#: lib/admin-head-suggest-addons.php:134
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: lib/admin-head-suggest-addons.php:147
+#: lib/admin-head-suggest-addons.php:160
 msgid "If you advertise or sell items on Facebook and Instagram, the %s add-on can provide a product feed for Meta's Commerce Manager."
 msgstr "Si vous faites de la publicité ou vendez des articles sur Facebook et Instagram, l'ajout %s peut fournir un flux de produits pour le Gestionnaire des ventes Méta."
 
-#: lib/admin-head-suggest-addons.php:149
+#: lib/admin-head-suggest-addons.php:162
 msgid "You should activate the %s add-on if you don't already have a plugin to manage your Commerce Manager product feed XML."
 msgstr "Il est suggéré d'activer l'ajout %s si vous ne disposez pas déjà d'une extension pour gérer le flux XML de produits Gestionnaire des ventes."
 
-#: lib/admin-head-suggest-addons.php:155
+#: lib/admin-head-suggest-addons.php:168
 msgid "If you have created an account with Google Merchant Center, the %s add-on can provide a product feed for Google Merchant Center."
 msgstr "Si vous avez créé un compte avec Google Merchant Center, l'ajout %s peut fournir un flux de produits pour Google Merchant Center."
 
-#: lib/admin-head-suggest-addons.php:157
+#: lib/admin-head-suggest-addons.php:170
 msgid "You should activate the %s add-on if you don't already have a plugin to manage your Google merchant feed XML."
 msgstr "Il est suggéré d'activer l'ajout %s si vous ne disposez pas déjà d'une extension pour gérer le flux XML de marchand Google."
 
-#: lib/admin-head-suggest-addons.php:163
+#: lib/admin-head-suggest-addons.php:176
 msgid "Google suggests including a merchant return policy in Schema Product offers markup."
 msgstr "Google suggère d'inclure une politique de retour marchand dans le balisage des offres de Schéma Product."
 
-#: lib/admin-head-suggest-addons.php:165
+#: lib/admin-head-suggest-addons.php:178
 msgid "If you have not created a return policy in Google Merchant Center, you should activate the %s add-on to manage return policies and select a return policy for your product offers."
 msgstr "Si vous n'avez pas créé de politique de retour dans Google Merchant Center, Il est suggéré d'activer l'ajout %s pour gérer les politiques de retour et choisir une politique de retour pour vos offres de produits."
 
-#: lib/admin-head-suggest-addons.php:174
+#: lib/admin-head-suggest-addons.php:187
 msgid "Google requires at least one unique product identifier for Schema Product markup, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN."
 msgstr "Google exige au moins un identifiant de produit unique pour le balisage Schema Product, comme le MPN (Manufacturer Part Number), UPC, EAN, GTIN ou ISBN de produit."
 
-#: lib/admin-head-suggest-addons.php:176
+#: lib/admin-head-suggest-addons.php:189
 msgid "The product SKU (Stock Keeping Unit) from %s is not a unique product identifier."
 msgstr "Le SKU (unité de gestion des stocks) de produit %s n'est pas un identifiant de produit unique."
 
-#: lib/admin-head-suggest-addons.php:179 lib/messages-info.php:188
+#: lib/admin-head-suggest-addons.php:192 lib/messages-info.php:188
 msgid "You should activate the %s add-on if you don't already have a plugin to manage unique product identifiers for WooCommerce."
 msgstr "Il est suggéré d'activer l'ajout %s si vous ne disposez pas déjà d'une extension pour gérer les identifiants de produit uniques pour WooCommerce."
 
-#: lib/admin-head-suggest-addons.php:191
+#: lib/admin-head-suggest-addons.php:204
 msgid "Product shipping features are enabled in %1$s but the %2$s add-on is not active."
 msgstr "Les fonctionnalités d'expédition des produits sont activées dans %1$s, mais l'ajout %2$s n'est pas actif."
 
-#: lib/admin-head-suggest-addons.php:194
+#: lib/admin-head-suggest-addons.php:207
 msgid "Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results."
 msgstr "L'ajout des détails d'expédition à votre balisage de produit de Schéma est important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
-#: lib/admin-head-suggest-addons.php:236
+#: lib/admin-head-suggest-addons.php:249
 msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> is enabled, but the %2$s add-on is not active."
 msgstr "Le <a href=\"%1$s\">XML des plans de site WordPress</a> est activé, mais l'ajout %2$s n'est pas actif."
 
-#: lib/admin-head-suggest-addons.php:239
+#: lib/admin-head-suggest-addons.php:252
 msgid "You can activate this add-on to manage post and taxonomy types included in the sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and/or user profiles, enhance the sitemaps XML with article modification times, images sitemaps, news sitemaps and more."
 msgstr "Vous pouvez activer cet ajout pour gérer les types d'article et de taxonomie inclus dans le XML des plans de site, exclure des articles, pages, types de publication personnalisés, termes de taxonomie (catégories, étiquettes, etc.) et/ou profils utilisateur, améliorer le XML des plans de site avec les temps de modification d'articles, plans de site d'images, plans de site d'actualités et plus encore."
 
-#: lib/admin-head-suggest-addons.php:263
+#: lib/admin-head-suggest-addons.php:276
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head-suggest-addons.php:269
+#: lib/admin-head-suggest-addons.php:282
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
-#: lib/admin-head-suggest-options.php:120 lib/messages.php:547
+#: lib/admin-head-suggest-options.php:140 lib/messages.php:547
 #: lib/messages.php:1291
 msgctxt "menu title"
 msgid "SSO"
 msgstr "SSO"
 
-#: lib/admin-head-suggest-options.php:122 lib/messages.php:1293
+#: lib/admin-head-suggest-options.php:142 lib/messages.php:1293
 #: lib/submenu/advanced.php:39
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr "Balises HTML"
 
-#: lib/admin-head-suggest-options.php:123 lib/messages.php:1294
+#: lib/admin-head-suggest-options.php:143 lib/messages.php:1294
 #: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / autre"
 
-#: lib/admin-head-suggest-options.php:125
+#: lib/admin-head-suggest-options.php:145
 msgid "Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected."
 msgstr "Veuillez noter que la balise HTML %s est actuellement désactivée et qu'aucune extension SEO connue n'a été détectée."
 
-#: lib/admin-head-suggest-options.php:128
+#: lib/admin-head-suggest-options.php:148
 msgid "If another SEO plugin or your theme templates are not adding the %1$s HTML tag to your webpages, you should enable this option under the %2$s tab."
 msgstr "Si une autre extension SEO ou vos modèles de thème n'ajoutent pas la balise HTML %1$s à vos pages Web, vous devez activer cette option sous l'onglet %2$s."
 
@@ -4158,43 +4158,47 @@ msgstr "Merci!"
 msgid "I've already rated this %2$s"
 msgstr "J'ai déjà noté cette %2$s"
 
-#: lib/admin-head.php:356 lib/admin-head.php:442
+#. translators: %1$s is the plugin name, %2$s is the plugin type (ie. "plugin"
+#. or "add-on"), and %3$s is a measure of time.
+#: lib/admin-head.php:357 lib/admin-head.php:447
 msgid "You've been using the %1$s %2$s for a little over %3$s now."
 msgstr "Vous utilisez l'%2$s %1$s depuis un peu plus de %3$s maintenant."
 
-#: lib/admin-head.php:361
-msgid "Please help support and encourage your developers by rating the %1$s."
-msgstr "Aidez à soutenir et à encourager vos développeurs en évaluant l'%1$s."
+#. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
+#: lib/admin-head.php:363
+msgid "If you have a moment, please support and encourage your developers by rating the %1$s."
+msgstr "Si vous avez un moment, SVP soutenir et encourager vos développeurs en notant l'%1$s."
 
-#: lib/admin-head.php:365
-msgid "It only takes a second."
-msgstr "Cela ne prend qu'une seconde."
+#. translators: %1$s is the plugin type (ie. "plugin" or "add-on").
+#: lib/admin-head.php:369
+msgid "It only takes a moment, and it really encourages us to keep improving the %1$s."
+msgstr "Cela ne prend qu'un instant et nous encourage vraiment à continuer d'améliorer l'%1$s."
 
-#: lib/admin-head.php:423
+#: lib/admin-head.php:428
 msgid "View the %s edition prices"
 msgstr "Voir les prix de l'édition %s"
 
-#: lib/admin-head.php:424
+#: lib/admin-head.php:429
 msgid "Thank you for supporting the continued development of %s."
 msgstr "Merci de soutenir le développement continu de %s."
 
-#: lib/admin-head.php:428
+#: lib/admin-head.php:433
 msgid "I'll stay with the %s edition"
 msgstr "Je vais rester avec l'édition %s"
 
-#: lib/admin-head.php:429
+#: lib/admin-head.php:434
 msgid "Please consider supporting the development of %s in the future."
 msgstr "SVP envisager de soutenir le développement de %s à un moment donné dans le futur."
 
-#: lib/admin-head.php:430
+#: lib/admin-head.php:435
 msgid "Thank you."
 msgstr "Merci."
 
-#: lib/admin-head.php:445
+#: lib/admin-head.php:450
 msgid "Have you thought about purchasing the %s edition?"
 msgstr "Avez-vous pensé à acheter l'édition %s?"
 
-#: lib/admin-head.php:446
+#: lib/admin-head.php:451
 msgid "The %s edition comes loaded with a lot of extra features!"
 msgstr "L'édition %s est dotée de nombreuses fonctionnalités supplémentaires!"
 
