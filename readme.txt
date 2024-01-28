@@ -274,17 +274,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a `WpssoIntegFormGravityview` class.
 	* Added a `WpssoIntegUtilJetpack` class.
 	* Added a `WpssoIntegUtilJetpackBoost` class.
-	* Moved compatibility code for All In One SEO Pack from `WpssoCompat` to the `WpssoIntegSeoAioseop` class.
-	* Moved compatibility code for Gravity Forms from `WpssoCompat` to the `WpssoIntegFormGravityforms` class.
-	* Moved compatibility code for Gravity View from `WpssoCompat` to the `WpssoIntegFormGravityview` class.
-	* Moved compatibility code for Jetpack from `WpssoCompat` to the `WpssoIntegUtilJetpack` class.
-	* Moved compatibility code for RankMath from `WpssoCompat` to the `WpssoIntegSeoRankmath` class.
-	* Moved compatibility code for SEOPress from `WpssoCompat` to the `WpssoIntegSeoSeopress` class.
-	* Moved compatibility code for The SEO Framework from `WpssoCompat` to the `WpssoIntegSeoSeoframework` class.
-	* Moved compatibility code for WooCommerce from `WpssoCompat` to the `WpssoIntegEcomWooCommerce` class.
-	* Moved compatibility code for Yoast SEO from `WpssoCompat` to the `WpssoIntegSeoWpseo` class.
-	* Refactored the `WpssoAdminHeadSuggest`, `WpssoAdminHeadSuggestAddons`, `WpssoAdminHeadSuggestOptions`, and `WpssoAdminHeadSuggestAttributes` classes.
-	* Removed the `WpssoCompat` class.
+	* Moved compatibility code to integration modules and removed the `WpssoCompat` class.
+	* Refactored suggestion notification classes:
+		* `WpssoAdminHeadSuggest`
+		* `WpssoAdminHeadSuggestAddons`
+		* `WpssoAdminHeadSuggestOptions`
+		* `WpssoAdminHeadSuggestAttributes`
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
