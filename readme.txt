@@ -98,6 +98,35 @@ Present your content at its best on social sites and in search results - no matt
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
+<p><strong>Supports additional data from active plugins, including:</strong></p>
+
+* Co-Authors Plus
+* Elementor Website Builder
+* Gravity Forms
+* Gravity View
+* Jetpack
+* Jetpack Boost
+* Perfect Images
+* Perfect WooCommerce Brands
+* Polylang
+* Product GTIN (EAN, UPC, ISBN) for WooCommerce
+* qTranslate-XT
+* Rate my Post
+* Simple Job Board
+* The Events Calendar
+* Ultimate Member
+* WooCommerce
+* WooCommerce Brands
+* WooCommerce Currency Switcher
+* WooCommerce UPC, EAN, and ISBN
+* WP Job Manager
+* WP-PostRatings
+* WP Product Review
+* WP Recipe Maker
+* WPML
+* YITH WooCommerce Brands Add-on
+* Yotpo Social Reviews for WooCommerce
+
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
 * Product Adult Type
@@ -136,35 +165,6 @@ Present your content at its best on social sites and in search results - no matt
 * Product Net Weight
 * Product Net Width
 
-<p><strong>Supports additional data from active plugins, including:</strong></p>
-
-* Co-Authors Plus
-* Elementor Website Builder
-* Gravity Forms
-* Gravity View
-* Jetpack
-* Jetpack Boost
-* Perfect Images
-* Perfect WooCommerce Brands
-* Polylang
-* Product GTIN (EAN, UPC, ISBN) for WooCommerce
-* qTranslate-XT
-* Rate my Post
-* Simple Job Board
-* The Events Calendar
-* Ultimate Member
-* WooCommerce
-* WooCommerce Brands
-* WooCommerce Currency Switcher
-* WooCommerce UPC, EAN, and ISBN
-* WP Job Manager
-* WP-PostRatings
-* WP Product Review
-* WP Recipe Maker
-* WPML
-* YITH WooCommerce Brands Add-on
-* Yotpo Social Reviews for WooCommerce
-
 <p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
 WPSSO Core and its add-ons can also run in combination with other SEO plugins to **improve that SEO plugin's performance and structured data markup**.
@@ -175,6 +175,25 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * The SEO Framework
 * WP Meta SEO
 * Yoast SEO
+
+<p><strong>Reads data from service APIs, including:</strong></p>
+
+* Bitly Short URL
+* DLMY.App Short URL
+* Facebook Video Data
+* Gravatar Image Data
+* Ow.ly Short URL
+* Shopper Approved Review Data
+* Slideshare Presentation Data
+* Soundcloud Track Data
+* Stamped.io Review Data
+* TinyURL Short URL
+* Vimeo Video Data
+* Wistia Video Data
+* WP Media Library Video Block Data
+* WP Media Library Video Shortcode Data
+* Your Own URL Shortener (YOURLS) Short URL
+* YouTube Video and Playlist Data
 
 == Installation ==
 
