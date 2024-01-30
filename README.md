@@ -99,6 +99,37 @@
 <li><em>Price Mismatched value (page crawl): (price [price])</em></li>
 </ul>
 
+<p><strong>Supports additional data from active plugins, including:</strong></p>
+
+<ul>
+<li>Co-Authors Plus</li>
+<li>Elementor Website Builder</li>
+<li>Gravity Forms</li>
+<li>Gravity View</li>
+<li>Jetpack</li>
+<li>Jetpack Boost</li>
+<li>Perfect Images</li>
+<li>Perfect WooCommerce Brands</li>
+<li>Polylang</li>
+<li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
+<li>qTranslate-XT</li>
+<li>Rate my Post</li>
+<li>Simple Job Board</li>
+<li>The Events Calendar</li>
+<li>Ultimate Member</li>
+<li>WooCommerce</li>
+<li>WooCommerce Brands</li>
+<li>WooCommerce Currency Switcher</li>
+<li>WooCommerce UPC, EAN, and ISBN</li>
+<li>WP Job Manager</li>
+<li>WP-PostRatings</li>
+<li>WP Product Review</li>
+<li>WP Recipe Maker</li>
+<li>WPML</li>
+<li>YITH WooCommerce Brands Add-on</li>
+<li>Yotpo Social Reviews for WooCommerce</li>
+</ul>
+
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
 
 <ul>
@@ -139,37 +170,6 @@
 <li>Product Net Width</li>
 </ul>
 
-<p><strong>Supports additional data from active plugins, including:</strong></p>
-
-<ul>
-<li>Co-Authors Plus</li>
-<li>Elementor Website Builder</li>
-<li>Gravity Forms</li>
-<li>Gravity View</li>
-<li>Jetpack</li>
-<li>Jetpack Boost</li>
-<li>Perfect Images</li>
-<li>Perfect WooCommerce Brands</li>
-<li>Polylang</li>
-<li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
-<li>qTranslate-XT</li>
-<li>Rate my Post</li>
-<li>Simple Job Board</li>
-<li>The Events Calendar</li>
-<li>Ultimate Member</li>
-<li>WooCommerce</li>
-<li>WooCommerce Brands</li>
-<li>WooCommerce Currency Switcher</li>
-<li>WooCommerce UPC, EAN, and ISBN</li>
-<li>WP Job Manager</li>
-<li>WP-PostRatings</li>
-<li>WP Product Review</li>
-<li>WP Recipe Maker</li>
-<li>WPML</li>
-<li>YITH WooCommerce Brands Add-on</li>
-<li>Yotpo Social Reviews for WooCommerce</li>
-</ul>
-
 <p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
 <p>WPSSO Core and its add-ons can also run in combination with other SEO plugins to <strong>improve that SEO plugin's performance and structured data markup</strong>.</p>
@@ -181,6 +181,27 @@
 <li>The SEO Framework</li>
 <li>WP Meta SEO</li>
 <li>Yoast SEO</li>
+</ul>
+
+<p><strong>Reads data from service APIs, including:</strong></p>
+
+<ul>
+<li>Bitly Short URL</li>
+<li>DLMY.App Short URL</li>
+<li>Facebook Video Data</li>
+<li>Gravatar Image Data</li>
+<li>Ow.ly Short URL</li>
+<li>Shopper Approved Review Data</li>
+<li>Slideshare Presentation Data</li>
+<li>Soundcloud Track Data</li>
+<li>Stamped.io Review Data</li>
+<li>TinyURL Short URL</li>
+<li>Vimeo Video Data</li>
+<li>Wistia Video Data</li>
+<li>WP Media Library Video Block Data</li>
+<li>WP Media Library Video Shortcode Data</li>
+<li>Your Own URL Shortener (YOURLS) Short URL</li>
+<li>YouTube Video and Playlist Data</li>
 </ul>
 
 <h2>Installation</h2>
