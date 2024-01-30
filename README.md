@@ -183,7 +183,7 @@
 <li>Yoast SEO</li>
 </ul>
 
-<p><strong>Reads data from service APIs, including:</strong></p>
+<p><strong>Premium editon also reads data from service APIs, including:</strong></p>
 
 <ul>
 <li>Bitly Short URL</li>

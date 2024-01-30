@@ -176,7 +176,7 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * WP Meta SEO
 * Yoast SEO
 
-<p><strong>Reads data from service APIs, including:</strong></p>
+<p><strong>Premium editon also reads data from service APIs, including:</strong></p>
 
 * Bitly Short URL
 * DLMY.App Short URL
