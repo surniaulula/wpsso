@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.12.0-dev.1 (TBD)**
+**Version 17.12.0-dev.1 (2024/01/31)**
 
 * **New Features**
 	* None.
@@ -610,7 +610,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 = 17.12.0-dev.1 =
 
-(TBD) Added a new `SucomUtilWP::doing_dev()` method. Deprecated the 'WPSSO_DEV' constant.
+(2024/01/31) Added a new `SucomUtilWP::doing_dev()` method. Deprecated the 'WPSSO_DEV' constant.
 
 = 17.11.0 =
 
