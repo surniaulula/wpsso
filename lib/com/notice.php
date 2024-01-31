@@ -23,7 +23,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $nonce_name    = '';
 		private $default_ttl   = 600;
 		private $label_transl  = false;
-		private $doing_dev     = false;
 		private $has_shown     = false;
 		private $all_types     = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
 		private $toolbar_types = array( 'err', 'warn', 'inf', 'upd' );
@@ -973,11 +972,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the translated notice label.
 			 */
 			$this->set_label_transl( $label_transl );
-
-			/*
-			 * Determine if the DEV constant is defined.
-			 */
-			$this->doing_dev = SucomUtil::get_const( $this->plugin_ucid . '_DEV' );
 		}
 
 		/*
@@ -1411,11 +1405,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_salt     = __METHOD__ . '(wp_version:' . $wp_version . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			if ( $read_cache && ! $this->doing_dev ) {
+			if ( $read_cache ) {
+			
+				if ( ! SucomUtilWP::doing_dev() ) {
 
-				if ( $custom_style_css = get_transient( $cache_id ) ) {
+					if ( $custom_style_css = get_transient( $cache_id ) ) {
 
-					return '<style type="text/css">' . $custom_style_css . '</style>';
+						return '<style type="text/css">' . $custom_style_css . '</style>';
+					}
 				}
 			}
 
@@ -1745,7 +1742,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			';
 
-			if ( ! $this->doing_dev ) {
+			if ( ! SucomUtilWP::doing_dev() ) {
 
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->plugin_id );
 

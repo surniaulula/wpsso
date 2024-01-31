@@ -20,10 +20,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 	class WpssoScript {
 
 		private $p;	// Wpsso class object.
-
-		private $doing_dev  = false;
-		private $file_ext   = 'min.js';
-		private $version    = '';
+		private $doing_dev = false;
+		private $file_ext  = 'min.js';
+		private $version   = '';
 
 		public function __construct( &$plugin ) {
 
@@ -34,7 +33,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$this->doing_dev = SucomUtilWP::doing_dev();
 			$this->file_ext  = $this->doing_dev ? 'js' : 'min.js';
 			$this->version   = WpssoConfig::get_version() . ( $this->doing_dev ? gmdate( '-ymd-His' ) : '' );
 

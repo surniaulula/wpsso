@@ -52,14 +52,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function doing_block_editor() {
 
-			static $is_doing = null;
+			static $local_cache = null;
 
-			if ( $is_doing ) {	// Optimize - once true, stay true.
+			if ( $local_cache ) {	// Optimize - once true, stay true.
 
 				return true;
 			}
 
-			$is_doing      = false;
+			$local_cache   = false;
 			$post_id       = false;
 			$can_edit_id   = false;
 			$can_edit_type = false;
@@ -136,23 +136,23 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( $is_gutenbox ) {
 
-					$is_doing = true;
+					$local_cache = true;
 
 				} elseif ( $is_meta_box ) {
 
-					$is_doing = true;
+					$local_cache = true;
 
 				} elseif ( ! $is_classic ) {
 
-					$is_doing = true;
+					$local_cache = true;
 
 				} elseif ( $post_id && $req_action === 'edit' ) {
 
-					$is_doing = true;
+					$local_cache = true;
 				}
 			}
 
-			return $is_doing;
+			return $local_cache;
 		}
 
 		public static function doing_cron() {
@@ -163,6 +163,29 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return defined( 'DOING_CRON' ) ? DOING_CRON : false;
+		}
+
+		public static function doing_dev() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			if ( function_exists( 'wp_get_environment_type' ) ) {	// Since WP v5.5.
+
+				/*
+				 * Returns 'local', 'development', 'staging', or 'production'.
+				 */
+				if ( 'development' === wp_get_environment_type() ) {
+
+					return $local_cache = true;
+				}
+			}
+
+			return $local_cache = false;
 		}
 
 		public static function doing_frontend() {

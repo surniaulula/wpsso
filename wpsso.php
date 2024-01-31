@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.4.3
  * WC Tested Up To: 8.5.2
- * Version: 17.11.0
+ * Version: 17.12.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -813,9 +813,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->log( 'HTML debug mode is active' );
 			}
 
-			$doing_dev = $this->get_const( 'DEV' );
+			$is_admin  = is_admin();
+			$doing_dev = SucomUtilWP::doing_dev();	// Class always loaded in WpssoConfig::require_libs().
 
-			if ( ! $doing_dev && is_admin() ) {
+			if ( $is_admin && ! $doing_dev ) {
 
 				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_msg   = '';

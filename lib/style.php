@@ -20,9 +20,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 	class WpssoStyle {
 
 		private $p;	// Wpsso class object.
-
 		private $doing_dev = false;
-		private $use_cache = true;	// Read/save minimized CSS from/to transient cache.
 		private $file_ext  = 'min.css';
 		private $version   = '';
 
@@ -35,8 +33,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
-			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
+			$this->doing_dev = SucomUtilWP::doing_dev();
 			$this->file_ext  = $this->doing_dev ? 'css' : 'min.css';
 			$this->version   = WpssoConfig::get_version() . ( $this->doing_dev ? gmdate( '-ymd-His' ) : '' );
 
@@ -207,7 +204,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			wp_register_style( 'sucom-admin-page', WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext, $deps = array(), $this->version );
 
-			if ( $this->use_cache ) {
+			if ( ! $this->doing_dev ) {
 
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 
@@ -549,7 +546,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'saving sucom-admin-page inline style to cache' );
 			}
 
-			if ( $this->use_cache ) {
+			if ( ! $this->doing_dev ) {
 
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $filter_prefix = 'wpsso' );
 
