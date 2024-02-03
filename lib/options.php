@@ -1330,6 +1330,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( null === $errors_transl ) {
 
 				$errors_transl = array(
+					'array'        => __( 'The value of option "%s" must be an array - resetting this option to its default value.', 'wpsso' ),
 					'api_key'      => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
 					'color'        => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
 					'csv_urls'     => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
@@ -1390,6 +1391,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			switch ( $option_type ) {
+
+				case 'array':
+
+					if ( ! is_array( $opt_val ) ) {
+
+						$this->p->notice->err( sprintf( $errors_transl[ 'array' ], $opt_key ) );
+
+						$opt_val = is_array( $def_val ) ? $def_val : array();
+					}
+
+					break;
 
 				/*
 				 * Empty or alpha-numeric (upper or lower case), plus underscores and hypens.

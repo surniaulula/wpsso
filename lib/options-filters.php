@@ -185,8 +185,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				switch ( $base_key ) {
 
 					case 'schema_book_pages':			// Number of Pages.
-					case 'schema_reading_mins':
-					case 'schema_vid_max':
+					case 'schema_reading_mins':			// Est. Reading Time.
+					case 'schema_vid_max':				// Maximum Videos to Include.
 
 						if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
 
@@ -401,6 +401,13 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'not_blank';
 
 				/*
+				 * Arrays.
+				 */
+				case 'opt_versions':
+
+					return 'array';
+
+				/*
 				 * Optimize and check for add meta tags options first.
 				 */
 				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
@@ -417,11 +424,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/*
 				 * Empty or alpha-numeric (upper or lower case), plus underscores.
 				 */
-				case 'fb_app_id':
+				case 'fb_app_id':		// Facebook Application ID.
 				case 'fb_app_secret':
-				case 'fb_site_verify':			// Facebook Domain Verification ID.
-				case 'g_site_verify':			// Google Website Verification ID.
-				case 'pin_site_verify':			// Pinterest Website Verification ID.
+				case 'fb_site_verify':		// Facebook Domain Verification ID.
+				case 'g_site_verify':		// Google Website Verification ID.
+				case 'pin_site_verify':		// Pinterest Website Verification ID.
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
 					return 'api_key';
@@ -458,6 +465,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'blank_int';
 
+				/*
+				 * Robots max values.
+				 */
 				case 'robots_max_snippet':		// Snippet Max. Length.
 				case 'robots_max_video_preview':	// Video Max. Previews.
 
@@ -472,7 +482,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 * Cast as integer (zero and -1 is ok).
 				 */
 				case 'og_img_max':				// Maximum Images.
-				case 'og_vid_max':				// Maximum Videos.
+				case 'og_vid_max':				// Maximum Videos to Include.
 				case 'og_desc_hashtags': 			// Description Hashtags.
 				case 'primary_term_id':				// Primary Category.
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
@@ -521,15 +531,16 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/*
 				 * Text strings that can be blank (line breaks are removed).
 				 */
-				case 'site_name':
+				case 'checksum':	// Checksum of plugin versions.
+				case 'opt_checksum':	// Checksum of option versions.
 				case 'site_name_alt':
 				case 'site_desc':
-				case 'seo_title':			// SEO Title Tag.
-				case 'seo_desc':			// SEO Meta Description.
+				case 'seo_title':	// SEO Title Tag.
+				case 'seo_desc':	// SEO Meta Description.
 				case 'og_title':
 				case 'og_desc':
-				case 'tc_title':			// Twitter Card Title.
-				case 'tc_desc':				// Twitter Card Description.
+				case 'tc_title':	// Twitter Card Title.
+				case 'tc_desc':		// Twitter Card Description.
 				case 'pin_desc':
 
 					return 'one_line';
@@ -539,9 +550,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'site_org_place_id':
 				case 'site_org_schema_type':
-				case 'og_def_currency':				// Default Currency.
-				case 'og_def_country':				// Default Country.
-				case 'og_def_timezone':				// Default Timezone.
+				case 'og_def_currency':		// Default Currency.
+				case 'og_def_country':		// Default Country.
+				case 'og_def_timezone':		// Default Timezone.
 				case 'og_img_id_lib':
 				case 'robots_max_image_preview':
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):

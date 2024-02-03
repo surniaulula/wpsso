@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.12.0-dev.1',	// Plugin version.
+					'version'     => '17.12.0-dev.2',	// Plugin version.
 					'opt_version' => '999',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -227,8 +227,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced Settings',
-							'site-addons'   => 'Plugin Add-ons',
 							'site-licenses' => 'Premium Licenses',
+							'site-addons'   => 'Plugin Add-ons',
 							'site-setup'    => 'Setup Guide',
 						),
 						'std' => array(	// Standard distribution modules.
@@ -2304,6 +2304,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'                   => '',	// Same-As URLs Custom Field.
 					'plugin_cf_vid_embed'                     => '',	// Video Embed HTML Custom Field.
 					'plugin_cf_vid_url'                       => '',	// Video URL Custom Field.
+
+					/*
+					 * Premium Licenses.
+					 */
+					'plugin_wpsso_tid' => '',
+
 				),	// End of 'defaults' array.
 
 				/*
