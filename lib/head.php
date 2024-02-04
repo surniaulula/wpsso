@@ -816,7 +816,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/*
-		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
+		 * Called by WpssoHead->get_head_array() with $type = 'begin', 'cached', and 'end'.
+		 * Called by WpssoHead->get_head_html() with $type = 'added'.
 		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
 		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
 		 */
