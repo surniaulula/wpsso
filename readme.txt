@@ -278,12 +278,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.12.0-b.1 (2024/02/04)**
+**Version 17.12.0-b.2 (2024/02/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Replaced The AMP Project Validator by the Google AMP Test.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -608,9 +608,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.12.0-b.1 =
+= 17.12.0-b.2 =
 
-(2024/02/04) Added a new `SucomUtilWP::doing_dev()` method. Deprecated the 'WPSSO_DEV' constant.
+(2024/02/04) Replaced The AMP Project Validator by the Google AMP Test.
 
 = 17.11.0 =
 
