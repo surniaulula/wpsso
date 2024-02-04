@@ -3833,11 +3833,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$canonical_url_enc = urlencode( $canonical_url );
 
 			$validators = array(
-				'amp' => array(
-					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
-					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' *' ),
-					'url'   => $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
-				),
 				'facebook-debugger' => array(
 					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
 					'type'  => _x( 'Open Graph', 'validator type', 'wpsso' ),
@@ -3847,6 +3842,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
 					'type'  => _x( 'Microdata', 'validator type', 'wpsso' ),
 					'url'   => 'https://business.facebook.com/ads/microdata/debug?url=' . $canonical_url_enc,
+				),
+				'google-amp' => array(
+					'title' => _x( 'Google AMP Test', 'option label', 'wpsso' ),
+					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' *' ),
+					'url'   => $have_amp ? 'https://search.google.com/test/amp/result?url=' . $amp_url_enc : '',
 				),
 				'google-page-speed' => array(
 					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),

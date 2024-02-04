@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						continue;
 					}
 
-					$menu_items[] = array(
+					$menu_items[ $el[ 'type' ] ] = array(
 						'id'     => $parent_id . '-' . $key,
 						'title'  => $el[ 'type' ],
 						'parent' => $parent_id,
@@ -170,6 +170,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						),
 					);
 				}
+
+				SucomUtil::natksort( $menu_items );
 
 				$wp_admin_bar->add_node( array(
 					'id'     => $parent_id,

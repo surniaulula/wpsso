@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.12.0-b.1\n"
+"Project-Id-Version: WPSSO Core 17.12.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -268,30 +268,28 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:34
 msgctxt "html list item"
+msgid "<a href=\"https://search.google.com/test/amp\">Google AMP Test</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:35
+msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:36
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:37
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:37
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
-"a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:38
@@ -302,18 +300,25 @@ msgstr ""
 #: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid ""
+"<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
+"a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:40
+msgctxt "html list item"
+msgid ""
 "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
 "to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML "
 "Sitemap Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> - "
@@ -321,7 +326,7 @@ msgid ""
 "SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -329,14 +334,14 @@ msgid ""
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
 "Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
@@ -7037,37 +7042,37 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info-meta.php:212
-msgid ""
-"Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
-"Pages) webpage."
-msgstr ""
-
-#: lib/messages-info-meta.php:216
-msgid ""
-"Note that an AMP plugin is required to create AMP webpages for WordPress."
-msgstr ""
-
-#: lib/messages-info-meta.php:227
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:229
+#: lib/messages-info-meta.php:214
 msgid ""
 "The Facebook debugger allows you to validate Open Graph meta tags and "
 "refresh Facebook's cache."
 msgstr ""
 
-#: lib/messages-info-meta.php:231
+#: lib/messages-info-meta.php:216
 msgid ""
 "The Facebook debugger is the most reliable validation tool for Open Graph "
 "meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:241
+#: lib/messages-info-meta.php:226
 msgid ""
 "The Facebook catalog microdata debug tool allows you to validate the "
 "structured data used to indicate key information about the items on your "
 "website, such as their name, description and prices."
+msgstr ""
+
+#: lib/messages-info-meta.php:236
+msgid ""
+"Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
+"Pages) webpage."
+msgstr ""
+
+#: lib/messages-info-meta.php:240
+msgid ""
+"Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr ""
 
 #: lib/messages-info-meta.php:251
@@ -11581,15 +11586,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1061 lib/util-inline.php:455
+#: lib/page.php:1063 lib/util-inline.php:455
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1065
+#: lib/page.php:1067
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2241
+#: lib/page.php:2243
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -13116,32 +13121,32 @@ msgstr ""
 
 #: lib/util.php:3837
 msgctxt "option label"
-msgid "The AMP Project Validator"
+msgid "Facebook Sharing Debugger"
 msgstr ""
 
 #: lib/util.php:3838
 msgctxt "validator type"
-msgid "AMP Markup"
+msgid "Open Graph"
 msgstr ""
 
 #: lib/util.php:3842
 msgctxt "option label"
-msgid "Facebook Sharing Debugger"
+msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
 #: lib/util.php:3843
 msgctxt "validator type"
-msgid "Open Graph"
+msgid "Microdata"
 msgstr ""
 
 #: lib/util.php:3847
 msgctxt "option label"
-msgid "Facebook Microdata Debug Tool"
+msgid "Google AMP Test"
 msgstr ""
 
 #: lib/util.php:3848
 msgctxt "validator type"
-msgid "Microdata"
+msgid "AMP Markup"
 msgstr ""
 
 #: lib/util.php:3852

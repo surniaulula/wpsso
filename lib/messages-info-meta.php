@@ -205,21 +205,6 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				/*
 				 * Document SSO > Validators tab.
 				 */
-				case 'info-meta-validate-amp':
-
-					$text = '<p class="top">';
-
-					$text .= __( 'Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage.', 'wpsso' ) . ' ';
-
-					if ( ! function_exists( 'amp_get_permalink' ) ) {
-
-						$text .= __( 'Note that an AMP plugin is required to create AMP webpages for WordPress.', 'wpsso' );
-					}
-
-					$text .= '</p>';
-
-				 	break;
-
 				case 'info-meta-validate-facebook-debugger':
 
 					$text = '<p class="top">';
@@ -239,6 +224,21 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					$text = '<p class="top">';
 
 					$text .= __( 'The Facebook catalog microdata debug tool allows you to validate the structured data used to indicate key information about the items on your website, such as their name, description and prices.', 'wpsso' );
+
+					$text .= '</p>';
+
+				 	break;
+
+				case 'info-meta-validate-google-amp':
+
+					$text = '<p class="top">';
+
+					$text .= __( 'Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage.', 'wpsso' ) . ' ';
+
+					if ( ! function_exists( 'amp_get_permalink' ) ) {
+
+						$text .= __( 'Note that an AMP plugin is required to create AMP webpages for WordPress.', 'wpsso' );
+					}
 
 					$text .= '</p>';
 
