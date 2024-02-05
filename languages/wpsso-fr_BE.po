@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.11.0\n"
+"Project-Id-Version: WPSSO Core 17.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-01-28 03:47-0800\n"
+"PO-Revision-Date: 2024-02-05 06:59-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -160,23 +160,23 @@ msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de d
 
 #: gettext/gettext-html-setup.php:34
 msgctxt "html list item"
+msgid "<a href=\"https://search.google.com/test/amp\">Google AMP Test</a>"
+msgstr "<a href=\"https://search.google.com/test/amp?hl=fr\">Test AMP de Google</a>"
+
+#: gettext/gettext-html-setup.php:35
+msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr "<a href=\"https://search.google.com/test/rich-results?hl=fr\">Test de résultats enrichis Google</a>"
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:36
 msgctxt "html list item"
 msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
 msgstr "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">Inspecteur LinkedIn de publication</a>"
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:37
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest épingles riches</a>"
-
-#: gettext/gettext-html-setup.php:37
-msgctxt "html list item"
-msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
-msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
 
 #: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
@@ -185,30 +185,35 @@ msgstr "<a href=\"https://validator.schema.org/?hl=fr\">Validateur de balisage d
 
 #: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
+msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
+msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
+
+#: gettext/gettext-html-setup.php:40
+msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended to check your theme templates for HTML markup issues."
 msgstr "<a href=\"https://validator.w3.org/\">Validateur W3C de balisage</a> - recommandé pour vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML Sitemap Validator</a>"
 msgstr "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">Validateur de plan de site XML</a>"
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid "<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking)."
 msgstr "<a href=\"https://pagespeed.web.dev/?hl=fr\">PageSpeed Insights de Google</a> - recommandé pour les vérifications générales de l'état du site et des pages Web (les résultats influencent le classement SEO)."
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> - essential reading to understand Google SEO ranking factors."
 msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184?hl=fr\">Guide de démarrage de l'optimisation des moteurs de recherche (SEO) de Google</a> - lecture essentielle pour comprendre les facteurs de classement SEO de Google."
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr "<a href=\"https://www.webpagetest.org/\">Test de performance de page Web avec cascade</a> - recommandé pour vérifier et diagnostiquer les problèmes de performances de base."
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> - recommended test for any site using https."
 msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> - test recommandé pour tout site utilisant https."
@@ -223,13 +228,13 @@ msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:42
 #: gettext/gettext-lib-com.php:62 lib/com/bfo.php:259 lib/com/cache.php:95
-#: lib/com/notice.php:73
+#: lib/com/notice.php:72
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:43
 #: gettext/gettext-lib-com.php:63 lib/com/bfo.php:264 lib/com/cache.php:100
-#: lib/com/notice.php:78
+#: lib/com/notice.php:77
 msgid "Notice"
 msgstr "Avis"
 
@@ -354,40 +359,40 @@ msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1068 lib/script.php:366
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1068 lib/script.php:365
 msgid "Select Image"
 msgstr "Choisir l'image"
 
-#: gettext/gettext-lib-com.php:44 lib/com/notice.php:294
+#: gettext/gettext-lib-com.php:44 lib/com/notice.php:293
 #: lib/submenu/licenses.php:94
 msgid "Edit"
 msgstr "Modifier"
 
-#: gettext/gettext-lib-com.php:45 lib/com/notice.php:298
+#: gettext/gettext-lib-com.php:45 lib/com/notice.php:297
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: gettext/gettext-lib-com.php:46 lib/com/notice.php:501
+#: gettext/gettext-lib-com.php:46 lib/com/notice.php:500
 msgid "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false)."
 msgstr "La barre d'outils d'administration de WordPress semble être désactivée (c'est-à-dire que la fonction WordPress <code>%s</code> a renvoyé faux)."
 
-#: gettext/gettext-lib-com.php:47 lib/com/notice.php:504
+#: gettext/gettext-lib-com.php:47 lib/com/notice.php:503
 msgid "As a consequence, showing discreet notices in the admin toolbar is not possible."
 msgstr "Par conséquent, il n'est pas possible d'afficher des avis discrets dans la barre d'outils d'administration."
 
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:506
+#: gettext/gettext-lib-com.php:48 lib/com/notice.php:505
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr "Veuillez diagnostiquer le problème pour réactiver la barre d'outils d'administration."
 
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:1073
+#: gettext/gettext-lib-com.php:49 lib/com/notice.php:1067
 msgid "Forever"
 msgstr "Toujours"
 
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:1075
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:1069
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: gettext/gettext-lib-com.php:51 lib/com/notice.php:1087
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:1081
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
@@ -927,18 +932,18 @@ msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
 
-#: gettext/gettext-lib-config.php:102 gettext/gettext-lib-config.php:118
-#: lib/messages.php:479
-msgctxt "lib file description"
-msgid "Plugin Add-ons"
-msgstr "Ajouts d'extension"
-
-#: gettext/gettext-lib-config.php:103 gettext/gettext-lib-config.php:117
+#: gettext/gettext-lib-config.php:102 gettext/gettext-lib-config.php:117
 #: lib/messages-info.php:76 lib/messages.php:424 lib/messages.php:435
 #: lib/messages.php:482
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr "Licences Premium"
+
+#: gettext/gettext-lib-config.php:103 gettext/gettext-lib-config.php:118
+#: lib/messages.php:479
+msgctxt "lib file description"
+msgid "Plugin Add-ons"
+msgstr "Ajouts d'extension"
 
 #: gettext/gettext-lib-config.php:104 gettext/gettext-lib-config.php:120
 msgctxt "lib file description"
@@ -4487,12 +4492,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5446
+#: lib/config.php:5452
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5446
+#: lib/config.php:5452
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -4931,7 +4936,7 @@ msgctxt "option label"
 msgid "Crop Area"
 msgstr "Zone de recadrage"
 
-#: lib/edit-general.php:88 lib/script.php:435
+#: lib/edit-general.php:88 lib/script.php:434
 msgctxt "option label"
 msgid "Schema Type"
 msgstr "Type de Schéma"
@@ -6641,28 +6646,28 @@ msgid "You may use the <code>%s</code> filter to modify the oEmbed template file
 msgstr "Vous pouvez utiliser le filtre <code>%s</code> pour modifier le chemin du fichier de modèle oEmbed."
 
 #: lib/messages-info-meta.php:212
-msgid "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage."
-msgstr "Validez la syntaxe HTML et la conformité de la page Web AMP (également appelée pages mobiles accélérées)."
-
-#: lib/messages-info-meta.php:216
-msgid "Note that an AMP plugin is required to create AMP webpages for WordPress."
-msgstr "Notez qu'une extension AMP est requise pour créer des pages Web AMP pour WordPress."
-
-#: lib/messages-info-meta.php:227
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr "Tous les sites sociaux (à l'exception de LinkedIn) lisent les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:229
+#: lib/messages-info-meta.php:214
 msgid "The Facebook debugger allows you to validate Open Graph meta tags and refresh Facebook's cache."
 msgstr "Le débogueur Facebook vous permet de valider les balises méta Open Graph et de rafraîchir le cache de Facebook."
 
-#: lib/messages-info-meta.php:231
+#: lib/messages-info-meta.php:216
 msgid "The Facebook debugger is the most reliable validation tool for Open Graph meta tags."
 msgstr "Le débogueur Facebook est l'outil de validation le plus fiable pour les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:241
+#: lib/messages-info-meta.php:226
 msgid "The Facebook catalog microdata debug tool allows you to validate the structured data used to indicate key information about the items on your website, such as their name, description and prices."
 msgstr "L'outil de débogage des microdonnées pour le catalogue Facebook vous permet de valider les données structurées utilisées pour indiquer les informations clés des itemes de votre site Web, telles que leur nom, leur description et leurs prix."
+
+#: lib/messages-info-meta.php:236
+msgid "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage."
+msgstr "Validez la syntaxe HTML et la conformité de la page Web AMP (également appelée pages mobiles accélérées)."
+
+#: lib/messages-info-meta.php:240
+msgid "Note that an AMP plugin is required to create AMP webpages for WordPress."
+msgstr "Notez qu'une extension AMP est requise pour créer des pages Web AMP pour WordPress."
 
 #: lib/messages-info-meta.php:251
 msgid "Analyzes the webpage content and suggests ways to make the webpage faster for better ranking in search results."
@@ -10137,186 +10142,190 @@ msgid "Please correct the %s banner image or select a different banner image."
 msgstr "Veuillez corriger l'image bannière %s ou sélectionner une autre image bannière."
 
 #: lib/options.php:1333
+msgid "The value of option \"%s\" must be an array - resetting this option to its default value."
+msgstr "La valeur de l'option \"%s\" doit être un tableau - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:1334
 msgid "The value of option \"%s\" must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1334
+#: lib/options.php:1335
 msgid "The value of option \"%s\" must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1335
+#: lib/options.php:1336
 msgid "The value of option \"%s\" must be a comma-delimited list of URL(s) - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1336
+#: lib/options.php:1337
 msgid "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1337
+#: lib/options.php:1338
 msgid "The value of option \"%s\" must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1338
+#: lib/options.php:1339
 msgid "The value of option \"%s\" must be an image ID - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un ID d'image - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1339
+#: lib/options.php:1340
 msgid "The value of option \"%s\" must be a valid image URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL d'image valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1340
+#: lib/options.php:1341
 msgid "The value of option \"%s\" cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1341
+#: lib/options.php:1342
 msgid "The value of option \"%s\" must be numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1342
+#: lib/options.php:1343
 msgid "The value of option \"%s\" must be blank or numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1343
+#: lib/options.php:1344
 msgid "The value of option \"%1$s\" must be equal to or greather than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1344
+#: lib/options.php:1345
 msgid "The value of option \"%s\" must be a hh:mm time - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1345
+#: lib/options.php:1346
 msgid "The value of option \"%s\" must be a valid URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1856 lib/options.php:1888
+#: lib/options.php:1868 lib/options.php:1900
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr "%%sitename%%"
 
-#: lib/options.php:1860
+#: lib/options.php:1872
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr "%%sitedesc%%"
 
-#: lib/options.php:1864
+#: lib/options.php:1876
 msgctxt "option value"
 msgid "Image:"
 msgstr "Image:"
 
-#: lib/options.php:1868
+#: lib/options.php:1880
 msgctxt "option value"
 msgid "Caption:"
 msgstr "Légende:"
 
-#: lib/options.php:1872
+#: lib/options.php:1884
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr "Commentaire de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1876
+#: lib/options.php:1888
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr "Réponse de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1880
+#: lib/options.php:1892
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr "Critique de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1884
+#: lib/options.php:1896
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr "%%var_title%% %%sep%% %%var_attrs%%"
 
-#: lib/options.php:1892
+#: lib/options.php:1904
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr "Page introuvable"
 
-#: lib/options.php:1896
+#: lib/options.php:1908
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr "Page \"%%pagename%%\" non trouvée."
 
-#: lib/options.php:1900
+#: lib/options.php:1912
 msgctxt "option value"
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/options.php:1904
+#: lib/options.php:1916
 msgctxt "option value"
 msgid "No description."
 msgstr "Aucune description."
 
-#: lib/options.php:1908
+#: lib/options.php:1920
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr "%%term_hierarchy%%"
 
-#: lib/options.php:1912
+#: lib/options.php:1924
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr "Page d'archives pour %%term_tax_single_lower%% %%term_name%%."
 
-#: lib/options.php:1916
+#: lib/options.php:1928
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr "%%author_name%%, auteur à %%sitename%%"
 
-#: lib/options.php:1920
+#: lib/options.php:1932
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr "Page d’archive de l'auteur %%author_name%%."
 
-#: lib/options.php:1924
+#: lib/options.php:1936
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr "Résultats de recherche %%sep%% %%query_search%%"
 
-#: lib/options.php:1928
+#: lib/options.php:1940
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr "Résultats de la recherche pour &#8220;%%query_search%%&#8221;."
 
-#: lib/options.php:1932
+#: lib/options.php:1944
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr "%%query_year%%"
 
-#: lib/options.php:1936
+#: lib/options.php:1948
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr "Archive annuelle pour %%query_year%%."
 
-#: lib/options.php:1940
+#: lib/options.php:1952
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr "%%query_month%% %%query_year%%"
 
-#: lib/options.php:1944
+#: lib/options.php:1956
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr "Archive mensuelle pour %%query_month%%, %%query_year%%."
 
-#: lib/options.php:1948
+#: lib/options.php:1960
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr "%%query_month%% %%query_day%%, %%query_year%%"
 
-#: lib/options.php:1952
+#: lib/options.php:1964
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
 
-#: lib/page.php:1061 lib/util-inline.php:455
+#: lib/page.php:1063 lib/util-inline.php:455
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/page.php:1065
+#: lib/page.php:1067
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2241
+#: lib/page.php:2243
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
@@ -10602,39 +10611,39 @@ msgstr "ajout d'image pour le sujet critiqué"
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
-#: lib/script.php:452
+#: lib/script.php:451
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/script.php:454
+#: lib/script.php:453
 msgid "Copy notifications to clipboard."
 msgstr "Copier les notifications dans le presse-papiers."
 
-#: lib/script.php:488
+#: lib/script.php:487
 msgid "Copied to clipboard."
 msgstr "Copié au presse-papiers."
 
-#: lib/script.php:489
+#: lib/script.php:488
 msgid "Value linked to {0} option"
 msgstr "Valeur liée à l'option {0}"
 
-#: lib/script.php:491
+#: lib/script.php:490
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
 
-#: lib/script.php:494
+#: lib/script.php:493
 msgid "{0} of {1} characters minimum"
 msgstr "{0} de {1} caractères minimum"
 
-#: lib/script.php:495
+#: lib/script.php:494
 msgid "{0} of {1} characters recommended"
 msgstr "{0} de {1} caractères recommandés"
 
-#: lib/script.php:496
+#: lib/script.php:495
 msgid "{0} of {1} characters maximum"
 msgstr "{0} de {1} caractères maximum"
 
-#: lib/script.php:497
+#: lib/script.php:496
 msgid "{0} characters"
 msgstr "{0} caractères"
 
@@ -11779,33 +11788,33 @@ msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour 
 
 #: lib/util.php:3837
 msgctxt "option label"
-msgid "The AMP Project Validator"
-msgstr "Le validateur de projet AMP"
-
-#: lib/util.php:3838
-msgctxt "validator type"
-msgid "AMP Markup"
-msgstr "Balisage AMP"
-
-#: lib/util.php:3842
-msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3843
+#: lib/util.php:3838
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3847
+#: lib/util.php:3842
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3848
+#: lib/util.php:3843
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
+
+#: lib/util.php:3847
+msgctxt "option label"
+msgid "Google AMP Test"
+msgstr "Test AMP de Google"
+
+#: lib/util.php:3848
+msgctxt "validator type"
+msgid "AMP Markup"
+msgstr "Balisage AMP"
 
 #: lib/util.php:3852
 msgctxt "option label"
@@ -11899,27 +11908,27 @@ msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr "(constante %s est fausse)"
 
-#: wpsso.php:829
+#: wpsso.php:830
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:836
+#: wpsso.php:837
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
-#: wpsso.php:844
+#: wpsso.php:845
 msgid "The %s plugin's debug mode generates thousands of messages during page load, which affects website performance."
 msgstr "Le mode débogage de l'extension %s génère des milliers de messages lors du chargement de la page, ce qui affecte les performances du site Web."
 
-#: wpsso.php:846
+#: wpsso.php:847
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:858
+#: wpsso.php:859
 msgid "The %s plugin's cache feature is disabled for debugging, which affects website performance."
 msgstr "La fonctionnalité de cache de l'extension %s est désactivée pour le débogage, ce qui affecte les performances du site Web."
 
-#: wpsso.php:860
+#: wpsso.php:861
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr "N'oubliez pas de réactiver la mise en cache lorsque le débogage est terminé."
 
