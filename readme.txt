@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.12.0-b.2 (2024/02/04)**
+**Version 17.12.0-rc.1 (2024/02/05)**
 
 * **New Features**
 	* None.
@@ -608,9 +608,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.12.0-b.2 =
+= 17.12.0-rc.1 =
 
-(2024/02/04) Replaced The AMP Project Validator by the Google AMP Test.
+(2024/02/05) Replaced The AMP Project Validator by the Google AMP Test.
 
 = 17.11.0 =
 
