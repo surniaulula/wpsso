@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.12.1-rc.1 (2024/02/07)**
+**Version 17.12.1 (2024/02/07)**
 
 * **New Features**
 	* None.
@@ -622,7 +622,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.12.1-rc.1 =
+= 17.12.1 =
 
 (2024/02/07) Fixed call to missing `SucomNoNotice->refresh_notice_style()` method.
 
