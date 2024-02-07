@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.12.1-rc.1 (2024/02/07)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed call to missing `SucomNoNotice->refresh_notice_style()` method.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.12.0 (2024/02/05)**
 
 * **New Features**
@@ -607,6 +621,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.12.1-rc.1 =
+
+(2024/02/07) Fixed call to missing `SucomNoNotice->refresh_notice_style()` method.
 
 = 17.12.0 =
 
