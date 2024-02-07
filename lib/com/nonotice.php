@@ -40,8 +40,8 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function can_dismiss() { return false; }
 		public function admin_header_notices() {}
 		public function show_admin_notices() {}
-		public function ajax_dismiss_notice() { die( -1 ); }
 		public function ajax_get_notices_json() { die( -1 ); }
+		public function ajax_dismiss_notice() { die( -1 ); }
 		public function get_toolbar_types() { return false; }
 		public function admin_footer_script() {}
 		public function shutdown_notice_cache() {}
