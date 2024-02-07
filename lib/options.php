@@ -907,9 +907,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 */
 					$this->p->schema->refresh_schema_types();
 
-					$this->p->notice->refresh_notice_style();
-
 					if ( is_admin() ) {
+
+						$this->p->notice->refresh_notice_style();
 
 						$user_id    = get_current_user_id();
 						$notice_msg = '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ';

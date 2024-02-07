@@ -26,8 +26,8 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function warn() {}
 		public function inf() {}
 		public function upd() {}
-		public function clear_key() {}
 		public function clear() {}
+		public function clear_key() {}
 		public function set_ref() { return ''; }
 		public function unset_ref() { return false; }
 		public function get_ref() { return null; }
@@ -40,11 +40,12 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function can_dismiss() { return false; }
 		public function admin_header_notices() {}
 		public function show_admin_notices() {}
-		public function admin_footer_script() {}
 		public function ajax_dismiss_notice() { die( -1 ); }
 		public function ajax_get_notices_json() { die( -1 ); }
-		public function get_tb_types_showing() { return false; }	// Deprecated 2023/02/21.
 		public function get_toolbar_types() { return false; }
+		public function admin_footer_script() {}
 		public function shutdown_notice_cache() {}
+		public function refresh_notice_style() {}
+		public function get_tb_types_showing() { return false; }	// Deprecated 2023/02/21.
 	}
 }
