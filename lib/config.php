@@ -3987,7 +3987,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'schema_type' => array(				// Element of 'head' array.
 					'thing' => array(			// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
-							'article' => array(
+							'amp.story' => 'https://schema.org/AmpStory',
+							'article'   => array(
 								'article'                    => 'https://schema.org/Article',
 								'article.advertiser.content' => 'https://schema.org/AdvertiserContentArticle',
 								'article.news'               => array(
@@ -4023,9 +4024,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'book'       => 'https://schema.org/Book',
 								'book.audio' => 'https://schema.org/Audiobook',
 							),
-							'claim'   => 'https://schema.org/Claim',
-							'clip'    => 'https://schema.org/Clip',
-							'comment' => array(
+							'claim'       => 'https://schema.org/Claim',
+							'clip'        => 'https://schema.org/Clip',
+							'comic.story' => 'https://schema.org/ComicStory',
+							'comment'     => array(
 								'answer'   => 'https://schema.org/Answer',
 								'comment'  => 'https://schema.org/Comment',
 								'question' => 'https://schema.org/Question',
@@ -4062,6 +4064,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'howto' => array(
 								'howto'  => 'https://schema.org/HowTo',
 								'recipe' => 'https://schema.org/Recipe',	// Recipe is a sub-type of HowTo.
+							),
+							'learning.resource' => array(
+								'learning.course'   => 'https://schema.org/Course',
+								'learning.resource' => 'https://schema.org/LearningResource',
+								'learning.quiz'     => 'https://schema.org/Quiz',
+								'learning.syllabus' => 'https://schema.org/Syllabus',
 							),
 							'map'          => 'https://schema.org/Map',
 							'media.object' => array(
