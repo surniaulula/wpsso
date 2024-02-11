@@ -35,11 +35,11 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 
 			$gettext = self::parse_html( $html, $text_domain );
 
-			foreach ( $gettext as $repl => $arr ) {
+			foreach ( $gettext as $match => $arr ) {
 
 				$arr[ 'text' ] = str_replace( '\'', '\\\'', $arr[ 'text' ] );
 
-				echo '_x( \'' . $arr[ 'text' ] . '\', \'' . $arr[ 'context' ] . '\', \'' . $arr[ 'text_domain' ] . '\' );' . "\n";
+				echo sprintf( '_x( \'%s\', \'%s\', \'%s\' );', $arr[ 'text' ], $arr[ 'context' ], $arr[ 'text_domain' ] ) . "\n";
 			}
 		}
 
@@ -78,7 +78,7 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 
 			$mixed = str_replace( '\'', '\\\'', $mixed );
 
-			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
+			echo sprintf( '_x( \'%s\', \'%s\', \'%s\' );', $mixed, $context, $text_domain ) . "\n";
 
 			/*
 			 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
@@ -89,14 +89,14 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 
 					$mixed = trim( substr( $mixed, 0, $pos ) );
 
-					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
+					echo sprintf( '_x( \'%s\', \'%s\', \'%s\' );', $mixed, $context, $text_domain ) . "\n";
 				}
 
 				if ( 0 === strpos( $mixed, '[' ) ) {
 
 					$mixed = trim( $mixed, '[]' );
 
-					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
+					echo sprintf( '_x( \'%s\', \'%s\', \'%s\' );', $mixed, $context, $text_domain ) . "\n";
 				}
 			}
 		}
