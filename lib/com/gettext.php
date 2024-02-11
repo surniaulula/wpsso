@@ -14,54 +14,12 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 
 	class SucomGetText {
 
-		public static function get_html_gettext( $html, $text_domain ) {
-
-			$gettext = array();
-
-			foreach ( array(
-				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis'         => 'html header',
-				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'              => 'html paragraph',	// Get paragraphs before list items.
-				'/(<li[^>]*>)(.*)(<\/li>)/Uis'                 => 'html list item',
-				'/(<blockquote[^>]*>)(.*)(<\/blockquote>)/Uis' => 'html blockquote',
-			) as $pattern => $context ) {
-
-				if ( preg_match_all( $pattern, $html, $all_matches, PREG_SET_ORDER ) ) {
-
-					foreach ( $all_matches as $num => $matches ) {
-
-						list( $match, $begin, $text, $end ) = $matches;
-
-						$html = str_replace( $match, '', $html );	// Do not match again.
-
-						$text = trim( $text );	// Just in case.
-
-						if ( '' === $text ) {	// Ignore HTML tags with no content.
-
-							continue;
-						}
-
-						$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
-
-						$gettext[ $match ] = array(
-							'begin'       => $begin,
-							'text'        => $text,
-							'end'         => $end,
-							'context'     => $context,
-							'text_domain' => $text_domain,
-						);
-					}
-				}
-			}
-
-			return $gettext;
-		}
-
 		/*
 		 * Translate HTML headers, paragraphs, list items, and blockquotes.
 		 */
 		public static function get_html_transl( $html, $text_domain ) {
 
-			$gettext = self::get_html_gettext( $html, $text_domain );
+			$gettext = self::parse_html( $html, $text_domain );
 
 			foreach ( $gettext as $match => $arr ) {
 
@@ -73,9 +31,9 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 			return $html;
 		}
 
-		public static function show_html_gettext_php( $html, $text_domain ) {
+		public static function show_html_php( $html, $text_domain ) {
 
-			$gettext = self::get_html_gettext( $html, $text_domain );
+			$gettext = self::parse_html( $html, $text_domain );
 
 			foreach ( $gettext as $repl => $arr ) {
 
@@ -85,7 +43,7 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 			}
 		}
 
-		public static function show_lib_gettext_php( $mixed, $context, $text_domain ) {
+		public static function show_lib_php( $mixed, $context, $text_domain ) {
 
 			if ( is_array( $mixed ) ) {
 
@@ -96,7 +54,7 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 						continue;
 					}
 
-					self::show_lib_gettext_php( $val, $context, $text_domain );
+					self::show_lib_php( $val, $context, $text_domain );
 				}
 
 				return;
@@ -141,6 +99,48 @@ if ( ! class_exists( 'SucomGetText' ) ) {
 					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
 				}
 			}
+		}
+
+		private static function parse_html( $html, $text_domain ) {
+
+			$parsed = array();
+
+			foreach ( array(
+				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis'         => 'html header',
+				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'              => 'html paragraph',	// Get paragraphs before list items.
+				'/(<li[^>]*>)(.*)(<\/li>)/Uis'                 => 'html list item',
+				'/(<blockquote[^>]*>)(.*)(<\/blockquote>)/Uis' => 'html blockquote',
+			) as $pattern => $context ) {
+
+				if ( preg_match_all( $pattern, $html, $all_matches, PREG_SET_ORDER ) ) {
+
+					foreach ( $all_matches as $num => $matches ) {
+
+						list( $match, $begin, $text, $end ) = $matches;
+
+						$html = str_replace( $match, '', $html );	// Do not match again.
+
+						$text = trim( $text );	// Just in case.
+
+						if ( '' === $text ) {	// Ignore HTML tags with no content.
+
+							continue;
+						}
+
+						$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
+
+						$parsed[ $match ] = array(
+							'begin'       => $begin,
+							'text'        => $text,
+							'end'         => $end,
+							'context'     => $context,
+							'text_domain' => $text_domain,
+						);
+					}
+				}
+			}
+
+			return $parsed;
 		}
 	}
 }
