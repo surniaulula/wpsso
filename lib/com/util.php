@@ -2611,8 +2611,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 *	get_html_gettext()
 		 *	get_html_transl()
-		 *	show_html_gettext_php()
-		 *	show_lib_gettext_php()
 		 */
 		public static function get_html_gettext( $html, $text_domain ) {
 
@@ -2671,76 +2669,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $html;
-		}
-
-		public static function show_html_gettext_php( $html, $text_domain ) {
-
-			$gettext = self::get_html_gettext( $html, $text_domain );
-
-			foreach ( $gettext as $repl => $arr ) {
-
-				$arr[ 'text' ] = str_replace( '\'', '\\\'', $arr[ 'text' ] );
-
-				echo '_x( \'' . $arr[ 'text' ] . '\', \'' . $arr[ 'context' ] . '\', \'' . $arr[ 'text_domain' ] . '\' );' . "\n";
-			}
-		}
-
-		public static function show_lib_gettext_php( $mixed, $context, $text_domain ) {
-
-			if ( is_array( $mixed ) ) {
-
-				foreach ( $mixed as $key => $val ) {
-
-					if ( 'admin' === $key ) {
-
-						continue;
-					}
-
-					self::show_lib_gettext_php( $val, $context, $text_domain );
-				}
-
-				return;
-
-			} elseif ( is_numeric( $mixed ) ) {	// Number.
-
-				return;
-
-			} elseif ( empty( $mixed ) ) {	// Empty.
-
-				return;
-
-			} elseif ( 0 === strpos( $mixed, '/' ) ) {	// Regular expression.
-
-				return;
-
-			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL is valid.
-
-				return;
-			}
-
-			$mixed = str_replace( '\'', '\\\'', $mixed );
-
-			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
-
-			/*
-			 * Include values without their comment / qualifier (for example, 'Adult (13 years old or more)').
-			 */
-			if ( 'option value' === $context ) {
-
-				if ( false !== ( $pos = strpos( $mixed, '(' ) ) ) {
-
-					$mixed = trim( substr( $mixed, 0, $pos ) );
-
-					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
-				}
-
-				if ( 0 === strpos( $mixed, '[' ) ) {
-
-					$mixed = trim( $mixed, '[]' );
-
-					echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
-				}
-			}
 		}
 
 		/*
