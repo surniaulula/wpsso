@@ -2380,7 +2380,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $file_content ) ) {
 
-				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
+				if ( ! class_exists( 'SuextParseReadme' ) ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
+				}
 
 				$readme_parser =& SuextParseReadme::get_instance();
 
@@ -2449,10 +2452,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $text_domain ) {	// False or text domain string.
 
-				/*
-				 * Translate HTML headers, paragraphs, list items, and blockquotes.
-				 */
-				$file_content = SucomUtil::get_html_transl( $file_content, $text_domain );
+				if ( ! class_exists( 'SucomGetText' ) ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/com/gettext.php';
+				}
+
+				$file_content = SucomGetText::get_html_transl( $file_content, $text_domain );
 			}
 
 			return $file_content;

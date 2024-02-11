@@ -2607,71 +2607,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * GETTEXT METHODS:
-		 *
-		 *	get_html_gettext()
-		 *	get_html_transl()
-		 */
-		public static function get_html_gettext( $html, $text_domain ) {
-
-			$gettext = array();
-
-			foreach ( array(
-				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis'         => 'html header',
-				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'              => 'html paragraph',	// Get paragraphs before list items.
-				'/(<li[^>]*>)(.*)(<\/li>)/Uis'                 => 'html list item',
-				'/(<blockquote[^>]*>)(.*)(<\/blockquote>)/Uis' => 'html blockquote',
-			) as $pattern => $context ) {
-
-				if ( preg_match_all( $pattern, $html, $all_matches, PREG_SET_ORDER ) ) {
-
-					foreach ( $all_matches as $num => $matches ) {
-
-						list( $match, $begin, $text, $end ) = $matches;
-
-						$html = str_replace( $match, '', $html );	// Do not match again.
-
-						$text = trim( $text );	// Just in case.
-
-						if ( '' === $text ) {	// Ignore HTML tags with no content.
-
-							continue;
-						}
-
-						$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
-
-						$gettext[ $match ] = array(
-							'begin'       => $begin,
-							'text'        => $text,
-							'end'         => $end,
-							'context'     => $context,
-							'text_domain' => $text_domain,
-						);
-					}
-				}
-			}
-
-			return $gettext;
-		}
-
-		/*
-		 * Translate HTML headers, paragraphs, list items, and blockquotes.
-		 */
-		public static function get_html_transl( $html, $text_domain ) {
-
-			$gettext = self::get_html_gettext( $html, $text_domain );
-
-			foreach ( $gettext as $repl => $arr ) {
-
-				$transl = _x( $arr[ 'text' ], $arr[ 'context' ], $arr[ 'text_domain' ] );
-
-				$html = str_replace( $repl, $arr[ 'begin' ] . $transl . $arr[ 'end' ], $html );
-			}
-
-			return $html;
-		}
-
-		/*
 		 * OPTIONS ARRAY METHODS:
 		 *
 		 *	get_opts_begin()
@@ -3368,6 +3303,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function update_transient_array( $cache_id, $cache_array, $cache_exp_secs ) {
 
 			return SucomUtilWP::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
+		}
+
+		/*
+		 * Deprecated on 2024/02/11.
+		 */
+		public static function get_html_transl( $html, $text_domain ) {
+
+			if ( ! class_exists( 'SucomGetText' ) ) {
+
+				require_once dirname( __FILE__ ) . '/gettext.php';
+			}
+
+			return SucomGetText::get_html_transl( $html, $text_domain );
 		}
 	}
 }

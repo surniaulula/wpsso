@@ -4653,93 +4653,93 @@ msgstr ""
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:2503
+#: lib/admin.php:2508
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:2504
+#: lib/admin.php:2509
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:2509
+#: lib/admin.php:2514
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:2510
+#: lib/admin.php:2515
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:2521
+#: lib/admin.php:2526
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:2522
+#: lib/admin.php:2527
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:2528
+#: lib/admin.php:2533
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:2535
+#: lib/admin.php:2540
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:2542
+#: lib/admin.php:2547
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:2549
+#: lib/admin.php:2554
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:2601
+#: lib/admin.php:2606
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2602
+#: lib/admin.php:2607
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2603
+#: lib/admin.php:2608
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2604 lib/admin.php:2605
+#: lib/admin.php:2609 lib/admin.php:2610
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2654
+#: lib/admin.php:2659
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2661
+#: lib/admin.php:2666
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2668
+#: lib/admin.php:2673
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2675
+#: lib/admin.php:2680
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2682
+#: lib/admin.php:2687
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2689
+#: lib/admin.php:2694
 msgid "Sharing Functionality"
 msgstr ""
 
