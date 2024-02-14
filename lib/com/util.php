@@ -1415,6 +1415,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':size'                        => null,
 				$mt_pre . ':size_group'                  => null,	// Internal meta tag.
 				$mt_pre . ':size_system'                 => null,	// Internal meta tag.
+				$mt_pre . ':is_virtual'                  => null,	// Internal meta tag.
 
 				/*
 				 * Product net dimensions and weight.

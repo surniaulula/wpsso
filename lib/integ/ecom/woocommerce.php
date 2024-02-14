@@ -1163,6 +1163,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$mt_ecom[ 'product:retailer_item_id' ] = $product_id;					// Product ID.
 			$mt_ecom[ 'product:retailer_part_no' ] = $product->get_sku();				// Product SKU.
 			$mt_ecom[ 'product:item_group_id' ]    = $is_variation ? $product_parent_id : '';	// Product variation group ID.
+			$mt_ecom[ 'product:is_virtual' ]       = $product->is_virtual();
 
 			/*
 			 * Add product availability.
