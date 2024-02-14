@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.13.0-dev.1 (2024/02/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a "product:is_virtual" internal meta tag for the WPSSO GMF and CMCF add-ons.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.12.1 (2024/02/07)**
 
 * **New Features**
@@ -621,6 +635,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.13.0-dev.1 =
+
+(2024/02/14) Added a "product:is_virtual" internal meta tag for the WPSSO GMF and CMCF add-ons.
 
 = 17.12.1 =
 
