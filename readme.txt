@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.13.0-rc.1 (2024/02/15)**
+**Version 17.13.0 (2024/02/15)**
 
 * **New Features**
 	* None.
@@ -636,7 +636,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.13.0-rc.1 =
+= 17.13.0 =
 
 (2024/02/15) Added a "product:is_virtual" internal meta tag for the WPSSO GMF and CMCF add-ons.
 
