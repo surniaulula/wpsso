@@ -288,6 +288,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a "product:is_virtual" internal meta tag for the WPSSO GMF and CMCF add-ons.
+	* Updated the `WpssoIntegEcomWooCommerce->add_mt_product()` method to provide the "product:is_virtual" meta tag value.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
