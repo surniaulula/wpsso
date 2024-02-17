@@ -34,24 +34,25 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			 * See WpssoAbstractWpMeta->get_document_sso_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'mb_sso_edit_schema_rows'               => 4,
-				'mb_sso_edit_schema_creative_work_rows' => 6,	// Schema CreativeWork.
-				'mb_sso_edit_schema_article_rows'       => 6,	// Schema CreativeWork > Article.
-				'mb_sso_edit_schema_book_rows'          => 6,	// Schema CreativeWork > Book.
-				'mb_sso_edit_schema_howto_rows'         => 6,	// Schema CreativeWork > HowTo.
-				'mb_sso_edit_schema_recipe_rows'        => 6,	// Schema CreativeWork > HowTo > Recipe.
-				'mb_sso_edit_schema_movie_rows'         => 6,	// Schema CreativeWork > Movie.
-				'mb_sso_edit_schema_review_rows'        => 6,	// Schema CreativeWork > Review.
-				'mb_sso_edit_schema_software_app_rows'  => 6,	// Schema CreativeWork > Software Application.
-				'mb_sso_edit_schema_webpage_rows'       => 6,	// Schema CreativeWork > WebPage.
-				'mb_sso_edit_schema_profilepage_rows'   => 6,	// Schema CreativeWork > WebPage > ProfilePage.
-				'mb_sso_edit_schema_qa_rows'            => 6,	// Schema CreativeWork > WebPage > QAPage.
-				'mb_sso_edit_schema_event_rows'         => 6,	// Schema Event.
-				'mb_sso_edit_schema_job_posting_rows'   => 6,	// Schema Intangible > JobPosting.
-				'mb_sso_edit_schema_organization_rows'  => 6,	// Schema Organization.
-				'mb_sso_edit_schema_person_rows'        => 6,	// Schema Person.
-				'mb_sso_edit_schema_place_rows'         => 6,	// Schema Place.
-				'mb_sso_edit_schema_product_rows'       => 6,	// Schema Product.
+				'mb_sso_edit_schema_rows'                  => 4,
+				'mb_sso_edit_schema_creative_work_rows'    => 6,	// Schema CreativeWork.
+				'mb_sso_edit_schema_article_rows'          => 6,	// Schema CreativeWork > Article.
+				'mb_sso_edit_schema_book_rows'             => 6,	// Schema CreativeWork > Book.
+				'mb_sso_edit_schema_howto_rows'            => 6,	// Schema CreativeWork > HowTo.
+				'mb_sso_edit_schema_recipe_rows'           => 6,	// Schema CreativeWork > HowTo > Recipe.
+				'mb_sso_edit_schema_learningresource_rows' => 6,	// Schema CreativeWork > LearningResource.
+				'mb_sso_edit_schema_movie_rows'            => 6,	// Schema CreativeWork > Movie.
+				'mb_sso_edit_schema_review_rows'           => 6,	// Schema CreativeWork > Review.
+				'mb_sso_edit_schema_software_app_rows'     => 6,	// Schema CreativeWork > Software Application.
+				'mb_sso_edit_schema_webpage_rows'          => 6,	// Schema CreativeWork > WebPage.
+				'mb_sso_edit_schema_profilepage_rows'      => 6,	// Schema CreativeWork > WebPage > ProfilePage.
+				'mb_sso_edit_schema_qa_rows'               => 6,	// Schema CreativeWork > WebPage > QAPage.
+				'mb_sso_edit_schema_event_rows'            => 6,	// Schema Event.
+				'mb_sso_edit_schema_job_posting_rows'      => 6,	// Schema Intangible > JobPosting.
+				'mb_sso_edit_schema_organization_rows'     => 6,	// Schema Organization.
+				'mb_sso_edit_schema_person_rows'           => 6,	// Schema Person.
+				'mb_sso_edit_schema_place_rows'            => 6,	// Schema Place.
+				'mb_sso_edit_schema_product_rows'          => 6,	// Schema Product.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
@@ -160,13 +161,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'wpsso_mb_sso_edit_schema_creative_work_rows',
 				'wpsso_mb_sso_edit_schema_article_rows',
 				'wpsso_mb_sso_edit_schema_book_rows',
-				'wpsso_mb_sso_edit_schema_howto_rows',
-				'wpsso_mb_sso_edit_schema_recipe_rows',
+				'wpsso_mb_sso_edit_schema_howto_rows',			// Schema CreativeWork > HowTo.
+				'wpsso_mb_sso_edit_schema_recipe_rows',			// Schema CreativeWork > HowTo > Recipe.
+				'wpsso_mb_sso_edit_schema_learningresource_rows',	// Schema CreativeWork > LearningResource.
 				'wpsso_mb_sso_edit_schema_movie_rows',
 				'wpsso_mb_sso_edit_schema_review_rows',
 				'wpsso_mb_sso_edit_schema_software_app_rows',
 				'wpsso_mb_sso_edit_schema_webpage_rows',
-				'wpsso_mb_sso_edit_schema_profilepage_rows',	// Schema CreativeWork > WebPage > ProfilePage.
+				'wpsso_mb_sso_edit_schema_profilepage_rows',		// Schema CreativeWork > WebPage > ProfilePage.
 				'wpsso_mb_sso_edit_schema_qa_rows',
 				'wpsso_mb_sso_edit_schema_event_rows',
 				'wpsso_mb_sso_edit_schema_job_posting_rows',
@@ -797,6 +799,30 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_recipe_nutri_chol',
 					'content'  => $form->get_input( 'schema_recipe_nutri_chol', 'medium' ) . ' ' .
 						_x( 'milligrams of cholesterol', 'option comment', 'wpsso' ),
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		/*
+		 * Schema CreativeWork > LearningResource.
+		 */
+		public function filter_mb_sso_edit_schema_learningresource_rows( $table_rows, $form, $head_info, $mod, $args ) {
+			
+			$form_rows = array(
+				'subsection_schema_learnres' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Learning Resource Information', 'metabox title', 'wpsso' )
+				),
+				'schema_learnres_type' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Resource Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_learnres_type',
+					'content'  => $form->get_input( 'schema_schema_learnres_type', 'wide' ),
 				),
 			);
 

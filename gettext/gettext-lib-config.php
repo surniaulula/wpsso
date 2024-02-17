@@ -64,6 +64,7 @@ _x( '(code) Schema Type Food Establishment [schema_type:food.establishment]', 'l
 _x( '(code) Schema Type How-To [schema_type:howto]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type ItemList [schema_type:item.list]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Job Posting [schema_type:job.posting]', 'lib file description', 'wpsso' );
+_x( '(code) Schema Type Learning Resource [schema_type:learning.resource]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Local Business [schema_type:local.business]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Movie [schema_type:movie]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Organization [schema_type:organization]', 'lib file description', 'wpsso' );

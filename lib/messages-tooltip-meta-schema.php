@@ -572,6 +572,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
+				/*
+				 * Schema CreativeWork > HowTo > Recipe.
+				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_recipe_' ) ? true : false ):
 
 					switch ( $msg_key ) {
@@ -707,6 +710,23 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					}	// End of 'tooltip-meta-schema_recipe' switch.
 
 					break;	// End of 'tooltip-meta-schema_recipe' case.
+
+				/*
+				 * Schema CreativeWork > LearningResource.
+				 */
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_learnres_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-meta-schema_learnres_type':	// Resource Type.
+
+							$text = __( 'The predominant type or kind characterizing the learning resource (example: "Concept overview", "Problem walkthrough", "Real life example", "Activity", "Experiment", "Lecture", etc.).', 'wpsso' );
+
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_learnres' switch.
+
+					break;	// End of 'tooltip-meta-schema_learnres' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_review_' ) ? true : false ):
 

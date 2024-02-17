@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.13.0',	// Plugin version.
+					'version'     => '17.14.0-dev.1',	// Plugin version.
 					'opt_version' => '999',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -172,6 +172,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'howto'               => '(code) Schema Type How-To [schema_type:howto]',
 								'itemlist'            => '(code) Schema Type ItemList [schema_type:item.list]',
 								'jobposting'          => '(code) Schema Type Job Posting [schema_type:job.posting]',
+								'learningresource'    => '(code) Schema Type Learning Resource [schema_type:learning.resource]',
 								'localbusiness'       => '(code) Schema Type Local Business [schema_type:local.business]',
 								'movie'               => '(code) Schema Type Movie [schema_type:movie]',
 								'organization'        => '(code) Schema Type Organization [schema_type:organization]',

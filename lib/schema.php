@@ -1469,6 +1469,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'item.list',
 						'job.posting',
 						'local.business',
+						'learning.resource',
 						'movie',
 						'organization',
 						'person',
@@ -3424,19 +3425,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$type_opts = array_merge( $md_defs, $md_opts );
 
-				} else {
+				} else foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
-					foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
+					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
 
-						$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
-						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
+					if ( is_array( $type_opts ) ) {
 
-						if ( is_array( $type_opts ) ) {
+						$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
 
-							$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
-
-						} else $type_opts = array_merge( $md_defs, $md_opts );
-					}
+					} else $type_opts = array_merge( $md_defs, $md_opts );
 				}
 			}
 		}

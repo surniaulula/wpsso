@@ -92,10 +92,7 @@ if ( ! class_exists( 'WpssoJsonTypeSoftwareApplication' ) ) {
 
 						WpssoSchema::add_offers_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
 
-					} else {
-
-						WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
-					}
+					} else WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_og[ 'product:offers' ] );
 				}
 
 				$local_recursion = false;

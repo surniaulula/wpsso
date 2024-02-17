@@ -2265,14 +2265,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return 'http';
 		}
 
+		/*
+		 * $method = 'ANY' uses the current request method.
+		 */
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
 
-			if ( $method === 'ANY' ) {
-
-				$method = $_SERVER[ 'REQUEST_METHOD' ];
-			}
-
-			switch( $method ) {
+			switch ( 'ANY' === $method ? $_SERVER[ 'REQUEST_METHOD' ] : $method ) {
 
 				case 'POST':
 
