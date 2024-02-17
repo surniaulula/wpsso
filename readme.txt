@@ -283,7 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the Schema LearningResource type.
+	* Added support for the https://schema.org/LearningResource type.
 		* Added support for the 'learningResourceType' property.
 * **Bugfixes**
 	* None.
@@ -654,7 +654,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 = 17.14.0-dev.1 =
 
-(024/02/17) Added support for the Schema LearningResource type.
+(024/02/17) Added support for the https://schema.org/LearningResource type.
 
 = 17.13.0 =
 
