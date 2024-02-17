@@ -278,6 +278,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.14.0-dev.1 (024/02/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for the Schema LearningResource type.
+		* Added support for the 'learningResourceType' property.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.13.0 (2024/02/15)**
 
 * **New Features**
@@ -636,6 +651,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.14.0-dev.1 =
+
+(024/02/17) Added support for the Schema LearningResource type.
 
 = 17.13.0 =
 
