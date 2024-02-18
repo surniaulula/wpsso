@@ -1807,7 +1807,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
 
-			$translations  = wp_get_available_translations();
+			$translations  = wp_get_available_translations();	// Array of translations, each an array of data, keyed by the language.
 			$avail_locales = self::get_available_locales();		// Uses a local cache.
 			$local_cache   = array();
 
@@ -1831,6 +1831,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $local_cache;
 		}
 
+		/*
+		 * Returns an array of locales.
+		 *
+		 * See https://developer.wordpress.org/reference/functions/get_available_languages/.
+		 */
 		public static function get_available_locales() {
 
 			static $local_cache = null;
@@ -1952,6 +1957,15 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$locale = apply_filters( 'sucom_get_locale', $locale, $mixed );
 
 			return self::$locale_cache[ $cache_index ] = $locale;
+		}
+
+		public static function get_locale_country( $mixed = 'current', $read_cache = true ) {
+
+			$locale = self::get_locale( $mixed, $read_cache );
+
+			$country = locale_get_display_region( $locale, 'en' );
+
+			return $country;
 		}
 
 		/*
@@ -2599,10 +2613,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 						self::raw_do_option( $action = 'update', $opt_name = 'siteurl', $url );
 					}
 
-				} else {
-
-					$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
-				}
+				} else $url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
 
 			} else {
 

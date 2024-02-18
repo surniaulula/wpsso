@@ -807,9 +807,11 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 
 		/*
 		 * Schema CreativeWork > LearningResource.
+		 *
+		 * See https://developers.google.com/search/docs/appearance/structured-data/learning-video#learning-video-[videoobject,-learningresource].
 		 */
 		public function filter_mb_sso_edit_schema_learningresource_rows( $table_rows, $form, $head_info, $mod, $args ) {
-			
+
 			$form_rows = array(
 				'subsection_schema_learnres' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
@@ -823,6 +825,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Resource Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_learnres_type',
 					'content'  => $form->get_input( 'schema_schema_learnres_type', 'wide' ),
+				),
+				'schema_learnres_level' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Educational Level', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_learnres_level',
+					'content'  => $form->get_select_education_level( 'schema_schema_learnres_level', 'wide' ),
 				),
 			);
 

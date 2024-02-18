@@ -1223,7 +1223,7 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 				'alpha3'  => 'VEN',
 				'numeric' => '862',
 			),
-			'Viet Nam' => array(
+			'Vietnam' => array(
 				'alpha2'  => 'VN',
 				'alpha3'  => 'VNM',
 				'numeric' => '704',
