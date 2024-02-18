@@ -64,10 +64,12 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;	// Stop here.
 			}
 
+			global $wp_version;
+
 			/*
-			 * Skip if previous check is already successful.
+			 * Skip if a previous config check for this WordPress version was successful.
 			 */
-			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
+			if ( $wp_version === get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
 
 				return;	// Stop here.
 			}
@@ -118,9 +120,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 
 			/*
-			 * Mark all config checks as complete.
+			 * Mark the config check for this WordPress version as successful.
 			 */
-			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
+			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $wp_version, $autoload = false );
 		}
 
 		public function wp_php_versions() {
