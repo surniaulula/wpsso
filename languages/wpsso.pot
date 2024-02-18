@@ -358,6 +358,6266 @@ msgid ""
 "currently installed)."
 msgstr ""
 
+#: gettext/gettext-lib-com-education-levels.php:5
+msgctxt "option value"
+msgid "[generic]"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:6
+msgctxt "option value"
+msgid "generic"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:7
+msgctxt "option value"
+msgid "Beginner"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:8
+msgctxt "option value"
+msgid "Intermediate"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:9
+msgctxt "option value"
+msgid "Advanced"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:10
+msgctxt "option value"
+msgid "Algeria"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:11
+msgctxt "option value"
+msgid "Lower Secondary School (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:12
+#: gettext/gettext-lib-com-education-levels.php:715
+#: gettext/gettext-lib-com-education-levels.php:751
+#: gettext/gettext-lib-com-education-levels.php:1092
+msgctxt "option value"
+msgid "Lower Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:13
+msgctxt "option value"
+msgid "Grade 8 (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:14
+#: gettext/gettext-lib-com-education-levels.php:91
+#: gettext/gettext-lib-com-education-levels.php:127
+#: gettext/gettext-lib-com-education-levels.php:176
+#: gettext/gettext-lib-com-education-levels.php:221
+#: gettext/gettext-lib-com-education-levels.php:331
+#: gettext/gettext-lib-com-education-levels.php:365
+#: gettext/gettext-lib-com-education-levels.php:465
+#: gettext/gettext-lib-com-education-levels.php:493
+#: gettext/gettext-lib-com-education-levels.php:523
+#: gettext/gettext-lib-com-education-levels.php:585
+#: gettext/gettext-lib-com-education-levels.php:670
+#: gettext/gettext-lib-com-education-levels.php:702
+#: gettext/gettext-lib-com-education-levels.php:734
+#: gettext/gettext-lib-com-education-levels.php:755
+#: gettext/gettext-lib-com-education-levels.php:787
+#: gettext/gettext-lib-com-education-levels.php:806
+#: gettext/gettext-lib-com-education-levels.php:821
+#: gettext/gettext-lib-com-education-levels.php:838
+#: gettext/gettext-lib-com-education-levels.php:874
+#: gettext/gettext-lib-com-education-levels.php:936
+#: gettext/gettext-lib-com-education-levels.php:953
+#: gettext/gettext-lib-com-education-levels.php:972
+#: gettext/gettext-lib-com-education-levels.php:1026
+#: gettext/gettext-lib-com-education-levels.php:1041
+#: gettext/gettext-lib-com-education-levels.php:1062
+#: gettext/gettext-lib-com-education-levels.php:1113
+#: gettext/gettext-lib-com-education-levels.php:1170
+#: gettext/gettext-lib-com-education-levels.php:1215
+#: gettext/gettext-lib-com-education-levels.php:1277
+#: gettext/gettext-lib-com-education-levels.php:1322
+#: gettext/gettext-lib-com-education-levels.php:1354
+#: gettext/gettext-lib-com-education-levels.php:1421
+#: gettext/gettext-lib-com-education-levels.php:1506
+#: gettext/gettext-lib-com-education-levels.php:1544
+#: gettext/gettext-lib-com-education-levels.php:1650
+#: gettext/gettext-lib-com-education-levels.php:1727
+#: gettext/gettext-lib-com-education-levels.php:1744
+msgctxt "option value"
+msgid "Grade 8"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:15
+msgctxt "option value"
+msgid "Grade 9 (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:16
+#: gettext/gettext-lib-com-education-levels.php:93
+#: gettext/gettext-lib-com-education-levels.php:129
+#: gettext/gettext-lib-com-education-levels.php:178
+#: gettext/gettext-lib-com-education-levels.php:223
+#: gettext/gettext-lib-com-education-levels.php:290
+#: gettext/gettext-lib-com-education-levels.php:367
+#: gettext/gettext-lib-com-education-levels.php:467
+#: gettext/gettext-lib-com-education-levels.php:495
+#: gettext/gettext-lib-com-education-levels.php:525
+#: gettext/gettext-lib-com-education-levels.php:587
+#: gettext/gettext-lib-com-education-levels.php:672
+#: gettext/gettext-lib-com-education-levels.php:704
+#: gettext/gettext-lib-com-education-levels.php:736
+#: gettext/gettext-lib-com-education-levels.php:757
+#: gettext/gettext-lib-com-education-levels.php:789
+#: gettext/gettext-lib-com-education-levels.php:823
+#: gettext/gettext-lib-com-education-levels.php:840
+#: gettext/gettext-lib-com-education-levels.php:876
+#: gettext/gettext-lib-com-education-levels.php:921
+#: gettext/gettext-lib-com-education-levels.php:938
+#: gettext/gettext-lib-com-education-levels.php:955
+#: gettext/gettext-lib-com-education-levels.php:974
+#: gettext/gettext-lib-com-education-levels.php:1028
+#: gettext/gettext-lib-com-education-levels.php:1043
+#: gettext/gettext-lib-com-education-levels.php:1066
+#: gettext/gettext-lib-com-education-levels.php:1115
+#: gettext/gettext-lib-com-education-levels.php:1172
+#: gettext/gettext-lib-com-education-levels.php:1217
+#: gettext/gettext-lib-com-education-levels.php:1279
+#: gettext/gettext-lib-com-education-levels.php:1324
+#: gettext/gettext-lib-com-education-levels.php:1356
+#: gettext/gettext-lib-com-education-levels.php:1423
+#: gettext/gettext-lib-com-education-levels.php:1453
+#: gettext/gettext-lib-com-education-levels.php:1468
+#: gettext/gettext-lib-com-education-levels.php:1508
+#: gettext/gettext-lib-com-education-levels.php:1546
+#: gettext/gettext-lib-com-education-levels.php:1654
+#: gettext/gettext-lib-com-education-levels.php:1686
+#: gettext/gettext-lib-com-education-levels.php:1729
+#: gettext/gettext-lib-com-education-levels.php:1746
+msgctxt "option value"
+msgid "Grade 9"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:17
+msgctxt "option value"
+msgid "Upper Secondary School (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:18
+#: gettext/gettext-lib-com-education-levels.php:508
+#: gettext/gettext-lib-com-education-levels.php:721
+#: gettext/gettext-lib-com-education-levels.php:759
+#: gettext/gettext-lib-com-education-levels.php:1100
+msgctxt "option value"
+msgid "Upper Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:19
+msgctxt "option value"
+msgid "Grade 10 (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:20
+#: gettext/gettext-lib-com-education-levels.php:97
+#: gettext/gettext-lib-com-education-levels.php:133
+#: gettext/gettext-lib-com-education-levels.php:182
+#: gettext/gettext-lib-com-education-levels.php:227
+#: gettext/gettext-lib-com-education-levels.php:292
+#: gettext/gettext-lib-com-education-levels.php:303
+#: gettext/gettext-lib-com-education-levels.php:371
+#: gettext/gettext-lib-com-education-levels.php:471
+#: gettext/gettext-lib-com-education-levels.php:499
+#: gettext/gettext-lib-com-education-levels.php:529
+#: gettext/gettext-lib-com-education-levels.php:589
+#: gettext/gettext-lib-com-education-levels.php:676
+#: gettext/gettext-lib-com-education-levels.php:706
+#: gettext/gettext-lib-com-education-levels.php:738
+#: gettext/gettext-lib-com-education-levels.php:761
+#: gettext/gettext-lib-com-education-levels.php:793
+#: gettext/gettext-lib-com-education-levels.php:810
+#: gettext/gettext-lib-com-education-levels.php:827
+#: gettext/gettext-lib-com-education-levels.php:844
+#: gettext/gettext-lib-com-education-levels.php:878
+#: gettext/gettext-lib-com-education-levels.php:923
+#: gettext/gettext-lib-com-education-levels.php:942
+#: gettext/gettext-lib-com-education-levels.php:959
+#: gettext/gettext-lib-com-education-levels.php:978
+#: gettext/gettext-lib-com-education-levels.php:1032
+#: gettext/gettext-lib-com-education-levels.php:1047
+#: gettext/gettext-lib-com-education-levels.php:1068
+#: gettext/gettext-lib-com-education-levels.php:1117
+#: gettext/gettext-lib-com-education-levels.php:1174
+#: gettext/gettext-lib-com-education-levels.php:1219
+#: gettext/gettext-lib-com-education-levels.php:1283
+#: gettext/gettext-lib-com-education-levels.php:1328
+#: gettext/gettext-lib-com-education-levels.php:1358
+#: gettext/gettext-lib-com-education-levels.php:1427
+#: gettext/gettext-lib-com-education-levels.php:1455
+#: gettext/gettext-lib-com-education-levels.php:1472
+#: gettext/gettext-lib-com-education-levels.php:1548
+#: gettext/gettext-lib-com-education-levels.php:1656
+#: gettext/gettext-lib-com-education-levels.php:1690
+#: gettext/gettext-lib-com-education-levels.php:1733
+#: gettext/gettext-lib-com-education-levels.php:1748
+msgctxt "option value"
+msgid "Grade 10"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:21
+msgctxt "option value"
+msgid "Grade 11 (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:22
+#: gettext/gettext-lib-com-education-levels.php:99
+#: gettext/gettext-lib-com-education-levels.php:135
+#: gettext/gettext-lib-com-education-levels.php:184
+#: gettext/gettext-lib-com-education-levels.php:229
+#: gettext/gettext-lib-com-education-levels.php:294
+#: gettext/gettext-lib-com-education-levels.php:305
+#: gettext/gettext-lib-com-education-levels.php:373
+#: gettext/gettext-lib-com-education-levels.php:473
+#: gettext/gettext-lib-com-education-levels.php:501
+#: gettext/gettext-lib-com-education-levels.php:531
+#: gettext/gettext-lib-com-education-levels.php:678
+#: gettext/gettext-lib-com-education-levels.php:708
+#: gettext/gettext-lib-com-education-levels.php:742
+#: gettext/gettext-lib-com-education-levels.php:763
+#: gettext/gettext-lib-com-education-levels.php:795
+#: gettext/gettext-lib-com-education-levels.php:812
+#: gettext/gettext-lib-com-education-levels.php:829
+#: gettext/gettext-lib-com-education-levels.php:846
+#: gettext/gettext-lib-com-education-levels.php:882
+#: gettext/gettext-lib-com-education-levels.php:925
+#: gettext/gettext-lib-com-education-levels.php:944
+#: gettext/gettext-lib-com-education-levels.php:961
+#: gettext/gettext-lib-com-education-levels.php:980
+#: gettext/gettext-lib-com-education-levels.php:1034
+#: gettext/gettext-lib-com-education-levels.php:1049
+#: gettext/gettext-lib-com-education-levels.php:1070
+#: gettext/gettext-lib-com-education-levels.php:1121
+#: gettext/gettext-lib-com-education-levels.php:1178
+#: gettext/gettext-lib-com-education-levels.php:1223
+#: gettext/gettext-lib-com-education-levels.php:1285
+#: gettext/gettext-lib-com-education-levels.php:1330
+#: gettext/gettext-lib-com-education-levels.php:1362
+#: gettext/gettext-lib-com-education-levels.php:1410
+#: gettext/gettext-lib-com-education-levels.php:1429
+#: gettext/gettext-lib-com-education-levels.php:1459
+#: gettext/gettext-lib-com-education-levels.php:1474
+#: gettext/gettext-lib-com-education-levels.php:1550
+#: gettext/gettext-lib-com-education-levels.php:1658
+#: gettext/gettext-lib-com-education-levels.php:1692
+#: gettext/gettext-lib-com-education-levels.php:1735
+#: gettext/gettext-lib-com-education-levels.php:1750
+msgctxt "option value"
+msgid "Grade 11"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:23
+msgctxt "option value"
+msgid "Grade 12 (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:24
+#: gettext/gettext-lib-com-education-levels.php:101
+#: gettext/gettext-lib-com-education-levels.php:137
+#: gettext/gettext-lib-com-education-levels.php:186
+#: gettext/gettext-lib-com-education-levels.php:231
+#: gettext/gettext-lib-com-education-levels.php:296
+#: gettext/gettext-lib-com-education-levels.php:307
+#: gettext/gettext-lib-com-education-levels.php:375
+#: gettext/gettext-lib-com-education-levels.php:475
+#: gettext/gettext-lib-com-education-levels.php:503
+#: gettext/gettext-lib-com-education-levels.php:533
+#: gettext/gettext-lib-com-education-levels.php:680
+#: gettext/gettext-lib-com-education-levels.php:710
+#: gettext/gettext-lib-com-education-levels.php:744
+#: gettext/gettext-lib-com-education-levels.php:797
+#: gettext/gettext-lib-com-education-levels.php:814
+#: gettext/gettext-lib-com-education-levels.php:831
+#: gettext/gettext-lib-com-education-levels.php:848
+#: gettext/gettext-lib-com-education-levels.php:884
+#: gettext/gettext-lib-com-education-levels.php:946
+#: gettext/gettext-lib-com-education-levels.php:963
+#: gettext/gettext-lib-com-education-levels.php:982
+#: gettext/gettext-lib-com-education-levels.php:1051
+#: gettext/gettext-lib-com-education-levels.php:1072
+#: gettext/gettext-lib-com-education-levels.php:1123
+#: gettext/gettext-lib-com-education-levels.php:1180
+#: gettext/gettext-lib-com-education-levels.php:1225
+#: gettext/gettext-lib-com-education-levels.php:1287
+#: gettext/gettext-lib-com-education-levels.php:1332
+#: gettext/gettext-lib-com-education-levels.php:1364
+#: gettext/gettext-lib-com-education-levels.php:1412
+#: gettext/gettext-lib-com-education-levels.php:1431
+#: gettext/gettext-lib-com-education-levels.php:1461
+#: gettext/gettext-lib-com-education-levels.php:1478
+#: gettext/gettext-lib-com-education-levels.php:1552
+#: gettext/gettext-lib-com-education-levels.php:1660
+#: gettext/gettext-lib-com-education-levels.php:1694
+#: gettext/gettext-lib-com-education-levels.php:1737
+#: gettext/gettext-lib-com-education-levels.php:1752
+msgctxt "option value"
+msgid "Grade 12"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:25
+msgctxt "option value"
+msgid "Higher Education (DZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:26
+#: gettext/gettext-lib-com-education-levels.php:41
+#: gettext/gettext-lib-com-education-levels.php:86
+#: gettext/gettext-lib-com-education-levels.php:103
+#: gettext/gettext-lib-com-education-levels.php:139
+#: gettext/gettext-lib-com-education-levels.php:154
+#: gettext/gettext-lib-com-education-levels.php:171
+#: gettext/gettext-lib-com-education-levels.php:205
+#: gettext/gettext-lib-com-education-levels.php:216
+#: gettext/gettext-lib-com-education-levels.php:246
+#: gettext/gettext-lib-com-education-levels.php:274
+#: gettext/gettext-lib-com-education-levels.php:285
+#: gettext/gettext-lib-com-education-levels.php:298
+#: gettext/gettext-lib-com-education-levels.php:309
+#: gettext/gettext-lib-com-education-levels.php:326
+#: gettext/gettext-lib-com-education-levels.php:343
+#: gettext/gettext-lib-com-education-levels.php:377
+#: gettext/gettext-lib-com-education-levels.php:394
+#: gettext/gettext-lib-com-education-levels.php:413
+#: gettext/gettext-lib-com-education-levels.php:432
+#: gettext/gettext-lib-com-education-levels.php:451
+#: gettext/gettext-lib-com-education-levels.php:505
+#: gettext/gettext-lib-com-education-levels.php:535
+#: gettext/gettext-lib-com-education-levels.php:580
+#: gettext/gettext-lib-com-education-levels.php:599
+#: gettext/gettext-lib-com-education-levels.php:654
+#: gettext/gettext-lib-com-education-levels.php:697
+#: gettext/gettext-lib-com-education-levels.php:729
+#: gettext/gettext-lib-com-education-levels.php:746
+#: gettext/gettext-lib-com-education-levels.php:782
+#: gettext/gettext-lib-com-education-levels.php:799
+#: gettext/gettext-lib-com-education-levels.php:816
+#: gettext/gettext-lib-com-education-levels.php:886
+#: gettext/gettext-lib-com-education-levels.php:897
+#: gettext/gettext-lib-com-education-levels.php:967
+#: gettext/gettext-lib-com-education-levels.php:1004
+#: gettext/gettext-lib-com-education-levels.php:1074
+#: gettext/gettext-lib-com-education-levels.php:1089
+#: gettext/gettext-lib-com-education-levels.php:1108
+#: gettext/gettext-lib-com-education-levels.php:1125
+#: gettext/gettext-lib-com-education-levels.php:1163
+#: gettext/gettext-lib-com-education-levels.php:1210
+#: gettext/gettext-lib-com-education-levels.php:1238
+#: gettext/gettext-lib-com-education-levels.php:1272
+#: gettext/gettext-lib-com-education-levels.php:1302
+#: gettext/gettext-lib-com-education-levels.php:1347
+#: gettext/gettext-lib-com-education-levels.php:1379
+#: gettext/gettext-lib-com-education-levels.php:1448
+#: gettext/gettext-lib-com-education-levels.php:1575
+#: gettext/gettext-lib-com-education-levels.php:1609
+#: gettext/gettext-lib-com-education-levels.php:1645
+#: gettext/gettext-lib-com-education-levels.php:1662
+#: gettext/gettext-lib-com-education-levels.php:1707
+#: gettext/gettext-lib-com-education-levels.php:1722
+msgctxt "option value"
+msgid "Higher Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:27
+msgctxt "option value"
+msgid "Argentina"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:28
+msgctxt "option value"
+msgid "Secondary (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:29
+#: gettext/gettext-lib-com-education-levels.php:348
+#: gettext/gettext-lib-com-education-levels.php:900
+#: gettext/gettext-lib-com-education-levels.php:987
+#: gettext/gettext-lib-com-education-levels.php:1176
+msgctxt "option value"
+msgid "Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:30
+msgctxt "option value"
+msgid "8th Grade (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:31
+#: gettext/gettext-lib-com-education-levels.php:76
+#: gettext/gettext-lib-com-education-levels.php:159
+#: gettext/gettext-lib-com-education-levels.php:195
+#: gettext/gettext-lib-com-education-levels.php:314
+#: gettext/gettext-lib-com-education-levels.php:384
+#: gettext/gettext-lib-com-education-levels.php:420
+#: gettext/gettext-lib-com-education-levels.php:439
+#: gettext/gettext-lib-com-education-levels.php:540
+#: gettext/gettext-lib-com-education-levels.php:625
+#: gettext/gettext-lib-com-education-levels.php:857
+#: gettext/gettext-lib-com-education-levels.php:1094
+#: gettext/gettext-lib-com-education-levels.php:1187
+#: gettext/gettext-lib-com-education-levels.php:1489
+#: gettext/gettext-lib-com-education-levels.php:1523
+#: gettext/gettext-lib-com-education-levels.php:1597
+#: gettext/gettext-lib-com-education-levels.php:1633
+msgctxt "option value"
+msgid "8th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:32
+msgctxt "option value"
+msgid "9th Grade (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:33
+#: gettext/gettext-lib-com-education-levels.php:63
+#: gettext/gettext-lib-com-education-levels.php:78
+#: gettext/gettext-lib-com-education-levels.php:163
+#: gettext/gettext-lib-com-education-levels.php:238
+#: gettext/gettext-lib-com-education-levels.php:251
+#: gettext/gettext-lib-com-education-levels.php:316
+#: gettext/gettext-lib-com-education-levels.php:386
+#: gettext/gettext-lib-com-education-levels.php:422
+#: gettext/gettext-lib-com-education-levels.php:441
+#: gettext/gettext-lib-com-education-levels.php:542
+#: gettext/gettext-lib-com-education-levels.php:627
+#: gettext/gettext-lib-com-education-levels.php:859
+#: gettext/gettext-lib-com-education-levels.php:1096
+#: gettext/gettext-lib-com-education-levels.php:1189
+#: gettext/gettext-lib-com-education-levels.php:1204
+#: gettext/gettext-lib-com-education-levels.php:1491
+#: gettext/gettext-lib-com-education-levels.php:1525
+#: gettext/gettext-lib-com-education-levels.php:1601
+#: gettext/gettext-lib-com-education-levels.php:1635
+msgctxt "option value"
+msgid "9th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:34
+msgctxt "option value"
+msgid "10th Grade (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:35
+#: gettext/gettext-lib-com-education-levels.php:65
+#: gettext/gettext-lib-com-education-levels.php:82
+#: gettext/gettext-lib-com-education-levels.php:165
+#: gettext/gettext-lib-com-education-levels.php:210
+#: gettext/gettext-lib-com-education-levels.php:240
+#: gettext/gettext-lib-com-education-levels.php:255
+#: gettext/gettext-lib-com-education-levels.php:279
+#: gettext/gettext-lib-com-education-levels.php:318
+#: gettext/gettext-lib-com-education-levels.php:390
+#: gettext/gettext-lib-com-education-levels.php:426
+#: gettext/gettext-lib-com-education-levels.php:445
+#: gettext/gettext-lib-com-education-levels.php:546
+#: gettext/gettext-lib-com-education-levels.php:631
+#: gettext/gettext-lib-com-education-levels.php:863
+#: gettext/gettext-lib-com-education-levels.php:1098
+#: gettext/gettext-lib-com-education-levels.php:1193
+#: gettext/gettext-lib-com-education-levels.php:1206
+#: gettext/gettext-lib-com-education-levels.php:1529
+#: gettext/gettext-lib-com-education-levels.php:1603
+#: gettext/gettext-lib-com-education-levels.php:1639
+msgctxt "option value"
+msgid "10th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:36
+msgctxt "option value"
+msgid "11th Grade (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:37
+#: gettext/gettext-lib-com-education-levels.php:67
+#: gettext/gettext-lib-com-education-levels.php:84
+#: gettext/gettext-lib-com-education-levels.php:167
+#: gettext/gettext-lib-com-education-levels.php:212
+#: gettext/gettext-lib-com-education-levels.php:242
+#: gettext/gettext-lib-com-education-levels.php:257
+#: gettext/gettext-lib-com-education-levels.php:281
+#: gettext/gettext-lib-com-education-levels.php:322
+#: gettext/gettext-lib-com-education-levels.php:392
+#: gettext/gettext-lib-com-education-levels.php:428
+#: gettext/gettext-lib-com-education-levels.php:447
+#: gettext/gettext-lib-com-education-levels.php:482
+#: gettext/gettext-lib-com-education-levels.php:548
+#: gettext/gettext-lib-com-education-levels.php:574
+#: gettext/gettext-lib-com-education-levels.php:593
+#: gettext/gettext-lib-com-education-levels.php:633
+#: gettext/gettext-lib-com-education-levels.php:865
+#: gettext/gettext-lib-com-education-levels.php:1195
+#: gettext/gettext-lib-com-education-levels.php:1208
+#: gettext/gettext-lib-com-education-levels.php:1531
+#: gettext/gettext-lib-com-education-levels.php:1605
+#: gettext/gettext-lib-com-education-levels.php:1641
+msgctxt "option value"
+msgid "11th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:38
+msgctxt "option value"
+msgid "12th Grade (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:39
+#: gettext/gettext-lib-com-education-levels.php:69
+#: gettext/gettext-lib-com-education-levels.php:169
+#: gettext/gettext-lib-com-education-levels.php:214
+#: gettext/gettext-lib-com-education-levels.php:244
+#: gettext/gettext-lib-com-education-levels.php:283
+#: gettext/gettext-lib-com-education-levels.php:324
+#: gettext/gettext-lib-com-education-levels.php:430
+#: gettext/gettext-lib-com-education-levels.php:449
+#: gettext/gettext-lib-com-education-levels.php:484
+#: gettext/gettext-lib-com-education-levels.php:550
+#: gettext/gettext-lib-com-education-levels.php:576
+#: gettext/gettext-lib-com-education-levels.php:595
+#: gettext/gettext-lib-com-education-levels.php:635
+#: gettext/gettext-lib-com-education-levels.php:867
+#: gettext/gettext-lib-com-education-levels.php:1197
+#: gettext/gettext-lib-com-education-levels.php:1533
+#: gettext/gettext-lib-com-education-levels.php:1607
+#: gettext/gettext-lib-com-education-levels.php:1643
+msgctxt "option value"
+msgid "12th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:40
+msgctxt "option value"
+msgid "Higher Education (AR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:42
+msgctxt "option value"
+msgid "Australia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:43
+msgctxt "option value"
+msgid "Secondary School (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:44
+#: gettext/gettext-lib-com-education-levels.php:333
+#: gettext/gettext-lib-com-education-levels.php:606
+#: gettext/gettext-lib-com-education-levels.php:674
+#: gettext/gettext-lib-com-education-levels.php:1202
+#: gettext/gettext-lib-com-education-levels.php:1294
+#: gettext/gettext-lib-com-education-levels.php:1337
+msgctxt "option value"
+msgid "Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:45
+msgctxt "option value"
+msgid "Year 8 (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:46
+msgctxt "option value"
+msgid "Year 8"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:47
+msgctxt "option value"
+msgid "Year 9 (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:48
+#: gettext/gettext-lib-com-education-levels.php:399
+#: gettext/gettext-lib-com-education-levels.php:989
+#: gettext/gettext-lib-com-education-levels.php:1009
+msgctxt "option value"
+msgid "Year 9"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:49
+msgctxt "option value"
+msgid "Year 10 (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:50
+#: gettext/gettext-lib-com-education-levels.php:403
+#: gettext/gettext-lib-com-education-levels.php:991
+#: gettext/gettext-lib-com-education-levels.php:1011
+#: gettext/gettext-lib-com-education-levels.php:1079
+#: gettext/gettext-lib-com-education-levels.php:1712
+msgctxt "option value"
+msgid "Year 10"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:51
+msgctxt "option value"
+msgid "Senior Secondary School (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:52
+#: gettext/gettext-lib-com-education-levels.php:497
+#: gettext/gettext-lib-com-education-levels.php:612
+msgctxt "option value"
+msgid "Senior Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:53
+msgctxt "option value"
+msgid "Year 11 (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:54
+#: gettext/gettext-lib-com-education-levels.php:405
+#: gettext/gettext-lib-com-education-levels.php:995
+#: gettext/gettext-lib-com-education-levels.php:1013
+#: gettext/gettext-lib-com-education-levels.php:1083
+#: gettext/gettext-lib-com-education-levels.php:1714
+msgctxt "option value"
+msgid "Year 11"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:55
+msgctxt "option value"
+msgid "Year 12 (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:56
+#: gettext/gettext-lib-com-education-levels.php:409
+#: gettext/gettext-lib-com-education-levels.php:997
+#: gettext/gettext-lib-com-education-levels.php:1015
+#: gettext/gettext-lib-com-education-levels.php:1085
+#: gettext/gettext-lib-com-education-levels.php:1718
+msgctxt "option value"
+msgid "Year 12"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:57
+msgctxt "option value"
+msgid "University (AU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:58
+#: gettext/gettext-lib-com-education-levels.php:488
+#: gettext/gettext-lib-com-education-levels.php:569
+#: gettext/gettext-lib-com-education-levels.php:665
+#: gettext/gettext-lib-com-education-levels.php:682
+#: gettext/gettext-lib-com-education-levels.php:1019
+#: gettext/gettext-lib-com-education-levels.php:1053
+#: gettext/gettext-lib-com-education-levels.php:1146
+#: gettext/gettext-lib-com-education-levels.php:1289
+#: gettext/gettext-lib-com-education-levels.php:1501
+#: gettext/gettext-lib-com-education-levels.php:1556
+msgctxt "option value"
+msgid "University"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:59
+msgctxt "option value"
+msgid "Austria"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:60
+msgctxt "option value"
+msgid "Upper Secondary Level (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:61
+#: gettext/gettext-lib-com-education-levels.php:1510
+msgctxt "option value"
+msgid "Upper Secondary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:62
+msgctxt "option value"
+msgid "9th Grade (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:64
+msgctxt "option value"
+msgid "10th Grade (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:66
+msgctxt "option value"
+msgid "11th Grade (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:68
+msgctxt "option value"
+msgid "12th Grade (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:70
+msgctxt "option value"
+msgid "Tertiary Level (AT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:71
+#: gettext/gettext-lib-com-education-levels.php:1518
+msgctxt "option value"
+msgid "Tertiary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:72
+msgctxt "option value"
+msgid "Azerbaijan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:73
+msgctxt "option value"
+msgid "General Secondary Education (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:74
+msgctxt "option value"
+msgid "General Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:75
+msgctxt "option value"
+msgid "8th Grade (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:77
+msgctxt "option value"
+msgid "9th Grade (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:79
+msgctxt "option value"
+msgid "Full Secondary Education (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:80
+msgctxt "option value"
+msgid "Full Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:81
+msgctxt "option value"
+msgid "10th Grade (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:83
+msgctxt "option value"
+msgid "11th Grade (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:85
+msgctxt "option value"
+msgid "Higher Education (AZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:87
+msgctxt "option value"
+msgid "Bahrain"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:88
+msgctxt "option value"
+msgid "Intermediate Stage (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:89
+msgctxt "option value"
+msgid "Intermediate Stage"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:90
+msgctxt "option value"
+msgid "Grade 8 (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:92
+msgctxt "option value"
+msgid "Grade 9 (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:94
+msgctxt "option value"
+msgid "Secondary Stage (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:95
+msgctxt "option value"
+msgid "Secondary Stage"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:96
+msgctxt "option value"
+msgid "Grade 10 (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:98
+msgctxt "option value"
+msgid "Grade 11 (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:100
+msgctxt "option value"
+msgid "Grade 12 (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:102
+msgctxt "option value"
+msgid "Higher Education (BH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:104
+msgctxt "option value"
+msgid "Bangladesh"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:105
+msgctxt "option value"
+msgid "Junior Secondary Education (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:106
+#: gettext/gettext-lib-com-education-levels.php:1039
+msgctxt "option value"
+msgid "Junior Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:107
+msgctxt "option value"
+msgid "Grade VIII (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:108
+msgctxt "option value"
+msgid "Grade VIII"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:109
+msgctxt "option value"
+msgid "Secondary Education (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:110
+#: gettext/gettext-lib-com-education-levels.php:142
+#: gettext/gettext-lib-com-education-levels.php:180
+#: gettext/gettext-lib-com-education-levels.php:208
+#: gettext/gettext-lib-com-education-levels.php:225
+#: gettext/gettext-lib-com-education-levels.php:236
+#: gettext/gettext-lib-com-education-levels.php:262
+#: gettext/gettext-lib-com-education-levels.php:288
+#: gettext/gettext-lib-com-education-levels.php:312
+#: gettext/gettext-lib-com-education-levels.php:369
+#: gettext/gettext-lib-com-education-levels.php:424
+#: gettext/gettext-lib-com-education-levels.php:469
+#: gettext/gettext-lib-com-education-levels.php:700
+#: gettext/gettext-lib-com-education-levels.php:740
+#: gettext/gettext-lib-com-education-levels.php:791
+#: gettext/gettext-lib-com-education-levels.php:825
+#: gettext/gettext-lib-com-education-levels.php:842
+#: gettext/gettext-lib-com-education-levels.php:919
+#: gettext/gettext-lib-com-education-levels.php:957
+#: gettext/gettext-lib-com-education-levels.php:1000
+#: gettext/gettext-lib-com-education-levels.php:1064
+#: gettext/gettext-lib-com-education-levels.php:1119
+#: gettext/gettext-lib-com-education-levels.php:1247
+#: gettext/gettext-lib-com-education-levels.php:1281
+#: gettext/gettext-lib-com-education-levels.php:1326
+#: gettext/gettext-lib-com-education-levels.php:1382
+#: gettext/gettext-lib-com-education-levels.php:1584
+#: gettext/gettext-lib-com-education-levels.php:1731
+#: gettext/gettext-lib-com-education-levels.php:1742
+msgctxt "option value"
+msgid "Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:111
+msgctxt "option value"
+msgid "Grade IX (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:112
+msgctxt "option value"
+msgid "Grade IX"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:113
+msgctxt "option value"
+msgid "Grade X (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:114
+msgctxt "option value"
+msgid "Grade X"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:115
+msgctxt "option value"
+msgid "Higher Secondary Education (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:116
+#: gettext/gettext-lib-com-education-levels.php:1030
+msgctxt "option value"
+msgid "Higher Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:117
+msgctxt "option value"
+msgid "Grade XI (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:118
+msgctxt "option value"
+msgid "Grade XI"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:119
+msgctxt "option value"
+msgid "Grade XII (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:120
+msgctxt "option value"
+msgid "Grade XII"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:121
+msgctxt "option value"
+msgid "Tertiary Education (BD)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:122
+#: gettext/gettext-lib-com-education-levels.php:190
+#: gettext/gettext-lib-com-education-levels.php:233
+#: gettext/gettext-lib-com-education-levels.php:360
+#: gettext/gettext-lib-com-education-levels.php:477
+#: gettext/gettext-lib-com-education-levels.php:516
+#: gettext/gettext-lib-com-education-levels.php:552
+#: gettext/gettext-lib-com-education-levels.php:637
+#: gettext/gettext-lib-com-education-levels.php:712
+#: gettext/gettext-lib-com-education-levels.php:833
+#: gettext/gettext-lib-com-education-levels.php:850
+#: gettext/gettext-lib-com-education-levels.php:869
+#: gettext/gettext-lib-com-education-levels.php:929
+#: gettext/gettext-lib-com-education-levels.php:948
+#: gettext/gettext-lib-com-education-levels.php:1036
+#: gettext/gettext-lib-com-education-levels.php:1199
+#: gettext/gettext-lib-com-education-levels.php:1227
+#: gettext/gettext-lib-com-education-levels.php:1255
+#: gettext/gettext-lib-com-education-levels.php:1334
+#: gettext/gettext-lib-com-education-levels.php:1368
+#: gettext/gettext-lib-com-education-levels.php:1416
+#: gettext/gettext-lib-com-education-levels.php:1482
+#: gettext/gettext-lib-com-education-levels.php:1535
+#: gettext/gettext-lib-com-education-levels.php:1592
+#: gettext/gettext-lib-com-education-levels.php:1756
+msgctxt "option value"
+msgid "Tertiary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:123
+msgctxt "option value"
+msgid "Belarus"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:124
+msgctxt "option value"
+msgid "Compulsory Basic Education (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:125
+msgctxt "option value"
+msgid "Compulsory Basic Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:126
+msgctxt "option value"
+msgid "Grade 8 (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:128
+msgctxt "option value"
+msgid "Grade 9 (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:130
+msgctxt "option value"
+msgid "General Upper Secondary Education (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:131
+msgctxt "option value"
+msgid "General Upper Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:132
+msgctxt "option value"
+msgid "Grade 10 (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:134
+msgctxt "option value"
+msgid "Grade 11 (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:136
+msgctxt "option value"
+msgid "Grade 12 (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:138
+msgctxt "option value"
+msgid "Higher Education (BY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:140
+msgctxt "option value"
+msgid "Belgium"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:141
+msgctxt "option value"
+msgid "Secondary Education (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:143
+msgctxt "option value"
+msgid "2nd Secondary (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:144
+msgctxt "option value"
+msgid "2nd Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:145
+msgctxt "option value"
+msgid "3rd Secondary (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:146
+msgctxt "option value"
+msgid "3rd Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:147
+msgctxt "option value"
+msgid "4th Secondary (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:148
+msgctxt "option value"
+msgid "4th Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:149
+msgctxt "option value"
+msgid "5th Secondary (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:150
+msgctxt "option value"
+msgid "5th Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:151
+msgctxt "option value"
+msgid "6th Secondary (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:152
+msgctxt "option value"
+msgid "6th Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:153
+msgctxt "option value"
+msgid "Higher Education (BE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:155
+msgctxt "option value"
+msgid "Bolivia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:156
+msgctxt "option value"
+msgid "Lower Secondary Education (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:157
+#: gettext/gettext-lib-com-education-levels.php:538
+#: gettext/gettext-lib-com-education-levels.php:872
+#: gettext/gettext-lib-com-education-levels.php:934
+#: gettext/gettext-lib-com-education-levels.php:1024
+#: gettext/gettext-lib-com-education-levels.php:1352
+#: gettext/gettext-lib-com-education-levels.php:1451
+#: gettext/gettext-lib-com-education-levels.php:1612
+msgctxt "option value"
+msgid "Lower Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:158
+msgctxt "option value"
+msgid "8th Grade (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:160
+msgctxt "option value"
+msgid "Upper Secondary Education (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:161
+#: gettext/gettext-lib-com-education-levels.php:301
+#: gettext/gettext-lib-com-education-levels.php:320
+#: gettext/gettext-lib-com-education-levels.php:443
+#: gettext/gettext-lib-com-education-levels.php:544
+#: gettext/gettext-lib-com-education-levels.php:572
+#: gettext/gettext-lib-com-education-levels.php:591
+#: gettext/gettext-lib-com-education-levels.php:687
+#: gettext/gettext-lib-com-education-levels.php:880
+#: gettext/gettext-lib-com-education-levels.php:889
+#: gettext/gettext-lib-com-education-levels.php:940
+#: gettext/gettext-lib-com-education-levels.php:1191
+#: gettext/gettext-lib-com-education-levels.php:1230
+#: gettext/gettext-lib-com-education-levels.php:1360
+#: gettext/gettext-lib-com-education-levels.php:1408
+#: gettext/gettext-lib-com-education-levels.php:1457
+#: gettext/gettext-lib-com-education-levels.php:1493
+#: gettext/gettext-lib-com-education-levels.php:1622
+#: gettext/gettext-lib-com-education-levels.php:1699
+msgctxt "option value"
+msgid "Upper Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:162
+msgctxt "option value"
+msgid "9th Grade (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:164
+msgctxt "option value"
+msgid "10th Grade (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:166
+msgctxt "option value"
+msgid "11th Grade (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:168
+msgctxt "option value"
+msgid "12th Grade (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:170
+msgctxt "option value"
+msgid "Higher Education (BO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:172
+msgctxt "option value"
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:173
+msgctxt "option value"
+msgid "Primary Education (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:174
+#: gettext/gettext-lib-com-education-levels.php:583
+#: gettext/gettext-lib-com-education-levels.php:802
+#: gettext/gettext-lib-com-education-levels.php:836
+#: gettext/gettext-lib-com-education-levels.php:951
+#: gettext/gettext-lib-com-education-levels.php:1058
+#: gettext/gettext-lib-com-education-levels.php:1185
+#: gettext/gettext-lib-com-education-levels.php:1538
+#: gettext/gettext-lib-com-education-levels.php:1595
+msgctxt "option value"
+msgid "Primary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:175
+msgctxt "option value"
+msgid "Grade 8 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:177
+msgctxt "option value"
+msgid "Grade 9 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:179
+msgctxt "option value"
+msgid "Secondary Education (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:181
+msgctxt "option value"
+msgid "Grade 10 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:183
+msgctxt "option value"
+msgid "Grade 11 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:185
+msgctxt "option value"
+msgid "Grade 12 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:187
+msgctxt "option value"
+msgid "Grade 13 (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:188
+#: gettext/gettext-lib-com-education-levels.php:965
+#: gettext/gettext-lib-com-education-levels.php:1366
+#: gettext/gettext-lib-com-education-levels.php:1414
+#: gettext/gettext-lib-com-education-levels.php:1480
+#: gettext/gettext-lib-com-education-levels.php:1754
+msgctxt "option value"
+msgid "Grade 13"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:189
+msgctxt "option value"
+msgid "Tertiary Education (BA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:191
+msgctxt "option value"
+msgid "Brazil"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:192
+msgctxt "option value"
+msgid "Elementary School (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:193
+msgctxt "option value"
+msgid "Elementary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:194
+msgctxt "option value"
+msgid "8th Grade (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:196
+msgctxt "option value"
+msgid "High School (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:197
+#: gettext/gettext-lib-com-education-levels.php:629
+#: gettext/gettext-lib-com-education-levels.php:772
+#: gettext/gettext-lib-com-education-levels.php:861
+#: gettext/gettext-lib-com-education-levels.php:1134
+#: gettext/gettext-lib-com-education-levels.php:1264
+#: gettext/gettext-lib-com-education-levels.php:1397
+#: gettext/gettext-lib-com-education-levels.php:1440
+#: gettext/gettext-lib-com-education-levels.php:1599
+#: gettext/gettext-lib-com-education-levels.php:1669
+msgctxt "option value"
+msgid "High School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:198
+msgctxt "option value"
+msgid "1st grade (High School) (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:199
+msgctxt "option value"
+msgid "1st grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:200
+msgctxt "option value"
+msgid "2nd grade (High School) (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:201
+msgctxt "option value"
+msgid "2nd grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:202
+msgctxt "option value"
+msgid "3rd grade (High School) (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:203
+msgctxt "option value"
+msgid "3rd grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:204
+msgctxt "option value"
+msgid "Higher Education (BR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:206
+msgctxt "option value"
+msgid "Bulgaria"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:207
+msgctxt "option value"
+msgid "Secondary Education (BG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:209
+msgctxt "option value"
+msgid "10th Grade (BG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:211
+msgctxt "option value"
+msgid "11th Grade (BG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:213
+msgctxt "option value"
+msgid "12th Grade (BG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:215
+msgctxt "option value"
+msgid "Higher Education (BG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:217
+msgctxt "option value"
+msgid "Canada"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:218
+msgctxt "option value"
+msgid "Intermediate Education (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:219
+#: gettext/gettext-lib-com-education-levels.php:640
+#: gettext/gettext-lib-com-education-levels.php:785
+#: gettext/gettext-lib-com-education-levels.php:1320
+msgctxt "option value"
+msgid "Intermediate Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:220
+msgctxt "option value"
+msgid "Grade 8 (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:222
+msgctxt "option value"
+msgid "Grade 9 (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:224
+msgctxt "option value"
+msgid "Secondary Education (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:226
+msgctxt "option value"
+msgid "Grade 10 (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:228
+msgctxt "option value"
+msgid "Grade 11 (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:230
+msgctxt "option value"
+msgid "Grade 12 (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:232
+msgctxt "option value"
+msgid "Tertiary Education (CA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:234
+msgctxt "option value"
+msgid "Chile"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:235
+msgctxt "option value"
+msgid "Secondary Education (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:237
+msgctxt "option value"
+msgid "9th Grade (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:239
+msgctxt "option value"
+msgid "10th Grade (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:241
+msgctxt "option value"
+msgid "11th Grade (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:243
+msgctxt "option value"
+msgid "12th Grade (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:245
+msgctxt "option value"
+msgid "Higher Education (CL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:247
+msgctxt "option value"
+msgid "Colombia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:248
+msgctxt "option value"
+msgid "Basic Secondary (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:249
+msgctxt "option value"
+msgid "Basic Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:250
+msgctxt "option value"
+msgid "9th Grade (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:252
+msgctxt "option value"
+msgid "High School Education (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:253
+msgctxt "option value"
+msgid "High School Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:254
+msgctxt "option value"
+msgid "10th Grade (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:256
+msgctxt "option value"
+msgid "11th Grade (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:258
+msgctxt "option value"
+msgid "Tertiary (CO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:259
+#: gettext/gettext-lib-com-education-levels.php:984
+#: gettext/gettext-lib-com-education-levels.php:1182
+msgctxt "option value"
+msgid "Tertiary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:260
+msgctxt "option value"
+msgid "Costa Rica"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:261
+msgctxt "option value"
+msgid "Secondary Education (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:263
+msgctxt "option value"
+msgid "Eighth Grade (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:264
+#: gettext/gettext-lib-com-education-levels.php:350
+#: gettext/gettext-lib-com-education-levels.php:642
+#: gettext/gettext-lib-com-education-levels.php:1260
+#: gettext/gettext-lib-com-education-levels.php:1307
+#: gettext/gettext-lib-com-education-levels.php:1563
+#: gettext/gettext-lib-com-education-levels.php:1580
+#: gettext/gettext-lib-com-education-levels.php:1614
+#: gettext/gettext-lib-com-education-levels.php:1667
+msgctxt "option value"
+msgid "Eighth Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:265
+msgctxt "option value"
+msgid "Ninth Grade (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:266
+#: gettext/gettext-lib-com-education-levels.php:352
+#: gettext/gettext-lib-com-education-levels.php:644
+#: gettext/gettext-lib-com-education-levels.php:1262
+#: gettext/gettext-lib-com-education-levels.php:1309
+#: gettext/gettext-lib-com-education-levels.php:1565
+#: gettext/gettext-lib-com-education-levels.php:1582
+#: gettext/gettext-lib-com-education-levels.php:1616
+#: gettext/gettext-lib-com-education-levels.php:1671
+msgctxt "option value"
+msgid "Ninth Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:267
+msgctxt "option value"
+msgid "Tenth Grade (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:268
+#: gettext/gettext-lib-com-education-levels.php:354
+#: gettext/gettext-lib-com-education-levels.php:648
+#: gettext/gettext-lib-com-education-levels.php:1266
+#: gettext/gettext-lib-com-education-levels.php:1313
+#: gettext/gettext-lib-com-education-levels.php:1569
+#: gettext/gettext-lib-com-education-levels.php:1586
+#: gettext/gettext-lib-com-education-levels.php:1618
+#: gettext/gettext-lib-com-education-levels.php:1673
+#: gettext/gettext-lib-com-education-levels.php:1701
+msgctxt "option value"
+msgid "Tenth Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:269
+msgctxt "option value"
+msgid "Eleventh Grade (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:270
+#: gettext/gettext-lib-com-education-levels.php:356
+#: gettext/gettext-lib-com-education-levels.php:650
+#: gettext/gettext-lib-com-education-levels.php:1268
+#: gettext/gettext-lib-com-education-levels.php:1315
+#: gettext/gettext-lib-com-education-levels.php:1571
+#: gettext/gettext-lib-com-education-levels.php:1588
+#: gettext/gettext-lib-com-education-levels.php:1620
+#: gettext/gettext-lib-com-education-levels.php:1675
+#: gettext/gettext-lib-com-education-levels.php:1703
+msgctxt "option value"
+msgid "Eleventh Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:271
+msgctxt "option value"
+msgid "Twelfth Grade (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:272
+#: gettext/gettext-lib-com-education-levels.php:358
+#: gettext/gettext-lib-com-education-levels.php:652
+#: gettext/gettext-lib-com-education-levels.php:1270
+#: gettext/gettext-lib-com-education-levels.php:1573
+#: gettext/gettext-lib-com-education-levels.php:1590
+#: gettext/gettext-lib-com-education-levels.php:1624
+#: gettext/gettext-lib-com-education-levels.php:1677
+#: gettext/gettext-lib-com-education-levels.php:1705
+msgctxt "option value"
+msgid "Twelfth Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:273
+msgctxt "option value"
+msgid "Higher Education (CR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:275
+msgctxt "option value"
+msgid "Croatia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:276
+msgctxt "option value"
+msgid "Secondary education (HR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:277
+msgctxt "option value"
+msgid "Secondary education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:278
+msgctxt "option value"
+msgid "10th Grade (HR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:280
+msgctxt "option value"
+msgid "11th Grade (HR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:282
+msgctxt "option value"
+msgid "12th Grade (HR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:284
+msgctxt "option value"
+msgid "Higher Education (HR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:286
+msgctxt "option value"
+msgid "Cyprus"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:287
+msgctxt "option value"
+msgid "Secondary Education (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:289
+msgctxt "option value"
+msgid "Grade 9 (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:291
+msgctxt "option value"
+msgid "Grade 10 (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:293
+msgctxt "option value"
+msgid "Grade 11 (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:295
+msgctxt "option value"
+msgid "Grade 12 (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:297
+msgctxt "option value"
+msgid "Higher Education (CY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:299
+msgctxt "option value"
+msgid "Czechia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:300
+msgctxt "option value"
+msgid "Upper Secondary Education (CZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:302
+msgctxt "option value"
+msgid "Grade 10 (CZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:304
+msgctxt "option value"
+msgid "Grade 11 (CZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:306
+msgctxt "option value"
+msgid "Grade 12 (CZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:308
+msgctxt "option value"
+msgid "Higher Education (CZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:310
+msgctxt "option value"
+msgid "Denmark"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:311
+msgctxt "option value"
+msgid "Secondary Education (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:313
+msgctxt "option value"
+msgid "8th Grade (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:315
+msgctxt "option value"
+msgid "9th Grade (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:317
+msgctxt "option value"
+msgid "10th Grade (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:319
+msgctxt "option value"
+msgid "Upper Secondary Education (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:321
+msgctxt "option value"
+msgid "11th Grade (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:323
+msgctxt "option value"
+msgid "12th Grade (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:325
+msgctxt "option value"
+msgid "Higher Education (DK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:327
+msgctxt "option value"
+msgid "Dominican Republic"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:328
+msgctxt "option value"
+msgid "Primary School (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:329
+msgctxt "option value"
+msgid "Primary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:330
+msgctxt "option value"
+msgid "Grade 8 (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:332
+msgctxt "option value"
+msgid "Secondary School (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:334
+msgctxt "option value"
+msgid "Grade 1 (Secondary School) (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:335
+#: gettext/gettext-lib-com-education-levels.php:723
+msgctxt "option value"
+msgid "Grade 1"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:336
+msgctxt "option value"
+msgid "Grade 2 (Secondary School) (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:337
+#: gettext/gettext-lib-com-education-levels.php:717
+#: gettext/gettext-lib-com-education-levels.php:725
+#: gettext/gettext-lib-com-education-levels.php:1232
+msgctxt "option value"
+msgid "Grade 2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:338
+msgctxt "option value"
+msgid "Grade 3 (Secondary School) (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:339
+#: gettext/gettext-lib-com-education-levels.php:719
+#: gettext/gettext-lib-com-education-levels.php:727
+#: gettext/gettext-lib-com-education-levels.php:1234
+msgctxt "option value"
+msgid "Grade 3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:340
+msgctxt "option value"
+msgid "Grade 4 (Secondary School) (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:341
+#: gettext/gettext-lib-com-education-levels.php:1236
+msgctxt "option value"
+msgid "Grade 4"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:342
+msgctxt "option value"
+msgid "Higher Education (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:344
+msgctxt "option value"
+msgid "Doctorate (DO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:345
+#: gettext/gettext-lib-com-education-levels.php:684
+#: gettext/gettext-lib-com-education-levels.php:748
+#: gettext/gettext-lib-com-education-levels.php:1021
+#: gettext/gettext-lib-com-education-levels.php:1055
+#: gettext/gettext-lib-com-education-levels.php:1127
+#: gettext/gettext-lib-com-education-levels.php:1291
+#: gettext/gettext-lib-com-education-levels.php:1349
+#: gettext/gettext-lib-com-education-levels.php:1558
+msgctxt "option value"
+msgid "Doctorate"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:346
+msgctxt "option value"
+msgid "Ecuador"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:347
+msgctxt "option value"
+msgid "Secondary (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:349
+msgctxt "option value"
+msgid "Eighth Grade (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:351
+msgctxt "option value"
+msgid "Ninth Grade (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:353
+msgctxt "option value"
+msgid "Tenth Grade (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:355
+msgctxt "option value"
+msgid "Eleventh Grade (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:357
+msgctxt "option value"
+msgid "Twelfth Grade (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:359
+msgctxt "option value"
+msgid "Tertiary Education (EC)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:361
+msgctxt "option value"
+msgid "Egypt"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:362
+msgctxt "option value"
+msgid "Preparatory Stage (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:363
+msgctxt "option value"
+msgid "Preparatory Stage"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:364
+msgctxt "option value"
+msgid "Grade 8 (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:366
+msgctxt "option value"
+msgid "Grade 9 (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:368
+msgctxt "option value"
+msgid "Secondary Education (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:370
+msgctxt "option value"
+msgid "Grade 10 (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:372
+msgctxt "option value"
+msgid "Grade 11 (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:374
+msgctxt "option value"
+msgid "Grade 12 (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:376
+msgctxt "option value"
+msgid "Higher Education (EG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:378
+msgctxt "option value"
+msgid "El Salvador"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:379
+msgctxt "option value"
+msgid "3rd Cycle (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:380
+msgctxt "option value"
+msgid "3rd Cycle"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:381
+msgctxt "option value"
+msgid "7th Grade (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:382
+#: gettext/gettext-lib-com-education-levels.php:418
+#: gettext/gettext-lib-com-education-levels.php:437
+#: gettext/gettext-lib-com-education-levels.php:855
+#: gettext/gettext-lib-com-education-levels.php:1487
+msgctxt "option value"
+msgid "7th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:383
+msgctxt "option value"
+msgid "8th Grade (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:385
+msgctxt "option value"
+msgid "9th Grade (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:387
+msgctxt "option value"
+msgid "Middle Education (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:388
+#: gettext/gettext-lib-com-education-levels.php:1684
+msgctxt "option value"
+msgid "Middle Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:389
+msgctxt "option value"
+msgid "10th Grade (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:391
+msgctxt "option value"
+msgid "11th Grade (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:393
+msgctxt "option value"
+msgid "Higher Education (SV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:395
+msgctxt "option value"
+msgid "England"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:396
+msgctxt "option value"
+msgid "Key Stage 3 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:397
+#: gettext/gettext-lib-com-education-levels.php:1077
+msgctxt "option value"
+msgid "Key Stage 3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:398
+msgctxt "option value"
+msgid "Year 9 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:400
+msgctxt "option value"
+msgid "Key Stage 4 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:401
+#: gettext/gettext-lib-com-education-levels.php:1081
+#: gettext/gettext-lib-com-education-levels.php:1710
+msgctxt "option value"
+msgid "Key Stage 4"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:402
+msgctxt "option value"
+msgid "Year 10 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:404
+msgctxt "option value"
+msgid "Year 11 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:406
+msgctxt "option value"
+msgid "Key Stage 5 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:407
+#: gettext/gettext-lib-com-education-levels.php:1087
+#: gettext/gettext-lib-com-education-levels.php:1716
+msgctxt "option value"
+msgid "Key Stage 5"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:408
+msgctxt "option value"
+msgid "Year 12 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:410
+msgctxt "option value"
+msgid "Year 13 (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:411
+#: gettext/gettext-lib-com-education-levels.php:1017
+#: gettext/gettext-lib-com-education-levels.php:1720
+msgctxt "option value"
+msgid "Year 13"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:412
+msgctxt "option value"
+msgid "Higher Education (GB-ENG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:414
+msgctxt "option value"
+msgid "Estonia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:415
+msgctxt "option value"
+msgid "Basic Education (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:416
+#: gettext/gettext-lib-com-education-levels.php:435
+#: gettext/gettext-lib-com-education-levels.php:463
+#: gettext/gettext-lib-com-education-levels.php:732
+#: gettext/gettext-lib-com-education-levels.php:1111
+#: gettext/gettext-lib-com-education-levels.php:1241
+#: gettext/gettext-lib-com-education-levels.php:1578
+#: gettext/gettext-lib-com-education-levels.php:1725
+msgctxt "option value"
+msgid "Basic Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:417
+msgctxt "option value"
+msgid "7th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:419
+msgctxt "option value"
+msgid "8th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:421
+msgctxt "option value"
+msgid "9th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:423
+msgctxt "option value"
+msgid "Secondary Education (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:425
+msgctxt "option value"
+msgid "10th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:427
+msgctxt "option value"
+msgid "11th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:429
+msgctxt "option value"
+msgid "12th Grade (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:431
+msgctxt "option value"
+msgid "Higher Education (EE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:433
+msgctxt "option value"
+msgid "Finland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:434
+msgctxt "option value"
+msgid "Basic Education (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:436
+msgctxt "option value"
+msgid "7th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:438
+msgctxt "option value"
+msgid "8th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:440
+msgctxt "option value"
+msgid "9th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:442
+msgctxt "option value"
+msgid "Upper Secondary Education (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:444
+msgctxt "option value"
+msgid "10th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:446
+msgctxt "option value"
+msgid "11th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:448
+msgctxt "option value"
+msgid "12th Grade (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:450
+msgctxt "option value"
+msgid "Higher Education (FI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:452
+msgctxt "option value"
+msgid "France"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:453
+msgctxt "option value"
+msgid "Lycée (FR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:454
+msgctxt "option value"
+msgid "Lycée"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:455
+msgctxt "option value"
+msgid "Seconde (FR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:456
+msgctxt "option value"
+msgid "Seconde"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:457
+msgctxt "option value"
+msgid "Première (FR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:458
+msgctxt "option value"
+msgid "Première"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:459
+msgctxt "option value"
+msgid "Terminale (FR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:460
+msgctxt "option value"
+msgid "Terminale"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:461
+msgctxt "option value"
+msgid "Georgia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:462
+msgctxt "option value"
+msgid "Basic Education (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:464
+msgctxt "option value"
+msgid "Grade 8 (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:466
+msgctxt "option value"
+msgid "Grade 9 (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:468
+msgctxt "option value"
+msgid "Secondary Education (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:470
+msgctxt "option value"
+msgid "Grade 10 (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:472
+msgctxt "option value"
+msgid "Grade 11 (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:474
+msgctxt "option value"
+msgid "Grade 12 (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:476
+msgctxt "option value"
+msgid "Tertiary Education (GE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:478
+msgctxt "option value"
+msgid "Germany"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:479
+msgctxt "option value"
+msgid "Gymnasium (DE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:480
+msgctxt "option value"
+msgid "Gymnasium"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:481
+msgctxt "option value"
+msgid "11th Grade (Gymnasium) (DE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:483
+msgctxt "option value"
+msgid "12th Grade (Gymnasium) (DE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:485
+msgctxt "option value"
+msgid "13th Grade (Gymnasium) (DE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:486
+#: gettext/gettext-lib-com-education-levels.php:578
+#: gettext/gettext-lib-com-education-levels.php:597
+msgctxt "option value"
+msgid "13th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:487
+msgctxt "option value"
+msgid "University (DE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:489
+msgctxt "option value"
+msgid "Ghana"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:490
+msgctxt "option value"
+msgid "Junior Secodary School (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:491
+msgctxt "option value"
+msgid "Junior Secodary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:492
+msgctxt "option value"
+msgid "Grade 8 (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:494
+msgctxt "option value"
+msgid "Grade 9 (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:496
+msgctxt "option value"
+msgid "Senior Secondary School (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:498
+msgctxt "option value"
+msgid "Grade 10 (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:500
+msgctxt "option value"
+msgid "Grade 11 (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:502
+msgctxt "option value"
+msgid "Grade 12 (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:504
+msgctxt "option value"
+msgid "Higher Education (GH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:506
+msgctxt "option value"
+msgid "Greece"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:507
+msgctxt "option value"
+msgid "Upper Secondary School (GR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:509
+msgctxt "option value"
+msgid "1st Grade (Lyceum) (GR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:510
+#: gettext/gettext-lib-com-education-levels.php:1442
+#: gettext/gettext-lib-com-education-levels.php:1495
+msgctxt "option value"
+msgid "1st Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:511
+msgctxt "option value"
+msgid "2nd Grade (Lyceum) (GR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:512
+#: gettext/gettext-lib-com-education-levels.php:1399
+#: gettext/gettext-lib-com-education-levels.php:1444
+#: gettext/gettext-lib-com-education-levels.php:1497
+msgctxt "option value"
+msgid "2nd Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:513
+msgctxt "option value"
+msgid "3rd Grade (Lyceum) (GR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:514
+#: gettext/gettext-lib-com-education-levels.php:1401
+#: gettext/gettext-lib-com-education-levels.php:1438
+#: gettext/gettext-lib-com-education-levels.php:1446
+#: gettext/gettext-lib-com-education-levels.php:1499
+msgctxt "option value"
+msgid "3rd Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:515
+msgctxt "option value"
+msgid "Tertiary Education (GR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:517
+msgctxt "option value"
+msgid "Guatemala"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:518
+msgctxt "option value"
+msgid "Lower Secondary (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:519
+#: gettext/gettext-lib-com-education-levels.php:970
+#: gettext/gettext-lib-com-education-levels.php:1542
+#: gettext/gettext-lib-com-education-levels.php:1561
+msgctxt "option value"
+msgid "Lower Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:520
+msgctxt "option value"
+msgid "Grade 7 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:521
+#: gettext/gettext-lib-com-education-levels.php:753
+#: gettext/gettext-lib-com-education-levels.php:804
+#: gettext/gettext-lib-com-education-levels.php:1060
+#: gettext/gettext-lib-com-education-levels.php:1168
+#: gettext/gettext-lib-com-education-levels.php:1540
+msgctxt "option value"
+msgid "Grade 7"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:522
+msgctxt "option value"
+msgid "Grade 8 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:524
+msgctxt "option value"
+msgid "Grade 9 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:526
+msgctxt "option value"
+msgid "Upper Secondary (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:527
+#: gettext/gettext-lib-com-education-levels.php:976
+#: gettext/gettext-lib-com-education-levels.php:1554
+#: gettext/gettext-lib-com-education-levels.php:1567
+msgctxt "option value"
+msgid "Upper Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:528
+msgctxt "option value"
+msgid "Grade 10 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:530
+msgctxt "option value"
+msgid "Grade 11 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:532
+msgctxt "option value"
+msgid "Grade 12 (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:534
+msgctxt "option value"
+msgid "Higher Education (GT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:536
+msgctxt "option value"
+msgid "Honduras"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:537
+msgctxt "option value"
+msgid "Lower Secondary Education (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:539
+msgctxt "option value"
+msgid "8th Grade (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:541
+msgctxt "option value"
+msgid "9th Grade (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:543
+msgctxt "option value"
+msgid "Upper Secondary Education (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:545
+msgctxt "option value"
+msgid "10th Grade (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:547
+msgctxt "option value"
+msgid "11th Grade (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:549
+msgctxt "option value"
+msgid "12th Grade (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:551
+msgctxt "option value"
+msgid "Tertiary Education (HN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:553
+msgctxt "option value"
+msgid "Hong Kong"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:554
+msgctxt "option value"
+msgid "Junior Secondary (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:555
+#: gettext/gettext-lib-com-education-levels.php:1466
+msgctxt "option value"
+msgid "Junior Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:556
+msgctxt "option value"
+msgid "Secondary 2 (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:557
+#: gettext/gettext-lib-com-education-levels.php:1386
+msgctxt "option value"
+msgid "Secondary 2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:558
+msgctxt "option value"
+msgid "Secondary 3 (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:559
+#: gettext/gettext-lib-com-education-levels.php:1388
+msgctxt "option value"
+msgid "Secondary 3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:560
+msgctxt "option value"
+msgid "Senior Secondary (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:561
+#: gettext/gettext-lib-com-education-levels.php:1470
+msgctxt "option value"
+msgid "Senior Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:562
+msgctxt "option value"
+msgid "Secondary 4 (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:563
+#: gettext/gettext-lib-com-education-levels.php:1390
+msgctxt "option value"
+msgid "Secondary 4"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:564
+msgctxt "option value"
+msgid "Secondary 5 (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:565
+#: gettext/gettext-lib-com-education-levels.php:1392
+msgctxt "option value"
+msgid "Secondary 5"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:566
+msgctxt "option value"
+msgid "Secondary 6 (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:567
+msgctxt "option value"
+msgid "Secondary 6"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:568
+msgctxt "option value"
+msgid "University (HK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:570
+msgctxt "option value"
+msgid "Hungary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:571
+msgctxt "option value"
+msgid "Upper Secondary Education (HU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:573
+msgctxt "option value"
+msgid "11th Grade (HU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:575
+msgctxt "option value"
+msgid "12th Grade (HU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:577
+msgctxt "option value"
+msgid "13th Grade (HU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:579
+msgctxt "option value"
+msgid "Higher Education (HU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:581
+msgctxt "option value"
+msgid "Iceland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:582
+msgctxt "option value"
+msgid "Primary Education (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:584
+msgctxt "option value"
+msgid "Grade 8 (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:586
+msgctxt "option value"
+msgid "Grade 9 (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:588
+msgctxt "option value"
+msgid "Grade 10 (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:590
+msgctxt "option value"
+msgid "Upper Secondary Education (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:592
+msgctxt "option value"
+msgid "11th Grade (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:594
+msgctxt "option value"
+msgid "12th Grade (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:596
+msgctxt "option value"
+msgid "13th Grade (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:598
+msgctxt "option value"
+msgid "Higher Education (IS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:600
+msgctxt "option value"
+msgid "India"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:601
+msgctxt "option value"
+msgid "Middle Stage (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:602
+msgctxt "option value"
+msgid "Middle Stage"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:603
+msgctxt "option value"
+msgid "Class 8 (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:604
+#: gettext/gettext-lib-com-education-levels.php:1132
+msgctxt "option value"
+msgid "Class 8"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:605
+msgctxt "option value"
+msgid "Secondary School (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:607
+msgctxt "option value"
+msgid "Class 9 (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:608
+#: gettext/gettext-lib-com-education-levels.php:1136
+msgctxt "option value"
+msgid "Class 9"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:609
+msgctxt "option value"
+msgid "Class 10 (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:610
+#: gettext/gettext-lib-com-education-levels.php:1138
+msgctxt "option value"
+msgid "Class 10"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:611
+msgctxt "option value"
+msgid "Senior Secondary School (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:613
+msgctxt "option value"
+msgid "Class 11 (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:614
+#: gettext/gettext-lib-com-education-levels.php:1142
+msgctxt "option value"
+msgid "Class 11"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:615
+msgctxt "option value"
+msgid "Class 12 (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:616
+#: gettext/gettext-lib-com-education-levels.php:1144
+msgctxt "option value"
+msgid "Class 12"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:617
+msgctxt "option value"
+msgid "Undergraduate college (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:618
+msgctxt "option value"
+msgid "Undergraduate college"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:619
+msgctxt "option value"
+msgid "Post-graduate college (IN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:620
+msgctxt "option value"
+msgid "Post-graduate college"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:621
+msgctxt "option value"
+msgid "Indonesia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:622
+msgctxt "option value"
+msgid "Middle School (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:623
+#: gettext/gettext-lib-com-education-levels.php:853
+#: gettext/gettext-lib-com-education-levels.php:1130
+#: gettext/gettext-lib-com-education-levels.php:1436
+#: gettext/gettext-lib-com-education-levels.php:1665
+msgctxt "option value"
+msgid "Middle School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:624
+msgctxt "option value"
+msgid "8th Grade (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:626
+msgctxt "option value"
+msgid "9th Grade (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:628
+msgctxt "option value"
+msgid "High School (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:630
+msgctxt "option value"
+msgid "10th Grade (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:632
+msgctxt "option value"
+msgid "11th Grade (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:634
+msgctxt "option value"
+msgid "12th Grade (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:636
+msgctxt "option value"
+msgid "Tertiary Education (ID)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:638
+msgctxt "option value"
+msgid "Iraq"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:639
+msgctxt "option value"
+msgid "Intermediate Education (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:641
+msgctxt "option value"
+msgid "Eighth Grade (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:643
+msgctxt "option value"
+msgid "Ninth Grade (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:645
+msgctxt "option value"
+msgid "Preparatory Education (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:646
+#: gettext/gettext-lib-com-education-levels.php:1275
+msgctxt "option value"
+msgid "Preparatory Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:647
+msgctxt "option value"
+msgid "Tenth Grade (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:649
+msgctxt "option value"
+msgid "Eleventh Grade (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:651
+msgctxt "option value"
+msgid "Twelfth Grade (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:653
+msgctxt "option value"
+msgid "Higher Education (IQ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:655
+msgctxt "option value"
+msgid "Ireland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:656
+msgctxt "option value"
+msgid "Senior Cycle (IE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:657
+msgctxt "option value"
+msgid "Senior Cycle"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:658
+msgctxt "option value"
+msgid "Transition Year (IE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:659
+msgctxt "option value"
+msgid "Transition Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:660
+msgctxt "option value"
+msgid "Fifth Year (IE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:661
+#: gettext/gettext-lib-com-education-levels.php:1345
+msgctxt "option value"
+msgid "Fifth Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:662
+msgctxt "option value"
+msgid "Sixth Year (IE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:663
+msgctxt "option value"
+msgid "Sixth Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:664
+msgctxt "option value"
+msgid "University (IE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:666
+msgctxt "option value"
+msgid "Israel"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:667
+msgctxt "option value"
+msgid "Intermediate School (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:668
+msgctxt "option value"
+msgid "Intermediate School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:669
+msgctxt "option value"
+msgid "Grade 8 (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:671
+msgctxt "option value"
+msgid "Grade 9 (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:673
+msgctxt "option value"
+msgid "Secondary School (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:675
+msgctxt "option value"
+msgid "Grade 10 (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:677
+msgctxt "option value"
+msgid "Grade 11 (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:679
+msgctxt "option value"
+msgid "Grade 12 (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:681
+msgctxt "option value"
+msgid "University (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:683
+msgctxt "option value"
+msgid "Doctorate (IL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:685
+msgctxt "option value"
+msgid "Italy"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:686
+msgctxt "option value"
+msgid "Upper Secondary Education (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:688
+msgctxt "option value"
+msgid "2nd upper (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:689
+msgctxt "option value"
+msgid "2nd upper"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:690
+msgctxt "option value"
+msgid "3rd upper (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:691
+msgctxt "option value"
+msgid "3rd upper"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:692
+msgctxt "option value"
+msgid "4th upper (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:693
+msgctxt "option value"
+msgid "4th upper"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:694
+msgctxt "option value"
+msgid "5th upper (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:695
+msgctxt "option value"
+msgid "5th upper"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:696
+msgctxt "option value"
+msgid "Higher Education (IT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:698
+msgctxt "option value"
+msgid "Jamaica"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:699
+msgctxt "option value"
+msgid "Secondary Education (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:701
+msgctxt "option value"
+msgid "Grade 8 (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:703
+msgctxt "option value"
+msgid "Grade 9 (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:705
+msgctxt "option value"
+msgid "Grade 10 (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:707
+msgctxt "option value"
+msgid "Grade 11 (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:709
+msgctxt "option value"
+msgid "Grade 12 (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:711
+msgctxt "option value"
+msgid "Tertiary Education (JM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:713
+msgctxt "option value"
+msgid "Japan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:714
+msgctxt "option value"
+msgid "Lower Secondary School (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:716
+msgctxt "option value"
+msgid "Grade 2 (lower secondary) (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:718
+msgctxt "option value"
+msgid "Grade 3 (lower secondary) (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:720
+msgctxt "option value"
+msgid "Upper Secondary School (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:722
+msgctxt "option value"
+msgid "Grade 1 (upper secondary) (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:724
+msgctxt "option value"
+msgid "Grade 2 (upper secondary) (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:726
+msgctxt "option value"
+msgid "Grade 3 (upper secondary) (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:728
+msgctxt "option value"
+msgid "Higher Education (JP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:730
+msgctxt "option value"
+msgid "Jordan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:731
+msgctxt "option value"
+msgid "Basic Education (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:733
+msgctxt "option value"
+msgid "Grade 8 (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:735
+msgctxt "option value"
+msgid "Grade 9 (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:737
+msgctxt "option value"
+msgid "Grade 10 (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:739
+msgctxt "option value"
+msgid "Secondary Education (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:741
+msgctxt "option value"
+msgid "Grade 11 (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:743
+msgctxt "option value"
+msgid "Grade 12 (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:745
+msgctxt "option value"
+msgid "Higher Education (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:747
+msgctxt "option value"
+msgid "Doctorate (JO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:749
+msgctxt "option value"
+msgid "Kazakhstan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:750
+msgctxt "option value"
+msgid "Lower Secondary School (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:752
+msgctxt "option value"
+msgid "Grade 7 (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:754
+msgctxt "option value"
+msgid "Grade 8 (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:756
+msgctxt "option value"
+msgid "Grade 9 (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:758
+msgctxt "option value"
+msgid "Upper Secondary School (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:760
+msgctxt "option value"
+msgid "Grade 10 (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:762
+msgctxt "option value"
+msgid "Grade 11 (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:764
+msgctxt "option value"
+msgid "Tertiary Institutions (KZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:765
+msgctxt "option value"
+msgid "Tertiary Institutions"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:766
+msgctxt "option value"
+msgid "Kenya"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:767
+msgctxt "option value"
+msgid "Upper Primary (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:768
+msgctxt "option value"
+msgid "Upper Primary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:769
+msgctxt "option value"
+msgid "Standard 8 (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:770
+msgctxt "option value"
+msgid "Standard 8"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:771
+msgctxt "option value"
+msgid "High School (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:773
+msgctxt "option value"
+msgid "Standard 9 (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:774
+msgctxt "option value"
+msgid "Standard 9"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:775
+msgctxt "option value"
+msgid "Standard 10 (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:776
+msgctxt "option value"
+msgid "Standard 10"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:777
+msgctxt "option value"
+msgid "Standard 11 (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:778
+msgctxt "option value"
+msgid "Standard 11"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:779
+msgctxt "option value"
+msgid "Standard 12 (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:780
+msgctxt "option value"
+msgid "Standard 12"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:781
+msgctxt "option value"
+msgid "Higher Education (KE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:783
+msgctxt "option value"
+msgid "Kuwait"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:784
+msgctxt "option value"
+msgid "Intermediate Education (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:786
+msgctxt "option value"
+msgid "Grade 8 (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:788
+msgctxt "option value"
+msgid "Grade 9 (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:790
+msgctxt "option value"
+msgid "Secondary Education (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:792
+msgctxt "option value"
+msgid "Grade 10 (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:794
+msgctxt "option value"
+msgid "Grade 11 (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:796
+msgctxt "option value"
+msgid "Grade 12 (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:798
+msgctxt "option value"
+msgid "Higher Education (KW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:800
+msgctxt "option value"
+msgid "Latvia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:801
+msgctxt "option value"
+msgid "Primary Education (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:803
+msgctxt "option value"
+msgid "Grade 7 (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:805
+msgctxt "option value"
+msgid "Grade 8 (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:807
+msgctxt "option value"
+msgid "Senior Secondary Education (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:808
+#: gettext/gettext-lib-com-education-levels.php:1045
+msgctxt "option value"
+msgid "Senior Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:809
+msgctxt "option value"
+msgid "Grade 10 (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:811
+msgctxt "option value"
+msgid "Grade 11 (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:813
+msgctxt "option value"
+msgid "Grade 12 (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:815
+msgctxt "option value"
+msgid "Higher Education (LV)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:817
+msgctxt "option value"
+msgid "Lebanon"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:818
+msgctxt "option value"
+msgid "Intermediate Level (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:819
+#: gettext/gettext-lib-com-education-levels.php:1648
+msgctxt "option value"
+msgid "Intermediate Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:820
+msgctxt "option value"
+msgid "Grade 8 (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:822
+msgctxt "option value"
+msgid "Grade 9 (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:824
+msgctxt "option value"
+msgid "Secondary Education (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:826
+msgctxt "option value"
+msgid "Grade 10 (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:828
+msgctxt "option value"
+msgid "Grade 11 (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:830
+msgctxt "option value"
+msgid "Grade 12 (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:832
+msgctxt "option value"
+msgid "Tertiary Education (LB)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:834
+msgctxt "option value"
+msgid "Libya"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:835
+msgctxt "option value"
+msgid "Primary Education (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:837
+msgctxt "option value"
+msgid "Grade 8 (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:839
+msgctxt "option value"
+msgid "Grade 9 (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:841
+msgctxt "option value"
+msgid "Secondary Education (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:843
+msgctxt "option value"
+msgid "Grade 10 (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:845
+msgctxt "option value"
+msgid "Grade 11 (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:847
+msgctxt "option value"
+msgid "Grade 12 (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:849
+msgctxt "option value"
+msgid "Tertiary Education (LY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:851
+msgctxt "option value"
+msgid "Liechtenstein"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:852
+msgctxt "option value"
+msgid "Middle School (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:854
+msgctxt "option value"
+msgid "7th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:856
+msgctxt "option value"
+msgid "8th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:858
+msgctxt "option value"
+msgid "9th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:860
+msgctxt "option value"
+msgid "High School (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:862
+msgctxt "option value"
+msgid "10th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:864
+msgctxt "option value"
+msgid "11th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:866
+msgctxt "option value"
+msgid "12th Grade (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:868
+msgctxt "option value"
+msgid "Tertiary Education (LI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:870
+msgctxt "option value"
+msgid "Lithuania"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:871
+msgctxt "option value"
+msgid "Lower Secondary Education (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:873
+msgctxt "option value"
+msgid "Grade 8 (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:875
+msgctxt "option value"
+msgid "Grade 9 (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:877
+msgctxt "option value"
+msgid "Grade 10 (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:879
+msgctxt "option value"
+msgid "Upper Secondary Education (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:881
+msgctxt "option value"
+msgid "Grade 11 (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:883
+msgctxt "option value"
+msgid "Grade 12 (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:885
+msgctxt "option value"
+msgid "Higher Education (LT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:887
+msgctxt "option value"
+msgid "Luxembourg"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:888
+msgctxt "option value"
+msgid "Upper Secondary Education (LU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:890
+msgctxt "option value"
+msgid "3 G (LU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:891
+msgctxt "option value"
+msgid "3 G"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:892
+msgctxt "option value"
+msgid "2 G (LU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:893
+msgctxt "option value"
+msgid "2 G"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:894
+msgctxt "option value"
+msgid "1 G (LU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:895
+msgctxt "option value"
+msgid "1 G"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:896
+msgctxt "option value"
+msgid "Higher Education (LU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:898
+msgctxt "option value"
+msgid "Malaysia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:899
+msgctxt "option value"
+msgid "Secondary (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:901
+msgctxt "option value"
+msgid "Form 2 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:902
+msgctxt "option value"
+msgid "Form 2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:903
+msgctxt "option value"
+msgid "Form 3 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:904
+msgctxt "option value"
+msgid "Form 3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:905
+msgctxt "option value"
+msgid "Form 4 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:906
+msgctxt "option value"
+msgid "Form 4"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:907
+msgctxt "option value"
+msgid "Form 5 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:908
+msgctxt "option value"
+msgid "Form 5"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:909
+msgctxt "option value"
+msgid "Pre-university (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:910
+msgctxt "option value"
+msgid "Pre-university"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:911
+msgctxt "option value"
+msgid "Lower Form 6 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:912
+msgctxt "option value"
+msgid "Lower Form 6"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:913
+msgctxt "option value"
+msgid "Upper Form 6 (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:914
+msgctxt "option value"
+msgid "Upper Form 6"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:915
+msgctxt "option value"
+msgid "Post-secondary Education (MY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:916
+#: gettext/gettext-lib-com-education-levels.php:1394
+msgctxt "option value"
+msgid "Post-secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:917
+msgctxt "option value"
+msgid "Malta"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:918
+msgctxt "option value"
+msgid "Secondary Education (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:920
+msgctxt "option value"
+msgid "Grade 9 (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:922
+msgctxt "option value"
+msgid "Grade 10 (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:924
+msgctxt "option value"
+msgid "Grade 11 (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:926
+msgctxt "option value"
+msgid "Post-Secondary Education (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:927
+#: gettext/gettext-lib-com-education-levels.php:1405
+#: gettext/gettext-lib-com-education-levels.php:1628
+msgctxt "option value"
+msgid "Post-Secondary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:928
+msgctxt "option value"
+msgid "Tertiary Education (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:930
+msgctxt "option value"
+msgid "Postgraduate Education (MT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:931
+msgctxt "option value"
+msgid "Postgraduate Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:932
+msgctxt "option value"
+msgid "Mexico"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:933
+msgctxt "option value"
+msgid "Lower Secondary Education (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:935
+msgctxt "option value"
+msgid "Grade 8 (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:937
+msgctxt "option value"
+msgid "Grade 9 (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:939
+msgctxt "option value"
+msgid "Upper Secondary Education (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:941
+msgctxt "option value"
+msgid "Grade 10 (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:943
+msgctxt "option value"
+msgid "Grade 11 (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:945
+msgctxt "option value"
+msgid "Grade 12 (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:947
+msgctxt "option value"
+msgid "Tertiary Education (MX)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:949
+msgctxt "option value"
+msgid "Montenegro"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:950
+msgctxt "option value"
+msgid "Primary Education (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:952
+msgctxt "option value"
+msgid "Grade 8 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:954
+msgctxt "option value"
+msgid "Grade 9 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:956
+msgctxt "option value"
+msgid "Secondary Education (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:958
+msgctxt "option value"
+msgid "Grade 10 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:960
+msgctxt "option value"
+msgid "Grade 11 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:962
+msgctxt "option value"
+msgid "Grade 12 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:964
+msgctxt "option value"
+msgid "Grade 13 (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:966
+msgctxt "option value"
+msgid "Higher Education (ME)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:968
+msgctxt "option value"
+msgid "Morocco"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:969
+msgctxt "option value"
+msgid "Lower Secondary (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:971
+msgctxt "option value"
+msgid "Grade 8 (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:973
+msgctxt "option value"
+msgid "Grade 9 (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:975
+msgctxt "option value"
+msgid "Upper Secondary (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:977
+msgctxt "option value"
+msgid "Grade 10 (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:979
+msgctxt "option value"
+msgid "Grade 11 (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:981
+msgctxt "option value"
+msgid "Grade 12 (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:983
+msgctxt "option value"
+msgid "Tertiary (MA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:985
+msgctxt "option value"
+msgid "Nepal"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:986
+msgctxt "option value"
+msgid "Secondary (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:988
+msgctxt "option value"
+msgid "Year 9 (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:990
+msgctxt "option value"
+msgid "Year 10 (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:992
+msgctxt "option value"
+msgid "Senior Higher Secondary (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:993
+msgctxt "option value"
+msgid "Senior Higher Secondary"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:994
+msgctxt "option value"
+msgid "Year 11 (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:996
+msgctxt "option value"
+msgid "Year 12 (NP)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:998
+msgctxt "option value"
+msgid "Netherlands"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:999
+msgctxt "option value"
+msgid "Secondary Education (NL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1001
+msgctxt "option value"
+msgid "5th Year (HAVO) (NL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1002
+msgctxt "option value"
+msgid "5th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1003
+msgctxt "option value"
+msgid "Higher Education (NL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1005
+msgctxt "option value"
+msgid "New Zealand"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1006
+msgctxt "option value"
+msgid "Year 9-13 Secondary School (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1007
+msgctxt "option value"
+msgid "Year 9-13 Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1008
+msgctxt "option value"
+msgid "Year 9 (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1010
+msgctxt "option value"
+msgid "Year 10 (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1012
+msgctxt "option value"
+msgid "Year 11 (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1014
+msgctxt "option value"
+msgid "Year 12 (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1016
+msgctxt "option value"
+msgid "Year 13 (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1018
+msgctxt "option value"
+msgid "University (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1020
+msgctxt "option value"
+msgid "Doctorate (NZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1022
+msgctxt "option value"
+msgid "Nicaragua"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1023
+msgctxt "option value"
+msgid "Lower Secondary Education (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1025
+msgctxt "option value"
+msgid "Grade 8 (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1027
+msgctxt "option value"
+msgid "Grade 9 (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1029
+msgctxt "option value"
+msgid "Higher Secondary Education (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1031
+msgctxt "option value"
+msgid "Grade 10 (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1033
+msgctxt "option value"
+msgid "Grade 11 (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1035
+msgctxt "option value"
+msgid "Tertiary Education (NI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1037
+msgctxt "option value"
+msgid "Nigeria"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1038
+msgctxt "option value"
+msgid "Junior Secondary Education (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1040
+msgctxt "option value"
+msgid "Grade 8 (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1042
+msgctxt "option value"
+msgid "Grade 9 (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1044
+msgctxt "option value"
+msgid "Senior Secondary Education (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1046
+msgctxt "option value"
+msgid "Grade 10 (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1048
+msgctxt "option value"
+msgid "Grade 11 (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1050
+msgctxt "option value"
+msgid "Grade 12 (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1052
+msgctxt "option value"
+msgid "University (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1054
+msgctxt "option value"
+msgid "Doctorate (NG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1056
+msgctxt "option value"
+msgid "North Macedonia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1057
+msgctxt "option value"
+msgid "Primary Education (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1059
+msgctxt "option value"
+msgid "Grade 7 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1061
+msgctxt "option value"
+msgid "Grade 8 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1063
+msgctxt "option value"
+msgid "Secondary Education (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1065
+msgctxt "option value"
+msgid "Grade 9 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1067
+msgctxt "option value"
+msgid "Grade 10 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1069
+msgctxt "option value"
+msgid "Grade 11 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1071
+msgctxt "option value"
+msgid "Grade 12 (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1073
+msgctxt "option value"
+msgid "Higher Education (MK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1075
+msgctxt "option value"
+msgid "Northern Ireland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1076
+msgctxt "option value"
+msgid "Key Stage 3 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1078
+msgctxt "option value"
+msgid "Year 10 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1080
+msgctxt "option value"
+msgid "Key Stage 4 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1082
+msgctxt "option value"
+msgid "Year 11 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1084
+msgctxt "option value"
+msgid "Year 12 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1086
+msgctxt "option value"
+msgid "Key Stage 5 (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1088
+msgctxt "option value"
+msgid "Higher Education (GB-NIR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1090
+msgctxt "option value"
+msgid "Norway"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1091
+msgctxt "option value"
+msgid "Lower Secondary School (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1093
+msgctxt "option value"
+msgid "8th Grade (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1095
+msgctxt "option value"
+msgid "9th Grade (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1097
+msgctxt "option value"
+msgid "10th Grade (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1099
+msgctxt "option value"
+msgid "Upper Secondary School (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1101
+msgctxt "option value"
+msgid "VG1 (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1102
+msgctxt "option value"
+msgid "VG1"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1103
+msgctxt "option value"
+msgid "VG2 (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1104
+msgctxt "option value"
+msgid "VG2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1105
+msgctxt "option value"
+msgid "VG3 (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1106
+msgctxt "option value"
+msgid "VG3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1107
+msgctxt "option value"
+msgid "Higher Education (NO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1109
+msgctxt "option value"
+msgid "Oman"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1110
+msgctxt "option value"
+msgid "Basic Education (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1112
+msgctxt "option value"
+msgid "Grade 8 (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1114
+msgctxt "option value"
+msgid "Grade 9 (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1116
+msgctxt "option value"
+msgid "Grade 10 (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1118
+msgctxt "option value"
+msgid "Secondary Education (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1120
+msgctxt "option value"
+msgid "Grade 11 (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1122
+msgctxt "option value"
+msgid "Grade 12 (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1124
+msgctxt "option value"
+msgid "Higher Education (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1126
+msgctxt "option value"
+msgid "Doctorate (OM)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1128
+msgctxt "option value"
+msgid "Pakistan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1129
+msgctxt "option value"
+msgid "Middle School (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1131
+msgctxt "option value"
+msgid "Class 8 (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1133
+msgctxt "option value"
+msgid "High School (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1135
+msgctxt "option value"
+msgid "Class 9 (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1137
+msgctxt "option value"
+msgid "Class 10 (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1139
+msgctxt "option value"
+msgid "Higher Secondary School (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1140
+msgctxt "option value"
+msgid "Higher Secondary School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1141
+msgctxt "option value"
+msgid "Class 11 (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1143
+msgctxt "option value"
+msgid "Class 12 (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1145
+msgctxt "option value"
+msgid "University (PK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1147
+msgctxt "option value"
+msgid "Panama"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1148
+msgctxt "option value"
+msgid "First Step of Secondary Level (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1149
+msgctxt "option value"
+msgid "First Step of Secondary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1150
+msgctxt "option value"
+msgid "Grade Eight (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1151
+msgctxt "option value"
+msgid "Grade Eight"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1152
+msgctxt "option value"
+msgid "Grade Nine (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1153
+msgctxt "option value"
+msgid "Grade Nine"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1154
+msgctxt "option value"
+msgid "Second Step of Secondary Level (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1155
+msgctxt "option value"
+msgid "Second Step of Secondary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1156
+msgctxt "option value"
+msgid "Grade Ten (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1157
+msgctxt "option value"
+msgid "Grade Ten"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1158
+msgctxt "option value"
+msgid "Grade Eleven (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1159
+msgctxt "option value"
+msgid "Grade Eleven"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1160
+msgctxt "option value"
+msgid "Grade Twelve (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1161
+msgctxt "option value"
+msgid "Grade Twelve"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1162
+msgctxt "option value"
+msgid "Higher Education (PA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1164
+msgctxt "option value"
+msgid "Papua New Guinea"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1165
+msgctxt "option value"
+msgid "Middle (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1166
+msgctxt "option value"
+msgid "Middle"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1167
+msgctxt "option value"
+msgid "Grade 7 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1169
+msgctxt "option value"
+msgid "Grade 8 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1171
+msgctxt "option value"
+msgid "Grade 9 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1173
+msgctxt "option value"
+msgid "Grade 10 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1175
+msgctxt "option value"
+msgid "Secondary (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1177
+msgctxt "option value"
+msgid "Grade 11 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1179
+msgctxt "option value"
+msgid "Grade 12 (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1181
+msgctxt "option value"
+msgid "Tertiary (PG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1183
+msgctxt "option value"
+msgid "Paraguay"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1184
+msgctxt "option value"
+msgid "Primary Education (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1186
+msgctxt "option value"
+msgid "8th Grade (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1188
+msgctxt "option value"
+msgid "9th Grade (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1190
+msgctxt "option value"
+msgid "Upper Secondary Education (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1192
+msgctxt "option value"
+msgid "10th Grade (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1194
+msgctxt "option value"
+msgid "11th Grade (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1196
+msgctxt "option value"
+msgid "12th Grade (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1198
+msgctxt "option value"
+msgid "Tertiary Education (PY)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1200
+msgctxt "option value"
+msgid "Peru"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1201
+msgctxt "option value"
+msgid "Secondary School (PE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1203
+msgctxt "option value"
+msgid "9th Grade (PE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1205
+msgctxt "option value"
+msgid "10th Grade (PE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1207
+msgctxt "option value"
+msgid "11th Grade (PE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1209
+msgctxt "option value"
+msgid "Higher Education (PE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1211
+msgctxt "option value"
+msgid "Philippines"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1212
+msgctxt "option value"
+msgid "Junior High School (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1213
+#: gettext/gettext-lib-com-education-levels.php:1258
+#: gettext/gettext-lib-com-education-levels.php:1521
+msgctxt "option value"
+msgid "Junior High School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1214
+msgctxt "option value"
+msgid "Grade 8 (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1216
+msgctxt "option value"
+msgid "Grade 9 (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1218
+msgctxt "option value"
+msgid "Grade 10 (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1220
+msgctxt "option value"
+msgid "Senior High School (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1221
+#: gettext/gettext-lib-com-education-levels.php:1527
+msgctxt "option value"
+msgid "Senior High School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1222
+msgctxt "option value"
+msgid "Grade 11 (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1224
+msgctxt "option value"
+msgid "Grade 12 (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1226
+msgctxt "option value"
+msgid "Tertiary Education (PH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1228
+msgctxt "option value"
+msgid "Poland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1229
+msgctxt "option value"
+msgid "Upper Secondary Education (PL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1231
+msgctxt "option value"
+msgid "Grade 2 (high school) (PL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1233
+msgctxt "option value"
+msgid "Grade 3 (high school) (PL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1235
+msgctxt "option value"
+msgid "Grade 4 (high school) (PL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1237
+msgctxt "option value"
+msgid "Higher Education (PL)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1239
+msgctxt "option value"
+msgid "Portugal"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1240
+msgctxt "option value"
+msgid "Basic Education (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1242
+msgctxt "option value"
+msgid "8th Year (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1243
+msgctxt "option value"
+msgid "8th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1244
+msgctxt "option value"
+msgid "9th Year (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1245
+msgctxt "option value"
+msgid "9th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1246
+msgctxt "option value"
+msgid "Secondary Education (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1248
+msgctxt "option value"
+msgid "10th Year (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1249
+msgctxt "option value"
+msgid "10th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1250
+msgctxt "option value"
+msgid "11th Year (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1251
+msgctxt "option value"
+msgid "11th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1252
+msgctxt "option value"
+msgid "12th Year (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1253
+msgctxt "option value"
+msgid "12th Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1254
+msgctxt "option value"
+msgid "Tertiary Education (PT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1256
+msgctxt "option value"
+msgid "Puerto Rico"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1257
+msgctxt "option value"
+msgid "Junior High School (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1259
+msgctxt "option value"
+msgid "Eighth Grade (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1261
+msgctxt "option value"
+msgid "Ninth Grade (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1263
+msgctxt "option value"
+msgid "High School (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1265
+msgctxt "option value"
+msgid "Tenth Grade (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1267
+msgctxt "option value"
+msgid "Eleventh Grade (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1269
+msgctxt "option value"
+msgid "Twelfth Grade (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1271
+msgctxt "option value"
+msgid "Higher Education (PR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1273
+msgctxt "option value"
+msgid "Qatar"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1274
+msgctxt "option value"
+msgid "Preparatory Education (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1276
+msgctxt "option value"
+msgid "Grade 8 (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1278
+msgctxt "option value"
+msgid "Grade 9 (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1280
+msgctxt "option value"
+msgid "Secondary Education (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1282
+msgctxt "option value"
+msgid "Grade 10 (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1284
+msgctxt "option value"
+msgid "Grade 11 (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1286
+msgctxt "option value"
+msgid "Grade 12 (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1288
+msgctxt "option value"
+msgid "University (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1290
+msgctxt "option value"
+msgid "Doctorate (QA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1292
+msgctxt "option value"
+msgid "Romania"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1293
+msgctxt "option value"
+msgid "Secondary School (RO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1295
+msgctxt "option value"
+msgid "Class X (RO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1296
+msgctxt "option value"
+msgid "Class X"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1297
+msgctxt "option value"
+msgid "Class XI (RO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1298
+msgctxt "option value"
+msgid "Class XI"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1299
+msgctxt "option value"
+msgid "Class XII (RO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1300
+msgctxt "option value"
+msgid "Class XII"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1301
+msgctxt "option value"
+msgid "Higher Education (RO)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1303
+msgctxt "option value"
+msgid "Russia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1304
+msgctxt "option value"
+msgid "Basic General Education (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1305
+msgctxt "option value"
+msgid "Basic General Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1306
+msgctxt "option value"
+msgid "Eighth Grade (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1308
+msgctxt "option value"
+msgid "Ninth Grade (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1310
+msgctxt "option value"
+msgid "Secondary General Education (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1311
+msgctxt "option value"
+msgid "Secondary General Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1312
+msgctxt "option value"
+msgid "Tenth Grade (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1314
+msgctxt "option value"
+msgid "Eleventh Grade (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1316
+msgctxt "option value"
+msgid "Postsecondary and Tertiary Education (RU)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1317
+msgctxt "option value"
+msgid "Postsecondary and Tertiary Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1318
+msgctxt "option value"
+msgid "Saudi Arabia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1319
+msgctxt "option value"
+msgid "Intermediate Education (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1321
+msgctxt "option value"
+msgid "Grade 8 (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1323
+msgctxt "option value"
+msgid "Grade 9 (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1325
+msgctxt "option value"
+msgid "Secondary Education (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1327
+msgctxt "option value"
+msgid "Grade 10 (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1329
+msgctxt "option value"
+msgid "Grade 11 (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1331
+msgctxt "option value"
+msgid "Grade 12 (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1333
+msgctxt "option value"
+msgid "Tertiary Education (SA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1335
+msgctxt "option value"
+msgid "Scotland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1336
+msgctxt "option value"
+msgid "Secondary School (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1338
+msgctxt "option value"
+msgid "Second Year (S2) (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1339
+msgctxt "option value"
+msgid "Second Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1340
+msgctxt "option value"
+msgid "Third Year (S3) (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1341
+msgctxt "option value"
+msgid "Third Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1342
+msgctxt "option value"
+msgid "Fourth Year (S4) (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1343
+msgctxt "option value"
+msgid "Fourth Year"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1344
+msgctxt "option value"
+msgid "Fifth Year (S5) (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1346
+msgctxt "option value"
+msgid "Higher Education (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1348
+msgctxt "option value"
+msgid "Doctorate (GB-SCT)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1350
+msgctxt "option value"
+msgid "Senegal"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1351
+msgctxt "option value"
+msgid "Lower Secondary Education (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1353
+msgctxt "option value"
+msgid "Grade 8 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1355
+msgctxt "option value"
+msgid "Grade 9 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1357
+msgctxt "option value"
+msgid "Grade 10 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1359
+msgctxt "option value"
+msgid "Upper Secondary Education (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1361
+msgctxt "option value"
+msgid "Grade 11 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1363
+msgctxt "option value"
+msgid "Grade 12 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1365
+msgctxt "option value"
+msgid "Grade 13 (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1367
+msgctxt "option value"
+msgid "Tertiary Education (SN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1369
+msgctxt "option value"
+msgid "Serbia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1370
+msgctxt "option value"
+msgid "Secondary-High School (RS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1371
+msgctxt "option value"
+msgid "Secondary-High School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1372
+msgctxt "option value"
+msgid "Year 2 (RS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1373
+msgctxt "option value"
+msgid "Year 2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1374
+msgctxt "option value"
+msgid "Year 3 (RS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1375
+msgctxt "option value"
+msgid "Year 3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1376
+msgctxt "option value"
+msgid "Year 4 (RS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1377
+msgctxt "option value"
+msgid "Year 4"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1378
+msgctxt "option value"
+msgid "Higher Education (RS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1380
+msgctxt "option value"
+msgid "Singapore"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1381
+msgctxt "option value"
+msgid "Secondary Education (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1383
+msgctxt "option value"
+msgid "Secondary 1 (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1384
+msgctxt "option value"
+msgid "Secondary 1"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1385
+msgctxt "option value"
+msgid "Secondary 2 (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1387
+msgctxt "option value"
+msgid "Secondary 3 (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1389
+msgctxt "option value"
+msgid "Secondary 4 (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1391
+msgctxt "option value"
+msgid "Secondary 5 (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1393
+msgctxt "option value"
+msgid "Post-secondary Education (SG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1395
+msgctxt "option value"
+msgid "Slovakia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1396
+msgctxt "option value"
+msgid "High School (SK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1398
+msgctxt "option value"
+msgid "2nd Grade (High School) (SK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1400
+msgctxt "option value"
+msgid "3rd Grade (High School) (SK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1402
+msgctxt "option value"
+msgid "4th Grade (High School) (SK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1403
+msgctxt "option value"
+msgid "4th Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1404
+msgctxt "option value"
+msgid "Post-Secondary Education (SK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1406
+msgctxt "option value"
+msgid "Slovenia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1407
+msgctxt "option value"
+msgid "Upper Secondary Education (SI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1409
+msgctxt "option value"
+msgid "Grade 11 (SI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1411
+msgctxt "option value"
+msgid "Grade 12 (SI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1413
+msgctxt "option value"
+msgid "Grade 13 (SI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1415
+msgctxt "option value"
+msgid "Tertiary Education (SI)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1417
+msgctxt "option value"
+msgid "South Africa"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1418
+msgctxt "option value"
+msgid "Senior Phase (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1419
+msgctxt "option value"
+msgid "Senior Phase"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1420
+msgctxt "option value"
+msgid "Grade 8 (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1422
+msgctxt "option value"
+msgid "Grade 9 (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1424
+msgctxt "option value"
+msgid "Further Education and Training (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1425
+msgctxt "option value"
+msgid "Further Education and Training"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1426
+msgctxt "option value"
+msgid "Grade 10 (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1428
+msgctxt "option value"
+msgid "Grade 11 (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1430
+msgctxt "option value"
+msgid "Grade 12 (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1432
+msgctxt "option value"
+msgid "Higher Education and Training (ZA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1433
+msgctxt "option value"
+msgid "Higher Education and Training"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1434
+msgctxt "option value"
+msgid "South Korea"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1435
+msgctxt "option value"
+msgid "Middle School (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1437
+#: gettext/gettext-lib-com-education-levels.php:1445
+msgctxt "option value"
+msgid "3rd Grade (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1439
+msgctxt "option value"
+msgid "High School (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1441
+msgctxt "option value"
+msgid "1st Grade (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1443
+msgctxt "option value"
+msgid "2nd Grade (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1447
+msgctxt "option value"
+msgid "Higher Education (KR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1449
+msgctxt "option value"
+msgid "Spain"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1450
+msgctxt "option value"
+msgid "Lower Secondary Education (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1452
+msgctxt "option value"
+msgid "Grade 9 (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1454
+msgctxt "option value"
+msgid "Grade 10 (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1456
+msgctxt "option value"
+msgid "Upper Secondary Education (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1458
+msgctxt "option value"
+msgid "Grade 11 (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1460
+msgctxt "option value"
+msgid "Grade 12 (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1462
+msgctxt "option value"
+msgid "Tertiary education (ES)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1463
+msgctxt "option value"
+msgid "Tertiary education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1464
+msgctxt "option value"
+msgid "Sri Lanka"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1465
+msgctxt "option value"
+msgid "Junior Secondary (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1467
+msgctxt "option value"
+msgid "Grade 9 (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1469
+msgctxt "option value"
+msgid "Senior Secondary (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1471
+msgctxt "option value"
+msgid "Grade 10 (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1473
+msgctxt "option value"
+msgid "Grade 11 (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1475
+msgctxt "option value"
+msgid "Collegiate (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1476
+msgctxt "option value"
+msgid "Collegiate"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1477
+msgctxt "option value"
+msgid "Grade 12 (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1479
+msgctxt "option value"
+msgid "Grade 13 (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1481
+msgctxt "option value"
+msgid "Tertiary Education (LK)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1483
+msgctxt "option value"
+msgid "Sweden"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1484
+msgctxt "option value"
+msgid "Comprehensive School (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1485
+msgctxt "option value"
+msgid "Comprehensive School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1486
+msgctxt "option value"
+msgid "7th Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1488
+msgctxt "option value"
+msgid "8th Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1490
+msgctxt "option value"
+msgid "9th Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1492
+msgctxt "option value"
+msgid "Upper Secondary Education (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1494
+msgctxt "option value"
+msgid "1st Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1496
+msgctxt "option value"
+msgid "2nd Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1498
+msgctxt "option value"
+msgid "3rd Grade (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1500
+msgctxt "option value"
+msgid "University (SE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1502
+msgctxt "option value"
+msgid "Switzerland"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1503
+msgctxt "option value"
+msgid "Lower Secondary Level (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1504
+msgctxt "option value"
+msgid "Lower Secondary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1505
+msgctxt "option value"
+msgid "Grade 8 (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1507
+msgctxt "option value"
+msgid "Grade 9 (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1509
+msgctxt "option value"
+msgid "Upper Secondary Level (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1511
+msgctxt "option value"
+msgid "Grade-1 (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1512
+msgctxt "option value"
+msgid "Grade-1"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1513
+msgctxt "option value"
+msgid "Grade-2 (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1514
+msgctxt "option value"
+msgid "Grade-2"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1515
+msgctxt "option value"
+msgid "Grade-3 (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1516
+msgctxt "option value"
+msgid "Grade-3"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1517
+msgctxt "option value"
+msgid "Tertiary Level (CH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1519
+msgctxt "option value"
+msgid "Taiwan"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1520
+msgctxt "option value"
+msgid "Junior High School (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1522
+msgctxt "option value"
+msgid "8th Grade (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1524
+msgctxt "option value"
+msgid "9th Grade (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1526
+msgctxt "option value"
+msgid "Senior High School (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1528
+msgctxt "option value"
+msgid "10th Grade (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1530
+msgctxt "option value"
+msgid "11th Grade (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1532
+msgctxt "option value"
+msgid "12th Grade (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1534
+msgctxt "option value"
+msgid "Tertiary Education (TW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1536
+msgctxt "option value"
+msgid "Tanzania"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1537
+msgctxt "option value"
+msgid "Primary Education (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1539
+msgctxt "option value"
+msgid "Grade 7 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1541
+msgctxt "option value"
+msgid "Lower Secondary (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1543
+msgctxt "option value"
+msgid "Grade 8 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1545
+msgctxt "option value"
+msgid "Grade 9 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1547
+msgctxt "option value"
+msgid "Grade 10 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1549
+msgctxt "option value"
+msgid "Grade 11 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1551
+msgctxt "option value"
+msgid "Grade 12 (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1553
+msgctxt "option value"
+msgid "Upper Secondary (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1555
+msgctxt "option value"
+msgid "University (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1557
+msgctxt "option value"
+msgid "Doctorate (TZ)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1559
+msgctxt "option value"
+msgid "Thailand"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1560
+msgctxt "option value"
+msgid "Lower Secondary (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1562
+msgctxt "option value"
+msgid "Eighth Grade (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1564
+msgctxt "option value"
+msgid "Ninth Grade (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1566
+msgctxt "option value"
+msgid "Upper Secondary (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1568
+msgctxt "option value"
+msgid "Tenth Grade (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1570
+msgctxt "option value"
+msgid "Eleventh Grade (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1572
+msgctxt "option value"
+msgid "Twelfth Grade (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1574
+msgctxt "option value"
+msgid "Higher Education (TH)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1576
+msgctxt "option value"
+msgid "Tunisia"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1577
+msgctxt "option value"
+msgid "Basic Education (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1579
+msgctxt "option value"
+msgid "Eighth Grade (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1581
+msgctxt "option value"
+msgid "Ninth Grade (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1583
+msgctxt "option value"
+msgid "Secondary Education (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1585
+msgctxt "option value"
+msgid "Tenth Grade (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1587
+msgctxt "option value"
+msgid "Eleventh Grade (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1589
+msgctxt "option value"
+msgid "Twelfth Grade (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1591
+msgctxt "option value"
+msgid "Tertiary Education (TN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1593
+msgctxt "option value"
+msgid "Türkiye"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1594
+msgctxt "option value"
+msgid "Primary Education (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1596
+msgctxt "option value"
+msgid "8th Grade (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1598
+msgctxt "option value"
+msgid "High School (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1600
+msgctxt "option value"
+msgid "9th Grade (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1602
+msgctxt "option value"
+msgid "10th Grade (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1604
+msgctxt "option value"
+msgid "11th Grade (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1606
+msgctxt "option value"
+msgid "12th Grade (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1608
+msgctxt "option value"
+msgid "Higher Education (TR)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1610
+msgctxt "option value"
+msgid "Uganda"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1611
+msgctxt "option value"
+msgid "Lower Secondary Education (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1613
+msgctxt "option value"
+msgid "Eighth Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1615
+msgctxt "option value"
+msgid "Ninth Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1617
+msgctxt "option value"
+msgid "Tenth Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1619
+msgctxt "option value"
+msgid "Eleventh Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1621
+msgctxt "option value"
+msgid "Upper Secondary Education (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1623
+msgctxt "option value"
+msgid "Twelfth Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1625
+msgctxt "option value"
+msgid "Thirteenth Grade (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1626
+msgctxt "option value"
+msgid "Thirteenth Grade"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1627
+msgctxt "option value"
+msgid "Post-Secondary Education (UG)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1629
+msgctxt "option value"
+msgid "Ukraine"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1630
+msgctxt "option value"
+msgid "Secondary Base School (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1631
+msgctxt "option value"
+msgid "Secondary Base School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1632
+msgctxt "option value"
+msgid "8th Grade (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1634
+msgctxt "option value"
+msgid "9th Grade (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1636
+msgctxt "option value"
+msgid "Secondary Last School (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1637
+msgctxt "option value"
+msgid "Secondary Last School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1638
+msgctxt "option value"
+msgid "10th Grade (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1640
+msgctxt "option value"
+msgid "11th Grade (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1642
+msgctxt "option value"
+msgid "12th Grade (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1644
+msgctxt "option value"
+msgid "Higher Education (UA)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1646
+msgctxt "option value"
+msgid "United Arab Emirates"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1647
+msgctxt "option value"
+msgid "Intermediate Level (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1649
+msgctxt "option value"
+msgid "Grade 8 (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1651
+msgctxt "option value"
+msgid "Secondary Level (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1652
+msgctxt "option value"
+msgid "Secondary Level"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1653
+msgctxt "option value"
+msgid "Grade 9 (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1655
+msgctxt "option value"
+msgid "Grade 10 (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1657
+msgctxt "option value"
+msgid "Grade 11 (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1659
+msgctxt "option value"
+msgid "Grade 12 (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1661
+msgctxt "option value"
+msgid "Higher Education (AE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1663
+msgctxt "option value"
+msgid "United States"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1664
+msgctxt "option value"
+msgid "Middle School (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1666
+msgctxt "option value"
+msgid "Eighth Grade (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1668
+msgctxt "option value"
+msgid "High School (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1670
+msgctxt "option value"
+msgid "Ninth Grade (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1672
+msgctxt "option value"
+msgid "Tenth Grade (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1674
+msgctxt "option value"
+msgid "Eleventh Grade (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1676
+msgctxt "option value"
+msgid "Twelfth Grade (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1678
+msgctxt "option value"
+msgid "College (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1679
+msgctxt "option value"
+msgid "College"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1680
+msgctxt "option value"
+msgid "Graduate School (US)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1681
+msgctxt "option value"
+msgid "Graduate School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1682
+msgctxt "option value"
+msgid "Venezuela"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1683
+msgctxt "option value"
+msgid "Middle Education (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1685
+msgctxt "option value"
+msgid "Grade 9 (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1687
+msgctxt "option value"
+msgid "Diversified Education (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1688
+msgctxt "option value"
+msgid "Diversified Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1689
+msgctxt "option value"
+msgid "Grade 10 (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1691
+msgctxt "option value"
+msgid "Grade 11 (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1693
+msgctxt "option value"
+msgid "Grade 12 (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1695
+msgctxt "option value"
+msgid "Higher Education School (VE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1696
+msgctxt "option value"
+msgid "Higher Education School"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1697
+msgctxt "option value"
+msgid "Vietnam"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1698
+msgctxt "option value"
+msgid "Upper Secondary Education (VN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1700
+msgctxt "option value"
+msgid "Tenth Grade (VN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1702
+msgctxt "option value"
+msgid "Eleventh Grade (VN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1704
+msgctxt "option value"
+msgid "Twelfth Grade (VN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1706
+msgctxt "option value"
+msgid "Higher Education (VN)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1708
+msgctxt "option value"
+msgid "Wales"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1709
+msgctxt "option value"
+msgid "Key Stage 4 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1711
+msgctxt "option value"
+msgid "Year 10 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1713
+msgctxt "option value"
+msgid "Year 11 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1715
+msgctxt "option value"
+msgid "Key Stage 5 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1717
+msgctxt "option value"
+msgid "Year 12 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1719
+msgctxt "option value"
+msgid "Year 13 (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1721
+msgctxt "option value"
+msgid "Higher Education (GB-WLS)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1723
+msgctxt "option value"
+msgid "Yemen"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1724
+msgctxt "option value"
+msgid "Basic Education (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1726
+msgctxt "option value"
+msgid "Grade 8 (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1728
+msgctxt "option value"
+msgid "Grade 9 (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1730
+msgctxt "option value"
+msgid "Secondary Education (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1732
+msgctxt "option value"
+msgid "Grade 10 (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1734
+msgctxt "option value"
+msgid "Grade 11 (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1736
+msgctxt "option value"
+msgid "Grade 12 (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1738
+msgctxt "option value"
+msgid "University Education (YE)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1739
+msgctxt "option value"
+msgid "University Education"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1740
+msgctxt "option value"
+msgid "Zimbabwe"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1741
+msgctxt "option value"
+msgid "Secondary Education (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1743
+msgctxt "option value"
+msgid "Grade 8 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1745
+msgctxt "option value"
+msgid "Grade 9 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1747
+msgctxt "option value"
+msgid "Grade 10 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1749
+msgctxt "option value"
+msgid "Grade 11 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1751
+msgctxt "option value"
+msgid "Grade 12 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1753
+msgctxt "option value"
+msgid "Grade 13 (ZW)"
+msgstr ""
+
+#: gettext/gettext-lib-com-education-levels.php:1755
+msgctxt "option value"
+msgid "Tertiary Education (ZW)"
+msgstr ""
+
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:42
 #: gettext/gettext-lib-com.php:62 lib/com/bfo.php:259 lib/com/cache.php:95
 #: lib/com/notice.php:72
