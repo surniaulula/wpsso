@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.0-dev.3 (024/02/19)**
+**Version 17.14.0-b.1 (024/02/19)**
 
 * **New Features**
 	* None.
@@ -656,7 +656,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.0-dev.3 =
+= 17.14.0-b.1 =
 
 (024/02/19) Added support for the https://schema.org/LearningResource type.
 
