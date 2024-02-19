@@ -3764,10 +3764,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$json_data[ $prop_name ] = SucomUtil::esc_url_encode( $assoc[ $assoc_key ] );
 
-					} else {
-
-						$json_data[ $prop_name ] = $assoc[ $assoc_key ];
-					}
+					} else $json_data[ $prop_name ] = $assoc[ $assoc_key ];
 
 					if ( $wpsso->debug->enabled ) {
 

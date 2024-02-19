@@ -720,17 +720,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_learnres_type':	// Resource Type.
-
-							$text = __( 'The predominant type or kind characterizing the learning resource (example: "Concept overview", "Problem walkthrough", "Real life example", "Activity", "Experiment", "Lecture", etc.).', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_learnres_level':	// Educational Level.
+						case 'tooltip-meta-schema_learnres_educational_level':	// Educational Level.
 
 							$text = __( 'The target education level for the learning resource.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Select a country-specific education level or one of the generic values.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_learnres_resource_type':	// Resource Type.
+
+							$text = __( 'The predominant type or kind characterizing the learning resource (example: "Concept overview", "Problem walkthrough", "Real life example", "Activity", "Experiment", "Lecture", etc.).', 'wpsso' );
 
 						 	break;
 

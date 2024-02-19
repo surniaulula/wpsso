@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.14.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 17.14.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6383,60 +6383,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1333
+#: lib/abstract/wp-meta.php:1339
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1404
+#: lib/abstract/wp-meta.php:1410
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1408
+#: lib/abstract/wp-meta.php:1414
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1411 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1417 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1415
+#: lib/abstract/wp-meta.php:1421
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1416
+#: lib/abstract/wp-meta.php:1422
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1417
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1418
+#: lib/abstract/wp-meta.php:1424
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1761
+#: lib/abstract/wp-meta.php:1767
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2073
+#: lib/abstract/wp-meta.php:2079
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2075 lib/abstract/wp-meta.php:2088
+#: lib/abstract/wp-meta.php:2081 lib/abstract/wp-meta.php:2094
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2086
+#: lib/abstract/wp-meta.php:2092
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -8100,12 +8100,12 @@ msgstr ""
 
 #: lib/edit-schema.php:825
 msgctxt "option label"
-msgid "Resource Type"
+msgid "Educational Level"
 msgstr ""
 
 #: lib/edit-schema.php:832
 msgctxt "option label"
-msgid "Educational Level"
+msgid "Resource Type"
 msgstr ""
 
 #: lib/edit-schema.php:854
@@ -10708,18 +10708,18 @@ msgid "The number of milligrams of cholesterol per serving."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:725
+msgid "The target education level for the learning resource."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:727
+msgid "Select a country-specific education level or one of the generic values."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:733
 msgid ""
 "The predominant type or kind characterizing the learning resource (example: "
 "\"Concept overview\", \"Problem walkthrough\", \"Real life example\", "
 "\"Activity\", \"Experiment\", \"Lecture\", etc.)."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:731
-msgid "The target education level for the learning resource."
-msgstr ""
-
-#: lib/messages-tooltip-meta-schema.php:733
-msgid "Select a country-specific education level or one of the generic values."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:747
@@ -14226,7 +14226,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3932
+#: lib/schema.php:3929
 msgid "checking schema properties"
 msgstr ""
 

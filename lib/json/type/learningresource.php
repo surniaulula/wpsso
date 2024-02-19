@@ -51,20 +51,13 @@ if ( ! class_exists( 'WpssoJsonTypeLearningResource' ) ) {
 			WpssoSchema::add_type_opts_md_pad( $md_opts, $mod );
 
 			/*
+			 * See https://schema.org/educationalLevel.
 			 * See https://schema.org/learningResourceType.
 			 */
-			if ( ! empty( $md_opts[ 'schema_schema_learnres_type' ] ) ) {
-
-				$json_ret[ 'learningResourceType' ] = (string) $md_opts[ 'schema_schema_learnres_type' ];
-			}
-
-			/*
-			 * See https://schema.org/educationalLevel.
-			 */
-			if ( WpssoSchema::is_valid_key( $md_opts, 'schema_schema_learnres_level' ) ) {	// Not null, an empty string, or 'none'.
-
-				$json_ret[ 'educationalLevel' ] = (string) $md_opts[ 'schema_schema_learnres_level' ];
-			}
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $md_opts, array(
+				'educationalLevel'     => 'schema_learnres_educational_level',
+				'learningResourceType' => 'schema_learnres_resource_type',
+			) );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

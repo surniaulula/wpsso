@@ -819,19 +819,19 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Learning Resource Information', 'metabox title', 'wpsso' )
 				),
-				'schema_learnres_type' => array(
-					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Resource Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_learnres_type',
-					'content'  => $form->get_input( 'schema_schema_learnres_type', 'wide' ),
-				),
-				'schema_learnres_level' => array(
+				'schema_learnres_educational_level' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Educational Level', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_learnres_level',
-					'content'  => $form->get_select_education_level( 'schema_schema_learnres_level', 'wide' ),
+					'tooltip'  => 'meta-schema_learnres_educational_level',
+					'content'  => $form->get_select_education_level( 'schema_learnres_educational_level', 'wide' ),
+				),
+				'schema_learnres_resource_type' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'learning.resource' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Resource Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_learnres_resource_type',
+					'content'  => $form->get_input( 'schema_learnres_resource_type', 'wide' ),
 				),
 			);
 

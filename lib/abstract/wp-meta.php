@@ -621,7 +621,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_job_expire_timezone'      => $def_timezone,				// Job Posting Expires Timezone.
 
 					/*
-					 * Schema Movie.
+					 * Schema CreativeWork > LearningResource.
+					 */
+					'schema_learnres_educational_level' => 'none',	// Educational Level.
+					'schema_learnres_resource_type'     => '',	// Resource Type.
+
+					/*
+					 * Schema CreativeWork > Movie.
 					 */
 					'schema_movie_actor_person_name_0'    => '',
 					'schema_movie_actor_person_name_1'    => '',
