@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-02-19 01:28-0800\n"
+"PO-Revision-Date: 2024-02-19 02:52-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2602,25 +2602,25 @@ msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:934 lib/com/form.php:2603
+#: lib/com/form.php:934 lib/com/form.php:2599
 msgctxt "option comment"
 msgid "days"
 msgstr "jours"
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:935 lib/com/form.php:2604
+#: lib/com/form.php:935 lib/com/form.php:2600
 msgctxt "option comment"
 msgid "hours"
 msgstr "heures"
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:936 lib/com/form.php:2605
+#: lib/com/form.php:936 lib/com/form.php:2601
 msgctxt "option comment"
 msgid "mins"
 msgstr "mins"
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:937 lib/com/form.php:2606
+#: lib/com/form.php:937 lib/com/form.php:2602
 msgctxt "option comment"
 msgid "secs"
 msgstr "secs"
@@ -9244,7 +9244,7 @@ msgid "A customized image ID to include first, before any featured, attached, or
 msgstr "Un ID d'image personnalisé à inclure en premier, avant l'image à la Une, les images attachées, ou de contenue."
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:987 lib/messages-tooltip-meta.php:82
+#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:82
 #: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image personnalisée est fournie."
@@ -9258,7 +9258,7 @@ msgid "Make sure your custom image is large enough or it may be ignored by socia
 msgstr "Assurez-vous que votre image personnalisée est suffisamment grande ou elle peut être ignorée par les sites sociaux."
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:995 lib/messages-tooltip-meta.php:92
+#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:92
 #: lib/messages-tooltip-meta.php:213 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image personnalisé est sélectionné."
@@ -9555,7 +9555,7 @@ msgstr "Dans ce cas, vous devez mettre à jour les informations sur le produit d
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:78
 #: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:750 lib/messages-tooltip-plugin.php:816
+#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:816
 #: lib/messages-tooltip-plugin.php:858 lib/messages-tooltip-schema.php:177
 #: lib/messages-tooltip-schema.php:332
 msgid "<a href=\"%1$s\">See this webpage for more information about choosing %2$s value</a>."
@@ -9690,27 +9690,27 @@ msgid "A value of 0 minutes excludes the estimated reading time from Schema mark
 msgstr "Une valeur de 0 minutes exclut le temps de lecture estimé du balisage de Schéma et des balises méta."
 
 #: lib/messages-tooltip-meta-schema.php:213
-#: lib/messages-tooltip-meta-schema.php:808
+#: lib/messages-tooltip-meta-schema.php:818
 msgid "The creative work author can be a person or an organization."
 msgstr "L'auteur de l'oeuvre peut être une personne ou une organisation."
 
 #: lib/messages-tooltip-meta-schema.php:219
-#: lib/messages-tooltip-meta-schema.php:814
+#: lib/messages-tooltip-meta-schema.php:824
 msgid "Enter the name of the author for this creative work."
 msgstr "Entrez le nom de l'auteur pour cette œuvre créative."
 
 #: lib/messages-tooltip-meta-schema.php:225
-#: lib/messages-tooltip-meta-schema.php:820
+#: lib/messages-tooltip-meta-schema.php:830
 msgid "The home page of the author, or another definitive URL that provides information about the author, such as the person or organization's Wikipedia or Wikidata page."
 msgstr "La page d'accueil de l'auteur ou une autre URL définitive fournissant des informations sur l'auteur, telles que la page Wikipedia ou Wikidata de la personne ou de l'organisation."
 
 #: lib/messages-tooltip-meta-schema.php:231
-#: lib/messages-tooltip-meta-schema.php:826
+#: lib/messages-tooltip-meta-schema.php:836
 msgid "The date when this creative work was published or entered public discourse."
 msgstr "La date à laquelle cette œuvre a été publiée ou est entrée dans le discours public."
 
 #: lib/messages-tooltip-meta-schema.php:237
-#: lib/messages-tooltip-meta-schema.php:832
+#: lib/messages-tooltip-meta-schema.php:842
 msgid "The date when this creative work was created."
 msgstr "La date à laquelle cette oeuvre a été créée."
 
@@ -10010,119 +10010,127 @@ msgstr "Le nombre de grammes de gras trans par portion."
 msgid "The number of milligrams of cholesterol per serving."
 msgstr "Le nombre de milligrammes de cholestérol par portion."
 
-#: lib/messages-tooltip-meta-schema.php:723
+#: lib/messages-tooltip-meta-schema.php:725
 msgid "The predominant type or kind characterizing the learning resource (example: \"Concept overview\", \"Problem walkthrough\", \"Real life example\", \"Activity\", \"Experiment\", \"Lecture\", etc.)."
 msgstr "Le type prédominant qui caractérise la ressource d'apprentissage (exemple: \"Aperçu du concept\", \"Résolution du problème\", \"Exemple réel\", \"Activité\", \"Expérience\", \"Conférence\", etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:737
+#: lib/messages-tooltip-meta-schema.php:731
+msgid "The target education level for the learning resource."
+msgstr "Le niveau d'éducation cible pour la ressource d'apprentissage."
+
+#: lib/messages-tooltip-meta-schema.php:733
+msgid "Select a country-specific education level or one of the generic values."
+msgstr "Sélectionnez un niveau d'éducation spécifique au pays ou l'une des valeurs génériques."
+
+#: lib/messages-tooltip-meta-schema.php:747
 msgid "A rating for the subject or item being reviewed, along with the low / high rating scale (default is 1 to 5)."
 msgstr "Une note pour le sujet ou l'élément critiqué, ainsi que l'échelle de note faible/élevée (la valeur par défaut est de 1 à 5)."
 
-#: lib/messages-tooltip-meta-schema.php:739
+#: lib/messages-tooltip-meta-schema.php:749
 msgid "If you are reviewing a claim, the following rating scale is used: 1 = False, 2 = Mostly false, 3 = Half true, 4 = Mostly true, 5 = True."
 msgstr "Si vous évaluez une déclaration, l'échelle suivante est utilisée: 1 = faux, 2 = généralement faux, 3 = à moitié vrai, 4 = essentiellement vrai, 5 = vrai."
 
-#: lib/messages-tooltip-meta-schema.php:747
+#: lib/messages-tooltip-meta-schema.php:757
 msgid "An alternate name for the rating value (example: False, Misleading, Accurate, etc.)."
 msgstr "Un autre nom pour la valeur de note (exemple: Faux, Trompeur, Précis, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:757
+#: lib/messages-tooltip-meta-schema.php:767
 msgid "A name for the subject or item being reviewed."
 msgstr "Un nom pour le sujet ou l'élément critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:763
+#: lib/messages-tooltip-meta-schema.php:773
 msgid "A description for the subject or item being reviewed."
 msgstr "Une description du sujet ou de l'élément critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:769
+#: lib/messages-tooltip-meta-schema.php:779
 msgid "An image ID showing the subject or item being reviewed."
 msgstr "Un ID d'image montrant le sujet ou l'élément critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:771
+#: lib/messages-tooltip-meta-schema.php:781
 msgid "This option is disabled if a subject image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image de sujet est fournie."
 
-#: lib/messages-tooltip-meta-schema.php:777
+#: lib/messages-tooltip-meta-schema.php:787
 msgid "An image URL (instead of an image ID) showing the subject or item being reviewed."
 msgstr "Une URL d'image (au lieu d'un identifiant d'image) montrant le sujet ou l'élément critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:779
+#: lib/messages-tooltip-meta-schema.php:789
 msgid "This option is disabled if a subject image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image de sujet est sélectionné."
 
-#: lib/messages-tooltip-meta-schema.php:785
+#: lib/messages-tooltip-meta-schema.php:795
 msgid "A webpage URL for the subject or item being reviewed."
 msgstr "L'URL de la page Web pour le sujet ou l'élément critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:797
+#: lib/messages-tooltip-meta-schema.php:807
 msgid "A Schema type for the subject or item being reviewed (for example, Schema Product type for the review of a product, Schema Book for the review of a book, etc.)."
 msgstr "Un type de Schéma pour le sujet ou l'élément critiqué (par exemple, le type Schema Product pour la critique d'un produit, Schema Book pour la critique d'un livre, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:799
+#: lib/messages-tooltip-meta-schema.php:809
 msgid "Although the Schema standard allows the subject of a review (aka the item reviewed) to be any Schema type, <a href=\"%1$s\">Google only allows reviews for a few specific Schema types (and their sub-types)</a>."
 msgstr "Bien que la norme Schéma permet que le sujet d'une critique (c'est-à-dire l'élément critiqué) soit n'importe quel type de Schéma, <a href=\"%1$s\">Google autorise les critiques pour seulement quelques types de Schémas spécifiques (et leurs sous-types).</a>."
 
-#: lib/messages-tooltip-meta-schema.php:841
+#: lib/messages-tooltip-meta-schema.php:851
 msgid "The ISBN code (aka International Standard Book Number) for the book being reviewed."
 msgstr "Le code ISBN (aussi appelé numéro international normalisé du livre) du livre critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:865
+#: lib/messages-tooltip-meta-schema.php:875
 msgid "The brand name of the product being reviewed."
 msgstr "Le nom de marque du produit critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:871
+#: lib/messages-tooltip-meta-schema.php:881
 msgid "One or more offers for the product being reviewed, including the offer name, price and currency."
 msgstr "Une ou plusieurs offres pour le produit critiqué, comprenant le nom de l'offre, le prix et la devise."
 
-#: lib/messages-tooltip-meta-schema.php:877
+#: lib/messages-tooltip-meta-schema.php:887
 msgid "The SKU (aka Stock-Keeping Unit) of the product being reviewed."
 msgstr "Le SKU (Stock-Keeping Unit) du produit critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:883
+#: lib/messages-tooltip-meta-schema.php:893
 msgid "The MPN (aka Manufacturer Part Number) of the product being reviewed."
 msgstr "Le MPN (ou le numéro de pièce du fabricant) du produit critiqué."
 
-#: lib/messages-tooltip-meta-schema.php:892
+#: lib/messages-tooltip-meta-schema.php:902
 msgid "One or more offers for the software application being reviewed, including the offer name, price and currency."
 msgstr "Une ou plusieurs offres pour l'application logicielle critiquée, y compris le nom de l'offre, le prix et la devise."
 
-#: lib/messages-tooltip-meta-schema.php:901
+#: lib/messages-tooltip-meta-schema.php:911
 msgid "A short summary of specific claim(s) being reviewed in the Schema ClaimReview content."
 msgstr "Un bref résumé des déclarations spécifiques critiquées dans le contenu pour le Schéma ClaimReview."
 
-#: lib/messages-tooltip-meta-schema.php:903
+#: lib/messages-tooltip-meta-schema.php:913
 msgid "The summary should be less than 75 characters to minimize wrapping on mobile devices."
 msgstr "Le résumé devrait comporter moins de 75 caractères pour minimiser le retour à la ligne sur les appareils mobiles."
 
-#: lib/messages-tooltip-meta-schema.php:909
+#: lib/messages-tooltip-meta-schema.php:919
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr "URL facultative d'une page Web ou cette déclaration spécifique est apparue la première foi."
 
-#: lib/messages-tooltip-meta-schema.php:938
+#: lib/messages-tooltip-meta-schema.php:948
 msgid "Type of software application (example: %s, etc.)."
 msgstr "Type d'application logicielle (exemple: %s, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:945
+#: lib/messages-tooltip-meta-schema.php:955
 msgid "The operating system supported (example: %s, etc.)."
 msgstr "Le système d'exploitation supporté (exemple: %s, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:960
+#: lib/messages-tooltip-meta-schema.php:970
 msgid "Organizations that have reviewed the content on this web page for accuracy and/or completeness."
 msgstr "Les organisations qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
 
-#: lib/messages-tooltip-meta-schema.php:966
+#: lib/messages-tooltip-meta-schema.php:976
 msgid "Persons that have reviewed the content on this web page for accuracy and/or completeness."
 msgstr "Les personnes qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
 
-#: lib/messages-tooltip-meta-schema.php:972
+#: lib/messages-tooltip-meta-schema.php:982
 msgid "Date on which the content on this web page was last reviewed for accuracy and/or completeness."
 msgstr "Date à laquelle le contenu de cette page Web a été révisé pour la dernière fois pour en vérifier l'exactitude et/ou l'exhaustivité."
 
-#: lib/messages-tooltip-meta-schema.php:985
+#: lib/messages-tooltip-meta-schema.php:995
 msgid "A customized image ID to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
-#: lib/messages-tooltip-meta-schema.php:993
+#: lib/messages-tooltip-meta-schema.php:1003
 msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
