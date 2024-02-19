@@ -1495,7 +1495,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			return $this->get_select_none( $name, SucomUtil::get_alpha2_countries(), $css_class, $css_id,
 				$is_assoc = true, $is_disabled, $selected, $event_names = array( 'on_focus_load_json' ),
-					$event_args = array( 'json_var' => 'countries' ));
+					$event_args = array( 'json_var' => 'alpha2_countries' ));
 		}
 
 		public function get_select_education_level( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
