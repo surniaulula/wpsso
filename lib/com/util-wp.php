@@ -1959,15 +1959,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return self::$locale_cache[ $cache_index ] = $locale;
 		}
 
-		public static function get_locale_country( $mixed = 'current', $read_cache = true ) {
-
-			$locale = self::get_locale( $mixed, $read_cache );
-
-			$country = locale_get_display_region( $locale, 'en' );
-
-			return $country;
-		}
-
 		/*
 		 * ACTION AND FILTER METHODS:
 		 *
