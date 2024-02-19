@@ -140,13 +140,13 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 		label_transl = window[ json_name + '_vals' ][ index ];
 
-		if ( option_value.indexOf( 'optgroup' ) > 0 ) {
+		if ( option_value.indexOf( ':optgroup-' ) > 0 ) {
 
-			if ( option_value.indexOf( '/optgroup' ) > 0 ) {
+			if ( option_value.indexOf( ':optgroup-begin' ) > 0 ) {
 
-				select_opt_html += '</optgroup>';
+				select_opt_html += '<optgroup label="' + label_transl + '">';
 
-			} else select_opt_html += '<optgroup label="' + label_transl + '">';
+			} else select_opt_html += '</optgroup>';	/* ':optgroup-end' */
 
 		} else {
 

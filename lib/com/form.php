@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 	
 						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
 	
-							$select_json_arr[ $optgroup_transl . ' optgroup' ] = $optgroup_transl;
+							$select_json_arr[ $optgroup_transl . ':optgroup-begin' ] = $optgroup_transl;
 						}
 
 					} else $select_opt_arr[] = '<optgroup label="' . esc_attr( $optgroup_transl ) . '">';
@@ -1344,7 +1344,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 	
 						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
 	
-							$select_json_arr[ $optgroup_transl . ' /optgroup' ] = $optgroup_transl;
+							$select_json_arr[ $optgroup_transl . ':optgroup-end' ] = $optgroup_transl;
 						}
 
 					} else $select_opt_arr[] = '</optgroup>';
@@ -1493,7 +1493,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			return $this->get_select_none( $name, SucomUtil::get_alpha2_countries(), $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
+			return $this->get_select_none( $name, SucomUtil::get_alpha2_countries(), $css_class, $css_id,
+				$is_assoc = true, $is_disabled, $selected, $event_names = array( 'on_focus_load_json' ),
+					$event_args = array( 'json_var' => 'countries' ));
 		}
 
 		public function get_select_education_level( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
