@@ -140,19 +140,30 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 		label_transl = window[ json_name + '_vals' ][ index ];
 
-		select_opt_html += '<option value="' + option_value + '"';
+		if ( option_value.indexOf( 'optgroup' ) > 0 ) {
 
-		if ( option_value == selected_val ) {	/* Allow numeric string/integer comparison. */
+			if ( option_value.indexOf( '/optgroup' ) > 0 ) {
 
-			select_opt_html += ' selected="selected"';
+				select_opt_html += '</optgroup>';
+
+			} else select_opt_html += '<optgroup label="' + label_transl + '">';
+
+		} else {
+
+			select_opt_html += '<option value="' + option_value + '"';
+
+			if ( option_value == selected_val ) {	/* Allow numeric string/integer comparison. */
+	
+				select_opt_html += ' selected="selected"';
+			}
+	
+			if ( default_value == option_value ) {	/* Allow numeric string/integer comparison. */
+	
+				label_transl += ' ' + default_text;
+			}
+	
+			select_opt_html += '>' + label_transl + '</option>';
 		}
-
-		if ( default_value == option_value ) {	/* Allow numeric string/integer comparison. */
-
-			label_transl += ' ' + default_text;
-		}
-
-		select_opt_html += '>' + label_transl + '</option>';
 	} );
 
 	/*

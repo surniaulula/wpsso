@@ -1228,7 +1228,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$event_json_var .= '_' . $event_args[ 'json_var' ];
 				}
 
-				$event_json_var .= '_' . md5( implode( $values ) );
+				$event_json_var .= '_' . md5( serialize( $values ) );
 
 				$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 			}
@@ -1252,57 +1252,32 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/*
 			 * Check for two-dimentional arrays and maybe use option groups.
 			 */
-			foreach ( $values as $maybe_group_label => $maybe_group_array ) {
+			$values = self::maybe_transl_sort_values( $name, $values, $is_assoc, $event_args );
 
-				if ( is_array( $maybe_group_array ) ) {	// Two dimensional array.
+			foreach ( $values as $optgroup_transl => $group_array ) {
 
-					$group_values = $maybe_group_array;
+				if ( is_array( $group_array ) ) {	// Two dimensional array.
 
-					$group_label_transl = empty( $event_args[ 'is_transl' ] ) ?
-						$this->get_option_value_transl( $maybe_group_label ) : $maybe_group_label;
+					if ( $event_json_var ) {
 	
-					$select_opt_arr[ $maybe_group_label . '-begin' ] = '<optgroup label="' . esc_attr( $group_label_transl ) . '">';
+						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
 	
-				} else {
-				
-					$group_values = array( $maybe_group_label => $maybe_group_array );
+							$select_json_arr[ $optgroup_transl . ' optgroup' ] = $optgroup_transl;
+						}
 
-					$maybe_group_label = '';
-				}
+					} else $select_opt_arr[] = '<optgroup label="' . esc_attr( $optgroup_transl ) . '">';
+	
+					$group_values = $group_array;
+	
+				} else $group_values = array( $optgroup_transl => $group_array );
 
-				$group_is_assoc = null === $is_assoc ? SucomUtil::is_assoc( $group_values ) : $is_assoc;
-
-				foreach ( $group_values as $option_value => $label ) {
+				foreach ( $group_values as $option_value => $label_transl ) {
 	
 					$select_opt_count++;	// Used to check for first option.
-	
-					/*
-					 * If the array is not associative (so a regular numbered array), then the label / description is
-					 * used as the saved value. Make sure option values are cast as strings for comparison.
-					 */
-					$option_value = $group_is_assoc ? (string) $option_value : (string) $label;
 
-					/*
-					 * Don't bother translating the label text if it's already translated.
-					 */
-					$label_transl = empty( $event_args[ 'is_transl' ] ) ? $this->get_option_value_transl( $label ) : $label;
-
-					$label_transl = trim( $maybe_group_label . ' ' . $label_transl );
-	
-					if ( 0 === $label ) {
-	
-						if ( preg_match( '/_img_max/', $name ) ) {
-	
-							$label_transl .= ' ' . $this->get_option_value_transl( '(no images)' );
-	
-						} elseif ( preg_match( '/_vid_max/', $name ) ) {
-	
-							$label_transl .= ' ' . $this->get_option_value_transl( '(no videos)' );
-						}
-	
-					} elseif ( '' ===  $label || 'none' === $label || '[None]' === $label ) {
-	
-						$label_transl = $this->get_option_value_transl( '[None]' );
+					if ( is_array( $label_transl ) ) {     // Just in case.
+					
+						$label_transl = implode( $glue = ', ', $label_transl );
 					}
 	
 					/*
@@ -1363,17 +1338,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 				}
 				
-				if ( $maybe_group_label ) {
-					
-					$select_opt_arr[ $maybe_group_label . '-end' ] = '</optgroup>';
+				if ( is_array( $group_array ) ) {
+
+					if ( $event_json_var ) {
+	
+						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
+	
+							$select_json_arr[ $optgroup_transl . ' /optgroup' ] = $optgroup_transl;
+						}
+
+					} else $select_opt_arr[] = '</optgroup>';
 				}
 			}
 	
-			if ( empty( $event_args[ 'is_sorted' ] ) ) {
-
-				uasort( $select_opt_arr, array( __CLASS__, 'sort_select_opt_by_label' ) );
-			}
-
 			$html .= "\n";
 			$html .= '<select ';
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
@@ -1520,13 +1497,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_select_education_level( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
-			
+
 			if ( ! class_exists( 'SucomEducationLevels' ) ) {
 
 				require_once dirname( __FILE__ ) . '/education-levels.php';
 			}
 
-			return $this->get_select_none( $name, SucomEducationLevels::get(), $css_class, $css_id, $is_assoc = 'sorted', $is_disabled, $selected );
+			return $this->get_select_none( $name, SucomEducationLevels::get(), $css_class, $css_id,
+				$is_assoc = 'sorted', $is_disabled, $selected, $event_names = array( 'on_focus_load_json' ),
+					$event_args = array( 'json_var' => 'education_levels' ) );
 		}
 
 		/*
@@ -1793,9 +1772,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * -----------------------
-		 * MULTIPLE FIELDS METHODS
-		 * -----------------------
+		 * MULTIPLE FIELDS METHODS:
+		 *
+		 *	get_input_multi()
+		 *	get_mixed_multi()
+		 *	get_select_multi()
+		 *	get_textarea_multi()
 		 */
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $show_max = 10, $show_first = 1, $is_disabled = false ) {
 
@@ -1946,10 +1928,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$holder = $this->get_placeholder_sanitized( $input_name, $atts[ 'placeholder' ] );
 
-					} else {
-
-						$holder = '';
-					}
+					} else $holder = '';
 
 					if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 
@@ -2034,8 +2013,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_selected = empty( $atts[ 'select_selected' ] ) ? null : $atts[ 'select_selected' ];
 								$select_default  = empty( $atts[ 'select_default' ] ) ? null : $atts[ 'select_default' ];
 
-								$is_assoc = SucomUtil::is_assoc( $select_options );
-
 								$event_json_var = false;
 
 								if ( in_array( 'on_focus_load_json', $event_names ) ) {
@@ -2051,7 +2028,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$event_json_var = '_' . $event_args[ 'json_var' ];
 									}
 
-									$event_json_var .= '_' . md5( implode( $select_options ) );
+									$event_json_var .= '_' . md5( serialize( $select_options ) );
 
 									$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 								}
@@ -2062,28 +2039,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_json_arr  = array();
 								$default_value    = '';
 								$default_text     = '';
+								$select_options   = self::maybe_transl_sort_values( $input_name,
+									$select_options, $is_assoc = null, $event_args );
 
-								foreach ( $select_options as $option_value => $label ) {
+								foreach ( $select_options as $option_value => $label_transl ) {
 
-									if ( is_array( $label ) ) {	// Just in case.
+									if ( is_array( $label_transl ) ) {	// Just in case.
 
-										$label = implode( $glue = ', ', $label );
+										$label_transl = implode( $glue = ', ', $label_transl );
 									}
-
-									/*
-									 * If the array is not associative (so a regular numbered
-									 * array), then the label / description is used as the
-									 * saved value. Make sure option values are cast as strings
-									 * for comparison.
-									 */
-									$option_value = $is_assoc ? (string) $option_value : (string) $label;
-
-									/*
-									 * Don't bother translating the label text if it's already
-									 * translated (for example, product categories).
-									 */
-									$label_transl = empty( $event_args[ 'is_transl' ] ) ?
-										$this->get_option_value_transl( $label ) : $label;
 
 									/*
 									 * Save the option value and translated label for the JSON
@@ -2124,10 +2088,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 										$is_selected_html = selected( $this->defaults[ $input_name ], $option_value, false );
 
-									} else {
-
-										$is_selected_html = '';
-									}
+									} else $is_selected_html = '';
 
 									$select_opt_count++;	// Used to check for first option.
 
@@ -2145,11 +2106,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											$select_opt_added++;
 										}
 									}
-								}
-
-								if ( empty( $event_args[ 'is_sorted' ] ) ) {
-
-									uasort( $select_opt_arr, array( __CLASS__, 'sort_select_opt_by_label' ) );
 								}
 
 								$html .= "\n" . '<select ';
@@ -2372,9 +2328,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * -------------------------------
-		 * AUTOMATICALLY LOCALIZED METHODS
-		 * -------------------------------
+		 * AUTOMATICALLY LOCALIZED METHODS:
+		 *
+		 *	get_options_locale()
+		 *	get_defaults_locale()
+		 *	get_input_locale()
+		 *	get_input_image_upload_locale()
+		 *	get_input_image_url_locale()
+		 *	get_input_video_url_locale()
+		 *	get_select_locale()
+		 *	get_textarea_locale()
+		 *	get_th_html_locale()
 		 */
 		public function get_options_locale( $opt_key = false, $def_val = null ) {
 
@@ -2460,9 +2424,44 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * ------------------------------
-		 * AUTOMATICALLY DISABLED METHODS
-		 * ------------------------------
+		 * AUTOMATICALLY DISABLED METHODS:
+		 *
+		 *	get_no_td_checkbox()
+		 *	get_no_checkbox()
+		 *	get_no_checkbox_options()
+		 *	get_no_checkbox_comment()
+		 *	get_no_checklist()
+		 *	get_no_checklist_post_types()
+		 *	get_no_checklist_post_tax_user()
+		 *	get_no_columns_post_tax_user()
+		 *	get_no_date_time_tz()
+		 *	get_no_input()
+		 *	get_no_input_clipboard()
+		 *	get_no_input_options()
+		 *	get_no_input_holder()
+		 *	get_no_input_date()
+		 *	get_no_input_date_options()
+		 *	get_no_input_time_dhms()
+		 *	get_no_input_image_crop_area()
+		 *	get_no_input_image_dimensions()
+		 *	get_no_input_image_upload()
+		 *	get_no_input_video_dimensions()
+		 *	get_no_input_value()
+		 *	get_no_radio()
+		 *	get_no_select()
+		 *	get_no_select_country()
+		 *	get_no_select_country_options()
+		 *	get_no_select_none()
+		 *	get_no_select_options()
+		 *	get_no_select_time()
+		 *	get_no_select_time_none()
+		 *	get_no_select_time_options()
+		 *	get_no_select_time_options_none()
+		 *	get_no_select_timezone()
+		 *	get_no_textarea()
+		 *	get_no_textarea_options()
+		 *	get_no_textarea_value()
+		 *
 		 */
 		public function get_no_td_checkbox( $name, $comment = '', $extra_css_class = '' ) {
 
@@ -2814,9 +2813,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * --------------------------------------------
-		 * AUTOMATICALLY DISABLED AND LOCALIZED METHODS
-		 * --------------------------------------------
+		 * AUTOMATICALLY DISABLED AND LOCALIZED METHODS:
+		 *
+		 *	get_no_input_locale()
+		 *	get_no_input_image_upload_locale()
+		 *	get_no_input_image_url_locale()
+		 *	get_no_input_video_url_locale()
+		 *	get_no_select_locale()
+		 *	get_no_textarea_locale()
 		 */
 		public function get_no_input_locale( $name, $css_class = '', $css_id = '', $holder = '' ) {
 
@@ -2851,9 +2855,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * ----------------------------------------------
-		 * AUTOMATICALLY DISABLED MULTIPLE FIELDS METHODS
-		 * ----------------------------------------------
+		 * AUTOMATICALLY DISABLED MULTIPLE FIELDS METHODS:
+		 *
+		 *	get_no_input_multi()
+		 *	get_no_mixed_multi()
+		 *	get_no_select_multi()
 		 */
 		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $repeat = 1 ) {
 
@@ -2873,10 +2879,77 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/*
-		 * ---------------
-		 * PRIVATE METHODS
-		 * ---------------
+		 * PRIVATE METHODS:
+		 *
+		 *	maybe_transl_sort_values()
+		 *	split_name_locale()
+		 *	sort_select_labels()
+		 *	get_input_media_url()
+		 *	get_placeholder_sanitized()
+		 *	get_placeholder_attrs()
+		 *	get_placeholder_dep_script()
+		 *	get_textlen_script()
+		 *	get_event_load_json_script()
+		 *	get_show_hide_trigger_script()
 		 */
+		private function maybe_transl_sort_values( $name, array $values, $is_assoc, array $event_args, $optgroup_transl = '' ) {
+
+			$sorted = array();
+
+			$values_assoc = null === $is_assoc ? SucomUtil::is_assoc( $values ) : $is_assoc;
+
+			$sort_by_key = false;
+
+			foreach ( $values as $option_value => $label ) {
+
+				unset( $values[ $option_value ] );	// Optimize and unset as we go.
+
+				if ( is_array( $label ) ) {	// Two dimensional array.
+
+					$label_transl = empty( $event_args[ 'is_transl' ] ) ? $this->get_option_value_transl( $option_value ) : $option_value;
+
+					$sorted[ $label_transl ] = self::maybe_transl_sort_values( $name, $label, null, $event_args, $label_transl );
+
+					$sort_by_key = true;
+
+				} else {
+
+					$option_value = $values_assoc ? (string) $option_value : (string) $label;
+
+					$label_transl = empty( $event_args[ 'is_transl' ] ) ? $this->get_option_value_transl( $label ) : $label;
+
+					if ( 0 === $label ) {
+	
+						if ( preg_match( '/_img_max/', $name ) ) {
+	
+							$label_transl = trim( $label_transl . ' ' . $this->get_option_value_transl( '(no images)' ) );
+	
+						} elseif ( preg_match( '/_vid_max/', $name ) ) {
+	
+							$label_transl = trim( $label_transl . ' ' . $this->get_option_value_transl( '(no videos)' ) );
+						}
+	
+					} elseif ( '' ===  $label || 'none' === $label || '[None]' === $label ) {
+	
+						$label_transl = $this->get_option_value_transl( '[None]' );
+					}
+	
+					$sorted[ $option_value ] = trim( $optgroup_transl . ' ' . $label_transl );
+				}
+			}
+
+			if ( $sort_by_key ) {
+
+				uksort( $sorted, array( __CLASS__, 'sort_select_labels' ) );
+
+			} elseif ( empty( $event_args[ 'is_sorted' ] ) ) {
+
+				uasort( $sorted, array( __CLASS__, 'sort_select_labels' ) );
+			}
+
+			return $sorted;
+		}
+
 		private function split_name_locale( $name_prefix ) {
 
 			$name_suffix = '';
@@ -2894,49 +2967,29 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return array( $name_prefix, $name_suffix );
 		}
 
-		private static function sort_select_opt_by_label( $a, $b ) {
-
-			if ( false !== strpos( $a, 'optgroup>' ) || false !== strpos( $b, 'optgroup>' ) ) {
-			
-				return 0;	// No change.
-			}
+		private static function sort_select_labels( $a_label, $b_label ) {
 
 			/*
-			 * Extract the option label, without its qualifier (ie. "(default)").
+			 * Option labels in square brackets (ie. "[None]") are always top-most in the select options list.
 			 */
-			$a_count = null;
-			$b_count = null;
+			$a_char = substr( $a_label, 0, 1 );
+			$b_char = substr( $b_label, 0, 1 );
 
-			$a_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $a, $limit = -1, $a_count );
-			$b_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $b, $limit = -1, $b_count );
+			if ( 'none' === $a_label || $a_char === '[' ) {
 
-			if ( $a_count && $b_count ) {	// Just in case.
+				if ( $a_char === $b_char ) {
 
-				/*
-				 * Option labels in square brackets (ie. "[None]") are always top-most in the select options list.
-				 */
-				$a_char = substr( $a_label, 0, 1 );
-				$b_char = substr( $b_label, 0, 1 );
-
-				if ( $a_char === '[' ) {
-
-					if ( $a_char === $b_char ) {
-
-						return strnatcmp( $a_label, $b_label );
-					}
-
-					return -1;	// $a is first.
+					return strnatcmp( $a_label, $b_label );
 				}
 
-				if ( $b_char === '[' ) {
+				return -1;	// $a is first.
 
-					return 1;	// $b is first.
-				}
+			} elseif ( 'none' === $b_label || $b_char === '[' ) {
 
-				return strnatcmp( $a_label, $b_label );	// Binary safe case-insensitive string comparison.
+				return 1;	// $b is first.
 			}
 
-			return 0;	// No change.
+			return strnatcmp( $a_label, $b_label );	// Binary safe case-insensitive string comparison.
 		}
 
 		private function get_input_media_url( $name_prefix, $primary_suffix = 'id', $holder = '', $is_disabled = false ) {

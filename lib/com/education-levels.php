@@ -134,9 +134,9 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'Elementary School (BR)',
 				'8th Grade (BR)',
 				'High School (BR)',
-				'1st grade (High School) (BR)',
-				'2nd grade (High School) (BR)',
-				'3rd grade (High School) (BR)',
+				'1st Grade (High School) (BR)',
+				'2nd Grade (High School) (BR)',
+				'3rd Grade (High School) (BR)',
 				'Higher Education (BR)',
 			),
 			'Bulgaria' => array(
@@ -182,7 +182,7 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'Higher Education (CR)',
 			),
 			'Croatia' => array(
-				'Secondary education (HR)',
+				'Secondary Education (HR)',
 				'10th Grade (HR)',
 				'11th Grade (HR)',
 				'12th Grade (HR)',
@@ -310,7 +310,7 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'University (DE)',
 			),
 			'Ghana' => array(
-				'Junior Secodary School (GH)',
+				'Junior Secondary School (GH)',
 				'Grade 8 (GH)',
 				'Grade 9 (GH)',
 				'Senior Secondary School (GH)',
@@ -384,8 +384,8 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'Senior Secondary School (IN)',
 				'Class 11 (IN)',
 				'Class 12 (IN)',
-				'Undergraduate college (IN)',
-				'Post-graduate college (IN)',
+				'Undergraduate College (IN)',
+				'Post-Graduate College (IN)',
 			),
 			'Indonesia' => array(
 				'Middle School (ID)',
@@ -427,10 +427,10 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 			),
 			'Italy' => array(
 				'Upper Secondary Education (IT)',
-				'2nd upper (IT)',
-				'3rd upper (IT)',
-				'4th upper (IT)',
-				'5th upper (IT)',
+				'2nd Upper (IT)',
+				'3rd Upper (IT)',
+				'4th Upper (IT)',
+				'5th Upper (IT)',
 				'Higher Education (IT)',
 			),
 			'Jamaica' => array(
@@ -444,12 +444,12 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 			),
 			'Japan' => array(
 				'Lower Secondary School (JP)',
-				'Grade 2 (lower secondary) (JP)',
-				'Grade 3 (lower secondary) (JP)',
+				'Grade 2 (Lower Secondary) (JP)',
+				'Grade 3 (Lower Secondary) (JP)',
 				'Upper Secondary School (JP)',
-				'Grade 1 (upper secondary) (JP)',
-				'Grade 2 (upper secondary) (JP)',
-				'Grade 3 (upper secondary) (JP)',
+				'Grade 1 (Upper Secondary) (JP)',
+				'Grade 2 (Upper Secondary) (JP)',
+				'Grade 3 (Upper Secondary) (JP)',
 				'Higher Education (JP)',
 			),
 			'Jordan' => array(
@@ -557,10 +557,10 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'Form 3 (MY)',
 				'Form 4 (MY)',
 				'Form 5 (MY)',
-				'Pre-university (MY)',
+				'Pre-University (MY)',
 				'Lower Form 6 (MY)',
 				'Upper Form 6 (MY)',
-				'Post-secondary Education (MY)',
+				'Post-Secondary Education (MY)',
 			),
 			'Malta' => array(
 				'Secondary Education (MT)',
@@ -748,9 +748,9 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 			),
 			'Poland' => array(
 				'Upper Secondary Education (PL)',
-				'Grade 2 (high school) (PL)',
-				'Grade 3 (high school) (PL)',
-				'Grade 4 (high school) (PL)',
+				'Grade 2 (High School) (PL)',
+				'Grade 3 (High School) (PL)',
+				'Grade 4 (High School) (PL)',
 				'Higher Education (PL)',
 			),
 			'Portugal' => array(
@@ -844,7 +844,7 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 				'Secondary 3 (SG)',
 				'Secondary 4 (SG)',
 				'Secondary 5 (SG)',
-				'Post-secondary Education (SG)',
+				'Post-Secondary Education (SG)',
 			),
 			'Slovakia' => array(
 				'High School (SK)',
@@ -1064,17 +1064,31 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 
 		public static function get( $key = false ) {
 
-			if ( false !== $key ) {
+			$levels = array();
 
-				if ( ! isset( self::$levels[ $key ] ) ) {
+			foreach ( self::$levels as $country => $arr ) {
 
-					return self::$levels[ 'Generic' ];
+				$grades = array();
+
+				foreach ( $arr as $num => $value ) {
+
+					$grades[ $value ] = preg_replace( '/ \([A-Z\-]+\)$/', '', $value );
 				}
 
-				return self::$levels[ $key ];
+				$levels[ $country ] = $grades;
+			}
+
+			if ( false !== $key ) {
+
+				if ( ! isset( $levels[ $key ] ) ) {
+
+					return $levels[ 'Generic' ];
+				}
+
+				return $levels[ $key ];
 			}
 		
-			return self::$levels;
+			return $levels;
 		}
 	}
 }

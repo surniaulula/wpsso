@@ -33,6 +33,11 @@ if ( ! class_exists( 'WpssoJsonTypeLearningResource' ) ) {
 			) );
 		}
 
+		/*
+		 * Schema CreativeWork > LearningResource.
+		 *
+		 * See https://developers.google.com/search/docs/appearance/structured-data/learning-video#learning-video-[videoobject,-learningresource].
+		 */
 		public function filter_json_data_https_schema_org_learningresource( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -51,6 +56,14 @@ if ( ! class_exists( 'WpssoJsonTypeLearningResource' ) ) {
 			if ( ! empty( $md_opts[ 'schema_schema_learnres_type' ] ) ) {
 
 				$json_ret[ 'learningResourceType' ] = (string) $md_opts[ 'schema_schema_learnres_type' ];
+			}
+
+			/*
+			 * See https://schema.org/educationalLevel.
+			 */
+			if ( WpssoSchema::is_valid_key( $md_opts, 'schema_schema_learnres_level' ) ) {	// Not null, an empty string, or 'none'.
+
+				$json_ret[ 'educationalLevel' ] = (string) $md_opts[ 'schema_schema_learnres_level' ];
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
