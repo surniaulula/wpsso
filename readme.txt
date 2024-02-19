@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.0-dev.2 (024/02/18)**
+**Version 17.14.0-dev.3 (024/02/19)**
 
 * **New Features**
 	* None.
@@ -291,6 +291,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `SucomEducationLevels` class.
 	* Added a new `SucomForm->get_select_education_level()` method.
+	* Added a new `SucomForm::maybe_transl_sort_values()` method.
+	* Refactored the `SucomForm->get_select()` method to support option groups.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -654,9 +656,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.0-dev.2 =
+= 17.14.0-dev.3 =
 
-(024/02/18) Added support for the https://schema.org/LearningResource type.
+(024/02/19) Added support for the https://schema.org/LearningResource type.
 
 = 17.13.0 =
 
