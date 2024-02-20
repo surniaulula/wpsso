@@ -34,12 +34,12 @@
     <li>Mobile Web Browsers</li>
     <li>oEmbed for LinkedIn, Discord, and Drupal</li>
     <li>Pinterest Rich Pins</li>
-    <li>Twitter Cards</li>
     <li>Schema JSON-LD Markup</li>
     <li>Slack</li>
     <li>WhatsApp and Messaging Apps</li>
     <li>WordPress REST API</li>
     <li>WordPress Sitemaps XML</li>
+    <li>X (Twitter) Cards</li>
 </ul>
 
 <!-- /about -->
@@ -64,9 +64,9 @@
 <li>Schema 4:3 (Google Rich Results)</li>
 <li>Schema 16:9 (Google Rich Results)</li>
 <li>Schema Thumbnail</li>
-<li>Twitter Summary Card</li>
-<li>Twitter Summary Card Large Image</li>
 <li>Video Preview Images</li>
+<li>X (Twitter) Summary Card</li>
+<li>X (Twitter) Summary Card Large Image</li>
 </ul>
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>

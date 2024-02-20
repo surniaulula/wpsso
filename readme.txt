@@ -37,12 +37,12 @@ Present your content at its best on social sites and in search results - no matt
 	<li>Mobile Web Browsers</li>
 	<li>oEmbed for LinkedIn, Discord, and Drupal</li>
 	<li>Pinterest Rich Pins</li>
-	<li>Twitter Cards</li>
 	<li>Schema JSON-LD Markup</li>
 	<li>Slack</li>
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
 	<li>WordPress Sitemaps XML</li>
+	<li>X (Twitter) Cards</li>
 </ul>
 
 <!-- /about -->
@@ -66,9 +66,9 @@ Present your content at its best on social sites and in search results - no matt
 * Schema 4:3 (Google Rich Results)
 * Schema 16:9 (Google Rich Results)
 * Schema Thumbnail
-* Twitter Summary Card
-* Twitter Summary Card Large Image
 * Video Preview Images
+* X (Twitter) Summary Card
+* X (Twitter) Summary Card Large Image
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
