@@ -385,19 +385,19 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 				}	// End of 'tooltip-p' switch.
 
 			/*
-			 * Twitter settings.
+			 * X (Twitter) settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-tc_' ) ) {
 
 				switch ( $msg_key ) {
 
-					case 'tooltip-tc_site':		// Twitter Business @username.
+					case 'tooltip-tc_site':		// X (Twitter) Business @username.
 
 						if ( $publisher_url_label = WpssoConfig::get_social_accounts( 'tc_site' ) ) {
 
-							$text = sprintf( __( 'If you have a <a href="%s">Twitter @username for your business</a> (not your personal Twitter @username), you may enter its name here.', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">X (Twitter) @username for your business</a> (not your personal @username), you may enter its name here.', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
 
-							$text .= sprintf( __( 'The %s will be included in in Twitter Card meta tags and the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+							$text .= sprintf( __( 'The %s will be included in in X (Twitter) Card meta tags and the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
 							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 						}
@@ -406,17 +406,17 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-tc_type_singular':
 
-						$text = 'The Twitter Card type for singular content (posts, pages, or custom post types) with a custom, featured, and/or attached image.';
+						$text = 'The X (Twitter) Card type for singular content (posts, pages, or custom post types) with a custom, featured, and/or attached image.';
 
 						break;
 
 					case 'tooltip-tc_type_default':
 
-						$text = 'The Twitter Card type for all other images (default, image from content text, etc).';
+						$text = 'The X (Twitter) Card type for all other images (default, image from content text, etc).';
 
 						break;
 
-					case 'tooltip-tc_sum_img_size':	// Twitter Summary Card.
+					case 'tooltip-tc_sum_img_size':	// X (Twitter) Summary Card.
 
 						$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_sum' );
 
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-tc_lrg_img_size':	// Twitter Summary Card Large Image.
+					case 'tooltip-tc_lrg_img_size':	// X (Twitter) Summary Card Large Image.
 
 						$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_lrg' );
 

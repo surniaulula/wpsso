@@ -444,7 +444,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
-			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
+			$this->tc        = new WpssoTwitterCard( $this );	// X (Twitter) Card meta tags.
 
 			if ( $this->debug->enabled ) {
 

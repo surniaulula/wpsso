@@ -1906,7 +1906,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					continue;
 
-				} elseif ( $social_key === 'tc_site' ) {	// Convert Twitter username to a URL.
+				} elseif ( $social_key === 'tc_site' ) {	// Convert X (Twitter) username to a URL.
 
 					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}

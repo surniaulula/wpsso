@@ -87,8 +87,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->util->is_schema_disabled() ? 'rec' : 'on',
 			);
 
-			$features[ '(code) Twitter Card Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
+			$features[ '(code) X (Twitter) Card Meta Tags' ] = array(
+				'label_transl' => _x( '(code) X (Twitter) Card Meta Tags', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'rec',
 			);
 

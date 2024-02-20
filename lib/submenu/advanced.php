@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$tabs = array(
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'open_graph' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
-				'twitter'    => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'twitter'    => _x( 'X (Twitter)', 'metabox tab', 'wpsso' ),
 				'seo_other'  => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			);
 

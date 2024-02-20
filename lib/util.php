@@ -3874,8 +3874,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'url'   => $have_schema ? 'https://validator.schema.org/#url=' . $canonical_url_enc : '',
 				),
 				'twitter' => array(
-					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
-					'type'      => _x( 'Twitter Card', 'validator type', 'wpsso' ),
+					'title'     => _x( 'X (Twitter) Card Validator', 'option label', 'wpsso' ),
+					'type'      => _x( 'X (Twitter) Card', 'validator type', 'wpsso' ),
 					'url'       => is_object( $form ) ? 'https://cards-dev.twitter.com/validator' : '',
 					'extra_msg' => is_object( $form ) ? $form->get_no_input_clipboard( $canonical_url ) : '',
 				),

@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'mb_advanced_metadata_custom_fields_rows'     => 4,	// Attributes and Metadata > Custom Fields tab.
 				'mb_advanced_head_tags_facebook_rows'         => 4,	// HTML Tags > Facebook tab.
 				'mb_advanced_head_tags_open_graph_rows'       => 4,	// HTML Tags > Open Graph tab.
-				'mb_advanced_head_tags_twitter_rows'          => 4,	// HTML Tags > Twitter tab.
+				'mb_advanced_head_tags_twitter_rows'          => 4,	// HTML Tags > X (Twitter) tab.
 				'mb_advanced_head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO / Other tab.
 			) );
 		}
@@ -439,12 +439,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'tc_00_sum_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'X (Twitter) Summary Card', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'tc_sum_img_size' ) .
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
 			$table_rows[ 'tc_01_lrg_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Summary Card Large Image', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'X (Twitter) Summary Card Large Image', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'tc_lrg_img_size' ) .
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
@@ -1378,7 +1378,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/*
-		 * HTML Tags > Twitter tab.
+		 * HTML Tags > X (Twitter) tab.
 		 */
 		public function filter_mb_advanced_head_tags_twitter_rows( $table_rows, $form, $args ) {
 

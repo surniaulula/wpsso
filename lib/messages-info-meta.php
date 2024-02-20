@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text = '<p class="top">';
 
-					$text .= __( 'The Twitter Card validator does not (currently) accept query arguments - paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
+					$text .= __( 'The X (Twitter) Card validator does not (currently) accept query arguments - paste the following URL in the X (Twitter) Card validator "Card URL" input field:', 'wpsso' );
 
 					$text .= '</p>';
 

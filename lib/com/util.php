@@ -1515,15 +1515,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:stream_url'      => null,	// Internal meta tag. VideoObject contentUrl.
 				$mt_pre . ':video:stream_size'     => null,	// Internal meta tag. VideoObject contentSize.
 				$mt_pre . ':video:has_image'       => false,	// Internal meta tag.
-				$mt_pre . ':video:iphone_name'     => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:iphone_id'       => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:iphone_url'      => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:ipad_name'       => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:ipad_id'         => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:ipad_url'        => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:googleplay_name' => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:googleplay_id'   => null,	// Internal meta tag for Twitter player card.
-				$mt_pre . ':video:googleplay_url'  => null,	// Internal meta tag for Twitter player card.
+				$mt_pre . ':video:iphone_name'     => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:iphone_id'       => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:iphone_url'      => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:ipad_name'       => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:ipad_id'         => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:ipad_url'        => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:googleplay_name' => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:googleplay_id'   => null,	// Internal meta tag for X (Twitter) player card.
+				$mt_pre . ':video:googleplay_url'  => null,	// Internal meta tag for X (Twitter) player card.
 			);
 
 			$mt_ret += self::get_mt_image_seed( $mt_pre );

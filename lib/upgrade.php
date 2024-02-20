@@ -907,8 +907,8 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				}
 
 				/*
-				 * If the Twitter Card image sizes have not been changed from their old default values, then update
-				 * the options to the new default values.
+				 * If the X (Twitter) Card image sizes have not been changed from their old default values, then
+				 * update the options to the new default values.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 889 ) {
 

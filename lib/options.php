@@ -1420,7 +1420,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Twitter-style usernames (prepend with an @ character).
+				 * X (Twitter) usernames (prepend with an @ character).
 				 */
 				case 'at_name':
 

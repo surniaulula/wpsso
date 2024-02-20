@@ -39,12 +39,12 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			$sizes[ 'tc_sum' ] = array(	// Option prefix.
 				'name'         => 'tc-summary',
-				'label_transl' => _x( 'Twitter Summary Card', 'option label', 'wpsso' ),
+				'label_transl' => _x( 'X (Twitter) Summary Card', 'option label', 'wpsso' ),
 			);
 
 			$sizes[ 'tc_lrg' ] = array(	// Option prefix.
 				'name'         => 'tc-lrgimg',
-				'label_transl' => _x( 'Twitter Summary Card Large Image', 'option label', 'wpsso' ),
+				'label_transl' => _x( 'X (Twitter) Summary Card Large Image', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 *
 		 *	array(
 		 *		'summary_large_image',
-		 *		'Twitter Summary Card Large Image',
+		 *		'X (Twitter) Summary Card Large Image',
 		 *		'wpsso-tc-lrgimg',
 		 *		'tc_lrg',
 		 *	)
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				case 'app':
 
-					$card_label = _x( 'Twitter App Card', 'metabox title', 'wpsso' );
+					$card_label = _x( 'X (Twitter) App Card', 'metabox title', 'wpsso' );
 					$size_name  = '';
 					$md_pre     = 'tc_app';
 
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				case 'player':
 
-					$card_label = _x( 'Twitter Player Card', 'metabox title', 'wpsso' );
+					$card_label = _x( 'X (Twitter) Player Card', 'metabox title', 'wpsso' );
 					$size_name  = '';
 					$md_pre     = 'tc_play';
 
@@ -204,7 +204,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				case 'summary':
 
-					$card_label = _x( 'Twitter Summary Card', 'metabox title', 'wpsso' );
+					$card_label = _x( 'X (Twitter) Summary Card', 'metabox title', 'wpsso' );
 					$size_name  = 'wpsso-tc-summary';
 					$md_pre     = 'tc_sum';
 
@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				case 'summary_large_image':
 
-					$card_label = _x( 'Twitter Summary Card Large Image', 'metabox title', 'wpsso' );
+					$card_label = _x( 'X (Twitter) Summary Card Large Image', 'metabox title', 'wpsso' );
 					$size_name  = 'wpsso-tc-lrgimg';
 					$md_pre     = 'tc_lrg';
 
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *
 			 *	array(
 			 *		'summary_large_image',
-			 *		'Twitter Summary Card Large Image',
+			 *		'X (Twitter) Summary Card Large Image',
 			 *		'wpsso-tc-lrgimg',
 			 *		'tc_lrg',
 			 *	)

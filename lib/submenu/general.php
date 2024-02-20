@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google'      => _x( 'Google', 'metabox tab', 'wpsso' ),
 				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
-				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'twitter'     => _x( 'X (Twitter)', 'metabox tab', 'wpsso' ),
 				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
 			);
 
@@ -382,12 +382,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					);
 
 					$table_rows[ 'tc_type_singular' ] = '' .
-						$this->form->get_th_html( _x( 'Twitter Card for Singular with Image', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'X (Twitter) Card for Singular with Image', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_type_singular' ) .
 						'<td>' . $this->form->get_select( 'tc_type_singular', $tc_types ) . '</td>';
 
 					$table_rows[ 'tc_type_default' ] = '' .
-						$this->form->get_th_html( _x( 'Twitter Card Type by Default', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'X (Twitter) Card Type by Default', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_type_default' ) .
 						'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';
 

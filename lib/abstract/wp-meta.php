@@ -350,8 +350,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'og_title'        => '',			// Social Title.
 					'og_desc'         => '',			// Social Description.
 					'pin_img_desc'    => '',			// Pinterest Description.
-					'tc_title'        => '',			// Twitter Card Title.
-					'tc_desc'         => '',			// Twitter Card Description.
+					'tc_title'        => '',			// X (Twitter) Card Title.
+					'tc_desc'         => '',			// X (Twitter) Card Description.
 
 					/*
 					 * Edit Media tab.

@@ -173,17 +173,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				switch ( $msg_key ) {
 
-					case 'tooltip-meta-tc_title':		// Twitter Card Title.
+					case 'tooltip-meta-tc_title':		// X (Twitter) Card Title.
 
-						$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' ) . ' ';
+						$text = __( 'A customized title for the X (Twitter) Card title meta tag.', 'wpsso' ) . ' ';
 
 						$text .= __( 'The default value is inherited from the social or SEO title.', 'wpsso' ) . ' ';
 
 					 	break;
 
-					case 'tooltip-meta-tc_desc':		// Twitter Card Description.
+					case 'tooltip-meta-tc_desc':		// X (Twitter) Card Description.
 
-						$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' ) . ' ';
+						$text = __( 'A customized description for the X (Twitter) Card description meta tag.', 'wpsso' ) . ' ';
 
 						$text .= __( 'The default value is inherited from the social or SEO description.', 'wpsso' ) . ' ';
 
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					case 'tooltip-meta-tc_lrg_img_id':	// Image ID.
 					case 'tooltip-meta-tc_sum_img_id':	// Image ID.
 
-						$text = __( 'A customized image ID for the Twitter Card image.', 'wpsso' ) . ' ';
+						$text = __( 'A customized image ID for the X (Twitter) Card image.', 'wpsso' ) . ' ';
 
 						$text .= __( 'The default value is inherited from the priority image.', 'wpsso' ) . ' ';
 
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					case 'tooltip-meta-tc_lrg_img_url':	// or an Image URL.
 					case 'tooltip-meta-tc_sum_img_url':	// or an Image URL.
 
-						$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
+						$text = __( 'A customized image URL (instead of an image ID) for the X (Twitter) Card image.', 'wpsso' ) . ' ';
 
 						$text .= __( 'The default value is inherited from the priority image.', 'wpsso' ) . ' ';
 

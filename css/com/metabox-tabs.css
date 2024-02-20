@@ -472,7 +472,7 @@ h3.sucom-metabox-tab_title {
 	content:"\e835";	/* .icon-globe-alt */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* SSO > General Settings > Social and Search Sites > Twitter tab. */
+.sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* SSO > General Settings > Social and Search Sites > X (Twitter) tab. */
 	content:"\f304";	/* .icon-twitter-squared */
 }
 

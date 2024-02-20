@@ -153,14 +153,14 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 				) : '',
 				'tc_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
-					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'X (Twitter) Card Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_title',
 					'content'  => $form->get_input_dep( 'tc_title', $css_class = 'wide', $css_id = '',
 						$input_limits[ 'tc_title' ], $def_tc_title, $is_disabled = false, $dep_id = 'og_title' ),
 				) : '',
 				'tc_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
-					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'label'    => _x( 'X (Twitter) Card Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_desc',
 					'content'  => $form->get_textarea_dep( 'tc_desc', $css_class = '', $css_id = '',
 						$input_limits[ 'tc_desc' ], $def_tc_desc, $is_disabled = false, $dep_id = 'og_desc' ),

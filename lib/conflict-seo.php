@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 
 			/*
-			 * Check for Twitter.
+			 * Check for X (Twitter).
 			 */
 			if ( aioseo()->options->social->twitter->general->enable ) {
 
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$opts = $tsf->get_all_options();
 
 			/*
-			 * Check for Open Graph and Twitter Cards.
+			 * Check for Open Graph and X (Twitter) Cards.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$opts = json_decode( get_option( 'sq_options' ), $assoc = true );
 
 			/*
-			 * Check for Open Graph and Twitter Cards.
+			 * Check for Open Graph and X (Twitter) Cards.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seosettings&tab=social' );
 
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 
 			/*
-			 * Check for Open Graph and Twitter Cards.
+			 * Check for Open Graph and X (Twitter) Cards.
 			 */
 			$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
 			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
@@ -609,7 +609,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			}
 
 			/*
-			 * Check for Twitter Cards.
+			 * Check for X (Twitter) Cards.
 			 */
 			if ( ! empty( $opts_social[ 'twitter' ] ) ) {
 

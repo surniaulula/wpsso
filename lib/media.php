@@ -3519,7 +3519,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 * twitter:app:id:iphone
 							 * twitter:app:url:iphone
 							 */
-							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter apps.
+							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// X (Twitter) apps.
 
 								if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $match ) ) {
 

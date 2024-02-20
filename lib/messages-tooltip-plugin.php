@@ -670,7 +670,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$def_value = $this->p->opt->get_defaults( 'plugin_min_shorten' );
 
-					$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $def_value );
+					$text = sprintf( __( 'Only shorten URLs that are longer than this length (default is %d characters).', 'wpsso' ), $def_value );
 
 					break;
 

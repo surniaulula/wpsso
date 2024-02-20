@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 		}
 
 		/*
-		 * Disable Rank Math Facebook and Twitter meta tags.
+		 * Disable Rank Math Facebook and X (Twitter) meta tags.
 		 */
 		public function cleanup_rankmath_actions() {
 

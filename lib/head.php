@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			/*
-			 * Twitter Cards.
+			 * X (Twitter) Cards.
 			 */
 			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
 

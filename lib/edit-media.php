@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 		}
 
 		/*
-		 * Twitter Card
+		 * X (Twitter) Card
 		 *
 		 * App and Player cards do not have a $size_name.
 		 *

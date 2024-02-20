@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'checkbox';
 
 				/*
-				 * Twitter-style usernames (prepend with an @ character).
+				 * X (Twitter) usernames (prepend with an @ character).
 				 */
 				case 'tc_site':
 
@@ -539,8 +539,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'seo_desc':	// SEO Meta Description.
 				case 'og_title':
 				case 'og_desc':
-				case 'tc_title':	// Twitter Card Title.
-				case 'tc_desc':		// Twitter Card Description.
+				case 'tc_title':	// X (Twitter) Card Title.
+				case 'tc_desc':		// X (Twitter) Card Description.
 				case 'pin_desc':
 
 					return 'one_line';

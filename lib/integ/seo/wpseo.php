@@ -597,12 +597,9 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 					unset( $presenters[ $num ] );
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'skipping presenter: ' . $class_name );
-					}
+					$this->p->debug->log( 'skipping presenter: ' . $class_name );
 				}
 			}
 

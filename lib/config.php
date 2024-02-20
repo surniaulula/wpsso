@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoam' => array(			// Plugin acronym.
 					'short'       => 'WPSSO AM',	// Short plugin name.
 					'name'        => 'WPSSO Mobile App Meta Tags',
-					'desc'        => 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.',
+					'desc'        => 'Apple Store and Google Play App meta tags for Apple\'s mobile Safari banner and X\'s (Twitter) App Card.',
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
 					'update_auth' => '',		// No premium version.
@@ -1692,14 +1692,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_review_item_type'  => 'product',	// Default Subject Schema Type.
 
 					/*
-					 * Twitter Card options.
+					 * X (Twitter) Card options.
 					 */
-					'tc_site'           => '',			// Twitter Business @username (localized).
-					'tc_type_singular'  => 'summary_large_image',	// Twitter Card for Post / Page Image.
-					'tc_type_default'   => 'summary',		// Twitter Card Type by Default.
+					'tc_site'           => '',			// X (Twitter) Business @username (localized).
+					'tc_type_singular'  => 'summary_large_image',	// X (Twitter) Card for Post / Page Image.
+					'tc_type_default'   => 'summary',		// X (Twitter) Card Type by Default.
 
 					/*
-					 * Twitter Summary Card.
+					 * X (Twitter) Summary Card.
 					 *
 					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary.
 					 */
@@ -1710,7 +1710,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_crop_y' => 'center',
 
 					/*
-					 * Twitter Summary Card Large Image.
+					 * X (Twitter) Summary Card Large Image.
 					 *
 					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image.
 					 */
@@ -2161,12 +2161,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_tumblr_name'       => 'tumblr',
 					'plugin_cm_tumblr_label'      => 'Tumblr URL',
 					'plugin_cm_tumblr_enabled'    => 1,
-					'plugin_cm_twitter_name'      => 'twitter',
-					'plugin_cm_twitter_label'     => 'Twitter @username',
-					'plugin_cm_twitter_enabled'   => 1,
 					'plugin_cm_wikipedia_name'    => 'wikipedia',
 					'plugin_cm_wikipedia_label'   => 'Wikipedia Page URL',
 					'plugin_cm_wikipedia_enabled' => 1,
+					'plugin_cm_twitter_name'      => 'twitter',
+					'plugin_cm_twitter_label'     => 'X (Twitter) @username',
+					'plugin_cm_twitter_enabled'   => 1,
 					'plugin_cm_yt_name'           => 'youtube',
 					'plugin_cm_yt_label'          => 'YouTube Channel URL',
 					'plugin_cm_yt_enabled'        => 1,
@@ -3088,8 +3088,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sc_publisher_url'        => 'Soundcloud Business Page URL',
 					'tiktok_publisher_url'    => 'TikTok Business Page URL',
 					'tumblr_publisher_url'    => 'Tumblr Business Page URL',
-					'tc_site'                 => 'Twitter Business @username',
 					'wikipedia_publisher_url' => 'Wikipedia Organization Page URL',
+					'tc_site'                 => 'X (Twitter) Business @username',
 					'yt_publisher_url'        => 'YouTube Business Channel URL',
 				),
 
