@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-02-21 01:28-0800\n"
+"PO-Revision-Date: 2024-02-21 02:01-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3544,7 +3544,7 @@ msgstr "URL de page WikiPedia"
 #: gettext/gettext-lib-config.php:179
 msgctxt "option value"
 msgid "X (Twitter) @username"
-msgstr "@usager X (Twitter)"
+msgstr "@utilisateur X (Twitter)"
 
 #: gettext/gettext-lib-config.php:180 gettext/gettext-lib-config.php:325
 msgctxt "option value"
@@ -4143,7 +4143,7 @@ msgstr "URL page d'organisation Wikipedia"
 #: gettext/gettext-lib-config.php:324
 msgctxt "option value"
 msgid "X (Twitter) Business @username"
-msgstr "@usager d'affaires X (Twitter)"
+msgstr "@utilisateur X (Twitter) d'affaires"
 
 #: gettext/gettext-lib-config.php:326
 msgctxt "option value"
@@ -11314,7 +11314,7 @@ msgstr "Les dimensions utilisées pour l'image du bouton de navigateur Pinterest
 
 #: lib/messages-tooltip.php:398
 msgid "If you have a <a href=\"%s\">X (Twitter) @username for your business</a> (not your personal @username), you may enter its name here."
-msgstr "Si vous avez un <a href=\"%s\">@nom d'utilisateur X (Twitter) pour votre entreprise</a> (pas votre @nom d'utilisateur personnel), vous pouvez entrer son nom ici."
+msgstr "Si vous avez un <a href=\"%s\">@utilisateur X (Twitter) pour votre entreprise</a> (pas votre @nom personnel), vous pouvez entrer son nom ici."
 
 #: lib/messages-tooltip.php:398
 msgid "https://business.twitter.com/"
