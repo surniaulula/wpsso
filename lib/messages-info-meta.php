@@ -342,6 +342,19 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
+				/*
+				 * SSO Orgs > Edit Organization page.
+				 */
+				case 'info-meta-org_schema_type':
+
+					$text = '<p class="status-msg">';
+
+					$text .= $this->p->msgs->get( 'tooltip-meta-org_schema_type', array( 'no-tooltip' => true ) );
+
+					$text .= '</p>';
+
+				 	break;
+
 			}	// End of 'info-meta' switch.
 
 			return $text;

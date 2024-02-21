@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.14.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 17.14.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9854,20 +9854,20 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:78
 msgid ""
-"You may optionally choose a more accurate Schema type for this organization "
-"(default is Organization)."
+"You may choose a more accurate Schema type for this organization (default is "
+"Organization)."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:80
 msgid ""
-"Note that Google considers Schema Organization sub-types, that are also "
-"Schema Place sub-types, as places and not organizations."
+"Note that Google considers any Schema Organization sub-type, which is also "
+"Schema Place sub-type, as a place and not an organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:82
 msgid ""
-"For this reason, the Schema Organization list does not include any Schema "
-"Place sub-types."
+"Therefore, the Schema Organization selector cannot include any Schema Place "
+"sub-types."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:88
@@ -12173,9 +12173,7 @@ msgid "Select an optional location for this organization."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:114
-msgid ""
-"The site organization type must be \"Organization\", not a Schema "
-"Organization sub-type."
+msgid "The site organization must be Schema Organization."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:120

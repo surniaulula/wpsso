@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-02-20 19:05-0800\n"
+"PO-Revision-Date: 2024-02-21 01:28-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -9314,16 +9314,16 @@ msgid "Select an optional place (ie. location) for this organization."
 msgstr "Sélectionnez un endroit (c'est-à-dire un emplacement) facultatif pour cette organisation."
 
 #: lib/messages-tooltip-meta-org.php:78
-msgid "You may optionally choose a more accurate Schema type for this organization (default is Organization)."
-msgstr "Vous pouvez aussi choisir un type de schéma plus précis pour cette organisation (la valeur par défaut est Organisation)."
+msgid "You may choose a more accurate Schema type for this organization (default is Organization)."
+msgstr "Vous pouvez choisir un type de Schéma plus précis pour cette organisation (la valeur par défaut est Organization)."
 
 #: lib/messages-tooltip-meta-org.php:80
-msgid "Note that Google considers Schema Organization sub-types, that are also Schema Place sub-types, as places and not organizations."
-msgstr "Notez que Google considère les sous-types de Schéma Organization, qui sont également des sous-types de Schéma Place, comme des lieux et non comme des organisations."
+msgid "Note that Google considers any Schema Organization sub-type, which is also Schema Place sub-type, as a place and not an organization."
+msgstr "Notez que Google considère tout sous-type de Schéma Organization, qui est également un sous-type de Schéma Place, comme un lieu et non comme une organisation."
 
 #: lib/messages-tooltip-meta-org.php:82
-msgid "For this reason, the Schema Organization list does not include any Schema Place sub-types."
-msgstr "Pour cette raison, la liste de Schéma Organization n’inclut aucun sous-type de Schéma Place."
+msgid "Therefore, the Schema Organization selector cannot include any Schema Place sub-types."
+msgstr "Par conséquent, le sélecteur de Schéma Organization ne peut inclure aucun sous-type de Schéma Place."
 
 #: lib/messages-tooltip-meta-org.php:88
 msgid "A document describing the editorial principles of an Organization that relate to their activities as a publisher."
@@ -11136,8 +11136,8 @@ msgid "Select an optional location for this organization."
 msgstr "Choisissez un emplacement optionnel pour cette organisation."
 
 #: lib/messages-tooltip-site.php:114
-msgid "The site organization type must be \"Organization\", not a Schema Organization sub-type."
-msgstr "Le type d'organisation du site doit être \"Organization\", et non un sous-type de Schéma Organization."
+msgid "The site organization must be Schema Organization."
+msgstr "L’organisation du site doit être le Schéma Organization."
 
 #: lib/messages-tooltip-site.php:120
 msgid "Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value."

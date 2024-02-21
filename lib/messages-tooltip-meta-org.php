@@ -75,11 +75,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 				case 'tooltip-meta-org_schema_type':	// Organization Schema Type.
 
-					$text = __( 'You may optionally choose a more accurate Schema type for this organization (default is Organization).', 'wpsso' ) . ' ';
+					$text = __( 'You may choose a more accurate Schema type for this organization (default is Organization).', 'wpsso' ) . ' ';
 
-					$text .= __( 'Note that Google considers Schema Organization sub-types, that are also Schema Place sub-types, as places and not organizations.', 'wpsso' ) . ' ';
+					$text .= __( 'Note that Google considers any Schema Organization sub-type, which is also Schema Place sub-type, as a place and not an organization.', 'wpsso' ) . ' ';
 
-					$text .= __( 'For this reason, the Schema Organization list does not include any Schema Place sub-types.', 'wpsso' ) . ' ';
+					$text .= __( 'Therefore, the Schema Organization selector cannot include any Schema Place sub-types.', 'wpsso' ) . ' ';
 
 					break;
 

@@ -679,7 +679,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( ! empty( $text ) ) {
 
-				if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
+				if ( 0 === strpos( $msg_key, 'tooltip-' ) && empty( $info[ 'no-tooltip' ] ) ) {
 
 					$tooltip_class = $this->p->cf[ 'form' ][ 'tooltip_class' ];
 					$tooltip_icon  = '<span class="' . $tooltip_class . '-icon"></span>';
