@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 				case 'tooltip-site_org_schema_type':	// Organization Schema Type.
 
-					$text .= __( 'The site organization type should be "Organization", and not a Schema Organization sub-type.', 'wpsso' );
+					$text .= __( 'The site organization type must be "Organization", not a Schema Organization sub-type.', 'wpsso' );
 
 					break;
 

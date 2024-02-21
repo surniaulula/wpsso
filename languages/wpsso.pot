@@ -9860,14 +9860,14 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:80
 msgid ""
-"Note that Google considers Organization sub-types that are also Schema Place "
-"sub-types as places, not organizations."
+"Note that Google considers Schema Organization sub-types, that are also "
+"Schema Place sub-types, as places and not organizations."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:82
 msgid ""
-"For this reason, the organiztion list does not include any Schema Place sub-"
-"types."
+"For this reason, the Schema Organization list does not include any Schema "
+"Place sub-types."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:88
@@ -12174,7 +12174,7 @@ msgstr ""
 
 #: lib/messages-tooltip-site.php:114
 msgid ""
-"The site organization type should be \"Organization\", and not a Schema "
+"The site organization type must be \"Organization\", not a Schema "
 "Organization sub-type."
 msgstr ""
 
