@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.14.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 17.14.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5334,8 +5334,8 @@ msgstr ""
 #: lib/pro/admin/advanced.php:148 lib/pro/admin/advanced.php:155
 #: lib/std/admin/advanced.php:117 lib/std/admin/advanced.php:123
 #: lib/std/admin/advanced.php:129 lib/std/admin/advanced.php:135
-#: lib/submenu/general.php:361 lib/submenu/general.php:367
-#: lib/submenu/general.php:373
+#: lib/submenu/general.php:365 lib/submenu/general.php:371
+#: lib/submenu/general.php:377
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -8828,13 +8828,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:148 lib/submenu/general.php:331
+#: lib/edit-visibility.php:148 lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:149 lib/edit-visibility.php:165
-#: lib/submenu/general.php:332 lib/submenu/general.php:346
+#: lib/submenu/general.php:336 lib/submenu/general.php:350
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -8849,7 +8849,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:164 lib/submenu/general.php:345
+#: lib/edit-visibility.php:164 lib/submenu/general.php:349
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -9198,11 +9198,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1728 lib/register.php:305 lib/util.php:876 lib/util.php:985
-#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3411
+#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3429
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1729 lib/util.php:877 lib/util.php:3412
+#: lib/media.php:1729 lib/util.php:877 lib/util.php:3430
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -9858,16 +9858,16 @@ msgid ""
 "(default is Organization)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:80 lib/messages-tooltip-site.php:114
+#: lib/messages-tooltip-meta-org.php:80
 msgid ""
-"Google classifies most Schema Organization sub-types as places and local "
-"businesses, not organizations."
+"Note that Google considers Organization sub-types that are also Schema Place "
+"sub-types as places, not organizations."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:82
 msgid ""
-"Do not change this value unless you are certain that your selected Schema "
-"Organization sub-type will be recognized as an organization by Google."
+"For this reason, the organiztion list does not include any Schema Place sub-"
+"types."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:88
@@ -11506,7 +11506,7 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:324 lib/submenu/general.php:116
-#: lib/submenu/general.php:153
+#: lib/submenu/general.php:157
 msgctxt "option label"
 msgid "Site Name"
 msgstr ""
@@ -11525,7 +11525,7 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:341 lib/submenu/general.php:122
-#: lib/submenu/general.php:164
+#: lib/submenu/general.php:168
 msgctxt "option label"
 msgid "Site Description"
 msgstr ""
@@ -12172,13 +12172,13 @@ msgstr ""
 msgid "Select an optional location for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:116
+#: lib/messages-tooltip-site.php:114
 msgid ""
-"The site organization type should be \"Organization\", and not a sub-type of "
-"Schema Organization."
+"The site organization type should be \"Organization\", and not a Schema "
+"Organization sub-type."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:122
+#: lib/messages-tooltip-site.php:120
 msgid ""
 "Individual sites/blogs may use this value as a default (when the plugin is "
 "first activated), if the current site/blog option value is blank, or force "
@@ -12367,7 +12367,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:351 lib/messages.php:1330
-#: lib/submenu/general.php:370
+#: lib/submenu/general.php:374
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -13657,12 +13657,12 @@ msgstr ""
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1236 lib/submenu/general.php:487
+#: lib/options.php:1236 lib/submenu/general.php:491
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/options.php:1241 lib/submenu/general.php:492
+#: lib/options.php:1241 lib/submenu/general.php:496
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -14473,7 +14473,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:287 lib/util.php:3433
+#: lib/submenu/advanced.php:287 lib/util.php:3451
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -14635,187 +14635,187 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:128 lib/submenu/general.php:272
+#: lib/submenu/general.php:128 lib/submenu/general.php:276
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/general.php:133 lib/submenu/general.php:277
+#: lib/submenu/general.php:133 lib/submenu/general.php:281
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
 
-#: lib/submenu/general.php:159
+#: lib/submenu/general.php:163
 msgctxt "option label"
 msgid "Site Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:170
+#: lib/submenu/general.php:174
 msgctxt "option label"
 msgid "Site Home URL"
 msgstr ""
 
-#: lib/submenu/general.php:182
+#: lib/submenu/general.php:186
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:188
+#: lib/submenu/general.php:192
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:205
+#: lib/submenu/general.php:209
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:210
+#: lib/submenu/general.php:214
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:215
+#: lib/submenu/general.php:219
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:220
+#: lib/submenu/general.php:224
 msgctxt "option label"
 msgid "Default Dimension Units"
 msgstr ""
 
-#: lib/submenu/general.php:226
+#: lib/submenu/general.php:230
 msgctxt "option label"
 msgid "Default Weight Units"
 msgstr ""
 
-#: lib/submenu/general.php:232
+#: lib/submenu/general.php:236
 msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:242
+#: lib/submenu/general.php:246
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:247
+#: lib/submenu/general.php:251
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:252
+#: lib/submenu/general.php:256
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:256
+#: lib/submenu/general.php:260
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:265
+#: lib/submenu/general.php:269
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:292
+#: lib/submenu/general.php:296
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:297
+#: lib/submenu/general.php:301
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:306
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:311
+#: lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:327
+#: lib/submenu/general.php:331
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:335
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:341
+#: lib/submenu/general.php:345
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:353
+#: lib/submenu/general.php:357
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:358
+#: lib/submenu/general.php:362
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:364
+#: lib/submenu/general.php:368
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:380
+#: lib/submenu/general.php:384
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:381
+#: lib/submenu/general.php:385
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:385
+#: lib/submenu/general.php:389
 msgctxt "option label"
 msgid "X (Twitter) Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:390
+#: lib/submenu/general.php:394
 msgctxt "option label"
 msgid "X (Twitter) Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:399
+#: lib/submenu/general.php:403
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:404
+#: lib/submenu/general.php:408
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:409
+#: lib/submenu/general.php:413
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:414
+#: lib/submenu/general.php:418
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:469
+#: lib/submenu/general.php:473
 msgctxt "option label"
 msgid "Site Publisher Type"
 msgstr ""
 
-#: lib/submenu/general.php:478
+#: lib/submenu/general.php:482
 msgctxt "option label"
 msgid "Site Publisher Person"
 msgstr ""
@@ -15376,180 +15376,180 @@ msgstr ""
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1359
+#: lib/util.php:1377
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1461
+#: lib/util.php:1479
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1588
+#: lib/util.php:1606
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1617
+#: lib/util.php:1635
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1647
+#: lib/util.php:1665
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1767
+#: lib/util.php:1785
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1781
+#: lib/util.php:1799
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3413
+#: lib/util.php:3431
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3436
+#: lib/util.php:3454
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3438
+#: lib/util.php:3456
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3440
+#: lib/util.php:3458
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3442
+#: lib/util.php:3460
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3837
+#: lib/util.php:3855
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3838
+#: lib/util.php:3856
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3842
+#: lib/util.php:3860
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3843
+#: lib/util.php:3861
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3847
+#: lib/util.php:3865
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3848
+#: lib/util.php:3866
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3852
+#: lib/util.php:3870
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3853
+#: lib/util.php:3871
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3857
+#: lib/util.php:3875
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3858
+#: lib/util.php:3876
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3862
+#: lib/util.php:3880
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3863
+#: lib/util.php:3881
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3867
+#: lib/util.php:3885
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3868
+#: lib/util.php:3886
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3872
+#: lib/util.php:3890
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3873
+#: lib/util.php:3891
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3877
+#: lib/util.php:3895
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:3878
+#: lib/util.php:3896
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:3883
+#: lib/util.php:3901
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3884
+#: lib/util.php:3902
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3954
+#: lib/util.php:3972
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3964
+#: lib/util.php:3982
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

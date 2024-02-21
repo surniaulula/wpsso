@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'business_types':	// Returns a multi-dimentional array.
 
-						$this->get_form_cache( 'schema_types', false );
+						$this->get_form_cache( 'schema_types' );
 
 						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
 
@@ -1208,7 +1208,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'business_types_select':
 
-						$this->get_form_cache( 'business_types', false );
+						$this->get_form_cache( 'business_types' );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'business_types' ] );
 
@@ -1241,10 +1241,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'org_types_select':
+					case 'strict_org_types_select':
 
-						$this->get_form_cache( 'org_types', false );	// Sets $local_cache[ 'org_types' ].
+						$this->get_form_cache( 'org_types' );	// Sets $local_cache[ 'org_types' ].
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'org_types' ] );
+
+						if ( 'strict_org_types_select' === $filter_key ) {
+
+							foreach ( $this->get_form_cache( 'place_types_select' ) as $key => $val ) {
+						
+								unset ( $local_cache[ $filter_key ][ $key ] );
+							}
+						}
 
 						break;
 
@@ -1263,10 +1272,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'place_types_select':
+					case 'strict_place_types_select':
 
 						$this->get_form_cache( 'place_types' );
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'place_types' ] );
+
+						if ( 'strict_place_types_select' === $filter_key ) {
+
+							foreach ( $this->get_form_cache( 'org_types_select' ) as $key => $val ) {
+						
+								unset ( $local_cache[ $filter_key ][ $key ] );
+							}
+						}
 
 						break;
 
