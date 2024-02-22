@@ -1773,8 +1773,9 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Select a Place', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_place_id',
-					'content'  => $form->get_select( 'schema_place_id', $args[ 'select_names' ][ 'place_custom' ],
-						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+					'content'  => $form->get_select( 'schema_place_id', $args[ 'select_names' ][ 'place_custom' ], $css_class = 'wide', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false,
+							$event_names = array( 'on_change_unhide_rows' ) ),
 				),
 			);
 

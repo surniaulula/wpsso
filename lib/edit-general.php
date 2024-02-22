@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoEditGeneral' ) ) {
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_type',
 					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true,
+						$is_assoc = true, $is_disabled = false, $selected = false,
 							$event_names = array( 'on_change_unhide_rows' ) ),
 				),
 				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.

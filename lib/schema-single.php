@@ -1249,21 +1249,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_place_id' );
 
-					} else {
-
-						$place_id = null;
-					}
+					} else $place_id = null;
 
 					if ( null === $place_id ) {
 
 						$place_id = $org_opts[ 'org_place_id' ];
 
-					} else {
+					} elseif ( $wpsso->debug->enabled ) {
 
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with schema_place_id ' . $place_id );
-						}
+						$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with schema_place_id ' . $place_id );
 					}
 
 					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $place_list_el = false );
