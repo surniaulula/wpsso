@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.14.1-dev.1 (2024/02/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed missing "location" property in Schema Organization markup.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.14.0 (2024/02/21)**
 
 * **New Features**
@@ -656,6 +670,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.5.
 
 == Upgrade Notice ==
+
+= 17.14.1-dev.1 =
+
+(2024/02/22) Fixed missing "location" property in Schema Organization markup.
 
 = 17.14.0 =
 
