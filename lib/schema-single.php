@@ -1077,7 +1077,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
 				$org_opts[ 'org_schema_type' ] !== 'none' &&
-				$org_opts[ 'org_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
+				$org_opts[ 'org_schema_type' ] !== 'organization' ) {	// Only check if the Schema type is a sub-type.
 
 				/*
 				 * Schema NewsMediaOrganization type properties.
@@ -1179,10 +1179,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ],
 									'<a href="' . $type_url . '">'. $type_url . '</a>' );
 
-							} else {
-
-								$notice_msg = '';
-							}
+							} else $notice_msg = '';
 
 							if ( $notice_msg ) {
 
