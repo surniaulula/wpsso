@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawl</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>17.14.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.2.34 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.8 or newer</td></tr>
@@ -17,7 +17,7 @@
 
 <h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>Provides complete structured data for WordPress to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Provides complete structured data for WordPress to present your content at its best on social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
