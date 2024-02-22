@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.1 (2024/02/22)**
+**Version 17.14.2 (2024/02/22)**
 
 * **New Features**
 	* None.
@@ -288,6 +288,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed possible missing "location" property in Schema Organization markup.
 	* Fixed possible missing "mainEntityOfPage" property.
 	* Fixed possible duplicate Organization and Organization sub-type markup for Knowledge Graph.
+	* Fixed a javascript indexOf() error on numeric keys for the Schema Person selector.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -673,9 +674,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.1 =
+= 17.14.2 =
 
-(2024/02/22) Fixed possible missing "location" and "mainEntityOfPage" properties. Fixed possible duplicate Organization and Organization sub-type markup for Knowledge Graph.
+(2024/02/22) Fixed possible missing "location" and "mainEntityOfPage" properties. Fixed possible duplicate Organization and Organization sub-type markup. Fixed a javascript indexOf() error on numeric keys.
 
 = 17.14.0 =
 
