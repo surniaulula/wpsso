@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.1-rc.1 (2024/02/22)**
+**Version 17.14.1 (2024/02/22)**
 
 * **New Features**
 	* None.
@@ -673,7 +673,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.1-rc.1 =
+= 17.14.1 =
 
 (2024/02/22) Fixed possible missing "location" and "mainEntityOfPage" properties. Fixed possible duplicate Organization and Organization sub-type markup for Knowledge Graph.
 
