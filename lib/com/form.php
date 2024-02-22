@@ -3255,7 +3255,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				var css_class = jQuery( this ).attr( 'class' );
 
-				if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+				if ( 'string' === typeof css_class && css_class.indexOf( 'hide_' ) == 0 ) {
 
 					this.trigger( ev );
 				}

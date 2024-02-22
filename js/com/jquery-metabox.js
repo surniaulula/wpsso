@@ -140,7 +140,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 		label_transl = window[ json_name + '_vals' ][ index ];
 
-		if ( option_value.indexOf( ':optgroup-' ) > 0 ) {
+		if ( 'string' === typeof option_value && option_value.indexOf( ':optgroup-' ) > 0 ) {
 
 			if ( option_value.indexOf( ':optgroup-begin' ) > 0 ) {
 
