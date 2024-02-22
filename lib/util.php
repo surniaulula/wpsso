@@ -1250,7 +1250,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						if ( 'strict_org_types_select' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'place_types_select' ) as $key => $val ) {
-						
+
 								unset ( $local_cache[ $filter_key ][ $key ] );
 							}
 						}
@@ -1281,7 +1281,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						if ( 'strict_place_types_select' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'org_types_select' ) as $key => $val ) {
-						
+
 								unset ( $local_cache[ $filter_key ][ $key ] );
 							}
 						}

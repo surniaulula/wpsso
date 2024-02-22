@@ -1406,7 +1406,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $read_cache ) {
-			
+
 				if ( ! SucomUtilWP::doing_dev() ) {
 
 					if ( $custom_style_css = get_transient( $cache_id ) ) {

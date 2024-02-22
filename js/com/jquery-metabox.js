@@ -153,15 +153,15 @@ function sucomSelectLoadJson( select_id, json_name ) {
 			select_opt_html += '<option value="' + option_value + '"';
 
 			if ( option_value == selected_val ) {	/* Allow numeric string/integer comparison. */
-	
+
 				select_opt_html += ' selected="selected"';
 			}
-	
+
 			if ( default_value == option_value ) {	/* Allow numeric string/integer comparison. */
-	
+
 				label_transl += ' ' + default_text;
 			}
-	
+
 			select_opt_html += '>' + label_transl + '</option>';
 		}
 	} );

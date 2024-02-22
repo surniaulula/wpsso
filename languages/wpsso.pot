@@ -2744,25 +2744,25 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:934 lib/com/form.php:2601
+#: lib/com/form.php:934 lib/com/form.php:2612
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:935 lib/com/form.php:2602
+#: lib/com/form.php:935 lib/com/form.php:2613
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:936 lib/com/form.php:2603
+#: lib/com/form.php:936 lib/com/form.php:2614
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:937 lib/com/form.php:2604
+#: lib/com/form.php:937 lib/com/form.php:2615
 msgctxt "option comment"
 msgid "secs"
 msgstr ""

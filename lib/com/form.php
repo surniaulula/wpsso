@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( 'sorted' === $is_assoc ) {
-			
+
 				$event_args[ 'is_sorted' ] = true;
 
 				$is_assoc = null;
@@ -1259,98 +1259,98 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( is_array( $group_array ) ) {	// Two dimensional array.
 
 					if ( $event_json_var ) {
-	
+
 						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
-	
+
 							$select_json_arr[ $optgroup_transl . ':optgroup-begin' ] = $optgroup_transl;
 						}
 
 					} else $select_opt_arr[] = '<optgroup label="' . esc_attr( $optgroup_transl ) . '">';
-	
+
 					$group_values = $group_array;
-	
+
 				} else $group_values = array( $optgroup_transl => $group_array );
 
 				foreach ( $group_values as $option_value => $label_transl ) {
-	
+
 					$select_opt_count++;	// Used to check for first option.
 
 					if ( is_array( $label_transl ) ) {     // Just in case.
-					
+
 						$label_transl = implode( $glue = ', ', $label_transl );
 					}
-	
+
 					/*
 					 * Save the option value and translated label for the json array before adding "(default)" suffix.
 					 */
 					if ( $event_json_var ) {
-	
+
 						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
-	
+
 							$select_json_arr[ $option_value ] = $label_transl;
 						}
 					}
-	
+
 					/*
 					 * Save the default value and its text so we can add them (as jquery data) to the select.
 					 */
 					if ( $in_defaults && $option_value === (string) $this->defaults[ $name ] ) {
-	
+
 						$default_value = $option_value;
 						$default_text  = $this->get_option_value_transl( '(default)' );
 						$label_transl  .= ' ' . $default_text;
 					}
-	
+
 					/*
 					 * Maybe get a selected="selected" string for this option.
 					 */
 					if ( ! is_bool( $selected ) ) {
-	
+
 						$is_selected_html = selected( $selected, $option_value, false );
-	
+
 					} elseif ( $in_options ) {
-	
+
 						$is_selected_html = selected( $this->options[ $name ], $option_value, false );
-	
+
 					} elseif ( $in_defaults ) {
-	
+
 						$is_selected_html = selected( $this->defaults[ $name ], $option_value, false );
-	
+
 					} else $is_selected_html = '';
-	
+
 					if ( $is_selected_html || $select_opt_count === 1 ) {
-	
+
 						$selected_value = $option_value;
 					}
-	
+
 					/*
 					 * Only include the first and selected option(s).
 					 */
 					if ( ( ! $is_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
-	
+
 						if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
-	
+
 							$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
 								$is_selected_html . '>' . $label_transl . '</option>';
-	
+
 							$select_opt_added++;
 						}
 					}
 				}
-				
+
 				if ( is_array( $group_array ) ) {
 
 					if ( $event_json_var ) {
-	
+
 						if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
-	
+
 							$select_json_arr[ $optgroup_transl . ':optgroup-end' ] = $optgroup_transl;
 						}
 
 					} else $select_opt_arr[] = '</optgroup>';
 				}
 			}
-	
+
 			$html .= "\n";
 			$html .= '<select ';
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
@@ -1481,6 +1481,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
+
+			/*
+                         * Set 'none' as the default if no default is defined.
+                         */
+                        if ( ! empty( $name ) ) {	// Just in case.
+
+                                if ( ! $this->in_defaults( $name ) ) {
+
+                                        $this->defaults[ $name ] = 'none';	// Required for sanity check.
+                                }
+                        }
 
 			/*
 			 * Sanity check for older input field values.
@@ -2921,21 +2932,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = empty( $event_args[ 'is_transl' ] ) ? $this->get_option_value_transl( $label ) : $label;
 
 					if ( 0 === $label ) {
-	
+
 						if ( preg_match( '/_img_max/', $name ) ) {
-	
+
 							$label_transl = trim( $label_transl . ' ' . $this->get_option_value_transl( '(no images)' ) );
-	
+
 						} elseif ( preg_match( '/_vid_max/', $name ) ) {
-	
+
 							$label_transl = trim( $label_transl . ' ' . $this->get_option_value_transl( '(no videos)' ) );
 						}
-	
+
 					} elseif ( '' ===  $label || 'none' === $label || '[None]' === $label ) {
-	
+
 						$label_transl = $this->get_option_value_transl( '[None]' );
 					}
-	
+
 					$sorted[ $option_value ] = trim( $optgroup_transl . ' ' . $label_transl );
 				}
 			}

@@ -1087,7 +1087,7 @@ if ( ! class_exists( 'SucomEducationLevels' ) ) {
 
 				return $levels[ $key ];
 			}
-		
+
 			return $levels;
 		}
 	}

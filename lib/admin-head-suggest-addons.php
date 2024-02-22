@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			 * Suggest update manager, woocommerce, sitemaps addons, in that order.
 			 */
 			foreach ( array( 'update_manager', 'woocommerce', 'sitemaps' ) as $suffix ) {
-				
+
 				$methodname = 'suggest_addons_' . $suffix;
 				$suggested  = $suggested + $this->$methodname( $suggest_max - $suggested );
 
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					}
 
 				} else {
-				
+
 					if ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {	// Update manager is installed.
 
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
