@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 			 * Update the @id string to avoid connecting the webpage organization markup to properties like
 			 * 'publisher', 'organizer', 'performer', 'hiringOrganization', etc.
 			 */
-			WpssoSchema::update_data_id( $json_ret, array( 'knowledge-graph', $org_id ) );
+			WpssoSchema::update_data_id( $json_ret, 'knowledge-graph' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

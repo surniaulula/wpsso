@@ -1290,10 +1290,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						unset( $json_data[ '@id' ] );
 					}
 
-				} else {
-
-					return $json_values;
-				}
+				} else return $json_values;
 			}
 
 			return $json_data;
@@ -4306,10 +4303,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$wpsso->debug->log( 'input @id property is empty' );
 
-				} else {
-
-					$wpsso->debug->log( 'input @id property is ' . $json_data[ '@id' ] );
-				}
+				} else $wpsso->debug->log( 'input @id property is ' . $json_data[ '@id' ] );
 			}
 
 			/*
@@ -4325,15 +4319,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				unset( $json_data[ '@id' ] );	// Just in case.
 
 				$json_data = array( '@id' => $id_suffix ) + $json_data;		// Make @id the first value in the array.
-
-			} elseif ( null === $data_url && empty( $json_data[ 'url' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: data url and json data url are empty' );
-				}
-
-				return false;
 
 			} else {
 

@@ -1240,27 +1240,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( SucomUtil::is_valid_option_value( $org_opts[ 'org_place_id' ] ) ) {
 
-					/*
-					 * Check for a custom place id that might have precedence.
-					 *
-					 * 'schema_place_id' can be 'none', 'custom', or numeric (including 0).
-					 */
-					if ( ! empty( $mod[ 'obj' ] ) ) {
-
-						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_place_id' );
-
-					} else $place_id = null;
-
-					if ( null === $place_id ) {
-
-						$place_id = $org_opts[ 'org_place_id' ];
-
-					} elseif ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with schema_place_id ' . $place_id );
-					}
-
-					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $place_list_el = false );
+					self::add_place_data( $json_ret[ 'location' ], $mod, $org_opts[ 'org_place_id' ], $place_list_el = false );
 				}
 			}
 
@@ -2540,8 +2520,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_data = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
 
 			/*
-			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
-			 * $offer_url values.
+			 * An @id property is added at the end from the 'shipping_id' and $offer_url values.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $ship_offer, array(
 				'name' => 'shipping_name',
