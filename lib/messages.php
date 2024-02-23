@@ -296,7 +296,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Please note that correct image sizes are required for several standards, including Google Rich Results.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Correct image sizes also improve click through rates by presenting your content at its best for social sites and search results.', 'wpsso' ) . ' ';
+						$text .= __( 'Correct image sizes also improve click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 

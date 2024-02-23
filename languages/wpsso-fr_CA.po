@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.14.0\n"
+"Project-Id-Version: WPSSO Core 17.14.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-02-21 02:01-0800\n"
+"PO-Revision-Date: 2024-02-23 03:58-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2602,25 +2602,25 @@ msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:934 lib/com/form.php:2601
+#: lib/com/form.php:934 lib/com/form.php:2612
 msgctxt "option comment"
 msgid "days"
 msgstr "jours"
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:935 lib/com/form.php:2602
+#: lib/com/form.php:935 lib/com/form.php:2613
 msgctxt "option comment"
 msgid "hours"
 msgstr "heures"
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:936 lib/com/form.php:2603
+#: lib/com/form.php:936 lib/com/form.php:2614
 msgctxt "option comment"
 msgid "mins"
 msgstr "mins"
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:937 lib/com/form.php:2604
+#: lib/com/form.php:937 lib/com/form.php:2615
 msgctxt "option comment"
 msgid "secs"
 msgstr "secs"
@@ -2631,7 +2631,7 @@ msgid "crop"
 msgstr "recadrer"
 
 #: gettext/gettext-lib-com.php:33 lib/com/form.php:974 lib/edit-schema.php:928
-#: lib/edit-schema.php:1894
+#: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
@@ -3268,8 +3268,8 @@ msgstr "Ajouter une personne"
 
 #: gettext/gettext-lib-config.php:124
 msgctxt "plugin description"
-msgid "Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
-msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Present your content at its best for social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgstr "Présentez votre contenu à son meilleur sur pour sites sociaux et les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:125
 msgctxt "plugin name"
@@ -5960,7 +5960,7 @@ msgid "Default Product Energy Rating Range"
 msgstr "Gamme eff. énerg. de produit par défaut"
 
 #: gettext/gettext-lib-pro.php:165 lib/edit-schema.php:931
-#: lib/edit-schema.php:1897 lib/pro/admin/advanced.php:1219
+#: lib/edit-schema.php:1898 lib/pro/admin/advanced.php:1219
 #: lib/std/admin/advanced.php:1117
 msgctxt "option comment"
 msgid "to"
@@ -8261,187 +8261,187 @@ msgctxt "option label"
 msgid "Select a Place"
 msgstr "Choisir un endroit"
 
-#: lib/edit-schema.php:1803
+#: lib/edit-schema.php:1804
 msgctxt "metabox title"
 msgid "Product Information (Main Product)"
 msgstr "Informations du produit (produit principal)"
 
-#: lib/edit-schema.php:1817 lib/messages.php:886
+#: lib/edit-schema.php:1818 lib/messages.php:886
 msgctxt "option label"
 msgid "Product Return Policy"
 msgstr "Politique retour de produit"
 
-#: lib/edit-schema.php:1825 lib/messages.php:772
+#: lib/edit-schema.php:1826 lib/messages.php:772
 msgctxt "option label"
 msgid "Product Google Category"
 msgstr "Catégorie Google de produit"
 
-#: lib/edit-schema.php:1840 lib/messages.php:765
+#: lib/edit-schema.php:1841 lib/messages.php:765
 msgctxt "option label"
 msgid "Product Brand"
 msgstr "Marque du produit"
 
-#: lib/edit-schema.php:1847 lib/messages.php:900
+#: lib/edit-schema.php:1848 lib/messages.php:900
 msgctxt "option label"
 msgid "Product Price"
 msgstr "Prix du produit"
 
-#: lib/edit-schema.php:1857 lib/messages.php:905
+#: lib/edit-schema.php:1858 lib/messages.php:905
 msgctxt "option label"
 msgid "Product Price Type"
 msgstr "Type de prix du produit"
 
-#: lib/edit-schema.php:1865 lib/messages.php:880
+#: lib/edit-schema.php:1866 lib/messages.php:880
 msgctxt "option label"
 msgid "Product Min Advert Price"
 msgstr "Prix min d'annonce du produit"
 
-#: lib/edit-schema.php:1873 lib/messages.php:758
+#: lib/edit-schema.php:1874 lib/messages.php:758
 msgctxt "option label"
 msgid "Product Availability"
 msgstr "Disponibilité du produit"
 
-#: lib/edit-schema.php:1881 lib/messages.php:787
+#: lib/edit-schema.php:1882 lib/messages.php:787
 msgctxt "option label"
 msgid "Product Condition"
 msgstr "État du produit"
 
-#: lib/edit-schema.php:1889 lib/messages.php:799
+#: lib/edit-schema.php:1890 lib/messages.php:799
 msgctxt "option label"
 msgid "Product Energy Rating"
 msgstr "Code efficacité énerg. du produit"
 
-#: lib/edit-schema.php:1904 lib/messages.php:868
+#: lib/edit-schema.php:1905 lib/messages.php:868
 msgctxt "option label"
 msgid "Product Material"
 msgstr "Matériel du produit"
 
-#: lib/edit-schema.php:1911 lib/messages.php:894
+#: lib/edit-schema.php:1912 lib/messages.php:894
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr "Motif du produit"
 
-#: lib/edit-schema.php:1918 lib/messages.php:781
+#: lib/edit-schema.php:1919 lib/messages.php:781
 msgctxt "option label"
 msgid "Product Color"
 msgstr "Couleur du produit"
 
-#: lib/edit-schema.php:1925 lib/messages.php:963
+#: lib/edit-schema.php:1926 lib/messages.php:963
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr "Sexe cible du produit"
 
-#: lib/edit-schema.php:1933 lib/messages.php:941
+#: lib/edit-schema.php:1934 lib/messages.php:941
 msgctxt "option label"
 msgid "Product Size"
 msgstr "Taille du produit"
 
-#: lib/edit-schema.php:1940 lib/messages.php:947
+#: lib/edit-schema.php:1941 lib/messages.php:947
 msgctxt "option label"
 msgid "Product Size Group"
 msgstr "Groupe taille du produit"
 
-#: lib/edit-schema.php:1951 lib/messages.php:955
+#: lib/edit-schema.php:1952 lib/messages.php:955
 msgctxt "option label"
 msgid "Product Size System"
 msgstr "Système taille du produit"
 
-#: lib/edit-schema.php:1958 lib/messages.php:750
+#: lib/edit-schema.php:1959 lib/messages.php:750
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr "Groupe d’âge du produit"
 
-#: lib/edit-schema.php:1965 lib/messages.php:742
+#: lib/edit-schema.php:1966 lib/messages.php:742
 msgctxt "option label"
 msgid "Product Adult Type"
 msgstr "Type de produit adulte"
 
-#: lib/edit-schema.php:1972 lib/messages.php:862
+#: lib/edit-schema.php:1973 lib/messages.php:862
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr "Long. / profond. nette du produit"
 
-#: lib/edit-schema.php:1982 lib/messages.php:977
+#: lib/edit-schema.php:1983 lib/messages.php:977
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr "Largeur nette du produit"
 
-#: lib/edit-schema.php:1992 lib/messages.php:850
+#: lib/edit-schema.php:1993 lib/messages.php:850
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr "Hauteur nette du produit"
 
-#: lib/edit-schema.php:2002 lib/messages.php:971
+#: lib/edit-schema.php:2003 lib/messages.php:971
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr "Poids net du produit"
 
-#: lib/edit-schema.php:2012 lib/messages.php:815
+#: lib/edit-schema.php:2013 lib/messages.php:815
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr "Volume fluide du produit"
 
-#: lib/edit-schema.php:2022 lib/messages.php:923
+#: lib/edit-schema.php:2023 lib/messages.php:923
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr "Longueur d'expédition du produit"
 
-#: lib/edit-schema.php:2032 lib/messages.php:935
+#: lib/edit-schema.php:2033 lib/messages.php:935
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr "Largeur d'expédition du produit"
 
-#: lib/edit-schema.php:2042 lib/messages.php:917
+#: lib/edit-schema.php:2043 lib/messages.php:917
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr "Hauteur d'expédition du produit"
 
-#: lib/edit-schema.php:2052 lib/messages.php:929
+#: lib/edit-schema.php:2053 lib/messages.php:929
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr "Poids d'expédition du produit"
 
-#: lib/edit-schema.php:2062 lib/messages.php:912
+#: lib/edit-schema.php:2063 lib/messages.php:912
 msgctxt "option label"
 msgid "Product SKU"
 msgstr "SKU du produit"
 
-#: lib/edit-schema.php:2070 lib/messages.php:874
+#: lib/edit-schema.php:2071 lib/messages.php:874
 msgctxt "option label"
 msgid "Product MPN"
 msgstr "MPN du produit"
 
-#: lib/edit-schema.php:2078 lib/messages.php:820
+#: lib/edit-schema.php:2079 lib/messages.php:820
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr "GTIN-14 du produit"
 
-#: lib/edit-schema.php:2086 lib/messages.php:826
+#: lib/edit-schema.php:2087 lib/messages.php:826
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr "GTIN-13 (EAN) du produit"
 
-#: lib/edit-schema.php:2094 lib/messages.php:832
+#: lib/edit-schema.php:2095 lib/messages.php:832
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr "GTIN-12 (UPC) du produit"
 
-#: lib/edit-schema.php:2102 lib/messages.php:838
+#: lib/edit-schema.php:2103 lib/messages.php:838
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr "GTIN-8 du produit"
 
-#: lib/edit-schema.php:2110 lib/messages.php:844
+#: lib/edit-schema.php:2111 lib/messages.php:844
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr "GTIN du produit"
 
-#: lib/edit-schema.php:2118 lib/messages.php:856
+#: lib/edit-schema.php:2119 lib/messages.php:856
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr "ISBN du produit"
 
-#: lib/edit-schema.php:2126
+#: lib/edit-schema.php:2127
 msgctxt "option label"
 msgid "Product Awards"
 msgstr "Prix pour le produit"
@@ -12889,27 +12889,27 @@ msgstr "Une image de bannière d'organisation est manquante et requise pour le b
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1195
+#: lib/schema-single.php:1192
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1209 lib/schema-single.php:1218
+#: lib/schema-single.php:1206 lib/schema-single.php:1215
 msgid "ID #%s"
 msgstr "ID #%s"
 
-#: lib/schema-single.php:1398
+#: lib/schema-single.php:1369
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1586
+#: lib/schema-single.php:1557
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2023
+#: lib/schema-single.php:1994
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2150
+#: lib/schema-single.php:2121
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
@@ -12917,19 +12917,19 @@ msgstr "ajout de schéma de produit"
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:2107
+#: lib/schema.php:2104
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour schéma %s"
 
-#: lib/schema.php:2282
+#: lib/schema.php:2279
 msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
 
-#: lib/schema.php:2309
+#: lib/schema.php:2306
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:3929
+#: lib/schema.php:3926
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -14263,8 +14263,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
-msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Present your content at its best for social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgstr "Présentez votre contenu à son meilleur sur pour sites sociaux et les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
