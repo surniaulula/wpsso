@@ -3425,7 +3425,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:124
 msgctxt "plugin description"
 msgid ""
-"Present your content at its best on social sites and search results - no "
+"Present your content at its best for social sites and search results - no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
@@ -12602,7 +12602,7 @@ msgstr ""
 #: lib/messages.php:299
 msgid ""
 "Correct image sizes also improve click through rates by presenting your "
-"content at its best on social sites and search results."
+"content at its best for social sites and search results."
 msgstr ""
 
 #: lib/messages.php:301
@@ -15603,7 +15603,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Present your content at its best on social sites and search results - no "
+"Present your content at its best for social sites and search results - no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
