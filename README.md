@@ -183,7 +183,7 @@
 <li>Yoast SEO</li>
 </ul>
 
-<p><strong>Premium editon also reads data from service APIs, including:</strong></p>
+<p><strong>The Premium edition also reads data from service APIs, including:</strong></p>
 
 <ul>
 <li>Bitly Short URL</li>
@@ -202,6 +202,56 @@
 <li>WP Media Library Video Shortcode Data</li>
 <li>Your Own URL Shortener (YOURLS) Short URL</li>
 <li>YouTube Video and Playlist Data</li>
+</ul>
+
+<p><strong>The Premium edition also reads data from any custom field, including:</strong></p>
+
+<ul>
+<li>Book ISBN Custom Field</li>
+<li>Image URL Custom Field</li>
+<li>Microdata Type URLs Custom Field</li>
+<li>Product Adult Type Custom Field</li>
+<li>Product Age Group Custom Field</li>
+<li>Product Availability Custom Field</li>
+<li>Product Brand Custom Field</li>
+<li>Product Color Custom Field</li>
+<li>Product Condition Custom Field</li>
+<li>Product Currency Custom Field</li>
+<li>Product Energy Rating Custom Field</li>
+<li>Product Fluid Volume Custom Field</li>
+<li>Product Google Cat. ID Custom Field</li>
+<li>Product GTIN-12 (UPC) Custom Field</li>
+<li>Product GTIN-13 (EAN) Custom Field</li>
+<li>Product GTIN-14 Custom Field</li>
+<li>Product GTIN-8 Custom Field</li>
+<li>Product GTIN Custom Field</li>
+<li>Product ISBN Custom Field</li>
+<li>Product Material Custom Field</li>
+<li>Product Min Advert Price Custom Field</li>
+<li>Product MPN Custom Field</li>
+<li>Product Net Height Custom Field</li>
+<li>Product Net Len. / Depth Custom Field</li>
+<li>Product Net Weight Custom Field</li>
+<li>Product Net Width Custom Field</li>
+<li>Product Pattern Custom Field</li>
+<li>Product Price Custom Field</li>
+<li>Product Price Type Custom Field</li>
+<li>Product Shipping Height Custom Field</li>
+<li>Product Shipping Length Custom Field</li>
+<li>Product Shipping Weight Custom Field</li>
+<li>Product Shipping Width Custom Field</li>
+<li>Product Size Custom Field</li>
+<li>Product Size Group Custom Field</li>
+<li>Product Size System Custom Field</li>
+<li>Product SKU Custom Field</li>
+<li>Product Target Gender Custom Field</li>
+<li>Review Rating Alt Name Custom Field</li>
+<li>Review Rating Custom Field</li>
+<li>Review Subject Desc Custom Field</li>
+<li>Review Subject Name Custom Field</li>
+<li>Same-As URLs Custom Field</li>
+<li>Video Embed HTML Custom Field</li>
+<li>Video URL Custom Field</li>
 </ul>
 
 <h2>Installation</h2>

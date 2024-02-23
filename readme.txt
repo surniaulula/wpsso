@@ -176,7 +176,7 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * WP Meta SEO
 * Yoast SEO
 
-<p><strong>Premium editon also reads data from service APIs, including:</strong></p>
+<p><strong>The Premium edition also reads data from service APIs, including:</strong></p>
 
 * Bitly Short URL
 * DLMY.App Short URL
@@ -194,6 +194,54 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * WP Media Library Video Shortcode Data
 * Your Own URL Shortener (YOURLS) Short URL
 * YouTube Video and Playlist Data
+
+<p><strong>The Premium edition also reads data from any custom field, including:</strong></p>
+
+* Book ISBN Custom Field
+* Image URL Custom Field
+* Microdata Type URLs Custom Field
+* Product Adult Type Custom Field
+* Product Age Group Custom Field
+* Product Availability Custom Field
+* Product Brand Custom Field
+* Product Color Custom Field
+* Product Condition Custom Field
+* Product Currency Custom Field
+* Product Energy Rating Custom Field
+* Product Fluid Volume Custom Field
+* Product Google Cat. ID Custom Field
+* Product GTIN-12 (UPC) Custom Field
+* Product GTIN-13 (EAN) Custom Field
+* Product GTIN-14 Custom Field
+* Product GTIN-8 Custom Field
+* Product GTIN Custom Field
+* Product ISBN Custom Field
+* Product Material Custom Field
+* Product Min Advert Price Custom Field
+* Product MPN Custom Field
+* Product Net Height Custom Field
+* Product Net Len. / Depth Custom Field
+* Product Net Weight Custom Field
+* Product Net Width Custom Field
+* Product Pattern Custom Field
+* Product Price Custom Field
+* Product Price Type Custom Field
+* Product Shipping Height Custom Field
+* Product Shipping Length Custom Field
+* Product Shipping Weight Custom Field
+* Product Shipping Width Custom Field
+* Product Size Custom Field
+* Product Size Group Custom Field
+* Product Size System Custom Field
+* Product SKU Custom Field
+* Product Target Gender Custom Field
+* Review Rating Alt Name Custom Field
+* Review Rating Custom Field
+* Review Subject Desc Custom Field
+* Review Subject Name Custom Field
+* Same-As URLs Custom Field
+* Video Embed HTML Custom Field
+* Video URL Custom Field
 
 == Installation ==
 
