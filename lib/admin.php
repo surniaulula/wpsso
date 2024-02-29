@@ -331,7 +331,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
 								}
 
-								$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
+								$menu_title = $this->get_submenu_title( $info, $menu_lib, $menu_id );
+
+								$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_title, $menu_lib, $ext );
 
 							} elseif ( $this->p->debug->enabled ) {
 
