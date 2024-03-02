@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.3-rc.1 (2024/03/02)**
+**Version 17.14.3 (2024/03/02)**
 
 * **New Features**
 	* None.
@@ -434,7 +434,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.3-rc.1 =
+= 17.14.3 =
 
 (2024/03/02) Fixed title translation for settings pages.
 
