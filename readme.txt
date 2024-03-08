@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.14.4-rc.1 (2024/03/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed 'mainEntityOfPage' property conflict for Schema ProfilePage markup.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.14.3 (2024/03/02)**
 
 * **New Features**
@@ -433,6 +447,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.14.4-rc.1 =
+
+(2024/03/08) Fixed 'mainEntityOfPage' property conflict for Schema ProfilePage markup.
 
 = 17.14.3 =
 
