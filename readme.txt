@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.14.4-rc.1 (2024/03/08)**
+**Version 17.14.4 (2024/03/08)**
 
 * **New Features**
 	* None.
@@ -448,7 +448,7 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.14.4-rc.1 =
+= 17.14.4 =
 
 (2024/03/08) Fixed 'mainEntityOfPage' property conflict for Schema ProfilePage markup.
 
