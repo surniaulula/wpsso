@@ -88,6 +88,8 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 				$this->p->debug->log( 'adding data for person id = ' . $user_id );
 			}
 
+			unset( $json_data[ 'mainEntityOfPage' ] );
+
 			$json_data[ 'mainEntity' ] = null;
 
 			WpssoSchemaSingle::add_person_data( $json_data[ 'mainEntity' ], $mod, $user_id, $list_element = false );

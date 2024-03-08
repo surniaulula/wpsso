@@ -44,9 +44,9 @@ if ( ! class_exists( 'WpssoJsonTypeFAQPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$prop_type_ids = array( 'mainEntity' => 'question' );
-
 			unset( $json_data[ 'mainEntityOfPage' ] );
+
+			$prop_type_ids = array( 'mainEntity' => 'question' );
 
 			WpssoSchema::add_posts_data( $json_data, $mod, $mt_og, $page_type_id, $is_main, $prop_type_ids );
 
