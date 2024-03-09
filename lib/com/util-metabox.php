@@ -22,11 +22,13 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 		public static function get_table_metadata( array $metadata, array $exclude_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
 
 			$metabox_id     = SucomUtil::sanitize_key( $metabox_id );	// Just in case.
+			$admin_l10n     = sanitize_text_field( $admin_l10n );		// Just in case.
+			$obj_id		= SucomUtil::sanitize_int( $obj_id );		// Returns integer or null.
 			$md_filtered    = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
 			$exclude_keys   = apply_filters( $metabox_id . '_metabox_table_exclude_keys', $exclude_keys, $obj );
 			$delete_cap     = apply_filters( $metabox_id . '_delete_meta_capability', 'manage_options', $obj );
 			$del_icon_class = apply_filters( $metabox_id . '_delete_meta_icon_class', 'dashicons dashicons-table-row-delete' );
-			$can_delete     = current_user_can( $delete_cap, $obj_id, $obj );
+			$can_delete     = $obj_id && current_user_can( $delete_cap, $obj_id, $obj ) ? true : false;
 
 			$metabox_html = self::get_table_metadata_css( $metabox_id );
 			$metabox_html .= '<table><thead>' . "\n";
@@ -53,19 +55,25 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 				$row_count++;
 
-				$is_added     = isset( $metadata[ $meta_key ] ) ? false : true;
-				$meta_key     = SucomUtil::sanitize_meta_key( $meta_key );
-				$meta_key_esc = esc_html( $meta_key );
-				$value        = is_string( $value ) ? $value : self::array_maybe_unserialize( $value );
-				$value_esc    = esc_html( var_export( $value, true ) );
-				$table_row_id = SucomUtil::sanitize_key( $metabox_id . '_' . $obj_id . '_' . $meta_key );
-				$onclick_js   = 'sucomDeleteMeta( \'' . $metabox_id . '\', \'' . $obj_id . '\', \'' . $meta_key . '\', \'' . $admin_l10n . '\' );';
-				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">';
+				$is_added_meta = isset( $metadata[ $meta_key ] ) ? false : true;	// Check before sanitizing key.
+				$meta_key      = SucomUtil::sanitize_meta_key( $meta_key );
+				$meta_key_esc  = esc_html( $meta_key );
+				$value         = is_string( $value ) ? $value : self::array_maybe_unserialize( $value );
+				$value_esc     = esc_html( var_export( $value, true ) );
+				$table_row_id  = SucomUtil::sanitize_key( $metabox_id . '_' . $obj_id . '_' . $meta_key );
+				$metabox_html  .= $is_added_meta ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">';
 
 				if ( $can_delete ) {
 
+					$onclick_js = 'sucomDeleteMeta' .
+						'( \'' . $metabox_id .		// Already sanitized.
+						'\', \'' . $obj_id .		// Already sanitized.
+						'\', \'' . $meta_key .		// Already sanitized.
+						'\', \'' . $admin_l10n .	// Already sanitized.
+						'\' );';
+
 					$metabox_html .= '<td class="del-column">';
-					$metabox_html .= $is_added ? '' : '<span class="' . $del_icon_class . '" onclick="' . $onclick_js . '"></span>';
+					$metabox_html .= $is_added_meta ? '' : '<span class="' . $del_icon_class . '" onclick="' . $onclick_js . '"></span>';
 					$metabox_html .= '</td>';
 				}
 

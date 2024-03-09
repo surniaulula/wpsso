@@ -63,12 +63,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$post_id       = false;
 			$can_edit_id   = false;
 			$can_edit_type = false;
-			$req_action    = empty( $_REQUEST[ 'action' ] ) ? false : $_REQUEST[ 'action' ];
+			$req_action    = empty( $_REQUEST[ 'action' ] ) ? false : sanitize_text_field( $_REQUEST[ 'action' ] );
 			$is_meta_box   = empty( $_REQUEST[ 'meta-box-loader' ] ) && empty( $_REQUEST[ 'meta_box' ] ) ? false : true;
 			$is_gutenbox   = empty( $_REQUEST[ 'gutenberg_meta_boxes' ] ) ? false : true;
 			$is_classic    = isset( $_REQUEST[ 'classic-editor' ] ) && empty( $_REQUEST[ 'classic-editor' ] ) ? false : true;
 
-			if ( ! empty( $_REQUEST[ 'post_ID' ] ) ) {
+			if ( ! empty( $_REQUEST[ 'post_ID' ] ) && is_numeric( $_REQUEST[ 'post_ID' ] ) ) {
 
 				$post_id = $_REQUEST[ 'post_ID' ];
 
@@ -146,7 +146,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$local_cache = true;
 
-				} elseif ( $post_id && $req_action === 'edit' ) {
+				} elseif ( $post_id && 'edit' === $req_action ) {
 
 					$local_cache = true;
 				}
