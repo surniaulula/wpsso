@@ -1026,9 +1026,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$okey = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
+			$ump  = class_exists( 'WpssoUm' ) && class_exists( 'SucomUpdate' ) ? true : false;
 
-			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && class_exists( 'SucomUpdate' ) &&
-				( $ue = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ue : false ) : $pdir;
+			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && $ump && 
+				( $ume = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ume : false ) : $pdir;
 		}
 
 		public function get_ext_gen_list() {

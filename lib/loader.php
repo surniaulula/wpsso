@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_pp = empty( $info[ 'update_auth' ] ) ? false : $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 );
+				$ext_pp = empty( $info[ 'update_auth' ] ) || ! class_exists( 'WpssoUm' ) ? false : $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 );
 
 				$mod_sub = false === $ext_pp || 1 !== $ext_pp ? 'std' : 'pro';
 
