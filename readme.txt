@@ -278,6 +278,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.15.0-rc.1 (2024/03/20)**
+
+Updated "Tested Up To" value for WordPress v6.5.
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.14.4 (2024/03/08)**
 
 * **New Features**
@@ -447,6 +463,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.15.0-rc.1 =
+
+(2024/03/20) Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.14.4 =
 
