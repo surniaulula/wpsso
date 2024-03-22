@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 				$this->p->debug->log( 'cache index = ' . $cache_index );
-				$this->p->debug->log( 'read_cache is ' . SucomUtil::get_bool_string( $read_cache ) );
+				$this->p->debug->log( 'read cache is ' . SucomUtil::get_bool_string( $read_cache ) );
 			}
 
 			$cache_array = get_transient( $cache_id );
@@ -589,7 +589,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			$cache_index = apply_filters( 'wpsso_head_cache_index', trim( $cache_index, '_' ), $mixed );
+			$cache_index .= '_status:' . $this->p->check->get_ext_status( 'wpsso' );
+
+			$cache_index = apply_filters( 'wpsso_head_cache_index', ltrim( $cache_index, '_' ), $mixed );
 
 			if ( $this->p->debug->enabled ) {
 

@@ -1024,11 +1024,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				return $lc[ $id ] = false;
 			}
 
-			$okey = 'plugin_' . $ext . '_tid';
+			$key  = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
 			$ump  = class_exists( 'WpssoUm' ) && class_exists( 'SucomUpdate' ) ? true : false;
 
-			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && $ump && 
+			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $key ] ) && $pdir && $ump && 
 				( $ume = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ume : false ) : $pdir;
 		}
 
@@ -1051,15 +1051,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				}
 
-				$ext_pdir    = $this->pp( $ext, $li = false );
-				$ext_auth_id = $this->get_ext_auth_id( $ext );
-				$ext_pp      = $ext_auth_id && $this->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-
-				$local_cache[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;;
+				$local_cache[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $this->get_ext_status( $ext );
 			}
 
 			return $local_cache;
+		}
+
+		public function get_ext_status( $ext ) {
+
+			$ext_pdir    = $this->pp( $ext, $li = false );
+			$ext_auth_id = $this->get_ext_auth_id( $ext );
+			$ext_pp      = $ext_auth_id && $this->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+
+			return ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 		}
 
 		public function get_ext_auth_type( $ext ) {
