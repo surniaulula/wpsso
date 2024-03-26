@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.16.0-dev.1',	// Plugin version.
+					'version'     => '17.16.0-dev.2',	// Plugin version.
 					'opt_version' => '1000',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1688,7 +1688,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Schema Defaults > Review.
 					 */
 					'schema_def_review_rating_min' => 0.5,		// Default Review Rating Min.
-					'schema_def_review_rating_max' => 5,		// Default Review Rating Max.
+					'schema_def_review_rating_max' => 5.0,		// Default Review Rating Max.
 					'schema_def_review_item_type'  => 'product',	// Default Subject Schema Type.
 
 					/*

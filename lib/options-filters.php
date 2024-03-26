@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_review_rating_min':		// Default Review Rating Min.
 					case 'schema_def_review_rating_max':		// Default Review Rating Max.
 
-						return 'pos_num';
+						return 'pos_fnum1';
 
 					case 'schema_img_id':
 

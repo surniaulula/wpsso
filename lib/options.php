@@ -1378,16 +1378,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/*
 			 * Optional cast on return.
 			 */
-			$ret_int  = null;
-			$ret_fnum = false;
-			$num_prec = 0;
-			$min_int  = null;
+			$ret_int   = null;
+			$ret_fnum  = null;
+			$int_min   = null;
+			$fnum_prec = null;	// Floating point number precision.
 
-			if ( 0 === strpos( $option_type, 'fnum' ) ) {
+			if ( false !== ( $pos = strpos( $option_type, 'fnum' ) ) ) {	// 'fnum' or 'pos_fnum'.
 
-				$num_prec = substr( $option_type, 4 );
+				$fnum_prec   = substr( $option_type, $pos + 4 );
+				$option_type = substr( $option_type, 0, $pos + 4 );
 
-				$option_type = 'fnum';
+				if ( ! is_numeric( $fnum_prec ) ) $fnum_prec = 1;	// Just in case.
 			}
 
 			switch ( $option_type ) {
@@ -1648,7 +1649,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'zero_pos_int':
 				case 'zero_pos_integer':
 
-					$min_int = 0;
+					$int_min = 0;
 
 					// No break.
 
@@ -1662,35 +1663,45 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$ret_int = true;
 
-					// No break.
-
-				/*
-				 * Integer or numeric options that must be $min_int or more.
-				 */
-				case 'pos_num':
-				case 'pos_number':
-
 					/*
-					 * If $min_int is not already defined, check for a hard-coded minimum value (for example,
-					 * 200 for "og_img_width").
+					 * If $int_min has not been defined above, check for a hard-coded minimum value (for
+					 * example, 200 for "og_img_width").
 					 */
-					if ( null === $min_int ) {
+					if ( null === $int_min ) {
 
 						if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
 
-							$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
-						}
+							$int_min = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
+
+						} else $int_min = 1;
 					}
+
+					// No break.
+
+				case 'pos_fnum':
+
+					if ( null === $ret_int ) {
+
+						$ret_fnum = true;
+					}
+
+					// No break.
+
+				/*
+				 * Integer or numeric options that must be $int_min or more.
+				 */
+				case 'pos_num':
+				case 'pos_number':
 
 					if ( ! empty( $mod[ 'name' ] ) && '' === $opt_val ) {	// Custom meta options can be empty.
 
 						$ret_int = false;
 
 					} elseif ( ! is_numeric( $opt_val ) || 
-						( null !== $min_int && $opt_val < $min_int ) || 
-						( null === $min_int && $opt_val <= 0 ) ) {
+						( null !== $int_min && $opt_val < $int_min ) ||
+						( null === $int_min && $opt_val <= 0 ) ) {
 
-						$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $min_int ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $int_min ) );
 
 						$opt_val = $def_val;
 					}
@@ -1821,7 +1832,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			} elseif ( $ret_fnum ) {
 
-				$opt_val = sprintf( '%.' . $num_prec . 'f', $opt_val );
+				$opt_val = sprintf( '%.' . $fnum_prec . 'f', $opt_val );
 			}
 
 			return $opt_val;
