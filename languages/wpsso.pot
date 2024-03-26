@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.15.0\n"
+"Project-Id-Version: WPSSO Core 17.16.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -13786,122 +13786,122 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/options.php:1868 lib/options.php:1900
+#: lib/options.php:1867 lib/options.php:1899
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1872
+#: lib/options.php:1871
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1876
+#: lib/options.php:1875
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1880
+#: lib/options.php:1879
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1884
+#: lib/options.php:1883
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1888
+#: lib/options.php:1887
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1892
+#: lib/options.php:1891
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1896
+#: lib/options.php:1895
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1904
+#: lib/options.php:1903
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1908
+#: lib/options.php:1907
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1912
+#: lib/options.php:1911
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1916
+#: lib/options.php:1915
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1920
+#: lib/options.php:1919
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1924
+#: lib/options.php:1923
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1928
+#: lib/options.php:1927
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1932
+#: lib/options.php:1931
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1936
+#: lib/options.php:1935
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1940
+#: lib/options.php:1939
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1944
+#: lib/options.php:1943
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1948
+#: lib/options.php:1947
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1952
+#: lib/options.php:1951
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1956
+#: lib/options.php:1955
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1960
+#: lib/options.php:1959
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1964
+#: lib/options.php:1963
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""

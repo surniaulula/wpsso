@@ -1671,17 +1671,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pos_number':
 
 					/*
-					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
+					 * If $min_int is not already defined, check for a hard-coded minimum value (for example,
+					 * 200 for "og_img_width").
 					 */
 					if ( null === $min_int ) {
 
 						if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
 
 							$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
-
-						} else {
-
-							$min_int = 1;
 						}
 					}
 
@@ -1689,7 +1686,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$ret_int = false;
 
-					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
+					} elseif ( ! is_numeric( $opt_val ) || 
+						( null !== $min_int && $opt_val < $min_int ) || 
+						( null === $min_int && $opt_val <= 0 ) ) {
 
 						$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $min_int ) );
 
