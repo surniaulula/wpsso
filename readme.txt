@@ -278,16 +278,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.16.0-dev.1 (2024/03/26)**
+**Version 17.16.0-dev.2 (2024/03/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Changed the "Default Review Rating Min" from 1 to 0.5.
 * **Bugfixes**
-	* Fixed the 'pos_int' check in `WpssoOptions->check_value()` to allow values greater than 0 (instead of greater than 1).
-* **Developer Notes**
 	* None.
+* **Developer Notes**
+	* Added support for a 'pos_fnum' check in `WpssoOptions->check_value()`.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -478,9 +478,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.16.0-dev.1 =
+= 17.16.0-dev.2 =
 
-(2024/03/26) Changed the "Default Review Rating Min" from 1 to 0.5. Fixed the 'pos_int' check in `WpssoOptions->check_value()`.
+(2024/03/26) Changed the "Default Review Rating Min" from 1 to 0.5. Added support for a 'pos_fnum' check in `WpssoOptions->check_value()`.
 
 = 17.15.0 =
 
