@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_ratings_reviews_age_max':		// Maximum Age of Reviews.
 					case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 
-						return 'pos_integer';
+						return 'pos_int';
 
 					case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 
@@ -241,13 +241,13 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_recipe_total_hours':
 					case 'schema_recipe_total_mins':
 					case 'schema_recipe_total_secs':
-					case 'schema_review_rating':
-					case 'schema_review_rating_min':
-					case 'schema_review_rating_max':
 					case 'schema_review_item_cw_book_isbn':		// Review: Subject Book ISBN.
 
 						return 'blank_num';
 
+					case 'schema_review_rating':
+					case 'schema_review_rating_min':
+					case 'schema_review_rating_max':
 					case 'schema_def_review_rating_min':		// Default Review Rating Min.
 					case 'schema_def_review_rating_max':		// Default Review Rating Max.
 
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
-					return 'pos_integer';
+					return 'pos_int';
 
 				/*
 				 * Empty string or an image ID.

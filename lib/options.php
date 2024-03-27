@@ -1330,20 +1330,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( null === $errors_transl ) {
 
 				$errors_transl = array(
-					'array'        => __( 'The value of option "%s" must be an array - resetting this option to its default value.', 'wpsso' ),
-					'api_key'      => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
-					'color'        => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
-					'csv_urls'     => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
-					'date'         => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
-					'html'         => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
-					'img_id'       => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
-					'img_url'      => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
-					'not_blank'    => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
-					'numeric'      => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
-					'ok_blank_num' => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
-					'pos_num'      => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
-					'time'         => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
-					'url'          => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
+					'array'      => __( 'The value of option "%s" must be an array - resetting this option to its default value.', 'wpsso' ),
+					'api_key'    => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
+					'blank_num'  => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
+					'color'      => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
+					'csv_urls'   => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
+					'date'       => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
+					'html'       => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
+					'img_id'     => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
+					'img_url'    => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
+					'not_blank'  => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
+					'numeric'    => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
+					'pos_num'    => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'pos_num_gt' => __( 'The value of option "%1$s" must be greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'time'       => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
+					'url'        => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
 
@@ -1380,7 +1381,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			$ret_int   = null;
 			$ret_fnum  = null;
-			$int_min   = null;
+			$limit_min = null;
 			$fnum_prec = null;	// Floating point number precision.
 
 			if ( false !== ( $pos = strpos( $option_type, 'fnum' ) ) ) {	// 'fnum' or 'pos_fnum'.
@@ -1468,14 +1469,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be blank or integer / numeric.
 				 */
 				case 'blank_int':
-				case 'ok_blank_int':
 
 					$ret_int = true;
 
 					// No break.
 
 				case 'blank_num':
-				case 'ok_blank_num':
 
 					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
 
@@ -1485,14 +1484,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					} elseif ( ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $errors_transl[ 'ok_blank_num' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'blank_num' ], $opt_key ) );
 
 						$opt_val = $def_val;
 
-						if ( '' === $opt_val ) {
-
-							$ret_int = false;
-						}
+						if ( '' === $opt_val ) $ret_int = false;	// Default value is blank.
 					}
 
 					break;
@@ -1639,6 +1635,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->err( sprintf( $errors_transl[ 'numeric' ], $opt_key ) );
 
 						$opt_val = $def_val;
+
+						if ( '' === $opt_val ) $ret_int = false;	// Default value is blank.
 					}
 
 					break;
@@ -1647,9 +1645,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Integer options that must be 0 or more.
 				 */
 				case 'zero_pos_int':
-				case 'zero_pos_integer':
 
-					$int_min = 0;
+					$limit_min = 0;
 
 					// No break.
 
@@ -1659,21 +1656,29 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'pos_int':
-				case 'pos_integer':
 
 					$ret_int = true;
 
 					/*
-					 * If $int_min has not been defined above, check for a hard-coded minimum value (for
+					 * If $limit_min has not been defined above, check for a hard-coded minimum value (for
 					 * example, 200 for "og_img_width").
 					 */
-					if ( null === $int_min ) {
+					if ( null === $limit_min ) {
 
 						if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
 
-							$int_min = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
+							$limit_min = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
 
-						} else $int_min = 1;
+						} else $limit_min = 1;
+					}
+
+					// No break.
+
+				case 'zero_pos_fnum':
+
+					if ( null === $limit_min ) {
+					
+						$limit_min = 0;
 					}
 
 					// No break.
@@ -1688,22 +1693,38 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					// No break.
 
 				/*
-				 * Integer or numeric options that must be $int_min or more.
+				 * Integer or numeric options that must be $limit_min or more.
 				 */
 				case 'pos_num':
-				case 'pos_number':
 
-					if ( ! empty( $mod[ 'name' ] ) && '' === $opt_val ) {	// Custom meta options can be empty.
+					if ( ! empty( $mod[ 'name' ] ) && '' === trim( $opt_val ) ) {	// Custom meta options can be empty.
 
-						$ret_int = false;
+						$opt_val = '';
 
-					} elseif ( ! is_numeric( $opt_val ) || 
-						( null !== $int_min && $opt_val < $int_min ) ||
-						( null === $int_min && $opt_val <= 0 ) ) {
+					} elseif ( null !== $limit_min ) {
+					
+						if ( $opt_val < $limit_min || ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $int_min ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $limit_min ) );
 
-						$opt_val = $def_val;
+							$opt_val = $def_val;
+						
+						}
+
+					} else {	// $limit_min is null.
+					
+						if ( $opt_val <= 0 || ! is_numeric( $opt_val ) ) {
+
+							$this->p->notice->err( sprintf( $errors_transl[ 'pos_num_gt' ], $opt_key, 0 ) );
+
+							$opt_val = $def_val;
+						}
+					}
+
+					if ( '' === $opt_val ) {	// Default value is blank.
+					
+						$ret_int  = false;
+						$ret_fnum = false;
 					}
 
 					break;
