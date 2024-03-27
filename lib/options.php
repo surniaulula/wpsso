@@ -1384,7 +1384,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$limit_min = null;
 			$fnum_prec = null;	// Floating point number precision.
 
-			if ( false !== ( $pos = strpos( $option_type, 'fnum' ) ) ) {	// 'fnum' or 'pos_fnum'.
+			if ( false !== ( $pos = strpos( $option_type, 'fnum' ) ) ) {
 
 				$fnum_prec   = substr( $option_type, $pos + 4 );
 				$option_type = substr( $option_type, 0, $pos + 4 );
@@ -1466,7 +1466,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Must be blank or integer / numeric.
+				 * Empty string or integer.
 				 */
 				case 'blank_int':
 
@@ -1474,6 +1474,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// No break.
 
+				/*
+				 * Empty string or numeric.
+				 */
 				case 'blank_num':
 
 					$opt_val = trim( $opt_val );	// Remove extra spaces from copy-paste.
@@ -1565,7 +1568,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Must be a floating-point number.
+				 * Floating-point number.
 				 *
 				 * The decimal precision is defined before the switch() statement.
 				 */
@@ -1619,7 +1622,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Must be integer / numeric.
+				 * Integer.
 				 */
 				case 'int':
 				case 'integer':
@@ -1628,6 +1631,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// No break.
 
+				/*
+				 * Numeric.
+				 */
 				case 'numeric':
 
 					if ( ! is_numeric( $opt_val ) ) {
@@ -1674,6 +1680,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// No break.
 
+				/*
+				 * Zero or floating-point number.
+				 *
+				 * The decimal precision is defined before the switch() statement.
+				 */
 				case 'zero_pos_fnum':
 
 					if ( null === $limit_min ) {
@@ -1683,6 +1694,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// No break.
 
+				/*
+				 * Positive floating-point number.
+				 *
+				 * The decimal precision is defined before the switch() statement.
+				 */
 				case 'pos_fnum':
 
 					if ( null === $ret_int ) {
@@ -1693,7 +1709,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					// No break.
 
 				/*
-				 * Integer or numeric options that must be $limit_min or more.
+				 * Integer or numeric options that must be zero or larger than $limit_min.
 				 */
 				case 'pos_num':
 
@@ -1769,7 +1785,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/*
-				 * Must be empty or texturized.
+				 * Empty or texturized string.
 				 */
 				case 'textured':
 
@@ -1851,7 +1867,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opt_val = intval( $opt_val );
 
-			} elseif ( $ret_fnum ) {
+			} elseif ( $ret_fnum && null !== $fnum_prec ) {
 
 				$opt_val = sprintf( '%.' . $fnum_prec . 'f', $opt_val );
 			}
