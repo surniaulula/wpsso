@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.16.0-dev.2 (2024/03/26)**
+**Version 17.16.0-b.1 (2024/03/27)**
 
 * **New Features**
 	* None.
@@ -478,9 +478,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.16.0-dev.2 =
+= 17.16.0-b.1 =
 
-(2024/03/26) Changed the "Default Review Rating Min" from 1 to 0.5. Added support for a 'pos_fnum' check in `WpssoOptions->check_value()`.
+(2024/03/27) Changed the "Default Review Rating Min" from 1 to 0.5. Added support for a 'pos_fnum' check in `WpssoOptions->check_value()`.
 
 = 17.15.0 =
 
