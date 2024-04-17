@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			/*
 			 * Translate contact method field labels for current language.
 			 */
-			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+			SucomUtilOptions::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 
 			$info_msg = $this->p->msgs->get( 'info-' . $metabox_id );
 

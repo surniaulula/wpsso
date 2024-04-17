@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( ! isset( $mt_tc[ 'twitter:site' ] ) ) {
 
-				$mt_tc[ 'twitter:site' ] = SucomUtil::get_key_value( 'tc_site', $this->p->options, $mod );
+				$mt_tc[ 'twitter:site' ] = SucomUtilOptions::get_key_value( 'tc_site', $this->p->options, $mod );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:title' ] ) ) {

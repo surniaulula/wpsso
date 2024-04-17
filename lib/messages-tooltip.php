@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-fb_author_field':	// Author Profile URL Field.
 
-						$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_fb_label', $this->p->options );
+						$cm_label_value = SucomUtilOptions::get_key_value( 'plugin_cm_fb_label', $this->p->options );
 
 						$text = sprintf( __( 'Choose a contact field from the WordPress profile page to use for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
 

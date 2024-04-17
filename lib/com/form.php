@@ -126,7 +126,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			} elseif ( false !== strpos( $opt_key, '#' ) ) {	// Localized option name.
 
-				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $this->defaults, 'default' );
+				$opt_key_locale = SucomUtilOptions::get_key_locale( $opt_key, $this->defaults, 'default' );
 
 				if ( isset( $this->defaults[ $opt_key_locale ] ) ) {
 
@@ -307,7 +307,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_css_class_hide_prefix( $in_view, $opt_name_prefix ) {
 
-			$opt_keys = SucomUtil::get_opts_begin( $this->options, $opt_name_prefix );
+			$opt_keys = SucomUtilOptions::get_opts_begin( $this->options, $opt_name_prefix );
 
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
@@ -358,7 +358,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 *	$opt_key_locale = 'site_name#fr_FR'
 				 *	$opt_key        = 'site_name'
 				 */
-				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $this->options );
+				$opt_key_locale = SucomUtilOptions::get_key_locale( $opt_key, $this->options );
 
 				if ( isset( $this->defaults[ $opt_key_locale ] ) ) {
 
@@ -2364,7 +2364,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					 *
 					 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
 					 */
-					return SucomUtil::get_key_value( $opt_key, $this->options, $mixed = 'current' );
+					return SucomUtilOptions::get_key_value( $opt_key, $this->options, $mixed = 'current' );
 				}
 			}
 
@@ -2380,7 +2380,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 *
 				 * Note that for non-existing keys, or empty strings, this method will return the default non-localized value.
 				 */
-				return SucomUtil::get_key_value( $opt_key, $this->defaults, $mixed = 'current' );
+				return SucomUtilOptions::get_key_value( $opt_key, $this->defaults, $mixed = 'current' );
 			}
 
 			return $this->defaults;
@@ -2388,28 +2388,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_locale( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false ) {
 
-			$name = SucomUtil::get_key_locale( $name, $this->options );
+			$name = SucomUtilOptions::get_key_locale( $name, $this->options );
 
 			return $this->get_input( $name, $css_class, $css_id, $len, $holder, $is_disabled );
 		}
 
 		public function get_input_image_upload_locale( $name_prefix, $holder = '', $is_disabled = false, $el_attr = '' ) {
 
-			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
+			$name_prefix = SucomUtilOptions::get_key_locale( $name_prefix, $this->options );
 
 			return $this->get_input_image_upload( $name_prefix, $holder = '', $is_disabled = false, $el_attr = '' );
 		}
 
 		public function get_input_image_url_locale( $name_prefix, $url = '', $is_disabled = false ) {
 
-			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
+			$name_prefix = SucomUtilOptions::get_key_locale( $name_prefix, $this->options );
 
 			return $this->get_input_image_url( $name_prefix, $url, $is_disabled );
 		}
 
 		public function get_input_video_url_locale( $name_prefix, $url = '', $is_disabled = false ) {
 
-			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
+			$name_prefix = SucomUtilOptions::get_key_locale( $name_prefix, $this->options );
 
 			return $this->get_input_video_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
@@ -2417,14 +2417,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_locale( $name, $values = array(), $css_class = '', $css_id = '',
 			$is_assoc = null, $is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
 
-			$name = SucomUtil::get_key_locale( $name, $this->options );
+			$name = SucomUtilOptions::get_key_locale( $name, $this->options );
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled, $selected, $event_names, $event_args );
 		}
 
 		public function get_textarea_locale( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false ) {
 
-			$name = SucomUtil::get_key_locale( $name, $this->options );
+			$name = SucomUtilOptions::get_key_locale( $name, $this->options );
 
 			return $this->get_textarea( $name, $css_class, $css_id, $len, $holder, $is_disabled );
 		}
@@ -3053,7 +3053,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
 
-						$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+						$key_default = SucomUtilOptions::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
 
 						if ( $name !== $key_default ) {
 

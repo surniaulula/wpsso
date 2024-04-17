@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 
 				if ( ! empty( $this->p->options[ $cm_enabled_key ] ) && ! empty( $this->p->options[ $cm_name_key ] ) ) {
 
-					$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
+					$cm_label_value = SucomUtilOptions::get_key_value( $cm_label_key, $this->p->options );
 
 					if ( ! empty( $cm_label_value ) ) {
 

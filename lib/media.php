@@ -2209,7 +2209,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$opt_key = $img_pre . '_' . $key_suffix;
 
-				$img_opts[ $key ] = SucomUtil::get_key_value( $opt_key, $opts );
+				$img_opts[ $key ] = SucomUtilOptions::get_key_value( $opt_key, $opts );
 			}
 
 			if ( $this->p->debug->enabled ) {

@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoIntegEcomWpmProductGtinWc' ) ) {
 				 *
 				 * Make sure the GTIN product attribute is not read, which would overwrite our custom field value.
 				 */
-				SucomUtil::set_key_value_locale_disabled( 'plugin_attr_' . $opt_suffix, '', $this->p->options );
+				SucomUtilOptions::set_key_value_locale_disabled( 'plugin_attr_' . $opt_suffix, '', $this->p->options );
 			}
 
 			/*

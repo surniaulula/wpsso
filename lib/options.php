@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'translating plugin contact field labels' );
 				}
 
-				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $local_cache, 'wpsso' );
+				SucomUtilOptions::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $local_cache, 'wpsso' );
 
 				/*
 				 * Define the default Facebook locale and current locale values.
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( $mixed = 'default', $use_opts = false );
 
-				$current_fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' );
+				$current_fb_locale_key = SucomUtilOptions::get_key_locale( 'fb_locale' );
 
 				if ( 'fb_locale' !== $current_fb_locale_key ) {
 
@@ -1881,7 +1881,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$text = $this->get_text( $opt_key, $use_opts = false );
 
-				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $defs, 'current' );
+				$opt_key_locale = SucomUtilOptions::get_key_locale( $opt_key, $defs, 'current' );
 
 				$defs[ $opt_key_locale ] = $text;
 
@@ -1903,7 +1903,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $use_opts && ! empty( $this->p->options ) ) {
 
-				$text = SucomUtil::get_key_value( $opt_key, $this->p->options, $mixed  );	// Returns null if option key does not exist.
+				$text = SucomUtilOptions::get_key_value( $opt_key, $this->p->options, $mixed  );	// Returns null if option key does not exist.
 			}
 
 			if ( null === $text ) {	// Fallback to default text from current locale.

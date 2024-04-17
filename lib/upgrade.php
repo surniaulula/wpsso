@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 
-					foreach ( SucomUtil::get_opts_begin( $opts, 'inc_' ) as $key => $val ) {
+					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'inc_' ) as $key => $val ) {
 
 						$new_key = '';
 
@@ -690,7 +690,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 						$opts[ 'plugin_cm_fb_label' ] = 'Facebook User URL';
 					}
 
-					SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+					SucomUtilOptions::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 564 ) {
@@ -778,7 +778,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
 
-					foreach ( SucomUtil::get_opts_begin( $opts, 'add_meta_property_product:' ) as $key => $val ) {
+					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'add_meta_property_product:' ) as $key => $val ) {
 
 						$opts[ $key ] = 1;
 					}
@@ -891,7 +891,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 834 ) {
 
-					foreach ( SucomUtil::get_opts_begin( $opts, 'plugin_sitemaps_for' ) as $key => $val ) {
+					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'plugin_sitemaps_for' ) as $key => $val ) {
 
 						$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );
 

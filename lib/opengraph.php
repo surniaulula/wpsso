@@ -659,7 +659,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! isset( $mt_og[ 'article:publisher' ] ) ) {
 
-				$mt_og[ 'article:publisher' ] = SucomUtil::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
+				$mt_og[ 'article:publisher' ] = SucomUtilOptions::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
 			}
 
 			if ( ! isset( $mt_og[ 'article:tag' ] ) ) {
@@ -879,7 +879,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_opts ) {
 
-				$key_locale = SucomUtil::get_key_locale( 'fb_locale', $this->p->options, $mixed );
+				$key_locale = SucomUtilOptions::get_key_locale( 'fb_locale', $this->p->options, $mixed );
 
 				if ( ! empty( $this->p->options[ $key_locale ] ) ) {	// Maybe use an alternate locale value.
 

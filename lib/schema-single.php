@@ -2704,7 +2704,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
 				}
 
-				$cutoff_tz = SucomUtil::get_opts_hm_tz( $delivery_opts, $key_hm = 'shipdept_cutoff', $key_tz = 'shipdept_timezone' );
+				$cutoff_tz = SucomUtilOptions::get_opts_hm_tz( $delivery_opts, $key_hm = 'shipdept_cutoff', $key_tz = 'shipdept_timezone' );
 
 				if ( ! empty( $cutoff_tz ) ) {
 

@@ -533,7 +533,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( empty( $md_key ) ) continue;
 
-							$attr_name_transl = SucomUtil::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
+							$attr_name_transl = SucomUtilOptions::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
 
 							if ( empty( $attr_name_transl ) ) continue;
 

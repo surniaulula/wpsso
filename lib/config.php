@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.16.0',	// Plugin version.
+					'version'     => '17.17.0-dev.1',	// Plugin version.
 					'opt_version' => '1000',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5228,6 +5228,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load the notice fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/util-options.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';

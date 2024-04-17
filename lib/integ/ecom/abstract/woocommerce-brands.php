@@ -27,9 +27,9 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 				$this->p->debug->mark();
 			}
 
-			SucomUtil::set_key_value_disabled( 'plugin_cf_product_brand', '', $this->p->options );
+			SucomUtilOptions::set_key_value_disabled( 'plugin_cf_product_brand', '', $this->p->options );
 
-			SucomUtil::set_key_value_locale_disabled( 'plugin_attr_product_brand', '', $this->p->options );
+			SucomUtilOptions::set_key_value_locale_disabled( 'plugin_attr_product_brand', '', $this->p->options );
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'term_image_ids'                     => 4,

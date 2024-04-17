@@ -1887,7 +1887,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_banner_url:height',
 			) as $opt_key ) {
 
-				$org_opts[ $opt_key ] = SucomUtil::get_key_value( 'site_' . $opt_key, $wpsso->options, $mixed );
+				$org_opts[ $opt_key ] = SucomUtilOptions::get_key_value( 'site_' . $opt_key, $wpsso->options, $mixed );
 			}
 
 			/*
@@ -1897,7 +1897,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( WpssoConfig::get_social_accounts() as $social_key => $social_label ) {
 
-				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// Localized value.
+				$url = SucomUtilOptions::get_key_value( $social_key, $wpsso->options, $mixed );	// Localized value.
 
 				if ( empty( $url ) ) {	// Nothing to do.
 
@@ -4022,7 +4022,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$enums_transl = SucomUtil::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' );
+				$enums_transl = SucomUtilOptions::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' );
 
 				foreach ( $enumerations as $key => $val ) {
 
@@ -4106,7 +4106,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$enums_labels = array_flip( $enumerations );
-				$enums_transl = array_flip( SucomUtil::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' ) );
+				$enums_transl = array_flip( SucomUtilOptions::get_opts_values_transl( $enumerations, $text_domain = 'wpsso' ) );
 				$prop_val     = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
 
 				if ( ! isset( $enumerations[ $prop_val ] ) ) {

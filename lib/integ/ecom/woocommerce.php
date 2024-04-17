@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( empty( $wc_attr_names[ $attr_name ] ) ) {
 
-					$suggest_names[] = SucomUtil::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
+					$suggest_names[] = SucomUtilOptions::get_key_value( $opt_attr_key, $this->p->options );	// Translated name.
 				}
 			}
 

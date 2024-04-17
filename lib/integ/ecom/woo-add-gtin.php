@@ -31,14 +31,14 @@ if ( ! class_exists( 'WpssoIntegEcomWooAddGtin' ) ) {
 			/*
 			 * Custom fields are read using the 'wpsso_import_custom_fields' filter.
 			 */
-			SucomUtil::set_key_value_disabled( 'plugin_cf_product_gtin', self::$meta_name, $this->p->options );
+			SucomUtilOptions::set_key_value_disabled( 'plugin_cf_product_gtin', self::$meta_name, $this->p->options );
 
 			/*
 			 * Product attributes are read using the 'wpsso_import_product_attributes' filter.
 			 *
 			 * Make sure the GTIN product attribute is not read, which would overwrite our custom field value.
 			 */
-			SucomUtil::set_key_value_locale_disabled( 'plugin_attr_product_gtin', '', $this->p->options );
+			SucomUtilOptions::set_key_value_locale_disabled( 'plugin_attr_product_gtin', '', $this->p->options );
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'wc_variation_alt_options' => 1,
