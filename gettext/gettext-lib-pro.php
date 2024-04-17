@@ -2,7 +2,6 @@
 // 
 // Extract of translatable strings from lib/pro/.
 // 
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/admin/advanced.php
 _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
 _x( '(recommended - see help text)', 'option comment', 'wpsso' );
@@ -180,12 +179,10 @@ _x( 'Contact Field ID', 'column title', 'wpsso' );
 _x( 'Contact Field Label', 'column title', 'wpsso' );
 _x( 'Show', 'column title', 'wpsso' );
 __( 'An SEO plugin has been detected - some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/admin/general.php
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/admin/edit.php
 _x( 'Priority Video Information', 'metabox title', 'wpsso' );
 _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );
@@ -194,28 +191,17 @@ _x( 'Video Name', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
 _x( 'Video Stream URL', 'option label', 'wpsso' );
 _x( 'Video Dimensions', 'option label', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/gravatar.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/slideshare.php
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/vimeo.php
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/wistia.php
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/youtube.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/upscale.php
 __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting).', 'wpsso' );
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/facebook.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/wpvideoblock.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/soundcloud.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/media/wpvideoshortcode.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/util/shorten.php
 __( '%s error:', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'Bitly Generic Access Token', 'option label', 'wpsso' );
@@ -229,12 +215,10 @@ __( 'Loop detected: YOURLS API URL matches current URL (%s)', 'wpsso' );
 __( 'Unable to instantiate the "%s" shortening service.', 'wpsso' );
 __( '%s error:', 'wpsso' );
 __( 'URL shortening library file for "%s" is missing and required.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/review/shopperapproved.php
 _x( 'Shopper Approved (Ratings and Reviews)', 'metabox title', 'wpsso' );
 __( 'getting shopper approved ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
 __( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/pro/review/stamped.php
 _x( 'Stamped.io (Ratings and Reviews)', 'metabox title', 'wpsso' );
 __( 'getting stamp.io ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );

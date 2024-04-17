@@ -2,7 +2,6 @@
 // 
 // Extract of translatable strings from lib/com/.
 // 
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/cache.php
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.3f seconds).', 'wpsso' );
@@ -26,8 +25,6 @@ __( 'Failed to create the %s cache folder.', 'wpsso' );
 __( 'Cache folder %s is not writable.', 'wpsso' );
 __( 'Failed to open the cache file %s for writing.', 'wpsso' );
 __( 'Failed writing data to cache file %s.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/debug.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/form.php
 _x( 'days', 'option comment', 'wpsso' );
 _x( 'hours', 'option comment', 'wpsso' );
 _x( 'mins', 'option comment', 'wpsso' );
@@ -42,7 +39,6 @@ _x( 'days', 'option comment', 'wpsso' );
 _x( 'hours', 'option comment', 'wpsso' );
 _x( 'mins', 'option comment', 'wpsso' );
 _x( 'secs', 'option comment', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/notice.php
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Edit', 'wpsso' );
@@ -53,11 +49,6 @@ __( 'Please diagnose the issue to re-enable the admin toolbar.', 'wpsso' );
 __( 'Forever', 'wpsso' );
 __( 'This notice can be dismissed permanently.', 'wpsso' );
 __( 'This notice can be dismissed for %s.', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/util.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/country-codes.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/nodebug.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/nonotice.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/bitly.php
 __( 'Group name "%s" not found in the Bitly API response data.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( 'Groups property missing from the Bitly API response data.', 'wpsso' );
@@ -68,8 +59,6 @@ __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( 'JSON response decode error code %d.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/education-levels.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/bfo.php
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );
@@ -78,12 +67,3 @@ __( 'Please contact the author of that filter and report this issue as a coding 
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'END OUTPUT', 'wpsso' );
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/util-wp.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/exception.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/dashicons.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/gettext.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/plugin.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/util-robots.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/util-metabox.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/currencies.php
-/var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/com/util-options.php
