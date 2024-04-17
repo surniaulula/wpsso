@@ -278,6 +278,32 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.17.0-dev.1 (2024/14/16)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class:
+		* `get_opts_begin()`
+		* `get_opts_hm_tz()`
+		* `get_opts_labels_transl()`
+		* `get_opts_values_transl()`
+		* `get_key_locale()`
+		* `get_key_value()`
+		* `get_key_values_multi()`
+		* `set_key_value()`
+		* `set_key_value_disabled()`
+		* `set_key_value_locale()`
+		* `set_key_value_locale_disabled()`
+		* `transl_key_values()`
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.16.0 (2024/03/27)**
 
 * **New Features**
@@ -477,6 +503,10 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.17.0-dev.1 =
+
+(2024/04/16) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
 
 = 17.16.0 =
 
