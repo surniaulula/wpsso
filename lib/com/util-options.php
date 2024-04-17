@@ -75,6 +75,10 @@ If ( ! class_exists( 'SucomUtilOptions' ) ) {
 
 			foreach ( $opts as $opt_key => &$opt_label ) {
 
+				/*
+				 * The static value of array option labels is pre-defined in a different PHP file, like
+				 * gettext/gettext-lib-config.php for example.
+				 */
 				$opt_label = _x( $opt_label, 'option label', $text_domain );
 			}
 
@@ -87,6 +91,10 @@ If ( ! class_exists( 'SucomUtilOptions' ) ) {
 
 			foreach ( $opts as $opt_key => &$opt_label ) {
 
+				/*
+				 * The static value of array option labels is pre-defined in a different PHP file, like
+				 * gettext/gettext-lib-config.php for example.
+				 */
 				$opt_label = _x( $opt_label, 'option value', $text_domain );
 			}
 
@@ -256,6 +264,10 @@ If ( ! class_exists( 'SucomUtilOptions' ) ) {
 
 				if ( $locale_key !== $key && empty( $opts[ $locale_key ] ) ) {
 
+					/*
+					 * The static value of array option labels is pre-defined in a different PHP file, like
+					 * gettext/gettext-lib-config.php for example.
+					 */
 					$val_transl = _x( $val, 'option value', $text_domain );
 
 					if ( $val_transl !== $val ) {
