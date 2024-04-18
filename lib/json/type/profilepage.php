@@ -43,7 +43,10 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$prop_type_ids = array( 'mentions' => false );	// Allow any post schema type to be added.
+			/*
+			 * Maybe add a "mentions" property with any post schema type.
+			 */
+			$prop_type_ids = empty( $this->p->options[ 'schema_def_profile_page_mentions_prop' ] ) ? array() : array( 'mentions' => false );
 
 			WpssoSchema::add_posts_data( $json_data, $mod, $mt_og, $page_type_id, $is_main, $prop_type_ids );
 

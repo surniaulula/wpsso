@@ -24,34 +24,35 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'mb_advanced_plugin_integration_rows' => array(		// Plugin Settings > Integration tab.
-					'mb_advanced_plugin_integration_rows'      => 4,
-					'mb_site_advanced_plugin_integration_rows' => 4,
+					'mb_advanced_plugin_integration_rows'      => 3,
+					'mb_site_advanced_plugin_integration_rows' => 3,
 				),
-				'mb_advanced_plugin_default_text_rows'        => 4,	// Plugin Settings > Default Text tab.
-				'mb_advanced_plugin_image_sizes_rows'         => 4,	// Plugin Settings > Image Sizes tab.
-				'mb_advanced_plugin_interface_rows'           => 4,	// Plugin Settings > Interface tab.
-				'mb_advanced_services_media_rows'             => 4,	// Service APIs > Media Services tab.
-				'mb_advanced_services_shortening_rows'        => 4,	// Service APIs > Shortening Services tab.
-				'mb_advanced_services_ratings_reviews_rows'   => 4,	// Service APIs > Ratings and Reviews tab.
-				'mb_advanced_doc_types_og_types_rows'         => 4,	// Document Types > Open Graph tab.
-				'mb_advanced_doc_types_schema_types_rows'     => 4,	// Document Types > Schema tab.
-				'mb_advanced_schema_defs_article_rows'        => 4,	// Schema Defaults > Article tab.
-				'mb_advanced_schema_defs_book_rows'           => 4,	// Schema Defaults > Book tab.
-				'mb_advanced_schema_defs_creative_work_rows'  => 4,	// Schema Defaults > Creative Work tab.
-				'mb_advanced_schema_defs_event_rows'          => 4,	// Schema Defaults > Event tab.
-				'mb_advanced_schema_defs_job_posting_rows'    => 4,	// Schema Defaults > Job Posting tab.
-				'mb_advanced_schema_defs_place_rows'          => 4,	// Schema Defaults > Place tab.
-				'mb_advanced_schema_defs_product_rows'        => 4,	// Schema Defaults > Product tab.
-				'mb_advanced_schema_defs_review_rows'         => 4,	// Schema Defaults > Review tab.
-				'mb_advanced_contact_fields_default_cm_rows'  => 4,	// Contact Fields > Default Contacts tab.
-				'mb_advanced_contact_fields_custom_cm_rows'   => 4,	// Contact Fields > Custom Contacts tab.
-				'mb_advanced_user_about_rows'                 => 4,	// About the User metabox.
-				'mb_advanced_metadata_product_attrs_rows'     => 4,	// Attributes and Metadata > Product Attributes tab.
-				'mb_advanced_metadata_custom_fields_rows'     => 4,	// Attributes and Metadata > Custom Fields tab.
-				'mb_advanced_head_tags_facebook_rows'         => 4,	// HTML Tags > Facebook tab.
-				'mb_advanced_head_tags_open_graph_rows'       => 4,	// HTML Tags > Open Graph tab.
-				'mb_advanced_head_tags_twitter_rows'          => 4,	// HTML Tags > X (Twitter) tab.
-				'mb_advanced_head_tags_seo_other_rows'        => 4,	// HTML Tags > SEO / Other tab.
+				'mb_advanced_plugin_default_text_rows'        => 3,	// Plugin Settings > Default Text tab.
+				'mb_advanced_plugin_image_sizes_rows'         => 3,	// Plugin Settings > Image Sizes tab.
+				'mb_advanced_plugin_interface_rows'           => 3,	// Plugin Settings > Interface tab.
+				'mb_advanced_services_media_rows'             => 3,	// Service APIs > Media Services tab.
+				'mb_advanced_services_shortening_rows'        => 3,	// Service APIs > Shortening Services tab.
+				'mb_advanced_services_ratings_reviews_rows'   => 3,	// Service APIs > Ratings and Reviews tab.
+				'mb_advanced_doc_types_og_types_rows'         => 3,	// Document Types > Open Graph tab.
+				'mb_advanced_doc_types_schema_types_rows'     => 3,	// Document Types > Schema tab.
+				'mb_advanced_schema_defs_article_rows'        => 3,	// Schema Defaults > Article tab.
+				'mb_advanced_schema_defs_book_rows'           => 3,	// Schema Defaults > Book tab.
+				'mb_advanced_schema_defs_creative_work_rows'  => 3,	// Schema Defaults > Creative Work tab.
+				'mb_advanced_schema_defs_event_rows'          => 3,	// Schema Defaults > Event tab.
+				'mb_advanced_schema_defs_job_posting_rows'    => 3,	// Schema Defaults > Job Posting tab.
+				'mb_advanced_schema_defs_place_rows'          => 3,	// Schema Defaults > Place tab.
+				'mb_advanced_schema_defs_product_rows'        => 3,	// Schema Defaults > Product tab.
+				'mb_advanced_schema_defs_profile_page_rows'   => 3,	// Schema Defaults > Profile Page tab.
+				'mb_advanced_schema_defs_review_rows'         => 3,	// Schema Defaults > Review tab.
+				'mb_advanced_contact_fields_default_cm_rows'  => 3,	// Contact Fields > Default Contacts tab.
+				'mb_advanced_contact_fields_custom_cm_rows'   => 3,	// Contact Fields > Custom Contacts tab.
+				'mb_advanced_user_about_rows'                 => 3,	// About the User metabox.
+				'mb_advanced_metadata_product_attrs_rows'     => 3,	// Attributes and Metadata > Product Attributes tab.
+				'mb_advanced_metadata_custom_fields_rows'     => 3,	// Attributes and Metadata > Custom Fields tab.
+				'mb_advanced_head_tags_facebook_rows'         => 3,	// HTML Tags > Facebook tab.
+				'mb_advanced_head_tags_open_graph_rows'       => 3,	// HTML Tags > Open Graph tab.
+				'mb_advanced_head_tags_twitter_rows'          => 3,	// HTML Tags > X (Twitter) tab.
+				'mb_advanced_head_tags_seo_other_rows'        => 3,	// HTML Tags > SEO / Other tab.
 			) );
 		}
 
@@ -1152,6 +1153,22 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Product Adult Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_adult_type',
 					'content'  => $form->get_no_select( 'schema_def_product_adult_type', $this->p->cf[ 'form' ][ 'adult_type' ] ),
+				),
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );
+
+			return $table_rows;
+		}
+
+		public function filter_mb_advanced_schema_defs_profile_page_rows( $table_rows, $form, $args ) {
+
+			$form_rows = array(
+				'schema_def_profile_page_mentions_prop' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Mentions Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_profile_page_mentions_prop',
+					'content'  => $form->get_no_checkbox( 'schema_def_profile_page_mentions_prop' ),
 				),
 			);
 

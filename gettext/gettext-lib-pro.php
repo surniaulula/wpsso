@@ -168,6 +168,7 @@ _x( 'Default Product Size Group', 'option label', 'wpsso' );
 _x( 'Default Product Size System', 'option label', 'wpsso' );
 _x( 'Default Product Age Group', 'option label', 'wpsso' );
 _x( 'Default Product Adult Type', 'option label', 'wpsso' );
+_x( 'Add Mentions Property', 'option label', 'wpsso' );
 _x( 'Default Review Rating Min', 'option label', 'wpsso' );
 _x( 'Default Review Rating Max', 'option label', 'wpsso' );
 _x( 'Default Subject Schema Type', 'option label', 'wpsso' );

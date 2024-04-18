@@ -516,6 +516,10 @@ h3.sucom-metabox-tab_title {
 	content:"\e832";	/* .icon-tag */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_profile_page::before {		/* SSO > Advanced Settings > Schema Defaults > Profile Page tab. */
+	content:"\e837";	/* .icon-adult */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_review::before {			/* SSO > Advanced Settings > Schema Defaults > Review tab. */
 	content:"\e818";	/* .icon-comment */
 }

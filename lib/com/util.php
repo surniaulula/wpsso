@@ -1777,6 +1777,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return trim( $input_name, $characters = '-' );
 		}
 
+		/*
+		 * There is no WordPress function to sanitize post IDs and integers.
+		 *
+		 * Returns an integer or null.
+		 */
 		public static function sanitize_int( $value ) {
 
 			if ( is_numeric( $value ) ) {

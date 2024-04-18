@@ -154,6 +154,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso' ),
 				'place'         => _x( 'Place', 'metabox tab', 'wpsso' ),
 				'product'       => _x( 'Product', 'metabox tab', 'wpsso' ),
+				'profile_page'  => _x( 'Profile Page', 'metabox tab', 'wpsso' ),
 				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
 			);
 

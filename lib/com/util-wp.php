@@ -70,11 +70,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( ! empty( $_REQUEST[ 'post_ID' ] ) && is_numeric( $_REQUEST[ 'post_ID' ] ) ) {
 
-				$post_id = $_REQUEST[ 'post_ID' ];
+				$post_id = SucomUtil::sanitize_int( $_REQUEST[ 'post_ID' ] );	// Returns integer or null.
 
 			} elseif ( ! empty( $_REQUEST[ 'post' ] ) && is_numeric( $_REQUEST[ 'post' ] ) ) {
 
-				$post_id = $_REQUEST[ 'post' ];
+				$post_id = SucomUtil::sanitize_int( $_REQUEST[ 'post' ] );	// Returns integer or null.
 			}
 
 			if ( $post_id ) {

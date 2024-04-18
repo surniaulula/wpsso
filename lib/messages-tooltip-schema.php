@@ -152,7 +152,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case 'tooltip-schema_def_add_articlebody_prop':	// Add Article Body Property.
 
-					$text = __( 'Add an "articleBody" property to the Schema Article markup with the complete text of the post / page.', 'wpsso' );
+					$def_checked = $this->get_def_checked( 'schema_def_add_articlebody_prop' );
+
+					$text = sprintf( __( 'Add an "articleBody" property to the Schema Article markup with the complete text of the post / page (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
 				 	break;
 
@@ -195,7 +197,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case 'tooltip-schema_def_add_text_prop':	// Add Text Property.
 
-					$text = __( 'Add a "text" property to the Schema CreativeWork markup with the complete text of the post / page.', 'wpsso' );
+					$def_checked = $this->get_def_checked( 'schema_def_add_text_prop' );
+
+					$text = sprintf( __( 'Add a "text" property to the Schema CreativeWork markup with the complete text of the post / page (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
 				 	break;
 
@@ -335,6 +339,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 					}
 
 					break;
+
+				/*
+				 * SSO > Advanced Settings > Schema Defaults > Profile Page tab.
+				 */
+				case 'tooltip-schema_def_profile_page_mentions_prop':
+
+					$def_checked = $this->get_def_checked( 'schema_def_profile_page_mentions_prop' );
+
+					$text = sprintf( __( 'Add a "mentions" property to the Schema ProfilePage markup with all posts provided by the current page query (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+				 	break;
 
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Review tab.

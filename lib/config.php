@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.17.0-dev.1',	// Plugin version.
-					'opt_version' => '1000',	// Increment when changing default option values.
+					'version'     => '17.17.0-dev.2',	// Plugin version.
+					'opt_version' => '1001',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1683,6 +1683,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_size_group_0'          => 'none',
 					'schema_def_product_size_group_1'          => 'none',
 					'schema_def_product_size_system'           => 'none',
+
+					/*
+					 * Advanced Settings > Schema Defaults > Profile Page.
+					 */
+					'schema_def_profile_page_mentions_prop' => 0,	// Add Mentions Property.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Review.
