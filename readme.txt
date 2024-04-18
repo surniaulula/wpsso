@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.5.2
-WC Tested Up To: 8.7.0
+WC Tested Up To: 8.8.2
 Stable Tag: 17.16.0
 
 Present your content at its best for social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.17.0-dev.1 (2024/14/16)**
+**Version 17.17.0-dev.2 (2024/04/18)**
 
 * **New Features**
 	* None.
@@ -504,9 +504,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.17.0-dev.1 =
+= 17.17.0-dev.2 =
 
-(2024/04/16) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
+(2024/04/18) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
 
 = 17.16.0 =
 
