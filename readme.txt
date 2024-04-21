@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.17.0-dev.2 (2024/04/18)**
+**Version 17.17.0-b.1 (2024/04/21)**
 
 * **New Features**
 	* None.
@@ -504,9 +504,9 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
 == Upgrade Notice ==
 
-= 17.17.0-dev.2 =
+= 17.17.0-b.1 =
 
-(2024/04/18) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
+(2024/04/21) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
 
 = 17.16.0 =
 
