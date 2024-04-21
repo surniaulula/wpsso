@@ -853,14 +853,6 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				}
 
 				/*
-				 * Deprecated on 2021/05/28.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 785 ) {
-
-					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
-				}
-
-				/*
 				 * Fix default publisher.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 827 ) {

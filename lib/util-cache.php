@@ -974,39 +974,5 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			return $notice_msg;
 		}
-
-		/*
-		 * Deprecated on 2023/02/12.
-		 */
-		public function schedule_clear() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2023/02/12.
-		 */
-		public function clear() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2023/02/12.
-		 */
-		public function stop_refresh() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/02/12', $replacement = '' );	// Deprecation message.
-		}
-
-		/*
-		 * Deprecated on 2023/10/26.
-		 */
-		public function doing_task() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/10/26', $replacement = __CLASS__ . '::is_refresh_running()' );	// Deprecation message.
-
-			return $this->is_refresh_running();
-		}
 	}
 }

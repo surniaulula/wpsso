@@ -4513,41 +4513,5 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
 		}
-
-		/*
-		 * Deprecated on 2023/01/31.
-		 */
-		public static function add_offers_aggregate_data( &$json_data, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_aggregate_data_mt()' );	// Deprecation message.
-
-			return self::add_offers_aggregate_data_mt( $json_data, $mt_offers );
-		}
-
-		/*
-		 * Deprecated on 2023/01/31.
-		 */
-		public static function add_offers_data( &$json_data, array $mt_offers ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/01/31', $replacement = __CLASS__ . '::add_offers_data_mt()' );	// Deprecation message.
-
-			return self::add_offers_data_mt( $json_data, $mt_offers );
-		}
-
-		/*
-		 * Deprecated on 2023/04/19.
-		 */
-		public function get_lang( array $mod ) {
-
-			return $this->get_schema_lang( $mod );
-		}
-
-		/*
-		 * Deprecated on 2023/07/13.
-		 */
-		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
-
-			return $this->get_schema_types( $flatten, $read_cache );
-		}
 	}
 }

@@ -1798,15 +1798,5 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 </script>' . "\n";
 		}
-
-		/*
-		 * Deprecated on 2023/02/21.
-		 */
-		public function get_tb_types_showing() {
-
-			_deprecated_function( __METHOD__ . '()', '2023/02/21', $replacement = __CLASS__ . '::get_toolbar_types()' );	// Deprecation message.
-
-			return $this->get_toolbar_types();
-		}
 	}
 }
