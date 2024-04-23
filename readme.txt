@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.17.0-rc.1 (2024/04/22)**
+**Version 17.17.0 (2024/04/23)**
 
 * **New Features**
 	* None.
@@ -443,70 +443,11 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* PHP v7.2.34.
 	* WordPress v5.8.
 
-**Version 17.11.0 (2024/01/26)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for the Jetpack Boost plugin (excludes WPSSO Schema markup from the "Defer Non-Essential JavaScript" function).
-	* Added a maximum of two suggestion notifications per page load.
-	* Removed support for the NextScripts plugin.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a `WpssoIntegFormGravityforms` class.
-	* Added a `WpssoIntegFormGravityview` class.
-	* Added a `WpssoIntegUtilJetpack` class.
-	* Added a `WpssoIntegUtilJetpackBoost` class.
-	* Moved compatibility code to integration modules and removed the `WpssoCompat` class.
-	* Refactored suggestion notification classes:
-		* `WpssoAdminHeadSuggest`
-		* `WpssoAdminHeadSuggestAddons`
-		* `WpssoAdminHeadSuggestOptions`
-		* `WpssoAdminHeadSuggestAttributes`
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 17.10.0 (2024/01/20)**
-
-Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new `SucomUtil::sanitize_int()` method.
-	* Added new `SucomUtil::sanitize_meta_key()` method.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 17.9.0 (2024/01/14)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added excerpt translation for the qTranslate-XT plugin.
-	* Re-added the "Suggested attributes:" footer to the WooCommerce Product data metabox &gt; Attributes tab.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Renamed `SucomUtil::get_multi_key_locale()` to `SucomUtil::get_key_values_multi()`.
-	* Renamed `SucomUtil::get_opts_label_transl()` to `SucomUtil::get_opts_labels_transl()`.
-	* Renamed `SucomUtil::get_opts_value_transl()` to `SucomUtil::get_opts_values_transl()`.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
 == Upgrade Notice ==
 
-= 17.17.0-rc.1 =
+= 17.17.0 =
 
-(2024/04/22) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
+(2024/04/23) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
 
 = 17.16.0 =
 
@@ -543,12 +484,4 @@ Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 = 17.12.0 =
 
 (2024/02/05) Replaced The AMP Project Validator by the Google AMP Test.
-
-= 17.11.0 =
-
-(2024/01/26) Added support for the Jetpack Boost plugin. Added a maximum of two suggestion notifications per page load. Removed support for the NextScripts plugin.
-
-= 17.10.0 =
-
-(2024/01/20) Maintenance release for `SucomUtil` and `SucomUtilMetabox` classes.
 
