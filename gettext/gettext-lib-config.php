@@ -121,7 +121,7 @@ _x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Add Person', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core', 'plugin name', 'wpsso' );
-_x( 'Present your content at its best for social sites and search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.', 'plugin description', 'wpsso' );
+_x( 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Add Five Stars', 'plugin name', 'wpsso' );
 _x( 'Add a 5 star rating and review from the site organization if the Schema markup does not already have an \'aggregateRating\' property.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Mobile App Meta Tags', 'plugin name', 'wpsso' );

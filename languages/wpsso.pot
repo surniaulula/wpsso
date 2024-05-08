@@ -3425,7 +3425,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:124
 msgctxt "plugin description"
 msgid ""
-"Present your content at its best for social sites and search results - no "
+"Present your content at its best for social sites and search results, no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
@@ -15626,7 +15626,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Present your content at its best for social sites and search results - no "
+"Present your content at its best for social sites and search results, no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
