@@ -167,7 +167,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
-WPSSO Core and its add-ons can also run in combination with other SEO plugins to **improve that SEO plugin's performance and structured data markup**.
+WPSSO Core and its add-ons can also run in combination with other SEO plugins to **improve the SEO plugin's performance and structured data markup**.
 
 * All in One SEO Pack
 * Rank Math SEO
