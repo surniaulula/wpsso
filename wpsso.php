@@ -14,8 +14,8 @@
  * Requires PHP: 7.2.34
  * Requires At Least: 5.8
  * Tested Up To: 6.5.4
- * WC Tested Up To: 8.9.2
- * Version: 17.17.1-rc.1
+ * WC Tested Up To: 8.9.3
+ * Version: 17.17.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
