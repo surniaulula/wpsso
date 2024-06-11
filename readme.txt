@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.5.4
-WC Tested Up To: 8.9.2
+WC Tested Up To: 8.9.3
 Stable Tag: 17.17.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.17.1-rc.1 (2024/06/11)**
+**Version 17.17.1 (2024/06/11)**
 
 * **New Features**
 	* None.
@@ -459,7 +459,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.17.1-rc.1 =
+= 17.17.1 =
 
 (2024/06/11) Fixed missing declaration of $p variable in `WpssoIntegDataWpseoBlocks` (props mykkal).
 
