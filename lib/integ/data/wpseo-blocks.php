@@ -22,6 +22,8 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 
 	class WpssoIntegDataWpseoBlocks {
 
+		private $p;	// Wpsso class object.
+
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
