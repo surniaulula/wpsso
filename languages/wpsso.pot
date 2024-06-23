@@ -8924,23 +8924,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1633
+#: lib/integ/ecom/woocommerce.php:1638
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1737
+#: lib/integ/ecom/woocommerce.php:1742
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1740
+#: lib/integ/ecom/woocommerce.php:1745
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1743
+#: lib/integ/ecom/woocommerce.php:1748
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

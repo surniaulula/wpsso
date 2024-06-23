@@ -697,6 +697,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'getting product defaults' );	// Begin timer.
+
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 			}
 
 			$product_incl_vat   = $this->p->options[ 'plugin_product_include_vat' ] ? true : false;
@@ -707,7 +709,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'product_incl_vat = ' . ( $product_incl_vat ? 'true' : 'false' ) );
 				$this->p->debug->log( 'product_price = ' . $product_price );
 				$this->p->debug->log( 'product_price_fmtd = ' . $product_price_fmtd );
@@ -1117,6 +1118,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			} else return false;	// $mixed is not a variation array, product or post object.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
+			}
+
 			$product_id         = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 			$product_parent_id  = $is_variation ? $product->get_parent_id() : $product_id;
 			$product_parent     = $is_variation ? $this->p->util->wc->get_product( $product_parent_id ) : $product;
@@ -1127,7 +1133,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'product_id = ' . $product_id );
 				$this->p->debug->log( 'product_parent_id = ' . $product_parent_id );
 				$this->p->debug->log( 'product_parent = ' . get_class( $product_parent ) );
@@ -1985,6 +1990,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		private function get_shipping_length_width_height_weight( WC_Product $product ) {	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
+			}
+
 			$has_dimensions      = $product->has_dimensions();
 			$has_weight          = $product->has_weight();
 			$dimension_unit_text = WpssoUtilUnits::get_dimension_text();	// Returns 'og_def_dimension_units' value.
@@ -1992,7 +2002,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 				$this->p->debug->log( 'has_dimensions = ' . ( $has_dimensions ? 'true' : 'false' ) );
 				$this->p->debug->log( 'has_weight = ' . ( $has_weight ? 'true' : 'false' ) );
 				$this->p->debug->log( 'dimension_unit_text = ' . $dimension_unit_text );

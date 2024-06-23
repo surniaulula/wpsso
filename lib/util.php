@@ -1073,9 +1073,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$post_type_names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
+				$type_names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
 
-				foreach ( $post_type_names as $opt_suffix ) {
+				foreach ( $type_names as $opt_suffix ) {
 
 					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
