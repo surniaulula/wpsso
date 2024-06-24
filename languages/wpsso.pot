@@ -3797,7 +3797,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:192
 msgctxt "option label"
-msgid "Schema Indexes"
+msgid "Schema Types"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:193

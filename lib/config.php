@@ -2731,7 +2731,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'wpsso_h_' => array(
 							'label'  => 'Document Markup',
-							'value'  => MONTH_IN_SECONDS,
+							'value'  => WEEK_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_head_markup',	// See WpssoUtil->get_cache_exp_secs().
 
 							/*
@@ -2760,7 +2760,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'filter' => 'wpsso_cache_expire_short_url',	// See WpssoUtil->get_cache_exp_secs().
 						),
 						'wpsso_t_' => array(
-							'label'  => 'Schema Indexes',
+							'label'  => 'Schema Types',
 							'value'  => MONTH_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_schema_types',	// See WpssoUtil->get_cache_exp_secs().
 						),
