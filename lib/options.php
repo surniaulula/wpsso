@@ -1341,8 +1341,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'img_url'    => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
 					'not_blank'  => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
 					'numeric'    => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
-					'pos_num'    => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
-					'pos_num_gt' => __( 'The value of option "%1$s" must be greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'pos_num'    => __( 'The value of option "%1$s" must be equal to or greater than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'pos_num_gt' => __( 'The value of option "%1$s" must be greater than %2$s - resetting this option to its default value.', 'wpsso' ),
 					'time'       => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
 					'url'        => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
 				);
