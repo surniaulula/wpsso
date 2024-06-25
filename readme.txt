@@ -10,8 +10,8 @@ Tags: schema, woocommerce, google search console, seo, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.8
-Tested Up To: 6.5.4
-WC Tested Up To: 8.9.3
+Tested Up To: 6.5.5
+WC Tested Up To: 9.0.2
 Stable Tag: 17.17.1
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
