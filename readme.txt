@@ -278,12 +278,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.18.0-rc.1 (2024/07/10)**
+**Version 17.18.0 (2024/07/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added update schedule check for Premium edition.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -473,9 +473,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.18.0-rc.1 =
+= 17.18.0 =
 
-(2024/07/10) None.
+(2024/07/10) Added update schedule check for Premium edition.
 
 = 17.17.1 =
 
