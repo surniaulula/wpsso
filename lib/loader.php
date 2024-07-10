@@ -72,11 +72,19 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
+			$have_um = SucomPlugin::is_plugin_active( 'wpsso-um/wpsso-um.php' ) ? true : false;
+
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_pp = empty( $info[ 'update_auth' ] ) || ! class_exists( 'WpssoUm' ) ? false : $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 );
+				if ( empty( $info[ 'update_auth' ] ) || ! $have_um ) {
 
-				$mod_sub = false === $ext_pp || 1 !== $ext_pp ? 'std' : 'pro';
+					$mod_sub = 'std';
+
+				} else {
+
+					$ext_pp = $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 );
+					$mod_sub = 1 !== $ext_pp ? 'std' : 'pro';
+				}
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
 
