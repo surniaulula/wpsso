@@ -540,6 +540,13 @@ if ( ! function_exists( 'wpsso_refresh_post_cache' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
+		/*
+		 * Mimic the post save process by clearing the cache first.
+		 *
+		 * See WpssoPost->add_wp_callbacks().
+		 */
+		$wpsso->post->clear_cache( $post_id );
+
 		return $wpsso->post->refresh_cache( $post_id );
 	}
 }
