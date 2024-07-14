@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.14.2\n"
+"Project-Id-Version: WPSSO Core 17.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-06-23 17:54-0700\n"
+"PO-Revision-Date: 2024-07-14 10:18-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6145,8 +6145,8 @@ msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
 #: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:217
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:211
-#: lib/loader.php:225 lib/post.php:1760 lib/pro/util/shorten.php:331
+#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
+#: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:759
 msgid "%s error:"
 msgstr "Erreur %s:"
@@ -8788,19 +8788,19 @@ msgstr "Google requiert au moins une question pour le balisage de Schéma FAQPag
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class
 #. name
-#: lib/loader.php:207
+#: lib/loader.php:209
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" est manquante."
 
-#: lib/loader.php:213
+#: lib/loader.php:215
 msgid "Library class \"%s\" is missing."
 msgstr "Classe de bibliothèque \"%s\" manquante."
 
-#: lib/loader.php:227
+#: lib/loader.php:229
 msgid "Library class name for \"%s\" cannot be determined."
 msgstr "Impossible de déterminer le nom de classe de bibliothèque pour \"%s\"."
 
-#: lib/loader.php:228
+#: lib/loader.php:230
 msgid "The installed plugin is incomplete or the web server cannot access the required library file."
 msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder au fichier de bibliothèque."
 
