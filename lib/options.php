@@ -1563,6 +1563,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Text strings that can be blank (line breaks are removed).
 				 */
 				case 'desc':
+				case 'description':
 				case 'one_line':
 				case 'preg':	// A regular expression.
 

@@ -29,50 +29,37 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
  */
 if ( ! function_exists( '__return_ignore' ) ) {	// Useful for the 'wpsso_option_type_{base_key}' filter.
 
-	function __return_ignore() {
+	function __return_ignore() { return 'ignore'; }
+}
 
-		return 'ignore';
-	}
+if ( ! function_exists( '__return_ok_blank' ) ) {	// Useful for the 'wpsso_option_type_{base_key}' filter.
+
+	function __return_ignore() { return 'ok_blank'; }
 }
 
 if ( ! function_exists( '__return_hour_in_seconds' ) ) {
 
-	function __return_hour_in_seconds() {
-
-		return HOUR_IN_SECONDS;
-	}
+	function __return_hour_in_seconds() { return HOUR_IN_SECONDS; }
 }
 
 if ( ! function_exists( '__return_day_in_seconds' ) ) {
 
-	function __return_day_in_seconds() {
-
-		return DAY_IN_SECONDS;
-	}
+	function __return_day_in_seconds() { return DAY_IN_SECONDS; }
 }
 
 if ( ! function_exists( '__return_week_in_seconds' ) ) {
 
-	function __return_week_in_seconds() {
-
-		return WEEK_IN_SECONDS;
-	}
+	function __return_week_in_seconds() { return WEEK_IN_SECONDS; }
 }
 
 if ( ! function_exists( '__return_month_in_seconds' ) ) {
 
-	function __return_month_in_seconds() {
-
-		return MONTH_IN_SECONDS;
-	}
+	function __return_month_in_seconds() { return MONTH_IN_SECONDS; }
 }
 
 if ( ! function_exists( '__return_year_in_seconds' ) ) {
 
-	function __return_year_in_seconds() {
-
-		return YEAR_IN_SECONDS;
-	}
+	function __return_year_in_seconds() { return YEAR_IN_SECONDS; }
 }
 
 /*
