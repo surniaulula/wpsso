@@ -1,4 +1,6 @@
 
+__return_ignore()
+
 __return_hour_in_seconds()
 
 __return_day_in_seconds()

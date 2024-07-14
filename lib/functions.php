@@ -32,11 +32,6 @@ if ( ! function_exists( '__return_ignore' ) ) {		// Useful for the 'wpsso_option
 	function __return_ignore() { return 'ignore'; }
 }
 
-if ( ! function_exists( '__return_ok_blank' ) ) {	// Useful for the 'wpsso_option_type_{base_key}' filter.
-
-	function __return_ok_blank() { return 'ok_blank'; }
-}
-
 if ( ! function_exists( '__return_hour_in_seconds' ) ) {
 
 	function __return_hour_in_seconds() { return HOUR_IN_SECONDS; }
