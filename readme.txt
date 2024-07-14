@@ -289,7 +289,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new 'wpsso_option_type_{base_key}' filter.
 	* Added a new `__return_ignore()` function.
-	* Added a new `__return_ok_blank()` function.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
