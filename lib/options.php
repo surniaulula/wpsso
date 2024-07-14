@@ -1350,8 +1350,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			$option_type = apply_filters( 'wpsso_option_type', $option_type = '', $base_key, $network, $mod );
 
+			/*
+			 * Apply a second more specific filter to customize the option type for a single base key.
+			 */
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_option_type_' . $base_key );
-
 			$option_type = apply_filters( $filter_name, $option_type, $network, $mod );
 
 			/*

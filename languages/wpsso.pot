@@ -13804,122 +13804,122 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/options.php:1922 lib/options.php:1954
+#: lib/options.php:1924 lib/options.php:1956
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1926
+#: lib/options.php:1928
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1930
+#: lib/options.php:1932
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1934
+#: lib/options.php:1936
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1938
+#: lib/options.php:1940
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1942
+#: lib/options.php:1944
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1946
+#: lib/options.php:1948
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1950
+#: lib/options.php:1952
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1958
+#: lib/options.php:1960
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1962
+#: lib/options.php:1964
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1966
+#: lib/options.php:1968
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1970
+#: lib/options.php:1972
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1974
+#: lib/options.php:1976
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1978
+#: lib/options.php:1980
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1982
+#: lib/options.php:1984
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1986
+#: lib/options.php:1988
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1990
+#: lib/options.php:1992
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1994
+#: lib/options.php:1996
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1998
+#: lib/options.php:2000
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:2002
+#: lib/options.php:2004
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2006
+#: lib/options.php:2008
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2010
+#: lib/options.php:2012
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2014
+#: lib/options.php:2016
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2018
+#: lib/options.php:2020
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
