@@ -287,7 +287,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'wpsso_option_type_{base_key}' filter.
+	* Added a new `__return_ignore()` function.
+	* Added a new `__return_ok_blank()` function.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -489,7 +491,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.19.0-dev.1 =
 
-(2024/07/14) None.
+(2024/07/14) Added a new 'wpsso_option_type_{base_key}' filter.
 
 = 17.18.0 =
 
