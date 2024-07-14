@@ -27,6 +27,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
  *	__return_true()
  *	__return_zero()
  */
+if ( ! function_exists( '__return_ignore' ) ) {	// Useful for the 'wpsso_option_type_{base_key}' filter.
+
+	function __return_ignore() {
+
+		return 'ignore';
+	}
+}
+
 if ( ! function_exists( '__return_hour_in_seconds' ) ) {
 
 	function __return_hour_in_seconds() {

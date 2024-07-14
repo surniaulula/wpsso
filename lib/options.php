@@ -1312,15 +1312,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {
 
-			if ( is_array( $opt_val ) ) {
+			if ( is_array( $opt_val ) ) {	// Just in case.
 
 				return $opt_val;
 			}
-
-			/*
-			 * Hooked by WpssoOptions->filter_option_type() and several add-ons.
-			 */
-			$option_type = apply_filters( 'wpsso_option_type', $option_type = false, $base_key, $network, $mod );
 
 			/*
 			 * Translate error messages only once.
@@ -1347,6 +1342,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'url'        => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
+
+			/*
+			 * Return the sanitation type for a given option key.
+			 *
+			 * Hooked by WpssoOptions->filter_option_type() and several add-ons.
+			 */
+			$option_type = apply_filters( 'wpsso_option_type', $option_type = '', $base_key, $network, $mod );
+
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_option_type_' . $base_key );
+
+			$option_type = apply_filters( $filter_name, $option_type, $network, $mod );
 
 			/*
 			 * Pre-filter most values to remove html.

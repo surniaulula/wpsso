@@ -251,7 +251,9 @@
 
 'wpsso_og_type' ( $type_id, $mod, $is_custom )
 
-'wpsso_option_type' ( false, $base_key, $network, $mod )
+'wpsso_option_type' ( $option_type = '', $base_key, $network, $mod )	// Return the sanitation type for a given option key.
+
+'wpsso_option_type_{base_key}' ( $option_type, $network, $mod )	// Applied after the 'wpsso_option_type' filter.
 
 'wpsso_plugin_image_sizes' ( $sizes )
 
