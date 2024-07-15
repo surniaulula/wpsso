@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.19.0-rc.1 (2024/07/15)**
+**Version 17.19.0 (2024/07/15)**
 
 * **New Features**
 	* None.
@@ -488,7 +488,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.19.0-rc.1 =
+= 17.19.0 =
 
 (2024/07/15) Added a new 'wpsso_option_type_{base_key}' filter.
 
