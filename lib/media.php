@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				return $local_fifo[ $cache_id ];
 
-			} elseif ( 1 !== $this->p->check->pp( $ext = 'wpsso', true, WPSSO_UNDEF, true, -1 ) ) {
+			} elseif ( ! $this->p->check->is_pp( $ext = 'wpsso' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 

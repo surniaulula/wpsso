@@ -1059,11 +1059,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function get_ext_status( $ext ) {
 
-			$ext_pdir    = $this->pp( $ext, $li = false );
-			$ext_auth_id = $this->get_ext_auth_id( $ext );
-			$ext_pp      = $ext_auth_id && $this->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+			$ext_pdir = $this->pp( $ext, $li = false );
+			$ext_tid  = $this->get_ext_auth_id( $ext );
+			$ext_pp   = $ext_tid && WPSSO_UNDEF === $this->pp( $ext, $li = true, WPSSO_UNDEF ) ? true : false;
 
-			return ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+			return ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_tid ? '*' : '' );
 		}
 
 		public function get_ext_auth_type( $ext ) {

@@ -500,7 +500,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting videos for og:video meta tag' );
 				}
 
-				if ( ! $this->p->check->pp() ) {
+				if ( ! $this->p->check->is_pp( $ext = 'wpsso' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
