@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function show_post_body_settings_form() {
 
-			$human_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
+			$refresh_max_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );
 
 			echo '<div id="tools-content">' . "\n";
 
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '* ';
-			echo sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $human_time ) . ' ';
+			echo sprintf( __( 'The maximum execution time for this background task is currently set to %s.', 'wpsso' ), $refresh_max_time ) . ' ';
 			echo '</p>' . "\n";
 
 			echo '<p class="status-msg smaller left">';
@@ -161,6 +161,19 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
 			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
+
+			if ( $this->p->util->cache->count_ignored_urls() > 0 ) {
+
+				$ignored_urls       = $this->p->util->cache->get_ignored_urls();
+				$count_ignored_urls = number_format_i18n( count( $ignored_urls ) );
+
+				echo '<h4>' . sprintf( __( '%s Failed URL Connections:', 'wpsso' ), $count_ignored_urls ) . '</h4>';
+				echo '<p class="status-msg smaller left">';
+
+				foreach ( $ignored_urls as $url => $ts ) { echo '<a href="' . $url . '">' . $url . '</a></br>'; }
+
+				echo '</p>' . "\n";
+			}
 
 			echo '</div><!-- #tools-content -->' . "\n";
 		}

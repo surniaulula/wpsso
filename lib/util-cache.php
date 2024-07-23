@@ -203,6 +203,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
+		 * See WpssoSubmenuTools->add_form_buttons().
+		 */
+		public function get_ignored_urls() {
+
+			return $this->p->cache->get_ignored_urls();
+		}
+
+		/*
 		 * Clear database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
 		 * and optionally exclude transients for shortened URLs.
 		 *
