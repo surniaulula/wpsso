@@ -2980,8 +2980,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$notice_msg = sprintf( __( 'Getting video details for %s (possibly from file cache).', 'wpsso' ),
-					'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+				if ( $this->p->util->is_html_head_meta_url_cached( $url ) ) {
+
+					$notice_msg = sprintf( __( 'Getting video details for %s from file cache.', 'wpsso' ),
+						'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+
+				} else {
+
+					$notice_msg = sprintf( __( 'Getting video details for %s.', 'wpsso' ),
+						'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+				}
 
 				$notice_key = 'video-details-' . $url;
 

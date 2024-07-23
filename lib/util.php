@@ -1532,11 +1532,35 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
+		 * See WpssoMedia->add_og_video_from_url().
+		 */
+		public function is_html_head_meta_url_cached( $url ) {
+			
+			if ( empty( $url ) ) return false;	// Just in case.
+
+			if ( false !== stripos( $url, '<html' ) ) return false;	// Request contains html.
+
+			if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) return false;	// Request is an invalid url.
+				
+			$cache_format   = 'raw';
+			$cache_type     = 'file';
+			$cache_exp_secs = HOUR_IN_SECONDS;
+			$cache_file_ext = '.html';
+
+			return $this->p->cache->is_cached( $url, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext );
+		}
+
+		/*
 		 * Query argument examples:
 		 *
 		 * 	/html/head/link|/html/head/meta
 		 * 	/html/head/link[@rel="canonical"]
 		 * 	/html/head/meta[starts-with(@property, "og:video:")]
+		 *
+		 * See WpssoMedia->add_og_video_from_url().
+		 * See WpssoPost->check_post_head().
+		 * See WpssoProMediaSoundcloud->filter_video_details().
+		 * See WpssoProMediaWistia->filter_video_details().
 		 */
 		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array(), $throttle_secs = 0 ) {
 
@@ -1569,7 +1593,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				return false;
-
 			}
 
 			if ( empty( $query ) ) {	// Just in case.
@@ -1580,7 +1603,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				return false;
-
 			}
 
 			if ( false !== stripos( $request, '<html' ) ) {	// Request contains html.
