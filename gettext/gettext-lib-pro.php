@@ -203,7 +203,7 @@ __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 __( 'Video title not found for %s.', 'wpsso' );
 __( 'Video description not found for %s.', 'wpsso' );
-__( 'Upload date not found for %s.', 'wpsso' );
+__( 'Video upload date not found for %s.', 'wpsso' );
 __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting).', 'wpsso' );
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
 __( '%s error:', 'wpsso' );

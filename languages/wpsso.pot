@@ -6338,7 +6338,7 @@ msgid "Video description not found for %s."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:206 lib/pro/media/youtube.php:190
-msgid "Upload date not found for %s."
+msgid "Video upload date not found for %s."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:207 lib/pro/media/upscale.php:249
