@@ -283,9 +283,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a "Getting video details from {url}." dismissable information notice when retrieving video information.
+	* Added a "Getting video details for {url}." information notice when retrieving video information.
 	* Added a "Failed URL Connections" list (when greater than 0) to the SSO &gt; Tools and Actions page.
-	* Added notice messages for missing title, description, and/or upload date for YouTube videos (Premium edition).
+	* Added notice messages for missing title, description, and/or upload date values from YouTube video details (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -506,7 +506,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.20.0-dev.3 =
 
-(2024/07/23) Added "Getting video details from {url}." notice. Added "Failed URL Connections" to the Tools and Actions page. Added notice messages for missing values for YouTube videos (Premium edition).
+(2024/07/23) Added "Getting video details for {url}." notice. Added "Failed URL Connections" to the Tools and Actions page. Added notice messages for missing values from YouTube video details (Premium edition).
 
 = 17.19.0 =
 
