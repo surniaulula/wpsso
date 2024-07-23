@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.20.0-rc.1 (2024/07/23)**
+**Version 17.20.0 (2024/07/23)**
 
 * **New Features**
 	* None.
@@ -504,7 +504,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.20.0-rc.1 =
+= 17.20.0 =
 
 (2024/07/23) Added "Getting video details for {url}." notice. Added "Failed URL Connections" to the Tools and Actions page. Added notice messages for missing values from YouTube video details (Premium edition).
 
