@@ -9237,7 +9237,7 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:2983
-msgid "Getting video details from %s."
+msgid "Getting video details for %s (possibly from cache)."
 msgstr ""
 
 #: lib/media.php:3659
