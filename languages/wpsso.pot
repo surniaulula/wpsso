@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.20.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 17.20.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5761,7 +5761,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:208
+#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:211
 #: lib/pro/admin/advanced.php:615 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -5782,7 +5782,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:210
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:213
 #: lib/pro/admin/advanced.php:633 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -5793,7 +5793,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:643 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -5804,7 +5804,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:214
+#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:217
 #: lib/pro/admin/advanced.php:653 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -5855,7 +5855,7 @@ msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:219
+#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:222
 #: lib/pro/admin/advanced.php:704 lib/pro/review/shopperapproved.php:45
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
@@ -5871,7 +5871,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:223
+#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:226
 #: lib/pro/admin/advanced.php:720 lib/pro/review/stamped.php:45
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -6329,63 +6329,75 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:249
+#: gettext/gettext-lib-pro.php:204 lib/pro/media/youtube.php:170
+msgid "Video title not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:205 lib/pro/media/youtube.php:180
+msgid "Video description not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/youtube.php:190
+msgid "Upload date not found for %s."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:207 lib/pro/media/upscale.php:249
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/upscale.php:257
+#: gettext/gettext-lib-pro.php:208 lib/pro/media/upscale.php:257
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:217
+#: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:220
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:767
 msgid "%s error:"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:209
-#: gettext/gettext-lib-pro.php:211 gettext/gettext-lib-pro.php:213
+#: gettext/gettext-lib-pro.php:210 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
 #: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
 #: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:215 lib/pro/util/shorten.php:451
+#: gettext/gettext-lib-pro.php:218 lib/pro/util/shorten.php:451
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:216 lib/pro/util/shorten.php:492
+#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:492
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:218 lib/pro/util/shorten.php:529
+#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:529
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:220 lib/pro/review/shopperapproved.php:173
+#: gettext/gettext-lib-pro.php:223 lib/pro/review/shopperapproved.php:173
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:221 gettext/gettext-lib-pro.php:225
+#: gettext/gettext-lib-pro.php:224 gettext/gettext-lib-pro.php:228
 #: lib/pro/review/shopperapproved.php:339 lib/pro/review/stamped.php:329
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:222 gettext/gettext-lib-pro.php:226
+#: gettext/gettext-lib-pro.php:225 gettext/gettext-lib-pro.php:229
 #: lib/pro/review/shopperapproved.php:342 lib/pro/review/stamped.php:332
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/review/stamped.php:173
+#: gettext/gettext-lib-pro.php:227 lib/pro/review/stamped.php:173
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
