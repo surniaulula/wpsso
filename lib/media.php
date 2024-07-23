@@ -2978,6 +2978,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
 			);
 
+			if ( $this->p->notice->is_admin_pre_notices() ) {
+
+				$notice_msg = sprintf( __( 'Getting video details from %s.', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+
+				$notice_key = 'video-details-' . $url;
+
+				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+			}
+
 			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts, $throttle_secs );
 
 			/*
