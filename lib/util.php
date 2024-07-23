@@ -1535,13 +1535,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoMedia->add_og_video_from_url().
 		 */
 		public function is_html_head_meta_url_cached( $url ) {
-			
+
 			if ( empty( $url ) ) return false;	// Just in case.
 
 			if ( false !== stripos( $url, '<html' ) ) return false;	// Request contains html.
 
 			if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) return false;	// Request is an invalid url.
-				
+
 			$cache_format   = 'raw';
 			$cache_type     = 'file';
 			$cache_exp_secs = HOUR_IN_SECONDS;
