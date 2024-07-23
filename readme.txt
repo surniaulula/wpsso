@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.20.0-dev.1 (2024/07/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a "Getting video details from {url}." dismissable information notice when retrieving video information.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.19.0 (2024/07/15)**
 
 * **New Features**
@@ -487,6 +501,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.20.0-dev.1 =
+
+(2024/07/23) Added a "Getting video details from {url}." dismissable information notice when retrieving video information.
 
 = 17.19.0 =
 
