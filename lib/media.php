@@ -2980,7 +2980,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$notice_msg = sprintf( __( 'Getting video details for %s (possibly from cache).', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+				$notice_msg = sprintf( __( 'Getting video details for %s (possibly from file cache).', 'wpsso' ),
+					'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
 
 				$notice_key = 'video-details-' . $url;
 

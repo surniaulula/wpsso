@@ -1697,7 +1697,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'zero_pos_fnum':
 
 					if ( null === $limit_min ) {
-					
+
 						$limit_min = 0;
 					}
 
@@ -1727,17 +1727,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opt_val = '';
 
 					} elseif ( null !== $limit_min ) {
-					
+
 						if ( $opt_val < $limit_min || ! is_numeric( $opt_val ) ) {
 
 							$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $limit_min ) );
 
 							$opt_val = $def_val;
-						
+
 						}
 
 					} else {	// $limit_min is null.
-					
+
 						if ( $opt_val <= 0 || ! is_numeric( $opt_val ) ) {
 
 							$this->p->notice->err( sprintf( $errors_transl[ 'pos_num_gt' ], $opt_key, 0 ) );
@@ -1747,7 +1747,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( '' === $opt_val ) {	// Default value is blank.
-					
+
 						$ret_int  = false;
 						$ret_fnum = false;
 					}

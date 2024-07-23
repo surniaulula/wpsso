@@ -1991,7 +1991,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		private function get_shipping_length_width_height_weight( WC_Product $product ) {	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 			}
 
