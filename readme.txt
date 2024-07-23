@@ -278,12 +278,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.20.0-dev.1 (2024/07/23)**
+**Version 17.20.0-dev.2 (2024/07/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a "Getting video details from {url}." dismissable information notice when retrieving video information.
+	* Added a "Failed URL Connections" list (when greater than 0) to the SSO &gt; Tools and Actions page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -502,9 +503,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.20.0-dev.1 =
+= 17.20.0-dev.2 =
 
-(2024/07/23) Added a "Getting video details from {url}." dismissable information notice when retrieving video information.
+(2024/07/23) Added a "Getting video details from {url}." notice. Added a "Failed URL Connections" list to the Tools and Actions page.
 
 = 17.19.0 =
 
