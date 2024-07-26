@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed og:video:type = text/html from being considered a video.
+	* Fixed og:video:type = text/html from being considered a video by default.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -520,7 +520,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.20.1-dev.1 =
 
-(2024/07/26) Fixed og:video:type = text/html from being considered a video.
+(2024/07/26) Fixed og:video:type = text/html from being considered a video by default.
 
 = 17.20.0 =
 
