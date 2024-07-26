@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.20.1-rc.1 (2024/07/26)**
+**Version 17.20.1 (2024/07/26)**
 
 * **New Features**
 	* None.
@@ -519,7 +519,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.20.1-rc.1 =
+= 17.20.1 =
 
 (2024/07/26) Fixed depecated method calls since SEO Framework v5.0.0. Fixed og:video:type = text/html from being considered a video by default.
 
