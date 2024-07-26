@@ -10,7 +10,7 @@ Tags: schema, woocommerce, google search console, seo, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.2.34
 Requires At Least: 5.8
-Tested Up To: 6.6
+Tested Up To: 6.6.1
 WC Tested Up To: 9.1.2
 Stable Tag: 17.20.0
 
