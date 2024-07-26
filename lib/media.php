@@ -453,6 +453,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'creating $mt_extend array' );
+			}
+
 			$mt_extend = array();
 
 			foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
@@ -467,7 +472,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					continue;
 				}
 
-				if ( 'text/html' !== $mt_single_video[ 'og:video:type' ] && ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( '' );
+				}
+
+				if ( ! empty( $mt_single_video[ 'og:video:embed_url' ] ) && 'text/html' !== $mt_single_video[ 'og:video:type' ] ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'adding og:video:type text/html for ' . $mt_single_video[ 'og:video:embed_url' ] );
+					}
 
 					/*
 					 * Start with a fresh copy of all og meta tags.
@@ -1140,26 +1155,26 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( count( $all_matches ) . ' matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 				}
 
-				foreach ( $all_matches as $img_num => $img_arr ) {
+				foreach ( $all_matches as $match_num => $media ) {
 
-					$tag_value = $img_arr[ 0 ];
+					$tag_value = $media[ 0 ];
 
-					if ( empty( $img_arr[ 5 ] ) ) {
+					if ( empty( $media[ 5 ] ) ) {
 
-						$tag_name   = $img_arr[ 2 ];	// img
-						$attr_name  = $img_arr[ 3 ];	// data-wp-pid
-						$attr_value = $img_arr[ 4 ];	// id
+						$tag_name   = $media[ 2 ];	// img
+						$attr_name  = $media[ 3 ];	// data-wp-pid
+						$attr_value = $media[ 4 ];	// id
 
 					} else {
 
-						$tag_name   = $img_arr[ 5 ];	// img
-						$attr_name  = $img_arr[ 6 ];	// data-share-src|data-lazy-src|data-src|src
-						$attr_value = $img_arr[ 7 ];	// url
+						$tag_name   = $media[ 5 ];	// img
+						$attr_name  = $media[ 6 ];	// data-share-src|data-lazy-src|data-src|src
+						$attr_value = $media[ 7 ];	// url
 					}
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'match ' . $img_num . ': ' . $tag_name . ' ' . $attr_name . '="' . $attr_value . '"' );
+						$this->p->debug->log( 'match ' . $match_num . ': ' . $tag_name . ' ' . $attr_name . '="' . $attr_value . '"' );
 					}
 
 					switch ( $attr_name ) {
@@ -2327,12 +2342,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$all_matches = array_merge( $all_matches, $html_tag_matches );
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no <figure/> video html tag(s) found' );
-				}
+				$this->p->debug->log( 'no <figure/> video html tag(s) found' );
 			}
 
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]' .
@@ -2346,12 +2358,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$all_matches = array_merge( $all_matches, $html_tag_matches );
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no <iframe|embed/> video html tag(s) found' );
-				}
+				$this->p->debug->log( 'no <iframe|embed/> video html tag(s) found' );
 			}
 
 			/*
@@ -2540,6 +2549,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/*
 			 * Filter the array of video details.
+			 *
+			 * See WpssoProMediaFacebook->filter_video_details().
+			 * See WpssoProMediaSlideshare->filter_video_details().
+			 * See WpssoProMediaSoundcloud->filter_video_details().
+			 * See WpssoProMediaVimeo->filter_video_details().
+			 * See WpssoProMediaWistia->filter_video_details().
+			 * See WpssoProMediaYoutube->filter_video_details().
+			 * See WpssoStdMediaFacebook->filter_video_details().
+			 * See WpssostdMediaSlideshare->filter_video_details().
+			 * See WpssoStdMediaSoundcloud->filter_video_details().
+			 * See WpssoStdMediaVimeo->filter_video_details().
+			 * See WpssoStdMediaWistia->filter_video_details().
+			 * See WpssoStdMediaYoutube->filter_video_details().
 			 */
 			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
@@ -2697,22 +2719,34 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/*
 				 * Remove all meta tags if there's no media URL or the media URL is a duplicate.
 				 */
-				if ( empty( $have_media[ $mt_media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
+				if ( empty( $have_media[ $mt_media_pre ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no media URL or duplicate media - removing ' . $mt_media_pre . ' meta tags' );
+						$this->p->debug->log( 'no media URL: removing ' . $mt_media_pre . ' meta tags' );
 					}
 
-					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video ) as $k => $v ) {
+					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
+				
+				} elseif ( 'text/html' === $mt_single_video[ 'og:video:type' ] ) {
 
-						unset( $mt_single_video[ $k ] );
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'text/html media URL: removing ' . $mt_media_pre . ' meta tags' );
 					}
 
-				/*
-				 * If the media is an image, then maybe add missing sizes.
-				 */
-				} elseif ( 'og:image' === $mt_media_pre ) {
+					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
+
+				} elseif ( $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'duplicate media URL: removing ' . $mt_media_pre . ' meta tags' );
+					}
+					
+					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
+
+				} elseif ( 'og:image' === $mt_media_pre ) {	// If the media is an image, then maybe add missing sizes.
 
 					if ( empty( $mt_single_video[ 'og:image:width' ] ) || $mt_single_video[ 'og:image:width' ] < 0 ||
 						empty( $mt_single_video[ 'og:image:height' ] ) || $mt_single_video[ 'og:image:height' ] < 0 ) {
