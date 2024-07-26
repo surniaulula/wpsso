@@ -192,7 +192,9 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$tsf = the_seo_framework();
 
-			$opts = $tsf->get_all_options();
+			$opts = version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ?
+				$tsf->get_options() :
+				$tsf->get_all_options();
 
 			/*
 			 * Check for Open Graph and X (Twitter) Cards.
@@ -571,7 +573,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts_social[ 'opengraph' ] ) ) {
 
-				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
+				if ( version_compare( WPSEO_VERSION, '20.0', '>=' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl  = '<strong>' . __( 'Open Graph data', 'wordpress-seo' ) . '</strong>';
@@ -613,7 +615,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts_social[ 'twitter' ] ) ) {
 
-				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
+				if ( version_compare( WPSEO_VERSION, '20.0', '>=' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl  = '<strong>' . __( 'Twitter card data', 'wordpress-seo' ) . '</strong>';
@@ -655,7 +657,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts[ 'enable_enhanced_slack_sharing' ] ) ) {
 
-				if ( version_compare( WPSEO_VERSION, 20.0, '>=' ) ) {
+				if ( version_compare( WPSEO_VERSION, '20.0', '>=' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl  = '<strong>' . __( 'Slack sharing', 'wordpress-seo' ) . '</strong>';

@@ -80,10 +80,11 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 						$tsf = the_seo_framework();
 
-						if ( $ret = $tsf->get_primary_term_id( $mod[ 'id' ], $tax_slug ) ) {
+						$ret = version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ?
+							$tsf->data()->plugin()->post()->get_primary_term_id( $mod[ 'id' ], $tax_slug ) :
+							$tsf->get_primary_term_id( $mod[ 'id' ], $tax_slug );
 
-							return $ret;
-						}
+						if ( $ret ) { return $ret; }
 					}
 				}
 			}
@@ -231,7 +232,9 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 				'pta'      => $mod[ 'is_post_type_archive' ] ? $mod[ 'post_type' ] : '',
 			);
 
-			$url = $tsf->get_canonical_url( $args );
+			$url = version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ?
+				$tsf->uri()->get_canonical_url( $args ) :
+				$tsf->get_canonical_url( $args );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -261,7 +264,9 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 				'pta'      => $mod[ 'is_post_type_archive' ] ? $mod[ 'post_type' ] : '',
 			);
 
-			$url = $tsf->get_redirect_url( $args );
+			$url = version_compare( THE_SEO_FRAMEWORK_VERSION, '5.0.0', '>=' ) ?
+				$tsf->uri()->get_redirect_url( $args ) :
+				$tsf->get_redirect_url( $args );
 
 			if ( $this->p->debug->enabled ) {
 
