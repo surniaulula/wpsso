@@ -2728,7 +2728,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
 				
-				} elseif ( 'text/html' === $mt_single_video[ 'og:video:type' ] ) {
+				} elseif ( empty( $mt_single_video[ 'og:video:embed_url' ] ) && 
+					isset( $mt_single_video[ 'og:video:type' ] ) && 'text/html' === $mt_single_video[ 'og:video:type' ] ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2769,6 +2770,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'video image width and height: ' .
 							$mt_single_video[ 'og:image:width' ] . 'x' . $mt_single_video[ 'og:image:height' ] );
 					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'accepting ' . $mt_media_pre . ' media URL: ' . $media_url );
 				}
 			}
 
