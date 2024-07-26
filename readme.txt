@@ -278,13 +278,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.20.1-dev.1 (2024/07/26)**
+**Version 17.20.1-dev.2 (2024/07/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
+	* Fixed depecated method calls since SEO Framework v5.0.0.
 	* Fixed og:video:type = text/html from being considered a video by default.
 * **Developer Notes**
 	* None.
@@ -518,9 +519,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.20.1-dev.1 =
+= 17.20.1-dev.2 =
 
-(2024/07/26) Fixed og:video:type = text/html from being considered a video by default.
+(2024/07/26) Fixed depecated method calls since SEO Framework v5.0.0. Fixed og:video:type = text/html from being considered a video by default.
 
 = 17.20.0 =
 
