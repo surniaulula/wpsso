@@ -1548,31 +1548,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$shipping_destinations = array();
 					$shipping_postcodes    = array();
 
-					/*
-					 * Get postal code limits first as they are applied to countries and regions.
-					 */
-					foreach ( $zone_locations as $location_key => $location_obj ) {
-
-						if ( 'postcode' === $location_obj->type ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'shipping post code = ' . $location_obj->code );
-							}
-
-							$shipping_postcodes[] = $location_obj->code;
-						}
-					}
-
-					/*
-					 * Create an options array of countries, a single country, or a single country and state -
-					 * all with postal code limits, if any were found above.
-					 */
 					foreach ( $zone_locations as $location_key => $location_obj ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'zone location key = ' . $location_key );
+							$this->p->debug->log( 'zone location ' . $location_key. ' ' . $location_obj->type . ' = ' . $location_obj->code );
 						}
 
 						$destination_opts = array();
@@ -1603,7 +1583,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 									$destination_opts[ 'region_code' ]  = $codes[ 1 ];
 								}
 							}
+
+						} elseif ( 'postcode' === $location_obj->type ) {
+
+							$destination_opts[ 'postal_code' ] = $location_obj->code;
 						}
+
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1611,11 +1596,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						}
 
 						if ( ! empty( $destination_opts ) ) {
-
-							if ( ! empty( $shipping_postcodes ) ) {
-
-								$destination_opts[ 'postal_code' ] = $shipping_postcodes;
-							}
 
 							$destination_opts[ 'destination_id' ]  = 'dest-z' . $zone_id . '-d' . $location_key;
 							$destination_opts[ 'destination_rel' ] = $product_parent_url;
