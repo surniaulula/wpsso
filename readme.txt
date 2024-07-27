@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.20.2-dev.1 (2024/07/27)**
+**Version 17.20.2-rc.1 (2024/07/27)**
 
 * **New Features**
 	* None.
@@ -533,7 +533,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.20.2-dev.1 =
+= 17.20.2-rc.1 =
 
 (2024/07/27) Fixed addition of WooCommerce shipping destinations for zip/postal codes.
 
