@@ -139,7 +139,7 @@ _x( 'Manage any number of Merchant Return Policies for Google Merchant listings.
 _x( 'WPSSO Organization and Place Manager', 'plugin name', 'wpsso' );
 _x( 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ratings and Reviews', 'plugin name', 'wpsso' );
-_x( 'Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and Schema Review Markup.', 'plugin description', 'wpsso' );
+_x( 'Adds Ratings and Reviews Features to the WordPress Comments System.', 'plugin description', 'wpsso' );
 _x( 'WPSSO REST API', 'plugin name', 'wpsso' );
 _x( 'Extends the WordPress REST API post, term, and user query results with an array of meta tags and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ridiculously Responsive Social Sharing Buttons', 'plugin name', 'wpsso' );

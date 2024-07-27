@@ -3529,9 +3529,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:142
 msgctxt "plugin description"
-msgid ""
-"Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and "
-"Schema Review Markup."
+msgid "Adds Ratings and Reviews Features to the WordPress Comments System."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:143

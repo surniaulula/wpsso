@@ -788,7 +788,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorar' => array(			// Plugin acronym.
 					'short'       => 'WPSSO RAR',	// Short plugin name.
 					'name'        => 'WPSSO Ratings and Reviews',
-					'desc'        => 'Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and Schema Review Markup.',
+					'desc'        => 'Adds Ratings and Reviews Features to the WordPress Comments System.',
 					'slug'        => 'wpsso-ratings-and-reviews',
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',		// No premium version.
