@@ -1555,6 +1555,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						if ( 'postcode' === $location_obj->type ) {
 
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'shipping post code = ' . $location_obj->code );
+							}
+
 							$shipping_postcodes[] = $location_obj->code;
 						}
 					}
@@ -1564,6 +1569,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					 * all with postal code limits, if any were found above.
 					 */
 					foreach ( $zone_locations as $location_key => $location_obj ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'zone location key = ' . $location_key );
+						}
 
 						$destination_opts = array();
 
@@ -1595,6 +1605,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 							}
 						}
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log_arr( 'destination_opts', $destination_opts );
+						}
+
 						if ( ! empty( $destination_opts ) ) {
 
 							if ( ! empty( $shipping_postcodes ) ) {
@@ -1609,6 +1624,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						}
 					}
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log_arr( 'shipping_destinations', $shipping_destinations );
+					}
+
 					/*
 					 * Get shipping methods and rates for this zone.
 					 */
@@ -1617,17 +1637,37 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						/*
 						 * Returns false or a shipping offer options array.
 						 */
-						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $zone_id, $zone_name,
-							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent ) ) {
+						$shipping_offer = $this->get_zone_method_shipping_offer( $zone_id, $zone_name,
+							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent );
+
+						if ( $shipping_offer ) {
 
 							if ( empty( $shipping_destinations ) ) {	// Ships to the World.
 
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'shipping offer for zone ' . $zone_name . ' ships to world' );
+								}
+
 								$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
-							} else $shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
+							} else {
+							
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'shipping offer for zone ' . $zone_name . ' ships to destinations' );
+								}
+
+								$shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
+							}
 
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
+
+						} elseif ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no shipping offer for zone ' . $zone_name );
 						}
+
 
 					}	// End of $zone_methods loop.
 
