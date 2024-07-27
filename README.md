@@ -7,7 +7,7 @@
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.2.34 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.8 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>6.6.1</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>9.1.2</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>9.1.4</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, woocommerce, google search console, seo, meta tags</td></tr>
