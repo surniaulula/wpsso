@@ -3001,7 +3001,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/*
 		 * Modifies a single video associative array.
 		 */
-		public function add_og_video_from_url( array &$mt_single_video, $url, $throttle_secs = 0 ) {
+		public function add_og_video_from_url( array &$mt_single_video, $url, $cache_exp_secs = 0, $throttle_secs = 0 ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -3010,24 +3010,32 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/*
 			 * Use the Facebook user agent to get Open Graph meta tags.
-			 *
-			 * get_html_head_meta( $request, $query, $libxml_errors, $curl_opts )
 			 */
 			$curl_opts = array(
-				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
+				'CURLOPT_USERAGENT'      => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
+				'CURLOPT_COOKIELIST'     => 'ALL',	// Erases all cookies held in memory.
+				'CURLOPT_CACHE_THROTTLE' => $throttle_secs,
 			);
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				if ( $this->p->util->is_html_head_meta_url_cached( $url ) ) {
+				if ( $cache_url = $this->p->util->is_html_head_meta_url_cached( $url, $cache_exp_secs ) ) {
 
-					$notice_msg = sprintf( __( 'Getting video details for %s from file cache.', 'wpsso' ),
-						'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'Getting video details for ' . $url . ' from file cache ' . $cache_url );
+					}
+
+					$notice_msg = sprintf( __( 'Getting video details for %s from file cache.', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';
 
 				} else {
 
-					$notice_msg = sprintf( __( 'Getting video details for %s.', 'wpsso' ),
-						'<a href="' . $url . '">' . $url . '</a>' ) . ' ';
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'Getting video details for ' . $url );
+					}
+
+					$notice_msg = sprintf( __( 'Getting video details for %s.', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';
 				}
 
 				$notice_key = 'video-details-' . $url;
@@ -3035,7 +3043,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
 
-			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts, $throttle_secs );
+			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $cache_exp_secs, $curl_opts );
 
 			/*
 			 * Array

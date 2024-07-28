@@ -2719,27 +2719,27 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:873
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:875
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:905
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:907
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1013
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1015
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1027
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1029
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1041
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1043
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1070
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1072
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -2781,7 +2781,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:984
 #: lib/media-filters.php:116 lib/media.php:1555 lib/media.php:1705
-#: lib/media.php:3681
+#: lib/media.php:3689
 msgid "Media Library"
 msgstr ""
 
@@ -9141,7 +9141,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3691
+#: lib/media-filters.php:119 lib/media.php:3699
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9234,26 +9234,26 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3024
+#: lib/media.php:3029
 msgid "Getting video details for %s from file cache."
 msgstr ""
 
-#: lib/media.php:3029
+#: lib/media.php:3038
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3707
+#: lib/media.php:3715
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3760
+#: lib/media.php:3768
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3795
+#: lib/media.php:3803
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -15427,7 +15427,7 @@ msgstr ""
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1628
+#: lib/util.php:1629
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 

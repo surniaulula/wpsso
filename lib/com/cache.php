@@ -374,20 +374,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/*
 		 * Get image size for remote URL and cache for 300 seconds (5 minutes) by default.
 		 *
-		 * If $exp_secs is null, then use the default expiration time.
+		 * If $cache_exp_secs is null, then use the default expiration time.
 		 *
-		 * If $exp_secs is false, then get but do not save the data.
+		 * If $cache_exp_secs is false, then get but do not save the data.
 		 *
 		 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 		 */
-		public function get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = null ) {
+		public function get_image_size( $image_url, $cache_exp_secs = 300, $curl_opts = array(), $error_handler = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$file_path = $this->get( $image_url, 'file_path', $cache_type = 'file', $exp_secs, $cache_pre_ext = '', $curl_opts );
+			$file_path = $this->get( $image_url, 'file_path', $cache_type = 'file', $cache_exp_secs, $cache_pre_ext = '', $curl_opts );
 
 			if ( ! empty( $file_path ) ) {	// False on error.
 
@@ -428,7 +428,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/*
 		 * Called by SucomForm->get_event_load_json_script().
 		 */
-		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $cache_pre_ext = '' ) {
+		public function get_data_url( $cache_salt, $cache_data, $cache_exp_secs = null, $cache_pre_ext = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -442,7 +442,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( file_exists( $cache_file ) ) {
 
 				$file_mod_time = filemtime( $cache_file );
-				$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+				$file_exp_secs = null === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 				if ( false !== $file_exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
@@ -451,7 +451,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'cached file found: returning url ' . $cache_url );
 					}
 
-					$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
+					$cache_url = add_query_arg( 'modtime', $file_mod_time, $cache_url );
 
 					return $cache_url;
 
@@ -482,7 +482,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'cached file not found: creating ' . $cache_url );
 			}
 
-			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $cache_pre_ext ) ) {
+			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $cache_exp_secs, $cache_pre_ext ) ) {
 
 				if ( file_exists( $cache_file ) ) {
 
@@ -493,7 +493,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'cache data sucessfully saved' );
 					}
 
-					$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
+					$cache_url = add_query_arg( 'modtime', $file_mod_time, $cache_url );
 
 					return $cache_url;
 				}
@@ -503,18 +503,18 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		/*
-		 * If $exp_secs is null, then use the default expiration time.
+		 * If $cache_exp_secs is null, then use the default expiration time.
 		 *
-		 * If $exp_secs is false, then get but do not save the data.
+		 * If $cache_exp_secs is false, then get but do not save the data.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '', array $curl_opts = array(), $throttle_secs = 0 ) {
+		public function get( $url, $cache_format = 'url', $cache_type = 'file', $cache_exp_secs = null, $cache_pre_ext = '', $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$failure = 'url' === $format ? $url : false;
+			$failure = 'url' === $cache_format ? $url : false;
 
 			$this->url_get_mtimes[ $url ] = false;	// Default value for failure.
 
@@ -561,11 +561,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			/*
 			 * Return immediately if the cache contains what we need.
 			 */
-			switch ( $format ) {
+			switch ( $cache_format ) {
 
 				case 'raw':
 
-					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $cache_pre_ext );
+					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $cache_exp_secs, $cache_pre_ext );
 
 					if ( false !== $cache_data ) {
 
@@ -587,21 +587,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( file_exists( $cache_file ) ) {
 
 						$file_mod_time = filemtime( $cache_file );
-						$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+						$file_exp_secs = null === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
-						if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
+						if ( false !== $cache_exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' .
-									( $format === 'url' ? $cache_url : $cache_file ) );
+								$this->p->debug->log( 'cached file found: returning ' . $cache_format . ' ' .
+									( $cache_format === 'url' ? $cache_url : $cache_file ) );
 							}
 
 							$this->url_get_mtimes[ $url ] = true;	// Signal that return is from cache.
 
-							if ( 'url' === $format ) {
+							if ( 'url' === $cache_format ) {
 
-								$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
+								$cache_url = add_query_arg( 'modtime', $file_mod_time, $cache_url );
 
 								return $cache_url;
 
@@ -636,7 +636,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'cache return type for ' . $format . ' is unknown' );
+						$this->p->debug->log( 'cache return type for ' . $cache_format . ' is unknown' );
 					}
 
 					return $failure;
@@ -650,7 +650,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			/*
 			 * Maybe throttle connections for specific hosts, like YouTube for example.
 			 */
-			$this->maybe_throttle_host( $url_nofrag, $throttle_secs );
+			$this->maybe_throttle_host( $url_nofrag, $curl_opts );
 
 			$ch = curl_init();
 
@@ -733,6 +733,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				foreach ( $curl_opts as $opt_key => $opt_val ) {
 
+					if ( 'CURLOPT_CACHE_THROTTLE' === $opt_key ) continue;	// Ignore invalid curl option.
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'curl: setting custom curl option ' . $opt_key . ' = ' . $opt_val );
@@ -783,9 +785,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'cache data returned is empty' );
 					}
 
-				} elseif ( false !== $exp_secs ) {	// Optimize and check first.
+				} elseif ( false !== $cache_exp_secs ) {	// Optimize and check first.
 
-					if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $exp_secs, $cache_pre_ext ) ) {
+					if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $cache_exp_secs, $cache_pre_ext ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -794,7 +796,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 				}
 
-				switch ( $format ) {
+				switch ( $cache_format ) {
 
 					case 'raw':
 
@@ -814,15 +816,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		/*
-		 * If $exp_secs is null, then use the default expiration time.
+		 * If $cache_exp_secs is null, then use the default expiration time.
 		 *
-		 * If $exp_secs is false, then get but do not save the data.
+		 * If $cache_exp_secs is false, then get but do not save the data.
 		 */
-		public function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
+		public function get_cache_data( $cache_salt, $cache_type = 'file', $cache_exp_secs = null, $cache_pre_ext = '' ) {
 
 			$cache_data = false;
 
-			if ( false === $exp_secs ) {
+			if ( false === $cache_exp_secs ) {
 
 				return $cache_data;
 			}
@@ -853,7 +855,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					$file_name     = md5( $cache_salt ) . $cache_pre_ext;
 					$cache_file    = $this->base_dir . $file_name;
-					$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+					$file_exp_secs = null === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 					if ( ! file_exists( $cache_file ) ) {
 
@@ -936,21 +938,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		/*
-		 * If $exp_secs is null, then use the default expiration time.
+		 * If $cache_exp_secs is null, then use the default expiration time.
 		 *
-		 * If $exp_secs is false, then get but do not save the data.
+		 * If $cache_exp_secs is false, then get but do not save the data.
 		 */
-		public function save_cache_data( $cache_salt, $cache_data = '', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
+		public function save_cache_data( $cache_salt, $cache_data = '', $cache_type = 'file', $cache_exp_secs = null, $cache_pre_ext = '' ) {
 
 			$data_saved = false;
 
-			if ( empty( $cache_data ) || false === $exp_secs ) {
+			if ( empty( $cache_data ) || false === $cache_exp_secs ) {
 
 				return $data_saved;
 			}
 
-			$obj_exp_secs  = null === $exp_secs ? $this->default_object_cache_exp : $exp_secs;
-			$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+			$obj_exp_secs  = null === $cache_exp_secs ? $this->default_object_cache_exp : $cache_exp_secs;
+			$file_exp_secs = null === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1145,7 +1147,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_pre_ext = '' ) {
+		public function is_cached( $url, $cache_format = 'url', $cache_type = 'file', $cache_exp_secs = null, $cache_pre_ext = '' ) {
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
 			$url_path   = wp_parse_url( $url_nofrag, PHP_URL_PATH );
@@ -1160,15 +1162,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_file = $this->base_dir . md5( $cache_salt ) . $cache_pre_ext;
+			$cache_url  = $this->base_url . md5( $cache_salt ) . $cache_pre_ext;
 
 			/*
 			 * Return immediately if the cache contains what we need.
 			 */
-			switch ( $format ) {
+			switch ( $cache_format ) {
 
 				case 'raw':
 
-					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $cache_pre_ext ) ) {
+					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $cache_exp_secs, $cache_pre_ext ) ) {
 
 						return true;
 					}
@@ -1179,11 +1182,17 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( file_exists( $cache_file ) ) {
 
 						$file_mod_time = filemtime( $cache_file );
-						$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+						$file_exp_secs = null === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
-						if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
+						if ( false !== $cache_exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
-							return true;
+							if ( 'url' === $cache_format ) {
+
+								$cache_url = add_query_arg( 'moddate', gmdate( 'c', $file_mod_time ), $cache_url );
+
+								return $cache_url;
+
+							} else return $cache_file;
 						}
 					}
 
@@ -1196,20 +1205,19 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/*
 		 * Maybe throttle connections for specific hosts, like YouTube for example.
 		 */
-		public function maybe_throttle_host( $url, $throttle_secs ) {
+		public function maybe_throttle_host( $url, $curl_opts ) {
 
-			if ( $throttle_secs ) {
+			if ( ! empty( $curl_opts[ 'CURLOPT_CACHE_THROTTLE' ] ) ) {
 
-				$url_nofrag     = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
-				$url_host       = wp_parse_url( $url_nofrag, PHP_URL_HOST );
-				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
-				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
-				$cache_id       = $cache_md5_pre . md5( $cache_salt );
-				$cache_exp_secs = $throttle_secs;
+				$url_nofrag    = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
+				$url_host      = wp_parse_url( $url_nofrag, PHP_URL_HOST );
+				$cache_md5_pre = $this->plugin_id . '_!_';			// Preserved on clear cache.
+				$cache_salt    = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
+				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 				while ( $cache_ret = get_transient( $cache_id ) ) {
 
-					if ( $cache_ret + $throttle_secs > time() ) {
+					if ( $cache_ret + $curl_opts[ 'CURLOPT_CACHE_THROTTLE' ] > time() ) {
 
 						sleep( 1 );
 
@@ -1219,7 +1227,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					break;
 				}
 
-				set_transient( $cache_id, time(), $cache_exp_secs );
+				set_transient( $cache_id, time(), $curl_opts[ 'CURLOPT_CACHE_THROTTLE' ] );
 			}
 		}
 	}

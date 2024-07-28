@@ -1534,7 +1534,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/*
 		 * See WpssoMedia->add_og_video_from_url().
 		 */
-		public function is_html_head_meta_url_cached( $url ) {
+		public function is_html_head_meta_url_cached( $url, $cache_exp_secs = 0 ) {
 
 			if ( empty( $url ) ) return false;	// Just in case.
 
@@ -1542,12 +1542,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) return false;	// Request is an invalid url.
 
-			$cache_format   = 'raw';
+			$cache_format   = 'url';
 			$cache_type     = 'file';
-			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_file_ext = '.html';
 
-			return $this->p->cache->is_cached( $url, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext );
+			$cache_url = $this->p->cache->is_cached( $url, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext );
+
+			return $cache_url;
 		}
 
 		/*
@@ -1562,7 +1563,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoProMediaSoundcloud->filter_video_details().
 		 * See WpssoProMediaWistia->filter_video_details().
 		 */
-		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array(), $throttle_secs = 0 ) {
+		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, $cache_exp_secs = 0, $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1640,10 +1641,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$cache_format   = 'raw';
 				$cache_type     = 'file';
-				$cache_exp_secs = HOUR_IN_SECONDS;
 				$cache_file_ext = '.html';
 
-				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext, $curl_opts, $throttle_secs );
+				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_file_ext, $curl_opts );
 
 				if ( empty( $html ) ) {
 
