@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.21.0-dev.1 (2024/07/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 day in seconds).
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.20.2 (2024/07/27)**
 
 * **New Features**
@@ -532,6 +546,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.21.0-dev.1 =
+
+(2024/07/29) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 day in seconds).
 
 = 17.20.2 =
 
