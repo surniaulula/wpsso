@@ -2731,7 +2731,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'wpsso_y_' => array(	// See WpssoProMediaYoutube->filter_video_details().
 							'label'  => 'YouTube Video Details',
-							'value'  => DAY_IN_SECONDS,
+							'value'  => WEEK_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_youtube_video_details',
 						),
 						'wpsso_' => array(
