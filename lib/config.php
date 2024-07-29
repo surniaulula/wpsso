@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.20.2',	// Plugin version.
+					'version'     => '17.21.0-dev.1',	// Plugin version.
 					'opt_version' => '1001',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2713,29 +2713,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'person',
 					),
 				),
+
+				/*
+				 * See WpssoAdmin->get_ext_file_content().
+				 */
 				'cache' => array(
 					'file' => array(
 						'wpsso_c_' => array(	// See WpssoAdmin->get_ext_file_content().
 							'label'  => 'Get File Content',
 							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_file_content',	// See WpssoUtil->get_cache_exp_secs().
+							'filter' => 'wpsso_cache_expire_file_content',
 						),
 						'wpsso_r_' => array(	// See WpssoAdmin->get_readme_info().
-							'label'  => 'Get Readme URL',
+							'label'  => 'Get Readme Info',
 							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_readme_txt',	// See WpssoUtil->get_cache_exp_secs().
+							'filter' => 'wpsso_cache_expire_readme_info',
+						),
+						'wpsso_y_' => array(	// See WpssoProMediaYoutube->filter_video_details().
+							'label'  => 'YouTube Video Details',
+							'value'  => DAY_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_youtube_video_details',
+						),
+						'wpsso_' => array(
+							'label' => 'All Files',
 						),
 					),
 					'transient' => array(
-						'wpsso_!_' => array(	// Preserved on clear cache.
+						'wpsso_!_' => array(
 						),
 						'wpsso_h_' => array(
 							'label'  => 'Document Markup',
-							'value'  => WEEK_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_head_markup',	// See WpssoUtil->get_cache_exp_secs().
+							'value'  => MONTH_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_head_markup',
 
 							/*
-							 * If the $mod array condition is true, use the associated value.
+							 * If the $mod array condition is true, then use the associated value.
 							 */
 							'conditional_values' => array(
 								'is_404'        => 0,
@@ -2747,32 +2759,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso_i_' => array(
 							'label'  => 'Image URL Info',
 							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_image_info',	// See WpssoUtil->get_cache_exp_secs().
+							'filter' => 'wpsso_cache_expire_image_info',
 						),
 						'wpsso_r_' => array(
 							'label'  => 'API Response',
 							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_api_response',	// See WpssoUtil->get_cache_exp_secs().
+							'filter' => 'wpsso_cache_expire_api_response',
 						),
 						'wpsso_s_' => array(
 							'label'  => 'Short URLs',
 							'value'  => YEAR_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_short_url',	// See WpssoUtil->get_cache_exp_secs().
+							'filter' => 'wpsso_cache_expire_short_url',
 						),
 						'wpsso_t_' => array(
 							'label'  => 'Schema Types',
-							'value'  => MONTH_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_schema_types',	// See WpssoUtil->get_cache_exp_secs().
+							'value'  => WEEK_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_schema_types',
 						),
 						'wpsso_' => array(
 							'label' => 'All Transients',
 						),
 					),
 					'wp_cache' => array(
-						'wpsso_c_' => array(
+						'wpsso_c_' => array(	// See WpssoPage->get_the_content().
 							'label'   => 'Filtered Content',
 							'value'   => HOUR_IN_SECONDS,
-							'filter'  => 'wpsso_cache_expire_the_content',	// See WpssoUtil->get_cache_exp_secs().
+							'filter'  => 'wpsso_cache_expire_the_content',
 						),
 						'wpsso_' => array(
 							'label' => 'All WP Objects',
