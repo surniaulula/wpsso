@@ -287,7 +287,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 day in seconds).
+	* Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -549,7 +549,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.21.0-dev.1 =
 
-(2024/07/29) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 day in seconds).
+(2024/07/29) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
 
 = 17.20.2 =
 
