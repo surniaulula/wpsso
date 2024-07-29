@@ -3013,8 +3013,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$curl_opts = array(
 				'CURLOPT_USERAGENT'      => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
-				'CURLOPT_COOKIELIST'     => 'ALL',	// Erases all cookies held in memory.
-				'CURLOPT_CACHE_THROTTLE' => $throttle_secs,
+				'CURLOPT_COOKIELIST'     => 'ALL',		// Erases all cookies held in memory.
+				'CURLOPT_CACHE_THROTTLE' => $throttle_secs,	// Internal curl option.
 			);
 
 			if ( $this->p->notice->is_admin_pre_notices() ) {
@@ -3023,7 +3023,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'Getting video details for ' . $url . ' from file cache ' . $cache_url );
+						$this->p->debug->log( 'getting video details for ' . $url . ' from file cache ' . $cache_url );
 					}
 
 					$notice_msg = sprintf( __( 'Getting video details for %s from file cache.', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';
@@ -3032,7 +3032,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'Getting video details for ' . $url );
+						$this->p->debug->log( 'getting video details for ' . $url );
 					}
 
 					$notice_msg = sprintf( __( 'Getting video details for %s.', 'wpsso' ), '<a href="' . $url . '">' . $url . '</a>' ) . ' ';

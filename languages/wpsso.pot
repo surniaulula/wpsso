@@ -2719,27 +2719,27 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:875
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:879
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:907
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:911
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1015
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1019
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1029
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1033
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1043
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1047
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1072
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1076
 msgid "Failed writing data to cache file %s."
 msgstr ""
 

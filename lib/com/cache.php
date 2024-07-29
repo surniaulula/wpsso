@@ -725,22 +725,26 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 * Example:
 			 *
 			 *	$curl_opts = array(
-			 *		'CURLOPT_USERAGENT' => 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+			 *		'CURLOPT_USERAGENT'      => 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+			 *		'CURLOPT_COOKIELIST'     => 'ALL',		// Erases all cookies held in memory.
+			 *		'CURLOPT_CACHE_THROTTLE' => $throttle_secs,	// Internal curl option.
 			 *	);
-			 *
 			 */
 			if ( ! empty( $curl_opts ) ) {
 
 				foreach ( $curl_opts as $opt_key => $opt_val ) {
 
-					if ( 'CURLOPT_CACHE_THROTTLE' === $opt_key ) continue;	// Ignore invalid curl option.
+					if ( 0 === strpos( $opt_key, 'CURLOPT_' ) ) {	// Just in case.
 
-					if ( $this->p->debug->enabled ) {
+						if ( 'CURLOPT_CACHE_THROTTLE' === $opt_key ) continue;	// Internal curl option.
 
-						$this->p->debug->log( 'curl: setting custom curl option ' . $opt_key . ' = ' . $opt_val );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'curl: setting custom curl option ' . $opt_key . ' = ' . $opt_val );
+						}
+
+						curl_setopt( $ch, constant( $opt_key ), $opt_val );
 					}
-
-					curl_setopt( $ch, constant( $opt_key ), $opt_val );
 				}
 			}
 
