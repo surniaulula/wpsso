@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.21.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 17.21.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6364,7 +6364,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:220
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:788
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:779
 msgid "%s error:"
 msgstr ""
 
@@ -6824,7 +6824,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:937 lib/util-cache.php:702
+#: lib/admin.php:937
 msgid "%s cache files have been cleared."
 msgstr ""
 
@@ -15099,7 +15099,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:714
+#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:705
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15264,22 +15264,22 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:684
+#: lib/util-cache.php:685
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:750
+#: lib/util-cache.php:741
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:790
+#: lib/util-cache.php:781
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:836
+#: lib/util-cache.php:827
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

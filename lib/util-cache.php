@@ -619,15 +619,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Since WPSSO Core v15.8.0.
-			 *
+			 * Clear cache files but preserve HTML files, like the YouTube video webpage HTML.
+			 */
+			$this->clear_cache_files( $file_exp_secs = null, $exclude = array( '/\.html$/' ) );
+
+			/*
 			 * Refresh the Schema types transient cache.
 			 */
 			$this->p->schema->refresh_schema_types();
 
 			/*
-			 * Since WPSSO Core v14.8.0.
-			 *
 			 * Refresh the minimized notice stylesheet.
 			 */
 			$this->p->notice->refresh_notice_style();
@@ -679,7 +680,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Create the notification for the end of this task.
+			 * Create a notification for the end of this task.
 			 */
 			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
@@ -691,16 +692,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * See WpssoGmfFilters->filter_cache_refreshed_notice().
 			 */
 			$notice_msg = trim( apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id ) ) . ' ';
-
-			/*
-			 * Clear cache files but preserve HTML files, like the YouTube video webpage HTML.
-			 */
-			$cleared_count = $this->clear_cache_files( $file_exp_secs = null, $exclude = array( '/\.html$/' ) );
-
-			if ( $cleared_count > 0 ) {
-
-				$notice_msg .= sprintf( __( '%s cache files have been cleared.', 'wpsso' ), $cleared_count ) . ' ';
-			}
 
 			/*
 			 * Clear cache plugins.
