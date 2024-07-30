@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.21.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 17.21.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3765,12 +3765,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:186
 msgctxt "option label"
-msgid "Get File Content"
+msgid "File Content"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:187
 msgctxt "option label"
-msgid "Get Readme Info"
+msgid "Readme Info"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:188

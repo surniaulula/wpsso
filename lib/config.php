@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.21.0-dev.1',	// Plugin version.
+					'version'     => '17.21.0-dev.2',	// Plugin version.
 					'opt_version' => '1001',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2720,12 +2720,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cache' => array(
 					'file' => array(
 						'wpsso_c_' => array(	// See WpssoAdmin->get_ext_file_content().
-							'label'  => 'Get File Content',
+							'label'  => 'File Content',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_file_content',
 						),
 						'wpsso_r_' => array(	// See WpssoAdmin->get_readme_info().
-							'label'  => 'Get Readme Info',
+							'label'  => 'Readme Info',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_readme_info',
 						),
