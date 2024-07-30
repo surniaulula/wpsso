@@ -4035,6 +4035,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoProMediaSlideshare->filter_video_details().
 		 * See WpssoProMediaVimeo->filter_video_details().
 		 * See WpssoProMediaWistia->filter_video_details().
+		 * See WpssoProMediaYoutube->filter_video_details().
 		 * See WpssoProReviewShopperApproved->filter_og().
 		 * See WpssoProReviewStamped->filter_og().
 		 * See WpssoProUtilShorten->get_short_url().

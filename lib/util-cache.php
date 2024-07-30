@@ -92,12 +92,28 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoUtilCache->refresh().
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		public function clear_cache_files( $file_exp_secs = null ) {
+		public function clear_cache_files( $file_exp_secs = null, $exclude = array() ) {
 
 			$cleared_count = 0;
 			$cache_files   = $this->get_cache_files();	// Excludes hidden files and index.php.
 
 			foreach ( $cache_files as $cache_file ) {
+
+				if ( ! empty( $exclude ) ) {
+
+					foreach ( $exclude as $preg_match ) {
+
+						if ( preg_match( $preg_match, $cache_file ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping ' . $cache_file . ' (excluded)' );
+							}
+
+							continue 2;
+						}
+					}
+				}
 
 				if ( null !== $file_exp_secs ) {
 
@@ -105,6 +121,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					 * Skip cache files that are newer than the expiration time.
 					 */
 					if ( filemtime( $cache_file ) > time() - $file_exp_secs ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping ' . $cache_file . ' (newer than expiration time)' );
+						}
 
 						continue;
 					}
@@ -672,9 +693,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg = trim( apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id ) ) . ' ';
 
 			/*
-			 * Clear cache files.
+			 * Clear cache files but preserve HTML files, like the YouTube video webpage HTML.
 			 */
-			$cleared_count = $this->clear_cache_files();
+			$cleared_count = $this->clear_cache_files( $file_exp_secs = null, $exclude = array( '/\.html$/' ) );
 
 			if ( $cleared_count > 0 ) {
 

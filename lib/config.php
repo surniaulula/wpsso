@@ -5150,7 +5150,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 5;
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
-			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = WEEK_IN_SECONDS;	// See WpssoUtilCache->clear_expired_cache_files().
+			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = MONTH_IN_SECONDS;	// See WpssoUtilCache->clear_expired_cache_files().
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 1800;		// 30 minutes.
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = WEEK_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
@@ -5214,7 +5214,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * PHP cURL library settings.
 			 */
 			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
-			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/116.0';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:128.0) Gecko/20100101 Firefox/128.0';
 			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
 			/*
