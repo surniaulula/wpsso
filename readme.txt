@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.21.0-dev.2 (2024/07/30)**
+**Version 17.21.0-dev.3 (2024/07/30)**
 
 * **New Features**
 	* None.
@@ -552,7 +552,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.21.0-dev.2 =
+= 17.21.0-dev.3 =
 
 (2024/07/30) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
 
