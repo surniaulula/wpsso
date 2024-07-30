@@ -291,7 +291,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated `SucomCache->is_cached()` to return the cache file path or URL instead of true.
 	* Updated `SucomCache->maybe_throttle_host()` to use 'CURLOPT_CACHE_THROTTLE'.
 	* Updated `WpssoMedia->add_og_video_from_url()` arguments to include a cache expiration value.
-	* Updated `WpssoUtil->get_html_head_meta()` arguments to include a cache expiration value.
+	* Updated `WpssoUtil->get_html_head_meta()` arguments to add a cache expiration value.
+	* Updated `WpssoUtilCache->clear_cache_files()` arguments to add an exclusion array.
+	* Updated `WpssoUtilCache->refresh()` to exclude HTML cache files from being removed.
 	* Updated `WpssoProMediaYoutube->filter_video_details()` to use the 'wpsso_cache_expire_youtube_video_details' filter.
 * **Requires At Least**
 	* PHP v7.2.34.
