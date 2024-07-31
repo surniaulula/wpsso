@@ -84,5 +84,15 @@ if ( defined( 'WP_DEBUG' ) &amp;&amp; WP_DEBUG ) {
 define( 'WP_DEBUG_LOG', WP_CONTENT_DIR . '/debug.log' );
 </pre>
 
+<a name="add-html-debug-messages"></a>
+
+<h3><a href="#add-html-debug-messages">HTML Debug Messages</a></h3>
+
+<p>In some instances, WPSSO support may request that you enable the "Add HTML Debug Messages" and "Disable Cache for Debugging" options under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Plugin Admin</em> tab to investigate an issue specific to your site (ie. that cannot be reproduced on a test site). After enabling the "Add HTML Debug Messages" and "Disable Cache for Debugging" options, WPSSO will include debug messages as HTML comments in your webpages.<p>
+
+<p>If you use a optimization plugin or service to remove HTML comments from your webpages (a feature that can also be part of a caching plugin or service), you will need to disabled that feature.</p>
+
+<p>Once WPSSO support has investigated the issue, you can disable the "Add HTML Debug Messages" and "Disable Cache for Debugging" options and re-enable any HTML optimization features.</p>
+
 </div><!-- #wpsso-debug-notes -->
 
