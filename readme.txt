@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.21.0-dev.3 (2024/07/30)**
+**Version 17.21.0-dev.4 (2024/07/31)**
 
 * **New Features**
 	* None.
@@ -292,8 +292,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated `SucomCache->maybe_throttle_host()` to use 'CURLOPT_CACHE_THROTTLE'.
 	* Updated `WpssoMedia->add_og_video_from_url()` arguments to include a cache expiration value.
 	* Updated `WpssoUtil->get_html_head_meta()` arguments to add a cache expiration value.
-	* Updated `WpssoUtilCache->clear_cache_files()` arguments to add an exclusion array.
-	* Updated `WpssoUtilCache->refresh()` to exclude HTML cache files from being removed.
+	* Updated `WpssoUtilCache->clear_cache_files()` arguments to add an include and exclude array.
+	* Updated `WpssoUtilCache->refresh()` to clear only JS and TXT cache files.
 	* Updated `WpssoProMediaYoutube->filter_video_details()` to use the 'wpsso_cache_expire_youtube_video_details' filter.
 * **Requires At Least**
 	* PHP v7.2.34.
@@ -554,9 +554,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.21.0-dev.3 =
+= 17.21.0-dev.4 =
 
-(2024/07/30) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
+(2024/07/31) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
 
 = 17.20.2 =
 
