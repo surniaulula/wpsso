@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-07-30 08:59-0700\n"
+"PO-Revision-Date: 2024-07-31 08:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2569,7 +2569,7 @@ msgid "Additional requests to retrieve this URL will be ignored for another %d s
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:625 lib/util-cache.php:130
+#: lib/com/cache.php:473 lib/com/cache.php:625 lib/util-cache.php:167
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -6146,15 +6146,15 @@ msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/youtube.php:172
+#: gettext/gettext-lib-pro.php:204 lib/pro/media/youtube.php:176
 msgid "Video title not found for %s."
 msgstr "Titre de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/youtube.php:182
+#: gettext/gettext-lib-pro.php:205 lib/pro/media/youtube.php:186
 msgid "Video description not found for %s."
 msgstr "Description de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:206 lib/pro/media/youtube.php:192
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/youtube.php:196
 msgid "Video upload date not found for %s."
 msgstr "Date de téléchargement de la vidéo introuvable pour %s."
 
@@ -6169,7 +6169,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 #: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:220
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
-#: lib/pro/util/shorten.php:526 lib/util-cache.php:767
+#: lib/pro/util/shorten.php:526 lib/util-cache.php:795
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -6577,7 +6577,7 @@ msgstr "Les réglages réseau ont été sauvegardés."
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:937 lib/util-cache.php:681
+#: lib/admin.php:937
 msgid "%s cache files have been cleared."
 msgstr "%s fichiers de cache ont été supprimés."
 
@@ -13783,7 +13783,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1885 lib/user.php:1976 lib/util-cache.php:580
+#: lib/user.php:1885 lib/user.php:1976 lib/util-cache.php:617
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -13796,7 +13796,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:693
+#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:721
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -13908,60 +13908,60 @@ msgstr "<strong>Erreur</strong>: l'adresse de messagerie est incorrecte."
 msgid "<strong>Error</strong>: This email is already registered, please choose another one."
 msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisée. Veuillez en choisir une autre."
 
-#: lib/util-cache.php:179
+#: lib/util-cache.php:216
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util-cache.php:407
+#: lib/util-cache.php:444
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:476 lib/util-cache.php:544 lib/util-cache.php:570
+#: lib/util-cache.php:513 lib/util-cache.php:581 lib/util-cache.php:607
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
 
-#: lib/util-cache.php:492 lib/util-cache.php:552
+#: lib/util-cache.php:529 lib/util-cache.php:589
 msgid "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan commencera dans %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:509
+#: lib/util-cache.php:546
 msgid "A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan devait commencer il y a %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:512
+#: lib/util-cache.php:549
 msgid "WordPress should have run the %s event hook at that time."
 msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
 
-#: lib/util-cache.php:515
+#: lib/util-cache.php:552
 msgid "If the task does not run, this could indicate a problem with your hosting provider's event scheduler and/or a lack of support for the WordPress %s function."
 msgstr "Si la tâche ne s'exécute pas, cela peut indiquer un problème avec le planificateur d'événements de votre fournisseur d'hébergement et/ou un manque de prise en charge de la fonction %s de WordPress."
 
-#: lib/util-cache.php:517
+#: lib/util-cache.php:554
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr "Vous pouvez activer une extension comme %s pour gérer les événements planifiés."
 
-#: lib/util-cache.php:519
+#: lib/util-cache.php:556
 msgid "WP Crontrol"
 msgstr "WP Crontrol"
 
-#: lib/util-cache.php:581
+#: lib/util-cache.php:618
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:663
+#: lib/util-cache.php:701
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:729
+#: lib/util-cache.php:757
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:769
+#: lib/util-cache.php:797
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:815
+#: lib/util-cache.php:843
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
