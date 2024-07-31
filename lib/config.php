@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.21.0',	// Plugin version.
+					'version'     => '17.22.0-dev.1',	// Plugin version.
 					'opt_version' => '1001',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3446,9 +3446,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
-				 * Validated on 2023/05/31.
+				 * Validated on 2024/07/31.
 				 *
 				 * See https://schema.org/MerchantReturnEnumeration.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#returns.
 				 */
 				'merchant_return' => array(
 					'https://schema.org/MerchantReturnFiniteReturnWindow' => 'Limited Return Window',
@@ -3475,9 +3476,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
+				 * Validated on 2024/07/31.
+				 *
+				 * See https://schema.org/ReturnFeesEnumeration.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#returns.
+				 */
+				'return_fees' => array(
+					'https://schema.org/FreeReturn'                       => 'Free Return',
+					'https://schema.org/ReturnFeesCustomerResponsibility' => 'Customer Pays Shipping',
+					'https://schema.org/ReturnShippingFees'               => 'Return Has Shipping Fees',
+				),
+
+				/*
 				 * Validated on 2023/06/02.
 				 *
 				 * See https://schema.org/ReturnMethodEnumeration.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#returns.
 				 */
 				'return_method' => array(
 					'https://schema.org/ReturnAtKiosk' => 'At Kiosk',

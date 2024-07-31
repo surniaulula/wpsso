@@ -1007,45 +1007,5 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			return delete_metadata( 'term', $term_id, $meta_key );
 		}
-
-		/*
-		 * Deprecated on 2023/10/22.
-		 */
-		public static function get_term_meta( $term_id, $meta_key = '', $single = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = __CLASS__ . '::get_meta()' );	// Deprecation message.
-
-			return $single ? '' : array();
-		}
-
-		/*
-		 * Deprecated on 2023/10/22.
-		 */
-		public static function update_term_meta( $term_id, $meta_key, $value ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = __CLASS__ . '::update_meta()' );	// Deprecation message.
-
-			return false;
-		}
-
-		/*
-		 * Deprecated on 2023/10/22.
-		 */
-		public static function delete_term_meta( $term_id, $meta_key ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = __CLASS__ . '::delete_meta()' );	// Deprecation message.
-
-			return false;
-		}
-
-		/*
-		 * Deprecated on 2023/10/22.
-		 */
-		public static function use_term_meta_table( $term_id = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2023/10/22', $replacement = '' );	// Deprecation message.
-
-			return true;
-		}
 	}
 }

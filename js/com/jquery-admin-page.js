@@ -739,18 +739,3 @@ String.prototype.formatUnicorn = function() {
 	return str;
 }
 
-/*
- * Deprecated on 2023/07/04.
- */
-function sucomBlockPostbox( pluginId, adminPageL10n, postId ) {
-
-	sucomEditorPostbox( pluginId, adminPageL10n, postId );
-}
-
-/*
- * Deprecated on 2023/07/04.
- */
-function sucomBlockNotices( pluginId, adminPageL10n ) {
-
-	sucomBlockEditorNotices( pluginId, adminPageL10n );
-}

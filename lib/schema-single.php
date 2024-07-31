@@ -918,9 +918,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					case 'MerchantReturnFiniteReturnWindow':
 
-						if ( isset( $mrp_opts[ 'mrp_days' ] ) ) {
+						if ( isset( $mrp_opts[ 'mrp_return_days' ] ) ) {
 
-							$json_ret[ 'merchantReturnDays' ] = $mrp_opts[ 'mrp_days' ];
+							$json_ret[ 'merchantReturnDays' ] = $mrp_opts[ 'mrp_return_days' ];
 						}
 
 						// No break.
@@ -931,6 +931,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						break;
 				}
+			
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no return method' );
 			}
 
 			/*
@@ -940,16 +944,28 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * use this property, you must set the value to https://schema.org/FreeReturn (other return fee types
 			 * aren't supported; if there are fees, use the returnShippingFeesAmount property instead).
 			 */
-			if ( empty( $mrp_opts[ 'mrp_shipping_fees' ] ) ) {
+			if ( ! empty( $mrp_opts[ 'mrp_return_fees' ] ) ) {
 
-				$json_ret[ 'returnFees' ] = 'https://schema.org/FreeReturn';
+				$json_ret[ 'returnFees' ] = $mrp_opts[ 'mrp_return_fees' ];
 
-			} elseif ( ! empty( $mrp_opts[ 'mrp_shipping_currency' ] ) ) {
+				if ( 'https://schema.org/ReturnShippingFees' === $mrp_opts[ 'mrp_return_fees' ] ) {
 
-				$json_ret[ 'returnShippingFeesAmount' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', array(
-					'value'    => $mrp_opts[ 'mrp_shipping_fees' ],
-					'currency' => $mrp_opts[ 'mrp_shipping_currency' ],
-				) );
+					if ( empty( $mrp_opts[ 'mrp_shipping_amount' ] ) ) {
+
+						$json_ret[ 'returnFees' ] = 'https://schema.org/FreeReturn';
+
+					} elseif ( ! empty( $mrp_opts[ 'mrp_shipping_currency' ] ) ) {	// Just in case.
+
+						$json_ret[ 'returnShippingFeesAmount' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', array(
+							'value'    => $mrp_opts[ 'mrp_shipping_amount' ],
+							'currency' => $mrp_opts[ 'mrp_shipping_currency' ],
+						) );
+					}
+				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no return fees' );
 			}
 
 			/*
@@ -958,6 +974,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $countries ) ) {
 
 				$json_ret[ 'applicableCountry' ] = $countries;
+			
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no applicable countries' );
 			}
 
 			/*

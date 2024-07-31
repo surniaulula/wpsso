@@ -46,6 +46,5 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function admin_footer_script() {}
 		public function shutdown_notice_cache() {}
 		public function refresh_notice_style() {}
-		public function get_tb_types_showing() { return false; }	// Deprecated 2023/02/21.
 	}
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.21.0\n"
+"Project-Id-Version: WPSSO Core 17.22.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4043,8 +4043,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:463 gettext/gettext-lib-config.php:468
 #: gettext/gettext-lib-config.php:475 gettext/gettext-lib-config.php:487
 #: gettext/gettext-lib-config.php:493 gettext/gettext-lib-config.php:501
-#: gettext/gettext-lib-config.php:512 gettext/gettext-lib-config.php:520
-#: gettext/gettext-lib-config.php:533 lib/messages-tooltip-plugin.php:681
+#: gettext/gettext-lib-config.php:515 gettext/gettext-lib-config.php:523
+#: gettext/gettext-lib-config.php:536 lib/messages-tooltip-plugin.php:681
 #: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -4060,8 +4060,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:464 gettext/gettext-lib-config.php:469
 #: gettext/gettext-lib-config.php:476 gettext/gettext-lib-config.php:488
 #: gettext/gettext-lib-config.php:494 gettext/gettext-lib-config.php:502
-#: gettext/gettext-lib-config.php:513 gettext/gettext-lib-config.php:521
-#: gettext/gettext-lib-config.php:534
+#: gettext/gettext-lib-config.php:516 gettext/gettext-lib-config.php:524
+#: gettext/gettext-lib-config.php:537
 msgctxt "option value"
 msgid "None"
 msgstr ""
@@ -5142,140 +5142,155 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:509
 msgctxt "option value"
-msgid "At Kiosk"
+msgid "Free Return"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:510
 msgctxt "option value"
-msgid "By Mail"
+msgid "Customer Pays Shipping"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:511
 msgctxt "option value"
-msgid "In Store"
+msgid "Return Has Shipping Fees"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:512
+msgctxt "option value"
+msgid "At Kiosk"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:513
+msgctxt "option value"
+msgid "By Mail"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:514
 msgctxt "option value"
-msgid "Regular"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:515
-msgctxt "option value"
-msgid "Petite"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:516
-msgctxt "option value"
-msgid "Plus"
+msgid "In Store"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:517
 msgctxt "option value"
-msgid "Tall"
+msgid "Regular"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:518
 msgctxt "option value"
-msgid "Big"
+msgid "Petite"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:519
 msgctxt "option value"
-msgid "Maternity"
+msgid "Plus"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:520
+msgctxt "option value"
+msgid "Tall"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:521
+msgctxt "option value"
+msgid "Big"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:522
 msgctxt "option value"
-msgid "AU"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:523
-msgctxt "option value"
-msgid "BR"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:524
-msgctxt "option value"
-msgid "CN"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:525
 msgctxt "option value"
-msgid "DE"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:526
 msgctxt "option value"
-msgid "EU"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:527
 msgctxt "option value"
-msgid "FR"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:528
 msgctxt "option value"
-msgid "IT"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:529
 msgctxt "option value"
-msgid "JP"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:530
 msgctxt "option value"
-msgid "MX"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:531
 msgctxt "option value"
-msgid "UK"
+msgid "IT"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:532
 msgctxt "option value"
-msgid "US"
+msgid "JP"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:533
+msgctxt "option value"
+msgid "MX"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:534
+msgctxt "option value"
+msgid "UK"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:535
 msgctxt "option value"
-msgid "Female"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:536
-msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:537
-msgctxt "option value"
-msgid "Unisex"
+msgid "US"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:538
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Female"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:539
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Male"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:540
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Unisex"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:541
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:542
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:543
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:544
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:545
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -6865,202 +6880,202 @@ msgid ""
 "Image size settings have been reloaded with their default values and saved."
 msgstr ""
 
-#: lib/admin.php:1178
+#: lib/admin.php:1173
 msgid ""
 "Your current language selection [%1$s] is different from the default site "
 "language [%2$s]."
 msgstr ""
 
-#: lib/admin.php:1181
+#: lib/admin.php:1176
 msgid ""
 "Localized option values [%1$s] will be used for webpages and content in that "
 "language."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1294
+#: lib/admin.php:1289
 msgid "Profile updated."
 msgstr ""
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1423
+#: lib/admin.php:1418
 msgid "Upgrade to %s"
 msgstr ""
 
-#: lib/admin.php:1435
+#: lib/admin.php:1430
 msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1522
+#: lib/admin.php:1517
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr ""
 
-#: lib/admin.php:1524
+#: lib/admin.php:1519
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1537 lib/submenu/tools.php:74
+#: lib/admin.php:1532 lib/submenu/tools.php:74
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1657
+#: lib/admin.php:1652
 msgid "The %s plugin is not active and/or not found."
 msgstr ""
 
-#: lib/admin.php:1687
+#: lib/admin.php:1682
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:1799
+#: lib/admin.php:1794
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:1815
+#: lib/admin.php:1810
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1836
+#: lib/admin.php:1831
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1867
+#: lib/admin.php:1862
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:1888
+#: lib/admin.php:1883
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:1897
+#: lib/admin.php:1892
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2018
+#: lib/admin.php:2013
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2024
+#: lib/admin.php:2019
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2031
+#: lib/admin.php:2026
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2045
+#: lib/admin.php:2040
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2054
+#: lib/admin.php:2049
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2063
+#: lib/admin.php:2058
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:2510
+#: lib/admin.php:2505
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:2511
+#: lib/admin.php:2506
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:2516
+#: lib/admin.php:2511
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:2517
+#: lib/admin.php:2512
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:2528
+#: lib/admin.php:2523
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:2529
+#: lib/admin.php:2524
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:2535
+#: lib/admin.php:2530
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:2542
+#: lib/admin.php:2537
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:2549
+#: lib/admin.php:2544
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:2556
+#: lib/admin.php:2551
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:2608
+#: lib/admin.php:2603
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2609
+#: lib/admin.php:2604
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2610
+#: lib/admin.php:2605
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2611 lib/admin.php:2612
+#: lib/admin.php:2606 lib/admin.php:2607
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2661
+#: lib/admin.php:2656
 msgid "Service API"
 msgstr ""
 
-#: lib/admin.php:2668
+#: lib/admin.php:2663
 msgid "Structured Data"
 msgstr ""
 
-#: lib/admin.php:2675
+#: lib/admin.php:2670
 msgid "Structured Data Property"
 msgstr ""
 
-#: lib/admin.php:2682
+#: lib/admin.php:2677
 msgid "Additional Feature"
 msgstr ""
 
-#: lib/admin.php:2689
+#: lib/admin.php:2684
 msgid "Plugin Integration"
 msgstr ""
 
-#: lib/admin.php:2696
+#: lib/admin.php:2691
 msgid "Sharing Functionality"
 msgstr ""
 
@@ -7073,12 +7088,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5479
+#: lib/config.php:5493
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5479
+#: lib/config.php:5493
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -14195,23 +14210,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1061
+#: lib/schema-single.php:1081
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1062
+#: lib/schema-single.php:1082
 msgid "adding schema organization ID %s"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1173
+#: lib/schema-single.php:1193
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1176
+#: lib/schema-single.php:1196
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -14219,33 +14234,33 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. 'ID #'.
-#: lib/schema-single.php:1179
+#: lib/schema-single.php:1199
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1201
+#: lib/schema-single.php:1221
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1215 lib/schema-single.php:1224
+#: lib/schema-single.php:1235 lib/schema-single.php:1244
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1378
+#: lib/schema-single.php:1398
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1566
+#: lib/schema-single.php:1586
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2006
+#: lib/schema-single.php:2026
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2133
+#: lib/schema-single.php:2153
 msgid "adding schema product"
 msgstr ""
 
