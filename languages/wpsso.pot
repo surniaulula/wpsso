@@ -8904,77 +8904,77 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:216
+#: lib/integ/ecom/woocommerce.php:226
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:219
+#: lib/integ/ecom/woocommerce.php:229
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:223
+#: lib/integ/ecom/woocommerce.php:233
 msgid "My account page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:224
+#: lib/integ/ecom/woocommerce.php:234
 msgid "Cart page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:225
+#: lib/integ/ecom/woocommerce.php:235
 msgid "Checkout page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:226
+#: lib/integ/ecom/woocommerce.php:236
 msgid "Shop page"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:232
+#: lib/integ/ecom/woocommerce.php:242
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:300
+#: lib/integ/ecom/woocommerce.php:315
 msgid "Suggested attributes:"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:532
+#: lib/integ/ecom/woocommerce.php:572
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1658
+#: lib/integ/ecom/woocommerce.php:1708
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1762
+#: lib/integ/ecom/woocommerce.php:1812
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1765
+#: lib/integ/ecom/woocommerce.php:1815
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1768
+#: lib/integ/ecom/woocommerce.php:1818
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:48
+#: lib/integ/event/the-events-calendar.php:53
 msgid "TEC: %s"
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:58
+#: lib/integ/event/the-events-calendar.php:68
 msgctxt "option value"
 msgid "TEC: %s"
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:268
-#: lib/integ/event/the-events-calendar.php:327
+#: lib/integ/event/the-events-calendar.php:288
+#: lib/integ/event/the-events-calendar.php:347
 msgid "getting TEC options"
 msgstr ""
 
@@ -8998,7 +8998,7 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/integ/job/wpjobmanager.php:50 lib/integ/job/wpjobmanager.php:63
+#: lib/integ/job/wpjobmanager.php:55 lib/integ/job/wpjobmanager.php:73
 msgctxt "option value"
 msgid "WPJM: %s"
 msgstr ""

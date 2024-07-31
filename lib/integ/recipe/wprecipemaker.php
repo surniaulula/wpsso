@@ -63,6 +63,11 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 
 		public function filter_save_post_options( array $md_opts, $post_id, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( ! $recipe_id = $this->get_recipe_id( $post_id ) ) {
 
 				return $md_opts;
@@ -298,6 +303,11 @@ if ( ! class_exists( 'WpssoIntegRecipeWpRecipeMaker' ) ) {
 		}
 
 		public function get_recipe_id( $post_id ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			static $ids_cache = array();	// Cache for $post_id => $recipe_id.
 

@@ -151,6 +151,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		public function woocommerce_breadcrumb_main_term( $term, $terms ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			global $post;
 
 			if ( ! empty( $post->ID ) ) {	// Just in case.
@@ -213,6 +218,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function check_woocommerce_pages() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$wc_advanced_msg = sprintf( __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.',
 				'wpsso' ), get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=advanced&section' ) );
 
@@ -265,6 +275,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		public function show_product_attributes_footer() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			global $post;
 
 			$product        = $this->p->util->wc->get_product( $post->ID );
@@ -312,6 +327,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function filter_post_column_rating_value( $value, $post_id, $rating_enabled ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( '' === $value && ! $rating_enabled && $this->rating_enabled ) {
 
 				if ( $this->prod_post_type === get_post_type( $post_id ) ) {
@@ -332,6 +352,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * Refresh the post ID cache after WooCommerce updates the product object on the front-end or back-end.
 		 */
 		public function refresh_post_cache( $product, $data_store ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
@@ -405,6 +430,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function filter_head_cache_index( $cache_index ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return $cache_index . '_currency:' . $this->get_product_currency();
 		}
 
@@ -466,6 +496,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		public function filter_get_post_type( $post_type, $post_id ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( $post_id === $this->page_ids[ 'shop' ] ) {
 
@@ -529,6 +564,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		public function filter_schema_type_post_type_labels( array $type_labels ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$type_labels[ 'schema_type_for_product_group' ] = __( 'Products Group', 'wpsso' );
 
 			asort( $type_labels );
@@ -537,6 +577,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		public function filter_primary_tax_slug( $tax_slug, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( $this->prod_post_type === $mod[ 'post_type' ] ) {
 
@@ -1478,6 +1523,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		private function add_mt_shipping_offers( array &$mt_ecom, $mod, WC_Product $product, WC_Product $product_parent ) {	// Pass by reference is OK.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			static $shipping_zones      = null;
 			static $shipping_continents = null;
 			static $shipping_countries  = null;
@@ -2118,6 +2168,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		private function get_product_currency() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			static $product_currency = null;
 
 			if ( null === $product_currency ) {	// Get value only once.
@@ -2143,6 +2198,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 * Hook 'woocommerce_product_is_in_stock' (returns true or false) to customize the "in stock" status.
 		 */
 		private function get_product_avail( $product ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$product_avail = null;
 
@@ -2228,12 +2288,22 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function get_product_title( WC_Product $product ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$title_text = $product->get_title();
 
 			return apply_filters( 'wpsso_product_title', $title_text, $product );
 		}
 
 		private function get_product_url( WC_Product $product ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$url = $product->get_permalink();
 
@@ -2242,10 +2312,20 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function add_product_variation_title( &$mt_ecom, $mod, WC_Product $product, $variation ) {	// Pass by reference is OK.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$mt_ecom[ 'product:title' ] = $this->get_product_variation_title( $mod, $product, $variation );
 		}
 
 		private function get_product_variation_title( $mod, WC_Product $product, $variation ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$title_text = $this->p->opt->get_text( 'plugin_product_var_title' );
 
@@ -2267,10 +2347,20 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		private function add_product_variation_description( &$mt_ecom, $mod, WC_Product $product, $variation ) {	// Pass by reference is OK.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$mt_ecom[ 'product:description' ] = $this->get_product_variation_description( $mod, $product, $variation );
 		}
 
 		private function get_product_variation_description( $mod, WC_Product $product, $variation ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$desc_text = empty( $variation[ 'variation_description' ] ) ?
 				null : $this->p->util->cleanup_html_tags( $variation[ 'variation_description' ] );

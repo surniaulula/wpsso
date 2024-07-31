@@ -90,6 +90,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 		public function filter_save_post_options( array $md_opts, $post_id, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$this->cache_imported_meta[ 'post' ] = array();
 
 			$md_opts = $this->filter_get_post_options( $md_opts, $post_id, $mod );
@@ -139,6 +144,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 		protected function add_mod_post_meta( array $mod, &$md_opts, $opt_key, $meta_key ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( empty( $meta_key ) ) {	// Just in case.
 
 				return false;
@@ -169,6 +179,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 		}
 
 		public function filter_save_term_options( array $md_opts, $term_id, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->cache_imported_meta[ 'term' ] = array();
 
@@ -219,6 +234,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 		protected function add_mod_term_meta( array $mod, &$md_opts, $opt_key, $meta_key, $term_opts = null ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( empty( $meta_key ) ) {	// Just in case.
 
 				return false;
@@ -256,6 +276,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 		}
 
 		public function filter_save_user_options( array $md_opts, $user_id, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$this->cache_imported_meta[ 'user' ] = array();
 
@@ -306,6 +331,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 
 		protected function add_mod_user_meta( array $mod, &$md_opts, $opt_key, $meta_key ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( empty( $meta_key ) ) {	// Just in case.
 
 				return false;
@@ -336,6 +366,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 		}
 
 		protected function maybe_convert_value( array $mod, $opt_key, $meta_key, $value ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$value = $this->maybe_convert_vars( $value, $mod );
 
@@ -369,6 +404,11 @@ if ( ! class_exists( 'WpssoIntegDataAbstractSeoMeta' ) ) {
 		}
 
 		protected function maybe_convert_vars( $value, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			return $value;
 		}

@@ -61,6 +61,11 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 
 		public function filter_save_post_options( array $md_opts, $post_id, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( ! $this->get_review_id( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -83,6 +88,11 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 
 		public function get_review_options( $post_id ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return array(
 				'schema_review_rating'     => (float) get_metadata( 'post', $post_id, $rating_meta = 'wppr_rating', $single = true ),
 				'schema_review_rating_min' => 1,
@@ -91,6 +101,11 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 		}
 
 		public function get_review_id( $post_id ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			static $ids_cache = array();	// Cache for $post_id => $review_id.
 

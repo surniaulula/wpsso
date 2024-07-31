@@ -62,6 +62,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( is_admin() ) {	// Keep processing on the front-end to a minimum.
 
 				/*

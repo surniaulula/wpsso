@@ -41,6 +41,11 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 		public function filter_term_image_ids( $image_ids, $size_names, $term_id, $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( empty( $this->brand_tax_slug ) || empty( $this->brand_image_key ) ) {	// Nothing to do.
 
 				return $image_ids;

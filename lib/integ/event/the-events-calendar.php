@@ -43,6 +43,11 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 
 		public function filter_form_select_schema_event_location_id( $values ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			foreach ( tribe_get_venues() as $post_obj ) {
 
 				$values[ 'tribe_venue-' . $post_obj->ID ] = sprintf( __( 'TEC: %s', 'option value', 'wpsso' ), $post_obj->post_title );
@@ -53,6 +58,11 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 
 		public function filter_form_select_schema_event_organizer_person_id( $values ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			foreach ( tribe_get_organizers() as $post_obj ) {
 
 				$values[ 'tribe_organizer-' . $post_obj->ID ] = sprintf( _x( 'TEC: %s', 'option value', 'wpsso' ), $post_obj->post_title );
@@ -62,6 +72,11 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 		}
 
 		public function filter_get_md_defaults( array $md_defs, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( ! $mod[ 'is_post' ] || $mod[ 'post_type' ] !== 'tribe_events' ) {
 
@@ -82,6 +97,11 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 		}
 
 		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( $mod[ 'post_type' ] !== 'tribe_events' ) {
 

@@ -34,6 +34,11 @@ if ( ! class_exists( 'WpssoIntegJobSimpleJobBoard' ) ) {
 
 		public function filter_get_md_defaults( array $md_defs, array $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( ! $mod[ 'is_post' ] || $mod[ 'post_type' ] !== 'jobpost' ) {
 
 				return $md_defs;
