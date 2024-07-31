@@ -962,7 +962,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! isset( $this->types_cache[ 'filtered' ] ) ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1429,7 +1429,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$cache_md5_pre  = 'wpsso_t_';
-			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre );
+			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 
 			if ( $cache_exp_secs > 0 ) {
 
