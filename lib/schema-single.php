@@ -104,6 +104,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no book author type' );
 			}
 
 			/*
@@ -848,6 +852,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Check that the option value is not true, false, null, empty string, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_value( $mrp_id ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: no return policy id' );
+				}
 
 				return 0;	// Return count of retun policies added.
 			}
@@ -1905,8 +1914,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:mrp_id' ) ) {	// Not null, an empty string, or 'none'.
 
-				self::add_merchant_return_policy_data( $json_ret[ 'hasMerchantReturnPolicy' ], $mod,
-					$mt_single[ 'product:mrp_id' ], $mrp_list_el = false );
+				self::add_merchant_return_policy_data( $json_ret[ 'hasMerchantReturnPolicy' ], $mod, $mt_single[ 'product:mrp_id' ], $mrp_list_el = false );
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no product return policy id' );
 			}
 
 			/*
@@ -2187,6 +2199,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$json_ret[ 'brand' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Brand', $brand );
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no product brand' );
 			}
 
 			/*
@@ -2200,6 +2216,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
 
 				$audience[ 'suggestedGender' ] = $mt_single[ 'product:target_gender' ];
+			
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no product gender' );
 			}
 
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
@@ -2218,6 +2238,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					case 'teen':      $audience[ 'suggestedMinAge' ] = 13;   break;
 					case 'toddler':   $audience[ 'suggestedMinAge' ] = 1;    $audience[ 'suggestedMaxAge' ] = 5;    break;
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no product age group' );
 			}
 
 			if ( ! empty( $audience ) ) {
@@ -2270,6 +2294,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$json_ret[ 'hasEnergyConsumptionDetails' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/EnergyConsumptionDetails',
 						$energy_efficiency );
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no product energy efficiency' );
 			}
 
 			/*
