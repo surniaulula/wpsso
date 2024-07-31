@@ -92,12 +92,28 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoUtilCache->refresh().
 		 * See WpssoAdmin->load_settings_page().
 		 */
-		public function clear_cache_files( $file_exp_secs = null, $exclude = array() ) {
+		public function clear_cache_files( $file_exp_secs = null, $include = array(), $exclude = array() ) {
 
 			$cleared_count = 0;
 			$cache_files   = $this->get_cache_files();	// Excludes hidden files and index.php.
 
 			foreach ( $cache_files as $cache_file ) {
+
+				if ( ! empty( $include ) ) {
+
+					foreach ( $include as $preg_match ) {
+
+						if ( ! preg_match( $preg_match, $cache_file ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping ' . $cache_file . ' (not included)' );
+							}
+
+							continue 2;
+						}
+					}
+				}
 
 				if ( ! empty( $exclude ) ) {
 
@@ -621,7 +637,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/*
 			 * Clear cache files but preserve HTML files, like the YouTube video webpage HTML.
 			 */
-			$this->clear_cache_files( $file_exp_secs = null, $exclude = array( '/\.html$/' ) );
+			$this->clear_cache_files( $file_exp_secs = null, $include = array( '/\.(js|txt)$/' ) );
 
 			/*
 			 * Refresh the Schema types transient cache.
