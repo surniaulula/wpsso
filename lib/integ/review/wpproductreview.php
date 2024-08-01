@@ -68,11 +68,6 @@ if ( ! class_exists( 'WpssoIntegReviewWpProductReview' ) ) {
 
 			if ( ! $this->get_review_id( $post_id ) ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: post ID ' . $post_id . ' is not a review' );
-				}
-
 				return $md_opts;
 			}
 
