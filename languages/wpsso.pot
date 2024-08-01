@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.22.0-b.1\n"
+"Project-Id-Version: WPSSO Core 17.22.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5357,8 +5357,8 @@ msgstr ""
 #: lib/pro/admin/advanced.php:149 lib/pro/admin/advanced.php:156
 #: lib/std/admin/advanced.php:118 lib/std/admin/advanced.php:124
 #: lib/std/admin/advanced.php:130 lib/std/admin/advanced.php:136
-#: lib/submenu/general.php:365 lib/submenu/general.php:371
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:361 lib/submenu/general.php:367
+#: lib/submenu/general.php:373
 msgctxt "option comment"
 msgid "(recommended)"
 msgstr ""
@@ -8869,13 +8869,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:148 lib/submenu/general.php:335
+#: lib/edit-visibility.php:148 lib/submenu/general.php:331
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
 #: lib/edit-visibility.php:149 lib/edit-visibility.php:165
-#: lib/submenu/general.php:336 lib/submenu/general.php:350
+#: lib/submenu/general.php:332 lib/submenu/general.php:346
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
@@ -8890,7 +8890,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:164 lib/submenu/general.php:349
+#: lib/edit-visibility.php:164 lib/submenu/general.php:345
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -9905,14 +9905,15 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:80
 msgid ""
-"Note that Google considers any Schema Organization sub-type, which is also "
-"Schema Place sub-type, as a place and not an organization."
+"Note that Google considers a Schema Organization sub-type which is also a "
+"Schema Place sub-type, like <a href=\"%s\">Schema LocalBusiness</a> for "
+"example, as a place and not an organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:82
 msgid ""
-"Therefore, the Schema Organization selector cannot include any Schema Place "
-"sub-types."
+"For this reason, the Schema Organization selector does not include any "
+"Schema Place sub-types."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:88
@@ -11551,7 +11552,7 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:324 lib/submenu/general.php:116
-#: lib/submenu/general.php:157
+#: lib/submenu/general.php:153
 msgctxt "option label"
 msgid "Site Name"
 msgstr ""
@@ -11570,7 +11571,7 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:341 lib/submenu/general.php:122
-#: lib/submenu/general.php:168
+#: lib/submenu/general.php:164
 msgctxt "option label"
 msgid "Site Description"
 msgstr ""
@@ -12416,7 +12417,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:351 lib/messages.php:1330
-#: lib/submenu/general.php:374
+#: lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -13706,12 +13707,12 @@ msgstr ""
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1236 lib/submenu/general.php:491
+#: lib/options.php:1236 lib/submenu/general.php:487
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/options.php:1241 lib/submenu/general.php:496
+#: lib/options.php:1241 lib/submenu/general.php:492
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -14695,187 +14696,187 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:128 lib/submenu/general.php:276
+#: lib/submenu/general.php:128 lib/submenu/general.php:272
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/general.php:133 lib/submenu/general.php:281
+#: lib/submenu/general.php:133 lib/submenu/general.php:277
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
 
-#: lib/submenu/general.php:163
+#: lib/submenu/general.php:159
 msgctxt "option label"
 msgid "Site Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:174
+#: lib/submenu/general.php:170
 msgctxt "option label"
 msgid "Site Home URL"
 msgstr ""
 
-#: lib/submenu/general.php:186
+#: lib/submenu/general.php:182
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:192
+#: lib/submenu/general.php:188
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:209
+#: lib/submenu/general.php:205
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:214
+#: lib/submenu/general.php:210
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:219
+#: lib/submenu/general.php:215
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:224
+#: lib/submenu/general.php:220
 msgctxt "option label"
 msgid "Default Dimension Units"
 msgstr ""
 
-#: lib/submenu/general.php:230
+#: lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Default Weight Units"
 msgstr ""
 
-#: lib/submenu/general.php:236
+#: lib/submenu/general.php:232
 msgctxt "option label"
 msgid "Default Fluid Volume Units"
 msgstr ""
 
-#: lib/submenu/general.php:246
+#: lib/submenu/general.php:242
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:251
+#: lib/submenu/general.php:247
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:256
+#: lib/submenu/general.php:252
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:260
+#: lib/submenu/general.php:256
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:269
+#: lib/submenu/general.php:265
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:296
+#: lib/submenu/general.php:292
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:301
+#: lib/submenu/general.php:297
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:306
+#: lib/submenu/general.php:302
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:315
+#: lib/submenu/general.php:311
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:331
+#: lib/submenu/general.php:327
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:339
+#: lib/submenu/general.php:335
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:345
+#: lib/submenu/general.php:341
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:357
+#: lib/submenu/general.php:353
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:362
+#: lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:368
+#: lib/submenu/general.php:364
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:384
+#: lib/submenu/general.php:380
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:385
+#: lib/submenu/general.php:381
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:389
+#: lib/submenu/general.php:385
 msgctxt "option label"
 msgid "X (Twitter) Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:390
 msgctxt "option label"
 msgid "X (Twitter) Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:403
+#: lib/submenu/general.php:399
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:408
+#: lib/submenu/general.php:404
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:413
+#: lib/submenu/general.php:409
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:418
+#: lib/submenu/general.php:414
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:473
+#: lib/submenu/general.php:469
 msgctxt "option label"
 msgid "Site Publisher Type"
 msgstr ""
 
-#: lib/submenu/general.php:482
+#: lib/submenu/general.php:478
 msgctxt "option label"
 msgid "Site Publisher Person"
 msgstr ""

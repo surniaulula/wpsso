@@ -1241,7 +1241,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'org_types_select':
-					case 'strict_org_types_select':
+					case 'strict_org_types_select':	// Use strict for Google.
 
 						$this->get_form_cache( 'org_types' );	// Sets $local_cache[ 'org_types' ].
 

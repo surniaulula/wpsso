@@ -146,12 +146,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$def_site_name = SucomUtilWP::get_site_name();
 					$def_site_desc = SucomUtilWP::get_site_description();
 					$def_home_url  = SucomUtilWP::get_home_url();	// Returns the home page URL with a trailing slash.
-
-					/*
-					 * Use 'strict_org_types_select' for Google (removes all Schema Place sub-types).
-					 */
-					$org_types   = $this->p->util->get_form_cache( 'strict_org_types_select', $add_none = false );
-					$place_names = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+					$org_types     = $this->p->util->get_form_cache( 'strict_org_types_select', $add_none = false );	// Use strict for Google.
+					$place_names   = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
 					$table_rows[ 'site_name' ] = '' .
 						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
