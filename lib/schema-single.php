@@ -950,7 +950,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( 'https://schema.org/ReturnShippingFees' === $mrp_opts[ 'mrp_return_fees' ] ) {
 
-					if ( empty( $mrp_opts[ 'mrp_shipping_amount' ] ) ) {
+					if ( empty( $mrp_opts[ 'mrp_shipping_amount' ] ) ) {	// Amount is 0.
 
 						$json_ret[ 'returnFees' ] = 'https://schema.org/FreeReturn';
 
