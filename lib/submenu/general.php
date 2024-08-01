@@ -143,11 +143,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'general-open_graph-site':
 
-					$def_site_name = SucomUtilWP::get_site_name();
-					$def_site_desc = SucomUtilWP::get_site_description();
-					$def_home_url  = SucomUtilWP::get_home_url();	// Returns the home page URL with a trailing slash.
-					$org_types     = $this->p->util->get_form_cache( 'strict_org_types_select', $add_none = false );	// Use strict for Google.
-					$place_names   = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+					$def_site_name    = SucomUtilWP::get_site_name();
+					$def_site_desc    = SucomUtilWP::get_site_description();
+					$def_home_url     = SucomUtilWP::get_home_url();	// Returns the home page URL with a trailing slash.
+					$strict_org_types = $this->p->util->get_form_cache( 'strict_org_types_select', $add_none = false );	// Use strict for Google.
+					$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
 					$table_rows[ 'site_name' ] = '' .
 						$this->form->get_th_html_locale( _x( 'Site Name', 'option label', 'wpsso' ),
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$table_rows[ 'site_org_schema_type' ] = $tr_on_change_organization_html .
 							$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
 								$css_class = '', $css_id = 'site_org_schema_type' ) .
-							'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types,
+							'<td>' . $this->form->get_select( 'site_org_schema_type', $strict_org_types,
 								$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
 									$selected = false, $event_names = array( 'on_focus_load_json' ),
 										$event_args = array( 'json_var' => 'org_types' ) ) . '</td>';
