@@ -9906,8 +9906,8 @@ msgstr ""
 #: lib/messages-tooltip-meta-org.php:80
 msgid ""
 "Note that Google considers a Schema Organization sub-type which is also a "
-"Schema Place sub-type, like <a href=\"%s\">Schema LocalBusiness</a> for "
-"example, as a place and not an organization."
+"Schema Place sub-type, like the <a href=\"%s\">Schema LocalBusiness</a> type "
+"for example, as a place and not an organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:82

@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 					$text = __( 'You may choose a more accurate Schema type for this organization (default is Organization).', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'Note that Google considers a Schema Organization sub-type which is also a Schema Place sub-type, like <a href="%s">Schema LocalBusiness</a> for example, as a place and not an organization.', 'wpsso' ), 'https://schema.org/LocalBusiness' ) . ' ';
+					$text .= sprintf( __( 'Note that Google considers a Schema Organization sub-type which is also a Schema Place sub-type, like the <a href="%s">Schema LocalBusiness</a> type for example, as a place and not an organization.', 'wpsso' ), 'https://schema.org/LocalBusiness' ) . ' ';
 
 					$text .= __( 'For this reason, the Schema Organization selector does not include any Schema Place sub-types.', 'wpsso' ) . ' ';
 
