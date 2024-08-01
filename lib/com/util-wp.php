@@ -2315,8 +2315,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function update_options_key( $options_name, $key, $value, $protect = false, $site = false ) {
 
-			$opts = $site ? get_site_option( $options_name, $default = array() ) :	// Returns an array by default.
-				get_option( $options_name, $default = array() );		// Returns an array by default.
+			$opts = $site ? get_site_option( $options_name, $default = array() ) : get_option( $options_name, $default = array() );
 
 			if ( array_key_exists( $key, $opts ) ) {
 
