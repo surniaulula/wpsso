@@ -283,7 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated possible Schema returnFees property values based on revised Google requirements.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -570,7 +570,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.22.0-dev.1 =
 
-(2024/07/31) None.
+(2024/07/31) Updated possible Schema returnFees property values based on revised Google requirements.
 
 = 17.21.0 =
 
