@@ -61,6 +61,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
+				case 'tooltip-meta-place_is_default':	// Place Is Default.
+
+					$text = __( 'You may choose this place as the default event venue, job location, etc.', 'wpsso' ) . ' ';
+
+					break;
+
 				case 'tooltip-meta-place_street_address':	// Street Address.
 
 					$text = __( 'An optional street address for this place.', 'wpsso' );

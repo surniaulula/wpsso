@@ -54,14 +54,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				}
 			}
 
-			/*
-			 * WPSSO MRP add-on.
-			 */
-			if ( 0 === strpos( $msg_key, 'tooltip-meta-mrp_' ) ) {
-
-				return apply_filters( 'wpsso_messages_tooltip_meta_mrp', $text, $msg_key, $info );
-
-			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-pin_' ) ) {
+			if ( 0 === strpos( $msg_key, 'tooltip-meta-pin_' ) ) {
 
 				switch ( $msg_key ) {
 

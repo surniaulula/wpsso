@@ -145,7 +145,13 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				 * Apply filters for the custom field (value is null if the custom field does not exist).
 				 */
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_cf_' . $cf_key );
-				$cf_val      = apply_filters( $filter_name, $cf_val, $mod, $wp_meta );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filter \'' . $filter_name . '\'' );
+				}
+
+				$cf_val = apply_filters( $filter_name, $cf_val, $mod, $wp_meta );
 
 				/*
 				 * Decode and trim the string or each array element.

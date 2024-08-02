@@ -35,24 +35,24 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'mb_sso_edit_schema_rows'                  => 4,
-				'mb_sso_edit_schema_creative_work_rows'    => 6,	// Schema CreativeWork.
-				'mb_sso_edit_schema_article_rows'          => 6,	// Schema CreativeWork > Article.
-				'mb_sso_edit_schema_book_rows'             => 6,	// Schema CreativeWork > Book.
-				'mb_sso_edit_schema_howto_rows'            => 6,	// Schema CreativeWork > HowTo.
-				'mb_sso_edit_schema_recipe_rows'           => 6,	// Schema CreativeWork > HowTo > Recipe.
-				'mb_sso_edit_schema_learningresource_rows' => 6,	// Schema CreativeWork > LearningResource.
-				'mb_sso_edit_schema_movie_rows'            => 6,	// Schema CreativeWork > Movie.
-				'mb_sso_edit_schema_review_rows'           => 6,	// Schema CreativeWork > Review.
-				'mb_sso_edit_schema_software_app_rows'     => 6,	// Schema CreativeWork > Software Application.
-				'mb_sso_edit_schema_webpage_rows'          => 6,	// Schema CreativeWork > WebPage.
-				'mb_sso_edit_schema_profilepage_rows'      => 6,	// Schema CreativeWork > WebPage > ProfilePage.
-				'mb_sso_edit_schema_qa_rows'               => 6,	// Schema CreativeWork > WebPage > QAPage.
-				'mb_sso_edit_schema_event_rows'            => 6,	// Schema Event.
-				'mb_sso_edit_schema_job_posting_rows'      => 6,	// Schema Intangible > JobPosting.
-				'mb_sso_edit_schema_organization_rows'     => 6,	// Schema Organization.
-				'mb_sso_edit_schema_person_rows'           => 6,	// Schema Person.
-				'mb_sso_edit_schema_place_rows'            => 6,	// Schema Place.
-				'mb_sso_edit_schema_product_rows'          => 6,	// Schema Product.
+				'mb_sso_edit_schema_creative_work_rows'    => 5,	// Schema CreativeWork.
+				'mb_sso_edit_schema_article_rows'          => 5,	// Schema CreativeWork > Article.
+				'mb_sso_edit_schema_book_rows'             => 5,	// Schema CreativeWork > Book.
+				'mb_sso_edit_schema_howto_rows'            => 5,	// Schema CreativeWork > HowTo.
+				'mb_sso_edit_schema_recipe_rows'           => 5,	// Schema CreativeWork > HowTo > Recipe.
+				'mb_sso_edit_schema_learningresource_rows' => 5,	// Schema CreativeWork > LearningResource.
+				'mb_sso_edit_schema_movie_rows'            => 5,	// Schema CreativeWork > Movie.
+				'mb_sso_edit_schema_review_rows'           => 5,	// Schema CreativeWork > Review.
+				'mb_sso_edit_schema_software_app_rows'     => 5,	// Schema CreativeWork > Software Application.
+				'mb_sso_edit_schema_webpage_rows'          => 5,	// Schema CreativeWork > WebPage.
+				'mb_sso_edit_schema_profilepage_rows'      => 5,	// Schema CreativeWork > WebPage > ProfilePage.
+				'mb_sso_edit_schema_qa_rows'               => 5,	// Schema CreativeWork > WebPage > QAPage.
+				'mb_sso_edit_schema_event_rows'            => 5,	// Schema Event.
+				'mb_sso_edit_schema_job_posting_rows'      => 5,	// Schema Intangible > JobPosting.
+				'mb_sso_edit_schema_organization_rows'     => 5,	// Schema Organization.
+				'mb_sso_edit_schema_person_rows'           => 5,	// Schema Person.
+				'mb_sso_edit_schema_place_rows'            => 5,	// Schema Place.
+				'mb_sso_edit_schema_product_rows'          => 5,	// Schema Product.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 

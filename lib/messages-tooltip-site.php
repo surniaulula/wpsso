@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 					$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
 					$minimum_dims = $min_width . 'x' . $min_height . 'px';
 
-					$text = __( 'A URL for this organization\'s logo image that Google can show in search results and its Knowledge Graph.', 'wpsso' );
+					$text = __( 'A URL for this organization\'s logo image that Google can show in search results and its Knowledge Graph.', 'wpsso' ) . ' ';
 
 					// translators: %s is 600x60px.
 					$text .= sprintf( __( 'The image must be at least %s for Google, but preferably 1200x1200px or more.', 'wpsso' ), $minimum_dims );
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 					$required_dims = $min_width . 'x' . $min_height . 'px';
 
 					// translators: %s is 600x60px.
-					$text = sprintf( __( 'A URL for this organization\'s banner image <strong>measuring exactly %s</strong>, that Google News can show for Schema Article type content from this publisher.', 'wpsso' ), $required_dims );
+					$text = sprintf( __( 'A URL for this organization\'s banner image <strong>measuring exactly %s</strong>, that Google News can show for Schema Article type content from this publisher.', 'wpsso' ), $required_dims ) . ' ';
 
 					break;
 

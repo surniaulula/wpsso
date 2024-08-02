@@ -283,6 +283,8 @@
 
 'wpsso_product_currency' ( $currency )
 
+'wpsso_product_offer_mrp_id' ( $mrp_id, $mod );	// The product offer merchant return policy ID ("mrp-123" for example).
+
 'wpsso_product_price' ( $price, $product )
 
 'wpsso_product_title' ( $title, $product )

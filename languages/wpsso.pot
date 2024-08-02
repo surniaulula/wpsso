@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.22.0\n"
+"Project-Id-Version: WPSSO Core 17.23.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9280,228 +9280,228 @@ msgid ""
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/messages-info-meta.php:42
+#: lib/messages-info-meta.php:44
 msgid ""
 "Schema ItemList elements are added dynamically based on the WordPress "
 "archive page query (ie. taxonomy term, sort order, date based, search query, "
 "etc.)."
 msgstr ""
 
-#: lib/messages-info-meta.php:44
+#: lib/messages-info-meta.php:46
 msgid ""
 "The Schema ItemList type can also be selected for a parent page with child "
 "pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:46
+#: lib/messages-info-meta.php:48
 msgid ""
 "Schema ItemList markup without elements (ie. an archive page without posts "
 "or a parent page without children) is considered invalid by Google."
 msgstr ""
 
-#: lib/messages-info-meta.php:60
+#: lib/messages-info-meta.php:62
 msgid ""
 "The Schema Question document name / title is a summary of the question, the "
 "description is a summary of the answer, and the full text is the complete "
 "answer."
 msgstr ""
 
-#: lib/messages-info-meta.php:70
+#: lib/messages-info-meta.php:72
 msgid ""
 "The Schema Question type can be a child page of a Schema FAQPage parent, or "
 "assigned to a Schema FAQPage taxonomy term."
 msgstr ""
 
-#: lib/messages-info-meta.php:71
+#: lib/messages-info-meta.php:73
 msgid ""
 "Note that using the %1$s add-on is often the easiest and preferred way to "
 "manage FAQ groups and Question pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:94
+#: lib/messages-info-meta.php:96
 msgid "Schema FAQPage markup is a collection of Questions and Answers."
 msgstr ""
 
-#: lib/messages-info-meta.php:96
+#: lib/messages-info-meta.php:98
 msgid ""
 "WordPress manages related singular content, like Questions and Answers, in "
 "two different ways:"
 msgstr ""
 
-#: lib/messages-info-meta.php:98
+#: lib/messages-info-meta.php:100
 msgid ""
 "A Schema FAQPage can be a parent page with Schema Question child pages, or a "
 "taxonomy term (ie. categories, tags or custom taxonomies) with Schema "
 "Question pages assigned to that term."
 msgstr ""
 
-#: lib/messages-info-meta.php:100
+#: lib/messages-info-meta.php:102
 msgid ""
 "Note that using the %1$s add-on is the easiest and preferred way to manage "
 "FAQ pages and its associated question pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:115
+#: lib/messages-info-meta.php:117
 msgid ""
 "Google requires that Schema QAPage markup include one or more user submitted "
 "and upvoted answers."
 msgstr ""
 
-#: lib/messages-info-meta.php:117
+#: lib/messages-info-meta.php:119
 msgid ""
 "The Schema QAPage document name / title is a summary of the question, and "
 "the full text is the complete question."
 msgstr ""
 
-#: lib/messages-info-meta.php:136 lib/messages-info-meta.php:182
-msgid ""
-"You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
-"select a preferred image cropping area (ie. top or bottom) and optimize the "
-"image SEO information."
-msgstr ""
-
 #: lib/messages-info-meta.php:140
-msgid ""
-"Note that the Schema CreativeWork type (and its sub-types) has a 'video' "
-"property for VideoObject markup, but other Schema types (like Event, Job "
-"Posting, Place, Product, and Brand) do not have a 'video' property."
-msgstr ""
-
-#: lib/messages-info-meta.php:142
-msgid ""
-"In these cases - assuming the video(s) are about the content subject - they "
-"will be added to a 'subjectOf' property instead."
-msgstr ""
-
-#: lib/messages-info-meta.php:159
-msgid ""
-"The robots meta tag lets you utilize a granular, webpage-specific approach "
-"to controlling how an individual webpage should be indexed and served to "
-"users in Google Search results."
-msgstr ""
-
-#: lib/messages-info-meta.php:178
-msgid ""
-"The example image container uses the minimum recommended Facebook image "
-"dimensions of %s."
-msgstr ""
-
-#: lib/messages-info-meta.php:195
-msgid "oEmbed HTML provided by the <code>%s</code> template."
-msgstr ""
-
-#: lib/messages-info-meta.php:198
-msgid ""
-"You may use the <code>%s</code> filter to modify the oEmbed template file "
-"path."
-msgstr ""
-
-#: lib/messages-info-meta.php:212
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:214
+#: lib/messages-info-meta.php:142
 msgid ""
 "The Facebook debugger allows you to validate Open Graph meta tags and "
 "refresh Facebook's cache."
 msgstr ""
 
-#: lib/messages-info-meta.php:216
+#: lib/messages-info-meta.php:144
 msgid ""
 "The Facebook debugger is the most reliable validation tool for Open Graph "
 "meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:226
+#: lib/messages-info-meta.php:154
 msgid ""
 "The Facebook catalog microdata debug tool allows you to validate the "
 "structured data used to indicate key information about the items on your "
 "website, such as their name, description and prices."
 msgstr ""
 
-#: lib/messages-info-meta.php:236
+#: lib/messages-info-meta.php:164
 msgid ""
 "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
 "Pages) webpage."
 msgstr ""
 
-#: lib/messages-info-meta.php:240
+#: lib/messages-info-meta.php:168
 msgid ""
 "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr ""
 
-#: lib/messages-info-meta.php:251
+#: lib/messages-info-meta.php:179
 msgid ""
 "Analyzes the webpage content and suggests ways to make the webpage faster "
 "for better ranking in search results."
 msgstr ""
 
-#: lib/messages-info-meta.php:261
+#: lib/messages-info-meta.php:189
 msgid ""
 "Check the webpage structured data markup for <a href=\"%s\">Google Rich "
 "Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr ""
 
-#: lib/messages-info-meta.php:261 lib/messages-info-meta.php:295
+#: lib/messages-info-meta.php:189 lib/messages-info-meta.php:223
 msgid ""
 "https://developers.google.com/search/docs/appearance/structured-data/search-"
 "gallery"
 msgstr ""
 
-#: lib/messages-info-meta.php:263
+#: lib/messages-info-meta.php:191
 msgid ""
 "To test and validate Schema markup beyond the limited subset of Google Rich "
 "Result types, use the Schema Markup Validator."
 msgstr ""
 
-#: lib/messages-info-meta.php:273
+#: lib/messages-info-meta.php:201
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr ""
 
-#: lib/messages-info-meta.php:283
+#: lib/messages-info-meta.php:211
 msgid ""
 "Validate Rich Pin markup and submit a request to show Rich Pin markup in "
 "zoomed pins."
 msgstr ""
 
-#: lib/messages-info-meta.php:293
+#: lib/messages-info-meta.php:221
 msgid ""
 "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data "
 "markup."
 msgstr ""
 
-#: lib/messages-info-meta.php:295
+#: lib/messages-info-meta.php:223
 msgid ""
 "This tool provides additional validation for Schema types beyond the limited "
 "subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr ""
 
-#: lib/messages-info-meta.php:305
+#: lib/messages-info-meta.php:233
 msgid ""
 "The X (Twitter) Card validator does not (currently) accept query arguments - "
 "paste the following URL in the X (Twitter) Card validator \"Card URL\" input "
 "field:"
 msgstr ""
 
-#: lib/messages-info-meta.php:315
+#: lib/messages-info-meta.php:243
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates."
 msgstr ""
 
-#: lib/messages-info-meta.php:317
+#: lib/messages-info-meta.php:245
 msgid ""
 "Validating your theme templates is important - theme templates with serious "
 "errors can prevent social and search crawlers from understanding the webpage "
 "structure."
 msgstr ""
 
-#: lib/messages-info-meta.php:329
+#: lib/messages-info-meta.php:257
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:338 lib/messages.php:1073 lib/messages.php:1325
+#: lib/messages-info-meta.php:266 lib/messages.php:1073 lib/messages.php:1325
 msgid "Schema markup is disabled."
+msgstr ""
+
+#: lib/messages-info-meta.php:290 lib/messages-info-meta.php:336
+msgid ""
+"You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
+"select a preferred image cropping area (ie. top or bottom) and optimize the "
+"image SEO information."
+msgstr ""
+
+#: lib/messages-info-meta.php:294
+msgid ""
+"Note that the Schema CreativeWork type (and its sub-types) has a 'video' "
+"property for VideoObject markup, but other Schema types (like Event, Job "
+"Posting, Place, Product, and Brand) do not have a 'video' property."
+msgstr ""
+
+#: lib/messages-info-meta.php:296
+msgid ""
+"In these cases - assuming the video(s) are about the content subject - they "
+"will be added to a 'subjectOf' property instead."
+msgstr ""
+
+#: lib/messages-info-meta.php:313
+msgid ""
+"The robots meta tag lets you utilize a granular, webpage-specific approach "
+"to controlling how an individual webpage should be indexed and served to "
+"users in Google Search results."
+msgstr ""
+
+#: lib/messages-info-meta.php:332
+msgid ""
+"The example image container uses the minimum recommended Facebook image "
+"dimensions of %s."
+msgstr ""
+
+#: lib/messages-info-meta.php:349
+msgid "oEmbed HTML provided by the <code>%s</code> template."
+msgstr ""
+
+#: lib/messages-info-meta.php:352
+msgid ""
+"You may use the <code>%s</code> filter to modify the oEmbed template file "
+"path."
 msgstr ""
 
 #: lib/messages-info.php:60
@@ -9813,8 +9813,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:82
-#: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:128
+#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:75
+#: lib/messages-tooltip-meta.php:195 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -9831,8 +9831,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:92
-#: lib/messages-tooltip-meta.php:213 lib/messages-tooltip-opengraph.php:145
+#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:85
+#: lib/messages-tooltip-meta.php:206 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -9890,84 +9890,89 @@ msgid "A description for this organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:54
-msgid "The website URL for this organization."
-msgstr ""
-
-#: lib/messages-tooltip-meta-org.php:72
-msgid "Select an optional place (ie. location) for this organization."
-msgstr ""
-
-#: lib/messages-tooltip-meta-org.php:78
 msgid ""
 "You may choose a more accurate Schema type for this organization (default is "
 "Organization)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:80
+#: lib/messages-tooltip-meta-org.php:56
 msgid ""
 "Note that Google considers a Schema Organization sub-type which is also a "
 "Schema Place sub-type, like the <a href=\"%s\">Schema LocalBusiness</a> type "
 "for example, as a place and not an organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:82
+#: lib/messages-tooltip-meta-org.php:58
 msgid ""
 "For this reason, the Schema Organization selector does not include any "
 "Schema Place sub-types."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:88
+#: lib/messages-tooltip-meta-org.php:64
+msgid ""
+"You may choose this organization as the default publisher, provider, etc."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:70 lib/messages-tooltip-site.php:106
+msgid "Select an optional location for this organization."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:76
+msgid "The website URL for this organization."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:94
 msgid ""
 "A document describing the editorial principles of an Organization that "
 "relate to their activities as a publisher."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:94
+#: lib/messages-tooltip-meta-org.php:100
 msgid ""
 "A statement describing (in news media, the newsroom's) disclosure and "
 "correction policy for errors."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:100
+#: lib/messages-tooltip-meta-org.php:106
 msgid ""
 "A statement describing (in news media, the newsroom's) diversity policy on "
 "both staffing and sources."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:106
+#: lib/messages-tooltip-meta-org.php:112
 msgid ""
 "A statement describing the personal, organizational, and corporate standards "
 "of behavior expected by the organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:112
+#: lib/messages-tooltip-meta-org.php:118
 msgid ""
 "A statement describing verification and fact-checking processes for a news "
 "media organization or other fact-checking organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:118
+#: lib/messages-tooltip-meta-org.php:124
 msgid ""
 "A statement about public engagement activities (for news media, the "
 "newsroom's), including involving the public - digitally or otherwise - in "
 "coverage decisions, reporting and activities after publication."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:124
+#: lib/messages-tooltip-meta-org.php:130
 msgid "One or more awards this organization has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:133
+#: lib/messages-tooltip-meta-org.php:139
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:139
+#: lib/messages-tooltip-meta-org.php:145
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:145 lib/messages-tooltip-meta-org.php:151
+#: lib/messages-tooltip-meta-org.php:151 lib/messages-tooltip-meta-org.php:157
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
@@ -10010,146 +10015,151 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:66
-msgid "An optional street address for this place."
+msgid ""
+"You may choose this place as the default event venue, job location, etc."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:72
-msgid "An optional post office box number for this place."
+msgid "An optional street address for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:78
-msgid "An optional city name for this place."
+msgid "An optional post office box number for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:84
-msgid "An optional state or province name for this place."
+msgid "An optional city name for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:90
-msgid "An optional postal or zip code for this place."
+msgid "An optional state or province name for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:96
-msgid "An optional country for this place."
+msgid "An optional postal or zip code for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:102
+msgid "An optional country for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:108
 msgid "An optional telephone number for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:107
+#: lib/messages-tooltip-meta-place.php:113
 msgid "The numeric decimal degrees latitude for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:109
-#: lib/messages-tooltip-meta-place.php:117
+#: lib/messages-tooltip-meta-place.php:115
+#: lib/messages-tooltip-meta-place.php:123
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
 "GPS coordinates of a street address."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:115
+#: lib/messages-tooltip-meta-place.php:121
 msgid "The numeric decimal degrees longitude for this place (required)."
-msgstr ""
-
-#: lib/messages-tooltip-meta-place.php:123
-msgid ""
-"An optional numeric altitude (in meters above sea level) for this place."
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:129
 msgid ""
+"An optional numeric altitude (in meters above sea level) for this place."
+msgstr ""
+
+#: lib/messages-tooltip-meta-place.php:135
+msgid ""
 "An image of this place (ie. an image of the business storefront or location)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:131
+#: lib/messages-tooltip-meta-place.php:137
 msgid ""
 "The image you select should show the physical location of this place (ie. of "
 "the latitude and longitude entered)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:133
+#: lib/messages-tooltip-meta-place.php:139
 msgid "This option is disabled if a place image URL is entered."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:139
+#: lib/messages-tooltip-meta-place.php:145
 msgid ""
 "You can enter a place image URL (including the http/https prefix) instead of "
 "selecting an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:141
+#: lib/messages-tooltip-meta-place.php:147
 #: lib/messages-tooltip-opengraph.php:139
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:143
+#: lib/messages-tooltip-meta-place.php:149
 msgid "This option is disabled if a place image ID is selected."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:149
+#: lib/messages-tooltip-meta-place.php:155
 msgid "A timezone for the open and close hours of this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:151
+#: lib/messages-tooltip-meta-place.php:157
 msgid "The default timezone value is provided by WordPress."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:157
+#: lib/messages-tooltip-meta-place.php:163
 msgid "Select the days and hours that this place is open."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:163
+#: lib/messages-tooltip-meta-place.php:169
 msgid ""
 "If this place is open seasonally, select the open and close dates of the "
 "season."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:169
+#: lib/messages-tooltip-meta-place.php:175
 msgid ""
 "The geographic area where a service is provided, in meters around the "
 "location."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:175
+#: lib/messages-tooltip-meta-place.php:181
 msgid ""
 "A comma-delimited list of <a href=\"%1$s\">ISO 4217 currency codes</a> "
 "accepted by the local business (example: %2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:181
+#: lib/messages-tooltip-meta-place.php:187
 msgid ""
 "A comma-delimited list of payment options accepted by the local business "
 "(example: Cash, Credit Card)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:187
+#: lib/messages-tooltip-meta-place.php:193
 msgid ""
 "The relative price of goods or services provided by the local business "
 "(example: $, $$, $$$, or $$$$)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:193
+#: lib/messages-tooltip-meta-place.php:199
 msgid "This food establishment accepts reservations."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:199
+#: lib/messages-tooltip-meta-place.php:205
 msgid "The menu URL for this food establishment."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:205
+#: lib/messages-tooltip-meta-place.php:211
 msgid "The cuisine served by this food establishment."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:211
+#: lib/messages-tooltip-meta-place.php:217
 msgid ""
 "A comma-delimited list of website and mobile app URLs to order products."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:213
+#: lib/messages-tooltip-meta-place.php:219
 msgid ""
 "These order action URL(s) will be used in the Schema potentialAction "
 "property."
@@ -10919,112 +10929,112 @@ msgid ""
 "Schema meta tags and JSON-LD markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:70
+#: lib/messages-tooltip-meta.php:63
 msgid "A customized description for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:72 lib/messages-tooltip-meta.php:188
+#: lib/messages-tooltip-meta.php:65 lib/messages-tooltip-meta.php:181
 msgid "The default value is inherited from the social or SEO description."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:78
+#: lib/messages-tooltip-meta.php:71
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:80 lib/messages-tooltip-meta.php:90
+#: lib/messages-tooltip-meta.php:73 lib/messages-tooltip-meta.php:83
 msgid ""
 "The default value is inherited from the Schema markup or priority image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:88
+#: lib/messages-tooltip-meta.php:81
 msgid ""
 "A customized image URL (instead of an image ID) for the Pinterest Pin It "
 "browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:113
+#: lib/messages-tooltip-meta.php:106
 msgid "Do not show a cached link in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:122
+#: lib/messages-tooltip-meta.php:115
 msgid "Do not follow links on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:131
+#: lib/messages-tooltip-meta.php:124
 msgid "Do not index images on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:140
+#: lib/messages-tooltip-meta.php:133
 msgid "Do not show this webpage in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:149
+#: lib/messages-tooltip-meta.php:142
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:151
+#: lib/messages-tooltip-meta.php:144
 msgid ""
 "Google may still show a static image thumbnail (if available) when it "
 "determines that using an image provides a better user-experience."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:160
+#: lib/messages-tooltip-meta.php:153
 msgid "Do not offer translation of this webpage in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:178
+#: lib/messages-tooltip-meta.php:171
 msgid "A customized title for the X (Twitter) Card title meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:180
+#: lib/messages-tooltip-meta.php:173
 msgid "The default value is inherited from the social or SEO title."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:186
+#: lib/messages-tooltip-meta.php:179
 msgid "A customized description for the X (Twitter) Card description meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:198
+#: lib/messages-tooltip-meta.php:191
 msgid "A customized image ID for the X (Twitter) Card image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:200 lib/messages-tooltip-meta.php:211
+#: lib/messages-tooltip-meta.php:193 lib/messages-tooltip-meta.php:204
 msgid "The default value is inherited from the priority image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:209
+#: lib/messages-tooltip-meta.php:202
 msgid ""
 "A customized image URL (instead of an image ID) for the X (Twitter) Card "
 "image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:231
+#: lib/messages-tooltip-meta.php:224
 msgid "The primary (ie. top most) category for breadcrumbs markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:237
+#: lib/messages-tooltip-meta.php:230
 msgid ""
 "A customized description for the SEO title tag and the default for all other "
 "title values."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:243
+#: lib/messages-tooltip-meta.php:236
 msgid ""
 "A customized description for the SEO description meta tag and the default "
 "for all other description values."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:251
+#: lib/messages-tooltip-meta.php:244
 msgid "A customized URL for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:253 lib/messages-tooltip-meta.php:261
+#: lib/messages-tooltip-meta.php:246 lib/messages-tooltip-meta.php:254
 msgid ""
 "Make sure the custom URL you enter here is functional and redirects "
 "correctly."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:259
+#: lib/messages-tooltip-meta.php:252
 msgid "Permanently redirect this URL to another."
 msgstr ""
 
@@ -12218,10 +12228,6 @@ msgid ""
 "A URL for this organization's banner image <strong>measuring exactly %s</"
 "strong>, that Google News can show for Schema Article type content from this "
 "publisher."
-msgstr ""
-
-#: lib/messages-tooltip-site.php:106
-msgid "Select an optional location for this organization."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:114
@@ -14249,19 +14255,19 @@ msgstr ""
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1398
+#: lib/schema-single.php:1384
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1586
+#: lib/schema-single.php:1572
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2026
+#: lib/schema-single.php:2034
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2153
+#: lib/schema-single.php:2161
 msgid "adding schema product"
 msgstr ""
 
@@ -14284,7 +14290,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3926
+#: lib/schema.php:3860
 msgid "checking schema properties"
 msgstr ""
 

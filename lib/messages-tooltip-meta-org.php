@@ -31,45 +31,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-meta-org_name':
+				case 'tooltip-meta-org_name':	// Organization Name.
 
 					$text = __( 'The complete or common name for this organization.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-org_name_alt':
+				case 'tooltip-meta-org_name_alt':	// Organization Alternate Name.
 
 					$text = __( 'An alternate name for this organization that you would like Google to consider.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-org_desc':
+				case 'tooltip-meta-org_desc':	// Organization Description.
 
 					$text = __( 'A description for this organization.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-org_url':
-
-					$text = __( 'The website URL for this organization.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-meta-org_logo_url':
-
-					$text = $this->p->msgs->get( 'tooltip-site_org_logo_url' );
-
-					break;
-
-				case 'tooltip-meta-org_banner_url':
-
-					$text = $this->p->msgs->get( 'tooltip-site_org_banner_url' );
-
-					break;
-
-				case 'tooltip-meta-org_place_id':
-
-					$text = __( 'Select an optional place (ie. location) for this organization.', 'wpsso' );
 
 					break;
 
@@ -80,6 +56,36 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 					$text .= sprintf( __( 'Note that Google considers a Schema Organization sub-type which is also a Schema Place sub-type, like the <a href="%s">Schema LocalBusiness</a> type for example, as a place and not an organization.', 'wpsso' ), 'https://schema.org/LocalBusiness' ) . ' ';
 
 					$text .= __( 'For this reason, the Schema Organization selector does not include any Schema Place sub-types.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-meta-org_is_default':	// Organization Is Default.
+
+					$text = __( 'You may choose this organization as the default publisher, provider, etc.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-meta-org_place_id':	// Organization Location.
+
+					$text = __( 'Select an optional location for this organization.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-org_url':	// Organization WebSite URL.
+
+					$text = __( 'The website URL for this organization.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-org_logo_url':	// Organization Logo URL.
+
+					$text = $this->p->msgs->get( 'tooltip-site_org_logo_url' );
+
+					break;
+
+				case 'tooltip-meta-org_banner_url':	// Organization Banner URL.
+
+					$text = $this->p->msgs->get( 'tooltip-site_org_banner_url' );
 
 					break;
 
@@ -119,7 +125,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 					break;
 
-				case 'tooltip-meta-org_award':			// Organization Awards.
+				case 'tooltip-meta-org_award':	// Organization Awards.
 
 					$text = __( 'One or more awards this organization has won.', 'wpsso' );
 

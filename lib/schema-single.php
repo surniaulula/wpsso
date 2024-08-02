@@ -1291,20 +1291,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * If the organization is a local business, then convert the organization markup to local business.
-			 */
-			if ( ! empty( $type_id ) ) {	// Just in case.
-
-				if ( 'organization' !== $type_id ) {
-
-					if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
-
-						WpssoSchema::organization_to_localbusiness( $json_ret );
-					}
-				}
-			}
-
-			/*
 			 * Filter the single organization data.
 			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
@@ -1761,6 +1747,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->mark();
+				
+				/*
+				 * Log the post type and post ID. Example:
+				 *
+				 *	adding offer data for product id = 4425
+				 *	adding offer data for product_variation id = 4439
+				 */
+				$wpsso->debug->log( 'adding offer data for ' . $mod[ 'post_type' ] . ' id = ' . $mod[ 'id' ] );
 			}
 
 			/*
@@ -1932,7 +1926,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema hasMerchantReturnPolicy property.
 			 */
-			if ( WpssoSchema::is_valid_key( $mt_single, 'product:mrp_id' ) ) {	// Not null, an empty string, or 'none'.
+			$mrp_id = isset( $mt_single[ 'product:mrp_id' ] ) ? $mt_single[ 'product:mrp_id' ] : null;
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filter \'wpsso_product_offer_mrp_id\'' );
+			}
+
+			$mrp_id = apply_filters( 'wpsso_product_offer_mrp_id', $mrp_id, $mod );
+
+			if ( WpssoSchema::is_valid_val( $mrp_id ) ) {	// Not null, an empty string, or 'none'.
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product return policy id = ' . $mrp_id );
+				}
 
 				self::add_merchant_return_policy_data( $json_ret[ 'hasMerchantReturnPolicy' ], $mod, $mt_single[ 'product:mrp_id' ], $mrp_list_el = false );
 

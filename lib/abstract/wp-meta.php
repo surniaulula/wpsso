@@ -2918,7 +2918,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_user_image_ids'
 			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_ids';
-			$image_ids   = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+
+			$image_ids = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( $image_ids as $pid ) {
 
@@ -2946,7 +2947,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_user_image_urls'
 			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
-			$image_urls  = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+
+			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( array_unique( $image_urls ) as $num => $url ) {
 
