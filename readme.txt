@@ -288,6 +288,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_product_offer_mrp_id' filter.
+	* Refactored the `WpssoMessagesInfoMeta->get()` class for speed.
+	* Removed the `WpssoSchema::organization_to_localbusiness()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -584,7 +586,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.23.0-dev.4 =
 
-(2024/08/02) None.
+(2024/08/02) Added a new 'wpsso_product_offer_mrp_id' filter.
 
 = 17.22.0 =
 
