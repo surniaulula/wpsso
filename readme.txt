@@ -288,6 +288,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_product_offer_mrp_id' filter.
+	* Added support for a "merge" value in `WpssoSchemaSingle::add_or_replace_data()`.
 	* Refactored the `WpssoMessagesInfoMeta->get()` class for speed.
 	* Removed the `WpssoSchema::organization_to_localbusiness()` method.
 * **Requires At Least**
