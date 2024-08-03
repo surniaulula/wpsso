@@ -278,12 +278,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.23.0-dev.4 (2024/08/02)**
+**Version 17.23.0-dev.5 (2024/08/03)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated Schema Organization markup to include Place properties if the organization is also a place.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -584,9 +584,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.23.0-dev.4 =
+= 17.23.0-dev.5 =
 
-(2024/08/02) Added a new 'wpsso_product_offer_mrp_id' filter.
+(2024/08/03) Updated Schema Organization markup to include Place properties if the organization is also a place.
 
 = 17.22.0 =
 
