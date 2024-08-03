@@ -14255,19 +14255,19 @@ msgstr ""
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1436
+#: lib/schema-single.php:1441
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1639
+#: lib/schema-single.php:1644
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2111
+#: lib/schema-single.php:2116
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2248
+#: lib/schema-single.php:2253
 msgid "adding schema product"
 msgstr ""
 

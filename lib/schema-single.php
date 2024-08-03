@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $post_mod, $comment_id );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $comment_id values.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $comment_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $comment_id ) );
 
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( 'wpsso_json_data_single_event', $json_ret, $mod, $event_id );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $event_id values.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $event_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $event_id ) );
 
@@ -574,7 +574,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
-			 * Maybe add an 'identifier' value based on the size name and image ID.
+			 * Maybe add an 'identifier' value with the size name and image ID.
 			 */
 			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
 
@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
+			 * Update the @id string with the $json_ret[ 'url' ] and $type_id.
 			 */
 			WpssoSchema::update_data_id( $json_ret, $type_id );
 
@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( 'wpsso_json_data_single_job', $json_ret, $mod, $job_id );
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $job_id values.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $job_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $job_id ) );
 
@@ -991,7 +991,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $mrp_id values.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $mrp_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $mrp_id ), '/' );
 
@@ -1341,11 +1341,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
-			 */
-			WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
-
-			/*
 			 * If this organization is also a sub-type of place, then add the schema place properties as well.
 			 */
 			if ( $is_place_child ) {
@@ -1357,7 +1352,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				self::add_place_data( $json_ret, $mod, $org_id, $place_list_el = 'merge' );
 
+				/*
+				 * Update the @id string with the $org_logo_key values.
+				 */
 				WpssoSchema::update_data_id( $json_ret, $org_logo_key );
+
+			} else {
+			
+				/*
+				 * Update the @id string with the $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
+				 */
+				WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
 			}
 
 			/*
@@ -1554,7 +1559,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/*
-			 * Update the '@id' string based on the $canonical_url and the $type_id.
+			 * Update the '@id' string with $canonical_url and $type_id.
 			 *
 			 * Encode the URL part of the '@id' string to hide the WordPress login username.
 			 */
@@ -1797,7 +1802,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ], $type_id, and $place_id values.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $place_id values.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $place_id ) );
 
@@ -2480,7 +2485,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
+			 * Update the @id string with the $json_ret[ 'url' ] and $type_id.
 			 */
 			WpssoSchema::update_data_id( $json_ret, empty( $mod[ 'id' ] ) ? $type_id : array( $type_id, $mod[ 'id' ] ) );
 
@@ -2595,7 +2600,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Update the @id string based on $json_ret[ 'url' ] and $type_id.
+			 * Update the @id string with the $json_ret[ 'url' ] and $type_id.
 			 */
 			WpssoSchema::update_data_id( $json_ret, $type_id );
 
