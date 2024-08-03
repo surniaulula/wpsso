@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.22.0\n"
+"Project-Id-Version: WPSSO Core 17.23.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-08-01 07:12-0700\n"
+"PO-Revision-Date: 2024-08-03 11:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6233,58 +6233,58 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr "Métadonnées %s"
 
-#: lib/abstract/wp-meta.php:1339
+#: lib/abstract/wp-meta.php:1338
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1410
+#: lib/abstract/wp-meta.php:1409
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1414
+#: lib/abstract/wp-meta.php:1413
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1417 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1416 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1420
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1421
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1422
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1424
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1767
+#: lib/abstract/wp-meta.php:1766
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2079
+#: lib/abstract/wp-meta.php:2078
 msgid "Another review cannot be the subject of a review."
 msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2081 lib/abstract/wp-meta.php:2094
+#: lib/abstract/wp-meta.php:2080 lib/abstract/wp-meta.php:2093
 msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
 msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
 
-#: lib/abstract/wp-meta.php:2092
+#: lib/abstract/wp-meta.php:2091
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
@@ -8926,157 +8926,157 @@ msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de 
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
-#: lib/messages-info-meta.php:42
+#: lib/messages-info-meta.php:44
 msgid "Schema ItemList elements are added dynamically based on the WordPress archive page query (ie. taxonomy term, sort order, date based, search query, etc.)."
 msgstr "Les éléments de Schéma ItemList sont ajoutés dynamiquement en fonction de la requête de la page d'archive WordPress (c'est-à-dire le terme de taxonomie, l'ordre de tri, la date, la requête de recherche, etc.)."
 
-#: lib/messages-info-meta.php:44
+#: lib/messages-info-meta.php:46
 msgid "The Schema ItemList type can also be selected for a parent page with child pages."
 msgstr "Le type de Schéma ItemList peut également être sélectionné pour une page parent avec des pages enfants."
 
-#: lib/messages-info-meta.php:46
+#: lib/messages-info-meta.php:48
 msgid "Schema ItemList markup without elements (ie. an archive page without posts or a parent page without children) is considered invalid by Google."
 msgstr "Le balisage de Schéma ItemList sans éléments (c'est-à-dire une page d'archive sans articles ou une page parent sans enfants) est considéré comme non valide par Google."
 
-#: lib/messages-info-meta.php:60
+#: lib/messages-info-meta.php:62
 msgid "The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer."
 msgstr "Le nom / titre du document Schéma Question est un résumé de la question, la description est un résumé de la réponse, et le texte complet est la réponse complète."
 
-#: lib/messages-info-meta.php:70
+#: lib/messages-info-meta.php:72
 msgid "The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term."
 msgstr "Le type de Schéma Question peut être une page enfant d'un parent Schéma FAQPage ou affecté à un terme de taxonomie de Schéma FAQPage."
 
-#: lib/messages-info-meta.php:71
+#: lib/messages-info-meta.php:73
 msgid "Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ groups and Question pages."
 msgstr "Notez que l'utilisation de l'ajout %1$s est souvent le moyen le plus simple et préféré de gérer des groupes de FAQ et des pages de questions."
 
-#: lib/messages-info-meta.php:94
+#: lib/messages-info-meta.php:96
 msgid "Schema FAQPage markup is a collection of Questions and Answers."
 msgstr "Le balisage de Schéma FAQPage est une collection de questions et réponses."
 
-#: lib/messages-info-meta.php:96
+#: lib/messages-info-meta.php:98
 msgid "WordPress manages related singular content, like Questions and Answers, in two different ways:"
 msgstr "WordPress gère le contenu singulier associé, comme les questions et réponses, de deux manières différentes:"
 
-#: lib/messages-info-meta.php:98
+#: lib/messages-info-meta.php:100
 msgid "A Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question pages assigned to that term."
 msgstr "Le Schéma FAQPage peut être une page parent avec des pages enfants de Schéma Question, ou un terme de taxonomie (c'est-à-dire des catégories, étiquettes ou taxonomies personnalisées) avec des pages de Schéma Question affectées à ce terme."
 
-#: lib/messages-info-meta.php:100
+#: lib/messages-info-meta.php:102
 msgid "Note that using the %1$s add-on is the easiest and preferred way to manage FAQ pages and its associated question pages."
 msgstr "Notez que l'utilisation de l'ajout %1$s est le moyen le plus simple et préféré de gérer les pages FAQ et ses pages de questions associées."
 
-#: lib/messages-info-meta.php:115
+#: lib/messages-info-meta.php:117
 msgid "Google requires that Schema QAPage markup include one or more user submitted and upvoted answers."
 msgstr "Google exige que le balisage de Schéma QAPage inclue une ou plusieurs réponses soumises et votées par les utilisateurs."
 
-#: lib/messages-info-meta.php:117
+#: lib/messages-info-meta.php:119
 msgid "The Schema QAPage document name / title is a summary of the question, and the full text is the complete question."
 msgstr "Le nom / titre du document Schéma QAPage est un résumé de la question, et le texte complet est la question complète."
 
-#: lib/messages-info-meta.php:136 lib/messages-info-meta.php:182
-msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred image cropping area (ie. top or bottom) and optimize the image SEO information."
-msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage d'image préférée (comme exemple, en haut ou en bas) et optimiser les informations de référencement d'image."
-
 #: lib/messages-info-meta.php:140
-msgid "Note that the Schema CreativeWork type (and its sub-types) has a 'video' property for VideoObject markup, but other Schema types (like Event, Job Posting, Place, Product, and Brand) do not have a 'video' property."
-msgstr "Notez que le type de Schéma CreativeWork (et ses sous-types) ont une propriété 'video' pour le balisage VideoObject, mais d'autres types de Schéma (comme Event, Job Posting, Place, Product et Brand) n'ont pas de propriété 'video'."
-
-#: lib/messages-info-meta.php:142
-msgid "In these cases - assuming the video(s) are about the content subject - they will be added to a 'subjectOf' property instead."
-msgstr "Dans ces cas - en supposant que la ou les vidéos concernent le sujet du contenu - elles seront plutôt ajoutées à une propriété 'subjectOf'."
-
-#: lib/messages-info-meta.php:159
-msgid "The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results."
-msgstr "La balise méta robots permet d'utiliser une approche granulaire et spécifique à la page Web, pour contrôler la manière dont une page Web individuelle est indexé et servi aux utilisateurs dans les résultats de recherche Google."
-
-#: lib/messages-info-meta.php:178
-msgid "The example image container uses the minimum recommended Facebook image dimensions of %s."
-msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook recommandées minimales de %s."
-
-#: lib/messages-info-meta.php:195
-msgid "oEmbed HTML provided by the <code>%s</code> template."
-msgstr "HTML oEmbed fourni par le modèle <code>%s</code>."
-
-#: lib/messages-info-meta.php:198
-msgid "You may use the <code>%s</code> filter to modify the oEmbed template file path."
-msgstr "Vous pouvez utiliser le filtre <code>%s</code> pour modifier le chemin du fichier de modèle oEmbed."
-
-#: lib/messages-info-meta.php:212
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr "Tous les sites sociaux (à l'exception de LinkedIn) lisent les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:214
+#: lib/messages-info-meta.php:142
 msgid "The Facebook debugger allows you to validate Open Graph meta tags and refresh Facebook's cache."
 msgstr "Le débogueur Facebook vous permet de valider les balises méta Open Graph et de rafraîchir le cache de Facebook."
 
-#: lib/messages-info-meta.php:216
+#: lib/messages-info-meta.php:144
 msgid "The Facebook debugger is the most reliable validation tool for Open Graph meta tags."
 msgstr "Le débogueur Facebook est l'outil de validation le plus fiable pour les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:226
+#: lib/messages-info-meta.php:154
 msgid "The Facebook catalog microdata debug tool allows you to validate the structured data used to indicate key information about the items on your website, such as their name, description and prices."
 msgstr "L'outil de débogage des microdonnées pour le catalogue Facebook vous permet de valider les données structurées utilisées pour indiquer les informations clés des itemes de votre site Web, telles que leur nom, leur description et leurs prix."
 
-#: lib/messages-info-meta.php:236
+#: lib/messages-info-meta.php:164
 msgid "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage."
 msgstr "Validez la syntaxe HTML et la conformité de la page Web AMP (également appelée pages mobiles accélérées)."
 
-#: lib/messages-info-meta.php:240
+#: lib/messages-info-meta.php:168
 msgid "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr "Notez qu'une extension AMP est requise pour créer des pages Web AMP pour WordPress."
 
-#: lib/messages-info-meta.php:251
+#: lib/messages-info-meta.php:179
 msgid "Analyzes the webpage content and suggests ways to make the webpage faster for better ranking in search results."
 msgstr "Analyse le contenu de la page Web et suggère des moyens de rendre la page Web plus rapide pour un meilleur classement dans les résultats de recherche."
 
-#: lib/messages-info-meta.php:261
+#: lib/messages-info-meta.php:189
 msgid "Check the webpage structured data markup for <a href=\"%s\">Google Rich Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr "Vérifiez le balisage des données structurées de la page Web pour les <a href=\"%s\">types de résultats enrichis Google</a> (offre d'emploi, produit, recette, etc.)."
 
-#: lib/messages-info-meta.php:261 lib/messages-info-meta.php:295
+#: lib/messages-info-meta.php:189 lib/messages-info-meta.php:223
 msgid "https://developers.google.com/search/docs/appearance/structured-data/search-gallery"
 msgstr "https://developers.google.com/search/docs/appearance/structured-data/search-gallery?hl=fr"
 
-#: lib/messages-info-meta.php:263
+#: lib/messages-info-meta.php:191
 msgid "To test and validate Schema markup beyond the limited subset of Google Rich Result types, use the Schema Markup Validator."
 msgstr "Pour tester et valider le balisage de Schéma au-delà du sous-ensemble limité de types de résultats enrichis Google, utilisez le validateur de balisage de Schéma."
 
-#: lib/messages-info-meta.php:273
+#: lib/messages-info-meta.php:201
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr "Actualisez le cache de LinkedIn et validez les données oEmbed de la page Web."
 
-#: lib/messages-info-meta.php:283
+#: lib/messages-info-meta.php:211
 msgid "Validate Rich Pin markup and submit a request to show Rich Pin markup in zoomed pins."
 msgstr "Validez le balisage Rich Pin et soumettez une demande pour afficher le balisage Rich Pin dans les épingles agrandies."
 
-#: lib/messages-info-meta.php:293
+#: lib/messages-info-meta.php:221
 msgid "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data markup."
 msgstr "Valider le balisage des données structurées Schéma JSON-LD, Microdata et RDFa de la page Web."
 
-#: lib/messages-info-meta.php:295
+#: lib/messages-info-meta.php:223
 msgid "This tool provides additional validation for Schema types beyond the limited subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr "Cet outil fournit une validation supplémentaire pour les types de Schéma au-delà du sous-ensemble limité des <a href=\"%s\">types de résultats enrichis Google</a>."
 
-#: lib/messages-info-meta.php:305
+#: lib/messages-info-meta.php:233
 msgid "The X (Twitter) Card validator does not (currently) accept query arguments - paste the following URL in the X (Twitter) Card validator \"Card URL\" input field:"
 msgstr "Le validateur de carte X (Twitter) n'accepte pas (couramment) les arguments de requête - collez l'URL suivante dans le champ de saisie \"Card URL\" du validateur de carte X (Twitter):"
 
-#: lib/messages-info-meta.php:315
+#: lib/messages-info-meta.php:243
 msgid "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates."
 msgstr "Validez la syntaxe HTML et la conformité HTML 5 de vos balises méta et modèles de thème."
 
-#: lib/messages-info-meta.php:317
+#: lib/messages-info-meta.php:245
 msgid "Validating your theme templates is important - theme templates with serious errors can prevent social and search crawlers from understanding the webpage structure."
 msgstr "La validation de vos modèles de thème est importante - les modèles de thème avec de erreurs graves peuvent empêcher les robots sociaux et de recherche de comprendre la structure de la page Web."
 
-#: lib/messages-info-meta.php:329
+#: lib/messages-info-meta.php:257
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr "Activez une extension AMP pour créer et valider les pages AMP."
 
-#: lib/messages-info-meta.php:338 lib/messages.php:1073 lib/messages.php:1325
+#: lib/messages-info-meta.php:266 lib/messages.php:1073 lib/messages.php:1325
 msgid "Schema markup is disabled."
 msgstr "Le balisage de Schéma est désactivé."
+
+#: lib/messages-info-meta.php:290 lib/messages-info-meta.php:336
+msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred image cropping area (ie. top or bottom) and optimize the image SEO information."
+msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage d'image préférée (comme exemple, en haut ou en bas) et optimiser les informations de référencement d'image."
+
+#: lib/messages-info-meta.php:294
+msgid "Note that the Schema CreativeWork type (and its sub-types) has a 'video' property for VideoObject markup, but other Schema types (like Event, Job Posting, Place, Product, and Brand) do not have a 'video' property."
+msgstr "Notez que le type de Schéma CreativeWork (et ses sous-types) ont une propriété 'video' pour le balisage VideoObject, mais d'autres types de Schéma (comme Event, Job Posting, Place, Product et Brand) n'ont pas de propriété 'video'."
+
+#: lib/messages-info-meta.php:296
+msgid "In these cases - assuming the video(s) are about the content subject - they will be added to a 'subjectOf' property instead."
+msgstr "Dans ces cas - en supposant que la ou les vidéos concernent le sujet du contenu - elles seront plutôt ajoutées à une propriété 'subjectOf'."
+
+#: lib/messages-info-meta.php:313
+msgid "The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results."
+msgstr "La balise méta robots permet d'utiliser une approche granulaire et spécifique à la page Web, pour contrôler la manière dont une page Web individuelle est indexé et servi aux utilisateurs dans les résultats de recherche Google."
+
+#: lib/messages-info-meta.php:332
+msgid "The example image container uses the minimum recommended Facebook image dimensions of %s."
+msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook recommandées minimales de %s."
+
+#: lib/messages-info-meta.php:349
+msgid "oEmbed HTML provided by the <code>%s</code> template."
+msgstr "HTML oEmbed fourni par le modèle <code>%s</code>."
+
+#: lib/messages-info-meta.php:352
+msgid "You may use the <code>%s</code> filter to modify the oEmbed template file path."
+msgstr "Vous pouvez utiliser le filtre <code>%s</code> pour modifier le chemin du fichier de modèle oEmbed."
 
 #: lib/messages-info.php:60
 msgid "After purchasing a %1$s license pack, you will receive an email with installation instructions and your unique Authentication ID for that license pack."
@@ -9296,8 +9296,8 @@ msgid "A customized image ID to include first, before any featured, attached, or
 msgstr "Un ID d'image personnalisé à inclure en premier, avant l'image à la Une, les images attachées, ou de contenue."
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:82
-#: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:128
+#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:75
+#: lib/messages-tooltip-meta.php:195 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image personnalisée est fournie."
 
@@ -9310,8 +9310,8 @@ msgid "Make sure your custom image is large enough or it may be ignored by socia
 msgstr "Assurez-vous que votre image personnalisée est suffisamment grande ou elle peut être ignorée par les sites sociaux."
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:92
-#: lib/messages-tooltip-meta.php:213 lib/messages-tooltip-opengraph.php:145
+#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:85
+#: lib/messages-tooltip-meta.php:206 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image personnalisé est sélectionné."
 
@@ -9353,62 +9353,66 @@ msgid "A description for this organization."
 msgstr "Une description de cette organisation."
 
 #: lib/messages-tooltip-meta-org.php:54
-msgid "The website URL for this organization."
-msgstr "L'URL du site Web de cette organisation."
-
-#: lib/messages-tooltip-meta-org.php:72
-msgid "Select an optional place (ie. location) for this organization."
-msgstr "Sélectionnez un endroit (c'est-à-dire un emplacement) facultatif pour cette organisation."
-
-#: lib/messages-tooltip-meta-org.php:78
 msgid "You may choose a more accurate Schema type for this organization (default is Organization)."
 msgstr "Vous pouvez choisir un type de Schéma plus précis pour cette organisation (la valeur par défaut est Organization)."
 
-#: lib/messages-tooltip-meta-org.php:80
+#: lib/messages-tooltip-meta-org.php:56
 msgid "Note that Google considers a Schema Organization sub-type which is also a Schema Place sub-type, like the <a href=\"%s\">Schema LocalBusiness</a> type for example, as a place and not an organization."
 msgstr "Notez que Google considère un sous-type de Schéma d'organisation qui est également un sous-type de Schéma d'endroit, comme le type de <a href=\"%s\">Schéma LocalBusiness</a> par exemple, un endroit et non une organisation."
 
-#: lib/messages-tooltip-meta-org.php:82
+#: lib/messages-tooltip-meta-org.php:58
 msgid "For this reason, the Schema Organization selector does not include any Schema Place sub-types."
 msgstr "Pour cette raison, le sélecteur de Schéma d'organisation n'inclut aucun sous-type de Schéma d'endroit"
 
-#: lib/messages-tooltip-meta-org.php:88
+#: lib/messages-tooltip-meta-org.php:64
+msgid "You may choose this organization as the default publisher, provider, etc."
+msgstr "Vous pouvez choisir cette organisation comme éditeur, fournisseur, etc. par défaut."
+
+#: lib/messages-tooltip-meta-org.php:70 lib/messages-tooltip-site.php:106
+msgid "Select an optional location for this organization."
+msgstr "Choisissez un emplacement optionnel pour cette organisation."
+
+#: lib/messages-tooltip-meta-org.php:76
+msgid "The website URL for this organization."
+msgstr "L'URL du site Web de cette organisation."
+
+#: lib/messages-tooltip-meta-org.php:94
 msgid "A document describing the editorial principles of an Organization that relate to their activities as a publisher."
 msgstr "Un document décrivant les principes éditoriaux d'une organisation qui se rapportent à leurs activités en tant qu'éditeur."
 
-#: lib/messages-tooltip-meta-org.php:94
+#: lib/messages-tooltip-meta-org.php:100
 msgid "A statement describing (in news media, the newsroom's) disclosure and correction policy for errors."
 msgstr "Une déclaration décrivant (dans les médias d'information, la salle de rédaction) la politique de divulgation et de correction des erreurs."
 
-#: lib/messages-tooltip-meta-org.php:100
+#: lib/messages-tooltip-meta-org.php:106
 msgid "A statement describing (in news media, the newsroom's) diversity policy on both staffing and sources."
 msgstr "Une déclaration décrivant (dans les médias d'information, la salle de rédaction) la politique de diversité concernant à la fois le personnel et les sources."
 
-#: lib/messages-tooltip-meta-org.php:106
+#: lib/messages-tooltip-meta-org.php:112
 msgid "A statement describing the personal, organizational, and corporate standards of behavior expected by the organization."
 msgstr "Une déclaration décrivant les normes de comportement personnelles, organisationnelles et d'entreprise attendues par l'organisation."
 
-#: lib/messages-tooltip-meta-org.php:112
+#: lib/messages-tooltip-meta-org.php:118
 msgid "A statement describing verification and fact-checking processes for a news media organization or other fact-checking organization."
 msgstr "Une déclaration décrivant les processus de vérification et de vérification des faits pour une organisation de presse ou une autre organisation de vérification des faits."
 
-#: lib/messages-tooltip-meta-org.php:118
+#: lib/messages-tooltip-meta-org.php:124
 msgid "A statement about public engagement activities (for news media, the newsroom's), including involving the public - digitally or otherwise - in coverage decisions, reporting and activities after publication."
 msgstr "Une déclaration sur les activités d'engagement du public (pour les médias d'information, la salle de rédaction), y compris l'implication du public - numériquement ou autrement - dans les décisions de couverture, les reportages et les activités après la publication."
 
-#: lib/messages-tooltip-meta-org.php:124
+#: lib/messages-tooltip-meta-org.php:130
 msgid "One or more awards this organization has won."
 msgstr "Un ou plusieurs prix remportés par cette organisation."
 
-#: lib/messages-tooltip-meta-org.php:133
+#: lib/messages-tooltip-meta-org.php:139
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr "Un lien vers la page d'en-tête administratif ou une page répertoriant la haute direction éditoriale."
 
-#: lib/messages-tooltip-meta-org.php:139
+#: lib/messages-tooltip-meta-org.php:145
 msgid "A statement on coverage priorities, including any public agenda or stance on issues."
 msgstr "Une déclaration sur les priorités de couverture, y compris tout agenda public ou position sur les enjeux."
 
-#: lib/messages-tooltip-meta-org.php:145 lib/messages-tooltip-meta-org.php:151
+#: lib/messages-tooltip-meta-org.php:151 lib/messages-tooltip-meta-org.php:157
 msgid "A statement about policy on use of unnamed sources and the decision process required."
 msgstr "Une déclaration sur la politique d'utilisation des sources anonymes et le processus de décision requis."
 
@@ -9441,124 +9445,128 @@ msgid "You may optionally choose a more accurate Schema type for this place (def
 msgstr "Vous pouvez choisir un type de Schéma facultatif plus précis pour ce lieu (la valeur par défaut est LocalBusiness)."
 
 #: lib/messages-tooltip-meta-place.php:66
+msgid "You may choose this place as the default event venue, job location, etc."
+msgstr "Vous pouvez choisir cet endroit comme lieu d'événement, lieu de travail, etc. par défaut."
+
+#: lib/messages-tooltip-meta-place.php:72
 msgid "An optional street address for this place."
 msgstr "Une adresse municipale facultative pour ce lieu."
 
-#: lib/messages-tooltip-meta-place.php:72
+#: lib/messages-tooltip-meta-place.php:78
 msgid "An optional post office box number for this place."
 msgstr "Un numéro de boîte postale facultatif pour cet endroit."
 
-#: lib/messages-tooltip-meta-place.php:78
+#: lib/messages-tooltip-meta-place.php:84
 msgid "An optional city name for this place."
 msgstr "Un nom de ville facultatif pour cet endroit."
 
-#: lib/messages-tooltip-meta-place.php:84
+#: lib/messages-tooltip-meta-place.php:90
 msgid "An optional state or province name for this place."
 msgstr "Un nom d'état ou de province facultatif pour ce lieu."
 
-#: lib/messages-tooltip-meta-place.php:90
+#: lib/messages-tooltip-meta-place.php:96
 msgid "An optional postal or zip code for this place."
 msgstr "Un code postal ou zip facultatif pour ce lieu."
 
-#: lib/messages-tooltip-meta-place.php:96
+#: lib/messages-tooltip-meta-place.php:102
 msgid "An optional country for this place."
 msgstr "Un pays facultatif pour ce lieu."
 
-#: lib/messages-tooltip-meta-place.php:102
+#: lib/messages-tooltip-meta-place.php:108
 msgid "An optional telephone number for this place."
 msgstr "Un numéro de téléphone optionnel pour cet endroit."
 
-#: lib/messages-tooltip-meta-place.php:107
+#: lib/messages-tooltip-meta-place.php:113
 msgid "The numeric decimal degrees latitude for this place (required)."
 msgstr "Les degrés décimaux numérique de latitude pour cet endroit (requis)"
 
-#: lib/messages-tooltip-meta-place.php:109
-#: lib/messages-tooltip-meta-place.php:117
+#: lib/messages-tooltip-meta-place.php:115
+#: lib/messages-tooltip-meta-place.php:123
 msgid "You may use a service like <a href=\"http://www.gps-coordinates.net/\">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address."
 msgstr "Vous pouvez utiliser un service comme le <a href=\"http://www.coordonnees-gps.fr/conversion-coordonnees-gps\">Convertisseur de coordonnées GPS</a> (par exemple), pour trouver les coordonnées GPS approximatives d'une adresse postale."
 
-#: lib/messages-tooltip-meta-place.php:115
+#: lib/messages-tooltip-meta-place.php:121
 msgid "The numeric decimal degrees longitude for this place (required)."
 msgstr "Les degrés décimaux numérique de longitude pour cet endroit (requis)."
 
-#: lib/messages-tooltip-meta-place.php:123
+#: lib/messages-tooltip-meta-place.php:129
 msgid "An optional numeric altitude (in meters above sea level) for this place."
 msgstr "Une altitude numérique optionnel (en mètres au-dessus du niveau de mer) pour cet endroit."
 
-#: lib/messages-tooltip-meta-place.php:129
+#: lib/messages-tooltip-meta-place.php:135
 msgid "An image of this place (ie. an image of the business storefront or location)."
 msgstr "Une image de cet endroit (c'est-à-dire une image de la devanture ou de l'emplacement de l'entreprise)."
 
-#: lib/messages-tooltip-meta-place.php:131
+#: lib/messages-tooltip-meta-place.php:137
 msgid "The image you select should show the physical location of this place (ie. of the latitude and longitude entered)."
 msgstr "L'image que vous sélectionnez doit montrer l'emplacement physique de ce lieu (c'est-à-dire la latitude et la longitude saisies)."
 
-#: lib/messages-tooltip-meta-place.php:133
+#: lib/messages-tooltip-meta-place.php:139
 msgid "This option is disabled if a place image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image d'endroit est fournie."
 
-#: lib/messages-tooltip-meta-place.php:139
+#: lib/messages-tooltip-meta-place.php:145
 msgid "You can enter a place image URL (including the http/https prefix) instead of selecting an image ID."
 msgstr "Vous pouvez saisir une URL d'image d'endroit (y compris le préfixe http/https) au lieu de sélectionner un ID d'image."
 
-#: lib/messages-tooltip-meta-place.php:141
+#: lib/messages-tooltip-meta-place.php:147
 #: lib/messages-tooltip-opengraph.php:139
 msgid "The image URL option allows you to choose an image outside of the WordPress Media Library and/or a smaller logo style image."
 msgstr "L'option URL d'image vous permet de choisir une image en dehors de la médiathèque WordPress et/ou une image plus petite de style logo."
 
-#: lib/messages-tooltip-meta-place.php:143
+#: lib/messages-tooltip-meta-place.php:149
 msgid "This option is disabled if a place image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image d'endroit est sélectionné."
 
-#: lib/messages-tooltip-meta-place.php:149
+#: lib/messages-tooltip-meta-place.php:155
 msgid "A timezone for the open and close hours of this place."
 msgstr "Un fuseau horaire pour les heures d'ouverture et de fermeture de cette endroit."
 
-#: lib/messages-tooltip-meta-place.php:151
+#: lib/messages-tooltip-meta-place.php:157
 msgid "The default timezone value is provided by WordPress."
 msgstr "La valeur de fuseau horaire par défaut est fournie par WordPress."
 
-#: lib/messages-tooltip-meta-place.php:157
+#: lib/messages-tooltip-meta-place.php:163
 msgid "Select the days and hours that this place is open."
 msgstr "Sélectionnez les jours et les heures d'ouverture de cet endroit."
 
-#: lib/messages-tooltip-meta-place.php:163
+#: lib/messages-tooltip-meta-place.php:169
 msgid "If this place is open seasonally, select the open and close dates of the season."
 msgstr "Si cet endroit est ouvert en saison, sélectionnez les dates d'ouverture et de fermeture de la saison."
 
-#: lib/messages-tooltip-meta-place.php:169
+#: lib/messages-tooltip-meta-place.php:175
 msgid "The geographic area where a service is provided, in meters around the location."
 msgstr "La zone géographique où un service est fourni, en mètres autour de l'emplacement."
 
-#: lib/messages-tooltip-meta-place.php:175
+#: lib/messages-tooltip-meta-place.php:181
 msgid "A comma-delimited list of <a href=\"%1$s\">ISO 4217 currency codes</a> accepted by the local business (example: %2$s)."
 msgstr "Une liste séparée par des virgules des <a href=\"%1$s\">codes ISO 4217 des devises</a> acceptées par l’entreprise locale (exemple: %2$s)."
 
-#: lib/messages-tooltip-meta-place.php:181
+#: lib/messages-tooltip-meta-place.php:187
 msgid "A comma-delimited list of payment options accepted by the local business (example: Cash, Credit Card)."
 msgstr "Une liste séparée par des virgules des modes de paiement acceptés par l’entreprise locale (exemple: Cash, Credit Card)."
 
-#: lib/messages-tooltip-meta-place.php:187
+#: lib/messages-tooltip-meta-place.php:193
 msgid "The relative price of goods or services provided by the local business (example: $, $$, $$$, or $$$$)."
 msgstr "Le prix relatif des biens ou services fournis par l'entreprise locale (exemple: $, $$, $$$, ou $$$$)."
 
-#: lib/messages-tooltip-meta-place.php:193
+#: lib/messages-tooltip-meta-place.php:199
 msgid "This food establishment accepts reservations."
 msgstr "Cet établissement alimentaire accepte des réservations."
 
-#: lib/messages-tooltip-meta-place.php:199
+#: lib/messages-tooltip-meta-place.php:205
 msgid "The menu URL for this food establishment."
 msgstr "L'URL du menu de cet établissement de restauration."
 
-#: lib/messages-tooltip-meta-place.php:205
+#: lib/messages-tooltip-meta-place.php:211
 msgid "The cuisine served by this food establishment."
 msgstr "La cuisine servie par cet établissement alimentaire."
 
-#: lib/messages-tooltip-meta-place.php:211
+#: lib/messages-tooltip-meta-place.php:217
 msgid "A comma-delimited list of website and mobile app URLs to order products."
 msgstr "Une liste délimitée par des virgules d'URL de site Web et d'application mobile pour commander des produits."
 
-#: lib/messages-tooltip-meta-place.php:213
+#: lib/messages-tooltip-meta-place.php:219
 msgid "These order action URL(s) will be used in the Schema potentialAction property."
 msgstr "Ces URL d'action de commande seront utilisées dans la propriété de Schéma potentialAction."
 
@@ -10186,99 +10194,99 @@ msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta
 msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
-#: lib/messages-tooltip-meta.php:70
+#: lib/messages-tooltip-meta.php:63
 msgid "A customized description for the Pinterest Pin It browser button."
 msgstr "Une description personnalisée pour le bouton du navigateur Pinterest Pin It."
 
-#: lib/messages-tooltip-meta.php:72 lib/messages-tooltip-meta.php:188
+#: lib/messages-tooltip-meta.php:65 lib/messages-tooltip-meta.php:181
 msgid "The default value is inherited from the social or SEO description."
 msgstr "La valeur par défaut est héritée de la description sociale ou SEO."
 
-#: lib/messages-tooltip-meta.php:78
+#: lib/messages-tooltip-meta.php:71
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr "Un ID d'image personnalisé pour le bouton Pinterest Pin It du navigateur."
 
-#: lib/messages-tooltip-meta.php:80 lib/messages-tooltip-meta.php:90
+#: lib/messages-tooltip-meta.php:73 lib/messages-tooltip-meta.php:83
 msgid "The default value is inherited from the Schema markup or priority image."
 msgstr "La valeur par défaut est héritée du balisage de Schéma ou de l'image prioritaire."
 
-#: lib/messages-tooltip-meta.php:88
+#: lib/messages-tooltip-meta.php:81
 msgid "A customized image URL (instead of an image ID) for the Pinterest Pin It browser button."
 msgstr "Une URL d'image personnalisée (au lieu d'un ID d'image) pour le bouton Pinterest Pin It du navigateur."
 
-#: lib/messages-tooltip-meta.php:113
+#: lib/messages-tooltip-meta.php:106
 msgid "Do not show a cached link in search results."
 msgstr "Ne pas afficher un lien mis en cache dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:122
+#: lib/messages-tooltip-meta.php:115
 msgid "Do not follow links on this webpage."
 msgstr "Ne pas suivre les liens sur cette page Web."
 
-#: lib/messages-tooltip-meta.php:131
+#: lib/messages-tooltip-meta.php:124
 msgid "Do not index images on this webpage."
 msgstr "Ne pas indexer les images sur cette page Web."
 
-#: lib/messages-tooltip-meta.php:140
+#: lib/messages-tooltip-meta.php:133
 msgid "Do not show this webpage in search results."
 msgstr "Ne pas afficher cette page Web dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:149
+#: lib/messages-tooltip-meta.php:142
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr "Ne pas afficher d'extrait de texte ni d'aperçu vidéo dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:151
+#: lib/messages-tooltip-meta.php:144
 msgid "Google may still show a static image thumbnail (if available) when it determines that using an image provides a better user-experience."
 msgstr "Google peut toujours afficher une miniature d'image statique (si disponible) lorsqu'il détermine que l'utilisation d'une image offre une meilleure expérience utilisateur."
 
-#: lib/messages-tooltip-meta.php:160
+#: lib/messages-tooltip-meta.php:153
 msgid "Do not offer translation of this webpage in search results."
 msgstr "Ne pas offrir la traduction de cette page Web dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:178
+#: lib/messages-tooltip-meta.php:171
 msgid "A customized title for the X (Twitter) Card title meta tag."
 msgstr "Un titre personnalisé pour la balise méta titre de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:180
+#: lib/messages-tooltip-meta.php:173
 msgid "The default value is inherited from the social or SEO title."
 msgstr "La valeur par défaut est héritée du titre social ou SEO."
 
-#: lib/messages-tooltip-meta.php:186
+#: lib/messages-tooltip-meta.php:179
 msgid "A customized description for the X (Twitter) Card description meta tag."
 msgstr "Une description personnalisée pour la balise méta description de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:198
+#: lib/messages-tooltip-meta.php:191
 msgid "A customized image ID for the X (Twitter) Card image."
 msgstr "Un ID d'image personnalisé pour l'image de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:200 lib/messages-tooltip-meta.php:211
+#: lib/messages-tooltip-meta.php:193 lib/messages-tooltip-meta.php:204
 msgid "The default value is inherited from the priority image."
 msgstr "La valeur par défaut est héritée de l'image prioritaire."
 
-#: lib/messages-tooltip-meta.php:209
+#: lib/messages-tooltip-meta.php:202
 msgid "A customized image URL (instead of an image ID) for the X (Twitter) Card image."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) pour l'image de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:231
+#: lib/messages-tooltip-meta.php:224
 msgid "The primary (ie. top most) category for breadcrumbs markup."
 msgstr "La catégorie principale (c'est-à-dire la plus élevée) pour le balisage de fil d'Ariane."
 
-#: lib/messages-tooltip-meta.php:237
+#: lib/messages-tooltip-meta.php:230
 msgid "A customized description for the SEO title tag and the default for all other title values."
 msgstr "Une description personnalisée pour la balise de titre SEO et la valeur par défaut pour toutes les autres valeurs de titre."
 
-#: lib/messages-tooltip-meta.php:243
+#: lib/messages-tooltip-meta.php:236
 msgid "A customized description for the SEO description meta tag and the default for all other description values."
 msgstr "Une description personnalisée pour la balise méta de description SEO et la valeur par défaut pour toutes les autres valeurs de description."
 
-#: lib/messages-tooltip-meta.php:251
+#: lib/messages-tooltip-meta.php:244
 msgid "A customized URL for meta tags and Schema markup."
 msgstr "Une URL personnalisée pour les balises méta et le balisage de Schéma."
 
-#: lib/messages-tooltip-meta.php:253 lib/messages-tooltip-meta.php:261
+#: lib/messages-tooltip-meta.php:246 lib/messages-tooltip-meta.php:254
 msgid "Make sure the custom URL you enter here is functional and redirects correctly."
 msgstr "Assurez-vous que l'URL personnalisée que vous entrez ici est fonctionnelle et redirige correctement."
 
-#: lib/messages-tooltip-meta.php:259
+#: lib/messages-tooltip-meta.php:252
 msgid "Permanently redirect this URL to another."
 msgstr "Redirigez définitivement cette URL vers une autre."
 
@@ -11181,10 +11189,6 @@ msgstr "L'image doit être au moins %s pour Google, mais de préférence 1200x12
 #: lib/messages-tooltip-site.php:100
 msgid "A URL for this organization's banner image <strong>measuring exactly %s</strong>, that Google News can show for Schema Article type content from this publisher."
 msgstr "L'URL d'image de bannière pour cette organisation <strong>mesurant exactement %s</strong>, que Google News peut afficher pour le contenu Schéma d'Article de cet éditeur."
-
-#: lib/messages-tooltip-site.php:106
-msgid "Select an optional location for this organization."
-msgstr "Choisissez un emplacement optionnel pour cette organisation."
 
 #: lib/messages-tooltip-site.php:114
 msgid "The site organization must be Schema Organization."
@@ -12449,247 +12453,247 @@ msgstr "La fonctionnalité des sitemaps WordPress est désactivée."
 msgid "A theme or plugin is returning <code>false</code> for the 'wp_sitemaps_enabled' filter."
 msgstr "Un thème ou une extension renvoie <code>false</code> pour le filtre 'wp_sitemaps_enabled'."
 
-#: lib/options.php:756
+#: lib/options.php:760
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui n'est pas égal ratio d'image requis de %6$s:1."
 
-#: lib/options.php:765
+#: lib/options.php:769
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui est égal ou supérieur au maximum ratio d'image de %6$s:1."
 
-#: lib/options.php:773
+#: lib/options.php:777
 msgid "These options have been reset to their default values."
 msgstr "Ces options ont été réinitialisées à leurs valeurs par défaut."
 
-#: lib/options.php:791
+#: lib/options.php:795
 msgid "The Facebook App ID must be numeric and 32 characters or less in length - the value of \"%s\" is not valid."
 msgstr "L'ID d'application Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:915
+#: lib/options.php:919
 msgid "Plugin settings have been upgraded and saved."
 msgstr "Les réglages ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1236 lib/submenu/general.php:487
+#: lib/options.php:1240 lib/submenu/general.php:487
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/options.php:1241 lib/submenu/general.php:492
+#: lib/options.php:1245 lib/submenu/general.php:492
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1248
+#: lib/options.php:1252
 msgid "The %s image is missing and required."
 msgstr "L'image %s est manquante et requise."
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1263
+#: lib/options.php:1267
 msgid "The %s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %s ne peuvent pas être déterminées."
 
 #. translators: %s is the image URL.
-#: lib/options.php:1266
+#: lib/options.php:1270
 msgid "Please make sure this site can access %s using the PHP getimagesize() function."
 msgstr "Assurez-vous que ce site peut accéder à %s en utilisant la fonction PHP getimagesize()."
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1280
+#: lib/options.php:1284
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être supérieures à %3$s."
 
 #. translators: %s is the image URL.
-#: lib/options.php:1284
+#: lib/options.php:1288
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr "Veuillez corriger l'image logo %s ou sélectionner une autre image de logo."
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1299
+#: lib/options.php:1303
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
 #. translators: %s is the image URL.
-#: lib/options.php:1303
+#: lib/options.php:1307
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr "Veuillez corriger l'image bannière %s ou sélectionner une autre image bannière."
 
-#: lib/options.php:1328
+#: lib/options.php:1332
 msgid "The value of option \"%s\" must be an array - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un tableau - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1329
+#: lib/options.php:1333
 msgid "The value of option \"%s\" must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1330
+#: lib/options.php:1334
 msgid "The value of option \"%s\" must be blank or numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1331
+#: lib/options.php:1335
 msgid "The value of option \"%s\" must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1332
+#: lib/options.php:1336
 msgid "The value of option \"%s\" must be a comma-delimited list of URL(s) - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1333
+#: lib/options.php:1337
 msgid "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1334
+#: lib/options.php:1338
 msgid "The value of option \"%s\" must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1335
+#: lib/options.php:1339
 msgid "The value of option \"%s\" must be an image ID - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un ID d'image - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1336
+#: lib/options.php:1340
 msgid "The value of option \"%s\" must be a valid image URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL d'image valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1337
+#: lib/options.php:1341
 msgid "The value of option \"%s\" cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1338
+#: lib/options.php:1342
 msgid "The value of option \"%s\" must be numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1339
+#: lib/options.php:1343
 msgid "The value of option \"%1$s\" must be equal to or greater than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1340
+#: lib/options.php:1344
 msgid "The value of option \"%1$s\" must be greater than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être supérieure à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1341
+#: lib/options.php:1345
 msgid "The value of option \"%s\" must be a hh:mm time - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1342
+#: lib/options.php:1346
 msgid "The value of option \"%s\" must be a valid URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1924 lib/options.php:1956
+#: lib/options.php:1928 lib/options.php:1960
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr "%%sitename%%"
 
-#: lib/options.php:1928
+#: lib/options.php:1932
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr "%%sitedesc%%"
 
-#: lib/options.php:1932
+#: lib/options.php:1936
 msgctxt "option value"
 msgid "Image:"
 msgstr "Image:"
 
-#: lib/options.php:1936
+#: lib/options.php:1940
 msgctxt "option value"
 msgid "Caption:"
 msgstr "Légende:"
 
-#: lib/options.php:1940
+#: lib/options.php:1944
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr "Commentaire de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1944
+#: lib/options.php:1948
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr "Réponse de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1948
+#: lib/options.php:1952
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr "Critique de %%comment_author%% le %%comment_date%%"
 
-#: lib/options.php:1952
+#: lib/options.php:1956
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr "%%var_title%% %%sep%% %%var_attrs%%"
 
-#: lib/options.php:1960
+#: lib/options.php:1964
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr "Page introuvable"
 
-#: lib/options.php:1964
+#: lib/options.php:1968
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr "Page \"%%pagename%%\" non trouvée."
 
-#: lib/options.php:1968
+#: lib/options.php:1972
 msgctxt "option value"
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/options.php:1972
+#: lib/options.php:1976
 msgctxt "option value"
 msgid "No description."
 msgstr "Aucune description."
 
-#: lib/options.php:1976
+#: lib/options.php:1980
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr "%%term_hierarchy%%"
 
-#: lib/options.php:1980
+#: lib/options.php:1984
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr "Page d'archives pour %%term_tax_single_lower%% %%term_name%%."
 
-#: lib/options.php:1984
+#: lib/options.php:1988
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr "%%author_name%%, auteur à %%sitename%%"
 
-#: lib/options.php:1988
+#: lib/options.php:1992
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr "Page d’archive de l'auteur %%author_name%%."
 
-#: lib/options.php:1992
+#: lib/options.php:1996
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr "Résultats de recherche %%sep%% %%query_search%%"
 
-#: lib/options.php:1996
+#: lib/options.php:2000
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr "Résultats de la recherche pour &#8220;%%query_search%%&#8221;."
 
-#: lib/options.php:2000
+#: lib/options.php:2004
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr "%%query_year%%"
 
-#: lib/options.php:2004
+#: lib/options.php:2008
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr "Archive annuelle pour %%query_year%%."
 
-#: lib/options.php:2008
+#: lib/options.php:2012
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr "%%query_month%% %%query_year%%"
 
-#: lib/options.php:2012
+#: lib/options.php:2016
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr "Archive mensuelle pour %%query_month%%, %%query_year%%."
 
-#: lib/options.php:2016
+#: lib/options.php:2020
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr "%%query_month%% %%query_day%%, %%query_year%%"
 
-#: lib/options.php:2020
+#: lib/options.php:2024
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr "Archive quotidienne pour %%query_month%% %%query_day%%, %%query_year%%."
@@ -12920,51 +12924,51 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1081
+#: lib/schema-single.php:1091
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:1082
-msgid "adding schema organization ID %s"
-msgstr "ajout de schéma d'organisation ID %s"
+#: lib/schema-single.php:1092
+msgid "adding schema organization ID \"%s\""
+msgstr "ajout de schéma d'organisation ID \"%s\""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1193
+#: lib/schema-single.php:1203
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1196
+#: lib/schema-single.php:1206
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
-#. 'ID #'.
-#: lib/schema-single.php:1199
+#. organization ID.
+#: lib/schema-single.php:1209
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1221
+#: lib/schema-single.php:1245
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1235 lib/schema-single.php:1244
-msgid "ID #%s"
-msgstr "ID #%s"
+#: lib/schema-single.php:1259 lib/schema-single.php:1268
+msgid "ID \"%s\""
+msgstr "ID \"%s\""
 
-#: lib/schema-single.php:1398
+#: lib/schema-single.php:1441
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1586
+#: lib/schema-single.php:1644
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2026
+#: lib/schema-single.php:2116
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2153
+#: lib/schema-single.php:2253
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 
@@ -12984,7 +12988,7 @@ msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une criti
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:3926
+#: lib/schema.php:3860
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
