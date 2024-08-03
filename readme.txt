@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.23.0-dev.5 (2024/08/03)**
+**Version 17.23.0-b.1 (2024/08/03)**
 
 * **New Features**
 	* None.
@@ -585,7 +585,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.23.0-dev.5 =
+= 17.23.0-b.1 =
 
 (2024/08/03) Updated Schema Organization markup to include Place properties if the organization is also a place.
 
