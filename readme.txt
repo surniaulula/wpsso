@@ -278,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.23.0-b.1 (2024/08/03)**
+**Version 17.23.0-rc.1 (2024/08/03)**
 
 * **New Features**
 	* None.
@@ -288,7 +288,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_product_offer_mrp_id' filter.
-	* Added support for a "merge" value in `WpssoSchemaSingle::add_or_replace_data()`.
+	* Added support for a "merge" argument value in `WpssoSchemaSingle::add_or_replace_data()`.
 	* Refactored the `WpssoMessagesInfoMeta->get()` class for speed.
 	* Removed the `WpssoSchema::organization_to_localbusiness()` method.
 * **Requires At Least**
@@ -585,7 +585,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.23.0-b.1 =
+= 17.23.0-rc.1 =
 
 (2024/08/03) Updated Schema Organization markup to include Place properties if the organization is also a place.
 
