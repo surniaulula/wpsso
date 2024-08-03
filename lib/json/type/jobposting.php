@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = false, $list_element = false );
+			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = false, $list_el = false );
 
 			/*
 			 * See https://schema.org/datePosted.

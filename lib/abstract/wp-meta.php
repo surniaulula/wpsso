@@ -948,7 +948,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'wpsso_import_custom_fields\' for post id ' . $mod[ 'id' ] . ' metadata' );
+						$this->p->debug->log( 'applying filters "wpsso_import_custom_fields" for post id ' . $mod[ 'id' ] . ' metadata' );
 					}
 
 					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_metadata( 'post', $mod[ 'id' ] ) );
@@ -960,7 +960,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'wpsso_import_product_attributes\' for post id ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'applying filters "wpsso_import_product_attributes" for post id ' . $mod[ 'id' ] );
 					}
 
 					$md_defs = apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_get_md_defaults\'' );
+					$this->p->debug->log( 'applying filters "wpsso_get_md_defaults"' );
 				}
 
 				$md_defs = apply_filters( 'wpsso_get_md_defaults', $md_defs, $mod );
@@ -991,7 +991,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_sanitize_md_defaults\'' );
+					$this->p->debug->log( 'applying filters "wpsso_sanitize_md_defaults"' );
 				}
 
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
@@ -1002,16 +1002,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				if ( ! WpssoOptions::is_cache_allowed() ) {
 
 					unset( $md_defs[ 'opt_filtered' ] );
+
+				} elseif ( $this->p->debug->enabled ) {	// Log the filtered options aray.
+
+					$this->p->debug->log_arr( 'md_defs', $md_defs );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'get_md_defaults filters skipped' );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'md_defs', $md_defs );
+				$this->p->debug->log( 'skipped filters: opt_filtered is true' );
 			}
 
 			/*
@@ -1260,7 +1259,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, self::$head_info, $mod );
@@ -1278,7 +1277,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $container_id . '\'' );
+				$this->p->debug->log( 'applying filters "' . $container_id . '"' );
 			}
 
 			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
@@ -1452,7 +1451,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( $filter_name, $tabs, $mod );
@@ -2347,7 +2346,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying filters \'wpsso_post_public_ids_suppress_filters\'' );
+					$wpsso->debug->log( 'applying filters "wpsso_post_public_ids_suppress_filters"' );
 				}
 
 				$suppress_filters = apply_filters( 'wpsso_post_public_ids_suppress_filters', true );
@@ -2364,7 +2363,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying filters \'wpsso_column_meta_query_og_type\'' );
+					$wpsso->debug->log( 'applying filters "wpsso_column_meta_query_og_type"' );
 				}
 
 				$local_cache[ $og_type ][ $schema_lang ] = apply_filters( 'wpsso_column_meta_query_og_type',

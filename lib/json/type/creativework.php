@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-				$is_article = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
+				$is_article_child = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
 
 				/*
 				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
@@ -92,17 +92,17 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 							if ( 'publisher' === $prop_name ) {
 
-								if ( $is_article ) {
+								if ( $is_article_child ) {
 
 									$org_logo_key = 'org_banner_url';
 								}
 							}
 
-							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $md_val, $org_logo_key, $list_element = true );
+							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $md_val, $org_logo_key, $list_el = true );
 
 						} elseif ( strpos( $md_key, '_person_id' ) ) {
 
-							WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $md_val, $list_element = true );
+							WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $md_val, $list_el = true );
 						}
 					}
 				}
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$json_ret[ 'isPartOf' ] = apply_filters( $filter_name, $json_ret[ 'isPartOf' ], $mod, $mt_og, $page_type_id, $is_main );
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$json_ret[ $prop_name ] = apply_filters( $filter_name, $json_ret[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );

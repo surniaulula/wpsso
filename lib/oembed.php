@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$template = apply_filters( $filter_name, $template, $args );

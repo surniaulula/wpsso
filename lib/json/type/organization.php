@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
 			}
 
-			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
+			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_el = false );
 
 			/*
 			 * Update the @id string to avoid connecting the webpage organization markup to properties like

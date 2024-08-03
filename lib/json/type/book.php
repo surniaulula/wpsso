@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeBook' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchemaSingle::add_book_data( $json_ret, $mod, $book_id = false, $page_type_id, $list_element = false );
+			WpssoSchemaSingle::add_book_data( $json_ret, $mod, $book_id = false, $page_type_id, $list_el = false );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

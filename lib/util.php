@@ -3407,7 +3407,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying filters \'' . $filter_name . '\'' );	// Begin timer.
+				$this->p->debug->mark( 'applying filters "' . $filter_name . '"' );	// Begin timer.
 			}
 
 			$mtime_start  = microtime( $get_float = true );
@@ -3416,7 +3416,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying filters \'' . $filter_name . '\'' );	// End timer.
+				$this->p->debug->mark( 'applying filters "' . $filter_name . '"' );	// End timer.
 			}
 
 			/*

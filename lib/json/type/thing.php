@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$json_ret[ 'additionalType' ] = apply_filters( $filter_name, $json_ret[ 'additionalType' ], $mod, $mt_og, $page_type_id, $is_main );
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$json_ret[ 'sameAs' ] = apply_filters( $filter_name, $json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$json_ret[ 'potentialAction' ] = apply_filters( $filter_name, $json_ret[ 'potentialAction' ], $mod, $mt_og, $page_type_id, $is_main );

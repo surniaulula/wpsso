@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoJsonTypeBook->filter_json_data_https_schema_org_book().
 		 */
-		public static function add_book_data( &$json_data, array $mod, $book_id = false, $def_type_id = 'book', $list_element = false ) {
+		public static function add_book_data( &$json_data, array $mod, $book_id = false, $def_type_id = 'book', $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $book_opts, $opt_key = 'book_type', $def_type_id, $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $book_opts, $opt_key = 'book_type', $def_type_id, $list_el );
 
 			/*
 			 * Maybe remove values related to the WordPress post object.
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of books added.
 		}
@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 * See WpssoSchema::add_comments_data().
 		 * See WpssoSchemaSingle::add_comment_reply_data().
 		 */
-		public static function add_comment_data( &$json_data, array $post_mod, $comment_id, $list_element = true ) {
+		public static function add_comment_data( &$json_data, array $post_mod, $comment_id, $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'comment', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'comment', $list_el );
 
 			/*
 			 * Begin schema comment markup creation.
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of comments added.
 		}
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoJsonTypeEvent->filter_json_data_https_schema_org_event().
 		 */
-		public static function add_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
+		public static function add_event_data( &$json_data, array $mod, $event_id = false, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_el );
 
 			/*
 			 * Begin schema event markup creation.
@@ -505,6 +505,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single event data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_event"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_event', $json_ret, $mod, $event_id );
 
 			/*
@@ -515,7 +520,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of events added.
 		}
@@ -525,7 +530,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * Pass a single dimension image array in $mt_single.
 		 */
-		public static function add_image_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:image', $list_element = true ) {
+		public static function add_image_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:image', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -559,7 +564,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'image.object', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'image.object', $list_el );
 
 			/*
 			 * Begin schema image markup creation.
@@ -664,12 +669,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of images added.
 		}
 
-		public static function add_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
+		public static function add_job_data( &$json_data, array $mod, $job_id = false, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -733,7 +738,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_el );
 
 			/*
 			 * Begin schema job markup creation.
@@ -821,6 +826,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single job data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_job"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_job', $json_ret, $mod, $job_id );
 
 			/*
@@ -831,7 +841,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of jobs added.
 		}
@@ -839,7 +849,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listings_merchant-return-policy.
 		 */
-		public static function add_merchant_return_policy_data( &$json_data, array $mod, $mrp_id, $list_element = false ) {
+		public static function add_merchant_return_policy_data( &$json_data, array $mod, $mrp_id, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -863,7 +873,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'adding return policy data for mrp id "' . $mrp_id . '"' );
+				$wpsso->debug->log( 'adding return policy data for mrp ID "' . $mrp_id . '"' );
 			}
 
 			/*
@@ -988,7 +998,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of return policies added.
 		}
@@ -1000,7 +1010,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, array $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_organization_data( &$json_data, array $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1019,7 +1029,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
+				$wpsso->debug->log( 'adding organization data for org ID "' . $org_id . '"' );
 			}
 
 			$org_opts = false;
@@ -1054,7 +1064,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: unknown organization id ' . $org_id );
+					$wpsso->debug->log( 'exiting early: unknown org ID "' . $org_id . '"' );
 				}
 
 				return 0;	// Return count of organizations added.
@@ -1063,7 +1073,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
 
 			/*
 			 * Begin schema organization markup creation.
@@ -1079,7 +1089,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$wpsso->util->maybe_set_ref( $canonical_url, $mod,
 					( 'site' === $org_id ? __( 'adding schema organization', 'wpsso' ) :
-						sprintf( __( 'adding schema organization ID %s', 'wpsso' ), $org_id ) ) );
+						sprintf( __( 'adding schema organization ID "%s"', 'wpsso' ), $org_id ) ) );
 			}
 
 			/*
@@ -1104,22 +1114,33 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Maybe add properties for Schema Organization sub-types.
 			 */
+			$is_news_media_child = false;
+			$is_place_child      = false;
+
 			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
 				$org_opts[ 'org_schema_type' ] !== 'none' &&
 				$org_opts[ 'org_schema_type' ] !== 'organization' ) {	// Only check if the Schema type is a sub-type.
 
-				/*
-				 * Schema NewsMediaOrganization type properties.
-				 */
-				if ( $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' ) ) {
+				$is_news_media_child = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' );
+				$is_place_child      = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'place' );
+			}
 
-					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
-						'masthead'                        => 'org_masthead_url',		// Masthead Page URL.
-						'missionCoveragePrioritiesPolicy' => 'org_coverage_policy_url',		// Coverage Priorities Policy URL.
-						'noBylinesPolicy'                 => 'org_no_bylines_policy_url',	// No Bylines Policy URL.
-						'unnamedSourcesPolicy'            => 'org_sources_policy_url',		// Unnamed Sources Policy URL.
-					) );
+			/*
+			 * Schema NewsMediaOrganization type properties.
+			 */
+			if ( $is_news_media_child ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'adding news media properties' );
 				}
+
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
+					'masthead'                        => 'org_masthead_url',		// Masthead Page URL.
+					'missionCoveragePrioritiesPolicy' => 'org_coverage_policy_url',		// Coverage Priorities Policy URL.
+					'noBylinesPolicy'                 => 'org_no_bylines_policy_url',	// No Bylines Policy URL.
+					'unnamedSourcesPolicy'            => 'org_sources_policy_url',		// Unnamed Sources Policy URL.
+				) );
 			}
 
 			/*
@@ -1143,18 +1164,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Google requires at least one image so fallback to using the Organization logo.
 			 */
-			if ( empty( $json_ret[ 'image' ] ) ) {
+			if ( ! $is_place_child ) {
 
-				$org_image_key = 'org_logo_url';
+				if ( empty( $json_ret[ 'image' ] ) ) {
 
-				if ( $wpsso->debug->enabled ) {
+					$org_image_key = 'org_logo_url';
 
-					$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
-				}
+					if ( $wpsso->debug->enabled ) {
 
-				if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+						$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
+					}
 
-					self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
+					if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+
+						self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
+					}
 				}
 			}
 
@@ -1175,6 +1199,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					self::add_image_data_mt( $json_ret[ 'logo' ], $org_opts, $org_logo_key, $image_list_el = false );
 				}
 
+				// translators: %1$s is the organization name, %2$s the Schema type URL.
+				$logo_missing_msg = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+
+				// translators: %1$s is the organization name, %2$s the Schema type URL.
+				$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+	
+				// translators: %1$s is the organization name, %2$s is 'site' (translated) or organization ID.
+				$org_settings_msg = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
+
 				if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
 
 					if ( ! empty( $json_ret[ 'name' ] ) && empty( $json_ret[ 'logo' ] ) ) {
@@ -1188,15 +1221,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						 * Add notice only if the admin notices have not already been shown.
 						 */
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
-
-							// translators: %1$s is the organization name, %2$s the Schema type URL.
-							$logo_missing_msg = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
-
-							// translators: %1$s is the organization name, %2$s the Schema type URL.
-							$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
-
-							// translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-							$org_settings_msg = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
 							if ( 'org_logo_url' === $org_logo_key ) {
 
@@ -1232,7 +1256,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 									$post_id       = substr( $org_id, 4 );
 									$org_page_link = get_edit_post_link( $post_id );
-									$org_id_transl = sprintf( __( 'ID #%s', 'wpsso' ), $post_id );
+									$org_id_transl = sprintf( __( 'ID "%s"', 'wpsso' ), $org_id );
 
 									$notice_msg .= ' ';
 									$notice_msg .= $org_page_link ? '<a href="' . $org_page_link . '">' : '';
@@ -1241,7 +1265,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 								} else {
 
-									$org_id_transl = sprintf( __( 'ID #%s', 'wpsso' ), $org_id );
+									$org_id_transl = sprintf( __( 'ID "%s"', 'wpsso' ), $org_id );
 
 									$notice_msg .= ' ';
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
@@ -1257,16 +1281,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Place / location properties.
+			 * Location property.
 			 */
-			if ( isset( $org_opts[ 'org_place_id' ] ) ) {
+			if ( ! $is_place_child ) {
 
-				/*
-				 * Check that the option value is not true, false, null, empty string, or 'none'.
-				 */
-				if ( SucomUtil::is_valid_option_value( $org_opts[ 'org_place_id' ] ) ) {
+				if ( isset( $org_opts[ 'org_place_id' ] ) ) {
 
-					self::add_place_data( $json_ret[ 'location' ], $mod, $org_opts[ 'org_place_id' ], $place_list_el = false );
+					/*
+					 * Check that the option value is not true, false, null, empty string, or 'none'.
+					 */
+					if ( SucomUtil::is_valid_option_value( $org_opts[ 'org_place_id' ] ) ) {
+	
+						self::add_place_data( $json_ret[ 'location' ], $mod, $org_opts[ 'org_place_id' ], $place_list_el = false );
+					}
 				}
 			}
 
@@ -1274,6 +1301,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Google's knowledge graph.
 			 */
 			$org_opts[ 'org_sameas' ] = isset( $org_opts[ 'org_sameas' ] ) ? $org_opts[ 'org_sameas' ] : array();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_organization_sameas"' );
+			}
 
 			$org_opts[ 'org_sameas' ] = apply_filters( 'wpsso_json_data_single_organization_sameas', $org_opts[ 'org_sameas' ], $mod, $org_id );
 
@@ -1293,6 +1325,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single organization data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_organization"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
 
 			/*
@@ -1309,9 +1346,24 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
 
 			/*
+			 * If this organization is also a sub-type of place, then add the schema place properties as well.
+			 */
+			if ( $is_place_child ) {
+				
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'adding place data for org ID "' . $org_id . '"' );
+				}
+
+				self::add_place_data( $json_ret, $mod, $org_id, $place_list_el = 'merge' );
+
+				WpssoSchema::update_data_id( $json_ret, $org_logo_key );
+			}
+
+			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of organizations added.
 		}
@@ -1319,7 +1371,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * A $person_id argument is required.
 		 */
-		public static function add_person_data( &$json_data, array $mod, $person_id, $list_element = true ) {
+		public static function add_person_data( &$json_data, array $mod, $person_id, $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1425,7 +1477,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_el );
 
 			/*
 			 * Begin schema person markup creation.
@@ -1471,6 +1523,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$person_opts[ 'person_sameas' ] = isset( $person_opts[ 'person_sameas' ] ) ? $person_opts[ 'person_sameas' ] : array();
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_person_sameas"' );
+			}
+
 			$person_opts[ 'person_sameas' ] = apply_filters( 'wpsso_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
 
 			if ( ! empty( $person_opts[ 'person_sameas' ] ) && is_array( $person_opts[ 'person_sameas' ] ) ) {	// Just in case.
@@ -1489,6 +1546,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single person data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_person"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/*
@@ -1501,7 +1563,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of persons added.
 		}
@@ -1511,7 +1573,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 * See WpssoSchemaSingle::add_job_data().
 		 * See WpssoSchemaSingle::add_organization_data().
 		 */
-		public static function add_place_data( &$json_data, array $mod, $place_id, $list_element = false ) {
+		public static function add_place_data( &$json_data, array $mod, $place_id, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1526,6 +1588,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! SucomUtil::is_valid_option_value( $place_id ) ) {
 
 				return 0;	// Return count of places added.
+			}
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding place data for place ID "' . $place_id . '"' );
 			}
 
 			/*
@@ -1555,7 +1622,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_el );
 
 			/*
 			 * Begin schema place markup creation.
@@ -1576,11 +1643,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add schema properties from the place options.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
-				'url'                => 'place_url',
-				'name'               => 'place_name',
-				'alternateName'      => 'place_name_alt',
-				'description'        => 'place_desc',
-				'telephone'          => 'place_phone',
+				'url'           => 'place_url',
+				'name'          => 'place_name',
+				'alternateName' => 'place_name_alt',
+				'description'   => 'place_desc',
+				'telephone'     => 'place_phone',
 			) );
 
 			/*
@@ -1714,6 +1781,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single place data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_place"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_place', $json_ret, $mod, $place_id );
 
 			/*
@@ -1732,7 +1804,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of places added.
 		}
@@ -1740,7 +1812,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * See WpssoSchemaSingle::get_offer_data().
 		 */
-		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'offer', $list_element = true ) {
+		public static function add_offer_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'offer', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1760,7 +1832,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -1975,12 +2047,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single offer data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_offer"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_offer', $json_ret, $mod );
 
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of products added.
 		}
@@ -1990,7 +2067,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * See WpssoJsonTypeProductGroup->filter_json_data_https_schema_org_productgroup().
 		 */
-		public static function add_product_group_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_element = true ) {
+		public static function add_product_group_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product.group', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2015,7 +2092,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2099,6 +2176,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'applying filters "wpsso_json_data_single_product_group_varies_by"' );
+				}
+
 				$varies_by = apply_filters( 'wpsso_json_data_single_product_group_varies_by', $varies_by, $mod );
 
 				if ( ! empty( $varies_by ) ) {
@@ -2110,6 +2192,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single product group data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_product_group"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_product_group', $json_ret, $mod );
 
 			/*
@@ -2123,7 +2210,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of products added.
 		}
@@ -2132,7 +2219,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 * See WpssoSchemaSingle::get_product_data().
 		 * See WpssoJsonTypeProduct->filter_json_data_https_schema_org_product().
 		 */
-		public static function add_product_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product', $list_element = true ) {
+		public static function add_product_data( &$json_data, array $mod, array $mt_single, $def_type_id = 'product', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2144,7 +2231,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2377,6 +2464,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single product data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_product"' );
+			}
+
 			$json_ret = apply_filters( 'wpsso_json_data_single_product', $json_ret, $mod );
 
 			/*
@@ -2395,7 +2487,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of products added.
 		}
@@ -2422,7 +2514,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *		[og:image:height]      => 544
 		 *	)
 		 */
-		public static function add_video_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:video', $list_element = true ) {
+		public static function add_video_data_mt( &$json_data, array $mt_single, $mt_pre = 'og:video', $list_el = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2456,7 +2548,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_el );
 
 			/*
 			 * Begin schema video markup creation.
@@ -2510,7 +2602,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add or replace the json data.
 			 */
-			self::add_or_replace_data( $json_data, $json_ret, $list_element );
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of videos added.
 		}
@@ -2532,7 +2624,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_data = array();
 
-			self::add_offer_data( $json_data, $mod, $mt_single, $def_type_id = 'offer', $list_element = false );
+			self::add_offer_data( $json_data, $mod, $mt_single, $def_type_id = 'offer', $list_el = false );
 
 			return $json_data;
 		}
@@ -2551,7 +2643,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_data = array();
 
-			self::add_product_data( $json_data, $mod, $mt_single, $def_type_id = 'product', $list_element = false );
+			self::add_product_data( $json_data, $mod, $mt_single, $def_type_id = 'product', $list_el = false );
 
 			return $json_data;
 		}
@@ -2854,6 +2946,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Filter the single Shipping Offer data.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_shipping_offer"' );
+			}
+
 			$json_data = apply_filters( 'wpsso_json_data_single_shipping_offer', $json_data, $mod );
 
 			return $json_data;
@@ -3058,7 +3155,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/*
 		 * If not adding a list element, then get the existing schema type url (if one exists).
 		 */
-		private static function get_type_info( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
+		private static function get_type_info( $json_data, $type_opts, $opt_key, $def_type_id, $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3066,7 +3163,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$single_type_url  = false;
 			$single_type_from = 'inherited';
 
-			if ( ! $list_element ) {
+			if ( ! $list_el || 'merge' === $list_el ) {
 
 				$single_type_url = WpssoSchema::get_data_type_url( $json_data );
 			}
@@ -3102,11 +3199,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return array( $single_type_id, $single_type_url );
 		}
 
-		private static function add_or_replace_data( &$json_data, array $json_ret, $list_element ) {
+		private static function add_or_replace_data( &$json_data, array $json_ret, $list_el ) {
 
-			if ( empty( $list_element ) ) {	// Add a single item.
+			if ( empty( $list_el ) ) {	// Add a single item.
 
 				$json_data = $json_ret;
+
+			} elseif ( 'merge' === $list_el ) {
+
+				$json_data = is_array( $json_data ) ? array_merge( $json_data, $json_ret ) : $json_ret;
 
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
@@ -3117,10 +3218,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$json_data[] = $json_ret;	// Add an item to the list.
 
-			} else {
-
-				$json_data = array( $json_ret );	// Add an item to the list.
-			}
+			} else $json_data = array( $json_ret );	// Add an item to the list.
 		}
 	}
 }

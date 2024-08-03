@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoEditMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$table_rows = apply_filters( $filter_name, $table_rows, $form, $head_info, $mod, $args );

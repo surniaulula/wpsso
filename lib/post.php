@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+							$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 						}
 
 						$md_opts = apply_filters( $filter_name, $md_opts, $mod[ 'wp_obj' ]->post_content );
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod, self::get_meta( $post_id ) );
@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod, $mod[ 'wp_obj' ] );
@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $post_id, $mod );
@@ -619,7 +619,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$suppress_filters = apply_filters( $filter_name, true );
@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$posts_args = apply_filters( $filter_name, $posts_args );
@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( $filter_name, $public_ids, $posts_args );

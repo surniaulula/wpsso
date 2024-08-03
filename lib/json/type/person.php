@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 				$this->p->debug->log( 'adding data for person id = ' . $user_id );
 			}
 
-			WpssoSchemaSingle::add_person_data( $json_ret, $mod, $user_id, $list_element = false );
+			WpssoSchemaSingle::add_person_data( $json_ret, $mod, $user_id, $list_el = false );
 
 			/*
 			 * Override author's website url and use the og url instead.

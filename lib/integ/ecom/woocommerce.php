@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_import_custom_fields\' for variation id ' . $product_id . ' metadata' );
+					$this->p->debug->log( 'applying filters "wpsso_import_custom_fields" for variation id ' . $product_id . ' metadata' );
 				}
 
 				$var_opts = apply_filters( 'wpsso_import_custom_fields', $var_opts, $mod, $var_wp_meta, $alt_opts );
@@ -1321,7 +1321,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_import_product_attributes\' for variation id ' . $product_id );
+					$this->p->debug->log( 'applying filters "wpsso_import_product_attributes" for variation id ' . $product_id );
 				}
 
 				$var_opts = apply_filters( 'wpsso_import_product_attributes', $var_opts, $mod, $variation );

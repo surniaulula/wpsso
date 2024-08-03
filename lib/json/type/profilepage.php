@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoJsonTypeProfilePage' ) ) {
 
 			$json_data[ 'mainEntity' ] = null;
 
-			WpssoSchemaSingle::add_person_data( $json_data[ 'mainEntity' ], $mod, $user_id, $list_element = false );
+			WpssoSchemaSingle::add_person_data( $json_data[ 'mainEntity' ], $mod, $user_id, $list_el = false );
 
 			return $json_data;
 		}

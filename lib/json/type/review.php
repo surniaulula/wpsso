@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoJsonTypeReview' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$json_ret[ 'reviewRating' ] = apply_filters( $filter_name, $json_ret[ 'reviewRating' ], $mod, $mt_og, $page_type_id, $is_main );

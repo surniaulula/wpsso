@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $comment_id, $mod );
@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );

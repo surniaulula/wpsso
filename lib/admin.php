@@ -1451,7 +1451,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$form_button_rows = apply_filters( $filter_name, $form_button_rows, $this->menu_id );
@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$table_rows = apply_filters( $filter_name, $table_rows, $this->form, $args );
@@ -1574,7 +1574,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$tabs = apply_filters( $filter_name, $tabs );
@@ -1594,7 +1594,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $table_rows[ $tab_key ], $this->form, $args );
@@ -2068,7 +2068,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( 'wpsso_menu_title', $menu_title );
@@ -2118,7 +2118,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( $filter_name, $menu_title );

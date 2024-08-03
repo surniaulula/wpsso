@@ -1870,14 +1870,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'applying filters \'the_content\'' );	// Begin timer.
+					$this->p->debug->mark( 'applying filters "the_content"' );	// Begin timer.
 				}
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'applying filters \'the_content\'' );	// End timer.
+					$this->p->debug->mark( 'applying filters "the_content"' );	// End timer.
 				}
 
 			} else {
@@ -1907,14 +1907,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying filters \'wpsso_do_shortcode\'' );	// Begin timer.
+						$this->p->debug->mark( 'applying filters "wpsso_do_shortcode"' );	// Begin timer.
 					}
 
 					$content = apply_filters( 'wpsso_do_shortcode', $content );
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->mark( 'applying filters \'wpsso_do_shortcode\'' );	// End timer.
+						$this->p->debug->mark( 'applying filters "wpsso_do_shortcode"' );	// End timer.
 					}
 				}
 			}

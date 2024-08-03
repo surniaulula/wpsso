@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $data_filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $data_filter_name . '"' );
 					}
 
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying filters \'' . $data_filter_name . '\'' );
+							$this->p->debug->log( 'applying filters "' . $data_filter_name . '"' );
 						}
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
@@ -1954,7 +1954,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Single author.
 			 */
-			$authors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'author' ], $mod, $user_id, $list_element = false );
+			$authors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'author' ], $mod, $user_id, $list_el = false );
 
 			/*
 			 * List of contributors / co-authors.
@@ -1963,7 +1963,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $mod[ 'post_coauthors' ] as $author_id ) {
 
-					$coauthors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'contributor' ], $mod, $author_id, $list_element = true );
+					$coauthors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'contributor' ], $mod, $author_id, $list_el = true );
 				}
 			}
 
@@ -2245,7 +2245,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} else {	// No resize or no image ID found.
 
-					$img_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_element = true );
+					$img_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_el = true );
 				}
 			}
 
@@ -2628,7 +2628,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
@@ -3180,7 +3180,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
@@ -3279,12 +3279,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $mt_videos as $mt_single_video ) {
 
-					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_single_video, $media_pre, $list_element = true );
+					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_single_video, $media_pre, $list_el = true );
 				}
 
 			} elseif ( is_array( $mt_videos ) ) {
 
-				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_videos, $media_pre, $list_element = true );
+				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_videos, $media_pre, $list_el = true );
 			}
 
 			return $videos_added;	// return count of videos added

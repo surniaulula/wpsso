@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $user_id, $mod );
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
@@ -430,7 +430,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$disable_keys = apply_filters( $filter_name, $disable_keys, $user_id, $mod );
@@ -1344,7 +1344,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$author_meta = apply_filters( $filter_name, $author_meta, $user_id, $meta_key, $user_exists );

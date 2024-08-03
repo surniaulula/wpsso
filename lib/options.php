@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_get_defaults\'' );
+					$this->p->debug->log( 'applying filters "wpsso_get_defaults"' );
 				}
 
 				$local_cache = apply_filters( 'wpsso_get_defaults', $local_cache );
@@ -272,6 +272,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
 				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'skipped filters: opt_filtered is true' );
 			}
 
 			if ( false !== $opt_key ) {
@@ -351,7 +355,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'wpsso_get_site_defaults\'' );
+					$this->p->debug->log( 'applying filters "wpsso_get_site_defaults"' );
 				}
 
 				$local_cache = apply_filters( 'wpsso_get_site_defaults', $local_cache );

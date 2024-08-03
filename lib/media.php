@@ -931,7 +931,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$pid = apply_filters( $filter_name, $pid, $post_id );
@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( $filter_name, $mt_ret, $num, $size_name, $post_id );
@@ -1018,7 +1018,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+						$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 					}
 
 					$local_fifo[ $post_id ] = apply_filters( $filter_name, $local_fifo[ $post_id ], $post_id );
@@ -1051,7 +1051,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			return apply_filters( $filter_name, $mt_ret, $num, $size_name, $post_id );
@@ -1120,7 +1120,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 				}
 
 				$content_img_preg[ $type ] = apply_filters( $filter_name, $this->default_content_img_preg[ $type ] );
@@ -1207,7 +1207,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+									$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 								}
 
 								list(
@@ -1359,7 +1359,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $mt_single_image[ 'og:image:url' ] );
+							$this->p->debug->log( 'applying filters "' . $filter_name . '" for ' . $mt_single_image[ 'og:image:url' ] );
 						}
 
 						$mt_single_image[ 'og:image:url' ] = apply_filters( $filter_name, $mt_single_image[ 'og:image:url' ] );
@@ -1879,7 +1879,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters \'' . $filter_name . '\' for ' . $img_url );
+					$this->p->debug->log( 'applying filters "' . $filter_name . '" for ' . $img_url );
 				}
 
 				$img_url = apply_filters( 'wpsso_rewrite_image_url', $img_url );
@@ -2410,7 +2410,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$all_matches = apply_filters( $filter_name, array(), $content, $mod );
@@ -2567,7 +2567,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args, $mod );

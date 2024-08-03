@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'' . $filter_name . '\'' );
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
 			}
 
 			$crumb_data = apply_filters( $filter_name, array(), $mod, $mt_og, $page_type_id, $is_main );
@@ -103,13 +103,13 @@ if ( ! class_exists( 'WpssoJsonTypeWebpage' ) ) {
 							case 'schema_webpage_reviewed_by_org_id':
 
 								WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id,
-									$org_logo_key = 'org_logo_url', $list_element = true );
+									$org_logo_key = 'org_logo_url', $list_el = true );
 
 								break;
 
 							case 'schema_webpage_reviewed_by_person_id':
 
-								WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $list_element = true );
+								WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $list_el = true );
 
 								break;
 						}

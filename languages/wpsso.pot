@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.23.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 17.23.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6429,60 +6429,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1339
+#: lib/abstract/wp-meta.php:1338
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1410
+#: lib/abstract/wp-meta.php:1409
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1414
+#: lib/abstract/wp-meta.php:1413
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1417 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1416 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1420
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1421
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1422
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1424
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1767
+#: lib/abstract/wp-meta.php:1766
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2079
+#: lib/abstract/wp-meta.php:2078
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2081 lib/abstract/wp-meta.php:2094
+#: lib/abstract/wp-meta.php:2080 lib/abstract/wp-meta.php:2093
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2092
+#: lib/abstract/wp-meta.php:2091
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -13686,286 +13686,286 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:756
+#: lib/options.php:760
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:765
+#: lib/options.php:769
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:773
+#: lib/options.php:777
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:791
+#: lib/options.php:795
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:915
+#: lib/options.php:919
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1236 lib/submenu/general.php:487
+#: lib/options.php:1240 lib/submenu/general.php:487
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/options.php:1241 lib/submenu/general.php:492
+#: lib/options.php:1245 lib/submenu/general.php:492
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1248
+#: lib/options.php:1252
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1263
+#: lib/options.php:1267
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1266
+#: lib/options.php:1270
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1280
+#: lib/options.php:1284
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1284
+#: lib/options.php:1288
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1299
+#: lib/options.php:1303
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1303
+#: lib/options.php:1307
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1328
+#: lib/options.php:1332
 msgid ""
 "The value of option \"%s\" must be an array - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1329
+#: lib/options.php:1333
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1330
+#: lib/options.php:1334
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1331
+#: lib/options.php:1335
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1332
+#: lib/options.php:1336
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1333
+#: lib/options.php:1337
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1334
+#: lib/options.php:1338
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1335
+#: lib/options.php:1339
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1336
+#: lib/options.php:1340
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1337
+#: lib/options.php:1341
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1338
+#: lib/options.php:1342
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1339
+#: lib/options.php:1343
 msgid ""
 "The value of option \"%1$s\" must be equal to or greater than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1340
+#: lib/options.php:1344
 msgid ""
 "The value of option \"%1$s\" must be greater than %2$s - resetting this "
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:1341
+#: lib/options.php:1345
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1342
+#: lib/options.php:1346
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1924 lib/options.php:1956
+#: lib/options.php:1928 lib/options.php:1960
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1928
+#: lib/options.php:1932
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1932
+#: lib/options.php:1936
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1936
+#: lib/options.php:1940
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1940
+#: lib/options.php:1944
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1944
+#: lib/options.php:1948
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1948
+#: lib/options.php:1952
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1952
+#: lib/options.php:1956
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1960
+#: lib/options.php:1964
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1964
+#: lib/options.php:1968
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1968
+#: lib/options.php:1972
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1972
+#: lib/options.php:1976
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1976
+#: lib/options.php:1980
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1980
+#: lib/options.php:1984
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1984
+#: lib/options.php:1988
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1988
+#: lib/options.php:1992
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1992
+#: lib/options.php:1996
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1996
+#: lib/options.php:2000
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:2000
+#: lib/options.php:2004
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:2004
+#: lib/options.php:2008
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2008
+#: lib/options.php:2012
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2012
+#: lib/options.php:2016
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2016
+#: lib/options.php:2020
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2020
+#: lib/options.php:2024
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -14217,57 +14217,57 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1081
+#: lib/schema-single.php:1091
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1082
-msgid "adding schema organization ID %s"
+#: lib/schema-single.php:1092
+msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1193
+#: lib/schema-single.php:1203
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1196
+#: lib/schema-single.php:1206
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
-#. 'ID #'.
-#: lib/schema-single.php:1199
+#. organization ID.
+#: lib/schema-single.php:1209
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1221
+#: lib/schema-single.php:1245
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1235 lib/schema-single.php:1244
-msgid "ID #%s"
+#: lib/schema-single.php:1259 lib/schema-single.php:1268
+msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1384
+#: lib/schema-single.php:1436
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1572
+#: lib/schema-single.php:1639
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2034
+#: lib/schema-single.php:2111
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2161
+#: lib/schema-single.php:2248
 msgid "adding schema product"
 msgstr ""
 

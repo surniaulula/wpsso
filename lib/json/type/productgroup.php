@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonTypeProductGroup' ) ) {
 			/*
 			 * Adds the 'productGroupID', 'hasVariant', and 'variesBy' properties.
 			 */
-			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_element = false );
+			WpssoSchemaSingle::add_product_group_data( $json_ret, $mod, $mt_og, $page_type_id, $list_el = false );
 
 			/*
 			 * Inherit required properties from the product group for Google.

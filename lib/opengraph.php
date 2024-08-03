@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'applying filters \'wpsso_og_seed\'' );	// Begin timer.
+				$this->p->debug->mark( 'applying filters "wpsso_og_seed"' );	// Begin timer.
 			}
 
 			/*
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$this->p->debug->log_arr( 'og_seed', $mt_og );
 
-				$this->p->debug->mark( 'applying filters \'wpsso_og_seed\'' );	// End timer.
+				$this->p->debug->mark( 'applying filters "wpsso_og_seed"' );	// End timer.
 			}
 
 			/*
@@ -732,7 +732,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying filters \'wpsso_og\'' );
+				$this->p->debug->log( 'applying filters "wpsso_og"' );
 			}
 
 			$mt_og = apply_filters( 'wpsso_og', $mt_og, $mod );
