@@ -2961,7 +2961,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:20
 msgctxt "lib file description"
-msgid "(plugin) Perfect WooCommerce Brands"
+msgid "(plugin) Perfect Brands for WooCommerce"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:21

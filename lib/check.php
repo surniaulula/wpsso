@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/*
-								 * Perfect WooCommerce Brands.
+								 * Perfect Brands for WooCommerce.
 								 */
 								case 'perfect-woocommerce-brands':
 

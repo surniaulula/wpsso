@@ -17,7 +17,7 @@ _x( '(feature) Import The SEO Framework Metadata', 'lib file description', 'wpss
 _x( '(feature) Import WP Meta SEO Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Block Attrs', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Metadata', 'lib file description', 'wpsso' );
-_x( '(plugin) Perfect WooCommerce Brands', 'lib file description', 'wpsso' );
+_x( '(plugin) Perfect Brands for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce Brands', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce Currency Switcher', 'lib file description', 'wpsso' );

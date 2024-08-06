@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
 							),
 							'ecom' => array(
-								'perfect-woocommerce-brands'    => '(plugin) Perfect WooCommerce Brands',
+								'perfect-woocommerce-brands'    => '(plugin) Perfect Brands for WooCommerce',
 								'woocommerce'                   => '(plugin) WooCommerce',
 								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
 								'woocommerce-currency-switcher' => '(plugin) WooCommerce Currency Switcher',
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
 					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
 					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
-					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
+					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect Brands for WooCommerce.
 					'og_type_for_tax_tribe_events_cat'   => 'website',	// For The Events Calendar.
 					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
 
