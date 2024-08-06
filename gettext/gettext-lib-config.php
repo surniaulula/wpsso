@@ -36,6 +36,7 @@ _x( '(plugin) Perfect Images', 'lib file description', 'wpsso' );
 _x( '(plugin) Rate my Post', 'lib file description', 'wpsso' );
 _x( '(plugin) WP-PostRatings', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Recipe Maker', 'lib file description', 'wpsso' );
+_x( '(plugin) Judge.me Product Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Product Review', 'lib file description', 'wpsso' );
 _x( '(plugin) Yotpo Social Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) All in One SEO Pack', 'lib file description', 'wpsso' );

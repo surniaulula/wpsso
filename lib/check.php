@@ -644,7 +644,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								case 'judgeme':	// Judge.me.
 
+									$chk[ 'opt_key' ] = array(
+										'plugin_ratings_reviews_svc' => 'judgeme',
+										'plugin_judgeme_shop_domain' => null,	// Any non-empty value.
+										'plugin_judgeme_shop_token'  => null,	// Any non-empty value.
+									);
+
+									break;
+
+								case 'judgeme-for-wc':	// Judge.me Product Reviews for WooCommerce.
+
 									$chk[ 'class' ] = 'JudgeMe';
+
+									break;
 
 								case 'shopperapproved':	// Shopper Approved.
 

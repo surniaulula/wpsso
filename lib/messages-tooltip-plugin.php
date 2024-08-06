@@ -761,9 +761,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_ratings_reviews_age_max':	// Maximum Age of Reviews.
+				case 'tooltip-plugin_ratings_reviews_months_max':	// Maximum Age of Reviews.
 
-					$text = __( 'The maximum age of reviews retrieved from the service API.', 'wpsso' );
+					$text = __( 'The maximum age (in months) of reviews retrieved from the service API.', 'wpsso' );
 
 					break;
 
@@ -774,14 +774,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				case 'tooltip-plugin_judgeme_shop_domain':		// Judge.me Shop Domain.
-
-					$text = __( 'Your Judge.me shop domain is required to retrieve ratings and reviews from the Judge.me service API.', 'wpsso' ) . ' ';
-
-					break;
-
 				case 'tooltip-plugin_judgeme_shop_token':		// Judge.me Shop Token.
 
-					$text = __( 'Your Judge.me shop token is required to retrieve ratings and reviews from the Judge.me service API.', 'wpsso' ) . ' ';
+					$text = __( 'Your Judge.me shop domain and token are required to retrieve ratings and reviews from the Judge.me service API.', 'wpsso' ) . ' ';
 
 					break;
 

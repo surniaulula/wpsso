@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				797 => array(
 					'plugin_vidinfo_cache_exp'            => '',
 					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',
-					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',
+					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_months_max',
 					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',
 					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',
 				),
@@ -586,6 +586,9 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'schema_type_for_attachment_audio' => '',
 					'schema_type_for_attachment_image' => '',
 					'schema_type_for_attachment_video' => '',
+				),
+				1001 => array(
+					'plugin_ratings_reviews_age_max' => 'plugin_ratings_reviews_months_max',
 				),
 			),
 		);

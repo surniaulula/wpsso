@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.24.0-dev.1',	// Plugin version.
-					'opt_version' => '1001',	// Increment when changing default option values.
+					'version'     => '17.24.0-b.1',	// Plugin version.
+					'opt_version' => '1003',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -134,6 +134,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wprecipemaker' => '(plugin) WP Recipe Maker',
 							),
 							'review' => array(
+								'judgeme-for-wc'  => '(plugin) Judge.me Product Reviews for WooCommerce',
 								'wpproductreview' => '(plugin) WP Product Review',
 								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
@@ -2126,9 +2127,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_ratings_reviews_svc'          => 'none',	// Ratings and Reviews Service.
 					'plugin_ratings_reviews_num_max'      => 100,		// Maximum Number of Reviews.
-					'plugin_ratings_reviews_age_max'      => 60,		// Maximum Age of Reviews.
+					'plugin_ratings_reviews_months_max'   => 60,		// Maximum Age of Reviews.
 					'plugin_ratings_reviews_for_download' => 1,		// For Easy Digital Downloads.
 					'plugin_ratings_reviews_for_product'  => 1,		// For WooCommerce.
+					'plugin_judgeme_shop_domain'          => '',		// Judge.me Shop Domain.
+					'plugin_judgeme_shop_token'           => '',		// Judge.me Shop Token.
 					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
 					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
 					'plugin_stamped_store_hash'           => '',		// Stamped Store Hash.
@@ -2545,7 +2548,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager.
 			 */
 			'um' => array(
-				'rec_version' => '5.3.0-dev.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '5.3.0-b.1',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',

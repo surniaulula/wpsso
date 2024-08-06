@@ -614,10 +614,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_ratings_reviews_num_max' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_num_max', $css_class = 'short' ) . '</td>';
 
-			$table_rows[ 'plugin_ratings_reviews_age_max' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_ratings_reviews_age_max' ) .
+			$table_rows[ 'plugin_ratings_reviews_months_max' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_ratings_reviews_months_max' ) .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_ratings_reviews_age_max' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_age_max', $css_class = 'short' ) . ' ' .
+					$css_class = '', $css_id = 'plugin_ratings_reviews_months_max' ) .
+				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_months_max', $css_class = 'short' ) . ' ' .
 				_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_ratings_reviews_for' ] = '' .

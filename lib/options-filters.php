@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_gravatar_size':			// Gravatar Image Size.
 					case 'plugin_min_shorten':			// Minimum URL Length to Shorten.
 					case 'plugin_ratings_reviews_num_max':		// Maximum Number of Reviews.
-					case 'plugin_ratings_reviews_age_max':		// Maximum Age of Reviews.
+					case 'plugin_ratings_reviews_months_max':	// Maximum Age of Reviews.
 					case 'plugin_upscale_pct_max':			// Maximum Image Upscale Percent.
 
 						return 'pos_int';
