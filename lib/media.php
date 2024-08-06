@@ -2181,11 +2181,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function get_mt_single_image_url( $url, $mt_pre = 'og' ) {
-			
+
 			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
-			
+
 			$this->add_mt_single_image_url( $mt_single_image, $url, $mt_pre );
-			
+
 			return $mt_single_image;
 		}
 
@@ -2218,7 +2218,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function add_mt_single_image_url( array &$mt_single_image, $url, $mt_pre = 'og' ) {
-		
+
 			/*
 			 * Example $image_info:
 			 *
