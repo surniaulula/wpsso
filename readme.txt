@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.24.0-b.1 (2024/08/06)**
+**Version 17.24.0-rc.1 (2024/08/06)**
 
 * **New Features**
 	* Added a new Judge.me ratings and reviews service API (Premium edition).
@@ -602,7 +602,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.24.0-b.1 =
+= 17.24.0-rc.1 =
 
 (2024/08/06) Added a new Judge.me ratings and reviews service API (Premium edition).
 
