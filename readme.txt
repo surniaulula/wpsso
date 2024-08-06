@@ -106,6 +106,7 @@ Present your content at its best for social sites and search results, no matter 
 * Gravity View
 * Jetpack
 * Jetpack Boost
+* Judge.me Product Reviews for WooCommerce
 * Perfect Images
 * Perfect WooCommerce Brands
 * Polylang
