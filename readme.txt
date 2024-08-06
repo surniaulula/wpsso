@@ -278,6 +278,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.24.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new Judge.me ratings and reviews service API.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.23.0 (2024/08/03)**
 
 * **New Features**
@@ -584,6 +598,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.24.0-dev.1 =
+
+(TBD) Added a new Judge.me ratings and reviews service API.
 
 = 17.23.0 =
 
