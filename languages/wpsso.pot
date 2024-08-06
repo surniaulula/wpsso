@@ -5894,7 +5894,7 @@ msgid "Get Reviews for Post Types"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:233
-#: lib/pro/admin/advanced.php:705 lib/pro/review/judgeme.php:48
+#: lib/pro/admin/advanced.php:705 lib/pro/review/judgeme.php:62
 msgctxt "metabox title"
 msgid "Judge.me (Ratings and Reviews)"
 msgstr ""
@@ -6441,13 +6441,13 @@ msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:227 gettext/gettext-lib-pro.php:231
-#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:361
+#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:375
 #: lib/pro/review/shopperapproved.php:347 lib/pro/review/stamped.php:336
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
-#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:364
+#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:378
 #: lib/pro/review/shopperapproved.php:350 lib/pro/review/stamped.php:339
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
@@ -6457,7 +6457,7 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/review/judgeme.php:174
+#: gettext/gettext-lib-pro.php:234 lib/pro/review/judgeme.php:188
 msgid "getting judge.me ratings and reviews"
 msgstr ""
 
