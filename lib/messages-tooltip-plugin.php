@@ -773,6 +773,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_judgeme_shop_domain':		// Judge.me Shop Domain.
+
+					$text = __( 'Your Judge.me shop domain is required to retrieve ratings and reviews from the Judge.me service API.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_judgeme_shop_token':		// Judge.me Shop Token.
+
+					$text = __( 'Your Judge.me shop token is required to retrieve ratings and reviews from the Judge.me service API.', 'wpsso' ) . ' ';
+
+					break;
+
 				case 'tooltip-plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
 				case 'tooltip-plugin_shopperapproved_token':	// Shopper Approved API Token.
 

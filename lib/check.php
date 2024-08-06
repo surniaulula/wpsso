@@ -642,7 +642,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								case 'shopperapproved':
+								case 'judgeme':	// Judge.me.
+
+									$chk[ 'class' ] = 'JudgeMe';
+
+								case 'shopperapproved':	// Shopper Approved.
 
 									$chk[ 'opt_key' ] = array(
 										'plugin_ratings_reviews_svc'     => 'shopperapproved',
@@ -652,7 +656,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'stamped':
+								case 'stamped':	// Stamped.io.
 
 									$chk[ 'opt_key' ] = array(
 										'plugin_ratings_reviews_svc' => 'stamped',

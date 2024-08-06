@@ -1109,7 +1109,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
-			$mt_single_image  = SucomUtil::get_mt_image_seed();
+
+			$mt_single_image = SucomUtil::get_mt_image_seed();
 
 			/*
 			 * Allow the html_tag and pid_attr regex to be modified.
@@ -2179,9 +2180,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
+		public function get_mt_single_image_url( $url, $mt_pre = 'og' ) {
+			
+			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
+			
+			$this->add_mt_single_image_url( $mt_single_image, $url, $mt_pre );
+			
+			return $mt_single_image;
+		}
+
 		/*
-		 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
-		 *
 		 * $size_name must be a string.
 		 */
 		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $mt_pre = 'og' ) {
@@ -2207,6 +2215,27 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_single_image[ $mt_pre . ':image:alt' ],
 				$mt_single_image[ $mt_pre . ':image:size_name' ],
 			) = $this->get_attachment_image_src( $pid, $size_name );
+		}
+
+		public function add_mt_single_image_url( array &$mt_single_image, $url, $mt_pre = 'og' ) {
+		
+			/*
+			 * Example $image_info:
+			 *
+			 * Array (
+			 *	[0] => 2048
+			 *	[1] => 2048
+			 *	[2] => 3
+			 *	[3] => width="2048" height="2048"
+			 *	[bits] => 8
+			 *	[mime] => image/png
+			 * )
+			 */
+			list( $img_width, $img_height, $img_type, $img_attr ) = $this->p->util->get_image_url_info( $url );
+
+			$mt_single_image[ $mt_pre . ':image:url' ]    = $url;
+			$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width;
+			$mt_single_image[ $mt_pre . ':image:height' ] = $img_height;
 		}
 
 		/*
@@ -2727,7 +2756,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
-				
+
 				} elseif ( empty( $mt_single_video[ 'og:video:embed_url' ] ) && 
 					isset( $mt_single_video[ 'og:video:type' ] ) && 'text/html' === $mt_single_video[ 'og:video:type' ] ) {
 
@@ -2744,7 +2773,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$this->p->debug->log( 'duplicate media URL: removing ' . $mt_media_pre . ' meta tags' );
 					}
-					
+
 					$mt_single_video = SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $mt_single_video, $invert = true );
 
 				} elseif ( 'og:image' === $mt_media_pre ) {	// If the media is an image, then maybe add missing sizes.
@@ -3701,12 +3730,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( WPSSO_UNDEF === $img_width || WPSSO_UNDEF === $img_height ) {
 
-					list(
-						$img_width,
-						$img_height,
-						$img_type,
-						$img_attr
-					) = $this->p->util->get_image_url_info( $img_mixed );
+					list( $img_width, $img_height, $img_type, $img_attr ) = $this->p->util->get_image_url_info( $img_mixed );
 				}
 
 				$img_label = '<a href="' . $img_mixed . '">' . $img_mixed . '</a>';

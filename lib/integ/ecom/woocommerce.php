@@ -1682,7 +1682,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 								$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
 							} else {
-							
+
 								if ( $this->p->debug->enabled ) {
 
 									$this->p->debug->log( 'shipping offer for zone ' . $zone_name . ' ships to destinations' );

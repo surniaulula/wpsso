@@ -941,7 +941,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						break;
 				}
-			
+
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'no return method' );
@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $countries ) ) {
 
 				$json_ret[ 'applicableCountry' ] = $countries;
-			
+
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'no applicable countries' );
@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				// translators: %1$s is the organization name, %2$s the Schema type URL.
 				$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
-	
+
 				// translators: %1$s is the organization name, %2$s is 'site' (translated) or organization ID.
 				$org_settings_msg = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
@@ -1291,7 +1291,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * Check that the option value is not true, false, null, empty string, or 'none'.
 					 */
 					if ( SucomUtil::is_valid_option_value( $org_opts[ 'org_place_id' ] ) ) {
-	
+
 						self::add_place_data( $json_ret[ 'location' ], $mod, $org_opts[ 'org_place_id' ], $place_list_el = false );
 					}
 				}
@@ -1344,7 +1344,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * If this organization is also a sub-type of place, then add the schema place properties as well.
 			 */
 			if ( $is_place_child ) {
-				
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'adding place data for org ID "' . $org_id . '"' );
@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::update_data_id( $json_ret, $org_logo_key );
 
 			} else {
-			
+
 				/*
 				 * Update the @id string with the $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
 				 */
@@ -1824,7 +1824,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->mark();
-				
+
 				/*
 				 * Log the post type and post ID. Example:
 				 *
@@ -2336,7 +2336,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( WpssoSchema::is_valid_key( $mt_single, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
 
 				$audience[ 'suggestedGender' ] = $mt_single[ 'product:target_gender' ];
-			
+
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'no product gender' );

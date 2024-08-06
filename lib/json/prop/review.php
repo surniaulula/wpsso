@@ -122,11 +122,12 @@ if ( ! class_exists( 'WpssoJsonPropReview' ) ) {
 					foreach ( $mt_og[ $og_type . ':reviews' ] as $mt_review ) {
 
 						$single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
-							'url'         => 'review:url',
-							'dateCreated' => 'review:created_time',
-							'name'        => 'review:title',
-							'description' => 'review:description',
-							'text'        => 'review:text',
+							'url'          => 'review:url',
+							'dateCreated'  => 'review:created_time',
+							'dateModified' => 'review:updated_time',
+							'name'         => 'review:title',
+							'description'  => 'review:description',
+							'text'         => 'review:text',
 						) );
 
 						if ( ! empty( $mt_review[ 'review:rating:value' ] ) ) {

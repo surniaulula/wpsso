@@ -52,11 +52,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			/*
+			 * Required for the datepicker popup.
+			 *
 			 * See https://developers.google.com/speed/libraries/.
 			 */
-			wp_register_style( 'jquery-ui.js', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' .
+			$jquery_ui_url = $this->p->cache->get( 'https://ajax.googleapis.com/ajax/libs/jqueryui/' .
 				$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
-					$deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
+					$format = 'url', $cache_type = 'file', WEEK_IN_SECONDS );
+
+			wp_register_style( 'jquery-ui.js', $jquery_ui_url, $deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/*
 			 * Register styles for option help popup.

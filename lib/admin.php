@@ -2427,7 +2427,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $cache_exp_secs > 0 ) {
 
-					$file_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+					$file_content = $this->p->cache->get( $file_url, $format = 'raw', $cache_type = 'file', $cache_exp_secs );
 
 				} else {
 

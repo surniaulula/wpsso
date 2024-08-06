@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.23.0',	// Plugin version.
+					'version'     => '17.24.0-dev.1',	// Plugin version.
 					'opt_version' => '1001',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -216,6 +216,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'upscale'          => '(feature) Upscale Media Library Images',
 							),
 							'review' => array(
+								'judgeme'         => '(api) Get Judge.me Review Data',
 								'shopperapproved' => '(api) Get Shopper Approved Review Data',
 								'stamped'         => '(api) Get Stamped.io Review Data',
 							),
@@ -247,6 +248,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
 								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
 								'youtube'          => '(api) Get YouTube Video and Playlist Data',
+							),
+							'review' => array(
+								'judgeme' => '(api) Get Judge.me Review Data',
 							),
 						),
 						'submenu' => array(
@@ -2541,7 +2545,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager.
 			 */
 			'um' => array(
-				'rec_version' => '5.2.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '5.3.0-dev.1',	// Minimum update manager version (soft limit).
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -2804,13 +2808,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 
 			/*
-			 * Used by WpssoStyle->admin_enqueue_styles().
+			 * Required for the datepicker popup.
 			 *
 			 * See https://developers.google.com/speed/libraries/.
+			 *
+			 * See WpssoStyle->admin_enqueue_styles().
 			 */
 			'jquery-ui' => array(
 				'label'   => 'jQuery UI',
-				'version' => '1.12.1',
+				'version' => '1.9.0',
 			),
 
 			'menu' => array(
@@ -3087,6 +3093,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'ratings_reviews' => array(
 					'none'            => '[None]',
+					'judgeme'         => 'Judge.me',
 					'shopperapproved' => 'Shopper Approved',
 					'stamped'         => 'Stamped.io',
 				),

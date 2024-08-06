@@ -58,9 +58,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'checkbox';
 
+					case 'plugin_judgeme_shop_token':	// Judge.me Shop Token.
 					case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
 
-						return 'api_key';
+						return 'api_key';		// Empty or alpha-numeric (upper or lower case), plus underscores and hypens.
 
 					case 'plugin_speakable_css_csv':	// Speakable CSS Selectors.
 
@@ -87,6 +88,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
 					case 'plugin_dlmyapp_api_key':
 					case 'plugin_owly_api_key':
+					case 'plugin_judgeme_shop_domain':	// Judge.me Shop Domain.
 					case 'plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
 					case 'plugin_shopperapproved_token':	// Shopper Approved API Token.
 					case 'plugin_yourls_username':
