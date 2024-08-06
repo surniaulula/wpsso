@@ -100,33 +100,33 @@ Present your content at its best for social sites and search results, no matter 
 
 <p><strong>Supports additional data from active plugins, including:</strong></p>
 
-* Co-Authors Plus
-* Elementor Website Builder
+* <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a>
+* <a href="https://wordpress.org/plugins/elementor/">Elementor Website Builder</a>
 * Gravity Forms
 * Gravity View
-* Jetpack
-* Jetpack Boost
-* Judge.me Product Reviews for WooCommerce
-* Perfect Images
-* Perfect WooCommerce Brands
-* Polylang
+* <a href="https://wordpress.org/plugins/jetpack/">Jetpack</a>
+* <a href="https://wordpress.org/plugins/jetpack-boost/">Jetpack Boost</a>
+* <a href="https://wordpress.org/plugins/judgeme-product-reviews-woocommerce/">Judge.me Product Reviews for WooCommerce</a>
+* <a href="https://wordpress.org/plugins/wp-retina-2x/">Perfect Images</a>
+* <a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect Brands for WooCommerce</a>
+* <a href="https://wordpress.org/plugins/polylang/">Polylang</a>
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
 * qTranslate-XT
-* Rate my Post
-* Simple Job Board
-* The Events Calendar
-* Ultimate Member
-* WooCommerce
+* <a href="https://wordpress.org/plugins/rate-my-post/">Rate my Post</a>
+* <a href="https://wordpress.org/plugins/simple-job-board/">Simple Job Board</a>
+* <a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a>
+* <a href="https://wordpress.org/plugins/ultimate-member/">Ultimate Member</a>
+* <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a>
 * WooCommerce Brands
 * WooCommerce Currency Switcher
 * WooCommerce UPC, EAN, and ISBN
-* WP Job Manager
-* WP-PostRatings
+* <a href="https://wordpress.org/plugins/wp-job-manager/">WP Job Manager</a>
+* <a href="https://wordpress.org/plugins/wp-postratings/">WP-PostRatings</a>
 * WP Product Review
-* WP Recipe Maker
+* <a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a>
 * WPML
-* YITH WooCommerce Brands Add-on
-* Yotpo Social Reviews for WooCommerce
+* <a href="https://wordpress.org/plugins/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a>
+* <a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a>
 
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
 

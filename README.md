@@ -102,33 +102,33 @@
 <p><strong>Supports additional data from active plugins, including:</strong></p>
 
 <ul>
-<li>Co-Authors Plus</li>
-<li>Elementor Website Builder</li>
+<li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a></li>
+<li><a href="https://wordpress.org/plugins/elementor/">Elementor Website Builder</a></li>
 <li>Gravity Forms</li>
 <li>Gravity View</li>
-<li>Jetpack</li>
-<li>Jetpack Boost</li>
-<li>Judge.me Product Reviews for WooCommerce</li>
-<li>Perfect Images</li>
-<li>Perfect WooCommerce Brands</li>
-<li>Polylang</li>
+<li><a href="https://wordpress.org/plugins/jetpack/">Jetpack</a></li>
+<li><a href="https://wordpress.org/plugins/jetpack-boost/">Jetpack Boost</a></li>
+<li><a href="https://wordpress.org/plugins/judgeme-product-reviews-woocommerce/">Judge.me Product Reviews for WooCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/wp-retina-2x/">Perfect Images</a></li>
+<li><a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect Brands for WooCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/polylang/">Polylang</a></li>
 <li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
 <li>qTranslate-XT</li>
-<li>Rate my Post</li>
-<li>Simple Job Board</li>
-<li>The Events Calendar</li>
-<li>Ultimate Member</li>
-<li>WooCommerce</li>
+<li><a href="https://wordpress.org/plugins/rate-my-post/">Rate my Post</a></li>
+<li><a href="https://wordpress.org/plugins/simple-job-board/">Simple Job Board</a></li>
+<li><a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a></li>
+<li><a href="https://wordpress.org/plugins/ultimate-member/">Ultimate Member</a></li>
+<li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a></li>
 <li>WooCommerce Brands</li>
 <li>WooCommerce Currency Switcher</li>
 <li>WooCommerce UPC, EAN, and ISBN</li>
-<li>WP Job Manager</li>
-<li>WP-PostRatings</li>
+<li><a href="https://wordpress.org/plugins/wp-job-manager/">WP Job Manager</a></li>
+<li><a href="https://wordpress.org/plugins/wp-postratings/">WP-PostRatings</a></li>
 <li>WP Product Review</li>
-<li>WP Recipe Maker</li>
+<li><a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a></li>
 <li>WPML</li>
-<li>YITH WooCommerce Brands Add-on</li>
-<li>Yotpo Social Reviews for WooCommerce</li>
+<li><a href="https://wordpress.org/plugins/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a></li>
+<li><a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a></li>
 </ul>
 
 <p><strong>Supports additional WooCommerce product attributes:</strong></p>
