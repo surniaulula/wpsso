@@ -182,6 +182,7 @@ WPSSO Core and its add-ons can also run in combination with other SEO plugins to
 * DLMY.App Short URL
 * Facebook Video Data
 * Gravatar Image Data
+* Judge.me Review Data
 * Ow.ly Short URL
 * Shopper Approved Review Data
 * Slideshare Presentation Data
@@ -278,7 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.24.0-dev.1 (2024/08/06)**
+**Version 17.24.0-b.1 (2024/08/06)**
 
 * **New Features**
 	* Added a new Judge.me ratings and reviews service API (Premium edition).
@@ -600,7 +601,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.24.0-dev.1 =
+= 17.24.0-b.1 =
 
 (2024/08/06) Added a new Judge.me ratings and reviews service API (Premium edition).
 

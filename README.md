@@ -190,6 +190,7 @@
 <li>DLMY.App Short URL</li>
 <li>Facebook Video Data</li>
 <li>Gravatar Image Data</li>
+<li>Judge.me Review Data</li>
 <li>Ow.ly Short URL</li>
 <li>Shopper Approved Review Data</li>
 <li>Slideshare Presentation Data</li>
