@@ -278,16 +278,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.24.0-dev.1 (TBD)**
+**Version 17.24.0-dev.1 (2024/08/06)**
 
 * **New Features**
-	* None.
+	* Added a new Judge.me ratings and reviews service API (Premium edition).
 * **Improvements**
-	* Added a new Judge.me ratings and reviews service API.
+	* Added https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/smoothness/jquery-ui.css to the cache folder.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoMedia->get_mt_single_image_url()` method.
+	* Added a new `WpssoMedia->add_mt_single_image_url()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -601,7 +602,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.24.0-dev.1 =
 
-(TBD) Added a new Judge.me ratings and reviews service API.
+(2024/08/06) Added a new Judge.me ratings and reviews service API (Premium edition).
 
 = 17.23.0 =
 
