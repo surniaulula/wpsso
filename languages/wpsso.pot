@@ -6375,7 +6375,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
-#: gettext/gettext-lib-pro.php:206 lib/conflict.php:343
+#: gettext/gettext-lib-pro.php:206 lib/conflict.php:354
 #: lib/pro/media/slideshare.php:214 lib/pro/media/vimeo.php:193
 #: lib/pro/media/wistia.php:357
 msgid ""
@@ -6408,7 +6408,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:223
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
+#: lib/conflict.php:243 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:795
 msgid "%s error:"
@@ -7125,12 +7125,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5503
+#: lib/config.php:5504
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5503
+#: lib/config.php:5504
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -7510,96 +7510,96 @@ msgstr ""
 msgid "WPSSO Place and Local SEO Markup"
 msgstr ""
 
-#: lib/conflict.php:206
+#: lib/conflict.php:217
 msgid ""
 "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less "
 "than the recommended minimum value of %3$d bytes (a common default value is "
 "%4$d bytes)."
 msgstr ""
 
-#: lib/conflict.php:208
+#: lib/conflict.php:219
 msgid ""
 "Please contact your hosting provider and have the \"%1$s\" database option "
 "adjusted to a larger and safer value."
 msgstr ""
 
-#: lib/conflict.php:210
+#: lib/conflict.php:221
 msgid ""
 "See the %1$s sections %2$s and %3$s for more information on this database "
 "option."
 msgstr ""
 
-#: lib/conflict.php:279
+#: lib/conflict.php:290
 msgid ""
 "WordPress is configured to use the %1$s image editing class but the <a href="
 "\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:283
+#: lib/conflict.php:294
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:290
+#: lib/conflict.php:301
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr ""
 
-#: lib/conflict.php:291
+#: lib/conflict.php:302
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr ""
 
-#: lib/conflict.php:301
+#: lib/conflict.php:312
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
 "different products - this error is for the PHP \"%1$s\" extension, not the "
 "ImageMagick application."
 msgstr ""
 
-#: lib/conflict.php:304
+#: lib/conflict.php:315
 msgid ""
 "Please contact your hosting provider to have the missing PHP \"%1$s\" "
 "extension installed and enabled."
 msgstr ""
 
-#: lib/conflict.php:322
+#: lib/conflict.php:333
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "class is missing."
 msgstr ""
 
-#: lib/conflict.php:324
+#: lib/conflict.php:335
 msgid ""
 "Please contact your hosting provider to have the missing PHP class installed."
 msgstr ""
 
-#: lib/conflict.php:341
+#: lib/conflict.php:352
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "function is missing."
 msgstr ""
 
-#: lib/conflict.php:380
+#: lib/conflict.php:391
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:382
+#: lib/conflict.php:393
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:384
+#: lib/conflict.php:395
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:407 lib/messages.php:1414
+#: lib/conflict.php:418 lib/messages.php:1414
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
 msgstr ""
 
-#: lib/conflict.php:409
+#: lib/conflict.php:420
 msgid ""
 "This is not compatible with the purpose of optimizing your content for "
 "social and search engines - please uncheck the option to allow search "

@@ -1931,7 +1931,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_inherit_featured'        => 1,			// Inherit Featured Image.
 					'plugin_inherit_images'          => 1,			// Inherit Custom Images.
 					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
-					'plugin_prevent_thumb_conflicts' => 0,			// Prevent Thumbnail Conflicts.
+					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
 					'plugin_upscale_images'          => 0,			// Upscale Media Library Images.
 					'plugin_upscale_pct_max'         => 33,			// Maximum Image Upscale Percent.
 
@@ -2548,7 +2548,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager.
 			 */
 			'um' => array(
-				'rec_version' => '5.3.0',	// Minimum update manager version (soft limit).
+				'min_version' => '4.10.0',	// Released on 2021/11/11.
+				'rec_version' => '5.3.0',	// Released on 2024/08/06.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
