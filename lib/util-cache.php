@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/*
 			 * Clear cache files but preserve HTML files, like the YouTube video webpage HTML.
 			 */
-			$this->clear_cache_files( $file_exp_secs = null, $include = array( '/\.(js|txt)$/' ) );
+			$this->clear_cache_files( $file_exp_secs = null, $include = array( '/\.(css|js|txt)$/' ) );
 
 			/*
 			 * Refresh the Schema types transient cache.
