@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				if ( version_compare( $um_info[ 'version' ], $min_version, '<' ) ) {
 						
-					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-required' ) );
+					$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required' ) );
 				}
 			} */
 		}
