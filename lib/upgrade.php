@@ -578,7 +578,7 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'site_org_sources_policy_url'     => '',
 				),
 				985 => array(
-					'plugin_wpvideo_api'   => 'plugin_wpvideoshortcode_api',
+					'plugin_wpvideo_api'   => 'plugin_media_wpvideoshortcode',
 					'schema_add_text_prop' => 'schema_def_add_text_prop',
 					'schema_aggr_offers'   => 'schema_def_product_aggr_offers',
 				),
@@ -589,6 +589,17 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				),
 				1001 => array(
 					'plugin_ratings_reviews_age_max' => 'plugin_ratings_reviews_months_max',
+				),
+				1007 => array(
+					'plugin_gravatar_api'         => 'plugin_gravatar_image',
+					'plugin_facebook_api'         => 'plugin_media_facebook',
+					'plugin_slideshare_api'       => 'plugin_media_slideshare',
+					'plugin_soundcloud_api'       => 'plugin_media_soundcloud',
+					'plugin_vimeo_api'            => 'plugin_media_vimeo',
+					'plugin_wistia_api'           => 'plugin_media_wistia',
+					'plugin_wpvideoblock_api'     => 'plugin_media_wpvideoblock',
+					'plugin_wpvideoshortcode_api' => 'plugin_media_wpvideoshortcode',
+					'plugin_youtube_api'          => 'plugin_media_youtube',
 				),
 			),
 		);

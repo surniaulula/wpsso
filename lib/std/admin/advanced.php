@@ -538,27 +538,27 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_gravatar_api' ] = '' .
+			$table_rows[ 'plugin_gravatar_image' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_gravatar_image' ) .
 				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_gravatar_api' ) .
-				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
+					$css_class = '', $css_id = 'plugin_gravatar_image' ) .
+				$form->get_no_td_checkbox( 'plugin_gravatar_image' );
 
 			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_gravatar_size' ) .
 				$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_gravatar_size' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
 
-			$check_embed_html = '';
+			$checkboxes = '';
 
-			foreach ( $this->p->cf[ 'form' ][ 'embed_media_apis' ] as $opt_key => $opt_label ) {
+			foreach ( $this->p->cf[ 'form' ][ 'embed_media' ] as $opt_key => $opt_label ) {
 
-				$check_embed_html .= '<p>' . $form->get_no_checkbox_comment( $opt_key ) . ' ' . _x( $opt_label, 'option value', 'wpsso' ) . '</p>';
+				$checkboxes .= '<p>' . $form->get_no_checkbox_comment( $opt_key ) . ' ' . _x( $opt_label, 'option value', 'wpsso' ) . '</p>';
 			}
 
-			$table_rows[ 'plugin_embed_media_apis' ] = '' .
-				$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_embed_media_apis' ).
-				'<td class="blank">' . $check_embed_html . '</td>';
+			$table_rows[ 'plugin_embed_media' ] = '' .
+				$form->get_th_html( _x( 'Detect Embedded Media', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_embed_media' ).
+				'<td class="blank">' . $checkboxes . '</td>';
 
 			return $table_rows;
 		}

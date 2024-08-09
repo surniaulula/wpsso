@@ -215,6 +215,8 @@
 
 'wpsso_meta_name' ( $mt_name, $mod )
 
+'wpsso_og_add_media_from_url' ( $url, $service )	// $service = 'facebook' or 'soundcloud'.
+
 'wpsso_og_add_mt_offers' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_rating' ( $bool = true, $mod )

@@ -45,27 +45,31 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( $in_view = 'basic', 'og_vid_max' ) .
-				$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) .
+				$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'og_vid_max' ) .
 				'<td class="blank">' . $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ),
 					$css_class = 'short', $css_id = '', $is_assoc = true ) . '</td>';
 
 			$table_rows[ 'og_vid_prev_img' ] = '' .
-				$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) .
+				$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'og_vid_prev_img' ) .
 				$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_are_first() );
 
 			$table_rows[ 'og_vid_autoplay' ] = '' .
-				$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) .
+				$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'og_vid_autoplay' ) .
 				$form->get_no_td_checkbox( 'og_vid_autoplay' );
 
 			$check_embed_html = '';
 
-			foreach ( $this->p->cf[ 'form' ][ 'embed_media_apis' ] as $opt_key => $opt_label ) {
+			foreach ( $this->p->cf[ 'form' ][ 'embed_media' ] as $opt_key => $opt_label ) {
 
 				$check_embed_html .= '<p>' . $form->get_no_checkbox_comment( $opt_key ) . ' ' . _x( $opt_label, 'option value', 'wpsso' ) . '</p>';
 			}
 
-			$table_rows[ 'plugin_embed_media_apis' ] = '' .
-				$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ) .
+			$table_rows[ 'plugin_embed_media' ] = '' .
+				$form->get_th_html( _x( 'Detect Embedded Media', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_embed_media' ) .
 				'<td class="blank">' . $check_embed_html . '</td>';
 
 			return $table_rows;

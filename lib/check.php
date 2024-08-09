@@ -542,16 +542,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/*
 								 * Premium edition feature / option.
 								 */
-								case 'facebook':		// Check for Embedded Media: Facebook Video.
-								case 'slideshare':		// Check for Embedded Media: Slideshare Presentation.
-								case 'soundcloud':		// Check for Embedded Media: Soundcloud Track.
-								case 'vimeo':			// Check for Embedded Media: Vimeo Video.
-								case 'wistia':			// Check for Embedded Media: Wistia Video.
-								case 'wpvideoblock':		// Check for Embedded Media: WP Media Library Video Block.
-								case 'wpvideoshortcode':	// Check for Embedded Media: WP Media Library Video Shortcode.
-								case 'youtube':			// Check for Embedded Media: Youtube Videos and Playlist.
+								case 'facebook':		// Detect Embedded Media: Facebook Video.
+								case 'slideshare':		// Detect Embedded Media: Slideshare Presentation.
+								case 'soundcloud':		// Detect Embedded Media: Soundcloud Track.
+								case 'vimeo':			// Detect Embedded Media: Vimeo Video.
+								case 'wistia':			// Detect Embedded Media: Wistia Video.
+								case 'wpvideoblock':		// Detect Embedded Media: WP Media Library Video Block.
+								case 'wpvideoshortcode':	// Detect Embedded Media: WP Media Library Video Shortcode.
+								case 'youtube':			// Detect Embedded Media: Youtube Videos and Playlist.
 
-									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
+									$chk[ 'opt_key' ] = 'plugin_media_' . $id;
 
 									break;
 
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								case 'gravatar':	// Gravatar is Default Author Image.
 
-									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
+									$chk[ 'opt_key' ] = 'plugin_gravatar_image';
 
 									break;
 

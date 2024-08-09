@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.24.0\n"
+"Project-Id-Version: WPSSO Core 17.25.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3348,7 +3348,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:115
 msgctxt "lib file description"
-msgid "(api) Get YouTube Video and Playlist Data"
+msgid "(api) Get YouTube Videos and Playlist Data"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:98 lib/admin-filters.php:175
@@ -4054,7 +4054,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:479 gettext/gettext-lib-config.php:491
 #: gettext/gettext-lib-config.php:497 gettext/gettext-lib-config.php:505
 #: gettext/gettext-lib-config.php:519 gettext/gettext-lib-config.php:527
-#: gettext/gettext-lib-config.php:540 lib/messages-tooltip-plugin.php:681
+#: gettext/gettext-lib-config.php:540 lib/messages-tooltip-plugin.php:684
 #: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -5759,9 +5759,9 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:189
 #: lib/pro/admin/advanced.php:573 lib/pro/admin/general.php:78
-#: lib/std/admin/advanced.php:559 lib/std/admin/general.php:68
+#: lib/std/admin/advanced.php:559 lib/std/admin/general.php:71
 msgctxt "option label"
-msgid "Check for Embedded Media"
+msgid "Detect Embedded Media"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:588
@@ -6303,13 +6303,13 @@ msgid "Maximum Videos to Include"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:187 lib/pro/admin/general.php:61
-#: lib/std/admin/general.php:53
+#: lib/std/admin/general.php:54
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:188 lib/pro/admin/general.php:66
-#: lib/std/admin/general.php:57
+#: lib/std/admin/general.php:59
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
@@ -6383,15 +6383,15 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/media/youtube.php:176
+#: gettext/gettext-lib-pro.php:207 lib/pro/media/youtube.php:178
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:186
+#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:188
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:196
+#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:198
 msgid "Video upload date not found for %s."
 msgstr ""
 
@@ -10255,8 +10255,8 @@ msgstr ""
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:78
 #: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:823
-#: lib/messages-tooltip-plugin.php:865 lib/messages-tooltip-schema.php:179
+#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:826
+#: lib/messages-tooltip-plugin.php:868 lib/messages-tooltip-schema.php:179
 #: lib/messages-tooltip-schema.php:336
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -11823,224 +11823,228 @@ msgid ""
 "profile %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:638
+#: lib/messages-tooltip-plugin.php:639
 msgid ""
-"If a custom image has not been selected, fallback to using their Gravatar "
-"image."
+"If a custom image has not been selected, fallback to using the author's "
+"Gravatar image."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:646
+#: lib/messages-tooltip-plugin.php:647
 msgid ""
 "The requested Gravatar image width and height (a number from 1 to 2048)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:648
+#: lib/messages-tooltip-plugin.php:649
 msgid ""
 "Note that users often upload low resolution images to Gravatar, so choosing "
 "a larger image size may result in pixelation and lower-quality images."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:650
+#: lib/messages-tooltip-plugin.php:651
 msgid "The default Gravatar image size is %d pixels."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:656
+#: lib/messages-tooltip-plugin.php:657
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
-"(Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API "
-"connection to the provider will be made to retrieve information about the "
-"media (preview image URL, flash player URL, oembed player URL, the video "
-"width / height, etc.)."
+"(Vimeo, Wistia, YouTube, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:665
+#: lib/messages-tooltip-plugin.php:659
+msgid ""
+"When a supported media URL is found, an API connection to the provider can "
+"be made to retrieve additional information about the media (preview image "
+"URL, oembed player URL, video width and height, etc.)."
+msgstr ""
+
+#: lib/messages-tooltip-plugin.php:668
 msgid ""
 "A preferred URL shortening service used for the <code>%s</code> HTML tag "
 "value, Schema markup, and social sharing buttons."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:673
+#: lib/messages-tooltip-plugin.php:676
 msgid ""
 "Only shorten URLs that are longer than this length (default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:679
+#: lib/messages-tooltip-plugin.php:682
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> function value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:681
+#: lib/messages-tooltip-plugin.php:684
 msgid ""
 "If the URL shortening service is set to \"%1$s\" then checking or unchecking "
 "option has no effect on the WordPress <code>%2$s</code> function as there is "
 "no URL shortening service available to replace its value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:687
+#: lib/messages-tooltip-plugin.php:690
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:693
+#: lib/messages-tooltip-plugin.php:696
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:695
+#: lib/messages-tooltip-plugin.php:698
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:701
+#: lib/messages-tooltip-plugin.php:704
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:703
+#: lib/messages-tooltip-plugin.php:706
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:709
+#: lib/messages-tooltip-plugin.php:712
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:716
+#: lib/messages-tooltip-plugin.php:719
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:722
+#: lib/messages-tooltip-plugin.php:725
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:728
+#: lib/messages-tooltip-plugin.php:731
 msgid ""
 "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:733
+#: lib/messages-tooltip-plugin.php:736
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured username (see YOURLS Token for an alternative to "
 "the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:739
+#: lib/messages-tooltip-plugin.php:742
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:745
+#: lib/messages-tooltip-plugin.php:748
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:754
+#: lib/messages-tooltip-plugin.php:757
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:760
+#: lib/messages-tooltip-plugin.php:763
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:766
+#: lib/messages-tooltip-plugin.php:769
 msgid "The maximum age (in months) of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:772
+#: lib/messages-tooltip-plugin.php:775
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:782
 msgid ""
 "Your Judge.me shop domain and token are required to retrieve ratings and "
 "reviews from the Judge.me service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:786
+#: lib/messages-tooltip-plugin.php:789
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:788
+#: lib/messages-tooltip-plugin.php:791
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:795
+#: lib/messages-tooltip-plugin.php:798
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:812
+#: lib/messages-tooltip-plugin.php:815
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:817
+#: lib/messages-tooltip-plugin.php:820
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:829
+#: lib/messages-tooltip-plugin.php:832
 msgid ""
 "The product attribute value can be an empty string or one of these values "
 "(case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:835 lib/messages-tooltip-plugin.php:877
+#: lib/messages-tooltip-plugin.php:838 lib/messages-tooltip-plugin.php:880
 msgid "Note that the \"%s\" option supports multiple values."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:837
+#: lib/messages-tooltip-plugin.php:840
 msgid ""
 "The product attribute string will be split using the comma \",\" character."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:856
+#: lib/messages-tooltip-plugin.php:859
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:859
+#: lib/messages-tooltip-plugin.php:862
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:871
+#: lib/messages-tooltip-plugin.php:874
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:879
+#: lib/messages-tooltip-plugin.php:882
 msgid ""
 "If the custom field value is a string, it will be split on the end of line "
 "character."

@@ -78,7 +78,7 @@ _x( 'Open Graph Type Select Format', 'option label', 'wpsso' );
 _x( 'Schema Type Select Format', 'option label', 'wpsso' );
 _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' );
 _x( 'Gravatar Image Size', 'option label', 'wpsso' );
-_x( 'Check for Embedded Media', 'option label', 'wpsso' );
+_x( 'Detect Embedded Media', 'option label', 'wpsso' );
 _x( 'URL Shortening Service', 'option label', 'wpsso' );
 _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' );
 _x( 'characters', 'option comment', 'wpsso' );
@@ -186,7 +186,7 @@ __( 'An SEO plugin has been detected - some basic SEO meta tags have been unchec
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
-_x( 'Check for Embedded Media', 'option label', 'wpsso' );
+_x( 'Detect Embedded Media', 'option label', 'wpsso' );
 _x( 'Priority Video Information', 'metabox title', 'wpsso' );
 _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );

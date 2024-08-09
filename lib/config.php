@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.24.0',	// Plugin version.
-					'opt_version' => '1003',	// Increment when changing default option values.
+					'version'     => '17.25.0-dev.2',	// Plugin version.
+					'opt_version' => '1008',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wistia'           => '(api) Get Wistia Video Data',
 								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
 								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
-								'youtube'          => '(api) Get YouTube Video and Playlist Data',
+								'youtube'          => '(api) Get YouTube Videos and Playlist Data',
 								'upscale'          => '(feature) Upscale Media Library Images',
 							),
 							'review' => array(
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wistia'           => '(api) Get Wistia Video Data',
 								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
 								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
-								'youtube'          => '(api) Get YouTube Video and Playlist Data',
+								'youtube'          => '(api) Get YouTube Videos and Playlist Data',
 							),
 							'review' => array(
 								'judgeme' => '(api) Get Judge.me Review Data',
@@ -2095,16 +2095,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Service APIs > Media Services.
 					 */
-					'plugin_gravatar_api'         => 1,	// Gravatar is Default Author Image.
-					'plugin_gravatar_size'        => 1200,	// Gravatar Image Size.
-					'plugin_facebook_api'         => 1,	// Check for Embedded Media: Facebook Videos.
-					'plugin_slideshare_api'       => 1,	// Check for Embedded Media: Slideshare Presentations.
-					'plugin_soundcloud_api'       => 1,	// Check for Embedded Media: Soundcloud Tracks.
-					'plugin_vimeo_api'            => 1,	// Check for Embedded Media: Vimeo Videos.
-					'plugin_wistia_api'           => 1,	// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideoblock_api'     => 1,	// Check for Embedded Media: WP Media Library Video Blocks.
-					'plugin_wpvideoshortcode_api' => 1,	// Check for Embedded Media: WP Media Library Video Shortcodes.
-					'plugin_youtube_api'          => 1,	// Check for Embedded Media: Youtube Videos and Playlists.
+					'plugin_gravatar_image'         => 1,		// Gravatar is Default Author Image.
+					'plugin_gravatar_size'          => 1200,	// Gravatar Image Size.
+					'plugin_media_facebook'         => 1,		// Detect Embedded Media: Facebook Videos.
+					'plugin_media_slideshare'       => 1,		// Detect Embedded Media: Slideshare Presentations.
+					'plugin_media_soundcloud'       => 1,		// Detect Embedded Media: Soundcloud Tracks.
+					'plugin_media_vimeo'            => 1,		// Detect Embedded Media: Vimeo Videos.
+					'plugin_media_wistia'           => 1,		// Detect Embedded Media: Wistia Videos.
+					'plugin_media_wpvideoblock'     => 1,		// Detect Embedded Media: WP Media Library Video Blocks.
+					'plugin_media_wpvideoshortcode' => 1,		// Detect Embedded Media: WP Media Library Video Shortcodes.
+					'plugin_media_youtube'          => 1,		// Detect Embedded Media: Youtube Videos and Playlists.
 
 					/*
 					 * Advanced Settings > Service APIs > Shortening Services.
@@ -3121,15 +3121,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yt_publisher_url'        => 'YouTube Business Channel URL',
 				),
 
-				'embed_media_apis' => array(
-					'plugin_facebook_api'         => 'Facebook Videos',
-					'plugin_slideshare_api'       => 'Slideshare Presentations',
-					'plugin_soundcloud_api'       => 'Soundcloud Tracks',
-					'plugin_vimeo_api'            => 'Vimeo Videos',
-					'plugin_wistia_api'           => 'Wistia Videos',
-					'plugin_wpvideoblock_api'     => 'WP Media Library Video Blocks',
-					'plugin_wpvideoshortcode_api' => 'WP Media Library Video Shortcodes',
-					'plugin_youtube_api'          => 'YouTube Videos and Playlists',
+				'embed_media' => array(	// Check for Embedded Media.
+					'plugin_media_facebook'         => 'Facebook Videos',
+					'plugin_media_slideshare'       => 'Slideshare Presentations',
+					'plugin_media_soundcloud'       => 'Soundcloud Tracks',
+					'plugin_media_vimeo'            => 'Vimeo Videos',
+					'plugin_media_wistia'           => 'Wistia Videos',
+					'plugin_media_wpvideoblock'     => 'WP Media Library Video Blocks',
+					'plugin_media_wpvideoshortcode' => 'WP Media Library Video Shortcodes',
+					'plugin_media_youtube'          => 'YouTube Videos and Playlists',
 				),
 
 				/*

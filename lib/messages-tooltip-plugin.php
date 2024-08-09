@@ -629,13 +629,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/*
 				 * SSO > Advanced Settings > Service APIs > Media Services tab.
 				 */
-				case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
+				case 'tooltip-plugin_gravatar_image':	// Gravatar is Default Author Image.
 
 					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title_transl ) . ' ';
+					$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ),
+						$mb_title_transl ) . ' ';
 
-					$text = __( 'If a custom image has not been selected, fallback to using their Gravatar image.', 'wpsso' ) . ' ';
+					$text = __( 'If a custom image has not been selected, fallback to using the author\'s Gravatar image.', 'wpsso' ) . ' ';
 
 					break;
 
@@ -651,9 +652,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_embed_media_apis':	// Check for Embedded Media.
+				case 'tooltip-plugin_embed_media':	// Detect Embedded Media.
 
-					$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
+					$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.).', 'wpsso' ) . ' ';
+					
+					$text .= __( 'When a supported media URL is found, an API connection to the provider can be made to retrieve additional information about the media (preview image URL, oembed player URL, video width and height, etc.).', 'wpsso' );
 
 					break;
 
