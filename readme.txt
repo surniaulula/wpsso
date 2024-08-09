@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.25.0-dev.2 (2024/08/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_og_add_media_from_url' filter.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.24.0 (2024/08/06)**
 
 * **New Features**
@@ -601,6 +615,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.25.0-dev.2 =
+
+(2024/08/09) Added a new 'wpsso_og_add_media_from_url' filter.
 
 = 17.24.0 =
 
