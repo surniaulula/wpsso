@@ -435,14 +435,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Book Published Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_pub',
-					'content'  => $form->get_date_time_tz( 'schema_book_pub' ),
+					'content'  => $form->get_date_time_timezone( 'schema_book_pub' ),
 				),
 				'schema_book_created' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'book' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Book Created Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_created',
-					'content'  => $form->get_date_time_tz( 'schema_book_created' ),
+					'content'  => $form->get_date_time_timezone( 'schema_book_created' ),
 				),
 				'schema_book_edition' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'book' ],
@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Movie Release Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_released',
-					'content'  => $form->get_date_time_tz( 'schema_movie_released' ),
+					'content'  => $form->get_date_time_timezone( 'schema_movie_released' ),
 				),
 				'schema_movie_duration_time' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'movie' ],
@@ -1052,14 +1052,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Subject Published Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_pub',
-					'content'  => $form->get_date_time_tz( 'schema_review_item_cw_pub' ),
+					'content'  => $form->get_date_time_timezone( 'schema_review_item_cw_pub' ),
 				),
 				'schema_review_item_cw_created' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'creative.work' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Subject Created Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_created',
-					'content'  => $form->get_date_time_tz( 'schema_review_item_cw_created' ),
+					'content'  => $form->get_date_time_timezone( 'schema_review_item_cw_created' ),
 				),
 
 				/*
@@ -1374,7 +1374,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Reviewed Last', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_webpage_reviewed_last',
-					'content'  => $form->get_date_time_tz( 'schema_webpage_reviewed_last' ),
+					'content'  => $form->get_date_time_timezone( 'schema_webpage_reviewed_last' ),
 				),
 			);
 
@@ -1552,35 +1552,35 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Start', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_start',
-					'content'  => $form->get_date_time_tz( 'schema_event_start' ),
+					'content'  => $form->get_date_time_timezone( 'schema_event_start' ),
 				),
 				'schema_event_end' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Event End', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_end',
-					'content'  => $form->get_date_time_tz( 'schema_event_end' ),
+					'content'  => $form->get_date_time_timezone( 'schema_event_end' ),
 				),
 				'schema_event_previous' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Previous Start', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_previous',
-					'content'  => $form->get_date_time_tz( 'schema_event_previous' ),
+					'content'  => $form->get_date_time_timezone( 'schema_event_previous' ),
 				),
 				'schema_event_offers_start' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Offers Start', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_offers_start',
-					'content'  => $form->get_date_time_tz( 'schema_event_offers_start' ),
+					'content'  => $form->get_date_time_timezone( 'schema_event_offers_start' ),
 				),
 				'schema_event_offers_end' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Event Offers End', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_offers_end',
-					'content'  => $form->get_date_time_tz( 'schema_event_offers_end' ),
+					'content'  => $form->get_date_time_timezone( 'schema_event_offers_end' ),
 				),
 				'schema_event_offers' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'event' ],
@@ -1697,7 +1697,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Job Posting Expires', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_expire',
-					'content'  => $form->get_date_time_tz( 'schema_job_expire' ),
+					'content'  => $form->get_date_time_timezone( 'schema_job_expire' ),
 				),
 			);
 

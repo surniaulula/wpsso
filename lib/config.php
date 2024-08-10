@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.25.0-dev.2',	// Plugin version.
-					'opt_version' => '1008',	// Increment when changing default option values.
+					'version'     => '17.25.0-dev.4',	// Plugin version.
+					'opt_version' => '1009',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',

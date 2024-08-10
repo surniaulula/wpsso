@@ -791,17 +791,45 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$event_args = array( 'json_var' => 'currencies' ) );
 		}
 
-		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
+		public function get_date_time_timezone( $name_prefix, $media_info = array(), $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
-			$selected = false;
+			$holder_date       = '';
+			$selected_time     = false;
+			$selected_timezone = false;
 
-			$html = $this->get_input_date( $name_prefix . '_date', $css_class = '', $css_id = '', $min_date = '', $max_date = '', $is_disabled ) . ' ';
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
+				
+				if ( $media_info[ $name_prefix . '_date' ] ) {
+				
+					$holder_date = $media_info[ $name_prefix . '_date' ];
+				}
+
+				if ( $media_info[ $name_prefix . '_time' ] ) {
+
+					$selected_time = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
+				}
+				
+				if ( $media_info[ $name_prefix . '_timezone' ] ) {
+
+					$selected_timezone = $this->defaults[ $name_prefix . '_timezone' ] = $media_info[ $name_prefix . '_timezone' ];
+				}
+			}
+
+			$html = $this->get_input_date( $name_prefix . '_date', $css_class = '', $css_id = '', $holder_date, $is_disabled ) . ' ';
 			$html .= $this->get_option_value_transl( 'at' ) . ' ';
-			$html .= $this->get_select_time( $name_prefix . '_time', $css_class = '', $css_id = '', $is_disabled, $selected, $step_mins, $add_none ) . ' ';
+			$html .= $this->get_select_time( $name_prefix . '_time', $css_class = '', $css_id = '', $is_disabled, $selected_time, $step_mins, $add_none ) . ' ';
 			$html .= $this->get_option_value_transl( 'tz' ) . ' ';
-			$html .= $this->get_select_timezone( $name_prefix . '_timezone', $css_class = '', $css_id = '', $is_disabled, $selected );
+			$html .= $this->get_select_timezone( $name_prefix . '_timezone', $css_class = '', $css_id = '', $is_disabled, $selected_timezone );
 
 			return $html;
+		}
+
+		/*
+		 * Deprecated on 2024/08/09.
+		 */
+		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
+
+			return $this->get_date_time_timezone( $name_prefix, $media_info = array(), $is_disabled, $step_mins, $add_none );
 		}
 
 		/*
@@ -895,31 +923,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_date( $name = '', $css_class = '', $css_id = '', $min_date = '', $max_date = '', $is_disabled = false ) {
+		public function get_input_date( $name = '', $css_class = '', $css_id = '', $holder = '', $is_disabled = false, $min_date = '', $max_date = '' ) {
 
-			$input_class = 'datepicker ' . $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
-			$input_class = SucomUtil::sanitize_css_class( $input_class );
-			$input_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
+			$holder  = $holder ? $holder : 'yyyy-mm-dd';
+			$el_attr = $min_date ? ' min="' . esc_attr( $min_date ) . '"' : '';
+			$el_attr .= $max_date ? ' max="' . esc_attr( $max_date ) . '"' : '';
 
-			if ( empty( $name ) ) {
-
-				$is_disabled = true;
-				$input_value = '';
-
-			} else {
-
-				$input_value = $this->in_options( $name ) ? $this->options[ $name ] : '';
-			}
-
-			$html = '<input type="text"';
-			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
-			$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
-			$html .= $input_id ? ' id="text_' . $input_id . '"' : '';	// Already sanitized.
-			$html .= $min_date ? ' min="' . esc_attr( $min_date ) . '"' : '';
-			$html .= $max_date ? ' max="' . esc_attr( $max_date ) . '"' : '';
-			$html .= ' placeholder="yyyy-mm-dd" value="' . esc_attr( $input_value ) . '" />';
-
-			return $html;
+			return $this->get_input( $name, 'datepicker ' . $css_class, $css_id, $len = 0, $holder, $is_disabled, $tabidx = null, $el_attr );
 		}
 
 		public function get_input_time_dhms( $name_prefix ) {
@@ -1098,18 +1108,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_video_dimensions( $name_prefix, $media_info = array(), $is_disabled = false ) {
 
-			$holder_w = '';
-			$holder_h = '';
-			$html     = '';
+			$holder_width  = '';
+			$holder_height = '';
 
 			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
 
-				$holder_w = empty( $media_info[ 'vid_width' ] ) ? '' : $media_info[ 'vid_width' ];
-				$holder_h = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
+				if ( $media_info[ $name_prefix . '_width' ] ) {
+				
+					$holder_width = $media_info[ $name_prefix . '_width' ];
+				}
+
+				if ( $media_info[ $name_prefix . '_height' ] ) {
+				
+					$holder_height = $media_info[ $name_prefix . '_height' ];
+				}
 			}
 
-			$html = $this->get_input( $name_prefix . '_width', 'size width', '', 0, $holder_w, $is_disabled ) . 'x&nbsp;';
-			$html .= $this->get_input( $name_prefix . '_height', 'size height', '', 0, $holder_h, $is_disabled ) . 'px';
+			$html = $this->get_input( $name_prefix . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder_width, $is_disabled ) . 'x&nbsp;';
+			$html .= $this->get_input( $name_prefix . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder_height, $is_disabled ) . 'px';
 
 			return $html;
 		}
@@ -1188,9 +1204,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $name ) ) return '';	// Just in case.
 
 			$filter_name = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' . $name );
-			$values      = apply_filters( $filter_name, $values );
+
+			$values = apply_filters( $filter_name, $values );
 
 			if ( ! is_array( $values ) ) return '';	// Just in case.
+
+			/*
+			 * Maybe add a custom selected string to the values.
+			 */
+			if ( ! is_bool( $selected ) ) {
+
+				if ( ! isset( $values[ $selected ] ) ) {
+
+					$values[ $selected ] = $selected;
+				}
+			}
 
 			if ( is_string( $event_names ) ) {
 
@@ -1270,7 +1298,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$group_values = $group_array;
 
 				} else $group_values = array( $optgroup_transl => $group_array );
-
+				
 				foreach ( $group_values as $option_value => $label_transl ) {
 
 					$select_opt_count++;	// Used to check for first option.
@@ -1574,7 +1602,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/*
 		 * The "time-hh-mm" class is always prefixed to the $css_class value.
 		 *
-		 * By default, the 'none' array elements is not added.
+		 * By default, the 'none' array element is not added.
 		 */
 		public function get_select_time( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15, $add_none = false ) {
 
@@ -1665,7 +1693,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_video_dimensions_text( $name_prefix, $media_info ) {
+		public function get_video_dimensions_text( $name_prefix, $media_info = array() ) {
 
 			if ( ! empty( $this->options[ $name_prefix . '_width' ] ) && ! empty( $this->options[ $name_prefix . '_height' ] ) ) {
 
@@ -1673,12 +1701,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			} elseif ( ! empty( $media_info ) && is_array( $media_info ) ) {
 
-				$def_width  = empty( $media_info[ 'vid_width' ] ) ? '' : $media_info[ 'vid_width' ];
-				$def_height = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
+				if ( $media_info[ $name_prefix . '_width' ] ) {
+				
+					$holder_width = $media_info[ $name_prefix . '_width' ];
+				}
 
-				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
+				if ( $media_info[ $name_prefix . '_height' ] ) {
+				
+					$holder_height = $media_info[ $name_prefix . '_height' ];
+				}
 
-					return $def_width . 'x' . $def_height . 'px';
+				if ( ! empty( $holder_width ) && ! empty( $holder_height ) ) {
+
+					return $holder_width . 'x' . $holder_height . 'px';
 				}
 			}
 
@@ -2447,6 +2482,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *	get_no_checklist_post_types()
 		 *	get_no_checklist_post_tax_user()
 		 *	get_no_columns_post_tax_user()
+		 *	get_no_date_time_timezone()
 		 *	get_no_date_time_tz()
 		 *	get_no_input()
 		 *	get_no_input_clipboard()
@@ -2518,9 +2554,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_columns_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}
 
+		public function get_no_date_time_timezone( $name_prefix = '' ) {
+
+			return $this->get_date_time_timezone( $name_prefix, $media_info = array(), $is_disabled = true );
+		}
+
+		/*
+		 * Deprecated on 2024/08/09.
+		 */
 		public function get_no_date_time_tz( $name_prefix = '' ) {
 
-			return $this->get_date_time_tz( $name_prefix, $is_disabled = true );
+			return $this->get_date_time_timezone( $name_prefix, $media_info = array(), $is_disabled = true );
 		}
 
 		public function get_no_input( $name = '', $css_class = '', $css_id = '', $holder = '' ) {
@@ -2590,7 +2634,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_input_date( $name = '' ) {
 
-			return $this->get_input_date( $name, $css_class = '', $css_id = '', $min_date = '', $max_date = '', $is_disabled = true );
+			return $this->get_input_date( $name, $css_class = '', $css_id = '', $holder = '', $is_disabled = true );
 		}
 
 		public function get_no_input_date_options( $name, $opts ) {

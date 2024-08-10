@@ -1905,13 +1905,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/*
-		 * The returned array can include a varying number of elements, depending on the $request value.
+		 * The returned array can include a varying number of elements, depending on the $media_request value.
 		 *
 		 * $md_pre may be 'none' when getting Open Graph option defaults (and not their custom values).
 		 *
 		 * $size_name should be a string, not an array.
+		 *
+		 * See WpssoCmcfFiltersEdit->filter_mb_sso_edit_media_og_rows() for 'pid'.
+		 * See WpssoGmfFiltersEdit->filter_mb_sso_edit_media_schema_rows() for 'pid'.
+		 * See WpssoEditMedia->filter_mb_sso_edit_media_prio_image_rows() for 'pid'.
+		 * See WpssoEditMedia->filter_mb_sso_edit_media_twitter_rows() for 'pid'.
+		 * See WpssoEditMedia->filter_mb_sso_edit_media_schema_rows() for 'pid'.
+		 * See WpssoEditMedia->filter_mb_sso_edit_media_pinterest_rows() for 'pid'.
+		 * See WpssoProAdminEdit->filter_mb_sso_edit_media_prio_video_rows() for 'og_vid_url', 'og_vid_title', 'og_vid_desc', 'og_vid_stream_url', 'og_vid_width', 'og_vid_height', 'og_vid_upload'.
+		 * See WpssoRrssbSubmenuSharePinterest->get_html() for 'img_url'.
 		 */
-		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_media_info( $size_name, array $media_request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( ! is_string( $size_name ) ) {
 
@@ -1931,12 +1940,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$mt_images  = null;
 			$mt_videos  = null;
 
-			foreach ( $request as $key ) {
+			foreach ( $media_request as $key ) {
 
 				switch ( $key ) {
 
 					case 'pid':
-					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
+					case ( preg_match( '/^(og_img)/', $key ) ? true : false ):
 
 						/*
 						 * Get images only once.
@@ -1948,7 +1957,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						break;
 
-					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
+					case ( preg_match( '/^(og_vid)/', $key ) ? true : false ):
 
 						/*
 						 * Get videos only once.
@@ -1962,7 +1971,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			foreach ( $request as $key ) {
+			foreach ( $media_request as $key ) {
 
 				switch ( $key ) {
 
@@ -1975,8 +1984,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						// No break.
 
-					case 'image':
-					case 'img_url':
+					case 'og_img_url':
 
 						if ( empty( $get_mt_name ) ) {
 
@@ -1997,61 +2005,66 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						break;
 
-					case 'img_alt':
+					case 'og_img_alt':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_images, $mt_pre . ':image:alt' );
 
 						break;
 
-					case 'video':
-					case 'vid_url':
+					case 'og_vid_url':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video' );
 
 						break;
 
-					case 'vid_type':
+					case 'og_vid_type':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:type' );
 
 						break;
 
-					case 'vid_title':
+					case 'og_vid_title':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:title' );
 
 						break;
 
-					case 'vid_desc':
+					case 'og_vid_desc':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:description' );
 
 						break;
 
-					case 'vid_stream_url':
+					case 'og_vid_stream_url':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
 
 						break;
 
-					case 'vid_width':
+					case 'og_vid_width':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:width' );
 
 						break;
 
-					case 'vid_height':
+					case 'og_vid_height':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:height' );
 
 						break;
 
-					case 'vid_prev':
-					case 'prev_url':
-					case 'preview':
+					case 'og_vid_prev':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
 
+						break;
+
+					case 'og_vid_upload':
+
+						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:upload_date' );
+
+						WpssoSchema::add_date_time_timezone_opts( $media_info[ $key ], $media_info, $key );
+						
 						break;
 
 					default:

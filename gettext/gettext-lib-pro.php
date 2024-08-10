@@ -195,6 +195,7 @@ _x( 'Video Name', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
 _x( 'Video Stream URL', 'option label', 'wpsso' );
 _x( 'Video Dimensions', 'option label', 'wpsso' );
+_x( 'Video Upload Date', 'option label', 'wpsso' );
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );

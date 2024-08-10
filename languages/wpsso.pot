@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.25.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 17.25.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2744,49 +2744,49 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:934 lib/com/form.php:2612
+#: lib/com/form.php:944 lib/com/form.php:2656
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:935 lib/com/form.php:2613
+#: lib/com/form.php:945 lib/com/form.php:2657
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:936 lib/com/form.php:2614
+#: lib/com/form.php:946 lib/com/form.php:2658
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:937 lib/com/form.php:2615
+#: lib/com/form.php:947 lib/com/form.php:2659
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:973
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:983
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:974 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:984 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:984
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:994
 #: lib/media-filters.php:116 lib/media.php:1556 lib/media.php:1706
-#: lib/media.php:3716
+#: lib/media.php:3729
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1067 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1077 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 
@@ -5799,7 +5799,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:214
+#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:616 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -5820,7 +5820,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:217
 #: lib/pro/admin/advanced.php:634 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -5831,7 +5831,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:218
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:219
 #: lib/pro/admin/advanced.php:644 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -5842,7 +5842,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:221
 #: lib/pro/admin/advanced.php:654 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -5893,7 +5893,7 @@ msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:234
 #: lib/pro/admin/advanced.php:705 lib/pro/review/judgeme.php:62
 msgctxt "metabox title"
 msgid "Judge.me (Ratings and Reviews)"
@@ -5909,7 +5909,7 @@ msgctxt "option label"
 msgid "Judge.me Shop Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:225
+#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:226
 #: lib/pro/admin/advanced.php:721 lib/pro/review/shopperapproved.php:45
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
@@ -5925,7 +5925,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:229
+#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:230
 #: lib/pro/admin/advanced.php:737 lib/pro/review/stamped.php:45
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -6356,26 +6356,32 @@ msgctxt "option label"
 msgid "Video Stream URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:94
+#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:95
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:198 gettext/gettext-lib-pro.php:201
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/slideshare.php:210
+#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:101
+#: lib/std/admin/edit.php:94
+msgctxt "option label"
+msgid "Video Upload Date"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:199 gettext/gettext-lib-pro.php:202
+#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:210
 #: lib/pro/media/vimeo.php:189 lib/pro/media/wistia.php:353
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:199 gettext/gettext-lib-pro.php:202
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:211
+#: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/slideshare.php:211
 #: lib/pro/media/vimeo.php:190 lib/pro/media/wistia.php:354
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
-#: gettext/gettext-lib-pro.php:206 lib/conflict.php:354
+#: gettext/gettext-lib-pro.php:201 gettext/gettext-lib-pro.php:204
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:354
 #: lib/pro/media/slideshare.php:214 lib/pro/media/vimeo.php:193
 #: lib/pro/media/wistia.php:357
 msgid ""
@@ -6383,81 +6389,81 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/media/youtube.php:178
+#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:179
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:188
+#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:189
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:198
+#: gettext/gettext-lib-pro.php:210 lib/pro/media/youtube.php:199
 msgid "Video upload date not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:210 lib/pro/media/upscale.php:249
+#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:249
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:257
+#: gettext/gettext-lib-pro.php:212 lib/pro/media/upscale.php:257
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:223
+#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:243 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:795
 msgid "%s error:"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:215
-#: gettext/gettext-lib-pro.php:217 gettext/gettext-lib-pro.php:219
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
 #: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
 #: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:451
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:451
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:492
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/shorten.php:492
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:224 lib/pro/util/shorten.php:529
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/shorten.php:529
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:226 lib/pro/review/shopperapproved.php:173
+#: gettext/gettext-lib-pro.php:227 lib/pro/review/shopperapproved.php:173
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:227 gettext/gettext-lib-pro.php:231
-#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:375
+#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
+#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:375
 #: lib/pro/review/shopperapproved.php:347 lib/pro/review/stamped.php:336
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
-#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:378
+#: gettext/gettext-lib-pro.php:229 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:237 lib/pro/review/judgeme.php:378
 #: lib/pro/review/shopperapproved.php:350 lib/pro/review/stamped.php:339
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:230 lib/pro/review/stamped.php:173
+#: gettext/gettext-lib-pro.php:231 lib/pro/review/stamped.php:173
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/review/judgeme.php:188
+#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:188
 msgid "getting judge.me ratings and reviews"
 msgstr ""
 
@@ -9203,7 +9209,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3726
+#: lib/media-filters.php:119 lib/media.php:3739
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9296,22 +9302,22 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3065
+#: lib/media.php:3078
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3737
+#: lib/media.php:3750
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3790
+#: lib/media.php:3803
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3825
+#: lib/media.php:3838
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -9892,7 +9898,7 @@ msgid ""
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-opengraph.php:117
+#: lib/messages-tooltip-meta-opengraph.php:118
 msgid ""
 "The %s video APIs can include additional information about a video (ie. "
 "name / title, description, dimensions, stream URL, etc.), provided that this "
@@ -9900,13 +9906,13 @@ msgid ""
 "been entered here manually."
 msgstr ""
 
-#: lib/messages-tooltip-meta-opengraph.php:125
+#: lib/messages-tooltip-meta-opengraph.php:126
 msgid ""
 "The stream URL should be a publicly available URL to the video file (mkv, "
 "mp4, etc.) or video data stream (not an HTML webpage)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-opengraph.php:127
+#: lib/messages-tooltip-meta-opengraph.php:128
 msgid ""
 "The stream URL will be used for the Schema contentUrl property value in the "
 "Schema VideoObject markup."
@@ -14337,7 +14343,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3860
+#: lib/schema.php:3882
 msgid "checking schema properties"
 msgstr ""
 

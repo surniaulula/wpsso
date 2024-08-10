@@ -113,6 +113,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 				case 'tooltip-meta-og_vid_title':	// Video Name.
 				case 'tooltip-meta-og_vid_desc':	// Video Description.
 				case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
+				case 'tooltip-meta-og_vid_upload_date':	// Video Upload Date.
 
 					$text = sprintf( __( 'The %s video APIs can include additional information about a video (ie. name / title, description, dimensions, stream URL, etc.), provided that this information is available from the video service API, or the information has been entered here manually.', 'wpsso' ), $this->p_name_pro ) . ' ';
 

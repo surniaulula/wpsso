@@ -88,6 +88,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-og_vid_dimensions',
 					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 				),
+				'og_vid_upload_date' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Video Upload Date', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_vid_upload_date',
+					'content'  => $form->get_no_date_time_timezone( 'og_vid_upload' ),
+				),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

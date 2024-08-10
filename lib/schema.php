@@ -3478,6 +3478,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return date_format( $date_obj, 'c' );
 		}
 
+		public static function add_date_time_timezone_opts( $date, array &$opts, $md_pre ) {	// Pass by reference is OK.
+
+			$opts[ $md_pre . '_date' ]     = '';
+			$opts[ $md_pre . '_time' ]     = '';
+			$opts[ $md_pre . '_timezone' ] = '';
+
+			if ( $date ) {
+
+				$date_obj = date_create( $date );
+
+				if ( $date_obj ) {
+
+					/*
+					 * See https://www.php.net/manual/en/datetime.format.php.
+					 */
+					$opts[ $md_pre . '_date' ]     = date_format( $date_obj, 'Y-m-d' );
+					$opts[ $md_pre . '_time' ]     = date_format( $date_obj, 'H:i' );
+					$opts[ $md_pre . '_timezone' ] = date_format( $date_obj, 'P' );
+				}
+			}
+		}
+
 		/*
 		 * Example $prop_names array:
 		 *
