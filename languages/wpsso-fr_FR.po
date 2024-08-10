@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.24.0\n"
+"Project-Id-Version: WPSSO Core 17.25.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-08-06 10:21-0700\n"
+"PO-Revision-Date: 2024-08-10 09:05-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2602,49 +2602,49 @@ msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:934 lib/com/form.php:2612
+#: lib/com/form.php:944 lib/com/form.php:2656
 msgctxt "option comment"
 msgid "days"
 msgstr "jours"
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:935 lib/com/form.php:2613
+#: lib/com/form.php:945 lib/com/form.php:2657
 msgctxt "option comment"
 msgid "hours"
 msgstr "heures"
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:936 lib/com/form.php:2614
+#: lib/com/form.php:946 lib/com/form.php:2658
 msgctxt "option comment"
 msgid "mins"
 msgstr "mins"
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:937 lib/com/form.php:2615
+#: lib/com/form.php:947 lib/com/form.php:2659
 msgctxt "option comment"
 msgid "secs"
 msgstr "secs"
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:973
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:983
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:974 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:984 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:984
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:994
 #: lib/media-filters.php:116 lib/media.php:1556 lib/media.php:1706
-#: lib/media.php:3716
+#: lib/media.php:3730
 msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1067 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1077 lib/script.php:365
 msgid "Select Image"
 msgstr "Choisir l'image"
 
@@ -2806,9 +2806,11 @@ msgid "(feature) Import Yoast SEO Metadata"
 msgstr "(feature) Importer métadonnées Yoast SEO"
 
 #: gettext/gettext-lib-config.php:20
+#| msgctxt "lib file description"
+#| msgid "(plugin) Product GTIN for WooCommerce"
 msgctxt "lib file description"
-msgid "(plugin) Perfect WooCommerce Brands"
-msgstr "(plugin) Perfect WooCommerce Brands"
+msgid "(plugin) Perfect Brands for WooCommerce"
+msgstr "(plugin) Perfect Brands for WooCommerce"
 
 #: gettext/gettext-lib-config.php:21
 msgctxt "lib file description"
@@ -2901,8 +2903,6 @@ msgid "(plugin) WP Recipe Maker"
 msgstr "(plugin) WP Recipe Maker"
 
 #: gettext/gettext-lib-config.php:39
-#| msgctxt "lib file description"
-#| msgid "(plugin) Product GTIN for WooCommerce"
 msgctxt "lib file description"
 msgid "(plugin) Judge.me Product Reviews for WooCommerce"
 msgstr "(plugin) Judge.me Product Reviews for WooCommerce"
@@ -3869,7 +3869,7 @@ msgstr "Toujours forcer la valeur"
 #: gettext/gettext-lib-config.php:479 gettext/gettext-lib-config.php:491
 #: gettext/gettext-lib-config.php:497 gettext/gettext-lib-config.php:505
 #: gettext/gettext-lib-config.php:519 gettext/gettext-lib-config.php:527
-#: gettext/gettext-lib-config.php:540 lib/messages-tooltip-plugin.php:681
+#: gettext/gettext-lib-config.php:540 lib/messages-tooltip-plugin.php:684
 #: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -5574,10 +5574,10 @@ msgstr "Taille d'image Gravatar"
 
 #: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:189
 #: lib/pro/admin/advanced.php:573 lib/pro/admin/general.php:78
-#: lib/std/admin/advanced.php:559 lib/std/admin/general.php:68
+#: lib/std/admin/advanced.php:559 lib/std/admin/general.php:71
 msgctxt "option label"
-msgid "Check for Embedded Media"
-msgstr "Découvrir les médias intégrés"
+msgid "Detect Embedded Media"
+msgstr "Détecter les médias intégrés"
 
 #: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:588
 #: lib/std/admin/advanced.php:574
@@ -5614,7 +5614,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr "Bitly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:214
+#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:616 lib/pro/util/shorten.php:354
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -5635,7 +5635,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr "DLMY.App (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:217
 #: lib/pro/admin/advanced.php:634 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -5646,7 +5646,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr "Ow.ly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:218
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:219
 #: lib/pro/admin/advanced.php:644 lib/pro/util/shorten.php:404
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -5657,7 +5657,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr "YOURLS (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:221
 #: lib/pro/admin/advanced.php:654 lib/pro/util/shorten.php:445
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -5708,7 +5708,7 @@ msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr "Obtenir critiques pour type d'articles"
 
-#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:234
 #: lib/pro/admin/advanced.php:705 lib/pro/review/judgeme.php:62
 msgctxt "metabox title"
 msgid "Judge.me (Ratings and Reviews)"
@@ -5724,7 +5724,7 @@ msgctxt "option label"
 msgid "Judge.me Shop Token"
 msgstr "Jeton de boutique Judge.me"
 
-#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:225
+#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:226
 #: lib/pro/admin/advanced.php:721 lib/pro/review/shopperapproved.php:45
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
@@ -5740,7 +5740,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr "Jeton d'API Shopper Approved"
 
-#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:229
+#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:230
 #: lib/pro/admin/advanced.php:737 lib/pro/review/stamped.php:45
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -6116,13 +6116,13 @@ msgid "Maximum Videos to Include"
 msgstr "Vidéos maximum a inclure"
 
 #: gettext/gettext-lib-pro.php:187 lib/pro/admin/general.php:61
-#: lib/std/admin/general.php:53
+#: lib/std/admin/general.php:54
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr "Inclure l'image d'aperçu des vidéos"
 
 #: gettext/gettext-lib-pro.php:188 lib/pro/admin/general.php:66
-#: lib/std/admin/general.php:57
+#: lib/std/admin/general.php:59
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr "Forcer a jouer lorsque possible"
@@ -6137,7 +6137,7 @@ msgstr "Informations du vidéo prioritaire"
 #: lib/pro/admin/edit.php:57 lib/std/admin/edit.php:47
 msgctxt "option label"
 msgid "Video Embed HTML"
-msgstr "HTML du vidéo intégrée"
+msgstr "HTML vidéo intégrée"
 
 #: gettext/gettext-lib-pro.php:192 lib/pro/admin/edit.php:63
 #: lib/std/admin/edit.php:54
@@ -6155,7 +6155,7 @@ msgstr "Informations vidéo de l’API vidéo"
 #: lib/std/admin/edit.php:66
 msgctxt "option label"
 msgid "Video Name"
-msgstr "Nom de la vidéo"
+msgstr "Nom du vidéo"
 
 #: gettext/gettext-lib-pro.php:195 lib/pro/admin/edit.php:81
 #: lib/std/admin/edit.php:73
@@ -6169,101 +6169,107 @@ msgctxt "option label"
 msgid "Video Stream URL"
 msgstr "URL du flux vidéo"
 
-#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:94
+#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:95
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr "Dimensions du vidéo"
 
-#: gettext/gettext-lib-pro.php:198 gettext/gettext-lib-pro.php:201
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/slideshare.php:210
+#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:101
+#: lib/std/admin/edit.php:94
+msgctxt "option label"
+msgid "Video Upload Date"
+msgstr "Date téléchargement du vidéo"
+
+#: gettext/gettext-lib-pro.php:199 gettext/gettext-lib-pro.php:202
+#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:210
 #: lib/pro/media/vimeo.php:189 lib/pro/media/wistia.php:353
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
-#: gettext/gettext-lib-pro.php:199 gettext/gettext-lib-pro.php:202
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:211
+#: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/slideshare.php:211
 #: lib/pro/media/vimeo.php:190 lib/pro/media/wistia.php:354
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
-#: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
-#: gettext/gettext-lib-pro.php:206 lib/conflict.php:343
+#: gettext/gettext-lib-pro.php:201 gettext/gettext-lib-pro.php:204
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:354
 #: lib/pro/media/slideshare.php:214 lib/pro/media/vimeo.php:193
 #: lib/pro/media/wistia.php:357
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/media/youtube.php:176
+#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:179
 msgid "Video title not found for %s."
 msgstr "Titre de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:186
+#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:189
 msgid "Video description not found for %s."
 msgstr "Description de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:196
+#: gettext/gettext-lib-pro.php:210 lib/pro/media/youtube.php:199
 msgid "Video upload date not found for %s."
 msgstr "Date de téléchargement de la vidéo introuvable pour %s."
 
-#: gettext/gettext-lib-pro.php:210 lib/pro/media/upscale.php:249
+#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:249
 msgid "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s (dépasse le maximum défini de %7$s)."
 
-#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:257
+#: gettext/gettext-lib-pro.php:212 lib/pro/media/upscale.php:257
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:223
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:213
+#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
+#: lib/conflict.php:243 lib/integ/review/yotpowc.php:181 lib/loader.php:213
 #: lib/loader.php:227 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:795
 msgid "%s error:"
 msgstr "Erreur %s:"
 
-#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:215
-#: gettext/gettext-lib-pro.php:217 gettext/gettext-lib-pro.php:219
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
 #: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:379
 #: lib/pro/util/shorten.php:403 lib/pro/util/shorten.php:444
 msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:451
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:451
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr "Boucle détectée: l'URL de l'API YOURLS correspond à l'URL actuelle (%s)"
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:492
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/shorten.php:492
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr "Impossible d'instancier le service de raccourcissement \"%s\"."
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:224 lib/pro/util/shorten.php:529
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/shorten.php:529
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr "Fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est manquant et requis."
 
-#: gettext/gettext-lib-pro.php:226 lib/pro/review/shopperapproved.php:173
+#: gettext/gettext-lib-pro.php:227 lib/pro/review/shopperapproved.php:173
 msgid "getting shopper approved ratings and reviews"
 msgstr "obtenir notes et critiques de shopper approved"
 
-#: gettext/gettext-lib-pro.php:227 gettext/gettext-lib-pro.php:231
-#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:375
+#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
+#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:375
 #: lib/pro/review/shopperapproved.php:347 lib/pro/review/stamped.php:336
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
-#: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
-#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:378
+#: gettext/gettext-lib-pro.php:229 gettext/gettext-lib-pro.php:233
+#: gettext/gettext-lib-pro.php:237 lib/pro/review/judgeme.php:378
 #: lib/pro/review/shopperapproved.php:350 lib/pro/review/stamped.php:339
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
-#: gettext/gettext-lib-pro.php:230 lib/pro/review/stamped.php:173
+#: gettext/gettext-lib-pro.php:231 lib/pro/review/stamped.php:173
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtenir notes et critiques de stamp.io"
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/review/judgeme.php:188
+#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:188
 msgid "getting judge.me ratings and reviews"
 msgstr "obtenir notes et critiques de judge.me"
 
@@ -6869,12 +6875,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5503
+#: lib/config.php:5504
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5503
+#: lib/config.php:5504
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -7240,71 +7246,71 @@ msgstr "Après avoir installé et activé l'ajout %1$s, <a href=\"%2$s\">veuille
 msgid "WPSSO Place and Local SEO Markup"
 msgstr "WPSSO balisage d'endroit et SEO local"
 
-#: lib/conflict.php:206
+#: lib/conflict.php:217
 msgid "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes)."
 msgstr "Votre base de données est configurée pour une taille \"%1$s\" de %2$d octets, ce qui est inférieure à la valeur minimale recommandée de %3$d octets (la valeur par défaut courante est %4$d octets)."
 
-#: lib/conflict.php:208
+#: lib/conflict.php:219
 msgid "Please contact your hosting provider and have the \"%1$s\" database option adjusted to a larger and safer value."
 msgstr "SVP contacter votre hébergeur pour que l'option de base de données \"%1$s\" soit ajustée à une valeur plus grande et plus sûre."
 
-#: lib/conflict.php:210
+#: lib/conflict.php:221
 msgid "See the %1$s sections %2$s and %3$s for more information on this database option."
 msgstr "Voir les sections %2$s et %3$s de %1$s pour plus d'informations sur cette option de base de données."
 
-#: lib/conflict.php:279
+#: lib/conflict.php:290
 msgid "WordPress is configured to use the %1$s image editing class but the <a href=\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr "WordPress est configuré pour utiliser la classe d'édition d'image %1$s mais le <a href=\"%2$s\">module d'extension PHP %3$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:283
+#: lib/conflict.php:294
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:290
+#: lib/conflict.php:301
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> pour \"%3$s\" retourne faux."
 
-#: lib/conflict.php:291
+#: lib/conflict.php:302
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr "https://secure.php.net/manual/fr/function.extension-loaded.php"
 
-#: lib/conflict.php:301
+#: lib/conflict.php:312
 msgid "Note that the ImageMagick application and the PHP \"%1$s\" extension are two different products - this error is for the PHP \"%1$s\" extension, not the ImageMagick application."
 msgstr "Notez que l'application ImageMagick et l'extension PHP \"%1$s\" sont deux produits différents - cette erreur est pour l'extension PHP \"%1$s\", et non l'application ImageMagick."
 
-#: lib/conflict.php:304
+#: lib/conflict.php:315
 msgid "Please contact your hosting provider to have the missing PHP \"%1$s\" extension installed and enabled."
 msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP \"%1$s\" manquante."
 
-#: lib/conflict.php:322
+#: lib/conflict.php:333
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s class is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la classe %3$s est manquante."
 
-#: lib/conflict.php:324
+#: lib/conflict.php:335
 msgid "Please contact your hosting provider to have the missing PHP class installed."
 msgstr "SVP contacter votre hébergeur pour installer la classe PHP manquante."
 
-#: lib/conflict.php:341
+#: lib/conflict.php:352
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/conflict.php:380
+#: lib/conflict.php:391
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:382
+#: lib/conflict.php:393
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:384
+#: lib/conflict.php:395
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:407 lib/messages.php:1414
+#: lib/conflict.php:418 lib/messages.php:1414
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines from indexing this site."
 msgstr "L'option WordPress <a href=\"%s\">Visibilité par les moteurs de recherche</a> est configurée pour décourager les moteurs de recherche d'indexer ce site."
 
-#: lib/conflict.php:409
+#: lib/conflict.php:420
 msgid "This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site."
 msgstr "Ceci n'est pas compatible avec l'objectif d'optimisation de votre contenu pour les moteurs sociaux et de recherche - veuillez décocher l'option pour permettre aux moteurs de recherche et aux sites sociaux d'accéder votre site."
 
@@ -8884,7 +8890,7 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media-filters.php:119 lib/media.php:3726
+#: lib/media-filters.php:119 lib/media.php:3740
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
@@ -8949,19 +8955,19 @@ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour crée
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3065
+#: lib/media.php:3079
 msgid "Getting video details for %s."
 msgstr "Obtention des détails de la vidéo pour %s."
 
-#: lib/media.php:3737
+#: lib/media.php:3751
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3790
+#: lib/media.php:3804
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3825
+#: lib/media.php:3839
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -9367,15 +9373,15 @@ msgstr "Si le vidéo provient d'un service vidéo externe reconnu, une connexion
 msgid "A video URL for the first video included in the meta tags and Schema JSON-LD markup."
 msgstr "Une URL vidéo pour la première vidéo incluse dans les balises méta et le balisage de Schéma JSON-LD."
 
-#: lib/messages-tooltip-meta-opengraph.php:117
+#: lib/messages-tooltip-meta-opengraph.php:118
 msgid "The %s video APIs can include additional information about a video (ie. name / title, description, dimensions, stream URL, etc.), provided that this information is available from the video service API, or the information has been entered here manually."
 msgstr "Les APIs vidéo %s peuvent inclure des informations supplémentaires sur une vidéo (c'est-à-dire nom / titre, description, dimensions, URL du flux, etc.), à condition que ces informations soient disponibles à partir de l'API du service vidéo, ou que les informations aient été saisies ici manuellement."
 
-#: lib/messages-tooltip-meta-opengraph.php:125
+#: lib/messages-tooltip-meta-opengraph.php:126
 msgid "The stream URL should be a publicly available URL to the video file (mkv, mp4, etc.) or video data stream (not an HTML webpage)."
 msgstr "L'URL du flux doit être une URL accessible au public vers le fichier vidéo (mkv, mp4, etc.) ou le flux de données vidéo (pas une page Web HTML)."
 
-#: lib/messages-tooltip-meta-opengraph.php:127
+#: lib/messages-tooltip-meta-opengraph.php:128
 msgid "The stream URL will be used for the Schema contentUrl property value in the Schema VideoObject markup."
 msgstr "L'URL du flux sera utilisée pour la valeur de la propriété de Schéma contentUrl dans le balisage de Schéma VideoObject."
 
@@ -9654,8 +9660,8 @@ msgstr "Dans ce cas, vous devez mettre à jour les informations sur le produit d
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:78
 #: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:823
-#: lib/messages-tooltip-plugin.php:865 lib/messages-tooltip-schema.php:179
+#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:826
+#: lib/messages-tooltip-plugin.php:868 lib/messages-tooltip-schema.php:179
 #: lib/messages-tooltip-schema.php:336
 msgid "<a href=\"%1$s\">See this webpage for more information about choosing %2$s value</a>."
 msgstr "<a href=\"%1$s\">Consultez cette page Web pour plus d'informations pour choisir une valeur %2$s</a>."
@@ -10896,156 +10902,160 @@ msgstr "Choisissez un format préféré pour les options déroulantes de type Sc
 msgid "A customized image for each author can be selected in the WordPress user profile %s metabox."
 msgstr "Une image personnalisée pour chaque auteur peut être sélectionnée dans la métabox %s du profil utilisateur WordPress."
 
-#: lib/messages-tooltip-plugin.php:638
-msgid "If a custom image has not been selected, fallback to using their Gravatar image."
-msgstr "Si une image personnalisée n'a pas été sélectionnée, utilisez leur image Gravatar."
+#: lib/messages-tooltip-plugin.php:639
+msgid "If a custom image has not been selected, fallback to using the author's Gravatar image."
+msgstr "Si une image personnalisée n’a pas été sélectionnée, utiliser l’image Gravatar de l’auteur."
 
-#: lib/messages-tooltip-plugin.php:646
+#: lib/messages-tooltip-plugin.php:647
 msgid "The requested Gravatar image width and height (a number from 1 to 2048)."
 msgstr "La largeur et la hauteur de l'image Gravatar demandées (un nombre de 1 à 2048)."
 
-#: lib/messages-tooltip-plugin.php:648
+#: lib/messages-tooltip-plugin.php:649
 msgid "Note that users often upload low resolution images to Gravatar, so choosing a larger image size may result in pixelation and lower-quality images."
 msgstr "Notez que les utilisateurs téléchargent souvent des images à basse résolution sur Gravatar, donc choisir une taille d'image plus grande peut entraîner une pixellisation et des images de qualité inférieure."
 
-#: lib/messages-tooltip-plugin.php:650
+#: lib/messages-tooltip-plugin.php:651
 msgid "The default Gravatar image size is %d pixels."
 msgstr "La taille d'image Gravatar par défaut est %d pixels."
 
-#: lib/messages-tooltip-plugin.php:656
-msgid "Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.)."
-msgstr "Chercher le contenu pour des URLs de médias intégrées des fournisseurs de médias connus (Vimeo, Wistia, YouTube, etc.). Si un URL de média connu est trouvée, une connexion API au fournisseur sera effectuée pour récupérer des informations sur le média (URL d'image de pré-visualisation, URL du média Flash, la largeur / hauteur du vidéo, etc.)."
+#: lib/messages-tooltip-plugin.php:657
+msgid "Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.)."
+msgstr "Vérifiez le contenu pour des URL de médias intégrés provenant de fournisseurs de médias connus (Vimeo, Wistia, YouTube, etc.)."
 
-#: lib/messages-tooltip-plugin.php:665
+#: lib/messages-tooltip-plugin.php:659
+msgid "When a supported media URL is found, an API connection to the provider can be made to retrieve additional information about the media (preview image URL, oembed player URL, video width and height, etc.)."
+msgstr "Lorsqu'une URL de média est trouvée, une connexion API au fournisseur peut être établie pour récupérer des informations supplémentaires sur le média (URL de l'image d'aperçu, URL du lecteur intégré, largeur et hauteur de la vidéo, etc.)."
+
+#: lib/messages-tooltip-plugin.php:668
 msgid "A preferred URL shortening service used for the <code>%s</code> HTML tag value, Schema markup, and social sharing buttons."
 msgstr "Un service de raccourcissement d'URL préféré utilisé pour la valeur de la balise HTML <code>%s</code>, le balisage de Schéma et les boutons de partage social."
 
-#: lib/messages-tooltip-plugin.php:673
+#: lib/messages-tooltip-plugin.php:676
 msgid "Only shorten URLs that are longer than this length (default is %d characters)."
 msgstr "Raccourcir uniquement les URL qui sont plus longues que cette longueur (la valeur par défaut est %d caractères)."
 
-#: lib/messages-tooltip-plugin.php:679
+#: lib/messages-tooltip-plugin.php:682
 msgid "Use the selected URL shortening service to replace the WordPress <code>%s</code> function value."
 msgstr "Utiliser le service de raccourcissement d'URL sélectionné pour remplacer la valeur de la fonction <code>%s</code> de WordPress."
 
-#: lib/messages-tooltip-plugin.php:681
+#: lib/messages-tooltip-plugin.php:684
 msgid "If the URL shortening service is set to \"%1$s\" then checking or unchecking option has no effect on the WordPress <code>%2$s</code> function as there is no URL shortening service available to replace its value."
 msgstr "Si le service de raccourcissement d'URL est défini comme \"%1$s\", alors cocher ou décocher l'option n'a aucun effet sur la fonction WordPress <code>%2$s</code> car aucun service de raccourcissement d'URL n'est disponible pour remplacer sa valeur."
 
-#: lib/messages-tooltip-plugin.php:687
+#: lib/messages-tooltip-plugin.php:690
 msgid "Use the selected URL shortening service to replace the WordPress <code>%s</code> HTML tag."
 msgstr "Utiliser le service de raccourcissement d'URL sélectionné pour remplacer la balise HTML <code>%s</code> de WordPress."
 
-#: lib/messages-tooltip-plugin.php:693
+#: lib/messages-tooltip-plugin.php:696
 msgid "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr "Le service de raccourcissement Bitly nécessite un jeton d'accès générique pour raccourcir les URL."
 
-#: lib/messages-tooltip-plugin.php:695
+#: lib/messages-tooltip-plugin.php:698
 msgid "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile settings</a> and enter its value here."
 msgstr "<a href=\"%s\"> Vous pouvez créer un jeton d'accès générique dans vos paramètres de profil Bitly</a> et entrer sa valeur ici."
 
-#: lib/messages-tooltip-plugin.php:701
+#: lib/messages-tooltip-plugin.php:704
 msgid "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or another custom short domain."
 msgstr "Un domaine court optionnel pour Bitly - soit bit.ly, j.mp, bitly.com, ou un autre domaine court personnalisé."
 
-#: lib/messages-tooltip-plugin.php:703
+#: lib/messages-tooltip-plugin.php:706
 msgid "If no value is entered here, the short domain selected in your Bitly account settings will be used."
 msgstr "Si aucune valeur n'est entrée ici, le domaine court sélectionné dans les paramètres de votre compte Bitly sera utilisé."
 
-#: lib/messages-tooltip-plugin.php:709
+#: lib/messages-tooltip-plugin.php:712
 msgid "An optional <a href=\"%s\">Bitly group name to organize your Bitly account links</a>."
 msgstr "Un <a href=\"%s\">nom de groupe Bitly facultatif pour organiser les liens de votre compte Bitly</a>."
 
-#: lib/messages-tooltip-plugin.php:716
+#: lib/messages-tooltip-plugin.php:719
 msgid "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage."
 msgstr "La clé API secrète DLMY.App peut être trouvée dans la page Web du compte utilisateur DLMY.App &gt; Outils &gt; API de développeur."
 
-#: lib/messages-tooltip-plugin.php:722
+#: lib/messages-tooltip-plugin.php:725
 msgid "To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href=\"%s\">Request Ow.ly API Access</a>)."
 msgstr "Pour utiliser Ow.ly comme votre service de raccourcissement préféré, vous devez fournir la clé API Ow.ly pour ce site Web (remplissez ce formulaire pour <a href=\"%s\">demander un accès API Ow.ly</a>)."
 
-#: lib/messages-tooltip-plugin.php:728
+#: lib/messages-tooltip-plugin.php:731
 msgid "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service."
 msgstr "L'URL du service de raccourcissement de lien <a href=\"%s\">Your Own URL Shortener</a> (YOURLS)."
 
-#: lib/messages-tooltip-plugin.php:733
+#: lib/messages-tooltip-plugin.php:736
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options)."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un nom d'utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d'utilisateur / mot de passe)."
 
-#: lib/messages-tooltip-plugin.php:739
+#: lib/messages-tooltip-plugin.php:742
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options)."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un mot de passe d'utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d' utilisateur / mot de passe)."
 
-#: lib/messages-tooltip-plugin.php:745
+#: lib/messages-tooltip-plugin.php:748
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, vous pouvez utiliser un jeton d'authentification YOURLS au lieu d'un nom d'utilisateur et mot de passe."
 
-#: lib/messages-tooltip-plugin.php:754
+#: lib/messages-tooltip-plugin.php:757
 msgid "An external service API used to retrieve ratings and reviews for meta tags and Schema markup."
 msgstr "Une API de service externe utilisée pour récupérer les notes et les critiques pour les balises méta et le balisage de Schéma."
 
-#: lib/messages-tooltip-plugin.php:760
+#: lib/messages-tooltip-plugin.php:763
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr "Le nombre maximal de critiques récupérés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:766
+#: lib/messages-tooltip-plugin.php:769
 msgid "The maximum age (in months) of reviews retrieved from the service API."
 msgstr "L'âge maximal (en mois) des critiques récupérés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:772
+#: lib/messages-tooltip-plugin.php:775
 msgid "Get ratings and reviews for the selected post types from the service API."
 msgstr "Obtenir les notes et les critiques pour les types d'articles sélectionnés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:779
+#: lib/messages-tooltip-plugin.php:782
 msgid "Your Judge.me shop domain and token are required to retrieve ratings and reviews from the Judge.me service API."
 msgstr "Votre domaine et jeton de boutique Judge.me sont nécessaires pour récupérer les notes et critiques de l'API de service Judge.me."
 
-#: lib/messages-tooltip-plugin.php:786
+#: lib/messages-tooltip-plugin.php:789
 msgid "Your unique Shopper Approved site ID and API token values are required to retrieve ratings and reviews from the Shopper Approved service API."
 msgstr "Votre ID de site et de jeton d'API de Shopper Approved sont nécessaires pour récupérer les notes et critiques de l'API de service Shopper Approved."
 
-#: lib/messages-tooltip-plugin.php:788
+#: lib/messages-tooltip-plugin.php:791
 msgid "<a href=\"%s\">Login to your Shopper Approved account and go to the API Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr "<a href=\"%s\">Connectez-vous à votre compte Shopper Approved et accédez au tableau de bord API</a>, puis faites défiler vers le bas pour trouver votre ID de site et votre jeton d'API."
 
-#: lib/messages-tooltip-plugin.php:795
+#: lib/messages-tooltip-plugin.php:798
 msgid "Your unique Stamped.io store hash and API public key values are required to retrieve ratings and reviews from the Stamped.io service API."
 msgstr "Le hachage unique pour votre magasin et la clé publique d'API de Stamped.io sont nécessaires pour récupérer les notes et les critiques de l'API de service Stamped.io."
 
-#: lib/messages-tooltip-plugin.php:812
+#: lib/messages-tooltip-plugin.php:815
 msgid "The product attribute name allows %s to request a product attribute value from an e-commerce plugin."
 msgstr "Le nom d'attribut de produit permet à %s de demander une valeur d'attribut de produit d'une extension de commerce électronique."
 
-#: lib/messages-tooltip-plugin.php:817
+#: lib/messages-tooltip-plugin.php:820
 msgid "The default attribute name is \"%s\"."
 msgstr "Le nom d'attribut par défaut est \"%s\"."
 
-#: lib/messages-tooltip-plugin.php:829
+#: lib/messages-tooltip-plugin.php:832
 msgid "The product attribute value can be an empty string or one of these values (case sensitive): %s"
 msgstr "La valeur de l'attribut de produit peut être une chaîne vide ou l'une de ces valeurs (sensible aux majuscules/minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:835 lib/messages-tooltip-plugin.php:877
+#: lib/messages-tooltip-plugin.php:838 lib/messages-tooltip-plugin.php:880
 msgid "Note that the \"%s\" option supports multiple values."
 msgstr "Notez que l'option \"%s\" prend en charge plusieurs valeurs."
 
-#: lib/messages-tooltip-plugin.php:837
+#: lib/messages-tooltip-plugin.php:840
 msgid "The product attribute string will be split using the comma \",\" character."
 msgstr "La chaîne de l'attribut du produit sera divisée à l'aide du caractère virgule \",\"."
 
-#: lib/messages-tooltip-plugin.php:856
+#: lib/messages-tooltip-plugin.php:859
 msgid "If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here."
 msgstr "Si votre thème ou une autre extension fournit un champ personnalisé (aka métadonnées) pour %s, vous pouvez entrer son nom de champ personnalisé ici."
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:859
+#: lib/messages-tooltip-plugin.php:862
 msgid "If a custom field matching this name is found, its value will be imported for the %1$s \"%2$s\" option."
 msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option %1$s \"%2$s\"."
 
-#: lib/messages-tooltip-plugin.php:871
+#: lib/messages-tooltip-plugin.php:874
 msgid "The custom field value can be an empty string or one of these values (case sensitive): %s"
 msgstr "La valeur du champ personnalisé peut être une chaîne vide ou l’une des valeurs (sensible aux majuscules/minuscules): %s"
 
-#: lib/messages-tooltip-plugin.php:879
+#: lib/messages-tooltip-plugin.php:882
 msgid "If the custom field value is a string, it will be split on the end of line character."
 msgstr "Si la valeur du champ personnalisé est une chaîne, elle sera fractionnée sur le caractère de fin de ligne."
 
@@ -12394,7 +12404,7 @@ msgstr "l'HTML d'un vidéo intégrée (pas un URL)"
 #: lib/messages.php:1026
 msgctxt "option label"
 msgid "Video URL"
-msgstr "URL d'un vidéo"
+msgstr "URL vidéo"
 
 #: lib/messages.php:1027
 msgctxt "tooltip fragment"
@@ -13031,7 +13041,7 @@ msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une criti
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:3860
+#: lib/schema.php:3882
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -13131,8 +13141,6 @@ msgid "Judge.me"
 msgstr "Judge.me"
 
 #: lib/std/review/judgeme.php:37
-#| msgctxt "lib file description"
-#| msgid "(plugin) Product GTIN for WooCommerce"
 msgid "Judge.me Product Reviews for WooCommerce"
 msgstr "Judge.me Product Reviews for WooCommerce"
 
@@ -14402,3 +14410,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "lib file description"
+#~ msgid "(plugin) Perfect WooCommerce Brands"
+#~ msgstr "(plugin) Perfect WooCommerce Brands"

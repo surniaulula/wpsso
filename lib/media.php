@@ -1901,7 +1901,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_pre = 'og_def_img', $key_num = null, $mt_pre = 'og' );
+			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_prefix = 'og_def_img', $key_num = null, $mt_pre = 'og' );
 		}
 
 		/*
@@ -1917,8 +1917,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * See WpssoEditMedia->filter_mb_sso_edit_media_twitter_rows() for 'pid'.
 		 * See WpssoEditMedia->filter_mb_sso_edit_media_schema_rows() for 'pid'.
 		 * See WpssoEditMedia->filter_mb_sso_edit_media_pinterest_rows() for 'pid'.
-		 * See WpssoProAdminEdit->filter_mb_sso_edit_media_prio_video_rows() for 'og_vid_url', 'og_vid_title', 'og_vid_desc', 'og_vid_stream_url', 'og_vid_width', 'og_vid_height', 'og_vid_upload'.
-		 * See WpssoRrssbSubmenuSharePinterest->get_html() for 'img_url'.
+		 * See WpssoProAdminEdit->filter_mb_sso_edit_media_prio_video_rows() for 'og_vid_url', 'og_vid_title',
+		 * 	'og_vid_desc', 'og_vid_stream_url', 'og_vid_width', 'og_vid_height', 'og_vid_upload'.
+		 * See WpssoRrssbSubmenuSharePinterest->get_html() for 'og_img_url'.
 		 */
 		public function get_media_info( $size_name, array $media_request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
@@ -1945,7 +1946,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				switch ( $key ) {
 
 					case 'pid':
-					case ( preg_match( '/^(og_img)/', $key ) ? true : false ):
+					case ( preg_match( '/^(' . $mt_pre . '_img)/', $key ) ? true : false ):
 
 						/*
 						 * Get images only once.
@@ -1957,7 +1958,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						break;
 
-					case ( preg_match( '/^(og_vid)/', $key ) ? true : false ):
+					case ( preg_match( '/^(' . $mt_pre . '_vid)/', $key ) ? true : false ):
 
 						/*
 						 * Get videos only once.
@@ -1984,7 +1985,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						// No break.
 
-					case 'og_img_url':
+					case $mt_pre . '_img_url':
 
 						if ( empty( $get_mt_name ) ) {
 
@@ -2005,61 +2006,61 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						break;
 
-					case 'og_img_alt':
+					case $mt_pre . '_img_alt':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_images, $mt_pre . ':image:alt' );
 
 						break;
 
-					case 'og_vid_url':
+					case $mt_pre . '_vid_url':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video' );
 
 						break;
 
-					case 'og_vid_type':
+					case $mt_pre . '_vid_type':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:type' );
 
 						break;
 
-					case 'og_vid_title':
+					case $mt_pre . '_vid_title':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:title' );
 
 						break;
 
-					case 'og_vid_desc':
+					case $mt_pre . '_vid_desc':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:description' );
 
 						break;
 
-					case 'og_vid_stream_url':
+					case $mt_pre . '_vid_stream_url':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
 
 						break;
 
-					case 'og_vid_width':
+					case $mt_pre . '_vid_width':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:width' );
 
 						break;
 
-					case 'og_vid_height':
+					case $mt_pre . '_vid_height':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:height' );
 
 						break;
 
-					case 'og_vid_prev':
+					case $mt_pre . '_vid_prev':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
 
 						break;
 
-					case 'og_vid_upload':
+					case $mt_pre . '_vid_upload':
 
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:upload_date' );
 
@@ -2256,7 +2257,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $size_name can also be false to ignore image IDs and only use image URLs.
 		 */
-		public function get_mt_opts_images( $opts, $size_names, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
+		public function get_mt_opts_images( $opts, $size_names, $img_prefix = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
 			$img_opts = array();
 
@@ -2264,7 +2265,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$key_suffix = null === $key_num ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
 
-				$opt_key = $img_pre . '_' . $key_suffix;
+				$opt_key = $img_prefix . '_' . $key_suffix;
 
 				$img_opts[ $key ] = SucomUtilOptions::get_key_value( $opt_key, $opts );
 			}
@@ -2296,12 +2297,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
+		public function get_mt_img_pre_url( $opts, $img_prefix = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
 			/*
 			 * $size_name is false to ignore image IDs and only use image URLs.
 			 */
-			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num, $mt_pre );
+			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_prefix, $key_num, $mt_pre );
 
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
 		}

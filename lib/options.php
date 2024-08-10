@@ -1230,17 +1230,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:size_name' => null,
 			 * );
 			 */
-			foreach ( array ( 'site_org_logo', 'site_org_banner' ) as $img_pre ) {
+			foreach ( array ( 'site_org_logo', 'site_org_banner' ) as $img_prefix ) {
 
-				$mt_single_image = $this->p->media->get_mt_img_pre_url( $opts, $img_pre );
+				$mt_single_image = $this->p->media->get_mt_img_pre_url( $opts, $img_prefix );
 				$first_image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-				if ( 'site_org_logo' === $img_pre ) {
+				if ( 'site_org_logo' === $img_prefix ) {
 
 					$option_label = _x( 'Organization Logo URL', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'essential', $option_label );
 
-				} elseif ( 'site_org_banner' === $img_pre ) {
+				} elseif ( 'site_org_banner' === $img_prefix ) {
 
 					$option_label  = _x( 'Organization Banner URL', 'option label', 'wpsso' );
 					$option_link   = $this->p->util->get_admin_url( 'essential', $option_label );
@@ -1272,7 +1272,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$this->p->notice->err( $notice_msg, null, $notice_key );
 
-					} elseif ( 'site_org_logo' === $img_pre ) {
+					} elseif ( 'site_org_logo' === $img_prefix ) {
 
 						$min_width    = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_width' ];
 						$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
@@ -1291,7 +1291,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$this->p->notice->err( $notice_msg, null, $notice_key );
 						}
 
-					} elseif ( 'site_org_banner' === $img_pre ) {
+					} elseif ( 'site_org_banner' === $img_prefix ) {
 
 						$min_width     = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_width' ];
 						$min_height    = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_height' ];

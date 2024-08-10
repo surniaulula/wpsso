@@ -2311,7 +2311,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 			 */
-			$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $img_pre = 'schema_review_item_img' );
+			$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $img_prefix = 'schema_review_item_img' );
 
 			self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
 

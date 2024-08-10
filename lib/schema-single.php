@@ -1151,7 +1151,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
-				$mt_images = $wpsso->media->get_mt_opts_images( $org_opts, $size_names = 'schema', $img_pre = 'org_img' );
+				$mt_images = $wpsso->media->get_mt_opts_images( $org_opts, $size_names = 'schema', $img_prefix = 'org_img' );
 
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 			}
@@ -1512,7 +1512,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
-				$mt_images = $wpsso->media->get_mt_opts_images( $person_opts, $size_names = 'schema', $img_pre = 'person_img' );
+				$mt_images = $wpsso->media->get_mt_opts_images( $person_opts, $size_names = 'schema', $img_prefix = 'person_img' );
 
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/*
 				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 				 */
-				$mt_images = $wpsso->media->get_mt_opts_images( $place_opts, $size_names = 'schema', $img_pre = 'place_img' );
+				$mt_images = $wpsso->media->get_mt_opts_images( $place_opts, $size_names = 'schema', $img_prefix = 'place_img' );
 
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 			}

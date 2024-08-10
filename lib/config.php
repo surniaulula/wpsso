@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wistia'           => '(api) Get Wistia Video Data',
 								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
 								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
-								'youtube'          => '(api) Get YouTube Videos and Playlist Data',
+								'youtube'          => '(api) Get YouTube Video and Playlist Data',
 								'upscale'          => '(feature) Upscale Media Library Images',
 							),
 							'review' => array(
@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wistia'           => '(api) Get Wistia Video Data',
 								'wpvideoblock'     => '(api) Get WP Media Library Video Block Data',
 								'wpvideoshortcode' => '(api) Get WP Media Library Video Shortcode Data',
-								'youtube'          => '(api) Get YouTube Videos and Playlist Data',
+								'youtube'          => '(api) Get YouTube Video and Playlist Data',
 							),
 							'review' => array(
 								'judgeme' => '(api) Get Judge.me Review Data',
