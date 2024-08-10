@@ -640,364 +640,399 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 
 			$opts = $this->p->util->rename_options_by_ext( $opts, $version_keys );
 
-			/*
-			 * Maybe update some option values.
-			 */
-			if ( ! $is_site_options ) {
+			if ( $prev_version > 0 && $prev_version <= 270 ) {
 
-				/*
-				 * Check for schema type IDs to be renamed.
-				 */
-				$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
+				foreach ( SucomUtilOptions::get_opts_begin( $opts, 'inc_' ) as $key => $val ) {
 
-				foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $opts ) as $key => $val ) {
+					$new_key = '';
 
-					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+					switch ( $key ) {
 
-						$opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
-					}
-				}
+						case ( preg_match( '/^inc_(description|twitter:)/', $key ) ? true : false ):
 
-				if ( $prev_version > 0 && $prev_version <= 270 ) {
+							$new_key = preg_replace( '/^inc_/', 'add_meta_name_', $key );
 
-					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'inc_' ) as $key => $val ) {
+							break;
 
-						$new_key = '';
+						default:
 
-						switch ( $key ) {
+							$new_key = preg_replace( '/^inc_/', 'add_meta_property_', $key );
 
-							case ( preg_match( '/^inc_(description|twitter:)/', $key ) ? true : false ):
+							break;
 
-								$new_key = preg_replace( '/^inc_/', 'add_meta_name_', $key );
-
-								break;
-
-							default:
-
-								$new_key = preg_replace( '/^inc_/', 'add_meta_property_', $key );
-
-								break;
-
-						}
-
-						if ( ! empty( $new_key ) ) {
-
-							$opts[ $new_key ] = $val;
-						}
-
-						unset( $opts[ $key ] );
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 296 ) {
-
-					if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
-
-						$opts[ 'plugin_min_shorten' ] = 22;
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 557 ) {
-
-					if ( isset( $opts[ 'plugin_cm_fb_label' ] ) && $opts[ 'plugin_cm_fb_label' ] === 'Facebook URL' ) {
-
-						$opts[ 'plugin_cm_fb_label' ] = 'Facebook User URL';
 					}
 
-					SucomUtilOptions::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 564 ) {
-
-					if ( isset( $opts[ 'schema_type_for_job_listing' ] ) && $opts[ 'schema_type_for_job_listing' ] === 'webpage' ) {
-
-						$opts[ 'schema_type_for_job_listing' ] = 'job.posting';
-					}
-				}
-
-				/*
-				 * Enable og:image and og:video meta tags, and disable the og:image:url and og:video:url meta tags,
-				 * which are functionally identical.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 591 ) {
-
-					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-
-						$opts[ 'add_meta_property_' . $mt_name] = 1;
-						$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
-					}
-				}
-
-				/*
-				 * Remove the 'person' role from all subscribers.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 599 ) {
-
-					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
-
-						while ( $result = SucomUtilWP::get_roles_users_ids( $roles = array( 'subscriber' ), $blog_id = null, $limit = 1000 ) ) {
-
-							foreach ( $result as $user_id ) {
-
-								$user_obj = get_user_by( 'ID', $user_id );
-
-								$user_obj->remove_role( 'person' );
-							}
-						}
-					}
-				}
-
-				/*
-				 * The Google URL Shortener was discontinued by Google in March 2018.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 614 ) {
-
-					if ( isset( $this->p->options[ 'plugin_shortener' ] ) ) {
-
-						if ( 'googl' === $this->p->options[ 'plugin_shortener' ] ||
-							'google-url-shortener' === $this->p->options[ 'plugin_shortener' ] ) {
-
-							$this->p->options[ 'plugin_shortener' ] = 'none';
-						}
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 619 ) {
-
-					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-
-						$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
-						$opts[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;
-						$opts[ 'add_meta_property_' . $mt_name ]                 = 1;
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 625 ) {
-
-					$opts[ 'plugin_attr_product_brand' ]     = 'Brand';
-					$opts[ 'plugin_attr_product_color' ]     = 'Color';
-					$opts[ 'plugin_attr_product_condition' ] = 'Condition';
-					$opts[ 'plugin_attr_product_gtin14' ]    = 'GTIN-14';
-					$opts[ 'plugin_attr_product_gtin13' ]    = 'GTIN-13';
-					$opts[ 'plugin_attr_product_gtin12' ]    = 'GTIN-12';
-					$opts[ 'plugin_attr_product_gtin8' ]     = 'GTIN-8';
-					$opts[ 'plugin_attr_product_gtin' ]      = 'GTIN';
-					$opts[ 'plugin_attr_product_isbn' ]      = 'ISBN';
-					$opts[ 'plugin_attr_product_material' ]  = 'Material';
-					$opts[ 'plugin_attr_product_size' ]      = 'Size';
-				}
-
-				/*
-				 * All product meta tags are not enabled by default.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 637 ) {
-
-					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'add_meta_property_product:' ) as $key => $val ) {
-
-						$opts[ $key ] = 1;
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 744 ) {
-
-					if ( ! empty( $opts[ 'schema_add_home_organization' ] ) ) {
-
-						$opts[ 'site_pub_schema_type' ] = 'organization';
-
-					} elseif ( ! empty( $opts[ 'schema_add_home_person' ] ) ) {
-
-						$opts[ 'site_pub_schema_type' ] = 'person';
-					}
-
-					unset( $opts[ 'schema_add_home_organization' ] );
-
-					unset( $opts[ 'schema_add_home_person' ] );
-				}
-
-				/*
-				 * Remove the options from deprecated add-ons.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 765 ) {
-
-					if ( ! class_exists( 'WpssoSsb' ) ) {	// Make sure the deprecated add-on is not active.
-
-						unset(
-							$opts[ 'buttons_preset_ssb-content' ],
-							$opts[ 'buttons_preset_ssb-excerpt' ],
-							$opts[ 'buttons_preset_ssb-sidebar' ],
-							$opts[ 'buttons_preset_ssb-shortcode' ],
-							$opts[ 'buttons_preset_ssb-widget' ],
-							$opts[ 'buttons_css_ssb-content' ],
-							$opts[ 'buttons_css_ssb-excerpt' ],
-							$opts[ 'buttons_css_ssb-sharing' ],
-							$opts[ 'buttons_css_ssb-shortcode' ],
-							$opts[ 'buttons_css_ssb-sidebar' ],
-							$opts[ 'buttons_css_ssb-widget' ],
-							$opts[ 'buttons_js_ssb-sidebar' ],
-							$opts[ 'email_ssb_html' ],
-							$opts[ 'plugin_social_file_cache_exp' ],
-							$opts[ 'wa_ssb_html' ]
-						);
-					}
-
-					if ( ! class_exists( 'WpssoTaq' ) ) {	// Make sure the deprecated add-on is not active.
-
-						unset(
-							$opts[ 'taq_add_via' ],
-							$opts[ 'taq_rec_author' ],
-							$opts[ 'taq_link_text' ],
-							$opts[ 'taq_add_button' ],
-							$opts[ 'taq_use_style' ],
-							$opts[ 'taq_use_script' ],
-							$opts[ 'taq_popup_width' ],
-							$opts[ 'taq_popup_height' ]
-						);
-					}
-				}
-
-				/*
-				 * Update the Facebook App ID to its default value.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 778 ) {
-
-					if ( empty( $opts[ 'fb_app_id' ] ) ) {
-
-						$opts[ 'fb_app_id' ] = '966242223397117';
-					}
-				}
-
-				/*
-				 * Fix default publisher.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 827 ) {
-
-					if ( 'none' === $opts[ 'schema_def_pub_org_id' ] && 'none' === $opts[ 'schema_def_pub_person_id' ] ) {
-
-						switch ( $opts[ 'site_pub_schema_type' ] ) {
-
-							case 'person':
-
-								$opts[ 'schema_def_pub_org_id' ]    = 'none';
-								$opts[ 'schema_def_pub_person_id' ] = $opts[ 'site_pub_person_id' ];
-
-								break;
-
-							case 'organization':
-
-								$opts[ 'schema_def_pub_org_id' ]    = 'site';
-								$opts[ 'schema_def_pub_person_id' ] = 'none';
-
-								break;
-						}
-					}
-				}
-
-				/*
-				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WPSM add-on.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 834 ) {
-
-					foreach ( SucomUtilOptions::get_opts_begin( $opts, 'plugin_sitemaps_for' ) as $key => $val ) {
-
-						$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );
+					if ( ! empty( $new_key ) ) {
 
 						$opts[ $new_key ] = $val;
-
-						unset( $opts[ $key ] );
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 846 ) {
-
-					$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
-				}
-
-				/*
-				 * If the X (Twitter) Card image sizes have not been changed from their old default values, then
-				 * update the options to the new default values.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 889 ) {
-
-					if ( 1200 === $opts[ 'tc_sum_img_width' ] && 630 === $opts[ 'tc_sum_img_height' ] && $opts[ 'tc_sum_img_crop' ] &&
-						'center' === $opts[ 'tc_sum_img_crop_x' ] && 'center' === $opts[ 'tc_sum_img_crop_y' ] ) {
-
-						$opts[ 'tc_sum_img_width' ]  = 1200;
-						$opts[ 'tc_sum_img_height' ] = 1200;
-						$opts[ 'tc_sum_img_crop' ]   = 1;
-						$opts[ 'tc_sum_img_crop_x' ] = 'center';
-						$opts[ 'tc_sum_img_crop_y' ] = 'center';
 					}
 
-					if ( 1200 === $opts[ 'tc_lrg_img_width' ] && 1800 === $opts[ 'tc_lrg_img_height' ] && ! $opts[ 'tc_lrg_img_crop' ] &&
-						'center' === $opts[ 'tc_lrg_img_crop_x' ] && 'center' === $opts[ 'tc_lrg_img_crop_y' ] ) {
+					unset( $opts[ $key ] );
+				}
+			}
 
-						$opts[ 'tc_lrg_img_width' ]  = 1200;
-						$opts[ 'tc_lrg_img_height' ] = 628;
-						$opts[ 'tc_lrg_img_crop' ]   = 1;
-						$opts[ 'tc_lrg_img_crop_x' ] = 'center';
-						$opts[ 'tc_lrg_img_crop_y' ] = 'center';
-					}
+			if ( $prev_version > 0 && $prev_version <= 296 ) {
+
+				if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
+
+					$opts[ 'plugin_min_shorten' ] = 22;
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 557 ) {
+
+				if ( isset( $opts[ 'plugin_cm_fb_label' ] ) && $opts[ 'plugin_cm_fb_label' ] === 'Facebook URL' ) {
+
+					$opts[ 'plugin_cm_fb_label' ] = 'Facebook User URL';
 				}
 
-				/*
-				 * The '%%term_title%%' inline variable no longer includes parent names.
-				 *
-				 * Replace the old '%%term_title%%' variable by '%%term_hierarchy%%'.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 925 ) {
+				SucomUtilOptions::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+			}
 
-					if ( ! empty( $opts[ 'plugin_term_page_title' ] ) ) {
+			if ( $prev_version > 0 && $prev_version <= 564 ) {
 
-						if ( '%%term_title%%' === $opts[ 'plugin_term_page_title' ] ) {
+				if ( isset( $opts[ 'schema_type_for_job_listing' ] ) && $opts[ 'schema_type_for_job_listing' ] === 'webpage' ) {
 
-							$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
+					$opts[ 'schema_type_for_job_listing' ] = 'job.posting';
+				}
+			}
+
+			/*
+			 * Enable og:image and og:video meta tags, and disable the og:image:url and og:video:url meta tags,
+			 * which are functionally identical.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 591 ) {
+
+				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+
+					$opts[ 'add_meta_property_' . $mt_name] = 1;
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
+				}
+			}
+
+			/*
+			 * Remove the 'person' role from all subscribers.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 599 ) {
+
+				if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
+
+					while ( $result = SucomUtilWP::get_roles_users_ids( $roles = array( 'subscriber' ), $blog_id = null, $limit = 1000 ) ) {
+
+						foreach ( $result as $user_id ) {
+
+							$user_obj = get_user_by( 'ID', $user_id );
+
+							$user_obj->remove_role( 'person' );
 						}
 					}
 				}
+			}
 
-				if ( $prev_version > 0 && $prev_version <= 930 ) {
+			/*
+			 * The Google URL Shortener was discontinued by Google in March 2018.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 614 ) {
 
-					$opts[ 'og_def_dimension_units' ]    = $defs[ 'og_def_dimension_units' ];
-					$opts[ 'og_def_weight_units' ]       = $defs[ 'og_def_weight_units' ];
-					$opts[ 'og_def_fluid_volume_units' ] = $defs[ 'og_def_fluid_volume_units' ];
-				}
+				if ( isset( $this->p->options[ 'plugin_shortener' ] ) ) {
 
-				if ( $prev_version > 0 && $prev_version <= 954 ) {
+					if ( 'googl' === $this->p->options[ 'plugin_shortener' ] ||
+						'google-url-shortener' === $this->p->options[ 'plugin_shortener' ] ) {
 
-					if ( ! empty( $opts[ 'plugin_product_var_title' ] ) ) {
-
-						if ( '%%var_title%% %%sep%% %%var_sku%%' === $opts[ 'plugin_product_var_title' ] ) {
-
-							$opts[ 'plugin_product_var_title' ] = '%%var_title%% %%sep%% %%var_attrs%%';
-						}
+						$this->p->options[ 'plugin_shortener' ] = 'none';
 					}
 				}
+			}
 
-				if ( $prev_version > 0 && $prev_version <= 982 ) {
+			if ( $prev_version > 0 && $prev_version <= 619 ) {
 
-					if ( ! empty( $opts[ 'plugin_feed_title' ] ) ) {
+				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 
-						if ( '%%sitename%% %%sep%% RSS Feed' === $opts[ 'plugin_feed_title' ] ) {
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;
+					$opts[ 'add_meta_property_' . $mt_name ]                 = 1;
+				}
+			}
 
-							$opts[ 'plugin_feed_title' ] = '%%sitename%% RSS Feed';
-						}
-					}
+			if ( $prev_version > 0 && $prev_version <= 625 ) {
+
+				$opts[ 'plugin_attr_product_brand' ]     = 'Brand';
+				$opts[ 'plugin_attr_product_color' ]     = 'Color';
+				$opts[ 'plugin_attr_product_condition' ] = 'Condition';
+				$opts[ 'plugin_attr_product_gtin14' ]    = 'GTIN-14';
+				$opts[ 'plugin_attr_product_gtin13' ]    = 'GTIN-13';
+				$opts[ 'plugin_attr_product_gtin12' ]    = 'GTIN-12';
+				$opts[ 'plugin_attr_product_gtin8' ]     = 'GTIN-8';
+				$opts[ 'plugin_attr_product_gtin' ]      = 'GTIN';
+				$opts[ 'plugin_attr_product_isbn' ]      = 'ISBN';
+				$opts[ 'plugin_attr_product_material' ]  = 'Material';
+				$opts[ 'plugin_attr_product_size' ]      = 'Size';
+			}
+
+			/*
+			 * All product meta tags are not enabled by default.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 637 ) {
+
+				foreach ( SucomUtilOptions::get_opts_begin( $opts, 'add_meta_property_product:' ) as $key => $val ) {
+
+					$opts[ $key ] = 1;
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 744 ) {
+
+				if ( ! empty( $opts[ 'schema_add_home_organization' ] ) ) {
+
+					$opts[ 'site_pub_schema_type' ] = 'organization';
+
+				} elseif ( ! empty( $opts[ 'schema_add_home_person' ] ) ) {
+
+					$opts[ 'site_pub_schema_type' ] = 'person';
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 988 ) {
+				unset( $opts[ 'schema_add_home_organization' ] );
 
-					if ( ! empty( $opts[ 'schema_type_for_attachment' ] ) ) {
+				unset( $opts[ 'schema_add_home_person' ] );
+			}
 
-						if ( 'media.object' === $opts[ 'schema_type_for_attachment' ] ) {
+			/*
+			 * Remove the options from deprecated add-ons.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 765 ) {
 
-							$opts[ 'schema_type_for_attachment' ] = 'webpage';
-						}
-					}
+				if ( ! class_exists( 'WpssoSsb' ) ) {	// Make sure the deprecated add-on is not active.
+
+					unset(
+						$opts[ 'buttons_preset_ssb-content' ],
+						$opts[ 'buttons_preset_ssb-excerpt' ],
+						$opts[ 'buttons_preset_ssb-sidebar' ],
+						$opts[ 'buttons_preset_ssb-shortcode' ],
+						$opts[ 'buttons_preset_ssb-widget' ],
+						$opts[ 'buttons_css_ssb-content' ],
+						$opts[ 'buttons_css_ssb-excerpt' ],
+						$opts[ 'buttons_css_ssb-sharing' ],
+						$opts[ 'buttons_css_ssb-shortcode' ],
+						$opts[ 'buttons_css_ssb-sidebar' ],
+						$opts[ 'buttons_css_ssb-widget' ],
+						$opts[ 'buttons_js_ssb-sidebar' ],
+						$opts[ 'email_ssb_html' ],
+						$opts[ 'plugin_social_file_cache_exp' ],
+						$opts[ 'wa_ssb_html' ]
+					);
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 990 ) {
+				if ( ! class_exists( 'WpssoTaq' ) ) {	// Make sure the deprecated add-on is not active.
 
-					$opts[ 'schema_def_add_text_prop' ] = 0;	// Default is unchecked.
+					unset(
+						$opts[ 'taq_add_via' ],
+						$opts[ 'taq_rec_author' ],
+						$opts[ 'taq_link_text' ],
+						$opts[ 'taq_add_button' ],
+						$opts[ 'taq_use_style' ],
+						$opts[ 'taq_use_script' ],
+						$opts[ 'taq_popup_width' ],
+						$opts[ 'taq_popup_height' ]
+					);
+				}
+			}
+
+			/*
+			 * Update the Facebook App ID to its default value.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 778 ) {
+
+				if ( empty( $opts[ 'fb_app_id' ] ) ) {
+
+					$opts[ 'fb_app_id' ] = '966242223397117';
+				}
+			}
+
+			/*
+			 * Fix default publisher.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 827 ) {
+
+				if ( 'none' === $opts[ 'schema_def_pub_org_id' ] && 'none' === $opts[ 'schema_def_pub_person_id' ] ) {
+
+					switch ( $opts[ 'site_pub_schema_type' ] ) {
+
+						case 'person':
+
+							$opts[ 'schema_def_pub_org_id' ]    = 'none';
+							$opts[ 'schema_def_pub_person_id' ] = $opts[ 'site_pub_person_id' ];
+
+							break;
+
+						case 'organization':
+
+							$opts[ 'schema_def_pub_org_id' ]    = 'site';
+							$opts[ 'schema_def_pub_person_id' ] = 'none';
+
+							break;
+					}
+				}
+			}
+
+			/*
+			 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WPSM add-on.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 834 ) {
+
+				foreach ( SucomUtilOptions::get_opts_begin( $opts, 'plugin_sitemaps_for' ) as $key => $val ) {
+
+					$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );
+
+					$opts[ $new_key ] = $val;
+
+					unset( $opts[ $key ] );
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 846 ) {
+
+				$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
+			}
+
+			/*
+			 * If the X (Twitter) Card image sizes have not been changed from their old default values, then
+			 * update the options to the new default values.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 889 ) {
+
+				if ( 1200 === $opts[ 'tc_sum_img_width' ] && 630 === $opts[ 'tc_sum_img_height' ] && $opts[ 'tc_sum_img_crop' ] &&
+					'center' === $opts[ 'tc_sum_img_crop_x' ] && 'center' === $opts[ 'tc_sum_img_crop_y' ] ) {
+
+					$opts[ 'tc_sum_img_width' ]  = 1200;
+					$opts[ 'tc_sum_img_height' ] = 1200;
+					$opts[ 'tc_sum_img_crop' ]   = 1;
+					$opts[ 'tc_sum_img_crop_x' ] = 'center';
+					$opts[ 'tc_sum_img_crop_y' ] = 'center';
+				}
+
+				if ( 1200 === $opts[ 'tc_lrg_img_width' ] && 1800 === $opts[ 'tc_lrg_img_height' ] && ! $opts[ 'tc_lrg_img_crop' ] &&
+					'center' === $opts[ 'tc_lrg_img_crop_x' ] && 'center' === $opts[ 'tc_lrg_img_crop_y' ] ) {
+
+					$opts[ 'tc_lrg_img_width' ]  = 1200;
+					$opts[ 'tc_lrg_img_height' ] = 628;
+					$opts[ 'tc_lrg_img_crop' ]   = 1;
+					$opts[ 'tc_lrg_img_crop_x' ] = 'center';
+					$opts[ 'tc_lrg_img_crop_y' ] = 'center';
+				}
+			}
+
+			/*
+			 * The '%%term_title%%' inline variable no longer includes parent names.
+			 *
+			 * Replace the old '%%term_title%%' variable by '%%term_hierarchy%%'.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 925 ) {
+
+				if ( ! empty( $opts[ 'plugin_term_page_title' ] ) ) {
+
+					if ( '%%term_title%%' === $opts[ 'plugin_term_page_title' ] ) {
+
+						$opts[ 'plugin_term_page_title' ] = '%%term_hierarchy%%';
+					}
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 930 ) {
+
+				$opts[ 'og_def_dimension_units' ]    = $defs[ 'og_def_dimension_units' ];
+				$opts[ 'og_def_weight_units' ]       = $defs[ 'og_def_weight_units' ];
+				$opts[ 'og_def_fluid_volume_units' ] = $defs[ 'og_def_fluid_volume_units' ];
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 954 ) {
+
+				if ( ! empty( $opts[ 'plugin_product_var_title' ] ) ) {
+
+					if ( '%%var_title%% %%sep%% %%var_sku%%' === $opts[ 'plugin_product_var_title' ] ) {
+
+						$opts[ 'plugin_product_var_title' ] = '%%var_title%% %%sep%% %%var_attrs%%';
+					}
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 982 ) {
+
+				if ( ! empty( $opts[ 'plugin_feed_title' ] ) ) {
+
+					if ( '%%sitename%% %%sep%% RSS Feed' === $opts[ 'plugin_feed_title' ] ) {
+
+						$opts[ 'plugin_feed_title' ] = '%%sitename%% RSS Feed';
+					}
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 988 ) {
+
+				if ( ! empty( $opts[ 'schema_type_for_attachment' ] ) ) {
+
+					if ( 'media.object' === $opts[ 'schema_type_for_attachment' ] ) {
+
+						$opts[ 'schema_type_for_attachment' ] = 'webpage';
+					}
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 990 ) {
+
+				$opts[ 'schema_def_add_text_prop' ] = 0;	// Default is unchecked.
+			}
+
+			/*
+			 * Check for schema type IDs to be renamed.
+			 */
+			$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
+
+			foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $opts ) as $key => $val ) {
+
+				if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+
+					$opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
+				}
+			}
+
+			/*
+			 * Make sure all the return policy, organization, person, and place IDs still exist.
+			 */
+			$select_names = array(
+				'mrp'    => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
+				'org'    => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
+				'person' => $this->p->util->get_form_cache( 'person_names', $add_none = true ),
+				'place'  => $this->p->util->get_form_cache( 'place_names', $add_none = true ),
+			);
+
+			foreach ( array(
+				'site_pub_person_id'                   => 'person',
+				'schema_def_product_mrp'               => 'mrp',
+				'schema_def_pub_org_id'                => 'org',
+				'schema_def_prov_org_id'               => 'org',
+				'schema_def_fund_org_id'               => 'org',
+				'schema_def_event_performer_org_id'    => 'org',
+				'schema_def_event_organizer_org_id'    => 'org',
+				'schema_def_event_fund_org_id'         => 'org',
+				'schema_def_job_hiring_org_id'         => 'org',
+				'schema_def_pub_person_id'             => 'person',
+				'schema_def_prov_person_id'            => 'person',
+				'schema_def_fund_person_id'            => 'person',
+				'schema_def_event_performer_person_id' => 'person',
+				'schema_def_event_organizer_person_id' => 'person',
+				'schema_def_event_fund_person_id'      => 'person',
+				'schema_webpage_reviewed_by_person_id' => 'person',
+				'schema_def_event_location_id'         => 'place',
+				'schema_def_job_location_id'           => 'place',
+			) as $opt_key => $name_type ) {
+
+				if ( isset( $opts[ $opt_key ] ) && ! isset( $select_names[ $name_type ][ $opts[ $opt_key ] ] ) ) {
+
+					if ( isset( $defs[ $opt_key ] ) ) {
+
+						$opts[ $opt_key ] = $defs[ $opt_key ];
+
+					} else unset( $opts[ $opt_key ] );
 				}
 			}
 

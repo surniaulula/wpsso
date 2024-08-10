@@ -356,32 +356,35 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Edit Media tab.
 					 */
-					'og_img_max'        => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
-					'og_vid_max'        => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
-					'og_vid_prev_img'   => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
-					'og_vid_autoplay'   => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
-					'og_img_id'         => '',
-					'og_img_id_lib'     => 'wp',
-					'og_img_url'        => '',
-					'og_vid_embed'      => '',
-					'og_vid_url'        => '',
-					'og_vid_title'      => '',
-					'og_vid_desc'       => '',
-					'og_vid_stream_url' => '',
-					'og_vid_width'      => '',
-					'og_vid_height'     => '',
-					'pin_img_id'        => '',
-					'pin_img_id_lib'    => 'wp',
-					'pin_img_url'       => '',
-					'tc_lrg_img_id'     => '',
-					'tc_lrg_img_id_lib' => 'wp',
-					'tc_lrg_img_url'    => '',
-					'tc_sum_img_id'     => '',
-					'tc_sum_img_id_lib' => 'wp',
-					'tc_sum_img_url'    => '',
-					'schema_img_id'     => '',
-					'schema_img_id_lib' => 'wp',
-					'schema_img_url'    => '',
+					'og_img_max'             => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
+					'og_vid_max'             => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
+					'og_vid_prev_img'        => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
+					'og_vid_autoplay'        => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
+					'og_img_id'              => '',
+					'og_img_id_lib'          => 'wp',
+					'og_img_url'             => '',
+					'og_vid_embed'           => '',
+					'og_vid_url'             => '',
+					'og_vid_title'           => '',
+					'og_vid_desc'            => '',
+					'og_vid_stream_url'      => '',
+					'og_vid_width'           => '',
+					'og_vid_height'          => '',
+					'og_vid_upload_date'     => '',
+					'og_vid_upload_time'     => 'none',
+					'og_vid_upload_timezone' => $def_timezone,
+					'pin_img_id'             => '',
+					'pin_img_id_lib'         => 'wp',
+					'pin_img_url'            => '',
+					'tc_lrg_img_id'          => '',
+					'tc_lrg_img_id_lib'      => 'wp',
+					'tc_lrg_img_url'         => '',
+					'tc_sum_img_id'          => '',
+					'tc_sum_img_id_lib'      => 'wp',
+					'tc_sum_img_url'         => '',
+					'schema_img_id'          => '',
+					'schema_img_id_lib'      => 'wp',
+					'schema_img_url'         => '',
 
 					/*
 					 * Edit Visibility tab.
@@ -2008,10 +2011,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						unset( $md_opts[ $md_pre . '_time' ] );
 						unset( $md_opts[ $md_pre . '_timezone' ] );
 
-					} else {
-
-						$md_opts[ $md_pre . '_date' ] = gmdate( 'Y-m-d' );
-					}
+					} else $md_opts[ $md_pre . '_date' ] = gmdate( 'Y-m-d' );
 				}
 			}
 

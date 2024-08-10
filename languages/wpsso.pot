@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.25.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 17.25.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2780,8 +2780,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:35 lib/com/form.php:994
-#: lib/media-filters.php:116 lib/media.php:1556 lib/media.php:1706
-#: lib/media.php:3730
+#: lib/media-filters.php:116 lib/media.php:1564 lib/media.php:1714
+#: lib/media.php:3738
 msgid "Media Library"
 msgstr ""
 
@@ -6472,46 +6472,46 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1338
+#: lib/abstract/wp-meta.php:1341
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1409
+#: lib/abstract/wp-meta.php:1412
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1413
+#: lib/abstract/wp-meta.php:1416
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1416 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1419 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1420
+#: lib/abstract/wp-meta.php:1423
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1424
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1425
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1426
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1766
+#: lib/abstract/wp-meta.php:1769
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -7131,12 +7131,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5504
+#: lib/config.php:5497
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5504
+#: lib/config.php:5497
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -9209,7 +9209,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3740
+#: lib/media-filters.php:119 lib/media.php:3748
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9238,86 +9238,86 @@ msgid ""
 "%3$dpx height."
 msgstr ""
 
-#: lib/media.php:1338
+#: lib/media.php:1346
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1560
+#: lib/media.php:1568
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1562 lib/media.php:1775
+#: lib/media.php:1570 lib/media.php:1783
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1578
+#: lib/media.php:1586
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1599
+#: lib/media.php:1607
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1618
+#: lib/media.php:1626
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1708
+#: lib/media.php:1716
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1744 lib/register.php:305 lib/util.php:876 lib/util.php:985
+#: lib/media.php:1752 lib/register.php:305 lib/util.php:876 lib/util.php:985
 #: lib/util.php:1017 lib/util.php:1055 lib/util.php:3451
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1745 lib/util.php:877 lib/util.php:3452
+#: lib/media.php:1753 lib/util.php:877 lib/util.php:3452
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1746
+#: lib/media.php:1754
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1773
+#: lib/media.php:1781
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3079
+#: lib/media.php:3087
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3751
+#: lib/media.php:3759
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3804
+#: lib/media.php:3812
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3839
+#: lib/media.php:3847
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

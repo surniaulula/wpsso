@@ -436,12 +436,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						'og_vid_stream_url' => 'og:video:stream_url',	// VideoObject contentUrl.
 						'og_vid_width'      => 'og:video:width',
 						'og_vid_height'     => 'og:video:height',
+						'og_vid_upload'     => 'og:video:upload_date',
 					) as $md_key => $mt_name ) {
 
-						/*
-						 * Note that get_options() returns null if an index key is not found.
-						 */
-						$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
+						if ( 'og_vid_upload' === $md_key ) {
+							
+							$value = WpssoSchema::get_mod_date_iso( $mod, $md_key );
+
+						} else {
+
+							/*
+							 * Note that get_options() returns null if an index key is not found.
+							 */
+							$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
+						}
 
 						if ( ! empty( $value ) ) {	// Must be a non-empty string.
 
