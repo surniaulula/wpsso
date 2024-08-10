@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.25.0-dev.6\n"
+"Project-Id-Version: WPSSO Core 17.25.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2744,49 +2744,49 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:937 lib/com/form.php:2641
+#: lib/com/form.php:936 lib/com/form.php:2639
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:938 lib/com/form.php:2642
+#: lib/com/form.php:937 lib/com/form.php:2640
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:939 lib/com/form.php:2643
+#: lib/com/form.php:938 lib/com/form.php:2641
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:940 lib/com/form.php:2644
+#: lib/com/form.php:939 lib/com/form.php:2642
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:976
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:975
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:977 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:976 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:987
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:986
 #: lib/media-filters.php:116 lib/media.php:1564 lib/media.php:1714
 #: lib/media.php:3738
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1070 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1069 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 
@@ -6314,55 +6314,55 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:190 lib/pro/admin/edit.php:70
+#: gettext/gettext-lib-pro.php:190 lib/pro/admin/edit.php:53
 #: lib/std/admin/edit.php:39
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:191 lib/messages.php:1021
-#: lib/pro/admin/edit.php:74 lib/std/admin/edit.php:47
+#: lib/pro/admin/edit.php:57 lib/std/admin/edit.php:47
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:192 lib/pro/admin/edit.php:80
+#: gettext/gettext-lib-pro.php:192 lib/pro/admin/edit.php:63
 #: lib/std/admin/edit.php:54
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:193 lib/pro/admin/edit.php:87
+#: gettext/gettext-lib-pro.php:193 lib/pro/admin/edit.php:70
 #: lib/std/admin/edit.php:61
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:194 lib/pro/admin/edit.php:91
+#: gettext/gettext-lib-pro.php:194 lib/pro/admin/edit.php:74
 #: lib/std/admin/edit.php:66
 msgctxt "option label"
 msgid "Video Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:195 lib/pro/admin/edit.php:98
+#: gettext/gettext-lib-pro.php:195 lib/pro/admin/edit.php:81
 #: lib/std/admin/edit.php:73
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:105
+#: gettext/gettext-lib-pro.php:196 lib/pro/admin/edit.php:88
 #: lib/std/admin/edit.php:80
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:112
+#: gettext/gettext-lib-pro.php:197 lib/pro/admin/edit.php:95
 #: lib/std/admin/edit.php:87
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:118
+#: gettext/gettext-lib-pro.php:198 lib/pro/admin/edit.php:101
 #: lib/std/admin/edit.php:94
 msgctxt "option label"
 msgid "Video Upload Date"
@@ -14343,7 +14343,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3882
+#: lib/schema.php:3872
 msgid "checking schema properties"
 msgstr ""
 

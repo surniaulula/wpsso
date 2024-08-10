@@ -3432,17 +3432,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$md_time     = empty( $opts[ $md_pre . '_time' ] ) || 'none' === $opts[ $md_pre . '_time' ] ? '' : $opts[ $md_pre . '_time' ];
 			$md_timezone = empty( $opts[ $md_pre . '_timezone' ] ) || 'none' === $opts[ $md_pre . '_timezone' ] ? '' : $opts[ $md_pre . '_timezone' ];
 
-			if ( empty( $md_date ) && empty( $md_time ) ) {		// No date or time.
+			if ( empty( $md_date ) ) {		// No date or time.
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: ' . $md_pre . ' date and time are empty' );
+					$wpsso->debug->log( 'exiting early: ' . $md_pre . ' date is empty' );
 				}
 
 				return '';	// Nothing to do.
 			}
 
-			if ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
+			if ( empty( $md_time ) ) {	// Date with no time.
 
 				$md_time = '00:00';
 
@@ -3453,19 +3453,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			}
 
-			if ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
-
-				$md_date = gmdate( 'Y-m-d' );
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( $md_pre . ' date is empty: using date ' . $md_date );
-				}
-			}
-
 			if ( empty( $md_timezone ) ) {				// No timezone.
 
-				$md_timezone = get_option( 'timezone_string' );
+				$md_timezone = $wpsso->get_options( 'og_def_timezone', 'UTC' );
 
 				if ( $wpsso->debug->enabled ) {
 

@@ -804,7 +804,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$holder_date       = $media_info[ $name_prefix . '_date' ];
 					$selected_time     = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
 					$selected_timezone = $this->defaults[ $name_prefix . '_timezone' ] = $media_info[ $name_prefix . '_timezone' ];
-					$is_disabled       = true;
+
+					$is_disabled = true;	// Disable to avoid saving selects.
 				}
 			}
 
@@ -833,14 +834,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $name ) ) {
 
 				return;	// Just in case.
-			}
 
-			if ( $is_disabled ) {
+			} elseif ( $is_disabled ) {
 
 				return $this->get_no_input( $name, $css_class, $css_id, $holder );
 			}
 
-			$html        = '';
 			$holder      = $this->get_placeholder_sanitized( $name, $holder );
 			$value       = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			$input_class = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
@@ -852,7 +851,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$len = empty( $len ) ? array() : array( 'max' => $len );
 			}
 
-			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html = '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 			$html .= empty( $input_id ) ? '' : ' id="text_' . $input_id . '"';	// Already sanitized.
 			$html .= empty( $el_attr ) ? '' : ' ' . trim( $el_attr );
@@ -1110,7 +1109,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				
 					$holder_width  = $media_info[ $name_prefix . '_width' ];
 					$holder_height = $media_info[ $name_prefix . '_height' ];
-					$is_disabled   = true;
 				}
 			}
 
