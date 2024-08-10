@@ -280,12 +280,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.25.0-dev.2 (2024/08/09)**
+**Version 17.25.0-dev.4 (2024/08/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Video Upload Date" option in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -616,9 +616,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.25.0-dev.2 =
+= 17.25.0-dev.4 =
 
-(2024/08/09) Added a new 'wpsso_og_add_media_from_url' filter.
+(2024/08/10) Added a new "Video Upload Date" option in the Document SSO metabox. Added a new 'wpsso_og_add_media_from_url' filter.
 
 = 17.24.0 =
 
