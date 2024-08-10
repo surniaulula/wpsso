@@ -78,7 +78,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	/*
 	 * When an editing page is submitted, disable unchanged fields in 'table.sucom-settings'.
 	 */
-	jQuery( 'form:not(#adv-settings)' ).each( function() {
+	jQuery( 'form:not(#adv-settings)' ).each( function() {	// Exclude the Screen Options form.
 
 		if ( jQuery( this ).has( table_id ).length != 0 ) {
 

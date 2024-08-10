@@ -797,21 +797,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$selected_time     = false;
 			$selected_timezone = false;
 
-			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
-				
-				if ( $media_info[ $name_prefix . '_date' ] ) {
-				
-					$holder_date = $media_info[ $name_prefix . '_date' ];
-				}
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {	// Just in case.
 
-				if ( $media_info[ $name_prefix . '_time' ] ) {
-
-					$selected_time = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
-				}
+				if ( $media_info[ $name_prefix . '_date' ] && $media_info[ $name_prefix . '_time' ] && $media_info[ $name_prefix . '_timezone' ] ) {
 				
-				if ( $media_info[ $name_prefix . '_timezone' ] ) {
-
+					$holder_date       = $media_info[ $name_prefix . '_date' ];
+					$selected_time     = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
 					$selected_timezone = $this->defaults[ $name_prefix . '_timezone' ] = $media_info[ $name_prefix . '_timezone' ];
+					$is_disabled       = true;
 				}
 			}
 
@@ -1111,16 +1104,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$holder_width  = '';
 			$holder_height = '';
 
-			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {	// Just in case.
 
-				if ( $media_info[ $name_prefix . '_width' ] ) {
+				if ( $media_info[ $name_prefix . '_width' ] && $media_info[ $name_prefix . '_height' ] ) {
 				
-					$holder_width = $media_info[ $name_prefix . '_width' ];
-				}
-
-				if ( $media_info[ $name_prefix . '_height' ] ) {
-				
+					$holder_width  = $media_info[ $name_prefix . '_width' ];
 					$holder_height = $media_info[ $name_prefix . '_height' ];
+					$is_disabled   = true;
 				}
 			}
 
@@ -1699,19 +1689,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				return $this->options[ $name_prefix . '_width' ] . 'x' . $this->options[ $name_prefix . '_height' ] . 'px';
 
-			} elseif ( ! empty( $media_info ) && is_array( $media_info ) ) {
+			}
+			
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
 
-				if ( $media_info[ $name_prefix . '_width' ] ) {
+				if ( $media_info[ $name_prefix . '_width' ] && $media_info[ $name_prefix . '_height' ] ) {
 				
-					$holder_width = $media_info[ $name_prefix . '_width' ];
-				}
-
-				if ( $media_info[ $name_prefix . '_height' ] ) {
-				
+					$holder_width  = $media_info[ $name_prefix . '_width' ];
 					$holder_height = $media_info[ $name_prefix . '_height' ];
-				}
-
-				if ( ! empty( $holder_width ) && ! empty( $holder_height ) ) {
 
 					return $holder_width . 'x' . $holder_height . 'px';
 				}

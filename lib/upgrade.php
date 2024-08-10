@@ -995,6 +995,8 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 				}
 			}
 
+			unset( $schema_type_keys_preg );
+
 			/*
 			 * Make sure all the return policy, organization, person, and place IDs still exist.
 			 */
@@ -1035,6 +1037,8 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					} else unset( $opts[ $opt_key ] );
 				}
 			}
+
+			unset( $select_names );
 
 			/*
 			 * Maybe add any new / missing options keys.
