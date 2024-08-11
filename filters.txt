@@ -141,6 +141,8 @@
 
 'wpsso_is_functions' ( $is_functions )
 
+'wpsso_jquery_ui_version' ( $jquery_ui_version )
+
 'wpsso_js_url_facebook' ( $url, $pos )
 
 'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod )

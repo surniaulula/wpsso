@@ -56,11 +56,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 *
 			 * See https://developers.google.com/speed/libraries/.
 			 */
-			$jquery_ui_url = $this->p->cache->get( 'https://ajax.googleapis.com/ajax/libs/jqueryui/' .
-				$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
-					$format = 'url', $cache_type = 'file', WEEK_IN_SECONDS );
+			$jquery_ui_version = $this->p->cf[ 'jquery-ui' ][ 'version' ];
+			$jquery_ui_version = apply_filters( 'wpsso_jquery_ui_version', $jquery_ui_version );
+			$jquery_ui_url     = 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . $jquery_ui_version . '/themes/smoothness/jquery-ui.css';
+			$cached_url        = $this->p->cache->get( $jquery_ui_url, $format = 'url', $cache_type = 'file', WEEK_IN_SECONDS );
 
-			wp_register_style( 'jquery-ui.js', $jquery_ui_url, $deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
+			wp_register_style( 'jquery-ui.js', $cached_url, $deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/*
 			 * Register styles for option help popup.

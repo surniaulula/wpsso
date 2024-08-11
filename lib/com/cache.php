@@ -591,21 +591,28 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						if ( false !== $cache_exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'cached file found: returning ' . $cache_format . ' ' .
-									( $cache_format === 'url' ? $cache_url : $cache_file ) );
-							}
-
 							$this->url_get_mtimes[ $url ] = true;	// Signal that return is from cache.
 
 							if ( 'url' === $cache_format ) {
 
 								$cache_url = add_query_arg( 'modtime', $file_mod_time, $cache_url );
 
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'cached file found: returning ' . $cache_format . ' ' . $cache_url );
+								}
+
 								return $cache_url;
 
-							} else return $cache_file;
+							} else {
+							
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'cached file found: returning ' . $cache_format . ' ' . $cache_file );
+								}
+
+								return $cache_file;
+							}
 
 						} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
 
@@ -807,6 +814,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						return $cache_data;
 
 					case 'url':
+
+						$file_mod_time = filemtime( $cache_file );
+
+						$cache_url = add_query_arg( 'modtime', $file_mod_time, $cache_url );
 
 						return $cache_url;
 

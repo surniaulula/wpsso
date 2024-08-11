@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 17.25.0-b.1\n"
+"Project-Id-Version: WPSSO Core 17.25.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2709,7 +2709,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:625 lib/util-cache.php:167
+#: lib/com/cache.php:473 lib/com/cache.php:632 lib/util-cache.php:167
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -2719,74 +2719,74 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:879
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:890
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:911
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1019
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1030
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1033
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1044
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1047
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1058
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1076
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1087
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:936 lib/com/form.php:2639
+#: lib/com/form.php:934 lib/com/form.php:2647
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:937 lib/com/form.php:2640
+#: lib/com/form.php:935 lib/com/form.php:2648
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:938 lib/com/form.php:2641
+#: lib/com/form.php:936 lib/com/form.php:2649
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:939 lib/com/form.php:2642
+#: lib/com/form.php:937 lib/com/form.php:2650
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:975
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:973
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:976 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:974 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:986
-#: lib/media-filters.php:116 lib/media.php:1564 lib/media.php:1714
-#: lib/media.php:3738
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:984
+#: lib/media-filters.php:116 lib/media.php:1571 lib/media.php:1721
+#: lib/media.php:3745
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1069 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1067 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 
@@ -6472,60 +6472,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1341
+#: lib/abstract/wp-meta.php:1345
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1412
-msgctxt "metabox tab"
-msgid "Edit General"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1416
 msgctxt "metabox tab"
+msgid "Edit General"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1420
+msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1419 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1423 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1427
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1424
+#: lib/abstract/wp-meta.php:1428
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1425
+#: lib/abstract/wp-meta.php:1429
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1426
+#: lib/abstract/wp-meta.php:1430
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1769
+#: lib/abstract/wp-meta.php:1773
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2078
+#: lib/abstract/wp-meta.php:2082
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2080 lib/abstract/wp-meta.php:2093
+#: lib/abstract/wp-meta.php:2084 lib/abstract/wp-meta.php:2097
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2091
+#: lib/abstract/wp-meta.php:2095
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -9209,7 +9209,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media-filters.php:119 lib/media.php:3748
+#: lib/media-filters.php:119 lib/media.php:3755
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -9238,86 +9238,86 @@ msgid ""
 "%3$dpx height."
 msgstr ""
 
-#: lib/media.php:1346
+#: lib/media.php:1353
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1568
+#: lib/media.php:1575
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1570 lib/media.php:1783
+#: lib/media.php:1577 lib/media.php:1790
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1586
+#: lib/media.php:1593
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1607
+#: lib/media.php:1614
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1626
+#: lib/media.php:1633
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1716
+#: lib/media.php:1723
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1752 lib/register.php:305 lib/util.php:876 lib/util.php:985
+#: lib/media.php:1759 lib/register.php:305 lib/util.php:876 lib/util.php:985
 #: lib/util.php:1017 lib/util.php:1055 lib/util.php:3451
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1753 lib/util.php:877 lib/util.php:3452
+#: lib/media.php:1760 lib/util.php:877 lib/util.php:3452
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1754
+#: lib/media.php:1761
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1781
+#: lib/media.php:1788
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3087
+#: lib/media.php:3094
 msgid "Getting video details for %s."
 msgstr ""
 
-#: lib/media.php:3759
+#: lib/media.php:3766
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3812
+#: lib/media.php:3819
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3847
+#: lib/media.php:3854
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -14343,7 +14343,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3872
+#: lib/schema.php:3884
 msgid "checking schema properties"
 msgstr ""
 

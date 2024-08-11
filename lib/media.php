@@ -440,8 +440,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					) as $md_key => $mt_name ) {
 
 						if ( 'og_vid_upload' === $md_key ) {
-							
-							$value = WpssoSchema::get_mod_date_iso( $mod, $md_key );
+
+							if ( ! empty( $mt_single_video[ 'og:video:upload_date' ] ) ) {
+
+								/*
+								 * Use the existing upload date, time, and timezone as defaults.
+								 */
+								$value = WpssoSchema::get_mod_date_iso( $mod, $md_key, $mt_single_video[ 'og:video:upload_date' ] );
+
+							} else $value = WpssoSchema::get_mod_date_iso( $mod, $md_key );
 
 						} else {
 

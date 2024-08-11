@@ -326,6 +326,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
 				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
 
+				$def_size_name     = 'wpsso-opengraph';
+				$def_media_request = array( 'og_vid_upload' );
+				$def_media_info    = $this->p->media->get_media_info( $def_size_name, $def_media_request, $mod, $md_pre = 'none' );
+
 				$md_defs = array(
 					'checksum'          => '',	// Checksum of plugin versions.
 					'opt_checksum'      => '',	// Checksum of option versions.
@@ -370,9 +374,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'og_vid_stream_url'      => '',
 					'og_vid_width'           => '',
 					'og_vid_height'          => '',
-					'og_vid_upload_date'     => '',
-					'og_vid_upload_time'     => 'none',
-					'og_vid_upload_timezone' => $def_timezone,
+					'og_vid_upload_date'     => $def_media_info[ 'og_vid_upload_date' ] ? $def_media_info[ 'og_vid_upload_date' ] : '',
+					'og_vid_upload_time'     => $def_media_info[ 'og_vid_upload_time' ] ? $def_media_info[ 'og_vid_upload_time' ] : 'none',
+					'og_vid_upload_timezone' => $def_media_info[ 'og_vid_upload_timezone' ] ? $def_media_info[ 'og_vid_upload_timezone' ] : $def_timezone,
 					'pin_img_id'             => '',
 					'pin_img_id_lib'         => 'wp',
 					'pin_img_url'            => '',

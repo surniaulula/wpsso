@@ -3395,7 +3395,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function get_mod_date_iso( array $mod, $md_pre ) {
+		/*
+		 * See WpssoMedia->get_all_videos().
+		 */
+		public static function get_mod_date_iso( array $mod, $md_pre, $def_date = null ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3410,6 +3413,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+			if ( ! empty( $def_date ) ) {
+
+				$def_opts = array();
+
+				self::add_date_time_timezone_opts( $def_date, $def_opts, $md_pre );
+
+				$md_opts = array_merge( $def_opts, $md_opts );
+			}
 
 			return self::get_opts_date_iso( $md_opts, $md_pre );
 		}

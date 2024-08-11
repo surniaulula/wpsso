@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.25.0-b.1',	// Plugin version.
+					'version'     => '17.25.0-b.2',	// Plugin version.
 					'opt_version' => '1011',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2813,7 +2813,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'jquery-ui' => array(
 				'label'   => 'jQuery UI',
-				'version' => '1.9.0',
+				'version' => '1.13.3',
 			),
 
 			'menu' => array(

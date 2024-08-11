@@ -804,8 +804,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$holder_date       = $media_info[ $name_prefix . '_date' ];
 					$selected_time     = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
 					$selected_timezone = $this->defaults[ $name_prefix . '_timezone' ] = $media_info[ $name_prefix . '_timezone' ];
-
-					$is_disabled = true;	// Disable to avoid saving selects.
 				}
 			}
 
@@ -917,7 +915,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_date( $name = '', $css_class = '', $css_id = '', $holder = '', $is_disabled = false, $min_date = '', $max_date = '' ) {
 
-			$holder  = $holder ? $holder : 'yyyy-mm-dd';
+			$holder  = $holder ? $holder : ( $this->in_defaults( $name ) ? $this->defaults[ $name ] : 'yyyy-mm-dd' );
 			$el_attr = $min_date ? ' min="' . esc_attr( $min_date ) . '"' : '';
 			$el_attr .= $max_date ? ' max="' . esc_attr( $max_date ) . '"' : '';
 
@@ -1128,15 +1126,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false ) {
 
-			if ( empty( $name ) || ! is_array( $values ) ) {
+			if ( empty( $name ) || ! is_array( $values ) ) return '';
 
-				return;
-			}
-
-			if ( null === $is_assoc ) {
-
-				$is_assoc = SucomUtil::is_assoc( $values );
-			}
+			if ( null === $is_assoc ) $is_assoc = SucomUtil::is_assoc( $values );
 
 			$container_class = SucomUtil::sanitize_css_class( $css_class );
 			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
@@ -1197,6 +1189,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! is_array( $values ) ) return '';	// Just in case.
 
+			if ( 'sorted' === $is_assoc ) {
+
+				$event_args[ 'is_sorted' ] = true;
+
+				$is_assoc = null;
+			}
+
+			if ( null === $is_assoc ) $is_assoc = SucomUtil::is_assoc( $values );
+
 			/*
 			 * Maybe add a custom selected string to the values.
 			 */
@@ -1204,7 +1205,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( ! isset( $values[ $selected ] ) ) {
 
-					$values[ $selected ] = $selected;
+					if ( $is_assoc ) { $values[ $selected ] = $selected; }
+					else { $values[] = $selected; }
+				}
+
+			}
+			
+			/*
+			 * Maybe add a custom default string to the values.
+			 */
+			if ( $this->in_defaults( $name ) ) {
+				
+				if ( ! isset( $values[ $this->defaults[ $name ] ] ) ) {
+
+					if ( $is_assoc ) { $values[ $this->defaults[ $name ] ] = $this->defaults[ $name ]; }
+					else { $values[] = $this->defaults[ $name ]; }
 				}
 			}
 
@@ -1224,13 +1239,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			} elseif ( ! is_array( $event_args ) ) {	// Just in case - ignore true, false, null, etc.
 
 				$event_args = array();
-			}
-
-			if ( 'sorted' === $is_assoc ) {
-
-				$event_args[ 'is_sorted' ] = true;
-
-				$is_assoc = null;
 			}
 
 			$event_json_var = false;
