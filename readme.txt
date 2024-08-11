@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.25.0-b.1 (2024/08/10)**
+**Version 17.25.0-b.2 (2024/08/11)**
 
 * **New Features**
 	* None.
@@ -289,6 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new 'wpsso_jquery_ui_version' filter.
 	* Added a new 'wpsso_og_add_media_from_url' filter.
 	* Added a call to `sucomDisableUnchanged()` when saving in the block editor.
 * **Requires At Least**
@@ -617,9 +618,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.25.0-b.1 =
+= 17.25.0-b.2 =
 
-(2024/08/10) Added a new "Video Upload Date" option in the Document SSO metabox. Added a call to `sucomDisableUnchanged()` when saving in the block editor.
+(2024/08/11) Added a new "Video Upload Date" option in the Document SSO metabox. Added a call to `sucomDisableUnchanged()` when saving in the block editor.
 
 = 17.24.0 =
 
