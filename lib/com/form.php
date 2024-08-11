@@ -801,9 +801,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( $media_info[ $name_prefix . '_date' ] && $media_info[ $name_prefix . '_time' ] && $media_info[ $name_prefix . '_timezone' ] ) {
 				
-					$holder_date       = $media_info[ $name_prefix . '_date' ];
-					$selected_time     = $this->defaults[ $name_prefix . '_time' ] = $media_info[ $name_prefix . '_time' ];
-					$selected_timezone = $this->defaults[ $name_prefix . '_timezone' ] = $media_info[ $name_prefix . '_timezone' ];
+					$holder_date = $media_info[ $name_prefix . '_date' ];
+					
+					if ( ! $this->in_options( $name_prefix . '_time' ) )
+						$selected_time = $media_info[ $name_prefix . '_time' ];
+
+					if ( ! $this->in_options( $name_prefix . '_timezone' ) )
+						$selected_timezone = $media_info[ $name_prefix . '_timezone' ];
 				}
 			}
 
