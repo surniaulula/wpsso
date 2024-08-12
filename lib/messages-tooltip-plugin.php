@@ -655,7 +655,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				case 'tooltip-plugin_embed_media':	// Detect Embedded Media.
 
 					$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.).', 'wpsso' ) . ' ';
-					
+
 					$text .= __( 'When a supported media URL is found, an API connection to the provider can be made to retrieve additional information about the media (preview image URL, oembed player URL, video width and height, etc.).', 'wpsso' );
 
 					break;

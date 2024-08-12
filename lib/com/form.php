@@ -797,9 +797,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $media_info ) && is_array( $media_info ) ) {	// Just in case.
 
 				if ( $media_info[ $name_prefix . '_date' ] && $media_info[ $name_prefix . '_time' ] && $media_info[ $name_prefix . '_timezone' ] ) {
-				
+
 					$holder_date = $media_info[ $name_prefix . '_date' ];
-					
+
 					if ( ! $this->in_options( $name_prefix . '_time' ) )
 						$selected_time = $media_info[ $name_prefix . '_time' ];
 
@@ -1105,7 +1105,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $media_info ) && is_array( $media_info ) ) {	// Just in case.
 
 				if ( $media_info[ $name_prefix . '_width' ] && $media_info[ $name_prefix . '_height' ] ) {
-				
+
 					$holder_width  = $media_info[ $name_prefix . '_width' ];
 					$holder_height = $media_info[ $name_prefix . '_height' ];
 				}
@@ -1211,12 +1211,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 			}
-			
+
 			/*
 			 * Maybe add a custom default string to the values.
 			 */
 			if ( $this->in_defaults( $name ) ) {
-				
+
 				if ( ! isset( $values[ $this->defaults[ $name ] ] ) ) {
 
 					if ( $is_assoc ) { $values[ $this->defaults[ $name ] ] = $this->defaults[ $name ]; }
@@ -1294,7 +1294,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$group_values = $group_array;
 
 				} else $group_values = array( $optgroup_transl => $group_array );
-				
+
 				foreach ( $group_values as $option_value => $label_transl ) {
 
 					$select_opt_count++;	// Used to check for first option.
@@ -1707,11 +1707,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $this->options[ $name_prefix . '_width' ] . 'x' . $this->options[ $name_prefix . '_height' ] . 'px';
 
 			}
-			
+
 			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
 
 				if ( $media_info[ $name_prefix . '_width' ] && $media_info[ $name_prefix . '_height' ] ) {
-				
+
 					$holder_width  = $media_info[ $name_prefix . '_width' ];
 					$holder_height = $media_info[ $name_prefix . '_height' ];
 
@@ -2144,7 +2144,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * If the selected value is the default, add the default class.
 									 */
 									if ( $is_selected_html && $in_defaults && $option_value === $this->defaults[ $input_name ] ) {
-				
+
 										$input_class .= ' default';
 									}
 

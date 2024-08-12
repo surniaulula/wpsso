@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$min_version = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
 
 				if ( version_compare( $um_info[ 'version' ], $min_version, '<' ) ) {
-						
+
 					$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required' ) );
 				}
 			} */

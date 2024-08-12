@@ -17,7 +17,7 @@ const wpssoBlockEditor = ( function(){
 			var isSavingMb = isSavingMetaBoxes();	// Check if saving metaboxes.
 
 			if ( isSavingMb && ! wasSavingMb ) {	// Check if starting to save metaboxes.
-	
+
 				sucomEditorUnchanged( pluginId, adminPageL10n );	// Disable unchanged fields in 'table.sucom-settings'.
 			}
 

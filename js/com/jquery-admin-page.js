@@ -8,7 +8,7 @@
  * Update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  */
 function sucomEditorUnchanged( pluginId, adminPageL10n ) {
-	
+
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
 	var cfg = window[ adminPageL10n ];

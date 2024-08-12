@@ -2080,7 +2080,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$media_info[ $key ] = $this->get_mt_media_value( $mt_videos, $mt_pre . ':video:upload_date' );
 
 						WpssoSchema::add_date_time_timezone_opts( $media_info[ $key ], $media_info, $key );
-						
+
 						break;
 
 					default:

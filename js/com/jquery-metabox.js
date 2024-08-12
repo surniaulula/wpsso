@@ -428,14 +428,13 @@ function sucomMarkDefault( e, el ) {
 
 			value = el.is( ':checked' ) ? 1 : 0;
 		}
-		
 
 		if ( value == def_value ) {
 
 			el.addClass( 'default' );
-		
+
 		} else {
-	
+
 			el.removeClass( 'default' );
 		}
 	}

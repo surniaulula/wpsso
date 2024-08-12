@@ -605,7 +605,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								return $cache_url;
 
 							} else {
-							
+
 								if ( $this->p->debug->enabled ) {
 
 									$this->p->debug->log( 'cached file found: returning ' . $cache_format . ' ' . $cache_file );
