@@ -289,9 +289,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a call to `sucomDisableUnchanged()` when saving in the block editor.
 	* Added a new 'wpsso_jquery_ui_version' filter.
 	* Added a new 'wpsso_og_add_media_from_url' filter.
-	* Added a call to `sucomDisableUnchanged()` when saving in the block editor.
+	* Added a new `sucomMarkDefault()` javascript function hooked to input and select HTML tag change events.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
