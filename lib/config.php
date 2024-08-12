@@ -5174,7 +5174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = WEEK_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
 			$var_const[ 'WPSSO_CACHE_URL' ]                   = self::get_cache_url();
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
-			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.
+			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.50;		// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX' ]          = 5;			// Maximum number of images extracted from the content.
 			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 3;			// Maximum number of times to check for duplicates.
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
