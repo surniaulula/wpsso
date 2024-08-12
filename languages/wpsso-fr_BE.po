@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 17.25.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-08-10 09:05-0700\n"
+"PO-Revision-Date: 2024-08-12 09:18-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2569,7 +2569,7 @@ msgid "Additional requests to retrieve this URL will be ignored for another %d s
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:625 lib/util-cache.php:167
+#: lib/com/cache.php:473 lib/com/cache.php:632 lib/util-cache.php:167
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -2577,74 +2577,74 @@ msgstr "Erreur de suppression du fichier cache %s."
 msgid "PHP cURL library missing - contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante - contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:879
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:890
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:911
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1019
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1030
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1033
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1044
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1047
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1058
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1076
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1087
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:944 lib/com/form.php:2656
+#: lib/com/form.php:935 lib/com/form.php:2666
 msgctxt "option comment"
 msgid "days"
 msgstr "jours"
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:945 lib/com/form.php:2657
+#: lib/com/form.php:936 lib/com/form.php:2667
 msgctxt "option comment"
 msgid "hours"
 msgstr "heures"
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:946 lib/com/form.php:2658
+#: lib/com/form.php:937 lib/com/form.php:2668
 msgctxt "option comment"
 msgid "mins"
 msgstr "mins"
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:947 lib/com/form.php:2659
+#: lib/com/form.php:938 lib/com/form.php:2669
 msgctxt "option comment"
 msgid "secs"
 msgstr "secs"
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:983
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:974
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:984 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:975 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:994
-#: lib/media-filters.php:116 lib/media.php:1556 lib/media.php:1706
-#: lib/media.php:3730
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:985
+#: lib/media-filters.php:116 lib/media.php:1571 lib/media.php:1721
+#: lib/media.php:3745
 msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1077 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1068 lib/script.php:365
 msgid "Select Image"
 msgstr "Choisir l'image"
 
@@ -2806,8 +2806,6 @@ msgid "(feature) Import Yoast SEO Metadata"
 msgstr "(feature) Importer métadonnées Yoast SEO"
 
 #: gettext/gettext-lib-config.php:20
-#| msgctxt "lib file description"
-#| msgid "(plugin) Product GTIN for WooCommerce"
 msgctxt "lib file description"
 msgid "(plugin) Perfect Brands for WooCommerce"
 msgstr "(plugin) Perfect Brands for WooCommerce"
@@ -6278,58 +6276,58 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr "Métadonnées %s"
 
-#: lib/abstract/wp-meta.php:1338
+#: lib/abstract/wp-meta.php:1345
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1409
+#: lib/abstract/wp-meta.php:1416
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1413
+#: lib/abstract/wp-meta.php:1420
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1416 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1423 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1420
+#: lib/abstract/wp-meta.php:1427
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1421
+#: lib/abstract/wp-meta.php:1428
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1429
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1423
+#: lib/abstract/wp-meta.php:1430
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1766
+#: lib/abstract/wp-meta.php:1773
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2078
+#: lib/abstract/wp-meta.php:2082
 msgid "Another review cannot be the subject of a review."
 msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2080 lib/abstract/wp-meta.php:2093
+#: lib/abstract/wp-meta.php:2084 lib/abstract/wp-meta.php:2097
 msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
 msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
 
-#: lib/abstract/wp-meta.php:2091
+#: lib/abstract/wp-meta.php:2095
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
@@ -6875,12 +6873,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5504
+#: lib/config.php:5498
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5504
+#: lib/config.php:5498
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -8549,93 +8547,93 @@ msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr "Méta robots"
 
-#: lib/edit-visibility.php:102
+#: lib/edit-visibility.php:101
 msgctxt "option label"
 msgid "No Archive"
 msgstr "Pas d'archive"
 
-#: lib/edit-visibility.php:105
+#: lib/edit-visibility.php:104
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr "ne pas afficher un lien mis en cache dans les résultats de recherche"
 
-#: lib/edit-visibility.php:109
+#: lib/edit-visibility.php:108
 msgctxt "option label"
 msgid "No Follow"
 msgstr "Pas de suivi"
 
-#: lib/edit-visibility.php:112
+#: lib/edit-visibility.php:111
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr "ne pas suivre les liens sur cette page Web"
 
-#: lib/edit-visibility.php:116
+#: lib/edit-visibility.php:115
 msgctxt "option label"
 msgid "No Image Index"
 msgstr "Pas d'indexation d'image"
 
-#: lib/edit-visibility.php:119
+#: lib/edit-visibility.php:118
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr "ne pas indexer les images sur cette page Web"
 
-#: lib/edit-visibility.php:123
+#: lib/edit-visibility.php:122
 msgctxt "option label"
 msgid "No Index"
 msgstr "Pas d'indexation"
 
-#: lib/edit-visibility.php:126
+#: lib/edit-visibility.php:125
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr "ne pas afficher cette page Web dans les résultats de recherche"
 
-#: lib/edit-visibility.php:130
+#: lib/edit-visibility.php:129
 msgctxt "option label"
 msgid "No Snippet"
 msgstr "Pas d'extrait"
 
-#: lib/edit-visibility.php:133
+#: lib/edit-visibility.php:132
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr "ne pas afficher d'extrait de texte ni d'aperçu vidéo dans les résultats de recherche"
 
-#: lib/edit-visibility.php:137
+#: lib/edit-visibility.php:136
 msgctxt "option label"
 msgid "No Translate"
 msgstr "Pas de traduction"
 
-#: lib/edit-visibility.php:140
+#: lib/edit-visibility.php:139
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr "ne pas offrir la traduction de cette page Web dans les résultats de recherche"
 
-#: lib/edit-visibility.php:144
+#: lib/edit-visibility.php:143
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr "Longueur max. d'extrait"
 
-#: lib/edit-visibility.php:148 lib/submenu/general.php:331
+#: lib/edit-visibility.php:147 lib/submenu/general.php:331
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/edit-visibility.php:149 lib/edit-visibility.php:165
+#: lib/edit-visibility.php:148 lib/edit-visibility.php:164
 #: lib/submenu/general.php:332 lib/submenu/general.php:346
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr "(-1 pour aucune limite)"
 
-#: lib/edit-visibility.php:153
+#: lib/edit-visibility.php:152
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr "Taille d'aperçu d'image"
 
-#: lib/edit-visibility.php:160
+#: lib/edit-visibility.php:159
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr "Aperçus vidéo max."
 
-#: lib/edit-visibility.php:164 lib/submenu/general.php:345
+#: lib/edit-visibility.php:163 lib/submenu/general.php:345
 msgctxt "option comment"
 msgid "seconds"
 msgstr "secondes"
@@ -8890,7 +8888,7 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media-filters.php:119 lib/media.php:3740
+#: lib/media-filters.php:119 lib/media.php:3755
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
@@ -8910,64 +8908,64 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Minimum image dimension to satisfy all %1$d image sizes: %2$dpx width by %3$dpx height."
 msgstr "Dimension minimale d'image pour satisfaire les %1$d tailles d'image: %2$dpx de largeur sur %3$dpx de hauteur."
 
-#: lib/media.php:1338
+#: lib/media.php:1353
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1560
+#: lib/media.php:1575
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1562 lib/media.php:1775
+#: lib/media.php:1577 lib/media.php:1790
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la médiathèque WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1578
+#: lib/media.php:1593
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1599
+#: lib/media.php:1614
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1618
+#: lib/media.php:1633
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1708
+#: lib/media.php:1723
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1744 lib/register.php:305 lib/util.php:876 lib/util.php:985
+#: lib/media.php:1759 lib/register.php:305 lib/util.php:876 lib/util.php:985
 #: lib/util.php:1017 lib/util.php:1055 lib/util.php:3451
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1745 lib/util.php:877 lib/util.php:3452
+#: lib/media.php:1760 lib/util.php:877 lib/util.php:3452
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1746
+#: lib/media.php:1761
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1773
+#: lib/media.php:1788
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3079
+#: lib/media.php:3094
 msgid "Getting video details for %s."
 msgstr "Obtention des détails de la vidéo pour %s."
 
-#: lib/media.php:3751
+#: lib/media.php:3766
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3804
+#: lib/media.php:3819
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3839
+#: lib/media.php:3854
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -13041,7 +13039,7 @@ msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une criti
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet critiqué"
 
-#: lib/schema.php:3882
+#: lib/schema.php:3884
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -14410,7 +14408,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "lib file description"
-#~ msgid "(plugin) Perfect WooCommerce Brands"
-#~ msgstr "(plugin) Perfect WooCommerce Brands"
