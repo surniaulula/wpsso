@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.25.0-b.3 (2024/08/11)**
+**Version 17.25.0-b.4 (2024/08/11)**
 
 * **New Features**
 	* None.
@@ -618,7 +618,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.25.0-b.3 =
+= 17.25.0-b.4 =
 
 (2024/08/11) Added a new "Video Upload Date" option in the Document SSO metabox. Added a call to `sucomDisableUnchanged()` when saving in the block editor.
 
