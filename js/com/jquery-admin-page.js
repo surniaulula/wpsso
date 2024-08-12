@@ -556,9 +556,6 @@ function sucomSanitizeKey( string, allow_upper ) {
 	return string;
 }
 
-/*
- * Hooked to .focus() and .keyup() by SucomForm->get_textlen_script().
- */
 function sucomTextLen( containerId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
@@ -690,9 +687,6 @@ function sucomTextLen( containerId, adminPageL10n ) {
 	jQuery( '#' + containerId + '-text-len-wrapper' ).html( container_html );
 }
 
-/*
- * Hooked to .blur() by SucomForm->get_textlen_script().
- */
 function sucomTextLenReset( containerId ) {
 
 	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '' )

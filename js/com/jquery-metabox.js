@@ -28,21 +28,21 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * Softly disable input fields for the 'disabled' CSS class (instead of using the standard 'disabled' HTML tag attribute
 	 * which prevents values from being submitted).
 	 */
-	jQuery( table_id + ' input' ).click( sucomBlurDisabled );
-	jQuery( table_id + ' input' ).focus( sucomBlurDisabled );
-	jQuery( table_id + ' textarea' ).focus( sucomBlurDisabled );
-	jQuery( table_id + ' select' ).focus( sucomBlurDisabled );
+	jQuery( table_id + ' input' ).on( 'click', sucomBlurDisabled );
+	jQuery( table_id + ' input' ).on( 'focus', sucomBlurDisabled );
+	jQuery( table_id + ' textarea' ).on( 'focus', sucomBlurDisabled );
+	jQuery( table_id + ' select' ).on( 'focus', sucomBlurDisabled );
 	jQuery( table_id + ' select' ).on( 'mousedown', sucomBlurDisabled );	// Prevents dropdown from appearing.
 
 	/*
-	 * Add a "changed" the options class when their value might have changed.
+	 * Add a "changed" class when the value might have changed.
 	 *
 	 * Note that the focusin and focusout events bubble, and the focus and blur events don't.
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
-	jQuery( table_id + ' input' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-	jQuery( table_id + ' select' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+	jQuery( table_id + ' input' ).on( 'blur change', sucomMarkChanged );
+	jQuery( table_id + ' textarea' ).on( 'blur change', sucomMarkChanged );
+	jQuery( table_id + ' select' ).on( 'blur change', sucomMarkChanged );
 
 	jQuery( document ).on( 'click', table_id + ' input[type="checkbox"][data-group]', function() {
 
@@ -55,6 +55,12 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 		grouped.addClass( 'changed' );
 	} );
+
+	/*
+	 * Add a "default" class when the value has changed and is the default.
+	 */
+	jQuery( table_id + ' input' ).on( 'change', sucomMarkDefault );
+	jQuery( table_id + ' select' ).on( 'change', sucomMarkDefault );
 
 	/*
 	 * The 'sucom_init_metabox' event is hooked by sucomInitAdminMedia(), sucomInitToolTips().
@@ -241,7 +247,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		}
 	}
 
-	jQuery( 'a.sucom-tablink' + metabox_name ).click( function(){
+	jQuery( 'a.sucom-tablink' + metabox_name ).on( 'click', function(){
 
 		jQuery( 'ul.sucom-metabox-tabs' + metabox_name + ' li' ).removeClass( 'active' );
 		jQuery( '.sucom-tabset' + metabox_name ).removeClass( 'active' );
@@ -389,7 +395,7 @@ function sucomBlurDisabled( e ) {
 }
 
 /*
- * Add a "changed" the options class when their value might have changed.
+ * Add a "changed" class when the value might have changed.
  */
 function sucomMarkChanged( e, el ) {
 
@@ -401,6 +407,38 @@ function sucomMarkChanged( e, el ) {
 	el.addClass( 'changed' );
 
 	jQuery( el ).trigger( 'sucom_changed' );
+}
+
+/*
+ * Add a "default" class when the value has changed and is the default.
+ */
+function sucomMarkDefault( e, el ) {
+
+	if ( this.hasAttribute( 'data-default-value' ) ) {
+
+		if ( 'undefined' === typeof el ) {
+
+			el = jQuery( this );
+		}
+
+		var value     = this.value;
+		var def_value = this.getAttribute( 'data-default-value' );
+
+		if ( 'checkbox' == this.type ) {
+
+			value = el.is( ':checked' ) ? 1 : 0;
+		}
+		
+
+		if ( value == def_value ) {
+
+			el.addClass( 'default' );
+		
+		} else {
+	
+			el.removeClass( 'default' );
+		}
+	}
 }
 
 function sucomPlaceholderDep( container_id, container_dep_id ) {

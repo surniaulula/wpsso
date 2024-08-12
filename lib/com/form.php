@@ -542,21 +542,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			} else $input_checked = '';
 
+			$default_value  = $this->in_defaults( $name ) && ! empty( $this->defaults[ $name ] ) ? 1 : 0;
+			$default_status = $default_value ? 'checked' : 'unchecked';
+			$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
 			$input_class    = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
+			$input_class    = $css_class . ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
 			$input_class    = SucomUtil::sanitize_css_class( $input_class );
 			$input_id       = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
-			$default_status = $this->in_defaults( $name ) && ! empty( $this->defaults[ $name ] ) ? 'checked' : 'unchecked';
-			$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
 
-			$html = '<input type="checkbox"';
+			$html = $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1 );
+			$html .= '<input type="checkbox"';
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"';
 			$html .= $is_disabled ? ' disabled="disabled"' : '';
 			$html .= empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"';
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 			$html .= empty( $input_id ) ? '' : ' id="checkbox_' . $input_id . '"';	// Already sanitized.
 			$html .= ' title="' . $title_transl . '"';
+			$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= ' ' . $input_checked . '/>';
-			$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1 );
 
 			return $html;
 		}
@@ -631,12 +634,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				} else $input_checked = '';
 
-				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
-				$input_class    = SucomUtil::sanitize_css_class( $input_class );
-				$input_id       = SucomUtil::sanitize_css_id( $input_name );
-				$default_status = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 'checked' : 'unchecked';
+				$default_value  = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 1 : 0;
+				$default_status = $default_value ? 'checked' : 'unchecked';
 				$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
 				$label_transl   = $this->get_option_value_transl( $label );
+				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
+				$input_class    = $css_class . ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
+				$input_class    = SucomUtil::sanitize_css_class( $input_class );
+				$input_id       = SucomUtil::sanitize_css_id( $input_name );
 
 				$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1 );
 				$html .= '<span><input type="checkbox"';
@@ -645,6 +650,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 				$html .= $input_id ? ' id="checkbox_' . $input_id . '"' : '';	// Already sanitized.
 				$html .= ' title="' . $title_transl . '"';
+				$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
 				$html .= ' ' . $input_checked . '/>';
 				$html .= '&nbsp;&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
 
@@ -1393,7 +1399,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= implode( $glue = "\n", $select_opt_arr );
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
-			$html .= $this->get_script_default_class( '#select_' . $input_id );
 
 			foreach ( $event_names as $event_num => $event_name ) {
 
@@ -2951,7 +2956,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *	get_placeholder_attrs()
 		 *	get_script_placeholder_dep()
 		 *	get_script_text_len()
-		 *	get_script_default_class()
 		 *	get_script_load_json()
 		 *	get_script_trigger_show_hide()
 		 */
@@ -3207,19 +3211,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html .= $doing_ajax ? '' : '});';
 
-			$html .= '</script>' . "\n";
-
-			return $html;
-		}
-
-		private function get_script_default_class( $input_id ) {
-
-			$html = '<script>';
-			$html .= 'jQuery( \'' . $input_id . '\' ).on( \'change\', function(){';
-			$html .= 'if ( this.value == this.getAttribute( \'data-default-value\' ) ) {';
-			$html .= 'jQuery( this ).addClass( \'default\' ) } else {';
-			$html .= 'jQuery( this ).removeClass( \'default\' ) }';
-			$html .= '});';
 			$html .= '</script>' . "\n";
 
 			return $html;

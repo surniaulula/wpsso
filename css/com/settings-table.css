@@ -65,6 +65,7 @@ table.sucom-settings textarea:disabled {
 	background-color:#fafafa;
 }
 
+table.sucom-settings input.default,
 table.sucom-settings select.default {
 	color:#aaa;
 }
