@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.6.1
 WC Tested Up To: 9.1.4
-Stable Tag: 17.24.0
+Stable Tag: 17.25.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.25.0-rc.1 (2024/08/12)**
+**Version 17.25.0 (2024/08/12)**
 
 * **New Features**
 	* None.
@@ -620,7 +620,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.25.0-rc.1 =
+= 17.25.0 =
 
 (2024/08/12) Added a new "Video Upload Date" option in the Document SSO metabox. Added a call to `sucomDisableUnchanged()` when saving in the block editor.
 
