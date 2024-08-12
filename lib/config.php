@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '17.25.0-b.2',	// Plugin version.
+					'version'     => '17.25.0-b.3',	// Plugin version.
 					'opt_version' => '1011',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1681,6 +1681,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_size_group_0'          => 'none',
 					'schema_def_product_size_group_1'          => 'none',
 					'schema_def_product_size_system'           => 'none',
+					'schema_def_product_target_gender'         => 'none',						// Default Product Target Gender.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Profile Page.

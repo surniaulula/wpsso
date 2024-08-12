@@ -61,8 +61,12 @@ table.sucom-settings textarea.disabled,
 table.sucom-settings textarea:focus.disabled,
 table.sucom-settings textarea:disabled {
 	cursor:default;
-	color:#ccc;
-	background-color:#f9f9f9;
+	color:#aaa;
+	background-color:#fafafa;
+}
+
+table.sucom-settings select.default {
+	color:#aaa;
 }
 
 table.sucom-settings.metabox-contact_fields-info,
@@ -76,7 +80,7 @@ table.sucom-settings.metabox-head_tags-tags {
 
 table.sucom-settings .outline,
 table.sucom-settings .highlight {
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 	border:1px solid #e3e3e3;
 	-webkit-border-radius:0;
 	-khtml-border-radius:0;
@@ -131,7 +135,7 @@ table.sucom-settings h4,
 
 table.sucom-settings td h5,
 #poststuff table.sucom-settings td h5 {
-	color:#bbb;
+	color:#aaa;
 	font-size:1.1em;
 	font-weight:bold;
 	letter-spacing:0.5px;
@@ -201,7 +205,7 @@ table.sucom-settings blockquote {
 	padding:10px 20px 10px 25px;
 	border:none;
 	border-left:3px solid #0f533d;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
@@ -594,7 +598,7 @@ table.sucom-settings tr td.is_disabled,
 .sucom-tabset table.sucom-settings tr.is_disabled th,
 .sucom-tabset table.sucom-settings tr.is_disabled td {
 	border:1px solid #e0e0e0;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 }
 
 table.sucom-settings tr th.is_internal,
@@ -603,7 +607,7 @@ table.sucom-settings tr td.is_internal,
 .sucom-tabset table.sucom-settings tr.is_internal td {
 	color:#aeaeae;
 	border:1px solid #e0e0e0;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 	font-weight:normal;
 	font-style:italic;
 }
@@ -858,7 +862,7 @@ table.sucom-settings td input[type="button"].button-primary,
 table.sucom-settings td input[type="button"].button-secondary { margin:0 5px; }
 
 table.sucom-settings td input::placeholder,
-table.sucom-settings td textarea::placeholder { color:#ccc; }
+table.sucom-settings td textarea::placeholder { color:#aaa; }
 
 table.sucom-settings td div.linked_to_label {
 	display:inline-block;
@@ -1013,7 +1017,7 @@ table.sucom-settings #info-meta-social-preview {
 table.sucom-settings th.blank,
 table.sucom-settings td.blank {
 	color:#999;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 	border:1px dotted #e3e3e3;
 }
 
@@ -1045,8 +1049,8 @@ table.sucom-settings td.blank input[type="text"],
 table.sucom-settings td.blank select,
 table.sucom-settings td.blank textarea {
 	font-size:1em;
-	color:#ccc;
-	background-color:#f9f9f9;
+	color:#aaa;
+	background-color:#fafafa;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
@@ -1391,7 +1395,7 @@ table.sucom-settings.html-content-metabox td blockquote {
 	display:table;
 	border:none;
 	border-left:3px solid #0f533d;
-	background-color:#f9f9f9;
+	background-color:#fafafa;
 	color:#144e14;
 }
 

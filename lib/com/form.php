@@ -439,10 +439,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$tr_html = '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
 
-				} else {
-
-					$tr_html = '';
-				}
+				} else $tr_html = '';
 
 				/*
 				 * Table cell HTML.
@@ -543,10 +540,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$input_checked = checked( $this->defaults[ $name ], 1, false );
 
-			} else {
-
-				$input_checked = '';
-			}
+			} else $input_checked = '';
 
 			$input_class    = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
 			$input_class    = SucomUtil::sanitize_css_class( $input_class );
@@ -635,10 +629,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$input_checked = checked( $this->defaults[ $input_name ], 1, false );
 
-				} else {
-
-					$input_checked = '';
-				}
+				} else $input_checked = '';
 
 				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
 				$input_class    = SucomUtil::sanitize_css_class( $input_class );
@@ -870,7 +861,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! empty( $len ) ) {
 
-				$html .= $this->get_textlen_script( 'text_' . $input_id );
+				$html .= $this->get_script_text_len( 'text_' . $input_id );
 			}
 
 			return $html;
@@ -884,7 +875,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $dep_id ) {	// Just in case.
 
-				$html .= $this->get_placeholder_dep_script( 'input#text_' . $input_id, 'input#text_' . $dep_id );
+				$html .= $this->get_script_placeholder_dep( 'input#text_' . $input_id, 'input#text_' . $dep_id );
 			}
 
 			return $html;
@@ -1261,15 +1252,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 			}
 
-			$html           = '';
-			$row_id         = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
-			$input_class    = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
-			$input_class    = SucomUtil::sanitize_css_class( $input_class );
-			$input_id       = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
-			$in_options     = $this->in_options( $name );	// Optimize and call only once - returns true or false.
-			$in_defaults    = $this->in_defaults( $name );	// Optimize and call only once - returns true or false.
-			$selected_value = '';
-
+			$html             = '';
+			$row_id           = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
+			$input_class      = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
+			$input_class      = SucomUtil::sanitize_css_class( $input_class );
+			$input_id         = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
+			$in_options       = $this->in_options( $name );		// Optimize and call only once - returns true or false.
+			$in_defaults      = $this->in_defaults( $name );	// Optimize and call only once - returns true or false.
+			$selected_value   = '';
 			$select_opt_count = 0;	// Used to check for first option.
 			$select_opt_added = 0;
 			$select_opt_arr   = array();
@@ -1322,7 +1312,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					/*
 					 * Save the default value and its text so we can add them (as jquery data) to the select.
 					 */
-					if ( $in_defaults && $option_value === (string) $this->defaults[ $name ] ) {
+					if ( $in_defaults && (string) $option_value === (string) $this->defaults[ $name ] ) {
 
 						$default_value = $option_value;
 						$default_text  = $this->get_option_value_transl( '(default)' );
@@ -1346,6 +1336,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					} else $is_selected_html = '';
 
+					/*
+					 * If the selected value is the default, add the default class.
+					 */
+					if ( $is_selected_html && $in_defaults && $option_value === $this->defaults[ $name ] ) {
+
+						$input_class .= ' default';
+					}
+
+					/*
+					 * Save either the first or selected value for the 'on_change_unhide_rows' event.
+					 */
 					if ( $is_selected_html || $select_opt_count === 1 ) {
 
 						$selected_value = $option_value;
@@ -1359,7 +1360,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
 
 							$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
-								$is_selected_html . '>' . $label_transl . '</option>';
+					 			$is_selected_html . '>' . $label_transl . '</option>';
 
 							$select_opt_added++;
 						}
@@ -1385,13 +1386,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $is_disabled ? ' disabled="disabled"' : '';
 			$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 			$html .= $input_id ? ' id="select_' . $input_id . '"' : '';	// Already sanitized.
-			$html .= $default_value ? ' data-default-value="' . esc_attr( $default_value ) . '"' : '';
-			$html .= $default_text ? ' data-default-text="' . esc_attr( $default_text ) . '"' : '';
+			$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
+			$html .= ' data-default-text="' . esc_attr( $default_text ) . '"';
 			$html .= $el_attr ? ' ' . trim( $el_attr ) : '';
 			$html .= '>' . "\n";
 			$html .= implode( $glue = "\n", $select_opt_arr );
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
+			$html .= $this->get_script_default_class( '#select_' . $input_id );
 
 			foreach ( $event_names as $event_num => $event_name ) {
 
@@ -1425,7 +1427,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						$html .= $this->get_event_load_json_script( $event_json_var, $event_args, $select_json_arr, 'select_' . $input_id );
+						$html .= $this->get_script_load_json( $event_json_var, $event_args, $select_json_arr, 'select_' . $input_id );
 
 						break;
 
@@ -1450,7 +1452,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_show_unhide_rows':
 
-						$html .= $this->get_show_hide_trigger_script();
+						$html .= $this->get_script_trigger_show_hide();
 
 						// No break.
 
@@ -1755,7 +1757,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! empty( $len[ 'max' ] ) ) {
 
-				$html .= $this->get_textlen_script( 'textarea_' . $input_id );
+				$html .= $this->get_script_text_len( 'textarea_' . $input_id );
 			}
 
 			return $html;
@@ -1769,7 +1771,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $dep_id ) {	// Just in case.
 
-				$html .= $this->get_placeholder_dep_script( 'textarea#textarea_' . $input_id, 'textarea#textarea_' . $dep_id );
+				$html .= $this->get_script_placeholder_dep( 'textarea#textarea_' . $input_id, 'textarea#textarea_' . $dep_id );
 			}
 
 			return $html;
@@ -2022,10 +2024,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 										$input_checked = checked( $this->defaults[ $input_name ], $input_value, false );
 
-									} else {
-
-										$input_checked = '';
-									}
+									} else $input_checked = '';
 
 									$radio_inputs[] = '<input type="radio"' .
 										( $is_disabled ? ' disabled="disabled"' :
@@ -2107,7 +2106,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									/*
 									 * Save the default value and its text so we can add them (as jquery data) to the select.
 									 */
-									if ( ( $in_defaults && $option_value === (string) $this->defaults[ $input_name ] ) ||
+									if ( ( $in_defaults && (string) $option_value === (string) $this->defaults[ $input_name ] ) ||
 										( null !== $select_default && $option_value === $select_default ) ) {
 
 										$default_value = $option_value;
@@ -2115,6 +2114,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$label_transl  .= ' ' . $default_text;
 									}
 
+									/*
+									 * Maybe get a selected="selected" string for this option.
+									 */
 									if ( $select_selected !== null ) {
 
 										$is_selected_html = selected( $select_selected, $option_value, false );
@@ -2132,6 +2134,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$is_selected_html = selected( $this->defaults[ $input_name ], $option_value, false );
 
 									} else $is_selected_html = '';
+
+									/*
+									 * If the selected value is the default, add the default class.
+									 */
+									if ( $is_selected_html && $in_defaults && $option_value === $this->defaults[ $input_name ] ) {
+				
+										$input_class .= ' default';
+									}
 
 									$select_opt_count++;	// Used to check for first option.
 
@@ -2172,7 +2182,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 										case 'on_focus_load_json':
 
-											$html .= $this->get_event_load_json_script( $event_json_var, $event_args,
+											$html .= $this->get_script_load_json( $event_json_var, $event_args,
 												$select_json_arr, 'select_' . $input_id );
 
 											break;
@@ -2939,10 +2949,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *	get_input_media_url()
 		 *	get_placeholder_sanitized()
 		 *	get_placeholder_attrs()
-		 *	get_placeholder_dep_script()
-		 *	get_textlen_script()
-		 *	get_event_load_json_script()
-		 *	get_show_hide_trigger_script()
+		 *	get_script_placeholder_dep()
+		 *	get_script_text_len()
+		 *	get_script_default_class()
+		 *	get_script_load_json()
+		 *	get_script_trigger_show_hide()
 		 */
 		private function maybe_transl_sort_values( $name, array $values, $is_assoc, array $event_args, $optgroup_transl = '' ) {
 
@@ -3160,7 +3171,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_placeholder_dep_script( $container_id, $container_dep_id ) {
+		private function get_script_placeholder_dep( $container_id, $container_dep_id ) {
 
 			$html = '<script>';
 			$html .= 'jQuery( \'' . $container_dep_id . '\' ).on( \'sucom_changed\', function(){';
@@ -3171,7 +3182,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_textlen_script( $input_id ) {
+		private function get_script_text_len( $input_id ) {
 
 			if ( empty( $input_id ) ) {	// Nothing to do.
 
@@ -3201,7 +3212,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_event_load_json_script( $event_json_var, $event_args, $select_json_arr, $select_id ) {
+		private function get_script_default_class( $input_id ) {
+
+			$html = '<script>';
+			$html .= 'jQuery( \'' . $input_id . '\' ).on( \'change\', function(){';
+			$html .= 'if ( this.value == this.getAttribute( \'data-default-value\' ) ) {';
+			$html .= 'jQuery( this ).addClass( \'default\' ) } else {';
+			$html .= 'jQuery( this ).removeClass( \'default\' ) }';
+			$html .= '});';
+			$html .= '</script>' . "\n";
+
+			return $html;
+		}
+
+		private function get_script_load_json( $event_json_var, $event_args, $select_json_arr, $select_id ) {
 
 			$html = '';
 
@@ -3272,7 +3296,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_show_hide_trigger_script() {
+		private function get_script_trigger_show_hide() {
 
 			if ( $this->show_hide_js_added ) {	// Only add the event script once.
 

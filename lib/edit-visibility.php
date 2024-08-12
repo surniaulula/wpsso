@@ -94,8 +94,7 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 					'label'    => _x( 'Robots Meta', 'metabox title', 'wpsso' ),
 				),
 				'robots_disabled' => array(
-					'th_class' => 'medium',
-					'content'  => $robots_disabled ? $robots_msg : '',
+					'table_row' => $robots_disabled ? '<td colspan="2">' . $robots_msg . '</td>' : '',
 				),
 				'robots_noarchive' => array(
 					'th_class' => 'medium',

@@ -321,10 +321,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_ener_eff_min  = $this->p->get_options( 'schema_def_product_energy_efficiency_min', 'https://schema.org/EUEnergyEfficiencyCategoryD' );
 				$def_ener_eff_max  = $this->p->get_options( 'schema_def_product_energy_efficiency_max', 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' );
 				$def_price_type    = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
-				$def_target_gender = $this->p->get_options( 'schema_def_product_target_gender', 'none' );
 				$def_size_group_0  = $this->p->get_options( 'schema_def_product_size_group_0', 'none' );
 				$def_size_group_1  = $this->p->get_options( 'schema_def_product_size_group_1', 'none' );
 				$def_size_system   = $this->p->get_options( 'schema_def_product_size_system', 'none' );
+				$def_target_gender = $this->p->get_options( 'schema_def_product_target_gender', 'none' );
 
 				$def_size_name     = 'wpsso-opengraph';
 				$def_media_request = array( 'og_vid_upload' );
