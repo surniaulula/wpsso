@@ -526,9 +526,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( empty( $name ) ) {
 
 				return;	// Just in case.
-			}
 
-			if ( $force !== null ) {
+			} elseif ( $force !== null ) {
 
 				$input_checked = checked( $force, 1, false );
 
@@ -614,50 +613,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/*
-				 * If the array is not associative (so a regular numbered array), then the label / description is
-				 * used as the saved value.
+				 * If the array is not associative (so a regular numbered array), use the label as the name suffix.
 				 */
-				if ( $is_assoc ) {
+				$input_name   = $is_assoc ? $name_prefix . '_' . $name_suffix : $name_prefix . '_' . $label;
+				$input_name   = SucomUtil::sanitize_input_name( $input_name );
+				$label_transl = $this->get_option_value_transl( $label );
 
-					$input_name = $name_prefix . '_' . $name_suffix;
-
-				} else $input_name = $name_prefix . '_' . $label;
-
-				$input_name = SucomUtil::sanitize_input_name( $input_name );
-
-				if ( $this->in_options( $input_name ) ) {
-
-					$input_checked = checked( $this->options[ $input_name ], 1, false );
-
-				} elseif ( $this->in_defaults( $input_name ) ) {	// Returns true or false.
-
-					$input_checked = checked( $this->defaults[ $input_name ], 1, false );
-
-				} else $input_checked = '';
-
-				$default_value  = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 1 : 0;
-				$default_status = $default_value ? 'checked' : 'unchecked';
-				$title_transl   = sprintf( $this->get_option_value_transl( 'Default is %s' ), $this->get_option_value_transl( $default_status ) );
-				$label_transl   = $this->get_option_value_transl( $label );
-				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
-				$input_class    .= ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
-				$input_class    = SucomUtil::sanitize_css_class( $input_class );
-				$input_id       = SucomUtil::sanitize_css_id( $input_name );
-
-				$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1 );
 				$html .= '<span class="sucom-input-item">';
-				$html .= '<label class="sucom-checkbox"';
-				$html .= $input_id ? ' for="checkbox_' . $input_id . '"' : '';
-				$html .= ' title="' . $title_transl . '">';
-				$html .= '<input type="checkbox"';
-				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '" value="1"';
-				$html .= $is_disabled ? ' disabled="disabled"' : '';
-				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
-				$html .= $input_id ? ' id="checkbox_' . $input_id . '"' : '';	// Already sanitized.
-				$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
-				$html .= ' ' . $input_checked . '/>';
-				$html .= '<span class="sucom-checkbox-button"></span>';
-				$html .= '</label><!-- .sucom-checkbox -->';
+				$html .= $this->get_checkbox( $input_name, $input_class = '', $input_id = '', $is_disabled );
 				$html .= '<span class="sucom-checkbox-label">' . $label_transl . '</span>';
 				$html .= '</span><!-- .sucom-input-item -->';
 
@@ -3153,20 +3116,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			$html = '<script>';
-
 			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';	// Make sure sucomTextLen() is available.
-
-			$html .= 'jQuery( \'#' . $input_id . '\' )' .
-				'.mouseenter( function(){ window.sucom_text_len_t = setTimeout( function() { ' .
-					'sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); }, 300 ) })' .
-				'.mouseleave( function(){ clearTimeout( window.sucom_text_len_t ); window.sucom_text_len_t = undefined; ' .
-					'sucomTextLenReset( \'' . $input_id . '\' ); })' .
-				'.focus( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); })' .
-				'.keyup( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); })' .
-				'.blur( function(){ sucomTextLenReset( \'' . $input_id . '\' ); });';
-
+			$html .= 'jQuery( \'#' . $input_id . '\' )';
+			$html .= '.mouseenter( function(){ window.sucom_text_len_t = setTimeout( function() { ';
+			$html .= 'sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); }, 300 ) })';
+			$html .= '.mouseleave( function(){ clearTimeout( window.sucom_text_len_t ); window.sucom_text_len_t = undefined; ';
+			$html .= 'sucomTextLenReset( \'' . $input_id . '\' ); })';
+			$html .= '.focus( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); })';
+			$html .= '.keyup( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); })';
+			$html .= '.blur( function(){ sucomTextLenReset( \'' . $input_id . '\' ); });';
 			$html .= $doing_ajax ? '' : '});';
-
 			$html .= '</script>' . "\n";
 
 			return $html;

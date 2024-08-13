@@ -502,7 +502,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-um-version-recommended':
+					case 'notice-um-update-required':
+					case 'notice-um-update-recommended':
 
 						$um_info          = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 						$um_info_name     = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );

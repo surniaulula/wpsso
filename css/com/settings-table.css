@@ -554,11 +554,11 @@ table.sucom-settings td.top {
 }
 
 table.sucom-settings td div.text-len-progress-bar {
+	background-color:#cccccc;	/* Light Gray. */
+	border-radius:2px;
 	width:100%;
 	height:3px;
 	margin:6px 0 4px 0;
-	background-color:#f1f1f1;	/* Light Gray. */
-	border-radius:2px;
 }
 
 table.sucom-settings td div.text-len-progress {

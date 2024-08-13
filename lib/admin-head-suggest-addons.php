@@ -99,10 +99,15 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				if ( ! empty( $um_info[ 'version' ] ) ) {	// Update manager is active.
 
 					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+					$min_version = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
 
 					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
 
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
+						if ( version_compare( $um_info[ 'version' ], $min_version, '<' ) ) {
+
+							$this->p->notice->err( $this->p->msgs->get( 'notice-um-update-required' ) );
+
+						} else $this->p->notice->warn( $this->p->msgs->get( 'notice-um-update-recommended' ) );
 
 						if ( ++$suggested >= $suggest_max ) return $suggested;
 					}

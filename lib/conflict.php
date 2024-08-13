@@ -176,17 +176,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
-
-			/* if ( ! empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {
-
-				$um_info   = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-				$min_version = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
-
-				if ( version_compare( $um_info[ 'version' ], $min_version, '<' ) ) {
-
-					$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required' ) );
-				}
-			} */
 		}
 
 		private function conflict_check_db() {
