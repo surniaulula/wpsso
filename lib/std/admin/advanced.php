@@ -1216,13 +1216,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[] = '<th></th>' .
-				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ),
-					$css_class = 'checkbox left', 'custom-cm-show-checkbox' ) .
-				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ),
-					$css_class = 'medium left', 'wp-cm-field-id' ) .
-				$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ),
-					$css_class = 'wide left', 'custom-cm-field-label' );
+			$table_rows[] = '<th class="medium"></th>' .
+				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), $css_class = 'checkbox left', 'custom-cm-show-checkbox' ) .
+				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), $css_class = 'medium left', 'wp-cm-field-id' ) .
+				$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ), $css_class = 'wide left', 'custom-cm-field-label' );
 
 			$sorted_cm_names = $this->p->cf[ 'wp' ][ 'cm_names' ];
 
@@ -1243,7 +1240,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				}
 
 				$table_rows[] = '' .
-					$form->get_th_html( $opt_label ) .
+					$form->get_th_html( $opt_label, $css_class = 'medium' ) .
 					$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) .
 					'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' .
 					'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
@@ -1259,7 +1256,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[] = '<th></th>' .
+			$table_rows[] = '<th class="medium"></th>' .
 				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), $css_class = 'checkbox left', 'custom-cm-show-checkbox' ) .
 				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), $css_class = 'medium left', 'custom-cm-field-id' ) .
 				$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ), $css_class = 'wide left', 'custom-cm-field-label' );
@@ -1273,7 +1270,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				if ( isset( $form->options[ $cm_enabled_key ] ) ) {
 
 					$table_rows[] = '' .
-						$form->get_th_html( ucfirst( $cm_id ) ) .
+						$form->get_th_html( ucfirst( $cm_id ), $css_class = 'medium' ) .
 						$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) .
 						'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' .
 						'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';

@@ -515,7 +515,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			}
 
-			return '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />' . "\n";
+			return '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />';
 		}
 
 		/*
@@ -544,9 +544,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$default_value  = $this->in_defaults( $name ) && ! empty( $this->defaults[ $name ] ) ? 1 : 0;
 			$default_status = $default_value ? 'checked' : 'unchecked';
-			$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
+			$title_transl   = sprintf( $this->get_option_value_transl( 'Default is %s' ), $this->get_option_value_transl( $default_status ) );
 			$input_class    = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
-			$input_class    = $css_class . ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
+			$input_class    .= ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
 			$input_class    = SucomUtil::sanitize_css_class( $input_class );
 			$input_id       = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
 
@@ -637,10 +637,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$default_value  = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 1 : 0;
 				$default_status = $default_value ? 'checked' : 'unchecked';
-				$title_transl   = sprintf( $this->get_option_value_transl( 'default is %s' ), $this->get_option_value_transl( $default_status ) );
+				$title_transl   = sprintf( $this->get_option_value_transl( 'Default is %s' ), $this->get_option_value_transl( $default_status ) );
 				$label_transl   = $this->get_option_value_transl( $label );
 				$input_class    = $this->get_options( $input_name . ':disabled' ) ? 'disabled' : '';
-				$input_class    = $css_class . ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
+				$input_class    .= ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
 				$input_class    = SucomUtil::sanitize_css_class( $input_class );
 				$input_id       = SucomUtil::sanitize_css_id( $input_name );
 
@@ -977,9 +977,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = $this->get_input( $name_prefix . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled );
 			$html .= 'x' . "\n";
 			$html .= $this->get_input( $name_prefix . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
-			$html .= $this->get_checkbox( $name_prefix . '_crop', '', '', $is_disabled ) . ' ';
-			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ';
-			$html .= '<div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . "\n";
+			$html .= _x( 'crop', 'option comment', $this->text_domain );
+			$html .= $this->get_checkbox( $name_prefix . '_crop', '', '', $is_disabled );
+			$html .= '<div class="image_crop_area">';
+			$html .= _x( 'from', 'option comment', $this->text_domain ) . "\n";
 			$html .= $this->get_input_image_crop_area( $name_prefix, $add_none = false, $is_disabled );
 			$html .= '</div>';
 

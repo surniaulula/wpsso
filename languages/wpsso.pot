@@ -2744,49 +2744,49 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:942 lib/com/form.php:2621
+#: lib/com/form.php:942 lib/com/form.php:2622
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:943 lib/com/form.php:2622
+#: lib/com/form.php:943 lib/com/form.php:2623
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:944 lib/com/form.php:2623
+#: lib/com/form.php:944 lib/com/form.php:2624
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:945 lib/com/form.php:2624
+#: lib/com/form.php:945 lib/com/form.php:2625
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:981
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:980
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:982 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:983 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:992
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:993
 #: lib/media-filters.php:116 lib/media.php:1571 lib/media.php:1721
 #: lib/media.php:3745
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1075 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1076 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 
@@ -6265,9 +6265,9 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:178 gettext/gettext-lib-pro.php:181
 #: gettext/gettext-lib-pro.php:184 lib/pro/admin/advanced.php:1326
-#: lib/pro/admin/advanced.php:1367 lib/pro/admin/advanced.php:1398
-#: lib/std/admin/advanced.php:1220 lib/std/admin/advanced.php:1263
-#: lib/std/admin/advanced.php:1296
+#: lib/pro/admin/advanced.php:1364 lib/pro/admin/advanced.php:1395
+#: lib/std/admin/advanced.php:1220 lib/std/admin/advanced.php:1260
+#: lib/std/admin/advanced.php:1293
 msgctxt "column title"
 msgid "Show"
 msgstr ""
@@ -6275,22 +6275,22 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:179 gettext/gettext-lib-pro.php:182
 #: lib/messages-info.php:114 lib/messages-tooltip.php:718
 #: lib/messages-tooltip.php:720 lib/messages-tooltip.php:732
-#: lib/pro/admin/advanced.php:1328 lib/pro/admin/advanced.php:1368
-#: lib/std/admin/advanced.php:1222 lib/std/admin/advanced.php:1264
+#: lib/pro/admin/advanced.php:1327 lib/pro/admin/advanced.php:1365
+#: lib/std/admin/advanced.php:1221 lib/std/admin/advanced.php:1261
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:180 gettext/gettext-lib-pro.php:183
 #: lib/messages-info.php:116 lib/messages-tooltip.php:726
-#: lib/pro/admin/advanced.php:1330 lib/pro/admin/advanced.php:1369
-#: lib/std/admin/advanced.php:1224 lib/std/admin/advanced.php:1265
+#: lib/pro/admin/advanced.php:1328 lib/pro/admin/advanced.php:1366
+#: lib/std/admin/advanced.php:1222 lib/std/admin/advanced.php:1262
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:185 lib/pro/admin/advanced.php:1518
-#: lib/std/admin/advanced.php:1413
+#: gettext/gettext-lib-pro.php:185 lib/pro/admin/advanced.php:1515
+#: lib/std/admin/advanced.php:1410
 msgid ""
 "An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."
@@ -7083,19 +7083,19 @@ msgid "Community Forum"
 msgstr ""
 
 #: lib/admin.php:2603
-msgid "Feature is disabled."
+msgid "Feature is disabled"
 msgstr ""
 
 #: lib/admin.php:2604
-msgid "Feature is not active."
+msgid "Feature is not active"
 msgstr ""
 
 #: lib/admin.php:2605
-msgid "Feature is active."
+msgid "Feature is active"
 msgstr ""
 
 #: lib/admin.php:2606 lib/admin.php:2607
-msgid "Feature is recommended but not active."
+msgid "Feature is recommended but not active"
 msgstr ""
 
 #: lib/admin.php:2656

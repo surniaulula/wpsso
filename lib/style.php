@@ -299,14 +299,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					padding:0;
 					margin:0;
 				}
-				.wpsso-rate-heart {
-					color:red;
-					font-size:1.5em;
-					vertical-align:top;
-				}
-				.wpsso-rate-heart::before {
-					content:"\2665";	/* Heart. */
-				}
 			';
 
 			/*

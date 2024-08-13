@@ -2600,11 +2600,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
 
 			$status_titles = array(
-				'disabled'    => __( 'Feature is disabled.', 'wpsso' ),
-				'off'         => __( 'Feature is not active.', 'wpsso' ),
-				'on'          => __( 'Feature is active.', 'wpsso' ),
-				'rec'         => __( 'Feature is recommended but not active.', 'wpsso' ),
-				'recommended' => __( 'Feature is recommended but not active.', 'wpsso' ),
+				'disabled'    => __( 'Feature is disabled', 'wpsso' ),
+				'off'         => __( 'Feature is not active', 'wpsso' ),
+				'on'          => __( 'Feature is active', 'wpsso' ),
+				'rec'         => __( 'Feature is recommended but not active', 'wpsso' ),
+				'recommended' => __( 'Feature is recommended but not active', 'wpsso' ),
 			);
 
 			foreach ( $features as $label => $arr ) {
