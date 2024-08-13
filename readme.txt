@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.26.0-dev.1 (2024/08/12)**
+**Version 17.26.0-dev.2 (2024/08/13)**
 
 * **New Features**
 	* None.
@@ -634,9 +634,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 17.26.0-dev.1 =
+= 17.26.0-dev.2 =
 
-(2024/08/12) Replaced checkbox options with slider options.
+(2024/08/13) Replaced checkbox options with slider options.
 
 = 17.25.0 =
 
