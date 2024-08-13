@@ -1,5 +1,32 @@
 
 /*
+ * W3 Colors:
+ *
+ * Aqua        = #00ffff;
+ * Blue        = #2196f3;
+ * Green       = #4caf50;
+ * Dark Gray   = #616161;
+ * Light Blue  = #87ceeb;
+ * Light Green = #8bc34a;
+ * Gray        = #9e9e9e;
+ * Pale Green  = #ddffdd;
+ * Red         = #f44336;
+ * Light Gray  = #f1f1f1;
+ * Orange      = #ff9800;
+ * Amber       = #ffc107;
+ * Yellow      = #ffeb3b;
+ *
+ * See https://www.w3schools.com/w3css/w3css_colors.asp.
+ *
+ * Notice Colors:
+ *
+ * Red    = #dc3232;
+ * Yellow = #ffb900;
+ * Blue   = #00a0d2;
+ * Green  = #46b450;
+ */
+
+/*
  * WordPress edit list table.
  */
 .wp-list-table.media .column-cb,
@@ -222,8 +249,8 @@ table td .no_input_clipboard .copy_button a {
 	padding:0;
 	margin:0;
 	text-decoration:none;
-	background-color:#f9f9f9;
-	border:1px solid #e3e3e3;
+	background-color:#eeeeee;
+	border:1px solid #cccccc;
 	-webkit-border-radius:0;
 	-khtml-border-radius:0;
 	-moz-border-radius:0;
@@ -244,20 +271,12 @@ table td .no_input_clipboard .copy_button a span.dashicons::before {
 	vertical-align:middle;
 }
 
-table td .no_input_clipboard .copy_text {
-	margin:0 60px 0 0;	/* Leave room for floating button. */
-}
-
-body.rtl table td .no_input_clipboard .copy_text {
-	margin:0 0 0 60px;	/* Leave room for floating button. */
-}
-
 table td .no_input_clipboard .copy_text input {
 	color:#555;
 	margin:0;
 	height:30px;
-	background-color:#f6f6f6;
-	border:1px dotted #e3e3e3;
+	background-color:#eeeeee;
+	border:1px solid #cccccc;
 	-webkit-border-radius:0;
 	-khtml-border-radius:0;
 	-moz-border-radius:0;
@@ -269,3 +288,12 @@ table td .no_input_clipboard .copy_text input {
 	-moz-box-sizing:content-box;
 	box-sizing:content-box;
 }
+
+table td .no_input_clipboard .copy_text {
+	margin:0 60px 0 0;	/* Leave room for floating button. */
+}
+
+body.rtl table td .no_input_clipboard .copy_text {
+	margin:0 0 0 60px;	/* Leave room for floating button. */
+}
+
