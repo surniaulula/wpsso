@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 17.26.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 17.25.0 (2024/08/12)**
 
 * **New Features**
@@ -619,6 +633,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 17.26.0-dev.1 =
+
+(TBD) None.
 
 = 17.25.0 =
 
