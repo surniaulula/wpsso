@@ -280,12 +280,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 17.26.0-dev.1 (TBD)**
+**Version 17.26.0-dev.1 (2024/08/12)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Replaced checkbox options with slider options.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -636,7 +636,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 17.26.0-dev.1 =
 
-(TBD) None.
+(2024/08/12) Replaced checkbox options with slider options.
 
 = 17.25.0 =
 
