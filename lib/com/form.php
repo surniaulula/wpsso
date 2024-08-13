@@ -551,15 +551,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_id       = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
 
 			$html = $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1 );
+			$html .= '<label class="sucom-checkbox"';
+			$html .= $input_id ? ' for="checkbox_' . $input_id . '"' : '';
+			$html .= ' title="' . $title_transl . '">';
 			$html .= '<input type="checkbox"';
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"';
 			$html .= $is_disabled ? ' disabled="disabled"' : '';
-			$html .= empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"';
-			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
-			$html .= empty( $input_id ) ? '' : ' id="checkbox_' . $input_id . '"';	// Already sanitized.
-			$html .= ' title="' . $title_transl . '"';
+			$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
+			$html .= $input_id ? ' id="checkbox_' . $input_id . '"' : '';	// Already sanitized.
+			$html .= $group ? ' data-group="' . esc_attr( $group ) . '"' : '';
 			$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= ' ' . $input_checked . '/>';
+			$html .= '<span class="sucom-checkbox-button"></span>';
+			$html .= '</label><!-- .sucom-checkbox -->';
 
 			return $html;
 		}
@@ -569,7 +573,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *
 		 * The $name_prefix is combined with the $values array names to create the checbox option name.
 		 */
-		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false,
+		public function get_checklist( $name_prefix, $values = array(), $css_class = 'column-list', $css_id = '', $is_assoc = null, $is_disabled = false,
 			$event_names = array() ) {
 
 			if ( empty( $name_prefix ) || ! is_array( $values ) ) {
@@ -598,7 +602,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name_prefix : $css_id );
 
 			/*
-			 * Use the "input_vertical_list" class to align the checbox input vertically.
+			 * Use the "column-list" class to align the checbox input vertically.
 			 */
 			$html = '<div class="' . $container_class . '" id="checklist_' . $container_id . '">' . "\n";
 
@@ -617,10 +621,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$input_name = $name_prefix . '_' . $name_suffix;
 
-				} else {
-
-					$input_name = $name_prefix . '_' . $label;
-				}
+				} else $input_name = $name_prefix . '_' . $label;
 
 				$input_name = SucomUtil::sanitize_input_name( $input_name );
 
@@ -644,15 +645,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_id       = SucomUtil::sanitize_css_id( $input_name );
 
 				$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1 );
-				$html .= '<span><input type="checkbox"';
+				$html .= '<span class="sucom-input-item">';
+				$html .= '<label class="sucom-checkbox"';
+				$html .= $input_id ? ' for="checkbox_' . $input_id . '"' : '';
+				$html .= ' title="' . $title_transl . '">';
+				$html .= '<input type="checkbox"';
 				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '" value="1"';
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
 				$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
 				$html .= $input_id ? ' id="checkbox_' . $input_id . '"' : '';	// Already sanitized.
-				$html .= ' title="' . $title_transl . '"';
 				$html .= ' data-default-value="' . esc_attr( $default_value ) . '"';
 				$html .= ' ' . $input_checked . '/>';
-				$html .= '&nbsp;&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
+				$html .= '<span class="sucom-checkbox-button"></span>';
+				$html .= '</label><!-- .sucom-checkbox -->';
+				$html .= '<span class="sucom-checkbox-label">' . $label_transl . '</span>';
+				$html .= '</span><!-- .sucom-input-item -->';
 
 				foreach ( $event_names as $event_num => $event_name ) {
 
@@ -695,14 +702,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 
-		public function get_checklist_countries( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
+		public function get_checklist_countries( $name_prefix, $css_class = 'column-list', $css_id = '', $is_disabled = false ) {
 
 			$values = SucomUtil::get_alpha2_countries();
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
 
-		public function get_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
+		public function get_checklist_post_types( $name_prefix, $css_class = 'column-list', $css_id = '', $is_disabled = false ) {
 
 			$label_prefix = $this->get_option_value_transl( 'Post Type' );
 
@@ -711,7 +718,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
 
-		public function get_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
+		public function get_checklist_post_tax_user( $name_prefix, $css_class = 'column-list', $css_id = '', $is_disabled = false ) {
 
 			$values = $this->get_checklist_post_tax_user_values();
 
@@ -1120,58 +1127,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input_video_url( $name_prefix, $url = '', $is_disabled = false ) {
 
 			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
-		}
-
-		/*
-		 * Radio input field.
-		 */
-		public function get_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false ) {
-
-			if ( empty( $name ) || ! is_array( $values ) ) return '';
-
-			if ( null === $is_assoc ) $is_assoc = SucomUtil::is_assoc( $values );
-
-			$container_class = SucomUtil::sanitize_css_class( $css_class );
-			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
-			$input_class     = $this->get_options( $name . ':disabled' ) ? 'disabled' : '';
-			$input_class     = SucomUtil::sanitize_css_class( $input_class );
-
-			/*
-			 * Use the "input_vertical_list" class to align the radio input buttons vertically.
-			 */
-			$html = '<div class="' . $container_class . '" id="radio_' . $container_id . '">' . "\n";	// Already sanitized.
-
-			foreach ( $values as $val => $label ) {
-
-				if ( is_array( $label ) ) {	// Just in case.
-
-					$label = implode( $glue = ', ', $label );
-				}
-
-				/*
-				 * If the array is not associative (so a regular numbered array), then the label / description is
-				 * used as the saved value.
-				 */
-				if ( ! $is_assoc ) {
-
-					$val = $label;
-				}
-
-				$label_transl = $this->get_option_value_transl( $label );
-
-				$html .= '<span><input type="radio"';
-				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
-				$html .= $is_disabled ? ' disabled="disabled"' : '';
-				$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
-				$html .= $this->in_options( $name ) ? checked( $this->options[ $name ], $val, false ) : '';
-				$html .= $this->in_defaults( $name ) ? ' title="default is ' . $values[ $this->defaults[ $name ] ] . '"' : '';
-				$html .= '/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>';
-				$html .= "\n";
-			}
-
-			$html .= '</div>' . "\n";
-
-			return $html;
 		}
 
 		/*
@@ -2031,12 +1986,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									} else $input_checked = '';
 
-									$radio_inputs[] = '<input type="radio"' .
+									$radio_inputs[] = '<span class="sucom-radio"><input type="radio"' .
 										( $is_disabled ? ' disabled="disabled"' :
 											' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
 											' class="' . $input_class . '"' .	// Already sanitized.
 											' value="' . esc_attr( $input_value ) . '"' ) .
-										$input_checked . '/>';
+										$input_checked . '/></span>';
 								}
 
 								if ( ! empty( $radio_inputs ) ) {
@@ -2544,22 +2499,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = true ) . ( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {
+		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'column-list', $css_id = '', $is_assoc = null ) {
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, $is_disabled = true );
 		}
 
-		public function get_no_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+		public function get_no_checklist_post_types( $name_prefix, $css_class = 'column-list', $css_id = '' ) {
 
 			return $this->get_checklist_post_types( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}
 
-		public function get_no_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+		public function get_no_checklist_post_tax_user( $name_prefix, $css_class = 'column-list', $css_id = '' ) {
 
 			return $this->get_checklist_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}
 
-		public function get_no_columns_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+		public function get_no_columns_post_tax_user( $name_prefix, $css_class = 'column-list', $css_id = '' ) {
 
 			return $this->get_columns_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}

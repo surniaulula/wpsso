@@ -365,6 +365,10 @@ table.sucom-settings td p.status-msg {
 	margin:2px 0;
 }
 
+table.sucom-settings td p.status-msg.top {
+	margin-bottom:8px;
+}
+
 table.sucom-settings td p.status-msg.smaller {
 	font-size:0.85em;
 }
@@ -802,7 +806,7 @@ table.sucom-settings td input[type="text"].wide { width:100%; }
 table.sucom-settings td select.long_name,
 table.sucom-settings td input[type="text"].long_name { width:340px; }
 
-table.sucom-settings td input[type="checkbox"] { margin:6px; }
+table.sucom-settings td input[type="checkbox"] { margin:4px; }
 
 table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
 
@@ -874,26 +878,73 @@ table.sucom-settings td div.linked_to_label {
 }
 
 /*
- * Align radio / checkbox input buttons vertically.
+ * Style checkboxes.
  */
-table.sucom-settings td div.input_vertical_list > span {
-	display:block;
-	margin:0 0 4px 0;
-	line-height:2em;
+label.sucom-checkbox {
+	display:inline-block;
+	position:relative;
+	height:16px;
+	width:26px;
+	margin:4px 8px 4px 4px;
 }
 
-table.sucom-settings td div.input_vertical_list.input_cols_2 > span {
+label.sucom-checkbox .sucom-checkbox-button {
+	background-color:#ccc;
+	border-radius:8px;
+	position:absolute;
+	cursor:pointer;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	transition:.4s;
+}
+
+label.sucom-checkbox .sucom-checkbox-button:before {
+	background-color:#fff;
+	border-radius:50%;
+	position:absolute;
+	content:"";
+	height:12px;
+	width:12px;
+	left:2px;
+	bottom:2px;
+	transition:.4s;
+}
+
+label.sucom-checkbox input {
+	display:none;
+}
+
+label.sucom-checkbox input:checked + .sucom-checkbox-button {
+	background-color:#4caf50;
+}
+
+label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
+	transform:translateX(10px);
+}
+
+/*
+ * Align radio / checkbox input buttons vertically.
+ */
+table.sucom-settings td div.column-list span.sucom-input-item {
+	display:block;
+	margin:0 0 6px 0;
+}
+
+table.sucom-settings td div.column-list span.sucom-input-item span.sucom-checkbox-label {
+	vertical-align:middle;
+	margin:0 4px;
+}
+
+table.sucom-settings td div.column-list.num-cols-2 span.sucom-input-item {
 	display:inline-block;
 	width:49%;
 }
 
-table.sucom-settings td div.input_vertical_list.input_cols_3 > span {
+table.sucom-settings td div.column-list.num-cols-3 span.sucom-input-item {
 	display:inline-block;
 	width:32%;
-}
-
-table.sucom-settings td div.input_vertical_list input[type="checkbox"] {
-	margin-right:4px;
 }
 
 table.sucom-settings td span.wp-picker-input-wrap input {
