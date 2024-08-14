@@ -25,8 +25,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	class WpssoAdmin {
 
 		protected $p;		// Wpsso class object.
-		protected $head;	// WpssoAdminHead class object.
-		protected $filters;	// WpssoAdminFilters class object.
 		protected $menu_id;
 		protected $menu_name;
 		protected $menu_lib;
@@ -59,11 +57,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
 
-			$this->head = new WpssoAdminHead( $plugin );
+			new WpssoAdminHead( $plugin );
 
-			require_once WPSSO_PLUGINDIR . 'lib/admin-filters.php';
+			require_once WPSSO_PLUGINDIR . 'lib/admin-dashboard.php';
 
-			$this->filters = new WpssoAdminFilters( $plugin );
+			new WpssoAdminDashboard( $plugin );
 
 			/*
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the
@@ -139,6 +137,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! $doing_ajax ) {
+
+				add_action( 'wp_dashboard_setup', array( $this, 'dashboard_setup' ) );
 
 				/*
 				 * The admin_menu action is run before admin_init.
@@ -275,6 +275,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$do_once = true;
 
 			$this->p->util->cache->schedule_refresh( $user_id );
+		}
+
+		public function dashboard_setup() {
+
+			$classnames = $this->p->get_lib_classnames( 'dashboard' );	// Always returns an array.
+
+			foreach ( $classnames as $id => $classname ) {
+					
+				new $classname( $this->p );
+			}
 		}
 
 		public function load_network_menu_objects() {
@@ -1375,9 +1385,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, $context = 'normal', $object = null );
 
-			/*
-			 * Hooked by WpssoSubmenuDashboard->action_form_content_metaboxes_dashboard().
-			 */
 			do_action( 'wpsso_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
 
 			echo $this->get_form_buttons();
@@ -2592,157 +2599,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			return '<img src="' . $img_src . '" srcset="' . trim( $img_srcset, $chars = ', ' ) . '" '
 				. 'width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
-		}
-
-		/*
-		 * See WpssoSubmenuDashboard->show_metabox_features_status().
-		 */
-		protected function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
-
-			$status_titles = array(
-				'disabled'    => __( 'Feature is disabled', 'wpsso' ),
-				'off'         => __( 'Feature is not active', 'wpsso' ),
-				'on'          => __( 'Feature is active', 'wpsso' ),
-				'rec'         => __( 'Feature is recommended but not active', 'wpsso' ),
-				'recommended' => __( 'Feature is recommended but not active', 'wpsso' ),
-			);
-
-			foreach ( $features as $label => $arr ) {
-
-				if ( ! empty( $arr[ 'label_transl' ] ) ) {
-
-					$label_transl = $arr[ 'label_transl' ];
-
-					unset( $features[ $label ], $arr[ 'label_transl' ] );
-
-					$features[ $label_transl ] = $arr;
-				}
-			}
-
-			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
-
-			foreach ( $features as $label_transl => $arr ) {
-
-				if ( isset( $arr[ 'status' ] ) ) {	// Use provided status before class or constant check.
-
-					$status_key = $arr[ 'status' ];
-
-				} elseif ( isset( $arr[ 'classname' ] ) ) {
-
-					$status_key = class_exists( $arr[ 'classname' ] ) ? 'on' : 'off';
-
-				} elseif ( isset( $arr[ 'constant' ] ) ) {
-
-					$status_key = SucomUtil::get_const( $arr[ 'constant' ] ) ? 'on' : 'off';
-
-				} else {
-
-					$status_key = '';
-				}
-
-				if ( ! empty( $status_key ) ) {
-
-					$dashicon_title = '';
-					$dashicon_name  = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
-					$label_transl   = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
-					$label_url      = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
-					$td_class       = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
-					$td_class_is    = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
-
-					switch ( $dashicon_name ) {
-
-						case 'api':
-
-							$dashicon_title = __( 'Service API', 'wpsso' );
-							$dashicon_name  = 'download';
-
-							break;
-
-						case 'code':
-
-							$dashicon_title = __( 'Structured Data', 'wpsso' );
-							$dashicon_name  = 'media-code';
-
-							break;
-
-						case 'code-plus':
-
-							$dashicon_title = __( 'Structured Data Property', 'wpsso' );
-							$dashicon_name  = 'welcome-add-page';
-
-							break;
-
-						case 'feature':
-
-							$dashicon_title = __( 'Additional Feature', 'wpsso' );
-							$dashicon_name  = 'pressthis';
-
-							break;
-
-						case 'plugin':
-
-							$dashicon_title = __( 'Plugin Integration', 'wpsso' );
-							$dashicon_name  = 'admin-plugins';
-
-							break;
-
-						case 'sharing':
-
-							$dashicon_title = __( 'Sharing Functionality', 'wpsso' );
-							$dashicon_name  = 'share';
-
-							break;
-					}
-
-					echo '<tr>';
-
-					echo '<td class="module-icon' . $td_class_is . '">';
-					echo '<span class="dashicons-before dashicons-' . $dashicon_name . '" title="' . $dashicon_title . '"></span>';
-					echo '</td>';
-
-					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';
-					echo $label_url ? '<a href="' . $label_url . '">' : '';
-					echo $label_transl;
-					echo $label_url ? '</a>' : '';
-					echo '</td>';
-
-					echo '<td class="module-status' . $td_class_is .'">';
-					echo '<div class="status-light" title="';
-					echo isset( $status_titles[ $status_key ] ) ? $status_titles[ $status_key ] : '';
-					echo '"></div>';
-					echo '</td>';
-
-					echo '</tr>' . "\n";
-				}
-			}
-		}
-
-		/*
-		 * See WpssoSubmenuDashboard->show_metabox_cache_status().
-		 */
-		protected static function sort_by_label_key( $a, $b ) {
-
-			if ( isset( $a[ 'label' ] ) && isset( $b[ 'label' ] ) ) {
-
-				return strcmp( $a[ 'label' ], $b[ 'label' ] );
-			}
-
-			return 0;	// No change.
-		}
-
-		private static function sort_plugin_features( $feature_a, $feature_b ) {
-
-			return strnatcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
-		}
-
-		private static function feature_priority( $feature ) {
-
-			if ( strpos( $feature, '(feature)' ) === 0 ) {
-
-				return '(10) ' . $feature;
-			}
-
-			return $feature;
 		}
 
 		/*

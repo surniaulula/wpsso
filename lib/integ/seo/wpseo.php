@@ -61,11 +61,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 
 			if ( is_admin() ) {
 
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_wpseo_blocks' => 1,
-					'features_status_integ_data_wpseo_meta'   => 1,
-					'admin_page_style_css'                    => 1,
-				), 100 );
+				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css' => 1 ), 100 );
 
 				add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 
@@ -471,16 +467,6 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 			}
 
 			return $custom_style_css;
-		}
-
-		public function filter_features_status_integ_data_wpseo_blocks( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
-		}
-
-		public function filter_features_status_integ_data_wpseo_meta( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 
 		/*

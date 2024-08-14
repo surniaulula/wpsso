@@ -41,10 +41,7 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 
 			if ( is_admin() ) {
 
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_rankmath_meta' => 1,
-					'admin_page_style_css'                     => 1,
-				), 100 );
+				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css' => 1 ), 100 );
 
 			} else {
 
@@ -203,11 +200,6 @@ if ( ! class_exists( 'WpssoIntegSeoRankmath' ) ) {
 			}
 
 			return $value;
-		}
-
-		public function filter_features_status_integ_data_rankmath_meta( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 
 		/*

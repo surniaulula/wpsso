@@ -29,8 +29,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
-		private $p;		// Wpsso class object.
-
+		private $p;			// Wpsso class object.
 		private $types_cache = array();	// Schema types array cache.
 
 		public function __construct( &$plugin ) {
@@ -42,6 +41,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/*
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_json_data(), when the Schema filters are required. The action then unhooks itself so it
+			 * can only be run once.
+			 */
+			$this->p->util->add_plugin_actions( $this, array( 'init_json_filters' => 0 ), $prio = -1000 );
+
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes'   => 1,
 				'sanitize_md_defaults' => 2,
@@ -49,6 +55,47 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			), $prio = 5 );
 
 			add_action( 'wp_ajax_wpsso_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
+		}
+
+		public function action_init_json_filters() {
+
+			$current_action = current_action();
+
+			if ( 'wpsso_init_json_filters' !== $current_action ) {	// Just in case.
+
+				$this->p->debug->log( 'exiting early: current action ' . $current_action . ' is incorrect' );
+
+				return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'init json filters' );	// Begin timer.
+			}
+
+			$classnames = $this->p->get_lib_classnames( 'json' );	// Always returns an array.
+
+			foreach ( $classnames as $id => $classname ) {
+
+				/*
+				 * Since WPSSO Core v15.0.0.
+				 *
+				 * Example $filter_name = 'wpsso_init_json_filter_prop_haspart'.
+				 */
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_init_json_filter_' . $id );
+
+				if ( apply_filters( $filter_name, true ) ) new $classname( $this->p );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'init json filters' );	// End timer.
+			}
+
+			/*
+			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
+			 */
+			remove_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000 );
 		}
 
 		public function filter_plugin_image_sizes( array $sizes ) {
@@ -462,8 +509,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/*
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
-			 * then unhooks itself from the action, so it can only be run once.
+			 * WpssoSchema->get_json_data(), when the Schema filters are required. The action then unhooks itself so it
+			 * can only be run once.
 			 */
 			do_action( 'wpsso_init_json_filters' );
 

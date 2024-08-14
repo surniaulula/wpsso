@@ -2875,7 +2875,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *	- The theme does not support the 'title-tag' feature.
 		 *	- The WPSSO_TITLE_TAG_DISABLE constant is true.
 		 *
-		 * See WpssoAdminFilters->filter_features_status_integ().
 		 * See WpssoMessages->maybe_doc_title_disabled().
 		 */
 		public function is_title_tag_disabled() {

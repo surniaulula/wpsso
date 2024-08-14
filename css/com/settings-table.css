@@ -26,12 +26,6 @@
  * Green  = #46b450;
  */
 
-#poststuff div.postbox-dashboard div.inside {
-	margin-top:-1px;
-	border-top:1px solid #c3c4c7;
-}
-
-#poststuff table.sucom-settings.column-metabox h4,
 #poststuff .inner-sidebar table.sucom-settings h4 {
 	font-size:1.05em;
 	font-weight:500;
@@ -1016,10 +1010,10 @@ table.sucom-settings textarea.code {
 	white-space:pre;
 }
 
-table.sucom-settings td.checkbox,
-table.sucom-settings th.checkbox {
-	width:20px;
-	min-width:20px;
+table.sucom-settings th.checkbox,
+table.sucom-settings td.checkbox {
+	width:42px;
+	min-width:42px;
 	max-width:60px;
 	text-align:center;
 }
@@ -1027,6 +1021,10 @@ table.sucom-settings th.checkbox {
 table.sucom-settings th.checkbox.left,
 table.sucom-settings td.checkbox.left {
 	text-align:left;
+}
+
+table.sucom-settings td.checkbox label.sucom-checkbox {
+	margin:2px 0;
 }
 
 table.sucom-settings .video {
@@ -1315,149 +1313,6 @@ table.sucom-settings td.oembed_container > iframe {
 	min-width:652px;
 	max-width:652px;
 	margin:0 auto;
-}
-
-/*
- * SSO > Dashboard page.
- */
-table.sucom-settings.column-metabox {
-	padding:20px 40px;
-	border-spacing:2px;
-}
-
-table.sucom-settings.column-metabox p {
-	margin:0 0 10px 0;
-}
-
-table.sucom-settings.column-metabox .column-metabox-buttons {
-	text-align:center;
-	margin-top:20px;
-}
-
-table.sucom-settings.column-metabox input[type="button"].button-primary,
-table.sucom-settings.column-metabox input[type="button"].button-secondary {
-	overflow:hidden;
-	width:100%;
-	min-width:100%;
-	max-width:100%;
-	margin:0 0 5px 0;
-}
-
-table.sucom-settings.column-metabox ul {
-	color:#555;
-	margin:10px 0 20px 30px;
-	list-style-type:circle;
-	list-style-position:outside;	/* Default. */
-}
-
-table.sucom-settings.column-metabox ol {
-	color:#555;
-	margin:10px 0 20px 30px;
-	list-style-position:outside;	/* Default. */
-}
-
-table.sucom-settings.column-metabox.cache-status th,
-table.sucom-settings.column-metabox.cache-status td {
-	text-align:right;
-	padding:0 10px 0 0;
-}
-
-body.rtl table.sucom-settings.column-metabox.cache-status th,
-body.rtl table.sucom-settings.column-metabox.cache-status th {
-	text-align:left;
-	padding:0 0 0 10px;
-}
-
-table.sucom-settings.column-metabox.cache-status td h4 {
-	text-align:left;
-}
-
-body.rtl table.sucom-settings.column-metabox.cache-status td h4 {
-	text-align:right;
-}
-
-table.sucom-settings.column-metabox.cache-status .cache-label {
-	width:40%;
-	min-width:auto;
-}
-
-table.sucom-settings.column-metabox.cache-status .cache-count,
-table.sucom-settings.column-metabox.cache-status .cache-size {
-	width:15%;
-	min-width:auto;
-}
-
-table.sucom-settings.column-metabox.cache-status .cache-expiration {
-	width:30%;
-	min-width:auto;
-	text-align:left;
-	padding:0;
-}
-
-body.rtl table.sucom-settings.column-metabox.cache-status .cache-expiration {
-	text-align:right;
-}
-
-table.sucom-settings.column-metabox th.version-label {
-	padding:0 4px;
-	font-weight:normal;
-}
-
-table.sucom-settings.column-metabox td.version-number,
-table.sucom-settings.column-metabox td.latest-notice {
-	padding:2px 4px;
-	font-weight:normal;
-}
-
-table.sucom-settings.column-metabox td.latest-notice {
-	font-style:italic;
-}
-
-table.sucom-settings.column-metabox.feature-status td {
-	padding:2px 4px;
-	vertical-align:middle;
-}
-
-table.sucom-settings.column-metabox.feature-status .dashicons-before::before {
-	font-size:1.2em;
-	line-height:1.2em;
-}
-
-table.sucom-settings.column-metabox.feature-status td .status-light {
-	width:14px;
-	height:14px;
-	border-radius:50%;
-	margin-top:2px;
-	margin-left:5px;
-}
-
-table.sucom-settings td.module-is-on .status-light {
-	background-color:#46b450;	/* Green. */
-}
-
-table.sucom-settings td.module-is-off .status-light {
-	background-color:#cccccc;	/* Light Grey. */
-}
-
-table.sucom-settings td.module-is-disabled .status-light {
-	background-color:#00a0d2;	/* Blue. */
-}
-
-table.sucom-settings td.module-is-rec .status-light,
-table.sucom-settings td.module-is-recommended .status-light {
-	background-color:#ffc107;	/* Amber. */
-}
-
-table.sucom-settings.column-metabox.version-info td.version-number.newer-version-available {
-	background-color:#ffc107;	/* Amber. */
-}
-
-table.sucom-settings.column-metabox.version-info td.version-number.current-version-not-stable {
-	background-color:#00a0d2;	/* Blue. */
-}
-
-table.sucom-settings.column-metabox.version-info td.version-number.current-version {
-	background-color:#46b450;	/* Green. */
 }
 
 /*

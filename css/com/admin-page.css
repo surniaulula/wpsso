@@ -27,6 +27,96 @@
  */
 
 /*
+ * WP Dashboard Widgets.
+ */
+#dashboard-widgets #wpsso-cache-status .postbox-header h2,
+#dashboard-widgets #wpsso-help-support .postbox-header h2,
+#dashboard-widgets #wpsso-version-info .postbox-header h2 {
+	display:block;
+}
+
+#dashboard-widgets #wpsso-cache-status .postbox-header h2:before {
+	font-family:"WpssoIcons";
+	margin-right:10px;
+	content:"\f1c0";	/* .icon-database */
+}
+
+#dashboard-widgets #wpsso-help-support .postbox-header h2:before {
+	font-family:"WpssoIcons";
+	margin-right:10px;
+	content:"\f1cd";	/* .icon-lifebuoy */
+}
+
+#dashboard-widgets #wpsso-version-info .postbox-header h2:before {
+	font-family:"WpssoIcons";
+	margin-right:10px;
+	content:"\e80b";	/* .icon-ok-circled */
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget {
+	margin:10px;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget h4 {
+	font-weight:600;
+	margin:10px 2px 5px 2px;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget ul {
+	margin-left:30px;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget th {
+	font-weight:600;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget th,
+body.rtl #dashboard-widgets table.wpsso-dashboard-widget td {
+	text-align:right;
+	vertical-align:top;
+	padding:2px 10px 2px 2px;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget td,
+body.rtl #dashboard-widgets table.wpsso-dashboard-widget th {
+	text-align:left;
+	vertical-align:top;
+	padding:2px 2px 2px 10px;
+}
+
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-label,
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-count,
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-size,
+body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-expiration {
+	text-align:right;
+	padding:2px 2px 2px 10px;
+}
+
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-expiration,
+body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-label,
+body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-count,
+body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-size {
+	text-align:left;
+	padding:2px 2px 2px 10px;
+}
+
+#dashboard-widgets #wpsso-version-info table.wpsso-dashboard-widget td.latest-notice {
+	font-style:italic;
+}
+
+#dashboard-widgets #wpsso-version-info table.wpsso-dashboard-widget td.version-number.newer-version-available {
+	background-color:#ffc107;	/* Amber. */
+}
+
+#dashboard-widgets #wpsso-version-info table.wpsso-dashboard-widget td.version-number.current-version-not-stable {
+	background-color:#00a0d2;	/* Blue. */
+}
+
+#dashboard-widgets #wpsso-version-info table.wpsso-dashboard-widget td.version-number.current-version {
+	background-color:#46b450;	/* Green. */
+}
+
+/*
  * WordPress edit list table.
  */
 .wp-list-table.media .column-cb,

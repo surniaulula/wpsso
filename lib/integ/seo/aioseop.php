@@ -37,13 +37,6 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 				'description_seed' => 4,
 			), 100 );
 
-			if ( is_admin() ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_aioseop_meta' => 1,
-				), 100 );
-			}
-
 			add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
 		}
 
@@ -115,11 +108,6 @@ if ( ! class_exists( 'WpssoIntegSeoAioseop' ) ) {
 			}
 
 			return $value;
-		}
-
-		public function filter_features_status_integ_data_aioseop_meta( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 	}
 }

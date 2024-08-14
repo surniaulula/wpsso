@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.6.1
  * WC Tested Up To: 9.1.4
- * Version: 18.0.0-dev.4
+ * Version: 18.0.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -77,7 +77,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
 		public $id           = 'wpsso';	// Plugin id.
-		public $json         = array();	// Loaded json filter objects..
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array from WpssoConfig::get_config().
@@ -121,13 +120,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10.
 			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
-
-			/*
-			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
-			 * then unhooks itself from the action, so it can only be run once.
-			 */
-			add_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000, 0 );
 
 			/*
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
@@ -443,7 +435,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->oembed    = new WpssoOembed( $this );		// Oembed response data.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
-			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
+			$this->schema    = new WpssoSchema( $this );		// Schema json data.
 			$this->tc        = new WpssoTwitterCard( $this );	// X (Twitter) Card meta tags.
 
 			if ( $this->debug->enabled ) {
@@ -525,55 +517,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * See WpssoRrssbStdSocialBuddypress->remove_wp_buttons().
 			 */
 			do_action( 'wpsso_init_plugin' );
-		}
-
-		/*
-		 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-		 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action then
-		 * unhooks itself from the action, so it can only be run once.
-		 */
-		public function init_json_filters() {
-
-			$current_action = current_action();
-
-			if ( 'wpsso_init_json_filters' !== $current_action ) {
-
-				$this->debug->log( 'exiting early: current action ' . $current_action . ' is incorrect' );
-
-				return;
-			}
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init json filters' );	// Begin timer.
-			}
-
-			$classnames = $this->get_lib_classnames( 'json' );	// Always returns an array.
-
-			foreach ( $classnames as $id => $classname ) {
-
-				/*
-				 * Since WPSSO Core v15.0.0.
-				 *
-				 * Example $filter_name = 'wpsso_init_json_filter_prop_haspart'.
-				 */
-				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_init_json_filter_' . $id );
-
-				if ( apply_filters( $filter_name, true ) ) {
-
-					$this->json[ $id ] = new $classname( $this );
-				}
-			}
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init json filters' );	// End timer.
-			}
-
-			/*
-			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
-			 */
-			remove_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000 );
 		}
 
 		/*

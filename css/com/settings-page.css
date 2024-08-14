@@ -199,14 +199,12 @@ div.submit-buttons form .button-secondary {
 	margin:0;
 }
 
-.column-metabox .button-highlight,
 div.submit-buttons .button-highlight {
 	color:#006189;
 	border-color:#0086bc;
 	background-color:#daeefc;
 }
 
-.column-metabox .button-highlight:hover,
 div.submit-buttons .button-highlight:hover {
 	border-color:#004f6f;
 	background-color:#c8e6fb;
@@ -282,94 +280,6 @@ div.submit-buttons .button-alt:hover {
 .admin-footer-host {
 	float:right;
 	text-align:right;
-}
-
-/*
- * Dashboard and Features settings page.
- */
-#metabox_col_wrap {
-	margin-right:-20px;
-}
-
-.metabox_col {
-	float:left;
-	min-height:50px;
-	margin-right:20px;
-}
-
-.metabox_col.max_cols_1 {
-	--col-width:100%;
-	width:var( --col-width );
-	min-width:var( --col-width );
-	max-width:var( --col-width );
-}
-
-.metabox_col.max_cols_2 {
-	--col-width:calc( 50% - 20px );
-	width:var( --col-width );
-	min-width:var( --col-width );
-	max-width:var( --col-width );
-}
-
-.metabox_col.max_cols_3 {
-	--col-width:calc( 33.3333% - 20px );
-	width:var( --col-width );
-	min-width:var( --col-width );
-	max-width:var( --col-width );
-}
-
-.metabox_col.max_cols_4 {
-	--col-width:calc( 25% - 20px );
-	width:var( --col-width );
-	min-width:var( --col-width );
-	max-width:var( --col-width );
-}
-
-.metabox_col .postbox {
-	overflow-x:hidden;
-}
-
-.postbox-dashboard .inside {
-	overflow-y:auto;
-}
-
-.postbox-dashboard h2:before {
-	font-family:"WpssoIcons";
-	margin-right:10px;
-}
-
-.postbox-dashboard > div.postbox-header:before {
-	font-family:"WpssoIcons";
-	margin:0 0 0 10px;
-}
-
-body.rtl .postbox-dashboard > div.postbox-header:before {
-	margin:0 10px 0 0;
-}
-
-.postbox-dashboard_rate_review > h2:before,
-.postbox-dashboard_rate_review > div.postbox-header:before {
-	content:"\e80d";	/* .icon-star */
-}
-
-.postbox-dashboard_help_support > h2:before,
-.postbox-dashboard_help_support > div.postbox-header:before {
-	content:"\f1cd";	/* .icon-lifebuoy */
-}
-
-.postbox-dashboard_cache_status > h2:before,
-.postbox-dashboard_cache_status > div.postbox-header:before {
-	content:"\f1c0";	/* .icon-database */
-}
-
-.postbox-dashboard_version_info > h2:before,
-.postbox-dashboard_version_info > div.postbox-header:before {
-	content:"\e80b";	/* .icon-ok-circled */
-}
-
-.postbox-dashboard_features_status > h2:before,
-.postbox-dashboard_features_status > div.postbox-header:before {
-	content:"\e80e";	/* .icon-cog-alt */
 }
 
 /*

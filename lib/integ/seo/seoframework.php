@@ -50,10 +50,6 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 
 			if ( $this->is_admin ) {
 
-				$this->p->util->add_plugin_filters( $this, array(
-					'features_status_integ_data_seoframework_meta' => 1,
-				), 100 );
-
 				add_action( 'current_screen', array( $this, 'cleanup_seoframework_edit_view' ), PHP_INT_MIN, 1 );
 
 				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000, 1 );
@@ -301,11 +297,6 @@ if ( ! class_exists( 'WpssoIntegSeoSeoframework' ) ) {
 			}
 
 			return $obj_id;
-		}
-
-		public function filter_features_status_integ_data_seoframework_meta( $features_status ) {
-
-			return 'off' === $features_status ? 'rec' : $features_status;
 		}
 
 		/*
