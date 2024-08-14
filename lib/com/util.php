@@ -3097,14 +3097,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Deprecated on 2024/04/16.
 		 */
-		public static function get_opts_begin( array $opts, $mixed ) {
+		public static function get_opts_begin( array $opts, $str ) {
 
 			if ( ! class_exists( 'SucomUtilOptions' ) ) {	// Just in case.
 
 				require_once dirname( __FILE__ ) . '/util-options.php';
 			}
 
-			return SucomUtilOptions::get_opts_begin( $opts, $mixed );
+			return SucomUtilOptions::get_opts_begin( $opts, $str );
 		}
 
 		/*
