@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_show_opts' ] = '' .
 				$form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_show_opts' ) .
+					$css_class = 'medium', $css_id = 'plugin_show_opts' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
 			/*
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_add_toolbar_validate' ] = '' .
 				$form->get_th_html( sprintf( _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
-					$css_class = '', $css_id = 'plugin_add_toolbar_validate' ) .
+					$css_class = 'medium', $css_id = 'plugin_add_toolbar_validate' ) .
 				$form->get_no_td_checkbox( 'plugin_add_toolbar_validate' );
 
 			/*
@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( $in_view = 'basic', 'plugin_add_submenu_' ) .
 				$form->get_th_html( sprintf( _x( 'Show %s Menu Items', 'option label', 'wpsso' ), $menu_title ),
-					$css_class = '', $css_id = 'plugin_add_submenu' ) .
+					$css_class = 'medium', $css_id = 'plugin_add_submenu' ) .
 				'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
 
 			/*
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_add_to' ] = $form->get_tr_hide_prefix( $in_view = 'basic', 'plugin_add_to_' ) .
 				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $metabox_title ),
-					$css_class = '', $css_id = 'plugin_add_to' ) .
+					$css_class = 'medium', $css_id = 'plugin_add_to' ) .
 				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';
 
 			/*
@@ -512,19 +512,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_show_columns' ] = '' .
 				$form->get_th_html( _x( 'WP List Table Columns', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_show_columns' ) .
+					$css_class = 'medium', $css_id = 'plugin_show_columns' ) .
 				'<td>' . $form->get_no_columns_post_tax_user( $name_prefix = 'plugin',
 					$col_headers, $table_class = 'plugin_list_table_cols' ) . '</td>';
 
 			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_og_types_select_format' ) .
 				$form->get_th_html( _x( 'Open Graph Type Select Format', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_og_types_select_format' ) .
+					$css_class = 'medium', $css_id = 'plugin_og_types_select_format' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_og_types_select_format',
 					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_schema_types_select_format' ) .
 				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_schema_types_select_format' ) .
+					$css_class = 'medium', $css_id = 'plugin_schema_types_select_format' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format',
 					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 

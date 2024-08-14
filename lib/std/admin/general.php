@@ -26,14 +26,14 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'og_videos_rows' => 2,
+				'mb_general_open_graph_videos_rows' => 2,
 			) );
 		}
 
 		/*
 		 * SSO > General Settings > Videos tab.
 		 */
-		public function filter_og_videos_rows( $table_rows, $form ) {
+		public function filter_mb_general_open_graph_videos_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 
