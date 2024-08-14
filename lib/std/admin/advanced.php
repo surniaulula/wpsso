@@ -494,12 +494,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $menu_args as $menu_id => $args ) {
 
-				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) ) {	// Settings page can be disabled.
+				if ( ! isset( $form->defaults[ 'plugin_add_submenu_' . $menu_id ] ) )
+					$form->defaults[ 'plugin_add_submenu_' . $menu_id ] = 1;
 
-					$form->defaults[ 'plugin_add_submenu_' . $menu_id ] = 1;	// Just in case.
-
+				if ( ! isset( $form->options[ 'plugin_add_submenu_' . $menu_id ] ) )
+					$form->options[ 'plugin_add_submenu_' . $menu_id ] = 1;
+				
+				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) )
 					$values[ $menu_id ] = $args[ 2 ];
-				}
 			}
 
 			$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( $in_view = 'basic', 'plugin_add_submenu_' ) .

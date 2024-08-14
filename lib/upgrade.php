@@ -601,6 +601,18 @@ if ( ! class_exists( 'WpssoUpgrade' ) ) {
 					'plugin_wpvideoshortcode_api' => 'plugin_media_wpvideoshortcode',
 					'plugin_youtube_api'          => 'plugin_media_youtube',
 				),
+				1012 => array(
+					'plugin_add_submenu_am-general'    => '',
+					'plugin_add_submenu_bc-general'    => '',
+					'plugin_add_submenu_dashboard'     => '',
+					'plugin_add_submenu_faq-general'   => '',
+					'plugin_add_submenu_gmf-general'   => '',
+					'plugin_add_submenu_rar-general'   => '',
+					'plugin_add_submenu_tie-general'   => '',
+					'plugin_add_submenu_wcmd-general'  => '',
+					'plugin_add_submenu_wcsdt-general' => '',
+					'plugin_add_submenu_wpsm-general'  => '',
+				),
 			),
 		);
 

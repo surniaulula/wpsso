@@ -245,9 +245,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_tr_hide_prefix( $in_view, $opt_name_prefix ) {
+		public function get_tr_hide_prefix( $in_view, $op_prefix ) {
 
-			$css_class = $this->get_css_class_hide_prefix( $in_view, $opt_name_prefix );
+			$css_class = $this->get_css_class_hide_prefix( $in_view, $op_prefix );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
@@ -305,9 +305,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
 
-		public function get_css_class_hide_prefix( $in_view, $opt_name_prefix ) {
+		public function get_css_class_hide_prefix( $in_view, $opt_prefix ) {
 
-			$opt_keys = SucomUtilOptions::get_opts_begin( $this->options, $opt_name_prefix );
+			$opt_keys = SucomUtilOptions::get_opts_begin( $this->options, $opt_prefix );
 
 			return $this->get_css_class_hide( $in_view, $opt_keys );
 		}
@@ -364,7 +364,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( isset( $this->options[ $opt_key_locale ] ) ) {
 
-						if ( $this->options[ $opt_key_locale ] !== $this->defaults[ $opt_key_locale ] ) {
+						/*
+						 * Allow comparing strings and integers.
+						 */
+						if ( $this->options[ $opt_key_locale ] != $this->defaults[ $opt_key_locale ] ) {
 
 							return '';	// Show option.
 						}
@@ -377,8 +380,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						if ( isset( $this->options[ $opt_key_locale ] ) ) {
 
+							/*
+							 * Allow comparing strings and integers.
+							 */
 							if ( '' !== $this->options[ $opt_key_locale ] &&
-								$this->options[ $opt_key_locale ] !== $this->defaults[ $opt_key ] ) {
+								$this->options[ $opt_key_locale ] != $this->defaults[ $opt_key ] ) {
 
 								return '';	// Show option.
 							}
@@ -386,7 +392,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						if ( isset( $this->options[ $opt_key ] ) ) {
 
-							if ( $this->options[ $opt_key ] !== $this->defaults[ $opt_key ] ) {
+							/*
+							 * Allow comparing strings and integers.
+							 */
+							if ( $this->options[ $opt_key ] != $this->defaults[ $opt_key ] ) {
 
 								return '';	// Show option.
 							}

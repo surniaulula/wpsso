@@ -896,6 +896,10 @@ label.sucom-checkbox {
 	margin:4px 8px 4px 4px;
 }
 
+label.sucom-checkbox input {
+	display:none;
+}
+
 label.sucom-checkbox .sucom-checkbox-button {
 	border:1px solid #cccccc;
 	border-radius:9px;
@@ -906,6 +910,21 @@ label.sucom-checkbox .sucom-checkbox-button {
 	bottom:0;
 	left:0;
 	transition:.4s;
+}
+
+label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button,
+label.sucom-checkbox input:checked:disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.default.disabled:checked + .sucom-checkbox-button,
+label.sucom-checkbox input.default:checked:disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.disabled:not(:checked) + .sucom-checkbox-button,
+label.sucom-checkbox input:not(:checked):disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.default.disabled:not(:checked) + .sucom-checkbox-button,
+label.sucom-checkbox input.default:not(:checked):disabled + .sucom-checkbox-button{
+	cursor:inherit;
+}
+
+label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
+	transform:translateX(12px);
 }
 
 label.sucom-checkbox .sucom-checkbox-button:before {
@@ -919,14 +938,6 @@ label.sucom-checkbox .sucom-checkbox-button:before {
 	transition:.4s;
 }
 
-label.sucom-checkbox input {
-	display:none;
-}
-
-label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
-	transform:translateX(12px);
-}
-
 label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
 	background-color:#46b450;	/* Green. */
 }
@@ -935,20 +946,26 @@ label.sucom-checkbox input:not(:checked) + .sucom-checkbox-button:before {
 	background-color:#00a0d2;	/* Blue. */
 }
 
-label.sucom-checkbox input.default:checked + .sucom-checkbox-button:before,
-label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button:before,
-label.sucom-checkbox input:checked:disabled + .sucom-checkbox-button:before,
-label.sucom-checkbox input.default.disabled:checked + .sucom-checkbox-button:before,
-label.sucom-checkbox input.default:checked:disabled + .sucom-checkbox-button:before {
+label.sucom-checkbox input.default:checked + .sucom-checkbox-button:before {
 	background-color:#aaaaaa;	/* Dark Grey. */
 }
 
-label.sucom-checkbox input.default:not(:checked) + .sucom-checkbox-button:before,
+label.sucom-checkbox input.default:not(:checked) + .sucom-checkbox-button:before {
+	background-color:#cccccc;	/* Light Grey. */
+}
+
+label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button:before,
+label.sucom-checkbox input:checked:disabled + .sucom-checkbox-button:before,
+label.sucom-checkbox input.default.disabled:checked + .sucom-checkbox-button:before,
+label.sucom-checkbox input.default:checked:disabled + .sucom-checkbox-button:before,
 label.sucom-checkbox input.disabled:not(:checked) + .sucom-checkbox-button:before,
 label.sucom-checkbox input:not(:checked):disabled + .sucom-checkbox-button:before,
 label.sucom-checkbox input.default.disabled:not(:checked) + .sucom-checkbox-button:before,
 label.sucom-checkbox input.default:not(:checked):disabled + .sucom-checkbox-button:before {
-	background-color:#cccccc;	/* Light Grey. */
+	background-color:inherit;
+	border:1px solid #cccccc;	/* Light Grey. */
+	height:12px;
+	width:12px;
 }
 
 /*

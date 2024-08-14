@@ -37,18 +37,17 @@ If ( ! class_exists( 'SucomUtilOptions' ) ) {
 		 *	set_key_value_locale_disabled()
 		 *	transl_key_values()
 		 */
-		public static function get_opts_begin( $opts, $str ) {	// Do not cast $opts as an array.
-
-			if ( ! is_array( $opts ) && is_array( $str ) ) {	// Backwards compatibility.
-
-				$arr = $str; $str = $opts; $opts = $arr ; unset( $arr );
-			}
+		public static function get_opts_begin( array $opts, $mixed ) {
 
 			$found = array();
 
 			foreach ( $opts as $key => $value ) {
 
-				if ( 0 === strpos( $key, $str ) ) {
+				if ( is_array( $mixed ) && in_array( $key, $mixed ) ) {
+
+					$found[ $key ] = $value;
+
+				} elseif ( is_string( $mixed ) && 0 === strpos( $key, $mixed ) ) {
 
 					$found[ $key ] = $value;
 				}

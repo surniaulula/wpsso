@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.0.0-dev.5',	// Plugin version.
-					'opt_version' => '1011',	// Increment when changing default option values.
+					'version'     => '18.0.0-dev.6',	// Plugin version.
+					'opt_version' => '1013',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1953,10 +1953,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_add_toolbar_validate'          => 1,		// Show Validators Toolbar Menu.
-					'plugin_add_submenu_setup'             => 1,
 					'plugin_add_submenu_essential'         => 1,
+					'plugin_add_submenu_general'           => 1,
+					'plugin_add_submenu_advanced'          => 1,
+					'plugin_add_submenu_licenses'          => 1,
 					'plugin_add_submenu_addons'            => 1,
 					'plugin_add_submenu_tools'             => 1,
+					'plugin_add_submenu_setup'             => 1,
 					'plugin_add_to_attachment'             => 1,
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
 					'plugin_add_to_page'                   => 1,
@@ -2033,17 +2036,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Locale.
 					 */
 					'plugin_schema_lang_col_attachment'           => 0,
-					'plugin_schema_lang_col_download'             => 0,		// For Easy Digital Downloads.
+					'plugin_schema_lang_col_download'             => 0,	// For Easy Digital Downloads.
 					'plugin_schema_lang_col_page'                 => 0,
 					'plugin_schema_lang_col_post'                 => 0,
-					'plugin_schema_lang_col_product'              => 0,		// For WooCommerce.
+					'plugin_schema_lang_col_product'              => 0,	// For WooCommerce.
 					'plugin_schema_lang_col_tax_category'         => 0,
 					'plugin_schema_lang_col_tax_faq_category'     => 0,
 					'plugin_schema_lang_col_tax_link_category'    => 0,
 					'plugin_schema_lang_col_tax_post_tag'         => 0,
-					'plugin_schema_lang_col_tax_product_cat'      => 0,		// For WooCommerce.
-					'plugin_schema_lang_col_tax_product_tag'      => 0,		// For WooCommerce.
-					'plugin_schema_lang_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
+					'plugin_schema_lang_col_tax_product_cat'      => 0,	// For WooCommerce.
+					'plugin_schema_lang_col_tax_product_tag'      => 0,	// For WooCommerce.
+					'plugin_schema_lang_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
 					'plugin_schema_lang_col_user_page'            => 0,
 
 					/*
@@ -2543,7 +2546,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'um' => array(
 				'min_version' => '4.10.0',	// Released on 2021/11/11.
-				'rec_version' => '5.4.0-dev.5',	// Released on 2024/08/14.
+				'rec_version' => '5.4.0-dev.6',	// Released on 2024/08/14.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
