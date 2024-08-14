@@ -54,7 +54,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				switch ( $base_key ) {
 
+					case ( 0 === strpos( $base_key, 'plugin_add_' ) ? true : false ):
 					case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
+					case ( 0 === strpos( $base_key, 'plugin_import_' ) ? true : false ):
 
 						return 'checkbox';
 
@@ -412,7 +414,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/*
 				 * Optimize and check for add meta tags options first.
 				 */
-				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
+				case ( 0 === strpos( $base_key, 'add_link_' ) ? true : false ):
+				case ( 0 === strpos( $base_key, 'add_meta_' ) ? true : false ):
 
 					return 'checkbox';
 

@@ -494,13 +494,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $menu_args as $menu_id => $args ) {
 
-				if ( ! isset( $form->defaults[ 'plugin_add_submenu_' . $menu_id ] ) )
+				if ( ! isset( $form->defaults[ 'plugin_add_submenu_' . $menu_id ] ) )	// Just in case.
 					$form->defaults[ 'plugin_add_submenu_' . $menu_id ] = 1;
 
-				if ( ! isset( $form->options[ 'plugin_add_submenu_' . $menu_id ] ) )
+				if ( ! isset( $form->options[ 'plugin_add_submenu_' . $menu_id ] ) )	// Just in case.
 					$form->options[ 'plugin_add_submenu_' . $menu_id ] = 1;
 				
-				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) )
+				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) )	// Exclude must-load menu items.
 					$values[ $menu_id ] = $args[ 2 ];
 			}
 
