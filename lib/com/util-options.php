@@ -45,7 +45,7 @@ If ( ! class_exists( 'SucomUtilOptions' ) ) {
 
 			foreach ( $opts as $key => $value ) {
 
-				if ( 0 === strpos( $key, $mixed ) ) {
+				if ( 0 === strpos( $key, $str ) ) {
 
 					$found[ $key ] = $value;
 				}
