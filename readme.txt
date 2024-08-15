@@ -280,12 +280,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.0.0-dev.6 (2024/08/14)**
+**Version 18.0.0-b.1 (2024/08/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added widgets to the WP Dashboard page:
+	* Added three widgets to the WP Dashboard page:
 		* WPSSO Cache Status
 		* WPSSO Help and Support
 		* WPSSO Version Information
@@ -639,9 +639,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.0.0-dev.6 =
+= 18.0.0-b.1 =
 
-(2024/08/14) Added widgets to the WP Dashboard page. Replaced checkbox options with slider options. Removed the SSO &gt; Dashboard settings page.
+(2024/08/15) Added three widgets to the WP Dashboard page. Replaced checkbox options with slider options. Removed the SSO &gt; Dashboard settings page.
 
 = 17.25.0 =
 
