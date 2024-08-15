@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-08-15 07:52-0700\n"
+"PO-Revision-Date: 2024-08-15 08:45-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2806,8 +2806,6 @@ msgid "Import Yoast SEO Metadata"
 msgstr "Importer métadonnées Yoast SEO"
 
 #: gettext/gettext-lib-config.php:20
-#| msgctxt "lib file description"
-#| msgid "(plugin) Perfect Brands for WooCommerce"
 msgctxt "lib file description"
 msgid "Perfect Brands for WooCommerce"
 msgstr "Perfect Brands for WooCommerce"
@@ -2833,8 +2831,6 @@ msgid "WooCommerce UPC, EAN, and ISBN"
 msgstr "WooCommerce UPC, EAN, and ISBN"
 
 #: gettext/gettext-lib-config.php:25
-#| msgctxt "lib file description"
-#| msgid "(plugin) Product GTIN for WooCommerce"
 msgctxt "lib file description"
 msgid "Product GTIN for WooCommerce"
 msgstr "Product GTIN for WooCommerce"
@@ -2845,8 +2841,6 @@ msgid "YITH WooCommerce Brands Add-on"
 msgstr "YITH WooCommerce Brands Add-on"
 
 #: gettext/gettext-lib-config.php:27
-#| msgctxt "lib file description"
-#| msgid "(plugin) The Events Calendar"
 msgctxt "lib file description"
 msgid "The Events Calendar"
 msgstr "The Events Calendar"
@@ -2857,15 +2851,11 @@ msgid "Gravity Forms"
 msgstr "Gravity Forms"
 
 #: gettext/gettext-lib-config.php:29
-#| msgctxt "lib file description"
-#| msgid "(plugin) Gravity View"
 msgctxt "lib file description"
 msgid "Gravity View"
 msgstr "Gravity View"
 
 #: gettext/gettext-lib-config.php:30
-#| msgctxt "lib file description"
-#| msgid "(plugin) Simple Job Board"
 msgctxt "lib file description"
 msgid "Simple Job Board"
 msgstr "Simple Job Board"
@@ -2876,15 +2866,11 @@ msgid "WP Job Manager"
 msgstr "WP Job Manager"
 
 #: gettext/gettext-lib-config.php:32
-#| msgctxt "lib file description"
-#| msgid "(plugin) Polylang"
 msgctxt "lib file description"
 msgid "Polylang"
 msgstr "Polylang"
 
 #: gettext/gettext-lib-config.php:33
-#| msgctxt "lib file description"
-#| msgid "(plugin) qTranslate-XT"
 msgctxt "lib file description"
 msgid "qTranslate-XT"
 msgstr "qTranslate-XT"
@@ -2895,13 +2881,11 @@ msgid "WPML"
 msgstr "WPML"
 
 #: gettext/gettext-lib-config.php:35
-#| msgid "Select Image"
 msgctxt "lib file description"
 msgid "Perfect Images"
 msgstr "Perfect Images"
 
 #: gettext/gettext-lib-config.php:36
-#| msgid "Rate my Post"
 msgctxt "lib file description"
 msgid "Rate my Post"
 msgstr "Rate my Post"
@@ -2917,7 +2901,6 @@ msgid "WP Recipe Maker"
 msgstr "WP Recipe Maker"
 
 #: gettext/gettext-lib-config.php:39
-#| msgid "Judge.me Product Reviews for WooCommerce"
 msgctxt "lib file description"
 msgid "Judge.me Product Reviews for WooCommerce"
 msgstr "Critiques Judge.me de produits WooCommerce"
@@ -2933,25 +2916,21 @@ msgid "Yotpo Social Reviews for WooCommerce"
 msgstr "Yotpo Social Reviews for WooCommerce"
 
 #: gettext/gettext-lib-config.php:42
-#| msgid "All in One SEO Pack"
 msgctxt "lib file description"
 msgid "All in One SEO Pack"
 msgstr "All in One SEO Pack"
 
 #: gettext/gettext-lib-config.php:43
-#| msgid "Rank Math SEO"
 msgctxt "lib file description"
 msgid "Rank Math SEO"
 msgstr "Rank Math SEO"
 
 #: gettext/gettext-lib-config.php:44
-#| msgid "The SEO Framework"
 msgctxt "lib file description"
 msgid "The SEO Framework"
 msgstr "The SEO Framework"
 
 #: gettext/gettext-lib-config.php:45
-#| msgid "SEOPress"
 msgctxt "lib file description"
 msgid "SEOPress"
 msgstr "SEOPress"
@@ -2967,36 +2946,26 @@ msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #: gettext/gettext-lib-config.php:48
-#| msgctxt "lib file description"
-#| msgid "(plugin) Co-Authors Plus"
 msgctxt "lib file description"
 msgid "Co-Authors Plus"
 msgstr "Co-Authors Plus"
 
 #: gettext/gettext-lib-config.php:49
-#| msgctxt "lib file description"
-#| msgid "(plugin) Ultimate Member"
 msgctxt "lib file description"
 msgid "Ultimate Member"
 msgstr "Ultimate Member"
 
 #: gettext/gettext-lib-config.php:50
-#| msgctxt "lib file description"
-#| msgid "(plugin) Elementor Website Builder"
 msgctxt "lib file description"
 msgid "Elementor Website Builder"
 msgstr "Constructeur de Site Web Elementor"
 
 #: gettext/gettext-lib-config.php:51
-#| msgctxt "lib file description"
-#| msgid "(plugin) Jetpack"
 msgctxt "lib file description"
 msgid "Jetpack"
 msgstr "Jetpack"
 
 #: gettext/gettext-lib-config.php:52
-#| msgctxt "lib file description"
-#| msgid "(plugin) Jetpack Boost"
 msgctxt "lib file description"
 msgid "Jetpack Boost"
 msgstr "Jetpack Boost"
@@ -3007,99 +2976,71 @@ msgid "Schema Type Article"
 msgstr "Type de Schéma Article"
 
 #: gettext/gettext-lib-config.php:54
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Audiobook"
 msgstr "Type de Schéma Audiobook"
 
 #: gettext/gettext-lib-config.php:55
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Blog"
 msgstr "Type de Schéma Blog"
 
 #: gettext/gettext-lib-config.php:56
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Book"
 msgstr "Type de Schéma Book"
 
 #: gettext/gettext-lib-config.php:57
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Brand"
 msgstr "Type de Schéma Brand"
 
 #: gettext/gettext-lib-config.php:58
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Claim Review"
 msgstr "Type de Schéma Claim Review"
 
 #: gettext/gettext-lib-config.php:59
-#| msgctxt "option label"
-#| msgid "Schema Type Select Format"
 msgctxt "lib file description"
 msgid "Schema Type Collection Page"
 msgstr "Type de Schéma Collection Page"
 
 #: gettext/gettext-lib-config.php:60
-#| msgctxt "option label"
-#| msgid "Schema Types"
 msgctxt "lib file description"
 msgid "Schema Type Course"
 msgstr "Type de Schéma Course"
 
 #: gettext/gettext-lib-config.php:61
-#| msgctxt "option label"
-#| msgid "Schema Type Select Format"
 msgctxt "lib file description"
 msgid "Schema Type CreativeWork"
 msgstr "Type de Schéma CreativeWork"
 
 #: gettext/gettext-lib-config.php:62
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Event"
 msgstr "Type de Schéma Event"
 
 #: gettext/gettext-lib-config.php:63
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type FAQPage"
 msgstr "Type de Schéma FAQPage"
 
 #: gettext/gettext-lib-config.php:64
-#| msgctxt "lib file description"
-#| msgid "(code) Schema Type Food Establishment [schema_type:food.establishment]"
 msgctxt "lib file description"
 msgid "Schema Type Food Establishment"
 msgstr "Type de Schéma Food Establishment"
 
 #: gettext/gettext-lib-config.php:65
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type How-To"
 msgstr "Type de Schéma How-To"
 
 #: gettext/gettext-lib-config.php:66
-#| msgctxt "option label"
-#| msgid "Schema Types"
 msgctxt "lib file description"
 msgid "Schema Type ItemList"
 msgstr "Type de Schéma ItemList"
 
 #: gettext/gettext-lib-config.php:67
-#| msgctxt "option label"
-#| msgid "Schema Types"
 msgctxt "lib file description"
 msgid "Schema Type Job Posting"
 msgstr "Type de Schéma Job Posting"
@@ -3110,119 +3051,86 @@ msgid "Schema Type Learning Resource"
 msgstr "Type de Schéma Learning Resource"
 
 #: gettext/gettext-lib-config.php:69
-#| msgctxt "option label"
-#| msgid "Schema Types"
 msgctxt "lib file description"
 msgid "Schema Type Local Business"
 msgstr "Type de Schéma Local Business"
 
 #: gettext/gettext-lib-config.php:70
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Movie"
 msgstr "Type de Schéma Movie"
 
 #: gettext/gettext-lib-config.php:71
-#| msgctxt "option value"
-#| msgid "Site Organization"
 msgctxt "lib file description"
 msgid "Schema Type Organization"
 msgstr "Type de Schéma Organization"
 
 #: gettext/gettext-lib-config.php:72
-#| msgctxt "option label"
-#| msgid "Schema Types"
 msgctxt "lib file description"
 msgid "Schema Type Person"
 msgstr "Type de Schéma Person"
 
 #: gettext/gettext-lib-config.php:73
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Place"
 msgstr "Type de Schéma Place"
 
 #: gettext/gettext-lib-config.php:74
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Product"
 msgstr "Type de Schéma Product"
 
 #: gettext/gettext-lib-config.php:75
-#| msgid "adding schema product group"
 msgctxt "lib file description"
 msgid "Schema Type Product Group"
 msgstr "Type de Schéma Product Group"
 
 #: gettext/gettext-lib-config.php:76
-#| msgctxt "metabox tab"
-#| msgid "Profile Page"
 msgctxt "lib file description"
 msgid "Schema Type Profile Page"
 msgstr "Type de Schéma Profile Page"
 
 #: gettext/gettext-lib-config.php:77
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type QAPage"
 msgstr "Type de Schéma QAPage"
 
 #: gettext/gettext-lib-config.php:78
-#| msgctxt "lib file description"
-#| msgid "(code) Schema Type Question and Answer [schema_type:question]"
 msgctxt "lib file description"
 msgid "Schema Type Question and Answer"
 msgstr "Type de Schéma Question et Answer"
 
 #: gettext/gettext-lib-config.php:79
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Recipe"
 msgstr "Type de Schéma Recipe"
 
 #: gettext/gettext-lib-config.php:80
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Review"
 msgstr "Type de Schéma Review"
 
 #: gettext/gettext-lib-config.php:81
-#| msgctxt "option label"
-#| msgid "Type for Search Results"
 msgctxt "lib file description"
 msgid "Schema Type Search Results Page"
 msgstr "Type de Schéma Search Results Page"
 
 #: gettext/gettext-lib-config.php:82
-#| msgctxt "option label"
-#| msgid "Schema Type Select Format"
 msgctxt "lib file description"
 msgid "Schema Type Software Application"
 msgstr "Type de Schéma Software Application"
 
 #: gettext/gettext-lib-config.php:83
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type Thing"
 msgstr "Type de Schéma Thing"
 
 #: gettext/gettext-lib-config.php:84
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type WebPage"
 msgstr "Type de Schéma WebPage"
 
 #: gettext/gettext-lib-config.php:85
-#| msgctxt "option label"
-#| msgid "Schema Type"
 msgctxt "lib file description"
 msgid "Schema Type WebSite"
 msgstr "Type de Schéma WebSite"
@@ -3253,15 +3161,11 @@ msgid "Gravatar Images"
 msgstr "Images Gravatar"
 
 #: gettext/gettext-lib-config.php:91 gettext/gettext-lib-config.php:109
-#| msgctxt "option value"
-#| msgid "Slideshare Presentations"
 msgctxt "lib file description"
 msgid "Slideshare Presentations"
 msgstr "Slideshare Presentations"
 
 #: gettext/gettext-lib-config.php:92 gettext/gettext-lib-config.php:110
-#| msgctxt "option value"
-#| msgid "Soundcloud Tracks"
 msgctxt "lib file description"
 msgid "Soundcloud Tracks"
 msgstr "Soundcloud Tracks"
@@ -3302,15 +3206,11 @@ msgid "Judge.me Reviews"
 msgstr "Critiques Judge.me"
 
 #: gettext/gettext-lib-config.php:100
-#| msgctxt "option value"
-#| msgid "Shopper Approved"
 msgctxt "lib file description"
 msgid "Shopper Approved Reviews"
 msgstr "Shopper Approved Reviews"
 
 #: gettext/gettext-lib-config.php:101
-#| msgctxt "metabox title"
-#| msgid "Stamped.io (Ratings and Reviews)"
 msgctxt "lib file description"
 msgid "Stamped.io Reviews"
 msgstr "Stamped.io Reviews"
@@ -10769,8 +10669,8 @@ msgstr "Notez que les métadonnées personnalisées %1$s ne seront importées qu
 
 #. translators: %1$s is the plugin name.
 #: lib/messages-tooltip-plugin.php:289 lib/messages-tooltip-plugin.php:309
-msgid "This option is checked by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database."
-msgstr "Cette option est cochée par défaut si %1$s est actif, ou si aucune extension SEO n'est active et des réglages %1$s sont trouvés dans la base de données."
+msgid "This option is enabled by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database."
+msgstr "Cette option est activée par défaut si %1$s est actif, ou si aucune extension SEO n'est active et des réglages %1$s sont trouvés dans la base de données."
 
 #. translators: %1$s is the plugin name.
 #: lib/messages-tooltip-plugin.php:292
@@ -11482,8 +11382,8 @@ msgid "Add an extra hidden image for the Pinterest Pin It browser button in the 
 msgstr "Ajoutez une image cachée supplémentaire pour le bouton du navigateur Pinterest Pin It dans le contenu de l'article/de la page WordPress, la description de l'auteur, la description de l'archive des types d'article et la description du terme."
 
 #: lib/messages-tooltip.php:365
-msgid "Although generally recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded)."
-msgstr "Bien que généralement recommandée, cette option n'est pas cochée par défaut car l'image supplémentaire peut affecter la vitesse de chargement de la page (l'image ne peut pas être chargée paresseusement)."
+msgid "Although generally recommended, this option is disabled by default since the extra image can affect page load speed (the image cannot be lazy loaded)."
+msgstr "Bien que généralement recommandée, cette option est désactivée par défaut car l'image supplémentaire peut affecter la vitesse de chargement de la page (l'image ne peut pas être chargée en différé)."
 
 #: lib/messages-tooltip.php:367
 msgid "If your website visitors use the Pinterest Pin It browser button, you may enable this option, otherwise leave it unchecked."
