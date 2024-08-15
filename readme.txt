@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.0.0-rc.1 (2024/08/15)**
+**Version 18.0.0 (2024/08/15)**
 
 * **New Features**
 	* None.
@@ -639,7 +639,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.0.0-rc.1 =
+= 18.0.0 =
 
 (2024/08/15) Added three widgets to the WP Dashboard page. Replaced checkbox options with slider options. Removed the SSO &gt; Dashboard settings page.
 
