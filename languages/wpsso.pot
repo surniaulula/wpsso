@@ -11553,7 +11553,7 @@ msgstr ""
 #. translators: %1$s is the plugin name.
 #: lib/messages-tooltip-plugin.php:289 lib/messages-tooltip-plugin.php:309
 msgid ""
-"This option is checked by default if %1$s is active, or no SEO plugin is "
+"This option is enabled by default if %1$s is active, or no SEO plugin is "
 "active and %1$s settings are found in the database."
 msgstr ""
 
@@ -12481,8 +12481,8 @@ msgstr ""
 
 #: lib/messages-tooltip.php:365
 msgid ""
-"Although generally recommended, this option is unchecked by default since "
-"the extra image can affect page load speed (the image cannot be lazy loaded)."
+"Although generally recommended, this option is disabled by default since the "
+"extra image can affect page load speed (the image cannot be lazy loaded)."
 msgstr ""
 
 #: lib/messages-tooltip.php:367

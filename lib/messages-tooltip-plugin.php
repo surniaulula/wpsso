@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$text .= sprintf( __( 'Note that %1$s custom metadata will only be imported into %2$s metabox options that are empty (ie. options that have not already been customized).', 'wpsso' ), $plugin_name_transl, $mb_title_transl ) . ' ';
 
 					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
+					$text .= sprintf( __( 'This option is enabled by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					// translators: %1$s is the plugin name.
 					$text .= sprintf( __( 'If this option is checked and %1$s is active, then only social metadata will be imported, and if %1$s is not active, then all available metadata will be imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$text = sprintf( __( 'Import the %1$s block attributes (how-to block step details, for example) into the %2$s metabox options.', 'wpsso' ), $plugin_name_transl, $mb_title_transl ) . ' ';
 
 					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
+					$text .= sprintf( __( 'This option is enabled by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					break;
 

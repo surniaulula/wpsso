@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						$text = __( 'Add an extra hidden image for the Pinterest Pin It browser button in the WordPress singular post/page content, author description, post types archive description, and term description.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Although generally recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
+						$text .= __( 'Although generally recommended, this option is disabled by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
 
 						$text .= __( 'If your website visitors use the Pinterest Pin It browser button, you may enable this option, otherwise leave it unchecked.', 'wpsso' ) . ' ';
 
