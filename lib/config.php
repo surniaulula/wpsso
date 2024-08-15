@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.0.0-dev.6',	// Plugin version.
+					'version'     => '18.0.0-b.1',	// Plugin version.
 					'opt_version' => '1014',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2960,24 +2960,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'year'  => 'Year',
 				),
 				'qualifiers' => array(
-					'default'    => '(default)',
-					'no_images'  => '(no images)',
-					'no_videos'  => '(no videos)',
-					'settings'   => '(settings value)',
-					'disabled'   => '(option disabled)',
-					'default_is' => 'default is %s',
-					'checked'    => 'checked',
-					'unchecked'  => 'unchecked',
-					'at'         => 'at',
-					'tz'         => 'tz',
+					'(default)',
+					'(no images)',
+					'(no videos)',
+					'(settings value)',
+					'(option disabled)',
+					'%1$s (default is %2$s)',
+					'default is %s',
+					'checked',
+					'unchecked',
+					'Enabled',
+					'Disabled',
+					'enabled',
+					'disabled',
+					'at',
+					'tz',
 
 					/*
 					 * See SucomForm->get_checklist_post_types().
 					 * See SucomForm->get_checklist_post_tax_user_values().
 					 */
-					'post_type'     => 'Post Type',
-					'taxonomy'      => 'Taxonomy',
-					'user_profiles' => 'User Profiles',
+					'Post Type',
+					'Taxonomy',
+					'User Profiles',
 				),
 				'document_title' => array(	// Webpage Title Tag.
 					'wp_title'         => '[WordPress Title]',
