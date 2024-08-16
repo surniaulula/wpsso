@@ -285,11 +285,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Moved the settings page submit buttons to a fixed toolbar.
+	* Moved settings page submit buttons to a fixed toolbar.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Removed deprecated methods from the `SucomUtil` class.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -655,7 +655,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 18.1.0-dev.1 =
 
-(2024/08/15) Moved the settings page submit buttons to a fixed toolbar.
+(2024/08/15) Moved settings page submit buttons to a fixed toolbar. Removed deprecated methods from the `SucomUtil` class.
 
 = 18.0.0 =
 
