@@ -4098,17 +4098,5 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			return $cache_exp_secs;
 		}
-
-		/**
-		 * Deprecated since WPSSO Core v6.10.0 on 2019/10/28.
-		 *
-		 * Keep for old deprecated add-ons that use this method on activation.
-		 */
-		public static function save_all_times( $ext, $version ) {
-
-			_deprecated_function( __METHOD__ . '()', '2019/10/28', $replacement = 'WpssoUtilReg::update_ext_version()' );	// Deprecation message.
-
-			WpssoUtilReg::update_ext_version( $ext, $version );
-		}
 	}
 }
