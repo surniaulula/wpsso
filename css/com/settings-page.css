@@ -179,48 +179,6 @@ h1 > div.dashicons-before::before {
 	margin:0 2px;
 }
 
-div.submit-buttons {
-	text-align:center;
-	margin:5px 0;
-}
-
-div.submit-buttons .button-primary,
-div.submit-buttons .button-secondary {
-	margin:5px;
-	min-width:280px;
-}
-
-div.submit-buttons form {
-	margin:5px;
-}
-
-div.submit-buttons form .button-primary,
-div.submit-buttons form .button-secondary {
-	margin:0;
-}
-
-div.submit-buttons .button-highlight {
-	color:#006189;
-	border-color:#0086bc;
-	background-color:#daeefc;
-}
-
-div.submit-buttons .button-highlight:hover {
-	border-color:#004f6f;
-	background-color:#c8e6fb;
-}
-
-div.submit-buttons .button-alt {
-	color:#646464;
-	border-color:#afafaf;
-	background-color:#ededed;
-}
-
-div.submit-buttons .button-alt:hover {
-	border-color:#959595;
-	background-color:#f7f7f7;
-}
-
 .button-error,
 .button-secondary.button-error {
 	color:#ffffff;
@@ -264,6 +222,14 @@ div.submit-buttons .button-alt:hover {
 	max-height:18px;
 }
 
+#wpbody-content {
+	padding-bottom:20px;
+}
+
+#wpfooter {
+	display:none;
+}
+
 .admin-footer-ext,
 .admin-footer-host {
 	display:block;
@@ -282,12 +248,79 @@ div.submit-buttons .button-alt:hover {
 	text-align:right;
 }
 
+div.submit-buttons {
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:calc(100% - 204px);
+	margin-left:182px;
+	text-align:center;
+	background-color:#fff;
+	border:1px solid #c3c4c7;
+}
+
+.folded div.submit-buttons {
+	width:calc(100% - 80px);
+	margin-left:58px;
+}
+
+div.submit-buttons .button-primary,
+div.submit-buttons .button-secondary {
+	margin:5px;
+	min-width:280px;
+}
+
+div.submit-buttons form {
+	margin:5px;
+}
+
+div.submit-buttons form .button-primary,
+div.submit-buttons form .button-secondary {
+	margin:0;
+}
+
+div.submit-buttons .button-highlight {
+	color:#006189;
+	border-color:#0086bc;
+	background-color:#daeefc;
+}
+
+div.submit-buttons .button-highlight:hover {
+	border-color:#004f6f;
+	background-color:#c8e6fb;
+}
+
+div.submit-buttons .button-alt {
+	color:#646464;
+	border-color:#afafaf;
+	background-color:#ededed;
+}
+
+div.submit-buttons .button-alt:hover {
+	border-color:#959595;
+	background-color:#f7f7f7;
+}
+
 /*
  * Tools and Actions page.
  */
+body.sso-social-and-search-optimization_page_wpsso-tools #wpbody-content {
+	padding-bottom:55px;
+}
+
+body.sso-social-and-search-optimization_page_wpsso-tools #wpfooter {
+	display:block;
+}
+
 #tools-content div.submit-buttons {
-	text-align:left;
+	position:static;
+	left:auto;
+	bottom:auto;
+	width:auto;
 	margin:20px 0;
+	text-align:left;
+	background-color:inherit;
+	border:none;
 }
 
 body.rtl #tools-content div.submit-buttons {
