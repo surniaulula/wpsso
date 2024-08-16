@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.0.0\n"
+"Project-Id-Version: WPSSO Core 18.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-08-15 08:45-0700\n"
+"PO-Revision-Date: 2024-08-16 11:26-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2602,49 +2602,49 @@ msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:915 lib/com/form.php:2595
+#: lib/com/form.php:925 lib/com/form.php:2605
 msgctxt "option comment"
 msgid "days"
 msgstr "jours"
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:916 lib/com/form.php:2596
+#: lib/com/form.php:926 lib/com/form.php:2606
 msgctxt "option comment"
 msgid "hours"
 msgstr "heures"
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:917 lib/com/form.php:2597
+#: lib/com/form.php:927 lib/com/form.php:2607
 msgctxt "option comment"
 msgid "mins"
 msgstr "mins"
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:918 lib/com/form.php:2598
+#: lib/com/form.php:928 lib/com/form.php:2608
 msgctxt "option comment"
 msgid "secs"
 msgstr "secs"
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:953
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:963
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:956 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:966
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:976
 #: lib/media-filters.php:116 lib/media.php:1571 lib/media.php:1721
 #: lib/media.php:3745
 msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1049 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1059 lib/script.php:365
 msgid "Select Image"
 msgstr "Choisir l'image"
 
