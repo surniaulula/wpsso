@@ -912,17 +912,6 @@ label.sucom-checkbox .sucom-checkbox-button {
 	transition:.4s;
 }
 
-label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button,
-label.sucom-checkbox input:checked:disabled + .sucom-checkbox-button,
-label.sucom-checkbox input.default.disabled:checked + .sucom-checkbox-button,
-label.sucom-checkbox input.default:checked:disabled + .sucom-checkbox-button,
-label.sucom-checkbox input.disabled:not(:checked) + .sucom-checkbox-button,
-label.sucom-checkbox input:not(:checked):disabled + .sucom-checkbox-button,
-label.sucom-checkbox input.default.disabled:not(:checked) + .sucom-checkbox-button,
-label.sucom-checkbox input.default:not(:checked):disabled + .sucom-checkbox-button{
-	cursor:inherit;
-}
-
 label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
 	transform:translateX(12px);
 }
@@ -938,20 +927,23 @@ label.sucom-checkbox .sucom-checkbox-button:before {
 	transition:.4s;
 }
 
-label.sucom-checkbox input:checked + .sucom-checkbox-button:before {
+label.sucom-checkbox input + .sucom-checkbox-button:before {
 	background-color:#46b450;	/* Green. */
 }
 
-label.sucom-checkbox input:not(:checked) + .sucom-checkbox-button:before {
-	background-color:#00a0d2;	/* Blue. */
-}
-
-label.sucom-checkbox input.default:checked + .sucom-checkbox-button:before {
+label.sucom-checkbox input.default + .sucom-checkbox-button:before {
 	background-color:#aaaaaa;	/* Dark Grey. */
 }
 
-label.sucom-checkbox input.default:not(:checked) + .sucom-checkbox-button:before {
-	background-color:#cccccc;	/* Light Grey. */
+label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button,
+label.sucom-checkbox input:checked:disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.default.disabled:checked + .sucom-checkbox-button,
+label.sucom-checkbox input.default:checked:disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.disabled:not(:checked) + .sucom-checkbox-button,
+label.sucom-checkbox input:not(:checked):disabled + .sucom-checkbox-button,
+label.sucom-checkbox input.default.disabled:not(:checked) + .sucom-checkbox-button,
+label.sucom-checkbox input.default:not(:checked):disabled + .sucom-checkbox-button{
+	cursor:inherit;
 }
 
 label.sucom-checkbox input.disabled:checked + .sucom-checkbox-button:before,

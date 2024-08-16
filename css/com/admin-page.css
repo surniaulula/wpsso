@@ -246,7 +246,7 @@ body.rtl .qtip.sucom-qtip .qtip-content {
 .wpsso-notice.update-nag,
 .qtip.sucom-qtip.qtip-lime-green {
 	color:#144e14;
-	border:1px solid #33cc33;
+	border:1px solid #46b450;	/* Green. */
 	background-color:#ecf7ed;
 }
 

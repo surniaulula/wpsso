@@ -2744,49 +2744,49 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:926 lib/com/form.php:2606
+#: lib/com/form.php:925 lib/com/form.php:2605
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:927 lib/com/form.php:2607
+#: lib/com/form.php:926 lib/com/form.php:2606
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:928 lib/com/form.php:2608
+#: lib/com/form.php:927 lib/com/form.php:2607
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:929 lib/com/form.php:2609
+#: lib/com/form.php:928 lib/com/form.php:2608
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:964
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:963
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:967 lib/edit-schema.php:928
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:928
 #: lib/edit-schema.php:1895
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:977
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:976
 #: lib/media-filters.php:116 lib/media.php:1571 lib/media.php:1721
 #: lib/media.php:3745
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1060 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1059 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 

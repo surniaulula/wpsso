@@ -552,8 +552,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$default_value  = $this->in_defaults( $name ) && ! empty( $this->defaults[ $name ] ) ? 1 : 0;
 			$default_transl = $this->get_option_value_transl( $default_value ? 'enabled' : 'disabled' );
-			$input_transl   = $this->get_option_value_transl( $input_checked ? 'Enabled' : 'Disabled' );
-			$title_transl   = sprintf( $this->get_option_value_transl( '%1$s (default is %2$s)' ), $input_transl, $default_transl );
+			$title_transl   = sprintf( $this->get_option_value_transl( 'Default is %s' ), $default_transl );
 			$input_class    = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
 			$input_class    .= ( $input_checked && $default_value ) || ( ! $input_checked && ! $default_value ) ? ' default' : '';
 			$input_class    = SucomUtil::sanitize_css_class( $input_class );
