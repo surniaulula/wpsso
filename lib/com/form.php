@@ -642,6 +642,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						case 'on_change_unhide_rows':
 
+							$input_checked = '';
+
+							if ( $this->in_options( $input_name ) ) {
+
+								$input_checked = checked( $this->options[ $input_name ], 1, false );
+
+             			                   	} elseif ( $this->in_defaults( $input_name ) ) {
+
+								$input_checked = checked( $this->defaults[ $input_name ], 1, false );
+							}
+
 							$def_hide_class = 'hide_' . esc_js( $input_name );
 							$def_show_class = 'hide_' . esc_js( $input_name . '_' . ( $input_checked ? 1 : 0 ) );
 
