@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.6.1
 WC Tested Up To: 9.1.4
-Stable Tag: 18.0.0
+Stable Tag: 18.1.1
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -287,7 +287,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Moved settings page submit buttons to a fixed toolbar.
 * **Bugfixes**
-	* None.
+	* Fixed a possible undefined error for "$input_checked" in `SucomForm->get_checklist()`.
 * **Developer Notes**
 	* Removed deprecated methods from the `SucomUtil` class.
 * **Requires At Least**
