@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.1.0-dev.1 (2024/08/15)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved the settings page submit buttons to a fixed toolbar.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 18.0.0 (2024/08/15)**
 
 * **New Features**
@@ -638,6 +652,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.1.0-dev.1 =
+
+(2024/08/15) Moved the settings page submit buttons to a fixed toolbar.
 
 = 18.0.0 =
 
