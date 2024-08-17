@@ -280,12 +280,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.2.0-dev.1 (2024/08/16)**
+**Version 18.2.0-dev.2 (2024/08/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated colors for checkbox slider options.
+	* Updated the dynamic width of the submit buttons fixed toolbar.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -667,9 +668,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.2.0-dev.1 =
+= 18.2.0-dev.2 =
 
-(2024/08/16) Updated colors for checkbox slider options.
+(2024/08/17) Updated colors for checkbox slider options. Updated the dynamic width of the submit buttons fixed toolbar.
 
 = 18.1.1 =
 
