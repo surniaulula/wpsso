@@ -477,31 +477,24 @@ function sucomDisableUnchanged( container_id ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	/*
-	 * Remove hidden input fields for unchanged checkboxes.
-	 */
 	jQuery( table_id + ' input[type="checkbox"]:not( .changed )' ).each( function() {
 
 		var checkbox_name = jQuery( this ).attr( 'name' );
 
 		if ( 'undefined' !== typeof checkbox_name && checkbox_name.length ) {
 
-			hidden_checkbox_name = checkbox_name.replace( /^(.*)\[(.*)\]$/, '$1\\[is_checkbox_$2\\]' );
+			is_checkbox_name = checkbox_name.replace( /^(.*)\[(.*)\]$/, '$1\\[is_checkbox_$2\\]' );
 
-			jQuery( table_id + ' input[name="' + hidden_checkbox_name + '"]' ).remove();
+			jQuery( table_id + ' input[name="' + checkbox_name + '"]' ).prop( 'disabled', true );
+
+			jQuery( table_id + ' input[name="' + is_checkbox_name + '"]' ).remove();
 		}
 	} );
 
-	/*
-	 * Disable all unchanged input fields (but not hidden input fields), textarea, and select options.
-	 */
 	jQuery( table_id + ' input[type!="hidden"]:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
 
-	/*
-	 * Make sure changed options are enabled.
-	 */
 	jQuery( table_id + ' .changed' ).prop( 'disabled', false );
 }
 
