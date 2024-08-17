@@ -369,6 +369,7 @@ body.rtl #tools-content p.left {
 		margin-left:182px;
 	}
 
+	body.folded div.submit-buttons,
 	body.folded div.has-side-column div.submit-buttons {
 		width:calc(100% - 80px);
 		margin-left:58px;
@@ -405,6 +406,7 @@ body.rtl #tools-content p.left {
 
 	div.submit-buttons,
 	div.has-side-column div.submit-buttons,
+	body.folded div.submit-buttons,
 	body.folded div.has-side-column div.submit-buttons {
 		width:calc(100% - 80px);
 		margin-left:58px;
@@ -432,6 +434,7 @@ body.rtl #tools-content p.left {
 
 	div.submit-buttons,
 	div.has-side-column div.submit-buttons,
+	body.folded div.submit-buttons,
 	body.folded div.has-side-column div.submit-buttons {
 		width:calc(100% - 24px);
 		margin-left:10px;
