@@ -52,25 +52,29 @@ h1 > div.dashicons-before::before {
 	vertical-align:top;
 	width:245px;
 	min-width:245px;
-	padding:10px 0 0 20px;
+	padding:0 0 10px 20px;
 }
 
-#side-column .side-box {
+#side-column table.side-box {
 	display:block		!important;
 	visibility:visible	!important;
 	padding:0;
-	margin:0 0 10px 0;
+	margin:0 0 20px 0;
 	width:245px;
 	min-width:245px;
 	min-height:50px;
 }
 
 #side-column .side-box-header h2 {
-	margin-top:0;
+	margin:0 0 10px 0;
 }
 
 #side-column .side-box-icon {
 	text-align:center;
+	margin:10px 0;
+}
+
+#side-column .side-box-content {
 	margin:10px 0;
 }
 
@@ -83,70 +87,14 @@ h1 > div.dashicons-before::before {
 	margin-bottom:10px;
 }
 
+#side-column .side-box-buttons {
+	margin:10px 0;
+}
+
 #side-column .button-primary,
 #side-column .button-secondary {
 	width:100%;
-	margin:10px 0 5px 0;
-}
-
-/*
- * WooCommerce changes their tabs to icons at 900px.
- * WordPress collapses the admin menu at 960px.
- * WordPress changes to larger icons at 782px.
- *
- * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
- */
-@media screen and ( max-width:1330px ) {
-
-	#side-column {
-		width:200px;
-		min-width:200px;
-	}
-
-	#side-column .side-box {
-		width:200px;
-		min-width:200px;
-	}
-}
-
-@media screen and ( max-width:1200px ) {	/* Move the side info boxes below the metaboxes. */
-
-	.has-side-column {
-		display:block !important;
-	}
-
-	.has-side-column #poststuff {
-		display:block !important;
-	}
-
-	#side-column {
-		display:block !important;
-		width:100%;
-		padding:0;
-	}
-
-	#side-column .side-box {
-		width:50%;
-		min-width:50%;
-		margin:0 auto;	/* Center the side box. */
-		padding:0;
-	}
-
-	#side-column .side-box-header h2 {
-		text-align:center;
-	}
-
-	#side-column .side-box-content p {
-		text-align:center;
-	}
-}
-
-@media screen and ( max-width:800px ) {
-
-	#side-column .side-box {
-		width:75%;
-		min-width:75%;
-	}
+	margin:5px 0;
 }
 
 .postbox p {
@@ -253,15 +201,24 @@ div.submit-buttons {
 	left:0;
 	bottom:0;
 	width:calc(100% - 204px);
+	min-width:761px;	/* Match #poststuff. */
 	margin-left:182px;
 	text-align:center;
 	background-color:#fff;
 	border:1px solid #c3c4c7;
 }
 
-.folded div.submit-buttons {
+div.has-side-column div.submit-buttons {
+	width:calc(100% - 469px);
+}
+
+body.folded div.submit-buttons {
 	width:calc(100% - 80px);
 	margin-left:58px;
+}
+
+body.folded div.has-side-column div.submit-buttons {
+	width:calc(100% - 345px);
 }
 
 div.submit-buttons .button-primary,
@@ -385,3 +342,99 @@ body.rtl #tools-content p.left {
 	width:500px;
 	margin-bottom:6px;
 }
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1330px ) {
+}
+
+@media screen and ( max-width:1200px ) {	/* Move the side info boxes below the metaboxes. */
+
+	.has-side-column {
+		display:block !important;
+	}
+
+	.has-side-column #poststuff {
+		display:block !important;
+	}
+
+	div.submit-buttons,
+	div.has-side-column div.submit-buttons {
+		width:calc(100% - 204px);
+		margin-left:182px;
+	}
+
+	body.folded div.has-side-column div.submit-buttons {
+		width:calc(100% - 80px);
+		margin-left:58px;
+	}
+
+	#side-column {
+		display:block !important;
+		width:100%;
+		padding:0 0 40px 0;
+	}
+
+	#side-column table.side-box {
+		width:50%;
+		min-width:50%;
+		margin:0 auto;	/* Center the side box. */
+		padding:0;
+	}
+
+	#side-column .side-box-header h2 {
+		text-align:center;
+	}
+
+	#side-column .side-box-content p {
+		text-align:center;
+	}
+}
+
+@media screen and ( max-width:960px ) {
+
+	#side-column table.side-box {
+		width:60%;
+		min-width:60%;
+	}
+
+	div.submit-buttons,
+	div.has-side-column div.submit-buttons,
+	body.folded div.has-side-column div.submit-buttons {
+		width:calc(100% - 80px);
+		margin-left:58px;
+	}
+}
+
+@media screen and ( max-width:850px ) {
+	
+	#side-column table.side-box {
+		width:70%;
+		min-width:70%;
+	}
+
+	div.submit-buttons {
+		min-width:0;	/* Match #poststuff. */
+	}
+}
+
+@media screen and ( max-width:782px ) {
+
+	#side-column table.side-box {
+		width:80%;
+		min-width:80%;
+	}
+
+	div.submit-buttons,
+	div.has-side-column div.submit-buttons,
+	body.folded div.has-side-column div.submit-buttons {
+		width:calc(100% - 24px);
+		margin-left:10px;
+	}
+}
+

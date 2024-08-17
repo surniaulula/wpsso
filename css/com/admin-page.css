@@ -124,36 +124,6 @@ body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .ca
 	width:2%;
 }
 
-/*
- * WooCommerce changes their tabs to icons at 900px.
- * WordPress collapses the admin menu at 960px.
- * WordPress changes to larger icons at 782px.
- *
- * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
- */
-@media screen and ( max-width:1200px ) {
-	.wp-list-table.media .column-cb,
-	.wp-list-table.media .check-column {
-		width:3%;
-	}
-}
-
-@media screen and ( max-width:782px ) {
-
-	.wp-list-table.media .column-cb,
-	.wp-list-table.media .check-column {
-		width:6%;
-	}
-}
-
-@media screen and ( max-width:600px ) {
-
-	.wp-list-table.media .column-cb,
-	.wp-list-table.media .check-column {
-		width:10%;
-	}
-}
-
 .wp-list-table th.column-secondary_title,
 .wp-list-table td.column-secondary_title {
 	width:15%;	/* secondary title plugin */
@@ -385,5 +355,35 @@ table td .no_input_clipboard .copy_text {
 
 body.rtl table td .no_input_clipboard .copy_text {
 	margin:0 0 0 60px;	/* Leave room for floating button. */
+}
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1200px ) {
+	.wp-list-table.media .column-cb,
+	.wp-list-table.media .check-column {
+		width:3%;
+	}
+}
+
+@media screen and ( max-width:782px ) {
+
+	.wp-list-table.media .column-cb,
+	.wp-list-table.media .check-column {
+		width:6%;
+	}
+}
+
+@media screen and ( max-width:600px ) {
+
+	.wp-list-table.media .column-cb,
+	.wp-list-table.media .check-column {
+		width:10%;
+	}
 }
 

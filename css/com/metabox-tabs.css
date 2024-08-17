@@ -219,82 +219,6 @@ h3.sucom-metabox-tab_title {
 }
 
 /*
- * WooCommerce changes their tabs to icons at 900px.
- * WordPress collapses the admin menu at 960px.
- * WordPress changes to larger icons at 782px.
- *
- * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
- */
-@media screen and ( max-width:1200px ) {
-
-	#wpsso_sso ul.sucom-metabox-tabs.vertical {
-		width:auto;		/* Default is 20%. */
-		min-width:auto;		/* Default is 150px. */
-	}
-
-	#wpsso_sso ul.sucom-metabox-tabs.vertical li a {
-		padding:14px;
-	}
-
-	#wpsso_sso ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {	/* Document SSO metabox. */
-		display:none;
-	}
-
-	#wpsso_sso .sucom-tablink-icon::before {
-		font-size:14px;
-		min-width:14px;
-		line-height:14px;
-	}
-
-	#wpsso_sso h3.sucom-metabox-tab_title {
-		display:block;
-		font-size:14px;
-		line-height:14px;
-	}
-}
-
-@media screen and ( max-width:960px ) {
-
-	ul.sucom-metabox-tabs.vertical {
-		width:auto;		/* Default is 20%. */
-		min-width:auto;		/* Default is 150px. */
-	}
-
-	ul.sucom-metabox-tabs li a.sucom-tablink-text {
-		display:none;
-	}
-
-	.sucom-tablink-icon::before,
-	#wpsso_sso .sucom-tablink-icon::before {
-		font-size:16px;
-		min-width:16px;
-		line-height:16px;
-	}
-
-	h3.sucom-metabox-tab_title,
-	#wpsso_sso h3.sucom-metabox-tab_title {
-		display:block;
-		font-size:16px;
-		line-height:16px;
-	}
-}
-
-@media screen and ( max-width:782px ) {
-
-	.sucom-tablink-icon::before,
-	#wpsso_sso#wpsso_sso  .sucom-tablink-icon::before {
-		font-size:22px;
-		min-width:22px;
-		line-height:22px;
-	}
-
-	h3.sucom-metabox-tab_title,
-	#wpsso_sso h3.sucom-metabox-tab_title {
-		font-size:22px;
-		line-height:22px;
-	}
-}
-/*
  * Tab icons.
  *
  * See http://fontello.com.
@@ -526,5 +450,82 @@ h3.sucom-metabox-tab_title {
 
 .sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */
 	content:"\e816";	/* .icon-css */
+}
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1200px ) {
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a {
+		padding:14px;
+	}
+
+	#wpsso_sso ul.sucom-metabox-tabs.vertical li a.sucom-tablink-text {	/* Document SSO metabox. */
+		display:none;
+	}
+
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:14px;
+		min-width:14px;
+		line-height:14px;
+	}
+
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:14px;
+		line-height:14px;
+	}
+}
+
+@media screen and ( max-width:960px ) {
+
+	ul.sucom-metabox-tabs.vertical {
+		width:auto;		/* Default is 20%. */
+		min-width:auto;		/* Default is 150px. */
+	}
+
+	ul.sucom-metabox-tabs li a.sucom-tablink-text {
+		display:none;
+	}
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso .sucom-tablink-icon::before {
+		font-size:16px;
+		min-width:16px;
+		line-height:16px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		display:block;
+		font-size:16px;
+		line-height:16px;
+	}
+}
+
+@media screen and ( max-width:782px ) {
+
+	.sucom-tablink-icon::before,
+	#wpsso_sso#wpsso_sso  .sucom-tablink-icon::before {
+		font-size:22px;
+		min-width:22px;
+		line-height:22px;
+	}
+
+	h3.sucom-metabox-tab_title,
+	#wpsso_sso h3.sucom-metabox-tab_title {
+		font-size:22px;
+		line-height:22px;
+	}
 }
 

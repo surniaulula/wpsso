@@ -1285,29 +1285,6 @@ table.sucom-settings .fb_preview_by {
 }
 
 /*
- * WooCommerce changes their tabs to icons at 900px.
- * WordPress collapses the admin menu at 960px.
- * WordPress changes to larger icons at 782px.
- *
- * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
- */
-@media screen and ( max-width:1330px ) {
-
-	#poststuff .columns-2 table.sucom-settings .fb_preview_box_border {
-		width:440px;
-	}
-
-	#poststuff .columns-2 table.sucom-settings .fb_preview_box {
-		width:400px;
-	}
-
-	#poststuff .columns-2 table.sucom-settings .fb_preview_img {
-		width:400px;
-		height:210px;
-	}
-}
-
-/*
  * Document SSO > Preview oEmbed tab.
  */
 table.sucom-settings td.oembed_container {
@@ -1404,4 +1381,27 @@ table.sucom-settings td.wcmd_edit_holder,
 table.sucom-settings td input[type="text"].wcmd_edit_holder { width:160px; }
 
 table.sucom-settings td input[type="text"].wcmd_show_label { width:220px; }
+
+/*
+ * WooCommerce changes their tabs to icons at 900px.
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1330px ) {
+
+	#poststuff .columns-2 table.sucom-settings .fb_preview_box_border {
+		width:440px;
+	}
+
+	#poststuff .columns-2 table.sucom-settings .fb_preview_box {
+		width:400px;
+	}
+
+	#poststuff .columns-2 table.sucom-settings .fb_preview_img {
+		width:400px;
+		height:210px;
+	}
+}
 
