@@ -1,3 +1,5 @@
+
+Notice: Undefined variable: have_sched in /var/www/wpadm/wordpress/wp-content/plugins/wpsso/lib/loader.php on line 79
 <h1>WPSSO Core - The Complete Structured Data Plugin</h1>
 
 <table>
