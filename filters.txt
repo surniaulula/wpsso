@@ -219,6 +219,8 @@
 
 'wpsso_og_add_media_from_url' ( $url, $service )	// $service = 'facebook' or 'soundcloud'.
 
+'wpsso_og_add_media_throttle_secs' ( $secs = 5, $service )	// $service = 'facebook' or 'soundcloud'.
+
 'wpsso_og_add_mt_offers' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_rating' ( $bool = true, $mod )
