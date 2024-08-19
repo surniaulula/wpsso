@@ -1047,8 +1047,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		protected function get_def_checked( $opt_key ) {
 
 			$def_checked = $this->p->opt->get_defaults( $opt_key ) ?
-				_x( 'checked', 'option value', 'wpsso' ) :
-				_x( 'unchecked', 'option value', 'wpsso' );
+				_x( 'enabled', 'option value', 'wpsso' ) :
+				_x( 'disabled', 'option value', 'wpsso' );
 
 			return $def_checked;
 		}
@@ -1333,7 +1333,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_social_search-tab_pinterest', $option_label );
 
 			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
+			$text = sprintf( __( 'Modifications disabled (%s option is disabled).', 'wpsso' ), $option_link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}

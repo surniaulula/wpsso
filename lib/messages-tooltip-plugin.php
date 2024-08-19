@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_clean_on_uninstall':	// Remove Settings on Uninstall.
 
-					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
+					$def_checked = $this->get_def_checked( 'plugin_clean_on_uninstall' );
 
 					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -105,9 +105,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_filter_content':	// Use Filtered Content.
 
+					$def_checked = $this->get_def_checked( 'plugin_filter_content' );
+
 					$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name ) . ' ';
 
-					$text .= __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . ' ';
+					$text .= sprintf( __( 'Many themes and plugins have badly coded content filters, so this option is %s by default.', 'wpsso' ), $def_checked ) . ' ';
 
 					$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, disable the option or determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
 
@@ -115,7 +117,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_filter_excerpt':	// Use Filtered Excerpt.
 
-					$text = __( 'Apply the WordPress "get_the_excerpt" filter to excerpt text (default is unchecked).', 'wpsso' ) . ' ';
+					$def_checked = $this->get_def_checked( 'plugin_clean_on_uninstall' );
+
+					$text = sprintf( __( 'Apply the WordPress "get_the_excerpt" filter to excerpt text (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
 					$text .= __( 'You should enable this option if you use shortcodes in your excerpts.', 'wpsso' ) . ' ';
 
