@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				if ( ! isset( $form->options[ 'plugin_add_submenu_' . $menu_id ] ) )	// Just in case.
 					$form->options[ 'plugin_add_submenu_' . $menu_id ] = 1;
-				
+
 				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) )	// Exclude must-load menu items.
 					$values[ $menu_id ] = $args[ 2 ];
 			}

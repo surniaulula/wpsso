@@ -72,12 +72,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$have_um    = SucomPlugin::is_plugin_active( 'wpsso-um/wpsso-um.php' ) ? true : false;
-			$have_sched = 'every24hours' === wp_get_schedule( $this->p->id . '_update_manager_check' ) ? true : false;
+			$have_um = SucomPlugin::is_plugin_active( 'wpsso-um/wpsso-um.php' ) ? true : false;	// Just in case.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) || ! $have_um || ! $have_sched ) { $mod_sub = 'std'; } 
+				if ( empty( $info[ 'update_auth' ] ) || ! $have_um ) { $mod_sub = 'std'; } 
 				else { $mod_sub = 1 !== $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'std' : 'pro'; }
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;

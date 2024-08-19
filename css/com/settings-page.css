@@ -414,7 +414,7 @@ body.rtl #tools-content p.left {
 }
 
 @media screen and ( max-width:850px ) {
-	
+
 	#side-column table.side-box {
 		width:70%;
 		min-width:70%;

@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$classnames = $this->p->get_lib_classnames( 'dashboard' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
-					
+
 				new $classname( $this->p );
 			}
 		}

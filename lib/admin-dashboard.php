@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 		}
 
 		public function wp_dashboard_setup() {
-		
+
 			if ( ! wp_using_ext_object_cache() ) {
 
 				wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
