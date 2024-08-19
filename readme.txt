@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.3.0-dev.1 (2024/08/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_og_add_media_throttle_secs' filter (default is 5 seconds).
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 18.2.0 (2024/08/17)**
 
 * **New Features**
@@ -667,6 +681,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.3.0-dev.1 =
+
+(2024/08/19) Added a new 'wpsso_og_add_media_throttle_secs' filter (default is 5 seconds).
 
 = 18.2.0 =
 
