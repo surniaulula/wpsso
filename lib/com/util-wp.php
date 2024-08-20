@@ -2704,9 +2704,23 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$wp_actions = array();	// Remove all actions.
 
 			$success   = null;
-			$old_value = false;
+			$old_value = $default;
 
 			switch( $action ) {
+
+				case 'add':
+				case 'add_option':
+
+					$success = add_option( $opt_name, $value, $deprecated = '', $autoload );
+
+					break;
+
+				case 'delete':
+				case 'delete_option':
+
+					$success = delete_option( $opt_name );
+
+					break;
 
 				case 'get':
 				case 'get_option':
@@ -2721,13 +2735,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 					$old_value = get_option( $opt_name, $default );
 
 					$success = update_option( $opt_name, $value, $autoload );
-
-					break;
-
-				case 'delete':
-				case 'delete_option':
-
-					$success = delete_option( $opt_name );
 
 					break;
 			}
