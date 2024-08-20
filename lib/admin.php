@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'upgrader_process_complete', array( $this, 'upgrader_process_complete' ), 10, 2 );
 
 			/*
-			 * Refresh the cache if/when the WordPress home URL is changed.
+			 * Refresh the cache when the WordPress "home" or "blog_public" options are changed.
 			 *
 			 * See WpssAdmin->wp_site_option_changed().
 			 * See SucomUpdate->wp_site_option_changed().
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Refresh the cache if/when the WordPress home URL is changed.
+		 * Refresh the cache when the WordPress "home" or "blog_public" options are changed.
 		 *
 		 * See WpssAdmin->wp_site_option_changed().
 		 * See SucomUpdate->wp_site_option_changed().
@@ -239,42 +239,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
-			 * Standardize old and new values for string comparison.
-			 */
-			$old_value = untrailingslashit( strtolower( $old_value ) );
-			$new_value = untrailingslashit( strtolower( $new_value ) );
-
-			if ( $old_value === $new_value ) {	// Nothing to do.
-
-				return;	// Stop here.
-			}
-
-			$user_id = get_current_user_id();
-
-			if ( ! $user_id ) {	// Nobody there.
-
-				return;	// Stop here.
-			}
-
-			if ( 'home' === $option_name ) {
-
-				$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
-				$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
-
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-			}
-
 			static $do_once = null;
 
-			if ( true === $do_once ) {
-
-				return;	// Stop here.
-			}
+			if ( $do_once ) return;	// Stop here.
 
 			$do_once = true;
 
-			$this->p->util->cache->schedule_refresh( $user_id );
+			/*
+			 * Standardize old and new values for string comparison.
+			 */
+			$old_value = strtolower( untrailingslashit( maybe_serialize( $old_value ) ) );
+			$new_value = strtolower( untrailingslashit( maybe_serialize( $new_value ) ) );
+
+			if ( $old_value !== $new_value ) {
+
+				if ( $user_id = get_current_user_id() ) {
+				
+					if ( 'home' === $option_name ) {
+
+						$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+						$notice_key = __FUNCTION__ . '_' . $option_name . '_' . $old_value . '_' . $new_value;
+
+						$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+					}
+				}
+
+				$this->p->util->cache->schedule_refresh();
+			}
 		}
 
 		public function dashboard_setup() {

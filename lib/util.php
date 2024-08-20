@@ -1687,12 +1687,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.', 'wpsso' ), $request ) );
 					}
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: submitted html is empty' );
-					}
+					$this->p->debug->log( 'exiting early: submitted html is empty' );
 				}
 
 				return false;
@@ -1747,10 +1744,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				libxml_use_internal_errors( $libxml_prev_state );	// Restore previous error handling.
 
-			} else {
+			} else @$doc->loadHTML( $html );	// Load HTML and ignore errors.
 
-				@$doc->loadHTML( $html );	// Load HTML and ignore errors.
-			}
+			unset( $html );	// No longer required.
 
 			$xpath  = new DOMXPath( $doc );
 			$metas  = $xpath->query( $query );
@@ -1781,14 +1777,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->p->debug->log( 'meta tags found in submitted html' );
 
-					} else {
+					} else $this->p->debug->log( 'no meta tags found in ' . $request );
 
-						$this->p->debug->log( 'no meta tags found in ' . $request );
-					}
-
-				} else {
-					$this->p->debug->log( 'returning array of ' . count( $mt_ret ) . ' meta tags' );
-				}
+				} else $this->p->debug->log( 'returning array of ' . count( $mt_ret ) . ' meta tags' );
 			}
 
 			return $mt_ret;
