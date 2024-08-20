@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.3.0-b.1 (2024/08/20)**
+**Version 18.3.0-rc.1 (2024/08/20)**
 
 * **New Features**
 	* None.
@@ -682,7 +682,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.3.0-b.1 =
+= 18.3.0-rc.1 =
 
 (2024/08/20) Added a new 'wpsso_og_add_media_throttle_secs' filter (default is 5 seconds).
 
