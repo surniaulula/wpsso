@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.6.1
  * WC Tested Up To: 9.1.4
- * Version: 18.3.0-dev.2
+ * Version: 18.3.0-dev.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -75,7 +75,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/*
 		 * Reference variables (config, options, modules, etc.).
 		 */
-		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
 		public $id           = 'wpsso';	// Plugin id.
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
