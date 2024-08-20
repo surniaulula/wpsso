@@ -72,7 +72,24 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$have_um = SucomPlugin::is_plugin_active( 'wpsso-um/wpsso-um.php' ) ? true : false;	// Just in case.
+			$have_um = isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) &&
+				SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ? true : false;
+
+			if ( $have_um ) {
+
+				$um_vers = WpssoUmConfig::get_version();
+				$um_minv = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+				$have_um = version_compare( $um_vers, $um_minv, '>' ) ? $have_um : false;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'update manager version ' . $um_vers . ' is active' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'update manager is not active' );
+			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -97,15 +114,12 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		private function maybe_load_ext_mods( $ext, $mod_sub ) {
 
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
-
-				return;
-
-			} elseif ( ! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ||
+				! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $ext . ' lib/' . $mod_sub . ' not an array' );
+					$this->p->debug->log( 'no modules found for ' . $ext . '/lib/' . $mod_sub );
 				}
 
 				return;
@@ -113,14 +127,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			$ext_base = $this->p->cf[ 'plugin' ][ $ext ][ 'base' ];
 
-			if ( SucomPlugin::is_plugin_active( $ext_base ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $ext_base . ' is active' );
-				}
-
-			} else {
+			if ( ! SucomPlugin::is_plugin_active( $ext_base ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -136,11 +143,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] as $mod_type => $libs ) {
 
-				$log_prefix = 'loading ' . $ext . ' ' . $mod_sub . '/' . $mod_type . ': ';
+				$log_prefix = 'loading ' . $ext . '/lib/' . $mod_sub . '/' . $mod_type . ': ';
 
 				foreach ( $libs as $id => $label ) {
 
-					$log_prefix = 'loading ' . $ext . ' ' . $mod_sub . '/' . $mod_type . '/' . $id . ': ';
+					$log_prefix = 'loading ' . $ext . '/lib/' . $mod_sub . '/' . $mod_type . '/' . $id . ': ';
 
 					/*
 					 * Check if the resource (active plugin or enabled option) is available.
