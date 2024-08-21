@@ -75,29 +75,36 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$have_um = isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) &&
-				SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) &&
-					class_exists( 'WpssoUmConfig' ) ? true : false;
+			$have_um_min = false;
 
-			if ( $have_um ) {
+			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
 
-				$um_vers = WpssoUmConfig::get_version();
-				$um_minv = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
-				$have_um = version_compare( $um_vers, $um_minv, '>' ) ? $have_um : false;
+				if ( SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
 
-				if ( $this->p->debug->enabled ) {
+					if ( class_exists( 'WpssoUmConfig' ) ) {
 
-					$this->p->debug->log( 'update manager version ' . $um_vers . ' is active' );
+						$um_version  = WpssoUmConfig::get_version();
+						$um_min_ver  = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+						$have_um_min = version_compare( $um_version, $um_min_ver, '>' ) ? true : false;
+	
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'update manager config class not found' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'update manager add-on is not active' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'update manager is not active' );
+				$this->p->debug->log( 'update manager config not found' );
 			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) || ! $have_um ) { $mod_sub = 'std'; } 
+				if ( empty( $info[ 'update_auth' ] ) || ! $have_um_min ) { $mod_sub = 'std'; } 
 				else { $mod_sub = 1 !== $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'std' : 'pro'; }
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
