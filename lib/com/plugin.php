@@ -36,7 +36,8 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				}
 			}
 
-			$local_cache    = array();
+			$local_cache = array();	// Initialize the cache.
+
 			$active_plugins = get_option( 'active_plugins', array() );
 
 			if ( is_multisite() ) {
@@ -74,7 +75,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				}
 			}
 
-			$local_cache = array();
+			$local_cache = array();	// Initialize the cache.
 
 			if ( ! function_exists( 'get_plugins' ) ) {	// Load the WordPress library if necessary.
 
