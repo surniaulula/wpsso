@@ -73,7 +73,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			$have_um = isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) &&
-				SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ? true : false;
+				SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) &&
+					class_exists( 'WpssoUmConfig' ) ? true : false;
 
 			if ( $have_um ) {
 

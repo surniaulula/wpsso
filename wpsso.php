@@ -389,9 +389,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/edit.php';		// Only load class when needed.
 				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';	// Only load class when needed.
 
-				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
+				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings pages.
 				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
-				$this->edit     = new WpssoEdit( $this );	// Admin editing page metabox table rows.
+				$this->edit     = new WpssoEdit( $this );	// Admin editing page metabox.
 			}
 
 			/*
