@@ -75,36 +75,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$have_um_min = false;
-
-			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
-
-				if ( SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
-
-					if ( class_exists( 'WpssoUmConfig' ) ) {
-
-						$um_version  = WpssoUmConfig::get_version();
-						$um_min_ver  = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
-						$have_um_min = version_compare( $um_version, $um_min_ver, '>' ) ? true : false;
-	
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'update manager config class not found' );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'update manager add-on is not active' );
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'update manager config not found' );
-			}
-
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) || ! $have_um_min ) { $mod_sub = 'std'; } 
+				if ( empty( $info[ 'update_auth' ] ) || ! $this->have_um_min_version() ) { $mod_sub = 'std'; } 
 				else { $mod_sub = 1 !== $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'std' : 'pro'; }
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
@@ -121,6 +94,37 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				$this->p->debug->mark( 'loading dist modules' );	// End timer.
 			}
+		}
+
+		private function have_um_min_version() {
+
+			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
+
+				if ( SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
+
+					if ( class_exists( 'WpssoUmConfig' ) ) {
+
+						$um_version  = WpssoUmConfig::get_version();
+						$um_min_ver  = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+
+						return version_compare( $um_version, $um_min_ver, '>=' ) ? true : false;
+	
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'update manager config class not found' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'update manager add-on is not active' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'update manager config not found' );
+			}
+
+			return false;
 		}
 
 		private function maybe_load_ext_mods( $ext, $mod_sub ) {
