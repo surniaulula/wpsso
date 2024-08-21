@@ -96,23 +96,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 			if ( $have_tid ) {	// One or more auth ids have been found.
 
-				if ( ! empty( $um_info[ 'version' ] ) ) {	// Update manager is active.
-
-					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
-					$min_version = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
-
-					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
-
-						if ( version_compare( $um_info[ 'version' ], $min_version, '<' ) ) {
-
-							$this->p->notice->err( $this->p->msgs->get( 'notice-um-update-required' ) );
-
-						} else $this->p->notice->warn( $this->p->msgs->get( 'notice-um-update-recommended' ) );
-
-						if ( ++$suggested >= $suggest_max ) return $suggested;
-					}
-
-				} else {
+				if ( empty( $um_info[ 'version' ] ) || ! class_exists( 'WpssoUm' ) ) {	// Update manager is not active.
 
 					if ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {	// Update manager is installed.
 
@@ -121,6 +105,22 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					} else $this->p->notice->warn( $this->p->msgs->get( 'notice-um-add-on-required' ) );	// Update manager is not installed.
 
 					if ( ++$suggested >= $suggest_max ) return $suggested;
+
+				} else {
+
+					$um_rec_ver = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+					$um_min_ver = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+
+					if ( version_compare( $um_info[ 'version' ], $um_rec_ver, '<' ) ) {
+
+						if ( version_compare( $um_info[ 'version' ], $um_min_ver, '<' ) ) {
+
+							$this->p->notice->err( $this->p->msgs->get( 'notice-um-update-required' ) );
+
+						} else $this->p->notice->warn( $this->p->msgs->get( 'notice-um-update-recommended' ) );
+
+						if ( ++$suggested >= $suggest_max ) return $suggested;
+					}
 				}
 			}
 

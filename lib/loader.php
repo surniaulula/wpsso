@@ -104,8 +104,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					if ( class_exists( 'WpssoUmConfig' ) ) {
 
-						$um_version  = WpssoUmConfig::get_version();
-						$um_min_ver  = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+						$um_version = WpssoUmConfig::get_version();
+						$um_min_ver = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
 
 						return version_compare( $um_version, $um_min_ver, '>=' ) ? true : false;
 	
