@@ -26,6 +26,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		private $p;	// Wpsso class object.
 
+		/*
+		 * Instantiated by Wpsso->set_objects() at init priority 10
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

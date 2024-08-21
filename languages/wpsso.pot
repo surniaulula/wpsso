@@ -6437,8 +6437,8 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:220
-#: lib/loader.php:234 lib/post.php:1760 lib/pro/util/shorten.php:331
+#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:223
+#: lib/loader.php:237 lib/post.php:1760 lib/pro/util/shorten.php:331
 #: lib/pro/util/shorten.php:526 lib/util-cache.php:795
 msgid "%s error:"
 msgstr ""
@@ -9160,19 +9160,19 @@ msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class
 #. name
-#: lib/loader.php:216
+#: lib/loader.php:219
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
-#: lib/loader.php:222
+#: lib/loader.php:225
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
-#: lib/loader.php:236
+#: lib/loader.php:239
 msgid "Library class name for \"%s\" cannot be determined."
 msgstr ""
 
-#: lib/loader.php:237
+#: lib/loader.php:240
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "required library file."

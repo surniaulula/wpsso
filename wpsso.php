@@ -445,7 +445,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/*
 			 * Load integration and std/pro distribution modules.
 			 */
-			$this->loader = new WpssoLoader( $this );		// Modules loader.
+			$this->loader = new WpssoLoader( $this );	// Modules loader.
 
 			/*
 			 * Init additional class objects.

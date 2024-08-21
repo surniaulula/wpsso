@@ -26,6 +26,9 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 
 		public $reg;	// Add-on register class object, for example: WpssoUmRegister.
 
+		/*
+		 * Called from the child class as parent::__construct( __FILE__, __CLASS__ ).
+		 */
 		public function __construct( $plugin_file, $classname ) {
 
 			$plugin_dir     = trailingslashit( dirname( $plugin_file ) );
