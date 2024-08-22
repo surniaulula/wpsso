@@ -505,14 +505,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting videos for og:video meta tag' );
 				}
 
-				if ( ! $this->p->check->is_pp( $ext = 'wpsso' ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no video modules available' );
-					}
-
-				} elseif ( $max_nums[ 'og_vid_max' ] > 0 ) {
+				if ( $max_nums[ 'og_vid_max' ] > 0 ) {
 
 					$mt_og[ 'og:video' ] = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre );
 
@@ -548,12 +541,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 					}
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'videos disabled: maximum videos is 0 or less' );
-					}
+					$this->p->debug->log( 'videos disabled: maximum videos is 0 or less' );
 				}
 			}
 

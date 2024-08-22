@@ -1128,46 +1128,43 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function get_pkg_info( $get_ext = null, $get_key = null ) {
 
-			static $pkg_info = array();
+			static $local_cache = array();
 
-			if ( ! empty( $pkg_info ) ) {
+			if ( empty( $local_cache ) ) {
 
-				return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
-			}
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+					if ( empty( $info[ 'name' ] ) ) continue;	// Just in case.
+	
+					$local_cache[ $ext ] = array();
+	
+					$ext_pdir        = $this->p->check->pp( $ext, $li = false );
+					$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
+					$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+					$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+					$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+					$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+					$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+	
+					$local_cache[ $ext ][ 'gen' ] = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ?
+						' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 
-				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
-
-					continue;
+					$local_cache[ $ext ][ 'name' ]      = $ext_name_transl;
+					$local_cache[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $ext_pp ? $pkg_pro_transl : $pkg_std_transl );
+					$local_cache[ $ext ][ 'name_pro' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_pro_transl );
+					$local_cache[ $ext ][ 'name_std' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_std_transl );
+					$local_cache[ $ext ][ 'pdir' ]      = $ext_pdir;
+					$local_cache[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+					$local_cache[ $ext ][ 'pp' ]        = $ext_pp;
+					$local_cache[ $ext ][ 'short' ]     = $info[ 'short' ];
+					$local_cache[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+					$local_cache[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
+					$local_cache[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
+					$local_cache[ $ext ][ 'slug' ]      = $info[ 'slug' ];
 				}
-
-				$pkg_info[ $ext ] = array();
-
-				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
-				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-
-				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
-				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
-				$pkg_info[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $ext_pp ? $pkg_pro_transl : $pkg_std_transl );
-				$pkg_info[ $ext ][ 'name_pro' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_pro_transl );
-				$pkg_info[ $ext ][ 'name_std' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_std_transl );
-				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
-				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
-				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
-				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
-				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
-				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
-				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
-				$pkg_info[ $ext ][ 'slug' ]      = $info[ 'slug' ];
 			}
 
-			return isset( $pkg_info[ $get_ext ][ $get_key ] ) ? $pkg_info[ $get_ext ][ $get_key ] : $pkg_info;
+			return isset( $local_cache[ $get_ext ][ $get_key ] ) ? $local_cache[ $get_ext ][ $get_key ] : $local_cache;
 		}
 
 		public function get_pkg_name( $name, $pkg ) {
