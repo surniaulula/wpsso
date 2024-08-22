@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) || ! $this->have_um_min_version() ) { $mod_sub = 'std'; } 
+				if ( ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $this->have_um_version() ) { $mod_sub = 'std'; } 
 				else { $mod_sub = 1 !== $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'std' : 'pro'; }
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 		}
 
-		private function have_um_min_version() {
+		private function have_um_version() {
 
 			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
 

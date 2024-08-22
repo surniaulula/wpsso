@@ -77,7 +77,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public $id           = 'wpsso';	// Plugin id.
 		public $m            = array();	// Loaded module objects from core plugin.
-		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
+		public $m_ext        = array();	// Loaded module objects from add-ons.
 		public $cf           = array();	// Config array from WpssoConfig::get_config().
 		public $avail        = array();	// Third-party plugin checks.
 		public $options      = array();	// Blog options array.
