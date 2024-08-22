@@ -1021,30 +1021,30 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function pp( $ext = null, $li = true, $rv = true, $rc = true, $mx = null ) {
 
-			static $lc = array();
+			static $local_cache = array();
 
 			$ext = null === $ext ? $this->p->id : $ext;
 			$id  = $ext . '-' . $li . '-' . $rv . '-' . $mx;
 			$rv  = null === $mx ? $rv : $rv * $mx;
 
-			if ( $rc && isset( $lc[ $id ] ) ) {
+			if ( $rc && isset( $local_cache[ $id ] ) ) {
 
-				return $lc[ $id ];
+				return $local_cache[ $id ];
 
 			} elseif ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
 
-				return $lc[ $id ] = false;
+				return $local_cache[ $id ] = false;
 
 			} elseif ( ! $ext_dir = WpssoConfig::get_ext_dir( $ext ) ) {
 
-				return $lc[ $id ] = false;
+				return $local_cache[ $id ] = false;
 			}
 
 			$key  = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
-			$ump  = class_exists( 'WpssoUm' ) && class_exists( 'SucomUpdate' ) ? true : false;
+			$ump  = class_exists( 'WpssoUmConfig' ) && class_exists( 'SucomUpdate' ) ? true : false;
 
-			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $key ] ) && $pdir && $ump && 
+			return $local_cache[ $id ] = $li ? ( ( ! empty( $this->p->options[ $key ] ) && $pdir && $ump && 
 				( $ume = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ume : false ) : $pdir;
 		}
 

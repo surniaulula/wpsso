@@ -15,9 +15,9 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 	abstract class SucomAbstractAddOn {
 
 		protected $p;			// Plugin class object.
-		protected $ext   = '';		// Add-on lowercase classname, for example: 'wpssoum'.
-		protected $p_ext = '';		// Add-on lowercase acronym, for example: 'um'.
-		protected $cf    = array();	// Add-on config array, for example: WpssoUmConfig::$cf.
+		protected $ext   = '';		// Add-on lowercase classname.
+		protected $p_ext = '';		// Add-on lowercase acronym.
+		protected $cf    = array();	// Add-on config array.
 
 		protected $did_plugin_notices = false;	// True when $this->init_plugin_notices() has run.
 

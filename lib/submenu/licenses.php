@@ -142,29 +142,15 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 
 						} elseif ( 'qty_used' === $key ) {
 
-							/*
-							 * The default 'qty_used' value is a 'n/n' string.
-							 */
-							$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
+							$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
+							$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
 
-							/*
-							 * Use a better '# of #' string translation if possible.
-							 */
-							if ( version_compare( WpssoUmConfig::get_version(), '1.10.1', '>=' ) ) {
+							if ( null !== $qty_reg && null !== $qty_total ) {	// Just in case.
 
-								$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
-								$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
+								$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ), $qty_reg, $qty_total );
 
-								if ( null !== $qty_reg && null !== $qty_total ) {
+							} else $val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
-									$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
-										$qty_reg, $qty_total );
-								}
-							}
-
-							/*
-							 * Add a license information link (thickbox).
-							 */
 							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
 
 								$info_url = add_query_arg( array(

@@ -20,11 +20,11 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 	abstract class WpssoAbstractAddOn extends SucomAbstractAddOn {
 
 		protected $p;			// Wpsso class object.
-		protected $ext   = '';		// Add-on lowercase classname, for example: 'wpssoum'.
-		protected $p_ext = '';		// Add-on lowercase acronym, for example: 'um'.
-		protected $cf    = array();	// Add-on config array, for example: WpssoUmConfig::$cf.
+		protected $ext   = '';		// Add-on lowercase classname.
+		protected $p_ext = '';		// Add-on lowercase acronym.
+		protected $cf    = array();	// Add-on config array.
 
-		public $reg;	// Add-on register class object, for example: WpssoUmRegister.
+		public $reg;	// Add-on register class object.
 
 		/*
 		 * Called from the child class as parent::__construct( __FILE__, __CLASS__ ).
