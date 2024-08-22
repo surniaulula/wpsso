@@ -699,7 +699,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 18.4.0-b.1 =
 
-(2024/08/22) Updated `WpssoUtil->get_html_head_meta()` to pass content to `mb_convert_encoding()` by reference. Refactored the `WpssoLoader->load_dist()` method.
+(2024/08/22) Updated `WpssoUtil->get_html_head_meta()` to pass content to `mb_convert_encoding()` by reference. 
 
 = 18.3.0 =
 
