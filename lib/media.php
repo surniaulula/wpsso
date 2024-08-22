@@ -314,17 +314,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return $local_fifo[ $cache_id ];
-
-			} elseif ( ! $this->p->check->is_pp( $ext = 'wpsso' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no video modules' );
-
-					$this->p->debug->mark( 'getting all videos' );	// End timer.
-				}
-
-				return $local_fifo[ $cache_id ] = array();
 			}
 
 			/*
@@ -2362,10 +2351,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$content_passed = false;
 
-			} else {
-
-				$content_passed = true;
-			}
+			} else $content_passed = true;
 
 			if ( empty( $content ) ) {
 
@@ -2463,6 +2449,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/*
 			 * Filters / modules may detect additional embedded video markup.
+			 *
+			 * See WpssoIntegUtilElementor->filter_content_videos().
+			 * See WpssoProMediaSlideshare->filter_content_videos().
+			 * See WpssoProMediaWistia->filter_content_videos().
+			 * See WpssoProMediaWpvideoblock->filter_content_videos().
+			 * See WpssoProMediaWpvideoshortcode->filter_content_videos().
+			 * See WpssoStdMediaSlideshare->filter_content_videos().
+			 * See WpssoStdMediaWistia->filter_content_videos().
+			 * See WpssoStdMediaWpvideoblock->filter_content_videos().
+			 * See WpssoStdMediaWpvideoshortcode->filter_content_videos().
 			 */
 			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
 
@@ -2857,9 +2853,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_single_video;
 		}
 
-		/*
-		 * Since WPSSO Core v15.21.0.
-		 */
 		public function add_og_video_from_attachment( array &$mt_single_video, array $attach_mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2886,7 +2879,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return;
 			}
 
-			$post_obj        = SucomUtilWP::get_post_object( $attach_mod[ 'id' ] );
+			$post_obj = SucomUtilWP::get_post_object( $attach_mod[ 'id' ] );
+
 			$attach_metadata = wp_get_attachment_metadata( $attach_mod[ 'id' ] );	// Returns a WP_Error object on failure.
 
 			if ( $this->p->debug->enabled ) {
