@@ -1663,7 +1663,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
-				$html = mb_convert_encoding( $html, $to_encoding = 'HTML-ENTITIES', $from_encoding = 'UTF-8' );
+				/*
+				 * Use call_user_func_array() to pass $html by reference.
+				 */
+				call_user_func_array( 'mb_convert_encoding', array( &$html, $to_encoding = 'HTML-ENTITIES', $from_encoding = 'UTF-8' ) );
 			}
 
 			/*
