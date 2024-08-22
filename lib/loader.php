@@ -269,13 +269,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		public static function load_plugin_std( $plugin, $sub, $id ) {
 
-			$GLOBALS[ 'wpsso_pkg_std' ] = true;
-			
 			unset( $GLOBALS[ 'wpsso_pkg_pro' ] );
+
+			$GLOBALS[ 'wpsso_pkg_std' ] = true;
 
 			$classname = apply_filters( 'wpsso_load_lib', false, 'std/' . $sub . '/' . $id );
 
-			if ( is_string( $classname ) && class_exists( $classname ) ) new $classname( $plugin );
+			if ( is_string( $classname ) && class_exists( $classname ) ) {
+
+				unset( $plugin->m[ 'pro' ][ $id ] );
+			
+				$plugin->m[ 'std' ][ $id ] = new $classname( $plugin );
+			}
 		}
 	}
 }
