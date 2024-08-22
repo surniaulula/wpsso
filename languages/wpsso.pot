@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.4.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 18.4.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5823,7 +5823,7 @@ msgid "Bitly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
-#: lib/pro/admin/advanced.php:619 lib/pro/util/shorten.php:356
+#: lib/pro/admin/advanced.php:619 lib/pro/util/shorten.php:359
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -5844,7 +5844,7 @@ msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:217
-#: lib/pro/admin/advanced.php:637 lib/pro/util/shorten.php:382
+#: lib/pro/admin/advanced.php:637 lib/pro/util/shorten.php:385
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
@@ -5855,7 +5855,7 @@ msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:219
-#: lib/pro/admin/advanced.php:647 lib/pro/util/shorten.php:406
+#: lib/pro/admin/advanced.php:647 lib/pro/util/shorten.php:409
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -5866,7 +5866,7 @@ msgid "YOURLS (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:221
-#: lib/pro/admin/advanced.php:657 lib/pro/util/shorten.php:447
+#: lib/pro/admin/advanced.php:657 lib/pro/util/shorten.php:450
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -5917,7 +5917,7 @@ msgid "Get Reviews for Post Types"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:105 gettext/gettext-lib-pro.php:234
-#: lib/pro/admin/advanced.php:708 lib/pro/review/judgeme.php:64
+#: lib/pro/admin/advanced.php:708 lib/pro/review/judgeme.php:66
 msgctxt "metabox title"
 msgid "Judge.me (Ratings and Reviews)"
 msgstr ""
@@ -5933,7 +5933,7 @@ msgid "Judge.me Shop Token"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:226
-#: lib/pro/admin/advanced.php:724 lib/pro/review/shopperapproved.php:47
+#: lib/pro/admin/advanced.php:724 lib/pro/review/shopperapproved.php:49
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
 msgstr ""
@@ -5949,7 +5949,7 @@ msgid "Shopper Approved API Token"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:230
-#: lib/pro/admin/advanced.php:740 lib/pro/review/stamped.php:47
+#: lib/pro/admin/advanced.php:740 lib/pro/review/stamped.php:49
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
 msgstr ""
@@ -6392,45 +6392,45 @@ msgid "Video Upload Date"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:199 gettext/gettext-lib-pro.php:202
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:212
-#: lib/pro/media/vimeo.php:191 lib/pro/media/wistia.php:355
+#: gettext/gettext-lib-pro.php:205 lib/pro/media/slideshare.php:216
+#: lib/pro/media/vimeo.php:195 lib/pro/media/wistia.php:359
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:203
-#: gettext/gettext-lib-pro.php:206 lib/pro/media/slideshare.php:213
-#: lib/pro/media/vimeo.php:192 lib/pro/media/wistia.php:356
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/slideshare.php:217
+#: lib/pro/media/vimeo.php:196 lib/pro/media/wistia.php:360
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:201 gettext/gettext-lib-pro.php:204
 #: gettext/gettext-lib-pro.php:207 lib/conflict.php:343
-#: lib/pro/media/slideshare.php:216 lib/pro/media/vimeo.php:195
-#: lib/pro/media/wistia.php:359
+#: lib/pro/media/slideshare.php:220 lib/pro/media/vimeo.php:199
+#: lib/pro/media/wistia.php:363
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:182
+#: gettext/gettext-lib-pro.php:208 lib/pro/media/youtube.php:186
 msgid "Video title not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:192
+#: gettext/gettext-lib-pro.php:209 lib/pro/media/youtube.php:196
 msgid "Video description not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:210 lib/pro/media/youtube.php:202
+#: gettext/gettext-lib-pro.php:210 lib/pro/media/youtube.php:206
 msgid "Video upload date not found for %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:251
+#: gettext/gettext-lib-pro.php:211 lib/pro/media/upscale.php:254
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:212 lib/pro/media/upscale.php:259
+#: gettext/gettext-lib-pro.php:212 lib/pro/media/upscale.php:262
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
@@ -6438,55 +6438,55 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:234
-#: lib/loader.php:248 lib/post.php:1760 lib/pro/util/shorten.php:333
-#: lib/pro/util/shorten.php:528 lib/util-cache.php:795
+#: lib/loader.php:248 lib/post.php:1760 lib/pro/util/shorten.php:336
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:795
 msgid "%s error:"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
 #: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
-#: lib/pro/util/shorten.php:355 lib/pro/util/shorten.php:381
-#: lib/pro/util/shorten.php:405 lib/pro/util/shorten.php:446
+#: lib/pro/util/shorten.php:358 lib/pro/util/shorten.php:384
+#: lib/pro/util/shorten.php:408 lib/pro/util/shorten.php:449
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the current URL from the $_SERVER variable.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:453
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:456
 msgid "Loop detected: YOURLS API URL matches current URL (%s)"
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:223 lib/pro/util/shorten.php:494
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/shorten.php:497
 msgid "Unable to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:225 lib/pro/util/shorten.php:531
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/shorten.php:534
 msgid "URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:227 lib/pro/review/shopperapproved.php:175
+#: gettext/gettext-lib-pro.php:227 lib/pro/review/shopperapproved.php:178
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:228 gettext/gettext-lib-pro.php:232
-#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:377
-#: lib/pro/review/shopperapproved.php:349 lib/pro/review/stamped.php:338
+#: gettext/gettext-lib-pro.php:236 lib/pro/review/judgeme.php:381
+#: lib/pro/review/shopperapproved.php:352 lib/pro/review/stamped.php:341
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:229 gettext/gettext-lib-pro.php:233
-#: gettext/gettext-lib-pro.php:237 lib/pro/review/judgeme.php:380
-#: lib/pro/review/shopperapproved.php:352 lib/pro/review/stamped.php:341
+#: gettext/gettext-lib-pro.php:237 lib/pro/review/judgeme.php:384
+#: lib/pro/review/shopperapproved.php:355 lib/pro/review/stamped.php:344
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:231 lib/pro/review/stamped.php:175
+#: gettext/gettext-lib-pro.php:231 lib/pro/review/stamped.php:178
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:190
+#: gettext/gettext-lib-pro.php:235 lib/pro/review/judgeme.php:194
 msgid "getting judge.me ratings and reviews"
 msgstr ""
 
