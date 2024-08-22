@@ -1140,7 +1140,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$ext_pdir        = $this->p->check->pp( $ext, $li = false );
 					$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
-					$ext_pkg_std     = ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) ? true : false;
+					$ext_pkg_std     = ! $ext_pdir || ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) ? true : false;
 					$ext_pp          = ! $ext_pkg_std && $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 					$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 					$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
