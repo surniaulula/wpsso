@@ -211,12 +211,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'gravatar'         => 'Gravatar Images',
 								'slideshare'       => 'Slideshare Presentations',
 								'soundcloud'       => 'Soundcloud Tracks',
+								'upscale'          => 'Upscale Media Library Images',
 								'vimeo'            => 'Vimeo Videos',
 								'wistia'           => 'Wistia Videos',
 								'wpvideoblock'     => 'WP Media Library Video Blocks',
 								'wpvideoshortcode' => 'WP Media Library Video Shortcodes',
 								'youtube'          => 'YouTube Videos and Playlists',
-								'upscale'          => 'Upscale Media Library Images',
 							),
 							'review' => array(
 								'judgeme'         => 'Judge.me Reviews',

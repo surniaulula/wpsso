@@ -3324,34 +3324,34 @@ msgctxt "lib file description"
 msgid "Soundcloud Tracks"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:93 gettext/gettext-lib-config.php:111
+#: gettext/gettext-lib-config.php:93
+msgctxt "lib file description"
+msgid "Upscale Media Library Images"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:94 gettext/gettext-lib-config.php:111
 msgctxt "lib file description"
 msgid "Vimeo Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:94 gettext/gettext-lib-config.php:112
+#: gettext/gettext-lib-config.php:95 gettext/gettext-lib-config.php:112
 msgctxt "lib file description"
 msgid "Wistia Videos"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:95 gettext/gettext-lib-config.php:113
+#: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:113
 msgctxt "lib file description"
 msgid "WP Media Library Video Blocks"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:96 gettext/gettext-lib-config.php:114
+#: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:114
 msgctxt "lib file description"
 msgid "WP Media Library Video Shortcodes"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:115
+#: gettext/gettext-lib-config.php:98 gettext/gettext-lib-config.php:115
 msgctxt "lib file description"
 msgid "YouTube Videos and Playlists"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:98
-msgctxt "lib file description"
-msgid "Upscale Media Library Images"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:99 gettext/gettext-lib-config.php:116
