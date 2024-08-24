@@ -6437,8 +6437,8 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
-#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:208
-#: lib/loader.php:222 lib/post.php:1757 lib/pro/util/shorten.php:336
+#: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:179
+#: lib/loader.php:193 lib/post.php:1757 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:795
 msgid "%s error:"
 msgstr ""
@@ -9160,19 +9160,19 @@ msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class
 #. name
-#: lib/loader.php:204
+#: lib/loader.php:175
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
-#: lib/loader.php:210
+#: lib/loader.php:181
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
-#: lib/loader.php:224
+#: lib/loader.php:195
 msgid "Library class name for \"%s\" cannot be determined."
 msgstr ""
 
-#: lib/loader.php:225
+#: lib/loader.php:196
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "required library file."
@@ -15577,45 +15577,45 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:602
+#: wpsso.php:600
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
 
-#: wpsso.php:605
+#: wpsso.php:603
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:762
+#: wpsso.php:760
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:769
+#: wpsso.php:767
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:777
+#: wpsso.php:775
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:779
+#: wpsso.php:777
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:791
+#: wpsso.php:789
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:793
+#: wpsso.php:791
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 

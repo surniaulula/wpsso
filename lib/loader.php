@@ -120,15 +120,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $ext_base . ' is not active and/or not found' );
+					$this->p->debug->log( $ext_base . ' plugin not active or not found' );
 				}
 
 				return;
 			}
 
 			unset( $ext_base );
-
-			$is_admin = is_admin();
 
 			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $sub ] as $type => $libs ) {
 
@@ -138,9 +136,6 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					$log_prefix = 'loading ' . $ext . '/lib/' . $sub . '/' . $type . '/' . $id . ': ';
 
-					/*
-					 * Check if the resource (active plugin or enabled option) is available.
-					 */
 					if ( ! empty( $this->p->avail[ $type ][ $id ] ) ) {
 
 						$lib_path = $sub . '/' . $type . '/' . $id;
@@ -160,45 +155,21 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 							} elseif ( class_exists( $classname ) ) {
 
-								/*
-								 * Loaded module objects from core plugin.
-								 */
-								if ( $ext === $this->p->id ) {
+								if ( $this->p->debug->enabled ) {
 
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
-									}
-
-									if ( ! isset( $this->p->m[ $type ][ $id ] ) ) {
-
-										$this->p->m[ $type ][ $id ] = new $classname( $this->p );
-
-									} elseif ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( $log_prefix . 'library module already defined' );
-									}
-
-								/*
-								 * Loaded module objects from extensions / add-ons.
-								 */
-								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $type ][ $id ] ) ) {
-
-									$this->p->m_ext[ $ext ][ $type ][ $id ] = new $classname( $this->p );
-
-								} elseif ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( $log_prefix . 'library ext module already defined' );
+									$this->p->debug->log( $log_prefix . 'instantiating ' . $classname );
 								}
+
+								new $classname( $this->p );
 
 							} else {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( $log_prefix . 'library class "' . $classname . '" is missing' );
+									$this->p->debug->log( $log_prefix . 'class "' . $classname . '" is missing' );
 								}
 
-								if ( $is_admin && is_object( $this->p->notice ) ) {
+								if ( is_admin() && is_object( $this->p->notice ) ) {
 
 									// translators: %1$s is the PHP library path, %2$s is the PHP library class name
 									$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library class "%2$s" is missing.',
@@ -225,7 +196,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								__( 'The installed plugin is incomplete or the web server cannot access the required library file.',
 									'wpsso' );
 
-							if ( $is_admin && is_object( $this->p->notice ) ) {
+							if ( is_admin() && is_object( $this->p->notice ) ) {
 
 								$this->p->notice->err( $error_msg );
 							}
