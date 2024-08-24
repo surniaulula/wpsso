@@ -73,15 +73,15 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$is_um_gt_min = $this->p->check->is_um_gt_min();	// Uses a local cache.
+			$um_gt_min = $this->p->check->is_um_gt_min();	// Uses a local cache.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info )
 				unset( $GLOBALS[ $ext . '_pkg_std' ], $GLOBALS[ $ext . '_pkg_pro' ] );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$sub = ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $is_um_gt_min ?
-					'std' : ( ! empty( $GLOBALS[ $ext . '_pkg_pro' ] ) || 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ?
+				$sub = ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $um_gt_min ? 'std' :
+					( ! empty( $GLOBALS[ $ext . '_pkg_pro' ] ) || 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ?
 						'pro' : 'std' );
 
 				if ( empty( $GLOBALS[ $ext . '_pkg_' . $sub ] ) )
