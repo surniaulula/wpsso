@@ -457,6 +457,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
+		/*
+		 * Runs at admin_init priority -1000.
+		 */
 		public function init_check_options() {
 
 			if ( $this->p->debug->enabled ) {

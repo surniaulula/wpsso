@@ -979,12 +979,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		private function add_wp_callbacks() {
 
-			static $do_once = null;	// Just in case.
+			static $do_once = null;
 
-			if ( true === $do_once ) {
-
-				return;
-			}
+			if ( $do_once ) return;	// Stop here.
 
 			$do_once = true;
 
@@ -1172,7 +1169,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				return;
 
-			} elseif ( empty( $this->p->cf[ 'plugin' ] ) ) {
+			} elseif ( empty( $this->p->cf[ 'plugin' ] ) ) {	// Just in case.
 
 				return;
 			}

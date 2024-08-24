@@ -1183,10 +1183,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $do_once = array();
 
-			if ( isset( $do_once[ $post_id ] ) ) {
-
-				return;	// Stop here.
-			}
+			if ( isset( $do_once[ $post_id ] ) ) return;	// Stop here.
 
 			$do_once[ $post_id ] = true;
 
@@ -1800,10 +1797,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $post_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $post_id ] ) ) return;	// Stop here.
 
 			$do_once[ $post_id ] = true;
 
@@ -1941,10 +1935,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $post_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $post_id ] ) ) return;	// Stop here.
 
 			$do_once[ $post_id ] = true;
 

@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.6.1
  * WC Tested Up To: 9.2.2
- * Version: 18.4.0
+ * Version: 18.4.1-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -83,8 +83,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $options      = array();	// Blog options array.
 		public $site_options = array();	// Multisite options array.
 		public $sc           = array();	// Loaded shortcode objects.
-
-		private $is_pp = null;		// Since WPSSO Core v9.8.0.
 
 		private static $instance = null;	// Wpsso class object.
 
@@ -305,10 +303,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
 			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
-
+			
 			$this->check = new WpssoCheck( $this );
 
-			$this->is_pp = $this->check->is_pp();
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
 			/*
@@ -442,17 +439,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark_diff( 'meta tags and schema classes loaded' );
 			}
 
-			/*
-			 * Load integration and std/pro distribution modules.
-			 */
+			do_action( 'wpsso_init_objects_preloader' );
+
 			$this->loader = new WpssoLoader( $this );	// Modules loader.
 
-			/*
-			 * Init additional class objects.
-			 */
 			do_action( 'wpsso_init_objects' );
-
-			do_action( 'wpsso_init_objects_' . ( $this->is_pp ? 'pro' : 'std' ) );
 
 			if ( $this->debug->enabled ) {
 
@@ -513,7 +504,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * All WPSSO Core objects are instantiated and configured.
 			 *
 			 * See SucomAbstractAddOn->init_plugin_notices().
-			 * See WpssoRrssbStdSocialBuddypress->remove_wp_buttons().
 			 */
 			do_action( 'wpsso_init_plugin' );
 		}

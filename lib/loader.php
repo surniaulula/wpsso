@@ -52,14 +52,12 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$mod_sub = 'integ';
-
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'loading integ modules for ' . $ext );
 				}
 
-				$this->maybe_load_ext_mods( $ext, $mod_sub );
+				$this->maybe_load_ext_mods( $ext, $sub = 'integ' );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -75,19 +73,26 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
+			$is_um_gt_min = $this->p->check->is_um_gt_min();	// Uses a local cache.
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info )
+				unset( $GLOBALS[ $ext . '_pkg_std' ], $GLOBALS[ $ext . '_pkg_pro' ] );
+
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $this->have_um_version() ) { $mod_sub = 'std'; } 
-				else { $mod_sub = 1 !== $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'std' : 'pro'; }
+				$sub = ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $is_um_gt_min ?
+					'std' : ( ! empty( $GLOBALS[ $ext . '_pkg_pro' ] ) || 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ?
+						'pro' : 'std' );
 
-				$GLOBALS[ $ext . '_pkg_' . $mod_sub ] = true;
+				if ( empty( $GLOBALS[ $ext . '_pkg_' . $sub ] ) )
+					$GLOBALS[ $ext . '_pkg_' . $sub ] = true;
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'loading dist modules for ' . $ext . ' from ' . $mod_sub );
+					$this->p->debug->log( 'loading dist modules for ' . $ext . ' from ' . $sub );
 				}
 
-				$this->maybe_load_ext_mods( $ext, $mod_sub );
+				$this->maybe_load_ext_mods( $ext, $sub );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -96,45 +101,14 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 		}
 
-		private function have_um_version() {
+		private function maybe_load_ext_mods( $ext, $sub ) {
 
-			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
-
-				if ( SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
-
-					if ( class_exists( 'WpssoUmConfig' ) ) {
-
-						$um_version = WpssoUmConfig::get_version();
-						$um_min_ver = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
-
-						return version_compare( $um_version, $um_min_ver, '>=' ) ? true : false;
-	
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'update manager config class not found' );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'update manager add-on is not active' );
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'update manager config not found' );
-			}
-
-			return false;
-		}
-
-		private function maybe_load_ext_mods( $ext, $mod_sub ) {
-
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ||
-				! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] ) ) {	// Just in case.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $sub ] ) ||
+				! is_array( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $sub ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'no modules found for ' . $ext . '/lib/' . $mod_sub );
+					$this->p->debug->log( 'no modules found for ' . $ext . '/lib/' . $sub );
 				}
 
 				return;
@@ -156,20 +130,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			$is_admin = is_admin();
 
-			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_sub ] as $mod_type => $libs ) {
+			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $sub ] as $type => $libs ) {
 
-				$log_prefix = 'loading ' . $ext . '/lib/' . $mod_sub . '/' . $mod_type . ': ';
+				$log_prefix = 'loading ' . $ext . '/lib/' . $sub . '/' . $type . ': ';
 
 				foreach ( $libs as $id => $label ) {
 
-					$log_prefix = 'loading ' . $ext . '/lib/' . $mod_sub . '/' . $mod_type . '/' . $id . ': ';
+					$log_prefix = 'loading ' . $ext . '/lib/' . $sub . '/' . $type . '/' . $id . ': ';
 
 					/*
 					 * Check if the resource (active plugin or enabled option) is available.
 					 */
-					if ( ! empty( $this->p->avail[ $mod_type ][ $id ] ) ) {
+					if ( ! empty( $this->p->avail[ $type ][ $id ] ) ) {
 
-						$lib_path = $mod_sub . '/' . $mod_type . '/' . $id;
+						$lib_path = $sub . '/' . $type . '/' . $id;
 
 						$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
@@ -196,9 +170,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 									}
 
-									if ( ! isset( $this->p->m[ $mod_type ][ $id ] ) ) {
+									if ( ! isset( $this->p->m[ $type ][ $id ] ) ) {
 
-										$this->p->m[ $mod_type ][ $id ] = new $classname( $this->p );
+										$this->p->m[ $type ][ $id ] = new $classname( $this->p );
 
 									} elseif ( $this->p->debug->enabled ) {
 
@@ -208,9 +182,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								/*
 								 * Loaded module objects from extensions / add-ons.
 								 */
-								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $mod_type ][ $id ] ) ) {
+								} elseif ( ! isset( $this->p->m_ext[ $ext ][ $type ][ $id ] ) ) {
 
-									$this->p->m_ext[ $ext ][ $mod_type ][ $id ] = new $classname( $this->p );
+									$this->p->m_ext[ $ext ][ $type ][ $id ] = new $classname( $this->p );
 
 								} elseif ( $this->p->debug->enabled ) {
 

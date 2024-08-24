@@ -152,19 +152,13 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 			static $local_cache = null;
 
-			if ( null !== $local_cache ) {
-
-				return $local_cache;
-			}
+			if ( null !== $local_cache ) return $local_cache;
 
 			$local_cache = array();	// Also prevents recursion.
 
 			$info = $this->cf[ 'plugin' ][ $this->ext ];
 
-			if ( empty( $info[ 'req' ] ) ) {
-
-				return $local_cache = false;
-			}
+			if ( empty( $info[ 'req' ] ) ) return $local_cache = false;
 
 			$addon_name  = $info[ 'name' ];
 			$text_domain = $info[ 'text_domain' ];
@@ -175,10 +169,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 					$req_name = '<a href="' . $req_info[ 'home' ] . '">' . $req_info[ 'name' ] . '</a>';
 
-				} else {
-
-					$req_name = $req_info[ 'name' ];
-				}
+				} else $req_name = $req_info[ 'name' ];
 
 				/*
 				 * Optimize and check for plugin version first, then check for plugin existence.

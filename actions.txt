@@ -15,6 +15,8 @@
 
 'wpsso_refresh_user_cache' ( $user_id, $mod )
 
+'wpsso_init_objects_preloader' ()
+
 'wpsso_init_objects' ()
 
 'wpsso_init_plugin' ()

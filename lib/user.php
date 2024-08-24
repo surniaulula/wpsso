@@ -1030,10 +1030,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $user_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $user_id ] ) ) return;	// Stop here.
 
 			$do_once[ $user_id ] = true;
 
@@ -1068,10 +1065,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $user_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $user_id ] ) ) return;	// Stop here.
 
 			$do_once[ $user_id ] = true;
 
@@ -1671,10 +1665,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $user_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $user_id ] ) ) return;	// Stop here.
 
 			$do_once[ $user_id ] = true;
 
@@ -1706,10 +1697,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $user_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $user_id ] ) ) return;	// Stop here.
 
 			$do_once[ $user_id ] = true;
 

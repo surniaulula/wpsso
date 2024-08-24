@@ -1042,9 +1042,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$key  = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
-			$ump  = class_exists( 'WpssoUmConfig' ) && class_exists( 'SucomUpdate' ) ? true : false;
+			$umv  = class_exists( 'WpssoUmConfig' ) && WpssoUmConfig::get_version() ? true : false;
 
-			return $local_cache[ $id ] = $li ? ( ( ! empty( $this->p->options[ $key ] ) && $pdir && $ump && 
+			return $local_cache[ $id ] = $li ? ( ( ! empty( $this->p->options[ $key ] ) && $pdir && $umv && 
 				( $ume = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ume : false ) : $pdir;
 		}
 
@@ -1084,7 +1084,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function get_ext_auth_type( $ext ) {
 
-			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ? 'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
+			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ?
+				'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
 		}
 
 		public function get_ext_auth_id( $ext ) {
@@ -1093,6 +1094,48 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ext_auth_key  = 'plugin_' . $ext . '_' . $ext_auth_type;
 
 			return empty( $this->p->options[ $ext_auth_key ] ) ? '' : $this->p->options[ $ext_auth_key ];
+		}
+
+		public function is_um_gt_min() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) return $local_cache;
+
+			if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
+
+				if ( SucomPlugin::is_plugin_active( $this->p->cf[ 'plugin' ][ 'wpssoum' ][ 'base' ] ) ) {
+
+					if ( class_exists( 'WpssoUmConfig' ) ) {
+
+						$um_version = WpssoUmConfig::get_version();
+						$um_min_ver = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
+
+						if ( version_compare( $um_version, $um_min_ver, '>=' ) ) {
+						
+							return $local_cache = true;
+					
+						} elseif ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'update manager version less than minimum' );
+						}
+	
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'update manager config class not found' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'update manager add-on is not active' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'update manager config not found' );
+			}
+
+			return $local_cache = false;
 		}
 
 		private function is_opt_enabled( $key, $val = null ) {

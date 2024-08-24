@@ -62,11 +62,10 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 			 * WPSSO action hooks.
 			 */
 			foreach ( array(
-				'init_textdomain'    => 0,
-				'init_objects'       => 0,
-				'init_objects_std'   => 0,
-				'init_objects_pro'   => 0,
-				'init_check_options' => 0,
+				'init_textdomain'        => 0,
+				'init_objects_preloader' => 0,
+				'init_objects'           => 0,
+				'init_check_options'     => 0,
 			) as $method => $args_num ) {
 
 				if ( method_exists( $this, $method ) ) {
@@ -78,7 +77,7 @@ if ( ! class_exists( 'WpssoAbstractAddOn' ) ) {
 			/*
 			 * The SucomAbstractAddOn->init_plugin_notices() method adds toolbar notices for any missing requirements.
 			 */
-			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), 10, 0 );
+			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), 100, 0 );
 
 			/*
 			 * If SucomAbstractAddOn->init_plugin_notices() is not executed, then show any missing requirements using

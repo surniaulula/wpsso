@@ -889,10 +889,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) return;	// Stop here.
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
@@ -919,10 +916,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			static $do_once = array();	// Just in case - prevent recursion.
 
-			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {
-
-				return;
-			}
+			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) return;	// Stop here.
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
