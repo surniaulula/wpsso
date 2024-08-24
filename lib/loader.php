@@ -73,19 +73,17 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$um_gt_min = $this->p->check->is_um_gt_min();	// Uses a local cache.
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info )
-				unset( $GLOBALS[ $ext . '_pkg_std' ], $GLOBALS[ $ext . '_pkg_pro' ] );
+			$um_check = $this->p->check->is_um_gt_min();	// Uses a local cache.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$sub = ! empty( $GLOBALS[ $ext . '_pkg_std' ] ) || empty( $info[ 'update_auth' ] ) || ! $um_gt_min ? 'std' :
-					( ! empty( $GLOBALS[ $ext . '_pkg_pro' ] ) || 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ?
-						'pro' : 'std' );
+				$GLOBALS[ $ext . '_dist' ] = '';
+			}
 
-				if ( empty( $GLOBALS[ $ext . '_pkg_' . $sub ] ) )
-					$GLOBALS[ $ext . '_pkg_' . $sub ] = true;
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				$sub = $GLOBALS[ $ext . '_dist' ] = 'std' === $GLOBALS[ $ext . '_dist' ] || empty( $info[ 'update_auth' ] ) || ! $um_check ? 'std' :
+					( 'pro' === $GLOBALS[ $ext . '_dist' ] || 1 === $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) ? 'pro' : 'std' );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -214,18 +212,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 		public static function load_plugin_std( $plugin, $sub, $id ) {
 
-			unset( $GLOBALS[ 'wpsso_pkg_pro' ] );
-
-			$GLOBALS[ 'wpsso_pkg_std' ] = true;
+			$GLOBALS[ 'wpsso_dist' ] = 'std';
 
 			$classname = apply_filters( 'wpsso_load_lib', false, 'std/' . $sub . '/' . $id );
 
-			if ( is_string( $classname ) && class_exists( $classname ) ) {
-
-				unset( $plugin->m[ 'pro' ][ $id ] );
-			
-				$plugin->m[ 'std' ][ $id ] = new $classname( $plugin );
-			}
+			if ( is_string( $classname ) && class_exists( $classname ) ) new $classname( $plugin );
 		}
 	}
 }
