@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.4.1-dev.1 (2024/08/24)**
+**Version 18.5.0-dev.1 (2024/08/24)**
 
 * **New Features**
 	* None.
@@ -289,7 +289,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'wpsso_init_objects_preloader' action.
+	* Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -711,9 +712,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.4.1-dev.1 =
+= 18.5.0-dev.1 =
 
-(2024/08/24) None.
+(2024/08/24) Added a new 'wpsso_init_objects_preloader' action. Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
 
 = 18.4.0 =
 
