@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$task_name         = 'add the Person role';
 			$task_name_transl  = _x( 'add the Person role', 'task name', 'wpsso' );
 
-			if ( ! $this->p->util->cache->start_task( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME ) ) {
+			if ( ! $this->p->util->cache->task_start( $user_id, $task_name, WPSSO_ADD_ROLE_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -1912,7 +1912,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			$this->p->util->cache->end_task( $user_id, $task_name );
+			$this->p->util->cache->task_end( $user_id, $task_name );
 		}
 
 		/*
@@ -1953,7 +1953,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$task_name         = 'remove the Person role';
 			$task_name_transl  = _x( 'remove the Person role', 'task name', 'wpsso' );
 
-			if ( ! $this->p->util->cache->start_task( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME ) ) {
+			if ( ! $this->p->util->cache->task_start( $user_id, $task_name, WPSSO_REMOVE_ROLE_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -2006,7 +2006,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			$this->p->util->cache->end_task( $user_id, $task_name );
+			$this->p->util->cache->task_end( $user_id, $task_name );
 		}
 
 		/*

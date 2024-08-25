@@ -595,6 +595,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
+			
+			do_action( 'wpsso_cache_refresh_scheduled', $event_time, $event_hook, $event_args );
 		}
 
 		/*
@@ -606,7 +608,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
 
-			if ( ! $this->start_task( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
+			if ( ! $this->task_start( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
 				return;	// Stop here - background task already running.
 			}
@@ -702,7 +704,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
 			/*
-			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
+			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute additional refresh tasks and append
+			 * a notice message.
 			 *
 			 * See WpssoCmcfFilters->filter_cache_refreshed_notice().
 			 * See WpssoGmfFilters->filter_cache_refreshed_notice().
@@ -724,7 +727,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			$this->end_task( $user_id, $task_name );
+			$this->task_end( $user_id, $task_name );
 		}
 
 		public function refresh_mod_head_meta( array $mod ) {
@@ -741,7 +744,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return array( $head_tags, $head_info );
 		}
 
-		public function start_task( $user_id, $task_name, $cache_exp_secs ) {
+		public function task_start( $user_id, $task_name, $cache_exp_secs ) {
 
 			/*
 			 * Maybe get the running task details.
@@ -772,7 +775,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return true;
 		}
 
-		public function end_task( $user_id, $task_name ) {
+		public function task_end( $user_id, $task_name ) {
 
 			/*
 			 * Delete the running task details.
@@ -817,7 +820,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$task_cache_id = $this->get_task_cache_id( $task_name );
 
-			return get_transient( $task_cache_id );
+			$running_task = get_transient( $task_cache_id );
+
+			/*
+			 * $running_task = array( $user_id, $task_name );
+			 */
+			return is_array( $running_task ) ? $running_task : false;
 		}
 
 		/*
