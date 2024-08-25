@@ -289,6 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new 'wpsso_cache_refresh_scheduled' action.
 	* Added a new 'wpsso_init_objects_preloader' action.
 	* Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
 * **Requires At Least**
@@ -714,7 +715,7 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 = 18.5.0-b.1 =
 
-(2024/08/25) Added a new 'wpsso_init_objects_preloader' action. Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
+(2024/08/25) Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
 
 = 18.4.0 =
 
