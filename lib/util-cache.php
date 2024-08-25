@@ -746,16 +746,15 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function task_start( $user_id, $task_name, $cache_exp_secs ) {
 
-			/*
-			 * Maybe get the running task details.
-			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$running_task = $this->get_running_task( $task_name );	// Returns false or an array.
 
 			if ( is_array( $running_task ) ) {	// A task is running.
 
-				/*
-				 * Show the ignore request notice, no matter who started the task.
-				 */
 				$task_name_transl = _x( $running_task[ 1 ], 'task name', 'wpsso' );
 				$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
 				$notice_key       = $running_task[ 1 ] . '-task-ignored';
@@ -765,27 +764,42 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return false;
 			}
 
-			/*
-			 * Save the running task details.
-			 */
-			$task_cache_id = $this->get_task_cache_id( $task_name );
-
-			set_transient( $task_cache_id, array( $user_id, $task_name ), $cache_exp_secs );
+			$this->task_update( $user_id, $task_name, $cache_exp_secs );
 
 			return true;
 		}
 
-		public function task_end( $user_id, $task_name ) {
+		/*
+		 * Save the running task details.
+		 */
+		public function task_update( $user_id, $task_name, $cache_exp_secs ) {
 
-			/*
-			 * Delete the running task details.
-			 */
 			$task_cache_id = $this->get_task_cache_id( $task_name );
 
-			delete_transient( $task_cache_id );
+			return set_transient( $task_cache_id, array( $user_id, $task_name ), $cache_exp_secs );
+		}
+
+		/*
+		 * Delete the running task details.
+		 */
+		public function task_end( $user_id, $task_name ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$task_cache_id = $this->get_task_cache_id( $task_name );
+
+			return delete_transient( $task_cache_id );
 		}
 
 		public function set_task_limit( $user_id, $task_name, $cache_exp_secs ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$ret = set_time_limit( $cache_exp_secs );
 
@@ -818,6 +832,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function get_running_task( $task_name ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$task_cache_id = $this->get_task_cache_id( $task_name );
 
 			$running_task = get_transient( $task_cache_id );
@@ -838,6 +857,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function get_task_cache_id( $task_name ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return 'wpsso_!_' . md5( __CLASS__ . '::running-task-'. $task_name );
 		}
 
@@ -845,6 +869,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * Clear known caching plugins.
 		 */
 		public function clear_cache() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			wp_cache_flush();
 

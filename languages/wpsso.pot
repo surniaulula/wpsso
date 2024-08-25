@@ -6439,7 +6439,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1757 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:798
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:812
 msgid "%s error:"
 msgstr ""
 
@@ -15245,16 +15245,16 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:760
+#: lib/util-cache.php:759
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:800
+#: lib/util-cache.php:814
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:851
+#: lib/util-cache.php:880
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
