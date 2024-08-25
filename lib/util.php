@@ -1142,12 +1142,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
 					$ext_pkg_std     = ! $ext_pdir || ( isset( $GLOBALS[ $ext . '_dist' ] ) && 'std' === $GLOBALS[ $ext . '_dist' ] ) ? true : false;
 					$ext_pp          = ! $ext_pkg_std && $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-					$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+					$ext_status      = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 					$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 					$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
 					$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
 	
-					$local_cache[ $ext ][ 'gen' ] = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+					$local_cache[ $ext ][ 'gen' ] = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_status : '' );
 					$local_cache[ $ext ][ 'name' ]      = $ext_name_transl;
 					$local_cache[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $ext_pp ? $pkg_pro_transl : $pkg_std_transl );
 					$local_cache[ $ext ][ 'name_pro' ]  = $this->get_pkg_name( $ext_name_transl, $pkg_pro_transl );

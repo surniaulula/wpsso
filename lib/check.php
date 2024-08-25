@@ -1014,12 +1014,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $get_avail;
 		}
 
-		public function is_pp( $ext = null, $rc = true ) {
+		public function is_pp( $ext = null, $read_cache = true ) {
 
-			return $this->pp( $ext, $li = true, $rv = true, $rc );
+			return $this->pp( $ext, $li = true, $rv = true, $read_cache );
 		}
 
-		public function pp( $ext = null, $li = true, $rv = true, $rc = true, $mx = null ) {
+		public function pp( $ext = null, $li = true, $rv = true, $read_cache = true, $mx = null ) {
 
 			static $local_cache = array();
 
@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$id  = $ext . '-' . $li . '-' . $rv . '-' . $mx;
 			$rv  = null === $mx ? $rv : $rv * $mx;
 
-			if ( $rc && isset( $local_cache[ $id ] ) ) {
+			if ( $read_cache && isset( $local_cache[ $id ] ) ) {
 
 				return $local_cache[ $id ];
 
