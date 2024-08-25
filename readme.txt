@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.6.1
 WC Tested Up To: 9.2.2
-Stable Tag: 18.4.0
+Stable Tag: 18.5.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -736,88 +736,4 @@ Updated "Tested Up To" value for WordPress v6.5.
 = 18.0.0 =
 
 (2024/08/15) Added three widgets to the WP Dashboard page. Replaced checkbox options with slider options. Removed the SSO &gt; Dashboard settings page.
-
-= 17.25.0 =
-
-(2024/08/12) Added a new "Video Upload Date" option in the Document SSO metabox. Added a call to `sucomDisableUnchanged()` when saving in the block editor.
-
-= 17.24.0 =
-
-(2024/08/06) Added a new Judge.me ratings and reviews service API (Premium edition).
-
-= 17.23.0 =
-
-(2024/08/03) Updated Schema Organization markup to include Place properties if the organization is also a place.
-
-= 17.22.0 =
-
-(2024/08/01) Updated possible Schema returnFees property values based on revised Google requirements.
-
-= 17.21.0 =
-
-(2024/07/31) Added a new 'wpsso_cache_expire_youtube_video_details' filter (1 week in seconds).
-
-= 17.20.2 =
-
-(2024/07/27) Fixed addition of WooCommerce shipping destinations for zip/postal codes.
-
-= 17.20.1 =
-
-(2024/07/26) Fixed depecated method calls since SEO Framework v5.0.0. Fixed og:video:type = text/html from being considered a video by default.
-
-= 17.20.0 =
-
-(2024/07/23) Added "Getting video details for {url}." notice. Added "Failed URL Connections" to the Tools and Actions page. Added notice messages for missing values from YouTube video details (Premium edition).
-
-= 17.19.0 =
-
-(2024/07/15) Added a new 'wpsso_option_type_{base_key}' filter.
-
-= 17.18.0 =
-
-(2024/07/10) Added update schedule check for Premium edition.
-
-= 17.17.1 =
-
-(2024/06/11) Fixed missing declaration of $p variable in `WpssoIntegDataWpseoBlocks` (props mykkal).
-
-= 17.17.0 =
-
-(2024/04/23) Moved options handling methods from `SucomUtil` to a new `SucomUtilOptions` class.
-
-= 17.16.0 =
-
-(2024/03/27) Changed the "Default Review Rating Min" from 1 to 0.5. Added support for a 'pos_fnum' check in `WpssoOptions->check_value()`.
-
-= 17.15.0 =
-
-(2024/03/20) Updated "Tested Up To" value for WordPress v6.5.
-
-= 17.14.4 =
-
-(2024/03/08) Fixed 'mainEntityOfPage' property conflict for Schema ProfilePage markup.
-
-= 17.14.3 =
-
-(2024/03/02) Fixed title translation for settings pages.
-
-= 17.14.2 =
-
-(2024/02/22) Fixed possible missing "location" and "mainEntityOfPage" properties. Fixed possible duplicate Organization and Organization sub-type markup. Fixed a javascript indexOf() error on numeric keys.
-
-= 17.14.0 =
-
-(2024/02/21) Added support for the https://schema.org/LearningResource type.
-
-= 17.13.0 =
-
-(2024/02/15) Added a "product:is_virtual" internal meta tag for the WPSSO GMF and CMCF add-ons.
-
-= 17.12.1 =
-
-(2024/02/07) Fixed call to missing `SucomNoNotice->refresh_notice_style()` method.
-
-= 17.12.0 =
-
-(2024/02/05) Replaced The AMP Project Validator by the Google AMP Test.
 
