@@ -1,4 +1,6 @@
 
+'wpsso_cache_refresh_scheduled' ( $event_time, $event_hook, $event_args );
+
 'wpsso_check_head_info' ( $head_info, $mod, $canonical_url )
 
 'wpsso_clear_mod_cache' ( $mod )
