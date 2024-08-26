@@ -16,7 +16,9 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 }
 
 /*
- * Fix for WPSSO UM v5.6.0.
+ * Fix for an incorrect function call in WPSSO UM v5.6.0.
+ *
+ * Remove if/when WPSSO UM v5.6.0 is no longer installed on any site.
  */
 if ( ! function_exists( 'gmtime' ) ) {
 
