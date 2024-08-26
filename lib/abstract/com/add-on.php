@@ -67,6 +67,11 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( empty( $this->p->notice ) ) {	// Just in case.
+
+				return;
+			}
+
 			$is_admin     = is_admin();
 			$doing_ajax   = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
@@ -125,16 +130,12 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
 
+						echo wp_kses_post( '<div class="notice notice-error error"><p>' . $req_info[ 'notice' ] . '</p></div>' );
+
 						if ( ! empty( $this->p->debug->enabled ) ) {
 
-							$this->p->debug->log( 'required notice: ' . $req_info[ 'notice' ] );
+							$this->p->debug->log( strtolower( $req_info[ 'notice' ] ) );
 						}
-
-						/*
-						 * The 'notice' message is HTML generated from the add-on config (ie. the required
-						 * plugin name, version, and link).
-						 */
-						echo wp_kses_post( '<div class="notice notice-error error"><p>' . $req_info[ 'notice' ] . '</p></div>' );
 					}
 				}
 			}
