@@ -15,6 +15,9 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+/*
+ * Fix for WPSSO UM v5.6.0.
+ */
 if ( ! function_exists( 'gmtime' ) ) {
 
 	function gmtime() { return time(); }
