@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! function_exists( 'gmtime' ) ) {
+
+	function gmtime() { return time(); }
+}
+
 /*
  * Additional generic return functions.
  *
