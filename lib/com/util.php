@@ -2231,7 +2231,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-						$mod_salt .= '_home:true';
+						$mod_salt .= '_home';
 					}
 
 					if ( ! empty( $canonical_url ) ) {

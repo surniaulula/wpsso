@@ -41,6 +41,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$this->charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
 			/*
+			 * Add information about the page $mod to the body tag class.
+			 */
+			add_filter( 'body_class', array( $this, 'add_body_class' ), 1000, 2 );
+
+			/*
 			 * Maybe add the Validators toolbar menu.
 			 */
 			$add_toolbar_validate = empty( $this->p->options[ 'plugin_add_toolbar_validate' ] ) ? false : true;
@@ -86,6 +91,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$this->p->debug->log( 'title tag is disabled' );
 			}
+		}
+
+		/*
+		 * Add information about the page $mod to the body tag class.
+		 */
+		public function add_body_class( $classes, $css_class ) {
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
+			}
+
+			$mod      = $this->get_mod();
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+			$mod_salt = SucomUtil::sanitize_css_id( 'wpsso-' . $mod_salt );
+
+			if ( $mod_salt ) $classes[] = $mod_salt;
+
+			return $classes;
 		}
 
 		/*
