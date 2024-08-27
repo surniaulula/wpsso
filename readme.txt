@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.6.0-dev.1 (2024/08/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a body tag CSS class for the current webpage module.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 18.5.0 (2024/08/25)**
 
 * **New Features**
@@ -712,6 +726,10 @@ Updated "Tested Up To" value for WordPress v6.5.
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.6.0-dev.1 =
+
+(2024/08/27) Added a body tag CSS class for the current webpage module.
 
 = 18.5.0 =
 
