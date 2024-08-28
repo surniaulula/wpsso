@@ -2190,10 +2190,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $json_scripts;
 		}
 
-		public static function get_mod_css_id( array $mod ) {
+		public static function get_mod_css_id( array $mod, $sep = '-' ) {
 
-			$css_id = self::get_mod_salt( $mod );	// Does not include the page number or locale.
-
+			$css_id = self::get_mod_salt( $mod, $canonical_url = false, $sep );	// Does not include the page number or locale.
 			$css_id = self::sanitize_css_id( $css_id );
 
 			return $css_id;
@@ -2206,14 +2205,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Example mod salts:
 		 *
-		 * 	'post-123'
-		 * 	'term-456-tax-post_tag'
-		 * 	'post-0-url-https://example.com/a-subject/'
-		 * 	'url-https://example.com/2022/01/'
+		 * 	'post:123'
+		 * 	'term:456_tax:post_tag'
+		 * 	'post:0_url:https_example_com_a-subject'
+		 * 	'url:https_example_com_2022_01'
 		 */
-		public static function get_mod_salt( $mod = false, $canonical_url = false ) {
-
-			$sep = '-';
+		public static function get_mod_salt( $mod = false, $canonical_url = false, $sep = '_' ) {
 
 			$mod_salt = '';
 
@@ -2225,37 +2222,37 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( is_bool( $mod[ 'id' ] ) ) {
 
-						$mod_salt .= $sep . ( $mod[ 'id' ] ? 'true' : 'false' );
+						$mod_salt .= ':' . ( $mod[ 'id' ] ? 'true' : 'false' );
 
 					} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
 
-						$mod_salt .= $sep . $mod[ 'id' ];
+						$mod_salt .= ':' . $mod[ 'id' ];
 					}
 				}
 
 				if ( ! empty( $mod[ 'post_type' ] ) ) {	// Add the post type name.
 
-					$mod_salt .= $sep . 'type' . $sep . $mod[ 'post_type' ];
+					$mod_salt .= $sep . 'type:' . $mod[ 'post_type' ];
 
 					if ( ! empty( $mod[ 'is_post_type_archive' ] ) ) {	// Post type archive page.
 
-						$mod_salt .= $sep . 'is' . $sep . 'pta';
+						$mod_salt .= $sep . 'is-pta';
 					}
 
 				} elseif ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Add the taxonomy name.
 
-					$mod_salt .= $sep . 'tax' . $sep . $mod[ 'tax_slug' ];
+					$mod_salt .= $sep . 'tax:' . $mod[ 'tax_slug' ];
 				}
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					$mod_salt .= $sep . 'is' . $sep .'home';
+					$mod_salt .= $sep . 'is-home';
 				}
 			}
 			
 			if ( ! empty( $canonical_url ) ) {
 
-				$mod_salt .= $sep . 'url' . $sep . self::sanitize_input_name( $canonical_url, $sep );
+				$mod_salt .= $sep . 'url:' . self::sanitize_input_name( $canonical_url, $sep );
 			}
 
 			$mod_salt = trim( $mod_salt, $sep );

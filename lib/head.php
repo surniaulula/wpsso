@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 *
 			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
 			 */
-			$pretty_salt   = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
+			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is-pretty' : '';
 			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 *
 			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
 			 */
-			$pretty_salt    = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
+			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is-pretty' : '';
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
