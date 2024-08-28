@@ -1135,7 +1135,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 					if ( empty( $info[ 'name' ] ) ) continue;	// Just in case.
-	
+
 					$local_cache[ $ext ] = array();
 
 					$ext_pdir        = $this->p->check->pp( $ext, $li = false );
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 					$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
 					$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-	
+
 					$local_cache[ $ext ][ 'gen' ] = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_status : '' );
 					$local_cache[ $ext ][ 'name' ]      = $ext_name_transl;
 					$local_cache[ $ext ][ 'name_pkg' ]  = $this->get_pkg_name( $ext_name_transl, $ext_pp ? $pkg_pro_transl : $pkg_std_transl );

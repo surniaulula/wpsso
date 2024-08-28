@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
-			
+
 			do_action( 'wpsso_cache_refresh_scheduled', $event_time, $event_hook, $event_args );
 		}
 

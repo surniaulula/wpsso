@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $old_value !== $new_value ) {
 
 				if ( $user_id = get_current_user_id() ) {
-				
+
 					if ( 'home' === $option_name ) {
 
 						$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );

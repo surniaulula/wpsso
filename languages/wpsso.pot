@@ -8915,23 +8915,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:465
+#: lib/head.php:468
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:474
+#: lib/head.php:477
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:483
+#: lib/head.php:486
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:492
+#: lib/head.php:495
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:512
+#: lib/head.php:515
 msgid "adding schema json-ld markup"
 msgstr ""
 

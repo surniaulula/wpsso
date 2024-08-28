@@ -1112,14 +1112,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						$um_min_ver = WpssoConfig::$cf[ 'um' ][ 'min_version' ];
 
 						if ( version_compare( $um_version, $um_min_ver, '>=' ) ) {
-						
+
 							return $local_cache = true;
-					
+
 						} elseif ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'update manager version less than minimum' );
 						}
-	
+
 					} elseif ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'update manager config class not found' );

@@ -301,7 +301,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
 			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
-			
+
 			$this->check = new WpssoCheck( $this );
 
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.

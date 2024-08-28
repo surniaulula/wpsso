@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * Add information about the page $mod to the body tag class.
 		 */
 		public function add_body_class( $classes, $css_class ) {
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );

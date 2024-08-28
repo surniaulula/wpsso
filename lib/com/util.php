@@ -2277,7 +2277,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$mod_salt .= $sep . 'is_home';
 				}
 			}
-			
+
 			if ( ! empty( $canonical_url ) ) {
 
 				$mod_salt .= $sep . 'url:' . self::sanitize_input_name( $canonical_url, $sep );

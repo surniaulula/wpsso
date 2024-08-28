@@ -195,13 +195,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html = "\n\n";
 
-			if ( apply_filters( 'wpsso_head_disable', false, $mod ) ) {
+			if ( apply_filters( 'wpsso_head_disable', false, $mod ) ) {	// Not disabled by default.
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'head structured data disabled' );
 				}
-			
+
 				$head_tags = $this->get_head_array_disabled( $use_post, $mod );
 
 			} else $head_tags = $this->get_head_array( $use_post, $mod, $read_cache );
@@ -209,18 +209,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( is_array( $head_tags ) ) {	// Just in case.
 
 				foreach ( $head_tags as $mt ) {
-	
+
 					if ( ! empty( $mt[ 0 ] ) ) {
-	
+
 						if ( $indent_num && 0 === strpos( $mt[ 0 ], '</noscript' ) ) {
-	
+
 							$indent_num = 0;
 						}
-	
+
 						$html .= str_repeat( "\t", (int) $indent_num ) . $mt[0];
-	
+
 						if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {	// Indent meta tags within a noscript container.
-	
+
 							$indent_num = 1;
 						}
 					}
@@ -281,8 +281,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return;
 		}
 
+		/*
+		 * Called when the 'wpsso_head_disable' filter returns true.
+		 */
 		public function get_head_array_disabled( $use_post = false, $mod = false ) {
-			
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
@@ -883,7 +886,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				default:
 
-					return is_string( $args ) ? '<meta name="wpsso-' . $type . '" content="' . $args .  '"/>' . "\n" : '';
+					return '';
 			}
 		}
 
