@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.6.0-dev.3',	// Plugin version.
+					'version'     => '18.6.0-dev.4',	// Plugin version.
 					'opt_version' => '1015',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5099,7 +5099,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * Define fixed constants.
 			 */
-			define( 'WPSSO_DATA_ID', 'wpsso meta tags and schema markup' );
+			define( 'WPSSO_DATA_ID', 'wpsso structured data' );
 			define( 'WPSSO_FILEPATH', $plugin_file );
 			define( 'WPSSO_NONCE_NAME', md5( $nonce_key . var_export( $info, $return = true ) ) );
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.

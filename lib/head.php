@@ -157,14 +157,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log_arr( 'mod', $mod );
 			}
 
-			if ( apply_filters( 'wpsso_head_disable', false, $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: head is disabled' );
-				}
-			}
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
@@ -203,22 +195,34 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html = "\n\n";
 
-			$head_tags = $this->get_head_array( $use_post, $mod, $read_cache );
+			if ( apply_filters( 'wpsso_head_disable', false, $mod ) ) {
 
-			foreach ( $head_tags as $mt ) {
+				if ( $this->p->debug->enabled ) {
 
-				if ( ! empty( $mt[ 0 ] ) ) {
+					$this->p->debug->log( 'head structured data disabled' );
+				}
+			
+				$head_tags = $this->get_head_array_disabled( $use_post, $mod );
 
-					if ( $indent_num && 0 === strpos( $mt[ 0 ], '</noscript' ) ) {
+			} else $head_tags = $this->get_head_array( $use_post, $mod, $read_cache );
 
-						$indent_num = 0;
-					}
+			if ( is_array( $head_tags ) ) {	// Just in case.
 
-					$html .= str_repeat( "\t", (int) $indent_num ) . $mt[0];
-
-					if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {	// Indent meta tags within a noscript container.
-
-						$indent_num = 1;
+				foreach ( $head_tags as $mt ) {
+	
+					if ( ! empty( $mt[ 0 ] ) ) {
+	
+						if ( $indent_num && 0 === strpos( $mt[ 0 ], '</noscript' ) ) {
+	
+							$indent_num = 0;
+						}
+	
+						$html .= str_repeat( "\t", (int) $indent_num ) . $mt[0];
+	
+						if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {	// Indent meta tags within a noscript container.
+	
+							$indent_num = 1;
+						}
 					}
 				}
 			}
@@ -275,6 +279,26 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			delete_transient( $cache_id );
 
 			return;
+		}
+
+		public function get_head_array_disabled( $use_post = false, $mod = false ) {
+			
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Generator meta tags.
+			 */
+			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
+
+			return array_merge(
+				array( array( $this->get_mt_data( 'begin' ) ) ),
+				array( array( $this->get_mt_data( 'disabled' ) ) ),
+				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_gen, $mod ),
+				array( array( $this->get_mt_data( 'end' ) ) ),
+			);
 		}
 
 		/*
@@ -493,32 +517,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Generator meta tags.
-			 */
-			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
-
-			/*
 			 * Unset mis-matched og_type meta tags.
 			 */
 			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );
 
 			/*
+			 * Generator meta tags.
+			 */
+			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
+
+			/*
 			 * Combine and return all meta tags.
 			 */
 			$cache_array[ $cache_index ] = array_merge(
-				array(
-					array( $this->get_mt_data( 'begin' ) ),
-				),
+				array( array( $this->get_mt_data( 'begin' ) ) ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_gen, $mod ),
 				$this->get_mt_array( $tag = 'link', $type = 'rel', $link_rel, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'property', $mt_og, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_tc, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_name, $mod ),	// SEO description is last.
 				$schema_scripts,
-				array(
-					array( $this->get_mt_data( 'end' ) ),
-					array( $this->get_mt_data( 'cached', $cache_exp_secs ) ),
-				)
+				array( array( $this->get_mt_data( 'end' ) ), array( $this->get_mt_data( 'cached', $cache_exp_secs ) ) ),
 			);
 
 			/*
@@ -828,6 +847,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					return '<meta name="wpsso-' . $type . '" content="' . gmdate( 'c' ) . ' in ' . $total_secs .  '"/>' . "\n";
 
 				case 'begin':
+				case 'disabled':
 				case 'end':
 
 					return '<meta name="wpsso-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
@@ -863,7 +883,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				default:
 
-					return '';
+					return is_string( $args ) ? '<meta name="wpsso-' . $type . '" content="' . $args .  '"/>' . "\n" : '';
 			}
 		}
 
