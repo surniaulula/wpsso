@@ -280,14 +280,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.6.0-dev.3 (2024/08/28)**
+**Version 18.6.0-dev.4 (2024/08/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page').
 * **Bugfixes**
-	* None.
+	* Fixed the 'wpsso_head_disable' filter.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -727,9 +727,9 @@ Updated "Tested Up To" value for WordPress v6.5.
 
 == Upgrade Notice ==
 
-= 18.6.0-dev.3 =
+= 18.6.0-dev.4 =
 
-(2024/08/28) Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page').
+(2024/08/28) Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page'). Fixed the 'wpsso_head_disable' filter.
 
 = 18.5.0 =
 
