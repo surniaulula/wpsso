@@ -1689,28 +1689,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_classname( $classname, $allow_underscore = true ) {
 
-			if ( ! $allow_underscore ) {
-
-				$classname = preg_replace( '/_/', '', $classname );	# Remove underscores.
-			}
-
 			$classname = preg_replace( '/^[^a-zA-Z_\x80-\xff]+/', '', $classname );	# Cannot start with numeric characters.
 			$classname = preg_replace( '/[^a-zA-Z0-9_\x80-\xff]/', '', $classname );
+
+			if ( ! $allow_underscore ) $classname = preg_replace( '/_/', '', $classname );	# Remove underscores.
 
 			return $classname;
 		}
 
-		public static function sanitize_css_class( $css_class ) {
+		public static function sanitize_css_class( $css_class, $allow_underscore = true ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9_\- ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
+			$css_class = trim( preg_replace( '/[^a-zA-Z0-9_\- ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
+
+			if ( ! $allow_underscore ) $css_class = preg_replace( '/_/', '-', $css_class );	# Replace underscores.
+
+			return $css_class;
 		}
 
 		/*
 		 * See sucomChangeHideUnhideRows() in jquery-metabox.js.
 		 */
-		public static function sanitize_css_id( $css_id ) {
+		public static function sanitize_css_id( $css_id, $allow_underscore = true ) {
 
-			return trim( preg_replace( '/[^a-zA-Z0-9_\-]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
+			$css_id = trim( preg_replace( '/[^a-zA-Z0-9_\-]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
+
+			if ( ! $allow_underscore ) $css_id = preg_replace( '/_/', '-', $css_id );	# Replace underscores.
+
+			return $css_id;
 		}
 
 		public static function sanitize_file_name( $file_name ) {
@@ -2182,10 +2187,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $json_scripts;
 		}
 
-		public static function get_mod_css_id( array $mod ) {
+		public static function get_mod_css_id( array $mod, $allow_underscore = true ) {
 
 			$css_id = self::get_mod_salt( $mod );	// Does not include the page number or locale.
-			$css_id = self::sanitize_css_id( $css_id );
+
+			$css_id = self::sanitize_css_id( $css_id, $allow_underscore );
 
 			return $css_id;
 		}

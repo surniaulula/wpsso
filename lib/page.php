@@ -103,11 +103,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod      = $this->get_mod();
-			$mod_salt = SucomUtil::get_mod_salt( $mod );
-			$mod_salt = SucomUtil::sanitize_css_id( 'wpsso-' . $mod_salt );
+			$mod = $this->get_mod();
 
-			if ( $mod_salt ) $classes[] = $mod_salt;
+			$css_id  = 'wpsso-' . SucomUtil::get_mod_css_id( $mod, $allow_underscore = false );
+
+			if ( $css_id ) $classes[] = $css_id;
 
 			return $classes;
 		}
