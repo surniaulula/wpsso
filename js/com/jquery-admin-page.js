@@ -537,7 +537,7 @@ function sucomSanitizeCssId( string ) {
 function sucomSanitizeHookname( string ) {
 
 	string = string.replace( /[#:\/\-\. \[\]]+/g, '_' );
-	string = string.replace( /_+$/, '' );
+	string = string.replace( /_+$/, '' );	// Only trim right side underscores to allow for '__return_false'.
 
 	return sucomSanitizeKey( string );
 }

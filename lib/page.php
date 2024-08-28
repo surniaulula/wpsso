@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->get_mod();
 
-			$css_id  = 'wpsso-' . SucomUtil::get_mod_css_id( $mod, $allow_underscore = false );
+			$css_id = 'wpsso-' . SucomUtil::get_mod_css_id( $mod );
 
 			if ( $css_id ) $classes[] = $css_id;
 

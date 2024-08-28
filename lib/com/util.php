@@ -690,10 +690,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $assoc as $key => $val ) {
 
-				$assoc_salt .= '_' . $key . ':' . (string) $val;
+				$assoc_salt .= '-' . $key . ':' . (string) $val;
 			}
 
-			$assoc_salt = ltrim( $assoc_salt, '_' );	// Remove leading underscore.
+			$assoc_salt = ltrim( $assoc_salt, '-' );
 
 			return $assoc_salt;
 		}
@@ -1697,30 +1697,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $classname;
 		}
 
-		public static function sanitize_css_class( $css_class, $allow_underscore = true ) {
+		public static function sanitize_css_class( $css_class, $sep = '-' ) {
 
-			$css_class = trim( preg_replace( '/[^a-zA-Z0-9_\- ]+/', '-', $css_class ), $characters = '- ' );	// Spaces allowed between css class names.
-
-			if ( ! $allow_underscore ) $css_class = preg_replace( '/_/', '-', $css_class );	# Replace underscores.
+			$css_class = preg_replace( '/[^a-zA-Z0-9_\- ]+/', $sep, $css_class );	// Spaces allowed.
+			$css_class = trim( $css_class, $sep . ' ' );	// Trim separator and space characters.
 
 			return $css_class;
 		}
 
 		/*
 		 * See sucomChangeHideUnhideRows() in jquery-metabox.js.
+		 * See sucomSanitizeCssId() in jquery-admin-page.js.
 		 */
-		public static function sanitize_css_id( $css_id, $allow_underscore = true ) {
+		public static function sanitize_css_id( $css_id, $sep = '-' ) {
 
-			$css_id = trim( preg_replace( '/[^a-zA-Z0-9_\-]+/', '-', $css_id ), $characters = '-' );	// Spaces not allowed.
-
-			if ( ! $allow_underscore ) $css_id = preg_replace( '/_/', '-', $css_id );	# Replace underscores.
+			$css_id = preg_replace( '/[^a-zA-Z0-9_\-]+/', $sep, $css_id );	// Spaces not allowed.
+			$css_id = trim( $css_id, $sep );
 
 			return $css_id;
 		}
 
 		public static function sanitize_file_name( $file_name ) {
 
-			if ( '' === $file_name ) {
+			if ( '' === $file_name ) {	// Just in case.
 
 				return $file_name;
 			}
@@ -1738,7 +1737,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_file_path( $file_path ) {
 
-			if ( empty( $file_path ) ) {
+			if ( empty( $file_path ) ) {	// Just in case.
 
 				return false;
 			}
@@ -1756,6 +1755,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
 		}
 
+		/*
+		 * See sucomSanitizeHookname() in jquery-admin-page.js.
+		 */
 		public static function sanitize_hookname( $hookname ) {
 
 			$hookname = preg_replace( '/[\/\-\. \[\]:#]+/', '_', $hookname );
@@ -1774,12 +1776,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 *	'mrp_method_https://schema.org/ReturnByMail' -> 'mrp_method_https_schema_org_ReturnByMail'
 		 */
-		public static function sanitize_input_name( $input_name ) {
+		public static function sanitize_input_name( $input_name, $sep = '_' ) {
 
-			$input_name = preg_replace( '/:\/\//', '_', $input_name );
-			$input_name = preg_replace( '/[^a-zA-Z0-9_\-:#]+/', '_', $input_name );
+			$input_name = preg_replace( '/:\/\//', $sep, $input_name );
+			$input_name = preg_replace( '/[^a-zA-Z0-9_\-:#]+/', $sep, $input_name );
+			$input_name = trim( $input_name, $sep );
 
-			return trim( $input_name, $characters = '-' );
+			return $input_name;
 		}
 
 		/*
@@ -2187,11 +2190,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $json_scripts;
 		}
 
-		public static function get_mod_css_id( array $mod, $allow_underscore = true ) {
+		public static function get_mod_css_id( array $mod ) {
 
 			$css_id = self::get_mod_salt( $mod );	// Does not include the page number or locale.
 
-			$css_id = self::sanitize_css_id( $css_id, $allow_underscore );
+			$css_id = self::sanitize_css_id( $css_id );
 
 			return $css_id;
 		}
@@ -2203,12 +2206,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Example mod salts:
 		 *
-		 * 	'post:123'
-		 * 	'term:456_tax:post_tag'
-		 * 	'post:0_url:https://example.com/a-subject/'
-		 * 	'url:https://example.com/2022/01/'
+		 * 	'post-123'
+		 * 	'term-456-tax-post_tag'
+		 * 	'post-0-url-https://example.com/a-subject/'
+		 * 	'url-https://example.com/2022/01/'
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false ) {
+
+			$sep = '-';
 
 			$mod_salt = '';
 
@@ -2216,44 +2221,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $mod[ 'name' ] ) ) {	// Add the module name and ID.
 
-					$mod_salt .= '_' . $mod[ 'name' ] . ':';
+					$mod_salt .= $sep . $mod[ 'name' ];
 
 					if ( is_bool( $mod[ 'id' ] ) ) {
 
-						$mod_salt .= $mod[ 'id' ] ? 'true' : 'false';
+						$mod_salt .= $sep . ( $mod[ 'id' ] ? 'true' : 'false' );
 
 					} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
 
-						$mod_salt .= $mod[ 'id' ];
+						$mod_salt .= $sep . $mod[ 'id' ];
 					}
 				}
 
 				if ( ! empty( $mod[ 'post_type' ] ) ) {	// Add the post type name.
 
-					$mod_salt .= '_type:' . $mod[ 'post_type' ];
+					$mod_salt .= $sep . 'type' . $sep . $mod[ 'post_type' ];
 
 					if ( ! empty( $mod[ 'is_post_type_archive' ] ) ) {	// Post type archive page.
 
-						$mod_salt .= '_is_pta';
+						$mod_salt .= $sep . 'is' . $sep . 'pta';
 					}
 
 				} elseif ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Add the taxonomy name.
 
-					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
+					$mod_salt .= $sep . 'tax' . $sep . $mod[ 'tax_slug' ];
 				}
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					$mod_salt .= '_is_home';
+					$mod_salt .= $sep . 'is' . $sep .' home';
 				}
 			}
 			
 			if ( ! empty( $canonical_url ) ) {
 
-				$mod_salt .= '_url:' . $canonical_url;
+				$mod_salt .= $sep . 'url' . $sep . self::sanitize_input_name( $canonical_url, $sep );
 			}
 
-			$mod_salt = ltrim( $mod_salt, '_' );	// Remove leading underscore.
+			$mod_salt = trim( $mod_salt, $sep );
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $canonical_url );
 		}
