@@ -289,7 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed the 'wpsso_head_disable' filter.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoHead->get_head_array_disabled()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
