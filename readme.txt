@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.6.0-dev.4 (2024/08/28)**
+**Version 18.6.0-rc.1 (2024/08/28)**
 
 * **New Features**
 	* None.
@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.6.0-dev.4 =
+= 18.6.0-rc.1 =
 
 (2024/08/28) Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page'). Fixed the 'wpsso_head_disable' filter.
 
