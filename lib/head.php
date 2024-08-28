@@ -248,15 +248,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			} elseif ( null === $canonical_url ) {
 
+				/*
+				 * Canonical URL for SucomUtil::get_mod_salt().
+				 */
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 			}
 
 			/*
 			 * Setup variables for transient cache.
 			 *
-			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 			 */
-			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is-pretty' : '';
+			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is_pretty' : '';
 			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -303,7 +307,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * The canonical URL is optional for SucomUtil::get_mod_salt().
+			 * Canonical URL for SucomUtil::get_mod_salt().
 			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
@@ -361,9 +365,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Note that WpssoUtil->get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod
 			 * array (ie. 404, attachment, date, and search).
 			 *
-			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 			 */
-			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is-pretty' : '';
+			$pretty_salt   = $this->p->util->is_json_pretty() ? '_is_pretty' : '';
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
@@ -552,9 +557,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 *
+		 * See WpssoHead->get_head_array().
 		 * See WpssoIntegEcomWooCommerce->filter_head_cache_index().
 		 */
-		public function get_head_cache_index( $mixed = 'current' ) {
+		public function get_head_cache_index( $mixed = 'current', $sep = '_' ) {
 
 			$cache_index = '';
 
@@ -562,36 +568,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
 
-					$cache_index .= '_order:' . $mixed[ 'query_vars' ][ 'order' ];
+					$cache_index .= $sep . 'order:' . $mixed[ 'query_vars' ][ 'order' ];
 				}
 
 				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// Greater than 1.
 
-					$cache_index .= '_paged:' . $mixed[ 'paged' ];
+					$cache_index .= $sep . 'paged:' . $mixed[ 'paged' ];
 				}
 			}
 
-			$cache_index .= '_locale:' . SucomUtilWP::get_locale( $mixed );
+			$cache_index .= $sep . 'locale:' . SucomUtilWP::get_locale( $mixed );
 
-			if ( SucomUtilWP::is_amp() ) {	// Returns null, true, or false.
+			if ( SucomUtilWP::is_amp() ) $cache_index .= $sep . 'is_amp';	// Returns null, true, or false.
 
-				$cache_index .= '_amp:true';
-			}
+			if ( function_exists( 'is_embed' ) && is_embed() ) $cache_index .= $sep . 'is_embed';	// Embedded pages are "noindex" by default.
 
-			/*
-			 * Include a check for embedded pages as they are "noindex" by default.
-			 */
-			foreach ( array( 'is_embed' => 'embed:true' ) as $function => $index_val ) {
+			$cache_index .= $sep . 'status:' . $this->p->check->get_ext_status( 'wpsso' );
 
-				if ( function_exists( 'is_embed' ) && $function() ) {
-
-					$cache_index .= '_' . $index_val;
-				}
-			}
-
-			$cache_index .= '_status:' . $this->p->check->get_ext_status( 'wpsso' );
-
-			$cache_index = apply_filters( 'wpsso_head_cache_index', ltrim( $cache_index, '_' ), $mixed );
+			$cache_index = apply_filters( 'wpsso_head_cache_index', ltrim( $cache_index, $sep ), $mixed );
 
 			if ( $this->p->debug->enabled ) {
 

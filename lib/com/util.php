@@ -2192,7 +2192,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_mod_css_id( array $mod, $sep = '-' ) {
 
-			$css_id = self::get_mod_salt( $mod, $canonical_url = false, $sep );	// Does not include the page number or locale.
+			/*
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
+			 *
+			 * Example cache salts:
+			 *
+			 * 	'post:123_type:page'
+			 *	'post:123_type:product_is_pta'	// WooCommerce shop page.
+			 *	'term:123_tax:product_cat'	// WooCommerce category page.
+			 */
+			$css_id = self::get_mod_salt( $mod, $canonical_url = false, $sep );
 			$css_id = self::sanitize_css_id( $css_id );
 
 			return $css_id;
@@ -2201,14 +2211,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * A cache salt string based on the $mod array. If $mod is not an array, then use the canonical URL value.
 		 *
-		 * Note that the page number, sort order, locale, and amp check are added to the cache index not the salt string.
+		 * Note that the sort order, page number, locale, amp and embed checks are provided by
+		 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 		 *
-		 * Example mod salts:
+		 * Example cache salts:
 		 *
-		 * 	'post:123'
-		 * 	'term:456_tax:post_tag'
-		 * 	'post:0_url:https_example_com_a-subject'
-		 * 	'url:https_example_com_2022_01'
+		 * 	'post:123_type:page'
+		 *	'post:123_type:product_is_pta'	// WooCommerce shop page.
+		 *	'term:123_tax:product_cat'	// WooCommerce category page.
+		 *
+		 *	'is_home_url:https_example_com'				// When a canonical URL is provided.
+		 * 	'post:123_type:page_url:https_example_com_page-slug'	// When a canonical URL is provided.
+		 * 	'url:https_example_com_2022_01'				// When a canonical URL is provided.
+		 *
+		 * See SucomUtil::get_mod_css_id().
+		 * See SucomUtilWP::get_locale().
+		 * See WpssoAbstractWpMeta->check_sortable_meta().
+		 * See WpssoHead->clear_head_array().
+		 * See WpssoHead->get_head_array().
+		 * See WpssoOpenGraph->get_mod_og_type().
+		 * See WpssoPage->clear_the_content().
+		 * See WpssoPage->get_the_content().
+		 * See WpssoPinterest->get_mod_image_html().
+		 * See WpssoSchema->get_mod_schema_type().
+		 * See WpssoUtil->get_canonical_url().
+		 * See WpssoUtil->clear_uniq_urls().
+		 * See WpssoUtil->is_uniq_url().
 		 */
 		public static function get_mod_salt( $mod = false, $canonical_url = false, $sep = '_' ) {
 
@@ -2236,7 +2264,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( ! empty( $mod[ 'is_post_type_archive' ] ) ) {	// Post type archive page.
 
-						$mod_salt .= $sep . 'is-pta';
+						$mod_salt .= $sep . 'is_pta';
 					}
 
 				} elseif ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Add the taxonomy name.
@@ -2246,7 +2274,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					$mod_salt .= $sep . 'is-home';
+					$mod_salt .= $sep . 'is_home';
 				}
 			}
 			

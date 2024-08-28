@@ -1894,23 +1894,25 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_locale( $mixed = 'current', $read_cache = true ) {
 
-			if ( empty( $mixed ) ) {	// Just in case.
-
-				$mixed = 'current';
-			}
+			if ( empty( $mixed ) ) $mixed = 'current';	// Just in case.
 
 			/*
-			 * If $mixed is an array, get its salt, otherwise use the string or post ID.
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 			 *
-			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 * Example cache salts:
+			 *
+			 * 	'post:123_type:page'
+			 *	'post:123_type:product_is_pta'	// WooCommerce shop page.
+			 *	'term:123_tax:product_cat'	// WooCommerce category page.
 			 */
-			$cache_index = is_array( $mixed ) ? self::get_mod_salt( $mixed ) : $mixed;
+			$cache_salt = is_array( $mixed ) ? self::get_mod_salt( $mixed ) : $mixed;
 
 			if ( $read_cache ) {
 
-				if ( isset( self::$locale_cache[ $cache_index ] ) ) {
+				if ( isset( self::$locale_cache[ $cache_salt ] ) ) {
 
-					return self::$locale_cache[ $cache_index ];
+					return self::$locale_cache[ $cache_salt ];
 				}
 			}
 
@@ -1918,40 +1920,18 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				global $wp_local_package;
 
-				if ( isset( $wp_local_package ) ) {
+				if ( isset( $wp_local_package ) ) $locale = $wp_local_package;
 
-					$locale = $wp_local_package;
-				}
-
-				if ( defined( 'WPLANG' ) ) {
-
-					$locale = WPLANG;
-				}
+				if ( defined( 'WPLANG' ) ) $locale = WPLANG;
 
 				/*
 				 * The database 'WPLANG' values override the 'WPLANG' constant.
 				 */
-				if ( is_multisite() ) {
+				$db_locale = get_option( 'WPLANG' );
 
-					if ( ( $multisite_locale = get_option( 'WPLANG' ) ) === false ) {
+				if ( false === $db_locale && is_multisite() ) $db_locale = get_site_option( 'WPLANG' );
 
-						$multisite_locale = get_site_option( 'WPLANG' );
-					}
-
-					if ( false !== $multisite_locale ) {
-
-						$locale = $multisite_locale;
-					}
-
-				} else {
-
-					$db_locale = get_option( 'WPLANG' );
-
-					if ( false !== $db_locale ) {
-
-						$locale = $db_locale;
-					}
-				}
+				if ( false !== $db_locale ) $locale = $db_locale;
 
 			} elseif ( 'current' === $mixed || is_array( $mixed ) ) {
 
@@ -1965,23 +1945,17 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				$locale_names = self::get_available_locale_names();	// Uses a local cache.
 
-				if ( isset( $locale_names[ $mixed ] ) ) {
-
-					$locale = $mixed;
-				}
+				if ( isset( $locale_names[ $mixed ] ) ) $locale = $mixed;
 			}
 
-			if ( empty( $locale ) ) {	// Just in case.
-
-				$locale = 'en_US';
-			}
+			if ( empty( $locale ) ) $locale = 'en_US';	// Just in case.
 
 			/*
 			 * Filtered by WpssoIntegLangPolylang->filter_get_locale() and WpssoIntegLangWpml->filter_get_locale().
 			 */
 			$locale = apply_filters( 'sucom_get_locale', $locale, $mixed );
 
-			return self::$locale_cache[ $cache_index ] = $locale;
+			return self::$locale_cache[ $cache_salt ] = $locale;
 		}
 
 		/*

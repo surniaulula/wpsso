@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.6.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 18.6.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -8915,23 +8915,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:436
+#: lib/head.php:441
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:445
+#: lib/head.php:450
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:454
+#: lib/head.php:459
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:463
+#: lib/head.php:468
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:483
+#: lib/head.php:488
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -9255,11 +9255,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1748 lib/register.php:305 lib/util.php:876 lib/util.php:985
-#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3440
+#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3445
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1749 lib/util.php:877 lib/util.php:3441
+#: lib/media.php:1749 lib/util.php:877 lib/util.php:3446
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -14010,7 +14010,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2267
+#: lib/page.php:2269
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -14307,22 +14307,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2151
+#: lib/schema.php:2152
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2326
+#: lib/schema.php:2327
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2353
+#: lib/schema.php:2354
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3931
+#: lib/schema.php:3932
 msgid "checking schema properties"
 msgstr ""
 
@@ -14590,7 +14590,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:288 lib/util.php:3462
+#: lib/submenu/advanced.php:288 lib/util.php:3467
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -15434,146 +15434,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3442
+#: lib/util.php:3447
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3465
+#: lib/util.php:3470
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3467
+#: lib/util.php:3472
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3469
+#: lib/util.php:3474
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3471
+#: lib/util.php:3476
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3866
+#: lib/util.php:3871
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3867
+#: lib/util.php:3872
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3871
+#: lib/util.php:3876
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3872
+#: lib/util.php:3877
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3876
+#: lib/util.php:3881
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3877
+#: lib/util.php:3882
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3881
+#: lib/util.php:3886
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3882
+#: lib/util.php:3887
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3886
+#: lib/util.php:3891
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3887
+#: lib/util.php:3892
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3891
+#: lib/util.php:3896
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3892
+#: lib/util.php:3897
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3896
+#: lib/util.php:3901
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3897
+#: lib/util.php:3902
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3901
+#: lib/util.php:3906
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3902
+#: lib/util.php:3907
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3906
+#: lib/util.php:3911
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:3907
+#: lib/util.php:3912
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:3912
+#: lib/util.php:3917
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3913
+#: lib/util.php:3918
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3983
+#: lib/util.php:3988
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3993
+#: lib/util.php:3998
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

@@ -2141,7 +2141,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				/*
-				 * SucomUtil::get_mod_salt() does not include the page number or locale.
+				 * Note that the sort order, page number, locale, amp and embed checks are provided by
+				 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 				 */
 				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . (string) $add_page;
 
@@ -3051,24 +3052,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function clear_uniq_urls( $image_sizes = 'default', $mod = false ) {
 
+			$cleared = 0;	// Default value to return.
+
 			if ( ! is_array( $image_sizes ) ) {
 
 				$image_sizes = $this->get_image_size_names( $image_sizes, $sanitize = false );	// Always returns an array.
 			}
 
-			$cleared  = 0;
-			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			/*
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
+			 */
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
 
 				$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
 
-				$image_sizes[ $num ] = $mod_salt ? $mod_salt . '_' . $uniq_context : $uniq_context;
+				$image_sizes[ $num ] = $cache_salt ? $cache_salt . '_' . $uniq_context : $uniq_context;
 			}
 
 			foreach ( array_unique( $image_sizes ) as $uniq_context ) {
 
-				if ( isset( $this->cache_uniq_urls[ $uniq_context ] ) ) {
+				if ( isset( $this->cache_uniq_urls[ $uniq_context ] ) ) {	// Array to detect duplicate image URLs.
 
 					$cleared += count( $this->cache_uniq_urls[ $uniq_context ] );
 				}
@@ -3091,38 +3097,37 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_uniq_url( $url, $image_sizes = 'default', $mod = false ) {
 
-			if ( empty( $url ) ) {
+			$is_uniq = true;	// Default value to return.
 
-				return false;
-			}
+			if ( empty( $url ) ) return false;	// Just in case.
 
 			$url = $this->fix_relative_url( $url );	// Just in case.
 
-			if ( ! is_array( $image_sizes ) ) {
+			if ( ! is_array( $image_sizes ) ) $image_sizes = array( $image_sizes );
 
-				$image_sizes = array( $image_sizes );
-			}
-
-			$is_uniq  = true;
-			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			/*
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
+			 */
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
 			foreach ( $image_sizes as $num => $uniq_context ) {
 
 				$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
 
-				$image_sizes[ $num ] = $mod_salt ? $mod_salt . '_' . $uniq_context : $uniq_context;
+				$image_sizes[ $num ] = $cache_salt ? $cache_salt . '_' . $uniq_context : $uniq_context;
 			}
 
 			foreach ( array_unique( $image_sizes ) as $uniq_context ) {
 
-				if ( isset( $this->cache_uniq_urls[ $uniq_context ][ $url ] ) ) {
+				if ( isset( $this->cache_uniq_urls[ $uniq_context ][ $url ] ) ) {	// Array to detect duplicate image URLs.
 
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'duplicate url found for context ' . $uniq_context . ': ' . $url );
 					}
 
-					$is_uniq = false;
+					$is_uniq = false;	// Duplicate found.
 
 				} else {
 

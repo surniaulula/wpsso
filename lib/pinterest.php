@@ -252,26 +252,30 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $image_html;	// Stop here.
 			}
 
-			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			/*
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
+			 */
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
 			static $local_recursion = array();	// Check for any unexpected recursion.
 
-			if ( ! empty( $local_recursion[ $mod_salt ] ) ) {
+			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: recursion detected for ' . $mod_salt );
+					$this->p->debug->log( 'exiting early: recursion detected for ' . $cache_salt );
 				}
 
 				return $image_html;	// Stop here.
 			}
 
-			$local_recursion[ $mod_salt ] = true;
+			$local_recursion[ $cache_salt ] = true;
 
 			$size_name = 'wpsso-pinterest';
 			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre = array( 'pin', 'schema', 'og' ) );
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
-			$css_id    = 'pin-it-' . SucomUtil::sanitize_css_id( $mod_salt );
+			$css_id    = 'pin-it-' . SucomUtil::sanitize_css_id( $cache_salt );
 
 			/*
 			 * Avoid newline characters and HTML comments as they can be wrapped in paragraph tags by some WordPress filters.
@@ -313,7 +317,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_html .= '</div>';
 
-			unset( $local_recursion[ $mod_salt ] );
+			unset( $local_recursion[ $cache_salt ] );
 
 			return $image_html;
 		}

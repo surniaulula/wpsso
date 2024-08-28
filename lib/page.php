@@ -1738,7 +1738,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre = 'wpsso_c_';
@@ -1772,7 +1773,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/*
-			 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 			 */
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$filter_content = apply_filters( 'wpsso_the_content_filter_content', $filter_content );

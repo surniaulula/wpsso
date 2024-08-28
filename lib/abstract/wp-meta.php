@@ -2541,11 +2541,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$mod = $this->get_mod( $obj_id );
 
-			$mod_salt = SucomUtil::get_mod_salt( $mod );	// Does not include the page number or locale.
+			/*
+			 * Note that the sort order, page number, locale, amp and embed checks are provided by
+			 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
+			 *
+			 * Example cache salts:
+			 *
+			 * 	'post:123_type:page'
+			 *	'post:123_type:product_is_pta'	// WooCommerce shop page.
+			 *	'term:123_tax:product_cat'	// WooCommerce category page.
+			 */
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
 			static $local_recursion = array();
 
-			if ( ! empty( $local_recursion[ $mod_salt ][ $meta_key ] ) ) {
+			if ( ! empty( $local_recursion[ $cache_salt ][ $meta_key ] ) ) {
 
 				return $value;	// Return null.
 			}
@@ -2554,7 +2564,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( ! empty( $col_info ) ) {
 
-				$local_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
+				$local_recursion[ $cache_salt ][ $meta_key ] = true;	// Prevent recursion.
 
 				$metadata = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
@@ -2579,7 +2589,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->get_head_info( $mod, $read_cache = true );	// Uses a local cache.
 				}
 
-				unset( $local_recursion[ $mod_salt ][ $meta_key ] );
+				unset( $local_recursion[ $cache_salt ][ $meta_key ] );
 			}
 
 			return $value;

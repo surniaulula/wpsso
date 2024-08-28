@@ -127,14 +127,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				/*
-				 * Note that SucomUtil::get_mod_salt() does not include the page number or locale.
+				 * Note that the sort order, page number, locale, amp and embed checks are provided by
+				 * WpssoHead->get_head_cache_index() and not SucomUtil::get_mod_salt().
 				 */
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get:' . (string) $get_id . '_use:' . (string) $use_md_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 					return $local_cache[ $cache_salt ];
-
 				}
 			}
 
