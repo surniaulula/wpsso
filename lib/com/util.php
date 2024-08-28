@@ -2249,7 +2249,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					$mod_salt .= $sep . 'is' . $sep .' home';
+					$mod_salt .= $sep . 'is' . $sep .'home';
 				}
 			}
 			
