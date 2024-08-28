@@ -2208,7 +2208,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_array( $mod ) ) {
 
-				if ( ! empty( $mod[ 'name' ] ) ) {
+				if ( ! empty( $mod[ 'name' ] ) ) {	// Add the module name and ID.
 
 					$mod_salt .= '_' . $mod[ 'name' ] . ':';
 
@@ -2222,25 +2222,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				if ( ! empty( $mod[ 'tax_slug' ] ) ) {
+				if ( ! empty( $mod[ 'post_type' ] ) ) {	// Add the post type name.
+
+					$mod_salt .= '_type:' . $mod[ 'post_type' ];
+
+					if ( ! empty( $mod[ 'is_post_type_archive' ] ) ) {	// Post type archive page.
+
+						$mod_salt .= '_is_pta';
+					}
+
+				} elseif ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Add the taxonomy name.
 
 					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 				}
 
-				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
+				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-
-						$mod_salt .= '_home';
-					}
-
-					if ( ! empty( $canonical_url ) ) {
-
-						$mod_salt .= '_url:' . $canonical_url;
-					}
+					$mod_salt .= '_is_home';
 				}
-
-			} elseif ( ! empty( $canonical_url ) ) {
+			}
+			
+			if ( ! empty( $canonical_url ) ) {
 
 				$mod_salt .= '_url:' . $canonical_url;
 			}
