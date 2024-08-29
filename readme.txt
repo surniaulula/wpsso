@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page').
+	* Added a body tag CSS class for the current webpage information (example: 'wpsso-post-123-type-page').
 * **Bugfixes**
 	* Fixed the 'wpsso_head_disable' filter.
 * **Developer Notes**
@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.6.0 =
 
-(2024/08/29) Added a body tag CSS class for the current webpage module information (example: 'wpsso-post-123-type-page'). Fixed the 'wpsso_head_disable' filter.
+(2024/08/29) Added a body tag CSS class for the current webpage information (example: 'wpsso-post-123-type-page'). Fixed the 'wpsso_head_disable' filter.
 
 = 18.5.0 =
 
