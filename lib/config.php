@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.6.0',	// Plugin version.
+					'version'     => '18.7.0-dev.1',	// Plugin version.
 					'opt_version' => '1015',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/*
 						 * GitHub.com URLs.
 						 */
+						'debug_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/debug.html',
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/setup.html',
 
@@ -235,6 +236,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'site-licenses' => 'Premium Licenses',
 							'site-addons'   => 'Plugin Add-ons',
 							'site-setup'    => 'Setup Guide',
+							'site-debug'    => 'Troubleshooting',
 						),
 						'std' => array(	// Standard distribution modules.
 							'admin' => array(
@@ -264,6 +266,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'addons'    => 'Plugin Add-ons',
 							'tools'     => 'Tools and Actions',
 							'setup'     => 'Setup Guide',
+							'debug'     => 'Troubleshooting',
 						),
 						'users' => array(
 							'add-person' => 'Add Person',
@@ -326,7 +329,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-add-five-stars/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -390,7 +392,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -454,7 +455,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -518,7 +518,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-commerce-manager-catalog-feed/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -582,7 +581,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-faq/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -646,7 +644,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-google-merchant-feed/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -710,7 +707,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-merchant-return-policy/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -774,7 +770,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization-place/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -838,7 +833,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -902,7 +896,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rest-api/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -966,7 +959,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1030,7 +1022,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1094,7 +1085,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1158,7 +1148,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1215,7 +1204,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1282,7 +1270,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-metadata/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1346,7 +1333,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' =>	'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery-time/main/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1410,7 +1396,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * GitHub.com URLs.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wp-sitemaps/master/readme.txt',
-						'setup_html' => '',
 
 						/*
 						 * WPSSO.com URLs.
@@ -1960,6 +1945,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_submenu_addons'            => 1,
 					'plugin_add_submenu_tools'             => 1,
 					'plugin_add_submenu_setup'             => 1,
+					'plugin_add_submenu_debug'             => 1,
 					'plugin_add_to_attachment'             => 1,
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
 					'plugin_add_to_page'                   => 1,
