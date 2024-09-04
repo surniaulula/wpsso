@@ -50,6 +50,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					'cache_expire_cmcf_feed_xml'     => '__return_zero',	// Used by WpssoCmcfXml->get().
 					'cache_expire_gmf_feed_xml'      => '__return_zero',	// Used by WpssoGmfXml->get().
 					'cache_expire_gmf_inventory_xml' => '__return_zero',	// Used by WpssoGmfXml->get().
+					'cache_expire_file_content'      => '__return_zero',
 				) );
 
 			} elseif ( $this->p->debug->enabled ) {

@@ -805,7 +805,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function settings_saved_notice() {
 
-			$cache_md5_pre  = 'wpsso_h_';
+			$cache_md5_pre  = 'wpsso_h_';	// 'wpsso_cache_expire_head_markup' filter.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 			$user_id        = get_current_user_id();
 			$notice_msg     = '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' . ' ';
@@ -2349,7 +2349,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$rel_file       = 'readme.txt';
 			$file_content   = '';
-			$cache_md5_pre  = 'wpsso_r_';
+			$cache_md5_pre  = 'wpsso_r_';	// 'wpsso_cache_expire_readme_info' filter.
 			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
@@ -2421,7 +2421,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_url       = WpssoConfig::get_ext_file_url( $ext, $rel_file );	// Returns sanitized URL or false.
 			$file_content   = '';
 			$text_domain    = WpssoConfig::get_ext_text_domain( $ext );
-			$cache_md5_pre  = 'wpsso_c_';
+			$cache_md5_pre  = 'wpsso_c_';	// 'wpsso_cache_expire_file_content' filter.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
 
 			if ( $file_url ) {	// Sanitized URL or false.
@@ -2430,12 +2430,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$file_content = $this->p->cache->get( $file_url, $format = 'raw', $cache_type = 'file', $cache_exp_secs );
 
-				} else {
-
-					$this->p->cache->clear( $file_url );
-
-					$file_content = wp_remote_retrieve_body( wp_remote_get( $file_url ) );
-				}
+				} else $this->p->cache->clear( $file_url );
 			}
 
 			if ( empty( $file_content ) ) {	// No content from the file URL.
