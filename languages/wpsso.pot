@@ -9896,334 +9896,334 @@ msgid ""
 "Schema VideoObject markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:36
+#: lib/messages-tooltip-meta-org.php:33
 msgid "The complete or common name for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:42
+#: lib/messages-tooltip-meta-org.php:39
 msgid ""
 "An alternate name for this organization that you would like Google to "
 "consider."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:48
+#: lib/messages-tooltip-meta-org.php:45
 msgid "A description for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:54
+#: lib/messages-tooltip-meta-org.php:51
 msgid ""
 "You may choose a more accurate Schema type for this organization (default is "
 "Organization)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:56
+#: lib/messages-tooltip-meta-org.php:53
 msgid ""
 "Note that Google considers a Schema Organization sub-type which is also a "
 "Schema Place sub-type, like the <a href=\"%s\">Schema LocalBusiness</a> type "
 "for example, as a place and not an organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:58
+#: lib/messages-tooltip-meta-org.php:55
 msgid ""
 "For this reason, the Schema Organization selector does not include any "
 "Schema Place sub-types."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:64
+#: lib/messages-tooltip-meta-org.php:61
 msgid ""
 "You may choose this organization as the default publisher, provider, etc."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:70 lib/messages-tooltip-site.php:106
+#: lib/messages-tooltip-meta-org.php:67 lib/messages-tooltip-site.php:106
 msgid "Select an optional location for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:76
+#: lib/messages-tooltip-meta-org.php:73
 msgid "The website URL for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:94
+#: lib/messages-tooltip-meta-org.php:91
 msgid ""
 "A document describing the editorial principles of an Organization that "
 "relate to their activities as a publisher."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:100
+#: lib/messages-tooltip-meta-org.php:97
 msgid ""
 "A statement describing (in news media, the newsroom's) disclosure and "
 "correction policy for errors."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:106
+#: lib/messages-tooltip-meta-org.php:103
 msgid ""
 "A statement describing (in news media, the newsroom's) diversity policy on "
 "both staffing and sources."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:112
+#: lib/messages-tooltip-meta-org.php:109
 msgid ""
 "A statement describing the personal, organizational, and corporate standards "
 "of behavior expected by the organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:118
+#: lib/messages-tooltip-meta-org.php:115
 msgid ""
 "A statement describing verification and fact-checking processes for a news "
 "media organization or other fact-checking organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:124
+#: lib/messages-tooltip-meta-org.php:121
 msgid ""
 "A statement about public engagement activities (for news media, the "
 "newsroom's), including involving the public - digitally or otherwise - in "
 "coverage decisions, reporting and activities after publication."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:130
+#: lib/messages-tooltip-meta-org.php:127
 msgid "One or more awards this organization has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:139
+#: lib/messages-tooltip-meta-org.php:136
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:145
+#: lib/messages-tooltip-meta-org.php:142
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:151 lib/messages-tooltip-meta-org.php:157
+#: lib/messages-tooltip-meta-org.php:148 lib/messages-tooltip-meta-org.php:154
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:36
+#: lib/messages-tooltip-meta-place.php:33
 msgid "A name for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:38
+#: lib/messages-tooltip-meta-place.php:35
 msgid ""
 "The place name may appear in WordPress editing pages and in the Schema Place "
 "\"name\" property."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:44
+#: lib/messages-tooltip-meta-place.php:41
 msgid "An alternate name for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:46
+#: lib/messages-tooltip-meta-place.php:43
 msgid ""
 "The place alternate name may appear in the Schema Place \"alternateName\" "
 "property."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:52
+#: lib/messages-tooltip-meta-place.php:49
 msgid "A description for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:54
+#: lib/messages-tooltip-meta-place.php:51
 msgid ""
 "The place description may appear in the Schema Place \"description\" "
 "property."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:60
+#: lib/messages-tooltip-meta-place.php:57
 msgid ""
 "You may optionally choose a more accurate Schema type for this place "
 "(default is LocalBusiness)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:66
+#: lib/messages-tooltip-meta-place.php:63
 msgid ""
 "You may choose this place as the default event venue, job location, etc."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:72
+#: lib/messages-tooltip-meta-place.php:69
 msgid "An optional street address for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:78
+#: lib/messages-tooltip-meta-place.php:75
 msgid "An optional post office box number for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:84
+#: lib/messages-tooltip-meta-place.php:81
 msgid "An optional city name for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:90
+#: lib/messages-tooltip-meta-place.php:87
 msgid "An optional state or province name for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:96
+#: lib/messages-tooltip-meta-place.php:93
 msgid "An optional postal or zip code for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:102
+#: lib/messages-tooltip-meta-place.php:99
 msgid "An optional country for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:108
+#: lib/messages-tooltip-meta-place.php:105
 msgid "An optional telephone number for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:113
+#: lib/messages-tooltip-meta-place.php:110
 msgid "The numeric decimal degrees latitude for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:115
-#: lib/messages-tooltip-meta-place.php:123
+#: lib/messages-tooltip-meta-place.php:112
+#: lib/messages-tooltip-meta-place.php:120
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
 "GPS coordinates of a street address."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:121
+#: lib/messages-tooltip-meta-place.php:118
 msgid "The numeric decimal degrees longitude for this place (required)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:129
+#: lib/messages-tooltip-meta-place.php:126
 msgid ""
 "An optional numeric altitude (in meters above sea level) for this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:135
+#: lib/messages-tooltip-meta-place.php:132
 msgid ""
 "An image of this place (ie. an image of the business storefront or location)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:137
+#: lib/messages-tooltip-meta-place.php:134
 msgid ""
 "The image you select should show the physical location of this place (ie. of "
 "the latitude and longitude entered)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:139
+#: lib/messages-tooltip-meta-place.php:136
 msgid "This option is disabled if a place image URL is entered."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:145
+#: lib/messages-tooltip-meta-place.php:142
 msgid ""
 "You can enter a place image URL (including the http/https prefix) instead of "
 "selecting an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:147
+#: lib/messages-tooltip-meta-place.php:144
 #: lib/messages-tooltip-opengraph.php:139
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:149
+#: lib/messages-tooltip-meta-place.php:146
 msgid "This option is disabled if a place image ID is selected."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:155
+#: lib/messages-tooltip-meta-place.php:152
 msgid "A timezone for the open and close hours of this place."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:157
+#: lib/messages-tooltip-meta-place.php:154
 msgid "The default timezone value is provided by WordPress."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:163
+#: lib/messages-tooltip-meta-place.php:160
 msgid "Select the days and hours that this place is open."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:169
+#: lib/messages-tooltip-meta-place.php:166
 msgid ""
 "If this place is open seasonally, select the open and close dates of the "
 "season."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:175
+#: lib/messages-tooltip-meta-place.php:172
 msgid ""
 "The geographic area where a service is provided, in meters around the "
 "location."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:181
+#: lib/messages-tooltip-meta-place.php:178
 msgid ""
 "A comma-delimited list of <a href=\"%1$s\">ISO 4217 currency codes</a> "
 "accepted by the local business (example: %2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:187
+#: lib/messages-tooltip-meta-place.php:184
 msgid ""
 "A comma-delimited list of payment options accepted by the local business "
 "(example: Cash, Credit Card)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:193
+#: lib/messages-tooltip-meta-place.php:190
 msgid ""
 "The relative price of goods or services provided by the local business "
 "(example: $, $$, $$$, or $$$$)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:199
+#: lib/messages-tooltip-meta-place.php:196
 msgid "This food establishment accepts reservations."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:205
+#: lib/messages-tooltip-meta-place.php:202
 msgid "The menu URL for this food establishment."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:211
+#: lib/messages-tooltip-meta-place.php:208
 msgid "The cuisine served by this food establishment."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:217
+#: lib/messages-tooltip-meta-place.php:214
 msgid ""
 "A comma-delimited list of website and mobile app URLs to order products."
 msgstr ""
 
-#: lib/messages-tooltip-meta-place.php:219
+#: lib/messages-tooltip-meta-place.php:216
 msgid ""
 "These order action URL(s) will be used in the Schema potentialAction "
 "property."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:41
+#: lib/messages-tooltip-meta-product.php:38
 msgid "One or more awards this product has won."
 msgstr ""
 
 #. translators: %1$s is a lower case item name, for example 'product Google
 #. category'.
-#: lib/messages-tooltip-meta-product.php:58
+#: lib/messages-tooltip-meta-product.php:55
 #: lib/messages-tooltip-meta-schema.php:178
 msgid ""
 "A custom value for the %1$s, which may be different than the %2$s option "
 "value."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:60
+#: lib/messages-tooltip-meta-product.php:57
 #: lib/messages-tooltip-meta-schema.php:181
 msgid "Select \"[None]\" to exclude the %s from Schema markup and meta tags."
 msgstr ""
 
 #. translators: %s is a singular item reference, for example 'a product size
 #. group'.
-#: lib/messages-tooltip-meta-product.php:65
+#: lib/messages-tooltip-meta-product.php:62
 msgid "A custom value for the %s can be provided for the main product."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:67
+#: lib/messages-tooltip-meta-product.php:64
 msgid ""
 "If product variations are available, the information from each variation may "
 "supersede this value in Schema product offers."
 msgstr ""
 
 #. translators: %s is the option label.
-#: lib/messages-tooltip-meta-product.php:70
+#: lib/messages-tooltip-meta-product.php:67
 msgid ""
 "The <strong>%s</strong> option may be read-only if a custom field or e-"
 "commerce plugin is the authoritative source for this value."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:72
+#: lib/messages-tooltip-meta-product.php:69
 msgid ""
 "In this case, you should update the product information in the custom field "
 "or e-commerce plugin to update this value."
@@ -10237,7 +10237,7 @@ msgstr ""
 #. for example 'a product Google category'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference,
 #. for example 'a product Google category'.
-#: lib/messages-tooltip-meta-product.php:78
+#: lib/messages-tooltip-meta-product.php:75
 #: lib/messages-tooltip-meta-schema.php:187
 #: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:830
 #: lib/messages-tooltip-plugin.php:872 lib/messages-tooltip-schema.php:179
@@ -10247,7 +10247,7 @@ msgid ""
 "value</a>."
 msgstr ""
 
-#: lib/messages-tooltip-meta-product.php:83
+#: lib/messages-tooltip-meta-product.php:80
 msgid ""
 "Note that the %s value is automatically inherited as a default value by any "
 "child pages (like WooCommerce product variations, for example)."

@@ -15,9 +15,6 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-/*
- * Since WPSSO Core v13.5.0.
- */
 if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 	/*

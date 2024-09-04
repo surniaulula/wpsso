@@ -100,8 +100,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * This filter re-sorts (if necessary) the active plugins array to load WPSSO Core before its add-ons.
 			 */
-			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
-			add_filter( 'pre_update_option_active_sitewide_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
+			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), PHP_INT_MAX, 3 );
+			add_filter( 'pre_update_option_active_sitewide_plugins', array( $this, 'pre_update_active_plugins' ), PHP_INT_MAX, 3 );
 
 			/*
 			 * Define and disable the "Expect: 100-continue" header.
