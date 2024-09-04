@@ -280,12 +280,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.7.0-dev.1 (TBD)**
+**Version 18.7.0-dev.1 (2024/08/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added an SSO &gt; Troubleshooting page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -405,7 +405,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.7.0-dev.1 =
 
-(TBD) None.
+(2024/08/04) Added an SSO &gt; Troubleshooting page.
 
 = 18.6.0 =
 
