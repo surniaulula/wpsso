@@ -289,7 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoAdmin->sort_active_plugins()` method.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
