@@ -205,9 +205,8 @@ table.sucom-settings p {
 table.sucom-settings pre {
 	font-family:"Courier", monospace;
 	font-size:0.95em;
-	line-height:1.4em;
+	line-height:1em;
 	padding:10px;
-	background-color:#f3f3f3;
 	border:1px solid #eee;
 	white-space:pre;
 	overflow:auto;
@@ -656,9 +655,9 @@ table.sucom-settings td.html.script {
 }
 
 table.sucom-settings td.html pre {
+	font-size:0.9em;
 	margin:10px;
 	padding:0;
-	font-size:0.9em;
 	border:0;
 	background-color:transparent;
 	white-space:pre-wrap;
@@ -1337,9 +1336,8 @@ table.sucom-settings.html-content-metabox td blockquote p {
 }
 
 table.sucom-settings.html-content-metabox td pre {
-	padding:30px;
-	margin:30px 0;
-	border:1px solid #aaaaaa;
+	padding:25px;
+	margin:25px 0;
 }
 
 /*
