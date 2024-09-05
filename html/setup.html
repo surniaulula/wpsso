@@ -22,17 +22,27 @@
 
 <div id="wpsso-setup-guide">
 
-<dl>
-
 <img src="https://surniaulula.github.io/wpsso/images/google-rich-results-logo.png" class="alignright">
 
-<dt><h3>Business Social Accounts (Optional)</h3></dt>
+<h3>Table of Contents</h3>
 
-<dd>
+<ul>
+	<li><a href="#business-social-accounts">Business Social Accounts (Optional)</a></li>
+	<li><a href="#author-social-accounts">Author Social Accounts (Optional)</a></li>
+	<li><a href="#essential-settings">Review Essential Settings</a></li>
+	<li><a href="#notifications">Keep an Eye on Notifications</a></li>
+	<li><a href="#user-interface">User Interface and General Usage</a></li>
+	<li><a href="#schema-markup">Schema Markup vs Google Rich Results</a></li>
+	<li><a href="#validation-tools">Validation Tools</a></li>
+</ul>
 
-<p>You can enter all your business social account information in the <em><strong>SSO &gt; General Settings &gt; Social Pages and Accounts</strong></em> metabox. The social account URLs are used for meta tags and Schema Organization markup (which may appear in Google Search results to highlight your business social pages).</p>
+<a name="business-social-accounts"></a>
 
-<p><strong>Related information:</strong></p>
+<h3>Business Social Accounts (Optional)</h3>
+
+<p>You can enter all your business social account information in the <em><strong>SSO &gt; General Settings &gt; Social Pages and Accounts</strong></em> metabox. The social account values are used for meta tags and Schema Organization markup (which may appear in Google Search results to highlight your business social pages).</p>
+
+<h4>Related information:</h4>
 
 <ul>
 	<li><a href="https://www.facebook.com/business/learn/set-up-facebook-page">Setup a Facebook Business Page</a></li>
@@ -41,57 +51,55 @@
 	<li><a href="https://www.pinterest.com/business/create/">Create a Pinterest Business Account</a></li>
 </ul>
 
-</dd>
+<a name="author-social-accounts"></a>
 
-<dt><h3>Author Social Accounts (Optional)</h3></dt>
+<h3>Author Social Accounts (Optional)</h3>
 
-<dd>
+<p>You may remind your content creators and editors to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only if they users their contact information in their WordPress user profile page</em>.</p>
 
-<p>Remind your content creators to enter their personal website URL, Facebook, and X (Twitter) social page URLs in the WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only if they enter their contact information in the WordPress user profile page</em>.</p>
+<a name="essential-settings"></a>
 
-</dd>
+<h3>Review Essential Settings</h3>
 
-<dt><h3>Review Essential Settings</h3></dt>
+<p>Review the website description on the <em><strong>SSO &gt; Essential Settings</strong></em> page and select a default image ID (or image URL). The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for public posts and pages that do not have a suitable featured, attached, or image in their content.</p>
 
-<dd>
+<a name="notifications"></a>
 
-<p>Review the website description on the <em><strong>SSO &gt; Essential Settings</strong></em> page and select a default image ID or URL. The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for public posts and pages that do not have a suitable image featured, attached, or in their content.</p>
+<h3>Keep an Eye on Notifications</h3>
 
-</dd>
+<p>WPSSO attempts to keep notifications to a minimum, issuing only informational, warning, and error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO includes its own (more discreet) notification system in the admin toolbar.</p>
 
-<dt><h3>Keep an Eye on Notifications</h3></dt>
-
-<dd>
-
-<p>WPSSO Core attempts to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the admin toolbar.</p>
-
-<p>Look for the SSO notification icon in the admin toolbar - it will be grey with a 0 notification count by default. If there are notifications, the count will increase and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate directly to the content shown in the current webpage.</p>
-
-</dd>
+<p>Look for the SSO notification icon in the admin toolbar - it will be grey with a 0 notification count by default. If there are notifications, the count will increase and the SSO icon appear on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate directly to the content shown in the current webpage.</p>
 
 <img src="https://surniaulula.github.io/wpsso/images/google-rich-results-product.png" class="alignright">
 
-<dt><h3>Schema Markup vs Google Rich Results</h3></dt>
+<a name="user-interface"></a>
 
-<dd>
+<h3>User Interface and General Usage</h3>
 
-<p>Schema (aka "Schema.org") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the Schema vocabulary consists of over 700 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines.</p>
+<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the "Screen Options" drop-down to hide / view the "Schema" and "SSO Image" columns. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab.</p>
 
-<p><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, and limited Schema types for some property relations. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section (preferred by Google), or with RDFa / Microdata markup in theme templates (deprecated standard).</p>
+<p>When editing a post, page, category, tag, user profile, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images, and videos. The Document SSO metabox shows a different set of options based on the content type selected (ie. Schema type or Open Graph type), allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The "Preview Social" tab shows how this webpage might look when shared on Facebook and the "Validators" tab allows you to submit the current webpage URL to several test and validation tools.</p>
 
-<p>If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata add-on</a> to remove the incomplete or incorrect Microdata markup. Schema markup provided by WPSSO Core will include a '#sso/' value in the Schema "@id" property, making it easy to tell which Schema JSON-LD markup is provided by WPSSO Core, and which is not.</p>
+<a name="schema-markup"></a>
 
-</dd>
+<h3>Schema Markup vs Google Rich Results</h3>
 
-<dt><h3>Validation Tools</h3></dt>
+<p>Schema (aka "Schema.org") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the Schema vocabulary consists of over 800 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines.</p>
 
-<dd>
+<p><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, and limited Schema types for some property relations. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section, or with RDFa / Microdata markup in theme templates (deprecated standard).</p>
+
+<p>If your theme templates include incomplete or incorrect RDFa / Microdata markup, you can enable the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata add-on</a> to remove the incomplete or incorrect Microdata markup. Schema markup provided by WPSSO will include an '#sso/' value in the Schema "@id" property, making it easy to tell which Schema JSON-LD markup is provided by WPSSO, and which is not.</p>
+
+<a name="validation-tools"></a>
+
+<h3>Validation Tools</h3>
 
 <p>Submit the home page URL, along with a post, page, and archive page URL to the <a href="https://validator.w3.org/">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. You should report any template HTML markup errors to your theme author.</p>
 
 <img src="https://surniaulula.github.io/wpsso/images/facebook-sharing-debugger.png" class="alignright">
 
-<p>Submit a few post and page URLs to the <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). The Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.</p>
+<p>Submit a few post and page URLs to the <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). The Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts and pages, pre-dating the activation of WPSSO, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.</p>
 
 <p>Submit an example post and/or page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page.</p>
 
@@ -99,7 +107,7 @@
 
 <img src="https://surniaulula.github.io/wpsso/images/google-structured-data-testing-tool.png" class="alignright">
 
-<p><strong>Markup Validators:</strong></p>
+<h4>Markup Validators:</h4>
 
 <ul>
 	<li><a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a></li>
@@ -110,32 +118,18 @@
 	<li><a href="https://developers.pinterest.com/tools/url-debugger/">Pinterest Rich Pins Validator</a></li>
 	<li><a href="https://validator.schema.org/">Schema Markup Validator</a></li>
 	<li><a href="https://cards-dev.twitter.com/validator">X (Twitter) Card Validator</a></li>
-	<li><a href="https://validator.w3.org/">W3C Markup Validator</a> - recommended to check your theme templates for HTML markup issues.</li>
+	<li><a href="https://validator.w3.org/">W3C Markup Validator</a> is recommended to check your theme templates for HTML markup issues.</li>
 	<li><a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html">XML Sitemap Validator</a></li>
 </ul>
 
-<p><strong>Related information:</strong></p>
+<h4>Related information:</h4>
 
 <ul>
-	<li><a href="https://pagespeed.web.dev/">Google's PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking).</li>
-	<li><a href="https://support.google.com/webmasters/answer/7451184">Google's Search Engine Optimization (SEO) Starter Guide</a> - essential reading to understand Google SEO ranking factors.</li>
-	<li><a href="https://www.webpagetest.org/">Webpage Performance Test with Waterfall</a> - recommended to check and diagnose basic performance issues.</li>
-	<li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test by SSL Labs</a> - recommended test for any site using https.</li>
+	<li><a href="https://pagespeed.web.dev/">Google's PageSpeed Insights</a> is recommended for general site and webpage health checks (improving pagespeed results will improve SEO ranking).</li>
+	<li><a href="https://support.google.com/webmasters/answer/7451184">Google's Search Engine Optimization (SEO) Starter Guide</a> is recommended reading to understand Google SEO ranking factors.</li>
+	<li><a href="https://www.webpagetest.org/">Webpage Performance Test with Waterfall</a> is recommended to check and diagnose basic performance issues.</li>
+	<li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test by SSL Labs</a> is recommended to test SSL certificates and available HTTPS protocols.</li>
 </ul>
-
-</dd>
-
-<dt><h3>User Interface and General Usage</h3></dt>
-
-<dd>
-
-<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these screen options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the "Screen Options" drop-down to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab.</p>
-
-<p>When editing a post, page, category, tag, user profile, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images, and videos. The Document SSO metabox shows a different set of options based on the content type selected (ie. Schema type or Open Graph type), allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The "Preview Social" tab shows how this webpage might look when shared on Facebook and the "Validators" tab allows you to submit the current webpage URL to several test and validation tools (mentioned above).</p>
-
-</dd>
-
-</dl>
 
 </div><!-- #wpsso-setup-guide -->
 

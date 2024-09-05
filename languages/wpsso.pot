@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.7.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 18.7.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -14,32 +14,32 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:5
 msgctxt "html header"
-msgid "Business Social Accounts (Optional)"
+msgid "Table of Contents"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:6
 msgctxt "html header"
-msgid "Author Social Accounts (Optional)"
+msgid "Business Social Accounts (Optional)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:7
 msgctxt "html header"
-msgid "Review Essential Settings"
+msgid "Related information:"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:8
 msgctxt "html header"
-msgid "Keep an Eye on Notifications"
+msgid "Author Social Accounts (Optional)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:9
 msgctxt "html header"
-msgid "Schema Markup vs Google Rich Results"
+msgid "Review Essential Settings"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:10
 msgctxt "html header"
-msgid "Validation Tools"
+msgid "Keep an Eye on Notifications"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:11
@@ -48,76 +48,112 @@ msgid "User Interface and General Usage"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:12
-msgctxt "html paragraph"
-msgid ""
-"You can enter all your business social account information in the "
-"<em><strong>SSO &gt; General Settings &gt; Social Pages and Accounts</"
-"strong></em> metabox. The social account URLs are used for meta tags and "
-"Schema Organization markup (which may appear in Google Search results to "
-"highlight your business social pages)."
+msgctxt "html header"
+msgid "Schema Markup vs Google Rich Results"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:13
-msgctxt "html paragraph"
-msgid "<strong>Related information:</strong>"
+msgctxt "html header"
+msgid "Validation Tools"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:14
-msgctxt "html paragraph"
-msgid ""
-"Remind your content creators to enter their personal website URL, Facebook, "
-"and X (Twitter) social page URLs in the WordPress user profile page. Author "
-"contact information can appear in various meta tags and Schema markup for "
-"Facebook, X (Twitter), and Google - <em>but only if they enter their contact "
-"information in the WordPress user profile page</em>."
+msgctxt "html header"
+msgid "Markup Validators:"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:15
 msgctxt "html paragraph"
 msgid ""
-"Review the website description on the <em><strong>SSO &gt; Essential "
-"Settings</strong></em> page and select a default image ID or URL. The "
-"default image is used for archive pages (ie. blog, category, and tag archive "
-"page) and as a fallback for public posts and pages that do not have a "
-"suitable image featured, attached, or in their content."
+"You can enter all your business social account information in the "
+"<em><strong>SSO &gt; General Settings &gt; Social Pages and Accounts</"
+"strong></em> metabox. The social account values are used for meta tags and "
+"Schema Organization markup (which may appear in Google Search results to "
+"highlight your business social pages)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:16
 msgctxt "html paragraph"
 msgid ""
-"WPSSO Core attempts to keep notifications to a minimum, issuing only "
-"informational, warning, or error notifications when required. Messages from "
-"the default WordPress notication system can feel intrusive and over-used, "
-"and are not compatible with the new block editor in WordPress v5, so WPSSO "
-"Core includes its own (more discreet) notification system in the admin "
-"toolbar."
+"You may remind your content creators and editors to enter their personal "
+"website URL, Facebook, and X (Twitter) social page URLs in their WordPress "
+"user profile page. Author contact information can appear in various meta "
+"tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only "
+"if they users their contact information in their WordPress user profile "
+"page</em>."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:17
 msgctxt "html paragraph"
 msgid ""
+"Review the website description on the <em><strong>SSO &gt; Essential "
+"Settings</strong></em> page and select a default image ID (or image URL). "
+"The default image is used for archive pages (ie. blog, category, and tag "
+"archive page) and as a fallback for public posts and pages that do not have "
+"a suitable featured, attached, or image in their content."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:18
+msgctxt "html paragraph"
+msgid ""
+"WPSSO attempts to keep notifications to a minimum, issuing only "
+"informational, warning, and error notifications when required. Messages from "
+"the default WordPress notication system can feel intrusive and over-used, "
+"and are not compatible with the new block editor in WordPress v5, so WPSSO "
+"includes its own (more discreet) notification system in the admin toolbar."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:19
+msgctxt "html paragraph"
+msgid ""
 "Look for the SSO notification icon in the admin toolbar - it will be grey "
 "with a 0 notification count by default. If there are notifications, the "
-"count will increase and the SSO icon be shown on a red, yellow, or blue "
+"count will increase and the SSO icon appear on a red, yellow, or blue "
 "background. WPSSO notifications are context sensitive - they relate directly "
 "to the content shown in the current webpage."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:18
+#: gettext/gettext-html-setup.php:20
+msgctxt "html paragraph"
+msgid ""
+"On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
+"on the upper right-hand side of the page. You can use these screen options "
+"to include or exclude specific metaboxes and columns from the current page. "
+"For example, when viewing the posts or pages list you can use the \"Screen "
+"Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. "
+"You can also enable or disable these columns globally under the "
+"<em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:21
+msgctxt "html paragraph"
+msgid ""
+"When editing a post, page, category, tag, user profile, etc., you'll find a "
+"Document SSO metabox below the content area where you can customize default "
+"texts, images, and videos. The Document SSO metabox shows a different set of "
+"options based on the content type selected (ie. Schema type or Open Graph "
+"type), allowing you to customize the details of articles, events, e-Commerce "
+"products, recipes, reviews, and more. The \"Preview Social\" tab shows how "
+"this webpage might look when shared on Facebook and the \"Validators\" tab "
+"allows you to submit the current webpage URL to several test and validation "
+"tools."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:22
 msgctxt "html paragraph"
 msgid ""
 "Schema (aka \"Schema.org\") is a collaborative, community lead standard for "
 "structured data markup. Schema markup is classified by type, and each type "
 "is associated with a set of properties. The types are arranged in a "
 "hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the Schema "
-"vocabulary consists of over 700 types and 1400 properties</a>. The Schema "
+"vocabulary consists of over 800 types and 1400 properties</a>. The Schema "
 "vocabulary can be used with many different encodings, including HTML meta "
-"tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to "
-"webpages using the latest (and preferred) JSON-LD encoding format for Google "
-"and other search engines."
+"tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages "
+"using the latest (and preferred) JSON-LD encoding format for Google and "
+"other search engines."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:19
+#: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid ""
 "<a href=\"https://developers.google.com/search/docs/appearance/structured-"
@@ -126,24 +162,23 @@ msgid ""
 "dimensions, a limited set of values for some Schema properties, and limited "
 "Schema types for some property relations. Google Rich Results require "
 "several layers of related markup (aka a multi-dimensional arrays) that must "
-"be expressed using JSON-LD in the webpage head section (preferred by "
-"Google), or with RDFa / Microdata markup in theme templates (deprecated "
-"standard)."
+"be expressed using JSON-LD in the webpage head section, or with RDFa / "
+"Microdata markup in theme templates (deprecated standard)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:20
+#: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
 msgid ""
 "If your theme templates include incomplete or incorrect RDFa / Microdata "
-"markup (a common problem), you should enable the <a href=\"https://wordpress."
-"org/plugins/wpsso-strip-schema-microdata/\">WPSSO Strip Schema Microdata add-"
-"on</a> to remove the incomplete or incorrect Microdata markup. Schema markup "
-"provided by WPSSO Core will include a '#sso/' value in the Schema \"@id\" "
-"property, making it easy to tell which Schema JSON-LD markup is provided by "
-"WPSSO Core, and which is not."
+"markup, you can enable the <a href=\"https://wordpress.org/plugins/wpsso-"
+"strip-schema-microdata/\">WPSSO Strip Schema Microdata add-on</a> to remove "
+"the incomplete or incorrect Microdata markup. Schema markup provided by "
+"WPSSO will include an '#sso/' value in the Schema \"@id\" property, making "
+"it easy to tell which Schema JSON-LD markup is provided by WPSSO, and which "
+"is not."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:21
+#: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid ""
 "Submit the home page URL, along with a post, page, and archive page URL to "
@@ -155,7 +190,7 @@ msgid ""
 "any template HTML markup errors to your theme author."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
 msgid ""
 "Submit a few post and page URLs to the <a href=\"https://developers.facebook."
@@ -164,13 +199,13 @@ msgid ""
 "tab in the Document SSO metabox (on post, term, and user editing pages). The "
 "Facebook debugger can also be used to clear Facebook's cache (after clicking "
 "the \"Fetch new scrape information\" button). If you're validating older "
-"posts / pages, pre-dating the activation of WPSSO Core, note that <a href="
+"posts and pages, pre-dating the activation of WPSSO, note that <a href="
 "\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-"
 "image-text/\">Facebook may continue to use the old meta tag values from its "
 "cache</a>, even after fetching the new scrape information."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:23
+#: gettext/gettext-html-setup.php:27
 msgctxt "html paragraph"
 msgid ""
 "Submit an example post and/or page to the <a href=\"http://developers."
@@ -182,7 +217,7 @@ msgid ""
 "validating your first example post or page."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:24
+#: gettext/gettext-html-setup.php:28
 msgctxt "html paragraph"
 msgid ""
 "Submit the home page URL, along with a post, page, and archive page URL to "
@@ -193,159 +228,165 @@ msgid ""
 "complete the missing information."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:25
-msgctxt "html paragraph"
-msgid "<strong>Markup Validators:</strong>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:26
-msgctxt "html paragraph"
+#: gettext/gettext-html-setup.php:29
+msgctxt "html list item"
 msgid ""
-"On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
-"on the upper right-hand side of the page. You can use these screen options "
-"to include / exclude specific metaboxes and columns from the current page. "
-"For example, when viewing the posts or pages list you can use the \"Screen "
-"Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. "
-"You can also enable / disable these columns globally under the "
-"<em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
+"<a href=\"#business-social-accounts\">Business Social Accounts (Optional)</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:27
-msgctxt "html paragraph"
+#: gettext/gettext-html-setup.php:30
+msgctxt "html list item"
 msgid ""
-"When editing a post, page, category, tag, user profile, etc., you'll find a "
-"Document SSO metabox below the content area where you can customize default "
-"texts, images, and videos. The Document SSO metabox shows a different set of "
-"options based on the content type selected (ie. Schema type or Open Graph "
-"type), allowing you to customize the details of articles, events, e-Commerce "
-"products, recipes, reviews, and more. The \"Preview Social\" tab shows how "
-"this webpage might look when shared on Facebook and the \"Validators\" tab "
-"allows you to submit the current webpage URL to several test and validation "
-"tools (mentioned above)."
+"<a href=\"#author-social-accounts\">Author Social Accounts (Optional)</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:28
+#: gettext/gettext-html-setup.php:31
+msgctxt "html list item"
+msgid "<a href=\"#essential-settings\">Review Essential Settings</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:32
+msgctxt "html list item"
+msgid "<a href=\"#notifications\">Keep an Eye on Notifications</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:33
+msgctxt "html list item"
+msgid "<a href=\"#user-interface\">User Interface and General Usage</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:34
+msgctxt "html list item"
+msgid "<a href=\"#schema-markup\">Schema Markup vs Google Rich Results</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:35
+msgctxt "html list item"
+msgid "<a href=\"#validation-tools\">Validation Tools</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:36
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:29
+#: gettext/gettext-html-setup.php:37
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
 "profile.html\">Create an X (Twitter) Business Profile</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:30
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.google.com/create\">Add or claim your business on "
 "Google My Business</a> (recommended)"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:31
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
 "Business Account</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:32
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
 "Debugger</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:33
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
 "Microdata Debug Tool</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:34
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/amp\">Google AMP Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">X (Twitter) Card "
 "Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
-"to check your theme templates for HTML markup issues."
+"<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> is "
+"recommended to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.xml-sitemaps.com/validate-xml-sitemap.html\">XML "
 "Sitemap Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> - "
-"recommended for general site and webpage health checks (results influence "
-"SEO ranking)."
+"<a href=\"https://pagespeed.web.dev/\">Google's PageSpeed Insights</a> is "
+"recommended for general site and webpage health checks (improving pagespeed "
+"results will improve SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
-"Search Engine Optimization (SEO) Starter Guide</a> - essential reading to "
+"Search Engine Optimization (SEO) Starter Guide</a> is recommended reading to "
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
-"Waterfall</a> - recommended to check and diagnose basic performance issues."
+"Waterfall</a> is recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
-"- recommended test for any site using https."
+"is recommended to test SSL certificates and available HTTPS protocols."
 msgstr ""
 
 #: gettext/gettext-lib-abstract-com.php:5 lib/abstract/com/add-on.php:235
@@ -7109,12 +7150,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5492
+#: lib/config.php:5494
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5492
+#: lib/config.php:5494
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.7.0-dev.1',	// Plugin version.
+					'version'     => '18.7.0-dev.2',	// Plugin version.
 					'opt_version' => '1015',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2819,9 +2819,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'general'       => 'admin-settings',
 					'licenses'      => 'admin-network',
 					'setup'         => 'welcome-learn-more',
+					'debug'         => 'code-standards',
 					'site-addons'   => 'admin-plugins',
 					'site-licenses' => 'admin-network',
 					'site-setup'    => 'welcome-learn-more',
+					'site-debug'    => 'code-standards',
 					'tools'         => 'admin-tools',
 					'your-sso'      => 'id-alt',
 					'*'             => 'admin-generic',	// Default icon.

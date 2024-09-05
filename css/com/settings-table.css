@@ -1308,58 +1308,42 @@ table.sucom-settings td.oembed_container > iframe {
 
 /*
  * SSO > Setup Guide page.
+ * SSO > Troubleshooting page.
  */
 table.sucom-settings.html-content-metabox {
 	padding:10px 40px;
 }
 
+table.sucom-settings.html-content-metabox td h4,
 table.sucom-settings.html-content-metabox td p {
 	margin:20px 0;
 }
 
-table.sucom-settings.html-content-metabox td h4,
-#poststuff table.sucom-settings.html-content-metabox td h4 {
-	margin:20px 0;
+table.sucom-settings.html-content-metabox td ul {
+	margin:20px 0 20px 40px;
 }
 
 table.sucom-settings.html-content-metabox td blockquote {
 	display:table;
+	color:#144e14;
 	border:none;
 	border-left:3px solid #0f533d;
 	background-color:#fafafa;
-	color:#144e14;
+	padding:0 20px;
 }
 
 table.sucom-settings.html-content-metabox td blockquote p {
 	color:#144e14;
 }
 
-table.sucom-settings.html-content-metabox td > blockquote {
-	padding:0 20px;
-	margin:30px 0;
-}
-
-table.sucom-settings.html-content-metabox td > blockquote p {
-	margin:15px 0;
-}
-
 table.sucom-settings.html-content-metabox td pre {
-	padding:30px 20px;
+	padding:30px;
 	margin:30px 0;
 	border:1px solid #aaaaaa;
 }
 
-table.sucom-settings.html-content-metabox td dt {	/* Definition title. */
-	margin:30px 0 20px 0;
-}
-
-table.sucom-settings.html-content-metabox td dd {	/* Definition description. */
-	margin:20px 0 30px 20px;
-}
-
 /*
  * SSO > Plugin Add-ons page.
- *
  * SSO > Premium Licenses page.
  */
 table.sucom-settings.addons-metabox,
