@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '18.7.0-rc.2',	// Plugin version.
-					'opt_version' => '1016',	// Increment when changing default option values.
+					'opt_version' => '1018',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1937,6 +1937,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Interface.
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
+					'plugin_og_types_select_format'        => 'name',	// Open Graph Type Select Format.
+					'plugin_schema_types_select_format'    => 'name',	// Schema Type Select Format.
+					'plugin_color_checkbox_custom'         => '#9e9e9e',	// Checkbox Color Non-Default.
+					'plugin_color_checkbox_default'        => '#cccccc',	// Checkbox Color Default.
+					'plugin_color_checkbox_disabled'       => '#cccccc',	// Checkbox Color Disabled
 					'plugin_add_toolbar_validate'          => 1,		// Show Validators Toolbar Menu.
 					'plugin_add_submenu_essential'         => 1,
 					'plugin_add_submenu_general'           => 1,
@@ -2068,12 +2073,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_name_col_tax_product_tag'      => 0,	// For WooCommerce.
 					'plugin_schema_type_name_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
 					'plugin_schema_type_name_col_user_page'            => 0,
-
-					/*
-					 * Advanced Settings > Interface > Type Select Format.
-					 */
-					'plugin_og_types_select_format'     => 'name',		// Open Graph Type Select Format.
-					'plugin_schema_types_select_format' => 'name',		// Schema Type Select Format.
 
 					/*
 					 * Advanced Settings > Service APIs > Media Services.

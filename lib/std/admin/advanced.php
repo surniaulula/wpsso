@@ -476,13 +476,28 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format',
 					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
+			$table_rows[ 'plugin_color_checkbox_custom' ] = '' .
+				$form->get_th_html( _x( 'Checkbox Color Non-Default', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'plugin_color_checkbox_custom' ) .
+				'<td>' . $form->get_no_input_color( 'plugin_color_checkbox_custom' ) . '</td>';
+
+			$table_rows[ 'plugin_color_checkbox_default' ] = '' .
+				$form->get_th_html( _x( 'Checkbox Color Default', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'plugin_color_checkbox_default' ) .
+				'<td>' . $form->get_no_input_color( 'plugin_color_checkbox_default' ) . '</td>';
+
+			$table_rows[ 'plugin_color_checkbox_disabled' ] = '' .
+				$form->get_th_html( _x( 'Checkbox Color Disabled', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'plugin_color_checkbox_disabled' ) .
+				'<td>' . $form->get_no_input_color( 'plugin_color_checkbox_disabled' ) . '</td>';
+
 			/*
 			 * Show validators toolbar menu.
 			 */
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
 			$table_rows[ 'plugin_add_toolbar_validate' ] = '' .
-				$form->get_th_html( sprintf( _x( 'Show %s Toolbar', 'option label', 'wpsso' ), $menu_title ),
+				$form->get_th_html( sprintf( _x( 'Show %s Toolbar', 'option label', 'wpsso' ), $menu_title ),	// Show Validators Toolbar.
 					$css_class = 'medium', $css_id = 'plugin_add_toolbar_validate' ) .
 				$form->get_no_td_checkbox( 'plugin_add_toolbar_validate' );
 

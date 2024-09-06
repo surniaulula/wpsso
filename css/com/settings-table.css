@@ -5,13 +5,13 @@
  * Aqua        = #00ffff;
  * Blue        = #2196f3;
  * Green       = #4caf50;
- * Dark Gray   = #616161;
+ * Dark Grey   = #616161;
  * Light Blue  = #87ceeb;
  * Light Green = #8bc34a;
- * Gray        = #9e9e9e;
+ * Grey        = #9e9e9e;
  * Pale Green  = #ddffdd;
  * Red         = #f44336;
- * Light Gray  = #f1f1f1;
+ * Light Grey  = #f1f1f1;
  * Orange      = #ff9800;
  * Amber       = #ffc107;
  * Yellow      = #ffeb3b;
@@ -547,7 +547,7 @@ table.sucom-settings td.top {
 }
 
 table.sucom-settings td div.text-len-progress-bar {
-	background-color:#cccccc;	/* Light Gray. */
+	background-color:#cccccc;	/* Light Grey. */
 	border-radius:2px;
 	width:100%;
 	height:3px;
@@ -815,6 +815,11 @@ table.sucom-settings td input[type="text"].long_name { width:340px; }
 
 table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
 
+table.sucom-settings td input[type="text"].colorpicker {
+	width:80px;
+	text-align:center;
+}
+
 table.sucom-settings td input[type="text"].datepicker {
 	width:110px;
 	text-align:center;
@@ -894,7 +899,7 @@ label.sucom-checkbox {
 }
 
 label.sucom-checkbox span.sucom-checkbox-button {
-	border:1px solid #46b450;	/* Green. */
+	border:1px solid #9e9e9e;
 	border-radius:9px;
 	position:absolute;
 	cursor:pointer;
@@ -907,8 +912,8 @@ label.sucom-checkbox span.sucom-checkbox-button {
 
 label.sucom-checkbox span.sucom-checkbox-button:before {
 	border-radius:50%;
-	border:1px solid #46b450;	/* Green. */
-	background-color:#46b450;	/* Green. */
+	border:1px solid #9e9e9e;
+	background-color:#9e9e9e;
 	position:absolute;
 	content:"";
 	height:12px;
@@ -923,30 +928,30 @@ label.sucom-checkbox input {
 }
 
 label.sucom-checkbox input:checked + span.sucom-checkbox-button {
-	background-color:#46b450;	/* Green. */
+	background-color:#9e9e9e;
 }
 
 label.sucom-checkbox input:checked + span.sucom-checkbox-button:before {
 	transform:translateX(12px);
-	border:1px solid #ffffff;	/* White. */
-	background-color:#ffffff;	/* White. */
+	border:1px solid #ffffff;
+	background-color:#ffffff;
 }
 
 /*
  * Checked and unchecked for default values.
  */
 label.sucom-checkbox input.default:checked + span.sucom-checkbox-button {
-	border:1px solid #cccccc;	/* Light Grey. */
-	background-color:#cccccc;	/* Light Grey. */
+	border:1px solid #cccccc;
+	background-color:#cccccc;
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button {
-	border:1px solid #cccccc;	/* Light Grey. */
+	border:1px solid #cccccc;
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:before {
-	border:1px solid #cccccc;	/* Light Grey. */
-	background-color:#cccccc;	/* Light Grey. */
+	border:1px solid #cccccc;
+	background-color:#cccccc;
 }
 
 /*
@@ -955,13 +960,13 @@ label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:be
 label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button,
 label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button {
 	cursor:default;
-	border:1px dotted #cccccc !important;	/* Lighter Grey. */
+	border:1px dotted #cccccc !important;
 	background-color:transparent !important;
 }
 
 label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button:before,
 label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button:before {
-	border:1px dotted #cccccc !important;	/* Lighter Grey. */
+	border:1px dotted #cccccc !important;
 	background-color:transparent !important;
 }
 

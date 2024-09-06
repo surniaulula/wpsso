@@ -585,6 +585,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_og_types_select_format':	// Open Graph Type Select Format.
+
+					$text = __( 'Select a preferred format for the Open Graph Type drop-down options.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_schema_types_select_format':	// Schema Type Select Format.
+
+					$text = __( 'Select a preferred format for the Schema Type drop-down options.', 'wpsso' );
+
+					break;
+
 				case 'tooltip-plugin_add_toolbar_validate':	// Show Validators Toolbar Menu.
 
 					$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
@@ -616,19 +628,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$text .= __( 'Users can also hide columns by using the <em>Screen Options</em> tab when viewing admin list tables.', 'wpsso' );
 
 					break;
-
-				case 'tooltip-plugin_og_types_select_format':	// Open Graph Type Select Format.
-
-					$text = __( 'Select a preferred format for the Open Graph Type drop-down options.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-plugin_schema_types_select_format':	// Schema Type Select Format.
-
-					$text = __( 'Select a preferred format for the Schema Type drop-down options.', 'wpsso' );
-
-					break;
-
 
 				/*
 				 * SSO > Advanced Settings > Service APIs > Media Services tab.
