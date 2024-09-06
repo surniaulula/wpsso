@@ -954,6 +954,7 @@ label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:be
  */
 label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button,
 label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button {
+	cursor:default;
 	border:1px dotted #cccccc !important;	/* Lighter Grey. */
 	background-color:transparent !important;
 }

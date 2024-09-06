@@ -48,6 +48,6 @@ _x( '<a href="https://cards-dev.twitter.com/validator">X (Twitter) Card Validato
 _x( '<a href="https://validator.w3.org/">W3C Markup Validator</a> is recommended to check your theme templates for HTML markup issues.', 'html list item', 'wpsso' );
 _x( '<a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html">XML Sitemap Validator</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://pagespeed.web.dev/">Google\'s PageSpeed Insights</a> is recommended for general site and webpage health checks (improving pagespeed results will improve SEO ranking).', 'html list item', 'wpsso' );
-_x( '<a href="https://support.google.com/webmasters/answer/7451184">Google\'s Search Engine Optimization (SEO) Starter Guide</a> is recommended reading to understand Google SEO ranking factors.', 'html list item', 'wpsso' );
+_x( '<a href="https://support.google.com/webmasters/answer/7451184">Google\'s Search Engine Optimization (SEO) Starter Guide</a> is recommended to understand Google SEO ranking factors.', 'html list item', 'wpsso' );
 _x( '<a href="https://www.webpagetest.org/">Webpage Performance Test with Waterfall</a> is recommended to check and diagnose basic performance issues.', 'html list item', 'wpsso' );
 _x( '<a href="https://www.ssllabs.com/ssltest/">SSL Server Test by SSL Labs</a> is recommended to test SSL certificates and available HTTPS protocols.', 'html list item', 'wpsso' );

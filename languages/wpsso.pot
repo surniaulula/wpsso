@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.7.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 18.7.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,7 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
-"Search Engine Optimization (SEO) Starter Guide</a> is recommended reading to "
+"Search Engine Optimization (SEO) Starter Guide</a> is recommended to "
 "understand Google SEO ranking factors."
 msgstr ""
 
