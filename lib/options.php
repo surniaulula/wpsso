@@ -240,6 +240,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/*
+				 * Check for website verification IDs and enable/disable meta tags as required.
+				 */
+				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
+
+					$fixed[ 'add_meta_name_' . $meta_name ] = empty( $opts[ $site_verify ] ) ? 0 : 1;
+				}
+
+				/*
 				 * Check for default values from network admin settings.
 				 */
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.7.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 18.7.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4123,7 +4123,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:486 gettext/gettext-lib-config.php:498
 #: gettext/gettext-lib-config.php:504 gettext/gettext-lib-config.php:512
 #: gettext/gettext-lib-config.php:526 gettext/gettext-lib-config.php:534
-#: gettext/gettext-lib-config.php:547 lib/messages-tooltip-plugin.php:687
+#: gettext/gettext-lib-config.php:547 lib/messages-tooltip-plugin.php:699
 #: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -5786,22 +5786,22 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:74 lib/pro/admin/advanced.php:502
 #: lib/std/admin/advanced.php:480
 msgctxt "option label"
-msgid "Checkbox Color Non-Default"
+msgid "Checkbox is Not Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:75 lib/pro/admin/advanced.php:507
 #: lib/std/admin/advanced.php:485
 msgctxt "option label"
-msgid "Checkbox Color Default"
+msgid "Checkbox is Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:76 lib/pro/admin/advanced.php:512
 #: lib/std/admin/advanced.php:490
 msgctxt "option label"
-msgid "Checkbox Color Disabled"
+msgid "Checkbox is Disabled"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:77 lib/messages-tooltip-plugin.php:602
+#: gettext/gettext-lib-pro.php:77 lib/messages-tooltip-plugin.php:614
 #: lib/page.php:174 lib/pro/admin/advanced.php:519
 #: lib/std/admin/advanced.php:497
 msgctxt "toolbar menu title"
@@ -10298,8 +10298,8 @@ msgstr ""
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:75
 #: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:829
-#: lib/messages-tooltip-plugin.php:871 lib/messages-tooltip-schema.php:179
+#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:841
+#: lib/messages-tooltip-plugin.php:883 lib/messages-tooltip-schema.php:179
 #: lib/messages-tooltip-schema.php:336
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s "
@@ -11833,261 +11833,261 @@ msgstr ""
 msgid "Select a preferred format for the Schema Type drop-down options."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:604
+#: lib/messages-tooltip-plugin.php:616
 msgid "Show a \"%s\" menu in the admin toolbar."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:612
+#: lib/messages-tooltip-plugin.php:624
 msgid "Optionally remove settings pages from the %s menu."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:620
+#: lib/messages-tooltip-plugin.php:632
 msgid ""
 "Add or remove the %s metabox from editing pages for posts, pages, custom "
 "post types, terms (categories and tags), and user profile pages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:626
+#: lib/messages-tooltip-plugin.php:638
 msgid ""
 "Additional columns can be included by default in the admin list tables for "
 "posts, pages, custom post types, terms (categories and tags), and user "
 "profile pages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:628
+#: lib/messages-tooltip-plugin.php:640
 msgid ""
 "Users can also hide columns by using the <em>Screen Options</em> tab when "
 "viewing admin list tables."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:639
+#: lib/messages-tooltip-plugin.php:651
 msgid ""
 "A customized image for each author can be selected in the WordPress user "
 "profile %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:642
+#: lib/messages-tooltip-plugin.php:654
 msgid ""
 "If a custom image has not been selected, fallback to using the author's "
 "Gravatar image."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:650
+#: lib/messages-tooltip-plugin.php:662
 msgid ""
 "The requested Gravatar image width and height (a number from 1 to 2048)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:652
+#: lib/messages-tooltip-plugin.php:664
 msgid ""
 "Note that users often upload low resolution images to Gravatar, so choosing "
 "a larger image size may result in pixelation and lower-quality images."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:654
+#: lib/messages-tooltip-plugin.php:666
 msgid "The default Gravatar image size is %d pixels."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:660
+#: lib/messages-tooltip-plugin.php:672
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
 "(Vimeo, Wistia, YouTube, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:662
+#: lib/messages-tooltip-plugin.php:674
 msgid ""
 "When a supported media URL is found, an API connection to the provider can "
 "be made to retrieve additional information about the media (preview image "
 "URL, oembed player URL, video width and height, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:671
+#: lib/messages-tooltip-plugin.php:683
 msgid ""
 "A preferred URL shortening service used for the <code>%s</code> HTML tag "
 "value, Schema markup, and social sharing buttons."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:679
+#: lib/messages-tooltip-plugin.php:691
 msgid ""
 "Only shorten URLs that are longer than this length (default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:685
+#: lib/messages-tooltip-plugin.php:697
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> function value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:687
+#: lib/messages-tooltip-plugin.php:699
 msgid ""
 "If the URL shortening service is set to \"%1$s\" then checking or unchecking "
 "option has no effect on the WordPress <code>%2$s</code> function as there is "
 "no URL shortening service available to replace its value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:693
+#: lib/messages-tooltip-plugin.php:705
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:699
+#: lib/messages-tooltip-plugin.php:711
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:701
+#: lib/messages-tooltip-plugin.php:713
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:707
+#: lib/messages-tooltip-plugin.php:719
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:709
+#: lib/messages-tooltip-plugin.php:721
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:715
+#: lib/messages-tooltip-plugin.php:727
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:722
+#: lib/messages-tooltip-plugin.php:734
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:728
+#: lib/messages-tooltip-plugin.php:740
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:734
+#: lib/messages-tooltip-plugin.php:746
 msgid ""
 "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:739
+#: lib/messages-tooltip-plugin.php:751
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured username (see YOURLS Token for an alternative to "
 "the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:745
+#: lib/messages-tooltip-plugin.php:757
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:751
+#: lib/messages-tooltip-plugin.php:763
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:760
+#: lib/messages-tooltip-plugin.php:772
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:766
+#: lib/messages-tooltip-plugin.php:778
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:772
+#: lib/messages-tooltip-plugin.php:784
 msgid "The maximum age (in months) of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:778
+#: lib/messages-tooltip-plugin.php:790
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:785
+#: lib/messages-tooltip-plugin.php:797
 msgid ""
 "Your Judge.me shop domain and token are required to retrieve ratings and "
 "reviews from the Judge.me service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:792
+#: lib/messages-tooltip-plugin.php:804
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:794
+#: lib/messages-tooltip-plugin.php:806
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:801
+#: lib/messages-tooltip-plugin.php:813
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:818
+#: lib/messages-tooltip-plugin.php:830
 msgid ""
 "The product attribute name allows %s to request a product attribute value "
 "from an e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:823
+#: lib/messages-tooltip-plugin.php:835
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:835
+#: lib/messages-tooltip-plugin.php:847
 msgid ""
 "The product attribute value can be an empty string or one of these values "
 "(case sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:841 lib/messages-tooltip-plugin.php:883
+#: lib/messages-tooltip-plugin.php:853 lib/messages-tooltip-plugin.php:895
 msgid "Note that the \"%s\" option supports multiple values."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:843
+#: lib/messages-tooltip-plugin.php:855
 msgid ""
 "The product attribute string will be split using the comma \",\" character."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:862
+#: lib/messages-tooltip-plugin.php:874
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:865
+#: lib/messages-tooltip-plugin.php:877
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:877
+#: lib/messages-tooltip-plugin.php:889
 msgid ""
 "The custom field value can be an empty string or one of these values (case "
 "sensitive): %s"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:885
+#: lib/messages-tooltip-plugin.php:897
 msgid ""
 "If the custom field value is a string, it will be split on the end of line "
 "character."
@@ -13782,286 +13782,286 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:760
+#: lib/options.php:768
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:769
+#: lib/options.php:777
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:777
+#: lib/options.php:785
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:795
+#: lib/options.php:803
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:919
+#: lib/options.php:927
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1240 lib/submenu/general.php:487
+#: lib/options.php:1248 lib/submenu/general.php:487
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/options.php:1245 lib/submenu/general.php:492
+#: lib/options.php:1253 lib/submenu/general.php:492
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1252
+#: lib/options.php:1260
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1267
+#: lib/options.php:1275
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1270
+#: lib/options.php:1278
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1284
+#: lib/options.php:1292
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1288
+#: lib/options.php:1296
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1303
+#: lib/options.php:1311
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1307
+#: lib/options.php:1315
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1332
+#: lib/options.php:1340
 msgid ""
 "The value of option \"%s\" must be an array - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1333
+#: lib/options.php:1341
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1334
+#: lib/options.php:1342
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1335
+#: lib/options.php:1343
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1336
+#: lib/options.php:1344
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1337
+#: lib/options.php:1345
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1338
+#: lib/options.php:1346
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1339
+#: lib/options.php:1347
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1340
+#: lib/options.php:1348
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1341
+#: lib/options.php:1349
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1342
+#: lib/options.php:1350
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1343
+#: lib/options.php:1351
 msgid ""
 "The value of option \"%1$s\" must be equal to or greater than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1344
+#: lib/options.php:1352
 msgid ""
 "The value of option \"%1$s\" must be greater than %2$s - resetting this "
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:1345
+#: lib/options.php:1353
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1346
+#: lib/options.php:1354
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1928 lib/options.php:1960
+#: lib/options.php:1936 lib/options.php:1968
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1932
+#: lib/options.php:1940
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1936
+#: lib/options.php:1944
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1940
+#: lib/options.php:1948
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1944
+#: lib/options.php:1952
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1948
+#: lib/options.php:1956
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1952
+#: lib/options.php:1960
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1956
+#: lib/options.php:1964
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:1964
+#: lib/options.php:1972
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:1968
+#: lib/options.php:1976
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1972
+#: lib/options.php:1980
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1976
+#: lib/options.php:1984
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1980
+#: lib/options.php:1988
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:1984
+#: lib/options.php:1992
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:1988
+#: lib/options.php:1996
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1992
+#: lib/options.php:2000
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:1996
+#: lib/options.php:2004
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:2000
+#: lib/options.php:2008
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:2004
+#: lib/options.php:2012
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:2008
+#: lib/options.php:2016
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2012
+#: lib/options.php:2020
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2016
+#: lib/options.php:2024
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2020
+#: lib/options.php:2028
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2024
+#: lib/options.php:2032
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""

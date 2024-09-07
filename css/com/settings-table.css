@@ -813,7 +813,14 @@ table.sucom-settings td input[type="text"].wide { width:100%; }
 table.sucom-settings td select.long_name,
 table.sucom-settings td input[type="text"].long_name { width:340px; }
 
-table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
+table.sucom-settings td input[type="hidden"] {
+	padding:0;
+	margin:0;
+}
+
+table.sucom-settings td .wp-picker-container button.wp-color-result {
+	border-color:#8c8f94;
+}
 
 table.sucom-settings td input[type="text"].colorpicker {
 	width:80px;
@@ -941,33 +948,33 @@ label.sucom-checkbox input:checked + span.sucom-checkbox-button:before {
  * Checked and unchecked for default values.
  */
 label.sucom-checkbox input.default:checked + span.sucom-checkbox-button {
-	border:1px solid #cccccc;
-	background-color:#cccccc;
+	border:1px solid #9e9e9e;
+	background-color:#9e9e9e;
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button {
-	border:1px solid #cccccc;
+	border:1px solid #9e9e9e;
 }
 
 label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:before {
-	border:1px solid #cccccc;
-	background-color:#cccccc;
+	border:1px solid #9e9e9e;
+	background-color:#9e9e9e;
 }
 
 /*
  * Checked and unchecked for disabled options.
  */
 label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button,
-label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button {
-	cursor:default;
-	border:1px dotted #cccccc !important;
-	background-color:transparent !important;
-}
-
+label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button,
 label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button:before,
-label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button:before {
-	border:1px dotted #cccccc !important;
-	background-color:transparent !important;
+label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button:before,
+label.sucom-checkbox input[type="checkbox"].default.disabled + span.sucom-checkbox-button,
+label.sucom-checkbox input[type="checkbox"].default:disabled + span.sucom-checkbox-button,
+label.sucom-checkbox input[type="checkbox"].default.disabled + span.sucom-checkbox-button:before,
+label.sucom-checkbox input[type="checkbox"].default:disabled + span.sucom-checkbox-button:before {
+	cursor:default;
+	border:1px dotted #cccccc ;
+	background-color:#ffffff;
 }
 
 /*

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.7.0-rc.2',	// Plugin version.
+					'version'     => '18.7.0-rc.3',	// Plugin version.
 					'opt_version' => '1018',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1849,15 +1849,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:upc'                     => 1,
 					'add_meta_property_product:weight:value'            => 1,
 					'add_meta_property_product:weight:units'            => 1,
-					'add_meta_name_ahrefs-site-verification'            => 1,	// Ahrefs Website Verification ID.
+					'add_meta_name_ahrefs-site-verification'            => 0,	// Ahrefs Website Verification ID.
 					'add_meta_name_author'                              => 1,
-					'add_meta_name_baidu-site-verification'             => 1,	// Baidu Website Verification ID.
+					'add_meta_name_baidu-site-verification'             => 0,	// Baidu Website Verification ID.
 					'add_meta_name_description'                         => 1,
-					'add_meta_name_facebook-domain-verification'        => 1,
+					'add_meta_name_facebook-domain-verification'        => 0,
 					'add_meta_name_generator'                           => 1,
-					'add_meta_name_google-site-verification'            => 1,	// Google Website Verification ID.
-					'add_meta_name_msvalidate.01'                       => 1,	// Microsoft Bing Website Verification ID.
-					'add_meta_name_p:domain_verify'                     => 1,	// Pinterest Website Verification ID.
+					'add_meta_name_google-site-verification'            => 0,	// Google Website Verification ID.
+					'add_meta_name_msvalidate.01'                       => 0,	// Microsoft Bing Website Verification ID.
+					'add_meta_name_p:domain_verify'                     => 0,	// Pinterest Website Verification ID.
 					'add_meta_name_robots'                              => 1,
 					'add_meta_name_thumbnail'                           => 1,
 					'add_meta_name_twitter:card'                        => 1,
@@ -1888,7 +1888,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:data1'                       => 1,
 					'add_meta_name_twitter:label2'                      => 1,
 					'add_meta_name_twitter:data2'                       => 1,
-					'add_meta_name_yandex-verification'                 => 1,	// Yandex Website Verification ID.
+					'add_meta_name_yandex-verification'                 => 0,	// Yandex Website Verification ID.
 
 					/*
 					 * Advanced Settings > Plugin Admin.
@@ -1939,9 +1939,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_og_types_select_format'        => 'name',	// Open Graph Type Select Format.
 					'plugin_schema_types_select_format'    => 'name',	// Schema Type Select Format.
-					'plugin_color_checkbox_custom'         => '#9e9e9e',	// Checkbox Color Non-Default.
-					'plugin_color_checkbox_default'        => '#cccccc',	// Checkbox Color Default.
-					'plugin_color_checkbox_disabled'       => '#cccccc',	// Checkbox Color Disabled
+					'plugin_color_checkbox_custom'         => '#9e9e9e',	// Checkbox is Not Default.
+					'plugin_color_checkbox_default'        => '#9e9e9e',	// Checkbox is Default.
+					'plugin_color_checkbox_disabled'       => '#cccccc',	// Checkbox is Disabled.
 					'plugin_add_toolbar_validate'          => 1,		// Show Validators Toolbar Menu.
 					'plugin_add_submenu_essential'         => 1,
 					'plugin_add_submenu_general'           => 1,
