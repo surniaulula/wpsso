@@ -597,18 +597,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_color_checkbox_custom':	// Checkbox is Not Default.
-
-					break;
-
-				case 'tooltip-plugin_color_checkbox_default':	// Checkbox is Default.
-
-					break;
-
-				case 'tooltip-plugin_color_checkbox_disabled':	// Checkbox is Disabled.
-
-					break;
-
 				case 'tooltip-plugin_add_toolbar_validate':	// Show Validators Toolbar Menu.
 
 					$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );

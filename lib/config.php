@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.7.0-rc.3',	// Plugin version.
+					'version'     => '18.7.0-rc.4',	// Plugin version.
 					'opt_version' => '1018',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1939,9 +1939,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_og_types_select_format'        => 'name',	// Open Graph Type Select Format.
 					'plugin_schema_types_select_format'    => 'name',	// Schema Type Select Format.
-					'plugin_color_checkbox_custom'         => '#9e9e9e',	// Checkbox is Not Default.
-					'plugin_color_checkbox_default'        => '#9e9e9e',	// Checkbox is Default.
-					'plugin_color_checkbox_disabled'       => '#cccccc',	// Checkbox is Disabled.
 					'plugin_add_toolbar_validate'          => 1,		// Show Validators Toolbar Menu.
 					'plugin_add_submenu_essential'         => 1,
 					'plugin_add_submenu_general'           => 1,
