@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.7.0-rc.3 (2024/09/06)**
+**Version 18.7.0-rc.4 (2024/09/07)**
 
 * **New Features**
 	* None.
@@ -403,9 +403,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.7.0-rc.3 =
+= 18.7.0-rc.4 =
 
-(2024/09/06) Added an SSO &gt; Troubleshooting page.
+(2024/09/07) Added an SSO &gt; Troubleshooting page.
 
 = 18.6.0 =
 
