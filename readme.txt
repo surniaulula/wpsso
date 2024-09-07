@@ -12,7 +12,7 @@ Requires PHP: 7.2.34
 Requires At Least: 5.8
 Tested Up To: 6.6.1
 WC Tested Up To: 9.2.3
-Stable Tag: 18.6.0
+Stable Tag: 18.7.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
