@@ -1224,28 +1224,50 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		/*
 		 * Returns a message if an SEO plugin is active or the meta tag is disabled.
+		 *
+		 * See WpssoEditGeneral->filter_mb_sso_edit_general_rows().
+		 * See WpssoEditVisibility->filter_mb_sso_edit_visibility_rows().
+		 * See WpssoEditVisibility->filter_mb_sso_edit_visibility_robots_rows().
 		 */
 		public function maybe_seo_tag_disabled( $mt_name ) {
 
-			$html        = '';
-			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
-			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
+			$opt_key = SucomUtil::sanitize_input_name( 'add_' . $mt_name );
 
-			if ( $is_disabled ) {
+			if ( empty( $this->p->options[ $opt_key ] ) ) {	// Option does not exist or is unchecked.
 
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is active.
 
-					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+					$msg = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
 
-				} else {
+				} else $msg = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
 
-					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
-				}
-
-				$html = '<p class="status-msg smaller">' . $html . '</p>';
+				return '<p class="status-msg smaller">' . $msg . '</p>';
 			}
 
-			return $html;
+			return '';
+		}
+
+		/*
+		 * See WpssoMessagesTooltipMeta->get().
+		 * See WpssoMessagesTooltip->get().
+		 */
+		public function maybe_add_seo_tag_disabled_link( $mt_name ) {
+
+			$opt_key = SucomUtil::sanitize_input_name( 'add_' . $mt_name );
+
+			if ( empty( $this->p->options[ $opt_key ] ) ) {	// Option does not exist or is unchecked.
+
+				$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+					_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
+
+				return ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $mt_name ) . ' ' .
+					sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_other_tab_link );
+			}
+
+			return '';
 		}
 
 		/*
@@ -1278,31 +1300,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/*
-		 * Called in the 'tooltip-meta-seo_desc' and 'tooltip-robots_*' tooltips.
-		 */
-		public function maybe_add_seo_tag_disabled_link( $mt_name ) {
-
-			$html        = '';
-			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
-			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
-
-			if ( $is_disabled ) {
-
-				$seo_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-					_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
-
-				$html .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $mt_name ) . ' ';
-
-				$html .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_tab_link );
-			}
-
-			return $html;
-		}
-
-		/*
 		 * Pinterest disabled.
 		 *
 		 * $extra_css_class can be empty, 'left', or 'inline'.
@@ -1317,8 +1314,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_preview_images_first() {
 
-			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' ' . _x( 'video preview images are enabled (and included first)',
-				'option comment', 'wpsso' );
+			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' :
+				' ' . _x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
 		}
 
 		public function maybe_schema_disabled() {

@@ -3422,7 +3422,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:104 gettext/gettext-lib-config.php:120
 #: lib/admin-head-suggest-options.php:141 lib/messages.php:549
-#: lib/messages.php:1293
+#: lib/messages.php:1262
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -6775,18 +6775,18 @@ msgid "Install and activate the %s add-on."
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:140 lib/messages.php:548
-#: lib/messages.php:1292
+#: lib/messages.php:1261
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:142 lib/messages.php:1294
+#: lib/admin-head-suggest-options.php:142 lib/messages.php:1263
 #: lib/submenu/advanced.php:39
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:143 lib/messages.php:1295
+#: lib/admin-head-suggest-options.php:143 lib/messages.php:1264
 #: lib/submenu/advanced.php:238
 msgctxt "metabox tab"
 msgid "SEO / Other"
@@ -7618,7 +7618,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:407 lib/messages.php:1415
+#: lib/conflict.php:407 lib/messages.php:1412
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
@@ -9519,7 +9519,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:266 lib/messages.php:1074 lib/messages.php:1326
+#: lib/messages-info-meta.php:266 lib/messages.php:1074 lib/messages.php:1323
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -12494,7 +12494,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:351 lib/messages.php:1331
+#: lib/messages-tooltip.php:351 lib/messages.php:1328
 #: lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -13687,7 +13687,7 @@ msgid ""
 "%2$s cropped as a recommended minimum, and ignores images smaller than %3$s."
 msgstr ""
 
-#: lib/messages.php:1148 lib/messages.php:1196 lib/messages.php:1238
+#: lib/messages.php:1148 lib/messages.php:1196 lib/messages.php:1240
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
@@ -13711,54 +13711,54 @@ msgstr ""
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1277
+#: lib/messages.php:1266
+msgid "Note that the <code>%s</code> HTML tag is currently disabled."
+msgstr ""
+
+#: lib/messages.php:1267
+msgid "You can re-enable this option under the %s tab."
+msgstr ""
+
+#: lib/messages.php:1299
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:1297
-msgid "Note that the <code>%s</code> HTML tag is currently disabled."
-msgstr ""
-
-#: lib/messages.php:1299
-msgid "You can re-enable this option under the %s tab."
-msgstr ""
-
-#: lib/messages.php:1320
+#: lib/messages.php:1318
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1336
+#: lib/messages.php:1333
 msgid "Modifications disabled (%s option is disabled)."
 msgstr ""
 
-#: lib/messages.php:1343
+#: lib/messages.php:1340
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1361 lib/messages.php:1383
+#: lib/messages.php:1358 lib/messages.php:1380
 msgid "Video service API modules are provided with the %1$s edition."
 msgstr ""
 
-#: lib/messages.php:1377
+#: lib/messages.php:1374
 msgid "adding video markup"
 msgstr ""
 
-#: lib/messages.php:1381
+#: lib/messages.php:1378
 msgid ""
 "A %1$s video was found but details about this video (title, description, "
 "preview image, upload date, duration, width, height, encoding, etc.) could "
 "not be retrieved."
 msgstr ""
 
-#: lib/messages.php:1407
+#: lib/messages.php:1404
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1425
+#: lib/messages.php:1422
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
