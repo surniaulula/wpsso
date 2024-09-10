@@ -536,49 +536,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			/*
-			 * Checkbox Color Non-Default.
-			 */
-			$checkbox_custom   = $this->p->options[ 'plugin_color_checkbox_custom' ];
-			$checkbox_default  = $this->p->options[ 'plugin_color_checkbox_default' ];
-			$checkbox_disabled = $this->p->options[ 'plugin_color_checkbox_disabled' ];
-
-			$custom_style_css .= '
-				label.sucom-checkbox span.sucom-checkbox-button {
-					border:1px solid ' . $checkbox_custom . ';
-				}
-				label.sucom-checkbox span.sucom-checkbox-button:before {
-					border:1px solid ' . $checkbox_custom . ';
-					background-color:' . $checkbox_custom . ';
-				}
-				label.sucom-checkbox input:checked + span.sucom-checkbox-button {
-					background-color:' . $checkbox_custom . ';
-				}
-				label.sucom-checkbox input.default:checked + span.sucom-checkbox-button {
-					border:1px solid ' . $checkbox_default . ';
-					background-color:' . $checkbox_default . ';
-				}
-				label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button {
-					border:1px solid ' . $checkbox_default . ';
-				}
-				
-				label.sucom-checkbox input.default:not(:checked) + span.sucom-checkbox-button:before {
-					border:1px solid ' . $checkbox_default . ';
-					background-color:' . $checkbox_default . ';
-				}
-				label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button,
-				label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button,
-				label.sucom-checkbox input[type="checkbox"].disabled + span.sucom-checkbox-button:before,
-				label.sucom-checkbox input[type="checkbox"]:disabled + span.sucom-checkbox-button:before,
-				label.sucom-checkbox input[type="checkbox"].default.disabled + span.sucom-checkbox-button,
-				label.sucom-checkbox input[type="checkbox"].default:disabled + span.sucom-checkbox-button,
-				label.sucom-checkbox input[type="checkbox"].default.disabled + span.sucom-checkbox-button:before,
-				label.sucom-checkbox input[type="checkbox"].default:disabled + span.sucom-checkbox-button:before {
-					border:1px dotted ' . $checkbox_disabled . ';
-				}
-			';
-
-
 			$custom_style_css = apply_filters( $filter_name, $custom_style_css );
 
 			if ( $this->p->debug->enabled ) {
