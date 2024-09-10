@@ -2601,6 +2601,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$prop_name  = 'itemListElement';
 			$item_count = isset( $json_data[ $prop_name ] ) ? count( $json_data[ $prop_name ] ) : 0;
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( $prop_name . ' property provided ' . $item_count . ' elements' );
+			}
+
 			if ( empty( $page_type_id ) ) {
 
 				if ( $wpsso->debug->enabled ) {
@@ -2635,6 +2640,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							break;
 					}
+				}
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'calling page_posts_mods()' );
 				}
 
 				$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
