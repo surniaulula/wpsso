@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.7.0',	// Plugin version.
+					'version'     => '18.7.1-dev.1',	// Plugin version.
 					'opt_version' => '1018',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2528,7 +2528,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'um' => array(
 				'min_version' => '5.0.0',	// Released on 2023/11/08.
-				'rec_version' => '6.0.1',	// Released on 2024/08/27.
+				'rec_version' => '7.0.0-dev.1',	// Released on 2024/08/27.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -5560,7 +5560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * Use $file_is_dir = true when specifically checking for a sub-folder path.
 		 */
-		public static function get_ext_file_path( $ext, $rel_file = '', $file_is_dir = false ) {
+		public static function get_ext_file_path( $ext, $rel_file, $file_is_dir = false ) {
 
 			$file_path = false;
 
