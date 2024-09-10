@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'getting mod for post ID ' . $post->ID );
+							$this->p->debug->log( '#' . $have_num . ': getting mod for post ID ' . $post->ID );
 						}
 
 						$page_posts_mods[] = $this->p->post->get_mod( $post->ID );
