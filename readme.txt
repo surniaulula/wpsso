@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.7.1-rc.1 (2024/09/10)**
+**Version 18.7.1 (2024/09/10)**
 
 * **New Features**
 	* None.
@@ -417,7 +417,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.7.1-rc.1 =
+= 18.7.1 =
 
 (2024/09/10) Fixed an option key warning in `WpssoStyle->admin_register_page_styles()`.
 
