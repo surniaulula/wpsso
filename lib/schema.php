@@ -69,6 +69,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
+			static $do_once = null;	// Just in case.
+
+			if ( $do_once ) return;	// Stop here.
+
+			$do_once = true;
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'init json filters' );	// Begin timer.
