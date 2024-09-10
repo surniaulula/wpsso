@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.7.1-dev.1',	// Plugin version.
+					'version'     => '18.7.1-rc.1',	// Plugin version.
 					'opt_version' => '1018',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2527,8 +2527,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager.
 			 */
 			'um' => array(
-				'min_version' => '5.0.0',	// Released on 2023/11/08.
-				'rec_version' => '7.0.0-dev.1',	// Released on 2024/08/27.
+				'min_version' => '6.0.1',	// Released on 2024/08/27.
+				'rec_version' => '7.0.0-rc.1',	// Released on 2024/09/10.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
@@ -5554,8 +5554,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v7.8.0.
-		 *
 		 * Returns false, a slashed directory path, or the file name path.
 		 *
 		 * Use $file_is_dir = true when specifically checking for a sub-folder path.
@@ -5586,18 +5584,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_ext_file_url( $ext, $rel_file ) {
 
-			$cf       = self::get_config();
-			$file_key = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
+			$cf = self::get_config();
+
+			$url_key = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
+
 			$file_url = false;
 
-			if ( isset( $cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ) {
+			if ( isset( $cf[ 'plugin' ][ $ext ][ 'url' ][ $url_key ] ) ) {
 
 				/*
 				 * Returns URL or false on failure.
 				 *
 				 * See https://developer.wordpress.org/reference/functions/wp_http_validate_url/
 				 */
-				$file_url = wp_http_validate_url( $cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] );
+				$file_url = wp_http_validate_url( $cf[ 'plugin' ][ $ext ][ 'url' ][ $url_key ] );
 			}
 
 			return $file_url;
