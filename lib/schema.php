@@ -29,8 +29,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
-		private $p;			// Wpsso class object.
-		private $types_cache = array();	// Schema types array cache.
+		private $p;				// Wpsso class object.
+		private $types_cache    = array();	// Schema types array cache.
+		private $init_json_prio = -1000;	// 'wpsso_init_json_filters' action priority.
 
 		public function __construct( &$plugin ) {
 
@@ -46,7 +47,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * WpssoSchema->get_json_data(), when the Schema filters are required. The action then unhooks itself so it
 			 * can only be run once.
 			 */
-			$this->p->util->add_plugin_actions( $this, array( 'init_json_filters' => 0 ), $prio = -1000 );
+			$this->p->util->add_plugin_actions( $this, array( 'init_json_filters' => 0 ), $this->init_json_prio );
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes'   => 1,
@@ -90,12 +91,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'init json filters' );	// End timer.
+				
+				$this->p->debug->log( 'removing ' . __FILE__ . ' method action' );
 			}
 
 			/*
 			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
 			 */
-			remove_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000 );
+			remove_action( 'wpsso_init_json_filters', array( $this, __FUNCTION__ ), $this->init_json_prio );
 		}
 
 		public function filter_plugin_image_sizes( array $sizes ) {
@@ -2598,7 +2601,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$prop_name  = 'itemListElement';
+			$prop_name = 'itemListElement';
+
 			$item_count = isset( $json_data[ $prop_name ] ) ? count( $json_data[ $prop_name ] ) : 0;
 
 			if ( $wpsso->debug->enabled ) {
