@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$this->p->debug->mark( 'init json filters' );	// End timer.
 				
-				$this->p->debug->log( 'removing ' . __FILE__ . ' method action' );
+				$this->p->debug->log( 'removing ' . __FUNCTION__ . ' method action' );
 			}
 
 			/*
