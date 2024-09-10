@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.7.2-rc.1 (2024/09/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed possible multiple executions of `WpssoSchema->action_init_json_filters()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 18.7.1 (2024/09/10)**
 
 * **New Features**
@@ -416,6 +430,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.7.2-rc.1 =
+
+(2024/09/10) Fixed possible multiple executions of `WpssoSchema->action_init_json_filters()`.
 
 = 18.7.1 =
 
