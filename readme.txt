@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.7.2-rc.1 (2024/09/10)**
+**Version 18.7.2 (2024/09/10)**
 
 * **New Features**
 	* None.
@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.7.2-rc.1 =
+= 18.7.2 =
 
 (2024/09/10) Fixed possible multiple executions of `WpssoSchema->action_init_json_filters()`.
 
