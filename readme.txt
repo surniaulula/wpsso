@@ -280,6 +280,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.7.1-dev.1 (2024/09/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed an option key warning in `WpssoStyle->admin_register_page_styles()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.34.
+	* WordPress v5.8.
+
 **Version 18.7.0 (2024/09/07)**
 
 * **New Features**
@@ -402,6 +416,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.7.1-dev.1 =
+
+(2024/09/10) Fixed an option key warning in `WpssoStyle->admin_register_page_styles()`.
 
 = 18.7.0 =
 
