@@ -14,6 +14,11 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 	class WpssoAdminDashboard {
 
+		private $p;	// Wpsso class object.
+
+		/*
+		 * Instantiated by WpssoAdmin->__construct().
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

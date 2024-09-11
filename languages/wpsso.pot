@@ -6598,83 +6598,83 @@ msgstr ""
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
-#: lib/admin-dashboard.php:33
+#: lib/admin-dashboard.php:38
 msgid "WPSSO Cache Status"
 msgstr ""
 
-#: lib/admin-dashboard.php:37
+#: lib/admin-dashboard.php:42
 msgid "WPSSO Help and Support"
 msgstr ""
 
-#: lib/admin-dashboard.php:40
+#: lib/admin-dashboard.php:45
 msgid "WPSSO Version Information"
 msgstr ""
 
-#: lib/admin-dashboard.php:53
+#: lib/admin-dashboard.php:58
 msgid "Database Transients"
 msgstr ""
 
-#: lib/admin-dashboard.php:58
+#: lib/admin-dashboard.php:63
 msgid "Count"
 msgstr ""
 
-#: lib/admin-dashboard.php:59
+#: lib/admin-dashboard.php:64
 msgid "MB"
 msgstr ""
 
-#: lib/admin-dashboard.php:60
+#: lib/admin-dashboard.php:65
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin-dashboard.php:91
+#: lib/admin-dashboard.php:96
 msgid "disabled"
 msgstr ""
 
-#: lib/admin-dashboard.php:127
+#: lib/admin-dashboard.php:132
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:132
+#: lib/admin-dashboard.php:137
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:137
+#: lib/admin-dashboard.php:142
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:138
+#: lib/admin-dashboard.php:143
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin-dashboard.php:142
+#: lib/admin-dashboard.php:147
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:180 lib/admin-dashboard.php:181
+#: lib/admin-dashboard.php:185 lib/admin-dashboard.php:186
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin-dashboard.php:228
+#: lib/admin-dashboard.php:233
 msgctxt "version label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin-dashboard.php:236
+#: lib/admin-dashboard.php:241
 msgctxt "version label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin-dashboard.php:240
+#: lib/admin-dashboard.php:245
 msgctxt "version label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin-dashboard.php:248
+#: lib/admin-dashboard.php:253
 msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 
-#: lib/admin-dashboard.php:256
+#: lib/admin-dashboard.php:261
 msgid "View %s changelog..."
 msgstr ""
 
