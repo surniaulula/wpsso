@@ -2895,24 +2895,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							$quantity[ $quant_prop_name ] = $delivery_opts[ $opt_key ];
 
-						} else {
-
-							$quant_id .= '--';
-						}
+						} else $quant_id .= '--';
 					}
 
 					if ( ! empty( $quantity ) ) {
-
-						if ( ! isset( $quantity[ 'value' ] ) ) {
-
-							if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
-								$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-
-								$quantity[ 'value' ] = $quantity[ 'minValue' ];
-
-								unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
-							}
-						}
 
 						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
 
