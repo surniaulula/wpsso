@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.7.3-dev.2 (2024/09/11)**
+**Version 18.7.3-rc.1 (2024/09/12)**
 
 * **New Features**
 	* None.
@@ -446,9 +446,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.7.3-dev.2 =
+= 18.7.3-rc.1 =
 
-(2024/09/11) Fixed deprecated creation of dynamic property in `WpssoAdminDashboard`. Fixed Schema transitTime markup to always provide a min/max value for Google.
+(2024/09/12) Fixed deprecated creation of dynamic property in `WpssoAdminDashboard`. Fixed Schema transitTime markup to always provide a min/max value for Google.
 
 = 18.7.2 =
 
