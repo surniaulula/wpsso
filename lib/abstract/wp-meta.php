@@ -1202,7 +1202,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$have_num = 0;
 
 				foreach ( $posts_ids as $post_id ) {
-						
+
 					$have_num++;
 
 					if ( $this->p->debug->enabled ) {
@@ -1212,7 +1212,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$posts_mods[] = $this->p->post->get_mod( $post_id );
 				}
-					
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'retrieved ' . $have_num . ' post mods' );
