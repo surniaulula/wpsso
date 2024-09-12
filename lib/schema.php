@@ -60,21 +60,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function action_init_json_filters() {
 
-			$current_action = current_action();
-
-			if ( 'wpsso_init_json_filters' !== $current_action ) {	// Just in case.
-
-				$this->p->debug->log( 'exiting early: current action ' . $current_action . ' is incorrect' );
-
-				return;
-			}
-
-			static $do_once = null;	// Just in case.
-
-			if ( $do_once ) return;	// Stop here.
-
-			$do_once = true;
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'init json filters' );	// Begin timer.
@@ -97,12 +82,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'init json filters' );	// End timer.
-				
+
 				$this->p->debug->log( 'removing ' . __FUNCTION__ . ' method action' );
 			}
 
 			/*
-			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
+			 * Just in case, unhook the method to make sure Schema filters are only loaded once.
 			 */
 			remove_action( 'wpsso_init_json_filters', array( $this, __FUNCTION__ ), $this->init_json_prio );
 		}
@@ -518,10 +503,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/*
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_json_data(), when the Schema filters are required. The action then unhooks itself so it
-			 * can only be run once.
+			 * WpssoSchema->get_json_data(), when the Schema filters are required.
 			 */
-			do_action( 'wpsso_init_json_filters' );
+			static $do_once = null;
+
+			if ( null === $do_once ) {
+
+				$do_once = true;
+
+				do_action( 'wpsso_init_json_filters' );
+			}
 
 			if ( empty( $page_type_id ) ) {
 

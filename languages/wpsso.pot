@@ -5730,25 +5730,25 @@ msgid "Pinterest Pin It"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:447
-#: lib/schema.php:114 lib/std/admin/advanced.php:423
+#: lib/schema.php:99 lib/std/admin/advanced.php:423
 msgctxt "option label"
 msgid "Schema 1:1 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:452
-#: lib/schema.php:119 lib/std/admin/advanced.php:428
+#: lib/schema.php:104 lib/std/admin/advanced.php:428
 msgctxt "option label"
 msgid "Schema 4:3 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:457
-#: lib/schema.php:124 lib/std/admin/advanced.php:433
+#: lib/schema.php:109 lib/std/admin/advanced.php:433
 msgctxt "option label"
 msgid "Schema 16:9 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:68 lib/pro/admin/advanced.php:462
-#: lib/schema.php:129 lib/std/admin/advanced.php:438
+#: lib/schema.php:114 lib/std/admin/advanced.php:438
 msgctxt "option label"
 msgid "Schema Thumbnail"
 msgstr ""
@@ -14349,26 +14349,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:717
+#: lib/schema.php:708
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2161
+#: lib/schema.php:2152
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2336
+#: lib/schema.php:2327
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2363
+#: lib/schema.php:2354
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3952
+#: lib/schema.php:3943
 msgid "checking schema properties"
 msgstr ""
 
