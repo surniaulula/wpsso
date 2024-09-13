@@ -482,6 +482,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'build schema array' );	// End timer.
+
+				$this->p->debug->log( 'applying filters "wpsso_schema_scripts"' );
 			}
 
 			$schema_scripts = apply_filters( 'wpsso_schema_scripts', $schema_scripts, $mod, $mt_og );
@@ -510,6 +512,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( null === $do_once ) {
 
 				$do_once = true;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'doing action "wpsso_init_json_filters"' );
+				}
 
 				do_action( 'wpsso_init_json_filters' );
 			}
@@ -564,7 +571,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'applying filters "' . $data_filter_name . '"' );
+							$this->p->debug->log( 'applying filters "' . $valid_filter_name . '"' );
 						}
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
@@ -908,6 +915,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters "wpsso_schema_type"' );
+			}
+
 			$type_id = apply_filters( 'wpsso_schema_type', $type_id, $mod, $is_custom );
 
 			$get_value = false;
@@ -1042,6 +1054,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/*
 					 * Filtered array.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying filters "wpsso_schema_types"' );
+					}
+
 					$this->types_cache[ 'filtered' ] = apply_filters( 'wpsso_schema_types', $this->p->cf[ 'head' ][ 'schema_type' ] );
 
 					/*
@@ -2775,6 +2792,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$main_prop = $mod[ 'is_attachment' ] ? $mod[ 'post_mime_group' ] : '';
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_media_main_prop"' );
+			}
+
 			$main_prop = apply_filters( 'wpsso_json_media_main_prop', $main_prop, $mod );
 
 			if ( ! empty( $main_prop ) ) {
@@ -3379,7 +3401,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else return false;
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $type . '_options' );
-			$type_opts   = apply_filters( $filter_name, false, $mod, $type_id );
+			
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			$type_opts = apply_filters( $filter_name, false, $mod, $type_id );
 
 			if ( ! empty( $type_opts ) ) {
 
