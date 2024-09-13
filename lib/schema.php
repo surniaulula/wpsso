@@ -3401,7 +3401,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else return false;
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $type . '_options' );
-			
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'applying filters "' . $filter_name . '"' );
