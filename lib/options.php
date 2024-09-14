@@ -596,9 +596,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opts[ $key . ':disabled' ] = true;
 
-				if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
+				if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {	// Check for changes.
 
-					$opts[ $key ] = $val;
+					$opts[ $key ] = $val;	// Update the option value.
 
 					$save_changes = true;	// Save the options.
 				}
@@ -869,7 +869,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *
 			 * $network is true if we're saving the multisite network settings.
 			 *
-			 * $is_option_upg is true when the option versions, not the plugin versions, have changed.
+			 * $is_option_upg is true when the options versions, not the plugin versions, have changed.
 			 *
 			 * Also applied by WpssoAdmin->settings_sanitation().
 			 * Also applied by WpssoAdmin->save_site_settings().
@@ -1366,6 +1366,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Apply a second more specific filter to customize the option type for a single base key.
 			 */
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_option_type_' . $base_key );
+
 			$option_type = apply_filters( $filter_name, $option_type, $network, $mod );
 
 			/*
