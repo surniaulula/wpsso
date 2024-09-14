@@ -289,7 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added support for a transation status in the update option data.
 * **Requires At Least**
 	* PHP v7.2.34.
 	* WordPress v5.8.
@@ -462,7 +462,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.8.0-dev.2 =
 
-(2024/09/14) None.
+(2024/09/14) Added support for a transation status in the update option data.
 
 = 18.7.3 =
 
