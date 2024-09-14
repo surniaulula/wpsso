@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.8.0-rc.1 (2024/09/14)**
+**Version 18.8.0-rc.2 (2024/09/15)**
 
 * **New Features**
 	* None.
@@ -354,9 +354,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.8.0-rc.1 =
+= 18.8.0-rc.2 =
 
-(2024/09/14) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transation status in the update option data.
+(2024/09/15) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transation status in the update option data.
 
 = 18.7.3 =
 
