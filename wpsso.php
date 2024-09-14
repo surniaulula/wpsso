@@ -15,7 +15,7 @@
  * Requires At Least: 5.8
  * Tested Up To: 6.6.2
  * WC Tested Up To: 9.3.1
- * Version: 18.7.3
+ * Version: 18.8.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -205,10 +205,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$this->options = false;
 
-			} else {
-
-				$this->options = get_option( WPSSO_OPTIONS_NAME );
-			}
+			} else $this->options = get_option( WPSSO_OPTIONS_NAME );
 
 			if ( ! is_array( $this->options ) ) {
 
@@ -857,7 +854,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
 					case ( preg_match( '/_(key|secret|tid|token)$/', $key ) ? true : false ):
 
-						$opts[ $key ] = '[removed]';
+						if ( '' !== $opts[ $key ] ) $opts[ $key ] = '[removed]';
 
 						break;
 				}
