@@ -976,8 +976,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v9.1.2.
-		 *
 		 * Returns the schema type URL.
 		 */
 		public function get_mod_schema_type_url( array $mod, $use_md_opts = true ) {
@@ -991,8 +989,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v15.8.0.
-		 *
 		 * Refresh the Schema types transient cache.
 		 */
 		public function refresh_schema_types() {
