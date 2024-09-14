@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin data
 			 * than what's available from the readme.txt.
 			 */
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {
 
 				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );
 			}
