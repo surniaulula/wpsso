@@ -8,8 +8,8 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, woocommerce, google search console, seo, meta tags
 Contributors: jsmoriss
-Requires PHP: 7.2.34
-Requires At Least: 5.8
+Requires PHP: 7.4.33
+Requires At Least: 5.9
 Tested Up To: 6.6.2
 WC Tested Up To: 9.3.1
 Stable Tag: 18.7.3
@@ -291,8 +291,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added support for an update transation status in the update option data.
 * **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
+	* PHP v7.4.33.
+	* WordPress v5.9.
 
 **Version 18.7.3 (2024/09/12)**
 
@@ -351,113 +351,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.34.
 	* WordPress v5.8.
 
-**Version 18.6.0 (2024/08/29)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a body tag CSS class for the current webpage information (example: 'wpsso-post-123-type-page').
-* **Bugfixes**
-	* Fixed the 'wpsso_head_disable' filter.
-* **Developer Notes**
-	* Added a new `WpssoHead->get_head_array_disabled()` method.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.5.0 (2024/08/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new 'wpsso_cache_refresh_scheduled' action.
-	* Added a new 'wpsso_init_objects_preloader' action.
-	* Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.4.0 (2024/08/22)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Updated `WpssoUtil->get_html_head_meta()` to pass content to `mb_convert_encoding()` by reference.
-	* Refactored the `WpssoLoader->load_dist()` method.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.3.0 (2024/08/20)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new 'wpsso_og_add_media_throttle_secs' filter (default is 5 seconds).
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.2.0 (2024/08/17)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated colors for checkbox slider options.
-	* Updated the responsive width of the submit buttons fixed toolbar.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.1.1 (2024/08/16)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Moved settings page submit buttons to a fixed toolbar.
-* **Bugfixes**
-	* Fixed a possible undefined error for "$input_checked" in `SucomForm->get_checklist()`.
-* **Developer Notes**
-	* Removed deprecated methods from the `SucomUtil` class.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.0.0 (2024/08/15)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added three widgets to the WP Dashboard page:
-		* WPSSO Cache Status
-		* WPSSO Help and Support
-		* WPSSO Version Information
-	* Replaced checkbox options with slider options.
-	* Removed the SSO &gt; Dashboard settings page.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
 == Upgrade Notice ==
 
 = 18.8.0-b.1 =
@@ -479,32 +372,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 18.7.0 =
 
 (2024/09/07) Added an SSO &gt; Troubleshooting page.
-
-= 18.6.0 =
-
-(2024/08/29) Added a body tag CSS class for the current webpage information (example: 'wpsso-post-123-type-page'). Fixed the 'wpsso_head_disable' filter.
-
-= 18.5.0 =
-
-(2024/08/25) Removed the `Wpsso->$m` and `Wpsso->$m_ext` variables.
-
-= 18.4.0 =
-
-(2024/08/22) Updated `WpssoUtil->get_html_head_meta()` to pass content to `mb_convert_encoding()` by reference. 
-
-= 18.3.0 =
-
-(2024/08/20) Added a new 'wpsso_og_add_media_throttle_secs' filter (default is 5 seconds).
-
-= 18.2.0 =
-
-(2024/08/17) Updated colors for checkbox slider options. Updated the responsive width of the submit buttons fixed toolbar.
-
-= 18.1.1 =
-
-(2024/08/16) Moved settings page submit buttons to a fixed toolbar. Removed deprecated methods from the `SucomUtil` class.
-
-= 18.0.0 =
-
-(2024/08/15) Added three widgets to the WP Dashboard page. Replaced checkbox options with slider options. Removed the SSO &gt; Dashboard settings page.
 
