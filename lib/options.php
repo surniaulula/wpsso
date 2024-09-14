@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/*
-				 * Check for invalid tnx status.
+				 * Check for invalid update transaction status.
 				 */
 				if ( class_exists( 'WpssoUmConfig' ) ) {
 
