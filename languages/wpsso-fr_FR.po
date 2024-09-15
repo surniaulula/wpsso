@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-09-15 10:08-0700\n"
+"PO-Revision-Date: 2024-09-15 11:20-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -51,7 +51,7 @@ msgstr "Messages de débogage HTML"
 #: gettext/gettext-html-debug.php:12
 msgctxt "html paragraph"
 msgid "The WPSSO Core plugin and its add-ons follow all recommended WordPress coding practices, but on occasion it may break <em>other</em> themes or plugins that do not. This troubleshooting guide will help you identify and mitigate some common issues."
-msgstr "L'extension WPSSO Core et ses ajouts respectent toutes les pratiques de codage recommandées par WordPress, mais il arrive parfois qu'elles perturbent d'autres thèmes ou extensions qui ne le font pas. Ce guide de dépannage vous aidera à identifier et à atténuer certains problèmes courants."
+msgstr "L'extension WPSSO Core et ses ajouts respectent toutes les pratiques de codage recommandées par WordPress, mais il arrive parfois qu'elles perturbent <em>d'autres</em> thèmes ou extensions qui ne le font pas. Ce guide de dépannage vous aidera à identifier et à atténuer certains problèmes courants."
 
 #: gettext/gettext-html-debug.php:13
 msgctxt "html paragraph"
@@ -96,7 +96,7 @@ msgstr "Consultez l'article \"<a href=\"https://make.wordpress.org/plugins/2017/
 #: gettext/gettext-html-debug.php:21
 msgctxt "html paragraph"
 msgid "Under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration</em> tab, you can uncheck the \"Use Filtered Content\" and \"Use Filtered Excerpt\" options to see if your problem is related to a WordPress filter hook. If disabling these options fixes the problem, <strong>you should determine which theme or plugin is at fault and report the issue with to theme or plugin authors</strong>. Using the WordPress <code>apply_filters()</code> function should not create timeout or layout issues."
-msgstr "Sous l'onglet <em>SSO &gt; Réglages avancés &gt; Réglages de l'extension &gt; Intégration</em>, vous pouvez décocher les options \"Utiliser le contenu filtré\" et \"Utiliser l'extrait filtré\" pour voir si votre problème est lié à un crochet de filtre WordPress. Si la désactivation de ces options résout le problème, vous devez déterminer quel thème ou quelle extension est en cause et signaler le problème aux auteurs du thème ou de l'extension. L'utilisation de la fonction WordPress <code>apply_filters()</code> ne devrait pas créer de problèmes de délai d'attente ou de mise en page."
+msgstr "Sous l'onglet <em>SSO &gt; Réglages avancés &gt; Réglages de l'extension &gt; Intégration</em>, vous pouvez décocher les options \"Utiliser le contenu filtré\" et \"Utiliser l'extrait filtré\" pour voir si votre problème est lié à un crochet de filtre WordPress. Si la désactivation de ces options résout le problème, <strong>vous devez déterminer quel thème ou quelle extension est en cause et signaler le problème aux auteurs du thème ou de l'extension</strong>. L'utilisation de la fonction WordPress <code>apply_filters()</code> ne devrait pas créer de problèmes de délai d'attente ou de mise en page."
 
 #: gettext/gettext-html-debug.php:22
 msgctxt "html paragraph"
