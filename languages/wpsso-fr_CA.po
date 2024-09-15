@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-09-15 09:33-0700\n"
+"PO-Revision-Date: 2024-09-15 10:00-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -50,8 +50,8 @@ msgstr "Messages de débogage HTML"
 
 #: gettext/gettext-html-debug.php:12
 msgctxt "html paragraph"
-msgid "The WPSSO plugin and its add-ons follow all recommended WordPress coding practices, but on occasion it may break <em>other</em> themes or plugins that do not. This troubleshooting guide will help you identify and mitigate some common issues."
-msgstr ""
+msgid "The WPSSO Core plugin and its add-ons follow all recommended WordPress coding practices, but on occasion it may break <em>other</em> themes or plugins that do not. This troubleshooting guide will help you identify and mitigate some common issues."
+msgstr "L'extension WPSSO Core et ses ajouts respectent toutes les pratiques de codage recommandées par WordPress, mais il arrive parfois qu'elles perturbent d'autres thèmes ou extensions qui ne le font pas. Ce guide de dépannage vous aidera à identifier et à atténuer certains problèmes courants."
 
 #: gettext/gettext-html-debug.php:13
 msgctxt "html paragraph"
@@ -61,12 +61,12 @@ msgstr "Si vous rencontrez des problèmes avec votre site WordPress, liés ou no
 #: gettext/gettext-html-debug.php:14
 msgctxt "html paragraph"
 msgid "Since the advent of page builders and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and are not easily diagnosed using standard WordPress debugging methods (like defining the WordPress WP_DEBUG constant and using the Query Monitor plugin)."
-msgstr ""
+msgstr "Depuis l'avènement des générateurs de pages et du nouvel éditeur de blocs dans WordPress v5, les erreurs JavaScript et jQuery sont devenues plus courantes et ne sont pas facilement diagnostiquées à l'aide des méthodes de débogage WordPress standard (comme la définition de la constante WordPress WP_DEBUG et l'utilisation de l'extension Query Monitor)."
 
 #: gettext/gettext-html-debug.php:15
 msgctxt "html paragraph"
 msgid "To view JavaScript and jQuery related errors, you must enable your web browser's console, and how you do that depends on the web browser you use (<a href=\"https://www.google.com/search?q=open+the+browser+javascript+console\">see this Google search result for more information on that</a>). It's definitely worth enabling your web browser's console to make sure there are no JavaScript and jQuery errors. If there are, you can select the error and <a href=\"https://surniaulula.com/support/\">copy-paste the error text into a new support ticket</a> (<em>please do not submit screenshots as text in an image is not text</em>). ;-) JavaScript and jQuery errors are probably not caused by WPSSO Core or its add-ons, but we're happy to help you diagnose the issue and propose a solution."
-msgstr ""
+msgstr "Pour afficher les erreurs liées à JavaScript et jQuery, vous devez activer la console de votre navigateur Web. La manière de procéder dépend du navigateur Web que vous utilisez (<a href=\"https://www.google.com/search?q=open+the+browser+javascript+console\">consultez ce résultat de recherche Google pour plus d'informations à ce sujet</a>). Il est certainement utile d'activer la console de votre navigateur Web pour vous assurer qu'il n'y a pas d'erreurs JavaScript et jQuery. S'il y en a, vous pouvez sélectionner l'erreur et <a href=\"https://surniaulula.com/support/\">copier-coller le texte d'erreur dans un nouveau billet d'assistance</a> (<em>veuillez ne pas envoyer de captures d'écran car le texte d'une image n'est pas du texte</em>). ;-) Les erreurs JavaScript et jQuery ne sont probablement pas causées par WPSSO Core ou ses ajouts, mais nous sommes heureux de vous aider à diagnostiquer le problème et à proposer une solution."
 
 #: gettext/gettext-html-debug.php:16
 msgctxt "html paragraph"
@@ -81,27 +81,27 @@ msgstr "Certaines versions plus anciennes de PHP sont connues pour avoir des bug
 #: gettext/gettext-html-debug.php:18
 msgctxt "html paragraph"
 msgid "Related FAQ: <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing or misaligned?</a>"
-msgstr ""
+msgstr "FAQ associée: <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants ou mal alignés?</a>"
 
 #: gettext/gettext-html-debug.php:19
 msgctxt "html paragraph"
-msgid "WordPress allows plugins and themes to hook hundreds of different filters to manage the Post / Page content (some of these filters are called by WordPress to expand shortcodes, for example). WordPress generally calls a filter (like 'the_content') once to expand text for a given post within the loop or a single webpage. As a consequence, some authors mistakenly assume that a filter they have created will only be executed once for a given post, and only within the webpage body or specific area. WordPress filters are available to any theme or plugin that needs to expand text (title, excerpt, content, etc.), and in any context (header, loop, widget, admin, etc.). WPSSO uses 'the_content' filter to locate media elements within the content and to provide complete and accurate description meta tags."
-msgstr ""
+msgid "WordPress allows themes and plugins to hook hundreds of different filters to manage the Post / Page content (some of these filters are called by WordPress to expand shortcodes, for example). WordPress generally calls a filter (like 'the_content') once to expand text for a given post within the loop or a single webpage. As a consequence, some authors mistakenly assume that a filter they have created will only be executed once for a given post, and only within the webpage body or specific area. WordPress filters are available to any theme or plugin that needs to expand text (title, excerpt, content, etc.), and in any context (header, loop, widget, admin, etc.). WPSSO uses 'the_content' filter to locate media elements within the content and to provide complete and accurate description meta tags."
+msgstr "WordPress permet aux thèmes et aux extensions d'utiliser des centaines de filtres différents pour gérer le contenu des articles/pages (certains de ces filtres sont appelés par WordPress pour développer les codes courts, par exemple). WordPress appelle généralement un filtre (comme \"the_content\") une fois pour développer le texte d'un article donné dans la boucle ou une seule page Web. En conséquence, certains auteurs supposent à tort qu'un filtre qu'ils ont créé ne sera exécuté qu'une seule fois pour un article donné, et uniquement dans le corps de la page Web ou dans une zone spécifique. Les filtres WordPress sont disponibles pour tout thème ou extension qui doit développer du texte (titre, extrait, contenu, etc.), et dans n'importe quel contexte (en-tête, boucle, widget, administrateur, etc.). WPSSO utilise le filtre \"the_content\" pour localiser les éléments multimédias dans le contenu et pour fournir des balises méta de description complètes et précises."
 
 #: gettext/gettext-html-debug.php:20
 msgctxt "html paragraph"
 msgid "See the \"<a href=\"https://make.wordpress.org/plugins/2017/10/03/is-your-filter-going-to-break-the-layout/\">Is your filter going to break the layout?</a>\" post on the Make WordPress Plugins blog for additional information on the use (and common misuse) of 'the_content' filter by developers."
-msgstr ""
+msgstr "Consultez l'article \"<a href=\"https://make.wordpress.org/plugins/2017/10/03/is-your-filter-going-to-break-the-layout/\">Votre filtre va-t-il casser la mise en page?</a>\" sur le blog Make WordPress Plugins pour obtenir des informations supplémentaires sur l'utilisation (et l'utilisation abusive courante) du filtre \"the_content\" par les développeurs."
 
 #: gettext/gettext-html-debug.php:21
 msgctxt "html paragraph"
-msgid "Under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration</em> tab, you can uncheck the \"Use Filtered Content\" and \"Use Filtered Excerpt\" options to see if your problem is related to a WordPress filter hook. If unchecking these options fixes your problem, <strong>you should determine which plugin or theme is at fault and report the issue with the plugin or theme author</strong>. Using the WordPress <code>apply_filters()</code> function should not create timeout or HTML page layout issues."
-msgstr ""
+msgid "Under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration</em> tab, you can uncheck the \"Use Filtered Content\" and \"Use Filtered Excerpt\" options to see if your problem is related to a WordPress filter hook. If disabling these options fixes the problem, <strong>you should determine which theme or plugin is at fault and report the issue with to theme or plugin authors</strong>. Using the WordPress <code>apply_filters()</code> function should not create timeout or layout issues."
+msgstr "Sous l'onglet <em>SSO &gt; Réglages avancés &gt; Réglages de l'extension &gt; Intégration</em>, vous pouvez décocher les options \"Utiliser le contenu filtré\" et \"Utiliser l'extrait filtré\" pour voir si votre problème est lié à un crochet de filtre WordPress. Si la désactivation de ces options résout le problème, vous devez déterminer quel thème ou quelle extension est en cause et signaler le problème aux auteurs du thème ou de l'extension. L'utilisation de la fonction WordPress <code>apply_filters()</code> ne devrait pas créer de problèmes de délai d'attente ou de mise en page."
 
 #: gettext/gettext-html-debug.php:22
 msgctxt "html paragraph"
 msgid "If you disable the content filter, <em>and your Post / Page content relies on shortcodes for its text</em>, then you may find that WPSSO cannot create accurate descriptions for its meta tags and Schema markup. WPSSO looks for custom descriptions and excerpts before falling back to using the content text. If the the \"Use Filtered Content\" option is disabled, and the content relies on shortcodes for its text, then you may have to enter custom descriptions and excerpts for those Posts / Pages."
-msgstr ""
+msgstr "Si vous désactivez le filtre de contenu, et que le contenu de votre article/page repose sur des codes courts pour son texte, vous constaterez peut-être que WPSSO ne peut pas créer de descriptions précises pour ses balises méta et son balisage de schéma. WPSSO recherche des descriptions et des extraits personnalisés avant de revenir à l'utilisation du texte du contenu. Si l'option \"Utiliser le contenu filtré\" est désactivée, et que le contenu repose sur des codes courts pour son texte, vous devrez peut-être saisir des descriptions et des extraits personnalisés pour ces articles/pages."
 
 #: gettext/gettext-html-debug.php:23
 msgctxt "html paragraph"
@@ -111,22 +111,22 @@ msgstr "L'activation du journal de débogage PHP et WordPress (alias WP_DEBUG) e
 #: gettext/gettext-html-debug.php:24
 msgctxt "html paragraph"
 msgid "You can turn on/off the WordPress debug log by changing <code>WP_DEBUG</code>'s value from <code>true</code> to <code>false</code>."
-msgstr ""
+msgstr "Vous pouvez activer/désactiver le journal de débogage WordPress en modifiant la valeur de <code>WP_DEBUG</code> de <code>true</code> à <code>false</code>."
 
 #: gettext/gettext-html-debug.php:25
 msgctxt "html paragraph"
 msgid "The default location of the <code>debug.log</code> file can be changed by specifying a file path for the <code>WP_DEBUG_LOG</code> value."
-msgstr ""
+msgstr "L'emplacement par défaut du fichier <code>debug.log</code> peut être modifié en spécifiant un chemin de fichier pour la valeur <code>WP_DEBUG_LOG</code>."
 
 #: gettext/gettext-html-debug.php:26
 msgctxt "html paragraph"
-msgid "Any WordPress or PHP error messages will be saved to the <code>wordpress/wp-content/debug.log</code> file by default. If you have several badly coded and/or old plugins and themes that generate a lot of errors, make sure you clear the contents / rotate this file regularly, as it could grow large enough to fill a filesystem. In all cases, you should endeavour to resolve all warnings and errors in the debug.log file."
-msgstr "Par défaut, tous les messages d'erreur WordPress ou PHP seront enregistrés dans le fichier <code>wordpress/wp-content/debug.log</code>. Si vous avez plusieurs extensions et thèmes mal codés et/ou anciens qui génèrent beaucoup d'erreurs, assurez-vous de vider le contenu/de faire tourner ce fichier régulièrement, car il pourrait devenir suffisamment volumineux pour remplir un système de fichiers. Dans tous les cas, vous devez vous efforcer de résoudre tous les avertissements et erreurs dans le fichier debug.log."
+msgid "Any WordPress or PHP error messages will be saved to the <code>wordpress/wp-content/debug.log</code> file by default. If you have several badly coded and/or old themes and plugins that generate a lot of errors, make sure you clear the contents / rotate this file regularly, as it could grow large enough to fill a filesystem. In all cases, you should endeavour to resolve all warnings and errors in the debug.log file."
+msgstr "Par défaut, tous les messages d'erreur WordPress ou PHP seront enregistrés dans le fichier <code>wordpress/wp-content/debug.log</code>. Si vous avez plusieurs thèmes et extensions mal codés et/ou anciens qui génèrent beaucoup d'erreurs, assurez-vous de vider le contenu/de faire tourner ce fichier régulièrement, car il pourrait devenir suffisamment volumineux pour remplir un système de fichiers. Dans tous les cas, vous devez vous efforcer de résoudre tous les avertissements et erreurs dans le fichier debug.log."
 
 #: gettext/gettext-html-debug.php:27
 msgctxt "html paragraph"
 msgid "In some instances, WPSSO support may request that you enable the \"Add HTML Debug Messages\" and \"Disable Cache for Debugging\" options under the <em>SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Plugin Admin</em> tab to investigate an issue specific to your site (ie. that cannot be reproduced on a test site). After enabling the \"Add HTML Debug Messages\" and \"Disable Cache for Debugging\" options, the WPSSO Core plugin and its add-ons will include debug messages as HTML comments in your webpages. If you use an optimization plugin or service to remove HTML comments from your webpages (a feature that can also be part of a caching plugin or service), you will need to disabled that feature. Once WPSSO support has investigated the issue, you can disable the \"Add HTML Debug Messages\" and \"Disable Cache for Debugging\" options and re-enable any HTML optimization features."
-msgstr ""
+msgstr "Dans certains cas, le support WPSSO peut vous demander d'activer les options \"Ajouter messages de débogage HTML\" et \"Désactiver le cache pour débogage\" sous l'onglet <em>SSO &gt; Réglages avancés &gt; Réglages de l'extension &gt; Admin d'extension</em> pour examiner un problème spécifique à votre site (c'est-à-dire qui ne peut pas être reproduit sur un site de test). Après avoir activé les options \"Ajouter messages de débogage HTML\" et \"Désactiver le cache pour débogage\", l'extension WPSSO Core et ses ajouts incluront les messages de débogage sous forme de commentaires HTML dans vos pages Web. Si vous utilisez une extension ou un service d'optimisation pour supprimer les commentaires HTML de vos pages Web (une fonctionnalité qui peut également faire partie d'une extension ou d'un service de mise en cache), vous devrez désactiver cette fonctionnalité. Une fois que le support WPSSO a examiné le problème, vous pouvez désactiver les options \"Ajouter messages de débogage HTML\" et \"Désactiver le cache pour débogage\" et réactiver toutes les fonctionnalités d'optimisation HTML."
 
 #: gettext/gettext-html-debug.php:28
 msgctxt "html list item"
@@ -231,7 +231,7 @@ msgstr "Recherchez l'icône de notification SSO dans la barre d'outils d'adminis
 #: gettext/gettext-html-setup.php:20
 msgctxt "html paragraph"
 msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the \"Screen Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
-msgstr "Sur la plupart des pages d'administration WordPress, vous trouverez un onglet déroulant \"Options d'écran\" dans le coin supérieur droit de la page. Vous pouvez utiliser ces options d'écran pour inclure ou exclure des métaboxes et des colonnes spécifiques de la page actuelle. Par exemple, lorsque vous consultez la liste des articles ou des pages, vous pouvez utiliser le menu déroulant \"Options d'écran\" pour masquer / afficher les colonnes \"Schéma\" et \"Image SSO\". Vous pouvez également activer ou désactiver ces colonnes globalement sous l'onglet <em><strong>SSO &gt; Paramètres avancés &gt; Interface</strong></em>."
+msgstr "Sur la plupart des pages d'administration WordPress, vous trouverez un onglet déroulant \"Options d'écran\" dans le coin supérieur droit de la page. Vous pouvez utiliser ces options d'écran pour inclure ou exclure des métaboxes et des colonnes spécifiques de la page actuelle. Par exemple, lorsque vous consultez la liste des articles ou des pages, vous pouvez utiliser le menu déroulant \"Options d'écran\" pour masquer / afficher les colonnes \"Schéma\" et \"Image SSO\". Vous pouvez également activer ou désactiver ces colonnes globalement sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Interface</strong></em>."
 
 #: gettext/gettext-html-setup.php:21
 msgctxt "html paragraph"
