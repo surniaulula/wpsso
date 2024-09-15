@@ -32,9 +32,9 @@
 
 <h3>HTTP Error Code 5xx</h3>
 
-<p>A web server may display an HTTP 5xx error page (500, 502, etc.) with a generic error message. This error message is generic on purpose - the actual details of the error can be found in the web server's error log. The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you can get the error details from the web server's error log. This will tell you what caused the HTTP 5xx error code.<p>
+<p>A web server may display an HTTP 5xx error page (500, 502, etc.) with a generic error message. This error message is generic on purpose - the actual details of the error can be found in the web server's error log. The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you can get the error details from the web server's error log. This will tell you what caused the HTTP 5xx error code.</p>
 
-<p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO may be triggering a bug in your theme or another plugin (try disabling WPSSO's use of the WordPress content filter as suggested below).</p>
+<p>Some older versions of PHP are known to have bugs in their ImageMagick library, or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO may be triggering a bug in your theme or another plugin (try disabling WPSSO's use of the WordPress content filter as suggested below).</p>
 
 <a name="timeout-or-layout-issues"></a>
 <a name="performance-or-layout-issues"></a>
@@ -63,7 +63,7 @@
 
 <h3>WordPress and PHP Error Messages</h3>
 
-<p>Enabling the PHP and WordPress debug log (aka WP_DEBUG) is common and very useful. Your theme and/or badly coded plugins may be generating hundreds of PHP and WordPress errors, and you would never know unless you enabled the WordPress debug log. To enable the WordPress debug log, without displaying those errors to your visitors, add the following to your <code>wp-config.php</code> file. <em>Make sure you do not already have a <code>define()</code> for <code>WP_DEBUG</code>, <code>WP_DEBUG_LOG</code>, or <code>WP_DEBUG_DISPLAY</code> in your <code>wp-config.php</code> file</em> (as constants can only be defined once). If you do, you can safely remove them and replace those lines with the following:</p>
+<p>Enabling the PHP and WordPress debug log (aka WP_DEBUG) is a common practice and very useful. Your theme and/or badly coded plugins may be generating hundreds of PHP and WordPress errors, and you would never know unless you enabled the WordPress debug log. To enable the WordPress debug log, without displaying those errors to your visitors, add the following to your <code>wp-config.php</code> file. <em>Make sure you do not already have a <code>define()</code> for <code>WP_DEBUG</code>, <code>WP_DEBUG_LOG</code>, or <code>WP_DEBUG_DISPLAY</code> in your <code>wp-config.php</code> file</em> (as PHP constants can only be defined once). If you do, you can safely remove them and replace those lines with the following:</p>
 
 <pre>
 define( 'WP_DEBUG', true );
