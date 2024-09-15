@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-09-15 10:00-0700\n"
+"PO-Revision-Date: 2024-09-15 10:08-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -101,12 +101,12 @@ msgstr "Sous l'onglet <em>SSO &gt; Réglages avancés &gt; Réglages de l'extens
 #: gettext/gettext-html-debug.php:22
 msgctxt "html paragraph"
 msgid "If you disable the content filter, <em>and your Post / Page content relies on shortcodes for its text</em>, then you may find that WPSSO cannot create accurate descriptions for its meta tags and Schema markup. WPSSO looks for custom descriptions and excerpts before falling back to using the content text. If the the \"Use Filtered Content\" option is disabled, and the content relies on shortcodes for its text, then you may have to enter custom descriptions and excerpts for those Posts / Pages."
-msgstr "Si vous désactivez le filtre de contenu, et que le contenu de votre article/page repose sur des codes courts pour son texte, vous constaterez peut-être que WPSSO ne peut pas créer de descriptions précises pour ses balises méta et son balisage de schéma. WPSSO recherche des descriptions et des extraits personnalisés avant de revenir à l'utilisation du texte du contenu. Si l'option \"Utiliser le contenu filtré\" est désactivée, et que le contenu repose sur des codes courts pour son texte, vous devrez peut-être saisir des descriptions et des extraits personnalisés pour ces articles/pages."
+msgstr "Si vous désactivez le filtre de contenu, <em>et que le contenu de votre article/page repose sur des codes courts pour son texte</em>, vous constaterez peut-être que WPSSO ne peut pas créer de descriptions précises pour ses balises méta et son balisage de schéma. WPSSO recherche des descriptions et des extraits personnalisés avant de revenir à l'utilisation du texte du contenu. Si l'option \"Utiliser le contenu filtré\" est désactivée, et que le contenu repose sur des codes courts pour son texte, vous devrez peut-être saisir des descriptions et des extraits personnalisés pour ces articles/pages."
 
 #: gettext/gettext-html-debug.php:23
 msgctxt "html paragraph"
 msgid "Enabling the PHP and WordPress debug log (aka WP_DEBUG) is a common practice and very useful. Your theme and/or badly coded plugins may be generating hundreds of PHP and WordPress errors, and you would never know unless you enabled the WordPress debug log. To enable the WordPress debug log, without displaying those errors to your visitors, add the following to your <code>wp-config.php</code> file. <em>Make sure you do not already have a <code>define()</code> for <code>WP_DEBUG</code>, <code>WP_DEBUG_LOG</code>, or <code>WP_DEBUG_DISPLAY</code> in your <code>wp-config.php</code> file</em> (as PHP constants can only be defined once). If you do, you can safely remove them and replace those lines with the following:"
-msgstr "L'activation du journal de débogage PHP et WordPress (alias WP_DEBUG) est une pratique courante et très utile. Votre thème et/ou vos extensions mal codées peuvent générer des centaines d'erreurs PHP et WordPress, et vous ne le saurez jamais à moins d'activer le journal de débogage WordPress. Pour activer le journal de débogage WordPress, sans afficher ces erreurs à vos visiteurs, ajoutez ce qui suit à votre fichier <code>wp-config.php</code>. <em>Assurez-vous que vous n'avez pas déjà un <code>define()</code> pour <code>WP_DEBUG</code>, <code>WP_DEBUG_LOG</code> ou <code>WP_DEBUG_DISPLAY</code> dans votre fichier <code>wp-config.php</code> (car les constantes PHP ne peuvent être définies qu'une seule fois). Si c'est le cas, vous pouvez les supprimer en toute sécurité et remplacer ces lignes par ce qui suit:"
+msgstr "L'activation du journal de débogage PHP et WordPress (alias WP_DEBUG) est une pratique courante et très utile. Votre thème et/ou vos extensions mal codées peuvent générer des centaines d'erreurs PHP et WordPress, et vous ne le saurez jamais à moins d'activer le journal de débogage WordPress. Pour activer le journal de débogage WordPress, sans afficher ces erreurs à vos visiteurs, ajoutez ce qui suit à votre fichier <code>wp-config.php</code>. <em>Assurez-vous que vous n'avez pas déjà un <code>define()</code> pour <code>WP_DEBUG</code>, <code>WP_DEBUG_LOG</code> ou <code>WP_DEBUG_DISPLAY</code> dans votre fichier <code>wp-config.php</code></em> (car les constantes PHP ne peuvent être définies qu'une seule fois). Si c'est le cas, vous pouvez les supprimer en toute sécurité et remplacer ces lignes par ce qui suit:"
 
 #: gettext/gettext-html-debug.php:24
 msgctxt "html paragraph"
