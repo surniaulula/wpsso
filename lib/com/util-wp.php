@@ -2469,7 +2469,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/16.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
 
@@ -2486,7 +2486,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$is_multisite = is_multisite();
 
 			if ( $is_multisite && ! empty( $blog_id ) ) {
-			
+
 				switch_to_blog( $blog_id );
 			}
 
@@ -2525,7 +2525,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 					$db_url = self::raw_do_option( $action = 'get', $opt_name = 'home' );
 
 					if ( $db_url !== $url ) {
-					
+
 						self::raw_do_option( $action = 'update', $opt_name = 'home', $url );
 					}
 				}
@@ -2534,7 +2534,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = self::raw_do_option( $action = 'get', $opt_name = 'home' );
 
 			if ( $is_multisite && ! empty( $blog_id ) ) {
-			
+
 				restore_current_blog();
 			}
 
@@ -2557,7 +2557,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Unfiltered version of site_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/16.
 		 */
 		public static function raw_site_url( $path = '', $scheme = null ) {
 
@@ -2574,7 +2574,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$is_multisite = is_multisite();
 
 			if ( $is_multisite && ! empty( $blog_id ) ) {
-			
+
 				switch_to_blog( $blog_id );
 			}
 
@@ -2613,7 +2613,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 					$db_url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
 
 					if ( $db_url !== $url ) {
-					
+
 						self::raw_do_option( $action = 'update', $opt_name = 'siteurl', $url );
 					}
 				}
@@ -2622,7 +2622,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
 
 			if ( $is_multisite && ! empty( $blog_id ) ) {
-			
+
 				restore_current_blog();
 			}
 
@@ -2639,7 +2639,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/16.
 		 */
 		private static function raw_set_url_scheme( $url, $scheme = null ) {
 
@@ -2658,7 +2658,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$url = trim( $url );
 
-			if ( substr( $url, 0, 2 ) === '//' ) {
+			if ( str_starts_with( $url, '//' ) ) {
 
 				$url = 'http:' . $url;
 			}

@@ -549,32 +549,32 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$ext_auth_type  = $this->p->check->get_ext_auth_type( $ext );
 						$ext_auth_key   = 'plugin_' . $ext . '_' . $ext_auth_type;	// Options key for authentication ID.
 						$ext_filter_key = 'update_filter_for_' . $ext;			// Options key for version filter.
-	
+
 						if ( ! empty( $opts[ $ext_auth_key ] ) ) {
-	
+
 							if ( $txn_status = SucomUpdate::get_option( $ext, 'txn_status' ) ) {
-	
+
 								switch ( $txn_status ) {
-		
+
 									case 'Completed':
 									case 'Updates':
-		
+
 										break;	// Nothing to do.
-		
+
 									default:	// Invalid status.
-		
+
 										$opts[ $ext_auth_key ]   = '';
 										$opts[ $ext_filter_key ] = 'stable';
-		
+
 										$save_changes = true;	// Save the options.
-	
+
 										break;
 								}
 							}
 						}
 					}
 				}
-	
+
 				/*
 				 * Check for incompatible option values between plugin editions.
 				 */
