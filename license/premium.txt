@@ -9,7 +9,7 @@ PREMIUM APPLICATION.
 
 This License Agreement ("License") is a legal agreement between you and
 Jean-Sebastien Morisset ("the Author") concerning your use of the WPSSO Core
-Premium application, together with any electronic documentation that may be
+Premium Application, together with any electronic documentation that may be
 provided therewith (collectively, "the Application") through the Application.
 YOU HEREBY AGREE, BOTH ON YOUR OWN BEHALF AND AS AN AUTHORIZED REPRESENTATIVE
 OF ANY ORGANIZATION FOR WHICH YOU ARE USING THE APPLICATION ("EMPLOYER"), THAT
@@ -79,7 +79,9 @@ derivative works based upon the Application; (B) decompile, disassemble, or
 reverse engineer the Application in whole or in part; (C) defeat, disable, or
 circumvent any protection mechanism related to the Application; (D) use the
 Application or any parts of it to develop a product directly competing with the
-Application.
+Application; (E) share, publish, distribute, or lease the Application, or
+provide the Application as a stand-alone offering for others to use, or
+transfer the Application or this agreement to any third party.
 
 6. Title and Ownership. This software is protected by copyright laws and
 international treaty provisions. Except for the rights expressly granted above,
