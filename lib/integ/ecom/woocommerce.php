@@ -1534,9 +1534,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			static $shipping_states     = null;
 			static $shipping_enabled    = null;
 
-			if ( null === $shipping_zones ) {	// Load values only once.
+			if ( null === $shipping_enabled ) {	// Load values only once - true or false when values have been defined.
 
-				$shipping_zones      = WC_Shipping_Zones::get_zones( $context = 'admin' );
+				$shipping_zones      = apply_filters( 'wpsso_wc_shipping_zones', WC_Shipping_Zones::get_zones( $context = 'admin' ) );
 				$shipping_states     = WC()->countries->get_states();
 				$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
 				$shipping_countries  = WC()->countries->get_shipping_countries();

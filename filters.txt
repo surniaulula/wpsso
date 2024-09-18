@@ -399,5 +399,7 @@
 
 'wpsso_wc_shipping_offer' ( array $shipping_offer, $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent )
 
+'wpsso_wc_shipping_zones' ( array $shipping_zones )
+
 'wpsso_weight_units' ( $units )
 
