@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-dev.3 (2024/09/18)**
+**Version 18.9.0-dev.4 (2024/09/18)**
 
 * **New Features**
 	* None.
@@ -291,6 +291,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_wc_shipping_offer' filter.
+	* Added a new 'wpsso_wc_shipping_zones' filter.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -371,7 +372,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-dev.3 =
+= 18.9.0-dev.4 =
 
 (2024/09/18) Added French translations for the SSO &gt; Troubleshooting page. Updated the WordPress Dashboard &gt; WPSSO Cache Status metabox transient labels.
 
