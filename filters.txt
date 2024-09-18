@@ -395,5 +395,9 @@
 
 'wpsso_user_url' ( $url, $mod )
 
+'wpsso_wc_shipping_delivery_time' ( array $delivery_time, $zone_id, $method_inst_id, $shipping_class_id, $product_parent_url )
+
+'wpsso_wc_shipping_offer' ( array $shipping_offer, $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent )
+
 'wpsso_weight_units' ( $units )
 

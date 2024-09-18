@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.9.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 18.9.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9278,19 +9278,19 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1812
+#: lib/integ/ecom/woocommerce.php:1821
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1815
+#: lib/integ/ecom/woocommerce.php:1824
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1818
+#: lib/integ/ecom/woocommerce.php:1827
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

@@ -1718,18 +1718,27 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						/*
 						 * Returns false or a shipping offer options array.
 						 */
-						if ( $shipping_offer = $this->get_zone_method_shipping_offer( $world_zone_id, $world_zone_name,
-							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent ) ) {
+						$shipping_offer = $this->get_zone_method_shipping_offer( $world_zone_id, $world_zone_name,
+							$method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent );
+
+						if ( $shipping_offer ) {
 
 							$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
+						
+						} elseif ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no shipping offer for zone World' );
 						}
 
 					}	// End of $world_zone_methods loop.
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no shipping methods for zone World' );
 				}
 			}
-
 		}
 
 		private function get_world_shipping_destinations() {
@@ -2027,7 +2036,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 * 	[transit_name] => Days
 				 * )
 				 */
-				$delivery_time = apply_filters( 'wpsso_wc_shipping_delivery_time', array(), $zone_id, $method_inst_id, $shipping_class_id, $product_parent_url );
+				$delivery_time = apply_filters( 'wpsso_wc_shipping_delivery_time', array(),
+					$zone_id, $method_inst_id, $shipping_class_id, $product_parent_url );
 
 				$shipping_offer = array(
 					'shipping_id'   => 'shipping-z' . $zone_id . '-m' . $method_inst_id . '-c' . $shipping_class_id,
@@ -2037,6 +2047,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					'delivery_time' => $delivery_time,
 				);
 			}
+
+			$shipping_offer = apply_filters( 'wpsso_wc_shipping_offer', $shipping_offer,
+				$zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent );
 
 			return $shipping_offer;
 		}
