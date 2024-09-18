@@ -2337,6 +2337,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $data;
 		}
 
+		/*
+		 * Return an associative array with plugin readme info.
+		 *
+		 * See WpssoAdmin->get_plugin_data().
+		 * See WpssoAdminDashboard->show_metabox_version_info().
+		 * See WpssoUmActions->action_load_settings_page_check_for_updates().
+		 */
 		public function get_readme_info( $ext, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2352,7 +2359,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_md5_pre  = 'wpsso_r_';	// 'wpsso_cache_expire_readme_info' filter.
 			$cache_salt     = __METHOD__ . '(ext:' . $ext . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'file' );
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 			$readme_info    = array();
 
 			/*

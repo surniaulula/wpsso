@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.9.0-dev.1',	// Plugin version.
+					'version'     => '18.9.0-dev.2',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2706,28 +2706,54 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cache' => array(
 					'file' => array(
-						'wpsso_c_' => array(	// See WpssoAdmin->get_ext_file_content().
+						
+						/*
+						 * See WpssoAdmin->get_ext_file_content().
+						 */
+						'wpsso_c_' => array(
 							'label'  => 'File Content',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_file_content',
 						),
-						'wpsso_r_' => array(	// See WpssoAdmin->get_readme_info().
-							'label'  => 'Readme Info',
-							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_readme_info',
-						),
-						'wpsso_y_' => array(	// See WpssoProMediaYoutube->filter_video_details().
+
+						/*
+						 * See WpssoProMediaYoutube->filter_video_details().
+						 */
+						'wpsso_y_' => array(
 							'label'  => 'YouTube Video Details',
 							'value'  => WEEK_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_youtube_video_details',
 						),
+
 						'wpsso_' => array(
 							'label' => 'All Files',
 						),
 					),
 					'transient' => array(
+
 						'wpsso_!_' => array(
 						),
+
+						/*
+						 * See WpssoProMediaFacebook->filter_video_details().
+						 * See WpssoProMediaSlideshare->filter_video_details().
+						 * See WpssoProMediaVimeo->filter_video_details().
+						 * See WpssoProMediaWistia->filter_video_details().
+						 * See WpssoProReviewJudgeme->filter_og().
+						 * See WpssoProReviewShopperApproved->filter_og().
+						 * See WpssoProReviewStamped->filter_og().
+						 */
+						'wpsso_a_' => array(
+							'label'  => 'API Response Info',
+							'value'  => DAY_IN_SECONDS,
+							'filter' => 'wpsso_cache_expire_api_response',
+						),
+
+						/*
+						 * See WpssoAdmin->settings_saved_notice().
+						 * See WpssoHead->clear_head_array().
+						 * See WpssoHead->get_head_array().
+						 */
 						'wpsso_h_' => array(
 							'label'  => 'Document Markup',
 							'value'  => MONTH_IN_SECONDS,
@@ -2743,36 +2769,55 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'is_search'     => 0,
 							),
 						),
+
 						'wpsso_i_' => array(
 							'label'  => 'Image URL Info',
 							'value'  => DAY_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_image_info',
 						),
+
+						/*
+						 * See WpssoAdmin->get_readme_info().
+						 */
 						'wpsso_r_' => array(
-							'label'  => 'API Response',
+							'label'  => 'Plugin Readme Info',
 							'value'  => DAY_IN_SECONDS,
-							'filter' => 'wpsso_cache_expire_api_response',
+							'filter' => 'wpsso_cache_expire_readme_info',
 						),
+
 						'wpsso_s_' => array(
-							'label'  => 'Short URLs',
-							'value'  => YEAR_IN_SECONDS,
+							'label'  => 'Short URLs Info',
+							'value'  => MONTH_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_short_url',
 						),
+
+						/*
+						 * See WpssoSchema->get_schema_types().
+						 * See WpssoSchema->get_schema_type_child_family().
+						 * See WpssoSchema->get_schema_type_children().
+						 * See WpssoSchema->get_schema_type_row_class().
+						 */
 						'wpsso_t_' => array(
-							'label'  => 'Schema Types',
+							'label'  => 'Schema Types Info',
 							'value'  => WEEK_IN_SECONDS,
 							'filter' => 'wpsso_cache_expire_schema_types',
 						),
+
 						'wpsso_' => array(
 							'label' => 'All Transients',
 						),
 					),
 					'wp_cache' => array(
-						'wpsso_c_' => array(	// See WpssoPage->get_the_content().
+
+						/*
+						 * See WpssoPage->get_the_content().
+						 */
+						'wpsso_c_' => array(
 							'label'   => 'Filtered Content',
 							'value'   => HOUR_IN_SECONDS,
 							'filter'  => 'wpsso_cache_expire_the_content',
 						),
+
 						'wpsso_' => array(
 							'label' => 'All WP Objects',
 						),
