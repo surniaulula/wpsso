@@ -43,7 +43,7 @@
 
 'wpsso_cache_expire_schema_types' ( $secs, $cache_type, $mod )	// Default is 1 week in seconds.
 
-'wpsso_cache_expire_short_url' ( $secs, $cache_type, $mod )	// Default is 1 year in seconds.
+'wpsso_cache_expire_short_url' ( $secs, $cache_type, $mod )	// Default is 3 months in seconds.
 
 'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )	// Default is 1 hour in seconds.
 
@@ -399,7 +399,7 @@
 
 'wpsso_wc_shipping_offer' ( array $shipping_offer, $zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent )
 
-'wpsso_wc_shipping_zones' ( array $shipping_zones )
+'wpsso_wc_shipping_zones' ( array $shipping_zones )	// Filters the output from WC_Shipping_Zones::get_zones( $context = 'admin' ).
 
 'wpsso_weight_units' ( $units )
 
