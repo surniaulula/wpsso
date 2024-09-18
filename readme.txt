@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-dev.1 (2024/09/17)**
+**Version 18.9.0-dev.2 (2024/09/18)**
 
 * **New Features**
 	* None.
@@ -305,7 +305,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added support for an update transation status in the update option data.
+	* Added support for an update transaction status in the update option data.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -370,13 +370,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-dev.1 =
+= 18.9.0-dev.2 =
 
-(2024/09/17) Added French translations for the SSO &gt; Troubleshooting page.
+(2024/09/18) Added French translations for the SSO &gt; Troubleshooting page.
 
 = 18.8.0 =
 
-(2024/09/15) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transation status in the update option data.
+(2024/09/15) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transaction status in the update option data.
 
 = 18.7.3 =
 
