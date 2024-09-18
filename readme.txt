@@ -290,7 +290,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_wc_shipping_offer' filter.
+	* Added a new 'wpsso_wc_shipping_zone_methods' filter.
+	* Added a new 'wpsso_wc_shipping_zone_offer' filter.
 	* Added a new 'wpsso_wc_shipping_zones' filter.
 * **Requires At Least**
 	* PHP v7.4.33.
