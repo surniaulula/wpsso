@@ -1536,7 +1536,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( null === $shipping_enabled ) {	// Load values only once - true or false when values have been defined.
 
-				$shipping_zones      = apply_filters( 'wpsso_wc_shipping_zones', WC_Shipping_Zones::get_zones( $context = 'admin' ) );
+				$shipping_zones      = WC_Shipping_Zones::get_zones( $context = 'admin' );
+				$shipping_zones      = apply_filters( 'wpsso_wc_shipping_zones', $shipping_zones );
 				$shipping_states     = WC()->countries->get_states();
 				$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
 				$shipping_countries  = WC()->countries->get_shipping_countries();
@@ -1594,6 +1595,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$zone_name      = $zone_obj->get_zone_name( $context = 'admin' );
 					$zone_locations = $zone_obj->get_zone_locations( $context = 'admin' );
 					$zone_methods   = $zone_obj->get_shipping_methods( $enabled_only = true, $context = 'admin' );
+					$zone_methods   = apply_filters( 'wpsso_wc_shipping_zone_methods', $zone_methods, $zone_id, $zone_obj );
 
 					$shipping_destinations = array();
 					$shipping_postcodes    = array();
@@ -2048,7 +2050,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				);
 			}
 
-			$shipping_offer = apply_filters( 'wpsso_wc_shipping_offer', $shipping_offer,
+			$shipping_offer = apply_filters( 'wpsso_wc_shipping_zone_offer', $shipping_offer,
 				$zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent );
 
 			return $shipping_offer;
