@@ -35,11 +35,6 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
-
-				$errstr = trim( $errstr . ' HTTP ' . $errcode . ' ' . self::$codes[ 'http' ][ $errcode ] . '.' );
-			}
-
 			parent::__construct( $errstr, $errcode, $severity, $filename, $lineno, $previous );	// Calls SucomErrorException::__construct().
 		}
 

@@ -175,8 +175,8 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 
 					$resp_data = json_decode( $response, $assoc = false );
 
-					$json_error = ( isset( $resp_data->message ) ? $resp_data->message : '' ) .
-						( isset( $resp_data->description ) ? $resp_data->description : '' );
+					$json_error = trim( ( isset( $resp_data->message ) ? $resp_data->message : '' ) . ' ' .
+						( isset( $resp_data->description ) ? $resp_data->description : '' ) );
 
 					if ( ! empty( $json_error ) ) {
 
