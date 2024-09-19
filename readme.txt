@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.6.2
-WC Tested Up To: 9.3.1
+WC Tested Up To: 9.3.2
 Stable Tag: 18.8.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-dev.4 (2024/09/18)**
+**Version 18.9.0-dev.5 (2024/09/18)**
 
 * **New Features**
 	* None.
@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-dev.4 =
+= 18.9.0-dev.5 =
 
 (2024/09/18) Added French translations for the SSO &gt; Troubleshooting page. Updated the WordPress Dashboard &gt; WPSSO Cache Status metabox transient labels.
 
