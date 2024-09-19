@@ -173,12 +173,26 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 
 				} elseif ( ! in_array( $http_code, $http_success_codes ) ) {
 
-					$except_msg = sprintf( __( '%1$s shortener API error: %2$s', 'wpsso' ), 'Bitly', '' );
+					$resp_data = json_decode( $response, $assoc = false );
 
-					throw new WpssoErrorException( $except_msg, $http_code );
+					$json_error = ( isset( $resp_data->message ) ? $resp_data->message : '' ) .
+						( isset( $resp_data->description ) ? $resp_data->description : '' );
+
+					if ( ! empty( $json_error ) ) {
+
+						$except_msg = sprintf( __( '%1$s shortener API error: %2$s', 'wpsso' ), 'Bitly', $json_error );
+
+						throw new WpssoErrorException( $except_msg );
+
+					} else {
+						
+						$except_msg = sprintf( __( '%1$s shortener API error: %2$s', 'wpsso' ), 'Bitly', '' );
+					
+						throw new WpssoErrorException( $except_msg, $http_code );
+					}
 
 				} else {
-
+					
 					$resp_data = json_decode( $response, $assoc = false );
 
 					if ( null === $resp_data ) {
@@ -189,10 +203,7 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 
 						throw new WpssoErrorException( $except_msg );
 
-					} else {
-
-						return $resp_data;
-					}
+					} else return $resp_data;
 				}
 
 			} catch ( WpssoErrorException $e ) {

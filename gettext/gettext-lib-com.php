@@ -57,6 +57,7 @@ __( 'Link property value is empty.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
+__( '%1$s shortener API error: %2$s', 'wpsso' );
 __( 'JSON response decode error code %d.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( '%s Notice', 'wpsso' );

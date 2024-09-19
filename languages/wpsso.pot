@@ -2938,13 +2938,13 @@ msgid "Zimbabwe"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:42
-#: gettext/gettext-lib-com.php:62 lib/com/bfo.php:259 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:63 lib/com/bfo.php:259 lib/com/cache.php:95
 #: lib/com/notice.php:72
 msgid "%s Notice"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:43
-#: gettext/gettext-lib-com.php:63 lib/com/bfo.php:264 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:64 lib/com/bfo.php:264 lib/com/cache.php:100
 #: lib/com/notice.php:77
 msgid "Notice"
 msgstr ""
@@ -3127,14 +3127,14 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:53 gettext/gettext-lib-com.php:55
 #: gettext/gettext-lib-com.php:57 gettext/gettext-lib-com.php:58
-#: gettext/gettext-lib-com.php:59 gettext/gettext-lib-com.php:61
-#: lib/com/bitly.php:60 lib/com/bitly.php:68 lib/com/bitly.php:110
-#: lib/com/bitly.php:170 lib/com/bitly.php:176 lib/com/bitly.php:188
-#: lib/ext/dlmyapp.php:56 lib/ext/dlmyapp.php:62 lib/ext/dlmyapp.php:74
-#: lib/ext/owly.php:65 lib/ext/owly.php:185 lib/ext/owly.php:191
-#: lib/ext/owly.php:203 lib/ext/owly.php:209 lib/ext/tinyurl.php:139
-#: lib/ext/tinyurl.php:145 lib/ext/yourls.php:200 lib/ext/yourls.php:206
-#: lib/ext/yourls.php:218
+#: gettext/gettext-lib-com.php:59 gettext/gettext-lib-com.php:60
+#: gettext/gettext-lib-com.php:62 lib/com/bitly.php:60 lib/com/bitly.php:68
+#: lib/com/bitly.php:110 lib/com/bitly.php:170 lib/com/bitly.php:183
+#: lib/com/bitly.php:189 lib/com/bitly.php:202 lib/ext/dlmyapp.php:56
+#: lib/ext/dlmyapp.php:62 lib/ext/dlmyapp.php:74 lib/ext/owly.php:65
+#: lib/ext/owly.php:185 lib/ext/owly.php:191 lib/ext/owly.php:203
+#: lib/ext/owly.php:209 lib/ext/tinyurl.php:139 lib/ext/tinyurl.php:145
+#: lib/ext/yourls.php:200 lib/ext/yourls.php:206 lib/ext/yourls.php:218
 msgid "%1$s shortener API error: %2$s"
 msgstr ""
 
@@ -3146,38 +3146,38 @@ msgstr ""
 msgid "Link property value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:60 lib/com/bitly.php:186 lib/ext/dlmyapp.php:72
+#: gettext/gettext-lib-com.php:61 lib/com/bitly.php:200 lib/ext/dlmyapp.php:72
 #: lib/ext/owly.php:201 lib/ext/yourls.php:216
 msgid "JSON response decode error code %d."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:64 lib/com/bfo.php:280
+#: gettext/gettext-lib-com.php:65 lib/com/bfo.php:280
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:65 lib/com/bfo.php:283
+#: gettext/gettext-lib-com.php:66 lib/com/bfo.php:283
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:66 lib/com/bfo.php:286
+#: gettext/gettext-lib-com.php:67 lib/com/bfo.php:286
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:67 lib/com/bfo.php:329
+#: gettext/gettext-lib-com.php:68 lib/com/bfo.php:329
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:68 lib/com/bfo.php:330
+#: gettext/gettext-lib-com.php:69 lib/com/bfo.php:330
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:69 lib/com/bfo.php:331
+#: gettext/gettext-lib-com.php:70 lib/com/bfo.php:331
 msgid "END OUTPUT"
 msgstr ""
 
