@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-b.1 (2024/09/19)**
+**Version 18.9.0-b.2 (2024/09/19)**
 
 * **New Features**
 	* None.
@@ -375,7 +375,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-b.1 =
+= 18.9.0-b.2 =
 
 (2024/09/19) Added French translations for the SSO &gt; Troubleshooting page. Updated the database query to calculate the total transient sizes.
 
