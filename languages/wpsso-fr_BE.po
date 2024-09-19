@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.8.0\n"
+"Project-Id-Version: WPSSO Core 18.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-09-15 11:20-0700\n"
+"PO-Revision-Date: 2024-09-19 11:19-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2692,13 +2692,13 @@ msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
 #: gettext/gettext-lib-com.php:5 gettext/gettext-lib-com.php:42
-#: gettext/gettext-lib-com.php:62 lib/com/bfo.php:259 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:63 lib/com/bfo.php:259 lib/com/cache.php:95
 #: lib/com/notice.php:72
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:43
-#: gettext/gettext-lib-com.php:63 lib/com/bfo.php:264 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:64 lib/com/bfo.php:264 lib/com/cache.php:100
 #: lib/com/notice.php:77
 msgid "Notice"
 msgstr "Avis"
@@ -2867,14 +2867,14 @@ msgstr "Nom de groupe \"%s\" introuvable dans les données fournies par l'API Bi
 
 #: gettext/gettext-lib-com.php:53 gettext/gettext-lib-com.php:55
 #: gettext/gettext-lib-com.php:57 gettext/gettext-lib-com.php:58
-#: gettext/gettext-lib-com.php:59 gettext/gettext-lib-com.php:61
-#: lib/com/bitly.php:60 lib/com/bitly.php:68 lib/com/bitly.php:110
-#: lib/com/bitly.php:170 lib/com/bitly.php:176 lib/com/bitly.php:188
-#: lib/ext/dlmyapp.php:56 lib/ext/dlmyapp.php:62 lib/ext/dlmyapp.php:74
-#: lib/ext/owly.php:65 lib/ext/owly.php:185 lib/ext/owly.php:191
-#: lib/ext/owly.php:203 lib/ext/owly.php:209 lib/ext/tinyurl.php:139
-#: lib/ext/tinyurl.php:145 lib/ext/yourls.php:200 lib/ext/yourls.php:206
-#: lib/ext/yourls.php:218
+#: gettext/gettext-lib-com.php:59 gettext/gettext-lib-com.php:60
+#: gettext/gettext-lib-com.php:62 lib/com/bitly.php:60 lib/com/bitly.php:68
+#: lib/com/bitly.php:110 lib/com/bitly.php:170 lib/com/bitly.php:183
+#: lib/com/bitly.php:189 lib/com/bitly.php:202 lib/ext/dlmyapp.php:56
+#: lib/ext/dlmyapp.php:62 lib/ext/dlmyapp.php:74 lib/ext/owly.php:65
+#: lib/ext/owly.php:185 lib/ext/owly.php:191 lib/ext/owly.php:203
+#: lib/ext/owly.php:209 lib/ext/tinyurl.php:139 lib/ext/tinyurl.php:145
+#: lib/ext/yourls.php:200 lib/ext/yourls.php:206 lib/ext/yourls.php:218
 msgid "%1$s shortener API error: %2$s"
 msgstr "Erreur d'API de raccourcissement %1$s: %2$s"
 
@@ -2886,32 +2886,32 @@ msgstr "Propriété des groupes absente dans les données fournies par l'API Bit
 msgid "Link property value is empty."
 msgstr "La valeur de la propriété du lien est vide."
 
-#: gettext/gettext-lib-com.php:60 lib/com/bitly.php:186 lib/ext/dlmyapp.php:72
+#: gettext/gettext-lib-com.php:61 lib/com/bitly.php:200 lib/ext/dlmyapp.php:72
 #: lib/ext/owly.php:201 lib/ext/yourls.php:216
 msgid "JSON response decode error code %d."
 msgstr "Erreur de décodage code %d de la réponse JSON."
 
-#: gettext/gettext-lib-com.php:64 lib/com/bfo.php:280
+#: gettext/gettext-lib-com.php:65 lib/com/bfo.php:280
 msgid "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly sent output to the webpage."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a envoyé une valeur à la sortie de page Web incorrectement."
 
-#: gettext/gettext-lib-com.php:65 lib/com/bfo.php:283
+#: gettext/gettext-lib-com.php:66 lib/com/bfo.php:283
 msgid "Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output."
 msgstr "Contrairement aux actions WordPress, les filtres WordPress doivent toujours renvoyer leur texte, et non faire l'écho (c'est-à-dire l'imprimer) à la page Web."
 
-#: gettext/gettext-lib-com.php:66 lib/com/bfo.php:286
+#: gettext/gettext-lib-com.php:67 lib/com/bfo.php:286
 msgid "Please contact the author of that filter and report this issue as a coding error."
 msgstr "Veuillez contacter l'auteur de ce filtre et signaler ce problème comme une erreur de codage."
 
-#: gettext/gettext-lib-com.php:67 lib/com/bfo.php:329
+#: gettext/gettext-lib-com.php:68 lib/com/bfo.php:329
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: gettext/gettext-lib-com.php:68 lib/com/bfo.php:330
+#: gettext/gettext-lib-com.php:69 lib/com/bfo.php:330
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: gettext/gettext-lib-com.php:69 lib/com/bfo.php:331
+#: gettext/gettext-lib-com.php:70 lib/com/bfo.php:331
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 
@@ -3773,18 +3773,18 @@ msgstr "Contenu de fichier"
 
 #: gettext/gettext-lib-config.php:191
 msgctxt "option label"
-msgid "Readme Info"
-msgstr "Info lisez-moi"
-
-#: gettext/gettext-lib-config.php:192
-msgctxt "option label"
 msgid "YouTube Video Details"
 msgstr "Détails vidéo YouTube"
 
-#: gettext/gettext-lib-config.php:193
+#: gettext/gettext-lib-config.php:192
 msgctxt "option label"
 msgid "All Files"
 msgstr "Tous les fichiers"
+
+#: gettext/gettext-lib-config.php:193
+msgctxt "option label"
+msgid "API Response Info"
+msgstr "Info réponse API"
 
 #: gettext/gettext-lib-config.php:194
 msgctxt "option label"
@@ -3798,18 +3798,18 @@ msgstr "Info image d'URL"
 
 #: gettext/gettext-lib-config.php:196
 msgctxt "option label"
-msgid "API Response"
-msgstr "Réponse API"
+msgid "Plugin Readme Info"
+msgstr "Info lisez-moi d'extension"
 
 #: gettext/gettext-lib-config.php:197
 msgctxt "option label"
-msgid "Short URLs"
-msgstr "URLs courts"
+msgid "Short URLs Info"
+msgstr "Info URLs courts"
 
 #: gettext/gettext-lib-config.php:198
 msgctxt "option label"
-msgid "Schema Types"
-msgstr "Types de Schéma"
+msgid "Schema Types Info"
+msgstr "Info types de Schéma"
 
 #: gettext/gettext-lib-config.php:199
 msgctxt "option label"
@@ -5825,8 +5825,8 @@ msgstr "Bitly (raccourcisseur d'URL)"
 #: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:624 lib/pro/util/shorten.php:359
 msgctxt "option label"
-msgid "Bitly Generic Access Token"
-msgstr "Jeton d'accès générique Bitly"
+msgid "Bitly Access Token"
+msgstr "Jeton d'accès Bitly"
 
 #: gettext/gettext-lib-pro.php:89 lib/pro/admin/advanced.php:628
 msgctxt "option label"
@@ -6431,7 +6431,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1757 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:813
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:824
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -6974,52 +6974,52 @@ msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau d
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:2501
+#: lib/admin.php:2508
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:2502
+#: lib/admin.php:2509
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:2507
+#: lib/admin.php:2514
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:2508
+#: lib/admin.php:2515
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:2519
+#: lib/admin.php:2526
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:2520
+#: lib/admin.php:2527
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:2526
+#: lib/admin.php:2533
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:2533
+#: lib/admin.php:2540
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:2540
+#: lib/admin.php:2547
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:2547
+#: lib/admin.php:2554
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
@@ -7033,12 +7033,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
-#: lib/config.php:5490
+#: lib/config.php:5535
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5490
+#: lib/config.php:5535
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -8858,19 +8858,19 @@ msgstr "Attributs suggérés:"
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1708
+#: lib/integ/ecom/woocommerce.php:1710
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1812
+#: lib/integ/ecom/woocommerce.php:1823
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1815
+#: lib/integ/ecom/woocommerce.php:1826
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1818
+#: lib/integ/ecom/woocommerce.php:1829
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -11105,12 +11105,12 @@ msgid "Use the selected URL shortening service to replace the WordPress <code>%s
 msgstr "Utiliser le service de raccourcissement d'URL sélectionné pour remplacer la balise HTML <code>%s</code> de WordPress."
 
 #: lib/messages-tooltip-plugin.php:699
-msgid "The Bitly shortening service requires a Generic Access Token to shorten URLs."
-msgstr "Le service de raccourcissement Bitly nécessite un jeton d'accès générique pour raccourcir les URL."
+msgid "The Bitly shortening service requires an Access Token to shorten URLs."
+msgstr "Le service de raccourcissement Bitly nécessite un jeton d'accès pour raccourcir les URL."
 
 #: lib/messages-tooltip-plugin.php:701
-msgid "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile settings</a> and enter its value here."
-msgstr "<a href=\"%s\"> Vous pouvez créer un jeton d'accès générique dans vos paramètres de profil Bitly</a> et entrer sa valeur ici."
+msgid "<a href=\"%s\">You can create an Access Token in your Bitly profile settings</a> and enter its value here."
+msgstr "<a href=\"%s\">Vous pouvez créer un jeton d'accès dans les paramètres de votre profil Bitly</a> et saisir sa valeur ici."
 
 #: lib/messages-tooltip-plugin.php:707
 msgid "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or another custom short domain."
@@ -13941,7 +13941,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1873 lib/user.php:1964 lib/util-cache.php:620
+#: lib/user.php:1873 lib/user.php:1964 lib/util-cache.php:631
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -13954,7 +13954,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1909 lib/user.php:2003 lib/util-cache.php:725
+#: lib/user.php:1909 lib/user.php:2003 lib/util-cache.php:736
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -14070,56 +14070,56 @@ msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisé
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util-cache.php:445
+#: lib/util-cache.php:456
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:514 lib/util-cache.php:582 lib/util-cache.php:610
+#: lib/util-cache.php:525 lib/util-cache.php:593 lib/util-cache.php:621
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
 
-#: lib/util-cache.php:530 lib/util-cache.php:590
+#: lib/util-cache.php:541 lib/util-cache.php:601
 msgid "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan commencera dans %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:547
+#: lib/util-cache.php:558
 msgid "A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan devait commencer il y a %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:550
+#: lib/util-cache.php:561
 msgid "WordPress should have run the %s event hook at that time."
 msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
 
-#: lib/util-cache.php:553
+#: lib/util-cache.php:564
 msgid "If the task does not run, this could indicate a problem with your hosting provider's event scheduler and/or a lack of support for the WordPress %s function."
 msgstr "Si la tâche ne s'exécute pas, cela peut indiquer un problème avec le planificateur d'événements de votre fournisseur d'hébergement et/ou un manque de prise en charge de la fonction %s de WordPress."
 
-#: lib/util-cache.php:555
+#: lib/util-cache.php:566
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr "Vous pouvez activer une extension comme %s pour gérer les événements planifiés."
 
-#: lib/util-cache.php:557
+#: lib/util-cache.php:568
 msgid "WP Crontrol"
 msgstr "WP Crontrol"
 
-#: lib/util-cache.php:621
+#: lib/util-cache.php:632
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:704
+#: lib/util-cache.php:715
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:760
+#: lib/util-cache.php:771
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:815
+#: lib/util-cache.php:826
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:881
+#: lib/util-cache.php:892
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
