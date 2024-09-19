@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-rc.1 (2024/09/19)**
+**Version 18.9.0 (2024/09/19)**
 
 * **New Features**
 	* None.
@@ -375,7 +375,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-rc.1 =
+= 18.9.0 =
 
 (2024/09/19) Fixed missing error message when Bitly monthly usage limit has been exceeded. Improved speed of the database query to calculate the total transient sizes.
 
