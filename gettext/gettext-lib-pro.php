@@ -85,7 +85,7 @@ _x( 'characters', 'option comment', 'wpsso' );
 _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' );
 _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' );
 _x( 'Bitly (URL Shortener)', 'metabox title', 'wpsso' );
-_x( 'Bitly Generic Access Token', 'option label', 'wpsso' );
+_x( 'Bitly Access Token', 'option label', 'wpsso' );
 _x( 'Bitly Short Domain (Optional)', 'option label', 'wpsso' );
 _x( 'Bitly Group Name (Optional)', 'option label', 'wpsso' );
 _x( 'DLMY.App (URL Shortener)', 'metabox title', 'wpsso' );
@@ -212,7 +212,7 @@ __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
 __( '%s error:', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
-_x( 'Bitly Generic Access Token', 'option label', 'wpsso' );
+_x( 'Bitly Access Token', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'DLMY.App API Key', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );

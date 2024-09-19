@@ -331,15 +331,26 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			global $wpdb;
 
-			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
-			$db_query .= ', CHAR_LENGTH( option_value )';
+			/*
+			 * The CHAR_LENGTH() function returns the number of characters in a string. It is important to note that
+			 * this function counts characters, not bytes, and it is Unicode-aware — meaning it accurately counts the
+			 * number of multibyte characters in a string.
+			 *
+			 * The LENGTH() function, on the other hand, returns the length of a string in bytes. It differs from
+			 * CHAR_LENGTH() because it is not Unicode-aware and counts bytes — which can yield different results,
+			 * especially for multibyte character sets.
+			 */
+			$db_query = 'SELECT LENGTH( option_value )';
 			$db_query .= ' FROM ' . $wpdb->options;
 			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
 			$db_query .= ';';	// End of query.
 
 			$result = $wpdb->get_col( $db_query );
 
-			return number_format_i18n( array_sum( $result ), $decimals );
+			$size = array_sum( $result ) / 1024 / 1014;
+			$size = number_format_i18n( $size, $decimals );
+
+			return $size;
 		}
 
 		/*

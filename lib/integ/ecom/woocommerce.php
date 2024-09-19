@@ -2037,6 +2037,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 * 	[transit_unit_text] => d
 				 * 	[transit_name] => Days
 				 * )
+				 *
+				 * See WpssoWcsdtFilters->filter_wc_shipping_delivery_time().
 				 */
 				$delivery_time = apply_filters( 'wpsso_wc_shipping_delivery_time', array(),
 					$zone_id, $method_inst_id, $shipping_class_id, $product_parent_url );

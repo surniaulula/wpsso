@@ -694,11 +694,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_bitly_access_token':	// Bitly Generic Access Token.
+				case 'tooltip-plugin_bitly_access_token':	// Bitly Access Token.
 
-					$text = __( 'The Bitly shortening service requires a Generic Access Token to shorten URLs.', 'wpsso' ) . ' ';
+					$text = __( 'The Bitly shortening service requires an Access Token to shorten URLs.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( '<a href="%s">You can create a Generic Access Token in your Bitly profile settings</a> and enter its value here.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
+					$text .= sprintf( __( '<a href="%s">You can create an Access Token in your Bitly profile settings</a> and enter its value here.', 'wpsso' ), 'https://app.bitly.com/settings/api' );
 
 					break;
 

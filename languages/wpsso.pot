@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.9.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 18.9.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6124,7 +6124,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:624 lib/pro/util/shorten.php:359
 msgctxt "option label"
-msgid "Bitly Generic Access Token"
+msgid "Bitly Access Token"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:89 lib/pro/admin/advanced.php:628
@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1757 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:813
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:824
 msgid "%s error:"
 msgstr ""
 
@@ -12167,13 +12167,12 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:699
-msgid ""
-"The Bitly shortening service requires a Generic Access Token to shorten URLs."
+msgid "The Bitly shortening service requires an Access Token to shorten URLs."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:701
 msgid ""
-"<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
+"<a href=\"%s\">You can create an Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
@@ -15365,7 +15364,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1873 lib/user.php:1964 lib/util-cache.php:620
+#: lib/user.php:1873 lib/user.php:1964 lib/util-cache.php:631
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -15378,7 +15377,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1909 lib/user.php:2003 lib/util-cache.php:725
+#: lib/user.php:1909 lib/user.php:2003 lib/util-cache.php:736
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15500,65 +15499,65 @@ msgstr ""
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:445
+#: lib/util-cache.php:456
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:514 lib/util-cache.php:582 lib/util-cache.php:610
+#: lib/util-cache.php:525 lib/util-cache.php:593 lib/util-cache.php:621
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:530 lib/util-cache.php:590
+#: lib/util-cache.php:541 lib/util-cache.php:601
 msgid ""
 "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
 
-#: lib/util-cache.php:547
+#: lib/util-cache.php:558
 msgid ""
 "A background task was scheduled to begin %1$s ago to %2$s for posts, terms "
 "and users."
 msgstr ""
 
-#: lib/util-cache.php:550
+#: lib/util-cache.php:561
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:553
+#: lib/util-cache.php:564
 msgid ""
 "If the task does not run, this could indicate a problem with your hosting "
 "provider's event scheduler and/or a lack of support for the WordPress %s "
 "function."
 msgstr ""
 
-#: lib/util-cache.php:555
+#: lib/util-cache.php:566
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr ""
 
-#: lib/util-cache.php:557
+#: lib/util-cache.php:568
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:621
+#: lib/util-cache.php:632
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:704
+#: lib/util-cache.php:715
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:760
+#: lib/util-cache.php:771
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:815
+#: lib/util-cache.php:826
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:881
+#: lib/util-cache.php:892
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

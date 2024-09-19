@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
 					case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 					case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
-					case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
+					case 'plugin_bitly_access_token':	// Bitly Access Token.
 					case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
 					case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
 					case 'plugin_dlmyapp_api_key':

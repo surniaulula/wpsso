@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.9.0-dev.4',	// Plugin version.
+					'version'     => '18.9.0-dev.5',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2091,7 +2091,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortener'          => 'none',	// URL Shortening Service.
 					'plugin_min_shorten'        => 23,	// Minimum URL Length to Shorten.
 					'plugin_wp_shortlink'       => 1,	// Use Short URL for WP Shortlink.
-					'plugin_bitly_access_token' => '',	// Bitly Generic Access Token.
+					'plugin_bitly_access_token' => '',	// Bitly Access Token.
 					'plugin_bitly_domain'       => '',	// Bitly Short Domain (Optional).
 					'plugin_bitly_group_name'   => '',	// Bitly Group Name (Optional).
 					'plugin_dlmyapp_api_key'    => '',	// DLMY.App API Key.
