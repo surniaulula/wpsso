@@ -280,16 +280,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.9.0-b.2 (2024/09/19)**
+**Version 18.9.0-rc.1 (2024/09/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added French translations for the SSO &gt; Troubleshooting page.
-	* Updated the database query to calculate the total transient sizes.
-	* Updated the WordPress Dashboard &gt; WPSSO Cache Status metabox transient labels.
+	* Improved speed of the database query to calculate the total transient sizes.
+	* Improved the WordPress Dashboard &gt; WPSSO Cache Status metabox transient labels.
 * **Bugfixes**
-	* None.
+	* Fixed missing error message when Bitly monthly usage limit has been exceeded.
 * **Developer Notes**
 	* Added a new 'wpsso_wc_shipping_zone_methods' filter.
 	* Added a new 'wpsso_wc_shipping_zone_offer' filter.
@@ -375,9 +375,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.9.0-b.2 =
+= 18.9.0-rc.1 =
 
-(2024/09/19) Added French translations for the SSO &gt; Troubleshooting page. Updated the database query to calculate the total transient sizes.
+(2024/09/19) Fixed missing error message when Bitly monthly usage limit has been exceeded. Improved speed of the database query to calculate the total transient sizes.
 
 = 18.8.0 =
 
