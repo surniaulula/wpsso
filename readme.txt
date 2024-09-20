@@ -280,17 +280,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.10.0-dev.1 (2024/09/02)**
+**Version 18.10.0-dev.2 (2024/09/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the WPSSO dashboard metaboxes to skip creating content when hidden.
+	* Updated WPSSO dashboard metaboxes to skip creating content when hidden.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoUser::is_metabox_hidden()` method.
 	* Added a new `WpssoUtilMetabox::show_is_hidden_content()` method.
+	* Updated default WPSSO_SELECT_PERSON_NAMES_MAX constant value from 100 to 200.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -391,9 +392,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.10.0-dev.1 =
+= 18.10.0-dev.2 =
 
-(2024/09/20) Updated the WPSSO dashboard metaboxes to skip creating content when hidden.
+(2024/09/20) Updated WPSSO dashboard metaboxes to skip creating content when hidden.
 
 = 18.9.0 =
 
