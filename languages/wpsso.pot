@@ -10953,7 +10953,7 @@ msgstr ""
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:146
 #: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1878 lib/user.php:1969
-#: lib/user.php:2086
+#: lib/user.php:2083
 msgctxt "user role"
 msgid "Person"
 msgstr ""

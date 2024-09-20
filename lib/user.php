@@ -2066,10 +2066,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( isset( $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ] ) ) {	// Just in case.
 
 				$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ $roles_id ];
-
 				$users = SucomUtilWP::get_roles_users_select( $roles, $blog_id = null, $add_none );
-
-				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 100 ), $preserve_keys = true );
+				$users = array_slice( $users, 0, SucomUtil::get_const( 'WPSSO_SELECT_PERSON_NAMES_MAX', 200 ), $preserve_keys = true );
 			}
 
 			return $users;
@@ -2077,23 +2075,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_person_view( $user_views ) {
 
-			$user_views = array_reverse( $user_views );
-
+			$user_views    = array_reverse( $user_views );
 			$all_view_link = $user_views[ 'all' ];
 
 			unset( $user_views[ 'all' ], $user_views[ 'person' ] );
 
 			$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
-
-			$role_view  = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
-
-			$user_query = new WP_User_Query( array( 'role' => 'person' ) );
-
-			$user_count = $user_query->get_total();
+			$role_view         = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
+			$user_query        = new WP_User_Query( array( 'role' => 'person' ) );
+			$user_count        = $user_query->get_total();
 
 			$user_views[ 'person' ] = '<a href="' . $role_view . '">' .  $role_label_transl . '</a> (' . $user_count . ')';
-
-			$user_views[ 'all' ] = $all_view_link;
+			$user_views[ 'all' ]    = $all_view_link;
 
 			$user_views = array_reverse( $user_views );
 
