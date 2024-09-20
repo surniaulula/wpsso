@@ -290,7 +290,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoUser::is_metabox_hidden()` method.
-	* Added a new `WpssoAdminDashboard::is_metabox_hidden()` method.
+	* Added a new `WpssoUtilMetabox::show_is_hidden_content()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
