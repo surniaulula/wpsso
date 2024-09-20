@@ -93,6 +93,19 @@ body.rtl #dashboard-widgets table.wpsso-dashboard-widget th {
 	padding:2px 2px 2px 10px;
 }
 
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-label {
+	width:40%;
+}
+
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-count,
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-size {
+	width:15%;
+}
+
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-expiration {
+	width:30%;
+}
+
 #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-label,
 #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-count,
 #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .cache-size,
