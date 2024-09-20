@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 		public function show_metabox_cache_status( $obj, $mb ) {
 
-			if ( self::is_metabox_hidden( $mb ) ) return;
+			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
 
 			$table_cols         = 4;
 			$db_transient_keys  = $this->p->util->cache->get_db_transients_keys();
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 		public function show_metabox_help_support( $obj, $mb ) {
 
-			if ( self::is_metabox_hidden( $mb ) ) return;
+			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
 
 			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 		public function show_metabox_version_info( $obj, $mb ) {
 
-			if ( self::is_metabox_hidden( $mb ) ) return;
+			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
 
 			$table_cols  = 2;
 			$label_width = '30%';
@@ -286,23 +286,6 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			}
 
 			return 0;	// No change.
-		}
-		
-		private static function is_metabox_hidden( $mb ) {
-
-			$is_hidden = WpssoUser::is_metabox_hidden( $mb[ 'id' ], 'dashboard' );
-
-			if ( $is_hidden ) {
-
-				echo '<table class="wpsso-dashboard-widget">';
-				echo '<tr><td>';
-				echo '<p class="centered">' . __( 'Reload the page to show this content.', 'wpsso' ) . '</p>';
-				echo '</tr></td></table>';
-
-				return true;
-			}
-
-			return false;
 		}
 	}
 }

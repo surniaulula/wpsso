@@ -1553,13 +1553,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public static function is_metabox_hidden( $widget_id, $parent_slug, $menu_slug = '', $user_id = null ) {
+		public static function is_metabox_hidden( $metabox_id, $screen_id = '', $user_id = null ) {
 
-			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
-			$md_key  = trim( SucomUtil::sanitize_hookname( 'metaboxhidden_' . $parent_slug . '_' . $menu_slug ), '_' );
-			$md      = get_metadata( 'user', $user_id, $md_key, $single = true );
+			$screen_id = empty( $screen_id ) ? SucomUtilWP::get_screen_id() : $screen_id;
+			$user_id   = empty( $user_id ) ? get_current_user_id() : $user_id;
+			$md_key    = SucomUtil::sanitize_hookname( 'metaboxhidden_' . $screen_id );
+			$md        = get_metadata( 'user', $user_id, $md_key, $single = true );
 
-			return in_array( $widget_id, $md );
+			return is_array( $md ) && in_array( $metabox_id, $md ) ? true : false;
 		}
 
 		public static function is_show_all( $user_id = false ) {

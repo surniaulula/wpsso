@@ -6931,10 +6931,6 @@ msgstr ""
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin-dashboard.php:299
-msgid "Reload the page to show this content."
-msgstr ""
-
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/admin-head-suggest-addons.php:139
 msgid "WooCommerce"
@@ -10952,8 +10948,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:146
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1878 lib/user.php:1969
-#: lib/user.php:2083
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1879 lib/user.php:1970
+#: lib/user.php:2084
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -13933,7 +13929,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:1076 lib/messages.php:1092 lib/util-metabox.php:238
+#: lib/messages.php:1076 lib/messages.php:1092 lib/util-metabox.php:253
 msgid "No options available."
 msgstr ""
 
@@ -15349,56 +15345,56 @@ msgstr ""
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1762
+#: lib/user.php:1763
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1805 lib/user.php:1880
+#: lib/user.php:1806 lib/user.php:1881
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1813
+#: lib/user.php:1814
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1853
+#: lib/user.php:1854
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1890 lib/user.php:1981 lib/util-cache.php:631
+#: lib/user.php:1891 lib/user.php:1982 lib/util-cache.php:631
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1891
+#: lib/user.php:1892
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1925
+#: lib/user.php:1926
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1926 lib/user.php:2020 lib/util-cache.php:736
+#: lib/user.php:1927 lib/user.php:2021 lib/util-cache.php:736
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1942 lib/user.php:1971
+#: lib/user.php:1943 lib/user.php:1972
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1950
+#: lib/user.php:1951
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1982
+#: lib/user.php:1983
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:2019
+#: lib/user.php:2020
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 
@@ -15565,22 +15561,26 @@ msgstr ""
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-metabox.php:270
+#: lib/util-metabox.php:43
+msgid "Reload the page to show this content."
+msgstr ""
+
+#: lib/util-metabox.php:285
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:273
+#: lib/util-metabox.php:288
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:278
+#: lib/util-metabox.php:293
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:281
+#: lib/util-metabox.php:296
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""

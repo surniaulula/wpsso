@@ -33,6 +33,21 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$this->p->debug->mark();
 			}
 		}
+		
+		public static function show_is_hidden_content( $mb, $screen_id = '', $user_id = null ) {
+
+			if ( WpssoUser::is_metabox_hidden( $mb[ 'id' ], $screen_id, $user_id ) ) {
+
+				echo '<table class="wpsso-dashboard-widget">';
+				echo '<tr><td>';
+				echo '<p class="centered">' . __( 'Reload the page to show this content.', 'wpsso' ) . '</p>';
+				echo '</tr></td></table>';
+
+				return true;
+			}
+
+			return false;
+		}
 
 		public function do_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 

@@ -1671,9 +1671,9 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Returns false or the admin screen id string.
 		 */
-		public static function get_screen_id( $screen = false ) {
+		public static function get_screen_id( $screen = null ) {
 
-			if ( false === $screen ) {
+			if ( null === $screen || ! is_object( $screen ) ) {
 
 				if ( function_exists( 'get_current_screen' ) ) {
 
