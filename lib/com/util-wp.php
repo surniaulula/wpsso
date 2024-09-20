@@ -1650,11 +1650,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/*
 		 * Returns false or the admin screen base string.
 		 */
-		public static function get_screen_base( $screen = false ) {
+		public static function get_screen_base( $screen = null ) {
 
-			if ( false === $screen ) {
+			if ( null === $screen || ! is_object( $screen ) ) {
 
-				if ( function_exists( 'get_current_screen' ) ) {
+				if ( function_exists( 'get_current_screen' ) ) {	// Just in case.
 
 					$screen = get_current_screen();
 				}
@@ -1675,7 +1675,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( null === $screen || ! is_object( $screen ) ) {
 
-				if ( function_exists( 'get_current_screen' ) ) {
+				if ( function_exists( 'get_current_screen' ) ) {	// Just in case.
 
 					$screen = get_current_screen();
 				}
