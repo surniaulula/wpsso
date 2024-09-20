@@ -1530,6 +1530,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 
+							/*
+							 * Deletes user option with global blog capability.
+							 *
+							 * User options are just like user metadata except that they have support
+							 * for global blog options. If the 'is_global' parameter is false, which it
+							 * is by default, it will prepend the WordPress table prefix to the option
+							 * name.
+							 */
 							delete_user_option( $user_obj->ID, $meta_key, $global = false );
 
 							delete_user_option( $user_obj->ID, $meta_key, $global = true );
@@ -1543,6 +1551,42 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					delete_user_option( $user_id, $meta_key, $global = true );
 				}
 			}
+		}
+
+		public static function is_metabox_hidden( $widget_id, $parent_slug, $menu_slug = '', $user_id = null ) {
+
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
+			$md_key  = trim( SucomUtil::sanitize_hookname( 'metaboxhidden_' . $parent_slug . '_' . $menu_slug ), '_' );
+			$md      = get_metadata( 'user', $user_id, $md_key, $single = true );
+
+			return in_array( $widget_id, $md );
+		}
+
+		public static function is_show_all( $user_id = false ) {
+
+			return self::show_opts( 'all', $user_id );
+		}
+
+		public static function get_show_val( $user_id = false ) {
+
+			return self::show_opts( false, $user_id );
+		}
+
+		/*
+		 * Returns the value for show_opts, or return true/false if a value to compare is provided.
+		 */
+		public static function show_opts( $compare = false, $user_id = false ) {
+
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
+
+			$show_opts = self::get_pref( 'show_opts' );
+
+			if ( $compare ) {
+
+				return $compare === $show_opts ? true : false;
+			}
+
+			return $show_opts;
 		}
 
 		public static function get_pref( $pref_key = false, $user_id = false ) {
@@ -1622,33 +1666,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return false;
-		}
-
-		public static function is_show_all( $user_id = false ) {
-
-			return self::show_opts( 'all', $user_id );
-		}
-
-		public static function get_show_val( $user_id = false ) {
-
-			return self::show_opts( false, $user_id );
-		}
-
-		/*
-		 * Returns the value for show_opts, or return true/false if a value to compare is provided.
-		 */
-		public static function show_opts( $compare = false, $user_id = false ) {
-
-			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
-
-			$show_opts = self::get_pref( 'show_opts' );
-
-			if ( $compare ) {
-
-				return $compare === $show_opts ? true : false;
-			}
-
-			return $show_opts;
 		}
 
 		/*

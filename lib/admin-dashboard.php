@@ -36,17 +36,22 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			if ( ! wp_using_ext_object_cache() ) {
 
 				wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
-					$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array() );
+					$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array(
+						'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
 			}
 
 			wp_add_dashboard_widget( $widget_id = 'wpsso-help-support', $widget_name = __( 'WPSSO Help and Support', 'wpsso' ),
-				$callback = array( $this, 'show_metabox_help_support' ), $control_callback = null, $callback_args = array() );
+				$callback = array( $this, 'show_metabox_help_support' ), $control_callback = null, $callback_args = array(
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
 
 			wp_add_dashboard_widget( $widget_id = 'wpsso-version-info', $widget_name = __( 'WPSSO Version Information', 'wpsso' ),
-				$callback = array( $this, 'show_metabox_version_info' ), $control_callback = null, $callback_args = array() );
+				$callback = array( $this, 'show_metabox_version_info' ), $control_callback = null, $callback_args = array(
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
 		}
 
-		public function show_metabox_cache_status() {
+		public function show_metabox_cache_status( $obj, $mb ) {
+
+			if ( self::is_metabox_hidden( $mb ) ) return;
 
 			$table_cols         = 4;
 			$db_transient_keys  = $this->p->util->cache->get_db_transients_keys();
@@ -111,7 +116,9 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			echo '</table>';
 		}
 
-		public function show_metabox_help_support() {
+		public function show_metabox_help_support( $obj, $mb ) {
+
+			if ( self::is_metabox_hidden( $mb ) ) return;
 
 			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
@@ -159,7 +166,9 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			echo '</table>';
 		}
 
-		public function show_metabox_version_info() {
+		public function show_metabox_version_info( $obj, $mb ) {
+
+			if ( self::is_metabox_hidden( $mb ) ) return;
 
 			$table_cols  = 2;
 			$label_width = '30%';
@@ -277,6 +286,23 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			}
 
 			return 0;	// No change.
+		}
+		
+		private static function is_metabox_hidden( $mb ) {
+
+			$is_hidden = WpssoUser::is_metabox_hidden( $mb[ 'id' ], 'dashboard' );
+
+			if ( $is_hidden ) {
+
+				echo '<table class="wpsso-dashboard-widget">';
+				echo '<tr><td>';
+				echo '<p class="centered">' . __( 'Reload the page to show this content.', 'wpsso' ) . '</p>';
+				echo '</tr></td></table>';
+
+				return true;
+			}
+
+			return false;
 		}
 	}
 }

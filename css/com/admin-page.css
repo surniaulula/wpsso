@@ -54,7 +54,16 @@
 }
 
 #dashboard-widgets table.wpsso-dashboard-widget {
+	width:100%;
 	margin:10px;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget p {
+	margin:10px 0;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget p.centered {
+	text-align:center;
 }
 
 #dashboard-widgets table.wpsso-dashboard-widget h4 {
