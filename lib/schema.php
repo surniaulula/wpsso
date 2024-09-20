@@ -737,8 +737,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v9.1.2.
-		 *
 		 * Returns the schema type id.
 		 */
 		public function get_mod_schema_type_id( array $mod, $use_md_opts = true ) {
@@ -752,8 +750,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v3.37.1.
-		 *
 		 * Returns the schema type id by default.
 		 *
 		 * Use $get_id = false to return the schema type URL instead of the ID.
@@ -3818,8 +3814,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.0.0.
-		 *
 		 * Checks both the array key and its value.
 		 *
 		 * The array key must exist, and its value cannot be null, an empty string, or 'none'.
@@ -3855,8 +3849,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.0.0.
-		 *
 		 * The value cannot be null, an empty string, or the 'none' string.
 		 *
 		 * WpssoJsonTypeCreativeWork->filter_json_data_https_schema_org_creativework().

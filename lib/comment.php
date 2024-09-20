@@ -279,8 +279,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
-					 * Since WPSSO Core v4.31.0.
-					 *
 					 * Hooked by several integration modules to provide information about the current content.
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
@@ -294,9 +292,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $comment_id, $mod );
 
-					/*
-					 * Since WPSSO Core v8.2.0.
-					 */
 					$filter_name = 'wpsso_sanitize_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -457,8 +452,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
@@ -468,17 +461,11 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return get_metadata( 'comment', $comment_id, $meta_key, $single );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function update_meta( $comment_id, $meta_key, $value ) {
 
 			return update_metadata( 'comment', $comment_id, $meta_key, $value );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function delete_meta( $comment_id, $meta_key ) {
 
 			return delete_metadata( 'comment', $comment_id, $meta_key );

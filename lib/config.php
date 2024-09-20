@@ -5384,9 +5384,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $success;
 		}
 
-		/*
-		 * Since WPSSO Core v4.18.1.
-		 */
 		public static function get_cache_dir() {
 
 			if ( defined( 'WPSSO_CACHE_DIR' ) ) {
@@ -5415,9 +5412,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/*
-		 * Since WPSSO Core v4.18.1.
-		 */
 		public static function get_cache_url() {
 
 			if ( defined( 'WPSSO_CACHE_URL' ) ) {
@@ -5449,9 +5443,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		/*
-		 * Since WPSSO Core v4.18.1.
-		 */
 		private static function is_cache_dir( $dir ) {
 
 			$dir = trailingslashit( $dir );		// Just in case.
@@ -5499,8 +5490,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v3.38.3.
-		 *
 		 * Returns $cf[ 'plugin' ] with 'wpsso' as the first array element and all other plugins sorted by translated name.
 		 */
 		public static function get_ext_sorted() {

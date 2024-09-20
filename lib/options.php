@@ -926,8 +926,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p->opt->add_versions_checksum( $opts );	// $opts must be an array.
 
 			/*
-			 * Since WPSSO Core v8.5.1.
-			 *
 			 * Don't save the disabled option status.
 			 *
 			 * Example: add_meta_name_robots:disabled = true

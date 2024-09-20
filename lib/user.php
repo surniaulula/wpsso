@@ -378,9 +378,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$mod = $this->get_mod( $user_id );
 
-					/*
-					 * Since WPSSO Core v7.1.0.
-					 */
 					$filter_name = 'wpsso_get_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -390,9 +387,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
-					/*
-					 * Since WPSSO Core v4.31.0.
-					 */
 					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -402,9 +396,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $user_id, $mod );
 
-					/*
-					 * Since WPSSO Core v8.2.0.
-					 */
 					$filter_name = 'wpsso_sanitize_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -415,8 +406,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
-					 * Since WPSSO Core v10.0.0.
-					 *
 					 * Prevent users from modifying specific options.
 					 */
 					$disable_keys = array(
@@ -2114,8 +2103,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
@@ -2125,17 +2112,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return get_metadata( 'user', $user_id, $meta_key, $single );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function update_meta( $user_id, $meta_key, $value ) {
 
 			return update_metadata( 'user', $user_id, $meta_key, $value );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function delete_meta( $user_id, $meta_key ) {
 
 			return delete_metadata( 'user', $user_id, $meta_key );

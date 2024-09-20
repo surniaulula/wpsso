@@ -378,8 +378,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$mod = $this->get_mod( $term_id );
 
 					/*
-					 * Since WPSSO Core v9.5.0.
-					 *
 					 * Overwrite parent options with those of the child, allowing only undefined child options
 					 * to be inherited from the parent.
 					 */
@@ -395,9 +393,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}
 
-					/*
-					 * Since WPSSO Core v7.1.0.
-					 */
 					$filter_name = 'wpsso_get_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -407,9 +402,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
-					/*
-					 * Since WPSSO Core v4.31.0.
-					 */
 					$filter_name = 'wpsso_get_' . $mod[ 'name' ] . '_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -419,9 +411,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $term_id, $mod );
 
-					/*
-					 * Since WPSSO Core v8.2.0.
-					 */
 					$filter_name = 'wpsso_sanitize_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -975,8 +964,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * See https://developer.wordpress.org/reference/functions/get_metadata/.
@@ -986,17 +973,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return get_metadata( 'term', $term_id, $meta_key, $single );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function update_meta( $term_id, $meta_key, $value ) {
 
 			return update_metadata( 'term', $term_id, $meta_key, $value );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function delete_meta( $term_id, $meta_key ) {
 
 			return delete_metadata( 'term', $term_id, $meta_key );

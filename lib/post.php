@@ -584,9 +584,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$md_opts = array_merge( $parent_opts, $md_opts );
 					}
 
-					/*
-					 * Since WPSSO Core v7.1.0.
-					 */
 					$filter_name = 'wpsso_get_md_options';
 
 					if ( $this->p->debug->enabled ) {
@@ -597,8 +594,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$md_opts = apply_filters( $filter_name, $md_opts, $mod );
 
 					/*
-					 * Since WPSSO Core v4.31.0.
-					 *
 					 * Hooked by several integration modules to provide information about the current content.
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
@@ -612,9 +607,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$md_opts = apply_filters( $filter_name, $md_opts, $post_id, $mod );
 
-					/*
-					 * Since WPSSO Core v8.2.0.
-					 */
 					$filter_name = 'wpsso_sanitize_md_options';;
 
 					if ( $this->p->debug->enabled ) {
@@ -2474,8 +2466,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.15.0.
-		 *
 		 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
@@ -2533,8 +2523,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.18.0.
-		 *
 		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
 		 */
 		public function get_default_term_id( array $mod, $tax_slug = 'category' ) {
@@ -2567,8 +2555,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.16.0.
-		 *
 		 * Returns an associative array of term IDs and their names or objects.
 		 *
 		 * If the custom primary or default term ID exists in the post terms array, it will be moved to the top.
@@ -2740,8 +2726,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * If $meta_key is en empty string, retrieves all metadata for the specified object ID.
 		 *
 		 * Use get_metadata() instead of get_post_meta() as the WordPress get_post_meta() function does not check
@@ -2754,17 +2738,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return get_metadata( 'post', $post_id, $meta_key, $single );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function update_meta( $post_id, $meta_key, $value ) {
 
 			return update_metadata( 'post', $post_id, $meta_key, $value );
 		}
 
-		/*
-		 * Since WPSSO Core v8.4.0.
-		 */
 		public static function delete_meta( $post_id, $meta_key ) {
 
 			return delete_metadata( 'post', $post_id, $meta_key );

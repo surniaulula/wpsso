@@ -80,8 +80,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v9.13.0.
-		 *
 		 * Returns the open graph type id.
 		 */
 		public function get_mod_og_type_id( array $mod, $use_md_opts = true ) {
@@ -90,8 +88,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v9.13.0.
-		 *
 		 * Returns the open graph namespace.
 		 */
 		public function get_mod_og_type_ns( array $mod, $use_md_opts = true ) {
@@ -100,8 +96,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v4.10.0.
-		 *
 		 * Returns the open graph type id by default.
 		 *
 		 * Example: article, product, place, etc.

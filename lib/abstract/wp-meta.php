@@ -973,9 +973,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs = apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
 				}
 
-				/*
-				 * Since WPSSO Core v3.28.0.
-				 */
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'applying filters "wpsso_get_md_defaults"' );
@@ -993,9 +990,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod );
 				}
 
-				/*
-				 * Since WPSSO Core v8.2.0.
-				 */
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'applying filters "wpsso_sanitize_md_defaults"' );
@@ -1240,7 +1234,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * See WpssoPost->add_meta_boxes().
 		 * See WpssoProfileYourSSO->show_metabox_sso().
+		 * See WpssoTerm->add_meta_boxes().
+		 * See WpssoUser->add_meta_boxes().
 		 */
 		public function show_metabox_sso( $wp_obj ) {
 
@@ -3263,8 +3260,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.15.0.
-		 *
 		 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
@@ -3273,8 +3268,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.18.0.
-		 *
 		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
 		 */
 		public function get_default_term_id( array $mod, $tax_slug = 'category' ) {
@@ -3283,8 +3276,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.16.0.
-		 *
 		 * Returns an associative array of term IDs and their names or objects.
 		 *
 		 * The primary or default term ID will be included as the first array element.
@@ -3307,8 +3298,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
 		 *
@@ -3341,8 +3330,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * Always call this method as static::update_meta(), and not self::update_meta(), to execute the method via the
 		 * child class instead of the parent class. This method can also be called via $mod[ 'obj' ]::update_meta().
 		 */
@@ -3394,8 +3381,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.4.0.
-		 *
 		 * Always call this method as staticdelete_meta(), and not selfdelete_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]delete_meta().
 		 */
@@ -3436,8 +3421,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v8.12.0.
-		 *
 		 * See WpssoIntegSeoRankmath->filter_title_seed().
 		 * See WpssoIntegSeoRankmath->filter_description_seed().
 		 * See WpssoIntegSeoSeopress->filter_title_seed().
