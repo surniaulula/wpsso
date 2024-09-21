@@ -2602,20 +2602,34 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		private static function sort_active_plugins( $a, $b ) {
 
+			$wpsso_any   = 'wpsso';
 			$wpsso_core  = 'wpsso/';
 			$wpsso_addon = 'wpsso-';
+			$jsm_plugin  = 'jsm-';
 
-			if ( 0 === strpos( $a, $wpsso_core ) && 0 === strpos( $b, $wpsso_addon ) ) {
+			if ( 0 === strpos( $a, $wpsso_any ) || 0 === strpos( $b, $wpsso_any ) ) {
 
-				return -1;	// Sort WPSSO Core plugin before the add-on (ie. WPSSO Core less than add-on).
+				/*
+				 * Sort WPSSO Core plugin before WPSSO add-on.
+				 */
+				if ( 0 === strpos( $a, $wpsso_core ) && 0 === strpos( $b, $wpsso_addon ) ) return -1;
+	
+				/*
+				 * Sort WPSSO add-on after the WPSSO Core plugin.
+				 */
+				if ( 0 === strpos( $a, $wpsso_addon ) && 0 === strpos( $b, $wpsso_core ) ) return 1;
+	
+				/*
+				 * Sort WPSSO plugins before JSM plugins.
+				 */
+				if ( 0 === strpos( $a, $wpsso_any ) && 0 === strpos( $b, $jsm_plugin ) ) return -1;
 
-			} elseif ( 0 === strpos( $a, $wpsso_addon ) && 0 === strpos( $b, $wpsso_core ) ) {
+				/*
+				 * Sort JSM plugins after WPSSO plugins.
+				 */
+				if ( 0 === strpos( $a, $jsm_plugin ) && 0 === strpos( $b, $wpsso_any ) ) return 1;
 
-				return 1;	// Sort the add-on after the WPSSO Core plugin (ie. add-on greater than WPSSO Core).
-
-			} elseif ( 0 === strpos( $a, $wpsso_addon ) && 0 === strpos( $b, $wpsso_addon ) ) {
-
-				return strcmp( $a, $b );	// Sort any two add-ons alphabetically.
+				return strcmp( $a, $b );
 			}
 
 			return 0;	// No change.
