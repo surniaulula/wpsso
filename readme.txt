@@ -292,6 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoUser::is_metabox_hidden()` method.
 	* Added a new `WpssoUtilMetabox::show_is_hidden_content()` method.
 	* Updated default WPSSO_SELECT_PERSON_NAMES_MAX constant value from 100 to 200.
+	* Updated `WpssoAdmin::sort_active_plugins()` to sort WPSSO plugins before JSM plugins.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
