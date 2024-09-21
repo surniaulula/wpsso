@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.10.0-rc.1 (2024/09/21)**
+**Version 18.10.0 (2024/09/21)**
 
 * **New Features**
 	* None.
@@ -392,7 +392,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.10.0-rc.1 =
+= 18.10.0 =
 
 (2024/09/21) Updated WPSSO dashboard metaboxes to skip creating content when hidden.
 
