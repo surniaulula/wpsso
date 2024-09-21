@@ -2706,7 +2706,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cache' => array(
 					'file' => array(
-						
+
 						/*
 						 * See WpssoAdmin->get_ext_file_content().
 						 */

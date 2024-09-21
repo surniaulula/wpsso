@@ -2613,12 +2613,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Sort WPSSO Core plugin before WPSSO add-on.
 				 */
 				if ( 0 === strpos( $a, $wpsso_core ) && 0 === strpos( $b, $wpsso_addon ) ) return -1;
-	
+
 				/*
 				 * Sort WPSSO add-on after the WPSSO Core plugin.
 				 */
 				if ( 0 === strpos( $a, $wpsso_addon ) && 0 === strpos( $b, $wpsso_core ) ) return 1;
-	
+
 				/*
 				 * Sort WPSSO plugins before JSM plugins.
 				 */

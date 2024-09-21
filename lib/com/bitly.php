@@ -185,14 +185,14 @@ if ( ! class_exists( 'SucomBitly' ) ) {
 						throw new WpssoErrorException( $except_msg );
 
 					} else {
-						
+
 						$except_msg = sprintf( __( '%1$s shortener API error: %2$s', 'wpsso' ), 'Bitly', '' );
-					
+
 						throw new WpssoErrorException( $except_msg, $http_code );
 					}
 
 				} else {
-					
+
 					$resp_data = json_decode( $response, $assoc = false );
 
 					if ( null === $resp_data ) {

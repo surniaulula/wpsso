@@ -2685,7 +2685,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Temporarily removes filter and action hooks before calling add_option().
 		 */
 		public static function raw_add_option( $opt_name, $value = '', $deprecated = '', $autoload = null ) {
-		
+
 			return self::raw_do_option( __FUNCTION__, $opt_name, $value, $default = false, $autoload );
 		}
 
@@ -2693,7 +2693,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Temporarily removes filter and action hooks before calling delete_option().
 		 */
 		public static function raw_delete_option( $opt_name ) {
-		
+
 			return self::raw_do_option( __FUNCTION__, $opt_name, $value = null, $default = false, $autoload = null );
 		}
 
@@ -2701,7 +2701,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Temporarily removes filter and action hooks before calling get_option().
 		 */
 		public static function raw_get_option( $opt_name, $default = false ) {
-		
+
 			return self::raw_do_option( __FUNCTION__, $opt_name, $value = null, $default, $autoload = null );
 		}
 
@@ -2709,7 +2709,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Temporarily removes filter and action hooks before calling update_option().
 		 */
 		public static function raw_update_option( $opt_name, $value, $autoload = null ) {
-			
+
 			return self::raw_do_option( __FUNCTION__, $opt_name, $value, $default = false, $autoload );
 		}
 

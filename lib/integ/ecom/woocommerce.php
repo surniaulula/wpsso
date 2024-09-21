@@ -1728,7 +1728,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 							$shipping_offer[ 'shipping_destinations' ] = $this->get_world_shipping_destinations();
 
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
-						
+
 						} elseif ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'no shipping offer for zone World' );

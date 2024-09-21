@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$this->p->debug->mark();
 			}
 		}
-		
+
 		public static function show_is_hidden_content( $mb, $screen_id = '', $user_id = null ) {
 
 			if ( WpssoUser::is_metabox_hidden( $mb[ 'id' ], $screen_id, $user_id ) ) {
