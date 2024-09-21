@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/*
 			 * Add information about the page $mod to the body tag class.
 			 */
-			add_filter( 'body_class', array( $this, 'add_body_class' ), 1000, 2 );
+			add_filter( 'body_class', array( $this, 'add_body_class' ), 1000, 1 );
 
 			/*
 			 * Maybe add the Validators toolbar menu.
@@ -95,8 +95,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		/*
 		 * Add information about the page $mod to the body tag class.
+		 *
+		 * $classes = An array of body class names.
 		 */
-		public function add_body_class( $classes, $css_class ) {
+		public function add_body_class( array $classes ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -105,9 +107,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->get_mod();
 
-			$css_id = 'wpsso-' . SucomUtil::get_mod_css_id( $mod );
-
-			if ( $css_id ) $classes[] = $css_id;
+			$classes[] = 'wpsso-' . SucomUtil::get_mod_css_id( $mod );
 
 			return $classes;
 		}
