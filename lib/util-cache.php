@@ -249,10 +249,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Clear database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
-		 * and optionally exclude transients for shortened URLs.
+		 * Clear database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
+		 * optionally exclude shortened URL transients.
 		 *
 		 * See WpssoAdmin->load_settings_page().
+		 * See WpssoUtilCache->get_db_transients_subset().
 		 */
 		public function clear_db_transients( $key_prefix = '', $clear_short = true ) {
 
@@ -271,10 +272,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Count database transients, excluding transients that must be preserved (transient key begins with 'wpsso_!_'),
-		 * and optionally exclude transients for shortened URLs.
+		 * Count database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
+		 * optionally exclude shortened URL transients.
 		 *
 		 * See WpssoSubmenuTools->add_form_buttons().
+		 * See WpssoUtilCache->get_db_transients_subset().
 		 */
 		public function count_db_transients( $key_prefix = '', $include_short = true ) {
 
@@ -284,10 +286,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Get all transients from the database or optionally only those that are expired.
-		 *
-		 * Call the get_db_transients_subset() method instead to exclude transients that must be preserved (transient key
-		 * begins with 'wpsso_!_'), and optionally exclude transients for shortened URLs.
+		 * Get transients from the database, and optionally only those that are expired.
 		 *
 		 * See WpssoAdmin->show_metabox_cache_status().
 		 * See WpssoUtilCache->get_db_transients_subset().
@@ -354,11 +353,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * A wrapper for the get_db_transients_keys() method to exclude transients that must be preserved (transient key
-		 * begins with 'wpsso_!_'), and optionally exclude transients for shortened URLs.
+		 * A wrapper for WpssoUtilCache->get_db_transients_keys() to exclude transients that must be preserved (key begins
+		 * with 'wpsso_!_'), and optionally exclude shortened URL transients.
 		 *
 		 * See WpssoUtilCache->clear_db_transients().
 		 * See WpssoUtilCache->count_db_transients().
+		 * See WpssoUtilCache->get_db_transients_keys().
 		 */
 		public function get_db_transients_subset( $key_prefix = '', $include_short = true ) {
 
@@ -367,26 +367,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			foreach ( $transients_keys as $key ) {
 
-				if ( '' !== $key_prefix ) {					// We're only clearing a specific prefix.
+				if ( '' !== $key_prefix ) {				// We're only clearing a specific prefix.
 
-					if ( 0 !== strpos( $key, $key_prefix ) ) {		// Transient does not match that prefix.
+					if ( 0 !== strpos( $key, $key_prefix ) ) {	// Transient does not match that prefix.
 
 						continue;
 					}
 				}
 
-				if ( 0 === strpos( $key, 'wpsso_' ) ) {
+				if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
 
-					if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
+					continue;
+
+				} elseif ( ! $include_short ) {				// Not clearing short URLs.
+
+					if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
 						continue;
-
-					} elseif ( ! $include_short ) {				// Not clearing short URLs.
-
-						if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
-
-							continue;
-						}
 					}
 				}
 
