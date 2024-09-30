@@ -280,13 +280,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.11.0-dev.3 (2024/09/30)**
+**Version 18.11.0-rc.1 (2024/10/01)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new SSO &gt; Tools and Actions &gt; Clear Short URL Transients button.
-	* Include the SSO &gt; Tools and Actions &gt; Clear Database Transients button even if `wp_using_ext_object_cache()` is true.
+	* Include the SSO &gt; Tools and Actions &gt; Clear Database Transients and Clear Short URL Transients buttons even if `wp_using_ext_object_cache()` is true.
 * **Bugfixes**
 	* Fixed an incorrect transient key match in `WpssoUtilCache->get_db_transients_subset()`.
 * **Developer Notes**
@@ -409,9 +409,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.11.0-dev.3 =
+= 18.11.0-rc.1 =
 
-(2024/09/30) Added a new SSO &gt; Tools and Actions &gt; Clear Short URL Transients button. Fixed an incorrect transient key match in `WpssoUtilCache->get_db_transients_subset()`.
+(2024/10/01) Added a new SSO &gt; Tools and Actions &gt; Clear Short URL Transients button. Fixed an incorrect transient key match in `WpssoUtilCache->get_db_transients_subset()`.
 
 = 18.10.0 =
 
