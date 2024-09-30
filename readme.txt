@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Include the Tools and Actions &gt; Clear Database Transients button even if `wp_using_ext_object_cache()` is true.
+	* Include the SSO &gt; Tools and Actions &gt; Clear Database Transients button even if `wp_using_ext_object_cache()` is true.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -410,7 +410,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.11.0-dev.1 =
 
-(2024/09/30) Include the Tools and Actions &gt; Clear Database Transients button even if `wp_using_ext_object_cache()` is true.
+(2024/09/30) Include the SSO &gt; Tools and Actions &gt; Clear Database Transients button even if `wp_using_ext_object_cache()` is true.
 
 = 18.10.0 =
 
