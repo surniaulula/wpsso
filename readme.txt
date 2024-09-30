@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.11.0-dev.2 (2024/09/30)**
+**Version 18.11.0-dev.3 (2024/09/30)**
 
 * **New Features**
 	* None.
@@ -409,7 +409,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.11.0-dev.2 =
+= 18.11.0-dev.3 =
 
 (2024/09/30) Added a new SSO &gt; Tools and Actions &gt; Clear Short URL Transients button. Fixed an incorrect transient key match in `WpssoUtilCache->get_db_transients_subset()`.
 
