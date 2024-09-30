@@ -152,8 +152,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
-			echo __( 'Shortened URL database transients are preserved.', 'wpsso' ) . ' ';
-			echo sprintf( __( '<a href="%1$s">Using external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
+			echo __( 'Shortened URL transients are preserved.', 'wpsso' ) . ' ';
+			echo sprintf( __( '<a href="%1$s">Using an external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
 				__( 'https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/', 'wpsso' ),
 					wp_using_ext_object_cache() ? 'true' : 'false' ) . ' ';
 			echo '</p>' . "\n";

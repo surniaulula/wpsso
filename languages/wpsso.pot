@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.11.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 18.11.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -15285,13 +15285,13 @@ msgid ""
 msgstr ""
 
 #: lib/submenu/tools.php:155
-msgid "Shortened URL database transients are preserved."
+msgid "Shortened URL transients are preserved."
 msgstr ""
 
 #: lib/submenu/tools.php:156
 msgid ""
-"<a href=\"%1$s\">Using external object cache</a> for WordPress transients is "
-"<code>%2$s</code>."
+"<a href=\"%1$s\">Using an external object cache</a> for WordPress transients "
+"is <code>%2$s</code>."
 msgstr ""
 
 #: lib/submenu/tools.php:157
