@@ -36,9 +36,10 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Row #0.
 			 */
-			$count_cache_files  = $this->p->util->cache->count_cache_files();
-			$count_ignored_urls = $this->p->util->cache->count_ignored_urls();
-			$count_cron_jobs    = $this->p->util->count_cron_jobs();
+			$count_cache_files   = $this->p->util->cache->count_cache_files();
+			$count_ignored_urls  = $this->p->util->cache->count_ignored_urls();
+			$count_db_transients = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_short = true );
+			$count_cron_jobs     = $this->p->util->count_cron_jobs();
 
 			$refresh_cache_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
 
@@ -47,6 +48,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$clear_ignored_urls_transl = sprintf( _nx( 'Clear %s Failed URL Connection', 'Clear %s Failed URL Connections',
 				$count_ignored_urls, 'submit button', 'wpsso' ), number_format_i18n( $count_ignored_urls ) );
+
+			$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
+				$count_db_transients, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients ) ) . ' **';
 
 			$clear_cron_jobs_transl = sprintf( _nx( 'Clear %s WordPress Cron Job', 'Clear %s WordPress Cron Jobs',
 				$count_cron_jobs, 'submit button', 'wpsso' ), number_format_i18n( $count_cron_jobs ) );
@@ -62,7 +66,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Row #2.
 			 */
-			$add_persons_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label ) . ' **';
+			$add_persons_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label ) . ' ***';
 			$remove_persons_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
 			$reload_image_sizes_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
 
@@ -82,7 +86,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'refresh_cache'       => $refresh_cache_transl,
 					'clear_cache_files'   => $clear_cache_files_transl,
 					'clear_ignored_urls'  => $clear_ignored_urls_transl,
-					'clear_db_transients' => null,
+					'clear_db_transients' => $clear_db_transients_transl,
 					'clear_cron_jobs'     => $clear_cron_jobs_transl,
 					'flush_rewrite_rules' => $flush_rewrite_rules_transl,
 				),
@@ -123,16 +127,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'reset_user_metabox_layout'    => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 				),
 			);
-
-			/*
-			 * Clear All Database Transients.
-			 */
-			$count_db_transients = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_short = true );
-
-			$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
-				$count_db_transients, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients ) );
-
-			$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_transl;
 		}
 
 		/*
@@ -153,6 +147,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
+			echo sprintf( __( '<a href="%1$s">Using external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
+				__( 'https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/', 'wpsso' ),
+					wp_using_ext_object_cache() ? 'true' : 'false' ) . ' ';
+			echo '</p>' . "\n";
+
+			echo '<p class="status-msg smaller left">';
+			echo '*** ';
 			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
 			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";

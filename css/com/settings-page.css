@@ -309,7 +309,8 @@ body.rtl #tools-content div.submit-buttons {
 	margin:0 5px;
 }
 
-#tools-content p.status-msg {
+#tools-content p.status-msg,
+#tools-content p.status-msg code {
 	color:#999;
 	font-size:0.95em;
 	line-height:1.4em;
@@ -317,7 +318,8 @@ body.rtl #tools-content div.submit-buttons {
 	margin:4px 0;
 }
 
-#tools-content p.status-msg.smaller {
+#tools-content p.status-msg.smaller,
+#tools-content p.status-msg.smaller code {
 	font-size:0.85em;
 }
 

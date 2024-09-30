@@ -7272,7 +7272,7 @@ msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1533 lib/submenu/tools.php:74
+#: lib/admin.php:1533 lib/submenu/tools.php:78
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -15191,95 +15191,107 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:43
+#: lib/submenu/tools.php:44
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:45
+#: lib/submenu/tools.php:46
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:48
+#: lib/submenu/tools.php:49
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:51
-msgctxt "submit button"
-msgid "Clear %s WordPress Cron Job"
-msgid_plural "Clear %s WordPress Cron Jobs"
-msgstr[0] ""
-msgstr[1] ""
-
-#: lib/submenu/tools.php:54
-msgctxt "submit button"
-msgid "Flush WordPress Rewrite Rules"
-msgstr ""
-
-#: lib/submenu/tools.php:59
-msgctxt "submit button"
-msgid "Export Plugin and Add-on Settings"
-msgstr ""
-
-#: lib/submenu/tools.php:60
-msgctxt "submit button"
-msgid "Import Plugin and Add-on Settings"
-msgstr ""
-
-#: lib/submenu/tools.php:65
-msgctxt "submit button"
-msgid "Add %s Role to Content Creators"
-msgstr ""
-
-#: lib/submenu/tools.php:66
-msgctxt "submit button"
-msgid "Remove %s Role from All Users"
-msgstr ""
-
-#: lib/submenu/tools.php:67
-msgctxt "submit button"
-msgid "Reload Default Image Sizes"
-msgstr ""
-
-#: lib/submenu/tools.php:122
-msgctxt "submit button"
-msgid "Reset Dismissed Notices"
-msgstr ""
-
-#: lib/submenu/tools.php:123
-msgctxt "submit button"
-msgid "Reset Metabox Layout"
-msgstr ""
-
-#: lib/submenu/tools.php:132
+#: lib/submenu/tools.php:52
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:151
+#: lib/submenu/tools.php:55
+msgctxt "submit button"
+msgid "Clear %s WordPress Cron Job"
+msgid_plural "Clear %s WordPress Cron Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/submenu/tools.php:58
+msgctxt "submit button"
+msgid "Flush WordPress Rewrite Rules"
+msgstr ""
+
+#: lib/submenu/tools.php:63
+msgctxt "submit button"
+msgid "Export Plugin and Add-on Settings"
+msgstr ""
+
+#: lib/submenu/tools.php:64
+msgctxt "submit button"
+msgid "Import Plugin and Add-on Settings"
+msgstr ""
+
+#: lib/submenu/tools.php:69
+msgctxt "submit button"
+msgid "Add %s Role to Content Creators"
+msgstr ""
+
+#: lib/submenu/tools.php:70
+msgctxt "submit button"
+msgid "Remove %s Role from All Users"
+msgstr ""
+
+#: lib/submenu/tools.php:71
+msgctxt "submit button"
+msgid "Reload Default Image Sizes"
+msgstr ""
+
+#: lib/submenu/tools.php:126
+msgctxt "submit button"
+msgid "Reset Dismissed Notices"
+msgstr ""
+
+#: lib/submenu/tools.php:127
+msgctxt "submit button"
+msgid "Reset Metabox Layout"
+msgstr ""
+
+#: lib/submenu/tools.php:145
 msgid ""
 "The maximum execution time for this background task is currently set to %s."
 msgstr ""
 
-#: lib/submenu/tools.php:156
-msgid "Members of the role are used for some Schema property selections."
+#: lib/submenu/tools.php:150
+msgid ""
+"<a href=\"%1$s\">Using external object cache</a> for WordPress transients is "
+"<code>%2$s</code>."
+msgstr ""
+
+#: lib/submenu/tools.php:151
+msgid ""
+"https://developer.wordpress.org/reference/functions/"
+"wp_using_ext_object_cache/"
 msgstr ""
 
 #: lib/submenu/tools.php:157
+msgid "Members of the role are used for some Schema property selections."
+msgstr ""
+
+#: lib/submenu/tools.php:158
 msgid ""
 "Content Creators are defined as being all administrators, editors, authors, "
 "and contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:165
+#: lib/submenu/tools.php:166
 msgid "%s Failed URL Connections:"
 msgstr ""
 
