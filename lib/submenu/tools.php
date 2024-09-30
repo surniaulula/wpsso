@@ -36,20 +36,20 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/*
 			 * Row #0.
 			 */
-			$count_cache_files   = number_format_i18n( $this->p->util->cache->count_cache_files() );
-			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
-			$count_cron_jobs     = number_format_i18n( $this->p->util->count_cron_jobs() );
+			$count_cache_files  = $this->p->util->cache->count_cache_files();
+			$count_ignored_urls = $this->p->util->cache->count_ignored_urls();
+			$count_cron_jobs    = $this->p->util->count_cron_jobs();
 
 			$refresh_cache_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
 
 			$clear_cache_files_transl = sprintf( _nx( 'Clear %s Cached File', 'Clear %s Cached Files',
-				$count_cache_files, 'submit button', 'wpsso' ), $count_cache_files );
+				$count_cache_files, 'submit button', 'wpsso' ), number_format_i18n( $count_cache_files ) );
 
 			$clear_ignored_urls_transl = sprintf( _nx( 'Clear %s Failed URL Connection', 'Clear %s Failed URL Connections',
-				$count_ignored_urls, 'submit button', 'wpsso' ), $count_ignored_urls );
+				$count_ignored_urls, 'submit button', 'wpsso' ), number_format_i18n( $count_ignored_urls ) );
 
 			$clear_cron_jobs_transl = sprintf( _nx( 'Clear %s WordPress Cron Job', 'Clear %s WordPress Cron Jobs',
-				$count_cron_jobs, 'submit button', 'wpsso' ), $count_cron_jobs );
+				$count_cron_jobs, 'submit button', 'wpsso' ), number_format_i18n( $count_cron_jobs ) );
 
 			$flush_rewrite_rules_transl = _x( 'Flush WordPress Rewrite Rules', 'submit button', 'wpsso' );
 
