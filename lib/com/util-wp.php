@@ -2793,9 +2793,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $success;
 		}
 
+		/*
+		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1348
+		 */
 		public static function raw_delete_transient( $transient ) {
 
-			if ( wp_using_ext_object_cache() ) {
+			if ( wp_using_ext_object_cache() || wp_installing() ) {
 
 				$result = wp_cache_delete( $transient, 'transient' );
 
@@ -2814,9 +2817,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $result;
 		}
 
+		/*
+		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1399.
+		 */
 		public static function raw_get_transient( $transient ) {
 
-			if ( wp_using_ext_object_cache() ) {
+			if ( wp_using_ext_object_cache() || wp_installing() ) {
 
 				$value = wp_cache_get( $transient, 'transient' );
 
@@ -2856,11 +2862,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $value;
 		}
 
+		/*
+		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1477.
+		 */
 		public static function raw_set_transient( $transient, $value, $expiration = 0 ) {
 
 			$expiration = (int) $expiration;
 
-			if ( wp_using_ext_object_cache() ) {
+			if ( wp_using_ext_object_cache() || wp_installing() ) {
 
 				$result = wp_cache_set( $transient, $value, 'transient', $expiration );
 

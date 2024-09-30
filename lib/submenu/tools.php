@@ -124,18 +124,15 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			if ( ! wp_using_ext_object_cache() ) {
+			/*
+			 * Clear All Database Transients.
+			 */
+			$count_db_transients = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_short = true );
 
-				/*
-				 * Clear All Database Transients.
-				 */
-				$count_db_transients = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_short = true );
+			$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
+				$count_db_transients, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients ) );
 
-				$clear_db_transients_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
-					$count_db_transients, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients ) );
-
-				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_transl;
-			}
+			$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_db_transients_transl;
 		}
 
 		/*

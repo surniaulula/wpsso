@@ -15257,29 +15257,29 @@ msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:134
+#: lib/submenu/tools.php:132
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:154
+#: lib/submenu/tools.php:151
 msgid ""
 "The maximum execution time for this background task is currently set to %s."
 msgstr ""
 
-#: lib/submenu/tools.php:159
+#: lib/submenu/tools.php:156
 msgid "Members of the role are used for some Schema property selections."
 msgstr ""
 
-#: lib/submenu/tools.php:160
+#: lib/submenu/tools.php:157
 msgid ""
 "Content Creators are defined as being all administrators, editors, authors, "
 "and contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:168
+#: lib/submenu/tools.php:165
 msgid "%s Failed URL Connections:"
 msgstr ""
 
