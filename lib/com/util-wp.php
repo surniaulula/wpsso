@@ -2794,6 +2794,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/*
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/30.
+		 *
 		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1348
 		 */
 		public static function raw_delete_transient( $transient ) {
@@ -2818,6 +2820,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/*
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/30.
+		 *
 		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1399.
 		 */
 		public static function raw_get_transient( $transient ) {
@@ -2863,6 +2867,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/*
+		 * Last synchronized with WordPress v6.6.2 on 2024/09/30.
+		 *
 		 * See https://core.trac.wordpress.org/browser/tags/6.6.2/src/wp-includes/option.php#L1477.
 		 */
 		public static function raw_set_transient( $transient, $value, $expiration = 0 ) {
