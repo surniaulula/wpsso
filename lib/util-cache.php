@@ -276,9 +276,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 *
 		 * See WpssoSubmenuTools->add_form_buttons().
 		 */
-		public function count_db_transients( $key_prefix = '', $incl_short = true ) {
+		public function count_db_transients( $key_prefix = '', $include_short = true ) {
 
-			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_short );
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $include_short );
 
 			return count( $transients_subset );
 		}
@@ -360,33 +360,33 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoUtilCache->clear_db_transients().
 		 * See WpssoUtilCache->count_db_transients().
 		 */
-		public function get_db_transients_subset( $key_prefix = '', $incl_short = true ) {
+		public function get_db_transients_subset( $key_prefix = '', $include_short = true ) {
 
 			$transients_keys   = $this->get_db_transients_keys( $key_prefix, $expired_only = false );
 			$transients_subset = array();
 
 			foreach ( $transients_keys as $key ) {
 
-				if ( 0 === strpos( $key_prefix, 'wpsso_' ) ) {
-
-					if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
-
-						continue;
-
-					} elseif ( ! $incl_short ) {				// Not clearing short URLs.
-
-						if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
-
-							continue;
-						}
-					}
-				}
-
 				if ( '' !== $key_prefix ) {					// We're only clearing a specific prefix.
 
 					if ( 0 !== strpos( $key, $key_prefix ) ) {		// Transient does not match that prefix.
 
 						continue;
+					}
+				}
+
+				if ( 0 === strpos( $key, 'wpsso_' ) ) {
+
+					if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
+
+						continue;
+
+					} elseif ( ! $include_short ) {				// Not clearing short URLs.
+
+						if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
+
+							continue;
+						}
 					}
 				}
 

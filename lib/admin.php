@@ -964,6 +964,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'clear_db_transients_no_short':
+
+							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $clear_short = false );
+
+							$notice_msg = sprintf( __( '%s database transients have been cleared (shortened URLs preserved).', 'wpsso' ),
+								$cleared_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'clear_db_transients_shortened':
+
+							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = 'wpsso_s_', $clear_short = true );
+
+							$notice_msg = sprintf( __( '%s shortened URL database transients have been cleared.', 'wpsso' ),
+								$cleared_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
 						case 'clear_cron_jobs':
 
 							$count_cron_jobs = number_format_i18n( $this->p->util->count_cron_jobs() );

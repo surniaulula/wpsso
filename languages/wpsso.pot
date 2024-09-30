@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.11.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 18.11.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7206,190 +7206,198 @@ msgstr ""
 msgid "%s database transients have been cleared."
 msgstr ""
 
-#: lib/admin.php:973
+#: lib/admin.php:971
+msgid "%s database transients have been cleared (shortened URLs preserved)."
+msgstr ""
+
+#: lib/admin.php:982
+msgid "%s shortened URL database transients have been cleared."
+msgstr ""
+
+#: lib/admin.php:995
 msgid "%s WordPress cron jobs have been cleared."
 msgstr ""
 
-#: lib/admin.php:988
+#: lib/admin.php:1010
 msgid "The WordPress rewrite rules have been flushed."
 msgstr ""
 
-#: lib/admin.php:1014
+#: lib/admin.php:1036
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:1029
+#: lib/admin.php:1051
 msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
-#: lib/admin.php:1048
+#: lib/admin.php:1070
 msgid "Option preference has been saved."
 msgstr ""
 
-#: lib/admin.php:1050
+#: lib/admin.php:1072
 msgid "Now viewing \"%s\" by default."
 msgstr ""
 
-#: lib/admin.php:1067
+#: lib/admin.php:1089
 msgid ""
 "Image size settings have been reloaded with their default values and saved."
 msgstr ""
 
-#: lib/admin.php:1177
+#: lib/admin.php:1199
 msgid ""
 "Your current language selection [%1$s] is different from the default site "
 "language [%2$s]."
 msgstr ""
 
-#: lib/admin.php:1180
+#: lib/admin.php:1202
 msgid ""
 "Localized option values [%1$s] will be used for webpages and content in that "
 "language."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1293
+#: lib/admin.php:1315
 msgid "Profile updated."
 msgstr ""
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1419
+#: lib/admin.php:1441
 msgid "Upgrade to %s"
 msgstr ""
 
-#: lib/admin.php:1431
+#: lib/admin.php:1453
 msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1518
+#: lib/admin.php:1540
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr ""
 
-#: lib/admin.php:1520
+#: lib/admin.php:1542
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1533 lib/submenu/tools.php:78
+#: lib/admin.php:1555 lib/submenu/tools.php:82
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1653
+#: lib/admin.php:1675
 msgid "The %s plugin is not active and/or not found."
 msgstr ""
 
-#: lib/admin.php:1683
+#: lib/admin.php:1705
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:1795
+#: lib/admin.php:1817
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:1811
+#: lib/admin.php:1833
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:1832
+#: lib/admin.php:1854
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1863
+#: lib/admin.php:1885
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:1884
+#: lib/admin.php:1906
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:1893
+#: lib/admin.php:1915
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2014
+#: lib/admin.php:2036
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2020
+#: lib/admin.php:2042
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2027
+#: lib/admin.php:2049
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2041
+#: lib/admin.php:2063
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2050
+#: lib/admin.php:2072
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2059
+#: lib/admin.php:2081
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:2508
+#: lib/admin.php:2530
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:2509
+#: lib/admin.php:2531
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:2514
+#: lib/admin.php:2536
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:2515
+#: lib/admin.php:2537
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:2526
+#: lib/admin.php:2548
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:2527
+#: lib/admin.php:2549
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:2533
+#: lib/admin.php:2555
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:2540
+#: lib/admin.php:2562
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:2547
+#: lib/admin.php:2569
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:2554
+#: lib/admin.php:2576
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
@@ -15191,107 +15199,118 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/submenu/tools.php:44
+#: lib/submenu/tools.php:45
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:46
+#: lib/submenu/tools.php:47
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:49
+#: lib/submenu/tools.php:50
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:52
+#: lib/submenu/tools.php:53
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:55
+#: lib/submenu/tools.php:56
+msgctxt "submit button"
+msgid "Clear %s Short URL Transient"
+msgid_plural "Clear %s Short URL Transients"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/submenu/tools.php:59
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Job"
 msgid_plural "Clear %s WordPress Cron Jobs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/submenu/tools.php:58
+#: lib/submenu/tools.php:62
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr ""
 
-#: lib/submenu/tools.php:63
+#: lib/submenu/tools.php:67
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:64
+#: lib/submenu/tools.php:68
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:69
+#: lib/submenu/tools.php:73
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:70
+#: lib/submenu/tools.php:74
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:71
+#: lib/submenu/tools.php:75
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:126
+#: lib/submenu/tools.php:131
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:127
+#: lib/submenu/tools.php:132
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:145
+#: lib/submenu/tools.php:150
 msgid ""
 "The maximum execution time for this background task is currently set to %s."
 msgstr ""
 
-#: lib/submenu/tools.php:150
+#: lib/submenu/tools.php:155
+msgid "Shortened URL database transients are preserved."
+msgstr ""
+
+#: lib/submenu/tools.php:156
 msgid ""
 "<a href=\"%1$s\">Using external object cache</a> for WordPress transients is "
 "<code>%2$s</code>."
 msgstr ""
 
-#: lib/submenu/tools.php:151
+#: lib/submenu/tools.php:157
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_using_ext_object_cache/"
 msgstr ""
 
-#: lib/submenu/tools.php:157
+#: lib/submenu/tools.php:163
 msgid "Members of the role are used for some Schema property selections."
 msgstr ""
 
-#: lib/submenu/tools.php:158
+#: lib/submenu/tools.php:164
 msgid ""
 "Content Creators are defined as being all administrators, editors, authors, "
 "and contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:166
+#: lib/submenu/tools.php:172
 msgid "%s Failed URL Connections:"
 msgstr ""
 
