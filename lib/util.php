@@ -2813,6 +2813,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$disabled = apply_filters( 'wpsso_add_link_rel_canonical', ( $disabled ? false : true ) ) ? false : true;
+
 			$disabled = apply_filters( 'wpsso_canonical_disabled', $disabled );
 
 			return $disabled;
@@ -2855,6 +2856,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$disabled = apply_filters( 'wpsso_add_link_rel_shortlink', ( $disabled ? false : true ) ) ? false : true;
+
 			$disabled = apply_filters( 'wpsso_shortlink_disabled', $disabled );
 
 			return $disabled;

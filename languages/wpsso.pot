@@ -9562,11 +9562,11 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1748 lib/register.php:305 lib/util.php:876 lib/util.php:985
-#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3445
+#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3447
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1749 lib/util.php:877 lib/util.php:3446
+#: lib/media.php:1749 lib/util.php:877 lib/util.php:3448
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -14896,7 +14896,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:288 lib/util.php:3467
+#: lib/submenu/advanced.php:288 lib/util.php:3469
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -15771,146 +15771,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3447
+#: lib/util.php:3449
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3470
+#: lib/util.php:3472
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3472
+#: lib/util.php:3474
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3474
+#: lib/util.php:3476
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3476
+#: lib/util.php:3478
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3871
+#: lib/util.php:3873
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3872
+#: lib/util.php:3874
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3876
+#: lib/util.php:3878
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3877
+#: lib/util.php:3879
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3881
+#: lib/util.php:3883
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3882
+#: lib/util.php:3884
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3886
+#: lib/util.php:3888
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3887
+#: lib/util.php:3889
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3891
+#: lib/util.php:3893
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3892
+#: lib/util.php:3894
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3896
+#: lib/util.php:3898
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3897
+#: lib/util.php:3899
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3901
+#: lib/util.php:3903
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3902
+#: lib/util.php:3904
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3906
+#: lib/util.php:3908
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3907
+#: lib/util.php:3909
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3911
+#: lib/util.php:3913
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:3912
+#: lib/util.php:3914
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:3917
+#: lib/util.php:3919
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3918
+#: lib/util.php:3920
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3988
+#: lib/util.php:3990
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3998
+#: lib/util.php:4000
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
