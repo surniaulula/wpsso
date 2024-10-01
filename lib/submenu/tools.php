@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			echo '<p class="status-msg smaller left">';
 			echo '*** ';
 			echo __( 'Members of the role are used for some Schema property selections.', 'wpsso' ) . ' ';
-			echo __( 'Content Creators are defined as being all administrators, editors, authors, and contributors.', 'wpsso' );
+			echo __( 'Content Creators are administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
 
 			if ( $this->p->util->cache->count_ignored_urls() > 0 ) {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-09-30 13:00-0700\n"
+"PO-Revision-Date: 2024-10-01 07:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -13881,8 +13881,8 @@ msgid "Members of the role are used for some Schema property selections."
 msgstr "Les membres du rôle sont utilisés pour certaines sélections de propriétés de Schéma."
 
 #: lib/submenu/tools.php:164
-msgid "Content Creators are defined as being all administrators, editors, authors, and contributors."
-msgstr "Les créateurs de contenu sont définis comme étant tous les administrateurs, éditeurs, auteurs et contributeurs."
+msgid "Content Creators are administrators, editors, authors, and contributors."
+msgstr "Les créateurs de contenu sont les administrateurs, éditeurs, auteurs et contributeurs."
 
 #: lib/submenu/tools.php:172
 msgid "%s Failed URL Connections:"

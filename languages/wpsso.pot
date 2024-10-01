@@ -15306,8 +15306,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:164
 msgid ""
-"Content Creators are defined as being all administrators, editors, authors, "
-"and contributors."
+"Content Creators are administrators, editors, authors, and contributors."
 msgstr ""
 
 #: lib/submenu/tools.php:172
