@@ -20,7 +20,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>Provides complete structured data for WordPress to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
