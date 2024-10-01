@@ -55,7 +55,7 @@
 
 #dashboard-widgets table.wpsso-dashboard-widget {
 	width:100%;
-	margin:10px;
+	padding:0 8px 8px 0;	/* td are 2px 2px 2px 10px. */
 }
 
 #dashboard-widgets table.wpsso-dashboard-widget p {
