@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.12.0-dev.1 (2024/10/03)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a notice to the WordPress Dashboard &gt; WPSSO Cache Status metabox when `wp_using_ext_object_cache()` returns true.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.11.0 (2024/10/01)**
 
 * **New Features**
@@ -408,6 +423,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.8.
 
 == Upgrade Notice ==
+
+= 18.12.0-dev.1 =
+
+(2024/10/03) Added a notice to the WordPress Dashboard &gt; WPSSO Cache Status metabox when `wp_using_ext_object_cache()` returns true.
 
 = 18.11.0 =
 
