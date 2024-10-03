@@ -956,7 +956,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_db_transients':
 
-							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $clear_short = true );
+							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $incl_shortened = true );
 
 							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
 
@@ -966,7 +966,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_db_transients_no_short':
 
-							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $clear_short = false );
+							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $incl_shortened = false );
 
 							$notice_msg = sprintf( __( '%s database transients have been cleared (shortened URLs preserved).', 'wpsso' ),
 								$cleared_count );
@@ -977,7 +977,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_db_transients_shortened':
 
-							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = 'wpsso_s_', $clear_short = true );
+							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = 'wpsso_s_', $incl_shortened = true );
 
 							$notice_msg = sprintf( __( '%s shortened URL database transients have been cleared.', 'wpsso' ),
 								$cleared_count );

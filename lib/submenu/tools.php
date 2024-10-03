@@ -38,8 +38,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$count_cache_files             = $this->p->util->cache->count_cache_files();
 			$count_ignored_urls            = $this->p->util->cache->count_ignored_urls();
-			$count_db_transients_no_short  = $this->p->util->cache->count_db_transients( $key_prefix = '', $include_short = false );
-			$count_db_transients_shortened = $this->p->util->cache->count_db_transients( $key_prefix = 'wpsso_s_', $include_short = true );
+			$count_db_transients_no_short  = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_shortened = false );
+			$count_db_transients_shortened = $this->p->util->cache->count_db_transients( $key_prefix = 'wpsso_s_', $incl_shortened = true );
 			$count_cron_jobs               = $this->p->util->count_cron_jobs();
 
 			$refresh_cache_transl = _x( 'Refresh Cache', 'submit button', 'wpsso' ) . ' *';
@@ -152,10 +152,16 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
-			echo __( 'Shortened URL transients are preserved.', 'wpsso' ) . ' ';
-			echo sprintf( __( '<a href="%1$s">Using an external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
-				__( 'https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/', 'wpsso' ),
-					wp_using_ext_object_cache() ? 'true' : 'false' ) . ' ';
+			echo __( 'All database transients are cleared, except for the shortened URL database transients.', 'wpsso' ) . ' ';
+
+			if ( wp_using_ext_object_cache() ) {
+
+				echo sprintf( __( '<a href="%1$s">Using an external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
+					__( 'https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/', 'wpsso' ),
+						wp_using_ext_object_cache() ? 'true' : 'false' ) . ' ';
+				echo __( 'All database transient counts should be 0.', 'wpsso' ) . ' ';
+			}
+
 			echo '</p>' . "\n";
 
 			echo '<p class="status-msg smaller left">';

@@ -33,29 +33,26 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 		public function wp_dashboard_setup() {
 
-			if ( ! wp_using_ext_object_cache() ) {
-
-				wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
-					$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array(
-						'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
-			}
+			wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
+				$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array(
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
 
 			wp_add_dashboard_widget( $widget_id = 'wpsso-help-support', $widget_name = __( 'WPSSO Help and Support', 'wpsso' ),
 				$callback = array( $this, 'show_metabox_help_support' ), $control_callback = null, $callback_args = array(
-					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
 
 			wp_add_dashboard_widget( $widget_id = 'wpsso-version-info', $widget_name = __( 'WPSSO Version Information', 'wpsso' ),
 				$callback = array( $this, 'show_metabox_version_info' ), $control_callback = null, $callback_args = array(
-					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ) );
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
 		}
 
 		public function show_metabox_cache_status( $obj, $mb ) {
 
 			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
 
-			$table_cols         = 4;
-			$db_transient_keys  = $this->p->util->cache->get_db_transients_keys();
-			$all_transients_pre = 'wpsso_';
+			$table_cols        = 4;
+			$all_keys_prefix   = 'wpsso_';
+			$db_transient_keys = $this->p->util->cache->get_db_transients_keys( $all_keys_prefix, $only_expired = false );
 
 			echo '<table class="wpsso-dashboard-widget">';
 
@@ -77,9 +74,9 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 			uasort( $transients_info, array( __CLASS__, 'sort_by_label_key' ) );
 
-			if ( isset( $transients_info[ $all_transients_pre ] ) ) {	// Just in case.
+			if ( isset( $transients_info[ $all_keys_prefix ] ) ) {	// Just in case.
 
-				SucomUtil::move_to_end( $transients_info, $all_transients_pre );
+				SucomUtil::move_to_end( $transients_info, $all_keys_prefix );
 			}
 
 			foreach ( $transients_info as $cache_key => $cache_info ) {
@@ -105,12 +102,25 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-size">' . $cache_size . '</td>';
 
-				if ( $cache_key !== $all_transients_pre ) {
+				if ( $cache_key !== $all_keys_prefix ) {
 
 					echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
 				}
 
 				echo '</tr>' . "\n";
+			}
+
+			if ( wp_using_ext_object_cache() ) {
+			
+				echo '<tr><td colspan="' . $table_cols . '">';
+				echo '<p class="status-msg">';
+				echo sprintf( __( '<a href="%1$s">Using an external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 
+					__( 'https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/', 'wpsso' ),
+						wp_using_ext_object_cache() ? 'true' : 'false' ) . ' ';
+				echo '</p><p class="status-msg">';
+				echo __( 'All database transient counts should be 0.', 'wpsso' ) . ' ';
+				echo '</p>' . "\n";
+				echo '</td></tr>';
 			}
 
 			echo '</table>';

@@ -66,6 +66,20 @@
 	text-align:center;
 }
 
+#dashboard-widgets table.wpsso-dashboard-widget p.status-msg,
+#dashboard-widgets table.wpsso-dashboard-widget p.status-msg code {
+	color:#999;
+	font-size:0.95em;
+	line-height:1.4em;
+	text-align:center;
+	margin:4px 0;
+}
+
+#dashboard-widgets table.wpsso-dashboard-widget p.status-msg.smaller,
+#dashboard-widgets table.wpsso-dashboard-widget p.status-msg.smaller code {
+	font-size:0.85em;
+}
+
 #dashboard-widgets table.wpsso-dashboard-widget h4 {
 	font-weight:600;
 	margin:10px 2px 5px 2px;

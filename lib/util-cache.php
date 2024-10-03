@@ -35,7 +35,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_cache_files' ) );
+			add_action( 'wp_scheduled_delete', array( $this, 'clear_cache_files_expired' ) );
+
 			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// Single scheduled task.
 
 			if ( $this->is_disabled() ) {
@@ -82,7 +83,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		/*
 		 * Clear cache files older than WPSSO_CACHE_FILES_EXP_SECS.
 		 */
-		public function clear_expired_cache_files() {
+		public function clear_cache_files_expired() {
 
 			return $this->clear_cache_files( WPSSO_CACHE_FILES_EXP_SECS );
 		}
@@ -248,17 +249,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $this->p->cache->get_ignored_urls();
 		}
 
+		public function clear_db_transients_expired() {
+
+			return $this->clear_db_transients( $key_prefix = 'wpsso_', $incl_shortened = true, $only_expired = true );
+		}
+
 		/*
 		 * Clear database transients, excluding transients that must be preserved (key begins with 'wpsso_!_'), and
 		 * optionally exclude shortened URL transients.
 		 *
 		 * See WpssoAdmin->load_settings_page().
-		 * See WpssoUtilCache->get_db_transients_subset().
+		 * See WpssoUtilCache->clear_db_transients_expired().
 		 */
-		public function clear_db_transients( $key_prefix = '', $clear_short = true ) {
+		public function clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
 
-			$cleared_count     = 0;
-			$transients_subset = $this->get_db_transients_subset( $key_prefix, $clear_short );
+			$cleared_count = 0;
+
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
 
 			foreach ( $transients_subset as $key ) {
 
@@ -276,13 +283,53 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * optionally exclude shortened URL transients.
 		 *
 		 * See WpssoSubmenuTools->add_form_buttons().
-		 * See WpssoUtilCache->get_db_transients_subset().
 		 */
-		public function count_db_transients( $key_prefix = '', $include_short = true ) {
+		public function count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
 
-			$transients_subset = $this->get_db_transients_subset( $key_prefix, $include_short );
+			$transients_subset = $this->get_db_transients_subset( $key_prefix, $incl_shortened, $only_expired );
 
 			return count( $transients_subset );
+		}
+
+		/*
+		 * A wrapper for WpssoUtilCache->get_db_transients_keys() to exclude transients that must be preserved (key begins
+		 * with 'wpsso_!_'), and optionally exclude shortened URL transients.
+		 *
+		 * See WpssoUtilCache->clear_db_transients().
+		 * See WpssoUtilCache->count_db_transients().
+		 */
+		public function get_db_transients_subset( $key_prefix = '', $incl_shortened = true, $only_expired = false ) {
+
+			$transients_subset = array();
+
+			$transients_keys = $this->get_db_transients_keys( $key_prefix, $only_expired );
+
+			foreach ( $transients_keys as $key ) {
+
+				if ( '' !== $key_prefix ) {				// We're only clearing a specific prefix.
+
+					if ( 0 !== strpos( $key, $key_prefix ) ) {	// Transient does not match that prefix.
+
+						continue;
+					}
+				}
+
+				if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
+
+					continue;
+
+				} elseif ( ! $incl_shortened ) {				// Not clearing short URLs.
+
+					if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
+
+						continue;
+					}
+				}
+
+				$transients_subset[] = $key;
+			}
+
+			return $transients_subset;
 		}
 
 		/*
@@ -291,22 +338,19 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * See WpssoAdmin->show_metabox_cache_status().
 		 * See WpssoUtilCache->get_db_transients_subset().
 		 */
-		public function get_db_transients_keys( $key_prefix = '', $expired_only = false ) {
+		public function get_db_transients_keys( $key_prefix = '', $only_expired = false ) {
 
 			global $wpdb;
 
-			$transients_keys = array();
-			$opt_row_prefix  = $expired_only ? '_transient_timeout_' : '_transient_';
-			$current_time    = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
+			$transients_keys  = array();
+			$transient_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
+			$current_time     = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
 
 			$db_query = 'SELECT option_name';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $key_prefix . '%\'';
+			$db_query .= ' WHERE option_name LIKE \'' . $transient_prefix . $key_prefix . '%\'';
 
-			if ( $expired_only ) {
-
-				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
-			}
+			if ( $only_expired ) $db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
 
 			$db_query .= ';';	// End of query.
 
@@ -317,7 +361,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			foreach( $result as $option_name ) {
 
-				$transients_keys[] = str_replace( $opt_row_prefix, '', $option_name );
+				$transients_keys[] = str_replace( $transient_prefix, '', $option_name );
 			}
 
 			return $transients_keys;
@@ -347,50 +391,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$result = $wpdb->get_col( $db_query );
 
 			$size = array_sum( $result ) / 1024 / 1014;
-			$size = number_format_i18n( $size, $decimals );
+
+			if ( $decimals > 0 ) $size = number_format_i18n( $size, $decimals );
 
 			return $size;
-		}
-
-		/*
-		 * A wrapper for WpssoUtilCache->get_db_transients_keys() to exclude transients that must be preserved (key begins
-		 * with 'wpsso_!_'), and optionally exclude shortened URL transients.
-		 *
-		 * See WpssoUtilCache->clear_db_transients().
-		 * See WpssoUtilCache->count_db_transients().
-		 * See WpssoUtilCache->get_db_transients_keys().
-		 */
-		public function get_db_transients_subset( $key_prefix = '', $include_short = true ) {
-
-			$transients_keys   = $this->get_db_transients_keys( $key_prefix, $expired_only = false );
-			$transients_subset = array();
-
-			foreach ( $transients_keys as $key ) {
-
-				if ( '' !== $key_prefix ) {				// We're only clearing a specific prefix.
-
-					if ( 0 !== strpos( $key, $key_prefix ) ) {	// Transient does not match that prefix.
-
-						continue;
-					}
-				}
-
-				if ( 0 === strpos( $key, 'wpsso_!_' ) ) {		// Preserve transients that begin with "wpsso_!_".
-
-					continue;
-
-				} elseif ( ! $include_short ) {				// Not clearing short URLs.
-
-					if ( 0 === strpos( $key, 'wpsso_s_' ) ) {	// This is a shortened URL.
-
-						continue;
-					}
-				}
-
-				$transients_subset[] = $key;
-			}
-
-			return $transients_subset;
 		}
 
 		public function show_admin_notices() {
