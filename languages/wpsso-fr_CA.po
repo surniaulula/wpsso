@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-10-04 02:52-0700\n"
+"PO-Revision-Date: 2024-10-04 08:21-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6589,9 +6589,13 @@ msgstr "Tous les comptes d'objets transitoires de la base de données doivent ê
 msgid "Cache Folder"
 msgstr "Dossier cache"
 
+#: lib/admin-dashboard.php:145
+msgid "Cached %s Files"
+msgstr "Fichiers %s mis en cache"
+
 #: lib/admin-dashboard.php:152
-msgid "All Files"
-msgstr "Tous fichiers"
+msgid "All Cached Files"
+msgstr "Tous fichiers mis en cache"
 
 #: lib/admin-dashboard.php:181
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
@@ -6617,27 +6621,27 @@ msgstr "<a href=\"%s\">Forum de soutien communautaire</a>"
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/admin-dashboard.php:284
+#: lib/admin-dashboard.php:291
 msgctxt "version label"
-msgid "Installed"
-msgstr "Installé"
+msgid "Stable Version"
+msgstr "Version stable"
 
-#: lib/admin-dashboard.php:292
+#: lib/admin-dashboard.php:295
 msgctxt "version label"
-msgid "Stable"
-msgstr "Stable"
+msgid "Installed Version"
+msgstr "Version installée"
 
-#: lib/admin-dashboard.php:296
+#: lib/admin-dashboard.php:298
 msgctxt "version label"
-msgid "Latest"
-msgstr "Dernière"
+msgid "Latest Version"
+msgstr "Dernière version"
 
-#: lib/admin-dashboard.php:304
+#: lib/admin-dashboard.php:306
 msgctxt "version label"
 msgid "Update Notice"
 msgstr "Avis de mise à jour"
 
-#: lib/admin-dashboard.php:312
+#: lib/admin-dashboard.php:314
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
@@ -7002,52 +7006,52 @@ msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau d
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:2530
+#: lib/admin.php:2532
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:2531
+#: lib/admin.php:2533
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:2536
+#: lib/admin.php:2538
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:2537
+#: lib/admin.php:2539
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:2548
+#: lib/admin.php:2550
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:2549
+#: lib/admin.php:2551
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:2555
+#: lib/admin.php:2557
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:2562
+#: lib/admin.php:2564
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:2569
+#: lib/admin.php:2571
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:2576
+#: lib/admin.php:2578
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
@@ -14524,5 +14528,9 @@ msgstr "JS Morisset"
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
 
-#~ msgid "Shortened URL transients are preserved."
-#~ msgstr "Les objets transitoires d'URL raccourcies de la base de données sont préservés."
+#~ msgid "All Files"
+#~ msgstr "Tous fichiers"
+
+#~ msgctxt "version label"
+#~ msgid "Stable"
+#~ msgstr "Stable"
