@@ -280,12 +280,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.12.0-dev.1 (2024/10/03)**
+**Version 18.12.0-dev.2 (2024/10/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a notice to the WordPress Dashboard &gt; WPSSO Cache Status metabox when `wp_using_ext_object_cache()` returns true.
+	* Added a "Cache Folder" section in the WordPress Dashboard &gt; WPSSO Cache Status metabox.
+	* Added a notice in the WordPress Dashboard &gt; WPSSO Cache Status metabox when `wp_using_ext_object_cache()` returns true.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -424,9 +425,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.12.0-dev.1 =
+= 18.12.0-dev.2 =
 
-(2024/10/03) Added a notice to the WordPress Dashboard &gt; WPSSO Cache Status metabox when `wp_using_ext_object_cache()` returns true.
+(2024/10/04) Added a "Cache Folder" section in the WordPress Dashboard &gt; WPSSO Cache Status metabox.
 
 = 18.11.0 =
 
