@@ -2403,7 +2403,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else delete_transient( $cache_id );	// Just in case.
 
-			$file_content = $this->get_ext_file_content( $ext, $rel_file );
+			$file_content = $this->get_ext_file_content( $ext, $rel_file, $read_cache );
 
 			if ( ! empty( $file_content ) ) {
 
@@ -2436,7 +2436,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * See WpssoSubmenuSetup->show_metabox_setup_guide().
 		 */
-		public function get_ext_file_content( $ext, $rel_file ) {
+		public function get_ext_file_content( $ext, $rel_file, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2456,6 +2456,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $file_url ) {	// Sanitized URL or false.
 
 				if ( $cache_exp_secs > 0 ) {
+
+					if ( ! $read_cache ) $this->p->cache->clear( $file_url );
 
 					$file_content = $this->p->cache->get( $file_url, $format = 'raw', $cache_type = 'file', $cache_exp_secs );
 

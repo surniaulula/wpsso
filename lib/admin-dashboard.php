@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
 				echo '<tr>';
-				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
+				echo '<th class="cache-label">' . $cache_label_transl . '</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-size">' . $cache_size . '</td>';
 
@@ -142,14 +142,14 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 					$all_size += $info[ 'size' ];
 
 					echo '<tr>';
-					echo '<th class="cache-label">' . $ext . ':</th>';
+					echo '<th class="cache-label">' . sprintf( __( 'Cached %s Files', 'wpsso' ), $ext ) . '</th>';
 					echo '<td class="cache-count">' . $info[ 'count' ] . '</td>';
 					echo '<td class="cache-size">' . $info[ 'size' ]  . '</td>';
 					echo '</tr>';
 				}
 
 				echo '<tr>';
-				echo '<th class="cache-label">' . __( 'All Files', 'wpsso' ) . ':</th>';
+				echo '<th class="cache-label">' . __( 'All Cached Files', 'wpsso' ) . ':</th>';
 				echo '<td class="cache-count">' . $all_count . '</td>';
 				echo '<td class="cache-size">' . number_format_i18n( $all_size, $decimals ) . '</td>';
 				echo '</tr>';
@@ -282,23 +282,24 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				}
 
 				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info[ 'name' ] . '</h4></td></tr>';
-				echo '<tr><th class="version-label">' . _x( 'Installed', 'version label', 'wpsso' ) . ':</th>';
-				echo '<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
 
 				/*
-				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
+				 * Show the stable version if the latest version is different (ie. latest is a non-stable version).
 				 */
-				if ( $stable_version !== $latest_version ) {
+				if ( $latest_version !== $stable_version ) {
 
-					echo '<tr><th class="version-label">' . _x( 'Stable', 'version label', 'wpsso' ) . ':</th>';
+					echo '<tr><th class="version-label">' . _x( 'Stable Version', 'version label', 'wpsso' ) . ':</th>';
 					echo '<td class="version-number">' . $stable_version . '</td></tr>';
 				}
 
-				echo '<tr><th class="version-label">' . _x( 'Latest', 'version label', 'wpsso' ) . ':</th>';
+				echo '<tr><th class="version-label">' . _x( 'Installed Version', 'version label', 'wpsso' ) . ':</th>';
+				echo '<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
+
+				echo '<tr><th class="version-label">' . _x( 'Latest Version', 'version label', 'wpsso' ) . ':</th>';
 				echo '<td class="version-number">' . $latest_version . '</td></tr>';
 
 				/*
-				 * Only show the latest version notice message if there's a newer / non-matching version.
+				 * Show the latest version notice message if there's a newer / non-matching version.
 				 */
 				if ( $plugin_version !== $stable_version || $plugin_version !== $latest_version ) {
 
