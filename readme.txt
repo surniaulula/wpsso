@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.12.0-dev.3 (2024/10/04)**
+**Version 18.12.0-b.1 (2024/10/04)**
 
 * **New Features**
 	* None.
@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.12.0-dev.3 =
+= 18.12.0-b.1 =
 
 (2024/10/04) Added a "Cache Folder" section in the WordPress Dashboard &gt; WPSSO Cache Status metabox.
 
