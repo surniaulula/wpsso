@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.11.0\n"
+"Project-Id-Version: WPSSO Core 18.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-10-01 07:11-0700\n"
+"PO-Revision-Date: 2024-10-04 02:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2749,35 +2749,35 @@ msgid "Additional requests to retrieve this URL will be ignored for another %d s
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:632 lib/util-cache.php:168
+#: lib/com/cache.php:473 lib/com/cache.php:670 lib/util-cache.php:169
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:529
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:567
 msgid "PHP cURL library missing - contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante - contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:890
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:928
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:960
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1030
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1068
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1044
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1082
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1058
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1096
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1087
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1125
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
@@ -3779,7 +3779,7 @@ msgstr "Détails vidéo YouTube"
 #: gettext/gettext-lib-config.php:192
 msgctxt "option label"
 msgid "All Files"
-msgstr "Tous les fichiers"
+msgstr "Tous fichiers"
 
 #: gettext/gettext-lib-config.php:193
 msgctxt "option label"
@@ -6431,7 +6431,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1749 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:821
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:825
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -6541,83 +6541,103 @@ msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui 
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
-#: lib/admin-dashboard.php:38
+#: lib/admin-dashboard.php:36
 msgid "WPSSO Cache Status"
 msgstr "État du cache WPSSO"
 
-#: lib/admin-dashboard.php:43
+#: lib/admin-dashboard.php:40
 msgid "WPSSO Help and Support"
 msgstr "Aide et support WPSSO"
 
-#: lib/admin-dashboard.php:47
+#: lib/admin-dashboard.php:44
 msgid "WPSSO Version Information"
 msgstr "Informations de version WPSSO"
 
-#: lib/admin-dashboard.php:63
+#: lib/admin-dashboard.php:61
 msgid "Database Transients"
 msgstr "Objets transitoires de base de données"
 
-#: lib/admin-dashboard.php:68
+#: lib/admin-dashboard.php:66 lib/admin-dashboard.php:132
 msgid "Count"
 msgstr "Nombre"
 
-#: lib/admin-dashboard.php:69
+#: lib/admin-dashboard.php:67 lib/admin-dashboard.php:133
 msgid "MB"
 msgstr "Mo"
 
-#: lib/admin-dashboard.php:70
+#: lib/admin-dashboard.php:68
 msgid "Expiration"
 msgstr "Expiration"
 
-#: lib/admin-dashboard.php:101
+#: lib/admin-dashboard.php:99
 msgid "disabled"
 msgstr "désactivé"
 
-#: lib/admin-dashboard.php:139
+#: lib/admin-dashboard.php:115 lib/submenu/tools.php:159
+msgid "<a href=\"%1$s\">Using an external object cache</a> for WordPress transients is <code>%2$s</code>."
+msgstr "<a href=\"%1$s\">L'utilisation d'un cache d'objet externe</a> pour les objets transitoires WordPress est <code>%2$s</code>."
+
+#: lib/admin-dashboard.php:116 lib/submenu/tools.php:160
+msgid "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
+msgstr "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
+
+#: lib/admin-dashboard.php:119 lib/submenu/tools.php:162
+msgid "All database transient counts should be 0."
+msgstr "Tous les comptes d'objets transitoires de la base de données doivent être 0."
+
+#: lib/admin-dashboard.php:127
+msgid "Cache Folder"
+msgstr "Dossier cache"
+
+#: lib/admin-dashboard.php:152
+msgid "All Files"
+msgstr "Tous fichiers"
+
+#: lib/admin-dashboard.php:181
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr "<a href=\"%s\">Foire aux questions</a>"
 
-#: lib/admin-dashboard.php:144
+#: lib/admin-dashboard.php:186
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr "<a href=\"%s\">Notes et documentation</a>"
 
-#: lib/admin-dashboard.php:149
+#: lib/admin-dashboard.php:191
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr "<a href=\"%s\">Billet de soutien prioritaire</a>"
 
-#: lib/admin-dashboard.php:150
+#: lib/admin-dashboard.php:192
 msgid "Premium edition"
 msgstr "Édition Premium"
 
-#: lib/admin-dashboard.php:154
+#: lib/admin-dashboard.php:196
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr "<a href=\"%s\">Forum de soutien communautaire</a>"
 
-#: lib/admin-dashboard.php:194 lib/admin-dashboard.php:195
+#: lib/admin-dashboard.php:236 lib/admin-dashboard.php:237
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/admin-dashboard.php:242
+#: lib/admin-dashboard.php:284
 msgctxt "version label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin-dashboard.php:250
+#: lib/admin-dashboard.php:292
 msgctxt "version label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin-dashboard.php:254
+#: lib/admin-dashboard.php:296
 msgctxt "version label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin-dashboard.php:262
+#: lib/admin-dashboard.php:304
 msgctxt "version label"
 msgid "Update Notice"
 msgstr "Avis de mise à jour"
 
-#: lib/admin-dashboard.php:270
+#: lib/admin-dashboard.php:312
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
@@ -9105,11 +9125,11 @@ msgid "https://developer.wordpress.org/reference/functions/image_make_intermedia
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
 #: lib/media.php:1748 lib/register.php:305 lib/util.php:876 lib/util.php:985
-#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3445
+#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3447
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1749 lib/util.php:877 lib/util.php:3446
+#: lib/media.php:1749 lib/util.php:877 lib/util.php:3448
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
@@ -13477,7 +13497,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/submenu/advanced.php:288 lib/util.php:3467
+#: lib/submenu/advanced.php:288 lib/util.php:3469
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
@@ -13838,12 +13858,12 @@ msgstr "Importer réglages d'extension et ajouts"
 #: lib/submenu/tools.php:73
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
-msgstr "Ajouter le rôle %s aux créateurs de contenu"
+msgstr "Ajouter rôle %s aux créateurs de contenu"
 
 #: lib/submenu/tools.php:74
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
-msgstr "Supprimer le rôle %s des utilisateurs"
+msgstr "Supprimer rôle %s des utilisateurs"
 
 #: lib/submenu/tools.php:75
 msgctxt "submit button"
@@ -13865,26 +13885,18 @@ msgid "The maximum execution time for this background task is currently set to %
 msgstr "Le temps d'exécution maximum pour cette tâche en arrière-plan est actuellement limité à %s."
 
 #: lib/submenu/tools.php:155
-msgid "Shortened URL transients are preserved."
-msgstr "Les objets transitoires d'URL raccourcies de la base de données sont préservés."
+msgid "All database transients are cleared, except for the shortened URL database transients."
+msgstr "Tous les objets transitoires de la base de données sont effacés, à l’exception des URL raccourcies."
 
-#: lib/submenu/tools.php:156
-msgid "<a href=\"%1$s\">Using an external object cache</a> for WordPress transients is <code>%2$s</code>."
-msgstr "<a href=\"%1$s\">L'utilisation d'un cache d'objet externe</a> pour les objets transitoires WordPress est <code>%2$s</code>."
-
-#: lib/submenu/tools.php:157
-msgid "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
-msgstr "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
-
-#: lib/submenu/tools.php:163
+#: lib/submenu/tools.php:169
 msgid "Members of the role are used for some Schema property selections."
 msgstr "Les membres du rôle sont utilisés pour certaines sélections de propriétés de Schéma."
 
-#: lib/submenu/tools.php:164
+#: lib/submenu/tools.php:170
 msgid "Content Creators are administrators, editors, authors, and contributors."
 msgstr "Les créateurs de contenu sont les administrateurs, éditeurs, auteurs et contributeurs."
 
-#: lib/submenu/tools.php:172
+#: lib/submenu/tools.php:178
 msgid "%s Failed URL Connections:"
 msgstr "%s connexions URL échouées:"
 
@@ -13968,7 +13980,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:628
+#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:632
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -13981,7 +13993,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:733
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:737
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -14093,60 +14105,60 @@ msgstr "<strong>Erreur</strong>: l'adresse de messagerie est incorrecte."
 msgid "<strong>Error</strong>: This email is already registered, please choose another one."
 msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisée. Veuillez en choisir une autre."
 
-#: lib/util-cache.php:217
+#: lib/util-cache.php:218
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util-cache.php:453
+#: lib/util-cache.php:457
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:522 lib/util-cache.php:590 lib/util-cache.php:618
+#: lib/util-cache.php:526 lib/util-cache.php:594 lib/util-cache.php:622
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
 
-#: lib/util-cache.php:538 lib/util-cache.php:598
+#: lib/util-cache.php:542 lib/util-cache.php:602
 msgid "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan commencera dans %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:555
+#: lib/util-cache.php:559
 msgid "A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan devait commencer il y a %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:558
+#: lib/util-cache.php:562
 msgid "WordPress should have run the %s event hook at that time."
 msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
 
-#: lib/util-cache.php:561
+#: lib/util-cache.php:565
 msgid "If the task does not run, this could indicate a problem with your hosting provider's event scheduler and/or a lack of support for the WordPress %s function."
 msgstr "Si la tâche ne s'exécute pas, cela peut indiquer un problème avec le planificateur d'événements de votre fournisseur d'hébergement et/ou un manque de prise en charge de la fonction %s de WordPress."
 
-#: lib/util-cache.php:563
+#: lib/util-cache.php:567
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr "Vous pouvez activer une extension comme %s pour gérer les événements planifiés."
 
-#: lib/util-cache.php:565
+#: lib/util-cache.php:569
 msgid "WP Crontrol"
 msgstr "WP Crontrol"
 
-#: lib/util-cache.php:629
+#: lib/util-cache.php:633
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:712
+#: lib/util-cache.php:716
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:768
+#: lib/util-cache.php:772
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:823
+#: lib/util-cache.php:827
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:889
+#: lib/util-cache.php:893
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
@@ -14326,135 +14338,135 @@ msgstr "La classe PHP %s est manquante &ndash; contactez votre fournisseur d'hé
 msgid "The PHP %s function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP %s est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3447
+#: lib/util.php:3449
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3470
+#: lib/util.php:3472
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute."
 msgstr "Crochet(s) de filtre lent(s) détecté(s) - le filtre WordPress %1$s a pris %2$.3f secondes pour s'exécuter."
 
-#: lib/util.php:3472
+#: lib/util.php:3474
 msgid "This is longer than the recommended maximum of %1$.3f seconds and may affect page load time."
 msgstr "Cela dépasse le maximum recommandé de %1$.3f secondes et peut affecter le temps de chargement de la page."
 
-#: lib/util.php:3474
+#: lib/util.php:3476
 msgid "You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Vous devriez envisager de revoir les fonctions d'extension et de thème actives liées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3476
+#: lib/util.php:3478
 msgid "Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance."
 msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour appliquer le filtre de manière cohérente) peuvent fournir plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3871
+#: lib/util.php:3873
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3872
+#: lib/util.php:3874
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3876
+#: lib/util.php:3878
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3877
+#: lib/util.php:3879
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3881
+#: lib/util.php:3883
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr "Test AMP de Google"
 
-#: lib/util.php:3882
+#: lib/util.php:3884
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3886
+#: lib/util.php:3888
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3887
+#: lib/util.php:3889
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3891
+#: lib/util.php:3893
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3892
+#: lib/util.php:3894
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3896
+#: lib/util.php:3898
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3897
+#: lib/util.php:3899
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3901
+#: lib/util.php:3903
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3902
+#: lib/util.php:3904
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3906
+#: lib/util.php:3908
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr "Validateur de balisage de Schéma"
 
-#: lib/util.php:3907
+#: lib/util.php:3909
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr "Balisage de Schéma"
 
-#: lib/util.php:3911
+#: lib/util.php:3913
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr "Vérificateur de carte X (Twitter)"
 
-#: lib/util.php:3912
+#: lib/util.php:3914
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr "Carte X (Twitter)"
 
-#: lib/util.php:3917
+#: lib/util.php:3919
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3918
+#: lib/util.php:3920
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3988
+#: lib/util.php:3990
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3998
+#: lib/util.php:4000
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
@@ -14511,3 +14523,6 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgid "Shortened URL transients are preserved."
+#~ msgstr "Les objets transitoires d'URL raccourcies de la base de données sont préservés."

@@ -287,7 +287,7 @@ body.rtl #tools-content div.submit-buttons {
 #tools-content div.submit-buttons input[type=submit],
 #tools-content div.submit-buttons input[type=button] {
 	display:block;
-	min-width:340px;
+	min-width:360px;
 	margin:5px 0;
 }
 

@@ -259,6 +259,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 							reset( $upgrade_notice );
 
 							$latest_version = key( $upgrade_notice );
+
 							$latest_notice  = $upgrade_notice[ $latest_version ];
 						}
 					}
