@@ -33,10 +33,6 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 		public function wp_dashboard_setup() {
 
-			wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
-				$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array(
-					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
-
 			wp_add_dashboard_widget( $widget_id = 'wpsso-help-support', $widget_name = __( 'WPSSO Help and Support', 'wpsso' ),
 				$callback = array( $this, 'show_metabox_help_support' ), $control_callback = null, $callback_args = array(
 					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
@@ -44,8 +40,16 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			wp_add_dashboard_widget( $widget_id = 'wpsso-version-info', $widget_name = __( 'WPSSO Version Information', 'wpsso' ),
 				$callback = array( $this, 'show_metabox_version_info' ), $control_callback = null, $callback_args = array(
 					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
+
+			wp_add_dashboard_widget( $widget_id = 'wpsso-cache-status', $widget_name = __( 'WPSSO Cache Status', 'wpsso' ),
+				$callback = array( $this, 'show_metabox_cache_status' ), $control_callback = null, $callback_args = array(
+					'metabox_id' => $widget_id, 'metabox_title' => $widget_name ), $context = 'normal', $priority = 'high' );
+
 		}
 
+		/*
+		 * WPSSO Cache Status.
+		 */
 		public function show_metabox_cache_status( $obj, $mb ) {
 
 			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
@@ -158,6 +162,9 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			echo '</table>';
 		}
 
+		/*
+		 * WPSSO Help and Support.
+		 */
 		public function show_metabox_help_support( $obj, $mb ) {
 
 			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
@@ -208,6 +215,9 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			echo '</table>';
 		}
 
+		/*
+		 * WPSSO Version Information.
+		 */
 		public function show_metabox_version_info( $obj, $mb ) {
 
 			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;

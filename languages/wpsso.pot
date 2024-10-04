@@ -6852,110 +6852,110 @@ msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
 #: lib/admin-dashboard.php:36
-msgid "WPSSO Cache Status"
-msgstr ""
-
-#: lib/admin-dashboard.php:40
 msgid "WPSSO Help and Support"
 msgstr ""
 
-#: lib/admin-dashboard.php:44
+#: lib/admin-dashboard.php:40
 msgid "WPSSO Version Information"
 msgstr ""
 
-#: lib/admin-dashboard.php:61
+#: lib/admin-dashboard.php:44
+msgid "WPSSO Cache Status"
+msgstr ""
+
+#: lib/admin-dashboard.php:65
 msgid "Database Transients"
 msgstr ""
 
-#: lib/admin-dashboard.php:66 lib/admin-dashboard.php:132
+#: lib/admin-dashboard.php:70 lib/admin-dashboard.php:136
 msgid "Count"
 msgstr ""
 
-#: lib/admin-dashboard.php:67 lib/admin-dashboard.php:133
+#: lib/admin-dashboard.php:71 lib/admin-dashboard.php:137
 msgid "MB"
 msgstr ""
 
-#: lib/admin-dashboard.php:68
+#: lib/admin-dashboard.php:72
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin-dashboard.php:99
+#: lib/admin-dashboard.php:103
 msgid "disabled"
 msgstr ""
 
-#: lib/admin-dashboard.php:115 lib/submenu/tools.php:159
+#: lib/admin-dashboard.php:119 lib/submenu/tools.php:159
 msgid ""
 "<a href=\"%1$s\">Using an external object cache</a> for WordPress transients "
 "is <code>%2$s</code>."
 msgstr ""
 
-#: lib/admin-dashboard.php:116 lib/submenu/tools.php:160
+#: lib/admin-dashboard.php:120 lib/submenu/tools.php:160
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_using_ext_object_cache/"
 msgstr ""
 
-#: lib/admin-dashboard.php:119 lib/submenu/tools.php:162
+#: lib/admin-dashboard.php:123 lib/submenu/tools.php:162
 msgid "All database transient counts should be 0."
 msgstr ""
 
-#: lib/admin-dashboard.php:127
+#: lib/admin-dashboard.php:131
 msgid "Cache Folder"
 msgstr ""
 
-#: lib/admin-dashboard.php:145
+#: lib/admin-dashboard.php:149
 msgid "Cached %s Files"
 msgstr ""
 
-#: lib/admin-dashboard.php:152
+#: lib/admin-dashboard.php:156
 msgid "All Cached Files"
 msgstr ""
 
-#: lib/admin-dashboard.php:181
+#: lib/admin-dashboard.php:188
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:186
+#: lib/admin-dashboard.php:193
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:191
+#: lib/admin-dashboard.php:198
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:192
+#: lib/admin-dashboard.php:199
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin-dashboard.php:196
+#: lib/admin-dashboard.php:203
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:236 lib/admin-dashboard.php:237
+#: lib/admin-dashboard.php:246 lib/admin-dashboard.php:247
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin-dashboard.php:291
+#: lib/admin-dashboard.php:301
 msgctxt "version label"
 msgid "Stable Version"
 msgstr ""
 
-#: lib/admin-dashboard.php:295
+#: lib/admin-dashboard.php:305
 msgctxt "version label"
 msgid "Installed Version"
 msgstr ""
 
-#: lib/admin-dashboard.php:298
+#: lib/admin-dashboard.php:308
 msgctxt "version label"
 msgid "Latest Version"
 msgstr ""
 
-#: lib/admin-dashboard.php:306
+#: lib/admin-dashboard.php:316
 msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 
-#: lib/admin-dashboard.php:314
+#: lib/admin-dashboard.php:324
 msgid "View %s changelog..."
 msgstr ""
 
