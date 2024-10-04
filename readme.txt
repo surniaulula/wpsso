@@ -290,7 +290,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a `$read_cache` argument to the `WpssoAdmin->get_ext_file_content()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
