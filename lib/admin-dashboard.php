@@ -50,6 +50,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 			if ( WpssoUtilMetabox::show_is_hidden_content( $mb ) ) return;
 
+			$decimals          = 1;
 			$table_cols        = 4;
 			$all_keys_prefix   = 'wpsso_';
 			$db_transient_keys = $this->p->util->cache->get_db_transients_keys( $all_keys_prefix, $only_expired = false );
@@ -93,7 +94,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->id : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_key . '/', $db_transient_keys ) );
-				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_key, $decimals = 1 );
+				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_key, $decimals );
 				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_key, $cache_type = 'transient' );
 				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
@@ -102,10 +103,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-size">' . $cache_size . '</td>';
 
-				if ( $cache_key !== $all_keys_prefix ) {
-
-					echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
-				}
+				if ( $cache_key !== $all_keys_prefix ) echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
 
 				echo '</tr>' . "\n";
 			}
@@ -121,6 +119,40 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				echo __( 'All database transient counts should be 0.', 'wpsso' ) . ' ';
 				echo '</p>' . "\n";
 				echo '</td></tr>';
+			}
+
+			if ( $cache_files = $this->p->cache->get_cache_files_size_mb( $decimals ) ) {
+
+				echo '<tr><td colspan="' . $table_cols . '"><h4>';
+				echo __( 'Cache Folder', 'wpsso' );
+				echo '</h4></td></tr>';
+
+				echo '<tr>';
+				echo '<th class="cache-label"></th>';
+				echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
+				echo '<th class="cache-size">' . __( 'MB', 'wpsso' ) . '</th>';
+				echo '</tr>';
+
+				$all_count = 0;
+				$all_size = 0;
+
+				foreach ( $cache_files as $ext => $info ) {
+
+					$all_count += $info[ 'count' ];
+					$all_size += $info[ 'size' ];
+
+					echo '<tr>';
+					echo '<th class="cache-label">' . $ext . ':</th>';
+					echo '<td class="cache-count">' . $info[ 'count' ] . '</td>';
+					echo '<td class="cache-size">' . $info[ 'size' ]  . '</td>';
+					echo '</tr>';
+				}
+
+				echo '<tr>';
+				echo '<th class="cache-label">' . __( 'All Files', 'wpsso' ) . ':</th>';
+				echo '<td class="cache-count">' . $all_count . '</td>';
+				echo '<td class="cache-size">' . number_format_i18n( $all_size, $decimals ) . '</td>';
+				echo '</tr>';
 			}
 
 			echo '</table>';

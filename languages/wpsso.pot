@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.12.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 18.12.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3003,37 +3003,37 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:632 lib/util-cache.php:169
+#: lib/com/cache.php:473 lib/com/cache.php:670 lib/util-cache.php:169
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:529
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:567
 msgid ""
 "PHP cURL library missing - contact your hosting provider to have the cURL "
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:890
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:928
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:960
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1030
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1068
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1044
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1082
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1058
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1096
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1087
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1125
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -6863,87 +6863,95 @@ msgstr ""
 msgid "WPSSO Version Information"
 msgstr ""
 
-#: lib/admin-dashboard.php:60
+#: lib/admin-dashboard.php:61
 msgid "Database Transients"
 msgstr ""
 
-#: lib/admin-dashboard.php:65
+#: lib/admin-dashboard.php:66 lib/admin-dashboard.php:132
 msgid "Count"
 msgstr ""
 
-#: lib/admin-dashboard.php:66
+#: lib/admin-dashboard.php:67 lib/admin-dashboard.php:133
 msgid "MB"
 msgstr ""
 
-#: lib/admin-dashboard.php:67
+#: lib/admin-dashboard.php:68
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin-dashboard.php:98
+#: lib/admin-dashboard.php:99
 msgid "disabled"
 msgstr ""
 
-#: lib/admin-dashboard.php:117 lib/submenu/tools.php:159
+#: lib/admin-dashboard.php:115 lib/submenu/tools.php:159
 msgid ""
 "<a href=\"%1$s\">Using an external object cache</a> for WordPress transients "
 "is <code>%2$s</code>."
 msgstr ""
 
-#: lib/admin-dashboard.php:118 lib/submenu/tools.php:160
+#: lib/admin-dashboard.php:116 lib/submenu/tools.php:160
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_using_ext_object_cache/"
 msgstr ""
 
-#: lib/admin-dashboard.php:121 lib/submenu/tools.php:162
+#: lib/admin-dashboard.php:119 lib/submenu/tools.php:162
 msgid "All database transient counts should be 0."
 msgstr ""
 
-#: lib/admin-dashboard.php:149
+#: lib/admin-dashboard.php:127
+msgid "Cache Folder"
+msgstr ""
+
+#: lib/admin-dashboard.php:152
+msgid "All Files"
+msgstr ""
+
+#: lib/admin-dashboard.php:181
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:154
+#: lib/admin-dashboard.php:186
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:159
+#: lib/admin-dashboard.php:191
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:160
+#: lib/admin-dashboard.php:192
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin-dashboard.php:164
+#: lib/admin-dashboard.php:196
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin-dashboard.php:204 lib/admin-dashboard.php:205
+#: lib/admin-dashboard.php:236 lib/admin-dashboard.php:237
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin-dashboard.php:252
+#: lib/admin-dashboard.php:284
 msgctxt "version label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin-dashboard.php:260
+#: lib/admin-dashboard.php:292
 msgctxt "version label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin-dashboard.php:264
+#: lib/admin-dashboard.php:296
 msgctxt "version label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin-dashboard.php:272
+#: lib/admin-dashboard.php:304
 msgctxt "version label"
 msgid "Update Notice"
 msgstr ""
 
-#: lib/admin-dashboard.php:280
+#: lib/admin-dashboard.php:312
 msgid "View %s changelog..."
 msgstr ""
 

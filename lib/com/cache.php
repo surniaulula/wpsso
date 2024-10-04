@@ -502,6 +502,44 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
+		public function get_cache_files_size_mb( $decimals = 1 ) {
+			
+			if ( ! $dh = @opendir( $this->base_dir ) ) return false;
+
+			$cache_files = array();
+
+			while ( $file_name = @readdir( $dh ) ) {
+
+				$cache_file = $this->base_dir . $file_name;
+
+				if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
+					if ( $file_ext = strtoupper( pathinfo( $cache_file, PATHINFO_EXTENSION ) ) ) {
+
+						if ( ! isset( $cache_files[ $file_ext ] ) ) {
+						
+							$cache_files[ $file_ext ] = array( 'count' => 0, 'size' => 0 );
+						}
+
+						$cache_files[ $file_ext ][ 'count' ]++;
+
+						$cache_files[ $file_ext ][ 'size' ] += filesize( $cache_file );
+					}
+				}
+			}
+
+			closedir( $dh );
+
+			foreach ( $cache_files as $ext => &$info ) {
+
+				$info[ 'size' ] = $info[ 'size' ] / 1024 / 1024;
+
+				if ( $decimals > 0 ) $info[ 'size' ] = number_format_i18n( $info[ 'size' ], $decimals );
+			}
+
+			return $cache_files;
+		}
+
 		/*
 		 * If $cache_exp_secs is null, then use the default expiration time.
 		 *
@@ -1047,7 +1085,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
-					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
+					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {	// Check if we get a file handle.
 
 						if ( $this->p->debug->enabled ) {
 
