@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.12.0-rc.1 (2024/10/04)**
+**Version 18.12.0 (2024/10/04)**
 
 * **New Features**
 	* None.
@@ -366,66 +366,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.9.
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
-**Version 18.7.3 (2024/09/12)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed deprecated creation of dynamic property in `WpssoAdminDashboard`.
-	* Fixed Schema transitTime markup to always provide a min/max value for Google.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.7.2 (2024/09/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed possible multiple executions of `WpssoSchema->action_init_json_filters()`.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.7.1 (2024/09/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed an option key warning in `WpssoStyle->admin_register_page_styles()`.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
-**Version 18.7.0 (2024/09/07)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added an SSO &gt; Troubleshooting page.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Refactored the `WpssoAdmin->sort_active_plugins()` method.
-* **Requires At Least**
-	* PHP v7.2.34.
-	* WordPress v5.8.
-
 == Upgrade Notice ==
 
-= 18.12.0-rc.1 =
+= 18.12.0 =
 
 (2024/10/04) Added a "Cache Folder" section in the WordPress Dashboard &gt; WPSSO Cache Status metabox.
 
@@ -444,20 +387,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 18.8.0 =
 
 (2024/09/15) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transaction status in the update option data.
-
-= 18.7.3 =
-
-(2024/09/12) Fixed deprecated creation of dynamic property in `WpssoAdminDashboard`. Fixed Schema transitTime markup to always provide a min/max value for Google.
-
-= 18.7.2 =
-
-(2024/09/10) Fixed possible multiple executions of `WpssoSchema->action_init_json_filters()`.
-
-= 18.7.1 =
-
-(2024/09/10) Fixed an option key warning in `WpssoStyle->admin_register_page_styles()`.
-
-= 18.7.0 =
-
-(2024/09/07) Added an SSO &gt; Troubleshooting page.
 
