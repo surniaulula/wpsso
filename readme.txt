@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin ===
+=== WPSSO Core - The Complete Structured Data SEO Plugin ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best for social sites and search results, no matter 
 
 == Description ==
 
-<h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
+<h3 class="top">The Complete Structured Data SEO Plugin for WordPress</h3>
 
 <p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
