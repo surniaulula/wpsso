@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				echo '</td></tr>';
 			}
 
-			if ( $cache_files = $this->p->cache->get_cache_files_size_mb( $decimals ) ) {
+			if ( $cache_files = $this->p->cache->get_cache_files_size_mb() ) {
 
 				echo '<tr><td colspan="' . $table_cols . '"><h4>';
 				echo __( 'Cache Folder', 'wpsso' );
@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 					echo '<tr>';
 					echo '<th class="cache-label">' . sprintf( __( 'Cached %s Files', 'wpsso' ), $ext ) . '</th>';
 					echo '<td class="cache-count">' . $info[ 'count' ] . '</td>';
-					echo '<td class="cache-size">' . $info[ 'size' ]  . '</td>';
+					echo '<td class="cache-size">' . number_format_i18n( $info[ 'size' ], $decimals )  . '</td>';
 					echo '</tr>';
 				}
 

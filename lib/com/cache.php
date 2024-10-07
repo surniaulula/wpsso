@@ -502,7 +502,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		public function get_cache_files_size_mb( $decimals = 1 ) {
+		public function get_cache_files_size_mb() {
 			
 			if ( ! $dh = @opendir( $this->base_dir ) ) return false;
 
@@ -533,8 +533,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			foreach ( $cache_files as $ext => &$info ) {
 
 				$info[ 'size' ] = $info[ 'size' ] / 1024 / 1024;
-
-				if ( $decimals > 0 ) $info[ 'size' ] = number_format_i18n( $info[ 'size' ], $decimals );
 			}
 
 			return $cache_files;
