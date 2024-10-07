@@ -280,16 +280,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.12.1-rc.1 (2024/10/07)**
+**Version 18.12.1 (2024/10/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed a non-numeric value warning in `WpssoAdminDashboard->show_metabox_cache_status()`.
+	* Fixed a non-numeric value warning in the `WpssoAdminDashboard->show_metabox_cache_status()` method.
 * **Developer Notes**
-	* Removed `number_format_i18n()` formatting in `SucomCache->get_cache_files_size_mb()`.
+	* Removed `number_format_i18n()` formatting in the `SucomCache->get_cache_files_size_mb()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -383,9 +383,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.12.1-rc.1 =
+= 18.12.1 =
 
-(2024/10/07) Fixed a non-numeric value warning in `WpssoAdminDashboard->show_metabox_cache_status()`.
+(2024/10/07) Fixed a non-numeric value warning in the `WpssoAdminDashboard->show_metabox_cache_status()` method.
 
 = 18.12.0 =
 
