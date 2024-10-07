@@ -85,6 +85,10 @@
 	margin:10px 2px 5px 2px;
 }
 
+#dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget h4 {
+	margin-bottom:0;
+}
+
 #dashboard-widgets table.wpsso-dashboard-widget ul {
 	margin:8px 0 16px 30px;
 }
