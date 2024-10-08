@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		/*
 		 * See WpssoAdmin->show_metabox_cache_status().
 		 */
-		public function get_db_transients_size_mb( $key_prefix = '', $decimals = 1 ) {
+		public function get_db_transients_size_mb( $key_prefix = '' ) {
 
 			global $wpdb;
 
@@ -390,11 +390,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$result = $wpdb->get_col( $db_query );
 
-			$size = array_sum( $result ) / 1024 / 1014;
-
-			if ( $decimals > 0 ) $size = number_format_i18n( $size, $decimals );
-
-			return $size;
+			return array_sum( $result ) / 1024 / 1024;	// Return size in MB.
 		}
 
 		public function show_admin_notices() {

@@ -98,14 +98,14 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->id : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_key . '/', $db_transient_keys ) );
-				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_key, $decimals );
+				$cache_size         = $this->p->util->cache->get_db_transients_size_mb( $cache_key );
 				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_key, $cache_type = 'transient' );
 				$human_cache_exp    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
 				echo '<tr>';
 				echo '<td class="cache-label">' . $cache_label_transl . '</td>';
-				echo '<td class="cache-count">' . $cache_count . '</td>';
-				echo '<td class="cache-size">' . $cache_size . '</td>';
+				echo '<td class="cache-count">' . number_format_i18n( $cache_count ) . '</td>';
+				echo '<td class="cache-size">' . number_format_i18n( $cache_size, $decimals ) . '</td>';
 
 				if ( $cache_key !== $all_keys_prefix ) echo '<td class="cache-expiration">' . $human_cache_exp . '</td>';
 
@@ -147,14 +147,14 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 
 					echo '<tr>';
 					echo '<td class="cache-label">' . sprintf( __( 'Cached %s Files', 'wpsso' ), $ext ) . '</td>';
-					echo '<td class="cache-count">' . $info[ 'count' ] . '</td>';
+					echo '<td class="cache-count">' . number_format_i18n( $info[ 'count' ] ) . '</td>';
 					echo '<td class="cache-size">' . number_format_i18n( $info[ 'size' ], $decimals )  . '</td>';
 					echo '</tr>';
 				}
 
 				echo '<tr>';
 				echo '<td class="cache-label">' . __( 'All Cached Files', 'wpsso' ) . '</td>';
-				echo '<td class="cache-count">' . $all_count . '</td>';
+				echo '<td class="cache-count">' . number_format_i18n( $all_count ) . '</td>';
 				echo '<td class="cache-size">' . number_format_i18n( $all_size, $decimals ) . '</td>';
 				echo '</tr>';
 			}
