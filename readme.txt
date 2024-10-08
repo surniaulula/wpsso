@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.13.0-dev.1 (2024/10/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added numeric formatting to the WordPress Dashboard &gt; WPSSO Cache Status metabox "Count" column.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Removed `number_format_i18n()` formatting in the `WpssoUtilCache->get_db_transients_size_mb()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.12.1 (2024/10/07)**
 
 * **New Features**
@@ -382,6 +397,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.13.0-dev.1 =
+
+(2024/10/08) Added numeric formatting to the WordPress Dashboard &gt; WPSSO Cache Status metabox "Count" column.
 
 = 18.12.1 =
 
