@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.13.0-rc.1 (2024/10/12)**
+**Version 18.13.0 (2024/10/12)**
 
 * **New Features**
 	* None.
@@ -398,7 +398,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.13.0-rc.1 =
+= 18.13.0 =
 
 (2024/10/12) Added numeric formatting to the WordPress Dashboard &gt; WPSSO Cache Status metabox "Count" column.
 
