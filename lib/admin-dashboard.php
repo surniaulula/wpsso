@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoAdminDashboard' ) ) {
 			}
 
 			if ( wp_using_ext_object_cache() ) {
-			
+
 				echo '<tr><td colspan="' . $table_cols . '">';
 				echo '<p class="status-msg">';
 				echo sprintf( __( '<a href="%1$s">Using an external object cache</a> for WordPress transients is <code>%2$s</code>.', 'wpsso' ), 

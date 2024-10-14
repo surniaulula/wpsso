@@ -503,7 +503,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		public function get_cache_files_size_mb() {
-			
+
 			if ( ! $dh = @opendir( $this->base_dir ) ) return false;
 
 			$cache_files = array();
@@ -517,7 +517,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( $file_ext = strtoupper( pathinfo( $cache_file, PATHINFO_EXTENSION ) ) ) {
 
 						if ( ! isset( $cache_files[ $file_ext ] ) ) {
-						
+
 							$cache_files[ $file_ext ] = array( 'count' => 0, 'size' => 0 );
 						}
 
