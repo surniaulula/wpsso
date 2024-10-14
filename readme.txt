@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a '_wpsso_head_info_schema_review_rating' metadata value when a Schema Review rating is available:
 		* Added a 'schema_review_rating' column settings array in `WpssoConfig::$cf`. 
 		* Added a 'schema:review:rating' internal meta tag in `SucomUtil::get_mt_og_seed()`.
-		* Added a 'schema:review:rating' internal meta tag for the Schema Review type in `WpssoSchema->get_array()`.
+		* Added a new `WpssoSchema->add_schema_mt_og()` private method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
