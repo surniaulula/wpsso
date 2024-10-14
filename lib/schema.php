@@ -3943,96 +3943,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return empty( $json_data ) ? false : $json_data;
 		}
 
-		/*
-		 * Check for missing Schema property values.
-		 *
-		 * See WpssoAbstractWpMeta->check_head_info().
-		 */
-		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ), $type_id = null ) {
-
-			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
-
-				return;
-
-			} elseif ( $mod[ 'is_post' ] && 'publish' !== $mod[ 'post_status' ] ) {
-
-				return;
-			}
-
-			/*
-			 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
-			 */
-			$wpsso =& Wpsso::get_instance();
-
-			$ref_url = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
-
-			list( $type_context, $type_name, $type_path ) = $wpsso->schema->get_schema_type_url_parts_by_id( $type_id );
-
-			foreach ( $prop_names as $prop_name ) {
-
-				if ( empty( $json_data[ $prop_name ] ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( $prop_name . ' property value is empty and required' );
-					}
-
-					/*
-					 * An is_admin() test is required to make sure the WpssoMessages class is available.
-					 */
-					if ( $wpsso->notice->is_admin_pre_notices() ) {
-
-						$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name, array( 'type_name' => $type_name ) );
-						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
-
-						if ( ! empty( $notice_msg ) ) {	// Just in case.
-
-							$wpsso->notice->err( $notice_msg, null, $notice_key );
-						}
-					}
-				}
-			}
-
-			$wpsso->util->maybe_unset_ref( $ref_url );
-		}
-
-		/*
-		 * Convert a numeric category ID to its Google category string.
-		 */
-		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'checking category property value' );
-			}
-
-			if ( ! empty( $json_data[ $prop_name ] ) ) {
-
-				/*
-				 * Category IDs are expected to be numeric Google category IDs.
-				 *
-				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
-				 */
-				if ( is_numeric( $json_data[ $prop_name ] ) ) {
-
-					$cat_id = $json_data[ $prop_name ];
-
-					$categories = $wpsso->util->get_google_product_categories();
-
-					if ( isset( $categories[ $cat_id ] ) ) {
-
-						$json_data[ $prop_name ] = $categories[ $cat_id ];
-
-					} else {
-
-						unset( $json_data[ $prop_name ] );
-					}
-				}
-			}
-		}
-
 		public static function get_enumeration_examples( $enum_key, $val_prefix = '', $val_suffix = '' ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -4096,6 +4006,94 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $values;
+		}
+
+		/*
+		 * Check for missing Schema property values.
+		 *
+		 * See WpssoAbstractWpMeta->check_head_info().
+		 */
+		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ), $type_id = null ) {
+
+			if ( ! $mod[ 'id' ] || ! $mod[ 'is_public' ] ) {
+
+				return;
+
+			} elseif ( $mod[ 'is_post' ] && 'publish' !== $mod[ 'post_status' ] ) {
+
+				return;
+			}
+
+			/*
+			 * The post, term, or user has an ID, is public, and (in the case of a post) the post status is published.
+			 */
+			$wpsso =& Wpsso::get_instance();
+
+			$ref_url = $wpsso->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking schema properties', 'wpsso' ) );
+
+			list( $type_context, $type_name, $type_path ) = $wpsso->schema->get_schema_type_url_parts_by_id( $type_id );
+
+			foreach ( $prop_names as $prop_name ) {
+
+				if ( empty( $json_data[ $prop_name ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( $prop_name . ' property value is empty and required' );
+					}
+
+					/*
+					 * An is_admin() test is required to make sure the WpssoMessages class is available.
+					 */
+					if ( $wpsso->notice->is_admin_pre_notices() ) {
+
+						$notice_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name, array( 'type_name' => $type_name ) );
+
+						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
+
+						if ( ! empty( $notice_msg ) ) {	// Just in case.
+
+							$wpsso->notice->err( $notice_msg, null, $notice_key );
+						}
+					}
+				}
+			}
+
+			$wpsso->util->maybe_unset_ref( $ref_url );
+		}
+
+		/*
+		 * Convert a numeric category ID to its Google category string.
+		 */
+		public static function check_prop_value_category( &$json_data ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking category property value' );
+			}
+
+			if ( ! empty( $json_data[ 'category' ] ) ) {
+
+				/*
+				 * Category IDs are expected to be numeric Google category IDs.
+				 *
+				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
+				 */
+				if ( is_numeric( $json_data[ 'category' ] ) ) {
+
+					$cat_id = $json_data[ 'category' ];
+
+					$categories = $wpsso->util->get_google_product_categories();
+
+					if ( isset( $categories[ $cat_id ] ) ) {
+
+						$json_data[ 'category' ] = $categories[ $cat_id ];
+
+					} else unset( $json_data[ 'category' ] );
+				}
+			}
 		}
 
 		/*
@@ -4192,23 +4190,57 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * A similar method exists as WpssoOpenGraph::check_mt_value_gtin().
 		 */
-		public static function check_prop_value_gtin( &$json_data, $prop_name = 'gtin' ) {
+		public static function check_prop_value_gtin( &$json_data ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			if ( $wpsso->debug->enabled ) {
+			$gtin_props = array(
+				'gtin'   => 0,
+				'gtin8'  => 8,
+				'gtin12' => 12,
+				'gtin13' => 13,
+				'gtin14' => 14,
+			);
 
-				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
+			foreach ( $gtin_props as $prop_name => $prop_len ) {
+
+				if ( $wpsso->debug->enabled ) {
+	
+					$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
+				}
+
+				if ( isset( $json_data[ $prop_name ] ) ) {
+
+					/*
+					 * The value may come from a custom field, so remove spaces and trim it, just in case.
+					 */
+					$json_data[ $prop_name ] = preg_replace( '/\s+/', '', $json_data[ $prop_name ] );
+
+					$gtin_len = strlen( $json_data[ $prop_name ] );
+
+					if ( $prop_len ) {	// GTIN property has specific length.
+					
+						if ( $gtin_len !== $prop_len ) {	// GTIN property length mismatch.
+				
+							if ( $wpsso->debug->enabled ) {
+	
+								$wpsso->debug->log( 'unsetting ' . $prop_name . ' property' );
+							}
+
+							unset( $json_data[ $prop_name ] );
+						}
+					}
+				}
 			}
 
-			if ( ! empty( $json_data[ $prop_name ] ) ) {
+			if ( isset( $json_data[ 'gtin' ] ) ) {
 
-				/*
-				 * The value may come from a custom field, so trim it, just in case.
-				 */
-				$json_data[ $prop_name ] = trim( $json_data[ $prop_name ] );
+				$gtin_len = strlen( $json_data[ 'gtin' ] );
 
-				$gtin_len = strlen( $json_data[ $prop_name ] );
+				if ( $wpsso->debug->enabled ) {
+	
+					$wpsso->debug->log( 'gtin property value length = ' . $gtin_len );
+				}
 
 				switch ( $gtin_len ) {
 
@@ -4217,9 +4249,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					case 12:
 					case 8:
 
-						if ( empty( $json_data[ $prop_name . $gtin_len ] ) ) {
+						if ( empty( $json_data[ 'gtin' . $gtin_len ] ) ) {
 
-							$json_data[ $prop_name . $gtin_len ] = $json_data[ $prop_name ];
+							if ( $wpsso->debug->enabled ) {
+	
+								$wpsso->debug->log( 'adding gtin' . $gtin_len . ' = ' . $json_data[ 'gtin' ] );
+							}
+
+							$json_data[ 'gtin' . $gtin_len ] = $json_data[ 'gtin' ];
 						}
 
 						break;
@@ -4230,52 +4267,52 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
 		 */
-		public static function check_prop_value_sameas( &$json_data, $prop_name = 'sameAs' ) {
+		public static function check_prop_value_sameas( &$json_data ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
+				$wpsso->debug->log( 'checking sameAs property value' );
 			}
 
-			if ( ! empty( $json_data[ $prop_name ] ) ) {
+			if ( ! empty( $json_data[ 'sameAs' ] ) ) {
 
-				if ( ! is_array( $json_data[ $prop_name ] ) ) {	// Just in case.
+				if ( ! is_array( $json_data[ 'sameAs' ] ) ) {	// Just in case.
 
-					$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
+					$json_data[ 'sameAs' ] = array( $json_data[ 'sameAs' ] );
 				}
 
 				$added_urls = array();
 
-				foreach ( $json_data[ $prop_name ] as $num => $url ) {
+				foreach ( $json_data[ 'sameAs' ] as $num => $url ) {
 
 					if ( empty( $url ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url is empty' );
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ': url is empty' );
 						}
 
 					} elseif ( isset( $json_data[ 'url' ] ) && $json_data[ 'url' ] === $url ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is duplicate of url property' );
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ': url "' . $url . '" is duplicate of url property' );
 						}
 
 					} elseif ( isset( $added_urls[ $url ] ) ) {	// Already added.
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is duplicate' );
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ': url "' . $url . '" is duplicate' );
 						}
 
 					} elseif ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is invalid' );
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ': url "' . $url . '" is invalid' );
 						}
 
 					} else {	// Mark the url as already added and get the next url.
@@ -4285,10 +4322,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						continue;	// Get the next url.
 					}
 
-					unset( $json_data[ $prop_name ][ $num ] );	// Remove the duplicate / invalid url.
+					unset( $json_data[ 'sameAs' ][ $num ] );	// Remove the duplicate / invalid url.
 				}
 
-				$json_data[ $prop_name ] = array_values( $json_data[ $prop_name ] );	// Reindex / renumber the array.
+				$json_data[ 'sameAs' ] = array_values( $json_data[ 'sameAs' ] );	// Reindex / renumber the array.
 			}
 		}
 

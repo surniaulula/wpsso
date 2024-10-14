@@ -1463,12 +1463,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' gtin value' );
 			}
 
-			if ( ! empty( $mt_og[ $mt_pre . ':gtin' ] ) ) {
+			if ( isset( $mt_og[ $mt_pre . ':gtin' ] ) ) {
 
 				/*
 				 * The value may come from a custom field, so trim it, just in case.
 				 */
-				$mt_og[ $mt_pre . ':gtin' ] = trim( $mt_og[ $mt_pre . ':gtin' ] );
+				$mt_og[ $mt_pre . ':gtin' ] = preg_replace( '/\s+/', '', $mt_og[ $mt_pre . ':gtin' ] );
 
 				$gtin_len = strlen( $mt_og[ $mt_pre . ':gtin' ] );
 
