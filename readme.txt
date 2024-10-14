@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.14.0-dev.1 (2024/10/14)**
+**Version 18.14.0-dev.2 (2024/10/14)**
 
 * **New Features**
 	* None.
@@ -416,7 +416,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.14.0-dev.1 =
+= 18.14.0-dev.2 =
 
 (2024/10/14) Added a '_wpsso_head_info_schema_review_rating' metadata value when a Schema Review rating is available.
 
