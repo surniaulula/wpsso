@@ -47,7 +47,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * WpssoSchema->get_json_data(), when the Schema filters are required. The action then unhooks itself so it
 			 * can only be run once.
 			 */
-			$this->p->util->add_plugin_actions( $this, array( 'init_json_filters' => 0 ), $this->init_json_prio );
+			$this->p->util->add_plugin_actions( $this, array(
+				'init_json_filters' => 0,
+			), $this->init_json_prio );
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes'   => 1,
@@ -296,6 +298,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
+			/*
+			 * See WpssoSchema->add_schema_mt_og().
+			 */
 			$page_language = $mt_og[ 'schema:language' ] = $this->get_schema_lang( $mod );
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type_id( $mod );		// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
@@ -305,8 +310,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og[ 'schema:type:name' ],
 				$mt_og[ 'schema:type:path' ],
 			) = $this->get_schema_type_url_parts( $page_type_url );
-
-			$mt_og[ 'schema:review:rating' ] = 'review' === $page_type_id ? $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_review_rating' ) : null;
 
 			$page_type_ids   = array();
 			$page_type_added = array();	// Prevent duplicate schema types.
@@ -449,6 +452,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					$single_graph = apply_filters( 'wpsso_json_data_graph_element', $single_graph, $mod, $mt_og, $page_type_id, $is_main );
+
+					/*
+					 * Add meta tags (like 'schema:review:rating') based on the filtered Schema markup.
+					 */
+					$this->add_schema_mt_og( $single_graph, $mod, $mt_og, $page_type_id, $is_main );
 
 					WpssoSchemaGraph::add_data( $single_graph );
 				}
@@ -4519,11 +4527,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
+		 * Add meta tags (like 'schema:review:rating') based on the filtered Schema markup.
+		 */
+		private function add_schema_mt_og( $single_graph, $mod, &$mt_og, $page_type_id, $is_main ) {	// Pass by reference is OK.
+
+			if ( $is_main ) {
+
+				if ( 'review' === $page_type_id ) {
+
+					$mt_og[ 'schema:review:rating' ] = isset( $single_graph[ 'reviewRating' ][ 'ratingValue' ] ) ?
+						$single_graph[ 'reviewRating' ][ 'ratingValue' ] : null;
+				}
+			}
+		}
+
+		/*
 		 * Add cross-references for schema sub-type arrays that exist under more than one type.
 		 *
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 		 */
-		private function add_schema_type_xrefs( &$schema_types ) {
+		private function add_schema_type_xrefs( &$schema_types ) {	// Pass by reference is OK.
 
 			$thing =& $schema_types[ 'thing' ];	// Quick ref variable for the 'thing' array.
 
