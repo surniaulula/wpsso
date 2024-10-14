@@ -923,14 +923,11 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Review Rating', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_rating',
 					'content'  => '' .
-						$form->get_input( 'schema_review_rating',
-							$css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ) .
+						$form->get_input( 'schema_review_rating', $css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ) .
 						' ' . _x( 'from', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_input( 'schema_review_rating_min',
-							$css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ) .
+						$form->get_input( 'schema_review_rating_min', $css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ) .
 						' ' . _x( 'to', 'option comment', 'wpsso' ) . ' ' .
-						$form->get_input( 'schema_review_rating_max',
-							$css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ),
+						$form->get_input( 'schema_review_rating_max', $css_class = 'rating', $css_id = '', $max_len = 0, $holder = true ),
 				),
 				'schema_review_rating_alt_name' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'review' ],

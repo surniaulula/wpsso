@@ -249,9 +249,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 						return 'blank_num';
 
-					case 'schema_review_rating':
-					case 'schema_review_rating_min':
-					case 'schema_review_rating_max':
+					case 'schema_review_rating':			// Review Rating.
+					case 'schema_review_rating_min':		// Review Rating "from".
+					case 'schema_review_rating_max':		// Review Rating "to".
 					case 'schema_def_review_rating_min':		// Default Review Rating Min.
 					case 'schema_def_review_rating_max':		// Default Review Rating Max.
 

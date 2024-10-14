@@ -306,6 +306,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og[ 'schema:type:path' ],
 			) = $this->get_schema_type_url_parts( $page_type_url );
 
+			$mt_og[ 'schema:review:rating' ] = 'review' === $page_type_id ? $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_review_rating' ) : null;
+
 			$page_type_ids   = array();
 			$page_type_added = array();	// Prevent duplicate schema types.
 
@@ -397,9 +399,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					continue;
 
-				} else {
-					$page_type_added[ $type_id ] = true;	// Prevent adding duplicate schema types.
-				}
+				} else $page_type_added[ $type_id ] = true;	// Prevent adding duplicate schema types.
 
 				if ( $this->p->debug->enabled ) {
 

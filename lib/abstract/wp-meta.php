@@ -3339,8 +3339,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v16.4.0.
-		 *
 		 * Update a metadata options array element, if the array key does not exit, or its value is different.
 		 *
 		 * This method reads the $meta_key options array from the WordPress metadata table, updates the array element value

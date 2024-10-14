@@ -1315,25 +1315,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_og_seed() {
 
 			return array(
-				'fb:admins'           => null,
-				'fb:app_id'           => null,
-				'og:time'             => null,	// Internal meta tag.
-				'og:type'             => null,
-				'og:url'              => null,
-				'og:redirect_url'     => null,	// Internal meta tag.
-				'og:locale'           => null,
-				'og:site_name'        => null,
-				'og:title'            => null,
-				'og:description'      => null,
-				'og:updated_time'     => null,
-				'og:video'            => null,
-				'og:image'            => null,
-				'schema:language'     => null,	// Internal meta tag.
-				'schema:type:id'      => null,	// Internal meta tag.
-				'schema:type:url'     => null,	// Internal meta tag.
-				'schema:type:context' => null,	// Internal meta tag.
-				'schema:type:name'    => null,	// Internal meta tag.
-				'schema:type:path'    => null,	// Internal meta tag.
+				'fb:admins'            => null,
+				'fb:app_id'            => null,
+				'og:time'              => null,	// Internal meta tag.
+				'og:type'              => null,
+				'og:url'               => null,
+				'og:redirect_url'      => null,	// Internal meta tag.
+				'og:locale'            => null,
+				'og:site_name'         => null,
+				'og:title'             => null,
+				'og:description'       => null,
+				'og:updated_time'      => null,
+				'og:video'             => null,
+				'og:image'             => null,
+				'schema:language'      => null,	// Internal meta tag.
+				'schema:type:id'       => null,	// Internal meta tag.
+				'schema:type:url'      => null,	// Internal meta tag.
+				'schema:type:context'  => null,	// Internal meta tag.
+				'schema:type:name'     => null,	// Internal meta tag.
+				'schema:type:path'     => null,	// Internal meta tag.
+				'schema:review:rating' => null,	// Internal meta tag.
 			);
 		}
 

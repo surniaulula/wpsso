@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.13.0',	// Plugin version.
+					'version'     => '18.14.0-dev.1',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2935,6 +2935,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'mt_name'  => 'schema:type:id',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'def_val'  => 'none',
+					),
+					'schema_review_rating' => array(
+						'mt_name'  => 'schema:review:rating',
+						'meta_key' => '_wpsso_head_info_schema_review_rating',
+						'def_val'  => '0.0',	// The review rating option value type is 'pos_fnum1'.
 					),
 					'is_noindex' => array(
 						'mt_name'  => 'is_noindex',

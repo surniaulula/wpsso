@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.13.0\n"
+"Project-Id-Version: WPSSO Core 18.14.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3066,8 +3066,8 @@ msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:928
-#: lib/edit-schema.php:1895
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:927
+#: lib/edit-schema.php:1892
 msgctxt "option comment"
 msgid "from"
 msgstr ""
@@ -3945,7 +3945,7 @@ msgctxt "metabox title"
 msgid "Document SSO"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:166 lib/edit-schema.php:1642
+#: gettext/gettext-lib-config.php:166 lib/edit-schema.php:1639
 msgctxt "option label"
 msgid "Job Title"
 msgstr ""
@@ -6524,8 +6524,8 @@ msgctxt "option label"
 msgid "Default Product Energy Rating Range"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:168 lib/edit-schema.php:931
-#: lib/edit-schema.php:1898 lib/pro/admin/advanced.php:1245
+#: gettext/gettext-lib-pro.php:168 lib/edit-schema.php:929
+#: lib/edit-schema.php:1895 lib/pro/admin/advanced.php:1245
 #: lib/std/admin/advanced.php:1120
 msgctxt "option comment"
 msgid "to"
@@ -7439,12 +7439,12 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5524
+#: lib/config.php:5529
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5524
+#: lib/config.php:5529
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -8011,7 +8011,7 @@ msgid "Image ID"
 msgstr ""
 
 #: lib/edit-media.php:128 lib/edit-media.php:187 lib/edit-media.php:245
-#: lib/edit-media.php:298 lib/edit-schema.php:991
+#: lib/edit-media.php:298 lib/edit-schema.php:988
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
@@ -8176,12 +8176,12 @@ msgctxt "option label"
 msgid "Provider Person"
 msgstr ""
 
-#: lib/edit-schema.php:299 lib/edit-schema.php:1525
+#: lib/edit-schema.php:299 lib/edit-schema.php:1522
 msgctxt "option label"
 msgid "Funder Org."
 msgstr ""
 
-#: lib/edit-schema.php:309 lib/edit-schema.php:1535
+#: lib/edit-schema.php:309 lib/edit-schema.php:1532
 msgctxt "option label"
 msgid "Funder Person"
 msgstr ""
@@ -8510,12 +8510,12 @@ msgctxt "metabox title"
 msgid "Movie Information"
 msgstr ""
 
-#: lib/edit-schema.php:859 lib/edit-schema.php:1083
+#: lib/edit-schema.php:859 lib/edit-schema.php:1080
 msgctxt "option label"
 msgid "Movie Cast Names"
 msgstr ""
 
-#: lib/edit-schema.php:867 lib/edit-schema.php:1091
+#: lib/edit-schema.php:867 lib/edit-schema.php:1088
 msgctxt "option label"
 msgid "Movie Director Names"
 msgstr ""
@@ -8545,597 +8545,597 @@ msgctxt "option label"
 msgid "Review Rating"
 msgstr ""
 
-#: lib/edit-schema.php:938 lib/messages.php:1001
+#: lib/edit-schema.php:935 lib/messages.php:1001
 msgctxt "option label"
 msgid "Rating Alt Name"
 msgstr ""
 
-#: lib/edit-schema.php:965
+#: lib/edit-schema.php:962
 msgctxt "metabox title"
 msgid "Review Subject (aka Item Reviewed) Information"
 msgstr ""
 
-#: lib/edit-schema.php:970
+#: lib/edit-schema.php:967
 msgctxt "option label"
 msgid "Subject Name"
 msgstr ""
 
-#: lib/edit-schema.php:977
+#: lib/edit-schema.php:974
 msgctxt "option label"
 msgid "Subject Description"
 msgstr ""
 
-#: lib/edit-schema.php:984
+#: lib/edit-schema.php:981
 msgctxt "option label"
 msgid "Subject Image ID"
 msgstr ""
 
-#: lib/edit-schema.php:998
+#: lib/edit-schema.php:995
 msgctxt "option label"
 msgid "Subject Webpage URL"
 msgstr ""
 
-#: lib/edit-schema.php:1005
+#: lib/edit-schema.php:1002
 msgctxt "option label"
 msgid "Subject Same-As URLs"
 msgstr ""
 
-#: lib/edit-schema.php:1013
+#: lib/edit-schema.php:1010
 msgctxt "option label"
 msgid "Subject Schema Type"
 msgstr ""
 
-#: lib/edit-schema.php:1032
+#: lib/edit-schema.php:1029
 msgctxt "option label"
 msgid "Subject Author Type"
 msgstr ""
 
-#: lib/edit-schema.php:1039
+#: lib/edit-schema.php:1036
 msgctxt "option label"
 msgid "Subject Author Name"
 msgstr ""
 
-#: lib/edit-schema.php:1046
+#: lib/edit-schema.php:1043
 msgctxt "option label"
 msgid "Subject Author URL"
 msgstr ""
 
-#: lib/edit-schema.php:1053
+#: lib/edit-schema.php:1050
 msgctxt "option label"
 msgid "Subject Published Date"
 msgstr ""
 
-#: lib/edit-schema.php:1060
+#: lib/edit-schema.php:1057
 msgctxt "option label"
 msgid "Subject Created Date"
 msgstr ""
 
-#: lib/edit-schema.php:1071
+#: lib/edit-schema.php:1068
 msgctxt "option label"
 msgid "Subject Book ISBN"
 msgstr ""
 
-#: lib/edit-schema.php:1103 lib/edit-schema.php:1322
+#: lib/edit-schema.php:1100 lib/edit-schema.php:1319
 msgctxt "option label"
 msgid "Operating System"
 msgstr ""
 
-#: lib/edit-schema.php:1110 lib/edit-schema.php:1329
+#: lib/edit-schema.php:1107 lib/edit-schema.php:1326
 msgctxt "option label"
 msgid "Application Category"
 msgstr ""
 
-#: lib/edit-schema.php:1117
+#: lib/edit-schema.php:1114
 msgctxt "option label"
 msgid "Software App Offers"
 msgstr ""
 
-#: lib/edit-schema.php:1121
+#: lib/edit-schema.php:1118
 msgctxt "option label"
 msgid "Software App Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:1126
+#: lib/edit-schema.php:1123
 msgctxt "option label"
 msgid "Software App Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:1131
+#: lib/edit-schema.php:1128
 msgctxt "option label"
 msgid "Software App Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:1140
+#: lib/edit-schema.php:1137
 msgctxt "option label"
 msgid "Software App Offer Availability"
 msgstr ""
 
-#: lib/edit-schema.php:1155
+#: lib/edit-schema.php:1152
 msgctxt "option label"
 msgid "Subject Street Address"
 msgstr ""
 
-#: lib/edit-schema.php:1162
+#: lib/edit-schema.php:1159
 msgctxt "option label"
 msgid "Subject P.O. Box Number"
 msgstr ""
 
-#: lib/edit-schema.php:1169
+#: lib/edit-schema.php:1166
 msgctxt "option label"
 msgid "Subject City / Locality"
 msgstr ""
 
-#: lib/edit-schema.php:1176
+#: lib/edit-schema.php:1173
 msgctxt "option label"
 msgid "Subject State / Province"
 msgstr ""
 
-#: lib/edit-schema.php:1183
+#: lib/edit-schema.php:1180
 msgctxt "option label"
 msgid "Subject Zip / Postal Code"
 msgstr ""
 
-#: lib/edit-schema.php:1190
+#: lib/edit-schema.php:1187
 msgctxt "option label"
 msgid "Subject Country"
 msgstr ""
 
-#: lib/edit-schema.php:1197
+#: lib/edit-schema.php:1194
 msgctxt "option label"
 msgid "Subject Telephone"
 msgstr ""
 
-#: lib/edit-schema.php:1204
+#: lib/edit-schema.php:1201
 msgctxt "option label"
 msgid "Subject Price Range"
 msgstr ""
 
-#: lib/edit-schema.php:1215
+#: lib/edit-schema.php:1212
 msgctxt "option label"
 msgid "Subject Serves Cuisine"
 msgstr ""
 
-#: lib/edit-schema.php:1226
+#: lib/edit-schema.php:1223
 msgctxt "option label"
 msgid "Subject Product Brand"
 msgstr ""
 
-#: lib/edit-schema.php:1233
+#: lib/edit-schema.php:1230
 msgctxt "option label"
 msgid "Subject Product Offers"
 msgstr ""
 
-#: lib/edit-schema.php:1237
+#: lib/edit-schema.php:1234
 msgctxt "option label"
 msgid "Product Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:1242
+#: lib/edit-schema.php:1239
 msgctxt "option label"
 msgid "Product Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:1247
+#: lib/edit-schema.php:1244
 msgctxt "option label"
 msgid "Product Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:1256
+#: lib/edit-schema.php:1253
 msgctxt "option label"
 msgid "Product Offer Availability"
 msgstr ""
 
-#: lib/edit-schema.php:1267
+#: lib/edit-schema.php:1264
 msgctxt "option label"
 msgid "Subject Product SKU"
 msgstr ""
 
-#: lib/edit-schema.php:1274
+#: lib/edit-schema.php:1271
 msgctxt "option label"
 msgid "Subject Product MPN"
 msgstr ""
 
-#: lib/edit-schema.php:1286
+#: lib/edit-schema.php:1283
 msgctxt "metabox title"
 msgid "Claim Review Information"
 msgstr ""
 
-#: lib/edit-schema.php:1291
+#: lib/edit-schema.php:1288
 msgctxt "option label"
 msgid "Short Summary of Claim"
 msgstr ""
 
-#: lib/edit-schema.php:1298
+#: lib/edit-schema.php:1295
 msgctxt "option label"
 msgid "First Appearance URL"
 msgstr ""
 
-#: lib/edit-schema.php:1317
+#: lib/edit-schema.php:1314
 msgctxt "metabox title"
 msgid "Software App Information"
 msgstr ""
 
-#: lib/edit-schema.php:1350
+#: lib/edit-schema.php:1347
 msgctxt "metabox title"
 msgid "WebPage Information"
 msgstr ""
 
-#: lib/edit-schema.php:1355
+#: lib/edit-schema.php:1352
 msgctxt "option label"
 msgid "Reviewed By Org."
 msgstr ""
 
-#: lib/edit-schema.php:1365
+#: lib/edit-schema.php:1362
 msgctxt "option label"
 msgid "Reviewed By Person"
 msgstr ""
 
-#: lib/edit-schema.php:1375
+#: lib/edit-schema.php:1372
 msgctxt "option label"
 msgid "Reviewed Last"
 msgstr ""
 
-#: lib/edit-schema.php:1394 lib/edit-schema.php:1421
+#: lib/edit-schema.php:1391 lib/edit-schema.php:1418
 msgctxt "metabox title"
 msgid "QA Page Information"
 msgstr ""
 
-#: lib/edit-schema.php:1399 lib/edit-schema.php:1747
+#: lib/edit-schema.php:1396 lib/edit-schema.php:1744
 msgctxt "option label"
 msgid "Select a Person"
 msgstr ""
 
-#: lib/edit-schema.php:1426
+#: lib/edit-schema.php:1423
 msgctxt "option label"
 msgid "QA Heading"
 msgstr ""
 
-#: lib/edit-schema.php:1448
+#: lib/edit-schema.php:1445
 msgctxt "metabox title"
 msgid "Event Information"
 msgstr ""
 
-#: lib/edit-schema.php:1453
+#: lib/edit-schema.php:1450
 msgctxt "option label"
 msgid "Event Language"
 msgstr ""
 
-#: lib/edit-schema.php:1460
+#: lib/edit-schema.php:1457
 msgctxt "option label"
 msgid "Event Attendance"
 msgstr ""
 
-#: lib/edit-schema.php:1468
+#: lib/edit-schema.php:1465
 msgctxt "option label"
 msgid "Event Online URL"
 msgstr ""
 
-#: lib/edit-schema.php:1475
+#: lib/edit-schema.php:1472
 msgctxt "option label"
 msgid "Event Venue"
 msgstr ""
 
-#: lib/edit-schema.php:1485
+#: lib/edit-schema.php:1482
 msgctxt "option label"
 msgid "Performer Org."
 msgstr ""
 
-#: lib/edit-schema.php:1495
+#: lib/edit-schema.php:1492
 msgctxt "option label"
 msgid "Performer Person"
 msgstr ""
 
-#: lib/edit-schema.php:1505
+#: lib/edit-schema.php:1502
 msgctxt "option label"
 msgid "Organizer Org."
 msgstr ""
 
-#: lib/edit-schema.php:1515
+#: lib/edit-schema.php:1512
 msgctxt "option label"
 msgid "Organizer Person"
 msgstr ""
 
-#: lib/edit-schema.php:1545
+#: lib/edit-schema.php:1542
 msgctxt "option label"
 msgid "Event Status"
 msgstr ""
 
-#: lib/edit-schema.php:1553
+#: lib/edit-schema.php:1550
 msgctxt "option label"
 msgid "Event Start"
 msgstr ""
 
-#: lib/edit-schema.php:1560
+#: lib/edit-schema.php:1557
 msgctxt "option label"
 msgid "Event End"
 msgstr ""
 
-#: lib/edit-schema.php:1567
+#: lib/edit-schema.php:1564
 msgctxt "option label"
 msgid "Event Previous Start"
 msgstr ""
 
-#: lib/edit-schema.php:1574
+#: lib/edit-schema.php:1571
 msgctxt "option label"
 msgid "Event Offers Start"
 msgstr ""
 
-#: lib/edit-schema.php:1581
+#: lib/edit-schema.php:1578
 msgctxt "option label"
 msgid "Event Offers End"
 msgstr ""
 
-#: lib/edit-schema.php:1588
+#: lib/edit-schema.php:1585
 msgctxt "option label"
 msgid "Event Offers"
 msgstr ""
 
-#: lib/edit-schema.php:1592
+#: lib/edit-schema.php:1589
 msgctxt "option label"
 msgid "Event Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:1597
+#: lib/edit-schema.php:1594
 msgctxt "option label"
 msgid "Event Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:1602
+#: lib/edit-schema.php:1599
 msgctxt "option label"
 msgid "Event Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:1611
+#: lib/edit-schema.php:1608
 msgctxt "option label"
 msgid "Event Offer Availability"
 msgstr ""
 
-#: lib/edit-schema.php:1637
+#: lib/edit-schema.php:1634
 msgctxt "metabox title"
 msgid "Job Posting Information"
 msgstr ""
 
-#: lib/edit-schema.php:1650
+#: lib/edit-schema.php:1647
 msgctxt "option label"
 msgid "Hiring Organization"
 msgstr ""
 
-#: lib/edit-schema.php:1660
+#: lib/edit-schema.php:1657
 msgctxt "option label"
 msgid "Job Location"
 msgstr ""
 
-#: lib/edit-schema.php:1670
+#: lib/edit-schema.php:1667
 msgctxt "option label"
 msgid "Job Location Type"
 msgstr ""
 
-#: lib/edit-schema.php:1678
+#: lib/edit-schema.php:1675
 msgctxt "option label"
 msgid "Base Salary"
 msgstr ""
 
-#: lib/edit-schema.php:1685
+#: lib/edit-schema.php:1682
 msgctxt "option comment"
 msgid "per"
 msgstr ""
 
-#: lib/edit-schema.php:1691
+#: lib/edit-schema.php:1688
 msgctxt "option label"
 msgid "Employment Type"
 msgstr ""
 
-#: lib/edit-schema.php:1698
+#: lib/edit-schema.php:1695
 msgctxt "option label"
 msgid "Job Posting Expires"
 msgstr ""
 
-#: lib/edit-schema.php:1717
+#: lib/edit-schema.php:1714
 msgctxt "metabox title"
 msgid "Organization Information"
 msgstr ""
 
-#: lib/edit-schema.php:1722
+#: lib/edit-schema.php:1719
 msgctxt "option label"
 msgid "Select an Organization"
 msgstr ""
 
-#: lib/edit-schema.php:1742
+#: lib/edit-schema.php:1739
 msgctxt "metabox title"
 msgid "Person Information"
 msgstr ""
 
-#: lib/edit-schema.php:1769
+#: lib/edit-schema.php:1766
 msgctxt "metabox title"
 msgid "Place Information"
 msgstr ""
 
-#: lib/edit-schema.php:1774
+#: lib/edit-schema.php:1771
 msgctxt "option label"
 msgid "Select a Place"
 msgstr ""
 
-#: lib/edit-schema.php:1804
+#: lib/edit-schema.php:1801
 msgctxt "metabox title"
 msgid "Product Information (Main Product)"
 msgstr ""
 
-#: lib/edit-schema.php:1818 lib/messages.php:887
+#: lib/edit-schema.php:1815 lib/messages.php:887
 msgctxt "option label"
 msgid "Product Return Policy"
 msgstr ""
 
-#: lib/edit-schema.php:1826 lib/messages.php:773
+#: lib/edit-schema.php:1823 lib/messages.php:773
 msgctxt "option label"
 msgid "Product Google Category"
 msgstr ""
 
-#: lib/edit-schema.php:1841 lib/messages.php:766
+#: lib/edit-schema.php:1838 lib/messages.php:766
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/edit-schema.php:1848 lib/messages.php:901
+#: lib/edit-schema.php:1845 lib/messages.php:901
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/edit-schema.php:1858 lib/messages.php:906
+#: lib/edit-schema.php:1855 lib/messages.php:906
 msgctxt "option label"
 msgid "Product Price Type"
 msgstr ""
 
-#: lib/edit-schema.php:1866 lib/messages.php:881
+#: lib/edit-schema.php:1863 lib/messages.php:881
 msgctxt "option label"
 msgid "Product Min Advert Price"
 msgstr ""
 
-#: lib/edit-schema.php:1874 lib/messages.php:759
+#: lib/edit-schema.php:1871 lib/messages.php:759
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/edit-schema.php:1882 lib/messages.php:788
+#: lib/edit-schema.php:1879 lib/messages.php:788
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/edit-schema.php:1890 lib/messages.php:800
+#: lib/edit-schema.php:1887 lib/messages.php:800
 msgctxt "option label"
 msgid "Product Energy Rating"
 msgstr ""
 
-#: lib/edit-schema.php:1905 lib/messages.php:869
+#: lib/edit-schema.php:1902 lib/messages.php:869
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/edit-schema.php:1912 lib/messages.php:895
+#: lib/edit-schema.php:1909 lib/messages.php:895
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr ""
 
-#: lib/edit-schema.php:1919 lib/messages.php:782
+#: lib/edit-schema.php:1916 lib/messages.php:782
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/edit-schema.php:1926 lib/messages.php:964
+#: lib/edit-schema.php:1923 lib/messages.php:964
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/edit-schema.php:1934 lib/messages.php:942
+#: lib/edit-schema.php:1931 lib/messages.php:942
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/edit-schema.php:1941 lib/messages.php:948
+#: lib/edit-schema.php:1938 lib/messages.php:948
 msgctxt "option label"
 msgid "Product Size Group"
 msgstr ""
 
-#: lib/edit-schema.php:1952 lib/messages.php:956
+#: lib/edit-schema.php:1949 lib/messages.php:956
 msgctxt "option label"
 msgid "Product Size System"
 msgstr ""
 
-#: lib/edit-schema.php:1959 lib/messages.php:751
+#: lib/edit-schema.php:1956 lib/messages.php:751
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr ""
 
-#: lib/edit-schema.php:1966 lib/messages.php:743
+#: lib/edit-schema.php:1963 lib/messages.php:743
 msgctxt "option label"
 msgid "Product Adult Type"
 msgstr ""
 
-#: lib/edit-schema.php:1973 lib/messages.php:863
+#: lib/edit-schema.php:1970 lib/messages.php:863
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr ""
 
-#: lib/edit-schema.php:1983 lib/messages.php:978
+#: lib/edit-schema.php:1980 lib/messages.php:978
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr ""
 
-#: lib/edit-schema.php:1993 lib/messages.php:851
+#: lib/edit-schema.php:1990 lib/messages.php:851
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr ""
 
-#: lib/edit-schema.php:2003 lib/messages.php:972
+#: lib/edit-schema.php:2000 lib/messages.php:972
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr ""
 
-#: lib/edit-schema.php:2013 lib/messages.php:816
+#: lib/edit-schema.php:2010 lib/messages.php:816
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
-#: lib/edit-schema.php:2023 lib/messages.php:924
+#: lib/edit-schema.php:2020 lib/messages.php:924
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr ""
 
-#: lib/edit-schema.php:2033 lib/messages.php:936
+#: lib/edit-schema.php:2030 lib/messages.php:936
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr ""
 
-#: lib/edit-schema.php:2043 lib/messages.php:918
+#: lib/edit-schema.php:2040 lib/messages.php:918
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr ""
 
-#: lib/edit-schema.php:2053 lib/messages.php:930
+#: lib/edit-schema.php:2050 lib/messages.php:930
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr ""
 
-#: lib/edit-schema.php:2063 lib/messages.php:913
+#: lib/edit-schema.php:2060 lib/messages.php:913
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/edit-schema.php:2071 lib/messages.php:875
+#: lib/edit-schema.php:2068 lib/messages.php:875
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/edit-schema.php:2079 lib/messages.php:821
+#: lib/edit-schema.php:2076 lib/messages.php:821
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/edit-schema.php:2087 lib/messages.php:827
+#: lib/edit-schema.php:2084 lib/messages.php:827
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
-#: lib/edit-schema.php:2095 lib/messages.php:833
+#: lib/edit-schema.php:2092 lib/messages.php:833
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
-#: lib/edit-schema.php:2103 lib/messages.php:839
+#: lib/edit-schema.php:2100 lib/messages.php:839
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/edit-schema.php:2111 lib/messages.php:845
+#: lib/edit-schema.php:2108 lib/messages.php:845
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
-#: lib/edit-schema.php:2119 lib/messages.php:857
+#: lib/edit-schema.php:2116 lib/messages.php:857
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/edit-schema.php:2127
+#: lib/edit-schema.php:2124
 msgctxt "option label"
 msgid "Product Awards"
 msgstr ""
