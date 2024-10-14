@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Improved sanitation of Schema gtin property values.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -419,7 +419,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.14.0-dev.3 =
 
-(2024/10/14) Added a '_wpsso_head_info_schema_review_rating' metadata value when a Schema Review rating is available.
+(2024/10/14) Improved sanitation of Schema gtin property values. Added a '_wpsso_head_info_schema_review_rating' metadata value when a Schema Review rating is available.
 
 = 18.13.0 =
 
