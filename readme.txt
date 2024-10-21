@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.15.0-dev.1 (2024/10/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a WPSSO post cache clearing hook for WooCommerce stock status and metadata changes.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoIntegEcomWooCommerce->clear_product_cache()` method hooked to the 'woocommerce_product_object_updated_props' action.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.14.0 (2024/10/15)**
 
 * **New Features**
@@ -416,6 +431,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.15.0-dev.1 =
+
+(2024/10/21) Added a WPSSO post cache clearing hook for WooCommerce stock status and metadata changes.
 
 = 18.14.0 =
 
