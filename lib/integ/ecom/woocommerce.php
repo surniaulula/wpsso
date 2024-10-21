@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			/*
 			 * Refresh the post ID cache after WooCommerce updates the product object.
 			 */
-			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_poduct_cache' ), 1000, 2 );
+			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_product_cache' ), 1000, 2 );
 
 			/*
 			 * Return the primary category term for WooCommerce product breadcrumbs.
@@ -361,6 +361,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		 */
 		public function clear_product_cache( $product, $updated_props ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
+			}
+
 			if ( $product instanceof WC_Product ) {   // WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 			
 				$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
@@ -376,7 +381,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log( 'product = ' . get_class( $product ) );	// WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 			}
 
 			if ( $product instanceof WC_Product ) {   // WC_Product, WC_Product_Variable, or WC_Product_Grouped.
