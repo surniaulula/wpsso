@@ -91,14 +91,26 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			/*
-			 * Refresh the post ID cache after WooCommerce updates the product object on the front-end (or back-end).
+			 * Clear the post ID cache after WooCommerce updates the product metadata.
 			 */
-			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_post_cache' ), 10, 2 );
+			add_action( 'woocommerce_product_object_updated_props', array( $this, 'clear_product_cache' ), 1000, 2 );
+
+			/*
+			 * Refresh the post ID cache after WooCommerce updates the product object.
+			 */
+			add_action( 'woocommerce_after_product_object_save', array( $this, 'refresh_poduct_cache' ), 1000, 2 );
 
 			/*
 			 * Return the primary category term for WooCommerce product breadcrumbs.
 			 */
 			add_filter( 'woocommerce_breadcrumb_main_term', array( $this, 'woocommerce_breadcrumb_main_term' ), 100, 2 );
+
+			/*
+			 * Disable the default WooCommerce Schema markup.
+			 */
+			add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
+			add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
+			add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 
 			/*
 			 * Maybe load missing WooCommerce front-end libraries for 'the_content' filter.
@@ -137,10 +149,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			$this->disable_options_keys();
-
-			add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
-			add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
-			add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 		}
 
 		/*
@@ -349,20 +357,33 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		/*
-		 * Refresh the post ID cache after WooCommerce updates the product object on the front-end or back-end.
+		 * Clear the post ID cache after WooCommerce updates the product metadata.
 		 */
-		public function refresh_post_cache( $product, $data_store ) {
+		public function clear_product_cache( $product, $updated_props ) {
+
+			if ( $product instanceof WC_Product ) {   // WC_Product, WC_Product_Variable, or WC_Product_Grouped.
+			
+				$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
+
+				if ( $product_id ) $this->p->post->clear_cache( $product_id );	// Refresh the cache for a single post ID.
+			}
+		}
+
+		/*
+		 * Refresh the post ID cache after WooCommerce updates the product object.
+		 */
+		public function refresh_product_cache( $product, $data_store ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
+			if ( $product instanceof WC_Product ) {   // WC_Product, WC_Product_Variable, or WC_Product_Grouped.
 
-			if ( $product_id ) {	// Just in case.
+				$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
-				$this->p->post->refresh_cache( $product_id );	// Refresh the cache for a single post ID.
+				if ( $product_id ) $this->p->post->refresh_cache( $product_id );	// Refresh the cache for a single post ID.
 			}
 		}
 
