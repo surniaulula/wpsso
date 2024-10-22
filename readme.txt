@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.15.0-dev.1 (2024/10/21)**
+**Version 18.15.0-b.1 (2024/10/22)**
 
 * **New Features**
 	* None.
@@ -432,9 +432,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.15.0-dev.1 =
+= 18.15.0-b.1 =
 
-(2024/10/21) Added a WPSSO post cache clearing hook for WooCommerce stock status and metadata changes.
+(2024/10/22) Added a WPSSO post cache clearing hook for WooCommerce stock status and metadata changes.
 
 = 18.14.0 =
 
