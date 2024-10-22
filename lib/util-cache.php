@@ -739,6 +739,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$this->task_end( $user_id, $task_name );
 		}
 
+		/*
+		 * See WpssoPost->after_insert_post().
+		 * See WpssoPost->ajax_get_metabox_sso().
+		 * See WpssoPost->load_meta_page().
+		 * See WpssoPost->refresh_cache().
+		 * See WpssoTerm->load_meta_page().
+		 * See WpssoTerm->refresh_cache().
+		 * See WpssoUser->load_meta_page().
+		 * See WpssoUser->refresh_cache().
+		 */
 		public function refresh_mod_head_meta( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {

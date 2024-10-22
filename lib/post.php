@@ -1777,6 +1777,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
+		 *
+		 * See WpssoIntegEcomWooCommerce->clear_product_cache().
 		 */
 		public function clear_cache( $post_id, $rel = false ) {
 
@@ -1914,7 +1916,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/*
 		 * Refresh the cache for a single post ID.
 		 *
+		 * This method will only execute once per post ID per page load.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->refresh_cache().
+		 *
+		 * See WpssoIntegEcomWooCommerce->refresh_product_cache().
 		 */
 		public function refresh_cache( $post_id, $rel = false ) {
 

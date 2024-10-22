@@ -358,6 +358,43 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		/*
 		 * Clear the post ID cache after WooCommerce updates the product metadata.
+		 *
+		 * The $updated_props array may include one or more of the following keys:
+		 *
+		 * $updated_props = array(
+		 *	'sku',
+		 *	'global_unique_id',
+		 *	'regular_price',
+		 *	'sale_price',
+		 *	'date_on_sale_from',
+		 *	'date_on_sale_to',
+		 *	'total_sales',
+		 *	'tax_status',
+		 *	'tax_class',
+		 *	'manage_stock',
+		 *	'backorders',
+		 *	'low_stock_amount',
+		 *	'sold_individually',
+		 *	'weight',
+		 *	'length',
+		 *	'width',
+		 *	'height',
+		 *	'upsell_ids',
+		 *	'cross_sell_ids',
+		 *	'purchase_note',
+		 *	'default_attributes',
+		 *	'virtual',
+		 *	'downloadable',
+		 *	'gallery_image_ids',
+		 *	'download_limit',
+		 *	'download_expiry',
+		 *	'image_id',
+		 *	'stock_quantity',
+		 *	'stock_status',
+		 *	'average_rating',
+		 *	'rating_counts',
+		 *	'review_count',
+		 * );
 		 */
 		public function clear_product_cache( $product, $updated_props ) {
 
@@ -388,6 +425,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
+				/*
+				 * Refresh the cache for a single post ID.
+				 *
+				 * This method will only execute once per post ID per page load.
+				 */
 				if ( $product_id ) $this->p->post->refresh_cache( $product_id );	// Refresh the cache for a single post ID.
 			}
 		}
