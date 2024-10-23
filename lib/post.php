@@ -1541,6 +1541,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Use $post_obj = false to extend WpssoAbstractWpMeta->add_meta_boxes().
+		 *
+		 * The Organization and Place post types do not have a Document SSO metabox as they have their own metabox.
+		 *
+		 * See WpssoOpmIntegAdminPost->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $post_type, $post_obj = false ) {
 

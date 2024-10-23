@@ -6737,7 +6737,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1749 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:831
 msgid "%s error:"
 msgstr ""
@@ -14476,15 +14476,15 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1725
+#: lib/post.php:1729
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1729
+#: lib/post.php:1733
 msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:2005
+#: lib/post.php:2009
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
