@@ -15259,15 +15259,15 @@ msgstr[1] ""
 
 #: lib/submenu/tools.php:57
 msgctxt "submit button"
-msgid "Clear %s Expired DB Transient"
-msgid_plural "Clear %s Expired DB Transients"
+msgid "Clear %s Short URL DB Transient"
+msgid_plural "Clear %s Short URL DB Transients"
 msgstr[0] ""
 msgstr[1] ""
 
 #: lib/submenu/tools.php:60
 msgctxt "submit button"
-msgid "Clear %s Short URL DB Transient"
-msgid_plural "Clear %s Short URL DB Transients"
+msgid "Clear %s Expired DB Transient"
+msgid_plural "Clear %s Expired DB Transients"
 msgstr[0] ""
 msgstr[1] ""
 

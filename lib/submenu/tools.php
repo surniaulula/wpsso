@@ -54,11 +54,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$clear_db_transients_no_short_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
 				$count_db_transients_no_short, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_no_short ) ) . ' **';
 
-			$clear_db_transients_expired_transl = sprintf( _nx( 'Clear %s Expired DB Transient', 'Clear %s Expired DB Transients',
-				$count_db_transients_expired, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_expired ) );
-
 			$clear_db_transients_shortened_transl = sprintf( _nx( 'Clear %s Short URL DB Transient', 'Clear %s Short URL DB Transients',
 				$count_db_transients_shortened, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_shortened ) );
+
+			$clear_db_transients_expired_transl = sprintf( _nx( 'Clear %s Expired DB Transient', 'Clear %s Expired DB Transients',
+				$count_db_transients_expired, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_expired ) );
 
 			$clear_cron_jobs_transl = sprintf( _nx( 'Clear %s WordPress Cron Job', 'Clear %s WordPress Cron Jobs',
 				$count_cron_jobs, 'submit button', 'wpsso' ), number_format_i18n( $count_cron_jobs ) );
@@ -95,8 +95,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'clear_cache_files'             => $clear_cache_files_transl,			// Clear Cached Files.
 					'clear_ignored_urls'            => $clear_ignored_urls_transl,			// Clear Failed URL Connections.
 					'clear_db_transients_no_short'  => $clear_db_transients_no_short_transl,	// Clear Database Transients.
-					'clear_db_transients_expired'   => $clear_db_transients_expired_transl,		// Clear Expired DB Transients.
 					'clear_db_transients_shortened' => $clear_db_transients_shortened_transl,	// Clear Short URL DB Transients.
+					'clear_db_transients_expired'   => $clear_db_transients_expired_transl,		// Clear Expired DB Transients.
 					'clear_cron_jobs'               => $clear_cron_jobs_transl,			// Clear WordPress Cron Jobs.
 					'flush_rewrite_rules'           => $flush_rewrite_rules_transl,			// Flush WordPress Rewrite Rules.
 				),
