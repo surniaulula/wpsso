@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.16.0-dev.1 (2024/10/28)**
+**Version 18.16.0-b.1 (2024/10/28)**
 
 * **New Features**
 	* None.
@@ -447,7 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.16.0-dev.1 =
+= 18.16.0-b.1 =
 
 (2024/10/28) Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
 
