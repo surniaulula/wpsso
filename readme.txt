@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.16.0-dev.1 (2024/10/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.15.0 (2024/10/22)**
 
 * **New Features**
@@ -431,6 +446,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.16.0-dev.1 =
+
+(2024/10/28) Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
 
 = 18.15.0 =
 
