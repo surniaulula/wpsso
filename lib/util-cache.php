@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function clear_db_transients_expired() {
 
-			return $this->clear_db_transients( $key_prefix = 'wpsso_', $incl_shortened = true, $only_expired = true );
+			return $this->clear_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
 		}
 
 		/*
@@ -276,6 +276,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			return $cleared_count;
+		}
+
+		public function count_db_transients_expired() {
+
+			return $this->count_db_transients( $key_prefix = '', $incl_shortened = true, $only_expired = true );
 		}
 
 		/*

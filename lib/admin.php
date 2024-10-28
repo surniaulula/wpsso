@@ -964,6 +964,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'clear_db_transients_expired':
+
+							$cleared_count = $this->p->util->cache->clear_db_transients_expired();
+
+							$notice_msg = sprintf( __( '%s expired transients have been cleared.', 'wpsso' ), $cleared_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
 						case 'clear_db_transients_no_short':
 
 							$cleared_count = $this->p->util->cache->clear_db_transients( $key_prefix = '', $incl_shortened = false );

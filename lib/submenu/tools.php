@@ -38,6 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$count_cache_files             = $this->p->util->cache->count_cache_files();
 			$count_ignored_urls            = $this->p->util->cache->count_ignored_urls();
+			$count_db_transients_expired   = $this->p->util->cache->count_db_transients_expired();
 			$count_db_transients_no_short  = $this->p->util->cache->count_db_transients( $key_prefix = '', $incl_shortened = false );
 			$count_db_transients_shortened = $this->p->util->cache->count_db_transients( $key_prefix = 'wpsso_s_', $incl_shortened = true );
 			$count_cron_jobs               = $this->p->util->count_cron_jobs();
@@ -49,6 +50,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$clear_ignored_urls_transl = sprintf( _nx( 'Clear %s Failed URL Connection', 'Clear %s Failed URL Connections',
 				$count_ignored_urls, 'submit button', 'wpsso' ), number_format_i18n( $count_ignored_urls ) );
+
+			$clear_db_transients_expired_transl = sprintf( _nx( 'Clear %s Expired Transient', 'Clear %s Expired Transients',
+				$count_db_transients_expired, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_expired ) );
 
 			$clear_db_transients_no_short_transl = sprintf( _nx( 'Clear %s Database Transient', 'Clear %s Database Transients',
 				$count_db_transients_no_short, 'submit button', 'wpsso' ), number_format_i18n( $count_db_transients_no_short ) ) . ' **';
@@ -90,6 +94,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'refresh_cache'                 => $refresh_cache_transl,
 					'clear_cache_files'             => $clear_cache_files_transl,
 					'clear_ignored_urls'            => $clear_ignored_urls_transl,
+					'clear_db_transients_expired'   => $clear_db_transients_expired_transl,
 					'clear_db_transients_no_short'  => $clear_db_transients_no_short_transl,
 					'clear_db_transients_shortened' => $clear_db_transients_shortened_transl,
 					'clear_cron_jobs'               => $clear_cron_jobs_transl,
