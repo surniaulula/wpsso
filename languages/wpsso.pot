@@ -15252,22 +15252,22 @@ msgstr[1] ""
 
 #: lib/submenu/tools.php:54
 msgctxt "submit button"
-msgid "Clear %s Expired Transient"
-msgid_plural "Clear %s Expired Transients"
-msgstr[0] ""
-msgstr[1] ""
-
-#: lib/submenu/tools.php:57
-msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
 msgstr[0] ""
 msgstr[1] ""
 
+#: lib/submenu/tools.php:57
+msgctxt "submit button"
+msgid "Clear %s Expired DB Transient"
+msgid_plural "Clear %s Expired DB Transients"
+msgstr[0] ""
+msgstr[1] ""
+
 #: lib/submenu/tools.php:60
 msgctxt "submit button"
-msgid "Clear %s Short URL Transient"
-msgid_plural "Clear %s Short URL Transients"
+msgid "Clear %s Short URL DB Transient"
+msgid_plural "Clear %s Short URL DB Transients"
 msgstr[0] ""
 msgstr[1] ""
 
