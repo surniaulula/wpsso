@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.15.0\n"
+"Project-Id-Version: WPSSO Core 18.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-10-22 07:29-0700\n"
+"PO-Revision-Date: 2024-10-29 08:41-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6430,8 +6430,8 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1749 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:831
+#: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:845
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -6573,15 +6573,15 @@ msgstr "Expiration"
 msgid "disabled"
 msgstr "désactivé"
 
-#: lib/admin-dashboard.php:119 lib/submenu/tools.php:159
+#: lib/admin-dashboard.php:119 lib/submenu/tools.php:164
 msgid "<a href=\"%1$s\">Using an external object cache</a> for WordPress transients is <code>%2$s</code>."
 msgstr "<a href=\"%1$s\">L'utilisation d'un cache d'objet externe</a> pour les objets transitoires WordPress est <code>%2$s</code>."
 
-#: lib/admin-dashboard.php:120 lib/submenu/tools.php:160
+#: lib/admin-dashboard.php:120 lib/submenu/tools.php:165
 msgid "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_using_ext_object_cache/"
 
-#: lib/admin-dashboard.php:123 lib/submenu/tools.php:162
+#: lib/admin-dashboard.php:123 lib/submenu/tools.php:167
 msgid "All database transient counts should be 0."
 msgstr "Tous les comptes d'objets transitoires de la base de données doivent être 0."
 
@@ -6872,186 +6872,190 @@ msgid "%s database transients have been cleared."
 msgstr "%s objets transitoires ont été supprimés de la base de données."
 
 #: lib/admin.php:971
+msgid "%s expired transients have been cleared."
+msgstr "%s objets transitoires expirés ont été supprimés de la base de données."
+
+#: lib/admin.php:981
 msgid "%s database transients have been cleared (shortened URLs preserved)."
 msgstr "%s objets transitoires ont été supprimés de la base de données (URL raccourcies préservées)."
 
-#: lib/admin.php:982
+#: lib/admin.php:992
 msgid "%s shortened URL database transients have been cleared."
 msgstr "%s objets transitoires d'URL raccourcies ont été supprimés de la base de données."
 
-#: lib/admin.php:995
+#: lib/admin.php:1005
 msgid "%s WordPress cron jobs have been cleared."
 msgstr "%s tâches cron WordPress ont été effacées."
 
-#: lib/admin.php:1010
+#: lib/admin.php:1020
 msgid "The WordPress rewrite rules have been flushed."
 msgstr "Les règles de réécriture de WordPress ont été vidées."
 
-#: lib/admin.php:1036
+#: lib/admin.php:1046
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr "Préférences de positionnement des métabox pour l'ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:1051
+#: lib/admin.php:1061
 msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr "Avis masquées pour l'ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:1070
+#: lib/admin.php:1080
 msgid "Option preference has been saved."
 msgstr "La préférence d'option a été enregistrée."
 
-#: lib/admin.php:1072
+#: lib/admin.php:1082
 msgid "Now viewing \"%s\" by default."
 msgstr "Affichage \"%s\" par défaut."
 
-#: lib/admin.php:1089
+#: lib/admin.php:1099
 msgid "Image size settings have been reloaded with their default values and saved."
 msgstr "Les tailles d'images ont été rechargés avec leur valeurs par défaut et sauvegardés."
 
-#: lib/admin.php:1199
+#: lib/admin.php:1209
 msgid "Your current language selection [%1$s] is different from the default site language [%2$s]."
 msgstr "Votre sélection de langue actuelle [%1$s] est différente de la langue par défaut du site [%2$s]."
 
-#: lib/admin.php:1202
+#: lib/admin.php:1212
 msgid "Localized option values [%1$s] will be used for webpages and content in that language."
 msgstr "Les valeurs d'option localisées [%1$s] seront utilisées pour les pages Web et le contenu dans cette langue."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1315
+#: lib/admin.php:1325
 msgid "Profile updated."
 msgstr "Profil mis à jour."
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1441
+#: lib/admin.php:1451
 msgid "Upgrade to %s"
 msgstr "Passer à %s"
 
-#: lib/admin.php:1453
+#: lib/admin.php:1463
 msgctxt "submit button"
 msgid "Get %s"
 msgstr "Obtenir %s"
 
-#: lib/admin.php:1540
+#: lib/admin.php:1550
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr "Enregistrer réglages du profil"
 
-#: lib/admin.php:1542
+#: lib/admin.php:1552
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr "Enregistrer réglages d'extension"
 
-#: lib/admin.php:1555 lib/submenu/tools.php:82
+#: lib/admin.php:1565 lib/submenu/tools.php:86
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr "Passer à l'affichage \"%s\""
 
-#: lib/admin.php:1675
+#: lib/admin.php:1685
 msgid "The %s plugin is not active and/or not found."
 msgstr "L'extension %s n'est pas active et/ou introuvable."
 
-#: lib/admin.php:1705
+#: lib/admin.php:1715
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:1817
+#: lib/admin.php:1827
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:1833
+#: lib/admin.php:1843
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:1854
+#: lib/admin.php:1864
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1885
+#: lib/admin.php:1895
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:1906
+#: lib/admin.php:1916
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:1915
+#: lib/admin.php:1925
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:2036
+#: lib/admin.php:2046
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:2042
+#: lib/admin.php:2052
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:2049
+#: lib/admin.php:2059
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:2063
+#: lib/admin.php:2073
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:2072
+#: lib/admin.php:2082
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:2081
+#: lib/admin.php:2091
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:2532
+#: lib/admin.php:2542
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:2533
+#: lib/admin.php:2543
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:2538
+#: lib/admin.php:2548
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:2539
+#: lib/admin.php:2549
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:2550
+#: lib/admin.php:2560
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:2551
+#: lib/admin.php:2561
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:2557
+#: lib/admin.php:2567
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:2564
+#: lib/admin.php:2574
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:2571
+#: lib/admin.php:2581
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:2578
+#: lib/admin.php:2588
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
@@ -8890,19 +8894,19 @@ msgstr "Attributs suggérés:"
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1778
+#: lib/integ/ecom/woocommerce.php:1781
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1891
+#: lib/integ/ecom/woocommerce.php:1894
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1894
+#: lib/integ/ecom/woocommerce.php:1897
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1897
+#: lib/integ/ecom/woocommerce.php:1900
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -12953,7 +12957,7 @@ msgstr "Page %1$d de %2$d"
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2269
+#: lib/page.php:2315
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
@@ -13064,15 +13068,15 @@ msgstr "L'option de débogage est activée - cette vérification sera répétée
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1725
+#: lib/post.php:1729
 msgid "ajax request invalid nonce"
 msgstr "la requête ajax a un nonce invalide"
 
-#: lib/post.php:1729
+#: lib/post.php:1733
 msgid "ajax request post id is empty"
 msgstr "l'id d'article demandé par ajax est vide"
 
-#: lib/post.php:2005
+#: lib/post.php:2009
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages %1$s ID %2$s."
 
@@ -13804,103 +13808,110 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr "Guide de configuration"
 
-#: lib/submenu/tools.php:45
+#: lib/submenu/tools.php:46
 msgctxt "submit button"
 msgid "Refresh Cache"
 msgstr "Rafraîchir le cache"
 
-#: lib/submenu/tools.php:47
+#: lib/submenu/tools.php:48
 msgctxt "submit button"
 msgid "Clear %s Cached File"
 msgid_plural "Clear %s Cached Files"
 msgstr[0] "Supprimer %s fichier en cache"
 msgstr[1] "Supprimer %s fichiers en cache"
 
-#: lib/submenu/tools.php:50
+#: lib/submenu/tools.php:51
 msgctxt "submit button"
 msgid "Clear %s Failed URL Connection"
 msgid_plural "Clear %s Failed URL Connections"
 msgstr[0] "Supprimer %s connexion d'URL échoué"
 msgstr[1] "Supprimer %s connexions d'URL échoué"
 
-#: lib/submenu/tools.php:53
+#: lib/submenu/tools.php:54
 msgctxt "submit button"
 msgid "Clear %s Database Transient"
 msgid_plural "Clear %s Database Transients"
-msgstr[0] "Supprimer %s objet transitoire de BdD"
-msgstr[1] "Supprimer %s objets transitoires de BdD"
+msgstr[0] "Supprimer %s objet transitoire de la BdD"
+msgstr[1] "Supprimer %s objets transitoires de la BdD"
 
-#: lib/submenu/tools.php:56
+#: lib/submenu/tools.php:57
 msgctxt "submit button"
-msgid "Clear %s Short URL Transient"
-msgid_plural "Clear %s Short URL Transients"
+msgid "Clear %s Short URL DB Transient"
+msgid_plural "Clear %s Short URL DB Transients"
 msgstr[0] "Supprimer %s objet transitoire URL courte"
 msgstr[1] "Supprimer %s objets transitoires URL courts"
 
-#: lib/submenu/tools.php:59
+#: lib/submenu/tools.php:60
+msgctxt "submit button"
+msgid "Clear %s Expired DB Transient"
+msgid_plural "Clear %s Expired DB Transients"
+msgstr[0] "Supprimer %s objet transitoire expiré"
+msgstr[1] "Supprimer %s objets transitoires expirés"
+
+#: lib/submenu/tools.php:63
 msgctxt "submit button"
 msgid "Clear %s WordPress Cron Job"
 msgid_plural "Clear %s WordPress Cron Jobs"
-msgstr[0] "Effacer %s tâche cron WordPress"
-msgstr[1] "Effacer %s tâches cron WordPress"
+msgstr[0] "Supprimer %s tâche cron WordPress"
+msgstr[1] "Supprimer %s tâches cron WordPress"
 
-#: lib/submenu/tools.php:62
+#: lib/submenu/tools.php:66
 msgctxt "submit button"
 msgid "Flush WordPress Rewrite Rules"
 msgstr "Vider les règles de réécriture WordPress"
 
-#: lib/submenu/tools.php:67
+#: lib/submenu/tools.php:71
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr "Exporter réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:68
+#: lib/submenu/tools.php:72
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr "Importer réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:73
+#: lib/submenu/tools.php:77
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr "Ajouter rôle %s aux créateurs de contenu"
 
-#: lib/submenu/tools.php:74
+#: lib/submenu/tools.php:78
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr "Supprimer rôle %s des utilisateurs"
 
-#: lib/submenu/tools.php:75
+#: lib/submenu/tools.php:79
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr "Recharger les tailles d'images par défaut"
 
-#: lib/submenu/tools.php:131
+#: lib/submenu/tools.php:136
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr "Réinitialiser les avis masquées"
 
-#: lib/submenu/tools.php:132
+#: lib/submenu/tools.php:137
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinitialiser la disposition des métabox"
 
-#: lib/submenu/tools.php:150
+#: lib/submenu/tools.php:155
 msgid "The maximum execution time for this background task is currently set to %s."
 msgstr "Le temps d'exécution maximum pour cette tâche en arrière-plan est actuellement limité à %s."
 
-#: lib/submenu/tools.php:155
+#: lib/submenu/tools.php:160
 msgid "All database transients are cleared, except for the shortened URL database transients."
 msgstr "Tous les objets transitoires de la base de données sont effacés, à l’exception des URL raccourcies."
 
-#: lib/submenu/tools.php:169
+#: lib/submenu/tools.php:174
 msgid "Members of the role are used for some Schema property selections."
 msgstr "Les membres du rôle sont utilisés pour certaines sélections de propriétés de Schéma."
 
-#: lib/submenu/tools.php:170
+#: lib/submenu/tools.php:175
 msgid "Content Creators are administrators, editors, authors, and contributors."
 msgstr "Les créateurs de contenu sont les administrateurs, éditeurs, auteurs et contributeurs."
 
-#: lib/submenu/tools.php:178
+#: lib/submenu/tools.php:183
 msgid "%s Failed URL Connections:"
 msgstr "%s connexions URL échouées:"
 
@@ -13984,7 +13995,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr "Voir profil"
 
-#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:628
+#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:639
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr "%2$s le %1$s"
@@ -13997,7 +14008,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:733
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:744
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -14113,56 +14124,56 @@ msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisé
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util-cache.php:453
+#: lib/util-cache.php:464
 msgid "A task to %s is currently running."
 msgstr "Une tâche pour %s est en cours d'exécution."
 
-#: lib/util-cache.php:522 lib/util-cache.php:590 lib/util-cache.php:618
+#: lib/util-cache.php:533 lib/util-cache.php:601 lib/util-cache.php:629
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr "rafraîchir le cache"
 
-#: lib/util-cache.php:538 lib/util-cache.php:598
+#: lib/util-cache.php:549 lib/util-cache.php:609
 msgid "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan commencera dans %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:555
+#: lib/util-cache.php:566
 msgid "A background task was scheduled to begin %1$s ago to %2$s for posts, terms and users."
 msgstr "Une tâche en arrière-plan devait commencer il y a %1$s pour %2$s les articles, les termes et les utilisateurs."
 
-#: lib/util-cache.php:558
+#: lib/util-cache.php:569
 msgid "WordPress should have run the %s event hook at that time."
 msgstr "WordPress aurait dû exécuter le crochet d'événement %s à ce moment-là."
 
-#: lib/util-cache.php:561
+#: lib/util-cache.php:572
 msgid "If the task does not run, this could indicate a problem with your hosting provider's event scheduler and/or a lack of support for the WordPress %s function."
 msgstr "Si la tâche ne s'exécute pas, cela peut indiquer un problème avec le planificateur d'événements de votre fournisseur d'hébergement et/ou un manque de prise en charge de la fonction %s de WordPress."
 
-#: lib/util-cache.php:563
+#: lib/util-cache.php:574
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr "Vous pouvez activer une extension comme %s pour gérer les événements planifiés."
 
-#: lib/util-cache.php:565
+#: lib/util-cache.php:576
 msgid "WP Crontrol"
 msgstr "WP Crontrol"
 
-#: lib/util-cache.php:629
+#: lib/util-cache.php:640
 msgid "A task to %1$s was started at %2$s."
 msgstr "Une tâche pour %1$s a été démarrée à %2$s."
 
-#: lib/util-cache.php:712
+#: lib/util-cache.php:723
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:778
+#: lib/util-cache.php:792
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:833
+#: lib/util-cache.php:847
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:899
+#: lib/util-cache.php:931
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
