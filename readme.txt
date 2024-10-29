@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.16.0-b.1 (2024/10/28)**
+**Version 18.16.0-b.2 (2024/10/28)**
 
 * **New Features**
 	* None.
@@ -289,7 +289,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a `$cache_exp_secs` argument in the `WpssoUtilCache->get_running_task()` method to double-check the transient expiration time.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -447,7 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.16.0-b.1 =
+= 18.16.0-b.2 =
 
 (2024/10/28) Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
 
