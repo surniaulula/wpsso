@@ -1711,7 +1711,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						} elseif ( 'postcode' === $location_obj->type ) {
 
-							$destination_opts[ 'country_code' ] = $shipping_base_loc[ 'country' ];
+							$destination_opts[ 'country_code' ] = apply_filters( 'wpsso_wc_shipping_zone_location_postal_code_country',
+								$shipping_base_loc[ 'country' ], $zone_obj, $location_key, $location_obj );
+
 							$destination_opts[ 'postal_code' ]  = $location_obj->code;
 						}
 

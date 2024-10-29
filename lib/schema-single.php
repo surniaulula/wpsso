@@ -2763,10 +2763,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
 
-							} else {
-
-								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $offer_url );
-							}
+							} else WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $offer_url );
 						}
 
 						$json_data[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
