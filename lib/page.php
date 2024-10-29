@@ -1389,10 +1389,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_text = $this->p->opt->get_text( 'plugin_comment_reply_title' );
 
-				} else {
-
-					$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
-				}
+				} else $title_text = $this->p->opt->get_text( 'plugin_comment_title' );
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
@@ -1449,10 +1446,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_text = '%%term_title%%';
 
-				} else {
-
-					$title_text = $this->p->opt->get_text( 'plugin_term_page_title' );
-				}
+				} else $title_text = $this->p->opt->get_text( 'plugin_term_page_title' );
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
@@ -1716,11 +1710,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
+
 				$filter_excerpt = apply_filters( 'wpsso_the_excerpt_filter_excerpt', $filter_excerpt );
 
 				if ( $filter_excerpt ) {
 
 					$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $mod[ 'wp_obj' ] ), $mod );
+
+					if ( ! is_string( $excerpt_text ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'excerpt_text from "get_the_excerpt" is ' . gettype( $content ) );
+						}
+
+						$excerpt_text = '';
+					}
 				}
 			}
 
@@ -1856,7 +1861,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$this->p->debug->log( 'content from "wpsso_the_content_seed" is ' . gettype( $content ) );
 				}
-				
+
 				$content = '';
 
 			} elseif ( '' !== $content ) {
@@ -1916,7 +1921,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$this->p->debug->log( 'content from "the_content" is ' . gettype( $content ) );
 					}
-				
+
 					$content = '';
 				}
 
@@ -1938,14 +1943,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$this->p->debug->mark( 'calling do_blocks()' );	// End timer.
 					}
-					
+
 					if ( ! is_string( $content ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'content from do_blocks() is ' . gettype( $content ) );
 						}
-				
+
 						$content = '';
 					}
 				}
@@ -1966,14 +1971,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$this->p->debug->mark( 'applying filters "wpsso_do_shortcode"' );	// End timer.
 					}
-				
+
 					if ( ! is_string( $content ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'content from "wpsso_do_shortcode" is ' . gettype( $content ) );
 						}
-				
+
 						$content = '';
 					}
 				}
@@ -2027,7 +2032,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$this->p->debug->log( 'content from "wpsso_the_content" is ' . gettype( $content ) );
 				}
-		
+
 				$content = '';
 			}
 
@@ -2068,11 +2073,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$text = $this->get_the_content( $mod );
-
 			$text = preg_replace( '/<!\[CDATA\[.*\]\]>/Us', '', $text );
-
 			$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Us', '', $text );
-
 			$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
 
 			return apply_filters( 'wpsso_the_text', $text, $mod );

@@ -404,7 +404,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			if ( $product instanceof WC_Product ) {   // WC_Product, WC_Product_Variable, or WC_Product_Grouped.
-			
+
 				$product_id = $this->p->util->wc->get_product_id( $product );	// Returns product id from product object.
 
 				if ( $product_id ) $this->p->post->clear_cache( $product_id );	// Refresh the cache for a single post ID.

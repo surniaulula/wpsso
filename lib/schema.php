@@ -4205,7 +4205,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $gtin_props as $prop_name => $prop_len ) {
 
 				if ( $wpsso->debug->enabled ) {
-	
+
 					$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
 				}
 
@@ -4219,11 +4219,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$gtin_len = strlen( $json_data[ $prop_name ] );
 
 					if ( $prop_len ) {	// GTIN property has specific length.
-					
+
 						if ( $gtin_len !== $prop_len ) {	// GTIN property length mismatch.
-				
+
 							if ( $wpsso->debug->enabled ) {
-	
+
 								$wpsso->debug->log( 'unsetting ' . $prop_name . ' property' );
 							}
 
@@ -4238,7 +4238,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$gtin_len = strlen( $json_data[ 'gtin' ] );
 
 				if ( $wpsso->debug->enabled ) {
-	
+
 					$wpsso->debug->log( 'gtin property value length = ' . $gtin_len );
 				}
 
@@ -4252,7 +4252,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( empty( $json_data[ 'gtin' . $gtin_len ] ) ) {
 
 							if ( $wpsso->debug->enabled ) {
-	
+
 								$wpsso->debug->log( 'adding gtin' . $gtin_len . ' = ' . $json_data[ 'gtin' ] );
 							}
 

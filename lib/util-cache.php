@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					if ( ! empty( $running_task[ 2 ] ) ) {
 
 						if ( $running_task[ 2 ] < time() - $cache_exp_secs ) {
-			
+
 							delete_transient( $task_cache_id );
 
 							return false;
@@ -894,7 +894,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				return $running_task;
 			}
-			
+
 			return false;
 		}
 
