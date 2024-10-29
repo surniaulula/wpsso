@@ -280,17 +280,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.16.0-b.3 (2024/10/29)**
+**Version 18.16.0-b.4 (2024/10/29)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
+	* Added WooCommerce store base location to Schema shippingDestination markup for postal codes.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a `$cache_exp_secs` argument to the `WpssoUtilCache->get_running_task()` method (to double-check the transient expiration time).
 	* Added `is_string()` checks after each content filter to make sure the returned value is a string (and not null).
+	* Updated `WpssoIntegEcomWooCommerce->add_mt_shipping_offers()` to add the WooCommerce store base location country for postal codes.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -448,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.16.0-b.3 =
+= 18.16.0-b.4 =
 
 (2024/10/29) Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
 
