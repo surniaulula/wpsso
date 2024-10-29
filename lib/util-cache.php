@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				$this->set_task_limit( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );
+				$this->set_task_limit( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );	// 1 hour by default.
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -720,7 +720,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					if ( time() > $task_cutoff_time ) {
 
 						$notice_msg .= sprintf( __( 'The cache refresh time limit of %s has been reached.', 'wpsso' ),
-							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';
+							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';	// 1 hour by default.
 
 						$notice_msg .= __( 'The cache refresh task was aborted prematurely.', 'wpsso' ) . ' ';
 
