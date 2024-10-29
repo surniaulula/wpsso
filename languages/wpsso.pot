@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:857
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:859
 msgid "%s error:"
 msgstr ""
 
@@ -15436,7 +15436,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:756
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:758
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15601,30 +15601,30 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:722
+#: lib/util-cache.php:724
 msgid "The cache refresh time limit of %s has been reached."
 msgstr ""
 
-#: lib/util-cache.php:725
+#: lib/util-cache.php:727
 msgid "The cache refresh task was aborted prematurely."
 msgstr ""
 
-#: lib/util-cache.php:735
+#: lib/util-cache.php:737
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:804
+#: lib/util-cache.php:806
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:859
+#: lib/util-cache.php:861
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:943
+#: lib/util-cache.php:945
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

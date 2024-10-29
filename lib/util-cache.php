@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$task_cutoff_time = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 60;	// Leave some time for 'wpsso_cache_refreshed_notice' filters.
+			$task_cutoff_time = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 120;	// Leave some time for 'wpsso_cache_refreshed_notice' filters.
 
 			if ( ! $this->task_start( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
@@ -714,6 +714,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
 					$this->refresh_mod_head_meta( $mod );
+
+					unset( $mod );
 
 					$count++;	// Reference to post, term, or user total count.
 
