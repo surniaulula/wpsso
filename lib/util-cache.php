@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
-			$task_max_time    = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 30;
+			$task_cutoff_time = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 60;	// Leave some time for 'wpsso_cache_refreshed_notice' filters.
 
 			if ( ! $this->task_start( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
@@ -717,7 +717,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					$count++;	// Reference to post, term, or user total count.
 
-					if ( time() > $task_max_time ) {
+					if ( time() > $task_cutoff_time ) {
 
 						$notice_msg .= sprintf( __( 'The cache refresh time limit of %s has been reached.', 'wpsso' ),
 							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';
