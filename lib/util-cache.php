@@ -627,6 +627,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$task_name        = 'refresh the cache';
 			$task_name_transl = _x( 'refresh the cache', 'task name', 'wpsso' );
+			$task_max_time    = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 30;
 
 			if ( ! $this->task_start( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME ) ) {
 
@@ -680,6 +681,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				'user' => 0,
 			);
 
+			$notice_msg  = '';
 			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
 
 			foreach ( $total_count as $obj_name => &$count ) {
@@ -714,13 +716,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->refresh_mod_head_meta( $mod );
 
 					$count++;	// Reference to post, term, or user total count.
+
+					if ( time() > $task_max_time ) {
+
+						$notice_msg .= sprintf( __( 'The cache refresh time limit of %s has been reached.', 'wpsso' ),
+							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';
+
+						$notice_msg .= __( 'The cache refresh task was aborted prematurely.', 'wpsso' ) . ' ';
+
+						break 2;	// Stop here
+					}
 				}
 			}
 
 			/*
 			 * Create a notification for the end of this task.
 			 */
-			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
+			$notice_msg .= sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
 				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
 			/*
