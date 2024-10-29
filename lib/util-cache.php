@@ -429,9 +429,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Returns false or array( $user_id, $task_name, time() ).
+			 * Returns false or array( $user_id, $task_name, $task_start_time ).
 			 */
-			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
+			$running_task = $this->get_running_task( $task_name = 'refresh the cache', WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
 			return is_array( $running_task ) ? true : false;
 		}
@@ -447,9 +447,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Returns false or array( $user_id, $task_name, time() ).
+			 * Returns false or array( $user_id, $task_name, $task_start_time ).
 			 */
-			$running_task = $this->get_running_task( $task_name = 'refresh the cache' );	// Returns false or an array.
+			$running_task = $this->get_running_task( $task_name = 'refresh the cache', WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
 			if ( is_array( $running_task ) ) {	// A task is running.
 
@@ -782,9 +782,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/*
-			 * Returns false or array( $user_id, $task_name, time() ).
+			 * Returns false or array( $user_id, $task_name, $task_start_time ).
 			 */
-			$running_task = $this->get_running_task( $task_name );	// Returns false or an array.
+			$running_task = $this->get_running_task( $task_name, $cache_exp_secs );	// Returns false or an array.
 
 			if ( is_array( $running_task ) ) {	// A task is running.
 
@@ -809,7 +809,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$task_cache_id = $this->get_task_cache_id( $task_name );
 
-			return set_transient( $task_cache_id, array( $user_id, $task_name, time() ), $cache_exp_secs );
+			return set_transient( $task_cache_id, array( $user_id, $task_name, $task_start_time = time() ), $cache_exp_secs );
 		}
 
 		/*
@@ -858,12 +858,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/*
-		 * Returns false or array( $user_id, $task_name, time() ).
+		 * Returns false or array( $user_id, $task_name, $task_start_time ).
 		 *
 		 * See WpssoUtilCache->is_refresh_running().
 		 * See WpssoUtilCache->show_refresh_running().
 		 */
-		public function get_running_task( $task_name ) {
+		public function get_running_task( $task_name, $cache_exp_secs = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -875,9 +875,27 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$running_task = get_transient( $task_cache_id );
 
 			/*
-			 * $running_task = array( $user_id, $task_name );
+			 * $running_task = array( $user_id, $task_name, $task_start_time );
 			 */
-			return is_array( $running_task ) ? $running_task : false;
+			if ( is_array( $running_task ) ) {
+
+				if ( null !== $cache_exp_secs ) {
+
+					if ( ! empty( $running_task[ 2 ] ) ) {
+
+						if ( $running_task[ 2 ] < time() - $cache_exp_secs ) {
+			
+							delete_transient( $task_cache_id );
+
+							return false;
+						}
+					}
+				}
+
+				return $running_task;
+			}
+			
+			return false;
 		}
 
 		/*
