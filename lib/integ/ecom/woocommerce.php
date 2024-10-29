@@ -1604,6 +1604,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			static $shipping_countries  = null;
 			static $shipping_states     = null;
 			static $shipping_enabled    = null;
+			static $shipping_base_loc   = null;
 
 			if ( null === $shipping_enabled ) {	// Load values only once - true or false when values have been defined.
 
@@ -1613,6 +1614,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
 				$shipping_countries  = WC()->countries->get_shipping_countries();
 				$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
+				$shipping_base_loc   = wc_get_base_location();	// Example: array( [country] => US [state] => CA ).
 			}
 
 			$product_id         = $this->p->util->wc->get_product_id( $product );
@@ -1709,7 +1711,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						} elseif ( 'postcode' === $location_obj->type ) {
 
-							$destination_opts[ 'postal_code' ] = $location_obj->code;
+							$destination_opts[ 'country_code' ] = $shipping_base_loc[ 'country' ];
+							$destination_opts[ 'postal_code' ]  = $location_obj->code;
 						}
 
 
