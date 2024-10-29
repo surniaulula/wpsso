@@ -1834,28 +1834,32 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'initializing new wp cache element' );
 			}
 
-			$cache_array[ $cache_index ] = false;		// Initialize the cache element.
+			$cache_array[ $cache_index ] = '';		// Initialize the cache element.
 
 			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
 
 			/*
 			 * Apply the seed filter.
 			 *
-			 * Return false to prevent the commen or post from being used.
+			 * Return false to prevent the comment or post content from being used.
 			 *
-			 * See WpssoIntegEcomEdd->filter_the_content_seed().
 			 * See WpssoIntegEcomWooCommerce->filter_the_content_seed().
 			 */
 			$content = apply_filters( 'wpsso_the_content_seed', '', $mod );
 
-			if ( false === $content ) {
+			/*
+			 * Make sure that we have a string (empty or not) to work with.
+			 */
+			if ( ! is_string( $content ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'content seed is false' );
+					$this->p->debug->log( 'content from "wpsso_the_content_seed" is ' . gettype( $content ) );
 				}
+				
+				$content = '';
 
-			} elseif ( ! empty( $content ) ) {
+			} elseif ( '' !== $content ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1864,11 +1868,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-				$content = $mod[ 'wp_obj' ]->post_content;
+				$content = (string) $mod[ 'wp_obj' ]->post_content;
 
 			} elseif ( $mod[ 'is_comment' ] && $mod[ 'id' ] ) {
 
-				$content = $mod[ 'wp_obj' ]->comment_content;
+				$content = (string) $mod[ 'wp_obj' ]->comment_content;
 			}
 
 			/*
@@ -1906,6 +1910,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->mark( 'applying filters "the_content"' );	// End timer.
 				}
 
+				if ( ! is_string( $content ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'content from "the_content" is ' . gettype( $content ) );
+					}
+				
+					$content = '';
+				}
+
 			} else {
 
 				/*
@@ -1924,6 +1938,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$this->p->debug->mark( 'calling do_blocks()' );	// End timer.
 					}
+					
+					if ( ! is_string( $content ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'content from do_blocks() is ' . gettype( $content ) );
+						}
+				
+						$content = '';
+					}
 				}
 
 				/*
@@ -1941,6 +1965,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->mark( 'applying filters "wpsso_do_shortcode"' );	// End timer.
+					}
+				
+					if ( ! is_string( $content ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'content from "wpsso_do_shortcode" is ' . gettype( $content ) );
+						}
+				
+						$content = '';
 					}
 				}
 			}
@@ -1986,6 +2020,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Apply the filter.
 			 */
 			$content = apply_filters( 'wpsso_the_content', $content, $mod );
+
+			if ( ! is_string( $content ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'content from "wpsso_the_content" is ' . gettype( $content ) );
+				}
+		
+				$content = '';
+			}
 
 			/*
 			 * Save content to non-persistant cache.

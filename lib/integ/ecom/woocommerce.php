@@ -666,6 +666,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return $tax_slug;
 		}
 
+		/*
+		 * Return false to prevent the comment or post content from being used.
+		 */
 		public function filter_the_content_seed( $content, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
