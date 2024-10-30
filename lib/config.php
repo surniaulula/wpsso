@@ -2528,7 +2528,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'um' => array(
 				'min_version' => '6.0.1',	// Released on 2024/08/27.
-				'rec_version' => '7.2.1',	// Released on 2024/10/05.
+				'rec_version' => '7.2.2-b.6',	// Released on 2024/10/30.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
 					'alpha'  => 'Alpha and Up',
