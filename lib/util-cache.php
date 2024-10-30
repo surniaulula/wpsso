@@ -430,7 +430,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$running_task = $this->get_running_task( $task_name = 'refresh the cache', WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
-			return is_array( $running_task ) ? true : false;
+			return isset( $running_task[ 'user_id' ] ) ? true : false;
 		}
 
 		/*
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$running_task = $this->get_running_task( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
-			if ( is_array( $running_task ) ) {	// A task is running.
+			if ( isset( $running_task[ 'user_id' ] ) ) {	// Task is running.
 
 				/*
 				 * Show the cache refresh status to the user who started the cache refresh.
@@ -805,7 +805,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$running_task = $this->get_running_task( $task_name, $cache_exp_secs );	// Returns false or an array.
 
-			if ( is_array( $running_task ) ) {
+			if ( isset( $running_task[ 'user_id' ] ) ) {	// Task is running.
 
 				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
 				$notice_msg       = sprintf( __( 'Ignoring request to %s - this task is already running.', 'wpsso' ), $task_name_transl );
@@ -840,20 +840,25 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( is_array( $running_task ) ) {
 
-				if ( null !== $cache_exp_secs ) {	// Check that transient is not expired.
+				if ( isset( $running_task[ 'user_id' ] ) ) {
 
-					if ( ! empty( $running_task[ 'task_start' ] ) ) {
+					if ( null !== $cache_exp_secs ) {	// Check that transient is not expired.
 
-						if ( $running_task[ 'task_start' ] < time() - $cache_exp_secs ) {
-
-							delete_transient( $task_cache_id );
-
-							return false;
+						if ( ! empty( $running_task[ 'task_start' ] ) ) {
+	
+							if ( $running_task[ 'task_start' ] < time() - $cache_exp_secs ) {
+	
+								delete_transient( $task_cache_id );
+	
+								return false;
+							}
 						}
 					}
+	
+					return $running_task;
 				}
 
-				return $running_task;
+				delete_transient( $task_cache_id );
 			}
 
 			return false;
@@ -863,7 +868,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			
 			$running_task = $this->get_running_task( $task_name );	// Returns false or an array.
 			
-			if ( is_array( $running_task ) ) {
+			if ( isset( $running_task[ 'user_id' ] ) ) {	// Task is running.
 
 				if ( isset( $running_task[ 'task_limit' ] ) ) {	// Just in case.
 

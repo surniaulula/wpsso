@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.16.0-b.6\n"
+"Project-Id-Version: WPSSO Core 18.16.0-b.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:909
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:914
 msgid "%s error:"
 msgstr ""
 
@@ -15623,12 +15623,12 @@ msgstr ""
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:911
+#: lib/util-cache.php:916
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:954
+#: lib/util-cache.php:959
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
