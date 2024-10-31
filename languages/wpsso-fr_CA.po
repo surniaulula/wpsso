@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 18.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-10-30 17:14-0700\n"
+"PO-Revision-Date: 2024-10-30 17:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6431,7 +6431,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:928
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:933
 msgid "%s error:"
 msgstr "Erreur %s:"
 
@@ -9132,8 +9132,9 @@ msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image ple
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1748 lib/register.php:305 lib/util.php:876 lib/util.php:985
-#: lib/util.php:1017 lib/util.php:1055 lib/util.php:3447
+#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:746
+#: lib/util.php:876 lib/util.php:985 lib/util.php:1017 lib/util.php:1055
+#: lib/util.php:3447
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -14008,7 +14009,7 @@ msgstr "Une tâche pour %1$s aux créateurs de contenu a été démarré à %2$s
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:776
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:781
 msgid "The total execution time for this task was %s."
 msgstr "Le temps d'exécution total pour cette tâche était %s."
 
@@ -14170,22 +14171,22 @@ msgid "The cache refresh time limit of %s has been reached."
 msgstr "La limite de temps d'actualisation du cache de %s a été atteinte."
 
 #: lib/util-cache.php:743
-msgid "The cache refresh task was aborted prematurely."
-msgstr "La tâche d’actualisation du cache a été interrompue prématurément."
+msgid "The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d)."
+msgstr "La tâche d'actualisation du cache a été interrompue après %1$s ID #%2$d (%1$s %3$d sur %4$d)."
 
-#: lib/util-cache.php:755
+#: lib/util-cache.php:760
 msgid "The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util-cache.php:825
+#: lib/util-cache.php:830
 msgid "Ignoring request to %s - this task is already running."
 msgstr "Abandon de la tâche pour %s - cette tâche est déjà en cours d'exécution."
 
-#: lib/util-cache.php:930
+#: lib/util-cache.php:935
 msgid "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr "La fonction PHP %1$s n'a pas réussi à définir une durée d'exécution maximale de %2$s pour %3$s."
 
-#: lib/util-cache.php:973
+#: lib/util-cache.php:978
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
@@ -14550,3 +14551,6 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgid "The cache refresh task was aborted prematurely."
+#~ msgstr "La tâche d’actualisation du cache a été interrompue prématurément."
