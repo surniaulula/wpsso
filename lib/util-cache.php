@@ -740,7 +740,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						$notice_msg .= sprintf( __( 'The cache refresh time limit of %s has been reached.', 'wpsso' ),
 							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';	// 1 hour by default.
 
-						$notice_msg .= __( 'The cache refresh task was aborted prematurely.', 'wpsso' ) . ' ';
+						$notice_msg .= sprintf( __( 'The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d).', 'wpsso' ),
+							$mod[ 'name_transl' ], $obj_id, $obj_num + 1, $obj_count ) . ' ';
+
+						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
+						SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg );
 
 						break 2;	// Stop here
 					}
