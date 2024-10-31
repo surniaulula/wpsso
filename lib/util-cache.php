@@ -428,7 +428,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$running_task = $this->get_running_task( $task_name = 'refresh the cache', WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
+			$task_name    = 'refresh the cache';
+			$running_task = $this->get_running_task( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
 			return isset( $running_task[ 'user_id' ] ) ? true : false;
 		}
@@ -443,8 +444,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$task_name = 'refresh the cache';
-
+			$task_name    = 'refresh the cache';
 			$running_task = $this->get_running_task( $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );	// Returns false or an array.
 
 			if ( isset( $running_task[ 'user_id' ] ) ) {	// Task is running.
@@ -694,6 +694,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg  = '';
 			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
 			$abort_time  = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 120;		// Leave time for 'wpsso_cache_refreshed_notice' filters.
+$abort_time  = time() + 2;
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
@@ -731,8 +732,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					$this->refresh_mod_head_meta( $mod );
 
-					unset( $mod );
-
 					$count++;	// Reference to post, term, or user total count.
 
 					if ( time() > $abort_time ) {
@@ -751,6 +750,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					}
 				}
 			}
+
+			unset( $mod, $obj_ids, $obj_id, $obj_num, $obj_count );
 
 			$this->task_update( $task_name );
 
