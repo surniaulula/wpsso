@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.16.0-b.7\n"
+"Project-Id-Version: WPSSO Core 18.16.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:914
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:928
 msgid "%s error:"
 msgstr ""
 
@@ -15423,7 +15423,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:640
+#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:647
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -15436,7 +15436,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:766
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:776
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15562,12 +15562,12 @@ msgstr ""
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:534 lib/util-cache.php:602 lib/util-cache.php:630
+#: lib/util-cache.php:534 lib/util-cache.php:609 lib/util-cache.php:637
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:550 lib/util-cache.php:610
+#: lib/util-cache.php:550 lib/util-cache.php:617
 msgid ""
 "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
@@ -15597,38 +15597,38 @@ msgstr ""
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:641
+#: lib/util-cache.php:648
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:719
-msgid "Processing %s ID #%d (%s %d of %d)."
+#: lib/util-cache.php:729
+msgid "Processing %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:730
+#: lib/util-cache.php:740
 msgid "The cache refresh time limit of %s has been reached."
 msgstr ""
 
-#: lib/util-cache.php:733
+#: lib/util-cache.php:743
 msgid "The cache refresh task was aborted prematurely."
 msgstr ""
 
-#: lib/util-cache.php:745
+#: lib/util-cache.php:755
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:811
+#: lib/util-cache.php:825
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:916
+#: lib/util-cache.php:930
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:959
+#: lib/util-cache.php:973
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

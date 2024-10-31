@@ -595,6 +595,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return false;
 		}
 
+		/*
+		 * See WpssoAdmin->activated_plugin().
+		 * See WpssoAdmin->wp_site_option_changed().
+		 * See WpssoAdmin->load_settings_page().
+		 * See WpssoOptions->save_options().
+		 * See WpssoRegister->activate_plugin().
+		 */
 		public function schedule_refresh( $user_id = null ) {
 
 			$user_id          = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
@@ -653,6 +660,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				/*
 				 * Register image sizes and include WooCommerce front-end libs.
+				 *
+				 * See WpssoIntegEcomWooCommerce->action_scheduled_task_started().
+				 * See WpssoUtil->action_scheduled_task_started().
 				 */
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
@@ -716,8 +726,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
-					$this->task_update( $task_name, sprintf( __( 'Processing %s ID #%d (%s %d of %d).', 'wpsso' ),
-						$mod[ 'name_transl' ], $obj_id, $mod[ 'name_transl' ], $obj_num + 1, $obj_count ) );
+					$this->task_update( $task_name, sprintf( __( 'Processing %1$s ID #%2$d (%1$s %3$d of %4$d).', 'wpsso' ),
+						$mod[ 'name_transl' ], $obj_id, $obj_num + 1, $obj_count ) );
 
 					$this->refresh_mod_head_meta( $mod );
 
@@ -796,6 +806,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return array( $head_tags, $head_info );
 		}
 
+		/*
+		 * See WpssoUser->add_person_role().
+		 * See WpssoUtilCache->refresh().
+		 */
 		public function task_start( $user_id, $task_name, $cache_exp_secs ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -840,7 +854,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( is_array( $running_task ) ) {
 
-				if ( isset( $running_task[ 'user_id' ] ) ) {
+				if ( isset( $running_task[ 'user_id' ] ) ) {	// Just in case.
 
 					if ( null !== $cache_exp_secs ) {	// Check that transient is not expired.
 
@@ -858,7 +872,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					return $running_task;
 				}
 
-				delete_transient( $task_cache_id );
+				delete_transient( $task_cache_id );	// Remove invalid array.
 			}
 
 			return false;

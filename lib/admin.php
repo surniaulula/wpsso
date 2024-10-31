@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array( 'p', 'p_ext' ) as $key ) {	// Remove plugin and add-on information.
 
-				unset( $old_avail[ $key], $new_avail[ $key ] );
+				unset( $old_avail[ $key ], $new_avail[ $key ] );
 			}
 
 			if ( $old_avail !== $new_avail ) {
