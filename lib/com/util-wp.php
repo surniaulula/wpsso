@@ -941,9 +941,13 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				foreach ( $objects as $obj ) {
 
-					$obj_label = self::get_object_label( $obj );
+					if ( is_object( $obj ) ) {	// Just in case.
 
-					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+						$obj_label = self::get_object_label( $obj );
+
+						$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+
+					} else SucomUtil::safe_error_log( __METHOD__ . ' error: post type object not an object: ' . print_r( $obj, true ) );
 				}
 			}
 
@@ -1166,9 +1170,12 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				foreach ( $objects as $obj ) {
 
-					$obj_label = self::get_object_label( $obj );
+					if ( is_object( $obj ) ) {	// Just in case.
 
-					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+						$obj_label = self::get_object_label( $obj );
+
+						$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+					}
 				}
 			}
 
@@ -1423,12 +1430,17 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_object_label( $obj ) {
 
-			if ( empty( $obj->_builtin ) ) {	// Custom post type or taxonomy.
+			if ( is_object( $obj ) ) {	// Just in case.
 
-				return $obj->label . ' [' . $obj->name . ']';
+				if ( empty( $obj->_builtin ) ) {	// Custom post type or taxonomy.
+
+					return $obj->label . ' [' . $obj->name . ']';
+				}
+
+				return $obj->label;
 			}
 
-			return $obj->label;
+			return '';
 		}
 
 		public static function sort_objects_by_label( array &$objects ) {
@@ -1438,17 +1450,20 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			foreach ( $objects as $num => $obj ) {
 
-				if ( ! empty( $obj->labels->name ) ) {
+				if ( is_object( $obj ) ) {	// Just in case.
 
-					$sort_key = $obj->labels->name . '-' . $num;
+					if ( ! empty( $obj->labels->name ) ) {
 
-				} elseif ( ! empty( $obj->label ) ) {
+						$sort_key = $obj->labels->name . '-' . $num;
 
-					$sort_key = $obj->label . '-' . $num;
+					} elseif ( ! empty( $obj->label ) ) {
 
-				} else $sort_key = $obj->name . '-' . $num;
+						$sort_key = $obj->label . '-' . $num;
 
-				$assoc[ $sort_key ] = $num;	// Make sure key is sortable and unique.
+					} else $sort_key = $obj->name . '-' . $num;
+
+					$assoc[ $sort_key ] = $num;	// Make sure key is sortable and unique.
+				}
 			}
 
 			ksort( $assoc );

@@ -44,9 +44,12 @@ if ( ! class_exists( 'WpssoIntegUtilElementor' ) ) {
 
 				foreach ( $post_types as $num => $obj ) {
 
-					if ( 'elementor_library' === $obj->name ) {
+					if ( is_object( $obj ) ) {	// Just in case.
 
-						unset( $post_types[ $num ] );
+						if ( 'elementor_library' === $obj->name ) {
+
+							unset( $post_types[ $num ] );
+						}
 					}
 				}
 

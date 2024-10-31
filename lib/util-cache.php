@@ -865,16 +865,16 @@ $abort_time  = time() + 2;
 					if ( null !== $cache_exp_secs ) {	// Check that transient is not expired.
 
 						if ( ! empty( $running_task[ 'task_start' ] ) ) {
-	
+
 							if ( $running_task[ 'task_start' ] < time() - $cache_exp_secs ) {
-	
+
 								delete_transient( $task_cache_id );
-	
+
 								return false;
 							}
 						}
 					}
-	
+
 					return $running_task;
 				}
 
@@ -885,9 +885,9 @@ $abort_time  = time() + 2;
 		}
 
 		public function task_update( $task_name, $task_info_transl = null ) {
-			
+
 			$running_task = $this->get_running_task( $task_name );	// Returns false or an array.
-			
+
 			if ( isset( $running_task[ 'user_id' ] ) ) {	// Task is running.
 
 				if ( isset( $running_task[ 'task_limit' ] ) ) {	// Just in case.

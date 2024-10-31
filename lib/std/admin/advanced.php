@@ -366,6 +366,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				foreach ( $post_type_archives as $num => $post_type_obj ) {
 
+					if ( ! is_object( $post_type_obj ) ) continue;	// Just in case.
+
 					$obj_label = sprintf( _x( '%s Archive Page', 'metabox title', 'wpsso' ), SucomUtilWP::get_object_label( $post_type_obj ) );
 					$title_key = 'plugin_pta_' . $post_type_obj->name . '_title';
 					$desc_key  = 'plugin_pta_' . $post_type_obj->name . '_desc';

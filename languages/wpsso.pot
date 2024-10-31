@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.16.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 18.16.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5952,166 +5952,166 @@ msgctxt "metabox title"
 msgid "Post Type Archive Pages"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:395
-#: lib/std/admin/advanced.php:369
+#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:397
+#: lib/std/admin/advanced.php:371
 msgctxt "metabox title"
 msgid "%s Archive Page"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:61 lib/pro/admin/advanced.php:409
-#: lib/std/admin/advanced.php:383
+#: gettext/gettext-lib-pro.php:61 lib/pro/admin/advanced.php:411
+#: lib/std/admin/advanced.php:385
 msgctxt "option label"
 msgid "Archive Page Title"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:414
-#: lib/std/admin/advanced.php:388
+#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:415
+#: lib/std/admin/advanced.php:390
 msgctxt "option label"
 msgid "Archive Page Description"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:63 lib/opengraph.php:57
-#: lib/pro/admin/advanced.php:437 lib/std/admin/advanced.php:413
+#: lib/pro/admin/advanced.php:437 lib/std/admin/advanced.php:415
 msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:64 lib/pinterest.php:145
-#: lib/pro/admin/advanced.php:442 lib/std/admin/advanced.php:418
+#: lib/pro/admin/advanced.php:442 lib/std/admin/advanced.php:420
 msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:447
-#: lib/schema.php:101 lib/std/admin/advanced.php:423
+#: lib/schema.php:101 lib/std/admin/advanced.php:425
 msgctxt "option label"
 msgid "Schema 1:1 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:452
-#: lib/schema.php:106 lib/std/admin/advanced.php:428
+#: lib/schema.php:106 lib/std/admin/advanced.php:430
 msgctxt "option label"
 msgid "Schema 4:3 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:457
-#: lib/schema.php:111 lib/std/admin/advanced.php:433
+#: lib/schema.php:111 lib/std/admin/advanced.php:435
 msgctxt "option label"
 msgid "Schema 16:9 (Google Rich Results)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:68 lib/pro/admin/advanced.php:462
-#: lib/schema.php:116 lib/std/admin/advanced.php:438
+#: lib/schema.php:116 lib/std/admin/advanced.php:440
 msgctxt "option label"
 msgid "Schema Thumbnail"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:69 lib/pro/admin/advanced.php:467
-#: lib/std/admin/advanced.php:443 lib/twittercard.php:42
+#: lib/std/admin/advanced.php:445 lib/twittercard.php:42
 msgctxt "option label"
 msgid "X (Twitter) Summary Card"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:70 lib/pro/admin/advanced.php:472
-#: lib/std/admin/advanced.php:448 lib/twittercard.php:47
+#: lib/std/admin/advanced.php:450 lib/twittercard.php:47
 msgctxt "option label"
 msgid "X (Twitter) Summary Card Large Image"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:71 lib/pro/admin/advanced.php:485
-#: lib/std/admin/advanced.php:463
+#: lib/std/admin/advanced.php:465
 msgctxt "option label"
 msgid "Show Options by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:72 lib/pro/admin/advanced.php:490
-#: lib/std/admin/advanced.php:468
+#: lib/std/admin/advanced.php:470
 msgctxt "option label"
 msgid "Open Graph Select"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:73 lib/pro/admin/advanced.php:496
-#: lib/std/admin/advanced.php:474
+#: lib/std/admin/advanced.php:476
 msgctxt "option label"
 msgid "Schema Type Select"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:74 lib/messages-tooltip-plugin.php:602
 #: lib/page.php:174 lib/pro/admin/advanced.php:504
-#: lib/std/admin/advanced.php:482
+#: lib/std/admin/advanced.php:484
 msgctxt "toolbar menu title"
 msgid "Validators"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:75 lib/pro/admin/advanced.php:507
-#: lib/std/admin/advanced.php:485
+#: lib/std/admin/advanced.php:487
 msgctxt "option label"
 msgid "Show %s Toolbar"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:76 lib/pro/admin/advanced.php:530
-#: lib/std/admin/advanced.php:508
+#: lib/std/admin/advanced.php:510
 msgctxt "option label"
 msgid "Show %s Menu Items"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:77 lib/pro/admin/advanced.php:540
-#: lib/std/admin/advanced.php:518
+#: lib/std/admin/advanced.php:520
 msgctxt "option label"
 msgid "Show %s Metabox"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:78 lib/pro/admin/advanced.php:550
-#: lib/std/admin/advanced.php:528
+#: lib/std/admin/advanced.php:530
 msgctxt "option label"
 msgid "WP List Table Columns"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:79 lib/pro/admin/advanced.php:564
-#: lib/std/admin/advanced.php:544
+#: lib/std/admin/advanced.php:546
 msgctxt "option label"
 msgid "Gravatar is Default Author Image"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:80 lib/pro/admin/advanced.php:569
-#: lib/std/admin/advanced.php:549
+#: lib/std/admin/advanced.php:551
 msgctxt "option label"
 msgid "Gravatar Image Size"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:189
 #: lib/pro/admin/advanced.php:581 lib/pro/admin/general.php:79
-#: lib/std/admin/advanced.php:561 lib/std/admin/general.php:71
+#: lib/std/admin/advanced.php:563 lib/std/admin/general.php:71
 msgctxt "option label"
 msgid "Detect Embedded Media"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:596
-#: lib/std/admin/advanced.php:576
+#: lib/std/admin/advanced.php:578
 msgctxt "option label"
 msgid "URL Shortening Service"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:83 lib/pro/admin/advanced.php:601
-#: lib/std/admin/advanced.php:581
+#: lib/std/admin/advanced.php:583
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:84 lib/pro/admin/advanced.php:604
-#: lib/std/admin/advanced.php:584
+#: lib/std/admin/advanced.php:586
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:85 lib/pro/admin/advanced.php:607
-#: lib/std/admin/advanced.php:587
+#: lib/std/admin/advanced.php:589
 msgctxt "option label"
 msgid "Use Short URL for WP Shortlink"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:86 lib/pro/admin/advanced.php:612
-#: lib/std/admin/advanced.php:592
+#: lib/std/admin/advanced.php:594
 msgctxt "option label"
 msgid "Add \"%s\" HTML Tag"
 msgstr ""
@@ -6186,31 +6186,31 @@ msgid "YOURLS Token"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:100 lib/messages.php:451
-#: lib/pro/admin/advanced.php:688 lib/std/admin/advanced.php:610
+#: lib/pro/admin/advanced.php:688 lib/std/admin/advanced.php:612
 msgctxt "option label"
 msgid "Ratings and Reviews Service"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:101 lib/pro/admin/advanced.php:694
-#: lib/std/admin/advanced.php:615
+#: lib/std/admin/advanced.php:617
 msgctxt "option label"
 msgid "Maximum Number of Reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:102 lib/pro/admin/advanced.php:699
-#: lib/std/admin/advanced.php:620
+#: lib/std/admin/advanced.php:622
 msgctxt "option label"
 msgid "Maximum Age of Reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:103 lib/pro/admin/advanced.php:702
-#: lib/std/admin/advanced.php:623
+#: lib/std/admin/advanced.php:625
 msgctxt "option comment"
 msgid "months"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:104 lib/pro/admin/advanced.php:705
-#: lib/std/admin/advanced.php:626
+#: lib/std/admin/advanced.php:628
 msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr ""
@@ -6265,35 +6265,35 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:114 gettext/gettext-lib-pro.php:125
 #: lib/pro/admin/advanced.php:769 lib/pro/admin/advanced.php:858
-#: lib/std/admin/advanced.php:644 lib/std/admin/advanced.php:737
+#: lib/std/admin/advanced.php:646 lib/std/admin/advanced.php:739
 msgctxt "option label"
 msgid "Type for Page Homepage"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:115 gettext/gettext-lib-pro.php:126
 #: lib/pro/admin/advanced.php:770 lib/pro/admin/advanced.php:859
-#: lib/std/admin/advanced.php:645 lib/std/admin/advanced.php:738
+#: lib/std/admin/advanced.php:647 lib/std/admin/advanced.php:740
 msgctxt "option label"
 msgid "Type for Posts Homepage"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:116 gettext/gettext-lib-pro.php:127
 #: lib/pro/admin/advanced.php:771 lib/pro/admin/advanced.php:860
-#: lib/std/admin/advanced.php:646 lib/std/admin/advanced.php:739
+#: lib/std/admin/advanced.php:648 lib/std/admin/advanced.php:741
 msgctxt "option label"
 msgid "Type for User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:117 gettext/gettext-lib-pro.php:128
 #: lib/pro/admin/advanced.php:772 lib/pro/admin/advanced.php:861
-#: lib/std/admin/advanced.php:647 lib/std/admin/advanced.php:740
+#: lib/std/admin/advanced.php:649 lib/std/admin/advanced.php:742
 msgctxt "option label"
 msgid "Type for Search Results"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:118 gettext/gettext-lib-pro.php:129
 #: lib/pro/admin/advanced.php:773 lib/pro/admin/advanced.php:862
-#: lib/std/admin/advanced.php:648 lib/std/admin/advanced.php:741
+#: lib/std/admin/advanced.php:650 lib/std/admin/advanced.php:743
 msgctxt "option label"
 msgid "Type for Archive Page"
 msgstr ""
@@ -6304,283 +6304,283 @@ msgstr ""
 #: lib/pro/admin/advanced.php:795 lib/pro/admin/advanced.php:814
 #: lib/pro/admin/advanced.php:838 lib/pro/admin/advanced.php:888
 #: lib/pro/admin/advanced.php:910 lib/pro/admin/advanced.php:935
-#: lib/std/admin/advanced.php:670 lib/std/admin/advanced.php:691
-#: lib/std/admin/advanced.php:715 lib/std/admin/advanced.php:764
-#: lib/std/admin/advanced.php:785 lib/std/admin/advanced.php:809
+#: lib/std/admin/advanced.php:672 lib/std/admin/advanced.php:693
+#: lib/std/admin/advanced.php:717 lib/std/admin/advanced.php:766
+#: lib/std/admin/advanced.php:787 lib/std/admin/advanced.php:811
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:120 gettext/gettext-lib-pro.php:131
 #: lib/pro/admin/advanced.php:800 lib/pro/admin/advanced.php:892
-#: lib/std/admin/advanced.php:675 lib/std/admin/advanced.php:769
+#: lib/std/admin/advanced.php:677 lib/std/admin/advanced.php:771
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:122 gettext/gettext-lib-pro.php:133
 #: lib/pro/admin/advanced.php:821 lib/pro/admin/advanced.php:916
-#: lib/std/admin/advanced.php:698 lib/std/admin/advanced.php:792
+#: lib/std/admin/advanced.php:700 lib/std/admin/advanced.php:794
 msgctxt "option label"
 msgid "Type by Post Type Archive"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:124 gettext/gettext-lib-pro.php:135
 #: lib/pro/admin/advanced.php:843 lib/pro/admin/advanced.php:939
-#: lib/std/admin/advanced.php:720 lib/std/admin/advanced.php:814
+#: lib/std/admin/advanced.php:722 lib/std/admin/advanced.php:816
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:136 lib/pro/admin/advanced.php:953
-#: lib/std/admin/advanced.php:832
+#: lib/std/admin/advanced.php:834
 msgctxt "option label"
 msgid "Add Article Body Property"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:137 lib/messages-tooltip-meta-schema.php:174
-#: lib/pro/admin/advanced.php:958 lib/std/admin/advanced.php:838
+#: lib/pro/admin/advanced.php:958 lib/std/admin/advanced.php:840
 msgctxt "option label"
 msgid "Default Article Section"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:138 lib/pro/admin/advanced.php:981
-#: lib/std/admin/advanced.php:857
+#: lib/std/admin/advanced.php:859
 msgctxt "option label"
 msgid "Default Book Format"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:139 lib/pro/admin/advanced.php:997
-#: lib/std/admin/advanced.php:877
+#: lib/std/admin/advanced.php:879
 msgctxt "option label"
 msgid "Add Text Property"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:140 lib/pro/admin/advanced.php:1002
-#: lib/std/admin/advanced.php:883
+#: lib/std/admin/advanced.php:885
 msgctxt "option label"
 msgid "Default Family Friendly"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:141 lib/pro/admin/advanced.php:1008
-#: lib/std/admin/advanced.php:890
+#: lib/std/admin/advanced.php:892
 msgctxt "option label"
 msgid "Default Publisher Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:142 lib/pro/admin/advanced.php:1016
-#: lib/std/admin/advanced.php:897
+#: lib/std/admin/advanced.php:899
 msgctxt "option label"
 msgid "Default Publisher Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:143 lib/pro/admin/advanced.php:1024
-#: lib/std/admin/advanced.php:904
+#: lib/std/admin/advanced.php:906
 msgctxt "option label"
 msgid "Default Provider Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:144 lib/pro/admin/advanced.php:1032
-#: lib/std/admin/advanced.php:911
+#: lib/std/admin/advanced.php:913
 msgctxt "option label"
 msgid "Default Provider Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:145 lib/pro/admin/advanced.php:1040
-#: lib/std/admin/advanced.php:918
+#: lib/std/admin/advanced.php:920
 msgctxt "option label"
 msgid "Default Funder Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:146 lib/pro/admin/advanced.php:1048
-#: lib/std/admin/advanced.php:925
+#: lib/std/admin/advanced.php:927
 msgctxt "option label"
 msgid "Default Funder Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:147 lib/pro/admin/advanced.php:1066
-#: lib/std/admin/advanced.php:945
+#: lib/std/admin/advanced.php:947
 msgctxt "option label"
 msgid "Default Event Attendance"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:148 lib/pro/admin/advanced.php:1072
-#: lib/std/admin/advanced.php:952
+#: lib/std/admin/advanced.php:954
 msgctxt "option label"
 msgid "Default Event Venue"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:149 lib/pro/admin/advanced.php:1080
-#: lib/std/admin/advanced.php:959
+#: lib/std/admin/advanced.php:961
 msgctxt "option label"
 msgid "Default Event Performer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:150 lib/pro/admin/advanced.php:1088
-#: lib/std/admin/advanced.php:966
+#: lib/std/admin/advanced.php:968
 msgctxt "option label"
 msgid "Default Event Performer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:151 lib/pro/admin/advanced.php:1096
-#: lib/std/admin/advanced.php:973
+#: lib/std/admin/advanced.php:975
 msgctxt "option label"
 msgid "Default Event Organizer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:152 lib/pro/admin/advanced.php:1104
-#: lib/std/admin/advanced.php:980
+#: lib/std/admin/advanced.php:982
 msgctxt "option label"
 msgid "Default Event Organizer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:153 lib/pro/admin/advanced.php:1112
-#: lib/std/admin/advanced.php:987
+#: lib/std/admin/advanced.php:989
 msgctxt "option label"
 msgid "Default Event Funder Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:154 lib/pro/admin/advanced.php:1120
-#: lib/std/admin/advanced.php:994
+#: lib/std/admin/advanced.php:996
 msgctxt "option label"
 msgid "Default Event Funder Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:155 lib/pro/admin/advanced.php:1138
-#: lib/std/admin/advanced.php:1014
+#: lib/std/admin/advanced.php:1016
 msgctxt "option label"
 msgid "Default Job Hiring Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:156 lib/pro/admin/advanced.php:1146
-#: lib/std/admin/advanced.php:1021
+#: lib/std/admin/advanced.php:1023
 msgctxt "option label"
 msgid "Default Job Location"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:157 lib/pro/admin/advanced.php:1154
-#: lib/std/admin/advanced.php:1028
+#: lib/std/admin/advanced.php:1030
 msgctxt "option label"
 msgid "Default Job Location Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:158 lib/pro/admin/advanced.php:1170
-#: lib/std/admin/advanced.php:1048
+#: lib/std/admin/advanced.php:1050
 msgctxt "option label"
 msgid "Default Place Schema Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:159 lib/pro/admin/advanced.php:1183
-#: lib/std/admin/advanced.php:1055
+#: lib/std/admin/advanced.php:1057
 msgctxt "option label"
 msgid "Default Place Country"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:160 lib/pro/admin/advanced.php:1188
-#: lib/std/admin/advanced.php:1061
+#: lib/std/admin/advanced.php:1063
 msgctxt "option label"
 msgid "Default Place Timezone"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:161 lib/pro/admin/advanced.php:1204
-#: lib/std/admin/advanced.php:1081
+#: lib/std/admin/advanced.php:1083
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:162 lib/pro/admin/advanced.php:1207
-#: lib/std/admin/advanced.php:1084
+#: lib/std/admin/advanced.php:1086
 msgctxt "option comment"
 msgid "(not compatible with <a href=\"%s\">price drop appearance</a>)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:163 lib/messages.php:890
-#: lib/pro/admin/advanced.php:1211 lib/std/admin/advanced.php:1089
+#: lib/pro/admin/advanced.php:1211 lib/std/admin/advanced.php:1091
 msgctxt "option label"
 msgid "Default Product Return Policy"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:164 lib/messages.php:777
-#: lib/pro/admin/advanced.php:1217 lib/std/admin/advanced.php:1096
+#: lib/pro/admin/advanced.php:1217 lib/std/admin/advanced.php:1098
 msgctxt "option label"
 msgid "Default Product Google Category"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:165 lib/pro/admin/advanced.php:1230
-#: lib/std/admin/advanced.php:1103
+#: lib/std/admin/advanced.php:1105
 msgctxt "option label"
 msgid "Default Product Price Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:166 lib/pro/admin/advanced.php:1235
-#: lib/std/admin/advanced.php:1109
+#: lib/std/admin/advanced.php:1111
 msgctxt "option label"
 msgid "Default Product Condition"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:167 lib/pro/admin/advanced.php:1240
-#: lib/std/admin/advanced.php:1115
+#: lib/std/admin/advanced.php:1117
 msgctxt "option label"
 msgid "Default Product Energy Rating Range"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:168 lib/edit-schema.php:929
 #: lib/edit-schema.php:1895 lib/pro/admin/advanced.php:1245
-#: lib/std/admin/advanced.php:1120
+#: lib/std/admin/advanced.php:1122
 msgctxt "option comment"
 msgid "to"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:169 lib/pro/admin/advanced.php:1250
-#: lib/std/admin/advanced.php:1126
+#: lib/std/admin/advanced.php:1128
 msgctxt "option label"
 msgid "Default Product Target Gender"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:170 lib/pro/admin/advanced.php:1256
-#: lib/std/admin/advanced.php:1133
+#: lib/std/admin/advanced.php:1135
 msgctxt "option label"
 msgid "Default Product Size Group"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:171 lib/pro/admin/advanced.php:1265
-#: lib/std/admin/advanced.php:1143
+#: lib/std/admin/advanced.php:1145
 msgctxt "option label"
 msgid "Default Product Size System"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:172 lib/pro/admin/advanced.php:1270
-#: lib/std/admin/advanced.php:1149
+#: lib/std/admin/advanced.php:1151
 msgctxt "option label"
 msgid "Default Product Age Group"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:173 lib/pro/admin/advanced.php:1275
-#: lib/std/admin/advanced.php:1155
+#: lib/std/admin/advanced.php:1157
 msgctxt "option label"
 msgid "Default Product Adult Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:174 lib/pro/admin/advanced.php:1290
-#: lib/std/admin/advanced.php:1171
+#: lib/std/admin/advanced.php:1173
 msgctxt "option label"
 msgid "Add Mentions Property"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:175 lib/pro/admin/advanced.php:1305
-#: lib/std/admin/advanced.php:1190
+#: lib/std/admin/advanced.php:1192
 msgctxt "option label"
 msgid "Default Review Rating Min"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:176 lib/pro/admin/advanced.php:1310
-#: lib/std/admin/advanced.php:1196
+#: lib/std/admin/advanced.php:1198
 msgctxt "option label"
 msgid "Default Review Rating Max"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:177 lib/pro/admin/advanced.php:1315
-#: lib/std/admin/advanced.php:1202
+#: lib/std/admin/advanced.php:1204
 msgctxt "option label"
 msgid "Default Subject Schema Type"
 msgstr ""
@@ -6588,8 +6588,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:178 gettext/gettext-lib-pro.php:181
 #: gettext/gettext-lib-pro.php:184 lib/pro/admin/advanced.php:1334
 #: lib/pro/admin/advanced.php:1372 lib/pro/admin/advanced.php:1403
-#: lib/std/admin/advanced.php:1222 lib/std/admin/advanced.php:1262
-#: lib/std/admin/advanced.php:1295
+#: lib/std/admin/advanced.php:1224 lib/std/admin/advanced.php:1264
+#: lib/std/admin/advanced.php:1297
 msgctxt "column title"
 msgid "Show"
 msgstr ""
@@ -6598,7 +6598,7 @@ msgstr ""
 #: lib/messages-info.php:114 lib/messages-tooltip.php:718
 #: lib/messages-tooltip.php:720 lib/messages-tooltip.php:732
 #: lib/pro/admin/advanced.php:1335 lib/pro/admin/advanced.php:1373
-#: lib/std/admin/advanced.php:1223 lib/std/admin/advanced.php:1263
+#: lib/std/admin/advanced.php:1225 lib/std/admin/advanced.php:1265
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
@@ -6606,13 +6606,13 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:180 gettext/gettext-lib-pro.php:183
 #: lib/messages-info.php:116 lib/messages-tooltip.php:726
 #: lib/pro/admin/advanced.php:1336 lib/pro/admin/advanced.php:1374
-#: lib/std/admin/advanced.php:1224 lib/std/admin/advanced.php:1264
+#: lib/std/admin/advanced.php:1226 lib/std/admin/advanced.php:1266
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:185 lib/pro/admin/advanced.php:1523
-#: lib/std/admin/advanced.php:1412
+#: lib/std/admin/advanced.php:1414
 msgid ""
 "An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."
