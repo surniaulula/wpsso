@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.16.0-rc.6 (2024/11/01)**
+**Version 18.16.0 (2024/11/01)**
 
 * **New Features**
 	* None.
@@ -454,7 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.16.0-rc.6 =
+= 18.16.0 =
 
 (2024/11/01) Added WooCommerce store base location to Schema shippingDestination markup for postal codes. Added a "Clear Expired Transients" action in the SSO &gt; Tools and Actions page.
 
