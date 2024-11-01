@@ -899,6 +899,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_settings_page() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$user_id      = get_current_user_id();
 			$action_query = 'wpsso-action';
 			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
@@ -925,6 +930,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->notice->err( $notice_msg, $user_id );
 
 				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'action_value = ' . $action_value );
+					}
 
 					switch ( $action_value ) {
 
@@ -1113,6 +1123,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						default:
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'doing action "wpsso_load_settings_page_' . $action_value . '"' );
+							}
 
 							do_action( 'wpsso_load_settings_page_' . $action_value, $this->pagehook,
 								$this->menu_id, $this->menu_name, $this->menu_lib );
