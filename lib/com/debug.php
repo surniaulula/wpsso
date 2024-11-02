@@ -37,6 +37,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
+			if ( ! class_exists( 'SucomUtilWP' ) ) {	// Just in case.
+
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util-wp.php';
+			}
+
 			$this->p =& $plugin;
 
 			$this->const_stats = $this->last_stats = array(
@@ -236,8 +241,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( $this->outputs[ 'log' ] ) {
 
-				$session_id    = session_id();
+				$session_id = session_id();
+
 				$connection_id = $session_id ? $session_id : $_SERVER[ 'REMOTE_ADDR' ];
+				$connection_id = SucomUtilWP::doing_ajax() ? 'ajax ' . $connection_id : $connection_id;
+				$connection_id = SucomUtilWP::doing_cron() ? 'cron ' . $connection_id : $connection_id;
 
 				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );
 			}

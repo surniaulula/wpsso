@@ -290,11 +290,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/*
 			 * Check for defined constants:
 			 *
-			 * 'WPSSO_ADMIN_DEBUG_LOG' if is_admin() is true.
-			 * 'WPSSO_ADMIN_DEBUG_HTML' if is_admin() is true.
-			 *
-			 * 'WPSSO_DEBUG_LOG' if is_admin() is false or 'WPSSO_ADMIN_DEBUG_LOG' is not defined.
-			 * 'WPSSO_DEBUG_HTML' if is_admin() is false or 'WPSSO_ADMIN_DEBUG_HTML' is not defined.
+			 * WPSSO_ADMIN_DEBUG_LOG
+			 * WPSSO_ADMIN_DEBUG_HTML
+			 * WPSSO_CRON_DEBUG_LOG
+			 * WPSSO_CRON_DEBUG_HTML
+			 * WPSSO_DEBUG_LOG
+			 * WPSSO_DEBUG_HTML
 			 */
 			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
 			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
@@ -560,16 +561,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		/*
 		 * Check for defined WPSSO constants for admin and front-end.
-		 *
-		 * Return 'WPSSO_ADMIN_*' if is_admin() is true and the constant is defined, otherwise return 'WPSSO_*' if the
-		 * constant is defined, or return null. This allows for constants to be defined if necessary, like
-		 * WPSSO_ADMIN_DEBUG_HTML = false and WPSSO_DEBUG_HTML = true.
 		 */
 		public function get_const( $const_suffix ) {
 
-			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+			$is_admin   = is_admin();
+			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
+
+			if ( $is_admin && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
 
 				return 'WPSSO_ADMIN_' . $const_suffix;
+
+			} elseif ( $doing_cron && defined( 'WPSSO_CRON_' . $const_suffix ) ) {
+
+				return 'WPSSO_CRON_' . $const_suffix;
 
 			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
 
