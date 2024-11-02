@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.16.1-rc.1 (2024/11/02)**
+**Version 18.16.1 (2024/11/02)**
 
 * **New Features**
 	* None.
@@ -473,7 +473,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.16.1-rc.1 =
+= 18.16.1 =
 
 (2024/11/02) Fixed incorrect abort time limit for background cache refresh.
 
