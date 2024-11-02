@@ -289,7 +289,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed incorrect abort time limit for background cache refresh.
 * **Developer Notes**
-	* None.
+	* Added new optional debug constants:
+		* WPSSO_AJAX_DEBUG_HTML
+		* WPSSO_AJAX_DEBUG_LOG
+		* WPSSO_CRON_DEBUG_HTML
+		* WPSSO_CRON_DEBUG_LOG
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
