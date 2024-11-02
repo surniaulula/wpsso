@@ -285,15 +285,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function set_objects( $activate = false ) {
 
 			$is_admin   = is_admin();
-			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
+			$doing_cron = SucomUtilWP::doing_cron();
 
 			/*
-			 * Check for defined constants:
+			 * Check for defined constants (in order):
 			 *
-			 * WPSSO_ADMIN_DEBUG_LOG
-			 * WPSSO_ADMIN_DEBUG_HTML
 			 * WPSSO_CRON_DEBUG_LOG
 			 * WPSSO_CRON_DEBUG_HTML
+			 * WPSSO_AJAX_DEBUG_LOG
+			 * WPSSO_AJAX_DEBUG_HTML
+			 * WPSSO_ADMIN_DEBUG_LOG
+			 * WPSSO_ADMIN_DEBUG_HTML
 			 * WPSSO_DEBUG_LOG
 			 * WPSSO_DEBUG_HTML
 			 */
@@ -560,20 +562,34 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/*
-		 * Check for defined WPSSO constants for admin and front-end.
+		 * Check for defined constants (in order):
+		 *
+		 * WPSSO_CRON_DEBUG_LOG
+		 * WPSSO_CRON_DEBUG_HTML
+		 * WPSSO_AJAX_DEBUG_LOG
+		 * WPSSO_AJAX_DEBUG_HTML
+		 * WPSSO_ADMIN_DEBUG_LOG
+		 * WPSSO_ADMIN_DEBUG_HTML
+		 * WPSSO_DEBUG_LOG
+		 * WPSSO_DEBUG_HTML
 		 */
 		public function get_const( $const_suffix ) {
 
 			$is_admin   = is_admin();
-			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
+			$doing_ajax = SucomUtilWP::doing_ajax();
+			$doing_cron = SucomUtilWP::doing_cron();
 
-			if ( $is_admin && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
-
-				return 'WPSSO_ADMIN_' . $const_suffix;
-
-			} elseif ( $doing_cron && defined( 'WPSSO_CRON_' . $const_suffix ) ) {
+			if ( $doing_cron && defined( 'WPSSO_CRON_' . $const_suffix ) ) {
 
 				return 'WPSSO_CRON_' . $const_suffix;
+
+			} elseif ( $doing_ajax && defined( 'WPSSO_AJAX_' . $const_suffix ) ) {
+
+				return 'WPSSO_AJAX_' . $const_suffix;
+				
+			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+
+				return 'WPSSO_ADMIN_' . $const_suffix;
 
 			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
 

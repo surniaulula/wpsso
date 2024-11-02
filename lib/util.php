@@ -72,6 +72,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_amp_endpoint',
 			'is_sitemap',
 			'is_sitemap_stylesheet',
+			'wp_doing_ajax',
+			'wp_doing_cron',
 			'wp_using_ext_object_cache',
 		);
 
@@ -1836,24 +1838,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( apply_filters( 'wpsso_is_functions', $this->is_functions )  as $function ) {
 
-				if ( function_exists( $function ) ) {
+				if ( is_callable( $function ) ) {
 
 					$mtime_start = microtime( $get_float = true );
-
-					$function_ret = $function();
-
+					$ret_val     = $function();
 					$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 					$function_info[ $function ] = array(
-						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $mtime_total ),
-						$function_ret,
-						$mtime_total,
+						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $ret_val ? 'TRUE' : 'false' ), $mtime_total ),
+						$ret_val, $mtime_total,
 					);
 
-				} else {
-
-					$function_info[ $function ] = array( $function . '() not found', null, 0 );
-				}
+				} else $function_info[ $function ] = array( $function . '() not found', null, 0 );
 			}
 
 			return $function_info;
