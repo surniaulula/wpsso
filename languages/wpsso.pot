@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.16.0\n"
+"Project-Id-Version: WPSSO Core 18.16.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:944
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:943
 msgid "%s error:"
 msgstr ""
 
@@ -9593,7 +9593,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:755
+#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:754
 #: lib/util.php:876 lib/util.php:985 lib/util.php:1017 lib/util.php:1055
 #: lib/util.php:3447
 msgid "%s warning:"
@@ -15437,7 +15437,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:792
+#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:791
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15602,34 +15602,34 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:740
+#: lib/util-cache.php:739
 msgid "Processing %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:749
+#: lib/util-cache.php:748
 msgid "The cache refresh time limit of %s has been reached."
 msgstr ""
 
-#: lib/util-cache.php:752
+#: lib/util-cache.php:751
 msgid "The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:771
+#: lib/util-cache.php:770
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:841
+#: lib/util-cache.php:840
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:946
+#: lib/util-cache.php:945
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:989
+#: lib/util-cache.php:988
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 

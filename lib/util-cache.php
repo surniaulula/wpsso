@@ -704,7 +704,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$notice_msg  = '';
 			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
 			$abort_time  = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 120;		// Leave time for 'wpsso_cache_refreshed_notice' filters.
-$abort_time  = time() + 2;
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
