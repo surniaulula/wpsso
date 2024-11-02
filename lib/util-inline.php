@@ -127,6 +127,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			while ( ++$local_depth <= 5 && false !== strpos( $value, '%%' ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'preg_replace_callback() for value = ' . $value );
+				}
+
 				$value = preg_replace_callback( '/%%([^%]+)%%/', $callback, $value );
 			}
 
