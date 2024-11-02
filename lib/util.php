@@ -479,12 +479,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
-			if ( isset( $local_cache[ $size_name ][ $attachment_id ] ) ) {
+			if ( isset( $local_fifo[ $size_name ][ $attachment_id ] ) ) {
 
-				return $local_cache[ $size_name ][ $attachment_id ];
-			}
+				return $local_fifo[ $size_name ][ $attachment_id ];
+
+			} elseif ( isset( $local_fifo[ $size_name ] ) ) {
+
+				/*
+				 * Maybe limit the number of array elements.
+				 */
+				$local_fifo[ $size_name ] = SucomUtil::array_slice_fifo( $local_fifo[ $size_name ], WPSSO_CACHE_ARRAY_FIFO_MAX );
+
+			} else $local_fifo[ $size_name ] = array();
 
 			global $_wp_additional_image_sizes;
 
@@ -492,28 +500,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
 
-			} else {
-
-				$width = get_option( $size_name . '_size_w' );
-			}
+			} else $width = get_option( $size_name . '_size_w' );
 
 			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
 
 				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
 
-			} else {
-
-				$height = get_option( $size_name . '_size_h' );
-			}
+			} else $height = get_option( $size_name . '_size_h' );
 
 			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
 
 				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
 
-			} else {
-
-				$crop = get_option( $size_name . '_crop' );
-			}
+			} else $crop = get_option( $size_name . '_crop' );
 
 			/*
 			 * Standardize to true, false, or non-empty array.
@@ -557,7 +556,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/*
 			 * Crop can be true, false, or an array.
 			 */
-			return $local_cache[ $size_name ][ $attachment_id ] = array(
+			return $local_fifo[ $size_name ][ $attachment_id ] = array(
 				'size_name'     => $size_name,
 				'attachment_id' => $attachment_id,
 				'width'         => $width,

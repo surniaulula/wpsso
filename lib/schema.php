@@ -835,10 +835,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$type_id = $this->get_schema_type_id_for( 'home_page' );
 
-					} else {
-
-						$type_id = $this->get_schema_type_id_for( 'home_posts' );
-					}
+					} else $type_id = $this->get_schema_type_id_for( 'home_posts' );
 
 				} elseif ( $mod[ 'is_comment' ] ) {
 
@@ -850,10 +847,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$type_id = $this->get_schema_type_id_for( 'comment_reply' );
 
-					} else {
-
-						$type_id = $this->get_schema_type_id_for( 'comment' );
-					}
+					} else $type_id = $this->get_schema_type_id_for( 'comment' );
 
 				} elseif ( $mod[ 'is_post' ] ) {
 

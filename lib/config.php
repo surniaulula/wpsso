@@ -5209,7 +5209,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;			// Position of the view profile menu item.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
-			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 5;
+			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 16;
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = MONTH_IN_SECONDS;	// See WpssoUtilCache->clear_expired_cache_files().
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 3600;		// 1 hour.
