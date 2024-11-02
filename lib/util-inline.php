@@ -46,12 +46,15 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		 */
 		public function replace_variables( $value, $mod = false, array $atts = array() ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			static $local_recursion = 0;
+
+			if ( 0 === $local_recursion ) {	// Do not log recursions.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->mark();
+				}
+			}
 
 			if ( $local_recursion > 32 ) {	// Just in case.
 
