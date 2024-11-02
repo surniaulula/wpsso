@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.16.1-rc.1 (2024/11/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect abort time limit for background cache refresh.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.16.0 (2024/11/01)**
 
 * **New Features**
@@ -453,6 +468,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.16.1-rc.1 =
+
+(2024/11/02) Fixed incorrect abort time limit for background cache refresh.
 
 = 18.16.0 =
 
