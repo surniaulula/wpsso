@@ -599,7 +599,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			} elseif ( $is_doing[ 'ajax' ] && defined( 'WPSSO_AJAX_' . $const_suffix ) ) {
 
 				return 'WPSSO_AJAX_' . $const_suffix;
-				
+
 			} elseif ( $is_doing[ 'admin' ] && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
 
 				return 'WPSSO_ADMIN_' . $const_suffix;
@@ -767,67 +767,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		private function debug_reminder( array $is_doing ) {
-
-			if ( $this->debug->is_enabled( 'log' ) ) {
-
-				$this->debug->log( 'WP debug log mode is active' );
-			}
-
-			if ( $this->debug->is_enabled( 'html' ) ) {
-
-				$this->debug->log( 'HTML debug mode is active' );
-			}
-
-			if ( $is_doing[ 'admin' ] && ! $is_doing[ 'dev' ] ) {
-
-				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
-				$notice_msg   = '';
-				$notice_key   = 'debug-mode-is-active';
-				$dismiss_time = 12 * HOUR_IN_SECONDS;
-
-				if ( $this->debug->is_enabled( 'log' ) ) {
-
-					$notice_key .= '-with-debug-log';
-
-					$notice_msg .= __( 'WP debug logging mode is active - debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
-				}
-
-				if ( $this->debug->is_enabled( 'html' ) ) {
-
-					$notice_key .= '-with-html-comments';
-
-					$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
-				}
-
-				/*
-				 * WP debug logging and/or HTML debug mode is active.
-				 */
-				if ( $notice_msg ) {
-
-					$notice_msg .= sprintf( __( 'The %s plugin\'s debug mode generates thousands of messages during page load, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
-
-					$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
-
-					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-				}
-
-				/*
-				 * The WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
-				 */
-				if ( $this->util->cache->is_disabled() ) {
-
-					$notice_key = 'plugin-cache-is-disabled';
-
-					$notice_msg = sprintf( __( 'The %s plugin\'s cache feature is disabled for debugging, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
-
-					$notice_msg .= __( 'Don\'t forget to re-enable caching when debugging is complete.', 'wpsso' );
-
-					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-				}
-			}
-		}
-
 		/*
 		 * Only runs when debug is enabled.
 		 */
@@ -897,6 +836,67 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			$this->debug->show_html( $opts, 'wpsso settings' );
+		}
+
+		private function debug_reminder( array $is_doing ) {
+
+			if ( $this->debug->is_enabled( 'log' ) ) {
+
+				$this->debug->log( 'WP debug log mode is active' );
+			}
+
+			if ( $this->debug->is_enabled( 'html' ) ) {
+
+				$this->debug->log( 'HTML debug mode is active' );
+			}
+
+			if ( $is_doing[ 'admin' ] && ! $is_doing[ 'dev' ] ) {
+
+				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
+				$notice_msg   = '';
+				$notice_key   = 'debug-mode-is-active';
+				$dismiss_time = 12 * HOUR_IN_SECONDS;
+
+				if ( $this->debug->is_enabled( 'log' ) ) {
+
+					$notice_key .= '-with-debug-log';
+
+					$notice_msg .= __( 'WP debug logging mode is active - debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
+				}
+
+				if ( $this->debug->is_enabled( 'html' ) ) {
+
+					$notice_key .= '-with-html-comments';
+
+					$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
+				}
+
+				/*
+				 * WP debug logging and/or HTML debug mode is active.
+				 */
+				if ( $notice_msg ) {
+
+					$notice_msg .= sprintf( __( 'The %s plugin\'s debug mode generates thousands of messages during page load, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
+
+					$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
+
+					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+				}
+
+				/*
+				 * WPSSO_CACHE_DISABLE constant is true or the 'plugin_cache_disable' option is checked.
+				 */
+				if ( $this->util->cache->is_disabled() ) {
+
+					$notice_msg = sprintf( __( 'The %s plugin\'s cache feature is disabled for debugging, which affects website performance.', 'wpsso' ), $info[ 'name' ] ) . ' ';
+
+					$notice_msg .= __( 'Don\'t forget to re-enable caching when debugging is complete.', 'wpsso' );
+
+					$notice_key = 'plugin-cache-is-disabled';
+
+					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+				}
+			}
 		}
 	}
 
