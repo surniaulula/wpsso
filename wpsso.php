@@ -284,8 +284,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin   = is_admin();
-			$doing_cron = SucomUtilWP::doing_cron();
+			$is_doing = array(
+				'admin' => is_admin(),
+				'ajax'  => SucomUtilWP::doing_ajax(),
+				'cron'  => SucomUtilWP::doing_cron(),
+				'dev'   => SucomUtilWP::doing_dev(),
+			);
 
 			/*
 			 * Check for defined constants (in order):
@@ -299,8 +303,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * WPSSO_DEBUG_LOG
 			 * WPSSO_DEBUG_HTML
 			 */
-			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
-			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
+			$debug_log  = $this->get_const_status( 'DEBUG_LOG', $is_doing );
+			$debug_html = $this->get_const_status( 'DEBUG_HTML', $is_doing );
 
 			$this->check = new WpssoCheck( $this );
 
@@ -353,7 +357,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/*
 			 * Make sure a notice object variable is always available.
 			 */
-			if ( $is_admin || $doing_cron ) {
+			if ( $is_doing[ 'admin' ] || $is_doing[ 'cron' ] ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/messages.php';	// Only load class when needed.
 				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';	// Only load class when needed.
@@ -377,7 +381,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->script = new WpssoScript( $this );
 			$this->style  = new WpssoStyle( $this );
 
-			if ( $is_admin ) {
+			if ( $is_doing[ 'admin' ] ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/admin.php';		// Only load class when needed.
 				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';	// Only load class when needed.
@@ -445,7 +449,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $this->debug->enabled ) {
 
-				$this->debug_reminder();
+				$this->debug_reminder( $is_doing );
 
 				$this->debug->mark_diff( 'objects defined' );
 			}
@@ -572,22 +576,31 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * WPSSO_ADMIN_DEBUG_HTML
 		 * WPSSO_DEBUG_LOG
 		 * WPSSO_DEBUG_HTML
+		 *
+		 * See Wpsso->get_const_status().
+		 * See Wpsso->get_const_status_transl().
 		 */
-		public function get_const( $const_suffix ) {
+		public function get_const( $const_suffix, $is_doing = null ) {
 
-			$is_admin   = is_admin();
-			$doing_ajax = SucomUtilWP::doing_ajax();
-			$doing_cron = SucomUtilWP::doing_cron();
+			if ( ! is_array( $is_doing ) ) {
 
-			if ( $doing_cron && defined( 'WPSSO_CRON_' . $const_suffix ) ) {
+				$is_doing = array(
+					'admin' => is_admin(),
+					'ajax'  => SucomUtilWP::doing_ajax(),
+					'cron'  => SucomUtilWP::doing_cron(),
+					'dev'   => SucomUtilWP::doing_dev(),
+				);
+			}
+
+			if ( $is_doing[ 'cron' ] && defined( 'WPSSO_CRON_' . $const_suffix ) ) {
 
 				return 'WPSSO_CRON_' . $const_suffix;
 
-			} elseif ( $doing_ajax && defined( 'WPSSO_AJAX_' . $const_suffix ) ) {
+			} elseif ( $is_doing[ 'ajax' ] && defined( 'WPSSO_AJAX_' . $const_suffix ) ) {
 
 				return 'WPSSO_AJAX_' . $const_suffix;
 				
-			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+			} elseif ( $is_doing[ 'admin' ] && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
 
 				return 'WPSSO_ADMIN_' . $const_suffix;
 
@@ -599,16 +612,23 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return null;	// Constant not defined.
 		}
 
-		public function get_const_status( $const_suffix ) {
+		/*
+		 * See Wpsso->set_objects().
+		 * See WpssoSubmenuAdvanced->get_table_rows().
+		 */
+		public function get_const_status( $const_suffix, $is_doing = null ) {
 
-			$const_name = $this->get_const( $const_suffix );	// Returns null if constant not defined.
+			$const_name = $this->get_const( $const_suffix, $is_doing );	// Returns null if constant not defined.
 
 			return $const_name ? constant( $const_name ) : null;
 		}
 
-		public function get_const_status_transl( $const_suffix ) {
+		/*
+		 * See WpssoSubmenuAdvanced->get_table_rows().
+		 */
+		public function get_const_status_transl( $const_suffix, $is_doing = null ) {
 
-			$const_name = $this->get_const( $const_suffix );	// Returns null if constant not defined.
+			$const_name = $this->get_const( $const_suffix, $is_doing );	// Returns null if constant not defined.
 
 			if ( $const_name ) {
 
@@ -625,7 +645,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function get_lib_classnames( $type_dir ) {
 
-			$is_admin   = is_admin();
 			$classnames = array();
 
 			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
@@ -646,7 +665,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						/*
 						 * Skip loading admin library modules if not in admin back-end.
 						 */
-						if ( 'admin' === $sub_dir && ! $is_admin ) {
+						if ( 'admin' === $sub_dir && ! is_admin() ) {
 
 							continue;
 						}
@@ -748,7 +767,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
-		public function debug_reminder() {
+		private function debug_reminder( array $is_doing ) {
 
 			if ( $this->debug->is_enabled( 'log' ) ) {
 
@@ -760,10 +779,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->log( 'HTML debug mode is active' );
 			}
 
-			$is_admin  = is_admin();
-			$doing_dev = SucomUtilWP::doing_dev();	// Class always loaded in WpssoConfig::require_libs().
-
-			if ( $is_admin && ! $doing_dev ) {
+			if ( $is_doing[ 'admin' ] && ! $is_doing[ 'dev' ] ) {
 
 				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_msg   = '';

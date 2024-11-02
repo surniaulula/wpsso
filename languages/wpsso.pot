@@ -15956,45 +15956,45 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:617
+#: wpsso.php:637
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
 
-#: wpsso.php:620
+#: wpsso.php:640
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:777
+#: wpsso.php:793
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:784
+#: wpsso.php:800
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:792
+#: wpsso.php:808
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:794
+#: wpsso.php:810
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:806
+#: wpsso.php:822
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:808
+#: wpsso.php:824
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 
