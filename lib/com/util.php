@@ -543,7 +543,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function array_slice_fifo( array $array, $max = 1 ) {
 
-			if ( is_numeric( $max ) && $max > 0 && count( $array ) > $max ) {
+			if ( ! empty( $array ) && is_numeric( $max ) && $max > 0 && count( $array ) > $max ) {
 
 				return array_slice( $array, -$max, $length = null, $preserve_keys = true );
 			}
