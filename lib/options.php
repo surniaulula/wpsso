@@ -351,9 +351,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'opt_filtered' ] = 1;
 
+				/*
+				 * If there is a plugin auth method configured, make sure the option key exists.
+				 */
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
+					if ( ! empty( $info[ 'update_auth' ] ) && 'none' !== $info[ 'update_auth' ] ) {	// Just in case.
 
 						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 

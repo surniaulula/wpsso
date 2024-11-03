@@ -266,9 +266,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					$mod = $this->get_mod( $comment_id );
 
-					/*
-					 * Since WPSSO Core v7.1.0.
-					 */
 					$filter_name = 'wpsso_get_md_options';
 
 					if ( $this->p->debug->enabled ) {

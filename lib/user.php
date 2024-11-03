@@ -376,6 +376,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'required call to WpssoUser->get_mod() for user ID ' . $term_id );
+					}
+
 					$mod = $this->get_mod( $user_id );
 
 					$filter_name = 'wpsso_get_md_options';

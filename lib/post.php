@@ -508,8 +508,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod = $this->get_mod( $post_id );
 
 					/*
-					 * Since WPSSO Core v9.15.0.
-					 *
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
 					 */
 					if ( isset( $mod[ 'wp_obj' ]->post_content ) ) {

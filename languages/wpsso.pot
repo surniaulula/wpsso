@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.16.1\n"
+"Project-Id-Version: WPSSO Core 18.17.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6737,7 +6737,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1753 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1751 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:943
 msgid "%s error:"
 msgstr ""
@@ -6794,60 +6794,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1351
+#: lib/abstract/wp-meta.php:1387
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1422
+#: lib/abstract/wp-meta.php:1458
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1426
+#: lib/abstract/wp-meta.php:1462
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1429 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1465 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1433
+#: lib/abstract/wp-meta.php:1469
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1434
+#: lib/abstract/wp-meta.php:1470
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1435
+#: lib/abstract/wp-meta.php:1471
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1436
+#: lib/abstract/wp-meta.php:1472
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1779
+#: lib/abstract/wp-meta.php:1823
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2088
+#: lib/abstract/wp-meta.php:2132
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2090 lib/abstract/wp-meta.php:2103
+#: lib/abstract/wp-meta.php:2134 lib/abstract/wp-meta.php:2147
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2101
+#: lib/abstract/wp-meta.php:2145
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -7218,7 +7218,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:928 lib/post.php:1116 lib/term.php:748 lib/user.php:765
+#: lib/admin.php:928 lib/post.php:1114 lib/term.php:753 lib/user.php:770
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -7439,7 +7439,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:445
+#: lib/comment.php:442
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -10989,8 +10989,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:541
 #: lib/messages-tooltip-meta-schema.php:559 lib/messages-tooltip-plugin.php:146
-#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1868 lib/user.php:1959
-#: lib/user.php:2073
+#: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1873 lib/user.php:1964
+#: lib/user.php:2078
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -14057,286 +14057,286 @@ msgid ""
 "'wp_sitemaps_enabled' filter."
 msgstr ""
 
-#: lib/options.php:804
+#: lib/options.php:807
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:813
+#: lib/options.php:816
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:821
+#: lib/options.php:824
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:839
+#: lib/options.php:842
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:966
+#: lib/options.php:969
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1287 lib/submenu/general.php:487
+#: lib/options.php:1290 lib/submenu/general.php:487
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/options.php:1292 lib/submenu/general.php:492
+#: lib/options.php:1295 lib/submenu/general.php:492
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1299
+#: lib/options.php:1302
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1314
+#: lib/options.php:1317
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1317
+#: lib/options.php:1320
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1331
+#: lib/options.php:1334
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1335
+#: lib/options.php:1338
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1350
+#: lib/options.php:1353
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1354
+#: lib/options.php:1357
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1379
+#: lib/options.php:1382
 msgid ""
 "The value of option \"%s\" must be an array - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1380
+#: lib/options.php:1383
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1381
+#: lib/options.php:1384
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1382
+#: lib/options.php:1385
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1383
+#: lib/options.php:1386
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1384
+#: lib/options.php:1387
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1385
+#: lib/options.php:1388
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1386
+#: lib/options.php:1389
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1387
+#: lib/options.php:1390
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1388
+#: lib/options.php:1391
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1389
+#: lib/options.php:1392
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1390
+#: lib/options.php:1393
 msgid ""
 "The value of option \"%1$s\" must be equal to or greater than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1391
+#: lib/options.php:1394
 msgid ""
 "The value of option \"%1$s\" must be greater than %2$s - resetting this "
 "option to its default value."
 msgstr ""
 
-#: lib/options.php:1392
+#: lib/options.php:1395
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1393
+#: lib/options.php:1396
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1976 lib/options.php:2008
+#: lib/options.php:1979 lib/options.php:2011
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1980
+#: lib/options.php:1983
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1984
+#: lib/options.php:1987
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1988
+#: lib/options.php:1991
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1992
+#: lib/options.php:1995
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1996
+#: lib/options.php:1999
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:2000
+#: lib/options.php:2003
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:2004
+#: lib/options.php:2007
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_attrs%%"
 msgstr ""
 
-#: lib/options.php:2012
+#: lib/options.php:2015
 msgctxt "option value"
 msgid "Page Not Found"
 msgstr ""
 
-#: lib/options.php:2016
+#: lib/options.php:2019
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:2020
+#: lib/options.php:2023
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:2024
+#: lib/options.php:2027
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:2028
+#: lib/options.php:2031
 msgctxt "option value"
 msgid "%%term_hierarchy%%"
 msgstr ""
 
-#: lib/options.php:2032
+#: lib/options.php:2035
 msgctxt "option value"
 msgid "%%term_tax_single%% archive page for %%term_name%%."
 msgstr ""
 
-#: lib/options.php:2036
+#: lib/options.php:2039
 msgctxt "option value"
 msgid "%%author_name%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:2040
+#: lib/options.php:2043
 msgctxt "option value"
 msgid "Author archive page for %%author_name%%."
 msgstr ""
 
-#: lib/options.php:2044
+#: lib/options.php:2047
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:2048
+#: lib/options.php:2051
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:2052
+#: lib/options.php:2055
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:2056
+#: lib/options.php:2059
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2060
+#: lib/options.php:2063
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2064
+#: lib/options.php:2067
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:2068
+#: lib/options.php:2071
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:2072
+#: lib/options.php:2075
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -14360,136 +14360,136 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1251
+#: lib/post.php:1249
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1284
+#: lib/post.php:1282
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1287
+#: lib/post.php:1285
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1288
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1320
+#: lib/post.php:1318
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1322
+#: lib/post.php:1320
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1324
+#: lib/post.php:1322
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1325
+#: lib/post.php:1323
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1339
+#: lib/post.php:1337
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1353
+#: lib/post.php:1351
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1368
+#: lib/post.php:1366
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1385
+#: lib/post.php:1383
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1386
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1421
+#: lib/post.php:1419
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1423
+#: lib/post.php:1421
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1425
+#: lib/post.php:1423
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1445
+#: lib/post.php:1443
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1464
+#: lib/post.php:1462
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1466
+#: lib/post.php:1464
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1469
+#: lib/post.php:1467
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1512
+#: lib/post.php:1510
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1514
+#: lib/post.php:1512
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1522
+#: lib/post.php:1520
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1526
+#: lib/post.php:1524
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1530
+#: lib/post.php:1528
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1729
+#: lib/post.php:1727
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1733
+#: lib/post.php:1731
 msgid "ajax request post id is empty"
 msgstr ""
 
-#: lib/post.php:2009
+#: lib/post.php:2007
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -15348,7 +15348,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:957
+#: lib/term.php:962
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -15393,68 +15393,68 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:894
+#: lib/user.php:899
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:900
+#: lib/user.php:905
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1008
+#: lib/user.php:1013
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1752
+#: lib/user.php:1757
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1795 lib/user.php:1870
+#: lib/user.php:1800 lib/user.php:1875
 msgctxt "task name"
 msgid "add the Person role"
 msgstr ""
 
-#: lib/user.php:1803
+#: lib/user.php:1808
 msgid ""
 "A background task will begin in the next %1$s to %2$s for content creators."
 msgstr ""
 
-#: lib/user.php:1843
+#: lib/user.php:1848
 msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1880 lib/user.php:1971 lib/util-cache.php:657
+#: lib/user.php:1885 lib/user.php:1976 lib/util-cache.php:657
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
 
-#: lib/user.php:1881
+#: lib/user.php:1886
 msgid "A task to %1$s to content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1915
+#: lib/user.php:1920
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1916 lib/user.php:2010 lib/util-cache.php:791
+#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:791
 msgid "The total execution time for this task was %s."
 msgstr ""
 
-#: lib/user.php:1932 lib/user.php:1961
+#: lib/user.php:1937 lib/user.php:1966
 msgctxt "task name"
 msgid "remove the Person role"
 msgstr ""
 
-#: lib/user.php:1940
+#: lib/user.php:1945
 msgid "A background task will begin in the next %1$s to %2$s from all users."
 msgstr ""
 
-#: lib/user.php:1972
+#: lib/user.php:1977
 msgid "A task to %1$s from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:2009
+#: lib/user.php:2014
 msgid "The %1$s role has been removed from %2$d users."
 msgstr ""
 

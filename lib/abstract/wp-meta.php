@@ -284,16 +284,75 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				) );
 			}
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			/*
 			 * Maybe retrieve the array from the local cache.
 			 *
 			 * Note that the local cache is unique to each child class, so we can simply index by the object ID.
 			 */
-			$md_defs = isset( $local_cache[ $obj_id ] ) && ! $this->md_cache_disabled ? $local_cache[ $obj_id ] : array();
+			$md_defs = array();
+
+			if ( WpssoOptions::is_cache_allowed() ) {
+
+				if ( ! $this->md_cache_disabled ) {
+
+					if ( isset( $local_fifo[ $obj_id ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'using defaults from local cache for id ' . $obj_id );
+						}
+
+					} else {
+				
+						/*
+						 * Maybe limit the number of array elements.
+						 */
+						$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+		
+						if ( $this->p->debug->enabled ) {
+				
+							$this->p->debug->log( 'adding local cache element for id ' . $obj_id );
+						}
+
+						$local_fifo[ $obj_id ] = array();
+					}
+	
+					$md_defs =& $local_fifo[ $obj_id ];
+
+				} else {
+				
+					if ( $this->p->debug->enabled ) {
+				
+						$this->p->debug->log( 'metadata caching is disabled for id ' . $obj_id );
+					}
+				}
+
+			} else {
+				
+				if ( $this->p->debug->enabled ) {
+				
+					$this->p->debug->log( 'options caching is not allowed for id ' . $obj_id );
+				}
+			}
 
 			if ( empty( $md_defs[ 'opt_filtered' ] ) ) {
+
+				/*
+				 * Set before calling filters to prevent recursion.
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'setting opt_filtered to 1' );
+				}
+
+				$md_defs[ 'opt_filtered' ] = 1;
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'required call to ' . get_class( $this ) . '->get_mod() for id ' . $obj_id );
+				}
 
 				$mod = $this->get_mod( $obj_id );
 
@@ -306,7 +365,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
-				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
+				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term id or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 
 				$def_currency      = $this->p->get_options( 'og_def_currency', 'USD' );
@@ -333,6 +392,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$md_defs = array(
 					'checksum'          => '',	// Checksum of plugin versions.
 					'opt_checksum'      => '',	// Checksum of option versions.
+					'opt_filtered'      => 1,	// Set before calling filters to prevent recursion.
 					'opt_versions'      => array(),
 					'attach_img_crop_x' => 'none',
 					'attach_img_crop_y' => 'none',
@@ -859,6 +919,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_webpage_reviewed_last_timezone'  => $def_timezone,	// Reviewed Last Timezone.
 				);
 
+				/*
+				 * Set the reviewed by options.
+				 */
 				$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
 
 				foreach ( range( 0, $reviewed_by_max - 1 ) as $num ) {
@@ -866,16 +929,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$md_defs[ 'schema_webpage_reviewed_by_org_id_' . $num ]    = 'none';
 					$md_defs[ 'schema_webpage_reviewed_by_person_id_' . $num ] = 'none';
 				}
-
-				/*
-				 * Set before calling filters to prevent recursion.
-				 */
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'setting opt_filtered to 1' );
-				}
-
-				$md_defs[ 'opt_filtered' ] = 1;
 
 				/*
 				 * See https://developers.google.com/search/reference/robots_meta_tag.
@@ -921,13 +974,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				/*
-				 * Since WPSSO Core v9.5.0.
-				 *
 				 * Overwrite the default options with any custom options from the parent.
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'inheriting parent metadata options' );
+					$this->p->debug->log( 'inheriting parent metadata options for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
 
 				$parent_opts = $this->get_inherited_md_opts( $mod );
@@ -955,10 +1006,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters "wpsso_import_custom_fields" for post id ' . $mod[ 'id' ] . ' metadata' );
+						$this->p->debug->log( 'applying filters "wpsso_import_custom_fields" for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 					}
 
-					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_metadata( 'post', $mod[ 'id' ] ) );
+					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, $mod, get_metadata( $mod[ 'name' ], $mod[ 'id' ] ) );
 
 					/*
 					 * Since WPSSO Core v14.2.0.
@@ -967,7 +1018,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying filters "wpsso_import_product_attributes" for post id ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'applying filters "wpsso_import_product_attributes" for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 					}
 
 					$md_defs = apply_filters( 'wpsso_import_product_attributes', $md_defs, $mod, $mod[ 'wp_obj' ] );
@@ -975,7 +1026,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters "wpsso_get_md_defaults"' );
+					$this->p->debug->log( 'applying filters "wpsso_get_md_defaults" for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
 
 				$md_defs = apply_filters( 'wpsso_get_md_defaults', $md_defs, $mod );
@@ -987,39 +1038,24 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $mod[ 'name' ] . '_defaults' );
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying filters "' . $filter_name . '" for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+					}
+
 					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod );
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'applying filters "wpsso_sanitize_md_defaults"' );
+					$this->p->debug->log( 'applying filters "wpsso_sanitize_md_defaults" for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
 
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
 
-				/*
-				 * If caching is not allowed yet, re-apply the filters on next method call.
-				 */
-				if ( ! WpssoOptions::is_cache_allowed() ) {
-
-					unset( $md_defs[ 'opt_filtered' ] );
-
-				} elseif ( $this->p->debug->enabled ) {	// Log the filtered options aray.
-
-					$this->p->debug->log_arr( 'md_defs', $md_defs );
-				}
-
 			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'skipped filters: opt_filtered is true' );
-			}
-
-			/*
-			 * Maybe save the array to the local cache.
-			 */
-			if ( ! $this->md_cache_disabled ) {
-
-				$local_cache[ $obj_id ] = $md_defs;
 			}
 
 			if ( false !== $md_key ) {
@@ -1201,7 +1237,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( '#' . $have_num . ': getting mod for post object ID ' . $post_id );
+						$this->p->debug->log( '#' . $have_num . ': getting mod for post id ' . $post_id );
 					}
 
 					$posts_mods[] = $this->p->post->get_mod( $post_id );
@@ -1481,25 +1517,33 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		public function get_head_info( $mixed, $read_cache = true ) {
 
-			static $local_cache = array();
+			static $local_fifo = array();
 
 			$mod = is_array( $mixed ) ? $mixed : $this->get_mod( $mixed );	// Uses a local cache.
 
 			unset( $mixed );
 
+			/*
+			 * Maybe return the array from the local cache.
+			 */
 			if ( $read_cache ) {
 
-				if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
+				if ( isset( $local_fifo[ $mod[ 'id' ] ] ) ) {
 
-					return $local_cache[ $mod[ 'id' ] ];
+					return $local_fifo[ $mod[ 'id' ] ];
 				}
 			}
+
+			/*
+			 * Maybe limit the number of array elements.
+			 */
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$use_post  = 'post' === $mod[ 'name' ] ? $mod[ 'id' ] : false;
 			$head_tags = $this->p->head->get_head_array( $use_post, $mod, $read_cache );
 			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
 
-			return $local_cache[ $mod[ 'id' ] ] = $head_info;
+			return $local_fifo[ $mod[ 'id' ] ] = $head_info;
 		}
 
 		/*
@@ -1541,7 +1585,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 */
 				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $mt_pre );
 
-				$media_html .= '<!-- get ' . $size_name . ' for image ID ' . $pid . ' = ';
+				$media_html .= '<!-- get ' . $size_name . ' for image id ' . $pid . ' = ';
 
 				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
 
@@ -1879,9 +1923,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			foreach ( array( 'og', 'pin', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
 
 				/*
-				 * If there's no image ID, then remove the image ID library prefix.
+				 * If there's no image ID, then remove the image id library prefix.
 				 *
-				 * If an image ID is being used, then remove the image URL (only one can be defined).
+				 * If an image id is being used, then remove the image URL (only one can be defined).
 				 */
 				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
 
@@ -2802,7 +2846,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting parent ID ' . $parent_id . ' metadata for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'getting parent id ' . $parent_id . ' metadata for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 					}
 
 					$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
@@ -2811,7 +2855,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'no metadata for parent ID ' . $parent_id );
+							$this->p->debug->log( 'no metadata for parent id ' . $parent_id );
 						}
 
 					} else {
@@ -3143,7 +3187,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: comment object ID is empty' );
+					$this->p->debug->log( 'exiting early: comment object id is empty' );
 				}
 
 				return $mt_ret;
@@ -3278,7 +3322,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Returns an associative array of term IDs and their names or objects.
 		 *
-		 * The primary or default term ID will be included as the first array element.
+		 * The primary or default term id will be included as the first array element.
 		 */
 		public function get_primary_terms( array $mod, $tax_slug = 'category', $output = 'objects' ) {
 
