@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Improved memory usage for comment/post/term/user metadata defaults.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -490,7 +490,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.17.0-dev.1 =
 
-(2024/11/03) Refactored caching in `WpssoAbstractWpMeta->get_defaults()`.
+(2024/11/03) Improved memory usage for comment/post/term/user metadata defaults.
 
 = 18.16.1 =
 
