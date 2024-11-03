@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.17.0-dev.1 (2024/11/03)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored caching in `WpssoAbstractWpMeta->get_defaults()`.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v6.0.1 (Premium edition).
+
 **Version 18.16.1 (2024/11/02)**
 
 * **New Features**
@@ -472,6 +487,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.17.0-dev.1 =
+
+(2024/11/03) Refactored caching in `WpssoAbstractWpMeta->get_defaults()`.
 
 = 18.16.1 =
 
