@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.17.0-dev.1 (2024/11/03)**
+**Version 18.17.0-dev.2 (2024/11/03)**
 
 * **New Features**
 	* None.
@@ -290,6 +290,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored caching in `WpssoAbstractWpMeta->get_defaults()`.
+	* Refactored caching in `WpssoAbstractWpMeta->get_head_info()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -488,7 +489,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.17.0-dev.1 =
+= 18.17.0-dev.2 =
 
 (2024/11/03) Improved memory usage for comment/post/term/user metadata defaults.
 
