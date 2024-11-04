@@ -1552,13 +1552,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_select_time( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15, $add_none = false ) {
 
-			static $local_cache = array();
-
-			if ( empty( $local_cache[ $step_mins ] ) ) {
-
-				$local_cache[ $step_mins ] = SucomUtil::get_hours( 60 * $step_mins );
-			}
-
+			$time_mins   = SucomUtil::get_hours( 60 * $step_mins );
 			$css_class   = trim( 'time-hh-mm ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
 			$event_args  = array( 'json_var' => 'hour_mins_step_' . $step_mins );
@@ -1578,11 +1572,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 				}
 
-				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
+				return $this->get_select_none( $name, $time_mins, $css_class, $css_id, $is_assoc = true,
 					$is_disabled, $selected, $event_names, $event_args );
 			}
 
-			return $this->get_select( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
+			return $this->get_select( $name, $time_mins, $css_class, $css_id, $is_assoc = true,
 				$is_disabled, $selected, $event_names, $event_args );
 		}
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.17.0-dev.2',	// Plugin version.
+					'version'     => '18.17.0-dev.3',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5209,7 +5209,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;			// Position of the view profile menu item.
 			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
 			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
-			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 16;
+			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 8;
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = MONTH_IN_SECONDS;	// See WpssoUtilCache->clear_expired_cache_files().
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 3600;		// 1 hour.
@@ -5543,8 +5543,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v7.8.0.
-		 *
 		 * Returns false or a slashed directory path.
 		 */
 		public static function get_ext_dir( $ext, $read_cache = true ) {
@@ -5642,9 +5640,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $file_url;
 		}
 
-		/*
-		 * Since WPSSO Core v14.0.0.
-		 */
 		public static function get_schema_units() {
 
 			static $local_cache = null;
@@ -5657,9 +5652,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;
 		}
 
-		/*
-		 * Since WPSSO Core v9.0.0.
-		 */
 		public static function get_social_accounts( $key = false ) {
 
 			static $local_cache = null;
@@ -5695,9 +5687,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache;
 		}
 
-		/*
-		 * Since WPSSO Core v11.5.0.
-		 */
 		public static function get_input_limits( $opt_key = false ) {
 
 			static $local_cache = null;
@@ -5731,8 +5720,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v14.2.0.
-		 *
 		 * Provides a key index for attributes to meta data options.
 		 *
 		 * Returns false or an options key.
@@ -5743,8 +5730,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v14.0.0.
-		 *
 		 * Provides a key index for custom fields to meta data options.
 		 *
 		 * Returns false or an options key.
@@ -5755,8 +5740,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v14.0.0.
-		 *
 		 * Provides information to help read and split custom field values into numbered options.
 		 *
 		 * Returns true, false, or an array.
@@ -5767,8 +5750,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v11.6.0.
-		 *
 		 * Returns an array of metadata keys (can be empty).
 		 *
 		 * $md_key = true | false | string | array
@@ -5812,8 +5793,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v14.2.0.
-		 *
 		 * Provides a key index for attributes and custom fields to meta data options.
 		 *
 		 * Provides information to help read and split attribute and custom field values into numbered options.

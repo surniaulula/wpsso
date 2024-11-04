@@ -744,7 +744,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'    => _x( 'product adult type', 'tooltip fragment', 'wpsso' ),
 						'desc'    => _x( 'a product adult type', 'tooltip fragment', 'wpsso' ),
 						'about'   => __( 'https://support.google.com/merchants/answer/6324508', 'wpsso' ),
-						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'adult_type', $val_prefix = '', $val_suffix = 'Consideration' ),
+						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'adult_type',
+							$val_prefix = '', $val_suffix = 'Consideration' ),
 						'inherit' => true,
 					),
 					'product_age_group' => array(
@@ -789,7 +790,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'   => _x( 'product condition', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),
 						'about'  => __( 'https://support.google.com/merchants/answer/6324469', 'wpsso' ),
-						'values' => WpssoSchema::get_enumeration_examples( $enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' ),
+						'values' => WpssoSchema::get_enumeration_examples( $enum_key = 'item_condition',
+							$val_prefix = '', $val_suffix = 'Condition' ),
 					),
 					'product_currency' => array(
 						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
@@ -801,7 +803,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'    => _x( 'product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
 						'desc'    => _x( 'a product energy efficiency rating', 'tooltip fragment', 'wpsso' ),
 						'about'   => 'https://support.google.com/merchants/answer/7562785',
-						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' ),
+						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency',
+							$val_prefix = 'EUEnergyEfficiencyCategory' ),
 						'inherit' => true,
 					),
 					'product_energy_efficiency_min_max' => array(
@@ -809,7 +812,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'    => _x( 'product energy efficiency rating minimum and maximum', 'tooltip fragment', 'wpsso' ),
 						'desc'    => _x( 'a product energy efficiency rating range', 'tooltip fragment', 'wpsso' ),
 						'about'   => 'https://support.google.com/merchants/answer/7562785',
-						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency', $val_prefix = 'EUEnergyEfficiencyCategory' ),
+						'values'  => WpssoSchema::get_enumeration_examples( $enum_key = 'energy_efficiency',
+							$val_prefix = 'EUEnergyEfficiencyCategory' ),
 						'inherit' => true,
 					),
 					'product_fluid_volume_value' => array(

@@ -54,12 +54,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			static $local_cache = null;
 
-			if ( $local_cache ) {	// Optimize - once true, stay true.
+			if ( null !== $local_cache ) {
 
-				return true;
+				return $local_cache;
 			}
 
-			$local_cache   = false;
 			$post_id       = false;
 			$can_edit_id   = false;
 			$can_edit_type = false;
@@ -130,7 +129,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 						}
 					}
 				}
-			}
+
+			} else return $local_cache = false;	// No post ID = No block editor.
 
 			if ( $can_edit_id && $can_edit_type ) {
 
@@ -255,39 +255,41 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			static $local_cache = null;
 
-			if ( null === $local_cache ) {
+			if ( null !== $local_cache ) {
 
-				if ( is_admin() ) {
-
-					$local_cache = false;
-
-				/*
-				 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
-				 * action has not run, leave the $local_cache as null to allow for future checks.
-				 */
-				} elseif ( function_exists( 'amp_is_request' ) ) {
-
-					if ( did_action( 'wp' ) ) {
-
-						$local_cache = amp_is_request();
-					}
-
-				} elseif ( function_exists( 'is_amp_endpoint' ) ) {
-
-					$local_cache = is_amp_endpoint();
-
-				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
-
-					$local_cache = ampforwp_is_amp_endpoint();
-
-				} elseif ( defined( 'AMP_QUERY_VAR' ) ) {
-
-					$local_cache = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
-
-				} else $local_cache = false;
+				return $local_cache;
 			}
 
-			return $local_cache;
+			if ( is_admin() ) {
+
+				return $local_cache = false;
+
+			/*
+			 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
+			 * action has not run, leave the $local_cache as null to allow for future checks.
+			 */
+			} elseif ( function_exists( 'amp_is_request' ) ) {
+
+				if ( did_action( 'wp' ) ) {
+
+					return $local_cache = amp_is_request();
+
+				} else return $local_cache;	// Return null.
+
+			} elseif ( function_exists( 'is_amp_endpoint' ) ) {
+
+				return $local_cache = is_amp_endpoint();
+
+			} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+
+				return $local_cache = ampforwp_is_amp_endpoint();
+
+			} elseif ( defined( 'AMP_QUERY_VAR' ) ) {
+
+				return $local_cache = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+			}
+			
+			return $local_cache = false;
 		}
 
 		public static function is_home_page( $use_post = false ) {
@@ -583,24 +585,22 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function is_term_tax_slug( $term_id, $tax_slug ) {
 
-			/*
-			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
-			 */
 			static $local_cache = array();
 
-			if ( ! isset( $local_cache[ $term_id ] ) ) {
+			if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {	// Boolean value.
 
-				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+				return $local_cache[ $term_id ][ $tax_slug ];
+
+			} elseif ( ! isset( $local_cache[ $term_id ] ) ) $local_cache[ $term_id ] = array();
+
+			$term_obj = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+
+			if ( ! empty( $term_obj->term_id ) && ! empty( $term_obj->taxonomy ) && $term_obj->taxonomy === $tax_slug ) {
+
+				return $local_cache[ $term_id ][ $tax_slug ] = true;
 			}
 
-			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
-				! empty( $local_cache[ $term_id ]->taxonomy ) &&
-					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
-
-				return true;
-			}
-
-			return false;
+			return $local_cache[ $term_id ][ $tax_slug ] = false;
 		}
 
 		/*
@@ -769,7 +769,8 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 				if ( isset( $local_cache[ $table ][ $obj_id ] ) ) {
 
 					return $local_cache[ $table ][ $obj_id ];
-				}
+
+				} elseif ( ! isset( $local_cache[ $table ] ) ) $local_cache[ $table ] = array();
 
 				global $wpdb;
 
