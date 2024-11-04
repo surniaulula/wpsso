@@ -194,22 +194,19 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				return false;
 
-			} elseif ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+			} elseif ( self::doing_cron() ) {
 
 				return false;
 
-			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			} elseif ( self::doing_ajax() ) {
 
-				return true;	// An ajax call is considered a frontend task.
+				return true;	// An ajax call can be from the front or back-end.
 
 			} elseif ( self::doing_rest() ) {
 
 				return false;
 
-			} else {
-
-				return true;
-			}
+			} else return true;
 		}
 
 		public static function doing_iframe() {

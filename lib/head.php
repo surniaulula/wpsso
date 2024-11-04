@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Disable head and content cache if the request URL contains one or more unknown query arguments.
 			 */
-			if ( ! is_admin() ) {
+			if ( SucomUtilWP::doing_frontend() ) {
 
 				$request_url = SucomUtil::get_url( $remove_ignored_args = true );	// Uses a local cache.
 

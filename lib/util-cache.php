@@ -651,6 +651,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;	// Stop here - background task already running.
 			}
 
+			/*
+			 * Temporarily suspends WordPress cache additions.
+			 *
+			 * Stops more data being added to the cache, but still allows cache retrieval. This is useful for actions,
+			 * such as imports, when a lot of data would otherwise be almost uselessly added to the cache.
+			 */
+			wp_suspend_cache_addition();
+
 			if ( $user_id ) {
 
 				$mtime_start  = microtime( $get_float = true );
@@ -983,11 +991,16 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			wp_cache_flush();
-
 			$cleared_msg = __( 'The cache for <strong>%s</strong> has also been cleared.', 'wpsso' ) . ' ';
 
 			$notice_msg = '';
+
+			/*
+			 * WordPress object cache.
+			 */
+			wp_cache_flush();
+
+			$notice_msg .= sprintf( $cleared_msg, __( 'WordPress object cache', 'wpsso' ) );
 
 			/*
 			 * Autoptimize.
@@ -1002,7 +1015,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					autoptimizeCache::clearall();
 
-					$notice_msg .= sprintf( $cleared_msg, 'Autoptimize' );
+					$notice_msg .= sprintf( $cleared_msg, __( 'Autoptimize', 'wpsso' ) );
 				}
 			}
 
@@ -1017,7 +1030,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					Cache_Enabler::clear_total_cache();
 
-					$notice_msg .= sprintf( $cleared_msg, 'Cache Enabler' );
+					$notice_msg .= sprintf( $cleared_msg, __( 'Cache Enabler', 'wpsso' ) );
 				}
 			}
 
@@ -1030,7 +1043,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$GLOBALS[ 'comet_cache' ]->wipe_cache();
 
-				$notice_msg .= sprintf( $cleared_msg, 'Comet Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'Comet Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1044,7 +1057,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					\Hummingbird\WP_Hummingbird::flush_cache();
 
-					$notice_msg .= sprintf( $cleared_msg, 'Hummingbird Cache' );
+					$notice_msg .= sprintf( $cleared_msg, __( 'Hummingbird Cache', 'wpsso' ) );
 				}
 			}
 
@@ -1059,7 +1072,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					LiteSpeed_Cache_API::purge_all();
 
-					$notice_msg .= sprintf( $cleared_msg, 'LiteSpeed Cache' );
+					$notice_msg .= sprintf( $cleared_msg, __( 'LiteSpeed Cache', 'wpsso' ) );
 				}
 			}
 
@@ -1072,7 +1085,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					PagelyCachePurge::purgeAll();
 
-					$notice_msg .= sprintf( $cleared_msg, 'Pagely' );
+					$notice_msg .= sprintf( $cleared_msg, __( 'Pagely', 'wpsso' ) );
 				}
 			}
 
@@ -1083,7 +1096,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				sg_cachepress_purge_cache();
 
-				$notice_msg .= sprintf( $cleared_msg, 'Siteground Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'Siteground Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1098,7 +1111,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					w3tc_objectcache_flush();
 				}
 
-				$notice_msg .= sprintf( $cleared_msg, 'W3 Total Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'W3 Total Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1116,7 +1129,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					WpeCommon::purge_varnish_cache();
 				}
 
-				$notice_msg .= sprintf( $cleared_msg, 'WP Engine Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'WP Engine Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1128,7 +1141,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				wpfc_clear_all_cache( true );
 
-				$notice_msg .= sprintf( $cleared_msg, 'WP Fastest Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'WP Fastest Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1138,7 +1151,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				rocket_clean_domain();
 
-				$notice_msg .= sprintf( $cleared_msg, 'WP Rocket Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'WP Rocket Cache', 'wpsso' ) );
 			}
 
 			/*
@@ -1150,7 +1163,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				wp_cache_clear_cache();
 
-				$notice_msg .= sprintf( $cleared_msg, 'WP Super Cache' );
+				$notice_msg .= sprintf( $cleared_msg, __( 'WP Super Cache', 'wpsso' ) );
 			}
 
 			return $notice_msg;

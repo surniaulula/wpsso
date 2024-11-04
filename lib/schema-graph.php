@@ -212,8 +212,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				/*
 				 * Reset the static variables after merging the new data.
 				 */
-				$local_new_data = array();
-
+				$local_new_data  = array();
 				$local_recursion = null;
 
 				return $json_data;

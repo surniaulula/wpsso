@@ -73,7 +73,7 @@ if ( ! class_exists( 'SucomAbstractAddOn' ) ) {
 			}
 
 			$is_admin     = is_admin();
-			$doing_ajax   = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+			$doing_ajax   = SucomUtilWP::doing_ajax();
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
 
 			$this->did_plugin_notices = true;	// Signal that $this->init_plugin_notices() has run.

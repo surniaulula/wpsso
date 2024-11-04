@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/*
 				 * Add the json data to the @graph array.
 				 */
-				foreach ( $json_data as $single_graph ) {
+				foreach ( $json_data as $num => $single_graph ) {
 
 					if ( empty( $single_graph ) || ! is_array( $single_graph ) ) {	// Just in case.
 
@@ -465,6 +465,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$this->p->debug->mark( 'schema type id ' . $type_id );	// End timer.
 				}
+
+				unset( $json_data );
 			}
 
 			/*

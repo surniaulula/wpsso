@@ -120,6 +120,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'redirect_log_mongo_id',
 			'redirect_mongo_id',
 			'sb_referer_host',
+
+			// WordPress:
+			'doing_wp_cron',
 		);
 
 		protected static $publisher_languages = array(
@@ -2409,7 +2412,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $query_args ) ) {	// Just in case.
 
-					$query_args = array_flip( $query_args );				// Move values to keys.
+					$query_args = array_flip( $query_args );	// Move values to keys.
+
 					$query_args = array_fill_keys( array_keys( $query_args ), false );	// Set all values to false.
 
 					$local_cache[ $cache_idx ] = add_query_arg( $query_args, $local_cache[ $cache_idx ] );	// Remove keys with false values.

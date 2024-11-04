@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		
 						if ( $this->p->debug->enabled ) {
 				
-							$this->p->debug->log( 'adding local cache element for id ' . $obj_id );
+							$this->p->debug->mark_diff( 'adding local cache element for id ' . $obj_id );
 						}
 
 						$local_fifo[ $obj_id ] = array();
@@ -321,20 +321,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 	
 					$md_defs =& $local_fifo[ $obj_id ];
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 				
-					if ( $this->p->debug->enabled ) {
-				
-						$this->p->debug->log( 'metadata caching is disabled for id ' . $obj_id );
-					}
+					$this->p->debug->log( 'metadata caching is disabled for id ' . $obj_id );
 				}
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 				
-				if ( $this->p->debug->enabled ) {
-				
-					$this->p->debug->log( 'options caching is not allowed for id ' . $obj_id );
-				}
+				$this->p->debug->log( 'options caching is not allowed for id ' . $obj_id );
 			}
 
 			if ( empty( $md_defs[ 'opt_filtered' ] ) ) {
