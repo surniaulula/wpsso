@@ -671,7 +671,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				$this->set_task_limit( $user_id, $task_name, WPSSO_CACHE_REFRESH_MAX_TIME );	// 1 hour by default.
+				/*
+				 * Leave a few minutes for 'wpsso_cache_refreshed_notice' filters.
+				 */
+				$other_refresh = SucomUtilWP::get_filter_hook_ids( 'wpsso_cache_refreshed_notice' );
+				$max_time_secs = WPSSO_CACHE_REFRESH_MAX_TIME + ( 300 * count( $other_refresh ) );
+
+				$this->set_task_limit( $user_id, $task_name, $max_time_secs );
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -711,7 +717,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$notice_msg  = '';
 			$og_type_key = WpssoAbstractWpMeta::get_column_meta_keys( 'og_type' );	// Example: '_wpsso_head_info_og_type'.
-			$abort_time  = time() + WPSSO_CACHE_REFRESH_MAX_TIME - 120;		// Leave time for 'wpsso_cache_refreshed_notice' filters.
+			$abort_time  = time() + WPSSO_CACHE_REFRESH_MAX_TIME;	// 30 mins by default.
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
@@ -754,7 +760,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					if ( time() > $abort_time ) {
 
 						$notice_msg .= sprintf( __( 'The cache refresh time limit of %s has been reached.', 'wpsso' ),
-							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';	// 1 hour by default.
+							human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME ) ) . ' ';	// 30 mins by default.
 
 						$notice_msg .= sprintf( __( 'The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d).', 'wpsso' ),
 							$mod[ 'name_transl' ], $obj_id, $obj_num + 1, $obj_count ) . ' ';
@@ -944,16 +950,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( ! $ret ) {
 
-				$human_time = human_time_diff( 0, $cache_exp_secs );
-
+				$human_time       = human_time_diff( 0, $cache_exp_secs );
 				$task_name_transl = _x( $task_name, 'task name', 'wpsso' );
-
-				$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
-
-				$notice_msg = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
+				$error_pre        = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+				$notice_key       = $task_name . '-task-set-time-limit-error';
+				$notice_msg       = sprintf( __( 'The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s.', 'wpsso' ),
 					'<code>set_time_limit()</code>', $human_time, $task_name_transl );
-
-				$notice_key = $task_name . '-task-set-time-limit-error';
 
 				$this->p->notice->err( $notice_msg, $user_id, $notice_key );
 

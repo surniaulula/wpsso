@@ -1098,7 +1098,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			static $local_cache = null;
 
 			if ( null !== $local_cache ) {
-			
+
 				return $local_cache;
 			}
 

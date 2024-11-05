@@ -300,34 +300,34 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					if ( isset( $local_fifo[ $obj_id ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'using defaults from local cache for id ' . $obj_id );
 						}
 
 					} else {
-				
+
 						/*
 						 * Maybe limit the number of array elements.
 						 */
 						$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
-		
+
 						if ( $this->p->debug->enabled ) {
-				
+
 							$this->p->debug->mark_diff( 'adding local cache element for id ' . $obj_id );
 						}
 
 						$local_fifo[ $obj_id ] = array();
 					}
-	
+
 					$md_defs =& $local_fifo[ $obj_id ];
 
 				} elseif ( $this->p->debug->enabled ) {
-				
+
 					$this->p->debug->log( 'metadata caching is disabled for id ' . $obj_id );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log( 'options caching is not allowed for id ' . $obj_id );
 			}
 

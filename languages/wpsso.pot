@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.17.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 18.17.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1751 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:951
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:955
 msgid "%s error:"
 msgstr ""
 
@@ -9593,7 +9593,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:762
+#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:768
 #: lib/util.php:877 lib/util.php:986 lib/util.php:1018 lib/util.php:1056
 #: lib/util.php:3442
 msgid "%s warning:"
@@ -15437,7 +15437,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:799
+#: lib/user.php:1921 lib/user.php:2015 lib/util-cache.php:805
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15602,86 +15602,86 @@ msgstr ""
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:747
+#: lib/util-cache.php:753
 msgid "Processing %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:756
+#: lib/util-cache.php:762
 msgid "The cache refresh time limit of %s has been reached."
 msgstr ""
 
-#: lib/util-cache.php:759
+#: lib/util-cache.php:765
 msgid "The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:778
+#: lib/util-cache.php:784
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:848
+#: lib/util-cache.php:854
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:953
+#: lib/util-cache.php:957
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:994
+#: lib/util-cache.php:996
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:1003
+#: lib/util-cache.php:1005
 msgid "WordPress object cache"
 msgstr ""
 
-#: lib/util-cache.php:1018
+#: lib/util-cache.php:1020
 msgid "Autoptimize"
 msgstr ""
 
-#: lib/util-cache.php:1033
+#: lib/util-cache.php:1035
 msgid "Cache Enabler"
 msgstr ""
 
-#: lib/util-cache.php:1046
+#: lib/util-cache.php:1048
 msgid "Comet Cache"
 msgstr ""
 
-#: lib/util-cache.php:1060
+#: lib/util-cache.php:1062
 msgid "Hummingbird Cache"
 msgstr ""
 
-#: lib/util-cache.php:1075
+#: lib/util-cache.php:1077
 msgid "LiteSpeed Cache"
 msgstr ""
 
-#: lib/util-cache.php:1088
+#: lib/util-cache.php:1090
 msgid "Pagely"
 msgstr ""
 
-#: lib/util-cache.php:1099
+#: lib/util-cache.php:1101
 msgid "Siteground Cache"
 msgstr ""
 
-#: lib/util-cache.php:1114
+#: lib/util-cache.php:1116
 msgid "W3 Total Cache"
 msgstr ""
 
-#: lib/util-cache.php:1132
+#: lib/util-cache.php:1134
 msgid "WP Engine Cache"
 msgstr ""
 
-#: lib/util-cache.php:1144
+#: lib/util-cache.php:1146
 msgid "WP Fastest Cache"
 msgstr ""
 
-#: lib/util-cache.php:1154
+#: lib/util-cache.php:1156
 msgid "WP Rocket Cache"
 msgstr ""
 
-#: lib/util-cache.php:1166
+#: lib/util-cache.php:1168
 msgid "WP Super Cache"
 msgstr ""
 

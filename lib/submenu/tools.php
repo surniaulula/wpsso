@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function show_post_body_settings_form() {
 
-			$refresh_max_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );	// 1 hour by default.
+			$refresh_max_time = human_time_diff( 0, WPSSO_CACHE_REFRESH_MAX_TIME );	// 30 mins by default.
 
 			echo '<div id="tools-content">' . "\n";
 

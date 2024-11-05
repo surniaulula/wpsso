@@ -285,7 +285,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				return $local_cache = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
 			}
-			
+
 			return $local_cache = false;
 		}
 
