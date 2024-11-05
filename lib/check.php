@@ -1093,7 +1093,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return empty( $this->p->options[ $ext_auth_key ] ) ? '' : $this->p->options[ $ext_auth_key ];
 		}
 
-		public function is_um_gt_min() {
+		public function is_umver_gt_min() {
 
 			static $local_cache = null;
 

@@ -651,14 +651,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;	// Stop here - background task already running.
 			}
 
-			/*
-			 * Temporarily suspends WordPress cache additions.
-			 *
-			 * Stops more data being added to the cache, but still allows cache retrieval. This is useful for actions,
-			 * such as imports, when a lot of data would otherwise be almost uselessly added to the cache.
-			 */
-			wp_suspend_cache_addition();
-
 			if ( $user_id ) {
 
 				$mtime_start  = microtime( $get_float = true );

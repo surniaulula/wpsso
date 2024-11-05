@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
-			$um_check = $this->p->check->is_um_gt_min();	// Uses a local cache.
+			$um_check = $this->p->check->is_umver_gt_min();	// Uses a local cache.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 

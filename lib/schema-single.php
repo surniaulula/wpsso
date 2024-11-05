@@ -1415,14 +1415,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					return 0;	// Return count of persons added.
 				}
 
-				static $local_cache = array();
+				static $local_fifo = array();
 
-				if ( ! isset( $local_cache[ $person_id ] ) ) {
+				if ( ! isset( $local_fifo[ $person_id ] ) ) {
 
-					$local_cache[ $person_id ] = array();
+					/*
+					 * Maybe limit the number of array elements.
+					 */
+					$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
+
+					$local_fifo[ $person_id ] = array();
 				}
 
-				if ( ! isset( $local_cache[ $person_id ][ 'person_opts' ] ) ) {
+				if ( ! isset( $local_fifo[ $person_id ][ 'person_opts' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
@@ -1431,21 +1436,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$user_mod = $wpsso->user->get_mod( $person_id );
 
-					$local_cache[ $person_id ][ 'canonical_url' ] = $wpsso->util->get_canonical_url( $user_mod );
+					$local_fifo[ $person_id ][ 'canonical_url' ] = $wpsso->util->get_canonical_url( $user_mod );
 
 					/*
 					 * Set the reference values for admin notices.
 					 */
 					if ( is_admin() ) {
 
-						$wpsso->util->maybe_set_ref( $local_cache[ $person_id ][ 'canonical_url' ], $user_mod, __( 'adding schema person', 'wpsso' ) );
+						$wpsso->util->maybe_set_ref( $local_fifo[ $person_id ][ 'canonical_url' ], $user_mod, __( 'adding schema person', 'wpsso' ) );
 					}
 
 					$user_description = $wpsso->page->get_description( $user_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 					$user_images      = $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod, $md_pre = array( 'schema', 'og' ) );
 					$user_sameas      = $wpsso->user->get_user_sameas( $person_id );
 
-					$local_cache[ $person_id ][ 'person_opts' ] = array(
+					$local_fifo[ $person_id ][ 'person_opts' ] = array(
 						'person_type'       => 'person',
 						'person_url'        => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
 						'person_name'       => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'display_name' ),
@@ -1466,17 +1471,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 */
 					if ( is_admin() ) {
 
-						$wpsso->util->maybe_unset_ref( $local_cache[ $person_id ][ 'canonical_url' ] );
+						$wpsso->util->maybe_unset_ref( $local_fifo[ $person_id ][ 'canonical_url' ] );
 					}
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log_arr( 'local_cache_person_opts', $local_cache[ $person_id ][ 'person_opts' ] );
+						$wpsso->debug->log_arr( 'local_cache_person_opts', $local_fifo[ $person_id ][ 'person_opts' ] );
 					}
 				}
 
-				$person_opts   =& $local_cache[ $person_id ][ 'person_opts' ];
-				$canonical_url =& $local_cache[ $person_id ][ 'canonical_url' ];
+				$person_opts   =& $local_fifo[ $person_id ][ 'person_opts' ];
+				$canonical_url =& $local_fifo[ $person_id ][ 'canonical_url' ];
 			}
 
 			/*

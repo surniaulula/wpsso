@@ -1681,10 +1681,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$do_once[ $user_id ] = true;
 
-			if ( empty( $user_id ) ) {	// Just in case.
-
-				return;
-			}
+			if ( empty( $user_id ) ) return;	// Just in case.
 
 			$mod = $this->get_mod( $user_id );
 
@@ -1713,10 +1710,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$do_once[ $user_id ] = true;
 
-			if ( empty( $user_id ) ) {	// Just in case.
-
-				return;
-			}
+			if ( empty( $user_id ) ) return;	// Just in case.
 
 			$mod = $this->get_mod( $user_id );
 

@@ -2175,12 +2175,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array();
+			if ( is_admin() ) {
 
-			if ( isset( $local_cache[ $menu_lib ] ) ) {
+				static $local_cache = array();
 
-				return $local_cache[ $menu_lib ];
-			}
+				if ( isset( $local_cache[ $menu_lib ] ) ) {
+
+					return $local_cache[ $menu_lib ];
+				}
+
+			} else $local_cache = array();
 
 			$local_cache[ $menu_lib ] = array();
 

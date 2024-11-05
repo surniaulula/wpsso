@@ -791,7 +791,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 					return $local_cache[ $cache_salt ];
-
 				}
 			}
 
@@ -1477,15 +1476,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function get_schema_type_row_class( $name = 'schema_type', $read_cache = true ) {
 
-			static $local_cache = null;
+			if ( is_admin() ) {
 
-			if ( $read_cache ) {
+				static $local_cache = array();
 
-				if ( isset( $local_cache[ $name ] ) ) {
+				if ( $read_cache ) {
 
-					return $local_cache[ $name ];
+					if ( isset( $local_cache[ $name ] ) ) {
+
+						return $local_cache[ $name ];
+					}
 				}
-			}
+
+			} else $local_cache = array();
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1502,15 +1505,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$local_cache = get_transient( $cache_id );	// Returns false when not found.
 
-					if ( isset( $local_cache[ $name ] ) ) {
+					if ( is_array( $local_cache ) ) {
 
-						return $local_cache[ $name ];
-					}
+						if ( isset( $local_cache[ $name ] ) ) {
+
+							return $local_cache[ $name ];
+						}
+
+					} else $local_cache = array();
 				}
 			}
 
-			$local_cache = array();
-			$type_ids    = array();
+			$type_ids = array();
 
 			switch ( $name ) {
 
@@ -3098,10 +3104,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				return $added_count;
 
-			} else {
-
-				$added_page_type_ids[ $page_type_id ] = true;
-			}
+			} else $added_page_type_ids[ $page_type_id ] = true;
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -4345,14 +4348,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
-			static $id_anchor = null;
-			static $id_delim  = null;
-
-			if ( null === $id_anchor || null === $id_delim ) {	// Optimize and call just once.
-
-				$id_anchor = self::get_id_anchor();
-				$id_delim  = self::get_id_delim();
-			}
+			$id_anchor = self::get_id_anchor();
+			$id_delim  = self::get_id_delim();
 
 			if ( is_array( $id_suffix ) ) {
 

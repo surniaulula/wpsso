@@ -887,14 +887,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
-			if ( empty( $term_id ) ) {	// Just in case.
-
-				return;
-			}
+			if ( empty( $term_id ) ) return;	// Just in case.
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
+
+			unset( $term_obj );
 
 			$this->clear_mod_cache( $mod );
 
@@ -914,14 +913,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
-			if ( empty( $term_id ) ) {	// Just in case.
-
-				return;
-			}
+			if ( empty( $term_id ) ) return;	// Just in case.
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
+
+			unset( $term_obj );
 
 			$this->p->util->cache->refresh_mod_head_meta( $mod );
 

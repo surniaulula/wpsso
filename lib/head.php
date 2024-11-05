@@ -1203,10 +1203,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$match_name = preg_replace( '/^.*\./', '', $parts[ 3 ] );
 
-				} else {
-
-					$match_name = $parts[ 3 ];
-				}
+				} else $match_name = $parts[ 3 ];
 
 				/*
 				 * Boolean values are converted to their string equivalent.
@@ -1313,6 +1310,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$mt_array[] = $parts;	// Save the HTML and encoded value.
 			}
+
+			unset( $singles, $num, $parts );
 
 			return $mt_array;
 		}

@@ -571,9 +571,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$style_handles = array( 'sucom-admin-page' );
 
-			static $enqueued = null;	// Default value for first execution.
+			static $is_enqueued = null;	// Default value for first execution.
 
-			if ( ! $enqueued ) {	// Re-check the $wp_styles queue at priority PHP_INT_MAX.
+			if ( ! $is_enqueued ) {	// Re-check the $wp_styles queue at priority PHP_INT_MAX.
 
 				add_action( 'admin_enqueue_scripts', array( $this, __FUNCTION__ ), PHP_INT_MAX );
 			}
@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			foreach ( $style_handles as $handle ) {
 
-				if ( ! $enqueued || ! isset( $wp_styles->queue ) || ! in_array( $handle, $wp_styles->queue ) ) {
+				if ( ! $is_enqueued || ! isset( $wp_styles->queue ) || ! in_array( $handle, $wp_styles->queue ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -597,7 +597,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			$enqueued = true;	// Signal that we've already run once.
+			$is_enqueued = true;	// Signal that we've already run once.
 		}
 
 		private function plugin_install_inline_style( $hook_name, $plugin_slug = false ) {	// $hook_name = plugin-install.php

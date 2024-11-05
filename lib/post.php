@@ -1878,8 +1878,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 								$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
 							}
+
+							unset( $post_terms, $term_obj );
 						}
 					}
+
+					unset( $post_taxonomies, $tax_slug );
 				}
 			}
 
@@ -1896,11 +1900,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $attached_ids as $attach_id => $bool ) {
 
-				if ( $bool ) {
-
-					$this->clear_cache( $attach_id );
-				}
+				if ( $bool ) $this->clear_cache( $attach_id );
 			}
+
+			unset( $attached_ids, $attach_id, $bool );
 
 			/*
 			 * Clear the cache for any direct children as well.
@@ -1911,6 +1914,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->clear_cache( $child_id, $rel = false );
 			}
+
+			unset( $children_ids, $child_id );
 
 			do_action( 'wpsso_clear_post_cache', $post_id, $mod );
 		}

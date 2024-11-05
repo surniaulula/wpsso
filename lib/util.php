@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/*
-			 * Get default options only once.
+			 * Get the default options only once.
 			 */
 			static $defs = null;
 
@@ -336,10 +336,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$size_info[ $opt_suffix ] = $defs[ $opt_prefix . '_img_' . $opt_suffix ];
 
-						} else {
-
-							$size_info[ $opt_suffix ] = null;
-						}
+						} else $size_info[ $opt_suffix ] = null;
 					}
 				}
 
@@ -399,6 +396,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 			}
+
+			/*
+			 * Reset the default options variable.
+			 */
+			$defs = null;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -781,19 +783,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array();	// Optimize and get image size for a given URL only once.
+			static $local_fifo = array();	// Optimize and get image size for a given URL only once.
 
 			$image_url = trim( $image_url );	// Just in case.
 
-			if ( isset( $local_cache[ $image_url ] ) ) {
+			if ( isset( $local_fifo[ $image_url ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: returning image info from static cache' );
 				}
 
-				return $local_cache[ $image_url ];
+				return $local_fifo[ $image_url ];
 			}
+
+			/*
+			 * Maybe limit the number of array elements.
+			 */
+			$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 			$def_image_info = array( WPSSO_UNDEF, WPSSO_UNDEF, '', '' );
 
@@ -804,7 +811,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'exiting early: image URL is empty' );
 				}
 
-				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
+				return $local_fifo[ $image_url ] = $def_image_info;	// Stop here.
 
 			} elseif ( false === filter_var( $image_url, FILTER_VALIDATE_URL ) ) {
 
@@ -813,7 +820,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'exiting early: invalid image url "' . $image_url . '"' );
 				}
 
-				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
+				return $local_fifo[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
 			$cache_md5_pre  = 'wpsso_i_';	// Transient prefix for image URL info.
@@ -845,7 +852,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					/*
 					 * Optimize and save the transient cache value to local cache.
 					 */
-					return $local_cache[ $image_url ] = $image_info;
+					return $local_fifo[ $image_url ] = $image_info;
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
@@ -920,7 +927,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			return $local_cache[ $image_url ] = $image_info;
+			return $local_fifo[ $image_url ] = $image_info;
 		}
 
 		/*

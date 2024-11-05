@@ -2165,10 +2165,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$obj_id = absint( $obj_id );
 
-			if ( ! $obj_id ) {
-
-				return array();
-			}
+			if ( ! $obj_id ) return array();
 
 			/*
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
