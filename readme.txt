@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.17.0-dev.4 (2024/11/04)**
+**Version 18.17.0-dev.5 (2024/11/04)**
 
 * **New Features**
 	* None.
@@ -490,7 +490,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.17.0-dev.4 =
+= 18.17.0-dev.5 =
 
 (2024/11/04) Improved memory usage for comment/post/term/user metadata defaults.
 
