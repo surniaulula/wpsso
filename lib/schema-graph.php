@@ -32,11 +32,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function add_data( $data ) {
 
-			static $local_home_url  = null;
+			static $home_url = null;
 
-			if ( null === $local_home_url ) {	// Optimize and call just once.
+			if ( null === $home_url ) {	// Optimize and call just once.
 
-				$local_home_url = untrailingslashit( get_home_url() );
+				$home_url = untrailingslashit( get_home_url() );
 			}
 
 			if ( empty( $data[ '@id' ] ) ) {
@@ -49,9 +49,9 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				$val =& $data[ '@id' ];
 
-				if ( 0 === strpos( $val, $local_home_url ) ) {
+				if ( 0 === strpos( $val, $home_url ) ) {
 
-					$val = str_replace( $local_home_url, '', $val );	// Shorten the @id value, if possible.
+					$val = str_replace( $home_url, '', $val );	// Shorten the @id value, if possible.
 				}
 
 				if ( ! isset( self::$graph_data[ $val ] ) ) {	// If not already added.
@@ -122,33 +122,33 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function optimize_json( array &$json_data ) {	// Pass by reference is OK.
 
-			static $local_new_data  = array();
-			static $local_recursion = null;
-			static $local_id_anchor = null;
-			static $local_home_url  = null;
+			static $optim_data  = array();
+			static $recur_level = null;
+			static $id_anchor   = null;
+			static $home_url    = null;
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
-				$local_recursion = 0;
+				$recur_level = 0;
 
-			} elseif ( null !== $local_recursion ) {
+			} elseif ( null !== $recur_level ) {
 
-				$local_recursion++;
+				$recur_level++;
 			}
 
-			if ( $local_recursion > 32 ) {	// Just in case.
+			if ( $recur_level > 32 ) {	// Just in case.
 
 				return;
 			}
 
-			if ( null === $local_id_anchor ) {	// Optimize and call just once.
+			if ( null === $id_anchor ) {	// Optimize and call just once.
 
-				$local_id_anchor = WpssoSchema::get_id_anchor();
+				$id_anchor = WpssoSchema::get_id_anchor();
 			}
 
-			if ( null === $local_home_url ) {	// Optimize and call just once.
+			if ( null === $home_url ) {	// Optimize and call just once.
 
-				$local_home_url = untrailingslashit( get_home_url() );
+				$home_url = untrailingslashit( get_home_url() );
 			}
 
 			foreach ( $json_data as $key => &$val ) {
@@ -159,20 +159,20 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				} elseif ( '@id' === $key ) {
 
-					if ( 0 === strpos( $val, $local_home_url ) ) {
+					if ( 0 === strpos( $val, $home_url ) ) {
 
-						$val = str_replace( $local_home_url, '', $val );	// Shorten the @id value, if possible.
+						$val = str_replace( $home_url, '', $val );	// Shorten the @id value, if possible.
 					}
 
 					if ( count( $json_data ) > 1 ) {	// Ignore arrays with a single element (ie. the @id property).
 
-						if ( false !== strpos( $val, $local_id_anchor ) ) {	// Only optimize our own @ids.
+						if ( false !== strpos( $val, $id_anchor ) ) {	// Only optimize our own @ids.
 
-							if ( empty( $local_new_data[ $val ] ) ) {
+							if ( empty( $optim_data[ $val ] ) ) {
 
-								$local_new_data[ $val ] = $json_data;
+								$optim_data[ $val ] = $json_data;
 
-								foreach ( $local_new_data[ $val ] as $new_key => &$new_val ) {
+								foreach ( $optim_data[ $val ] as $new_key => &$new_val ) {
 
 									if ( is_array( $new_val ) ) {
 
@@ -191,35 +191,35 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
-				$combined_graph = array_merge( array_values( $local_new_data ), $json_data[ '@graph' ] );
+				$merged_graph = array_merge( array_values( $optim_data ), $json_data[ '@graph' ] );
+
+				/*
+				 * Reset the static variables after merging the new data.
+				 */
+				$optim_data  = array();
+				$recur_level = null;
 
 				/*
 				 * Cleanup any empty @id arrays.
 				 */
-				foreach ( $combined_graph as $num => $val ) {
+				foreach ( $merged_graph as $num => $val ) {
 
 					if ( is_array( $val ) ) {	// Just in case.
 
 						if ( ! empty( $val[ '@id' ] ) && 1 === count( $val ) ) {
 
-							unset( $combined_graph[ $num ] );
+							unset( $merged_graph[ $num ] );
 						}
 					}
 				}
 
-				$json_data[ '@graph' ] = $combined_graph;
+				$json_data[ '@graph' ] = $merged_graph;
 
-				/*
-				 * Reset the static variables after merging the new data.
-				 */
-				$local_new_data  = array();
-				$local_recursion = null;
+				unset( $merged_graph, $num, $val );
 
-				return $json_data;
+			} elseif ( null !== $recur_level ) {
 
-			} elseif ( null !== $local_recursion ) {
-
-				$local_recursion--;
+				$recur_level--;
 			}
 		}
 	}

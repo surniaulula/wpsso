@@ -473,7 +473,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Get the @graph json array and start a new @graph array.
 			 */
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
-			$graph_json     = WpssoSchemaGraph::get_json_reset_data();
+			$graph_json     = WpssoSchemaGraph::get_json_reset_data();	// Get and reset the static data.
 			$filter_name    = SucomUtil::sanitize_hookname( 'wpsso_json_prop_' . $graph_type_url );
 			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og );
 
@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
-				$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
+				WpssoSchemaGraph::optimize_json( $graph_json );
 
 				$schema_scripts[][] = '<script type="application/ld+json" id="wpsso-schema-graph">' .
 					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
