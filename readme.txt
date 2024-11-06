@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.17.0-b.2 (2024/11/05)**
+**Version 18.17.0-rc.1 (2024/11/06)**
 
 * **New Features**
 	* None.
@@ -291,6 +291,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored caching in `WpssoAbstractWpMeta->get_defaults()`.
 	* Refactored caching in `WpssoAbstractWpMeta->get_head_info()`.
+	* Refactored caching in `WpssoAdmin->get_side_col_boxes()`.
+	* Refactored caching in `WpssoSchema->add_person_data()`.
+	* Refactored caching in `WpssoUtil->get_image_url_info()`.
+	* Refactored caching in `SucomUtil->is_term_tax_slug()`.
+	* Updated default `WPSSO_CACHE_ARRAY_FIFO_MAX` value to 8.
+	* Updated default `WPSSO_CACHE_REFRESH_MAX_TIME` value to 1800.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -489,9 +495,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.17.0-b.2 =
+= 18.17.0-rc.1 =
 
-(2024/11/05) Improved memory usage for comment/post/term/user metadata defaults.
+(2024/11/06) Improved memory usage for comment/post/term/user metadata defaults.
 
 = 18.16.1 =
 
