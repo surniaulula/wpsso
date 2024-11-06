@@ -155,15 +155,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( 'mod', $mod );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtilWP::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtilWP::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtilWP::get_locale( $mod ) );
-
 				$this->p->util->log_is_functions();
 			}
 
@@ -227,9 +222,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
+			unset( $head_tags, $mt, $indent_num, $use_post, $mod, $read_cache );
+
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
-			$html .= $this->get_mt_data( 'added', $mtime_total ) . "\n";
+			$html .= $this->get_mt_data( 'added', array( $mtime_total, memory_get_usage() ) ) . "\n";
 
 			return $html;
 		}
@@ -845,9 +842,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				case 'added':
 
-					$total_secs = sprintf( '%f secs', $args );
+					$total_secs = sprintf( '%f secs', $args[ 0 ] );
+					$total_mem  = SucomUtil::format_mem_use( $args[ 1 ], $dec = 2 );
 
-					return '<meta name="wpsso-' . $type . '" content="' . gmdate( 'c' ) . ' in ' . $total_secs .  '"/>' . "\n";
+					return '<meta name="wpsso-' . $type . '" content="' . gmdate( 'c' ) .
+						' in ' . $total_secs .  ' ' . $total_mem . '"/>' . "\n";
 
 				case 'begin':
 				case 'disabled':

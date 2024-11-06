@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $dismiss_name  = 'sucom_dismissed';
 		private $notices_name  = 'sucom_notices';
 		private $nonce_name    = '';
-		private $default_ttl   = 600;
+		private $default_ttl   = 900;	// Notice TTL is 15 mins by default.
 		private $label_transl  = false;
 		private $has_shown     = false;
 		private $all_types     = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).

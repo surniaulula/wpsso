@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.17.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 18.17.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9254,23 +9254,23 @@ msgstr ""
 msgid "API key missing."
 msgstr ""
 
-#: lib/head.php:468
+#: lib/head.php:465
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:477
+#: lib/head.php:474
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:486
+#: lib/head.php:483
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:495
+#: lib/head.php:492
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:515
+#: lib/head.php:512
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -16008,45 +16008,45 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:637
+#: wpsso.php:640
 msgctxt "option comment"
 msgid "(%s constant is true)"
 msgstr ""
 
-#: wpsso.php:640
+#: wpsso.php:643
 msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:864
+#: wpsso.php:867
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:871
+#: wpsso.php:874
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:879
+#: wpsso.php:882
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:881
+#: wpsso.php:884
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:891
+#: wpsso.php:894
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:893
+#: wpsso.php:896
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 

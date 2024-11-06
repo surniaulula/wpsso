@@ -974,7 +974,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *	iso8601_to_seconds()
 		 *	maybe_iso8601_to_seconds()
 		 *	sprintf_date_time()
-		 *
+		 */
+		public static function format_mem_use( $bytes, $dec = 2, $sep = ' ' ) {
+
+			$size = array( 'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' );
+
+			$factor = floor( ( strlen( $bytes ) - 1 ) / 3 );
+
+    			return sprintf( "%.${dec}f${sep}%s", $bytes / pow( 1024, $factor ), $size[ $factor ] );
+		}
+
+		/*
 		 * Returns a date( 'P' ) formatted timezone value (ie. -07:00).
 		 */
 		public static function format_tz_offset( $offset ) {

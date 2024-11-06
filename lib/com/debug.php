@@ -344,35 +344,19 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		private function get_mem_text( $mem ) {
 
-			$abs = abs( $mem );
-
-			if ( $abs < 1024 ) {
-
-				return $mem . ' bytes';
-
-			} elseif ( $abs < 1048576 ) {
-
-				return round( $mem / 1024, 2) . ' kb';
-
-			} else return round( $mem / 1048576, 2) . ' mb';
+			return SucomUtil::format_mem_use( $mem, $dec = 2 );
 		}
 
 		public function show_html( $data = null, $title = null ) {
 
-			if ( ! $this->is_enabled( 'html' ) ) {
-
-				return;
-			}
+			if ( ! $this->is_enabled( 'html' ) ) return;
 
 			echo $this->get_html( $data, $title, 2 );
 		}
 
 		public function get_html( $data = null, $title = null, $class_seq = 1, $func_seq = false ) {
 
-			if ( ! $this->is_enabled( 'html' ) ) {
-
-				return;
-			}
+			if ( ! $this->is_enabled( 'html' ) ) return;
 
 			if ( false === $func_seq ) {
 
