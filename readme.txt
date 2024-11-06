@@ -300,7 +300,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v7.1.0 (Premium edition).
 
 **Version 18.16.1 (2024/11/02)**
 
