@@ -794,7 +794,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 				$human_time  = human_time_diff( 0, $mtime_total );
-				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s.', 'wpsso' ), $human_time ) . ' ';
+				$human_mem   = SucomUtil::format_mem_use( memory_get_peak_usage(), $dec = 2 );
+				$notice_msg  .= sprintf( __( 'The total execution time for this task was %s (%s peak memory use).', 'wpsso' ), $human_time, $human_mem ) . ' ';
 				$notice_key  = $task_name . '-task-info';
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );

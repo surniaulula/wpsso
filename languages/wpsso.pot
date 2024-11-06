@@ -6738,7 +6738,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1751 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:947
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:948
 msgid "%s error:"
 msgstr ""
 
@@ -15437,7 +15437,7 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1915 lib/user.php:2009 lib/util-cache.php:797
+#: lib/user.php:1915 lib/user.php:2009
 msgid "The total execution time for this task was %s."
 msgstr ""
 
@@ -15620,68 +15620,72 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:846
+#: lib/util-cache.php:798
+msgid "The total execution time for this task was %s (%s peak memory use)."
+msgstr ""
+
+#: lib/util-cache.php:847
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:949
+#: lib/util-cache.php:950
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:988
+#: lib/util-cache.php:989
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:997
+#: lib/util-cache.php:998
 msgid "WordPress object cache"
 msgstr ""
 
-#: lib/util-cache.php:1012
+#: lib/util-cache.php:1013
 msgid "Autoptimize"
 msgstr ""
 
-#: lib/util-cache.php:1027
+#: lib/util-cache.php:1028
 msgid "Cache Enabler"
 msgstr ""
 
-#: lib/util-cache.php:1040
+#: lib/util-cache.php:1041
 msgid "Comet Cache"
 msgstr ""
 
-#: lib/util-cache.php:1054
+#: lib/util-cache.php:1055
 msgid "Hummingbird Cache"
 msgstr ""
 
-#: lib/util-cache.php:1069
+#: lib/util-cache.php:1070
 msgid "LiteSpeed Cache"
 msgstr ""
 
-#: lib/util-cache.php:1082
+#: lib/util-cache.php:1083
 msgid "Pagely"
 msgstr ""
 
-#: lib/util-cache.php:1093
+#: lib/util-cache.php:1094
 msgid "Siteground Cache"
 msgstr ""
 
-#: lib/util-cache.php:1108
+#: lib/util-cache.php:1109
 msgid "W3 Total Cache"
 msgstr ""
 
-#: lib/util-cache.php:1126
+#: lib/util-cache.php:1127
 msgid "WP Engine Cache"
 msgstr ""
 
-#: lib/util-cache.php:1138
+#: lib/util-cache.php:1139
 msgid "WP Fastest Cache"
 msgstr ""
 
-#: lib/util-cache.php:1148
+#: lib/util-cache.php:1149
 msgid "WP Rocket Cache"
 msgstr ""
 
-#: lib/util-cache.php:1160
+#: lib/util-cache.php:1161
 msgid "WP Super Cache"
 msgstr ""
 

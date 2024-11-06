@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
-			$html .= $this->get_mt_data( 'added', array( $mtime_total, memory_get_usage() ) ) . "\n";
+			$html .= $this->get_mt_data( 'added', $mtime_total ) . "\n";
 
 			return $html;
 		}
@@ -842,11 +842,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				case 'added':
 
-					$total_secs = sprintf( '%f secs', $args[ 0 ] );
-					$total_mem  = SucomUtil::format_mem_use( $args[ 1 ], $dec = 2 );
+					$total_secs = sprintf( '%f secs', $args );
+					$human_mem  = SucomUtil::format_mem_use( memory_get_peak_usage(), $dec = 2 );
 
 					return '<meta name="wpsso-' . $type . '" content="' . gmdate( 'c' ) .
-						' in ' . $total_secs .  ' ' . $total_mem . '"/>' . "\n";
+						' in ' . $total_secs .  ' (' . $human_mem . ' peak)"/>' . "\n";
 
 				case 'begin':
 				case 'disabled':
