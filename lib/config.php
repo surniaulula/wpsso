@@ -2527,7 +2527,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager.
 			 */
 			'um' => array(
-				'min_version' => '6.0.1',	// Released on 2024/08/27.
+				'min_version' => '7.1.0',	// Released on 2024/09/15.
 				'rec_version' => '7.2.2',	// Released on 2024/11/01.
 				'version_filter' => array(
 					'dev'    => 'Development and Up',
