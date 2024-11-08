@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( is_admin() || $doing_cron ) {
 
-				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ), -1000, 0 );
+				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ), -2000, 0 );
 			}
 		}
 

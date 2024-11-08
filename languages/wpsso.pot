@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.17.0\n"
+"Project-Id-Version: WPSSO Core 18.17.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2949,91 +2949,91 @@ msgstr ""
 msgid "Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:7 lib/com/cache.php:220
+#: gettext/gettext-lib-com.php:7 lib/com/cache.php:235
 msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:225
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:240
 msgid "Error retrieving %1$s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:231
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:246
 msgid "cURL error code %1$d %2$s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:237
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:252
 msgid "SSL verification failed with code %1$d."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:242
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:257
 msgid "HTTP connection returned code %1$d."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:12 gettext/gettext-lib-com.php:15
-#: lib/com/cache.php:257 lib/com/cache.php:274
+#: lib/com/cache.php:272 lib/com/cache.php:289
 msgid ""
 "The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL "
 "redirects."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:13 lib/com/cache.php:260
+#: gettext/gettext-lib-com.php:13 lib/com/cache.php:275
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:263
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:278
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:16 lib/com/cache.php:277
+#: gettext/gettext-lib-com.php:16 lib/com/cache.php:292
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:282
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:297
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:287
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:302
 msgid ""
 "Additional requests to retrieve this URL will be ignored for another %d "
 "second(s)."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:473 lib/com/cache.php:668 lib/util-cache.php:169
+#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:169
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:565
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:585
 msgid ""
 "PHP cURL library missing - contact your hosting provider to have the cURL "
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:926
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:946
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:958
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:978
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1066
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:1086
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1080
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1100
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1094
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1114
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1123
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1143
 msgid "Failed writing data to cache file %s."
 msgstr ""
 

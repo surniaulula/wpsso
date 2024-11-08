@@ -48,7 +48,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 
-			add_action( 'shutdown', array( $this, 'save_ignored_urls' ), -1000, 0 );
+			add_action( 'shutdown', array( $this, 'save_ignored_urls' ), -3000, 0 );
 		}
 
 		/*
@@ -115,6 +115,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return;
 			}
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->log( 'getting transient for ignored urls' );
+			}
+
 			$cache_md5_pre = $this->plugin_id . '_';
 			$cache_salt    = __CLASS__ . '::ignored_urls';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -143,6 +148,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function save_ignored_urls() {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
+
 			/*
 			 * 'loaded' will be true if any ignored URL method has been run.
 			 */
@@ -156,6 +166,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_md5_pre = $this->plugin_id . '_';
 					$cache_salt    = __CLASS__ . '::ignored_urls';
 					$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+					if ( ! empty( $this->p->debug->enabled ) ) {
+
+						$this->p->debug->log( 'saving ' . count( $this->ignored[ 'urls' ] ) . ' ignored urls' );
+					}
 
 					set_transient( $cache_id, $this->ignored, $this->ignored[ 'expires' ] );
 
@@ -337,6 +352,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		public function clear( $url, $cache_pre_ext = '' ) {
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->mark();
+			}
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 
