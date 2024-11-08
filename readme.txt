@@ -280,6 +280,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.17.1-dev.1 (2024/11/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated debug messages for tighter formatting.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `SucomCache->shutdown_stats()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.1.0 (Premium edition).
+
 **Version 18.17.0 (2024/11/06)**
 
 * **New Features**
@@ -494,6 +509,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (Premium edition).
 
 == Upgrade Notice ==
+
+= 18.17.1-dev.1 =
+
+(2024/11/07) Updated debug messages for tighter formatting.
 
 = 18.17.0 =
 
