@@ -1599,13 +1599,33 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$shipping_zones      = WC_Shipping_Zones::get_zones( $context = 'admin' );
-			$shipping_zones      = apply_filters( 'wpsso_wc_shipping_zones', $shipping_zones );
-			$shipping_states     = WC()->countries->get_states();
-			$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
-			$shipping_countries  = WC()->countries->get_shipping_countries();
-			$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
-			$shipping_base_loc   = wc_get_base_location();	// Example: array( [country] => US [state] => CA ).
+			/*
+			 * Define static variables only once to prevent duplicate WooCommerce queries.
+			 */
+			static $shipping_zones      = null;
+			static $shipping_continents = null;
+			static $shipping_countries  = null;
+			static $shipping_states     = null;
+			static $shipping_enabled    = null;
+			static $world_zone_id       = null;
+			static $world_zone_obj      = null;
+			static $world_zone_name     = null;
+			static $world_zone_methods  = null;
+
+			if ( null === $shipping_zones ) {
+			
+				$shipping_zones      = WC_Shipping_Zones::get_zones( $context = 'admin' );
+				$shipping_zones      = apply_filters( 'wpsso_wc_shipping_zones', $shipping_zones );
+				$shipping_continents = WC()->countries->get_shipping_continents();
+				$shipping_countries  = WC()->countries->get_shipping_countries();
+				$shipping_states     = WC()->countries->get_states();
+				$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
+
+				$world_zone_id      = 0;
+				$world_zone_obj     = WC_Shipping_Zones::get_zone( $world_zone_id );	// Locations not covered by your other zones.
+				$world_zone_name    = __( 'World', 'wpsso' );
+				$world_zone_methods = $world_zone_obj->get_shipping_methods();
+			}
 
 			$product_id         = $this->p->util->wc->get_product_id( $product );
 			$product_url        = $this->get_product_url( $product );
@@ -1647,6 +1667,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				/*
 				 * Each zone consists of shipping locations and shipping methods.
 				 */
+				static $local_fifo = array();
+
 				foreach ( $shipping_zones as $zone_id => $zone ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -1654,78 +1676,28 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						$this->p->debug->log( 'zone id = ' . $zone_id );
 					}
 
-					$zone_obj       = WC_Shipping_Zones::get_zone( $zone_id );
-					$zone_name      = $zone_obj->get_zone_name( $context = 'admin' );
-					$zone_locations = $zone_obj->get_zone_locations( $context = 'admin' );
-					$zone_methods   = $zone_obj->get_shipping_methods( $enabled_only = true, $context = 'admin' );
-					$zone_methods   = apply_filters( 'wpsso_wc_shipping_zone_methods', $zone_methods, $zone_id, $zone_obj );
+					if ( isset( $local_fifo[ $zone_id ] ) ) {
 
-					$shipping_destinations = array();
-					$shipping_postcodes    = array();
+						list( $zone_obj, $zone_name, $zone_locations, $zone_methods ) = $local_fifo[ $zone_id ];
 
-					foreach ( $zone_locations as $location_key => $location_obj ) {
+					} else {
 
-						if ( $this->p->debug->enabled ) {
+						$zone_obj       = WC_Shipping_Zones::get_zone( $zone_id );
+						$zone_name      = $zone_obj->get_zone_name( $context = 'admin' );
+						$zone_locations = $zone_obj->get_zone_locations( $context = 'admin' );
+						$zone_methods   = $zone_obj->get_shipping_methods( $enabled_only = true, $context = 'admin' );
+						$zone_methods   = apply_filters( 'wpsso_wc_shipping_zone_methods', $zone_methods, $zone_id, $zone_obj );
 
-							$this->p->debug->log( 'zone location ' . $location_key. ' ' . $location_obj->type . ' = ' . $location_obj->code );
-						}
+						/*
+						 * Maybe limit the number of array elements.
+						 */
+						$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-						$destination_opts = array();
-
-						if ( 'continent' === $location_obj->type ) {
-
-							if ( isset( $shipping_continents[ $location_obj->code ][ 'countries' ] ) ) {
-
-								$destination_opts[ 'country_code' ] = $shipping_continents[ $location_obj->code ][ 'countries' ];
-							}
-
-						} elseif ( 'country' === $location_obj->type ) {
-
-							if ( isset( $shipping_countries[ $location_obj->code ] ) ) {	// Just in case.
-
-								$destination_opts[ 'country_code' ] = $location_obj->code;
-							}
-
-						} elseif ( 'state' === $location_obj->type ) {
-
-							$codes = explode( ':', $location_obj->code );
-
-							if ( isset( $shipping_countries[ $codes[ 0 ] ] ) ) {	// Just in case.
-
-								if ( isset( $shipping_states[ $codes[ 0 ] ][ $codes[ 1 ] ] ) ) {	// Just in case.
-
-									$destination_opts[ 'country_code' ] = $codes[ 0 ];
-									$destination_opts[ 'region_code' ]  = $codes[ 1 ];
-								}
-							}
-
-						} elseif ( 'postcode' === $location_obj->type ) {
-
-							$destination_opts[ 'country_code' ] = apply_filters( 'wpsso_wc_shipping_zone_location_postal_code_country',
-								$shipping_base_loc[ 'country' ], $zone_obj, $location_key, $location_obj );
-
-							$destination_opts[ 'postal_code' ]  = $location_obj->code;
-						}
-
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log_arr( 'destination_opts', $destination_opts );
-						}
-
-						if ( ! empty( $destination_opts ) ) {
-
-							$destination_opts[ 'destination_id' ]  = 'dest-z' . $zone_id . '-d' . $location_key;
-							$destination_opts[ 'destination_rel' ] = $product_parent_url;
-
-							$shipping_destinations[] = $destination_opts;
-						}
+						$local_fifo[ $zone_id ] = array( $zone_obj, $zone_name, $zone_locations, $zone_methods );
 					}
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log_arr( 'shipping_destinations', $shipping_destinations );
-					}
+					$zone_ship_dest = $this->get_zone_shipping_destinations( $zone_id, $zone_obj, $zone_locations,
+						$shipping_continents, $shipping_countries, $shipping_states, $product_parent_url );
 
 					/*
 					 * Get shipping methods and rates for this zone.
@@ -1740,7 +1712,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 						if ( $shipping_offer ) {
 
-							if ( empty( $shipping_destinations ) ) {	// Ships to the World.
+							if ( empty( $zone_ship_dest ) ) {	// Ships to the World.
 
 								if ( $this->p->debug->enabled ) {
 
@@ -1756,7 +1728,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 									$this->p->debug->log( 'shipping offer for zone ' . $zone_name . ' ships to destinations' );
 								}
 
-								$shipping_offer[ 'shipping_destinations' ] = $shipping_destinations;
+								$shipping_offer[ 'shipping_destinations' ] = $zone_ship_dest;
 							}
 
 							$mt_ecom[ 'product:shipping_offers' ][] = $shipping_offer;
@@ -1766,17 +1738,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 							$this->p->debug->log( 'no shipping offer for zone ' . $zone_name );
 						}
 
+					} // End of $zone_methods loop.
 
-					}	// End of $zone_methods loop.
+					unset( $method_inst_id, $method_obj, $shipping_offer );
 
-				}	// End of $shipping_zones loop.
+				} // End of $shipping_zones loop.
 
-				unset( $shipping_zones, $shipping_states, $shipping_continents, $shipping_countries );
-
-				$world_zone_id      = 0;
-				$world_zone_obj     = WC_Shipping_Zones::get_zone( $world_zone_id );	// Locations not covered by your other zones.
-				$world_zone_name    = __( 'World', 'wpsso' );
-				$world_zone_methods = $world_zone_obj->get_shipping_methods();
+				unset( $zone_id, $zone, $zone_obj, $zone_name, $zone_locations, $zone_methods, $zone_ship_dest );
 
 				/*
 				 * Get shipping methods and rates for the world zone.
@@ -1802,7 +1770,9 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 							$this->p->debug->log( 'no shipping offer for zone World' );
 						}
 
-					}	// End of $world_zone_methods loop.
+					} // End of $world_zone_methods loop.
+
+					unset ( $method_inst_id, $method_obj, $shipping_offer );
 
 				} elseif ( $this->p->debug->enabled ) {
 
@@ -1811,25 +1781,12 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 		}
 
-		private function get_world_shipping_destinations() {
-
-			$all_countries = SucomUtil::get_alpha2_countries();
-
-			$shipping_destinations = array();
-
-			foreach ( $all_countries as $country_code => $country_name ) {
-
-				$shipping_destinations[] = array(
-					'destination_id'  => 'country-a2-' . $country_code,
-					'destination_rel' => '/',
-					'country_code'    => $country_code,
-				);
-			}
-
-			return $shipping_destinations;
-		}
-
 		private function add_mt_ratings( array &$mt_ecom, $mod, WC_Product $product ) {	// Pass by reference is OK.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
 			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
@@ -1918,6 +1875,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 		private function add_mt_reviews( array &$mt_ecom, $mod, WC_Product $product ) {	// Pass by reference is OK.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$wc_reviews_enabled = apply_filters( 'wpsso_og_add_wc_mt_reviews', $this->reviews_enabled );
 			$wc_rating_enabled  = apply_filters( 'wpsso_og_add_wc_mt_rating', $this->rating_enabled );
 
@@ -1951,6 +1913,127 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'add reviews meta tags is false' );
 			}
 
+		}
+
+		private function get_world_shipping_destinations() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$all_countries = SucomUtil::get_alpha2_countries();
+
+				foreach ( $all_countries as $country_code => $country_name ) {
+
+					$local_cache[] = array(
+						'destination_id'  => 'country-a2-' . $country_code,
+						'destination_rel' => '/',
+						'country_code'    => $country_code,
+					);
+				}
+			}
+
+			return $local_cache;
+		}
+
+		private function get_zone_shipping_destinations( $zone_id, $zone_obj, $zone_locations,
+			$shipping_continents, $shipping_countries, $shipping_states, $product_parent_url ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $local_fifo = array();
+
+			if ( isset( $local_fifo[ $zone_id ][ $product_parent_url ] ) ) {
+
+				return $local_fifo[ $zone_id ][ $product_parent_url ];
+
+			} elseif ( isset( $local_fifo[ $zone_id ] ) ) {
+
+				/*
+				 * Maybe limit the number of array elements.
+				 */
+				$local_fifo[ $zone_id ] = SucomUtil::array_slice_fifo( $local_fifo[ $zone_id ], WPSSO_CACHE_ARRAY_FIFO_MAX );
+
+			} else $local_fifo[ $zone_id ] = array();
+
+			$base_location  = wc_get_base_location();	// Example: array( [country] => US [state] => CA ).
+			$zone_ship_dest = array();
+
+			foreach ( $zone_locations as $location_key => $location_obj ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'zone location ' . $location_key. ' ' . $location_obj->type . ' = ' . $location_obj->code );
+				}
+
+				$dest_opts = array();
+
+				if ( 'continent' === $location_obj->type ) {
+
+					if ( isset( $shipping_continents[ $location_obj->code ][ 'countries' ] ) ) {
+
+						$dest_opts[ 'country_code' ] = $shipping_continents[ $location_obj->code ][ 'countries' ];
+					}
+
+				} elseif ( 'country' === $location_obj->type ) {
+
+					if ( isset( $shipping_countries[ $location_obj->code ] ) ) {	// Just in case.
+
+						$dest_opts[ 'country_code' ] = $location_obj->code;
+					}
+
+				} elseif ( 'state' === $location_obj->type ) {
+
+					$codes = explode( ':', $location_obj->code );
+
+					if ( isset( $shipping_countries[ $codes[ 0 ] ] ) ) {	// Just in case.
+
+						if ( isset( $shipping_states[ $codes[ 0 ] ][ $codes[ 1 ] ] ) ) {	// Just in case.
+
+							$dest_opts[ 'country_code' ] = $codes[ 0 ];
+							$dest_opts[ 'region_code' ]  = $codes[ 1 ];
+						}
+					}
+
+				} elseif ( 'postcode' === $location_obj->type ) {
+
+					$dest_opts[ 'country_code' ] = apply_filters( 'wpsso_wc_shipping_zone_location_postal_code_country',
+						$base_location[ 'country' ], $zone_obj, $location_key, $location_obj );
+
+					$dest_opts[ 'postal_code' ] = $location_obj->code;
+				}
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_arr( 'dest_opts', $dest_opts );
+				}
+
+				if ( ! empty( $dest_opts ) ) {
+
+					$dest_opts[ 'destination_id' ]  = 'dest-z' . $zone_id . '-d' . $location_key;
+					$dest_opts[ 'destination_rel' ] = $product_parent_url;
+
+					$zone_ship_dest[] = $dest_opts;
+				}
+
+			} // End of $zone_locations.
+
+			unset( $location_key, $location_obj, $dest_opts );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'zone_ship_dest', $zone_ship_dest );
+			}
+
+			return $local_fifo[ $zone_id ][ $product_parent_url ] = $zone_ship_dest;
 		}
 
 		/*

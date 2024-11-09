@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'required call to WpssoUser->get_mod() for user ID ' . $term_id );
+						$this->p->debug->log( 'required call to WpssoUser->get_mod() for user ID ' . $user_id );
 					}
 
 					$mod = $this->get_mod( $user_id );

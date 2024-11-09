@@ -15,7 +15,7 @@
  * Requires At Least: 5.9
  * Tested Up To: 6.7.0
  * WC Tested Up To: 9.3.3
- * Version: 18.17.1-dev.1
+ * Version: 18.18.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -721,48 +721,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function debug_hooks() {
 
 			/*
-			 * Show a comment marker at the top / bottom of the head and footer sections.
+			 * Show debug messages after the head and footer sections.
+			 *
+			 * Do not include the "shutdown" action as that would create HTML after the html closing tag.
 			 */
 			foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 
-				foreach ( array( PHP_INT_MIN, PHP_INT_MAX ) as $prio ) {
-
-					$function = function() use ( $action, $prio ) {
-						echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
-					};
-
-					add_action( $action, $function, $prio );
-
-					add_action( $action, array( $this, 'show_debug' ), $prio );
-				}
+				add_action( $action, array( $this, 'show_debug' ), PHP_INT_MAX );
 			}
 
 			/*
-			 * Show a comment marker at the top / bottom of the content section.
-			 */
-			foreach ( array( 'the_content' ) as $filter ) {
-
-				/*
-				 * Prepend marker.
-				 */
-				$function = function( $html ) use ( $filter ) {
-					return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . PHP_INT_MIN . ' mark -->' . "\n\n" . $html;
-				};
-
-				add_filter( $filter, $function, PHP_INT_MIN );
-
-				/*
-				 * Append marker.
-				 */
-				$function = function( $html ) use ( $filter ) {
-					return $html . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . PHP_INT_MAX . ' mark -->' . "\n\n";
-				};
-
-				add_filter( $filter, $function, PHP_INT_MAX );
-			}
-
-			/*
-			 * Show the plugin settings just before the footer marker.
+			 * Show plugin settings just after the footer section.
 			 */
 			foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
 
@@ -774,6 +743,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Only runs when debug is enabled.
 		 */
 		public function show_debug() {
+
+			echo "\n\n" . '<!-- wpsso doing action "' . current_action() . '" -->' . "\n\n";
 
 			$this->debug->show_html( null, 'debug log' );
 		}

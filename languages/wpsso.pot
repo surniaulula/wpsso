@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.17.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 18.18.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7439,7 +7439,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:442
+#: lib/comment.php:447
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -9314,23 +9314,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1778
+#: lib/integ/ecom/woocommerce.php:1626
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1891
+#: lib/integ/ecom/woocommerce.php:1848
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1894
+#: lib/integ/ecom/woocommerce.php:1851
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1897
+#: lib/integ/ecom/woocommerce.php:1854
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -16022,35 +16022,35 @@ msgctxt "option comment"
 msgid "(%s constant is false)"
 msgstr ""
 
-#: wpsso.php:867
+#: wpsso.php:838
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:874
+#: wpsso.php:845
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
-#: wpsso.php:882
+#: wpsso.php:853
 msgid ""
 "The %s plugin's debug mode generates thousands of messages during page load, "
 "which affects website performance."
 msgstr ""
 
-#: wpsso.php:884
+#: wpsso.php:855
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:894
+#: wpsso.php:865
 msgid ""
 "The %s plugin's cache feature is disabled for debugging, which affects "
 "website performance."
 msgstr ""
 
-#: wpsso.php:896
+#: wpsso.php:867
 msgid "Don't forget to re-enable caching when debugging is complete."
 msgstr ""
 

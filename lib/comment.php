@@ -264,6 +264,11 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'required call to WpssoComment->get_mod() for comment ID ' . $comment_id );
+					}
+
 					$mod = $this->get_mod( $comment_id );
 
 					$filter_name = 'wpsso_get_md_options';

@@ -339,6 +339,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			return SucomUtil::format_mem_use( $mem, $dec = 2 );
 		}
 
+		/*
+		 * See Wpsso->debug_hooks().
+		 */
 		public function show_html( $data = null, $title = null ) {
 
 			if ( ! $this->is_enabled( 'html' ) ) return;
@@ -415,7 +418,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						/*
 						 * Firefox does not allow double-dashes inside comment blocks.
 						 */
-						$val = str_replace( '--', '&hyphen;&hyphen;', $val );
+						$val = str_replace( array(
+							'--',
+						), array(
+							'&hyphen;&hyphen;',
+						), $val );
 
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 
