@@ -280,16 +280,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.17.1-dev.1 (2024/11/08)**
+**Version 18.18.0-dev.1 (2024/11/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Improved the performance of WooCommerce shipping offers.
 	* Updated debug messages for tighter formatting.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `SucomCache->shutdown_stats()` method.
+	* Added a new `WpssoIntegEcomWooCommerce->get_zone_shipping_destinations()` method.
+	* Refactored caching in `WpssoIntegEcomWooCommerce->add_mt_shipping_offers()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -510,9 +513,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.17.1-dev.1 =
+= 18.18.0-dev.1 =
 
-(2024/11/07) Updated debug messages for tighter formatting.
+(2024/11/09) Improved the performance of WooCommerce shipping offers. Updated debug messages for tighter formatting.
 
 = 18.17.0 =
 
