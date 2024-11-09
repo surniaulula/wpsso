@@ -975,7 +975,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *	maybe_iso8601_to_seconds()
 		 *	sprintf_date_time()
 		 */
-		public static function format_mem_use( $bytes, $dec = 2, $sep = ' ' ) {
+		public static function format_human_bytes( $bytes, $dec = 2, $sep = ' ' ) {
 
 			$size = array( 'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' );
 

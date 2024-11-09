@@ -243,6 +243,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! $this->md_cache_disabled ) {
 
 				$local_fifo[ $user_id ] = $mod;
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_size( 'local_fifo', $local_fifo );
+				}
 			}
 
 			return $mod;

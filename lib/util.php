@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/*
 			 * Instantiate WpssoUtilReg.
 			 */
-			if ( ! class_exists( 'WpssoUtilRobots' ) ) {	// Since WPSSO Core v6.13.1.
+			if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/util-robots.php';
 			}
@@ -225,8 +225,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/*
-		 * Since WPSSO Core v11.7.2.
-		 *
 		 * Monitor the WordPress 'change_locale' action for locale changes.
 		 *
 		 * Log the locale change and clear the SucomUtilWP::get_locale() cache.
@@ -448,9 +446,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $image_sizes;
 		}
 
-		/*
-		 * Since WPSSO Core v14.5.0.
-		 */
 		public function is_size_cropped( $size_name = 'thumbnail', $attachment_id = false ) {
 
 			/*
@@ -558,7 +553,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/*
 			 * Crop can be true, false, or an array.
 			 */
-			return $local_fifo[ $size_name ][ $attachment_id ] = array(
+			$local_fifo[ $size_name ][ $attachment_id ] = array(
 				'size_name'     => $size_name,
 				'attachment_id' => $attachment_id,
 				'width'         => $width,
@@ -569,6 +564,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'label_transl'  => $this->get_image_size_label( $size_name ),
 				'opt_prefix'    => $this->get_image_size_opt( $size_name ),
 			);
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_size( 'local_fifo', $local_fifo );
+			}
+
+			return $local_fifo[ $size_name ][ $attachment_id ];
 		}
 
 		/*

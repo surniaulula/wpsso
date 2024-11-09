@@ -271,6 +271,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				$local_fifo[ $term_id ][ $tax_slug ] = $mod;
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_size( 'local_fifo', $local_fifo );
+				}
 			}
 
 			return $mod;

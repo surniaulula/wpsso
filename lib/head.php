@@ -843,7 +843,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'added':
 
 					$total_secs = sprintf( '%f secs', $args );
-					$human_mem  = SucomUtil::format_mem_use( memory_get_peak_usage(), $dec = 2 );
+					$human_mem  = SucomUtil::format_human_bytes( memory_get_peak_usage(), $dec = 2 );
 
 					return '<meta name="wpsso-' . $type . '" content="' . gmdate( 'c' ) .
 						' in ' . $total_secs .  ' (' . $human_mem . ' peak)"/>' . "\n";

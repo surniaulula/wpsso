@@ -1694,6 +1694,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
 						$local_fifo[ $zone_id ] = array( $zone_obj, $zone_name, $zone_locations, $zone_methods );
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log_size( 'local_fifo', $local_fifo );
+						}
 					}
 
 					$zone_ship_dest = $this->get_zone_shipping_destinations( $zone_id, $zone_obj, $zone_locations,
@@ -2033,7 +2038,16 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log_arr( 'zone_ship_dest', $zone_ship_dest );
 			}
 
-			return $local_fifo[ $zone_id ][ $product_parent_url ] = $zone_ship_dest;
+			$local_fifo[ $zone_id ][ $product_parent_url ] = $zone_ship_dest;
+
+			unset ( $zone_ship_dest );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_size( 'local_fifo', $local_fifo );
+			}
+
+			return $local_fifo[ $zone_id ][ $product_parent_url ];
 		}
 
 		/*

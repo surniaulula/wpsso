@@ -376,6 +376,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! $this->md_cache_disabled ) {
 
 				$local_fifo[ $post_id ] = $mod;
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_size( 'local_fifo', $local_fifo );
+				}
 			}
 
 			return $mod;
