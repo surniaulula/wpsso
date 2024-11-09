@@ -1114,10 +1114,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						}
 
 						$values[] = $attr_value;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no ' . $attr_name . ' default value for variation' );
 					}
 
 				/*
@@ -1128,7 +1124,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					/*
 					 * Skip attributes with select options (example: Small | Medium | Large).
 					 */
-					if ( $this->is_variation_selectable_attribute( $product, $attr_name ) ) {
+					if ( $this->is_variation_selectable_attribute( $product_id, $product, $attr_name ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -2355,21 +2351,21 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $product_currency = null;
+			static $local_cache = null;
 
-			if ( null === $product_currency ) {	// Get value only once.
+			if ( null === $local_cache ) {	// Get value only once.
 
-				$product_currency = get_woocommerce_currency();
+				$local_cache = get_woocommerce_currency();
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'get_woocommerce_currency() returned ' . $product_currency );
+					$this->p->debug->log( 'get_woocommerce_currency() returned ' . $local_cache );
 				}
 
-				$product_currency = apply_filters( 'wpsso_product_currency', $product_currency );
+				$local_cache = apply_filters( 'wpsso_product_currency', $local_cache );
 			}
 
-			return $product_currency;
+			return $local_cache;
 		}
 
 		/*
@@ -2552,18 +2548,34 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			return apply_filters( 'wpsso_product_variation_description', $desc_text, $product, $variation );
 		}
 
-		private function is_variation_selectable_attribute( $product, $attr_name ) {
+		private function is_variation_selectable_attribute( $product_id, $product, $attr_name ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'product_id' => $product_id,
+					'product'    => $product,
+					'attr_name'  => $attr_name,
+				) );
+			}
 
 			if ( method_exists( $product, 'get_variation_attributes' ) ) {	// Just in case.
 
-				$var_attrs = $product->get_variation_attributes();
+				static $local_fifo = array();
 
-				foreach ( $var_attrs as $var_name => $arr ) {
+				if ( ! isset( $local_fifo[ $product_id ] ) ) {
 
-					if ( $var_name === $attr_name ) {
+					/*
+					 * Maybe limit the number of array elements.
+					 */
+					$local_fifo = SucomUtil::array_slice_fifo( $local_fifo, WPSSO_CACHE_ARRAY_FIFO_MAX );
 
-						return true;
-					}
+					$local_fifo[ $product_id ] = $product->get_variation_attributes();
+				}
+
+				if ( isset( $local_fifo[ $product_id ][ $attr_name ] ) && is_array( $local_fifo[ $product_id ][ $attr_name ] ) ) {
+
+					return true;
 				}
 			}
 

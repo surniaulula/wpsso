@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.18.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 18.18.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3038,25 +3038,25 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:925 lib/com/form.php:2599
+#: lib/com/form.php:925 lib/com/form.php:2596
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:926 lib/com/form.php:2600
+#: lib/com/form.php:926 lib/com/form.php:2597
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:927 lib/com/form.php:2601
+#: lib/com/form.php:927 lib/com/form.php:2598
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:928 lib/com/form.php:2602
+#: lib/com/form.php:928 lib/com/form.php:2599
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
@@ -9314,23 +9314,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1626
+#: lib/integ/ecom/woocommerce.php:1622
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1853
+#: lib/integ/ecom/woocommerce.php:1849
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1856
+#: lib/integ/ecom/woocommerce.php:1852
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1859
+#: lib/integ/ecom/woocommerce.php:1855
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 

@@ -46,10 +46,22 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		 */
 		public function is_mod_variable( $mod ) {
 
-			if ( $product = $this->get_product( $mod[ 'id' ] ) ) {
+			static $local_cache = array();
 
-				return $this->is_product_variable( $product );
+			if ( $mod[ 'is_post' ] ) {	// Just in case.
+
+				if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
+
+					return $local_cache[ $mod[ 'id' ] ];
+
+				} elseif ( $product = $this->get_product( $mod[ 'id' ] ) ) {
+
+					return $local_cache[ $mod[ 'id' ] ] = $this->is_product_variable( $product );
+
+				} else return $local_cache[ $mod[ 'id' ] ] = false;
 			}
+
+			return false;
 		}
 
 		public function is_product_variable( $product ) {

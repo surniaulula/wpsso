@@ -1002,12 +1002,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$img_lib_css_id = SucomUtil::sanitize_css_id( $input_name_lib_locale );
 			$img_url_css_id = SucomUtil::sanitize_css_id( $input_name_url_locale );
 
-			$input_name_id_attr .= 'data-preview-css-id="' . $preview_css_id . '"' .
+			$input_name_id_attr .= ' data-preview-css-id="' . $preview_css_id . '"' .
 				' data-img-lib-css-id="select_' . $img_lib_css_id . '"' .
 				' data-img-url-css-id="text_' . $img_url_css_id . '"';
 
-			$input_name_lib_attr = 'data-img-id-css-id="text_' . $img_id_css_id . '"' .
-				'data-upload-css-id="button_' . $upload_css_id . '"';
+			$input_name_lib_attr = ' data-img-id-css-id="text_' . $img_id_css_id . '"' .
+				' data-upload-css-id="button_' . $upload_css_id . '"';
 
 			$upload_button_data = array(
 				'img-id-css-id'  => 'text_' . $img_id_css_id,
@@ -1738,10 +1738,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$el_attr .= ' data-' . $data_key . '="' . esc_attr( $data_value ) . '"';
 				}
 
-			} else {
-
-				$el_attr = $el_data;
-			}
+			} else $el_attr = $el_data;
 
 			$html = '<input type="button" ';
 			$html .= $is_disabled ? ' disabled="disabled"' : '';
