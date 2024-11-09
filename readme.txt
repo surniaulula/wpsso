@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Improved the performance of WooCommerce shipping offers.
+	* Improved performance when creating the markup for WooCommerce shipping offers.
 	* Updated debug messages for tighter formatting.
 * **Bugfixes**
 	* None.
@@ -293,6 +293,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomCache->shutdown_stats()` method.
 	* Added a new `WpssoIntegEcomWooCommerce->get_zone_shipping_destinations()` method.
 	* Refactored caching in `WpssoIntegEcomWooCommerce->add_mt_shipping_offers()`.
+	* Refactored caching in `WpssoIntegEcomWooCommerce->is_variation_selectable_attribute()`.
+	* Refactored caching in `WpssoUtilWooCommerce->is_mod_variable()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -515,7 +517,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.18.0-dev.2 =
 
-(2024/11/09) Improved the performance of WooCommerce shipping offers. Updated debug messages for tighter formatting.
+(2024/11/09) Improved performance when creating the markup for WooCommerce shipping offers.
 
 = 18.17.0 =
 
