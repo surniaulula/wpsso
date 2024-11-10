@@ -1,4 +1,4 @@
-=== WPSSO Core - Fast and Complete Structured Data SEO Plugin ===
+=== WPSSO Core - Complete and Optimized Structured Data SEO ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: schema, woocommerce, google search console, seo, meta tags
+Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
@@ -18,7 +18,7 @@ Present your content at its best for social sites and search results, no matter 
 
 == Description ==
 
-<h3 class="top">Fast and Complete Structured Data SEO Plugin for WordPress</h3>
+<h3 class="top">Complete and Optimized Structured Data SEO for WordPress</h3>
 
 <p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
