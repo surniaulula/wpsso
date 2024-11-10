@@ -90,7 +90,7 @@ Present your content at its best for social sites and search results, no matter 
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Supports additional data from active plugins, including:</strong></p>
+<p><strong>Retrieves additional content information from active plugins, including:</strong></p>
 
 * <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a>
 * <a href="https://wordpress.org/plugins/elementor/">Elementor Website Builder</a>
