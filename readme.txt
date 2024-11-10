@@ -286,7 +286,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Improved performance when creating the markup for WooCommerce shipping offers.
-	* Updated debug messages for tighter formatting.
+	* Updated the format of debug messages for more compact logging.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
