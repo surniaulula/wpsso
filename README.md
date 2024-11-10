@@ -1,4 +1,4 @@
-<h1>WPSSO Core - Fast and Complete Structured Data SEO Plugin</h1>
+<h1>WPSSO Core - Complete and Optimized Structured Data SEO</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -10,12 +10,12 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>9.3.3</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, woocommerce, google search console, seo, meta tags</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>schema, woocommerce, search results, optimize, meta tags</td></tr>
 </table>
 
 <h2>Description</h2>
 
-<h3 class="top">Fast and Complete Structured Data SEO Plugin for WordPress</h3>
+<h3 class="top">Complete and Optimized Structured Data SEO for WordPress</h3>
 
 <p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
