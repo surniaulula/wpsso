@@ -17,7 +17,7 @@
 
 <h3 class="top">Complete and Optimized Structured Data SEO for WordPress</h3>
 
-<p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
@@ -43,14 +43,6 @@
 </ul>
 
 <!-- /about -->
-
-<p><strong>Users love the WPSSO Core plugin:</strong></p>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - <a href="https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/">kw11</a></p>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - <a href="https://wordpress.org/support/topic/excellent-plugin-6825/">marguy1</a></p>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%." - <a href="https://wordpress.org/support/topic/excellent-plugin-and-support-200/">playnstocks</a></p>
 
 <p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
 
@@ -171,7 +163,7 @@
 <li>Product Net Width</li>
 </ul>
 
-<p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
+<p><strong>Optionally improve the structured data markup of other SEO plugins:</strong></p>
 
 <p>WPSSO Core and its add-ons can also run in combination with other SEO plugins to <strong>improve the SEO plugin's performance and structured data markup</strong>.</p>
 
@@ -184,7 +176,7 @@
 <li>Yoast SEO</li>
 </ul>
 
-<p><strong>Premium edition also reads data from service APIs, including:</strong></p>
+<p><strong>The Premium edition can also retrieve data from service APIs automatically, including:</strong></p>
 
 <ul>
 <li>Bitly Short URL</li>
