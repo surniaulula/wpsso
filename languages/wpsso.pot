@@ -6833,21 +6833,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1817
+#: lib/abstract/wp-meta.php:1807
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2126
+#: lib/abstract/wp-meta.php:2116
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2128 lib/abstract/wp-meta.php:2141
+#: lib/abstract/wp-meta.php:2118 lib/abstract/wp-meta.php:2131
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2139
+#: lib/abstract/wp-meta.php:2129
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 

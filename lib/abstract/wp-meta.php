@@ -1755,16 +1755,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
-			/*
-			 * Update the WordPress metadata cache.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'calling update_meta_cache() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
-			}
-
-			$metadata = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
-
 			do_action( 'wpsso_clear_mod_cache', $mod );
 		}
 
