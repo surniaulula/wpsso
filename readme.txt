@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data SEO Plugin ===
+=== WPSSO Core - Fast and Complete Structured Data SEO Plugin ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best for social sites and search results, no matter 
 
 == Description ==
 
-<h3 class="top">The Complete Structured Data SEO Plugin for WordPress</h3>
+<h3 class="top">Fast and Complete Structured Data SEO Plugin for WordPress</h3>
 
 <p><strong>Creates extensive and complete structured data to present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Improved performance when creating the markup for WooCommerce shipping offers.
+	* Improved performance when creating markup for WooCommerce shipping offers.
 	* Updated the format of debug messages for more compact logging.
 * **Bugfixes**
 	* None.
@@ -517,7 +517,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.18.0-rc.1 =
 
-(2024/11/10) Improved performance when creating the markup for WooCommerce shipping offers.
+(2024/11/10) Improved performance when creating markup for WooCommerce shipping offers.
 
 = 18.17.0 =
 
