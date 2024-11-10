@@ -280,7 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.0-dev.2 (2024/11/09)**
+**Version 18.18.0-b.1 (2024/11/10)**
 
 * **New Features**
 	* None.
@@ -515,9 +515,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.0-dev.2 =
+= 18.18.0-b.1 =
 
-(2024/11/09) Improved performance when creating the markup for WooCommerce shipping offers.
+(2024/11/10) Improved performance when creating the markup for WooCommerce shipping offers.
 
 = 18.17.0 =
 
