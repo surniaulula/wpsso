@@ -119,28 +119,31 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/*
 				 * Define the default organization or person ID for Knowledge Graph markup in the home page.
 				 */
-				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
+				if ( isset( $this->p->options[ 'site_pub_schema_type' ] ) ) {
 
-					case 'person':
+					switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
 
-						$local_cache[ 'schema_def_pub_org_id' ]    = 'none';
-						$local_cache[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
+						case 'person':
 
-						break;
+							$local_cache[ 'schema_def_pub_org_id' ]    = 'none';
+							$local_cache[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
 
-					case 'organization':
+							break;
 
-						$local_cache[ 'schema_def_pub_org_id' ]    = 'site';
-						$local_cache[ 'schema_def_pub_person_id' ] = 'none';
+						case 'organization':
 
-						break;
+							$local_cache[ 'schema_def_pub_org_id' ]    = 'site';
+							$local_cache[ 'schema_def_pub_person_id' ] = 'none';
+
+							break;
+					}
 				}
 
 				/*
 				 * Update default place options based on the open graph defaults.
 				 */
-				$local_cache[ 'schema_def_place_country' ]  = $this->p->options[ 'og_def_country' ];
-				$local_cache[ 'schema_def_place_timezone' ] = $this->p->options[ 'og_def_timezone' ];
+				if ( isset( $this->p->options[ 'og_def_country' ] ) )  $local_cache[ 'schema_def_place_country' ]  = $this->p->options[ 'og_def_country' ];
+				if ( isset( $this->p->options[ 'og_def_timezone' ] ) ) $local_cache[ 'schema_def_place_timezone' ] = $this->p->options[ 'og_def_timezone' ];
 
 				/*
 				 * Get translated strings for variable based options.
