@@ -1708,7 +1708,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/*
 				 * Check for missing open graph image and description values.
 				 */
-				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
+				if ( $mod[ 'id' ] && $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
 					$this->check_head_info( $mod );
 				}

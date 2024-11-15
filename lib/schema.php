@@ -2711,7 +2711,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data[ $prop_name ] = apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
 
-				WpssoSchema::check_required_props( $json_data, $mod, array( $prop_name ), $page_type_id );
+				self::check_required_props( $json_data, $mod, array( $prop_name ), $page_type_id );
 			}
 
 			return $item_count;
@@ -4010,7 +4010,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Check for missing Schema property values.
 		 *
-		 * See WpssoAbstractWpMeta->check_head_info().
+		 * See WpssoJsonTypeCreativeWork->filter_json_data_https_schema_org_creativework().
+		 * See WpssoSchema::add_itemlist_data().
+		 * See WpssoSchemaSingle::add_product_data().
 		 */
 		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ), $type_id = null ) {
 
