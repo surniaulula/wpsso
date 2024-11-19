@@ -272,6 +272,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.18.1-dev.1 (2024/11/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Adjusted disk cache file expiration time from 1 month to 1 week.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated default `WPSSO_CACHE_FILES_EXP_SECS` constant to `WEEK_IN_SECONDS`.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.1.0 (for Premium edition).
+
 **Version 18.18.0 (2024/11/11)**
 
 * **New Features**
@@ -290,7 +305,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v7.1.0 (Premium edition).
+	* WPSSO Update Manager v7.1.0 (for Premium edition).
 
 **Version 18.17.0 (2024/11/06)**
 
@@ -312,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v7.1.0 (Premium edition).
+	* WPSSO Update Manager v7.1.0 (for Premium edition).
 
 **Version 18.16.1 (2024/11/02)**
 
@@ -331,7 +346,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.16.0 (2024/11/01)**
 
@@ -353,7 +368,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.15.0 (2024/10/22)**
 
@@ -368,7 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.14.0 (2024/10/15)**
 
@@ -387,7 +402,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.13.0 (2024/10/12)**
 
@@ -402,7 +417,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.12.1 (2024/10/07)**
 
@@ -417,7 +432,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.12.0 (2024/10/04)**
 
@@ -433,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.11.0 (2024/10/01)**
 
@@ -449,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.10.0 (2024/09/21)**
 
@@ -467,7 +482,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.9.0 (2024/09/19)**
 
@@ -487,7 +502,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 **Version 18.8.0 (2024/09/15)**
 
@@ -503,9 +518,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (Premium edition).
+	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.18.1-dev.1 =
+
+(2024/11/19) Adjusted disk cache file expiration time from 1 month to 1 week.
 
 = 18.18.0 =
 
