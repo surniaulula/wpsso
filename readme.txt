@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.1-dev.1 (2024/11/19)**
+**Version 18.18.1-rc.1 (2024/11/20)**
 
 * **New Features**
 	* None.
@@ -522,9 +522,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.1-dev.1 =
+= 18.18.1-rc.1 =
 
-(2024/11/19) Adjusted disk cache file expiration time from 1 month to 1 week.
+(2024/11/20) Adjusted disk cache file expiration time from 1 month to 1 week.
 
 = 18.18.0 =
 
