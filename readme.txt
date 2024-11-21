@@ -281,7 +281,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated default `WPSSO_CACHE_FILES_EXP_SECS` constant to `WEEK_IN_SECONDS`.
+	* Updated the default `WPSSO_CACHE_FILES_EXP_SECS` constant value to `WEEK_IN_SECONDS`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
