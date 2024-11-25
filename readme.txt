@@ -272,7 +272,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.2-rc.1 (2024/11/25)**
+**Version 18.18.2 (2024/11/25)**
 
 * **New Features**
 	* None.
@@ -538,7 +538,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.2-rc.1 =
+= 18.18.2 =
 
 (2024/11/25) Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()`.
 
