@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.18.1\n"
+"Project-Id-Version: WPSSO Core 18.18.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6737,7 +6737,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1756 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1770 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:948
 msgid "%s error:"
 msgstr ""
@@ -14485,11 +14485,15 @@ msgstr ""
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1736
-msgid "ajax request post id is empty"
+#: lib/post.php:1746
+msgid "post id %s invalid for metadata"
 msgstr ""
 
-#: lib/post.php:2017
+#: lib/post.php:1750
+msgid "user cannot edit post id %s"
+msgstr ""
+
+#: lib/post.php:2012
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

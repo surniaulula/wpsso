@@ -473,11 +473,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/*
 			 * Make sure the current user can submit and same metabox options.
 			 */
-			if ( ! $this->user_can_save( $term_id, $term_tax_id ) ) {
+			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot save term id ' . $term_id );
+					$this->p->debug->log( 'exiting early: user cannot edit term id ' . $term_id );
 				}
 
 				return;
@@ -932,9 +932,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
-		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->user_can_save().
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
-		public function user_can_save( $term_id, $term_tax_id = false ) {
+		public function user_can_edit( $term_id, $term_tax_id = false ) {
 
 			if ( ! $this->verify_submit_nonce() ) {
 

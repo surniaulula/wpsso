@@ -657,15 +657,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;
 
-			} elseif ( ! $this->user_can_save( $post_id ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: user cannot save post id ' . $post_id );
-				}
-
-				return;
-
 			/*
 			 * WpssoPost->post_can_have_meta() returns false:
 			 *
@@ -680,7 +671,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' invalid for metadata' );
+				}
+
+				return;
+
+			} elseif ( ! $this->user_can_edit( $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot edit post id ' . $post_id );
 				}
 
 				return;
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' invalid for metadata' );
 				}
 
 				return;
@@ -1731,9 +1731,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$error_msg = __( 'ajax request invalid nonce', 'wpsso' );
 
-			} elseif ( empty( $_POST[ 'post_id' ] ) ) {
+			/*
+			 * WpssoPost->post_can_have_meta() returns false:
+			 *
+			 *	If the $post argument is not numeric or an instance of WP_Post.
+			 *	If the post ID is empty.
+			 *	If the post type is empty.
+			 *	If the post status is empty.
+			 *	If the post type is 'revision'.
+			 *	If the post status is 'trash'.
+			 */
+			} elseif ( ! $this->post_can_have_meta( $_POST[ 'post_id' ] ) ) {
 
-				$error_msg = __( 'ajax request post id is empty', 'wpsso' );
+				$error_msg = sprintf( __( 'post id %s invalid for metadata', 'wpsso' ), $_POST[ 'post_id' ] );
+
+			} elseif ( ! $this->user_can_edit( $_POST[ 'post_id' ] ) ) {
+
+				$error_msg = sprintf( __( 'user cannot edit post id %s', 'wpsso' ), $_POST[ 'post_id' ] );
 			}
 
 			if ( $error_msg ) {
@@ -1756,25 +1770,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$error_pre = trim( sprintf( __( '%s error:', 'wpsso' ), $from  ) );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
-
-				die( -1 );
-			}
-
-			$post_id = $_POST[ 'post_id' ];
-
-			$post_obj = SucomUtilWP::get_post_object( $post_id );
-
-			/*
-			 * WpssoPost->post_can_have_meta() returns false:
-			 *
-			 *	If the $post argument is not numeric or an instance of WP_Post.
-			 *	If the post ID is empty.
-			 *	If the post type is empty.
-			 *	If the post status is empty.
-			 *	If the post type is 'revision'.
-			 *	If the post status is 'trash'.
-			 */
-			if ( ! $this->post_can_have_meta( $post_obj ) ) {
 
 				die( -1 );
 			}
@@ -1816,7 +1811,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' invalid for metadata' );
 				}
 
 				return;
@@ -1963,7 +1958,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' invalid for metadata' );
 				}
 
 				return;
@@ -1981,9 +1976,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
-		public function user_can_save( $post_id, $rel = false ) {
+		public function user_can_edit( $post_id, $rel = false ) {
 
 			if ( ! $this->verify_submit_nonce() ) {
 
@@ -2191,7 +2186,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' cannot have metadata' );
+					$this->p->debug->log( 'exiting early: post id ' . $post_id . ' invalid for metadata' );
 				}
 
 				return $shortlink;	// Return original shortlink.
@@ -2676,7 +2671,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_type   = isset( $post->post_type ) ? $post->post_type : '';
 				$post_status = isset( $post->post_status ) ? $post->post_status : '';
 
-			} elseif ( is_numeric( $post ) ) {
+			} elseif ( is_numeric( $post ) && $post > 0 ) {
 
 				$post_id     = $post;
 				$post_type   = get_post_type( $post_id );
@@ -2686,7 +2681,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post argument is not numeric or an instance of WP_Post' );
+					$this->p->debug->log( 'exiting early: post argument is not a valid number or an instance of WP_Post' );
 				}
 
 				return false;

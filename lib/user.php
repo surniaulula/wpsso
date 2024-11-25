@@ -484,13 +484,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/*
 			 * Make sure the current user can submit and same metabox options.
 			 *
-			 * WpssoUser->user_can_save() returns false when saving a profile page without a metabox.
+			 * WpssoUser->user_can_edit() returns false when saving a profile page without a metabox.
 			 */
-			if ( ! $this->user_can_save( $user_id ) ) {
+			if ( ! $this->user_can_edit( $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot save user id ' . $user_id );
+					$this->p->debug->log( 'exiting early: user cannot edit user id ' . $user_id );
 				}
 
 				return;
@@ -1725,9 +1725,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
-		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
-		public function user_can_save( $user_id, $rel = false ) {
+		public function user_can_edit( $user_id, $rel = false ) {
 
 			if ( ! $this->verify_submit_nonce() ) {
 

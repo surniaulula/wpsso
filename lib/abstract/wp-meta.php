@@ -1759,19 +1759,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Extended by WpssoPost->user_can_save( $post_id, $rel = false );
-		 * Extended by WpssoTerm->user_can_save( $term_id, $term_tax_id = false );
-		 * Extended by WpssoUser->user_can_save( $user_id, $rel = false );
+		 * Extended by WpssoPost->user_can_edit( $post_id, $rel = false );
+		 * Extended by WpssoTerm->user_can_edit( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->user_can_edit( $user_id, $rel = false );
 		 */
-		public function user_can_save( $obj_id, $rel = false ) {
+		public function user_can_edit( $obj_id, $rel = false ) {
 
 			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
 		/*
-		 * Called by WpssoPost->user_can_save();
-		 * Called by WpssoTerm->user_can_save();
-		 * Called by WpssoUser->user_can_save();
+		 * Called by WpssoPost->user_can_edit();
+		 * Called by WpssoTerm->user_can_edit();
+		 * Called by WpssoUser->user_can_edit();
 		 */
 		protected function verify_submit_nonce() {
 

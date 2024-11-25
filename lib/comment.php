@@ -347,11 +347,11 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				return;
 			}
 
-			if ( ! $this->user_can_save( $comment_id ) ) {
+			if ( ! $this->user_can_edit( $comment_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot save comment id ' . $comment_id );
+					$this->p->debug->log( 'exiting early: user cannot edit comment id ' . $comment_id );
 				}
 
 				return;
@@ -421,9 +421,9 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		}
 
 		/*
-		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
-		public function user_can_save( $comment_id, $rel = false ) {
+		public function user_can_edit( $comment_id, $rel = false ) {
 
 			if ( ! $this->verify_submit_nonce() ) {
 
