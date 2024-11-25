@@ -279,9 +279,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()`.
 * **Developer Notes**
-	* None.
+	* Renamed the `user_can_save()` method to `user_can_edit()` in `WpssoAbstractWpMeta`, `WpssoComment`, `WpssoPost`, `WpssoTerm`, and `WpssoUser`.
+	* Added a call to `WpssoPost->user_can_edit()` in `WpssoPost->die_or_get_ajax_post_obj()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -539,7 +540,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.18.2-dev.1 =
 
-(2024/11/25) None.
+(2024/11/25) Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()`.
 
 = 18.18.1 =
 
