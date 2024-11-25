@@ -482,9 +482,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			/*
-			 * Make sure the current user can submit and same metabox options.
-			 *
-			 * WpssoUser->user_can_edit() returns false when saving a profile page without a metabox.
+			 * Check user capability for the user id.
 			 */
 			if ( ! $this->user_can_edit( $user_id ) ) {
 
@@ -1725,6 +1723,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/*
+		 * Check user capability for the user id.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
 		public function user_can_edit( $user_id, $rel = false ) {

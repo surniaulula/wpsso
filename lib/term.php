@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			/*
-			 * Make sure the current user can submit and same metabox options.
+			 * Check user capability for the term id.
 			 */
 			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
 
@@ -932,6 +932,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/*
+		 * Check user capability for the term id.
+		 *
 		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
 		public function user_can_edit( $term_id, $term_tax_id = false ) {

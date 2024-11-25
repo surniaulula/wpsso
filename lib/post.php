@@ -676,6 +676,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;
 
+			/*
+			 * Check user capability for the post id.
+			 */
 			} elseif ( ! $this->user_can_edit( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1745,6 +1748,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$error_msg = sprintf( __( 'post id %s invalid for metadata', 'wpsso' ), $_POST[ 'post_id' ] );
 
+			/*
+			 * Check user capability for the post id.
+			 */
 			} elseif ( ! $this->user_can_edit( $_POST[ 'post_id' ] ) ) {
 
 				$error_msg = sprintf( __( 'user cannot edit post id %s', 'wpsso' ), $_POST[ 'post_id' ] );
@@ -1976,6 +1982,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
+		 * Check user capability for the post id.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
 		public function user_can_edit( $post_id, $rel = false ) {

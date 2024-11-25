@@ -1759,6 +1759,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Check user capability for the comment, post, term, or user id.
+		 *
+		 * Extended by WpssoComment->user_can_edit( $comment_id, $rel = false );
 		 * Extended by WpssoPost->user_can_edit( $post_id, $rel = false );
 		 * Extended by WpssoTerm->user_can_edit( $term_id, $term_tax_id = false );
 		 * Extended by WpssoUser->user_can_edit( $user_id, $rel = false );
@@ -1769,6 +1772,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
+		 * Called by WpssoComment->user_can_edit();
 		 * Called by WpssoPost->user_can_edit();
 		 * Called by WpssoTerm->user_can_edit();
 		 * Called by WpssoUser->user_can_edit();

@@ -347,6 +347,9 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				return;
 			}
 
+			/*
+			 * Check user capability for the comment id.
+			 */
 			if ( ! $this->user_can_edit( $comment_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -421,6 +424,8 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		}
 
 		/*
+		 * Check user capability for the comment id.
+		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_edit().
 		 */
 		public function user_can_edit( $comment_id, $rel = false ) {

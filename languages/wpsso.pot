@@ -3109,15 +3109,15 @@ msgstr ""
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:49 lib/com/notice.php:1064
+#: gettext/gettext-lib-com.php:49 lib/com/notice.php:1058
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:50 lib/com/notice.php:1066
+#: gettext/gettext-lib-com.php:50 lib/com/notice.php:1060
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:51 lib/com/notice.php:1078
+#: gettext/gettext-lib-com.php:51 lib/com/notice.php:1072
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
@@ -6737,7 +6737,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1770 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1776 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:948
 msgid "%s error:"
 msgstr ""
@@ -6833,21 +6833,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1807
+#: lib/abstract/wp-meta.php:1811
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2116
+#: lib/abstract/wp-meta.php:2120
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2118 lib/abstract/wp-meta.php:2131
+#: lib/abstract/wp-meta.php:2122 lib/abstract/wp-meta.php:2135
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2129
+#: lib/abstract/wp-meta.php:2133
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -7218,7 +7218,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:928 lib/post.php:1119 lib/term.php:758 lib/user.php:775
+#: lib/admin.php:928 lib/post.php:1122 lib/term.php:758 lib/user.php:773
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -7439,7 +7439,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:452
+#: lib/comment.php:457
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -14360,140 +14360,140 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:1254
+#: lib/post.php:1257
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1287
+#: lib/post.php:1290
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1293
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1293
+#: lib/post.php:1296
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1323
+#: lib/post.php:1326
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1325
+#: lib/post.php:1328
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1327
+#: lib/post.php:1330
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1328
+#: lib/post.php:1331
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1342
+#: lib/post.php:1345
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1356
+#: lib/post.php:1359
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1371
+#: lib/post.php:1374
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1391
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1391
+#: lib/post.php:1394
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1424
+#: lib/post.php:1427
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1426
+#: lib/post.php:1429
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1428
+#: lib/post.php:1431
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1448
+#: lib/post.php:1451
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1467
+#: lib/post.php:1470
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1469
+#: lib/post.php:1472
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1472
+#: lib/post.php:1475
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1515
+#: lib/post.php:1518
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1517
+#: lib/post.php:1520
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1525
+#: lib/post.php:1528
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1529
+#: lib/post.php:1532
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1533
+#: lib/post.php:1536
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1732
+#: lib/post.php:1735
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1746
+#: lib/post.php:1749
 msgid "post id %s invalid for metadata"
 msgstr ""
 
-#: lib/post.php:1750
+#: lib/post.php:1756
 msgid "user cannot edit post id %s"
 msgstr ""
 
-#: lib/post.php:2012
+#: lib/post.php:2020
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -15352,7 +15352,7 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:965
+#: lib/term.php:967
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -15397,15 +15397,15 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:904
+#: lib/user.php:902
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:910
+#: lib/user.php:908
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1018
+#: lib/user.php:1016
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 

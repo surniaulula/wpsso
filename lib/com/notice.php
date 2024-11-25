@@ -685,10 +685,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$notice_types = $_REQUEST[ '_notice_types' ];
 
-				} else {
-
-					$notice_types = explode( ',', $_REQUEST[ '_notice_types' ] );
-				}
+				} else $notice_types = explode( ',', $_REQUEST[ '_notice_types' ] );
 			}
 
 			if ( ! empty( $_REQUEST[ '_exclude_types' ] ) ) {
@@ -697,10 +694,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$exclude_types = $_REQUEST[ '_exclude_types' ];
 
-				} else {
-
-					$exclude_types = explode( ',', $_REQUEST[ '_exclude_types' ] );
-				}
+				} else $exclude_types = explode( ',', $_REQUEST[ '_exclude_types' ] );
 
 				$notice_types = array_diff( $notice_types, $exclude_types );
 			}
