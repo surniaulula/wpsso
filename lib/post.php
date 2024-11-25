@@ -657,6 +657,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;
 
+			} elseif ( ! $this->verify_submit_nonce() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+				
+				return;
+
 			/*
 			 * WpssoPost->post_can_have_meta() returns false:
 			 *
@@ -683,7 +692,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot edit post id ' . $post_id );
+					$user_id = get_current_user_id();
+
+					$this->p->debug->log( 'exiting early: user id ' . $user_id . ' cannot edit post id ' . $post_id );
 				}
 
 				return;
@@ -1733,6 +1744,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} elseif ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', $die = false ) ) {
 
 				$error_msg = __( 'ajax request invalid nonce', 'wpsso' );
+			}
+
+			$post_id = isset( $_POST[ 'post_id' ] ) ? SucomUtil::sanitize_int( $_POST[ 'post_id' ] ) : 0;	// Returns integer or null.
 
 			/*
 			 * WpssoPost->post_can_have_meta() returns false:
@@ -1744,16 +1758,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *	If the post type is 'revision'.
 			 *	If the post status is 'trash'.
 			 */
-			} elseif ( ! $this->post_can_have_meta( $_POST[ 'post_id' ] ) ) {
+			if ( ! $this->post_can_have_meta( $post_id ) ) {
 
-				$error_msg = sprintf( __( 'post id %s invalid for metadata', 'wpsso' ), $_POST[ 'post_id' ] );
+				$error_msg = sprintf( __( 'post id %s invalid for metadata', 'wpsso' ), $post_id );
 
 			/*
 			 * Check user capability for the post id.
 			 */
-			} elseif ( ! $this->user_can_edit( $_POST[ 'post_id' ] ) ) {
+			} elseif ( ! $this->user_can_edit( $post_id ) ) {
 
-				$error_msg = sprintf( __( 'user cannot edit post id %s', 'wpsso' ), $_POST[ 'post_id' ] );
+				$user_id = get_current_user_id();
+
+				$error_msg = sprintf( __( 'user id %s cannot edit post id %s', 'wpsso' ), $user_id, $post_id );
 			}
 
 			if ( $error_msg ) {
@@ -1780,7 +1796,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				die( -1 );
 			}
 
-			return $post_obj;
+			return SucomUtilWP::get_post_object( $post_id );
 		}
 
 		/*
@@ -1988,16 +2004,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function user_can_edit( $post_id, $rel = false ) {
 
-			if ( ! $this->verify_submit_nonce() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
-				}
-
-				return false;
-			}
-
 			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// Uses sanitize_text_field.
 
 				$post_type = 'post';
@@ -2017,7 +2023,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.', 'wpsso' ), $post_type, $post_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to edit %1$s ID %2$s.', 'wpsso' ), $post_type, $post_id ) );
 				}
 
 				return false;

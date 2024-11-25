@@ -853,7 +853,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
 
-				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ) );
+				$this->p->notice->err( __( 'Insufficient privileges to manage network options.', 'wpsso' ) );
 
 				wp_redirect( $setting_page_url );
 

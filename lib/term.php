@@ -468,16 +468,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				return;
-			}
+
+			} elseif ( ! $this->verify_submit_nonce() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+
+				return;
 
 			/*
 			 * Check user capability for the term id.
 			 */
-			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
+			} elseif ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot edit term id ' . $term_id );
+					$user_id = get_current_user_id();
+
+					$this->p->debug->log( 'exiting early: user id ' . $user_id . ' cannot edit term id ' . $term_id );
 				}
 
 				return;
@@ -938,16 +948,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function user_can_edit( $term_id, $term_tax_id = false ) {
 
-			if ( ! $this->verify_submit_nonce() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
-				}
-
-				return false;
-			}
-
 			$term_obj   = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 			$tax_obj    = get_taxonomy( $term_obj->taxonomy );
 			$capability = $tax_obj->cap->edit_terms;
@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.', 'wpsso' ), $term_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to edit term ID %1$s.', 'wpsso' ), $term_id ) );
 				}
 
 				return false;

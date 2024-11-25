@@ -479,16 +479,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				return;
-			}
+
+			} elseif ( ! $this->verify_submit_nonce() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+
+				return;
 
 			/*
 			 * Check user capability for the user id.
 			 */
-			if ( ! $this->user_can_edit( $user_id ) ) {
+			} elseif ( ! $this->user_can_edit( $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: user cannot edit user id ' . $user_id );
+					$user_id = get_current_user_id();
+
+					$this->p->debug->log( 'exiting early: user id ' . $user_id . ' cannot edit use id ' . $user_id );
 				}
 
 				return;
@@ -1729,16 +1739,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function user_can_edit( $user_id, $rel = false ) {
 
-			if ( ! $this->verify_submit_nonce() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
-				}
-
-				return false;
-			}
-
 			$capability = 'edit_user';
 
 			if ( ! current_user_can( $capability, $user_id ) ) {
@@ -1753,7 +1753,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.', 'wpsso' ), $user_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to edit user ID %1$s.', 'wpsso' ), $user_id ) );
 				}
 
 				return false;
