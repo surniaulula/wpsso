@@ -279,7 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()`.
+	* Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()` (props Ngô Thái An).
 * **Developer Notes**
 	* Renamed the `user_can_save()` method to `user_can_edit()` in `WpssoAbstractWpMeta`, `WpssoComment`, `WpssoPost`, `WpssoTerm`, and `WpssoUser`.
 	* Added a call to `WpssoPost->user_can_edit()` in `WpssoPost->die_or_get_ajax_post_obj()`.
@@ -540,7 +540,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.18.2 =
 
-(2024/11/25) Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()`.
+(2024/11/25) Fixed missing user capability check in `WpssoPost->ajax_get_metabox_sso()` (props Ngô Thái An).
 
 = 18.18.1 =
 
