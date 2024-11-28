@@ -47,9 +47,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <!-- /about -->
 
-<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
-
-<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
+<p><strong>Optimized images for social sites and search engines:</strong></p>
 
 * Google Merchant Feed XML
 * Open Graph (Facebook and oEmbed)
@@ -61,6 +59,8 @@ Present your content at its best for social sites and search results, no matter 
 * Video Preview Images
 * X (Twitter) Summary Card
 * X (Twitter) Summary Card Large Image
+
+<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
@@ -90,7 +90,7 @@ Present your content at its best for social sites and search results, no matter 
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
 
-<p><strong>Retrieves additional content information from active plugins, including:</strong></p>
+<p><strong>Reads additional information from active plugins, including:</strong></p>
 
 * <a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a>
 * <a href="https://wordpress.org/plugins/elementor/">Elementor Website Builder</a>

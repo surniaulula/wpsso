@@ -44,9 +44,7 @@
 
 <!-- /about -->
 
-<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
-
-<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
+<p><strong>Optimized images for social sites and search engines:</strong></p>
 
 <ul>
 <li>Google Merchant Feed XML</li>
@@ -60,6 +58,8 @@
 <li>X (Twitter) Summary Card</li>
 <li>X (Twitter) Summary Card Large Image</li>
 </ul>
+
+<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
@@ -91,7 +91,7 @@
 <li><em>Price Mismatched value (page crawl): (price [price])</em></li>
 </ul>
 
-<p><strong>Retrieves additional content information from active plugins, including:</strong></p>
+<p><strong>Reads additional information from active plugins, including:</strong></p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a></li>
