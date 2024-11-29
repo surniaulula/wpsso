@@ -47,6 +47,7 @@
 <p><strong>Optimized images for social sites and search engines:</strong></p>
 
 <ul>
+<li>Commerce Manager Catalog Feed XML (Facebook and Instagram)</li>
 <li>Google Merchant Feed XML</li>
 <li>Open Graph (Facebook and oEmbed)</li>
 <li>Pinterest Pin It</li>
