@@ -49,6 +49,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <p><strong>Optimized images for social sites and search engines:</strong></p>
 
+* Commerce Manager Catalog Feed XML (Facebook and Instagram)
 * Google Merchant Feed XML
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
