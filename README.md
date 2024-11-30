@@ -164,7 +164,7 @@
 <li>Product Net Width</li>
 </ul>
 
-<p><strong>Optionally improve the structured data markup of other SEO plugins:</strong></p>
+<p><strong>Optionally improves the structured data markup of other SEO plugins:</strong></p>
 
 <p>WPSSO Core and its add-ons can also run in combination with other SEO plugins to <strong>improve the SEO plugin's performance and structured data markup</strong>.</p>
 
@@ -177,7 +177,7 @@
 <li>Yoast SEO</li>
 </ul>
 
-<p><strong>The Premium edition can also retrieve data from service APIs automatically, including:</strong></p>
+<p><strong>Premium edition can retrieve data from service APIs automatically, including:</strong></p>
 
 <ul>
 <li>Bitly Short URL</li>
