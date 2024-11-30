@@ -44,7 +44,7 @@
 
 <!-- /about -->
 
-<p><strong>Optimized images for social sites and search engines:</strong></p>
+<p><strong>Optimized image sizes (5 different sizes by default) for social sites and search engines:</strong></p>
 
 <ul>
 <li>Commerce Manager Catalog Feed XML (Facebook and Instagram)</li>
@@ -55,7 +55,7 @@
 <li>Schema 4:3 (Google Rich Results)</li>
 <li>Schema 16:9 (Google Rich Results)</li>
 <li>Schema Thumbnail</li>
-<li>Video Preview Images</li>
+<li>Video Preview Image</li>
 <li>X (Twitter) Summary Card</li>
 <li>X (Twitter) Summary Card Large Image</li>
 </ul>
