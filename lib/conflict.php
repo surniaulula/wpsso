@@ -272,17 +272,12 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$editor_class = '<a href="' . $php_info[ 'wp_image_editor' ][ 'url' ] . '">' .
 								$php_info[ 'wp_image_editor' ][ 'class' ] . '</a>';
 
-						} else {
-							$editor_class = $php_info[ 'wp_image_editor' ][ 'class' ];
-						}
+						} else $editor_class = $php_info[ 'wp_image_editor' ][ 'class' ];
 
 						$notice_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded:', 'wpsso' ), $editor_class, $php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
 
-					} else {
-
-						$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
-							$php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
-					}
+					} else $notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
+						$php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
 
 					/*
 					 * Add additional / mode specific information about this check for the hosting provider.
@@ -290,7 +285,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
 						__( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' ),
 							'<code>extension_loaded()</code>', $php_ext ) . ' ';
-
 
 					/*
 					 * If we are checking for the ImageMagick PHP extension, make sure the user knows the
