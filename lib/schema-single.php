@@ -2845,6 +2845,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$delivery_opts =& $ship_offer[ 'delivery_time' ];
 
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'delivery_opts', $delivery_opts );
+				}
+
 				/*
 				 * See https://schema.org/ShippingDeliveryTime.
 				 */
@@ -2870,6 +2875,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					'handling' => 'handlingTime',
 					'transit'  => 'transitTime'
 				) as $delivery_opt_pre => $delivery_prop_name ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'getting ' . $delivery_opt_pre . ' options' );
+					}
 
 					$quant_id = 'qv';
 					$quantity = array();
@@ -2900,7 +2910,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						} else $quant_id .= '--';
 					}
 
-					if ( ! empty( $quantity ) ) {
+					if ( ! empty( $quantity[ 'minValue' ] ) && ! empty( $quantity[ 'maxValue' ] ) ) {
 
 						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
 
@@ -2909,11 +2919,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
 								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
 
+							if ( $wpsso->debug->enabled ) {
+
+								$wpsso->debug->log_arr( 'adding data id ' . $quant_id, $quantity );
+							}
+
 							WpssoSchema::update_data_id( $quantity, $quant_id, $quant_rel );
 						}
 
 						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(
 							'https://schema.org/QuantitativeValue', $quantity );
+
+					} elseif ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log_arr( 'missing minValue or maxValue', $quantity );
 					}
 				}
 
@@ -2930,10 +2949,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					WpssoSchema::update_data_id( $json_data, $ship_offer[ 'shipping_id' ], $ship_offer[ 'shipping_rel' ] );
 
-				} else {
-
-					WpssoSchema::update_data_id( $json_data, $ship_offer[ 'shipping_id' ], $offer_url );
-				}
+				} else WpssoSchema::update_data_id( $json_data, $ship_offer[ 'shipping_id' ], $offer_url );
 			}
 
 			/*
