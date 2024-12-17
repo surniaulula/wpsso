@@ -2932,7 +2932,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					} elseif ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log_arr( 'missing minValue or maxValue', $quantity );
+						$wpsso->debug->log_arr( 'missing minValue and maxValue', $quantity );
 					}
 				}
 
