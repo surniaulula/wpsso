@@ -3830,9 +3830,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * See WpssoJsonTypeMovie->filter_json_data_https_schema_org_movie().
 		 * See WpssoSchema::add_item_reviewed_data().
 		 * See WpssoSchema::add_data_itemprop_from_assoc().
-		 * WpssoSchemaSingle->add_book_data().
-		 * WpssoSchemaSingle->add_offer_data().
-		 * WpssoSchemaSingle->add_product_data().
+		 * WpssoSchemaSingle::add_book_data().
+		 * WpssoSchemaSingle::add_offer_data().
+		 * WpssoSchemaSingle::add_product_data().
 		 */
 		public static function is_valid_key( $assoc, $key ) {
 
