@@ -273,7 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.3-dev.1 (TBD)**
+**Version 18.18.3-dev.1 (2024/12/17)**
 
 * **New Features**
 	* None.
@@ -556,7 +556,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.18.3-dev.1 =
 
-(TBD) None.
+(2024/12/17) Added debug messages to `WpssoSchemaSingle::get_shipping_offer_data()`.
 
 = 18.18.2 =
 
