@@ -273,6 +273,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.18.3-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added debug messages to `WpssoSchemaSingle::get_shipping_offer_data()`.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.1.0 (for Premium edition).
+
 **Version 18.18.2 (2024/11/25)**
 
 * **New Features**
@@ -538,6 +553,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.18.3-dev.1 =
+
+(TBD) None.
 
 = 18.18.2 =
 
