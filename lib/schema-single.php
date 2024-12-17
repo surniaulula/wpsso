@@ -1958,6 +1958,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
 							$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
 
+							if ( $wpsso->debug->enabled ) {
+
+								$wpsso->debug->log( 'identical minValue and maxValue', $quantity );
+							}
+
 							$quantity[ 'value' ] = $quantity[ 'minValue' ];
 
 							unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
@@ -2910,7 +2915,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						} else $quant_id .= '--';
 					}
 
-					if ( ! empty( $quantity[ 'minValue' ] ) && ! empty( $quantity[ 'maxValue' ] ) ) {
+					/*
+					 * Google requires both values, but let the Google validator report if one value is missing.
+					 */
+					if ( isset( $quantity[ 'minValue' ] ) || isset( $quantity[ 'maxValue' ] ) ) {
 
 						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
 
@@ -2932,7 +2940,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					} elseif ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log_arr( 'missing minValue and maxValue', $quantity );
+						$wpsso->debug->log_arr( 'missing minValue or maxValue', $quantity );
 					}
 				}
 
