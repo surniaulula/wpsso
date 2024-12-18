@@ -273,7 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.3-rc.1 (2024/12/18)**
+**Version 18.18.3 (2024/12/18)**
 
 * **New Features**
 	* None.
@@ -554,7 +554,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.3-rc.1 =
+= 18.18.3 =
 
 (2024/12/18) Added debug messages to `WpssoSchemaSingle::get_shipping_offer_data()`.
 
