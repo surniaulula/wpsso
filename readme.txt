@@ -273,6 +273,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.18.4 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed PHP v8.2 warning: Using `${var}` in strings is deprecated in lib/com/util.php.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 18.18.3 (2024/12/18)**
 
 * **New Features**
@@ -553,6 +568,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.18.4-dev.1 =
+
+(TBD) Fixed PHP v8.2 warning: Using `${var}` in strings is deprecated in lib/com/util.php.
 
 = 18.18.3 =
 
