@@ -235,7 +235,7 @@
 
 'wpsso_og_attached_images' ( $mt_ret, $num, $size_name, $post_id )
 
-'wpsso_og_data_https_ogp_me_ns_{og_type}' ( $mt_og, $mod )
+'wpsso_og_data_https_ogp_me_ns_{og_type}' ( array $mt_og, $mod )
 
 'wpsso_og_default_img_id' ( $image_id )
 
@@ -253,9 +253,9 @@
 
 'wpsso_og_ns' ( $ns )
 
-'wpsso_og' ( $og, $mod )
+'wpsso_og' ( array $mt_og, $mod )
 
-'wpsso_og_seed' ( $og, $mod )
+'wpsso_og_seed' ( array $mt_og, $mod )
 
 'wpsso_og_type' ( $type_id, $mod, $is_custom )
 
