@@ -981,7 +981,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$factor = floor( ( strlen( $bytes ) - 1 ) / 3 );
 
-    			return sprintf( "%.${dec}f${sep}%s", $bytes / pow( 1024, $factor ), $size[ $factor ] );
+    			return sprintf( "%.{$dec}f{$sep}%s", $bytes / pow( 1024, $factor ), $size[ $factor ] );
 		}
 
 		/*

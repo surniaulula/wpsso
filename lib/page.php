@@ -2017,7 +2017,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( ! empty( $caption_prefix ) ) {
 
-					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}' . $caption_prefix . ' ', $content );
+					$content = preg_replace( '/<p class="wp-caption-text">/', '$0' . $caption_prefix . ' ', $content );
 				}
 			}
 

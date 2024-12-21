@@ -54,55 +54,37 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 				$plugin_name = $this->sanitize_text( $_plugin_name[ 1 ] );
 
-			} else {
-
-				$plugin_name = null;
-			}
+			} else $plugin_name = null;
 
 			if ( preg_match( '|Plugin Slug: *(.*)|i', $file_content, $_plugin_slug ) ) {
 
 				$plugin_slug = $this->sanitize_text( $_plugin_slug[ 1 ] );
 
-			} else {
-
-				$plugin_slug = null;
-			}
+			} else $plugin_slug = null;
 
 			if ( preg_match( '|License: *(.*)|i', $file_content, $_license ) ) {
 
 				$license = $this->sanitize_text( $_license[ 1 ] );
 
-			} else {
-
-				$license = null;
-			}
+			} else $license = null;
 
 			if ( preg_match( '|License URI: *(.*)|i', $file_content, $_license_uri ) ) {
 
 				$license_uri = esc_url_raw( $_license_uri[ 1 ] );
 
-			} else {
-
-				$license_uri = null;
-			}
+			} else $license_uri = null;
 
 			if ( preg_match( '|Donate Link: *(.*)|i', $file_content, $_donate_link ) ) {
 
 				$donate_link = esc_url_raw( $_donate_link[ 1 ] );
 
-			} else {
-
-				$donate_link = null;
-			}
+			} else $donate_link = null;
 
 			if ( preg_match( '|Assets URI: *(.*)|i', $file_content, $_assets_uri ) ) {
 
 				$assets_uri = esc_url_raw( $_assets_uri[ 1 ] );
 
-			} else {
-
-				$assets_uri = null;
-			}
+			} else $assets_uri = null;
 
 			if ( preg_match( '|Tags: *(.*)|i', $file_content, $_tags ) ) {
 
@@ -113,10 +95,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 					$tags[ $t ] = $this->sanitize_text( $tags[ $t ] );
 				}
 
-			} else {
-
-				$tags = array();
-			}
+			} else $tags = array();
 
 			$contributors = array();
 
@@ -141,46 +120,31 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 				$requires_php = $this->sanitize_text( $_requires_php[ 1 ] );
 
-			} else {
-
-				$requires_php = null;
-			}
+			} else $requires_php = null;
 
 			if ( preg_match( '|Requires At Least: *(.*)|i', $file_content, $_requires_at_least ) ) {
 
 				$requires_at_least = $this->sanitize_text( $_requires_at_least[ 1 ] );
 
-			} else {
-
-				$requires_at_least = null;
-			}
+			} else $requires_at_least = null;
 
 			if ( preg_match( '|Tested Up To: *(.*)|i', $file_content, $_tested_up_to ) ) {
 
 				$tested_up_to = $this->sanitize_text( $_tested_up_to[ 1 ] );
 
-			} else {
-
-				$tested_up_to = null;
-			}
+			} else $tested_up_to = null;
 
 			if ( preg_match( '|WC Tested Up To: *(.*)|i', $file_content, $_wc_tested_up_to ) ) {
 
 				$wc_tested_up_to = $this->sanitize_text( $_wc_tested_up_to[ 1 ] );
 
-			} else {
-
-				$wc_tested_up_to = null;
-			}
+			} else $wc_tested_up_to = null;
 
 			if ( preg_match( '|Stable Tag: *(.*)|i', $file_content, $_stable_tag ) ) {
 
 				$stable_tag = $this->sanitize_text( $_stable_tag[ 1 ] );
 
-			} else {
-
-				$stable_tag = null;
-			}
+			} else $stable_tag = null;
 
 			foreach ( array(
 				'plugin_name',
@@ -202,7 +166,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 					$_chop = '_' . $chop;
 
-					$file_content = $this->chop_string( $file_content, ${ $_chop }[ 0 ] );
+					$file_content = $this->chop_string( $file_content, $$_chop[ 0 ] );
 				}
 			}
 
@@ -221,10 +185,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 				$truncated = true;
 
-			} else {
-
-				$truncated = false;
-			}
+			} else $truncated = false;
 
 			if ( $_short_description[ 1 ] ) {
 
@@ -306,10 +267,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 				unset( $final_sections[ 'upgrade_notice' ] );
 
-			} else {
-
-				$upgrade_notice = '';
-			}
+			} else $upgrade_notice = '';
 
 			$excerpt = false;
 
@@ -380,10 +338,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$text = preg_replace('/[^a-z0-9-]/i', '', $text);
 				$text = preg_replace('|-+|', '-', $text);
 
-			} else {
-
-				$text = preg_replace('/[^a-z0-9_-]/i', '', $text);
-			}
+			} else $text = preg_replace('/[^a-z0-9_-]/i', '', $text);
 
 			return $text;
 		}
