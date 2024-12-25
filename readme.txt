@@ -273,7 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.4 (TBD)**
+**Version 18.18.4-dev.1 (TBD)**
 
 * **New Features**
 	* None.
