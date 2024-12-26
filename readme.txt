@@ -273,7 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.4-rc.1 (2024/12/26)**
+**Version 18.18.4 (2024/12/26)**
 
 * **New Features**
 	* None.
@@ -569,7 +569,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.4-rc.1 =
+= 18.18.4 =
 
 (2024/12/26) Fixed PHP v8.2 warning: Using `${var}` in strings is deprecated in lib/com/util.php.
 
