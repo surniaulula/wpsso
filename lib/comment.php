@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			if ( ! $this->md_cache_disabled ) {
 
 				$local_fifo[ $comment_id ] = $mod;
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log_size( 'local_fifo', $local_fifo );

@@ -64,13 +64,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function shutdown_stats() {
-			
+
 			if ( $this->enabled ) {
 
 				$cur_stats  = array( 'mtime' => microtime( $get_float = true ), 'mem' => memory_get_usage() );
 				$mtime_diff = $cur_stats[ 'mtime' ] - $this->const_stats[ 'mtime' ];
 				$mem_diff   = $cur_stats[ 'mem' ] - $this->const_stats[ 'mem' ];
-				
+
 				$this->log( 'time diff = ' . $this->get_time_text( $mtime_diff ) );
 				$this->log( 'mem diff = ' . $this->get_bytes_text( $mem_diff ) );
 				$this->log( 'mem peak = ' . $this->get_bytes_text( memory_get_peak_usage() ) );
@@ -225,7 +225,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( is_int( $class_seq ) ) {
 
 				if ( false === $func_seq ) {
-				
+
 					$func_seq = $class_seq;
 				}
 
@@ -236,7 +236,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			} else {
 
 				if ( false === $func_seq ) {
-				
+
 					$func_seq = 1;
 				}
 
