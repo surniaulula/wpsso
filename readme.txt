@@ -273,7 +273,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.5-dev.1 (2025/01/21)**
+**Version 18.18.5-dev.2 (2025/01/21)**
 
 * **New Features**
 	* None.
@@ -584,7 +584,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.5-dev.1 =
+= 18.18.5-dev.2 =
 
 (2024/01/21) Added a default "validThrough" and "valueAddedTaxIncluded" property values to product offers.
 
