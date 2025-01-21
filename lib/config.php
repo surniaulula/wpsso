@@ -3506,7 +3506,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/*
-				 * Validated on 2022/09/14.
+				 * Validated on 2025/01/21.
 				 *
 				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 *
