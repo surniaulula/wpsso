@@ -1945,7 +1945,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( empty( $price_spec[ 'validThrough' ] ) ) {
 
-					$offer[ 'validThrough' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
+					$price_spec[ 'validThrough' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
 				}
 
 				/*
