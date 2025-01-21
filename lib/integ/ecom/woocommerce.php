@@ -1445,7 +1445,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$mt_ecom[ 'product:pretax_price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, false );	// Exclude VAT.
 			$mt_ecom[ 'product:pretax_price:currency' ] = $product_currency;
-			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/ListPrice';
+			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/RegularPrice';
 			$mt_ecom[ 'product:price:amount' ]          = $product_price_fmtd;
 			$mt_ecom[ 'product:price:currency' ]        = $product_currency;
 			$mt_ecom[ 'product:price:vat_included' ]    = $product_incl_vat;

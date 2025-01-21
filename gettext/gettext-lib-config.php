@@ -515,6 +515,7 @@ _x( 'Invoice Price', 'option value', 'wpsso' );
 _x( 'List Price', 'option value', 'wpsso' );
 _x( 'Manufacturer Suggested Retail Price', 'option value', 'wpsso' );
 _x( 'Minimum Advertised Price', 'option value', 'wpsso' );
+_x( 'Regular Price', 'option value', 'wpsso' );
 _x( 'Sale Price', 'option value', 'wpsso' );
 _x( 'Suggested Retail Price', 'option value', 'wpsso' );
 _x( 'Free Return', 'option value', 'wpsso' );
