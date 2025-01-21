@@ -1941,6 +1941,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				/*
+				 * Avoid Google validator warnings.
+				 */
+				if ( empty( $price_spec[ 'validThrough' ] ) ) {
+
+					$offer[ 'validThrough' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
+				}
+
+				/*
 				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 				 */
 				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(

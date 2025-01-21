@@ -1438,14 +1438,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				}
 			}
 
-			/*
-			 * Add an extra meta tag to signal that VAT is included (used for the Schema valueAddedTaxIncluded property).
-			 */
-			if ( $product_incl_vat ) {
-
-				$mt_ecom[ 'product:price:vat_included' ] = true;
-			}
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting price and pretax price formatted' );
@@ -1456,6 +1448,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/ListPrice';
 			$mt_ecom[ 'product:price:amount' ]          = $product_price_fmtd;
 			$mt_ecom[ 'product:price:currency' ]        = $product_currency;
+			$mt_ecom[ 'product:price:vat_included' ]    = $product_incl_vat;
 
 			if ( method_exists( $product, 'get_regular_price' ) ) {
 
