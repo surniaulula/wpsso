@@ -274,7 +274,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.0-rc.1 (2025/01/22)**
+**Version 18.19.0-rc.2 (2025/01/23)**
 
 * **New Features**
 	* None.
@@ -586,9 +586,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.0-rc.1 =
+= 18.19.0-rc.2 =
 
-(2024/01/22) Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
+(2024/01/23) Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
 
 = 18.18.4 =
 
