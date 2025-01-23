@@ -1450,6 +1450,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 */
 				$mt_pre . ':min_advert_price:amount'         => null,		// Internal meta tag.
 				$mt_pre . ':min_advert_price:currency'       => null,		// Internal meta tag.
+				$mt_pre . ':original_price:type'             => null,		// Internal meta tag.
 				$mt_pre . ':original_price:amount'           => null,
 				$mt_pre . ':original_price:currency'         => null,
 				$mt_pre . ':pretax_price:amount'             => null,
@@ -1457,6 +1458,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':price:type'                      => null,		// Internal meta tag.
 				$mt_pre . ':price:amount'                    => null,
 				$mt_pre . ':price:currency'                  => null,
+				$mt_pre . ':price:vat_included'              => null,		// Internal meta tag.
+				$mt_pre . ':sale_price:type'                 => null,		// Internal meta tag.
 				$mt_pre . ':sale_price:amount'               => null,
 				$mt_pre . ':sale_price:currency'             => null,
 				$mt_pre . ':sale_price_dates:start'          => null,

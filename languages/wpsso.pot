@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.18.5-dev.4\n"
+"Project-Id-Version: WPSSO Core 18.19.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -14643,11 +14643,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2136
+#: lib/schema-single.php:2160
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2273
+#: lib/schema-single.php:2297
 msgid "adding schema product"
 msgstr ""
 

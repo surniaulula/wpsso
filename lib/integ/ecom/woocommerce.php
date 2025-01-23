@@ -838,7 +838,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				
 				$md_defs[ 'product_price_type' ]= 'https://schema.org/SalePrice';
 
-			} else $md_defs[ 'product_price_type' ] = 'https://schema.org/ListPrice';
+			} else $md_defs[ 'product_price_type' ] = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
 
 			$md_defs[ 'product_price' ]            = $product_price_fmtd;
 			$md_defs[ 'product_currency' ]         = $product_currency;
@@ -1472,7 +1472,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'get_regular_price() returned ' . $regular_price );
 				}
 
-				$mt_ecom[ 'product:original_price:type' ]     = 'https://schema.org/ListPrice';
+				$mt_ecom[ 'product:original_price:type' ]     = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
 				$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
 				$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
 
