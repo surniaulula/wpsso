@@ -69,6 +69,7 @@ Present your content at its best for social sites and search results, no matter 
 * *A value for the image field is required*
 * *A value for the logo field is required*
 * *A value for the publisher field is required*
+* *Either "price" or "priceSpecification" should be specified (in "offers")*
 * *Invalid value in field "priceSpecification"*
 * *The aggregateRating field is recommended*
 * *The brand field is recommended*
@@ -273,13 +274,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.5-dev.4 (2025/01/22)**
+**Version 18.19.0-rc.1 (2025/01/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added "price" and "priceCurrency" properties in the offers markup to address a new Google Merchant requirement.
-	* Added a default "validThrough" and "valueAddedTaxIncluded" property values to product offers.
+	* Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
+	* Added the original (ie. regular or list) product price to the offers markup when a product is on sale.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -585,9 +586,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.5-dev.4 =
+= 18.19.0-rc.1 =
 
-(2024/01/22) Added "price" and "priceCurrency" properties in the offers markup to address a new Google Merchant requirement.
+(2024/01/22) Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
 
 = 18.18.4 =
 
