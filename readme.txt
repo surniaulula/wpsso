@@ -273,11 +273,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.18.5-dev.3 (2025/01/21)**
+**Version 18.18.5-dev.4 (2025/01/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added "price" and "priceCurrency" properties in the offers markup to address a new Google Merchant requirement.
 	* Added a default "validThrough" and "valueAddedTaxIncluded" property values to product offers.
 * **Bugfixes**
 	* None.
@@ -584,9 +585,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.18.5-dev.3 =
+= 18.18.5-dev.4 =
 
-(2024/01/21) Added a default "validThrough" and "valueAddedTaxIncluded" property values to product offers.
+(2024/01/22) Added "price" and "priceCurrency" properties in the offers markup to address a new Google Merchant requirement.
 
 = 18.18.4 =
 
