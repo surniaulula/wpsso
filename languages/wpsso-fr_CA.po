@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.18.2\n"
+"Project-Id-Version: WPSSO Core 18.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2024-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-11-26 12:39-0800\n"
+"POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-01-23 08:23-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4076,8 +4076,8 @@ msgstr "Toujours forcer la valeur"
 #: gettext/gettext-lib-config.php:474 gettext/gettext-lib-config.php:479
 #: gettext/gettext-lib-config.php:486 gettext/gettext-lib-config.php:498
 #: gettext/gettext-lib-config.php:504 gettext/gettext-lib-config.php:512
-#: gettext/gettext-lib-config.php:526 gettext/gettext-lib-config.php:534
-#: gettext/gettext-lib-config.php:547 lib/messages-tooltip-plugin.php:687
+#: gettext/gettext-lib-config.php:527 gettext/gettext-lib-config.php:535
+#: gettext/gettext-lib-config.php:548 lib/messages-tooltip-plugin.php:687
 #: lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -4093,8 +4093,8 @@ msgstr "[Aucun]"
 #: gettext/gettext-lib-config.php:475 gettext/gettext-lib-config.php:480
 #: gettext/gettext-lib-config.php:487 gettext/gettext-lib-config.php:499
 #: gettext/gettext-lib-config.php:505 gettext/gettext-lib-config.php:513
-#: gettext/gettext-lib-config.php:527 gettext/gettext-lib-config.php:535
-#: gettext/gettext-lib-config.php:548
+#: gettext/gettext-lib-config.php:528 gettext/gettext-lib-config.php:536
+#: gettext/gettext-lib-config.php:549
 msgctxt "option value"
 msgid "None"
 msgstr "Aucun"
@@ -5170,165 +5170,170 @@ msgstr "Prix minimum annoncé"
 
 #: gettext/gettext-lib-config.php:518
 msgctxt "option value"
+msgid "Regular Price"
+msgstr "Prix régulier"
+
+#: gettext/gettext-lib-config.php:519
+msgctxt "option value"
 msgid "Sale Price"
 msgstr "Prix en vente"
 
-#: gettext/gettext-lib-config.php:519
+#: gettext/gettext-lib-config.php:520
 msgctxt "option value"
 msgid "Suggested Retail Price"
 msgstr "Prix de détail suggéré"
 
-#: gettext/gettext-lib-config.php:520
+#: gettext/gettext-lib-config.php:521
 msgctxt "option value"
 msgid "Free Return"
 msgstr "Retour gratuit"
 
-#: gettext/gettext-lib-config.php:521
+#: gettext/gettext-lib-config.php:522
 msgctxt "option value"
 msgid "Customer Pays Shipping"
 msgstr "Client paie les frais d'expédition"
 
-#: gettext/gettext-lib-config.php:522
+#: gettext/gettext-lib-config.php:523
 msgctxt "option value"
 msgid "Return Has Shipping Fees"
 msgstr "Retour entraîne frais d'expédition"
 
-#: gettext/gettext-lib-config.php:523
+#: gettext/gettext-lib-config.php:524
 msgctxt "option value"
 msgid "At Kiosk"
 msgstr "Au kiosque"
 
-#: gettext/gettext-lib-config.php:524
+#: gettext/gettext-lib-config.php:525
 msgctxt "option value"
 msgid "By Mail"
 msgstr "Par la poste"
 
-#: gettext/gettext-lib-config.php:525
+#: gettext/gettext-lib-config.php:526
 msgctxt "option value"
 msgid "In Store"
 msgstr "En magasin"
 
-#: gettext/gettext-lib-config.php:528
+#: gettext/gettext-lib-config.php:529
 msgctxt "option value"
 msgid "Regular"
 msgstr "Standard"
 
-#: gettext/gettext-lib-config.php:529
+#: gettext/gettext-lib-config.php:530
 msgctxt "option value"
 msgid "Petite"
 msgstr "Petite taille femme"
 
-#: gettext/gettext-lib-config.php:530
+#: gettext/gettext-lib-config.php:531
 msgctxt "option value"
 msgid "Plus"
 msgstr "Grande taille femme"
 
-#: gettext/gettext-lib-config.php:531
+#: gettext/gettext-lib-config.php:532
 msgctxt "option value"
 msgid "Tall"
 msgstr "Grand"
 
-#: gettext/gettext-lib-config.php:532
+#: gettext/gettext-lib-config.php:533
 msgctxt "option value"
 msgid "Big"
 msgstr "Grande taille"
 
-#: gettext/gettext-lib-config.php:533
+#: gettext/gettext-lib-config.php:534
 msgctxt "option value"
 msgid "Maternity"
 msgstr "Maternité"
 
-#: gettext/gettext-lib-config.php:536
+#: gettext/gettext-lib-config.php:537
 msgctxt "option value"
 msgid "AU"
 msgstr "AU"
 
-#: gettext/gettext-lib-config.php:537
+#: gettext/gettext-lib-config.php:538
 msgctxt "option value"
 msgid "BR"
 msgstr "BR"
 
-#: gettext/gettext-lib-config.php:538
+#: gettext/gettext-lib-config.php:539
 msgctxt "option value"
 msgid "CN"
 msgstr "CN"
 
-#: gettext/gettext-lib-config.php:539
+#: gettext/gettext-lib-config.php:540
 msgctxt "option value"
 msgid "DE"
 msgstr "DE"
 
-#: gettext/gettext-lib-config.php:540
+#: gettext/gettext-lib-config.php:541
 msgctxt "option value"
 msgid "EU"
 msgstr "EU"
 
-#: gettext/gettext-lib-config.php:541
+#: gettext/gettext-lib-config.php:542
 msgctxt "option value"
 msgid "FR"
 msgstr "FR"
 
-#: gettext/gettext-lib-config.php:542
+#: gettext/gettext-lib-config.php:543
 msgctxt "option value"
 msgid "IT"
 msgstr "IT"
 
-#: gettext/gettext-lib-config.php:543
+#: gettext/gettext-lib-config.php:544
 msgctxt "option value"
 msgid "JP"
 msgstr "JP"
 
-#: gettext/gettext-lib-config.php:544
+#: gettext/gettext-lib-config.php:545
 msgctxt "option value"
 msgid "MX"
 msgstr "MX"
 
-#: gettext/gettext-lib-config.php:545
+#: gettext/gettext-lib-config.php:546
 msgctxt "option value"
 msgid "UK"
 msgstr "UK"
 
-#: gettext/gettext-lib-config.php:546
+#: gettext/gettext-lib-config.php:547
 msgctxt "option value"
 msgid "US"
 msgstr "US"
 
-#: gettext/gettext-lib-config.php:549
+#: gettext/gettext-lib-config.php:550
 msgctxt "option value"
 msgid "Female"
 msgstr "Féminin"
 
-#: gettext/gettext-lib-config.php:550
+#: gettext/gettext-lib-config.php:551
 msgctxt "option value"
 msgid "Male"
 msgstr "Masculin"
 
-#: gettext/gettext-lib-config.php:551
+#: gettext/gettext-lib-config.php:552
 msgctxt "option value"
 msgid "Unisex"
 msgstr "Unisexe"
 
-#: gettext/gettext-lib-config.php:552
+#: gettext/gettext-lib-config.php:553
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: gettext/gettext-lib-config.php:553
+#: gettext/gettext-lib-config.php:554
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr "Alpha et plus"
 
-#: gettext/gettext-lib-config.php:554
+#: gettext/gettext-lib-config.php:555
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr "Bêta et plus"
 
-#: gettext/gettext-lib-config.php:555
+#: gettext/gettext-lib-config.php:556
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr "Candidat stable et plus"
 
-#: gettext/gettext-lib-config.php:556
+#: gettext/gettext-lib-config.php:557
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
@@ -6402,7 +6407,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
 #: gettext/gettext-lib-pro.php:201 gettext/gettext-lib-pro.php:204
-#: gettext/gettext-lib-pro.php:207 lib/conflict.php:343
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:337
 #: lib/pro/media/slideshare.php:220 lib/pro/media/vimeo.php:199
 #: lib/pro/media/wistia.php:363
 msgid "Please contact your hosting provider to have the missing PHP function installed."
@@ -7069,12 +7074,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr "Privilèges insuffisants pour modifier le commentaire ID %1$s."
 
-#: lib/config.php:5529
+#: lib/config.php:5530
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5529
+#: lib/config.php:5530
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -7452,59 +7457,59 @@ msgstr "SVP contacter votre hébergeur pour que l'option de base de données \"%
 msgid "See the %1$s sections %2$s and %3$s for more information on this database option."
 msgstr "Voir les sections %2$s et %3$s de %1$s pour plus d'informations sur cette option de base de données."
 
-#: lib/conflict.php:279
+#: lib/conflict.php:277
 msgid "WordPress is configured to use the %1$s image editing class but the <a href=\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr "WordPress est configuré pour utiliser la classe d'édition d'image %1$s mais le <a href=\"%2$s\">module d'extension PHP %3$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:283
+#: lib/conflict.php:279
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:290
+#: lib/conflict.php:285
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> pour \"%3$s\" retourne faux."
 
-#: lib/conflict.php:291
+#: lib/conflict.php:286
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr "https://secure.php.net/manual/fr/function.extension-loaded.php"
 
-#: lib/conflict.php:301
+#: lib/conflict.php:295
 msgid "Note that the ImageMagick application and the PHP \"%1$s\" extension are two different products - this error is for the PHP \"%1$s\" extension, not the ImageMagick application."
 msgstr "Notez que l'application ImageMagick et l'extension PHP \"%1$s\" sont deux produits différents - cette erreur est pour l'extension PHP \"%1$s\", et non l'application ImageMagick."
 
-#: lib/conflict.php:304
+#: lib/conflict.php:298
 msgid "Please contact your hosting provider to have the missing PHP \"%1$s\" extension installed and enabled."
 msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP \"%1$s\" manquante."
 
-#: lib/conflict.php:322
+#: lib/conflict.php:316
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s class is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la classe %3$s est manquante."
 
-#: lib/conflict.php:324
+#: lib/conflict.php:318
 msgid "Please contact your hosting provider to have the missing PHP class installed."
 msgstr "SVP contacter votre hébergeur pour installer la classe PHP manquante."
 
-#: lib/conflict.php:341
+#: lib/conflict.php:335
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/conflict.php:380
+#: lib/conflict.php:374
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:382
+#: lib/conflict.php:376
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:384
+#: lib/conflict.php:378
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:407 lib/messages.php:1416
+#: lib/conflict.php:401 lib/messages.php:1416
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines from indexing this site."
 msgstr "L'option WordPress <a href=\"%s\">Visibilité par les moteurs de recherche</a> est configurée pour décourager les moteurs de recherche d'indexer ce site."
 
-#: lib/conflict.php:409
+#: lib/conflict.php:403
 msgid "This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site."
 msgstr "Ceci n'est pas compatible avec l'objectif d'optimisation de votre contenu pour les moteurs sociaux et de recherche - veuillez décocher l'option pour permettre aux moteurs de recherche et aux sites sociaux d'accéder votre site."
 
@@ -8858,55 +8863,55 @@ msgstr "ajout de balises de relation de lien"
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage de schéma json-ld"
 
-#: lib/integ/ecom/woocommerce.php:234
+#: lib/integ/ecom/woocommerce.php:236
 msgid "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section."
 msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  Réglages &gt; Avancé &gt; Installation des pages</a> ."
 
-#: lib/integ/ecom/woocommerce.php:237
+#: lib/integ/ecom/woocommerce.php:239
 msgid "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; Products &gt; General</a> section."
 msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  Réglages &gt; Produits &gt; Général</a> ."
 
-#: lib/integ/ecom/woocommerce.php:241
+#: lib/integ/ecom/woocommerce.php:243
 msgid "My account page"
 msgstr "My account page"
 
-#: lib/integ/ecom/woocommerce.php:242
+#: lib/integ/ecom/woocommerce.php:244
 msgid "Cart page"
 msgstr "Cart page"
 
-#: lib/integ/ecom/woocommerce.php:243
+#: lib/integ/ecom/woocommerce.php:245
 msgid "Checkout page"
 msgstr "Checkout page"
 
-#: lib/integ/ecom/woocommerce.php:244
+#: lib/integ/ecom/woocommerce.php:246
 msgid "Shop page"
 msgstr "Shop page"
 
-#: lib/integ/ecom/woocommerce.php:250
+#: lib/integ/ecom/woocommerce.php:252
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: lib/integ/ecom/woocommerce.php:323
+#: lib/integ/ecom/woocommerce.php:325
 msgid "Suggested attributes:"
 msgstr "Attributs suggérés:"
 
-#: lib/integ/ecom/woocommerce.php:640
+#: lib/integ/ecom/woocommerce.php:642
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1622
+#: lib/integ/ecom/woocommerce.php:1623
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1849
+#: lib/integ/ecom/woocommerce.php:1850
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1852
+#: lib/integ/ecom/woocommerce.php:1853
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1855
+#: lib/integ/ecom/woocommerce.php:1856
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -13220,11 +13225,11 @@ msgstr "ajout de schéma de personne"
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2121
+#: lib/schema-single.php:2160
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2258
+#: lib/schema-single.php:2297
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
 

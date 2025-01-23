@@ -2494,10 +2494,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						WpssoSchema::add_offers_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
 
-					} else {
-
-						WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
-					}
+					} else WpssoSchema::add_offers_aggregate_data_mt( $json_ret, $mt_single[ 'product:offers' ] );
 				}
 
 				$local_recursion = false;

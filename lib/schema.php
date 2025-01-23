@@ -2875,7 +2875,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping offer #' . $num . ': invalid retailer item id' );
+						$wpsso->debug->log( 'skipping offer #' . $num . ' no post id for retailer item id' );
 					}
 
 					continue;
@@ -3019,7 +3019,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping offer #' . $num . ': invalid retailer item id' );
+						$wpsso->debug->log( 'skipping offer #' . $num . ' no post id for retailer item id' );
 					}
 
 					continue;
@@ -3327,7 +3327,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'skipping variant #' . $num . ': invalid retailer item id' );
+						$wpsso->debug->log( 'skipping variant #' . $num . ' no post id for retailer item id' );
 					}
 
 					continue;
