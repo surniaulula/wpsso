@@ -1514,7 +1514,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $min_adv_price && $mt_og[ $amount_key ] < $min_adv_price ) {
 
-							$mt_og[ $mt_pre . ':price_type' ] = 'https://schema.org/MinimumAdvertisedPrice';
+							$mt_og[ $mt_pre . ':price:type' ] = 'https://schema.org/MinimumAdvertisedPrice';
 
 							$mt_og[ $amount_key ] = $min_adv_price;
 						}

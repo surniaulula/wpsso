@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.18.5-dev.3',	// Plugin version.
+					'version'     => '18.18.5-dev.4',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1663,7 +1663,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_product_energy_efficiency_min' => 'https://schema.org/EUEnergyEfficiencyCategoryD',
 					'schema_def_product_energy_efficiency_max' => 'https://schema.org/EUEnergyEfficiencyCategoryA3Plus',
 					'schema_def_product_mrp'                   => 'none',						// Default Product Return Policy.
-					'schema_def_product_price_type'            => 'https://schema.org/RegularPrice',		// Default Product Price Type.
+					'schema_def_product_price_type'            => 'https://schema.org/ListPrice',			// Default Product Price Type.
 					'schema_def_product_size_group_0'          => 'none',
 					'schema_def_product_size_group_1'          => 'none',
 					'schema_def_product_size_system'           => 'none',
@@ -3951,7 +3951,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:pattern'                     => 'product_pattern',
 						'product:pretax_price:amount'         => '',				// Used by WooCommerce module.
 						'product:pretax_price:currency'       => '',				// Used by WooCommerce module.
-						'product:price_type'                  => 'product_price_type',		// Internal meta tag.
+						'product:price:type'                  => 'product_price_type',		// Internal meta tag.
 						'product:price:amount'                => 'product_price',
 						'product:price:currency'              => 'product_currency',
 						'product:purchase_limit'              => '',

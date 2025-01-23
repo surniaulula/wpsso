@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.18.5-dev.3\n"
+"Project-Id-Version: WPSSO Core 18.18.5-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9319,23 +9319,23 @@ msgstr ""
 msgid "Products Group"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1615
+#: lib/integ/ecom/woocommerce.php:1620
 msgid "World"
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1842
+#: lib/integ/ecom/woocommerce.php:1847
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1845
+#: lib/integ/ecom/woocommerce.php:1850
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: lib/integ/ecom/woocommerce.php:1848
+#: lib/integ/ecom/woocommerce.php:1853
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
@@ -14643,11 +14643,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2134
+#: lib/schema-single.php:2136
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2271
+#: lib/schema-single.php:2273
 msgid "adding schema product"
 msgstr ""
 

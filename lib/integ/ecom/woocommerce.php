@@ -837,6 +837,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$md_defs[ 'product_avail' ]            = $product_avail;
 			$md_defs[ 'product_retailer_part_no' ] = $product->get_sku();	// Product SKU.
 
+			if ( $product->is_on_sale() ) {
+				
+				$mt_defs[ 'product_price_type' ] = 'https://schema.org/SalePrice';
+			}
+
 			/*
 			 * Get product shipping dimensions and weight.
 			 */
@@ -1445,7 +1450,6 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			$mt_ecom[ 'product:pretax_price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, false );	// Exclude VAT.
 			$mt_ecom[ 'product:pretax_price:currency' ] = $product_currency;
-			$mt_ecom[ 'product:price_type' ]            = 'https://schema.org/RegularPrice';
 			$mt_ecom[ 'product:price:amount' ]          = $product_price_fmtd;
 			$mt_ecom[ 'product:price:currency' ]        = $product_currency;
 			$mt_ecom[ 'product:price:vat_included' ]    = $product_incl_vat;
@@ -1465,6 +1469,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'get_regular_price() returned ' . $regular_price );
 				}
 
+				$mt_ecom[ 'product:original_price:type' ]     = 'https://schema.org/ListPrice';
 				$mt_ecom[ 'product:original_price:amount' ]   = $regular_price_fmtd;
 				$mt_ecom[ 'product:original_price:currency' ] = $product_currency;
 
@@ -1480,7 +1485,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					$this->p->debug->log( 'product is on sale' );
 				}
 
-				$mt_ecom[ 'product:price_type' ] = 'https://schema.org/SalePrice';
+				$mt_ecom[ 'product:price:type' ] = $mt_ecom[ 'product:sale_price:type' ] = 'https://schema.org/SalePrice';
 
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 

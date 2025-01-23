@@ -1454,7 +1454,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':original_price:currency'         => null,
 				$mt_pre . ':pretax_price:amount'             => null,
 				$mt_pre . ':pretax_price:currency'           => null,
-				$mt_pre . ':price_type'                      => null,		// Internal meta tag.
+				$mt_pre . ':price:type'                      => null,		// Internal meta tag.
 				$mt_pre . ':price:amount'                    => null,
 				$mt_pre . ':price:currency'                  => null,
 				$mt_pre . ':sale_price:amount'               => null,
