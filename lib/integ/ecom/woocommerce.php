@@ -190,6 +190,8 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 		}
 
 		/*
+		 * Define and disable some plugin options.
+		 *
 		 * Since WPSSO Core v14.0.0.
 		 */
 		public function disable_options_keys() {
@@ -832,15 +834,16 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				$this->p->debug->log( 'product_avail = ' . $product_avail );
 			}
 
+			if ( $product->is_on_sale() ) {
+				
+				$md_defs[ 'product_price_type' ]= 'https://schema.org/SalePrice';
+
+			} else $md_defs[ 'product_price_type' ] = 'https://schema.org/ListPrice';
+
 			$md_defs[ 'product_price' ]            = $product_price_fmtd;
 			$md_defs[ 'product_currency' ]         = $product_currency;
 			$md_defs[ 'product_avail' ]            = $product_avail;
 			$md_defs[ 'product_retailer_part_no' ] = $product->get_sku();	// Product SKU.
-
-			if ( $product->is_on_sale() ) {
-				
-				$mt_defs[ 'product_price_type' ] = 'https://schema.org/SalePrice';
-			}
 
 			/*
 			 * Get product shipping dimensions and weight.
