@@ -274,6 +274,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.19.1-rc.1 (2025/01/24)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed `WpssoUtil::get_max_nums()` null argument error.
+* **Developer Notes**
+	* Refactored the `WpssoOpenGraph->get_product_retailer_item_images()` method.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 18.19.0 (2025/01/23)**
 
 * **New Features**
@@ -585,6 +600,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.19.1-rc.1 =
+
+(2024/01/24) Fixed `WpssoUtil::get_max_nums()` null argument error.
 
 = 18.19.0 =
 
