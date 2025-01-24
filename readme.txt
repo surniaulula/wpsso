@@ -274,7 +274,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.1-rc.1 (2025/01/24)**
+**Version 18.19.1 (2025/01/24)**
 
 * **New Features**
 	* None.
@@ -601,7 +601,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.1-rc.1 =
+= 18.19.1 =
 
 (2024/01/24) Fixed `WpssoUtil::get_max_nums()` null argument error.
 
