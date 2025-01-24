@@ -953,9 +953,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public function get_product_retailer_item_image_urls( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
-			$mt_images = $this->get_product_retailer_item_images( $mt_single, $size_names, $md_pre );
-
 			$image_urls = array();
+			$mt_images  = $this->get_product_retailer_item_images( $mt_single, $size_names, $md_pre );
 
 			if ( is_array( $mt_images ) ) {	// Just in case.
 
@@ -984,7 +983,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$mt_images = $mt_single[ 'og:image' ];
 
-			} elseif ( ! $mod = $this->get_product_retailer_item_mod( $mt_single ) ) {
+			} elseif ( ! $mod = $this->get_product_retailer_item_mod( $mt_single ) ) {	// Returns false or array.
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -994,8 +993,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $mt_images;
 			}
 
-			$max_nums = $this->p->util->get_max_nums( $mod, 'og' );
-
+			$max_nums  = $this->p->util->get_max_nums( $mod, 'og' );	// $mod must be an array.
 			$mt_images = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre );
 
 			return $mt_images;

@@ -3235,8 +3235,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_max_nums( array $mod, $opt_prefix = 'og' ) {
 
-			$max_nums = array();
-
+			$max_nums     = array();
 			$max_opt_keys = array( $opt_prefix . '_vid_max', $opt_prefix . '_img_max' );
 
 			foreach ( $max_opt_keys as $opt_key ) {
@@ -3245,10 +3244,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$max_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_key );	// Returns null if an index key is not found.
 
-				} else {
-
-					$max_val = null;	// Default value if index key is missing.
-				}
+				} else $max_val = null;	// Default value if index key is missing.
 
 				/*
 				 * Quick sanitation of returned value.
@@ -3262,10 +3258,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'found custom meta ' . $opt_key . ' = ' . $max_val );
 					}
 
-				} else {
-
-					$max_nums[ $opt_key ] = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : 0;
-				}
+				} else $max_nums[ $opt_key ] = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : 0;
 			}
 
 			return $max_nums;
