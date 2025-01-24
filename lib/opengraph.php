@@ -977,11 +977,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public function get_product_retailer_item_images( array $mt_single, $size_names = 'opengraph', $md_pre = 'og' ) {
 
-			$mt_images = array();
-
 			if ( isset( $mt_single[ 'og:image' ] ) && is_array( $mt_single[ 'og:image' ] ) ) {	// Nothing to do.
 
-				$mt_images = $mt_single[ 'og:image' ];
+				return $mt_single[ 'og:image' ];
 
 			} elseif ( ! $mod = $this->get_product_retailer_item_mod( $mt_single ) ) {	// Returns false or array.
 
@@ -990,13 +988,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$wpsso->debug->log( 'returning early: no post id for retailer item id' );
 				}
 
-				return $mt_images;
+				return array();
 			}
 
 			$max_nums  = $this->p->util->get_max_nums( $mod, 'og' );	// $mod must be an array.
-			$mt_images = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre );
 
-			return $mt_images;
+			return $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre );
 		}
 
 		/*
