@@ -2123,7 +2123,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'resolving rate cost [cost], [qty], and [fee] shortcodes for product qty 1 x price ' . $product_price );
+					$this->p->debug->log( 'resolving [cost], [qty], and [fee] shortcodes for product qty 1 x price ' . $product_price );
 				}
 
 				/*
