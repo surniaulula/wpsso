@@ -2472,7 +2472,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$product_price = apply_filters( 'wpsso_product_price', $product_price, $product );
 
 			/*
-			 * Make sure the product price is not an empty string to avoid triggering a PHP fatal error in:
+			 * Check that the product price returned by WooCommerce is not an empty string, to avoid an error in:
 			 *
 			 * PHP Fatal error: Uncaught TypeError: Unsupported operand types: string * float in
 			 *	woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php:141
