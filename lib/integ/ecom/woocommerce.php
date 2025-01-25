@@ -1469,7 +1469,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'get_regular_price() returned ' . $regular_price );
+					$this->p->debug->log( 'get_regular_price() returned "' . $regular_price . '" (type is ' . gettype( $regular_price ) . ')' );
 				}
 
 				$mt_ecom[ 'product:original_price:type' ]     = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
@@ -1497,7 +1497,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'get_sale_price() returned ' . $sale_price );
+						$this->p->debug->log( 'get_sale_price() returned "' . $sale_price . '" (type is ' . gettype( $sale_price ) . ')' );
 					}
 
 					$mt_ecom[ 'product:sale_price:amount' ]   = $sale_price_fmtd;
@@ -2466,7 +2466,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'get_price() returned ' . $product_price );
+				$this->p->debug->log( 'get_price() returned "' . $product_price . '" (type is ' . gettype( $product_price ) . ')' );
 			}
 
 			$product_price = apply_filters( 'wpsso_product_price', $product_price, $product );
