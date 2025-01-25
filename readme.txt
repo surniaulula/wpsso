@@ -274,16 +274,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.2-dev.3 (2025/01/25)**
+**Version 18.19.2-dev.4 (2025/01/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fix to avoid triggering a PHP fatal error in woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php:141 when WooCommerce returns an empty string for a product price.
 * **Developer Notes**
-	* None.
+	* Updated `WpssoIntegEcomWooCommerce->get_product_price()` to return 0 if the product price returned by WooCommerce is empty.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -616,9 +616,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.2-dev.3 =
+= 18.19.2-dev.4 =
 
-(2024/01/25) None.
+(2024/01/25) Fix to avoid triggering a PHP fatal error when WooCommerce returns an empty string for a product price.
 
 = 18.19.1 =
 
