@@ -2075,6 +2075,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			$rate_type = reset( $rate_ids );
 			$rate_cost = null;
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'rate type = ' . $rate_type );
+			}
+
 			if ( 'local_pickup' === $rate_type ) {	// Pickup is not a shipping method.
 
 				return false;
@@ -2114,8 +2119,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 */
 			} else $rate_cost = 0;
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'rate cost = ' . $rate_cost );
+			}
+
 			/*
-			 * Maybe resolve the [cost], [qty], and [fee] shortcodes.
+			 * Maybe resolve the shipping [fee] shortcode.
 			 *
 			 * See woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php.
 			 */
@@ -2123,7 +2133,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'resolving [cost], [qty], and [fee] shortcodes for product qty 1 x price ' . $product_price );
+					$this->p->debug->log( 'resolving [fee] shortcode for product qty 1 x price ' . $product_price );
 				}
 
 				/*
@@ -2135,11 +2145,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$reflect->setAccessible( true );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'unresolved rate cost = ' . $rate_cost );
-				}
-
+				/*
+				 * Call the protected evaluate_cost method.
+				 *
+				 * See woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php line 75.
+				 */
 				$rate_cost = $reflect->invoke( $method_obj, $rate_cost, array( 'qty'  => 1, 'cost' => $product_price ) );
 				
 				if ( $this->p->debug->enabled ) {
@@ -2161,9 +2171,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 						 * https://schema.org/OfferShippingDetails does not provide a way to specify
 						 * conditions for shipping rates, like coupon or minimum amount.
 						 */
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no markup for shipping requires = ' . $method_data[ 'requires' ] );
+						}
+
 						return false;
 
 					default:		// Unknown requirement.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'unknown shipping requires = ' . $method_data[ 'requires' ] );
+						}
 
 						return false;
 				}
@@ -2227,10 +2247,19 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					'shipping_rate' => $shipping_rate,
 					'delivery_time' => $delivery_time,
 				);
+		
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'invalid rate cost = ' . $rate_cost );
 			}
 
 			$shipping_offer = apply_filters( 'wpsso_wc_shipping_zone_offer', $shipping_offer,
 				$zone_id, $zone_name, $method_inst_id, $method_obj, $shipping_class_id, $product, $product_parent );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'shipping_offer', $shipping_offer );
+			}
 
 			return $shipping_offer;
 		}
