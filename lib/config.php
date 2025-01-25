@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.19.1',	// Plugin version.
+					'version'     => '18.19.2-dev.1',	// Plugin version.
 					'opt_version' => '1021',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1912,8 +1912,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_inherit_images'          => 1,			// Inherit Custom Images.
 					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
 					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
-					'plugin_upscale_images'          => 0,			// Upscale Media Library Images.
-					'plugin_upscale_pct_max'         => 33,			// Maximum Image Upscale Percent.
+					'plugin_upscale_images'          => 1,			// Upscale Media Library Images.
+					'plugin_upscale_pct_max'         => 10,			// Maximum Image Upscale Percent.
 
 					/*
 					 * Advanced Settings > Integration > Plugin and Theme Integration.

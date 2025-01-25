@@ -2121,6 +2121,11 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			 */
 			if ( ! empty( $rate_cost ) && ! is_numeric( $rate_cost ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'resolving rate cost [cost], [qty], and [fee] shortcodes for product qty 1 x price ' . $product_price );
+				}
+
 				/*
 				 * evaluate_cost() is protected, so make it accessible.
 				 *
@@ -2130,7 +2135,17 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				$reflect->setAccessible( true );
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'unresolved rate cost = ' . $rate_cost );
+				}
+
 				$rate_cost = $reflect->invoke( $method_obj, $rate_cost, array( 'qty'  => 1, 'cost' => $product_price ) );
+				
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'resolved rate cost = ' . $rate_cost );
+				}
 			}
 
 			if ( ! empty( $method_data[ 'requires' ] ) ) {
