@@ -274,7 +274,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.2-dev.1 (2025/01/25)**
+**Version 18.19.2-dev.2 (2025/01/25)**
 
 * **New Features**
 	* None.
@@ -616,7 +616,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.2-dev.1 =
+= 18.19.2-dev.2 =
 
 (2024/01/25) None.
 
