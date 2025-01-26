@@ -20,7 +20,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <h3 class="top">Complete and Optimized Structured Data SEO for WordPress</h3>
 
-<p><strong>Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p>Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <!-- about -->
 
