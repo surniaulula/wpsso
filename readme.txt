@@ -45,7 +45,7 @@ Present your content at its best for social sites and search results, no matter 
 	<li>X (Twitter) Cards</li>
 </ul>
 
-<p><strong>Most comprehensive and accurate Schema markup for WooCommerce products.</strong></p>
+<p><strong>The most comprehensive and accurate Schema markup plugin for WooCommerce products.</strong></p>
 
 <!-- /about -->
 
