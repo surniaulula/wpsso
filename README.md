@@ -62,6 +62,8 @@
 
 <p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
 
+<p><strong>Most comprehensive and accurate Schema markup for WooCommerce products.</strong></p>
+
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
 <ul>
