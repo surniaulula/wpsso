@@ -45,25 +45,11 @@ Present your content at its best for social sites and search results, no matter 
 	<li>X (Twitter) Cards</li>
 </ul>
 
+<p><strong>Most comprehensive and accurate Schema markup for WooCommerce products.</strong></p>
+
 <!-- /about -->
 
-<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
-
-* Commerce Manager Catalog Feed XML (Facebook and Instagram)
-* Google Merchant Feed XML
-* Open Graph (Facebook and oEmbed)
-* Pinterest Pin It
-* Schema 1:1 (Google Rich Results)
-* Schema 4:3 (Google Rich Results)
-* Schema 16:9 (Google Rich Results)
-* Schema Thumbnail
-* Video Preview Image
-* X (Twitter) Summary Card
-* X (Twitter) Summary Card Large Image
-
 <p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
-
-<p><strong>Most comprehensive and accurate Schema markup for WooCommerce products.</strong></p>
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
@@ -93,6 +79,20 @@ Present your content at its best for social sites and search results, no matter 
 * *No global identifier provided (e.g. gtin mpn isbn)*
 * *Not a known valid target type for the itemReviewed property*
 * *Price Mismatched value (page crawl): (price [price])*
+
+<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
+
+* Commerce Manager Catalog Feed XML (Facebook and Instagram)
+* Google Merchant Feed XML
+* Open Graph (Facebook and oEmbed)
+* Pinterest Pin It
+* Schema 1:1 (Google Rich Results)
+* Schema 4:3 (Google Rich Results)
+* Schema 16:9 (Google Rich Results)
+* Schema Thumbnail
+* Video Preview Image
+* X (Twitter) Summary Card
+* X (Twitter) Summary Card Large Image
 
 <p><strong>Reads additional information from active plugins, including:</strong></p>
 
