@@ -24,6 +24,10 @@ Present your content at its best for social sites and search results, no matter 
 
 <!-- about -->
 
+<p><strong>The most comprehensive and accurate Schema markup plugin for WooCommerce products.</strong></p>
+
+<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
+
 <p><strong>Provides complete structured data markup for:</strong></p>
 
 <ul>
@@ -45,11 +49,7 @@ Present your content at its best for social sites and search results, no matter 
 	<li>X (Twitter) Cards</li>
 </ul>
 
-<p><strong>The most comprehensive and accurate Schema markup plugin for WooCommerce products.</strong></p>
-
 <!-- /about -->
-
-<p><strong>Supports over 500 different Schema types and sub-types (including Schema Event for WooCommerce products).</strong></p>
 
 <p><strong>Fixes all Google Rich Results and Google Merchant errors, including:</strong></p>
 
