@@ -21,7 +21,7 @@
 
 <!-- about -->
 
-<p><strong>Provides structured data markup for:</strong></p>
+<p><strong>Provides complete structured data markup for:</strong></p>
 
 <ul>
     <li>Facebook / Open Graph</li>
@@ -44,7 +44,7 @@
 
 <!-- /about -->
 
-<p><strong>Optimized image sizes (5 different sizes by default) for social sites and search engines:</strong></p>
+<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 <ul>
 <li>Commerce Manager Catalog Feed XML (Facebook and Instagram)</li>
