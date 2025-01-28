@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.2-rc.1 (2025/01/27)**
+**Version 18.19.2 (2025/01/28)**
 
 * **New Features**
 	* None.
@@ -618,9 +618,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.2-rc.1 =
+= 18.19.2 =
 
-(2024/01/27) Fix to avoid triggering a PHP fatal error when WooCommerce returns an empty string for a product price.
+(2024/01/28) Fix to avoid triggering a PHP fatal error when WooCommerce returns an empty string for a product price.
 
 = 18.19.1 =
 
