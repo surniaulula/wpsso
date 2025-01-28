@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.7.1
 WC Tested Up To: 9.6.0
-Stable Tag: 18.19.1
+Stable Tag: 18.19.2
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -283,7 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fix to avoid triggering a PHP fatal error in woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php:141 when WooCommerce returns an empty string for a product price.
+	* Fix for WooCommerce theme or plugin filters that return an empty string for a product price, to avoid triggering a PHP fatal error in woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php:141
 * **Developer Notes**
 	* Updated `WpssoIntegEcomWooCommerce->get_product_price()` to return 0 if the product price returned by WooCommerce is empty.
 * **Requires At Least**
@@ -580,47 +580,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.9.
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
-**Version 18.9.0 (2024/09/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added French translations for the SSO &gt; Troubleshooting page.
-	* Improved speed of the database query to calculate the total transient sizes.
-	* Improved the WordPress Dashboard &gt; WPSSO Cache Status metabox transient labels.
-* **Bugfixes**
-	* Fixed missing error message when Bitly monthly usage limit has been exceeded.
-* **Developer Notes**
-	* Added a new 'wpsso_wc_shipping_zone_methods' filter.
-	* Added a new 'wpsso_wc_shipping_zone_offer' filter.
-	* Added a new 'wpsso_wc_shipping_zones' filter.
-	* Refactored the `WpssoUtilCache->get_db_transients_size_mb()` method.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (for Premium edition).
-
-**Version 18.8.0 (2024/09/15)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated minimum PHP version from 7.2.34 to 7.4.33.
-	* Updated minimum WordPress version from 5.8 to 5.9.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added support for an update transaction status in the update option data.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v6.0.1 (for Premium edition).
-
 == Upgrade Notice ==
 
 = 18.19.2 =
 
-(2024/01/28) Fix to avoid triggering a PHP fatal error when WooCommerce returns an empty string for a product price.
+(2024/01/28) Fix for WooCommerce theme or plugin filters that return an empty string for a product price.
 
 = 18.19.1 =
 
@@ -689,12 +653,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 18.10.0 =
 
 (2024/09/21) Updated WPSSO dashboard metaboxes to skip creating content when hidden.
-
-= 18.9.0 =
-
-(2024/09/19) Fixed missing error message when Bitly monthly usage limit has been exceeded. Improved speed of the database query to calculate the total transient sizes.
-
-= 18.8.0 =
-
-(2024/09/15) Updated minimum PHP version to 7.4.33 and WordPress version to 5.9. Added support for an update transaction status in the update option data.
 
