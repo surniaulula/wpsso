@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								case 'perfect-woocommerce-brands':
 
-									$chk[ 'class' ] = '\Perfect_Woocommerce_Brands\Perfect_Woocommerce_Brands';
+									$chk[ 'constant' ] = 'PWB_PLUGIN_VERSION';
 
 									break;
 
