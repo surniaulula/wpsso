@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.3-rc.1 (2025/02/01)**
+**Version 18.19.3 (2025/02/01)**
 
 * **New Features**
 	* None.
@@ -597,7 +597,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.3-rc.1 =
+= 18.19.3 =
 
 (2024/02/01) Updated Perfect Woocommerce Brands plugin detection (PWB changed their namespace and class name).
 
