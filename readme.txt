@@ -276,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 18.19.3-rc.1 (2025/02/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated Perfect Woocommerce Brands plugin detection (PWB changed their namespace and class name).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 18.19.2 (2025/01/28)**
 
 * **New Features**
@@ -581,6 +596,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.19.3-rc.1 =
+
+(2024/02/01) Updated Perfect Woocommerce Brands plugin detection (PWB changed their namespace and class name).
 
 = 18.19.2 =
 
