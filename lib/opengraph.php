@@ -1102,11 +1102,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$awards = array();
 
-			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-			if ( is_array( $md_opts ) ) {	// Just in case.
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-				$awards = SucomUtil::preg_grep_keys( '/^product_award_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+				if ( is_array( $md_opts ) ) {	// Just in case.
+
+					$awards = SucomUtil::preg_grep_keys( '/^product_award_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+				}
 			}
 
 			return $awards;
