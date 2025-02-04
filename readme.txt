@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.4-rc.1 (2025/02/03)**
+**Version 18.19.4 (2025/02/04)**
 
 * **New Features**
 	* None.
@@ -612,9 +612,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.4-rc.1 =
+= 18.19.4 =
 
-(2024/02/03) Fixed possible call to empty object in `WpssoOpenGraph->get_product_awards()`.
+(2024/02/04) Fixed possible call to empty object in `WpssoOpenGraph->get_product_awards()`.
 
 = 18.19.3 =
 
@@ -622,15 +622,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.19.2 =
 
-(2024/01/28) Fix for WooCommerce theme or plugin filters that return an empty string for a product price.
+(2025/01/28) Fix for WooCommerce theme or plugin filters that return an empty string for a product price.
 
 = 18.19.1 =
 
-(2024/01/24) Fixed `WpssoUtil::get_max_nums()` null argument error.
+(2025/01/24) Fixed `WpssoUtil::get_max_nums()` null argument error.
 
 = 18.19.0 =
 
-(2024/01/23) Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
+(2025/01/23) Added "price" and "priceCurrency" properties to the offers markup for a new Google Merchant requirement.
 
 = 18.18.4 =
 
