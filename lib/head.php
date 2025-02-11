@@ -859,6 +859,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$home_url  = SucomUtilWP::raw_get_home_url();
 					$home_path = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
 
+					/*
+					 * $args = $cache_exp_secs.
+					 */
 					return '<meta name="wpsso-' . $type . '" content="' . ( $args ? gmdate( 'c' ) : 'no cache' ) . ' for ' . $home_path . '"/>' . "\n";
 
 				/*

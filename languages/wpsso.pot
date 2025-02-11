@@ -3003,7 +3003,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:169
+#: lib/com/cache.php:493 lib/com/cache.php:688 lib/util-cache.php:166
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -6743,7 +6743,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:224
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
 #: lib/loader.php:191 lib/post.php:1792 lib/pro/util/shorten.php:336
-#: lib/pro/util/shorten.php:531 lib/util-cache.php:948
+#: lib/pro/util/shorten.php:531 lib/util-cache.php:945
 msgid "%s error:"
 msgstr ""
 
@@ -9598,7 +9598,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:760
+#: lib/media.php:1748 lib/register.php:305 lib/util-cache.php:757
 #: lib/util.php:886 lib/util.php:995 lib/util.php:1027 lib/util.php:1065
 #: lib/util.php:3444
 msgid "%s warning:"
@@ -15433,7 +15433,7 @@ msgctxt "toolbar menu title"
 msgid "View Profile"
 msgstr ""
 
-#: lib/user.php:1884 lib/user.php:1975 lib/util-cache.php:657
+#: lib/user.php:1884 lib/user.php:1975 lib/util-cache.php:654
 msgctxt "time on date"
 msgid "%2$s on %1$s"
 msgstr ""
@@ -15564,137 +15564,137 @@ msgid ""
 "another one."
 msgstr ""
 
-#: lib/util-cache.php:218
+#: lib/util-cache.php:215
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:460
+#: lib/util-cache.php:457
 msgid "A task to %s is currently running."
 msgstr ""
 
-#: lib/util-cache.php:534 lib/util-cache.php:614 lib/util-cache.php:647
+#: lib/util-cache.php:531 lib/util-cache.php:611 lib/util-cache.php:644
 msgctxt "task name"
 msgid "refresh the cache"
 msgstr ""
 
-#: lib/util-cache.php:550 lib/util-cache.php:622
+#: lib/util-cache.php:547 lib/util-cache.php:619
 msgid ""
 "A background task will begin in %1$s to %2$s for posts, terms and users."
 msgstr ""
 
-#: lib/util-cache.php:567
+#: lib/util-cache.php:564
 msgid ""
 "A background task was scheduled to begin %1$s ago to %2$s for posts, terms "
 "and users."
 msgstr ""
 
-#: lib/util-cache.php:570
+#: lib/util-cache.php:567
 msgid "WordPress should have run the %s event hook at that time."
 msgstr ""
 
-#: lib/util-cache.php:573
+#: lib/util-cache.php:570
 msgid ""
 "If the task does not run, this could indicate a problem with your hosting "
 "provider's event scheduler and/or a lack of support for the WordPress %s "
 "function."
 msgstr ""
 
-#: lib/util-cache.php:575
+#: lib/util-cache.php:572
 msgid "You can activate a plugin like %s to manage scheduled events."
 msgstr ""
 
-#: lib/util-cache.php:577
+#: lib/util-cache.php:574
 msgid "WP Crontrol"
 msgstr ""
 
-#: lib/util-cache.php:658
+#: lib/util-cache.php:655
 msgid "A task to %1$s was started at %2$s."
 msgstr ""
 
-#: lib/util-cache.php:745
+#: lib/util-cache.php:742
 msgid "Processing %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:754
+#: lib/util-cache.php:751
 msgid "The cache refresh time limit of %s has been reached."
 msgstr ""
 
-#: lib/util-cache.php:757
+#: lib/util-cache.php:754
 msgid "The cache refresh task aborted after %1$s ID #%2$d (%1$s %3$d of %4$d)."
 msgstr ""
 
-#: lib/util-cache.php:776
+#: lib/util-cache.php:773
 msgid ""
 "The transient cache for %1$d posts, %2$d terms, and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util-cache.php:798
+#: lib/util-cache.php:795
 msgid "The total execution time for this task was %s (%s peak memory use)."
 msgstr ""
 
-#: lib/util-cache.php:847
+#: lib/util-cache.php:844
 msgid "Ignoring request to %s - this task is already running."
 msgstr ""
 
-#: lib/util-cache.php:950
+#: lib/util-cache.php:947
 msgid ""
 "The PHP %1$s function failed to set a maximum execution time of %2$s to %3$s."
 msgstr ""
 
-#: lib/util-cache.php:989
+#: lib/util-cache.php:986
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:998
+#: lib/util-cache.php:995
 msgid "WordPress object cache"
 msgstr ""
 
-#: lib/util-cache.php:1013
+#: lib/util-cache.php:1010
 msgid "Autoptimize"
 msgstr ""
 
-#: lib/util-cache.php:1028
+#: lib/util-cache.php:1025
 msgid "Cache Enabler"
 msgstr ""
 
-#: lib/util-cache.php:1041
+#: lib/util-cache.php:1038
 msgid "Comet Cache"
 msgstr ""
 
-#: lib/util-cache.php:1055
+#: lib/util-cache.php:1052
 msgid "Hummingbird Cache"
 msgstr ""
 
-#: lib/util-cache.php:1070
+#: lib/util-cache.php:1067
 msgid "LiteSpeed Cache"
 msgstr ""
 
-#: lib/util-cache.php:1083
+#: lib/util-cache.php:1080
 msgid "Pagely"
 msgstr ""
 
-#: lib/util-cache.php:1094
+#: lib/util-cache.php:1091
 msgid "Siteground Cache"
 msgstr ""
 
-#: lib/util-cache.php:1109
+#: lib/util-cache.php:1106
 msgid "W3 Total Cache"
 msgstr ""
 
-#: lib/util-cache.php:1127
+#: lib/util-cache.php:1124
 msgid "WP Engine Cache"
 msgstr ""
 
-#: lib/util-cache.php:1139
+#: lib/util-cache.php:1136
 msgid "WP Fastest Cache"
 msgstr ""
 
-#: lib/util-cache.php:1149
+#: lib/util-cache.php:1146
 msgid "WP Rocket Cache"
 msgstr ""
 
-#: lib/util-cache.php:1161
+#: lib/util-cache.php:1158
 msgid "WP Super Cache"
 msgstr ""
 

@@ -72,10 +72,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$is_disabled = WPSSO_CACHE_DISABLE ? true : false;
 
-			} else {
-
-				$is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
-			}
+			} else $is_disabled = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
 
 			return $is_disabled;
 		}
