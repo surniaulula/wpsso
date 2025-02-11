@@ -10,7 +10,7 @@ Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
-Tested Up To: 6.7.1
+Tested Up To: 6.7.2
 WC Tested Up To: 9.6.0
 Stable Tag: 18.19.4
 
