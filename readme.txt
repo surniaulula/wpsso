@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.5-rc.1 (2025/02/18)**
+**Version 18.19.5 (2025/02/18)**
 
 * **New Features**
 	* None.
@@ -627,7 +627,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.5-rc.1 =
+= 18.19.5 =
 
 (2024/02/18) Fixed possible 'Michelf\MarkdownInterface' library conflict.
 
