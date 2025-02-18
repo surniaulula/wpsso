@@ -6,7 +6,7 @@
  *
  * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
  *
- * Copyright 2020-2024 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2020-2025 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
