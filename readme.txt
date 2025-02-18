@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.5-dev.1 (2025/02/17)**
+**Version 18.19.5-dev.2 (2025/02/18)**
 
 * **New Features**
 	* None.
@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed possible 'Michelf\MarkdownInterface' library conflict.
 * **Developer Notes**
-	* None.
+	* Updated PHP Markdown library to v2.0.0.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -627,9 +627,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.5-dev.1 =
+= 18.19.5-dev.2 =
 
-(2024/02/17) Fixed possible 'Michelf\MarkdownInterface' library conflict.
+(2024/02/18) Fixed possible 'Michelf\MarkdownInterface' library conflict.
 
 = 18.19.4 =
 
