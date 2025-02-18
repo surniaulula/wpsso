@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.7.2
-WC Tested Up To: 9.6.0
+WC Tested Up To: 9.6.2
 Stable Tag: 18.19.4
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -275,6 +275,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 18.19.5-dev.1 (2025/02/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed possible 'Michelf\MarkdownInterface' library conflict.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 **Version 18.19.4 (2025/02/04)**
 
@@ -611,6 +626,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v6.0.1 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.19.5-dev.1 =
+
+(2024/02/17) Fixed possible 'Michelf\MarkdownInterface' library conflict.
 
 = 18.19.4 =
 
