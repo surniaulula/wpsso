@@ -1,4 +1,9 @@
 <?php
+/*
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl.txt
+ * Copyright 2017-2024 Jean-Sebastien Morisset (https://surniaulula.com/)
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 
@@ -10,14 +15,9 @@ if ( ! class_exists( 'Michelf\MarkdownExtra' ) ) {
 	require_once dirname( __FILE__ ) . '/markdown/MarkdownExtra.inc.php';
 }
 
-if ( ! function_exists( 'suext_markdown' ) ) {
-
-	function suext_markdown( $text ) {
-
-		return SuextMarkdown::transform( $text );
-	}
-}
-
+/*
+ * Provides the SuextMarkdown::transform() method.
+ */
 if ( ! class_exists( 'SuextMarkdown' ) ) {
 
 	class SuextMarkdown {
@@ -26,5 +26,16 @@ if ( ! class_exists( 'SuextMarkdown' ) ) {
 
 			return Michelf\MarkdownExtra::defaultTransform( $text );
 		}
+	}
+}
+
+/*
+ * Provides the suext_markdown() function.
+ */
+if ( ! function_exists( 'suext_markdown' ) ) {
+
+	function suext_markdown( $text ) {
+
+		return SuextMarkdown::transform( $text );
 	}
 }
