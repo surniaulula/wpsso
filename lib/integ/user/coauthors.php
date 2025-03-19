@@ -203,10 +203,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 					$this->p->debug->log( 'user_id ' . $user_id . ' coauthor object found' );
 				}
 
-			} else {
-
-				return $value;
-			}
+			} else return $value;
 
 			switch ( $field_id ) {
 
@@ -301,9 +298,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 								$fields[ $num ][ 'label' ] = $this->p->options[ $cm_opt . 'label' ];
 							}
 
-						} else {
-							unset( $fields[ $num ] );
-						}
+						} else unset( $fields[ $num ] );
 					}
 				}
 			}
