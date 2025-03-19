@@ -1230,8 +1230,10 @@ class Markdown implements MarkdownInterface {
 	/**
 	 * Define the emphasis operators with their regex matches
 	 * @var array
+	 *
+	 * 2025/03/19 jsmoriss - removed array type definition to avoid PHP error.
 	 */
-	protected array $em_relist = array(
+	protected $em_relist = array(
 		''  => '(?:(?<!\*)\*(?!\*)|(?<!_)_(?!_))(?![\.,:;]?\s)',
 		'*' => '(?<![\s*])\*(?!\*)',
 		'_' => '(?<![\s_])_(?!_)',
@@ -1241,7 +1243,7 @@ class Markdown implements MarkdownInterface {
 	 * Define the strong operators with their regex matches
 	 * @var array
 	 */
-	protected array $strong_relist = array(
+	protected $strong_relist = array(
 		''   => '(?:(?<!\*)\*\*(?!\*)|(?<!_)__(?!_))(?![\.,:;]?\s)',
 		'**' => '(?<![\s*])\*\*(?!\*)',
 		'__' => '(?<![\s_])__(?!_)',
@@ -1251,7 +1253,7 @@ class Markdown implements MarkdownInterface {
 	 * Define the emphasis + strong operators with their regex matches
 	 * @var array
 	 */
-	protected array $em_strong_relist = array(
+	protected $em_strong_relist = array(
 		''    => '(?:(?<!\*)\*\*\*(?!\*)|(?<!_)___(?!_))(?![\.,:;]?\s)',
 		'***' => '(?<![\s*])\*\*\*(?!\*)',
 		'___' => '(?<![\s_])___(?!_)',
