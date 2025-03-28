@@ -213,9 +213,20 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						delete_metadata( $obj_name, $obj_id = null, $meta_key, $meta_value = null, $delete_all = true );
 					}
 
-					delete_metadata( $obj_name, $obj_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
-					delete_metadata( $obj_name, $obj_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
-					delete_metadata( $obj_name, $obj_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
+					foreach ( array(
+						'WPSSO_META_NAME'              => '_wpsso_meta',
+						'WPSSO_META_ATTACHED_NAME'     => '_wpsso_meta_attached',
+						'WPSSO_PREF_NAME'              => '_wpsso_pref',
+						'WPSSORAR_META_ALLOW_RATINGS'  => '_wpsso_allow_ratings',
+						'WPSSORAR_META_AVERAGE_RATING' => '_wpsso_average_rating',
+						'WPSSORAR_META_RATING_COUNTS'  => '_wpsso_rating_counts',
+						'WPSSORAR_META_REVIEW_COUNT'   => '_wpsso_review_count',
+					) as $const_name => $def_meta_key ) {
+
+						$meta_key = SucomUtil::get_const( $const_name, $def_meta_key );
+
+						delete_metadata( $obj_name, $obj_id = null, $meta_key, $meta_value = null, $delete_all = true );
+					}
 				}
 
 				while ( $result = SucomUtilWP::get_users_ids( $blog_id, $role = '', $limit = 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
@@ -226,7 +237,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						delete_user_option( $user_id, WPSSO_NOTICES_NAME, $global = false );
 
 						WpssoUser::delete_metabox_prefs( $user_id );
-
 						WpssoUser::remove_role_by_id( $user_id, $role = 'person' );
 					}
 				}

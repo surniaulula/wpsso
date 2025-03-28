@@ -27,9 +27,12 @@ function sucomInitToolTips( container_id, doing_ajax ) {
 			attr:'data-help',
 		},
 		position:{
-			my:qtipCorner,
 			at:'top center',
-			adjust:{ x:0, y:-5 },
+			my:qtipCorner,
+			adjust:{
+				resize:true,	// Adjust the tooltips position when the window is resized.
+				scroll:true,	// Adjust the tooltips position when the window is scrolled.
+			},
 		},
 		show:{
 			when:{
