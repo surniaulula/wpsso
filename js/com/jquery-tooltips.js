@@ -30,6 +30,8 @@ function sucomInitToolTips( container_id, doing_ajax ) {
 			at:'top center',
 			my:qtipCorner,
 			adjust:{
+				x:0,
+				y:-5,
 				resize:true,	// Adjust the tooltips position when the window is resized.
 				scroll:true,	// Adjust the tooltips position when the window is scrolled.
 			},
@@ -51,7 +53,7 @@ function sucomInitToolTips( container_id, doing_ajax ) {
 				corner:true,
 			},
 			classes:'sucom-qtip qtip-lime-green qtip-shadow',
-			width:500,
+			width:600,
 		},
 	} );
 }
