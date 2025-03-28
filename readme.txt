@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.6-dev.1 (2025/03/19)**
+**Version 18.19.6-dev.2 (2025/03/28)**
 
 * **New Features**
 	* None.
@@ -642,9 +642,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.6-dev.1 =
+= 18.19.6-dev.2 =
 
-(2024/02/19) Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
+(2024/03/28) Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
 
 = 18.19.5 =
 
