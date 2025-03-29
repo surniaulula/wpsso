@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoRegister::uninstall_plugin()` method `delete_metadata()` calls.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
