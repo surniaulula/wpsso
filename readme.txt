@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.6-rc.1 (2025/03/29)**
+**Version 18.19.6 (2025/03/29)**
 
 * **New Features**
 	* None.
@@ -642,7 +642,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.19.6-rc.1 =
+= 18.19.6 =
 
 (2024/03/29) Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
 
