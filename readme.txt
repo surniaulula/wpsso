@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.7.2
 WC Tested Up To: 9.7.1
-Stable Tag: 18.19.5
+Stable Tag: 18.19.6
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.19.6 (2025/03/29)**
+**Version 18.19.6 (2025/03/30)**
 
 * **New Features**
 	* None.
@@ -644,7 +644,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.19.6 =
 
-(2024/03/29) Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
+(2024/03/30) Fixed a PHP "Type of `Michelf\MarkdownExtra::$em_relist` must not be defined" error in the 'Michelf\Markdown' library.
 
 = 18.19.5 =
 
