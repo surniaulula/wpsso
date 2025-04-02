@@ -281,7 +281,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab:
+		* Add Date Created Property
+		* Add Date Published Property
+		* Add Date Modified Property
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -659,7 +662,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.20.0-dev.1 =
 
-(2024/04/02) None.
+(2024/04/02) Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab:
 
 = 18.19.6 =
 
