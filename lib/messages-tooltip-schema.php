@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					$def_checked = $this->get_def_checked( 'schema_def_add_articlebody_prop' );
 
-					$text = sprintf( __( 'Add an "articleBody" property to the Schema Article markup with the complete text of the post / page (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+					$text = sprintf( __( 'Add an "articleBody" property to the Schema Article markup with the complete content text of the post (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
 				 	break;
 

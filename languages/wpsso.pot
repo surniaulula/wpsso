@@ -12406,7 +12406,7 @@ msgstr ""
 #: lib/messages-tooltip-schema.php:157
 msgid ""
 "Add an \"articleBody\" property to the Schema Article markup with the "
-"complete text of the post / page (default is %s)."
+"complete content text of the post (default is %s)."
 msgstr ""
 
 #: lib/messages-tooltip-schema.php:167
