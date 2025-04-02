@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.19.6',	// Plugin version.
-					'opt_version' => '1021',	// Increment when changing default option values.
+					'version'     => '18.20.0-dev.1',	// Plugin version.
+					'opt_version' => '1022',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1617,14 +1617,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 */
-					'schema_def_add_text_prop'   => 0,	// Add Text Property.
-					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
-					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
-					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
-					'schema_def_prov_org_id'     => 'none',	// Default Provider Org.
-					'schema_def_prov_person_id'  => 'none',	// Default Provider Person.
-					'schema_def_fund_org_id'     => 'none',	// Default Funder Org.
-					'schema_def_fund_person_id'  => 'none',	// Default Funder Person.
+					'schema_def_add_date_created'   => 0,		// Add Date Created Property.
+					'schema_def_add_date_published' => 1,		// Add Date Published Property.
+					'schema_def_add_date_modified'  => 1,		// Add Date Modified Property.
+					'schema_def_add_text_prop'      => 0,		// Add Text Property.
+					'schema_def_family_friendly'    => 'none',	// Default Family Friendly.
+					'schema_def_pub_org_id'         => 'site',	// Default Publisher Org.
+					'schema_def_pub_person_id'      => 'none',	// Default Publisher Person.
+					'schema_def_prov_org_id'        => 'none',	// Default Provider Org.
+					'schema_def_prov_person_id'     => 'none',	// Default Provider Person.
+					'schema_def_fund_org_id'        => 'none',	// Default Funder Org.
+					'schema_def_fund_person_id'     => 'none',	// Default Funder Person.
 
 					/*
 					 * Advanced Settings > Schema Defaults > Event.

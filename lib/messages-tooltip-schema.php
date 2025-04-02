@@ -195,11 +195,35 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				/*
 				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
 				 */
+				case 'tooltip-schema_def_add_date_created':	// Add Date Created Property.
+
+					$def_checked = $this->get_def_checked( 'schema_def_add_date_created' );
+
+					$text = sprintf( __( 'Add a "dateCreated" property to the Schema CreativeWork markup (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+				 	break;
+
+				case 'tooltip-schema_def_add_date_published':	// Add Date Published Property.
+
+					$def_checked = $this->get_def_checked( 'schema_def_add_date_published' );
+
+					$text = sprintf( __( 'Add a "datePublished" property to the Schema CreativeWork markup (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+				 	break;
+
+				case 'tooltip-schema_def_add_date_modified':	// Add Date Modified Property.
+
+					$def_checked = $this->get_def_checked( 'schema_def_add_date_modified' );
+
+					$text = sprintf( __( 'Add a "dateModified" property to the Schema CreativeWork markup (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+				 	break;
+
 				case 'tooltip-schema_def_add_text_prop':	// Add Text Property.
 
 					$def_checked = $this->get_def_checked( 'schema_def_add_text_prop' );
 
-					$text = sprintf( __( 'Add a "text" property to the Schema CreativeWork markup with the complete text of the post / page (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+					$text = sprintf( __( 'Add a "text" property to the Schema CreativeWork markup with the complete content text of the post (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
 				 	break;
 

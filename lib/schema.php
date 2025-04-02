@@ -3783,10 +3783,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $key_map as $prop_name => $assoc_key ) {
 
-				if ( ! $is_assoc ) {
-
-					$prop_name = $assoc_key;
-				}
+				if ( ! $is_assoc ) $prop_name = $assoc_key;
 
 				if ( self::is_valid_key( $assoc, $assoc_key ) ) {	// Not null, an empty string, or 'none'.
 
@@ -3798,7 +3795,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 
 						continue;
-
 					}
 
 					if ( is_string( $assoc[ $assoc_key ] ) && false !== filter_var( $assoc[ $assoc_key ], FILTER_VALIDATE_URL ) ) {

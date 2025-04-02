@@ -196,9 +196,9 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 * See https://schema.org/dateModified.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
-				'dateCreated'   => 'article:published_time',
-				'datePublished' => 'article:published_time',
-				'dateModified'  => 'article:modified_time',
+				'dateCreated'   => empty( $this->p->options[ 'schema_def_add_date_created' ] ) ? null : 'article:published_time',
+				'datePublished' => empty( $this->p->options[ 'schema_def_add_date_published' ] ) ? null : 'article:published_time',
+				'dateModified'  => empty( $this->p->options[ 'schema_def_add_date_modified' ] ) ? null : 'article:modified_time',
 			) );
 
 			/*

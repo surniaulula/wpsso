@@ -874,6 +874,24 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'wpsso_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
+				'schema_def_add_date_created' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Date Created Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_add_date_created',
+					'content'  => $form->get_no_checkbox( 'schema_def_add_date_created' ),
+				),
+				'schema_def_add_date_published' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Date Published Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_add_date_published',
+					'content'  => $form->get_no_checkbox( 'schema_def_add_date_published' ),
+				),
+				'schema_def_add_date_modified' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Add Date Modified Property', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_add_date_modified',
+					'content'  => $form->get_no_checkbox( 'schema_def_add_date_modified' ),
+				),
 				'schema_def_add_text_prop' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Add Text Property', 'option label', 'wpsso' ),
