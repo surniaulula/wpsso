@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.0-dev.2 (2025/04/04)**
+**Version 18.20.0-dev.3 (2025/04/04)**
 
 * **New Features**
 	* None.
@@ -661,7 +661,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.0-dev.2 =
+= 18.20.0-dev.3 =
 
 (2024/04/04) Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab. Updated the Judge.me integration module to use the latest API query arguments.
 
