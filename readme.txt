@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.0-rc.1 (2025/04/04)**
+**Version 18.20.0 (2025/04/04)**
 
 * **New Features**
 	* None.
@@ -662,7 +662,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.0-rc.1 =
+= 18.20.0 =
 
 (2024/04/04) Added new Schema CreativeWork date options. Updated the Judge.me integration module. Disabled the inheritance of product reviews by product variations.
 
