@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.20.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 18.20.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6792,13 +6792,13 @@ msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:231 gettext/gettext-lib-pro.php:235
-#: gettext/gettext-lib-pro.php:239 lib/pro/review/judgeme.php:381
+#: gettext/gettext-lib-pro.php:239 lib/pro/review/judgeme.php:431
 #: lib/pro/review/shopperapproved.php:352 lib/pro/review/stamped.php:341
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:232 gettext/gettext-lib-pro.php:236
-#: gettext/gettext-lib-pro.php:240 lib/pro/review/judgeme.php:384
+#: gettext/gettext-lib-pro.php:240 lib/pro/review/judgeme.php:434
 #: lib/pro/review/shopperapproved.php:355 lib/pro/review/stamped.php:344
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
