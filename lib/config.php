@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '18.20.0-dev.4',	// Plugin version.
+					'version'     => '18.20.0-dev.5',	// Plugin version.
 					'opt_version' => '1022',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3314,7 +3314,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'name'        => null,
 					'description' => null,
 					'brand'       => null,
-					'review'      => null,
 				),
 				'excl_varies_by_props' => array(
 					'@id'                  => null,
