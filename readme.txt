@@ -285,7 +285,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Add Date Created Property
 		* Add Date Published Property
 		* Add Date Modified Property
-	* Updated the Judge.me integration module to use the latest API query arguments (changed 'product_external_id' to 'product_id').
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -663,7 +662,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.20.0-dev.3 =
 
-(2024/04/04) Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab. Updated the Judge.me integration module to use the latest API query arguments.
+(2024/04/04) Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab.
 
 = 18.19.6 =
 
