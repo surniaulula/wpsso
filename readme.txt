@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.0-dev.4 (2025/04/04)**
+**Version 18.20.0-dev.5 (2025/04/04)**
 
 * **New Features**
 	* None.
@@ -286,6 +286,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Add Date Published Property
 		* Add Date Modified Property
 	* Updated the Judge.me integration module to use the Judge.me internal product ID to get reviews.
+	* Disabled the inheritance of product reviews by product variations.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -661,9 +662,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.0-dev.4 =
+= 18.20.0-dev.5 =
 
-(2024/04/04) Added new date options under the SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Creative Work tab. Updated the Judge.me integration module to use the Judge.me internal product ID to get reviews.
+(2024/04/04) Added new Schema CreativeWork date options. Updated the Judge.me integration module. Disabled the inheritance of product reviews by product variations.
 
 = 18.19.6 =
 
