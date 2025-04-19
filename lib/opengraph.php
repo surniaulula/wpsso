@@ -738,25 +738,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
-			if ( empty( $opt_suffix ) ) {
+			if ( ! is_string( $opt_suffix ) ) {	// Must be a string.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: opt_suffix is ' . gettype( $opt_suffix ) );
+				}
+
+				return $default_id;
+
+			} elseif ( empty( $opt_suffix ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: opt_suffix is empty' );
 				}
 
-				return $default_id;	// Just in case.
+				return $default_id;
 			}
 
-			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 			$opt_key    = 'og_type_for_' . $opt_suffix;
 			$type_id    = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
+			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
-			if ( empty( $type_id ) || $type_id === 'none' ) {
-
-				$type_id = $default_id;
-
-			} elseif ( empty( $og_type_ns[ $type_id ] ) ) {
+			if ( empty( $type_id ) || $type_id === 'none' || empty( $og_type_ns[ $type_id ] ) ) {
 
 				$type_id = $default_id;
 			}

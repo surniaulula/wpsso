@@ -906,7 +906,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				require_once dirname( __FILE__ ) . '/currencies.php';
 			}
 
-			if ( is_string( $key ) ) return SucomCurrencies::get( $key, $format );
+			if ( is_string( $key ) ) {
+			
+				return SucomCurrencies::get( $key, $format );
+			}
 
 			return self::get_array_or_element( SucomCurrencies::get( null, $format ), $key, $add_none );
 		}
