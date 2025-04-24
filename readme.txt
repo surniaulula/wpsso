@@ -283,7 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed deprecated call to static method in trait `\RankMath\Helpers\Api`.
+	* Fixed deprecated calls to static methods in trait `\RankMath\Helpers`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 18.20.1-dev.3 =
 
-(2025/04/24) Fixed deprecated call to static method in trait `\RankMath\Helpers\Api`.
+(2025/04/24) Fixed deprecated calls to static methods in trait `\RankMath\Helpers`.
 
 = 18.20.0 =
 
