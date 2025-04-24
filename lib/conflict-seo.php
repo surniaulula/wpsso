@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			/*
 			 * Check for Schema (Structured Data) module.
 			 */
-			if ( \RankMath\Helper::is_module_active( 'rich-snippet' ) ) {
+			if ( ( new class { use \RankMath\Helpers\Conditional; } )::is_module_active( 'rich-snippet' ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
 				$label_transl  = __( 'Schema (Structured Data)', 'rank-math' );
