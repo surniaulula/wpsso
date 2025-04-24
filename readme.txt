@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.0
-WC Tested Up To: 9.8.1
+WC Tested Up To: 9.8.2
 Stable Tag: 18.20.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -276,14 +276,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.1-dev.2 (TBD)**
+**Version 18.20.1-dev.3 (2025/04/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed deprecated call to static method in trait `\RankMath\Helpers\Api`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -419,9 +419,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.1-dev.2 =
+= 18.20.1-dev.3 =
 
-(TBD) None.
+(2025/04/24) Fixed deprecated call to static method in trait `\RankMath\Helpers\Api`.
 
 = 18.20.0 =
 
