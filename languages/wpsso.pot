@@ -14413,8 +14413,8 @@ msgstr ""
 
 #: lib/post.php:280
 msgid ""
-"This function cannot return an array, it must return a post type string or "
-"false."
+"This function must not return an array, it must return false or a post type "
+"string."
 msgstr ""
 
 #: lib/post.php:1296

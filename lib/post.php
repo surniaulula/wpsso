@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress get_post_type() function</a> returned an array for WP_Post object ID %2$s.', 'wpsso' ), __( 'https://developer.wordpress.org/reference/functions/get_post_type/', 'wpsso' ), $mod[ 'id' ] ) . ' ';
 
-						$notice_msg .= __( 'This function cannot return an array, it must return a post type string or false.', 'wpsso' ) . ' ';
+						$notice_msg .= __( 'This function must not return an array, it must return false or a post type string.', 'wpsso' ) . ' ';
 
 						$notice_msg .= '<pre><code>' . print_r( $mod[ 'post_type' ], true ) . '</code></pre>';
 
