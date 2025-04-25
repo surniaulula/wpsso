@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.1-dev.4 (2025/04/24)**
+**Version 18.20.1-dev.5 (2025/04/24)**
 
 * **New Features**
 	* None.
@@ -419,7 +419,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.1-dev.4 =
+= 18.20.1-dev.5 =
 
 (2025/04/24) Added an error notice in case the WordPress `get_post_type()` function returns an array. Fixed deprecated calls to static methods in trait for `\RankMath\Helpers`.
 
