@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoIntegUserCoAuthors' ) ) {
 		 */
 		public function filter_description_seed( $desc_text, $mod, $num_hashtags, $md_key ) {
 
-			if ( $mod[ 'is_post' ] && $mod[ 'post_type' ] === 'guest-author' ) {
+			if ( $mod[ 'is_post' ] && 'guest-author' === $mod[ 'post_type' ] ) {
 
 				$desc_text = $this->filter_get_author_meta( $desc_text, $mod[ 'id' ], 'description', false );
 			}

@@ -302,11 +302,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					/*
-					 * See WpssoIntegUserCoAuthors->filter_get_post_type().
+					 * See WpssoIntegEcomWooCommerce->filter_get_post_type().
 					 */
 					$mod[ 'post_type' ] = apply_filters( 'wpsso_get_post_type', $mod[ 'post_type' ], $post_id );
 
-					if ( $mod[ 'post_type' ] ) {	// Just in case.
+					if ( is_array( $mod[ 'post_type' ] ) ) {	// Just in case.
+
+						if ( $this->p->notice->is_admin_pre_notices() ) {
+
+							$notice_msg = sprintf( __( 'The <a href="https://developer.wordpress.org/reference/functions/get_post_type/">WordPress get_post_type() function</a> or <code>%s</code> filter returned an array for WP_Post object ID %d.', 'wpsso' ), 'wpsso_get_post_type', $post_id ) . ' ';
+
+							$notice_msg .= __( 'This function and filter cannot return an array, they must return a single post type string or false.', 'wpsso' );
+
+							$this->p->notice->err( $notice_msg );
+						}
+
+					} elseif ( $mod[ 'post_type' ] ) {	// Not empty string or false.
 
 						$mod[ 'is_attachment' ] = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
