@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.20.1-dev.5\n"
+"Project-Id-Version: WPSSO Core 18.20.1-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6760,7 +6760,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:216 gettext/gettext-lib-pro.php:227
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1807 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1820 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:945
 msgid "%s error:"
 msgstr ""
@@ -7241,7 +7241,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:928 lib/post.php:1148 lib/term.php:768 lib/user.php:783
+#: lib/admin.php:928 lib/post.php:1161 lib/term.php:768 lib/user.php:783
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -14390,7 +14390,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2315
+#: lib/page.php:2318
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -14401,153 +14401,156 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:280
+#: lib/post.php:278
 msgid ""
-"The <a href=\"https://developer.wordpress.org/reference/functions/"
-"get_post_type/\">WordPress get_post_type() function</a> returned an array "
-"for WP_Post object ID %s."
+"The <a href=\"%1$s\">WordPress get_post_type() function</a> returned an "
+"array for WP_Post object ID %2$s."
 msgstr ""
 
-#: lib/post.php:282
+#: lib/post.php:278
+msgid "https://developer.wordpress.org/reference/functions/get_post_type/"
+msgstr ""
+
+#: lib/post.php:280
 msgid ""
 "This function cannot return an array, it must return a post type string or "
 "false."
 msgstr ""
 
-#: lib/post.php:1283
+#: lib/post.php:1296
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1316
+#: lib/post.php:1329
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1319
+#: lib/post.php:1332
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1322
+#: lib/post.php:1335
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1352
+#: lib/post.php:1365
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1354
+#: lib/post.php:1367
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1356
+#: lib/post.php:1369
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1357
+#: lib/post.php:1370
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1371
+#: lib/post.php:1384
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1385
+#: lib/post.php:1398
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1400
+#: lib/post.php:1413
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1417
+#: lib/post.php:1430
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1420
+#: lib/post.php:1433
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1453
+#: lib/post.php:1466
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1455
+#: lib/post.php:1468
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1457
+#: lib/post.php:1470
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1477
+#: lib/post.php:1490
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1496
+#: lib/post.php:1509
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1498
+#: lib/post.php:1511
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1501
+#: lib/post.php:1514
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1544
+#: lib/post.php:1557
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1546
+#: lib/post.php:1559
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1554
+#: lib/post.php:1567
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1558
+#: lib/post.php:1571
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1562
+#: lib/post.php:1575
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1761
+#: lib/post.php:1774
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1778
+#: lib/post.php:1791
 msgid "post id %s invalid for metadata"
 msgstr ""
 
-#: lib/post.php:1787
+#: lib/post.php:1800
 msgid "user id %s cannot edit post id %s"
 msgstr ""
 
-#: lib/post.php:2041
+#: lib/post.php:2054
 msgid "Insufficient privileges to edit %1$s ID %2$s."
 msgstr ""
 
@@ -15410,39 +15413,39 @@ msgstr ""
 msgid "Insufficient privileges to edit term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:191
+#: lib/twittercard.php:192
 msgctxt "metabox title"
 msgid "X (Twitter) App Card"
 msgstr ""
 
-#: lib/twittercard.php:199
+#: lib/twittercard.php:200
 msgctxt "metabox title"
 msgid "X (Twitter) Player Card"
 msgstr ""
 
-#: lib/twittercard.php:207
+#: lib/twittercard.php:208
 msgctxt "metabox title"
 msgid "X (Twitter) Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:215
+#: lib/twittercard.php:216
 msgctxt "metabox title"
 msgid "X (Twitter) Summary Card Large Image"
 msgstr ""
 
-#: lib/twittercard.php:589
+#: lib/twittercard.php:590
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:596
+#: lib/twittercard.php:597
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:607
+#: lib/twittercard.php:608
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:625
+#: lib/twittercard.php:626
 msgid "Availability"
 msgstr ""
 

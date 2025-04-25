@@ -2280,7 +2280,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $mod[ 'post_type' ] ) ) {	// Add the post type name.
 
-					$mod_salt .= $sep . 'type:' . $mod[ 'post_type' ];
+					$mod_salt .= $sep . 'type:' . ( is_string( $mod[ 'post_type' ] ) ?
+						$mod[ 'post_type' ] : print_r( $mod[ 'post_type' ], true ) );
 
 					if ( ! empty( $mod[ 'is_post_type_archive' ] ) ) {	// Post type archive page.
 

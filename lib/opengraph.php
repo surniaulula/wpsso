@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'post_type' ] ) {	// Just in case.
+					if ( ! empty( $mod[ 'post_type' ] ) && is_string( $mod[ 'post_type' ] ) ) {	// Not false or empty string.
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
@@ -738,20 +738,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
-			if ( ! is_string( $opt_suffix ) ) {	// Must be a string.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: opt_suffix is ' . gettype( $opt_suffix ) );
-				}
-
-				return $default_id;
-
-			} elseif ( empty( $opt_suffix ) ) {	// Just in case.
+			if ( empty( $opt_suffix ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: opt_suffix is empty' );
+				}
+
+				return $default_id;
+
+			} elseif ( ! is_string( $opt_suffix ) ) {	// Must be a string.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: opt_suffix is ' . gettype( $opt_suffix ) );
 				}
 
 				return $default_id;

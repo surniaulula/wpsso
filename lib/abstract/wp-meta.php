@@ -2792,12 +2792,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( $this->p->debug->enabled ) {
+				if ( ! empty( $mod[ 'post_type' ] ) && is_string( $mod[ 'post_type' ] ) ) {	// Not false or empty string.
 
-					$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'getting ancestors for post type = ' . $mod[ 'post_type' ] );
+					}
+
+					$ancestor_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipped getting ancestors: invalid post type' );
 				}
-
-				$ancestor_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
 
 			} elseif ( $mod[ 'is_term' ] ) {
 

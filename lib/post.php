@@ -275,13 +275,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( is_array( $mod[ 'post_type' ] ) ) {	// Just in case.
 
+						$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress get_post_type() function</a> returned an array for WP_Post object ID %2$s.', 'wpsso' ), __( 'https://developer.wordpress.org/reference/functions/get_post_type/', 'wpsso' ), $mod[ 'id' ] ) . ' ';
+
+						$notice_msg .= __( 'This function cannot return an array, it must return a post type string or false.', 'wpsso' ) . ' ';
+
+						$notice_msg .= '<pre><code>' . print_r( $mod[ 'post_type' ], true ) . '</code></pre>';
+
 						if ( $this->p->notice->is_admin_pre_notices() ) {
 
-							$notice_msg = sprintf( __( 'The <a href="https://developer.wordpress.org/reference/functions/get_post_type/">WordPress get_post_type() function</a> returned an array for WP_Post object ID %s.', 'wpsso' ), $post_id ) . ' ';
-
-							$notice_msg .= __( 'This function cannot return an array, it must return a post type string or false.', 'wpsso' );
-
 							$this->p->notice->err( $notice_msg );
+						}
+				
+						$error_pre  = sprintf( '%s error:', __METHOD__ );
+
+						SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'get_post_type() returned an array for WP_Post object id ' . $mod[ 'id' ] );
+
+							$this->p->debug->log_arr( 'post_type', $mod[ 'post_type' ] );
 						}
 					}
 
@@ -290,7 +303,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					$mod[ 'post_type' ] = apply_filters( 'wpsso_get_post_type', $mod[ 'post_type' ], $post_id );
 
-					if ( $mod[ 'post_type' ] && is_string( $mod[ 'post_type' ] ) ) {	// Not empty string.
+					if ( ! empty( $mod[ 'post_type' ] ) && is_string( $mod[ 'post_type' ] ) ) {	// Not false or empty string.
 
 						$mod[ 'is_attachment' ] = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
@@ -420,7 +433,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function get_post_type_og_type( $mod ) {
 
-			if ( ! empty( $mod[ 'post_type' ] ) ) {
+			if ( ! empty( $mod[ 'post_type' ] ) && is_string( $mod[ 'post_type' ] ) ) {	// Not false or empty string.
 
 				if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_by_post_type' ][ $mod[ 'post_type' ] ] ) ) {
 
@@ -2318,6 +2331,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( $inherit_featured ) {
@@ -2347,6 +2361,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: featured image = ' . $metadata[ $meta_key ][ 0 ] );
+				}
+
+				return $check;	// Null by default.
+			}
+
+			/*
+			 * Make sure the post type is not false, empty string, or array.
+			 */
+			if ( empty( $mod[ 'post_type' ] ) || ! is_string( $mod[ 'post_type' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: invalid post type' );
 				}
 
 				return $check;	// Null by default.
@@ -2437,6 +2464,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+
 			$inherit_featured = (bool) apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( $inherit_featured ) {
@@ -2457,6 +2485,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( '' === $prev_value ) {	// No existing previous value.
+
+				/*
+				 * Make sure the post type is not false, empty string, or array.
+				 */
+				if ( empty( $mod[ 'post_type' ] ) || ! is_string( $mod[ 'post_type' ] ) ) {
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'exiting early: invalid post type' );
+					}
+	
+					return $check;	// Null by default.
+				}
 
 				if ( $this->p->debug->enabled ) {
 

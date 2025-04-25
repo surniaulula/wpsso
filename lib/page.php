@@ -1393,7 +1393,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'post_type' ] ) {	// Just in case.
+				if ( $mod[ 'post_type' ] && is_string( $mod[ 'post_type' ] ) ) {	// Just in case.
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
@@ -1537,7 +1537,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'post_type' ] ) {	// Just in case.
+				if ( $mod[ 'post_type' ] && is_string( $mod[ 'post_type' ] ) ) {	// Just in case.
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
@@ -2211,16 +2211,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					} else $taxonomy = '';
 
-					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
+					if ( ! empty( $mod[ 'post_type' ] ) && is_string( $mod[ 'post_type' ] ) ) {	// Not empty string.
 
-					$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
+						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
 
-					if ( ! empty( $taxonomy ) ) {
+						$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
 
-						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
+						if ( ! empty( $taxonomy ) ) {
+
+							$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
+						}
+					
+						unset( $filter_name, $taxonomy );
 					}
-
-					unset( $filter_name, $taxonomy );
 				}
 			}
 

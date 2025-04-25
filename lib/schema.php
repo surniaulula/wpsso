@@ -1366,20 +1366,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
-			if ( ! is_string( $opt_suffix ) ) {	// Must be a string.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: opt_suffix is ' . gettype( $opt_suffix ) );
-				}
-
-				return $default_id;
-
-			} elseif ( empty( $opt_suffix ) ) {	// Just in case.
+			if ( empty( $opt_suffix ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: opt_suffix is empty' );
+				}
+
+				return $default_id;
+			
+			} elseif ( ! is_string( $opt_suffix ) ) {	// Must be a string.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: opt_suffix is ' . gettype( $opt_suffix ) );
 				}
 
 				return $default_id;
