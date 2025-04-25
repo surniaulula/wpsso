@@ -273,32 +273,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod[ 'post_modified_time' ]      = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
 					$mod[ 'post_modified_timestamp' ] = get_post_modified_time( 'U', $gmt = true, $mod[ 'wp_obj' ] );	// Unix timestamp or false.
 
-					/*
-					 * Find the post mime type group and subgroup values.
-					 *
-					 * See wp_post_mime_type_where() in wordpress/wp-includes/post.php.
-					 */
-					if ( ! empty( $mod[ 'post_mime_type' ] ) ) {
+					if ( is_array( $mod[ 'post_type' ] ) ) {	// Just in case.
 
-						if ( false !== $slashpos = strpos( $mod[ 'post_mime_type' ], '/' ) ) {
+						if ( $this->p->notice->is_admin_pre_notices() ) {
 
-							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '',
-								substr( $mod[ 'post_mime_type' ], 0, $slashpos ) );
+							$notice_msg = sprintf( __( 'The <a href="https://developer.wordpress.org/reference/functions/get_post_type/">WordPress get_post_type() function</a> returned an array for WP_Post object ID %s.', 'wpsso' ), $post_id ) . ' ';
 
-							$mod[ 'post_mime_subgroup' ] = preg_replace( '/[^-*.+a-zA-Z0-9]/', '',
-								substr( $mod[ 'post_mime_type' ], $slashpos + 1 ) );
+							$notice_msg .= __( 'This function cannot return an array, it must return a post type string or false.', 'wpsso' );
 
-						} else {
-
-							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '', $mod[ 'post_mime_type' ] );
-
-							$mod[ 'post_mime_subgroup' ] = '*';
+							$this->p->notice->err( $notice_msg );
 						}
-					}
-
-					if ( ! empty( $mod[ 'wp_obj' ]->post_parent ) ) {
-
-						$mod[ 'post_parent' ] = $mod[ 'wp_obj' ]->post_parent;	// Post parent id.
 					}
 
 					/*
@@ -306,18 +290,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					$mod[ 'post_type' ] = apply_filters( 'wpsso_get_post_type', $mod[ 'post_type' ], $post_id );
 
-					if ( is_array( $mod[ 'post_type' ] ) ) {	// Just in case.
-
-						if ( $this->p->notice->is_admin_pre_notices() ) {
-
-							$notice_msg = sprintf( __( 'The <a href="https://developer.wordpress.org/reference/functions/get_post_type/">WordPress get_post_type() function</a> or <code>%s</code> filter returned an array for WP_Post object ID %d.', 'wpsso' ), 'wpsso_get_post_type', $post_id ) . ' ';
-
-							$notice_msg .= __( 'This function and filter cannot return an array, they must return a single post type string or false.', 'wpsso' );
-
-							$this->p->notice->err( $notice_msg );
-						}
-
-					} elseif ( $mod[ 'post_type' ] ) {	// Not empty string or false.
+					if ( $mod[ 'post_type' ] && is_string( $mod[ 'post_type' ] ) ) {	// Not empty string.
 
 						$mod[ 'is_attachment' ] = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
@@ -357,6 +330,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					/*
+					 * If the post has a parent, save the parent ID.
+					 */
+					if ( ! empty( $mod[ 'wp_obj' ]->post_parent ) ) {
+
+						$mod[ 'post_parent' ] = $mod[ 'wp_obj' ]->post_parent;	// Post parent id.
+					}
+
+					/*
 					 * The post type might be public, but if the post itself is private, then mark the post as not public.
 					 *
 					 * See https://wordpress.org/support/article/post-status/#default-statuses.
@@ -364,6 +345,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( 'private' === $mod[ 'post_status' ] ) {
 
 						$mod[ 'is_public' ] = false;
+					}
+
+					/*
+					 * Find the post mime type group and subgroup values.
+					 *
+					 * See wp_post_mime_type_where() in wordpress/wp-includes/post.php.
+					 */
+					if ( ! empty( $mod[ 'post_mime_type' ] ) ) {
+
+						if ( false !== $slashpos = strpos( $mod[ 'post_mime_type' ], '/' ) ) {
+
+							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '',
+								substr( $mod[ 'post_mime_type' ], 0, $slashpos ) );
+
+							$mod[ 'post_mime_subgroup' ] = preg_replace( '/[^-*.+a-zA-Z0-9]/', '',
+								substr( $mod[ 'post_mime_type' ], $slashpos + 1 ) );
+
+						} else {
+
+							$mod[ 'post_mime_group' ] = preg_replace( '/[^-*.a-zA-Z0-9]/', '', $mod[ 'post_mime_type' ] );
+
+							$mod[ 'post_mime_subgroup' ] = '*';
+						}
 					}
 
 				} else $mod[ 'wp_obj' ] = false;
