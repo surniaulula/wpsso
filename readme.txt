@@ -276,14 +276,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.20.1-dev.3 (2025/04/24)**
+**Version 18.20.1-dev.4 (2025/04/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added an error notice in case the WordPress `get_post_type()` function returns an array.
 * **Bugfixes**
-	* Fixed deprecated calls to static methods in trait `\RankMath\Helpers`.
+	* Fixed deprecated calls to static methods in trait for `\RankMath\Helpers`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -419,9 +419,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.20.1-dev.3 =
+= 18.20.1-dev.4 =
 
-(2025/04/24) Fixed deprecated calls to static methods in trait `\RankMath\Helpers`.
+(2025/04/24) Added an error notice in case the WordPress `get_post_type()` function returns an array. Fixed deprecated calls to static methods in trait for `\RankMath\Helpers`.
 
 = 18.20.0 =
 
