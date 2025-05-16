@@ -1,4 +1,4 @@
-<h1>WPSSO Core - Complete and Optimized Structured Data SEO</h1>
+<h1>WPSSO Core - Complete Schema Markup and Meta Tags</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
