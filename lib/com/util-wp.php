@@ -2378,7 +2378,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( wp_is_post_revision( $post_id ) ) {
 
-			        $post_id = wp_is_post_revision( $post_id );
+				$post_id = wp_is_post_revision( $post_id );
 			}
 
 			if ( ! is_numeric( $post_id ) ) {	// Just in case.

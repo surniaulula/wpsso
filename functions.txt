@@ -13,9 +13,9 @@ __return_year_in_seconds()
 
 wpsso_error_handler( $severity, $errstr, $filename, $lineno );
 
-wpsso_get_canonical_url( $mod = false, $add_page = true );
+wpsso_get_canonical_url( $mod = false, $add_page = false );
 
-wpsso_get_canonical_short_url( $mod = false, $add_page = true );
+wpsso_get_canonical_short_url( $mod = false, $add_page = false );
 
 wpsso_get_comment_mod( $comment_id );
 
@@ -47,9 +47,9 @@ wpsso_get_post_place_options( $post_id, $place_id = 'custom' );
 
 wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' );
 
-wpsso_get_sharing_url( $mod = false, $add_page = true, $atts = array() );
+wpsso_get_sharing_url( $mod = false, $add_page = false, $atts = array() );
 
-wpsso_get_sharing_short_url( $mod = false, $add_page = true, $atts = array() );
+wpsso_get_sharing_short_url( $mod = false, $add_page = false, $atts = array() );
 
 wpsso_get_term_mod( $term_id );
 

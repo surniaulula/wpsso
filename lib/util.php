@@ -1898,8 +1898,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$shortlink = SucomUtilWP::raw_wp_get_shortlink( $mod[ 'id' ], $context, $allow_slugs );
 				}
-
-				$shortlink =  $this->get_url_paged( $shortlink, $mod, $add_page = true );
 			}
 
 			return $shortlink;
@@ -2098,7 +2096,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL).
 		 */
-		public function get_canonical_short_url( $mod = false, $add_page = true, $md_key = 'canonical_url' ) {
+		public function get_canonical_short_url( $mod = false, $add_page = false, $md_key = 'canonical_url' ) {
 
 			$url = $this->get_canonical_url( $mod, $add_page, $md_key );
 
@@ -2110,7 +2108,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * $md_key = 'canonical_url' | '' (empty value ignores custom URL)
 		 */
-		public function get_canonical_url( $mod = false, $add_page = true, $md_key = 'canonical_url' ) {
+		public function get_canonical_url( $mod = false, $add_page = false, $md_key = 'canonical_url' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2515,7 +2513,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		public function get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
+		public function get_sharing_url( $mod = false, $add_page = false, $atts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2566,14 +2564,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/*
 		 * Shorten the sharing URL using the selected shortening service.
 		 */
-		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
+		public function get_sharing_short_url( $mod = false, $add_page = false, $atts = array() ) {
 
 			$url = $this->get_sharing_url( $mod, $add_page, $atts );
 
 			return $this->shorten_url( $url, $mod );
 		}
 
-		public function get_url_paged( $url, array $mod, $add_page = true ) {
+		public function get_url_paged( $url, array $mod, $add_page = false ) {
 
 			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
 
@@ -2655,7 +2653,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * See WpssoUtil->get_url_paged().
 		 * See WpssoUtilInline->get_defaults().
 		 */
-		public function get_page_number( array $mod, $add_page = true ) {
+		public function get_page_number( array $mod, $add_page = false ) {
 
 			$page_number = 1;
 
@@ -3842,7 +3840,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$can_crawl_url = true;
-			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
 
 			if ( empty( $canonical_url ) ) {
 

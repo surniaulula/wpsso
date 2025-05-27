@@ -411,7 +411,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$flattened = array();
 
-		        foreach ( $arr as $key => $value ) {
+			foreach ( $arr as $key => $value ) {
 
 				if ( is_array( $value ) ) {
 
@@ -430,9 +430,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$imploded = '';
 
-		        foreach ( $arr as $value ) {
+			foreach ( $arr as $value ) {
 
-			        if ( is_array( $value ) ) {
+				if ( is_array( $value ) ) {
 
 					$imploded .= self::array_implode( $value, $glue ) . $glue;
 
@@ -616,7 +616,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_array_parents( array $arr, $parent_key = '', $gparent_key = '', &$parents = array() ) {
 
-		        foreach ( $arr as $child_key => $value ) {
+			foreach ( $arr as $child_key => $value ) {
 
 				if ( is_array( $value ) ) {
 
@@ -984,7 +984,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$factor = floor( ( strlen( $bytes ) - 1 ) / 3 );
 
-    			return sprintf( "%.{$dec}f{$sep}%s", $bytes / pow( 1024, $factor ), $size[ $factor ] );
+			return sprintf( "%.{$dec}f{$sep}%s", $bytes / pow( 1024, $factor ), $size[ $factor ] );
 		}
 
 		/*
@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$times = array();
 
-		        foreach ( range( $start_secs, $end_secs, $step_secs ) as $ts ) {
+			foreach ( range( $start_secs, $end_secs, $step_secs ) as $ts ) {
 
 				$value = gmdate( 'H:i', $ts );
 
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$interval = new \DateInterval( $iso8601 );
 
-		        return ( $interval->d * 24 * 60 * 60 ) + ( $interval->h * 60 * 60 ) + ( $interval->i * 60 ) + $interval->s;
+			return ( $interval->d * 24 * 60 * 60 ) + ( $interval->h * 60 * 60 ) + ( $interval->i * 60 ) + $interval->s;
 		}
 
 		public static function maybe_iso8601_to_seconds( $mixed ) {
@@ -1289,7 +1289,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$is_true = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
 
-		        return null === $is_true && ! $allow_null ? false : $is_true;
+			return null === $is_true && ! $allow_null ? false : $is_true;
 		}
 
 		/*

@@ -149,7 +149,7 @@ class MarkdownExtra extends \Michelf\Markdown {
 	 */
 	protected int $footnote_counter = 1;
 
-    /**
+	/**
 	 * Ref attribute for links
 	 */
 	protected array $ref_attr = array();

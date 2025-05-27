@@ -757,8 +757,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 							$text = __( 'An alternate name for the rating value (example: False, Misleading, Accurate, etc.).', 'wpsso' ) . ' ';
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
-                                                        $text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
-                                                                'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s value</a>.',
+								'wpsso' ), $tp_frags[ 'about' ], $tp_frags[ 'desc' ] ) . ' ';
 
 						 	break;
 

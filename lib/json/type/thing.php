@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoJsonTypeThing' ) ) {
 				$this->p->debug->log( 'getting same as' );
 			}
 
-			$json_ret[ 'sameAs' ] = array();
+			$json_ret[ 'sameAs' ] = array( $this->p->util->get_canonical_url( $mod, $add_page = true ) );
 
 			if ( ! empty( $mod[ 'is_public' ] ) ) {	// Since WPSSO Core v7.0.0.
 

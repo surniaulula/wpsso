@@ -546,7 +546,7 @@ if ( ! class_exists( 'WpssoIntegSeoWpseo' ) ) {
 									}
 								}
 							}
-                                        	}
+						}
 					}
 				}
 			}

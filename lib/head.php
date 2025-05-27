@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				/*
 				 * Canonical URL for SucomUtil::get_mod_salt().
 				 */
-				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+				$canonical_url = $this->p->util->get_canonical_url( $mod );
 			}
 
 			/*
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Canonical URL for SucomUtil::get_mod_salt().
 			 */
-			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
 
 			/*
 			 * Disable head and content cache if the request URL contains one or more unknown query arguments.
@@ -585,14 +585,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( is_array( $mixed ) ) {
 
-				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
-
-					$cache_index .= $sep . 'order:' . $mixed[ 'query_vars' ][ 'order' ];
-				}
-
 				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// Greater than 1.
 
 					$cache_index .= $sep . 'paged:' . $mixed[ 'paged' ];
+				}
+
+				if ( ! empty( $mixed[ 'query_vars' ][ 'cpage' ] ) && $mixed[ 'query_vars' ][ 'cpage' ] > 1 ) {	// Greater than 1.
+
+					$cache_index .= $sep . 'cpage:' . $mixed[ 'query_vars' ][ 'cpage' ];
+				}
+
+				if ( ! empty( $mixed[ 'query_vars' ][ 'order' ] ) ) {	// Sort order.
+
+					$cache_index .= $sep . 'order:' . $mixed[ 'query_vars' ][ 'order' ];
 				}
 			}
 

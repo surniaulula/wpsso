@@ -1262,12 +1262,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ini_get( 'open_basedir' ) ) {
 
-				$check_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
+				$check_url = $this->p->util->get_canonical_url( $post_id );
 
-			} else {
-
-				$check_url = $this->p->util->get_shortlink( $post_id, $context = 'post' );
-			}
+			} else $check_url = $this->p->util->get_shortlink( $post_id, $context = 'post' );
 
 			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );	// Does not double-encode.
 
@@ -1692,7 +1689,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( ! $is_root_top_item && ! $is_top_secondary_item && $is_parent ) {
 
 					$arrow = '<span class="wp-admin-bar-arrow" aria-hidden="true"></span>';
-		                }
+				}
 
 				$link = $has_link ?
 					'<a class="ab-item"' . $aria_attributes . ' href="' . esc_url( $node->href ) . '"' :
@@ -1883,7 +1880,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ini_get( 'open_basedir' ) ) {
 
-				$other_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+				$other_url = $this->p->util->get_canonical_url( $mod );
 
 			} else $other_url = $this->p->util->get_shortlink( $mod, $context = 'post' );
 
@@ -2249,7 +2246,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/*
 			 * Shorten URL using the selected shortening service.
 			 */
-			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
 			$short_url     = $this->p->util->shorten_url( $canonical_url, $mod );
 
 			if ( $short_url === $canonical_url ) {

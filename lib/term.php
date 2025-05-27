@@ -623,7 +623,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'post_status'  => 'publish',	// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'    => 'any',	// Return posts, pages, or any custom post type.
 				'tax_query'    => array(
-				        array(
+					array(
 						'taxonomy'         => $mod[ 'tax_slug' ],
 						'field'            => 'term_id',
 						'terms'            => $mod[ 'id' ],

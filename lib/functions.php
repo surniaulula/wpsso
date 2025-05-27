@@ -103,7 +103,7 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
  */
 if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
 
-	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
+	function wpsso_get_canonical_url( $mod = false, $add_page = false ) {
 
 		$wpsso =& Wpsso::get_instance();
 
@@ -116,7 +116,7 @@ if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
  */
 if ( ! function_exists( 'wpsso_get_canonical_short_url' ) ) {
 
-	function wpsso_get_canonical_short_url( $mod = false, $add_page = true ) {
+	function wpsso_get_canonical_short_url( $mod = false, $add_page = false ) {
 
 		$wpsso =& Wpsso::get_instance();
 
@@ -393,7 +393,7 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
  */
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
-	function wpsso_get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
+	function wpsso_get_sharing_url( $mod = false, $add_page = false, $atts = array() ) {
 
 		return $wpsso->util->get_sharing_url( $mod, $add_page, $atts );
 	}
@@ -404,7 +404,7 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
  */
 if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 
-	function wpsso_get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
+	function wpsso_get_sharing_short_url( $mod = false, $add_page = false, $atts = array() ) {
 
 		$wpsso =& Wpsso::get_instance();
 

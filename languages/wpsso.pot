@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 18.20.1\n"
+"Project-Id-Version: WPSSO Core 18.21.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6760,7 +6760,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:216 gettext/gettext-lib-pro.php:227
 #: lib/conflict.php:232 lib/integ/review/yotpowc.php:181 lib/loader.php:177
-#: lib/loader.php:191 lib/post.php:1820 lib/pro/util/shorten.php:336
+#: lib/loader.php:191 lib/post.php:1817 lib/pro/util/shorten.php:336
 #: lib/pro/util/shorten.php:531 lib/util-cache.php:945
 msgid "%s error:"
 msgstr ""
@@ -8069,52 +8069,52 @@ msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/edit-prev.php:78
+#: lib/edit-prev.php:79
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit-prev.php:87
+#: lib/edit-prev.php:88
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit-prev.php:94
+#: lib/edit-prev.php:95
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit-prev.php:99 lib/edit-visibility.php:54
+#: lib/edit-prev.php:100 lib/edit-visibility.php:53
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit-prev.php:103
+#: lib/edit-prev.php:104
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit-prev.php:107
+#: lib/edit-prev.php:108
 msgctxt "metabox title"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit-prev.php:144
+#: lib/edit-prev.php:145
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit-prev.php:148
+#: lib/edit-prev.php:149
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit-prev.php:152
+#: lib/edit-prev.php:153
 msgctxt "metabox title"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit-prev.php:161
+#: lib/edit-prev.php:162
 msgid "oEmbed HTML Not Available."
 msgstr ""
 
@@ -9172,103 +9172,103 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/edit-visibility.php:61
+#: lib/edit-visibility.php:60
 msgctxt "option label"
 msgid "301 Redirect URL"
 msgstr ""
 
-#: lib/edit-visibility.php:94
+#: lib/edit-visibility.php:93
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit-visibility.php:101
+#: lib/edit-visibility.php:100
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit-visibility.php:104
+#: lib/edit-visibility.php:103
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:108
+#: lib/edit-visibility.php:107
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit-visibility.php:111
+#: lib/edit-visibility.php:110
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:115
+#: lib/edit-visibility.php:114
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit-visibility.php:118
+#: lib/edit-visibility.php:117
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit-visibility.php:122
+#: lib/edit-visibility.php:121
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit-visibility.php:125
+#: lib/edit-visibility.php:124
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:129
+#: lib/edit-visibility.php:128
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit-visibility.php:132
+#: lib/edit-visibility.php:131
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:136
+#: lib/edit-visibility.php:135
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit-visibility.php:139
+#: lib/edit-visibility.php:138
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit-visibility.php:143
+#: lib/edit-visibility.php:142
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit-visibility.php:147 lib/submenu/general.php:331
+#: lib/edit-visibility.php:146 lib/submenu/general.php:331
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit-visibility.php:148 lib/edit-visibility.php:164
+#: lib/edit-visibility.php:147 lib/edit-visibility.php:163
 #: lib/submenu/general.php:332 lib/submenu/general.php:346
 msgctxt "option comment"
 msgid "(-1 for no limit)"
 msgstr ""
 
-#: lib/edit-visibility.php:152
+#: lib/edit-visibility.php:151
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit-visibility.php:159
+#: lib/edit-visibility.php:158
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit-visibility.php:163 lib/submenu/general.php:345
+#: lib/edit-visibility.php:162 lib/submenu/general.php:345
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -9618,11 +9618,11 @@ msgstr ""
 
 #: lib/media.php:1748 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:886 lib/util.php:995 lib/util.php:1027 lib/util.php:1065
-#: lib/util.php:3444
+#: lib/util.php:3442
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1749 lib/util.php:887 lib/util.php:3445
+#: lib/media.php:1749 lib/util.php:887 lib/util.php:3443
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -14417,140 +14417,140 @@ msgid ""
 "string."
 msgstr ""
 
-#: lib/post.php:1296
+#: lib/post.php:1293
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1329
+#: lib/post.php:1326
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1332
+#: lib/post.php:1329
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1335
+#: lib/post.php:1332
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1365
+#: lib/post.php:1362
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1367
+#: lib/post.php:1364
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1369
+#: lib/post.php:1366
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1370
+#: lib/post.php:1367
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1384
+#: lib/post.php:1381
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1398
+#: lib/post.php:1395
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1413
+#: lib/post.php:1410
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1430
+#: lib/post.php:1427
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1433
+#: lib/post.php:1430
 msgid "Does a caching plugin or service need to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1466
+#: lib/post.php:1463
 msgid "The PHP %1$s function failed to remove the %2$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1468
+#: lib/post.php:1465
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1470
+#: lib/post.php:1467
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1490
+#: lib/post.php:1487
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1509
+#: lib/post.php:1506
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1511
+#: lib/post.php:1508
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1514
+#: lib/post.php:1511
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1557
+#: lib/post.php:1554
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1559
+#: lib/post.php:1556
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1567
+#: lib/post.php:1564
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1571
+#: lib/post.php:1568
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1575
+#: lib/post.php:1572
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1774
+#: lib/post.php:1771
 msgid "ajax request invalid nonce"
 msgstr ""
 
-#: lib/post.php:1791
+#: lib/post.php:1788
 msgid "post id %s invalid for metadata"
 msgstr ""
 
-#: lib/post.php:1800
+#: lib/post.php:1797
 msgid "user id %s cannot edit post id %s"
 msgstr ""
 
-#: lib/post.php:2054
+#: lib/post.php:2051
 msgid "Insufficient privileges to edit %1$s ID %2$s."
 msgstr ""
 
@@ -14990,7 +14990,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:288 lib/util.php:3466
+#: lib/submenu/advanced.php:288 lib/util.php:3464
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -15930,146 +15930,146 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3446
+#: lib/util.php:3444
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3469
+#: lib/util.php:3467
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3471
+#: lib/util.php:3469
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3473
+#: lib/util.php:3471
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3475
+#: lib/util.php:3473
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3870
+#: lib/util.php:3868
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3871
+#: lib/util.php:3869
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3875
+#: lib/util.php:3873
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3876
+#: lib/util.php:3874
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3880
+#: lib/util.php:3878
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3881
+#: lib/util.php:3879
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3885
+#: lib/util.php:3883
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3886
+#: lib/util.php:3884
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3890
+#: lib/util.php:3888
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3891
+#: lib/util.php:3889
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3895
+#: lib/util.php:3893
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3896
+#: lib/util.php:3894
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3900
+#: lib/util.php:3898
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3901
+#: lib/util.php:3899
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3905
+#: lib/util.php:3903
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3906
+#: lib/util.php:3904
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3910
+#: lib/util.php:3908
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:3911
+#: lib/util.php:3909
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:3916
+#: lib/util.php:3914
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3917
+#: lib/util.php:3915
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:3987
+#: lib/util.php:3985
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:3997
+#: lib/util.php:3995
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

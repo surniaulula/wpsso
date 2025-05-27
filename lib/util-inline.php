@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$this->p->debug->log( 'getting the %%' . $varname . '%% value' );
 			}
 
-			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : false;
 			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'def_title_sep' ];
 
 			if ( 0 === strpos( $varname, 'post' ) ) {

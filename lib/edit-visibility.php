@@ -44,9 +44,8 @@ if ( ! class_exists( 'WpssoEditVisibility' ) ) {
 			$canonical_url_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
 			$canonical_disabled = $canonical_url_msg ? true : false;
 			$def_canonical_url  = $this->p->util->get_canonical_url( $mod, $add_page = false, $md_key = '' );
-
-			$redirect_disabled = $this->p->util->is_redirect_disabled();
-			$def_redirect_url  = $this->p->util->get_redirect_url( $mod, $mod_id = null, $md_key = '' );
+			$redirect_disabled  = $this->p->util->is_redirect_disabled();
+			$def_redirect_url   = $this->p->util->get_redirect_url( $mod, $mod_id = null, $md_key = '' );
 
 			$form_rows = array(
 				'canonical_url' => $mod[ 'is_public' ] ? array(

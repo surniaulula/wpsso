@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			 */
 			if ( ! $this->p->util->is_shortlink_disabled() ) {
 
-				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+				$canonical_url = $this->p->util->get_canonical_url( $mod );
 
 				$shortlink = '';
 

@@ -47,7 +47,8 @@ if ( ! class_exists( 'WpssoEditPrev' ) ) {
 
 			$image_url     = SucomUtil::get_first_mt_media_url( $head_info );
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
-			$shortlink_url = $mod[ 'is_post' ] ? $this->p->util->get_shortlink( $mod, $context = 'post' ) :
+			$shortlink_url = $mod[ 'is_post' ] ? 
+				$this->p->util->get_shortlink( $mod, $context = 'post' ) :
 				$this->p->util->shorten_url( $canonical_url, $mod );
 
 			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 &&

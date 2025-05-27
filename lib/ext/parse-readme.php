@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 
-        die( 'These aren\'t the droids you\'re looking for.' );
+	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! class_exists( 'SuextParseReadme' ) ) {
@@ -355,7 +355,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function filter_text( $text, $markdown = false ) {
 
 			$text = trim( $text );
-		        $text = self::code_trick( $text, $markdown );
+			$text = self::code_trick( $text, $markdown );
 
 			if ( $markdown ) {
 

@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:url' ] ) ) {
 
-				$mt_og[ 'og:url' ] = $this->p->util->get_canonical_url( $mod, $add_page = true );
+				$mt_og[ 'og:url' ] = $this->p->util->get_canonical_url( $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
 

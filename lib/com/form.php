@@ -647,7 +647,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_checked = checked( $this->options[ $input_name ], 1, false );
 
-             			                   	} elseif ( $this->in_defaults( $input_name ) ) {
+							} elseif ( $this->in_defaults( $input_name ) ) {
 
 								$input_checked = checked( $this->defaults[ $input_name ], 1, false );
 							}
@@ -1457,15 +1457,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
 			/*
-                         * Set 'none' as the default if no default is defined.
-                         */
-                        if ( ! empty( $name ) ) {	// Just in case.
+			 * Set 'none' as the default if no default is defined.
+			 */
+			if ( ! empty( $name ) ) {	// Just in case.
 
-                                if ( ! $this->in_defaults( $name ) ) {
+				if ( ! $this->in_defaults( $name ) ) {
 
-                                        $this->defaults[ $name ] = 'none';	// Required for sanity check.
-                                }
-                        }
+					$this->defaults[ $name ] = 'none';	// Required for sanity check.
+				}
+			}
 
 			/*
 			 * Sanity check for older input field values.
