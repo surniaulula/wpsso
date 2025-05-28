@@ -2454,6 +2454,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_redirect_url( $mixed, $mod_id = null, $md_key = 'redirect_url' ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$mod = false;
 
 			if ( ! empty( $mixed[ 'obj' ] ) ) {
@@ -2566,6 +2571,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_sharing_short_url( $mod = false, $add_page = false, $atts = array() ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$url = $this->get_sharing_url( $mod, $add_page, $atts );
 
 			return $this->shorten_url( $url, $mod );
@@ -2573,9 +2583,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function get_url_paged( $url, array $mod, $add_page = false ) {
 
-			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
+			if ( $this->p->debug->enabled ) {
 
-				return $url;	// Nothing to do.
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $url ) ) {	// Just in case.
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: url is empty' );
+				}
+
+				return $url;
+
+			} elseif ( ! $add_page ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: add_page is false' );
+				}
+
+				return $url;
 			}
 
 			global $wp_rewrite;
