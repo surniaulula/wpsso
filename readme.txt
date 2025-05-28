@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.21.0-dev.1 (2025/05/27)**
+**Version 18.21.0-rc.1 (2025/05/28)**
 
 * **New Features**
 	* None.
@@ -434,9 +434,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.21.0-dev.1 =
+= 18.21.0-rc.1 =
 
-(2025/05/27) Updated the canonical URL to exclude the page number.
+(2025/05/28) Updated the canonical URL to exclude the page number.
 
 = 18.20.1 =
 
