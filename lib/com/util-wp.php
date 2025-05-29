@@ -2389,14 +2389,17 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			global $wpdb;
 
 			$post_id = absint( $post_id );
-			$where   = array( 'ID' => $post_id );
+
+			$where = array( 'ID' => $post_id );
 
 			foreach ( $args as $field => $value ) {
 
 				$args[ $field ] = sanitize_post_field( $field, $value, $post_id, $context = 'db' );
 			}
 
-			return $wpdb->update( $wpdb->posts, $args, $where );
+			$wpdb->update( $wpdb->posts, $args, $where );
+
+			clean_post_cache( $post_id );
 		}
 
 		public static function raw_update_post_title( $post_id, $post_title ) {
@@ -2409,7 +2412,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 				'post_name'  => $post_name,
 			);
 
-			return self::raw_update_post( $post_id, $args );
+			self::raw_update_post( $post_id, $args );
 		}
 
 		public static function raw_update_post_title_content( $post_id, $post_title, $post_content ) {
@@ -2424,7 +2427,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 				'post_content' => $post_content,
 			);
 
-			return self::raw_update_post( $post_id, $args );
+			self::raw_update_post( $post_id, $args );
 		}
 
 		public static function raw_metadata_exists( $meta_type, $obj_id, $meta_key ) {
