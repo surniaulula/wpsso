@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.21.1-dev.1 (2025/05/29)**
+**Version 18.21.1-rc.1 (2025/05/31)**
 
 * **New Features**
 	* None.
@@ -448,6 +448,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 18.21.1-rc.1 =
+
+(2025/05/31) Added a call to `clean_post_cache()` in `SucomUtilWP::raw_update_post()`.
 
 = 18.21.0 =
 
