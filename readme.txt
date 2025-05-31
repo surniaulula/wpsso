@@ -276,7 +276,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 18.21.1-rc.1 (2025/05/31)**
+**Version 18.22.0 (2025/05/31)**
 
 * **New Features**
 	* None.
@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 18.21.1-rc.1 =
+= 18.22.0 =
 
 (2025/05/31) Added a call to `clean_post_cache()` in `SucomUtilWP::raw_update_post()`.
 
