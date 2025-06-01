@@ -2212,6 +2212,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_comment_link( $mod[ 'id' ] );
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'get_comment_link() returned "' . $url . '"' );
+						}
+
 						$url = $this->is_string_url( $url, 'comment link' );	// Check for WP_Error.
 					}
 
@@ -2229,6 +2234,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							}
 
 							$url = get_post_type_archive_link( $mod[ 'post_type' ] );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'get_post_type_archive_link() returned "' . $url . '"' );
+							}
 
 							$url = $this->is_string_url( $url, 'post type archive link' );	// Check for WP_Error.
 
@@ -2254,6 +2264,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 									}
 
 									$url = get_permalink( $mod[ 'wp_obj' ] );
+
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( 'get_permalink() returned "' . $url . '"' );
+									}
 								}
 							}
 
@@ -2265,6 +2280,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								}
 
 								$url = get_permalink( $mod[ 'id' ] );
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'get_permalink() returned "' . $url . '"' );
+								}
 							}
 
 							$url = $this->is_string_url( $url, 'post permalink' );	// Check for WP_Error.
@@ -2287,6 +2307,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'get_term_link() returned "' . $url . '"' );
+						}
+
 						$url = $this->is_string_url( $url, 'term link' );	// Check for WP_Error.
 					}
 
@@ -2298,6 +2323,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_author_posts_url( $mod[ 'id' ] );
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'get_author_posts_url() returned "' . $url . '"' );
+						}
+
 						$url = $this->is_string_url( $url, 'author posts url' );	// Check for WP_Error.
 					}
 
@@ -2306,6 +2336,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				} elseif ( $mod[ 'is_search' ] ) {
 
 					$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'get_search_link() returned "' . $url . '"' );
+					}
 
 					$url = $this->is_string_url( $url, 'search link' );	// Check for WP_Error.
 
@@ -2319,17 +2354,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
 
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'get_year_link() returned "' . $url . '"' );
+							}
+
 							$url = $this->is_string_url( $url, 'year link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_month' ] ) {
 
 							$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
 
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'get_month_link() returned "' . $url . '"' );
+							}
+
 							$url = $this->is_string_url( $url, 'month link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_day' ] ) {
 
 							$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'get_day_link() returned "' . $url . '"' );
+							}
 
 							$url = $this->is_string_url( $url, 'day link' );	// Check for WP_Error.
 						}
