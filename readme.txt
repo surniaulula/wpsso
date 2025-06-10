@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.1
-WC Tested Up To: 9.8.3
+WC Tested Up To: 9.9.3
 Stable Tag: 18.22.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -107,6 +107,7 @@ Present your content at its best for social sites and search results, no matter 
 * <a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect Brands for WooCommerce</a>
 * <a href="https://wordpress.org/plugins/polylang/">Polylang</a>
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
+* <a href="https://wordpress.org/plugins/publishpress-authors">PublishPress Authors</a>
 * qTranslate-XT
 * <a href="https://wordpress.org/plugins/rate-my-post/">Rate my Post</a>
 * <a href="https://wordpress.org/plugins/simple-job-board/">Simple Job Board</a>
@@ -275,6 +276,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p><strong>WPSSO Core Standard edition users (ie. the plugin hosted on WordPress.org) have access to <a href="https://wordpress.org/plugins/wpsso/advanced/">the latest development version under the Advanced Options section</a>.</strong></p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 19.0.0-dev.1 (2025/06/10)**
+
+* **New Features**
+	* Added support for the PublishPress Authors plugin.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 **Version 18.22.0 (2025/05/31)**
 
@@ -448,6 +464,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 19.0.0-dev.1 =
+
+(2025/06/10) Added support for the PublishPress Authors plugin.
 
 = 18.22.0 =
 
