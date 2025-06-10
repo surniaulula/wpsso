@@ -44,6 +44,11 @@ if ( ! class_exists( 'WpssoIntegUserUltimateMember' ) ) {
 				$img_size = $this->p->media->get_gravatar_size();
 				$img_url  = (string) um_get_user_avatar_url( $mod[ 'id' ], $img_size );
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding user image url "' . $img_url . '" to local cache' );
+				}
+
 				$local_cache[ $user_id ] = $img_url;	// Empty string or image URL.
 			}
 

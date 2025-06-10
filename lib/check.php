@@ -848,9 +848,20 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 *
 								 * See https://wordpress.org/plugins/co-authors-plus/.
 								 */
-								case 'coauthors':
+								case 'co-authors-plus':
 
 									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
+
+									break;
+
+								/*
+								 * PublishPress Authors.
+								 *
+								 * See https://wordpress.org/plugins/publishpress-authors/.
+								 */
+								case 'publishpress-authors':
+
+									$chk[ 'constant' ] = 'PP_AUTHORS_VERSION';
 
 									break;
 

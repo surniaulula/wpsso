@@ -3006,6 +3006,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
 			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( array_unique( $image_urls ) as $num => $url ) {

@@ -1774,19 +1774,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mod = $this->get_mod( $user_id );
-
-			/*
-			 * Check if this is a valid WordPress user.
-			 */
-			$user_exists = SucomUtilWP::user_exists( $user_id );
+			$mod         = $this->get_mod( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );	// Check if this is a valid WordPress user.
+			$filter_name = 'wpsso_get_other_user_images';
 
 			if ( $user_exists ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping filters "' . $filter_name . '" (user exists)' );
+				}
 
 				return $this->get_md_images( $num, $size_names, $mod, $md_pre, $mt_pre );
 			}
 
-			return apply_filters( 'wpsso_get_other_user_images', array(), $num, $size_names, $user_id, $md_pre );
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+			}
+
+			return apply_filters( $filter_name, array(), $num, $size_names, $user_id, $md_pre );
 		}
 
 		/*

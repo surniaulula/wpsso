@@ -46,6 +46,7 @@ _x( 'SEOPress', 'lib file description', 'wpsso' );
 _x( 'WP Meta SEO', 'lib file description', 'wpsso' );
 _x( 'Yoast SEO', 'lib file description', 'wpsso' );
 _x( 'Co-Authors Plus', 'lib file description', 'wpsso' );
+_x( 'PublishPress Authors', 'lib file description', 'wpsso' );
 _x( 'Ultimate Member', 'lib file description', 'wpsso' );
 _x( 'Elementor Website Builder', 'lib file description', 'wpsso' );
 _x( 'Jetpack', 'lib file description', 'wpsso' );
