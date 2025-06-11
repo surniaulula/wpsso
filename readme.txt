@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 19.0.0-dev.1 (2025/06/10)**
+**Version 19.0.0-rc.1 (2025/06/10)**
 
 * **New Features**
 	* Added support for the PublishPress Authors plugin.
@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 19.0.0-dev.1 =
+= 19.0.0-rc.1 =
 
 (2025/06/10) Added support for the PublishPress Authors plugin.
 
