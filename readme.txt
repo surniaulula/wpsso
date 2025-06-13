@@ -277,10 +277,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.0.0-dev.2 (2025/06/13)**
+**Version 20.0.0-dev.3 (2025/06/13)**
 
 * **New Features**
-	* Added 'areaServed', 'hasOfferCatalog', and 'provider' properties for the Schema Service type.
+	* Added 'areaServed', 'hasOfferCatalog', and 'provider' properties for the Schema Service and Organization types.
 * **Improvements**
 	* Added options in the Document SSO metabox for the Schema Service type:
 		* Provider Org.
@@ -288,6 +288,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Service Latitude
 		* Service Longitude
 		* Service Radius
+		* Offer Catalogs
+			* Catalog Name
+			* Catalog Description
+			* Catalog URL
 	* Added a Service tab in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox:
 		* Default Provider Org.
 		* Default Provider Person
@@ -488,7 +492,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.0.0-dev.2 =
+= 20.0.0-dev.3 =
 
 (2025/06/13) Added 'areaServed', 'hasOfferCatalog', and 'provider' properties for the Schema Service type.
 
