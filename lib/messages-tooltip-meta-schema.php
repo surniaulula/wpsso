@@ -490,6 +490,33 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;	// End of 'tooltip-meta-schema_job' case.
 
+				/*
+				 * Schema CreativeWork > LearningResource.
+				 *
+				 * See https://developers.google.com/search/docs/appearance/structured-data/learning-video#learning-video-[videoobject,-learningresource].
+				 */
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_learnres_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-meta-schema_learnres_educational_level':	// Educational Level.
+
+							$text = __( 'The target education level for the learning resource.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Select a country-specific education level or one of the generic values.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_learnres_resource_type':	// Resource Type.
+
+							$text = __( 'The predominant type or kind characterizing the learning resource (example: "Concept overview", "Problem walkthrough", "Real life example", "Activity", "Experiment", "Lecture", etc.).', 'wpsso' );
+
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_learnres' switch.
+
+					break;	// End of 'tooltip-meta-schema_learnres' case.
+
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_movie_' ) ? true : false ):
 
 					switch ( $msg_key ) {
@@ -711,69 +738,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;	// End of 'tooltip-meta-schema_recipe' case.
 				
-				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_serv_' ) ? true : false ):
-
-					switch ( $msg_key ) {
-				
-						case 'tooltip-meta-schema_serv_prov_org_id':	// Provider Org.
-						case 'tooltip-meta-schema_serv_prov_person_id':	// Provider Person.
-					
-							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
-
-				 			break;
-				
-						case 'tooltip-meta-schema_serv_latitude':	// Service Latitude.
-
-							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
-
-							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-meta-schema_serv_longitude':	// Service Longitude.
-
-							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
-
-							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
-
-							break;
-						
-						case 'tooltip-meta-schema_serv_radius':	// Service Radius.
-
-							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
-
-							break;
-					}
-
-					break;	// End of 'tooltip-meta-schema_serv' case.
-
-				/*
-				 * Schema CreativeWork > LearningResource.
-				 *
-				 * See https://developers.google.com/search/docs/appearance/structured-data/learning-video#learning-video-[videoobject,-learningresource].
-				 */
-				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_learnres_' ) ? true : false ):
-
-					switch ( $msg_key ) {
-
-						case 'tooltip-meta-schema_learnres_educational_level':	// Educational Level.
-
-							$text = __( 'The target education level for the learning resource.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Select a country-specific education level or one of the generic values.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_learnres_resource_type':	// Resource Type.
-
-							$text = __( 'The predominant type or kind characterizing the learning resource (example: "Concept overview", "Problem walkthrough", "Real life example", "Activity", "Experiment", "Lecture", etc.).', 'wpsso' );
-
-						 	break;
-
-					}	// End of 'tooltip-meta-schema_learnres' switch.
-
-					break;	// End of 'tooltip-meta-schema_learnres' case.
-
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_review_' ) ? true : false ):
 
 					switch ( $msg_key ) {
@@ -974,6 +938,52 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					}	// End of 'tooltip-meta-schema_review' switch.
 
 					break;	// End of 'tooltip-meta-schema_review' case.
+
+				/*
+				 * Schema Service.
+				 */
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_serv_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+				
+						case 'tooltip-meta-schema_serv_prov_org_id':	// Provider Org.
+						case 'tooltip-meta-schema_serv_prov_person_id':	// Provider Person.
+					
+							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
+
+				 			break;
+				
+						case 'tooltip-meta-schema_serv_latitude':	// Service Latitude.
+
+							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_serv_longitude':	// Service Longitude.
+
+							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+						
+						case 'tooltip-meta-schema_serv_radius':	// Service Radius.
+
+							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+
+							break;
+						
+						case 'tooltip-meta-schema_serv_offer_catalogs':	// Offer Catalogs.
+
+							$text = __( 'A list of offer catalogs for this service, including the catalog name, description and URL.', 'wpsso' );
+
+						 	break;
+
+					}
+
+					break;	// End of 'tooltip-meta-schema_serv' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_software_app_' ) ? true : false ):
 

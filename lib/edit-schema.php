@@ -2139,6 +2139,8 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		 */
 		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
+			$offer_catalogs_max = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 20 );
+
 			$form_rows = array(
 				'subsection_schema_service' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
@@ -2189,6 +2191,29 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_serv_radius',
 					'content'  => $form->get_input( 'schema_serv_radius', $css_class = 'short' ) . ' ' .
 						_x( 'meters from coordinates', 'option comment', 'wpsso' ),
+				),
+				'schema_serv_offer_catalogs' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Offer Catalogs', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_offer_catalogs',
+					'content'  => $form->get_mixed_multi( array(
+						'schema_serv_offer_catalog' => array(
+							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'wide serv_offer_catalog_name',
+						),
+						'schema_serv_offer_catalog_text' => array(
+							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
+							'input_type'  => 'textarea',
+							'input_class' => 'wide serv_offer_catalog_text',
+						),
+						'schema_serv_offer_catalog_url' => array(
+							'input_label' => _x( 'Catalog URL', 'option label', 'wpsso' ),
+							'input_type'  => 'text',
+							'input_class' => 'wide serv_offer_catalog_url',
+						),
+					), $css_class = '', $css_id = 'schema_serv_offer_catalogs', $offer_catalogs_max, $show_first = 2 ),
 				),
 			);
 

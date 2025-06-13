@@ -300,6 +300,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_software_app_os':
 					case 'schema_software_app_cat':
 					case 'schema_software_app_os':
+					case 'schema_serv_offer_catalog':		// Offer Catalog Name.
+					case 'schema_serv_offer_catalog_text':		// Offer Catalog Description.
 
 						return 'one_line';
 
@@ -394,6 +396,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_cw_author_url':	// Review: Subject Author URL.
 					case 'schema_review_claim_first_url':		// First Appearance URL.
 					case 'schema_sameas_url':			// Same-As URLs.
+					case 'schema_serv_offer_catalog_url':		// Offer Catalog URL.
 
 						return 'url';
 				}

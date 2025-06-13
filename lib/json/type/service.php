@@ -91,6 +91,11 @@ if ( ! class_exists( 'WpssoJsonTypeService' ) ) {
 				) );
 			}
 
+			/*
+			 * See https://schema.org/hasOfferCatalog.
+			 */
+			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $md_opts, $opt_pre = 'schema_serv_offer_catalog', $prop_name = 'hasOfferCatalog' );
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}

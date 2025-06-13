@@ -2137,6 +2137,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
+			/*
+			 * Get the howto step names.
+			 */
 			$steps = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
 			if ( $wpsso->debug->enabled ) {
@@ -2144,16 +2147,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log_arr( 'steps', $steps );
 			}
 
-			if ( ! empty( $steps ) ) {
+			if ( ! empty( $steps ) ) {	// Just in case.
 
 				$section_ref = false;
-				$section_pos = 1;
-
-				$step_pos = 1;
-				$step_idx = 0;
+				$step_pos    = 0;
+				$step_idx    = 0;
 
 				/*
-				 * $md_val is the section/step name.
+				 * $md_val is the howto section/step name.
 				 */
 				foreach ( $steps as $num => $md_val ) {
 
@@ -2231,9 +2232,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$section_ref =& $json_data[ $prop_name ][ $step_idx ];
 
-						$section_pos++;
-
-						$step_pos = 1;
+						$step_pos = 0;
 
 						$step_idx++;
 
@@ -2242,7 +2241,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					} else {
 
-						$step_arr = self::get_schema_type_context( 'https://schema.org/HowToStep',
+						$step_pos++;
+
+						$step_data = self::get_schema_type_context( 'https://schema.org/HowToStep',
 							array(
 								'position' => $step_pos,
 								'url'      => $step_url,
@@ -2254,7 +2255,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( ! empty( $step_images ) ) {
 
-							$step_arr[ 'image' ] = $step_images;
+							$step_data[ 'image' ] = $step_images;
 						}
 
 						/*
@@ -2262,18 +2263,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 */
 						if ( false !== $section_ref ) {
 
-							$section_ref[ 'itemListElement' ][] = $step_arr;
+							$section_ref[ 'itemListElement' ][] = $step_data;
 
 							$section_ref[ 'numberOfItems' ] = $step_pos;
 
 						} else {
 
-							$json_data[ $prop_name ][ $step_idx ] = $step_arr;
+							$json_data[ $prop_name ][ $step_idx ] = $step_data;
 
 							$step_idx++;
 						}
-
-						$step_pos++;
 					}
 				}
 			}
@@ -2857,6 +2856,75 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$json_data[ 'mainEntityOfPage' ] = false;
 				}
+			}
+		}
+
+		/*
+		 * See WpssoJsonTypeService->filter_json_data_https_schema_org_service().
+		 */
+		public static function add_offer_catalogs_data( &$json_data, $mod, $md_opts, $opt_pre = 'schema_offer_catalog', $prop_name = 'hasOfferCatalog' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+			
+			/*
+			 * Get the offer catalog names.
+			 */
+			$catalogs = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+			
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'catalogs', $catalogs );
+			}
+			
+			if ( ! empty( $catalogs ) ) {	// Just in case.
+
+				$catalog_data = array();
+				$catalog_pos  = 0;
+
+				/*
+				 * $md_val is the offer catalog name.
+				 */
+				foreach ( $catalogs as $num => $md_val ) {
+
+					/*
+					 * Maybe get a longer text / description value.
+					 */
+					$catalog_text = isset( $md_opts[ $opt_pre . '_text_' . $num ] ) ? $md_opts[ $opt_pre . '_text_' . $num ] : null;
+
+					if ( empty( $md_val ) && empty( $catalog_text ) ) {	// Just in case.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping catalog ' . $num . ': catalog name and text are empty' );
+						}
+					
+						continue;
+					}
+
+					$catalog_pos++;
+					$catalog_url    = isset( $md_opts[ $opt_pre . '_url_' . $num ] ) ? $md_opts[ $opt_pre . '_url_' . $num ] : null;
+					$catalog_data[] = self::get_schema_type_context( 'https://schema.org/ListItem',
+						array(
+							'position' => $catalog_pos,
+							'url'      => $catalog_url,
+							'name'     => $md_val,	// Step name.
+							'text'     => $catalog_text,
+						)
+					);
+				}
+				
+				$json_data[ $prop_name ] = self::get_schema_type_context( 'https://schema.org/OfferCatalog',
+					array(
+						'numberOfItems'   => $catalog_pos,
+						'itemListOrder'   => 'https://schema.org/ItemListUnordered',
+						'itemListElement' => $catalog_data,
+					)
+				);
 			}
 		}
 
