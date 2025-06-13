@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				case 'tooltip-meta-schema_prov_org_id':		// Provider Org.
 				case 'tooltip-meta-schema_prov_person_id':	// Provider Person.
 
-					$text = __( 'A service provider, service operator, or service performer; the goods producer for this creative work.', 'wpsso' );
+					$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
 
 				 	break;
 
@@ -710,6 +710,42 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					}	// End of 'tooltip-meta-schema_recipe' switch.
 
 					break;	// End of 'tooltip-meta-schema_recipe' case.
+				
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_serv_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+				
+						case 'tooltip-meta-schema_serv_prov_org_id':	// Provider Org.
+						case 'tooltip-meta-schema_serv_prov_person_id':	// Provider Person.
+					
+							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
+
+				 			break;
+				
+						case 'tooltip-meta-schema_serv_latitude':	// Service Latitude.
+
+							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_serv_longitude':	// Service Longitude.
+
+							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+						
+						case 'tooltip-meta-schema_serv_radius':	// Service Radius.
+
+							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+
+							break;
+					}
+
+					break;	// End of 'tooltip-meta-schema_serv' case.
 
 				/*
 				 * Schema CreativeWork > LearningResource.

@@ -53,6 +53,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'mb_sso_edit_schema_person_rows'           => 5,	// Schema Person.
 				'mb_sso_edit_schema_place_rows'            => 5,	// Schema Place.
 				'mb_sso_edit_schema_product_rows'          => 5,	// Schema Product.
+				'mb_sso_edit_schema_service_rows'          => 5,	// Schema Service.
 			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
@@ -176,6 +177,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				'wpsso_mb_sso_edit_schema_person_rows',
 				'wpsso_mb_sso_edit_schema_place_rows',
 				'wpsso_mb_sso_edit_schema_product_rows',
+				'wpsso_mb_sso_edit_schema_service_rows',
 			) as $filter_name ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -2127,6 +2129,67 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$awards_max, $show_first = 1 ),
 				),
 
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		/*
+		 * Schema Service.
+		 */
+		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
+
+			$form_rows = array(
+				'subsection_schema_service' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Service Information', 'metabox title', 'wpsso' )
+				),
+				'schema_serv_prov_org_id' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Provider Org.', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_prov_org_id',
+					'content'  => $form->get_select( 'schema_serv_prov_org_id', $args[ 'select_names' ][ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'org_names' ) ),
+				),
+				'schema_serv_prov_person_id' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Provider Person', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_prov_person_id',
+					'content'  => $form->get_select( 'schema_serv_prov_person_id', $args[ 'select_names' ][ 'person' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
+							$selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array( 'json_var' => 'person_names' ) ),
+				),
+				'schema_serv_latitude' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Latitude', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_latitude',
+					'content'  => $form->get_input( 'schema_serv_latitude', $css_class = 'latitude' ) . ' ' .
+						_x( 'decimal degress', 'option comment', 'wpsso' ),
+				),
+				'schema_serv_longitude' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Longitude', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_longitude',
+					'content'  => $form->get_input( 'schema_serv_longitude', $css_class = 'longitude' ) . ' ' .
+						_x( 'decimal degress', 'option comment', 'wpsso' ),
+				),
+				'schema_serv_radius' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Radius', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_serv_radius',
+					'content'  => $form->get_input( 'schema_serv_radius', $css_class = 'short' ) . ' ' .
+						_x( 'meters from coordinates', 'option comment', 'wpsso' ),
+				),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

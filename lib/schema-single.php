@@ -1723,12 +1723,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $place_opts[ 'place_latitude' ] ) &&
 						! empty( $place_opts[ 'place_longitude' ] ) &&
-							! empty( $place_opts[ 'place_service_radius' ] ) ) {
+							! empty( $place_opts[ 'place_serv_radius' ] ) ) {
 
 						$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
 							'circle' => $place_opts[ 'place_latitude' ] . ' ' .
 								$place_opts[ 'place_longitude' ] . ' ' .
-								$place_opts[ 'place_service_radius' ]
+								$place_opts[ 'place_serv_radius' ]
 						) );
 					}
 

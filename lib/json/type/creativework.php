@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 * See https://schema.org/provider.
 			 * See https://schema.org/publisher.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 				$is_article_child = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
 
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			 */
 			$json_ret[ 'isPartOf' ] = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) )	{	// Just in case.
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 				$json_ret[ $prop_name ] = array();
 
-				if ( ! empty( $mod[ 'obj' ] ) ) {
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 

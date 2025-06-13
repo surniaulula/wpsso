@@ -340,6 +340,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_prov_org_id':			// Default Provider Org.
 					case 'schema_def_prov_person_id':		// Default Provider Person.
+					case 'schema_def_serv_prov_org_id':		// Default Provider Org.
+					case 'schema_def_serv_prov_person_id':		// Default Provider Person.
 					case 'schema_def_fund_org_id':			// Default Funder Org.
 					case 'schema_def_fund_person_id':		// Default Funder Person.
 					case 'schema_def_review_item_type':		// Default Subject Schema Type.
@@ -368,6 +370,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_pub_person_id':			// Publisher Person.
 					case 'schema_prov_org_id':			// Provider Org.
 					case 'schema_prov_person_id':			// Provider Person.
+					case 'schema_serv_prov_org_id':			// Provider Org.
+					case 'schema_serv_prov_person_id':		// Provider Person.
 					case 'schema_fund_org_id':			// Funder Org.
 					case 'schema_fund_person_id':			// Funder Person.
 					case 'schema_review_item_type':			// Review: Subject Schema Type.

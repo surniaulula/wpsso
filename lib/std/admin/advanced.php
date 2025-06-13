@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'mb_advanced_schema_defs_product_rows'        => 3,	// Schema Defaults > Product tab.
 				'mb_advanced_schema_defs_profile_page_rows'   => 3,	// Schema Defaults > Profile Page tab.
 				'mb_advanced_schema_defs_review_rows'         => 3,	// Schema Defaults > Review tab.
+				'mb_advanced_schema_defs_service_rows'        => 3,	// Schema Defaults > Service tab.
 				'mb_advanced_contact_fields_default_cm_rows'  => 3,	// Contact Fields > Default Contacts tab.
 				'mb_advanced_contact_fields_custom_cm_rows'   => 3,	// Contact Fields > Custom Contacts tab.
 				'mb_advanced_user_about_rows'                 => 3,	// About the User metabox.
@@ -1223,6 +1224,30 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'tooltip'  => 'schema_def_review_item_type',
 					'content'  => $form->get_no_select( 'schema_def_review_item_type', $args[ 'select_names' ][ 'schema_types' ],
 						$css_class = 'schema_type' ),
+				),
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );
+
+			return $table_rows;
+		}
+
+		public function filter_mb_advanced_schema_defs_service_rows( $table_rows, $form, $args ) {
+
+			$form_rows = array(
+				'schema_def_serv_prov_org_id' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Provider Org.', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_serv_prov_org_id',
+					'content'  => $form->get_no_select( 'schema_def_serv_prov_org_id', $args[ 'select_names' ][ 'org' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
+				),
+				'schema_def_serv_prov_person_id' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Provider Person', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_serv_prov_person_id',
+					'content'  => $form->get_no_select( 'schema_def_serv_prov_person_id', $args[ 'select_names' ][ 'person' ],
+						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
 

@@ -894,6 +894,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_claim_first_url' => '',	// First Appearance URL.
 
 					/*
+					 * Schema Service.
+					 */
+					'schema_serv_prov_org_id'     => $opts[ 'schema_def_serv_prov_org_id' ],	// Provider Org.
+					'schema_serv_prov_person_id'  => $opts[ 'schema_def_serv_prov_person_id' ],	// Provider Person.
+
+					/*
 					 * Schema Software Application.
 					 */
 					'schema_software_app_os'  => '',	// Operating System.

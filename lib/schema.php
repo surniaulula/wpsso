@@ -1562,6 +1562,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'recipe',
 						'review',
 						'review.claim',
+						'service',
 						'software.application',
 						'webpage',
 						'webpage.faq',

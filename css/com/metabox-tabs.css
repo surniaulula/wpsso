@@ -308,7 +308,7 @@ h3.sucom-metabox-tab_title {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_integration::before {		/* SSO > Advanced Settings > Plugin Settings > Integration tab. */
-	content:"\f2b5";	/* .icon-handshake-o */
+	content:"\f1e6";	/* .icon-plug-o */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_interface::before {		/* SSO > Advanced Settings > Plugin Settings > Interface tab. */
@@ -446,6 +446,10 @@ h3.sucom-metabox-tab_title {
 
 .sucom-tablink-icon.sucom-tablink-href_review::before {			/* SSO > Advanced Settings > Schema Defaults > Review tab. */
 	content:"\e818";	/* .icon-comment */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_service::before {		/* SSO > Advanced Settings > Schema Defaults > Service tab. */
+	content:"\f2b5";	/* .icon-handshake-o */
 }
 
 .sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */

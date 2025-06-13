@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '19.0.0',	// Plugin version.
-					'opt_version' => '1022',	// Increment when changing default option values.
+					'version'     => '20.0.0-dev.1',	// Plugin version.
+					'opt_version' => '1023',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -191,6 +191,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'recipe'              => 'Schema Type Recipe',
 								'review'              => 'Schema Type Review',
 								'searchresultspage'   => 'Schema Type Search Results Page',
+								'service'             => 'Schema Type Service',
 								'softwareapplication' => 'Schema Type Software Application',
 								'thing'               => 'Schema Type Thing',
 								'webpage'             => 'Schema Type WebPage',
@@ -1684,6 +1685,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_review_rating_min' => 0.5,		// Default Review Rating Min.
 					'schema_def_review_rating_max' => 5.0,		// Default Review Rating Max.
 					'schema_def_review_item_type'  => 'product',	// Default Subject Schema Type.
+
+					/*
+					 * Advanced Settings > Schema Defaults > Service.
+					 */
+					'schema_def_serv_prov_org_id'        => 'none',	// Default Provider Org.
+					'schema_def_serv_prov_person_id'     => 'none',	// Default Provider Person.
 
 					/*
 					 * X (Twitter) Card options.
@@ -3326,6 +3333,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'image'                => null,
 					'subjectOf'            => null,
 					'inProductGroupWithID' => null,
+				),
+
+				/*
+				 * Organization and Place default selection.
+				 */
+				'org_is_defaults' => array(
+					'schema_def_pub_org_id'             => 'Default Creative Work Publisher Organization',
+					'schema_def_prov_org_id'            => 'Default Creative Work Provider Organization',
+					'schema_def_fund_org_id'            => 'Default Creative Work Funder Organization',
+					'schema_def_event_performer_org_id' => 'Default Event Performer Organization',
+					'schema_def_event_organizer_org_id' => 'Default Event Organizer Organization',
+					'schema_def_event_fund_org_id'      => 'Default Event Funder Organization',
+					'schema_def_job_hiring_org_id'      => 'Default Job Hiring Organization',
+					'schema_def_serv_prov_org_id'       => 'Default Service Provider Organization',
+				),
+				'place_is_defaults' => array(
+					'schema_def_event_location_id' => 'Default Event Venue',
+					'schema_def_job_location_id'   => 'Default Job Location',
+				),
+
+				/*
+				 * GeoShape type.
+				 */
+				'geo_shape' => array(
+					'circle' => 'Circular',
 				),
 
 				/*

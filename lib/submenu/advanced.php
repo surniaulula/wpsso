@@ -156,6 +156,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'product'       => _x( 'Product', 'metabox tab', 'wpsso' ),
 				'profile_page'  => _x( 'Profile Page', 'metabox tab', 'wpsso' ),
 				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
+				'service'       => _x( 'Service', 'metabox tab', 'wpsso' ),
 			);
 
 			$this->show_metabox_tabbed( $obj, $mb, $tabs );

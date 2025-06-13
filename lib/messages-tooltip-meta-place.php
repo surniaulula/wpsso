@@ -105,6 +105,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 					$text = __( 'An optional telephone number for this place.', 'wpsso' );
 
 					break;
+
 				case 'tooltip-meta-place_latitude':	// Place Latitude.
 
 					$text = __( 'The numeric decimal degrees latitude for this place (required).', 'wpsso' ) . ' ';
@@ -167,9 +168,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_service_radius':
+				case 'tooltip-meta-place_serv_radius':
 
-					$text = __( 'The geographic area where a service is provided, in meters around the location.', 'wpsso' );
+					$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
 
 					break;
 

@@ -238,10 +238,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					$text = __( 'Select a default publisher for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
-				case 'tooltip-schema_def_prov_org_id':		// Default Provider Org.
-				case 'tooltip-schema_def_prov_person_id':	// Default Provider Person.
+				case 'tooltip-schema_def_prov_org_id':			// Default Provider Org.
+				case 'tooltip-schema_def_prov_person_id':		// Default Provider Person.
+				case 'tooltip-schema_def_serv_prov_org_id':		// Default Provider Org.
+				case 'tooltip-schema_def_serv_prov_person_id':		// Default Provider Person.
 
-					$text = __( 'Select a default service provider, service operator, or service performer; the goods producer for the Schema CreativeWork type and/or its sub-types.', 'wpsso' );
+
+					$text = __( 'Select a default service provider, service operator, or service performer.', 'wpsso' );
 
 				 	break;
 

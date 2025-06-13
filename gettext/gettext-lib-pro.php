@@ -178,6 +178,8 @@ _x( 'Add Mentions Property', 'option label', 'wpsso' );
 _x( 'Default Review Rating Min', 'option label', 'wpsso' );
 _x( 'Default Review Rating Max', 'option label', 'wpsso' );
 _x( 'Default Subject Schema Type', 'option label', 'wpsso' );
+_x( 'Default Provider Org.', 'option label', 'wpsso' );
+_x( 'Default Provider Person', 'option label', 'wpsso' );
 _x( 'Show', 'column title', 'wpsso' );
 _x( 'Contact Field ID', 'column title', 'wpsso' );
 _x( 'Contact Field Label', 'column title', 'wpsso' );
