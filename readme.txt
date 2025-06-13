@@ -277,6 +277,29 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 20.0.0-dev.1 (2025/06/13)**
+
+* **New Features**
+	* Added support for 'areaServed' and 'provider' properties for the Schema Service type and sub-types.
+* **Improvements**
+	* Added options in the Document SSO metabox for the Schema Service type:
+		* Provider Org.
+		* Provider Person
+		* Service Latitude
+		* Service Longitude
+		* Service Radius
+	* Added a Service tab in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox:
+		* Default Provider Org.
+		* Default Provider Person
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 19.0.0 (2025/06/11)**
 
 * **New Features**
@@ -464,6 +487,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 20.0.0-dev.1 =
+
+(2025/06/13) Added support for 'areaServed' and 'provider' properties for the Schema Service type and sub-types.
 
 = 19.0.0 =
 
