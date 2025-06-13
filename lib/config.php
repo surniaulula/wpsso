@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '20.0.0-dev.2',	// Plugin version.
+					'version'     => '20.0.0-dev.3',	// Plugin version.
 					'opt_version' => '1023',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2450,7 +2450,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * values into numbered options.
 				 */
 				'md_keys_multi' => array(
-					'org_award'            => true,				// Organization Awards.
+					'org_award'         => true,				// Organization Awards.
+					'org_offer_catalog' => array(				// Offer Catalog Name.
+						'org_offer_catalog_text',			// Offer Catalog Description.
+						'org_offer_catalog_url',			// Offer Catalog URL.
+					),
 					'product_award'        => true,				// Product Awards.
 					'product_size_group'   => true,				// Product Size Group.
 					'schema_addl_type_url' => true,				// Microdata Type URLs.

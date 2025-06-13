@@ -1094,6 +1094,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Add schema properties from the organization options.
+			 *
+			 * See WpssoOpmOrg->get_id().
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
 				'url'                            => 'org_url',
@@ -1110,6 +1112,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'actionableFeedbackPolicy'       => 'org_feedback_policy_url',		// Feedback Policy URL.
 				'award'                          => 'org_awards',			// Organization Awards.
 			) );
+
+			/*
+			 * See https://schema.org/hasOfferCatalog.
+			 */
+			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $org_opts, $opt_pre = 'org_offer_catalog', $prop_name = 'hasOfferCatalog' );
 
 			/*
 			 * Maybe add properties for Schema Organization sub-types.

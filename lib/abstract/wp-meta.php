@@ -2166,7 +2166,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Convert multiple options into an array.
+		 * Combine multiple options with a common prefix to an array of values.
 		 */
 		public function md_keys_multi_array( array &$md_opts, $opt_prefix, $opt_key = null ) {
 

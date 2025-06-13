@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 20.0.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 20.0.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7533,12 +7533,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5569
+#: lib/config.php:5573
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5569
+#: lib/config.php:5573
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -8191,7 +8191,6 @@ msgid "Language"
 msgstr ""
 
 #: lib/edit-schema.php:124 lib/edit-schema.php:567 lib/edit-schema.php:679
-#: lib/edit-schema.php:2202
 msgctxt "option label"
 msgid "Name"
 msgstr ""
@@ -8202,7 +8201,6 @@ msgid "Alternate Name"
 msgstr ""
 
 #: lib/edit-schema.php:138 lib/edit-schema.php:572 lib/edit-schema.php:684
-#: lib/edit-schema.php:2207
 msgctxt "option label"
 msgid "Description"
 msgstr ""
@@ -9248,7 +9246,7 @@ msgstr ""
 
 #: lib/edit-schema.php:2177 lib/edit-schema.php:2185
 msgctxt "option comment"
-msgid "decimal degress"
+msgid "decimal degrees"
 msgstr ""
 
 #: lib/edit-schema.php:2182
@@ -9269,6 +9267,16 @@ msgstr ""
 #: lib/edit-schema.php:2198
 msgctxt "option label"
 msgid "Offer Catalogs"
+msgstr ""
+
+#: lib/edit-schema.php:2202
+msgctxt "option label"
+msgid "Catalog Name"
+msgstr ""
+
+#: lib/edit-schema.php:2207
+msgctxt "option label"
+msgid "Catalog Description"
 msgstr ""
 
 #: lib/edit-schema.php:2212
@@ -10450,17 +10458,23 @@ msgstr ""
 msgid "One or more awards this organization has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:136
-msgid "A link to the masthead page or a page listing top editorial management."
+#: lib/messages-tooltip-meta-org.php:133
+msgid ""
+"A list of offer catalogs for this organization, including the catalog name, "
+"description and URL."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:142
+msgid "A link to the masthead page or a page listing top editorial management."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:148
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:148 lib/messages-tooltip-meta-org.php:154
+#: lib/messages-tooltip-meta-org.php:154 lib/messages-tooltip-meta-org.php:160
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
@@ -14782,14 +14796,14 @@ msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1203
+#: lib/schema-single.php:1210
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1206
+#: lib/schema-single.php:1213
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -14797,33 +14811,33 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1209
+#: lib/schema-single.php:1216
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1245
+#: lib/schema-single.php:1252
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1259 lib/schema-single.php:1268
+#: lib/schema-single.php:1266 lib/schema-single.php:1275
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1446
+#: lib/schema-single.php:1453
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1649
+#: lib/schema-single.php:1656
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2160
+#: lib/schema-single.php:2167
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2297
+#: lib/schema-single.php:2304
 msgid "adding schema product"
 msgstr ""
 

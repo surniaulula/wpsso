@@ -128,6 +128,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 					break;
 
+				case 'tooltip-meta-org_offer_catalogs':	// Offer Catalogs.
+
+					$text = __( 'A list of offer catalogs for this organization, including the catalog name, description and URL.', 'wpsso' );
+
+					break;
+
 				/*
 				 * News Media Organization section.
 				 */

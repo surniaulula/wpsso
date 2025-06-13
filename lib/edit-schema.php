@@ -2174,7 +2174,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Service Latitude', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_serv_latitude',
 					'content'  => $form->get_input( 'schema_serv_latitude', $css_class = 'latitude' ) . ' ' .
-						_x( 'decimal degress', 'option comment', 'wpsso' ),
+						_x( 'decimal degrees', 'option comment', 'wpsso' ),
 				),
 				'schema_serv_longitude' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
@@ -2182,7 +2182,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'label'    => _x( 'Service Longitude', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_serv_longitude',
 					'content'  => $form->get_input( 'schema_serv_longitude', $css_class = 'longitude' ) . ' ' .
-						_x( 'decimal degress', 'option comment', 'wpsso' ),
+						_x( 'decimal degrees', 'option comment', 'wpsso' ),
 				),
 				'schema_serv_radius' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
@@ -2199,21 +2199,21 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-schema_serv_offer_catalogs',
 					'content'  => $form->get_mixed_multi( array(
 						'schema_serv_offer_catalog' => array(
-							'input_label' => _x( 'Name', 'option label', 'wpsso' ),
+							'input_label' => _x( 'Catalog Name', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'wide serv_offer_catalog_name',
+							'input_class' => 'wide offer_catalog_name',
 						),
 						'schema_serv_offer_catalog_text' => array(
-							'input_label' => _x( 'Description', 'option label', 'wpsso' ),
+							'input_label' => _x( 'Catalog Description', 'option label', 'wpsso' ),
 							'input_type'  => 'textarea',
-							'input_class' => 'wide serv_offer_catalog_text',
+							'input_class' => 'wide offer_catalog_text',
 						),
 						'schema_serv_offer_catalog_url' => array(
 							'input_label' => _x( 'Catalog URL', 'option label', 'wpsso' ),
 							'input_type'  => 'text',
-							'input_class' => 'wide serv_offer_catalog_url',
+							'input_class' => 'wide offer_catalog_url',
 						),
-					), $css_class = '', $css_id = 'schema_serv_offer_catalogs', $offer_catalogs_max, $show_first = 2 ),
+					), $css_class = '', $css_id = 'schema_serv_offer_catalogs', $offer_catalogs_max, $show_first = 1 ),
 				),
 			);
 
