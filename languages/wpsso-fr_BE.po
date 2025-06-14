@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 20.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-06-14 07:48-0700\n"
+"PO-Revision-Date: 2025-06-14 11:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2810,8 +2810,8 @@ msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:930
-#: lib/edit-schema.php:1895
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:929
+#: lib/edit-schema.php:1894
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
@@ -3543,13 +3543,13 @@ msgstr "Gérez les politiques de retour de marchand pour les listes de marchands
 
 #: gettext/gettext-lib-config.php:145
 msgctxt "plugin name"
-msgid "WPSSO Schema Organization, Place and Service Manager"
-msgstr "WPSSO Gestionnaire de Schéma Organization, Place et Service"
+msgid "WPSSO Schema Organization and Place Manager"
+msgstr "WPSSO Gestionnaire de Schéma Organization et Place"
 
 #: gettext/gettext-lib-config.php:146
 msgctxt "plugin description"
-msgid "Manage Organizations, Places, Local Businesses, and Services for Google, Facebook, Pinterest, and Schema markup."
-msgstr "Gérez les organisations, endroits, entreprises locales, et services pour Google, Facebook, Pinterest, et le balisage de Schéma."
+msgid "Manage Organizations and Places (Local Businesses, Venues, etc.) for Google, Facebook, Pinterest, and Schema markup."
+msgstr "Gérez les organisations et endroits (entreprises locales, salles, etc.) pour Google, Facebook, Pinterest, et le balisage de Schéma."
 
 #: gettext/gettext-lib-config.php:147
 msgctxt "plugin name"
@@ -3656,7 +3656,7 @@ msgctxt "metabox title"
 msgid "Document SSO"
 msgstr "SSO du document"
 
-#: gettext/gettext-lib-config.php:168 lib/edit-schema.php:1642
+#: gettext/gettext-lib-config.php:168 lib/edit-schema.php:1641
 msgctxt "option label"
 msgid "Job Title"
 msgstr "Titre d'emploi"
@@ -6323,8 +6323,8 @@ msgctxt "option label"
 msgid "Default Product Energy Rating Range"
 msgstr "Gamme eff. énerg. de produit par défaut"
 
-#: gettext/gettext-lib-pro.php:171 lib/edit-schema.php:932
-#: lib/edit-schema.php:1898 lib/pro/admin/advanced.php:1261
+#: gettext/gettext-lib-pro.php:171 lib/edit-schema.php:931
+#: lib/edit-schema.php:1897 lib/pro/admin/advanced.php:1261
 #: lib/std/admin/advanced.php:1141
 msgctxt "option comment"
 msgid "to"
@@ -6596,58 +6596,58 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr "Métadonnées %s"
 
-#: lib/abstract/wp-meta.php:1386
+#: lib/abstract/wp-meta.php:1399
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/abstract/wp-meta.php:1457
+#: lib/abstract/wp-meta.php:1470
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr "Modifier général"
 
-#: lib/abstract/wp-meta.php:1461
+#: lib/abstract/wp-meta.php:1474
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr "Modifier Schéma"
 
-#: lib/abstract/wp-meta.php:1464 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1477 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr "Modifier médias"
 
-#: lib/abstract/wp-meta.php:1468
+#: lib/abstract/wp-meta.php:1481
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr "Modifier visibilité"
 
-#: lib/abstract/wp-meta.php:1469
+#: lib/abstract/wp-meta.php:1482
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr "Aperçu social"
 
-#: lib/abstract/wp-meta.php:1470
+#: lib/abstract/wp-meta.php:1483
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstract/wp-meta.php:1471
+#: lib/abstract/wp-meta.php:1484
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstract/wp-meta.php:1816
+#: lib/abstract/wp-meta.php:1829
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstract/wp-meta.php:2125
+#: lib/abstract/wp-meta.php:2138
 msgid "Another review cannot be the subject of a review."
 msgstr "Une autre critique ne peut pas faire l'objet d'une critique."
 
-#: lib/abstract/wp-meta.php:2127 lib/abstract/wp-meta.php:2140
+#: lib/abstract/wp-meta.php:2140 lib/abstract/wp-meta.php:2153
 msgid "Please select a Schema type for the review subject that describes the subject being reviewed."
 msgstr "Veuillez sélectionner un type de Schéma pour le sujet de critique qui décrit le sujet critiqué."
 
-#: lib/abstract/wp-meta.php:2138
+#: lib/abstract/wp-meta.php:2151
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr "Une autre critique de déclaration ne peut pas faire l'objet d'une critique de déclaration."
 
@@ -7179,12 +7179,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr "Privilèges insuffisants pour modifier le commentaire ID %1$s."
 
-#: lib/config.php:5588
+#: lib/config.php:5592
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5588
+#: lib/config.php:5592
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -7703,13 +7703,13 @@ msgid "Priority Image Information"
 msgstr "Informations d'image prioritaire"
 
 #: lib/edit-media.php:122 lib/edit-media.php:180 lib/edit-media.php:239
-#: lib/edit-media.php:291 lib/edit-schema.php:583 lib/edit-schema.php:695
+#: lib/edit-media.php:291 lib/edit-schema.php:582 lib/edit-schema.php:694
 msgctxt "option label"
 msgid "Image ID"
 msgstr "ID d'image"
 
 #: lib/edit-media.php:128 lib/edit-media.php:187 lib/edit-media.php:245
-#: lib/edit-media.php:298 lib/edit-schema.php:991
+#: lib/edit-media.php:298 lib/edit-schema.php:990
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr "ou URL d'une image"
@@ -7726,7 +7726,7 @@ msgstr "obtenir l'image carte twitter"
 msgid "getting schema 1:1 image"
 msgstr "obtenir l'image schéma 1:1"
 
-#: lib/edit-media.php:235 lib/edit-schema.php:98
+#: lib/edit-media.php:235 lib/edit-schema.php:97
 msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
 msgstr "Balisage de Schéma et résultats enrichis Google"
@@ -7789,1064 +7789,1139 @@ msgstr "HTML oEmbed"
 msgid "oEmbed HTML Not Available."
 msgstr "HTML oEmbed non disponible."
 
-#: lib/edit-schema.php:118
+#: lib/edit-schema.php:117
 msgctxt "option label"
 msgid "Language"
 msgstr "Language"
 
-#: lib/edit-schema.php:125 lib/edit-schema.php:568 lib/edit-schema.php:680
+#: lib/edit-schema.php:124 lib/edit-schema.php:567 lib/edit-schema.php:679
 msgctxt "option label"
 msgid "Name"
 msgstr "Nom"
 
-#: lib/edit-schema.php:132
+#: lib/edit-schema.php:131
 msgctxt "option label"
 msgid "Alternate Name"
 msgstr "Autre nom"
 
-#: lib/edit-schema.php:139 lib/edit-schema.php:573 lib/edit-schema.php:685
+#: lib/edit-schema.php:138 lib/edit-schema.php:572 lib/edit-schema.php:684
 msgctxt "option label"
 msgid "Description"
 msgstr "Description"
 
-#: lib/edit-schema.php:146 lib/messages.php:706
+#: lib/edit-schema.php:145 lib/messages.php:706
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr "URLs de type microdonnées"
 
-#: lib/edit-schema.php:153 lib/messages.php:1021
+#: lib/edit-schema.php:152 lib/messages.php:1021
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr "URLs Same-As"
 
-#: lib/edit-schema.php:213
+#: lib/edit-schema.php:212
 msgctxt "metabox title"
 msgid "Creative Work Information"
 msgstr "Informations de l'oeuvre"
 
-#: lib/edit-schema.php:218
+#: lib/edit-schema.php:217
 msgctxt "option label"
 msgid "Headline"
 msgstr "Manchette"
 
-#: lib/edit-schema.php:226
+#: lib/edit-schema.php:225
 msgctxt "option label"
 msgid "Full Text"
 msgstr "Texte complet"
 
-#: lib/edit-schema.php:233
+#: lib/edit-schema.php:232
 msgctxt "option label"
 msgid "Keywords"
 msgstr "Mots clés"
 
-#: lib/edit-schema.php:240
+#: lib/edit-schema.php:239
 msgctxt "option label"
 msgid "Family Friendly"
 msgstr "Favorable à la famille"
 
-#: lib/edit-schema.php:248
+#: lib/edit-schema.php:247
 msgctxt "option label"
 msgid "Copyright Year"
 msgstr "Année du droit d'auteur"
 
-#: lib/edit-schema.php:255
+#: lib/edit-schema.php:254
 msgctxt "option label"
 msgid "License URL"
 msgstr "URL de licence"
 
-#: lib/edit-schema.php:262
+#: lib/edit-schema.php:261
 msgctxt "option label"
 msgid "Publisher Org."
 msgstr "Org. éditeur"
 
-#: lib/edit-schema.php:272
+#: lib/edit-schema.php:271
 msgctxt "option label"
 msgid "Publisher Person"
 msgstr "Personne éditeur"
 
-#: lib/edit-schema.php:282
+#: lib/edit-schema.php:281 lib/edit-schema.php:2156
 msgctxt "option label"
 msgid "Provider Org."
 msgstr "Org. fournisseur"
 
-#: lib/edit-schema.php:292
+#: lib/edit-schema.php:291 lib/edit-schema.php:2166
 msgctxt "option label"
 msgid "Provider Person"
 msgstr "Personne fournisseur"
 
-#: lib/edit-schema.php:302 lib/edit-schema.php:1525
+#: lib/edit-schema.php:301 lib/edit-schema.php:1524
 msgctxt "option label"
 msgid "Funder Org."
 msgstr "Org. de financement"
 
-#: lib/edit-schema.php:312 lib/edit-schema.php:1535
+#: lib/edit-schema.php:311 lib/edit-schema.php:1534
 msgctxt "option label"
 msgid "Funder Person"
 msgstr "Personne de financement"
 
-#: lib/edit-schema.php:322
+#: lib/edit-schema.php:321
 msgctxt "option label"
 msgid "Is Part of URLs"
 msgstr "Fait partie des URL"
 
-#: lib/edit-schema.php:330
+#: lib/edit-schema.php:329
 msgctxt "option label"
 msgid "Creative Work Awards"
 msgstr "Prix pour l'oeuvre créative"
 
-#: lib/edit-schema.php:348
+#: lib/edit-schema.php:347
 msgctxt "option label"
 msgid "Reference Citations"
 msgstr "Citations de référence"
 
-#: lib/edit-schema.php:371
+#: lib/edit-schema.php:370
 msgctxt "metabox title"
 msgid "Article Information"
 msgstr "Informations d'article"
 
-#: lib/edit-schema.php:376 lib/messages.php:711
+#: lib/edit-schema.php:375 lib/messages.php:711
 msgctxt "option label"
 msgid "Article Section"
 msgstr "Rubrique d'article"
 
-#: lib/edit-schema.php:392
+#: lib/edit-schema.php:391
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr "Temps de lecture est."
 
-#: lib/edit-schema.php:395
+#: lib/edit-schema.php:394
 msgid "minute(s)"
 msgstr "minute(s)"
 
-#: lib/edit-schema.php:413
+#: lib/edit-schema.php:412
 msgctxt "metabox title"
 msgid "Book Information"
 msgstr "Informations du livre"
 
-#: lib/edit-schema.php:418
+#: lib/edit-schema.php:417
 msgctxt "option label"
 msgid "Book Author Type"
 msgstr "Type d'auteur du livre"
 
-#: lib/edit-schema.php:425
+#: lib/edit-schema.php:424
 msgctxt "option label"
 msgid "Book Author Name"
 msgstr "Nom d'auteur du livre"
 
-#: lib/edit-schema.php:432
+#: lib/edit-schema.php:431
 msgctxt "option label"
 msgid "Book Author URL"
 msgstr "URL d'auteur du livre"
 
-#: lib/edit-schema.php:439
+#: lib/edit-schema.php:438
 msgctxt "option label"
 msgid "Book Published Date"
 msgstr "Date de publi. du livre"
 
-#: lib/edit-schema.php:446
+#: lib/edit-schema.php:445
 msgctxt "option label"
 msgid "Book Created Date"
 msgstr "Date de création du livre"
 
-#: lib/edit-schema.php:453
+#: lib/edit-schema.php:452
 msgctxt "option label"
 msgid "Book Edition"
 msgstr "Édition du livre"
 
-#: lib/edit-schema.php:460
+#: lib/edit-schema.php:459
 msgctxt "option label"
 msgid "Book Format"
 msgstr "Format du livre"
 
-#: lib/edit-schema.php:468
+#: lib/edit-schema.php:467
 msgctxt "option label"
 msgid "Number of Pages"
 msgstr "Nombre de pages"
 
-#: lib/edit-schema.php:475 lib/messages.php:718
+#: lib/edit-schema.php:474 lib/messages.php:718
 msgctxt "option label"
 msgid "Book ISBN"
 msgstr "ISBN du livre"
 
-#: lib/edit-schema.php:487
+#: lib/edit-schema.php:486
 msgctxt "metabox title"
 msgid "Audiobook Information"
 msgstr "Informations du livre audio"
 
-#: lib/edit-schema.php:492
+#: lib/edit-schema.php:491
 msgctxt "option label"
 msgid "Audiobook Duration"
 msgstr "Durée du livre audio"
 
-#: lib/edit-schema.php:515
+#: lib/edit-schema.php:514
 msgctxt "metabox title"
 msgid "How-To Information"
 msgstr "Informations du How-To"
 
-#: lib/edit-schema.php:520
+#: lib/edit-schema.php:519
 msgctxt "option label"
 msgid "How-To Makes"
 msgstr "Le How-To crée"
 
-#: lib/edit-schema.php:527 lib/edit-schema.php:640
+#: lib/edit-schema.php:526 lib/edit-schema.php:639
 msgctxt "option label"
 msgid "Preparation Time"
 msgstr "Temps de préparation"
 
-#: lib/edit-schema.php:534 lib/edit-schema.php:654
+#: lib/edit-schema.php:533 lib/edit-schema.php:653
 msgctxt "option label"
 msgid "Total Time"
 msgstr "Temps total"
 
-#: lib/edit-schema.php:541 lib/messages.php:728
+#: lib/edit-schema.php:540 lib/messages.php:728
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr "Fournitures pour How-To"
 
-#: lib/edit-schema.php:549 lib/messages.php:733
+#: lib/edit-schema.php:548 lib/messages.php:733
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr "Outils pour How-To"
 
-#: lib/edit-schema.php:557 lib/messages.php:723
+#: lib/edit-schema.php:556 lib/messages.php:723
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr "Etapes pour How-To"
 
-#: lib/edit-schema.php:563
+#: lib/edit-schema.php:562
 msgctxt "option label"
 msgid "How-To %1$s step or %2$s section of steps:"
 msgstr "%1$s étape ou %2$s section d'étapes de How-To:"
 
-#: lib/edit-schema.php:578 lib/edit-schema.php:690
+#: lib/edit-schema.php:577 lib/edit-schema.php:689
 msgctxt "option label"
 msgid "Anchor ID"
 msgstr "ID d'ancre"
 
-#: lib/edit-schema.php:607
+#: lib/edit-schema.php:606
 msgctxt "metabox title"
 msgid "Recipe Information"
 msgstr "Informations de recette"
 
-#: lib/edit-schema.php:612
+#: lib/edit-schema.php:611
 msgctxt "option label"
 msgid "Recipe Cuisine"
 msgstr "Cuisine de la recette"
 
-#: lib/edit-schema.php:619
+#: lib/edit-schema.php:618
 msgctxt "option label"
 msgid "Recipe Course"
 msgstr "Cours de la recette"
 
-#: lib/edit-schema.php:626
+#: lib/edit-schema.php:625
 msgctxt "option label"
 msgid "Recipe Makes"
 msgstr "La recette crée"
 
-#: lib/edit-schema.php:633
+#: lib/edit-schema.php:632
 msgctxt "option label"
 msgid "Cooking Method"
 msgstr "Méthode de cuisson"
 
-#: lib/edit-schema.php:647
+#: lib/edit-schema.php:646
 msgctxt "option label"
 msgid "Cooking Time"
 msgstr "Temps de cuisson"
 
-#: lib/edit-schema.php:661 lib/messages.php:1011
+#: lib/edit-schema.php:660 lib/messages.php:1011
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr "Ingrédients de recette"
 
-#: lib/edit-schema.php:669 lib/messages.php:1016
+#: lib/edit-schema.php:668 lib/messages.php:1016
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr "Instructions pour la recette"
 
-#: lib/edit-schema.php:675
+#: lib/edit-schema.php:674
 msgctxt "option label"
 msgid "Recipe %1$s instruction or %2$s section of instructions:"
 msgstr "%1$s instruction ou %2$s section d'instructions de recette:"
 
-#: lib/edit-schema.php:709
+#: lib/edit-schema.php:708
 msgctxt "metabox title"
 msgid "Recipe Nutrition Information"
 msgstr "Informations nutritionnelle de recette"
 
-#: lib/edit-schema.php:714
+#: lib/edit-schema.php:713
 msgctxt "option label"
 msgid "Serving Size"
 msgstr "Taille de portion"
 
-#: lib/edit-schema.php:721
+#: lib/edit-schema.php:720
 msgctxt "option label"
 msgid "Calories"
 msgstr "Calories"
 
-#: lib/edit-schema.php:724
+#: lib/edit-schema.php:723
 msgctxt "option comment"
 msgid "calories"
 msgstr "calories"
 
-#: lib/edit-schema.php:729
+#: lib/edit-schema.php:728
 msgctxt "option label"
 msgid "Protein"
 msgstr "Protéine"
 
-#: lib/edit-schema.php:732
+#: lib/edit-schema.php:731
 msgctxt "option comment"
 msgid "grams of protein"
 msgstr "grammes de protéines"
 
-#: lib/edit-schema.php:737
+#: lib/edit-schema.php:736
 msgctxt "option label"
 msgid "Fiber"
 msgstr "Fibre"
 
-#: lib/edit-schema.php:740
+#: lib/edit-schema.php:739
 msgctxt "option comment"
 msgid "grams of fiber"
 msgstr "grammes de fibres"
 
-#: lib/edit-schema.php:745
+#: lib/edit-schema.php:744
 msgctxt "option label"
 msgid "Carbohydrates"
 msgstr "Glucides"
 
-#: lib/edit-schema.php:748
+#: lib/edit-schema.php:747
 msgctxt "option comment"
 msgid "grams of carbohydrates"
 msgstr "grammes de glucides"
 
-#: lib/edit-schema.php:753
+#: lib/edit-schema.php:752
 msgctxt "option label"
 msgid "Sugar"
 msgstr "Sucre"
 
-#: lib/edit-schema.php:756
+#: lib/edit-schema.php:755
 msgctxt "option comment"
 msgid "grams of sugar"
 msgstr "grammes de sucre"
 
-#: lib/edit-schema.php:761
+#: lib/edit-schema.php:760
 msgctxt "option label"
 msgid "Sodium"
 msgstr "Sodium"
 
-#: lib/edit-schema.php:764
+#: lib/edit-schema.php:763
 msgctxt "option comment"
 msgid "milligrams of sodium"
 msgstr "milligrammes de sodium"
 
-#: lib/edit-schema.php:769
+#: lib/edit-schema.php:768
 msgctxt "option label"
 msgid "Fat"
 msgstr "Gras"
 
-#: lib/edit-schema.php:772
+#: lib/edit-schema.php:771
 msgctxt "option comment"
 msgid "grams of fat"
 msgstr "grammes de matières grasses"
 
-#: lib/edit-schema.php:777
+#: lib/edit-schema.php:776
 msgctxt "option label"
 msgid "Saturated Fat"
 msgstr "Gras saturée"
 
-#: lib/edit-schema.php:780
+#: lib/edit-schema.php:779
 msgctxt "option comment"
 msgid "grams of saturated fat"
 msgstr "grammes de gras saturés"
 
-#: lib/edit-schema.php:785
+#: lib/edit-schema.php:784
 msgctxt "option label"
 msgid "Unsaturated Fat"
 msgstr "Grais insaturées"
 
-#: lib/edit-schema.php:788
+#: lib/edit-schema.php:787
 msgctxt "option comment"
 msgid "grams of unsaturated fat"
 msgstr "grammes de gras insaturés"
 
-#: lib/edit-schema.php:793
+#: lib/edit-schema.php:792
 msgctxt "option label"
 msgid "Trans Fat"
 msgstr "Gras trans"
 
-#: lib/edit-schema.php:796
+#: lib/edit-schema.php:795
 msgctxt "option comment"
 msgid "grams of trans fat"
 msgstr "grammes de gras trans"
 
-#: lib/edit-schema.php:801
+#: lib/edit-schema.php:800
 msgctxt "option label"
 msgid "Cholesterol"
 msgstr "Cholestérol"
 
-#: lib/edit-schema.php:804
+#: lib/edit-schema.php:803
 msgctxt "option comment"
 msgid "milligrams of cholesterol"
 msgstr "milligrammes de cholestérol"
 
-#: lib/edit-schema.php:823
+#: lib/edit-schema.php:822
 msgctxt "metabox title"
 msgid "Learning Resource Information"
 msgstr "Informations ressources d'apprentissage"
 
-#: lib/edit-schema.php:828
+#: lib/edit-schema.php:827
 msgctxt "option label"
 msgid "Educational Level"
 msgstr "Niveau d'éducation"
 
-#: lib/edit-schema.php:835
+#: lib/edit-schema.php:834
 msgctxt "option label"
 msgid "Resource Type"
 msgstr "Type de ressource"
 
-#: lib/edit-schema.php:857
+#: lib/edit-schema.php:856
 msgctxt "metabox title"
 msgid "Movie Information"
 msgstr "Informations du film"
 
-#: lib/edit-schema.php:862 lib/edit-schema.php:1083
+#: lib/edit-schema.php:861 lib/edit-schema.php:1082
 msgctxt "option label"
 msgid "Movie Cast Names"
 msgstr "Noms des acteurs du film"
 
-#: lib/edit-schema.php:870 lib/edit-schema.php:1091
+#: lib/edit-schema.php:869 lib/edit-schema.php:1090
 msgctxt "option label"
 msgid "Movie Director Names"
 msgstr "Noms des réalisateurs du film"
 
-#: lib/edit-schema.php:878
+#: lib/edit-schema.php:877
 msgctxt "option label"
 msgid "Production Company"
 msgstr "Société de production"
 
-#: lib/edit-schema.php:888
+#: lib/edit-schema.php:887
 msgctxt "option label"
 msgid "Movie Release Date"
 msgstr "Date de sortie du film"
 
-#: lib/edit-schema.php:895
+#: lib/edit-schema.php:894
 msgctxt "option label"
 msgid "Movie Runtime"
 msgstr "Durée du film"
 
-#: lib/edit-schema.php:921
+#: lib/edit-schema.php:920
 msgctxt "metabox title"
 msgid "Review Information"
 msgstr "Informations d'évaluation"
 
-#: lib/edit-schema.php:926 lib/messages.php:999
+#: lib/edit-schema.php:925 lib/messages.php:999
 msgctxt "option label"
 msgid "Review Rating"
 msgstr "Note de critique"
 
-#: lib/edit-schema.php:938 lib/messages.php:1005
+#: lib/edit-schema.php:937 lib/messages.php:1005
 msgctxt "option label"
 msgid "Rating Alt Name"
 msgstr "Nom alt. pour note"
 
-#: lib/edit-schema.php:965
+#: lib/edit-schema.php:964
 msgctxt "metabox title"
 msgid "Review Subject (aka Item Reviewed) Information"
 msgstr "Informations sur le sujet critiqué (alias élément critiqué)"
 
-#: lib/edit-schema.php:970
+#: lib/edit-schema.php:969
 msgctxt "option label"
 msgid "Subject Name"
 msgstr "Nom du sujet"
 
-#: lib/edit-schema.php:977
+#: lib/edit-schema.php:976
 msgctxt "option label"
 msgid "Subject Description"
 msgstr "Description du sujet"
 
-#: lib/edit-schema.php:984
+#: lib/edit-schema.php:983
 msgctxt "option label"
 msgid "Subject Image ID"
 msgstr "ID d'image du sujet"
 
-#: lib/edit-schema.php:998
+#: lib/edit-schema.php:997
 msgctxt "option label"
 msgid "Subject Webpage URL"
 msgstr "URL de page Web du sujet"
 
-#: lib/edit-schema.php:1005
+#: lib/edit-schema.php:1004
 msgctxt "option label"
 msgid "Subject Same-As URLs"
 msgstr "URL pareilles au sujet"
 
-#: lib/edit-schema.php:1013
+#: lib/edit-schema.php:1012
 msgctxt "option label"
 msgid "Subject Schema Type"
 msgstr "Type de Schéma du sujet"
 
-#: lib/edit-schema.php:1032
+#: lib/edit-schema.php:1031
 msgctxt "option label"
 msgid "Subject Author Type"
 msgstr "Type d'auteur du sujet"
 
-#: lib/edit-schema.php:1039
+#: lib/edit-schema.php:1038
 msgctxt "option label"
 msgid "Subject Author Name"
 msgstr "Nom d'auteur du sujet"
 
-#: lib/edit-schema.php:1046
+#: lib/edit-schema.php:1045
 msgctxt "option label"
 msgid "Subject Author URL"
 msgstr "URL d'auteur du sujet"
 
-#: lib/edit-schema.php:1053
+#: lib/edit-schema.php:1052
 msgctxt "option label"
 msgid "Subject Published Date"
 msgstr "Date de publi. du sujet"
 
-#: lib/edit-schema.php:1060
+#: lib/edit-schema.php:1059
 msgctxt "option label"
 msgid "Subject Created Date"
 msgstr "Date de création du sujet"
 
-#: lib/edit-schema.php:1071
+#: lib/edit-schema.php:1070
 msgctxt "option label"
 msgid "Subject Book ISBN"
 msgstr "ISBN du livre du sujet"
 
-#: lib/edit-schema.php:1103 lib/edit-schema.php:1322
+#: lib/edit-schema.php:1102 lib/edit-schema.php:1321
 msgctxt "option label"
 msgid "Operating System"
 msgstr "Système d'exploitation"
 
-#: lib/edit-schema.php:1110 lib/edit-schema.php:1329
+#: lib/edit-schema.php:1109 lib/edit-schema.php:1328
 msgctxt "option label"
 msgid "Application Category"
 msgstr "Catégorie d'application"
 
-#: lib/edit-schema.php:1117
+#: lib/edit-schema.php:1116
 msgctxt "option label"
 msgid "Software App Offers"
 msgstr "Offres d'appli. logicielle"
 
-#: lib/edit-schema.php:1121
+#: lib/edit-schema.php:1120
 msgctxt "option label"
 msgid "Software App Offer Name"
 msgstr "Nom de l'offre d'application logicielle"
 
-#: lib/edit-schema.php:1126
+#: lib/edit-schema.php:1125
 msgctxt "option label"
 msgid "Software App Offer Price"
 msgstr "Prix de l'offre d'application logicielle"
 
-#: lib/edit-schema.php:1131
+#: lib/edit-schema.php:1130
 msgctxt "option label"
 msgid "Software App Offer Currency"
 msgstr "Devise de l'offre d'application logicielle"
 
-#: lib/edit-schema.php:1140
+#: lib/edit-schema.php:1139
 msgctxt "option label"
 msgid "Software App Offer Availability"
 msgstr "Disponibilité de l'offre d'application logicielle"
 
-#: lib/edit-schema.php:1155
+#: lib/edit-schema.php:1154
 msgctxt "option label"
 msgid "Subject Street Address"
 msgstr "Adresse de rue du sujet"
 
-#: lib/edit-schema.php:1162
+#: lib/edit-schema.php:1161
 msgctxt "option label"
 msgid "Subject P.O. Box Number"
 msgstr "Num. boîte postale du sujet"
 
-#: lib/edit-schema.php:1169
+#: lib/edit-schema.php:1168
 msgctxt "option label"
 msgid "Subject City / Locality"
 msgstr "Ville / localité du sujet"
 
-#: lib/edit-schema.php:1176
+#: lib/edit-schema.php:1175
 msgctxt "option label"
 msgid "Subject State / Province"
 msgstr "État / Province du sujet"
 
-#: lib/edit-schema.php:1183
+#: lib/edit-schema.php:1182
 msgctxt "option label"
 msgid "Subject Zip / Postal Code"
 msgstr "Zip / Code postal du sujet"
 
-#: lib/edit-schema.php:1190
+#: lib/edit-schema.php:1189
 msgctxt "option label"
 msgid "Subject Country"
 msgstr "Pays du sujet"
 
-#: lib/edit-schema.php:1197
+#: lib/edit-schema.php:1196
 msgctxt "option label"
 msgid "Subject Telephone"
 msgstr "Téléphone du sujet"
 
-#: lib/edit-schema.php:1204
+#: lib/edit-schema.php:1203
 msgctxt "option label"
 msgid "Subject Price Range"
 msgstr "Échelle de prix du sujet"
 
-#: lib/edit-schema.php:1215
+#: lib/edit-schema.php:1214
 msgctxt "option label"
 msgid "Subject Serves Cuisine"
 msgstr "Cuisine servie du sujet"
 
-#: lib/edit-schema.php:1226
+#: lib/edit-schema.php:1225
 msgctxt "option label"
 msgid "Subject Product Brand"
 msgstr "Marque de produit du sujet"
 
-#: lib/edit-schema.php:1233
+#: lib/edit-schema.php:1232
 msgctxt "option label"
 msgid "Subject Product Offers"
 msgstr "Offres de produit du sujet"
 
-#: lib/edit-schema.php:1237
+#: lib/edit-schema.php:1236
 msgctxt "option label"
 msgid "Product Offer Name"
 msgstr "Nom de l'offre du produit"
 
-#: lib/edit-schema.php:1242
+#: lib/edit-schema.php:1241
 msgctxt "option label"
 msgid "Product Offer Price"
 msgstr "Prix de l'offre du produit"
 
-#: lib/edit-schema.php:1247
+#: lib/edit-schema.php:1246
 msgctxt "option label"
 msgid "Product Offer Currency"
 msgstr "Devise de l'offre du produit"
 
-#: lib/edit-schema.php:1256
+#: lib/edit-schema.php:1255
 msgctxt "option label"
 msgid "Product Offer Availability"
 msgstr "Disponibilité de l'offre du produit"
 
-#: lib/edit-schema.php:1267
+#: lib/edit-schema.php:1266
 msgctxt "option label"
 msgid "Subject Product SKU"
 msgstr "SKU de produit du sujet"
 
-#: lib/edit-schema.php:1274
+#: lib/edit-schema.php:1273
 msgctxt "option label"
 msgid "Subject Product MPN"
 msgstr "MPN de produit du sujet"
 
-#: lib/edit-schema.php:1286
+#: lib/edit-schema.php:1285
 msgctxt "metabox title"
 msgid "Claim Review Information"
 msgstr "Informations de critique de déclaration"
 
-#: lib/edit-schema.php:1291
+#: lib/edit-schema.php:1290
 msgctxt "option label"
 msgid "Short Summary of Claim"
 msgstr "Résumé de la déclaration"
 
-#: lib/edit-schema.php:1298
+#: lib/edit-schema.php:1297
 msgctxt "option label"
 msgid "First Appearance URL"
 msgstr "URL de première apparence"
 
-#: lib/edit-schema.php:1317
+#: lib/edit-schema.php:1316
 msgctxt "metabox title"
 msgid "Software App Information"
 msgstr "Informations d'application logicielle"
 
-#: lib/edit-schema.php:1350
+#: lib/edit-schema.php:1349
 msgctxt "metabox title"
 msgid "WebPage Information"
 msgstr "Informations de page Web"
 
-#: lib/edit-schema.php:1355
+#: lib/edit-schema.php:1354
 msgctxt "option label"
 msgid "Reviewed By Org."
 msgstr "Révisé par l'org."
 
-#: lib/edit-schema.php:1365
+#: lib/edit-schema.php:1364
 msgctxt "option label"
 msgid "Reviewed By Person"
 msgstr "Révisé par la personne"
 
-#: lib/edit-schema.php:1375
+#: lib/edit-schema.php:1374
 msgctxt "option label"
 msgid "Reviewed Last"
 msgstr "Révisé en dernier"
 
-#: lib/edit-schema.php:1394 lib/edit-schema.php:1421
+#: lib/edit-schema.php:1393 lib/edit-schema.php:1420
 msgctxt "metabox title"
 msgid "QA Page Information"
 msgstr "Informations de page QA"
 
-#: lib/edit-schema.php:1399 lib/edit-schema.php:1747
+#: lib/edit-schema.php:1398 lib/edit-schema.php:1746
 msgctxt "option label"
 msgid "Select a Person"
 msgstr "Choisir une personne"
 
-#: lib/edit-schema.php:1426
+#: lib/edit-schema.php:1425
 msgctxt "option label"
 msgid "QA Heading"
 msgstr "En-tête QA"
 
-#: lib/edit-schema.php:1448
+#: lib/edit-schema.php:1447
 msgctxt "metabox title"
 msgid "Event Information"
 msgstr "Informations d'événement"
 
-#: lib/edit-schema.php:1453
+#: lib/edit-schema.php:1452
 msgctxt "option label"
 msgid "Event Language"
 msgstr "Langue de l'événement"
 
-#: lib/edit-schema.php:1460
+#: lib/edit-schema.php:1459
 msgctxt "option label"
 msgid "Event Attendance"
 msgstr "Participation pour l'événement"
 
-#: lib/edit-schema.php:1468
+#: lib/edit-schema.php:1467
 msgctxt "option label"
 msgid "Event Online URL"
 msgstr "URL de l'événement en ligne"
 
-#: lib/edit-schema.php:1475
+#: lib/edit-schema.php:1474
 msgctxt "option label"
 msgid "Event Venue"
 msgstr "Lieu pour l'événement"
 
-#: lib/edit-schema.php:1485
+#: lib/edit-schema.php:1484
 msgctxt "option label"
 msgid "Performer Org."
 msgstr "Org. interprète"
 
-#: lib/edit-schema.php:1495
+#: lib/edit-schema.php:1494
 msgctxt "option label"
 msgid "Performer Person"
 msgstr "Personne interprète"
 
-#: lib/edit-schema.php:1505
+#: lib/edit-schema.php:1504
 msgctxt "option label"
 msgid "Organizer Org."
 msgstr "Org. organisateur"
 
-#: lib/edit-schema.php:1515
+#: lib/edit-schema.php:1514
 msgctxt "option label"
 msgid "Organizer Person"
 msgstr "Personne organisateur"
 
-#: lib/edit-schema.php:1545
+#: lib/edit-schema.php:1544
 msgctxt "option label"
 msgid "Event Status"
 msgstr "Statut de l'événement"
 
-#: lib/edit-schema.php:1553
+#: lib/edit-schema.php:1552
 msgctxt "option label"
 msgid "Event Start"
 msgstr "Début de l'événement"
 
-#: lib/edit-schema.php:1560
+#: lib/edit-schema.php:1559
 msgctxt "option label"
 msgid "Event End"
 msgstr "Fin de l'événement"
 
-#: lib/edit-schema.php:1567
+#: lib/edit-schema.php:1566
 msgctxt "option label"
 msgid "Event Previous Start"
 msgstr "Début précédent de l'événement"
 
-#: lib/edit-schema.php:1574
+#: lib/edit-schema.php:1573
 msgctxt "option label"
 msgid "Event Offers Start"
 msgstr "Début des offres de l'événement"
 
-#: lib/edit-schema.php:1581
+#: lib/edit-schema.php:1580
 msgctxt "option label"
 msgid "Event Offers End"
 msgstr "Fin des offres de l'événement"
 
-#: lib/edit-schema.php:1588
+#: lib/edit-schema.php:1587
 msgctxt "option label"
 msgid "Event Offers"
 msgstr "Offres pour l'événement"
 
-#: lib/edit-schema.php:1592
+#: lib/edit-schema.php:1591
 msgctxt "option label"
 msgid "Event Offer Name"
 msgstr "Nom de l'offre pour l'événement"
 
-#: lib/edit-schema.php:1597
+#: lib/edit-schema.php:1596
 msgctxt "option label"
 msgid "Event Offer Price"
 msgstr "Prix de l'offre pour l'événement"
 
-#: lib/edit-schema.php:1602
+#: lib/edit-schema.php:1601
 msgctxt "option label"
 msgid "Event Offer Currency"
 msgstr "Devise de l'offre pour l'événement"
 
-#: lib/edit-schema.php:1611
+#: lib/edit-schema.php:1610
 msgctxt "option label"
 msgid "Event Offer Availability"
 msgstr "Disponibilité de l'offre pour l'événement"
 
-#: lib/edit-schema.php:1637
+#: lib/edit-schema.php:1636
 msgctxt "metabox title"
 msgid "Job Posting Information"
 msgstr "Informations d'affichage d'emploi"
 
-#: lib/edit-schema.php:1650
+#: lib/edit-schema.php:1649
 msgctxt "option label"
 msgid "Hiring Organization"
 msgstr "Organisation d'embauche"
 
-#: lib/edit-schema.php:1660
+#: lib/edit-schema.php:1659
 msgctxt "option label"
 msgid "Job Location"
 msgstr "Emplacement de travail"
 
-#: lib/edit-schema.php:1670
+#: lib/edit-schema.php:1669
 msgctxt "option label"
 msgid "Job Location Type"
 msgstr "Type d'emplacement de travail"
 
-#: lib/edit-schema.php:1678
+#: lib/edit-schema.php:1677
 msgctxt "option label"
 msgid "Base Salary"
 msgstr "Salaire de base"
 
-#: lib/edit-schema.php:1685
+#: lib/edit-schema.php:1684
 msgctxt "option comment"
 msgid "per"
 msgstr "par"
 
-#: lib/edit-schema.php:1691
+#: lib/edit-schema.php:1690
 msgctxt "option label"
 msgid "Employment Type"
 msgstr "Type d'emploi"
 
-#: lib/edit-schema.php:1698
+#: lib/edit-schema.php:1697
 msgctxt "option label"
 msgid "Job Posting Expires"
 msgstr "L'offre d'emploi expire"
 
-#: lib/edit-schema.php:1717
+#: lib/edit-schema.php:1716
 msgctxt "metabox title"
 msgid "Organization Information"
 msgstr "Informations d'organisation"
 
-#: lib/edit-schema.php:1722
+#: lib/edit-schema.php:1721
 msgctxt "option label"
 msgid "Select an Organization"
 msgstr "Choisir une organisation"
 
-#: lib/edit-schema.php:1742
+#: lib/edit-schema.php:1741
 msgctxt "metabox title"
 msgid "Person Information"
 msgstr "Informations de personne"
 
-#: lib/edit-schema.php:1769
+#: lib/edit-schema.php:1768
 msgctxt "metabox title"
 msgid "Place Information"
 msgstr "Informations sur l'endroit"
 
-#: lib/edit-schema.php:1774
+#: lib/edit-schema.php:1773
 msgctxt "option label"
 msgid "Select a Place"
 msgstr "Choisir un endroit"
 
-#: lib/edit-schema.php:1804
+#: lib/edit-schema.php:1803
 msgctxt "metabox title"
 msgid "Product Information (Main Product)"
 msgstr "Informations du produit (produit principal)"
 
-#: lib/edit-schema.php:1818 lib/messages.php:891
+#: lib/edit-schema.php:1817 lib/messages.php:891
 msgctxt "option label"
 msgid "Product Return Policy"
 msgstr "Politique retour de produit"
 
-#: lib/edit-schema.php:1826 lib/messages.php:774
+#: lib/edit-schema.php:1825 lib/messages.php:774
 msgctxt "option label"
 msgid "Product Google Category"
 msgstr "Catégorie Google de produit"
 
-#: lib/edit-schema.php:1841 lib/messages.php:767
+#: lib/edit-schema.php:1840 lib/messages.php:767
 msgctxt "option label"
 msgid "Product Brand"
 msgstr "Marque du produit"
 
-#: lib/edit-schema.php:1848 lib/messages.php:905
+#: lib/edit-schema.php:1847 lib/messages.php:905
 msgctxt "option label"
 msgid "Product Price"
 msgstr "Prix du produit"
 
-#: lib/edit-schema.php:1858 lib/messages.php:910
+#: lib/edit-schema.php:1857 lib/messages.php:910
 msgctxt "option label"
 msgid "Product Price Type"
 msgstr "Type de prix du produit"
 
-#: lib/edit-schema.php:1866 lib/messages.php:885
+#: lib/edit-schema.php:1865 lib/messages.php:885
 msgctxt "option label"
 msgid "Product Min Advert Price"
 msgstr "Prix min d'annonce du produit"
 
-#: lib/edit-schema.php:1874 lib/messages.php:760
+#: lib/edit-schema.php:1873 lib/messages.php:760
 msgctxt "option label"
 msgid "Product Availability"
 msgstr "Disponibilité du produit"
 
-#: lib/edit-schema.php:1882 lib/messages.php:789
+#: lib/edit-schema.php:1881 lib/messages.php:789
 msgctxt "option label"
 msgid "Product Condition"
 msgstr "État du produit"
 
-#: lib/edit-schema.php:1890 lib/messages.php:802
+#: lib/edit-schema.php:1889 lib/messages.php:802
 msgctxt "option label"
 msgid "Product Energy Rating"
 msgstr "Code efficacité énerg. du produit"
 
-#: lib/edit-schema.php:1905 lib/messages.php:873
+#: lib/edit-schema.php:1904 lib/messages.php:873
 msgctxt "option label"
 msgid "Product Material"
 msgstr "Matériel du produit"
 
-#: lib/edit-schema.php:1912 lib/messages.php:899
+#: lib/edit-schema.php:1911 lib/messages.php:899
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr "Motif du produit"
 
-#: lib/edit-schema.php:1919 lib/messages.php:783
+#: lib/edit-schema.php:1918 lib/messages.php:783
 msgctxt "option label"
 msgid "Product Color"
 msgstr "Couleur du produit"
 
-#: lib/edit-schema.php:1926 lib/messages.php:968
+#: lib/edit-schema.php:1925 lib/messages.php:968
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr "Sexe cible du produit"
 
-#: lib/edit-schema.php:1934 lib/messages.php:946
+#: lib/edit-schema.php:1933 lib/messages.php:946
 msgctxt "option label"
 msgid "Product Size"
 msgstr "Taille du produit"
 
-#: lib/edit-schema.php:1941 lib/messages.php:952
+#: lib/edit-schema.php:1940 lib/messages.php:952
 msgctxt "option label"
 msgid "Product Size Group"
 msgstr "Groupe taille du produit"
 
-#: lib/edit-schema.php:1952 lib/messages.php:960
+#: lib/edit-schema.php:1951 lib/messages.php:960
 msgctxt "option label"
 msgid "Product Size System"
 msgstr "Système taille du produit"
 
-#: lib/edit-schema.php:1959 lib/messages.php:752
+#: lib/edit-schema.php:1958 lib/messages.php:752
 msgctxt "option label"
 msgid "Product Age Group"
 msgstr "Groupe d’âge du produit"
 
-#: lib/edit-schema.php:1966 lib/messages.php:743
+#: lib/edit-schema.php:1965 lib/messages.php:743
 msgctxt "option label"
 msgid "Product Adult Type"
 msgstr "Type de produit adulte"
 
-#: lib/edit-schema.php:1973 lib/messages.php:867
+#: lib/edit-schema.php:1972 lib/messages.php:867
 msgctxt "option label"
 msgid "Product Net Len. / Depth"
 msgstr "Long. / profond. nette du produit"
 
-#: lib/edit-schema.php:1983 lib/messages.php:982
+#: lib/edit-schema.php:1982 lib/messages.php:982
 msgctxt "option label"
 msgid "Product Net Width"
 msgstr "Largeur nette du produit"
 
-#: lib/edit-schema.php:1993 lib/messages.php:855
+#: lib/edit-schema.php:1992 lib/messages.php:855
 msgctxt "option label"
 msgid "Product Net Height"
 msgstr "Hauteur nette du produit"
 
-#: lib/edit-schema.php:2003 lib/messages.php:976
+#: lib/edit-schema.php:2002 lib/messages.php:976
 msgctxt "option label"
 msgid "Product Net Weight"
 msgstr "Poids net du produit"
 
-#: lib/edit-schema.php:2013 lib/messages.php:820
+#: lib/edit-schema.php:2012 lib/messages.php:820
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr "Volume fluide du produit"
 
-#: lib/edit-schema.php:2023 lib/messages.php:928
+#: lib/edit-schema.php:2022 lib/messages.php:928
 msgctxt "option label"
 msgid "Product Shipping Length"
 msgstr "Longueur d'expédition du produit"
 
-#: lib/edit-schema.php:2033 lib/messages.php:940
+#: lib/edit-schema.php:2032 lib/messages.php:940
 msgctxt "option label"
 msgid "Product Shipping Width"
 msgstr "Largeur d'expédition du produit"
 
-#: lib/edit-schema.php:2043 lib/messages.php:922
+#: lib/edit-schema.php:2042 lib/messages.php:922
 msgctxt "option label"
 msgid "Product Shipping Height"
 msgstr "Hauteur d'expédition du produit"
 
-#: lib/edit-schema.php:2053 lib/messages.php:934
+#: lib/edit-schema.php:2052 lib/messages.php:934
 msgctxt "option label"
 msgid "Product Shipping Weight"
 msgstr "Poids d'expédition du produit"
 
-#: lib/edit-schema.php:2063 lib/messages.php:917
+#: lib/edit-schema.php:2062 lib/messages.php:917
 msgctxt "option label"
 msgid "Product SKU"
 msgstr "SKU du produit"
 
-#: lib/edit-schema.php:2071 lib/messages.php:879
+#: lib/edit-schema.php:2070 lib/messages.php:879
 msgctxt "option label"
 msgid "Product MPN"
 msgstr "MPN du produit"
 
-#: lib/edit-schema.php:2079 lib/messages.php:825
+#: lib/edit-schema.php:2078 lib/messages.php:825
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr "GTIN-14 du produit"
 
-#: lib/edit-schema.php:2087 lib/messages.php:831
+#: lib/edit-schema.php:2086 lib/messages.php:831
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr "GTIN-13 (EAN) du produit"
 
-#: lib/edit-schema.php:2095 lib/messages.php:837
+#: lib/edit-schema.php:2094 lib/messages.php:837
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr "GTIN-12 (UPC) du produit"
 
-#: lib/edit-schema.php:2103 lib/messages.php:843
+#: lib/edit-schema.php:2102 lib/messages.php:843
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr "GTIN-8 du produit"
 
-#: lib/edit-schema.php:2111 lib/messages.php:849
+#: lib/edit-schema.php:2110 lib/messages.php:849
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr "GTIN du produit"
 
-#: lib/edit-schema.php:2119 lib/messages.php:861
+#: lib/edit-schema.php:2118 lib/messages.php:861
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr "ISBN du produit"
 
-#: lib/edit-schema.php:2127
+#: lib/edit-schema.php:2126
 msgctxt "option label"
 msgid "Product Awards"
 msgstr "Prix pour le produit"
 
-#: lib/edit-schema.php:2148
+#: lib/edit-schema.php:2151
 msgctxt "metabox title"
 msgid "Service Information"
 msgstr "Informations du service"
 
-#: lib/edit-schema.php:2153
+#: lib/edit-schema.php:2176
 msgctxt "option label"
-msgid "Select a Service"
-msgstr "Choisir un service"
+msgid "Service Latitude"
+msgstr "Latitude du service"
+
+#: lib/edit-schema.php:2179 lib/edit-schema.php:2187
+msgctxt "option comment"
+msgid "decimal degrees"
+msgstr "degrés décimaux"
+
+#: lib/edit-schema.php:2184
+msgctxt "option label"
+msgid "Service Longitude"
+msgstr "Longitude du service"
+
+#: lib/edit-schema.php:2192
+msgctxt "option label"
+msgid "Service Radius"
+msgstr "Rayon de service"
+
+#: lib/edit-schema.php:2195
+msgctxt "option comment"
+msgid "meters from coordinates"
+msgstr "mètres des coordonnées"
+
+#: lib/edit-schema.php:2200
+msgctxt "option label"
+msgid "Service Offers Start"
+msgstr "Début des offres de service"
+
+#: lib/edit-schema.php:2207
+msgctxt "option label"
+msgid "Service Offers End"
+msgstr "Fin des offres de service"
+
+#: lib/edit-schema.php:2214
+msgctxt "option label"
+msgid "Service Offers"
+msgstr "Offres de services"
+
+#: lib/edit-schema.php:2218
+msgctxt "option label"
+msgid "Service Offer Name"
+msgstr "Nom de l'offre de service"
+
+#: lib/edit-schema.php:2223
+msgctxt "option label"
+msgid "Service Offer Price"
+msgstr "Prix de l'offre de service"
+
+#: lib/edit-schema.php:2228
+msgctxt "option label"
+msgid "Service Offer Currency"
+msgstr "Devise de l'offre de service"
+
+#: lib/edit-schema.php:2237
+msgctxt "option label"
+msgid "Service Offer Availability"
+msgstr "Disponibilité de l'offre de service"
+
+#: lib/edit-schema.php:2248
+msgctxt "option label"
+msgid "Offer Catalogs"
+msgstr "Catalogues d'offres"
+
+#: lib/edit-schema.php:2252
+msgctxt "option label"
+msgid "Offer Catalog Name"
+msgstr "Nom du catalogue d'offres"
+
+#: lib/edit-schema.php:2257
+msgctxt "option label"
+msgid "Offer Catalog Description"
+msgstr "Description du catalogue d'offres"
+
+#: lib/edit-schema.php:2262
+msgctxt "option label"
+msgid "Offer Catalog URL"
+msgstr "URL du catalogue d'offres"
 
 #: lib/edit-validators.php:53
 msgctxt "submit button"
@@ -9014,19 +9089,19 @@ msgstr "Attributs suggérés:"
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1623
+#: lib/integ/ecom/woocommerce.php:1626
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1850
+#: lib/integ/ecom/woocommerce.php:1853
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1853
+#: lib/integ/ecom/woocommerce.php:1856
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1856
+#: lib/integ/ecom/woocommerce.php:1859
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
@@ -9656,8 +9731,8 @@ msgid "A customized image ID to include first, before any featured, attached, or
 msgstr "Un ID d'image personnalisé à inclure en premier, avant l'image à la Une, les images attachées, ou de contenue."
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:997 lib/messages-tooltip-meta.php:76
-#: lib/messages-tooltip-meta.php:196 lib/messages-tooltip-opengraph.php:128
+#: lib/messages-tooltip-meta-schema.php:1058 lib/messages-tooltip-meta.php:75
+#: lib/messages-tooltip-meta.php:195 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image personnalisée est fournie."
 
@@ -9670,8 +9745,8 @@ msgid "Make sure your custom image is large enough or it may be ignored by socia
 msgstr "Assurez-vous que votre image personnalisée est suffisamment grande ou elle peut être ignorée par les sites sociaux."
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:1005 lib/messages-tooltip-meta.php:86
-#: lib/messages-tooltip-meta.php:207 lib/messages-tooltip-opengraph.php:145
+#: lib/messages-tooltip-meta-schema.php:1066 lib/messages-tooltip-meta.php:85
+#: lib/messages-tooltip-meta.php:206 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image personnalisé est sélectionné."
 
@@ -9846,8 +9921,8 @@ msgstr "Les degrés décimaux numérique de latitude pour cet endroit (requis)."
 
 #: lib/messages-tooltip-meta-place.php:113
 #: lib/messages-tooltip-meta-place.php:121
-#: lib/messages-tooltip-meta-service.php:66
-#: lib/messages-tooltip-meta-service.php:74
+#: lib/messages-tooltip-meta-schema.php:957
+#: lib/messages-tooltip-meta-schema.php:965
 msgid "You may use a service like <a href=\"http://www.gps-coordinates.net/\">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address."
 msgstr "Vous pouvez utiliser un service comme le <a href=\"http://www.coordonnees-gps.fr/conversion-coordonnees-gps\">Convertisseur de coordonnées GPS</a> (par exemple), pour trouver les coordonnées GPS approximatives d'une adresse postale."
 
@@ -9901,7 +9976,7 @@ msgid "If this place is open seasonally, select the open and close dates of the 
 msgstr "Si cet endroit est ouvert en saison, sélectionnez les dates d'ouverture et de fermeture de la saison."
 
 #: lib/messages-tooltip-meta-place.php:173
-#: lib/messages-tooltip-meta-service.php:80
+#: lib/messages-tooltip-meta-schema.php:971
 msgid "The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates."
 msgstr "La zone géographique où un service est fourni, en mètres autour d'un ensemble de coordonnées de latitude et de longitude."
 
@@ -10073,7 +10148,7 @@ msgid "A publisher for this creative work."
 msgstr "Un éditeur pour cette œuvre créative."
 
 #: lib/messages-tooltip-meta-schema.php:138
-#: lib/messages-tooltip-meta-service.php:58
+#: lib/messages-tooltip-meta-schema.php:949
 msgid "A service provider, service operator, or service performer."
 msgstr "Un prestataire de services, un opérateur de services ou un exécutant de services."
 
@@ -10222,10 +10297,12 @@ msgid "The previously scheduled start date for the event, if the event has been 
 msgstr "La date de début de l'événement planifiée précédemment, si l'événement a été replanifiée."
 
 #: lib/messages-tooltip-meta-schema.php:371
+#: lib/messages-tooltip-meta-schema.php:977
 msgid "The date and time when tickets go on sale."
 msgstr "La date et l'heure auxquelles les billets sont en vente."
 
 #: lib/messages-tooltip-meta-schema.php:377
+#: lib/messages-tooltip-meta-schema.php:983
 msgid "The date and time when tickets are no longer on sale."
 msgstr "La date et l'heure auxquelles les billets ne sont plus en vente."
 
@@ -10534,155 +10611,143 @@ msgstr "Le résumé devrait comporter moins de 75 caractères pour minimiser le 
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr "URL facultative d'une page Web ou cette déclaration spécifique est apparue la première foi."
 
-#: lib/messages-tooltip-meta-schema.php:948
-msgid "Type of software application (example: %s, etc.)."
-msgstr "Type d'application logicielle (exemple: %s, etc.)."
-
 #: lib/messages-tooltip-meta-schema.php:955
-msgid "The operating system supported (example: %s, etc.)."
-msgstr "Le système d'exploitation supporté (exemple: %s, etc.)."
-
-#: lib/messages-tooltip-meta-schema.php:970
-msgid "Organizations that have reviewed the content on this web page for accuracy and/or completeness."
-msgstr "Les organisations qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
-
-#: lib/messages-tooltip-meta-schema.php:976
-msgid "Persons that have reviewed the content on this web page for accuracy and/or completeness."
-msgstr "Les personnes qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
-
-#: lib/messages-tooltip-meta-schema.php:982
-msgid "Date on which the content on this web page was last reviewed for accuracy and/or completeness."
-msgstr "Date à laquelle le contenu de cette page Web a été révisé pour la dernière fois pour en vérifier l'exactitude et/ou l'exhaustivité."
-
-#: lib/messages-tooltip-meta-schema.php:995
-msgid "A customized image ID to include first in the Schema meta tags and JSON-LD markup."
-msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
-
-#: lib/messages-tooltip-meta-schema.php:1003
-msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
-msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
-
-#: lib/messages-tooltip-meta-service.php:33
-msgid "A name for this service (required)."
-msgstr "Un nom pour ce service (obligatoire)."
-
-#: lib/messages-tooltip-meta-service.php:39
-msgid "An alternate name for this service."
-msgstr "Un autre nom pour ce service."
-
-#: lib/messages-tooltip-meta-service.php:45
-msgid "A description for this service."
-msgstr "Une description pour ce service."
-
-#: lib/messages-tooltip-meta-service.php:51
-msgid "You may choose a more accurate Schema type for this service (default is Service)."
-msgstr "Vous pouvez choisir un type de Schéma plus précis pour ce service (Service par défaut)."
-
-#: lib/messages-tooltip-meta-service.php:64
 msgid "The numeric decimal degrees latitude for this service."
 msgstr "Les degrés décimaux numérique de latitude pour ce service."
 
-#: lib/messages-tooltip-meta-service.php:72
+#: lib/messages-tooltip-meta-schema.php:963
 msgid "The numeric decimal degrees longitude for this service."
 msgstr "Les degrés décimaux numérique de longitude pour ce service."
 
-#: lib/messages-tooltip-meta-service.php:86
+#: lib/messages-tooltip-meta-schema.php:989
+msgid "One or more offers for the service, including the offer name, price and currency."
+msgstr "Une ou plusieurs offres pour le service, y compris le nom de l'offre, le prix et la devise."
+
+#: lib/messages-tooltip-meta-schema.php:995
 msgid "A list of offer catalogs for this service, including the catalog name, description and URL."
 msgstr "Une liste des catalogues d'offres pour ce service, y compris le nom du catalogue, la description et l'URL."
 
-#: lib/messages-tooltip-meta.php:64
+#: lib/messages-tooltip-meta-schema.php:1009
+msgid "Type of software application (example: %s, etc.)."
+msgstr "Type d'application logicielle (exemple: %s, etc.)."
+
+#: lib/messages-tooltip-meta-schema.php:1016
+msgid "The operating system supported (example: %s, etc.)."
+msgstr "Le système d'exploitation supporté (exemple: %s, etc.)."
+
+#: lib/messages-tooltip-meta-schema.php:1031
+msgid "Organizations that have reviewed the content on this web page for accuracy and/or completeness."
+msgstr "Les organisations qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
+
+#: lib/messages-tooltip-meta-schema.php:1037
+msgid "Persons that have reviewed the content on this web page for accuracy and/or completeness."
+msgstr "Les personnes qui ont examiné le contenu de cette page Web pour en vérifier l'exactitude et/ou l'exhaustivité."
+
+#: lib/messages-tooltip-meta-schema.php:1043
+msgid "Date on which the content on this web page was last reviewed for accuracy and/or completeness."
+msgstr "Date à laquelle le contenu de cette page Web a été révisé pour la dernière fois pour en vérifier l'exactitude et/ou l'exhaustivité."
+
+#: lib/messages-tooltip-meta-schema.php:1056
+msgid "A customized image ID to include first in the Schema meta tags and JSON-LD markup."
+msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
+
+#: lib/messages-tooltip-meta-schema.php:1064
+msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
+msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
+
+#: lib/messages-tooltip-meta.php:63
 msgid "A customized description for the Pinterest Pin It browser button."
 msgstr "Une description personnalisée pour le bouton du navigateur Pinterest Pin It."
 
-#: lib/messages-tooltip-meta.php:66 lib/messages-tooltip-meta.php:182
+#: lib/messages-tooltip-meta.php:65 lib/messages-tooltip-meta.php:181
 msgid "The default value is inherited from the social or SEO description."
 msgstr "La valeur par défaut est héritée de la description sociale ou SEO."
 
-#: lib/messages-tooltip-meta.php:72
+#: lib/messages-tooltip-meta.php:71
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr "Un ID d'image personnalisé pour le bouton Pinterest Pin It du navigateur."
 
-#: lib/messages-tooltip-meta.php:74 lib/messages-tooltip-meta.php:84
+#: lib/messages-tooltip-meta.php:73 lib/messages-tooltip-meta.php:83
 msgid "The default value is inherited from the Schema markup or priority image."
 msgstr "La valeur par défaut est héritée du balisage de Schéma ou de l'image prioritaire."
 
-#: lib/messages-tooltip-meta.php:82
+#: lib/messages-tooltip-meta.php:81
 msgid "A customized image URL (instead of an image ID) for the Pinterest Pin It browser button."
 msgstr "Une URL d'image personnalisée (au lieu d'un ID d'image) pour le bouton Pinterest Pin It du navigateur."
 
-#: lib/messages-tooltip-meta.php:107
+#: lib/messages-tooltip-meta.php:106
 msgid "Do not show a cached link in search results."
 msgstr "Ne pas afficher un lien mis en cache dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:116
+#: lib/messages-tooltip-meta.php:115
 msgid "Do not follow links on this webpage."
 msgstr "Ne pas suivre les liens sur cette page Web."
 
-#: lib/messages-tooltip-meta.php:125
+#: lib/messages-tooltip-meta.php:124
 msgid "Do not index images on this webpage."
 msgstr "Ne pas indexer les images sur cette page Web."
 
-#: lib/messages-tooltip-meta.php:134
+#: lib/messages-tooltip-meta.php:133
 msgid "Do not show this webpage in search results."
 msgstr "Ne pas afficher cette page Web dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:143
+#: lib/messages-tooltip-meta.php:142
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr "Ne pas afficher d'extrait de texte ni d'aperçu vidéo dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:145
+#: lib/messages-tooltip-meta.php:144
 msgid "Google may still show a static image thumbnail (if available) when it determines that using an image provides a better user-experience."
 msgstr "Google peut toujours afficher une miniature d'image statique (si disponible) lorsqu'il détermine que l'utilisation d'une image offre une meilleure expérience utilisateur."
 
-#: lib/messages-tooltip-meta.php:154
+#: lib/messages-tooltip-meta.php:153
 msgid "Do not offer translation of this webpage in search results."
 msgstr "Ne pas offrir la traduction de cette page Web dans les résultats de recherche."
 
-#: lib/messages-tooltip-meta.php:172
+#: lib/messages-tooltip-meta.php:171
 msgid "A customized title for the X (Twitter) Card title meta tag."
 msgstr "Un titre personnalisé pour la balise méta titre de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:174
+#: lib/messages-tooltip-meta.php:173
 msgid "The default value is inherited from the social or SEO title."
 msgstr "La valeur par défaut est héritée du titre social ou SEO."
 
-#: lib/messages-tooltip-meta.php:180
+#: lib/messages-tooltip-meta.php:179
 msgid "A customized description for the X (Twitter) Card description meta tag."
 msgstr "Une description personnalisée pour la balise méta description de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:192
+#: lib/messages-tooltip-meta.php:191
 msgid "A customized image ID for the X (Twitter) Card image."
 msgstr "Un ID d'image personnalisé pour l'image de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-meta.php:205
+#: lib/messages-tooltip-meta.php:193 lib/messages-tooltip-meta.php:204
 msgid "The default value is inherited from the priority image."
 msgstr "La valeur par défaut est héritée de l'image prioritaire."
 
-#: lib/messages-tooltip-meta.php:203
+#: lib/messages-tooltip-meta.php:202
 msgid "A customized image URL (instead of an image ID) for the X (Twitter) Card image."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) pour l'image de carte X (Twitter)."
 
-#: lib/messages-tooltip-meta.php:225
+#: lib/messages-tooltip-meta.php:224
 msgid "The primary (ie. top most) category for breadcrumbs markup."
 msgstr "La catégorie principale (c'est-à-dire la plus élevée) pour le balisage de fil d'Ariane."
 
-#: lib/messages-tooltip-meta.php:231
+#: lib/messages-tooltip-meta.php:230
 msgid "A customized description for the SEO title tag and the default for all other title values."
 msgstr "Une description personnalisée pour la balise de titre SEO et la valeur par défaut pour toutes les autres valeurs de titre."
 
-#: lib/messages-tooltip-meta.php:237
+#: lib/messages-tooltip-meta.php:236
 msgid "A customized description for the SEO description meta tag and the default for all other description values."
 msgstr "Une description personnalisée pour la balise méta de description SEO et la valeur par défaut pour toutes les autres valeurs de description."
 
-#: lib/messages-tooltip-meta.php:245
+#: lib/messages-tooltip-meta.php:244
 msgid "A customized URL for meta tags and Schema markup."
 msgstr "Une URL personnalisée pour les balises méta et le balisage de Schéma."
 
-#: lib/messages-tooltip-meta.php:247 lib/messages-tooltip-meta.php:255
+#: lib/messages-tooltip-meta.php:246 lib/messages-tooltip-meta.php:254
 msgid "Make sure the custom URL you enter here is functional and redirects correctly."
 msgstr "Assurez-vous que l'URL personnalisée que vous entrez ici est fonctionnelle et redirige correctement."
 
-#: lib/messages-tooltip-meta.php:253
+#: lib/messages-tooltip-meta.php:252
 msgid "Permanently redirect this URL to another."
 msgstr "Redirigez définitivement cette URL vers une autre."
 
@@ -13360,57 +13425,53 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1091
+#: lib/schema-single.php:1096
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:1092
+#: lib/schema-single.php:1097
 msgid "adding schema organization ID \"%s\""
 msgstr "ajout de schéma d'organisation ID \"%s\""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1210
+#: lib/schema-single.php:1215
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1213
+#: lib/schema-single.php:1218
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1216
+#: lib/schema-single.php:1221
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Entrez l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1252
+#: lib/schema-single.php:1257
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1266 lib/schema-single.php:1275
+#: lib/schema-single.php:1271 lib/schema-single.php:1280
 msgid "ID \"%s\""
 msgstr "ID \"%s\""
 
-#: lib/schema-single.php:1453
+#: lib/schema-single.php:1458
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1656
+#: lib/schema-single.php:1661
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema-single.php:2167
+#: lib/schema-single.php:2172
 msgid "adding schema product group"
 msgstr "ajout de schéma groupe de produit"
 
-#: lib/schema-single.php:2304
+#: lib/schema-single.php:2309
 msgid "adding schema product"
 msgstr "ajout de schéma de produit"
-
-#: lib/schema-single.php:2616
-msgid "adding schema service"
-msgstr "ajout de schéma service"
 
 #: lib/schema.php:725
 msgid "adding schema"
