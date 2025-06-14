@@ -2662,7 +2662,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( empty( $url ) ) {	// Just in case.
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: url is empty' );

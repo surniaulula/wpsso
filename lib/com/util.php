@@ -907,7 +907,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( is_string( $key ) ) {
-			
+
 				return SucomCurrencies::get( $key, $format );
 			}
 

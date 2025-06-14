@@ -1374,7 +1374,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				return $default_id;
-			
+
 			} elseif ( ! is_string( $opt_suffix ) ) {	// Must be a string.
 
 				if ( $this->p->debug->enabled ) {
@@ -2867,17 +2867,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$wpsso->debug->mark();
 			}
-			
+
 			/*
 			 * Get the offer catalog names.
 			 */
 			$catalogs = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
-			
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log_arr( 'catalogs', $catalogs );
 			}
-			
+
 			if ( ! empty( $catalogs ) ) {	// Just in case.
 
 				$catalog_data = array();
@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$wpsso->debug->log( 'skipping catalog ' . $num . ': catalog name and text are empty' );
 						}
-					
+
 						continue;
 					}
 
@@ -2914,7 +2914,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						)
 					);
 				}
-				
+
 				$json_data[ $prop_name ] = self::get_schema_type_context( 'https://schema.org/OfferCatalog',
 					array(
 						'numberOfItems'   => $catalog_pos,

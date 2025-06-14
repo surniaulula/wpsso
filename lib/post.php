@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 							$this->p->notice->err( $notice_msg );
 						}
-				
+
 						$error_pre  = sprintf( '%s error:', __METHOD__ );
 
 						SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
@@ -2487,12 +2487,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Make sure the post type is not false, empty string, or array.
 				 */
 				if ( empty( $mod[ 'post_type' ] ) || ! is_string( $mod[ 'post_type' ] ) ) {
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'exiting early: invalid post type' );
 					}
-	
+
 					return $check;	// Null by default.
 				}
 

@@ -113,7 +113,8 @@ if ( ! class_exists( 'WpssoMediaFilters' ) ) {
 			 */
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$img_lib      = __( 'Media Library', 'wpsso' );
+				// translators: Please ignore - translation uses a different text domain.
+				$img_lib      = __( 'Media Library' );
 				$img_edit_url = get_edit_post_link( $pid );
 				$img_title    = get_the_title( $pid );
 				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );

@@ -1557,7 +1557,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} else {
 
-				$img_lib   = __( 'Media Library', 'wpsso' );
+				// translators: Please ignore - translation uses a different text domain.
+				$img_lib   = __( 'Media Library' );
 				$edit_url  = get_edit_post_link( $pid );
 				$img_title = get_the_title( $pid );
 				$func_name = 'wp_get_attachment_metadata()';
@@ -1707,7 +1708,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->can_make_intermediate_size( $img_meta, $size_info ) ) {
 
-							$img_lib      = __( 'Media Library', 'wpsso' );
+							// translators: Please ignore - translation uses a different text domain.
+							$img_lib      = __( 'Media Library' );
 							$func_name    = 'image_make_intermediate_size()';
 							$func_url     = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
 							$fullsizepath = get_attached_file( $pid );
@@ -3736,7 +3738,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( null === $img_lib ) {	// Default to the WordPress Media Library.
 
-				$img_lib = __( 'Media Library', 'wpsso' );
+				// translators: Please ignore - translation uses a different text domain.
+				$img_lib = __( 'Media Library' );
 			}
 
 			$img_ratio = 0;

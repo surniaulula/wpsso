@@ -835,7 +835,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 			}
 
 			if ( $product->is_on_sale() ) {
-				
+
 				$md_defs[ 'product_price_type' ]= 'https://schema.org/SalePrice';
 
 			} else $md_defs[ 'product_price_type' ] = $this->p->get_options( 'schema_def_product_price_type', 'https://schema.org/ListPrice' );
@@ -2151,7 +2151,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				 * See woocommerce/includes/shipping/flat-rate/class-wc-shipping-flat-rate.php line 75.
 				 */
 				$rate_cost = $reflect->invoke( $method_obj, $rate_cost, array( 'qty'  => 1, 'cost' => $product_price ) );
-				
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'resolved rate cost = ' . $rate_cost );
@@ -2247,7 +2247,7 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 					'shipping_rate' => $shipping_rate,
 					'delivery_time' => $delivery_time,
 				);
-		
+
 			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'invalid rate cost = ' . $rate_cost );

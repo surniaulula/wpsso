@@ -54,11 +54,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaService' ) ) {
 
 				case 'tooltip-meta-service_prov_org_id':	// Provider Org.
 				case 'tooltip-meta-service_prov_person_id':	// Provider Person.
-			
+
 					$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
 
 		 			break;
-		
+
 				case 'tooltip-meta-service_latitude':	// Service Latitude.
 
 					$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
@@ -74,13 +74,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaService' ) ) {
 					$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
 
 					break;
-				
+
 				case 'tooltip-meta-service_radius':	// Service Radius.
 
 					$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
 
 					break;
-				
+
 				case 'tooltip-meta-service_offer_catalogs':	// Offer Catalogs.
 
 					$text = __( 'A list of offer catalogs for this service, including the catalog name, description and URL.', 'wpsso' );

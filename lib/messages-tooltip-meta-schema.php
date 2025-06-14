@@ -737,7 +737,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					}	// End of 'tooltip-meta-schema_recipe' switch.
 
 					break;	// End of 'tooltip-meta-schema_recipe' case.
-				
+
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_review_' ) ? true : false ):
 
 					switch ( $msg_key ) {

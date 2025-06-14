@@ -537,8 +537,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
-					'short'       => 'WPSSO FAQ',	// Short plugin name.
-					'name'        => 'WPSSO FAQ Manager',
+					'short'       => 'WPSSO Schema FAQPage',	// Short plugin name.
+					'name'        => 'WPSSO Schema FAQPage Manager',
 					'desc'        => 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.',
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
@@ -664,7 +664,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssomrp' => array(			// Plugin acronym.
 					'short'       => 'WPSSO MRP',	// Short plugin name.
-					'name'        => 'WPSSO Merchant Return Policy Manager',
+					'name'        => 'WPSSO Schema Merchant Return Policy Manager',
 					'desc'        => 'Manage any number of Merchant Return Policies for Google Merchant listings.',
 					'slug'        => 'wpsso-merchant-return-policy',
 					'base'        => 'wpsso-merchant-return-policy/wpsso-merchant-return-policy.php',
@@ -727,7 +727,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoopm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO OPM',	// Short plugin name.
-					'name'        => 'WPSSO Organization and Place Manager',
+					'name'        => 'WPSSO Schema Organization, Place and Service Manager',
 					'desc'        => 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.',
 					'slug'        => 'wpsso-organization-place',
 					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
@@ -1290,7 +1290,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssowcsdt' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCSDT',	// Short plugin name.
-					'name'        => 'WPSSO Shipping Delivery Time for WooCommerce SEO',
+					'name'        => 'WPSSO Schema Shipping Delivery Time for WooCommerce',
 					'desc'        => 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.',
 					'slug'        => 'wpsso-wc-shipping-delivery-time',
 					'base'        => 'wpsso-wc-shipping-delivery-time/wpsso-wc-shipping-delivery-time.php',
@@ -5261,7 +5261,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 *	80 – below Settings
 			 *	100 – below second separator
 			 */
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 80;			// Position of the SSO settings menu item.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 85;			// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.

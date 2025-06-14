@@ -1995,21 +1995,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( ! empty( $mt_single[ 'product:original_price:type' ] ) &&
 					$mt_single[ 'product:original_price:type' ] != $mt_single[ 'product:price:type' ] ) {
-			
+
 					$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_single, array(
 						'priceType'             => 'product:original_price:type',
 						'price'                 => 'product:original_price:amount',
 						'priceCurrency'         => 'product:original_price:currency',
 						'valueAddedTaxIncluded' => 'product:price:vat_included',
 					) );
-			
+
 					if ( false !== $price_spec ) {
 
 						if ( empty( $price_spec[ 'priceCurrency' ] ) ) {	// Make sure we have a price currency.
 
 							$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 						}
-					
+
 						$json_ret[ 'priceSpecification' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification',
 							$price_spec );
 					}

@@ -2221,7 +2221,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
 						}
-					
+
 						unset( $filter_name, $taxonomy );
 					}
 				}
