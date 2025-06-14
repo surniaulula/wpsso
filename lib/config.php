@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '20.0.0-dev.3',	// Plugin version.
-					'opt_version' => '1023',	// Increment when changing default option values.
+					'version'     => '20.0.0-dev.4',	// Plugin version.
+					'opt_version' => '1025',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1571,21 +1571,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_article'       => 'article',
 					'schema_type_for_book'          => 'book',
 					'schema_type_for_business'      => 'local.business',
-					'schema_type_for_download'      => 'product',	// For Easy Digital Downloads.
+					'schema_type_for_download'      => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'         => 'event',
 					'schema_type_for_howto'         => 'howto',
 					'schema_type_for_job_listing'   => 'job.posting',	// For WP Job Manager.
 					'schema_type_for_jobpost'       => 'job.posting',	// For Simple Job Board.
-					'schema_type_for_organization'  => 'organization',
+					'schema_type_for_organization'  => 'organization',	// For WPSSO OPM.
 					'schema_type_for_page'          => 'article',
 					'schema_type_for_person'        => 'person',
-					'schema_type_for_place'         => 'place',
+					'schema_type_for_place'         => 'place',		// For WPSSO OPM.
 					'schema_type_for_post'          => 'blog.posting',
-					'schema_type_for_product'       => 'product',	// For WooCommerce.
+					'schema_type_for_product'       => 'product',		// For WooCommerce.
 					'schema_type_for_product_group' => 'product.group',	// For WooCommerce.
 					'schema_type_for_qa'            => 'webpage.qa',
-					'schema_type_for_question'      => 'question',	// For WPSSO FAQ.
-					'schema_type_for_review'        => 'review',	// For WP Product Review.
+					'schema_type_for_question'      => 'question',		// For WPSSO FAQ.
+					'schema_type_for_review'        => 'review',		// For WP Product Review.
+					'schema_type_for_service'       => 'service',		// For WPSSO OPM.
 					'schema_type_for_tc_events'     => 'event',		// For Tickera.
 					'schema_type_for_tribe_events'  => 'event',		// For The Events Calendar.
 					'schema_type_for_webpage'       => 'webpage',
@@ -1689,8 +1690,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Service.
 					 */
-					'schema_def_serv_prov_org_id'        => 'none',	// Default Provider Org.
-					'schema_def_serv_prov_person_id'     => 'none',	// Default Provider Person.
+					'schema_def_serv_prov_org_id'    => 'none',	// Default Service Provider Org.
+					'schema_def_serv_prov_person_id' => 'none',	// Default Service Provider Person.
 
 					/*
 					 * X (Twitter) Card options.
@@ -2483,12 +2484,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_review_item_cw_movie_actor_person_name'    => true,
 					'schema_review_item_cw_movie_director_person_name' => true,
 					'schema_sameas_url'                                => true,	// Same-As URLs.
-					'schema_serv_offer_catalog' => array(				// Offer Catalog Name.
-						'schema_serv_offer_catalog_text',			// Offer Catalog Description.
-						'schema_serv_offer_catalog_url',			// Offer Catalog URL.
-					),
 					'schema_webpage_reviewed_by_org_id'                => true,
 					'schema_webpage_reviewed_by_person_id'             => true,
+					'service_offer_catalog' => array(				// Offer Catalog Name.
+						'service_offer_catalog_text',				// Offer Catalog Description.
+						'service_offer_catalog_url',				// Offer Catalog URL.
+					),
 				),
 
 				/*
@@ -2869,7 +2870,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'menu' => array(
 				'title'     => 'SSO - Social and Search Optimization',	// Menu title.
 				'icon-font' => 'WpssoIcons',				// Icon font family.
-				'icon-code' => '\e81e',					// Icon CSS code.
+				'icon-code' => '\e838',					// Icon CSS code, .icon-orange-6.
 				'dashicons' => array(
 					'add-person'    => 'admin-users',
 					'addons'        => 'admin-plugins',
@@ -3360,6 +3361,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_location_id' => 'Default Event Venue',
 					'schema_def_job_location_id'   => 'Default Job Location',
 				),
+				'service_is_defaults' => array(
+				),
 
 				/*
 				 * GeoShape type.
@@ -3419,6 +3422,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/GraphicNovel'    => 'Graphic Novel',
 					'https://schema.org/Hardcover'       => 'Hardcover',
 					'https://schema.org/Paperback'       => 'Paperback',
+				),
+
+				/*
+				 * Validated on 2025/06/13.
+				 *
+				 * See https://schema.org/ContactPointOption.
+				 */
+				'contact_point_option' => array(
+					'none'                                        => '[None]',
+					'https://schema.org/HearingImpairedSupported' => 'Hearing Impaired',
+					'https://schema.org/TollFree'                 => 'Toll Free',
 				),
 
 				/*
@@ -3820,6 +3834,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product'              => 'product',	// Allows for product offer options.
 					'question'             => 'article',
 					'review'               => 'article',
+					'service'              => 'article',
 					'software.application' => 'product',	// Allows for product offer options.
 					'webpage.profile'      => 'profile',
 					'website'              => 'website',

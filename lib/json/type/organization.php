@@ -42,6 +42,9 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 
 			$org_id = 'none';
 
+			/*
+			 * Maybe get an organization ID from the "Select an Organization" option.
+			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
@@ -49,15 +52,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 					$this->p->debug->log( 'checking for schema_organization_id metadata option value' );
 				}
 
-				/*
-				 * Maybe get a different organization ID from the "Select an Organization" option.
-				 */
 				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $merge_defs = true );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema_organization_id = ' . $org_id );
-				}
 			}
 
 			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
@@ -93,7 +88,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/*
-			 * $org_id can be 'none', 'site', or a number (including 0).
+			 * $org_id can be 'site' or a number (including 0).
 			 *
 		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
 			 *

@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_serv_radius':
+				case 'tooltip-meta-place_service_radius':
 
 					$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
 
@@ -223,8 +223,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 					$text = apply_filters( 'wpsso_messages_tooltip_meta_place', $text, $msg_key, $info );
 
 					break;
-
-			}	// End of 'tooltip-meta-place' switch.
+			}
 
 			return $text;
 		}

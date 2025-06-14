@@ -40,61 +40,52 @@ if ( ! class_exists( 'WpssoJsonTypeService' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$json_ret = array();
-			$md_opts  = array();
-
-			WpssoSchema::add_type_opts_md_pad( $md_opts, $mod );
+			$service_id = 'none';
 
 			/*
-			 * See https://schema.org/provider.
+			 * Maybe get a service ID from the "Select a Service" option.
 			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-				/*
-				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
-				 * value to a property array.
-				 */
-				foreach ( array(
-					'schema_serv_prov_org_id'    => 'provider',	// Provider Org.
-					'schema_serv_prov_person_id' => 'provider',	// Provider Person.
-				) as $md_key => $prop_name ) {
+				if ( $this->p->debug->enabled ) {
 
-					$md_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key, $filter_opts = true, $merge_defs = true );
+					$this->p->debug->log( 'checking for schema_service_id metadata option value' );
+				}
 
-					if ( WpssoSchema::is_valid_val( $md_val ) ) {	// Not null, an empty string, or 'none'.
+				$service_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_service_id', $filter_opts = true, $merge_defs = true );
+			}
 
-						if ( strpos( $md_key, '_org_id' ) ) {
+			if ( null === $service_id || 'none' === $service_id ) {	// Allow for $service_id = 0.
 
-							$org_logo_key = 'org_logo_url';
+				if ( $this->p->debug->enabled ) {
 
-							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $md_val, $org_logo_key, $list_el = true );
+					$this->p->debug->log( 'exiting early: service id is null or "none"' );
+				}
 
-						} elseif ( strpos( $md_key, '_person_id' ) ) {
+				return $json_data;
+			}
 
-							WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $md_val, $list_el = true );
-						}
-					}
+			/*
+			 * Possibly inherit the schema type.
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				if ( ! empty( $json_data ) ) {
+
+					$this->p->debug->log( 'possibly inherit the schema type' );
+
+					$this->p->debug->log_arr( 'json_data', $json_data );
 				}
 			}
 
-			/*
-			 * See https://schema.org/areaServed as https://schema.org/GeoShape.
-			 */
-			if ( ! empty( $md_opts[ 'schema_serv_latitude' ] ) &&
-				! empty( $md_opts[ 'schema_serv_longitude' ] ) &&
-					! empty( $md_opts[ 'schema_serv_radius' ] ) ) {
+			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
-				$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
-					'circle' => $md_opts[ 'schema_serv_latitude' ] . ' ' .
-						$md_opts[ 'schema_serv_longitude' ] . ' ' .
-						$md_opts[ 'schema_serv_radius' ]
-				) );
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding data for service id = ' . $service_id );
 			}
 
-			/*
-			 * See https://schema.org/hasOfferCatalog.
-			 */
-			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $md_opts, $opt_pre = 'schema_serv_offer_catalog', $prop_name = 'hasOfferCatalog' );
+			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id, $list_el = false );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

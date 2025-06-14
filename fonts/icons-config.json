@@ -363,7 +363,7 @@
     {
       "uid": "8e9c35f3be6c38b06d6f9a1c91b790fc",
       "css": "robot-4",
-      "code": 59419,
+      "code": 59422,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -377,7 +377,7 @@
     {
       "uid": "6d643cbad8c51fcc5b1a0c23c3fbde88",
       "css": "orange-5",
-      "code": 59421,
+      "code": 59430,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -391,7 +391,7 @@
     {
       "uid": "b20d6d560f31834f4e803b6068720a10",
       "css": "orange-6",
-      "code": 59422,
+      "code": 59448,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -513,7 +513,7 @@
     {
       "uid": "d07722fcb20002869d11ee6f950f5477",
       "css": "dashicons-shield",
-      "code": 59410,
+      "code": 59449,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -528,7 +528,7 @@
     {
       "uid": "e77e1f6078596f51e1ddfa6918495d29",
       "css": "dashicons-sos",
-      "code": 59411,
+      "code": 59450,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -543,7 +543,7 @@
     {
       "uid": "ece12e6bf2554ef5157fb2710849fbc1",
       "css": "dashicons-shield-alt",
-      "code": 59430,
+      "code": 59451,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -582,7 +582,7 @@
     {
       "uid": "33e35ba51d164149feecba083708882e",
       "css": "robot-5",
-      "code": 59420,
+      "code": 59452,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -807,6 +807,18 @@
       "uid": "a14be0c7e0689076e2bdde97f8e309f9",
       "css": "plug",
       "code": 61926,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e36d581e4f2844db345bddc205d15dda",
+      "css": "group",
+      "code": 59420,
+      "src": "elusive"
+    },
+    {
+      "uid": "297fe6c2ef08198b03d706ba52f51b7f",
+      "css": "flight",
+      "code": 59421,
       "src": "fontawesome"
     },
     {

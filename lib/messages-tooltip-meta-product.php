@@ -88,8 +88,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 					$text = apply_filters( 'wpsso_messages_tooltip_meta_product', $text, $msg_key, $info );
 
 					break;
-
-			}	// End of 'tooltip-meta-schema' switch.
+			}
 
 			return $text;
 		}

@@ -36,6 +36,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				'tooltip-meta-place_'   => 'place',
 				'tooltip-meta-product_' => 'product',
 				'tooltip-meta-schema_'  => 'schema',
+				'tooltip-meta-service_' => 'service',
 			) as $msg_key_prefix => $class_suffix ) {
 
 				if ( 0 === strpos( $msg_key, $msg_key_prefix ) ) {

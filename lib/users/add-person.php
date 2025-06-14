@@ -335,26 +335,22 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $user->user_login ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$errors->add( 'user_login', __( '<strong>Error</strong>: Please enter a username.' ),
-					array( 'form-field' => 'user_login' ) );
+				$errors->add( 'user_login', __( '<strong>Error</strong>: Please enter a username.' ), array( 'form-field' => 'user_login' ) );
 
 			} elseif ( isset( $_POST[ 'user_login' ] ) && ! validate_username( $_POST[ 'user_login' ] ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.' ),
-					array( 'form-field' => 'user_login' ) );
+				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.' ), array( 'form-field' => 'user_login' ) );
 
 			} elseif ( username_exists( $user->user_login ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is already registered. Please choose another one.' ),
-					array( 'form-field' => 'user_login' ) );
+				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is already registered. Please choose another one.' ), array( 'form-field' => 'user_login' ) );
 
 			} elseif ( in_array( strtolower( $user->user_login ), array_map( 'strtolower', $illegal_logins ), $strict = true ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$errors->add( 'invalid_username', __( '<strong>Error</strong>: Sorry, that username is not allowed.' ),
-					array( 'form-field' => 'user_login' ) );
+				$errors->add( 'invalid_username', __( '<strong>Error</strong>: Sorry, that username is not allowed.' ), array( 'form-field' => 'user_login' ) );
 			}
 
 			/*

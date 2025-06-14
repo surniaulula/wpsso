@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'adding return policy data for mrp ID "' . $mrp_id . '"' );
+				$wpsso->debug->log( 'adding return policy data for mrp id "' . $mrp_id . '"' );
 			}
 
 			/*
@@ -1029,7 +1029,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'adding organization data for org ID "' . $org_id . '"' );
+				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
 			}
 
 			$org_opts = false;
@@ -1064,7 +1064,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: unknown org ID "' . $org_id . '"' );
+					$wpsso->debug->log( 'exiting early: unknown org id "' . $org_id . '"' );
 				}
 
 				return 0;	// Return count of organizations added.
@@ -1213,7 +1213,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
 
 				// translators: %1$s is the organization name, %2$s is 'site' (translated) or organization ID.
-				$org_settings_msg = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
+				$org_settings_msg = __( 'Enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
 				if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
 
@@ -1354,7 +1354,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'adding place data for org ID "' . $org_id . '"' );
+					$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
 				}
 
 				self::add_place_data( $json_ret, $mod, $org_id, $place_list_el = 'merge' );
@@ -1416,7 +1416,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'exiting early: no person_id' );
+						$wpsso->debug->log( 'exiting early: no person id' );
 					}
 
 					return 0;	// Return count of persons added.
@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'adding place data for place ID "' . $place_id . '"' );
+				$wpsso->debug->log( 'adding place data for place id "' . $place_id . '"' );
 			}
 
 			/*
@@ -1730,12 +1730,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $place_opts[ 'place_latitude' ] ) &&
 						! empty( $place_opts[ 'place_longitude' ] ) &&
-							! empty( $place_opts[ 'place_serv_radius' ] ) ) {
+							! empty( $place_opts[ 'place_service_radius' ] ) ) {
 
 						$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
 							'circle' => $place_opts[ 'place_latitude' ] . ' ' .
 								$place_opts[ 'place_longitude' ] . ' ' .
-								$place_opts[ 'place_serv_radius' ]
+								$place_opts[ 'place_service_radius' ]
 						) );
 					}
 
@@ -2115,7 +2115,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
-			return 1;	// Return count of products added.
+			return 1;	// Return count of product offers added.
 		}
 
 		/*
@@ -2268,7 +2268,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
-			return 1;	// Return count of products added.
+			return 1;	// Return count of product groups added.
 		}
 
 		/*
@@ -2543,6 +2543,169 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
 
 			return 1;	// Return count of products added.
+		}
+
+		public static function add_service_data( &$json_data, array $mod, $service_id, $list_el = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			/*
+			 * Check that the option value is not true, false, null, empty string, or 'none'.
+			 */
+			if ( ! SucomUtil::is_valid_option_value( $service_id ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: service id is "' . $service_id . '"' );
+				}
+
+				return 0;	// Return count of places added.
+			}
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding service data for service id "' . $service_id . '"' );
+			}
+
+			/*
+			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
+			 */
+			$service_opts = apply_filters( 'wpsso_get_service_options', false, $mod, $service_id );
+
+			if ( ! empty( $service_opts ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_service_options', $service_opts );
+				}
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: no service options' );
+				}
+
+				return 0;	// Return count of services added.
+			}
+
+			/*
+			 * If not adding a list element, get the existing schema type url (if one exists).
+			 */
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $service_opts, $opt_key = 'service_schema_type', $def_type_id = 'service', $list_el );
+
+			/*
+			 * Begin schema service markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Set reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
+
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema service', 'wpsso' ) );
+			}
+
+			/*
+			 * Add schema properties from the service options.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $service_opts, array(
+				'url'           => 'service_url',
+				'name'          => 'service_name',
+				'alternateName' => 'service_name_alt',
+				'description'   => 'service_desc',
+			) );
+
+			/*
+			 * Add place, organization, and person data.
+			 *
+			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
+			 */
+			foreach ( array(
+				'service_prov_org_id'    => 'provider',	// Provider Org.
+				'service_prov_person_id' => 'provider',	// Provider Person.
+			) as $opt_pre => $prop_name ) {
+
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $service_opts ) as $opt_key => $id ) {
+
+					/*
+					 * Check that the option value is not true, false, null, empty string, or 'none'.
+					 */
+					if ( ! SucomUtil::is_valid_option_value( $id ) ) {
+
+						continue;
+
+					} elseif ( strpos( $opt_pre, '_org_id' ) ) {
+
+						$org_logo_key = 'org_logo_url';
+
+						WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id, $org_logo_key, $org_list_el = true );
+
+					} elseif ( strpos( $opt_pre, '_person_id' ) ) {
+
+						WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $person_list_el = true );
+					}
+				}
+			}
+
+			/*
+			 * See https://schema.org/areaServed as https://schema.org/GeoShape.
+			 */
+			if ( ! empty( $service_opts[ 'service_latitude' ] ) &&
+				! empty( $service_opts[ 'service_longitude' ] ) &&
+					! empty( $service_opts[ 'service_radius' ] ) ) {
+
+				$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
+					'circle' => $service_opts[ 'service_latitude' ] . ' ' .
+						$service_opts[ 'service_longitude' ] . ' ' .
+						$service_opts[ 'service_radius' ]
+				) );
+			}
+
+			/*
+			 * See https://schema.org/hasOfferCatalog.
+			 */
+			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $service_opts, $opt_pre = 'service_offer_catalog', $prop_name = 'hasOfferCatalog' );
+
+			/*
+			 * Filter the single service data.
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_json_data_single_service"' );
+			}
+
+			$json_ret = apply_filters( 'wpsso_json_data_single_service', $json_ret, $mod, $service_id );
+
+			/*
+			 * Restore previous reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$wpsso->util->maybe_unset_ref( $canonical_url );
+			}
+
+			/*
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $service_id values.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $service_id ) );
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
+
+			return 1;	// Return count of services added.
 		}
 
 		/*

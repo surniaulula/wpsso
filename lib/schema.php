@@ -2859,9 +2859,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
-		 * See WpssoJsonTypeService->filter_json_data_https_schema_org_service().
-		 */
 		public static function add_offer_catalogs_data( &$json_data, $mod, $md_opts, $opt_pre = 'schema_offer_catalog', $prop_name = 'hasOfferCatalog' ) {
 
 			$wpsso =& Wpsso::get_instance();

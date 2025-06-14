@@ -207,7 +207,7 @@ body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .ca
  * WPSSO notices and qTip.
  */
 #wpadminbar #wp-toolbar #wpsso-toolbar-notices-icon.ab-icon::before {
-	content:"\e81d";
+	content:"\e826";	/* .icon-orange-5 */
 	font-family:"WpssoIcons";
 }
 

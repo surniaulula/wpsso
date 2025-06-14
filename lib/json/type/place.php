@@ -141,11 +141,7 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			 */
 			if ( $read_mt_place ) {
 
-				$replace = array(
-					'/^place:opening_hours:/' => 'place_',
-					'/:/'                     => '_',
-				);
-
+				$replace    = array( '/^place:opening_hours:/' => 'place_', '/:/' => '_' );
 				$place_opts = SucomUtil::preg_grep_keys( '/^place:opening_hours:/', $mt_og, $invert = false, $replace );
 
 				if ( ! empty( $place_opts ) ) {

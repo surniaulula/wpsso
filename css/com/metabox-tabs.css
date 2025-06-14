@@ -449,7 +449,7 @@ h3.sucom-metabox-tab_title {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_service::before {		/* SSO > Advanced Settings > Schema Defaults > Service tab. */
-	content:"\f2b5";	/* .icon-handshake-o */
+	content:"\e813";	/* .icon-thumbs-up */
 }
 
 .sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */

@@ -1237,14 +1237,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form_rows = array(
 				'schema_def_serv_prov_org_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Provider Org.', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Service Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_serv_prov_org_id',
 					'content'  => $form->get_no_select( 'schema_def_serv_prov_org_id', $args[ 'select_names' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_serv_prov_person_id' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Provider Person', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Service Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_serv_prov_person_id',
 					'content'  => $form->get_no_select( 'schema_def_serv_prov_person_id', $args[ 'select_names' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),

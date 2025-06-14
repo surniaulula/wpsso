@@ -134,8 +134,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 					$text = apply_filters( 'wpsso_messages_tooltip_meta_og', $text, $msg_key, $info );
 
 					break;
-
-			}	// End of 'tooltip-meta-og' switch.
+			}
 
 			return $text;
 		}

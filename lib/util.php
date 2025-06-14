@@ -1253,6 +1253,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'org_types' ] );
 
+						/*
+						 * Remove Schema types that are also places.
+						 */
 						if ( 'strict_org_types_select' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'place_types_select' ) as $key => $val ) {
@@ -1284,6 +1287,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'place_types' ] );
 
+						/*
+						 * Remove Schema types that are also organizations.
+						 */
 						if ( 'strict_place_types_select' === $filter_key ) {
 
 							foreach ( $this->get_form_cache( 'org_types_select' ) as $key => $val ) {
@@ -1303,6 +1309,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					case 'schema_types_select':
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select();
+
+						break;
+
+					case 'service_types':	// Returns a multi-dimentional array.
+
+						$this->get_form_cache( 'schema_types' );
+
+						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'intangible' ][ 'service' ];
+
+						break;
+
+
+					case 'service_types_select':
+
+						$this->get_form_cache( 'service_types' );
+
+						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'service_types' ] );
 
 						break;
 

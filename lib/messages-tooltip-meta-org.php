@@ -30,13 +30,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 
 				case 'tooltip-meta-org_name':	// Organization Name.
 
-					$text = __( 'The complete or common name for this organization.', 'wpsso' );
+					$text = __( 'A name for this organization (required).', 'wpsso' );
 
 					break;
 
 				case 'tooltip-meta-org_name_alt':	// Organization Alternate Name.
 
-					$text = __( 'An alternate name for this organization that you would like Google to consider.', 'wpsso' );
+					$text = __( 'An alternate name for this organization.', 'wpsso' );
 
 					break;
 
@@ -166,8 +166,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOrg' ) ) {
 					$text = apply_filters( 'wpsso_messages_tooltip_meta_org', $text, $msg_key, $info );
 
 					break;
-
-			}	// End of 'tooltip-meta-org' switch.
+			}
 
 			return $text;
 		}

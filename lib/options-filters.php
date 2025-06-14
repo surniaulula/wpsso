@@ -300,8 +300,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_software_app_os':
 					case 'schema_software_app_cat':
 					case 'schema_software_app_os':
-					case 'schema_serv_offer_catalog':		// Offer Catalog Name.
-					case 'schema_serv_offer_catalog_text':		// Offer Catalog Description.
 
 						return 'one_line';
 
@@ -342,8 +340,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_prov_org_id':			// Default Provider Org.
 					case 'schema_def_prov_person_id':		// Default Provider Person.
-					case 'schema_def_serv_prov_org_id':		// Default Provider Org.
-					case 'schema_def_serv_prov_person_id':		// Default Provider Person.
+					case 'schema_def_serv_prov_org_id':		// Default Service Provider Org.
+					case 'schema_def_serv_prov_person_id':		// Default Service Provider Person.
 					case 'schema_def_fund_org_id':			// Default Funder Org.
 					case 'schema_def_fund_person_id':		// Default Funder Person.
 					case 'schema_def_review_item_type':		// Default Subject Schema Type.
@@ -372,8 +370,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_pub_person_id':			// Publisher Person.
 					case 'schema_prov_org_id':			// Provider Org.
 					case 'schema_prov_person_id':			// Provider Person.
-					case 'schema_serv_prov_org_id':			// Provider Org.
-					case 'schema_serv_prov_person_id':		// Provider Person.
 					case 'schema_fund_org_id':			// Funder Org.
 					case 'schema_fund_person_id':			// Funder Person.
 					case 'schema_review_item_type':			// Review: Subject Schema Type.
@@ -396,7 +392,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_cw_author_url':	// Review: Subject Author URL.
 					case 'schema_review_claim_first_url':		// First Appearance URL.
 					case 'schema_sameas_url':			// Same-As URLs.
-					case 'schema_serv_offer_catalog_url':		// Offer Catalog URL.
 
 						return 'url';
 				}

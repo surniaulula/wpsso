@@ -240,8 +240,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_def_prov_org_id':			// Default Provider Org.
 				case 'tooltip-schema_def_prov_person_id':		// Default Provider Person.
-				case 'tooltip-schema_def_serv_prov_org_id':		// Default Provider Org.
-				case 'tooltip-schema_def_serv_prov_person_id':		// Default Provider Person.
+				case 'tooltip-schema_def_serv_prov_org_id':		// Default Service Provider Org.
+				case 'tooltip-schema_def_serv_prov_person_id':		// Default Service Provider Person.
 
 
 					$text = __( 'Select a default service provider, service operator, or service performer.', 'wpsso' );
