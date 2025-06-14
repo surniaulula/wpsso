@@ -277,28 +277,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.0.0-dev.3 (2025/06/13)**
+**Version 20.0.0-dev.4 (2025/06/14)**
 
 * **New Features**
-	* Added 'areaServed', 'hasOfferCatalog', and 'provider' properties for the Schema Service and Organization types.
+	* Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
+	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Service tab.
 * **Improvements**
-	* Added options in the Document SSO metabox for the Schema Service type:
-		* Provider Org.
-		* Provider Person
-		* Service Latitude
-		* Service Longitude
-		* Service Radius
-		* Offer Catalogs
-			* Catalog Name
-			* Catalog Description
-			* Catalog URL
-	* Added a Service tab in the SSO &gt; Advanced Settings &gt; Schema Defaults metabox:
-		* Default Provider Org.
-		* Default Provider Person
+	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoMessagesTooltipMetaService` class.
+	* Added a new `WpssoSchema::add_offer_catalogs_data()` method.
+	* Added a new `WpssoSchemaSingle::add_service_data()` method.
+	* Added a new `WpssoEditSchema->filter_mb_sso_edit_schema_service_rows()` method.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -492,9 +484,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.0.0-dev.3 =
+= 20.0.0-dev.4 =
 
-(2025/06/13) Added 'areaServed', 'hasOfferCatalog', and 'provider' properties for the Schema Service type.
+(2025/06/14) Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
 
 = 19.0.0 =
 
