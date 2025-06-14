@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.0.0-dev.4 (2025/06/14)**
+**Version 20.0.0-dev.5 (2025/06/14)**
 
 * **New Features**
 	* Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
@@ -484,7 +484,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.0.0-dev.4 =
+= 20.0.0-dev.5 =
 
 (2025/06/14) Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
 
