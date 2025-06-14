@@ -537,8 +537,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
-					'short'       => 'WPSSO Schema FAQPage',	// Short plugin name.
-					'name'        => 'WPSSO Schema FAQPage Manager',
+					'short'       => 'WPSSO FAQ',	// Short plugin name.
+					'name'        => 'WPSSO Schema FAQ Page Manager',
 					'desc'        => 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.',
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
@@ -665,7 +665,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssomrp' => array(			// Plugin acronym.
 					'short'       => 'WPSSO MRP',	// Short plugin name.
 					'name'        => 'WPSSO Schema Merchant Return Policy Manager',
-					'desc'        => 'Manage any number of Merchant Return Policies for Google Merchant listings.',
+					'desc'        => 'Manage Merchant Return Policies for Google Merchant listings and Schema markup.',
 					'slug'        => 'wpsso-merchant-return-policy',
 					'base'        => 'wpsso-merchant-return-policy/wpsso-merchant-return-policy.php',
 					'update_auth' => '',		// No premium version.
@@ -728,7 +728,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoopm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO OPM',	// Short plugin name.
 					'name'        => 'WPSSO Schema Organization, Place and Service Manager',
-					'desc'        => 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.',
+					'desc'        => 'Manage Organizations, Places, Local Businesses, and Services for Google, Facebook, Pinterest, and Schema markup.',
 					'slug'        => 'wpsso-organization-place',
 					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
 					'update_auth' => '',		// No premium version.

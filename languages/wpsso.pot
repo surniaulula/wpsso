@@ -3789,7 +3789,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:139
 msgctxt "plugin name"
-msgid "WPSSO Schema FAQPage Manager"
+msgid "WPSSO Schema FAQ Page Manager"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:140
@@ -3819,7 +3819,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:144
 msgctxt "plugin description"
 msgid ""
-"Manage any number of Merchant Return Policies for Google Merchant listings."
+"Manage Merchant Return Policies for Google Merchant listings and Schema "
+"markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:145
@@ -3830,8 +3831,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:146
 msgctxt "plugin description"
 msgid ""
-"Manage Organizations (publisher, organizer, etc.) and Places for Facebook, "
-"Pinterest, and Google local business markup."
+"Manage Organizations, Places, Local Businesses, and Services for Google, "
+"Facebook, Pinterest, and Schema markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:147

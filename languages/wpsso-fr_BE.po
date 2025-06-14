@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 20.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-06-13 23:21-0700\n"
+"PO-Revision-Date: 2025-06-14 07:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3513,8 +3513,8 @@ msgstr "Flux XML de catalogue Gestionnaire des ventes Facebook et Instagram pour
 
 #: gettext/gettext-lib-config.php:139
 msgctxt "plugin name"
-msgid "WPSSO FAQ Manager"
-msgstr "WPSSO Gestionnaire de FAQ"
+msgid "WPSSO Schema FAQ Page Manager"
+msgstr "WPSSO Gestionnaire de Schéma FAQ Page"
 
 #: gettext/gettext-lib-config.php:140
 msgctxt "plugin description"
@@ -3533,23 +3533,23 @@ msgstr "Flux de produit et d'inventaire XML de marchands Google pour WooCommerce
 
 #: gettext/gettext-lib-config.php:143
 msgctxt "plugin name"
-msgid "WPSSO Merchant Return Policy Manager"
-msgstr "WPSSO Gestionnaire politique de retour de marchand"
+msgid "WPSSO Schema Merchant Return Policy Manager"
+msgstr "WPSSO Gestionnaire de Schéma Merchant Return Policy"
 
 #: gettext/gettext-lib-config.php:144
 msgctxt "plugin description"
-msgid "Manage any number of Merchant Return Policies for Google Merchant listings."
-msgstr "Gérez n'importe quel nombre de politiques de retour de marchand pour les listes de marchands Google."
+msgid "Manage Merchant Return Policies for Google Merchant listings and Schema markup."
+msgstr "Gérez les politiques de retour de marchand pour les listes de marchands Google et le balisage de Schéma."
 
 #: gettext/gettext-lib-config.php:145
 msgctxt "plugin name"
-msgid "WPSSO Organization and Place Manager"
-msgstr "WPSSO Gestionnaire d'organisation et d'endroit"
+msgid "WPSSO Schema Organization, Place and Service Manager"
+msgstr "WPSSO Gestionnaire de Schéma Organization, Place et Service"
 
 #: gettext/gettext-lib-config.php:146
 msgctxt "plugin description"
-msgid "Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup."
-msgstr "Gérez les organisations (éditeur, organisateur, etc.) et les endroits pour le balisage d'entreprises locales Facebook, Pinterest et Google."
+msgid "Manage Organizations, Places, Local Businesses, and Services for Google, Facebook, Pinterest, and Schema markup."
+msgstr "Gérez les organisations, endroits, entreprises locales, et services pour Google, Facebook, Pinterest, et le balisage de Schéma."
 
 #: gettext/gettext-lib-config.php:147
 msgctxt "plugin name"
@@ -3613,8 +3613,8 @@ msgstr "Sélecteur de locale / langue / région rapide et facile pour la barre d
 
 #: gettext/gettext-lib-config.php:159
 msgctxt "plugin name"
-msgid "WPSSO Product Metadata for WooCommerce SEO"
-msgstr "WPSSO Métadonnées de produit pour le SEO WooCommerce"
+msgid "WPSSO Product Metadata for WooCommerce"
+msgstr "WPSSO métadonnées de produit pour WooCommerce"
 
 #: gettext/gettext-lib-config.php:160
 msgctxt "plugin description"
@@ -3623,8 +3623,8 @@ msgstr "MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, dimensions nettes et volume 
 
 #: gettext/gettext-lib-config.php:161
 msgctxt "plugin name"
-msgid "WPSSO Shipping Delivery Time for WooCommerce SEO"
-msgstr "WPSSO Délai de livraison d'expédition pour le SEO WooCommerce"
+msgid "WPSSO Schema Shipping Delivery Time for WooCommerce"
+msgstr "WPSSO Schéma Shipping Delivery Time pour WooCommerce"
 
 #: gettext/gettext-lib-config.php:162
 msgctxt "plugin description"
