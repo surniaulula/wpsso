@@ -26,7 +26,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <p><strong>The most comprehensive and accurate Schema markup plugin for WooCommerce products.</strong></p>
 
-<p>Supports over 500 different Schema types and sub-types (including Schema Event and ProductGroup types for WooCommerce products).</p>
+<p>Supports over 500 different Schema types and sub-types (including Schema Event, Product Group, and Service types for WooCommerce products).</p>
 
 <p><strong>Provides complete Schema markup and meta tags for:</strong></p>
 
@@ -277,11 +277,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.0.0-dev.5 (2025/06/14)**
+**Version 20.0.0-dev.6 (2025/06/14)**
 
 * **New Features**
-	* Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
 	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Service tab.
+	* Added a new Document SSO &gt; Edit Schema &gt; Service Information section:
+		* Provider Org.
+		* Provider Person
+		* Service Latitude
+		* Service Longitude
+		* Service Radius
+		* Service Offers Start
+		* Service Offers End
+		* Service Offers (Name, Price, Currency, Availability)
+		* Offer Catalogs
+			* Offer Catalog Name
+			* Offer Catalog Description
+			* Offer Catalog URL
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -484,9 +496,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.0.0-dev.5 =
+= 20.0.0-dev.6 =
 
-(2025/06/14) Added a new Document SSO &gt; Edit Schema &gt; Service Information &gt; Select a Service option.
+(2025/06/14) Added a new Document SSO &gt; Edit Schema &gt; Service Information section.
 
 = 19.0.0 =
 
