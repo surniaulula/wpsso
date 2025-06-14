@@ -3906,7 +3906,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:159
 msgctxt "plugin name"
-msgid "WPSSO Product Metadata for WooCommerce SEO"
+msgid "WPSSO Product Metadata for WooCommerce"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:160
