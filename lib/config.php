@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '20.0.0-dev.5',	// Plugin version.
-					'opt_version' => '1025',	// Increment when changing default option values.
+					'version'     => '20.0.0-dev.6',	// Plugin version.
+					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -727,8 +727,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoopm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO OPM',	// Short plugin name.
-					'name'        => 'WPSSO Schema Organization, Place and Service Manager',
-					'desc'        => 'Manage Organizations, Places, Local Businesses, and Services for Google, Facebook, Pinterest, and Schema markup.',
+					'name'        => 'WPSSO Schema Organization and Place Manager',
+					'desc'        => 'Manage Organizations and Places (Local Businesses, Venues, etc.) for Google, Facebook, Pinterest, and Schema markup.',
 					'slug'        => 'wpsso-organization-place',
 					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
 					'update_auth' => '',		// No premium version.
@@ -1690,8 +1690,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Schema Defaults > Service.
 					 */
-					'schema_def_serv_prov_org_id'    => 'none',	// Default Service Provider Org.
-					'schema_def_serv_prov_person_id' => 'none',	// Default Service Provider Person.
+					'schema_def_service_prov_org_id'    => 'none',	// Default Service Provider Org.
+					'schema_def_service_prov_person_id' => 'none',	// Default Service Provider Person.
 
 					/*
 					 * X (Twitter) Card options.
@@ -2484,12 +2484,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_review_item_cw_movie_actor_person_name'    => true,
 					'schema_review_item_cw_movie_director_person_name' => true,
 					'schema_sameas_url'                                => true,	// Same-As URLs.
+					'schema_service_offer_catalog' => array(			// Offer Catalog Name.
+						'schema_service_offer_catalog_text',			// Offer Catalog Description.
+						'schema_service_offer_catalog_url',			// Offer Catalog URL.
+					),
 					'schema_webpage_reviewed_by_org_id'                => true,
 					'schema_webpage_reviewed_by_person_id'             => true,
-					'service_offer_catalog' => array(				// Offer Catalog Name.
-						'service_offer_catalog_text',				// Offer Catalog Description.
-						'service_offer_catalog_url',				// Offer Catalog URL.
-					),
 				),
 
 				/*
@@ -3355,7 +3355,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_organizer_org_id' => 'Default Event Organizer Organization',
 					'schema_def_event_fund_org_id'      => 'Default Event Funder Organization',
 					'schema_def_job_hiring_org_id'      => 'Default Job Hiring Organization',
-					'schema_def_serv_prov_org_id'       => 'Default Service Provider Organization',
+					'schema_def_service_prov_org_id'    => 'Default Service Provider Organization',
 				),
 				'place_is_defaults' => array(
 					'schema_def_event_location_id' => 'Default Event Venue',
@@ -4471,8 +4471,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							 * A service provided by an organization, e.g. delivery service, print services, etc.
 							 */
 							'service' => array(
-								'service'                    => 'https://schema.org/Service',
-								'service.broadcast'          => 'https://schema.org/BroadcastService',
+								'service'           => 'https://schema.org/Service',
+								'service.broadcast' => array(
+									'service.broadcast'       => 'https://schema.org/BroadcastService',
+									'service.broadcast.radio' => 'https://schema.org/RadioBroadcastService',
+								),
 								'service.cable.or.satellite' => 'https://schema.org/CableOrSatelliteService',
 								'service.financial.product'  => array(
 									'bank.account' => array(
@@ -4498,10 +4501,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'service.food'       => 'https://schema.org/FoodService',
 								'service.government' => 'https://schema.org/GovernmentService',
 								'service.taxi'       => 'https://schema.org/TaxiService',
+								'service.webapi'     => 'https://schema.org/WebAPI',
 							),
-							'service.channel'  => 'https://schema.org/ServiceChannel',
-							'ticket'           => 'https://schema.org/Ticket',
-							'trip'             => array(
+							'service.channel' => 'https://schema.org/ServiceChannel',
+							'ticket'          => 'https://schema.org/Ticket',
+							'trip'            => array(
 								'trip'         => 'https://schema.org/Trip',
 								'trip.bus'     => 'https://schema.org/BusTrip',
 								'trip.flight'  => 'https://schema.org/Flight',

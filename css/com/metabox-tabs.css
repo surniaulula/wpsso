@@ -401,7 +401,7 @@ h3.sucom-metabox-tab_title {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_validators::before {		/* Document SSO > Validators tab. */
-	content:"\e81b";	/* .icon-robot-4 */
+	content:"\e81e";	/* .icon-robot-4 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_videos::before {			/* SSO > General Settings > General Settings > Videos tab. */

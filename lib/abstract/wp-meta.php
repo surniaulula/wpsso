@@ -896,7 +896,20 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/*
 					 * Schema Service.
 					 */
-					'schema_service_id' => 'none',	// Service.
+					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Org.
+					'schema_service_prov_person_id'       => $opts[ 'schema_def_service_prov_person_id' ],	// Provider Person.
+					'schema_service_latitude'             => '',						// Service Latitude.
+					'schema_service_longitude'            => '',						// Service Longitude.
+					'schema_service_radius'               => '',						// Service Radius.
+					'schema_service_offer_catalog_0'      => '',						// Offer Catalog Name.
+					'schema_service_offer_catalog_1'      => '',						// Offer Catalog Name.
+					'schema_service_offer_catalog_2'      => '',						// Offer Catalog Name.
+					'schema_service_offer_catalog_text_0' => '',						// Offer Catalog Description.
+					'schema_service_offer_catalog_text_1' => '',						// Offer Catalog Description.
+					'schema_service_offer_catalog_text_2' => '',						// Offer Catalog Description.
+					'schema_service_offer_catalog_url_0'  => '',						// Offer Catalog URL.
+					'schema_service_offer_catalog_url_1'  => '',						// Offer Catalog URL.
+					'schema_service_offer_catalog_url_2'  => '',						// Offer Catalog URL.
 
 					/*
 					 * Schema Software Application.

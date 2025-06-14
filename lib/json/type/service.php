@@ -40,52 +40,15 @@ if ( ! class_exists( 'WpssoJsonTypeService' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$service_id = 'none';
+			$json_ret = array();
+
+			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id = false, $list_el = false );
 
 			/*
-			 * Maybe get a service ID from the "Select a Service" option.
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking for schema_service_id metadata option value' );
-				}
-
-				$service_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_service_id', $filter_opts = true, $merge_defs = true );
-			}
-
-			if ( null === $service_id || 'none' === $service_id ) {	// Allow for $service_id = 0.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: service id is null or "none"' );
-				}
-
-				return $json_data;
-			}
-
-			/*
-			 * Possibly inherit the schema type.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				if ( ! empty( $json_data ) ) {
-
-					$this->p->debug->log( 'possibly inherit the schema type' );
-
-					$this->p->debug->log_arr( 'json_data', $json_data );
-				}
-			}
-
-			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding data for service id = ' . $service_id );
-			}
-
-			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id, $list_el = false );
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

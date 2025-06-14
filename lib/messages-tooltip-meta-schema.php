@@ -939,6 +939,67 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;	// End of 'tooltip-meta-schema_review' case.
 
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_service_' ) ? true : false ):
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-meta-schema_service_prov_org_id':		// Provider Org.
+						case 'tooltip-meta-schema_service_prov_person_id':	// Provider Person.
+
+							$text = __( 'A service provider, service operator, or service performer.', 'wpsso' );
+
+		 					break;
+
+						case 'tooltip-meta-schema_service_latitude':	// Service Latitude.
+
+							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_longitude':	// Service Longitude.
+
+							$text = __( 'The numeric decimal degrees longitude for this service.', 'wpsso' ) . ' ';
+
+							$text .= __( 'You may use a service like <a href="http://www.gps-coordinates.net/">Google Maps GPS Coordinates</a> (as an example), to find the approximate GPS coordinates of a street address.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-meta-schema_service_radius':	// Service Radius.
+		
+							$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
+		
+							break;
+		
+						case 'tooltip-meta-schema_service_offers_start':	// Service Offers Start.
+
+							$text = __( 'The date and time when tickets go on sale.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_service_offers_end':	// Service Offers End.
+
+							$text = __( 'The date and time when tickets are no longer on sale.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_service_offers':	// Service Offers.
+
+							$text = __( 'One or more offers for the service, including the offer name, price and currency.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_service_offer_catalogs':	// Offer Catalogs.
+		
+							$text = __( 'A list of offer catalogs for this service, including the catalog name, description and URL.', 'wpsso' );
+		
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_service' switch.
+
+					break;	// End of 'tooltip-meta-schema_service' case.
+
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_software_app_' ) ? true : false ):
 
 					switch ( $msg_key ) {

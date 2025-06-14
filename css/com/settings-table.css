@@ -755,9 +755,12 @@ table.sucom-settings td div.multi_input_label.recipe_instruction_img {			/* Reci
 }
 
 table.sucom-settings td div.multi_input textarea.howto_step_text,
-table.sucom-settings td div.multi_input textarea.recipe_instruction_text,
+table.sucom-settings td div.multi_input textarea.recipe_instruction_text {
+	height:5.5em;
+}
+
 table.sucom-settings td div.multi_input textarea.offer_catalog_text {		/* Offer Catalog Description. */
-	height:5.25em;
+	height:4em;
 }
 
 table.sucom-settings td select,

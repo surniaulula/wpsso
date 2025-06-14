@@ -258,6 +258,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
 			 */
 			$event_opts = apply_filters( 'wpsso_get_event_options', false, $mod, $event_id );
 
@@ -475,6 +477,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/*
+			 * Add event offers.
+			 */
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
 
 				foreach ( $event_opts[ 'event_offers' ] as $event_offer ) {
@@ -2555,24 +2560,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Check that the option value is not true, false, null, empty string, or 'none'.
-			 */
-			if ( ! SucomUtil::is_valid_option_value( $service_id ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: service id is "' . $service_id . '"' );
-				}
-
-				return 0;	// Return count of places added.
-			}
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding service data for service id "' . $service_id . '"' );
-			}
-
-			/*
 			 * Maybe get options from integration modules.
 			 *
 			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
@@ -2585,8 +2572,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$wpsso->debug->log_arr( 'get_service_options', $service_opts );
 				}
+			}
 
-			} else {
+			/*
+			 * Add metadata defaults and custom values to the $service_opts array.
+			 *
+			 * Automatically renames 'schema_service_*' options from the Document SSO metabox to 'service_*'.
+			 */
+			WpssoSchema::add_type_opts_md_pad( $service_opts, $mod, array( 'service' => 'schema_service' ) );
+
+			if ( empty( $service_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -2594,6 +2589,83 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				return 0;	// Return count of services added.
+			}
+
+			/*
+			 * Add service offers.
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking for custom service offers' );
+			}
+
+			$have_offers   = false;
+			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$canonical_url = $wpsso->util->get_canonical_url( $mod );
+
+			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
+
+				$offer_opts = apply_filters( 'wpsso_get_service_offer_options', false, $mod, $service_id, $key_num );
+
+				if ( ! empty( $offer_opts ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log_arr( 'get_service_offer_options', $offer_opts );
+					}
+				}
+
+				if ( ! is_array( $offer_opts ) ) {
+
+					$offer_opts = array();
+
+					foreach ( array(
+						'offer_name'           => 'schema_service_offer_name',
+						'offer_url'            => 'schema_service_offer_url',
+						'offer_price'          => 'schema_service_offer_price',
+						'offer_price_currency' => 'schema_service_offer_currency',
+						'offer_availability'   => 'schema_service_offer_avail',
+					) as $opt_key => $md_pre ) {
+
+						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
+					}
+				}
+
+				/*
+				 * Must have at least an offer name and price.
+				 */
+				if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+
+					if ( ! isset( $service_opts[ 'offer_url' ] ) ) {
+
+						$offer_opts[ 'offer_url' ] = $canonical_url;
+					}
+
+					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
+
+						if ( ! empty( $service_opts[ 'service_offers_start_date_iso' ] ) ) {
+
+							$offer_opts[ 'offer_valid_from_date' ] = $service_opts[ 'service_offers_start_date_iso' ];
+						}
+					}
+
+					if ( ! isset( $offer_opts[ 'offer_valid_to_date' ] ) ) {
+
+						if ( ! empty( $service_opts[ 'service_offers_end_date_iso' ] ) ) {
+
+							$offer_opts[ 'offer_valid_to_date' ] = $service_opts[ 'service_offers_end_date_iso' ];
+						}
+					}
+
+					if ( false === $have_offers ) {
+
+						$have_offers = true;
+
+						$service_opts[ 'service_offers' ] = array();	// Clear offers returned by filter.
+					}
+
+					$service_opts[ 'service_offers' ][] = $offer_opts;
+				}
 			}
 
 			/*
@@ -2605,26 +2677,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Begin schema service markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
-
-			/*
-			 * Set reference values for admin notices.
-			 */
-			if ( is_admin() ) {
-
-				$canonical_url = $wpsso->util->get_canonical_url( $mod );
-
-				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema service', 'wpsso' ) );
-			}
-
-			/*
-			 * Add schema properties from the service options.
-			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $service_opts, array(
-				'url'           => 'service_url',
-				'name'          => 'service_name',
-				'alternateName' => 'service_name_alt',
-				'description'   => 'service_desc',
-			) );
 
 			/*
 			 * Add place, organization, and person data.
@@ -2673,6 +2725,36 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
+			 * Add service offers.
+			 */
+			if ( ! empty( $service_opts[ 'service_offers' ] ) && is_array( $service_opts[ 'service_offers' ] ) ) {
+
+				foreach ( $service_opts[ 'service_offers' ] as $service_offer ) {
+
+					if ( ! is_array( $service_offer ) ) {	// Just in case.
+
+						continue;
+					}
+
+					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $service_offer, array(
+						'name'          => 'offer_name',
+						'url'           => 'offer_url',
+						'price'         => 'offer_price',
+						'priceCurrency' => 'offer_price_currency',
+						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
+						'validFrom'     => 'offer_valid_from_date',
+						'validThrough'  => 'offer_valid_to_date',
+					) ) ) ) {
+
+						/*
+						 * Add the offer.
+						 */
+						$json_ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
+					}
+				}
+			}
+
+			/*
 			 * See https://schema.org/hasOfferCatalog.
 			 */
 			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $service_opts, $opt_pre = 'service_offer_catalog', $prop_name = 'hasOfferCatalog' );
@@ -2686,14 +2768,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$json_ret = apply_filters( 'wpsso_json_data_single_service', $json_ret, $mod, $service_id );
-
-			/*
-			 * Restore previous reference values for admin notices.
-			 */
-			if ( is_admin() ) {
-
-				$wpsso->util->maybe_unset_ref( $canonical_url );
-			}
 
 			/*
 			 * Update the @id string with the $json_ret[ 'url' ], $type_id, and $service_id values.
