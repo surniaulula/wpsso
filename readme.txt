@@ -299,7 +299,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoMessagesTooltipMetaService` class.
 	* Added a new `WpssoSchema::add_offer_catalogs_data()` method.
 	* Added a new `WpssoSchemaSingle::add_service_data()` method.
 	* Added a new `WpssoEditSchema->filter_mb_sso_edit_schema_service_rows()` method.
