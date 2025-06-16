@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.1.0-dev.2 (2025/06/15)**
+**Version 20.1.0-dev.3 (2025/06/16)**
 
 * **New Features**
 	* None.
@@ -294,6 +294,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `WpssoSchema->get_schema_type_id()`.
 	* Refactored `WpssoSchema->get_default_schema_type_name()`.
 	* Refactored `WpssoSchema->get_schema_type_url_parts()`.
+	* Refactored `WpssoSchema->return_data_from_filter()`.
+	* Refactored `WpssoSchemaSingle->add_organization_data()`.
+	* Refactored `WpssoSchemaSingle->add_place_data()`.
+	* Refactored `WpssoJsonTypeOrganization->filter_json_data_https_schema_org_organization()`.
+	* Refactored `WpssoJsonTypePlace->filter_json_data_https_schema_org_place()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -517,9 +522,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.1.0-dev.2 =
+= 20.1.0-dev.3 =
 
-(2025/06/15) Current development version - see changelog for details.
+(2025/06/16) Current development version - see changelog for details.
 
 = 20.0.0 =
 
