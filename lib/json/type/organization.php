@@ -40,38 +40,6 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$org_id = 'none';
-
-			/*
-			 * Maybe get an organization ID from the "Select an Organization" option.
-			 */
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking for schema_organization_id metadata option value' );
-				}
-
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $merge_defs = true );
-			}
-
-			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
-
-				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-
-					$org_id = 'site';
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: organization id is null or "none"' );
-					}
-
-					return $json_data;
-				}
-			}
-
 			/*
 			 * Possibly inherit the schema type.
 			 */
@@ -88,24 +56,18 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/*
-			 * $org_id can be 'site' or a number (including 0).
-			 *
-		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
-			 *
-			 * Do not provide localized option names - the method will fetch the localized values.
+			 * Add the Organization.
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
-			}
-
-			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_el = false );
+			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id = null, $org_logo_key = 'org_logo_url', $list_el = false );
 
 			/*
 			 * Update the @id string to avoid connecting the webpage organization markup to properties like
 			 * 'publisher', 'organizer', 'performer', 'hiringOrganization', etc.
 			 */
-			WpssoSchema::update_data_id( $json_ret, 'knowledge-graph' );
+			if ( $is_main ) {	// Just in case.
+
+				WpssoSchema::update_data_id( $json_ret, 'knowledge-graph' );
+			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

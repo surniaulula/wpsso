@@ -864,38 +864,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Check that the option value is not true, false, null, empty string, or 'none'.
-			 */
-			if ( ! SucomUtil::is_valid_option_value( $mrp_id ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: no return policy id' );
-				}
-
-				return 0;	// Return count of retun policies added.
-			}
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding return policy data for mrp id "' . $mrp_id . '"' );
-			}
-
-			/*
 			 * Maybe get options from integration modules.
 			 *
 			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
 			 */
 			$mrp_opts = apply_filters( 'wpsso_get_merchant_return_policy_options', false, $mod, $mrp_id );
 
-			if ( ! empty( $mrp_opts ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'get_merchant_return_policy_options', $mrp_opts );
-				}
-
-			} else {
+			if ( empty( $mrp_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -903,6 +878,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				return 0;	// Return count of return policies added.
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'get_merchant_return_policy_options', $mrp_opts );
 			}
 
 			list( $type_id, $type_url ) = array( 'merchant.return.policy', 'https://schema.org/MerchantReturnPolicy' );
@@ -1009,13 +988,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * $org_id can be 'none', 'site', or a number (including 0).
+		 * $org_id can be false, 'none', 'site', or a number (including 0).
 		 *
 		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, array $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_el = false ) {
+		public static function add_organization_data( &$json_data, array $mod, $org_id, $org_logo_key = 'org_logo_url', $list_el = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1024,29 +1003,30 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/*
-			 * Check that the option value is not true, false, null, empty string, or 'none'.
-			 */
 			if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
 
-				return 0;	// Return count of organizations added.
-			}
+				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				
+					if ( $wpsso->debug->enabled ) {
 
-			if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'getting schema_organization_id from metadata' );
+					}
 
-				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
-			}
-
-			$org_opts = false;
-
-			if ( 'site' === $org_id ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'getting site organization options array' );
+					$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $merge_defs = true );
 				}
 
-				$org_opts = WpssoSchema::get_site_organization( $mod );	// Returns localized values (not the key names).
+				if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
+
+					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'using site organization for home' );
+						}
+
+						$org_id = 'site';
+					}
+				}
 			}
 
 			/*
@@ -1056,16 +1036,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Example 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
 			 */
-			$org_opts = apply_filters( 'wpsso_get_organization_options', $org_opts, $mod, $org_id );
-
-			if ( ! empty( $org_opts ) ) {
+			if ( 'site' === $org_id ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
+					$wpsso->debug->log( 'getting site organization options array' );
 				}
 
-			} else {
+				$org_opts = WpssoSchema::get_site_organization( $mod );
+
+			} else $org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
+
+			if ( empty( $org_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1073,6 +1055,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				return 0;	// Return count of organizations added.
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
 			}
 
 			/*
@@ -1604,34 +1590,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			/*
-			 * Check that the option value is not true, false, null, empty string, or 'none'.
-			 */
 			if ( ! SucomUtil::is_valid_option_value( $place_id ) ) {
 
-				return 0;	// Return count of places added.
-			}
+				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				
+					if ( $wpsso->debug->enabled ) {
 
-			if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'getting schema_place_id from metadata' );
+					}
 
-				$wpsso->debug->log( 'adding place data for place id "' . $place_id . '"' );
+					$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_place_id', $filter_opts = true, $merge_defs = true );
+				}
 			}
 
 			/*
 			 * Maybe get options from integration modules.
 			 *
-			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
+			 * Returned options can change depending on the locale, but the option key names should not be localized.
 			 */
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
-			if ( ! empty( $place_opts ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'get_place_options', $place_opts );
-				}
-
-			} else {
+			if ( empty( $place_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1639,6 +1618,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				return 0;	// Return count of places added.
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'get_place_options', $place_opts );
 			}
 
 			/*

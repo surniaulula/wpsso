@@ -4581,27 +4581,39 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $json_data;
 			}
 
-			if ( ! $is_main || ! empty( $json_ret[ 'mainEntity' ] ) ) {
+			if ( $is_main ) {
 
-				unset( $json_data[ 'mainEntity' ] );
-				unset( $json_data[ 'mainEntityOfPage' ] );
+				foreach ( array( 'name', 'description', 'mainEntityOfPage' ) as $prop_name ) {
 
-			} elseif ( ! isset( $json_ret[ 'mainEntityOfPage' ] ) ) {	// $is_main = true.
+					if ( ! empty( $json_data[ $prop_name ] ) ) {
 
-				if ( ! empty( $json_ret[ 'url' ] ) ) {
-
-					/*
-					 * Remove any URL fragment from the main entity URL.
-					 *
-					 * The 'mainEntityOfPage' can be empty and will be removed by WpssoSchemaGraph::optimize_json().
-					 */
-					$json_ret[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $json_ret[ 'url' ] );
+						unset( $json_ret[ $prop_name ] );
+					}
 				}
-			}
+
+			} else unset( $json_data[ 'mainEntityOfPage' ] );
+
+			if ( ! empty( $json_ret[ 'mainEntity' ] ) ) unset( $json_data[ 'mainEntity' ] );
 
 			$json_data = is_array( $json_data ) ? array_merge( $json_data, $json_ret ) : $json_ret;
 
 			unset( $json_ret );
+
+			if ( $is_main ) {
+
+				if ( ! isset( $json_data[ 'mainEntityOfPage' ] ) ) {
+
+					if ( ! empty( $json_data[ 'url' ] ) ) {
+
+						/*
+						 * Remove any URL fragment from the main entity URL.
+						 *
+						 * The 'mainEntityOfPage' can be empty and will be removed by WpssoSchemaGraph::optimize_json().
+						 */
+						$json_data[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $json_data[ 'url' ] );
+					}
+				}
+			}
 
 			return self::return_data_head_first( $json_data );
 		}

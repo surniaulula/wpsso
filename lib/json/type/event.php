@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchemaSingle::add_event_data( $json_ret, $mod, $event_id = false, $list_el = false );
+			WpssoSchemaSingle::add_event_data( $json_ret, $mod, $event_id = null, $list_el = false );
 
 			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.

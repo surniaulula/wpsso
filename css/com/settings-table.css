@@ -714,7 +714,7 @@ table.sucom-settings td div.multi_container {
 }
 
 table.sucom-settings td div.multi_container.mixed_multi {
-	margin-bottom:20px;
+	margin-bottom:8px;
 }
 
 table.sucom-settings td div.multi_container.mixed_multi.single_line {
@@ -735,6 +735,7 @@ table.sucom-settings td div.multi_number {
 
 table.sucom-settings td div.multi_input {
 	display:table-cell;
+	padding:4px 8px 0 0;
 	width:100%;
 }
 

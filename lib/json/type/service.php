@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonTypeService' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id = false, $list_el = false );
+			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id = null, $list_el = false );
 
 			/*
 			 * See https://schema.org/image as https://schema.org/ImageObject.
