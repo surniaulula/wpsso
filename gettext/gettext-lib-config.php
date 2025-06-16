@@ -156,7 +156,7 @@ _x( 'WPSSO Tune WP Image Editors', 'plugin name', 'wpsso' );
 _x( 'Improves the appearance of WordPress images for better click through rates from social and search sites.', 'plugin description', 'wpsso' );
 _x( 'WPSSO User Locale Selector', 'plugin name', 'wpsso' );
 _x( 'Quick and easy locale / language / region selector for the WordPress admin toolbar.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Product Metadata for WooCommerce', 'plugin name', 'wpsso' );
+_x( 'WPSSO Schema Product Metadata for WooCommerce', 'plugin name', 'wpsso' );
 _x( 'MPN, ISBN, GTIN, GTIN-8, UPC, EAN, GTIN-14, net dimensions, and fluid volume for WooCommerce products and variations.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Shipping Delivery Time for WooCommerce', 'plugin name', 'wpsso' );
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
