@@ -288,7 +288,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `SucomUtil::sanitize_schema_id()` method.
 	* Renamed `WpssoOpenGraph->get_og_type_id_for()` to `get_og_type_id()`.
-	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id_for()`.
+	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id()`.
 	* Renamed `WpssoSchema->get_default_schema_type_name_for()` to `get_default_schema_type_name()`.
 	* Refactored `WpssoOpenGraph->get_og_type_id()`.
 	* Refactored `WpssoSchema->get_schema_type_id()`.
