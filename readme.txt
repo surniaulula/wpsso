@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.1.0-dev.1 (2025/06/15)**
+**Version 20.1.0-dev.2 (2025/06/15)**
 
 * **New Features**
 	* None.
@@ -517,9 +517,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 20.1.0-dev.1 =
+= 20.1.0-dev.2 =
 
-(2025/06/15) Current development version.
+(2025/06/15) Current development version - see changelog for details.
 
 = 20.0.0 =
 
