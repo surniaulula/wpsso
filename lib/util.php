@@ -1204,19 +1204,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				switch ( $filter_key ) {
 
-					case 'business_types':	// Returns a multi-dimentional array.
+					case 'contact_types':	// Returns a multi-dimentional array.
 
 						$this->get_form_cache( 'schema_types' );
 
-						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
+						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'intangible' ][ 'structured.value' ][ 'contact.point' ];
 
 						break;
 
-					case 'business_types_select':
+					case 'contact_types_select':
 
-						$this->get_form_cache( 'business_types' );
+						$this->get_form_cache( 'contact_types' );	// Sets $local_cache[ 'contact_types' ].
 
-						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'business_types' ] );
+						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'contact_types' ] );
 
 						break;
 
@@ -1309,27 +1309,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					case 'schema_types_select':
 
 						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select();
-
-						break;
-
-					case 'service_types':	// Returns a multi-dimentional array.
-
-						$this->get_form_cache( 'schema_types' );
-
-						$local_cache[ $filter_key ] =& $local_cache[ 'schema_types' ][ 'thing' ][ 'intangible' ][ 'service' ];
-
-						break;
-
-
-					case 'service_types_select':
-
-						$this->get_form_cache( 'service_types' );
-
-						$local_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( $local_cache[ 'service_types' ] );
-
-						break;
-
-					default:
 
 						break;
 				}

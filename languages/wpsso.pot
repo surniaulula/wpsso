@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 20.1.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 20.1.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6905,60 +6905,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1399
+#: lib/abstract/wp-meta.php:1394
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1470
+#: lib/abstract/wp-meta.php:1465
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1474
+#: lib/abstract/wp-meta.php:1469
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1477 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1472 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1481
+#: lib/abstract/wp-meta.php:1476
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1482
+#: lib/abstract/wp-meta.php:1477
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1483
+#: lib/abstract/wp-meta.php:1478
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1484
+#: lib/abstract/wp-meta.php:1479
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1829
+#: lib/abstract/wp-meta.php:1824
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2138
+#: lib/abstract/wp-meta.php:2133
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2140 lib/abstract/wp-meta.php:2153
+#: lib/abstract/wp-meta.php:2135 lib/abstract/wp-meta.php:2148
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2151
+#: lib/abstract/wp-meta.php:2146
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -7179,7 +7179,7 @@ msgid "HTML Tags"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:143 lib/messages.php:1268
-#: lib/submenu/advanced.php:241
+#: lib/submenu/advanced.php:239
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -9791,11 +9791,11 @@ msgstr ""
 
 #: lib/media.php:1750 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:886 lib/util.php:995 lib/util.php:1027 lib/util.php:1065
-#: lib/util.php:3544
+#: lib/util.php:3523
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1751 lib/util.php:887 lib/util.php:3545
+#: lib/media.php:1751 lib/util.php:887 lib/util.php:3524
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -11815,7 +11815,7 @@ msgid ""
 "This includes any custom post, term, and user data entered in the %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:52 lib/submenu/advanced.php:282
+#: lib/messages-tooltip-plugin.php:52 lib/submenu/advanced.php:280
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
@@ -13451,7 +13451,7 @@ msgctxt "metabox title"
 msgid "Attributes and Metadata"
 msgstr ""
 
-#: lib/messages.php:551 lib/submenu/advanced.php:212
+#: lib/messages.php:551 lib/submenu/advanced.php:210
 msgctxt "metabox tab"
 msgid "Product Attributes"
 msgstr ""
@@ -14965,12 +14965,12 @@ msgctxt "metabox title"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:74 lib/submenu/advanced.php:88
+#: lib/sitesubmenu/site-advanced.php:74 lib/submenu/advanced.php:86
 msgctxt "metabox tab"
 msgid "Plugin Admin"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:75 lib/submenu/advanced.php:89
+#: lib/sitesubmenu/site-advanced.php:75 lib/submenu/advanced.php:87
 msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
@@ -15063,137 +15063,137 @@ msgctxt "metabox title"
 msgid "Contact Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:90
+#: lib/submenu/advanced.php:88
 msgctxt "metabox tab"
 msgid "Default Text"
 msgstr ""
 
-#: lib/submenu/advanced.php:91
+#: lib/submenu/advanced.php:89
 msgctxt "metabox tab"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/submenu/advanced.php:92
+#: lib/submenu/advanced.php:90
 msgctxt "metabox tab"
 msgid "Interface"
 msgstr ""
 
-#: lib/submenu/advanced.php:111
+#: lib/submenu/advanced.php:109
 msgctxt "metabox tab"
 msgid "Media Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:112
+#: lib/submenu/advanced.php:110
 msgctxt "metabox tab"
 msgid "Shortening Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:113
+#: lib/submenu/advanced.php:111
 msgctxt "metabox tab"
 msgid "Ratings and Reviews"
 msgstr ""
 
-#: lib/submenu/advanced.php:132 lib/submenu/advanced.php:239
+#: lib/submenu/advanced.php:130 lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:133
+#: lib/submenu/advanced.php:131
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:152
+#: lib/submenu/advanced.php:150
 msgctxt "metabox tab"
 msgid "Article"
 msgstr ""
 
-#: lib/submenu/advanced.php:153
+#: lib/submenu/advanced.php:151
 msgctxt "metabox tab"
 msgid "Book"
 msgstr ""
 
-#: lib/submenu/advanced.php:154
+#: lib/submenu/advanced.php:152
 msgctxt "metabox tab"
 msgid "Creative Work"
 msgstr ""
 
-#: lib/submenu/advanced.php:155
+#: lib/submenu/advanced.php:153
 msgctxt "metabox tab"
 msgid "Event"
 msgstr ""
 
-#: lib/submenu/advanced.php:156
+#: lib/submenu/advanced.php:154
 msgctxt "metabox tab"
 msgid "Job Posting"
 msgstr ""
 
-#: lib/submenu/advanced.php:157
+#: lib/submenu/advanced.php:155
 msgctxt "metabox tab"
 msgid "Place"
 msgstr ""
 
-#: lib/submenu/advanced.php:158
+#: lib/submenu/advanced.php:156
 msgctxt "metabox tab"
 msgid "Product"
 msgstr ""
 
-#: lib/submenu/advanced.php:159
+#: lib/submenu/advanced.php:157
 msgctxt "metabox tab"
 msgid "Profile Page"
 msgstr ""
 
-#: lib/submenu/advanced.php:160
+#: lib/submenu/advanced.php:158
 msgctxt "metabox tab"
 msgid "Review"
 msgstr ""
 
-#: lib/submenu/advanced.php:161
+#: lib/submenu/advanced.php:159
 msgctxt "metabox tab"
 msgid "Service"
 msgstr ""
 
-#: lib/submenu/advanced.php:192
+#: lib/submenu/advanced.php:190
 msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:193
+#: lib/submenu/advanced.php:191
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:213
+#: lib/submenu/advanced.php:211
 msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:238 lib/submenu/general.php:93
+#: lib/submenu/advanced.php:236 lib/submenu/general.php:93
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:240 lib/submenu/general.php:96
+#: lib/submenu/advanced.php:238 lib/submenu/general.php:96
 msgctxt "metabox tab"
 msgid "X (Twitter)"
 msgstr ""
 
-#: lib/submenu/advanced.php:264
+#: lib/submenu/advanced.php:262
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/submenu/advanced.php:270
+#: lib/submenu/advanced.php:268
 msgctxt "option label"
 msgid "Minimize Schema JSON-LD"
 msgstr ""
 
-#: lib/submenu/advanced.php:276
+#: lib/submenu/advanced.php:274
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:291 lib/util.php:3566
+#: lib/submenu/advanced.php:289 lib/util.php:3545
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -16099,180 +16099,180 @@ msgstr ""
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1406
+#: lib/util.php:1385
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1508
+#: lib/util.php:1487
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1658
+#: lib/util.php:1637
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1686
+#: lib/util.php:1665
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1719
+#: lib/util.php:1698
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1830
+#: lib/util.php:1809
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1844
+#: lib/util.php:1823
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3546
+#: lib/util.php:3525
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3569
+#: lib/util.php:3548
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3571
+#: lib/util.php:3550
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3573
+#: lib/util.php:3552
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3575
+#: lib/util.php:3554
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3970
+#: lib/util.php:3949
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3971
+#: lib/util.php:3950
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3975
+#: lib/util.php:3954
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3976
+#: lib/util.php:3955
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3980
+#: lib/util.php:3959
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3981
+#: lib/util.php:3960
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3985
+#: lib/util.php:3964
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3986
+#: lib/util.php:3965
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3990
+#: lib/util.php:3969
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3991
+#: lib/util.php:3970
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3995
+#: lib/util.php:3974
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3996
+#: lib/util.php:3975
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:4000
+#: lib/util.php:3979
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:4001
+#: lib/util.php:3980
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:4005
+#: lib/util.php:3984
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:4006
+#: lib/util.php:3985
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:4010
+#: lib/util.php:3989
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:4011
+#: lib/util.php:3990
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:4016
+#: lib/util.php:3995
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:4017
+#: lib/util.php:3996
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:4087
+#: lib/util.php:4066
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:4097
+#: lib/util.php:4076
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

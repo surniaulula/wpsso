@@ -1331,9 +1331,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$container_id = 'wpsso_mb_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $container_id . '">';
-
 			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-
 			$metabox_html .= '<!-- ' . $container_id . '_footer begin -->' . "\n";
 
 			if ( $this->p->debug->enabled ) {
@@ -1342,11 +1340,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
-
 			$metabox_html .= '<!-- ' . $container_id . '_footer end -->' . "\n";
-
 			$metabox_html .= $this->get_metabox_javascript( $container_id );
-
 			$metabox_html .= '</div><!-- #'. $container_id . ' -->' . "\n";
 
 			return $metabox_html;

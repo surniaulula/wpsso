@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '20.1.0-dev.1',	// Plugin version.
+					'version'     => '20.1.0-dev.2',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3349,6 +3349,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/*
 				 * Organization and Place default selection.
 				 */
+				'contact_is_defaults' => array(
+				),
 				'org_is_defaults' => array(
 					'schema_def_pub_org_id'             => 'Default Creative Work Publisher Organization',
 					'schema_def_prov_org_id'            => 'Default Creative Work Provider Organization',
@@ -3362,8 +3364,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'place_is_defaults' => array(
 					'schema_def_event_location_id' => 'Default Event Venue',
 					'schema_def_job_location_id'   => 'Default Job Location',
-				),
-				'service_is_defaults' => array(
 				),
 
 				/*
