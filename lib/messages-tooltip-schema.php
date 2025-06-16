@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case 'tooltip-schema_type_for_home_page':	// Type for Page Homepage.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'home_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'home_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_home_posts':	// Type for Posts Homepage.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'home_posts' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'home_posts' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_user_page':	// Type for User / Author.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'user_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'user_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for user / author profile pages.', 'wpsso' ), 'Schema' ) . ' ';
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_search_page':	// Type for Search Results.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'search_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'search_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for search results pages.', 'wpsso' ), 'Schema' ) . ' ';
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_archive_page':	// Type for Archive Page.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'archive_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'archive_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for other archive pages (date-based archive pages, for example).', 'wpsso' ), 'Schema' ) . ' ';
@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_pta':	// Type by Post Type Archive.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'archive_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'archive_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for each post type archive.', 'wpsso' ), 'Schema' ) . ' ';
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_type_for_tax':	// Type by Taxonomy.
 
-					$def_type = $this->p->schema->get_default_schema_type_name_for( 'archive_page' );
+					$def_type = $this->p->schema->get_default_schema_type_name( 'archive_page' );
 
 					// translators: %s is the markup standard name (ie. Open Graph or Schema).
 					$text = sprintf( __( 'Select a default %s type for each taxonomy.', 'wpsso' ), 'Schema' ) . ' ';

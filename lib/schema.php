@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( empty( $single_graph[ '@type' ] ) ) {
 
-						$type_url = $this->get_schema_type_url( $type_id );
+						$type_url = $this->get_schema_type_url( $type_id );	// Returns false if the Schema type id not found.
 
 						$single_graph = self::get_schema_type_context( $type_url, $single_graph );
 
@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $this->get_schema_type_child_family( $page_type_id ) as $type_id ) {
 
-				$child_family_urls[] = $this->get_schema_type_url( $type_id );
+				$child_family_urls[] = $this->get_schema_type_url( $type_id );	// Returns false if the Schema type id not found.
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -834,21 +834,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
-						$type_id = $this->get_schema_type_id_for( 'home_page' );
+						$type_id = $this->get_schema_type_id( 'home_page' );
 
-					} else $type_id = $this->get_schema_type_id_for( 'home_posts' );
+					} else $type_id = $this->get_schema_type_id( 'home_posts' );
 
 				} elseif ( $mod[ 'is_comment' ] ) {
 
 					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
 
-						$type_id = $this->get_schema_type_id_for( 'comment_review' );
+						$type_id = $this->get_schema_type_id( 'comment_review' );
 
 					} elseif ( $mod[ 'comment_parent' ] ) {
 
-						$type_id = $this->get_schema_type_id_for( 'comment_reply' );
+						$type_id = $this->get_schema_type_id( 'comment_reply' );
 
-					} else $type_id = $this->get_schema_type_id_for( 'comment' );
+					} else $type_id = $this->get_schema_type_id( 'comment' );
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
@@ -856,20 +856,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							$type_id = $this->get_schema_type_id_for( 'pta_' . $mod[ 'post_type' ] );
+							$type_id = $this->get_schema_type_id( 'pta_' . $mod[ 'post_type' ] );
 
 							if ( empty( $type_id ) ) {	// Just in case.
 
-								$type_id = $this->get_schema_type_id_for( 'archive_page' );
+								$type_id = $this->get_schema_type_id( 'archive_page' );
 							}
 
 						} else {
 
-							$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] );
+							$type_id = $this->get_schema_type_id( $mod[ 'post_type' ] );
 
 							if ( empty( $type_id ) ) {	// Just in case.
 
-								$type_id = $this->get_schema_type_id_for( 'page' );
+								$type_id = $this->get_schema_type_id( 'page' );
 							}
 						}
 
@@ -882,25 +882,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Just in case.
 
-						$type_id = $this->get_schema_type_id_for( 'tax_' . $mod[ 'tax_slug' ] );
+						$type_id = $this->get_schema_type_id( 'tax_' . $mod[ 'tax_slug' ] );
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
 
-						$type_id = $this->get_schema_type_id_for( 'archive_page' );
+						$type_id = $this->get_schema_type_id( 'archive_page' );
 					}
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$type_id = $this->get_schema_type_id_for( 'user_page' );
+					$type_id = $this->get_schema_type_id( 'user_page' );
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
-					$type_id = $this->get_schema_type_id_for( 'search_page' );
+					$type_id = $this->get_schema_type_id( 'search_page' );
 
 				} elseif ( $mod[ 'is_archive' ] ) {
 
-					$type_id = $this->get_schema_type_id_for( 'archive_page' );
+					$type_id = $this->get_schema_type_id( 'archive_page' );
 				}
 
 				if ( empty( $type_id ) ) {	// Just in case.
@@ -1356,7 +1356,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
-		public function get_schema_type_id_for( $opt_suffix, $default_id = null ) {
+		/*
+		 * See WpssoIntegEcomWooCommerce->filter_schema_type().
+		 * See WpssoSchema->get_mod_schema_type().
+		 */
+		public function get_schema_type_id( $opt_suffix, $default_id = false, $use_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1385,11 +1389,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $default_id;
 			}
 
-			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
-			$type_id      = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
 			$schema_types = $this->get_schema_types( $flatten = true );	// Uses a class variable cache.
 
-			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
+			if ( empty( $default_id ) ) {	// $default_id is false or empty string, and $opt_suffix is a string.
+
+				$default_id = SucomUtil::sanitize_schema_id( $opt_suffix );
+
+				if ( empty( $schema_types[ $default_id ] ) ) $default_id = false;
+			}
+
+			$opt_key = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
+
+			if ( $use_defs ) {
+
+				$type_id = isset( $this->p->defaults[ $opt_key ] ) ? $this->p->defaults[ $opt_key ] : $default_id;
+
+			} else $type_id = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
+
+			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {	// Invalid type id.
+
+				if ( empty( $default_id ) || 'none' === $default_id || empty( $schema_types[ $default_id ] ) ) {	// Invalid default id.
+
+					return false;
+				}
 
 				return $default_id;
 			}
@@ -1397,34 +1419,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
-		public function get_default_schema_type_name_for( $opt_suffix, $default_id = null ) {
+		/*
+		 * See WpssoMessagesTooltipSchema->get().
+		 */
+		public function get_default_schema_type_name( $opt_suffix ) {
 
-			if ( empty( $opt_suffix ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: opt_suffix is empty' );
-				}
-
-				return $default_id;
-			}
-
-			$opt_key      = SucomUtil::sanitize_key( 'schema_type_for_' . $opt_suffix );
-			$type_id      = $this->p->opt->get_defaults( $opt_key );		// Uses a local cache.
-			$schema_types = $this->get_schema_types( $flatten = true );	// Uses a class variable cache.
-
-			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
-
-				/*
-				 * We're returning the Schema type name, so make sure the default schema type id is valid as well.
-				 */
-				if ( empty( $default_id ) || 'none' === $default_id || empty( $schema_types[ $default_id ] ) ) {
-
-					return $default_id;
-				}
-
-				$type_id = $default_id;
-			}
+			$type_id = $this->get_schema_type_id( $opt_suffix, $default_id = false, $use_defs = true );
 
 			list( $type_context, $type_name, $type_path ) = $this->get_schema_type_url_parts_by_id( $type_id );
 
@@ -1620,6 +1620,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * Get the full schema type url from the array key.
+		 *
+		 * Returns false if the Schema type id not found.
 		 */
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 
@@ -1684,17 +1686,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Returns the Schema type context and name.
+		 * Returns an array with the Schema type context, name, and URL (without protocol prefix).
 		 *
 		 * Example array( 'https://schema.org', 'TechArticle', 'schema.org/TechArticle' ).
+		 *
+		 * Returns array( null, null, null ) if the Schema type URL is invalid.
 		 */
 		public function get_schema_type_url_parts( $type_url ) {
 
-			if ( preg_match( '/^(.+:\/\/.+)\/(.+)$/', $type_url, $match ) ) {
+			if ( is_string( $type_url ) ) {	// Just in case.
 
-				$type_path = preg_replace( '/^.*\/\//', '', $type_url );	// Remove 'https://'.
+				if ( preg_match( '/^(.+:\/\/.+)\/(.+)$/', $type_url, $match ) ) {
 
-				return array( $match[ 1 ], $match[ 2 ], $type_path );
+					$type_path = preg_replace( '/^.*\/\//', '', $type_url );	// Remove 'https://'.
+
+					return array( $match[ 1 ], $match[ 2 ], $type_path );
+				}
 			}
 
 			return array( null, null, null );
@@ -1702,9 +1709,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_schema_type_url_parts_by_id( $type_id ) {
 
-			$type_url = $this->get_schema_type_url( $type_id );
+			$type_url = $this->get_schema_type_url( $type_id );	// Returns false if the Schema type id not found.
 
-			return $this->get_schema_type_url_parts( $type_url );
+			return $this->get_schema_type_url_parts( $type_url );	// Returns array( null, null, null ) if the Schema type URL is invalid.
 		}
 
 		public function get_children_css_class( $type_id, $class_prefix = 'hide_schema_type', $exclude_match = '' ) {
@@ -2356,7 +2363,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_id = 'thing';
 			}
 
-			$type_url = $wpsso->schema->get_schema_type_url( $type_id );
+			$type_url = $wpsso->schema->get_schema_type_url( $type_id );	// Returns false if the Schema type id not found.
 
 			if ( ! $wpsso->schema->allow_review( $type_id ) ) {
 

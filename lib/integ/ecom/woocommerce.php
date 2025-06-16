@@ -618,13 +618,13 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 
 				} elseif ( $mod[ 'id' ] === $this->page_ids[ 'shop' ] ) {
 
-					$type_id = $this->p->schema->get_schema_type_id_for( 'pta_' . $this->prod_post_type );
+					$type_id = $this->p->schema->get_schema_type_id( 'pta_' . $this->prod_post_type );
 
 				} elseif ( $this->p->util->wc->is_mod_variable( $mod ) ) {
 
 					if ( $this->prod_post_type === $mod[ 'post_type' ] ) {
 
-						$type_id = $this->p->schema->get_schema_type_id_for( 'product_group' );
+						$type_id = $this->p->schema->get_schema_type_id( 'product_group' );
 					}
 				}
 			}

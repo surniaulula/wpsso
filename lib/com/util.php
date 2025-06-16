@@ -1823,7 +1823,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/*
 		 * Sanitize an option array key.
 		 *
-		 * Unlike the WordPress sanitize_key() function, this method allows for colon and hash characters, and (optionally)
+		 * Unlike the WordPress sanitize_key() function, this method allows for colon and hash characters and (optionally)
 		 * upper case characters.
 		 *
 		 * See sucomSanitizeKey() in wpsso/js/com/jquery-admin-page.js
@@ -1831,18 +1831,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
-			/*
-			 * Scalar variables are those containing an int, float, string or bool. Types array, object, resource and
-			 * null are not scalar.
-			 */
-			if ( is_scalar( $key ) ) {
+			if ( is_scalar( $key ) ) {	// Int, float, string or bool.
 
-				if ( ! $allow_upper ) {
-
-					$key = strtolower( $key );	// Convert upper case characters to lower case.
-				}
+				if ( ! $allow_upper ) $key = strtolower( $key );	// Convert upper case characters to lower case.
 
 				return preg_replace( '/[^a-zA-Z0-9_\-:#]/', '', $key );
+			}
+
+			return '';
+		}
+
+		public static function sanitize_schema_id( $key ) {
+
+			if ( is_scalar( $key ) ) {	// Int, float, string or bool.
+
+				$key = strtolower( $key );	// Convert upper case characters to lower case.
+
+				$key = preg_replace( '/[_\-]/', '.', $key );	// Convert underscores and hyphens to periods.
+
+				return preg_replace( '/[^a-z\.]/', '', $key );	// Keep only alphabetic and period characters.
 			}
 
 			return '';

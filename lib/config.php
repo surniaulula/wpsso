@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '20.0.0',	// Plugin version.
+					'version'     => '20.1.0-dev.1',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1487,6 +1487,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_article'           => 'article',
 					'og_type_for_book'              => 'book',
 					'og_type_for_business'          => 'place',
+					'og_type_for_contact_point'     => 'place',
 					'og_type_for_download'          => 'product',	// For Easy Digital Downloads.
 					'og_type_for_organization'      => 'website',
 					'og_type_for_page'              => 'article',
@@ -1571,6 +1572,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_article'       => 'article',
 					'schema_type_for_book'          => 'book',
 					'schema_type_for_business'      => 'local.business',
+					'schema_type_for_contact_point' => 'contact.point',
 					'schema_type_for_download'      => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'         => 'event',
 					'schema_type_for_howto'         => 'howto',
@@ -4503,7 +4505,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'service.taxi'       => 'https://schema.org/TaxiService',
 								'service.webapi'     => 'https://schema.org/WebAPI',
 							),
-							'service.channel' => 'https://schema.org/ServiceChannel',
+							'service.channel'  => 'https://schema.org/ServiceChannel',
+							'structured.value' => array(
+								'cdc.pmd.record' => 'https://schema.org/CDCPMDRecord',
+								'contact.point'  => array(
+									'contact.point'  => 'https://schema.org/ContactPoint',
+									'postal.address' => 'https://schema.org/PostalAddress',
+								),
+								'defined.region'                  => 'https://schema.org/DefinedRegion',
+								'engine.specification'            => 'https://schema.org/EngineSpecification',
+								'exchange.rate.specification'     => 'https://schema.org/ExchangeRateSpecification',
+								'geo.coordinates'                 => 'https://schema.org/GeoCoordinates',
+								'geo.shape'                       => 'https://schema.org/GeoShape',
+								'interaction.counter'             => 'https://schema.org/InteractionCounter',
+								'monetary.amount'                 => 'https://schema.org/MonetaryAmount',
+								'nutrition.information'           => 'https://schema.org/NutritionInformation',
+								'offer.shipping.details'          => 'https://schema.org/OfferShippingDetails',
+								'opening.hours.specification'     => 'https://schema.org/OpeningHoursSpecification',
+								'ownership.info'                  => 'https://schema.org/OwnershipInfo',
+								'postal.code.range.specification' => 'https://schema.org/PostalCodeRangeSpecification',
+								'price.specification'             => 'https://schema.org/PriceSpecification',
+								'property.value'                  => 'https://schema.org/PropertyValue',
+								'quantitative.value'              => 'https://schema.org/QuantitativeValue',
+								'quantitative.value.distribution' => 'https://schema.org/QuantitativeValueDistribution',
+								'repayment.specification'         => 'https://schema.org/RepaymentSpecification',
+								'service.period'                  => 'https://schema.org/ServicePeriod',
+								'shipping.conditions'             => 'https://schema.org/ShippingConditions',
+								'shipping.delivery.time'          => 'https://schema.org/ShippingDeliveryTime',
+								'Shipping.rate.settings'          => 'https://schema.org/ShippingRateSettings',
+								'Shipping.service'                => 'https://schema.org/ShippingService',
+								'structured.value'                => 'https://schema.org/StructuredValue',
+								'type.and.quantity.node'          => 'https://schema.org/TypeAndQuantityNode',
+								'warranty.promise'                => 'https://schema.org/WarrantyPromise',
+							),
 							'ticket'          => 'https://schema.org/Ticket',
 							'trip'            => array(
 								'trip'         => 'https://schema.org/Trip',

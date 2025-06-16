@@ -172,21 +172,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
-						$type_id = $this->get_og_type_id_for( 'home_page' );
+						$type_id = $this->get_og_type_id( 'home_page' );
 
-					} else $type_id = $this->get_og_type_id_for( 'home_posts' );
+					} else $type_id = $this->get_og_type_id( 'home_posts' );
 
 				} elseif ( $mod[ 'is_comment' ] ) {
 
 					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
 
-						$type_id = $this->get_og_type_id_for( 'comment_review' );
+						$type_id = $this->get_og_type_id( 'comment_review' );
 
 					} elseif ( $mod[ 'comment_parent' ] ) {
 
-						$type_id = $this->get_og_type_id_for( 'comment_reply' );
+						$type_id = $this->get_og_type_id( 'comment_reply' );
 
-					} else $type_id = $this->get_og_type_id_for( 'comment' );
+					} else $type_id = $this->get_og_type_id( 'comment' );
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
@@ -194,20 +194,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							$type_id = $this->get_og_type_id_for( 'pta_' . $mod[ 'post_type' ] );
+							$type_id = $this->get_og_type_id( 'pta_' . $mod[ 'post_type' ] );
 
 							if ( empty( $type_id ) ) {	// Just in case.
 
-								$type_id = $this->get_og_type_id_for( 'archive_page' );
+								$type_id = $this->get_og_type_id( 'archive_page' );
 							}
 
 						} else {
 
-							$type_id = $this->get_og_type_id_for( $mod[ 'post_type' ] );
+							$type_id = $this->get_og_type_id( $mod[ 'post_type' ] );
 
 							if ( empty( $type_id ) ) {	// Just in case.
 
-								$type_id = $this->get_og_type_id_for( 'page' );
+								$type_id = $this->get_og_type_id( 'page' );
 							}
 						}
 
@@ -220,25 +220,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Just in case.
 
-						$type_id = $this->get_og_type_id_for( 'tax_' . $mod[ 'tax_slug' ] );
+						$type_id = $this->get_og_type_id( 'tax_' . $mod[ 'tax_slug' ] );
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
 
-						$type_id = $this->get_og_type_id_for( 'archive_page' );
+						$type_id = $this->get_og_type_id( 'archive_page' );
 					}
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$type_id = $this->get_og_type_id_for( 'user_page' );
+					$type_id = $this->get_og_type_id( 'user_page' );
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
-					$type_id = $this->get_og_type_id_for( 'search_page' );
+					$type_id = $this->get_og_type_id( 'search_page' );
 
 				} elseif ( $mod[ 'is_archive' ] ) {
 
-					$type_id = $this->get_og_type_id_for( 'archive_page' );
+					$type_id = $this->get_og_type_id( 'archive_page' );
 				}
 
 				if ( empty( $type_id ) ) {	// Just in case.
@@ -728,7 +728,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_og;
 		}
 
-		public function get_og_type_id_for( $opt_suffix, $default_id = null ) {
+		public function get_og_type_id( $opt_suffix, $default_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -757,13 +757,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $default_id;
 			}
 
+			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 			$opt_key    = 'og_type_for_' . $opt_suffix;
 			$type_id    = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
-			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
-			if ( empty( $type_id ) || $type_id === 'none' || empty( $og_type_ns[ $type_id ] ) ) {
+			if ( empty( $type_id ) || 'none' === $type_id || empty( $og_type_ns[ $type_id ] ) ) {	// Invalid type id.
 
-				$type_id = $default_id;
+				if ( empty( $default_id ) || 'none' === $default_id || empty( $og_type_ns[ $default_id ] ) ) {	// Invalid default id.
+
+					return false;
+				}
+
+				return $default_id;
 			}
 
 			return $type_id;
