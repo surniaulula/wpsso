@@ -45,8 +45,6 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 
 			$json_ret = array();
 
-			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = null, $list_el = false );
-
 			/*
 			 * See https://schema.org/datePosted.
 			 */
@@ -54,7 +52,14 @@ if ( ! class_exists( 'WpssoJsonTypeJobPosting' ) ) {
 				'datePosted' => 'article:published_time',
 			) );
 
+		 	/*
+			 * Add the Job.
+			 */
+			WpssoSchemaSingle::add_job_data( $json_ret, $mod, $job_id = null, $list_el = false );
+
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 */
 			if ( $this->p->debug->enabled ) {

@@ -1145,8 +1145,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( ! isset( $values[ $selected ] ) ) {
 
-					if ( $is_assoc ) { $values[ $selected ] = $selected; }
-					else { $values[] = $selected; }
+					if ( $is_assoc ) {
+					
+						$values[ $selected ] = $selected;
+
+					} else { $values[] = $selected; }
 				}
 
 			}
@@ -2211,7 +2214,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_id      = SucomUtil::sanitize_css_id( empty( $css_id ) ? $input_name : $css_id . '_' . $key_num );
 				$input_id_prev = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num );
 				$input_id_next = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num );
-				$input_value   = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
+				$input_value   = $this->in_options( $input_name ) ? $this->options[ $input_name ] : false;
 
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 

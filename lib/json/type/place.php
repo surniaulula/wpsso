@@ -58,12 +58,20 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 		 	/*
 			 * Add the Place.
 			 */
-			WpssoSchemaSingle::add_place_data( $json_ret, $mod, $place_id = null, $list_el = false );
+			WpssoSchemaSingle::add_place_data( $json_ret, $mod, $place_id = null, $list_el = 'merge' );
 
+			
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and subjectOf properties for place' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

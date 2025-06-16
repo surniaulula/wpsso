@@ -58,7 +58,25 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 		 	/*
 			 * Add the Organization.
 			 */
-			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id = null, $org_logo_key = 'org_logo_url', $list_el = false );
+			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id = null, $org_logo_key = 'org_logo_url', $list_el = 'merge' );
+
+			/*
+			 * Add media if the Organization type is not also a sub-type of Place.
+			 *
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
+			 */
+			$type_id = WpssoSchema::get_data_type_id( $json_ret );
+
+			if ( ! $this->p->schema->is_schema_type_child( $type_id, 'place' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding image and subjectOf properties for organization' );
+				}
+
+				WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
+			}
 
 			/*
 			 * Update the @id string to avoid connecting the webpage organization markup to properties like

@@ -3461,10 +3461,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$single_type_from = 'options';
 				}
 
-			} else {
-
-				$single_type_id = $wpsso->schema->get_schema_type_url_id( $single_type_url, $def_type_id );
-			}
+			} else $single_type_id = $wpsso->schema->get_schema_type_url_id( $single_type_url, $def_type_id );
 
 			if ( $wpsso->debug->enabled ) {
 

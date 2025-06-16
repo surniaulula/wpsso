@@ -42,12 +42,22 @@ if ( ! class_exists( 'WpssoJsonTypeEvent' ) ) {
 
 			$json_ret = array();
 
+		 	/*
+			 * Add the Event.
+			 */
 			WpssoSchemaSingle::add_event_data( $json_ret, $mod, $event_id = null, $list_el = false );
 
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and subjectOf properties for event' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

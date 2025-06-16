@@ -33,51 +33,14 @@ if ( ! class_exists( 'WpssoJsonTypeFoodEstablishment' ) ) {
 			) );
 		}
 
-		/*
-		 * See https://schema.org/Bakery.
-		 * See https://schema.org/BarOrPub.
-		 * See https://schema.org/Brewery.
-		 * See https://schema.org/CafeOrCoffeeShop.
-		 * See https://schema.org/FastFoodRestaurant.
-		 * See https://schema.org/FoodEstablishment.
-		 * See https://schema.org/IceCreamShop.
-		 * See https://schema.org/Restaurant.
-		 * See https://schema.org/Winery.
-		 */
 		public function filter_json_data_https_schema_org_foodestablishment( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log( 'exiting early: markup added by WpssoSchemaSingle->add_place_data()' );
 			}
 
-			/*
-			 * Skip if not the main schema types or there are no place meta tags.
-			 */
-			if ( ! $is_main || ! preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: not main or no place meta tags');
-				}
-
-				return $json_data;
-			}
-
-			$json_ret = array();
-
-			/*
-			 * See https://schema.org/acceptsReservations.
-			 * See https://schema.org/hasMenu.
-			 * See https://schema.org/servesCuisine.
-			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
-				'acceptsReservations' => 'place:business:accepts_reservations',	// True or false.
-				'hasMenu'             => 'place:business:menu_url',
-				'servesCuisine'       => 'place:business:cuisine',
-			) );
-
-			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
+			return $json_data;
 		}
 	}
 }

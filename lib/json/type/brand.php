@@ -43,6 +43,8 @@ if ( ! class_exists( 'WpssoJsonTypeBrand' ) ) {
 			$json_ret = array();
 
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 */
 			if ( $this->p->debug->enabled ) {

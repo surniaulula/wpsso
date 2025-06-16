@@ -51,6 +51,8 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/video as https://schema.org/VideoObject.
 			 */

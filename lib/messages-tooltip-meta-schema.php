@@ -950,6 +950,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 		 					break;
 
+						case 'tooltip-meta-schema_service_award':	// Service Awards.
+
+							$text = __( 'Awards this service has won.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-meta-schema_service_latitude':	// Service Latitude.
 
 							$text = __( 'The numeric decimal degrees latitude for this service.', 'wpsso' ) . ' ';

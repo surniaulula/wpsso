@@ -898,6 +898,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 					'schema_service_prov_org_id'          => $opts[ 'schema_def_service_prov_org_id' ],	// Provider Org.
 					'schema_service_prov_person_id'       => $opts[ 'schema_def_service_prov_person_id' ],	// Provider Person.
+					'schema_service_award_0'              => '',						// Service Award.
+					'schema_service_award_1'              => '',						// Service Award.
+					'schema_service_award_2'              => '',						// Service Award.
 					'schema_service_latitude'             => '',						// Service Latitude.
 					'schema_service_longitude'            => '',						// Service Longitude.
 					'schema_service_radius'               => '',						// Service Radius.

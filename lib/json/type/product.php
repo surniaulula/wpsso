@@ -45,6 +45,9 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 
 			$json_ret = array();
 
+		 	/*
+			 * Add the Product.
+			 */
 			WpssoSchemaSingle::add_product_data( $json_ret, $mod, $mt_og, $page_type_id, $list_el = false );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

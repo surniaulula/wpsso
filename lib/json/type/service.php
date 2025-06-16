@@ -42,12 +42,22 @@ if ( ! class_exists( 'WpssoJsonTypeService' ) ) {
 
 			$json_ret = array();
 
+		 	/*
+			 * Add the Service.
+			 */
 			WpssoSchemaSingle::add_service_data( $json_ret, $mod, $service_id = null, $list_el = false );
 
 			/*
+			 * Add media.
+			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and subjectOf properties for service' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

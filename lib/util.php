@@ -1313,6 +1313,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 				}
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filters "' . $filter_name . '"' );
+				}
+
 				$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
 
 			} elseif ( $this->p->debug->enabled ) {

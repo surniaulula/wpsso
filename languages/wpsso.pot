@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.0.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 21.0.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3038,25 +3038,25 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:925 lib/com/form.php:2596
+#: lib/com/form.php:925 lib/com/form.php:2599
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:926 lib/com/form.php:2597
+#: lib/com/form.php:926 lib/com/form.php:2600
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:927 lib/com/form.php:2598
+#: lib/com/form.php:927 lib/com/form.php:2601
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:928 lib/com/form.php:2599
+#: lib/com/form.php:928 lib/com/form.php:2602
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
@@ -6905,60 +6905,60 @@ msgctxt "metadata title"
 msgid "%s Metadata"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1394
+#: lib/abstract/wp-meta.php:1397
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1465
+#: lib/abstract/wp-meta.php:1468
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1469
+#: lib/abstract/wp-meta.php:1472
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1472 lib/messages.php:290
+#: lib/abstract/wp-meta.php:1475 lib/messages.php:290
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1476
+#: lib/abstract/wp-meta.php:1479
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1477
+#: lib/abstract/wp-meta.php:1480
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1478
+#: lib/abstract/wp-meta.php:1481
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1479
+#: lib/abstract/wp-meta.php:1482
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1824
+#: lib/abstract/wp-meta.php:1827
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2133
+#: lib/abstract/wp-meta.php:2136
 msgid "Another review cannot be the subject of a review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2135 lib/abstract/wp-meta.php:2148
+#: lib/abstract/wp-meta.php:2138 lib/abstract/wp-meta.php:2151
 msgid ""
 "Please select a Schema type for the review subject that describes the "
 "subject being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2146
+#: lib/abstract/wp-meta.php:2149
 msgid "Another claim review cannot be the subject of a claim review."
 msgstr ""
 
@@ -8281,12 +8281,12 @@ msgctxt "option label"
 msgid "Publisher Person"
 msgstr ""
 
-#: lib/edit-schema.php:281 lib/edit-schema.php:2156
+#: lib/edit-schema.php:281 lib/edit-schema.php:2157
 msgctxt "option label"
 msgid "Provider Org."
 msgstr ""
 
-#: lib/edit-schema.php:291 lib/edit-schema.php:2166
+#: lib/edit-schema.php:291 lib/edit-schema.php:2167
 msgctxt "option label"
 msgid "Provider Person"
 msgstr ""
@@ -9255,87 +9255,92 @@ msgctxt "option label"
 msgid "Product Awards"
 msgstr ""
 
-#: lib/edit-schema.php:2151
+#: lib/edit-schema.php:2152
 msgctxt "metabox title"
 msgid "Service Information"
 msgstr ""
 
-#: lib/edit-schema.php:2176
+#: lib/edit-schema.php:2177
+msgctxt "option label"
+msgid "Service Awards"
+msgstr ""
+
+#: lib/edit-schema.php:2185
 msgctxt "option label"
 msgid "Service Latitude"
 msgstr ""
 
-#: lib/edit-schema.php:2179 lib/edit-schema.php:2187
+#: lib/edit-schema.php:2188 lib/edit-schema.php:2196
 msgctxt "option comment"
 msgid "decimal degrees"
 msgstr ""
 
-#: lib/edit-schema.php:2184
+#: lib/edit-schema.php:2193
 msgctxt "option label"
 msgid "Service Longitude"
 msgstr ""
 
-#: lib/edit-schema.php:2192
+#: lib/edit-schema.php:2201
 msgctxt "option label"
 msgid "Service Radius"
 msgstr ""
 
-#: lib/edit-schema.php:2195
+#: lib/edit-schema.php:2204
 msgctxt "option comment"
 msgid "meters from coordinates"
 msgstr ""
 
-#: lib/edit-schema.php:2200
+#: lib/edit-schema.php:2209
 msgctxt "option label"
 msgid "Service Offers Start"
 msgstr ""
 
-#: lib/edit-schema.php:2207
+#: lib/edit-schema.php:2216
 msgctxt "option label"
 msgid "Service Offers End"
 msgstr ""
 
-#: lib/edit-schema.php:2214
+#: lib/edit-schema.php:2223
 msgctxt "option label"
 msgid "Service Offers"
 msgstr ""
 
-#: lib/edit-schema.php:2218
+#: lib/edit-schema.php:2227
 msgctxt "option label"
 msgid "Service Offer Name"
 msgstr ""
 
-#: lib/edit-schema.php:2223
+#: lib/edit-schema.php:2232
 msgctxt "option label"
 msgid "Service Offer Price"
 msgstr ""
 
-#: lib/edit-schema.php:2228
+#: lib/edit-schema.php:2237
 msgctxt "option label"
 msgid "Service Offer Currency"
 msgstr ""
 
-#: lib/edit-schema.php:2237
+#: lib/edit-schema.php:2246
 msgctxt "option label"
 msgid "Service Offer Availability"
 msgstr ""
 
-#: lib/edit-schema.php:2248
+#: lib/edit-schema.php:2257
 msgctxt "option label"
 msgid "Offer Catalogs"
 msgstr ""
 
-#: lib/edit-schema.php:2252
+#: lib/edit-schema.php:2261
 msgctxt "option label"
 msgid "Offer Catalog Name"
 msgstr ""
 
-#: lib/edit-schema.php:2257
+#: lib/edit-schema.php:2266
 msgctxt "option label"
 msgid "Offer Catalog Description"
 msgstr ""
 
-#: lib/edit-schema.php:2262
+#: lib/edit-schema.php:2271
 msgctxt "option label"
 msgid "Offer Catalog URL"
 msgstr ""
@@ -9791,11 +9796,11 @@ msgstr ""
 
 #: lib/media.php:1750 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:886 lib/util.php:995 lib/util.php:1027 lib/util.php:1065
-#: lib/util.php:3523
+#: lib/util.php:3528
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1751 lib/util.php:887 lib/util.php:3524
+#: lib/media.php:1751 lib/util.php:887 lib/util.php:3529
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -10365,7 +10370,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:1058 lib/messages-tooltip-meta.php:75
+#: lib/messages-tooltip-meta-schema.php:1064 lib/messages-tooltip-meta.php:75
 #: lib/messages-tooltip-meta.php:195 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
@@ -10383,7 +10388,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:1066 lib/messages-tooltip-meta.php:85
+#: lib/messages-tooltip-meta-schema.php:1072 lib/messages-tooltip-meta.php:85
 #: lib/messages-tooltip-meta.php:206 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
@@ -10509,26 +10514,30 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:127
-msgid "One or more awards this organization has won."
+msgid "A contact point — for example, a Customer Complaints department."
 msgstr ""
 
 #: lib/messages-tooltip-meta-org.php:133
+msgid "Awards this organization has won."
+msgstr ""
+
+#: lib/messages-tooltip-meta-org.php:139
 msgid ""
 "A list of offer catalogs for this organization, including the catalog name, "
 "description and URL."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:142
+#: lib/messages-tooltip-meta-org.php:148
 msgid "A link to the masthead page or a page listing top editorial management."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:148
+#: lib/messages-tooltip-meta-org.php:154
 msgid ""
 "A statement on coverage priorities, including any public agenda or stance on "
 "issues."
 msgstr ""
 
-#: lib/messages-tooltip-meta-org.php:154 lib/messages-tooltip-meta-org.php:160
+#: lib/messages-tooltip-meta-org.php:160 lib/messages-tooltip-meta-org.php:166
 msgid ""
 "A statement about policy on use of unnamed sources and the decision process "
 "required."
@@ -10609,8 +10618,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:113
 #: lib/messages-tooltip-meta-place.php:121
-#: lib/messages-tooltip-meta-schema.php:957
-#: lib/messages-tooltip-meta-schema.php:965
+#: lib/messages-tooltip-meta-schema.php:963
+#: lib/messages-tooltip-meta-schema.php:971
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
@@ -10677,7 +10686,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:173
-#: lib/messages-tooltip-meta-schema.php:971
+#: lib/messages-tooltip-meta-schema.php:977
 msgid ""
 "The geographic area where a service is provided, in meters around a set of "
 "latitude and longitude coordinates."
@@ -11064,12 +11073,12 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:371
-#: lib/messages-tooltip-meta-schema.php:977
+#: lib/messages-tooltip-meta-schema.php:983
 msgid "The date and time when tickets go on sale."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:377
-#: lib/messages-tooltip-meta-schema.php:983
+#: lib/messages-tooltip-meta-schema.php:989
 msgid "The date and time when tickets are no longer on sale."
 msgstr ""
 
@@ -11452,58 +11461,62 @@ msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:955
+msgid "Awards this service has won."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:961
 msgid "The numeric decimal degrees latitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:963
+#: lib/messages-tooltip-meta-schema.php:969
 msgid "The numeric decimal degrees longitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:989
+#: lib/messages-tooltip-meta-schema.php:995
 msgid ""
 "One or more offers for the service, including the offer name, price and "
 "currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:995
+#: lib/messages-tooltip-meta-schema.php:1001
 msgid ""
 "A list of offer catalogs for this service, including the catalog name, "
 "description and URL."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1009
+#: lib/messages-tooltip-meta-schema.php:1015
 msgid "Type of software application (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1016
+#: lib/messages-tooltip-meta-schema.php:1022
 msgid "The operating system supported (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1031
+#: lib/messages-tooltip-meta-schema.php:1037
 msgid ""
 "Organizations that have reviewed the content on this web page for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1037
+#: lib/messages-tooltip-meta-schema.php:1043
 msgid ""
 "Persons that have reviewed the content on this web page for accuracy and/or "
 "completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1043
+#: lib/messages-tooltip-meta-schema.php:1049
 msgid ""
 "Date on which the content on this web page was last reviewed for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1056
+#: lib/messages-tooltip-meta-schema.php:1062
 msgid ""
 "A customized image ID to include first in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1064
+#: lib/messages-tooltip-meta-schema.php:1070
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Schema meta tags and JSON-LD markup."
@@ -15193,7 +15206,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:289 lib/util.php:3545
+#: lib/submenu/advanced.php:289 lib/util.php:3550
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -16099,180 +16112,180 @@ msgstr ""
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1385
+#: lib/util.php:1390
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1487
+#: lib/util.php:1492
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1637
+#: lib/util.php:1642
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1665
+#: lib/util.php:1670
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1698
+#: lib/util.php:1703
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1809
+#: lib/util.php:1814
 msgid ""
 "The PHP %s class is missing &ndash; contact your hosting provider to have "
 "the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1823
+#: lib/util.php:1828
 msgid ""
 "The PHP %s function is missing &ndash; contact your hosting provider to have "
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3525
+#: lib/util.php:3530
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3548
+#: lib/util.php:3553
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3550
+#: lib/util.php:3555
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3552
+#: lib/util.php:3557
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3559
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3949
+#: lib/util.php:3954
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3950
+#: lib/util.php:3955
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3954
+#: lib/util.php:3959
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3955
+#: lib/util.php:3960
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3959
+#: lib/util.php:3964
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr ""
 
-#: lib/util.php:3960
+#: lib/util.php:3965
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3964
+#: lib/util.php:3969
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3965
+#: lib/util.php:3970
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3969
+#: lib/util.php:3974
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3970
+#: lib/util.php:3975
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3974
+#: lib/util.php:3979
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3975
+#: lib/util.php:3980
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3979
+#: lib/util.php:3984
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3980
+#: lib/util.php:3985
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3984
+#: lib/util.php:3989
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3985
+#: lib/util.php:3990
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3989
+#: lib/util.php:3994
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr ""
 
-#: lib/util.php:3990
+#: lib/util.php:3995
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr ""
 
-#: lib/util.php:3995
+#: lib/util.php:4000
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3996
+#: lib/util.php:4001
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:4066
+#: lib/util.php:4071
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:4076
+#: lib/util.php:4081
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

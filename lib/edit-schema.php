@@ -2140,6 +2140,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 		public function filter_mb_sso_edit_schema_service_rows( $table_rows, $form, $head_info, $mod, $args ) {
 
 			$currencies          = SucomUtil::get_currencies_abbrev();
+			$awards_max          = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 			$offer_catalogs_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX', 5 );
 
@@ -2169,6 +2170,14 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 						$css_class = 'wide', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array( 'json_var' => 'person_names' ) ),
+				),
+				'schema_service_award' => array(
+					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Service Awards', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_service_award',
+					'content'  => $form->get_input_multi( 'schema_service_award', $css_class = 'wide', $css_id = '',
+						$awards_max, $show_first = 1),
 				),
 				'schema_service_latitude' => array(
 					'tr_class' => $args[ 'schema_tr_class' ][ 'service' ],
