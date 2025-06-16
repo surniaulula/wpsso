@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 20.1.0-dev.1 (TBD)**
+**Version 20.1.0-dev.1 (2025/06/15)**
 
 * **New Features**
 	* None.
@@ -286,7 +286,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new `SucomUtil::sanitize_schema_id()` method.
+	* Renamed `WpssoOpenGraph->get_og_type_id_for()` to `get_og_type_id()`.
+	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id_for()`.
+	* Renamed `WpssoSchema->get_default_schema_type_name_for()` to `get_default_schema_type_name()`.
+	* Refactored `WpssoOpenGraph->get_og_type_id()`.
 	* Refactored `WpssoSchema->get_schema_type_id()`.
+	* Refactored `WpssoSchema->get_default_schema_type_name()`.
+	* Refactored `WpssoSchema->get_schema_type_url_parts()`.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -512,7 +519,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 20.1.0-dev.1 =
 
-(TBD) None.
+(2025/06/15) Current development version.
 
 = 20.0.0 =
 
