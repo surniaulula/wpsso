@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.1
-WC Tested Up To: 9.9.3
+WC Tested Up To: 9.9.4
 Stable Tag: 20.0.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.0.0-dev.3 (2025/06/16)**
+**Version 21.0.0-dev.5 (2025/06/16)**
 
 * **New Features**
 	* None.
@@ -299,6 +299,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `WpssoSchemaSingle->add_place_data()`.
 	* Refactored `WpssoJsonTypeOrganization->filter_json_data_https_schema_org_organization()`.
 	* Refactored `WpssoJsonTypePlace->filter_json_data_https_schema_org_place()`.
+	* Removed the `WpssoJsonTypeFoodEstablishment` class.
+	* Removed the `WpssoJsonTypeLocalBusiness` class.
 * **Requires At Least**
 	* PHP v7.4.33.
 	* WordPress v5.9.
@@ -522,7 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.0.0-dev.3 =
+= 21.0.0-dev.5 =
 
 (2025/06/16) Current development version - see changelog for details.
 
