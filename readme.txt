@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.0.0-dev.6 (2025/06/16)**
+**Version 21.0.0-dev.7 (2025/06/16)**
 
 * **New Features**
 	* None.
@@ -287,6 +287,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `SucomUtil::sanitize_schema_id()` method.
+	* Added a new `SucomUtil::add_multi_values()` method.
+	* Added a new `SucomUtil::get_multi_values()` method.
 	* Renamed `WpssoOpenGraph->get_og_type_id_for()` to `get_og_type_id()`.
 	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id()`.
 	* Renamed `WpssoSchema->get_default_schema_type_name_for()` to `get_default_schema_type_name()`.
@@ -524,7 +526,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.0.0-dev.6 =
+= 21.0.0-dev.7 =
 
 (2025/06/16) Current development version - see changelog for details.
 
