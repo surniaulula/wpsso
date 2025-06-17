@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.0.0-dev.8',	// Plugin version.
+					'version'     => '21.0.0-dev.9',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2454,6 +2454,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'md_keys_multi' => array(
 					'org_award'         => true,				// Organization Awards.
+					'org_contact_id'    => true,				// Organization Contact Points.
 					'org_offer_catalog' => array(				// Offer Catalog Name.
 						'org_offer_catalog_text',			// Offer Catalog Description.
 						'org_offer_catalog_url',			// Offer Catalog URL.
@@ -3831,13 +3832,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_type_by_schema_type' => array(
 					'article'              => 'article',
 					'book'                 => 'book',
+					'event'                => 'product',
 					'item.list'            => 'website',
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
 					'product'              => 'product',	// Allows for product offer options.
 					'question'             => 'article',
 					'review'               => 'article',
-					'service'              => 'article',
+					'service'              => 'product',
 					'software.application' => 'product',	// Allows for product offer options.
 					'webpage.profile'      => 'profile',
 					'website'              => 'website',

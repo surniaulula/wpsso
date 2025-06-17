@@ -295,6 +295,30 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 			
 			/*
+			 * Property:
+			 *	hoursAvailable as https://schema.org/OpeningHoursSpecification
+			 */
+			if ( $opening_hours_spec = self::get_opening_hours_data( $contact_opts, $opt_prefix = 'contact' ) ) {
+
+				$json_ret[ 'hoursAvailable' ] = $opening_hours_spec;
+			}
+
+			/*
+			 * Schema PostalAddress type properties.
+			 */
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'postal.address' ) ) {
+
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(
+					'streetAddress'       => 'contact_street_address',
+					'postOfficeBoxNumber' => 'contact_po_box_number',
+					'addressLocality'     => 'contact_city',
+					'addressRegion'       => 'contact_region',
+					'postalCode'          => 'contact_postal_code',
+					'addressCountry'      => 'contact_country',	// Alpha2 country code.
+				) );
+			}
+
+			/*
 			 * Update the @id string with the $json_ret[ 'url' ], $type_id and $contact_id.
 			 */
 			WpssoSchema::update_data_id( $json_ret, array( $type_id, $contact_id ) );
@@ -1741,6 +1765,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'alternateName' => 'place_name_alt',
 				'description'   => 'place_desc',
 				'telephone'     => 'place_phone',
+				'faxNumber'     => 'place_fax',
 			) );
 
 			/*
@@ -2755,7 +2780,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Add schema properties from the organization options.
 			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $service_opts, array(
 				'award' => 'service_awards',	// Service Awards.
 			) );
 

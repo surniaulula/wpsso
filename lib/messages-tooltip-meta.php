@@ -31,6 +31,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 			$text = '';
 
 			foreach ( array(
+				'tooltip-meta-contact_' => 'contact',
 				'tooltip-meta-og_'      => 'opengraph',
 				'tooltip-meta-org_'     => 'org',
 				'tooltip-meta-place_'   => 'place',

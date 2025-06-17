@@ -503,9 +503,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_gtin8'                 => '',				// Product GTIN-8.
 					'product_gtin'                  => '',				// Product GTIN.
 					'product_isbn'                  => '',				// Product ISBN.
-					'product_award_0'               => '',				// Product Awards.
-					'product_award_1'               => '',				// Product Awards.
-					'product_award_2'               => '',				// Product Awards.
+					'product_award_0'               => '',				// Product Award.
+					'product_award_1'               => '',				// Product Award.
+					'product_award_2'               => '',				// Product Award.
 
 					/*
 					 * All Schema Types.

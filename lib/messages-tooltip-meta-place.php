@@ -28,27 +28,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-meta-place_name':
+				case 'tooltip-meta-place_name':	// Place Name.
 
 					$text = __( 'A name for this place (required).', 'wpsso' ) . ' ';
 
-					$text .= __( 'The place name may appear in WordPress editing pages and in the Schema Place "name" property.', 'wpsso' );
-
 					break;
 
-				case 'tooltip-meta-place_name_alt':
+				case 'tooltip-meta-place_name_alt':	// Place Alternate Name.
 
 					$text = __( 'An alternate name for this place.', 'wpsso' ) . ' ';
 
-					$text .= __( 'The place alternate name may appear in the Schema Place "alternateName" property.', 'wpsso' );
-
 					break;
 
-				case 'tooltip-meta-place_desc':
+				case 'tooltip-meta-place_desc':	// Place Description.
 
 					$text = __( 'A description for this place.', 'wpsso' ) . ' ';
-
-					$text .= __( 'The place description may appear in the Schema Place "description" property.', 'wpsso' );
 
 					break;
 
@@ -61,6 +55,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 				case 'tooltip-meta-place_is_default':	// Place Is Default.
 
 					$text = __( 'You may choose this place as the default event venue, job location, etc.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-meta-place_phone':	// Place Telephone.
+
+					$text = __( 'An optional telephone number for this place.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-meta-place_fax':	// Place Fax.
+
+					$text = __( 'An optional fax number for this place.', 'wpsso' );
 
 					break;
 
@@ -100,9 +106,23 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_phone':	// Telephone.
+				case 'tooltip-meta-place_img_id':	// Place Image ID.
 
-					$text = __( 'An optional telephone number for this place.', 'wpsso' );
+					$text = __( 'An image of this place (ie. an image of the business storefront or location).', 'wpsso' ) . ' ';
+
+					$text .= __( 'The image you select should show the physical location of this place (ie. of the latitude and longitude entered).', 'wpsso' ) . ' ';
+
+					$text .= '<em>' . __( 'This option is disabled if a place image URL is entered.', 'wpsso' ) . '</em>';
+
+					break;
+
+				case 'tooltip-meta-place_img_url':	// or Place Image URL.
+
+					$text = __( 'You can enter a place image URL (including the http/https prefix) instead of selecting an image ID.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The image URL option allows you to choose an image outside of the WordPress Media Library and/or a smaller logo style image.', 'wpsso' ) . ' ';
+
+					$text .= '<em>' . __( 'This option is disabled if a place image ID is selected.', 'wpsso' ) . '</em>';
 
 					break;
 
@@ -128,26 +148,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_img_id':	// Place Image ID.
-
-					$text = __( 'An image of this place (ie. an image of the business storefront or location).', 'wpsso' ) . ' ';
-
-					$text .= __( 'The image you select should show the physical location of this place (ie. of the latitude and longitude entered).', 'wpsso' ) . ' ';
-
-					$text .= '<em>' . __( 'This option is disabled if a place image URL is entered.', 'wpsso' ) . '</em>';
-
-					break;
-
-				case 'tooltip-meta-place_img_url':	// or Place Image URL.
-
-					$text = __( 'You can enter a place image URL (including the http/https prefix) instead of selecting an image ID.', 'wpsso' ) . ' ';
-
-					$text .= __( 'The image URL option allows you to choose an image outside of the WordPress Media Library and/or a smaller logo style image.', 'wpsso' ) . ' ';
-
-					$text .= '<em>' . __( 'This option is disabled if a place image ID is selected.', 'wpsso' ) . '</em>';
-
-					break;
-
 				case 'tooltip-meta-place_timezone':	// Place Timezone.
 
 					$text = __( 'A timezone for the open and close hours of this place.', 'wpsso' ) . ' ';
@@ -168,25 +168,25 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaPlace' ) ) {
 
 					break;
 
-				case 'tooltip-meta-place_service_radius':
+				case 'tooltip-meta-place_service_radius':	// Service Radius.
 
 					$text = __( 'The geographic area where a service is provided, in meters around a set of latitude and longitude coordinates.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-place_currencies_accepted':
+				case 'tooltip-meta-place_currencies_accepted':	// Currencies Accepted.
 
 					$text = sprintf( __( 'A comma-delimited list of <a href="%1$s">ISO 4217 currency codes</a> accepted by the local business (example: %2$s).', 'wpsso' ), 'https://en.wikipedia.org/wiki/ISO_4217', 'USD, CAD' );
 
 					break;
 
-				case 'tooltip-meta-place_payment_accepted':
+				case 'tooltip-meta-place_payment_accepted':	// Payment Accepted.
 
 					$text = __( 'A comma-delimited list of payment options accepted by the local business (example: Cash, Credit Card).', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-place_price_range':
+				case 'tooltip-meta-place_price_range':	// Price Range.
 
 					$text = __( 'The relative price of goods or services provided by the local business (example: $, $$, $$$, or $$$$).', 'wpsso' );
 

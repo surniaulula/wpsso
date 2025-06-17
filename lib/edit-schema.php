@@ -80,6 +80,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$args = array(
 				'schema_tr_class' => WpssoSchema::get_schema_type_row_class( 'schema_type' ),
 				'select_names'    => array(
+					'contact'          => $this->p->util->get_form_cache( 'contact_names', $add_none = true ),
 					'google_prod_cats' => $this->p->util->get_google_product_categories(),
 					'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),
 					'org'              => $this->p->util->get_form_cache( 'org_names', $add_none = true ),
@@ -1148,6 +1149,13 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 				/*
 				 * Schema Review Subject: Place.
 				 */
+				'schema_review_item_place_phone' => array(
+					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'place' ],
+					'th_class' => 'medium',
+					'label'    => _x( 'Subject Telephone', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-place_phone',
+					'content'  => $form->get_input( 'schema_review_item_place_phone' ),
+				),
 				'schema_review_item_place_street_address' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'place' ],
 					'th_class' => 'medium',
@@ -1190,13 +1198,10 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-place_country',
 					'content'  => $form->get_select_country( 'schema_review_item_place_country' ),
 				),
-				'schema_review_item_place_phone' => array(
-					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'place' ],
-					'th_class' => 'medium',
-					'label'    => _x( 'Subject Telephone', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-place_phone',
-					'content'  => $form->get_input( 'schema_review_item_place_phone' ),
-				),
+				
+				/*
+				 * Schema Review Subject: Place > LocalBusiness.
+				 */
 				'schema_review_item_place_price_range' => array(
 					'tr_class' => 'hide_schema_type ' . $item_type_row_class[ 'local.business' ],
 					'th_class' => 'medium',
