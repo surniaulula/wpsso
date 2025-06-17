@@ -287,6 +287,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `SucomUtil::sanitize_schema_id()` method.
+	* Added a new `SucomUtil::add_multi_values()` method.
+	* Added a new `SucomUtil::get_multi_values()` method.
+	* Added a new `WpssoSchemaSingle::add_contact_data()` method.
 	* Renamed `WpssoOpenGraph->get_og_type_id_for()` to `get_og_type_id()`.
 	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id()`.
 	* Renamed `WpssoSchema->get_default_schema_type_name_for()` to `get_default_schema_type_name()`.
@@ -295,8 +298,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `WpssoSchema->get_default_schema_type_name()`.
 	* Refactored `WpssoSchema->get_schema_type_url_parts()`.
 	* Refactored `WpssoSchema->return_data_from_filter()`.
-	* Refactored `WpssoSchemaSingle->add_organization_data()`.
-	* Refactored `WpssoSchemaSingle->add_place_data()`.
+	* Refactored `WpssoSchemaSingle::add_organization_data()`.
+	* Refactored `WpssoSchemaSingle::add_place_data()`.
 	* Refactored `WpssoJsonTypeOrganization->filter_json_data_https_schema_org_organization()`.
 	* Refactored `WpssoJsonTypePlace->filter_json_data_https_schema_org_place()`.
 	* Removed the `WpssoJsonTypeFoodEstablishment` class.
