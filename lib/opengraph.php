@@ -1118,7 +1118,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( is_array( $md_opts ) ) {	// Just in case.
 
-					$awards = SucomUtil::preg_grep_keys( '/^product_award_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+					$awards = SucomUtil::get_multi_values( $md_opts, 'product_award' );
 				}
 			}
 

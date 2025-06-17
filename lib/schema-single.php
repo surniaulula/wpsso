@@ -245,6 +245,34 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
+		 * See WpssoSchemaSingle->add_organization_data().
+		 */
+		public static function add_contact_data( &$json_data, array $mod, $contact_id, $list_el = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			/*
+			 * Maybe get options from integration modules.
+			 *
+			 * Returned options can change depending on the locale, but the option key names should NOT be localized.
+			 */
+			$contact_opts = apply_filters( 'wpsso_get_contact_options', false, $mod, $contact_id );
+
+			if ( ! empty( $contact_opts ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_contact_options', $contact_opts );
+				}
+			}
+		}
+
+		/*
 		 * See WpssoJsonTypeEvent->filter_json_data_https_schema_org_event().
 		 */
 		public static function add_event_data( &$json_data, array $mod, $event_id = false, $list_el = false ) {
@@ -1042,7 +1070,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'applying filters "wpsso_get_organization_options"' );
+					$wpsso->debug->log( 'applying filters "wpsso_get_organization_options" for org_id = ' . $org_id );
 				}
 
 				$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
@@ -1052,7 +1080,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: unknown org id "' . $org_id . '"' );
+					$wpsso->debug->log( 'exiting early: no org options' );
 				}
 
 				return 0;	// Return count of organizations added.
@@ -1063,28 +1091,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Maybe add properties for sub-types.
-			 */
-			$is_news  = false;
-			$is_place = false;
-
-			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
-				$org_opts[ 'org_schema_type' ] !== 'none' &&
-				$org_opts[ 'org_schema_type' ] !== 'organization' ) {	// Only check if the Schema type is a sub-type.
-
-				$is_news  = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' );
-				$is_place = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'place' );
-			}
-
-			/*
 			 * Combine multiple options with a common prefix to an array of values.
 			 */
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding org_awards array' );
-			}
-
-			SucomUtil::add_multi_array( $org_opts, 'org_award', 'org_awards' );
+			SucomUtil::add_multi_values( $org_opts, 'org_award', 'org_awards' );
+			SucomUtil::add_multi_values( $org_opts, 'org_contact_id', 'org_contact_ids' );
 
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
@@ -1128,6 +1138,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/*
+			 * See https://schema.org/contactPoint.
+			 */
+			foreach ( $org_opts[ 'org_contact_ids' ] as $contact_id ) {
+
+				self::add_contact_data( $json_ret, $mod, $contact_id, $contact_list_el = true );
+			}
+
+			/*
 			 * See https://schema.org/hasOfferCatalog.
 			 */
 			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $org_opts, $opt_pre = 'org_offer_catalog', $prop_name = 'hasOfferCatalog' );
@@ -1135,7 +1153,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema NewsMediaOrganization type properties.
 			 */
-			if ( $is_news ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'news.media.organization' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1287,7 +1305,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Location property.
 			 */
-			if ( ! $is_place ) {	// Just in case.
+			if ( ! $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {	// Just in case.
 
 				if ( isset( $org_opts[ 'org_place_id' ] ) ) {
 
@@ -1361,13 +1379,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Prevent recursion by making sure the this method wasn't called by self::add_place_data().
 			 */
-			if ( $is_place && 'add_place_data' !== $called_by ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) && 'add_place_data' !== $called_by ) {
 			
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
 				}
-	
+
 				self::add_place_data( $json_data, $mod, $org_id, 'merge', __FUNCTION__ );
 			}
 
@@ -1461,7 +1479,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_prefix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_prefix' ),
 						'person_suffix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_suffix' ),
 						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),
-						'person_awards'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'awards' ),
 						'person_desc'       => $user_description,
 						'person_images'     => $user_images,
 						'person_sameas'     => $user_sameas,
@@ -1503,7 +1520,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'honorificPrefix' => 'person_prefix',
 				'honorificSuffix' => 'person_suffix',
 				'additionalName'  => 'person_addl_name',
-				'award'           => 'person_awards',
 				'description'     => 'person_desc',
 				'jobTitle'        => 'person_job_title',
 				'email'           => 'person_email',
@@ -1613,7 +1629,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'applying filters "wpsso_get_place_options"' );
+				$wpsso->debug->log( 'applying filters "wpsso_get_place_options" for place_id = ' . $place_id );
 			}
 
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
@@ -1630,22 +1646,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log_arr( 'get_place_options', $place_opts );
-			}
-
-			/*
-			 * Maybe add properties for sub-types.
-			 */
-			$is_business = false;
-			$is_food     = false;
-			$is_org      = false;
-
-			if ( ! empty( $place_opts[ 'place_schema_type' ] ) &&
-				$place_opts[ 'place_schema_type' ] !== 'none' &&
-				$place_opts[ 'place_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
-
-				$is_business = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' );
-				$is_food     = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' );
-				$is_org      = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'organization' );
 			}
 
 			/*
@@ -1725,7 +1725,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema LocalBusiness type properties.
 			 */
-			if ( $is_business ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
 
 				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
 					'currenciesAccepted' => 'place_currencies_accepted',
@@ -1748,7 +1748,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Schema FoodEstablishment type properties.
 			 */
-			if ( $is_food ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'food.establishment' ) ) {
 
 				foreach ( array(
 					'acceptsReservations' => 'place_accept_res',
@@ -1834,7 +1834,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Prevent recursion by making sure the this method wasn't called by self::add_organization_data().
 			 */
-			if ( $is_org && 'add_organization_data' !== $called_by ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'organization' ) && 'add_organization_data' !== $called_by ) {
 			
 				if ( $wpsso->debug->enabled ) {
 
@@ -2611,12 +2611,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Combine multiple options with a common prefix to an array of values.
 			 */
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding service_awards array' );
-			}
-
-			SucomUtil::add_multi_array( $service_opts, 'service_award', 'service_awards' );
+			SucomUtil::add_multi_values( $service_opts, 'service_award', 'service_awards' );
 
 			/*
 			 * Add service offers.

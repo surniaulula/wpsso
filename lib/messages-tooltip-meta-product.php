@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 				 */
 				case 'tooltip-meta-product_award':	// Product Awards.
 
-					$text = __( 'One or more awards this product has won.', 'wpsso' );
+					$text = __( 'Awards this product has won.', 'wpsso' );
 
 				 	break;
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.0.0-dev.6',	// Plugin version.
+					'version'     => '21.0.0-dev.7',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2486,12 +2486,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_review_item_cw_movie_actor_person_name'    => true,
 					'schema_review_item_cw_movie_director_person_name' => true,
 					'schema_sameas_url'                                => true,	// Same-As URLs.
+					'schema_service_award'         => true,				// Service Awards.
 					'schema_service_offer_catalog' => array(			// Offer Catalog Name.
 						'schema_service_offer_catalog_text',			// Offer Catalog Description.
 						'schema_service_offer_catalog_url',			// Offer Catalog URL.
 					),
-					'schema_webpage_reviewed_by_org_id'                => true,
-					'schema_webpage_reviewed_by_person_id'             => true,
+					'schema_webpage_reviewed_by_org_id'    => true,
+					'schema_webpage_reviewed_by_person_id' => true,
 				),
 
 				/*

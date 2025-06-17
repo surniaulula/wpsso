@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_award':		// Creative Work Awards.
 
-					$text = __( 'One or more awards this creative work has won.', 'wpsso' );
+					$text = __( 'Awards this creative work has won.', 'wpsso' );
 
 				 	break;
 

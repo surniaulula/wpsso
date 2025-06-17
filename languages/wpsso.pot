@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.0.0-dev.6\n"
+"Project-Id-Version: WPSSO Core 21.0.0-dev.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7554,12 +7554,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5626
+#: lib/config.php:5627
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5626
+#: lib/config.php:5627
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -10734,7 +10734,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-product.php:38
-msgid "One or more awards this product has won."
+msgid "Awards this product has won."
 msgstr ""
 
 #. translators: %1$s is a lower case item name, for example 'product Google
@@ -10914,7 +10914,7 @@ msgid "URLs to other creative works that this content is a part of."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:157
-msgid "One or more awards this creative work has won."
+msgid "Awards this creative work has won."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:163
@@ -14862,23 +14862,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1107
+#: lib/schema-single.php:1117
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1108
+#: lib/schema-single.php:1118
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1207
+#: lib/schema-single.php:1225
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1210
+#: lib/schema-single.php:1228
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -14886,19 +14886,19 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1213
+#: lib/schema-single.php:1231
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1249
+#: lib/schema-single.php:1267
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1263 lib/schema-single.php:1272
+#: lib/schema-single.php:1281 lib/schema-single.php:1290
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1447
+#: lib/schema-single.php:1465
 msgid "adding schema person"
 msgstr ""
 
@@ -14933,7 +14933,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4121
+#: lib/schema.php:4123
 msgid "checking schema properties"
 msgstr ""
 

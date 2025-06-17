@@ -2880,6 +2880,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$catalogs = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
+			$catalogs = array_filter( $catalogs );	// Remove empty elements.
+
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log_arr( 'catalogs', $catalogs );

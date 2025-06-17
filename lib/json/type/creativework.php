@@ -51,19 +51,6 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 			}
 
 			/*
-			 * Add media.
-			 *
-			 * See https://schema.org/image as https://schema.org/ImageObject.
-			 * See https://schema.org/video as https://schema.org/VideoObject.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding image and video properties for creativework' );
-			}
-
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
-
-			/*
 			 * See https://schema.org/provider.
 			 * See https://schema.org/publisher.
 			 */
@@ -236,12 +223,9 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 					if ( is_array( $md_opts ) ) {	// Just in case.
 
-						$values = SucomUtil::preg_grep_keys( '/^' . $md_key . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+						$values = SucomUtil::get_multi_values( $md_opts, $md_key );
 
-						foreach ( $values as $num => $text ) {
-
-							$json_ret[ $prop_name ][] = $text;
-						}
+						if ( ! empty( $values ) ) $json_ret[ $prop_name ] = $values;
 					}
 				}
 
@@ -254,6 +238,19 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 
 				$json_ret[ $prop_name ] = apply_filters( $filter_name, $json_ret[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
 			}
+
+			/*
+			 * Add media.
+			 *
+			 * See https://schema.org/image as https://schema.org/ImageObject.
+			 * See https://schema.org/video as https://schema.org/VideoObject.
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and video properties for creativework' );
+			}
+
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
 
 			/*
 			 * See https://schema.org/comment as https://schema.org/Comment.
