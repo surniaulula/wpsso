@@ -64,7 +64,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $book_opts, $opt_key = 'book_type', $def_type_id, $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $book_opts,
+				$opt_key = 'book_type', $def_type_id, $list_el );
 
 			/*
 			 * Maybe remove values related to the WordPress post object.
@@ -161,7 +162,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'comment', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id = 'comment', $list_el );
 
 			/*
 			 * Begin schema comment markup creation.
@@ -270,6 +272,41 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log_arr( 'get_contact_options', $contact_opts );
 				}
 			}
+			
+			/*
+			 * If not adding a list element, get the existing schema type url (if one exists).
+			 */
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $contact_opts,
+				$opt_key = 'contact_schema_type', $def_type_id = 'contact.point', $list_el );
+
+			/*
+			 * Begin schema contact markup creation.
+			 */
+			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Add schema properties from the contact options.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $contact_opts, array(
+				'url'           => 'contact_url',
+				'name'          => 'contact_name',
+				'alternateName' => 'contact_name_alt',
+				'description'   => 'contact_desc',
+			) );
+			
+			/*
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id and $contact_id.
+			 */
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $contact_id ) );
+
+			/*
+			 * Add or replace the json data.
+			 */
+			self::add_or_replace_data( $json_data, $json_ret, $list_el );
+
+			unset( $json_ret );
+
+			return 1;	// Return count of contacts added.
 		}
 
 		/*
@@ -417,7 +454,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $event_opts,
+				$opt_key = 'event_type', $def_type_id = 'event', $list_el );
 
 			/*
 			 * Begin schema event markup creation.
@@ -597,7 +635,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'image.object', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id = 'image.object', $list_el );
 
 			/*
 			 * Begin schema image markup creation.
@@ -771,7 +810,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $job_opts,
+				$opt_key = 'job_type', $def_type_id = 'job.posting', $list_el );
 
 			/*
 			 * Begin schema job markup creation.
@@ -1099,7 +1139,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $org_opts,
+				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_el );
 
 			/*
 			 * Begin schema organization markup creation.
@@ -1142,7 +1183,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			foreach ( $org_opts[ 'org_contact_ids' ] as $contact_id ) {
 
-				self::add_contact_data( $json_ret, $mod, $contact_id, $contact_list_el = true );
+				self::add_contact_data( $json_ret[ 'contactPoint' ], $mod, $contact_id, $contact_list_el = true );
 			}
 
 			/*
@@ -1377,16 +1418,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If this organization is also a sub-type of place, then add the schema place properties as well.
 			 *
-			 * Prevent recursion by making sure the this method wasn't called by self::add_place_data().
+			 * Prevent recursion by making sure this method wasn't called by self::add_place_data().
 			 */
-			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) && 'add_place_data' !== $called_by ) {
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
 			
-				if ( $wpsso->debug->enabled ) {
+				if ( 'add_place_data' !== $called_by ) {
+			
+					if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
+						$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
+					}
+
+					self::add_place_data( $json_data, $mod, $org_id, 'merge', __FUNCTION__ );
 				}
-
-				self::add_place_data( $json_data, $mod, $org_id, 'merge', __FUNCTION__ );
 			}
 
 			return 1;	// Return count of organizations added.
@@ -1505,7 +1549,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $person_opts,
+				$opt_key = 'person_type', $def_type_id = 'person', $list_el );
 
 			/*
 			 * Begin schema person markup creation.
@@ -1651,12 +1696,31 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $place_opts,
+				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_el );
 
 			/*
 			 * Begin schema place markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * If this place is also a sub-type of organization, then add the schema organization properties as well.
+			 *
+			 * Prevent recursion by making sure this method wasn't called by self::add_organization_data().
+			 */
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'organization' ) ) {
+			
+				if ( 'add_organization_data' !== $called_by ) {
+			
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'adding organization data for place id "' . $place_id . '"' );
+					}
+
+					self::add_organization_data( $json_data, $mod, $place_id, 'org_logo_url', 'merge', __FUNCTION__ );
+				}
+			}
 
 			/*
 			 * Set reference values for admin notices.
@@ -1829,22 +1893,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			unset( $json_ret );
 
-			/*
-			 * If this place is also a sub-type of organization, then add the schema place properties as well.
-			 *
-			 * Prevent recursion by making sure the this method wasn't called by self::add_organization_data().
-			 */
-			if ( $wpsso->schema->is_schema_type_child( $type_id, 'organization' ) && 'add_organization_data' !== $called_by ) {
-			
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'adding organization data for place id "' . $place_id . '"' );
-				}
-
-
-				self::add_organization_data( $json_data, $mod, $place_id, 'org_logo_url', 'merge', __FUNCTION__ );
-			}
-
 			return 1;	// Return count of places added.
 		}
 
@@ -1871,7 +1919,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2170,7 +2219,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2309,7 +2359,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id, $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id, $list_el );
 
 			/*
 			 * Begin schema product markup creation.
@@ -2693,7 +2744,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $service_opts, $opt_key = 'service_schema_type', $def_type_id = 'service', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $service_opts,
+				$opt_key = 'service_schema_type', $def_type_id = 'service', $list_el );
 
 			/*
 			 * Begin schema service markup creation.
@@ -2867,7 +2919,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
-			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_el );
+			list( $type_id, $type_url ) = self::get_type_info( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id = 'video.object', $list_el );
 
 			/*
 			 * Begin schema video markup creation.
