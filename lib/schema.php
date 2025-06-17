@@ -2878,9 +2878,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Get the offer catalog names.
 			 */
-			$catalogs = SucomUtil::preg_grep_keys( '/^' . $opt_pre . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
-
-			$catalogs = array_filter( $catalogs );	// Remove empty elements.
+			$catalogs = SucomUtil::get_multi_values( $md_opts, $opt_pre );
 
 			if ( $wpsso->debug->enabled ) {
 

@@ -14933,7 +14933,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4123
+#: lib/schema.php:4121
 msgid "checking schema properties"
 msgstr ""
 

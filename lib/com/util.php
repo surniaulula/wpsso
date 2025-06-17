@@ -714,13 +714,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/*
-		 * Return an array of values that have a common numbered prefix key.
+		 * Return a indexed array of values that have a common prefix key.
 		 */
 		public static function get_multi_values( array &$opts, $opt_prefix ) {
 
-			$values = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_[0-9]+$/', $opts );
+			$values = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_([0-9]+)$/', $opts, $invert = false, $replace = '$1' );
 
-			return array_values( array_filter( $values ) );	// Remove empty elements.
+			foreach ( $values as $num => $val ) {
+
+				if ( ! self::is_valid_option_value( $val ) ) {	// Allow for 0 but not empty string.
+
+					unset( $values[ $num ] );
+				}
+			}
+
+			return $values;
 		}
 
 		/*
