@@ -219,8 +219,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				return;
 			}
 
-			$stack   = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
 			$log_msg = '';
+			$stack   = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
 
 			if ( is_int( $class_seq ) ) {
 

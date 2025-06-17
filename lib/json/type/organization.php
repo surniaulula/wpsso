@@ -61,14 +61,15 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id = null, $org_logo_key = 'org_logo_url', $list_el = 'merge' );
 
 			/*
-			 * Add media if the Organization type is not also a sub-type of Place.
+			 * Add media. if the Organization type is not also a sub-type of Place.
 			 *
 			 * See https://schema.org/image as https://schema.org/ImageObject.
 			 * See https://schema.org/subjectOf as https://schema.org/VideoObject.
 			 */
-			$type_id = WpssoSchema::get_data_type_id( $json_ret );
+			$type_id  = WpssoSchema::get_data_type_id( $json_ret );
+			$is_place = $this->p->schema->is_schema_type_child( $type_id, 'place' );
 
-			if ( ! $this->p->schema->is_schema_type_child( $type_id, 'place' ) ) {
+			if ( ! $is_place ) {
 
 				if ( $this->p->debug->enabled ) {
 

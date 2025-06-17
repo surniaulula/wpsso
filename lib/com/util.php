@@ -354,6 +354,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 *	add_after_key()
 		 *	add_before_key()
+		 *	add_multi_array()
 		 *	array_count_diff()
 		 *	array_flatten()
 		 *	array_implode()
@@ -390,6 +391,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function add_before_key( array &$arr, $match_key, $arr_or_key, $value = null ) {
 
 			return self::array_insert_element( $arr, $insert = 'before', $match_key, $arr_or_key, $value );
+		}
+
+		/*
+		 * Combine multiple options with a common prefix to an array of values.
+		 */
+		public static function add_multi_array( array &$opts, $opt_prefix, $add_key = null ) {
+
+			if ( null === $add_key ) {
+
+				$add_key = $opt_prefix;
+			}
+
+			$multi = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_[0-9]+$/', $opts );
+
+			$opts[ $add_key ] = array_values( $multi );
 		}
 
 		public static function array_count_diff( array $arr, $max = 0 ) {

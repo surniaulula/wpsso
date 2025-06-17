@@ -987,14 +987,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of return policies added.
 		}
 
-		/*
-		 * $org_id can be false, 'none', 'site', or a number (including 0).
-		 *
-		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
-		 *
-		 * Do not provide localized option names - the method will fetch the localized values.
-		 */
-		public static function add_organization_data( &$json_data, array $mod, $org_id, $org_logo_key = 'org_logo_url', $list_el = false ) {
+		public static function add_organization_data( &$json_data, array $mod, $org_id, $org_logo_key = 'org_logo_url', $list_el = false, $called_by = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1045,7 +1038,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$org_opts = WpssoSchema::get_site_organization( $mod );
 
-			} else $org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
+			} else {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'applying filters "wpsso_get_organization_options"' );
+				}
+
+				$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
+			}
 
 			if ( empty( $org_opts ) ) {
 
@@ -1060,6 +1061,30 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
 			}
+
+			/*
+			 * Maybe add properties for sub-types.
+			 */
+			$is_news  = false;
+			$is_place = false;
+
+			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
+				$org_opts[ 'org_schema_type' ] !== 'none' &&
+				$org_opts[ 'org_schema_type' ] !== 'organization' ) {	// Only check if the Schema type is a sub-type.
+
+				$is_news  = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' );
+				$is_place = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'place' );
+			}
+
+			/*
+			 * Combine multiple options with a common prefix to an array of values.
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding org_awards array' );
+			}
+
+			SucomUtil::add_multi_array( $org_opts, 'org_award', 'org_awards' );
 
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
@@ -1085,8 +1110,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/*
 			 * Add schema properties from the organization options.
-			 *
-			 * See WpssoOpmOrg->get_id().
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
 				'url'                            => 'org_url',
@@ -1110,23 +1133,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::add_offer_catalogs_data( $json_ret, $mod, $org_opts, $opt_pre = 'org_offer_catalog', $prop_name = 'hasOfferCatalog' );
 
 			/*
-			 * Maybe add properties for Schema Organization sub-types.
-			 */
-			$is_news_media_child = false;
-			$is_place_child      = false;
-
-			if ( ! empty( $org_opts[ 'org_schema_type' ] ) &&
-				$org_opts[ 'org_schema_type' ] !== 'none' &&
-				$org_opts[ 'org_schema_type' ] !== 'organization' ) {	// Only check if the Schema type is a sub-type.
-
-				$is_news_media_child = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'news.media.organization' );
-				$is_place_child      = $wpsso->schema->is_schema_type_child( $org_opts[ 'org_schema_type' ], 'place' );
-			}
-
-			/*
 			 * Schema NewsMediaOrganization type properties.
 			 */
-			if ( $is_news_media_child ) {
+			if ( $is_news ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1162,21 +1171,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Google requires at least one image so fallback to using the Organization logo.
 			 */
-			if ( ! $is_place_child ) {
+			if ( empty( $json_ret[ 'image' ] ) ) {
 
-				if ( empty( $json_ret[ 'image' ] ) ) {
+				$org_image_key = 'org_logo_url';
 
-					$org_image_key = 'org_logo_url';
+				if ( $wpsso->debug->enabled ) {
 
-					if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
+				}
 
-						$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
-					}
+				if ( ! empty( $org_opts[ $org_image_key ] ) ) {
 
-					if ( ! empty( $org_opts[ $org_image_key ] ) ) {
-
-						self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
-					}
+					self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
 				}
 			}
 
@@ -1281,7 +1287,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/*
 			 * Location property.
 			 */
-			if ( ! $is_place_child ) {
+			if ( ! $is_place ) {	// Just in case.
 
 				if ( isset( $org_opts[ 'org_place_id' ] ) ) {
 
@@ -1339,34 +1345,31 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * If this organization is also a sub-type of place, then add the schema place properties as well.
+			 * Update the @id string with the $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
 			 */
-			if ( $is_place_child ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
-				}
-
-				self::add_place_data( $json_ret, $mod, $org_id, $place_list_el = 'merge' );
-
-				/*
-				 * Update the @id string with the $org_logo_key values.
-				 */
-				WpssoSchema::update_data_id( $json_ret, $org_logo_key );
-
-			} else {
-
-				/*
-				 * Update the @id string with the $json_ret[ 'url' ], $type_id, $org_id, and $org_logo_key values.
-				 */
-				WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
-			}
+			WpssoSchema::update_data_id( $json_ret, array( $type_id, $org_id, $org_logo_key ) );
 
 			/*
 			 * Add or replace the json data.
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
+
+			unset( $json_ret );
+
+			/*
+			 * If this organization is also a sub-type of place, then add the schema place properties as well.
+			 *
+			 * Prevent recursion by making sure the this method wasn't called by self::add_place_data().
+			 */
+			if ( $is_place && 'add_place_data' !== $called_by ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
+				}
+	
+				self::add_place_data( $json_data, $mod, $org_id, 'merge', __FUNCTION__ );
+			}
 
 			return 1;	// Return count of organizations added.
 		}
@@ -1581,7 +1584,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 * See WpssoSchemaSingle::add_job_data().
 		 * See WpssoSchemaSingle::add_organization_data().
 		 */
-		public static function add_place_data( &$json_data, array $mod, $place_id, $list_el = false ) {
+		public static function add_place_data( &$json_data, array $mod, $place_id, $list_el = false, $called_by = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1593,7 +1596,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! SucomUtil::is_valid_option_value( $place_id ) ) {
 
 				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				
+
 					if ( $wpsso->debug->enabled ) {
 
 						$wpsso->debug->log( 'getting schema_place_id from metadata' );
@@ -1608,6 +1611,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Returned options can change depending on the locale, but the option key names should not be localized.
 			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'applying filters "wpsso_get_place_options"' );
+			}
+
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
 			if ( empty( $place_opts ) ) {
@@ -1622,6 +1630,22 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log_arr( 'get_place_options', $place_opts );
+			}
+
+			/*
+			 * Maybe add properties for sub-types.
+			 */
+			$is_business = false;
+			$is_food     = false;
+			$is_org      = false;
+
+			if ( ! empty( $place_opts[ 'place_schema_type' ] ) &&
+				$place_opts[ 'place_schema_type' ] !== 'none' &&
+				$place_opts[ 'place_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
+
+				$is_business = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' );
+				$is_food     = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' );
+				$is_org      = $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'organization' );
 			}
 
 			/*
@@ -1699,68 +1723,60 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * Maybe add properties for Schema Place sub-types.
+			 * Schema LocalBusiness type properties.
 			 */
-			if ( ! empty( $place_opts[ 'place_schema_type' ] ) &&
-				$place_opts[ 'place_schema_type' ] !== 'none' &&
-				$place_opts[ 'place_schema_type' ] !== 'place' ) {	// Only check if the Schema type is a sub-type.
+			if ( $is_business ) {
 
-				/*
-				 * Schema LocalBusiness type properties.
-				 */
-				if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' ) ) {
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
+					'currenciesAccepted' => 'place_currencies_accepted',
+					'paymentAccepted'    => 'place_payment_accepted',
+					'priceRange'         => 'place_price_range',
+				) );
 
-					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
-						'currenciesAccepted' => 'place_currencies_accepted',
-						'paymentAccepted'    => 'place_payment_accepted',
-						'priceRange'         => 'place_price_range',
+				if ( ! empty( $place_opts[ 'place_latitude' ] ) &&
+					! empty( $place_opts[ 'place_longitude' ] ) &&
+						! empty( $place_opts[ 'place_service_radius' ] ) ) {
+
+					$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
+						'circle' => $place_opts[ 'place_latitude' ] . ' ' .
+							$place_opts[ 'place_longitude' ] . ' ' .
+							$place_opts[ 'place_service_radius' ]
 					) );
+				}
+			}
 
-					if ( ! empty( $place_opts[ 'place_latitude' ] ) &&
-						! empty( $place_opts[ 'place_longitude' ] ) &&
-							! empty( $place_opts[ 'place_service_radius' ] ) ) {
+			/*
+			 * Schema FoodEstablishment type properties.
+			 */
+			if ( $is_food ) {
 
-						$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
-							'circle' => $place_opts[ 'place_latitude' ] . ' ' .
-								$place_opts[ 'place_longitude' ] . ' ' .
-								$place_opts[ 'place_service_radius' ]
-						) );
+				foreach ( array(
+					'acceptsReservations' => 'place_accept_res',
+					'hasMenu'             => 'place_menu_url',
+					'servesCuisine'       => 'place_cuisine',
+				) as $prop_name => $opt_key ) {
+
+					if ( 'place_accept_res' === $opt_key ) {
+
+						$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
+
+					} elseif ( isset( $place_opts[ $opt_key ] ) ) {
+
+						$json_ret[ $prop_name ] = $place_opts[ $opt_key ];
 					}
+				}
 
-					/*
-					 * Schema FoodEstablishment type properties.
-					 */
-					if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
+				if ( ! empty( $place_opts[ 'place_order_urls' ] ) ) {
 
-						foreach ( array(
-							'acceptsReservations' => 'place_accept_res',
-							'hasMenu'             => 'place_menu_url',
-							'servesCuisine'       => 'place_cuisine',
-						) as $prop_name => $opt_key ) {
+					foreach ( SucomUtil::explode_csv( $place_opts[ 'place_order_urls' ] ) as $order_url ) {
 
-							if ( 'place_accept_res' === $opt_key ) {
+						if ( empty( $order_url ) ) {	// Just in case.
 
-								$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
-
-							} elseif ( isset( $place_opts[ $opt_key ] ) ) {
-
-								$json_ret[ $prop_name ] = $place_opts[ $opt_key ];
-							}
+							continue;
 						}
 
-						if ( ! empty( $place_opts[ 'place_order_urls' ] ) ) {
-
-							foreach ( SucomUtil::explode_csv( $place_opts[ 'place_order_urls' ] ) as $order_url ) {
-
-								if ( empty( $order_url ) ) {	// Just in case.
-
-									continue;
-								}
-
-								$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
-									array( 'target' => $order_url ) );
-							}
-						}
+						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
+							array( 'target' => $order_url ) );
 					}
 				}
 			}
@@ -1810,6 +1826,24 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add or replace the json data.
 			 */
 			self::add_or_replace_data( $json_data, $json_ret, $list_el );
+
+			unset( $json_ret );
+
+			/*
+			 * If this place is also a sub-type of organization, then add the schema place properties as well.
+			 *
+			 * Prevent recursion by making sure the this method wasn't called by self::add_organization_data().
+			 */
+			if ( $is_org && 'add_organization_data' !== $called_by ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'adding organization data for place id "' . $place_id . '"' );
+				}
+
+
+				self::add_organization_data( $json_data, $mod, $place_id, 'org_logo_url', 'merge', __FUNCTION__ );
+			}
 
 			return 1;	// Return count of places added.
 		}
@@ -2575,6 +2609,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
+			 * Combine multiple options with a common prefix to an array of values.
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding service_awards array' );
+			}
+
+			SucomUtil::add_multi_array( $service_opts, 'service_award', 'service_awards' );
+
+			/*
 			 * Add service offers.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -2660,6 +2704,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Begin schema service markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $type_url );
+
+			/*
+			 * Add schema properties from the organization options.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
+				'award' => 'service_awards',	// Service Awards.
+			) );
 
 			/*
 			 * Add place, organization, and person data.

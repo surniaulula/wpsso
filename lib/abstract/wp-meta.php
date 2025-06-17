@@ -2164,21 +2164,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/*
-		 * Combine multiple options with a common prefix to an array of values.
-		 */
-		public function md_keys_multi_array( array &$md_opts, $opt_prefix, $opt_key = null ) {
-
-			if ( null === $opt_key ) {
-
-				$opt_key = $opt_prefix;
-			}
-
-			$array = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_[0-9]+$/', $md_opts );
-
-			$md_opts[ $opt_key ] = array_values( $array );
-		}
-
-		/*
 		 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 		 */
 		public function md_keys_multi_renum( array &$md_opts ) {
