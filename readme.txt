@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.0.0-dev.7 (2025/06/16)**
+**Version 21.0.0-dev.8 (2025/06/16)**
 
 * **New Features**
 	* None.
@@ -527,7 +527,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.0.0-dev.7 =
+= 21.0.0-dev.8 =
 
 (2025/06/16) Current development version - see changelog for details.
 
