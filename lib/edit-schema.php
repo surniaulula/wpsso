@@ -1958,7 +1958,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'content'  => $form->get_select( 'product_size_system', $this->p->cf[ 'form' ][ 'size_system' ] ),
 				),
 				'schema_product_age_group' => $mod[ 'is_public' ] ? array(
-					'tr_class' => 'hide_og_type hide_og_type_product',
+					'tr_class' => $args[ 'schema_tr_class' ][ 'product' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Age Group', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_age_group',
