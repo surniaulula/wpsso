@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 21.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-06-17 20:16-0700\n"
+"PO-Revision-Date: 2025-06-18 12:24-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -7179,12 +7179,12 @@ msgstr "commentaire"
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr "Privilèges insuffisants pour modifier le commentaire ID %1$s."
 
-#: lib/config.php:5629
+#: lib/config.php:5641
 msgctxt "plugin type"
 msgid "plugin"
 msgstr "extension"
 
-#: lib/config.php:5629
+#: lib/config.php:5641
 msgctxt "plugin type"
 msgid "add-on"
 msgstr "ajout"
@@ -9901,8 +9901,8 @@ msgid "A statement about public engagement activities (for news media, the newsr
 msgstr "Une déclaration sur les activités d'engagement du public (pour les médias d'information, la salle de rédaction), y compris l'implication du public - numériquement ou autrement - dans les décisions de couverture, les reportages et les activités après la publication."
 
 #: lib/messages-tooltip-meta-org.php:127
-msgid "A contact point — for example, a Customer Complaints department."
-msgstr "Un point de contact — par exemple, un service de réclamations clients."
+msgid "A contact point - for example, a customer service department or mailing address."
+msgstr "Un point de contact - par exemple, un service client ou une adresse postale."
 
 #: lib/messages-tooltip-meta-org.php:133
 msgid "Awards this organization has won."
@@ -14926,12 +14926,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "The place name may appear in WordPress editing pages and in the Schema Place \"name\" property."
-#~ msgstr "Le nom de l'endroit peut apparaître dans les pages d'édition de WordPress et dans la propriété \"name\" de Schéma Place."
-
-#~ msgid "The place alternate name may appear in the Schema Place \"alternateName\" property."
-#~ msgstr "L'autre nom de l'endroit peut apparaître dans la propriété de Schéma Place \"alternateName\"."
-
-#~ msgid "The place description may appear in the Schema Place \"description\" property."
-#~ msgstr "La description de l'endroit peut apparaître dans la propriété de Schéma Place \"description\"."
