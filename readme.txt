@@ -277,12 +277,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.0.0-dev.10 (2025/06/17)**
+**Version 21.0.0-b.1 (2025/06/18)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Refactored several methods to support Schema Contact Points for Organizations.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -528,9 +528,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.0.0-dev.10 =
+= 21.0.0-b.1 =
 
-(2025/06/17) Current development version - see changelog for details.
+(2025/06/18) Refactored several methods to support Schema Contact Points for Organizations.
 
 = 20.0.0 =
 
