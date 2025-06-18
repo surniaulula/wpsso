@@ -200,9 +200,9 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 			$def_schema_headline     = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_text         = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords_csv = $this->p->page->get_keywords_csv( $mod, $md_key = '' );
-			$awards_max              = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 );
-			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX', 10 );
-			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX', 5 );
+			$awards_max              = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX' );
+			$citations_max           = SucomUtil::get_const( 'WPSSO_SCHEMA_CITATIONS_MAX' );
+			$ispartof_url_max        = SucomUtil::get_const( 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' );
 			$input_limits            = WpssoConfig::get_input_limits();	// Uses a local cache.
 
 			$form_rows = array(

@@ -407,7 +407,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$have_offers   = false;
-			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 			$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
 			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {
@@ -2698,7 +2698,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$have_offers   = false;
-			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+			$md_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 			$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
 			foreach ( range( 0, $md_offers_max - 1, 1 ) as $key_num ) {

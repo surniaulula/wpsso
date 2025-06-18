@@ -937,7 +937,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/*
 				 * Set the reviewed by options.
 				 */
-				$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX', 5 );
+				$reviewed_by_max = SucomUtil::get_const( 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX' );
 
 				foreach ( range( 0, $reviewed_by_max - 1 ) as $num ) {
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.0.0-dev.10',	// Plugin version.
+					'version'     => '21.0.0-b.1',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5331,14 +5331,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/*
 			 * Schema limits.
 			 */
+			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 8;
+			$var_const[ 'WPSSO_SCHEMA_AWARDS_MAX' ]              = 5;
+			$var_const[ 'WPSSO_SCHEMA_CITATIONS_MAX' ]           = 5;
 			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
+			$var_const[ 'WPSSO_SCHEMA_CONTACT_POINTS_MAX' ]      = 5;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
+			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]        = 10;
+			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]     = 5;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]        = 10;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
+			$var_const[ 'WPSSO_SCHEMA_OFFER_CATALOGS_MAX' ]      = 5;
+			$var_const[ 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID' ]    = 'organization';
 			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = YEAR_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
+			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]          = 5;
+			$var_const[ 'WPSSO_SCHEMA_WEBPAGE_REVIEWED_BY_MAX' ] = 5;
 
 			/*
 			 * Setting and meta array names.

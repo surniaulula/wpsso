@@ -2505,7 +2505,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'operatingSystem'      => 'schema_review_item_software_app_os',
 					) );
 
-					$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+					$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 
 					foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 
@@ -2600,7 +2600,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data[ 'brand' ] = self::get_schema_type_context( 'https://schema.org/Brand', $single_brand );
 				}
 
-				$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+				$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' );
 
 				foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 

@@ -2100,7 +2100,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( 'award' === $about_key ) {
 
-				if ( $awards_max = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX', 5 ) ) {
+				if ( $awards_max = SucomUtil::get_const( 'WPSSO_SCHEMA_AWARDS_MAX' ) ) {
 
 					foreach ( range( 0, $awards_max - 1, 1 ) as $key_num ) {
 
