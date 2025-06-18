@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.0.0-dev.9',	// Plugin version.
+					'version'     => '21.0.0-dev.10',	// Plugin version.
 					'opt_version' => '1026',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1743,7 +1743,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sc_publisher_url'        => '',	// Soundcloud Business Page URL (localized).
 					'tiktok_publisher_url'    => '',	// TikTok Business Page URL (localized).
 					'tumblr_publisher_url'    => '',	// Tumblr Business Page URL (localized).
-					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
+					'wikipedia_publisher_url' => '',	// Wikipedia Org. Page URL (localized).
 					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
 
 					/*

@@ -28,43 +28,43 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaContact' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-meta-contact_name':	// Contact Point Name.
+				case 'tooltip-meta-contact_name':	// Contact Name.
 
 					$text = __( 'A name for this contact point (required).', 'wpsso' ) . ' ';
 
 					break;
 
-				case 'tooltip-meta-contact_name_alt':	// Contact Point Alternate Name.
+				case 'tooltip-meta-contact_name_alt':	// Contact Alternate Name.
 
 					$text = __( 'An alternate name for this contact point.', 'wpsso' ) . ' ';
 
 					break;
 
-				case 'tooltip-meta-contact_desc':	// Contact Point Description.
+				case 'tooltip-meta-contact_desc':	// Contact Description.
 
 					$text = __( 'A description for this contact point.', 'wpsso' ) . ' ';
 
 					break;
 
-				case 'tooltip-meta-contact_schema_type':	// Contact Point Schema Type.
+				case 'tooltip-meta-contact_schema_type':	// Contact Schema Type.
 
 					$text = __( 'You may optionally choose a more accurate Schema type for this contact point (default is ContactPoint).', 'wpsso' ) . ' ';
 
 					break;
 
-				case 'tooltip-meta-contact_phone':	// Contact Point Telephone.
+				case 'tooltip-meta-contact_phone':	// Contact Telephone.
 
 					$text = __( 'An optional telephone number for this contact point.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-contact_fax':	// Contact Point Fax.
+				case 'tooltip-meta-contact_fax':	// Contact Fax.
 
 					$text = __( 'An optional fax number for this contact point.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-meta-contact_email':	// Contact Point Email.
+				case 'tooltip-meta-contact_email':	// Contact Email.
 
 					$text = __( 'An optional email address for this contact point.', 'wpsso' );
 
