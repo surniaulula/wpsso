@@ -653,7 +653,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'og_types' ],
 						$css_class = 'og_type' ) . '</td>';
 			}
 
@@ -669,7 +669,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'og_types' ],
 					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -690,7 +690,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'og_types' ],
 					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -714,7 +714,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'og_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'og_types' ],
 					$css_class = 'og_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) .
-					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+					'<td class="blank">' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'schema_types' ],
 						$css_class = 'schema_type' ) . '</td>';
 			}
 
@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'schema_types' ],
 					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -784,7 +784,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'schema_types' ],
 					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -808,7 +808,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$type_keys[] = $opt_key;
 
-				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select_names' ][ 'schema_types' ],
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $args[ 'select' ][ 'schema_types' ],
 					$css_class = 'schema_type' ) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 						$obj_label ) . '</p>' . "\n";
 			}
@@ -840,7 +840,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Article Section', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_article_section',
-					'content'  => $form->get_no_select( 'schema_def_article_section', $args[ 'select_names' ][ 'article_sections' ] ),
+					'content'  => $form->get_no_select( 'schema_def_article_section', $args[ 'select' ][ 'article_sections' ] ),
 				),
 			);
 
@@ -910,42 +910,42 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_org_id',
-					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_pub_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_person_id',
-					'content'  => $form->get_no_select( 'schema_def_pub_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_pub_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_org_id',
-					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_person_id',
-					'content'  => $form->get_no_select( 'schema_def_prov_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_prov_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_fund_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_fund_org_id',
-					'content'  => $form->get_no_select( 'schema_def_fund_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_fund_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_fund_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_fund_person_id',
-					'content'  => $form->get_no_select( 'schema_def_fund_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_fund_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);
@@ -972,49 +972,49 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_location_id',
-					'content'  => $form->get_no_select( 'schema_def_event_location_id', $args[ 'select_names' ][ 'place' ],
+					'content'  => $form->get_no_select( 'schema_def_event_location_id', $args[ 'select' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_performer_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_performer_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_performer_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_performer_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_performer_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Performer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_performer_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_performer_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_performer_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 				'schema_def_event_organizer_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_organizer_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_organizer_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_organizer_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_organizer_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Organizer Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_organizer_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_organizer_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_organizer_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 				'schema_def_event_fund_org_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Funder Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_fund_org_id',
-					'content'  => $form->get_no_select( 'schema_def_event_fund_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_event_fund_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_fund_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Event Funder Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_fund_person_id',
-					'content'  => $form->get_no_select( 'schema_def_event_fund_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_event_fund_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide' ),
 				),
 			);
@@ -1034,14 +1034,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Job Hiring Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_hiring_org_id',
-					'content'  => $form->get_no_select( 'schema_def_job_hiring_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_job_hiring_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_location_id',
-					'content'  => $form->get_no_select( 'schema_def_job_location_id', $args[ 'select_names' ][ 'place' ],
+					'content'  => $form->get_no_select( 'schema_def_job_location_id', $args[ 'select' ][ 'place' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_type' => array(
@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Place Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_place_schema_type',
-					'content'  => $form->get_no_select( 'schema_def_place_schema_type', $args[ 'select_names' ][ 'place_types' ],
+					'content'  => $form->get_no_select( 'schema_def_place_schema_type', $args[ 'select' ][ 'place_types' ],
 						$css_class = 'schema_type' ),
 				),
 				'schema_def_place_country' => array(
@@ -1109,14 +1109,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Return Policy', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_mrp',
-					'content'  => $form->get_no_select( 'schema_def_product_mrp', $args[ 'select_names' ][ 'mrp' ],
+					'content'  => $form->get_no_select( 'schema_def_product_mrp', $args[ 'select' ][ 'mrp' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_category' => array(	// Product Google Category ID.
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',
-					'content'  => $form->get_no_select( 'schema_def_product_category', $args[ 'select_names' ][ 'google_prod_cats' ],
+					'content'  => $form->get_no_select( 'schema_def_product_category', $args[ 'select' ][ 'google_prod_cats' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_product_price_type' => array(
@@ -1222,7 +1222,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_review_item_type',
-					'content'  => $form->get_no_select( 'schema_def_review_item_type', $args[ 'select_names' ][ 'schema_types' ],
+					'content'  => $form->get_no_select( 'schema_def_review_item_type', $args[ 'select' ][ 'schema_types' ],
 						$css_class = 'schema_type' ),
 				),
 			);
@@ -1239,14 +1239,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Service Provider Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_service_prov_org_id',
-					'content'  => $form->get_no_select( 'schema_def_service_prov_org_id', $args[ 'select_names' ][ 'org' ],
+					'content'  => $form->get_no_select( 'schema_def_service_prov_org_id', $args[ 'select' ][ 'org' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_service_prov_person_id' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Service Provider Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_service_prov_person_id',
-					'content'  => $form->get_no_select( 'schema_def_service_prov_person_id', $args[ 'select_names' ][ 'person' ],
+					'content'  => $form->get_no_select( 'schema_def_service_prov_person_id', $args[ 'select' ][ 'person' ],
 						$css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
 			);

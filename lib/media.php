@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-									$this->p->notice->warn( $notice_msg );
+									$this->p->notice->err( $notice_msg );
 								}
 
 								SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );

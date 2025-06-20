@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			$this->maybe_show_language_notice();
 
-			$callback_args[ 'select_names' ] = array(
+			$callback_args[ 'select' ] = array(
 				'article_sections' => $this->p->util->get_article_sections(),
 				'google_prod_cats' => $this->p->util->get_google_product_categories(),
 				'mrp'              => $this->p->util->get_form_cache( 'mrp_names', $add_none = true ),

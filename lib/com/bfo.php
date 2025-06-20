@@ -338,10 +338,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg . "\n" . $output_msg );
 
-					} else {
-
-						error_log( $error_pre . ' ' . $error_msg . "\n" . $output_msg );
-					}
+					} else error_log( $error_pre . ' ' . $error_msg . "\n" . $output_msg );
 				}
 
 				ob_clean();	// Clean the output buffer for the next hook check.
