@@ -7554,12 +7554,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5641
+#: lib/config.php:5607
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5641
+#: lib/config.php:5607
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""

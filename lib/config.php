@@ -1986,53 +1986,36 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Description.
 					 */
-					'plugin_og_desc_col_attachment'           => 1,
+					'plugin_og_desc_col_attachment'           => 0,
 					'plugin_og_desc_col_download'             => 0,		// For Easy Digital Downloads.
 					'plugin_og_desc_col_page'                 => 0,
 					'plugin_og_desc_col_post'                 => 0,
 					'plugin_og_desc_col_product'              => 0,		// For WooCommerce.
-					'plugin_og_desc_col_tax_category'         => 1,
-					'plugin_og_desc_col_tax_faq_category'     => 1,
-					'plugin_og_desc_col_tax_link_category'    => 1,
-					'plugin_og_desc_col_tax_post_tag'         => 1,
-					'plugin_og_desc_col_tax_product_cat'      => 1,		// For WooCommerce.
-					'plugin_og_desc_col_tax_product_tag'      => 1,		// For WooCommerce.
+					'plugin_og_desc_col_tax_category'         => 0,
+					'plugin_og_desc_col_tax_faq_category'     => 0,
+					'plugin_og_desc_col_tax_link_category'    => 0,
+					'plugin_og_desc_col_tax_post_tag'         => 0,
+					'plugin_og_desc_col_tax_product_cat'      => 0,		// For WooCommerce.
+					'plugin_og_desc_col_tax_product_tag'      => 0,		// For WooCommerce.
 					'plugin_og_desc_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
-					'plugin_og_desc_col_user_page'            => 1,
+					'plugin_og_desc_col_user_page'            => 0,
 
 					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Image.
 					 */
 					'plugin_og_img_col_attachment'           => 0,
-					'plugin_og_img_col_download'             => 1,		// For Easy Digital Downloads.
-					'plugin_og_img_col_page'                 => 1,
-					'plugin_og_img_col_post'                 => 1,
-					'plugin_og_img_col_product'              => 1,		// For WooCommerce.
-					'plugin_og_img_col_tax_category'         => 1,
-					'plugin_og_img_col_tax_faq_category'     => 1,
-					'plugin_og_img_col_tax_link_category'    => 1,
-					'plugin_og_img_col_tax_post_tag'         => 1,
-					'plugin_og_img_col_tax_product_cat'      => 1,		// For WooCommerce.
-					'plugin_og_img_col_tax_product_tag'      => 1,		// For WooCommerce.
+					'plugin_og_img_col_download'             => 0,		// For Easy Digital Downloads.
+					'plugin_og_img_col_page'                 => 0,
+					'plugin_og_img_col_post'                 => 0,
+					'plugin_og_img_col_product'              => 0,		// For WooCommerce.
+					'plugin_og_img_col_tax_category'         => 0,
+					'plugin_og_img_col_tax_faq_category'     => 0,
+					'plugin_og_img_col_tax_link_category'    => 0,
+					'plugin_og_img_col_tax_post_tag'         => 0,
+					'plugin_og_img_col_tax_product_cat'      => 0,		// For WooCommerce.
+					'plugin_og_img_col_tax_product_tag'      => 0,		// For WooCommerce.
 					'plugin_og_img_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
-					'plugin_og_img_col_user_page'            => 1,
-
-					/*
-					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Type.
-					 */
-					'plugin_og_type_col_attachment'           => 0,
-					'plugin_og_type_col_download'             => 0,		// For Easy Digital Downloads.
-					'plugin_og_type_col_page'                 => 0,
-					'plugin_og_type_col_post'                 => 0,
-					'plugin_og_type_col_product'              => 0,		// For WooCommerce.
-					'plugin_og_type_col_tax_category'         => 0,
-					'plugin_og_type_col_tax_faq_category'     => 0,
-					'plugin_og_type_col_tax_link_category'    => 0,
-					'plugin_og_type_col_tax_post_tag'         => 0,
-					'plugin_og_type_col_tax_product_cat'      => 0,		// For WooCommerce.
-					'plugin_og_type_col_tax_product_tag'      => 0,		// For WooCommerce.
-					'plugin_og_type_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
-					'plugin_og_type_col_user_page'            => 0,
+					'plugin_og_img_col_user_page'            => 0,
 
 					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Locale.
@@ -2050,23 +2033,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_lang_col_tax_product_tag'      => 0,	// For WooCommerce.
 					'plugin_schema_lang_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
 					'plugin_schema_lang_col_user_page'            => 0,
-
-					/*
-					 * Advanced Settings > Interface > WP List Table Columns: Schema ID.
-					 */
-					'plugin_schema_type_col_attachment'           => 0,
-					'plugin_schema_type_col_download'             => 0,	// For Easy Digital Downloads.
-					'plugin_schema_type_col_page'                 => 0,
-					'plugin_schema_type_col_post'                 => 0,
-					'plugin_schema_type_col_product'              => 0,	// For WooCommerce.
-					'plugin_schema_type_col_tax_category'         => 0,
-					'plugin_schema_type_col_tax_faq_category'     => 0,
-					'plugin_schema_type_col_tax_link_category'    => 0,
-					'plugin_schema_type_col_tax_post_tag'         => 0,
-					'plugin_schema_type_col_tax_product_cat'      => 0,	// For WooCommerce.
-					'plugin_schema_type_col_tax_product_tag'      => 0,	// For WooCommerce.
-					'plugin_schema_type_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
-					'plugin_schema_type_col_user_page'            => 0,
 
 					/*
 					 * Advanced Settings > Interface > WP List Table Columns: Schema Type.
@@ -2915,7 +2881,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'columns' => array(
 					'schema_type_name' => array(
-						'header'   => 'SSO Schema',
+						'header'   => 'SSO Schema',	// First column.
 						'mt_name'  => 'schema:type:name',
 						'meta_key' => '_wpsso_head_info_schema_type_name',
 						'orderby'  => 'meta_value',
@@ -2924,7 +2890,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'def_val'  => 'none',
 					),
 					'schema_lang' => array(
-						'header'    => 'SSO Lang',
+						'header'    => 'SSO Lang',	// Second column.
 						'mt_name'   => 'schema:language',
 						'meta_key'  => '_wpsso_head_info_schema_lang',
 						'orderby'   => 'meta_value',
@@ -2933,7 +2899,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'def_val'   => 'none',
 					),
 					'og_img' => array(
-						'header'    => 'SSO Image',
+						'header'    => 'SSO Image',	// Third column.
 						'mt_name'   => 'og:image',
 						'meta_key'  => '_wpsso_head_info_og_img_thumb',
 						'orderby'   => false,	// Do not offer column sorting.
@@ -2942,7 +2908,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'def_val'   => 'none',
 					),
 					'og_desc' => array(
-						'header'    => 'SSO Desc',
+						'header'    => 'SSO Desc',	// Fourth column.
 						'mt_name'   => 'og:description',
 						'meta_key'  => '_wpsso_head_info_og_desc',
 						'orderby'   => true,
