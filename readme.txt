@@ -26,7 +26,7 @@ Present your content at its best for social sites and search results, no matter 
 
 <p><strong>The most comprehensive and accurate Schema markup plugin for WooCommerce products.</strong></p>
 
-<p>Supports over 500 different Schema types and sub-types (including Schema Event, Product Group, and Service types for WooCommerce products).</p>
+<p>Supports over 500 different Schema types and sub-types (including Schema Event, Product Group, and the Service type for WooCommerce products).</p>
 
 <p><strong>Provides complete Schema markup and meta tags for:</strong></p>
 
