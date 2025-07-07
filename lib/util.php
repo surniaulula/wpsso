@@ -3537,7 +3537,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						'https://developer.wordpress.org/reference/hooks/' . $filter_name . '/' );
 				}
 
-				$notice_msg .= ' ' . sprintf( __( 'Server request URI = %s.', 'wpsso' ), $current_url );
+				$notice_msg .= ' ' . sprintf( __( 'Server request URI = %s', 'wpsso' ), $current_url );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 

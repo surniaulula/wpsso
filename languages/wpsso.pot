@@ -16209,7 +16209,7 @@ msgid "See %s for more information."
 msgstr ""
 
 #: lib/util.php:3540
-msgid "Server request URI = %s."
+msgid "Server request URI = %s"
 msgstr ""
 
 #: lib/util.php:3562
