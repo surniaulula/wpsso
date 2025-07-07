@@ -3525,16 +3525,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 				}
 
+				$current_url = $_SERVER[ 'REQUEST_URI' ];
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).',
-					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
+				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).', 'wpsso' ),
+					$mtime_total, $filter_name, $rec_max_msg );
 
 				if ( $is_wp_filter ) {
 
-					$notice_msg = ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ),
+					$notice_msg .= ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ),
 						'https://developer.wordpress.org/reference/hooks/' . $filter_name . '/' );
 				}
+
+				$notice_msg .= ' ' . sprintf( __( 'Server request URI = %s.', 'wpsso' ), $current_url );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
@@ -3637,10 +3640,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$menu_id = $match[ 1 ];
 
-				} else {
-
-					$menu_id = key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );	// Default to first submenu.
-				}
+				} else $menu_id = key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );	// Default to first submenu.
 			}
 
 			/*

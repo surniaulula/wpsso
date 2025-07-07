@@ -9796,11 +9796,11 @@ msgstr ""
 
 #: lib/media.php:1750 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:886 lib/util.php:995 lib/util.php:1027 lib/util.php:1065
-#: lib/util.php:3528
+#: lib/util.php:3529
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1751 lib/util.php:887 lib/util.php:3529
+#: lib/media.php:1751 lib/util.php:887 lib/util.php:3530
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -15258,7 +15258,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/submenu/advanced.php:289 lib/util.php:3556
+#: lib/submenu/advanced.php:289 lib/util.php:3559
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -16198,35 +16198,39 @@ msgid ""
 "the missing function installed."
 msgstr ""
 
-#: lib/util.php:3530
+#: lib/util.php:3531
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3535
+#: lib/util.php:3536
 msgid "See %s for more information."
 msgstr ""
 
-#: lib/util.php:3559
+#: lib/util.php:3540
+msgid "Server request URI = %s."
+msgstr ""
+
+#: lib/util.php:3562
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:3561
+#: lib/util.php:3564
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:3563
+#: lib/util.php:3566
 msgid ""
 "You should consider reviewing active plugin and theme functions hooked into "
 "the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3565
+#: lib/util.php:3568
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
