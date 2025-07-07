@@ -882,23 +882,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mtime_total > $mtime_max ) {
 
-				$func_name   = 'getimagesize()';
-				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$notice_msg  = sprintf( __( 'Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s).',
-					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $image_url, $rec_max_msg );
+				$func_name    = 'getimagesize';
+				$current_url  = isset( $_SERVER[ 'REQUEST_URI' ] ) ? $_SERVER[ 'REQUEST_URI' ] : '';
+				$php_ref_url  = sprintf( __( 'https://www.php.net/manual/en/function.%s.php', 'wpsso' ), $func_name );
+				$php_ref_link = sprintf( '<a href="%1$s">%2$s</a>', $php_ref_url, $func_name );
+				$error_pre    = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+				$rec_max_msg  = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
+				$notice_msg   = sprintf( __( 'Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s).', 'wpsso' ),
+					'<code>' . $func_name . '()</code>', $mtime_total, $image_url, $rec_max_msg );
+
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+
+					$this->p->notice->warn( $notice_msg );
+				}
+
+				/*
+				 * Add extra information for the debug log.
+				 */
+				if ( $php_ref_url ) $notice_msg .= ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ), $php_ref_url );
+				if ( $current_url ) $notice_msg .= ' ' . sprintf( __( 'Server request URI = %s', 'wpsso' ), $current_url );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow PHP function detected - %1$s took %2$.3f secs for %3$s',
-						$func_name, $mtime_total, $image_url ) );
-				}
-
-				if ( $this->p->notice->is_admin_pre_notices() ) {
-
-					$this->p->notice->warn( $notice_msg );
+						$func_name . '()', $mtime_total, $image_url ) );
 				}
 			}
 
@@ -1389,16 +1398,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$error_pre  = sprintf( '%s error:', __METHOD__ );
 				$notice_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
 
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+
+					$this->p->notice->err( $notice_msg );
+				}
+
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'error reading %s article sections list file' );
-				}
-
-				if ( $this->p->notice->is_admin_pre_notices() ) {
-
-					$this->p->notice->err( $notice_msg );
 				}
 
 				return array();
@@ -1491,16 +1500,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$error_pre  = sprintf( '%s error:', __METHOD__ );
 				$notice_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
 
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+
+					$this->p->notice->err( $notice_msg );
+				}
+
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'error reading %s product categories list file' );
-				}
-
-				if ( $this->p->notice->is_admin_pre_notices() ) {
-
-					$this->p->notice->err( $notice_msg );
 				}
 
 				return array();
@@ -3525,19 +3534,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 				}
 
-				$current_url = $_SERVER[ 'REQUEST_URI' ];
+				$current_url = isset( $_SERVER[ 'REQUEST_URI' ] ) ? $_SERVER[ 'REQUEST_URI' ] : '';
+				$wp_ref_url  = $is_wp_filter ? sprintf( __( 'https://developer.wordpress.org/reference/hooks/%s/', 'wpsso' ), $filter_name ) : '';
+				$wp_ref_link = sprintf( '<a href="%1$s">%2$s</a>', $wp_ref_url, $filter_name );
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
 				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).', 'wpsso' ),
 					$mtime_total, $filter_name, $rec_max_msg );
 
-				if ( $is_wp_filter ) {
-
-					$notice_msg .= ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ),
-						'https://developer.wordpress.org/reference/hooks/' . $filter_name . '/' );
-				}
-
-				$notice_msg .= ' ' . sprintf( __( 'Server request URI = %s', 'wpsso' ), $current_url );
+				if ( $wp_ref_url )  $notice_msg .= ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ), $wp_ref_url );
+				if ( $current_url ) $notice_msg .= ' ' . sprintf( __( 'Server request URI = %s', 'wpsso' ), $current_url );
 
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
@@ -3554,16 +3560,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 */
 					if ( $is_wp_filter ) {
 
-						$filter_api_link = sprintf( '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/%1$s">%1$s</a>', $filter_name );
-						$qm_plugin_link  = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
-						$option_label    = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
-						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
+						$qm_plugin_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+						$option_label   = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
+						$option_link    = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
 
-						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute.', 'wpsso' ), $filter_api_link, $mtime_total ) . ' ';
+						/*
+						 * Start a new notice message.
+						 */
+						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute.', 'wpsso' ), $wp_ref_link, $mtime_total ) . ' ';
 
 						$notice_msg .= sprintf( __( 'This is longer than the recommended maximum of %1$.3f seconds and may affect page load time.', 'wpsso' ), $mtime_max ) . ' ';
 
-						$notice_msg .= sprintf( __( 'You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link ) . ' ';
+						$notice_msg .= sprintf( __( 'You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $wp_ref_link ) . ' ';
 
 						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $option_link );
 					}
@@ -3619,7 +3627,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$hash        = '';
 			$query       = '';
 			$admin_url   = '';
-			$current_url = $_SERVER[ 'REQUEST_URI' ];
+			$current_url = isset( $_SERVER[ 'REQUEST_URI' ] ) ? $_SERVER[ 'REQUEST_URI' ] : '';
 
 			/*
 			 * $menu_id may start with a hash or query, so parse before checking its value.
