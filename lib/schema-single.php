@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$wpsso->debug->log_arr( 'get_contact_options', $contact_opts );
 				}
 			}
-			
+
 			/*
 			 * If not adding a list element, get the existing schema type url (if one exists).
 			 */
@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'alternateName' => 'contact_name_alt',
 				'description'   => 'contact_desc',
 			) );
-			
+
 			/*
 			 * Property:
 			 *	hoursAvailable as https://schema.org/OpeningHoursSpecification
@@ -1091,7 +1091,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! SucomUtil::is_valid_option_value( $org_id ) ) {
 
 				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				
+
 					if ( $wpsso->debug->enabled ) {
 
 						$wpsso->debug->log( 'getting schema_organization_id from metadata' );
@@ -1131,7 +1131,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$org_opts = WpssoSchema::get_site_organization( $mod );
 
 			} else {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'applying filters "wpsso_get_organization_options" for org_id = ' . $org_id );
@@ -1445,9 +1445,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Prevent recursion by making sure this method wasn't called by self::add_place_data().
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
-			
+
 				if ( 'add_place_data' !== $called_by ) {
-			
+
 					if ( $wpsso->debug->enabled ) {
 
 						$wpsso->debug->log( 'adding place data for org id "' . $org_id . '"' );
@@ -1734,9 +1734,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Prevent recursion by making sure this method wasn't called by self::add_organization_data().
 			 */
 			if ( $wpsso->schema->is_schema_type_child( $type_id, 'organization' ) ) {
-			
+
 				if ( 'add_organization_data' !== $called_by ) {
-			
+
 					if ( $wpsso->debug->enabled ) {
 
 						$wpsso->debug->log( 'adding organization data for place id "' . $place_id . '"' );

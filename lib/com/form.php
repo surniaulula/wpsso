@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( ! isset( $values[ $selected ] ) ) {
 
 					if ( $is_assoc ) {
-					
+
 						$values[ $selected ] = $selected;
 
 					} else { $values[] = $selected; }

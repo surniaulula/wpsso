@@ -60,7 +60,6 @@ if ( ! class_exists( 'WpssoJsonTypePlace' ) ) {
 			 */
 			WpssoSchemaSingle::add_place_data( $json_ret, $mod, $place_id = null, $list_el = 'merge' );
 
-			
 			/*
 			 * Add media.
 			 *

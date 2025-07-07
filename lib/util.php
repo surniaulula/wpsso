@@ -3530,6 +3530,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).',
 					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
 
+				if ( $is_wp_filter ) {
+
+					$notice_msg = ' ' . sprintf( __( 'See %s for more information.', 'wpsso' ),
+						'https://developer.wordpress.org/reference/hooks/' . $filter_name . '/' );
+				}
+
 				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
 				if ( $this->p->debug->enabled ) {

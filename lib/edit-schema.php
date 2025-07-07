@@ -1198,7 +1198,7 @@ if ( ! class_exists( 'WpssoEditSchema' ) ) {
 					'tooltip'  => 'meta-place_country',
 					'content'  => $form->get_select_country( 'schema_review_item_place_country' ),
 				),
-				
+
 				/*
 				 * Schema Review Subject: Place > LocalBusiness.
 				 */
