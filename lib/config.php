@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.0.0',	// Plugin version.
+					'version'     => '21.1.0-dev.1',	// Plugin version.
 					'opt_version' => '1028',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -5268,13 +5268,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 *	80 – below Settings
 			 *	100 – below second separator
 			 */
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 85;			// Position of the SSO settings menu item.
-			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
-			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
-			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;			// Position of the view profile menu item.
-			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;		// 5 minutes.
-			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;		// 5 minutes.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 85;		// Position of the SSO settings menu item.
+			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;		// Position of the SSO notices toolbar menu item.
+			$var_const[ 'WPSSO_TB_NOTICE_TIME_ERR' ]          = 2000;	// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
+			$var_const[ 'WPSSO_TB_NOTICE_TIME_WARN' ]         = -1;		// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
+			$var_const[ 'WPSSO_TB_NOTICE_TIME_INF' ]          = -1;		// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
+			$var_const[ 'WPSSO_TB_NOTICE_TIME_UPD' ]          = 1500;	// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
+			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;		// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;		// Position of the validate menu item.
+			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;		// Position of the view profile menu item.
+			$var_const[ 'WPSSO_ADD_ROLE_MAX_TIME' ]           = 300;	// 5 minutes.
+			$var_const[ 'WPSSO_REMOVE_ROLE_MAX_TIME' ]        = 300;	// 5 minutes.
 			$var_const[ 'WPSSO_CACHE_ARRAY_FIFO_MAX' ]        = 8;
 			$var_const[ 'WPSSO_CACHE_DIR' ]                   = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHE_FILES_EXP_SECS' ]        = WEEK_IN_SECONDS;	// See WpssoUtilCache->clear_cache_files_expired().
