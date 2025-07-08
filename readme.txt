@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.1.0-dev.1 (2025/07/08)**
+**Version 21.1.0-rc.1 (2025/07/08)**
 
 * **New Features**
 	* None.
@@ -543,7 +543,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.1.0-dev.1 =
+= 21.1.0-rc.1 =
 
 (2025/07/08) Updated toolbar notification message timeouts.
 
