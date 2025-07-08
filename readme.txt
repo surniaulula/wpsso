@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.1
-WC Tested Up To: 9.9.4
+WC Tested Up To: 9.9.5
 Stable Tag: 21.0.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -277,6 +277,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.1.0-dev.1 (2025/07/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated toolbar notification message timeouts.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.0.0 (2025/06/18)**
 
 * **New Features**
@@ -527,6 +542,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.1.0-dev.1 =
+
+(2025/07/08) Updated toolbar notification message timeouts.
 
 = 21.0.0 =
 
