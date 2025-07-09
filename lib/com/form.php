@@ -603,7 +603,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_names = array();
 			}
 
-			unset( $values[ 'none' ] );	// Just in case - remove the 'none' value used for select arrays.
+			unset( $values[ 'none' ] );	// Just in case - remove the 'none' value for select arrays.
 
 			$doing_ajax      = SucomUtilWP::doing_ajax();
 			$container_class = SucomUtil::sanitize_css_class( $css_class );

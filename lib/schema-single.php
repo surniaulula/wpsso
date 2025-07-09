@@ -944,7 +944,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/*
-		 * See https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listings_merchant-return-policy.
+		 * See https://developers.google.com/search/docs/appearance/structured-data/return-policy.
 		 */
 		public static function add_merchant_return_policy_data( &$json_data, array $mod, $mrp_id, $list_el = false ) {
 
@@ -1038,8 +1038,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/*
-			 * https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listings_merchant-return-policy
-			 *
+			 * The method by which the consumer can obtain a return shipping label for a product.
+			 */
+			if ( ! empty( $mrp_opts[ 'mrp_return_label_source' ] ) ) {
+				
+				$json_ret[ 'returnLabelSource' ] = $mrp_opts[ 'mrp_return_label_source' ];
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no return label source' );
+			}
+
+			/*
 			 * The type of return fees. This property is only required if there's no cost to return the product. If you
 			 * use this property, you must set the value to https://schema.org/FreeReturn (other return fee types
 			 * aren't supported; if there are fees, use the returnShippingFeesAmount property instead).
@@ -1066,6 +1076,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'no return fees' );
+			}
+
+			/*
+			 * The restocking fee charged to the consumer when returning a product. Specify a value of type Number to
+			 * charge a percentage of the price paid by the consumer or use MonetaryAmount to charge a fixed amount.
+			 */
+			if ( ! empty( $mrp_opts[ 'mrp_restocking_amount' ] ) &&
+				! empty( $mrp_opts[ 'mrp_restocking_currency' ] ) ) {
+
+				$json_ret[ 'restockingFee' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', array(
+					'value'    => $mrp_opts[ 'mrp_restocking_amount' ],
+					'currency' => $mrp_opts[ 'mrp_restocking_currency' ],
+				) );
+
+			} elseif ( ! empty( $mrp_opts[ 'mrp_restocking_pct' ] ) ) {
+				
+				$json_ret[ 'restockingFee' ] = $mrp_opts[ 'mrp_restocking_pct' ];
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'no restocking amount or percentage' );
 			}
 
 			/*

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.2.0-dev.1',	// Plugin version.
+					'version'     => '21.2.0-dev.2',	// Plugin version.
 					'opt_version' => '1028',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3571,6 +3571,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/FreeReturn'                       => 'Free Return',
 					'https://schema.org/ReturnFeesCustomerResponsibility' => 'Customer Pays Shipping',
 					'https://schema.org/ReturnShippingFees'               => 'Return Has Shipping Fees',
+				),
+
+				/*
+				 * Validated on 2025/07/09.
+				 *
+				 * See https://schema.org/ReturnLabelSourceEnumeration.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/return-policy.
+				 */
+				'return_label_source' => array(
+					'https://schema.org/ReturnLabelCustomerResponsibility' => 'Customer Responsibility',
+					'https://schema.org/ReturnLabelDownloadAndPrint'       => 'Download And Print',
+					'https://schema.org/ReturnLabelInBox'                  => 'Label In Box',
 				),
 
 				/*
