@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.1.0\n"
+"Project-Id-Version: WPSSO Core 21.2.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3038,49 +3038,49 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:28 gettext/gettext-lib-com.php:38
-#: lib/com/form.php:925 lib/com/form.php:2599
+#: lib/com/form.php:926 lib/com/form.php:2600
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:39
-#: lib/com/form.php:926 lib/com/form.php:2600
+#: lib/com/form.php:927 lib/com/form.php:2601
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:30 gettext/gettext-lib-com.php:40
-#: lib/com/form.php:927 lib/com/form.php:2601
+#: lib/com/form.php:928 lib/com/form.php:2602
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:31 gettext/gettext-lib-com.php:41
-#: lib/com/form.php:928 lib/com/form.php:2602
+#: lib/com/form.php:929 lib/com/form.php:2603
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:963
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:964
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:966 lib/edit-schema.php:930
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:967 lib/edit-schema.php:930
 #: lib/edit-schema.php:1899
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:976
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:977
 #: lib/media-filters.php:117 lib/media.php:1561 lib/media.php:1712
 #: lib/media.php:3742
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:1059 lib/script.php:365
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:1060 lib/script.php:365
 msgid "Select Image"
 msgstr ""
 
@@ -4386,8 +4386,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:479 gettext/gettext-lib-config.php:491
 #: gettext/gettext-lib-config.php:496 gettext/gettext-lib-config.php:503
 #: gettext/gettext-lib-config.php:515 gettext/gettext-lib-config.php:521
-#: gettext/gettext-lib-config.php:529 gettext/gettext-lib-config.php:544
-#: gettext/gettext-lib-config.php:552 gettext/gettext-lib-config.php:565
+#: gettext/gettext-lib-config.php:532 gettext/gettext-lib-config.php:547
+#: gettext/gettext-lib-config.php:555 gettext/gettext-lib-config.php:568
 #: lib/messages-tooltip-plugin.php:687 lib/users/add-person.php:101
 msgctxt "option value"
 msgid "[None]"
@@ -4403,8 +4403,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:480 gettext/gettext-lib-config.php:492
 #: gettext/gettext-lib-config.php:497 gettext/gettext-lib-config.php:504
 #: gettext/gettext-lib-config.php:516 gettext/gettext-lib-config.php:522
-#: gettext/gettext-lib-config.php:530 gettext/gettext-lib-config.php:545
-#: gettext/gettext-lib-config.php:553 gettext/gettext-lib-config.php:566
+#: gettext/gettext-lib-config.php:533 gettext/gettext-lib-config.php:548
+#: gettext/gettext-lib-config.php:556 gettext/gettext-lib-config.php:569
 msgctxt "option value"
 msgid "None"
 msgstr ""
@@ -5505,210 +5505,225 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:525
 msgctxt "option value"
-msgid "Limited Return Window"
+msgid "Exchange Refund"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:526
 msgctxt "option value"
-msgid "Not Permitted"
+msgid "Full Refund"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:527
 msgctxt "option value"
-msgid "Unlimited Window"
+msgid "Store Credit Refund"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:528
 msgctxt "option value"
-msgid "Unspecified"
+msgid "Limited Return Window"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:529
+msgctxt "option value"
+msgid "Not Permitted"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:530
+msgctxt "option value"
+msgid "Unlimited Window"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:531
 msgctxt "option value"
-msgid "Invoice Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:532
-msgctxt "option value"
-msgid "List Price"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:533
-msgctxt "option value"
-msgid "Manufacturer Suggested Retail Price"
+msgid "Unspecified"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:534
 msgctxt "option value"
-msgid "Minimum Advertised Price"
+msgid "Invoice Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:535
 msgctxt "option value"
-msgid "Regular Price"
+msgid "List Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:536
 msgctxt "option value"
-msgid "Sale Price"
+msgid "Manufacturer Suggested Retail Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:537
 msgctxt "option value"
-msgid "Suggested Retail Price"
+msgid "Minimum Advertised Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:538
 msgctxt "option value"
-msgid "Free Return"
+msgid "Regular Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:539
 msgctxt "option value"
-msgid "Customer Pays Shipping"
+msgid "Sale Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:540
 msgctxt "option value"
-msgid "Return Has Shipping Fees"
+msgid "Suggested Retail Price"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:541
 msgctxt "option value"
-msgid "At Kiosk"
+msgid "Free Return"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:542
 msgctxt "option value"
-msgid "By Mail"
+msgid "Customer Pays Shipping"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:543
 msgctxt "option value"
-msgid "In Store"
+msgid "Return Has Shipping Fees"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:544
+msgctxt "option value"
+msgid "At Kiosk"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:545
+msgctxt "option value"
+msgid "By Mail"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:546
 msgctxt "option value"
-msgid "Regular"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:547
-msgctxt "option value"
-msgid "Petite"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:548
-msgctxt "option value"
-msgid "Plus"
+msgid "In Store"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:549
 msgctxt "option value"
-msgid "Tall"
+msgid "Regular"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:550
 msgctxt "option value"
-msgid "Big"
+msgid "Petite"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:551
 msgctxt "option value"
-msgid "Maternity"
+msgid "Plus"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:552
+msgctxt "option value"
+msgid "Tall"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:553
+msgctxt "option value"
+msgid "Big"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:554
 msgctxt "option value"
-msgid "AU"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:555
-msgctxt "option value"
-msgid "BR"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:556
-msgctxt "option value"
-msgid "CN"
+msgid "Maternity"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:557
 msgctxt "option value"
-msgid "DE"
+msgid "AU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:558
 msgctxt "option value"
-msgid "EU"
+msgid "BR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:559
 msgctxt "option value"
-msgid "FR"
+msgid "CN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:560
 msgctxt "option value"
-msgid "IT"
+msgid "DE"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:561
 msgctxt "option value"
-msgid "JP"
+msgid "EU"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:562
 msgctxt "option value"
-msgid "MX"
+msgid "FR"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:563
 msgctxt "option value"
-msgid "UK"
+msgid "IT"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:564
 msgctxt "option value"
-msgid "US"
+msgid "JP"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:565
+msgctxt "option value"
+msgid "MX"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:566
+msgctxt "option value"
+msgid "UK"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:567
 msgctxt "option value"
-msgid "Female"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:568
-msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:569
-msgctxt "option value"
-msgid "Unisex"
+msgid "US"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:570
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Female"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:571
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Male"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:572
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Unisex"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:573
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:574
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:575
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:576
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:577
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -7554,12 +7569,12 @@ msgstr ""
 msgid "Insufficient privileges to edit comment ID %1$s."
 msgstr ""
 
-#: lib/config.php:5611
+#: lib/config.php:5622
 msgctxt "plugin type"
 msgid "plugin"
 msgstr ""
 
-#: lib/config.php:5611
+#: lib/config.php:5622
 msgctxt "plugin type"
 msgid "add-on"
 msgstr ""
@@ -14914,23 +14929,23 @@ msgctxt "taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1182
+#: lib/schema-single.php:1196
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1183
+#: lib/schema-single.php:1197
 msgid "adding schema organization ID \"%s\""
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1290
+#: lib/schema-single.php:1304
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1293
+#: lib/schema-single.php:1307
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
@@ -14938,31 +14953,31 @@ msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or
 #. organization ID.
-#: lib/schema-single.php:1296
+#: lib/schema-single.php:1310
 msgid "Enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr ""
 
-#: lib/schema-single.php:1332
+#: lib/schema-single.php:1346
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1346 lib/schema-single.php:1355
+#: lib/schema-single.php:1360 lib/schema-single.php:1369
 msgid "ID \"%s\""
 msgstr ""
 
-#: lib/schema-single.php:1533
+#: lib/schema-single.php:1547
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1756
+#: lib/schema-single.php:1770
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema-single.php:2264
+#: lib/schema-single.php:2278
 msgid "adding schema product group"
 msgstr ""
 
-#: lib/schema-single.php:2402
+#: lib/schema-single.php:2416
 msgid "adding schema product"
 msgstr ""
 

@@ -1820,6 +1820,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * See WpssoConfig::$cf[ 'opt' ][ 'defaults' ] for example input names.
 		 *
 		 * A colon can be used for qualifiers (example, ':disabled', ':width', ':height', etc.).
+		 #
 		 * A hashtag can be used for the locale (language).
 		 *
 		 * Example sanitation:

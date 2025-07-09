@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.1.0',	// Plugin version.
+					'version'     => '21.2.0-dev.1',	// Plugin version.
 					'opt_version' => '1028',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3350,7 +3350,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324508.
 				 */
 				'adult_type' => array(
-					'none'                                                        => '[None]',
+					'none'                                                        => '[None]',	// Removed for checklists.
 					'https://schema.org/AlcoholConsideration'                     => 'Alcohol',
 					'https://schema.org/DangerousGoodConsideration'               => 'Dangerous Good',
 					'https://schema.org/HealthcareConsideration'                  => 'Healthcare',
@@ -3370,7 +3370,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324463.
 				 */
 				'age_group' => array(
-					'none'     => '[None]',
+					'none'     => '[None]',	// Removed for checklists.
 					'adult'    => 'Adult (13 years old or more)',
 					'all ages' => 'All Ages (13 years old or more)',
 					'infant'   => 'Infant (3–12 months old)',
@@ -3386,7 +3386,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/BookFormatType.
 				 */
 				'book_format' => array(
-					'none'                               => '[None]',
+					'none'                               => '[None]',	// Removed for checklists.
 					'https://schema.org/AudiobookFormat' => 'Audiobook',
 					'https://schema.org/EBook'           => 'eBook',
 					'https://schema.org/GraphicNovel'    => 'Graphic Novel',
@@ -3400,7 +3400,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/ContactPointOption.
 				 */
 				'contact_point_option' => array(
-					'none'                                        => '[None]',
+					'none'                                        => '[None]',	// Removed for checklists.
 					'https://schema.org/HearingImpairedSupported' => 'Hearing Impaired',
 					'https://schema.org/TollFree'                 => 'Toll Free',
 				),
@@ -3411,7 +3411,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
 				'employment_type' => array(
-					'none'       => '[None]',
+					'none'       => '[None]',	// Removed for checklists.
 					'FULL_TIME'  => 'Full Time',
 					'PART_TIME'  => 'Part Time',
 					'CONTRACTOR' => 'Contractor',
@@ -3429,7 +3429,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/7562785.
 				 */
 				'energy_efficiency' => array(
-					'none'                                                => '[None]',
+					'none'                                                => '[None]',	// Removed for checklists.
 					'https://schema.org/EUEnergyEfficiencyCategoryA3Plus' => 'A+++',
 					'https://schema.org/EUEnergyEfficiencyCategoryA2Plus' => 'A++',
 					'https://schema.org/EUEnergyEfficiencyCategoryA1Plus' => 'A+',
@@ -3450,7 +3450,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/EventAttendanceModeEnumeration.
 				 */
 				'event_attendance' => array(
-					'none'                                          => '[None]',
+					'none'                                          => '[None]',	// Removed for checklists.
 					'https://schema.org/MixedEventAttendanceMode'   => 'Mixed',
 					'https://schema.org/OnlineEventAttendanceMode'  => 'Online',
 					'https://schema.org/OfflineEventAttendanceMode' => 'Physical Location',
@@ -3464,7 +3464,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/EventStatusType.
 				 */
 				'event_status' => array(
-					'none'                                => '[None]',
+					'none'                                => '[None]',	// Removed for checklists.
 					'https://schema.org/EventCancelled'   => 'Cancelled',
 					'https://schema.org/EventMovedOnline' => 'Moved Online',
 					'https://schema.org/EventPostponed'   => 'Postponed',
@@ -3480,7 +3480,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/ItemAvailability.
 				 */
 				'item_availability' => array(
-					'none'                                   => '[None]',
+					'none'                                   => '[None]',	// Removed for checklists.
 			 		'https://schema.org/BackOrder'           => 'Back Order',	// Indicates that the item is available on back order.
 			 		'https://schema.org/Discontinued'        => 'Discontinued',
 			 		'https://schema.org/InStock'             => 'In Stock',
@@ -3502,7 +3502,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324469.
 				 */
 				'item_condition' => array(
-					'none'                                    => '[None]',
+					'none'                                    => '[None]',	// Removed for checklists.
 					'https://schema.org/DamagedCondition'     => 'Damaged',
 					'https://schema.org/NewCondition'         => 'New',
 					'https://schema.org/RefurbishedCondition' => 'Refurbished',
@@ -3515,15 +3515,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
 				'job_location_type' => array(
-					'none'        => '[None]',
+					'none'        => '[None]',	// Removed for checklists.
 					'TELECOMMUTE' => 'Telecommute (100% Remote)',
+				),
+
+				/*
+				 * Validated on 2025/07/09.
+				 *
+				 * See https://schema.org/RefundTypeEnumeration.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/return-policy.
+				 */
+				'refund_type' => array(
+					'https://schema.org/ExchangeRefund'    => 'Exchange Refund',
+					'https://schema.org/FullRefund'        => 'Full Refund',
+					'https://schema.org/StoreCreditRefund' => 'Store Credit Refund',
 				),
 
 				/*
 				 * Validated on 2024/07/31.
 				 *
 				 * See https://schema.org/MerchantReturnEnumeration.
-				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#returns.
+				 * See https://developers.google.com/search/docs/appearance/structured-data/return-policy.
 				 */
 				'merchant_return' => array(
 					'https://schema.org/MerchantReturnFiniteReturnWindow' => 'Limited Return Window',
@@ -3540,7 +3552,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://schema.org/PriceTypeEnumeration.
 				 */
 				'price_type' => array(
-					'none'                                      => '[None]',
+					'none'                                      => '[None]',	// Removed for checklists.
 					'https://schema.org/InvoicePrice'           => 'Invoice Price',
 					'https://schema.org/ListPrice'              => 'List Price',
 					'https://schema.org/MSRP'                   => 'Manufacturer Suggested Retail Price',
@@ -3554,7 +3566,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Validated on 2024/07/31.
 				 *
 				 * See https://schema.org/ReturnFeesEnumeration.
-				 * See https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#returns.
 				 */
 				'return_fees' => array(
 					'https://schema.org/FreeReturn'                       => 'Free Return',
@@ -3582,7 +3593,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324497.
 				 */
 				'size_group' => array(
-					'none'                                          => '[None]',
+					'none'                                          => '[None]',	// Removed for checklists.
 					'https://schema.org/WearableSizeGroupRegular'   => 'Regular',
 					'https://schema.org/WearableSizeGroupPetite'    => 'Petite',
 					'https://schema.org/WearableSizeGroupPlus'      => 'Plus',
@@ -3605,7 +3616,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324502.
 				 */
 				'size_system' => array(
-					'none'                                        => '[None]',
+					'none'                                        => '[None]',	// Removed for checklists.
 					'https://schema.org/WearableSizeSystemAU'     => 'AU',
 					'https://schema.org/WearableSizeSystemBR'     => 'BR',
 					'https://schema.org/WearableSizeSystemCN'     => 'CN',
@@ -3627,7 +3638,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://support.google.com/merchants/answer/6324479.
 				 */
 				'target_gender' => array(
-					'none'   => '[None]',
+					'none'   => '[None]',	// Removed for checklists.
 					'female' => 'Female',
 					'male'   => 'Male',
 					'unisex' => 'Unisex',

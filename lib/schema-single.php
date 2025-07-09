@@ -978,11 +978,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			list( $type_id, $type_url ) = array( 'merchant.return.policy', 'https://schema.org/MerchantReturnPolicy' );
 
-			$countries = SucomUtil::preg_grep_keys( '/^mrp_country_(.*)$/', $mrp_opts, $invert = false, $replace = '$1' );
-			$countries = array_keys( $countries );
+			$countries = SucomUtil::preg_grep_keys( '/^mrp_country_(.*)$/',
+				$mrp_opts, $invert = false, $replace = '$1' );
+			$countries = array_keys( array_filter( $countries ) );	// Remove unchecked options.
 
-			$methods = SucomUtil::preg_grep_keys( '/^mrp_method_https_schema_org_(.*)$/', $mrp_opts, $invert = false, $replace = 'https://schema.org/$1' );
+			$methods = SucomUtil::preg_grep_keys( '/^mrp_method_https_schema_org_(.*)$/',
+				$mrp_opts, $invert = false, $replace = 'https://schema.org/$1' );
 			$methods = array_keys( array_filter( $methods ) );	// Remove unchecked options.
+
+			$refund_types = SucomUtil::preg_grep_keys( '/^mrp_refund_type_https_schema_org_(.*)$/',
+				$mrp_opts, $invert = false, $replace = 'https://schema.org/$1' );
+			$refund_types = array_keys( array_filter( $refund_types ) );	// Remove unchecked options.
+
+			$item_conditions = SucomUtil::preg_grep_keys( '/^mrp_item_condition_https_schema_org_(.*)$/',
+				$mrp_opts, $invert = false, $replace = 'https://schema.org/$1' );
+			$item_conditions = array_keys( array_filter( $item_conditions ) );	// Remove unchecked options.
 
 			/*
 			 * Begin schema merchant return policy markup creation.
@@ -997,6 +1007,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'description'          => 'mrp_desc',
 				'returnPolicyCategory' => 'mrp_category',
 			) );
+
+			$json_ret[ 'refundType' ] = $refund_types;
+
+			$json_ret[ 'itemCondition' ] = $item_conditions;
 
 			if ( isset( $mrp_opts[ 'mrp_category' ] ) ) {
 

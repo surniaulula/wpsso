@@ -603,7 +603,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_names = array();
 			}
 
-			unset( $values[ 'none' ] );	// Just in case - remove 'none' value for select arrays.
+			unset( $values[ 'none' ] );	// Just in case - remove the 'none' value used for select arrays.
 
 			$doing_ajax      = SucomUtilWP::doing_ajax();
 			$container_class = SucomUtil::sanitize_css_class( $css_class );
@@ -626,10 +626,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				$input_name   = $is_assoc ? $name_prefix . '_' . $name_suffix : $name_prefix . '_' . $label;
 				$input_name   = SucomUtil::sanitize_input_name( $input_name );
+				$input_id     = SucomUtil::sanitize_css_id( $input_name );
 				$label_transl = $this->get_option_value_transl( $label );
 
 				$html .= '<span class="sucom-input-item">';
-				$html .= $this->get_checkbox( $input_name, $input_class = '', $input_id = '', $is_disabled );
+				$html .= $this->get_checkbox( $input_name, $input_class = '', $input_id, $is_disabled );
 				$html .= '<span class="sucom-checkbox-label">' . $label_transl . '</span>';
 				$html .= '</span><!-- .sucom-input-item -->';
 
