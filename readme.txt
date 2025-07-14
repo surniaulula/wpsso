@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.2.0-b.1 (2025/07/09)**
+**Version 21.2.0-rc.1 (2025/07/14)**
 
 * **New Features**
 	* None.
@@ -558,9 +558,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.2.0-b.1 =
+= 21.2.0-rc.1 =
 
-(2025/07/09) Added Schema itemCondition, refundType, restockingFee, and returnLabelSource properties to `WpssoSchemaSingle::add_merchant_return_policy_data()`.
+(2025/07/14) Added Schema itemCondition, refundType, restockingFee, and returnLabelSource properties to `WpssoSchemaSingle::add_merchant_return_policy_data()`.
 
 = 21.1.0 =
 
