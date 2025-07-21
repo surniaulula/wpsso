@@ -277,6 +277,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.3.0-dev.1 (2025/07/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a potential Schema product "brand" property error by preventing more than one product brand from being added.
+* **Developer Notes**
+	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_og_ecom_woocommerce()` to check terms for 'noindex'.
+	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_json_data_https_schema_org_product()` to check terms for 'noindex' and use only the first brand.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.2.0 (2025/07/14)**
 
 * **New Features**
@@ -371,6 +387,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.3.0-dev.1 =
+
+(2025/07/21) Fixed a potential Schema product "brand" property error by preventing more than one product brand from being added.
 
 = 21.2.0 =
 
