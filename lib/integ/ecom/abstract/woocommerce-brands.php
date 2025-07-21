@@ -108,14 +108,53 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 				SucomUtil::safe_error_log( $notice_msg );
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'error getting terms for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' = ' . $terms->get_error_message() );
+				}
+
 			} elseif ( is_array( $terms ) ) {
 
-				if ( $term_names = wp_list_pluck( $terms, 'name' ) ) {
+				foreach ( $terms as $term_num => $term_obj ) {
 
-					/*
-					 * There can only be one Open Graph brand meta tag.
-					 */
-					$mt_ecom[ 'product:brand' ] = reset( $term_names );
+					if ( empty( $term_obj->term_id ) || empty( $term_obj->name ) ) {	// Just in case.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping term object #' . $term_num . ' empty id or name' );
+						}
+
+					} elseif ( ! empty( $mt_ecom[ 'product:brand' ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping term id #' . $term_obj->term_id . ' product:brand already defined' );
+						}
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'checking if term id #' . $term_obj->term_id . ' is noindex' );
+						}
+
+						if ( $this->p->util->robots->is_noindex( 'term', $term_obj->term_id ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping term id #' . $term_obj->term_id . ' is noindex' );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'adding term id #' . $term_obj->term_id . ' name = ' . $term_obj->name );
+							}
+
+							$mt_ecom[ 'product:brand' ] = $term_obj->name;
+						}
+					}
 				}
 			}
 
@@ -162,21 +201,29 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			}
 
 			$json_ret = array();
-
-			$all_brands = array();
+			$brands   = array();
 
 			/*
 			 * Move any existing properties (from shortcodes, for example) so we can filter them and add new ones.
 			 */
 			if ( isset( $json_data[ 'brand' ] ) ) {
+				
+				/*
+				 * Example:
+				 *
+				 * Array (
+				 * 	[@context] => https://schema.org
+				 * 	[@type] => Brand
+				 * 	[name] => Brand A
+				 * )
+				 */
+				if ( isset( $json_data[ 'brand' ][ 0 ] ) ) {	// Has an array of one or more brands.
 
-				if ( isset( $json_data[ 'brand' ][ 0 ] ) ) {	// Has an array of brands.
-
-					$all_brands = $json_data[ 'brand' ];
+					$brands = $json_data[ 'brand' ];
 
 				} elseif ( ! empty( $json_data[ 'brand' ] ) ) {
 
-					$all_brands[] = $json_data[ 'brand' ];	// Markup for a single brand.
+					$brands[] = $json_data[ 'brand' ];
 				}
 
 				unset( $json_data[ 'brand' ] );
@@ -185,7 +232,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			/*
 			 * Allows getting the array key number using the brand name.
 			 */
-			$brand_names = array_flip( wp_list_pluck( $all_brands, 'name' ) );
+			$brands_by_name = array_flip( wp_list_pluck( $brands, 'name' ) );
 
 			/*
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.
@@ -197,44 +244,85 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 			if ( is_wp_error( $terms ) ) {
 
-				/*
-				 * Nothing to do - the error will have been already reported in $this->filter_og_ecom_woocommerce().
-				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'error getting terms for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' = ' . $terms->get_error_message() );
+				}
 
 			} elseif ( is_array( $terms ) ) {
 
-				foreach( $terms as $term ) {
+				foreach ( $terms as $term_num => $term_obj ) {
 
-					$term_mod = $this->p->term->get_mod( $term->term_id, $term->taxonomy );
+					if ( empty( $term_obj->term_id ) || empty( $term_obj->name ) ) {	// Just in case.
 
-					$term_mt_og = $this->p->og->get_array( $term_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
+						if ( $this->p->debug->enabled ) {
 
-					/*
-					 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
-					 */
-					$single_brand = $this->p->schema->get_json_data( $term_mod, $term_mt_og, $page_type_id = 'brand', $is_main = false, $single = true );
-
-					/*
-					 * Maybe overwrite an existing brand with the same name.
-					 */
-					if ( isset( $brand_names[ $term->name ] ) ) {
-
-						$key_num = $brand_names[ $term->name ];	// Get the array key number using the brand name.
-
-						$all_brands[ $key_num ] = $single_brand;
+							$this->p->debug->log( 'skipping term object #' . $term_num . ' empty id or name' );
+						}
 
 					} else {
+					
+						if ( $this->p->debug->enabled ) {
 
-						$all_brands[] = $single_brand;	// Add a new brand.
+							$this->p->debug->log( 'checking if term id #' . $term_obj->term_id . ' is noindex' );
+						}
 
-						$brand_names[ $term->name ] = SucomUtil::array_key_last( $all_brands );	// Prevent duplicates.
+						if ( $this->p->util->robots->is_noindex( 'term', $term_obj->term_id ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping term id #' . $term_obj->term_id . ' is noindex' );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'adding term id #' . $term_obj->term_id . ' name = ' . $term_obj->name );
+							}
+
+							$term_mod   = $this->p->term->get_mod( $term_obj->term_id, $term_obj->taxonomy );
+							$term_mt_og = $this->p->og->get_array( $term_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
+	
+							/*
+							 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
+							 */
+							$single_brand = $this->p->schema->get_json_data( $term_mod, $term_mt_og,
+								$page_type_id = 'brand', $is_main = false, $single = true );
+	
+							/*
+							 * Maybe overwrite an existing brand with the same name.
+							 */
+							if ( isset( $brands_by_name[ $term_obj->name ] ) ) {
+		
+								$key_num = $brands_by_name[ $term_obj->name ];	// Get the array key number using the brand name.
+		
+								$brands[ $key_num ] = $single_brand;
+		
+							} else {
+		
+								$brands[] = $single_brand;	// Add a new brand.
+	
+								$brands_by_name[ $term_obj->name ] = SucomUtil::array_key_last( $brands );	// Prevent duplicates.
+							}
+						}
 					}
 				}
 			}
 
-			if ( ! empty( $all_brands ) ) {
+			if ( $this->p->debug->enabled ) {
 
-				$json_ret[ 'brand' ] = $all_brands;
+				$this->p->debug->log_arr( 'brands', $brands );
+			}
+
+			if ( ! empty( $brands ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding first brands array element to json' );
+				}
+
+				$json_ret[ 'brand' ][] = reset( $brands );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
