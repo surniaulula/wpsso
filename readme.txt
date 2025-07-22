@@ -277,14 +277,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.3.0-dev.1 (2025/07/21)**
+**Version 21.3.0-rc.1 (2025/07/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a check for 'noindex' on product brands before including them in the Schema product markup.
 * **Bugfixes**
-	* Fixed a potential Schema product "brand" property error by preventing more than one product brand from being added.
+	* Fixed the potential for a Schema product "brand" property error by preventing more than one product brand from being added.
 * **Developer Notes**
 	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_og_ecom_woocommerce()` to check terms for 'noindex'.
 	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_json_data_https_schema_org_product()` to check terms for 'noindex' and use only the first brand.
@@ -388,9 +388,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.3.0-dev.1 =
+= 21.3.0-rc.1 =
 
-(2025/07/21) Fixed a potential Schema product "brand" property error by preventing more than one product brand from being added.
+(2025/07/21) Added a check for 'noindex' on product brands before including them in the Schema product markup.
 
 = 21.2.0 =
 
