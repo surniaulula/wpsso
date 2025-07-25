@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.2
-WC Tested Up To: 9.9.5
+WC Tested Up To: 10.0.4
 Stable Tag: 21.3.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -373,36 +373,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.9.
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
-**Version 20.0.0 (2025/06/14)**
-
-* **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Service tab.
-	* Added a new Document SSO &gt; Edit Schema &gt; Service Information section:
-		* Provider Org.
-		* Provider Person
-		* Service Latitude
-		* Service Longitude
-		* Service Radius
-		* Service Offers Start
-		* Service Offers End
-		* Service Offers (Name, Price, Currency, Availability)
-		* Offer Catalogs
-			* Offer Catalog Name
-			* Offer Catalog Description
-			* Offer Catalog URL
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `WpssoSchema::add_offer_catalogs_data()` method.
-	* Added a new `WpssoSchemaSingle::add_service_data()` method.
-	* Added a new `WpssoEditSchema->filter_mb_sso_edit_schema_service_rows()` method.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
 == Upgrade Notice ==
 
 = 21.4.0 =
@@ -424,8 +394,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 21.0.0 =
 
 (2025/06/18) Refactored several methods to support Schema Contact Points for Organizations.
-
-= 20.0.0 =
-
-(2025/06/14) Added a new Document SSO &gt; Edit Schema &gt; Service Information section.
 
