@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_filter_content' ] = '' .
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) .
-				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended - see help text)', 'option comment', 'wpsso' ) ) .
+				$form->get_no_td_checkbox( 'plugin_filter_content', _x( '(recommended after reading help text)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_filter_excerpt' ) .
@@ -124,6 +124,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_inherit_images' ) .
 				$form->get_no_td_checkbox( 'plugin_inherit_images', _x( '(recommended)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $args[ 'network' ] );
+
+			$table_rows[ 'plugin_attached_images' ] = '' .
+				$form->get_th_html( _x( 'Consider Attached Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_attached_images' ) .
+				$form->get_no_td_checkbox( 'plugin_attached_images', _x( '(recommended for WooCommerce product gallery images)', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_attached_images', $form, $args[ 'network' ] );
+
+			$table_rows[ 'plugin_content_images' ] = '' .
+				$form->get_th_html( _x( 'Consider Content Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_content_images' ) .
+				$form->get_no_td_checkbox( 'plugin_content_images' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_content_images', $form, $args[ 'network' ] );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' .
 				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),

@@ -3243,7 +3243,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		/*
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public static function get_attached( $obj_id, $attach_type ) {
+		public static function get_attached_ids( $obj_id, $attach_type ) {
 
 			$md_opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 

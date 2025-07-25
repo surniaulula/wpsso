@@ -4,7 +4,7 @@
 // 
 _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
-_x( '(recommended - see help text)', 'option comment', 'wpsso' );
+_x( '(recommended after reading help text)', 'option comment', 'wpsso' );
 _x( 'Use Filtered Excerpt', 'option label', 'wpsso' );
 _x( '(recommended - only if using shortcodes in excerpts)', 'option comment', 'wpsso' );
 _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' );
@@ -14,6 +14,9 @@ _x( 'Inherit Featured Image', 'option label', 'wpsso' );
 _x( '(recommended)', 'option comment', 'wpsso' );
 _x( 'Inherit Custom Images', 'option label', 'wpsso' );
 _x( '(recommended)', 'option comment', 'wpsso' );
+_x( 'Consider Attached Images', 'option label', 'wpsso' );
+_x( '(recommended for WooCommerce product gallery images)', 'option comment', 'wpsso' );
+_x( 'Consider Content Images', 'option label', 'wpsso' );
 _x( 'Image Dimension Checks', 'option label', 'wpsso' );
 _x( '(recommended)', 'option comment', 'wpsso' );
 _x( 'Prevent Thumbnail Conflicts', 'option label', 'wpsso' );

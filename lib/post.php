@@ -1943,7 +1943,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * The WPSSO FAQ add-on question shortcode attaches the post id to the question so the post cache can be
 			 * cleared if/when a question is updated.
 			 */
-			$attached_ids = self::get_attached( $post_id, 'post' );
+			$attached_ids = self::get_attached_ids( $post_id, 'post' );
 
 			foreach ( $attached_ids as $attach_id => $bool ) {
 

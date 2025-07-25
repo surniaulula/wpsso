@@ -778,20 +778,32 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/*
 				 * If we haven't reached the limit of images yet, keep going and check the content text.
 				 */
-				if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+				if ( empty( $this->p->options[ 'plugin_content_images' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'checking the content text for images' );
+						$this->p->debug->log( 'skipping content images' );
 					}
+	
+				} else {
 
-					$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
+					if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
-					$content_images = $this->get_content_images( $num_diff, $size_name, $mod );
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'getting content images' );
+						}
+	
+						$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
+	
+						$content_images = $this->get_content_images( $num_diff, $size_name, $mod );
+	
+						if ( ! empty( $content_images ) ) {
+	
+							$mt_ret = array_merge( $mt_ret, $content_images );
+						}
 
-					if ( ! empty( $content_images ) ) {
-
-						$mt_ret = array_merge( $mt_ret, $content_images );
+						unset( $content_images );
 					}
 				}
 			}
@@ -867,6 +879,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'getting og images' );
+				}
+	
 				/*
 				 * get_og_images() provides filter hooks for additional image IDs and URLs.
 				 *
@@ -880,16 +897,46 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'getting featured images' );
+				}
+	
 				$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id ) );
 			}
 
-			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+			/*
+			 * Maybe get attached images, including WooCommerce product gallery images.
+			 */
+			if ( empty( $this->p->options[ 'plugin_attached_images' ] ) ) {
 
-				$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
+				if ( $this->p->debug->enabled ) {
 
-				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id ) );
+					$this->p->debug->log( 'skipping attached images' );
+				}
+	
+			} else {
+
+				if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'getting attached images' );
+					}
+	
+					$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
+
+					$attached_images = $this->get_attached_images( $num_diff, $size_name, $post_id );
+
+					if ( ! empty( $attached_images ) ) {
+
+						$mt_ret = array_merge( $mt_ret, $attached_images );
+					}
+
+					unset( $attached_images );
+				}
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -968,6 +1015,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/*
 		 * $size_name must be a string.
+		 *
+		 * See WpssoMedia->get_post_images().
 		 */
 		public function get_attached_images( $num, $size_name, $post_id ) {
 
@@ -1063,6 +1112,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/*
 		 * $size_name must be a string.
+		 *
+		 * See WpssoMedia->get_size_name_images().
 		 */
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $content = '' ) {
 
@@ -1097,10 +1148,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$content_passed = false;
 
-			} else {
-
-				$content_passed = true;
-			}
+			} else $content_passed = true;
 
 			if ( empty( $content ) ) {
 
@@ -3877,7 +3925,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$upscale_multiplier = 1;
 
-			if ( $this->p->options[ 'plugin_upscale_images' ] ) {
+			if ( ! empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
 				$img_src_args        = self::get_image_src_args();
 				$upscale_pct_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_pct_max' ], $img_src_args );
@@ -3893,10 +3941,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$ret = false;
 
-			} else {
-
-				$ret = true;
-			}
+			} else $ret = true;
 
 			if ( $this->p->debug->enabled ) {
 

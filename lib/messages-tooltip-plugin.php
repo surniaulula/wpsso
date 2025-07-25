@@ -167,6 +167,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_attached_images':	// Consider Attached Images.
+
+					$text = __( 'After considering custom and featured images, consider using attached images (including WooCommerce product gallery images) for use in Schema markup and meta tags.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_content_images':	// Consider Content Images.
+
+					$text = __( 'After considering custom, featured, and (optionally) attached images, consider using images found in the content for use in Schema markup and meta tags.', 'wpsso' ) . ' ';
+
+					break;
+
 				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
 
 					$text = __( 'Users may upload small images to the Media Library without knowing that WordPress creates (or tries to create) several different image sizes from the uploaded originals.', 'wpsso' ) . ' ';
