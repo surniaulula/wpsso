@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.4.0-dev.1 (2025/07/25)**
+**Version 21.4.0-rc.1 (2025/07/25)**
 
 * **New Features**
 	* None.
@@ -405,7 +405,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.4.0-dev.1 =
+= 21.4.0-rc.1 =
 
 (2025/07/25) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 
