@@ -5298,7 +5298,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_NOTICE_TIME_ERR' ]          = 2000;	// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
 			$var_const[ 'WPSSO_TB_NOTICE_TIME_WARN' ]         = -1;		// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
 			$var_const[ 'WPSSO_TB_NOTICE_TIME_INF' ]          = -1;		// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
-			$var_const[ 'WPSSO_TB_NOTICE_TIME_UPD' ]          = 1500;	// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
+			$var_const[ 'WPSSO_TB_NOTICE_TIME_UPD' ]          = 1000;	// Show notification (-1 don't show, 0 show until clicked, ms to auto-show).
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;		// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;		// Position of the validate menu item.
 			$var_const[ 'WPSSO_TB_VIEW_PROFILE_MENU_ORDER' ]  = 80;		// Position of the view profile menu item.
