@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.4.0-dev.1',	// Plugin version.
+					'version'     => '21.4.0-rc.1',	// Plugin version.
 					'opt_version' => '1029',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1924,7 +1924,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_new_user_is_person'      => 0,			// Add Person Role for New Users.
 					'plugin_inherit_featured'        => 1,			// Inherit Featured Image.
 					'plugin_inherit_images'          => 1,			// Inherit Custom Images.
-					'plugin_attached_images'         => 0,			// Consider Attached Images.
+					'plugin_attached_images'         => 1,			// Consider Attached Images.
 					'plugin_content_images'          => 0,			// Consider Content Images.
 					'plugin_check_img_dims'          => 1,			// Image Dimension Checks.
 					'plugin_prevent_thumb_conflicts' => 1,			// Prevent Thumbnail Conflicts.
