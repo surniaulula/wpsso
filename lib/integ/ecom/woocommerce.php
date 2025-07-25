@@ -249,11 +249,18 @@ if ( ! class_exists( 'WpssoIntegEcomWooCommerce' ) ) {
 				if ( ! is_int( $this->page_ids[ $page_type ] ) || $this->page_ids[ $page_type ] < 1 ||
 					! SucomUtilWP::post_exists( $this->page_ids[ $page_type ] ) ) {
 
-					$notice_msg = sprintf( __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' ), $label_transl ) . ' ';
+					$notice_msg = sprintf( __( 'The WooCommerce "%1$s" option value is missing or invalid.', 'wpsso' ), $label_transl ) . ' ';
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $notice_msg );
+					}
 
 					$notice_msg .= 'shop' === $page_type ? $wc_products_msg : $wc_advanced_msg;
 
-					$this->p->notice->warn( $notice_msg );
+					$notice_key = 'wc-' . $page_type . '-page-id-invalid';
+
+					$this->p->notice->warn( $notice_msg, $user_id = null, $notice_key );
 				}
 			}
 		}
