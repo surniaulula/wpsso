@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 21.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-07-09 16:17-0700\n"
+"PO-Revision-Date: 2025-07-24 20:40-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -9113,30 +9113,30 @@ msgid "Shop page"
 msgstr "Shop page"
 
 #: lib/integ/ecom/woocommerce.php:252
-msgid "The WooCommerce \"%1$s\" option value is empty."
-msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
+msgid "The WooCommerce \"%1$s\" option value is missing or invalid."
+msgstr "La valeur de l'option WooCommerce \"%1$s\" est manquante ou non valide."
 
-#: lib/integ/ecom/woocommerce.php:325
+#: lib/integ/ecom/woocommerce.php:332
 msgid "Suggested attributes:"
 msgstr "Attributs suggérés:"
 
-#: lib/integ/ecom/woocommerce.php:642
+#: lib/integ/ecom/woocommerce.php:649
 msgid "Products Group"
 msgstr "Groupe de produits"
 
-#: lib/integ/ecom/woocommerce.php:1626
+#: lib/integ/ecom/woocommerce.php:1633
 msgid "World"
 msgstr "Monde"
 
-#: lib/integ/ecom/woocommerce.php:1853
+#: lib/integ/ecom/woocommerce.php:1860
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: lib/integ/ecom/woocommerce.php:1856
+#: lib/integ/ecom/woocommerce.php:1863
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: lib/integ/ecom/woocommerce.php:1859
+#: lib/integ/ecom/woocommerce.php:1866
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
