@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.4.1-rc.1 (2025/07/27)**
+**Version 21.4.1 (2025/07/27)**
 
 * **New Features**
 	* None.
@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.4.1-rc.1 =
+= 21.4.1 =
 
 (2025/07/27) Fixed the order of notice display timeouts in `sucomToolbarNotices()`.
 
