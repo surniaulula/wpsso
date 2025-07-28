@@ -294,10 +294,10 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			else if ( noticeTypeCount[ 'inf' ] )	noticeStatus = 'info';
 			else if ( noticeTypeCount[ 'upd' ] )	noticeStatus = 'success';
 
-			if ( noticeTypeCount[ 'upd' ] )		noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'upd' ] || -1;
-			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'inf' ] || -1;
+			if ( noticeTypeCount[ 'err' ] )		noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'err' ] || -1;
 			else if ( noticeTypeCount[ 'warn' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'warn' ] || -1;
-			else if ( noticeTypeCount[ 'err' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'err' ] || -1;
+			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'inf' ] || -1;
+			else if ( noticeTypeCount[ 'upd' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'upd' ] || -1;
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
