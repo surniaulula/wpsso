@@ -2242,7 +2242,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+						if ( $mod[ 'is_post_type_archive' ] ) {	// The post id may be 0.
 
 							if ( $this->p->debug->enabled ) {
 
@@ -3433,18 +3433,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/*
-			 * Save the original post object, in case some filters modify the global $post.
+			 * Save original post object, in case some filters modify the global $post.
 			 */
 			global $post, $wp_query;
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ?
-					'ID ' . $post->ID : '(no post ID)' ) );
+				$this->p->debug->log( 'saving original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post id)' ) );
 			}
 
-			$post_pre_filter     = $post;		// Save the original global post object.
-			$wp_query_pre_filter = $wp_query;	// Save the original global wp_query.
+			$post_pre_filter     = $post;		// Save original global post object.
+			$wp_query_pre_filter = $wp_query;	// Save original global wp_query.
 
 			/*
 			 * Make sure the $post object is correct before filtering.
@@ -3583,16 +3582,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/*
-			 * Restore the original post object.
+			 * Restore original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'restoring the original post object ' . ( isset( $post_pre_filter->ID ) ?
-					'ID ' . $post_pre_filter->ID : '(no post ID)' ) );
+				$this->p->debug->log( 'restoring original post object ' . ( isset( $post_pre_filter->ID ) ? 'id ' . $post_pre_filter->ID : '(no post id)' ) );
 			}
 
-			$post     = $post_pre_filter;		// Restore the original global post object.
-			$wp_query = $wp_query_pre_filter;	// Restore the original global wp_query.
+			$post     = $post_pre_filter;		// Restore original global post object.
+			$wp_query = $wp_query_pre_filter;	// Restore original global wp_query.
 
 			if ( $this->p->debug->enabled ) {
 

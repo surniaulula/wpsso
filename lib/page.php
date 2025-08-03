@@ -1704,9 +1704,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'wp_obj' ] );
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'get_post_field() for WP_Post = ' . $excerpt_text );
+					}
+
 				} elseif ( $mod[ 'id' ] ) {
 
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
+					
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'get_post_field() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' = ' . $excerpt_text );
+					}
 				}
 
 				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
