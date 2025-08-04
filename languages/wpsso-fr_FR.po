@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 21.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-07-25 12:22-0700\n"
+"PO-Revision-Date: 2025-08-04 12:09-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -7510,8 +7510,8 @@ msgstr "Add Open Graph meta data"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:621
-msgid "Twitter card data"
-msgstr "Données Twitter card"
+msgid "X card data"
+msgstr "Données de carte X"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:634
@@ -9382,11 +9382,11 @@ msgstr "https://developer.wordpress.org/reference/functions/image_make_intermedi
 
 #: lib/media.php:1798 lib/register.php:315 lib/util-cache.php:757
 #: lib/util.php:889 lib/util.php:1004 lib/util.php:1036 lib/util.php:1074
-#: lib/util.php:3540
+#: lib/util.php:3539
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1799 lib/util.php:890 lib/util.php:3541
+#: lib/media.php:1799 lib/util.php:890 lib/util.php:3540
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
@@ -13312,7 +13312,7 @@ msgstr "Page %1$d de %2$d"
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2318
+#: lib/page.php:2328
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
@@ -13881,7 +13881,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/submenu/advanced.php:289 lib/util.php:3564
+#: lib/submenu/advanced.php:289 lib/util.php:3563
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
@@ -14771,11 +14771,11 @@ msgstr "https://www.php.net/manual/fr/function.%s.php"
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
-#: lib/util.php:902 lib/util.php:3545
+#: lib/util.php:902 lib/util.php:3544
 msgid "See %s for more information."
 msgstr "Voir %s pour plus d'informations."
 
-#: lib/util.php:903 lib/util.php:3546
+#: lib/util.php:903 lib/util.php:3545
 msgid "Server request URI = %s"
 msgstr "URI de la requête du serveur = %s"
 
@@ -14809,139 +14809,139 @@ msgstr "La classe PHP %s est manquante &ndash; contactez votre fournisseur d'hé
 msgid "The PHP %s function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP %s est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3538
+#: lib/util.php:3537
 msgid "https://developer.wordpress.org/reference/hooks/%s/"
 msgstr "https://developer.wordpress.org/reference/hooks/%s/"
 
-#: lib/util.php:3542
+#: lib/util.php:3541
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3570
+#: lib/util.php:3569
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute."
 msgstr "Crochet(s) de filtre lent(s) détecté(s) - le filtre WordPress %1$s a pris %2$.3f secondes pour s'exécuter."
 
-#: lib/util.php:3572
+#: lib/util.php:3571
 msgid "This is longer than the recommended maximum of %1$.3f seconds and may affect page load time."
 msgstr "Cela dépasse le maximum recommandé de %1$.3f secondes et peut affecter le temps de chargement de la page."
 
-#: lib/util.php:3574
+#: lib/util.php:3573
 msgid "You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Vous devriez envisager de revoir les fonctions d'extension et de thème actives liées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3576
+#: lib/util.php:3575
 msgid "Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance."
 msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour appliquer le filtre de manière cohérente) peuvent fournir plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3968
+#: lib/util.php:3966
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3969
+#: lib/util.php:3967
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3973
+#: lib/util.php:3971
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3974
+#: lib/util.php:3972
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3978
+#: lib/util.php:3976
 msgctxt "option label"
 msgid "Google AMP Test"
 msgstr "Test AMP de Google"
 
-#: lib/util.php:3979
+#: lib/util.php:3977
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3983
+#: lib/util.php:3981
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3984
+#: lib/util.php:3982
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3988
+#: lib/util.php:3986
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3989
+#: lib/util.php:3987
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3993
+#: lib/util.php:3991
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3994
+#: lib/util.php:3992
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3998
+#: lib/util.php:3996
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3999
+#: lib/util.php:3997
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:4003
+#: lib/util.php:4001
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr "Validateur de balisage de Schéma"
 
-#: lib/util.php:4004
+#: lib/util.php:4002
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr "Balisage de Schéma"
 
-#: lib/util.php:4008
+#: lib/util.php:4006
 msgctxt "option label"
 msgid "X (Twitter) Card Validator"
 msgstr "Vérificateur de carte X (Twitter)"
 
-#: lib/util.php:4009
+#: lib/util.php:4007
 msgctxt "validator type"
 msgid "X (Twitter) Card"
 msgstr "Carte X (Twitter)"
 
-#: lib/util.php:4014
+#: lib/util.php:4012
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:4015
+#: lib/util.php:4013
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type
 #. name.
-#: lib/util.php:4085
+#: lib/util.php:4083
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name
 #. and %3$d is the object ID.
-#: lib/util.php:4095
+#: lib/util.php:4093
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
