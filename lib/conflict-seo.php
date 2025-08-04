@@ -618,7 +618,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				if ( version_compare( WPSEO_VERSION, '20.0', '>=' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
-					$label_transl  = '<strong>' . __( 'Twitter card data', 'wordpress-seo' ) . '</strong>';
+					$label_transl  = '<strong>' . __( 'X card data', 'wordpress-seo' ) . '</strong>';
 					$settings_url  = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_page_settings#/site-features' );
 					$settings_link = '<a href="' . $settings_url . '" onclick="window.location.reload();">' . $plugin_name . ' &gt; ' .
 						// translators: Please ignore - translation uses a different text domain.

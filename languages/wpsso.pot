@@ -7887,7 +7887,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:621
-msgid "Twitter card data"
+msgid "X card data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
