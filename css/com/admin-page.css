@@ -206,7 +206,11 @@ body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .ca
 /*
  * WPSSO notices and qTip.
  */
-#wpadminbar #wp-toolbar #wpsso-toolbar-notices-icon.ab-icon::before {
+#wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices {
+	display:block;
+}
+
+#wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices #wpsso-toolbar-notices-icon.ab-icon::before {
 	content:"\e826";	/* .icon-orange-5 */
 	font-family:"WpssoIcons";
 }

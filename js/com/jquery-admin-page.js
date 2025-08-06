@@ -212,15 +212,15 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 	var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
 	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
 	var counterId = '#' + pluginId + '-toolbar-notices-count';
-
-	var menuItem = jQuery( menuId );
-
-	var ajaxData = {
+	var menuItem  = jQuery( menuId );
+	var ajaxData  = {
 		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'toolbar_notices',
 		_ajax_nonce: cfg[ '_ajax_nonce' ],
 		_notice_types: cfg[ '_toolbar_notice_types' ],
 	}
+
+	jQuery( menuItem ).show();
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 
