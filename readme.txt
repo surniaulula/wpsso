@@ -282,7 +282,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated admin toolbar icon CSS for screen width of 782px or less.
 * **Bugfixes**
 	* Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
 * **Developer Notes**
