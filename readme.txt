@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.4.2-dev.1 (TBD)**
+**Version 21.4.2-dev.1 (2025/08/06)**
 
 * **New Features**
 	* None.
@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Bugfixes**
 	* Fixed the admin toolbar notification icon size and position for screen widths of 782px or less.
-	* Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
+	* Fixed the WooCommerce site visibility badge margin in the admin toolbar.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -408,7 +408,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 21.4.2-dev.1 =
 
-(TBD) Fixed the admin toolbar notification icon size and position.
+(2025/08/06) Fixed the admin toolbar notification icon size and position for screen widths of 782px or less.
 
 = 21.4.1 =
 
