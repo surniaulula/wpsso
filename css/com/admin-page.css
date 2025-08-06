@@ -208,6 +208,7 @@ body.rtl #dashboard-widgets #wpsso-cache-status table.wpsso-dashboard-widget .ca
  */
 #wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices {
 	display:block;
+	margin-left:10px;
 }
 
 #wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices #wpsso-toolbar-notices-icon.ab-icon::before {
@@ -408,6 +409,7 @@ body.rtl table td .no_input_clipboard .copy_text {
  * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
  */
 @media screen and ( max-width:1200px ) {
+
 	.wp-list-table.media .column-cb,
 	.wp-list-table.media .check-column {
 		width:3%;
@@ -419,6 +421,14 @@ body.rtl table td .no_input_clipboard .copy_text {
 	.wp-list-table.media .column-cb,
 	.wp-list-table.media .check-column {
 		width:6%;
+	}
+
+	#wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices #wpsso-toolbar-notices-icon.ab-icon {
+		top:-6px;
+	}
+
+	#wpadminbar #wp-toolbar #wp-admin-bar-wpsso-toolbar-notices #wpsso-toolbar-notices-icon.ab-icon::before {
+		font-size:30px;
 	}
 }
 
