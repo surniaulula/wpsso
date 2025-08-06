@@ -282,8 +282,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated admin toolbar icon CSS for screen width of 782px or less.
+	* None.
 * **Bugfixes**
+	* Fixed the admin toolbar notification icon size and position for screen widths of 782px or less.
 	* Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
 * **Developer Notes**
 	* None.
@@ -407,7 +408,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 21.4.2-dev.1 =
 
-(TBD) Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
+(TBD) Fixed the admin toolbar notification icon size and position.
 
 = 21.4.1 =
 
