@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.4.2-rc.1 (2025/08/06)**
+**Version 21.4.2 (2025/08/06)**
 
 * **New Features**
 	* None.
@@ -406,7 +406,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.4.2-rc.1 =
+= 21.4.2 =
 
 (2025/08/06) Fixed admin toolbar notification icon size and position for screen widths of 782px or less. Fixed WooCommerce site visibility badge margin in the admin toolbar.
 
