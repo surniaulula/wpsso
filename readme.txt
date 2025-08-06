@@ -277,6 +277,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.4.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.4.1 (2025/07/27)**
 
 * **New Features**
@@ -389,6 +404,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.4.2-dev.1 =
+
+(TBD) Fixed the WordPress "Live" status CSS margin in the admin toolbar before the WPSSO notification icon.
 
 = 21.4.1 =
 
