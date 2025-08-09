@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.4.2',	// Plugin version.
-					'opt_version' => '1029',	// Increment when changing default option values.
+					'version'     => '21.4.3-dev.1',	// Plugin version.
+					'opt_version' => '1030',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1909,8 +1909,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
 					'plugin_schema_json_min'    => 0,	// Minimize Schema JSON-LD.
-					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
-					'plugin_debug_html'         => 0,	// Add HTML Debug Messages.
+					'plugin_load_mofiles'       => 0,	// Use Plugin MO Translations.
+					'plugin_debug_html'         => 0,	// Add Debug Messages to HTML.
 					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
 
 					/*
@@ -2984,6 +2984,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'week'  => 'Week',
 					'month' => 'Month',
 					'year'  => 'Year',
+				),
+				'notice_timeouts' => array(
+					-1   => 'Do Not Auto Show',
+					0    => 'Auto Show (No Timeout)',
+					1000 => 'Auto Show for 1s',
+					2000 => 'Auto Show for 2s',
+					3000 => 'Auto Show for 3s',
+					4000 => 'Auto Show for 4s',
+					5000 => 'Auto Show for 5s',
+					5000 => 'Auto Show for 6s',
+					5000 => 'Auto Show for 7s',
+					5000 => 'Auto Show for 8s',
+					5000 => 'Auto Show for 9s',
 				),
 				'qualifiers' => array(
 					'(default)',

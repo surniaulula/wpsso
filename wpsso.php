@@ -15,7 +15,7 @@
  * Requires At Least: 5.9
  * Tested Up To: 6.8.2
  * WC Tested Up To: 10.0.4
- * Version: 21.4.2
+ * Version: 21.4.3-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'change_locale', array( $this, 'change_locale' ), -1000, 1 );
 
 			/*
-			 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
+			 * If the "Use Plugin MO Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 			 */
 			add_filter( 'load_textdomain_mofile', array( $this, 'textdomain_mofile' ), 10, 3 );
 
@@ -530,7 +530,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/*
-		 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
+		 * If the "Use Plugin MO Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 		 */
 		public function textdomain_mofile( $wp_mofile, $domain ) {
 

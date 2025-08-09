@@ -230,6 +230,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 		var noticeStatus     = '';
 		var noticeTotalCount = 0;
 		var noticeTypeCount  = {};
+		var noticeTimeouts   = cfg[ '_toolbar_notice_timeout' ];
 		var noNoticesHtml    = cfg[ '_no_notices_html' ];
 		var copyNoticesHtml  = cfg[ '_copy_notices_html' ];
 		var countMsgsTransl  = cfg[ '_count_msgs_transl' ];
@@ -289,15 +290,10 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			var noticeStatus = '';
 			var noticeTime   = -1;
 
-			if ( noticeTypeCount[ 'err' ] )		noticeStatus = 'error';
-			else if ( noticeTypeCount[ 'warn' ] )	noticeStatus = 'warning';
-			else if ( noticeTypeCount[ 'inf' ] )	noticeStatus = 'info';
-			else if ( noticeTypeCount[ 'upd' ] )	noticeStatus = 'success';
-
-			if ( noticeTypeCount[ 'err' ] )		noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'err' ] || -1;
-			else if ( noticeTypeCount[ 'warn' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'warn' ] || -1;
-			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'inf' ] || -1;
-			else if ( noticeTypeCount[ 'upd' ] )	noticeTime = cfg[ '_toolbar_notice_timeout' ][ 'upd' ] || -1;
+			if ( noticeTypeCount[ 'err' ] )       { noticeStatus = 'error';   noticeTime = noticeTimeouts[ 'err' ]; }
+			else if ( noticeTypeCount[ 'warn' ] ) { noticeStatus = 'warning'; noticeTime = noticeTimeouts[ 'warn' ]; }
+			else if ( noticeTypeCount[ 'inf' ] )  { noticeStatus = 'info';    noticeTime = noticeTimeouts[ 'inf' ]; }
+			else if ( noticeTypeCount[ 'upd' ] )  { noticeStatus = 'success'; noticeTime = noticeTimeouts[ 'upd' ]; }
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
@@ -333,9 +329,9 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				}, noticeTime );
 
-			} else {
+			} else {	/* noticeTime is 0. */
 
-				jQuery( menuId ).addClass( 'hover' );
+				menuItem.addClass( 'hover' );
 
 				jQuery( document ).on( 'click', function( event ) {
 

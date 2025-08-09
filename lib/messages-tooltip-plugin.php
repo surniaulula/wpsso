@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					$def_checked = $this->get_def_checked( 'plugin_schema_json_min' );
 
-					$opt_label_transl = _x( 'Add HTML Debug Messages', 'option label', 'wpsso' );
+					$opt_label_transl = _x( 'Add Debug Messages to HTML', 'option label', 'wpsso' );
 
 					$text = sprintf( __( 'Minimize the Schema JSON-LD markup created by %1$s in the webpage (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
+				case 'tooltip-plugin_load_mofiles': 		// Use Plugin MO Translations.
 
 					$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
 
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_debug_html': 		// Add HTML Debug Messages.
+				case 'tooltip-plugin_debug_html': 		// Add Debug Messages to HTML.
 
 					$def_checked = $this->get_def_checked( 'plugin_debug_html' );
 

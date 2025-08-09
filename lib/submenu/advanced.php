@@ -253,9 +253,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				case 'site-advanced-plugin-settings':
 
 					$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
-					$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
-
 					$debug_val    = $this->p->get_const_status( 'DEBUG_HTML' ) ? 1 : 0;
+					$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
 					$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
 
 					$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
@@ -271,13 +270,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 						self::get_option_site_use( 'plugin_schema_json_min', $this->form, $args[ 'network' ] );
 
 					$table_rows[ 'plugin_load_mofiles' ] = '' .
-						$this->form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'Use Plugin MO Translations', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_load_mofiles' ) .
 						'<td>' . $this->form->get_checkbox( 'plugin_load_mofiles' ) . '</td>' .
 						self::get_option_site_use( 'plugin_load_mofiles', $this->form, $args[ 'network' ] );
 
 					$table_rows[ 'plugin_debug_html' ] = '' .
-						$this->form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'Add Debug Messages to HTML', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'plugin_debug_html' ) .
 						'<td>' . ( ! $args[ 'network' ] && $debug_status ?
 						$this->form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
