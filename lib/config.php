@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '21.4.3-dev.1',	// Plugin version.
+					'version'     => '21.4.3-rc.1',	// Plugin version.
 					'opt_version' => '1030',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2993,9 +2993,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					3000 => 'Auto Show for 3s',
 					4000 => 'Auto Show for 4s',
 					5000 => 'Auto Show for 5s',
-					5000 => 'Auto Show for 6s',
-					5000 => 'Auto Show for 7s',
-					5000 => 'Auto Show for 8s',
+					6000 => 'Auto Show for 6s',
+					7000 => 'Auto Show for 7s',
+					8000 => 'Auto Show for 8s',
 					5000 => 'Auto Show for 9s',
 				),
 				'qualifiers' => array(
