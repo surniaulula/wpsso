@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.4.3-dev.1 (2025/08/09)**
+**Version 21.4.3-rc.1 (2025/08/09)**
 
 * **New Features**
 	* None.
@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.4.3-dev.1 =
+= 21.4.3-rc.1 =
 
 (2025/08/09) Fixed javascript definition of timeout values for notice types.
 
