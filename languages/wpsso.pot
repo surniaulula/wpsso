@@ -11033,12 +11033,12 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:102
 msgid ""
-"The default value is the object content (ie. the post content) with "
-"shortcodes and blocks expanded and HTML removed."
+"The default value is the current object (for example, the post/page) content "
+"text with shortcodes and blocks expanded and HTML removed."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:104
-msgid "You may hook the '%s' filter to modify the default value."
+msgid "You may use the <code>%s</code> filter to modify the default value."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:110
@@ -11294,7 +11294,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:447
 msgid ""
-"The title of this job, which may be different than the WordPress post / page "
+"The title of this job, which may be different than the WordPress post/page "
 "title."
 msgstr ""
 

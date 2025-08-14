@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoIntegUserPublishPressAuthors' ) ) {
 					}
 
 				/*
-				 * Make sure the first (top) author listed is the post / page author.
+				 * Make sure the first (top) author listed is the post/page author.
 				 */
 				} elseif ( 0 === $author_num ) {
 

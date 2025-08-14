@@ -1699,7 +1699,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * X (Twitter) Card options.
 					 */
 					'tc_site'           => '',			// X (Twitter) Business @username (localized).
-					'tc_type_singular'  => 'summary_large_image',	// X (Twitter) Card for Post / Page Image.
+					'tc_type_singular'  => 'summary_large_image',	// X (Twitter) Card for Singular with Image.
 					'tc_type_default'   => 'summary',		// X (Twitter) Card Type by Default.
 
 					/*

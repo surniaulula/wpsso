@@ -404,13 +404,13 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-tc_type_singular':
+					case 'tooltip-tc_type_singular':	// X (Twitter) Card for Singular with Image.
 
 						$text = 'The X (Twitter) Card type for singular content (posts, pages, or custom post types) with a custom, featured, and/or attached image.';
 
 						break;
 
-					case 'tooltip-tc_type_default':
+					case 'tooltip-tc_type_default':	// X (Twitter) Card Type by Default.
 
 						$text = 'The X (Twitter) Card type for all other images (default, image from content text, etc).';
 

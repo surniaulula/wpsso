@@ -99,9 +99,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text = __( 'The complete textual and searchable content for this creative work.', 'wpsso' ) . ' ';
 
-					$text .= __( 'The default value is the object content (ie. the post content) with shortcodes and blocks expanded and HTML removed.', 'wpsso' ) . ' ';
+					$text .= __( 'The default value is the current object (for example, the post/page) content text with shortcodes and blocks expanded and HTML removed.', 'wpsso' ) . ' ';
 					
-					$text .= sprintf( __( 'You may hook the \'%s\' filter to modify the default value.', 'wpsso' ), 'wpsso_the_text' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_the_text' ) . ' ';
 
 				 	break;
 
@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_job_title':	// Job Title.
 
-							$text = __( 'The title of this job, which may be different than the WordPress post / page title.', 'wpsso' );
+							$text = __( 'The title of this job, which may be different than the WordPress post/page title.', 'wpsso' );
 
 						 	break;
 
