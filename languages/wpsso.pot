@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.5.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 21.5.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10967,7 +10967,9 @@ msgstr ""
 #: lib/messages-tooltip-meta-schema.php:80
 #: lib/messages-tooltip-meta-schema.php:106
 #: lib/messages-tooltip-meta-schema.php:116
-msgid "You may use the <code>%s</code> filter to modify the default value."
+msgid ""
+"You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify "
+"the default and custom values respectively."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:48
@@ -15100,26 +15102,26 @@ msgstr ""
 msgid "adding schema product"
 msgstr ""
 
-#: lib/schema.php:725
+#: lib/schema.php:730
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:2199
+#: lib/schema.php:2204
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:2372
+#: lib/schema.php:2377
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:2399
+#: lib/schema.php:2404
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:4121
+#: lib/schema.php:4126
 msgid "checking schema properties"
 msgstr ""
 

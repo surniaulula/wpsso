@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is inherited from the SEO title.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_title' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
 
 				 	break;
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is inherited from the Schema name or SEO title.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_title' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
 
 				 	break;
 
@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is inherited from the Schema alternate name, Schema name, or SEO title.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_title' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
 
 				 	break;
 
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is inherited from the SEO description.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_description' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_description', 'wpsso_description' ) . ' ';
 
 				 	break;
 
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text = __( 'The language (aka locale) of this webpage.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'sucom_get_locale' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'sucom_get_locale', 'wpsso_schema_lang' ) . ' ';
 
 				 	break;
 
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is inherited from the Schema name, alternate name, or the SEO title.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_title' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
 
 				 	break;
 
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= __( 'The default value is the current object (for example, the post/page) content text with shortcodes and blocks expanded and HTML removed.', 'wpsso' ) . ' ';
 					
-					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default value.', 'wpsso' ), 'wpsso_text' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_text', 'wpsso_text' ) . ' ';
 
 				 	break;
 

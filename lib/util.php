@@ -2024,7 +2024,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $is_recent ) {
 
-				$schema_lang  = $this->p->schema->get_schema_lang( $mod, $prime_lang = true );
+				$schema_lang  = $this->p->schema->get_schema_lang( $mod, $trim_lang = true );
 				$schema_title = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 
 				$news[] = array(

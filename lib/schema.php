@@ -196,12 +196,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * Returns the language and country code, like "en_US".
 		 *
-		 * If the $prime_lang argument value is true, then return the 2 character primary language instead, like "en". Note
-		 * that some Chinese languages will return a 5 character string instead, like 'zh-cn' or 'zh-tw'.
+		 * If the $trim_lang argument value is true, then return the 2 character primary language instead, like "en".
+		 *
+		 * Note that some Chinese languages will return a 5 character string instead, like 'zh-cn' or 'zh-tw'.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 *
+		 * See WpssoUtil->get_sitemaps_news().
 		 */
-		public function get_schema_lang( $mixed = 'current', $prime_lang = false ) {
+		public function get_schema_lang( $mixed = 'current', $trim_lang = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -239,7 +242,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( $prime_lang ) {
+			if ( $trim_lang ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -282,6 +285,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$this->p->debug->log( 'returning schema_lang = ' . $schema_lang );
 			}
+
+			$schema_lang = apply_filters( 'wpsso_schema_lang', $schema_lang, $mixed, $trim_lang );
 
 			return $schema_lang;
 		}
