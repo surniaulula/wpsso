@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.4.3\n"
+"Project-Id-Version: WPSSO Core 21.5.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5452,7 +5452,7 @@ msgid "Physical Location"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:509 lib/messages-tooltip-meta-schema.php:327
+#: gettext/gettext-lib-config.php:509 lib/messages-tooltip-meta-schema.php:331
 msgctxt "option value"
 msgid "Cancelled"
 msgstr ""
@@ -5463,13 +5463,13 @@ msgid "Moved Online"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:511 lib/messages-tooltip-meta-schema.php:330
+#: gettext/gettext-lib-config.php:511 lib/messages-tooltip-meta-schema.php:334
 msgctxt "option value"
 msgid "Postponed"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-config.php:512 lib/messages-tooltip-meta-schema.php:333
+#: gettext/gettext-lib-config.php:512 lib/messages-tooltip-meta-schema.php:337
 msgctxt "option value"
 msgid "Rescheduled"
 msgstr ""
@@ -6523,7 +6523,7 @@ msgctxt "option label"
 msgid "Add Article Body Property"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:140 lib/messages-tooltip-meta-schema.php:174
+#: gettext/gettext-lib-pro.php:140 lib/messages-tooltip-meta-schema.php:178
 #: lib/pro/admin/advanced.php:972 lib/std/admin/advanced.php:853
 msgctxt "option label"
 msgid "Default Article Section"
@@ -10538,7 +10538,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
-#: lib/messages-tooltip-meta-schema.php:1064 lib/messages-tooltip-meta.php:76
+#: lib/messages-tooltip-meta-schema.php:1068 lib/messages-tooltip-meta.php:76
 #: lib/messages-tooltip-meta.php:196 lib/messages-tooltip-opengraph.php:128
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
@@ -10556,7 +10556,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
-#: lib/messages-tooltip-meta-schema.php:1072 lib/messages-tooltip-meta.php:86
+#: lib/messages-tooltip-meta-schema.php:1076 lib/messages-tooltip-meta.php:86
 #: lib/messages-tooltip-meta.php:207 lib/messages-tooltip-opengraph.php:145
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
@@ -10806,8 +10806,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:133
 #: lib/messages-tooltip-meta-place.php:141
-#: lib/messages-tooltip-meta-schema.php:963
-#: lib/messages-tooltip-meta-schema.php:971
+#: lib/messages-tooltip-meta-schema.php:967
+#: lib/messages-tooltip-meta-schema.php:975
 msgid ""
 "You may use a service like <a href=\"http://www.gps-coordinates.net/"
 "\">Google Maps GPS Coordinates</a> (as an example), to find the approximate "
@@ -10842,7 +10842,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-place.php:173
-#: lib/messages-tooltip-meta-schema.php:977
+#: lib/messages-tooltip-meta-schema.php:981
 msgid ""
 "The geographic area where a service is provided, in meters around a set of "
 "latitude and longitude coordinates."
@@ -10896,14 +10896,14 @@ msgstr ""
 #. translators: %1$s is a lower case item name, for example 'product Google
 #. category'.
 #: lib/messages-tooltip-meta-product.php:55
-#: lib/messages-tooltip-meta-schema.php:178
+#: lib/messages-tooltip-meta-schema.php:182
 msgid ""
 "A custom value for the %1$s, which may be different than the %2$s option "
 "value."
 msgstr ""
 
 #: lib/messages-tooltip-meta-product.php:57
-#: lib/messages-tooltip-meta-schema.php:181
+#: lib/messages-tooltip-meta-schema.php:185
 msgid "Select \"[None]\" to exclude the %s from Schema markup and meta tags."
 msgstr ""
 
@@ -10941,8 +10941,8 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference,
 #. for example 'a product Google category'.
 #: lib/messages-tooltip-meta-product.php:75
-#: lib/messages-tooltip-meta-schema.php:187
-#: lib/messages-tooltip-meta-schema.php:760 lib/messages-tooltip-plugin.php:841
+#: lib/messages-tooltip-meta-schema.php:191
+#: lib/messages-tooltip-meta-schema.php:764 lib/messages-tooltip-plugin.php:841
 #: lib/messages-tooltip-plugin.php:883 lib/messages-tooltip-schema.php:179
 #: lib/messages-tooltip-schema.php:363
 msgid ""
@@ -11031,648 +11031,658 @@ msgstr ""
 msgid "The complete textual and searchable content for this creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:106
+#: lib/messages-tooltip-meta-schema.php:102
+msgid ""
+"The default value is the object content (ie. the post content) with "
+"shortcodes and blocks expanded and HTML removed."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:104
+msgid "You may hook the '%s' filter to modify the default value."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:110
 msgid ""
 "A comma delimited list of keywords or tags describing the creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:112
+#: lib/messages-tooltip-meta-schema.php:116
 msgid "The content of this creative work is family friendly."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:118
+#: lib/messages-tooltip-meta-schema.php:122
 msgid ""
 "The year during which the claimed copyright was first asserted for this "
 "creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:124
+#: lib/messages-tooltip-meta-schema.php:128
 msgid "A license document URL that applies to this creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:131
+#: lib/messages-tooltip-meta-schema.php:135
 msgid "A publisher for this creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:138
-#: lib/messages-tooltip-meta-schema.php:949
+#: lib/messages-tooltip-meta-schema.php:142
+#: lib/messages-tooltip-meta-schema.php:953
 msgid "A service provider, service operator, or service performer."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:145
+#: lib/messages-tooltip-meta-schema.php:149
 msgid ""
 "A funder that supports (sponsors) this creative work through somekind of "
 "financial contribution."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:151
+#: lib/messages-tooltip-meta-schema.php:155
 msgid "URLs to other creative works that this content is a part of."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:157
+#: lib/messages-tooltip-meta-schema.php:161
 msgid "Awards this creative work has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:163
+#: lib/messages-tooltip-meta-schema.php:167
 msgid ""
 "Reference citations to creative works, such as other publications, web "
 "pages, scholarly articles, etc."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:165
+#: lib/messages-tooltip-meta-schema.php:169
 msgid ""
 "You can find <a href=\"%1$s\">information on writing citations from Google</"
 "a> or one of many articles on <a href=\"%2$s\">How to Make a Citation in "
 "MLA, APA, and Chicago/Turabian</a>."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:166
+#: lib/messages-tooltip-meta-schema.php:170
 msgid "https://www.google.com/search?q=how+to+write+a+citation"
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:167
+#: lib/messages-tooltip-meta-schema.php:171
 msgid "https://www.bibliography.com/how-to/how-to-make-a-citation/"
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:193
+#: lib/messages-tooltip-meta-schema.php:197
 msgid ""
 "Note that the %s value is automatically inherited as a default value by any "
 "child pages."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:201
+#: lib/messages-tooltip-meta-schema.php:205
 msgid "The estimated reading time (in minutes) for this article."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:203
+#: lib/messages-tooltip-meta-schema.php:207
 msgid ""
 "A value of 0 minutes excludes the estimated reading time from Schema markup "
 "and meta tags."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:213
-#: lib/messages-tooltip-meta-schema.php:818
+#: lib/messages-tooltip-meta-schema.php:217
+#: lib/messages-tooltip-meta-schema.php:822
 msgid "The creative work author can be a person or an organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:219
-#: lib/messages-tooltip-meta-schema.php:824
+#: lib/messages-tooltip-meta-schema.php:223
+#: lib/messages-tooltip-meta-schema.php:828
 msgid "Enter the name of the author for this creative work."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:225
-#: lib/messages-tooltip-meta-schema.php:830
+#: lib/messages-tooltip-meta-schema.php:229
+#: lib/messages-tooltip-meta-schema.php:834
 msgid ""
 "The home page of the author, or another definitive URL that provides "
 "information about the author, such as the person or organization's Wikipedia "
 "or Wikidata page."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:231
-#: lib/messages-tooltip-meta-schema.php:836
+#: lib/messages-tooltip-meta-schema.php:235
+#: lib/messages-tooltip-meta-schema.php:840
 msgid ""
 "The date when this creative work was published or entered public discourse."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:237
-#: lib/messages-tooltip-meta-schema.php:842
+#: lib/messages-tooltip-meta-schema.php:241
+#: lib/messages-tooltip-meta-schema.php:846
 msgid "The date when this creative work was created."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:243
+#: lib/messages-tooltip-meta-schema.php:247
 msgid "The edition of the book."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:249
+#: lib/messages-tooltip-meta-schema.php:253
 msgid "The publication format of the book."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:255
+#: lib/messages-tooltip-meta-schema.php:259
 msgid "The number of pages in the book."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:261
+#: lib/messages-tooltip-meta-schema.php:265
 msgid "The ISBN code (aka International Standard Book Number) of the book."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:267
+#: lib/messages-tooltip-meta-schema.php:271
 msgid "The total duration of the audio book."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:281
+#: lib/messages-tooltip-meta-schema.php:285
 msgid "The language (aka locale) for the event performance."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:287
+#: lib/messages-tooltip-meta-schema.php:291
 msgid ""
 "Select if the event occurs online, offline at a physical location, or a mix "
 "of both online and offline."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:293
+#: lib/messages-tooltip-meta-schema.php:297
 msgid "An online or virtual location URL to attend the event."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:299
+#: lib/messages-tooltip-meta-schema.php:303
 msgid "Select a physical venue for the event."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:306
+#: lib/messages-tooltip-meta-schema.php:310
 msgid "Select a performer for the event."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:313
+#: lib/messages-tooltip-meta-schema.php:317
 msgid "Select an organizer for the event."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:320
+#: lib/messages-tooltip-meta-schema.php:324
 msgid ""
 "Select a funder that supports (sponsors) the event through somekind of "
 "financial contribution."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:335
+#: lib/messages-tooltip-meta-schema.php:339
 msgid "Select the event status (default is Scheduled)."
 msgstr ""
 
 #. translators: %s is the "Cancelled" event status.
-#: lib/messages-tooltip-meta-schema.php:338
+#: lib/messages-tooltip-meta-schema.php:342
 msgid "If you select %s, do not change the original event start date."
 msgstr ""
 
 #. translators: %s is the "Postponed" event status.
-#: lib/messages-tooltip-meta-schema.php:342
+#: lib/messages-tooltip-meta-schema.php:346
 msgid ""
 "If you select %s (but the rescheduled date isn't known yet), do not change "
 "the original event start date."
 msgstr ""
 
 #. translators: %s is the "Rescheduled" event status.
-#: lib/messages-tooltip-meta-schema.php:346
+#: lib/messages-tooltip-meta-schema.php:350
 msgid ""
 "If you select %s, update the previous start date option, then change the "
 "original start and end dates."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:353
+#: lib/messages-tooltip-meta-schema.php:357
 msgid "Select the event start date and time."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:359
+#: lib/messages-tooltip-meta-schema.php:363
 msgid "Select the event end date and time."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:365
+#: lib/messages-tooltip-meta-schema.php:369
 msgid ""
 "The previously scheduled start date for the event, if the event has been "
 "rescheduled."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:371
-#: lib/messages-tooltip-meta-schema.php:983
+#: lib/messages-tooltip-meta-schema.php:375
+#: lib/messages-tooltip-meta-schema.php:987
 msgid "The date and time when tickets go on sale."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:377
-#: lib/messages-tooltip-meta-schema.php:989
+#: lib/messages-tooltip-meta-schema.php:381
+#: lib/messages-tooltip-meta-schema.php:993
 msgid "The date and time when tickets are no longer on sale."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:383
+#: lib/messages-tooltip-meta-schema.php:387
 msgid ""
 "One or more offers for the event, including the offer name, price and "
 "currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:397
+#: lib/messages-tooltip-meta-schema.php:401
 msgid ""
 "A list of steps for this How-To, including the How-To step name and "
 "(optional) longer How-To step description."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:399
+#: lib/messages-tooltip-meta-schema.php:403
 msgid ""
 "You can also (optionally) define How-To sections to group individual steps "
 "together."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:405
+#: lib/messages-tooltip-meta-schema.php:409
 msgid "A list of supplies that are consumed when completing this How-To."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:411
+#: lib/messages-tooltip-meta-schema.php:415
 msgid "A list of tools or objects that are required to complete this How-To."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:417
+#: lib/messages-tooltip-meta-schema.php:421
 msgid ""
 "The total time it takes to prepare the items before executing the "
 "instruction steps."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:423
+#: lib/messages-tooltip-meta-schema.php:427
 msgid ""
 "The total time required to perform the all instructions (including any "
 "preparation time)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:429
+#: lib/messages-tooltip-meta-schema.php:433
 msgid ""
 "The quantity made when following these How-To instructions (example: \"a "
 "paper airplane\", \"10 personalized candles\", etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:443
+#: lib/messages-tooltip-meta-schema.php:447
 msgid ""
 "The title of this job, which may be different than the WordPress post / page "
 "title."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:449
+#: lib/messages-tooltip-meta-schema.php:453
 msgid "Select a organization for the Schema JobPosting hiring organization."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:455
+#: lib/messages-tooltip-meta-schema.php:459
 msgid "Select a location for the Schema JobPosting job location."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:461
+#: lib/messages-tooltip-meta-schema.php:465
 msgid ""
 "Select an optional Google approved location type (see <a href=\"%s"
 "\">Google's Job Posting guidelines</a> for more information)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:467
+#: lib/messages-tooltip-meta-schema.php:471
 msgid "Optionally provide details on the base salary."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:469
+#: lib/messages-tooltip-meta-schema.php:473
 msgid "The base salary must be numeric, like 120000, 50.00, etc."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:471
+#: lib/messages-tooltip-meta-schema.php:475
 msgid ""
 "Do not use spaces, commas, or currency symbols, as these are not valid "
 "numeric values."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:477
+#: lib/messages-tooltip-meta-schema.php:481
 msgid ""
 "Check one or more Google approved employment types (see <a href=\"%s"
 "\">Google's Job Posting guidelines</a> for more information)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:483
+#: lib/messages-tooltip-meta-schema.php:487
 msgid "Select a job posting expiration date and time."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:485
+#: lib/messages-tooltip-meta-schema.php:489
 msgid ""
 "If a job posting never expires, or you do not know when the job will expire, "
 "do not select an expiration date and time."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:504
+#: lib/messages-tooltip-meta-schema.php:508
 msgid "The target education level for the learning resource."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:506
+#: lib/messages-tooltip-meta-schema.php:510
 msgid "Select a country-specific education level or one of the generic values."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:512
+#: lib/messages-tooltip-meta-schema.php:516
 msgid ""
 "The predominant type or kind characterizing the learning resource (example: "
 "\"Concept overview\", \"Problem walkthrough\", \"Real life example\", "
 "\"Activity\", \"Experiment\", \"Lecture\", etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:526
+#: lib/messages-tooltip-meta-schema.php:530
 msgid "The name of one or more actors appearing in the movie."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:532
+#: lib/messages-tooltip-meta-schema.php:536
 msgid "The name of one or more directors of the movie."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:538
+#: lib/messages-tooltip-meta-schema.php:542
 msgid "The principle production company or studio responsible for the movie."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:544
+#: lib/messages-tooltip-meta-schema.php:548
 msgid "The date the movie was released."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:550
+#: lib/messages-tooltip-meta-schema.php:554
 msgid "The total movie runtime from the start to the end of the credits."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:560
+#: lib/messages-tooltip-meta-schema.php:564
 msgid "Select an organization for the Schema Organization markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:568
-#: lib/messages-tooltip-meta-schema.php:586 lib/messages-tooltip-plugin.php:146
+#: lib/messages-tooltip-meta-schema.php:572
+#: lib/messages-tooltip-meta-schema.php:590 lib/messages-tooltip-plugin.php:146
 #: lib/submenu/tools.php:34 lib/user.php:67 lib/user.php:1879 lib/user.php:1970
 #: lib/user.php:2084
 msgctxt "user role"
 msgid "Person"
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:570
+#: lib/messages-tooltip-meta-schema.php:574
 msgid "Select a person for the Schema Person markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:572
-#: lib/messages-tooltip-meta-schema.php:590
+#: lib/messages-tooltip-meta-schema.php:576
+#: lib/messages-tooltip-meta-schema.php:594
 msgid ""
 "A user must be member of the WordPress \"%s\" role to be included in this "
 "list."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:578
+#: lib/messages-tooltip-meta-schema.php:582
 msgid ""
 "Select a place for the Schema Place markup, or enter custom place "
 "information below."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:588
+#: lib/messages-tooltip-meta-schema.php:592
 msgid "Select a person for the Schema ProfilePage markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:596
+#: lib/messages-tooltip-meta-schema.php:600
 msgid "An optional heading / description of the question and it's answer."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:598
+#: lib/messages-tooltip-meta-schema.php:602
 msgid ""
 "If the question is part of a larger group of questions on the same subject, "
 "then this would be an appropriate field to describe that subject (example: "
 "\"QA about a Flying Toaster\" )."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:611
+#: lib/messages-tooltip-meta-schema.php:615
 msgid ""
 "The type of cuisine for this recipe (example: French, Indian, Italian, "
 "Japanese, Thai, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:617
+#: lib/messages-tooltip-meta-schema.php:621
 msgid ""
 "The course name for this recipe (example: Appetizer, Entr&eacute;e, Main "
 "Course / Main Dish, Dessert, Side-dish, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:623
+#: lib/messages-tooltip-meta-schema.php:627
 msgid ""
 "The quantity or servings made by this recipe (example: \"5 servings\", "
 "\"Serves 4-6\", \"Yields 10 burgers\", etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:629
+#: lib/messages-tooltip-meta-schema.php:633
 msgid ""
 "The cooking method used for this recipe (example: Baking, Frying, Steaming, "
 "etc.)"
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:641
+#: lib/messages-tooltip-meta-schema.php:645
 msgid "The total time it takes to cook this recipe."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:653
+#: lib/messages-tooltip-meta-schema.php:657
 msgid ""
 "A list of ingredients for this recipe (example: \"1 cup flour\", \"1 tsp salt"
 "\", etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:659
+#: lib/messages-tooltip-meta-schema.php:663
 msgid ""
 "A list of instructions for this recipe, including the instruction name "
 "(example: \"beat eggs\", \"add and mix flour\", etc.) and (optional) longer "
 "instruction description."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:661
+#: lib/messages-tooltip-meta-schema.php:665
 msgid ""
 "You can also (optionally) define recipe instruction sections to group "
 "individual instructions together."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:667
+#: lib/messages-tooltip-meta-schema.php:671
 msgid ""
 "The serving size in volume or mass. A serving size is required to include "
 "nutrition information in the Schema recipe markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:673
+#: lib/messages-tooltip-meta-schema.php:677
 msgid "The number of calories per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:679
+#: lib/messages-tooltip-meta-schema.php:683
 msgid "The number of grams of protein per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:685
+#: lib/messages-tooltip-meta-schema.php:689
 msgid "The number of grams of fiber per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:691
+#: lib/messages-tooltip-meta-schema.php:695
 msgid "The number of grams of carbohydrates per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:697
+#: lib/messages-tooltip-meta-schema.php:701
 msgid "The number of grams of sugar per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:703
+#: lib/messages-tooltip-meta-schema.php:707
 msgid "The number of milligrams of sodium per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:709
+#: lib/messages-tooltip-meta-schema.php:713
 msgid "The number of grams of fat per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:715
+#: lib/messages-tooltip-meta-schema.php:719
 msgid "The number of grams of saturated fat per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:721
+#: lib/messages-tooltip-meta-schema.php:725
 msgid "The number of grams of unsaturated fat per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:727
+#: lib/messages-tooltip-meta-schema.php:731
 msgid "The number of grams of trans fat per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:733
+#: lib/messages-tooltip-meta-schema.php:737
 msgid "The number of milligrams of cholesterol per serving."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:747
+#: lib/messages-tooltip-meta-schema.php:751
 msgid ""
 "A rating for the subject or item being reviewed, along with the low / high "
 "rating scale (default is 1 to 5)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:749
+#: lib/messages-tooltip-meta-schema.php:753
 msgid ""
 "If you are reviewing a claim, the following rating scale is used: 1 = False, "
 "2 = Mostly false, 3 = Half true, 4 = Mostly true, 5 = True."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:757
+#: lib/messages-tooltip-meta-schema.php:761
 msgid ""
 "An alternate name for the rating value (example: False, Misleading, "
 "Accurate, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:767
+#: lib/messages-tooltip-meta-schema.php:771
 msgid "A name for the subject or item being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:773
+#: lib/messages-tooltip-meta-schema.php:777
 msgid "A description for the subject or item being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:779
+#: lib/messages-tooltip-meta-schema.php:783
 msgid "An image ID showing the subject or item being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:781
+#: lib/messages-tooltip-meta-schema.php:785
 msgid "This option is disabled if a subject image URL is entered."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:787
+#: lib/messages-tooltip-meta-schema.php:791
 msgid ""
 "An image URL (instead of an image ID) showing the subject or item being "
 "reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:789
+#: lib/messages-tooltip-meta-schema.php:793
 msgid "This option is disabled if a subject image ID is selected."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:795
+#: lib/messages-tooltip-meta-schema.php:799
 msgid "A webpage URL for the subject or item being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:807
+#: lib/messages-tooltip-meta-schema.php:811
 msgid ""
 "A Schema type for the subject or item being reviewed (for example, Schema "
 "Product type for the review of a product, Schema Book for the review of a "
 "book, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:809
+#: lib/messages-tooltip-meta-schema.php:813
 msgid ""
 "Although the Schema standard allows the subject of a review (aka the item "
 "reviewed) to be any Schema type, <a href=\"%1$s\">Google only allows reviews "
 "for a few specific Schema types (and their sub-types)</a>."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:851
+#: lib/messages-tooltip-meta-schema.php:855
 msgid ""
 "The ISBN code (aka International Standard Book Number) for the book being "
 "reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:875
+#: lib/messages-tooltip-meta-schema.php:879
 msgid "The brand name of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:881
+#: lib/messages-tooltip-meta-schema.php:885
 msgid ""
 "One or more offers for the product being reviewed, including the offer name, "
 "price and currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:887
+#: lib/messages-tooltip-meta-schema.php:891
 msgid "The SKU (aka Stock-Keeping Unit) of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:893
+#: lib/messages-tooltip-meta-schema.php:897
 msgid "The MPN (aka Manufacturer Part Number) of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:902
+#: lib/messages-tooltip-meta-schema.php:906
 msgid ""
 "One or more offers for the software application being reviewed, including "
 "the offer name, price and currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:911
+#: lib/messages-tooltip-meta-schema.php:915
 msgid ""
 "A short summary of specific claim(s) being reviewed in the Schema "
 "ClaimReview content."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:913
+#: lib/messages-tooltip-meta-schema.php:917
 msgid ""
 "The summary should be less than 75 characters to minimize wrapping on mobile "
 "devices."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:919
+#: lib/messages-tooltip-meta-schema.php:923
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:955
+#: lib/messages-tooltip-meta-schema.php:959
 msgid "Awards this service has won."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:961
+#: lib/messages-tooltip-meta-schema.php:965
 msgid "The numeric decimal degrees latitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:969
+#: lib/messages-tooltip-meta-schema.php:973
 msgid "The numeric decimal degrees longitude for this service."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:995
+#: lib/messages-tooltip-meta-schema.php:999
 msgid ""
 "One or more offers for the service, including the offer name, price and "
 "currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1001
+#: lib/messages-tooltip-meta-schema.php:1005
 msgid ""
 "A list of offer catalogs for this service, including the catalog name, "
 "description and URL."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1015
+#: lib/messages-tooltip-meta-schema.php:1019
 msgid "Type of software application (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1022
+#: lib/messages-tooltip-meta-schema.php:1026
 msgid "The operating system supported (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1037
+#: lib/messages-tooltip-meta-schema.php:1041
 msgid ""
 "Organizations that have reviewed the content on this web page for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1043
+#: lib/messages-tooltip-meta-schema.php:1047
 msgid ""
 "Persons that have reviewed the content on this web page for accuracy and/or "
 "completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1049
+#: lib/messages-tooltip-meta-schema.php:1053
 msgid ""
 "Date on which the content on this web page was last reviewed for accuracy "
 "and/or completeness."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1062
+#: lib/messages-tooltip-meta-schema.php:1066
 msgid ""
 "A customized image ID to include first in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:1070
+#: lib/messages-tooltip-meta-schema.php:1074
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Schema meta tags and JSON-LD markup."

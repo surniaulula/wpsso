@@ -97,7 +97,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_text':	// Full Text.
 
-					$text = __( 'The complete textual and searchable content for this creative work.', 'wpsso' );
+					$text = __( 'The complete textual and searchable content for this creative work.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is the object content (ie. the post content) with shortcodes and blocks expanded and HTML removed.', 'wpsso' ) . ' ';
+					
+					$text .= sprintf( __( 'You may hook the \'%s\' filter to modify the default value.', 'wpsso' ), 'wpsso_the_text' ) . ' ';
 
 				 	break;
 
