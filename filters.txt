@@ -385,7 +385,7 @@
 
 'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
 
-'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
+'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )	// Example $md_key value: 'og_title', 'schema_title', 'schema_title_alt', 'schema_title_bc'.
 
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
 
