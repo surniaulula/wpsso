@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 			 * Move any existing properties (from shortcodes, for example) so we can filter them and add new ones.
 			 */
 			if ( isset( $json_data[ 'brand' ] ) ) {
-				
+
 				/*
 				 * Example:
 				 *
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 						}
 
 					} else {
-					
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'checking if term id #' . $term_obj->term_id . ' is noindex' );
@@ -283,26 +283,26 @@ if ( ! class_exists( 'WpssoIntegEcomAbstractWooCommerceBrands' ) ) {
 
 							$term_mod   = $this->p->term->get_mod( $term_obj->term_id, $term_obj->taxonomy );
 							$term_mt_og = $this->p->og->get_array( $term_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
-	
+
 							/*
 							 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 							 */
 							$single_brand = $this->p->schema->get_json_data( $term_mod, $term_mt_og,
 								$page_type_id = 'brand', $is_main = false, $single = true );
-	
+
 							/*
 							 * Maybe overwrite an existing brand with the same name.
 							 */
 							if ( isset( $brands_by_name[ $term_obj->name ] ) ) {
-		
+
 								$key_num = $brands_by_name[ $term_obj->name ];	// Get the array key number using the brand name.
-		
+
 								$brands[ $key_num ] = $single_brand;
-		
+
 							} else {
-		
+
 								$brands[] = $single_brand;	// Add a new brand.
-	
+
 								$brands_by_name[ $term_obj->name ] = SucomUtil::array_key_last( $brands );	// Prevent duplicates.
 							}
 						}

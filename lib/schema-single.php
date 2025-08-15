@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * The method by which the consumer can obtain a return shipping label for a product.
 			 */
 			if ( ! empty( $mrp_opts[ 'mrp_return_label_source' ] ) ) {
-				
+
 				$json_ret[ 'returnLabelSource' ] = $mrp_opts[ 'mrp_return_label_source' ];
 
 			} elseif ( $wpsso->debug->enabled ) {
@@ -1091,7 +1091,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				) );
 
 			} elseif ( ! empty( $mrp_opts[ 'mrp_restocking_pct' ] ) ) {
-				
+
 				$json_ret[ 'restockingFee' ] = $mrp_opts[ 'mrp_restocking_pct' ];
 
 			} elseif ( $wpsso->debug->enabled ) {

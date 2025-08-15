@@ -58,6 +58,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 					$text .= __( 'The default value is inherited from the SEO title.', 'wpsso' ) . ' ';
 
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
+
 				 	break;
 
 				case 'tooltip-meta-og_desc':	// Social Description.
@@ -65,6 +67,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 					$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
 					$text .= __( 'The default value is inherited from the SEO description.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_description', 'wpsso_description' ) . ' ';
 
 				 	break;
 

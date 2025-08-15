@@ -1122,6 +1122,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
+			$awards = apply_filters( 'wpsso_og_product_awards', $awards, $mod );
+
 			return $awards;
 		}
 

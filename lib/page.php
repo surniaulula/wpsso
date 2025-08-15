@@ -1712,7 +1712,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				} elseif ( $mod[ 'id' ] ) {
 
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
-					
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'get_post_field() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' = ' . $excerpt_text );

@@ -784,22 +784,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$this->p->debug->log( 'skipping content images' );
 					}
-	
+
 				} else {
 
 					if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'getting content images' );
 						}
-	
+
 						$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
-	
+
 						$content_images = $this->get_content_images( $num_diff, $size_name, $mod );
-	
+
 						if ( ! empty( $content_images ) ) {
-	
+
 							$mt_ret = array_merge( $mt_ret, $content_images );
 						}
 
@@ -880,10 +880,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! empty( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'getting og images' );
 				}
-	
+
 				/*
 				 * get_og_images() provides filter hooks for additional image IDs and URLs.
 				 *
@@ -898,10 +898,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
 				if ( $this->p->debug->enabled ) {
-	
+
 					$this->p->debug->log( 'getting featured images' );
 				}
-	
+
 				$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id ) );
@@ -916,16 +916,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$this->p->debug->log( 'skipping attached images' );
 				}
-	
+
 			} else {
 
 				if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'getting attached images' );
 					}
-	
+
 					$num_diff = SucomUtil::array_count_diff( $mt_ret, $num );
 
 					$attached_images = $this->get_attached_images( $num_diff, $size_name, $post_id );

@@ -173,6 +173,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 						$text .= __( 'The default value is inherited from the social or SEO title.', 'wpsso' ) . ' ';
 
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
+
 					 	break;
 
 					case 'tooltip-meta-tc_desc':		// X (Twitter) Card Description.
@@ -180,6 +182,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 						$text = __( 'A customized description for the X (Twitter) Card description meta tag.', 'wpsso' ) . ' ';
 
 						$text .= __( 'The default value is inherited from the social or SEO description.', 'wpsso' ) . ' ';
+
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_description', 'wpsso_description' ) . ' ';
 
 					 	break;
 
@@ -228,13 +232,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					case 'tooltip-meta-seo_title':		// SEO Title Tag.
 
-						$text = __( 'A customized description for the SEO title tag and the default for all other title values.', 'wpsso' );
+						$text = __( 'A customized description for the SEO title tag and the default for all other title values.', 'wpsso' ) . ' ';
+
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_title', 'wpsso_title' ) . ' ';
 
 					 	break;
 
 					case 'tooltip-meta-seo_desc':		// SEO Meta Description.
 
-						$text = __( 'A customized description for the SEO description meta tag and the default for all other description values.', 'wpsso' );
+						$text = __( 'A customized description for the SEO description meta tag and the default for all other description values.', 'wpsso' ) . ' ';
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_description', 'wpsso_description' ) . ' ';
 
 						$text .= $this->maybe_add_seo_tag_disabled_link( 'meta name description' );
 

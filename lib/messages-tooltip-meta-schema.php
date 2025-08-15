@@ -83,9 +83,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_addl_type_url':	// Microdata Type URLs.
 
+					$tp_frags = $this->get_tooltip_fragments( 'addl_type_urls' );	// Uses a local cache.
+
 					$text = __( 'Additional microdata type URL(s) for the content, typically used to specify more precise type(s) from an external vocabulary.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'For example, an additional microdata type URL for a Schema Product type could be %1$s (see %2$s for more examples).', 'wpsso' ), 'http://www.productontology.org/id/Hammer', __( '<a href="http://www.productontology.org/">The Product Types Ontology</a>', 'wpsso' ) );
+					$text .= sprintf( __( 'For example, an additional microdata type URL for a Schema Product type could be %1$s (see %2$s for more examples).', 'wpsso' ), 'http://www.productontology.org/id/Hammer', __( '<a href="http://www.productontology.org/">The Product Types Ontology</a>', 'wpsso' ) ) . ' ';
+
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_json_prop_https_schema_org_additionaltype' ) . ' ';
 
 				 	break;
 
@@ -94,6 +98,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					$text = __( 'Additional webpage reference URL(s) that unambiguously indicates the content\'s identity.', 'wpsso' ) . ' ';
 
 					$text .= __( 'For example, the URL for the content subject\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
+
+					$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_json_prop_https_schema_org_sameas' ) . ' ';
 
 				 	break;
 
@@ -112,7 +118,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 					$text = __( 'The complete textual and searchable content for this creative work.', 'wpsso' ) . ' ';
 
 					$text .= __( 'The default value is the current object (for example, the post/page) content text with shortcodes and blocks expanded and HTML removed.', 'wpsso' ) . ' ';
-					
+
 					$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), 'wpsso_the_text', 'wpsso_text' ) . ' ';
 
 				 	break;
