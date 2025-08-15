@@ -109,7 +109,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 						$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
 					}
 
-
 				 	break;
 
 				case 'tooltip-meta-schema_headline':	// Headline.
