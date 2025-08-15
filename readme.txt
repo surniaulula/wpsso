@@ -277,12 +277,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.5.0-dev.3 (2025/08/15)**
+**Version 21.5.0-dev.4 (2025/08/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated help text and French translations.
+	* Updated Document SSO options help text and French translations.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -436,9 +436,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.5.0-dev.3 =
+= 21.5.0-dev.4 =
 
-(2025/08/15) Updated help text and French translations.
+(2025/08/15) Updated Document SSO options help text and French translations.
 
 = 21.4.3 =
 
