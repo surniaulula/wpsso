@@ -1032,6 +1032,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
 					),
 				);
+			
+				$cf_md_index = WpssoConfig::get_cf_md_index();	// Uses a local cache.
+
+				foreach ( $cf_md_index as $opt_cf_key => $md_key ) {
+
+					if ( ! empty( $md_key ) ) {	// Just in case.
+
+						if ( ! empty( $this->p->options[ $opt_cf_key ] ) ) {
+
+							$cf_key   = $this->p->options[ $opt_cf_key ];	// Example: '_format_video_url'.
+							$cache_key = preg_replace( '/^plugin_cf_/', '', $opt_cf_key );
+
+							if ( ! empty( $local_cache[ $cache_key ] ) ) {
+				
+								$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_cf_' . $cf_key );
+							
+								$local_cache[ $cache_key ][ 'import_cf' ] = $filter_name;
+							}
+						}
+					}
+				}
 			}
 
 			if ( false !== $local_cache ) {

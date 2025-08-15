@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.5.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 21.5.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3686,7 +3686,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:106 gettext/gettext-lib-config.php:122
 #: lib/admin-head-suggest-options.php:141 lib/messages.php:549
-#: lib/messages.php:1265
+#: lib/messages.php:1286
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -4347,12 +4347,12 @@ msgctxt "option value"
 msgid "Disabled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:251 lib/messages.php:1053
+#: gettext/gettext-lib-config.php:251 lib/messages.php:1074
 msgctxt "option value"
 msgid "enabled"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:252 lib/messages.php:1054
+#: gettext/gettext-lib-config.php:252 lib/messages.php:1075
 msgctxt "option value"
 msgid "disabled"
 msgstr ""
@@ -5801,7 +5801,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:5 lib/messages-tooltip-plugin.php:334
 #: lib/messages-tooltip-plugin.php:351 lib/messages-tooltip-plugin.php:426
-#: lib/messages.php:1213 lib/pro/admin/advanced.php:100
+#: lib/messages.php:1234 lib/pro/admin/advanced.php:100
 #: lib/std/admin/advanced.php:79
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -7271,18 +7271,18 @@ msgid "Install and activate the %s add-on."
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:140 lib/messages.php:548
-#: lib/messages.php:1264
+#: lib/messages.php:1285
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:142 lib/messages.php:1266
+#: lib/admin-head-suggest-options.php:142 lib/messages.php:1287
 #: lib/submenu/advanced.php:39
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:143 lib/messages.php:1267
+#: lib/admin-head-suggest-options.php:143 lib/messages.php:1288
 #: lib/submenu/advanced.php:239
 msgctxt "metabox tab"
 msgid "SEO / Other"
@@ -8126,7 +8126,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:401 lib/messages.php:1415
+#: lib/conflict.php:401 lib/messages.php:1436
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines from indexing this site."
@@ -10118,7 +10118,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:266 lib/messages.php:1077 lib/messages.php:1326
+#: lib/messages-info-meta.php:266 lib/messages.php:1098 lib/messages.php:1347
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -12058,7 +12058,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:93 lib/messages.php:1155
+#: lib/messages-tooltip-plugin.php:93 lib/messages.php:1176
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -13240,7 +13240,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:351 lib/messages.php:1331
+#: lib/messages-tooltip.php:351 lib/messages.php:1352
 #: lib/submenu/general.php:370
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -14417,98 +14417,98 @@ msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
-#: lib/messages.php:1065
+#: lib/messages.php:1086
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:1065
+#: lib/messages.php:1086
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:1079 lib/messages.php:1095 lib/util-metabox.php:253
+#: lib/messages.php:1100 lib/messages.php:1116 lib/util-metabox.php:253
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:1121
+#: lib/messages.php:1142
 msgid ""
 "Facebook prefers images of %1$s cropped (for Retina and high-PPI displays), "
 "%2$s cropped as a recommended minimum, and ignores images smaller than %3$s."
 msgstr ""
 
-#: lib/messages.php:1151 lib/messages.php:1199 lib/messages.php:1243
+#: lib/messages.php:1172 lib/messages.php:1220 lib/messages.php:1264
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:1157
+#: lib/messages.php:1178
 msgid "No theme support for <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:1161 lib/messages.php:1207
+#: lib/messages.php:1182 lib/messages.php:1228
 msgid "Modifications disabled (%s constant is true)."
 msgstr ""
 
-#: lib/messages.php:1203
+#: lib/messages.php:1224
 msgid "Modifications disabled (no theme support)."
 msgstr ""
 
-#: lib/messages.php:1216
+#: lib/messages.php:1237
 msgid "Modifications disabled (%1$s option not \"%2$s\")."
 msgstr ""
 
-#: lib/messages.php:1245
+#: lib/messages.php:1266
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1269
+#: lib/messages.php:1290
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:1270
+#: lib/messages.php:1291
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:1302
+#: lib/messages.php:1323
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:1321
+#: lib/messages.php:1342
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1336
+#: lib/messages.php:1357
 msgid "Modifications disabled (%s option is disabled)."
 msgstr ""
 
-#: lib/messages.php:1343
+#: lib/messages.php:1364
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1361 lib/messages.php:1383
+#: lib/messages.php:1382 lib/messages.php:1404
 msgid "Video service API modules are provided with the %1$s edition."
 msgstr ""
 
-#: lib/messages.php:1377
+#: lib/messages.php:1398
 msgid "adding video markup"
 msgstr ""
 
-#: lib/messages.php:1381
+#: lib/messages.php:1402
 msgid ""
 "A %1$s video was found but details about this video (title, description, "
 "preview image, upload date, duration, width, height, encoding, etc.) could "
 "not be retrieved."
 msgstr ""
 
-#: lib/messages.php:1407
+#: lib/messages.php:1428
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1425
+#: lib/messages.php:1446
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
