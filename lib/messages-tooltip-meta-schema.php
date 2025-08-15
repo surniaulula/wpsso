@@ -89,17 +89,26 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text .= sprintf( __( 'For example, an additional microdata type URL for a Schema Product type could be %1$s (see %2$s for more examples).', 'wpsso' ), 'http://www.productontology.org/id/Hammer', __( '<a href="http://www.productontology.org/">The Product Types Ontology</a>', 'wpsso' ) ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_json_prop_https_schema_org_additionaltype' ) . ' ';
+					if ( ! empty( $tp_frags[ 'filter' ] ) ) {	// Just in case.
+
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
+					}
 
 				 	break;
 
 				case 'tooltip-meta-schema_sameas_url':	// Same-As URLs.
 
+					$tp_frags = $this->get_tooltip_fragments( 'sameas_urls' );	// Uses a local cache.
+
 					$text = __( 'Additional webpage reference URL(s) that unambiguously indicates the content\'s identity.', 'wpsso' ) . ' ';
 
 					$text .= __( 'For example, the URL for the content subject\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
 
-					$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_json_prop_https_schema_org_sameas' ) . ' ';
+					if ( ! empty( $tp_frags[ 'filter' ] ) ) {	// Just in case.
+
+						$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
+					}
+
 
 				 	break;
 

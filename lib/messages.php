@@ -706,7 +706,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label'  => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 						'name'   => _x( 'Microdata type URLs', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
-						'about'   => __( 'https://schema.org/additionalType', 'wpsso' ),
+						'about'  => __( 'https://schema.org/additionalType', 'wpsso' ),
 						'filter' => 'wpsso_json_prop_https_schema_org_additionaltype',
 					),
 					'article_section' => array(
@@ -1016,9 +1016,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
 					),
 					'sameas_urls' => array(
-						'label' => _x( 'Same-As URLs', 'option label', 'wpsso' ),
-						'name'  => _x( 'same-as URLs', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'additional same-as URLs', 'tooltip fragment', 'wpsso' ),
+						'label'  => _x( 'Same-As URLs', 'option label', 'wpsso' ),
+						'name'   => _x( 'same-as URLs', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'additional same-as URLs', 'tooltip fragment', 'wpsso' ),
+						'filter' => 'wpsso_json_prop_https_schema_org_sameas',
 					),
 					'vid_embed' => array(
 						'label' => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
