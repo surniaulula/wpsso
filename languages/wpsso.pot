@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.5.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 21.5.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10520,6 +10520,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:61
 #: lib/messages-tooltip-meta-opengraph.php:71
+#: lib/messages-tooltip-meta-product.php:87
 #: lib/messages-tooltip-meta-schema.php:42
 #: lib/messages-tooltip-meta-schema.php:52
 #: lib/messages-tooltip-meta-schema.php:62
@@ -10910,10 +10911,10 @@ msgid "Awards this product has won."
 msgstr ""
 
 #: lib/messages-tooltip-meta-product.php:40
-#: lib/messages-tooltip-meta-product.php:87
+#: lib/messages-tooltip-meta-product.php:94
 #: lib/messages-tooltip-meta-schema.php:94
 #: lib/messages-tooltip-meta-schema.php:109
-msgid "You may use the <code>%1$s</code> filter to modify the custom values."
+msgid "You may use the <code>%s</code> filter to modify the custom values."
 msgstr ""
 
 #. translators: %1$s is a lower case item name, for example 'product Google
@@ -10977,6 +10978,10 @@ msgstr ""
 msgid ""
 "Note that the %s value is automatically inherited as a default value by any "
 "child pages (like WooCommerce product variations, for example)."
+msgstr ""
+
+#: lib/messages-tooltip-meta-product.php:91
+msgid "You may use the <code>%s</code> filter to modify the default values."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:38

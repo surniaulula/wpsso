@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					if ( ! empty( $tp_frags[ 'filter' ] ) ) {	// Just in case.
 
-						$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
+						$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
 					}
 
 				 	break;
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					if ( ! empty( $tp_frags[ 'filter' ] ) ) {	// Just in case.
 
-						$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
+						$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
 					}
 
 				 	break;

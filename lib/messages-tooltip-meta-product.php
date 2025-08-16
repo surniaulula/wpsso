@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 
 					$text = __( 'Awards this product has won.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_og_product_awards' ) . ' ';
+					$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the custom values.', 'wpsso' ), 'wpsso_og_product_awards' ) . ' ';
 
 				 	break;
 
@@ -82,9 +82,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 							$text .= sprintf( __( 'Note that the %s value is automatically inherited as a default value by any child pages (like WooCommerce product variations, for example).', 'wpsso' ), $tp_frags[ 'name' ] ) . ' ';
 						}
 
-						if ( ! empty( $tp_frags[ 'filter' ] ) ) {
+						if ( ! empty( $tp_frags[ 'import_cf' ] ) && ! empty( $tp_frags[ 'filter' ] ) ) {
 
-							$text .= sprintf( __( 'You may use the <code>%1$s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
+							$text .= sprintf( __( 'You may use the <code>%1$s</code> and/or <code>%2$s</code> filters to modify the default and custom values respectively.', 'wpsso' ), $tp_frags[ 'import_cf' ], $tp_frags[ 'filter' ] ) . ' ';
+
+						} elseif ( ! empty( $tp_frags[ 'import_cf' ] ) ) {
+
+							$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the default values.', 'wpsso' ), $tp_frags[ 'import_cf' ] ) . ' ';
+						} elseif ( ! empty( $tp_frags[ 'filter' ] ) ) {
+
+							$text .= sprintf( __( 'You may use the <code>%s</code> filter to modify the custom values.', 'wpsso' ), $tp_frags[ 'filter' ] ) . ' ';
 						}
 					}
 
