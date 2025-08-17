@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.2
 WC Tested Up To: 10.1.0
-Stable Tag: 21.4.3
+Stable Tag: 21.5.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.5.0 (2025/08/16)**
+**Version 21.5.0 (2025/08/17)**
 
 * **New Features**
 	* None.
@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 21.5.0 =
 
-(2025/08/16) Updated Document SSO options help text and French translations.
+(2025/08/17) Updated Document SSO options help text and French translations.
 
 = 21.4.3 =
 
