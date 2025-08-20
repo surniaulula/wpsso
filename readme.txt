@@ -277,6 +277,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 21.5.1-dev.1 (2025/08/20)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed PHP 8.4 warning "Implicitly marking parameter as nullable is deprecated" in `SucomErrorException->__construct()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.4.33.
+	* WordPress v5.9.
+	* WPSSO Update Manager v7.2.0 (for Premium edition).
+
 **Version 21.5.0 (2025/08/17)**
 
 * **New Features**
@@ -435,6 +450,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
 == Upgrade Notice ==
+
+= 21.5.1-dev.1 =
+
+(2025/08/20) Fixed PHP 8.4 warning "Implicitly marking parameter as nullable is deprecated" in `SucomErrorException->__construct()`.
 
 = 21.5.0 =
 
