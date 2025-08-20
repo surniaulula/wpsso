@@ -204,7 +204,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 			),
 		);
 
-		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
+		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, ?Exception $previous = null ) {
 
 			if ( isset( self::$codes[ 'http' ][ $errcode ] ) ) {
 
