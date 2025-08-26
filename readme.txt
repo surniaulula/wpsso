@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.5.1-dev.1 (2025/08/20)**
+**Version 21.5.1-rc.1 (2025/08/25)**
 
 * **New Features**
 	* None.
@@ -451,9 +451,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.5.1-dev.1 =
+= 21.5.1-rc.1 =
 
-(2025/08/20) Fixed PHP 8.4 warning "Implicitly marking parameter as nullable is deprecated" in `SucomErrorException->__construct()`.
+(2025/08/25) Fixed PHP 8.4 warning "Implicitly marking parameter as nullable is deprecated" in `SucomErrorException->__construct()`.
 
 = 21.5.0 =
 
