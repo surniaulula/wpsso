@@ -55,7 +55,7 @@
 
 <h3>Author Social Accounts (Optional)</h3>
 
-<p>You may remind your content creators and editors to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only if they users their contact information in their WordPress user profile page</em>.</p>
+<p>You may remind your authors and content creators to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google <em>if users enter their contact information in their WordPress user profile page</em>.</p>
 
 <a name="essential-settings"></a>
 
@@ -77,15 +77,15 @@
 
 <h3>User Interface and General Usage</h3>
 
-<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the "Screen Options" drop-down to hide / view the "Schema" and "SSO Image" columns. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab.</p>
-
 <p>When editing a post, page, category, tag, user profile, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images, and videos. The Document SSO metabox shows a different set of options based on the content type selected (ie. Schema type or Open Graph type), allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The "Preview Social" tab shows how this webpage might look when shared on Facebook and the "Validators" tab allows you to submit the current webpage URL to several test and validation tools.</p>
+
+<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the "Screen Options" drop-down to hide / view the "SSO Image" column. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab.</p>
 
 <a name="schema-markup"></a>
 
 <h3>Schema Markup vs Google Rich Results</h3>
 
-<p>Schema (aka "Schema.org") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the Schema vocabulary consists of over 800 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines.</p>
+<p>Schema (aka "Schema.org") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the Schema vocabulary consists of over 800 types and 1500 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines.</p>
 
 <p><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, and limited Schema types for some property relations. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section, or with RDFa / Microdata markup in theme templates (deprecated standard).</p>
 
@@ -95,13 +95,13 @@
 
 <h3>Validation Tools</h3>
 
-<p>Submit the home page URL, along with a post, page, and archive page URL to the <a href="https://validator.w3.org/">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. You should report any template HTML markup errors to your theme author.</p>
+<p>Submit the home page URL, along with a post, page, and archive page URL to the <a href="https://validator.w3.org/">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your theme templates contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. <strong>You should report any template HTML markup errors to your theme author.</strong></p>
 
 <img src="https://surniaulula.github.io/wpsso/images/facebook-sharing-debugger.png" class="alignright">
 
 <p>Submit a few post and page URLs to the <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). The Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts and pages, pre-dating the activation of WPSSO, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.</p>
 
-<p>Submit an example post and/or page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page.</p>
+<p>Submit an example post and/or page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.). Your home page and archive pages are not "Rich Pin" types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page.</p>
 
 <p>Submit the home page URL, along with a post, page, and archive page URL to the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://validator.schema.org/">Schema Markup Validator</a>. If any information is missing from the Schema markup, use the Document SSO metabox in the WordPress editing page to complete the missing information.</p>
 
