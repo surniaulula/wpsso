@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 21.5.0\n"
+"Project-Id-Version: WPSSO Core 21.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2025-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-08-16 06:34-0700\n"
+"PO-Revision-Date: 2025-09-03 09:41-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #: gettext/gettext-html-debug.php:5 gettext/gettext-html-setup.php:5
 msgctxt "html header"
@@ -209,8 +209,11 @@ msgid "You can enter all your business social account information in the <em><st
 msgstr "Vous pouvez saisir les informations de vos comptes sociaux de votre entreprise dans la métabox <em><strong>SSO &gt; Réglages généraux &gt; Pages et comptes sociaux</strong></em>. Les valeurs des comptes sociaux sont utilisées pour les balises méta et le balisage de Schéma d'organisation (qui peuvent apparaître dans les résultats de recherche Google pour mettre en évidence les pages sociales de votre entreprise)."
 
 #: gettext/gettext-html-setup.php:16
+#, fuzzy
+#| msgctxt "html paragraph"
+#| msgid "You may remind your content creators and editors to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only if they users their contact information in their WordPress user profile page</em>."
 msgctxt "html paragraph"
-msgid "You may remind your content creators and editors to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google - <em>but only if they users their contact information in their WordPress user profile page</em>."
+msgid "You may remind your authors and content creators to enter their personal website URL, Facebook, and X (Twitter) social page URLs in their WordPress user profile page. Author contact information can appear in various meta tags and Schema markup for Facebook, X (Twitter), and Google <em>if users enter their contact information in their WordPress user profile page</em>."
 msgstr "Vous pouvez rappeler à vos créateurs et éditeurs de contenu de saisir l'URL de leur site Web personnel, les URL de leurs pages sociales Facebook et X (Twitter) dans leur page de profil utilisateur WordPress. Les informations de contact de l'auteur peuvent apparaître dans diverses balises méta et balisage de Schéma pour Facebook, X (Twitter) et Google - <em>mais uniquement s'ils utilisent leurs informations de contact dans leur page de profil utilisateur WordPress</em>."
 
 #: gettext/gettext-html-setup.php:17
@@ -230,17 +233,23 @@ msgstr "Recherchez l'icône de notification SSO dans la barre d'outils d'adminis
 
 #: gettext/gettext-html-setup.php:20
 msgctxt "html paragraph"
-msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the \"Screen Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
-msgstr "Sur la plupart des pages d'administration WordPress, vous trouverez un onglet déroulant \"Options d'écran\" dans le coin supérieur droit de la page. Vous pouvez utiliser ces options d'écran pour inclure ou exclure des métaboxes et des colonnes spécifiques de la page actuelle. Par exemple, lorsque vous consultez la liste des articles ou des pages, vous pouvez utiliser le menu déroulant \"Options d'écran\" pour masquer / afficher les colonnes \"Schéma\" et \"Image SSO\". Vous pouvez également activer ou désactiver ces colonnes globalement sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Interface</strong></em>."
-
-#: gettext/gettext-html-setup.php:21
-msgctxt "html paragraph"
 msgid "When editing a post, page, category, tag, user profile, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images, and videos. The Document SSO metabox shows a different set of options based on the content type selected (ie. Schema type or Open Graph type), allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The \"Preview Social\" tab shows how this webpage might look when shared on Facebook and the \"Validators\" tab allows you to submit the current webpage URL to several test and validation tools."
 msgstr "Lorsque vous modifiez un article, une page, une catégorie, une étiquette, un profil utilisateur, etc., vous trouverez une métabox SSO du document sous la zone de contenu où vous pouvez personnaliser les textes, images et vidéos par défaut. La métabox SSO du document affiche un ensemble d'options différent en fonction du type de contenu sélectionné (par exemple, type de Schéma ou type Open Graph), vous permettant de personnaliser les détails des articles, des événements, des produits de commerce électronique, des recettes, des critiques, etc. L'onglet \"Aperçu social\" montre à quoi cette page Web pourrait ressembler lorsqu'elle est partagée sur Facebook et l'onglet \"Validateurs\" vous permet de soumettre l'URL de la page Web actuelle à plusieurs outils de test et de validation."
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:21
+#, fuzzy
+#| msgctxt "html paragraph"
+#| msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the \"Screen Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
 msgctxt "html paragraph"
-msgid "Schema (aka \"Schema.org\") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the Schema vocabulary consists of over 800 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines."
+msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these screen options to include or exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the \"Screen Options\" drop-down to hide / view the \"SSO Image\" column. You can also enable or disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
+msgstr "Sur la plupart des pages d'administration WordPress, vous trouverez un onglet déroulant \"Options d'écran\" dans le coin supérieur droit de la page. Vous pouvez utiliser ces options d'écran pour inclure ou exclure des métaboxes et des colonnes spécifiques de la page actuelle. Par exemple, lorsque vous consultez la liste des articles ou des pages, vous pouvez utiliser le menu déroulant \"Options d'écran\" pour masquer / afficher les colonnes \"Schéma\" et \"Image SSO\". Vous pouvez également activer ou désactiver ces colonnes globalement sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Interface</strong></em>."
+
+#: gettext/gettext-html-setup.php:22
+#, fuzzy
+#| msgctxt "html paragraph"
+#| msgid "Schema (aka \"Schema.org\") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the Schema vocabulary consists of over 800 types and 1400 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines."
+msgctxt "html paragraph"
+msgid "Schema (aka \"Schema.org\") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the Schema vocabulary consists of over 800 types and 1500 properties</a>. The Schema vocabulary can be used with many different encodings, including HTML meta tags, RDFa, Microdata, and JSON-LD. WPSSO adds Schema markup to webpages using the latest (and preferred) JSON-LD encoding format for Google and other search engines."
 msgstr "Le Schéma (également appelé \"Schema.org\") est une norme collaborative et communautaire pour le balisage de données structurées. Le balisage de Schéma est classé par type, et chaque type est associé à un ensemble de propriétés. Les types sont organisés selon une hiérarchie et <a href=\"https://schema.org/docs/schemas.html\">le vocabulaire de Schéma comprend plus de 800 types et 1400 propriétés</a>. Le vocabulaire de Schéma peut être utilisé avec de nombreux codages différents, notamment les balises méta HTML, RDFa, Microdata et JSON-LD. WPSSO ajoute le balisage de Schéma aux pages Web en utilisant le format de codage le plus récent (et préféré) JSON-LD pour Google et d'autres moteurs de recherche."
 
 #: gettext/gettext-html-setup.php:23
@@ -254,8 +263,11 @@ msgid "If your theme templates include incomplete or incorrect RDFa / Microdata 
 msgstr "Si vos modèles de thème incluent un balisage RDFa / Microdata incomplet ou incorrect, vous pouvez activer le <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">l'ajout WPSSO supprimer microdonnées de Schéma</a> pour supprimer le balisage de microdonnées incomplet ou incorrect. Le balisage de Schéma fourni par WPSSO inclura une valeur '#sso/' dans la propriété de Schéma \"@id\", ce qui permet de savoir facilement quel balisage de Schéma JSON-LD est fourni par WPSSO et lequel ne l'est pas."
 
 #: gettext/gettext-html-setup.php:25
+#, fuzzy
+#| msgctxt "html paragraph"
+#| msgid "Submit the home page URL, along with a post, page, and archive page URL to the <a href=\"https://validator.w3.org/\">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. You should report any template HTML markup errors to your theme author."
 msgctxt "html paragraph"
-msgid "Submit the home page URL, along with a post, page, and archive page URL to the <a href=\"https://validator.w3.org/\">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. You should report any template HTML markup errors to your theme author."
+msgid "Submit the home page URL, along with a post, page, and archive page URL to the <a href=\"https://validator.w3.org/\">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your theme templates contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. <strong>You should report any template HTML markup errors to your theme author.</strong>"
 msgstr "Soumettez l'URL de la page d'accueil, ainsi qu'une URL d'article et de page d'archive au <a href=\"https://validator.w3.org/\">validateur W3C de balisage</a> pour vérifier le code HTML de vos modèles de thème. Les robots d'exploration des réseaux sociaux et des moteurs de recherche nécessitent un HTML correctement formaté et conforme aux normes HTML / XHTML actuelles. Si vos pages Web contiennent de graves erreurs de balisage HTML, les robots d'exploration des réseaux sociaux et de recherche risquent de ne pas pouvoir lire vos balises méta et votre balisage de Schéma. Vous devez signaler toute erreur de balisage HTML du modèle à l'auteur de votre thème."
 
 #: gettext/gettext-html-setup.php:26
@@ -264,8 +276,11 @@ msgid "Submit a few post and page URLs to the <a href=\"https://developers.faceb
 msgstr "Soumettez quelques URL d'articles et de page au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox SSO du document (sur les pages d'édition d'articles, de termes et d'utilisateurs). Le débogueur Facebook peut également être utilisé pour vider le cache de Facebook (après avoir cliqué sur le bouton \"Fetch new scrape information\"). Si vous validez des publications et des pages plus anciennes, antérieures à l'activation de WPSSO, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs de balises méta de son cache</a>, même après avoir récupéré les nouvelles informations de scrape."
 
 #: gettext/gettext-html-setup.php:27
+#, fuzzy
+#| msgctxt "html paragraph"
+#| msgid "Submit an example post and/or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
 msgctxt "html paragraph"
-msgid "Submit an example post and/or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
+msgid "Submit an example post and/or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.). Your home page and archive pages are not \"Rich Pin\" types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
 msgstr "Soumettez un exemple d'article et/ou de page au <a href=\"http://developers.pinterest.com/rich_pins/validator/\">validateur Pinterest épingles riches</a>. Notez que le validateur Pinterest ne reconnaît que les types de Rich Pin connus (article, recette, produit, etc.) - votre page d'accueil et les pages d'archives WordPress ne sont généralement pas des types de Rich Pin valides. Si vous n'avez pas encore demandé l'approbation Rich Pin de Pinterest pour votre site Web, vous pouvez soumettre une demande lors de la validation de votre premier exemple d'article ou de page."
 
 #: gettext/gettext-html-setup.php:28

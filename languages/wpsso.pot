@@ -388,8 +388,8 @@ msgid ""
 "to include or exclude specific metaboxes and columns from the current page. "
 "For example, when viewing the posts or pages list you can use the \"Screen "
 "Options\" drop-down to hide / view the \"SSO Image\" column. You can also "
-"enable or disable these columns globally under the <em><strong>SSO &gt; "
-"Advanced Settings &gt; Interface</strong></em> tab."
+"enable or disable columns globally under the <em><strong>SSO &gt; Advanced "
+"Settings &gt; Interface</strong></em> tab."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:22
