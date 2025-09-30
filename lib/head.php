@@ -943,7 +943,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							$opt_key = strtolower( 'add_' . $tag . '_' . $type . '_' . $key );
 
-							if ( ! empty( $this->p->options[ $opt_key ] ) ) {
+							if ( ! empty( $this->p->options[ $opt_key ] ) || 0 === strpos( $key, 'wpsso-' ) ) {
 
 								$this->add_mt_array( $mt_array, $tag, $type, $key, $value, $cmt, $mod, $use_image );
 
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 */
 				$opt_key = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
 
-				if ( ! empty( $this->p->options[ $opt_key ] ) ) {
+				if ( ! empty( $this->p->options[ $opt_key ] ) || 0 === strpos( $match_name, 'wpsso-' ) ) {
 
 					$parts_prefix = empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->';
 

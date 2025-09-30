@@ -113,7 +113,7 @@
 
 'wpsso_hashtags_seed' ( '', $post_id )
 
-'wpsso_head_disable' ( $bool, array $mod )
+'wpsso_head_disable' ( $bool, array $mod )	// Disable (ie. do not include) meta tags and Schema markup in the head section of the webpage.
 
 'wpsso_home_url' ( $url, array $mod )
 
