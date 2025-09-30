@@ -12,7 +12,7 @@ Requires PHP: 7.4.33
 Requires At Least: 5.9
 Tested Up To: 6.8.2
 WC Tested Up To: 10.1.2
-Stable Tag: 21.5.1
+Stable Tag: 21.6.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -323,148 +323,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.9.
 	* WPSSO Update Manager v7.2.0 (for Premium edition).
 
-**Version 21.4.3 (2025/08/09)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed javascript definition of timeout values for notice types.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.4.2 (2025/08/06)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed admin toolbar notification icon size and position for screen widths of 782px or less.
-	* Fixed WooCommerce site visibility badge margin in the admin toolbar.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.4.1 (2025/07/27)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed the order of notice display timeouts in `sucomToolbarNotices()`.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.4.0 (2025/07/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab:
-		* Consider Attached Images (recommended for WooCommerce product gallery images)
-		* Consider Content Images
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.3.0 (2025/07/22)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a check for 'noindex' on product brands before including them in the Schema product markup.
-* **Bugfixes**
-	* Fixed the potential for a Schema product "brand" property error by preventing more than one product brand from being added.
-* **Developer Notes**
-	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_og_ecom_woocommerce()` to check terms for 'noindex'.
-	* Refactored `WpssoIntegEcomAbstractWooCommerceBrands->filter_json_data_https_schema_org_product()` to check terms for 'noindex' and use only the first brand.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.2.0 (2025/07/14)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added Schema itemCondition, refundType, restockingFee, and returnLabelSource properties to `WpssoSchemaSingle::add_merchant_return_policy_data()`.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.1.0 (2025/07/08)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated toolbar notification message timeouts.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
-**Version 21.0.0 (2025/06/18)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Refactored several methods to support Schema Contact Points for Organizations.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `SucomUtil::sanitize_schema_id()` method.
-	* Added a new `SucomUtil::add_multi_values()` method.
-	* Added a new `SucomUtil::get_multi_values()` method.
-	* Added a new `WpssoMessagesTooltipMetaContact` class.
-	* Added a new `WpssoSchemaSingle::add_contact_data()` method.
-	* Renamed `WpssoOpenGraph->get_og_type_id_for()` to `get_og_type_id()`.
-	* Renamed `WpssoSchema->get_schema_type_id_for()` to `get_schema_type_id()`.
-	* Renamed `WpssoSchema->get_default_schema_type_name_for()` to `get_default_schema_type_name()`.
-	* Refactored `WpssoOpenGraph->get_og_type_id()`.
-	* Refactored `WpssoSchema->get_schema_type_id()`.
-	* Refactored `WpssoSchema->get_default_schema_type_name()`.
-	* Refactored `WpssoSchema->get_schema_type_url_parts()`.
-	* Refactored `WpssoSchema->return_data_from_filter()`.
-	* Refactored `WpssoSchemaSingle::add_organization_data()`.
-	* Refactored `WpssoSchemaSingle::add_place_data()`.
-	* Refactored `WpssoJsonTypeOrganization->filter_json_data_https_schema_org_organization()`.
-	* Refactored `WpssoJsonTypePlace->filter_json_data_https_schema_org_place()`.
-	* Removed the `WpssoJsonTypeFoodEstablishment` class.
-	* Removed the `WpssoJsonTypeLocalBusiness` class.
-* **Requires At Least**
-	* PHP v7.4.33.
-	* WordPress v5.9.
-	* WPSSO Update Manager v7.2.0 (for Premium edition).
-
 == Upgrade Notice ==
 
 = 21.6.0 =
@@ -478,36 +336,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 21.5.0 =
 
 (2025/08/17) Updated Document SSO options help text and French translations.
-
-= 21.4.3 =
-
-(2025/08/09) Fixed javascript definition of timeout values for notice types.
-
-= 21.4.2 =
-
-(2025/08/06) Fixed admin toolbar notification icon size and position for screen widths of 782px or less. Fixed WooCommerce site visibility badge margin in the admin toolbar.
-
-= 21.4.1 =
-
-(2025/07/27) Fixed the order of notice display timeouts in `sucomToolbarNotices()`.
-
-= 21.4.0 =
-
-(2025/07/25) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
-
-= 21.3.0 =
-
-(2025/07/22) Added a check for 'noindex' on product brands before including them in the Schema product markup.
-
-= 21.2.0 =
-
-(2025/07/14) Added Schema itemCondition, refundType, restockingFee, and returnLabelSource properties to `WpssoSchemaSingle::add_merchant_return_policy_data()`.
-
-= 21.1.0 =
-
-(2025/07/08) Updated toolbar notification message timeouts.
-
-= 21.0.0 =
-
-(2025/06/18) Refactored several methods to support Schema Contact Points for Organizations.
 
