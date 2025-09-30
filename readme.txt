@@ -277,12 +277,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.6.0-dev.1 (TBD)**
+**Version 21.6.0-dev.1 (2025/09/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated "Consider Content Images" default value from disabled to enabled.
+	* Updated "Maximum Image Upscale Percent" default value from 10 to 20.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -468,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 21.6.0-dev.1 =
 
-(TBD) None.
+(2025/09/30) Updated "Consider Content Images" and "Maximum Image Upscale Percent" default values.
 
 = 21.5.1 =
 
