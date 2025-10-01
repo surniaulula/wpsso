@@ -10,8 +10,8 @@ Tags: schema, woocommerce, search results, optimize, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.4.33
 Requires At Least: 5.9
-Tested Up To: 6.8.2
-WC Tested Up To: 10.1.2
+Tested Up To: 6.8.3
+WC Tested Up To: 10.2.2
 Stable Tag: 21.6.0
 
 Present your content at its best for social sites and search results, no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
