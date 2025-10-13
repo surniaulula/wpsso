@@ -277,7 +277,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 21.7.0-dev.1 (2025/10/13)**
+**Version 21.7.0-rc.1 (2025/10/13)**
 
 * **New Features**
 	* None.
@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 21.7.0-dev.1 =
+= 21.7.0-rc.1 =
 
 (2025/10/13) Deprecated the WPSSO Add Five Stars, WPSSO Mobile App Meta Tags, and WPSSO Ridiculously Responsive Social Sharing Buttons add-ons.
 
